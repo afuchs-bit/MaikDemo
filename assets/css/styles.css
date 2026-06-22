@@ -167,21 +167,23 @@ p  { margin: 0; }
   display: inline-flex; align-items: center; gap: 12px;
   text-decoration: none; color: var(--ink);
 }
-.brand-mark {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 46px; height: 46px;
-  background: var(--green-700);
-  border-radius: 14px;
-  box-shadow: 0 8px 20px -10px rgba(49,82,0,.6);
+.brand-logo {
+  height: 60px;
+  width: 256px;            /* matches 640:150 viewBox */
+  display: block;
+  transition: height .25s var(--ease), width .25s var(--ease);
 }
-.brand-mark svg circle[fill="#315200"] { fill: #fff; }
-.brand-text {
-  display: flex; flex-direction: column; line-height: 1.02;
+.site-header.is-scrolled .brand-logo { height: 50px; width: 213px; }
+.brand-footer .brand-logo {
+  height: 84px; width: 358px;
 }
-.brand-text .brand-line1 { font-size: .68rem; text-transform: uppercase; letter-spacing: .18em; color: var(--green-700); font-weight: 600; }
-.brand-text .brand-line2 { font-family: var(--display); font-weight: 800; font-size: 1.15rem; color: var(--ink); letter-spacing: -.02em; }
-.brand-text .brand-line3 { font-size: .68rem; text-transform: uppercase; letter-spacing: .18em; color: var(--ink-mute); font-weight: 500; }
-.brand-text.light .brand-line1, .brand-text.light .brand-line2 { color: #fff; }
+@media (max-width: 900px) {
+  .brand-logo { height: 44px; width: 188px; }
+}
+/* Footer dark background: lighten the wordmark slightly while keeping flowers intact */
+.brand-logo-light {
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,.45));
+}
 
 .primary-nav { display: flex; justify-content: center; }
 .menu {
@@ -515,6 +517,44 @@ p  { margin: 0; }
 .google-mark { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
 .rating-big { display: flex; align-items: center; gap: 14px; }
 .rating-num { font-family: var(--display); font-weight: 800; font-size: 3rem; line-height: 1; }
+
+.review {
+  margin: 0;
+  padding: 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+}
+.review-quote {
+  color: var(--green-700);
+  opacity: .55;
+  margin-top: 2px;
+}
+.review blockquote {
+  margin: 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--ink);
+  letter-spacing: -.005em;
+}
+.review figcaption {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
 
 /* ---------- Maik Section ---------- */
 .section-maik { background: var(--bg-soft); }
