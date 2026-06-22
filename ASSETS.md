@@ -1,0 +1,35 @@
+# Generierte Bild- & Video-Assets
+
+Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem CloudFront-CDN.
+**Wichtig:** CDN-URLs können sich ändern – vor Live-Gang lokal sichern und in `assets/img/` / `assets/video/` legen.
+
+## Hero
+- **Bild (16:9, 2048×1152):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060301_09419ab7-e3c1-4af3-b7a2-fa17bbd9ca87.png`
+  → speichern als `assets/img/hero/hero.png`
+- **Video (16:9, 4s, 720p, MP4):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060910_79733f0c-ce85-436f-80ae-361b74394d07.mp4`
+  → speichern als `assets/video/hero.mp4`
+
+## Zielgruppenweiche
+- **Privatkunden (16:9):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061016_a7688c52-a5c8-4ee9-9465-df631ce0ef11.png`
+  → `assets/img/split-private.png`
+- **Gewerbekunden (16:9):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061114_302176ae-ad89-48ef-b1ee-dcd3db4db7fa.png`
+  → `assets/img/split-business.png`
+
+## Persönliche Maik-Sektion
+- **Beratungs-Detail (3:4, hochkant):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061146_543ad50e-dd56-484a-947d-b9dd581a3541.png`
+  → `assets/img/maik.png`
+
+## Projekte
+- **Vorgarten Herne (4:3):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061235_3c977f2c-9a0f-42f2-9b53-e578cf8f9484.png`
+  → `assets/img/projects/herne-vorgarten.png`
+- **Teich Bochum (4:3):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061214_8416af8e-1ecb-4039-815b-bb74908b7ac9.png`
+  → `assets/img/projects/bochum-teich.png`
+- **Gewerbe Recklinghausen (4:3):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061303_bcbbec22-3158-4220-a6f3-c4993071ca17.png`
+  → `assets/img/projects/recklinghausen.png`
+
+## Nach lokalem Sichern: Pfade in HTML/CSS ersetzen
+```bash
+# Beispiel: alle Cloudfront-URLs durch lokale Pfade ersetzen
+sed -i 's|https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060301_09419ab7[^"]*\.png|assets/img/hero/hero.png|g' index.html assets/css/styles.css
+# (für jedes Asset analog)
+```

@@ -78,29 +78,21 @@
     els.forEach(el => el.classList.add('is-in'));
   }
 
-  // --- Hero video: lazy load + reduced-motion fallback ---
+  // --- Hero video: reduced-motion fallback + fade-in when playing ---
   const heroVideo = document.getElementById('heroVideo');
   if (heroVideo) {
     if (reduced) {
       heroVideo.removeAttribute('autoplay');
-      heroVideo.style.display = 'none';
+      heroVideo.remove();
     } else {
-      const source = heroVideo.querySelector('source[data-src]');
-      // Only enable video when source file is actually present (avoid broken video)
-      if (source) {
-        const src = source.getAttribute('data-src');
-        fetch(src, { method: 'HEAD' }).then(r => {
-          if (r.ok) {
-            source.src = src;
-            heroVideo.load();
-            heroVideo.addEventListener('playing', () => {
-              heroVideo.style.opacity = '1';
-            }, { once: true });
-            const tryPlay = heroVideo.play();
-            if (tryPlay && tryPlay.catch) tryPlay.catch(() => { /* autoplay blocked */ });
-          }
-        }).catch(() => { /* leave poster image */ });
-      }
+      heroVideo.addEventListener('playing', () => {
+        heroVideo.style.opacity = '1';
+      }, { once: true });
+      // ensure play after metadata loads (Safari/iOS)
+      heroVideo.addEventListener('loadeddata', () => {
+        const p = heroVideo.play();
+        if (p && p.catch) p.catch(() => {});
+      }, { once: true });
     }
   }
 
