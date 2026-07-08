@@ -586,9 +586,18 @@ p  { margin: 0; }
   .proof-stats { margin-bottom: clamp(12px, 1.8vh, 22px); }
   .proof-rings svg { width: clamp(110px, 9vw, 128px); }
   .proof-feature { grid-template-columns: 1fr 1fr; gap: clamp(20px, 2vw, 34px); }
-  /* flex-basis 0: SVG fuellt nur den von der Bewertungs-Spalte vorgegebenen Raum,
-     ohne die Zeilenhoehe (100vh-Ziel) aufzublaehen; Caption rutscht ans Kartenende */
-  .proof-map svg { flex: 1 1 0; width: 100%; height: auto; min-height: 160px; max-height: none; }
+  /* Karte hoehengesteuert statt breitengesteuert: max-height in vh begrenzt die SVG-Hoehe,
+     die Breite schrumpft mit dem Seitenverhaeltnis. So bestimmt die kompakte Bewertungs-Karte
+     die Zeilenhoehe und die Sektion bleibt in einem Viewport. */
+  .proof-map { justify-content: center; align-items: center; min-height: 0; }
+  .proof-map svg {
+    flex: 0 1 auto;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: clamp(220px, 34vh, 320px);
+    margin: 0 auto;
+  }
   .proof-trust { padding: clamp(16px, 1.6vw, 24px); gap: clamp(10px, 1.4vh, 16px); }
   .proof-reviews { min-height: 88px; }
 }
