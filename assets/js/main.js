@@ -124,4 +124,70 @@
     });
   });
 
+  // --- Count-up stats (Social Proof) ---
+  // DOM always holds the final value, so no-JS / reduced-motion users see it directly.
+  const counters = document.querySelectorAll('[data-countup]');
+  if (counters.length && !reduced && 'IntersectionObserver' in window) {
+    const fmt = (val, dec) => (dec > 0 ? val.toFixed(dec) : String(Math.round(val))).replace('.', ',');
+    const run = (el) => {
+      const target = parseFloat(el.getAttribute('data-countup'));
+      const dec = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      if (isNaN(target)) return;
+      const dur = 1100, t0 = performance.now();
+      const tick = (now) => {
+        const p = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+        el.textContent = fmt(target * eased, dec);
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = fmt(target, dec);
+      };
+      requestAnimationFrame(tick);
+    };
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { run(entry.target); cio.unobserve(entry.target); }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((el) => cio.observe(el));
+  }
+
+  // --- Testimonial rotator (Social Proof) ---
+  // Activates only with 2+ real quotes; a single quote stays static.
+  document.querySelectorAll('[data-rotator]').forEach((rot) => {
+    const quotes = Array.from(rot.querySelectorAll('.proof-quote'));
+    if (quotes.length < 2) return;
+    let idx = quotes.findIndex((q) => q.classList.contains('is-active'));
+    if (idx < 0) { idx = 0; quotes[0].classList.add('is-active'); }
+
+    const dots = document.createElement('div');
+    dots.className = 'proof-dots';
+    quotes.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'proof-dot' + (i === idx ? ' is-active' : '');
+      b.setAttribute('aria-label', 'Bewertung ' + (i + 1) + ' von ' + quotes.length);
+      b.addEventListener('click', () => { show(i); restart(); });
+      dots.appendChild(b);
+    });
+    rot.appendChild(dots);
+
+    const show = (i) => {
+      quotes[idx].classList.remove('is-active');
+      dots.children[idx].classList.remove('is-active');
+      idx = (i + quotes.length) % quotes.length;
+      quotes[idx].classList.add('is-active');
+      dots.children[idx].classList.add('is-active');
+    };
+
+    let timer = null;
+    const start = () => { if (!reduced && !timer) timer = setInterval(() => show(idx + 1), 6000); };
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+    const restart = () => { stop(); start(); };
+    rot.addEventListener('mouseenter', stop);
+    rot.addEventListener('mouseleave', start);
+    rot.addEventListener('focusin', stop);
+    rot.addEventListener('focusout', start);
+    start();
+  });
+
 })();
