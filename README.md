@@ -10,6 +10,7 @@ python3 -m http.server 8080
 
 ## Struktur
 - `index.html` – komplette Startseite (12 Sektionen lt. Spec)
+- `privatkunden/index.html` – Privatkunden-Unterseite (Vorher-Nachher-Slider, Leistungen, Ablauf, FAQ, Anfrage-Formular; eigenes Service-/FAQ-/Breadcrumb-JSON-LD)
 - `assets/css/styles.css` – Design-System (Brand: #315200 oliv, #FFED00 gelb, #EB6C44 koralle)
 - `assets/js/main.js` – Scroll-Reveal, Header, FAQ, Anrufen-Popover
 - `assets/img/` – Bilder & Logo (Swap-Slot)

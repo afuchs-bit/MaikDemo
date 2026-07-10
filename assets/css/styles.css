@@ -1109,3 +1109,221 @@ p  { margin: 0; }
   .hero-content { padding-top: 20px; }
   .trust-item { flex: 1 1 45%; }
 }
+
+/* ============================================================
+   PRIVATKUNDEN-UNTERSEITE + VORHER/NACHHER-SLIDER
+   ============================================================ */
+
+/* ---------- Kompakter Seiten-Hero ---------- */
+.hero--page { padding-bottom: clamp(50px, 7vw, 90px); }
+.hero--page .hero-title {
+  font-size: clamp(2.2rem, 5.4vw, 4.6rem);
+}
+.hero--page .hero-content {
+  padding-bottom: 0;
+}
+
+.breadcrumbs ol {
+  list-style: none; padding: 0; margin: 0 0 20px;
+  display: flex; flex-wrap: wrap; gap: 8px;
+  font-size: .85rem; color: var(--ink-mute);
+}
+.breadcrumbs a { color: var(--ink-2); text-decoration: none; }
+.breadcrumbs a:hover { color: var(--green-700); text-decoration: underline; text-underline-offset: 3px; }
+.breadcrumbs li + li::before { content: "›"; margin-right: 8px; color: var(--ink-mute); }
+.breadcrumbs li[aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+.hero-trust-mini {
+  margin-top: 34px;
+  display: inline-flex; flex-wrap: wrap; align-items: center;
+  gap: 14px 18px;
+  padding: 12px 18px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow-card);
+  font-size: .88rem; color: var(--ink-2);
+}
+.hero-trust-mini .htm-item { display: inline-flex; align-items: center; gap: 8px; }
+.hero-trust-mini strong { color: var(--ink); font-family: var(--display); }
+.htm-sep { width: 1px; height: 18px; background: var(--line); }
+
+/* ---------- Vorher/Nachher ---------- */
+.section-beforeafter { background: var(--bg-soft); }
+.ba-grid {
+  display: grid; gap: 26px;
+  grid-template-columns: 1fr 1fr;
+}
+.ba { margin: 0; }
+.ba figcaption {
+  margin-top: 12px;
+  font-size: .88rem; color: var(--ink-mute);
+}
+.ba-frame {
+  --pos: 50%;
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  background: var(--bg-soft);
+  cursor: ew-resize;
+  touch-action: pan-y;       /* vertikales Scrollen bleibt möglich, horizontales Ziehen steuert den Slider */
+  user-select: none;
+  -webkit-user-select: none;
+}
+.ba-frame img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.ba-before {
+  position: absolute; inset: 0;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+/* Platzhalter-Effekt: „Vorher“ ist dasselbe Bild, entsättigt.
+   Beim Einbau echter Vorher-Fotos diesen Filter entfernen. */
+.ba-before img {
+  filter: grayscale(.92) brightness(.86) contrast(.92) sepia(.18);
+}
+.ba-label {
+  position: absolute; top: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  background: rgba(19,26,8,.62); color: #fff;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 2;
+}
+.ba-label-before { left: 14px; }
+.ba-label-after  { right: 14px; background: rgba(49,82,0,.78); }
+.ba-handle {
+  position: absolute; top: 0; bottom: 0;
+  left: var(--pos);
+  width: 0; z-index: 3;
+}
+.ba-handle::before {
+  content: "";
+  position: absolute; top: 0; bottom: 0; left: -1.5px;
+  width: 3px;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(0,0,0,.35);
+}
+.ba-grip {
+  position: absolute; top: 50%; left: 0;
+  transform: translate(-50%, -50%);
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: #fff; color: var(--green-700);
+  border: 2px solid var(--green-700);
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-float);
+  transition: transform .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
+}
+.ba-frame.is-dragging .ba-grip,
+.ba-frame:hover .ba-grip { background: var(--green-700); color: #fff; transform: translate(-50%, -50%) scale(1.06); }
+/* Range-Input: unsichtbar, aber fokussierbar (Tastatur/Screenreader) */
+.ba-range {
+  position: absolute;
+  inset: auto 14px 14px;
+  width: calc(100% - 28px);
+  margin: 0;
+  opacity: 0;
+  height: 32px;
+  cursor: ew-resize;
+  z-index: 4;
+}
+.ba-range:focus-visible {
+  opacity: 1;
+  accent-color: var(--green-700);
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.85);
+}
+.ba-note {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 1.02rem; color: var(--ink-2);
+}
+.ba-note a { color: var(--green-700); font-weight: 600; text-underline-offset: 4px; }
+
+/* ---------- Leistungen (Privat) ---------- */
+.section-services { background: var(--bg); }
+.services-grid {
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(4, 1fr);
+}
+.service-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+  display: flex; flex-direction: column; gap: 10px;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); border-color: var(--green-300); }
+.service-card h3 { font-size: 1.08rem; }
+.service-card p { color: var(--ink-2); font-size: .92rem; }
+
+/* ---------- Ablauf ---------- */
+.section-process { background: var(--bg-soft); }
+.process-grid {
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(4, 1fr);
+  counter-reset: step;
+}
+.step-card {
+  position: relative;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  box-shadow: var(--shadow-card);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.step-num {
+  font-family: var(--display); font-weight: 800;
+  font-size: 1.05rem; color: var(--green-700);
+  border: 1px solid var(--green-300); border-radius: 12px;
+  width: 52px; padding: 9px 0; text-align: center;
+  background: #fff;
+}
+.step-card h3 { font-size: 1.12rem; }
+.step-card p { color: var(--ink-2); font-size: .93rem; }
+.hero-ctas.center { justify-content: center; margin-top: 40px; }
+
+/* ---------- Social Proof (kompakt, ohne 100dvh der Startseite) ---------- */
+.section-proof-lite { background: var(--bg); }
+.proof-trust--narrow {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+/* ---------- Projektbild Palmen-Teich (lokales Foto) ---------- */
+.project-media[data-img="privat-palmen"] {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.0) 55%, rgba(0,0,0,.35)),
+    url("../img/ueber/ueber-1.jpg");
+}
+
+@media (max-width: 1100px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .ba-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .hero-trust-mini { border-radius: 18px; }
+  .htm-sep { display: none; }
+}

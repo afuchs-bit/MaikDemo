@@ -36,6 +36,13 @@ Früheres, nicht mehr genutztes KI-Bild:
 - **Gewerbe Recklinghausen (4:3):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061303_bcbbec22-3158-4220-a6f3-c4993071ca17.png`
   → `assets/img/projects/recklinghausen.png`
 
+## Privatkunden-Unterseite (`privatkunden/`)
+- **Hero-Hintergrund:** aktuell das Zielgruppenweiche-Privat-Bild (CDN, s. o.) – vor Live-Gang durch echtes Gartenfoto ersetzen (`assets/img/privat/hero.jpg`).
+- **Vorher-Nachher-Slider:** aktuell **Demo-Platzhalter** – beide Ebenen nutzen dasselbe Foto (`ueber-1.jpg` / `ueber-3.jpg`), die „Vorher“-Ebene wird per CSS-Filter entsättigt (`.ba-before img` in `styles.css`).
+  **Nachzuliefern:** echte Vorher/Nachher-Fotopaare (gleiche Perspektive!), ablegen als
+  `assets/img/privat/ba-1-vorher.jpg` + `ba-1-nachher.jpg` (usw.), dann in `privatkunden/index.html` die `<img>`-Quellen tauschen und den CSS-Platzhalter-Filter entfernen.
+- **Projektkarte „Teichgarten mit Palmen“:** nutzt lokal `assets/img/ueber/ueber-1.jpg`.
+
 ## Nach lokalem Sichern: Pfade in HTML/CSS ersetzen
 ```bash
 # Beispiel: alle Cloudfront-URLs durch lokale Pfade ersetzen

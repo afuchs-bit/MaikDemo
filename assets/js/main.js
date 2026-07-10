@@ -151,6 +151,45 @@
     counters.forEach((el) => cio.observe(el));
   }
 
+  // --- Vorher/Nachher-Slider (Privatkunden) ---
+  // Drag per Pointer-Events + synchronisiertes range-Input für Tastatur/Screenreader.
+  document.querySelectorAll('[data-beforeafter]').forEach((ba) => {
+    const frame = ba.querySelector('.ba-frame');
+    const range = ba.querySelector('.ba-range');
+    if (!frame || !range) return;
+
+    const set = (pct) => {
+      const v = Math.min(100, Math.max(0, pct));
+      frame.style.setProperty('--pos', v + '%');
+      const rounded = String(Math.round(v));
+      if (range.value !== rounded) range.value = rounded;
+    };
+    const fromPointer = (e) => {
+      const r = frame.getBoundingClientRect();
+      set(((e.clientX - r.left) / r.width) * 100);
+    };
+
+    let dragging = false;
+    frame.addEventListener('pointerdown', (e) => {
+      if (e.target === range) return; // range bedient sich selbst
+      dragging = true;
+      frame.classList.add('is-dragging');
+      frame.setPointerCapture(e.pointerId);
+      fromPointer(e);
+    });
+    frame.addEventListener('pointermove', (e) => {
+      if (dragging) fromPointer(e);
+    });
+    const stopDrag = () => {
+      dragging = false;
+      frame.classList.remove('is-dragging');
+    };
+    frame.addEventListener('pointerup', stopDrag);
+    frame.addEventListener('pointercancel', stopDrag);
+
+    range.addEventListener('input', () => set(parseFloat(range.value)));
+  });
+
   // --- Testimonial rotator (Social Proof) ---
   // Activates only with 2+ real quotes; a single quote stays static.
   document.querySelectorAll('[data-rotator]').forEach((rot) => {
