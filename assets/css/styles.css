@@ -619,6 +619,7 @@ p  { margin: 0; }
   position: absolute;
   width: 62%;
   margin: 0;
+  aspect-ratio: 4/3;
   border-radius: 26px;
   overflow: hidden;
   box-shadow: var(--shadow-float);
@@ -626,8 +627,7 @@ p  { margin: 0; }
   background: #fff;
 }
 .polaroid img {
-  display: block; width: 100%; height: auto; aspect-ratio: 4/3;
-  object-fit: cover;
+  display: block; width: 100%; height: 100%; object-fit: cover;
 }
 /* leicht versetzte Positionen + Rotation via CSS-Variable --rot */
 .polaroid--1 { top: 0;    left: 0;   --rot: -3deg; z-index: 1; }
