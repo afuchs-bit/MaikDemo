@@ -15,9 +15,18 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
 - **Gewerbekunden (16:9):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061114_302176ae-ad89-48ef-b1ee-dcd3db4db7fa.png`
   → `assets/img/split-business.png`
 
-## Persönliche Maik-Sektion
-- **Beratungs-Detail (3:4, hochkant):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061146_543ad50e-dd56-484a-947d-b9dd581a3541.png`
-  → `assets/img/maik.png`
+## Persönliche Maik-Sektion (#ueber)
+Statt des früheren KI-Porträts jetzt eine 3er-Foto-Collage (randlose Karten mit
+großem Eckenradius) aus echten Fotos des Betriebs (aus Datenschutzgründen bewusst
+gewählt). Lokal gespeichert unter `assets/img/ueber/` (aus HEIC via `sips` nach
+JPG konvertiert, Langseite 1400px):
+- `ueber-1.jpg` – angelegte Gartenteichanlage mit Palmen (Querformat)
+- `ueber-2.jpg` – Minibagger + Bohrhammer bei Abbrucharbeiten (Querformat)
+- `ueber-3.jpg` – Findling wird mit Bagger versetzt (Querformat, gedreht)
+
+Früheres, nicht mehr genutztes KI-Bild:
+- **Beratungs-Detail (3:4, hochkant):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061146_543ad50e-dd56-484a-947d-b8dd581a3541.png`
+  → früher `assets/img/maik.png`
 
 ## Projekte
 - **Vorgarten Herne (4:3):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061235_3c977f2c-9a0f-42f2-9b53-e578cf8f9484.png`

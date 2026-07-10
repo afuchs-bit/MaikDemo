@@ -609,18 +609,43 @@ p  { margin: 0; }
   grid-template-columns: 5fr 6fr;
   align-items: center;
 }
-.maik-image .image-frame {
+/* Polaroid-Collage (ersetzt das frühere Einzelbild) */
+.maik-collage {
   position: relative;
   aspect-ratio: 4/5;
-  border-radius: 30px;
+  max-width: 100%;
+}
+.polaroid {
+  position: absolute;
+  width: 62%;
+  margin: 0;
+  border-radius: 26px;
   overflow: hidden;
   box-shadow: var(--shadow-float);
-  transform: rotate(-1.5deg);
   border: 1px solid var(--line);
   background: #fff;
 }
-.maik-photo {
-  width: 100%; height: 100%; object-fit: cover;
+.polaroid img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4/3;
+  object-fit: cover;
+}
+/* leicht versetzte Positionen + Rotation via CSS-Variable --rot */
+.polaroid--1 { top: 0;    left: 0;   --rot: -3deg; z-index: 1; }
+.polaroid--2 { top: 22%;  right: 0;  --rot:  2deg; z-index: 3; }
+.polaroid--3 { bottom: 0; left: 8%; width: 62%; --rot: -2deg; z-index: 2; }
+
+/* Einmaliger, gestaffelter Einflug – getriggert vom bestehenden .reveal-Observer.
+   Container-Standardreveal neutralisieren, Kinder reagieren auf .is-in. */
+.maik-collage.reveal { opacity: 1; transform: none; transition: none; }
+.polaroid {
+  opacity: 0;
+  transform: translateY(20px) rotate(var(--rot));
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  transition-delay: calc(var(--i) * 130ms);
+}
+.maik-collage.is-in .polaroid {
+  opacity: 1;
+  transform: translateY(0) rotate(var(--rot));
 }
 .image-placeholder {
   width: 100%; height: 100%;
@@ -1016,6 +1041,8 @@ p  { margin: 0; }
     transition-duration: .01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+  /* Collage sofort sichtbar, Tilt bleibt, keine Bewegung */
+  .maik-collage .polaroid { opacity: 1; transform: rotate(var(--rot)); }
 }
 
 /* ============================================================
@@ -1061,6 +1088,15 @@ p  { margin: 0; }
   .mobile-actions { display: flex; }
   body { padding-bottom: 88px; }
   .footer-bottom { justify-content: flex-start; }
+}
+
+@media (max-width: 640px) {
+  /* Collage: Überlappung auflösen, sauber stapeln, im Viewport halten */
+  .maik-collage { aspect-ratio: auto; display: grid; gap: 18px; justify-items: center; }
+  .polaroid { position: static; width: min(78%, 300px); }
+  .polaroid--1 { --rot: -2deg; }
+  .polaroid--2 { --rot: 1.5deg; }
+  .polaroid--3 { --rot: -1.5deg; }
 }
 
 @media (max-width: 560px) {
