@@ -1271,32 +1271,171 @@ p  { margin: 0; }
 .service-card h3 { font-size: 1.08rem; }
 .service-card p { color: var(--ink-2); font-size: .92rem; }
 
-/* ---------- Ablauf ---------- */
+/* ---------- Ablauf: Zeitstrahl „Der Weg zu Ihrem Garten" ----------
+   Basis (mobile-first): vertikaler Zeitstrahl – funktioniert ohne JS,
+   ist zugleich der Reduced-Motion-/No-JS-Fallback.
+   Enhancement (>=1024px, .is-scrollytelling per JS): horizontaler
+   Pin-Journey mit Scroll-Fortschritt. Siehe main.js. */
 .section-process { background: var(--bg-soft); }
-.process-grid {
-  display: grid; gap: 18px;
-  grid-template-columns: repeat(4, 1fr);
-  counter-reset: step;
+
+.process-scroller { position: relative; }
+.process-stage {
+  position: relative;
+  width: min(100% - calc(var(--gutter) * 2), 780px);
+  margin-inline: auto;
+}
+/* Weglinie – vertikal in der Basis */
+.process-path {
+  position: absolute;
+  left: 26px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: linear-gradient(var(--green-700), var(--green-300));
+  border-radius: 2px;
+}
+/* Leaf-Marker nur im Horizontal-Modus sichtbar */
+.process-marker { display: none; }
+
+.process-track {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.step {
+  position: relative;
+  padding-left: 78px;
+}
+/* Geister-Ziffer nur im Horizontal-Modus */
+.step-figure { display: none; }
+
+.step-node {
+  position: absolute; left: 0; top: 2px;
+  width: 54px; height: 54px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-weight: 800; font-size: 1.18rem;
+  color: var(--green-700);
+  background: #fff; border: 1px solid var(--green-300);
+  border-radius: 50%;
+  box-shadow: var(--shadow-card);
+  z-index: 1;
 }
 .step-card {
-  position: relative;
   background: var(--bg-elev);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 26px 24px;
+  padding: 20px 22px;
   box-shadow: var(--shadow-card);
-  display: flex; flex-direction: column; gap: 10px;
 }
-.step-num {
-  font-family: var(--display); font-weight: 800;
-  font-size: 1.05rem; color: var(--green-700);
-  border: 1px solid var(--green-300); border-radius: 12px;
-  width: 52px; padding: 9px 0; text-align: center;
-  background: #fff;
-}
-.step-card h3 { font-size: 1.12rem; }
+.step-card h3 { font-size: 1.12rem; margin-bottom: 6px; }
 .step-card p { color: var(--ink-2); font-size: .93rem; }
 .hero-ctas.center { justify-content: center; margin-top: 40px; }
+
+/* ---- Enhancement: horizontaler Pin-Journey (Desktop) ---- */
+@media (min-width: 1024px) {
+  .section-process.is-scrollytelling .process-scroller {
+    /* height wird von JS gesetzt (= maxShift + Viewport) */
+  }
+  .section-process.is-scrollytelling .process-stage {
+    position: sticky; top: 0;
+    width: 100%; margin: 0;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex; align-items: center;
+    z-index: 5;
+    background:
+      radial-gradient(1000px 620px at 14% 12%, rgba(255,237,0,.10), transparent 60%),
+      radial-gradient(1000px 720px at 86% 92%, rgba(235,108,68,.10), transparent 60%);
+  }
+
+  /* Weglinie – horizontal durch die Mitte, an den Enden ausgeblendet */
+  .section-process.is-scrollytelling .process-path {
+    left: 0; right: 0; top: 50%; bottom: auto;
+    width: auto; height: 3px;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg, transparent, var(--green-700) 12%, var(--green-500) 50%, var(--green-300) 88%, transparent);
+    -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    z-index: 0;
+  }
+
+  /* Leaf-Marker – fixiert in der Bühnenmitte, wandert NICHT mit */
+  .section-process.is-scrollytelling .process-marker {
+    display: flex; align-items: center; justify-content: center;
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    filter: drop-shadow(0 5px 10px rgba(19,26,8,.18));
+  }
+
+  .section-process.is-scrollytelling .process-track {
+    flex-direction: row; flex-wrap: nowrap;
+    width: max-content;
+    gap: clamp(60px, 8vw, 150px);
+    padding-inline: calc(50vw - 190px);   /* erste/letzte Station mittig unter den Marker */
+    transform: translateX(calc(var(--progress, 0) * -1 * var(--max-shift, 0px)));
+    will-change: transform;
+    z-index: 2;
+  }
+
+  .section-process.is-scrollytelling .step {
+    flex: 0 0 auto;
+    width: 380px;
+    height: 60vh;
+    padding: 0;
+  }
+
+  /* Geister-Ziffer als Editorial-Layer mit leichtem Parallax */
+  .section-process.is-scrollytelling .step-figure {
+    display: block; position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%) translateX(calc(var(--progress, 0) * -46px));
+    font-family: var(--display); font-weight: 800; line-height: 1;
+    font-size: clamp(7rem, 13vw, 13rem);
+    color: var(--green-700); opacity: .06;
+    white-space: nowrap; pointer-events: none; z-index: 0;
+  }
+
+  /* nummerierter Knoten sitzt auf der Linie (Stationsmarke) */
+  .section-process.is-scrollytelling .step-node {
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 58px; height: 58px;
+    z-index: 3;
+    transition: transform .35s var(--ease), background .35s var(--ease),
+                color .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+  }
+
+  /* Karte alterniert ober-/unterhalb der Linie */
+  .section-process.is-scrollytelling .step-card {
+    position: absolute; left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    z-index: 2;
+    transition: opacity .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+  }
+  .section-process.is-scrollytelling .step:nth-child(odd)  .step-card { bottom: calc(50% + 56px); }
+  .section-process.is-scrollytelling .step:nth-child(even) .step-card { top: calc(50% + 56px); }
+  /* Verbindungssteg Knoten <-> Karte */
+  .section-process.is-scrollytelling .step-card::after {
+    content: ""; position: absolute; left: 50%;
+    transform: translateX(-50%);
+    width: 2px; height: 32px; background: var(--green-300);
+  }
+  .section-process.is-scrollytelling .step:nth-child(odd)  .step-card::after { bottom: -32px; }
+  .section-process.is-scrollytelling .step:nth-child(even) .step-card::after { top: -32px; }
+
+  /* Scroll-Fokus: aktive Station hebt sich hervor, andere ruhen */
+  .section-process.is-scrollytelling .step .step-card { opacity: .48; }
+  .section-process.is-scrollytelling .step.is-active .step-card {
+    opacity: 1;
+    box-shadow: var(--shadow-float);
+    border-color: var(--green-300);
+  }
+  .section-process.is-scrollytelling .step.is-active .step-figure { opacity: .12; }
+  .section-process.is-scrollytelling .step.is-active .step-node {
+    background: var(--green-700); color: #fff; border-color: var(--green-700);
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 0 0 0 6px rgba(235,108,68,.20), var(--shadow-float);
+  }
+}
 
 /* ---------- Social Proof (kompakt, ohne 100dvh der Startseite) ---------- */
 .section-proof-lite { background: var(--bg); }
@@ -1314,7 +1453,6 @@ p  { margin: 0; }
 
 @media (max-width: 1100px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .process-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 900px) {
@@ -1323,7 +1461,6 @@ p  { margin: 0; }
 
 @media (max-width: 640px) {
   .services-grid { grid-template-columns: 1fr; }
-  .process-grid { grid-template-columns: 1fr; }
   .hero-trust-mini { border-radius: 18px; }
   .htm-sep { display: none; }
 }

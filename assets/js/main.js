@@ -229,4 +229,76 @@
     start();
   });
 
+  // --- Ablauf: horizontaler Scroll-Zeitstrahl (Pin + Fortschritt) ---
+  // Progressive Enhancement: nur Desktop (>=1024px) und ohne prefers-reduced-motion.
+  // Sonst bleibt der vertikale CSS-Zeitstrahl (Basis) aktiv – kein Scroll-Listener.
+  (function () {
+    const scroller = document.querySelector('[data-process-scroller]');
+    if (!scroller) return;
+    const section = scroller.closest('.section-process');
+    const stage = scroller.querySelector('.process-stage');
+    const track = scroller.querySelector('[data-process-track]');
+    if (!section || !stage || !track) return;
+
+    const steps = Array.from(track.querySelectorAll('.step'));
+    const mq = window.matchMedia('(min-width: 1024px)');
+
+    let active = false, ticking = false, maxShift = 0, lastIndex = -1;
+
+    const measure = () => {
+      maxShift = Math.max(0, track.scrollWidth - stage.clientWidth);
+      section.style.setProperty('--max-shift', maxShift + 'px');
+      scroller.style.height = (maxShift + window.innerHeight) + 'px';
+    };
+
+    const update = () => {
+      ticking = false;
+      const top = scroller.getBoundingClientRect().top;
+      const progress = maxShift > 0 ? Math.min(1, Math.max(0, -top / maxShift)) : 0;
+      section.style.setProperty('--progress', progress.toFixed(4));
+      const idx = Math.round(progress * (steps.length - 1));
+      if (idx !== lastIndex) {
+        steps.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+        lastIndex = idx;
+      }
+    };
+
+    const onScroll = () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    };
+
+    const enable = () => {
+      if (active) return;
+      active = true;
+      section.classList.add('is-scrollytelling');
+      requestAnimationFrame(() => { measure(); update(); });
+      document.addEventListener('scroll', onScroll, { passive: true });
+    };
+
+    const disable = () => {
+      if (!active) return;
+      active = false;
+      document.removeEventListener('scroll', onScroll);
+      section.classList.remove('is-scrollytelling');
+      scroller.style.height = '';
+      section.style.removeProperty('--progress');
+      section.style.removeProperty('--max-shift');
+      steps.forEach((s) => s.classList.remove('is-active'));
+      lastIndex = -1;
+    };
+
+    const apply = () => { (mq.matches && !reduced) ? enable() : disable(); };
+
+    let rt = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(rt);
+      rt = setTimeout(() => { active ? (measure(), update()) : apply(); }, 150);
+    }, { passive: true });
+
+    if (mq.addEventListener) mq.addEventListener('change', apply);
+    else if (mq.addListener) mq.addListener(apply);
+
+    apply();
+  })();
+
 })();
