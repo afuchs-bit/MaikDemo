@@ -124,6 +124,14 @@
     });
   });
 
+  // --- Sonderthemen-CTA: Bereich im Kontaktformular vorbefüllen ---
+  document.querySelectorAll('[data-prefill-bereich]').forEach((a) => {
+    a.addEventListener('click', () => {
+      const sel = document.querySelector('#contactForm select[name="bereich"]');
+      if (sel) sel.value = a.getAttribute('data-prefill-bereich');
+    });
+  });
+
   // --- Count-up stats (Social Proof) ---
   // DOM always holds the final value, so no-JS / reduced-motion users see it directly.
   const counters = document.querySelectorAll('[data-countup]');
