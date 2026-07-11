@@ -1336,6 +1336,7 @@ p  { margin: 0; }
   .section-process.is-scrollytelling .process-stage {
     position: sticky; top: 0;
     width: 100%; margin: 0;
+    height: 100vh;       /* Fallback für Safari < 15.4 ohne dvh */
     height: 100dvh;
     overflow: hidden;
     display: flex; align-items: center;
