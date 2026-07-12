@@ -609,7 +609,7 @@ p  { margin: 0; }
 .section-maik { background: var(--bg-soft); }
 .maik-grid {
   display: grid; gap: clamp(30px, 5vw, 70px);
-  grid-template-columns: 6fr 5fr;
+  grid-template-columns: 7fr 5fr;
   align-items: center;
 }
 /* Polaroid-Collage (ersetzt das frühere Einzelbild) */
@@ -620,7 +620,7 @@ p  { margin: 0; }
 }
 .polaroid {
   position: absolute;
-  width: 72%;
+  width: 78%;
   margin: 0;
   aspect-ratio: 4/3;
   border-radius: 26px;
@@ -635,7 +635,7 @@ p  { margin: 0; }
 /* leicht versetzte Positionen + Rotation via CSS-Variable --rot */
 .polaroid--1 { top: 0;    left: 0;   --rot: -3deg; z-index: 1; }
 .polaroid--2 { top: 20%;  right: 0;  --rot:  2deg; z-index: 3; }
-.polaroid--3 { bottom: 0; left: 6%; width: 72%; --rot: -2deg; z-index: 2; }
+.polaroid--3 { bottom: 0; left: 4%; width: 78%; --rot: -2deg; z-index: 2; }
 
 /* Einmaliger, gestaffelter Einflug – getriggert vom bestehenden .reveal-Observer.
    Container-Standardreveal neutralisieren, Kinder reagieren auf .is-in. */
