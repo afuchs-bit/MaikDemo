@@ -373,6 +373,7 @@ p  { margin: 0; }
 .hero-teasers li { list-style: none; }
 .teaser {
   display: flex; gap: 12px; align-items: center;
+  height: 100%;
   background: var(--bg-elev);
   border: 1px solid var(--line);
   padding: 14px 16px;
