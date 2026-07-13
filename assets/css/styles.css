@@ -402,8 +402,10 @@ p  { margin: 0; }
 .trust-bar {
   position: relative;
   z-index: 2;
-  display: flex; flex-wrap: wrap; align-items: center;
-  gap: 22px 28px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: start;
+  column-gap: 0;
   padding: 22px 28px;
   margin: 60px auto 90px;
   background: var(--bg-elev);
@@ -413,9 +415,13 @@ p  { margin: 0; }
   width: min(100% - calc(var(--gutter) * 2), var(--container));
 }
 .trust-item {
+  position: relative;
   display: flex; flex-direction: column; gap: 2px;
-  flex: 1 1 130px;
-  min-width: 130px;
+}
+.trust-item:not(:first-child) { padding-left: 28px; }
+.trust-item:not(:first-child)::before {
+  content: ""; position: absolute; left: 14px; top: 2px;
+  width: 1px; height: 52px; background: var(--line);
 }
 .trust-icon {
   width: 30px; height: 30px;
@@ -453,6 +459,19 @@ p  { margin: 0; }
 }
 .rating-value { font-family: var(--display); font-weight: 700; font-size: .95rem; margin-left: 6px; }
 .rating-source { font-size: .72rem; color: var(--ink-mute); display: block; }
+
+/* Google-Zelle: Logo+4,8 / Sterne / Bewertungen+61 */
+.trust-item--google .g-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.trust-item--google .trust-icon--google { height: 20px; width: auto; margin: 0; }
+.g-rating {
+  font-family: var(--display); font-weight: 700; font-size: 1.6rem;
+  line-height: 1; color: var(--ink); letter-spacing: -.01em;
+}
+.trust-item--google .stars { margin: 6px 0; }
+.g-src { font-size: .72rem; color: var(--ink-mute); }
+.g-count { font-size: .72rem; font-weight: 700; color: var(--ink-mute); }
 
 /* ============================================================
    SECTIONS
@@ -1096,8 +1115,9 @@ p  { margin: 0; }
   }
   .proof-feature { grid-template-columns: 1fr; }
   .wood-grid { grid-template-columns: 1fr; }
-  .trust-bar { gap: 14px 18px; padding: 18px; margin: 40px auto 60px; }
-  .trust-divider { display: none; }
+  .trust-bar { grid-template-columns: repeat(3, 1fr); padding: 18px; margin: 40px auto 60px; row-gap: 22px; }
+  .trust-item:not(:first-child)::before { display: none; }
+  .trust-item:not(:first-child) { padding-left: 0; }
   .mobile-actions { display: flex; }
   body { padding-bottom: 88px; }
   .footer-bottom { justify-content: flex-start; }
@@ -1120,7 +1140,7 @@ p  { margin: 0; }
   .contact-form { padding: 22px; }
   .menu { display: none; }
   .hero-content { padding-top: 20px; }
-  .trust-item { flex: 1 1 45%; }
+  .trust-bar { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ============================================================
