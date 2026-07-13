@@ -417,6 +417,15 @@ p  { margin: 0; }
   flex: 1 1 130px;
   min-width: 130px;
 }
+.trust-icon {
+  width: 30px; height: 30px;
+  color: var(--ink);          /* füllt currentColor der Outline-Icons */
+  margin-bottom: 6px;
+  display: block;
+}
+.trust-icon--google {         /* Wortmarke ist breiter als hoch */
+  width: auto; height: 22px;
+}
 .trust-num {
   font-family: var(--display);
   font-weight: 700; font-size: 1.05rem;
