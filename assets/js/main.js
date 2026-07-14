@@ -331,4 +331,76 @@
     });
   })();
 
+  // --- Fachliche Autorität: Bestandsplan in 4 Stufen aufbauen + Hover-Stepping ---
+  // Progressive Enhancement: ohne JS/bei reduzierter Bewegung ist der Plan komplett sichtbar.
+  (function () {
+    const plan   = document.getElementById('bpPlan');
+    const visual = document.getElementById('authVisual');
+    const steps  = document.getElementById('authSteps');
+    const cap    = document.getElementById('bpCap');
+    if (!plan || !visual || !steps) return;
+
+    const items = Array.from(steps.querySelectorAll('.ap'));
+    const CAPS = {
+      1: 'Aufnahme vor Ort – nur das Grundstück.',
+      2: 'Bestand: Haus, Bäume, Boden, Hanglage.',
+      3: 'Baumkontrolle durch den Sachverständigen.',
+      4: 'Erst jetzt wird gestaltet.'
+    };
+
+    const render = (stage) => {
+      plan.classList.remove('s1', 's2', 's3', 's4');
+      for (let n = 1; n <= stage; n++) plan.classList.add('s' + n);
+      visual.classList.toggle('plan-on4', stage >= 4);
+      items.forEach((li) => {
+        const s = +li.dataset.s;
+        li.classList.toggle('is-on', s <= stage);
+        li.classList.toggle('is-cur', s === stage);
+      });
+      if (cap) cap.textContent = CAPS[stage] || '';
+    };
+
+    // Reduzierte Bewegung: sofort Endzustand, keine Sequenz.
+    if (reduced) { render(4); return; }
+
+    // Sequenz-Modus aktivieren (blendet Layer/Fakt-Karte zunächst aus).
+    plan.classList.add('is-seq');
+    visual.classList.add('is-seq');
+    steps.classList.add('is-seq');
+
+    // Kontur für den Zeichen-Effekt vorbereiten (wie bei der Einzugsgebiet-Karte).
+    const edge = document.getElementById('bpEdge');
+    if (edge && edge.getTotalLength) {
+      const L = edge.getTotalLength();
+      edge.style.strokeDasharray = L;
+      edge.style.strokeDashoffset = L;
+    }
+
+    let locked = false; // true = Sequenz gelaufen, Hover übernimmt
+    const play = () => {
+      [1, 2, 3, 4].forEach((s, i) => setTimeout(() => render(s), 300 + i * 1250));
+      setTimeout(() => { locked = true; }, 300 + 3 * 1250 + 900);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { play(); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.4 });
+      io.observe(plan);
+    } else {
+      render(4); locked = true;
+    }
+
+    // Nach der Sequenz: Schritte per Hover/Fokus durchsteppen.
+    items.forEach((li) => {
+      const go = () => { if (locked) render(+li.dataset.s); };
+      li.addEventListener('mouseenter', go);
+      li.addEventListener('focusin', go);
+      li.tabIndex = 0;
+    });
+    steps.addEventListener('mouseleave', () => { if (locked) render(4); });
+  })();
+
 })();

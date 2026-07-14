@@ -828,47 +828,102 @@ p  { margin: 0; }
   grid-template-columns: 1.2fr 1fr;
   align-items: center;
 }
-.authority-points { display: grid; gap: 18px; margin: 30px 0; }
-.ap { display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: start; }
+.authority-points { display: grid; gap: 10px; margin: 30px 0; }
+.ap {
+  display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: start;
+  padding: 10px 12px 10px 0; border-radius: 14px;
+  transition: opacity .25s var(--ease), background .25s var(--ease);
+}
 .ap-num {
   font-family: var(--display); font-weight: 800;
   font-size: 1.05rem; color: var(--green-700);
   border: 1px solid var(--green-300); border-radius: 12px;
   padding: 10px 0; text-align: center;
   background: #fff;
+  transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
 }
 .ap h4 { margin: 0 0 4px; }
 .ap p  { color: var(--ink-2); font-size: .95rem; }
 
-.authority-visual {
-  position: relative;
-  aspect-ratio: 1/1;
-  display: flex; align-items: center; justify-content: center;
-}
-.auth-leaf {
-  width: 78%; height: 78%;
-  filter: drop-shadow(0 40px 60px rgba(49,82,0,.35));
-  animation: floatY 7s ease-in-out infinite;
-  transform-origin: center;
-}
-@keyframes floatY {
-  0%,100% { transform: translateY(0) rotate(0deg); }
-  50%     { transform: translateY(-14px) rotate(2deg); }
-}
-.floating-badge {
-  position: absolute; right: 0; top: 16%;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 20px;
+/* Schritt-States – nur aktiv, sobald die JS-Sequenz läuft (Progressive Enhancement) */
+.authority-points.is-seq .ap { opacity: .45; cursor: default; }
+.authority-points.is-seq .ap.is-on { opacity: 1; }
+.authority-points.is-seq .ap.is-on .ap-num { border-color: var(--green-700); color: var(--green-700); box-shadow: 0 6px 16px -8px rgba(49,82,0,.5); }
+.authority-points.is-seq .ap.is-cur { background: var(--green-50); }
+.authority-points.is-seq .ap.is-cur .ap-num { background: var(--green-700); color: #fff; border-color: var(--green-700); }
+
+/* ---------- Authority: Bestandsplan-Visual ---------- */
+.authority-visual { position: relative; }
+.bp-plan { width: 100%; height: auto; display: block; overflow: visible; }
+
+.bp-lyr { opacity: 1; transition: opacity .5s var(--ease); }
+/* Stufenweises Aufblenden – erst wenn die Sequenz gestartet ist */
+.bp-plan.is-seq .bp-lyr { opacity: 0; }
+.bp-plan.is-seq.s1 .bp-l1,
+.bp-plan.is-seq.s2 .bp-l1,
+.bp-plan.is-seq.s3 .bp-l1,
+.bp-plan.is-seq.s4 .bp-l1 { opacity: 1; }
+.bp-plan.is-seq.s2 .bp-l2,
+.bp-plan.is-seq.s3 .bp-l2,
+.bp-plan.is-seq.s4 .bp-l2 { opacity: 1; }
+.bp-plan.is-seq.s3 .bp-l3,
+.bp-plan.is-seq.s4 .bp-l3 { opacity: 1; }
+.bp-plan.is-seq.s4 .bp-l4 { opacity: 1; }
+
+/* Linien & Flächen – auf die Brand-Tokens gemappt */
+.bp-edge  { fill: none; stroke: var(--green-800); stroke-width: 2.2; stroke-linejoin: round; }
+.bp-grid  { stroke: var(--green-300); stroke-width: .6; opacity: .45; }
+.bp-thin  { fill: none; stroke: var(--green-500); stroke-width: 1.1; }
+.bp-dim   { fill: none; stroke: var(--green-300); stroke-width: 1; }
+.bp-accent{ stroke: var(--coral); }
+.bp-cap   { font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; fill: var(--ink-mute); }
+.bp-cap-design { fill: var(--green-700); }
+.bp-note  { font-size: 11.5px; font-weight: 600; fill: var(--ink-2); }
+.bp-flag  { font-size: 11.5px; font-weight: 700; fill: var(--coral); }
+.bp-house { fill: var(--green-50); stroke: var(--green-700); stroke-width: 1.6; }
+.bp-tree  { fill: var(--green-100); stroke: var(--green-500); stroke-width: 1.4; }
+.bp-hatch { fill: url(#bpHatch); stroke: none; }
+.bp-design{ fill: var(--green-100); stroke: var(--green-500); stroke-width: 1.2; opacity: .9; }
+.bp-water { fill: #cfe0e4; stroke: #8fb3ba; stroke-width: 1.2; }
+.bp-path  { fill: var(--bg-soft); stroke: var(--line); stroke-width: 1.2; }
+.bp-check { fill: none; stroke: var(--coral); stroke-width: 2; }
+
+/* Kontur zeichnen (Stufe 1) – stroke-dasharray wird per JS gesetzt */
+.bp-plan.is-seq.s1 .bp-edge,
+.bp-plan.is-seq.s2 .bp-edge,
+.bp-plan.is-seq.s3 .bp-edge,
+.bp-plan.is-seq.s4 .bp-edge { animation: bpDraw 1100ms cubic-bezier(.33,.9,.28,1) forwards; }
+@keyframes bpDraw { to { stroke-dashoffset: 0; } }
+
+/* Puls am geprüften Baum (Stufe 3) */
+.bp-pulse { fill: none; stroke: var(--coral); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.bp-plan.is-seq.s3 .bp-pulse,
+.bp-plan.is-seq.s4 .bp-pulse { animation: bpPulse 1600ms cubic-bezier(.2,.7,.3,1) 200ms 1 forwards; }
+@keyframes bpPulse { 0% { opacity: .6; transform: scale(.6); } 100% { opacity: 0; transform: scale(2.6); } }
+
+/* Fakt-Karte – blendet erst nach Stufe 4 ein */
+.bp-fact {
+  position: absolute; top: 3%; right: -2%;
+  background: #fff; border: 1px solid var(--line); border-radius: 20px;
   box-shadow: var(--shadow-float);
-  padding: 18px 22px;
-  display: flex; flex-direction: column; gap: 4px;
-  transform: rotate(2deg);
+  padding: 16px 22px; display: flex; flex-direction: column; gap: 4px;
+  transform: rotate(2deg); transform-origin: center;
   z-index: 2;
 }
+.authority-visual.is-seq .bp-fact { opacity: 0; transform: translateY(12px) rotate(2deg); transition: opacity .55s var(--ease), transform .55s var(--ease); }
+.authority-visual.is-seq.plan-on4 .bp-fact { opacity: 1; transform: translateY(0) rotate(2deg); }
 .fb-eyebrow { font-size: .7rem; text-transform: uppercase; letter-spacing: .16em; color: var(--ink-mute); font-weight: 600; }
 .fb-big { font-family: var(--display); font-weight: 800; font-size: 1.8rem; color: var(--green-700); letter-spacing: -.02em; }
 .fb-sub { font-size: .78rem; color: var(--ink-2); }
+
+.bp-stagecap { margin: 14px 0 0; text-align: center; font-size: .8rem; color: var(--ink-mute); min-height: 20px; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* Endzustand ohne Bewegung – auch falls JS ausfällt */
+  .bp-lyr { opacity: 1 !important; }
+  .bp-fact { opacity: 1 !important; transform: rotate(2deg) !important; }
+  .authority-points.is-seq .ap { opacity: 1; }
+}
 
 /* ---------- Projects ---------- */
 .section-projects { background: var(--bg-soft); }
@@ -1162,6 +1217,14 @@ p  { margin: 0; }
   }
   .proof-feature { grid-template-columns: 1fr; }
   .wood-grid { grid-template-columns: 1fr; }
+  /* Bestandsplan: Fakt-Karte auf Mobile in den Fluss statt absolut */
+  .bp-fact {
+    position: static; right: auto; top: auto;
+    transform: none; margin: 0 auto 16px; width: max-content; max-width: 100%;
+  }
+  .authority-visual.is-seq .bp-fact,
+  .authority-visual.is-seq.plan-on4 .bp-fact { transform: none; }
+  .authority-visual.is-seq.plan-on4 .bp-fact { opacity: 1; }
   .trust-bar { grid-template-columns: repeat(3, 1fr); padding: 18px; margin: 40px auto 60px; row-gap: 22px; }
   .trust-item:not(:first-child)::before { display: none; }
   .trust-item:not(:first-child) { padding-left: 0; }
