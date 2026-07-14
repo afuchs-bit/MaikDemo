@@ -687,7 +687,7 @@ p  { margin: 0; }
 /* Polaroid-Collage (ersetzt das frühere Einzelbild) */
 .maik-collage {
   position: relative;
-  aspect-ratio: 4/5;
+  aspect-ratio: 4/6;
   max-width: 100%;
 }
 .polaroid {
@@ -700,14 +700,18 @@ p  { margin: 0; }
   box-shadow: var(--shadow-float);
   border: 1px solid var(--line);
   background: #fff;
+  z-index: var(--z);
 }
 .polaroid img {
   display: block; width: 100%; height: 100%; object-fit: cover;
 }
-/* leicht versetzte Positionen + Rotation via CSS-Variable --rot */
-.polaroid--1 { top: 0;    left: 0;   --rot: -3deg; z-index: 1; }
-.polaroid--2 { top: 20%;  right: 0;  --rot:  2deg; z-index: 3; }
-.polaroid--3 { bottom: 0; left: 4%; width: 78%; --rot: -2deg; z-index: 2; }
+/* Versetzte Positionen + Rotation via --rot. Zickzack links–rechts–links,
+   Karten an gegenüberliegenden Kanten für maximalen horizontalen Versatz.
+   --z steuert das Stapeln unabhängig von DOM-Reihenfolge/Bildtausch.
+   Default: mittlere Karte (--2) vorne. */
+.polaroid--1 { top: 0;    left: 0;  --rot: -3deg; --z: 1; }  /* hinten */
+.polaroid--2 { top: 30%;  right: 0; --rot:  2deg; --z: 3; }  /* vorne  */
+.polaroid--3 { bottom: 0; left: 0;  --rot: -2deg; --z: 2; }  /* mitte  */
 
 /* Einmaliger, gestaffelter Einflug – getriggert vom bestehenden .reveal-Observer.
    Container-Standardreveal neutralisieren, Kinder reagieren auf .is-in. */
