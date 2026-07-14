@@ -309,4 +309,26 @@
     apply();
   })();
 
+  // --- Einzugsgebiet-Karte: Outline zeichnen + Marker staggern ---
+  // Setzt stroke-dasharray/-offset vor dem Reveal; die Animationen selbst
+  // laufen per CSS, sobald der .reveal-Observer .is-in an .proof-map setzt.
+  (function () {
+    const map = document.querySelector('.proof-map .map');
+    if (!map || reduced) return;
+    const outline = map.querySelector('.m-outline');
+    if (outline) {
+      const L = outline.getTotalLength();
+      outline.style.strokeDasharray = L;
+      outline.style.strokeDashoffset = L;
+    }
+    map.querySelectorAll('.m-node').forEach((n) => {
+      const i = parseFloat(n.style.getPropertyValue('--i')) || 0;
+      n.style.animationDelay = (1050 + i * 70) + 'ms';
+    });
+    map.querySelectorAll('.m-label').forEach((n) => {
+      const i = parseFloat(n.style.getPropertyValue('--i')) || 0;
+      n.style.animationDelay = (1180 + i * 70) + 'ms';
+    });
+  })();
+
 })();

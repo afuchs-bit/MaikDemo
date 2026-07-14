@@ -570,8 +570,50 @@ p  { margin: 0; }
   display: flex; flex-direction: column; gap: 14px;
 }
 .proof-map svg { width: 100%; height: auto; max-height: 340px; }
-.proof-pin-label { font-family: var(--body); font-size: 11px; font-weight: 600; fill: var(--ink-2); }
-.proof-pin-label.is-hq { font-weight: 700; font-size: 12px; fill: var(--green-700); }
+
+/* ----- Einzugsgebiet-Karte (animiert, echte Gemeindegrenzen) ----- */
+.proof-map .map { display: block; overflow: visible; }
+.proof-map .m-fill { fill: var(--green-100); opacity: 0; }
+.proof-map .m-inner { fill: none; stroke: var(--green-500); stroke-width: 1; opacity: 0; stroke-linejoin: round; }
+.proof-map .m-outline { fill: none; stroke: var(--green-700); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.proof-map .m-node { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.6); }
+.proof-map .m-node circle { fill: #fff; stroke: var(--green-700); stroke-width: 2.4; }
+.proof-map .m-node.seat circle { fill: var(--coral); stroke: #fff; stroke-width: 3; }
+.proof-map .m-label {
+  opacity: 0; font-family: var(--body); font-size: 12.5px; font-weight: 600; fill: var(--ink-2);
+  paint-order: stroke; stroke: var(--bg); stroke-width: 3.5px; stroke-linejoin: round;
+}
+.proof-map .m-label.seat { fill: var(--ink); font-weight: 700; font-size: 13.5px; }
+.proof-map .m-pulse { fill: none; stroke: var(--coral); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+
+/* Sequenz – getriggert vom bestehenden .reveal-Observer (is-in) */
+.proof-map.is-in .m-outline { animation: mapDraw 1150ms cubic-bezier(.33,.9,.28,1) forwards; }
+.proof-map.is-in .m-fill    { animation: mapFade 500ms ease-out 620ms forwards; }
+.proof-map.is-in .m-inner   { animation: mapFadeThin 600ms ease-out 900ms forwards; }
+.proof-map.is-in .m-node    { animation: mapPop 460ms cubic-bezier(.2,1.5,.4,1) forwards; }
+.proof-map.is-in .m-label   { animation: mapFade 420ms ease-out forwards; }
+.proof-map.is-in .m-pulse   { animation: mapPulse 1500ms cubic-bezier(.2,.7,.3,1) 1620ms forwards; }
+
+@keyframes mapDraw { to { stroke-dashoffset: 0; } }
+@keyframes mapFade { to { opacity: 1; } }
+@keyframes mapFadeThin { to { opacity: .38; } }
+@keyframes mapPop { to { opacity: 1; transform: scale(1); } }
+@keyframes mapPulse { 0% { opacity: .55; transform: scale(.4); } 100% { opacity: 0; transform: scale(3.4); } }
+
+.proof-map-cap {
+  margin: 0; color: var(--ink-mute); font-size: 13.5px;
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.proof-map-cap em { font-style: normal; color: var(--ink-2); }
+.proof-map-src { font-size: 11px; color: var(--ink-mute); opacity: .8; letter-spacing: .01em; }
+
+@media (prefers-reduced-motion: reduce) {
+  .proof-map .m-fill { opacity: 1; }
+  .proof-map .m-inner { opacity: .38; }
+  .proof-map .m-node { opacity: 1; transform: none; }
+  .proof-map .m-label { opacity: 1; }
+  .proof-map .m-pulse { display: none; }
+}
 
 .proof-trust {
   padding: clamp(22px, 2.6vw, 30px);
