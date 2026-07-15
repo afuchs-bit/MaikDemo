@@ -945,25 +945,21 @@ p  { margin: 0; }
   position: relative;
   aspect-ratio: 4/3;
   background: var(--bg-soft);
-  background-size: cover; background-position: center;
+  overflow: hidden;
 }
-.project-media[data-img="project1"] {
-  background-image:
-    linear-gradient(180deg, rgba(0,0,0,.0) 55%, rgba(0,0,0,.35)),
-    url("https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061235_3c977f2c-9a0f-42f2-9b53-e578cf8f9484.png");
+.project-media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
 }
-.project-media[data-img="project2"] {
-  background-image:
-    linear-gradient(180deg, rgba(0,0,0,.0) 55%, rgba(0,0,0,.35)),
-    url("https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061214_8416af8e-1ecb-4039-815b-bb74908b7ac9.png");
-}
-.project-media[data-img="project3"] {
-  background-image:
-    linear-gradient(180deg, rgba(0,0,0,.0) 55%, rgba(0,0,0,.4)),
-    url("https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061303_bcbbec22-3158-4220-a6f3-c4993071ca17.png");
+.project-media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.0) 55%, rgba(0,0,0,.35));
+  pointer-events: none;
 }
 .project-tag {
-  position: absolute; top: 14px; left: 14px;
+  position: absolute; top: 14px; left: 14px; z-index: 1;
   background: #fff; border: 1px solid var(--line);
   border-radius: 999px; padding: 6px 12px;
   font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;

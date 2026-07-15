@@ -1,0 +1,14 @@
+{
+  "leistungen": [
+    { "slug": "gartengestaltung",    "label": "Gartengestaltung" },
+    { "slug": "vorgarten",           "label": "Vorgartenbau" },
+    { "slug": "teichbau",            "label": "Teichanlage" },
+    { "slug": "bepflanzung",         "label": "Bepflanzung" },
+    { "slug": "dachbegruenung",      "label": "Dachbegrünung" },
+    { "slug": "baumarbeiten",        "label": "Baumarbeiten / Fällung" },
+    { "slug": "baumkontrolle",       "label": "Baumkontrolle & Gutachten" },
+    { "slug": "sturmnotdienst",      "label": "Sturmnotdienst" },
+    { "slug": "holzverkauf",         "label": "Holzverkauf" },
+    { "slug": "aussenanlagenpflege", "label": "Außenanlagenpflege" }
+  ]
+}

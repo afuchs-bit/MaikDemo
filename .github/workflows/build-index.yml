@@ -1,0 +1,58 @@
+name: Projekt-Index bauen
+
+# Baut data/projekte-index.json aus content/** bei jedem Push, der Projektdaten
+# oder Projektbilder ändert, und committet das Ergebnis zurück.
+#
+# Kompatibel mit "Deploy from a branch" (klassisches GitHub Pages): der zurück-
+# committete Index wird von Pages einfach mit ausgeliefert – der bestehende
+# Deploy-Mechanismus bleibt unverändert.
+
+on:
+  push:
+    paths:
+      - 'content/**'
+      - 'assets/img/projekte/**'
+      - '.github/scripts/**'
+      - '.github/workflows/build-index.yml'
+    paths-ignore:
+      # Loop-Guard: der zurückcommittete Index darf den Workflow nicht erneut auslösen.
+      - 'data/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-index-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Abhängigkeiten installieren
+        working-directory: .github/scripts
+        run: npm ci || npm install
+
+      - name: Index bauen & validieren
+        run: node .github/scripts/build-index.mjs
+
+      - name: Ergebnis zurückcommitten (nur bei Änderung)
+        run: |
+          if [[ -n "$(git status --porcelain data/projekte-index.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/projekte-index.json
+            git commit -m "chore: Projekt-Index aktualisiert [skip ci]"
+            git push
+          else
+            echo "Keine Änderung am Index – nichts zu committen."
+          fi

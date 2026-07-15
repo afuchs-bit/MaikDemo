@@ -1,0 +1,15 @@
+{
+  "titel": "Außenanlagenpflege Bürokomplex",
+  "ort": "Recklinghausen",
+  "kundentyp": ["gewerbe"],
+  "leistungen": ["aussenanlagenpflege", "baumkontrolle"],
+  "datum": "2026-03-20",
+  "featured": true,
+  "beschreibung": "Pflege, Baumkontrolle und Verkehrssicherheit für einen gewerblichen Standort mit hohem Publikumsverkehr.",
+  "bilder": [
+    {
+      "bild": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061303_bcbbec22-3158-4220-a6f3-c4993071ca17.png",
+      "alt": "Gepflegte Außenanlage eines Bürokomplexes mit hohem Publikumsverkehr"
+    }
+  ]
+}

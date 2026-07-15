@@ -696,9 +696,15 @@
       <p class="lead">Echte Arbeiten, echte Orte. Drei Beispiele aus dem aktuellen Portfolio.</p>
     </div>
 
+    <!-- Statisches Fallback-Markup (Progressive Enhancement): bleibt sichtbar, falls
+         data/projekte-index.json nicht geladen werden kann. Wird sonst von
+         assets/js/projekte.js aus den Content-Daten neu gerendert. -->
     <div class="projects-grid">
       <article class="project-card reveal">
-        <div class="project-media" data-img="project1">
+        <div class="project-media">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061235_3c977f2c-9a0f-42f2-9b53-e578cf8f9484.png"
+               alt="Neu gestalteter Vorgarten mit Natursteinweg und strukturierter Bepflanzung"
+               loading="lazy" decoding="async" width="800" height="600">
           <span class="project-tag">Privatkunde</span>
         </div>
         <div class="project-body">
@@ -709,7 +715,10 @@
       </article>
 
       <article class="project-card reveal">
-        <div class="project-media" data-img="project2">
+        <div class="project-media">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061214_8416af8e-1ecb-4039-815b-bb74908b7ac9.png"
+               alt="Angelegte Teichanlage mit natürlicher Uferzone und Sitzplatz"
+               loading="lazy" decoding="async" width="800" height="600">
           <span class="project-tag">Privatkunde</span>
         </div>
         <div class="project-body">
@@ -720,7 +729,10 @@
       </article>
 
       <article class="project-card reveal">
-        <div class="project-media" data-img="project3">
+        <div class="project-media">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061303_bcbbec22-3158-4220-a6f3-c4993071ca17.png"
+               alt="Gepflegte Außenanlage eines Bürokomplexes mit hohem Publikumsverkehr"
+               loading="lazy" decoding="async" width="800" height="600">
           <span class="project-tag warn">Gewerbekunde</span>
         </div>
         <div class="project-body">
@@ -967,5 +979,6 @@
 </div>
 
 <script src="assets/js/main.js?v=20260714a" defer></script>
+<script type="module" src="assets/js/projekte.js?v=20260715a"></script>
 </body>
 </html>

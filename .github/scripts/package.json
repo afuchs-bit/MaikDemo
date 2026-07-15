@@ -1,0 +1,13 @@
+{
+  "name": "maikdemo-build-scripts",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Build- und Validierungsskripte für die Projekt-Datenschicht (nicht Teil des Frontends).",
+  "type": "module",
+  "scripts": {
+    "build-index": "node build-index.mjs"
+  },
+  "dependencies": {
+    "exifr": "^7.1.3"
+  }
+}
