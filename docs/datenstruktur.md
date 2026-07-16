@@ -217,6 +217,7 @@ stellen den Zustand beim Laden wieder her. Default-Werte werden aus der URL wegg
 | `tab`      | `alle` | Ansicht „Alle Projekte". Ohne Parameter = `aktuell` (nur `featured`). |
 | `typ`      | `privat` \| `gewerbe` | Kundentyp-Filter. Ohne Parameter = alle. |
 | `leistung` | Komma-Liste von Taxonomie-Slugs, z. B. `baumkontrolle,bepflanzung` | Leistungs-Filter, **ODER-Semantik**: ein Projekt erscheint, wenn es **mindestens eine** der gewählten Leistungen hat. Unbekannte Slugs werden ignoriert. |
+| `projekt`  | ein Projekt-Slug, z. B. `teichanlage-bochum-2026` | **Deep-Link:** öffnet beim Laden direkt die Lightbox dieses Projekts. Ohne `tab`-Param wird `tab=alle` gesetzt (Sichtbarkeit im Grid). Unbekannter Slug → ignoriert. Der Param wird beim Laden aus der URL entfernt (`replaceState`), damit ein Reload die Lightbox nicht erneut öffnet. Wird von den Startseiten-Karten (`#projekte`) genutzt. |
 
 **Beispiel-Deeplinks** (z. B. für Direktlinks aus der Sonderthemen-Sektion):
 - Alle Baumkontrolle-Projekte: `…/MaikDemo/projekte/?tab=alle&leistung=baumkontrolle`

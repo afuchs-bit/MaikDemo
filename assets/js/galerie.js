@@ -68,10 +68,31 @@ async function init() {
   }
 
   readStateFromUrl();
+  const pendingSlug = readPendingProjekt();
   buildChips();
   bindControls();
   applyStateToControls();
   render();
+  // Deep-Link von der Startseite: Lightbox des Projekts direkt öffnen.
+  if (pendingSlug) openProjektDeepLink(pendingSlug);
+}
+
+// Liest ?projekt=<slug>. Ohne expliziten tab-Param auf „Alle" schalten, damit das
+// Zielprojekt garantiert im Grid liegt (überschreibt keine explizit gesetzten Filter).
+function readPendingProjekt() {
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('projekt');
+  if (!slug) return null;
+  if (!params.get('tab')) state.tab = 'alle';
+  return slug;
+}
+
+function openProjektDeepLink(slug) {
+  const project = allProjekte.find((p) => p && p.slug === slug);
+  if (!project) return; // unbekannter Slug (z. B. gelöscht) → ignorieren, Galerie normal
+  const opener = grid.querySelector(`.card-open[data-slug="${CSS.escape(slug)}"]`);
+  openLightbox(project, opener);
+  // render() hat die URL bereits ohne ?projekt geschrieben → Reload öffnet nicht erneut.
 }
 
 function showError() {
@@ -210,6 +231,7 @@ function renderGrid(results) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'card-open';
+    btn.dataset.slug = p.slug || '';
     const anzahl = Array.isArray(p.bilder) ? p.bilder.length : 0;
     btn.setAttribute('aria-label', `Projekt „${p.titel}“ in ${p.ort} – ${anzahl} ${anzahl === 1 ? 'Bild' : 'Bilder'} ansehen`);
     btn.addEventListener('click', () => openLightbox(p, btn));

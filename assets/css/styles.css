@@ -1648,8 +1648,9 @@ p  { margin: 0; }
 .filter-chip:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; }
 .filter-chip[aria-pressed="true"]:focus-visible { outline-color: var(--ink); }
 
-/* ---- Interaktive Galeriekarte (Overlay-Button öffnet die Lightbox) ---- */
-.projects-grid--gallery .project-card { position: relative; }
+/* ---- Interaktive Karte (Overlay öffnet Lightbox bzw. verlinkt in die Galerie) ---- */
+/* Global relativ, damit der Overlay-Link/-Button auch in #projekte (Startseite) greift. */
+.project-card { position: relative; }
 .card-open {
   position: absolute; inset: 0; z-index: 2;
   margin: 0; padding: 0; border: 0; background: transparent;
