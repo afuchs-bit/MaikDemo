@@ -1604,3 +1604,119 @@ p  { margin: 0; }
   .hero-trust-mini { border-radius: 18px; }
   .htm-sep { display: none; }
 }
+
+/* ============================================================
+   PROJEKTGALERIE (/projekte/) – Toolbar, Filter-Chips, Lightbox
+   Nur bestehende Tokens; keine neue visuelle Sprache.
+   ============================================================ */
+
+/* H1 der Galerie wie ein Sektions-H2 (globales h1 ist deutlich größer) */
+.section-head h1 { margin-top: 14px; font-size: clamp(1.8rem, 3.4vw, 3.2rem); font-weight: 700; letter-spacing: -0.028em; }
+
+/* „Alle Projekte ansehen"-CTA unter der Startseiten-Sektion */
+.projects-more { margin-top: 36px; }
+.projects-more.center { text-align: center; }
+
+/* ---- Toolbar ---- */
+.gallery-toolbar { margin: 8px 0 40px; }
+.gallery-tabs { display: flex; max-width: 360px; margin: 0 auto 6px; }
+.gallery-filters { margin-top: 20px; }
+.filter-row + .filter-row { margin-top: 16px; }
+.filter-label {
+  display: block; margin-bottom: 8px;
+  font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--ink-mute);
+}
+.filter-scroll { overflow-x: auto; scrollbar-width: thin; }
+.filter-group { display: flex; gap: 8px; flex-wrap: nowrap; padding-bottom: 4px; }
+@media (min-width: 760px) { .filter-group { flex-wrap: wrap; } }
+
+.filter-chip {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--body); font-size: .82rem; font-weight: 600;
+  padding: 8px 14px; border-radius: 999px;
+  background: var(--bg-elev); color: var(--ink-2);
+  border: 1px solid var(--line);
+  cursor: pointer; white-space: nowrap;
+  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
+}
+.filter-chip:hover:not(:disabled) { border-color: var(--ink); transform: translateY(-1px); }
+.filter-chip[aria-pressed="true"] { background: var(--green-700); color: #fff; border-color: var(--green-700); }
+.filter-chip:disabled { opacity: .4; cursor: not-allowed; }
+.filter-chip .chip-count { font-weight: 500; opacity: .75; font-variant-numeric: tabular-nums; }
+.filter-chip:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; }
+.filter-chip[aria-pressed="true"]:focus-visible { outline-color: var(--ink); }
+
+/* ---- Interaktive Galeriekarte (Overlay-Button öffnet die Lightbox) ---- */
+.projects-grid--gallery .project-card { position: relative; }
+.card-open {
+  position: absolute; inset: 0; z-index: 2;
+  margin: 0; padding: 0; border: 0; background: transparent;
+  cursor: pointer; border-radius: var(--radius);
+  -webkit-tap-highlight-color: transparent;
+}
+.card-open:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; }
+
+/* ---- Leer-/Fehlerzustand ---- */
+.gallery-empty, .gallery-error { text-align: center; padding: 48px 0; color: var(--ink-2); }
+.gallery-empty[hidden], .gallery-error[hidden] { display: none; }
+.gallery-empty p, .gallery-error p { margin: 0 0 16px; }
+.gallery-cta { margin-top: 44px; }
+.gallery-cta.center { text-align: center; }
+/* Langer CTA-Text darf umbrechen statt den Viewport zu sprengen (mobil) */
+.gallery-cta .btn { max-width: 100%; white-space: normal; text-align: center; }
+
+/* ---- Lightbox ---- */
+body.has-lightbox { overflow: hidden; }
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(12px, 3vw, 40px);
+}
+.lightbox[hidden] { display: none; }
+.lightbox-backdrop { position: absolute; inset: 0; background: rgba(10,14,4,.82); backdrop-filter: blur(4px); }
+.lightbox-panel {
+  position: relative; z-index: 1;
+  display: grid; align-items: center; gap: 12px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "prev stage next" "cap cap cap";
+  width: min(1100px, 100%); max-height: 100%;
+}
+.lightbox-stage { grid-area: stage; display: flex; align-items: center; justify-content: center; min-width: 0; }
+.lightbox-img {
+  max-width: 100%; max-height: 74vh;
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-float); background: var(--bg-soft);
+}
+.lightbox-caption { grid-area: cap; text-align: center; color: #fff; }
+.lightbox-title { color: #fff; font-size: 1.05rem; margin: 0; }
+.lightbox-desc { color: rgba(255,255,255,.82); font-size: .92rem; margin: 4px 0 0; }
+.lightbox-counter { display: inline-block; margin-top: 6px; font-size: .8rem; color: rgba(255,255,255,.6); font-variant-numeric: tabular-nums; }
+
+.lightbox-prev { grid-area: prev; }
+.lightbox-next { grid-area: next; }
+.lightbox-nav, .lightbox-close {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.12); color: #fff;
+  cursor: pointer; transition: background .2s var(--ease), transform .15s var(--ease);
+}
+.lightbox-nav:hover, .lightbox-close:hover { background: rgba(255,255,255,.24); }
+.lightbox-nav:active, .lightbox-close:active { transform: scale(.94); }
+.lightbox-nav[hidden] { display: none; }
+.lightbox-close { position: absolute; top: 6px; right: 6px; z-index: 3; }
+.lightbox-nav:focus-visible, .lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+@media (max-width: 640px) {
+  .lightbox { padding: 0; }
+  .lightbox-panel {
+    width: 100%; height: 100%; max-height: 100%;
+    grid-template-columns: 1fr; grid-template-areas: "stage" "cap";
+    align-content: center; gap: 10px; padding: 16px;
+  }
+  .lightbox-img { max-height: 66vh; }
+  /* Pfeile über die Bildkanten legen, damit sie mobil erreichbar bleiben */
+  .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; }
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
+}

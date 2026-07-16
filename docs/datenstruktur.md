@@ -203,3 +203,42 @@ generieren, Marketing-Chips separat pflegen.
 3. `leistungen` nur mit Slugs aus `taxonomie.json` füllen.
 4. Committen/Pushen → die Action validiert, baut `data/projekte-index.json` und committet ihn zurück.
    Bei Fehlern schlägt die Action mit klarer Meldung fehl und der Index bleibt unverändert.
+
+---
+
+## Projektgalerie `/projekte/` – Filter-URL-Parameter
+
+Die öffentliche Galerie (`projekte/index.html`, Logik in `assets/js/galerie.js`) hält ihren
+Filterzustand in Query-Parametern (`history.replaceState`, kein Reload). Deep-Links sind teilbar und
+stellen den Zustand beim Laden wieder her. Default-Werte werden aus der URL weggelassen.
+
+| Parameter  | Werte | Bedeutung |
+|------------|-------|-----------|
+| `tab`      | `alle` | Ansicht „Alle Projekte". Ohne Parameter = `aktuell` (nur `featured`). |
+| `typ`      | `privat` \| `gewerbe` | Kundentyp-Filter. Ohne Parameter = alle. |
+| `leistung` | Komma-Liste von Taxonomie-Slugs, z. B. `baumkontrolle,bepflanzung` | Leistungs-Filter, **ODER-Semantik**: ein Projekt erscheint, wenn es **mindestens eine** der gewählten Leistungen hat. Unbekannte Slugs werden ignoriert. |
+
+**Beispiel-Deeplinks** (z. B. für Direktlinks aus der Sonderthemen-Sektion):
+- Alle Baumkontrolle-Projekte: `…/MaikDemo/projekte/?tab=alle&leistung=baumkontrolle`
+- Gewerbe-Projekte gesamt: `…/MaikDemo/projekte/?tab=alle&typ=gewerbe`
+
+**Chip-Trefferzahlen** sind facettiert: Kundentyp-Zahlen berücksichtigen den aktiven Leistungsfilter,
+Leistungs-Zahlen den aktiven Kundentyp (jeweils innerhalb des gewählten Tabs). Chips mit 0 Treffern
+werden **deaktiviert** (nicht versteckt); ein bereits aktiver Chip bleibt abwählbar.
+
+**CTA-Vorbefüllung:** Der „Jetzt anfragen"-Button verlinkt kontextabhängig auf das Kontaktformular der
+Startseite mit `?bereich=<Option-Text>#kontakt`. `main.js` liest `?bereich=` beim Laden und setzt das
+Dropdown (der Wert muss exakt einem `<option>`-Text entsprechen). Zuordnung Leistungs-Slug → Bereich
+(nur bei genau einer aktiven Leistung, sonst typ-basierter Default, sonst ohne Vorwahl):
+
+| Leistungs-Slug | Bereich-Option |
+|----------------|----------------|
+| `gartengestaltung`, `vorgarten` | Garten / Vorgarten |
+| `teichbau` | Teich / Wasser im Garten |
+| `bepflanzung` | Bepflanzung |
+| `dachbegruenung` | Dachbegrünung |
+| `baumkontrolle` | Baumkontrolle / Gutachten |
+| `sturmnotdienst` | Sturmschaden / Sturmnotdienst |
+| `holzverkauf` | Holzverkauf |
+| `aussenanlagenpflege` | Gewerbliche Pflege |
+| `baumarbeiten` | *(kein exaktes Pendant → keine Vorwahl)* |
