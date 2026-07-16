@@ -4,7 +4,7 @@
 // falls der fetch fehlschlägt. main.js bleibt unangetastet.
 // Kartenoptik/Reveal kommen aus dem gemeinsamen Modul projekte-card.js.
 
-import { dataUrl } from './config.js';
+import { dataUrl, SITE_BASE } from './config.js';
 import { buildCard, revealCards } from './projekte-card.js';
 
 const grid = document.querySelector('#projekte .projects-grid');
@@ -35,7 +35,16 @@ async function init(grid) {
 
   if (!featured.length) return; // nichts zu rendern → Fallback behalten
 
-  const cards = featured.map(buildCard);
+  const cards = featured.map((p) => {
+    const card = buildCard(p);
+    // Ganze Karte als echter Link in die Galerie, öffnet dort direkt die Lightbox.
+    const link = document.createElement('a');
+    link.className = 'card-open';
+    link.href = new URL(`projekte/?projekt=${encodeURIComponent(p.slug || '')}`, SITE_BASE).href;
+    link.setAttribute('aria-label', `Projekt „${p.titel || ''}“ in der Galerie ansehen`);
+    card.appendChild(link);
+    return card;
+  });
   grid.replaceChildren(...cards);
   revealCards(cards);
 }
