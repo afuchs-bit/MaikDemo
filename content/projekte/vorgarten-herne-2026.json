@@ -1,0 +1,15 @@
+{
+  "titel": "Vorgarten & Bepflanzung",
+  "ort": "Herne",
+  "kundentyp": ["privat"],
+  "leistungen": ["vorgarten", "bepflanzung"],
+  "datum": "2026-05-01",
+  "featured": true,
+  "beschreibung": "Vorgarten-Neugestaltung mit Naturstein, strukturierter Bepflanzung und integrierter Beleuchtung.",
+  "bilder": [
+    {
+      "bild": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061235_3c977f2c-9a0f-42f2-9b53-e578cf8f9484.png",
+      "alt": "Neu gestalteter Vorgarten mit Natursteinweg und strukturierter Bepflanzung"
+    }
+  ]
+}

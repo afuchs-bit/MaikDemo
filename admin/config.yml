@@ -1,0 +1,88 @@
+# Sveltia CMS – Konfiguration (Repo-Seite)
+# Schema bildet die echten Dateien aus Schritt 1 (content/projekte/*.json) 1:1 ab.
+# Quelle der Wahrheit für die "leistungen"-Optionen ist content/taxonomie.json;
+# die GitHub Action prüft, dass beide Listen übereinstimmen (siehe docs/cms-hinweise.md).
+
+backend:
+  name: github
+  repo: afuchs-bit/MaikDemo            # Owner/Repo (verifiziert)
+  branch: claude/kind-fermat-pyzy5p    # Produktions-Branch: Pages-Quelle + Ziel der CMS-Commits
+  base_url: https://sveltia-cms-auth.a-fuchs-eff.workers.dev  # Cloudflare-Worker (OAuth), kein Geheimnis
+
+# Nur für lokales Testen (siehe docs/cms-hinweise.md) – NICHT produktiv aktiv lassen:
+# local_backend: true
+
+# Deutsche Oberfläche
+locale: de
+
+# Medien: Handy-Rohfotos werden im Browser zu WebP komprimiert, bevor sie ins Repo gehen.
+media_libraries:
+  default:
+    config:
+      max_file_size: 15728640          # 15 MB Rohfoto erlaubt
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 2048
+          height: 2048
+
+collections:
+  - name: projekte
+    label: Projekte
+    label_singular: Projekt
+    folder: content/projekte
+    create: true
+    # Bestandsdateien sind .json – neue Einträge müssen ebenfalls JSON werden:
+    extension: json
+    format: json
+    # Schritt 1 hat KEIN slug-Feld (Slug = Dateiname) → Slug aus Titel + Ort ableiten.
+    # Ergibt z. B. "vorgarten-bepflanzung-herne". Ändert keine Bestandsdateien.
+    slug: "{{fields.titel}}-{{fields.ort}}"
+    identifier_field: titel
+    summary: "{{fields.titel}} – {{fields.ort}}"
+    # Bilder pro Projekt unter assets/img/projekte/<slug>/ ablegen.
+    # public_folder mit führendem Slash → gespeicherter Pfad passt zu assetUrl() im Renderer.
+    media_folder: "/assets/img/projekte/{{slug}}"
+    public_folder: "/assets/img/projekte/{{slug}}"
+    fields:
+      - { name: titel, label: "Titel", widget: string }
+      - { name: ort, label: "Ort", widget: string, hint: "z. B. Herne, Bochum, Recklinghausen" }
+      - name: kundentyp
+        label: "Kundentyp"
+        widget: select
+        multiple: true
+        options:
+          - { label: "Privatkunde", value: privat }
+          - { label: "Gewerbekunde", value: gewerbe }
+        hint: "Mehrfachauswahl möglich (z. B. Baumkontrolle für beide)."
+      - name: leistungen
+        label: "Leistungen"
+        widget: select
+        multiple: true
+        # Werte müssen exakt den Slugs in content/taxonomie.json entsprechen (Action prüft das).
+        options:
+          - { label: "Gartengestaltung", value: gartengestaltung }
+          - { label: "Vorgartenbau", value: vorgarten }
+          - { label: "Teichanlage", value: teichbau }
+          - { label: "Bepflanzung", value: bepflanzung }
+          - { label: "Dachbegrünung", value: dachbegruenung }
+          - { label: "Baumarbeiten / Fällung", value: baumarbeiten }
+          - { label: "Baumkontrolle & Gutachten", value: baumkontrolle }
+          - { label: "Sturmnotdienst", value: sturmnotdienst }
+          - { label: "Holzverkauf", value: holzverkauf }
+          - { label: "Außenanlagenpflege", value: aussenanlagenpflege }
+        hint: "Mehrfachauswahl – ein Projekt hat meist mehrere Leistungen."
+      - { name: datum, label: "Datum", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, hint: "Für die Sortierung und die Aktuell-Ansicht (neueste zuerst)." }
+      - { name: featured, label: "Auf Startseite zeigen", widget: boolean, default: false, hint: "Die 3 neuesten mit Häkchen erscheinen auf der Startseite." }
+      - { name: beschreibung, label: "Beschreibung", widget: text }
+      - name: bilder
+        label: "Bilder"
+        label_singular: "Bild"
+        widget: list
+        summary: "{{fields.alt}}"
+        fields:
+          - { name: bild, label: "Foto", widget: image }
+          - { name: alt, label: "Bildbeschreibung (für Barrierefreiheit & SEO)", widget: string, required: false }
+        hint: "Das erste Bild ist automatisch das Titelbild."

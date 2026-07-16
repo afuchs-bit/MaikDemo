@@ -1,0 +1,68 @@
+{
+  "_hinweis": "AUTO-GENERIERT von .github/scripts/build-index.mjs – NICHT von Hand editieren.",
+  "projekte": [
+    {
+      "slug": "vorgarten-herne-2026",
+      "titel": "Vorgarten & Bepflanzung",
+      "ort": "Herne",
+      "kundentyp": [
+        "privat"
+      ],
+      "leistungen": [
+        "vorgarten",
+        "bepflanzung"
+      ],
+      "datum": "2026-05-01",
+      "featured": true,
+      "beschreibung": "Vorgarten-Neugestaltung mit Naturstein, strukturierter Bepflanzung und integrierter Beleuchtung.",
+      "bilder": [
+        {
+          "bild": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061235_3c977f2c-9a0f-42f2-9b53-e578cf8f9484.png",
+          "alt": "Neu gestalteter Vorgarten mit Natursteinweg und strukturierter Bepflanzung"
+        }
+      ]
+    },
+    {
+      "slug": "teichanlage-bochum-2026",
+      "titel": "Teichanlage & Außenbereich",
+      "ort": "Bochum",
+      "kundentyp": [
+        "privat"
+      ],
+      "leistungen": [
+        "teichbau",
+        "bepflanzung"
+      ],
+      "datum": "2026-04-15",
+      "featured": true,
+      "beschreibung": "Teichbau mit natürlicher Uferzone, Sitzplatz und passender Bepflanzung rund um den Whirlpool.",
+      "bilder": [
+        {
+          "bild": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061214_8416af8e-1ecb-4039-815b-bb74908b7ac9.png",
+          "alt": "Angelegte Teichanlage mit natürlicher Uferzone und Sitzplatz"
+        }
+      ]
+    },
+    {
+      "slug": "aussenanlagen-recklinghausen-2026",
+      "titel": "Außenanlagenpflege Bürokomplex",
+      "ort": "Recklinghausen",
+      "kundentyp": [
+        "gewerbe"
+      ],
+      "leistungen": [
+        "aussenanlagenpflege",
+        "baumkontrolle"
+      ],
+      "datum": "2026-03-20",
+      "featured": true,
+      "beschreibung": "Pflege, Baumkontrolle und Verkehrssicherheit für einen gewerblichen Standort mit hohem Publikumsverkehr.",
+      "bilder": [
+        {
+          "bild": "https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061303_bcbbec22-3158-4220-a6f3-c4993071ca17.png",
+          "alt": "Gepflegte Außenanlage eines Bürokomplexes mit hohem Publikumsverkehr"
+        }
+      ]
+    }
+  ]
+}
