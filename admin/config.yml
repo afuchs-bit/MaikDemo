@@ -15,6 +15,12 @@ backend:
 # Deutsche Oberfläche
 locale: de
 
+# Globaler Media-Default (von Sveltia verlangt, auch wenn Collections ihn überschreiben).
+# media_folder = Repo-Pfad (ohne führenden Slash); public_folder = URL-Pfad (mit Slash),
+# passt zu assetUrl() im Renderer. Kein /MaikDemo/ – das Rebasing erledigt der Renderer.
+media_folder: assets/img/projekte
+public_folder: /assets/img/projekte
+
 # Medien: Handy-Rohfotos werden im Browser zu WebP komprimiert, bevor sie ins Repo gehen.
 media_libraries:
   default:
