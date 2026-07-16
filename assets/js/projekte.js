@@ -2,8 +2,10 @@
 // Rendert die #projekte-Sektion der Startseite aus data/projekte-index.json.
 // Progressive Enhancement: Das hartkodierte Fallback-Markup bleibt sichtbar,
 // falls der fetch fehlschlägt. main.js bleibt unangetastet.
+// Kartenoptik/Reveal kommen aus dem gemeinsamen Modul projekte-card.js.
 
-import { assetUrl, dataUrl } from './config.js';
+import { dataUrl } from './config.js';
+import { buildCard, revealCards } from './projekte-card.js';
 
 const grid = document.querySelector('#projekte .projects-grid');
 if (grid) init(grid);
@@ -36,64 +38,4 @@ async function init(grid) {
   const cards = featured.map(buildCard);
   grid.replaceChildren(...cards);
   revealCards(cards);
-}
-
-function buildCard(p) {
-  const gewerbe = Array.isArray(p.kundentyp) && p.kundentyp.includes('gewerbe');
-  const cover = (Array.isArray(p.bilder) && p.bilder[0]) || {};
-
-  const article = el('article', 'project-card reveal');
-
-  const media = el('div', 'project-media');
-  const img = document.createElement('img');
-  img.src = assetUrl(cover.bild || '');
-  img.alt = cover.alt || '';
-  img.loading = 'lazy';
-  img.decoding = 'async';
-  img.width = 800;   // 4:3-Verhältnis passend zu .project-media aspect-ratio → kein Layout-Shift
-  img.height = 600;
-  media.appendChild(img);
-
-  const tag = el('span', gewerbe ? 'project-tag warn' : 'project-tag');
-  tag.textContent = gewerbe ? 'Gewerbekunde' : 'Privatkunde';
-  media.appendChild(tag);
-
-  const body = el('div', 'project-body');
-  const loc = el('span', 'project-location');
-  loc.textContent = p.ort || '';
-  const h3 = document.createElement('h3');
-  h3.textContent = p.titel || '';
-  const desc = document.createElement('p');
-  desc.textContent = p.beschreibung || '';
-  body.append(loc, h3, desc);
-
-  article.append(media, body);
-  return article;
-}
-
-// Reveal-on-Scroll wie in main.js – nötig, weil main.js nur die beim Laden
-// vorhandenen .reveal-Elemente beobachtet und .reveal mit opacity:0 startet.
-function revealCards(cards) {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced || !('IntersectionObserver' in window)) {
-    cards.forEach((c) => c.classList.add('is-in'));
-    return;
-  }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const idx = Array.from(entry.target.parentNode?.children || []).indexOf(entry.target);
-        entry.target.style.transitionDelay = (Math.max(0, idx) * 60) + 'ms';
-        entry.target.classList.add('is-in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-  cards.forEach((c) => io.observe(c));
-}
-
-function el(tag, className) {
-  const node = document.createElement(tag);
-  if (className) node.className = className;
-  return node;
 }

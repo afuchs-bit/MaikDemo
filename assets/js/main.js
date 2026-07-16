@@ -132,6 +132,17 @@
     });
   });
 
+  // --- Bereich aus URL vorbefüllen (Deep-Link von der Galerie: ?bereich=<Option-Text>) ---
+  // Ergänzt den Same-Page-Mechanismus oben um seitenübergreifende Vorbefüllung.
+  // Der Wert muss exakt einem <option>-Text entsprechen, sonst no-op.
+  {
+    const bereich = new URLSearchParams(location.search).get('bereich');
+    if (bereich) {
+      const sel = document.querySelector('#contactForm select[name="bereich"]');
+      if (sel) sel.value = bereich;
+    }
+  }
+
   // --- Count-up stats (Social Proof) ---
   // DOM always holds the final value, so no-JS / reduced-motion users see it directly.
   const counters = document.querySelectorAll('[data-countup]');

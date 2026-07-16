@@ -1,9 +1,12 @@
 // assets/js/config.js
 // Zentrale Basis-Pfad-Auflösung – an GENAU dieser Stelle festgelegt.
 // Funktioniert unter /MaikDemo/ (GitHub-Pages-Projektpfad) UND unter / (eigene Domain),
-// weil der Base-Pfad aus document.baseURI abgeleitet wird. Kein hartkodiertes /MaikDemo/.
-
-export const SITE_BASE = new URL('.', document.baseURI).href;
+// UND auf Unterseiten (z. B. /MaikDemo/projekte/). Kein hartkodiertes /MaikDemo/.
+//
+// Der Site-Root wird aus der URL DIESES Moduls abgeleitet: config.js liegt fix unter
+// <root>/assets/js/config.js, also ist <root> = ../../ relativ zur Modul-URL. Das ist
+// seiten-unabhängig – anders als document.baseURI, das je nach Unterseite variieren würde.
+export const SITE_BASE = new URL('../../', import.meta.url).href;
 
 const isAbsolute = (p) => /^https?:\/\//i.test(p);
 
