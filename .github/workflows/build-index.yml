@@ -11,6 +11,7 @@ on:
   push:
     paths:
       - 'content/**'
+      - 'admin/**'
       - 'assets/img/projekte/**'
       - '.github/scripts/**'
       - '.github/workflows/build-index.yml'
@@ -41,6 +42,9 @@ jobs:
       - name: Abhängigkeiten installieren
         working-directory: .github/scripts
         run: npm ci || npm install
+
+      - name: Config-Taxonomie-Sync prüfen
+        run: node .github/scripts/check-config-sync.mjs
 
       - name: Index bauen & validieren
         run: node .github/scripts/build-index.mjs
