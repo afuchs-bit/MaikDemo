@@ -1293,6 +1293,11 @@ p  { margin: 0; }
   display: grid; gap: 26px;
   grid-template-columns: 1fr 1fr;
 }
+/* Einzelner, zentrierter Vorher/Nachher-Slider */
+.ba-grid--single {
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+}
 .ba { margin: 0; }
 .ba figcaption {
   margin-top: 12px;
