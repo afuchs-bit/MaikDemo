@@ -207,6 +207,38 @@
     frame.addEventListener('pointercancel', stopDrag);
 
     range.addEventListener('input', () => set(parseFloat(range.value)));
+
+    // Auto-Sweep "Invite": einmaliges Hin-und-Her beim ersten Sichtbarwerden,
+    // damit klar wird, dass man ziehen kann. Progressive Enhancement.
+    if (!reduced && 'IntersectionObserver' in window) {
+      const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+      // Keyframes: [Zeitpunkt ms, Position %]
+      const keys = [[0, 50], [650, 18], [1350, 82], [2050, 50]];
+      const dur = keys[keys.length - 1][0];
+      const play = () => {
+        const start = performance.now();
+        const step = (now) => {
+          if (dragging) return;                 // User-Eingabe hat Vorrang
+          const el = Math.min(now - start, dur);
+          let a = keys[0], b = keys[keys.length - 1];
+          for (let i = 0; i < keys.length - 1; i++) {
+            if (el >= keys[i][0] && el <= keys[i + 1][0]) { a = keys[i]; b = keys[i + 1]; break; }
+          }
+          const span = b[0] - a[0];
+          const t = span ? easeInOut((el - a[0]) / span) : 1;
+          set(a[1] + (b[1] - a[1]) * t);
+          if (el < dur) requestAnimationFrame(step);
+          else set(50);
+        };
+        requestAnimationFrame(step);
+      };
+      const sweepIO = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { sweepIO.disconnect(); play(); }
+        });
+      }, { threshold: 0.5 });
+      sweepIO.observe(frame);
+    }
   });
 
   // --- Testimonial rotator (Social Proof) ---

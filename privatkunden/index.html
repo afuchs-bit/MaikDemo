@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260717a" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260717b" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -256,10 +256,10 @@
       <p class="lead">Ziehen Sie den Regler nach links und rechts und vergleichen Sie den Zustand vor und nach unserer Arbeit – an einem echten Projekt aus Herne.</p>
     </div>
 
-    <div class="ba-grid ba-grid--single">
+    <div class="ba-stage reveal">
       <!-- TODO: echtes Vorher/Nachher-Paar nachliefern (aktuell Platzhalter:
            dasselbe Foto, „Vorher“-Ebene per CSS-Filter entsättigt) -->
-      <figure class="ba reveal" data-beforeafter>
+      <figure class="ba" data-beforeafter>
         <div class="ba-frame" style="--pos:50%">
           <img class="ba-after" src="../assets/img/ueber/ueber-1.jpg" alt="Gartenteichanlage mit Palmen und Natursteineinfassung nach der Umgestaltung" width="1400" height="1050" loading="lazy" decoding="async">
           <div class="ba-before" aria-hidden="true">
@@ -269,13 +269,21 @@
           <span class="ba-label ba-label-after" aria-hidden="true">Nachher</span>
           <div class="ba-handle" aria-hidden="true">
             <span class="ba-grip">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 3 12l6 6M15 6l6 6-6 6"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 3 12l6 6M15 6l6 6-6 6"/></svg>
             </span>
+            <span class="ba-hint" aria-hidden="true">Ziehen</span>
           </div>
           <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Vorher-Nachher-Vergleich: Reglerposition in Prozent">
         </div>
         <figcaption>Teichanlage mit Palmen – Neuanlage in Herne <em class="muted-tiny">(Demo-Bildpaar)</em></figcaption>
       </figure>
+
+      <!-- Floating Trust-Chips: füllen den Raum & erhöhen Glaubwürdigkeit -->
+      <span class="ba-chip ba-chip--tl" aria-hidden="true"><strong>Neuanlage</strong> · Herne 2023</span>
+      <span class="ba-chip ba-chip--br" aria-hidden="true">
+        <svg class="ba-chip-star" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.9l-5.81 3.05 1.11-6.47-4.7-4.58 6.5-.95L12 2.5z"/></svg>
+        <strong>4,8</strong> · 61 Google-Bewertungen
+      </span>
     </div>
 
     <p class="ba-note reveal">Ihr Garten könnte das nächste Nachher sein: <a href="#anfrage">Jetzt unverbindlichen Vor-Ort-Termin anfragen</a>.</p>
@@ -721,6 +729,6 @@
   </a>
 </div>
 
-<script src="../assets/js/main.js?v=20260716a" defer></script>
+<script src="../assets/js/main.js?v=20260717b" defer></script>
 </body>
 </html>
