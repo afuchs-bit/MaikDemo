@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260717b" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260718b" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -299,39 +299,143 @@
       <p class="lead">Von der ersten Idee bis zur laufenden Pflege: Diese Leistungen setzen wir für private Gärten in Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer um.</p>
     </div>
 
-    <div class="services-grid">
-      <article class="service-card reveal">
-        <h3>Gartengestaltung</h3>
-        <p>Komplette Neu- und Umgestaltung: Wege, Beete, Rasen, Beleuchtung – geplant für Ihr Grundstück und Ihren Pflegeaufwand.</p>
-      </article>
-      <article class="service-card reveal">
-        <h3>Vorgartenbau</h3>
-        <p>Repräsentative, pflegeleichte Vorgärten mit Naturstein und strukturierter Bepflanzung – der erste Eindruck Ihres Hauses.</p>
-      </article>
-      <article class="service-card reveal">
-        <h3>Teichanlagen</h3>
-        <p>Wasser im Garten: Teichbau mit natürlicher Uferzone, Technik und Bepflanzung – vom Zierteich bis zur großen Anlage.</p>
-      </article>
-      <article class="service-card reveal">
-        <h3>Baumarbeiten &amp; Baumfällung</h3>
-        <p>Fachgerechter Schnitt, Fällung und Baumkontrolle durch den Sachverständigen – sicher und dokumentiert.</p>
-      </article>
-      <article class="service-card reveal">
-        <h3>Dachbegrünung</h3>
-        <p>Grüne Dächer für Garage, Carport oder Anbau – gut fürs Klima, die Dämmung und die Optik.</p>
-      </article>
-      <article class="service-card reveal">
-        <h3>Gartenpflege</h3>
-        <p>Regelmäßige Pflege, Hecken- und Gehölzschnitt, Saisonvorbereitung – damit Ihr Garten dauerhaft gepflegt bleibt.</p>
-      </article>
-      <article class="service-card reveal">
-        <h3>Palmen &amp; winterfeste Bepflanzung</h3>
-        <p>Mediterranes Flair, das den Ruhrgebiets-Winter übersteht – Auswahl, Pflanzung und Winterschutz vom Fachmann.</p>
-      </article>
-      <article class="service-card reveal">
-        <h3>Pool- &amp; Whirlpool-Umfeld</h3>
-        <p>Gestaltung rund um Pool und Whirlpool: Sichtschutz, Beläge, Bepflanzung – Ihre private Wellnesszone.</p>
-      </article>
+    <!-- Lageplan: jede Leistung hat ihren Platz im Beispielgarten.
+         Der SVG-Plan ist reine Dekoration (aria-hidden) – der komplette Inhalt
+         steht als Text in der Liste darunter und ist ohne JS vollständig lesbar. -->
+    <div class="lageplan" id="lageplan">
+      <div class="lageplan-grid">
+        <div class="lageplan-stage">
+          <figure class="lageplan-visual reveal">
+            <svg class="lp-plan" id="lpPlan" viewBox="0 0 640 520" aria-hidden="true" focusable="false">
+              <defs>
+                <pattern id="lpHatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+                  <line x1="0" y1="0" x2="0" y2="7" stroke="#c3cfb6" stroke-width="1.1"/>
+                </pattern>
+                <clipPath id="lpPlot">
+                  <path d="M62 64L582 48L602 396L516 486L88 470Z"/>
+                </clipPath>
+              </defs>
+
+              <!-- Raster + Grundstücksgrenze (Kontext, nicht interaktiv) -->
+              <g class="lp-grid" clip-path="url(#lpPlot)">
+                <path d="M40 120H620M40 180H620M40 240H620M40 300H620M40 360H620M40 420H620"/>
+                <path d="M120 30V500M180 30V500M240 30V500M300 30V500M360 30V500M420 30V500M480 30V500M540 30V500"/>
+              </g>
+              <path class="lp-edge" id="lpEdge" d="M62 64L582 48L602 396L516 486L88 470Z"/>
+              <path class="lp-house" d="M104 146H256V264H104Z"/>
+              <text class="lp-cap" x="114" y="176">Wohnhaus</text>
+
+              <!-- 8 Zonen – eine je Leistung -->
+              <g class="lp-zone" data-zone="vorgarten">
+                <path class="lp-paving" d="M150 66H440V124H150Z"/>
+                <path class="lp-face" d="M150 66H440V124H150Z"/>
+              </g>
+
+              <g class="lp-zone" data-zone="dach">
+                <path class="lp-paving" d="M258 172H350V238H258Z"/>
+                <path class="lp-face" d="M258 172H350V238H258Z"/>
+                <path class="lp-thin" d="M258 190H350M258 208H350M258 226H350"/>
+              </g>
+
+              <g class="lp-zone" data-zone="pflege">
+                <path class="lp-face lp-hedge" d="M98 286C102 322 100 366 97 404C96 424 96 438 98 452"/>
+                <path class="lp-thin lp-hedge-ticks" d="M90 300H112M90 330H112M90 360H112M90 390H112M90 420H112"/>
+              </g>
+
+              <g class="lp-zone" data-zone="palmen">
+                <circle class="lp-face" cx="182" cy="288" r="15"/>
+                <circle class="lp-face" cx="214" cy="306" r="11"/>
+                <circle class="lp-face" cx="176" cy="322" r="9"/>
+              </g>
+
+              <g class="lp-zone" data-zone="gestaltung">
+                <path class="lp-face" d="M272 286C324 268 400 272 438 296C462 312 456 352 430 378C402 406 336 418 296 400C262 385 256 336 268 312Z"/>
+              </g>
+
+              <g class="lp-zone" data-zone="teich">
+                <ellipse class="lp-face lp-water" cx="202" cy="412" rx="60" ry="40"/>
+              </g>
+
+              <g class="lp-zone" data-zone="baum">
+                <circle class="lp-face lp-tree" cx="498" cy="152" r="44"/>
+                <circle class="lp-face lp-tree" cx="556" cy="214" r="26"/>
+              </g>
+
+              <g class="lp-zone" data-zone="pool">
+                <path class="lp-paving" d="M440 312H578V400H440Z"/>
+                <rect class="lp-face lp-water" x="462" y="330" width="98" height="56" rx="16"/>
+              </g>
+            </svg>
+          </figure>
+
+          <ol class="lp-list reveal" id="lpList">
+            <li class="lp-item" data-zone="gestaltung" style="--x:55.5;--y:65.4">
+              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="true">
+                <span class="lp-dot" aria-hidden="true"></span>
+                <span class="lp-trigger-title">Gartengestaltung</span>
+              </button>
+              <p class="lp-trigger-desc">Komplette Neu- und Umgestaltung: Wege, Beete, Rasen, Beleuchtung – geplant für Ihr Grundstück und Ihren Pflegeaufwand.</p>
+            </li>
+            <li class="lp-item" data-zone="vorgarten" style="--x:46.1;--y:18.3">
+              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
+                <span class="lp-dot" aria-hidden="true"></span>
+                <span class="lp-trigger-title">Vorgartenbau</span>
+              </button>
+              <p class="lp-trigger-desc">Repräsentative, pflegeleichte Vorgärten mit Naturstein und strukturierter Bepflanzung – der erste Eindruck Ihres Hauses.</p>
+            </li>
+            <li class="lp-item" data-zone="teich" style="--x:31.6;--y:79.2">
+              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
+                <span class="lp-dot" aria-hidden="true"></span>
+                <span class="lp-trigger-title">Teichanlagen</span>
+              </button>
+              <p class="lp-trigger-desc">Wasser im Garten: Teichbau mit natürlicher Uferzone, Technik und Bepflanzung – vom Zierteich bis zur großen Anlage.</p>
+            </li>
+            <li class="lp-item" data-zone="baum" style="--x:77.8;--y:29.2">
+              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
+                <span class="lp-dot" aria-hidden="true"></span>
+                <span class="lp-trigger-title">Baumarbeiten &amp; Baumfällung</span>
+              </button>
+              <p class="lp-trigger-desc">Fachgerechter Schnitt, Fällung und Baumkontrolle durch den Sachverständigen – sicher und dokumentiert.</p>
+            </li>
+            <li class="lp-item" data-zone="dach" style="--x:47.5;--y:39.4">
+              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
+                <span class="lp-dot" aria-hidden="true"></span>
+                <span class="lp-trigger-title">Dachbegrünung</span>
+              </button>
+              <p class="lp-trigger-desc">Grüne Dächer für Garage, Carport oder Anbau – gut fürs Klima, die Dämmung und die Optik.</p>
+            </li>
+            <li class="lp-item" data-zone="pflege" style="--x:15.6;--y:71.2">
+              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
+                <span class="lp-dot" aria-hidden="true"></span>
+                <span class="lp-trigger-title">Gartenpflege</span>
+              </button>
+              <p class="lp-trigger-desc">Regelmäßige Pflege, Hecken- und Gehölzschnitt, Saisonvorbereitung – damit Ihr Garten dauerhaft gepflegt bleibt.</p>
+            </li>
+            <li class="lp-item" data-zone="palmen" style="--x:30.6;--y:57.7">
+              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
+                <span class="lp-dot" aria-hidden="true"></span>
+                <span class="lp-trigger-title">Palmen &amp; winterfeste Bepflanzung</span>
+              </button>
+              <p class="lp-trigger-desc">Mediterranes Flair, das den Ruhrgebiets-Winter übersteht – Auswahl, Pflanzung und Winterschutz vom Fachmann.</p>
+            </li>
+            <li class="lp-item" data-zone="pool" style="--x:79.1;--y:68.5">
+              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
+                <span class="lp-dot" aria-hidden="true"></span>
+                <span class="lp-trigger-title">Pool- &amp; Whirlpool-Umfeld</span>
+              </button>
+              <p class="lp-trigger-desc">Gestaltung rund um Pool und Whirlpool: Sichtschutz, Beläge, Bepflanzung – Ihre private Wellnesszone.</p>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Detailspalte: zeigt ab 900px die aktive Zone. Startzustand = Zone 1. -->
+        <div class="lageplan-panel" id="lpPanel" aria-live="polite">
+          <span class="lp-panel-eyebrow" id="lpPanelNum">01 / 08</span>
+          <h3 class="lp-panel-title" id="lpPanelTitle">Gartengestaltung</h3>
+          <p class="lp-panel-desc" id="lpPanelDesc">Komplette Neu- und Umgestaltung: Wege, Beete, Rasen, Beleuchtung – geplant für Ihr Grundstück und Ihren Pflegeaufwand.</p>
+          <p class="lp-panel-hint">Beispielgarten – Zonen anfahren für Details.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -729,6 +833,6 @@
   </a>
 </div>
 
-<script src="../assets/js/main.js?v=20260717b" defer></script>
+<script src="../assets/js/main.js?v=20260718b" defer></script>
 </body>
 </html>

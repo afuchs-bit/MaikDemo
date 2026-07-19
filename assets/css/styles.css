@@ -1464,24 +1464,108 @@ p  { margin: 0; }
   .ba-hint { display: none; }
 }
 
-/* ---------- Leistungen (Privat) ---------- */
+/* ---------- Leistungen (Privat): Lageplan ----------
+   Basis (mobile-first): schematischer Plan + einfache Textliste, in der
+   jede Leistung vollständig lesbar ist – zugleich No-JS-Fallback.
+   Enhancement (>=900px): Liste wird zu Pins auf dem Plan, Details
+   erscheinen in der Panel-Spalte daneben. Siehe main.js. */
 .section-services { background: var(--bg); }
-.services-grid {
-  display: grid; gap: 18px;
-  grid-template-columns: repeat(4, 1fr);
+
+.lageplan-grid { display: grid; gap: clamp(24px, 4vw, 40px); }
+.lageplan-stage { position: relative; }
+
+.lageplan-visual { margin: 0; }
+.lp-plan { width: 100%; height: auto; display: block; overflow: visible; }
+
+/* Kontext-Ebene: Raster, Grundstücksgrenze, Haus */
+.lp-grid  { fill: none; stroke: var(--green-300); stroke-width: .6; opacity: .4; }
+.lp-edge  { fill: none; stroke: var(--green-800); stroke-width: 2.2; stroke-linejoin: round; }
+.lp-house { fill: var(--green-50); stroke: var(--green-700); stroke-width: 1.6; }
+.lp-cap   { font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; fill: var(--ink-mute); }
+.lp-thin  { fill: none; stroke: var(--green-500); stroke-width: 1; opacity: .5; }
+
+/* Zonen – eine je Leistung. Aktivzustand hebt die Fläche hervor. */
+.lp-zone { transition: opacity .3s var(--ease); }
+.lp-face {
+  fill: var(--green-50); stroke: var(--green-300); stroke-width: 1.4;
+  transition: fill .3s var(--ease), stroke .3s var(--ease), stroke-width .3s var(--ease);
 }
-.service-card {
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 22px;
-  box-shadow: var(--shadow-card);
-  display: flex; flex-direction: column; gap: 10px;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+.lp-paving { fill: url(#lpHatch); stroke: none; opacity: .5; }
+.lp-water  { fill: #cfe0e4; stroke: #8fb3ba; }
+.lp-tree   { fill: var(--green-50); stroke: var(--green-500); }
+.lp-hedge  { fill: none; stroke: var(--green-500); stroke-width: 3; stroke-linecap: round; }
+.lp-hedge-ticks { opacity: .7; }
+
+.lp-zone.is-active .lp-face { fill: var(--green-100); stroke: var(--green-700); stroke-width: 2.4; }
+.lp-zone.is-active .lp-water { fill: #bcd6dc; stroke: var(--green-700); }
+.lp-zone.is-active .lp-hedge { fill: none; stroke: var(--green-700); }
+.lp-zone.is-active .lp-paving { opacity: .8; }
+
+/* Aufbau-Animation: einmalig die Grundstücksgrenze zeichnen, danach blenden
+   alle Zonen gemeinsam ein – bewusst kein Stagger pro Zone.
+   .is-seq setzt nur das JS – ohne JS ist der Plan sofort komplett sichtbar. */
+.lp-plan.is-seq .lp-zone { opacity: 0; }
+.lageplan-visual.is-in .lp-plan.is-seq .lp-edge { animation: lpDraw 1200ms cubic-bezier(.45,.05,.2,1) forwards; }
+.lageplan-visual.is-in .lp-plan.is-seq .lp-zone { animation: lpZoneIn 500ms var(--ease) 420ms forwards; }
+@keyframes lpDraw { to { stroke-dashoffset: 0; } }
+@keyframes lpZoneIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-plan.is-seq .lp-zone { opacity: 1 !important; }
 }
-.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); border-color: var(--green-300); }
-.service-card h3 { font-size: 1.08rem; }
-.service-card p { color: var(--ink-2); font-size: .92rem; }
+
+/* Liste – Basis: schlichte Textliste, ausdrücklich keine Karten */
+.lp-list { list-style: none; margin: clamp(20px, 3vw, 28px) 0 0; padding: 0; display: grid; gap: 18px; }
+.lp-item { margin: 0; }
+.lp-trigger {
+  display: flex; align-items: center; gap: 10px;
+  background: none; border: 0; padding: 0; margin: 0;
+  font-family: var(--display); font-weight: 700; font-size: 1.04rem;
+  color: var(--ink); text-align: left; cursor: pointer;
+}
+.lp-dot {
+  flex: none; width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg-elev); border: 2.4px solid var(--green-700);
+  transition: background .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.lp-trigger-desc { margin: 6px 0 0 21px; color: var(--ink-2); font-size: .94rem; }
+.lp-trigger:focus-visible { outline: 2px solid var(--green-700); outline-offset: 4px; border-radius: 4px; }
+
+/* Panel – ab 900px die Detailspalte, darunter überflüssig (Texte stehen in der Liste) */
+.lageplan-panel { display: none; }
+.lp-panel-eyebrow { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--ink-mute); font-weight: 600; }
+.lp-panel-title { font-size: 1.5rem; margin: 10px 0 0; }
+.lp-panel-desc { color: var(--ink-2); margin: 12px 0 0; }
+.lp-panel-hint { margin: 20px 0 0; font-size: .78rem; color: var(--ink-mute); }
+
+@media (min-width: 900px) {
+  .lageplan-grid { grid-template-columns: 1.25fr .85fr; align-items: start; }
+
+  /* Liste wird zur Pin-Ebene über dem Plan */
+  .lp-list { position: absolute; inset: 0; margin: 0; display: block; }
+  /* Pins erscheinen zum Ende der Linie – gemeinsam, ohne Versatz.
+     !important schlägt das Inline-transitionDelay des .reveal-Observers (main.js). */
+  .lp-list.reveal { transform: none; transition: opacity .5s var(--ease); transition-delay: 1s !important; }
+  .lp-item { position: absolute; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); transform: translate(-50%, -50%); }
+  .lp-trigger { padding: 16px; border-radius: 50%; }
+  .lp-trigger-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .lp-trigger-desc { display: none; }
+  .lp-trigger:hover .lp-dot,
+  .lp-trigger[aria-expanded="true"] .lp-dot { background: var(--coral); border-color: #fff; transform: scale(1.35); box-shadow: 0 0 0 4px rgba(235,108,68,.22); }
+
+  .lageplan-panel {
+    display: block; position: sticky; top: 116px;
+    background: var(--bg-elev); border: 1px solid var(--line);
+    border-radius: var(--radius); box-shadow: var(--shadow-card);
+    padding: clamp(24px, 2.4vw, 32px);
+  }
+}
+
+@media (max-width: 640px) {
+  .lp-list { gap: 15px; }
+  .lp-trigger { font-size: .98rem; }
+  .lp-trigger-desc { font-size: .9rem; margin-top: 4px; }
+}
 
 /* ---------- Ablauf: Zeitstrahl „Der Weg zu Ihrem Garten" ----------
    Basis (mobile-first): vertikaler Zeitstrahl – funktioniert ohne JS,
@@ -1664,16 +1748,11 @@ p  { margin: 0; }
     url("../img/ueber/ueber-1.jpg");
 }
 
-@media (max-width: 1100px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
 @media (max-width: 900px) {
   .ba-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
-  .services-grid { grid-template-columns: 1fr; }
   .hero-trust-mini { border-radius: 18px; }
   .htm-sep { display: none; }
 }

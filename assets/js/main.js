@@ -446,4 +446,62 @@
     steps.addEventListener('mouseleave', () => { if (locked) render(4); });
   })();
 
+  // --- Leistungen (Privat): Lageplan – Zonen per Hover/Fokus ansteuern ---
+  // Progressive Enhancement: ohne JS steht jede Leistung als Text in der Liste,
+  // der Plan ist dann vollständig sichtbar (kein .is-seq).
+  (function () {
+    const root  = document.getElementById('lageplan');
+    if (!root) return;
+    const plan  = document.getElementById('lpPlan');
+    const list  = document.getElementById('lpList');
+    const pNum  = document.getElementById('lpPanelNum');
+    const pTit  = document.getElementById('lpPanelTitle');
+    const pDesc = document.getElementById('lpPanelDesc');
+    if (!plan || !list) return;
+
+    const items = Array.from(list.querySelectorAll('.lp-item'));
+    const wide  = window.matchMedia('(min-width: 900px)');
+
+    const setActive = (item) => {
+      const zone = item.dataset.zone;
+      items.forEach((li) => {
+        const btn = li.querySelector('.lp-trigger');
+        if (btn) btn.setAttribute('aria-expanded', String(li === item));
+      });
+      plan.querySelectorAll('.lp-zone').forEach((g) => {
+        g.classList.toggle('is-active', g.dataset.zone === zone);
+      });
+      // Panel nur befüllen, wenn es sichtbar ist – darunter stehen die Texte ohnehin in der Liste.
+      if (!wide.matches || !pTit || !pDesc || !pNum) return;
+      const idx = items.indexOf(item) + 1;
+      pNum.textContent  = String(idx).padStart(2, '0') + ' / ' + String(items.length).padStart(2, '0');
+      pTit.textContent  = item.querySelector('.lp-trigger-title').textContent;
+      pDesc.textContent = item.querySelector('.lp-trigger-desc').textContent;
+    };
+
+    items.forEach((li) => {
+      const btn = li.querySelector('.lp-trigger');
+      if (!btn) return;
+      const go = () => setActive(li);
+      btn.addEventListener('mouseenter', go);
+      btn.addEventListener('focus', go);
+      btn.addEventListener('click', go);
+    });
+    // Zeiger verlässt den Plan: zurück auf die Startzone (wie beim Bestandsplan).
+    root.addEventListener('mouseleave', () => setActive(items[0]));
+
+    setActive(items[0]);
+
+    // Reduzierte Bewegung: kein Aufbau, Plan bleibt sofort komplett sichtbar.
+    if (reduced) return;
+
+    plan.classList.add('is-seq');
+    const edge = document.getElementById('lpEdge');
+    if (edge && edge.getTotalLength) {
+      const L = edge.getTotalLength();
+      edge.style.strokeDasharray = L;
+      edge.style.strokeDashoffset = L;
+    }
+  })();
+
 })();
