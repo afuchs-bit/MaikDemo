@@ -446,62 +446,142 @@
     steps.addEventListener('mouseleave', () => { if (locked) render(4); });
   })();
 
-  // --- Leistungen (Privat): Lageplan – Zonen per Hover/Fokus ansteuern ---
-  // Progressive Enhancement: ohne JS steht jede Leistung als Text in der Liste,
-  // der Plan ist dann vollständig sichtbar (kein .is-seq).
+  // --- Leistungen (Privat): Karten aufklappen + roter Faden ---
+  // Progressive Enhancement: ohne JS sind alle Texte lesbar (Panel per Hover/
+  // Fokus per CSS), der Faden fehlt dann schlicht.
   (function () {
-    const root  = document.getElementById('lageplan');
-    if (!root) return;
-    const plan  = document.getElementById('lpPlan');
-    const list  = document.getElementById('lpList');
-    const pNum  = document.getElementById('lpPanelNum');
-    const pTit  = document.getElementById('lpPanelTitle');
-    const pDesc = document.getElementById('lpPanelDesc');
-    if (!plan || !list) return;
+    const flow = document.getElementById('svcFlow');
+    if (!flow) return;
+    const grid = document.getElementById('svcGrid');
+    const svg  = document.getElementById('svcThread');
+    const cta  = document.getElementById('svcCta');
+    if (!grid || !svg || !cta) return;
 
-    const items = Array.from(list.querySelectorAll('.lp-item'));
-    const wide  = window.matchMedia('(min-width: 900px)');
+    const DUR = 1200;
+    let played = false;
 
-    const setActive = (item) => {
-      const zone = item.dataset.zone;
-      items.forEach((li) => {
-        const btn = li.querySelector('.lp-trigger');
-        if (btn) btn.setAttribute('aria-expanded', String(li === item));
+    // Tap: Panel oeffnen/schliessen, immer nur eine Karte. Links durchlassen.
+    grid.addEventListener('click', (e) => {
+      if (e.target.closest('.svc-more')) return;
+      const card = e.target.closest('.svc-card');
+      if (!card) return;
+      const wasOpen = card.classList.contains('is-open');
+      grid.querySelectorAll('.svc-card.is-open').forEach((c) => c.classList.remove('is-open'));
+      if (!wasOpen) card.classList.add('is-open');
+    });
+
+    // Geometrie aus dem tatsaechlichen Layout (4 / 2 / 1 Spalten).
+    // Bewusst ueber getBoundingClientRect statt offsetTop/-Left: die Karten und
+    // der CTA haengen an unterschiedlichen offsetParents (.svc-cta ist relativ
+    // positioniert), offset* wuerde die beiden in verschiedene Koordinaten-
+    // systeme legen und den Schlussbogen an den oberen Rand setzen.
+    const geometry = () => {
+      const cardEls = Array.from(grid.querySelectorAll('.svc-card'));
+      if (!cardEls.length) return null;
+      const origin = flow.getBoundingClientRect();
+      const box = (el) => {
+        const r = el.getBoundingClientRect();
+        return { left: r.left - origin.left, top: r.top - origin.top, width: r.width, height: r.height };
+      };
+      const cards = cardEls.map(box);
+      const rowMap = new Map();
+      cards.forEach((c) => {
+        const t = Math.round(c.top);
+        if (!rowMap.has(t)) rowMap.set(t, []);
+        rowMap.get(t).push(c);
       });
-      plan.querySelectorAll('.lp-zone').forEach((g) => {
-        g.classList.toggle('is-active', g.dataset.zone === zone);
-      });
-      // Panel nur befüllen, wenn es sichtbar ist – darunter stehen die Texte ohnehin in der Liste.
-      if (!wide.matches || !pTit || !pDesc || !pNum) return;
-      const idx = items.indexOf(item) + 1;
-      pNum.textContent  = String(idx).padStart(2, '0') + ' / ' + String(items.length).padStart(2, '0');
-      pTit.textContent  = item.querySelector('.lp-trigger-title').textContent;
-      pDesc.textContent = item.querySelector('.lp-trigger-desc').textContent;
+      const rows = [...rowMap.entries()].sort((a, b) => a[0] - b[0]).map((e) => e[1]);
+      const cols = Math.max(...rows.map((r) => r.length));
+      const ctaBox = box(cta);
+      const ctaX = ctaBox.left + ctaBox.width / 2;
+      const ctaY = ctaBox.top + 4;
+      let d = '';
+      const dots = [], knots = [];
+
+      if (cols === 1) {
+        // Mobil: schlanke Spine links NEBEN den Karten. (Innerhalb der Karten
+        // laege sie hinter deren Hintergrund und waere unsichtbar.)
+        const x = Math.max(4, cards[0].left - 12);
+        const yFirst = cards[0].top + cards[0].height / 2;
+        const lastCard = cards[cards.length - 1];
+        const yLast = lastCard.top + lastCard.height / 2;
+        d = 'M ' + x + ' ' + yFirst + ' L ' + x + ' ' + yLast;
+        d += ' C ' + x + ' ' + (yLast + 40) + ', ' + ctaX + ' ' + (ctaY - 40) + ', ' + ctaX + ' ' + ctaY;
+        cards.forEach((c) => dots.push([x, c.top + c.height / 2]));
+        knots.push([x, yFirst], [ctaX, ctaY]);
+      } else {
+        // Schlangenlinie durch die Zeilen, Punkte sitzen in den Fugen
+        let pX = 0, pY = 0;
+        rows.forEach((row, i) => {
+          const yc = row[0].top + row[0].height / 2;
+          const leftX = row[0].left;
+          const last = row[row.length - 1];
+          const rightX = last.left + last.width;
+          const goRight = (i % 2 === 0);
+          const sX = goRight ? leftX - 12 : rightX + 12;
+          const eX = goRight ? rightX + 12 : leftX - 12;
+          if (i === 0) { d += 'M ' + sX + ' ' + yc; knots.push([sX, yc]); }
+          else { d += ' C ' + pX + ' ' + (pY + 34) + ', ' + sX + ' ' + (yc - 34) + ', ' + sX + ' ' + yc; }
+          d += ' L ' + eX + ' ' + yc;
+          for (let k = 0; k < row.length - 1; k++) {
+            dots.push([(row[k].left + row[k].width + row[k + 1].left) / 2, yc]);
+          }
+          pX = eX; pY = yc;
+        });
+        d += ' C ' + pX + ' ' + (pY + 46) + ', ' + ctaX + ' ' + (ctaY - 46) + ', ' + ctaX + ' ' + ctaY;
+        knots.push([ctaX, ctaY]);
+      }
+      return { d, dots, knots };
     };
 
-    items.forEach((li) => {
-      const btn = li.querySelector('.lp-trigger');
-      if (!btn) return;
-      const go = () => setActive(li);
-      btn.addEventListener('mouseenter', go);
-      btn.addEventListener('focus', go);
-      btn.addEventListener('click', go);
-    });
-    // Zeiger verlässt den Plan: zurück auf die Startzone (wie beim Bestandsplan).
-    root.addEventListener('mouseleave', () => setActive(items[0]));
+    const render = (animate) => {
+      const g = geometry();
+      if (!g) return;
+      const W = flow.clientWidth, H = flow.clientHeight;
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      svg.setAttribute('width', W);
+      svg.setAttribute('height', H);
 
-    setActive(items[0]);
+      let html = '<path d="' + g.d + '" class="svc-thread-line"/>';
+      g.dots.forEach((p) => { html += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="3" class="svc-thread-dot"/>'; });
+      g.knots.forEach((p) => { html += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="4.5" class="svc-thread-knot"/>'; });
+      svg.innerHTML = html;
 
-    // Reduzierte Bewegung: kein Aufbau, Plan bleibt sofort komplett sichtbar.
-    if (reduced) return;
+      const line = svg.querySelector('.svc-thread-line');
+      if (!animate || reduced || !line.getTotalLength) {
+        svg.classList.remove('is-seq');
+        return;
+      }
 
-    plan.classList.add('is-seq');
-    const edge = document.getElementById('lpEdge');
-    if (edge && edge.getTotalLength) {
-      const L = edge.getTotalLength();
-      edge.style.strokeDasharray = L;
-      edge.style.strokeDashoffset = L;
+      // Einmalig: Linie zeichnen. Punkte und Knoten blendet .is-seq per CSS ein.
+      svg.classList.add('is-seq');
+      const L = line.getTotalLength();
+      line.style.strokeDasharray = L;
+      line.style.strokeDashoffset = L;
+      line.getBoundingClientRect(); // Reflow erzwingen
+      line.style.transition = 'stroke-dashoffset ' + (DUR / 1000) + 's cubic-bezier(.45,.05,.2,1)';
+      line.style.strokeDashoffset = '0';
+    };
+
+    if (!reduced && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting || played) return;
+          played = true;
+          render(true);
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.25 });
+      io.observe(flow);
+    } else {
+      render(false);
     }
+
+    // Resize/Fonts: Geometrie neu, aber nie erneut animieren.
+    let t;
+    window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => render(false), 120); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => render(false));
+    setTimeout(() => { if (!played) render(false); }, 300);
   })();
 
 })();

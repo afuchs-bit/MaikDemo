@@ -169,7 +169,7 @@ Stellen im Markup:
 - **B2** Kontakt-Select „Worum geht es?" (`privatkunden/index.html`, `name="bereich"`)
 - **C1** Privatkunden-Chips (`index.html`, `.chips`)
 - **C2** Gewerbekunden-Chips (`index.html`, `.chips`)
-- (zusätzlich: Lageplan-Titel `.lp-trigger-title` und JSON-LD `OfferCatalog` auf der Privatkunden-Seite)
+- (zusätzlich: Leistungskarten-Überschriften `.svc-card h3` und JSON-LD `OfferCatalog` auf der Privatkunden-Seite)
 
 | Taxonomie-Slug        | A1 Home-Footer | A2 Priv-Footer | B1 „Bereich" | B2 „Worum geht es?" | C1 Privat-Chips | C2 Gewerbe-Chips |
 |-----------------------|----------------|----------------|--------------|---------------------|-----------------|------------------|

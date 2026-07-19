@@ -42,6 +42,14 @@ Früheres, nicht mehr genutztes KI-Bild:
   **Nachzuliefern:** echte Vorher/Nachher-Fotopaare (gleiche Perspektive!), ablegen als
   `assets/img/privat/ba-1-vorher.jpg` + `ba-1-nachher.jpg` (usw.), dann in `privatkunden/index.html` die `<img>`-Quellen tauschen und den CSS-Platzhalter-Filter entfernen.
 - **Projektkarte „Teichgarten mit Palmen“:** nutzt lokal `assets/img/ueber/ueber-1.jpg`.
+- **Leistungskarten (`#leistungen`):** die 8 Karten zeigen im aufgeklappten Panel ein Foto.
+  **Nachzuliefern** – Dateien einfach unter diesen Pfaden ablegen, es ist **keine Code-Änderung nötig**
+  (die Pfade stehen als `--svc-img` je `[data-svc]` in `styles.css`; fehlt eine Datei, greift automatisch
+  die Schraffur. Achtung: im CSS sind sie als `../img/leistungen/…` notiert, weil relative URLs gegen
+  `assets/css/` aufgelöst werden – gemeint ist immer `assets/img/leistungen/`):
+  `assets/img/leistungen/gartengestaltung.jpg`, `vorgarten.jpg`, `teich.jpg`, `baumarbeiten.jpg`,
+  `dachbegruenung.jpg`, `gartenpflege.jpg`, `palmen.jpg`, `pool.jpg`
+  Querformat, mind. ca. 800 × 600 px; das Panel legt einen dunklen Verlauf darüber, damit der Text lesbar bleibt.
 
 ## Nach lokalem Sichern: Pfade in HTML/CSS ersetzen
 ```bash

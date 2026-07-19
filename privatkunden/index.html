@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260718b" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260718c" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -299,142 +299,96 @@
       <p class="lead">Von der ersten Idee bis zur laufenden Pflege: Diese Leistungen setzen wir für private Gärten in Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer um.</p>
     </div>
 
-    <!-- Lageplan: jede Leistung hat ihren Platz im Beispielgarten.
-         Der SVG-Plan ist reine Dekoration (aria-hidden) – der komplette Inhalt
-         steht als Text in der Liste darunter und ist ohne JS vollständig lesbar. -->
-    <div class="lageplan" id="lageplan">
-      <div class="lageplan-grid">
-        <div class="lageplan-stage">
-          <figure class="lageplan-visual reveal">
-            <svg class="lp-plan" id="lpPlan" viewBox="0 0 640 520" aria-hidden="true" focusable="false">
-              <defs>
-                <pattern id="lpHatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="0" x2="0" y2="7" stroke="#c3cfb6" stroke-width="1.1"/>
-                </pattern>
-                <clipPath id="lpPlot">
-                  <path d="M62 64L582 48L602 396L516 486L88 470Z"/>
-                </clipPath>
-              </defs>
+    <!-- Leistungskarten mit rotem Faden: die Faden-Linie liegt hinter den Karten
+         in den Fugen des Rasters und mündet im CTA. Reines Deko-SVG (aria-hidden),
+         das JS zeichnet sie einmalig; ohne JS ist sie sofort vollständig sichtbar. -->
+    <div class="svc-flow" id="svcFlow">
+      <svg class="svc-thread" id="svcThread" aria-hidden="true" focusable="false"></svg>
 
-              <!-- Raster + Grundstücksgrenze (Kontext, nicht interaktiv) -->
-              <g class="lp-grid" clip-path="url(#lpPlot)">
-                <path d="M40 120H620M40 180H620M40 240H620M40 300H620M40 360H620M40 420H620"/>
-                <path d="M120 30V500M180 30V500M240 30V500M300 30V500M360 30V500M420 30V500M480 30V500M540 30V500"/>
-              </g>
-              <path class="lp-edge" id="lpEdge" d="M62 64L582 48L602 396L516 486L88 470Z"/>
-              <path class="lp-house" d="M104 146H256V264H104Z"/>
-              <text class="lp-cap" x="114" y="176">Wohnhaus</text>
+      <div class="svc-grid reveal" id="svcGrid">
+        <article class="svc-card" data-svc="gartengestaltung">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></div>
+          <h3>Gartengestaltung</h3>
+          <p class="svc-short">Neu- und Umgestaltung, geplant für Ihr Grundstück.</p>
+          <div class="svc-reveal">
+            <p class="svc-long">Wege, Beete, Rasen und Beleuchtung – als stimmiges Gesamtbild geplant.</p>
+            <a class="svc-more" href="#anfrage">Termin anfragen <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
 
-              <!-- 8 Zonen – eine je Leistung -->
-              <g class="lp-zone" data-zone="vorgarten">
-                <path class="lp-paving" d="M150 66H440V124H150Z"/>
-                <path class="lp-face" d="M150 66H440V124H150Z"/>
-              </g>
+        <article class="svc-card" data-svc="vorgarten">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <h3>Vorgartenbau</h3>
+          <p class="svc-short">Repräsentativ und pflegeleicht – der erste Eindruck.</p>
+          <div class="svc-reveal">
+            <p class="svc-long">Naturstein und strukturierte Bepflanzung, die dauerhaft ordentlich bleibt.</p>
+            <a class="svc-more" href="../projekte/?tab=alle&amp;leistung=vorgarten">Projekte ansehen <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
 
-              <g class="lp-zone" data-zone="dach">
-                <path class="lp-paving" d="M258 172H350V238H258Z"/>
-                <path class="lp-face" d="M258 172H350V238H258Z"/>
-                <path class="lp-thin" d="M258 190H350M258 208H350M258 226H350"/>
-              </g>
+        <article class="svc-card" data-svc="teich">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div>
+          <h3>Teichanlagen</h3>
+          <p class="svc-short">Vom Zierteich bis zur großen Anlage.</p>
+          <div class="svc-reveal">
+            <p class="svc-long">Natürliche Uferzone, Technik und Bepflanzung – sauber gebaut.</p>
+            <a class="svc-more" href="../projekte/?tab=alle&amp;leistung=teichbau">Projekte ansehen <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
 
-              <g class="lp-zone" data-zone="pflege">
-                <path class="lp-face lp-hedge" d="M98 286C102 322 100 366 97 404C96 424 96 438 98 452"/>
-                <path class="lp-thin lp-hedge-ticks" d="M90 300H112M90 330H112M90 360H112M90 390H112M90 420H112"/>
-              </g>
+        <article class="svc-card" data-svc="baumarbeiten">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M12 14.5V21"/><path d="M9 21h6"/></svg></div>
+          <h3>Baumarbeiten &amp; Baumfällung</h3>
+          <p class="svc-short">Schnitt, Fällung &amp; Kontrolle vom Sachverständigen.</p>
+          <div class="svc-reveal">
+            <p class="svc-long">Fällung, Schnitt und dokumentierte Kontrolle – sicher und fachgerecht.</p>
+            <a class="svc-more" href="#anfrage">Termin anfragen <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
 
-              <g class="lp-zone" data-zone="palmen">
-                <circle class="lp-face" cx="182" cy="288" r="15"/>
-                <circle class="lp-face" cx="214" cy="306" r="11"/>
-                <circle class="lp-face" cx="176" cy="322" r="9"/>
-              </g>
+        <article class="svc-card" data-svc="dachbegruenung">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
+          <h3>Dachbegrünung</h3>
+          <p class="svc-short">Grüne Dächer für Garage, Carport oder Anbau.</p>
+          <div class="svc-reveal">
+            <p class="svc-long">Gut für Klima, Dämmung und Optik – auf Garage, Carport oder Anbau.</p>
+            <a class="svc-more" href="#anfrage">Termin anfragen <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
 
-              <g class="lp-zone" data-zone="gestaltung">
-                <path class="lp-face" d="M272 286C324 268 400 272 438 296C462 312 456 352 430 378C402 406 336 418 296 400C262 385 256 336 268 312Z"/>
-              </g>
+        <article class="svc-card" data-svc="gartenpflege">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88"/><path d="M14.47 14.48 20 20"/><path d="M8.12 8.12 12 12"/></svg></div>
+          <h3>Gartenpflege</h3>
+          <p class="svc-short">Regelmäßiger Schnitt, damit alles gepflegt bleibt.</p>
+          <div class="svc-reveal">
+            <p class="svc-long">Hecken- und Gehölzschnitt, Saisonvorbereitung, laufende Pflege.</p>
+            <a class="svc-more" href="#anfrage">Termin anfragen <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
 
-              <g class="lp-zone" data-zone="teich">
-                <ellipse class="lp-face lp-water" cx="202" cy="412" rx="60" ry="40"/>
-              </g>
+        <article class="svc-card" data-svc="palmen">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22V9"/><path d="M12 9c-4-2-7-1-9 2"/><path d="M12 9c4-2 7-1 9 2"/><path d="M12 9c-2-3-2-6 0-8"/><path d="M12 9c-3-1-5.5 0-6.5 3"/><path d="M12 9c3-1 5.5 0 6.5 3"/></svg></div>
+          <h3>Palmen &amp; winterfeste Bepflanzung</h3>
+          <p class="svc-short">Mediterranes Flair, das den Winter übersteht.</p>
+          <div class="svc-reveal">
+            <p class="svc-long">Winterharte Palmen und mediterrane Pflanzen – inklusive Winterschutz.</p>
+            <a class="svc-more" href="#anfrage">Termin anfragen <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
 
-              <g class="lp-zone" data-zone="baum">
-                <circle class="lp-face lp-tree" cx="498" cy="152" r="44"/>
-                <circle class="lp-face lp-tree" cx="556" cy="214" r="26"/>
-              </g>
+        <article class="svc-card" data-svc="pool">
+          <div class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 6c.6.5 1.4 1 2.5 1C7 7 7 5 9.5 5s2.5 2 5 2 2.4-2 4.9-2c1.1 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.4 1 2.5 1C7 13 7 11 9.5 11s2.5 2 5 2 2.4-2 4.9-2c1.1 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.4 1 2.5 1C7 19 7 17 9.5 17s2.5 2 5 2 2.4-2 4.9-2c1.1 0 1.9.5 2.5 1"/></svg></div>
+          <h3>Pool- &amp; Whirlpool-Umfeld</h3>
+          <p class="svc-short">Ihre private Wellnesszone im Garten.</p>
+          <div class="svc-reveal">
+            <p class="svc-long">Sichtschutz, Beläge und Bepflanzung rund um Pool und Whirlpool.</p>
+            <a class="svc-more" href="#anfrage">Termin anfragen <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
 
-              <g class="lp-zone" data-zone="pool">
-                <path class="lp-paving" d="M440 312H578V400H440Z"/>
-                <rect class="lp-face lp-water" x="462" y="330" width="98" height="56" rx="16"/>
-              </g>
-            </svg>
-          </figure>
-
-          <ol class="lp-list reveal" id="lpList">
-            <li class="lp-item" data-zone="gestaltung" style="--x:55.5;--y:65.4">
-              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="true">
-                <span class="lp-dot" aria-hidden="true"></span>
-                <span class="lp-trigger-title">Gartengestaltung</span>
-              </button>
-              <p class="lp-trigger-desc">Komplette Neu- und Umgestaltung: Wege, Beete, Rasen, Beleuchtung – geplant für Ihr Grundstück und Ihren Pflegeaufwand.</p>
-            </li>
-            <li class="lp-item" data-zone="vorgarten" style="--x:46.1;--y:18.3">
-              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
-                <span class="lp-dot" aria-hidden="true"></span>
-                <span class="lp-trigger-title">Vorgartenbau</span>
-              </button>
-              <p class="lp-trigger-desc">Repräsentative, pflegeleichte Vorgärten mit Naturstein und strukturierter Bepflanzung – der erste Eindruck Ihres Hauses.</p>
-            </li>
-            <li class="lp-item" data-zone="teich" style="--x:31.6;--y:79.2">
-              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
-                <span class="lp-dot" aria-hidden="true"></span>
-                <span class="lp-trigger-title">Teichanlagen</span>
-              </button>
-              <p class="lp-trigger-desc">Wasser im Garten: Teichbau mit natürlicher Uferzone, Technik und Bepflanzung – vom Zierteich bis zur großen Anlage.</p>
-            </li>
-            <li class="lp-item" data-zone="baum" style="--x:77.8;--y:29.2">
-              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
-                <span class="lp-dot" aria-hidden="true"></span>
-                <span class="lp-trigger-title">Baumarbeiten &amp; Baumfällung</span>
-              </button>
-              <p class="lp-trigger-desc">Fachgerechter Schnitt, Fällung und Baumkontrolle durch den Sachverständigen – sicher und dokumentiert.</p>
-            </li>
-            <li class="lp-item" data-zone="dach" style="--x:47.5;--y:39.4">
-              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
-                <span class="lp-dot" aria-hidden="true"></span>
-                <span class="lp-trigger-title">Dachbegrünung</span>
-              </button>
-              <p class="lp-trigger-desc">Grüne Dächer für Garage, Carport oder Anbau – gut fürs Klima, die Dämmung und die Optik.</p>
-            </li>
-            <li class="lp-item" data-zone="pflege" style="--x:15.6;--y:71.2">
-              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
-                <span class="lp-dot" aria-hidden="true"></span>
-                <span class="lp-trigger-title">Gartenpflege</span>
-              </button>
-              <p class="lp-trigger-desc">Regelmäßige Pflege, Hecken- und Gehölzschnitt, Saisonvorbereitung – damit Ihr Garten dauerhaft gepflegt bleibt.</p>
-            </li>
-            <li class="lp-item" data-zone="palmen" style="--x:30.6;--y:57.7">
-              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
-                <span class="lp-dot" aria-hidden="true"></span>
-                <span class="lp-trigger-title">Palmen &amp; winterfeste Bepflanzung</span>
-              </button>
-              <p class="lp-trigger-desc">Mediterranes Flair, das den Ruhrgebiets-Winter übersteht – Auswahl, Pflanzung und Winterschutz vom Fachmann.</p>
-            </li>
-            <li class="lp-item" data-zone="pool" style="--x:79.1;--y:68.5">
-              <button type="button" class="lp-trigger" aria-controls="lpPanel" aria-expanded="false">
-                <span class="lp-dot" aria-hidden="true"></span>
-                <span class="lp-trigger-title">Pool- &amp; Whirlpool-Umfeld</span>
-              </button>
-              <p class="lp-trigger-desc">Gestaltung rund um Pool und Whirlpool: Sichtschutz, Beläge, Bepflanzung – Ihre private Wellnesszone.</p>
-            </li>
-          </ol>
-        </div>
-
-        <!-- Detailspalte: zeigt ab 900px die aktive Zone. Startzustand = Zone 1. -->
-        <div class="lageplan-panel" id="lpPanel" aria-live="polite">
-          <span class="lp-panel-eyebrow" id="lpPanelNum">01 / 08</span>
-          <h3 class="lp-panel-title" id="lpPanelTitle">Gartengestaltung</h3>
-          <p class="lp-panel-desc" id="lpPanelDesc">Komplette Neu- und Umgestaltung: Wege, Beete, Rasen, Beleuchtung – geplant für Ihr Grundstück und Ihren Pflegeaufwand.</p>
-          <p class="lp-panel-hint">Beispielgarten – Zonen anfahren für Details.</p>
-        </div>
+      <div class="svc-cta">
+        <a class="btn btn-primary" id="svcCta" href="#anfrage">Vor-Ort-Termin anfragen</a>
       </div>
     </div>
   </div>
@@ -833,6 +787,6 @@
   </a>
 </div>
 
-<script src="../assets/js/main.js?v=20260718b" defer></script>
+<script src="../assets/js/main.js?v=20260718c" defer></script>
 </body>
 </html>
