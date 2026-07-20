@@ -449,7 +449,8 @@ p  { margin: 0; }
 .trust-stars { display: flex; flex-direction: column; gap: 4px; }
 .stars {
   position: relative; display: inline-block;
-  width: 96px; height: 16px;
+  /* Breite = genau eine Kachel (5 Sterne a 16px); mehr wuerde repeat-x sichtbar machen */
+  width: 80px; height: 16px;
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 16'><g fill='%23e0dccd'><polygon points='8,1 10.2,5.8 15.5,6.6 11.7,10.3 12.6,15.6 8,13 3.4,15.6 4.3,10.3 0.5,6.6 5.8,5.8'/><polygon points='24,1 26.2,5.8 31.5,6.6 27.7,10.3 28.6,15.6 24,13 19.4,15.6 20.3,10.3 16.5,6.6 21.8,5.8'/><polygon points='40,1 42.2,5.8 47.5,6.6 43.7,10.3 44.6,15.6 40,13 35.4,15.6 36.3,10.3 32.5,6.6 37.8,5.8'/><polygon points='56,1 58.2,5.8 63.5,6.6 59.7,10.3 60.6,15.6 56,13 51.4,15.6 52.3,10.3 48.5,6.6 53.8,5.8'/><polygon points='72,1 74.2,5.8 79.5,6.6 75.7,10.3 76.6,15.6 72,13 67.4,15.6 68.3,10.3 64.5,6.6 69.8,5.8'/></g></svg>") repeat-x;
   background-size: 80px 16px;
 }
