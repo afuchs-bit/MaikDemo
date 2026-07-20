@@ -20,6 +20,6 @@ python3 -m http.server 8080
 - Original-Logo → `assets/img/logo/logo.svg` (Platzhalter aktuell als SVG-Marke eingebaut)
 - Echtes Hero-Foto/-Video → `assets/img/hero/hero.jpg` + `assets/video/hero.mp4`
 - Echte Projektfotos für die 3 Projektkarten
-- Weitere echte Google-Review-Auszüge (eine ist bereits eingebunden, 61 Bewertungen bestätigt)
+- Weitere echte Google-Review-Auszüge (eine ist bereits eingebunden, 67 Bewertungen bestätigt)
 - Telefonnummern (aktuell Demo-Werte: Mobil `0171 / 234 56 78`, Festnetz `02323 / 12 34 56 7`) – vor Live-Gang durch echte Nummern ersetzen
 - Impressum + Datenschutz-Inhalte

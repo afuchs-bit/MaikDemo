@@ -461,7 +461,7 @@ p  { margin: 0; }
 .rating-value { font-family: var(--display); font-weight: 700; font-size: .95rem; margin-left: 6px; }
 .rating-source { font-size: .72rem; color: var(--ink-mute); display: block; }
 
-/* Google-Zelle: Logo+4,8 / Sterne / Bewertungen+61 */
+/* Google-Zelle: Logo+4,8 / Sterne / Bewertungen+67 */
 .trust-item--google .g-row {
   display: flex; align-items: center; justify-content: flex-start; gap: 8px;
 }
@@ -636,6 +636,22 @@ p  { margin: 0; }
   background: var(--line); transition: background .25s var(--ease), transform .25s var(--ease);
 }
 .proof-dot.is-active { background: var(--coral); transform: scale(1.18); }
+
+/* Leitzitat: statisch, bewusst ohne .proof-quote (wuerde vom Rotator eingesammelt) */
+.proof-lead { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.proof-lead blockquote {
+  margin: 0; font-family: var(--display); font-style: italic; font-weight: 500;
+  font-size: 1.05rem; line-height: 1.45; color: var(--ink); letter-spacing: -.005em;
+}
+.proof-lead blockquote > * + * { margin-top: .4em; }
+.proof-lead figcaption { font-size: .8rem; font-weight: 600; color: var(--ink-mute); }
+.proof-lead-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+.proof-lead-list li { position: relative; padding-left: 16px; line-height: 1.35; }
+.proof-lead-list li::before {
+  content: ""; position: absolute; left: 2px; top: .5em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--coral);
+}
+.proof-lead + .proof-reviews { border-top: 1px solid var(--line); padding-top: 14px; }
 
 .proof-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .proof-chip {
@@ -1749,6 +1765,11 @@ p  { margin: 0; }
   max-width: 720px;
   margin-inline: auto;
 }
+.proof-region {
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;
+  margin-bottom: clamp(24px, 3.5vw, 40px);
+}
+.proof-region .proof-chips { justify-content: center; }
 
 /* ---------- Projektbild Palmen-Teich (lokales Foto) ---------- */
 .project-media[data-img="privat-palmen"] {
