@@ -18,6 +18,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260721a" />
+<!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
+     eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
+     Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -40,12 +43,7 @@
   "openingHoursSpecification": [
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"},
     {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"12:00"}
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "67"
-  }
+  ]
 }
 </script>
 </head>
