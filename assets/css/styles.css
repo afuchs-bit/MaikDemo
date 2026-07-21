@@ -1669,7 +1669,7 @@ p  { margin: 0; }
 /* ---- Enhancement: horizontaler Pin-Journey (Desktop) ---- */
 @media (min-width: 1024px) {
   .section-process.is-scrollytelling .process-scroller {
-    /* height wird von JS gesetzt (= maxShift + Viewport) */
+    /* height wird von JS gesetzt (= maxShift + Bühnenhöhe) */
   }
   .section-process.is-scrollytelling .process-stage {
     position: sticky; top: 0;
@@ -1682,6 +1682,26 @@ p  { margin: 0; }
     background:
       radial-gradient(1000px 620px at 14% 12%, rgba(255,237,0,.10), transparent 60%),
       radial-gradient(1000px 720px at 86% 92%, rgba(235,108,68,.10), transparent 60%);
+  }
+
+  /* Die Karten haengen an der Mittellinie (50% + 56px). Ober- und unterhalb
+     bleibt daher je ein leeres Band von (Buehnenhoehe/2 - 56 - Kartenhoehe) –
+     genau das sind die Luecken zu Sektions-Header und CTA. Eine kuerzere
+     Buehne verkleinert beide zugleich, ohne das Scroll-Timing zu beruehren.
+     Erst ab 760px Viewport-Hoehe: darunter wird das Band schmaler als die
+     89px hohe sticky Navigation und Karte 01 verschwindet dahinter. */
+  @media (min-height: 760px) {
+    .section-process.is-scrollytelling .process-stage {
+      height: 84vh;
+      height: 84dvh;
+      background:
+        /* Die verkuerzte Buehne gibt unten blankes --bg-soft frei. Diese
+           Ebene blendet die Tints zur Unterkante auf genau diese Farbe
+           aus, sonst zieht sich dort eine sichtbare Kante durchs Bild. */
+        linear-gradient(to bottom, transparent 74%, var(--bg-soft) 100%),
+        radial-gradient(1000px 620px at 14% 12%, rgba(255,237,0,.10), transparent 60%),
+        radial-gradient(1000px 720px at 86% 92%, rgba(235,108,68,.10), transparent 60%);
+    }
   }
 
   /* Weglinie – horizontal durch die Mitte, an den Enden ausgeblendet */

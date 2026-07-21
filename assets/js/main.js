@@ -299,7 +299,10 @@
     const measure = () => {
       maxShift = Math.max(0, track.scrollWidth - stage.clientWidth);
       section.style.setProperty('--max-shift', maxShift + 'px');
-      scroller.style.height = (maxShift + window.innerHeight) + 'px';
+      // Buehnenhoehe (nicht innerHeight) – nur so faellt das Pin-Ende
+      // exakt mit progress === 1 zusammen; sonst entsteht am Ende tote
+      // Scroll-Strecke, in der sich nichts mehr bewegt.
+      scroller.style.height = (maxShift + stage.getBoundingClientRect().height) + 'px';
     };
 
     const update = () => {
@@ -343,7 +346,10 @@
     let rt = null;
     window.addEventListener('resize', () => {
       clearTimeout(rt);
-      rt = setTimeout(() => { active ? (measure(), update()) : apply(); }, 150);
+      // apply() zuerst: sonst prueft dieser Pfad bei aktivem Pin nur noch
+      // Geometrie und nie den Zustand – die Umschaltung haengt dann allein
+      // am mq-change-Listener. enable()/disable() sind idempotent.
+      rt = setTimeout(() => { apply(); if (active) { measure(); update(); } }, 150);
     }, { passive: true });
 
     if (mq.addEventListener) mq.addEventListener('change', apply);
