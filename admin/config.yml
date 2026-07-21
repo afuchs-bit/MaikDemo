@@ -90,5 +90,8 @@ collections:
         summary: "{{fields.alt}}"
         fields:
           - { name: bild, label: "Foto", widget: image }
-          - { name: alt, label: "Bildbeschreibung (für Barrierefreiheit & SEO)", widget: string, required: false }
+          # required: true – build-index.mjs lehnt leere alt-Texte ab. Wäre das Feld
+          # im CMS optional, könnte ein leer gespeichertes Projekt den Index-Build
+          # rot machen, statt den Fehler direkt beim Speichern zu zeigen.
+          - { name: alt, label: "Bildbeschreibung (für Barrierefreiheit & SEO)", widget: string, required: true }
         hint: "Das erste Bild ist automatisch das Titelbild."
