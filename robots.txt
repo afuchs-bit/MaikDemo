@@ -1,0 +1,11 @@
+# DEMO-FASSUNG — sperrt die gesamte Vorschau fuer Suchmaschinen.
+#
+# Solange die Seite unter afuchs-bit.github.io bzw. einer Preview-URL laeuft, darf
+# sie nicht indexiert werden. Sonst entsteht eine Duplikatskopie, die spaeter mit
+# rohdich.de konkurriert.
+#
+# BEIM GO-LIVE: diese Datei durch robots-live.txt ersetzen (AP-08).
+# Siehe docs/go-live-checkliste.md, Position 1.
+
+User-agent: *
+Disallow: /
