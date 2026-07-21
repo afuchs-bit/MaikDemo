@@ -15,9 +15,6 @@ on:
       - 'assets/img/projekte/**'
       - '.github/scripts/**'
       - '.github/workflows/build-index.yml'
-    paths-ignore:
-      # Loop-Guard: der zurückcommittete Index darf den Workflow nicht erneut auslösen.
-      - 'data/**'
   workflow_dispatch:
 
 permissions:
