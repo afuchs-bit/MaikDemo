@@ -1141,6 +1141,12 @@ p  { margin: 0; }
 .footer-grid a { color: rgba(255,255,255,.85); text-decoration: none; }
 .footer-grid a:hover { color: var(--yellow); }
 .footer-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: .92rem; color: rgba(255,255,255,.78); }
+/* h4 steht normalerweise am Spaltenanfang (margin-top 0). Folgt es auf Inhalt,
+   braucht es Abstand – z. B. der Erreichbarkeits-Block unter der Adresse. */
+.footer-grid address + h4,
+.footer-grid .footer-list + h4 { margin-top: 26px; }
+.footer-grid .footer-list + .muted { margin-top: 12px; }
+.footer-grid .btn { margin-top: 16px; }
 .brand-footer .brand-mark { background: rgba(255,255,255,.08); }
 .footer-bottom {
   display: flex; justify-content: space-between; align-items: center;

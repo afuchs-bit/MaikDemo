@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260721a" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260721b" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -43,8 +43,7 @@
   },
   "areaServed": ["Herne", "Bochum", "Recklinghausen", "Castrop-Rauxel", "Gelsenkirchen-Buer"],
   "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"12:00"}
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"20:00"}
   ]
 }
 </script>
@@ -770,11 +769,11 @@
       </details>
       <details>
         <summary><span>Kann man ohne Termin zum Betrieb kommen?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Nein. Besuche am Betrieb sind ausschließlich nach Vereinbarung möglich. Kontakt per Telefon, WhatsApp oder Formular.</p></div>
+        <div class="faq-body"><p>Nein. Auch innerhalb unserer Erreichbarkeit von montags bis freitags, 08:00 bis 20:00 Uhr, sind Besuche am Betrieb ausschließlich nach vorheriger Terminvereinbarung möglich. Eine klassische Ladenöffnung gibt es nicht. Einen Termin vereinbaren Sie per Telefon, WhatsApp oder über das Formular.</p></div>
       </details>
       <details>
         <summary><span>Gibt es feste Öffnungszeiten?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Wir arbeiten nach Termin – keine klassische Ladenöffnung. Grund: Vor-Ort-Termine, Baustellen und Beratung brauchen flexible Planung.</p></div>
+        <div class="faq-body"><p>Ja. Wir sind montags bis freitags von 08:00 bis 20:00 Uhr erreichbar, samstags und sonntags geschlossen. Per WhatsApp können Sie uns rund um die Uhr schreiben – wir antworten innerhalb der Geschäftszeiten. Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich, auch innerhalb der Öffnungszeiten.</p></div>
       </details>
       <details>
         <summary><span>Gibt es einen Beispielgarten oder Musterbereiche?</span><span class="chev" aria-hidden="true"></span></summary>
@@ -814,7 +813,8 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"In welchen Orten ist Maik Rohdich tätig?","acceptedAnswer":{"@type":"Answer","text":"Schwerpunkt: Herne, Bochum, Castrop-Rauxel, Recklinghausen, Gelsenkirchen-Buer. Bei passenden Projekten auch darüber hinaus."}},
-    {"@type":"Question","name":"Kann man ohne Termin zum Betrieb kommen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Besuche nur nach Vereinbarung – Kontakt per Telefon, WhatsApp oder Formular."}},
+    {"@type":"Question","name":"Kann man ohne Termin zum Betrieb kommen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Auch innerhalb unserer Erreichbarkeit von montags bis freitags, 08:00 bis 20:00 Uhr, sind Besuche am Betrieb ausschließlich nach vorheriger Terminvereinbarung möglich. Eine klassische Ladenöffnung gibt es nicht. Einen Termin vereinbaren Sie per Telefon, WhatsApp oder über das Formular."}},
+    {"@type":"Question","name":"Gibt es feste Öffnungszeiten?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wir sind montags bis freitags von 08:00 bis 20:00 Uhr erreichbar, samstags und sonntags geschlossen. Per WhatsApp können Sie uns rund um die Uhr schreiben – wir antworten innerhalb der Geschäftszeiten. Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich, auch innerhalb der Öffnungszeiten."}},
     {"@type":"Question","name":"Bieten Sie Baumkontrollen an?","acceptedAnswer":{"@type":"Answer","text":"Ja, Baumkontrolle ist ein fachliches Sonderthema – für Privatgrundstücke, Gewerbekunden, Hausverwaltungen und gewerbliche Flächen."}},
     {"@type":"Question","name":"Gibt es einen Sturmnotdienst?","acceptedAnswer":{"@type":"Answer","text":"Ja, Hilfe bei Sturmschäden – besonders bei Bäumen und Gefahrenstellen. Kontakt telefonisch oder per WhatsApp."}}
   ]}
@@ -849,9 +849,12 @@
       </div>
 
       <p class="note">
-        <strong>Hinweis:</strong> Besuche am Betriebsgelände sind ausschließlich nach vorheriger Vereinbarung möglich.
-        Das gilt auch für Besichtigungen am Beispielgarten.
+        <strong>Erreichbarkeit:</strong> Montag bis Freitag, 08:00–20:00 Uhr. Samstag und Sonntag geschlossen.<br>
+        Per WhatsApp erreichen Sie uns rund um die Uhr – wir antworten innerhalb der Geschäftszeiten.<br>
+        Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich. Das gilt auch
+        für Besichtigungen am Beispielgarten.
       </p>
+      <a class="btn btn-primary" href="#contactForm">Termin vereinbaren</a>
     </div>
 
     <form class="contact-form reveal" id="contactForm" onsubmit="return false;" novalidate>
@@ -930,7 +933,14 @@
         <a href="tel:+491712345678">0171 / 234 56 78</a><br>
         <a href="mailto:info@rohdich.de">info@rohdich.de</a>
       </address>
-      <p class="muted small">Besuche nur nach Vereinbarung.</p>
+      <h4>Erreichbarkeit</h4>
+      <ul class="footer-list">
+        <li>Montag bis Freitag, 08:00–20:00 Uhr</li>
+        <li>Samstag und Sonntag geschlossen</li>
+        <li>WhatsApp rund um die Uhr – Antwort zu den Geschäftszeiten</li>
+      </ul>
+      <p class="muted small">Besuche am Betrieb ausschließlich nach vorheriger Terminvereinbarung.</p>
+      <a class="btn btn-primary" href="#kontakt">Termin vereinbaren</a>
     </div>
 
     <div>
