@@ -461,7 +461,10 @@
     let played = false;
 
     // Tap: Panel oeffnen/schliessen, immer nur eine Karte. Links durchlassen.
+    // Nur auf Geraeten ohne Hover (Touch) - mit Maus uebernimmt :hover, ein
+    // Klick liesse die Karte sonst dauerhaft aufgeklappt stehen.
     grid.addEventListener('click', (e) => {
+      if (window.matchMedia('(hover: hover)').matches) return;
       if (e.target.closest('.svc-more')) return;
       const card = e.target.closest('.svc-card');
       if (!card) return;
@@ -506,7 +509,8 @@
         const lastCard = cards[cards.length - 1];
         const yLast = lastCard.top + lastCard.height / 2;
         d = 'M ' + x + ' ' + yFirst + ' L ' + x + ' ' + yLast;
-        d += ' C ' + x + ' ' + (yLast + 40) + ', ' + ctaX + ' ' + (ctaY - 40) + ', ' + ctaX + ' ' + ctaY;
+        const bendY = ctaY - 24;
+        d += ' L ' + x + ' ' + bendY + ' L ' + ctaX + ' ' + bendY + ' L ' + ctaX + ' ' + ctaY;
         cards.forEach((c) => dots.push([x, c.top + c.height / 2]));
         knots.push([x, yFirst], [ctaX, ctaY]);
       } else {
@@ -528,7 +532,10 @@
           }
           pX = eX; pY = yc;
         });
-        d += ' C ' + pX + ' ' + (pY + 46) + ', ' + ctaX + ' ' + (ctaY - 46) + ', ' + ctaX + ' ' + ctaY;
+        // Eckiger Abschluss: senkrecht unter die letzte Zeile, waagerecht bis
+        // zur CTA-Mitte, senkrecht in den Button.
+        const bendY = ctaY - 28;
+        d += ' L ' + pX + ' ' + bendY + ' L ' + ctaX + ' ' + bendY + ' L ' + ctaX + ' ' + ctaY;
         knots.push([ctaX, ctaY]);
       }
       return { d, dots, knots };

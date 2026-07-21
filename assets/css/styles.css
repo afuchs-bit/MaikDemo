@@ -1568,6 +1568,9 @@ p  { margin: 0; }
 .svc-card:hover .svc-reveal,
 .svc-card:focus-within .svc-reveal,
 .svc-card.is-open .svc-reveal { transform: translateY(0); }
+/* Hover oeffnet leicht verzoegert - blosses Drueberfahren blitzt nicht auf.
+   Schliessen sowie Oeffnen per Tastatur/Tap bleiben unverzoegert. */
+.svc-card:hover .svc-reveal { transition-delay: .15s; }
 .svc-long { font-size: .9rem; line-height: 1.5; margin: 0 0 12px; color: rgba(255,255,255,.94); }
 .svc-more {
   display: inline-flex; align-items: center; gap: 6px;
