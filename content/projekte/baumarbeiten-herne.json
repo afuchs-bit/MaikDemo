@@ -1,0 +1,19 @@
+{
+  "titel": "Baumarbeiten",
+  "ort": "Herne",
+  "kundentyp": [
+    "privat"
+  ],
+  "leistungen": [
+    "baumarbeiten"
+  ],
+  "datum": "2026-07-21",
+  "featured": true,
+  "beschreibung": "Baumschnitt im Vorgarten - auf eine sichere, passende Höhe zurückgeschnitten",
+  "bilder": [
+    {
+      "bild": "/assets/img/projekte/baumarbeiten-herne/img_7926.webp",
+      "alt": ""
+    }
+  ]
+}
