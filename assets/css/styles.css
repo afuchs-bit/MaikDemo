@@ -331,13 +331,15 @@ p  { margin: 0; }
   letter-spacing: -0.04em;
 }
 .hero-title .line { display: block; }
-.hero-title em {
+.hero-title em,
+.hero-split-title em {
   font-style: normal;
   background: linear-gradient(120deg, var(--green-700) 0%, var(--green-500) 50%, var(--coral) 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   position: relative;
 }
-.hero-title em::after {
+.hero-title em::after,
+.hero-split-title em::after {
   content:"";
   position: absolute; left: 4%; right: 4%; bottom: -.1em; height: .12em;
   background: var(--yellow); opacity: .8;
@@ -1304,29 +1306,86 @@ p  { margin: 0; }
 .hero-trust-mini strong { color: var(--ink); font-family: var(--display); }
 .htm-sep { width: 1px; height: 18px; background: var(--line); }
 
-/* ---------- Vorher/Nachher ---------- */
-.section-beforeafter {
-  background:
-    radial-gradient(1100px 700px at 88% -8%, rgba(255,237,0,.16), transparent 60%),
-    radial-gradient(1000px 720px at 4% 110%, rgba(235,108,68,.13), transparent 62%),
-    var(--bg-soft);
+/* ---------- Split-Hero (Privatkunden) ----------
+   Bewusst flacher und heller als der Startseiten-Hero: zweispaltig,
+   linksbuendig, ohne Vollbild-Motiv. Rechts steht der Vorher/Nachher-
+   Slider, damit der staerkste Beweis ueber der Falz liegt. */
+.hero-split {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(20px, 3vw, 36px) 0 clamp(44px, 6vw, 80px);
 }
-.ba-grid {
-  display: grid; gap: 26px;
-  grid-template-columns: 1fr 1fr;
+.hero-split-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  margin-top: clamp(18px, 2.4vw, 30px);
+}
+.hero-split-title {
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -.028em;
+  margin: 14px 0 0;
+}
+.hero-split-sub {
+  margin-top: 16px;
+  max-width: 46ch;
+  color: var(--ink-2);
+  font-size: 1.05rem;
 }
 
-/* Cinematic Stage: breiter Double-Bezel-Rahmen (Tray + Core) */
-.ba-stage {
-  position: relative;
-  max-width: 1180px;
-  margin-inline: auto;
-  padding: clamp(8px, 1vw, 14px);
-  border-radius: clamp(26px, 2.6vw, 38px);
-  background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.34));
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-float);
+.hero-chips {
+  list-style: none; padding: 0;
+  margin: 22px 0 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
 }
+.hero-chips a {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  font-size: .88rem; font-weight: 600;
+  color: var(--ink-2); text-decoration: none;
+  transition: border-color .2s var(--ease), color .2s var(--ease), background .2s var(--ease);
+}
+.hero-chips a:hover,
+.hero-chips a:focus-visible {
+  border-color: var(--green-700);
+  color: var(--green-700);
+  background: var(--bg);
+}
+
+.hero-split-ctas {
+  margin-top: 26px;
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 14px 20px;
+}
+.hero-split .hero-trust-mini { margin-top: 26px; }
+
+.hero-split-media { display: flex; flex-direction: column; align-items: flex-start; }
+.ba--hero { width: 100%; }
+.ba--hero .ba-frame { aspect-ratio: 4/3; box-shadow: var(--shadow-float); }
+.ba--hero .ba-grip { width: 46px; height: 46px; }
+.hero-media-link {
+  display: inline-block; margin-top: 12px;
+  font-size: .9rem; font-weight: 600;
+  color: var(--green-700); text-underline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .hero-split-grid { grid-template-columns: 1fr; gap: 26px; }
+  .hero-split-title { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+  .hero-split-sub { max-width: none; }
+}
+@media (max-width: 560px) {
+  .hero-chips a { padding: 7px 12px; font-size: .82rem; }
+  .hero-split-ctas .btn-primary { width: 100%; justify-content: center; }
+}
+
+/* ---------- Vorher/Nachher-Slider (lebt jetzt im Split-Hero) ---------- */
 .ba { margin: 0; }
 .ba figcaption {
   margin-top: 12px;
@@ -1431,53 +1490,7 @@ p  { margin: 0; }
   border-radius: 999px;
   background: rgba(255,255,255,.85);
 }
-.ba-note {
-  margin-top: 30px;
-  text-align: center;
-  font-size: 1.02rem; color: var(--ink-2);
-}
-.ba-note a { color: var(--green-700); font-weight: 600; text-underline-offset: 4px; }
-
-/* Floating Trust-Chips */
-.ba-chip {
-  position: absolute; z-index: 5;
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 11px 17px;
-  border-radius: 999px;
-  background: var(--bg-elev); color: var(--ink);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-card);
-  font-family: var(--display); font-size: .84rem; font-weight: 500;
-  white-space: nowrap;
-  transition: opacity .6s var(--ease) .25s, transform .6s var(--ease) .25s;
-}
-.ba-chip strong { color: var(--green-700); font-weight: 700; }
-.ba-chip-star { color: var(--coral); flex: none; }
-.ba-chip--tl { top: -18px; left: clamp(-14px, -1vw, 26px); animation: baFloatA 7s var(--ease) infinite; }
-.ba-chip--br { bottom: 54px; right: clamp(-14px, -1vw, 26px); animation: baFloatB 8s var(--ease) infinite; }
-@keyframes baFloatA {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
-}
-@keyframes baFloatB {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(7px); }
-}
-/* Chips fliegen mit der Stage ein (nutzt den .reveal-Observer der .ba-stage) */
-.ba-stage.reveal .ba-chip { opacity: 0; transform: translateY(14px); animation: none; }
-.ba-stage.reveal.is-in .ba-chip { opacity: 1; transform: translateY(0); }
-.ba-stage.reveal.is-in .ba-chip--tl { animation: baFloatA 7s var(--ease) 1s infinite; }
-.ba-stage.reveal.is-in .ba-chip--br { animation: baFloatB 8s var(--ease) 1.2s infinite; }
-@media (prefers-reduced-motion: reduce) {
-  .ba-chip, .ba-stage.reveal.is-in .ba-chip--tl, .ba-stage.reveal.is-in .ba-chip--br { animation: none; }
-}
-
 @media (max-width: 768px) {
-  .ba-frame { aspect-ratio: 4/3; }
-  .ba-stage { max-width: 100%; padding: 6px; border-radius: 22px; }
-  .ba-chip { font-size: .74rem; padding: 8px 13px; }
-  .ba-chip--tl { top: -14px; left: 6px; }
-  .ba-chip--br { bottom: 46px; right: 6px; }
   .ba-hint { display: none; }
 }
 
