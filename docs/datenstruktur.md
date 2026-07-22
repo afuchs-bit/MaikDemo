@@ -81,6 +81,13 @@ bei jedem relevanten Push neu erzeugt. Änderungen von Hand gehen beim nächsten
   (`data/**` ist als Loop-Guard ausgeschlossen; der Rück-Commit trägt zusätzlich `[skip ci]`.)
 - Liest & **validiert** alle Projektdateien gegen `taxonomie.json`.
 - Sortiert nach `datum` absteigend und schreibt `data/projekte-index.json`.
+- **Seit AP-15:** erzeugt zusätzlich je Projekt eine statische, crawlbare Seite
+  `projekte/<slug>/index.html` (Slug = Dateiname) und aktualisiert die statische
+  Projektliste in `projekte/index.html` zwischen den `<!-- BUILD:gallery-list -->`-Markern.
+  Template und Render-Logik liegen in `.github/scripts/templates/` bzw.
+  `.github/scripts/lib/render.mjs`. Verwaiste generierte Ordner (Sentinel-Kommentar im
+  Kopf) werden beim Lauf entfernt. **Damit der Rück-Commit diese Seiten mitnimmt, muss der
+  Commit-Back-Step einmalig erweitert werden — siehe `docs/workflow-aenderungen.md`.**
 - Committet das Ergebnis zurück (nur bei Änderung).
 - **Kompatibel mit „Deploy from a branch"**: der zurückcommittete Index wird von GitHub
   Pages einfach mitausgeliefert – der bestehende Deploy-Mechanismus bleibt unverändert.
