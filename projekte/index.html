@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260721b" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260721c" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -175,6 +175,63 @@
 
     <!-- Ergebnis-Grid (per JS gefüllt) -->
     <div class="projects-grid projects-grid--gallery" id="galleryGrid" aria-live="polite" aria-busy="true"></div>
+
+    <!-- Statische, crawlbare Projektliste (AP-15). Wird von .github/scripts/build-index.mjs
+         zwischen den Markern generiert. Bei aktivem JS blendet galerie.js sie aus und zeigt
+         das filterbare Grid; ohne JS bleibt sie die sichtbare Projektübersicht. -->
+    <!-- BUILD:gallery-list:start -->
+    <div id="galleryStatic" class="projects-grid projects-grid--gallery">
+      <article class="project-card">
+        <div class="project-media">
+          <img src="../assets/img/projekte/baumarbeiten-herne/img_7926.webp" alt="Baumkletterer schneidet seilgesichert mit der Motorsäge die Äste einer hohen Fichte zurück" loading="lazy" decoding="async" width="800" height="600">
+          <span class="project-tag ">Privatkunde</span>
+        </div>
+        <div class="project-body">
+          <span class="project-location">Herne</span>
+          <h3>Baumarbeiten</h3>
+          <p>Baumschnitt im Vorgarten - auf eine sichere, passende Höhe zurückgeschnitten</p>
+        </div>
+        <a class="card-open" href="baumarbeiten-herne/" aria-label="Projekt „Baumarbeiten“ in Herne ansehen"></a>
+      </article>
+      <article class="project-card">
+        <div class="project-media">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061235_3c977f2c-9a0f-42f2-9b53-e578cf8f9484.png" alt="Neu gestalteter Vorgarten mit Natursteinweg und strukturierter Bepflanzung" loading="lazy" decoding="async" width="800" height="600">
+          <span class="project-tag ">Privatkunde</span>
+        </div>
+        <div class="project-body">
+          <span class="project-location">Herne</span>
+          <h3>Vorgarten &amp; Bepflanzung</h3>
+          <p>Vorgarten-Neugestaltung mit Naturstein, strukturierter Bepflanzung und integrierter Beleuchtung.</p>
+        </div>
+        <a class="card-open" href="vorgarten-herne-2026/" aria-label="Projekt „Vorgarten &amp; Bepflanzung“ in Herne ansehen"></a>
+      </article>
+      <article class="project-card">
+        <div class="project-media">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061214_8416af8e-1ecb-4039-815b-bb74908b7ac9.png" alt="Angelegte Teichanlage mit natürlicher Uferzone und Sitzplatz" loading="lazy" decoding="async" width="800" height="600">
+          <span class="project-tag ">Privatkunde</span>
+        </div>
+        <div class="project-body">
+          <span class="project-location">Bochum</span>
+          <h3>Teichanlage &amp; Außenbereich</h3>
+          <p>Teichbau mit natürlicher Uferzone, Sitzplatz und passender Bepflanzung rund um den Whirlpool.</p>
+        </div>
+        <a class="card-open" href="teichanlage-bochum-2026/" aria-label="Projekt „Teichanlage &amp; Außenbereich“ in Bochum ansehen"></a>
+      </article>
+      <article class="project-card">
+        <div class="project-media">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061303_bcbbec22-3158-4220-a6f3-c4993071ca17.png" alt="Gepflegte Außenanlage eines Bürokomplexes mit hohem Publikumsverkehr" loading="lazy" decoding="async" width="800" height="600">
+          <span class="project-tag warn">Gewerbekunde</span>
+        </div>
+        <div class="project-body">
+          <span class="project-location">Recklinghausen</span>
+          <h3>Außenanlagenpflege Bürokomplex</h3>
+          <p>Pflege, Baumkontrolle und Verkehrssicherheit für einen gewerblichen Standort mit hohem Publikumsverkehr.</p>
+        </div>
+        <a class="card-open" href="aussenanlagen-recklinghausen-2026/" aria-label="Projekt „Außenanlagenpflege Bürokomplex“ in Recklinghausen ansehen"></a>
+      </article>
+    </div>
+    <!-- BUILD:gallery-list:end -->
+
 
     <!-- Leerzustand -->
     <div class="gallery-empty" id="galleryEmpty" hidden>

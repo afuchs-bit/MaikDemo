@@ -64,8 +64,11 @@ async function init() {
   } catch (err) {
     console.error('[galerie] Daten nicht ladbar.', err);
     showError();
-    return;
+    return; // Fehlerfall: statische Liste (#galleryStatic) bleibt als Fallback sichtbar.
   }
+
+  // Daten geladen → statische Crawler-Liste ausblenden, interaktives Grid übernimmt (AP-15).
+  document.getElementById('galleryStatic')?.setAttribute('hidden', '');
 
   readStateFromUrl();
   const pendingSlug = readPendingProjekt();

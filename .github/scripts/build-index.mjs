@@ -12,16 +12,25 @@
 // - Remote-Bild-URLs (http/https) werden bei der Existenzprüfung übersprungen
 //   und als "noch nicht lokalisiert" vermerkt.
 
-import { readFile, readdir, writeFile, access, mkdir } from 'node:fs/promises';
+import { readFile, readdir, writeFile, access, mkdir, rm } from 'node:fs/promises';
 import { constants as FS } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { renderProjektPage, renderGalleryList } from './lib/render.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const CONTENT_DIR = path.join(REPO_ROOT, 'content', 'projekte');
 const TAXONOMIE = path.join(REPO_ROOT, 'content', 'taxonomie.json');
 const OUT_FILE = path.join(REPO_ROOT, 'data', 'projekte-index.json');
+
+// AP-15: Ziel-Ablage der statisch generierten Seiten.
+const PROJEKTE_DIR = path.join(REPO_ROOT, 'projekte');
+const GALLERY_INDEX = path.join(PROJEKTE_DIR, 'index.html');
+const LEISTUNGEN_DIR = path.join(REPO_ROOT, 'leistungen');
+const GEN_SENTINEL = 'AUTO-GENERIERT von .github/scripts/build-index.mjs aus content/projekte/';
+const GAL_START = '<!-- BUILD:gallery-list:start -->';
+const GAL_END = '<!-- BUILD:gallery-list:end -->';
 
 const KUNDENTYPEN = ['privat', 'gewerbe'];
 
@@ -66,12 +75,14 @@ const isRemote = (p) => /^https?:\/\//i.test(String(p));
 async function main() {
   // Taxonomie laden
   let validSlugs;
+  let taxLabels; // slug → label (für die generierten Seiten, AP-15)
   try {
     const tax = await readJson(TAXONOMIE);
     if (!tax || !Array.isArray(tax.leistungen)) {
       throw new Error('taxonomie.json: Feld "leistungen" fehlt oder ist kein Array.');
     }
     validSlugs = new Set(tax.leistungen.map((l) => l.slug));
+    taxLabels = new Map(tax.leistungen.map((l) => [l.slug, l.label]));
   } catch (err) {
     fail(`Taxonomie konnte nicht gelesen werden: ${err.message}`);
   }
@@ -127,10 +138,81 @@ async function main() {
   await mkdir(path.dirname(OUT_FILE), { recursive: true });
   await writeFile(OUT_FILE, JSON.stringify(out, null, 2) + '\n', 'utf8');
   console.log(`✅ ${projekte.length} Projekte validiert und nach data/projekte-index.json geschrieben.`);
+
+  // AP-15: statische Projektseiten + Galerie-Liste erzeugen (nur nach erfolgreicher Validierung).
+  try {
+    await generatePages(projekte, taxLabels);
+  } catch (err) {
+    fail(`Seiten-Generierung fehlgeschlagen: ${err.message}`);
+  }
+
   if (warnings.length) {
     console.log('\n⚠️  Warnungen:');
     for (const w of warnings) console.log(`  • ${w}`);
   }
+}
+
+// AP-15: erzeugt /projekte/<slug>/index.html je Projekt, aktualisiert die statische
+// Galerie-Liste in projekte/index.html und entfernt verwaiste generierte Ordner.
+async function generatePages(projekte, taxLabels) {
+  // CSS-/JS-Version aus der Galerie-Seite ziehen – eine Quelle, kein zweiter Truth.
+  const galleryHtml = await readFile(GALLERY_INDEX, 'utf8');
+  const cssVersion = (galleryHtml.match(/styles\.css\?v=([\w.-]+)/) || [])[1] || '1';
+  const jsVersion = (galleryHtml.match(/main\.js\?v=([\w.-]+)/) || [])[1] || '1';
+
+  // Welche Leistungsseiten existieren bereits? (AP-16 folgt → Rebuild hebt die Links.)
+  const leistungPagesExist = new Set();
+  for (const slug of taxLabels.keys()) {
+    if (await fileExists(path.join(LEISTUNGEN_DIR, slug, 'index.html'))) {
+      leistungPagesExist.add(slug);
+    }
+  }
+
+  const slugs = new Set(projekte.map((p) => p.slug));
+
+  // Detailseiten schreiben.
+  const urls = [];
+  for (const p of projekte) {
+    const html = await renderProjektPage({
+      project: p, slug: p.slug, taxLabels, cssVersion, jsVersion, leistungPagesExist,
+    });
+    const dir = path.join(PROJEKTE_DIR, p.slug);
+    await mkdir(dir, { recursive: true });
+    await writeFile(path.join(dir, 'index.html'), html, 'utf8');
+    urls.push(`/projekte/${p.slug}/`);
+  }
+
+  // Verwaiste generierte Ordner entfernen – nur solche mit unserem Sentinel.
+  const entries = await readdir(PROJEKTE_DIR, { withFileTypes: true });
+  for (const e of entries) {
+    if (!e.isDirectory() || slugs.has(e.name)) continue;
+    const idx = path.join(PROJEKTE_DIR, e.name, 'index.html');
+    if (await fileExists(idx)) {
+      const content = await readFile(idx, 'utf8');
+      if (content.includes(GEN_SENTINEL)) {
+        await rm(path.join(PROJEKTE_DIR, e.name), { recursive: true, force: true });
+        console.log(`  – veraltete Projektseite entfernt: projekte/${e.name}/`);
+      }
+    }
+  }
+
+  // Statische Galerie-Liste zwischen den Markern ersetzen (idempotent).
+  const si = galleryHtml.indexOf(GAL_START);
+  const ei = galleryHtml.indexOf(GAL_END);
+  if (si !== -1 && ei !== -1 && ei > si) {
+    const before = galleryHtml.slice(0, si + GAL_START.length);
+    const after = galleryHtml.slice(ei);
+    const next = `${before}\n    ${renderGalleryList(projekte)}\n    ${after}`;
+    if (next !== galleryHtml) {
+      await writeFile(GALLERY_INDEX, next, 'utf8');
+      console.log('✅ Statische Galerie-Liste in projekte/index.html aktualisiert.');
+    }
+  } else {
+    warnings.push('projekte/index.html: BUILD:gallery-list-Marker nicht gefunden – statische Liste NICHT aktualisiert.');
+  }
+
+  console.log(`✅ ${urls.length} Projektseiten generiert:`);
+  for (const u of urls) console.log(`   ${u}`);
 }
 
 async function validateProjekt(data, where, slug, validSlugs) {

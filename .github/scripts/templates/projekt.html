@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<!-- AP-01: Demo-Sperre. Beim Go-Live entfernen, siehe docs/go-live-checkliste.md Position 1. -->
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#315200" />
+<!-- AUTO-GENERIERT von .github/scripts/build-index.mjs aus content/projekte/{{slug}}.json – NICHT von Hand editieren. -->
+<title>{{title}}</title>
+<meta name="description" content="{{description}}" />
+<link rel="canonical" href="{{canonical}}" />
+<meta property="og:title" content="{{ogTitle}}" />
+<meta property="og:description" content="{{description}}" />
+<meta property="og:image" content="{{ogImage}}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{canonical}}" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="{{base}}assets/img/logo/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="{{base}}assets/css/styles.css?v={{cssVersion}}" />
+{{lcpPreload}}
+<!-- Breadcrumb (AEO/SEO) -->
+<script type="application/ld+json">
+{{breadcrumbJsonLd}}
+</script>
+<!-- Bilder (ImageObject) -->
+<script type="application/ld+json">
+{{imageJsonLd}}
+</script>
+</head>
+<body>
+
+{{logo}}
+
+{{header}}
+
+<main id="top">
+
+<!-- ============ PROJEKT ============ -->
+<section class="section section-projekt" aria-labelledby="projekt-title">
+  <div class="container">
+
+    <nav class="breadcrumbs" aria-label="Sie sind hier">
+      <ol>
+        <li><a href="{{base}}">Startseite</a></li>
+        <li><a href="{{base}}projekte/">Projekte</a></li>
+        <li aria-current="page">{{titel}}</li>
+      </ol>
+    </nav>
+
+    <div class="section-head projekt-head">
+      <span class="kicker">Projekt in {{ort}}</span>
+      <h1 id="projekt-title">{{h1}}</h1>
+      <p class="lead">{{beschreibung}}</p>
+      <span class="project-tag {{badgeClass}} projekt-badge">{{badgeLabel}}</span>
+    </div>
+
+    {{optionalText}}
+
+    <div class="projekt-gallery">
+      {{images}}
+    </div>
+
+    <div class="projekt-meta">
+      <div class="projekt-meta-block">
+        <h2>Leistungen in diesem Projekt</h2>
+        <ul class="tag-list">
+          {{leistungLinks}}
+        </ul>
+      </div>
+      <div class="projekt-meta-block">
+        <h2>Für wen wir hier gearbeitet haben</h2>
+        <ul class="tag-list">
+          {{kundengruppeLinks}}
+        </ul>
+      </div>
+    </div>
+
+    <div class="projekt-cta center">
+      <a class="btn btn-primary" href="{{base}}#kontakt">Ähnliches Projekt geplant? Jetzt anfragen <span aria-hidden="true">→</span></a>
+      <a class="btn btn-outline" href="{{base}}projekte/">Alle Projekte ansehen</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+{{footer}}
+
+<script src="{{base}}assets/js/main.js?v={{jsVersion}}" defer></script>
+</body>
+</html>

@@ -37,11 +37,11 @@ async function init(grid) {
 
   const cards = featured.map((p) => {
     const card = buildCard(p);
-    // Ganze Karte als echter Link in die Galerie, öffnet dort direkt die Lightbox.
+    // Ganze Karte als echter Link auf die statische Projektseite (AP-15, crawlbar).
     const link = document.createElement('a');
     link.className = 'card-open';
-    link.href = new URL(`projekte/?projekt=${encodeURIComponent(p.slug || '')}`, SITE_BASE).href;
-    link.setAttribute('aria-label', `Projekt „${p.titel || ''}“ in der Galerie ansehen`);
+    link.href = new URL(`projekte/${encodeURIComponent(p.slug || '')}/`, SITE_BASE).href;
+    link.setAttribute('aria-label', `Projekt „${p.titel || ''}“ ansehen`);
     card.appendChild(link);
     return card;
   });
