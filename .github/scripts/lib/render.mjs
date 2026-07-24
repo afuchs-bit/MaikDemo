@@ -197,8 +197,8 @@ export async function renderProjektPage(opts) {
     breadcrumbJsonLd: breadcrumbJsonLd(titel, canonical),
     imageJsonLd: imageJsonLd(bilder),
     logo: logo.trim(),
-    header: fill(header, { base }).trim(),
-    footer: fill(footer, { base }).trim(),
+    header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
+    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
     titel: esc(titel),
     ort: esc(ort),
     h1: esc(h1),
@@ -255,6 +255,46 @@ const KUNDENGRUPPE_META = {
   privat: { href: 'privatkunden/', label: 'Für Privatkunden' },
   gewerbe: { href: 'gewerbekunden/', label: 'Für Gewerbekunden' },
 };
+
+// AP-18 – EINZIGE Quelle der Navigations-Leistungsliste (Header-Dropdown + Footer).
+// Reihenfolge = fachliche Priorität (wie die Übersicht). Labels = navLabel der
+// content/leistungen/*.json; build-leistungen.mjs warnt bei Abweichung.
+export const LEISTUNGEN_NAV = [
+  { slug: 'baumkontrolle', label: 'Baumkontrolle & Gutachten' },
+  { slug: 'baumarbeiten', label: 'Baumfällung & Baumarbeiten' },
+  { slug: 'gartengestaltung', label: 'Gartengestaltung' },
+  { slug: 'vorgarten', label: 'Vorgartengestaltung' },
+  { slug: 'teichbau', label: 'Teichanlagen' },
+  { slug: 'gartenpflege', label: 'Gartenpflege' },
+  { slug: 'aussenanlagenpflege', label: 'Außenanlagenpflege' },
+  { slug: 'terrasse-pflasterarbeiten', label: 'Terrassen & Pflaster' },
+  { slug: 'bepflanzung', label: 'Bepflanzung' },
+  { slug: 'dachbegruenung', label: 'Dachbegrünung' },
+  { slug: 'palmen-winterfest', label: 'Palmen & winterfest' },
+  { slug: 'pool-whirlpool-umfeld', label: 'Pool- & Whirlpool-Umfeld' },
+  { slug: 'sturmnotdienst', label: 'Sturmnotdienst' },
+  { slug: 'holzverkauf', label: 'Brennholz & Stammholz' },
+];
+
+// Header-Dropdown: <ul> mit den 14 Leistungen (base = Pfadpräfix zum Root).
+export function renderNavSubmenu(base) {
+  const items = LEISTUNGEN_NAV
+    .map((l) => `<li><a href="${base}leistungen/${l.slug}/">${esc(l.label)}</a></li>`)
+    .join('\n            ');
+  return `<ul class="nav-submenu" id="submenu-leistungen">
+            ${items}
+          </ul>`;
+}
+
+// Footer-Spalte: alle 14 Leistungen direkt erreichbar.
+export function renderFooterLeistungen(base) {
+  const items = LEISTUNGEN_NAV
+    .map((l) => `<li><a href="${base}leistungen/${l.slug}/">${esc(l.label)}</a></li>`)
+    .join('\n        ');
+  return `<ul class="footer-list footer-leistungen">
+        ${items}
+      </ul>`;
+}
 
 // Einzelne Templates on demand laden und cachen.
 const _tplCache = new Map();
@@ -446,8 +486,8 @@ export async function renderLeistungPage(opts) {
     serviceJsonLd: serviceJsonLd(leistung, canonical),
     faqJsonLd: faqJsonLd(leistung.faq),
     logo: logo.trim(),
-    header: fill(header, { base }).trim(),
-    footer: fill(footer, { base }).trim(),
+    header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
+    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
     h1: esc(leistung.h1),
     intro: esc(leistung.intro),
     eignung: lpEignung(leistung.eignung || []),
@@ -509,8 +549,8 @@ export async function renderLeistungenOverview(opts) {
     breadcrumbJsonLd: breadcrumb,
     itemListJsonLd: itemList,
     logo: logo.trim(),
-    header: fill(header, { base }).trim(),
-    footer: fill(footer, { base }).trim(),
+    header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
+    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
     cards,
   });
 }

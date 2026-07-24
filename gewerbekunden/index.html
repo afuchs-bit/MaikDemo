@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260721d" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260721e" />
 
 <!-- Temporärer Marker für ungeklärte Fakten (mit Maik klären, danach Klasse + Vorkommen entfernen) -->
 <style>.tbd { background: yellow; color: red; font-weight: bold; }</style>
@@ -158,9 +158,31 @@
       <ul id="primaryMenu" class="menu">
         <li><a href="../privatkunden/">Privatkunden</a></li>
         <li><a href="./" aria-current="page">Gewerbekunden</a></li>
-        <li><a href="../leistungen/">Leistungen</a></li>
-        <li><a href="../#projekte">Projekte</a></li>
-        <li><a href="../projekte/">Galerie</a></li>
+        <li class="menu-item menu-item--sub">
+          <a href="../leistungen/">Leistungen</a>
+          <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-leistungen" aria-label="Alle Leistungen anzeigen">
+            <svg class="submenu-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <!-- BUILD:leistungen-submenu:start -->
+          <ul class="nav-submenu" id="submenu-leistungen">
+            <li><a href="../leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
+            <li><a href="../leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
+            <li><a href="../leistungen/gartengestaltung/">Gartengestaltung</a></li>
+            <li><a href="../leistungen/vorgarten/">Vorgartengestaltung</a></li>
+            <li><a href="../leistungen/teichbau/">Teichanlagen</a></li>
+            <li><a href="../leistungen/gartenpflege/">Gartenpflege</a></li>
+            <li><a href="../leistungen/aussenanlagenpflege/">Außenanlagenpflege</a></li>
+            <li><a href="../leistungen/terrasse-pflasterarbeiten/">Terrassen &amp; Pflaster</a></li>
+            <li><a href="../leistungen/bepflanzung/">Bepflanzung</a></li>
+            <li><a href="../leistungen/dachbegruenung/">Dachbegrünung</a></li>
+            <li><a href="../leistungen/palmen-winterfest/">Palmen &amp; winterfest</a></li>
+            <li><a href="../leistungen/pool-whirlpool-umfeld/">Pool- &amp; Whirlpool-Umfeld</a></li>
+            <li><a href="../leistungen/sturmnotdienst/">Sturmnotdienst</a></li>
+            <li><a href="../leistungen/holzverkauf/">Brennholz &amp; Stammholz</a></li>
+          </ul>
+          <!-- BUILD:leistungen-submenu:end -->
+        </li>
+        <li><a href="../projekte/">Projekte</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="../#ueber">Über&nbsp;uns</a></li>
         <li><a href="#anfrage">Kontakt</a></li>
@@ -642,8 +664,7 @@
         <li><a href="../privatkunden/">Privatkunden</a></li>
         <li><a href="./" aria-current="page">Gewerbekunden</a></li>
         <li><a href="../leistungen/">Leistungen</a></li>
-        <li><a href="../#projekte">Projekte</a></li>
-        <li><a href="../projekte/">Galerie</a></li>
+        <li><a href="../projekte/">Projekte</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="../#ueber">Über&nbsp;uns</a></li>
         <li><a href="#anfrage">Kontakt</a></li>
@@ -651,15 +672,26 @@
     </div>
 
     <div>
-      <h4>Leistungen für Gewerbekunden</h4>
-      <ul class="footer-list">
-        <li><a href="#leistungen">Außenanlagenpflege</a></li>
-        <li><a href="#verkehrssicherheit">Baumkontrolle &amp; Gutachten</a></li>
-        <li><a href="#leistungen">Sturmnotdienst</a></li>
-        <li><a href="#leistungen">Grünpflege &amp; Erhaltung</a></li>
-        <li><a href="#verkehrssicherheit">Verkehrssicherheit</a></li>
-        <li><a href="#leistungen">Umbau Außenanlagen</a></li>
+      <h4>Leistungen</h4>
+      <!-- BUILD:leistungen-footer:start -->
+          <ul class="footer-list footer-leistungen">
+        <li><a href="../leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
+        <li><a href="../leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
+        <li><a href="../leistungen/gartengestaltung/">Gartengestaltung</a></li>
+        <li><a href="../leistungen/vorgarten/">Vorgartengestaltung</a></li>
+        <li><a href="../leistungen/teichbau/">Teichanlagen</a></li>
+        <li><a href="../leistungen/gartenpflege/">Gartenpflege</a></li>
+        <li><a href="../leistungen/aussenanlagenpflege/">Außenanlagenpflege</a></li>
+        <li><a href="../leistungen/terrasse-pflasterarbeiten/">Terrassen &amp; Pflaster</a></li>
+        <li><a href="../leistungen/bepflanzung/">Bepflanzung</a></li>
+        <li><a href="../leistungen/dachbegruenung/">Dachbegrünung</a></li>
+        <li><a href="../leistungen/palmen-winterfest/">Palmen &amp; winterfest</a></li>
+        <li><a href="../leistungen/pool-whirlpool-umfeld/">Pool- &amp; Whirlpool-Umfeld</a></li>
+        <li><a href="../leistungen/sturmnotdienst/">Sturmnotdienst</a></li>
+        <li><a href="../leistungen/holzverkauf/">Brennholz &amp; Stammholz</a></li>
       </ul>
+          <!-- BUILD:leistungen-footer:end -->
+      <p class="muted small"><a href="../leistungen/">Alle Leistungen im Überblick →</a></p>
     </div>
   </div>
 
@@ -681,6 +713,6 @@
   </a>
 </div>
 
-<script src="../assets/js/main.js?v=20260721a" defer></script>
+<script src="../assets/js/main.js?v=20260722a" defer></script>
 </body>
 </html>

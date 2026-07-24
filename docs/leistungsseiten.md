@@ -49,6 +49,23 @@ werden – der nächste Generatorlauf überschreibt sie.
   jedem `build-leistungen`-Lauf einmal `build-index` laufen lassen, damit die Links sitzen
   (oder gleich `npm run build`, das beide in der richtigen Reihenfolge ausführt).
 
+## Navigation (AP-18)
+
+Header-Dropdown „Leistungen" und die Footer-Leistungenspalte stammen aus **einer** Quelle:
+der Konstante `LEISTUNGEN_NAV` in `render.mjs` (Slug + Kurzlabel, fachliche Reihenfolge).
+
+- Generierte Seiten (Projekte, Leistungen) füllen die Platzhalter `{{leistungenSubmenu}}`
+  und `{{leistungenFooter}}` beim Rendern.
+- Die vier Handseiten (`index.html`, `privatkunden/`, `gewerbekunden/`, `projekte/`) bekommen
+  die Listen per Marker-Injektion (`<!-- BUILD:leistungen-submenu -->`,
+  `<!-- BUILD:leistungen-footer -->`) durch `build-leistungen.mjs`.
+
+**Eine neue Leistung muss deshalb auch in `LEISTUNGEN_NAV` eingetragen werden**, sonst fehlt
+sie in der Navigation. `build-leistungen.mjs` warnt, wenn `LEISTUNGEN_NAV` und die Inhaltsdateien
+voneinander abweichen. Das Untermenü-Verhalten (Desktop-Hover/-Klick, Mobil-Toggle) steckt in
+`assets/js/main.js` und `assets/css/styles.css`. **Nach Änderungen an `main.js` den `?v=`-Parameter
+in allen HTML-Dateien hochzählen** (wie bei der CSS-Datei), sonst liefert der Browser altes JS.
+
 ## Kein CMS, kein Workflow-Handoff nötig
 
 Leistungsinhalte pflegt der Entwickler, nicht der Kunde über Sveltia. Die Seiten werden

@@ -20,7 +20,7 @@ import { readFile, readdir, writeFile, mkdir, rm, access } from 'node:fs/promise
 import { constants as FS } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderLeistungPage, renderLeistungenOverview } from './lib/render.mjs';
+import { renderLeistungPage, renderLeistungenOverview, renderNavSubmenu, renderFooterLeistungen, LEISTUNGEN_NAV } from './lib/render.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
@@ -40,6 +40,14 @@ const ORDER = [
 
 const KUNDENTYPEN = ['privat', 'gewerbe'];
 const errors = [];
+
+// AP-18: Handseiten, in die Header-Submenu und Footer-Leistungen injiziert werden.
+const HAND_PAGES = [
+  { file: 'index.html', base: '' },
+  { file: 'privatkunden/index.html', base: '../' },
+  { file: 'gewerbekunden/index.html', base: '../' },
+  { file: 'projekte/index.html', base: '../' },
+];
 
 const isNonEmptyString = (v) => typeof v === 'string' && v.trim().length > 0;
 const isFilledArray = (v) => Array.isArray(v) && v.length > 0;
@@ -106,6 +114,30 @@ function refProjectsFor(slug, projekte) {
   return projekte.slice(0, 2);
 }
 
+// AP-18: Inhalt zwischen zwei Markern ersetzen (idempotent).
+function injectBetween(html, startMarker, endMarker, content) {
+  const s = html.indexOf(startMarker);
+  const e = html.indexOf(endMarker);
+  if (s === -1 || e === -1 || e < s) return null;
+  return html.slice(0, s + startMarker.length) + '\n          ' + content + '\n          ' + html.slice(e);
+}
+
+// AP-18: Header-Submenu und Footer-Leistungen aus der EINEN Quelle in die Handseiten
+// injizieren – identisch zu den generierten Seiten (die dieselben render-Funktionen füllen).
+async function injectNav() {
+  for (const { file, base } of HAND_PAGES) {
+    const p = path.join(REPO_ROOT, file);
+    let html;
+    try { html = await readFile(p, 'utf8'); } catch { console.warn(`  ⚠ ${file}: nicht gefunden`); continue; }
+    const sub = injectBetween(html, '<!-- BUILD:leistungen-submenu:start -->', '<!-- BUILD:leistungen-submenu:end -->', renderNavSubmenu(base));
+    if (sub) html = sub; else console.warn(`  ⚠ ${file}: Submenu-Marker fehlen`);
+    const foot = injectBetween(html, '<!-- BUILD:leistungen-footer:start -->', '<!-- BUILD:leistungen-footer:end -->', renderFooterLeistungen(base));
+    if (foot) html = foot; else console.warn(`  ⚠ ${file}: Footer-Leistungen-Marker fehlen`);
+    await writeFile(p, html, 'utf8');
+  }
+  console.log('✅ Header-Submenu und Footer-Leistungen in die Handseiten injiziert.');
+}
+
 async function main() {
   const tax = await readJson(TAXONOMIE).catch((e) => fail(`taxonomie.json: ${e.message}`));
   if (!tax || !Array.isArray(tax.leistungen)) fail('taxonomie.json: "leistungen" fehlt.');
@@ -135,6 +167,13 @@ async function main() {
       if (!bySlug.has(nb)) errors.push(`content/leistungen/${slug}.json: nachbarn-Slug "${nb}" hat keine Leistungsdatei.`);
     }
   }
+
+  // AP-18: Navigations-Liste (LEISTUNGEN_NAV in render.mjs) gegen die Leistungsdateien prüfen.
+  const navSlugs = new Set(LEISTUNGEN_NAV.map((l) => l.slug));
+  const navMissing = [...bySlug.keys()].filter((s) => !navSlugs.has(s));
+  const navExtra = [...navSlugs].filter((s) => !bySlug.has(s));
+  if (navMissing.length) console.warn(`⚠ Fehlt in LEISTUNGEN_NAV (render.mjs), taucht nicht in der Navigation auf: ${navMissing.join(', ')}`);
+  if (navExtra.length) console.warn(`⚠ LEISTUNGEN_NAV verweist auf fehlende Leistung: ${navExtra.join(', ')}`);
 
   if (errors.length) {
     console.error('\n❌ Validierung fehlgeschlagen:\n');
@@ -185,6 +224,9 @@ async function main() {
       console.log(`  – veraltete Leistungsseite entfernt: leistungen/${e.name}/`);
     }
   }
+
+  // AP-18: Navigation in die Handseiten injizieren.
+  await injectNav();
 
   console.log(`✅ Leistungsübersicht /leistungen/ und ${generated.length} Leistungsseiten generiert:`);
   for (const slug of ordered.map((l) => l.slug)) console.log(`   /leistungen/${slug}/`);

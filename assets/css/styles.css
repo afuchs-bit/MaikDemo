@@ -2081,3 +2081,67 @@ body.has-lightbox { overflow: hidden; }
 .lpx-card h2 { font-size: 1.25rem; margin: 0; letter-spacing: -0.01em; }
 .lpx-card p { color: var(--ink-2); font-size: .95rem; margin: 0; flex: 1; }
 .lpx-more { font-weight: 600; color: var(--green-700); font-size: .9rem; margin-top: 6px; }
+
+/* ============================================================
+   Leistungen-Dropdown im Header + Footer-Leistungen  (AP-18)
+   Desktop-Basis hier, Mobil-Overrides in der Media-Query DANACH
+   (Reihenfolge sorgt für korrekte Kaskade unter 900px).
+   ============================================================ */
+.menu-item--sub { position: relative; display: flex; align-items: center; }
+.submenu-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: none; border: 0; cursor: pointer; color: var(--ink-2);
+  padding: 6px; margin-left: -4px; border-radius: 999px;
+}
+.submenu-toggle:hover { color: var(--ink); }
+.submenu-caret { transition: transform .2s var(--ease); }
+.menu-item--sub:hover .submenu-caret,
+.menu-item--sub:focus-within .submenu-caret,
+.menu-item--sub.is-open .submenu-caret { transform: rotate(180deg); }
+
+.nav-submenu {
+  list-style: none; margin: 0; padding: 8px;
+  position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  background: var(--bg-elev); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-card);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  width: max-content; max-width: 92vw; z-index: 70;
+  opacity: 0; visibility: hidden;
+  transition: opacity .18s var(--ease), transform .18s var(--ease), visibility .18s;
+}
+/* unsichtbare Brücke, damit der Hover beim Übergang zum Panel nicht abreißt */
+.nav-submenu::before { content: ""; position: absolute; top: -12px; left: 0; right: 0; height: 12px; }
+.menu-item--sub:hover > .nav-submenu,
+.menu-item--sub:focus-within > .nav-submenu,
+.menu-item--sub.is-open > .nav-submenu {
+  opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+}
+.nav-submenu a {
+  display: block; padding: 9px 14px; border-radius: 10px; white-space: nowrap;
+  font-size: .88rem; font-weight: 500; color: var(--ink-2); text-decoration: none;
+}
+.nav-submenu a:hover { background: var(--bg-soft); color: var(--ink); }
+
+/* Footer-Leistungen: 14 Einträge kompakt in zwei Spalten */
+.footer-leistungen { grid-template-columns: 1fr 1fr; gap: 6px 18px; }
+
+@media (max-width: 900px) {
+  /* Untermenü unter dem Eintrag, per Toggle ausklappbar */
+  .menu-item--sub { flex-wrap: wrap; position: static; }
+  .menu-item--sub > a { flex: 1; }
+  .submenu-toggle { margin-left: auto; padding: 10px; }
+  .nav-submenu {
+    flex-basis: 100%; position: static; transform: none;
+    opacity: 1; visibility: visible; display: none;
+    grid-template-columns: 1fr; gap: 0;
+    box-shadow: none; border: 0; background: transparent;
+    padding: 2px 0 6px 16px; width: auto; max-width: none;
+  }
+  .nav-submenu::before { display: none; }
+  .menu-item--sub.is-open > .nav-submenu { display: grid; }
+  .nav-submenu a { padding: 10px 12px; }
+}
+@media (max-width: 560px) {
+  .footer-leistungen { grid-template-columns: 1fr; }
+}

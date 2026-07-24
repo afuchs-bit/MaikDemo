@@ -14,9 +14,14 @@
       <ul id="primaryMenu" class="menu">
         <li><a href="{{base}}privatkunden/">Privatkunden</a></li>
         <li><a href="{{base}}gewerbekunden/">Gewerbekunden</a></li>
-        <li><a href="{{base}}leistungen/">Leistungen</a></li>
-        <li><a href="{{base}}#projekte">Projekte</a></li>
-        <li><a href="{{base}}projekte/">Galerie</a></li>
+        <li class="menu-item menu-item--sub">
+          <a href="{{base}}leistungen/">Leistungen</a>
+          <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-leistungen" aria-label="Alle Leistungen anzeigen">
+            <svg class="submenu-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          {{leistungenSubmenu}}
+        </li>
+        <li><a href="{{base}}projekte/">Projekte</a></li>
         <li><a href="{{base}}#faq">FAQ</a></li>
         <li><a href="{{base}}#ueber">Über&nbsp;uns</a></li>
         <li><a href="{{base}}#kontakt">Kontakt</a></li>

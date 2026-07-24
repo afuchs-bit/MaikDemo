@@ -35,6 +35,27 @@
     });
   }
 
+  // --- Leistungen-Untermenü (AP-18) ---
+  const closeSubmenus = () => {
+    document.querySelectorAll('.menu-item--sub.is-open').forEach(li => {
+      li.classList.remove('is-open');
+      li.querySelector('.submenu-toggle')?.setAttribute('aria-expanded', 'false');
+    });
+  };
+  document.querySelectorAll('.submenu-toggle').forEach(btn => {
+    const li = btn.closest('.menu-item--sub');
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const open = li.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.menu-item--sub')) closeSubmenus();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSubmenus(); });
+
   // --- Call popover ---
   const callBtn = document.getElementById('callBtn');
   const callPop = document.getElementById('callPopover');
