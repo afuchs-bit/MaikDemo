@@ -137,6 +137,64 @@ ${bloecke}${hinweis}
     </section>`;
 }
 
+// AP-24 – optionaler Pool-Rechner (nur auf Seiten mit "rechner": true).
+// Qualitative Einordnung OHNE Preise; Berechnung clientseitig (pool-rechner.js).
+const POOL_RECHNER_VERSION = '20260724a';
+function lpRechner(rechner, base) {
+  if (!rechner) return '';
+  const waDefault = 'https://wa.me/491712345678?text=' +
+    encodeURIComponent('Hallo Herr Rohdich, ich interessiere mich für mein Pool- oder Whirlpool-Umfeld und würde das gern besprechen.');
+  return `<section class="lp-block pool-rechner" id="pool-rechner" aria-labelledby="pr-title">
+      <h2 id="pr-title">Ihr Vorhaben grob einordnen</h2>
+      <p class="lp-note">Diese Einordnung ist eine erste Orientierung – <strong>keine Preisauskunft</strong>. Eine belastbare Einschätzung geben wir nach der Besichtigung. Die Berechnung läuft ausschließlich in Ihrem Browser; erst wenn Sie die Anfrage abschicken, werden Ihre Angaben übermittelt. Eine Budgetangabe ist eine persönliche Angabe – Näheres in der Datenschutzerklärung.</p>
+
+      <form class="pr-form" id="prForm" novalidate>
+        <fieldset class="pr-field">
+          <legend>Um was geht es?</legend>
+          <div class="pr-segs">
+            <label class="seg"><input type="radio" name="art" value="Whirlpool-Umfeld" checked><span>Whirlpool-Umfeld</span></label>
+            <label class="seg"><input type="radio" name="art" value="Pool bis ca. 24 m²"><span>Pool bis ca.&nbsp;24&nbsp;m²</span></label>
+            <label class="seg"><input type="radio" name="art" value="Pool über ca. 24 m²"><span>Pool über ca.&nbsp;24&nbsp;m²</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="pr-field">
+          <legend>Was soll dazugehören?</legend>
+          <div class="pr-segs">
+            <label class="seg"><input type="checkbox" name="scope" value="Ausschachtung & Erdarbeiten"><span>Ausschachtung &amp; Erdarbeiten</span></label>
+            <label class="seg"><input type="checkbox" name="scope" value="Terrasse / Belag"><span>Terrasse / Belag</span></label>
+            <label class="seg"><input type="checkbox" name="scope" value="Sichtschutz"><span>Sichtschutz</span></label>
+            <label class="seg"><input type="checkbox" name="scope" value="Bepflanzung / Umfeld"><span>Bepflanzung / Umfeld</span></label>
+            <label class="seg"><input type="checkbox" name="scope" value="Technikbereich"><span>Technikbereich</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="pr-field">
+          <legend>Zugänglichkeit für Maschinen</legend>
+          <div class="pr-segs">
+            <label class="seg"><input type="radio" name="zugang" value="gut zugänglich" checked><span>gut zugänglich</span></label>
+            <label class="seg"><input type="radio" name="zugang" value="eingeschränkt"><span>eingeschränkt</span></label>
+            <label class="seg"><input type="radio" name="zugang" value="nur von Hand"><span>nur von Hand</span></label>
+          </div>
+        </fieldset>
+
+        <div class="pr-field pr-budget">
+          <label for="prBudget">Grober Budgetrahmen (optional)</label>
+          <input type="text" id="prBudget" name="budget" autocomplete="off" placeholder="optional – Ihre Vorstellung">
+        </div>
+      </form>
+
+      <div class="pr-result" id="prResult" role="status" aria-live="polite"></div>
+
+      <div class="pr-actions">
+        <a class="btn btn-primary" id="prSend" href="${waDefault}" target="_blank" rel="noopener">Mit diesen Angaben anfragen <span aria-hidden="true">→</span></a>
+        <a class="btn btn-outline" href="${base}#kontakt">Zum Kontakt</a>
+      </div>
+
+      <script src="${base}assets/js/pool-rechner.js?v=${POOL_RECHNER_VERSION}" defer></script>
+    </section>`;
+}
+
 // ---------- Optionaler gegliederter Text (nur falls im JSON vorhanden) ----------
 function optionalText(p) {
   const parts = [];
@@ -530,6 +588,7 @@ export async function renderLeistungPage(opts) {
     h1: esc(leistung.h1),
     intro: esc(leistung.intro),
     fachtext: lpFachtext(leistung.fachtext),
+    rechner: lpRechner(leistung.rechner, base),
     eignung: lpEignung(leistung.eignung || []),
     ablauf: lpAblauf(leistung.ablauf || []),
     aufwand: lpAufwand(leistung.aufwand || []),

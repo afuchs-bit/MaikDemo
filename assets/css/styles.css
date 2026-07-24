@@ -2220,3 +2220,33 @@ body.has-lightbox { overflow: hidden; }
 .svc-weitere h3 { font-size: 1rem; margin-bottom: 14px; color: var(--ink-2); }
 .svc-weitere .tag-list { justify-content: center; }
 .ref-note { text-align: center; color: var(--ink-2); max-width: 640px; margin: 20px auto 0; }
+
+/* ============================================================
+   Pool-/Whirlpool-Rechner  (AP-24)
+   Qualitative Einordnung ohne Preise; native Formularelemente.
+   ============================================================ */
+.pool-rechner {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(20px, 3vw, 32px); background: var(--bg-elev); max-width: 860px;
+}
+.pr-form { display: grid; gap: clamp(18px, 2.5vh, 26px); margin-top: 10px; }
+.pr-field { border: 0; padding: 0; margin: 0; min-width: 0; }
+.pr-field legend,
+.pr-field > label { font-family: var(--display); font-weight: 700; font-size: .98rem; margin-bottom: 10px; padding: 0; display: block; }
+.pr-segs { display: flex; flex-wrap: wrap; gap: 8px; }
+.pr-segs .seg { flex: 1 1 auto; min-width: 150px; }
+.pr-budget input {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px;
+  font: inherit; background: var(--bg); color: var(--ink);
+}
+.pr-budget input:focus-visible { outline: 2px solid var(--green-500); outline-offset: 2px; }
+.pr-result {
+  margin-top: clamp(18px, 2.5vh, 24px); padding: 16px 18px;
+  background: var(--green-50); border: 1px solid var(--green-300);
+  border-radius: var(--radius-sm); color: var(--ink); font-weight: 500;
+}
+.pr-result:empty { display: none; }
+.pr-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+
+/* Sichtbarer Tastatur-Fokus für Segment-Buttons (auch im Kontaktformular). */
+.seg:has(input:focus-visible) { outline: 2px solid var(--green-500); outline-offset: 2px; }

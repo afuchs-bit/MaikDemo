@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
-<link rel="stylesheet" href="../../assets/css/styles.css?v=20260721h" />
+<link rel="stylesheet" href="../../assets/css/styles.css?v=20260721i" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -323,6 +323,56 @@
           <dd>Wie viel Pflege das Umfeld später macht, hängt von Bepflanzung und Material ab – das planen wir mit.</dd>
         </div>
       </dl>
+    </section>
+
+    <section class="lp-block pool-rechner" id="pool-rechner" aria-labelledby="pr-title">
+      <h2 id="pr-title">Ihr Vorhaben grob einordnen</h2>
+      <p class="lp-note">Diese Einordnung ist eine erste Orientierung – <strong>keine Preisauskunft</strong>. Eine belastbare Einschätzung geben wir nach der Besichtigung. Die Berechnung läuft ausschließlich in Ihrem Browser; erst wenn Sie die Anfrage abschicken, werden Ihre Angaben übermittelt. Eine Budgetangabe ist eine persönliche Angabe – Näheres in der Datenschutzerklärung.</p>
+
+      <form class="pr-form" id="prForm" novalidate>
+        <fieldset class="pr-field">
+          <legend>Um was geht es?</legend>
+          <div class="pr-segs">
+            <label class="seg"><input type="radio" name="art" value="Whirlpool-Umfeld" checked><span>Whirlpool-Umfeld</span></label>
+            <label class="seg"><input type="radio" name="art" value="Pool bis ca. 24 m²"><span>Pool bis ca.&nbsp;24&nbsp;m²</span></label>
+            <label class="seg"><input type="radio" name="art" value="Pool über ca. 24 m²"><span>Pool über ca.&nbsp;24&nbsp;m²</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="pr-field">
+          <legend>Was soll dazugehören?</legend>
+          <div class="pr-segs">
+            <label class="seg"><input type="checkbox" name="scope" value="Ausschachtung & Erdarbeiten"><span>Ausschachtung &amp; Erdarbeiten</span></label>
+            <label class="seg"><input type="checkbox" name="scope" value="Terrasse / Belag"><span>Terrasse / Belag</span></label>
+            <label class="seg"><input type="checkbox" name="scope" value="Sichtschutz"><span>Sichtschutz</span></label>
+            <label class="seg"><input type="checkbox" name="scope" value="Bepflanzung / Umfeld"><span>Bepflanzung / Umfeld</span></label>
+            <label class="seg"><input type="checkbox" name="scope" value="Technikbereich"><span>Technikbereich</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="pr-field">
+          <legend>Zugänglichkeit für Maschinen</legend>
+          <div class="pr-segs">
+            <label class="seg"><input type="radio" name="zugang" value="gut zugänglich" checked><span>gut zugänglich</span></label>
+            <label class="seg"><input type="radio" name="zugang" value="eingeschränkt"><span>eingeschränkt</span></label>
+            <label class="seg"><input type="radio" name="zugang" value="nur von Hand"><span>nur von Hand</span></label>
+          </div>
+        </fieldset>
+
+        <div class="pr-field pr-budget">
+          <label for="prBudget">Grober Budgetrahmen (optional)</label>
+          <input type="text" id="prBudget" name="budget" autocomplete="off" placeholder="optional – Ihre Vorstellung">
+        </div>
+      </form>
+
+      <div class="pr-result" id="prResult" role="status" aria-live="polite"></div>
+
+      <div class="pr-actions">
+        <a class="btn btn-primary" id="prSend" href="https://wa.me/491712345678?text=Hallo%20Herr%20Rohdich%2C%20ich%20interessiere%20mich%20f%C3%BCr%20mein%20Pool-%20oder%20Whirlpool-Umfeld%20und%20w%C3%BCrde%20das%20gern%20besprechen." target="_blank" rel="noopener">Mit diesen Angaben anfragen <span aria-hidden="true">→</span></a>
+        <a class="btn btn-outline" href="../../#kontakt">Zum Kontakt</a>
+      </div>
+
+      <script src="../../assets/js/pool-rechner.js?v=20260724a" defer></script>
     </section>
 
     <section class="lp-block" aria-labelledby="lp-fehler">
