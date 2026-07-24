@@ -43,5 +43,5 @@ Sobald ein Wert vorliegt: in `content/stammdaten.json` eintragen (AP-03), den
 
 | Wert | Fundstellen | AP |
 |---|---|---|
-| Impressum (Volltext vom Anbieter) | `impressum/index.html` | AP-11 |
-| Datenschutzerklärung (Volltext vom Anbieter) | `datenschutz/index.html` | AP-11 |
+| Impressum (Pflichtangaben vom Anbieter: Kontakt, USt-/Steuernr. usw.) | `content/rechtstexte/impressum.body.html` | AP-11 |
+| Datenschutzerklärung (Volltext vom Anbieter) | `content/rechtstexte/datenschutz.body.html` | AP-11 |

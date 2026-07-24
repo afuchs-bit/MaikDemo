@@ -2250,3 +2250,11 @@ body.has-lightbox { overflow: hidden; }
 
 /* Sichtbarer Tastatur-Fokus für Segment-Buttons (auch im Kontaktformular). */
 .seg:has(input:focus-visible) { outline: 2px solid var(--green-500); outline-offset: 2px; }
+
+/* Rechtstextseiten: Impressum / Datenschutz (AP-11) */
+.section-rechtstext { padding-top: clamp(90px, 12vh, 140px); }
+.rt-body { max-width: 760px; }
+.rt-body h2 { font-size: 1.25rem; margin: clamp(24px, 4vh, 36px) 0 10px; }
+.rt-body p { color: var(--ink-2); margin: 0 0 14px; }
+.rt-body address { font-style: normal; line-height: 1.7; color: var(--ink-2); margin: 0 0 14px; }
+.rt-body a { color: var(--green-700); }

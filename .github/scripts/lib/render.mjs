@@ -786,3 +786,42 @@ export async function renderRatgeberOverview(opts) {
     cards,
   });
 }
+
+// AP-11 – Rechtstextseiten (/impressum/, /datenschutz/). Grundgerüst mit Chrome;
+// der eigentliche Rechtstext kommt als vertrauenswürdiges HTML-Fragment (bodyHtml)
+// aus content/rechtstexte/<slug>.body.html und wird unverändert eingebettet.
+export async function renderRechtstextPage(opts) {
+  const { data, slug, bodyHtml, cssVersion, jsVersion } = opts;
+  const [page, header, footer, logo] = await Promise.all([
+    loadTpl('rechtstext.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
+  ]);
+  const base = BASE_GALLERY; // /impressum/ bzw. /datenschutz/ liegt eine Ebene unter dem Root
+  const canonical = `${SITE}/${slug}/`;
+
+  const breadcrumb = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: data.h1, item: canonical },
+    ],
+  }, null, 2);
+
+  return fill(page, {
+    base,
+    slug: esc(slug),
+    cssVersion: escAttr(cssVersion),
+    jsVersion: escAttr(jsVersion),
+    title: esc(data.title),
+    ogTitle: escAttr(data.title),
+    description: escAttr(truncate(data.metaDescription, 160)),
+    canonical: escAttr(canonical),
+    ogImage: escAttr(`${SITE}/assets/img/ueber/ueber-1.jpg`),
+    breadcrumbJsonLd: breadcrumb,
+    logo: logo.trim(),
+    header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
+    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
+    h1: esc(data.h1),
+    body: bodyHtml, // vertrauenswürdiges HTML-Fragment, bewusst NICHT escaped
+  });
+}

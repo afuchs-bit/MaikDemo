@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<!-- AP-01: Demo-Sperre. Beim Go-Live entfernen (Impressum darf indexiert werden), siehe docs/go-live-checkliste.md. -->
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#315200" />
+<!-- AUTO-GENERIERT von .github/scripts/build-rechtstexte.mjs aus content/rechtstexte/{{slug}}.* – NICHT von Hand editieren. -->
+<title>{{title}}</title>
+<meta name="description" content="{{description}}" />
+<link rel="canonical" href="{{canonical}}" />
+<meta property="og:title" content="{{ogTitle}}" />
+<meta property="og:description" content="{{description}}" />
+<meta property="og:image" content="{{ogImage}}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{canonical}}" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="{{base}}assets/img/logo/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="{{base}}assets/css/styles.css?v={{cssVersion}}" />
+
+<!-- Breadcrumb (AEO/SEO) -->
+<script type="application/ld+json">
+{{breadcrumbJsonLd}}
+</script>
+</head>
+<body>
+
+{{logo}}
+
+{{header}}
+
+<main id="top">
+
+<!-- ============ RECHTSTEXT ============ -->
+<section class="section section-rechtstext" aria-labelledby="rt-title">
+  <div class="container">
+
+    <nav class="breadcrumbs" aria-label="Sie sind hier">
+      <ol>
+        <li><a href="{{base}}">Startseite</a></li>
+        <li aria-current="page">{{h1}}</li>
+      </ol>
+    </nav>
+
+    <div class="section-head rt-head">
+      <h1 id="rt-title">{{h1}}</h1>
+    </div>
+
+    <div class="rt-body">
+      {{body}}
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+{{footer}}
+
+<script src="{{base}}assets/js/main.js?v={{jsVersion}}" defer></script>
+</body>
+</html>
