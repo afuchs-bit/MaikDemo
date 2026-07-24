@@ -20,7 +20,7 @@ import { readFile, readdir, writeFile, mkdir, rm, access } from 'node:fs/promise
 import { constants as FS } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderLeistungPage, renderLeistungenOverview, renderNavSubmenu, renderFooterLeistungen, LEISTUNGEN_NAV } from './lib/render.mjs';
+import { renderLeistungPage, renderLeistungenOverview, renderNavSubmenu, renderFooterLeistungen, renderFaqDetails, renderFaqSchema, LEISTUNGEN_NAV } from './lib/render.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
@@ -120,6 +120,24 @@ function injectBetween(html, startMarker, endMarker, content) {
   const e = html.indexOf(endMarker);
   if (s === -1 || e === -1 || e < s) return null;
   return html.slice(0, s + startMarker.length) + '\n          ' + content + '\n          ' + html.slice(e);
+}
+
+// AP-19: Startseiten-FAQ (sichtbare Liste + FAQPage-Schema) aus content/faq-startseite.json
+// in index.html injizieren – beide aus derselben Quelle, also garantiert identischer Text.
+async function injectFaq() {
+  const FAQ_FILE = path.join(REPO_ROOT, 'content', 'faq-startseite.json');
+  let data;
+  try { data = await readJson(FAQ_FILE); } catch { console.warn('  ⚠ content/faq-startseite.json fehlt – FAQ nicht injiziert.'); return; }
+  const faq = Array.isArray(data?.faq) ? data.faq : [];
+  if (!faq.length) { console.warn('  ⚠ faq-startseite.json: leeres "faq"-Array.'); return; }
+  const p = path.join(REPO_ROOT, 'index.html');
+  let html = await readFile(p, 'utf8');
+  const vis = injectBetween(html, '<!-- BUILD:faq:start -->', '<!-- BUILD:faq:end -->', renderFaqDetails(faq));
+  if (vis) html = vis; else console.warn('  ⚠ index.html: FAQ-Marker fehlen');
+  const sch = injectBetween(html, '<!-- BUILD:faq-schema:start -->', '<!-- BUILD:faq-schema:end -->', renderFaqSchema(faq));
+  if (sch) html = sch; else console.warn('  ⚠ index.html: FAQ-Schema-Marker fehlen');
+  await writeFile(p, html, 'utf8');
+  console.log(`✅ FAQ (${faq.length} Fragen) in index.html injiziert – sichtbar + Schema aus einer Quelle.`);
 }
 
 // AP-18: Header-Submenu und Footer-Leistungen aus der EINEN Quelle in die Handseiten
@@ -227,6 +245,8 @@ async function main() {
 
   // AP-18: Navigation in die Handseiten injizieren.
   await injectNav();
+  // AP-19: Startseiten-FAQ injizieren (nach injectNav, das index.html ebenfalls schreibt).
+  await injectFaq();
 
   console.log(`✅ Leistungsübersicht /leistungen/ und ${generated.length} Leistungsseiten generiert:`);
   for (const slug of ordered.map((l) => l.slug)) console.log(`   /leistungen/${slug}/`);

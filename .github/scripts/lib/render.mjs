@@ -296,6 +296,30 @@ export function renderFooterLeistungen(base) {
       </ul>`;
 }
 
+// AP-19 – Startseiten-FAQ aus content/faq-startseite.json.
+// Sichtbare <details>-Liste UND FAQPage-Schema aus DERSELBEN Quelle → identischer Text.
+export function renderFaqDetails(faq) {
+  return faq
+    .map((f) => `<details>
+        <summary><span>${esc(f.frage)}</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p>${esc(f.antwort)}</p></div>
+      </details>`)
+    .join('\n      ');
+}
+
+export function renderFaqSchema(faq) {
+  const json = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.frage,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwort },
+    })),
+  }, null, 2);
+  return `<script type="application/ld+json">\n${json}\n</script>`;
+}
+
 // Einzelne Templates on demand laden und cachen.
 const _tplCache = new Map();
 async function loadTpl(name) {

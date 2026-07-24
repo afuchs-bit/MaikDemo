@@ -66,6 +66,16 @@ voneinander abweichen. Das Untermenü-Verhalten (Desktop-Hover/-Klick, Mobil-Tog
 `assets/js/main.js` und `assets/css/styles.css`. **Nach Änderungen an `main.js` den `?v=`-Parameter
 in allen HTML-Dateien hochzählen** (wie bei der CSS-Datei), sonst liefert der Browser altes JS.
 
+## Startseiten-FAQ (AP-19)
+
+Die FAQ auf der Startseite steht in `content/faq-startseite.json` (Array `faq` aus
+`{frage, antwort}`, Antworten answer-first, 40–60 Wörter). `build-leistungen.mjs` generiert
+daraus **beides** in `index.html`: die sichtbare `<details>`-Liste (zwischen
+`<!-- BUILD:faq -->`) **und** das `FAQPage`-Schema (zwischen `<!-- BUILD:faq-schema -->`) –
+aus derselben Quelle, also garantiert zeichengleich. Nie das Schema oder die Liste von Hand
+editieren; stattdessen die JSON pflegen und neu generieren. Das Ablaufdiagramm „So läuft eine
+Anfrage ab" ist eine statische, barrierefreie HTML-Sektion in `index.html` (semantisches `<ol>`).
+
 ## Kein CMS, kein Workflow-Handoff nötig
 
 Leistungsinhalte pflegt der Entwickler, nicht der Kunde über Sveltia. Die Seiten werden

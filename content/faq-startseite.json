@@ -1,0 +1,73 @@
+{
+  "_hinweis": "Quelle der Startseiten-FAQ. build-leistungen.mjs generiert daraus die sichtbare Liste UND das FAQPage-Schema in index.html (identischer Text). Antworten answer-first: die ersten 40–60 Wörter beantworten die Frage vollständig.",
+  "faq": [
+    {
+      "frage": "Wie läuft eine Anfrage bei Ihnen ab?",
+      "antwort": "Sie erreichen uns per Anruf oder Nachricht, gern mit Fotos. Wir vereinbaren einen Termin und besichtigen das Vorhaben vor Ort. Bei Gestaltungsprojekten kommt ein Termin am Betrieb hinzu, um Materialien und Ideen anzusehen. Danach erhalten Sie ein auf Ihr Projekt zugeschnittenes Angebot. Den Ablauf zeigen wir oben Schritt für Schritt."
+    },
+    {
+      "frage": "In welchen Orten arbeiten Sie?",
+      "antwort": "Unser Schwerpunkt liegt in Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer. In diesem Umkreis sind wir regelmäßig für Privatkunden und Gewerbe tätig. Bei passenden Projekten arbeiten wir auch darüber hinaus – sprechen Sie uns einfach auf Ihren Ort an, dann sagen wir Ihnen, ob es passt."
+    },
+    {
+      "frage": "Gibt es feste Öffnungszeiten?",
+      "antwort": "Ja. Wir sind montags bis freitags von 08:00 bis 20:00 Uhr erreichbar, samstags und sonntags geschlossen. Per WhatsApp können Sie uns rund um die Uhr schreiben – wir antworten innerhalb der Geschäftszeiten. Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich, auch innerhalb der Öffnungszeiten."
+    },
+    {
+      "frage": "Kann man ohne Termin zum Betrieb kommen?",
+      "antwort": "Nein. Auch innerhalb unserer Erreichbarkeit von montags bis freitags, 08:00 bis 20:00 Uhr, sind Besuche am Betrieb ausschließlich nach vorheriger Terminvereinbarung möglich. Eine klassische Ladenöffnung gibt es nicht. Einen Termin vereinbaren Sie ganz einfach per Telefon, WhatsApp oder über das Formular."
+    },
+    {
+      "frage": "Kann ich Bilder per WhatsApp senden?",
+      "antwort": "Ja, sehr gerne und rund um die Uhr. Bilder helfen uns, Ihr Anliegen schon vor dem Termin einzuschätzen. Senden Sie einfach ein paar Fotos und den Ort per WhatsApp an 0171 / 234 56 78. Wir antworten innerhalb der Geschäftszeiten und melden uns mit den nächsten Schritten."
+    },
+    {
+      "frage": "Welche Leistungen bieten Sie grundsätzlich an?",
+      "antwort": "Wir decken den Garten- und Landschaftsbau in ganzer Breite ab: Gartengestaltung, Vorgärten, Bepflanzung, Teichanlagen, Terrassen und Pflasterarbeiten, Dachbegrünung, Gartenpflege, Baumarbeiten, Baumkontrolle mit Gutachten, Sturmnotdienst und Brennholz. Für Gewerbe kommt die laufende Außenanlagenpflege hinzu. Einen vollständigen Überblick finden Sie auf der Leistungsseite."
+    },
+    {
+      "frage": "Arbeitet Maik Rohdich für Privatkunden und Gewerbekunden?",
+      "antwort": "Ja, beides. Für Privatkunden gestalten und pflegen wir Gärten, Vorgärten, Teiche und Bepflanzung, begrünen Dächer und führen Baumarbeiten aus. Für Gewerbekunden übernehmen wir die laufende Außenanlagenpflege, die Baumkontrolle und Gutachten zur Verkehrssicherheit. Was zu Ihrem Vorhaben passt, klären wir im Gespräch."
+    },
+    {
+      "frage": "Was bestimmt die Kosten eines Gartenprojekts?",
+      "antwort": "Den Aufwand bestimmen vor allem Fläche, Untergrund und die Zugänglichkeit für Maschinen, dazu Materialwahl, Entwässerung und der spätere Pflegeaufwand. Pauschalpreise nennen wir nicht, weil sich diese Faktoren von Grundstück zu Grundstück stark unterscheiden. Nach der Besichtigung können wir den Rahmen für Ihr Projekt konkret einschätzen."
+    },
+    {
+      "frage": "Wie lange dauert die Neugestaltung eines Gartens?",
+      "antwort": "Ein kompletter Garten liegt erfahrungsgemäß bei rund zwei Wochen, abhängig von Umfang, Untergrund und Wetter. Kleinere Arbeiten wie ein Vorgarten sind oft in wenigen Tagen fertig. Den zeitlichen Rahmen für Ihr Projekt nennen wir nach der Besichtigung, wenn wir Fläche und Aufwand kennen."
+    },
+    {
+      "frage": "Verlangen Sie Vorkasse?",
+      "antwort": "Bei größeren Projekten kann eine Anzahlung oder Teilzahlung üblich sein – das besprechen wir vor der Beauftragung transparent, sodass Sie von Anfang an wissen, woran Sie sind. Bei kleineren Aufträgen ist das in der Regel nicht nötig. Was vereinbart wird, steht vorher fest; versteckte Kosten gibt es nicht."
+    },
+    {
+      "frage": "Wann darf eine Hecke geschnitten werden?",
+      "antwort": "Ein starker Rückschnitt ist nur zwischen dem 1. Oktober und dem 28./29. Februar erlaubt, weil in der Vegetationszeit brütende Vögel geschützt sind (§ 39 BNatSchG). Ein schonender Form- und Pflegeschnitt ist ganzjährig zulässig. Planen Sie den kräftigen Schnitt also rechtzeitig vor dem Frühjahr ein."
+    },
+    {
+      "frage": "Wird Dachbegrünung gefördert?",
+      "antwort": "Häufig ja, über kommunale Programme. Ob und in welcher Höhe eine Förderung möglich ist, hängt vom Ort ab und ändert sich von Kommune zu Kommune. Wir weisen im Beratungstermin darauf hin und prüfen mit Ihnen, ob Ihr Dach in Frage kommt. Den Antrag stellen Sie als Eigentümer selbst."
+    },
+    {
+      "frage": "Bieten Sie Baumkontrollen an?",
+      "antwort": "Ja. Als Sachverständiger für Baumkontrolle prüfen wir Bäume auf ihre Verkehrssicherheit – für private Grundstücke, Hausverwaltungen und Gewerbe. Sie erhalten eine nachvollziehbare Einschätzung zum Zustand und auf Wunsch eine Dokumentation, mit der Sie Ihrer Verkehrssicherungspflicht nachkommen. Der genaue Umfang hängt vom Bestand ab."
+    },
+    {
+      "frage": "Gibt es einen Sturmnotdienst?",
+      "antwort": "Ja. Nach Unwettern sichern und beseitigen wir Gefahren durch beschädigte Bäume – umgestürzte Stämme, angebrochene Äste und instabile Kronen. Melden Sie sich am besten mit Fotos und Standort per WhatsApp oder telefonisch. Dann schätzen wir die Lage schnell ein und sichern zuerst die Gefahrenstelle."
+    },
+    {
+      "frage": "Wird Holz verkauft?",
+      "antwort": "Ja. Aus unseren Baumarbeiten fällt Holz an, das wir zu Brennholz und Stammholz aufarbeiten und regional abgeben. Verfügbarkeit, Holzart und Menge schwanken je nachdem, was gerade anfällt. Am besten fragen Sie kurz an, was vorrätig ist – Abholung oder Lieferung stimmen wir dann ab."
+    },
+    {
+      "frage": "Gibt es einen Beispielgarten oder Musterbereiche?",
+      "antwort": "Ja, allerdings nicht als frei zugängliche Ausstellung. Bei passenden Gestaltungsprojekten sehen wir Materialien, Pflanzen und Gestaltungsideen gemeinsam am Betrieb an – ausschließlich nach vorheriger Terminvereinbarung. So bekommen Sie ein Gefühl dafür, was zusammenpasst. Unangemeldete Besuche sind nicht möglich."
+    },
+    {
+      "frage": "Sind Sie Ausbildungsbetrieb?",
+      "antwort": "Ja. Wir bilden im Garten- und Landschaftsbau aus. Für Sie ist das ein Hinweis auf Fachlichkeit und Beständigkeit: Ein Betrieb, der ausbildet, gibt Wissen strukturiert weiter und arbeitet nach anerkannten fachlichen Standards. Das kommt auch der Qualität auf Ihrer Baustelle zugute."
+    }
+  ]
+}
