@@ -2214,3 +2214,9 @@ body.has-lightbox { overflow: hidden; }
 }
 .rg-quelle p { margin: 0 0 6px; }
 .rg-quelle .rg-stand { margin: 0; }
+
+/* Kundengruppen-Hub: Weitere-Leistungen-Reihe + Referenzhinweis (AP-23) */
+.svc-weitere { margin-top: clamp(28px, 4vh, 44px); text-align: center; }
+.svc-weitere h3 { font-size: 1rem; margin-bottom: 14px; color: var(--ink-2); }
+.svc-weitere .tag-list { justify-content: center; }
+.ref-note { text-align: center; color: var(--ink-2); max-width: 640px; margin: 20px auto 0; }
