@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<!-- AP-01: Demo-Sperre. Beim Go-Live entfernen, siehe docs/go-live-checkliste.md Position 1. -->
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#315200" />
+<!-- AUTO-GENERIERT von .github/scripts/build-ratgeber.mjs aus content/ratgeber/{{slug}}.json – NICHT von Hand editieren. -->
+<title>{{title}}</title>
+<meta name="description" content="{{description}}" />
+<link rel="canonical" href="{{canonical}}" />
+<meta property="og:title" content="{{ogTitle}}" />
+<meta property="og:description" content="{{description}}" />
+<meta property="og:image" content="{{ogImage}}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{canonical}}" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="{{base}}assets/img/logo/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="{{base}}assets/css/styles.css?v={{cssVersion}}" />
+
+<!-- Breadcrumb (AEO/SEO) -->
+<script type="application/ld+json">
+{{breadcrumbJsonLd}}
+</script>
+<!-- Article (Autor/Publisher als Referenz auf die Entitäten der Startseite) -->
+<script type="application/ld+json">
+{{articleJsonLd}}
+</script>
+<!-- FAQ -->
+<script type="application/ld+json">
+{{faqJsonLd}}
+</script>
+</head>
+<body>
+
+{{logo}}
+
+{{header}}
+
+<main id="top">
+
+<!-- ============ RATGEBER-ARTIKEL ============ -->
+<article class="section section-ratgeber" aria-labelledby="rg-title">
+  <div class="container">
+
+    <nav class="breadcrumbs" aria-label="Sie sind hier">
+      <ol>
+        <li><a href="{{base}}">Startseite</a></li>
+        <li><a href="{{base}}ratgeber/">Ratgeber</a></li>
+        <li aria-current="page">{{kurz}}</li>
+      </ol>
+    </nav>
+
+    <div class="section-head rg-head">
+      <span class="kicker">Ratgeber</span>
+      <h1 id="rg-title">{{h1}}</h1>
+      <p class="lead">{{intro}}</p>
+    </div>
+
+    <div class="rg-body">
+      {{sections}}
+
+      <aside class="rg-quelle" aria-label="Quelle und Stand">
+        <p>{{quelle}}</p>
+        <p class="rg-stand"><strong>Stand:</strong> {{stand}}</p>
+      </aside>
+    </div>
+
+    <section class="lp-block" aria-labelledby="rg-faq">
+      <h2 id="rg-faq">Häufige Fragen</h2>
+      {{faqHtml}}
+    </section>
+
+    <section class="lp-block lp-links-block" aria-labelledby="rg-weiter">
+      <h2 id="rg-weiter">Passend dazu</h2>
+      <div class="lp-links">
+        <div class="lp-linkgroup">
+          <h3>Verwandte Leistungen</h3>
+          <ul class="tag-list">
+            {{verwandteLinks}}
+          </ul>
+        </div>
+        <div class="lp-linkgroup">
+          <h3>Schnitt übernehmen lassen?</h3>
+          <ul class="tag-list">
+            <li><a class="tag-link" href="{{base}}#kontakt">Kontakt aufnehmen</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="projekt-cta center">
+      <a class="btn btn-primary" href="{{base}}#kontakt">Heckenschnitt anfragen <span aria-hidden="true">→</span></a>
+      <a class="btn btn-outline" href="{{base}}ratgeber/">Mehr aus dem Ratgeber</a>
+    </div>
+
+  </div>
+</article>
+
+</main>
+
+{{footer}}
+
+<script src="{{base}}assets/js/main.js?v={{jsVersion}}" defer></script>
+</body>
+</html>

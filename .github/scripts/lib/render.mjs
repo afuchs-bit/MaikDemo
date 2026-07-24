@@ -122,6 +122,21 @@ function kundengruppeLinks(kundentyp, base) {
   return out.join('\n          ');
 }
 
+// AP-22 – optionale Fachtext-Vertiefung (z. B. Verkehrssicherungspflicht).
+// Nur Seiten mit "fachtext" bekommen den Block; Quelle/Stand werden ausgewiesen.
+function lpFachtext(f) {
+  if (!f || !f.titel) return '';
+  const intro = f.intro ? `\n      <p class="lp-fachtext-intro">${esc(f.intro)}</p>` : '';
+  const bloecke = (f.bloecke || [])
+    .map((b) => `      <h3>${esc(b.h3)}</h3>\n      <p>${esc(b.text)}</p>`)
+    .join('\n');
+  const hinweis = f.hinweis ? `\n      <p class="lp-fachtext-hinweis">${esc(f.hinweis)}</p>` : '';
+  return `<section class="lp-block lp-fachtext" aria-labelledby="lp-fachtext-title">
+      <h2 id="lp-fachtext-title">${esc(f.titel)}</h2>${intro}
+${bloecke}${hinweis}
+    </section>`;
+}
+
 // ---------- Optionaler gegliederter Text (nur falls im JSON vorhanden) ----------
 function optionalText(p) {
   const parts = [];
@@ -514,6 +529,7 @@ export async function renderLeistungPage(opts) {
     footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
     h1: esc(leistung.h1),
     intro: esc(leistung.intro),
+    fachtext: lpFachtext(leistung.fachtext),
     eignung: lpEignung(leistung.eignung || []),
     ablauf: lpAblauf(leistung.ablauf || []),
     aufwand: lpAufwand(leistung.aufwand || []),
@@ -572,6 +588,139 @@ export async function renderLeistungenOverview(opts) {
     ogImage: escAttr(`${SITE}/assets/img/ueber/ueber-1.jpg`),
     breadcrumbJsonLd: breadcrumb,
     itemListJsonLd: itemList,
+    logo: logo.trim(),
+    header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
+    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
+    cards,
+  });
+}
+
+// ============================================================
+// AP-22 – Ratgeber (/ratgeber/<slug>/ und /ratgeber/)
+// ============================================================
+
+const LEISTUNG_LABEL = new Map(LEISTUNGEN_NAV.map((l) => [l.slug, l.label]));
+
+function rgSections(sections) {
+  return (sections || [])
+    .map((s) => {
+      const paras = (s.absaetze || []).map((a) => `      <p>${esc(a)}</p>`).join('\n');
+      return `      <h2>${esc(s.h2)}</h2>\n${paras}`;
+    })
+    .join('\n\n');
+}
+
+function rgVerwandte(slugs, base) {
+  return (slugs || [])
+    .map((slug) => {
+      const label = esc(LEISTUNG_LABEL.get(slug) || slug);
+      return `<li><a class="tag-link" href="${base}leistungen/${encodeURIComponent(slug)}/">${label}</a></li>`;
+    })
+    .join('\n            ');
+}
+
+function articleJsonLd(a, canonical) {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: a.h1,
+    description: a.metaDescription,
+    inLanguage: 'de-DE',
+    datePublished: a.datum,
+    dateModified: a.datum,
+    author: { '@id': `${SITE}/#maik-rohdich` },
+    publisher: { '@id': `${SITE}/#business` },
+    mainEntityOfPage: canonical,
+  }, null, 2);
+}
+
+function ratgeberBreadcrumb(kurz, canonical) {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Ratgeber', item: `${SITE}/ratgeber/` },
+      { '@type': 'ListItem', position: 3, name: kurz, item: canonical },
+    ],
+  }, null, 2);
+}
+
+// ---------- Ratgeber-Artikel ----------
+export async function renderRatgeberPage(opts) {
+  const { article, slug, cssVersion, jsVersion } = opts;
+  const [page, header, footer, logo] = await Promise.all([
+    loadTpl('ratgeber.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
+  ]);
+  const base = BASE_LEISTUNG;
+  const canonical = `${SITE}/ratgeber/${slug}/`;
+  const kurz = article.kurz || article.h1;
+
+  return fill(page, {
+    base,
+    slug: esc(slug),
+    cssVersion: escAttr(cssVersion),
+    jsVersion: escAttr(jsVersion),
+    title: esc(article.title),
+    ogTitle: escAttr(article.title),
+    description: escAttr(truncate(article.metaDescription, 160)),
+    canonical: escAttr(canonical),
+    ogImage: escAttr(`${SITE}/assets/img/ueber/ueber-1.jpg`),
+    breadcrumbJsonLd: ratgeberBreadcrumb(kurz, canonical),
+    articleJsonLd: articleJsonLd(article, canonical),
+    faqJsonLd: faqJsonLd(article.faq || []),
+    logo: logo.trim(),
+    header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
+    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
+    h1: esc(article.h1),
+    kurz: esc(kurz),
+    intro: esc(article.intro),
+    sections: rgSections(article.sections),
+    quelle: esc(article.quelle),
+    stand: esc(article.stand),
+    faqHtml: lpFaq(article.faq || []),
+    verwandteLinks: rgVerwandte(article.verwandteLeistungen, base),
+  });
+}
+
+// ---------- Ratgeber-Übersicht ----------
+export async function renderRatgeberOverview(opts) {
+  const { artikel, cssVersion, jsVersion } = opts;
+  const [page, header, footer, logo] = await Promise.all([
+    loadTpl('ratgeber-index.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
+  ]);
+  const base = BASE_GALLERY;
+  const canonical = `${SITE}/ratgeber/`;
+
+  const cards = artikel.map((a) => {
+    const href = `${encodeURIComponent(a.slug)}/`;
+    return `<a class="lpx-card" href="${href}">
+          <span class="lpx-tag">Ratgeber</span>
+          <h2>${esc(a.h1)}</h2>
+          <p>${esc(firstSentence(a.intro))}</p>
+          <span class="lpx-more">Weiterlesen <span aria-hidden="true">→</span></span>
+        </a>`;
+  }).join('\n        ');
+
+  const breadcrumb = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Ratgeber', item: canonical },
+    ],
+  }, null, 2);
+
+  return fill(page, {
+    base,
+    cssVersion: escAttr(cssVersion),
+    jsVersion: escAttr(jsVersion),
+    title: esc('Ratgeber rund um den Garten | Maik Rohdich Garten- und Landschaftsbau'),
+    ogTitle: escAttr('Ratgeber – Maik Rohdich Garten- und Landschaftsbau'),
+    description: escAttr('Fachlich fundierte Antworten auf häufige Gartenfragen – Fristen, Recht und Praxis, verständlich erklärt von Maik Rohdich aus Herne.'),
+    canonical: escAttr(canonical),
+    ogImage: escAttr(`${SITE}/assets/img/ueber/ueber-1.jpg`),
+    breadcrumbJsonLd: breadcrumb,
     logo: logo.trim(),
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
     footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),

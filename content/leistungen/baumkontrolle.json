@@ -5,6 +5,17 @@
   "metaDescription": "Baumkontrolle und Verkehrssicherheit vom Sachverständigen in Herne, Bochum und Recklinghausen – für Privatgrundstücke, Hausverwaltungen und Gewerbe. Jetzt Termin anfragen.",
   "serviceType": "Baumkontrolle und Verkehrssicherheitsprüfung an Bäumen",
   "intro": "Als Gartenbaumeister und Sachverständiger für Baumkontrolle prüfen wir Bäume auf ihre Verkehrssicherheit – auf privaten Grundstücken ebenso wie für Hausverwaltungen, Wohnanlagen und Gewerbeobjekte. Sie erhalten eine nachvollziehbare Einschätzung zum Zustand jedes Baums, zur Dringlichkeit möglicher Maßnahmen und eine Dokumentation, mit der Sie Ihrer Verkehrssicherungspflicht belegbar nachkommen.",
+  "fachtext": {
+    "titel": "Verkehrssicherungspflicht bei Bäumen",
+    "intro": "Wer einen Baum besitzt, muss dafür sorgen, dass von ihm keine Gefahr für andere ausgeht. Diese Verkehrssicherungspflicht trifft private Eigentümer, Hausverwaltungen und Gewerbe gleichermaßen. Kommt jemand zu Schaden, weil ein Baum nicht ausreichend kontrolliert wurde, kann der Eigentümer haften. Eine regelmäßige, fachlich fundierte Kontrolle ist der Weg, dieser Pflicht nachzukommen und sie im Ernstfall zu belegen.",
+    "bloecke": [
+      { "h3": "Wer haftet?", "text": "Die Verkehrssicherungspflicht liegt beim Eigentümer oder der Person, die die tatsächliche Verfügungsgewalt über das Grundstück hat – also auch bei Hausverwaltungen und Betreibern gewerblicher Flächen. Sie leitet sich aus der allgemeinen Verkehrssicherungspflicht ab (§ 823 BGB) und lässt sich vertraglich an einen Fachbetrieb übertragen, ohne dass die Grundverantwortung ganz entfällt." },
+      { "h3": "Wie oft ist eine Kontrolle nötig?", "text": "Als fachlicher Maßstab gilt die FLL-Baumkontrollrichtlinie. Der Kontrollturnus richtet sich nach Art, Alter, Zustand und Standort des Baums – für viele Bäume bedeutet das ein- bis zweimal im Jahr, oft im belaubten und im unbelaubten Zustand. Junge, gesunde Bäume an unkritischen Stellen brauchen seltener eine Prüfung als Altbäume über Wegen, Stellplätzen oder Spielflächen." },
+      { "h3": "Was ein Befund enthält", "text": "Ein Kontrollbefund hält die wesentlichen Baumdaten fest, den Zustand von Krone, Stamm, Stammfuß und Wurzelbereich, festgestellte Auffälligkeiten wie Totholz, Pilzbefall oder Risse, die empfohlenen Maßnahmen samt Dringlichkeit sowie den nächsten sinnvollen Kontrolltermin. So ist nachvollziehbar dokumentiert, dass und wie Sie sich gekümmert haben." },
+      { "h3": "Zusätzlich bei Gewerbe und Hausverwaltungen", "text": "Wo viele Menschen unterwegs sind, gelten höhere Sorgfaltsanforderungen. Für Gewerbeobjekte, Wohnanlagen und öffentlich zugängliche Flächen ist eine regelmäßige, lückenlos dokumentierte Kontrolle wichtig – im Schadensfall muss sich die Erfüllung der Verkehrssicherungspflicht belegen lassen. Genau diese Dokumentation liefern wir mit." }
+    ],
+    "hinweis": "Allgemeine Information, keine Rechtsberatung. Rechtsgrundlage ist die aus § 823 BGB abgeleitete Verkehrssicherungspflicht; als anerkannter fachlicher Standard gilt die FLL-Baumkontrollrichtlinie (Forschungsgesellschaft Landschaftsentwicklung Landschaftsbau e. V.). Kommunale Baumschutzsatzungen können zusätzliche Anforderungen stellen. Stand: Juli 2026."
+  },
   "eignung": [
     "Eigentümer mit älteren oder großen Bäumen in der Nähe von Wegen, Stellplätzen, Spielflächen oder Gebäuden.",
     "Hausverwaltungen und Wohnungseigentümergemeinschaften, die ihre Verkehrssicherungspflicht dokumentiert nachweisen müssen.",
