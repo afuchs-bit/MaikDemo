@@ -243,3 +243,274 @@ export function renderGalleryList(projekte, base = BASE_GALLERY) {
 ${cards}
     </div>`;
 }
+
+// ============================================================
+// AP-16 – Leistungsseiten (/leistungen/<slug>/ und /leistungen/)
+// ============================================================
+
+export const BASE_LEISTUNG = '../../'; // /leistungen/<slug>/ liegt zwei Ebenen unter dem Root
+export const AREA_SERVED = ['Herne', 'Bochum', 'Castrop-Rauxel', 'Recklinghausen', 'Gelsenkirchen-Buer'];
+
+const KUNDENGRUPPE_META = {
+  privat: { href: 'privatkunden/', label: 'Für Privatkunden' },
+  gewerbe: { href: 'gewerbekunden/', label: 'Für Gewerbekunden' },
+};
+
+// Einzelne Templates on demand laden und cachen.
+const _tplCache = new Map();
+async function loadTpl(name) {
+  if (_tplCache.has(name)) return _tplCache.get(name);
+  const t = await readFile(path.join(TPL_DIR, name), 'utf8');
+  _tplCache.set(name, t);
+  return t;
+}
+
+function firstSentence(s, max = 170) {
+  const str = String(s || '').trim().replace(/\s+/g, ' ');
+  const m = str.match(/^(.*?[.!?])(\s|$)/);
+  const sent = m ? m[1] : str;
+  return sent.length > max ? truncate(sent, max) : sent;
+}
+
+// ---------- Abschnitts-Renderer ----------
+function lpEignung(arr) {
+  return `<ul class="lp-list">
+        ${arr.map((s) => `<li>${esc(s)}</li>`).join('\n        ')}
+      </ul>`;
+}
+
+function lpAblauf(arr) {
+  const items = arr.map((s) => `<li>
+          <h3>${esc(s.titel)}</h3>
+          <p>${esc(s.text)}</p>
+        </li>`).join('\n        ');
+  return `<ol class="lp-steps">
+        ${items}
+      </ol>`;
+}
+
+function lpAufwand(arr) {
+  const items = arr.map((s) => `<div class="lp-driver">
+          <dt>${esc(s.titel)}</dt>
+          <dd>${esc(s.text)}</dd>
+        </div>`).join('\n        ');
+  return `<dl class="lp-drivers">
+        ${items}
+      </dl>`;
+}
+
+function lpMyths(arr) {
+  const items = arr.map((s) => `<li>
+          <h3>${esc(s.titel)}</h3>
+          <p>${esc(s.text)}</p>
+        </li>`).join('\n        ');
+  return `<ul class="lp-myths">
+        ${items}
+      </ul>`;
+}
+
+function lpFaq(arr) {
+  const items = arr.map((f) => `<details>
+          <summary><span>${esc(f.frage)}</span><span class="chev" aria-hidden="true"></span></summary>
+          <div class="faq-body"><p>${esc(f.antwort)}</p></div>
+        </details>`).join('\n        ');
+  return `<div class="faq-list">
+        ${items}
+      </div>`;
+}
+
+function lpRefs(refProjects, base) {
+  if (!refProjects.length) {
+    return `<p class="lp-note"><a class="tag-link" href="${base}projekte/">Alle Projekte in der Galerie ansehen</a></p>`;
+  }
+  const cards = refProjects.map((p) => {
+    const b = badge(p.kundentyp);
+    const cover = p.cover || {};
+    const src = escAttr(relAsset(cover.bild || '', base));
+    const alt = escAttr(cover.alt || '');
+    const href = `${base}projekte/${encodeURIComponent(p.slug)}/`;
+    const label = escAttr(`Projekt „${p.titel}“ in ${p.ort} ansehen`);
+    return `<article class="project-card">
+          <div class="project-media">
+            <img src="${src}" alt="${alt}" loading="lazy" decoding="async" width="800" height="600">
+            <span class="project-tag ${b.cls}">${esc(b.label)}</span>
+          </div>
+          <div class="project-body">
+            <span class="project-location">${esc(p.ort)}</span>
+            <h3>${esc(p.titel)}</h3>
+            <p>${esc(p.beschreibung)}</p>
+          </div>
+          <a class="card-open" href="${href}" aria-label="${label}"></a>
+        </article>`;
+  }).join('\n        ');
+  return `<div class="projects-grid lp-refs">
+        ${cards}
+      </div>`;
+}
+
+function lpVerlinkung(leistung, labelBySlug, base) {
+  const groups = [];
+  const kg = (leistung.kundengruppe || []).map((k) => {
+    const m = KUNDENGRUPPE_META[k];
+    return m ? `<li><a class="tag-link" href="${base}${m.href}">${esc(m.label)}</a></li>` : '';
+  }).filter(Boolean).join('\n            ');
+  if (kg) groups.push(`<div class="lp-linkgroup">
+          <h3>Kundengruppe</h3>
+          <ul class="tag-list">
+            ${kg}
+          </ul>
+        </div>`);
+
+  const nb = (leistung.nachbarn || []).map((slug) => {
+    const label = labelBySlug.get(slug) || slug;
+    return `<li><a class="tag-link" href="${base}leistungen/${encodeURIComponent(slug)}/">${esc(label)}</a></li>`;
+  }).join('\n            ');
+  if (nb) groups.push(`<div class="lp-linkgroup">
+          <h3>Verwandte Leistungen</h3>
+          <ul class="tag-list">
+            ${nb}
+          </ul>
+        </div>`);
+
+  groups.push(`<div class="lp-linkgroup">
+          <h3>Direkt anfragen</h3>
+          <ul class="tag-list">
+            <li><a class="tag-link" href="${base}#kontakt">Kontakt aufnehmen</a></li>
+          </ul>
+        </div>`);
+
+  return `<div class="lp-links">
+        ${groups.join('\n        ')}
+      </div>`;
+}
+
+// ---------- JSON-LD ----------
+function leistungBreadcrumb(h1, canonical) {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Leistungen', item: `${SITE}/leistungen/` },
+      { '@type': 'ListItem', position: 3, name: h1, item: canonical },
+    ],
+  }, null, 2);
+}
+
+function serviceJsonLd(leistung, canonical) {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${canonical}#service`,
+    name: leistung.h1,
+    serviceType: leistung.serviceType || leistung.h1,
+    url: canonical,
+    provider: { '@id': `${SITE}/#business` },
+    areaServed: AREA_SERVED,
+  }, null, 2);
+}
+
+function faqJsonLd(faq) {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: (faq || []).map((f) => ({
+      '@type': 'Question',
+      name: f.frage,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwort },
+    })),
+  }, null, 2);
+}
+
+// ---------- Leistungs-Detailseite ----------
+export async function renderLeistungPage(opts) {
+  const { leistung, slug, cssVersion, jsVersion, refProjects = [], labelBySlug = new Map() } = opts;
+  const [page, header, footer, logo] = await Promise.all([
+    loadTpl('leistung.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
+  ]);
+  const base = BASE_LEISTUNG;
+  const canonical = `${SITE}/leistungen/${slug}/`;
+  const ogImage = refProjects[0]?.cover?.bild ? absUrl(refProjects[0].cover.bild) : `${SITE}/assets/img/ueber/ueber-1.jpg`;
+
+  return fill(page, {
+    base,
+    slug: esc(slug),
+    cssVersion: escAttr(cssVersion),
+    jsVersion: escAttr(jsVersion),
+    title: esc(leistung.title),
+    ogTitle: escAttr(leistung.title),
+    description: escAttr(truncate(leistung.metaDescription, 160)),
+    canonical: escAttr(canonical),
+    ogImage: escAttr(ogImage),
+    breadcrumbJsonLd: leistungBreadcrumb(leistung.h1, canonical),
+    serviceJsonLd: serviceJsonLd(leistung, canonical),
+    faqJsonLd: faqJsonLd(leistung.faq),
+    logo: logo.trim(),
+    header: fill(header, { base }).trim(),
+    footer: fill(footer, { base }).trim(),
+    h1: esc(leistung.h1),
+    intro: esc(leistung.intro),
+    eignung: lpEignung(leistung.eignung || []),
+    ablauf: lpAblauf(leistung.ablauf || []),
+    aufwand: lpAufwand(leistung.aufwand || []),
+    fehleinschaetzungen: lpMyths(leistung.fehleinschaetzungen || []),
+    referenzprojekte: lpRefs(refProjects, base),
+    faqHtml: lpFaq(leistung.faq || []),
+    verlinkung: lpVerlinkung(leistung, labelBySlug, base),
+  });
+}
+
+// ---------- Leistungs-Übersichtsseite ----------
+export async function renderLeistungenOverview(opts) {
+  const { leistungen, cssVersion, jsVersion } = opts;
+  const [page, header, footer, logo] = await Promise.all([
+    loadTpl('leistungen-index.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
+  ]);
+  const base = BASE_GALLERY; // /leistungen/ liegt eine Ebene unter dem Root
+  const canonical = `${SITE}/leistungen/`;
+
+  const cards = leistungen.map((l) => {
+    const href = `${encodeURIComponent(l.slug)}/`;
+    const kg = (l.kundengruppe || []).map((k) => (k === 'gewerbe' ? 'Gewerbe' : 'Privat')).join(' · ');
+    return `<a class="lpx-card" href="${href}">
+          <span class="lpx-tag">${esc(kg)}</span>
+          <h2>${esc(l.h1)}</h2>
+          <p>${esc(firstSentence(l.intro))}</p>
+          <span class="lpx-more">Mehr erfahren <span aria-hidden="true">→</span></span>
+        </a>`;
+  }).join('\n        ');
+
+  const breadcrumb = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Leistungen', item: canonical },
+    ],
+  }, null, 2);
+
+  const itemList = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: leistungen.map((l, i) => ({
+      '@type': 'ListItem', position: i + 1, name: l.h1, url: `${SITE}/leistungen/${l.slug}/`,
+    })),
+  }, null, 2);
+
+  return fill(page, {
+    base,
+    cssVersion: escAttr(cssVersion),
+    jsVersion: escAttr(jsVersion),
+    title: esc('Leistungen im Garten- und Landschaftsbau in Herne, Bochum & Recklinghausen | Maik Rohdich'),
+    ogTitle: escAttr('Leistungen – Maik Rohdich Garten- und Landschaftsbau'),
+    description: escAttr('Alle Leistungen von Maik Rohdich Garten- und Landschaftsbau: Gartengestaltung, Teichanlagen, Pflasterarbeiten, Baumkontrolle, Pflege und mehr in Herne, Bochum und Recklinghausen.'),
+    canonical: escAttr(canonical),
+    ogImage: escAttr(`${SITE}/assets/img/ueber/ueber-1.jpg`),
+    breadcrumbJsonLd: breadcrumb,
+    itemListJsonLd: itemList,
+    logo: logo.trim(),
+    header: fill(header, { base }).trim(),
+    footer: fill(footer, { base }).trim(),
+    cards,
+  });
+}

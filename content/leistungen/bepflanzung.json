@@ -1,0 +1,40 @@
+{
+  "h1": "Bepflanzung",
+  "navLabel": "Bepflanzung",
+  "title": "Bepflanzung & Pflanzplanung in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Standortgerechte Bepflanzung in Herne, Bochum und Recklinghausen – Stauden, Gehölze und Hecken, die zum Boden passen und dauerhaft funktionieren. Jetzt anfragen.",
+  "serviceType": "Pflanzplanung und Bepflanzung von Gärten",
+  "intro": "Wir planen und setzen Bepflanzungen, die zum Standort passen – Stauden, Gehölze, Hecken und Beete, abgestimmt auf Boden, Licht und den gewünschten Pflegeaufwand. Die richtige Pflanze am richtigen Ort wächst gut, braucht wenig Nacharbeit und sieht auch in einigen Jahren noch stimmig aus. Wir denken deshalb nicht nur an den Moment der Pflanzung, sondern an die Entwicklung.",
+  "eignung": [
+    "Neue Beete und Flächen, die von Grund auf bepflanzt werden sollen.",
+    "Bestehende Gärten, deren Bepflanzung müde geworden oder überwuchert ist.",
+    "Eigentümer, die eine pflegeleichte, aber lebendige Bepflanzung wünschen.",
+    "Wer eine Hecke als Sicht- oder Windschutz anlegen möchte."
+  ],
+  "ablauf": [
+    { "titel": "Standort ansehen", "text": "Wir beurteilen Boden, Licht und Feuchte. Erst das entscheidet, welche Pflanzen an dieser Stelle dauerhaft funktionieren." },
+    { "titel": "Pflanzplan", "text": "Wir stellen eine Auswahl zusammen, die in Wuchs, Blühzeit und Pflege zusammenpasst – und über das Jahr etwas hergibt." },
+    { "titel": "Bodenvorbereitung", "text": "Vor dem Pflanzen wird der Boden vorbereitet. Eine gute Ausgangslage erspart später viel Nacharbeit." },
+    { "titel": "Pflanzung mit Augenmaß", "text": "Wir setzen mit den richtigen Abständen, damit sich die Pflanzen entwickeln können, statt sich gegenseitig zu verdrängen." }
+  ],
+  "aufwand": [
+    { "titel": "Boden und Standort", "text": "Bodenart, Licht und Feuchte bestimmen die Pflanzenauswahl und den Aufwand der Vorbereitung." },
+    { "titel": "Flächengröße", "text": "Ein einzelnes Beet ist etwas anderes als die durchgehende Bepflanzung eines ganzen Gartens." },
+    { "titel": "Pflanzenwahl", "text": "Stauden, Gehölze und Heckenpflanzen unterscheiden sich in Preis, Anwuchs und Pflege." },
+    { "titel": "Bodenvorbereitung", "text": "Verdichteter oder nährstoffarmer Boden braucht mehr Vorarbeit, damit die Pflanzen anwachsen." },
+    { "titel": "Pflegeanspruch", "text": "Wie viel Nacharbeit die Bepflanzung später macht, hängt von der Auswahl ab – das planen wir mit." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Hauptsache, es blüht viel.“", "text": "Eine Bepflanzung, die nur im Frühjahr Effekt macht, wirkt den Rest des Jahres kahl. Wir planen über die Saison hinweg." },
+    { "titel": "„Dicht gepflanzt sieht gleich fertig aus.“", "text": "Zu eng gesetzt konkurrieren Pflanzen um Licht und Wasser. Mit dem richtigen Abstand wird es dauerhaft schöner." },
+    { "titel": "„Jede Pflanze wächst überall.“", "text": "Der Standort entscheidet. Eine Pflanze am falschen Ort kümmert, egal wie gut sie gepflegt wird." }
+  ],
+  "faq": [
+    { "frage": "Woher weiß ich, welche Pflanzen zu meinem Garten passen?", "antwort": "Das ergibt sich aus dem Standort. Wir sehen uns Boden, Licht und Feuchte an und wählen darauf abgestimmt Pflanzen aus, die an dieser Stelle dauerhaft funktionieren. So sparen Sie sich Fehlkäufe und Pflanzen, die nach einem Jahr wieder eingehen, weil sie am falschen Ort standen." },
+    { "frage": "Kann die Bepflanzung pflegeleicht sein und trotzdem gut aussehen?", "antwort": "Ja. Pflegeleicht heißt nicht kahl. Mit einer durchdachten Auswahl aus Stauden und Gehölzen, die zum Standort passen, entsteht eine lebendige Fläche, die über das Jahr etwas hergibt und wenig Nacharbeit braucht. Der Schlüssel liegt in der Planung, nicht in ständigem Nachbessern." },
+    { "frage": "Wann ist die beste Zeit zum Pflanzen?", "antwort": "Für viele Gehölze und Stauden eignen sich Frühjahr und Herbst besonders gut, weil die Pflanzen dann gut anwachsen. Container-Ware lässt sich in weiten Teilen des Jahres setzen. Was für Ihre Auswahl und Ihren Zeitplan sinnvoll ist, stimmen wir bei der Planung ab." },
+    { "frage": "Legen Sie auch Hecken an?", "antwort": "Ja. Ob als Sicht-, Wind- oder Lärmschutz – wir wählen die passende Heckenpflanze für den Standort und die gewünschte Höhe aus und setzen sie fachgerecht. Auch für den späteren Schnitt und die Pflege der Hecke sind wir der richtige Ansprechpartner." }
+  ],
+  "nachbarn": ["gartengestaltung", "gartenpflege"],
+  "kundengruppe": ["privat"]
+}

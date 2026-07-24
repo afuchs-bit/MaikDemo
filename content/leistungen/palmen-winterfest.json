@@ -1,0 +1,39 @@
+{
+  "h1": "Winterfeste Palmen und Beleuchtung",
+  "navLabel": "Palmen & winterfest",
+  "title": "Winterfeste Palmen & Gartenbeleuchtung in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Winterharte Palmen und stimmige Gartenbeleuchtung in Herne, Bochum und Recklinghausen – standortgerecht gepflanzt, mit eigener Spezialerde. Jetzt Termin anfragen.",
+  "serviceType": "Pflanzung winterfester Palmen und Gartenbeleuchtung",
+  "intro": "Wir pflanzen winterfeste Palmen, die auch im Ruhrgebiet draußen bleiben können, und setzen sie mit passender Beleuchtung in Szene. Damit eine Palme den Winter übersteht, kommt es auf Standort, Drainage und den richtigen Boden an – dafür verwenden wir eine eigene Spezialerde. So wird aus einem exotischen Blickfang ein Element, das dauerhaft funktioniert und nicht nach dem ersten Frost aufgibt.",
+  "eignung": [
+    "Gärten und Sitzplätze, die einen exotischen Blickfang bekommen sollen.",
+    "Eigentümer, die eine Palme dauerhaft draußen halten möchten, statt sie jedes Jahr einzuräumen.",
+    "Bereiche, die abends durch stimmige Beleuchtung wirken sollen.",
+    "Wer bereits eine Palme hat, die nicht recht gedeihen will."
+  ],
+  "ablauf": [
+    { "titel": "Standort wählen", "text": "Wir suchen die Stelle, an der die Palme geschützt steht und der Boden nicht dauerhaft nass ist – beides ist für die Winterhärte entscheidend." },
+    { "titel": "Boden vorbereiten", "text": "Für die richtige Drainage und den passenden Boden verwenden wir unsere eigene Spezialerde, damit keine Staunässe entsteht." },
+    { "titel": "Pflanzung", "text": "Die Palme wird fachgerecht gesetzt, sodass sie gut anwächst und für den ersten Winter vorbereitet ist." },
+    { "titel": "Beleuchtung", "text": "Auf Wunsch setzen wir die Palme und den umgebenden Bereich abends mit einer zurückhaltenden Beleuchtung in Szene." }
+  ],
+  "aufwand": [
+    { "titel": "Größe der Palme", "text": "Eine kräftige, ältere Palme ist im Transport und in der Pflanzung aufwendiger als ein junges Exemplar." },
+    { "titel": "Standort und Drainage", "text": "Wie geschützt die Stelle ist und ob der Boden Wasser ableitet, entscheidet über Aufwand und Winterhärte." },
+    { "titel": "Bodenvorbereitung", "text": "Damit keine Staunässe entsteht, ist oft ein Austausch des Bodens gegen geeignetes Substrat nötig." },
+    { "titel": "Beleuchtung", "text": "Ob und wie beleuchtet wird, bringt Leitungsführung und zusätzliche Arbeitsschritte mit sich." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Winterhart heißt, die Palme übersteht alles.“", "text": "Winterhärte hängt am Standort und am Boden. Steht die Palme nass und ungeschützt, hilft auch die robusteste Sorte wenig." },
+    { "titel": "„Hauptsache viel gießen.“", "text": "Nicht Trockenheit, sondern Staunässe ist für viele Palmen im Winter das größere Problem. Die Drainage ist entscheidender als das Gießen." },
+    { "titel": "„Normale Blumenerde tut es auch.“", "text": "Der Boden entscheidet über die Winterhärte. Deshalb setzen wir auf eine geeignete, durchlässige Substratmischung statt auf Standarderde." }
+  ],
+  "faq": [
+    { "frage": "Können Palmen im Ruhrgebiet wirklich draußen bleiben?", "antwort": "Ja, mit den richtigen Voraussetzungen. Entscheidend sind eine winterharte Sorte, ein geschützter Standort und vor allem ein durchlässiger Boden ohne Staunässe. Genau darauf richten wir die Pflanzung aus – unter anderem mit unserer eigenen Spezialerde. Damit lässt sich eine Palme dauerhaft im Garten halten, statt sie jedes Jahr einräumen zu müssen." },
+    { "frage": "Was hat es mit der Spezialerde auf sich?", "antwort": "Der häufigste Grund, warum Palmen den Winter nicht überstehen, ist nasser, verdichteter Boden. Unsere Substratmischung ist darauf ausgelegt, Wasser abzuleiten und Staunässe zu vermeiden. Zusammen mit dem passenden Standort ist das der entscheidende Faktor für die Winterhärte – wichtiger als jede Abdeckung im Winter." },
+    { "frage": "Gehört die Beleuchtung dazu?", "antwort": "Auf Wunsch ja. Gerade eine Palme wirkt abends durch eine gezielte Beleuchtung besonders. Wir stimmen Licht und Bepflanzung aufeinander ab und planen die Leitungsführung gleich mit, damit später nicht noch einmal aufgegraben werden muss. Die Beleuchtung lässt sich auch auf den umgebenden Sitzplatz ausdehnen." },
+    { "frage": "Meine Palme kümmert – können Sie helfen?", "antwort": "Oft ja. Häufig liegt es am Standort oder am Boden, seltener an der Pflanze selbst. Wir sehen uns die Situation an und sagen Ihnen, ob ein Umpflanzen, eine bessere Drainage oder ein anderer Standort hilft. Manchmal reicht schon eine Anpassung des Bodens, damit die Palme wieder in Form kommt." }
+  ],
+  "nachbarn": ["bepflanzung", "gartenpflege"],
+  "kundengruppe": ["privat"]
+}

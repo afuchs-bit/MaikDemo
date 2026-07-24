@@ -1,0 +1,41 @@
+{
+  "h1": "Gartengestaltung",
+  "navLabel": "Gartengestaltung",
+  "title": "Gartengestaltung in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Gartengestaltung vom Gartenbaumeister in Herne, Bochum und Recklinghausen – Wege, Beete, Rasen, Sitzplätze durchdacht geplant und sauber umgesetzt. Jetzt Termin anfragen.",
+  "serviceType": "Planung und Umsetzung privater Gartengestaltung",
+  "intro": "Wir gestalten Gärten vom ersten Entwurf bis zur fertigen Fläche – Wege, Beete, Rasen, Sitzplätze, Bepflanzung und die Technik dahinter. Dabei planen wir so, dass das Ergebnis zu Grundstück, Nutzung und Pflegeaufwand passt und nicht nur am ersten Tag gut aussieht. Für Neuanlagen ebenso wie für die Umgestaltung bestehender Gärten in Herne und Umgebung.",
+  "eignung": [
+    "Neu gebaute Häuser, bei denen der Garten noch Rohfläche ist.",
+    "Bestehende Gärten, die in die Jahre gekommen sind oder nicht mehr zur Nutzung passen.",
+    "Eigentümer, die einen durchdachten Gesamtplan statt vieler Einzelaktionen möchten.",
+    "Wer von Anfang an mitbedenken will, wie viel Pflege der Garten später macht."
+  ],
+  "ablauf": [
+    { "titel": "Termin am Betrieb", "text": "Bei Gestaltungsprojekten sehen wir uns gemeinsam Materialien, Pflanzen und Ideen an. So bekommen Sie ein Gefühl dafür, was zusammenpasst." },
+    { "titel": "Besichtigung vor Ort", "text": "Wir schauen uns Grundstück, Boden, Licht und Gefälle an. Erst wenn wir die Fläche kennen, lässt sich sinnvoll planen." },
+    { "titel": "Entwurf und Abstimmung", "text": "Wir entwickeln einen Vorschlag, der zu Nutzung, Budgetrahmen und Pflegeaufwand passt, und stimmen ihn mit Ihnen ab." },
+    { "titel": "Umsetzung", "text": "Erd- und Wegebau, Bepflanzung, Rasen und Technik führen wir aus einer Hand aus – in einer nachvollziehbaren Reihenfolge." }
+  ],
+  "aufwand": [
+    { "titel": "Fläche und Zuschnitt", "text": "Größe und Form des Gartens bestimmen den Grundaufwand für Erd-, Wege- und Pflanzarbeiten." },
+    { "titel": "Untergrund und Gefälle", "text": "Bodenbeschaffenheit, Verdichtung und Höhenunterschiede entscheiden, wie viel Vorarbeit nötig ist." },
+    { "titel": "Zugänglichkeit", "text": "Kann Technik auf das Grundstück oder muss vieles von Hand transportiert werden? Das wirkt sich spürbar aus." },
+    { "titel": "Materialwahl", "text": "Naturstein, Beton, Holz oder Kies unterscheiden sich in Aufwand und Wirkung." },
+    { "titel": "Entwässerung", "text": "Wohin das Regenwasser abläuft, ist bei versiegelten Flächen und Sitzplätzen von Anfang an mitzuplanen." },
+    { "titel": "Pflegeaufwand", "text": "Ein pflegeleichter Garten ist anders angelegt als ein aufwendig bepflanzter – das gehört in die Planung." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Erst anlegen, Pflege überlegen wir später.“", "text": "Wie viel Arbeit ein Garten macht, entscheidet sich bei der Planung. Nachträglich lässt sich das nur mit Aufwand ändern." },
+    { "titel": "„Hauptsache, es sieht am Anfang gut aus.“", "text": "Pflanzen wachsen. Ein guter Entwurf denkt das ein, sonst wird aus dem lichten Beet in wenigen Jahren ein Dickicht." },
+    { "titel": "„Ein paar Platten legen ist schnell gemacht.“", "text": "Ohne tragfähigen Unterbau und Gefälle senken sich Flächen ab und stauen Wasser. Der Untergrund entscheidet über die Haltbarkeit." }
+  ],
+  "faq": [
+    { "frage": "Wie läuft ein Gartenprojekt bei Ihnen ab?", "antwort": "Am Anfang steht ein Termin am Betrieb, bei dem wir Materialien und Ideen ansehen, dann folgt die Besichtigung vor Ort. Auf dieser Grundlage entwickeln wir einen Entwurf, stimmen ihn mit Ihnen ab und setzen ihn anschließend aus einer Hand um – von der Erdarbeit über Wege bis zur Bepflanzung." },
+    { "frage": "Wie lange dauert die Neugestaltung eines Gartens?", "antwort": "Ein kompletter Garten liegt erfahrungsgemäß bei ungefähr zwei Wochen, je nach Umfang und Wetter. Kleinere Umgestaltungen sind deutlich schneller fertig. Den zeitlichen Rahmen für Ihr Projekt nennen wir Ihnen nach der Besichtigung, wenn wir Fläche, Untergrund und Aufwand kennen." },
+    { "frage": "Gestalten Sie auch bestehende Gärten um?", "antwort": "Ja. Häufig geht es gar nicht um eine komplette Neuanlage, sondern darum, einen in die Jahre gekommenen Garten wieder nutzbar und stimmig zu machen. Wir schauen, was erhalten bleiben kann und wo eine Veränderung den größten Effekt hat." },
+    { "frage": "Bekomme ich Gestaltung und Umsetzung aus einer Hand?", "antwort": "Ja. Planung, Erd- und Wegebau, Bepflanzung, Rasen und die technischen Details laufen bei uns zusammen. Das erspart Ihnen die Koordination mehrerer Gewerke und sorgt dafür, dass die Arbeitsschritte in der richtigen Reihenfolge ineinandergreifen." }
+  ],
+  "nachbarn": ["vorgarten", "bepflanzung"],
+  "kundengruppe": ["privat"]
+}

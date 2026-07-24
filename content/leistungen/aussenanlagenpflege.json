@@ -1,0 +1,39 @@
+{
+  "h1": "Außenanlagenpflege für Gewerbe",
+  "navLabel": "Außenanlagenpflege",
+  "title": "Außenanlagenpflege für Gewerbe in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Zuverlässige Außenanlagenpflege für Gewerbe, Wohnanlagen und Hausverwaltungen in Herne, Bochum und Recklinghausen – ein Ansprechpartner, wiederkehrend, dokumentiert.",
+  "serviceType": "Pflege gewerblicher Außenanlagen und Grünflächen",
+  "intro": "Wir übernehmen die laufende Pflege gewerblicher Außenanlagen – für Bürostandorte, Wohnanlagen, Hausverwaltungen und Gewerbeparks. Rasen, Hecken, Beete, Wege und Baumbestand bleiben in einem gepflegten, verkehrssicheren Zustand, mit einem festen Ansprechpartner und nachvollziehbarer Ausführung. So repräsentiert Ihr Objekt zu jeder Jahreszeit und Sie haben die Grünflächen aus dem Kopf.",
+  "eignung": [
+    "Hausverwaltungen und Eigentümergemeinschaften, die eine verlässliche, wiederkehrende Pflege ohne ständige Abstimmung brauchen.",
+    "Bürostandorte und Gewerbeparks, deren Außenwirkung zum Auftritt gehört.",
+    "Objekte mit Publikumsverkehr, bei denen Verkehrssicherheit von Wegen und Bäumen eine Rolle spielt.",
+    "Betreiber, die mehrere Gewerke – Grünpflege, Hecken, Baumkontrolle – bei einem Ansprechpartner bündeln möchten."
+  ],
+  "ablauf": [
+    { "titel": "Objektbegehung", "text": "Wir sehen uns die Flächen an, erfassen Pflegebedarf, Baumbestand und kritische Stellen und stimmen ab, was in welchem Rhythmus sinnvoll ist." },
+    { "titel": "Pflegeplan", "text": "Sie erhalten einen auf das Objekt zugeschnittenen Ablauf über das Jahr – von Mäh- und Schnittintervallen bis zum Winterthema." },
+    { "titel": "Wiederkehrende Ausführung", "text": "Ein fester Ansprechpartner führt die Pflege verlässlich aus. Auffälligkeiten – etwa am Baumbestand – melden wir aktiv zurück." },
+    { "titel": "Dokumentation", "text": "Auf Wunsch dokumentieren wir die Leistungen so, dass Sie sie gegenüber Eigentümern oder Mietern belegen können." }
+  ],
+  "aufwand": [
+    { "titel": "Größe und Zuschnitt der Flächen", "text": "Zusammenhängende Rasenflächen pflegen sich anders als kleinteilige Beete, Pflanzstreifen und Wege." },
+    { "titel": "Pflegeintervall", "text": "Wöchentlich, zweiwöchentlich oder saisonal – der gewünschte Rhythmus bestimmt den laufenden Aufwand." },
+    { "titel": "Baumbestand und Verkehrssicherheit", "text": "Bäume über Wegen und Stellplätzen bringen zusätzliche Kontroll- und Pflegeanforderungen mit sich." },
+    { "titel": "Dokumentations- und Abstimmungsbedarf", "text": "Je nach Verwaltung ist mehr oder weniger Nachweis und Kommunikation gefragt." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Grünpflege ist reines Rasenmähen.“", "text": "Zur Außenanlagenpflege gehören Hecken, Beete, Wegereinigung, Verkehrssicherheit der Bäume und die Planung übers Jahr – nicht nur der Rasen." },
+    { "titel": "„Der günstigste Anbieter ist der wirtschaftlichste.“", "text": "Wird der Baumbestand mitgedacht und dokumentiert, senkt das Haftungsrisiko – das zeigt sich erst, wenn etwas passiert." },
+    { "titel": "„Viele Einzeldienstleister sind flexibler.“", "text": "Ein Ansprechpartner für Grün, Hecken und Bäume spart Abstimmung und sorgt dafür, dass nichts zwischen den Gewerken liegen bleibt." }
+  ],
+  "faq": [
+    { "frage": "Übernehmen Sie die laufende Pflege ganzjährig?", "antwort": "Ja. Wir richten die Pflege auf das Jahr aus – vom ersten Schnitt im Frühjahr über die Sommerintervalle bis zum Herbstlaub und der Vorbereitung auf den Winter. Der Rhythmus wird auf Ihr Objekt abgestimmt, sodass die Flächen durchgängig gepflegt bleiben." },
+    { "frage": "Bekommen wir einen festen Ansprechpartner?", "antwort": "Ja. Sie haben einen Ansprechpartner, der das Objekt kennt. Das erspart Erklärungen bei jedem Termin und sorgt dafür, dass Besonderheiten der Anlage berücksichtigt werden. Auffälligkeiten, etwa am Baumbestand, melden wir aktiv zurück, statt sie zu übergehen." },
+    { "frage": "Können Sie auch die Baumkontrolle mit übernehmen?", "antwort": "Ja. Das ist einer der Gründe, warum Objekte die Pflege bei uns bündeln: Als Sachverständiger für Baumkontrolle können wir die Verkehrssicherheit der Bäume mit abdecken und dokumentieren – ein wichtiger Punkt für die Verkehrssicherungspflicht auf gewerblichen Flächen." },
+    { "frage": "Eignet sich das auch für kleinere Wohnanlagen?", "antwort": "Ja. Auch überschaubare Wohnanlagen und Eigentümergemeinschaften profitieren von einer wiederkehrenden Pflege mit festem Ansprechpartner. Für ein passendes Angebot vereinbaren wir eine Objektbegehung." }
+  ],
+  "nachbarn": ["baumkontrolle", "gartenpflege"],
+  "kundengruppe": ["gewerbe"]
+}

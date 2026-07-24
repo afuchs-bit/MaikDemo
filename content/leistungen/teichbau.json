@@ -1,0 +1,40 @@
+{
+  "h1": "Teichanlagen und Wasser im Garten",
+  "navLabel": "Teichanlagen",
+  "title": "Teichanlagen & Wasser im Garten in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Teichanlagen, Wasserläufe und natürliche Uferzonen in Herne, Bochum und Recklinghausen – geplant, angelegt und stimmig in den Garten eingebunden. Jetzt anfragen.",
+  "serviceType": "Planung und Bau von Gartenteichen und Wasseranlagen",
+  "intro": "Wir planen und bauen Teiche, Wasserläufe und natürliche Uferzonen und binden sie stimmig in den Garten ein – von der Aushubarbeit über die Technik bis zur Uferbepflanzung. Ein Teich verändert einen Garten stärker als fast jedes andere Element, braucht aber eine durchdachte Anlage, damit das Wasser klar bleibt und die Pflege überschaubar ist. Teichanlagen sind unser Schwerpunkt dieser Saison.",
+  "eignung": [
+    "Gärten, die ein ruhiges, lebendiges Element bekommen sollen.",
+    "Eigentümer, die sich einen Sitzplatz am Wasser oder eine naturnahe Uferzone wünschen.",
+    "Grundstücke rund um Pool oder Whirlpool, die eine natürliche Einbindung suchen.",
+    "Wer einen bestehenden Teich sanieren oder pflegeleichter umbauen möchte."
+  ],
+  "ablauf": [
+    { "titel": "Idee und Standort", "text": "Wir klären, welche Art von Wasser Sie sich wünschen und wo im Garten es sinnvoll liegt – Licht, Blickachsen und Untergrund spielen mit hinein." },
+    { "titel": "Planung von Form und Technik", "text": "Größe, Tiefenzonen, Abdichtung und die passende Technik legen wir so aus, dass Wasserqualität und Pflege zusammenpassen." },
+    { "titel": "Aushub und Anlage", "text": "Erdarbeiten, Abdichtung, Ufergestaltung und Einbau der Technik führen wir aufeinander abgestimmt aus." },
+    { "titel": "Bepflanzung und Einbindung", "text": "Zum Schluss die Uferbepflanzung und der Übergang in den Garten – damit der Teich nicht wie ein Fremdkörper wirkt." }
+  ],
+  "aufwand": [
+    { "titel": "Größe und Tiefe", "text": "Fläche und Tiefenzonen bestimmen den Aushub und das Volumen, das später stabil bleiben muss." },
+    { "titel": "Untergrund und Aushub", "text": "Boden, Grundwasserstand und Zugänglichkeit für Erdarbeiten wirken sich stark auf den Aufwand aus." },
+    { "titel": "Technik", "text": "Filter, Pumpe und ein möglicher Bachlauf entscheiden über Wasserqualität und laufende Pflege." },
+    { "titel": "Uferzone und Bepflanzung", "text": "Eine natürliche Uferzone braucht Aufbau und passende Pflanzen – sie ist mehr als ein Rand." },
+    { "titel": "Folgepflege", "text": "Wie viel Pflege ein Teich macht, entscheidet sich bei der Anlage – von der Technik bis zur Bepflanzung." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Je tiefer, desto klarer das Wasser.“", "text": "Nicht die Tiefe allein entscheidet über klares Wasser, sondern das Zusammenspiel aus Tiefenzonen, Technik und Bepflanzung." },
+    { "titel": "„Ein Teich macht keine Arbeit.“", "text": "Auch ein naturnaher Teich braucht Pflege. Wie viel, entscheidet sich bei der Planung – deshalb gehört sie ernst genommen." },
+    { "titel": "„Die Folie kann man einfach in die Grube legen.“", "text": "Abdichtung, Unterbau und Uferaufbau müssen zusammenpassen, sonst wird der Teich undicht oder das Ufer rutscht ab." }
+  ],
+  "faq": [
+    { "frage": "Wie bleibt das Wasser im Teich klar?", "antwort": "Klares Wasser entsteht aus dem Zusammenspiel von durchdachten Tiefenzonen, passender Technik und der richtigen Uferbepflanzung. Zu viel Nährstoff und zu wenig Bewegung lassen einen Teich kippen. Deshalb legen wir Größe, Technik und Bepflanzung von Anfang an aufeinander abgestimmt aus, statt einzelne Teile nachträglich zu ergänzen." },
+    { "frage": "Wie viel Pflege macht ein Gartenteich?", "antwort": "Das hängt stark davon ab, wie er angelegt ist. Ein gut geplanter Teich mit passender Technik und Bepflanzung braucht überschaubare, saisonale Pflege. Wird an Technik oder Uferzone gespart, steigt der Aufwand dauerhaft. Wie pflegeleicht Ihr Teich wird, entscheidet sich also nicht später, sondern bei der Planung." },
+    { "frage": "Können Sie einen Teich am Pool oder Whirlpool einbinden?", "antwort": "Ja. Eine natürliche Uferzone oder ein Wasserlauf lässt sich stimmig an ein Pool- oder Whirlpool-Umfeld anschließen, sodass Technikbereich und naturnaher Teil zusammen wirken. Wichtig ist, beides von Anfang an gemeinsam zu planen, damit die Übergänge und die Technik zueinander passen." },
+    { "frage": "Sanieren Sie auch bestehende Teiche?", "antwort": "Ja. Oft lässt sich ein in die Jahre gekommener Teich mit überschaubarem Aufwand wieder klar und pflegeleichter machen – durch Anpassung der Technik, der Tiefenzonen oder der Bepflanzung. Wir sehen uns die vorhandene Anlage an und sagen Ihnen, was sinnvoll ist und was sich erhalten lässt." }
+  ],
+  "nachbarn": ["gartengestaltung", "pool-whirlpool-umfeld"],
+  "kundengruppe": ["privat"]
+}

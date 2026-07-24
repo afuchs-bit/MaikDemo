@@ -79,6 +79,10 @@ collections:
           - { label: "Sturmnotdienst", value: sturmnotdienst }
           - { label: "Holzverkauf", value: holzverkauf }
           - { label: "Außenanlagenpflege", value: aussenanlagenpflege }
+          - { label: "Gartenpflege", value: gartenpflege }
+          - { label: "Terrassen & Pflaster", value: terrasse-pflasterarbeiten }
+          - { label: "Palmen & winterfest", value: palmen-winterfest }
+          - { label: "Pool- & Whirlpool-Umfeld", value: pool-whirlpool-umfeld }
         hint: "Mehrfachauswahl – ein Projekt hat meist mehrere Leistungen."
       - { name: datum, label: "Datum", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, hint: "Für die Sortierung und die Aktuell-Ansicht (neueste zuerst)." }
       - { name: featured, label: "Auf Startseite zeigen", widget: boolean, default: false, hint: "Die 3 neuesten mit Häkchen erscheinen auf der Startseite." }

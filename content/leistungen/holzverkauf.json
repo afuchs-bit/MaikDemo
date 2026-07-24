@@ -1,0 +1,37 @@
+{
+  "h1": "Brennholz und Stammholz",
+  "navLabel": "Brennholz & Stammholz",
+  "title": "Brennholz & Stammholz in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Brennholz und Stammholz aus dem eigenen Baumbestand in Herne, Bochum und Recklinghausen – regional, aus Baumarbeiten vor Ort. Verfügbarkeit auf Anfrage.",
+  "serviceType": "Verkauf von Brennholz und Stammholz",
+  "intro": "Aus unseren Baumarbeiten fällt regelmäßig Holz an, das wir zu Brennholz und Stammholz aufarbeiten und regional abgeben. So bleibt gutes Material im Kreislauf, statt entsorgt zu werden. Verfügbarkeit, Holzart und Menge hängen davon ab, was gerade an Baumarbeiten anfällt – am besten fragen Sie kurz an, was aktuell da ist.",
+  "eignung": [
+    "Haushalte mit Kamin oder Ofen, die regionales Brennholz suchen.",
+    "Wer Wert darauf legt, dass das Holz aus Arbeiten in der Umgebung stammt und nicht weit transportiert wurde.",
+    "Interessenten für Stammholz, etwa zur weiteren Verarbeitung.",
+    "Kunden, die ohnehin eine Baumarbeit beauftragen und das anfallende Holz gleich nutzen möchten."
+  ],
+  "ablauf": [
+    { "titel": "Anfrage", "text": "Sie fragen an, was Sie suchen – Brennholz oder Stammholz, ungefähre Menge, Verwendung." },
+    { "titel": "Verfügbarkeit klären", "text": "Wir sagen Ihnen offen, was aktuell vorhanden ist. Das richtet sich nach den zuletzt ausgeführten Baumarbeiten." },
+    { "titel": "Abstimmung", "text": "Holzart, Aufarbeitungsgrad und Abholung oder Anlieferung stimmen wir gemeinsam ab." }
+  ],
+  "aufwand": [
+    { "titel": "Holzart", "text": "Harthölzer und Weichhölzer unterscheiden sich in Brennwert und Trocknung – das beeinflusst, was sich wofür eignet." },
+    { "titel": "Aufarbeitungsgrad", "text": "Ob Stammabschnitte, gespalten oder ofenfertig – jeder Schritt bedeutet zusätzliche Arbeit." },
+    { "titel": "Menge", "text": "Kleinere Mengen für den Hausgebrauch unterscheiden sich vom größeren Bedarf." },
+    { "titel": "Abholung oder Anlieferung", "text": "Ob Sie das Holz abholen oder wir es anliefern, macht einen Unterschied im Aufwand." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Frisches Holz kann man sofort verbrennen.“", "text": "Frisch geschlagenes Holz muss erst ausreichend trocknen. Zu feuchtes Holz brennt schlecht, rußt und belastet den Schornstein." },
+    { "titel": "„Brennholz ist immer sofort verfügbar.“", "text": "Wir verkaufen, was aus unseren Arbeiten anfällt. Menge und Holzart schwanken deshalb – eine kurze Anfrage lohnt sich." },
+    { "titel": "„Jedes Holz eignet sich gleich gut.“", "text": "Harthölzer wie Buche haben einen höheren Brennwert als Weichhölzer. Was für Sie passt, hängt von Ofen und Nutzung ab." }
+  ],
+  "faq": [
+    { "frage": "Haben Sie immer Brennholz vorrätig?", "antwort": "Nicht durchgehend. Wir geben Holz ab, das aus unseren Baumarbeiten anfällt. Menge, Holzart und Aufarbeitungsgrad schwanken deshalb. Am besten fragen Sie kurz an, was gerade verfügbar ist – so vermeiden wir Missverständnisse über Vorrat und Zeitpunkt." },
+    { "frage": "Ist das Holz schon ofenfertig und trocken?", "antwort": "Das hängt vom jeweiligen Bestand ab. Frisch aufgearbeitetes Holz muss vor der Verbrennung ausreichend trocknen. Wir sagen Ihnen ehrlich, in welchem Zustand das verfügbare Holz ist, damit Sie einplanen können, ob es direkt nutzbar ist oder noch lagern sollte." },
+    { "frage": "Kann ich das Holz abholen oder liefern Sie?", "antwort": "Beides ist grundsätzlich möglich und wird individuell abgestimmt. Das richtet sich nach Menge, Ihrer Erreichbarkeit und dem, was organisatorisch sinnvoll ist. Sprechen Sie uns einfach bei der Anfrage darauf an." }
+  ],
+  "nachbarn": ["baumarbeiten", "sturmnotdienst"],
+  "kundengruppe": ["privat"]
+}

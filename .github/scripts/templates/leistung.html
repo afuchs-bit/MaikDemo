@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<!-- AP-01: Demo-Sperre. Beim Go-Live entfernen, siehe docs/go-live-checkliste.md Position 1. -->
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#315200" />
+<!-- AUTO-GENERIERT von .github/scripts/build-leistungen.mjs aus content/leistungen/{{slug}}.json – NICHT von Hand editieren. -->
+<title>{{title}}</title>
+<meta name="description" content="{{description}}" />
+<link rel="canonical" href="{{canonical}}" />
+<meta property="og:title" content="{{ogTitle}}" />
+<meta property="og:description" content="{{description}}" />
+<meta property="og:image" content="{{ogImage}}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{canonical}}" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="{{base}}assets/img/logo/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="{{base}}assets/css/styles.css?v={{cssVersion}}" />
+
+<!-- Breadcrumb (AEO/SEO) -->
+<script type="application/ld+json">
+{{breadcrumbJsonLd}}
+</script>
+<!-- Service (GEO: Provider-Referenz auf das LocalBusiness der Startseite) -->
+<script type="application/ld+json">
+{{serviceJsonLd}}
+</script>
+<!-- FAQ -->
+<script type="application/ld+json">
+{{faqJsonLd}}
+</script>
+</head>
+<body>
+
+{{logo}}
+
+{{header}}
+
+<main id="top">
+
+<!-- ============ LEISTUNG ============ -->
+<article class="section section-leistung" aria-labelledby="lp-title">
+  <div class="container">
+
+    <nav class="breadcrumbs" aria-label="Sie sind hier">
+      <ol>
+        <li><a href="{{base}}">Startseite</a></li>
+        <li><a href="{{base}}leistungen/">Leistungen</a></li>
+        <li aria-current="page">{{h1}}</li>
+      </ol>
+    </nav>
+
+    <div class="section-head lp-head">
+      <span class="kicker">Leistung</span>
+      <h1 id="lp-title">{{h1}}</h1>
+      <p class="lead">{{intro}}</p>
+      <a class="btn btn-primary" href="{{base}}#kontakt">Termin vereinbaren</a>
+    </div>
+
+    <section class="lp-block" aria-labelledby="lp-eignung">
+      <h2 id="lp-eignung">Für wen sich das eignet</h2>
+      {{eignung}}
+    </section>
+
+    <section class="lp-block" aria-labelledby="lp-ablauf">
+      <h2 id="lp-ablauf">Wie wir vorgehen</h2>
+      {{ablauf}}
+    </section>
+
+    <section class="lp-block" aria-labelledby="lp-aufwand">
+      <h2 id="lp-aufwand">Was den Aufwand bestimmt</h2>
+      <p class="lp-note">Wir nennen keine Pauschalpreise – der Aufwand hängt vom Projekt ab. Diese Faktoren bestimmen ihn:</p>
+      {{aufwand}}
+    </section>
+
+    <section class="lp-block" aria-labelledby="lp-fehler">
+      <h2 id="lp-fehler">Häufige Fehleinschätzungen</h2>
+      {{fehleinschaetzungen}}
+    </section>
+
+    <section class="lp-block" aria-labelledby="lp-refs">
+      <h2 id="lp-refs">Projektbeispiele aus der Region</h2>
+      {{referenzprojekte}}
+    </section>
+
+    <section class="lp-block" aria-labelledby="lp-faq">
+      <h2 id="lp-faq">Häufige Fragen</h2>
+      {{faqHtml}}
+    </section>
+
+    <section class="lp-block lp-links-block" aria-labelledby="lp-weiter">
+      <h2 id="lp-weiter">Weiter zum passenden Thema</h2>
+      {{verlinkung}}
+    </section>
+
+    <div class="projekt-cta center">
+      <a class="btn btn-primary" href="{{base}}#kontakt">Projekt besprechen? Jetzt anfragen <span aria-hidden="true">→</span></a>
+      <a class="btn btn-outline" href="{{base}}leistungen/">Alle Leistungen ansehen</a>
+    </div>
+
+  </div>
+</article>
+
+</main>
+
+{{footer}}
+
+<script src="{{base}}assets/js/main.js?v={{jsVersion}}" defer></script>
+</body>
+</html>

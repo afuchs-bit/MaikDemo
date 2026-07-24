@@ -1,0 +1,40 @@
+{
+  "h1": "Vorgartengestaltung",
+  "navLabel": "Vorgartengestaltung",
+  "title": "Vorgarten gestalten in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Vorgartengestaltung in Herne, Bochum und Recklinghausen – Naturstein, strukturierte Bepflanzung und Beleuchtung statt Schottertristesse. Jetzt Termin anfragen.",
+  "serviceType": "Gestaltung und Neuanlage von Vorgärten",
+  "intro": "Der Vorgarten ist das Erste, was man von einem Haus sieht – und oft in wenigen Tagen umgestaltet. Wir legen Vorgärten mit Naturstein, strukturierter Bepflanzung, sauberen Wegen und passender Beleuchtung an, pflegeleicht, aber lebendig. Diese überschaubare Projektgröße setzen wir gern und zügig um, meist in zwei bis drei Tagen, für Häuser in Herne und Umgebung.",
+  "eignung": [
+    "Häuser mit einem lieblosen oder zugewachsenen Vorgarten, der nicht mehr zum Haus passt.",
+    "Eigentümer, die eine pflegeleichte, aber lebendige Fläche statt reiner Schotterwüste möchten.",
+    "Wer einen sichtbaren Effekt mit überschaubarem Aufwand sucht.",
+    "Neubauten, bei denen die Eingangsseite noch Rohfläche ist."
+  ],
+  "ablauf": [
+    { "titel": "Besichtigung", "text": "Wir schauen uns Fläche, Boden, Wegeführung und die Eingangssituation an und klären, was zum Haus passt." },
+    { "titel": "Entwurf", "text": "Material, Bepflanzung, Wegeführung und Beleuchtung stimmen wir aufeinander ab – zurückhaltend, aber mit Struktur." },
+    { "titel": "Umsetzung in wenigen Tagen", "text": "Weil die Fläche überschaubar ist, geht die Umsetzung meist zügig: Unterbau, Wege, Pflanzung und Licht." },
+    { "titel": "Feinheiten", "text": "Zum Schluss die Details, die den Unterschied machen – saubere Kanten, richtige Pflanzabstände, stimmige Beleuchtung." }
+  ],
+  "aufwand": [
+    { "titel": "Fläche", "text": "Vorgärten sind meist überschaubar – das macht sie planbar und zügig umsetzbar." },
+    { "titel": "Untergrund", "text": "Wie tragfähig der Boden ist und was darunter liegt, entscheidet über den Unterbau der Wege und Flächen." },
+    { "titel": "Material", "text": "Naturstein, Pflaster, Kies und Pflanzen unterscheiden sich in Wirkung, Aufwand und Pflege." },
+    { "titel": "Entwässerung", "text": "Auch auf kleiner Fläche muss Regenwasser sauber ablaufen, statt sich vor der Haustür zu stauen." },
+    { "titel": "Beleuchtung", "text": "Ob und wie beleuchtet wird, bringt Leitungsführung und zusätzliche Arbeitsschritte mit sich." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Schotter ist pflegeleicht.“", "text": "Schotterflächen veralgen, verkrauten und lassen sich schwer sauber halten. Eine strukturierte Bepflanzung ist oft dankbarer, als viele denken." },
+    { "titel": "„Der Vorgarten ist zu klein, um etwas zu bewirken.“", "text": "Gerade weil die Fläche klein ist, verändert eine durchdachte Gestaltung den Eindruck des ganzen Hauses spürbar." },
+    { "titel": "„Pflanzen einfach dicht setzen wirkt gleich voll.“", "text": "Zu eng gesetzt konkurrieren Pflanzen und werden zum Dickicht. Der richtige Abstand ist auf Dauer entscheidend." }
+  ],
+  "faq": [
+    { "frage": "Wie lange dauert die Umgestaltung eines Vorgartens?", "antwort": "Ein Vorgarten ist meist in zwei bis drei Tagen fertig, weil die Fläche überschaubar ist. Genauer sagen wir es Ihnen nach der Besichtigung, wenn wir Untergrund, Material und Umfang kennen. Diese Projektgröße lässt sich in der Regel gut und zügig einplanen." },
+    { "frage": "Muss es immer Schotter sein, damit es pflegeleicht ist?", "antwort": "Nein – im Gegenteil. Schotterflächen veralgen und verkrauten mit der Zeit und lassen sich schwer sauber halten. Eine strukturierte, standortgerechte Bepflanzung kann pflegeleicht sein und wirkt lebendiger. Wir zeigen Ihnen Lösungen, die wenig Arbeit machen und trotzdem nicht kahl aussehen." },
+    { "frage": "Gehört Beleuchtung dazu?", "antwort": "Auf Wunsch ja. Eine zurückhaltende Beleuchtung setzt Wege und Eingang abends in Szene und erhöht zugleich die Sicherheit. Die Leitungsführung planen wir gleich mit ein, damit später nicht noch einmal aufgegraben werden muss." },
+    { "frage": "Passt die Gestaltung zum Stil des Hauses?", "antwort": "Das ist der Ausgangspunkt. Ein Vorgarten soll das Haus ergänzen, nicht überlagern. Wir stimmen Material, Farben und Bepflanzung auf die Architektur und die Umgebung ab, damit das Ergebnis stimmig wirkt und nicht aufgesetzt." }
+  ],
+  "nachbarn": ["gartengestaltung", "terrasse-pflasterarbeiten"],
+  "kundengruppe": ["privat"]
+}

@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "build-index": "node build-index.mjs",
+    "build-leistungen": "node build-leistungen.mjs",
+    "build": "node build-index.mjs && node build-leistungen.mjs",
     "check-config-sync": "node check-config-sync.mjs"
   },
   "dependencies": {

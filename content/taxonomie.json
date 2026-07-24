@@ -9,6 +9,10 @@
     { "slug": "baumkontrolle",       "label": "Baumkontrolle & Gutachten" },
     { "slug": "sturmnotdienst",      "label": "Sturmnotdienst" },
     { "slug": "holzverkauf",         "label": "Holzverkauf" },
-    { "slug": "aussenanlagenpflege", "label": "Außenanlagenpflege" }
+    { "slug": "aussenanlagenpflege", "label": "Außenanlagenpflege" },
+    { "slug": "gartenpflege",              "label": "Gartenpflege" },
+    { "slug": "terrasse-pflasterarbeiten", "label": "Terrassen & Pflaster" },
+    { "slug": "palmen-winterfest",         "label": "Palmen & winterfest" },
+    { "slug": "pool-whirlpool-umfeld",     "label": "Pool- & Whirlpool-Umfeld" }
   ]
 }

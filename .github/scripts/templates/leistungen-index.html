@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<!-- AP-01: Demo-Sperre. Beim Go-Live entfernen, siehe docs/go-live-checkliste.md Position 1. -->
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#315200" />
+<!-- AUTO-GENERIERT von .github/scripts/build-leistungen.mjs – NICHT von Hand editieren. -->
+<title>{{title}}</title>
+<meta name="description" content="{{description}}" />
+<link rel="canonical" href="{{canonical}}" />
+<meta property="og:title" content="{{ogTitle}}" />
+<meta property="og:description" content="{{description}}" />
+<meta property="og:image" content="{{ogImage}}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{canonical}}" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="{{base}}assets/img/logo/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="{{base}}assets/css/styles.css?v={{cssVersion}}" />
+
+<!-- Breadcrumb (AEO/SEO) -->
+<script type="application/ld+json">
+{{breadcrumbJsonLd}}
+</script>
+<!-- Leistungsübersicht als ItemList -->
+<script type="application/ld+json">
+{{itemListJsonLd}}
+</script>
+</head>
+<body>
+
+{{logo}}
+
+{{header}}
+
+<main id="top">
+
+<!-- ============ LEISTUNGSÜBERSICHT ============ -->
+<section class="section section-leistungen" aria-labelledby="lpx-title">
+  <div class="container">
+
+    <nav class="breadcrumbs" aria-label="Sie sind hier">
+      <ol>
+        <li><a href="{{base}}">Startseite</a></li>
+        <li aria-current="page">Leistungen</li>
+      </ol>
+    </nav>
+
+    <div class="section-head center">
+      <span class="kicker">Was wir machen</span>
+      <h1 id="lpx-title">Leistungen im Garten- und Landschaftsbau</h1>
+      <p class="lead">Von der Gartengestaltung über Teichanlagen und Pflasterarbeiten bis zur Baumkontrolle und gewerblichen Außenanlagenpflege – für Privatkunden und Gewerbe in Herne, Bochum, Recklinghausen und Umgebung.</p>
+    </div>
+
+    <div class="lpx-grid">
+      {{cards}}
+    </div>
+
+    <div class="projekt-cta center">
+      <a class="btn btn-primary" href="{{base}}#kontakt">Nicht sicher, was passt? Fragen Sie uns <span aria-hidden="true">→</span></a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+{{footer}}
+
+<script src="{{base}}assets/js/main.js?v={{jsVersion}}" defer></script>
+</body>
+</html>
