@@ -23,27 +23,69 @@
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
+<!-- AP-21: Entitäten-Graph (LandscapingBusiness · Person · WebSite) mit @id-Referenzen.
+     Unterseiten referenzieren #business per @id, statt das Objekt zu duplizieren.
+     OFFEN (im Nachtrag-Paket zusammen ergänzen, siehe docs/offene-punkte.md):
+       telephone, email  → Demo-/unbestätigte Werte bewusst NICHT als Fakt im Schema
+       geo               → Geokoordinaten Hülsstraße 5
+       sameAs            → Google-Unternehmensprofil + Social-Profile
+       logo              → echtes Logo (assets/img/logo/logo.svg existiert noch nicht)
+     priceRange bewusst entfernt: keine Preisangabe, steht auch nicht im sichtbaren Text. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LandscapingBusiness",
-  "name": "Maik Rohdich Garten- und Landschaftsbau",
-  "image": "https://rohdich.de/assets/img/ueber/ueber-1.jpg",
-  "@id": "https://rohdich.de/#business",
-  "url": "https://rohdich.de/",
-  "telephone": "+49-171-2345678",
-  "priceRange": "€€",
-  "foundingDate": "2003",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Hülsstraße 5",
-    "postalCode": "44625",
-    "addressLocality": "Herne",
-    "addressCountry": "DE"
-  },
-  "areaServed": ["Herne", "Bochum", "Recklinghausen", "Castrop-Rauxel", "Gelsenkirchen-Buer"],
-  "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"20:00"}
+  "@graph": [
+    {
+      "@type": "LandscapingBusiness",
+      "@id": "https://rohdich.de/#business",
+      "name": "Maik Rohdich Garten- und Landschaftsbau",
+      "url": "https://rohdich.de/",
+      "image": "https://rohdich.de/assets/img/ueber/ueber-1.jpg",
+      "foundingDate": "2003-01-01",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hülsstraße 5",
+        "postalCode": "44625",
+        "addressLocality": "Herne",
+        "addressCountry": "DE"
+      },
+      "areaServed": ["Herne", "Bochum", "Castrop-Rauxel", "Recklinghausen", "Gelsenkirchen-Buer"],
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "20:00"}
+      ],
+      "founder": {"@id": "https://rohdich.de/#maik-rohdich"},
+      "knowsAbout": [
+        "Gartengestaltung",
+        "Vorgartengestaltung",
+        "Teichanlagen",
+        "Bepflanzung",
+        "Baumkontrolle",
+        "Baumfällung",
+        "Dachbegrünung",
+        "Terrassen und Pflasterarbeiten",
+        "Außenanlagenpflege",
+        "Gartenpflege"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://rohdich.de/#maik-rohdich",
+      "name": "Maik Rohdich",
+      "jobTitle": "Gartenbaumeister",
+      "worksFor": {"@id": "https://rohdich.de/#business"},
+      "hasCredential": [
+        {"@type": "EducationalOccupationalCredential", "credentialCategory": "Meisterbrief", "name": "Gartenbaumeister"},
+        {"@type": "EducationalOccupationalCredential", "credentialCategory": "Zertifizierung", "name": "Sachverständiger für Baumkontrolle"}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rohdich.de/#website",
+      "url": "https://rohdich.de/",
+      "name": "Maik Rohdich Garten- und Landschaftsbau",
+      "inLanguage": "de-DE",
+      "publisher": {"@id": "https://rohdich.de/#business"}
+    }
   ]
 }
 </script>
