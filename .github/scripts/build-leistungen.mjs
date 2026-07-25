@@ -8,9 +8,9 @@
 // - Validiert jede Datei gegen content/taxonomie.json (Slug muss existieren) und
 //   auf Pflichtfelder. Fehler => exit 1, es wird nichts geschrieben.
 // - Referenzprojekte werden AUTOMATISCH aus content/projekte/*.json ermittelt
-//   (Projekte, deren leistungen den Slug enthalten). Ohne Treffer: die neuesten
-//   Projekte als allgemeine Beispiele. So bleibt "mindestens ein Referenzprojekt"
-//   wahr, ohne etwas zu erfinden.
+//   (Projekte, deren leistungen den Slug enthalten). Ohne Treffer bleibt die Liste
+//   leer und lpRefs() rendert einen ehrlichen Galerie-Link statt fachfremder
+//   Projekte als vermeintliche Beispiele (AP-32).
 // - Verwaiste generierte Ordner (Sentinel im Kopf) werden entfernt.
 //
 // Inhalt = Daten (content/leistungen), Struktur = Template (.github/scripts/templates),
@@ -108,10 +108,10 @@ async function loadProjekte() {
 }
 
 function refProjectsFor(slug, projekte) {
-  const direct = projekte.filter((p) => p.leistungen.includes(slug)).slice(0, 3);
-  if (direct.length) return direct;
-  // Kein direkt zugeordnetes Projekt → die neuesten als allgemeine Beispiele (ehrlich, nicht erfunden).
-  return projekte.slice(0, 2);
+  // Nur Projekte, die diesen Leistungs-Slug tatsächlich tragen. Kein Treffer →
+  // leeres Array; lpRefs() rendert dann die ehrliche "Alle Projekte ansehen"-
+  // Empty-State statt fachfremder Projekte als vermeintliche Beispiele (AP-32).
+  return projekte.filter((p) => p.leistungen.includes(slug)).slice(0, 3);
 }
 
 // AP-18: Inhalt zwischen zwei Markern ersetzen (idempotent).
