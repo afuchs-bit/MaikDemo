@@ -1,0 +1,25 @@
+# GO-LIVE-FASSUNG — beim Umschalten in robots.txt umbenennen (AP-08).
+# Siehe docs/go-live-checkliste.md, Position 1.
+
+User-agent: *
+Allow: /
+
+# Antwortmaschinen bewusst erlaubt — Ziel ist GEO/AEO-Sichtbarkeit
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://rohdich.de/sitemap.xml
