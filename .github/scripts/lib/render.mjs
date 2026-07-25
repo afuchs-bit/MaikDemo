@@ -185,10 +185,10 @@ ${bloecke}${hinweis}
 
 // AP-24 – optionaler Pool-Rechner (nur auf Seiten mit "rechner": true).
 // Qualitative Einordnung OHNE Preise; Berechnung clientseitig (pool-rechner.js).
-const POOL_RECHNER_VERSION = '20260724a';
+const POOL_RECHNER_VERSION = '20260725a';
 function lpRechner(rechner, base) {
   if (!rechner) return '';
-  const waDefault = 'https://wa.me/491712345678?text=' +
+  const waDefault = 'https://wa.me/491711738943?text=' +
     encodeURIComponent('Hallo Herr Rohdich, ich interessiere mich für mein Pool- oder Whirlpool-Umfeld und würde das gern besprechen.');
   return `<section class="lp-block pool-rechner" id="pool-rechner" aria-labelledby="pr-title">
       <h2 id="pr-title">Ihr Vorhaben grob einordnen</h2>

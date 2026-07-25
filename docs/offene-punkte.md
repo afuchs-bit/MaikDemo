@@ -7,16 +7,17 @@ so formuliert, dass sie auch ohne den Wert vollständig und richtig sind.
 Sobald ein Wert vorliegt: in `content/stammdaten.json` eintragen (AP-03), den
 `<!-- OFFEN -->`-Kommentar auflösen, Zeile hier streichen.
 
-**Stand:** 21.07.2026
+**Stand:** 25.07.2026
 
-## Kontaktdaten
+## Kontaktdaten — ERLEDIGT (AP-03, 25.07.2026)
 
-| Wert | Aktueller Zustand | Fundstellen | AP |
-|---|---|---|---|
-| Echte Mobilnummer | Demo `0171 / 234 56 78` | `index.html`, `privatkunden/`, `gewerbekunden/` | AP-03 |
-| Echte Festnetznummer | Demo `02323 / 12 34 56 7` — bleibt laut Absprache erhalten | dieselben | AP-03 |
-| Echte WhatsApp-Nummer | Demo `491712345678`, 39 Vorkommen | alle Seiten | AP-03 |
-| E-Mail-Adresse | `info@rohdich.de` — noch zu bestätigen | Footer, Kontaktbereich | AP-03 |
+Alle Kontaktdaten wurden vom Auftraggeber geliefert und zentral in
+`content/stammdaten.json` hinterlegt sowie zeichengleich über alle Seiten, den Footer
+und das JSON-LD verteilt:
+
+- Mobil / WhatsApp: `0171 / 173 89 43` (`tel:+491711738943`, `wa.me/491711738943`)
+- Festnetz: `02325 / 58 57 90` (`tel:+492325585790`)
+- E-Mail: `Maik@rohdich.de`
 
 ## Standort und Profile
 

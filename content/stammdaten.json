@@ -1,0 +1,41 @@
+{
+  "_hinweis": "Zentrale Stammdaten (AP-03) – einzige Quelle der Wahrheit für Firmen- und Kontaktdaten. Werte müssen zeichengenau identisch in HTML, Footer, Impressum, JSON-LD und Google-Profil erscheinen.",
+  "firma": {
+    "name": "Maik Rohdich Garten- und Landschaftsbau",
+    "inhaber": "Maik Rohdich",
+    "inhaberTitel": "Gartenbaumeister",
+    "gegruendet": "2003-01-01"
+  },
+  "adresse": {
+    "strasse": "Hülsstraße 5",
+    "plz": "44625",
+    "ort": "Herne",
+    "land": "DE"
+  },
+  "kontakt": {
+    "mobil":    { "anzeige": "0171 / 173 89 43", "href": "tel:+491711738943" },
+    "festnetz": { "anzeige": "02325 / 58 57 90", "href": "tel:+492325585790" },
+    "whatsapp": { "nummer": "491711738943", "href": "https://wa.me/491711738943" },
+    "email": "Maik@rohdich.de"
+  },
+  "oeffnungszeiten": {
+    "montagBisFreitag": "08:00–20:00 Uhr",
+    "samstagSonntag": "geschlossen",
+    "whatsapp": "24/7 erreichbar für Nachrichten – Antwort zu den Geschäftszeiten",
+    "besuche": "ausschließlich nach vorheriger Terminvereinbarung"
+  },
+  "einsatzgebiet": ["Herne", "Bochum", "Castrop-Rauxel", "Recklinghausen", "Gelsenkirchen-Buer"],
+  "bewertungen": { "anzahl": 67, "durchschnitt": 4.8 },
+  "besonderheiten": ["Ausbildungsbetrieb", "Sachverständiger für Baumkontrolle", "Meisterbetrieb"],
+  "offen": {
+    "_hinweis": "Noch vom Auftraggeber nachzuliefern – siehe docs/offene-punkte.md.",
+    "geo": null,
+    "googlePlaceId": null,
+    "googleProfilUrl": null,
+    "socialProfile": [],
+    "fllZertifizierung": null,
+    "sturmReaktionszeit": null,
+    "betriebshaftpflicht": null,
+    "partnerbetriebBochum": null
+  }
+}

@@ -12,7 +12,7 @@
   var send = document.getElementById('prSend');
   if (!form || !result || !send) return;
 
-  var WA = 'https://wa.me/491712345678?text=';
+  var WA = 'https://wa.me/491711738943?text=';
 
   var TEXT = {
     klein: 'Das klingt nach einem überschaubaren Vorhaben. Oft lässt sich so etwas zügig und planbar umsetzen.',
