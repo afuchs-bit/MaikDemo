@@ -1,0 +1,47 @@
+{
+  "h1": "Baumkontrolle und Gutachten",
+  "navLabel": "Baumkontrolle & Gutachten",
+  "title": "Baumkontrolle in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Baumkontrolle und Verkehrssicherheit vom Sachverständigen in Herne, Bochum und Recklinghausen – für private Grundstücke und Gärten. Jetzt Termin anfragen.",
+  "serviceType": "Baumkontrolle und Verkehrssicherheitsprüfung an Bäumen",
+  "intro": "Als Gartenbaumeister und Sachverständiger für Baumkontrolle prüfen wir die Bäume auf Ihrem Grundstück auf ihre Verkehrssicherheit. Sie erhalten eine nachvollziehbare Einschätzung zum Zustand jedes Baums, zur Dringlichkeit möglicher Maßnahmen und eine Dokumentation, mit der Sie Ihrer Verkehrssicherungspflicht belegbar nachkommen.",
+  "fachtext": {
+    "titel": "Verkehrssicherungspflicht bei Bäumen",
+    "intro": "Wer einen Baum besitzt, muss dafür sorgen, dass von ihm keine Gefahr für andere ausgeht. Diese Verkehrssicherungspflicht trifft auch private Eigentümer. Kommt jemand zu Schaden, weil ein Baum nicht ausreichend kontrolliert wurde, kann der Eigentümer haften. Eine regelmäßige, fachlich fundierte Kontrolle ist der Weg, dieser Pflicht nachzukommen und sie im Ernstfall zu belegen.",
+    "bloecke": [
+      { "h3": "Wer haftet?", "text": "Die Verkehrssicherungspflicht liegt beim Eigentümer oder der Person, die die tatsächliche Verfügungsgewalt über das Grundstück hat. Sie leitet sich aus der allgemeinen Verkehrssicherungspflicht ab (§ 823 BGB) und lässt sich vertraglich an einen Fachbetrieb übertragen, ohne dass die Grundverantwortung ganz entfällt." },
+      { "h3": "Wie oft ist eine Kontrolle nötig?", "text": "Als fachlicher Maßstab gilt die FLL-Baumkontrollrichtlinie. Der Kontrollturnus richtet sich nach Art, Alter, Zustand und Standort des Baums – für viele Bäume bedeutet das ein- bis zweimal im Jahr, oft im belaubten und im unbelaubten Zustand. Junge, gesunde Bäume an unkritischen Stellen brauchen seltener eine Prüfung als Altbäume über Wegen, Stellplätzen oder Spielflächen." },
+      { "h3": "Was ein Befund enthält", "text": "Ein Kontrollbefund hält die wesentlichen Baumdaten fest, den Zustand von Krone, Stamm, Stammfuß und Wurzelbereich, festgestellte Auffälligkeiten wie Totholz, Pilzbefall oder Risse, die empfohlenen Maßnahmen samt Dringlichkeit sowie den nächsten sinnvollen Kontrolltermin. So ist nachvollziehbar dokumentiert, dass und wie Sie sich gekümmert haben." }    ],
+    "hinweis": "Allgemeine Information, keine Rechtsberatung. Rechtsgrundlage ist die aus § 823 BGB abgeleitete Verkehrssicherungspflicht; als anerkannter fachlicher Standard gilt die FLL-Baumkontrollrichtlinie (Forschungsgesellschaft Landschaftsentwicklung Landschaftsbau e. V.). Kommunale Baumschutzsatzungen können zusätzliche Anforderungen stellen. Stand: Juli 2026."
+  },
+  "eignung": [
+    "Eigentümer mit älteren oder großen Bäumen in der Nähe von Wegen, Stellplätzen, Spielflächen oder Gebäuden.",
+    "Eigentümer, die im Schadensfall belegen möchten, dass sie ihrer Verkehrssicherungspflicht nachgekommen sind.",
+    "Grundstücke nach Sturm, Trockenjahren oder sichtbaren Veränderungen an der Krone."
+  ],
+  "ablauf": [
+    { "titel": "Regelkontrolle vom Boden", "text": "Wir beurteilen jeden Baum in einer eingehenden Inaugenscheinnahme – Krone, Stamm, Stammfuß und Wurzelbereich – und achten auf Totholz, Pilzbefall, Risse und Vitalitätsverlust." },
+    { "titel": "Eingehende Untersuchung bei Auffälligkeiten", "text": "Ergibt die Sichtkontrolle Anhaltspunkte, sehen wir genauer hin, bevor eine Einschätzung getroffen wird. Nicht jede Auffälligkeit bedeutet Gefahr – aber sie gehört bewertet." },
+    { "titel": "Befund und Empfehlung", "text": "Sie erhalten eine klare Einordnung: Ist der Baum sicher, welche Maßnahme ist nötig, wie dringend ist sie. Wir sagen auch, wenn nichts zu tun ist." },
+    { "titel": "Maßnahme und Turnus", "text": "Auf Wunsch setzen wir empfohlene Schnitt- oder Sicherungsmaßnahmen direkt um und vereinbaren einen sinnvollen Kontrollturnus für die Zukunft." }
+  ],
+  "aufwand": [
+    { "titel": "Anzahl und Größe der Bäume", "text": "Ein einzelner Hausbaum ist schnell beurteilt, ein Bestand mit Altbäumen braucht mehr Zeit." },
+    { "titel": "Art und Vitalität", "text": "Baumart, Alter und erkennbare Vorschäden bestimmen, wie genau hingesehen werden muss." },
+    { "titel": "Standort und Zugänglichkeit", "text": "Ein frei stehender Baum lässt sich einfacher beurteilen als einer in enger Bebauung oder Hanglage." },
+    { "titel": "Dokumentationsumfang", "text": "Eine kurze mündliche Einschätzung ist etwas anderes als eine schriftliche Dokumentation, die Sie ablegen und im Zweifel vorlegen können." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Der Baum sieht gesund aus, also ist er sicher.“", "text": "Viele Schäden – etwa Fäule im Stammfuß – sind von außen kaum zu erkennen. Genau dafür gibt es die fachliche Kontrolle." },
+    { "titel": "„Verkehrssicherungspflicht betrifft nur die Stadt.“", "text": "Auch private Eigentümer haften für Bäume auf ihrem Grundstück, wenn davon eine Gefahr ausgeht." },
+    { "titel": "„Einmal geprüft reicht dauerhaft.“", "text": "Bäume verändern sich. Eine regelmäßige Kontrolle im sinnvollen Abstand gehört zur Verkehrssicherungspflicht dazu." }
+  ],
+  "faq": [
+    { "frage": "Muss ich als privater Eigentümer meine Bäume kontrollieren lassen?", "antwort": "Ja. Wer einen Baum besitzt, von dem eine Gefahr für andere ausgehen kann, trägt die Verkehrssicherungspflicht – auf dem eigenen Grundstück genauso wie anderswo. Eine regelmäßige fachliche Kontrolle hilft, dieser Pflicht nachzukommen und im Schadensfall belegen zu können, dass man sich gekümmert hat." },
+    { "frage": "Wie oft sollte ein Baum kontrolliert werden?", "antwort": "Das hängt von Alter, Zustand und Standort ab. Für viele Bäume ist eine Kontrolle ein- bis zweimal im Jahr üblich, oft im belaubten und im unbelaubten Zustand. Junge, gesunde Bäume an unkritischen Stellen brauchen seltener eine Prüfung als Altbäume über Wegen oder Stellplätzen. Den passenden Turnus legen wir gemeinsam fest." },
+    { "frage": "Was ist der Unterschied zwischen Kontrolle und Gutachten?", "antwort": "Die Regelkontrolle ist die wiederkehrende Sichtprüfung der Verkehrssicherheit. Ein Gutachten geht darüber hinaus und dokumentiert einen Zustand oder eine Maßnahme ausführlicher – zum Beispiel, wenn es um eine geplante Fällung, einen Streitfall oder eine Auflage geht. Was in Ihrem Fall sinnvoll ist, klären wir vorab." },
+    { "frage": "Kontrollieren Sie auch einzelne Bäume?", "antwort": "Ja. Wir kommen für einen einzelnen Hausbaum genauso wie für einen ganzen Baumbestand. Für die Terminvereinbarung genügt eine Nachricht mit ein paar Fotos und dem Standort." }
+  ],
+  "nachbarn": ["baumarbeiten", "sturmnotdienst"],
+  "kundengruppe": ["privat"]
+}

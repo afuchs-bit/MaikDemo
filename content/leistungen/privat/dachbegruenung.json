@@ -1,0 +1,39 @@
+{
+  "h1": "Dachbegrünung",
+  "navLabel": "Dachbegrünung",
+  "title": "Dachbegrünung in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Dachbegrünung für Garagen, Carports und Flachdächer in Herne, Bochum und Recklinghausen – fachgerechter Aufbau, oft kommunal gefördert. Jetzt Termin anfragen.",
+  "serviceType": "Planung und Anlage von Dachbegrünungen",
+  "intro": "Wir begrünen Flachdächer, Garagen und Carports mit einem fachgerechten Aufbau aus Schutz-, Drän- und Substratschicht und standortgerechter Bepflanzung. Eine Dachbegrünung hält Regenwasser zurück, schützt die Dachhaut und verbessert das Kleinklima. In vielen Kommunen wird sie gefördert. Ob Ihr Dach dafür geeignet ist, klären wir vor der Planung mit Blick auf Statik und Abdichtung.",
+  "eignung": [
+    "Garagen, Carports und Nebengebäude mit Flachdach.",
+    "Flachdächer, die mehr sollen als nur Kies tragen.",
+    "Eigentümer, die Regenwasser zurückhalten und das Kleinklima verbessern möchten.",
+    "Wer eine kommunale Förderung für die Begrünung nutzen will."
+  ],
+  "ablauf": [
+    { "titel": "Eignung prüfen", "text": "Zuerst klären wir Statik, Abdichtung und Entwässerung. Nicht jedes Dach ist ohne Weiteres geeignet – das gehört ehrlich vorab geprüft." },
+    { "titel": "Aufbau planen", "text": "Wir legen den Schichtaufbau fest – Schutzlage, Dränung, Substrat – und wählen eine Bepflanzung, die mit den Bedingungen auf dem Dach zurechtkommt." },
+    { "titel": "Aufbau herstellen", "text": "Die Schichten werden fachgerecht aufgebracht, sodass die Dachhaut geschützt bleibt und Wasser sauber abläuft." },
+    { "titel": "Bepflanzung", "text": "Meist kommen genügsame, trockenheitsverträgliche Pflanzen zum Einsatz, die wenig Pflege brauchen." }
+  ],
+  "aufwand": [
+    { "titel": "Dachfläche und Zugänglichkeit", "text": "Größe des Dachs und wie gut Material hinaufkommt, bestimmen den Grundaufwand." },
+    { "titel": "Statik und Aufbauhöhe", "text": "Was das Dach tragen kann, entscheidet über Substratstärke und damit über die möglichen Pflanzen." },
+    { "titel": "Abdichtung", "text": "Der Zustand der bestehenden Abdichtung muss stimmen – sonst ist zuerst dort etwas zu tun." },
+    { "titel": "Bepflanzungsart", "text": "Eine flache, genügsame Begrünung ist anders aufgebaut als eine intensivere mit höheren Pflanzen." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Auf jedes Dach kann man Grün legen.“", "text": "Statik und Abdichtung müssen mitspielen. Deshalb steht am Anfang die ehrliche Prüfung, ob und wie das Dach geeignet ist." },
+    { "titel": "„Ein grünes Dach macht viel Arbeit.“", "text": "Eine flache Begrünung mit genügsamen Pflanzen braucht wenig Pflege – meist ein bis zwei Kontrollen im Jahr." },
+    { "titel": "„Förderung ist zu kompliziert, das lohnt nicht.“", "text": "Viele Kommunen fördern Dachbegrünung. Ob es in Ihrem Fall zutrifft, lässt sich mit einem Blick auf die örtlichen Programme klären." }
+  ],
+  "faq": [
+    { "frage": "Wird Dachbegrünung gefördert?", "antwort": "Häufig ja, über kommunale Programme. Ob und in welcher Höhe eine Förderung möglich ist, hängt vom Ort ab und ändert sich von Kommune zu Kommune. Wir weisen im Beratungstermin darauf hin und prüfen mit Ihnen, ob für Ihr Dach eine Förderung in Frage kommt. Den Antrag stellen Sie als Eigentümer selbst." },
+    { "frage": "Ist mein Dach überhaupt für eine Begrünung geeignet?", "antwort": "Das klären wir vor der Planung. Entscheidend sind Statik, Zustand der Abdichtung und die Entwässerung. Manche Dächer sind ohne Weiteres geeignet, andere brauchen Vorarbeit. Wir sagen Ihnen ehrlich, was möglich ist – auch dann, wenn eine Begrünung an Ihrem Dach nicht sinnvoll ist." },
+    { "frage": "Wie viel Pflege braucht ein begrüntes Dach?", "antwort": "Eine flache Begrünung mit genügsamen, trockenheitsverträglichen Pflanzen braucht wenig Pflege – in der Regel ein bis zwei Kontrollgänge im Jahr, bei denen Fremdbewuchs entfernt und die Entwässerung geprüft wird. Wichtig ist vor allem, dass die Abläufe frei bleiben, damit das Wasser weiter sauber abfließt." },
+    { "frage": "Was bringt eine Dachbegrünung überhaupt?", "antwort": "Sie hält einen Teil des Regenwassers zurück und entlastet so die Entwässerung, sie schützt die Dachhaut vor Temperaturschwankungen und UV-Strahlung und verbessert das Kleinklima rund ums Gebäude. Gerade auf gut einsehbaren Garagen- und Carportdächern ist ein grünes Dach zudem angenehmer anzusehen als eine Kiesfläche." }
+  ],
+  "nachbarn": ["bepflanzung", "gartengestaltung"],
+  "kundengruppe": ["privat"]
+}

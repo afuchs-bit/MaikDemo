@@ -20,23 +20,19 @@ import { readFile, readdir, writeFile, mkdir, rm, access } from 'node:fs/promise
 import { constants as FS } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderLeistungPage, renderLeistungenOverview, renderNavSubmenu, renderFooterLeistungen, renderFaqDetails, renderFaqSchema, LEISTUNGEN_NAV } from './lib/render.mjs';
+import { renderLeistungPage, renderLeistungenOverview, renderNavSubmenu, renderFooterLeistungen, renderFaqDetails, renderFaqSchema, LEISTUNGEN_NAV, WELTEN } from './lib/render.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
-const CONTENT_DIR = path.join(REPO_ROOT, 'content', 'leistungen');
+const CONTENT_ROOT = path.join(REPO_ROOT, 'content', 'leistungen');
 const PROJEKTE_DIR = path.join(REPO_ROOT, 'content', 'projekte');
 const TAXONOMIE = path.join(REPO_ROOT, 'content', 'taxonomie.json');
-const OUT_DIR = path.join(REPO_ROOT, 'leistungen');
+const OUT_ROOT = REPO_ROOT; // Ziel je Welt: <welt.pfad>leistungen/
 const INDEX_HTML = path.join(REPO_ROOT, 'index.html');
 const GEN_SENTINEL = 'AUTO-GENERIERT von .github/scripts/build-leistungen.mjs';
 
-// Anzeige-Reihenfolge der Übersicht (fachliche Priorität, nicht alphabetisch).
-const ORDER = [
-  'baumkontrolle', 'baumarbeiten', 'gartengestaltung', 'vorgarten', 'teichbau',
-  'gartenpflege', 'aussenanlagenpflege', 'terrasse-pflasterarbeiten', 'bepflanzung',
-  'dachbegruenung', 'palmen-winterfest', 'pool-whirlpool-umfeld', 'sturmnotdienst', 'holzverkauf',
-];
+// AP-33: Reihenfolge und Zugehörigkeit kommen aus WELTEN[*].slugs (render.mjs),
+// die Gruppierung der Übersicht aus LEISTUNGS_GRUPPEN. Kein eigenes ORDER mehr.
 
 const KUNDENTYPEN = ['privat', 'gewerbe'];
 const errors = [];
@@ -47,6 +43,10 @@ const HAND_PAGES = [
   { file: 'privatkunden/index.html', base: '../' },
   { file: 'gewerbekunden/index.html', base: '../' },
   { file: 'projekte/index.html', base: '../' },
+  // AP-33: /leistungen/ ist jetzt die handgepflegte Weiche – Nav trotzdem mitpflegen.
+  { file: 'leistungen/index.html', base: '../' },
+  // AP-33: 404 trug die Leistungs-Nav fest verdrahtet – jetzt ebenfalls aus einer Quelle.
+  { file: '404.html', base: '' },
 ];
 
 const isNonEmptyString = (v) => typeof v === 'string' && v.trim().length > 0;
@@ -56,8 +56,8 @@ async function readJson(file) { return JSON.parse(await readFile(file, 'utf8'));
 async function fileExists(p) { try { await access(p, FS.R_OK); return true; } catch { return false; } }
 function fail(msg) { console.error(`\n❌ ${msg}\n`); process.exit(1); }
 
-function validate(slug, d, validSlugs) {
-  const where = `content/leistungen/${slug}.json`;
+function validate(slug, d, validSlugs, weltKey) {
+  const where = `content/leistungen/${weltKey}/${slug}.json`;
   if (!validSlugs.has(slug)) errors.push(`${where}: Slug "${slug}" ist nicht in content/taxonomie.json definiert.`);
   for (const f of ['h1', 'navLabel', 'title', 'metaDescription', 'serviceType', 'intro']) {
     if (!isNonEmptyString(d[f])) errors.push(`${where}: Pflichtfeld "${f}" fehlt oder ist leer.`);
@@ -107,11 +107,14 @@ async function loadProjekte() {
   return list.sort((a, b) => String(b.datum).localeCompare(String(a.datum)));
 }
 
-function refProjectsFor(slug, projekte) {
-  // Nur Projekte, die diesen Leistungs-Slug tatsächlich tragen. Kein Treffer →
-  // leeres Array; lpRefs() rendert dann die ehrliche "Alle Projekte ansehen"-
-  // Empty-State statt fachfremder Projekte als vermeintliche Beispiele (AP-32).
-  return projekte.filter((p) => p.leistungen.includes(slug)).slice(0, 3);
+function refProjectsFor(slug, projekte, welt) {
+  // Nur Projekte, die diesen Leistungs-Slug tatsächlich tragen (AP-32) UND zur
+  // Welt der Seite gehören (AP-33) – ein Gewerbeobjekt ist kein Beispiel für den
+  // privaten Garten und umgekehrt. Kein Treffer → leeres Array; lpRefs() rendert
+  // dann die ehrliche "Alle Projekte ansehen"-Empty-State.
+  return projekte
+    .filter((p) => p.leistungen.includes(slug) && (p.kundentyp || []).includes(welt.key))
+    .slice(0, 3);
 }
 
 // AP-18: Inhalt zwischen zwei Markern ersetzen (idempotent).
@@ -161,35 +164,56 @@ async function main() {
   if (!tax || !Array.isArray(tax.leistungen)) fail('taxonomie.json: "leistungen" fehlt.');
   const validSlugs = new Set(tax.leistungen.map((l) => l.slug));
 
-  let files;
-  try {
-    files = (await readdir(CONTENT_DIR)).filter((f) => f.endsWith('.json'));
-  } catch (e) {
-    fail(`content/leistungen konnte nicht gelesen werden: ${e.message}`);
-  }
-  if (!files.length) fail('Keine Leistungsdateien in content/leistungen/ gefunden.');
-
-  const bySlug = new Map();
-  for (const f of files) {
-    const slug = f.replace(/\.json$/, '');
-    let d;
-    try { d = await readJson(path.join(CONTENT_DIR, f)); }
-    catch (e) { errors.push(`content/leistungen/${f}: ungültiges JSON – ${e.message}`); continue; }
-    validate(slug, d, validSlugs);
-    bySlug.set(slug, d);
-  }
-
-  // Nachbar-Slugs müssen auf existierende Leistungen zeigen.
-  for (const [slug, d] of bySlug) {
-    for (const nb of d.nachbarn || []) {
-      if (!bySlug.has(nb)) errors.push(`content/leistungen/${slug}.json: nachbarn-Slug "${nb}" hat keine Leistungsdatei.`);
+  // AP-33: Je Welt einlesen und validieren. bySlug bleibt strikt pro Welt getrennt –
+  // nur so kann die nachbarn-Prüfung Links erkennen, die aus der Welt herausführen.
+  const weltDaten = new Map();
+  for (const welt of Object.values(WELTEN)) {
+    const contentDir = path.join(CONTENT_ROOT, welt.key);
+    let files;
+    try {
+      files = (await readdir(contentDir)).filter((f) => f.endsWith('.json'));
+    } catch (e) {
+      fail(`content/leistungen/${welt.key} konnte nicht gelesen werden: ${e.message}`);
     }
+    if (!files.length) fail(`Keine Leistungsdateien in content/leistungen/${welt.key}/ gefunden.`);
+
+    const bySlug = new Map();
+    for (const f of files) {
+      const slug = f.replace(/\.json$/, '');
+      let d;
+      try { d = await readJson(path.join(contentDir, f)); }
+      catch (e) { errors.push(`content/leistungen/${welt.key}/${f}: ungültiges JSON – ${e.message}`); continue; }
+      validate(slug, d, validSlugs, welt.key);
+      bySlug.set(slug, d);
+    }
+
+    // Nachbar-Slugs müssen in DERSELBEN Welt existieren, sonst führt der Link hinaus.
+    for (const [slug, d] of bySlug) {
+      for (const nb of d.nachbarn || []) {
+        if (!bySlug.has(nb)) {
+          errors.push(`content/leistungen/${welt.key}/${slug}.json: nachbarn-Slug "${nb}" existiert nicht in der Welt ${welt.key}.`);
+        }
+      }
+    }
+
+    // Vollständigkeit: WELTEN[*].slugs und die Dateien müssen sich exakt decken –
+    // fängt vergessene Migrationsschritte sofort ab.
+    const erwartet = new Set(welt.slugs);
+    for (const s of erwartet) {
+      if (!bySlug.has(s)) errors.push(`content/leistungen/${welt.key}/${s}.json fehlt (in WELTEN.${welt.key}.slugs gelistet).`);
+    }
+    for (const s of bySlug.keys()) {
+      if (!erwartet.has(s)) errors.push(`content/leistungen/${welt.key}/${s}.json ist nicht in WELTEN.${welt.key}.slugs gelistet.`);
+    }
+
+    weltDaten.set(welt.key, bySlug);
   }
 
-  // AP-18: Navigations-Liste (LEISTUNGEN_NAV in render.mjs) gegen die Leistungsdateien prüfen.
+  // AP-18/AP-33: LEISTUNGEN_NAV gegen die Vereinigungsmenge beider Welten prüfen.
+  const alleSlugs = new Set([...weltDaten.values()].flatMap((m) => [...m.keys()]));
   const navSlugs = new Set(LEISTUNGEN_NAV.map((l) => l.slug));
-  const navMissing = [...bySlug.keys()].filter((s) => !navSlugs.has(s));
-  const navExtra = [...navSlugs].filter((s) => !bySlug.has(s));
+  const navMissing = [...alleSlugs].filter((s) => !navSlugs.has(s));
+  const navExtra = [...navSlugs].filter((s) => !alleSlugs.has(s));
   if (navMissing.length) console.warn(`⚠ Fehlt in LEISTUNGEN_NAV (render.mjs), taucht nicht in der Navigation auf: ${navMissing.join(', ')}`);
   if (navExtra.length) console.warn(`⚠ LEISTUNGEN_NAV verweist auf fehlende Leistung: ${navExtra.join(', ')}`);
 
@@ -201,55 +225,55 @@ async function main() {
   }
 
   const projekte = await loadProjekte();
-  const labelBySlug = new Map([...bySlug].map(([slug, d]) => [slug, d.navLabel]));
 
   const indexHtml = await readFile(INDEX_HTML, 'utf8');
   const cssVersion = (indexHtml.match(/styles\.css\?v=([\w.-]+)/) || [])[1] || '1';
   const jsVersion = (indexHtml.match(/main\.js\?v=([\w.-]+)/) || [])[1] || '1';
 
-  await mkdir(OUT_DIR, { recursive: true });
+  // AP-33: pro Welt einen kompletten Seitenbaum + eigene Übersicht schreiben.
+  for (const welt of Object.values(WELTEN)) {
+    const bySlug = weltDaten.get(welt.key);
+    const outDir = path.join(OUT_ROOT, welt.pfad.replace(/\/$/, ''), 'leistungen');
+    await mkdir(outDir, { recursive: true });
 
-  // Detailseiten schreiben.
-  const generated = [];
-  for (const [slug, leistung] of bySlug) {
-    const html = await renderLeistungPage({
-      leistung, slug, cssVersion, jsVersion,
-      refProjects: refProjectsFor(slug, projekte),
-      labelBySlug,
-    });
-    const dir = path.join(OUT_DIR, slug);
-    await mkdir(dir, { recursive: true });
-    await writeFile(path.join(dir, 'index.html'), html, 'utf8');
-    generated.push(slug);
-  }
+    // Labels nur aus dieser Welt – Nachbar-Links zeigen ausschließlich hierhin.
+    const labelBySlug = new Map([...bySlug].map(([slug, d]) => [slug, d.navLabel]));
 
-  // Übersicht in fachlicher Reihenfolge.
-  const ordered = [...bySlug.keys()].sort((a, b) => {
-    const ia = ORDER.indexOf(a); const ib = ORDER.indexOf(b);
-    return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
-  }).map((slug) => ({ slug, ...bySlug.get(slug) }));
-  const overview = await renderLeistungenOverview({ leistungen: ordered, cssVersion, jsVersion });
-  await writeFile(path.join(OUT_DIR, 'index.html'), overview, 'utf8');
-
-  // Verwaiste generierte Ordner entfernen (nur mit Sentinel, nie die Übersicht).
-  const slugs = new Set(bySlug.keys());
-  const entries = await readdir(OUT_DIR, { withFileTypes: true });
-  for (const e of entries) {
-    if (!e.isDirectory() || slugs.has(e.name)) continue;
-    const idx = path.join(OUT_DIR, e.name, 'index.html');
-    if (await fileExists(idx) && (await readFile(idx, 'utf8')).includes(GEN_SENTINEL)) {
-      await rm(path.join(OUT_DIR, e.name), { recursive: true, force: true });
-      console.log(`  – veraltete Leistungsseite entfernt: leistungen/${e.name}/`);
+    for (const [slug, leistung] of bySlug) {
+      const html = await renderLeistungPage({
+        leistung, slug, welt, cssVersion, jsVersion,
+        refProjects: refProjectsFor(slug, projekte, welt),
+        labelBySlug,
+      });
+      const dir = path.join(outDir, slug);
+      await mkdir(dir, { recursive: true });
+      await writeFile(path.join(dir, 'index.html'), html, 'utf8');
     }
+
+    // Übersicht in der Reihenfolge aus WELTEN[*].slugs.
+    const ordered = welt.slugs.map((slug) => ({ slug, ...bySlug.get(slug) }));
+    const overview = await renderLeistungenOverview({ leistungen: ordered, welt, cssVersion, jsVersion });
+    await writeFile(path.join(outDir, 'index.html'), overview, 'utf8');
+
+    // Verwaiste generierte Ordner entfernen (nur mit Sentinel, nie die Übersicht).
+    const entries = await readdir(outDir, { withFileTypes: true });
+    for (const e of entries) {
+      if (!e.isDirectory() || bySlug.has(e.name)) continue;
+      const idx = path.join(outDir, e.name, 'index.html');
+      if (await fileExists(idx) && (await readFile(idx, 'utf8')).includes(GEN_SENTINEL)) {
+        await rm(path.join(outDir, e.name), { recursive: true, force: true });
+        console.log(`  – veraltete Leistungsseite entfernt: ${welt.pfad}leistungen/${e.name}/`);
+      }
+    }
+
+    console.log(`✅ ${welt.uebersichtLabel}: Übersicht /${welt.pfad}leistungen/ und ${bySlug.size} Leistungsseiten generiert:`);
+    for (const slug of welt.slugs) console.log(`   /${welt.pfad}leistungen/${slug}/`);
   }
 
   // AP-18: Navigation in die Handseiten injizieren.
   await injectNav();
   // AP-19: Startseiten-FAQ injizieren (nach injectNav, das index.html ebenfalls schreibt).
   await injectFaq();
-
-  console.log(`✅ Leistungsübersicht /leistungen/ und ${generated.length} Leistungsseiten generiert:`);
-  for (const slug of ordered.map((l) => l.slug)) console.log(`   /leistungen/${slug}/`);
 }
 
 await main();

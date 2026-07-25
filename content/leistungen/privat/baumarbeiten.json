@@ -1,0 +1,39 @@
+{
+  "h1": "Baumfällung und Baumarbeiten",
+  "navLabel": "Baumfällung & Baumarbeiten",
+  "title": "Baumfällung & Baumpflege in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Baumfällung, Kronenschnitt und Totholzentfernung in Herne, Bochum und Recklinghausen – seilklettertechnisch, sicher, mit Blick auf den Baumbestand. Jetzt anfragen.",
+  "serviceType": "Baumfällung, Kronenpflege und Baumarbeiten",
+  "intro": "Wir fällen, schneiden und entlasten Bäume dort, wo es nötig ist – vom Formschnitt über die Kronenpflege bis zur kompletten Fällung, auch auf engem Raum per Seilklettertechnik. Vorher schauen wir, ob eine Fällung wirklich sein muss oder ob ein fachgerechter Schnitt den Baum erhält. Auch im gewachsenen Garten, wo rundherum wenig Platz ist.",
+  "eignung": [
+    "Bäume, die zu groß geworden sind, zu dicht am Haus stehen oder zu viel Schatten werfen.",
+    "Kranke, geschädigte oder abgestorbene Bäume, von denen eine Gefahr ausgeht.",
+    "Grundstücke, auf denen für eine Fällung kein Kran aufgestellt werden kann und im Baum gearbeitet werden muss.",
+    "Eigentümer, die einen Baum lieber erhalten und mit einem fachgerechten Schnitt entlasten möchten."
+  ],
+  "ablauf": [
+    { "titel": "Beurteilung vor Ort", "text": "Wir sehen uns den Baum, den Standort und das Umfeld an und klären, ob Schnitt oder Fällung das Richtige ist – und was die Naturschutzfristen zulassen." },
+    { "titel": "Sichere Arbeitsweise wählen", "text": "Je nach Platz arbeiten wir vom Boden, mit Hubarbeitsbühne oder in Seilklettertechnik. Auf engen Grundstücken wird der Baum kontrolliert in Teilen abgetragen." },
+    { "titel": "Ausführung", "text": "Wir sichern den Arbeitsbereich, führen Schnitt oder Fällung durch und achten darauf, dass angrenzende Beete, Wege und Nachbargrundstücke unberührt bleiben." },
+    { "titel": "Aufräumen und Verwertung", "text": "Auf Wunsch nehmen wir das Schnittgut mit oder arbeiten den Stamm zu Brennholz auf. Der Stubben kann gefräst werden." }
+  ],
+  "aufwand": [
+    { "titel": "Höhe und Umfang", "text": "Ein kleiner Hausbaum ist etwas anderes als ein alter Bestandsbaum mit weit ausladender Krone." },
+    { "titel": "Zugänglichkeit", "text": "Kann Technik nah heranfahren oder muss alles im Baum und von Hand geschehen? Das bestimmt Aufwand und Zeit am stärksten." },
+    { "titel": "Umfeld und Sicherung", "text": "Nähe zu Haus, Leitungen, Straße oder Nachbargrundstück erhöht den Sicherungs- und Rückschnittaufwand." },
+    { "titel": "Verwertung des Materials", "text": "Abfuhr des Schnittguts, Aufarbeitung zu Brennholz und Stubbenfräsen sind zusätzliche Arbeitsschritte." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Einen Baum kann man das ganze Jahr fällen.“", "text": "Für stärkere Eingriffe gelten Naturschutzfristen. Verkehrssicherungsbedingte Arbeiten sind eine Ausnahme, den Rahmen klären wir vorab." },
+    { "titel": "„Ein hoher Baum ist mit der Leiter schnell gemacht.“", "text": "Arbeiten in der Höhe und nahe an Gebäuden gehören aus gutem Grund in fachliche Hände – hier geht es um Sicherheit, nicht um Mut." },
+    { "titel": "„Wenn er stört, muss er weg.“", "text": "Oft lässt sich ein Baum durch einen gezielten Schnitt so entlasten, dass er stehen bleiben kann. Wir sagen Ihnen, was sinnvoll ist." }
+  ],
+  "faq": [
+    { "frage": "Darf ich einen Baum jederzeit fällen lassen?", "antwort": "Für stärkere Rückschnitte und Fällungen gilt in der Regel der Zeitraum vom 1. Oktober bis 28./29. Februar, weil Vögel und andere Tiere in der Vegetationszeit geschützt sind (§ 39 BNatSchG). Zusätzlich kann eine kommunale Baumschutzsatzung greifen. Bei Gefahr im Verzug sind Ausnahmen möglich. Was in Ihrem Fall zulässig ist, klären wir vor der Arbeit." },
+    { "frage": "Muss ein Baum wirklich gefällt werden oder reicht ein Schnitt?", "antwort": "Das schauen wir uns zuerst an. Häufig lässt sich ein Baum durch Kronenpflege, Einkürzung oder Totholzentfernung so weit entlasten, dass er sicher stehen bleibt. Eine Fällung empfehlen wir dann, wenn der Baum nicht mehr standsicher ist oder sich sein Zustand nicht mehr halten lässt." },
+    { "frage": "Arbeiten Sie auch dort, wo kein Kran hinkommt?", "antwort": "Ja. Auf engen Grundstücken oder in dichter Bebauung tragen wir den Baum in Seilklettertechnik kontrolliert in Teilen ab. So bleiben Beete, Wege und Nachbargrundstücke unberührt." },
+    { "frage": "Was passiert mit dem Holz und dem Stubben?", "antwort": "Auf Wunsch nehmen wir das Schnittgut mit oder arbeiten den Stamm zu Brennholz auf. Den verbleibenden Stubben können wir fräsen, sodass die Fläche wieder nutzbar ist." }
+  ],
+  "nachbarn": ["baumkontrolle", "sturmnotdienst"],
+  "kundengruppe": ["privat"]
+}

@@ -44,20 +44,17 @@
 
     <nav class="breadcrumbs" aria-label="Sie sind hier">
       <ol>
-        <li><a href="{{base}}">Startseite</a></li>
-        <li aria-current="page">Leistungen</li>
+        {{breadcrumbTrail}}
       </ol>
     </nav>
 
     <div class="section-head center">
       <span class="kicker">Was wir machen</span>
-      <h1 id="lpx-title">Leistungen im Garten- und Landschaftsbau</h1>
-      <p class="lead">Von der Gartengestaltung über Teichanlagen und Pflasterarbeiten bis zur Baumkontrolle und gewerblichen Außenanlagenpflege – für Privatkunden und Gewerbe in Herne, Bochum, Recklinghausen und Umgebung.</p>
+      <h1 id="lpx-title">{{h1}}</h1>
+      <p class="lead">{{lead}}</p>
     </div>
 
-    <div class="lpx-grid">
-      {{cards}}
-    </div>
+    {{cards}}
 
     <div class="projekt-cta center">
       <a class="btn btn-primary" href="{{base}}#kontakt">Nicht sicher, was passt? Fragen Sie uns <span aria-hidden="true">→</span></a>

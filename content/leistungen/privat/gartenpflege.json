@@ -1,0 +1,39 @@
+{
+  "h1": "Gartenpflege",
+  "navLabel": "Gartenpflege",
+  "title": "Gartenpflege in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Regelmäßige Gartenpflege in Herne, Bochum und Recklinghausen – Rasen, Hecken, Beete und Rückschnitt fachgerecht und im passenden Rhythmus. Jetzt Termin anfragen.",
+  "serviceType": "Regelmäßige Pflege privater Gärten",
+  "intro": "Wir halten Ihren Garten in Form – Rasen, Hecken, Beete, Rückschnitt und Laub, im passenden Rhythmus übers Jahr. Ob als regelmäßige Betreuung oder als gezielter Pflegeeinsatz: Wir machen die Arbeiten, für die Zeit, Werkzeug oder Fachwissen fehlen, und achten dabei auf die richtigen Zeitpunkte, etwa beim Heckenschnitt. Für Gärten in Herne und Umgebung.",
+  "eignung": [
+    "Eigentümer, denen für die laufende Gartenarbeit die Zeit oder das Gerät fehlt.",
+    "Gärten, die einmal gründlich in Form gebracht werden sollen.",
+    "Wer die aufwendigen Arbeiten – Heckenschnitt, Rückschnitt, Vertikutieren – abgeben möchte.",
+    "Menschen, die ihren Garten genießen, aber nicht mehr selbst pflegen können oder wollen."
+  ],
+  "ablauf": [
+    { "titel": "Bestandsaufnahme", "text": "Wir sehen uns den Garten an und klären, welche Arbeiten anstehen und welcher Rhythmus sinnvoll ist." },
+    { "titel": "Pflegeumfang festlegen", "text": "Regelmäßige Betreuung oder einzelne Einsätze – wir stimmen ab, was Sie selbst machen und was wir übernehmen." },
+    { "titel": "Fachgerechte Ausführung", "text": "Rasen, Hecken, Beete und Rückschnitt führen wir zum richtigen Zeitpunkt und mit dem passenden Gerät aus." },
+    { "titel": "Übers Jahr denken", "text": "Wir behalten die Zeitpunkte im Blick – vom Frühjahrsstart über den Heckenschnitt bis zum Herbstlaub." }
+  ],
+  "aufwand": [
+    { "titel": "Gartengröße und Bewuchs", "text": "Fläche, Heckenlänge und Zahl der Beete bestimmen den laufenden Pflegeaufwand." },
+    { "titel": "Pflegeintervall", "text": "Wie oft gepflegt wird, entscheidet über den Aufwand – von wenigen Einsätzen im Jahr bis zur regelmäßigen Betreuung." },
+    { "titel": "Zustand", "text": "Ein verwilderter Garten braucht zuerst einen gründlichen Rückschnitt, bevor die reguläre Pflege greift." },
+    { "titel": "Entsorgung", "text": "Abfuhr und Entsorgung von Schnittgut und Laub kommen zur eigentlichen Arbeit hinzu." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Hecken kann man das ganze Jahr radikal schneiden.“", "text": "Ein starker Rückschnitt ist nur im Winterhalbjahr erlaubt. In der Brutzeit ist nur ein schonender Form- und Pflegeschnitt zulässig." },
+    { "titel": "„Rasen kürzer mähen heißt seltener mähen.“", "text": "Zu kurz gemäht leidet der Rasen, vergilbt und lässt Unkraut durch. Die richtige Schnitthöhe ist wichtiger als die Häufigkeit." },
+    { "titel": "„Pflege kann man aufschieben, bis es nötig aussieht.“", "text": "Wer die richtigen Zeitpunkte verpasst, hat mehr Arbeit. Regelmäßige, kleinere Einsätze sind leichter als seltene Großaktionen." }
+  ],
+  "faq": [
+    { "frage": "Wann darf eine Hecke geschnitten werden?", "antwort": "Ein starker Rückschnitt ist nur zwischen dem 1. Oktober und dem 28./29. Februar erlaubt, weil in der Vegetationszeit brütende Vögel geschützt sind (§ 39 BNatSchG). Ein schonender Form- und Pflegeschnitt ist ganzjährig zulässig. Viele Kunden kommen damit im Februar zu spät – planen Sie den kräftigen Schnitt also rechtzeitig ein." },
+    { "frage": "Bieten Sie regelmäßige Pflege oder nur einzelne Einsätze?", "antwort": "Beides. Manche Kunden möchten ihren Garten regelmäßig betreut wissen, andere brauchen nur für die aufwendigen Arbeiten – etwa den Heckenschnitt oder das Vertikutieren – Unterstützung. Wir stimmen mit Ihnen ab, was Sie selbst übernehmen und wo wir einspringen, und finden dafür den passenden Rhythmus." },
+    { "frage": "Übernehmen Sie auch einen verwilderten Garten?", "antwort": "Ja. Häufig steht am Anfang ein gründlicher Rückschnitt, um den Garten wieder in Form zu bringen. Danach lässt er sich mit überschaubarer, regelmäßiger Pflege halten. Wir sagen Ihnen ehrlich, was der erste Einsatz umfasst und wie sich der Aufwand danach einpendelt." },
+    { "frage": "Entsorgen Sie das Schnittgut?", "antwort": "Auf Wunsch ja. Abfuhr und Entsorgung von Schnittgut und Laub können wir mit übernehmen, sodass Sie sich darum nicht kümmern müssen. Das stimmen wir beim Pflegeumfang mit ab, damit von vornherein klar ist, was zur Leistung gehört." }
+  ],
+  "nachbarn": ["bepflanzung", "baumarbeiten"],
+  "kundengruppe": ["privat"]
+}

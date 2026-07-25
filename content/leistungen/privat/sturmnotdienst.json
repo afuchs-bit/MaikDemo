@@ -1,0 +1,39 @@
+{
+  "h1": "Sturmnotdienst",
+  "navLabel": "Sturmnotdienst",
+  "title": "Sturmnotdienst für Bäume in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Hilfe bei Sturmschäden an Bäumen in Herne, Bochum und Recklinghausen – umgestürzte Bäume, abgebrochene Äste, Gefahrenstellen sichern. Kontakt per Telefon oder WhatsApp.",
+  "serviceType": "Beseitigung und Sicherung von Sturmschäden an Bäumen",
+  "intro": "Nach einem Sturm sichern und beseitigen wir Gefahren durch beschädigte Bäume – umgestürzte Stämme, angebrochene Äste und instabile Kronen. Wir schätzen die Lage vor Ort ein, sichern die Gefahrenstelle und arbeiten den Schaden fachgerecht ab, auch in beengter Lage per Seilklettertechnik – im Garten ebenso wie direkt am Haus.",
+  "eignung": [
+    "Grundstücke mit umgestürzten oder angebrochenen Bäumen nach einem Unwetter.",
+    "Hängende oder angerissene Äste über Wegen, Stellplätzen oder Gebäuden, von denen eine akute Gefahr ausgeht.",
+    "Eigentümer, die eine Gefahrenstelle kurzfristig gesichert und für die Versicherung dokumentiert brauchen.",
+    "Situationen, in denen unklar ist, ob ein beschädigter Baum noch standsicher ist."
+  ],
+  "ablauf": [
+    { "titel": "Lage einschätzen", "text": "Schildern Sie uns die Situation am besten mit Fotos und Standort. So können wir einordnen, wie dringend und wie aufwendig der Einsatz ist." },
+    { "titel": "Gefahrenstelle sichern", "text": "Zuerst wird die akute Gefahr entschärft: Bereich absperren, hängende Äste sichern, damit niemand zu Schaden kommt." },
+    { "titel": "Schaden abarbeiten", "text": "Wir zerlegen und entfernen den Schaden kontrolliert – bei beengten Verhältnissen in Seilklettertechnik, damit umliegende Bereiche unberührt bleiben." },
+    { "titel": "Beurteilung des Restbestands", "text": "Anschließend prüfen wir, ob benachbarte Bäume in Mitleidenschaft gezogen wurden und weitere Maßnahmen nötig sind." }
+  ],
+  "aufwand": [
+    { "titel": "Art und Umfang des Schadens", "text": "Ein einzelner abgebrochener Ast ist etwas anderes als ein ganzer umgestürzter Baum in einer Hecke." },
+    { "titel": "Gefährdung des Umfelds", "text": "Nähe zu Gebäuden, Leitungen oder Verkehrswegen erhöht den Sicherungsaufwand deutlich." },
+    { "titel": "Zugänglichkeit", "text": "Ob Technik heranfahren kann oder in der Höhe und von Hand gearbeitet werden muss, bestimmt den Aufwand." },
+    { "titel": "Abfuhr und Aufarbeitung", "text": "Das Entfernen des Schnittguts und die Aufarbeitung des Holzes kommen zur eigentlichen Sicherung hinzu." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Den hängenden Ast hole ich schnell selbst runter.“", "text": "Angebrochene Äste und unter Spannung stehendes Holz sind unberechenbar. Solche Situationen gehören gesichert, nicht improvisiert." },
+    { "titel": "„Der Baum steht ja noch, also ist er stabil.“", "text": "Nach einem Sturm können Wurzeln oder Stamm angerissen sein, ohne dass man es sofort sieht. Das gehört fachlich beurteilt." },
+    { "titel": "„Sturmschäden zahlt immer die Versicherung.“", "text": "Ob und was übernommen wird, hängt vom Einzelfall ab. Eine Dokumentation des Schadens hilft bei der Klärung mit Ihrer Versicherung." }
+  ],
+  "faq": [
+    { "frage": "Wie erreiche ich Sie im Sturmfall?", "antwort": "Am schnellsten per WhatsApp mit ein paar Fotos und dem Standort – so können wir die Lage sofort einschätzen. Alternativ telefonisch. Wir sind montags bis freitags von 08:00 bis 20:00 Uhr erreichbar; Nachrichten können Sie rund um die Uhr senden, wir melden uns kurzfristig zurück." },
+    { "frage": "Sichern Sie eine Gefahrenstelle auch, wenn der Baum nicht sofort weg muss?", "antwort": "Ja. Oft ist der erste Schritt, die akute Gefahr zu entschärfen – etwa einen hängenden Ast zu sichern oder einen Bereich abzusperren. Die vollständige Beseitigung kann dann geplant folgen. Wichtig ist, dass zuerst niemand zu Schaden kommt." },
+    { "frage": "Arbeiten Sie auch in beengter Lage zwischen Gebäuden?", "antwort": "Ja. Wenn keine Technik herankommt, arbeiten wir in Seilklettertechnik und tragen den beschädigten Baum kontrolliert in Teilen ab. So bleiben Dächer, Zäune und Nachbargrundstücke unberührt." },
+    { "frage": "Hilft mir die Dokumentation für die Versicherung?", "antwort": "Ja. Wir können den Schaden vor der Beseitigung festhalten. Diese Dokumentation erleichtert die Abstimmung mit Ihrer Versicherung. Ob und in welchem Umfang Kosten übernommen werden, entscheidet allerdings die Versicherung, nicht wir." }
+  ],
+  "nachbarn": ["baumarbeiten", "baumkontrolle"],
+  "kundengruppe": ["privat"]
+}

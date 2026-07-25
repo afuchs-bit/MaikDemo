@@ -2123,6 +2123,25 @@ body.has-lightbox { overflow: hidden; }
 .lpx-card p { color: var(--ink-2); font-size: .95rem; margin: 0; flex: 1; }
 .lpx-more { font-weight: 600; color: var(--green-700); font-size: .9rem; margin-top: 6px; }
 
+/* AP-33: Gruppierte Leistungsübersicht je Welt. */
+.lpx-group + .lpx-group { margin-top: clamp(32px, 5vh, 48px); }
+.lpx-group-label {
+  font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--green-700); margin: 0 0 14px;
+}
+
+/* AP-33: Leistungs-Dropdown und Footer-Spalte nach Welten gruppiert. */
+.nav-submenu--welten .nav-submenu-group + .nav-submenu-group { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+.nav-submenu--welten .nav-submenu-head,
+.footer-leistungen--welten .footer-leistungen-head {
+  display: block; font-size: .74rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; padding: 4px 0; text-decoration: none; opacity: .85;
+}
+.nav-submenu--welten .nav-submenu-group > ul,
+.footer-leistungen--welten .footer-leistungen-group > ul { list-style: none; margin: 0; padding: 0; }
+.footer-leistungen--welten { list-style: none; margin: 0; padding: 0; }
+.footer-leistungen--welten .footer-leistungen-group + .footer-leistungen-group { margin-top: 14px; }
+
 /* ============================================================
    Leistungen-Dropdown im Header + Footer-Leistungen  (AP-18)
    Desktop-Basis hier, Mobil-Overrides in der Media-Query DANACH

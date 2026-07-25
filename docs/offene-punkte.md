@@ -33,12 +33,19 @@ und das JSON-LD verteilt:
 
 | Wert | Fundstellen | AP |
 |---|---|---|
-| Zertifizierungsstandard der Baumkontrolle (FLL o. a.) | `gewerbekunden/index.html` | AP-13 |
-| Reaktionszeit Sturmnotdienst | `gewerbekunden/index.html` | AP-13 |
-| Betriebshaftpflicht: Versicherer und Deckungssumme | `gewerbekunden/index.html` | AP-13 |
+| Zertifizierungsstandard der Baumkontrolle (FLL o. a.) | `gewerbekunden/index.html`, `content/leistungen/gewerbe/baumkontrolle.json` | AP-13 / AP-33 |
+| Reaktionszeit Sturmnotdienst | `gewerbekunden/index.html`, `content/leistungen/gewerbe/sturmnotdienst.json` | AP-13 / AP-33 |
+| Betriebshaftpflicht: Versicherer und Deckungssumme | `gewerbekunden/index.html`, `content/leistungen/gewerbe/baumarbeiten.json` | AP-13 / AP-33 |
 | Zwei gewerbliche Referenzobjekte inkl. Ort und Objektart | `gewerbekunden/index.html` | AP-13 / AP-23 |
-| Vertragslaufzeiten und Reaktionszeiten im Gewerbebereich | `gewerbekunden/index.html` | AP-13 / AP-23 |
+| Vertragslaufzeiten und Reaktionszeiten im Gewerbebereich | `gewerbekunden/index.html`, `content/leistungen/gewerbe/sturmnotdienst.json` | AP-13 / AP-23 / AP-33 |
+| Sicherungsausrüstung und Qualifikation für Arbeiten auf Dachflächen | `content/leistungen/gewerbe/dachbegruenung.json` | AP-33 |
 | Details zum Partnerbetrieb in Bochum | noch ohne Fundstelle | AP-23 |
+
+**AP-33:** In den vier Gewerbe-Leistungsdateien waren zu diesen Punkten FAQ-Antworten als
+`[OFFEN: …]` entworfen. Da FAQ-Antworten sichtbar auf der Seite **und** im FAQPage-Schema
+ausgegeben werden (Grundregel 2: kein sichtbarer Platzhaltertext), wurden die betroffenen
+Fragen entfernt statt mit Platzhaltern zu veröffentlichen. Sobald die Werte vorliegen:
+Fragen wieder aufnehmen und beantworten.
 
 ## Rechtstexte
 
