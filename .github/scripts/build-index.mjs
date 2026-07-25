@@ -24,6 +24,15 @@ const CONTENT_DIR = path.join(REPO_ROOT, 'content', 'projekte');
 const TAXONOMIE = path.join(REPO_ROOT, 'content', 'taxonomie.json');
 const OUT_FILE = path.join(REPO_ROOT, 'data', 'projekte-index.json');
 
+// AP-09: Sitemap im Root.
+const SITE = 'https://rohdich.de';
+const SITEMAP_FILE = path.join(REPO_ROOT, 'sitemap.xml');
+// Ordner, die nie oeffentliche Seiten enthalten oder dauerhaft noindex sind.
+const SITEMAP_SKIP_DIRS = new Set([
+  '.git', '.github', '.claude', 'admin', 'node_modules',
+  'assets', 'content', 'data', 'docs', 'scripts',
+]);
+
 // AP-15: Ziel-Ablage der statisch generierten Seiten.
 const PROJEKTE_DIR = path.join(REPO_ROOT, 'projekte');
 const GALLERY_INDEX = path.join(PROJEKTE_DIR, 'index.html');
@@ -146,6 +155,13 @@ async function main() {
     fail(`Seiten-Generierung fehlgeschlagen: ${err.message}`);
   }
 
+  // AP-09: sitemap.xml aus allen real existierenden Seiten erzeugen.
+  try {
+    await generateSitemap(projekte);
+  } catch (err) {
+    fail(`Sitemap-Generierung fehlgeschlagen: ${err.message}`);
+  }
+
   if (warnings.length) {
     console.log('\n⚠️  Warnungen:');
     for (const w of warnings) console.log(`  • ${w}`);
@@ -213,6 +229,74 @@ async function generatePages(projekte, taxLabels) {
 
   console.log(`✅ ${urls.length} Projektseiten generiert:`);
   for (const u of urls) console.log(`   ${u}`);
+}
+
+// AP-09: erzeugt sitemap.xml aus allen real existierenden index.html im Repo.
+//
+// Bewusst On-Disk-Discovery statt Rekonstruktion aus taxonomie.json/content:
+// die deployten Dateien sind die einzige Wahrheit darueber, welche URLs es gibt,
+// und neue statische Seiten (z. B. /ratgeber/) landen automatisch in der Sitemap.
+//
+// Demo-Phase: Solange die Vorschau laeuft, tragen alle Seiten ein Blanket-noindex
+// (AP-01) und robots.txt sperrt alles. Die Sitemap listet trotzdem die Go-Live-URLs
+// — sie ist fuer den Go-Live vorbereitet, das Blanket-noindex faellt dann weg.
+// Dauerhaft-noindex (admin/) bleibt ueber SITEMAP_SKIP_DIRS ausgeschlossen.
+async function generateSitemap(projekte) {
+  const datumBySlug = new Map(projekte.map((p) => [p.slug, p.datum]));
+
+  const dirs = await collectPageDirs(REPO_ROOT);
+
+  const entries = [];
+  for (const rel of dirs) {
+    // rel = Repo-relativer Ordnerpfad mit '/'-Trennern; '' = Root-index.html.
+    const loc = rel === '' ? `${SITE}/` : `${SITE}/${rel}/`;
+    let lastmod;
+    const m = rel.match(/^projekte\/([^/]+)$/);
+    if (m && datumBySlug.has(m[1])) {
+      lastmod = String(datumBySlug.get(m[1])).slice(0, 10); // W3C-Datum YYYY-MM-DD
+    }
+    entries.push({ loc, lastmod });
+  }
+
+  entries.sort((a, b) => a.loc.localeCompare(b.loc)); // stabile Diffs
+
+  const body = entries
+    .map(({ loc, lastmod }) => {
+      const inner = lastmod
+        ? `    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>`
+        : `    <loc>${loc}</loc>`;
+      return `  <url>\n${inner}\n  </url>`;
+    })
+    .join('\n');
+
+  const xml =
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    `${body}\n` +
+    '</urlset>\n';
+
+  await writeFile(SITEMAP_FILE, xml, 'utf8');
+  console.log(`✅ sitemap.xml mit ${entries.length} URLs geschrieben.`);
+}
+
+// Sammelt Repo-relative Ordnerpfade, die eine index.html enthalten ('' = Root).
+// Versteckte Ordner (.*) und SITEMAP_SKIP_DIRS werden uebersprungen.
+async function collectPageDirs(rootDir) {
+  const found = [];
+  async function walk(absDir, rel) {
+    const entries = await readdir(absDir, { withFileTypes: true });
+    if (entries.some((e) => e.isFile() && e.name === 'index.html')) {
+      found.push(rel);
+    }
+    for (const e of entries) {
+      if (!e.isDirectory()) continue;
+      if (e.name.startsWith('.') || SITEMAP_SKIP_DIRS.has(e.name)) continue;
+      const childRel = rel === '' ? e.name : `${rel}/${e.name}`;
+      await walk(path.join(absDir, e.name), childRel);
+    }
+  }
+  await walk(rootDir, '');
+  return found;
 }
 
 async function validateProjekt(data, where, slug, validSlugs) {
