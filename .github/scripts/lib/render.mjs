@@ -6,11 +6,13 @@
 // build-index.mjs. Design lebt in ../templates/, nicht hier.
 
 import { readFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const TPL_DIR = path.join(__dirname, '..', 'templates');
+const REPO_ROOT = path.join(__dirname, '..', '..', '..');
 
 export const SITE = 'https://rohdich.de';
 export const BASE_PROJEKT = '../../'; // /projekte/<slug>/ liegt zwei Ebenen unter dem Root
@@ -42,6 +44,49 @@ export function absUrl(p) {
   const s = String(p || '');
   if (isRemote(s)) return s;
   return SITE + '/' + s.replace(/^\/+/, '');
+}
+
+// ---------- Bild-Manifest (AP-25, aus build-images.mjs) ----------
+let _imgManifest;
+function imgManifest() {
+  if (_imgManifest) return _imgManifest;
+  try {
+    _imgManifest = JSON.parse(readFileSync(path.join(REPO_ROOT, 'data', 'images.json'), 'utf8')).bilder || {};
+  } catch {
+    _imgManifest = {};
+  }
+  return _imgManifest;
+}
+
+// Baut <picture> mit AVIF+WebP-srcset aus dem Manifest. `bild` ist der kanonische
+// Pfad (…/name.webp). Pfade werden mit `base` auf die Seitentiefe rebasiert (relativ),
+// damit die Seite sowohl unter /MaikDemo/ als auch unter / funktioniert. Fällt auf ein
+// einfaches <img> zurück, wenn das Bild nicht im Manifest steht (noch nicht lokalisiert).
+export function renderPicture(bild, { alt = '', sizes = '100vw', className = '', priority = false, width, height, base = '' } = {}) {
+  const m = imgManifest()[bild];
+  const cls = className ? ` class="${escAttr(className)}"` : '';
+  const load = priority ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"';
+  const rel = (p) => escAttr(relAsset(p, base));
+  if (!m) {
+    const wh = width && height ? ` width="${width}" height="${height}"` : '';
+    return `<img${cls} src="${rel(bild)}" alt="${escAttr(alt)}"${wh} ${load}>`;
+  }
+  const set = (ext) => m.widths.map((w) => `${rel(`${m.base}-${w}.${ext}`)} ${w}w`).join(', ');
+  return `<picture>
+        <source type="image/avif" sizes="${escAttr(sizes)}" srcset="${set('avif')}">
+        <source type="image/webp" sizes="${escAttr(sizes)}" srcset="${set('webp')}">
+        <img${cls} src="${rel(bild)}" alt="${escAttr(alt)}" width="${width || m.width}" height="${height || m.height}" ${load}>
+      </picture>`;
+}
+
+// Preload-Link fuer das LCP-Bild einer Seite (AVIF-srcset, relativ zur Seitentiefe).
+function lcpPreloadFor(bild, sizes = '100vw', base = '') {
+  const m = bild ? imgManifest()[bild] : null;
+  if (m) {
+    const srcset = m.widths.map((w) => `${escAttr(relAsset(`${m.base}-${w}.avif`, base))} ${w}w`).join(', ');
+    return `<link rel="preload" as="image" type="image/avif" imagesizes="${escAttr(sizes)}" imagesrcset="${srcset}" />`;
+  }
+  return bild ? `<link rel="preload" as="image" href="${escAttr(relAsset(bild, base))}" fetchpriority="high" />` : '';
 }
 
 // ---------- Textwerkzeuge ----------
@@ -85,14 +130,15 @@ function fill(tpl, map) {
 function renderImages(bilder, base) {
   return bilder
     .map((b, i) => {
-      const src = escAttr(relAsset(b.bild, base));
-      const alt = escAttr(b.alt || '');
-      // Erstes Bild = LCP: eager + hohe Priorität. Rest: lazy.
-      const attrs = i === 0
-        ? 'fetchpriority="high" decoding="async"'
-        : 'loading="lazy" decoding="async"';
+      // Erstes Bild = LCP: hohe Priorität. Rest: lazy. Volle Spaltenbreite bis 900px.
+      const pic = renderPicture(b.bild, {
+        alt: b.alt || '',
+        sizes: '(max-width: 1000px) 100vw, 900px',
+        priority: i === 0,
+        base,
+      });
       return `<figure class="projekt-figure">
-        <img src="${src}" alt="${alt}" width="1600" height="1200" ${attrs}>
+        ${pic}
       </figure>`;
     })
     .join('\n      ');
@@ -252,9 +298,7 @@ export async function renderProjektPage(opts) {
   const b = badge(project.kundentyp);
   const bilder = Array.isArray(project.bilder) ? project.bilder : [];
   const cover = bilder[0] || {};
-  const lcpPreload = cover.bild
-    ? `<link rel="preload" as="image" href="${escAttr(relAsset(cover.bild, base))}" fetchpriority="high" />`
-    : '';
+  const lcpPreload = lcpPreloadFor(cover.bild, '(max-width: 1000px) 100vw, 900px', base);
 
   const body = fill(page, {
     base,
@@ -293,13 +337,14 @@ export function renderGalleryList(projekte, base = BASE_GALLERY) {
     .map((p) => {
       const b = badge(p.kundentyp);
       const cover = (Array.isArray(p.bilder) && p.bilder[0]) || {};
-      const src = escAttr(relAsset(cover.bild || '', base));
-      const alt = escAttr(cover.alt || '');
+      const pic = renderPicture(cover.bild || '', {
+        alt: cover.alt || '', sizes: '(max-width: 700px) 90vw, 30vw', width: 800, height: 600, base,
+      });
       const href = `${encodeURIComponent(p.slug)}/`;
       const label = escAttr(`Projekt „${p.titel}“ in ${p.ort} ansehen`);
       return `      <article class="project-card">
         <div class="project-media">
-          <img src="${src}" alt="${alt}" loading="lazy" decoding="async" width="800" height="600">
+          ${pic}
           <span class="project-tag ${b.cls}">${esc(b.label)}</span>
         </div>
         <div class="project-body">
@@ -463,13 +508,14 @@ function lpRefs(refProjects, base) {
   const cards = refProjects.map((p) => {
     const b = badge(p.kundentyp);
     const cover = p.cover || {};
-    const src = escAttr(relAsset(cover.bild || '', base));
-    const alt = escAttr(cover.alt || '');
+    const pic = renderPicture(cover.bild || '', {
+      alt: cover.alt || '', sizes: '(max-width: 700px) 90vw, 30vw', width: 800, height: 600, base,
+    });
     const href = `${base}projekte/${encodeURIComponent(p.slug)}/`;
     const label = escAttr(`Projekt „${p.titel}“ in ${p.ort} ansehen`);
     return `<article class="project-card">
           <div class="project-media">
-            <img src="${src}" alt="${alt}" loading="lazy" decoding="async" width="800" height="600">
+            ${pic}
             <span class="project-tag ${b.cls}">${esc(b.label)}</span>
           </div>
           <div class="project-body">
@@ -567,7 +613,7 @@ export async function renderLeistungPage(opts) {
   ]);
   const base = BASE_LEISTUNG;
   const canonical = `${SITE}/leistungen/${slug}/`;
-  const ogImage = refProjects[0]?.cover?.bild ? absUrl(refProjects[0].cover.bild) : `${SITE}/assets/img/ueber/ueber-1.jpg`;
+  const ogImage = refProjects[0]?.cover?.bild ? absUrl(refProjects[0].cover.bild) : `${SITE}/assets/img/hero/hero-garten-herne-1600.webp`;
 
   return fill(page, {
     base,
@@ -644,7 +690,7 @@ export async function renderLeistungenOverview(opts) {
     ogTitle: escAttr('Leistungen – Maik Rohdich Garten- und Landschaftsbau'),
     description: escAttr('Alle Leistungen von Maik Rohdich Garten- und Landschaftsbau: Gartengestaltung, Teichanlagen, Pflasterarbeiten, Baumkontrolle, Pflege und mehr in Herne, Bochum und Recklinghausen.'),
     canonical: escAttr(canonical),
-    ogImage: escAttr(`${SITE}/assets/img/ueber/ueber-1.jpg`),
+    ogImage: escAttr(`${SITE}/assets/img/hero/hero-garten-herne-1600.webp`),
     breadcrumbJsonLd: breadcrumb,
     itemListJsonLd: itemList,
     logo: logo.trim(),
@@ -724,7 +770,7 @@ export async function renderRatgeberPage(opts) {
     ogTitle: escAttr(article.title),
     description: escAttr(truncate(article.metaDescription, 160)),
     canonical: escAttr(canonical),
-    ogImage: escAttr(`${SITE}/assets/img/ueber/ueber-1.jpg`),
+    ogImage: escAttr(`${SITE}/assets/img/hero/hero-garten-herne-1600.webp`),
     breadcrumbJsonLd: ratgeberBreadcrumb(kurz, canonical),
     articleJsonLd: articleJsonLd(article, canonical),
     faqJsonLd: faqJsonLd(article.faq || []),
@@ -778,7 +824,7 @@ export async function renderRatgeberOverview(opts) {
     ogTitle: escAttr('Ratgeber – Maik Rohdich Garten- und Landschaftsbau'),
     description: escAttr('Fachlich fundierte Antworten auf häufige Gartenfragen – Fristen, Recht und Praxis, verständlich erklärt von Maik Rohdich aus Herne.'),
     canonical: escAttr(canonical),
-    ogImage: escAttr(`${SITE}/assets/img/ueber/ueber-1.jpg`),
+    ogImage: escAttr(`${SITE}/assets/img/hero/hero-garten-herne-1600.webp`),
     breadcrumbJsonLd: breadcrumb,
     logo: logo.trim(),
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
@@ -816,7 +862,7 @@ export async function renderRechtstextPage(opts) {
     ogTitle: escAttr(data.title),
     description: escAttr(truncate(data.metaDescription, 160)),
     canonical: escAttr(canonical),
-    ogImage: escAttr(`${SITE}/assets/img/ueber/ueber-1.jpg`),
+    ogImage: escAttr(`${SITE}/assets/img/hero/hero-garten-herne-1600.webp`),
     breadcrumbJsonLd: breadcrumb,
     logo: logo.trim(),
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),

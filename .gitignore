@@ -1,0 +1,6 @@
+# Node
+node_modules/
+
+# AP-25: Original-Bilder (5–8 MB) bleiben lokal, werden NICHT deployt.
+# Aus ihnen erzeugt .github/scripts/build-images.mjs die responsiven Derivate.
+assets/img/_src/

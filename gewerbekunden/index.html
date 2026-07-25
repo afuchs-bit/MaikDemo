@@ -11,14 +11,16 @@
 <link rel="canonical" href="https://rohdich.de/gewerbekunden/" />
 <meta property="og:title" content="Verlässliche Außenanlagenpflege für Gewerbekunden – Maik Rohdich" />
 <meta property="og:description" content="Pflege, Baumkontrolle und Verkehrssicherheit für gewerbliche Objekte im Ruhrgebiet. Meisterbetrieb seit 2003 – jetzt Objektbegehung anfragen." />
-<meta property="og:image" content="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061114_302176ae-ad89-48ef-b1ee-dcd3db4db7fa.png" />
+<meta property="og:image" content="https://rohdich.de/assets/img/hero/hero-gewerbe-aussenanlagen-1600.webp" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rohdich.de/gewerbekunden/" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260725a" />
+<!-- LCP: Hero-Standbild vorab laden (AVIF) -->
+<link rel="preload" as="image" type="image/avif" imagesizes="100vw" imagesrcset="../assets/img/hero/hero-gewerbe-aussenanlagen-480.avif 480w, ../assets/img/hero/hero-gewerbe-aussenanlagen-960.avif 960w, ../assets/img/hero/hero-gewerbe-aussenanlagen-1600.avif 1600w" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260725b" />
 
 
 <!-- Breadcrumb (AEO/SEO) -->
@@ -216,8 +218,12 @@
 <!-- ============ HERO (Gewerbekunden) ============ -->
 <section class="hero hero--page" aria-label="Gewerbekundenbereich">
   <div class="hero-media">
-    <!-- Platzhalter: generiertes Bild der Zielgruppenweiche; vor Live-Gang durch echtes Objektfoto ersetzen -->
-    <img class="hero-image" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061114_302176ae-ad89-48ef-b1ee-dcd3db4db7fa.png" alt="" aria-hidden="true" />
+    <!-- Platzhalter: generiertes Bild der Zielgruppenweiche; vor Live-Gang durch echtes Objektfoto ersetzen (LCP, siehe preload im Head) -->
+    <picture>
+      <source type="image/avif" sizes="100vw" srcset="../assets/img/hero/hero-gewerbe-aussenanlagen-480.avif 480w, ../assets/img/hero/hero-gewerbe-aussenanlagen-960.avif 960w, ../assets/img/hero/hero-gewerbe-aussenanlagen-1600.avif 1600w">
+      <source type="image/webp" sizes="100vw" srcset="../assets/img/hero/hero-gewerbe-aussenanlagen-480.webp 480w, ../assets/img/hero/hero-gewerbe-aussenanlagen-960.webp 960w, ../assets/img/hero/hero-gewerbe-aussenanlagen-1600.webp 1600w">
+      <img class="hero-image" src="../assets/img/hero/hero-gewerbe-aussenanlagen.webp" alt="" aria-hidden="true" width="1600" height="900" fetchpriority="high" decoding="async" />
+    </picture>
     <div class="hero-scrim"></div>
     <div class="hero-grain" aria-hidden="true"></div>
   </div>
@@ -436,9 +442,13 @@
     <div class="projects-grid">
       <article class="project-card reveal">
         <div class="project-media">
-          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061303_bcbbec22-3158-4220-a6f3-c4993071ca17.png"
+          <picture>
+            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw" srcset="../assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-480.avif 480w, ../assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-960.avif 960w, ../assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-1600.avif 1600w">
+            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw" srcset="../assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-480.webp 480w, ../assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-960.webp 960w, ../assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-1600.webp 1600w">
+            <img src="../assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen.webp"
                alt="Gepflegte Außenanlage eines Bürokomplexes mit hohem Publikumsverkehr"
                loading="lazy" decoding="async" width="800" height="600">
+          </picture>
           <span class="project-tag warn">Gewerbekunde</span>
         </div>
         <div class="project-body">

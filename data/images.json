@@ -1,0 +1,111 @@
+{
+  "_hinweis": "AUTO-GENERIERT von .github/scripts/build-images.mjs – NICHT von Hand editieren.",
+  "bilder": {
+    "/assets/img/hero/hero-garten-herne.webp": {
+      "base": "/assets/img/hero/hero-garten-herne",
+      "widths": [
+        480,
+        960,
+        1600
+      ],
+      "width": 960,
+      "height": 540,
+      "aspect": 0.5625
+    },
+    "/assets/img/hero/hero-gewerbe-aussenanlagen.webp": {
+      "base": "/assets/img/hero/hero-gewerbe-aussenanlagen",
+      "widths": [
+        480,
+        960,
+        1600
+      ],
+      "width": 960,
+      "height": 540,
+      "aspect": 0.5625
+    },
+    "/assets/img/projekte/vorgarten-herne-2026/vorgarten-herne.webp": {
+      "base": "/assets/img/projekte/vorgarten-herne-2026/vorgarten-herne",
+      "widths": [
+        480,
+        960,
+        1600
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum.webp": {
+      "base": "/assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum",
+      "widths": [
+        480,
+        960,
+        1600
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen.webp": {
+      "base": "/assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen",
+      "widths": [
+        480,
+        960,
+        1600
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/split/split-private.webp": {
+      "base": "/assets/img/split/split-private",
+      "widths": [
+        480,
+        960,
+        1600
+      ],
+      "width": 960,
+      "height": 540,
+      "aspect": 0.5625
+    },
+    "/assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne.webp": {
+      "base": "/assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 1280,
+      "aspect": 1.3333
+    },
+    "/assets/img/ueber/ueber-1.webp": {
+      "base": "/assets/img/ueber/ueber-1",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/ueber/ueber-2.webp": {
+      "base": "/assets/img/ueber/ueber-2",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/ueber/ueber-3.webp": {
+      "base": "/assets/img/ueber/ueber-3",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    }
+  }
+}

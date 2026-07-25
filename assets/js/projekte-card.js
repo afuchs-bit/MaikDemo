@@ -12,14 +12,7 @@ export function buildCard(p) {
   const article = el('article', 'project-card reveal');
 
   const media = el('div', 'project-media');
-  const img = document.createElement('img');
-  img.src = assetUrl(cover.bild || '');
-  img.alt = cover.alt || '';
-  img.loading = 'lazy';
-  img.decoding = 'async';
-  img.width = 800;   // 4:3-Verhältnis passend zu .project-media aspect-ratio → kein Layout-Shift
-  img.height = 600;
-  media.appendChild(img);
+  media.appendChild(buildMedia(cover));
 
   const tag = el('span', gewerbe ? 'project-tag warn' : 'project-tag');
   tag.textContent = gewerbe ? 'Gewerbekunde' : 'Privatkunde';
@@ -36,6 +29,34 @@ export function buildCard(p) {
 
   article.append(media, body);
   return article;
+}
+
+// Baut das Karten-Medium: <picture> mit AVIF+WebP/srcset (AP-25), falls das Bild
+// Varianten im Index hat; sonst einfaches <img>. width/height = 4:3 → kein Layout-Shift.
+function buildMedia(cover) {
+  const mkImg = () => {
+    const img = document.createElement('img');
+    img.src = assetUrl(cover.bild || '');
+    img.alt = cover.alt || '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.width = 800;
+    img.height = 600;
+    return img;
+  };
+  const v = cover.variants;
+  if (!v || !Array.isArray(v.widths) || !v.widths.length) return mkImg();
+  const sizes = '(max-width: 700px) 90vw, 30vw';
+  const picture = document.createElement('picture');
+  for (const ext of ['avif', 'webp']) {
+    const source = document.createElement('source');
+    source.type = `image/${ext}`;
+    source.sizes = sizes;
+    source.srcset = v.widths.map((w) => `${assetUrl(`${v.base}-${w}.${ext}`)} ${w}w`).join(', ');
+    picture.appendChild(source);
+  }
+  picture.appendChild(mkImg());
+  return picture;
 }
 
 // Reveal-on-Scroll wie in main.js – nötig, weil main.js nur die beim Laden

@@ -835,15 +835,20 @@ p  { margin: 0; }
   transform: scale(1.05); transition: transform .8s var(--ease);
 }
 .split-card:hover .split-image { transform: scale(1.1); }
+/* AP-25: selbst gehostete Hintergrundbilder (AVIF mit WebP-Fallback via image-set). */
 .split-image[data-img="private"] {
   background-image:
     linear-gradient(160deg, rgba(49,82,0,.18), rgba(49,82,0,.0) 60%),
-    url("https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061016_a7688c52-a5c8-4ee9-9465-df631ce0ef11.png");
+    image-set(
+      url("../img/split/split-private-960.avif") type("image/avif"),
+      url("../img/split/split-private-960.webp") type("image/webp"));
 }
 .split-image[data-img="business"] {
   background-image:
     linear-gradient(160deg, rgba(49,82,0,.25), rgba(49,82,0,.0) 60%),
-    url("https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061114_302176ae-ad89-48ef-b1ee-dcd3db4db7fa.png");
+    image-set(
+      url("../img/hero/hero-gewerbe-aussenanlagen-960.avif") type("image/avif"),
+      url("../img/hero/hero-gewerbe-aussenanlagen-960.webp") type("image/webp"));
 }
 .split-overlay {
   position: absolute; inset: 0;

@@ -139,6 +139,10 @@ async function main() {
   // Sortierung: datum absteigend (neueste zuerst)
   projekte.sort((a, b) => String(b.datum).localeCompare(String(a.datum)));
 
+  // AP-25: Bild-Varianten aus dem Manifest an jedes bild haengen, damit die
+  // JS-gerenderten Karten (projekte-card.js) ein <picture>/srcset bauen koennen.
+  await enrichBilder(projekte);
+
   const out = {
     _hinweis: 'AUTO-GENERIERT von .github/scripts/build-index.mjs – NICHT von Hand editieren.',
     projekte,
@@ -297,6 +301,26 @@ async function collectPageDirs(rootDir) {
   }
   await walk(rootDir, '');
   return found;
+}
+
+// AP-25: haengt Bild-Varianten (base + verfuegbare Breiten) aus data/images.json
+// an jedes bild, damit projekte-card.js daraus <picture>/srcset bauen kann.
+// Fehlt das Manifest, bleibt alles beim einfachen <img> (kein harter Fehler).
+async function enrichBilder(projekte) {
+  let manifest;
+  try {
+    manifest = JSON.parse(await readFile(path.join(REPO_ROOT, 'data', 'images.json'), 'utf8')).bilder || {};
+  } catch {
+    warnings.push('data/images.json fehlt – Karten ohne srcset (build-images ausführen).');
+    return;
+  }
+  for (const p of projekte) {
+    if (!Array.isArray(p.bilder)) continue;
+    for (const b of p.bilder) {
+      const m = manifest[b.bild];
+      if (m) b.variants = { base: m.base, widths: m.widths, w: m.width, h: m.height };
+    }
+  }
 }
 
 async function validateProjekt(data, where, slug, validSlugs) {

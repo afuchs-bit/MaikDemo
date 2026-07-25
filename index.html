@@ -11,14 +11,16 @@
 <link rel="canonical" href="https://rohdich.de/" />
 <meta property="og:title" content="Maik Rohdich Garten- und Landschaftsbau" />
 <meta property="og:description" content="Gartengestaltung, Vorgärten, Teichanlagen und gewerbliche Außenanlagen – seit 2003 in Herne, Bochum und Recklinghausen." />
-<meta property="og:image" content="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060301_09419ab7-e3c1-4af3-b7a2-fa17bbd9ca87.png" />
+<meta property="og:image" content="https://rohdich.de/assets/img/hero/hero-garten-herne-1600.webp" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rohdich.de/" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260725a" />
+<!-- LCP: Hero-Standbild vorab laden (AVIF), damit es vor dem Video paintet -->
+<link rel="preload" as="image" type="image/avif" imagesizes="100vw" imagesrcset="assets/img/hero/hero-garten-herne-480.avif 480w, assets/img/hero/hero-garten-herne-960.avif 960w, assets/img/hero/hero-garten-herne-1600.avif 1600w" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260725b" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -39,7 +41,7 @@
       "@id": "https://rohdich.de/#business",
       "name": "Maik Rohdich Garten- und Landschaftsbau",
       "url": "https://rohdich.de/",
-      "image": "https://rohdich.de/assets/img/ueber/ueber-1.jpg",
+      "image": "https://rohdich.de/assets/img/hero/hero-garten-herne-1600.webp",
       "foundingDate": "2003-01-01",
       "address": {
         "@type": "PostalAddress",
@@ -249,10 +251,14 @@
 <!-- ============ HERO ============ -->
 <section class="hero" aria-label="Willkommen">
   <div class="hero-media">
-    <!-- Video wird per JS aktiviert; Standbild als Poster/Fallback -->
-    <img class="hero-image" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060301_09419ab7-e3c1-4af3-b7a2-fa17bbd9ca87.png" alt="" aria-hidden="true" />
-    <video id="heroVideo" class="hero-video" autoplay muted loop playsinline poster="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060301_09419ab7-e3c1-4af3-b7a2-fa17bbd9ca87.png" preload="auto">
-      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060910_79733f0c-ce85-436f-80ae-361b74394d07.mp4" type="video/mp4">
+    <!-- Video wird per JS aktiviert; Standbild als Poster/Fallback (LCP, siehe preload im Head) -->
+    <picture>
+      <source type="image/avif" sizes="100vw" srcset="assets/img/hero/hero-garten-herne-480.avif 480w, assets/img/hero/hero-garten-herne-960.avif 960w, assets/img/hero/hero-garten-herne-1600.avif 1600w">
+      <source type="image/webp" sizes="100vw" srcset="assets/img/hero/hero-garten-herne-480.webp 480w, assets/img/hero/hero-garten-herne-960.webp 960w, assets/img/hero/hero-garten-herne-1600.webp 1600w">
+      <img class="hero-image" src="assets/img/hero/hero-garten-herne.webp" alt="" aria-hidden="true" width="1600" height="900" fetchpriority="high" decoding="async" />
+    </picture>
+    <video id="heroVideo" class="hero-video" autoplay muted loop playsinline poster="assets/img/hero/hero-garten-herne.webp" preload="auto">
+      <source src="assets/video/hero-garten-herne.mp4" type="video/mp4">
     </video>
     <div class="hero-scrim"></div>
     <div class="hero-grain" aria-hidden="true"></div>
@@ -525,13 +531,25 @@
     <div class="maik-image">
       <div class="maik-collage reveal">
         <figure class="polaroid polaroid--1" style="--i:0">
-          <img src="assets/img/ueber/ueber-2.jpg" alt="Minibagger und Bohrhammer im Einsatz bei Erd- und Abbrucharbeiten an einer Hauswand" loading="lazy" decoding="async" width="1400" height="1050">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-2-480.avif 480w, assets/img/ueber/ueber-2-960.avif 960w">
+            <source type="image/webp" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-2-480.webp 480w, assets/img/ueber/ueber-2-960.webp 960w">
+            <img src="assets/img/ueber/ueber-2.webp" alt="Minibagger und Bohrhammer im Einsatz bei Erd- und Abbrucharbeiten an einer Hauswand" loading="lazy" decoding="async" width="1400" height="1050">
+          </picture>
         </figure>
         <figure class="polaroid polaroid--2" style="--i:1">
-          <img src="assets/img/ueber/ueber-1.jpg" alt="Angelegte Gartenteichanlage mit Palmen, Uferbepflanzung und Natursteineinfassung" loading="lazy" decoding="async" width="1400" height="1050">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-1-480.avif 480w, assets/img/ueber/ueber-1-960.avif 960w">
+            <source type="image/webp" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-1-480.webp 480w, assets/img/ueber/ueber-1-960.webp 960w">
+            <img src="assets/img/ueber/ueber-1.webp" alt="Angelegte Gartenteichanlage mit Palmen, Uferbepflanzung und Natursteineinfassung" loading="lazy" decoding="async" width="1400" height="1050">
+          </picture>
         </figure>
         <figure class="polaroid polaroid--3" style="--i:2">
-          <img src="assets/img/ueber/ueber-3.jpg" alt="Großer Findling wird mit Bagger und Hebegurten in einer Gartenanlage versetzt" loading="lazy" decoding="async" width="1400" height="1050">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-3-480.avif 480w, assets/img/ueber/ueber-3-960.avif 960w">
+            <source type="image/webp" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-3-480.webp 480w, assets/img/ueber/ueber-3-960.webp 960w">
+            <img src="assets/img/ueber/ueber-3.webp" alt="Großer Findling wird mit Bagger und Hebegurten in einer Gartenanlage versetzt" loading="lazy" decoding="async" width="1400" height="1050">
+          </picture>
         </figure>
       </div>
       <span class="image-caption">Maik Rohdich · Beratung &amp; Begutachtung vor Ort</span>
@@ -768,9 +786,13 @@
     <div class="projects-grid">
       <article class="project-card reveal">
         <div class="project-media">
-          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061235_3c977f2c-9a0f-42f2-9b53-e578cf8f9484.png"
+          <picture>
+            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-480.avif 480w, assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-960.avif 960w, assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-1600.avif 1600w">
+            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-480.webp 480w, assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-960.webp 960w, assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-1600.webp 1600w">
+            <img src="assets/img/projekte/vorgarten-herne-2026/vorgarten-herne.webp"
                alt="Neu gestalteter Vorgarten mit Natursteinweg und strukturierter Bepflanzung"
                loading="lazy" decoding="async" width="800" height="600">
+          </picture>
           <span class="project-tag">Privatkunde</span>
         </div>
         <div class="project-body">
@@ -783,9 +805,13 @@
 
       <article class="project-card reveal">
         <div class="project-media">
-          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061214_8416af8e-1ecb-4039-815b-bb74908b7ac9.png"
+          <picture>
+            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-480.avif 480w, assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-960.avif 960w, assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-1600.avif 1600w">
+            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-480.webp 480w, assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-960.webp 960w, assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-1600.webp 1600w">
+            <img src="assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum.webp"
                alt="Angelegte Teichanlage mit natürlicher Uferzone und Sitzplatz"
                loading="lazy" decoding="async" width="800" height="600">
+          </picture>
           <span class="project-tag">Privatkunde</span>
         </div>
         <div class="project-body">
@@ -798,9 +824,13 @@
 
       <article class="project-card reveal">
         <div class="project-media">
-          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061303_bcbbec22-3158-4220-a6f3-c4993071ca17.png"
+          <picture>
+            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-480.avif 480w, assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-960.avif 960w, assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-1600.avif 1600w">
+            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-480.webp 480w, assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-960.webp 960w, assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-1600.webp 1600w">
+            <img src="assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen.webp"
                alt="Gepflegte Außenanlage eines Bürokomplexes mit hohem Publikumsverkehr"
                loading="lazy" decoding="async" width="800" height="600">
+          </picture>
           <span class="project-tag warn">Gewerbekunde</span>
         </div>
         <div class="project-body">
