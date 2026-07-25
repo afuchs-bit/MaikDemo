@@ -473,9 +473,9 @@
     steps.addEventListener('mouseleave', () => { if (locked) render(4); });
   })();
 
-  // --- Leistungen (Privat): Karten aufklappen + roter Faden ---
-  // Progressive Enhancement: ohne JS sind alle Texte lesbar (Panel per Hover/
-  // Fokus per CSS), der Faden fehlt dann schlicht.
+  // --- Leistungen (Privat): roter Faden hinter den Karten ---
+  // Karteninhalte (inkl. Langtext und Link) sind dauerhaft per CSS sichtbar;
+  // dieses JS zeichnet nur den dekorativen Faden. Ohne JS fehlt schlicht der Faden.
   (function () {
     const flow = document.getElementById('svcFlow');
     if (!flow) return;
@@ -486,19 +486,6 @@
 
     const DUR = 1200;
     let played = false;
-
-    // Tap: Panel oeffnen/schliessen, immer nur eine Karte. Links durchlassen.
-    // Nur auf Geraeten ohne Hover (Touch) - mit Maus uebernimmt :hover, ein
-    // Klick liesse die Karte sonst dauerhaft aufgeklappt stehen.
-    grid.addEventListener('click', (e) => {
-      if (window.matchMedia('(hover: hover)').matches) return;
-      if (e.target.closest('.svc-more')) return;
-      const card = e.target.closest('.svc-card');
-      if (!card) return;
-      const wasOpen = card.classList.contains('is-open');
-      grid.querySelectorAll('.svc-card.is-open').forEach((c) => c.classList.remove('is-open'));
-      if (!wasOpen) card.classList.add('is-open');
-    });
 
     // Geometrie aus dem tatsaechlichen Layout (4 / 2 / 1 Spalten).
     // Bewusst ueber getBoundingClientRect statt offsetTop/-Left: die Karten und

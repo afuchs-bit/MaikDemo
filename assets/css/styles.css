@@ -1547,8 +1547,8 @@ p  { margin: 0; }
 
 /* ---------- Leistungen (Privat): Karten mit rotem Faden ----------
    Der Faden (Koralle) liegt als Deko-SVG hinter den Karten und laeuft in
-   den Fugen des Rasters bis in den CTA. Das Reveal-Panel faehrt bei Hover,
-   Tastaturfokus (:focus-within) und Tap (.is-open) hoch.
+   den Fugen des Rasters bis in den CTA. Langtext und Link (.svc-reveal)
+   stehen dauerhaft im normalen Fluss unter dem Kurztext.
    Achtung: .svc-reveal ist NICHT die globale Scroll-Klasse .reveal. */
 .section-services { background: var(--bg); }
 
@@ -1574,10 +1574,7 @@ p  { margin: 0; }
 }
 
 .svc-card {
-  position: relative; z-index: 1; overflow: hidden;
-  /* hoch genug, dass das aufgefahrene Panel Icon und Titel nie verdeckt:
-     Titelunterkante liegt bei max. ~131px, das Panel wird bis ~146px hoch */
-  min-height: 290px;
+  position: relative; z-index: 1;
   background: var(--bg-elev);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -1600,49 +1597,17 @@ p  { margin: 0; }
 .svc-ic svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .svc-card:hover .svc-ic { background: var(--green-700); color: #fff; }
 
-/* Foto je Leistung. Die Pfade stehen bewusst hier und nicht im HTML: relative
-   URLs werden immer gegen die CSS-Datei aufgeloest (also gegen assets/css/),
-   ein "../assets/img/..." aus dem HTML landete bei /assets/assets/img/.
-   Dateien einfach unter assets/img/leistungen/ ablegen - fehlt eine, wird der
-   Layer nicht gemalt und die Schraffur darunter bleibt stehen. */
-.svc-card[data-svc="gartengestaltung"] { --svc-img: url("../img/leistungen/gartengestaltung.jpg"); }
-.svc-card[data-svc="vorgarten"]        { --svc-img: url("../img/leistungen/vorgarten.jpg"); }
-.svc-card[data-svc="teich"]            { --svc-img: url("../img/leistungen/teich.jpg"); }
-.svc-card[data-svc="baumarbeiten"]     { --svc-img: url("../img/leistungen/baumarbeiten.jpg"); }
-.svc-card[data-svc="dachbegruenung"]   { --svc-img: url("../img/leistungen/dachbegruenung.jpg"); }
-.svc-card[data-svc="gartenpflege"]     { --svc-img: url("../img/leistungen/gartenpflege.jpg"); }
-.svc-card[data-svc="palmen"]           { --svc-img: url("../img/leistungen/palmen.jpg"); }
-.svc-card[data-svc="pool"]             { --svc-img: url("../img/leistungen/pool.jpg"); }
-
-/* Reveal-Panel: dunkler Verlauf ueber Foto ueber Schraffur-Fallback. */
-.svc-reveal {
-  position: absolute; left: 0; right: 0; bottom: 0;
-  padding: 20px 22px 22px;
-  background-image:
-    linear-gradient(180deg, rgba(19,26,8,.55) 0%, rgba(19,26,8,.88) 60%),
-    var(--svc-img, none),
-    repeating-linear-gradient(135deg, #3c5a12 0 14px, #35510f 14px 28px);
-  background-size: cover, cover, auto;
-  background-position: center, center, center;
-  color: #fff;
-  border-top: 2px solid var(--green-500);
-  transform: translateY(100%);
-  transition: transform .42s var(--ease);
-}
-.svc-card:hover .svc-reveal,
-.svc-card:focus-within .svc-reveal,
-.svc-card.is-open .svc-reveal { transform: translateY(0); }
-/* Hover oeffnet leicht verzoegert - blosses Drueberfahren blitzt nicht auf.
-   Schliessen sowie Oeffnen per Tastatur/Tap bleiben unverzoegert. */
-.svc-card:hover .svc-reveal { transition-delay: .15s; }
-.svc-long { font-size: .9rem; line-height: 1.5; margin: 0 0 12px; color: rgba(255,255,255,.94); }
+/* Kartenfuss: Langtext und Link stehen dauerhaft im normalen Fluss unter dem
+   Kurztext - keine Overlay-Mechanik, kein Hover/Tap noetig. */
+.svc-reveal { margin-top: 12px; }
+.svc-long { font-size: .9rem; line-height: 1.5; margin: 0 0 12px; color: var(--ink-2); }
 .svc-more {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: .88rem; font-weight: 600; color: #fff; text-decoration: none;
+  font-size: .88rem; font-weight: 600; color: var(--green-700); text-decoration: none;
 }
 .svc-more span { transition: transform .25s var(--ease); }
 .svc-more:hover span { transform: translateX(4px); }
-.svc-more:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 4px; }
+.svc-more:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; border-radius: 4px; }
 
 .svc-cta { position: relative; z-index: 1; display: flex; justify-content: center; margin-top: 40px; }
 
@@ -1652,12 +1617,6 @@ p  { margin: 0; }
 
 @media (max-width: 640px) {
   .svc-grid { grid-template-columns: 1fr; padding: 12px 20px; }
-  .svc-card { min-height: 0; }
-  /* Ohne Hover: Panel nicht ueberlagern, Langtext steht unter dem Kurztext */
-  .svc-reveal {
-    position: static; transform: none; margin: 14px -22px -24px;
-    padding: 16px 22px 20px;
-  }
 }
 
 /* ---------- Ablauf: Zeitstrahl „Der Weg zu Ihrem Garten" ----------
