@@ -75,6 +75,7 @@ async function init() {
   buildChips();
   bindControls();
   applyStateToControls();
+  gateTabs(); // AP-31
   render();
   // Deep-Link von der Startseite: Lightbox des Projekts direkt öffnen.
   if (pendingSlug) openProjektDeepLink(pendingSlug);
@@ -175,6 +176,14 @@ function resetFilters() {
   render();
 }
 
+// AP-31: Tab-Leiste (Aktuell/Alle) nur einblenden, wenn es nicht-featured Projekte gibt.
+// Sonst wären beide Tabs identisch. Erscheint automatisch wieder, sobald kuratiert wird.
+function gateTabs() {
+  const tabsWrap = document.querySelector('.gallery-tabs');
+  if (!tabsWrap) return;
+  tabsWrap.hidden = !allProjekte.some((p) => p && !p.featured);
+}
+
 function applyStateToControls() {
   tabInputs.forEach((i) => { i.checked = i.value === state.tab; });
 }
@@ -206,15 +215,23 @@ function updateChipStates() {
     const n = leistBase.filter((p) => Array.isArray(p.leistungen) && p.leistungen.includes(l.slug)).length;
     const btn = leistungChips.get(l.slug);
     const active = state.leistungen.has(l.slug);
-    setChip(btn, n, active);
+    setChip(btn, n, active, true); // AP-31: leere Leistungs-Chips ausblenden
   });
 }
 
-function setChip(btn, n, active) {
+function setChip(btn, n, active, hideWhenEmpty = false) {
   btn.querySelector('.chip-count').textContent = `(${n})`;
   btn.setAttribute('aria-pressed', String(active));
-  // Deaktivieren, wenn keine Treffer – aber aktive Chips bleiben abwählbar.
-  btn.disabled = n === 0 && !active;
+  const empty = n === 0 && !active;
+  // Leistungs-Chips ohne Treffer ausblenden (aufgeräumte Optik, skaliert mit dem Bestand).
+  // Kundentyp-Segmente bleiben sichtbar, ohne Treffer aber nicht klickbar.
+  if (hideWhenEmpty) {
+    btn.hidden = empty;
+    btn.disabled = false;
+  } else {
+    btn.disabled = empty;
+    btn.hidden = false;
+  }
 }
 
 function renderGrid(results) {

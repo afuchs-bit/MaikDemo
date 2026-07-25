@@ -1877,6 +1877,36 @@ p  { margin: 0; }
 .filter-chip:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; }
 .filter-chip[aria-pressed="true"]:focus-visible { outline-color: var(--ink); }
 
+/* AP-31: Kundentyp-Filter als zusammenhaengendes Segmented Control (Optik; Logik unveraendert). */
+.filter-group[data-filter="typ"] {
+  gap: 0;
+  width: max-content;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-elev);
+}
+.filter-group[data-filter="typ"] .filter-chip {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 10px 20px;
+}
+.filter-group[data-filter="typ"] .filter-chip + .filter-chip {
+  border-left: 1px solid var(--line);
+}
+.filter-group[data-filter="typ"] .filter-chip:hover:not(:disabled) {
+  transform: none;
+  background: var(--bg);
+}
+.filter-group[data-filter="typ"] .filter-chip[aria-pressed="true"] {
+  background: var(--green-700);
+  color: #fff;
+}
+/* Zaehler im Segmented Control ausblenden - reduziert Rauschen auf der Haupt-Weiche. */
+.filter-group[data-filter="typ"] .chip-count { display: none; }
+
 /* ---- Interaktive Karte (Overlay öffnet Lightbox bzw. verlinkt in die Galerie) ---- */
 /* Global relativ, damit der Overlay-Link/-Button auch in #projekte (Startseite) greift. */
 .project-card { position: relative; }
@@ -1891,6 +1921,13 @@ p  { margin: 0; }
 /* ---- Leer-/Fehlerzustand ---- */
 .gallery-empty, .gallery-error { text-align: center; padding: 48px 0; color: var(--ink-2); }
 .gallery-empty[hidden], .gallery-error[hidden] { display: none; }
+
+/* AP-31: [hidden] muss display-Overrides schlagen, sonst bleiben Elemente sichtbar.
+   Behebt die Galerie-Doppelung (galleryStatic) und ist Voraussetzung dafuer,
+   dass ausgeblendete Leistungs-Chips und die Tab-Leiste wirklich verschwinden. */
+.projects-grid[hidden],
+.filter-chip[hidden],
+.gallery-tabs[hidden] { display: none; }
 .gallery-empty p, .gallery-error p { margin: 0 0 16px; }
 .gallery-cta { margin-top: 44px; }
 .gallery-cta.center { text-align: center; }
