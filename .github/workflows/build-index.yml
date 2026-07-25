@@ -48,12 +48,12 @@ jobs:
 
       - name: Ergebnis zurückcommitten (nur bei Änderung)
         run: |
-          if [[ -n "$(git status --porcelain data/projekte-index.json)" ]]; then
+          if [[ -n "$(git status --porcelain data/projekte-index.json sitemap.xml)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/projekte-index.json
-            git commit -m "chore: Projekt-Index aktualisiert [skip ci]"
+            git add data/projekte-index.json sitemap.xml
+            git commit -m "chore: Projekt-Index & Sitemap aktualisiert [skip ci]"
             git push
           else
-            echo "Keine Änderung am Index – nichts zu committen."
+            echo "Keine Änderung an Index oder Sitemap – nichts zu committen."
           fi
