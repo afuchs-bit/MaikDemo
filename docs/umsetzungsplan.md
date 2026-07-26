@@ -542,6 +542,8 @@ Struktur: `/gartenbau-<stadt>/` mit Ortsbezug im ersten Absatz, mindestens zwei 
 
 **Umsetzung:** Auf einen Menüpunkt „Projekte" reduzieren, der auf `/projekte/` führt. Menüpunkt „Leistungen" mit Dropdown auf die 14 Leistungsseiten ergänzen. Footer entsprechend anpassen.
 
+> **Nachtrag (26.07.2026, AP-36):** Auftraggeber-Entscheidung geändert — der Menüpunkt heißt jetzt „Galerie" (führt weiterhin auf `/projekte/`). Die obige Festlegung („Menüpunkt Projekte") ist insoweit überholt.
+
 **Akzeptanzkriterien:**
 - [ ] Kein doppelter Menüpunkt
 - [ ] Alle Leistungsseiten aus Header und Footer erreichbar

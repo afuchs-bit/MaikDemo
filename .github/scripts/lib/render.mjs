@@ -264,7 +264,7 @@ function breadcrumbJsonLd(titel, canonical) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
-        { '@type': 'ListItem', position: 2, name: 'Projekte', item: `${SITE}/projekte/` },
+        { '@type': 'ListItem', position: 2, name: 'Galerie', item: `${SITE}/projekte/` },
         { '@type': 'ListItem', position: 3, name: titel, item: canonical },
       ],
     },
