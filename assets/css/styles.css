@@ -132,6 +132,11 @@ a { color: inherit; }
 .container {
   width: min(100% - calc(var(--gutter) * 2), var(--container));
   margin-inline: auto;
+  /* AP-40: Im Querformat auf Geraeten mit Notch schneiden die Seiteninsets
+     sonst in den Inhalt. Ausserhalb solcher Geraete sind beide Werte 0px,
+     dort aendert sich nichts - auch nicht auf Desktop. */
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
 }
 
 /* ---------- Type ---------- */
@@ -213,6 +218,10 @@ p  { margin: 0; }
    ============================================================ */
 .site-header {
   position: sticky; top: 0; z-index: 50;
+  /* AP-40: Oberkante. Im normalen Safari-Tab ist der Wert 0px, weil die
+     Browserleiste den Notch-Bereich belegt. Relevant wird er, sobald die
+     Seite ohne Browserchrome laeuft (zum Homescreen hinzugefuegt). */
+  padding-top: env(safe-area-inset-top, 0px);
   background: rgba(246,244,238,.78);
   backdrop-filter: saturate(160%) blur(14px);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
@@ -1244,9 +1253,17 @@ p  { margin: 0; }
    ============================================================ */
 .mobile-actions {
   display: none;
-  position: fixed; left: 12px; right: 12px; bottom: 12px;
+  position: fixed;
   z-index: 60;
   gap: 8px;
+  /* AP-40: Alle Seiten setzen `viewport-fit=cover`, der Inhalt reicht also bis
+     in die abgerundeten Ecken und unter den Home-Indicator. `env()` kam im
+     ganzen Stylesheet kein einziges Mal vor - die Leiste sass damit auf einem
+     iPhone mit Home-Indicator direkt darunter. Der Fallbackwert 0px greift
+     auf Android und ueberall ohne Insets, dort aendert sich nichts. */
+  left: calc(12px + env(safe-area-inset-left, 0px));
+  right: calc(12px + env(safe-area-inset-right, 0px));
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
 }
 .ma-btn {
   flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -1350,7 +1367,9 @@ p  { margin: 0; }
   .trust-item:not(:first-child)::before { display: none; }
   .trust-item:not(:first-child) { padding-left: 0; }
   .mobile-actions { display: flex; }
-  body { padding-bottom: 88px; }
+  /* AP-40: muss um denselben Inset wachsen wie die Leiste, sonst endet der
+     Footer wieder dahinter. */
+  body { padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
   .footer-bottom { justify-content: flex-start; }
 
   /* AP-51: `.btn` traegt `white-space: nowrap`. Auf Desktop sinnvoll, auf dem
