@@ -171,42 +171,42 @@ p  { margin: 0; }
   transition: transform .2s var(--ease), background .2s var(--ease), color .2s var(--ease), box-shadow .25s var(--ease), border-color .2s var(--ease);
   white-space: nowrap;
 }
-.btn:hover { transform: translateY(-1px); }
+@media (hover: hover) and (pointer: fine) { .btn:hover { transform: translateY(-1px); } }
 .btn:active { transform: translateY(0); }
 
 .btn-primary {
   background: var(--green-700); color: #fff;
   box-shadow: 0 12px 26px -12px rgba(49,82,0,.6), inset 0 1px 0 rgba(255,255,255,.12);
 }
-.btn-primary:hover { background: var(--green-800); box-shadow: 0 16px 34px -10px rgba(49,82,0,.7); }
+@media (hover: hover) and (pointer: fine) { .btn-primary:hover { background: var(--green-800); box-shadow: 0 16px 34px -10px rgba(49,82,0,.7); } }
 
 .btn-secondary {
   background: var(--bg-elev); color: var(--ink);
   border-color: var(--line);
 }
-.btn-secondary:hover { border-color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .btn-secondary:hover { border-color: var(--ink); } }
 
 .btn-outline {
   background: transparent; color: var(--green-700); border-color: var(--green-700);
 }
-.btn-outline:hover { background: var(--green-700); color: #fff; }
+@media (hover: hover) and (pointer: fine) { .btn-outline:hover { background: var(--green-700); color: #fff; } }
 
 .btn-link {
   background: transparent; color: var(--ink-2);
   text-decoration: underline; text-underline-offset: 4px; padding-left: 6px; padding-right: 6px;
 }
-.btn-link:hover { color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .btn-link:hover { color: var(--ink); } }
 
 .btn-ghost {
   background: transparent; color: var(--ink); border-color: transparent;
 }
-.btn-ghost:hover { background: rgba(0,0,0,.04); }
+@media (hover: hover) and (pointer: fine) { .btn-ghost:hover { background: rgba(0,0,0,.04); } }
 
 .btn-whatsapp {
   background: #25D366; color: #0c2e16;
   box-shadow: 0 12px 22px -12px rgba(37,211,102,.7);
 }
-.btn-whatsapp:hover { background: #1ebe5c; }
+@media (hover: hover) and (pointer: fine) { .btn-whatsapp:hover { background: #1ebe5c; } }
 
 /* ============================================================
    HEADER
@@ -265,7 +265,7 @@ p  { margin: 0; }
   font-size: .9rem; font-weight: 500; color: var(--ink-2);
   text-decoration: none; transition: color .2s var(--ease), background .2s var(--ease);
 }
-.menu a:hover { background: var(--bg-elev); color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .menu a:hover { background: var(--bg-elev); color: var(--ink); } }
 
 .header-actions { display: flex; align-items: center; gap: 10px; position: relative; }
 
@@ -288,7 +288,7 @@ p  { margin: 0; }
   text-decoration: none; color: var(--ink);
   transition: background .15s var(--ease);
 }
-.call-row:hover { background: var(--bg-soft); }
+@media (hover: hover) and (pointer: fine) { .call-row:hover { background: var(--bg-soft); } }
 .call-label { font-size: .78rem; color: var(--ink-mute); text-transform: uppercase; letter-spacing: .14em; }
 .call-num { font-family: var(--display); font-weight: 700; }
 
@@ -451,7 +451,7 @@ p  { margin: 0; }
   text-decoration: none; color: inherit; cursor: pointer;
   transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
 }
-.teaser:hover { transform: translateY(-3px); box-shadow: var(--shadow-float); border-color: var(--green-300); }
+@media (hover: hover) and (pointer: fine) { .teaser:hover { transform: translateY(-3px); box-shadow: var(--shadow-float); border-color: var(--green-300); } }
 .teaser:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; }
 .teaser-icon {
   width: 40px; height: 40px; flex: 0 0 auto;
@@ -571,7 +571,7 @@ p  { margin: 0; }
   display: flex; flex-direction: column; gap: 14px;
   transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
-.wood-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); }
+@media (hover: hover) and (pointer: fine) { .wood-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); } }
 .wood-card-major {
   background: linear-gradient(160deg, var(--green-700), var(--green-800));
   color: #fff; border-color: transparent;
@@ -593,7 +593,7 @@ p  { margin: 0; }
 }
 .wood-card-major .card-link { color: var(--yellow); }
 .card-link span { transition: transform .25s var(--ease); display: inline-block; }
-.card-link:hover span { transform: translateX(4px); }
+@media (hover: hover) and (pointer: fine) { .card-link:hover span { transform: translateX(4px); } }
 
 /* ---------- Social Proof ---------- */
 .section-proof { background: var(--bg); }
@@ -854,14 +854,14 @@ p  { margin: 0; }
   box-shadow: var(--shadow-card);
   transition: transform .35s var(--ease), box-shadow .35s var(--ease);
 }
-.split-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-float); }
+@media (hover: hover) and (pointer: fine) { .split-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-float); } }
 .split-media { position: relative; overflow: hidden; }
 .split-image {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
   transform: scale(1.05); transition: transform .8s var(--ease);
 }
-.split-card:hover .split-image { transform: scale(1.1); }
+@media (hover: hover) and (pointer: fine) { .split-card:hover .split-image { transform: scale(1.1); } }
 /* AP-25: selbst gehostete Hintergrundbilder (AVIF mit WebP-Fallback via image-set). */
 .split-image[data-img="private"] {
   background-image:
@@ -905,7 +905,7 @@ p  { margin: 0; }
   font-weight: 700; color: var(--green-700);
 }
 .split-cta span { transition: transform .25s var(--ease); display: inline-block; }
-.split-card:hover .split-cta span { transform: translateX(6px); }
+@media (hover: hover) and (pointer: fine) { .split-card:hover .split-cta span { transform: translateX(6px); } }
 
 /* ---------- Authority Section ---------- */
 .section-authority {
@@ -1031,7 +1031,7 @@ p  { margin: 0; }
   transition: transform .35s var(--ease), box-shadow .35s var(--ease);
   display: flex; flex-direction: column;
 }
-.project-card:hover { transform: translateY(-6px) rotate(-.2deg); box-shadow: var(--shadow-float); }
+@media (hover: hover) and (pointer: fine) { .project-card:hover { transform: translateY(-6px) rotate(-.2deg); box-shadow: var(--shadow-float); } }
 .project-media {
   position: relative;
   aspect-ratio: 4/3;
@@ -1090,7 +1090,7 @@ p  { margin: 0; }
   transition: background .2s var(--ease);
 }
 .faq-list summary::-webkit-details-marker { display: none; }
-.faq-list summary:hover { background: var(--bg-soft); }
+@media (hover: hover) and (pointer: fine) { .faq-list summary:hover { background: var(--bg-soft); } }
 .chev {
   width: 22px; height: 22px;
   border-radius: 50%;
@@ -1132,7 +1132,7 @@ p  { margin: 0; }
   text-decoration: none; color: #fff;
   transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
 }
-.contact-row:hover { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.2); transform: translateY(-2px); }
+@media (hover: hover) and (pointer: fine) { .contact-row:hover { background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.2); transform: translateY(-2px); } }
 .cr-icon {
   width: 42px; height: 42px;
   border-radius: 12px;
@@ -1221,7 +1221,7 @@ p  { margin: 0; }
 .footer-grid h4 { color: #fff; margin-bottom: 14px; font-size: .85rem; text-transform: uppercase; letter-spacing: .14em; }
 .footer-grid address { font-style: normal; line-height: 1.7; color: rgba(255,255,255,.75); margin-top: 16px; }
 .footer-grid a { color: rgba(255,255,255,.85); text-decoration: none; }
-.footer-grid a:hover { color: var(--yellow); }
+@media (hover: hover) and (pointer: fine) { .footer-grid a:hover { color: var(--yellow); } }
 .footer-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: .92rem; color: rgba(255,255,255,.78); }
 /* h4 steht normalerweise am Spaltenanfang (margin-top 0). Folgt es auf Inhalt,
    braucht es Abstand – z. B. der Erreichbarkeits-Block unter der Adresse. */
@@ -1385,7 +1385,7 @@ p  { margin: 0; }
   font-size: .85rem; color: var(--ink-mute);
 }
 .breadcrumbs a { color: var(--ink-2); text-decoration: none; }
-.breadcrumbs a:hover { color: var(--green-700); text-decoration: underline; text-underline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) { .breadcrumbs a:hover { color: var(--green-700); text-decoration: underline; text-underline-offset: 3px; } }
 .breadcrumbs li + li::before { content: "›"; margin-right: 8px; color: var(--ink-mute); }
 .breadcrumbs li[aria-current="page"] { color: var(--ink); font-weight: 600; }
 
@@ -1449,11 +1449,19 @@ p  { margin: 0; }
   color: var(--ink-2); text-decoration: none;
   transition: border-color .2s var(--ease), color .2s var(--ease), background .2s var(--ease);
 }
-.hero-chips a:hover,
+/* AP-38: :focus-visible bleibt ungeschuetzt - Tastaturbedienung darf auf
+   keinem Geraet verschwinden. Der Hover-Zwilling steht darunter im Guard. */
 .hero-chips a:focus-visible {
   border-color: var(--green-700);
   color: var(--green-700);
   background: var(--bg);
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero-chips a:hover {
+    border-color: var(--green-700);
+    color: var(--green-700);
+    background: var(--bg);
+  }
 }
 
 .hero-split-ctas {
@@ -1555,7 +1563,7 @@ p  { margin: 0; }
   transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease);
 }
 .ba-frame.is-dragging .ba-grip,
-.ba-frame:hover .ba-grip { background: var(--green-700); color: #fff; transform: translate(-50%, -50%) scale(1.08); }
+@media (hover: hover) and (pointer: fine) { .ba-frame:hover .ba-grip { background: var(--green-700); color: #fff; transform: translate(-50%, -50%) scale(1.08); } }
 /* Drag-Microcopy unter dem Grip – lädt zum Ziehen ein */
 .ba-hint {
   position: absolute; top: 50%; left: 0;
@@ -1629,7 +1637,7 @@ p  { margin: 0; }
   box-shadow: var(--shadow-card);
   transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
 }
-.svc-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-float); border-color: var(--green-300); }
+@media (hover: hover) and (pointer: fine) { .svc-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-float); border-color: var(--green-300); } }
 .svc-card h3 { font-size: 1.08rem; line-height: 1.25; margin: 0 0 8px; }
 .svc-short { font-size: .93rem; line-height: 1.5; color: var(--ink-2); margin: 0; }
 
@@ -1642,7 +1650,7 @@ p  { margin: 0; }
   transition: background .35s var(--ease), color .35s var(--ease);
 }
 .svc-ic svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-.svc-card:hover .svc-ic { background: var(--green-700); color: #fff; }
+@media (hover: hover) and (pointer: fine) { .svc-card:hover .svc-ic { background: var(--green-700); color: #fff; } }
 
 /* Kartenfuss: Langtext und Link stehen dauerhaft im normalen Fluss unter dem
    Kurztext - keine Overlay-Mechanik, kein Hover/Tap noetig. */
@@ -1653,7 +1661,7 @@ p  { margin: 0; }
   font-size: .88rem; font-weight: 600; color: var(--green-700); text-decoration: none;
 }
 .svc-more span { transition: transform .25s var(--ease); }
-.svc-more:hover span { transform: translateX(4px); }
+@media (hover: hover) and (pointer: fine) { .svc-more:hover span { transform: translateX(4px); } }
 .svc-more:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; border-radius: 4px; }
 
 .svc-cta { position: relative; z-index: 1; display: flex; justify-content: center; margin-top: 40px; }
@@ -1917,7 +1925,7 @@ p  { margin: 0; }
   cursor: pointer; white-space: nowrap;
   transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
 }
-.filter-chip:hover:not(:disabled) { border-color: var(--ink); transform: translateY(-1px); }
+@media (hover: hover) and (pointer: fine) { .filter-chip:hover:not(:disabled) { border-color: var(--ink); transform: translateY(-1px); } }
 .filter-chip[aria-pressed="true"] { background: var(--green-700); color: #fff; border-color: var(--green-700); }
 .filter-chip:disabled { opacity: .4; cursor: not-allowed; }
 .filter-chip .chip-count { font-weight: 500; opacity: .75; font-variant-numeric: tabular-nums; }
@@ -1943,9 +1951,11 @@ p  { margin: 0; }
 .filter-group[data-filter="typ"] .filter-chip + .filter-chip {
   border-left: 1px solid var(--line);
 }
-.filter-group[data-filter="typ"] .filter-chip:hover:not(:disabled) {
-  transform: none;
-  background: var(--bg);
+@media (hover: hover) and (pointer: fine) {
+  .filter-group[data-filter="typ"] .filter-chip:hover:not(:disabled) {
+    transform: none;
+    background: var(--bg);
+  }
 }
 .filter-group[data-filter="typ"] .filter-chip[aria-pressed="true"] {
   background: var(--green-700);
@@ -2015,7 +2025,7 @@ body.has-lightbox { overflow: hidden; }
   border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.12); color: #fff;
   cursor: pointer; transition: background .2s var(--ease), transform .15s var(--ease);
 }
-.lightbox-nav:hover, .lightbox-close:hover { background: rgba(255,255,255,.24); }
+@media (hover: hover) and (pointer: fine) { .lightbox-nav:hover, .lightbox-close:hover { background: rgba(255,255,255,.24); } }
 .lightbox-nav:active, .lightbox-close:active { transform: scale(.94); }
 .lightbox-nav[hidden] { display: none; }
 .lightbox-close { position: absolute; top: 6px; right: 6px; z-index: 3; }
@@ -2083,7 +2093,7 @@ body.has-lightbox { overflow: hidden; }
   font-size: .9rem; font-weight: 600; color: var(--green-700); text-decoration: none;
   transition: background .15s var(--ease), border-color .15s var(--ease);
 }
-.tag-link:hover { background: var(--green-50); border-color: var(--green-300); }
+@media (hover: hover) and (pointer: fine) { .tag-link:hover { background: var(--green-50); border-color: var(--green-300); } }
 
 .projekt-cta {
   display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
@@ -2164,7 +2174,7 @@ body.has-lightbox { overflow: hidden; }
   text-decoration: none; color: var(--ink); box-shadow: var(--shadow-card);
   transition: transform .2s var(--ease), box-shadow .2s var(--ease);
 }
-.lpx-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); }
+@media (hover: hover) and (pointer: fine) { .lpx-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); } }
 .lpx-tag { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--green-500); }
 .lpx-card h2 { font-size: 1.25rem; margin: 0; letter-spacing: -0.01em; }
 .lpx-card p { color: var(--ink-2); font-size: .95rem; margin: 0; flex: 1; }
@@ -2202,11 +2212,16 @@ body.has-lightbox { overflow: hidden; }
   background: none; border: 0; cursor: pointer; color: var(--ink-2);
   padding: 6px; margin-left: -4px; border-radius: 999px;
 }
-.submenu-toggle:hover { color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .submenu-toggle:hover { color: var(--ink); } }
 .submenu-caret { transition: transform .2s var(--ease); }
-.menu-item--sub:hover .submenu-caret,
+/* AP-38: `:hover` ist hier aus der Gruppe geloest. `:focus-within` und
+   `.is-open` sind funktional - `.is-open` ist der Zustand, den das JS auf
+   Touch setzt - und duerfen NICHT unter den Hover-Guard. */
 .menu-item--sub:focus-within .submenu-caret,
 .menu-item--sub.is-open .submenu-caret { transform: rotate(180deg); }
+@media (hover: hover) and (pointer: fine) {
+  .menu-item--sub:hover .submenu-caret { transform: rotate(180deg); }
+}
 
 .nav-submenu {
   list-style: none; margin: 0; padding: 8px;
@@ -2221,16 +2236,22 @@ body.has-lightbox { overflow: hidden; }
 }
 /* unsichtbare Brücke, damit der Hover beim Übergang zum Panel nicht abreißt */
 .nav-submenu::before { content: ""; position: absolute; top: -12px; left: 0; right: 0; height: 12px; }
-.menu-item--sub:hover > .nav-submenu,
+/* AP-38: dito - waere die ganze Gruppe gekapselt worden, liesse sich das
+   Untermenue auf dem Telefon nicht mehr oeffnen (`.is-open` kommt vom JS). */
 .menu-item--sub:focus-within > .nav-submenu,
 .menu-item--sub.is-open > .nav-submenu {
   opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+}
+@media (hover: hover) and (pointer: fine) {
+  .menu-item--sub:hover > .nav-submenu {
+    opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+  }
 }
 .nav-submenu a {
   display: block; padding: 9px 14px; border-radius: 10px; white-space: nowrap;
   font-size: .88rem; font-weight: 500; color: var(--ink-2); text-decoration: none;
 }
-.nav-submenu a:hover { background: var(--bg-soft); color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .nav-submenu a:hover { background: var(--bg-soft); color: var(--ink); } }
 
 /* AP-34: Farblich getrennte Welten-Panels im Leistungs-Dropdown.
    Muss NACH der .nav-submenu-Basis stehen (gleiche Spezifität, spätere Regel gewinnt). */
@@ -2244,7 +2265,7 @@ body.has-lightbox { overflow: hidden; }
 .nav-submenu--welten .nav-submenu-group:nth-child(2) { background: var(--bg-soft); }   /* Gewerbe */
 .nav-submenu--welten .nav-submenu-head { padding: 2px 8px 8px; }
 /* Der Basis-Hover (--bg-soft) wäre auf dem Gewerbe-Panel unsichtbar – hier Weiß. */
-.nav-submenu--welten .nav-submenu-group a:hover { background: var(--bg-elev); color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .nav-submenu--welten .nav-submenu-group a:hover { background: var(--bg-elev); color: var(--ink); } }
 
 /* Footer-Leistungen: 14 Einträge kompakt in zwei Spalten */
 .footer-leistungen { grid-template-columns: 1fr 1fr; gap: 6px 18px; }
@@ -2264,7 +2285,12 @@ body.has-lightbox { overflow: hidden; }
   .nav-submenu::before { display: none; }
   /* AP-35: `transform: none` oben greift nicht gegen die Desktop-Öffnungsregeln
      (.menu-item--sub.is-open > .nav-submenu u. a., Spezifität 0,3,0). Ohne diesen
-     Reset blieb translateX(-50%) mobil aktiv und schob das Untermenü aus dem Menü. */
+     Reset blieb translateX(-50%) mobil aktiv und schob das Untermenü aus dem Menü.
+     AP-38 hat geprüft, ob der Hover-Guard diesen Reset überflüssig macht: nein.
+     Die Öffnungsregel für `.is-open` ist bewusst NICHT gekapselt – das ist der
+     Zustand, den das JS auf Touch setzt –, also wirkt ihr translateX weiterhin
+     und muss weiterhin zurückgesetzt werden. Die `:hover`-Zeile bleibt für
+     schmale Fenster auf Zeigergeräten nötig, wo der Guard ebenfalls greift. */
   .menu-item--sub:hover > .nav-submenu,
   .menu-item--sub:focus-within > .nav-submenu,
   .menu-item--sub.is-open > .nav-submenu { transform: none; }
