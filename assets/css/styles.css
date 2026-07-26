@@ -2215,6 +2215,12 @@ body.has-lightbox { overflow: hidden; }
     padding: 2px 0 6px 16px; width: auto; max-width: none;
   }
   .nav-submenu::before { display: none; }
+  /* AP-35: `transform: none` oben greift nicht gegen die Desktop-Öffnungsregeln
+     (.menu-item--sub.is-open > .nav-submenu u. a., Spezifität 0,3,0). Ohne diesen
+     Reset blieb translateX(-50%) mobil aktiv und schob das Untermenü aus dem Menü. */
+  .menu-item--sub:hover > .nav-submenu,
+  .menu-item--sub:focus-within > .nav-submenu,
+  .menu-item--sub.is-open > .nav-submenu { transform: none; }
   .menu-item--sub.is-open > .nav-submenu { display: grid; }
   .nav-submenu a { padding: 10px 12px; }
   /* AP-34: Einspaltig gestapelt – keine Panel-Kästen, dafür wieder eine Trennlinie. */
