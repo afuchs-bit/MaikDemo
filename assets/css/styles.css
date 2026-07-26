@@ -2130,8 +2130,10 @@ body.has-lightbox { overflow: hidden; }
   color: var(--green-700); margin: 0 0 14px;
 }
 
-/* AP-33: Leistungs-Dropdown und Footer-Spalte nach Welten gruppiert. */
-.nav-submenu--welten .nav-submenu-group + .nav-submenu-group { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+/* AP-33: Leistungs-Dropdown und Footer-Spalte nach Welten gruppiert.
+   AP-34: Der vertikale Versatz (margin/padding/border-top) galt hier fälschlich auch
+   auf dem Desktop, wo die Gruppen nebeneinander im 2-Spalten-Grid liegen. Er steht
+   jetzt nur noch in der Mobil-Media-Query, wo die Gruppen tatsächlich stapeln. */
 .nav-submenu--welten .nav-submenu-head,
 .footer-leistungen--welten .footer-leistungen-head {
   display: block; font-size: .74rem; font-weight: 700; text-transform: uppercase;
@@ -2183,6 +2185,20 @@ body.has-lightbox { overflow: hidden; }
 }
 .nav-submenu a:hover { background: var(--bg-soft); color: var(--ink); }
 
+/* AP-34: Farblich getrennte Welten-Panels im Leistungs-Dropdown.
+   Muss NACH der .nav-submenu-Basis stehen (gleiche Spezifität, spätere Regel gewinnt). */
+.nav-submenu--welten { gap: 10px; }
+.nav-submenu--welten .nav-submenu-group {
+  border-radius: 12px;
+  padding: 12px 10px 14px;
+  align-self: stretch;                                /* beide Panels gleich hoch */
+}
+.nav-submenu--welten .nav-submenu-group:nth-child(1) { background: var(--green-50); }  /* Privat  */
+.nav-submenu--welten .nav-submenu-group:nth-child(2) { background: var(--bg-soft); }   /* Gewerbe */
+.nav-submenu--welten .nav-submenu-head { padding: 2px 8px 8px; }
+/* Der Basis-Hover (--bg-soft) wäre auf dem Gewerbe-Panel unsichtbar – hier Weiß. */
+.nav-submenu--welten .nav-submenu-group a:hover { background: var(--bg-elev); color: var(--ink); }
+
 /* Footer-Leistungen: 14 Einträge kompakt in zwei Spalten */
 .footer-leistungen { grid-template-columns: 1fr 1fr; gap: 6px 18px; }
 
@@ -2201,6 +2217,15 @@ body.has-lightbox { overflow: hidden; }
   .nav-submenu::before { display: none; }
   .menu-item--sub.is-open > .nav-submenu { display: grid; }
   .nav-submenu a { padding: 10px 12px; }
+  /* AP-34: Einspaltig gestapelt – keine Panel-Kästen, dafür wieder eine Trennlinie. */
+  .nav-submenu--welten { gap: 0; }
+  .nav-submenu--welten .nav-submenu-group:nth-child(1),
+  .nav-submenu--welten .nav-submenu-group:nth-child(2) { background: transparent; }
+  .nav-submenu--welten .nav-submenu-group { padding: 0; }
+  .nav-submenu--welten .nav-submenu-head { padding: 4px 0; }
+  .nav-submenu--welten .nav-submenu-group + .nav-submenu-group {
+    margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line);
+  }
 }
 @media (max-width: 560px) {
   .footer-leistungen { grid-template-columns: 1fr; }
