@@ -1306,6 +1306,15 @@ p  { margin: 0; }
   .wood-grid { grid-template-columns: 1fr 1fr; }
   .wood-card-major { grid-column: 1 / -1; }
   .proof-feature { grid-template-columns: 1.05fr .95fr; }
+
+  /* AP-51 (Nachtrag): Im Band 901-1100px stand die volle horizontale
+     Navigation neben den Header-Buttons MIT Beschriftung. Zusammen brauchten
+     sie 1071px - bei 1024px (iPad quer) lief jede Seite um 47px seitlich
+     ueber. Der Befund ist vorbestehend, im Ausgangsstand 8b17223 exakt
+     dieselben 1071px. Die Beschriftungen weichen jetzt schon eine Stufe
+     frueher, genau wie unterhalb 900px; die Icons tragen die Buttons. */
+  .header-actions .btn span { display: none; }
+  .header-actions .btn { padding: 12px; }
 }
 
 @media (max-width: 900px) {
