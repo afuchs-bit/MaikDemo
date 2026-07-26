@@ -371,6 +371,11 @@ ${cards}
 export const BASE_LEISTUNG = '../../'; // Alt-Pfad /leistungen/<slug>/ (nur noch Weiche)
 
 // AP-33: Die beiden Leistungswelten. Einzige Quelle für Pfade, Labels und Zugehörigkeit.
+// Breadcrumb-Knoten der Leistungsübersicht – weltunabhängig „Leistungen"; die Welt
+// steht schon im vorherigen Knoten (weltLabel). uebersichtLabel bleibt weltspezifisch
+// für den ogTitle (Social-Share-Title je Welt eindeutig).
+const LEISTUNGEN_CRUMB = 'Leistungen';
+
 export const WELTEN = {
   privat: {
     key: 'privat',
@@ -650,7 +655,7 @@ function leistungBreadcrumb(h1, canonical, welt) {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
       { '@type': 'ListItem', position: 2, name: welt.weltLabel, item: `${SITE}/${welt.pfad}` },
-      { '@type': 'ListItem', position: 3, name: welt.uebersichtLabel, item: `${SITE}/${welt.pfad}leistungen/` },
+      { '@type': 'ListItem', position: 3, name: LEISTUNGEN_CRUMB, item: `${SITE}/${welt.pfad}leistungen/` },
       { '@type': 'ListItem', position: 4, name: h1, item: canonical },
     ],
   }, null, 2);
@@ -660,7 +665,7 @@ function leistungBreadcrumb(h1, canonical, welt) {
 function breadcrumbTrail(welt, base, h1) {
   return `<li><a href="${base}">Startseite</a></li>
         <li><a href="${base}${welt.pfad}">${esc(welt.weltLabel)}</a></li>
-        <li><a href="${base}${welt.pfad}leistungen/">${esc(welt.uebersichtLabel)}</a></li>
+        <li><a href="${base}${welt.pfad}leistungen/">${esc(LEISTUNGEN_CRUMB)}</a></li>
         <li aria-current="page">${esc(h1)}</li>`;
 }
 
@@ -668,7 +673,7 @@ function breadcrumbTrail(welt, base, h1) {
 function uebersichtBreadcrumbTrail(welt, base) {
   return `<li><a href="${base}">Startseite</a></li>
         <li><a href="${base}${welt.pfad}">${esc(welt.weltLabel)}</a></li>
-        <li aria-current="page">${esc(welt.uebersichtLabel)}</li>`;
+        <li aria-current="page">${esc(LEISTUNGEN_CRUMB)}</li>`;
 }
 
 function serviceJsonLd(leistung, canonical) {
@@ -777,7 +782,7 @@ export async function renderLeistungenOverview(opts) {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
       { '@type': 'ListItem', position: 2, name: welt.weltLabel, item: `${SITE}/${welt.pfad}` },
-      { '@type': 'ListItem', position: 3, name: welt.uebersichtLabel, item: canonical },
+      { '@type': 'ListItem', position: 3, name: LEISTUNGEN_CRUMB, item: canonical },
     ],
   }, null, 2);
 
