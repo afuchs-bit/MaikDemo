@@ -19,20 +19,148 @@
   document.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // --- Mobile nav toggle ---
+  // --- Mobile nav toggle (AP-39) ---
+  // Das Menue ist aufgeklappt hoeher als der Viewport und sitzt in einem
+  // sticky Header. Ohne eigenen Scrollbereich waren die unteren Eintraege
+  // nicht erreichbar. Dazu: Scroll-Lock, Escape, Tap ausserhalb, Fokusfuehrung.
   const navToggle = document.getElementById('navToggle');
   const primaryNav = document.querySelector('.primary-nav');
+
+  // Headerhoehe fuer die max-height-Rechnung des Menues bereitstellen.
+  // Der Header aendert seine Hoehe beim Scrollen (.is-scrolled), deshalb
+  // nachfuehren statt einmalig setzen.
+  // Wichtig: nur im geschlossenen Zustand messen. Die Navigation liegt INNERHALB
+  // des Headers – bei offenem Menue wuerde der Header sich selbst samt Menue
+  // messen (gemessen: 526px statt 73px) und die max-height-Rechnung waere zirkulaer.
+  const setHeaderHeight = () => {
+    if (!header) return;
+    if (primaryNav && primaryNav.classList.contains('is-open')) return;
+    document.documentElement.style.setProperty(
+      '--header-h', Math.round(header.getBoundingClientRect().height) + 'px');
+  };
+  setHeaderHeight();
+  window.addEventListener('resize', setHeaderHeight);
+  document.addEventListener('scroll', setHeaderHeight, { passive: true });
+
   if (navToggle && primaryNav) {
+    // Scroll-Lock: `overflow: hidden` am body reicht auf iOS nicht zuverlaessig.
+    // `position: fixed` haelt zuverlaessig, verliert aber die Scrollposition –
+    // die wird gemerkt und beim Schliessen wiederhergestellt.
+    let gemerkteScrollPosition = 0;
+    const sperreScroll = () => {
+      gemerkteScrollPosition = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + gemerkteScrollPosition + 'px';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+    };
+    const gibScrollFrei = () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+    };
+
+    // Das Menue sitzt nicht direkt unter der Headerkante: .primary-nav ist eine
+    // eigene Rasterzeile in .header-inner, dazwischen liegt deren row-gap. Die
+    // CSS-Rechnung mit --header-h trifft die Oberkante daher um einige Pixel
+    // zu hoch. Hier wird die tatsaechliche Oberkante gemessen und die Hoehe
+    // exakt gesetzt; die CSS-Regel bleibt als No-JS-Fallback bestehen.
+    const menuEl = primaryNav.querySelector('.menu');
+    const aktionsleiste = document.querySelector('.mobile-actions');
+    const passeMenuhoeheAn = () => {
+      if (!menuEl || !primaryNav.classList.contains('is-open')) return;
+      menuEl.style.maxHeight = '';
+      const oben = menuEl.getBoundingClientRect().top;
+      // Unten steht die fixierte Action-Bar (Anrufen / WhatsApp). Ohne sie
+      // abzuziehen laegen die letzten Menueeintraege dahinter und waeren zwar
+      // erreichbar, aber verdeckt.
+      let unten = 12;
+      if (aktionsleiste && getComputedStyle(aktionsleiste).display !== 'none') {
+        unten = Math.round(window.innerHeight - aktionsleiste.getBoundingClientRect().top) + 8;
+      }
+      menuEl.style.maxHeight = Math.max(120, window.innerHeight - oben - unten) + 'px';
+    };
+
+    const navOffen = () => primaryNav.classList.contains('is-open');
+
+    const oeffneNav = () => {
+      setHeaderHeight();                  // muss VOR dem Aufklappen passieren
+      // Reihenfolge ist hier wesentlich: erst sperren, dann aufklappen.
+      // Das Menue liegt im Header und macht ihn beim Aufklappen ~450px hoeher.
+      // Der gesamte Inhalt darunter rutscht mit, worauf das Scroll-Anchoring
+      // des Browsers die Scrollposition um dieselben ~450px nachzieht. Wird
+      // erst danach gemerkt, merkt man sich den verschobenen Wert und die
+      // Seite steht nach dem Schliessen zu weit unten.
+      sperreScroll();
+      primaryNav.classList.add('is-open');
+      navToggle.setAttribute('aria-expanded', 'true');
+      passeMenuhoeheAn();
+      // Fokus in das Menue setzen, damit Tastatur und Screenreader dort landen.
+      // preventScroll: sonst scrollt der Browser das Ziel in den Blick und
+      // verschiebt die gemerkte Position.
+      primaryNav.querySelector('.menu a')?.focus({ preventScroll: true });
+    };
+
+    const schliesseNav = (fokusZurueck) => {
+      if (!navOffen()) return;
+      primaryNav.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      if (menuEl) menuEl.style.maxHeight = '';
+      gibScrollFrei();
+      // Erst fokussieren, dann die Position wiederherstellen - focus() kann
+      // das Ziel in den Blick scrollen und wuerde die Position sonst zerstoeren.
+      if (fokusZurueck) navToggle.focus({ preventScroll: true });
+      // `behavior: instant` ist hier wesentlich: html traegt
+      // `scroll-behavior: smooth`, eine gemerkte Position wuerde sonst
+      // animiert angefahren und unterwegs von anderen Scrolls ueberholt.
+      window.scrollTo({ top: gemerkteScrollPosition, behavior: 'instant' });
+    };
+
     navToggle.addEventListener('click', () => {
-      const open = primaryNav.classList.toggle('is-open');
-      navToggle.setAttribute('aria-expanded', String(open));
+      if (navOffen()) schliesseNav(false); else oeffneNav();
     });
+
+    // Klick auf einen Link schliesst weiter – jetzt inklusive Scroll-Freigabe.
+    // Der Sprung zum Anker muss NACH dem Aufheben von `position: fixed`
+    // passieren, sonst landet die Seite an der gemerkten alten Position.
     primaryNav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
+      a.addEventListener('click', (e) => {
+        if (!navOffen()) return;
+        const ziel = a.getAttribute('href') || '';
+        const anker = ziel.startsWith('#') ? document.querySelector(ziel) : null;
         primaryNav.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
+        if (menuEl) menuEl.style.maxHeight = '';
+        gibScrollFrei();
+        // Erst zurueck an die gemerkte Stelle, damit der Sprung zum Anker von
+        // dort ausgeht und nicht sichtbar ueber den Seitenanfang huepft.
+        window.scrollTo({ top: gemerkteScrollPosition, behavior: 'instant' });
+        if (anker) {
+          e.preventDefault();
+          anker.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+        }
       });
     });
+
+    // Tap ausserhalb schliesst. navToggle liegt innerhalb von .primary-nav,
+    // sein eigener Handler hat dann schon umgeschaltet.
+    document.addEventListener('click', (e) => {
+      if (navOffen() && !e.target.closest('.primary-nav')) schliesseNav(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') schliesseNav(true);
+    });
+
+    // Wechselt der Viewport auf Desktop, waehrend das Menue offen ist,
+    // muss der Scroll-Lock weg – sonst haengt die Seite fest.
+    const desktopAb = window.matchMedia('(min-width: 901px)');
+    const aufDesktopWechsel = (ev) => { if (ev.matches) schliesseNav(false); };
+    if (desktopAb.addEventListener) desktopAb.addEventListener('change', aufDesktopWechsel);
+    else desktopAb.addListener(aufDesktopWechsel);
   }
 
   // --- Leistungen-Untermenü (AP-18) ---

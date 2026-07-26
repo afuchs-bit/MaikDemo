@@ -1300,8 +1300,26 @@ p  { margin: 0; }
     background: var(--bg-elev);
     border-radius: 16px;
     padding: 8px;
+    /* AP-39: Das Menue enthaelt 27 Links plus zwei aufklappbare Gruppen und
+       war aufgeklappt 1381px hoch - bei 667px Viewport. Weil der Header
+       `position: sticky; top: 0` ist, blieb er beim Scrollen stehen und die
+       unteren Eintraege waren durch KEIN Scrollen erreichbar. Das Menue
+       scrollt jetzt in sich.
+       --header-h setzt main.js auf die gemessene Headerhoehe; 76px ist der
+       Fallback fuer den Moment vor der ersten Messung und fuer No-JS.
+       100vh steht vor 100dvh: Safari unter 15.4 kennt dvh nicht und faellt
+       auf die vh-Zeile zurueck. */
+    max-height: calc(100vh - var(--header-h, 76px) - 16px);
+    max-height: calc(100dvh - var(--header-h, 76px) - 16px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
-  .primary-nav.is-open .menu a { padding: 12px 16px; }
+  /* AP-39: Touchziele auf mindestens 44px. Die Eintraege lagen bei 42,9px. */
+  .primary-nav.is-open .menu a {
+    padding: 12px 16px;
+    min-height: 44px;
+    display: flex; align-items: center;
+  }
   .nav-toggle { display: inline-flex; }
   .header-actions .btn span { display: none; }
   .header-actions .btn { padding: 12px; }
@@ -2274,7 +2292,13 @@ body.has-lightbox { overflow: hidden; }
   /* Untermenü unter dem Eintrag, per Toggle ausklappbar */
   .menu-item--sub { flex-wrap: wrap; position: static; }
   .menu-item--sub > a { flex: 1; }
-  .submenu-toggle { margin-left: auto; padding: 10px; }
+  /* AP-39: Der Aufklapp-Button mass 34x34px. Er sitzt direkt neben dem
+     Leistungen-Link, beide brauchen eine eigene, ausreichend grosse Flaeche. */
+  .submenu-toggle {
+    margin-left: auto; padding: 10px;
+    min-width: 44px; min-height: 44px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
   .nav-submenu {
     flex-basis: 100%; position: static; transform: none;
     opacity: 1; visibility: visible; display: none;
@@ -2295,7 +2319,11 @@ body.has-lightbox { overflow: hidden; }
   .menu-item--sub:focus-within > .nav-submenu,
   .menu-item--sub.is-open > .nav-submenu { transform: none; }
   .menu-item--sub.is-open > .nav-submenu { display: grid; }
-  .nav-submenu a { padding: 10px 12px; }
+  .nav-submenu a {
+    padding: 10px 12px;
+    min-height: 44px;
+    display: flex; align-items: center;
+  }
   /* AP-34: Einspaltig gestapelt – keine Panel-Kästen, dafür wieder eine Trennlinie. */
   .nav-submenu--welten { gap: 0; }
   .nav-submenu--welten .nav-submenu-group:nth-child(1),
