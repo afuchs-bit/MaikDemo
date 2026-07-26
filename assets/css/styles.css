@@ -1186,6 +1186,16 @@ p  { margin: 0; }
   padding: 12px 14px;
   outline: none;
   transition: border-color .2s var(--ease), background .2s var(--ease);
+  /* AP-51: Formularfelder bringen eine eigene intrinsische Mindestbreite mit -
+     ein <select> die Breite seiner laengsten Option, ein <input type="file">
+     die des UA-Buttons samt Dateinamen-Text. Als Flex-Items in .field duerfen
+     sie mit `min-width: auto` nicht darunter schrumpfen und haben das gesamte
+     Kontaktraster aufgespreizt: /gewerbekunden/ brauchte dadurch 437px
+     Mindestbreite, lief also auf jedem verbreiteten Telefon seitlich ueber.
+     `min-width: 0` gibt das Schrumpfen frei, ohne die Optik zu aendern. */
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
 }
 .field input:focus, .field select:focus, .field textarea:focus {
   border-color: var(--green-700);
@@ -1324,6 +1334,16 @@ p  { margin: 0; }
   .mobile-actions { display: flex; }
   body { padding-bottom: 88px; }
   .footer-bottom { justify-content: flex-start; }
+
+  /* AP-51: `.btn` traegt `white-space: nowrap`. Auf Desktop sinnvoll, auf dem
+     Telefon erzwang es eine Mindestbreite der ganzen Seite: der laengste CTA
+     („Jetzt Schritt 1 starten – Objektbegehung anfragen") schob /gewerbekunden/
+     auf 437px, „Alle 67 Bewertungen auf Google ansehen" /privatkunden/ auf
+     392px. Beide Seiten liefen damit auf jedem verbreiteten Telefon seitlich
+     ueber. Unterhalb 900px darf die Beschriftung umbrechen; der Pfeil bleibt
+     als eigenes Flex-Item am Zeilenende. */
+  .btn { white-space: normal; text-wrap: balance; }
+  .btn-primary, .btn-outline { text-align: center; justify-content: center; }
 }
 
 @media (max-width: 600px) {
