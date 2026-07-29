@@ -1400,6 +1400,41 @@ p  { margin: 0; }
   .btn-primary, .btn-outline { text-align: center; justify-content: center; }
 }
 
+/* AP-53: Kontaktformular auf Mobile vor die Kontaktdaten.
+   Auf dem Telefon standen zuerst Mobil-, Festnetz-, WhatsApp-Nummer und
+   E-Mail – das Anfrageformular kam erst darunter. Reihenfolge jetzt:
+   Kicker/H2/Lead -> Formular -> Kontaktdaten. Der Kopf bleibt oben, sonst
+   faellt der Nutzer auf ein unerklaertes Formular.
+
+   `order` greift nur zwischen Geschwistern, das Formular liegt aber neben
+   `.contact-content` statt darin. `display: contents` loest den Wrapper auf,
+   damit Kopf, Formular und Kontaktdaten Geschwister im selben Grid werden –
+   ohne HTML-Umbau.
+
+   Alles hier ist auf <=900px begrenzt: ab 901px kann sich technisch nichts
+   aendern, der Desktop bleibt exakt wie er war. Preis dieser Loesung: CSS
+   dreht nur die optische Reihenfolge, nicht die DOM-Reihenfolge. Tastatur
+   und Screenreader laufen weiterhin Kopf -> Kontaktdaten -> Formular. */
+@media (max-width: 900px) {
+  /* Ohne row-gap:0 legte der Grid-Gap zwischen JEDES der sechs Elemente
+     30-45px und risse den Kopf auseinander. Abstaende steuern ab hier
+     Margins – die beiden clamp() unten sind derselbe Wert wie der Gap. */
+  .contact-grid { row-gap: 0; }
+  .contact-content { display: contents; }
+
+  .contact-content > .kicker       { order: 1; }
+  .contact-content > h2            { order: 2; }
+  .contact-content > .lead         { order: 3; margin-bottom: clamp(30px, 5vw, 80px); }
+  .contact-form                    { order: 4; }
+  /* statt der 28px von oben der Sektions-Gap: folgt jetzt auf das Formular */
+  .contact-content > .contact-rows { order: 5; margin-top: clamp(30px, 5vw, 80px); }
+  .contact-content > .note         { order: 6; }
+
+  /* Der CTA zeigt per href="#contactForm" jetzt rueckwaerts auf das
+     Formular direkt darueber. */
+  .contact-content > .btn { display: none; }
+}
+
 @media (max-width: 600px) {
   /* Collage: Überlappung auflösen, sauber stapeln, im Viewport halten */
   .maik-collage { aspect-ratio: auto; display: grid; gap: 18px; justify-items: center; }
