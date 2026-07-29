@@ -447,7 +447,11 @@
 
     const steps = Array.from(track.querySelectorAll('.step'));
     if (!steps.length) return;
-    const mq = window.matchMedia('(min-width: 1024px)');
+    // (hover: hover) schliesst Touch-Geraete aus, die breit genug fuer den
+    // Pin waeren – vor allem das iPad im Querformat (genau 1024px). Ein Pin
+    // auf Touch bricht Momentum-Scrolling und kollidiert mit Pull-to-Refresh;
+    // diese Geraete bekommen deshalb die vertikale Journey.
+    const mq = window.matchMedia('(min-width: 1024px) and (hover: hover)');
 
     let mode = null;                    // null | 'h' | 'v'
     let ticking = false, lastIndex = -1;

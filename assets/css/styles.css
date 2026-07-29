@@ -17,9 +17,17 @@
    und ohne erkennbares System. Zuordnung: 560/640 → 600, 760/768 → 900.
 
    Bewusste Ausnahmen, die NICHT zum Layout-Raster gehoeren:
-     min-width: 1024px   Scroll-Enhancements (process-scroller, section-proof).
+     min-width: 1024px   section-proof – ganze Sektion in einen Viewport.
+                         Reines Layout, gilt auch auf Touch.
+     min-width: 1024px
+       and (hover: hover)
+                         process-scroller – horizontaler Pin-Journey.
                          Anderer Zweck als die Layout-Grenzen – siehe main.js,
                          das dieselbe Grenze per matchMedia spiegelt.
+                         (hover: hover) haelt Touch-Geraete heraus, die breit
+                         genug waeren (iPad quer = genau 1024px): ein Pin
+                         bricht dort Momentum-Scrolling und Pull-to-Refresh.
+                         Diese Geraete bekommen die vertikale Journey.
      min-height: 760px   Feinjustierung innerhalb des 1024er-Blocks.
      min-width:  601px   .filter-group – Gegenstueck zur 600er-Grenze:
                          bis 600px scrollt die Filterleiste seitlich,
@@ -1874,8 +1882,12 @@ p  { margin: 0; }
   .step-node { width: 44px; height: 44px; font-size: 1.05rem; }
 }
 
-/* ---- Enhancement: horizontaler Pin-Journey (Desktop) ---- */
-@media (min-width: 1024px) {
+/* ---- Enhancement: horizontaler Pin-Journey (Desktop, Zeigegeraet) ----
+   Grenze identisch zum matchMedia in main.js. Die Regeln haengen ohnehin
+   alle an .is-scrollytelling und waeren ohne die Klasse wirkungslos –
+   (hover: hover) steht hier, damit beide Seiten dieselbe Bedingung
+   nennen und nicht auseinanderlaufen. */
+@media (min-width: 1024px) and (hover: hover) {
   .section-process.is-scrollytelling .process-scroller {
     /* height wird von JS gesetzt (= maxShift + Bühnenhöhe) */
   }
