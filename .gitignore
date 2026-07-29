@@ -4,3 +4,10 @@ node_modules/
 # AP-25: Original-Bilder (5–8 MB) bleiben lokal, werden NICHT deployt.
 # Aus ihnen erzeugt .github/scripts/build-images.mjs die responsiven Derivate.
 assets/img/_src/
+
+# Finder-/iCloud-Dubletten ("Datei 2.ext"). Entstehen beim Kopieren im Finder
+# und sehen wie Projektdateien aus. 41 davon (5,3 MB, u. a. eine Kopie des
+# Hero-Videos) sind versehentlich mit ins Repo geraten – siehe der Commit,
+# der sie wieder entfernt.
+* 2.*
+* 2
