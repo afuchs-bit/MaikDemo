@@ -429,9 +429,14 @@
     start();
   });
 
-  // --- Ablauf: horizontaler Scroll-Zeitstrahl (Pin + Fortschritt) ---
-  // Progressive Enhancement: nur Desktop (>=1024px) und ohne prefers-reduced-motion.
-  // Sonst bleibt der vertikale CSS-Zeitstrahl (Basis) aktiv – kein Scroll-Listener.
+  // --- Ablauf: Scroll-Zeitstrahl (Fortschritt entlang der Stationen) ---
+  // Progressive Enhancement in zwei Ausbaustufen, beide ueber dieselbe
+  // CSS-Variable --progress (0..1); den Rest erledigt styles.css.
+  //   'h'  >=1024px  horizontaler Pin-Journey (Buehne wird eingefroren)
+  //   'v'   <1024px  vertikale Journey OHNE Pin – die Seite scrollt normal
+  // Bei prefers-reduced-motion laeuft keiner von beiden; dann bleibt der
+  // statische vertikale CSS-Zeitstrahl (Basis) stehen – vollstaendig
+  // sichtbar, gefuellte Linie, kein Scroll-Listener.
   (function () {
     const scroller = document.querySelector('[data-process-scroller]');
     if (!scroller) return;
@@ -441,11 +446,22 @@
     if (!section || !stage || !track) return;
 
     const steps = Array.from(track.querySelectorAll('.step'));
+    if (!steps.length) return;
     const mq = window.matchMedia('(min-width: 1024px)');
 
-    let active = false, ticking = false, maxShift = 0, lastIndex = -1;
+    let mode = null;                    // null | 'h' | 'v'
+    let ticking = false, lastIndex = -1;
+    let maxShift = 0;                   // nur 'h'
+    let nodeTops = [], travel = 0;      // nur 'v'
 
-    const measure = () => {
+    const setActive = (idx) => {
+      if (idx === lastIndex) return;
+      steps.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+      lastIndex = idx;
+    };
+
+    // ---- 'h': horizontaler Pin (Desktop) ----
+    const measureH = () => {
       maxShift = Math.max(0, track.scrollWidth - stage.clientWidth);
       section.style.setProperty('--max-shift', maxShift + 'px');
       // Buehnenhoehe (nicht innerHeight) – nur so faellt das Pin-Ende
@@ -454,52 +470,106 @@
       scroller.style.height = (maxShift + stage.getBoundingClientRect().height) + 'px';
     };
 
-    const update = () => {
-      ticking = false;
+    const updateH = () => {
       const top = scroller.getBoundingClientRect().top;
       const progress = maxShift > 0 ? Math.min(1, Math.max(0, -top / maxShift)) : 0;
       section.style.setProperty('--progress', progress.toFixed(4));
-      const idx = Math.round(progress * (steps.length - 1));
-      if (idx !== lastIndex) {
-        steps.forEach((s, i) => s.classList.toggle('is-active', i === idx));
-        lastIndex = idx;
+      setActive(Math.round(progress * (steps.length - 1)));
+    };
+
+    // ---- 'v': vertikale Journey (Mobile/Tablet) ----
+    // Bezugspunkte sind die Knotenmittelpunkte, nicht die Sektionsgrenzen:
+    // nur so startet der Marker exakt auf Station 1 und endet auf Station n,
+    // statt darueber hinauszuschiessen.
+    // offsetTop statt getBoundingClientRect: die Karten tragen waehrend des
+    // Reveals ein translateY, das in die Rect-Werte einfliessen wuerde.
+    const measureV = () => {
+      nodeTops = steps.map((s) => {
+        const node = s.querySelector('.step-node');
+        return node ? s.offsetTop + node.offsetTop + node.offsetHeight / 2
+                    : s.offsetTop + s.offsetHeight / 2;
+      });
+      travel = Math.max(0, nodeTops[nodeTops.length - 1] - nodeTops[0]);
+      section.style.setProperty('--node-start', nodeTops[0].toFixed(2) + 'px');
+      section.style.setProperty('--travel', travel.toFixed(2) + 'px');
+    };
+
+    const updateV = () => {
+      // innerHeight bewusst in jedem Frame gelesen: klappt Safari die
+      // Adressleiste ein, wandert der Anker mit, statt zu springen.
+      // 0.62 statt 0.5 – die Station wird aktiv, kurz bevor sie die Mitte
+      // erreicht, sonst wirkt der Effekt verzoegert.
+      const vh = window.innerHeight;
+      const anchor = vh * 0.62;
+      const stageTop = stage.getBoundingClientRect().top;
+      const progress = travel > 0
+        ? Math.min(1, Math.max(0, (anchor - stageTop - nodeTops[0]) / travel))
+        : 0;
+      section.style.setProperty('--progress', progress.toFixed(4));
+
+      // Aktiv ist der letzte Knoten, der den Anker bereits passiert hat.
+      // Math.round(progress * (n-1)) wie im Horizontal-Zweig taugt hier
+      // nicht: die Karten sind unterschiedlich hoch, die Knoten also
+      // ungleich ueber die Strecke verteilt.
+      // .is-seen bleibt gesetzt – die Karten sollen beim Zurueckscrollen
+      // nicht wieder verschwinden.
+      let idx = 0;
+      for (let i = 0; i < nodeTops.length; i++) {
+        const y = stageTop + nodeTops[i];
+        if (y <= anchor) idx = i;
+        if (y <= vh * 0.92) steps[i].classList.add('is-seen');
       }
+      setActive(idx);
+    };
+
+    const measure = () => { if (mode === 'h') measureH(); else if (mode === 'v') measureV(); };
+    const update = () => {
+      ticking = false;
+      if (mode === 'h') updateH(); else if (mode === 'v') updateV();
     };
 
     const onScroll = () => {
       if (!ticking) { ticking = true; requestAnimationFrame(update); }
     };
 
-    const enable = () => {
-      if (active) return;
-      active = true;
-      section.classList.add('is-scrollytelling');
-      requestAnimationFrame(() => { measure(); update(); });
-      document.addEventListener('scroll', onScroll, { passive: true });
-    };
-
-    const disable = () => {
-      if (!active) return;
-      active = false;
+    const stop = () => {
+      if (!mode) return;
+      mode = null;
       document.removeEventListener('scroll', onScroll);
-      section.classList.remove('is-scrollytelling');
+      section.classList.remove('is-scrollytelling', 'is-vertical-journey');
       scroller.style.height = '';
       section.style.removeProperty('--progress');
       section.style.removeProperty('--max-shift');
-      steps.forEach((s) => s.classList.remove('is-active'));
+      section.style.removeProperty('--node-start');
+      section.style.removeProperty('--travel');
+      steps.forEach((s) => s.classList.remove('is-active', 'is-seen'));
       lastIndex = -1;
     };
 
-    const apply = () => { (mq.matches && !reduced) ? enable() : disable(); };
+    const start = (next) => {
+      if (mode === next) return;
+      stop();                            // Zustandswechsel raeumt den anderen Zweig ab
+      mode = next;
+      section.classList.add(next === 'h' ? 'is-scrollytelling' : 'is-vertical-journey');
+      // Erst im naechsten Frame messen: die eben gesetzte Klasse aendert
+      // Buehnenhoehe bzw. Knotenpositionen.
+      requestAnimationFrame(() => { if (mode === next) { measure(); update(); } });
+      document.addEventListener('scroll', onScroll, { passive: true });
+    };
+
+    const apply = () => { reduced ? stop() : start(mq.matches ? 'h' : 'v'); };
 
     let rt = null;
-    window.addEventListener('resize', () => {
+    const remeasure = () => {
       clearTimeout(rt);
       // apply() zuerst: sonst prueft dieser Pfad bei aktivem Pin nur noch
       // Geometrie und nie den Zustand – die Umschaltung haengt dann allein
-      // am mq-change-Listener. enable()/disable() sind idempotent.
-      rt = setTimeout(() => { apply(); if (active) { measure(); update(); } }, 150);
-    }, { passive: true });
+      // am mq-change-Listener. start()/stop() sind idempotent.
+      rt = setTimeout(() => { apply(); if (mode) { measure(); update(); } }, 150);
+    };
+    window.addEventListener('resize', remeasure, { passive: true });
+    // Beim Drehen feuert resize nicht auf allen iOS-Versionen zuverlaessig.
+    window.addEventListener('orientationchange', remeasure, { passive: true });
 
     if (mq.addEventListener) mq.addEventListener('change', apply);
     else if (mq.addListener) mq.addListener(apply);

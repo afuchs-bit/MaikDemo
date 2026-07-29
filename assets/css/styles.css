@@ -1732,11 +1732,15 @@ p  { margin: 0; }
   position: relative;
   width: min(100% - calc(var(--gutter) * 2), 780px);
   margin-inline: auto;
+  /* Mitte der Weglinie = Mitte der Knoten (Knoten 54px breit, linksbuendig).
+     Weglinie, Fortschrittsspur und Leaf-Marker haengen alle daran; die
+     600er-Grenze zieht nur diesen einen Wert nach. */
+  --path-x: 27px;
 }
 /* Weglinie – vertikal in der Basis */
 .process-path {
   position: absolute;
-  left: 26px; top: 6px; bottom: 6px;
+  left: calc(var(--path-x) - 1px); top: 6px; bottom: 6px;
   width: 2px;
   background: linear-gradient(var(--green-700), var(--green-300));
   border-radius: 2px;
@@ -1776,6 +1780,99 @@ p  { margin: 0; }
 .step-card h3 { font-size: 1.12rem; margin-bottom: 6px; }
 .step-card p { color: var(--ink-2); font-size: .93rem; }
 .hero-ctas.center { justify-content: center; margin-top: 40px; }
+
+/* ---- Enhancement: vertikale Journey (< 1024px, Klasse kommt von JS) ----
+   Bewusst OHNE Pin: die Seite scrollt normal, --progress steuert nur
+   Transforms innerhalb der Sektion. Damit bleiben iOS-Momentum-Scrolling,
+   Pull-to-Refresh und die Zurueck-Wischgeste unberuehrt, und das Ein-/
+   Ausklappen der Safari-Adressleiste erzeugt keinen Sprung im Layout.
+   --node-start und --travel setzt main.js aus den gemessenen Knoten-
+   mittelpunkten: nur so startet der Marker exakt auf Station 1 und endet
+   exakt auf Station 4, statt ueber die Sektionsgrenzen hinauszuschiessen.
+   Ohne JS und bei prefers-reduced-motion fehlt die Klasse – dann bleibt
+   der statische Zeitstrahl der Basis vollstaendig sichtbar. */
+
+/* Grundlinie tritt zurueck; der Fortschritt liegt als Volltonspur darueber
+   und deckt exakt die Strecke Knoten 1 -> Knoten n ab. */
+.section-process.is-vertical-journey .process-path { background: var(--line); }
+.section-process.is-vertical-journey .process-stage::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--path-x) - 1px); width: 2px;
+  top: var(--node-start, 0px); height: var(--travel, 0px);
+  border-radius: 2px;
+  background: linear-gradient(var(--green-700), var(--green-500));
+  transform: scaleY(var(--progress, 0));
+  transform-origin: top;
+  will-change: transform;
+  z-index: 1;
+}
+
+/* Leaf-Marker gleitet auf der Linie mit und bleibt am Ende auf Station n
+   stehen. Ueber der Linie (z-index 1), unter den Knoten (z-index 2) – an
+   den Endpunkten ruht er damit unsichtbar hinter Knoten 1 bzw. n.
+   Weisse Scheibe wie bei den Knoten: das gruene Blatt allein ginge auf
+   der gefuellten Volltonspur unter. */
+.section-process.is-vertical-journey .process-marker {
+  display: flex; align-items: center; justify-content: center;
+  position: absolute;
+  left: var(--path-x); top: 0;
+  width: 30px; height: 30px;
+  background: #fff;
+  border: 1px solid var(--green-300);
+  border-radius: 50%;
+  transform: translate(-50%, calc(
+    var(--node-start, 0px) + var(--progress, 0) * var(--travel, 0px) - 50%));
+  will-change: transform;
+  z-index: 1;
+  filter: drop-shadow(0 5px 10px rgba(19,26,8,.18));
+}
+.section-process.is-vertical-journey .process-marker svg { width: 18px; height: 18px; }
+
+/* Karten fahren einzeln ein. Ohne das erschiene der Abschnitt fertig,
+   waehrend der Rest der Seite per .reveal einblendet – der Bruch faellt
+   auf. .is-seen setzt main.js aus derselben Messung; die Karte traegt es,
+   nicht der .step, damit .is-active und Reveal sich nicht um dieselbe
+   Deckkraft streiten. */
+.section-process.is-vertical-journey .step-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease),
+              box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.section-process.is-vertical-journey .step.is-seen .step-card {
+  opacity: 1;
+  transform: none;
+}
+
+/* Aktive Station. Bewusst OHNE Deckkraft-Absenkung der ruhenden Karten
+   (Desktop: .48): bei .93rem auf 375px waere der Text dann schlecht
+   lesbar. Die Abstufung laeuft ueber Rahmen und Schatten. */
+.section-process.is-vertical-journey .step.is-active .step-card {
+  border-color: var(--green-300);
+  box-shadow: var(--shadow-float);
+}
+.section-process.is-vertical-journey .step-node {
+  z-index: 2;
+  transition: transform .35s var(--ease), background .35s var(--ease),
+              color .35s var(--ease), border-color .35s var(--ease),
+              box-shadow .35s var(--ease);
+}
+.section-process.is-vertical-journey .step.is-active .step-node {
+  background: var(--green-700); color: #fff; border-color: var(--green-700);
+  transform: scale(1.08);
+  box-shadow: 0 0 0 5px rgba(235,108,68,.20), var(--shadow-float);
+}
+
+/* Der Knoten frisst auf 375px knapp ein Viertel der Breite: 335px Buehne
+   minus 78px Einzug lassen der Karte nur 257px. Schmalerer Knoten und
+   Einzug geben rund 18px zurueck. Gilt auch fuer den statischen
+   Zeitstrahl – deshalb ausserhalb von .is-vertical-journey. */
+@media (max-width: 600px) {
+  .process-stage { --path-x: 22px; }   /* Knoten 44px breit -> Mitte bei 22px */
+  .step { padding-left: 60px; }
+  .step-node { width: 44px; height: 44px; font-size: 1.05rem; }
+}
 
 /* ---- Enhancement: horizontaler Pin-Journey (Desktop) ---- */
 @media (min-width: 1024px) {
