@@ -288,6 +288,24 @@
     }
   }
 
+  // --- Bevorzugter Kontaktweg: passendes Detailfeld einblenden ---
+  // Die <option>s tragen keine value-Attribute, der Wert ist also der Optionstext
+  // ("Telefon (mobil)", "Telefon (Festnetz)", "E-Mail").
+  {
+    const weg = document.querySelector('#contactForm select[name="weg"]');
+    const details = document.querySelectorAll('#contactForm [data-weg-detail]');
+    if (weg && details.length) {
+      const sync = () => {
+        const gewuenscht = weg.value.startsWith('Telefon') ? 'telefon' : 'email';
+        details.forEach((d) => {
+          d.hidden = d.getAttribute('data-weg-detail') !== gewuenscht;
+        });
+      };
+      weg.addEventListener('change', sync);
+      sync(); // deckt Browser-Restore der Auswahl beim Zurueck-Navigieren ab
+    }
+  }
+
   // --- Count-up stats (Social Proof) ---
   // DOM always holds the final value, so no-JS / reduced-motion users see it directly.
   const counters = document.querySelectorAll('[data-countup]');

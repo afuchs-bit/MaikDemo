@@ -1218,6 +1218,9 @@ p  { margin: 0; }
   border-color: var(--green-700);
   background: #fff;
 }
+/* AP-57: .field setzt display:flex - das schlaegt das UA-[hidden].
+   Ohne diese Regel bleibt das nicht gewaehlte Detailfeld sichtbar. */
+.weg-detail[hidden] { display: none; }
 .form-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .form-actions .btn-link { color: var(--green-700); }
 
