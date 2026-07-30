@@ -69,18 +69,14 @@
     // zu hoch. Hier wird die tatsaechliche Oberkante gemessen und die Hoehe
     // exakt gesetzt; die CSS-Regel bleibt als No-JS-Fallback bestehen.
     const menuEl = primaryNav.querySelector('.menu');
-    const aktionsleiste = document.querySelector('.mobile-actions');
     const passeMenuhoeheAn = () => {
       if (!menuEl || !primaryNav.classList.contains('is-open')) return;
       menuEl.style.maxHeight = '';
       const oben = menuEl.getBoundingClientRect().top;
-      // Unten steht die fixierte Action-Bar (Anrufen / WhatsApp). Ohne sie
-      // abzuziehen laegen die letzten Menueeintraege dahinter und waeren zwar
-      // erreichbar, aber verdeckt.
-      let unten = 12;
-      if (aktionsleiste && getComputedStyle(aktionsleiste).display !== 'none') {
-        unten = Math.round(window.innerHeight - aktionsleiste.getBoundingClientRect().top) + 8;
-      }
+      // AP-55: Hier wurde zuvor die Hoehe der fixierten Action-Bar abgezogen,
+      // damit die letzten Menueeintraege nicht dahinter lagen. Die Leiste ist
+      // entfallen, es bleibt der schmale Rand zum Viewportrand.
+      const unten = 12;
       menuEl.style.maxHeight = Math.max(120, window.innerHeight - oben - unten) + 'px';
     };
 

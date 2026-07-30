@@ -1256,32 +1256,11 @@ p  { margin: 0; }
 }
 .footer-bottom a { color: rgba(255,255,255,.7); }
 
-/* ============================================================
-   MOBILE ACTION BAR
-   ============================================================ */
-.mobile-actions {
-  display: none;
-  position: fixed;
-  z-index: 60;
-  gap: 8px;
-  /* AP-40: Alle Seiten setzen `viewport-fit=cover`, der Inhalt reicht also bis
-     in die abgerundeten Ecken und unter den Home-Indicator. `env()` kam im
-     ganzen Stylesheet kein einziges Mal vor - die Leiste sass damit auf einem
-     iPhone mit Home-Indicator direkt darunter. Der Fallbackwert 0px greift
-     auf Android und ueberall ohne Insets, dort aendert sich nichts. */
-  left: calc(12px + env(safe-area-inset-left, 0px));
-  right: calc(12px + env(safe-area-inset-right, 0px));
-  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-}
-.ma-btn {
-  flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  background: var(--green-700); color: #fff;
-  padding: 14px 16px;
-  border-radius: 16px;
-  font-weight: 700; text-decoration: none;
-  box-shadow: 0 16px 30px -10px rgba(0,0,0,.4);
-}
-.ma-wa { background: #25D366; color: #0c2e16; }
+/* AP-55: Die schwebende Schnellkontakt-Leiste am unteren Rand ist hier
+   ersatzlos entfallen. Sie verdeckte beim ersten Laden den zweiten Hero-Button
+   und war funktional doppelt: der Header ist sticky, Telefon und WhatsApp sind
+   darueber jederzeit erreichbar. Mit ihr entfielen auch das body-padding-bottom
+   im 900er-Block und die Safe-Area-Insets aus AP-40, die nur sie brauchte. */
 
 /* ============================================================
    ANIMATIONS / REVEAL
@@ -1383,10 +1362,6 @@ p  { margin: 0; }
   .trust-bar { grid-template-columns: repeat(3, 1fr); padding: 18px; margin: 40px auto 60px; row-gap: 22px; }
   .trust-item:not(:first-child)::before { display: none; }
   .trust-item:not(:first-child) { padding-left: 0; }
-  .mobile-actions { display: flex; }
-  /* AP-40: muss um denselben Inset wachsen wie die Leiste, sonst endet der
-     Footer wieder dahinter. */
-  body { padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
   .footer-bottom { justify-content: flex-start; }
 
   /* AP-51: `.btn` traegt `white-space: nowrap`. Auf Desktop sinnvoll, auf dem
@@ -1453,6 +1428,33 @@ p  { margin: 0; }
   .menu { display: none; }
   .hero-content { padding-top: 20px; }
   .trust-bar { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* AP-55: Lesbarkeit des Hero-Texts auf Mobile.
+   Der Schleier lief 60% -> 20% (bei 30%) -> 85% (bei 80%). Auf Desktop steht
+   der Text links oben in der dichten Zone; auf Mobile stapelt der Inhalt und
+   rutscht genau in die duenne: gemessen sitzt der Fliesstext bei 19-28% der
+   Hero-Hoehe, die kleine dritte Titelzeile bei 15-18%.
+   Gemessene Kontraste dort: 1,4-2,3:1 gegen die dunkelsten Fotostellen im
+   tatsaechlichen Ausschnitt (object-fit: cover + Drift-Animation), gefordert
+   sind 4,5:1.
+   Zwei Stellschrauben zusammen, weil eine allein zu knapp ausfaellt: der
+   Schleier haelt 66% bis 50% durch, statt einzubrechen, und die beiden kleinen
+   Texte in --ink-2 wechseln auf --ink. Ergebnis ~7:1 statt knapp 4,5:1 - das
+   traegt auch ein dunkleres Ersatzfoto aus dem CMS.
+   Die Koernung bleibt unberuehrt: sie liegt in .hero-media (z-index: -1, eigener
+   Stacking-Context, .hero hat isolation: isolate) und damit UNTER dem Text,
+   nicht darueber. Sie senkt den Textkontrast also nicht. */
+@media (max-width: 900px) {
+  .hero-scrim {
+    background: linear-gradient(180deg,
+      rgba(246,244,238,.66) 0%,
+      rgba(246,244,238,.66) 50%,
+      rgba(246,244,238,.85) 80%,
+      var(--bg) 100%);
+  }
+  .hero-sub,
+  .hero-title .line.muted { color: var(--ink); }
 }
 
 /* ============================================================
