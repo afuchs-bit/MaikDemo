@@ -1169,6 +1169,9 @@ p  { margin: 0; }
   color: #fff;
   font-size: .92rem;
 }
+/* Abstand zwischen Erreichbarkeits-Box und „Termin vereinbaren“-CTA.
+   Der Button ist inline-flex und stand sonst ohne Abstand direkt an der .note. */
+.contact-content > .note + .btn { margin-top: 28px; }
 
 .contact-form {
   background: #fff; color: var(--ink);
