@@ -489,7 +489,7 @@ p  { margin: 0; }
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-items: start;
   column-gap: 0;
   padding: 22px 28px;
@@ -1359,9 +1359,11 @@ p  { margin: 0; }
   .authority-visual.is-seq .bp-fact,
   .authority-visual.is-seq.plan-on4 .bp-fact { transform: none; }
   .authority-visual.is-seq.plan-on4 .bp-fact { opacity: 1; }
-  .trust-bar { grid-template-columns: repeat(3, 1fr); padding: 18px; margin: 40px auto 60px; row-gap: 22px; }
+  .trust-bar { grid-template-columns: repeat(2, 1fr); padding: 20px; margin: 40px auto 60px; row-gap: 24px; column-gap: 20px; }
   .trust-item:not(:first-child)::before { display: none; }
   .trust-item:not(:first-child) { padding-left: 0; }
+  /* Im 2x2-Raster alle Kacheln gleich ausrichten (Basis zentriert nur das erste Item) */
+  .trust-item:first-child { align-items: flex-start; text-align: left; }
   .footer-bottom { justify-content: flex-start; }
 
   /* AP-51: `.btn` traegt `white-space: nowrap`. Auf Desktop sinnvoll, auf dem
