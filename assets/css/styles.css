@@ -2355,6 +2355,18 @@ body.has-welt-dialog { overflow: hidden; }
    .kicker, .project-card, .tag-link, .faq-list, .projekt-cta) wiederverwendet.
    ============================================================ */
 .section-leistung { padding-top: clamp(90px, 12vh, 140px); }
+/* Mobil: die vh-basierte Kopf-Leerflaeche der breadcrumb-gefuehrten Unterseiten
+   stark reduzieren. Der Header ist sticky (immer sichtbar), daher genuegt ein
+   kleiner Abstand ueber der Breadcrumb. Der grosszuegige Desktop-Kopf bleibt
+   unveraendert. Gilt fuer Leistungen (Detail + Uebersicht), Projekte, Ratgeber
+   und Rechtstexte – alle mit demselben clamp(90px, 12vh, 140px)-Kopf. */
+@media (max-width: 600px) {
+  .section-leistung,
+  .section-leistungen,
+  .section-projekt,
+  .section-ratgeber,
+  .section-rechtstext { padding-top: clamp(20px, 6vw, 34px); }
+}
 .lp-head { max-width: 760px; }
 .lp-head .btn { margin-top: 20px; }
 
