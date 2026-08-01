@@ -472,23 +472,27 @@ export function renderNavSubmenu(base) {
           </ul>`;
 }
 
-// AP-33: Footer-Spalte ebenfalls nach Welten gruppiert.
+// Footer-Spalte: nur Signatur-Leistungen als Quick-Links (Differenzierer + hohe
+// Kaufabsicht). Die vollstaendige Liste bleibt ueber die Hub-Seiten erreichbar
+// (Nav-Dropdown, Bereiche-Spalte, "Alle Leistungen im Ueberblick"), daher hier
+// bewusst kurz. Die ersten fuenf zeigen in die Privat-Welt (Standard-Publikum der
+// Startseite); Aussenanlagenpflege haelt die Gewerbe-Welt praesent (reine
+// Gewerbe-Leistung, existiert nur dort).
+const FOOTER_SIGNATUR = [
+  { slug: 'baumkontrolle', pfad: WELTEN.privat.pfad },
+  { slug: 'baumarbeiten', pfad: WELTEN.privat.pfad },
+  { slug: 'sturmnotdienst', pfad: WELTEN.privat.pfad },
+  { slug: 'gartengestaltung', pfad: WELTEN.privat.pfad },
+  { slug: 'gartenpflege', pfad: WELTEN.privat.pfad },
+  { slug: 'aussenanlagenpflege', pfad: WELTEN.gewerbe.pfad },
+];
 export function renderFooterLeistungen(base) {
   const labelBySlug = new Map(LEISTUNGEN_NAV.map((l) => [l.slug, l.label]));
-  const block = (welt) => {
-    const items = welt.slugs
-      .map((s) => `<li><a href="${base}${welt.pfad}leistungen/${s}/">${esc(labelBySlug.get(s) || s)}</a></li>`)
-      .join('\n          ');
-    return `<li class="footer-leistungen-group">
-          <a class="footer-leistungen-head" href="${base}${welt.pfad}leistungen/">${esc(welt.navLabel)}</a>
-          <ul class="footer-list">
-          ${items}
-          </ul>
-        </li>`;
-  };
-  return `<ul class="footer-list footer-leistungen footer-leistungen--welten">
-        ${block(WELTEN.privat)}
-        ${block(WELTEN.gewerbe)}
+  const items = FOOTER_SIGNATUR
+    .map(({ slug, pfad }) => `<li><a href="${base}${pfad}leistungen/${slug}/">${esc(labelBySlug.get(slug) || slug)}</a></li>`)
+    .join('\n        ');
+  return `<ul class="footer-list">
+        ${items}
       </ul>`;
 }
 
