@@ -575,13 +575,6 @@ p  { margin: 0; }
 
 /* ---------- Wood / Special services ---------- */
 .section-wood { background: var(--bg-soft); }
-/* AP-59: Sonderthemen auf Mobil ausblenden, damit die Startseite kurz bleibt.
-   Die drei Themen bleiben ueber die Hero-Teaser ganz oben erreichbar, die auf die
-   jeweiligen Leistungsseiten fuehren. Die Sektion bleibt im DOM: Desktop zeigt sie
-   weiter, und fuer Crawler bleibt das Gutachter-Credential unveraendert sichtbar. */
-@media (max-width: 900px) {
-  #sonderthemen { display: none; }
-}
 .wood-grid {
   display: grid; gap: 22px;
   grid-template-columns: 1.4fr 1fr 1fr;
