@@ -2440,15 +2440,11 @@ body.has-welt-dialog { overflow: hidden; }
    AP-34: Der vertikale Versatz (margin/padding/border-top) galt hier fälschlich auch
    auf dem Desktop, wo die Gruppen nebeneinander im 2-Spalten-Grid liegen. Er steht
    jetzt nur noch in der Mobil-Media-Query, wo die Gruppen tatsächlich stapeln. */
-.nav-submenu--welten .nav-submenu-head,
-.footer-leistungen--welten .footer-leistungen-head {
+.nav-submenu--welten .nav-submenu-head {
   display: block; font-size: .74rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: .09em; padding: 4px 0; text-decoration: none; opacity: .85;
 }
-.nav-submenu--welten .nav-submenu-group > ul,
-.footer-leistungen--welten .footer-leistungen-group > ul { list-style: none; margin: 0; padding: 0; }
-.footer-leistungen--welten { list-style: none; margin: 0; padding: 0; }
-.footer-leistungen--welten .footer-leistungen-group + .footer-leistungen-group { margin-top: 14px; }
+.nav-submenu--welten .nav-submenu-group > ul { list-style: none; margin: 0; padding: 0; }
 
 /* ============================================================
    Leistungen-Dropdown im Header + Footer-Leistungen  (AP-18)
@@ -2516,9 +2512,6 @@ body.has-welt-dialog { overflow: hidden; }
 /* Der Basis-Hover (--bg-soft) wäre auf dem Gewerbe-Panel unsichtbar – hier Weiß. */
 @media (hover: hover) and (pointer: fine) { .nav-submenu--welten .nav-submenu-group a:hover { background: var(--bg-elev); color: var(--ink); } }
 
-/* Footer-Leistungen: 14 Einträge kompakt in zwei Spalten */
-.footer-leistungen { grid-template-columns: 1fr 1fr; gap: 6px 18px; }
-
 @media (max-width: 900px) {
   /* Untermenü unter dem Eintrag, per Toggle ausklappbar */
   .menu-item--sub { flex-wrap: wrap; position: static; }
@@ -2564,9 +2557,6 @@ body.has-welt-dialog { overflow: hidden; }
   .nav-submenu--welten .nav-submenu-group + .nav-submenu-group {
     margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line);
   }
-}
-@media (max-width: 600px) {
-  .footer-leistungen { grid-template-columns: 1fr; }
 }
 
 /* ============================================================
