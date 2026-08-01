@@ -686,6 +686,16 @@
           <text class="bp-cap" x="78" y="76">Grundstück · Aufnahme vor Ort</text>
         </g>
 
+        <!-- 04: Gestaltung – im DOM bewusst frueh (hinter Bestand + Baumkontrolle),
+             damit der Gehweg/die Flaechen UNTER den Beschriftungen liegen. Blendet
+             per Klasse .bp-l4 + Stufe .s4 trotzdem erst in Schritt 4 ein. -->
+        <g class="bp-lyr bp-l4">
+          <path class="bp-path" d="M250 200C300 210 320 260 306 320C294 372 300 420 336 452L282 462C246 424 240 366 254 314C266 268 256 232 236 214Z"/>
+          <path class="bp-design" d="M270 148H392C420 148 430 172 420 196L330 210C296 214 266 190 270 148Z" opacity=".85"/>
+          <ellipse class="bp-water" cx="404" cy="392" rx="58" ry="36"/>
+          <path class="bp-design" d="M112 380H180C196 400 194 430 172 444L112 440Z"/>
+        </g>
+
         <!-- 02: Bestand -->
         <g class="bp-lyr bp-l2">
           <path class="bp-hatch" clip-path="url(#bpPlot)" d="M300 476L494 402L494 490L300 490Z"/>
@@ -711,12 +721,10 @@
           <text class="bp-flag" x="120" y="256">Baumkontrolle · Sachverständiger</text>
         </g>
 
-        <!-- 04: Gestaltung -->
+        <!-- 04: Gestaltung – nur das Label. Die Flaechen liegen frueh (hinter den
+             Beschriftungen), dieser Text aber zuletzt, damit ihn Baum/Bestand nicht
+             verdecken. Eigene .bp-l4-Gruppe: blendet mit .s4 synchron zum Rest ein. -->
         <g class="bp-lyr bp-l4">
-          <path class="bp-path" d="M250 200C300 210 320 260 306 320C294 372 300 420 336 452L282 462C246 424 240 366 254 314C266 268 256 232 236 214Z"/>
-          <path class="bp-design" d="M270 148H392C420 148 430 172 420 196L330 210C296 214 266 190 270 148Z" opacity=".85"/>
-          <ellipse class="bp-water" cx="404" cy="392" rx="58" ry="36"/>
-          <path class="bp-design" d="M112 380H180C196 400 194 430 172 444L112 440Z"/>
           <text class="bp-cap bp-cap-design" x="352" y="336">Gestaltung</text>
         </g>
       </svg>
