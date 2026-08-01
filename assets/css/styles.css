@@ -575,6 +575,13 @@ p  { margin: 0; }
 
 /* ---------- Wood / Special services ---------- */
 .section-wood { background: var(--bg-soft); }
+/* AP-59: Sonderthemen auf Mobil ausblenden, damit die Startseite kurz bleibt.
+   Die drei Themen bleiben ueber die Hero-Teaser ganz oben erreichbar, die auf die
+   jeweiligen Leistungsseiten fuehren. Die Sektion bleibt im DOM: Desktop zeigt sie
+   weiter, und fuer Crawler bleibt das Gutachter-Credential unveraendert sichtbar. */
+@media (max-width: 900px) {
+  #sonderthemen { display: none; }
+}
 .wood-grid {
   display: grid; gap: 22px;
   grid-template-columns: 1.4fr 1fr 1fr;
@@ -2244,6 +2251,41 @@ body.has-lightbox { overflow: hidden; }
   .lightbox-prev { left: 10px; }
   .lightbox-next { right: 10px; }
 }
+
+/* ---- Welt-Dialog der Hero-Teaser (AP-59) ---- */
+/* Gleiches Grundmuster wie die Lightbox: fixed Overlay, [hidden] als Schalter,
+   Scroll-Sperre am body. Panel ist hell, weil der Dialog auf dem Hero sitzt. */
+body.has-welt-dialog { overflow: hidden; }
+.welt-dialog {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(16px, 4vw, 40px);
+}
+.welt-dialog[hidden] { display: none; }
+.welt-dialog-backdrop { position: absolute; inset: 0; background: rgba(10,14,4,.82); backdrop-filter: blur(4px); }
+.welt-dialog-panel {
+  position: relative; z-index: 1;
+  width: min(420px, 100%);
+  background: #fff; color: var(--ink);
+  border-radius: var(--radius);
+  padding: clamp(26px, 5vw, 34px);
+  box-shadow: var(--shadow-float);
+  text-align: center;
+}
+.welt-dialog-title { font-size: 1.2rem; margin: 0 0 6px; }
+.welt-dialog-text { color: var(--ink-mute); font-size: .95rem; margin: 0 0 22px; }
+.welt-dialog-actions { display: flex; flex-direction: column; gap: 10px; }
+/* Buttons fuellen die Panelbreite; .btn bringt nowrap mit, das hier bewusst aufheben. */
+.welt-dialog-actions .btn { width: 100%; justify-content: center; white-space: normal; }
+.welt-dialog-close {
+  position: absolute; top: 10px; right: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--bg-soft); color: var(--ink-2);
+  cursor: pointer; transition: background .2s var(--ease);
+}
+@media (hover: hover) and (pointer: fine) { .welt-dialog-close:hover { background: var(--line); } }
+.welt-dialog-close:focus-visible { outline: 2px solid var(--green-500); outline-offset: 2px; }
 
 /* ============================================================
    Projekt-Detailseite  (AP-15 – /projekte/<slug>/)

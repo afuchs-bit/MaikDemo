@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es vor dem Video paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="100vw" imagesrcset="assets/img/hero/hero-garten-herne-480.avif 480w, assets/img/hero/hero-garten-herne-960.avif 960w, assets/img/hero/hero-garten-herne-1600.avif 1600w" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260730d" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260730e" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -306,7 +306,7 @@
 
     <ul class="hero-teasers reveal" aria-label="Sonderleistungen">
       <li>
-        <a class="teaser teaser-strong" href="#baumkontrolle">
+        <a class="teaser teaser-strong" href="privatkunden/leistungen/baumkontrolle/" data-welt-dialog="baumkontrolle">
           <span class="teaser-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-4M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M22 12h-4M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg>
           </span>
@@ -317,7 +317,7 @@
         </a>
       </li>
       <li>
-        <a class="teaser" href="#sturmnotdienst">
+        <a class="teaser" href="privatkunden/leistungen/sturmnotdienst/" data-welt-dialog="sturmnotdienst">
           <span class="teaser-icon storm" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
           </span>
@@ -328,7 +328,7 @@
         </a>
       </li>
       <li>
-        <a class="teaser" href="#holzverkauf">
+        <a class="teaser" href="privatkunden/leistungen/holzverkauf/">
           <span class="teaser-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13M9 21V12h6v9"/></svg>
           </span>
@@ -1331,7 +1331,27 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=20260730b" defer></script>
+<!-- AP-59: Welt-Auswahl fuer die Hero-Teaser. Baumkontrolle und Sturmnotdienst gibt es
+     als private und als gewerbliche Leistungsseite - der Dialog fragt nach dem Bereich
+     und leitet auf die passende Seite weiter. Der Teaser-href zeigt auf die private
+     Seite und greift unveraendert, wenn kein JS laeuft. Holzverkauf hat keine
+     gewerbliche Seite und oeffnet daher bewusst keinen Dialog. -->
+<div class="welt-dialog" id="weltDialog" role="dialog" aria-modal="true" aria-labelledby="weltDialogTitle" hidden>
+  <div class="welt-dialog-backdrop" data-welt-close></div>
+  <div class="welt-dialog-panel">
+    <button type="button" class="welt-dialog-close" data-welt-close aria-label="Auswahl schließen">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <h2 class="welt-dialog-title" id="weltDialogTitle">Leistung</h2>
+    <p class="welt-dialog-text">Für welchen Bereich suchen Sie diese Leistung?</p>
+    <div class="welt-dialog-actions">
+      <button type="button" class="btn btn-primary" data-welt="privatkunden">Privater Garten</button>
+      <button type="button" class="btn btn-secondary" data-welt="gewerbekunden">Gewerbliches Objekt</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js?v=20260730c" defer></script>
 <script type="module" src="assets/js/projekte.js?v=20260717a"></script>
 </body>
 </html>
