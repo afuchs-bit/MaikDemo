@@ -141,10 +141,12 @@
       });
     });
 
-    // Tap ausserhalb schliesst. navToggle liegt innerhalb von .primary-nav,
-    // sein eigener Handler hat dann schon umgeschaltet.
+    // Tap ausserhalb schliesst. navToggle liegt jetzt in .header-actions (neben
+    // WhatsApp), also AUSSERHALB von .primary-nav - er muss hier ausgenommen
+    // werden, sonst schliesst der Oeffnungs-Klick sofort wieder. Sein eigener
+    // Handler hat zu diesem Zeitpunkt bereits umgeschaltet.
     document.addEventListener('click', (e) => {
-      if (navOffen() && !e.target.closest('.primary-nav')) schliesseNav(false);
+      if (navOffen() && !e.target.closest('.primary-nav') && !e.target.closest('.nav-toggle')) schliesseNav(false);
     });
 
     document.addEventListener('keydown', (e) => {
