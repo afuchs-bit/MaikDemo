@@ -1357,7 +1357,21 @@ p  { margin: 0; }
   }
   .proof-feature { grid-template-columns: 1fr; }
   .wood-grid { grid-template-columns: 1fr; }
-  /* Bestandsplan: Fakt-Karte auf Mobile in den Fluss statt absolut */
+  /* Bauplan-Visual auf Mobil komplett ausblenden: Sobald das Grid stapelt,
+     laege der detailreiche Plan unter dem Text und die Scroll-Animation verloere
+     ihren Kontext. Desktop (nebeneinander, > 900px) behaelt ihn. Bleibt im DOM
+     (Crawler sehen die Beschriftungen weiterhin). */
+  #authVisual { display: none; }
+  /* AP-61: Ohne diese Zeile blieben die vier nummerierten Punkte dauerhaft
+     bei 45%. main.js setzt `is-seq` am #authSteps unbedingt (Zeile 712), der
+     zugehoerige IntersectionObserver haengt aber an #bpPlan INNERHALB des
+     eben ausgeblendeten Visuals und feuert ohne Box nie. Damit kommt nie ein
+     `.is-on` nach, das die 45% aus .authority-points.is-seq .ap aufhebt.
+     Gleiche Gegenmassnahme wie im reduced-motion-Block weiter oben. */
+  .authority-points.is-seq .ap { opacity: 1; }
+  /* Bestandsplan: Fakt-Karte auf Mobile in den Fluss statt absolut.
+     Greift seit dem Ausblenden nicht mehr - bewusst stehen gelassen, damit
+     die Regel beim Ruecknehmen des display:none wieder da ist. */
   .bp-fact {
     position: static; right: auto; top: auto;
     transform: none; margin: 0 auto 16px; width: max-content; max-width: 100%;
