@@ -12,6 +12,17 @@
       "height": 540,
       "aspect": 0.5625
     },
+    "/assets/img/hero/hero-pool.webp": {
+      "base": "/assets/img/hero/hero-pool",
+      "widths": [
+        480,
+        960,
+        1600
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
     "/assets/img/hero/hero-gewerbe-aussenanlagen.webp": {
       "base": "/assets/img/hero/hero-gewerbe-aussenanlagen",
       "widths": [

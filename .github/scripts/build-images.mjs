@@ -30,6 +30,7 @@ const QUALITY_FLOOR = 28; // untere Grenze, darunter nicht mehr
 // src = Quelldatei (relativ zum Repo-Root).
 const SOURCES = [
   { src: 'assets/img/_src/hero-garten-herne.png',            dir: 'assets/img/hero',                              name: 'hero-garten-herne' },
+  { src: 'assets/img/_src/hero-pool.jpg',                     dir: 'assets/img/hero',                              name: 'hero-pool' },
   { src: 'assets/img/_src/hero-gewerbe-aussenanlagen.png',   dir: 'assets/img/hero',                              name: 'hero-gewerbe-aussenanlagen' },
   { src: 'assets/img/_src/vorgarten-herne.png',              dir: 'assets/img/projekte/vorgarten-herne-2026',    name: 'vorgarten-herne' },
   { src: 'assets/img/_src/teichanlage-bochum.png',           dir: 'assets/img/projekte/teichanlage-bochum-2026', name: 'teichanlage-bochum' },
