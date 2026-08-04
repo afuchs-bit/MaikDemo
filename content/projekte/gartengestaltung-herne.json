@@ -1,0 +1,20 @@
+{
+  "titel": "Gartengestaltung",
+  "ort": "Herne",
+  "kundentyp": [
+    "privat"
+  ],
+  "leistungen": [
+    "gartengestaltung",
+    "bepflanzung"
+  ],
+  "datum": "2026-08-04",
+  "featured": false,
+  "beschreibung": "Bei diesem Projekt durften wir die gesamte Gartengestaltung inklusive der Bepflanzung übernehmen. Ziel war es, einen modernen, pflegeleichten und gleichzeitig farbenfrohen Garten zu schaffen, der zu jeder Jahreszeit einen gepflegten Eindruck hinterlässt.\nNeben der harmonischen Anordnung der Beete und Wege wurde besonderer Wert auf eine abwechslungsreiche Pflanzenauswahl gelegt. Immergrüne Gehölze, Blühpflanzen und Bodendecker sorgen für Struktur, Farbe und ein ausgewogenes Gesamtbild. Der neu angelegte Rasen bildet den Mittelpunkt des Gartens und schafft eine großzügige, einladende Fläche.",
+  "bilder": [
+    {
+      "bild": "/assets/img/projekte/gartengestaltung-herne/03ff56b1-b6e3-4d40-a9f7-4c613914ffa7.webp",
+      "alt": "Beispiel Gartengestaltung"
+    }
+  ]
+}
