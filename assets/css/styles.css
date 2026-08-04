@@ -376,12 +376,12 @@ p  { margin: 0; }
 .hero-grain { z-index: 3; }
 .hero-scrim {
   position: absolute; inset: 0;
-  /* AP-53a: Diagonaler Schleier, gespiegelt passend zum gespiegelten Bild -
-     hell oben rechts, klart weich nach unten links auf (Pool links bleibt
-     frei). Keine harte Kante. Zusaetzlich duenne Fuss-Abblendung nach --bg
-     fuer den nahtlosen Uebergang in die folgende Section. */
+  /* AP-53b: Diagonaler Schleier - hell oben links hinter der Schrift, klart
+     weich nach unten rechts auf. Keine harte Kante. Zusaetzlich duenne
+     Fuss-Abblendung nach --bg fuer den nahtlosen Uebergang in die folgende
+     Section. */
   background:
-    linear-gradient(235deg,
+    linear-gradient(125deg,
       rgba(246,244,238,.80) 0%,
       rgba(246,244,238,.60) 28%,
       rgba(246,244,238,.18) 52%,
