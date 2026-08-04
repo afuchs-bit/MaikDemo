@@ -1,0 +1,22 @@
+{
+  "titel": "Poolbau mit individueller Gartengestaltung",
+  "ort": "Herne",
+  "kundentyp": [
+    "privat"
+  ],
+  "leistungen": [
+    "bepflanzung",
+    "pool-whirlpool-umfeld",
+    "palmen-winterfest",
+    "gartengestaltung"
+  ],
+  "datum": "2024-12-09",
+  "featured": false,
+  "beschreibung": "Wir realisieren hochwertige Poolanlagen, die sich harmonisch in den Garten einfügen. Bei diesem Projekt entstand ein moderner Pool, ergänzt durch stilvolle Palmen und eine abgestimmte Bepflanzung, die ein mediterranes Ambiente schafft. Das Ergebnis ist eine private Wohlfühloase, die Design, Erholung und Funktionalität perfekt miteinander verbindet.",
+  "bilder": [
+    {
+      "bild": "/assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/img_5012-1.webp",
+      "alt": "Poolbau und Gartengestaltung"
+    }
+  ]
+}
