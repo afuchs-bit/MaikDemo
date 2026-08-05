@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="100vw" imagesrcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260805a" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260805b" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -627,116 +627,6 @@
   </div>
 </section>
 
-<!-- ============ FACHLICHE AUTORITÄT ============ -->
-<section class="section section-authority" aria-labelledby="auth-title">
-  <div class="container authority-grid">
-    <div class="authority-content reveal">
-      <span class="kicker">Fachliche Autorität</span>
-      <h2 id="auth-title">Fachliche Einschätzung statt Standardlösung.</h2>
-      <p class="lead">
-        Nicht jede Gartenidee funktioniert auf jedem Grundstück gleich gut. Deshalb beginnt eine sinnvolle Planung
-        mit einer Einschätzung vor Ort – Zustand, Nutzung, Gestaltung, technische Machbarkeit und langfristige Pflege.
-      </p>
-
-      <div class="authority-points" id="authSteps">
-        <div class="ap" data-s="1"><span class="ap-num">01</span><div><h4>Beratung vor Ort</h4><p>Statt pauschaler Ferndiagnose. Wir kommen vorbei und sehen es uns an.</p></div></div>
-        <div class="ap" data-s="2"><span class="ap-num">02</span><div><h4>Realistische Einschätzung</h4><p>Budget und Pflegeaufwand müssen passen. Wir sagen ehrlich, was geht.</p></div></div>
-        <div class="ap" data-s="3"><span class="ap-num">03</span><div><h4>Gutachter-Kompetenz</h4><p>Besonders relevant für Baumkontrolle, Gutachten und gewerbliche Außenanlagen.</p></div></div>
-        <div class="ap" data-s="4"><span class="ap-num">04</span><div><h4>Beispielgarten</h4><p>Bei passenden Projekten zeigen wir Materialien und Gestaltungsideen am Betrieb – ausschließlich nach Terminvereinbarung.</p></div></div>
-      </div>
-
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="#kontakt">Beratung anfragen</a>
-        <a class="btn btn-link" href="https://wa.me/491711738943" target="_blank" rel="noopener">oder per WhatsApp →</a>
-      </div>
-    </div>
-
-    <aside class="authority-visual reveal" id="authVisual">
-      <svg class="bp-plan" id="bpPlan" viewBox="0 0 560 560" role="img"
-           aria-label="Schematischer Bestandsplan eines Beispielgrundstücks: Aufnahme vor Ort, Bestandsaufnahme, Baumkontrolle und Gestaltung – in vier Stufen aufgebaut.">
-        <defs>
-          <pattern id="bpHatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="0" x2="0" y2="7" stroke="#c3cfb6" stroke-width="1.1"/>
-          </pattern>
-          <clipPath id="bpPlot">
-            <path d="M78 108L470 84L494 402L418 476L112 452Z"/>
-          </clipPath>
-        </defs>
-
-        <!-- Raster -->
-        <g class="bp-grid" clip-path="url(#bpPlot)">
-          <path d="M40 140H520M40 200H520M40 260H520M40 320H520M40 380H520M40 440H520"/>
-          <path d="M120 60V520M180 60V520M240 60V520M300 60V520M360 60V520M420 60V520M480 60V520"/>
-        </g>
-
-        <!-- 01: Aufnahme -->
-        <g class="bp-lyr bp-l1">
-          <path class="bp-edge" id="bpEdge" d="M78 108L470 84L494 402L418 476L112 452Z"/>
-          <g transform="translate(516,96)">
-            <path class="bp-thin" d="M0 26V0M0 0l-5 8M0 0l5 8"/>
-            <text class="bp-cap" x="0" y="42" text-anchor="middle">N</text>
-          </g>
-          <path class="bp-dim" d="M112 494H418M112 488v12M418 488v12"/>
-          <text class="bp-note" x="265" y="516" text-anchor="middle">ca. 42 m</text>
-          <path class="bp-dim" d="M60 108V452M54 108h12M54 452h12"/>
-          <text class="bp-note" x="46" y="286" text-anchor="middle" transform="rotate(-90 46 286)">ca. 36 m</text>
-          <text class="bp-cap" x="78" y="76">Grundstück · Aufnahme vor Ort</text>
-        </g>
-
-        <!-- 04: Gestaltung – im DOM bewusst frueh (hinter Bestand + Baumkontrolle),
-             damit der Gehweg/die Flaechen UNTER den Beschriftungen liegen. Blendet
-             per Klasse .bp-l4 + Stufe .s4 trotzdem erst in Schritt 4 ein. -->
-        <g class="bp-lyr bp-l4">
-          <path class="bp-path" d="M250 200C300 210 320 260 306 320C294 372 300 420 336 452L282 462C246 424 240 366 254 314C266 268 256 232 236 214Z"/>
-          <path class="bp-design" d="M270 148H392C420 148 430 172 420 196L330 210C296 214 266 190 270 148Z" opacity=".85"/>
-          <ellipse class="bp-water" cx="404" cy="392" rx="58" ry="36"/>
-          <path class="bp-design" d="M112 380H180C196 400 194 430 172 444L112 440Z"/>
-        </g>
-
-        <!-- 02: Bestand -->
-        <g class="bp-lyr bp-l2">
-          <path class="bp-hatch" clip-path="url(#bpPlot)" d="M300 476L494 402L494 490L300 490Z"/>
-          <text class="bp-note" x="404" y="452">Nordhang · ca. 8 %</text>
-          <path class="bp-house" d="M108 130H250V246H108Z"/>
-          <text class="bp-cap" x="118" y="160">Bestand</text>
-          <text class="bp-note" x="118" y="180">Wohnhaus</text>
-          <circle class="bp-tree" cx="392" cy="168" r="30"/>
-          <circle class="bp-tree" cx="196" cy="344" r="38"/>
-          <circle class="bp-tree" cx="436" cy="330" r="24"/>
-          <text class="bp-note" x="392" y="128" text-anchor="middle">Eiche</text>
-          <text class="bp-note" x="196" y="298" text-anchor="middle">Birke</text>
-          <path class="bp-thin" d="M256 268h96"/>
-          <text class="bp-note" x="256" y="288">Boden verdichtet · staunass</text>
-        </g>
-
-        <!-- 03: Baumkontrolle -->
-        <g class="bp-lyr bp-l3">
-          <circle class="bp-pulse" cx="196" cy="344" r="44"/>
-          <circle class="bp-check" cx="196" cy="344" r="48"/>
-          <circle class="bp-check" cx="196" cy="344" r="48" stroke-dasharray="3 6" opacity=".6"/>
-          <path class="bp-thin bp-accent" d="M196 296V262H120"/>
-          <text class="bp-flag" x="120" y="256">Baumkontrolle · Sachverständiger</text>
-        </g>
-
-        <!-- 04: Gestaltung – nur das Label. Die Flaechen liegen frueh (hinter den
-             Beschriftungen), dieser Text aber zuletzt, damit ihn Baum/Bestand nicht
-             verdecken. Eigene .bp-l4-Gruppe: blendet mit .s4 synchron zum Rest ein. -->
-        <g class="bp-lyr bp-l4">
-          <text class="bp-cap bp-cap-design" x="352" y="336">Gestaltung</text>
-        </g>
-      </svg>
-
-      <div class="bp-fact">
-        <span class="fb-eyebrow">Beispielgarten</span>
-        <span class="fb-big">1.500 m²</span>
-        <span class="fb-sub">Musterfläche · nur nach Vereinbarung</span>
-      </div>
-
-      <p class="bp-stagecap" id="bpCap" aria-live="polite"></p>
-    </aside>
-  </div>
-</section>
-
 <!-- ============ PROJEKTE ============ -->
 <section class="section section-projects" id="projekte" aria-labelledby="proj-title">
   <div class="container">
@@ -1242,7 +1132,7 @@
   </div>
 </div>
 
-<script src="assets/js/main.js?v=20260801b" defer></script>
+<script src="assets/js/main.js?v=20260805a" defer></script>
 <script type="module" src="assets/js/projekte.js?v=20260717a"></script>
 </body>
 </html>

@@ -940,18 +940,7 @@ p  { margin: 0; }
 .split-cta span { transition: transform .25s var(--ease); display: inline-block; }
 @media (hover: hover) and (pointer: fine) { .split-card:hover .split-cta span { transform: translateX(6px); } }
 
-/* ---------- Authority Section ---------- */
-.section-authority {
-  background:
-    radial-gradient(900px 600px at 90% 10%, rgba(255,237,0,.18), transparent 60%),
-    radial-gradient(900px 600px at 10% 100%, rgba(235,108,68,.14), transparent 60%),
-    var(--bg);
-}
-.authority-grid {
-  display: grid; gap: clamp(30px, 5vw, 80px);
-  grid-template-columns: 1.2fr 1fr;
-  align-items: center;
-}
+/* ---------- Nummerierte Schritt-Punkte (gewerbekunden/index.html) ---------- */
 .authority-points { display: grid; gap: 10px; margin: 30px 0; }
 .ap {
   display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: start;
@@ -968,86 +957,6 @@ p  { margin: 0; }
 }
 .ap h4 { margin: 0 0 4px; }
 .ap p  { color: var(--ink-2); font-size: .95rem; }
-
-/* Schritt-States – nur aktiv, sobald die JS-Sequenz läuft (Progressive Enhancement) */
-.authority-points.is-seq .ap { opacity: .45; cursor: default; }
-.authority-points.is-seq .ap.is-on { opacity: 1; }
-.authority-points.is-seq .ap.is-on .ap-num { border-color: var(--green-700); color: var(--green-700); box-shadow: 0 6px 16px -8px rgba(49,82,0,.5); }
-.authority-points.is-seq .ap.is-cur { background: var(--green-50); }
-.authority-points.is-seq .ap.is-cur .ap-num { background: var(--green-700); color: #fff; border-color: var(--green-700); }
-
-/* ---------- Authority: Bestandsplan-Visual ---------- */
-.authority-visual { position: relative; }
-.bp-plan { width: 100%; height: auto; display: block; overflow: visible; }
-
-.bp-lyr { opacity: 1; transition: opacity .5s var(--ease); }
-/* Stufenweises Aufblenden – erst wenn die Sequenz gestartet ist */
-.bp-plan.is-seq .bp-lyr { opacity: 0; }
-.bp-plan.is-seq.s1 .bp-l1,
-.bp-plan.is-seq.s2 .bp-l1,
-.bp-plan.is-seq.s3 .bp-l1,
-.bp-plan.is-seq.s4 .bp-l1 { opacity: 1; }
-.bp-plan.is-seq.s2 .bp-l2,
-.bp-plan.is-seq.s3 .bp-l2,
-.bp-plan.is-seq.s4 .bp-l2 { opacity: 1; }
-.bp-plan.is-seq.s3 .bp-l3,
-.bp-plan.is-seq.s4 .bp-l3 { opacity: 1; }
-.bp-plan.is-seq.s4 .bp-l4 { opacity: 1; }
-
-/* Linien & Flächen – auf die Brand-Tokens gemappt */
-.bp-edge  { fill: none; stroke: var(--green-800); stroke-width: 2.2; stroke-linejoin: round; }
-.bp-grid  { stroke: var(--green-300); stroke-width: .6; opacity: .45; }
-.bp-thin  { fill: none; stroke: var(--green-500); stroke-width: 1.1; }
-.bp-dim   { fill: none; stroke: var(--green-300); stroke-width: 1; }
-.bp-accent{ stroke: var(--coral); }
-.bp-cap   { font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; fill: var(--ink-mute); }
-.bp-cap-design { fill: var(--green-700); }
-.bp-note  { font-size: 11.5px; font-weight: 600; fill: var(--ink-2); }
-.bp-flag  { font-size: 11.5px; font-weight: 700; fill: var(--coral); }
-.bp-house { fill: var(--green-50); stroke: var(--green-700); stroke-width: 1.6; }
-.bp-tree  { fill: var(--green-100); stroke: var(--green-500); stroke-width: 1.4; }
-.bp-hatch { fill: url(#bpHatch); stroke: none; }
-.bp-design{ fill: var(--green-100); stroke: var(--green-500); stroke-width: 1.2; opacity: .9; }
-.bp-water { fill: #cfe0e4; stroke: #8fb3ba; stroke-width: 1.2; }
-.bp-path  { fill: var(--bg-soft); stroke: var(--line); stroke-width: 1.2; }
-.bp-check { fill: none; stroke: var(--coral); stroke-width: 2; }
-
-/* Kontur zeichnen (Stufe 1) – stroke-dasharray wird per JS gesetzt */
-.bp-plan.is-seq.s1 .bp-edge,
-.bp-plan.is-seq.s2 .bp-edge,
-.bp-plan.is-seq.s3 .bp-edge,
-.bp-plan.is-seq.s4 .bp-edge { animation: bpDraw 1100ms cubic-bezier(.33,.9,.28,1) forwards; }
-@keyframes bpDraw { to { stroke-dashoffset: 0; } }
-
-/* Puls am geprüften Baum (Stufe 3) */
-.bp-pulse { fill: none; stroke: var(--coral); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
-.bp-plan.is-seq.s3 .bp-pulse,
-.bp-plan.is-seq.s4 .bp-pulse { animation: bpPulse 1600ms cubic-bezier(.2,.7,.3,1) 200ms 1 forwards; }
-@keyframes bpPulse { 0% { opacity: .6; transform: scale(.6); } 100% { opacity: 0; transform: scale(2.6); } }
-
-/* Fakt-Karte – blendet erst nach Stufe 4 ein */
-.bp-fact {
-  position: absolute; top: 3%; right: -2%;
-  background: #fff; border: 1px solid var(--line); border-radius: 20px;
-  box-shadow: var(--shadow-float);
-  padding: 16px 22px; display: flex; flex-direction: column; gap: 4px;
-  transform: rotate(2deg); transform-origin: center;
-  z-index: 2;
-}
-.authority-visual.is-seq .bp-fact { opacity: 0; transform: translateY(12px) rotate(2deg); transition: opacity .55s var(--ease), transform .55s var(--ease); }
-.authority-visual.is-seq.plan-on4 .bp-fact { opacity: 1; transform: translateY(0) rotate(2deg); }
-.fb-eyebrow { font-size: .7rem; text-transform: uppercase; letter-spacing: .16em; color: var(--ink-mute); font-weight: 600; }
-.fb-big { font-family: var(--display); font-weight: 800; font-size: 1.8rem; color: var(--green-700); letter-spacing: -.02em; }
-.fb-sub { font-size: .78rem; color: var(--ink-2); }
-
-.bp-stagecap { margin: 14px 0 0; text-align: center; font-size: .8rem; color: var(--ink-mute); min-height: 20px; }
-
-@media (prefers-reduced-motion: reduce) {
-  /* Endzustand ohne Bewegung – auch falls JS ausfällt */
-  .bp-lyr { opacity: 1 !important; }
-  .bp-fact { opacity: 1 !important; transform: rotate(2deg) !important; }
-  .authority-points.is-seq .ap { opacity: 1; }
-}
 
 /* ---------- Projects ---------- */
 .section-projects { background: var(--bg-soft); }
@@ -1364,7 +1273,6 @@ p  { margin: 0; }
 
   .maik-grid,
   .split-grid,
-  .authority-grid,
   .projects-grid,
   .faq-wrap,
   .contact-grid,
@@ -1373,28 +1281,6 @@ p  { margin: 0; }
   }
   .proof-feature { grid-template-columns: 1fr; }
   .wood-grid { grid-template-columns: 1fr; }
-  /* Bauplan-Visual auf Mobil komplett ausblenden: Sobald das Grid stapelt,
-     laege der detailreiche Plan unter dem Text und die Scroll-Animation verloere
-     ihren Kontext. Desktop (nebeneinander, > 900px) behaelt ihn. Bleibt im DOM
-     (Crawler sehen die Beschriftungen weiterhin). */
-  #authVisual { display: none; }
-  /* AP-61: Ohne diese Zeile blieben die vier nummerierten Punkte dauerhaft
-     bei 45%. main.js setzt `is-seq` am #authSteps unbedingt (Zeile 712), der
-     zugehoerige IntersectionObserver haengt aber an #bpPlan INNERHALB des
-     eben ausgeblendeten Visuals und feuert ohne Box nie. Damit kommt nie ein
-     `.is-on` nach, das die 45% aus .authority-points.is-seq .ap aufhebt.
-     Gleiche Gegenmassnahme wie im reduced-motion-Block weiter oben. */
-  .authority-points.is-seq .ap { opacity: 1; }
-  /* Bestandsplan: Fakt-Karte auf Mobile in den Fluss statt absolut.
-     Greift seit dem Ausblenden nicht mehr - bewusst stehen gelassen, damit
-     die Regel beim Ruecknehmen des display:none wieder da ist. */
-  .bp-fact {
-    position: static; right: auto; top: auto;
-    transform: none; margin: 0 auto 16px; width: max-content; max-width: 100%;
-  }
-  .authority-visual.is-seq .bp-fact,
-  .authority-visual.is-seq.plan-on4 .bp-fact { transform: none; }
-  .authority-visual.is-seq.plan-on4 .bp-fact { opacity: 1; }
   .trust-bar { grid-template-columns: repeat(2, 1fr); padding: 20px; margin: 40px auto 60px; row-gap: 24px; column-gap: 20px; }
   .trust-item:not(:first-child)::before { display: none; }
   .trust-item:not(:first-child) { padding-left: 0; }
