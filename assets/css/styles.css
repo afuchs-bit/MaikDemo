@@ -2592,43 +2592,6 @@ body.has-welt-dialog { overflow: hidden; }
 }
 
 /* ============================================================
-   Ablaufdiagramm „So läuft eine Anfrage ab"  (AP-19 / AP-22)
-   Semantisches <ol> – als Flussdiagramm gestylt, voll text-zugänglich.
-   ============================================================ */
-.ablauf-flow {
-  list-style: none; padding: 0; margin: clamp(32px, 5vh, 56px) 0 0;
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
-}
-.ablauf-step {
-  position: relative; display: flex; flex-direction: column; align-items: center;
-  gap: 14px; text-align: center; padding: 0 6px;
-}
-.ablauf-num {
-  width: 48px; height: 48px; border-radius: 50%;
-  background: var(--green-700); color: #fff;
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--display); font-weight: 800; font-size: 1.2rem;
-  position: relative; z-index: 1; flex-shrink: 0;
-}
-/* Verbindungslinie zwischen den Schritten */
-.ablauf-step:not(:last-child)::after {
-  content: ""; position: absolute; top: 24px; left: 50%; width: calc(100% + 16px); height: 2px;
-  background: var(--green-300); z-index: 0;
-}
-.ablauf-text h3 { font-size: 1rem; margin: 0 0 5px; letter-spacing: -0.01em; }
-.ablauf-text p { font-size: .9rem; color: var(--ink-2); margin: 0; }
-.ablauf-cta { margin-top: clamp(28px, 4vh, 44px); }
-
-@media (max-width: 900px) {
-  .ablauf-flow { grid-template-columns: 1fr; gap: 0; max-width: 460px; margin-inline: auto; }
-  .ablauf-step { flex-direction: row; text-align: left; align-items: flex-start; gap: 16px; padding: 0 0 26px; }
-  .ablauf-step:not(:last-child)::after {
-    top: 48px; left: 24px; width: 2px; height: calc(100% - 48px); transform: translateX(-1px);
-  }
-  .ablauf-text { padding-top: 4px; }
-}
-
-/* ============================================================
    Fachtext-Vertiefung + Ratgeber-Artikel  (AP-22)
    ============================================================ */
 /* Fachtext-Block auf Leistungsseiten (z. B. Verkehrssicherungspflicht) */
