@@ -41,7 +41,10 @@ Früheres, nicht mehr genutztes KI-Bild:
 - **Vorher-Nachher-Slider:** aktuell **Demo-Platzhalter** – beide Ebenen nutzen dasselbe Foto (`ueber-1.jpg` / `ueber-3.jpg`), die „Vorher“-Ebene wird per CSS-Filter entsättigt (`.ba-before img` in `styles.css`).
   **Nachzuliefern:** echte Vorher/Nachher-Fotopaare (gleiche Perspektive!), ablegen als
   `assets/img/privat/ba-1-vorher.jpg` + `ba-1-nachher.jpg` (usw.), dann in `privatkunden/index.html` die `<img>`-Quellen tauschen und den CSS-Platzhalter-Filter entfernen.
-- **Projektkarte „Teichgarten mit Palmen“:** nutzt lokal `assets/img/ueber/ueber-1.jpg`.
+- **Projektkarten auf `/privatkunden/` (`#projekte-privat`):** Cover kommen aus
+  `data/projekte-index.json` (die 3 neuesten Projekte mit `kundentyp: privat`), gerendert von
+  `assets/js/projekte-privat.js`. Statisches Fallback-Markup mit denselben Bildern bleibt
+  sichtbar, falls der Index nicht lädt.
 - **Leistungskarten (`#leistungen`):** die 8 Karten zeigen im aufgeklappten Panel ein Foto.
   **Nachzuliefern** – Dateien einfach unter diesen Pfaden ablegen, es ist **keine Code-Änderung nötig**
   (die Pfade stehen als `--svc-img` je `[data-svc]` in `styles.css`; fehlt eine Datei, greift automatisch
