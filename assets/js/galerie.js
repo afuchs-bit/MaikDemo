@@ -1,5 +1,5 @@
 // assets/js/galerie.js
-// Öffentliche Projektgalerie (/projekte/): Tabs (Aktuell/Alle), Filter-Chips
+// Öffentliche Projektgalerie (/projekte/): Tabs (Alle/Highlights), Filter-Chips
 // (Kundentyp, Leistung) mit Trefferzahl + Deaktivierung, URL-Sync, Lightbox.
 // Kartenoptik/Reveal kommen aus dem gemeinsamen Modul projekte-card.js.
 
@@ -28,7 +28,7 @@ const TYP_OPTIONS = [
   { value: 'gewerbe', label: 'Gewerbekunde' },
 ];
 
-const state = { tab: 'aktuell', typ: 'alle', leistungen: new Set() };
+const state = { tab: 'alle', typ: 'alle', leistungen: new Set() };
 
 let allProjekte = [];
 let taxonomie = []; // [{ slug, label }]
@@ -81,13 +81,13 @@ async function init() {
   if (pendingSlug) openProjektDeepLink(pendingSlug);
 }
 
-// Liest ?projekt=<slug>. Ohne expliziten tab-Param auf „Alle" schalten, damit das
-// Zielprojekt garantiert im Grid liegt (überschreibt keine explizit gesetzten Filter).
+// Liest ?projekt=<slug>. Schaltet immer auf die „Alle"-Ansicht, damit das Zielprojekt
+// garantiert im Grid liegt (Typ- und Leistungsfilter bleiben unberührt).
 function readPendingProjekt() {
   const params = new URLSearchParams(location.search);
   const slug = params.get('projekt');
   if (!slug) return null;
-  if (!params.get('tab')) state.tab = 'alle';
+  state.tab = 'alle';
   return slug;
 }
 
@@ -107,7 +107,7 @@ function showError() {
 
 // ---------- Filter-Logik ----------
 function baseList() {
-  const list = state.tab === 'aktuell' ? allProjekte.filter((p) => p && p.featured) : allProjekte.slice();
+  const list = state.tab === 'highlights' ? allProjekte.filter((p) => p && p.featured) : allProjekte.slice();
   return list.sort((a, b) => String(b.datum).localeCompare(String(a.datum)));
 }
 const matchTyp = (p, typ) => typ === 'alle' || (Array.isArray(p.kundentyp) && p.kundentyp.includes(typ));
@@ -169,7 +169,7 @@ function bindControls() {
 }
 
 function resetFilters() {
-  state.tab = 'aktuell';
+  state.tab = 'alle';
   state.typ = 'alle';
   state.leistungen.clear();
   applyStateToControls();
@@ -276,7 +276,7 @@ function updateCta() {
 // ---------- URL-Sync ----------
 function readStateFromUrl() {
   const params = new URLSearchParams(location.search);
-  state.tab = params.get('tab') === 'alle' ? 'alle' : 'aktuell';
+  state.tab = params.get('tab') === 'highlights' ? 'highlights' : 'alle';
   const typ = params.get('typ');
   state.typ = (typ === 'privat' || typ === 'gewerbe') ? typ : 'alle';
   state.leistungen = new Set(
@@ -289,7 +289,7 @@ function readStateFromUrl() {
 
 function writeStateToUrl() {
   const params = new URLSearchParams();
-  if (state.tab === 'alle') params.set('tab', 'alle');
+  if (state.tab === 'highlights') params.set('tab', 'highlights');
   if (state.typ !== 'alle') params.set('typ', state.typ);
   if (state.leistungen.size) params.set('leistung', [...state.leistungen].join(','));
   const qs = params.toString();

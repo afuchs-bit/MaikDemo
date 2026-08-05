@@ -37,7 +37,7 @@ Schema je Datei:
 | `kundentyp`    | Array           |  ja    | `"privat"` und/oder `"gewerbe"`. **Mehrfachzuordnung möglich** (z. B. Baumkontrolle). |
 | `leistungen`   | Array           |  ja    | Slugs aus `taxonomie.json`. Ein Projekt hat meist mehrere. |
 | `datum`        | String (ISO)    |  ja    | z. B. `"2026-05-01"`. Bestimmt die Sortierung (absteigend). |
-| `featured`     | Boolean         |  ja    | Steuert die Anzeige auf der Startseite (die 3 neuesten mit `featured:true`). |
+| `featured`     | Boolean         |  ja    | Steuert die 3 Karten auf der Startseite (die 3 neuesten mit `featured:true`) **und** den Tab „Highlights" in der Galerie. |
 | `beschreibung` | String          |  ja    | Kurzbeschreibung (deutsch). |
 | `bilder`       | Array           |  ja    | Objekte `{ "bild": …, "alt": … }`. **Das erste Bild ist automatisch das Cover** – kein separates `cover`-Flag. |
 
@@ -60,9 +60,12 @@ Beispiel:
 
 Konventionen: **deutsche** Feldwerte/Labels, **englische** Slugs und Codebezeichner.
 
-### „Aktuell" ist keine Kategorie
-Die Startseite zeigt die **3 neuesten Projekte mit `featured: true`** (sortiert nach `datum`
-absteigend). Es gibt bewusst kein Feld „aktuell".
+### „Highlights" ist keine Kategorie
+`featured: true` ist eine **Auszeichnung**, keine Zeitangabe. Die Startseite zeigt die
+**3 neuesten Projekte mit `featured: true`** (sortiert nach `datum` absteigend), der Tab
+„Highlights" in der Galerie zeigt **alle** markierten Projekte. Es gibt bewusst kein Feld
+„aktuell": Aktualität ergibt sich ausschließlich aus `datum`, und die Galerie öffnet
+standardmäßig mit allen Projekten in genau dieser Reihenfolge.
 
 ### Badge-Regel (Privatkunde / Gewerbekunde)
 Aus `kundentyp` abgeleitet: enthält das Array `"gewerbe"` → Badge **„Gewerbekunde"**
@@ -221,14 +224,15 @@ stellen den Zustand beim Laden wieder her. Default-Werte werden aus der URL wegg
 
 | Parameter  | Werte | Bedeutung |
 |------------|-------|-----------|
-| `tab`      | `alle` | Ansicht „Alle Projekte". Ohne Parameter = `aktuell` (nur `featured`). |
+| `tab`      | `highlights` | Ansicht „Highlights" (nur Projekte mit `featured: true`). Ohne Parameter = alle Projekte, nach `datum` absteigend. |
 | `typ`      | `privat` \| `gewerbe` | Kundentyp-Filter. Ohne Parameter = alle. |
 | `leistung` | Komma-Liste von Taxonomie-Slugs, z. B. `baumkontrolle,bepflanzung` | Leistungs-Filter, **ODER-Semantik**: ein Projekt erscheint, wenn es **mindestens eine** der gewählten Leistungen hat. Unbekannte Slugs werden ignoriert. |
-| `projekt`  | ein Projekt-Slug, z. B. `teichanlage-bochum-2026` | **Deep-Link:** öffnet beim Laden direkt die Lightbox dieses Projekts. Ohne `tab`-Param wird `tab=alle` gesetzt (Sichtbarkeit im Grid). Unbekannter Slug → ignoriert. Der Param wird beim Laden aus der URL entfernt (`replaceState`), damit ein Reload die Lightbox nicht erneut öffnet. Wird von den Startseiten-Karten (`#projekte`) genutzt. |
+| `projekt`  | ein Projekt-Slug, z. B. `teichanlage-bochum-2026` | **Deep-Link:** öffnet beim Laden direkt die Lightbox dieses Projekts. Schaltet immer auf die Alle-Ansicht (Sichtbarkeit im Grid). Unbekannter Slug → ignoriert. Der Param wird beim Laden aus der URL entfernt (`replaceState`), damit ein Reload die Lightbox nicht erneut öffnet. Wird von den Startseiten-Karten (`#projekte`) genutzt. |
 
 **Beispiel-Deeplinks** (z. B. für Direktlinks aus der Sonderthemen-Sektion):
-- Alle Baumkontrolle-Projekte: `…/MaikDemo/projekte/?tab=alle&leistung=baumkontrolle`
-- Gewerbe-Projekte gesamt: `…/MaikDemo/projekte/?tab=alle&typ=gewerbe`
+- Alle Baumkontrolle-Projekte: `…/MaikDemo/projekte/?leistung=baumkontrolle`
+- Gewerbe-Projekte gesamt: `…/MaikDemo/projekte/?typ=gewerbe`
+- Nur die Highlights: `…/MaikDemo/projekte/?tab=highlights`
 
 **Chip-Trefferzahlen** sind facettiert: Kundentyp-Zahlen berücksichtigen den aktiven Leistungsfilter,
 Leistungs-Zahlen den aktiven Kundentyp (jeweils innerhalb des gewählten Tabs). Chips mit 0 Treffern
