@@ -515,8 +515,9 @@
     if (!scroller) return;
     const section = scroller.closest('.section-process');
     const stage = scroller.querySelector('.process-stage');
+    const pin = scroller.querySelector('[data-process-pin]') || stage;
     const track = scroller.querySelector('[data-process-track]');
-    if (!section || !stage || !track) return;
+    if (!section || !stage || !pin || !track) return;
 
     const steps = Array.from(track.querySelectorAll('.step'));
     if (!steps.length) return;
@@ -528,7 +529,13 @@
 
     let mode = null;                    // null | 'h' | 'v'
     let ticking = false, lastIndex = -1;
-    let maxShift = 0;                   // nur 'h'
+    // Seiten duerfen nur den physischen Scrollweg verkuerzen; die visuelle
+    // Verschiebung des Tracks bleibt immer bei der vollstaendigen maxShift.
+    const requestedScrollFactor = Number.parseFloat(scroller.dataset.processScrollFactor || '1');
+    const horizontalScrollFactor = Number.isFinite(requestedScrollFactor)
+      ? Math.min(1, Math.max(.5, requestedScrollFactor))
+      : 1;
+    let maxShift = 0, scrollTravel = 0; // nur 'h'
     let nodeTops = [], travel = 0;      // nur 'v'
 
     const setActive = (idx) => {
@@ -540,16 +547,18 @@
     // ---- 'h': horizontaler Pin (Desktop) ----
     const measureH = () => {
       maxShift = Math.max(0, track.scrollWidth - stage.clientWidth);
+      scrollTravel = maxShift * horizontalScrollFactor;
       section.style.setProperty('--max-shift', maxShift + 'px');
-      // Buehnenhoehe (nicht innerHeight) – nur so faellt das Pin-Ende
+      // Hoehe der angehefteten Gesamtflaeche (nicht innerHeight) – nur so
+      // faellt das Pin-Ende
       // exakt mit progress === 1 zusammen; sonst entsteht am Ende tote
       // Scroll-Strecke, in der sich nichts mehr bewegt.
-      scroller.style.height = (maxShift + stage.getBoundingClientRect().height) + 'px';
+      scroller.style.height = (scrollTravel + pin.getBoundingClientRect().height) + 'px';
     };
 
     const updateH = () => {
       const top = scroller.getBoundingClientRect().top;
-      const progress = maxShift > 0 ? Math.min(1, Math.max(0, -top / maxShift)) : 0;
+      const progress = scrollTravel > 0 ? Math.min(1, Math.max(0, -top / scrollTravel)) : 0;
       section.style.setProperty('--progress', progress.toFixed(4));
       setActive(Math.round(progress * (steps.length - 1)));
     };
