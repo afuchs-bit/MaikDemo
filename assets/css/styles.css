@@ -529,14 +529,19 @@ p  { margin: 0; }
   box-shadow: var(--shadow-card);
   width: min(100% - calc(var(--gutter) * 2), var(--container));
 }
+/* AP-60: Inhalt in allen 4 Boxen zentriert statt nur im ersten Item –
+   vorher stretchten Item 2-4 per Flex-Default auf volle Spaltenbreite
+   und blieben linksbündig, während Item 1 zentriert war. Trennlinie
+   sitzt jetzt auf der Spaltengrenze (left:0) statt 14px versetzt in
+   der alten padding-left-Zone. */
 .trust-item {
   position: relative;
   display: flex; flex-direction: column; gap: 2px;
+  align-items: center; text-align: center;
+  padding: 0 16px;
 }
-.trust-item:first-child { align-items: center; text-align: center; }
-.trust-item:not(:first-child) { padding-left: 28px; }
 .trust-item:not(:first-child)::before {
-  content: ""; position: absolute; left: 14px; top: 2px;
+  content: ""; position: absolute; left: 0; top: 2px;
   width: 1px; height: 52px; background: var(--line);
 }
 .trust-icon {
@@ -579,7 +584,7 @@ p  { margin: 0; }
 
 /* Google-Zelle: Logo+4,8 / Sterne / Bewertungen+67 */
 .trust-item--google .g-row {
-  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
 }
 .trust-item--google .trust-icon--google { height: 20px; width: auto; margin: 0; }
 .g-rating {
@@ -1296,9 +1301,9 @@ p  { margin: 0; }
   .wood-grid { grid-template-columns: 1fr; }
   .trust-bar { grid-template-columns: repeat(2, 1fr); padding: 20px; margin: 40px auto 60px; row-gap: 24px; column-gap: 20px; }
   .trust-item:not(:first-child)::before { display: none; }
-  .trust-item:not(:first-child) { padding-left: 0; }
-  /* Im 2x2-Raster alle Kacheln gleich ausrichten (Basis zentriert nur das erste Item) */
-  .trust-item:first-child { align-items: flex-start; text-align: left; }
+  /* AP-60: Basis-Regel zentriert jetzt bereits alle 4 Items einheitlich –
+     die frühere Sonderregel (alle Items linksbündig) entfällt. */
+  .trust-item { padding: 0; }
   .footer-bottom { justify-content: flex-start; }
 
   /* AP-51: `.btn` traegt `white-space: nowrap`. Auf Desktop sinnvoll, auf dem
@@ -2005,13 +2010,6 @@ p  { margin: 0; }
   margin-bottom: clamp(24px, 3.5vw, 40px);
 }
 .proof-region .proof-chips { justify-content: center; }
-
-/* ---------- Projektbild Palmen-Teich (lokales Foto) ---------- */
-.project-media[data-img="privat-palmen"] {
-  background-image:
-    linear-gradient(180deg, rgba(0,0,0,.0) 55%, rgba(0,0,0,.35)),
-    url("../img/ueber/ueber-1.jpg");
-}
 
 @media (max-width: 900px) {
   .ba-grid { grid-template-columns: 1fr; }
