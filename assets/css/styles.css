@@ -1462,7 +1462,10 @@ p  { margin: 0; }
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -.028em;
-  margin: 14px 0 0;
+  /* AP-68: kein margin-top mehr - die 14px waren der Abstand zur entfernten
+     Eyebrow-Pille. Die H1 folgt jetzt direkt auf den Breadcrumb, dessen ol
+     bereits margin-bottom: 20px traegt. */
+  margin: 0;
 }
 .hero-split-sub {
   margin-top: 16px;
@@ -1471,42 +1474,30 @@ p  { margin: 0; }
   font-size: 1.05rem;
 }
 
-.hero-chips {
-  list-style: none; padding: 0;
-  margin: 22px 0 0;
-  display: flex; flex-wrap: wrap; gap: 8px;
-}
-.hero-chips a {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--bg-elev);
-  font-size: .88rem; font-weight: 600;
-  color: var(--ink-2); text-decoration: none;
-  transition: border-color .2s var(--ease), color .2s var(--ease), background .2s var(--ease);
-}
-/* AP-38: :focus-visible bleibt ungeschuetzt - Tastaturbedienung darf auf
-   keinem Geraet verschwinden. Der Hover-Zwilling steht darunter im Guard. */
-.hero-chips a:focus-visible {
-  border-color: var(--green-700);
-  color: var(--green-700);
-  background: var(--bg);
-}
-@media (hover: hover) and (pointer: fine) {
-  .hero-chips a:hover {
-    border-color: var(--green-700);
-    color: var(--green-700);
-    background: var(--bg);
-  }
-}
-
 .hero-split-ctas {
   margin-top: 26px;
   display: flex; flex-wrap: wrap; align-items: center;
   gap: 14px 20px;
 }
-.hero-split .hero-trust-mini { margin-top: 26px; }
+/* AP-68: Im Split-Hero ohne weissen Pillen-Rahmen. Gleiche Aussage, aber die
+   Zeile konkurriert optisch nicht mehr mit dem CTA-Button. Bewusst auf
+   .hero-split gescoped - der Gewerbe-Hero behaelt die Pillen-Form. */
+.hero-split .hero-trust-mini {
+  margin-top: 30px;
+  padding: 20px 0 0;
+  width: 100%;
+  display: flex;
+  gap: 10px 26px;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+}
+/* AP-68: Die Textspalte des Split-Heros ist zu schmal fuer eine Zeile, die
+   drei Nachweise brechen also immer um. Ein Trennstrich landete dadurch
+   verwaist am Zeilenende - hier trennt stattdessen der groessere Abstand. */
+.hero-split .htm-sep { display: none; }
 
 .hero-split-media { display: flex; flex-direction: column; align-items: flex-start; }
 .ba--hero { width: 100%; }
@@ -1524,7 +1515,6 @@ p  { margin: 0; }
   .hero-split-sub { max-width: none; }
 }
 @media (max-width: 600px) {
-  .hero-chips a { padding: 7px 12px; font-size: .82rem; }
   .hero-split-ctas .btn-primary { width: 100%; justify-content: center; }
 }
 

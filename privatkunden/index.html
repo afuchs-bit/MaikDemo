@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Vorher/Nachher-Standbild vorab laden (AVIF) -->
 <link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 900px) 100vw, 50vw" imagesrcset="../assets/img/ueber/ueber-1-480.avif 480w, ../assets/img/ueber/ueber-1-960.avif 960w" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260805c" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260806a" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -246,11 +246,6 @@
 
     <div class="hero-split-grid">
       <div class="hero-split-text">
-        <span class="eyebrow reveal">
-          <span class="eyebrow-dot"></span>
-          Für Privatkunden · Gartenbaumeister seit 2003
-        </span>
-
         <h1 class="hero-split-title reveal">
           Gartengestaltung, Vorgarten, Teich –
           <em>geplant und gebaut</em> vom Meisterbetrieb.
@@ -261,19 +256,16 @@
           ehrlich dazu, was auf Ihrem Grundstück sinnvoll ist und was nicht.
         </p>
 
-        <ul class="hero-chips reveal" aria-label="Leistungen für Privatkunden">
-          <li><a href="#leistungen">Gartengestaltung</a></li>
-          <li><a href="#leistungen">Vorgartenbau</a></li>
-          <li><a href="#leistungen">Teichanlagen</a></li>
-          <li><a href="#leistungen">Baumarbeiten</a></li>
-          <li><a href="#leistungen">Dachbegrünung</a></li>
-          <li><a href="#leistungen">Gartenpflege</a></li>
-        </ul>
-
         <div class="hero-split-ctas reveal">
           <a href="#anfrage" class="btn btn-primary">
             Vor-Ort-Termin anfragen
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <!-- AP-68: ersetzt die entfernten Hero-Chips, die alle sechs auf
+               denselben Anker zeigten. Nutzt bewusst das bestehende Textlink-
+               Muster .svc-more statt einer zweiten Button-Pille. -->
+          <a href="#leistungen" class="svc-more">
+            Leistungen ansehen <span aria-hidden="true">↓</span>
           </a>
         </div>
 
