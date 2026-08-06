@@ -5,13 +5,29 @@ header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: same-origin');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 
+// TODO VOR LIVEGANG: Diese Empfängeradresse ist nur vorläufig. Vor der finalen
+// Veröffentlichung auf das freigegebene betriebliche Anfragepostfach umstellen.
+const FORM_RECIPIENT = 'kien.david2020@gmail.com';
+
 function redirect_with_status(string $status): void
 {
     $allowed = array('success', 'validation', 'files', 'send', 'spam');
     if (!in_array($status, $allowed, true)) {
         $status = 'send';
     }
-    header('Location: ./?status=' . rawurlencode($status) . '#anfrage', true, 303);
+
+    $accept = isset($_SERVER['HTTP_ACCEPT']) ? (string) $_SERVER['HTTP_ACCEPT'] : '';
+    $requestedWith = isset($_SERVER['HTTP_X_REQUESTED_WITH']) ? strtolower((string) $_SERVER['HTTP_X_REQUESTED_WITH']) : '';
+    if (strpos($accept, 'application/json') !== false || $requestedWith === 'xmlhttprequest') {
+        $ok = $status === 'success';
+        http_response_code($ok ? 200 : ($status === 'send' ? 500 : 422));
+        header('Content-Type: application/json; charset=UTF-8');
+        echo json_encode(array('ok' => $ok, 'state' => $status), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+    $anchor = $status === 'success' ? '#anfrage-erfolg' : '#anfrage';
+    header('Location: ./?status=' . rawurlencode($status) . $anchor, true, 303);
     exit;
 }
 
@@ -48,89 +64,99 @@ if (post_value('website') !== '') {
 }
 
 $concerns = array(
-    'objektpflege' => 'Laufende Objektpflege',
-    'umbau' => 'Bepflanzung / Umgestaltung',
-    'erdarbeiten' => 'Erd- / Baggerarbeiten',
-    'baumkontrolle' => 'Baumkontrolle',
-    'baumarbeiten' => 'Baumarbeiten / Fällung',
-    'begutachtung' => 'Fachliche Begutachtung',
-    'grenzbaum' => 'Baum oder Gehölz an Grundstücksgrenze',
+    'objektpflege' => 'Pflege und Instandhaltung',
+    'umbau' => 'Umgestaltung und Außenanlagen',
     'begruenung' => 'Dach-, Fassaden- oder Stellplatzbegrünung',
+    'baumkontrolle' => 'Baumkontrolle und Baumarbeiten',
     'sturmnotdienst' => 'Akuter Sturmschaden',
+    'begutachtung' => 'Fachliche Begutachtung',
     'ausschreibung' => 'Ausschreibung / Leistungsverzeichnis',
+    'sonstige' => 'Sonstige Objektanfrage',
+);
+$collaborations = array(
+    'massnahme' => 'Einmalige Maßnahme',
+    'projekt' => 'Einzelnes Projekt',
+    'pflege' => 'Regelmäßige Pflege',
+    'betreuung' => 'Wiederkehrende Betreuung',
+    'pruefung' => 'Fachliche Prüfung oder Begutachtung',
+    'ausschreibung' => 'Ausschreibung',
+    'offen' => 'Noch offen',
+);
+$objectTypes = array(
+    'unternehmen' => 'Unternehmensstandort',
+    'wohnanlage' => 'Wohnanlage',
+    'buero' => 'Büro- oder Verwaltungsgebäude',
+    'gewerbe' => 'Gewerbeimmobilie',
+    'institution' => 'Öffentliche oder institutionelle Fläche',
+    'parkplatz' => 'Parkplatz oder Stellplatzanlage',
+    'anderes' => 'Anderes Objekt',
+);
+$timeframes = array(
+    'akut' => 'Akut',
+    'vier_wochen' => 'Innerhalb von vier Wochen',
+    'drei_monate' => 'Innerhalb von drei Monaten',
+    'sechs_monate' => 'Innerhalb von sechs Monaten',
+    'laufend' => 'Laufend oder wiederkehrend',
+    'offen' => 'Noch offen',
+);
+$dangers = array(
+    'ja' => 'Ja',
+    'nein' => 'Nein',
+    'unklar' => 'Unklar',
+);
+$contactWays = array(
+    'telefon' => 'Telefonisch',
+    'email' => 'Per E-Mail',
+    'beides' => 'Telefonisch und per E-Mail',
+);
+$callbackWindows = array(
+    'vormittags' => 'Vormittags',
+    'nachmittags' => 'Nachmittags',
+    'flexibel' => 'Flexibel',
 );
 
 $concern = post_value('anliegen');
+$collaboration = post_value('zusammenarbeit');
 $company = post_value('firma');
 $contactName = post_value('ansprechpartner');
 $email = clean_header_value(post_value('email'));
 $phone = post_value('telefon');
-$location = post_value('standort');
+$street = post_value('strasse');
+$postalCode = post_value('plz');
+$city = post_value('ort');
+$objectType = post_value('objektart');
+$timeframe = post_value('zeitrahmen');
+$danger = post_value('gefaehrdung');
 $description = post_value('beschreibung');
+$additionalInfo = post_value('sonstige_infos');
+$contactWay = post_value('kontaktweg');
+$callbackWindow = post_value('rueckrufzeit');
 $privacy = post_value('datenschutz');
 
 if (
     !isset($concerns[$concern]) ||
+    !isset($collaborations[$collaboration]) ||
     $company === '' ||
     $contactName === '' ||
-    ($email === '' && $phone === '') ||
-    $location === '' ||
+    !preg_match('/^[0-9]{5}$/', $postalCode) ||
+    $city === '' ||
+    !isset($objectTypes[$objectType]) ||
+    !isset($timeframes[$timeframe]) ||
     $description === '' ||
+    !isset($contactWays[$contactWay]) ||
     $privacy !== '1'
 ) {
     redirect_with_status('validation');
 }
 
-$objectTypes = array(
-    'buero' => 'Büro- / Verwaltungsgebäude',
-    'wohnen' => 'Wohnanlage / WEG',
-    'gewerbe' => 'Gewerbe- / Industrieobjekt',
-    'institution' => 'Pflege- / Bildungseinrichtung',
-    'handel' => 'Einzelhandel / Kundenfläche',
-    'sonstiges' => 'Sonstiges',
-);
-$turnuses = array(
-    'woechentlich' => 'Wöchentlich',
-    '14-taegig' => '14-tägig',
-    'monatlich' => 'Monatlich',
-    'saisonal' => 'Saisonal',
-    'bedarf' => 'Einmalig / nach Bedarf',
-);
-$startWindows = array(
-    'sofort' => 'So bald wie möglich',
-    '1-3-monate' => 'In 1–3 Monaten',
-    '3-6-monate' => 'In 3–6 Monaten',
-    'spaeter' => 'Später / langfristige Planung',
-);
-$contactWays = array(
-    'telefon' => 'Telefon',
-    'email' => 'E-Mail',
-    'whatsapp' => 'WhatsApp',
-);
-$callbackWindows = array(
-    '08-10' => '08:00–10:00 Uhr',
-    '10-12' => '10:00–12:00 Uhr',
-    '12-14' => '12:00–14:00 Uhr',
-    '14-16' => '14:00–16:00 Uhr',
-    '16-18' => '16:00–18:00 Uhr',
-);
-
-$objectType = post_value('objektart');
-$objectCount = post_value('anzahl_objekte');
-$area = post_value('flaeche');
-$turnus = post_value('turnus');
-$startWindow = post_value('startzeitraum');
-$contactWay = post_value('kontaktweg');
-$callbackWindow = post_value('rueckruf');
+if (($timeframe === 'akut' && !isset($dangers[$danger])) || ($callbackWindow !== '' && !isset($callbackWindows[$callbackWindow]))) {
+    redirect_with_status('validation');
+}
 
 if (
-    ($objectType !== '' && !isset($objectTypes[$objectType])) ||
-    ($objectCount !== '' && (!ctype_digit($objectCount) || (int) $objectCount < 1 || (int) $objectCount > 999)) ||
-    strlen($area) > 100 ||
-    ($turnus !== '' && !isset($turnuses[$turnus])) ||
-    ($startWindow !== '' && !isset($startWindows[$startWindow])) ||
-    ($contactWay !== '' && !isset($contactWays[$contactWay])) ||
-    ($callbackWindow !== '' && !isset($callbackWindows[$callbackWindow]))
+    ($contactWay === 'telefon' && $phone === '') ||
+    ($contactWay === 'email' && $email === '') ||
+    ($contactWay === 'beides' && ($email === '' || $phone === ''))
 ) {
     redirect_with_status('validation');
 }
@@ -144,8 +170,10 @@ if (
     strlen($contactName) > 120 ||
     strlen($email) > 190 ||
     strlen($phone) > 50 ||
-    strlen($location) > 200 ||
-    strlen($description) > 3000
+    strlen($street) > 180 ||
+    strlen($city) > 120 ||
+    strlen($description) > 3000 ||
+    strlen($additionalInfo) > 2000
 ) {
     redirect_with_status('validation');
 }
@@ -221,12 +249,8 @@ if (isset($_FILES['unterlagen']) && is_array($_FILES['unterlagen']['name'])) {
 }
 
 $optional = array(
-    'Objektart' => $objectType !== '' ? $objectTypes[$objectType] : '',
-    'Anzahl Objekte' => $objectCount,
-    'Ungefähre Fläche' => $area,
-    'Gewünschter Turnus' => $turnus !== '' ? $turnuses[$turnus] : '',
-    'Gewünschter Startzeitraum' => $startWindow !== '' ? $startWindows[$startWindow] : '',
-    'Bevorzugter Kontaktweg' => $contactWay !== '' ? $contactWays[$contactWay] : '',
+    'Straße und Hausnummer' => $street,
+    'Unmittelbare Gefährdung oder Einschränkung' => $timeframe === 'akut' ? $dangers[$danger] : '',
     'Rückrufzeitfenster' => $callbackWindow !== '' ? $callbackWindows[$callbackWindow] : '',
 );
 
@@ -235,11 +259,16 @@ $lines = array(
     '=========================================',
     '',
     'Anliegen: ' . $concerns[$concern],
+    'Art der Zusammenarbeit: ' . $collaborations[$collaboration],
     'Firma / Organisation: ' . $company,
     'Ansprechpartner: ' . $contactName,
     'E-Mail: ' . ($email !== '' ? $email : '–'),
     'Telefon: ' . ($phone !== '' ? $phone : '–'),
-    'Standort: ' . $location,
+    'Postleitzahl: ' . $postalCode,
+    'Ort: ' . $city,
+    'Objektart: ' . $objectTypes[$objectType],
+    'Zeitrahmen: ' . $timeframes[$timeframe],
+    'Gewünschte Rückmeldung: ' . $contactWays[$contactWay],
 );
 
 foreach ($optional as $label => $value) {
@@ -252,6 +281,12 @@ $lines[] = '';
 $lines[] = 'Beschreibung';
 $lines[] = '------------';
 $lines[] = $description;
+if ($additionalInfo !== '') {
+    $lines[] = '';
+    $lines[] = 'Sonstige Informationen';
+    $lines[] = '-----------------------';
+    $lines[] = $additionalInfo;
+}
 $lines[] = '';
 $lines[] = 'Anhänge: ' . count($attachments);
 $lines[] = 'Datenschutzhinweis bestätigt: Ja';
@@ -273,8 +308,7 @@ foreach ($attachments as $attachment) {
 }
 $mailBody .= '--' . $boundary . "--\r\n";
 
-$recipient = 'maik@rohdich.de';
-$subject = '=?UTF-8?B?' . base64_encode('Gewerbliche Anfrage: ' . $concerns[$concern] . ' – ' . $company) . '?=';
+$subject = '=?UTF-8?B?' . base64_encode('Gewerbliche Objektanfrage: ' . $concerns[$concern] . ' – ' . $company) . '?=';
 $headers = array(
     'From: Rohdich Website <website@rohdich.de>',
     'MIME-Version: 1.0',
@@ -285,5 +319,5 @@ if ($email !== '') {
     $headers[] = 'Reply-To: ' . $email;
 }
 
-$sent = mail($recipient, $subject, $mailBody, implode("\r\n", $headers));
+$sent = mail(FORM_RECIPIENT, $subject, $mailBody, implode("\r\n", $headers));
 redirect_with_status($sent ? 'success' : 'send');

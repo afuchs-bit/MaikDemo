@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" type="image/webp" imagesizes="(max-width: 760px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 64px), 38vw" imagesrcset="../assets/img/gewerbe/hero-objektpflege-480.webp 480w, ../assets/img/gewerbe/hero-objektpflege-800.webp 800w, ../assets/img/gewerbe/hero-objektpflege-1200.webp 1200w, ../assets/img/gewerbe/hero-objektpflege-1600.webp 1600w">
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260805c">
-<link rel="stylesheet" href="../assets/css/gewerbe.css?v=20260805a">
+<link rel="stylesheet" href="../assets/css/gewerbe.css?v=20260806c">
 
 <script type="application/ld+json">
 {
@@ -132,6 +132,12 @@
       <path d="M11 5h18l8 8v30H11Z" fill="currentColor" stroke="none" opacity=".08"/>
       <path d="M11 5h18l8 8v30H11ZM29 5v9h8M17 23h14M17 30h14M17 37h9"/>
     </symbol>
+    <symbol id="b2b-icon-object" viewBox="0 0 48 48">
+      <path d="M5 39h38M8 36l10-10 8 7 6-5 8 8"/>
+      <path d="M15 25v-8M10 18c1-5 9-5 10 0 1 4-2 7-5 7s-6-3-5-7Z"/>
+      <circle cx="36" cy="12" r="6"/>
+      <path d="M36 9v6M33 12h6"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -226,16 +232,15 @@
     <div class="container">
       <div class="b2b-hero-grid">
         <div class="b2b-hero-copy">
-          <nav class="breadcrumbs" aria-label="Sie sind hier"><ol><li><a href="../">Startseite</a></li><li aria-current="page">Gewerbekunden</li></ol></nav>
-          <p class="b2b-brandline"><strong>Seit 2003</strong> <span>persönlich geführt von Gartenbaumeister Maik Rohdich.</span></p>
-          <h1 id="b2b-title">Außenanlagen fachgerecht pflegen, entwickeln und erhalten.</h1>
-          <p class="b2b-hero-lead">Wir pflegen, erneuern und prüfen Außenanlagen von Unternehmen, Hausverwaltungen und weiteren gewerblichen Auftraggebern – als Einzelmaßnahme oder im festen Turnus. Gartenbaumeister Maik Rohdich begleitet Ihr Vorhaben persönlich und stimmt Ausführung, Termine und erforderliche Maßnahmen auf Ihr Objekt und den laufenden Betrieb ab.</p>
-          <div class="b2b-hero-actions">
+          <nav class="breadcrumbs reveal" aria-label="Sie sind hier"><ol><li><a href="../">Startseite</a></li><li aria-current="page">Gewerbekunden</li></ol></nav>
+          <p class="b2b-brandline reveal"><strong>Seit 2003</strong> <span>persönlich geführt von Gartenbaumeister Maik Rohdich.</span></p>
+          <h1 class="reveal" id="b2b-title">Außenanlagen fachgerecht pflegen, entwickeln und erhalten.</h1>
+          <p class="b2b-hero-lead reveal">Wir pflegen, erneuern und prüfen Außenanlagen von Unternehmen, Hausverwaltungen und weiteren gewerblichen Auftraggebern – als Einzelmaßnahme oder im festen Turnus. Gartenbaumeister Maik Rohdich begleitet Ihr Vorhaben persönlich und stimmt Ausführung, Termine und erforderliche Maßnahmen auf Ihr Objekt und den laufenden Betrieb ab.</p>
+          <div class="b2b-hero-actions reveal">
             <a class="btn btn-primary" href="#anfrage">Vorhaben persönlich besprechen <span aria-hidden="true">→</span></a>
-            <a class="b2b-secondary-action" href="#b2b-request-paths-title">Anliegen auswählen <span aria-hidden="true">↓</span></a>
           </div>
         </div>
-        <figure class="b2b-hero-media">
+        <figure class="b2b-hero-media reveal">
           <picture>
             <source type="image/webp" srcset="../assets/img/gewerbe/hero-objektpflege-480.webp 480w, ../assets/img/gewerbe/hero-objektpflege-800.webp 800w, ../assets/img/gewerbe/hero-objektpflege-1200.webp 1200w, ../assets/img/gewerbe/hero-objektpflege-1600.webp 1600w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 64px), 38vw">
             <img src="../assets/img/gewerbe/hero-objektpflege-1600.jpg" srcset="../assets/img/gewerbe/hero-objektpflege-480.jpg 480w, ../assets/img/gewerbe/hero-objektpflege-800.jpg 800w, ../assets/img/gewerbe/hero-objektpflege-1200.jpg 1200w, ../assets/img/gewerbe/hero-objektpflege-1600.jpg 1600w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 64px), 38vw" alt="Zwei Mitarbeiter pflegen die begrünte Fassade einer gewerblichen Außenanlage" width="1600" height="2000" fetchpriority="high" decoding="async">
@@ -243,7 +248,7 @@
           <figcaption><span>Persönlich verantwortlich</span><strong>Von der Einordnung bis zur Ausführung.</strong></figcaption>
         </figure>
       </div>
-      <div class="b2b-proof-area">
+      <div class="b2b-proof-area reveal">
         <h2 class="b2b-proof-label" id="b2b-proof-title">Unsere Qualifikationen</h2>
         <ul class="b2b-proof-strip" aria-labelledby="b2b-proof-title">
           <li>
@@ -274,9 +279,11 @@
   <!-- 2: Direkter Einstieg nach Anliegen -->
   <section class="b2b-request-paths" aria-labelledby="b2b-request-paths-title">
     <div class="container">
-      <h2 id="b2b-request-paths-title">Was braucht Ihr Objekt jetzt?</h2>
-      <p class="b2b-request-intro">Wählen Sie den Anlass – wir klären den passenden nächsten Schritt.</p>
-      <ul class="b2b-request-grid" aria-label="Direkter Einstieg nach Anliegen">
+      <div class="b2b-request-head reveal">
+        <h2 id="b2b-request-paths-title">Was braucht Ihr Objekt jetzt?</h2>
+        <p class="b2b-request-intro">Wählen Sie den Anlass – wir klären den passenden nächsten Schritt.</p>
+      </div>
+      <ul class="b2b-request-grid reveal" aria-label="Direkter Einstieg nach Anliegen">
         <li>
           <a class="b2b-request-card" href="#anfrage" data-prefill-anliegen="objektpflege">
             <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-pflege-instandhaltung-640.webp 640w, ../assets/img/gewerbe/services/service-pflege-instandhaltung-960.webp 960w, ../assets/img/gewerbe/services/service-pflege-instandhaltung-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-pflege-instandhaltung-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
@@ -305,12 +312,13 @@
             <span class="b2b-request-arrow" aria-hidden="true">Baumbestand einordnen <b>→</b></span>
           </a>
         </li>
-        <li>
+        <li class="b2b-request-storm">
           <a class="b2b-request-card b2b-request-card--storm" href="#anfrage" data-prefill-anliegen="sturmnotdienst">
             <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-sturmschaden-640.webp 640w, ../assets/img/gewerbe/services/service-sturmschaden-960.webp 960w, ../assets/img/gewerbe/services/service-sturmschaden-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-sturmschaden-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
             <span class="b2b-request-copy"><strong>Akuter Sturmschaden</strong><span>Gefahrenstellen fachlich einschätzen, erforderliche Maßnahmen koordinieren und Zufahrten oder Stellplätze wieder nutzbar machen.</span></span>
-            <span class="b2b-request-arrow" aria-hidden="true">Schnell Hilfe anfragen <b>→</b></span>
+            <span class="b2b-request-arrow" aria-hidden="true"><span class="b2b-request-action-label">Schnell Hilfe anfragen</span><b>→</b></span>
           </a>
+          <a class="b2b-storm-phone" href="tel:+491711738943" aria-label="Notfallnummer 0171 173 8943 anrufen"><span aria-hidden="true">☎</span><strong>0171 173 8943</strong></a>
         </li>
         <li>
           <a class="b2b-request-card" href="#anfrage" data-prefill-anliegen="begutachtung" data-prefill-beschreibung="Wir möchten folgende Arbeit oder Unterlage fachlich prüfen lassen: ">
@@ -320,9 +328,9 @@
           </a>
         </li>
       </ul>
-      <div class="b2b-request-links">
-        <a class="b2b-request-procurement" href="#anfrage" data-prefill-anliegen="ausschreibung"><span class="b2b-request-icon"><svg aria-hidden="true"><use href="#b2b-icon-document"/></svg></span><span><strong>Sie haben ein Leistungsverzeichnis oder eine Ausschreibung?</strong><span>Unterlagen einreichen</span></span><b aria-hidden="true">→</b></a>
-        <a class="b2b-request-other" href="#anfrage">Anderes Vorhaben? Objektanfrage starten <span aria-hidden="true">→</span></a>
+      <div class="b2b-request-links reveal">
+        <a class="b2b-request-route b2b-request-procurement" href="#anfrage" data-prefill-anliegen="ausschreibung" data-prefill-zusammenarbeit="ausschreibung"><span class="b2b-request-icon"><svg aria-hidden="true"><use href="#b2b-icon-document"/></svg></span><span><strong>Leistungsverzeichnis oder Ausschreibung?</strong><span>Unterlagen einreichen</span></span><b aria-hidden="true">→</b></a>
+        <a class="b2b-request-route b2b-request-other" href="#anfrage" data-prefill-anliegen="sonstige"><span class="b2b-request-icon"><svg aria-hidden="true"><use href="#b2b-icon-object"/></svg></span><span><strong>Anderes Vorhaben?</strong><span>Objektanfrage starten</span></span><b aria-hidden="true">→</b></a>
       </div>
     </div>
   </section>
@@ -330,7 +338,7 @@
   <!-- 3: Zusammenarbeit im Alltag -->
   <section class="b2b-section b2b-partner" aria-labelledby="partner-title">
     <div class="container">
-      <div class="b2b-partner-intro">
+      <div class="b2b-partner-intro reveal">
         <div class="b2b-partner-heading">
           <h2 id="partner-title">Klare Verantwortung. Planbare Ausführung.</h2>
         </div>
@@ -339,7 +347,7 @@
         </div>
       </div>
       <div class="b2b-partner-layout">
-        <figure class="b2b-partner-media">
+        <figure class="b2b-partner-media reveal">
           <picture class="b2b-partner-media-main">
             <source type="image/webp" srcset="../assets/img/gewerbe/partner/partner-fuhrpark-baumbeladung-640.webp 640w, ../assets/img/gewerbe/partner/partner-fuhrpark-baumbeladung-960.webp 960w, ../assets/img/gewerbe/partner/partner-fuhrpark-baumbeladung-1440.webp 1440w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 64px), 40vw">
             <img src="../assets/img/gewerbe/partner/partner-fuhrpark-baumbeladung-1440.jpg" srcset="../assets/img/gewerbe/partner/partner-fuhrpark-baumbeladung-640.jpg 640w, ../assets/img/gewerbe/partner/partner-fuhrpark-baumbeladung-960.jpg 960w, ../assets/img/gewerbe/partner/partner-fuhrpark-baumbeladung-1440.jpg 1440w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 64px), 40vw" alt="Ein großer Olivenbaum wird vor einem Firmenfahrzeug von Maik Rohdich verladen." width="1440" height="960" loading="lazy" decoding="async">
@@ -353,7 +361,7 @@
             <img src="../assets/img/gewerbe/partner/partner-team-im-einsatz-1200.jpg" srcset="../assets/img/gewerbe/partner/partner-team-im-einsatz-480.jpg 480w, ../assets/img/gewerbe/partner/partner-team-im-einsatz-800.jpg 800w, ../assets/img/gewerbe/partner/partner-team-im-einsatz-1200.jpg 1200w" sizes="(max-width: 767px) calc((100vw - 46px) / 2), (max-width: 1023px) calc((100vw - 73px) / 2), 20vw" alt="Ein Mitarbeiter von Maik Rohdich arbeitet mit Schutzhelm und Gehörschutz an einem Baum." width="1200" height="1500" loading="lazy" decoding="async">
           </picture>
         </figure>
-        <ul class="b2b-partner-benefits">
+        <ul class="b2b-partner-benefits reveal">
           <li>
             <span class="b2b-partner-label"><span>Persönlich</span> <span>verantwortlich</span></span>
             <h3>Ein Ansprechpartner, der Ihr Objekt kennt.</h3>
@@ -384,7 +392,7 @@
     <div class="process-scroller" data-process-scroller data-process-scroll-factor="0.85">
       <div class="b2b-process-scene" data-process-pin>
         <div class="container">
-          <div class="b2b-process-intro">
+          <div class="b2b-process-intro reveal">
             <div class="b2b-process-intro-heading">
               <h2 id="ablauf-title">So beginnt eine langfristig verlässliche Zusammenarbeit</h2>
             </div>
@@ -392,7 +400,7 @@
               <p class="lead">Durch unsere langjährige Erfahrung wissen wir, welche Informationen zu Beginn wirklich erforderlich sind und wie sich Einsätze verlässlich koordinieren lassen. Von Ihrer ersten Anfrage bis zur Ausführung führen wir Sie durch einen klar strukturierten Ablauf mit kurzen Abstimmungen, eindeutigen Zuständigkeiten und transparenten nächsten Schritten.</p>
               <div class="b2b-process-actions" id="vergabe">
                 <a class="btn btn-primary" href="#anfrage">Jetzt Schritt 1 starten – Objektanfrage senden</a>
-                <a class="btn btn-secondary" href="#anfrage" data-prefill-anliegen="ausschreibung" aria-label="Ausschreibung oder Leistungsverzeichnis einreichen">Ausschreibung / LV einreichen</a>
+                <a class="btn btn-secondary" href="#anfrage" data-prefill-anliegen="ausschreibung" data-prefill-zusammenarbeit="ausschreibung" aria-label="Ausschreibung oder Leistungsverzeichnis einreichen">Ausschreibung / LV einreichen</a>
               </div>
             </div>
           </div>
@@ -451,8 +459,8 @@
   <!-- 7: FAQ -->
   <section class="b2b-section b2b-region-faq" id="faq" aria-labelledby="faq-title">
     <div class="container b2b-region-faq-grid">
-      <div class="b2b-faq-column"><div class="b2b-section-head"><span class="kicker">Kurz geklärt</span><h2 id="faq-title">Fragen vor der ersten Anfrage.</h2></div>
-        <div class="faq-list b2b-faq-list">
+      <div class="b2b-faq-column"><div class="b2b-section-head reveal"><span class="kicker">Kurz geklärt</span><h2 id="faq-title">Fragen vor der ersten Anfrage.</h2></div>
+        <div class="faq-list b2b-faq-list reveal">
           <details><summary><span>Welche gewerblichen Auftraggeber betreuen Sie?</span><span class="chev" aria-hidden="true"></span></summary><div class="faq-body"><p>Wir richten uns an Unternehmen und Gewerbebetriebe, Haus- und Immobilienverwaltungen, Eigentümer und Wohnungswirtschaft sowie institutionelle Auftraggeber und Planungsverantwortliche.</p></div></details>
           <details><summary><span>Sind einzelne und wiederkehrende Arbeiten möglich?</span><span class="chev" aria-hidden="true"></span></summary><div class="faq-body"><p>Ja. Maik Rohdich übernimmt klar umrissene Einzelmaßnahmen ebenso wie wiederkehrende Objektpflege. Auch Kombinationen mit Umbau- oder Sonderarbeiten sind möglich. Was sinnvoll ist, wird passend zum Objekt abgestimmt.</p></div></details>
           <details><summary><span>Welche Leistungen können fachlich begutachtet werden?</span><span class="chev" aria-hidden="true"></span></summary><div class="faq-body"><p>Maik Rohdich kann ausgeführte GaLaBau-Arbeiten und geliefertes Pflanzenmaterial fachlich einordnen sowie Angebote und Abrechnungen auf Plausibilität prüfen. Fragestellung, Unterlagen, Ortstermin und Form der Dokumentation werden vor der Beauftragung abgestimmt.</p></div></details>
@@ -467,43 +475,131 @@
   </section>
 
   <!-- 8: Anfrage -->
-  <section class="section section-contact b2b-contact" id="anfrage" aria-labelledby="anfrage-title">
-    <div class="container contact-grid">
-      <div class="contact-content">
-        <span class="kicker">Gewerbliche Anfrage</span><h2 id="anfrage-title">Beschreiben Sie kurz, was Ihr Objekt braucht.</h2><p class="lead">Maik Rohdich ordnet Ihr Anliegen persönlich ein und stimmt den nächsten sinnvollen Schritt mit Ihnen ab.</p>
-        <div class="contact-rows">
-          <a class="contact-row" href="tel:+492325585790"><span class="cr-icon" aria-hidden="true">☎</span><div><strong>Festnetz</strong><span>02325 / 58 57 90</span></div></a>
-          <a class="contact-row" href="tel:+491711738943"><span class="cr-icon" aria-hidden="true">☎</span><div><strong>Mobil</strong><span>0171 / 173 89 43</span></div></a>
-          <a class="contact-row" data-whatsapp-link href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20wir%20haben%20eine%20gewerbliche%20Anfrage." target="_blank" rel="noopener"><span class="cr-icon" aria-hidden="true">◉</span><div><strong>WhatsApp</strong><span>Fotos und Eckdaten direkt mitsenden</span></div></a>
-          <a class="contact-row" href="mailto:maik@rohdich.de"><span class="cr-icon" aria-hidden="true">@</span><div><strong>E-Mail</strong><span>maik@rohdich.de</span></div></a>
-        </div>
-        <p class="note"><strong>Hinweis:</strong> Besuche an der Hülsstraße 5 in 44625 Herne sind nur nach vorheriger Vereinbarung möglich.</p>
-      </div>
+  <section class="section b2b-contact" id="anfrage" aria-labelledby="anfrage-title">
+    <div class="container">
+      <header class="b2b-contact-intro reveal">
+        <h2 id="anfrage-title">Objektanfrage senden</h2>
+        <p class="lead">Übermitteln Sie uns die wichtigsten Informationen zu Objekt, Leistung und Zeitrahmen. Sie müssen noch nicht alle Details kennen. Fotos, Pläne oder ein Leistungsverzeichnis helfen uns bei der ersten Einordnung.</p>
+      </header>
 
-      <form class="contact-form b2b-form" id="contactForm" action="anfrage.php" method="post" enctype="multipart/form-data" novalidate>
-        <div id="formStatus" class="b2b-form-status" role="status" aria-live="polite" hidden></div>
-        <div class="b2b-form-head"><div><span class="b2b-form-step">Direkte Einordnung</span><h3>Objekt oder Vorhaben anfragen</h3></div><p>Felder mit * sind erforderlich.</p></div>
-        <label class="field"><span>Anliegen *</span><select name="anliegen" id="anliegen" required><option value="">Bitte auswählen</option><option value="objektpflege">Laufende Objektpflege</option><option value="umbau">Bepflanzung / Umgestaltung</option><option value="erdarbeiten">Erd- / Baggerarbeiten</option><option value="baumkontrolle">Baumkontrolle</option><option value="baumarbeiten">Baumarbeiten / Fällung</option><option value="begutachtung">Fachliche Begutachtung</option><option value="grenzbaum">Baum oder Gehölz an Grundstücksgrenze</option><option value="begruenung">Dach-, Fassaden- oder Stellplatzbegrünung</option><option value="sturmnotdienst">Akuter Sturmschaden</option><option value="ausschreibung">Ausschreibung / Leistungsverzeichnis</option></select></label>
-        <div class="b2b-field-row"><label class="field"><span>Firma / Organisation *</span><input type="text" name="firma" autocomplete="organization" maxlength="160" required></label><label class="field"><span>Ansprechpartner *</span><input type="text" name="ansprechpartner" autocomplete="name" maxlength="120" required></label></div>
-        <fieldset class="b2b-contact-choice" id="kontaktGruppe"><legend>Wie können wir Sie erreichen? *</legend><div class="b2b-field-row"><label class="field"><span>E-Mail</span><input type="email" name="email" id="email" autocomplete="email" maxlength="190"></label><label class="field"><span>Telefon</span><input type="tel" name="telefon" id="telefon" autocomplete="tel" maxlength="50"></label></div><p class="b2b-field-hint">Bitte mindestens E-Mail oder Telefonnummer angeben.</p></fieldset>
-        <label class="field"><span>Standort des Objekts *</span><input type="text" name="standort" id="standort" autocomplete="address-level2" placeholder="z. B. Herne oder mehrere Standorte" maxlength="200" required></label>
-        <label class="field"><span>Kurze Beschreibung *</span><textarea name="beschreibung" rows="4" placeholder="Was soll gepflegt, kontrolliert, begutachtet oder verändert werden?" maxlength="3000" required></textarea></label>
-        <details class="b2b-form-more"><summary>Weitere Angaben ergänzen <span aria-hidden="true">+</span></summary><div class="b2b-form-more-grid">
-          <label class="field"><span>Objektart</span><select name="objektart"><option value="">Bitte auswählen</option><option value="buero">Büro- / Verwaltungsgebäude</option><option value="wohnen">Wohnanlage / WEG</option><option value="gewerbe">Gewerbe- / Industrieobjekt</option><option value="institution">Pflege- / Bildungseinrichtung</option><option value="handel">Einzelhandel / Kundenfläche</option><option value="sonstiges">Sonstiges</option></select></label>
-          <label class="field"><span>Anzahl Objekte</span><input type="number" name="anzahl_objekte" min="1" max="999" inputmode="numeric"></label>
-          <label class="field"><span>Ungefähre Fläche</span><input type="text" name="flaeche" placeholder="z. B. 2.500 m²" maxlength="100"></label>
-          <label class="field"><span>Gewünschter Turnus</span><select name="turnus"><option value="">Noch offen</option><option value="woechentlich">Wöchentlich</option><option value="14-taegig">14-tägig</option><option value="monatlich">Monatlich</option><option value="saisonal">Saisonal</option><option value="bedarf">Einmalig / nach Bedarf</option></select></label>
-          <label class="field"><span>Gewünschter Startzeitraum</span><select name="startzeitraum"><option value="">Noch offen</option><option value="sofort">So bald wie möglich</option><option value="1-3-monate">In 1–3 Monaten</option><option value="3-6-monate">In 3–6 Monaten</option><option value="spaeter">Später / langfristige Planung</option></select></label>
-          <label class="field"><span>Bevorzugter Kontaktweg</span><select name="kontaktweg"><option value="">Keine Präferenz</option><option value="telefon">Telefon</option><option value="email">E-Mail</option><option value="whatsapp">WhatsApp</option></select></label>
-          <label class="field"><span>Rückrufzeitfenster</span><select name="rueckruf"><option value="">Keine Präferenz</option><option value="08-10">08:00–10:00 Uhr</option><option value="10-12">10:00–12:00 Uhr</option><option value="12-14">12:00–14:00 Uhr</option><option value="14-16">14:00–16:00 Uhr</option><option value="16-18">16:00–18:00 Uhr</option></select></label>
-        </div></details>
-        <label class="field b2b-upload"><span>Fotos, Pläne oder Leistungsverzeichnis</span><input type="file" name="unterlagen[]" id="unterlagen" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.webp" multiple aria-describedby="uploadHinweis"><span class="b2b-upload-box"><strong>Dateien auswählen</strong><small id="uploadHinweis">PDF, Office oder Bilder · max. 5 Dateien · insgesamt 12 MB</small><em id="uploadSelection">Noch keine Datei ausgewählt</em></span></label>
-        <label class="b2b-consent"><input type="checkbox" name="datenschutz" value="1" required><span>Ich bin damit einverstanden, dass meine Angaben und Dateien zur Bearbeitung dieser Anfrage verarbeitet und per E-Mail an Maik Rohdich übermittelt werden. *</span></label>
-        <details class="b2b-privacy"><summary>Hinweis zur Datenverarbeitung</summary><p>Verantwortlich ist Maik Rohdich Garten- und Landschaftsbau, Hülsstraße 5, 44625 Herne. Die Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Hochgeladene Dateien werden nicht dauerhaft auf dem Webserver gespeichert. Sie können Ihre Einwilligung jederzeit per E-Mail an <a href="mailto:maik@rohdich.de">maik@rohdich.de</a> widerrufen.</p></details>
-        <label class="b2b-honeypot" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-        <div class="form-actions"><button type="submit" class="btn btn-primary">Anfrage sicher senden <span aria-hidden="true">→</span></button><a class="btn btn-link" data-whatsapp-link href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20wir%20haben%20eine%20gewerbliche%20Anfrage." target="_blank" rel="noopener">Lieber per WhatsApp</a></div>
-        <p class="b2b-form-foot">Ihre Dateien werden nur für diese Anfrage übermittelt und nicht dauerhaft auf dem Webserver gespeichert.</p>
-      </form>
+      <div class="b2b-contact-layout">
+        <div class="b2b-form-column reveal">
+          <section class="b2b-form-confirmation" id="anfrage-erfolg" tabindex="-1" aria-labelledby="anfrage-erfolg-title">
+            <span class="b2b-confirmation-mark" aria-hidden="true">✓</span>
+            <span class="b2b-form-step">Anfrage übermittelt</span>
+            <h3 id="anfrage-erfolg-title">Ihre Anfrage ist eingegangen.</h3>
+            <p>Wir prüfen die Angaben und Unterlagen. Anschließend melden wir uns persönlich, um den Bedarf einzuordnen und die nächsten Schritte abzustimmen.</p>
+            <div class="b2b-confirmation-links">
+              <a href="tel:+491711738943"><span>Ergänzungen telefonisch mitteilen</span><strong>0171 / 173 89 43</strong></a>
+              <a href="mailto:maik@rohdich.de?subject=Erg%C3%A4nzung%20zu%20meiner%20Objektanfrage"><span>Weitere Unterlagen nachreichen</span><strong>maik@rohdich.de</strong></a>
+            </div>
+            <p class="b2b-confirmation-note">Bitte geben Sie bei Ergänzungen Ihre Firma und den Objektstandort an, damit wir die Informationen sicher zuordnen können.</p>
+          </section>
+
+          <form class="contact-form b2b-form" id="contactForm" action="anfrage.php" method="post" enctype="multipart/form-data" novalidate>
+            <div id="formStatus" class="b2b-form-status" role="alert" aria-live="polite" tabindex="-1" hidden></div>
+            <div class="b2b-form-head"><div><span class="b2b-form-step">Objektanfrage</span><h3>Ihre Angaben in vier übersichtlichen Kapiteln</h3></div><p>Pflichtfelder sind mit <span class="b2b-required-mark" aria-hidden="true">*</span><span class="b2b-visually-hidden">Stern</span> gekennzeichnet.</p></div>
+
+            <div class="b2b-form-workspace">
+              <h4 class="b2b-stage-heading" data-stage-heading="1"><button type="button" class="b2b-stage-toggle" id="stage-toggle-1" aria-expanded="true" aria-controls="stage-panel-1"><span class="b2b-stage-number">01</span><span><strong>Anliegen</strong><small data-stage-summary="1">Anlass und Zusammenarbeit</small></span><span class="b2b-stage-state" aria-hidden="true">→</span></button></h4>
+              <section class="b2b-stage-panel" id="stage-panel-1" data-stage-panel="1" aria-labelledby="stage-toggle-1">
+                <div class="b2b-stage-panel-head"><h4>Was dürfen wir für Sie einordnen?</h4><p>Wählen Sie den fachlichen Anlass und die gewünschte Form der Zusammenarbeit.</p></div>
+                <fieldset class="b2b-form-group"><legend>Worum geht es? <span class="b2b-required-mark" aria-hidden="true">*</span></legend><div class="b2b-choice-grid b2b-choice-grid--two">
+                  <label class="b2b-choice"><input type="radio" name="anliegen" value="objektpflege" required><span>Pflege und Instandhaltung</span></label>
+                  <label class="b2b-choice"><input type="radio" name="anliegen" value="umbau" required><span>Umgestaltung und Außenanlagen</span></label>
+                  <label class="b2b-choice"><input type="radio" name="anliegen" value="begruenung" required><span>Dach-, Fassaden- oder Stellplatzbegrünung</span></label>
+                  <label class="b2b-choice"><input type="radio" name="anliegen" value="baumkontrolle" required><span>Baumkontrolle und Baumarbeiten</span></label>
+                  <label class="b2b-choice b2b-choice--urgent"><input type="radio" name="anliegen" value="sturmnotdienst" required><span>Akuter Sturmschaden</span></label>
+                  <label class="b2b-choice"><input type="radio" name="anliegen" value="begutachtung" required><span>Fachliche Begutachtung</span></label>
+                  <label class="b2b-choice"><input type="radio" name="anliegen" value="ausschreibung" required><span>Ausschreibung oder Leistungsverzeichnis</span></label>
+                  <label class="b2b-choice"><input type="radio" name="anliegen" value="sonstige" required><span>Sonstige Objektanfrage</span></label>
+                </div></fieldset>
+                <fieldset class="b2b-form-group"><legend>Art der Zusammenarbeit <span class="b2b-required-mark" aria-hidden="true">*</span></legend><div class="b2b-choice-grid b2b-choice-grid--two">
+                  <label class="b2b-choice"><input type="radio" name="zusammenarbeit" value="massnahme" required><span>Einmalige Maßnahme</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zusammenarbeit" value="projekt" required><span>Einzelnes Projekt</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zusammenarbeit" value="pflege" required><span>Regelmäßige Pflege</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zusammenarbeit" value="betreuung" required><span>Wiederkehrende Betreuung</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zusammenarbeit" value="pruefung" required><span>Fachliche Prüfung oder Begutachtung</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zusammenarbeit" value="ausschreibung" required><span>Ausschreibung</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zusammenarbeit" value="offen" required><span>Noch offen</span></label>
+                </div></fieldset>
+                <div class="b2b-stage-actions"><span></span><button type="button" class="btn btn-primary" data-stage-next="2">Weiter zu Auftraggeber &amp; Objekt <span aria-hidden="true">→</span></button></div>
+              </section>
+
+              <h4 class="b2b-stage-heading" data-stage-heading="2"><button type="button" class="b2b-stage-toggle" id="stage-toggle-2" aria-expanded="true" aria-controls="stage-panel-2"><span class="b2b-stage-number">02</span><span><strong>Auftraggeber &amp; Objekt</strong><small data-stage-summary="2">Kontakt- und Standortdaten</small></span><span class="b2b-stage-state" aria-hidden="true">→</span></button></h4>
+              <section class="b2b-stage-panel" id="stage-panel-2" data-stage-panel="2" aria-labelledby="stage-toggle-2">
+                <div class="b2b-stage-panel-head"><h4>Wer fragt für welches Objekt an?</h4><p>PLZ und Ort genügen für die erste räumliche Einordnung. Weitere Angaben können Sie ergänzen.</p></div>
+                <fieldset class="b2b-form-group"><legend>Auftraggeber</legend>
+                  <div class="b2b-field-grid">
+                    <label class="field"><span>Unternehmen oder Organisation <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="firma" autocomplete="organization" maxlength="160" required></label>
+                    <label class="field"><span>Ansprechpartner <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="ansprechpartner" autocomplete="name" maxlength="120" required></label>
+                  </div>
+                  <fieldset class="b2b-form-subgroup" id="kontaktGruppe" aria-describedby="kontaktHinweis"><legend>Wie dürfen wir Sie am besten kontaktieren? <span class="b2b-required-mark" aria-hidden="true">*</span></legend><div class="b2b-choice-grid b2b-choice-grid--three"><label class="b2b-choice"><input type="radio" name="kontaktweg" value="telefon" required><span>Telefonisch</span></label><label class="b2b-choice"><input type="radio" name="kontaktweg" value="email" required><span>Per E-Mail</span></label><label class="b2b-choice"><input type="radio" name="kontaktweg" value="beides" required><span>Beides</span></label></div><p class="b2b-field-hint" id="kontaktHinweis">Je nach Auswahl wird die Telefonnummer, die E-Mail-Adresse oder beides zum Pflichtfeld.</p></fieldset>
+                  <div class="b2b-field-grid b2b-contact-fields">
+                    <label class="field"><span>E-Mail-Adresse <span class="b2b-required-mark" data-required-marker="email" aria-hidden="true" hidden>*</span></span><input type="email" name="email" id="email" autocomplete="email" maxlength="190"></label>
+                    <label class="field"><span>Telefonnummer <span class="b2b-required-mark" data-required-marker="telefon" aria-hidden="true" hidden>*</span></span><input type="tel" name="telefon" id="telefon" autocomplete="tel" maxlength="50"></label>
+                  </div>
+                </fieldset>
+                <fieldset class="b2b-form-group"><legend>Objekt</legend><div class="b2b-field-grid">
+                  <label class="field b2b-field-wide"><span>Straße und Hausnummer <small>optional</small></span><input type="text" name="strasse" autocomplete="street-address" maxlength="180"></label>
+                  <label class="field b2b-field-postcode"><span>Postleitzahl <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="plz" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" required></label>
+                  <label class="field"><span>Ort <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="ort" id="standort" autocomplete="address-level2" maxlength="120" required></label>
+                  <label class="field b2b-field-wide"><span>Objektart <span class="b2b-required-mark" aria-hidden="true">*</span></span><select name="objektart" required><option value="">Bitte auswählen</option><option value="unternehmen">Unternehmensstandort</option><option value="wohnanlage">Wohnanlage</option><option value="buero">Büro- oder Verwaltungsgebäude</option><option value="gewerbe">Gewerbeimmobilie</option><option value="institution">Öffentliche oder institutionelle Fläche</option><option value="parkplatz">Parkplatz oder Stellplatzanlage</option><option value="anderes">Anderes Objekt</option></select></label>
+                </div></fieldset>
+                <div class="b2b-stage-actions"><button type="button" class="btn btn-secondary" data-stage-back="1">Zurück</button><button type="button" class="btn btn-primary" data-stage-next="3">Weiter zu Beschreibung &amp; Zeitrahmen <span aria-hidden="true">→</span></button></div>
+              </section>
+
+              <h4 class="b2b-stage-heading" data-stage-heading="3"><button type="button" class="b2b-stage-toggle" id="stage-toggle-3" aria-expanded="true" aria-controls="stage-panel-3"><span class="b2b-stage-number">03</span><span><strong>Beschreibung &amp; Zeitrahmen</strong><small data-stage-summary="3">Situation, Bedarf und Dringlichkeit</small></span><span class="b2b-stage-state" aria-hidden="true">→</span></button></h4>
+              <section class="b2b-stage-panel" id="stage-panel-3" data-stage-panel="3" aria-labelledby="stage-toggle-3">
+                <div class="b2b-stage-panel-head"><h4>Was ist geplant – und wann wird die Leistung benötigt?</h4><p>Beschreiben Sie zunächst kurz die Ausgangssituation und ordnen Sie anschließend den Zeitrahmen ein.</p></div>
+                <fieldset class="b2b-form-group"><legend>Beschreibung</legend><label class="field"><span>Ausgangssituation und gewünschter Umfang <span class="b2b-required-mark" aria-hidden="true">*</span></span><textarea name="beschreibung" rows="5" placeholder="Beschreiben Sie kurz die Ausgangssituation, den gewünschten Umfang und besondere Anforderungen an Ihrem Standort." maxlength="3000" required></textarea></label><p class="b2b-field-hint">Relevant können beispielsweise Zufahrten, Betriebszeiten, Sicherheitsanforderungen, Bauabschnitte oder feste Fristen sein.</p></fieldset>
+                <fieldset class="b2b-form-group"><legend>Zeitrahmen und Dringlichkeit <span class="b2b-required-mark" aria-hidden="true">*</span></legend><div class="b2b-choice-grid b2b-choice-grid--two">
+                  <label class="b2b-choice b2b-choice--urgent"><input type="radio" name="zeitrahmen" value="akut" required><span>Akut</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zeitrahmen" value="vier_wochen" required><span>Innerhalb von vier Wochen</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zeitrahmen" value="drei_monate" required><span>Innerhalb von drei Monaten</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zeitrahmen" value="sechs_monate" required><span>Innerhalb von sechs Monaten</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zeitrahmen" value="laufend" required><span>Laufend oder wiederkehrend</span></label>
+                  <label class="b2b-choice"><input type="radio" name="zeitrahmen" value="offen" required><span>Noch offen</span></label>
+                </div></fieldset>
+                <fieldset class="b2b-form-group b2b-conditional-group" id="gefahrGruppe" hidden><legend>Besteht eine unmittelbare Gefährdung oder Einschränkung? <span class="b2b-required-mark" aria-hidden="true">*</span></legend><div class="b2b-choice-grid b2b-choice-grid--three"><label class="b2b-choice b2b-choice--urgent"><input type="radio" name="gefaehrdung" value="ja"><span>Ja</span></label><label class="b2b-choice"><input type="radio" name="gefaehrdung" value="nein"><span>Nein</span></label><label class="b2b-choice"><input type="radio" name="gefaehrdung" value="unklar"><span>Unklar</span></label></div></fieldset>
+                <div class="b2b-stage-actions"><button type="button" class="btn btn-secondary" data-stage-back="2">Zurück</button><button type="button" class="btn btn-primary" data-stage-next="4">Weiter zu Unterlagen &amp; Freigabe <span aria-hidden="true">→</span></button></div>
+              </section>
+
+              <h4 class="b2b-stage-heading" data-stage-heading="4"><button type="button" class="b2b-stage-toggle" id="stage-toggle-4" aria-expanded="true" aria-controls="stage-panel-4"><span class="b2b-stage-number">04</span><span><strong>Unterlagen &amp; Freigabe</strong><small data-stage-summary="4">Dateien, Hinweise und Datenschutz</small></span><span class="b2b-stage-state" aria-hidden="true">→</span></button></h4>
+              <section class="b2b-stage-panel" id="stage-panel-4" data-stage-panel="4" aria-labelledby="stage-toggle-4">
+                <div class="b2b-stage-panel-head"><h4>Welche Unterlagen oder Hinweise möchten Sie ergänzen?</h4><p>Fotos, Pläne und zusätzliche Informationen erleichtern die erste Einordnung. Beides bleibt optional.</p></div>
+                <fieldset class="b2b-form-group"><legend>Unterlagen <small>optional</small></legend><label class="field b2b-upload"><span>Fotos, Pläne, Leistungsverzeichnis oder weitere Dokumente</span><input type="file" name="unterlagen[]" id="unterlagen" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.webp" multiple aria-describedby="uploadHinweis"><span class="b2b-upload-box"><strong>Dateien auswählen</strong><small id="uploadHinweis">PDF, DOC/DOCX, XLS/XLSX, JPG/JPEG, PNG oder WebP · max. 5 Dateien · insgesamt 12 MB</small><em id="uploadSelection">Noch keine Datei ausgewählt</em></span></label></fieldset>
+                <fieldset class="b2b-form-group"><legend>Sonstige Informationen <small>optional</small></legend><label class="field"><span>Ergänzende Hinweise</span><textarea name="sonstige_infos" rows="3" placeholder="Gibt es weitere Hinweise, die wir bei der Einordnung berücksichtigen sollen?" maxlength="2000"></textarea></label><p class="b2b-field-hint">Zum Beispiel besondere Zugangsbedingungen, interne Ansprechpartner vor Ort oder ergänzende Fristen.</p></fieldset>
+                <div class="b2b-final-consent"><span class="b2b-final-consent-label">Datenschutz</span><label class="b2b-consent"><input type="checkbox" name="datenschutz" value="1" required><span>Ich bin damit einverstanden, dass meine Angaben und Dateien zur Bearbeitung dieser Anfrage verarbeitet und per E-Mail an Maik Rohdich übermittelt werden. <span class="b2b-required-mark" aria-hidden="true">*</span></span></label><details class="b2b-privacy"><summary>Hinweis zur Datenverarbeitung</summary><p>Verantwortlich ist Maik Rohdich Garten- und Landschaftsbau, Hülsstraße 5, 44625 Herne. Die Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Hochgeladene Dateien werden nicht dauerhaft auf dem Webserver gespeichert. Sie können Ihre Einwilligung jederzeit per E-Mail an <a href="mailto:maik@rohdich.de">maik@rohdich.de</a> widerrufen.</p></details></div>
+                <label class="b2b-honeypot" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                <div class="b2b-stage-actions b2b-stage-actions--submit"><button type="button" class="btn btn-secondary" data-stage-back="3">Zurück</button><button type="submit" class="btn btn-primary" id="b2bSubmitButton"><span data-submit-label>Objektanfrage übermitteln</span> <span aria-hidden="true">→</span></button></div>
+              </section>
+            </div>
+          </form>
+        </div>
+
+        <aside class="b2b-contact-aside reveal" aria-labelledby="b2b-contact-person">
+          <div class="b2b-contact-person">
+            <span class="b2b-contact-eyebrow">Ihr Ansprechpartner</span>
+            <h3 id="b2b-contact-person">Maik Rohdich</h3>
+            <p>Gartenbaumeister und persönlicher Ansprechpartner für Ihre gewerbliche Anfrage.</p>
+          </div>
+          <address class="b2b-contact-direct" aria-label="Direkte Kontaktdaten">
+            <a href="tel:+492325585790"><span aria-hidden="true">☎</span><span><small>Festnetz</small><strong>02325 / 58 57 90</strong></span></a>
+            <a href="tel:+491711738943"><span aria-hidden="true">☎</span><span><small>Mobil</small><strong>0171 / 173 89 43</strong></span></a>
+            <a href="mailto:maik@rohdich.de"><span aria-hidden="true">@</span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a>
+            <a data-whatsapp-link href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20wir%20haben%20eine%20gewerbliche%20Anfrage." target="_blank" rel="noopener"><span aria-hidden="true">◉</span><span><small>WhatsApp</small><strong>Nachricht senden</strong></span></a>
+          </address>
+          <div class="b2b-contact-advice">
+            <h4>Persönliche Rückmeldung</h4>
+            <p>Da wir tagsüber häufig auf Baustellen und bei Kunden im Einsatz sind, kann ein Rückruf sinnvoller sein als ein sofortiges Gespräch. Hinterlassen Sie Ihre Kontaktdaten und Ihr Anliegen – wir melden uns persönlich.</p>
+          </div>
+          <div class="b2b-contact-facts">
+            <section><h4>Termine</h4><p>Objekttermine und Besuche ausschließlich nach Vereinbarung.</p></section>
+            <section><h4>Einsatzgebiet</h4><ul><li>Herne</li><li>Bochum</li><li>Castrop-Rauxel</li><li>Recklinghausen</li><li>Gelsenkirchen</li><li>weitere Orte nach Projekt</li></ul></section>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -522,6 +618,6 @@
 <div class="b2b-mobile-actions" aria-label="Schnellkontakt" aria-hidden="true" inert><a class="b2b-mobile-main" href="#anfrage">Objekt anfragen</a><a href="tel:+491711738943" aria-label="Anrufen">☎</a><a data-whatsapp-link href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20wir%20haben%20eine%20gewerbliche%20Anfrage." target="_blank" rel="noopener" aria-label="WhatsApp">◉</a></div>
 
 <script src="../assets/js/main.js?v=20260805a" defer></script>
-<script src="../assets/js/gewerbe.js?v=20260725c" defer></script>
+<script src="../assets/js/gewerbe.js?v=20260806b" defer></script>
 </body>
 </html>
