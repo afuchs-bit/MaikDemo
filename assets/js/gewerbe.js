@@ -281,8 +281,12 @@
       target?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-      showStatus('Vorschau: Die Angaben sind vollständig. Auf dem Live-Hosting würde die Objektanfrage jetzt sicher übermittelt.', 'success');
+    // Ohne data-endpoint läuft das Formular im reinen Frontend-Betrieb: die Angaben
+    // werden geprüft, aber nicht versendet. Zum Anbinden eines Backends das Attribut
+    // am Formular setzen.
+    const endpoint = form.dataset.endpoint;
+    if (!endpoint) {
+      showStatus('Ihre Angaben sind vollständig, das Formular ist aber noch nicht angebunden – es wird nichts versendet. Bitte schicken Sie uns Ihre Anfrage per E-Mail an maik@rohdich.de oder melden sich telefonisch oder per WhatsApp.');
       return;
     }
 
@@ -291,7 +295,7 @@
     if (submitLabel) submitLabel.textContent = 'Anfrage wird übermittelt …';
     if (statusBox) statusBox.hidden = true;
     try {
-      const response = await fetch(form.action, {
+      const response = await fetch(endpoint, {
         method: 'POST',
         body: new FormData(form),
         headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
@@ -314,22 +318,8 @@
     }
   });
 
-  const params = new URLSearchParams(window.location.search);
-  const state = params.get('status');
-  if (state === 'success') {
-    showConfirmation();
-  } else if (state && statusBox) {
-    const messages = {
-      validation: 'Bitte prüfen Sie Ihre Angaben. Mindestens ein Pflichtfeld ist noch nicht vollständig.',
-      files: 'Mindestens eine Datei konnte nicht verarbeitet werden. Bitte prüfen Sie Dateityp, Anzahl und Gesamtgröße.',
-      send: 'Die Anfrage konnte technisch nicht versendet werden. Bitte nutzen Sie Telefon, WhatsApp oder E-Mail.',
-      spam: 'Die Anfrage konnte nicht verarbeitet werden.'
-    };
-    statusBox.textContent = messages[state] || messages.send;
-    statusBox.dataset.state = 'error';
-    statusBox.hidden = false;
-    history.replaceState({}, '', `${location.pathname}${location.hash || '#anfrage'}`);
-  }
+  // Die Auswertung von ?status=… gehört zum Backend-Betrieb und wird mit dem Backend
+  // wieder ergänzt. Ohne Backend setzt niemand den Parameter.
 
   updateDangerQuestion();
   updateContactRequirements();
