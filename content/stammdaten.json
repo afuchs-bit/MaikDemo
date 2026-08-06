@@ -19,13 +19,14 @@
     "email": "Maik@rohdich.de"
   },
   "oeffnungszeiten": {
-    "montagBisFreitag": "08:00–20:00 Uhr",
-    "samstagSonntag": "geschlossen",
+    "montagBisFreitag": "09:00–17:00 Uhr",
+    "samstag": "09:00–12:00 Uhr",
+    "sonntag": "geschlossen",
     "whatsapp": "24/7 erreichbar für Nachrichten – Antwort zu den Geschäftszeiten",
     "besuche": "ausschließlich nach vorheriger Terminvereinbarung"
   },
   "einsatzgebiet": ["Herne", "Bochum", "Castrop-Rauxel", "Recklinghausen", "Gelsenkirchen-Buer"],
-  "bewertungen": { "anzahl": 67, "durchschnitt": 4.8 },
+  "bewertungen": { "anzahl": 67, "durchschnitt": 4.9 },
   "besonderheiten": ["Ausbildungsbetrieb", "Sachverständiger für Baumkontrolle", "Meisterbetrieb"],
   "offen": {
     "_hinweis": "Noch vom Auftraggeber nachzuliefern – siehe docs/offene-punkte.md.",
