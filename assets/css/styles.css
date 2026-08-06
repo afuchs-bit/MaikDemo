@@ -242,27 +242,36 @@ p  { margin: 0; }
 }
 .header-inner {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: clamp(174px,17vw,235px) minmax(0,1fr) auto;
   align-items: center;
-  gap: 24px;
+  gap: clamp(16px,1.5vw,22px);
+  width: min(100% - 40px,1360px);
   padding: 14px 0;
 }
 .brand {
   display: inline-flex; align-items: center; gap: 12px;
+  min-width: 0;
   text-decoration: none; color: var(--ink);
 }
 .brand-logo {
-  height: 60px;
-  width: 256px;            /* matches 640:150 viewBox */
+  height: clamp(50px,4.84vw,67px);
+  width: clamp(174px,17vw,235px); /* authentic 527:150 logo */
+  flex: 0 0 auto;
   display: block;
+  background: url("../img/logo/maik-rohdich-logo.png") center / contain no-repeat;
   transition: height .25s var(--ease), width .25s var(--ease);
 }
-.site-header.is-scrolled .brand-logo { height: 50px; width: 213px; }
+.brand-logo > use { display: none; }
+.site-header.is-scrolled .brand-logo {
+  height: clamp(50px,4.55vw,62px);
+  width: clamp(174px,16vw,218px);
+}
 .brand-footer .brand-logo {
-  height: 84px; width: 358px;
+  height: 84px; width: 295px;
 }
 @media (max-width: 900px) {
-  .brand-logo { height: 44px; width: 188px; }
+  .brand-logo { height: 44px; width: 155px; }
+  .site-header.is-scrolled .brand-logo { height: 44px; width: 155px; }
 }
 /* Footer dark background: lighten the wordmark slightly while keeping flowers intact */
 .brand-logo-light {
@@ -281,6 +290,10 @@ p  { margin: 0; }
   display: inline-flex; padding: 8px 14px; border-radius: 999px;
   font-size: .9rem; font-weight: 500; color: var(--ink-2);
   text-decoration: none; transition: color .2s var(--ease), background .2s var(--ease);
+}
+@media (min-width: 901px) and (max-width: 1339px) {
+  .menu { gap: 2px; }
+  .menu a { padding-inline: 9px; font-size: .86rem; }
 }
 @media (hover: hover) and (pointer: fine) { .menu a:hover { background: var(--bg-elev); color: var(--ink); } }
 
