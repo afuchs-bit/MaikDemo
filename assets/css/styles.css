@@ -2722,15 +2722,31 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 @media (hover: hover) and (pointer: fine) {
   .hero-shot-ctas .btn-whatsapp:hover { background: rgba(255, 255, 255, .24); }
 }
+
+/* AP-81: Primaerer CTA von Markengruen auf hell umgestellt - er soll auf dem
+   dunklen Foto der hellste, ruhigste Button sein statt mit Signalfarbe zu
+   arbeiten. Text in var(--green-700) auf var(--bg) liegt bei 8,2:1 und damit
+   deutlich ueber WCAG AA. Der Pfeil im Button nutzt stroke="currentColor" und
+   uebernimmt die Farbe automatisch. Nur im Hero - .btn-primary bleibt auf dem
+   Rest der Seite gruen. */
+.hero-shot-ctas .btn-primary {
+  background: var(--bg);
+  color: var(--green-700);
+  box-shadow: 0 12px 26px -12px rgba(19, 26, 8, .35), inset 0 1px 0 rgba(255, 255, 255, .6);
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero-shot-ctas .btn-primary:hover { background: #fff; }
+}
+
 /* Es gibt projektweit keine .btn:focus-visible-Regel - die Buttons erben sonst
    den Browser-Standardring. Auf dem dunklen Foto beide Hero-Buttons auf einen
    hellen, klar sichtbaren Ring festlegen. */
 .hero-shot-ctas .btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
-/* .svc-more traegt in der Basisklasse var(--green-700) und waere auf dem
-   Foto nicht lesbar - hier auf den hellen Markenton umstellen. */
-.hero-shot-ctas .svc-more { color: #cfe8a4; }
-.hero-shot-ctas .svc-more:focus-visible { outline-color: #fff; }
+/* AP-81: Auf dem jetzt hellen Primaerbutton waere ein weisser Ring unsichtbar,
+   deshalb hier auf Markengruen. Steht bewusst nach der Regel darueber -
+   gleiche Spezifitaet, spaetere Quelle gewinnt. */
+.hero-shot-ctas .btn-primary:focus-visible { outline-color: var(--green-700); }
 
 .hero-shot-trust {
   margin-top: clamp(20px, 2.4vw, 28px);
