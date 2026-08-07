@@ -32,7 +32,12 @@ export function buildCard(p, opts = {}) {
   h3.textContent = p.titel || '';
   const desc = document.createElement('p');
   desc.textContent = p.beschreibung || '';
-  body.append(loc, h3, desc);
+  // AP-78: Affordanz zum per CSS auf 3 Zeilen gekuerzten Text. Kein <a> – die
+  // Karte traegt bereits .card-open ueber ihrer ganzen Flaeche.
+  const more = el('span', 'card-more');
+  more.textContent = 'Projekt ansehen →';
+  more.setAttribute('aria-hidden', 'true');
+  body.append(loc, h3, desc, more);
 
   article.append(media, body);
   return article;

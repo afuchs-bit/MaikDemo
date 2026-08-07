@@ -7,7 +7,7 @@
 import { dataUrl, SITE_BASE } from './config.js';
 // Versionierter Import: projekte-card.js traegt sonst kein ?v= und wuerde aus dem
 // Browser-Cache in einer aelteren Fassung geladen (Badge-Option fehlt dann).
-import { buildCard, revealCards } from './projekte-card.js?v=20260807a';
+import { buildCard, revealCards } from './projekte-card.js?v=20260807b';
 
 const grid = document.querySelector('[data-projekte-privat]');
 if (grid) init(grid);

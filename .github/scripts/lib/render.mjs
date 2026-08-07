@@ -344,6 +344,7 @@ export function renderGalleryList(projekte, base = BASE_GALLERY) {
           <span class="project-location">${esc(p.ort)}</span>
           <h3>${esc(p.titel)}</h3>
           <p>${esc(p.beschreibung)}</p>
+          <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
         </div>
         <a class="card-open" href="${href}" aria-label="${label}"></a>
       </article>`;
@@ -595,6 +596,7 @@ function lpRefs(refProjects, base) {
             <span class="project-location">${esc(p.ort)}</span>
             <h3>${esc(p.titel)}</h3>
             <p>${esc(p.beschreibung)}</p>
+            <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
           </div>
           <a class="card-open" href="${href}" aria-label="${label}"></a>
         </article>`;
