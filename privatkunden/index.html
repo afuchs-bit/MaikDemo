@@ -18,9 +18,12 @@
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<!-- LCP: Vorher/Nachher-Standbild vorab laden (AVIF) -->
-<link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 900px) 100vw, 50vw" imagesrcset="../assets/img/ueber/ueber-1-480.avif 480w, ../assets/img/ueber/ueber-1-960.avif 960w" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260806c" />
+<!-- AP-76 / LCP: Hero-Foto vorab laden. Laut Web Almanac 2025 ist auf 76 % der
+     Mobilseiten das Hero-Bild das LCP-Element, aber nur 2,1 % laden es vor.
+     imagesizes ist 100vw, weil das Bild die volle Breite fuellt - ein zu
+     kleiner Wert laedt sonst die falsche Aufloesung. -->
+<link rel="preload" as="image" type="image/avif" fetchpriority="high" imagesizes="100vw" imagesrcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.avif 480w, ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.avif 960w, ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-1440.avif 1440w" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260807a" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -230,89 +233,160 @@
 
 <main id="top">
 
-<!-- ============ HERO (Split: Anspruch links, Beweis rechts) ============
-     Bewusst anders als der Startseiten-Hero: kein Vollbild-Motiv, heller,
-     flacher, zweispaltig. Der Vorher/Nachher-Slider steht direkt oben –
-     auf der Verkaufsseite ist er das staerkste Argument. Er ersetzt die
-     fruehere eigene Sektion #vorher-nachher (nur ein Bildpaar vorhanden). -->
-<section class="hero-split" aria-label="Privatkundenbereich">
+<!-- ============ HERO (AP-76) ============
+     Full-Bleed-Foto mit Text-Overlay. Loest den zweispaltigen .hero-split mit
+     Vorher/Nachher-Slider ab: dessen Bildpaar war erfunden (dasselbe Foto,
+     "Vorher" per CSS-Graufilter entsaettigt). Die Slider-Komponente selbst
+     bleibt in CSS und main.js erhalten und ist einsatzbereit, sobald echte
+     Vorher/Nachher-Paare vorliegen. -->
+<div class="hero-shot-bar">
   <div class="container">
-    <nav class="breadcrumbs reveal" aria-label="Sie sind hier">
+    <nav class="breadcrumbs" aria-label="Sie sind hier">
       <ol>
         <li><a href="../">Startseite</a></li>
         <li aria-current="page">Privatkunden</li>
       </ol>
     </nav>
+  </div>
+</div>
 
-    <div class="hero-split-grid">
-      <div class="hero-split-text">
-        <h1 class="hero-split-title reveal">
-          Gartengestaltung, Vorgarten, Teich –
-          <em>geplant und gebaut</em> vom Meisterbetrieb.
-        </h1>
+<section class="hero-shot" aria-label="Privatkundenbereich">
+  <!-- Kein .reveal und kein decoding="async" auf dem LCP-Element: es darf
+       weder per JS eingeblendet noch in der Anzeige verzoegert werden. -->
+  <picture class="hero-shot-media">
+    <source type="image/avif" sizes="100vw"
+            srcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.avif 480w,
+                    ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.avif 960w,
+                    ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-1440.avif 1440w">
+    <source type="image/webp" sizes="100vw"
+            srcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.webp 480w,
+                    ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.webp 960w">
+    <img src="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero.webp"
+         alt="Neu gestalteter Reihenhausgarten in Herne: Rasenfläche, gepflasterter Natursteinweg mit Randstein und bepflanzte Staudenbeete"
+         width="1440" height="1080" fetchpriority="high">
+  </picture>
 
-        <p class="hero-split-sub reveal">
-          Für private Gärten in Herne, Bochum und Umgebung. Beratung bei Ihnen vor Ort –
-          ehrlich dazu, was auf Ihrem Grundstück sinnvoll ist und was nicht.
-        </p>
+  <div class="container hero-shot-inner">
+    <h1 class="hero-shot-title">
+      Gartengestaltung, Vorgarten, Teich –
+      <em>geplant und gebaut</em> vom Meisterbetrieb.
+    </h1>
 
-        <div class="hero-split-ctas reveal">
-          <a href="#anfrage" class="btn btn-primary">
-            Vor-Ort-Termin anfragen
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <!-- AP-68: ersetzt die entfernten Hero-Chips, die alle sechs auf
-               denselben Anker zeigten. Nutzt bewusst das bestehende Textlink-
-               Muster .svc-more statt einer zweiten Button-Pille. -->
-          <a href="#leistungen" class="svc-more">
-            Leistungen ansehen <span aria-hidden="true">↓</span>
-          </a>
-        </div>
+    <p class="hero-shot-sub">
+      Für private Gärten in Herne, Bochum und Umgebung. Wir kommen vorbei, bevor
+      wir ein Angebot machen – und sagen Ihnen auch, was Sie sich sparen können.
+    </p>
 
-        <div class="hero-trust-mini reveal" aria-label="Vertrauensnachweise">
-          <span class="htm-item">
-            <span class="stars" aria-hidden="true"><span class="stars-fg" style="width:98%"></span></span>
-            <strong>4,9</strong> · 67 Google-Bewertungen
-          </span>
-          <span class="htm-sep" aria-hidden="true"></span>
-          <span class="htm-item"><strong>Seit 2003</strong> in Herne</span>
-          <span class="htm-sep" aria-hidden="true"></span>
-          <span class="htm-item"><strong>Gartenbaumeister</strong> · Ausbildungsbetrieb</span>
-        </div>
-      </div>
-
-      <div class="hero-split-media reveal">
-        <!-- TODO: echtes Vorher/Nachher-Paar nachliefern (aktuell Platzhalter:
-             dasselbe Foto, „Vorher“-Ebene per CSS-Filter entsättigt) -->
-        <figure class="ba ba--hero" data-beforeafter>
-          <div class="ba-frame" style="--pos:42%">
-            <picture>
-              <source type="image/avif" sizes="(max-width: 900px) 100vw, 50vw" srcset="../assets/img/ueber/ueber-1-480.avif 480w, ../assets/img/ueber/ueber-1-960.avif 960w">
-              <source type="image/webp" sizes="(max-width: 900px) 100vw, 50vw" srcset="../assets/img/ueber/ueber-1-480.webp 480w, ../assets/img/ueber/ueber-1-960.webp 960w">
-              <img class="ba-after" src="../assets/img/ueber/ueber-1.webp" alt="Gartenteichanlage mit Palmen und Natursteineinfassung nach der Umgestaltung" width="1400" height="1050" fetchpriority="high" decoding="async">
-            </picture>
-            <div class="ba-before" aria-hidden="true">
-              <picture>
-                <source type="image/avif" sizes="(max-width: 900px) 100vw, 50vw" srcset="../assets/img/ueber/ueber-1-480.avif 480w, ../assets/img/ueber/ueber-1-960.avif 960w">
-                <source type="image/webp" sizes="(max-width: 900px) 100vw, 50vw" srcset="../assets/img/ueber/ueber-1-480.webp 480w, ../assets/img/ueber/ueber-1-960.webp 960w">
-                <img src="../assets/img/ueber/ueber-1.webp" alt="" width="1400" height="1050" decoding="async">
-              </picture>
-            </div>
-            <span class="ba-label ba-label-before" aria-hidden="true">Vorher</span>
-            <span class="ba-label ba-label-after" aria-hidden="true">Nachher</span>
-            <div class="ba-handle" aria-hidden="true">
-              <span class="ba-grip">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 3 12l6 6M15 6l6 6-6 6"/></svg>
-              </span>
-              <span class="ba-hint" aria-hidden="true">Ziehen</span>
-            </div>
-            <input class="ba-range" type="range" min="0" max="100" value="42" aria-label="Vorher-Nachher-Vergleich Teichanlage Herne: Reglerposition in Prozent">
-          </div>
-          <figcaption>Teichanlage mit Palmen – Neuanlage in Herne <em class="muted-tiny">(Demo-Bildpaar)</em></figcaption>
-        </figure>
-        <a class="hero-media-link" href="../projekte/">Mehr Projekte ansehen →</a>
-      </div>
+    <div class="hero-shot-ctas">
+      <a href="#anfrage" class="btn btn-primary">
+        Vor-Ort-Termin anfragen
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a class="btn btn-whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20interessiere%20mich%20f%C3%BCr..." target="_blank" rel="noopener">
+        Fotos per WhatsApp senden
+      </a>
+      <!-- AP-68: ersetzt die entfernten Hero-Chips, die alle sechs auf
+           denselben Anker zeigten. Nutzt bewusst das bestehende Textlink-
+           Muster .svc-more statt einer dritten Button-Pille. -->
+      <a href="#leistungen" class="svc-more">
+        Leistungen ansehen <span aria-hidden="true">↓</span>
+      </a>
     </div>
+
+    <div class="hero-shot-trust" aria-label="Vertrauensnachweise">
+      <span class="htm-item">
+        <span class="stars" aria-hidden="true"><span class="stars-fg" style="width:98%"></span></span>
+        <strong>4,9</strong> · 67 Google-Bewertungen
+      </span>
+      <span class="htm-item"><strong>Seit 2003</strong> in Herne</span>
+      <span class="htm-item"><strong>Gartenbaumeister</strong> · Ausbildungsbetrieb</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEWEIS-GRID (AP-76) ============
+     Bewusst STATISCH, kein Karussell und keine Auto-Slideshow: die
+     Notre-Dame-Auswertung (Runyon, 28.928 Klicks) zeigt ~1 % Interaktion,
+     davon 84 % auf Slide 1. Ein Raster zeigt alles auf einmal.
+     Die Bildauswahl ueberschneidet sich bewusst nicht mit #projekte-privat
+     weiter unten, das dieselbe Seite bereits aus dem CMS befuellt.
+     Erste Reihe eager, zweite lazy - siehe loading-Attribute. -->
+<section class="proof-shots" aria-labelledby="beweis-title">
+  <div class="container">
+    <div class="proof-shots-head">
+      <h2 id="beweis-title">Vom Vorgarten bis zum Poolumfeld</h2>
+      <a href="../projekte/">Alle Projekte ansehen →</a>
+    </div>
+
+    <ul class="proof-grid">
+      <li>
+        <figure>
+          <picture>
+            <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
+                    srcset="../assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/vorgarten-bochum-480.avif 480w,
+                            ../assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/vorgarten-bochum-960.avif 960w">
+            <img src="../assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/vorgarten-bochum.webp"
+                 alt="Vorgarten in Bochum mit Kiesfläche, Formgehölzen, Ziergräsern und Natursteinblöcken vor einer Klinkerfassade"
+                 width="960" height="720" loading="eager" decoding="async">
+          </picture>
+          <figcaption>
+            <span class="pg-title">Vorgarten mit Naturstein</span>
+            <span class="pg-meta">Bochum</span>
+          </figcaption>
+        </figure>
+      </li>
+
+      <li>
+        <figure>
+          <picture>
+            <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
+                    srcset="../assets/img/ueber/ueber-2-480.avif 480w,
+                            ../assets/img/ueber/ueber-2-960.avif 960w">
+            <img src="../assets/img/ueber/ueber-2.webp"
+                 alt="Minibagger und Bohrhammer im Einsatz bei Erdarbeiten an einer Klinkerwand"
+                 width="960" height="720" loading="eager" decoding="async">
+          </picture>
+          <figcaption>
+            <span class="pg-title">Erd- und Abbrucharbeiten</span>
+            <span class="pg-meta">Eigene Maschinen</span>
+          </figcaption>
+        </figure>
+      </li>
+
+      <li>
+        <figure>
+          <picture>
+            <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
+                    srcset="../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne-480.avif 480w,
+                            ../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne-960.avif 960w">
+            <img src="../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne.webp"
+                 alt="Beleuchtetes Poolumfeld in Herne mit Holzterrasse, Formgehölzen und Bepflanzung in der Dämmerung"
+                 width="960" height="720" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>
+            <span class="pg-title">Poolumfeld</span>
+            <span class="pg-meta">Herne</span>
+          </figcaption>
+        </figure>
+      </li>
+
+      <li>
+        <figure>
+          <picture>
+            <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
+                    srcset="../assets/img/ueber/ueber-1-480.avif 480w,
+                            ../assets/img/ueber/ueber-1-960.avif 960w">
+            <img src="../assets/img/ueber/ueber-1.webp"
+                 alt="Gartenteich in Herne mit Natursteineinfassung, Uferbepflanzung und winterharten Palmen"
+                 width="960" height="720" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>
+            <span class="pg-title">Teichanlage mit Palmen</span>
+            <span class="pg-meta">Herne</span>
+          </figcaption>
+        </figure>
+      </li>
+    </ul>
   </div>
 </section>
 

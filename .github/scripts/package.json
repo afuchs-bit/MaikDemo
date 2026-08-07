@@ -11,6 +11,7 @@
     "build-rechtstexte": "node build-rechtstexte.mjs",
     "build": "node build-index.mjs && node build-leistungen.mjs && node build-ratgeber.mjs && node build-rechtstexte.mjs",
     "build-images": "node build-images.mjs",
+    "build-hero-images": "node build-hero-images.mjs",
     "check-config-sync": "node check-config-sync.mjs"
   },
   "dependencies": {
