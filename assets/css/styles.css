@@ -2598,9 +2598,12 @@ body.has-welt-dialog { overflow: hidden; }
 
 /* --- Breadcrumb-Leiste oberhalb des Fotos ---
    Bewusst ausserhalb des Bildes: auf dem Foto waere der Kontrast
-   nicht zuverlaessig, und der Breadcrumb ist Navigation, kein Inhalt. */
+   nicht zuverlaessig, und der Breadcrumb ist Navigation, kein Inhalt.
+   --bg statt --bg-soft: .site-header liegt auf rgba(246,244,238,.78) ueber
+   dem Body, ergibt also exakt --bg. Eine Leiste auf --bg-soft setzt sich
+   davon sichtbar ab und erzeugt eine Stufe direkt unter dem Header. */
 .hero-shot-bar {
-  background: var(--bg-soft);
+  background: var(--bg);
   padding: 14px 0;
 }
 
