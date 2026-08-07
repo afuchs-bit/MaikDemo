@@ -126,6 +126,46 @@ enthält einen Check (`exifr.gps`), der bei vorhandenen GPS-Tags **warnt**.
 > enthalten aktuell GPS-EXIF. Das ist außerhalb dieses Schritts, sollte aber vor go-live bereinigt
 > werden.
 
+### Responsive Derivate und die zwei Bild-Manifeste (AP-25 / AP-77)
+
+Ausgeliefert wird nie die Datei aus `bild`, sondern immer ein Derivat unter 200 KB.
+Welche Derivate es gibt, steht in **zwei** auto-generierten Manifesten:
+
+| Datei | Erzeuger | Quellen |
+|---|---|---|
+| `data/images.json` | `.github/scripts/build-images.mjs` | Originale in `assets/img/_src/` (gitignored) |
+| `data/images-repo.json` | `.github/scripts/build-hero-images.mjs` | Bilder, die bereits im Repo liegen |
+
+Zwei Dateien, weil `build-images.mjs` sein Manifest **vollständig neu schreibt** – die
+Einträge des anderen Skripts würden sonst still verschwinden. `.github/scripts/lib/images.mjs`
+liest beide zusammen ein; nur diese Datei kennt die Aufteilung.
+
+Ein Eintrag hat den kanonischen Bildpfad als Schlüssel (also auch die UUID-Dateinamen aus
+dem CMS-Import, die **nicht umbenannt werden dürfen**) und beschreibt die Derivate daneben:
+
+```json
+"/assets/img/projekte/gartengestaltung-herne/03ff56b1-….webp": {
+  "base": "/assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero",
+  "widths": [480, 960, 1440],
+  "webpWidths": [480, 960],
+  "width": 960, "height": 720, "aspect": 0.75
+}
+```
+
+- `widths` = AVIF-Breiten, `webpWidths` = WebP-Breiten (fehlt, wenn identisch). AVIF komprimiert
+  besser und deckt gelegentlich eine Breite mehr ab; ohne das getrennte Feld zeigte das
+  WebP-`srcset` auf nicht existierende Dateien.
+- Das `<img src>` in `<picture>` ist **immer** `<base>.webp`, nie der Schlüssel selbst.
+  Bei `build-images.mjs` ist das derselbe Pfad, bei `build-hero-images.mjs` liegt unter dem
+  Schlüssel das große Original.
+
+`build-index.mjs` hängt diese Angaben als `variants` an jedes Bild in
+`data/projekte-index.json`, damit `assets/js/projekte-card.js` im Browser dasselbe
+`<picture>` bauen kann wie `lib/render.mjs` für die generierten Seiten. Ein Bild ohne
+Manifest-Eintrag ist kein Fehler, erzeugt aber eine Build-Warnung – dort liefe die Karte
+auf das Original hinaus. Neue Bilder in `.github/scripts/build-hero-images.mjs` unter
+`SOURCES` ergänzen und `npm run build-hero-images` laufen lassen.
+
 ## Basis-Pfad an genau einer Stelle (`assets/js/config.js`)
 
 Die Seite läuft heute unter `/MaikDemo/` (GitHub-Pages-Projektpfad), später unter einer eigenen

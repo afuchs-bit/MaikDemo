@@ -6,13 +6,12 @@
 // build-index.mjs. Design lebt in ../templates/, nicht hier.
 
 import { readFile } from 'node:fs/promises';
-import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { imageManifest, widthsFor, fallbackSrc } from './images.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const TPL_DIR = path.join(__dirname, '..', 'templates');
-const REPO_ROOT = path.join(__dirname, '..', '..', '..');
 
 export const SITE = 'https://rohdich.de';
 export const BASE_PROJEKT = '../../'; // /projekte/<slug>/ liegt zwei Ebenen unter dem Root
@@ -46,24 +45,16 @@ export function absUrl(p) {
   return SITE + '/' + s.replace(/^\/+/, '');
 }
 
-// ---------- Bild-Manifest (AP-25, aus build-images.mjs) ----------
-let _imgManifest;
-function imgManifest() {
-  if (_imgManifest) return _imgManifest;
-  try {
-    _imgManifest = JSON.parse(readFileSync(path.join(REPO_ROOT, 'data', 'images.json'), 'utf8')).bilder || {};
-  } catch {
-    _imgManifest = {};
-  }
-  return _imgManifest;
-}
-
 // Baut <picture> mit AVIF+WebP-srcset aus dem Manifest. `bild` ist der kanonische
 // Pfad (…/name.webp). Pfade werden mit `base` auf die Seitentiefe rebasiert (relativ),
 // damit die Seite sowohl unter /MaikDemo/ als auch unter / funktioniert. Fällt auf ein
 // einfaches <img> zurück, wenn das Bild nicht im Manifest steht (noch nicht lokalisiert).
+//
+// AP-77: Das <img src> zeigt auf `<base>.webp`, nicht auf `bild`. Bei den Bildern aus
+// build-images.mjs ist das derselbe Pfad; bei denen aus build-hero-images.mjs liegt unter
+// `bild` das grosse Original (bis 1,2 MB), das nie ausgeliefert werden soll.
 export function renderPicture(bild, { alt = '', sizes = '100vw', className = '', priority = false, width, height, base = '' } = {}) {
-  const m = imgManifest()[bild];
+  const m = imageManifest()[bild];
   const cls = className ? ` class="${escAttr(className)}"` : '';
   const load = priority ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"';
   const rel = (p) => escAttr(relAsset(p, base));
@@ -71,19 +62,19 @@ export function renderPicture(bild, { alt = '', sizes = '100vw', className = '',
     const wh = width && height ? ` width="${width}" height="${height}"` : '';
     return `<img${cls} src="${rel(bild)}" alt="${escAttr(alt)}"${wh} ${load}>`;
   }
-  const set = (ext) => m.widths.map((w) => `${rel(`${m.base}-${w}.${ext}`)} ${w}w`).join(', ');
+  const set = (ext) => widthsFor(m, ext).map((w) => `${rel(`${m.base}-${w}.${ext}`)} ${w}w`).join(', ');
   return `<picture>
         <source type="image/avif" sizes="${escAttr(sizes)}" srcset="${set('avif')}">
         <source type="image/webp" sizes="${escAttr(sizes)}" srcset="${set('webp')}">
-        <img${cls} src="${rel(bild)}" alt="${escAttr(alt)}" width="${width || m.width}" height="${height || m.height}" ${load}>
+        <img${cls} src="${rel(fallbackSrc(m))}" alt="${escAttr(alt)}" width="${width || m.width}" height="${height || m.height}" ${load}>
       </picture>`;
 }
 
 // Preload-Link fuer das LCP-Bild einer Seite (AVIF-srcset, relativ zur Seitentiefe).
 function lcpPreloadFor(bild, sizes = '100vw', base = '') {
-  const m = bild ? imgManifest()[bild] : null;
+  const m = bild ? imageManifest()[bild] : null;
   if (m) {
-    const srcset = m.widths.map((w) => `${escAttr(relAsset(`${m.base}-${w}.avif`, base))} ${w}w`).join(', ');
+    const srcset = widthsFor(m, 'avif').map((w) => `${escAttr(relAsset(`${m.base}-${w}.avif`, base))} ${w}w`).join(', ');
     return `<link rel="preload" as="image" type="image/avif" imagesizes="${escAttr(sizes)}" imagesrcset="${srcset}" />`;
   }
   return bild ? `<link rel="preload" as="image" href="${escAttr(relAsset(bild, base))}" fetchpriority="high" />` : '';

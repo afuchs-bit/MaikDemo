@@ -40,10 +40,18 @@ export function buildCard(p, opts = {}) {
 
 // Baut das Karten-Medium: <picture> mit AVIF+WebP/srcset (AP-25), falls das Bild
 // Varianten im Index hat; sonst einfaches <img>. width/height = 4:3 → kein Layout-Shift.
+//
+// AP-77: Ohne Varianten laedt die Karte cover.bild – bei einigen Projekten ist das
+// das unskalierte Original (bis 1,2 MB). Mit Varianten zeigt auch das <img src> auf
+// `<base>.webp` (< 200 KB) statt auf cover.bild, damit Browser ohne <picture>- oder
+// WebP-/AVIF-Unterstuetzung nicht doch das Original ziehen.
 function buildMedia(cover) {
+  const v = cover.variants;
+  const hasVariants = v && Array.isArray(v.widths) && v.widths.length;
+
   const mkImg = () => {
     const img = document.createElement('img');
-    img.src = assetUrl(cover.bild || '');
+    img.src = assetUrl(hasVariants ? `${v.base}.webp` : (cover.bild || ''));
     img.alt = cover.alt || '';
     img.loading = 'lazy';
     img.decoding = 'async';
@@ -51,15 +59,18 @@ function buildMedia(cover) {
     img.height = 600;
     return img;
   };
-  const v = cover.variants;
-  if (!v || !Array.isArray(v.widths) || !v.widths.length) return mkImg();
+
+  if (!hasVariants) return mkImg();
+
+  // AVIF komprimiert besser und deckt gelegentlich eine Breite mehr ab als WebP.
+  const widthsFor = (ext) => (ext === 'webp' && Array.isArray(v.webpWidths) ? v.webpWidths : v.widths);
   const sizes = '(max-width: 700px) 90vw, 30vw';
   const picture = document.createElement('picture');
   for (const ext of ['avif', 'webp']) {
     const source = document.createElement('source');
     source.type = `image/${ext}`;
     source.sizes = sizes;
-    source.srcset = v.widths.map((w) => `${assetUrl(`${v.base}-${w}.${ext}`)} ${w}w`).join(', ');
+    source.srcset = widthsFor(ext).map((w) => `${assetUrl(`${v.base}-${w}.${ext}`)} ${w}w`).join(', ');
     picture.appendChild(source);
   }
   picture.appendChild(mkImg());

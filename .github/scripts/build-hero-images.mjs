@@ -13,10 +13,10 @@
 //     data/images.json neu und blaehte den Commit mit sachfremden
 //     Aenderungen auf.
 //
-// Schreibt daher NUR Bilddateien. data/images.json bleibt unangetastet -
-// die Datei traegt "AUTO-GENERIERT" und wird von render.mjs allein fuer die
-// generierten Seiten gelesen. Die Privatkundenseite ist eine Handseite und
-// setzt ihr srcset explizit im Markup.
+// data/images.json bleibt unangetastet. Stattdessen schreibt dieses Skript sein
+// EIGENES Manifest nach data/images-repo.json (AP-77). Beide Dateien liest
+// lib/images.mjs zusammen ein - fuer die generierten Seiten (render.mjs) und fuer
+// die Karten-Varianten in data/projekte-index.json (build-index.mjs).
 //
 // Idempotent: mehrfaches Ausfuehren erzeugt dieselben Dateien neu.
 //
@@ -83,6 +83,7 @@ async function writeVariant(pipeline, outPath, format, baseOpts) {
 
 async function main() {
   let over = 0;
+  const manifest = {};
 
   for (const s of SOURCES) {
     const srcAbs = path.join(ROOT, s.src);
@@ -134,11 +135,33 @@ async function main() {
     );
     console.log(`  ${(fb / 1024).toFixed(0).padStart(4)} KB  ${s.dir}/${s.name}.webp (Fallback)`);
 
+    // Schluessel ist der Originalpfad, wie ihn content/projekte/*.json fuehrt -
+    // die UUID-Dateinamen bleiben also referenzierbar, ausgeliefert werden aber
+    // die Derivate unter `base`.
+    const fbH = Math.round((meta.height / srcW) * fbW);
+    manifest[`/${s.src}`] = {
+      base: `/${s.dir}/${s.name}`,
+      widths,
+      ...(webpWidths.join() === widths.join() ? {} : { webpWidths }),
+      width: fbW,
+      height: fbH,
+      aspect: Number((fbH / fbW).toFixed(4)),
+    };
+
     console.log(`✅ ${s.name}: ${widths.join('/')} px  (Original ${srcW}×${meta.height})`);
   }
 
   if (over) { console.error(`\n❌ ${over} Datei(en) über 200 KB.`); process.exit(1); }
-  console.log('\n✅ Fertig. data/images.json wurde bewusst NICHT verändert.');
+
+  const outManifest = path.join(ROOT, 'data', 'images-repo.json');
+  await mkdir(path.dirname(outManifest), { recursive: true });
+  await writeFile(outManifest, JSON.stringify({
+    _hinweis: 'AUTO-GENERIERT von .github/scripts/build-hero-images.mjs – NICHT von Hand editieren.',
+    bilder: manifest,
+  }, null, 2) + '\n', 'utf8');
+
+  console.log(`\n✅ Manifest: data/images-repo.json (${Object.keys(manifest).length} Bilder).`);
+  console.log('   data/images.json wurde bewusst NICHT verändert.');
 }
 
 await main();

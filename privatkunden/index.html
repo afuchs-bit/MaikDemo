@@ -689,9 +689,19 @@
     <div class="projects-grid" data-projekte-privat>
       <article class="project-card reveal">
         <div class="project-media">
-          <img src="../assets/img/projekte/gartengestaltung-herne/03ff56b1-b6e3-4d40-a9f7-4c613914ffa7.webp"
-               alt="Beispiel Gartengestaltung"
-               loading="lazy" decoding="async" width="800" height="600">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw"
+                    srcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.avif 480w,
+                            ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.avif 960w,
+                            ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-1440.avif 1440w">
+            <!-- Kein 1440er WebP – siehe Begruendung in .github/scripts/build-hero-images.mjs. -->
+            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw"
+                    srcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.webp 480w,
+                            ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.webp 960w">
+            <img src="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero.webp"
+                 alt="Beispiel Gartengestaltung"
+                 loading="lazy" decoding="async" width="800" height="600">
+          </picture>
           <span class="project-tag">Gartengestaltung</span>
         </div>
         <div class="project-body">
@@ -704,9 +714,17 @@
 
       <article class="project-card reveal">
         <div class="project-media">
-          <img src="../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne.webp"
-               alt="Baumkletterer schneidet seilgesichert mit der Motorsäge die Äste einer hohen Fichte zurück"
-               loading="lazy" decoding="async" width="800" height="600">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw"
+                    srcset="../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne-480.avif 480w,
+                            ../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne-960.avif 960w">
+            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw"
+                    srcset="../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne-480.webp 480w,
+                            ../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne-960.webp 960w">
+            <img src="../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne.webp"
+                 alt="Baumkletterer schneidet seilgesichert mit der Motorsäge die Äste einer hohen Fichte zurück"
+                 loading="lazy" decoding="async" width="800" height="600">
+          </picture>
           <span class="project-tag">Baumarbeiten / Fällung</span>
         </div>
         <div class="project-body">
@@ -719,9 +737,19 @@
 
       <article class="project-card reveal">
         <div class="project-media">
-          <img src="../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne.webp"
-               alt="Neu gestalteter Vorgarten mit Natursteinweg und strukturierter Bepflanzung"
-               loading="lazy" decoding="async" width="800" height="600">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw"
+                    srcset="../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-480.avif 480w,
+                            ../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-960.avif 960w,
+                            ../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-1600.avif 1600w">
+            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw"
+                    srcset="../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-480.webp 480w,
+                            ../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-960.webp 960w,
+                            ../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-1600.webp 1600w">
+            <img src="../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne.webp"
+                 alt="Neu gestalteter Vorgarten mit Natursteinweg und strukturierter Bepflanzung"
+                 loading="lazy" decoding="async" width="800" height="600">
+          </picture>
           <span class="project-tag">Vorgartenbau</span>
         </div>
         <div class="project-body">
@@ -962,6 +990,6 @@
 </footer>
 
 <script src="../assets/js/main.js?v=20260806c" defer></script>
-<script type="module" src="../assets/js/projekte-privat.js?v=20260804a"></script>
+<script type="module" src="../assets/js/projekte-privat.js?v=20260807a"></script>
 </body>
 </html>

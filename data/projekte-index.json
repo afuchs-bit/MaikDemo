@@ -18,7 +18,21 @@
       "bilder": [
         {
           "bild": "/assets/img/projekte/gartengestaltung-herne/03ff56b1-b6e3-4d40-a9f7-4c613914ffa7.webp",
-          "alt": "Beispiel Gartengestaltung"
+          "alt": "Beispiel Gartengestaltung",
+          "variants": {
+            "base": "/assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero",
+            "widths": [
+              480,
+              960,
+              1440
+            ],
+            "webpWidths": [
+              480,
+              960
+            ],
+            "w": 960,
+            "h": 720
+          }
         }
       ]
     },
@@ -160,7 +174,16 @@
       "bilder": [
         {
           "bild": "/assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/img_7043.webp",
-          "alt": "Vorgartenbau"
+          "alt": "Vorgartenbau",
+          "variants": {
+            "base": "/assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/vorgarten-bochum",
+            "widths": [
+              480,
+              960
+            ],
+            "w": 960,
+            "h": 720
+          }
         }
       ]
     },
@@ -183,7 +206,16 @@
       "bilder": [
         {
           "bild": "/assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/img_5012-1.webp",
-          "alt": "Poolbau und Gartengestaltung"
+          "alt": "Poolbau und Gartengestaltung",
+          "variants": {
+            "base": "/assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne",
+            "widths": [
+              480,
+              960
+            ],
+            "w": 960,
+            "h": 720
+          }
         }
       ]
     }
