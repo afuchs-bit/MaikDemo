@@ -2606,6 +2606,18 @@ body.has-welt-dialog { overflow: hidden; }
   background: var(--bg);
   padding: 14px 0;
 }
+/* AP-80: Der Header trennt sich per border-bottom vom Inhalt. Ueber dem
+   Hero-Foto liegt darunter die Leiste in derselben Farbe - die Linie
+   zerschneidet dort eine durchgehende Flaeche. .hero-shot-bar gibt es nur
+   auf der Privatkundenseite, die Regel greift also automatisch nur dort.
+   Nur in der Ruhelage: sobald .is-scrolled ab scrollY > 12 greift, schiebt
+   sich der Header ueber den Inhalt und braucht die Kante wieder.
+   transparent statt border-bottom entfernen - so bleibt die 1px-Breite und
+   damit das Layout unveraendert, und die bestehende border-color-Transition
+   blendet die Linie weich ein und aus. */
+body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
+  border-bottom-color: transparent;
+}
 
 /* --- Der Hero selbst --- */
 .hero-shot {
