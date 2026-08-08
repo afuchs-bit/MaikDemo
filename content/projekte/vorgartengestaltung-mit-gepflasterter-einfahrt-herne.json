@@ -1,0 +1,21 @@
+{
+  "titel": "Vorgartengestaltung mit gepflasterter Einfahrt",
+  "ort": "Herne",
+  "kundentyp": [
+    "privat"
+  ],
+  "leistungen": [
+    "vorgarten",
+    "terrasse-pflasterarbeiten",
+    "bepflanzung"
+  ],
+  "datum": "2026-08-08",
+  "featured": true,
+  "beschreibung": "Strukturierte Vorgartenanlage mit farblich changiertem Pflasterbelag und angrenzendem, dicht bepflanztem Staudenbeet. Verschiedene Gehölze, Gräser und Sträucher sorgen für ein natürliches, blickdichtes Grün direkt am Hauseingang.",
+  "bilder": [
+    {
+      "bild": "/assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/img_3629.webp",
+      "alt": "Gepflasterte Einfahrt mit angrenzendem Staudenbeet und Gehölzbepflanzung im Vorgartenbereich"
+    }
+  ]
+}
