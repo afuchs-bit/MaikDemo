@@ -31,11 +31,9 @@ const QUALITY_FLOOR = 28; // untere Grenze, darunter nicht mehr
 const SOURCES = [
   { src: 'assets/img/_src/hero-garten-herne.png',            dir: 'assets/img/hero',                              name: 'hero-garten-herne' },
   { src: 'assets/img/_src/hero-pool.jpg',                     dir: 'assets/img/hero',                              name: 'hero-pool' },
-  { src: 'assets/img/_src/hero-gewerbe-aussenanlagen.png',   dir: 'assets/img/hero',                              name: 'hero-gewerbe-aussenanlagen' },
   { src: 'assets/img/_src/vorgarten-herne.png',              dir: 'assets/img/projekte/vorgarten-herne-2026',    name: 'vorgarten-herne' },
   { src: 'assets/img/_src/teichanlage-bochum.png',           dir: 'assets/img/projekte/teichanlage-bochum-2026', name: 'teichanlage-bochum' },
   { src: 'assets/img/_src/aussenanlagen-recklinghausen.png', dir: 'assets/img/projekte/aussenanlagen-recklinghausen-2026', name: 'aussenanlagen-recklinghausen' },
-  { src: 'assets/img/_src/split-private.png',                 dir: 'assets/img/split',                             name: 'split-private' },
   { src: 'assets/img/_src/baumarbeiten-herne.webp', dir: 'assets/img/projekte/baumarbeiten-herne', name: 'baumarbeiten-herne' },
   { src: 'assets/img/_src/ueber-1.jpg', dir: 'assets/img/ueber', name: 'ueber-1' },
   { src: 'assets/img/_src/ueber-2.jpg', dir: 'assets/img/ueber', name: 'ueber-2' },

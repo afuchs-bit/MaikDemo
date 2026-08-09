@@ -10,10 +10,18 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   → speichern als `assets/video/hero.mp4`
 
 ## Zielgruppenweiche
+
+Die Startseiten-Weiche liegt seit AP-82 im Hero und nutzt **echte Fotos**:
+`assets/img/hero/hero-pool.*` (Privat) und `assets/img/hero/gate-gewerbe.*` (Gewerbe).
+
+Die alte Sektion „Wählen Sie Ihren Bereich" wurde mit AP-88 entfernt, ihre beiden
+KI-Bilder mit AP-90 aus dem Repo gelöscht (Derivate und `SOURCES`-Einträge in
+`build-images.mjs`). Die Originale liegen weiterhin im gitignoreten
+`assets/img/_src/`. Nicht mehr genutzt:
 - **Privatkunden (16:9):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061016_a7688c52-a5c8-4ee9-9465-df631ce0ef11.png`
-  → `assets/img/split-private.png`
+  → früher `assets/img/split/split-private.*`
 - **Gewerbekunden (16:9):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_061114_302176ae-ad89-48ef-b1ee-dcd3db4db7fa.png`
-  → `assets/img/split-business.png`
+  → früher `assets/img/hero/hero-gewerbe-aussenanlagen.*`
 
 ## Persönliche Maik-Sektion (#ueber)
 Statt des früheren KI-Porträts jetzt eine 3er-Foto-Collage (randlose Karten mit
