@@ -46,6 +46,24 @@ async function fileSize(p) {
   try { return (await stat(p)).size; } catch { return 0; }
 }
 
+// Liefert die Resize-Pipeline fuer eine Zielbreite. Ohne crop: reines
+// Breiten-Resize (Originalverhalten). Mit crop: schneidet zusaetzlich auf ein
+// festes Seitenverhaeltnis zu, focusY (0-1) verschiebt das Fenster vertikal
+// wie CSS object-position. Portiert aus build-hero-images.mjs (AP-83) - dort
+// fuer ein Hochformat-Handyfoto in einer Querformat-Kachel. Bewusst dupliziert
+// statt nach lib/ ausgelagert: lib/images.mjs wird von build-index.mjs
+// importiert, das in der Action ohne sharp laeuft.
+function pipelineFor(srcAbs, meta, w, crop) {
+  const base = sharp(srcAbs, { failOn: 'none' });
+  if (!crop) return base.resize({ width: w, withoutEnlargement: true });
+  const scaledH = Math.round(w * (meta.height / meta.width));
+  const targetH = Math.round(w / crop.aspect);
+  const top = Math.max(0, Math.min(scaledH - targetH, Math.round((scaledH - targetH) * crop.focusY)));
+  return base
+    .resize({ width: w, height: scaledH, withoutEnlargement: true })
+    .extract({ left: 0, top, width: w, height: targetH });
+}
+
 // Schreibt eine Breite in einem Format; senkt die Qualitaet schrittweise,
 // bis die Datei < 200 KB ist oder die untere Qualitaetsgrenze erreicht ist.
 async function writeVariant(pipeline, outPath, format, baseOpts) {
@@ -80,7 +98,7 @@ async function main() {
     if (!widths.length) widths = [srcW];
 
     for (const w of widths) {
-      const base = sharp(srcAbs, { failOn: 'none' }).resize({ width: w, withoutEnlargement: true });
+      const base = pipelineFor(srcAbs, meta, w, s.crop);
       const avifOut = path.join(outDir, `${s.name}-${w}.avif`);
       const webpOut = path.join(outDir, `${s.name}-${w}.webp`);
       const a = await writeVariant(base, avifOut, 'avif', AVIF);
@@ -95,11 +113,8 @@ async function main() {
     // Fallback <name>.webp (fuer das <img>-Element in <picture>).
     const fbW = Math.min(960, Math.max(...widths));
     const fbOut = path.join(outDir, `${s.name}.webp`);
-    await writeVariant(
-      sharp(srcAbs, { failOn: 'none' }).resize({ width: fbW, withoutEnlargement: true }),
-      fbOut, 'webp', WEBP,
-    );
-    const fbH = Math.round(fbW * aspect);
+    await writeVariant(pipelineFor(srcAbs, meta, fbW, s.crop), fbOut, 'webp', WEBP);
+    const fbH = s.crop ? Math.round(fbW / s.crop.aspect) : Math.round(fbW * aspect);
 
     const canonical = `/${s.dir}/${s.name}.webp`;
     manifest[canonical] = {
@@ -107,7 +122,7 @@ async function main() {
       widths,
       width: fbW,
       height: fbH,
-      aspect: Math.round(aspect * 10000) / 10000,
+      aspect: Math.round((s.crop ? 1 / s.crop.aspect : aspect) * 10000) / 10000,
     };
     console.log(`✅ ${s.name}: ${widths.join('/')} px  (Original ${srcW}×${srcH})`);
   }
