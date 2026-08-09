@@ -35,6 +35,36 @@
       "width": 960,
       "height": 720,
       "aspect": 0.75
+    },
+    "/assets/img/proof/kuebelbepflanzung.jpg": {
+      "base": "/assets/img/proof/kuebelbepflanzung",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/proof/beetneuanlage-vorher.jpg": {
+      "base": "/assets/img/proof/beetneuanlage-vorher",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/proof/beetneuanlage-nachher.jpg": {
+      "base": "/assets/img/proof/beetneuanlage-nachher",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
     }
   }
 }

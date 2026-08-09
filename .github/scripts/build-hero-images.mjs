@@ -65,7 +65,50 @@ const SOURCES = [
     name: 'poolumfeld-herne',
     widths: [480, 960],
   },
+  // AP-83: Beweis-Grid (.proof-grid auf /privatkunden/) - Kachel 2 (Kuebelbepflanzung)
+  // und Kachel 4 (Vorher/Nachher-Crossfade). Quellen liegen wie oben direkt im Repo
+  // unter assets/img/proof/, nicht in _src/.
+  {
+    src: 'assets/img/proof/kuebelbepflanzung.jpg',
+    dir: 'assets/img/proof',
+    name: 'kuebelbepflanzung',
+    widths: [480, 960],
+  },
+  {
+    // Hochformat-Original (Handyfoto, 3:4). crop schneidet serverseitig auf die
+    // 4:3-Box von .proof-grid zu, Fokus 55% von oben - ein reines Breiten-Resize
+    // wuerde sonst unnoetig viel Bildhoehe ausliefern, die object-fit:cover im
+    // Browser ohnehin wegschneidet (kostet nur Bytes).
+    src: 'assets/img/proof/beetneuanlage-vorher.jpg',
+    dir: 'assets/img/proof',
+    name: 'beetneuanlage-vorher',
+    widths: [480, 960],
+    crop: { aspect: 4 / 3, focusY: 0.55 },
+  },
+  {
+    src: 'assets/img/proof/beetneuanlage-nachher.jpg',
+    dir: 'assets/img/proof',
+    name: 'beetneuanlage-nachher',
+    widths: [480, 960],
+    crop: { aspect: 4 / 3, focusY: 0.55 },
+  },
 ];
+
+// Liefert die Resize-Pipeline fuer eine Zielbreite. Ohne crop: reines
+// Breiten-Resize (Originalverhalten, Seitenverhaeltnis bleibt wie im Original).
+// Mit crop: schneidet zusaetzlich auf ein festes Seitenverhaeltnis zu (z. B. 4:3
+// fuer .proof-grid-Kacheln). focusY (0-1) verschiebt den sichtbaren Ausschnitt
+// vertikal, analog zu CSS object-position: 50% <focusY*100>% (AP-83).
+function pipelineFor(srcAbs, meta, w, crop) {
+  const base = sharp(srcAbs, { failOn: 'none' });
+  if (!crop) return base.resize({ width: w, withoutEnlargement: true });
+  const scaledH = Math.round(w * (meta.height / meta.width));
+  const targetH = Math.round(w / crop.aspect);
+  const top = Math.max(0, Math.min(scaledH - targetH, Math.round((scaledH - targetH) * crop.focusY)));
+  return base
+    .resize({ width: w, height: scaledH, withoutEnlargement: true })
+    .extract({ left: 0, top, width: w, height: targetH });
+}
 
 // Schreibt eine Breite in einem Format; senkt die Qualitaet schrittweise,
 // bis die Datei < 200 KB ist oder die untere Qualitaetsgrenze erreicht ist.
@@ -109,8 +152,7 @@ async function main() {
     const webpWidths = fit(s.webpWidths ?? s.widths);
 
     for (const w of [...new Set([...widths, ...webpWidths])].sort((a, b) => a - b)) {
-      const base = sharp(srcAbs, { failOn: 'none' })
-        .resize({ width: w, withoutEnlargement: true });
+      const base = pipelineFor(srcAbs, meta, w, s.crop);
       const written = [];
       if (widths.includes(w)) {
         const out = path.join(outDir, `${s.name}-${w}.avif`);
@@ -130,7 +172,7 @@ async function main() {
     // Fallback <name>.webp fuer das <img>-Element in <picture>.
     const fbW = Math.min(960, Math.max(...webpWidths));
     const fb = await writeVariant(
-      sharp(srcAbs, { failOn: 'none' }).resize({ width: fbW, withoutEnlargement: true }),
+      pipelineFor(srcAbs, meta, fbW, s.crop),
       path.join(outDir, `${s.name}.webp`), 'webp', WEBP,
     );
     console.log(`  ${(fb / 1024).toFixed(0).padStart(4)} KB  ${s.dir}/${s.name}.webp (Fallback)`);
@@ -138,7 +180,7 @@ async function main() {
     // Schluessel ist der Originalpfad, wie ihn content/projekte/*.json fuehrt -
     // die UUID-Dateinamen bleiben also referenzierbar, ausgeliefert werden aber
     // die Derivate unter `base`.
-    const fbH = Math.round((meta.height / srcW) * fbW);
+    const fbH = s.crop ? Math.round(fbW / s.crop.aspect) : Math.round((meta.height / srcW) * fbW);
     manifest[`/${s.src}`] = {
       base: `/${s.dir}/${s.name}`,
       widths,
