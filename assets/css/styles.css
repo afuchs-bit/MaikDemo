@@ -890,75 +890,6 @@ p  { margin: 0; }
           mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12l5 5L20 7' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;
 }
 
-/* ---------- Split / Target Audience ---------- */
-.section-split { background: var(--bg); }
-.split-grid {
-  display: grid; gap: 22px;
-  grid-template-columns: 1fr 1fr;
-}
-.split-card {
-  position: relative; overflow: hidden;
-  border-radius: 28px;
-  background: #fff;
-  border: 1px solid var(--line);
-  text-decoration: none; color: var(--ink);
-  display: grid; grid-template-rows: 320px 1fr;
-  box-shadow: var(--shadow-card);
-  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
-}
-@media (hover: hover) and (pointer: fine) { .split-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-float); } }
-.split-media { position: relative; overflow: hidden; }
-.split-image {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center;
-  transform: scale(1.05); transition: transform .8s var(--ease);
-}
-@media (hover: hover) and (pointer: fine) { .split-card:hover .split-image { transform: scale(1.1); } }
-/* AP-25: selbst gehostete Hintergrundbilder (AVIF mit WebP-Fallback via image-set). */
-.split-image[data-img="private"] {
-  background-image:
-    linear-gradient(160deg, rgba(49,82,0,.18), rgba(49,82,0,.0) 60%),
-    image-set(
-      url("../img/split/split-private-960.avif") type("image/avif"),
-      url("../img/split/split-private-960.webp") type("image/webp"));
-}
-.split-image[data-img="business"] {
-  background-image:
-    linear-gradient(160deg, rgba(49,82,0,.25), rgba(49,82,0,.0) 60%),
-    image-set(
-      url("../img/hero/hero-gewerbe-aussenanlagen-960.avif") type("image/avif"),
-      url("../img/hero/hero-gewerbe-aussenanlagen-960.webp") type("image/webp"));
-}
-.split-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.35) 100%);
-}
-.split-body {
-  padding: 28px 28px 30px;
-  display: flex; flex-direction: column; gap: 14px;
-}
-.split-eyebrow {
-  font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .14em;
-  color: var(--green-700);
-}
-.chips {
-  list-style: none; padding: 0; margin: 4px 0 0;
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
-.chips li {
-  font-size: .78rem; font-weight: 500;
-  padding: 6px 10px; border-radius: 999px;
-  background: var(--bg-soft); color: var(--ink-2);
-  border: 1px solid var(--line);
-}
-.split-cta {
-  margin-top: 10px;
-  display: inline-flex; align-items: center; gap: 8px;
-  font-weight: 700; color: var(--green-700);
-}
-.split-cta span { transition: transform .25s var(--ease); display: inline-block; }
-@media (hover: hover) and (pointer: fine) { .split-card:hover .split-cta span { transform: translateX(6px); } }
-
 /* ---------- Nummerierte Schritt-Punkte (gewerbekunden/index.html) ---------- */
 .authority-points { display: grid; gap: 10px; margin: 30px 0; }
 .ap {
@@ -1324,7 +1255,6 @@ p  { margin: 0; }
   .primary-nav.is-open .menu { display: flex; }
 
   .maik-grid,
-  .split-grid,
   .projects-grid,
   .faq-wrap,
   .contact-grid,
@@ -1399,7 +1329,6 @@ p  { margin: 0; }
   .proof-stats { gap: 22px; }
   .proof-figures { justify-content: center; text-align: center; }
   .proof-stat { align-items: center; }
-  .split-card { grid-template-rows: 220px 1fr; }
   .contact-form { padding: 22px; }
   .menu { display: none; }
   .hero-content { padding-top: 20px; }
