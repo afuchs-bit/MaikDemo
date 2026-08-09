@@ -19,8 +19,8 @@
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
-<link rel="preload" as="image" type="image/avif" imagesizes="100vw" imagesrcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260807e" />
+<link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w" fetchpriority="high" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260809b" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -264,44 +264,77 @@
 
 <main id="top">
 
-<!-- ============ HERO ============ -->
-<section class="hero" aria-label="Willkommen">
-  <div class="hero-media">
-    <!-- Video wird per JS aktiviert; Standbild als Poster/Fallback (LCP, siehe preload im Head) -->
-    <picture>
-      <source type="image/avif" sizes="100vw" srcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w">
-      <source type="image/webp" sizes="100vw" srcset="assets/img/hero/hero-pool-480.webp 480w, assets/img/hero/hero-pool-960.webp 960w, assets/img/hero/hero-pool-1600.webp 1600w">
-      <img class="hero-image" src="assets/img/hero/hero-pool.webp" alt="" aria-hidden="true" width="1600" height="900" fetchpriority="high" decoding="async" />
-    </picture>
-    <div class="hero-scrim"></div>
-    <div class="hero-grain" aria-hidden="true"></div>
-  </div>
+<!-- ============ HERO / ZIELGRUPPENWEICHE (AP-82) ============ -->
+<section class="hero hero--gate" aria-labelledby="gate-title">
 
-  <div class="container hero-content">
+  <div class="gate-head">
     <span class="eyebrow reveal">
       <span class="eyebrow-dot"></span>
-      Garten- und Landschaftsbau · seit 2003
+      Gartenbaumeister und Sachverständiger für Baumkontrolle · seit 2003
     </span>
-    <h1 class="hero-title reveal">
-      <span class="line">Gärten, die zum</span>
-      <span class="line"><em>Leben</em> passen.</span>
-      <span class="line muted">In Herne, Bochum, Recklinghausen und Umgebung.</span>
+    <h1 class="hero-title reveal" id="gate-title">
+      <span class="line">Wofür brauchen Sie <em>uns</em>?</span>
     </h1>
-    <p class="hero-sub reveal">
-      Maik Rohdich gestaltet, pflegt und betreut private Gärten, Vorgärten, Teichanlagen und gewerbliche
-      Außenanlagen – bodenständig, fachlich sauber und mit realistischer Beratung vor Ort.
+    <p class="gate-region reveal">
+      Herne · Bochum · Castrop-Rauxel · Recklinghausen · Gelsenkirchen-Buer
     </p>
+  </div>
 
-    <div class="hero-ctas reveal">
-      <a href="privatkunden/" class="btn btn-primary">
-        Privatprojekt anfragen
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="gewerbekunden/" class="btn btn-secondary">
-        Gewerbliche Anfrage
-      </a>
-    </div>
+  <div class="gate-doors">
 
+    <a class="gate-door gate-door--privat" href="privatkunden/">
+      <picture>
+        <source type="image/avif" sizes="(max-width: 860px) 100vw, 50vw"
+                srcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w">
+        <source type="image/webp" sizes="(max-width: 860px) 100vw, 50vw"
+                srcset="assets/img/hero/hero-pool-480.webp 480w, assets/img/hero/hero-pool-960.webp 960w, assets/img/hero/hero-pool-1600.webp 1600w">
+        <img class="gate-photo" src="assets/img/hero/hero-pool.webp"
+             alt="Angelegter Privatgarten mit Pool, Natursteinen und Bepflanzung"
+             width="960" height="720" fetchpriority="high" decoding="async">
+      </picture>
+      <span class="gate-veil" aria-hidden="true"></span>
+      <div class="gate-body">
+        <span class="gate-eyebrow">Für Privatkunden</span>
+        <h2>Ihr Garten, geplant und gebaut.</h2>
+        <span class="gate-cta">
+          Zum Privatkundenbereich
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <a class="gate-door gate-door--gewerbe" href="gewerbekunden/">
+      <picture>
+        <source type="image/avif" sizes="(max-width: 860px) 100vw, 50vw"
+                srcset="assets/img/hero/gate-gewerbe-480.avif 480w, assets/img/hero/gate-gewerbe-960.avif 960w, assets/img/hero/gate-gewerbe-1200.avif 1200w">
+        <source type="image/webp" sizes="(max-width: 860px) 100vw, 50vw"
+                srcset="assets/img/hero/gate-gewerbe-480.webp 480w, assets/img/hero/gate-gewerbe-960.webp 960w, assets/img/hero/gate-gewerbe-1200.webp 1200w">
+        <img class="gate-photo" src="assets/img/hero/gate-gewerbe.webp"
+             alt="Bepflanztes Hochbeet in der Außenanlage eines gewerblichen Objekts"
+             width="960" height="720" loading="lazy" decoding="async">
+      </picture>
+      <span class="gate-veil" aria-hidden="true"></span>
+      <div class="gate-body">
+        <span class="gate-eyebrow">Für Gewerbekunden</span>
+        <h2>Außenanlagen im festen Turnus.</h2>
+        <span class="gate-cta">
+          Zum Gewerbebereich
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="gate-escape reveal">
+    Nicht sicher, was passt? <a href="leistungen/">Alle Leistungen im Überblick →</a>
+  </p>
+
+</section>
+
+<!-- ============ HERO-UNTERBAU: Sonderleistungen + Vertrauensleiste (AP-82) ============ -->
+<section class="hero-followup" aria-label="Sonderleistungen und Qualifikationen">
+  <div class="container">
     <ul class="hero-teasers reveal" aria-label="Sonderleistungen">
       <li>
         <a class="teaser teaser-strong" href="privatkunden/leistungen/baumkontrolle/" data-welt-dialog="baumkontrolle">
@@ -338,7 +371,6 @@
       </li>
     </ul>
   </div>
-
   <!-- Vertrauensleiste – Teil des Hero-Unterbaus -->
   <div class="container trust-bar reveal">
     <div class="trust-item">

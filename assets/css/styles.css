@@ -2810,6 +2810,58 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 }
 .proof-grid .pg-meta { display: block; font-size: .8rem; color: var(--ink-mute); margin-top: 2px; }
 
+/* ---------- Beweis-Grid: Vorher/Nachher-Crossfade (Kachel 4, AP-83) ----------
+   Zwei gestapelte <picture> in einer Box, "Nachher" blendet per CSS-Keyframe
+   ueber "Vorher" - kein JS, Endlosschleife (~9s Zyklus). Der 4:3-Ausschnitt der
+   Hochformat-Fotos steckt schon in den Bilddateien selbst (siehe
+   build-hero-images.mjs, Fokus 55% von oben) - object-fit:cover aus der
+   .proof-grid-Basisregel macht hier optisch nichts mehr sichtbar, bleibt aber
+   als Sicherheitsnetz aktiv. prefers-reduced-motion zeigt dauerhaft den
+   fertigen Nachher-Zustand statt der Animation. */
+.proof-grid .pg-fade {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg);
+}
+.proof-grid .pg-fade picture {
+  position: absolute; inset: 0;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+.proof-grid .pg-fade-a { z-index: 1; }
+.proof-grid .pg-fade-b {
+  z-index: 2;
+  animation: pgCrossfade 9s ease-in-out infinite;
+}
+@keyframes pgCrossfade {
+  0%, 38%  { opacity: 0; }
+  50%, 88% { opacity: 1; }
+  100%     { opacity: 0; }
+}
+.proof-grid .pg-fade-badge {
+  position: absolute; left: 10px; bottom: 10px; z-index: 3;
+  font-size: .72rem; font-weight: 700; letter-spacing: .03em;
+}
+.proof-grid .pg-fade-badge span {
+  position: absolute; left: 0; bottom: 0; white-space: nowrap;
+  padding: 4px 10px; border-radius: 999px;
+  background: rgba(20, 26, 14, .72); color: #fff;
+}
+.proof-grid .pg-fade-badge-a { animation: pgCrossfadeInv 9s ease-in-out infinite; }
+.proof-grid .pg-fade-badge-b { animation: pgCrossfade 9s ease-in-out infinite; }
+@keyframes pgCrossfadeInv {
+  0%, 38%  { opacity: 1; }
+  50%, 88% { opacity: 0; }
+  100%     { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .proof-grid .pg-fade-b,
+  .proof-grid .pg-fade-badge-b { animation: none; opacity: 1; }
+  .proof-grid .pg-fade-badge-a { animation: none; opacity: 0; }
+}
+
 @media (max-width: 900px) {
   .hero-shot { min-height: clamp(430px, 66svh, 560px); }
   .hero-shot-title { max-width: none; }
@@ -2821,4 +2873,132 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .hero-shot-ctas { gap: 14px; }
   .hero-shot-ctas .btn { width: 100%; justify-content: center; }
   .hero-shot-trust { gap: 7px 0; flex-direction: column; }
+}
+
+/* ============================================================
+   AP-82 — ZIELGRUPPENWEICHE STARTSEITE
+   Bestehende .hero-*, .teaser-*, .trust-* Klassen bleiben unveraendert.
+   ============================================================ */
+
+.hero--gate { padding: clamp(20px, 4vw, 48px) 0 0; }
+
+.gate-head {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: min(100% - calc(var(--gutter) * 2), 940px);
+  margin-inline: auto;
+  padding-bottom: clamp(24px, 3.4vw, 42px);
+}
+.gate-head .hero-title {
+  margin-top: 18px;
+  font-size: clamp(2.1rem, 5vw, 4.2rem);
+}
+.gate-region {
+  margin-top: 15px;
+  font-size: clamp(.92rem, 1.4vw, 1.12rem);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.gate-doors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 1.6vw, 22px);
+  width: min(100% - calc(var(--gutter) * 2), var(--container));
+  margin-inline: auto;
+}
+
+.gate-door {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 26px;
+  aspect-ratio: 16 / 10;
+  min-height: 250px;
+  display: block;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+}
+.gate-door img.gate-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transition: transform .55s var(--ease);
+}
+.gate-door:hover img.gate-photo { transform: scale(1.04); }
+
+.gate-veil {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 72%;
+  z-index: -1;
+  /* Stops dunkler als im Entwurf: gelbe Eyebrow braucht 4.5:1 auch auf hellen Fotostellen */
+  background: linear-gradient(to top, rgba(8,20,0,.94) 0%, rgba(8,20,0,.82) 45%, rgba(8,20,0,0) 100%);
+}
+
+.gate-body {
+  position: absolute;
+  left: clamp(18px, 2vw, 28px);
+  right: clamp(18px, 2vw, 28px);
+  bottom: clamp(18px, 2vw, 26px);
+}
+.gate-eyebrow {
+  display: block;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+.gate-door h2 {
+  font-size: clamp(1.2rem, 1.9vw, 1.7rem);
+  line-height: 1.14;
+  color: #fff;
+  margin: 7px 0 14px;
+}
+.gate-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: .98rem;
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--green-800);
+  transition: transform .22s var(--ease), background-color .22s var(--ease);
+}
+.gate-door:hover .gate-cta { transform: translateY(-2px); background: var(--yellow); }
+.gate-door--gewerbe .gate-cta { background: var(--yellow); }
+.gate-door--gewerbe:hover .gate-cta { background: #fff; }
+.gate-door:focus-visible { outline: 3px solid var(--green-700); outline-offset: 3px; }
+
+.gate-escape {
+  text-align: center;
+  margin: clamp(20px, 2.4vw, 30px) auto 0;
+  font-size: .93rem;
+  color: var(--ink-mute);
+}
+.gate-escape a { color: var(--green-700); font-weight: 600; text-underline-offset: 3px; }
+
+/* Huelle fuer die verschobenen Bloecke — setzt selbst keine Innenabstaende,
+   damit .hero-teasers und .trust-bar ihre bestehenden Margins behalten. */
+.hero-followup { background: var(--bg); }
+
+@media (max-width: 860px) {
+  .gate-doors { grid-template-columns: 1fr; }
+  .gate-door { aspect-ratio: 3 / 2; min-height: 210px; border-radius: 20px; }
+  .gate-cta { width: 100%; justify-content: center; padding: 14px 18px; }
+  .gate-head { padding-top: max(0px, env(safe-area-inset-top)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gate-door img.gate-photo,
+  .gate-cta { transition: none; }
+  .gate-door:hover img.gate-photo { transform: none; }
 }

@@ -23,7 +23,7 @@
      imagesizes ist 100vw, weil das Bild die volle Breite fuellt - ein zu
      kleiner Wert laedt sonst die falsche Aufloesung. -->
 <link rel="preload" as="image" type="image/avif" fetchpriority="high" imagesizes="100vw" imagesrcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.avif 480w, ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.avif 960w, ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-1440.avif 1440w" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260807e" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260809b" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -298,13 +298,15 @@
   </div>
 </section>
 
-<!-- ============ BEWEIS-GRID (AP-76) ============
+<!-- ============ BEWEIS-GRID (AP-76, Bilder aktualisiert AP-83) ============
      Bewusst STATISCH, kein Karussell und keine Auto-Slideshow: die
      Notre-Dame-Auswertung (Runyon, 28.928 Klicks) zeigt ~1 % Interaktion,
      davon 84 % auf Slide 1. Ein Raster zeigt alles auf einmal.
      Die Bildauswahl ueberschneidet sich bewusst nicht mit #projekte-privat
      weiter unten, das dieselbe Seite bereits aus dem CMS befuellt.
-     Erste Reihe eager, zweite lazy - siehe loading-Attribute. -->
+     Erste Reihe eager, zweite lazy - siehe loading-Attribute.
+     Kachel 4 ist eine automatische Vorher/Nachher-Crossfade (CSS-Loop, kein
+     JS) - zwei <picture> uebereinander in .pg-fade, siehe styles.css. -->
 <section class="proof-shots" aria-labelledby="beweis-title">
   <div class="container">
     <div class="proof-shots-head">
@@ -334,15 +336,15 @@
         <figure>
           <picture>
             <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
-                    srcset="../assets/img/ueber/ueber-2-480.avif 480w,
-                            ../assets/img/ueber/ueber-2-960.avif 960w">
-            <img src="../assets/img/ueber/ueber-2.webp"
-                 alt="Minibagger und Bohrhammer im Einsatz bei Erdarbeiten an einer Klinkerwand"
+                    srcset="../assets/img/proof/kuebelbepflanzung-480.avif 480w,
+                            ../assets/img/proof/kuebelbepflanzung-960.avif 960w">
+            <img src="../assets/img/proof/kuebelbepflanzung.webp"
+                 alt="Terrakotta-Kübel mit bunter Frühlingsbepflanzung aus Stiefmütterchen, Narzissen, Traubenhyazinthen und Primeln vor einem Hauseingang"
                  width="960" height="720" loading="eager" decoding="async">
           </picture>
           <figcaption>
-            <span class="pg-title">Erd- und Abbrucharbeiten</span>
-            <span class="pg-meta">Eigene Maschinen</span>
+            <span class="pg-title">Frühlingsbepflanzung in Kübeln</span>
+            <span class="pg-meta">Herne</span>
           </figcaption>
         </figure>
       </li>
@@ -366,16 +368,30 @@
 
       <li>
         <figure>
-          <picture>
-            <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
-                    srcset="../assets/img/ueber/ueber-1-480.avif 480w,
-                            ../assets/img/ueber/ueber-1-960.avif 960w">
-            <img src="../assets/img/ueber/ueber-1.webp"
-                 alt="Gartenteich in Herne mit Natursteineinfassung, Uferbepflanzung und winterharten Palmen"
-                 width="960" height="720" loading="lazy" decoding="async">
-          </picture>
+          <div class="pg-fade">
+            <picture class="pg-fade-a">
+              <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
+                      srcset="../assets/img/proof/beetneuanlage-vorher-480.avif 480w,
+                              ../assets/img/proof/beetneuanlage-vorher-960.avif 960w">
+              <img src="../assets/img/proof/beetneuanlage-vorher.webp"
+                   alt="Frisch ausgehobenes Pflanzbeet mit Steinkante an einer Hauswand, bereit zur Bepflanzung"
+                   width="960" height="720" loading="lazy" decoding="async">
+            </picture>
+            <picture class="pg-fade-b">
+              <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
+                      srcset="../assets/img/proof/beetneuanlage-nachher-480.avif 480w,
+                              ../assets/img/proof/beetneuanlage-nachher-960.avif 960w">
+              <img src="../assets/img/proof/beetneuanlage-nachher.webp"
+                   alt="Dasselbe Beet fertig bepflanzt mit Fächerahorn, Rhododendron und Hortensie"
+                   width="960" height="720" loading="lazy" decoding="async">
+            </picture>
+            <span class="pg-fade-badge" aria-hidden="true">
+              <span class="pg-fade-badge-a">Vorher</span>
+              <span class="pg-fade-badge-b">Nachher</span>
+            </span>
+          </div>
           <figcaption>
-            <span class="pg-title">Teichanlage mit Palmen</span>
+            <span class="pg-title">Beetneuanlage</span>
             <span class="pg-meta">Herne</span>
           </figcaption>
         </figure>
