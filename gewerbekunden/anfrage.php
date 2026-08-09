@@ -39,6 +39,19 @@ function post_value(string $key): string
     return trim((string) $_POST[$key]);
 }
 
+function post_values(string $key): array
+{
+    if (!isset($_POST[$key]) || !is_array($_POST[$key])) {
+        return array();
+    }
+
+    return array_values(array_filter(array_map(static function ($value): string {
+        return is_scalar($value) ? trim((string) $value) : '';
+    }, $_POST[$key]), static function (string $value): bool {
+        return $value !== '';
+    }));
+}
+
 function clean_header_value(string $value): string
 {
     return trim(str_replace(array("\r", "\n"), '', $value));
@@ -104,6 +117,15 @@ $dangers = array(
     'nein' => 'Nein',
     'unklar' => 'Unklar',
 );
+$damageTypes = array(
+    'baum_ast' => 'Baum oder größerer Ast',
+    'gebaeude' => 'Gebäude',
+    'fahrzeug' => 'Fahrzeug',
+    'zufahrt' => 'Zufahrt oder Betriebsweg',
+    'nachbar' => 'Nachbargrundstück',
+    'oeffentlich' => 'Öffentliche Fläche',
+    'anderes' => 'Anderes',
+);
 $contactWays = array(
     'telefon' => 'Telefonisch',
     'email' => 'Per E-Mail',
@@ -127,37 +149,56 @@ $city = post_value('ort');
 $objectType = post_value('objektart');
 $timeframe = post_value('zeitrahmen');
 $danger = post_value('gefaehrdung');
+$damages = post_values('schaden');
 $description = post_value('beschreibung');
 $additionalInfo = post_value('sonstige_infos');
 $contactWay = post_value('kontaktweg');
 $callbackWindow = post_value('rueckrufzeit');
 $privacy = post_value('datenschutz');
+$isStormDamage = $concern === 'sturmnotdienst';
 
 if (
     !isset($concerns[$concern]) ||
-    !isset($collaborations[$collaboration]) ||
     $company === '' ||
     $contactName === '' ||
     !preg_match('/^[0-9]{5}$/', $postalCode) ||
     $city === '' ||
-    !isset($objectTypes[$objectType]) ||
     !isset($timeframes[$timeframe]) ||
     $description === '' ||
-    !isset($contactWays[$contactWay]) ||
     $privacy !== '1'
 ) {
     redirect_with_status('validation');
 }
 
-if (($timeframe === 'akut' && !isset($dangers[$danger])) || ($callbackWindow !== '' && !isset($callbackWindows[$callbackWindow]))) {
+if (!$isStormDamage && (!isset($collaborations[$collaboration]) || !isset($objectTypes[$objectType]) || !isset($contactWays[$contactWay]))) {
     redirect_with_status('validation');
 }
 
-if (
+if ($isStormDamage) {
+    $invalidDamage = count($damages) === 0 || count(array_diff($damages, array_keys($damageTypes))) > 0;
+    if (
+        $timeframe !== 'akut' ||
+        !isset($dangers[$danger]) ||
+        $invalidDamage ||
+        $street === '' ||
+        $phone === '' ||
+        $contactWay !== 'telefon'
+    ) {
+        redirect_with_status('validation');
+    }
+} elseif ($timeframe === 'akut' && !isset($dangers[$danger])) {
+    redirect_with_status('validation');
+}
+
+if ($callbackWindow !== '' && !isset($callbackWindows[$callbackWindow])) {
+    redirect_with_status('validation');
+}
+
+if (!$isStormDamage && (
     ($contactWay === 'telefon' && $phone === '') ||
     ($contactWay === 'email' && $email === '') ||
     ($contactWay === 'beides' && ($email === '' || $phone === ''))
-) {
+)) {
     redirect_with_status('validation');
 }
 
@@ -255,21 +296,35 @@ $optional = array(
 );
 
 $lines = array(
-    'Neue gewerbliche Anfrage über rohdich.de',
-    '=========================================',
+    $isStormDamage ? 'Neue gewerbliche Sturm- oder Baumschadenmeldung über rohdich.de' : 'Neue gewerbliche Anfrage über rohdich.de',
+    '================================================================',
     '',
     'Anliegen: ' . $concerns[$concern],
-    'Art der Zusammenarbeit: ' . $collaborations[$collaboration],
+);
+
+if (!$isStormDamage) {
+    $lines[] = 'Art der Zusammenarbeit: ' . $collaborations[$collaboration];
+}
+
+$lines = array_merge($lines, array(
     'Firma / Organisation: ' . $company,
     'Ansprechpartner: ' . $contactName,
     'E-Mail: ' . ($email !== '' ? $email : '–'),
     'Telefon: ' . ($phone !== '' ? $phone : '–'),
     'Postleitzahl: ' . $postalCode,
     'Ort: ' . $city,
-    'Objektart: ' . $objectTypes[$objectType],
-    'Zeitrahmen: ' . $timeframes[$timeframe],
-    'Gewünschte Rückmeldung: ' . $contactWays[$contactWay],
-);
+));
+
+if ($isStormDamage) {
+    $lines[] = 'Betroffen: ' . implode(', ', array_map(static function (string $value) use ($damageTypes): string {
+        return $damageTypes[$value];
+    }, array_unique($damages)));
+} else {
+    $lines[] = 'Objektart: ' . $objectTypes[$objectType];
+}
+
+$lines[] = 'Zeitrahmen: ' . $timeframes[$timeframe];
+$lines[] = 'Gewünschte Rückmeldung: ' . ($isStormDamage ? 'Telefonisch' : $contactWays[$contactWay]);
 
 foreach ($optional as $label => $value) {
     if ($value !== '') {
@@ -308,7 +363,8 @@ foreach ($attachments as $attachment) {
 }
 $mailBody .= '--' . $boundary . "--\r\n";
 
-$subject = '=?UTF-8?B?' . base64_encode('Gewerbliche Objektanfrage: ' . $concerns[$concern] . ' – ' . $company) . '?=';
+$subjectPrefix = $isStormDamage ? 'Akuter Sturm- oder Baumschaden' : 'Gewerbliche Objektanfrage: ' . $concerns[$concern];
+$subject = '=?UTF-8?B?' . base64_encode($subjectPrefix . ' – ' . $company) . '?=';
 $headers = array(
     'From: Rohdich Website <website@rohdich.de>',
     'MIME-Version: 1.0',

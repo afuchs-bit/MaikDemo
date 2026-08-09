@@ -613,7 +613,31 @@ function lpRefs(refProjects, base) {
       </div>`;
 }
 
-function lpVerlinkung(leistung, labelBySlug, base, welt) {
+const PRIVATE_FORM_PREFILL = {
+  gartengestaltung: ['garten', 'komplett'],
+  vorgarten: ['vorgarten', 'komplett'],
+  teichbau: ['wasser', 'teich_neu'],
+  'terrasse-pflasterarbeiten': ['baulich', 'pflaster'],
+  bepflanzung: ['bepflanzung_pflege', 'neupflanzung'],
+  dachbegruenung: ['weitere', 'dach'],
+  gartenpflege: ['bepflanzung_pflege', 'regelmaessig'],
+  'palmen-winterfest': ['bepflanzung_pflege', 'palmen'],
+  baumarbeiten: ['baeume', 'faellung'],
+  baumkontrolle: ['baeume', 'verkehrssicherheit'],
+  sturmnotdienst: ['sturmschaden', ''],
+  holzverkauf: ['weitere', 'holz'],
+  'pool-whirlpool-umfeld': ['wasser', 'poolumfeld'],
+};
+
+function leistungContactHref(slug, base, welt) {
+  if (welt.key !== 'privat') return `${base}#kontakt`;
+  const [path, service] = PRIVATE_FORM_PREFILL[slug] || ['unsicher', ''];
+  const query = new URLSearchParams({ pfad: path });
+  if (service) query.set('leistung', service);
+  return `${base}privatkunden/?${query.toString()}#anfrage`;
+}
+
+function lpVerlinkung(leistung, labelBySlug, base, welt, contactHref) {
   const groups = [];
   // AP-33: nur die EIGENE Welt verlinken. Ein Link auf die andere Welt würde den
   // Besucher aus seiner Welt herausführen – genau das soll nicht passieren.
@@ -641,7 +665,7 @@ function lpVerlinkung(leistung, labelBySlug, base, welt) {
   groups.push(`<div class="lp-linkgroup">
           <h3>Direkt anfragen</h3>
           <ul class="tag-list">
-            <li><a class="tag-link" href="${base}#kontakt">Kontakt aufnehmen</a></li>
+            <li><a class="tag-link" href="${contactHref}">Kontakt aufnehmen</a></li>
           </ul>
         </div>`);
 
@@ -713,6 +737,7 @@ export async function renderLeistungPage(opts) {
   ]);
   const base = welt.base;
   const canonical = `${SITE}/${welt.pfad}leistungen/${slug}/`;
+  const contactHref = leistungContactHref(slug, base, welt);
   const ogImage = refProjects[0]?.cover?.bild ? absUrl(refProjects[0].cover.bild) : `${SITE}/assets/img/hero/hero-garten-herne-1600.webp`;
 
   return fill(page, {
@@ -728,6 +753,7 @@ export async function renderLeistungPage(opts) {
     breadcrumbJsonLd: leistungBreadcrumb(leistung.h1, canonical, welt),
     breadcrumbTrail: breadcrumbTrail(welt, base, leistung.h1),
     weltLeistungenHref: `${base}${welt.pfad}leistungen/`,
+    contactHref: escAttr(contactHref),
     serviceJsonLd: serviceJsonLd(leistung, canonical),
     faqJsonLd: faqJsonLd(leistung.faq),
     logo: logo.trim(),
@@ -743,7 +769,7 @@ export async function renderLeistungPage(opts) {
     fehleinschaetzungen: lpMyths(leistung.fehleinschaetzungen || []),
     referenzprojekte: lpRefs(refProjects, base),
     faqHtml: lpFaq(leistung.faq || []),
-    verlinkung: lpVerlinkung(leistung, labelBySlug, base, welt),
+    verlinkung: lpVerlinkung(leistung, labelBySlug, base, welt, contactHref),
   });
 }
 

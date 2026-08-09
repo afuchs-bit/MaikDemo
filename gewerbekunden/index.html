@@ -20,7 +20,8 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" type="image/webp" imagesizes="(max-width: 760px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 64px), 38vw" imagesrcset="../assets/img/gewerbe/hero-objektpflege-480.webp 480w, ../assets/img/gewerbe/hero-objektpflege-800.webp 800w, ../assets/img/gewerbe/hero-objektpflege-1200.webp 1200w, ../assets/img/gewerbe/hero-objektpflege-1600.webp 1600w">
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260805c">
-<link rel="stylesheet" href="../assets/css/gewerbe.css?v=20260806g">
+<link rel="stylesheet" href="../assets/css/gewerbe.css?v=20260809c">
+<link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260809c">
 
 <script type="application/ld+json">
 {
@@ -194,7 +195,7 @@
         <li><a href="../projekte/">Galerie</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="../#ueber">Über&nbsp;uns</a></li>
-        <li><a href="#anfrage">Kontakt</a></li>
+        <li><a href="../kontakt/">Kontakt</a></li>
       </ul>
     </nav>
 
@@ -496,20 +497,57 @@
             <p class="b2b-confirmation-note">Bitte geben Sie bei Ergänzungen Ihre Firma und den Objektstandort an, damit wir die Informationen sicher zuordnen können.</p>
           </section>
 
-          <form class="contact-form b2b-form" id="contactForm" action="anfrage.php" method="post" enctype="multipart/form-data" novalidate>
-            <div id="formStatus" class="b2b-form-status" role="alert" aria-live="polite" tabindex="-1" hidden></div>
-            <div class="b2b-form-head"><div><span class="b2b-form-step">Objektanfrage</span><h3>Ihre Angaben in vier übersichtlichen Kapiteln</h3></div><p>Pflichtfelder sind mit <span class="b2b-required-mark" aria-hidden="true">*</span><span class="b2b-visually-hidden">Stern</span> gekennzeichnet.</p></div>
+          <form class="contact-form b2b-form b2b-form--modern" id="contactForm" action="anfrage.php" method="post" enctype="multipart/form-data" novalidate>
+            <div class="b2b-form-shell">
+              <aside class="b2b-contact-aside form-trust-card" aria-labelledby="b2b-contact-person">
+                <div class="form-trust-card__person">
+                  <span class="form-trust-card__eyebrow">Persönlicher Ansprechpartner</span>
+                  <h3 id="b2b-contact-person">Maik Rohdich</h3>
+                  <p class="form-trust-card__role">Gartenbaumeister</p>
+                  <p class="form-trust-card__copy"><strong>Ihre Anfrage landet direkt beim fachlichen Ansprechpartner.</strong><span>Maik Rohdich prüft Ihr Anliegen persönlich, ordnet den erforderlichen Leistungsumfang ein und stimmt die nächsten Schritte direkt mit Ihnen ab.</span></p>
+                </div>
+                <address class="b2b-contact-direct form-trust-card__actions" aria-label="Direkter Kontakt">
+                  <a href="tel:+492325585790"><span class="b2b-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 1 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span class="b2b-contact-copy"><small>Festnetz</small><strong>02325 / 58 57 90</strong></span></a>
+                  <a href="tel:+491711738943"><span class="b2b-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span class="b2b-contact-copy"><small>Mobil</small><strong>0171 / 173 89 43</strong></span></a>
+                  <a href="mailto:maik@rohdich.de"><span class="b2b-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4.5" width="20" height="15" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span><span class="b2b-contact-copy"><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a>
+                  <a class="form-trust-card__whatsapp" data-whatsapp-link href="https://wa.me/491711738943" target="_blank" rel="noopener"><span class="form-trust-card__action-icon"><svg viewBox="0 0 720 720" fill="currentColor" aria-hidden="true"><path d="M360,0C161.18,0,0,161.18,0,360c0,65.41,17.45,126.75,47.94,179.61L0,720l187.02-44.21c51.34,28.18,110.28,44.21,172.98,44.21,198.82,0,360-161.18,360-360S558.82,0,360,0ZM360,655.52c-60.17,0-116.13-17.98-162.82-48.87l-110.49,28.14,30.99-105.61c-33.53-47.93-53.2-106.26-53.2-169.19,0-163.21,132.31-295.52,295.52-295.52s295.52,132.31,295.52,295.52-132.31,295.52-295.52,295.52Z"/><path d="M444.35,407.52l87.1,41.06c4,1.88,6.56,5.94,6.2,10.34-.94,11.46-5.54,34.43-26.13,55.02-58.12,58.12-162.49-7.64-166.74-10.18-25.67-13.79-50.06-32.24-73.19-55.36s-41.58-47.52-55.37-73.19c-2.55-4.24-68.31-108.61-10.18-166.74,20.59-20.59,43.56-25.19,55.02-26.13,4.41-.36,8.46,2.2,10.34,6.2l41.07,87.1c1.94,4.12,1.09,9.02-2.13,12.24l-30.61,30.61c-6.62,6.62-8.56,16.93-4,25.11,11.17,20.03,26.19,39.32,43.59,57.07,17.75,17.4,37.04,32.43,57.07,43.59,8.18,4.56,18.48,2.62,25.11-4l30.61-30.61c3.22-3.22,8.12-4.08,12.24-2.13Z"/></svg></span><span><small>WhatsApp</small><strong>Nachricht senden</strong></span></a>
+                </address>
+                <div class="b2b-contact-facts">
+                  <section class="b2b-contact-coverage form-trust-card__coverage" aria-labelledby="b2b-coverage-title">
+                    <div class="b2b-contact-coverage-heading form-trust-card__coverage-heading"><span id="b2b-coverage-title">Unser Einsatzgebiet</span></div>
+                    <p>Herne · Bochum · Essen<br>Castrop-Rauxel · Recklinghausen<br>Gelsenkirchen</p>
+                    <small>Weitere Orte nach Absprache.</small>
+                  </section>
+                </div>
+                <a class="form-trust-card__location" href="../#kontakt">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg>
+                  <span><strong>Kontakt, Standort &amp; Erreichbarkeit</strong><small>Adresse, Besuchshinweise und weitere Kontaktdaten</small></span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </aside>
 
-            <div class="b2b-form-workspace">
-              <h4 class="b2b-stage-heading" data-stage-heading="1"><button type="button" class="b2b-stage-toggle" id="stage-toggle-1" aria-expanded="true" aria-controls="stage-panel-1"><span class="b2b-stage-number">01</span><span><strong>Anliegen</strong><small data-stage-summary="1">Anlass und Zusammenarbeit</small></span><span class="b2b-stage-state" aria-hidden="true">→</span></button></h4>
-              <section class="b2b-stage-panel" id="stage-panel-1" data-stage-panel="1" aria-labelledby="stage-toggle-1">
-                <div class="b2b-stage-panel-head"><h4>Was dürfen wir für Sie einordnen?</h4><p>Wählen Sie den fachlichen Anlass und die gewünschte Form der Zusammenarbeit.</p></div>
+              <div class="b2b-form-main">
+                <div class="b2b-form-head form-contact-head">
+                  <div class="form-contact-head__copy"><span class="b2b-form-step" data-b2b-form-kicker>Objektanfrage</span><h3 data-b2b-form-title>Ihre Angaben in vier übersichtlichen Kapiteln</h3></div>
+                  <div class="form-contact-head__note form-contact-head__note--standard" data-form-head-note><p>Pflichtfelder sind mit <span class="b2b-required-mark" aria-hidden="true">*</span><span class="b2b-visually-hidden">Stern</span> gekennzeichnet.</p></div>
+                  <div class="form-contact-head__note form-contact-head__note--emergency" data-form-head-emergency hidden><a class="form-contact-head__emergency" href="tel:+491711738943"><span>Dringender Fall?</span><strong>0171 / 173 89 43</strong></a></div>
+                </div>
+                <div class="b2b-form-progress" data-form-progress role="progressbar" aria-label="Fortschritt Ihrer Objektanfrage" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-valuetext="Schritt 1 von 4: Anliegen">
+                  <div class="b2b-form-progress-status"><span data-progress-step>Schritt 1 von 4</span><strong data-progress-label>Anliegen</strong><span data-progress-percent>25&nbsp;%</span></div>
+                  <div class="b2b-form-progress-track" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                  <p class="b2b-form-progress-selection"><span>Auswahl:</span><strong data-progress-selection>noch nicht vollständig</strong></p>
+                </div>
+                <div id="formStatus" class="b2b-form-status" role="alert" aria-live="polite" tabindex="-1" hidden></div>
+
+                <div class="b2b-form-workspace">
+              <section class="b2b-stage-panel" id="stage-panel-1" data-stage-panel="1" aria-labelledby="stage-title-1">
+                <div class="b2b-stage-panel-head"><h4 id="stage-title-1" tabindex="-1">Was dürfen wir für Sie einordnen?</h4><p>Wählen Sie den fachlichen Anlass und die gewünschte Form der Zusammenarbeit.</p><a class="form-emergency-shortcut" href="#anfrage" data-prefill-anliegen="sturmnotdienst" aria-label="Akuten Sturm- oder Baumschaden melden, Notfalltelefon 0171 173 89 43"><span class="form-emergency-shortcut__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.8 19h18.4L12 3Z"/><path d="M12 9v4"/><path d="M12 16.7h.01"/></svg></span><span class="form-emergency-shortcut__copy"><strong>Akuter Sturm- oder Baumschaden</strong><small>Notfalltelefon · 0171 / 173 89 43</small></span><span class="form-emergency-shortcut__arrow" aria-hidden="true">→</span></a></div>
+                <div class="b2b-stage-scroll" tabindex="0" aria-label="Angaben zu Anliegen und Zusammenarbeit">
                 <fieldset class="b2b-form-group"><legend>Worum geht es? <span class="b2b-required-mark" aria-hidden="true">*</span></legend><div class="b2b-choice-grid b2b-choice-grid--two">
                   <label class="b2b-choice"><input type="radio" name="anliegen" value="objektpflege" required><span>Pflege und Instandhaltung</span></label>
                   <label class="b2b-choice"><input type="radio" name="anliegen" value="umbau" required><span>Umgestaltung und Außenanlagen</span></label>
                   <label class="b2b-choice"><input type="radio" name="anliegen" value="begruenung" required><span>Dach-, Fassaden- oder Stellplatzbegrünung</span></label>
                   <label class="b2b-choice"><input type="radio" name="anliegen" value="baumkontrolle" required><span>Baumkontrolle und Baumarbeiten</span></label>
-                  <label class="b2b-choice b2b-choice--urgent"><input type="radio" name="anliegen" value="sturmnotdienst" required><span>Akuter Sturmschaden</span></label>
                   <label class="b2b-choice"><input type="radio" name="anliegen" value="begutachtung" required><span>Fachliche Begutachtung</span></label>
                   <label class="b2b-choice"><input type="radio" name="anliegen" value="ausschreibung" required><span>Ausschreibung oder Leistungsverzeichnis</span></label>
                   <label class="b2b-choice"><input type="radio" name="anliegen" value="sonstige" required><span>Sonstige Objektanfrage</span></label>
@@ -522,13 +560,15 @@
                   <label class="b2b-choice"><input type="radio" name="zusammenarbeit" value="pruefung" required><span>Fachliche Prüfung oder Begutachtung</span></label>
                   <label class="b2b-choice"><input type="radio" name="zusammenarbeit" value="ausschreibung" required><span>Ausschreibung</span></label>
                   <label class="b2b-choice"><input type="radio" name="zusammenarbeit" value="offen" required><span>Noch offen</span></label>
-                </div></fieldset>
+                </div><p class="b2b-field-hint">Falls die passende Form noch nicht feststeht, wählen Sie „Noch offen“.</p></fieldset>
+                </div>
+                <button type="button" class="b2b-scroll-cue" data-scroll-cue hidden><span>Weitere Angaben</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 9 5 5 5-5"/></svg></button>
                 <div class="b2b-stage-actions"><span></span><button type="button" class="btn btn-primary" data-stage-next="2">Weiter zu Auftraggeber &amp; Objekt <span aria-hidden="true">→</span></button></div>
               </section>
 
-              <h4 class="b2b-stage-heading" data-stage-heading="2"><button type="button" class="b2b-stage-toggle" id="stage-toggle-2" aria-expanded="true" aria-controls="stage-panel-2"><span class="b2b-stage-number">02</span><span><strong>Auftraggeber &amp; Objekt</strong><small data-stage-summary="2">Kontakt- und Standortdaten</small></span><span class="b2b-stage-state" aria-hidden="true">→</span></button></h4>
-              <section class="b2b-stage-panel" id="stage-panel-2" data-stage-panel="2" aria-labelledby="stage-toggle-2">
-                <div class="b2b-stage-panel-head"><h4>Wer fragt für welches Objekt an?</h4><p>PLZ und Ort genügen für die erste räumliche Einordnung. Weitere Angaben können Sie ergänzen.</p></div>
+              <section class="b2b-stage-panel" id="stage-panel-2" data-stage-panel="2" aria-labelledby="stage-title-2">
+                <div class="b2b-stage-panel-head"><h4 id="stage-title-2" tabindex="-1">Wer fragt für welches Objekt an?</h4><p>PLZ und Ort genügen für die erste räumliche Einordnung. Weitere Angaben können Sie ergänzen.</p><a class="form-emergency-shortcut" href="#anfrage" data-prefill-anliegen="sturmnotdienst" aria-label="Akuten Sturm- oder Baumschaden melden, Notfalltelefon 0171 173 89 43"><span class="form-emergency-shortcut__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.8 19h18.4L12 3Z"/><path d="M12 9v4"/><path d="M12 16.7h.01"/></svg></span><span class="form-emergency-shortcut__copy"><strong>Akuter Sturm- oder Baumschaden</strong><small>Notfalltelefon · 0171 / 173 89 43</small></span><span class="form-emergency-shortcut__arrow" aria-hidden="true">→</span></a></div>
+                <div class="b2b-stage-scroll" tabindex="0" aria-label="Angaben zu Auftraggeber und Objekt">
                 <fieldset class="b2b-form-group"><legend>Auftraggeber</legend>
                   <div class="b2b-field-grid">
                     <label class="field"><span>Unternehmen oder Organisation <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="firma" autocomplete="organization" maxlength="160" required></label>
@@ -546,12 +586,14 @@
                   <label class="field"><span>Ort <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="ort" id="standort" autocomplete="address-level2" maxlength="120" required></label>
                   <label class="field b2b-field-wide"><span>Objektart <span class="b2b-required-mark" aria-hidden="true">*</span></span><select name="objektart" required><option value="">Bitte auswählen</option><option value="unternehmen">Unternehmensstandort</option><option value="wohnanlage">Wohnanlage</option><option value="buero">Büro- oder Verwaltungsgebäude</option><option value="gewerbe">Gewerbeimmobilie</option><option value="institution">Öffentliche oder institutionelle Fläche</option><option value="parkplatz">Parkplatz oder Stellplatzanlage</option><option value="anderes">Anderes Objekt</option></select></label>
                 </div></fieldset>
+                </div>
+                <button type="button" class="b2b-scroll-cue" data-scroll-cue hidden><span>Weitere Angaben</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 9 5 5 5-5"/></svg></button>
                 <div class="b2b-stage-actions"><button type="button" class="btn btn-secondary" data-stage-back="1">Zurück</button><button type="button" class="btn btn-primary" data-stage-next="3">Weiter zu Beschreibung &amp; Zeitrahmen <span aria-hidden="true">→</span></button></div>
               </section>
 
-              <h4 class="b2b-stage-heading" data-stage-heading="3"><button type="button" class="b2b-stage-toggle" id="stage-toggle-3" aria-expanded="true" aria-controls="stage-panel-3"><span class="b2b-stage-number">03</span><span><strong>Beschreibung &amp; Zeitrahmen</strong><small data-stage-summary="3">Situation, Bedarf und Dringlichkeit</small></span><span class="b2b-stage-state" aria-hidden="true">→</span></button></h4>
-              <section class="b2b-stage-panel" id="stage-panel-3" data-stage-panel="3" aria-labelledby="stage-toggle-3">
-                <div class="b2b-stage-panel-head"><h4>Was ist geplant – und wann wird die Leistung benötigt?</h4><p>Beschreiben Sie zunächst kurz die Ausgangssituation und ordnen Sie anschließend den Zeitrahmen ein.</p></div>
+              <section class="b2b-stage-panel" id="stage-panel-3" data-stage-panel="3" aria-labelledby="stage-title-3">
+                <div class="b2b-stage-panel-head"><h4 id="stage-title-3" tabindex="-1">Was ist geplant – und wann wird die Leistung benötigt?</h4><p>Beschreiben Sie zunächst kurz die Ausgangssituation und ordnen Sie anschließend den Zeitrahmen ein.</p><a class="form-emergency-shortcut" href="#anfrage" data-prefill-anliegen="sturmnotdienst" aria-label="Akuten Sturm- oder Baumschaden melden, Notfalltelefon 0171 173 89 43"><span class="form-emergency-shortcut__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.8 19h18.4L12 3Z"/><path d="M12 9v4"/><path d="M12 16.7h.01"/></svg></span><span class="form-emergency-shortcut__copy"><strong>Akuter Sturm- oder Baumschaden</strong><small>Notfalltelefon · 0171 / 173 89 43</small></span><span class="form-emergency-shortcut__arrow" aria-hidden="true">→</span></a></div>
+                <div class="b2b-stage-scroll" tabindex="0" aria-label="Beschreibung und Zeitrahmen">
                 <fieldset class="b2b-form-group"><legend>Beschreibung</legend><label class="field"><span>Ausgangssituation und gewünschter Umfang <span class="b2b-required-mark" aria-hidden="true">*</span></span><textarea name="beschreibung" rows="5" placeholder="Beschreiben Sie kurz die Ausgangssituation, den gewünschten Umfang und besondere Anforderungen an Ihrem Standort." maxlength="3000" required></textarea></label><p class="b2b-field-hint">Relevant können beispielsweise Zufahrten, Betriebszeiten, Sicherheitsanforderungen, Bauabschnitte oder feste Fristen sein.</p></fieldset>
                 <fieldset class="b2b-form-group"><legend>Zeitrahmen und Dringlichkeit <span class="b2b-required-mark" aria-hidden="true">*</span></legend><div class="b2b-choice-grid b2b-choice-grid--two">
                   <label class="b2b-choice b2b-choice--urgent"><input type="radio" name="zeitrahmen" value="akut" required><span>Akut</span></label>
@@ -562,44 +604,92 @@
                   <label class="b2b-choice"><input type="radio" name="zeitrahmen" value="offen" required><span>Noch offen</span></label>
                 </div></fieldset>
                 <fieldset class="b2b-form-group b2b-conditional-group" id="gefahrGruppe" hidden><legend>Besteht eine unmittelbare Gefährdung oder Einschränkung? <span class="b2b-required-mark" aria-hidden="true">*</span></legend><div class="b2b-choice-grid b2b-choice-grid--three"><label class="b2b-choice b2b-choice--urgent"><input type="radio" name="gefaehrdung" value="ja"><span>Ja</span></label><label class="b2b-choice"><input type="radio" name="gefaehrdung" value="nein"><span>Nein</span></label><label class="b2b-choice"><input type="radio" name="gefaehrdung" value="unklar"><span>Unklar</span></label></div></fieldset>
+                </div>
+                <button type="button" class="b2b-scroll-cue" data-scroll-cue hidden><span>Weitere Angaben</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 9 5 5 5-5"/></svg></button>
                 <div class="b2b-stage-actions"><button type="button" class="btn btn-secondary" data-stage-back="2">Zurück</button><button type="button" class="btn btn-primary" data-stage-next="4">Weiter zu Unterlagen &amp; Freigabe <span aria-hidden="true">→</span></button></div>
               </section>
 
-              <h4 class="b2b-stage-heading" data-stage-heading="4"><button type="button" class="b2b-stage-toggle" id="stage-toggle-4" aria-expanded="true" aria-controls="stage-panel-4"><span class="b2b-stage-number">04</span><span><strong>Unterlagen &amp; Freigabe</strong><small data-stage-summary="4">Dateien, Hinweise und Datenschutz</small></span><span class="b2b-stage-state" aria-hidden="true">→</span></button></h4>
-              <section class="b2b-stage-panel" id="stage-panel-4" data-stage-panel="4" aria-labelledby="stage-toggle-4">
-                <div class="b2b-stage-panel-head"><h4>Welche Unterlagen oder Hinweise möchten Sie ergänzen?</h4><p>Fotos, Pläne und zusätzliche Informationen erleichtern die erste Einordnung. Beides bleibt optional.</p></div>
-                <fieldset class="b2b-form-group"><legend>Unterlagen <small>optional</small></legend><label class="field b2b-upload"><span>Fotos, Pläne, Leistungsverzeichnis oder weitere Dokumente</span><input type="file" name="unterlagen[]" id="unterlagen" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.webp" multiple aria-describedby="uploadHinweis"><span class="b2b-upload-box"><strong>Dateien auswählen</strong><small id="uploadHinweis">PDF, DOC/DOCX, XLS/XLSX, JPG/JPEG, PNG oder WebP · max. 5 Dateien · insgesamt 12 MB</small><em id="uploadSelection">Noch keine Datei ausgewählt</em></span></label></fieldset>
+              <section class="b2b-stage-panel" id="stage-panel-4" data-stage-panel="4" aria-labelledby="stage-title-4">
+                <div class="b2b-stage-panel-head"><h4 id="stage-title-4" tabindex="-1">Welche Unterlagen oder Hinweise möchten Sie ergänzen?</h4><p>Fotos, Pläne und zusätzliche Informationen erleichtern die erste Einordnung. Beides bleibt optional.</p><a class="form-emergency-shortcut" href="#anfrage" data-prefill-anliegen="sturmnotdienst" aria-label="Akuten Sturm- oder Baumschaden melden, Notfalltelefon 0171 173 89 43"><span class="form-emergency-shortcut__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.8 19h18.4L12 3Z"/><path d="M12 9v4"/><path d="M12 16.7h.01"/></svg></span><span class="form-emergency-shortcut__copy"><strong>Akuter Sturm- oder Baumschaden</strong><small>Notfalltelefon · 0171 / 173 89 43</small></span><span class="form-emergency-shortcut__arrow" aria-hidden="true">→</span></a></div>
+                <div class="b2b-stage-scroll" tabindex="0" aria-label="Unterlagen, Hinweise und Datenschutz">
+                <fieldset class="b2b-form-group"><legend>Unterlagen <small>optional</small></legend><label class="field b2b-upload"><span>Fotos, Pläne, Leistungsverzeichnis oder weitere Dokumente</span><input type="file" name="unterlagen[]" id="unterlagen" data-upload-input accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.webp" multiple aria-describedby="uploadHinweis"><span class="b2b-upload-box"><strong>Dateien auswählen</strong><small id="uploadHinweis">PDF, DOC/DOCX, XLS/XLSX, JPG/JPEG, PNG oder WebP · max. 5 Dateien · insgesamt 12 MB</small><em id="uploadSelection" data-upload-selection>Noch keine Datei ausgewählt</em></span></label></fieldset>
                 <fieldset class="b2b-form-group"><legend>Sonstige Informationen <small>optional</small></legend><label class="field"><span>Ergänzende Hinweise</span><textarea name="sonstige_infos" rows="3" placeholder="Gibt es weitere Hinweise, die wir bei der Einordnung berücksichtigen sollen?" maxlength="2000"></textarea></label><p class="b2b-field-hint">Zum Beispiel besondere Zugangsbedingungen, interne Ansprechpartner vor Ort oder ergänzende Fristen.</p></fieldset>
                 <div class="b2b-final-consent"><span class="b2b-final-consent-label">Datenschutz</span><label class="b2b-consent"><input type="checkbox" name="datenschutz" value="1" required><span>Ich bin damit einverstanden, dass meine Angaben und Dateien zur Bearbeitung dieser Anfrage verarbeitet und per E-Mail an Maik Rohdich übermittelt werden. <span class="b2b-required-mark" aria-hidden="true">*</span></span></label><details class="b2b-privacy"><summary>Hinweis zur Datenverarbeitung</summary><p>Verantwortlich ist Maik Rohdich Garten- und Landschaftsbau, Hülsstraße 5, 44625 Herne. Die Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Hochgeladene Dateien werden nicht dauerhaft auf dem Webserver gespeichert. Sie können Ihre Einwilligung jederzeit per E-Mail an <a href="mailto:maik@rohdich.de">maik@rohdich.de</a> widerrufen.</p></details></div>
                 <label class="b2b-honeypot" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                </div>
+                <button type="button" class="b2b-scroll-cue" data-scroll-cue hidden><span>Weitere Angaben</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 9 5 5 5-5"/></svg></button>
                 <div class="b2b-stage-actions b2b-stage-actions--submit"><button type="button" class="btn btn-secondary" data-stage-back="3">Zurück</button><button type="submit" class="btn btn-primary" id="b2bSubmitButton"><span data-submit-label>Objektanfrage übermitteln</span> <span aria-hidden="true">→</span></button></div>
               </section>
+
+              <section class="b2b-acute-panel" data-b2b-acute-panel hidden aria-labelledby="b2b-acute-title">
+                <div class="b2b-stage-panel-head b2b-acute-head form-acute-head">
+                  <button type="button" class="private-change-path form-acute-return" data-b2b-return-standard>← Kein akuter Schaden / anderes Anliegen</button>
+                  <h4 id="b2b-acute-title" tabindex="-1">Wichtige Angaben zum Schaden</h4>
+                </div>
+                <div class="b2b-stage-scroll b2b-acute-scroll" tabindex="0" aria-label="Angaben zum Sturm- oder Baumschaden">
+                  <input type="hidden" name="anliegen" value="sturmnotdienst" disabled data-acute-control>
+                  <input type="hidden" name="zeitrahmen" value="akut" disabled data-acute-control>
+                  <input type="hidden" name="kontaktweg" value="telefon" disabled data-acute-control>
+                  <fieldset class="b2b-form-group">
+                    <legend>Besteht aktuell eine unmittelbare Gefahr? <span class="b2b-required-mark" aria-hidden="true">*</span></legend>
+                    <div class="b2b-choice-grid b2b-choice-grid--three">
+                      <label class="b2b-choice b2b-choice--urgent"><input type="radio" name="gefaehrdung" value="ja" disabled data-acute-control data-acute-required><span>Ja</span></label>
+                      <label class="b2b-choice"><input type="radio" name="gefaehrdung" value="nein" disabled data-acute-control><span>Nein</span></label>
+                      <label class="b2b-choice"><input type="radio" name="gefaehrdung" value="unklar" disabled data-acute-control><span>Unklar</span></label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="b2b-form-group" data-acute-damage-group>
+                    <legend>Was ist betroffen? <span class="b2b-required-mark" aria-hidden="true">*</span> <small>mehrere Angaben möglich</small></legend>
+                    <div class="b2b-choice-grid b2b-choice-grid--two">
+                      <label class="b2b-choice"><input type="checkbox" name="schaden[]" value="baum_ast" disabled data-acute-control><span>Baum oder größerer Ast</span></label>
+                      <label class="b2b-choice"><input type="checkbox" name="schaden[]" value="gebaeude" disabled data-acute-control><span>Gebäude</span></label>
+                      <label class="b2b-choice"><input type="checkbox" name="schaden[]" value="fahrzeug" disabled data-acute-control><span>Fahrzeug</span></label>
+                      <label class="b2b-choice"><input type="checkbox" name="schaden[]" value="zufahrt" disabled data-acute-control><span>Zufahrt oder Betriebsweg</span></label>
+                      <label class="b2b-choice"><input type="checkbox" name="schaden[]" value="nachbar" disabled data-acute-control><span>Nachbargrundstück</span></label>
+                      <label class="b2b-choice"><input type="checkbox" name="schaden[]" value="oeffentlich" disabled data-acute-control><span>Öffentliche Fläche</span></label>
+                      <label class="b2b-choice"><input type="checkbox" name="schaden[]" value="anderes" disabled data-acute-control><span>Anderes</span></label>
+                    </div>
+                    <p class="b2b-group-error" hidden data-acute-damage-error>Bitte wählen Sie aus, was betroffen ist.</p>
+                  </fieldset>
+                  <fieldset class="b2b-form-group">
+                    <legend>Wo befindet sich der Schaden?</legend>
+                    <div class="b2b-field-grid b2b-acute-location-grid">
+                      <label class="field b2b-field-wide"><span>Straße und Hausnummer <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="strasse" autocomplete="street-address" maxlength="180" disabled data-acute-control data-acute-required></label>
+                      <label class="field b2b-field-postcode"><span>Postleitzahl <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="plz" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" disabled data-acute-control data-acute-required></label>
+                      <label class="field"><span>Ort <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="ort" autocomplete="address-level2" maxlength="120" disabled data-acute-control data-acute-required></label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="b2b-form-group">
+                    <legend>Was ist passiert?</legend>
+                    <label class="field"><span>Schaden und aktuelle Einschränkung kurz beschreiben <span class="b2b-required-mark" aria-hidden="true">*</span></span><textarea name="beschreibung" rows="3" maxlength="3000" placeholder="Beschreiben Sie kurz den Schaden und die aktuelle Situation." disabled data-acute-control data-acute-required></textarea></label>
+                  </fieldset>
+                  <fieldset class="b2b-form-group">
+                    <legend>Fotos <small>optional</small></legend>
+                    <label class="field b2b-upload"><span>Fotos der Gefahrenstelle oder des Schadens</span><input type="file" name="unterlagen[]" id="akutUnterlagenGewerbe" data-upload-input accept=".pdf,.jpg,.jpeg,.png,.webp" multiple aria-describedby="akutUploadHinweisGewerbe" disabled data-acute-control><span class="b2b-upload-box"><strong>Dateien auswählen</strong><small id="akutUploadHinweisGewerbe">PDF, JPG/JPEG, PNG oder WebP · max. 5 Dateien · insgesamt 12 MB</small><em data-upload-selection>Noch keine Datei ausgewählt</em></span></label>
+                  </fieldset>
+                  <fieldset class="b2b-form-group">
+                    <legend>Kontakt</legend>
+                    <div class="b2b-field-grid">
+                      <label class="field"><span>Unternehmen oder Organisation <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="firma" autocomplete="organization" maxlength="160" disabled data-acute-control data-acute-required></label>
+                      <label class="field"><span>Ansprechpartner <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="text" name="ansprechpartner" autocomplete="name" maxlength="120" disabled data-acute-control data-acute-required></label>
+                      <label class="field b2b-field-wide"><span>Telefonnummer <span class="b2b-required-mark" aria-hidden="true">*</span></span><input type="tel" name="telefon" autocomplete="tel" inputmode="tel" maxlength="50" disabled data-acute-control data-acute-required></label>
+                    </div>
+                  </fieldset>
+                  <div class="b2b-final-consent">
+                    <span class="b2b-final-consent-label">Datenschutz</span>
+                    <label class="b2b-consent"><input type="checkbox" name="datenschutz" value="1" disabled data-acute-control data-acute-required><span>Ich bin damit einverstanden, dass meine Angaben und Dateien zur Bearbeitung dieser Anfrage verarbeitet und per E-Mail an Maik Rohdich übermittelt werden. <span class="b2b-required-mark" aria-hidden="true">*</span></span></label>
+                  </div>
+                  <label class="b2b-honeypot" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off" disabled data-acute-control></label>
+                </div>
+                <button type="button" class="b2b-scroll-cue" data-acute-scroll-cue hidden><span>Weitere Angaben</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 9 5 5 5-5"/></svg></button>
+                <div class="b2b-stage-actions b2b-stage-actions--submit"><button type="button" class="btn btn-secondary" data-b2b-return-standard>Kein akuter Schaden / anderes Anliegen</button><button type="submit" class="btn btn-primary" data-b2b-acute-submit>Sturm- oder Baumschaden melden <span aria-hidden="true">→</span></button></div>
+              </section>
+                </div>
+              </div>
             </div>
           </form>
         </div>
 
-        <aside class="b2b-contact-aside reveal" aria-labelledby="b2b-contact-person">
-          <div class="b2b-contact-person">
-            <span class="b2b-contact-eyebrow">Ihr Ansprechpartner</span>
-            <h3 id="b2b-contact-person">Maik Rohdich</h3>
-            <p class="b2b-contact-role"><strong>Gartenbaumeister</strong></p>
-            <p class="b2b-contact-summary">Persönlicher Ansprechpartner für Ihre gewerbliche Anfrage.</p>
-          </div>
-          <address class="b2b-contact-direct" aria-label="Direkte Kontaktdaten">
-            <a href="tel:+492325585790"><span class="b2b-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span class="b2b-contact-copy"><small>Festnetz</small><strong>02325 / 58 57 90</strong></span></a>
-            <a href="tel:+491711738943"><span class="b2b-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span class="b2b-contact-copy"><small>Mobil</small><strong>0171 / 173 89 43</strong></span></a>
-            <a href="mailto:maik@rohdich.de"><span class="b2b-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4.5" width="20" height="15" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span><span class="b2b-contact-copy"><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a>
-            <a class="b2b-contact-link--whatsapp" data-whatsapp-link href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20wir%20haben%20eine%20gewerbliche%20Anfrage." target="_blank" rel="noopener"><span class="b2b-contact-icon b2b-contact-icon--whatsapp" aria-hidden="true"><svg viewBox="0 0 720 720"><path d="M360,0C161.18,0,0,161.18,0,360c0,65.41,17.45,126.75,47.94,179.61L0,720l187.02-44.21c51.34,28.18,110.28,44.21,172.98,44.21,198.82,0,360-161.18,360-360S558.82,0,360,0ZM360,655.52c-60.17,0-116.13-17.98-162.82-48.87l-110.49,28.14,30.99-105.61c-33.53-47.93-53.2-106.26-53.2-169.19,0-163.21,132.31-295.52,295.52-295.52s295.52,132.31,295.52,295.52-132.31,295.52-295.52,295.52Z"/><path d="M444.35,407.52l87.1,41.06c4,1.88,6.56,5.94,6.2,10.34-.94,11.46-5.54,34.43-26.13,55.02-58.12,58.12-162.49-7.64-166.74-10.18-25.67-13.79-50.06-32.24-73.19-55.36s-41.58-47.52-55.37-73.19c-2.55-4.24-68.31-108.61-10.18-166.74,20.59-20.59,43.56-25.19,55.02-26.13,4.41-.36,8.46,2.2,10.34,6.2l41.07,87.1c1.94,4.12,1.09,9.02-2.13,12.24l-30.61,30.61c-6.62,6.62-8.56,16.93-4,25.11,11.17,20.03,26.19,39.32,43.59,57.07,17.75,17.4,37.04,32.43,57.07,43.59,8.18,4.56,18.48,2.62,25.11-4l30.61-30.61c3.22-3.22,8.12-4.08,12.24-2.13Z"/></svg></span><span class="b2b-contact-copy"><small>WhatsApp</small><strong>Nachricht senden</strong></span></a>
-          </address>
-          <div class="b2b-contact-advice">
-            <h4>Persönliche Rückmeldung</h4>
-            <p>Da wir tagsüber häufig auf Baustellen und bei Kunden im Einsatz sind, kann ein Rückruf sinnvoller sein als ein sofortiges Gespräch. Hinterlassen Sie Ihre Kontaktdaten und Ihr Anliegen – wir melden uns persönlich.</p>
-          </div>
-          <div class="b2b-contact-facts">
-            <section><h4><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><span>Termine</span></h4><p>Objekttermine und Besuche ausschließlich nach Vereinbarung.</p></section>
-            <section><h4><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Einsatzgebiet</span></h4><ul><li>Herne</li><li>Bochum</li><li>Castrop-Rauxel</li><li>Recklinghausen</li><li>Gelsenkirchen</li><li>weitere Orte nach Projekt</li></ul></section>
-          </div>
-        </aside>
       </div>
     </div>
   </section>
@@ -611,7 +701,7 @@
     <div><a class="brand brand-footer" href="../" aria-label="Zur Startseite"><svg class="brand-logo brand-logo-light" viewBox="0 0 640 150" aria-hidden="true"><use href="#brand-logo"/></svg></a><address>Hülsstraße 5<br>44625 Herne<br><br><a href="tel:+492325585790">02325 / 58 57 90</a><br><a href="tel:+491711738943">0171 / 173 89 43</a><br><a href="mailto:maik@rohdich.de">maik@rohdich.de</a></address><p class="muted small">Besuche ausschließlich nach Vereinbarung.</p></div>
     <div><h4>Einsatzgebiet</h4><ul class="footer-list"><li>Herne</li><li>Bochum</li><li>Castrop-Rauxel</li><li>Recklinghausen</li><li>Gelsenkirchen</li><li>weitere Orte nach Projekt</li></ul></div>
     <div><h4>Gewerbekunden</h4><ul class="footer-list"><li><a href="#b2b-request-paths-title">Anliegen</a></li><li><a href="#zusammenarbeit">Zusammenarbeit</a></li><li><a href="#vergabe">Vergabeweg</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-    <div><h4>Bereiche</h4><ul class="footer-list"><li><a href="../privatkunden/">Privatkunden</a></li><li><a href="./" aria-current="page">Gewerbekunden</a></li><li><a href="../projekte/">Galerie</a></li><li><a href="../#ueber">Über uns</a></li><li><a href="#anfrage">Kontakt</a></li></ul></div>
+    <div><h4>Bereiche</h4><ul class="footer-list"><li><a href="../privatkunden/">Privatkunden</a></li><li><a href="./" aria-current="page">Gewerbekunden</a></li><li><a href="../projekte/">Galerie</a></li><li><a href="../#ueber">Über uns</a></li><li><a href="../kontakt/">Kontakt</a></li></ul></div>
   </div>
   <div class="container footer-bottom"><small>© <span id="year"></span> Maik Rohdich Garten- und Landschaftsbau · Gartenbaumeister</small><small><a href="../impressum/">Impressum</a> · <a href="../datenschutz/">Datenschutz</a></small></div>
 </footer>
@@ -619,6 +709,6 @@
 <div class="b2b-mobile-actions" aria-label="Schnellkontakt" aria-hidden="true" inert><a class="b2b-mobile-main" href="#anfrage">Objekt anfragen</a><a href="tel:+491711738943" aria-label="Anrufen"><svg class="b2b-mobile-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></a><a class="b2b-mobile-whatsapp" data-whatsapp-link href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20wir%20haben%20eine%20gewerbliche%20Anfrage." target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="b2b-mobile-action-icon" viewBox="0 0 720 720" fill="currentColor" aria-hidden="true"><path d="M360,0C161.18,0,0,161.18,0,360c0,65.41,17.45,126.75,47.94,179.61L0,720l187.02-44.21c51.34,28.18,110.28,44.21,172.98,44.21,198.82,0,360-161.18,360-360S558.82,0,360,0ZM360,655.52c-60.17,0-116.13-17.98-162.82-48.87l-110.49,28.14,30.99-105.61c-33.53-47.93-53.2-106.26-53.2-169.19,0-163.21,132.31-295.52,295.52-295.52s295.52,132.31,295.52,295.52-132.31,295.52-295.52,295.52Z"/><path d="M444.35,407.52l87.1,41.06c4,1.88,6.56,5.94,6.2,10.34-.94,11.46-5.54,34.43-26.13,55.02-58.12,58.12-162.49-7.64-166.74-10.18-25.67-13.79-50.06-32.24-73.19-55.36s-41.58-47.52-55.37-73.19c-2.55-4.24-68.31-108.61-10.18-166.74,20.59-20.59,43.56-25.19,55.02-26.13,4.41-.36,8.46,2.2,10.34,6.2l41.07,87.1c1.94,4.12,1.09,9.02-2.13,12.24l-30.61,30.61c-6.62,6.62-8.56,16.93-4,25.11,11.17,20.03,26.19,39.32,43.59,57.07,17.75,17.4,37.04,32.43,57.07,43.59,8.18,4.56,18.48,2.62,25.11-4l30.61-30.61c3.22-3.22,8.12-4.08,12.24-2.13Z"/></svg></a></div>
 
 <script src="../assets/js/main.js?v=20260805a" defer></script>
-<script src="../assets/js/gewerbe.js?v=20260806b" defer></script>
+<script src="../assets/js/gewerbe.js?v=20260809c" defer></script>
 </body>
 </html>
