@@ -3035,3 +3035,10 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .gate-cta { transition: none; }
   .gate-door:hover img.gate-photo { transform: none; }
 }
+
+/* AP-85: Reveal-Elemente bleiben sichtbar, wenn kein Skript laeuft (Abschnitt 5
+   aus dem AP-78-Entwurf). Browser ohne @media (scripting) ignorieren den Block
+   und verhalten sich wie bisher. */
+@media (scripting: none) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
