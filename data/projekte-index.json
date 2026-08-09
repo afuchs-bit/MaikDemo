@@ -18,11 +18,32 @@
       "bilder": [
         {
           "bild": "/assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/4fb74574-6f6b-4b17-8fd3-33743ab4d9a7.webp",
-          "alt": "Fertig bepflanztes Staudenbeet mit Gräsern und Fächerahorn, eingefasst mit Natursteinen"
+          "alt": "Fertig bepflanztes Staudenbeet mit Gräsern und Fächerahorn, eingefasst mit Natursteinen",
+          "variants": {
+            "base": "/assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/beetanlage-herne-nachher",
+            "widths": [
+              480,
+              960
+            ],
+            "webpWidths": [
+              480
+            ],
+            "w": 480,
+            "h": 600
+          }
         },
         {
           "bild": "/assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/232eba42-3f04-4645-bd63-1e3ac0e0ff9c.webp",
-          "alt": "Frisch angelegtes Pflanzbeet mit Natursteineinfassung, Erdaushub vor der Bepflanzung"
+          "alt": "Frisch angelegtes Pflanzbeet mit Natursteineinfassung, Erdaushub vor der Bepflanzung",
+          "variants": {
+            "base": "/assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/beetanlage-herne-vorher",
+            "widths": [
+              480,
+              960
+            ],
+            "w": 960,
+            "h": 1200
+          }
         }
       ]
     },
@@ -44,7 +65,16 @@
       "bilder": [
         {
           "bild": "/assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/img_3629.webp",
-          "alt": "Gepflasterte Einfahrt mit angrenzendem Staudenbeet und Gehölzbepflanzung im Vorgartenbereich"
+          "alt": "Gepflasterte Einfahrt mit angrenzendem Staudenbeet und Gehölzbepflanzung im Vorgartenbereich",
+          "variants": {
+            "base": "/assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne",
+            "widths": [
+              480,
+              960
+            ],
+            "w": 960,
+            "h": 720
+          }
         }
       ]
     },
