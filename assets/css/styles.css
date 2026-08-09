@@ -2894,8 +2894,10 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   left: 0; right: 0; bottom: 0;
   height: 72%;                             /* AP-84: Entwurfswert 62% verworfen - gelber Kicker fiel auf 3.8:1, mit 72% gemessen >= 5.6:1 */
   z-index: -1;
-  /* Stops dunkler als im Entwurf: gelbe Eyebrow braucht 4.5:1 auch auf hellen Fotostellen */
-  background: linear-gradient(to top, rgba(8,20,0,.94) 0%, rgba(8,20,0,.82) 45%, rgba(8,20,0,0) 100%);
+  /* Stops dunkler als im Entwurf: gelbe Eyebrow braucht 4.5:1 auch auf hellen
+     Fotostellen. AP-91 nochmals nachgezogen (.82 -> .90), weil das helle Laub
+     im Baumarbeiten-Foto den Kicker sonst auf 3,3:1 druecken wuerde. */
+  background: linear-gradient(to top, rgba(8,20,0,.96) 0%, rgba(8,20,0,.90) 50%, rgba(8,20,0,0) 100%);
 }
 
 .gate-body {

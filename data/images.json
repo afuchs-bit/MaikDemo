@@ -96,16 +96,20 @@
       "height": 720,
       "aspect": 0.75
     },
-    "/assets/img/hero/gate-gewerbe.webp": {
-      "base": "/assets/img/hero/gate-gewerbe",
+    "/assets/img/hero/gate-gewerbe-baumarbeiten.webp": {
+      "base": "/assets/img/hero/gate-gewerbe-baumarbeiten",
       "widths": [
         480,
         960,
         1200
       ],
       "width": 960,
-      "height": 720,
-      "aspect": 0.75
+      "height": 640,
+      "aspect": 0.6667,
+      "webpWidths": [
+        480,
+        960
+      ]
     }
   }
 }
