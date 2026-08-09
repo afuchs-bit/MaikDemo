@@ -40,6 +40,8 @@ const SOURCES = [
   { src: 'assets/img/_src/ueber-1.jpg', dir: 'assets/img/ueber', name: 'ueber-1' },
   { src: 'assets/img/_src/ueber-2.jpg', dir: 'assets/img/ueber', name: 'ueber-2' },
   { src: 'assets/img/_src/ueber-3.jpg', dir: 'assets/img/ueber', name: 'ueber-3' },
+  // Original ist 1448 px breit; 1200 statt 1600 als groesste Stufe.
+  { src: 'assets/img/_src/Gewerbe_Foto_Homepage_Hero.png', dir: 'assets/img/hero', name: 'gate-gewerbe', widths: [480, 960, 1200] },
 ];
 
 async function fileSize(p) {
@@ -76,7 +78,7 @@ async function main() {
     const aspect = srcH / srcW;
 
     // Nur Breiten <= Originalbreite; ist das Original kleiner als 480, nimm die Originalbreite.
-    let widths = WIDTHS.filter((w) => w <= srcW);
+    let widths = (s.widths ?? WIDTHS).filter((w) => w <= srcW);
     if (!widths.length) widths = [srcW];
 
     for (const w of widths) {

@@ -2,6 +2,53 @@
   "_hinweis": "AUTO-GENERIERT von .github/scripts/build-index.mjs – NICHT von Hand editieren.",
   "projekte": [
     {
+      "slug": "beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne",
+      "titel": "Beetanlage mit Natursteineinfassung – Vorher/Nachher",
+      "ort": "Herne",
+      "kundentyp": [
+        "privat"
+      ],
+      "leistungen": [
+        "bepflanzung",
+        "gartengestaltung"
+      ],
+      "datum": "2026-08-08",
+      "featured": true,
+      "beschreibung": "Neuanlage eines geschwungenen Pflanzbeets mit Natursteinkante. Nach dem Aushub und der Bodenvorbereitung wurde die Fläche mit einer abwechslungsreichen Staudenbepflanzung (u. a. Gräser, Lavendel, Fächerahorn) bestückt – für ein ganzjährig attraktives, pflegeleichtes Beet.",
+      "bilder": [
+        {
+          "bild": "/assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/4fb74574-6f6b-4b17-8fd3-33743ab4d9a7.webp",
+          "alt": "Fertig bepflanztes Staudenbeet mit Gräsern und Fächerahorn, eingefasst mit Natursteinen"
+        },
+        {
+          "bild": "/assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/232eba42-3f04-4645-bd63-1e3ac0e0ff9c.webp",
+          "alt": "Frisch angelegtes Pflanzbeet mit Natursteineinfassung, Erdaushub vor der Bepflanzung"
+        }
+      ]
+    },
+    {
+      "slug": "vorgartengestaltung-mit-gepflasterter-einfahrt-herne",
+      "titel": "Vorgartengestaltung mit gepflasterter Einfahrt",
+      "ort": "Herne",
+      "kundentyp": [
+        "privat"
+      ],
+      "leistungen": [
+        "vorgarten",
+        "terrasse-pflasterarbeiten",
+        "bepflanzung"
+      ],
+      "datum": "2026-08-08",
+      "featured": true,
+      "beschreibung": "Strukturierte Vorgartenanlage mit farblich changiertem Pflasterbelag und angrenzendem, dicht bepflanztem Staudenbeet. Verschiedene Gehölze, Gräser und Sträucher sorgen für ein natürliches, blickdichtes Grün direkt am Hauseingang.",
+      "bilder": [
+        {
+          "bild": "/assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/img_3629.webp",
+          "alt": "Gepflasterte Einfahrt mit angrenzendem Staudenbeet und Gehölzbepflanzung im Vorgartenbereich"
+        }
+      ]
+    },
+    {
       "slug": "gartengestaltung-herne",
       "titel": "Gartengestaltung",
       "ort": "Herne",
@@ -18,7 +65,21 @@
       "bilder": [
         {
           "bild": "/assets/img/projekte/gartengestaltung-herne/03ff56b1-b6e3-4d40-a9f7-4c613914ffa7.webp",
-          "alt": "Beispiel Gartengestaltung"
+          "alt": "Beispiel Gartengestaltung",
+          "variants": {
+            "base": "/assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero",
+            "widths": [
+              480,
+              960,
+              1440
+            ],
+            "webpWidths": [
+              480,
+              960
+            ],
+            "w": 960,
+            "h": 720
+          }
         }
       ]
     },
@@ -160,7 +221,16 @@
       "bilder": [
         {
           "bild": "/assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/img_7043.webp",
-          "alt": "Vorgartenbau"
+          "alt": "Vorgartenbau",
+          "variants": {
+            "base": "/assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/vorgarten-bochum",
+            "widths": [
+              480,
+              960
+            ],
+            "w": 960,
+            "h": 720
+          }
         }
       ]
     },
@@ -183,7 +253,16 @@
       "bilder": [
         {
           "bild": "/assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/img_5012-1.webp",
-          "alt": "Poolbau und Gartengestaltung"
+          "alt": "Poolbau und Gartengestaltung",
+          "variants": {
+            "base": "/assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne",
+            "widths": [
+              480,
+              960
+            ],
+            "w": 960,
+            "h": 720
+          }
         }
       ]
     }

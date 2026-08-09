@@ -67,9 +67,10 @@ Diese Werte sind final abgestimmt und müssen **zeichengenau identisch** an alle
 | PLZ / Ort | 44625 Herne |
 | Land | DE |
 | Gegründet | 2003 (seit 01.01.2003) |
-| Google-Bewertungen | 67 Bewertungen, Durchschnitt 4,8 |
-| **Öffnungszeiten** | **Montag bis Freitag, 08:00–20:00 Uhr** |
-| **Samstag / Sonntag** | **geschlossen** |
+| Google-Bewertungen | 67 Bewertungen, Durchschnitt 4,9 |
+| **Öffnungszeiten** | **Montag bis Freitag, 09:00–17:00 Uhr** |
+| **Samstag** | **09:00–12:00 Uhr** |
+| **Sonntag** | **geschlossen** |
 | **WhatsApp** | **24/7 erreichbar für Nachrichten** — Antwort zu den Geschäftszeiten |
 | Besuche vor Ort | **ausschließlich nach vorheriger Terminvereinbarung** |
 | Einsatzgebiet | Herne (Sitz), Bochum, Castrop-Rauxel, Recklinghausen, Gelsenkirchen-Buer, weitere Orte nach Projekt |
@@ -108,7 +109,7 @@ Es gibt Öffnungszeiten (Mo–Fr 08–20), aber **keine Ladenöffnung**. Besuche
 
 **Verbindliche Formulierung** (so oder sinngemäß, überall konsistent):
 
-> **Erreichbarkeit:** Montag bis Freitag, 08:00–20:00 Uhr
+> **Erreichbarkeit:** Montag bis Freitag, 09:00–17:00 Uhr · Samstag, 09:00–12:00 Uhr
 > Per WhatsApp erreichen Sie uns rund um die Uhr — wir antworten innerhalb der Geschäftszeiten.
 > Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich.
 
@@ -230,7 +231,7 @@ Diese Seite enthält keine Werbung, die Regel greift voraussichtlich nicht. Trot
 
 ### AP-04 · Öffnungszeiten korrigieren
 
-**Verbindlich: Montag bis Freitag 08:00–20:00 Uhr. Samstag und Sonntag geschlossen. WhatsApp 24/7.**
+**Verbindlich: Montag bis Freitag 09:00–17:00 Uhr. Samstag 09:00–12:00 Uhr. Sonntag geschlossen. WhatsApp 24/7.**
 
 **Umsetzung:**
 
@@ -245,7 +246,7 @@ Diese Seite enthält keine Werbung, die Regel greift voraussichtlich nicht. Trot
 ```
 
 2. Den bestehenden FAQ-Eintrag „Gibt es feste Öffnungszeiten?" **inhaltlich ersetzen**:
-> **Antwort:** Ja. Wir sind montags bis freitags von 08:00 bis 20:00 Uhr erreichbar. Per WhatsApp können Sie uns rund um die Uhr schreiben — wir antworten innerhalb der Geschäftszeiten. Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich, auch innerhalb der Öffnungszeiten.
+> **Antwort:** Ja. Wir sind montags bis freitags von 09:00 bis 17:00 Uhr und samstags von 09:00 bis 12:00 Uhr erreichbar. Per WhatsApp können Sie uns rund um die Uhr schreiben — wir antworten innerhalb der Geschäftszeiten. Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich, auch innerhalb der Öffnungszeiten.
 
 3. Im Kontaktbereich und im Footer die Zeiten sichtbar ergänzen, mit dem Zusatz aus Abschnitt B.2 und einem Button „Termin vereinbaren".
 
@@ -589,7 +590,7 @@ Struktur: `/gartenbau-<stadt>/` mit Ortsbezug im ersten Absatz, mindestens zwei 
 
 ### AP-20 · Google-Bewertungen offiziell einbinden
 
-**Ziel:** 4,8 Sterne aus 67 Bewertungen sichtbar auf der Website, DSGVO-konform, ohne Consent-Banner, ohne Drittanbieter-Widget, ohne Richtlinienverstoß.
+**Ziel:** 4,9 Sterne aus 67 Bewertungen sichtbar auf der Website, DSGVO-konform, ohne Consent-Banner, ohne Drittanbieter-Widget, ohne Richtlinienverstoß.
 
 **Warum dieser Weg:** Ein kostenloses offizielles Google-Widget existiert nicht mehr. Drittanbieter-Widgets laden bei jedem Seitenaufruf fremde Skripte und brauchen deshalb ein Consent-Banner. Der saubere Weg ist, die Bewertungen serverseitig abzuholen, zu cachen und selbst als HTML zu rendern — beim Seitenaufruf läuft dann keine Verbindung zu Google.
 
@@ -840,7 +841,7 @@ Bei Cloudflare Pages über `_headers` im Root:
 
 Wird vom Auftraggeber gepflegt, muss aber technisch zusammenpassen:
 
-- **Öffnungszeiten im Profil auf Mo–Fr 08:00–20:00 setzen, Sa/So geschlossen.** Abweichungen zwischen Website und Profil sind einer der wenigen Punkte, die Google bei lokalen Betrieben direkt negativ bewertet.
+- **Öffnungszeiten im Profil auf Mo–Fr 09:00–17:00 und Sa 09:00–12:00 setzen, So geschlossen.** Abweichungen zwischen Website und Profil sind einer der wenigen Punkte, die Google bei lokalen Betrieben direkt negativ bewertet.
 - NAP zeichengenau identisch zur Website
 - Primärkategorie „Garten- und Landschaftsbau", Sekundärkategorien u. a. „Baumpflegedienst", „Gartenbauunternehmen"
 - Die Leistungen im Profil spiegeln exakt die 14 Leistungsseiten

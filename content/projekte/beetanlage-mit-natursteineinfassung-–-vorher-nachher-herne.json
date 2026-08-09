@@ -1,0 +1,24 @@
+{
+  "titel": "Beetanlage mit Natursteineinfassung – Vorher/Nachher",
+  "ort": "Herne",
+  "kundentyp": [
+    "privat"
+  ],
+  "leistungen": [
+    "bepflanzung",
+    "gartengestaltung"
+  ],
+  "datum": "2026-08-08",
+  "featured": true,
+  "beschreibung": "Neuanlage eines geschwungenen Pflanzbeets mit Natursteinkante. Nach dem Aushub und der Bodenvorbereitung wurde die Fläche mit einer abwechslungsreichen Staudenbepflanzung (u. a. Gräser, Lavendel, Fächerahorn) bestückt – für ein ganzjährig attraktives, pflegeleichtes Beet.",
+  "bilder": [
+    {
+      "bild": "/assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/4fb74574-6f6b-4b17-8fd3-33743ab4d9a7.webp",
+      "alt": "Fertig bepflanztes Staudenbeet mit Gräsern und Fächerahorn, eingefasst mit Natursteinen"
+    },
+    {
+      "bild": "/assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/232eba42-3f04-4645-bd63-1e3ac0e0ff9c.webp",
+      "alt": "Frisch angelegtes Pflanzbeet mit Natursteineinfassung, Erdaushub vor der Bepflanzung"
+    }
+  ]
+}

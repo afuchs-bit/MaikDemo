@@ -19,8 +19,8 @@
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
-<link rel="preload" as="image" type="image/avif" imagesizes="100vw" imagesrcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260806a" />
+<link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w" fetchpriority="high" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260809b" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -41,7 +41,7 @@
       "name": "Maik Rohdich Garten- und Landschaftsbau",
       "url": "https://rohdich.de/",
       "image": "https://rohdich.de/assets/img/hero/hero-pool-1600.webp",
-      "telephone": "+492325585790",
+      "telephone": "+491711738943",
       "email": "Maik@rohdich.de",
       "foundingDate": "2003-01-01",
       "address": {
@@ -53,7 +53,8 @@
       },
       "areaServed": ["Herne", "Bochum", "Castrop-Rauxel", "Recklinghausen", "Gelsenkirchen-Buer"],
       "openingHoursSpecification": [
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "20:00"}
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "12:00"}
       ],
       "founder": {"@id": "https://rohdich.de/#maik-rohdich"},
       "knowsAbout": [
@@ -263,44 +264,77 @@
 
 <main id="top">
 
-<!-- ============ HERO ============ -->
-<section class="hero" aria-label="Willkommen">
-  <div class="hero-media">
-    <!-- Video wird per JS aktiviert; Standbild als Poster/Fallback (LCP, siehe preload im Head) -->
-    <picture>
-      <source type="image/avif" sizes="100vw" srcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w">
-      <source type="image/webp" sizes="100vw" srcset="assets/img/hero/hero-pool-480.webp 480w, assets/img/hero/hero-pool-960.webp 960w, assets/img/hero/hero-pool-1600.webp 1600w">
-      <img class="hero-image" src="assets/img/hero/hero-pool.webp" alt="" aria-hidden="true" width="1600" height="900" fetchpriority="high" decoding="async" />
-    </picture>
-    <div class="hero-scrim"></div>
-    <div class="hero-grain" aria-hidden="true"></div>
-  </div>
+<!-- ============ HERO / ZIELGRUPPENWEICHE (AP-82) ============ -->
+<section class="hero hero--gate" aria-labelledby="gate-title">
 
-  <div class="container hero-content">
+  <div class="gate-head">
     <span class="eyebrow reveal">
       <span class="eyebrow-dot"></span>
-      Garten- und Landschaftsbau · seit 2003
+      Gartenbaumeister und Sachverständiger für Baumkontrolle · seit 2003
     </span>
-    <h1 class="hero-title reveal">
-      <span class="line">Gärten, die zum</span>
-      <span class="line"><em>Leben</em> passen.</span>
-      <span class="line muted">In Herne, Bochum, Recklinghausen und Umgebung.</span>
+    <h1 class="hero-title reveal" id="gate-title">
+      <span class="line">Wofür brauchen Sie <em>uns</em>?</span>
     </h1>
-    <p class="hero-sub reveal">
-      Maik Rohdich gestaltet, pflegt und betreut private Gärten, Vorgärten, Teichanlagen und gewerbliche
-      Außenanlagen – bodenständig, fachlich sauber und mit realistischer Beratung vor Ort.
+    <p class="gate-region reveal">
+      Herne · Bochum · Castrop-Rauxel · Recklinghausen · Gelsenkirchen-Buer
     </p>
+  </div>
 
-    <div class="hero-ctas reveal">
-      <a href="privatkunden/" class="btn btn-primary">
-        Privatprojekt anfragen
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="gewerbekunden/" class="btn btn-secondary">
-        Gewerbliche Anfrage
-      </a>
-    </div>
+  <div class="gate-doors">
 
+    <a class="gate-door gate-door--privat" href="privatkunden/">
+      <picture>
+        <source type="image/avif" sizes="(max-width: 860px) 100vw, 50vw"
+                srcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w">
+        <source type="image/webp" sizes="(max-width: 860px) 100vw, 50vw"
+                srcset="assets/img/hero/hero-pool-480.webp 480w, assets/img/hero/hero-pool-960.webp 960w, assets/img/hero/hero-pool-1600.webp 1600w">
+        <img class="gate-photo" src="assets/img/hero/hero-pool.webp"
+             alt="Angelegter Privatgarten mit Pool, Natursteinen und Bepflanzung"
+             width="960" height="720" fetchpriority="high" decoding="async">
+      </picture>
+      <span class="gate-veil" aria-hidden="true"></span>
+      <div class="gate-body">
+        <span class="gate-eyebrow">Für Privatkunden</span>
+        <h2>Ihr Garten, geplant und gebaut.</h2>
+        <span class="gate-cta">
+          Zum Privatkundenbereich
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <a class="gate-door gate-door--gewerbe" href="gewerbekunden/">
+      <picture>
+        <source type="image/avif" sizes="(max-width: 860px) 100vw, 50vw"
+                srcset="assets/img/hero/gate-gewerbe-480.avif 480w, assets/img/hero/gate-gewerbe-960.avif 960w, assets/img/hero/gate-gewerbe-1200.avif 1200w">
+        <source type="image/webp" sizes="(max-width: 860px) 100vw, 50vw"
+                srcset="assets/img/hero/gate-gewerbe-480.webp 480w, assets/img/hero/gate-gewerbe-960.webp 960w, assets/img/hero/gate-gewerbe-1200.webp 1200w">
+        <img class="gate-photo" src="assets/img/hero/gate-gewerbe.webp"
+             alt="Bepflanztes Hochbeet in der Außenanlage eines gewerblichen Objekts"
+             width="960" height="720" loading="lazy" decoding="async">
+      </picture>
+      <span class="gate-veil" aria-hidden="true"></span>
+      <div class="gate-body">
+        <span class="gate-eyebrow">Für Gewerbekunden</span>
+        <h2>Außenanlagen im festen Turnus.</h2>
+        <span class="gate-cta">
+          Zum Gewerbebereich
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="gate-escape reveal">
+    Nicht sicher, was passt? <a href="leistungen/">Alle Leistungen im Überblick →</a>
+  </p>
+
+</section>
+
+<!-- ============ HERO-UNTERBAU: Sonderleistungen + Vertrauensleiste (AP-82) ============ -->
+<section class="hero-followup" aria-label="Sonderleistungen und Qualifikationen">
+  <div class="container">
     <ul class="hero-teasers reveal" aria-label="Sonderleistungen">
       <li>
         <a class="teaser teaser-strong" href="privatkunden/leistungen/baumkontrolle/" data-welt-dialog="baumkontrolle">
@@ -337,7 +371,6 @@
       </li>
     </ul>
   </div>
-
   <!-- Vertrauensleiste – Teil des Hero-Unterbaus -->
   <div class="container trust-bar reveal">
     <div class="trust-item">
@@ -379,7 +412,7 @@
       <span class="trust-num">Zertifiziert</span>
       <span class="trust-label">Gartenbaumeister · Gutachter</span>
     </div>
-    <div class="trust-item trust-item--google" aria-label="Google Bewertungen: 4,8 von 5 Sternen aus 67 Bewertungen">
+    <div class="trust-item trust-item--google" aria-label="Google Bewertungen: 4,9 von 5 Sternen aus 67 Bewertungen">
       <!-- Hinweis: Text-Nachbildung der Google-Wortmarke, kein offizielles Google-Asset.
            Für Demo/Vorschau ok; für Live-Einsatz offizielles Google-Brand-Asset einsetzen. -->
       <div class="g-row g-row--top">
@@ -389,10 +422,10 @@
             <tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC05">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e</tspan>
           </text>
         </svg>
-        <span class="g-rating">4,8</span>
+        <span class="g-rating">4,9</span>
       </div>
-      <span class="stars" data-rating="4.8" aria-hidden="true">
-        <span class="stars-fg" style="width:96%"></span>
+      <span class="stars" data-rating="4.9" aria-hidden="true">
+        <span class="stars-fg" style="width:98%"></span>
       </span>
       <div class="g-row g-row--bottom">
         <span class="g-src">Google Bewertungen</span>
@@ -431,7 +464,7 @@
         </div>
         <span class="proof-sep" aria-hidden="true"></span>
         <div class="proof-stat">
-          <span class="num"><span data-countup="4.8" data-decimals="1">4,8</span><span class="star" aria-hidden="true">★</span></span>
+          <span class="num"><span data-countup="4.9" data-decimals="1">4,9</span><span class="star" aria-hidden="true">★</span></span>
           <span class="lab">Google-Bewertung</span>
         </div>
         <span class="proof-sep" aria-hidden="true"></span>
@@ -489,7 +522,7 @@
             <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.55-.21-2.27H12v4.29h6.46c-.29 1.5-1.15 2.77-2.45 3.62v3h3.96c2.32-2.13 3.52-5.27 3.52-8.64Z"/><path fill="#34A853" d="M12 24c3.31 0 6.09-1.1 8.12-2.98l-3.96-3c-1.1.74-2.5 1.18-4.16 1.18-3.2 0-5.91-2.16-6.88-5.07H1.04v3.18C3.05 21.3 7.18 24 12 24Z"/><path fill="#FBBC05" d="M5.12 14.13a7.2 7.2 0 0 1 0-4.27V6.68H1.04A12 12 0 0 0 0 12c0 1.93.46 3.76 1.04 5.32l4.08-3.19Z"/><path fill="#EA4335" d="M12 4.75c1.8 0 3.42.62 4.7 1.83l3.52-3.52C18.09 1.06 15.31 0 12 0 7.18 0 3.05 2.7 1.04 6.68l4.08 3.18C6.09 6.91 8.8 4.75 12 4.75Z"/></svg>
             <span>Google Rezensionen</span>
           </div>
-          <div class="stars" aria-label="4,8 von 5 Sternen"><span class="stars-fg" style="width:96%"></span></div>
+          <div class="stars" aria-label="4,9 von 5 Sternen"><span class="stars-fg" style="width:98%"></span></div>
         </div>
 
         <div class="proof-reviews" data-rotator>
@@ -655,6 +688,7 @@
           <span class="project-location">Herne</span>
           <h3>Vorgarten &amp; Bepflanzung</h3>
           <p>Vorgarten-Neugestaltung mit Naturstein, strukturierter Bepflanzung und integrierter Beleuchtung.</p>
+          <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
         </div>
         <a class="card-open" href="projekte/vorgarten-herne-2026/" aria-label="Projekt „Vorgarten &amp; Bepflanzung“ ansehen"></a>
       </article>
@@ -674,6 +708,7 @@
           <span class="project-location">Bochum</span>
           <h3>Teichanlage &amp; Außenbereich</h3>
           <p>Teichbau mit natürlicher Uferzone, Sitzplatz und passender Bepflanzung rund um den Whirlpool.</p>
+          <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
         </div>
         <a class="card-open" href="projekte/teichanlage-bochum-2026/" aria-label="Projekt „Teichanlage &amp; Außenbereich“ ansehen"></a>
       </article>
@@ -693,6 +728,7 @@
           <span class="project-location">Recklinghausen</span>
           <h3>Außenanlagenpflege Bürokomplex</h3>
           <p>Pflege, Baumkontrolle und Verkehrssicherheit für einen gewerblichen Standort mit hohem Publikumsverkehr.</p>
+          <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
         </div>
         <a class="card-open" href="projekte/aussenanlagen-recklinghausen-2026/" aria-label="Projekt „Außenanlagenpflege Bürokomplex“ ansehen"></a>
       </article>
@@ -724,11 +760,11 @@
       </details>
       <details>
         <summary><span>Gibt es feste Öffnungszeiten?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Ja. Wir sind montags bis freitags von 08:00 bis 20:00 Uhr erreichbar, samstags und sonntags geschlossen. Per WhatsApp können Sie uns rund um die Uhr schreiben – wir antworten innerhalb der Geschäftszeiten. Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich, auch innerhalb der Öffnungszeiten.</p></div>
+        <div class="faq-body"><p>Ja. Wir sind montags bis freitags von 09:00 bis 17:00 Uhr und samstags von 09:00 bis 12:00 Uhr erreichbar, sonntags geschlossen. Per WhatsApp können Sie uns rund um die Uhr schreiben – wir antworten innerhalb der Geschäftszeiten. Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich, auch innerhalb der Öffnungszeiten.</p></div>
       </details>
       <details>
         <summary><span>Kann man ohne Termin zum Betrieb kommen?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Nein. Auch innerhalb unserer Erreichbarkeit von montags bis freitags, 08:00 bis 20:00 Uhr, sind Besuche am Betrieb ausschließlich nach vorheriger Terminvereinbarung möglich. Eine klassische Ladenöffnung gibt es nicht. Einen Termin vereinbaren Sie ganz einfach per Telefon, WhatsApp oder über das Formular.</p></div>
+        <div class="faq-body"><p>Nein. Auch innerhalb unserer Erreichbarkeit von montags bis freitags, 09:00 bis 17:00 Uhr, und samstags von 09:00 bis 12:00 Uhr sind Besuche am Betrieb ausschließlich nach vorheriger Terminvereinbarung möglich. Eine klassische Ladenöffnung gibt es nicht. Einen Termin vereinbaren Sie ganz einfach per Telefon, WhatsApp oder über das Formular.</p></div>
       </details>
       <details>
         <summary><span>Kann ich Bilder per WhatsApp senden?</span><span class="chev" aria-hidden="true"></span></summary>
@@ -813,7 +849,7 @@
       "name": "Gibt es feste Öffnungszeiten?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ja. Wir sind montags bis freitags von 08:00 bis 20:00 Uhr erreichbar, samstags und sonntags geschlossen. Per WhatsApp können Sie uns rund um die Uhr schreiben – wir antworten innerhalb der Geschäftszeiten. Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich, auch innerhalb der Öffnungszeiten."
+        "text": "Ja. Wir sind montags bis freitags von 09:00 bis 17:00 Uhr und samstags von 09:00 bis 12:00 Uhr erreichbar, sonntags geschlossen. Per WhatsApp können Sie uns rund um die Uhr schreiben – wir antworten innerhalb der Geschäftszeiten. Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich, auch innerhalb der Öffnungszeiten."
       }
     },
     {
@@ -821,7 +857,7 @@
       "name": "Kann man ohne Termin zum Betrieb kommen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nein. Auch innerhalb unserer Erreichbarkeit von montags bis freitags, 08:00 bis 20:00 Uhr, sind Besuche am Betrieb ausschließlich nach vorheriger Terminvereinbarung möglich. Eine klassische Ladenöffnung gibt es nicht. Einen Termin vereinbaren Sie ganz einfach per Telefon, WhatsApp oder über das Formular."
+        "text": "Nein. Auch innerhalb unserer Erreichbarkeit von montags bis freitags, 09:00 bis 17:00 Uhr, und samstags von 09:00 bis 12:00 Uhr sind Besuche am Betrieb ausschließlich nach vorheriger Terminvereinbarung möglich. Eine klassische Ladenöffnung gibt es nicht. Einen Termin vereinbaren Sie ganz einfach per Telefon, WhatsApp oder über das Formular."
       }
     },
     {
@@ -966,7 +1002,7 @@
       </div>
 
       <p class="note">
-        <strong>Erreichbarkeit:</strong> Montag bis Freitag, 08:00–20:00 Uhr. Samstag und Sonntag geschlossen.<br>
+        <strong>Erreichbarkeit:</strong> Montag bis Freitag, 09:00–17:00 Uhr. Samstag 09:00–12:00 Uhr, Sonntag geschlossen.<br>
         Per WhatsApp können Sie uns rund um die Uhr kontaktieren.<br>
         Besuche am Betrieb sind ausschließlich nach vorheriger Terminvereinbarung möglich. Das gilt auch
         für Besichtigungen am Beispielgarten.
@@ -1063,8 +1099,8 @@
       </address>
       <h4>Erreichbarkeit</h4>
       <ul class="footer-list">
-        <li>Montag bis Freitag, 08:00–20:00 Uhr</li>
-        <li>Samstag und Sonntag geschlossen</li>
+        <li>Montag bis Freitag, 09:00–17:00 Uhr</li>
+        <li>Samstag, 09:00–12:00 Uhr · Sonntag geschlossen</li>
         <li>WhatsApp rund um die Uhr – Antwort zu den Geschäftszeiten</li>
       </ul>
       <p class="muted small">Besuche am Betrieb ausschließlich nach vorheriger Terminvereinbarung.</p>
@@ -1136,7 +1172,7 @@
   </div>
 </div>
 
-<script src="assets/js/main.js?v=20260805a" defer></script>
-<script type="module" src="assets/js/projekte.js?v=20260717a"></script>
+<script src="assets/js/main.js?v=20260806c" defer></script>
+<script type="module" src="assets/js/projekte.js?v=20260807b"></script>
 </body>
 </html>

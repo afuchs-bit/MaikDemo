@@ -1,0 +1,38 @@
+{
+  "h1": "Baumarbeiten und Fällungen auf Betriebs- und Liegenschaftsflächen",
+  "navLabel": "Baumarbeiten & Fällungen",
+  "title": "Baumarbeiten & Fällung für Gewerbe in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Kronenpflege, Totholzentfernung und Fällungen auf Betriebsgeländen und Liegenschaften in Herne, Bochum und Recklinghausen – termingebunden, gesichert, dokumentiert.",
+  "serviceType": "Baumpflege, Kronenarbeiten und Fällungen für gewerbliche Flächen",
+  "intro": "Auf einem Betriebsgelände ist eine Baumarbeit selten nur eine Baumarbeit: Zufahrten müssen befahrbar bleiben, Stellplätze nutzbar, der Betriebsablauf ungestört. Wir führen Kronenpflege, Totholzentfernung, Einkürzungen und Fällungen dort aus, wo Publikums- oder Lieferverkehr im Umfeld liegt – mit abgestimmten Zeitfenstern, gesichertem Arbeitsbereich und Dokumentation der ausgeführten Arbeiten für Ihre Unterlagen.",
+  "eignung": [
+    "Bäume, aus denen sich nach einer Kontrolle konkreter Handlungsbedarf ergeben hat.",
+    "Bestände an Zufahrten, Stellplätzen oder Gehwegen, bei denen die Verkehrssicherheit im Vordergrund steht.",
+    "Flächen, auf denen nur außerhalb der Betriebszeiten oder in engen Zeitfenstern gearbeitet werden kann.",
+    "Baumaßnahmen, bei denen Bestand weichen muss oder während der Bauzeit geschützt werden soll."
+  ],
+  "ablauf": [
+    { "titel": "Ortstermin und Abstimmung", "text": "Wir sehen uns Baum, Umfeld und Betriebsablauf an und klären, was fachlich nötig ist und wann gearbeitet werden kann, ohne den Betrieb zu stören." },
+    { "titel": "Rahmen klären", "text": "Wir prüfen, was rechtlich zulässig ist – Naturschutzfristen und eine mögliche kommunale Baumschutzsatzung – und was davon als verkehrssicherungsbedingte Maßnahme abweichend behandelt wird." },
+    { "titel": "Gesicherte Ausführung", "text": "Der Arbeitsbereich wird abgesperrt. Je nach Platz arbeiten wir vom Boden, mit Hubarbeitsbühne oder in Seilklettertechnik und tragen den Baum bei enger Bebauung kontrolliert in Teilen ab." },
+    { "titel": "Räumung und Nachweis", "text": "Die Fläche wird besenrein übergeben und ist sofort wieder nutzbar. Auf Wunsch dokumentieren wir die ausgeführten Arbeiten für Ihre Verkehrssicherungsunterlagen." }
+  ],
+  "aufwand": [
+    { "titel": "Umfang des Eingriffs", "text": "Totholzentfernung an einem Baum ist etwas anderes als die Fällung mehrerer Großbäume mit Abtransport." },
+    { "titel": "Zugänglichkeit und Technik", "text": "Kann eine Hubarbeitsbühne gestellt werden oder muss im Baum gearbeitet werden? Das bestimmt Zeit und Aufwand am stärksten." },
+    { "titel": "Sicherung des Umfelds", "text": "Nähe zu Verkehrsflächen, Leitungen oder Gebäuden erhöht den Sicherungsaufwand. Arbeiten neben laufendem Betrieb ebenfalls." },
+    { "titel": "Zeitfenster", "text": "Arbeiten außerhalb der Betriebszeiten oder in eng begrenzten Fenstern sind planbar, verursachen aber zusätzlichen Koordinationsaufwand." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Der Baum stört den Betrieb, also weg damit.“", "text": "Oft lässt sich ein Baum durch gezielten Schnitt so entlasten, dass er stehen bleiben kann. Das ist meist günstiger als eine Fällung und vermeidet Konflikte mit einer Baumschutzsatzung." },
+    { "titel": "„Fällen geht das ganze Jahr.“", "text": "Für stärkere Eingriffe gelten Naturschutzfristen. Verkehrssicherungsbedingte Arbeiten sind davon abweichend möglich – den Rahmen klären wir vorab, damit das nicht zum Problem wird." },
+    { "titel": "„Das kann der Hausmeisterdienst mit erledigen.“", "text": "Arbeiten in der Höhe und im Umfeld von Verkehrsflächen sind Fachaufgaben mit klarer Haftungsfrage. Hier geht es um Arbeitssicherheit, nicht um Ausrüstung." }
+  ],
+  "faq": [
+    { "frage": "Können Sie außerhalb unserer Betriebszeiten arbeiten?", "antwort": "In der Regel ja – Randzeiten und Wochenenden lassen sich einplanen, wenn der Termin vorab abgestimmt wird. Das ist bei Flächen mit Publikums- oder Lieferverkehr meist der ruhigere Weg." },
+    { "frage": "Wie wird der Arbeitsbereich gegenüber Mitarbeitern und Besuchern gesichert?", "antwort": "Der Bereich wird vor Arbeitsbeginn abgesperrt und während der Arbeiten überwacht. Bei Flächen mit Durchgangsverkehr stimmen wir Umleitung oder Sperrzeiten vorher mit Ihnen ab." },
+    { "frage": "Bekommen wir einen Nachweis über die ausgeführten Arbeiten?", "antwort": "Ja, auf Wunsch dokumentieren wir Datum, Baum und ausgeführte Maßnahme. In Verbindung mit der Baumkontrolle ergibt das eine geschlossene Kette von der Feststellung bis zur Erledigung." }
+  ],
+  "nachbarn": ["baumkontrolle", "sturmnotdienst"],
+  "kundengruppe": ["gewerbe"]
+}

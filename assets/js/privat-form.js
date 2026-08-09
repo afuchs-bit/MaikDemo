@@ -851,8 +851,12 @@
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!validateActiveForm()) return;
-    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-      showStatus('Vorschau: Ihre Angaben sind vollständig. Auf dem Live-Hosting würde die Anfrage jetzt sicher übermittelt.', 'success');
+    // Auf dem statischen Hosting wird nur dann gesendet, wenn später bewusst ein
+    // Backend über data-endpoint angebunden wird. Ohne Endpoint bleiben die Daten
+    // im Browser und es wird keine erfolgreiche Übermittlung vorgetäuscht.
+    const endpoint = form.dataset.endpoint;
+    if (!endpoint) {
+      showStatus('Ihre Angaben sind vollständig, das Formular ist aber noch nicht angebunden – es wird nichts versendet. Bitte schicken Sie uns Ihre Anfrage per E-Mail an maik@rohdich.de oder melden Sie sich telefonisch oder per WhatsApp.');
       return;
     }
     const submitButton = Array.from(form.querySelectorAll('button[type="submit"]:not(:disabled)')).find(isActive);
@@ -862,7 +866,7 @@
     if (submitLabel) submitLabel.textContent = 'Anfrage wird übermittelt …';
     if (statusBox) statusBox.hidden = true;
     try {
-      const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' } });
+      const response = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' } });
       const result = await response.json().catch(() => ({ ok: false, state: 'send' }));
       if (!response.ok || !result.ok) throw new Error(result.state || 'send');
       renderConfirmationSummary();
@@ -881,19 +885,6 @@
       if (submitLabel) submitLabel.textContent = originalLabel;
     }
   });
-
-  const state = query.get('status');
-  if (state === 'success') showConfirmation();
-  else if (state) {
-    const messages = {
-      validation: 'Bitte prüfen Sie Ihre Angaben. Mindestens ein erforderliches Feld ist noch nicht vollständig.',
-      files: 'Mindestens eine Datei konnte nicht verarbeitet werden.',
-      send: 'Die Anfrage konnte technisch nicht versendet werden. Bitte nutzen Sie Telefon, WhatsApp oder E-Mail.',
-      spam: 'Die Anfrage konnte nicht verarbeitet werden.'
-    };
-    showStatus(messages[state] || messages.send);
-    history.replaceState({}, '', `${location.pathname}${location.hash || '#anfrage'}`);
-  }
 
   applyPath(pathValue(), { focus: false });
   updateWhatsappLink();

@@ -117,6 +117,17 @@
       "width": 960,
       "height": 720,
       "aspect": 0.75
+    },
+    "/assets/img/hero/gate-gewerbe.webp": {
+      "base": "/assets/img/hero/gate-gewerbe",
+      "widths": [
+        480,
+        960,
+        1200
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
     }
   }
 }

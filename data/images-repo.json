@@ -1,0 +1,70 @@
+{
+  "_hinweis": "AUTO-GENERIERT von .github/scripts/build-hero-images.mjs – NICHT von Hand editieren.",
+  "bilder": {
+    "/assets/img/projekte/gartengestaltung-herne/03ff56b1-b6e3-4d40-a9f7-4c613914ffa7.webp": {
+      "base": "/assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero",
+      "widths": [
+        480,
+        960,
+        1440
+      ],
+      "webpWidths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/img_7043.webp": {
+      "base": "/assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/vorgarten-bochum",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/img_5012-1.webp": {
+      "base": "/assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/proof/kuebelbepflanzung.jpg": {
+      "base": "/assets/img/proof/kuebelbepflanzung",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/proof/beetneuanlage-vorher.jpg": {
+      "base": "/assets/img/proof/beetneuanlage-vorher",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    },
+    "/assets/img/proof/beetneuanlage-nachher.jpg": {
+      "base": "/assets/img/proof/beetneuanlage-nachher",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
+    }
+  }
+}

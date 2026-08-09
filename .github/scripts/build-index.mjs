@@ -17,6 +17,7 @@ import { constants as FS } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderProjektPage, renderGalleryList } from './lib/render.mjs';
+import { imageManifest } from './lib/images.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
@@ -141,7 +142,7 @@ async function main() {
 
   // AP-25: Bild-Varianten aus dem Manifest an jedes bild haengen, damit die
   // JS-gerenderten Karten (projekte-card.js) ein <picture>/srcset bauen koennen.
-  await enrichBilder(projekte);
+  enrichBilder(projekte);
 
   const out = {
     _hinweis: 'AUTO-GENERIERT von .github/scripts/build-index.mjs – NICHT von Hand editieren.',
@@ -303,23 +304,37 @@ async function collectPageDirs(rootDir) {
   return found;
 }
 
-// AP-25: haengt Bild-Varianten (base + verfuegbare Breiten) aus data/images.json
+// AP-25: haengt Bild-Varianten (base + verfuegbare Breiten) aus dem Bild-Manifest
 // an jedes bild, damit projekte-card.js daraus <picture>/srcset bauen kann.
 // Fehlt das Manifest, bleibt alles beim einfachen <img> (kein harter Fehler).
-async function enrichBilder(projekte) {
-  let manifest;
-  try {
-    manifest = JSON.parse(await readFile(path.join(REPO_ROOT, 'data', 'images.json'), 'utf8')).bilder || {};
-  } catch {
-    warnings.push('data/images.json fehlt – Karten ohne srcset (build-images ausführen).');
+//
+// AP-77: webpWidths wird mitgeschrieben, wenn WebP weniger Breiten hat als AVIF –
+// ohne das Feld baute die Karte ein srcset auf nicht existierende Dateien.
+// Bilder ohne Varianten werden gemeldet: dort liefe die Karte auf das (u. U.
+// mehrere hundert KB grosse) Original hinaus.
+function enrichBilder(projekte) {
+  const manifest = imageManifest();
+  if (!Object.keys(manifest).length) {
+    warnings.push('Bild-Manifest leer – Karten ohne srcset (build-images / build-hero-images ausführen).');
     return;
   }
+  const ohne = [];
   for (const p of projekte) {
     if (!Array.isArray(p.bilder)) continue;
     for (const b of p.bilder) {
       const m = manifest[b.bild];
-      if (m) b.variants = { base: m.base, widths: m.widths, w: m.width, h: m.height };
+      if (!m) { ohne.push(`${p.slug}: ${b.bild}`); continue; }
+      b.variants = {
+        base: m.base,
+        widths: m.widths,
+        ...(Array.isArray(m.webpWidths) ? { webpWidths: m.webpWidths } : {}),
+        w: m.width,
+        h: m.height,
+      };
     }
+  }
+  for (const o of ohne) {
+    warnings.push(`ohne Bild-Varianten – Original wird ausgeliefert (${o}). In build-hero-images.mjs unter SOURCES ergänzen.`);
   }
 }
 

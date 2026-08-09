@@ -1017,12 +1017,45 @@ p  { margin: 0; }
   color: var(--green-700);
 }
 .project-tag.warn { color: var(--coral); }
-.project-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 6px; }
+.project-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .project-location {
   font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .16em;
   color: var(--ink-mute);
 }
-.project-body p { color: var(--ink-2); font-size: .95rem; }
+/* AP-78: Kartentext auf 3 Zeilen begrenzen. Die Beschreibungen kommen ungekuerzt
+   aus content/projekte/*.json und reichen von 76 bis 596 Zeichen - ohne Begrenzung
+   wird eine Karte im Raster dreimal so hoch wie ihre Nachbarn. Bewusst CSS statt
+   Kuerzen in den Renderern: der volle Text bleibt auf der Projektseite erhalten,
+   und der Zuschnitt passt sich der Spaltenbreite an. Ohne Unterstuetzung fuer
+   -webkit-line-clamp steht schlicht der ganze Text da - kein kaputter Zustand. */
+.project-body p {
+  color: var(--ink-2); font-size: .95rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* Affordanz unter dem gekuerzten Text. Bewusst ein <span> und KEIN <a>: die ganze
+   Karte ist bereits ueber .card-open verlinkt (inset:0, z-index:2). Ein zweiter
+   Link laege darunter, waere nicht anklickbar und kuendigte dasselbe Ziel ein
+   zweites Mal an. Das Markup traegt deshalb aria-hidden - .card-open nennt die
+   Aktion bereits im aria-label. */
+.card-more {
+  align-self: flex-start;
+  /* margin-top:auto statt eines festen Abstands: die Karten im Raster sind gleich
+     hoch, ein Text mit zwei statt drei Zeilen rueckte die Zeile sonst sichtbar
+     nach oben. padding-top haelt den Mindestabstand, wenn der Text voll ausfuellt. */
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: .82rem; font-weight: 600;
+  color: var(--green-700);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s var(--ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .card-more { border-bottom-color: var(--green-700); }
+}
 
 /* ---------- FAQ ---------- */
 .section-faq { background: var(--bg); }
@@ -2553,3 +2586,419 @@ body.has-welt-dialog { overflow: hidden; }
 .rt-body p { color: var(--ink-2); margin: 0 0 14px; }
 .rt-body address { font-style: normal; line-height: 1.7; color: var(--ink-2); margin: 0 0 14px; }
 .rt-body a { color: var(--green-700); }
+
+/* ============================================================
+   AP-76: Privatkunden-Foto-Hero (Full-Bleed) + Beweis-Grid
+   Loest den .hero-split mit Vorher/Nachher-Slider ab, dessen
+   Bildpaar erfunden war (dasselbe Foto, "Vorher" per Graufilter).
+   Muster laut Recherchebericht: EIN grosses echtes Projektfoto,
+   Text-Overlay, ein primaerer CTA; darunter ein STATISCHES
+   Raster (kein Karussell - Runyon/Notre Dame: ~1 % Interaktion).
+   ============================================================ */
+
+/* --- Breadcrumb-Leiste oberhalb des Fotos ---
+   Bewusst ausserhalb des Bildes: auf dem Foto waere der Kontrast
+   nicht zuverlaessig, und der Breadcrumb ist Navigation, kein Inhalt.
+   --bg statt --bg-soft: .site-header liegt auf rgba(246,244,238,.78) ueber
+   dem Body, ergibt also exakt --bg. Eine Leiste auf --bg-soft setzt sich
+   davon sichtbar ab und erzeugt eine Stufe direkt unter dem Header. */
+.hero-shot-bar {
+  background: var(--bg);
+  padding: 14px 0;
+}
+/* AP-80: Der Header trennt sich per border-bottom vom Inhalt. Ueber dem
+   Hero-Foto liegt darunter die Leiste in derselben Farbe - die Linie
+   zerschneidet dort eine durchgehende Flaeche. .hero-shot-bar gibt es nur
+   auf der Privatkundenseite, die Regel greift also automatisch nur dort.
+   Nur in der Ruhelage: sobald .is-scrolled ab scrollY > 12 greift, schiebt
+   sich der Header ueber den Inhalt und braucht die Kante wieder.
+   transparent statt border-bottom entfernen - so bleibt die 1px-Breite und
+   damit das Layout unveraendert, und die bestehende border-color-Transition
+   blendet die Linie weich ein und aus. */
+body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
+  border-bottom-color: transparent;
+}
+
+/* --- Der Hero selbst --- */
+.hero-shot {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(440px, 62svh, 620px);
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(60px, 8vw, 90px) 0 clamp(28px, 4vw, 48px);
+  overflow: hidden;
+  background: var(--green-900); /* Farbe vor dem Bild-Load, kein Weissblitz */
+}
+.hero-shot-media {
+  position: absolute; inset: 0; z-index: -2;
+  display: block;
+}
+.hero-shot-media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  /* 32 % haelt die Reihenhaus-Zeile im Ausschnitt - genau der regionale
+     Wiedererkennungswert, wegen dem dieses Foto gewaehlt wurde. Hoehere
+     Werte schneiden die Haeuser weg. Beim Bildwechsel neu justieren. */
+  object-position: center 32%;
+  display: block;
+}
+/* Scrim. Auf schmalen Viewports fuellt der Textblock fast die ganze Hoehe und
+   liegt ueber der hellen Rasenflaeche - der Verlauf muss dort durchgehend
+   kraeftig sein, nicht nur oben und unten. Ab 900 px uebernimmt der
+   zweiachsige Verlauf weiter unten. */
+.hero-shot::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(19, 26, 8, .62) 0%,
+    rgba(19, 26, 8, .48) 26%,
+    rgba(19, 26, 8, .66) 58%,
+    rgba(19, 26, 8, .88) 100%
+  );
+}
+/* Ab Tablet zusaetzlich ein horizontaler Verlauf: der vertikale allein
+   verdunkelt genau das untere Bilddrittel, also Weg, Randstein und Beete -
+   die Detailarbeit, die das Foto belegen soll. So bleibt die rechte
+   Bildhaelfte offen, waehrend der Text links auf dunklem Grund steht. */
+@media (min-width: 900px) {
+  .hero-shot::after {
+    background:
+      linear-gradient(90deg,
+        rgba(19, 26, 8, .62) 0%,
+        rgba(19, 26, 8, .15) 55%,
+        rgba(19, 26, 8, 0) 78%),
+      linear-gradient(180deg,
+        rgba(19, 26, 8, .52) 0%,
+        rgba(19, 26, 8, .12) 32%,
+        rgba(19, 26, 8, .52) 78%,
+        rgba(19, 26, 8, .72) 100%);
+  }
+}
+/* Kein width:100% hier - das wuerde die Breitenbegrenzung von .container
+   ueberschreiben (gleiche Spezifitaet, spaeter im Stylesheet) und den Text
+   an den Viewportrand kleben. */
+.hero-shot-inner { position: relative; color: #fff; }
+
+.hero-shot-title {
+  font-family: var(--display);
+  font-size: clamp(1.85rem, 4.2vw, 3.1rem);
+  font-weight: 800; line-height: 1.07; letter-spacing: -.028em;
+  /* Ohne explizite Farbe greift h1,h2,h3,h4 { color: var(--ink) } - auf dem
+     Foto waere die Ueberschrift dunkel auf dunkel. */
+  color: #fff;
+  margin: 0; max-width: 19ch;
+  text-wrap: balance;
+  text-shadow: 0 2px 18px rgba(19, 26, 8, .45);
+}
+/* Der frueher hier liegende Farbverlauf (green-700 -> coral) ist entfernt:
+   auf dem Foto waere er unlesbar, und Verlaeufe auf Text sind laut
+   Recherchebericht ein Anti-Muster. Stattdessen ein heller Ton aus der
+   Marken-Gruenfamilie, der auf dunklem Grund Kontrast traegt. */
+.hero-shot-title em {
+  font-style: normal;
+  color: #cfe8a4;
+}
+.hero-shot-sub {
+  margin: 16px 0 0; max-width: 44ch;
+  font-size: clamp(1rem, 1.15vw, 1.08rem); line-height: 1.55;
+  color: rgba(255, 255, 255, .93);
+  text-shadow: 0 1px 12px rgba(19, 26, 8, .4);
+}
+.hero-shot-ctas {
+  margin-top: clamp(20px, 2.6vw, 30px);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px;
+}
+/* WhatsApp bleibt sekundaer: das Signalgruen von .btn-whatsapp zieht auf dem
+   dunklen Foto mehr Aufmerksamkeit als der primaere CTA und kehrt damit die
+   Hierarchie um. Nur hier gedaempft - auf hellem Grund (Header, Startseite,
+   404) bleibt der Button unveraendert. */
+.hero-shot-ctas .btn-whatsapp {
+  background: rgba(255, 255, 255, .14);
+  color: #fff;
+  border-color: rgba(255, 255, 255, .5);
+  box-shadow: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero-shot-ctas .btn-whatsapp:hover { background: rgba(255, 255, 255, .24); }
+}
+
+/* AP-81: Primaerer CTA von Markengruen auf hell umgestellt - er soll auf dem
+   dunklen Foto der hellste, ruhigste Button sein statt mit Signalfarbe zu
+   arbeiten. Text in var(--green-700) auf var(--bg) liegt bei 8,2:1 und damit
+   deutlich ueber WCAG AA. Der Pfeil im Button nutzt stroke="currentColor" und
+   uebernimmt die Farbe automatisch. Nur im Hero - .btn-primary bleibt auf dem
+   Rest der Seite gruen. */
+.hero-shot-ctas .btn-primary {
+  background: var(--bg);
+  color: var(--green-700);
+  box-shadow: 0 12px 26px -12px rgba(19, 26, 8, .35), inset 0 1px 0 rgba(255, 255, 255, .6);
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero-shot-ctas .btn-primary:hover { background: #fff; }
+}
+
+/* Es gibt projektweit keine .btn:focus-visible-Regel - die Buttons erben sonst
+   den Browser-Standardring. Auf dem dunklen Foto beide Hero-Buttons auf einen
+   hellen, klar sichtbaren Ring festlegen. */
+.hero-shot-ctas .btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* AP-81: Auf dem jetzt hellen Primaerbutton waere ein weisser Ring unsichtbar,
+   deshalb hier auf Markengruen. Steht bewusst nach der Regel darueber -
+   gleiche Spezifitaet, spaetere Quelle gewinnt. */
+.hero-shot-ctas .btn-primary:focus-visible { outline-color: var(--green-700); }
+
+.hero-shot-trust {
+  margin-top: clamp(20px, 2.4vw, 28px);
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, .28);
+  display: flex; flex-wrap: wrap; gap: 8px 24px;
+  font-size: .86rem; color: rgba(255, 255, 255, .9);
+}
+.hero-shot-trust .htm-item { display: inline-flex; align-items: center; gap: 8px; }
+.hero-shot-trust strong { font-family: var(--display); color: #fff; }
+
+/* --- Beweis-Grid ---
+   Kein Karussell und keine Auto-Slideshow: die Notre-Dame-Auswertung
+   (Runyon, 28.928 Klicks) zeigt ~1 % Interaktion, davon 84 % auf Slide 1.
+   Ein Raster zeigt alles auf einmal. Die Kacheln sind bewusst nicht
+   verlinkt - fuer zwei der vier Bilder existiert kein Projektdatensatz,
+   und gemischte Klickbarkeit ist schlechter als gar keine. Den Weg in die
+   Galerie traegt der Kopfzeilen-Link. */
+.proof-shots {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(26px, 3.4vw, 42px) 0 clamp(32px, 4.4vw, 56px);
+}
+.proof-shots-head {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  justify-content: space-between; gap: 8px 18px;
+  margin-bottom: clamp(14px, 1.8vw, 22px);
+}
+.proof-shots-head h2 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+  margin: 0; letter-spacing: -.01em;
+}
+.proof-shots-head a {
+  font-size: .9rem; font-weight: 700; color: var(--green-700);
+  text-underline-offset: 4px;
+}
+.proof-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.1vw, 16px);
+}
+.proof-grid > li { margin: 0; min-width: 0; }
+.proof-grid figure { margin: 0; }
+/* Muster wie .project-media / .projekt-figure: das Seitenverhaeltnis traegt der
+   Wrapper, das Bild fuellt ihn. Auf dem <img> selbst wuerde aspect-ratio nicht
+   greifen - der globale Reset setzt kein height:auto, also gewinnt das
+   height-Attribut und macht die Hoehe definit. */
+.proof-grid picture {
+  display: block; aspect-ratio: 4 / 3;
+  border-radius: 14px; overflow: hidden;
+  background: var(--bg); /* haelt das Layout, bevor das Bild da ist */
+}
+.proof-grid img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.proof-grid figcaption { margin-top: 9px; }
+.proof-grid .pg-title {
+  display: block; font-family: var(--display); font-weight: 700;
+  font-size: .92rem; color: var(--ink); line-height: 1.25;
+}
+.proof-grid .pg-meta { display: block; font-size: .8rem; color: var(--ink-mute); margin-top: 2px; }
+
+/* ---------- Beweis-Grid: Vorher/Nachher-Crossfade (Kachel 4, AP-83) ----------
+   Zwei gestapelte <picture> in einer Box, "Nachher" blendet per CSS-Keyframe
+   ueber "Vorher" - kein JS, Endlosschleife (~9s Zyklus). Der 4:3-Ausschnitt der
+   Hochformat-Fotos steckt schon in den Bilddateien selbst (siehe
+   build-hero-images.mjs, Fokus 55% von oben) - object-fit:cover aus der
+   .proof-grid-Basisregel macht hier optisch nichts mehr sichtbar, bleibt aber
+   als Sicherheitsnetz aktiv. prefers-reduced-motion zeigt dauerhaft den
+   fertigen Nachher-Zustand statt der Animation. */
+.proof-grid .pg-fade {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg);
+}
+.proof-grid .pg-fade picture {
+  position: absolute; inset: 0;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+.proof-grid .pg-fade-a { z-index: 1; }
+.proof-grid .pg-fade-b {
+  z-index: 2;
+  animation: pgCrossfade 9s ease-in-out infinite;
+}
+@keyframes pgCrossfade {
+  0%, 38%  { opacity: 0; }
+  50%, 88% { opacity: 1; }
+  100%     { opacity: 0; }
+}
+.proof-grid .pg-fade-badge {
+  position: absolute; left: 10px; bottom: 10px; z-index: 3;
+  font-size: .72rem; font-weight: 700; letter-spacing: .03em;
+}
+.proof-grid .pg-fade-badge span {
+  position: absolute; left: 0; bottom: 0; white-space: nowrap;
+  padding: 4px 10px; border-radius: 999px;
+  background: rgba(20, 26, 14, .72); color: #fff;
+}
+.proof-grid .pg-fade-badge-a { animation: pgCrossfadeInv 9s ease-in-out infinite; }
+.proof-grid .pg-fade-badge-b { animation: pgCrossfade 9s ease-in-out infinite; }
+@keyframes pgCrossfadeInv {
+  0%, 38%  { opacity: 1; }
+  50%, 88% { opacity: 0; }
+  100%     { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .proof-grid .pg-fade-b,
+  .proof-grid .pg-fade-badge-b { animation: none; opacity: 1; }
+  .proof-grid .pg-fade-badge-a { animation: none; opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .hero-shot { min-height: clamp(430px, 66svh, 560px); }
+  .hero-shot-title { max-width: none; }
+}
+@media (max-width: 700px) {
+  .proof-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .hero-shot-ctas { gap: 14px; }
+  .hero-shot-ctas .btn { width: 100%; justify-content: center; }
+  .hero-shot-trust { gap: 7px 0; flex-direction: column; }
+}
+
+/* ============================================================
+   AP-82 — ZIELGRUPPENWEICHE STARTSEITE
+   Bestehende .hero-*, .teaser-*, .trust-* Klassen bleiben unveraendert.
+   ============================================================ */
+
+.hero--gate { padding: clamp(20px, 4vw, 48px) 0 0; }
+
+.gate-head {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: min(100% - calc(var(--gutter) * 2), 940px);
+  margin-inline: auto;
+  padding-bottom: clamp(24px, 3.4vw, 42px);
+}
+.gate-head .hero-title {
+  margin-top: 18px;
+  font-size: clamp(2.1rem, 5vw, 4.2rem);
+}
+.gate-region {
+  margin-top: 15px;
+  font-size: clamp(.92rem, 1.4vw, 1.12rem);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.gate-doors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 1.6vw, 22px);
+  width: min(100% - calc(var(--gutter) * 2), var(--container));
+  margin-inline: auto;
+}
+
+.gate-door {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 26px;
+  aspect-ratio: 16 / 10;
+  min-height: 250px;
+  display: block;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+}
+.gate-door img.gate-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transition: transform .55s var(--ease);
+}
+.gate-door:hover img.gate-photo { transform: scale(1.04); }
+
+.gate-veil {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 72%;
+  z-index: -1;
+  /* Stops dunkler als im Entwurf: gelbe Eyebrow braucht 4.5:1 auch auf hellen Fotostellen */
+  background: linear-gradient(to top, rgba(8,20,0,.94) 0%, rgba(8,20,0,.82) 45%, rgba(8,20,0,0) 100%);
+}
+
+.gate-body {
+  position: absolute;
+  left: clamp(18px, 2vw, 28px);
+  right: clamp(18px, 2vw, 28px);
+  bottom: clamp(18px, 2vw, 26px);
+}
+.gate-eyebrow {
+  display: block;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+.gate-door h2 {
+  font-size: clamp(1.2rem, 1.9vw, 1.7rem);
+  line-height: 1.14;
+  color: #fff;
+  margin: 7px 0 14px;
+}
+.gate-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: .98rem;
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--green-800);
+  transition: transform .22s var(--ease), background-color .22s var(--ease);
+}
+.gate-door:hover .gate-cta { transform: translateY(-2px); background: var(--yellow); }
+.gate-door--gewerbe .gate-cta { background: var(--yellow); }
+.gate-door--gewerbe:hover .gate-cta { background: #fff; }
+.gate-door:focus-visible { outline: 3px solid var(--green-700); outline-offset: 3px; }
+
+.gate-escape {
+  text-align: center;
+  margin: clamp(20px, 2.4vw, 30px) auto 0;
+  font-size: .93rem;
+  color: var(--ink-mute);
+}
+.gate-escape a { color: var(--green-700); font-weight: 600; text-underline-offset: 3px; }
+
+/* Huelle fuer die verschobenen Bloecke — setzt selbst keine Innenabstaende,
+   damit .hero-teasers und .trust-bar ihre bestehenden Margins behalten. */
+.hero-followup { background: var(--bg); }
+
+@media (max-width: 860px) {
+  .gate-doors { grid-template-columns: 1fr; }
+  .gate-door { aspect-ratio: 3 / 2; min-height: 210px; border-radius: 20px; }
+  .gate-cta { width: 100%; justify-content: center; padding: 14px 18px; }
+  .gate-head { padding-top: max(0px, env(safe-area-inset-top)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gate-door img.gate-photo,
+  .gate-cta { transition: none; }
+  .gate-door:hover img.gate-photo { transform: none; }
+}

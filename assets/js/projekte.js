@@ -5,7 +5,9 @@
 // Kartenoptik/Reveal kommen aus dem gemeinsamen Modul projekte-card.js.
 
 import { dataUrl, SITE_BASE } from './config.js';
-import { buildCard, revealCards } from './projekte-card.js';
+// Versionierter Import: projekte-card.js traegt sonst kein ?v= und wuerde aus dem
+// Browser-Cache in einer aelteren Fassung geladen.
+import { buildCard, revealCards } from './projekte-card.js?v=20260807b';
 
 const grid = document.querySelector('#projekte .projects-grid');
 if (grid) init(grid);

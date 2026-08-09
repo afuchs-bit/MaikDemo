@@ -1,0 +1,38 @@
+{
+  "h1": "Baumkontrolle und Verkehrssicherung für Gewerbe und Liegenschaften",
+  "navLabel": "Baumkontrolle & Verkehrssicherung",
+  "title": "Baumkontrolle für Gewerbe & Liegenschaften in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Regelkontrolle und Dokumentation des Baumbestands für Unternehmen, Verwaltungen und Wohnungswirtschaft in Herne, Bochum und Recklinghausen. Nachvollziehbar dokumentiert.",
+  "serviceType": "Baumkontrolle, Verkehrssicherungskontrolle und Dokumentation",
+  "intro": "Wer Bäume auf seinem Grundstück hat, trägt die Verkehrssicherungspflicht – und muss im Schadensfall nachweisen können, dass der Bestand regelmäßig und fachgerecht kontrolliert wurde. Wir übernehmen die Regelkontrolle Ihres Baumbestands, dokumentieren jeden Baum nachvollziehbar und benennen konkreten Handlungsbedarf mit Dringlichkeit. Sie bekommen damit eine Unterlage, die Sie Ihrer Versicherung und im Streitfall auch einem Gericht vorlegen können.",
+  "eignung": [
+    "Unternehmen mit Baumbestand auf Betriebs-, Parkplatz- oder Zufahrtsflächen.",
+    "Wohnungswirtschaft und Hausverwaltungen, die Verkehrssicherungspflichten für mehrere Objekte bündeln müssen.",
+    "Eigentümer und Verwalter, die den Nachweis der Regelkontrolle bisher nicht systematisch geführt haben.",
+    "Liegenschaften mit älterem Bestand, an dem sichtbare Schäden oder Totholz aufgetreten sind."
+  ],
+  "ablauf": [
+    { "titel": "Bestand erfassen", "text": "Wir gehen die Flächen ab und erfassen die kontrollrelevanten Bäume. Bei größeren Liegenschaften legen wir gemeinsam fest, welche Bereiche in welchem Turnus betrachtet werden." },
+    { "titel": "Regelkontrolle vom Boden", "text": "Jeder Baum wird visuell nach fachlich anerkannter Systematik beurteilt – Stamm, Kronenansatz, Astwerk, Wurzelbereich und Umfeld. Auffälligkeiten werden festgehalten." },
+    { "titel": "Dokumentation", "text": "Sie erhalten je Baum den Befund, die abgeleitete Maßnahme und deren Dringlichkeit. Diese Unterlage ist Ihr Nachweis, dass die Kontrollpflicht erfüllt wurde." },
+    { "titel": "Maßnahmen und Wiedervorlage", "text": "Dringende Punkte besprechen wir sofort. Für den Rest legen wir einen Zeitrahmen und den nächsten Kontrolltermin fest, damit die Kette nicht abreißt." }
+  ],
+  "aufwand": [
+    { "titel": "Anzahl und Alter der Bäume", "text": "Ein junger, übersichtlicher Bestand ist schneller beurteilt als alte Großbäume, bei denen mehr Details zu prüfen sind." },
+    { "titel": "Zahl und Lage der Objekte", "text": "Mehrere verteilte Liegenschaften verursachen Wege- und Koordinationsaufwand, lassen sich aber in einem Turnus bündeln." },
+    { "titel": "Kontrollturnus", "text": "Wie oft kontrolliert wird, hängt von Zustand, Alter und Standort ab – ein Baum an einer Zufahrt wird anders bewertet als einer am Flächenrand." },
+    { "titel": "Umfang der Dokumentation", "text": "Eine einfache Übersicht ist schlanker als eine objektweise Einzelaufstellung mit Fotodokumentation." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Solange nichts passiert, reicht das.“", "text": "Im Schadensfall wird nicht gefragt, ob etwas aufgefallen ist, sondern ob regelmäßig und nachweisbar kontrolliert wurde. Ohne Dokumentation ist dieser Nachweis kaum zu führen." },
+    { "titel": "„Der Hausmeister schaut ohnehin regelmäßig.“", "text": "Ein aufmerksamer Blick ersetzt keine fachliche Beurteilung nach anerkannter Systematik – und vor allem keine belastbare Dokumentation." },
+    { "titel": "„Eine Kontrolle bedeutet gleich teure Maßnahmen.“", "text": "Häufig ist das Ergebnis, dass nichts zu tun ist. Der Wert liegt im belegbaren Nachweis – und darin, dass echter Handlungsbedarf früh und damit günstiger auffällt." }
+  ],
+  "faq": [
+    { "frage": "Wie oft muss der Baumbestand kontrolliert werden?", "antwort": "Einen starren Turnus für alle Fälle gibt es nicht. Maßgeblich sind Alter, Zustand und Standort des einzelnen Baums – ein alter Baum über einem Parkplatz wird engmaschiger betrachtet als ein junger am Grundstücksrand. Üblich ist eine wiederkehrende Regelkontrolle, deren Abstand wir nach der Ersterfassung gemeinsam festlegen." },
+    { "frage": "Was bekomme ich als Nachweis?", "antwort": "Eine Dokumentation je Baum mit Befund, empfohlener Maßnahme und Dringlichkeit sowie dem Kontrolldatum. Genau diese Kette aus Datum, Befund und Maßnahme ist es, auf die es ankommt, wenn die Erfüllung der Verkehrssicherungspflicht belegt werden muss." },
+    { "frage": "Übernehmen Sie auch die Maßnahmen, die sich aus der Kontrolle ergeben?", "antwort": "Ja. Kronenpflege, Totholzentfernung, Einkürzung oder – wenn nötig – die Fällung führen wir selbst aus. Sie können die Maßnahmen aber auch anderweitig vergeben; die Kontrolle ist davon unabhängig." }
+  ],
+  "nachbarn": ["baumarbeiten", "sturmnotdienst"],
+  "kundengruppe": ["gewerbe"]
+}

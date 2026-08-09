@@ -4,7 +4,9 @@
 // Kartenoptik/Reveal kommen aus dem gemeinsamen Modul projekte-card.js.
 
 import { assetUrl, dataUrl } from './config.js';
-import { buildCard, revealCards } from './projekte-card.js';
+// Versionierter Import: projekte-card.js traegt sonst kein ?v= und wuerde aus dem
+// Browser-Cache in einer aelteren Fassung geladen.
+import { buildCard, revealCards } from './projekte-card.js?v=20260807b';
 
 // Slug (Taxonomie) → exakter Option-Text des Kontakt-Dropdowns (#contactForm),
 // für die Bereich-Vorbefüllung des CTA. Nur eindeutige Zuordnungen (baumarbeiten
@@ -345,7 +347,7 @@ function step(dir) {
 
 function updateLightbox() {
   const bild = lb.images[lb.index] || {};
-  lbImg.src = assetUrl(bild.bild || '');
+  setLightboxSrc(bild);
   lbImg.alt = bild.alt || '';
   lbTitle.textContent = lb.project?.titel || '';
   lbCaption.textContent = bild.alt || '';
@@ -353,6 +355,26 @@ function updateLightbox() {
   const single = lb.images.length <= 1;
   lbPrev.hidden = single;
   lbNext.hidden = single;
+}
+
+// AP-77: Die Lightbox zeigte bisher immer bild.bild – bei einigen Projekten ist das
+// das unskalierte Original (bis 1,2 MB). Liegen Varianten vor, wird stattdessen das
+// WebP-Set ausgeliefert (breitenabhaengig, jede Datei < 200 KB). Bewusst nur WebP und
+// kein AVIF: srcset kennt keine Format-Aushandlung, und das feste <img id="lightboxImg">
+// im Markup laesst sich nicht in ein <picture> mit <source> umbauen.
+// srcset/sizes muessen zurueckgesetzt werden – das Element wird wiederverwendet.
+function setLightboxSrc(bild) {
+  const v = bild.variants;
+  if (v && Array.isArray(v.widths) && v.widths.length) {
+    const widths = Array.isArray(v.webpWidths) ? v.webpWidths : v.widths;
+    lbImg.srcset = widths.map((w) => `${assetUrl(`${v.base}-${w}.webp`)} ${w}w`).join(', ');
+    lbImg.sizes = '100vw';
+    lbImg.src = assetUrl(`${v.base}.webp`);
+    return;
+  }
+  lbImg.removeAttribute('srcset');
+  lbImg.removeAttribute('sizes');
+  lbImg.src = assetUrl(bild.bild || '');
 }
 
 function onLightboxKeydown(e) {

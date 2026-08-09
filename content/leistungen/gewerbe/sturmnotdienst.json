@@ -1,0 +1,38 @@
+{
+  "h1": "Sturmnotdienst für Betriebe und Liegenschaften",
+  "navLabel": "Sturmnotdienst",
+  "title": "Sturmnotdienst für Gewerbe in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Schnelle Hilfe nach Sturmschäden auf Betriebsgeländen und Liegenschaften in Herne, Bochum und Recklinghausen: Gefahr beseitigen, Flächen freimachen, Schaden dokumentieren.",
+  "serviceType": "Sturmschadenbeseitigung und Gefahrenabwehr an Bäumen",
+  "intro": "Nach einem Sturm zählt, wie schnell die Fläche wieder sicher und nutzbar ist. Eine blockierte Zufahrt, ein angebrochener Ast über dem Parkplatz oder ein umgestürzter Baum auf dem Betriebsgelände legen im Zweifel den ganzen Ablauf lahm. Wir beseitigen die akute Gefahr, machen Zufahrten und Stellplätze frei und dokumentieren den Schaden so, dass Sie ihn Ihrer Versicherung vorlegen können.",
+  "eignung": [
+    "Betriebsgelände, auf denen nach einem Sturm Zufahrten, Stellplätze oder Wege blockiert sind.",
+    "Liegenschaften mit angebrochenen oder instabilen Bäumen über Verkehrs- und Aufenthaltsflächen.",
+    "Verwaltungen, die für mehrere Objekte gleichzeitig eine erste Einschätzung brauchen.",
+    "Situationen, in denen der Schaden für die Versicherung belegt werden muss."
+  ],
+  "ablauf": [
+    { "titel": "Meldung und erste Einschätzung", "text": "Sie melden sich telefonisch oder über WhatsApp – ein Foto der Situation hilft uns, den Fall sofort einzuordnen und die nötige Technik gleich mitzubringen." },
+    { "titel": "Gefahr sichern", "text": "Zuerst wird der Bereich abgesperrt, damit niemand in den Gefahrenbereich gerät. Instabile Kronenteile werden kontrolliert abgetragen." },
+    { "titel": "Fläche freimachen", "text": "Zufahrten, Stellplätze und Wege werden geräumt, damit der Betrieb weiterlaufen kann. Das Material wird zusammengezogen und abgefahren." },
+    { "titel": "Dokumentation und Nacharbeit", "text": "Wir halten den Schaden fest, bevor geräumt wird. Was danach fachlich noch zu tun ist – etwa eine Nachkontrolle des restlichen Bestands – besprechen wir im Anschluss." }
+  ],
+  "aufwand": [
+    { "titel": "Art und Umfang des Schadens", "text": "Ein einzelner abgebrochener Ast ist etwas anderes als mehrere geworfene Bäume auf verschiedenen Flächen." },
+    { "titel": "Gefährdungslage", "text": "Hängende Kronenteile über Verkehrsflächen erfordern gesichertes Arbeiten in der Höhe und damit mehr Aufwand als Material, das bereits am Boden liegt." },
+    { "titel": "Zugänglichkeit", "text": "Ob Technik direkt heranfahren kann, entscheidet maßgeblich über Dauer und Aufwand der Räumung." },
+    { "titel": "Umfang der Räumung", "text": "Freimachen der Fläche, Abtransport des Materials und Aufarbeitung des Stammholzes sind getrennte Arbeitsschritte." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Das räumen wir selbst weg.“", "text": "Am Boden liegendes Material ist das eine. Bäume unter Spannung und hängende Kronenteile sind die häufigste Unfallursache nach Stürmen – das gehört gesichert gearbeitet." },
+    { "titel": "„Erst räumen, Versicherung später.“", "text": "Ist die Fläche geräumt, lässt sich der Schaden kaum noch belegen. Ein paar Aufnahmen vor Arbeitsbeginn kosten Minuten und ersparen später Diskussionen." },
+    { "titel": "„Wenn der Sturm vorbei ist, ist die Gefahr vorbei.“", "text": "Angerissene Äste und gelockerte Kronenteile fallen oft erst Tage später. Nach einem größeren Ereignis lohnt der prüfende Blick auf den restlichen Bestand." }
+  ],
+  "faq": [
+    { "frage": "Wie erreichen wir Sie im Notfall?", "antwort": "Telefonisch und über WhatsApp. Ein Foto der Situation hilft, den Fall sofort einzuordnen und die passende Technik direkt mitzubringen, statt zweimal anzufahren." },
+    { "frage": "Übernehmen Sie die Abstimmung mit unserer Versicherung?", "antwort": "Wir liefern die fachliche Grundlage – Dokumentation des Schadens vor der Räumung und eine Aufstellung der ausgeführten Arbeiten. Die Meldung selbst läuft über Sie, weil der Vertrag zwischen Ihnen und dem Versicherer besteht." },
+    { "frage": "Kann man einen Notdienst vorab vereinbaren?", "antwort": "Ja. Wenn Objekte, Ansprechpartner und Zugänge vorher hinterlegt sind, entfällt im Ernstfall die Klärung und wir können direkt anfahren." }
+  ],
+  "nachbarn": ["baumkontrolle", "baumarbeiten"],
+  "kundengruppe": ["gewerbe"]
+}
