@@ -2909,7 +2909,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 }
 .gate-head .hero-title {
   margin-top: 20px;                        /* AP-84: war 18px */
-  font-size: clamp(2.5rem, 5.2vw, 4.75rem); /* AP-84: war clamp(2.1rem, 5vw, 4.2rem); Cap unter Entwurf (5.4rem), s. .hero--gate */
+  font-size: clamp(2.25rem, 4.5vw, 4.1rem); /* AP-86: war clamp(2.5rem, 5.2vw, 4.75rem) */
   line-height: .97;                        /* AP-84: enger, damit die drei Zeilen als Block wirken */
   letter-spacing: -.042em;                 /* AP-84 */
 }
@@ -3026,7 +3026,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .gate-door { height: clamp(220px, 46vw, 300px); min-height: 220px; border-radius: 20px; }  /* AP-84: war aspect-ratio 3/2, min-height 210px */
   .gate-cta { width: 100%; justify-content: center; padding: 14px 18px; }
   .gate-head { padding-top: max(0px, env(safe-area-inset-top)); }
-  .gate-head .hero-title { font-size: clamp(2rem, 8.5vw, 2.9rem); }  /* AP-84 */
+  .gate-head .hero-title { font-size: clamp(1.85rem, 7.6vw, 2.6rem); }  /* AP-86: war clamp(2rem, 8.5vw, 2.9rem) */
   .hero--gate { padding-top: clamp(24px, 6vw, 40px); }               /* AP-84 */
 }
 
