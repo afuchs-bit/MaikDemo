@@ -6,11 +6,11 @@
 <!-- AP-01: Demo-Sperre. Beim Go-Live entfernen, siehe docs/go-live-checkliste.md Position 1. -->
 <meta name="robots" content="noindex,nofollow" />
 <meta name="theme-color" content="#315200" />
-<title>Projektgalerie – Garten- & Landschaftsbau in Herne, Bochum & Recklinghausen | Maik Rohdich</title>
-<meta name="description" content="Alle Projekte von Maik Rohdich Garten- und Landschaftsbau: Gartengestaltung, Teichanlagen, Baumarbeiten, Außenanlagenpflege und mehr – nach Kundentyp und Leistung filterbar." />
+<title>Gartenbilder & Projekte – Garten- und Landschaftsbau | Maik Rohdich</title>
+<meta name="description" content="Echte Gartenbilder und ausgeführte Projekte von Maik Rohdich: Gartengestaltung, Teichanlagen, Pflasterarbeiten, Bepflanzung und Außenanlagen." />
 <link rel="canonical" href="https://rohdich.de/projekte/" />
-<meta property="og:title" content="Projektgalerie – Maik Rohdich Garten- und Landschaftsbau" />
-<meta property="og:description" content="Echte Arbeiten, echte Orte. Alle Projekte durchsuchbar nach Kundentyp und Leistung." />
+<meta property="og:title" content="Gartenbilder & Projekte – Maik Rohdich Garten- und Landschaftsbau" />
+<meta property="og:description" content="Echte Ergebnisse aus privaten Gärten und ausgeführten Projekten in der Region." />
 <meta property="og:image" content="https://rohdich.de/assets/img/hero/hero-garten-herne-1600.webp" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rohdich.de/projekte/" />
@@ -18,7 +18,7 @@
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260809b" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260809c" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -181,13 +181,18 @@
 <section class="section section-projects" id="galerie" aria-labelledby="gal-title">
   <div class="container">
     <div class="section-head center">
-      <span class="kicker">Projekte aus der Region</span>
-      <h1 id="gal-title">Unsere Projektgalerie</h1>
-      <p class="lead">Echte Arbeiten, echte Orte. Filtern Sie nach Kundentyp und Leistung – oder stöbern Sie einfach durch alles Umgesetzte.</p>
+      <span class="kicker">Ergebnisse aus der Region</span>
+      <h1 id="gal-title">Unsere Garten- und Projektgalerie</h1>
+      <p class="lead">Entdecken Sie echte Gartenergebnisse oder öffnen Sie Projekte mit weiteren Details zu Leistung und Umsetzung.</p>
+    </div>
+
+    <div class="field-group gallery-mode-tabs" role="group" aria-label="Galerieansicht wählen">
+      <label class="seg"><input type="radio" name="gallery-mode" value="galerie"><span>Bildergalerie</span></label>
+      <label class="seg"><input type="radio" name="gallery-mode" value="projekte" checked><span>Projekte mit Details</span></label>
     </div>
 
     <!-- Filter-Toolbar -->
-    <div class="gallery-toolbar">
+    <div class="gallery-toolbar" data-project-controls>
       <div class="field-group gallery-tabs" role="group" aria-label="Ansicht wählen">
         <label class="seg"><input type="radio" name="tab" value="highlights"><span>Highlights</span></label>
         <label class="seg"><input type="radio" name="tab" value="alle" checked><span>Alle Projekte</span></label>
@@ -208,6 +213,9 @@
         </div>
       </div>
     </div>
+
+    <!-- Vollständige Ergebnisgalerie; wird per JS aus den kuratierten Bilddaten gefüllt. -->
+    <div class="gallery-photo-grid" id="galleryPhotoGrid" aria-label="Gartenergebnisse" aria-live="polite" aria-busy="true" hidden></div>
 
     <!-- Ergebnis-Grid (per JS gefüllt) -->
     <div class="projects-grid projects-grid--gallery" id="galleryGrid" aria-live="polite" aria-busy="true"></div>
@@ -478,6 +486,6 @@ Neben der harmonischen Anordnung der Beete und Wege wurde besonderer Wert auf ei
 </footer>
 
 <script src="../assets/js/main.js?v=20260806c" defer></script>
-<script type="module" src="../assets/js/galerie.js?v=20260807b"></script>
+<script type="module" src="../assets/js/galerie.js?v=20260809b"></script>
 </body>
 </html>

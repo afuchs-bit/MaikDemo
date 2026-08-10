@@ -24,7 +24,7 @@
      kleiner Wert laedt sonst die falsche Aufloesung. -->
 <link rel="preload" as="image" type="image/avif" fetchpriority="high" imagesizes="100vw" imagesrcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.avif 480w, ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.avif 960w, ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-1440.avif 1440w" />
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260809b" />
-<link rel="stylesheet" href="../assets/css/privat-form.css?v=20260809h" />
+<link rel="stylesheet" href="../assets/css/privat-form.css?v=20260810d" />
 <link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260809c" />
 
 <!-- Breadcrumb (AEO/SEO) -->
@@ -300,105 +300,46 @@
   </div>
 </section>
 
-<!-- ============ BEWEIS-GRID (AP-76, Bilder aktualisiert AP-83) ============
-     Bewusst STATISCH, kein Karussell und keine Auto-Slideshow: die
-     Notre-Dame-Auswertung (Runyon, 28.928 Klicks) zeigt ~1 % Interaktion,
-     davon 84 % auf Slide 1. Ein Raster zeigt alles auf einmal.
-     Die Bildauswahl ueberschneidet sich bewusst nicht mit #projekte-privat
-     weiter unten, das dieselbe Seite bereits aus dem CMS befuellt.
-     Erste Reihe eager, zweite lazy - siehe loading-Attribute.
-     Kachel 4 ist eine automatische Vorher/Nachher-Crossfade (CSS-Loop, kein
-     JS) - zwei <picture> uebereinander in .pg-fade, siehe styles.css. -->
-<section class="proof-shots" aria-labelledby="beweis-title">
+<!-- ============ KURATIERTER GALERIE-TEASER ============ -->
+<section class="private-gallery-teaser" aria-labelledby="gallery-teaser-title" data-gallery-teaser>
   <div class="container">
-    <div class="proof-shots-head">
-      <h2 id="beweis-title">Vom Vorgarten bis zum Poolumfeld</h2>
-      <a href="../projekte/">Alle Projekte ansehen →</a>
+    <header class="private-gallery-teaser-head">
+      <div>
+        <h2 id="gallery-teaser-title">Gärten, die für sich sprechen.</h2>
+        <p>Echte Ergebnisse aus privaten Gärten in Herne und der Region.</p>
+      </div>
+      <a class="btn btn-outline" href="../projekte/?ansicht=galerie">Zur vollständigen Galerie</a>
+    </header>
+
+    <div class="private-gallery-stage">
+      <ul class="private-gallery-grid" aria-label="Ausgewählte Gartenergebnisse" data-gallery-grid>
+        <li class="private-gallery-slot" data-gallery-slot>
+          <a href="../projekte/?galerie-bild=poolgarten-am-abend-8538a06" aria-label="Beleuchteten Poolgarten in der Galerie vergrößern">
+            <span class="private-gallery-media" data-gallery-media style="--gallery-focus-desktop:54% 58%;--gallery-focus-mobile:58% 58%"><img src="../assets/img/galerie-teaser/generated/poolgarten-am-abend-8538a06.webp" alt="Beleuchteter Poolgarten mit Palmen, Rasenfläche und Holzterrasse in der Abenddämmerung" width="960" height="720" loading="lazy" decoding="async"></span>
+            <span class="private-gallery-expand" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m15 3h6v6M14 10l7-7M9 21H3v-6M10 14l-7 7"/></svg><span>Vergrößern</span></span>
+          </a>
+        </li>
+        <li class="private-gallery-slot" data-gallery-slot>
+          <a href="../projekte/?galerie-bild=bluehender-vorgarten-mit-formgehoelz-2b30d84" aria-label="Blühenden Vorgarten in der Galerie vergrößern">
+            <span class="private-gallery-media" data-gallery-media style="--gallery-focus-desktop:58% 55%;--gallery-focus-mobile:60% 56%"><img src="../assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84.webp" alt="Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg" width="960" height="720" loading="lazy" decoding="async"></span>
+            <span class="private-gallery-expand" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m15 3h6v6M14 10l7-7M9 21H3v-6M10 14l-7 7"/></svg><span>Vergrößern</span></span>
+          </a>
+        </li>
+        <li class="private-gallery-slot" data-gallery-slot>
+          <a href="../projekte/?galerie-bild=moderne-aussenanlage-mit-pflasterung-e5cd55a" aria-label="Moderne Außenanlage mit Pflasterung in der Galerie vergrößern">
+            <span class="private-gallery-media" data-gallery-media style="--gallery-focus-desktop:50% 54%;--gallery-focus-mobile:52% 54%"><img src="../assets/img/galerie-teaser/generated/moderne-aussenanlage-mit-pflasterung-e5cd55a.webp" alt="Moderne Außenanlage mit großzügiger Pflasterfläche, Rasen und klarer Gartengestaltung" width="960" height="720" loading="lazy" decoding="async"></span>
+            <span class="private-gallery-expand" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m15 3h6v6M14 10l7-7M9 21H3v-6M10 14l-7 7"/></svg><span>Vergrößern</span></span>
+          </a>
+        </li>
+      </ul>
+      <button class="private-gallery-nav private-gallery-nav--prev" type="button" data-gallery-prev aria-label="Vorherige Gartenbilder zeigen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
+      </button>
+      <button class="private-gallery-nav private-gallery-nav--next" type="button" data-gallery-next aria-label="Nächste Gartenbilder zeigen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg>
+      </button>
+      <span class="private-gallery-announcement" data-gallery-announcement aria-live="polite" aria-atomic="true"></span>
     </div>
-
-    <ul class="proof-grid">
-      <li>
-        <figure>
-          <picture>
-            <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
-                    srcset="../assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/vorgarten-bochum-480.avif 480w,
-                            ../assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/vorgarten-bochum-960.avif 960w">
-            <img src="../assets/img/projekte/moderne-vorgartengestaltung-mit-naturstein-und-stilvoller-bepflanzung-bochum/vorgarten-bochum.webp"
-                 alt="Vorgarten in Bochum mit Kiesfläche, Formgehölzen, Ziergräsern und Natursteinblöcken vor einer Klinkerfassade"
-                 width="960" height="720" loading="eager" decoding="async">
-          </picture>
-          <figcaption>
-            <span class="pg-title">Vorgarten mit Naturstein</span>
-            <span class="pg-meta">Bochum</span>
-          </figcaption>
-        </figure>
-      </li>
-
-      <li>
-        <figure>
-          <picture>
-            <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
-                    srcset="../assets/img/proof/kuebelbepflanzung-480.avif 480w,
-                            ../assets/img/proof/kuebelbepflanzung-960.avif 960w">
-            <img src="../assets/img/proof/kuebelbepflanzung.webp"
-                 alt="Terrakotta-Kübel mit bunter Frühlingsbepflanzung aus Stiefmütterchen, Narzissen, Traubenhyazinthen und Primeln vor einem Hauseingang"
-                 width="960" height="720" loading="eager" decoding="async">
-          </picture>
-          <figcaption>
-            <span class="pg-title">Frühlingsbepflanzung in Kübeln</span>
-            <span class="pg-meta">Herne</span>
-          </figcaption>
-        </figure>
-      </li>
-
-      <li>
-        <figure>
-          <picture>
-            <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
-                    srcset="../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne-480.avif 480w,
-                            ../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne-960.avif 960w">
-            <img src="../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne.webp"
-                 alt="Beleuchtetes Poolumfeld in Herne mit Holzterrasse, Formgehölzen und Bepflanzung in der Dämmerung"
-                 width="960" height="720" loading="lazy" decoding="async">
-          </picture>
-          <figcaption>
-            <span class="pg-title">Poolumfeld</span>
-            <span class="pg-meta">Herne</span>
-          </figcaption>
-        </figure>
-      </li>
-
-      <li>
-        <figure>
-          <div class="pg-fade">
-            <picture class="pg-fade-a">
-              <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
-                      srcset="../assets/img/proof/beetneuanlage-vorher-480.avif 480w,
-                              ../assets/img/proof/beetneuanlage-vorher-960.avif 960w">
-              <img src="../assets/img/proof/beetneuanlage-vorher.webp"
-                   alt="Frisch ausgehobenes Pflanzbeet mit Steinkante an einer Hauswand, bereit zur Bepflanzung"
-                   width="960" height="720" loading="lazy" decoding="async">
-            </picture>
-            <picture class="pg-fade-b">
-              <source type="image/avif" sizes="(max-width:700px) 46vw, 23vw"
-                      srcset="../assets/img/proof/beetneuanlage-nachher-480.avif 480w,
-                              ../assets/img/proof/beetneuanlage-nachher-960.avif 960w">
-              <img src="../assets/img/proof/beetneuanlage-nachher.webp"
-                   alt="Dasselbe Beet fertig bepflanzt mit Fächerahorn, Rhododendron und Hortensie"
-                   width="960" height="720" loading="lazy" decoding="async">
-            </picture>
-            <span class="pg-fade-badge" aria-hidden="true">
-              <span class="pg-fade-badge-a">Vorher</span>
-              <span class="pg-fade-badge-b">Nachher</span>
-            </span>
-          </div>
-          <figcaption>
-            <span class="pg-title">Beetneuanlage</span>
-            <span class="pg-meta">Herne</span>
-          </figcaption>
-        </figure>
-      </li>
-    </ul>
   </div>
 </section>
 
@@ -418,8 +359,8 @@
       <li><a class="b2b-request-card" href="#anfrage" data-prefill-bereich="teich"><span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/teiche-wasserspiele-poolumfeld-640.webp 640w, ../assets/img/privat/services/teiche-wasserspiele-poolumfeld-960.webp 960w, ../assets/img/privat/services/teiche-wasserspiele-poolumfeld-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/privat/services/teiche-wasserspiele-poolumfeld-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span><span class="b2b-request-copy"><strong>Teiche, Wasserspiele &amp; Poolumfeld</strong><span>Teichanlagen und Wasserelemente sowie die Gestaltung rund um Pool und Whirlpool – einschließlich Uferzonen, Technik, Bepflanzung und angrenzender Flächen.</span></span><span class="b2b-request-arrow" aria-hidden="true">Wasserbereich planen <b>→</b></span></a></li>
     </ul>
     <div class="b2b-request-links reveal">
-      <a class="b2b-request-route b2b-request-procurement" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M11 5h18l8 8v30H11ZM29 5v9h8M17 23h14M17 30h14M17 37h9"/></svg></span><span><strong>Leistungsverzeichnis oder Ausschreibung?</strong><span>Unterlagen einreichen</span></span><b aria-hidden="true">→</b></a>
-      <a class="b2b-request-route b2b-request-other" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M5 39h38M8 36l10-10 8 7 6-5 8 8M15 25v-8M10 18c1-5 9-5 10 0 1 4-2 7-5 7s-6-3-5-7Z"/></svg></span><span><strong>Anderes Vorhaben?</strong><span>Objektanfrage starten</span></span><b aria-hidden="true">→</b></a>
+      <a class="b2b-request-route b2b-request-procurement" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M11 5h18l8 8v30H11ZM29 5v9h8M17 23h14M17 30h14M17 37h9"/></svg></span><span><strong>Noch unsicher?</strong><span>Maik Rohdich nimmt sich persönlich die Zeit, um Sie zu beraten.</span></span><b aria-hidden="true">→</b></a>
+      <a class="b2b-request-route b2b-request-other" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M5 39h38M8 36l10-10 8 7 6-5 8 8M15 25v-8M10 18c1-5 9-5 10 0 1 4-2 7-5 7s-6-3-5-7Z"/></svg></span><span><strong>Anderes Vorhaben?</strong><span>Gartenwunsch besprechen</span></span><b aria-hidden="true">→</b></a>
     </div>
   </div>
 </section>
@@ -502,7 +443,6 @@
             <h2 id="ablauf-title">In vier Schritten zu Ihrem neuen Garten.</h2>
           </div>
           <div class="b2b-process-intro-body">
-            <p class="lead">Von der ersten Anfrage bis zur Umsetzung wissen Sie, was als Nächstes passiert – persönlich begleitet und transparent abgestimmt.</p>
             <div class="b2b-process-actions">
               <a class="btn btn-primary" href="#anfrage" aria-describedby="private-process-reassurance">Projekt anfragen</a>
               <p class="b2b-process-reassurance" id="private-process-reassurance">
@@ -569,104 +509,131 @@
 </section>
 
 <!-- ============ SOCIAL PROOF ============ -->
-<section class="section section-proof-lite" aria-labelledby="proof-title">
+<section class="section section-proof-lite private-proof-bento" aria-labelledby="proof-title">
   <div class="container">
-    <div class="section-head center reveal">
-      <span class="kicker">Das sagen Privatkunden</span>
-      <h2 id="proof-title">Vertrauen aus über 20 Jahren Gartenbau.</h2>
-    </div>
+    <header class="private-proof-section-head reveal">
+      <h2 id="proof-title">Was Kunden über unsere Arbeit sagen.</h2>
+      <p>Echte Erfahrungen aus Gartenprojekten und Baumarbeiten in der Region.</p>
+    </header>
 
-    <div class="proof-stats reveal">
-      <div class="proof-figures">
-        <div class="proof-stat">
-          <span class="num">2003</span>
-          <span class="lab">gegründet in Herne</span>
+    <div class="private-proof-grid">
+      <div class="private-proof-summary reveal">
+        <div class="private-proof-since">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+          <span>Seit 2003 in Herne</span>
         </div>
-        <span class="proof-sep" aria-hidden="true"></span>
-        <div class="proof-stat">
-          <span class="num"><span data-countup="4.9" data-decimals="1">4,9</span><span class="star" aria-hidden="true">★</span></span>
-          <span class="lab">Google-Bewertung</span>
-        </div>
-        <span class="proof-sep" aria-hidden="true"></span>
-        <div class="proof-stat">
-          <span class="num" data-countup="67">67</span>
-          <span class="lab">Bewertungen</span>
-        </div>
-      </div>
-    </div>
+        <h3>Vertrauen aus über 20 Jahren Gartenbau.</h3>
+        <p>Echte Bewertungen und fachliche Qualifikationen machen unsere Erfahrung nachvollziehbar.</p>
 
-    <div class="proof-region reveal">
-      <ul class="proof-chips" aria-label="Einzugsgebiet">
-        <li class="proof-chip">Herne</li>
-        <li class="proof-chip">Bochum</li>
-        <li class="proof-chip">Gelsenkirchen</li>
-        <li class="proof-chip">Recklinghausen</li>
-        <li class="proof-chip">Castrop-Rauxel</li>
-      </ul>
-      <p class="muted-tiny">Darüber hinaus auf Anfrage.</p>
-    </div>
-
-    <div class="proof-trust proof-trust--narrow reveal">
-      <div class="proof-trust-head">
-        <div class="google-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.55-.21-2.27H12v4.29h6.46c-.29 1.5-1.15 2.77-2.45 3.62v3h3.96c2.32-2.13 3.52-5.27 3.52-8.64Z"/><path fill="#34A853" d="M12 24c3.31 0 6.09-1.1 8.12-2.98l-3.96-3c-1.1.74-2.5 1.18-4.16 1.18-3.2 0-5.91-2.16-6.88-5.07H1.04v3.18C3.05 21.3 7.18 24 12 24Z"/><path fill="#FBBC05" d="M5.12 14.13a7.2 7.2 0 0 1 0-4.27V6.68H1.04A12 12 0 0 0 0 12c0 1.93.46 3.76 1.04 5.32l4.08-3.19Z"/><path fill="#EA4335" d="M12 4.75c1.8 0 3.42.62 4.7 1.83l3.52-3.52C18.09 1.06 15.31 0 12 0 7.18 0 3.05 2.7 1.04 6.68l4.08 3.18C6.09 6.91 8.8 4.75 12 4.75Z"/></svg>
-          <span>Google Rezensionen</span>
+        <div class="private-proof-rating" role="group" aria-label="Google-Bewertung: 4,9 von 5 Sternen bei 67 Bewertungen">
+          <div class="private-proof-rating-head">
+            <span class="private-proof-google" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.55-.21-2.27H12v4.29h6.46c-.29 1.5-1.15 2.77-2.45 3.62v3h3.96c2.32-2.13 3.52-5.27 3.52-8.64Z"/><path fill="#34A853" d="M12 24c3.31 0 6.09-1.1 8.12-2.98l-3.96-3c-1.1.74-2.5 1.18-4.16 1.18-3.2 0-5.91-2.16-6.88-5.07H1.04v3.18C3.05 21.3 7.18 24 12 24Z"/><path fill="#FBBC05" d="M5.12 14.13a7.2 7.2 0 0 1 0-4.27V6.68H1.04A12 12 0 0 0 0 12c0 1.93.46 3.76 1.04 5.32l4.08-3.19Z"/><path fill="#EA4335" d="M12 4.75c1.8 0 3.42.62 4.7 1.83l3.52-3.52C18.09 1.06 15.31 0 12 0 7.18 0 3.05 2.7 1.04 6.68l4.08 3.18C6.09 6.91 8.8 4.75 12 4.75Z"/></svg>
+              <span>Google</span>
+            </span>
+            <span class="private-proof-stars" aria-hidden="true">★★★★★</span>
+          </div>
+          <strong>4,9 von 5</strong>
+          <span>aus 67 Google-Bewertungen</span>
         </div>
-        <div class="stars" aria-label="4,9 von 5 Sternen"><span class="stars-fg" style="width:98%"></span></div>
+
+        <a class="btn btn-outline private-proof-google-link" href="https://www.google.com/maps?cid=17269983059863253129" target="_blank" rel="noopener">Alle Bewertungen auf Google ansehen</a>
       </div>
 
-      <figure class="proof-lead">
-        <div class="stars" aria-label="5 von 5 Sternen"><span class="stars-fg" style="width:100%"></span></div>
-        <blockquote>
-          <p>„Herr Rohdich und sein Team haben unseren Vorgarten neu gestaltet und das mit super Ideen und in einer Top-Ausführung!</p>
-          <p>Wir haben dabei zwar unsere Vorstellungen geäußert, jedoch viel Gestaltungsspielraum gelassen.</p>
-          <p>Das war auch genau richtig, so gute Ideen hätten wir selbst nicht gehabt!</p>
-          <p>Was außerdem gut war:</p>
-          <ul class="proof-lead-list">
-            <li>100%ige Termintreue</li>
-            <li>Riesen Know-How</li>
-            <li>netter Chef, nettes Personal</li>
-            <li>zügige Umsetzung</li>
-            <li>angemessene Preise</li>
-          </ul>
-          <p>Kurzum: Absolut zufrieden und weiter zu empfehlen!"</p>
-        </blockquote>
-        <figcaption>Google-Rezension · Vorgarten-Neugestaltung</figcaption>
-      </figure>
+      <div class="private-proof-evidence">
+        <section class="private-review-carousel reveal" data-review-pair-rotator aria-label="Google-Rezensionen" aria-roledescription="Karussell">
+          <header class="private-review-carousel-head">
+            <div class="private-review-google-mark">
+              <svg viewBox="0 0 24 24" width="23" height="23" aria-hidden="true"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.55-.21-2.27H12v4.29h6.46c-.29 1.5-1.15 2.77-2.45 3.62v3h3.96c2.32-2.13 3.52-5.27 3.52-8.64Z"/><path fill="#34A853" d="M12 24c3.31 0 6.09-1.1 8.12-2.98l-3.96-3c-1.1.74-2.5 1.18-4.16 1.18-3.2 0-5.91-2.16-6.88-5.07H1.04v3.18C3.05 21.3 7.18 24 12 24Z"/><path fill="#FBBC05" d="M5.12 14.13a7.2 7.2 0 0 1 0-4.27V6.68H1.04A12 12 0 0 0 0 12c0 1.93.46 3.76 1.04 5.32l4.08-3.19Z"/><path fill="#EA4335" d="M12 4.75c1.8 0 3.42.62 4.7 1.83l3.52-3.52C18.09 1.06 15.31 0 12 0 7.18 0 3.05 2.7 1.04 6.68l4.08 3.18C6.09 6.91 8.8 4.75 12 4.75Z"/></svg>
+              <span><strong>Google Rezensionen</strong><small>Echte Stimmen unserer Kunden</small></span>
+            </div>
+            <div class="private-review-total" aria-label="4,9 von 5 Sternen bei 67 Google-Bewertungen">
+              <span class="private-review-scoreline"><strong>4,9</strong><span class="private-proof-stars" aria-hidden="true">★★★★★</span></span>
+              <small>67 Bewertungen</small>
+            </div>
+          </header>
 
-      <div class="proof-reviews" data-rotator>
-        <figure class="proof-quote is-active">
-          <div class="stars" aria-label="5 von 5 Sternen"><span class="stars-fg" style="width:100%"></span></div>
-          <blockquote>
-            <p>„Eine ganz klare Empfehlung! Die Kommunikation lief von Anfang an reibungslos – auf Fragen wurde blitzschnell und super freundlich geantwortet.</p>
-            <p>Extrem hilfsbereit und arbeitet absolut professionell, zügig und sauber. Man merkt einfach, dass hier echte Profis am Werk sind, die Spaß an ihrer Arbeit haben.</p>
-            <p>Vielen Dank"</p>
-          </blockquote>
-          <figcaption>Google-Rezension</figcaption>
-        </figure>
-        <figure class="proof-quote">
-          <div class="stars" aria-label="5 von 5 Sternen"><span class="stars-fg" style="width:100%"></span></div>
-          <blockquote>„Super Team, arbeiten super zusammen. Die Bäume haben jetzt einen guten Baumschnitt erhalten. Immer wieder gern.Vielen lieben Dank nochmal 👍😀"</blockquote>
-          <figcaption>Google-Rezension · Baumschnitt</figcaption>
-        </figure>
-        <figure class="proof-quote">
-          <div class="stars" aria-label="5 von 5 Sternen"><span class="stars-fg" style="width:100%"></span></div>
-          <blockquote>
-            <p>„Glück auf aus Herne,</p>
-            <p>ich habe heute 6 rm tolles , vor allem trockenes Holz geliefert bekommen. Preis sehr gut und die Jungs haben es von Hand in meine Einfahrt geworfen, perfekt!!"</p>
-          </blockquote>
-          <figcaption>Google-Rezension · Brennholz-Lieferung, Herne</figcaption>
-        </figure>
+          <div class="private-review-viewport" data-review-viewport>
+            <div class="private-review-pair is-active" data-review-pair="0" role="group" aria-roledescription="Folie" aria-label="Bewertungen 1 und 2 von 4">
+              <figure class="private-review-item">
+                <div class="private-review-item-head"><span class="private-proof-stars" aria-label="5 von 5 Sternen">★★★★★</span><span>Vorgarten-Neugestaltung</span></div>
+                <blockquote class="private-review-excerpt"><p>„Herr Rohdich und sein Team haben unseren Vorgarten neu gestaltet und das mit super Ideen und in einer Top-Ausführung! … Das war auch genau richtig, so gute Ideen hätten wir selbst nicht gehabt!“</p></blockquote>
+                <details class="private-review-details">
+                  <summary>
+                    <span class="private-review-details-copy"><strong>Vollständige Bewertung lesen</strong><small><span class="private-review-details-state--closed">In dieser Karte öffnen</span><span class="private-review-details-state--open">Geöffnet · innerhalb der Karte scrollen</span></small></span>
+                    <span class="private-review-details-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 9 5 5 5-5"/></svg></span>
+                  </summary>
+                  <blockquote>
+                    <p>„Herr Rohdich und sein Team haben unseren Vorgarten neu gestaltet und das mit super Ideen und in einer Top-Ausführung!</p>
+                    <p>Wir haben dabei zwar unsere Vorstellungen geäußert, jedoch viel Gestaltungsspielraum gelassen.</p>
+                    <p>Das war auch genau richtig, so gute Ideen hätten wir selbst nicht gehabt!</p>
+                    <p>Was außerdem gut war:</p>
+                    <ul>
+                      <li>100%ige Termintreue</li>
+                      <li>Riesen Know-How</li>
+                      <li>netter Chef, nettes Personal</li>
+                      <li>zügige Umsetzung</li>
+                      <li>angemessene Preise</li>
+                    </ul>
+                    <p>Kurzum: Absolut zufrieden und weiter zu empfehlen!"</p>
+                  </blockquote>
+                </details>
+                <figcaption>Google-Rezension · Vorgarten-Neugestaltung</figcaption>
+              </figure>
+
+              <figure class="private-review-item private-review-item--complete">
+                <div class="private-review-item-head"><span class="private-proof-stars" aria-label="5 von 5 Sternen">★★★★★</span><span>Baumschnitt</span></div>
+                <blockquote class="private-review-excerpt"><p>„Super Team, arbeiten super zusammen. Die Bäume haben jetzt einen guten Baumschnitt erhalten. Immer wieder gern.Vielen lieben Dank nochmal 👍😀"</p></blockquote>
+                <figcaption>Google-Rezension · Baumschnitt</figcaption>
+              </figure>
+            </div>
+
+            <div class="private-review-pair" data-review-pair="1" role="group" aria-roledescription="Folie" aria-label="Bewertungen 3 und 4 von 4">
+              <figure class="private-review-item">
+                <div class="private-review-item-head"><span class="private-proof-stars" aria-label="5 von 5 Sternen">★★★★★</span><span>Kundenempfehlung</span></div>
+                <blockquote class="private-review-excerpt"><p>„Eine ganz klare Empfehlung! Die Kommunikation lief von Anfang an reibungslos – auf Fragen wurde blitzschnell und super freundlich geantwortet. … Man merkt einfach, dass hier echte Profis am Werk sind, die Spaß an ihrer Arbeit haben.“</p></blockquote>
+                <details class="private-review-details">
+                  <summary>
+                    <span class="private-review-details-copy"><strong>Vollständige Bewertung lesen</strong><small><span class="private-review-details-state--closed">In dieser Karte öffnen</span><span class="private-review-details-state--open">Geöffnet · innerhalb der Karte scrollen</span></small></span>
+                    <span class="private-review-details-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 9 5 5 5-5"/></svg></span>
+                  </summary>
+                  <blockquote>
+                    <p>„Eine ganz klare Empfehlung! Die Kommunikation lief von Anfang an reibungslos – auf Fragen wurde blitzschnell und super freundlich geantwortet.</p>
+                    <p>Extrem hilfsbereit und arbeitet absolut professionell, zügig und sauber. Man merkt einfach, dass hier echte Profis am Werk sind, die Spaß an ihrer Arbeit haben.</p>
+                    <p>Vielen Dank"</p>
+                  </blockquote>
+                </details>
+                <figcaption>Google-Rezension</figcaption>
+              </figure>
+
+              <figure class="private-review-item">
+                <div class="private-review-item-head"><span class="private-proof-stars" aria-label="5 von 5 Sternen">★★★★★</span><span>Brennholz-Lieferung</span></div>
+                <blockquote class="private-review-excerpt"><p>„Glück auf aus Herne, … Preis sehr gut und die Jungs haben es von Hand in meine Einfahrt geworfen, perfekt!!"</p></blockquote>
+                <details class="private-review-details">
+                  <summary>
+                    <span class="private-review-details-copy"><strong>Vollständige Bewertung lesen</strong><small><span class="private-review-details-state--closed">In dieser Karte öffnen</span><span class="private-review-details-state--open">Geöffnet · innerhalb der Karte scrollen</span></small></span>
+                    <span class="private-review-details-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 9 5 5 5-5"/></svg></span>
+                  </summary>
+                  <blockquote>
+                    <p>„Glück auf aus Herne,</p>
+                    <p>ich habe heute 6 rm tolles , vor allem trockenes Holz geliefert bekommen. Preis sehr gut und die Jungs haben es von Hand in meine Einfahrt geworfen, perfekt!!"</p>
+                  </blockquote>
+                </details>
+                <figcaption>Google-Rezension · Brennholz-Lieferung, Herne</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <footer class="private-review-controls" data-review-controls hidden>
+            <div class="private-review-nav">
+              <button type="button" data-review-prev aria-label="Vorherige zwei Bewertungen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+              <span data-review-status aria-label="Bewertungsgruppe 1 von 2">1 / 2</span>
+              <button type="button" data-review-next aria-label="Nächste zwei Bewertungen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+            </div>
+            <button class="private-review-autoplay" type="button" data-review-autoplay aria-pressed="false" aria-label="Automatischen Wechsel pausieren"><span class="private-review-autoplay-icon" aria-hidden="true">Ⅱ</span><span data-review-autoplay-label>Pause</span></button>
+          </footer>
+        </section>
       </div>
-
-      <ul class="proof-chips">
-        <li class="proof-chip">Gartenbaumeister</li>
-        <li class="proof-chip">Ausbildungsbetrieb</li>
-        <li class="proof-chip">Sachverständiger Baumkontrolle</li>
-      </ul>
-
-      <!-- Link vor Live-Gang testen; Fallback ist die Google-Suchergebnis-URL des Profils -->
-      <a class="btn btn-outline" href="https://www.google.com/maps?cid=17269983059863253129" target="_blank" rel="noopener">Alle 67 Bewertungen auf Google ansehen</a>
     </div>
   </div>
 </section>
@@ -675,7 +642,6 @@
 <section class="section section-projects" id="projekte-privat" aria-labelledby="proj-title">
   <div class="container">
     <div class="section-head center reveal">
-      <span class="kicker">Privatprojekte aus der Region</span>
       <h2 id="proj-title">Gärten, die wir zuletzt gebaut haben.</h2>
       <p class="lead">Echte Arbeiten, echte Orte – drei Beispiele aus privaten Gärten im Ruhrgebiet.</p>
     </div>
@@ -763,70 +729,10 @@
   </div>
 </section>
 
-<!-- ============ FAQ (Privatkunden) ============ -->
-<section class="section section-faq" id="faq" aria-labelledby="faq-title">
-  <div class="container faq-wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Häufige Fragen von Privatkunden</span>
-      <h2 id="faq-title">Was Gartenbesitzer uns oft fragen.</h2>
-      <p class="lead">Kurz und ehrlich beantwortet. Für alles andere reicht eine Nachricht per WhatsApp – wir melden uns zeitnah.</p>
-    </div>
-
-    <div class="faq-list reveal">
-      <details>
-        <summary><span>Was kostet eine Gartengestaltung?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Das hängt von Größe, Zustand und Wünschen ab – seriös lässt sich das erst nach einem Vor-Ort-Termin sagen. Wir nennen Ihnen dann eine realistische Einschätzung inklusive Pflegeaufwand, bevor Sie sich entscheiden.</p></div>
-      </details>
-      <details>
-        <summary><span>Wie läuft die Terminanfrage ab?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Anfrage per Formular, Telefon oder WhatsApp senden – wir melden uns, vereinbaren einen Vor-Ort-Termin und Sie erhalten anschließend ein nachvollziehbares Angebot.</p></div>
-      </details>
-      <details>
-        <summary><span>Wie lange dauert ein Gartenprojekt?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Ein Vorgarten ist oft in wenigen Tagen fertig, eine komplette Gartengestaltung mit Teich dauert je nach Umfang mehrere Wochen. Den konkreten Zeitrahmen nennen wir im Angebot – und halten ihn.</p></div>
-      </details>
-      <details>
-        <summary><span>Übernehmen Sie auch die laufende Gartenpflege?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Ja. Viele Kunden lassen ihren Garten nach der Gestaltung dauerhaft von uns pflegen – von regelmäßigem Schnitt bis zur Saisonvorbereitung.</p></div>
-      </details>
-      <details>
-        <summary><span>Machen Sie auch kleine Gärten und Vorgärten?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Ja. Gerade Vorgärten und kleinere Flächen gehören zu unseren häufigsten Privatkunden-Projekten. Kein Projekt ist zu klein für eine ehrliche Beratung.</p></div>
-      </details>
-      <details>
-        <summary><span>Pflanzen Sie auch Palmen und winterfeste Exoten?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Ja, das ist eine unserer Spezialitäten: winterharte Palmen und mediterrane Bepflanzung, die im Ruhrgebiet dauerhaft funktioniert – inklusive Beratung zum Winterschutz.</p></div>
-      </details>
-      <details>
-        <summary><span>Kann ich Fotos von meinem Garten per WhatsApp senden?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Ja, sehr gerne. Fotos und eine kurze Beschreibung helfen uns bei der ersten Einschätzung. Senden Sie sie an <a href="https://wa.me/491711738943" target="_blank" rel="noopener">0171 / 173 89 43</a>.</p></div>
-      </details>
-      <details>
-        <summary><span>In welchen Orten arbeiten Sie für Privatkunden?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Schwerpunkt sind Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer. Bei passenden Projekten kommen wir auch darüber hinaus.</p></div>
-      </details>
-    </div>
-  </div>
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"Was kostet eine Gartengestaltung?","acceptedAnswer":{"@type":"Answer","text":"Das hängt von Größe, Zustand und Wünschen ab – seriös lässt sich das erst nach einem Vor-Ort-Termin sagen. Danach gibt es eine realistische Einschätzung inklusive Pflegeaufwand."}},
-    {"@type":"Question","name":"Wie läuft die Terminanfrage ab?","acceptedAnswer":{"@type":"Answer","text":"Anfrage per Formular, Telefon oder WhatsApp senden – wir melden uns, vereinbaren einen Vor-Ort-Termin und Sie erhalten anschließend ein nachvollziehbares Angebot."}},
-    {"@type":"Question","name":"Wie lange dauert ein Gartenprojekt?","acceptedAnswer":{"@type":"Answer","text":"Ein Vorgarten ist oft in wenigen Tagen fertig, eine komplette Gartengestaltung mit Teich dauert je nach Umfang mehrere Wochen. Der konkrete Zeitrahmen steht im Angebot."}},
-    {"@type":"Question","name":"Übernehmen Sie auch die laufende Gartenpflege?","acceptedAnswer":{"@type":"Answer","text":"Ja. Viele Kunden lassen ihren Garten nach der Gestaltung dauerhaft pflegen – von regelmäßigem Schnitt bis zur Saisonvorbereitung."}},
-    {"@type":"Question","name":"Machen Sie auch kleine Gärten und Vorgärten?","acceptedAnswer":{"@type":"Answer","text":"Ja. Vorgärten und kleinere Flächen gehören zu den häufigsten Privatkunden-Projekten."}},
-    {"@type":"Question","name":"Pflanzen Sie auch Palmen und winterfeste Exoten?","acceptedAnswer":{"@type":"Answer","text":"Ja: winterharte Palmen und mediterrane Bepflanzung, die im Ruhrgebiet dauerhaft funktioniert – inklusive Beratung zum Winterschutz."}},
-    {"@type":"Question","name":"Kann ich Fotos von meinem Garten per WhatsApp senden?","acceptedAnswer":{"@type":"Answer","text":"Ja, gerne. Fotos und eine kurze Beschreibung helfen bei der ersten Einschätzung – an 0171 / 173 89 43."}},
-    {"@type":"Question","name":"In welchen Orten arbeiten Sie für Privatkunden?","acceptedAnswer":{"@type":"Answer","text":"Schwerpunkt: Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer. Bei passenden Projekten auch darüber hinaus."}}
-  ]}
-  </script>
-</section>
-
 <!-- ============ GARTENPROJEKT-ANFRAGE ============ -->
 <section class="section private-contact" id="anfrage" aria-labelledby="anfrage-title">
   <div class="container">
     <header class="private-contact-intro reveal">
-      <span class="kicker">Direkt anfragen</span>
       <h2 id="anfrage-title">Der erste Schritt zu Ihrem Gartenprojekt.</h2>
       <p class="lead">Wählen Sie Ihr Anliegen – Maik Rohdich meldet sich persönlich.</p>
     </header>
@@ -1321,6 +1227,75 @@
   </div>
 </section>
 
+<!-- ============ FAQ (Privatkunden) ============ -->
+<section class="section section-faq private-faq" id="faq" aria-labelledby="faq-title">
+  <div class="container private-faq-wrap">
+    <header class="private-faq-head reveal">
+      <h2 id="faq-title">Häufige Fragen zu Ihrem Gartenprojekt.</h2>
+      <p>Kosten, Ablauf und nächste Schritte – kurz und verständlich beantwortet.</p>
+    </header>
+
+    <div class="private-faq-groups reveal">
+      <section class="private-faq-group" aria-labelledby="private-faq-planning-title">
+        <h3 id="private-faq-planning-title">Planung &amp; Ablauf</h3>
+        <div class="faq-list private-faq-list" data-private-faq-group>
+          <details>
+            <summary><span>Was kostet eine Gartengestaltung?</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Das hängt von Größe, Ausgangslage und Ihren Wünschen ab. Nach der Besichtigung erhalten Sie ein nachvollziehbares Angebot, bevor Sie sich entscheiden.</p></div>
+          </details>
+          <details>
+            <summary><span>Ist die Anfrage kostenlos und unverbindlich?</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Ja. Die Anfrage und die erste Einordnung sind kostenfrei und noch kein Auftrag. Den weiteren Ablauf stimmen wir persönlich mit Ihnen ab.</p></div>
+          </details>
+          <details>
+            <summary><span>Wie läuft die Anfrage ab?</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Sie schildern Ihr Vorhaben per Formular, Telefon oder WhatsApp. Maik Rohdich meldet sich persönlich, bespricht den Garten mit Ihnen vor Ort und erstellt anschließend das Angebot.</p></div>
+          </details>
+          <details>
+            <summary><span>Wie lange dauert ein Gartenprojekt?</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Das hängt vom Umfang und den vereinbarten Arbeiten ab. Den realistischen Zeitrahmen stimmen wir vor der Umsetzung mit Ihnen ab und führen ihn im Angebot nachvollziehbar auf.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <section class="private-faq-group" aria-labelledby="private-faq-service-title">
+        <h3 id="private-faq-service-title">Leistung &amp; Rahmen</h3>
+        <div class="faq-list private-faq-list" data-private-faq-group>
+          <details>
+            <summary><span>Übernehmen Sie auch kleinere Gärten und Vorgärten?</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Ja. Auch Vorgärten und kleinere Flächen planen und gestalten wir passend zu Grundstück, Nutzung und Ihren Wünschen.</p></div>
+          </details>
+          <details>
+            <summary><span>Bieten Sie auch laufende Gartenpflege an?</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Ja. Wir übernehmen einmalige Pflegearbeiten ebenso wie laufende Gartenpflege – abgestimmt auf Ihren Garten und den gewünschten Rhythmus.</p></div>
+          </details>
+          <details>
+            <summary><span>Welche Informationen helfen bei der ersten Einschätzung?</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Ort oder Postleitzahl und eine kurze Beschreibung genügen für den Start. Fotos, Maße und weitere Unterlagen können Sie optional ergänzen.</p></div>
+          </details>
+          <details>
+            <summary><span>In welchen Orten sind Sie tätig?</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Unser Schwerpunkt liegt in Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer. Weitere Orte prüfen wir abhängig vom Vorhaben.</p></div>
+          </details>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Was kostet eine Gartengestaltung?","acceptedAnswer":{"@type":"Answer","text":"Das hängt von Größe, Ausgangslage und Ihren Wünschen ab. Nach der Besichtigung erhalten Sie ein nachvollziehbares Angebot, bevor Sie sich entscheiden."}},
+    {"@type":"Question","name":"Ist die Anfrage kostenlos und unverbindlich?","acceptedAnswer":{"@type":"Answer","text":"Ja. Die Anfrage und die erste Einordnung sind kostenfrei und noch kein Auftrag. Den weiteren Ablauf stimmen wir persönlich mit Ihnen ab."}},
+    {"@type":"Question","name":"Wie läuft die Anfrage ab?","acceptedAnswer":{"@type":"Answer","text":"Sie schildern Ihr Vorhaben per Formular, Telefon oder WhatsApp. Maik Rohdich meldet sich persönlich, bespricht den Garten mit Ihnen vor Ort und erstellt anschließend das Angebot."}},
+    {"@type":"Question","name":"Wie lange dauert ein Gartenprojekt?","acceptedAnswer":{"@type":"Answer","text":"Das hängt vom Umfang und den vereinbarten Arbeiten ab. Den realistischen Zeitrahmen stimmen wir vor der Umsetzung mit Ihnen ab und führen ihn im Angebot nachvollziehbar auf."}},
+    {"@type":"Question","name":"Übernehmen Sie auch kleinere Gärten und Vorgärten?","acceptedAnswer":{"@type":"Answer","text":"Ja. Auch Vorgärten und kleinere Flächen planen und gestalten wir passend zu Grundstück, Nutzung und Ihren Wünschen."}},
+    {"@type":"Question","name":"Bieten Sie auch laufende Gartenpflege an?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wir übernehmen einmalige Pflegearbeiten ebenso wie laufende Gartenpflege – abgestimmt auf Ihren Garten und den gewünschten Rhythmus."}},
+    {"@type":"Question","name":"Welche Informationen helfen bei der ersten Einschätzung?","acceptedAnswer":{"@type":"Answer","text":"Ort oder Postleitzahl und eine kurze Beschreibung genügen für den Start. Fotos, Maße und weitere Unterlagen können Sie optional ergänzen."}},
+    {"@type":"Question","name":"In welchen Orten sind Sie tätig?","acceptedAnswer":{"@type":"Answer","text":"Unser Schwerpunkt liegt in Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer. Weitere Orte prüfen wir abhängig vom Vorhaben."}}
+  ]}
+  </script>
+</section>
+
 </main>
 
 <!-- ============ FOOTER ============ -->
@@ -1395,6 +1370,8 @@
 
 <script src="../assets/js/main.js?v=20260806c" defer></script>
 <script type="module" src="../assets/js/projekte-privat.js?v=20260807b"></script>
-<script src="../assets/js/privat-form.js?v=20260809d" defer></script>
+<script src="../assets/js/private-gallery-teaser.js?v=20260810f" defer></script>
+<script src="../assets/js/private-proof.js?v=20260809d" defer></script>
+<script src="../assets/js/privat-form.js?v=20260809f" defer></script>
 </body>
 </html>

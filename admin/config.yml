@@ -99,3 +99,31 @@ collections:
           # rot machen, statt den Fehler direkt beim Speichern zu zeigen.
           - { name: alt, label: "Bildbeschreibung (für Barrierefreiheit & SEO)", widget: string, required: true }
         hint: "Das erste Bild ist automatisch das Titelbild."
+
+  - name: seiteninhalte
+    label: Seiteninhalte
+    format: json
+    files:
+      - name: galerie_teaser
+        label: Galerie-Teaser Privatkunden
+        file: content/galerie-teaser.json
+        media_folder: /assets/img/galerie-teaser
+        public_folder: /assets/img/galerie-teaser
+        fields:
+          - { name: titel, label: "Überschrift", widget: string }
+          - { name: intro, label: "Kurzer Begleittext", widget: string }
+          - name: bilder
+            label: Ergebnisbilder
+            label_singular: Ergebnisbild
+            widget: list
+            min: 6
+            max: 36
+            summary: "{{fields.alt}}"
+            hint: "Die vollständige Galerie unterstützt bis zu 36 Ergebnisbilder. Markieren Sie davon 6 bis 12 für den Teaser; mindestens vier davon müssen als Leitbild geeignet sein."
+            fields:
+              - { name: bild, label: "Foto", widget: image }
+              - { name: alt, label: "Bildbeschreibung (für Barrierefreiheit & SEO)", widget: string, required: true }
+              - { name: imTeaser, label: "Im Privatkunden-Teaser zeigen", widget: boolean, default: false }
+              - { name: leitbildGeeignet, label: "Für die große Leitbild-Kachel geeignet", widget: boolean, default: false, hint: "Nur für Teaserbilder aktivieren, deren Hauptmotiv auch in einem breiten Zuschnitt erhalten bleibt." }
+              - { name: fokusDesktop, label: "Bildfokus Desktop", widget: string, default: "50% 50%", pattern: ['^(100|[0-9]{1,2})% (100|[0-9]{1,2})%$', 'Bitte als X% Y% angeben, zum Beispiel 55% 50%.'] }
+              - { name: fokusMobil, label: "Bildfokus Mobil", widget: string, default: "50% 50%", pattern: ['^(100|[0-9]{1,2})% (100|[0-9]{1,2})%$', 'Bitte als X% Y% angeben, zum Beispiel 60% 55%.'] }
