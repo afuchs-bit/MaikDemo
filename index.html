@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260810c" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260810d" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -689,26 +689,47 @@
 
     <div class="kw-cards">
       <a class="kw-card reveal" href="privatkunden/#anfrage">
-        <span class="kw-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5a1 1 0 0 0 1 1H9.5v-6h5v6h3a1 1 0 0 0 1-1V10"/></svg>
+        <span class="kw-card-eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5a1 1 0 0 0 1 1H9.5v-6h5v6h3a1 1 0 0 0 1-1V10"/></svg>
+          Für Privatkunden
         </span>
-        <span class="kw-card-eyebrow">Für Privatkunden</span>
-        <h3>Ihr Garten zuhause</h3>
-        <p>Gartenneubau, Vorgarten, Terrassen &amp; Pflege.</p>
+        <h3>Anfrage für Ihren Garten.</h3>
+        <p>Schildern Sie Ihr Vorhaben – Maik Rohdich schaut sich Ihre Anfrage persönlich an.</p>
+        <div class="kw-card-scope">
+          <span class="kw-card-scope-label">Unter anderem</span>
+          <ul>
+            <li>Gartengestaltung</li>
+            <li>Vorgarten</li>
+            <li>Terrassen &amp; Wege</li>
+            <li>Teichbau</li>
+            <li>Baumarbeiten</li>
+            <li>Gartenpflege</li>
+          </ul>
+        </div>
         <span class="kw-card-cta">Zum Privatkundenformular
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </span>
       </a>
 
       <a class="kw-card reveal" href="gewerbekunden/#anfrage">
-        <span class="kw-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"/></svg>
+        <span class="kw-card-eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"/></svg>
+          Für Gewerbekunden
         </span>
-        <span class="kw-card-eyebrow">Für Gewerbekunden</span>
-        <h3>Ihre Außenanlage im Betrieb</h3>
-        <p>Pflege, Baumkontrolle &amp; Verkehrssicherheit.</p>
+        <h3>Anfrage für Ihre Außenanlage.</h3>
+        <p>Pflegeverträge, Baumkontrolle und Verkehrssicherungspflicht – planbar und dokumentiert.</p>
+        <div class="kw-card-scope">
+          <span class="kw-card-scope-label">Unter anderem</span>
+          <ul>
+            <li>Außenanlagenpflege</li>
+            <li>Baumkontrolle</li>
+            <li>Baumarbeiten</li>
+            <li>Sturmnotdienst</li>
+            <li>Dachbegrünung</li>
+          </ul>
+        </div>
         <span class="kw-card-cta">Zum Gewerbeformular
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </span>
       </a>
     </div>
