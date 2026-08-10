@@ -41,7 +41,9 @@ async function init(grid) {
   const labelFor = (p) => labels.get((p.leistungen || [])[0]) || '';
 
   const cards = privat.map((p) => {
-    const card = buildCard(p, { badge: 'leistung', labelFor });
+    const summary = firstSentence(p.beschreibung);
+    const card = buildCard({ ...p, beschreibung: summary }, { badge: 'leistung', labelFor });
+    enhancePrivateCard(card, p);
     const link = document.createElement('a');
     link.className = 'card-open';
     link.href = new URL(`projekte/?projekt=${encodeURIComponent(p.slug || '')}`, SITE_BASE).href;
@@ -51,4 +53,53 @@ async function init(grid) {
   });
   grid.replaceChildren(...cards);
   revealCards(cards);
+}
+
+function firstSentence(value) {
+  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  if (!text) return '';
+  if ('Segmenter' in Intl) {
+    const segment = new Intl.Segmenter('de', { granularity: 'sentence' }).segment(text)[Symbol.iterator]().next().value;
+    if (segment?.segment) return segment.segment.trim();
+  }
+  return text.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() || text;
+}
+
+function projectMonth(value) {
+  const match = /^(\d{4})-(\d{2})/.exec(String(value || ''));
+  if (!match) return null;
+  const date = new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, 1));
+  return {
+    datetime: `${match[1]}-${match[2]}`,
+    label: new Intl.DateTimeFormat('de-DE', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(date),
+  };
+}
+
+function enhancePrivateCard(card, project) {
+  const body = card.querySelector('.project-body');
+  const location = body?.querySelector('.project-location');
+  if (body && location) {
+    const meta = document.createElement('div');
+    meta.className = 'private-project-meta';
+    location.before(meta);
+    meta.appendChild(location);
+    const month = projectMonth(project.datum);
+    if (month) {
+      const time = document.createElement('time');
+      time.className = 'private-project-date';
+      time.dateTime = month.datetime;
+      time.textContent = month.label;
+      meta.appendChild(time);
+    }
+  }
+
+  const more = body?.querySelector('.card-more');
+  if (more) {
+    const label = document.createElement('span');
+    label.textContent = 'Projekt ansehen';
+    const arrow = document.createElement('b');
+    arrow.textContent = '→';
+    arrow.setAttribute('aria-hidden', 'true');
+    more.replaceChildren(label, arrow);
+  }
 }
