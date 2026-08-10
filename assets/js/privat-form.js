@@ -896,6 +896,74 @@
   updateOptionalSummaries();
 })();
 
+// Privatkunden-Leistungskarten: zugängliche Flip-Interaktion mit nur einer offenen Karte.
+(() => {
+  'use strict';
+
+  const section = document.querySelector('.private-request-paths');
+  const cards = Array.from(section?.querySelectorAll('[data-service-flip]') || []);
+  if (!section || !cards.length) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const focusDelay = 580;
+  let activeCard = null;
+
+  const scheduleFocus = (card, target) => {
+    window.clearTimeout(card._privateFlipFocusTimer);
+    card._privateFlipFocusTimer = window.setTimeout(() => {
+      target?.focus({ preventScroll: true });
+    }, reducedMotion.matches ? 0 : focusDelay);
+  };
+
+  const updateCard = (card, expanded, { moveFocus = true } = {}) => {
+    const front = card.querySelector('[data-service-front]');
+    const back = card.querySelector('[data-service-back]');
+    const openButton = card.querySelector('[data-service-open]');
+    const closeButton = card.querySelector('[data-service-close]');
+    if (!front || !back || !openButton || !closeButton) return;
+
+    card.classList.toggle('is-flipped', expanded);
+    openButton.setAttribute('aria-expanded', String(expanded));
+    front.setAttribute('aria-hidden', String(expanded));
+    back.setAttribute('aria-hidden', String(!expanded));
+    front.inert = expanded;
+    back.inert = !expanded;
+
+    if (moveFocus) scheduleFocus(card, expanded ? closeButton : openButton);
+  };
+
+  const closeCard = (card, options) => {
+    if (!card) return;
+    updateCard(card, false, options);
+    if (activeCard === card) activeCard = null;
+  };
+
+  const openCard = (card) => {
+    if (activeCard && activeCard !== card) closeCard(activeCard, { moveFocus: false });
+    activeCard = card;
+    updateCard(card, true);
+  };
+
+  cards.forEach((card) => {
+    const openButton = card.querySelector('[data-service-open]');
+    const closeButton = card.querySelector('[data-service-close]');
+    const front = card.querySelector('[data-service-front]');
+    const back = card.querySelector('[data-service-back]');
+    if (!openButton || !closeButton || !front || !back) return;
+
+    front.inert = false;
+    back.inert = true;
+    openButton.addEventListener('click', () => openCard(card));
+    closeButton.addEventListener('click', () => closeCard(card));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || !activeCard) return;
+    event.preventDefault();
+    closeCard(activeCard);
+  });
+})();
+
 // Privatkunden-FAQ: weich animierte, voneinander unabhängige Akkordeon-Gruppen.
 (() => {
   'use strict';
