@@ -1422,7 +1422,6 @@
 .b2b-confirmation-links span { color: var(--ink-mute); font-size: .7rem; }
 .b2b-confirmation-links strong { margin-top: 4px; overflow-wrap: anywhere; font-family: var(--display); font-size: .9rem; }
 .b2b-confirmation-note { font-size: .74rem; }
-.b2b-mobile-actions { display: none; }
 
 @media (min-width: 1161px) and (max-height: 820px) {
   .b2b-contact-aside { top: max(calc(var(--header-h,90px) + 4px),calc((100vh + var(--header-h,90px) - 720px)/2)); top: max(calc(var(--header-h,90px) + 4px),calc((100dvh + var(--header-h,90px) - 720px)/2)); min-height: 0; }
@@ -1568,34 +1567,6 @@
   .b2b-contact-direct a:nth-child(odd) { padding-right: 18px; }
   .b2b-contact-direct a:nth-child(even) { padding-left: 18px; border-left: 1px solid rgba(49,82,0,.12); }
   .b2b-contact-facts { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .b2b-mobile-actions {
-    display: grid;
-    grid-template-columns: 1fr 48px 48px;
-    gap: 7px;
-    position: fixed;
-    z-index: 70;
-    left: max(10px,env(safe-area-inset-left));
-    right: max(10px,env(safe-area-inset-right));
-    bottom: max(10px,env(safe-area-inset-bottom));
-    padding: 6px;
-    border: 1px solid rgba(255,255,255,.13);
-    border-radius: 16px;
-    background: rgba(19,26,8,.94);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 18px 36px -14px rgba(0,0,0,.5);
-    opacity: 0;
-    transform: translateY(calc(100% + 22px));
-    pointer-events: none;
-    transition: opacity .2s var(--ease),transform .2s var(--ease);
-  }
-  .b2b-mobile-actions.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .b2b-mobile-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 11px; color: #fff; text-decoration: none; font-weight: 800; }
-  .b2b-mobile-actions .b2b-mobile-main { background: var(--yellow); color: var(--ink); }
-  .b2b-mobile-actions > a:not(.b2b-mobile-main) { background: rgba(255,255,255,.08); }
-  .b2b-mobile-action-icon { display: block; width: 20px; height: 20px; }
-  .b2b-mobile-actions .b2b-mobile-whatsapp { color: #fff; }
-  .b2b-mobile-actions a:focus-visible { outline: 3px solid rgba(255,237,0,.92); outline-offset: 2px; }
-  .b2b-page { padding-bottom: 82px; }
 }
 
 @media (max-width: 767px) {
@@ -1720,10 +1691,6 @@
   .b2b-proof-strip li > span { font-size: .875rem; }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .b2b-mobile-actions .b2b-mobile-whatsapp:hover { background: #25d366; }
-}
-
 @media (max-width: 390px) {
   .b2b-hero h1 { font-size: 2.17rem; }
   .b2b-request-card { min-height: 306px; }
@@ -1736,7 +1703,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .b2b-request-card,.b2b-request-route,.b2b-request-storm,.b2b-storm-phone,.b2b-request-media img,.b2b-request-arrow b,.b2b-request-route > b,.b2b-mobile-actions { transition: none; }
+  .b2b-request-card,.b2b-request-route,.b2b-request-storm,.b2b-storm-phone,.b2b-request-media img,.b2b-request-arrow b,.b2b-request-route > b { transition: none; }
   .b2b-request-card:hover,
   .b2b-request-route:hover,
   .b2b-request-route:hover > b,

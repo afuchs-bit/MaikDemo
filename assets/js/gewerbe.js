@@ -458,26 +458,6 @@
   updateProgress();
   requestAnimationFrame(updateAllScrollCues);
 
-  // Der mobile Schnellkontakt erscheint erst, wenn der Hero verlassen wurde.
-  const hero = document.querySelector('.b2b-hero');
-  const mobileActions = document.querySelector('.b2b-mobile-actions');
-  const setMobileActionsVisible = (visible) => {
-    if (!mobileActions) return;
-    mobileActions.classList.toggle('is-visible', visible);
-    mobileActions.setAttribute('aria-hidden', visible ? 'false' : 'true');
-    mobileActions.toggleAttribute('inert', !visible);
-  };
-  if (hero && mobileActions && 'IntersectionObserver' in window) {
-    const heroObserver = new IntersectionObserver(([entry]) => {
-      setMobileActionsVisible(!entry.isIntersecting);
-    }, { threshold: 0 });
-    heroObserver.observe(hero);
-  } else if (mobileActions) {
-    const updateMobileActions = () => setMobileActionsVisible(window.scrollY > 500);
-    window.addEventListener('scroll', updateMobileActions, { passive: true });
-    updateMobileActions();
-  }
-
   // Freigegebene Gewerbe-Fallstudien werden progressiv aus dem Projektindex
   // ergänzt. Ohne gültige Freigabe bleiben ausschließlich neutrale Motive stehen.
   const referenceTarget = document.querySelector('[data-approved-references]');
