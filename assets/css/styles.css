@@ -2904,8 +2904,11 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 .hero--gate {
   /* AP-84: war clamp(20px, 4vw, 48px) 0 0. Obergrenze bewusst unter dem
      Entwurfswert (76px): bei 1440x900 muessen die Kachel-Buttons ueber der
-     Falz bleiben - Budgetrechnung siehe Commit-Message. */
-  padding: clamp(32px, 3vw, 52px) 0 clamp(28px, 3.4vw, 44px);
+     Falz bleiben - Budgetrechnung siehe Commit-Message.
+     AP-103: Oberer Wert von clamp(32px,3vw,52px) auf clamp(20px,2vw,34px)
+     gesenkt. Zusammen mit dem entfernten H1-Margin faellt die optisch
+     wahrgenommene Luecke unter dem Header bei 1440px von 81px auf 47px. */
+  padding: clamp(20px, 2vw, 34px) 0 clamp(28px, 3.4vw, 44px);
   background: var(--bg-hero);              /* AP-84: eigener Ton, hebt den Hero vom Seitenrest ab */
   border-bottom: 1px solid var(--line);    /* AP-84 */
 }
@@ -2928,7 +2931,11 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   padding-bottom: clamp(20px, 2.2vw, 32px);  /* AP-84: war clamp(24px, 3.4vw, 42px), Falz-Budget */
 }
 .gate-head .hero-title {
-  margin-top: 20px;                        /* AP-84: war 18px */
+  /* AP-103: war 20px. Die H1 ist erstes Kind von .gate-head, der Abstand
+     kollabierte also nach oben aus dem Kasten heraus und addierte sich auf das
+     Hero-Padding - reine Totluft unter dem Header. Gleiches Muster wie bei
+     .section-head > h2:first-child. */
+  margin-top: 0;
   font-size: clamp(2.25rem, 4.5vw, 4.1rem); /* AP-86: war clamp(2.5rem, 5.2vw, 4.75rem) */
   line-height: .97;                        /* AP-84: enger, damit die drei Zeilen als Block wirken */
   letter-spacing: -.042em;                 /* AP-84 */
