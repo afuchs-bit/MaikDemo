@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260810d" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260810e" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -190,14 +190,14 @@
         <li><a href="privatkunden/">Privatkunden</a></li>
         <li><a href="gewerbekunden/">Gewerbekunden</a></li>
         <li class="menu-item menu-item--sub">
-          <a href="leistungen/">Leistungen</a>
+          <span class="menu-label">Leistungen</span>
           <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-leistungen" aria-label="Alle Leistungen anzeigen">
             <svg class="submenu-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <!-- BUILD:leistungen-submenu:start -->
           <ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
           <li class="nav-submenu-group">
-            <a class="nav-submenu-head" href="privatkunden/leistungen/">Für Privatkunden</a>
+            <a class="nav-submenu-head" href="privatkunden/">Für Privatkunden</a>
             <ul>
               <li><a href="privatkunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
               <li><a href="privatkunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
@@ -215,7 +215,7 @@
             </ul>
           </li>
           <li class="nav-submenu-group">
-            <a class="nav-submenu-head" href="gewerbekunden/leistungen/">Für Gewerbekunden</a>
+            <a class="nav-submenu-head" href="gewerbekunden/">Für Gewerbekunden</a>
             <ul>
               <li><a href="gewerbekunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
               <li><a href="gewerbekunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
@@ -327,7 +327,7 @@
   </div>
 
   <p class="gate-escape">
-    Nicht sicher, was passt? <a href="leistungen/">Alle Leistungen im Überblick →</a>
+    Nicht sicher, was passt? <a href="kontakt/">Persönlich beraten lassen →</a>
   </p>
 
 </section>
@@ -1016,7 +1016,6 @@
       <ul class="footer-list">
         <li><a href="privatkunden/">Privatkunden</a></li>
         <li><a href="gewerbekunden/">Gewerbekunden</a></li>
-        <li><a href="leistungen/">Leistungen</a></li>
         <li><a href="projekte/">Galerie</a></li>
         <li><a href="ratgeber/">Ratgeber</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -1037,7 +1036,6 @@
         <li><a href="gewerbekunden/leistungen/aussenanlagenpflege/">Außenanlagenpflege</a></li>
       </ul>
           <!-- BUILD:leistungen-footer:end -->
-      <p class="muted small"><a href="leistungen/">Alle Leistungen im Überblick →</a></p>
     </div>
   </div>
 
