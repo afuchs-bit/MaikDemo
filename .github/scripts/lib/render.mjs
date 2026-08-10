@@ -490,13 +490,40 @@ export function renderFooterLeistungen(base) {
 
 // AP-19 – Startseiten-FAQ aus content/faq-startseite.json.
 // Sichtbare <details>-Liste UND FAQPage-Schema aus DERSELBEN Quelle → identischer Text.
-export function renderFaqDetails(faq) {
-  return faq
-    .map((f) => `<details>
+//
+// AP-94: Ab FAQ_VISIBLE Fragen wandert der Rest in einen Ausklapper. Bewusst ein
+// verschachteltes <details> und kein JS: alle Fragen bleiben serverseitig im HTML
+// und damit fuer Suchmaschinen wie fuer Antwortmaschinen lesbar - eingeklappter
+// Inhalt wird indexiert, per Klick nachgeladener nicht. Das FAQPage-Schema unten
+// listet unveraendert ALLE Fragen; es darf nichts enthalten, was nicht auf der
+// Seite steht, und eingeklappt zaehlt als vorhanden.
+const FAQ_VISIBLE = 8;
+
+const faqItem = (f) => `<details>
         <summary><span>${esc(f.frage)}</span><span class="chev" aria-hidden="true"></span></summary>
         <div class="faq-body"><p>${esc(f.antwort)}</p></div>
-      </details>`)
-    .join('\n      ');
+      </details>`;
+
+export function renderFaqDetails(faq) {
+  const items = faq.map(faqItem);
+  if (items.length <= FAQ_VISIBLE) return items.join('\n      ');
+
+  const rest = items.slice(FAQ_VISIBLE);
+  const label = rest.length === 1
+    ? 'Eine weitere Frage anzeigen'
+    : `Weitere ${rest.length} Fragen anzeigen`;
+
+  return [
+    ...items.slice(0, FAQ_VISIBLE),
+    `<details class="faq-more">
+        <summary>
+          <span class="faq-more-open">${label}</span>
+          <span class="faq-more-close">Weniger anzeigen</span>
+          <span class="chev" aria-hidden="true"></span>
+        </summary>
+        ${rest.join('\n        ')}
+      </details>`,
+  ].join('\n      ');
 }
 
 export function renderFaqSchema(faq) {

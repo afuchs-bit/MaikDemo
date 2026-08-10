@@ -1032,13 +1032,23 @@ p  { margin: 0; }
   transform: translate(-50%, -50%);
 }
 .chev::after { transform: translate(-50%, -50%) rotate(90deg); transition: transform .3s var(--ease); }
-.faq-list details[open] .chev { background: var(--green-100); }
-.faq-list details[open] .chev::after { transform: translate(-50%, -50%) rotate(0deg); }
+/* AP-94: Kind-Kombinator statt Nachfahre - sonst dreht der geoeffnete
+   .faq-more-Ausklapper die Chevrons aller darin liegenden Fragen mit. */
+.faq-list details[open] > summary > .chev { background: var(--green-100); }
+.faq-list details[open] > summary > .chev::after { transform: translate(-50%, -50%) rotate(0deg); }
 .faq-body {
   padding: 0 22px 18px;
   color: var(--ink-2);
 }
 .faq-body a { color: var(--green-700); }
+
+/* AP-94: Ausklapper fuer die Fragen ab Position 9. Natives <details>, kein JS -
+   die Fragen stehen im ausgelieferten HTML und bleiben fuer Suchmaschinen und
+   Antwortmaschinen lesbar, auch solange sie zugeklappt sind. */
+.faq-more > summary { color: var(--green-700); }
+.faq-more[open] > summary { border-bottom: 1px solid var(--line-2); }
+.faq-more[open] > summary > .faq-more-open,
+.faq-more:not([open]) > summary > .faq-more-close { display: none; }
 
 /* ---------- Contact ---------- */
 .section-contact { background: var(--bg-dark); color: #f4f1e8; padding-bottom: 80px; }
