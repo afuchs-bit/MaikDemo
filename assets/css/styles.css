@@ -446,16 +446,14 @@ p  { margin: 0; }
 }
 .hero-title .line { display: block; }
 .hero-title em,
-.hero-split-title em,
-.mf-title em {
+.hero-split-title em {
   font-style: normal;
   background: linear-gradient(120deg, var(--green-700) 0%, var(--green-500) 50%, var(--coral) 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   position: relative;
 }
 .hero-title em::after,
-.hero-split-title em::after,
-.mf-title em::after {
+.hero-split-title em::after {
   content:"";
   position: absolute; left: 4%; right: 4%; bottom: -.1em; height: .12em;
   background: var(--yellow); opacity: .8;
@@ -3098,80 +3096,11 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
-/* ---------- AP-105: Musterflaechen + Kontaktweiche (nur Startseite) ----------
-   Loest den kw-Block aus AP-99/101 ab. Klassen bewusst praefixiert (.mf-/.fork-):
-   der Entwurf brachte generische Namen wie .btn, .note und .path mit, die die
-   19 bestehenden .btn-Regeln der Seite ueberschrieben haetten. */
-
-/* --- Musterflaechen --- */
-.mf-section { background: var(--bg-soft); padding: clamp(76px, 10vw, 140px) 0 clamp(70px, 9vw, 120px); }
-.mf-grid {
-  display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr);
-  gap: clamp(40px, 6vw, 90px); align-items: center;
-}
-.mf-plates { position: relative; padding-bottom: 66px; }
-.mf-plate {
-  position: relative; overflow: hidden; margin: 0;
-  background: var(--bg-elev); border-radius: var(--radius); box-shadow: var(--shadow-card);
-}
-.mf-plate--a { aspect-ratio: 4/5; }
-.mf-plate--b {
-  position: absolute; right: -5%; bottom: 0; width: 46%; aspect-ratio: 1/1;
-  border-radius: var(--radius-sm); outline: 14px solid var(--bg-soft);
-}
-.mf-plate picture { display: block; width: 100%; height: 100%; }
-/* object-position aus den Fokuspunkten in content/galerie-teaser.json */
-.mf-plate img { width: 100%; height: 100%; object-fit: cover; }
-.mf-plate--a img { object-position: 48% 56%; }
-.mf-plate--b img { object-position: 48% 54%; }
-
-/* Ecken-Ticks: leiser Verweis auf den Bestandsplan der Startseite */
-.mf-ticks { position: absolute; inset: 0; pointer-events: none; }
-.mf-ticks span { position: absolute; width: 14px; height: 14px; border: 1px solid rgba(246,244,238,.8); }
-.mf-ticks span:nth-child(1) { top: 16px; left: 16px; border-right: 0; border-bottom: 0; }
-.mf-ticks span:nth-child(2) { top: 16px; right: 16px; border-left: 0; border-bottom: 0; }
-.mf-ticks span:nth-child(3) { bottom: 16px; left: 16px; border-right: 0; border-top: 0; }
-.mf-ticks span:nth-child(4) { bottom: 16px; right: 16px; border-left: 0; border-top: 0; }
-
-.mf-cap {
-  position: absolute; left: 0; bottom: 24px;
-  /* Der Entwurf liess die Zeile ungebremst laufen - sie schob sich 48px unter
-     das kleine Bild (beginnt bei 59% der Breite). 56% haelt sie frei, die
-     Zeile bricht dafuer zweizeilig um und waechst nach oben. */
-  max-width: 56%;
-  font-size: .7rem; font-weight: 600; letter-spacing: .14em; line-height: 1.5;
-  text-transform: uppercase; color: var(--ink-mute);
-}
-.mf-title {
-  font-family: var(--display); font-weight: 700;
-  font-size: clamp(2rem, 4.2vw, 3.5rem); line-height: 1.02; letter-spacing: -.04em;
-  margin: 0;
-}
-.mf-title em { display: block; }
-.mf-lede { margin-top: 22px; max-width: 46ch; color: var(--ink-2); font-size: clamp(.98rem, 1.15vw, 1.06rem); line-height: 1.68; }
-.mf-facts {
-  margin: 28px 0 0; padding: 0; list-style: none;
-  display: flex; flex-wrap: wrap; gap: 6px 0;
-  font-size: .85rem; font-weight: 600; color: var(--green-700);
-}
-.mf-facts li { display: flex; align-items: center; }
-.mf-facts li + li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: rgba(49,82,0,.4); margin: 0 12px; }
-.mf-note {
-  margin: 26px 0 0; padding: 13px 0 13px 17px; border-left: 3px solid var(--coral);
-  max-width: 44ch; color: var(--ink-2); font-size: .9rem; line-height: 1.6;
-}
-.mf-note strong { color: var(--ink); font-weight: 650; font-family: var(--display); letter-spacing: -.01em; }
-.mf-link {
-  display: inline-flex; align-items: center; gap: 10px;
-  position: relative; margin-top: 30px; padding-bottom: 6px;
-  color: var(--green-700); font-size: .95rem; font-weight: 600; text-decoration: none;
-}
-.mf-link::after {
-  content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
-  background: currentColor; transform-origin: left; transform: scaleX(1);
-  transition: transform .5s var(--ease);
-}
-.mf-link svg { transition: transform .4s var(--ease); }
+/* ---------- AP-106: Kontaktweiche (nur Startseite) ----------
+   Loest den kw-Block aus AP-99/101 ab. Klassen bewusst praefixiert (.fork-):
+   der Entwurf brachte generische Namen wie .btn und .path mit, die die
+   19 bestehenden .btn-Regeln der Seite ueberschrieben haetten.
+   AP-106: Die Musterflaechen-Sektion aus AP-105 ist wieder entfallen. */
 
 /* --- Kontaktweiche --- */
 .fork {
@@ -3269,8 +3198,6 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 .fork-btn:focus-visible, .fork-direct:focus-visible, .fork-foot a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; border-radius: 4px; }
 
 @media (hover: hover) and (pointer: fine) {
-  .mf-link:hover::after { transform: scaleX(0); transform-origin: right; }
-  .mf-link:hover svg { transform: translateX(5px); }
   .fork-path:hover { background: #16260a; }          /* Tiefe im dunklen Block, kein Token vorhanden */
   .fork-path:hover::before { transform: scaleX(1); }
   .fork-btn:hover { color: var(--green-900); }
@@ -3284,9 +3211,6 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 }
 
 @media (max-width: 900px) {
-  .mf-grid { grid-template-columns: 1fr; gap: 44px; }
-  .mf-plates { padding-bottom: 54px; max-width: 520px; }
-  .mf-plate--b { width: 42%; right: 0; outline-width: 10px; }
   .fork-switch { display: none; }
   .fork-switch--mobile { width: 1px; height: 52px; margin: 30px auto 0; background: rgba(255,255,255,.26); }
   .fork-paths { grid-template-columns: 1fr; }
@@ -3295,7 +3219,6 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 }
 @media (min-width: 901px) { .fork-switch--mobile { display: none; } }
 @media (max-width: 600px) {
-  .mf-plate--a { aspect-ratio: 4/4.4; }
   .fork-btn { width: 100%; justify-content: space-between; padding-left: 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
