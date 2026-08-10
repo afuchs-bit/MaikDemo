@@ -3071,7 +3071,13 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
     height: 84%;
     background: linear-gradient(to top, rgba(8,20,0,.54) 0%, rgba(8,20,0,.74) 85%, rgba(8,20,0,0) 100%);
   }
-  .gate-cta { width: 100%; justify-content: center; padding: 14px 18px; }
+  /* AP-104: Der Pill lag ueber die volle Kartenbreite und war ~53px hoch - auf 390px
+     verdeckte er damit rund ein Fuenftel der Kachel als geschlossene helle Flaeche.
+     Die ganze Kachel ist verlinkt (<a class="gate-door">), der Button ist also reine
+     Affordanz; die Trefferflaeche bleibt unabhaengig davon die volle Karte.
+     Breite jetzt textabhaengig (Basis .gate-cta ist inline-flex), Hoehe ~53 -> ~40px. */
+  .gate-cta { font-size: .88rem; padding: 10px 16px; gap: 7px; }
+  .gate-cta svg { width: 14px; height: 14px; }   /* uebersteuert die width/height-Attribute im HTML */
   .gate-head { padding-top: max(0px, env(safe-area-inset-top)); }
   .gate-head .hero-title { font-size: clamp(1.85rem, 7.6vw, 2.6rem); }  /* AP-86: war clamp(2rem, 8.5vw, 2.9rem) */
   .hero--gate { padding-top: clamp(24px, 6vw, 40px); }               /* AP-84 */
