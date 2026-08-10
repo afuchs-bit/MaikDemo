@@ -105,7 +105,7 @@ Diese Werte werden in den kommenden Tagen nachgeliefert. **Sie blockieren kein A
 
 ## B.2 Der Widerspruch, den der Text auflösen muss
 
-Es gibt Öffnungszeiten (Mo–Fr 08–20), aber **keine Ladenöffnung**. Besuche nur nach Termin. Der Text muss beides gleichzeitig transportieren, ohne dass Kunden unangemeldet auf dem Hof stehen.
+Es gibt Öffnungszeiten (Mo–Fr 09:00–17:00, Sa 09:00–12:00), aber **keine Ladenöffnung**. Besuche nur nach Termin. Der Text muss beides gleichzeitig transportieren, ohne dass Kunden unangemeldet auf dem Hof stehen.
 
 **Verbindliche Formulierung** (so oder sinngemäß, überall konsistent):
 
@@ -237,12 +237,10 @@ Diese Seite enthält keine Werbung, die Regel greift voraussichtlich nicht. Trot
 
 1. JSON-LD auf der Startseite ersetzen:
 ```json
-"openingHoursSpecification": [{
-  "@type": "OpeningHoursSpecification",
-  "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-  "opens": "08:00",
-  "closes": "20:00"
-}]
+"openingHoursSpecification": [
+  {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00"},
+  {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "12:00"}
+]
 ```
 
 2. Den bestehenden FAQ-Eintrag „Gibt es feste Öffnungszeiten?" **inhaltlich ersetzen**:
@@ -651,11 +649,10 @@ Struktur: `/gartenbau-<stadt>/` mit Ortsbezug im ersten Absatz, mindestens zwei 
       },
       "geo": { "@type": "GeoCoordinates", "latitude": "OFFEN", "longitude": "OFFEN" },
       "areaServed": ["Herne","Bochum","Castrop-Rauxel","Recklinghausen","Gelsenkirchen-Buer"],
-      "openingHoursSpecification": [{
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "08:00", "closes": "20:00"
-      }],
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "12:00"}
+      ],
       "sameAs": ["OFFEN: Google-Unternehmensprofil", "OFFEN: Social-Profile"],
       "founder": { "@id": "https://rohdich.de/#maik-rohdich" },
       "knowsAbout": [

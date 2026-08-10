@@ -458,24 +458,17 @@
   updateProgress();
   requestAnimationFrame(updateAllScrollCues);
 
-  // Der mobile Schnellkontakt erscheint erst, wenn der Hero verlassen wurde.
-  const hero = document.querySelector('.b2b-hero');
-  const mobileActions = document.querySelector('.b2b-mobile-actions');
-  const setMobileActionsVisible = (visible) => {
-    if (!mobileActions) return;
-    mobileActions.classList.toggle('is-visible', visible);
-    mobileActions.setAttribute('aria-hidden', visible ? 'false' : 'true');
-    mobileActions.toggleAttribute('inert', !visible);
-  };
-  if (hero && mobileActions && 'IntersectionObserver' in window) {
-    const heroObserver = new IntersectionObserver(([entry]) => {
-      setMobileActionsVisible(!entry.isIntersecting);
-    }, { threshold: 0 });
-    heroObserver.observe(hero);
-  } else if (mobileActions) {
-    const updateMobileActions = () => setMobileActionsVisible(window.scrollY > 500);
-    window.addEventListener('scroll', updateMobileActions, { passive: true });
-    updateMobileActions();
+  // AP-100: Deep-Link-Vorbefüllung, z. B. aus dem Galerie-CTA — ?anliegen=<radiowert>.
+  // Gleiche Wirkung wie ein Klick auf [data-prefill-anliegen]; unbekannte Werte lassen
+  // setRadio false liefern und bleiben folgenlos. Zur Sektion springt der #anfrage-Anker.
+  const queryConcern = new URLSearchParams(location.search).get('anliegen');
+  if (queryConcern === 'sturmnotdienst') {
+    setAcuteMode(true);
+  } else if (queryConcern && setRadio('anliegen', queryConcern)) {
+    openStage(1);
+    updateWhatsapp();
+    updateSubmitLabel();
+    updateStageStates();
   }
 
   // Freigegebene Gewerbe-Fallstudien werden progressiv aus dem Projektindex

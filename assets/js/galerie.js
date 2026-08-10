@@ -8,21 +8,23 @@ import { assetUrl, dataUrl } from './config.js';
 // Browser-Cache in einer aelteren Fassung geladen.
 import { buildCard, revealCards } from './projekte-card.js?v=20260807b';
 
-// Slug (Taxonomie) → exakter Option-Text des Kontakt-Dropdowns (#contactForm),
-// für die Bereich-Vorbefüllung des CTA. Nur eindeutige Zuordnungen (baumarbeiten
-// hat kein exaktes Pendant → kein Prefill).
-const BEREICH_BY_LEISTUNG = {
-  gartengestaltung: 'Garten / Vorgarten',
-  vorgarten: 'Garten / Vorgarten',
-  teichbau: 'Teich / Wasser im Garten',
-  bepflanzung: 'Bepflanzung',
-  dachbegruenung: 'Dachbegrünung',
-  baumkontrolle: 'Baumkontrolle / Gutachten',
-  sturmnotdienst: 'Sturmschaden / Sturmnotdienst',
-  holzverkauf: 'Holzverkauf',
-  aussenanlagenpflege: 'Gewerbliche Pflege',
+// AP-100: Der CTA fuehrt direkt in das passende Anfrageformular. Leistungs-Slug →
+// anliegen-Radiowert des Gewerbeformulars (nur eindeutige Zuordnungen; baumarbeiten
+// laeuft dort unter der Baumkontrolle-Option).
+const GEWERBE_ANLIEGEN = {
+  aussenanlagenpflege: 'objektpflege',
+  baumkontrolle: 'baumkontrolle',
+  baumarbeiten: 'baumkontrolle',
+  dachbegruenung: 'begruenung',
+  sturmnotdienst: 'sturmnotdienst',
 };
-const BEREICH_BY_TYP = { privat: 'Garten / Vorgarten', gewerbe: 'Gewerbliche Pflege' };
+// Leistungen, die es nur im Privatbereich gibt. baumkontrolle, baumarbeiten,
+// sturmnotdienst und dachbegruenung existieren in beiden Welten — bei Kundentyp
+// "Alle" entscheidet dort die Kontakt-Weiche der Startseite statt einer Vermutung.
+const PRIVAT_ONLY = new Set([
+  'gartengestaltung', 'vorgarten', 'teichbau', 'bepflanzung', 'gartenpflege',
+  'holzverkauf', 'terrasse-pflasterarbeiten', 'palmen-winterfest', 'pool-whirlpool-umfeld',
+]);
 
 const TYP_OPTIONS = [
   { value: 'alle', label: 'Alle' },
@@ -366,14 +368,24 @@ function renderGrid(results) {
 }
 
 function updateCta() {
-  let bereich = '';
   const sel = [...state.leistungen];
-  if (sel.length === 1 && BEREICH_BY_LEISTUNG[sel[0]]) {
-    bereich = BEREICH_BY_LEISTUNG[sel[0]];
-  } else if (state.typ !== 'alle' && BEREICH_BY_TYP[state.typ]) {
-    bereich = BEREICH_BY_TYP[state.typ];
+  const slug = sel.length === 1 ? sel[0] : '';
+  if (state.typ === 'gewerbe') {
+    const anliegen = GEWERBE_ANLIEGEN[slug];
+    ctaEl.href = anliegen
+      ? `../gewerbekunden/?anliegen=${encodeURIComponent(anliegen)}#anfrage`
+      : '../gewerbekunden/#anfrage';
+  } else if (state.typ === 'privat') {
+    ctaEl.href = slug
+      ? `../privatkunden/?leistung=${encodeURIComponent(slug)}#anfrage`
+      : '../privatkunden/#anfrage';
+  } else if (slug === 'aussenanlagenpflege') {
+    ctaEl.href = `../gewerbekunden/?anliegen=${GEWERBE_ANLIEGEN[slug]}#anfrage`;
+  } else if (PRIVAT_ONLY.has(slug)) {
+    ctaEl.href = `../privatkunden/?leistung=${encodeURIComponent(slug)}#anfrage`;
+  } else {
+    ctaEl.href = '../#kontakt';
   }
-  ctaEl.href = bereich ? `../?bereich=${encodeURIComponent(bereich)}#kontakt` : '../#kontakt';
 }
 
 // ---------- URL-Sync ----------

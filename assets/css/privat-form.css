@@ -254,10 +254,11 @@
 .private-contact h4,
 .private-contact h5 { color: var(--green-900); }
 .private-contact-intro { max-width: 960px; }
-.private-contact-intro .kicker { color: var(--green-700); }
+/* AP-97: Kicker-Zeile entfernt. Damit entfaellt die Farbregel dafuer, und das
+   margin-top an der H2 (Luft unter dem Kicker) ebenfalls - die H2 ist hier auf
+   beiden Seiten erstes Kind, der Abstand kollabierte sonst nach aussen. */
 .private-contact-intro h2 {
   max-width: 860px;
-  margin-top: 14px;
   font-size: clamp(2.35rem, 4.65vw, 4.55rem);
   line-height: 1.01;
   letter-spacing: -.04em;
