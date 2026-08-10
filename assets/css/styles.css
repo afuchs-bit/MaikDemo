@@ -3064,3 +3064,61 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 @media (scripting: none) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ---------- AP-99: Kontakt-Weiche (nur Startseite) ---------- */
+.kw-section {
+  padding: clamp(48px, 5.2vw, 74px) 0;
+  background: #eef1e7;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: var(--header-h, 90px);
+}
+.kw-head { max-width: 640px; margin: 0 auto; text-align: center; }
+.kw-head h2 { font-size: clamp(1.7rem, 2.8vw, 2.3rem); line-height: 1.08; }
+.kw-lead { margin-top: 10px; color: var(--ink-2); font-size: clamp(.95rem, 1.1vw, 1.02rem); line-height: 1.55; }
+.kw-cards {
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 16px; margin-top: clamp(26px, 3vw, 36px);
+}
+.kw-card {
+  position: relative; display: flex; flex-direction: column; gap: 8px;
+  padding: 22px 24px 20px;
+  background: #fbfbf8; color: var(--ink-2);
+  border: 1px solid rgba(49,82,0,.16);
+  border-radius: 18px 18px 32px 18px;
+  text-decoration: none;
+  transition: border-color .18s var(--ease), background .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);
+}
+.kw-card:focus-visible {
+  border-color: var(--green-700); background: var(--green-50);
+  outline: 3px solid var(--yellow); outline-offset: 2px;
+}
+.kw-card-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 11px;
+  background: rgba(49,82,0,.09); color: var(--green-700);
+  margin-bottom: 4px;
+}
+.kw-card-icon svg { width: 20px; height: 20px; }
+.kw-card-eyebrow { font-size: .68rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; color: var(--green-700); }
+.kw-card h3 { font-size: clamp(1.05rem, 1.3vw, 1.22rem); line-height: 1.2; color: var(--green-900); margin-top: 2px; }
+.kw-card p { font-size: .85rem; line-height: 1.5; color: var(--ink-mute); margin-top: 2px; }
+.kw-card-cta {
+  margin-top: 10px; display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--display); font-weight: 700; font-size: .86rem; color: var(--green-700);
+}
+.kw-card-cta svg { width: 15px; height: 15px; transition: transform .18s var(--ease); }
+.kw-escape { margin-top: 20px; text-align: center; color: var(--ink-mute); font-size: .83rem; }
+.kw-escape a { color: var(--green-700); font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(49,82,0,.35); }
+@media (hover: hover) and (pointer: fine) {
+  .kw-card:hover {
+    border-color: var(--green-700); background: var(--green-50);
+    transform: translateY(-2px); box-shadow: var(--shadow-card);
+  }
+  .kw-card:hover .kw-card-cta svg { transform: translateX(3px); }
+  .kw-escape a:hover { border-color: var(--green-700); }
+}
+@media (max-width: 720px) {
+  .kw-cards { grid-template-columns: 1fr; }
+  .kw-head { text-align: left; }
+}
