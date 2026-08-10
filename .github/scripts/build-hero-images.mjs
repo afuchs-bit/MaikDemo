@@ -92,6 +92,32 @@ const SOURCES = [
     widths: [480, 960],
     crop: { aspect: 4 / 3, focusY: 0.55 },
   },
+  // CMS-Uploads (Sveltia) zu den Projekten "Beetanlage mit Natursteineinfassung"
+  // und "Vorgartengestaltung mit gepflasterter Einfahrt" (beide Herne). Die
+  // Ordnernamen kommen aus dem CMS-Slug; der Gedankenstrich (–) im
+  // Beetanlage-Pfad ist Absicht, nicht abtippen, sondern kopieren.
+  {
+    src: 'assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/4fb74574-6f6b-4b17-8fd3-33743ab4d9a7.webp',
+    dir: 'assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne',
+    name: 'beetanlage-herne-nachher',
+    widths: [480, 960],
+    // Kein 960er WebP: das dichte Staudenmotiv bleibt auch an der
+    // Qualitaetsuntergrenze ueber 200 KB (207 KB). AVIF deckt 960 ab,
+    // Browser ohne AVIF bekommen den 480er WebP (vgl. gartengestaltung-herne).
+    webpWidths: [480],
+  },
+  {
+    src: 'assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/232eba42-3f04-4645-bd63-1e3ac0e0ff9c.webp',
+    dir: 'assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne',
+    name: 'beetanlage-herne-vorher',
+    widths: [480, 960],
+  },
+  {
+    src: 'assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/img_3629.webp',
+    dir: 'assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne',
+    name: 'vorgarten-einfahrt-herne',
+    widths: [480, 960],
+  },
 ];
 
 // Liefert die Resize-Pipeline fuer eine Zielbreite. Ohne crop: reines

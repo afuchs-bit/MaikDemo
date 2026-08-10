@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260809b" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260809h" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -268,15 +268,14 @@
 <section class="hero hero--gate" aria-labelledby="gate-title">
 
   <div class="gate-head">
-    <span class="eyebrow reveal">
-      <span class="eyebrow-dot"></span>
-      Gartenbaumeister und Sachverständiger für Baumkontrolle · seit 2003
-    </span>
-    <h1 class="hero-title reveal" id="gate-title">
-      <span class="line">Wofür brauchen Sie <em>uns</em>?</span>
+    <h1 class="hero-title" id="gate-title">
+      <span class="line">Vom Vorgarten</span>
+      <span class="line">bis zur <em>Gewerbefläche</em>.</span>
+      <span class="line">Ein Meisterbetrieb.</span>
     </h1>
-    <p class="gate-region reveal">
-      Herne · Bochum · Castrop-Rauxel · Recklinghausen · Gelsenkirchen-Buer
+    <p class="gate-region">
+      Garten- und Landschaftsbau in Herne, Bochum, Castrop-Rauxel,
+      Recklinghausen und Gelsenkirchen-Buer.
     </p>
   </div>
 
@@ -306,17 +305,18 @@
     <a class="gate-door gate-door--gewerbe" href="gewerbekunden/">
       <picture>
         <source type="image/avif" sizes="(max-width: 860px) 100vw, 50vw"
-                srcset="assets/img/hero/gate-gewerbe-480.avif 480w, assets/img/hero/gate-gewerbe-960.avif 960w, assets/img/hero/gate-gewerbe-1200.avif 1200w">
+                srcset="assets/img/hero/gate-gewerbe-baumarbeiten-480.avif 480w, assets/img/hero/gate-gewerbe-baumarbeiten-960.avif 960w, assets/img/hero/gate-gewerbe-baumarbeiten-1200.avif 1200w">
+        <!-- WebP nur bis 960: die 1200er Stufe sprengt mit dem dichten Laub das 200-KB-Budget (AP-25). -->
         <source type="image/webp" sizes="(max-width: 860px) 100vw, 50vw"
-                srcset="assets/img/hero/gate-gewerbe-480.webp 480w, assets/img/hero/gate-gewerbe-960.webp 960w, assets/img/hero/gate-gewerbe-1200.webp 1200w">
-        <img class="gate-photo" src="assets/img/hero/gate-gewerbe.webp"
-             alt="Bepflanztes Hochbeet in der Außenanlage eines gewerblichen Objekts"
-             width="960" height="720" loading="lazy" decoding="async">
+                srcset="assets/img/hero/gate-gewerbe-baumarbeiten-480.webp 480w, assets/img/hero/gate-gewerbe-baumarbeiten-960.webp 960w">
+        <img class="gate-photo" src="assets/img/hero/gate-gewerbe-baumarbeiten.webp"
+             alt="Zwei Mitarbeiter zerlegen einen gefällten Baum mit der Motorsäge"
+             width="960" height="640" loading="lazy" decoding="async">
       </picture>
       <span class="gate-veil" aria-hidden="true"></span>
       <div class="gate-body">
         <span class="gate-eyebrow">Für Gewerbekunden</span>
-        <h2>Außenanlagen im festen Turnus.</h2>
+        <h2>Verkehrssicherheit für Ihren Baumbestand.</h2>
         <span class="gate-cta">
           Zum Gewerbebereich
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -326,7 +326,7 @@
 
   </div>
 
-  <p class="gate-escape reveal">
+  <p class="gate-escape">
     Nicht sicher, was passt? <a href="leistungen/">Alle Leistungen im Überblick →</a>
   </p>
 
@@ -599,63 +599,6 @@
         <li>Handwerkliche Qualität und langlebige Materialien.</li>
         <li>Verantwortung für Pflanzen, Bäume und Substanz.</li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ZIELGRUPPENWEICHE ============ -->
-<section class="section section-split" aria-labelledby="split-title">
-  <div class="container">
-    <div class="section-head center reveal">
-      <span class="kicker">Für wen wir arbeiten</span>
-      <h2 id="split-title">Wählen Sie Ihren Bereich.</h2>
-      <p class="lead">Privatkunden und Gewerbekunden brauchen unterschiedliche Antworten. Beide bekommen bei uns den gleichen fachlichen Anspruch.</p>
-    </div>
-
-    <div class="split-grid">
-      <a class="split-card split-private reveal" id="privatkunden" href="privatkunden/">
-        <div class="split-media" aria-hidden="true">
-          <div class="split-image" data-img="private"></div>
-          <div class="split-overlay"></div>
-        </div>
-        <div class="split-body">
-          <span class="split-eyebrow">Für Privatkunden</span>
-          <h3>Ihr Garten. Ihre Ruhezone.</h3>
-          <p>Gartengestaltung, Vorgartenbau, Teichanlagen, Baumarbeiten, Pflege und winterfeste Bepflanzung für private Außenbereiche.</p>
-          <ul class="chips">
-            <li>Gartengestaltung</li>
-            <li>Vorgartenbau</li>
-            <li>Teichanlage</li>
-            <li>Baumfällung</li>
-            <li>Dachbegrünung</li>
-            <li>Gartenpflege</li>
-            <li>Palmen / winterfest</li>
-            <li>Pool &amp; Whirlpool-Umfeld</li>
-          </ul>
-          <span class="split-cta">Zum Privatkundenbereich <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <a class="split-card split-business reveal" id="gewerbekunden" href="gewerbekunden/">
-        <div class="split-media" aria-hidden="true">
-          <div class="split-image" data-img="business"></div>
-          <div class="split-overlay"></div>
-        </div>
-        <div class="split-body">
-          <span class="split-eyebrow">Für Gewerbekunden</span>
-          <h3>Verlässliche Außen­anlagen­pflege.</h3>
-          <p>Pflege von Außenanlagen, Baumkontrolle, Gutachten und Umbau von Außenanlagen für Firmen, Hausverwaltungen und gewerbliche Objekte.</p>
-          <ul class="chips">
-            <li>Außenanlagenpflege</li>
-            <li>Grünpflege &amp; Erhaltung</li>
-            <li>Baumkontrolle &amp; Gutachten</li>
-            <li>Verkehrssicherheit</li>
-            <li>Umbau Außenanlagen</li>
-            <li>Bürokomplexe</li>
-          </ul>
-          <span class="split-cta">Zum Gewerbekundenbereich <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
     </div>
   </div>
 </section>

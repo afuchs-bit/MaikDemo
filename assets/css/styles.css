@@ -96,6 +96,7 @@
   --bg:        #f6f4ee;    /* warm off-white paper */
   --bg-elev:   #ffffff;
   --bg-soft:   #efece4;
+  --bg-hero:   #eef0e6;    /* AP-84: leicht kuehler als --bg, nur Startseiten-Hero */
   --bg-dark:   #131a08;
   --ink:       #131a08;
   --ink-2:     #3a4032;
@@ -889,75 +890,6 @@ p  { margin: 0; }
           mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12l5 5L20 7' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;
 }
 
-/* ---------- Split / Target Audience ---------- */
-.section-split { background: var(--bg); }
-.split-grid {
-  display: grid; gap: 22px;
-  grid-template-columns: 1fr 1fr;
-}
-.split-card {
-  position: relative; overflow: hidden;
-  border-radius: 28px;
-  background: #fff;
-  border: 1px solid var(--line);
-  text-decoration: none; color: var(--ink);
-  display: grid; grid-template-rows: 320px 1fr;
-  box-shadow: var(--shadow-card);
-  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
-}
-@media (hover: hover) and (pointer: fine) { .split-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-float); } }
-.split-media { position: relative; overflow: hidden; }
-.split-image {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center;
-  transform: scale(1.05); transition: transform .8s var(--ease);
-}
-@media (hover: hover) and (pointer: fine) { .split-card:hover .split-image { transform: scale(1.1); } }
-/* AP-25: selbst gehostete Hintergrundbilder (AVIF mit WebP-Fallback via image-set). */
-.split-image[data-img="private"] {
-  background-image:
-    linear-gradient(160deg, rgba(49,82,0,.18), rgba(49,82,0,.0) 60%),
-    image-set(
-      url("../img/split/split-private-960.avif") type("image/avif"),
-      url("../img/split/split-private-960.webp") type("image/webp"));
-}
-.split-image[data-img="business"] {
-  background-image:
-    linear-gradient(160deg, rgba(49,82,0,.25), rgba(49,82,0,.0) 60%),
-    image-set(
-      url("../img/hero/hero-gewerbe-aussenanlagen-960.avif") type("image/avif"),
-      url("../img/hero/hero-gewerbe-aussenanlagen-960.webp") type("image/webp"));
-}
-.split-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.35) 100%);
-}
-.split-body {
-  padding: 28px 28px 30px;
-  display: flex; flex-direction: column; gap: 14px;
-}
-.split-eyebrow {
-  font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .14em;
-  color: var(--green-700);
-}
-.chips {
-  list-style: none; padding: 0; margin: 4px 0 0;
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
-.chips li {
-  font-size: .78rem; font-weight: 500;
-  padding: 6px 10px; border-radius: 999px;
-  background: var(--bg-soft); color: var(--ink-2);
-  border: 1px solid var(--line);
-}
-.split-cta {
-  margin-top: 10px;
-  display: inline-flex; align-items: center; gap: 8px;
-  font-weight: 700; color: var(--green-700);
-}
-.split-cta span { transition: transform .25s var(--ease); display: inline-block; }
-@media (hover: hover) and (pointer: fine) { .split-card:hover .split-cta span { transform: translateX(6px); } }
-
 /* ---------- Nummerierte Schritt-Punkte (gewerbekunden/index.html) ---------- */
 .authority-points { display: grid; gap: 10px; margin: 30px 0; }
 .ap {
@@ -977,7 +909,10 @@ p  { margin: 0; }
 .ap p  { color: var(--ink-2); font-size: .95rem; }
 
 /* ---------- Projects ---------- */
-.section-projects { background: var(--bg-soft); }
+/* AP-89: war --bg-soft. Seit dem Wegfall der Split-Sektion (AP-88) stiess
+   Projekte sonst gleichfarbig an .section-maik; der Wechsel setzt den
+   Paper/Soft-Rhythmus fort - deshalb wird auch .section-faq mitgedreht. */
+.section-projects { background: var(--bg); }
 .projects-grid {
   display: grid; gap: 22px;
   grid-template-columns: repeat(3, 1fr);
@@ -1058,7 +993,7 @@ p  { margin: 0; }
 }
 
 /* ---------- FAQ ---------- */
-.section-faq { background: var(--bg); }
+.section-faq { background: var(--bg-soft); }   /* AP-89: war --bg, s. .section-projects */
 .faq-wrap {
   display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(30px, 5vw, 80px);
 }
@@ -1323,7 +1258,6 @@ p  { margin: 0; }
   .primary-nav.is-open .menu { display: flex; }
 
   .maik-grid,
-  .split-grid,
   .projects-grid,
   .faq-wrap,
   .contact-grid,
@@ -1398,7 +1332,6 @@ p  { margin: 0; }
   .proof-stats { gap: 22px; }
   .proof-figures { justify-content: center; text-align: center; }
   .proof-stat { align-items: center; }
-  .split-card { grid-template-rows: 220px 1fr; }
   .contact-form { padding: 22px; }
   .menu { display: none; }
   .hero-content { padding-top: 20px; }
@@ -2954,7 +2887,23 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
    Bestehende .hero-*, .teaser-*, .trust-* Klassen bleiben unveraendert.
    ============================================================ */
 
-.hero--gate { padding: clamp(20px, 4vw, 48px) 0 0; }
+.hero--gate {
+  /* AP-84: war clamp(20px, 4vw, 48px) 0 0. Obergrenze bewusst unter dem
+     Entwurfswert (76px): bei 1440x900 muessen die Kachel-Buttons ueber der
+     Falz bleiben - Budgetrechnung siehe Commit-Message. */
+  padding: clamp(32px, 3vw, 52px) 0 clamp(28px, 3.4vw, 44px);
+  background: var(--bg-hero);              /* AP-84: eigener Ton, hebt den Hero vom Seitenrest ab */
+  border-bottom: 1px solid var(--line);    /* AP-84 */
+}
+/* AP-84: Dot-Grid aus .hero::before im Gate kraeftiger und engmaschiger -
+   Werte-Override am bestehenden Pseudo-Element, kein zweites ::before.
+   Die Ellipsen-Maske der Basisregel bleibt: sie laesst die Punkte hinter
+   den Tueren auslaufen, dort braucht es keine Textur. */
+.hero--gate::before {
+  background-image: radial-gradient(circle at 1px 1px, rgba(19,26,8,.11) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+.gate-doors, .gate-escape { position: relative; z-index: 1; }  /* AP-84: sicher ueber ::before */
 
 .gate-head {
   position: relative;
@@ -2962,14 +2911,23 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   text-align: center;
   width: min(100% - calc(var(--gutter) * 2), 940px);
   margin-inline: auto;
-  padding-bottom: clamp(24px, 3.4vw, 42px);
+  padding-bottom: clamp(20px, 2.2vw, 32px);  /* AP-84: war clamp(24px, 3.4vw, 42px), Falz-Budget */
 }
 .gate-head .hero-title {
-  margin-top: 18px;
-  font-size: clamp(2.1rem, 5vw, 4.2rem);
+  margin-top: 20px;                        /* AP-84: war 18px */
+  font-size: clamp(2.25rem, 4.5vw, 4.1rem); /* AP-86: war clamp(2.5rem, 5.2vw, 4.75rem) */
+  line-height: .97;                        /* AP-84: enger, damit die drei Zeilen als Block wirken */
+  letter-spacing: -.042em;                 /* AP-84 */
 }
+/* AP-84: Bei line-height .97 ist die em-Fontbox hoeher als die Zeilenbox -
+   der Basis-Marker (bottom -.1em) rutscht sonst optisch unter die NAECHSTE
+   Zeile. Nur im Gate anheben; einzeilige Heros anderer Seiten bleiben wie sie sind. */
+.gate-head .hero-title em::after { bottom: .12em; }
+
 .gate-region {
-  margin-top: 15px;
+  margin-top: 18px;                        /* AP-84: war 15px */
+  max-width: 46ch;                         /* AP-84: verhindert eine ueberlange Zeile */
+  margin-inline: auto;                     /* AP-84 */
   font-size: clamp(.92rem, 1.4vw, 1.12rem);
   font-weight: 500;
   color: var(--ink-2);
@@ -2988,8 +2946,8 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   isolation: isolate;
   overflow: hidden;
   border-radius: 26px;
-  aspect-ratio: 16 / 10;
-  min-height: 250px;
+  height: clamp(300px, 27.8vw, 400px);     /* AP-84: war aspect-ratio 16/10 (~381px bei 1440); Cap unter Entwurf (480px), Falz-Budget */
+  min-height: 300px;                       /* AP-84: war 250px */
   display: block;
   text-decoration: none;
   box-shadow: var(--shadow-card);
@@ -3008,10 +2966,12 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 .gate-veil {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 72%;
+  height: 72%;                             /* AP-84: Entwurfswert 62% verworfen - gelber Kicker fiel auf 3.8:1, mit 72% gemessen >= 5.6:1 */
   z-index: -1;
-  /* Stops dunkler als im Entwurf: gelbe Eyebrow braucht 4.5:1 auch auf hellen Fotostellen */
-  background: linear-gradient(to top, rgba(8,20,0,.94) 0%, rgba(8,20,0,.82) 45%, rgba(8,20,0,0) 100%);
+  /* Stops dunkler als im Entwurf: gelbe Eyebrow braucht 4.5:1 auch auf hellen
+     Fotostellen. AP-91 nochmals nachgezogen (.82 -> .90), weil das helle Laub
+     im Baumarbeiten-Foto den Kicker sonst auf 3,3:1 druecken wuerde. */
+  background: linear-gradient(to top, rgba(8,20,0,.96) 0%, rgba(8,20,0,.90) 50%, rgba(8,20,0,0) 100%);
 }
 
 .gate-body {
@@ -3029,10 +2989,10 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   color: var(--yellow);
 }
 .gate-door h2 {
-  font-size: clamp(1.2rem, 1.9vw, 1.7rem);
+  font-size: clamp(1.3rem, 2.1vw, 1.9rem); /* AP-84: leicht groesser */
   line-height: 1.14;
   color: #fff;
-  margin: 7px 0 14px;
+  margin: 7px 0 16px;                      /* AP-84: mehr Luft zum Button */
 }
 .gate-cta {
   display: inline-flex;
@@ -3060,19 +3020,33 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 }
 .gate-escape a { color: var(--green-700); font-weight: 600; text-underline-offset: 3px; }
 
-/* Huelle fuer die verschobenen Bloecke — setzt selbst keine Innenabstaende,
-   damit .hero-teasers und .trust-bar ihre bestehenden Margins behalten. */
-.hero-followup { background: var(--bg); }
+/* Huelle fuer die verschobenen Bloecke — .hero-teasers und .trust-bar behalten
+   ihre bestehenden Margins; das padding-top schafft nur Abstand zur neuen
+   Hero-Unterkante (AP-84), damit die Teaser bei 1440x900 angeschnitten
+   unter der Falz liegen. */
+.hero-followup {
+  background: var(--bg);
+  padding-top: clamp(18px, 2.4vw, 32px);   /* AP-84 */
+}
 
 @media (max-width: 860px) {
   .gate-doors { grid-template-columns: 1fr; }
-  .gate-door { aspect-ratio: 3 / 2; min-height: 210px; border-radius: 20px; }
+  .gate-door { height: clamp(220px, 46vw, 300px); min-height: 220px; border-radius: 20px; }  /* AP-84: war aspect-ratio 3/2, min-height 210px */
   .gate-cta { width: 100%; justify-content: center; padding: 14px 18px; }
   .gate-head { padding-top: max(0px, env(safe-area-inset-top)); }
+  .gate-head .hero-title { font-size: clamp(1.85rem, 7.6vw, 2.6rem); }  /* AP-86: war clamp(2rem, 8.5vw, 2.9rem) */
+  .hero--gate { padding-top: clamp(24px, 6vw, 40px); }               /* AP-84 */
 }
 
 @media (prefers-reduced-motion: reduce) {
   .gate-door img.gate-photo,
   .gate-cta { transition: none; }
   .gate-door:hover img.gate-photo { transform: none; }
+}
+
+/* AP-85: Reveal-Elemente bleiben sichtbar, wenn kein Skript laeuft (Abschnitt 5
+   aus dem AP-78-Entwurf). Browser ohne @media (scripting) ignorieren den Block
+   und verhalten sich wie bisher. */
+@media (scripting: none) {
+  .reveal { opacity: 1; transform: none; transition: none; }
 }

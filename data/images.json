@@ -23,17 +23,6 @@
       "height": 720,
       "aspect": 0.75
     },
-    "/assets/img/hero/hero-gewerbe-aussenanlagen.webp": {
-      "base": "/assets/img/hero/hero-gewerbe-aussenanlagen",
-      "widths": [
-        480,
-        960,
-        1600
-      ],
-      "width": 960,
-      "height": 540,
-      "aspect": 0.5625
-    },
     "/assets/img/projekte/vorgarten-herne-2026/vorgarten-herne.webp": {
       "base": "/assets/img/projekte/vorgarten-herne-2026/vorgarten-herne",
       "widths": [
@@ -66,17 +55,6 @@
       "width": 960,
       "height": 720,
       "aspect": 0.75
-    },
-    "/assets/img/split/split-private.webp": {
-      "base": "/assets/img/split/split-private",
-      "widths": [
-        480,
-        960,
-        1600
-      ],
-      "width": 960,
-      "height": 540,
-      "aspect": 0.5625
     },
     "/assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne.webp": {
       "base": "/assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne",
@@ -118,16 +96,20 @@
       "height": 720,
       "aspect": 0.75
     },
-    "/assets/img/hero/gate-gewerbe.webp": {
-      "base": "/assets/img/hero/gate-gewerbe",
+    "/assets/img/hero/gate-gewerbe-baumarbeiten.webp": {
+      "base": "/assets/img/hero/gate-gewerbe-baumarbeiten",
       "widths": [
         480,
         960,
         1200
       ],
       "width": 960,
-      "height": 720,
-      "aspect": 0.75
+      "height": 640,
+      "aspect": 0.6667,
+      "webpWidths": [
+        480,
+        960
+      ]
     }
   }
 }

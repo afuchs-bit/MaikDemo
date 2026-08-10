@@ -31,21 +31,42 @@ const QUALITY_FLOOR = 28; // untere Grenze, darunter nicht mehr
 const SOURCES = [
   { src: 'assets/img/_src/hero-garten-herne.png',            dir: 'assets/img/hero',                              name: 'hero-garten-herne' },
   { src: 'assets/img/_src/hero-pool.jpg',                     dir: 'assets/img/hero',                              name: 'hero-pool' },
-  { src: 'assets/img/_src/hero-gewerbe-aussenanlagen.png',   dir: 'assets/img/hero',                              name: 'hero-gewerbe-aussenanlagen' },
   { src: 'assets/img/_src/vorgarten-herne.png',              dir: 'assets/img/projekte/vorgarten-herne-2026',    name: 'vorgarten-herne' },
   { src: 'assets/img/_src/teichanlage-bochum.png',           dir: 'assets/img/projekte/teichanlage-bochum-2026', name: 'teichanlage-bochum' },
   { src: 'assets/img/_src/aussenanlagen-recklinghausen.png', dir: 'assets/img/projekte/aussenanlagen-recklinghausen-2026', name: 'aussenanlagen-recklinghausen' },
-  { src: 'assets/img/_src/split-private.png',                 dir: 'assets/img/split',                             name: 'split-private' },
   { src: 'assets/img/_src/baumarbeiten-herne.webp', dir: 'assets/img/projekte/baumarbeiten-herne', name: 'baumarbeiten-herne' },
   { src: 'assets/img/_src/ueber-1.jpg', dir: 'assets/img/ueber', name: 'ueber-1' },
   { src: 'assets/img/_src/ueber-2.jpg', dir: 'assets/img/ueber', name: 'ueber-2' },
   { src: 'assets/img/_src/ueber-3.jpg', dir: 'assets/img/ueber', name: 'ueber-3' },
-  // Original ist 1448 px breit; 1200 statt 1600 als groesste Stufe.
-  { src: 'assets/img/_src/Gewerbe_Foto_Homepage_Hero.png', dir: 'assets/img/hero', name: 'gate-gewerbe', widths: [480, 960, 1200] },
+  // Hochformat-Original (1440x1800, 4:5) fuer die Gewerbe-Tuer im Hero, die ein
+  // liegendes Fenster von rund 3:2 ist. focusY 0.45 zeigt 21-74 % der Bildhoehe:
+  // Strasse, Gebaeude und fremde Fahrzeuge fallen oben heraus, der Helm des
+  // vorderen Arbeiters behaelt Luft nach oben (Helmkante liegt bei ca. 24 %).
+  { src: 'assets/img/_src/baumarbeiten-gewerbe.jpg', dir: 'assets/img/hero', name: 'gate-gewerbe-baumarbeiten',
+    widths: [480, 960, 1200], webpWidths: [480, 960],   // 1200er WebP sprengt mit dichtem Laub das 200-KB-Budget
+    crop: { aspect: 3 / 2, focusY: 0.45 } },
 ];
 
 async function fileSize(p) {
   try { return (await stat(p)).size; } catch { return 0; }
+}
+
+// Liefert die Resize-Pipeline fuer eine Zielbreite. Ohne crop: reines
+// Breiten-Resize (Originalverhalten). Mit crop: schneidet zusaetzlich auf ein
+// festes Seitenverhaeltnis zu, focusY (0-1) verschiebt das Fenster vertikal
+// wie CSS object-position. Portiert aus build-hero-images.mjs (AP-83) - dort
+// fuer ein Hochformat-Handyfoto in einer Querformat-Kachel. Bewusst dupliziert
+// statt nach lib/ ausgelagert: lib/images.mjs wird von build-index.mjs
+// importiert, das in der Action ohne sharp laeuft.
+function pipelineFor(srcAbs, meta, w, crop) {
+  const base = sharp(srcAbs, { failOn: 'none' });
+  if (!crop) return base.resize({ width: w, withoutEnlargement: true });
+  const scaledH = Math.round(w * (meta.height / meta.width));
+  const targetH = Math.round(w / crop.aspect);
+  const top = Math.max(0, Math.min(scaledH - targetH, Math.round((scaledH - targetH) * crop.focusY)));
+  return base
+    .resize({ width: w, height: scaledH, withoutEnlargement: true })
+    .extract({ left: 0, top, width: w, height: targetH });
 }
 
 // Schreibt eine Breite in einem Format; senkt die Qualitaet schrittweise,
@@ -78,16 +99,28 @@ async function main() {
     const aspect = srcH / srcW;
 
     // Nur Breiten <= Originalbreite; ist das Original kleiner als 480, nimm die Originalbreite.
-    let widths = (s.widths ?? WIDTHS).filter((w) => w <= srcW);
-    if (!widths.length) widths = [srcW];
+    const fit = (list) => {
+      const w = list.filter((x) => x <= srcW);
+      return w.length ? w : [srcW];
+    };
+    const widths = fit(s.widths ?? WIDTHS);
+    // webpWidths: abweichende Breiten fuer WebP, wenn eine Stufe nur in AVIF
+    // unter das 200-KB-Budget passt (Mechanik und Manifest-Feld wie in
+    // build-hero-images.mjs, lib/images.mjs liest es bereits aus).
+    const webpWidths = fit(s.webpWidths ?? s.widths ?? WIDTHS);
 
-    for (const w of widths) {
-      const base = sharp(srcAbs, { failOn: 'none' }).resize({ width: w, withoutEnlargement: true });
-      const avifOut = path.join(outDir, `${s.name}-${w}.avif`);
-      const webpOut = path.join(outDir, `${s.name}-${w}.webp`);
-      const a = await writeVariant(base, avifOut, 'avif', AVIF);
-      const b = await writeVariant(base, webpOut, 'webp', WEBP);
-      for (const [p, n] of [[avifOut, a], [webpOut, b]]) {
+    for (const w of [...new Set([...widths, ...webpWidths])].sort((a, b) => a - b)) {
+      const base = pipelineFor(srcAbs, meta, w, s.crop);
+      const written = [];
+      if (widths.includes(w)) {
+        const out = path.join(outDir, `${s.name}-${w}.avif`);
+        written.push([out, await writeVariant(base, out, 'avif', AVIF)]);
+      }
+      if (webpWidths.includes(w)) {
+        const out = path.join(outDir, `${s.name}-${w}.webp`);
+        written.push([out, await writeVariant(base, out, 'webp', WEBP)]);
+      }
+      for (const [p, n] of written) {
         const kb = (n / 1024).toFixed(0);
         if (n > MAX_BYTES) { over++; console.log(`  ⚠ ${kb} KB  ${path.relative(ROOT, p)} (> 200 KB!)`); }
         else console.log(`  ${kb.padStart(3)} KB  ${path.relative(ROOT, p)}`);
@@ -95,13 +128,10 @@ async function main() {
     }
 
     // Fallback <name>.webp (fuer das <img>-Element in <picture>).
-    const fbW = Math.min(960, Math.max(...widths));
+    const fbW = Math.min(960, Math.max(...webpWidths));
     const fbOut = path.join(outDir, `${s.name}.webp`);
-    await writeVariant(
-      sharp(srcAbs, { failOn: 'none' }).resize({ width: fbW, withoutEnlargement: true }),
-      fbOut, 'webp', WEBP,
-    );
-    const fbH = Math.round(fbW * aspect);
+    await writeVariant(pipelineFor(srcAbs, meta, fbW, s.crop), fbOut, 'webp', WEBP);
+    const fbH = s.crop ? Math.round(fbW / s.crop.aspect) : Math.round(fbW * aspect);
 
     const canonical = `/${s.dir}/${s.name}.webp`;
     manifest[canonical] = {
@@ -109,7 +139,8 @@ async function main() {
       widths,
       width: fbW,
       height: fbH,
-      aspect: Math.round(aspect * 10000) / 10000,
+      aspect: Math.round((s.crop ? 1 / s.crop.aspect : aspect) * 10000) / 10000,
+      ...(webpWidths.join() === widths.join() ? {} : { webpWidths }),
     };
     console.log(`✅ ${s.name}: ${widths.join('/')} px  (Original ${srcW}×${srcH})`);
   }
