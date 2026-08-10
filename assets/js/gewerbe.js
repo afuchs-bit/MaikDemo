@@ -544,3 +544,124 @@
       });
   }
 })();
+
+// Gewerbekunden-FAQ: weich animierte, voneinander unabhängige Akkordeon-Gruppen.
+(() => {
+  'use strict';
+
+  const section = document.querySelector('.b2b-faq');
+  const groups = Array.from(document.querySelectorAll('[data-b2b-faq-group]'));
+  if (!section || !groups.length) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const duration = 280;
+  const easing = 'cubic-bezier(.22,.61,.36,1)';
+  const states = new WeakMap();
+
+  const getState = (entry) => {
+    if (!states.has(entry)) states.set(entry, { animation: null, bodyAnimation: null, targetOpen: entry.open });
+    return states.get(entry);
+  };
+
+  const clearMotionStyles = (entry) => {
+    entry.classList.remove('is-opening', 'is-closing');
+    entry.style.removeProperty('height');
+    entry.style.removeProperty('overflow');
+    entry.querySelector('.faq-body')?.style.removeProperty('opacity');
+  };
+
+  const finishImmediately = (entry, shouldOpen) => {
+    const state = getState(entry);
+    state.animation?.cancel();
+    state.bodyAnimation?.cancel();
+    state.animation = null;
+    state.bodyAnimation = null;
+    state.targetOpen = shouldOpen;
+    entry.open = shouldOpen;
+    clearMotionStyles(entry);
+  };
+
+  const animateEntry = (entry, shouldOpen) => {
+    const state = getState(entry);
+    state.targetOpen = shouldOpen;
+    if (reducedMotion.matches || typeof entry.animate !== 'function') {
+      finishImmediately(entry, shouldOpen);
+      return;
+    }
+
+    const summary = entry.querySelector('summary');
+    const body = entry.querySelector('.faq-body');
+    if (!summary || !body) {
+      finishImmediately(entry, shouldOpen);
+      return;
+    }
+
+    const currentHeight = entry.getBoundingClientRect().height;
+    const parsedOpacity = Number.parseFloat(getComputedStyle(body).opacity);
+    const currentOpacity = entry.open && Number.isFinite(parsedOpacity) ? parsedOpacity : 0;
+
+    state.animation?.cancel();
+    state.bodyAnimation?.cancel();
+    state.animation = null;
+    state.bodyAnimation = null;
+    if (shouldOpen && !entry.open) entry.open = true;
+
+    entry.style.removeProperty('height');
+    const openHeight = entry.getBoundingClientRect().height;
+    const entryStyle = getComputedStyle(entry);
+    const closedHeight = summary.getBoundingClientRect().height
+      + Number.parseFloat(entryStyle.borderTopWidth)
+      + Number.parseFloat(entryStyle.borderBottomWidth);
+    const targetHeight = shouldOpen ? openHeight : closedHeight;
+
+    entry.style.height = `${currentHeight}px`;
+    entry.style.overflow = 'clip';
+    entry.classList.toggle('is-opening', shouldOpen);
+    entry.classList.toggle('is-closing', !shouldOpen);
+
+    state.animation = entry.animate({ height: [`${currentHeight}px`, `${targetHeight}px`] }, { duration, easing });
+    state.bodyAnimation = body.animate(
+      { opacity: [currentOpacity, shouldOpen ? 1 : 0] },
+      { duration: Math.round(duration * .72), easing, fill: 'forwards' }
+    );
+
+    const activeAnimation = state.animation;
+    activeAnimation.addEventListener('finish', () => {
+      if (state.animation !== activeAnimation) return;
+      if (!shouldOpen) entry.open = false;
+      state.animation = null;
+      state.bodyAnimation?.cancel();
+      state.bodyAnimation = null;
+      clearMotionStyles(entry);
+    }, { once: true });
+  };
+
+  groups.forEach((group) => {
+    const entries = Array.from(group.querySelectorAll(':scope > details'));
+    entries.forEach((entry) => {
+      const summary = entry.querySelector('summary');
+      if (!summary) return;
+      getState(entry);
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+        const state = getState(entry);
+        const shouldOpen = !state.targetOpen;
+        if (shouldOpen) {
+          entries.forEach((other) => {
+            if (other !== entry && getState(other).targetOpen) animateEntry(other, false);
+          });
+        }
+        animateEntry(entry, shouldOpen);
+      });
+    });
+  });
+
+  reducedMotion.addEventListener?.('change', () => {
+    if (!reducedMotion.matches) return;
+    groups.forEach((group) => {
+      group.querySelectorAll(':scope > details').forEach((entry) => finishImmediately(entry, getState(entry).targetOpen));
+    });
+  });
+
+  section.classList.add('is-faq-animated');
+})();

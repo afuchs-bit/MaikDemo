@@ -30,19 +30,24 @@ const TYP_OPTIONS = [
   { value: 'gewerbe', label: 'Gewerbekunde' },
 ];
 
-const state = { tab: 'alle', typ: 'alle', leistungen: new Set() };
+const state = { view: 'projekte', tab: 'alle', typ: 'alle', leistungen: new Set() };
 
 let allProjekte = [];
 let taxonomie = []; // [{ slug, label }]
 let validSlugs = new Set();
+let galleryTeaserImages = [];
+let galleryTeaserTitle = 'Garteneindrücke';
 
 const grid = document.getElementById('galleryGrid');
+const photoGrid = document.getElementById('galleryPhotoGrid');
+const projectControls = document.querySelector('[data-project-controls]');
 const emptyEl = document.getElementById('galleryEmpty');
 const errorEl = document.getElementById('galleryError');
 const ctaEl = document.getElementById('galleryCta');
 const typGroup = document.querySelector('.filter-group[data-filter="typ"]');
 const leistungGroup = document.querySelector('.filter-group[data-filter="leistung"]');
 const tabInputs = Array.from(document.querySelectorAll('.gallery-tabs input[name="tab"]'));
+const viewInputs = Array.from(document.querySelectorAll('input[name="gallery-mode"]'));
 
 // Chip-Referenzen: value → button
 const typChips = new Map();
@@ -52,9 +57,10 @@ init();
 
 async function init() {
   try {
-    const [idxRes, taxRes] = await Promise.all([
+    const [idxRes, taxRes, teaserRes] = await Promise.all([
       fetch(dataUrl('data/projekte-index.json'), { cache: 'no-cache' }),
       fetch(dataUrl('content/taxonomie.json'), { cache: 'no-cache' }),
+      fetch(dataUrl('data/galerie-teaser.json'), { cache: 'no-cache' }).catch(() => null),
     ]);
     if (!idxRes.ok) throw new Error(`Index HTTP ${idxRes.status}`);
     if (!taxRes.ok) throw new Error(`Taxonomie HTTP ${taxRes.status}`);
@@ -63,6 +69,11 @@ async function init() {
     allProjekte = Array.isArray(idxData) ? idxData : (idxData && Array.isArray(idxData.projekte) ? idxData.projekte : []);
     taxonomie = (taxData && Array.isArray(taxData.leistungen)) ? taxData.leistungen : [];
     validSlugs = new Set(taxonomie.map((l) => l.slug));
+    if (teaserRes?.ok) {
+      const teaserData = await teaserRes.json();
+      galleryTeaserImages = Array.isArray(teaserData?.bilder) ? teaserData.bilder : [];
+      galleryTeaserTitle = typeof teaserData?.titel === 'string' ? teaserData.titel : galleryTeaserTitle;
+    }
   } catch (err) {
     console.error('[galerie] Daten nicht ladbar.', err);
     showError();
@@ -74,6 +85,8 @@ async function init() {
 
   readStateFromUrl();
   const pendingSlug = readPendingProjekt();
+  const pendingGalleryImage = readPendingGalleryImage();
+  if (pendingGalleryImage) state.view = 'galerie';
   buildChips();
   bindControls();
   applyStateToControls();
@@ -81,6 +94,7 @@ async function init() {
   render();
   // Deep-Link von der Startseite: Lightbox des Projekts direkt öffnen.
   if (pendingSlug) openProjektDeepLink(pendingSlug);
+  else if (pendingGalleryImage) openGalleryImageDeepLink(pendingGalleryImage);
 }
 
 // Liest ?projekt=<slug>. Schaltet immer auf die „Alle"-Ansicht, damit das Zielprojekt
@@ -89,6 +103,7 @@ function readPendingProjekt() {
   const params = new URLSearchParams(location.search);
   const slug = params.get('projekt');
   if (!slug) return null;
+  state.view = 'projekte';
   state.tab = 'alle';
   return slug;
 }
@@ -101,8 +116,27 @@ function openProjektDeepLink(slug) {
   // render() hat die URL bereits ohne ?projekt geschrieben → Reload öffnet nicht erneut.
 }
 
+function readPendingGalleryImage() {
+  return new URLSearchParams(location.search).get('galerie-bild');
+}
+
+function galleryImageKeys(image) {
+  const filename = String(image?.bild || '').split('/').pop() || '';
+  const basename = filename.replace(/\.[^.]+$/, '');
+  return new Set([String(image?.id || ''), basename].filter(Boolean));
+}
+
+function openGalleryImageDeepLink(key) {
+  if (!galleryTeaserImages.length) return;
+  const index = galleryTeaserImages.findIndex((image) => galleryImageKeys(image).has(key));
+  if (index < 0) return;
+  const fallbackFocus = photoGrid?.querySelector(`.gallery-photo:nth-child(${index + 1})`) || viewInputs[0];
+  openLightbox({ titel: galleryTeaserTitle, bilder: galleryTeaserImages }, fallbackFocus, index);
+}
+
 function showError() {
   if (grid) { grid.hidden = true; grid.setAttribute('aria-busy', 'false'); }
+  if (photoGrid) { photoGrid.hidden = true; photoGrid.setAttribute('aria-busy', 'false'); }
   if (emptyEl) emptyEl.hidden = true;
   if (errorEl) errorEl.hidden = false;
 }
@@ -161,6 +195,11 @@ function makeChip(label) {
 
 // ---------- Controls binden ----------
 function bindControls() {
+  viewInputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      if (input.checked) { state.view = input.value === 'galerie' ? 'galerie' : 'projekte'; render(); }
+    });
+  });
   tabInputs.forEach((input) => {
     input.addEventListener('change', () => {
       if (input.checked) { state.tab = input.value; render(); }
@@ -187,16 +226,78 @@ function gateTabs() {
 }
 
 function applyStateToControls() {
+  viewInputs.forEach((i) => { i.checked = i.value === state.view; });
   tabInputs.forEach((i) => { i.checked = i.value === state.tab; });
 }
 
 // ---------- Rendern ----------
 function render() {
+  applyStateToControls();
+  const imageView = state.view === 'galerie';
+  if (projectControls) projectControls.hidden = imageView;
+  if (photoGrid) photoGrid.hidden = !imageView;
+  if (imageView) {
+    grid.hidden = true;
+    emptyEl.hidden = true;
+    renderPhotoGrid();
+    updateCta();
+    writeStateToUrl();
+    return;
+  }
+
+  if (photoGrid) photoGrid.hidden = true;
   const results = currentResults();
   updateChipStates();
   renderGrid(results);
   updateCta();
   writeStateToUrl();
+}
+
+function renderPhotoGrid() {
+  if (!photoGrid) return;
+  photoGrid.setAttribute('aria-busy', 'false');
+  if (photoGrid.dataset.rendered === 'true') return;
+
+  const cards = galleryTeaserImages.map((image, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'gallery-photo';
+    button.style.setProperty('--gallery-focus-desktop', image.fokusDesktop || '50% 50%');
+    button.style.setProperty('--gallery-focus-mobile', image.fokusMobil || image.fokusDesktop || '50% 50%');
+    button.setAttribute('aria-label', `${image.alt} – Bild vergrößern`);
+
+    const picture = document.createElement('picture');
+    const variants = image.variants;
+    const sizes = '(max-width:740px) 46vw, (max-width:1050px) 31vw, 23vw';
+    if (variants?.base && Array.isArray(variants.widths) && variants.widths.length) {
+      const avif = document.createElement('source');
+      avif.type = 'image/avif';
+      avif.sizes = sizes;
+      avif.srcset = variants.widths.map((width) => `${assetUrl(`${variants.base}-${width}.avif`)} ${width}w`).join(', ');
+      picture.append(avif);
+
+      const webp = document.createElement('source');
+      webp.type = 'image/webp';
+      webp.sizes = sizes;
+      webp.srcset = variants.widths.map((width) => `${assetUrl(`${variants.base}-${width}.webp`)} ${width}w`).join(', ');
+      picture.append(webp);
+    }
+
+    const img = document.createElement('img');
+    img.src = variants?.base ? assetUrl(`${variants.base}.webp`) : assetUrl(image.bild);
+    img.alt = image.alt;
+    img.width = variants?.width || 960;
+    img.height = variants?.height || 720;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    picture.append(img);
+    button.append(picture);
+    button.addEventListener('click', () => openLightbox({ titel: galleryTeaserTitle, bilder: galleryTeaserImages }, button, index));
+    return button;
+  });
+
+  photoGrid.replaceChildren(...cards);
+  photoGrid.dataset.rendered = 'true';
 }
 
 function updateChipStates() {
@@ -278,6 +379,7 @@ function updateCta() {
 // ---------- URL-Sync ----------
 function readStateFromUrl() {
   const params = new URLSearchParams(location.search);
+  state.view = params.get('ansicht') === 'galerie' ? 'galerie' : 'projekte';
   state.tab = params.get('tab') === 'highlights' ? 'highlights' : 'alle';
   const typ = params.get('typ');
   state.typ = (typ === 'privat' || typ === 'gewerbe') ? typ : 'alle';
@@ -291,9 +393,13 @@ function readStateFromUrl() {
 
 function writeStateToUrl() {
   const params = new URLSearchParams();
-  if (state.tab === 'highlights') params.set('tab', 'highlights');
-  if (state.typ !== 'alle') params.set('typ', state.typ);
-  if (state.leistungen.size) params.set('leistung', [...state.leistungen].join(','));
+  if (state.view === 'galerie') {
+    params.set('ansicht', 'galerie');
+  } else {
+    if (state.tab === 'highlights') params.set('tab', 'highlights');
+    if (state.typ !== 'alle') params.set('typ', state.typ);
+    if (state.leistungen.size) params.set('leistung', [...state.leistungen].join(','));
+  }
   const qs = params.toString();
   const url = location.pathname + (qs ? `?${qs}` : '') + location.hash;
   history.replaceState(null, '', url);
@@ -317,11 +423,11 @@ function initLightbox() {
   lbNext?.addEventListener('click', () => step(1));
 }
 
-function openLightbox(project, opener) {
+function openLightbox(project, opener, startIndex = 0) {
   lb.images = Array.isArray(project.bilder) ? project.bilder : [];
   if (!lb.images.length) return;
   lb.project = project;
-  lb.index = 0;
+  lb.index = Math.max(0, Math.min(Number(startIndex) || 0, lb.images.length - 1));
   lb.opener = opener || null;
   updateLightbox();
   lightbox.hidden = false;
@@ -359,7 +465,7 @@ function updateLightbox() {
 
 // AP-77: Die Lightbox zeigte bisher immer bild.bild – bei einigen Projekten ist das
 // das unskalierte Original (bis 1,2 MB). Liegen Varianten vor, wird stattdessen das
-// WebP-Set ausgeliefert (breitenabhaengig, jede Datei < 200 KB). Bewusst nur WebP und
+// WebP-Set ausgeliefert (breitenabhaengig und nach Groesse budgetiert). Bewusst nur WebP und
 // kein AVIF: srcset kennt keine Format-Aushandlung, und das feste <img id="lightboxImg">
 // im Markup laesst sich nicht in ein <picture> mit <source> umbauen.
 // srcset/sizes muessen zurueckgesetzt werden – das Element wird wiederverwendet.
