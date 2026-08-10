@@ -2977,15 +2977,22 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 }
 .gate-door:hover img.gate-photo { transform: scale(1.04); }
 
+/* AP-102: Ziel war "weniger dunkle Flaeche, mehr Foto". Der Entwurf wollte dafuer
+   die HOEHE auf 54% senken - im Browser nachgemessen faellt die gelbe Eyebrow
+   damit auf 1,4:1 (Gewerbe-Tuer), weil sie bei zweizeiliger H2 rund 179px ueber
+   der Kartenunterkante sitzt und dort dann kaum noch Schleier liegt. Ausserdem
+   bringt das nichts: unten blieb der Verlauf mit .95 praktisch schwarz.
+   Stattdessen andersherum - Hoehe leicht ANHEBEN (72 -> 76%) und den Verlauf
+   insgesamt duenner machen. Deckt den Text besser ab und gibt gleichzeitig mehr
+   Foto frei (mittlere Deckkraft ueber die Karte 0,50 -> 0,42).
+   Gemessen (schlechtestes Pixel unter dem Text, Eyebrow braucht 4,5:1):
+   880px 6,6/6,5 | 1024px 6,5/6,8 | 1440px 6,3/5,6 | 1920px 6,3/5,6 (Gewerbe/Privat). */
 .gate-veil {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 72%;                             /* AP-84: Entwurfswert 62% verworfen - gelber Kicker fiel auf 3.8:1, mit 72% gemessen >= 5.6:1 */
+  height: 76%;
   z-index: -1;
-  /* Stops dunkler als im Entwurf: gelbe Eyebrow braucht 4.5:1 auch auf hellen
-     Fotostellen. AP-91 nochmals nachgezogen (.82 -> .90), weil das helle Laub
-     im Baumarbeiten-Foto den Kicker sonst auf 3,3:1 druecken wuerde. */
-  background: linear-gradient(to top, rgba(8,20,0,.96) 0%, rgba(8,20,0,.90) 50%, rgba(8,20,0,0) 100%);
+  background: linear-gradient(to top, rgba(8,20,0,.58) 0%, rgba(8,20,0,.72) 68%, rgba(8,20,0,0) 100%);
 }
 
 .gate-body {
@@ -3046,6 +3053,17 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 @media (max-width: 860px) {
   .gate-doors { grid-template-columns: 1fr; }
   .gate-door { height: clamp(220px, 46vw, 300px); min-height: 220px; border-radius: 20px; }  /* AP-84: war aspect-ratio 3/2, min-height 210px */
+  /* AP-102: Bestandsfehler, beim Nachmessen gefunden. Auf 390px ist die Karte nur
+     220px hoch, der Textblock 142px - die Eyebrow beginnt 160px ueber der
+     Unterkante, der 72%-Schleier reichte aber nur 158px hoch. Sie stand also
+     KOMPLETT ueber dem Verlauf auf dem hellen Laub: gemessen 1,1:1 statt 4,5:1.
+     Hoehe deshalb auf 84%, Verlauf dafuer duenner - gleiche mittlere Deckkraft
+     wie bisher (0,50), aber der Text liegt jetzt wirklich darauf.
+     Gemessen: 390px 6,4/6,5 | 860px 5,4/5,3 (Gewerbe/Privat). */
+  .gate-veil {
+    height: 84%;
+    background: linear-gradient(to top, rgba(8,20,0,.54) 0%, rgba(8,20,0,.74) 85%, rgba(8,20,0,0) 100%);
+  }
   .gate-cta { width: 100%; justify-content: center; padding: 14px 18px; }
   .gate-head { padding-top: max(0px, env(safe-area-inset-top)); }
   .gate-head .hero-title { font-size: clamp(1.85rem, 7.6vw, 2.6rem); }  /* AP-86: war clamp(2rem, 8.5vw, 2.9rem) */
