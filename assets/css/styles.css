@@ -287,14 +287,16 @@ p  { margin: 0; }
   border-radius: 999px;
   padding: 4px;
 }
-.menu a {
+.menu a,
+.menu-label {
   display: inline-flex; padding: 8px 14px; border-radius: 999px;
   font-size: .9rem; font-weight: 500; color: var(--ink-2);
   text-decoration: none; transition: color .2s var(--ease), background .2s var(--ease);
 }
 @media (min-width: 901px) and (max-width: 1339px) {
   .menu { gap: 2px; }
-  .menu a { padding-inline: 9px; font-size: .86rem; }
+  .menu a,
+  .menu-label { padding-inline: 9px; font-size: .86rem; }
 }
 @media (hover: hover) and (pointer: fine) { .menu a:hover { background: var(--bg-elev); color: var(--ink); } }
 
@@ -1259,7 +1261,8 @@ p  { margin: 0; }
     overscroll-behavior: contain;
   }
   /* AP-39: Touchziele auf mindestens 44px. Die Eintraege lagen bei 42,9px. */
-  .primary-nav.is-open .menu a {
+  .primary-nav.is-open .menu a,
+  .primary-nav.is-open .menu-label {
     padding: 12px 16px;
     min-height: 44px;
     display: flex; align-items: center;
@@ -2425,6 +2428,10 @@ body.has-welt-dialog { overflow: hidden; }
    (Reihenfolge sorgt für korrekte Kaskade unter 900px).
    ============================================================ */
 .menu-item--sub { position: relative; display: flex; align-items: center; }
+.menu-item--sub > .menu-label { cursor: default; }
+@media (hover: hover) and (pointer: fine) {
+  .menu-item--sub:hover > .menu-label { background: var(--bg-elev); color: var(--ink); }
+}
 .submenu-toggle {
   display: inline-flex; align-items: center; justify-content: center;
   background: none; border: 0; cursor: pointer; color: var(--ink-2);
@@ -2488,7 +2495,7 @@ body.has-welt-dialog { overflow: hidden; }
 @media (max-width: 900px) {
   /* Untermenü unter dem Eintrag, per Toggle ausklappbar */
   .menu-item--sub { flex-wrap: wrap; position: static; }
-  .menu-item--sub > a { flex: 1; }
+  .menu-item--sub > .menu-label { flex: 1; }
   /* AP-39: Der Aufklapp-Button mass 34x34px. Er sitzt direkt neben dem
      Leistungen-Link, beide brauchen eine eigene, ausreichend grosse Flaeche. */
   .submenu-toggle {

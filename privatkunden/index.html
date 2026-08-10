@@ -23,8 +23,8 @@
      imagesizes ist 100vw, weil das Bild die volle Breite fuellt - ein zu
      kleiner Wert laedt sonst die falsche Aufloesung. -->
 <link rel="preload" as="image" type="image/avif" fetchpriority="high" imagesizes="100vw" imagesrcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.avif 480w, ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.avif 960w, ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-1440.avif 1440w" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260810d" />
-<link rel="stylesheet" href="../assets/css/privat-form.css?v=20260810f" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260810e" />
+<link rel="stylesheet" href="../assets/css/privat-form.css?v=20260810z3" />
 <link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260809c" />
 
 <!-- Breadcrumb (AEO/SEO) -->
@@ -161,14 +161,14 @@
         <li><a href="./" aria-current="page">Privatkunden</a></li>
         <li><a href="../gewerbekunden/">Gewerbekunden</a></li>
         <li class="menu-item menu-item--sub">
-          <a href="../leistungen/">Leistungen</a>
+          <span class="menu-label">Leistungen</span>
           <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-leistungen" aria-label="Alle Leistungen anzeigen">
             <svg class="submenu-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <!-- BUILD:leistungen-submenu:start -->
           <ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
           <li class="nav-submenu-group">
-            <a class="nav-submenu-head" href="../privatkunden/leistungen/">Für Privatkunden</a>
+            <a class="nav-submenu-head" href="../privatkunden/">Für Privatkunden</a>
             <ul>
               <li><a href="../privatkunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
               <li><a href="../privatkunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
@@ -186,7 +186,7 @@
             </ul>
           </li>
           <li class="nav-submenu-group">
-            <a class="nav-submenu-head" href="../gewerbekunden/leistungen/">Für Gewerbekunden</a>
+            <a class="nav-submenu-head" href="../gewerbekunden/">Für Gewerbekunden</a>
             <ul>
               <li><a href="../gewerbekunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
               <li><a href="../gewerbekunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
@@ -347,20 +347,128 @@
 <section class="b2b-request-paths private-request-paths" id="leistungen" aria-labelledby="b2b-request-paths-title">
   <div class="container">
     <div class="b2b-request-head reveal">
-      <h2 id="b2b-request-paths-title">Was braucht Ihr Objekt jetzt?</h2>
-      <p class="b2b-request-intro">Wählen Sie den Anlass – wir klären den passenden nächsten Schritt.</p>
+      <div class="private-request-head-copy">
+        <h2 id="b2b-request-paths-title">Was möchten Sie in Ihrem Garten verändern?</h2>
+        <p class="b2b-request-intro">Wählen Sie den passenden Bereich: Starten Sie direkt Ihre Anfrage oder informieren Sie sich zuerst über die einzelnen Leistungen.</p>
+      </div>
+      <a class="form-emergency-shortcut private-request-emergency" href="#anfrage" data-prefill-bereich="sturmschaden" aria-label="Akuten Sturm- oder Baumschaden melden, Notfalltelefon 0171 173 89 43">
+        <span class="form-emergency-shortcut__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.8 19h18.4L12 3Z"/><path d="M12 9v4"/><path d="M12 16.7h.01"/></svg></span>
+        <span class="form-emergency-shortcut__copy"><strong>Akuter Sturm- oder Baumschaden</strong><small>Notfalltelefon · 0171 / 173 89 43</small></span>
+        <span class="form-emergency-shortcut__arrow" aria-hidden="true">→</span>
+      </a>
     </div>
     <ul class="b2b-request-grid reveal" aria-label="Direkter Einstieg nach Anliegen">
-      <li><a class="b2b-request-card" href="#anfrage" data-prefill-bereich="gartengestaltung"><span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/garten-neu-anlegen-640.webp 640w, ../assets/img/privat/services/garten-neu-anlegen-960.webp 960w, ../assets/img/privat/services/garten-neu-anlegen-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/privat/services/garten-neu-anlegen-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span><span class="b2b-request-copy"><strong>Garten neu anlegen &amp; umgestalten</strong><span>Komplette Neu- und Umgestaltung Ihres Gartens – von der Planung über Erd- und Pflanzarbeiten bis zur fertigen Außenanlage.</span></span><span class="b2b-request-arrow" aria-hidden="true">Vorhaben beschreiben <b>→</b></span></a></li>
-      <li><a class="b2b-request-card" href="#anfrage" data-prefill-bereich="vorgarten"><span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/vorgarten-neu-gestalten-640.webp 640w, ../assets/img/privat/services/vorgarten-neu-gestalten-960.webp 960w, ../assets/img/privat/services/vorgarten-neu-gestalten-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/privat/services/vorgarten-neu-gestalten-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span><span class="b2b-request-copy"><strong>Vorgärten neu gestalten</strong><span>Vorgärten neu anlegen oder modernisieren – pflegeleicht, repräsentativ und passend zu Haus, Eingang und Grundstück.</span></span><span class="b2b-request-arrow" aria-hidden="true">Vorgarten planen <b>→</b></span></a></li>
-      <li><a class="b2b-request-card" href="#anfrage" data-prefill-bereich="terrasse"><span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/terrassen-wege-einfahrten-zaeune-640.webp 640w, ../assets/img/privat/services/terrassen-wege-einfahrten-zaeune-960.webp 960w, ../assets/img/privat/services/terrassen-wege-einfahrten-zaeune-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/privat/services/terrassen-wege-einfahrten-zaeune-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span><span class="b2b-request-copy"><strong>Terrassen, Wege, Einfahrten &amp; Zäune</strong><span>Terrassen, Gartenwege, Einfahrten, Mauern und Sichtschutz aus Stein, Holz und weiteren langlebigen Materialien.</span></span><span class="b2b-request-arrow" aria-hidden="true">Flächen gestalten <b>→</b></span></a></li>
-      <li><a class="b2b-request-card" href="#anfrage" data-prefill-bereich="gartenpflege"><span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/bepflanzung-gartenpflege-640.webp 640w, ../assets/img/privat/services/bepflanzung-gartenpflege-960.webp 960w, ../assets/img/privat/services/bepflanzung-gartenpflege-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/privat/services/bepflanzung-gartenpflege-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span><span class="b2b-request-copy"><strong>Bepflanzung &amp; Gartenpflege</strong><span>Beete, Rasen, Hecken und Gehölze fachgerecht anlegen und dauerhaft pflegen – einschließlich besonderer und mediterraner Bepflanzungen.</span></span><span class="b2b-request-arrow" aria-hidden="true">Pflege anfragen <b>→</b></span></a></li>
-      <li><a class="b2b-request-card" href="#anfrage" data-prefill-bereich="baumarbeiten"><span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-640.webp 640w, ../assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-960.webp 960w, ../assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span><span class="b2b-request-copy"><strong>Bäume schneiden, fällen &amp; kontrollieren</strong><span>Baumschnitt, Fällungen und fachliche Baumkontrollen – auch bei schwierigen Standorten und akuten Sturmschäden.</span></span><span class="b2b-request-arrow" aria-hidden="true">Baumarbeiten anfragen <b>→</b></span></a></li>
-      <li><a class="b2b-request-card" href="#anfrage" data-prefill-bereich="teich"><span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/teiche-wasserspiele-poolumfeld-640.webp 640w, ../assets/img/privat/services/teiche-wasserspiele-poolumfeld-960.webp 960w, ../assets/img/privat/services/teiche-wasserspiele-poolumfeld-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/privat/services/teiche-wasserspiele-poolumfeld-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span><span class="b2b-request-copy"><strong>Teiche, Wasserspiele &amp; Poolumfeld</strong><span>Teichanlagen und Wasserelemente sowie die Gestaltung rund um Pool und Whirlpool – einschließlich Uferzonen, Technik, Bepflanzung und angrenzender Flächen.</span></span><span class="b2b-request-arrow" aria-hidden="true">Wasserbereich planen <b>→</b></span></a></li>
+      <li>
+        <article class="private-service-flip" data-service-flip>
+          <div class="private-service-flip__inner">
+            <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/garten-neu-anlegen-640.webp 640w, ../assets/img/privat/services/garten-neu-anlegen-960.webp 960w, ../assets/img/privat/services/garten-neu-anlegen-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="../assets/img/privat/services/garten-neu-anlegen-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+              <div class="b2b-request-copy"><h3>Garten neu anlegen &amp; umgestalten</h3><p>Komplette Neu- und Umgestaltung Ihres Gartens – von der Planung über Erd- und Pflanzarbeiten bis zur fertigen Außenanlage.</p></div>
+              <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-gartengestaltung-back" aria-label="Leistungen für Garten neu anlegen und umgestalten ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="gartengestaltung"><span>Vorhaben beschreiben</span><b aria-hidden="true">→</b></a></div>
+            </div>
+            <div class="private-service-face private-service-face--back" id="service-gartengestaltung-back" data-service-back aria-hidden="true" inert>
+              <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Garten neu anlegen &amp; umgestalten</h3></div>
+              <div class="private-service-links"><a href="../privatkunden/leistungen/gartengestaltung/"><span>Gartengestaltung</span><b aria-hidden="true">→</b></a></div>
+              <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Garten neu anlegen und umgestalten"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+            </div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="private-service-flip" data-service-flip>
+          <div class="private-service-flip__inner">
+            <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/vorgarten-neu-gestalten-640.webp 640w, ../assets/img/privat/services/vorgarten-neu-gestalten-960.webp 960w, ../assets/img/privat/services/vorgarten-neu-gestalten-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="../assets/img/privat/services/vorgarten-neu-gestalten-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+              <div class="b2b-request-copy"><h3>Vorgärten neu gestalten</h3><p>Vorgärten neu anlegen oder modernisieren – pflegeleicht, repräsentativ und passend zu Haus, Eingang und Grundstück.</p></div>
+              <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-vorgarten-back" aria-label="Leistungen für Vorgärten neu gestalten ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="vorgarten"><span>Vorgarten planen</span><b aria-hidden="true">→</b></a></div>
+            </div>
+            <div class="private-service-face private-service-face--back" id="service-vorgarten-back" data-service-back aria-hidden="true" inert>
+              <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Vorgärten neu gestalten</h3></div>
+              <div class="private-service-links"><a href="../privatkunden/leistungen/vorgarten/"><span>Vorgartengestaltung</span><b aria-hidden="true">→</b></a></div>
+              <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Vorgärten neu gestalten"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+            </div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="private-service-flip" data-service-flip>
+          <div class="private-service-flip__inner">
+            <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/terrassen-wege-einfahrten-zaeune-640.webp 640w, ../assets/img/privat/services/terrassen-wege-einfahrten-zaeune-960.webp 960w, ../assets/img/privat/services/terrassen-wege-einfahrten-zaeune-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="../assets/img/privat/services/terrassen-wege-einfahrten-zaeune-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+              <div class="b2b-request-copy"><h3>Terrassen, Wege, Einfahrten &amp; Zäune</h3><p>Terrassen, Gartenwege, Einfahrten, Mauern und Sichtschutz aus Stein, Holz und weiteren langlebigen Materialien.</p></div>
+              <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-terrassen-back" aria-label="Leistungen für Terrassen, Wege, Einfahrten und Zäune ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="terrasse"><span>Flächen gestalten</span><b aria-hidden="true">→</b></a></div>
+            </div>
+            <div class="private-service-face private-service-face--back" id="service-terrassen-back" data-service-back aria-hidden="true" inert>
+              <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Terrassen, Wege, Einfahrten &amp; Zäune</h3></div>
+              <div class="private-service-links"><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/"><span>Terrassen &amp; Pflaster</span><b aria-hidden="true">→</b></a></div>
+              <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Terrassen, Wege, Einfahrten und Zäune"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+            </div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="private-service-flip private-service-flip--care" data-service-flip>
+          <div class="private-service-flip__inner">
+            <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/bepflanzung-gartenpflege-640.webp 640w, ../assets/img/privat/services/bepflanzung-gartenpflege-960.webp 960w, ../assets/img/privat/services/bepflanzung-gartenpflege-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="../assets/img/privat/services/bepflanzung-gartenpflege-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+              <div class="b2b-request-copy"><h3>Bepflanzung &amp; Gartenpflege</h3><p>Beete, Rasen und Gehölze fachgerecht anlegen und pflegen – von mediterranen Pflanzen bis zur Begrünung geeigneter Dachflächen.</p></div>
+              <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-bepflanzung-back" aria-label="Leistungen für Bepflanzung und Gartenpflege ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="gartenpflege"><span>Pflege anfragen</span><b aria-hidden="true">→</b></a></div>
+            </div>
+            <div class="private-service-face private-service-face--back" id="service-bepflanzung-back" data-service-back aria-hidden="true" inert>
+              <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Bepflanzung &amp; Gartenpflege</h3></div>
+              <div class="private-service-links">
+                <a href="../privatkunden/leistungen/bepflanzung/"><span>Bepflanzung</span><b aria-hidden="true">→</b></a>
+                <a href="../privatkunden/leistungen/gartenpflege/"><span>Gartenpflege</span><b aria-hidden="true">→</b></a>
+                <a href="../privatkunden/leistungen/palmen-winterfest/"><span>Palmen &amp; winterfest</span><b aria-hidden="true">→</b></a>
+                <a href="../privatkunden/leistungen/dachbegruenung/"><span>Dachbegrünung</span><b aria-hidden="true">→</b></a>
+              </div>
+              <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Bepflanzung und Gartenpflege"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+            </div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="private-service-flip" data-service-flip>
+          <div class="private-service-flip__inner">
+            <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-640.webp 640w, ../assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-960.webp 960w, ../assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="../assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+              <div class="b2b-request-copy"><h3>Bäume schneiden, fällen &amp; kontrollieren</h3><p>Baumschnitt, sichere Fällungen und fachliche Baumkontrollen – auch bei schwierigen Standorten und anspruchsvollen Baumarbeiten.</p></div>
+              <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-baumarbeiten-back" aria-label="Leistungen für Bäume schneiden, fällen und kontrollieren ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="baumarbeiten"><span>Baumarbeiten anfragen</span><b aria-hidden="true">→</b></a></div>
+            </div>
+            <div class="private-service-face private-service-face--back" id="service-baumarbeiten-back" data-service-back aria-hidden="true" inert>
+              <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Bäume schneiden, fällen &amp; kontrollieren</h3></div>
+              <div class="private-service-links">
+                <a href="../privatkunden/leistungen/baumkontrolle/"><span>Baumkontrolle &amp; Gutachten</span><b aria-hidden="true">→</b></a>
+                <a href="../privatkunden/leistungen/baumarbeiten/"><span>Baumfällung &amp; Baumarbeiten</span><b aria-hidden="true">→</b></a>
+              </div>
+              <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Bäume schneiden, fällen und kontrollieren"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+            </div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="private-service-flip" data-service-flip>
+          <div class="private-service-flip__inner">
+            <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/privat/services/teiche-wasserspiele-poolumfeld-640.webp 640w, ../assets/img/privat/services/teiche-wasserspiele-poolumfeld-960.webp 960w, ../assets/img/privat/services/teiche-wasserspiele-poolumfeld-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="../assets/img/privat/services/teiche-wasserspiele-poolumfeld-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+              <div class="b2b-request-copy"><h3>Teiche, Wasserspiele &amp; Poolumfeld</h3><p>Teichanlagen und Wasserelemente sowie die Gestaltung rund um Pool und Whirlpool – einschließlich Uferzonen, Technik und Bepflanzung.</p></div>
+              <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-wasser-back" aria-label="Leistungen für Teiche, Wasserspiele und Poolumfeld ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="teich"><span>Wasserbereich planen</span><b aria-hidden="true">→</b></a></div>
+            </div>
+            <div class="private-service-face private-service-face--back" id="service-wasser-back" data-service-back aria-hidden="true" inert>
+              <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Teiche, Wasserspiele &amp; Poolumfeld</h3></div>
+              <div class="private-service-links">
+                <a href="../privatkunden/leistungen/teichbau/"><span>Teichanlagen</span><b aria-hidden="true">→</b></a>
+                <a href="../privatkunden/leistungen/pool-whirlpool-umfeld/"><span>Pool- &amp; Whirlpool-Umfeld</span><b aria-hidden="true">→</b></a>
+              </div>
+              <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Teiche, Wasserspiele und Poolumfeld"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+            </div>
+          </div>
+        </article>
+      </li>
     </ul>
     <div class="b2b-request-links reveal">
-      <a class="b2b-request-route b2b-request-procurement" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M11 5h18l8 8v30H11ZM29 5v9h8M17 23h14M17 30h14M17 37h9"/></svg></span><span><strong>Noch unsicher?</strong><span>Maik Rohdich nimmt sich persönlich die Zeit, um Sie zu beraten.</span></span><b aria-hidden="true">→</b></a>
-      <a class="b2b-request-route b2b-request-other" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M5 39h38M8 36l10-10 8 7 6-5 8 8M15 25v-8M10 18c1-5 9-5 10 0 1 4-2 7-5 7s-6-3-5-7Z"/></svg></span><span><strong>Anderes Vorhaben?</strong><span>Gartenwunsch besprechen</span></span><b aria-hidden="true">→</b></a>
+      <a class="b2b-request-route b2b-request-procurement" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon b2b-request-icon--advice" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M10 9h23a6 6 0 0 1 6 6v12a6 6 0 0 1-6 6H21l-9 7v-7h-2a6 6 0 0 1-6-6V15a6 6 0 0 1 6-6Z"/><path d="M14 18h15M14 24h10"/><circle class="b2b-request-icon-accent-fill" cx="36" cy="33" r="6.5"/><path class="b2b-request-icon-accent" d="m33.3 33 1.8 1.8 3.8-4.5"/></svg></span><span><strong>Noch unsicher?</strong><span>Maik Rohdich nimmt sich persönlich die Zeit, um Sie zu beraten.</span></span><b aria-hidden="true">→</b></a>
+      <a class="b2b-request-route b2b-request-other" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon b2b-request-icon--idea" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M6 39h36M10 37c3-6 8-9 14-9s11 3 14 9M24 28V16M24 20c-5 0-8-3-8-8 5-1 8 2 8 8Zm0 0c5 0 8-3 8-8-5-1-8 2-8 8Z"/><path class="b2b-request-icon-accent" d="M38 7v7M34.5 10.5h7M35.5 17.5l-2 2M40.5 17.5l2 2"/></svg></span><span><strong>Anderes Vorhaben?</strong><span>Gartenwunsch besprechen</span></span><b aria-hidden="true">→</b></a>
     </div>
   </div>
 </section>
@@ -639,12 +747,15 @@
 </section>
 
 <!-- ============ PROJEKTE (privat) ============ -->
-<section class="section section-projects" id="projekte-privat" aria-labelledby="proj-title">
+<section class="section section-projects private-project-showcase" id="projekte-privat" aria-labelledby="proj-title">
   <div class="container">
-    <div class="section-head center reveal">
-      <h2 id="proj-title">Gärten, die wir zuletzt gebaut haben.</h2>
-      <p class="lead">Echte Arbeiten, echte Orte – drei Beispiele aus privaten Gärten im Ruhrgebiet.</p>
-    </div>
+    <header class="private-project-head reveal">
+      <div>
+        <h2 id="proj-title">Gärten, die wir zuletzt gebaut haben.</h2>
+        <p class="lead">Drei aktuelle Projekte aus Herne und der Region – echte Ergebnisse, ausgeführt von unserem Team.</p>
+      </div>
+      <a class="btn btn-outline private-project-gallery-link" href="../projekte/?ansicht=galerie">Alle Gartenprojekte ansehen <span aria-hidden="true">→</span></a>
+    </header>
 
     <!-- Statisches Fallback-Markup (Progressive Enhancement): bleibt sichtbar, falls
          data/projekte-index.json nicht geladen werden kann. Wird sonst von
@@ -654,77 +765,78 @@
         <div class="project-media">
           <picture>
             <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw"
+                    srcset="../assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/beetanlage-herne-nachher-480.avif 480w,
+                            ../assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/beetanlage-herne-nachher-960.avif 960w">
+            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw"
+                    srcset="../assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/beetanlage-herne-nachher-480.webp 480w">
+            <img src="../assets/img/projekte/beetanlage-mit-natursteineinfassung-–-vorher-nachher-herne/beetanlage-herne-nachher.webp"
+                 alt="Fertig bepflanztes Staudenbeet mit Gräsern und Fächerahorn, eingefasst mit Natursteinen"
+                 loading="lazy" decoding="async" width="480" height="600">
+          </picture>
+          <span class="project-tag">Bepflanzung</span>
+        </div>
+        <div class="project-body">
+          <div class="private-project-meta"><span class="project-location">Herne</span><time class="private-project-date" datetime="2026-08">August 2026</time></div>
+          <h3>Beetanlage mit Natursteineinfassung – Vorher/Nachher</h3>
+          <p>Neuanlage eines geschwungenen Pflanzbeets mit Natursteinkante.</p>
+          <span class="card-more" aria-hidden="true"><span>Projekt ansehen</span><b>→</b></span>
+        </div>
+        <a class="card-open" href="../projekte/?projekt=beetanlage-mit-natursteineinfassung-%E2%80%93-vorher-nachher-herne" aria-label="Projekt „Beetanlage mit Natursteineinfassung – Vorher/Nachher“ in der Galerie ansehen"></a>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-media">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw"
+                    srcset="../assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne-480.avif 480w,
+                            ../assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne-960.avif 960w">
+            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw"
+                    srcset="../assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne-480.webp 480w,
+                            ../assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne-960.webp 960w">
+            <img src="../assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne.webp"
+                 alt="Gepflasterte Einfahrt mit angrenzendem Staudenbeet und Gehölzbepflanzung im Vorgartenbereich"
+                 loading="lazy" decoding="async" width="960" height="720">
+          </picture>
+          <span class="project-tag">Vorgartenbau</span>
+        </div>
+        <div class="project-body">
+          <div class="private-project-meta"><span class="project-location">Herne</span><time class="private-project-date" datetime="2026-08">August 2026</time></div>
+          <h3>Vorgartengestaltung mit gepflasterter Einfahrt</h3>
+          <p>Strukturierte Vorgartenanlage mit farblich changiertem Pflasterbelag und angrenzendem, dicht bepflanztem Staudenbeet.</p>
+          <span class="card-more" aria-hidden="true"><span>Projekt ansehen</span><b>→</b></span>
+        </div>
+        <a class="card-open" href="../projekte/?projekt=vorgartengestaltung-mit-gepflasterter-einfahrt-herne" aria-label="Projekt „Vorgartengestaltung mit gepflasterter Einfahrt“ in der Galerie ansehen"></a>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-media">
+          <picture>
+            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw"
                     srcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.avif 480w,
                             ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.avif 960w,
                             ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-1440.avif 1440w">
-            <!-- Kein 1440er WebP – siehe Begruendung in .github/scripts/build-hero-images.mjs. -->
             <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw"
                     srcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.webp 480w,
                             ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.webp 960w">
             <img src="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero.webp"
                  alt="Beispiel Gartengestaltung"
-                 loading="lazy" decoding="async" width="800" height="600">
+                 loading="lazy" decoding="async" width="960" height="720">
           </picture>
           <span class="project-tag">Gartengestaltung</span>
         </div>
         <div class="project-body">
-          <span class="project-location">Herne</span>
+          <div class="private-project-meta"><span class="project-location">Herne</span><time class="private-project-date" datetime="2026-08">August 2026</time></div>
           <h3>Gartengestaltung</h3>
           <p>Bei diesem Projekt durften wir die gesamte Gartengestaltung inklusive der Bepflanzung übernehmen.</p>
-          <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
+          <span class="card-more" aria-hidden="true"><span>Projekt ansehen</span><b>→</b></span>
         </div>
         <a class="card-open" href="../projekte/?projekt=gartengestaltung-herne" aria-label="Projekt „Gartengestaltung“ in der Galerie ansehen"></a>
       </article>
+    </div>
 
-      <article class="project-card reveal">
-        <div class="project-media">
-          <picture>
-            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw"
-                    srcset="../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne-480.avif 480w,
-                            ../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne-960.avif 960w">
-            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw"
-                    srcset="../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne-480.webp 480w,
-                            ../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne-960.webp 960w">
-            <img src="../assets/img/projekte/baumarbeiten-herne/baumarbeiten-herne.webp"
-                 alt="Baumkletterer schneidet seilgesichert mit der Motorsäge die Äste einer hohen Fichte zurück"
-                 loading="lazy" decoding="async" width="800" height="600">
-          </picture>
-          <span class="project-tag">Baumarbeiten / Fällung</span>
-        </div>
-        <div class="project-body">
-          <span class="project-location">Herne</span>
-          <h3>Baumarbeiten</h3>
-          <p>Baumschnitt im Vorgarten – auf eine sichere, passende Höhe zurückgeschnitten.</p>
-          <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
-        </div>
-        <a class="card-open" href="../projekte/?projekt=baumarbeiten-herne" aria-label="Projekt „Baumarbeiten“ in der Galerie ansehen"></a>
-      </article>
-
-      <article class="project-card reveal">
-        <div class="project-media">
-          <picture>
-            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw"
-                    srcset="../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-480.avif 480w,
-                            ../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-960.avif 960w,
-                            ../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-1600.avif 1600w">
-            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw"
-                    srcset="../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-480.webp 480w,
-                            ../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-960.webp 960w,
-                            ../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-1600.webp 1600w">
-            <img src="../assets/img/projekte/vorgarten-herne-2026/vorgarten-herne.webp"
-                 alt="Neu gestalteter Vorgarten mit Natursteinweg und strukturierter Bepflanzung"
-                 loading="lazy" decoding="async" width="800" height="600">
-          </picture>
-          <span class="project-tag">Vorgartenbau</span>
-        </div>
-        <div class="project-body">
-          <span class="project-location">Herne</span>
-          <h3>Vorgarten &amp; Bepflanzung</h3>
-          <p>Vorgarten-Neugestaltung mit Naturstein, strukturierter Bepflanzung und integrierter Beleuchtung.</p>
-          <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
-        </div>
-        <a class="card-open" href="../projekte/?projekt=vorgarten-herne-2026" aria-label="Projekt „Vorgarten &amp; Bepflanzung“ in der Galerie ansehen"></a>
-      </article>
+    <div class="private-project-conversion reveal">
+      <p><strong>Sie planen ein ähnliches Gartenprojekt?</strong><span>Maik Rohdich prüft Ihre Anfrage persönlich und bespricht mit Ihnen den passenden nächsten Schritt.</span></p>
+      <a class="btn btn-primary" href="#anfrage">Eigenes Gartenprojekt anfragen <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -1337,7 +1449,6 @@
       <ul class="footer-list">
         <li><a href="./" aria-current="page">Privatkunden</a></li>
         <li><a href="../gewerbekunden/">Gewerbekunden</a></li>
-        <li><a href="../leistungen/">Leistungen</a></li>
         <li><a href="../projekte/">Galerie</a></li>
         <li><a href="../ratgeber/">Ratgeber</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -1358,7 +1469,6 @@
         <li><a href="../gewerbekunden/leistungen/aussenanlagenpflege/">Außenanlagenpflege</a></li>
       </ul>
           <!-- BUILD:leistungen-footer:end -->
-      <p class="muted small"><a href="../leistungen/">Alle Leistungen im Überblick →</a></p>
     </div>
   </div>
 
@@ -1369,9 +1479,9 @@
 </footer>
 
 <script src="../assets/js/main.js?v=20260806c" defer></script>
-<script type="module" src="../assets/js/projekte-privat.js?v=20260807b"></script>
+<script type="module" src="../assets/js/projekte-privat.js?v=20260810c"></script>
 <script src="../assets/js/private-gallery-teaser.js?v=20260810f" defer></script>
 <script src="../assets/js/private-proof.js?v=20260809d" defer></script>
-<script src="../assets/js/privat-form.js?v=20260810a" defer></script>
+<script src="../assets/js/privat-form.js?v=20260810b" defer></script>
 </body>
 </html>

@@ -357,9 +357,10 @@
 .contact-path-card > p { max-width: 56ch; margin: 0 clamp(24px,3vw,38px) 24px; color: var(--ink-2); line-height: 1.65; }
 
 .contact-path-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  align-self: stretch;
   width: auto;
-  flex-wrap: wrap;
   gap: 12px;
   align-items: stretch;
   margin: auto clamp(24px,3vw,38px) 0;
@@ -367,6 +368,33 @@
 }
 
 .contact-path-actions .btn { min-height: 54px; justify-content: center; text-align: center; }
+.contact-path-text-link {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  min-height: 54px;
+  padding: 8px 0;
+  color: var(--green-700);
+  font-family: var(--body);
+  font-size: .86rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color .2s var(--ease);
+}
+.contact-path-text-link:hover { color: var(--green-900); }
+.contact-path-text-link b {
+  flex: 0 0 auto;
+  color: var(--coral-700);
+  font-size: 1.05rem;
+  transition: transform .2s var(--ease);
+}
+.contact-path-text-link:hover b { transform: translateX(3px); }
+.contact-path-text-link:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
 
 .contact-final-actions {
   display: flex;
@@ -454,4 +482,6 @@
 @media (prefers-reduced-motion:reduce) {
   .contact-location-route { transition: none; }
   .contact-path-media img { transition: none; }
+  .contact-path-text-link,
+  .contact-path-text-link b { transition: none; }
 }
