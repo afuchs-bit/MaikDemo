@@ -657,7 +657,12 @@
     sturmnotdienst: ['sturmschaden', ''], sturmschaden: ['sturmschaden', ''],
     unsicher: ['unsicher', ''], sonstiges: ['weitere', 'anderes'],
     gestaltung: ['garten', ''], pflege: ['bepflanzung_pflege', ''],
-    baumkontrolle_alt: ['baeume', 'verkehrssicherheit'], holz: ['weitere', 'holz']
+    baumkontrolle_alt: ['baeume', 'verkehrssicherheit'], holz: ['weitere', 'holz'],
+    // AP-100: Taxonomie-Slugs mit Bindestrich, damit jeder Slug aus
+    // content/taxonomie.json als ?leistung=-Wert funktioniert (Galerie-CTA).
+    'terrasse-pflasterarbeiten': ['baulich', 'pflaster'],
+    'palmen-winterfest': ['bepflanzung_pflege', 'palmen'],
+    'pool-whirlpool-umfeld': ['wasser', 'poolumfeld']
   };
 
   const prefill = (path, service) => {

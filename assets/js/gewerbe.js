@@ -458,6 +458,19 @@
   updateProgress();
   requestAnimationFrame(updateAllScrollCues);
 
+  // AP-100: Deep-Link-Vorbefüllung, z. B. aus dem Galerie-CTA — ?anliegen=<radiowert>.
+  // Gleiche Wirkung wie ein Klick auf [data-prefill-anliegen]; unbekannte Werte lassen
+  // setRadio false liefern und bleiben folgenlos. Zur Sektion springt der #anfrage-Anker.
+  const queryConcern = new URLSearchParams(location.search).get('anliegen');
+  if (queryConcern === 'sturmnotdienst') {
+    setAcuteMode(true);
+  } else if (queryConcern && setRadio('anliegen', queryConcern)) {
+    openStage(1);
+    updateWhatsapp();
+    updateSubmitLabel();
+    updateStageStates();
+  }
+
   // Freigegebene Gewerbe-Fallstudien werden progressiv aus dem Projektindex
   // ergänzt. Ohne gültige Freigabe bleiben ausschließlich neutrale Motive stehen.
   const referenceTarget = document.querySelector('[data-approved-references]');
