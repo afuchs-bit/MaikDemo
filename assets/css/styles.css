@@ -606,6 +606,10 @@ p  { margin: 0; }
 .section-head { max-width: 720px; margin-bottom: 56px; }
 .section-head.center { margin-inline: auto; text-align: center; }
 .section-head h2 { margin-top: 14px; }
+/* AP-96: Der Abstand oben war Luft unter dem Kicker. Faellt der weg, ist die H2
+   erstes Kind und braucht ihn nicht - sonst kollabiert er aus .section-head
+   heraus und schiebt den ganzen Sektionskopf nach unten. */
+.section-head > h2:first-child { margin-top: 0; }
 .section-head .lead { margin-top: 18px; }
 
 /* ---------- Wood / Special services ---------- */
