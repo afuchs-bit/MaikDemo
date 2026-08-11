@@ -79,6 +79,7 @@ collections:
           - { label: "Sturmnotdienst", value: sturmnotdienst }
           - { label: "Holzverkauf", value: holzverkauf }
           - { label: "Außenanlagenpflege", value: aussenanlagenpflege }
+          - { label: "Umgestaltung & Außenanlagen", value: umgestaltung-aussenanlagen }
           - { label: "Gartenpflege", value: gartenpflege }
           - { label: "Terrassen & Pflaster", value: terrasse-pflasterarbeiten }
           - { label: "Palmen & winterfest", value: palmen-winterfest }
