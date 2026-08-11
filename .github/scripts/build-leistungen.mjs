@@ -20,7 +20,7 @@ import { readFile, readdir, writeFile, mkdir, rm, access } from 'node:fs/promise
 import { constants as FS } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderLeistungPage, renderLeistungenOverview, renderNavSubmenu, renderFooterLeistungen, renderFaqDetails, renderFaqSchema, LEISTUNGEN_NAV, WELTEN } from './lib/render.mjs';
+import { renderLeistungPage, renderLeistungenOverview, renderNavSubmenu, renderFaqDetails, renderFaqSchema, LEISTUNGEN_NAV, WELTEN } from './lib/render.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
@@ -37,7 +37,7 @@ const GEN_SENTINEL = 'AUTO-GENERIERT von .github/scripts/build-leistungen.mjs';
 const KUNDENTYPEN = ['privat', 'gewerbe'];
 const errors = [];
 
-// AP-18: Handseiten, in die Header-Submenu und Footer-Leistungen injiziert werden.
+// AP-18: Handseiten, in die das Header-Submenu injiziert wird.
 const HAND_PAGES = [
   { file: 'index.html', base: '' },
   { file: 'privatkunden/index.html', base: '../' },
@@ -143,8 +143,8 @@ async function injectFaq() {
   console.log(`✅ FAQ (${faq.length} Fragen) in index.html injiziert – sichtbar + Schema aus einer Quelle.`);
 }
 
-// AP-18: Header-Submenu und Footer-Leistungen aus der EINEN Quelle in die Handseiten
-// injizieren – identisch zu den generierten Seiten (die dieselben render-Funktionen füllen).
+// AP-18: Header-Submenu aus der EINEN Quelle in die Handseiten injizieren.
+// Der gemeinsame Footer wird separat von build-footers.mjs gepflegt.
 async function injectNav() {
   for (const { file, base } of HAND_PAGES) {
     const p = path.join(REPO_ROOT, file);
@@ -152,11 +152,9 @@ async function injectNav() {
     try { html = await readFile(p, 'utf8'); } catch { console.warn(`  ⚠ ${file}: nicht gefunden`); continue; }
     const sub = injectBetween(html, '<!-- BUILD:leistungen-submenu:start -->', '<!-- BUILD:leistungen-submenu:end -->', renderNavSubmenu(base));
     if (sub) html = sub; else console.warn(`  ⚠ ${file}: Submenu-Marker fehlen`);
-    const foot = injectBetween(html, '<!-- BUILD:leistungen-footer:start -->', '<!-- BUILD:leistungen-footer:end -->', renderFooterLeistungen(base));
-    if (foot) html = foot; else console.warn(`  ⚠ ${file}: Footer-Leistungen-Marker fehlen`);
     await writeFile(p, html, 'utf8');
   }
-  console.log('✅ Header-Submenu und Footer-Leistungen in die Handseiten injiziert.');
+  console.log('✅ Header-Submenu in die Handseiten injiziert.');
 }
 
 async function main() {

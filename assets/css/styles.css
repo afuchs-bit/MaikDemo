@@ -1142,36 +1142,249 @@ p  { margin: 0; }
    FOOTER
    ============================================================ */
 .site-footer {
-  background: var(--bg-dark); color: #d9d6c9;
-  padding: 70px 0 30px;
+  background: var(--bg-dark); color: rgba(255,255,255,.74);
+  padding: clamp(42px, 4.5vw, 58px) 0 22px;
   border-top: 1px solid rgba(255,255,255,.06);
 }
-.section-contact + .site-footer { padding-top: 30px; border-top: 0; }
-.footer-grid {
+.section-contact + .site-footer { border-top: 0; }
+.footer-main {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 36px;
+  grid-template-columns: minmax(220px, .88fr) minmax(330px, 1.12fr) minmax(360px, 1.3fr);
+  gap: clamp(28px, 3.5vw, 50px);
+  align-items: start;
 }
-.footer-grid h4 { color: #fff; margin-bottom: 14px; font-size: .85rem; text-transform: uppercase; letter-spacing: .14em; }
-.footer-grid address { font-style: normal; line-height: 1.7; color: rgba(255,255,255,.75); margin-top: 16px; }
-.footer-grid a { color: rgba(255,255,255,.85); text-decoration: none; }
-@media (hover: hover) and (pointer: fine) { .footer-grid a:hover { color: var(--yellow); } }
-.footer-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: .92rem; color: rgba(255,255,255,.78); }
-/* h4 steht normalerweise am Spaltenanfang (margin-top 0). Folgt es auf Inhalt,
-   braucht es Abstand – z. B. der Erreichbarkeits-Block unter der Adresse. */
-.footer-grid address + h4,
-.footer-grid .footer-list + h4 { margin-top: 26px; }
-.footer-grid .footer-list + .muted { margin-top: 12px; }
-.footer-grid .btn { margin-top: 16px; }
+.footer-brand-block,
+.footer-contact-block,
+.footer-nav-group { min-width: 0; }
+.brand-footer {
+  display: inline-flex;
+  width: min(250px, 100%);
+  color: #fff;
+}
+.brand-footer .brand-logo { width: 100%; height: auto; }
 .brand-footer .brand-mark { background: rgba(255,255,255,.08); }
+.footer-brandline {
+  margin: 18px 0 10px;
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 760;
+}
+.footer-address {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  color: rgba(255,255,255,.7);
+  font-style: normal;
+  font-size: .88rem;
+  line-height: 1.45;
+}
+.site-footer a { color: rgba(255,255,255,.86); text-decoration: none; }
+.footer-route,
+.footer-all-link {
+  width: fit-content;
+  color: #dbe9bd !important;
+  font-weight: 750;
+}
+.footer-navigation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(22px, 2.4vw, 34px);
+}
+.footer-nav-group { border: 0; }
+.footer-nav-group > summary,
+.footer-heading {
+  margin: 0 0 14px;
+  color: #fff;
+  font-family: var(--body);
+  font-size: .76rem;
+  font-weight: 820;
+  letter-spacing: .13em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.footer-nav-group > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+.footer-nav-group > summary::-webkit-details-marker { display: none; }
+.footer-disclosure-icon {
+  display: none;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform .22s var(--ease);
+}
+.footer-nav-group[open] .footer-disclosure-icon { transform: rotate(225deg) translate(-1px, -1px); }
+.footer-link-list {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: .86rem;
+  line-height: 1.35;
+}
+.footer-link-list a { display: inline-flex; align-items: center; min-height: 25px; }
+.footer-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.footer-contact-link {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+  min-height: 52px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 12px;
+  background: rgba(255,255,255,.055);
+  transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease);
+}
+.footer-contact-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.09);
+  color: #dbe9bd;
+}
+.footer-contact-icon svg { width: 18px; height: 18px; }
+.footer-contact-link > span:last-child { display: grid; gap: 1px; min-width: 0; }
+.footer-contact-link small {
+  color: rgba(255,255,255,.52);
+  font-size: .62rem;
+  font-weight: 750;
+  letter-spacing: .09em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.footer-contact-link strong {
+  overflow-wrap: anywhere;
+  color: #fff;
+  font-size: .78rem;
+  line-height: 1.25;
+}
+.footer-contact-link--whatsapp .footer-contact-icon { background: rgba(80,172,97,.2); color: #bfe8c4; }
+.footer-hours {
+  display: grid;
+  gap: 3px;
+  margin: 12px 0 0;
+  color: rgba(255,255,255,.58);
+  font-size: .72rem;
+  line-height: 1.4;
+}
+.footer-hours strong { color: rgba(255,255,255,.88); font-size: .76rem; }
+.footer-cta {
+  width: fit-content;
+  min-height: 48px;
+  margin-top: 14px;
+  padding-block: 11px;
+}
+.footer-coverage {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin: clamp(27px, 3vw, 38px) 0 0;
+  padding-top: 17px;
+  border-top: 1px solid rgba(255,255,255,.09);
+  color: rgba(255,255,255,.59);
+  font-size: .77rem;
+  line-height: 1.45;
+}
+.footer-coverage strong {
+  flex: 0 0 auto;
+  color: rgba(255,255,255,.88);
+  font-size: .68rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.footer-coverage b { color: rgba(255,255,255,.28); font-weight: 400; }
 .footer-bottom {
   display: flex; justify-content: space-between; align-items: center;
-  margin-top: 50px; padding-top: 22px;
+  margin-top: 17px; padding-top: 17px;
   border-top: 1px solid rgba(255,255,255,.08);
-  color: rgba(255,255,255,.55); font-size: .85rem;
+  color: rgba(255,255,255,.48); font-size: .74rem;
   flex-wrap: wrap; gap: 10px;
 }
 .footer-bottom a { color: rgba(255,255,255,.7); }
+@media (hover: hover) and (pointer: fine) {
+  .site-footer a:hover { color: var(--yellow); }
+  .footer-contact-link:hover {
+    border-color: rgba(225,236,189,.34);
+    background: rgba(255,255,255,.085);
+    transform: translateY(-1px);
+  }
+}
+.site-footer a:focus-visible,
+.footer-nav-group > summary:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+  border-radius: 5px;
+}
+
+@media (min-width: 721px) {
+  .footer-nav-group > summary { pointer-events: none; }
+}
+
+@media (max-width: 1100px) {
+  .footer-main { grid-template-columns: minmax(0, .82fr) minmax(420px, 1.18fr); }
+  .footer-brand-block { grid-column: 1; grid-row: 1; }
+  .footer-contact-block { grid-column: 2; grid-row: 1; }
+  .footer-navigation { grid-column: 1 / -1; grid-row: 2; margin-top: 3px; }
+  .footer-link-list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 22px; }
+}
+
+@media (max-width: 720px) {
+  .site-footer { padding: 30px 0 15px; }
+  .footer-main { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .footer-brand-block,
+  .footer-contact-block,
+  .footer-navigation { grid-column: 1; }
+  .footer-brand-block { grid-row: 1; }
+  .footer-contact-block { grid-row: 2; }
+  .footer-navigation { grid-row: 3; display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 0; }
+  .brand-footer { width: min(195px, 63vw); }
+  .footer-brandline { margin: 10px 0 6px; }
+  .footer-address { gap: 4px; }
+  .footer-heading { margin-bottom: 12px; }
+  .footer-nav-group {
+    border-top: 1px solid rgba(255,255,255,.11);
+    border-bottom: 1px solid rgba(255,255,255,.11);
+  }
+  .footer-nav-group + .footer-nav-group { margin-top: -9px; border-top: 0; }
+  .footer-nav-group > summary {
+    min-height: 48px;
+    margin: 0;
+    cursor: pointer;
+  }
+  .footer-disclosure-icon { display: block; }
+  .footer-link-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px 20px;
+    padding: 0 0 15px;
+  }
+  .footer-link-list a { min-height: 38px; }
+  .footer-hours { margin-top: 8px; line-height: 1.3; }
+  .footer-cta { margin-top: 10px; }
+  .footer-coverage { display: block; margin-top: 20px; padding-top: 14px; }
+  .footer-coverage strong { margin-right: 6px; }
+  .footer-bottom { align-items: flex-start; flex-direction: column; gap: 4px; margin-top: 14px; padding-top: 14px; }
+}
+
+@media (max-width: 390px) {
+  .footer-contact-link { grid-template-columns: 31px minmax(0, 1fr); gap: 7px; padding-inline: 8px; }
+  .footer-contact-icon { width: 31px; height: 31px; }
+  .footer-contact-link strong { font-size: .73rem; }
+  .footer-contact-link small { font-size: .58rem; }
+  .footer-link-list { column-gap: 12px; }
+}
 
 /* AP-55: Die schwebende Schnellkontakt-Leiste am unteren Rand ist hier
    ersatzlos entfallen. Sie verdeckte beim ersten Laden den zweiten Hero-Button
@@ -1260,8 +1473,7 @@ p  { margin: 0; }
   .maik-grid,
   .projects-grid,
   .faq-wrap,
-  .contact-grid,
-  .footer-grid {
+  .contact-grid {
     grid-template-columns: 1fr;
   }
   .proof-feature { grid-template-columns: 1fr; }
@@ -1271,8 +1483,6 @@ p  { margin: 0; }
   /* AP-60: Basis-Regel zentriert jetzt bereits alle 4 Items einheitlich –
      die frühere Sonderregel (alle Items linksbündig) entfällt. */
   .trust-item { padding: 0; }
-  .footer-bottom { justify-content: flex-start; }
-
   /* AP-51: `.btn` traegt `white-space: nowrap`. Auf Desktop sinnvoll, auf dem
      Telefon erzwang es eine Mindestbreite der ganzen Seite: der laengste CTA
      („Jetzt Schritt 1 starten – Objektbegehung anfragen") schob /gewerbekunden/

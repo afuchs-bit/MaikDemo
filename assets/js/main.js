@@ -8,6 +8,44 @@
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
+  // --- Footer navigation disclosures ---
+  // Im HTML bleiben beide Gruppen geoeffnet: So sind ohne JavaScript alle
+  // Links erreichbar. Erst mit JavaScript werden sie auf kleinen Viewports
+  // kompakt geschlossen; eine bewusste Nutzerwahl bleibt beim Resize erhalten.
+  const footerDisclosures = Array.from(document.querySelectorAll('[data-footer-disclosure]'));
+  if (footerDisclosures.length) {
+    const footerMobile = window.matchMedia('(max-width: 720px)');
+    const footerStates = new WeakMap();
+    let syncingFooter = false;
+
+    const syncFooterDisclosures = () => {
+      syncingFooter = true;
+      footerDisclosures.forEach((details) => {
+        const summary = details.querySelector('summary');
+        if (footerMobile.matches) {
+          details.open = footerStates.has(details) ? footerStates.get(details) : false;
+          if (summary) summary.tabIndex = 0;
+        } else {
+          details.open = true;
+          if (summary) summary.tabIndex = -1;
+        }
+      });
+      requestAnimationFrame(() => { syncingFooter = false; });
+    };
+
+    footerDisclosures.forEach((details) => {
+      details.addEventListener('toggle', () => {
+        if (!syncingFooter && footerMobile.matches) footerStates.set(details, details.open);
+      });
+    });
+    if (typeof footerMobile.addEventListener === 'function') {
+      footerMobile.addEventListener('change', syncFooterDisclosures);
+    } else {
+      footerMobile.addListener(syncFooterDisclosures);
+    }
+    syncFooterDisclosures();
+  }
+
   // --- Sticky header condense on scroll ---
   const header = document.getElementById('siteHeader');
   let lastY = 0;

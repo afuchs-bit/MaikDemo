@@ -11,20 +11,23 @@
 <link rel="canonical" href="https://rohdich.de/privatkunden/" />
 <meta property="og:title" content="Gartengestaltung, Vorgarten, Teich – Maik Rohdich für Privatkunden" />
 <meta property="og:description" content="Vorher-Nachher-Projekte, alle Privatkunden-Leistungen und direkter Weg zum Vor-Ort-Termin. Gartenbaumeister seit 2003." />
-<meta property="og:image" content="https://rohdich.de/assets/img/hero/hero-garten-herne-1600.webp" />
+<meta property="og:image" content="https://rohdich.de/assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-1200.webp" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rohdich.de/privatkunden/" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<!-- AP-76 / LCP: Hero-Foto vorab laden. Laut Web Almanac 2025 ist auf 76 % der
-     Mobilseiten das Hero-Bild das LCP-Element, aber nur 2,1 % laden es vor.
-     imagesizes ist 100vw, weil das Bild die volle Breite fuellt - ein zu
-     kleiner Wert laedt sonst die falsche Aufloesung. -->
-<link rel="preload" as="image" type="image/avif" fetchpriority="high" imagesizes="100vw" imagesrcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.avif 480w, ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.avif 960w, ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-1440.avif 1440w" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260809h" />
-<link rel="stylesheet" href="../assets/css/privat-form.css?v=20260810e" />
+<!-- LCP: Nur das initiale Hero-Motiv wird priorisiert. -->
+<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(max-width: 900px)"
+      imagesizes="(max-width: 760px) calc(100vw - 40px), calc(100vw - 64px)"
+      imagesrcset="../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-480.avif 480w, ../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-800.avif 800w, ../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-1200.avif 1200w, ../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-1600.avif 1600w" />
+<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(min-width: 901px)"
+      imagesizes="38vw"
+      imagesrcset="../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-480.avif 480w, ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-800.avif 800w, ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-1200.avif 1200w, ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-1600.avif 1600w" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260810c" />
+<link rel="stylesheet" href="../assets/css/privat-form.css?v=20260810h" />
+<link rel="stylesheet" href="../assets/css/customer-hero.css?v=20260810e" />
 <link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260809c" />
 
 <!-- Breadcrumb (AEO/SEO) -->
@@ -235,68 +238,136 @@
 
 <main id="top">
 
-<!-- ============ HERO (AP-76) ============
-     Full-Bleed-Foto mit Text-Overlay. Loest den zweispaltigen .hero-split mit
-     Vorher/Nachher-Slider ab: dessen Bildpaar war erfunden (dasselbe Foto,
-     "Vorher" per CSS-Graufilter entsaettigt). Die Slider-Komponente selbst
-     bleibt in CSS und main.js erhalten und ist einsatzbereit, sobald echte
-     Vorher/Nachher-Paare vorliegen. -->
-<div class="hero-shot-bar">
+<!-- ============ PRIVATKUNDEN-HERO ============ -->
+<section class="private-hero customer-hero" aria-labelledby="private-hero-title">
   <div class="container">
-    <nav class="breadcrumbs" aria-label="Sie sind hier">
-      <ol>
-        <li><a href="../">Startseite</a></li>
-        <li aria-current="page">Privatkunden</li>
-      </ol>
-    </nav>
-  </div>
-</div>
+    <div class="private-hero-grid customer-hero-grid">
+      <div class="private-hero-copy customer-hero-copy">
+        <nav class="breadcrumbs" aria-label="Sie sind hier">
+          <ol>
+            <li><a href="../">Startseite</a></li>
+            <li aria-current="page">Privatkunden</li>
+          </ol>
+        </nav>
 
-<section class="hero-shot" aria-label="Privatkundenbereich">
-  <!-- Kein .reveal und kein decoding="async" auf dem LCP-Element: es darf
-       weder per JS eingeblendet noch in der Anzeige verzoegert werden. -->
-  <picture class="hero-shot-media">
-    <source type="image/avif" sizes="100vw"
-            srcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.avif 480w,
-                    ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.avif 960w,
-                    ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-1440.avif 1440w">
-    <source type="image/webp" sizes="100vw"
-            srcset="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-480.webp 480w,
-                    ../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero-960.webp 960w">
-    <img src="../assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero.webp"
-         alt="Neu gestalteter Reihenhausgarten in Herne: Rasenfläche, gepflasterter Natursteinweg mit Randstein und bepflanzte Staudenbeete"
-         width="1440" height="1080" fetchpriority="high">
-  </picture>
+        <p class="private-hero-brandline customer-hero-brandline"><strong>Seit 2003</strong> <span>persönlich geführt von Gartenbaumeister Maik Rohdich.</span></p>
+        <h1 class="customer-hero-title" id="private-hero-title">Ihr Garten. Persönlich geplant. Fachgerecht umgesetzt.</h1>
+        <p class="private-hero-lead customer-hero-lead">Gartenbaumeister Maik Rohdich begleitet Ihr Projekt persönlich – von der ersten Idee bis zur fertigen Umsetzung in Herne, Bochum und Umgebung.</p>
 
-  <div class="container hero-shot-inner">
-    <h1 class="hero-shot-title">
-      Gartengestaltung, Vorgarten, Teich –
-      <em>geplant und gebaut</em> vom Meisterbetrieb.
-    </h1>
+        <div class="private-hero-actions customer-hero-actions">
+          <a href="#anfrage" class="btn btn-primary">
+            Gartenprojekt anfragen
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="private-hero-secondary customer-hero-secondary" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Frage%20zu%20meinem%20Gartenprojekt." target="_blank" rel="noopener">
+            Frage per WhatsApp stellen <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
 
-    <p class="hero-shot-sub">
-      Für private Gärten in Herne, Bochum und Umgebung. Wir kommen vorbei, bevor
-      wir ein Angebot machen – und sagen Ihnen auch, was Sie sich sparen können.
-    </p>
+      <figure class="private-hero-media customer-hero-media customer-hero-media--private" data-private-hero>
+        <div class="private-hero-slides" data-private-hero-slides>
+          <!-- Kein Lazy Loading und kein async-Decoding auf dem LCP-Motiv. -->
+          <picture class="private-hero-slide is-active" data-private-hero-slide>
+            <source media="(max-width: 900px)" type="image/avif" sizes="(max-width: 760px) calc(100vw - 40px), calc(100vw - 64px)"
+                    srcset="../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-480.avif 480w,
+                            ../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-800.avif 800w,
+                            ../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-1200.avif 1200w,
+                            ../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-1600.avif 1600w">
+            <source media="(max-width: 900px)" type="image/webp" sizes="(max-width: 760px) calc(100vw - 40px), calc(100vw - 64px)"
+                    srcset="../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-480.webp 480w,
+                            ../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-800.webp 800w,
+                            ../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-1200.webp 1200w,
+                            ../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen-1600.webp 1600w">
+            <source type="image/avif" sizes="38vw"
+                    srcset="../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-480.avif 480w,
+                            ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-800.avif 800w,
+                            ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-1200.avif 1200w,
+                            ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-1600.avif 1600w">
+            <source type="image/webp" sizes="38vw"
+                    srcset="../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-480.webp 480w,
+                            ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-800.webp 800w,
+                            ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-1200.webp 1200w,
+                            ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-1600.webp 1600w">
+            <img src="../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen.webp"
+                 alt="Privater Gartenteich mit Palmen und üppiger Uferbepflanzung"
+                 width="800" height="1000" fetchpriority="high">
+          </picture>
+        </div>
 
-    <div class="hero-shot-ctas">
-      <a href="#anfrage" class="btn btn-primary">
-        Vor-Ort-Termin anfragen
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a class="btn btn-whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20interessiere%20mich%20f%C3%BCr..." target="_blank" rel="noopener">
-        Kontaktieren Sie uns über WhatsApp
-      </a>
+        <div class="private-hero-controls" data-private-hero-controls hidden>
+          <div class="private-hero-dots" data-private-hero-dots aria-label="Hero-Bild auswählen"></div>
+          <button class="private-hero-toggle" type="button" data-private-hero-toggle aria-label="Bildwechsel pausieren">
+            <svg class="private-hero-icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+            <svg class="private-hero-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+          </button>
+        </div>
+
+        <figcaption>
+          <span>Echte Privatgärten</span>
+          <strong>Geplant und umgesetzt in der Region.</strong>
+        </figcaption>
+        <span class="sr-only" data-private-hero-status aria-live="polite" aria-atomic="true"></span>
+
+        <script type="application/json" data-private-hero-data>
+          [
+            {"desktopBase":"../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen","landscapeBase":"../assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen","widths":[480,800,1200,1440,1600],"alt":"Privater Gartenteich mit Palmen und üppiger Uferbepflanzung"},
+            {"desktopBase":"../assets/img/privat/hero/generated/desktop/privatgarten-mit-rasen-und-terrasse","landscapeBase":"../assets/img/privat/hero/generated/landscape/privatgarten-mit-rasen-und-terrasse","widths":[480,800,1200,1440,1600],"alt":"Privatgarten mit Rasenfläche, Holzterrasse und gelb blühenden Gehölzen"},
+            {"desktopBase":"../assets/img/privat/hero/generated/desktop/olivenbaum-im-kiesgarten","landscapeBase":"../assets/img/privat/hero/generated/landscape/olivenbaum-im-kiesgarten","widths":[480,800,1200,1440],"webpWidths":[480,800,1200],"alt":"Alter Olivenbaum in einem hellen Kiesgarten mit Natursteinen und Stauden"},
+            {"desktopBase":"../assets/img/privat/hero/generated/desktop/kiesgarten-mit-naturstein","landscapeBase":"../assets/img/privat/hero/generated/landscape/kiesgarten-mit-naturstein","widths":[480,800,1200,1440,1600],"alt":"Pflegeleichter Kiesgarten mit Natursteinen, Gräsern und Formgehölz"},
+            {"desktopBase":"../assets/img/privat/hero/generated/desktop/palmengarten-mit-teich","landscapeBase":"../assets/img/privat/hero/generated/landscape/palmengarten-mit-teich","widths":[480,800,1200,1440,1600],"alt":"Eingewachsener Teichgarten zwischen Palmen und Stauden"}
+          ]
+        </script>
+      </figure>
     </div>
 
-    <div class="hero-shot-trust" aria-label="Vertrauensnachweise">
-      <span class="htm-item">
-        <span class="stars" aria-hidden="true"><span class="stars-fg" style="width:98%"></span></span>
-        <strong>4,9</strong> · 67 Google-Bewertungen
-      </span>
-      <span class="htm-item"><strong>Seit 2003</strong> in Herne</span>
-      <span class="htm-item"><strong>Gartenbaumeister</strong> · Ausbildungsbetrieb</span>
-    </div>
+    <aside class="private-hero-proof customer-proof-area" aria-label="Vertrauen auf einen Blick">
+      <ul class="customer-proof-strip customer-proof-strip--private">
+        <li class="private-proof-item">
+          <span class="private-proof-visual private-proof-metric" aria-hidden="true">20+</span>
+          <strong>Jahre Erfahrung</strong>
+          <span class="private-proof-detail">Seit 2003 in Herne und Umgebung</span>
+        </li>
+        <li class="private-proof-item private-proof-item--google">
+          <div class="private-proof-visual private-proof-google" role="img" aria-label="4,9 von 5 Sternen">
+            <svg class="private-proof-google-logo" viewBox="0 0 24 24" focusable="false">
+              <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.4-1.1 2.7-2.3 3.5v2.9h3.7c2.2-2 3.6-5 3.6-8.5Z"/>
+              <path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-3l-3.7-2.9c-1 .7-2.4 1.1-4.2 1.1-3.1 0-5.7-2.1-6.7-4.9H1.5v3c1.9 4 5.9 6.7 10.5 6.7Z"/>
+              <path fill="#FBBC05" d="M5.3 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3v-3H1.5C.6 8.3.1 10.1.1 12s.5 3.7 1.4 5.3l3.8-3Z"/>
+              <path fill="#EA4335" d="M12 4.8c1.7 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.5 6.7l3.8 3C6.3 6.9 8.9 4.8 12 4.8Z"/>
+            </svg>
+            <span class="private-hero-trust-score">4,9</span>
+            <svg class="private-proof-stars" viewBox="0 0 112 20" focusable="false">
+              <defs>
+                <path id="privateHeroTrustStar" d="M10 1.4 12.7 6.9 18.8 7.8 14.4 12.1 15.4 18.2 10 15.3 4.6 18.2 5.6 12.1 1.2 7.8 7.3 6.9 10 1.4Z"/>
+              </defs>
+              <use href="#privateHeroTrustStar" x="0"/>
+              <use href="#privateHeroTrustStar" x="22"/>
+              <use href="#privateHeroTrustStar" x="44"/>
+              <use href="#privateHeroTrustStar" x="66"/>
+              <use href="#privateHeroTrustStar" x="88"/>
+            </svg>
+          </div>
+          <strong>Google-Bewertung</strong>
+          <span class="private-proof-detail">67 Google-Bewertungen</span>
+          <span class="private-proof-supplement">Und viele weitere zufriedene Kunden</span>
+        </li>
+        <li class="private-proof-item">
+          <svg class="private-proof-visual private-proof-seal" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+            <path d="M32 7.5 38 13.2l8.3-.5 2.1 8 7.1 4.3-3.8 7 3.8 7-7.1 4.3-2.1 8-8.3-.5-6 5.7-6-5.7-8.3.5-2.1-8L8.5 39l3.8-7-3.8-7 7.1-4.3 2.1-8 8.3.5 6-5.7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"/>
+            <circle cx="32" cy="32" r="14" stroke="currentColor" stroke-width="2.6"/>
+            <path d="M25.5 32.5 30.2 37l8.8-10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"/>
+          </svg>
+          <strong>Meisterbetrieb</strong>
+          <span class="private-proof-detail">Geführt von Gartenbaumeister Maik Rohdich</span>
+        </li>
+        <li class="private-proof-item">
+          <span class="private-proof-visual private-proof-metric private-proof-metric--area" aria-hidden="true">1.500 m²</span>
+          <strong>Musterflächen in Herne</strong>
+          <span class="private-proof-detail">Besichtigung nach Terminvereinbarung</span>
+        </li>
+      </ul>
+    </aside>
   </div>
 </section>
 
@@ -1299,76 +1370,86 @@
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <div class="brand brand-footer">
-        <svg class="brand-logo brand-logo-light" viewBox="0 0 640 150" role="img" aria-hidden="true">
-          <use href="#brand-logo"/>
-        </svg>
+<!-- BUILD:site-footer:start -->
+<footer class="site-footer" data-footer-context="private">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand-block">
+        <a class="brand brand-footer" href="../" aria-label="Maik Rohdich – Startseite">
+          <svg class="brand-logo brand-logo-light" viewBox="0 0 640 150" role="img" aria-hidden="true"><use href="#brand-logo"/></svg>
+        </a>
+        <p class="footer-brandline">Meisterbetrieb seit 2003 <span aria-hidden="true">·</span> Herne</p>
+        <address class="footer-address">
+          <span>Hülsstraße 5 <span aria-hidden="true">·</span> 44625 Herne</span>
+          <a class="footer-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=H%C3%BClsstra%C3%9Fe%205%2C%2044625%20Herne" target="_blank" rel="noopener">Route planen <span aria-hidden="true">→</span></a>
+        </address>
       </div>
-      <address>
-        Hülsstraße 5<br>
-        44625 Herne<br><br>
-        <a href="tel:+491711738943">0171 / 173 89 43</a><br>
-        <a href="mailto:Maik@rohdich.de">Maik@rohdich.de</a>
-      </address>
-      <h4>Erreichbarkeit</h4>
-      <ul class="footer-list">
-        <li>Montag bis Freitag, 09:00–17:00 Uhr</li>
-        <li>Samstag, 09:00–12:00 Uhr · Sonntag geschlossen</li>
-        <li>WhatsApp rund um die Uhr – Antwort zu den Geschäftszeiten</li>
-      </ul>
-      <p class="muted small">Besuche am Betrieb ausschließlich nach vorheriger Terminvereinbarung.</p>
-      <a class="btn btn-primary" href="#anfrage">Termin vereinbaren</a>
+
+      <nav class="footer-navigation" aria-label="Footer-Navigation">
+        <details class="footer-nav-group" data-footer-disclosure open>
+          <summary><span>Bereiche</span><span class="footer-disclosure-icon" aria-hidden="true"></span></summary>
+          <ul class="footer-link-list">
+            <li><a href="../privatkunden/">Privatkunden</a></li>
+            <li><a href="../gewerbekunden/">Gewerbekunden</a></li>
+            <li><a href="../leistungen/">Leistungen</a></li>
+            <li><a href="../projekte/?ansicht=galerie">Galerie</a></li>
+            <li><a href="../ratgeber/">Ratgeber</a></li>
+            <li><a href="../#ueber">Über uns</a></li>
+            <li><a href="../kontakt/">Kontakt</a></li>
+          </ul>
+        </details>
+
+        <details class="footer-nav-group" data-footer-disclosure open>
+          <summary><span>Leistungen</span><span class="footer-disclosure-icon" aria-hidden="true"></span></summary>
+          <ul class="footer-link-list">
+            <li><a href="../privatkunden/leistungen/gartengestaltung/">Gartengestaltung</a></li>
+            <li><a href="../privatkunden/leistungen/gartenpflege/">Gartenpflege</a></li>
+            <li><a href="../privatkunden/leistungen/baumarbeiten/">Baumarbeiten</a></li>
+            <li><a href="../privatkunden/leistungen/baumkontrolle/">Baumkontrolle</a></li>
+            <li><a href="../privatkunden/leistungen/sturmnotdienst/">Sturmnotdienst</a></li>
+            <li><a href="../gewerbekunden/leistungen/aussenanlagenpflege/">Außenanlagenpflege</a></li>
+            <li><a class="footer-all-link" href="../leistungen/">Alle Leistungen <span aria-hidden="true">→</span></a></li>
+          </ul>
+        </details>
+      </nav>
+
+      <section class="footer-contact-block" aria-labelledby="footer-contact-title">
+        <h2 class="footer-heading" id="footer-contact-title">Direkter Kontakt</h2>
+        <div class="footer-contact-grid">
+          <a class="footer-contact-link" href="tel:+491711738943">
+            <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+            <span><small>Mobil</small><strong>0171 / 173 89 43</strong></span>
+          </a>
+          <a class="footer-contact-link" href="tel:+492325585790">
+            <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+            <span><small>Festnetz</small><strong>02325 / 58 57 90</strong></span>
+          </a>
+          <a class="footer-contact-link" href="mailto:Maik@rohdich.de">
+            <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span><small>E-Mail</small><strong>Maik@rohdich.de</strong></span>
+          </a>
+          <a class="footer-contact-link footer-contact-link--whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener">
+            <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2a9.84 9.84 0 0 0-8.48 14.8L2.1 22l5.33-1.4A9.91 9.91 0 1 0 12.04 2Zm0 17.93a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.17.83.85-3.08-.2-.32a8.08 8.08 0 1 1 6.95 3.88Zm4.43-6.05c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21a7.37 7.37 0 0 1-1.35-1.68c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.41.08-.16.04-.3-.02-.42-.06-.12-.55-1.31-.75-1.8-.2-.47-.4-.41-.55-.42h-.46c-.16 0-.42.06-.65.3-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.72 2.62 4.16 3.67.58.25 1.04.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28Z"/></svg></span>
+            <span><small>WhatsApp</small><strong>Nachricht senden</strong></span>
+          </a>
+        </div>
+        <p class="footer-hours"><strong>Mo–Fr 09:00–17:00 <span aria-hidden="true">·</span> Sa 09:00–12:00</strong><span>WhatsApp-Nachrichten jederzeit <span aria-hidden="true">·</span> Besuche nur nach Vereinbarung</span></p>
+        <a class="btn btn-primary footer-cta" href="../privatkunden/#anfrage">Gartenprojekt anfragen <span aria-hidden="true">→</span></a>
+      </section>
     </div>
 
-    <div>
-      <h4>Einsatzgebiet</h4>
-      <ul class="footer-list">
-        <li>Herne</li><li>Bochum</li><li>Castrop-Rauxel</li>
-        <li>Recklinghausen</li><li>Gelsenkirchen-Buer</li>
-        <li class="muted small">weitere Orte nach Projekt</li>
-      </ul>
-    </div>
+    <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen-Buer <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
 
-    <div>
-      <h4>Bereiche</h4>
-      <ul class="footer-list">
-        <li><a href="./" aria-current="page">Privatkunden</a></li>
-        <li><a href="../gewerbekunden/">Gewerbekunden</a></li>
-        <li><a href="../leistungen/">Leistungen</a></li>
-        <li><a href="../projekte/">Galerie</a></li>
-        <li><a href="../ratgeber/">Ratgeber</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="../#ueber">Über&nbsp;uns</a></li>
-        <li><a href="../kontakt/">Kontakt</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> Maik Rohdich Garten- und Landschaftsbau <span aria-hidden="true">·</span> Gartenbaumeister</small>
+      <small><a href="../impressum/">Impressum</a><span aria-hidden="true"> · </span><a href="../datenschutz/">Datenschutz</a></small>
     </div>
-
-    <div>
-      <h4>Leistungen</h4>
-      <!-- BUILD:leistungen-footer:start -->
-          <ul class="footer-list">
-        <li><a href="../privatkunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
-        <li><a href="../privatkunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
-        <li><a href="../privatkunden/leistungen/sturmnotdienst/">Sturmnotdienst</a></li>
-        <li><a href="../privatkunden/leistungen/gartengestaltung/">Gartengestaltung</a></li>
-        <li><a href="../privatkunden/leistungen/gartenpflege/">Gartenpflege</a></li>
-        <li><a href="../gewerbekunden/leistungen/aussenanlagenpflege/">Außenanlagenpflege</a></li>
-      </ul>
-          <!-- BUILD:leistungen-footer:end -->
-      <p class="muted small"><a href="../leistungen/">Alle Leistungen im Überblick →</a></p>
-    </div>
-  </div>
-
-  <div class="container footer-bottom">
-    <small>© <span id="year"></span> Maik Rohdich Garten- und Landschaftsbau · Gartenbaumeister</small>
-    <small><a href="../impressum/">Impressum</a> · <a href="../datenschutz/">Datenschutz</a></small>
   </div>
 </footer>
+<!-- BUILD:site-footer:end -->
 
-<script src="../assets/js/main.js?v=20260806c" defer></script>
+<script src="../assets/js/main.js?v=20260810a" defer></script>
+<script src="../assets/js/private-hero.js?v=20260810b" defer></script>
 <script type="module" src="../assets/js/projekte-privat.js?v=20260807b"></script>
 <script src="../assets/js/private-gallery-teaser.js?v=20260810f" defer></script>
 <script src="../assets/js/private-proof.js?v=20260809d" defer></script>

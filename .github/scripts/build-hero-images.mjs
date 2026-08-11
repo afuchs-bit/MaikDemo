@@ -42,6 +42,28 @@ const QUALITY_FLOOR = 28; // untere Grenze, darunter nicht mehr
 // widths = gewuenschte Breiten (groessere als das Original werden verworfen);
 // webpWidths = abweichende Breiten fuer WebP (optional, sonst wie widths).
 const SOURCES = [
+  // Privatkunden-Hero: Desktop-Master bewahren die Hochformat-Komposition,
+  // Landscape-Master liefern den vom B2B-Hero verwendeten 16:10-Ausschnitt
+  // fuer Tablet und Mobil. Beide Familien stammen aus denselben korrigierten,
+  // metadatenfreien Originalen.
+  ...['desktop', 'landscape'].flatMap((variant) => [
+    'teichgarten-mit-palmen',
+    'privatgarten-mit-rasen-und-terrasse',
+    'olivenbaum-im-kiesgarten',
+    'kiesgarten-mit-naturstein',
+    'palmengarten-mit-teich',
+  ].map((name) => ({
+    src: `assets/img/privat/hero/originale/${variant}/${name}.jpg`,
+    dir: `assets/img/privat/hero/generated/${variant}`,
+    name,
+    widths: [480, 800, 1200, 1440, 1600],
+    ...(name === 'olivenbaum-im-kiesgarten' ? { webpWidths: [480, 800, 1200] } : {}),
+    // Detailreiche Gartenmotive duerfen im WebP-Fallback etwas groesser sein;
+    // moderne Browser erhalten primaer die kompaktere AVIF-Variante.
+    avifMaxBytes: 260 * 1024,
+    webpMaxBytes: 440 * 1024,
+    fallbackWidth: 800,
+  }))),
   {
     src: 'assets/img/projekte/gartengestaltung-herne/03ff56b1-b6e3-4d40-a9f7-4c613914ffa7.webp',
     dir: 'assets/img/projekte/gartengestaltung-herne',
@@ -138,12 +160,12 @@ function pipelineFor(srcAbs, meta, w, crop) {
 
 // Schreibt eine Breite in einem Format; senkt die Qualitaet schrittweise,
 // bis die Datei < 200 KB ist oder die untere Qualitaetsgrenze erreicht ist.
-async function writeVariant(pipeline, outPath, format, baseOpts) {
+async function writeVariant(pipeline, outPath, format, baseOpts, maxBytes = MAX_BYTES) {
   let opts = { ...baseOpts };
   let last;
   while (true) {
     last = await pipeline.clone()[format](opts).toBuffer();
-    if (last.length <= MAX_BYTES || opts.quality <= QUALITY_FLOOR) break;
+    if (last.length <= maxBytes || opts.quality <= QUALITY_FLOOR) break;
     opts = { ...opts, quality: opts.quality - QUALITY_STEP };
   }
   await writeFile(outPath, last);
@@ -176,30 +198,33 @@ async function main() {
     };
     const widths = fit(s.widths);
     const webpWidths = fit(s.webpWidths ?? s.widths);
+    const maxBytes = s.maxBytes ?? MAX_BYTES;
+    const avifMaxBytes = s.avifMaxBytes ?? maxBytes;
+    const webpMaxBytes = s.webpMaxBytes ?? maxBytes;
 
     for (const w of [...new Set([...widths, ...webpWidths])].sort((a, b) => a - b)) {
       const base = pipelineFor(srcAbs, meta, w, s.crop);
       const written = [];
       if (widths.includes(w)) {
         const out = path.join(outDir, `${s.name}-${w}.avif`);
-        written.push([out, await writeVariant(base, out, 'avif', AVIF)]);
+        written.push([out, await writeVariant(base, out, 'avif', AVIF, avifMaxBytes), avifMaxBytes]);
       }
       if (webpWidths.includes(w)) {
         const out = path.join(outDir, `${s.name}-${w}.webp`);
-        written.push([out, await writeVariant(base, out, 'webp', WEBP)]);
+        written.push([out, await writeVariant(base, out, 'webp', WEBP, webpMaxBytes), webpMaxBytes]);
       }
-      for (const [p, n] of written) {
+      for (const [p, n, limit] of written) {
         const kb = (n / 1024).toFixed(0);
-        if (n > MAX_BYTES) { over++; console.log(`  ⚠ ${kb} KB  ${path.relative(ROOT, p)} (> 200 KB!)`); }
+        if (n > limit) { over++; console.log(`  ⚠ ${kb} KB  ${path.relative(ROOT, p)} (> ${(limit / 1024).toFixed(0)} KB!)`); }
         else console.log(`  ${kb.padStart(4)} KB  ${path.relative(ROOT, p)}`);
       }
     }
 
     // Fallback <name>.webp fuer das <img>-Element in <picture>.
-    const fbW = Math.min(960, Math.max(...webpWidths));
+    const fbW = s.fallbackWidth ?? Math.min(960, Math.max(...webpWidths));
     const fb = await writeVariant(
       pipelineFor(srcAbs, meta, fbW, s.crop),
-      path.join(outDir, `${s.name}.webp`), 'webp', WEBP,
+      path.join(outDir, `${s.name}.webp`), 'webp', WEBP, webpMaxBytes,
     );
     console.log(`  ${(fb / 1024).toFixed(0).padStart(4)} KB  ${s.dir}/${s.name}.webp (Fallback)`);
 

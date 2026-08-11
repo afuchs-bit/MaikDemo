@@ -308,7 +308,7 @@ export async function renderProjektPage(opts) {
     imageJsonLd: imageJsonLd(bilder),
     logo: logo.trim(),
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
+    footer: fill(footer, footerTemplateData(base, footerContextForKundentyp(project.kundentyp))).trim(),
     titel: esc(titel),
     ort: esc(ort),
     h1: esc(h1),
@@ -486,6 +486,34 @@ export function renderFooterLeistungen(base) {
   return `<ul class="footer-list">
         ${items}
       </ul>`;
+}
+
+// Der Footer bleibt in allen Seitengeneratoren identisch; lediglich der primäre
+// Anfrageweg folgt dem Seitenkontext. Neutrale Seiten führen zur Kontaktweiche.
+export function footerTemplateData(base, context = 'neutral') {
+  const normalized = context === 'private' || context === 'privat'
+    ? 'private'
+    : context === 'business' || context === 'gewerbe'
+      ? 'business'
+      : 'neutral';
+  const cta = {
+    private: { label: 'Gartenprojekt anfragen', href: `${base}privatkunden/#anfrage` },
+    business: { label: 'Objekt anfragen', href: `${base}gewerbekunden/#anfrage` },
+    neutral: { label: 'Kontakt aufnehmen', href: `${base}kontakt/` },
+  }[normalized];
+  return {
+    base,
+    footerContext: normalized,
+    footerCtaLabel: cta.label,
+    footerCtaHref: cta.href,
+  };
+}
+
+function footerContextForKundentyp(kundentyp) {
+  const groups = Array.isArray(kundentyp) ? kundentyp : [];
+  if (groups.length === 1 && groups[0] === 'privat') return 'private';
+  if (groups.length === 1 && groups[0] === 'gewerbe') return 'business';
+  return 'neutral';
 }
 
 // AP-19 – Startseiten-FAQ aus content/faq-startseite.json.
@@ -751,7 +779,7 @@ export async function renderLeistungPage(opts) {
     faqJsonLd: faqJsonLd(leistung.faq),
     logo: logo.trim(),
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
+    footer: fill(footer, footerTemplateData(base, welt.key)).trim(),
     h1: esc(leistung.h1),
     intro: esc(leistung.intro),
     fachtext: lpFachtext(leistung.fachtext),
@@ -834,7 +862,7 @@ export async function renderLeistungenOverview(opts) {
     lead: esc(welt.lead),
     logo: logo.trim(),
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
+    footer: fill(footer, footerTemplateData(base, welt.key)).trim(),
     itemListJsonLd: itemList,
     cards,
   });
@@ -917,7 +945,7 @@ export async function renderRatgeberPage(opts) {
     faqJsonLd: faqJsonLd(article.faq || []),
     logo: logo.trim(),
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
+    footer: fill(footer, footerTemplateData(base, 'neutral')).trim(),
     h1: esc(article.h1),
     kurz: esc(kurz),
     intro: esc(article.intro),
@@ -969,7 +997,7 @@ export async function renderRatgeberOverview(opts) {
     breadcrumbJsonLd: breadcrumb,
     logo: logo.trim(),
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
+    footer: fill(footer, footerTemplateData(base, 'neutral')).trim(),
     cards,
   });
 }
@@ -1007,7 +1035,7 @@ export async function renderRechtstextPage(opts) {
     breadcrumbJsonLd: breadcrumb,
     logo: logo.trim(),
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, { base, leistungenFooter: renderFooterLeistungen(base) }).trim(),
+    footer: fill(footer, footerTemplateData(base, 'neutral')).trim(),
     h1: esc(data.h1),
     body: bodyHtml, // vertrauenswürdiges HTML-Fragment, bewusst NICHT escaped
   });

@@ -50,14 +50,17 @@ jobs:
       - name: Galerie-Teaser bauen & Bilder optimieren
         run: node .github/scripts/build-gallery-teaser.mjs
 
+      - name: Einheitliche Footer aktualisieren
+        run: node .github/scripts/build-footers.mjs
+
       - name: Ergebnis zurückcommitten (nur bei Änderung)
         run: |
-          if [[ -n "$(git status --porcelain data/projekte-index.json data/galerie-teaser.json assets/img/galerie-teaser/generated sitemap.xml)" ]]; then
+          if [[ -n "$(git status --porcelain -- data/projekte-index.json data/galerie-teaser.json assets/img/galerie-teaser/generated sitemap.xml '*.html')" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/projekte-index.json data/galerie-teaser.json assets/img/galerie-teaser/generated sitemap.xml
+            git add -- data/projekte-index.json data/galerie-teaser.json assets/img/galerie-teaser/generated sitemap.xml '*.html'
             git commit -m "chore: Projekt-Index & Sitemap aktualisiert [skip ci]"
             git push
           else
-            echo "Keine Änderung an Index oder Sitemap – nichts zu committen."
+            echo "Keine Änderung an Index, Sitemap oder generierten Seiten – nichts zu committen."
           fi

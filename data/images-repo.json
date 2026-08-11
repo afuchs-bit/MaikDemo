@@ -1,6 +1,144 @@
 {
   "_hinweis": "AUTO-GENERIERT von .github/scripts/build-hero-images.mjs – NICHT von Hand editieren.",
   "bilder": {
+    "/assets/img/privat/hero/originale/desktop/teichgarten-mit-palmen.jpg": {
+      "base": "/assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen",
+      "widths": [
+        480,
+        800,
+        1200,
+        1440,
+        1600
+      ],
+      "width": 800,
+      "height": 1000,
+      "aspect": 1.25
+    },
+    "/assets/img/privat/hero/originale/desktop/privatgarten-mit-rasen-und-terrasse.jpg": {
+      "base": "/assets/img/privat/hero/generated/desktop/privatgarten-mit-rasen-und-terrasse",
+      "widths": [
+        480,
+        800,
+        1200,
+        1440,
+        1600
+      ],
+      "width": 800,
+      "height": 1000,
+      "aspect": 1.25
+    },
+    "/assets/img/privat/hero/originale/desktop/olivenbaum-im-kiesgarten.jpg": {
+      "base": "/assets/img/privat/hero/generated/desktop/olivenbaum-im-kiesgarten",
+      "widths": [
+        480,
+        800,
+        1200,
+        1440
+      ],
+      "webpWidths": [
+        480,
+        800,
+        1200
+      ],
+      "width": 800,
+      "height": 1000,
+      "aspect": 1.25
+    },
+    "/assets/img/privat/hero/originale/desktop/kiesgarten-mit-naturstein.jpg": {
+      "base": "/assets/img/privat/hero/generated/desktop/kiesgarten-mit-naturstein",
+      "widths": [
+        480,
+        800,
+        1200,
+        1440,
+        1600
+      ],
+      "width": 800,
+      "height": 1000,
+      "aspect": 1.25
+    },
+    "/assets/img/privat/hero/originale/desktop/palmengarten-mit-teich.jpg": {
+      "base": "/assets/img/privat/hero/generated/desktop/palmengarten-mit-teich",
+      "widths": [
+        480,
+        800,
+        1200,
+        1440,
+        1600
+      ],
+      "width": 800,
+      "height": 1000,
+      "aspect": 1.25
+    },
+    "/assets/img/privat/hero/originale/landscape/teichgarten-mit-palmen.jpg": {
+      "base": "/assets/img/privat/hero/generated/landscape/teichgarten-mit-palmen",
+      "widths": [
+        480,
+        800,
+        1200,
+        1440,
+        1600
+      ],
+      "width": 800,
+      "height": 500,
+      "aspect": 0.625
+    },
+    "/assets/img/privat/hero/originale/landscape/privatgarten-mit-rasen-und-terrasse.jpg": {
+      "base": "/assets/img/privat/hero/generated/landscape/privatgarten-mit-rasen-und-terrasse",
+      "widths": [
+        480,
+        800,
+        1200,
+        1440,
+        1600
+      ],
+      "width": 800,
+      "height": 500,
+      "aspect": 0.625
+    },
+    "/assets/img/privat/hero/originale/landscape/olivenbaum-im-kiesgarten.jpg": {
+      "base": "/assets/img/privat/hero/generated/landscape/olivenbaum-im-kiesgarten",
+      "widths": [
+        480,
+        800,
+        1200,
+        1440
+      ],
+      "webpWidths": [
+        480,
+        800,
+        1200
+      ],
+      "width": 800,
+      "height": 500,
+      "aspect": 0.625
+    },
+    "/assets/img/privat/hero/originale/landscape/kiesgarten-mit-naturstein.jpg": {
+      "base": "/assets/img/privat/hero/generated/landscape/kiesgarten-mit-naturstein",
+      "widths": [
+        480,
+        800,
+        1200,
+        1440,
+        1600
+      ],
+      "width": 800,
+      "height": 500,
+      "aspect": 0.625
+    },
+    "/assets/img/privat/hero/originale/landscape/palmengarten-mit-teich.jpg": {
+      "base": "/assets/img/privat/hero/generated/landscape/palmengarten-mit-teich",
+      "widths": [
+        480,
+        800,
+        1200,
+        1440,
+        1600
+      ],
+      "width": 800,
+      "height": 500,
+      "aspect": 0.625
+    },
     "/assets/img/projekte/gartengestaltung-herne/03ff56b1-b6e3-4d40-a9f7-4c613914ffa7.webp": {
       "base": "/assets/img/projekte/gartengestaltung-herne/gartengestaltung-herne-hero",
       "widths": [
