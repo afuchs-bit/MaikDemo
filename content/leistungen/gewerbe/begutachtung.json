@@ -1,0 +1,39 @@
+{
+  "h1": "Fachliche Begutachtung im Garten- und Landschaftsbau",
+  "navLabel": "Fachliche Begutachtung",
+  "title": "Fachliche Begutachtung im GaLaBau in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Fachliche Begutachtung im Garten- und Landschaftsbau (Sachgebiet 2.4.1): ausgeführte Arbeiten, Pflanzen, Angebote und Abrechnungen einordnen – in Herne, Bochum und Recklinghausen.",
+  "serviceType": "Fachliche Begutachtung im Garten- und Landschaftsbau, Sachgebiet 2.4.1",
+  "intro": "Manchmal braucht es keinen neuen Auftrag, sondern eine fachliche Einordnung: Ist die ausgeführte Arbeit so in Ordnung? Ist das gelieferte Pflanzenmaterial das, was bestellt war? Ist ein Angebot oder eine Abrechnung plausibel? Als Gutachter für Garten- und Landschaftsbau (Sachgebiet 2.4.1) beurteilt Maik Rohdich Leistungen, Pflanzen, Angebote und Abrechnungen – und nimmt Bäume und Gehölze an Grundstücksgrenzen fachlich auf. Fragestellung, Unterlagen, Ortstermin und Form der Dokumentation werden vor der Beauftragung abgestimmt.",
+  "eignung": [
+    "Ausgeführte GaLaBau-Arbeiten, deren Qualität oder Vollständigkeit fachlich beurteilt werden soll.",
+    "Geliefertes Pflanzenmaterial, dessen Zustand eingeordnet werden soll.",
+    "Fremdangebote und Abrechnungen, die vor der Beauftragung oder Zahlung auf Plausibilität geprüft werden sollen.",
+    "Bäume und Gehölze an Grundstücksgrenzen, deren Zustand und mögliche Schutzvorgaben fachlich aufgenommen werden sollen."
+  ],
+  "ablauf": [
+    { "titel": "Fragestellung klären", "text": "Sie schildern kurz, welche Arbeit oder Unterlage geprüft werden soll und worum es Ihnen dabei geht. Daraus ergibt sich, was aufgenommen werden muss." },
+    { "titel": "Unterlagen sichten", "text": "Angebote, Abrechnungen, Pläne oder Fotos werden gesichtet. Wo der Sachverhalt sich nicht aus den Unterlagen ergibt, vereinbaren wir einen Ortstermin." },
+    { "titel": "Fachliche Einordnung", "text": "Maik Rohdich beurteilt den Sachverhalt fachlich – am Objekt oder anhand der Unterlagen – und benennt nachvollziehbar, was in Ordnung ist und was nicht." },
+    { "titel": "Dokumentation", "text": "Je nach Auftrag erhalten Sie eine schriftliche Bewertung mit einer Empfehlung für den nächsten sinnvollen Schritt. Die Form der Dokumentation wird vorab abgestimmt." }
+  ],
+  "aufwand": [
+    { "titel": "Art der Fragestellung", "text": "Die Plausibilitätsprüfung eines Angebots ist schneller erledigt als die Beurteilung einer komplett ausgeführten Außenanlage." },
+    { "titel": "Umfang der Unterlagen", "text": "Je vollständiger Angebote, Rechnungen, Pläne und Fotos vorliegen, desto zielgerichteter lässt sich prüfen." },
+    { "titel": "Ortstermin", "text": "Manches lässt sich nach Unterlagen einordnen, anderes erst am Objekt. Ob ein Termin nötig ist, klären wir vorab." },
+    { "titel": "Form der Dokumentation", "text": "Eine mündliche Einschätzung ist etwas anderes als eine schriftliche Bewertung, die Sie ablegen und vorlegen können." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Das kann doch jeder Fachbetrieb kurz einschätzen.“", "text": "Eine Einschätzung ist schnell ausgesprochen. Belastbar wird sie, wenn Ausführung, Material und Abrechnung fachlich zusammen bewertet werden – mit dem Blick eines Betriebs, der solche Arbeiten selbst plant, ausführt und abrechnet." },
+    { "titel": "„Eine Begutachtung lohnt nur im Streitfall.“", "text": "Oft ist sie vor der Entscheidung am wertvollsten: Ein geprüftes Angebot oder eine eingeordnete Abrechnung erspart Diskussionen, bevor sie entstehen." },
+    { "titel": "„Die fachliche Einordnung entscheidet den Streit.“", "text": "Sie liefert die fachliche Grundlage – eine rechtliche Entscheidung oder Rechtsberatung ersetzt sie nicht. Das gilt besonders bei Bäumen und Gehölzen an Grundstücksgrenzen." }
+  ],
+  "faq": [
+    { "frage": "Welche Leistungen können fachlich begutachtet werden?", "antwort": "Ausgeführte GaLaBau-Arbeiten und geliefertes Pflanzenmaterial lassen sich fachlich einordnen, Angebote und Abrechnungen auf Plausibilität prüfen. Fragestellung, Unterlagen, Ortstermin und Form der Dokumentation werden vor der Beauftragung abgestimmt." },
+    { "frage": "Was kann bei Bäumen an einer Grundstücksgrenze beurteilt werden?", "antwort": "Aufgenommen werden Baumart, Zustand, Standort, Abstand, Überhang und mögliche Schutzvorgaben. Je nach Auftrag erhalten Sie eine schriftliche Bewertung und eine Empfehlung für den nächsten sinnvollen Schritt. Eine rechtliche Entscheidung oder Rechtsberatung ersetzt diese fachliche Einordnung nicht." },
+    { "frage": "Prüfen Sie auch Angebote oder Abrechnungen anderer Betriebe?", "antwort": "Ja. Fremdangebote und Abrechnungen werden auf Plausibilität geprüft – etwa ob Umfang und Positionen zum Objekt und zur Aufgabenstellung passen. Das Ergebnis wird so aufbereitet, dass Sie damit ins Gespräch mit dem Anbieter gehen können." },
+    { "frage": "Wie läuft die Beauftragung ab?", "antwort": "Sie schildern über das Anfrageformular oder telefonisch kurz, welche Arbeit oder Unterlage geprüft werden soll. Anschließend werden Fragestellung, Unterlagen, ein möglicher Ortstermin und die Form der Dokumentation abgestimmt – erst dann entscheiden Sie über die Beauftragung." }
+  ],
+  "nachbarn": ["baumkontrolle"],
+  "kundengruppe": ["gewerbe"]
+}
