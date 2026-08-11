@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" type="image/webp" imagesizes="(max-width: 760px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 64px), 38vw" imagesrcset="../assets/img/gewerbe/hero-objektpflege-480.webp 480w, ../assets/img/gewerbe/hero-objektpflege-800.webp 800w, ../assets/img/gewerbe/hero-objektpflege-1200.webp 1200w, ../assets/img/gewerbe/hero-objektpflege-1600.webp 1600w">
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260810i">
-<link rel="stylesheet" href="../assets/css/gewerbe.css?v=20260810a">
+<link rel="stylesheet" href="../assets/css/gewerbe.css?v=20260811a">
 <link rel="stylesheet" href="../assets/css/customer-hero.css?v=20260810c">
 <link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260809c">
 
@@ -279,7 +279,7 @@
   </section>
 
   <!-- 2: Direkter Einstieg nach Anliegen -->
-  <section class="b2b-request-paths" aria-labelledby="b2b-request-paths-title">
+  <section class="b2b-request-paths gewerbe-request-paths" aria-labelledby="b2b-request-paths-title">
     <div class="container">
       <div class="b2b-request-head reveal">
         <h2 id="b2b-request-paths-title">Was braucht Ihr Objekt jetzt?</h2>
@@ -287,47 +287,102 @@
       </div>
       <ul class="b2b-request-grid reveal" aria-label="Direkter Einstieg nach Anliegen">
         <li>
-          <a class="b2b-request-card" href="#anfrage" data-prefill-anliegen="objektpflege">
-            <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-pflege-instandhaltung-640.webp 640w, ../assets/img/gewerbe/services/service-pflege-instandhaltung-960.webp 960w, ../assets/img/gewerbe/services/service-pflege-instandhaltung-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-pflege-instandhaltung-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-            <span class="b2b-request-copy"><strong>Pflege &amp; Instandhaltung</strong><span>Einzelmaßnahmen oder planbare Pflegeintervalle für Grün- und Außenflächen – abgestimmt auf Nutzung, Jahreszeit und gewünschten Pflegezustand.</span></span>
-            <span class="b2b-request-arrow" aria-hidden="true">Anfrage vorbereiten <b>→</b></span>
-          </a>
+          <article class="private-service-flip private-service-flip--care" data-service-flip>
+            <div class="private-service-flip__inner">
+              <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+                <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-pflege-instandhaltung-640.webp 640w, ../assets/img/gewerbe/services/service-pflege-instandhaltung-960.webp 960w, ../assets/img/gewerbe/services/service-pflege-instandhaltung-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-pflege-instandhaltung-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+                <div class="b2b-request-copy"><h3>Pflege &amp; Instandhaltung</h3><p>Einzelmaßnahmen oder planbare Pflegeintervalle für Grün- und Außenflächen – abgestimmt auf Nutzung, Jahreszeit und gewünschten Pflegezustand.</p></div>
+                <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-gewerbe-aussenanlagenpflege-back" aria-label="Leistungen zu Pflege und Instandhaltung ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-anliegen="objektpflege"><span>Anfrage vorbereiten</span><b aria-hidden="true">→</b></a></div>
+              </div>
+              <div class="private-service-face private-service-face--back" id="service-gewerbe-aussenanlagenpflege-back" data-service-back aria-hidden="true" inert>
+                <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Pflege &amp; Instandhaltung</h3></div>
+                <div class="private-service-links"><a href="leistungen/aussenanlagenpflege/"><span>Pflege &amp; Instandhaltung</span><b aria-hidden="true">→</b></a></div>
+                <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Pflege und Instandhaltung"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+              </div>
+            </div>
+          </article>
         </li>
         <li>
-          <a class="b2b-request-card" href="#anfrage" data-prefill-anliegen="umbau">
-            <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-umgestaltung-aussenanlagen-640.webp 640w, ../assets/img/gewerbe/services/service-umgestaltung-aussenanlagen-960.webp 960w, ../assets/img/gewerbe/services/service-umgestaltung-aussenanlagen-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-umgestaltung-aussenanlagen-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-            <span class="b2b-request-copy"><strong>Umgestaltung &amp; Außenanlagen</strong><span>Außenflächen erneuern, vorbereiten und funktional weiterentwickeln – von Erd- und Bodenarbeiten über Bepflanzung und befestigte Flächen bis zu Bewässerung und Beleuchtung.</span></span>
-            <span class="b2b-request-arrow" aria-hidden="true">Vorhaben beschreiben <b>→</b></span>
-          </a>
+          <article class="private-service-flip" data-service-flip>
+            <div class="private-service-flip__inner">
+              <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+                <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-umgestaltung-aussenanlagen-640.webp 640w, ../assets/img/gewerbe/services/service-umgestaltung-aussenanlagen-960.webp 960w, ../assets/img/gewerbe/services/service-umgestaltung-aussenanlagen-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-umgestaltung-aussenanlagen-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+                <div class="b2b-request-copy"><h3>Umgestaltung &amp; Außenanlagen</h3><p>Außenflächen erneuern, vorbereiten und funktional weiterentwickeln – von Erd- und Bodenarbeiten über Bepflanzung und befestigte Flächen bis zu Bewässerung und Beleuchtung.</p></div>
+                <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-gewerbe-umgestaltung-back" aria-label="Leistungen zu Umgestaltung und Außenanlagen ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-anliegen="umbau"><span>Vorhaben beschreiben</span><b aria-hidden="true">→</b></a></div>
+              </div>
+              <div class="private-service-face private-service-face--back" id="service-gewerbe-umgestaltung-back" data-service-back aria-hidden="true" inert>
+                <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Umgestaltung &amp; Außenanlagen</h3></div>
+                <div class="private-service-links"><a href="leistungen/umgestaltung-aussenanlagen/"><span>Umgestaltung &amp; Außenanlagen</span><b aria-hidden="true">→</b></a></div>
+                <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Umgestaltung und Außenanlagen"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+              </div>
+            </div>
+          </article>
         </li>
         <li>
-          <a class="b2b-request-card" href="#anfrage" data-prefill-anliegen="begruenung">
-            <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-dach-fassade-stellplatz-640.webp 640w, ../assets/img/gewerbe/services/service-dach-fassade-stellplatz-960.webp 960w, ../assets/img/gewerbe/services/service-dach-fassade-stellplatz-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-dach-fassade-stellplatz-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-            <span class="b2b-request-copy"><strong>Dach-, Fassaden- &amp; Stellplatzbegrünung</strong><span>Dächer, Fassaden, Stellplätze und funktionale Freiflächen standortgerecht begrünen.</span></span>
-            <span class="b2b-request-arrow" aria-hidden="true">Begrünung anfragen <b>→</b></span>
-          </a>
+          <article class="private-service-flip" data-service-flip>
+            <div class="private-service-flip__inner">
+              <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+                <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-dach-fassade-stellplatz-640.webp 640w, ../assets/img/gewerbe/services/service-dach-fassade-stellplatz-960.webp 960w, ../assets/img/gewerbe/services/service-dach-fassade-stellplatz-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-dach-fassade-stellplatz-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+                <div class="b2b-request-copy"><h3>Dach-, Fassaden- &amp; Stellplatzbegrünung</h3><p>Dächer, Fassaden, Stellplätze und funktionale Freiflächen standortgerecht begrünen.</p></div>
+                <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-gewerbe-dachbegruenung-back" aria-label="Leistungen zu Dach-, Fassaden- und Stellplatzbegrünung ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-anliegen="begruenung"><span>Begrünung anfragen</span><b aria-hidden="true">→</b></a></div>
+              </div>
+              <div class="private-service-face private-service-face--back" id="service-gewerbe-dachbegruenung-back" data-service-back aria-hidden="true" inert>
+                <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Dach-, Fassaden- &amp; Stellplatzbegrünung</h3></div>
+                <div class="private-service-links"><a href="leistungen/dachbegruenung/"><span>Dach-, Fassaden- &amp; Stellplatzbegrünung</span><b aria-hidden="true">→</b></a></div>
+                <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Dach-, Fassaden- und Stellplatzbegrünung"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+              </div>
+            </div>
+          </article>
         </li>
         <li>
-          <a class="b2b-request-card" href="#anfrage" data-prefill-anliegen="baumkontrolle">
-            <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-baumkontrolle-baumarbeiten-640.webp 640w, ../assets/img/gewerbe/services/service-baumkontrolle-baumarbeiten-960.webp 960w, ../assets/img/gewerbe/services/service-baumkontrolle-baumarbeiten-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-baumkontrolle-baumarbeiten-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-            <span class="b2b-request-copy"><strong>Baumkontrolle &amp; Baumarbeiten</strong><span>Baumbestand fachlich kontrollieren, Handlungsbedarf einordnen und erforderliche Maßnahmen umsetzen.</span></span>
-            <span class="b2b-request-arrow" aria-hidden="true">Baumbestand einordnen <b>→</b></span>
-          </a>
+          <article class="private-service-flip" data-service-flip>
+            <div class="private-service-flip__inner">
+              <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+                <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-baumkontrolle-baumarbeiten-640.webp 640w, ../assets/img/gewerbe/services/service-baumkontrolle-baumarbeiten-960.webp 960w, ../assets/img/gewerbe/services/service-baumkontrolle-baumarbeiten-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-baumkontrolle-baumarbeiten-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+                <div class="b2b-request-copy"><h3>Baumkontrolle &amp; Baumarbeiten</h3><p>Baumbestand fachlich kontrollieren, Handlungsbedarf einordnen und erforderliche Maßnahmen umsetzen.</p></div>
+                <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-gewerbe-baumkontrolle-back" aria-label="Leistungen zu Baumkontrolle und Baumarbeiten ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-anliegen="baumkontrolle"><span>Baumbestand einordnen</span><b aria-hidden="true">→</b></a></div>
+              </div>
+              <div class="private-service-face private-service-face--back" id="service-gewerbe-baumkontrolle-back" data-service-back aria-hidden="true" inert>
+                <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Baumkontrolle &amp; Baumarbeiten</h3></div>
+                <div class="private-service-links"><a href="leistungen/baumkontrolle/"><span>Baumkontrolle &amp; Gutachten</span><b aria-hidden="true">→</b></a>
+                <a href="leistungen/baumarbeiten/"><span>Baumfällung &amp; Baumarbeiten</span><b aria-hidden="true">→</b></a></div>
+                <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Baumkontrolle und Baumarbeiten"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+              </div>
+            </div>
+          </article>
         </li>
         <li class="b2b-request-storm">
-          <a class="b2b-request-card b2b-request-card--storm" href="#anfrage" data-prefill-anliegen="sturmnotdienst">
-            <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-sturmschaden-640.webp 640w, ../assets/img/gewerbe/services/service-sturmschaden-960.webp 960w, ../assets/img/gewerbe/services/service-sturmschaden-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-sturmschaden-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-            <span class="b2b-request-copy"><strong>Akuter Sturmschaden</strong><span>Gefahrenstellen fachlich einschätzen, erforderliche Maßnahmen koordinieren und Zufahrten oder Stellplätze wieder nutzbar machen.</span></span>
-            <span class="b2b-request-arrow" aria-hidden="true"><span class="b2b-request-action-label">Schnell Hilfe anfragen</span><b>→</b></span>
-          </a>
+          <article class="private-service-flip private-service-flip--storm" data-service-flip>
+            <div class="private-service-flip__inner">
+              <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+                <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-sturmschaden-640.webp 640w, ../assets/img/gewerbe/services/service-sturmschaden-960.webp 960w, ../assets/img/gewerbe/services/service-sturmschaden-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-sturmschaden-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+                <div class="b2b-request-copy"><h3>Akuter Sturmschaden</h3><p>Gefahrenstellen fachlich einschätzen, erforderliche Maßnahmen koordinieren und Zufahrten oder Stellplätze wieder nutzbar machen.</p></div>
+                <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-gewerbe-sturmnotdienst-back" aria-label="Leistungen zum Sturmnotdienst ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-anliegen="sturmnotdienst"><span>Schnell Hilfe anfragen</span><b aria-hidden="true">→</b></a></div>
+              </div>
+              <div class="private-service-face private-service-face--back" id="service-gewerbe-sturmnotdienst-back" data-service-back aria-hidden="true" inert>
+                <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Akuter Sturmschaden</h3></div>
+                <div class="private-service-links"><a href="leistungen/sturmnotdienst/"><span>Sturmnotdienst</span><b aria-hidden="true">→</b></a></div>
+                <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Akuter Sturmschaden"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+              </div>
+            </div>
+          </article>
           <a class="b2b-storm-phone" href="tel:+491711738943" aria-label="Notfallnummer 0171 173 8943 anrufen"><span aria-hidden="true">☎</span><strong>0171 173 8943</strong></a>
         </li>
         <li>
-          <a class="b2b-request-card" href="#anfrage" data-prefill-anliegen="begutachtung" data-prefill-beschreibung="Wir möchten folgende Arbeit oder Unterlage fachlich prüfen lassen: ">
-            <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-fachliche-begutachtung-640.webp 640w, ../assets/img/gewerbe/services/service-fachliche-begutachtung-960.webp 960w, ../assets/img/gewerbe/services/service-fachliche-begutachtung-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-fachliche-begutachtung-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-            <span class="b2b-request-copy"><strong>Fachliche Begutachtung</strong><span>Leistungen, Pflanzen, Angebote oder Abrechnungen einordnen.</span></span>
-            <span class="b2b-request-arrow" aria-hidden="true">Begutachtung anfragen <b>→</b></span>
-          </a>
+          <article class="private-service-flip" data-service-flip>
+            <div class="private-service-flip__inner">
+              <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
+                <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/gewerbe/services/service-fachliche-begutachtung-640.webp 640w, ../assets/img/gewerbe/services/service-fachliche-begutachtung-960.webp 960w, ../assets/img/gewerbe/services/service-fachliche-begutachtung-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 46vw, 400px"><img src="../assets/img/gewerbe/services/service-fachliche-begutachtung-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
+                <div class="b2b-request-copy"><h3>Fachliche Begutachtung</h3><p>Leistungen, Pflanzen, Angebote oder Abrechnungen einordnen.</p></div>
+                <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-gewerbe-begutachtung-back" aria-label="Leistungen zur fachlichen Begutachtung ansehen">Leistung ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-anliegen="begutachtung" data-prefill-beschreibung="Wir möchten folgende Arbeit oder Unterlage fachlich prüfen lassen: "><span>Begutachtung anfragen</span><b aria-hidden="true">→</b></a></div>
+              </div>
+              <div class="private-service-face private-service-face--back" id="service-gewerbe-begutachtung-back" data-service-back aria-hidden="true" inert>
+                <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Fachliche Begutachtung</h3></div>
+                <div class="private-service-links"><a href="leistungen/begutachtung/"><span>Fachliche Begutachtung</span><b aria-hidden="true">→</b></a></div>
+                <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Fachliche Begutachtung"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
+              </div>
+            </div>
+          </article>
         </li>
       </ul>
       <div class="b2b-request-links reveal">
@@ -804,6 +859,6 @@
 <div class="b2b-mobile-actions" aria-label="Schnellkontakt" aria-hidden="true" inert><a class="b2b-mobile-main" href="#anfrage">Objekt anfragen</a><a href="tel:+491711738943" aria-label="Anrufen"><svg class="b2b-mobile-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></a><a class="b2b-mobile-whatsapp" data-whatsapp-link href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20wir%20haben%20eine%20gewerbliche%20Anfrage." target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="b2b-mobile-action-icon" viewBox="0 0 720 720" fill="currentColor" aria-hidden="true"><path d="M360,0C161.18,0,0,161.18,0,360c0,65.41,17.45,126.75,47.94,179.61L0,720l187.02-44.21c51.34,28.18,110.28,44.21,172.98,44.21,198.82,0,360-161.18,360-360S558.82,0,360,0ZM360,655.52c-60.17,0-116.13-17.98-162.82-48.87l-110.49,28.14,30.99-105.61c-33.53-47.93-53.2-106.26-53.2-169.19,0-163.21,132.31-295.52,295.52-295.52s295.52,132.31,295.52,295.52-132.31,295.52-295.52,295.52Z"/><path d="M444.35,407.52l87.1,41.06c4,1.88,6.56,5.94,6.2,10.34-.94,11.46-5.54,34.43-26.13,55.02-58.12,58.12-162.49-7.64-166.74-10.18-25.67-13.79-50.06-32.24-73.19-55.36s-41.58-47.52-55.37-73.19c-2.55-4.24-68.31-108.61-10.18-166.74,20.59-20.59,43.56-25.19,55.02-26.13,4.41-.36,8.46,2.2,10.34,6.2l41.07,87.1c1.94,4.12,1.09,9.02-2.13,12.24l-30.61,30.61c-6.62,6.62-8.56,16.93-4,25.11,11.17,20.03,26.19,39.32,43.59,57.07,17.75,17.4,37.04,32.43,57.07,43.59,8.18,4.56,18.48,2.62,25.11-4l30.61-30.61c3.22-3.22,8.12-4.08,12.24-2.13Z"/></svg></a></div>
 
 <script src="../assets/js/main.js?v=20260810a" defer></script>
-<script src="../assets/js/gewerbe.js?v=20260810b" defer></script>
+<script src="../assets/js/gewerbe.js?v=20260811a" defer></script>
 </body>
 </html>
