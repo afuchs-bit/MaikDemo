@@ -1,0 +1,39 @@
+{
+  "h1": "Umgestaltung und Außenanlagen für Gewerbe und Liegenschaften",
+  "navLabel": "Umgestaltung & Außenanlagen",
+  "title": "Umgestaltung & Außenanlagen für Gewerbe in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Außenanlagen gewerblicher Objekte erneuern und weiterentwickeln – Erd- und Baggerarbeiten, Bepflanzung, befestigte Flächen, Bewässerung und Beleuchtung in Herne, Bochum und Recklinghausen.",
+  "serviceType": "Umgestaltung von Außenanlagen, Erd- und Baggerarbeiten, Bepflanzung",
+  "intro": "Außenanlagen altern mit dem Objekt: Beläge sacken ab, Bepflanzung wächst aus der Form, Flächen passen nicht mehr zur heutigen Nutzung. Wir erneuern, bereiten vor und entwickeln Außenflächen funktional weiter – von Erd- und Bodenarbeiten über Bepflanzung und befestigte Flächen bis zu Bewässerung und Beleuchtung. Mit eigenem Team und eigenen Maschinen setzen wir die Arbeiten koordiniert um und stimmen Arbeitszeiten, Zufahrten und Bauabschnitte auf Ihren laufenden Betrieb ab.",
+  "eignung": [
+    "Außenanlagen, die nicht mehr zur heutigen Nutzung des Objekts passen und neu geordnet werden sollen.",
+    "Flächen, die im Zuge von Umbau- oder Baumaßnahmen vorbereitet oder wiederhergestellt werden müssen.",
+    "Objekte, deren Bepflanzung erneuert oder deren befestigte Flächen instand gesetzt werden sollen.",
+    "Auftraggeber, die Erd-, Pflanz- und Belagsarbeiten bei einem Ansprechpartner bündeln möchten."
+  ],
+  "ablauf": [
+    { "titel": "Objektbegehung", "text": "Wir sehen uns Fläche, Zustand und Nutzung an und klären, was erreicht werden soll – und in welchen Schritten sich das umsetzen lässt." },
+    { "titel": "Planung und Abstimmung", "text": "Sie erhalten einen Vorschlag mit Umfang und Terminrahmen. Arbeitszeiten, Zufahrten und Bauabschnitte stimmen wir auf Ihren Betrieb ab. Auf unseren Musterflächen in Herne können Sie Pflanzen und Materialien vorab vergleichen – nach Terminvereinbarung." },
+    { "titel": "Ausführung", "text": "Erd- und Baggerarbeiten, Bepflanzung, befestigte Flächen sowie Bewässerung und Beleuchtung führen wir mit eigenem Team und eigenen Maschinen koordiniert aus. Arbeitsbereiche werden gesichert und sauber hinterlassen." },
+    { "titel": "Übergabe", "text": "Sie übernehmen eine fertige, nutzbare Fläche. Ob anschließend eine wiederkehrende Pflege sinnvoll ist, besprechen wir zum Abschluss – beides kommt bei uns aus einer Hand." }
+  ],
+  "aufwand": [
+    { "titel": "Umfang des Eingriffs", "text": "Eine einzelne Teilfläche zu erneuern ist etwas anderes, als eine komplette Außenanlage neu zu ordnen." },
+    { "titel": "Untergrund und Bestand", "text": "Wie der Boden beschaffen ist und was vom Bestand erhalten bleibt, bestimmt den Aufwand der Erd- und Vorarbeiten." },
+    { "titel": "Zugänglichkeit für Maschinen", "text": "Können Bagger und Technik direkt an die Fläche, geht es deutlich schneller, als wenn Material über Umwege bewegt werden muss." },
+    { "titel": "Betrieb während der Arbeiten", "text": "Arbeiten in Bauabschnitten oder außerhalb der Betriebszeiten sind planbar, verursachen aber zusätzlichen Koordinationsaufwand." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Das ist doch nur etwas Erde bewegen.“", "text": "Tragfähiger Unterbau, Entwässerung und die richtige Reihenfolge der Gewerke entscheiden darüber, wie lange eine Fläche hält und wie sie sich später pflegen lässt." },
+    { "titel": "„Erst bauen, ums Grün kümmern wir uns später.“", "text": "Wer Boden- und Pflanzarbeiten von Anfang an mitplant, spart doppelte Wege – und vermeidet, dass fertige Flächen für Leitungen oder Pflanzgruben wieder geöffnet werden." },
+    { "titel": "„Viele Gewerke brauchen viele Anbieter.“", "text": "Erd-, Pflanz- und Belagsarbeiten greifen ineinander. Ein Ansprechpartner mit eigenem Team und eigenen Maschinen hält die Abstimmungswege kurz." }
+  ],
+  "faq": [
+    { "frage": "Übernehmen Sie auch die Erd- und Baggerarbeiten?", "antwort": "Ja. Erd- und Baggerarbeiten gehören zu unserem Leistungsumfang und werden mit eigenen Maschinen ausgeführt. Das Vorbereiten der Flächen und die anschließenden Pflanz- oder Belagsarbeiten kommen so aus einer Hand." },
+    { "frage": "Können die Arbeiten bei laufendem Betrieb stattfinden?", "antwort": "In der Regel ja. Arbeitszeiten, Zufahrten und Bauabschnitte stimmen wir vorab mit Ihnen ab. Arbeitsbereiche werden gesichert und sauber hinterlassen, damit Ihr Betrieb möglichst ungestört weiterläuft." },
+    { "frage": "Kann ich Materialien und Pflanzen vorab ansehen?", "antwort": "Ja. Auf unseren Musterflächen in Herne sehen und vergleichen Sie Pflanzen, Materialien und Gestaltungsmöglichkeiten vor der Entscheidung – nach Terminvereinbarung." },
+    { "frage": "Übernehmen Sie nach der Umgestaltung auch die laufende Pflege?", "antwort": "Ja, auf Wunsch. Viele Auftraggeber lassen neu angelegte Flächen anschließend im festen Turnus pflegen – vom selben Ansprechpartner, der das Objekt bereits kennt." }
+  ],
+  "nachbarn": ["aussenanlagenpflege", "dachbegruenung"],
+  "kundengruppe": ["gewerbe"]
+}

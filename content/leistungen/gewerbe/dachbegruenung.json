@@ -1,23 +1,25 @@
 {
-  "h1": "Dachbegrünung für gewerbliche Gebäude",
-  "navLabel": "Dachbegrünung",
-  "title": "Dachbegrünung für Gewerbe in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Anlage und Pflege extensiver Dachbegrünung auf Gewerbe- und Verwaltungsgebäuden in Herne, Bochum und Recklinghausen – Entwässerung frei, Auflagen erfüllt, Bestand dauerhaft gepflegt.",
-  "serviceType": "Anlage und Pflege von Dachbegrünung",
-  "intro": "Eine begrünte Dachfläche ist bei Gewerbebauten oft Teil der Baugenehmigung oder eines Entwässerungskonzepts – und wird nach der Abnahme gerne vergessen. Genau dann entstehen die Probleme: verstopfte Abläufe, aufgekommener Gehölzaufwuchs, kahle Bereiche. Wir legen extensive Dachbegrünung an und übernehmen vor allem die wiederkehrende Pflege, die dafür sorgt, dass die Fläche funktioniert und die Auflagen dauerhaft erfüllt bleiben.",
+  "h1": "Dach-, Fassaden- und Stellplatzbegrünung für Gewerbe",
+  "navLabel": "Dach-, Fassaden- & Stellplatzbegrünung",
+  "title": "Dach-, Fassaden- & Stellplatzbegrünung für Gewerbe in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Dachbegrünung, Fassaden- und Stellplatzbegrünung für Gewerbeobjekte in Herne, Bochum und Recklinghausen – standortgerecht angelegt, Auflagen erfüllt, Bestand dauerhaft gepflegt.",
+  "serviceType": "Anlage und Pflege von Dach-, Fassaden- und Stellplatzbegrünung",
+  "intro": "Eine begrünte Dachfläche ist bei Gewerbebauten oft Teil der Baugenehmigung oder eines Entwässerungskonzepts – und wird nach der Abnahme gerne vergessen. Genau dann entstehen die Probleme: verstopfte Abläufe, aufgekommener Gehölzaufwuchs, kahle Bereiche. Wir legen extensive Dachbegrünung an und übernehmen vor allem die wiederkehrende Pflege, die dafür sorgt, dass die Fläche funktioniert und die Auflagen dauerhaft erfüllt bleiben. Auch Fassaden, Stellplätze und funktionale Freiflächen begrünen wir standortgerecht – nach abgestimmter Planung; ob am konkreten Standort Vorgaben gelten und welche Nachweise erforderlich sind, wird mit der zuständigen Planung oder Behörde geklärt.",
   "eignung": [
     "Gewerbe-, Verwaltungs- und Hallenbauten mit flachen oder leicht geneigten Dachflächen.",
     "Objekte, bei denen eine Begrünung als Auflage oder im Entwässerungskonzept festgelegt wurde.",
     "Bestandsbegrünungen, die seit der Abnahme nicht regelmäßig gepflegt wurden.",
-    "Nebenflächen wie Carports, Anbauten oder Müllstandsdächer, die aufgewertet werden sollen."
+    "Nebenflächen wie Carports, Anbauten oder Müllstandsdächer, die aufgewertet werden sollen.",
+    "Fassaden, Stellplätze und funktionale Freiflächen, die standortgerecht begrünt werden sollen."
   ],
   "ablauf": [
-    { "titel": "Aufnahme vor Ort", "text": "Wir sehen uns die Fläche an: Aufbau, Zustand des Bewuchses, Abläufe, Kiesstreifen und vor allem die sichere Zugänglichkeit für die spätere Pflege." },
+    { "titel": "Aufnahme vor Ort", "text": "Wir sehen uns die Fläche an – ob Dach, Fassade oder Stellplatz: Aufbau, Zustand des Bewuchses, bei Dachflächen Abläufe und Kiesstreifen, und vor allem die sichere Zugänglichkeit für die spätere Pflege." },
     { "titel": "Abstimmung mit den Vorgaben", "text": "Falls Auflagen aus Genehmigung oder Entwässerungskonzept bestehen, richten wir Aufbau und Pflegeturnus daran aus, damit der Nachweis erfüllt bleibt." },
     { "titel": "Anlage oder Instandsetzung", "text": "Bei Neuanlage bringen wir Substrat und Vegetation auf. Bei Bestandsflächen entfernen wir Fremdaufwuchs, machen Abläufe frei und ergänzen kahle Bereiche." },
     { "titel": "Wiederkehrende Pflege", "text": "In festem Turnus: Gehölzaufwuchs entfernen, Abläufe und Kiesstreifen kontrollieren, Vegetation nachbessern. Ohne diesen Schritt hält keine Dachbegrünung dauerhaft." }
   ],
   "aufwand": [
+    { "titel": "Art der Fläche", "text": "Dach, Fassade und Stellplatz unterscheiden sich in Aufbau, Zugang und Pflegebedarf – was am Standort sinnvoll und zulässig ist, wird in der Planung abgestimmt." },
     { "titel": "Fläche und Zugänglichkeit", "text": "Entscheidend ist weniger die Quadratmeterzahl als der Weg nach oben – Materialtransport über Aufzug, Kran oder Treppenhaus macht den Unterschied." },
     { "titel": "Zustand des Bestands", "text": "Eine gepflegte Fläche im Turnus zu halten ist deutlich weniger Aufwand als eine seit Jahren sich selbst überlassene wieder instand zu setzen." },
     { "titel": "Aufbau und Vegetationsform", "text": "Extensive Begrünung mit flachem Aufbau ist pflegeleichter und leichter als intensivere Formen mit größerer Aufbauhöhe." },
@@ -29,6 +31,7 @@
     { "titel": "„Verstopfte Abläufe sieht man rechtzeitig.“", "text": "Von unten sieht man sie meist gar nicht. Aufgefallen ist es dann, wenn Wasser steht oder eindringt – und das ist der teure Fall." }
   ],
   "faq": [
+    { "frage": "Übernehmen Sie Dach-, Fassaden- oder Stellplatzbegrünung?", "antwort": "Ja. Wir übernehmen entsprechende Begrünungsarbeiten nach abgestimmter Planung. Ob am konkreten Standort Vorgaben gelten und welche Nachweise erforderlich sind, wird mit der zuständigen Planung oder Behörde geklärt." },
     { "frage": "Wie oft muss eine extensive Dachbegrünung gepflegt werden?", "antwort": "In der Regel wiederkehrend mehrmals im Jahr, mit Schwerpunkt im Frühjahr und Herbst. Wichtiger als eine feste Zahl ist, dass Gehölzaufwuchs entfernt und die Abläufe kontrolliert werden, bevor sie zusetzen. Den passenden Turnus legen wir nach der ersten Aufnahme fest." },
     { "frage": "Können Sie eine vernachlässigte Bestandsbegrünung wieder herrichten?", "antwort": "Meist ja. Wir entfernen den Fremdaufwuchs, machen Abläufe und Kiesstreifen frei und ergänzen kahle Bereiche. Ob das ausreicht oder der Aufbau beschädigt ist, zeigt sich bei der Aufnahme vor Ort." },
     { "frage": "Übernehmen Sie auch die Abdichtung selbst?", "antwort": "Nein. Wir arbeiten auf der Begrünung und melden Ihnen, wenn uns an der Abdichtung etwas auffällt. Arbeiten an der Abdichtung gehören zum Dachdeckerhandwerk und werden dort beauftragt." },

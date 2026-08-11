@@ -40,12 +40,21 @@ und das JSON-LD verteilt:
 | Vertragslaufzeiten und Reaktionszeiten im Gewerbebereich | `gewerbekunden/index.html`, `content/leistungen/gewerbe/sturmnotdienst.json` | AP-13 / AP-23 / AP-33 |
 | Sicherungsausrüstung und Qualifikation für Arbeiten auf Dachflächen | `content/leistungen/gewerbe/dachbegruenung.json` | AP-33 |
 | Details zum Partnerbetrieb in Bochum | noch ohne Fundstelle | AP-23 |
+| Fassaden-/Stellplatzbegrünung: Systeme, Aufbauten, Referenzen | `content/leistungen/gewerbe/dachbegruenung.json` | AP-110 |
+| Umgestaltung: Maschinenpark-Details, typische Projektgrößen | `content/leistungen/gewerbe/umgestaltung-aussenanlagen.json` | AP-111 |
+| Begutachtung: Bestellungskörperschaft des Gutachtertitels (2.4.1), Honorarrahmen, Beispiel-Gutachten | `content/leistungen/gewerbe/begutachtung.json` | AP-112 |
 
 **AP-33:** In den vier Gewerbe-Leistungsdateien waren zu diesen Punkten FAQ-Antworten als
 `[OFFEN: …]` entworfen. Da FAQ-Antworten sichtbar auf der Seite **und** im FAQPage-Schema
 ausgegeben werden (Grundregel 2: kein sichtbarer Platzhaltertext), wurden die betroffenen
 Fragen entfernt statt mit Platzhaltern zu veröffentlichen. Sobald die Werte vorliegen:
 Fragen wieder aufnehmen und beantworten.
+
+**AP-110–112 (gleiche Regel):** Die neuen bzw. verbreiterten Gewerbe-Seiten
+(`umgestaltung-aussenanlagen`, `begutachtung`, `dachbegruenung`) sind bewusst so
+formuliert, dass sie nur bestätigte Fakten der Gewerbekunden-Seite verwenden.
+Die drei Zeilen oben nennen, was fehlt, um die Seiten inhaltlich zu vertiefen —
+keine sichtbaren Platzhalter im Seitentext.
 
 ## Rechtstexte
 

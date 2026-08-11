@@ -384,7 +384,19 @@ export const WELTEN = {
     weltLabel: 'Gewerbekunde',
     navLabel: 'Für Gewerbekunden',
     base: '../../../',
-    slugs: ['baumkontrolle', 'baumarbeiten', 'sturmnotdienst', 'dachbegruenung', 'aussenanlagenpflege'],
+    // AP-108: Reihenfolge = Kachel-Reihenfolge auf /gewerbekunden/.
+    slugs: [
+      'aussenanlagenpflege', 'umgestaltung-aussenanlagen', 'dachbegruenung',
+      'baumkontrolle', 'baumarbeiten', 'sturmnotdienst', 'begutachtung',
+    ],
+    // AP-108: Gewerbe-eigene Nav-Labels. Fallback bleibt LEISTUNGEN_NAV
+    // (z. B. Sturmnotdienst, Baumkontrolle, Baumarbeiten).
+    navLabels: {
+      'aussenanlagenpflege': 'Pflege & Instandhaltung',
+      'umgestaltung-aussenanlagen': 'Umgestaltung & Außenanlagen',
+      'dachbegruenung': 'Dach-, Fassaden- & Stellplatzbegrünung',
+      'begutachtung': 'Fachliche Begutachtung',
+    },
   },
 };
 
@@ -430,7 +442,7 @@ export function renderNavSubmenu(base) {
   const labelBySlug = new Map(LEISTUNGEN_NAV.map((l) => [l.slug, l.label]));
   const block = (welt) => {
     const items = welt.slugs
-      .map((s) => `<li><a href="${base}${welt.pfad}leistungen/${s}/">${esc(labelBySlug.get(s) || s)}</a></li>`)
+      .map((s) => `<li><a href="${base}${welt.pfad}leistungen/${s}/">${esc(welt.navLabels?.[s] || labelBySlug.get(s) || s)}</a></li>`)
       .join('\n              ');
     return `<li class="nav-submenu-group">
             <a class="nav-submenu-head" href="${base}${welt.pfad}">${esc(welt.navLabel)}</a>
@@ -462,7 +474,13 @@ const FOOTER_SIGNATUR = [
 export function renderFooterLeistungen(base) {
   const labelBySlug = new Map(LEISTUNGEN_NAV.map((l) => [l.slug, l.label]));
   const items = FOOTER_SIGNATUR
-    .map(({ slug, pfad }) => `<li><a href="${base}${pfad}leistungen/${slug}/">${esc(labelBySlug.get(slug) || slug)}</a></li>`)
+    .map(({ slug, pfad }) => {
+      // AP-108: Einträge, die in die Gewerbe-Welt zeigen, tragen das Gewerbe-Label.
+      const label = pfad === WELTEN.gewerbe.pfad
+        ? (WELTEN.gewerbe.navLabels?.[slug] || labelBySlug.get(slug) || slug)
+        : (labelBySlug.get(slug) || slug);
+      return `<li><a href="${base}${pfad}leistungen/${slug}/">${esc(label)}</a></li>`;
+    })
     .join('\n        ');
   return `<ul class="footer-list">
         ${items}

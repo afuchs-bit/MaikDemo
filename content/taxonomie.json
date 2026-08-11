@@ -10,6 +10,8 @@
     { "slug": "sturmnotdienst",      "label": "Sturmnotdienst" },
     { "slug": "holzverkauf",         "label": "Holzverkauf" },
     { "slug": "aussenanlagenpflege", "label": "Außenanlagenpflege" },
+    { "slug": "umgestaltung-aussenanlagen", "label": "Umgestaltung & Außenanlagen" },
+    { "slug": "begutachtung",          "label": "Fachliche Begutachtung" },
     { "slug": "gartenpflege",              "label": "Gartenpflege" },
     { "slug": "terrasse-pflasterarbeiten", "label": "Terrassen & Pflaster" },
     { "slug": "palmen-winterfest",         "label": "Palmen & winterfest" },

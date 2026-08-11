@@ -35,7 +35,9 @@ async function findHtmlFiles(dir) {
   const files = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     if (entry.isDirectory()) {
-      if (!EXCLUDED_DIRS.has(entry.name)) files.push(...await findHtmlFiles(path.join(dir, entry.name)));
+      // Versteckte Ordner immer ueberspringen – unter .claude/worktrees/ liegen
+      // komplette Checkouts paralleler Sessions, deren Dateien uns nicht gehoeren.
+      if (!entry.name.startsWith('.') && !EXCLUDED_DIRS.has(entry.name)) files.push(...await findHtmlFiles(path.join(dir, entry.name)));
     } else if (entry.isFile() && entry.name.endsWith('.html')) {
       files.push(path.join(dir, entry.name));
     }

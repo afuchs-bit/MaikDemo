@@ -1905,3 +1905,97 @@
   }
   .b2b-contact .b2b-form--modern.is-enhanced .b2b-stage-panel[hidden] { display: none; }
 }
+
+/* ============================================================
+   AP-109 – Flip-Kacheln der Anliegen-Sektion (Design-Port der
+   Privatkunden-Leistungskarten aus privat-form.css, Scope
+   .gewerbe-request-paths). Mechanik-Klassennamen bewusst identisch
+   zur Privat-Welt (private-service-*), damit beide Welten dieselbe
+   Struktur teilen; nur der Sektions-Scope unterscheidet sich.
+   ============================================================ */
+.gewerbe-request-paths .b2b-request-grid li { perspective: 1400px; }
+.gewerbe-request-paths .private-service-flip { position: relative; min-height: 352px; height: 100%; transition: transform .24s var(--ease); }
+.gewerbe-request-paths .private-service-flip:not(.is-flipped):hover { transform: translateY(-3px); }
+.gewerbe-request-paths .private-service-flip__inner { position: relative; min-height: inherit; height: 100%; transform-style: preserve-3d; transition: transform .58s cubic-bezier(.22,.72,.24,1); }
+.gewerbe-request-paths .private-service-flip.is-flipped .private-service-flip__inner { transform: rotateY(180deg); }
+.gewerbe-request-paths .private-service-face { display: flex; flex-direction: column; align-items: flex-start; position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(49,82,0,.16); border-radius: 19px; box-shadow: 0 22px 42px -35px rgba(19,26,8,.5); backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: border-color .24s var(--ease),box-shadow .24s var(--ease); }
+.gewerbe-request-paths .private-service-face[aria-hidden="true"] { pointer-events: none; }
+.gewerbe-request-paths .private-service-face--front { background: #fff; color: var(--ink); }
+.gewerbe-request-paths .private-service-flip:not(.is-flipped):hover .private-service-face--front,.gewerbe-request-paths .private-service-flip:focus-within .private-service-face--front { border-color: rgba(49,82,0,.4); box-shadow: 0 28px 44px -31px rgba(19,26,8,.43); }
+.gewerbe-request-paths .private-service-face--back { padding: 20px; transform: rotateY(180deg); background: radial-gradient(circle at 88% 8%,rgba(255,227,0,.14),transparent 32%),linear-gradient(145deg,#244d0c 0%,#173b08 100%); color: #fff; }
+.gewerbe-request-paths .private-service-flip.is-flipped:hover .private-service-face--back,.gewerbe-request-paths .private-service-flip:focus-within .private-service-face--back { border-color: rgba(255,227,0,.48); box-shadow: 0 30px 48px -29px rgba(15,35,5,.64); }
+.gewerbe-request-paths .private-service-action:focus-visible,.gewerbe-request-paths .private-service-request-link:focus-visible,.gewerbe-request-paths .private-service-links a:focus-visible,.gewerbe-request-paths .private-service-back-button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.gewerbe-request-paths .b2b-request-media { display: block; flex: 0 0 auto; width: 100%; height: clamp(122px,9.2vw,128px); overflow: hidden; border-bottom: 1px solid rgba(49,82,0,.11); background: #f4f7ef; }
+.gewerbe-request-paths .b2b-request-media picture,.gewerbe-request-paths .b2b-request-media img { display: block; width: 100%; height: 100%; }
+.gewerbe-request-paths .b2b-request-media img { object-fit: cover; object-position: 50% 50%; transition: transform .25s var(--ease); }
+.gewerbe-request-paths .private-service-flip:not(.is-flipped):hover .b2b-request-media img { transform: scale(1.015); }
+.gewerbe-request-paths .private-service-flip--care .b2b-request-media img { transform: scale(1.08) translateY(8%); }
+.gewerbe-request-paths .private-service-flip--care:not(.is-flipped):hover .b2b-request-media img { transform: scale(1.09) translateY(8%); }
+.gewerbe-request-paths .b2b-request-copy { flex: 1 1 auto; min-width: 0; width: 100%; padding: clamp(17px,1.6vw,20px) clamp(20px,2vw,25px) 12px; }
+.gewerbe-request-paths .b2b-request-copy h3 { margin: 0; color: var(--green-900); font-family: var(--display); font-size: clamp(1.12rem,1.42vw,1.34rem); line-height: 1.12; letter-spacing: -.02em; }
+.gewerbe-request-paths .b2b-request-copy p { margin: 9px 0 0; color: var(--ink-mute); font-size: .86rem; line-height: 1.48; }
+.gewerbe-request-paths .private-service-actions { display: grid; grid-template-columns: minmax(0,.98fr) minmax(0,1.02fr); gap: 8px; width: 100%; padding: 8px clamp(20px,2vw,25px) 20px; }
+.gewerbe-request-paths .private-service-action { display: inline-flex; align-items: center; justify-content: center; min-width: 0; min-height: 46px; padding: 10px 9px; border: 1px solid var(--green-700); border-radius: 999px; font-family: var(--body); font-size: .78rem; font-weight: 800; line-height: 1.15; text-align: center; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease); }
+.gewerbe-request-paths .private-service-action:hover { transform: translateY(-1px); }
+.gewerbe-request-paths .private-service-action--primary { background: var(--green-700); color: #fff; box-shadow: 0 13px 24px -17px rgba(32,76,8,.8); }
+.gewerbe-request-paths .private-service-action--primary:hover { border-color: var(--green-900); background: var(--green-900); color: #fff; }
+.gewerbe-request-paths .private-service-request-link { display: inline-flex; gap: 3px; align-items: center; justify-content: flex-end; min-width: 0; min-height: 46px; padding: 8px 0; color: var(--green-700); font-family: var(--body); font-size: .75rem; font-weight: 800; line-height: 1.2; text-align: right; text-decoration: none; white-space: nowrap; transition: color .2s var(--ease); }
+.gewerbe-request-paths .private-service-request-link:hover { color: var(--green-900); }
+.gewerbe-request-paths .private-service-request-link b { flex: 0 0 auto; color: var(--coral-700); font-size: 1rem; transition: transform .2s var(--ease); }
+.gewerbe-request-paths .private-service-request-link:hover b { transform: translateX(3px); }
+.gewerbe-request-paths .private-service-back-head { width: 100%; }
+.gewerbe-request-paths .private-service-back-head > span { display: block; color: var(--yellow); font-size: .72rem; font-weight: 900; letter-spacing: .11em; line-height: 1.2; text-transform: uppercase; }
+.gewerbe-request-paths .private-service-back-head h3 { margin: 8px 0 0; color: #fff; font-family: var(--display); font-size: clamp(1.16rem,1.4vw,1.32rem); line-height: 1.13; letter-spacing: -.02em; }
+.gewerbe-request-paths .private-service-links { display: grid; flex: 1 1 auto; gap: 7px; align-content: center; width: 100%; padding: 8px 0; }
+.gewerbe-request-paths .private-service-links a { display: flex; gap: 12px; align-items: center; justify-content: space-between; min-height: 44px; padding: 9px 14px 9px 16px; border: 1px solid rgba(255,255,255,.24); border-radius: 12px; background: rgba(255,255,255,.08); color: #fff; font-family: var(--body); font-size: .84rem; font-weight: 800; line-height: 1.2; text-decoration: none; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease); }
+.gewerbe-request-paths .private-service-links a:hover { border-color: rgba(255,227,0,.72); background: #fff; color: var(--green-900); transform: translateX(2px); }
+.gewerbe-request-paths .private-service-links a b { flex: 0 0 auto; color: var(--yellow); font-size: 1rem; transition: transform .2s var(--ease); }
+.gewerbe-request-paths .private-service-links a:hover b { color: var(--coral-700); transform: translateX(3px); }
+.gewerbe-request-paths .private-service-back-button { display: inline-flex; gap: 8px; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: 9px 14px; border: 1px solid rgba(255,255,255,.38); border-radius: 999px; background: transparent; color: #fff; font-family: var(--body); font-size: .8rem; font-weight: 800; line-height: 1.2; cursor: pointer; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease); }
+.gewerbe-request-paths .private-service-back-button:hover { border-color: #fff; background: rgba(255,255,255,.12); }
+
+/* Sturm-Kachel: Storm-Optik der alten Karte auf die Flip-Front übertragen.
+   Aktionszeile einspaltig, damit die absolut positionierte Notfallnummer
+   (.b2b-storm-phone, liegt AUSSERHALB des Artikels im <li>) wie bisher
+   rechts unten neben dem Anfrage-Link Platz hat. */
+.gewerbe-request-paths .b2b-request-storm { transition: none; }
+.gewerbe-request-paths .b2b-request-storm:hover { transform: none; }
+.gewerbe-request-paths .private-service-flip--storm { min-height: 400px; }
+.gewerbe-request-paths .private-service-flip--storm .private-service-face--front { border-color: rgba(192,85,47,.32); background: linear-gradient(180deg,#fff,#fffaf7); }
+.gewerbe-request-paths .private-service-flip--storm .b2b-request-media { border-bottom-color: rgba(192,85,47,.2); }
+.gewerbe-request-paths .private-service-flip--storm .private-service-actions { grid-template-columns: 1fr; }
+.gewerbe-request-paths .private-service-flip--storm .private-service-request-link { justify-content: flex-start; padding-right: clamp(150px,11vw,165px); color: var(--coral-700); text-align: left; }
+.gewerbe-request-paths .private-service-flip--storm .private-service-request-link:hover { color: var(--coral-700); }
+.gewerbe-request-paths .b2b-storm-phone { transition: border-color .2s var(--ease),background .2s var(--ease),transform .2s var(--ease),opacity .25s var(--ease),visibility .25s var(--ease); }
+.gewerbe-request-paths .private-service-flip.is-flipped ~ .b2b-storm-phone { opacity: 0; visibility: hidden; pointer-events: none; }
+
+@media (max-width:1160px) { .gewerbe-request-paths .b2b-request-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (min-width:768px) and (max-width:900px) {
+  .gewerbe-request-paths .private-service-flip { min-height: 365px; }
+  .gewerbe-request-paths .private-service-flip--storm { min-height: 410px; }
+  .gewerbe-request-paths .private-service-actions { padding-right: 10px; padding-left: 10px; }
+}
+@media (max-width:767px) {
+  .gewerbe-request-paths .b2b-request-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
+  .gewerbe-request-paths .private-service-flip { min-height: 360px; }
+  .gewerbe-request-paths .private-service-flip--storm { min-height: 408px; }
+  .gewerbe-request-paths .b2b-request-media { height: clamp(120px,33vw,134px); }
+  .gewerbe-request-paths .b2b-request-copy { padding: 18px 18px 10px; }
+  .gewerbe-request-paths .b2b-request-copy h3 { font-size: 1.15rem; }
+  .gewerbe-request-paths .b2b-request-copy p { margin-top: 6px; font-size: .84rem; }
+  .gewerbe-request-paths .private-service-actions { padding: 8px 10px 20px; }
+  .gewerbe-request-paths .private-service-face--back { padding: 20px; }
+}
+@media (max-width:380px) {
+  .gewerbe-request-paths .private-service-actions { grid-template-columns: 1fr; }
+  .gewerbe-request-paths .private-service-flip { min-height: 440px; }
+  .gewerbe-request-paths .private-service-flip--storm { min-height: 452px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .gewerbe-request-paths .private-service-flip,.gewerbe-request-paths .private-service-flip__inner { transition: none; }
+  .gewerbe-request-paths .private-service-flip__inner,.gewerbe-request-paths .private-service-flip.is-flipped .private-service-flip__inner { transform: none; }
+  .gewerbe-request-paths .private-service-face { transition: none; }
+  .gewerbe-request-paths .private-service-face--back { transform: none; opacity: 0; visibility: hidden; }
+  .gewerbe-request-paths .private-service-flip.is-flipped .private-service-face--front { opacity: 0; visibility: hidden; }
+  .gewerbe-request-paths .private-service-flip.is-flipped .private-service-face--back { opacity: 1; visibility: visible; }
+}
