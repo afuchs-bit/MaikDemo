@@ -1954,10 +1954,11 @@
 .gewerbe-request-paths .private-service-back-button { display: inline-flex; gap: 8px; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: 9px 14px; border: 1px solid rgba(255,255,255,.38); border-radius: 999px; background: transparent; color: #fff; font-family: var(--body); font-size: .8rem; font-weight: 800; line-height: 1.2; cursor: pointer; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease); }
 .gewerbe-request-paths .private-service-back-button:hover { border-color: #fff; background: rgba(255,255,255,.12); }
 
-/* Sturm-Kachel: Storm-Optik der alten Karte auf die Flip-Front übertragen.
-   Aktionszeile einspaltig, damit die absolut positionierte Notfallnummer
-   (.b2b-storm-phone, liegt AUSSERHALB des Artikels im <li>) wie bisher
-   rechts unten neben dem Anfrage-Link Platz hat. */
+/* Sturm-Kachel: eigene Storm-Optik auf der Kartenfront. Aktionszeile einspaltig,
+   damit die absolut positionierte Notfallnummer (.b2b-storm-phone, liegt
+   AUSSERHALB des Artikels im <li>) rechts unten neben dem Anfrage-Link Platz
+   hat. AP-119: Die Karte hat nur ein Ziel und flippt nicht mehr - das Ausblenden
+   der Nummer beim Flip ist damit entfallen, min-height und Padding bleiben. */
 .gewerbe-request-paths .b2b-request-storm { transition: none; }
 .gewerbe-request-paths .b2b-request-storm:hover { transform: none; }
 .gewerbe-request-paths .private-service-flip--storm { min-height: 400px; }
@@ -1966,8 +1967,7 @@
 .gewerbe-request-paths .private-service-flip--storm .private-service-actions { grid-template-columns: 1fr; }
 .gewerbe-request-paths .private-service-flip--storm .private-service-request-link { justify-content: flex-start; padding-right: clamp(150px,11vw,165px); color: var(--coral-700); text-align: left; }
 .gewerbe-request-paths .private-service-flip--storm .private-service-request-link:hover { color: var(--coral-700); }
-.gewerbe-request-paths .b2b-storm-phone { transition: border-color .2s var(--ease),background .2s var(--ease),transform .2s var(--ease),opacity .25s var(--ease),visibility .25s var(--ease); }
-.gewerbe-request-paths .private-service-flip.is-flipped ~ .b2b-storm-phone { opacity: 0; visibility: hidden; pointer-events: none; }
+.gewerbe-request-paths .b2b-storm-phone { transition: border-color .2s var(--ease),background .2s var(--ease),transform .2s var(--ease); }
 
 @media (max-width:1160px) { .gewerbe-request-paths .b2b-request-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (min-width:768px) and (max-width:900px) {
