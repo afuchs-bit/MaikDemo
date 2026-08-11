@@ -400,7 +400,7 @@ export const WELTEN = {
   },
 };
 
-// AP-33: Standard-Welt für Links aus weltfremdem Kontext (Projekt-/Ratgeberseiten).
+// AP-33: Standard-Welt für Links aus weltfremdem Kontext (Projektseiten).
 // Slugs, die es nur in der Gewerbe-Welt gibt, zeigen dorthin – sonst liefe der Link ins Leere.
 const NUR_GEWERBE = new Set(
   WELTEN.gewerbe.slugs.filter((s) => !WELTEN.privat.slugs.includes(s)),
@@ -416,7 +416,7 @@ const KUNDENGRUPPE_META = {
   gewerbe: { href: 'gewerbekunden/', label: 'Für Gewerbekunden' },
 };
 
-// AP-18 – EINZIGE Quelle der Navigations-Leistungsliste (Header-Dropdown + Footer).
+// AP-18 – EINZIGE Quelle der Navigations-Leistungsliste im Header-Dropdown.
 // Reihenfolge = fachliche Priorität (wie die Übersicht). Labels = navLabel der
 // content/leistungen/*.json; build-leistungen.mjs warnt bei Abweichung.
 export const LEISTUNGEN_NAV = [
@@ -455,36 +455,6 @@ export function renderNavSubmenu(base) {
           ${block(WELTEN.privat)}
           ${block(WELTEN.gewerbe)}
           </ul>`;
-}
-
-// Footer-Spalte: nur Signatur-Leistungen als Quick-Links (Differenzierer + hohe
-// Kaufabsicht). Die vollstaendige Liste bleibt ueber die Hub-Seiten erreichbar
-// (Nav-Dropdown, Bereiche-Spalte, "Alle Leistungen im Ueberblick"), daher hier
-// bewusst kurz. Die ersten fuenf zeigen in die Privat-Welt (Standard-Publikum der
-// Startseite); Aussenanlagenpflege haelt die Gewerbe-Welt praesent (reine
-// Gewerbe-Leistung, existiert nur dort).
-const FOOTER_SIGNATUR = [
-  { slug: 'baumkontrolle', pfad: WELTEN.privat.pfad },
-  { slug: 'baumarbeiten', pfad: WELTEN.privat.pfad },
-  { slug: 'sturmnotdienst', pfad: WELTEN.privat.pfad },
-  { slug: 'gartengestaltung', pfad: WELTEN.privat.pfad },
-  { slug: 'gartenpflege', pfad: WELTEN.privat.pfad },
-  { slug: 'aussenanlagenpflege', pfad: WELTEN.gewerbe.pfad },
-];
-export function renderFooterLeistungen(base) {
-  const labelBySlug = new Map(LEISTUNGEN_NAV.map((l) => [l.slug, l.label]));
-  const items = FOOTER_SIGNATUR
-    .map(({ slug, pfad }) => {
-      // AP-108: Einträge, die in die Gewerbe-Welt zeigen, tragen das Gewerbe-Label.
-      const label = pfad === WELTEN.gewerbe.pfad
-        ? (WELTEN.gewerbe.navLabels?.[slug] || labelBySlug.get(slug) || slug)
-        : (labelBySlug.get(slug) || slug);
-      return `<li><a href="${base}${pfad}leistungen/${slug}/">${esc(label)}</a></li>`;
-    })
-    .join('\n        ');
-  return `<ul class="footer-list">
-        ${items}
-      </ul>`;
 }
 
 // Der Footer bleibt in allen Seitengeneratoren identisch; lediglich der primäre
@@ -809,140 +779,6 @@ export async function renderLeistungPage(opts) {
     referenzprojekte: lpRefs(refProjects, base),
     faqHtml: lpFaq(leistung.faq || []),
     verlinkung: lpVerlinkung(leistung, labelBySlug, base, welt, contactHref),
-  });
-}
-
-// ============================================================
-// AP-22 – Ratgeber (/ratgeber/<slug>/ und /ratgeber/)
-// ============================================================
-
-const LEISTUNG_LABEL = new Map(LEISTUNGEN_NAV.map((l) => [l.slug, l.label]));
-
-function rgSections(sections) {
-  return (sections || [])
-    .map((s) => {
-      const paras = (s.absaetze || []).map((a) => `      <p>${esc(a)}</p>`).join('\n');
-      return `      <h2>${esc(s.h2)}</h2>\n${paras}`;
-    })
-    .join('\n\n');
-}
-
-function rgVerwandte(slugs, base) {
-  return (slugs || [])
-    .map((slug) => {
-      const label = esc(LEISTUNG_LABEL.get(slug) || slug);
-      // AP-33: wie leistungLinks – Ratgeberartikel gehören keiner Welt an, daher Standard-Welt.
-      return `<li><a class="tag-link" href="${base}${weltPfadFuerSlug(slug)}leistungen/${encodeURIComponent(slug)}/">${label}</a></li>`;
-    })
-    .join('\n            ');
-}
-
-function articleJsonLd(a, canonical) {
-  return JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: a.h1,
-    description: a.metaDescription,
-    inLanguage: 'de-DE',
-    datePublished: a.datum,
-    dateModified: a.datum,
-    author: { '@id': `${SITE}/#maik-rohdich` },
-    publisher: { '@id': `${SITE}/#business` },
-    mainEntityOfPage: canonical,
-  }, null, 2);
-}
-
-function ratgeberBreadcrumb(kurz, canonical) {
-  return JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
-      { '@type': 'ListItem', position: 2, name: 'Ratgeber', item: `${SITE}/ratgeber/` },
-      { '@type': 'ListItem', position: 3, name: kurz, item: canonical },
-    ],
-  }, null, 2);
-}
-
-// ---------- Ratgeber-Artikel ----------
-export async function renderRatgeberPage(opts) {
-  const { article, slug, cssVersion, jsVersion } = opts;
-  const [page, header, footer, logo] = await Promise.all([
-    loadTpl('ratgeber.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
-  ]);
-  const base = BASE_LEISTUNG;
-  const canonical = `${SITE}/ratgeber/${slug}/`;
-  const kurz = article.kurz || article.h1;
-
-  return fill(page, {
-    base,
-    slug: esc(slug),
-    cssVersion: escAttr(cssVersion),
-    jsVersion: escAttr(jsVersion),
-    title: esc(article.title),
-    ogTitle: escAttr(article.title),
-    description: escAttr(truncate(article.metaDescription, 160)),
-    canonical: escAttr(canonical),
-    ogImage: escAttr(`${SITE}/assets/img/hero/hero-garten-herne-1600.webp`),
-    breadcrumbJsonLd: ratgeberBreadcrumb(kurz, canonical),
-    articleJsonLd: articleJsonLd(article, canonical),
-    faqJsonLd: faqJsonLd(article.faq || []),
-    logo: logo.trim(),
-    header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, footerTemplateData(base, 'neutral')).trim(),
-    h1: esc(article.h1),
-    kurz: esc(kurz),
-    intro: esc(article.intro),
-    sections: rgSections(article.sections),
-    quelle: esc(article.quelle),
-    stand: esc(article.stand),
-    faqHtml: lpFaq(article.faq || []),
-    verwandteLinks: rgVerwandte(article.verwandteLeistungen, base),
-  });
-}
-
-// ---------- Ratgeber-Übersicht ----------
-export async function renderRatgeberOverview(opts) {
-  const { artikel, cssVersion, jsVersion } = opts;
-  const [page, header, footer, logo] = await Promise.all([
-    loadTpl('ratgeber-index.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
-  ]);
-  const base = BASE_GALLERY;
-  const canonical = `${SITE}/ratgeber/`;
-
-  const cards = artikel.map((a) => {
-    const href = `${encodeURIComponent(a.slug)}/`;
-    return `<a class="lpx-card" href="${href}">
-          <span class="lpx-tag">Ratgeber</span>
-          <h2>${esc(a.h1)}</h2>
-          <p>${esc(firstSentence(a.intro))}</p>
-          <span class="lpx-more">Weiterlesen <span aria-hidden="true">→</span></span>
-        </a>`;
-  }).join('\n        ');
-
-  const breadcrumb = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
-      { '@type': 'ListItem', position: 2, name: 'Ratgeber', item: canonical },
-    ],
-  }, null, 2);
-
-  return fill(page, {
-    base,
-    cssVersion: escAttr(cssVersion),
-    jsVersion: escAttr(jsVersion),
-    title: esc('Ratgeber rund um den Garten | Maik Rohdich Garten- und Landschaftsbau'),
-    ogTitle: escAttr('Ratgeber – Maik Rohdich Garten- und Landschaftsbau'),
-    description: escAttr('Fachlich fundierte Antworten auf häufige Gartenfragen – Fristen, Recht und Praxis, verständlich erklärt von Maik Rohdich aus Herne.'),
-    canonical: escAttr(canonical),
-    ogImage: escAttr(`${SITE}/assets/img/hero/hero-garten-herne-1600.webp`),
-    breadcrumbJsonLd: breadcrumb,
-    logo: logo.trim(),
-    header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, footerTemplateData(base, 'neutral')).trim(),
-    cards,
   });
 }
 

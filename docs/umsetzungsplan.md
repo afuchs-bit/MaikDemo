@@ -696,19 +696,16 @@ Struktur: `/gartenbau-<stadt>/` mit Ortsbezug im ersten Absatz, mindestens zwei 
 
 ### AP-22 · Fachinhalte für Antwortmaschinen
 
-Drei Inhalte, die überdurchschnittlich häufig von Sprachmodellen zitiert werden, weil sie eine sachliche Frage vollständig beantworten:
+Zwei Inhalte, die überdurchschnittlich häufig von Sprachmodellen zitiert werden, weil sie eine sachliche Frage vollständig beantworten:
 
 **1. Verkehrssicherungspflicht bei Bäumen** — auf `/leistungen/baumkontrolle-gutachten/`
 Wer haftet, wann eine Kontrolle nötig ist, welcher Turnus üblich ist, was ein Befund enthält, was bei Gewerbeobjekten und Hausverwaltungen zusätzlich gilt. Das ist zugleich das stärkste Verkaufsargument gegenüber Firmen.
 
-**2. Heckenschnitt-Fristen** — eigene Seite `/ratgeber/heckenschnitt-fristen/`
-§ 39 BNatSchG: starker Rückschnitt nur 1. Oktober bis 28./29. Februar, Form- und Pflegeschnitt ganzjährig zulässig. Laut Erstgespräch kommen Kunden regelmäßig im Februar zu spät damit an. Saisonal hohes Suchvolumen, echter Nutzen, natürlicher Backlink-Anlass. **Fachlich exakt arbeiten, Gesetzesstand prüfen.**
-
-**3. Ablauf einer Anfrage** — auf der Startseite, als Diagramm
+**2. Ablauf einer Anfrage** — auf der Startseite, als Diagramm
 Vom Erstgespräch bis zur Umsetzung, mit dem expliziten Hinweis auf Terminpflicht.
 
 **Akzeptanzkriterien:**
-- [ ] Alle drei Inhalte existieren
+- [ ] Beide Inhalte existieren
 - [ ] Jeder beantwortet die Leitfrage im ersten Absatz vollständig
 - [ ] Rechtsangaben mit Quellenangabe und Stand versehen
 - [ ] Ablaufdiagramm ist textlich zugänglich, nicht nur als Grafik

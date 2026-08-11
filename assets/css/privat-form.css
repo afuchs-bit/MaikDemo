@@ -2410,10 +2410,22 @@
   padding-bottom: 18px;
 }
 .private-form-head-note {
-  display: none;
+  display: grid;
   align-self: center;
 }
-.private-form.is-acute .private-form-head-note { display: grid; }
+.private-form-head-note.form-contact-head__note--emergency { display: none; }
+.private-form.is-acute .private-form-head-note.form-contact-head__note--standard { display: none; }
+.private-form.is-acute .private-form-head-note.form-contact-head__note--emergency { display: grid; }
+.private-form-head-note.form-contact-head__note--standard > p {
+  display: block;
+  gap: 0;
+}
+.private-form-head-note.form-contact-head__note--standard .b2b-required-mark {
+  display: inline-block;
+  margin-left: .08em;
+  line-height: 1;
+  vertical-align: .04em;
+}
 .private-form-head-note > p {
   max-width: 205px;
   margin-top: 0;

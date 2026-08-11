@@ -76,19 +76,6 @@ aus derselben Quelle, also garantiert zeichengleich. Nie das Schema oder die Lis
 editieren; stattdessen die JSON pflegen und neu generieren. Das Ablaufdiagramm „So läuft eine
 Anfrage ab" ist eine statische, barrierefreie HTML-Sektion in `index.html` (semantisches `<ol>`).
 
-## Ratgeber (AP-22)
-
-Fachartikel für Antwortmaschinen liegen in `content/ratgeber/<slug>.json` und werden von
-`.github/scripts/build-ratgeber.mjs` zu `/ratgeber/<slug>/index.html` plus einer Übersicht
-`/ratgeber/index.html` generiert (Templates `ratgeber.html` / `ratgeber-index.html`,
-Render-Funktionen `renderRatgeberPage` / `renderRatgeberOverview`). Jeder Artikel bekommt
-Article-, Breadcrumb- und (falls `faq` vorhanden) FAQPage-JSON-LD; `author`/`publisher`
-referenzieren die Entitäten der Startseite per `@id`. Pflichtfelder: `h1`, `title`,
-`metaDescription`, `intro` (Leitfrage im ersten Absatz), `sections`, `quelle`, `stand`,
-`datum`. **Rechtsangaben immer mit Quelle und Stand.** Der Ratgeber ist über den Footer
-(„Bereiche") erreichbar. Ausführen über `npm run build` (läuft nach build-index und
-build-leistungen).
-
 Leistungsseiten können optional einen `fachtext`-Block tragen (siehe
 `content/leistungen/baumkontrolle.json` → Verkehrssicherungspflicht): `{titel, intro,
 bloecke:[{h3,text}], hinweis}`. Ohne das Feld erscheint kein Block.

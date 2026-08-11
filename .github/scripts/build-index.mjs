@@ -240,7 +240,7 @@ async function generatePages(projekte, taxLabels) {
 //
 // Bewusst On-Disk-Discovery statt Rekonstruktion aus taxonomie.json/content:
 // die deployten Dateien sind die einzige Wahrheit darueber, welche URLs es gibt,
-// und neue statische Seiten (z. B. /ratgeber/) landen automatisch in der Sitemap.
+// und neue statische Seiten landen automatisch in der Sitemap.
 //
 // Demo-Phase: Solange die Vorschau laeuft, tragen alle Seiten ein Blanket-noindex
 // (AP-01) und robots.txt sperrt alles. Die Sitemap listet trotzdem die Go-Live-URLs
