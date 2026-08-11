@@ -835,6 +835,32 @@
     if (pathValue() !== 'sturmschaden') openStage(1);
   }));
 
+  const scrollToRequestForm = (behavior = 'smooth') => {
+    const target = document.getElementById('anfrage');
+    if (!target) return;
+    // Pfadwechsel (insbesondere der Akutpfad) verändern die Formularhöhe und
+    // stellen den bisherigen Viewport über zwei Frames wieder her. Erst danach
+    // darf der gemeinsame Anfrage-Anker seine endgültige Position anfahren.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior, block: 'start' });
+    }));
+  };
+
+  document.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('a[href]');
+    if (!link || (link.target && link.target !== '_self')) return;
+    const targetUrl = new URL(link.href, location.href);
+    const isLocalRequestAnchor = targetUrl.origin === location.origin
+      && targetUrl.pathname === location.pathname
+      && targetUrl.search === location.search
+      && targetUrl.hash === '#anfrage';
+    if (!isLocalRequestAnchor) return;
+    event.preventDefault();
+    if (location.hash !== '#anfrage') history.pushState({}, '', targetUrl.href);
+    scrollToRequestForm(window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
+  });
+
   const query = new URLSearchParams(location.search);
   const queryPath = query.get('pfad');
   const queryService = query.get('leistung') || query.get('bereich');
@@ -843,9 +869,11 @@
   if (location.hash === '#anfrage' || location.hash === '#anfrage-erfolg') {
     const projectGrid = document.querySelector('[data-projekte-privat]');
     const anchorTarget = document.querySelector(location.hash);
+    if (location.hash === '#anfrage') scrollToRequestForm('auto');
     if (projectGrid && anchorTarget && 'MutationObserver' in window) {
       const observer = new MutationObserver(() => {
-        requestAnimationFrame(() => anchorTarget.scrollIntoView({ block: 'start' }));
+        if (location.hash === '#anfrage') scrollToRequestForm('auto');
+        else requestAnimationFrame(() => anchorTarget.scrollIntoView({ block: 'start' }));
         observer.disconnect();
       });
       observer.observe(projectGrid, { childList: true });

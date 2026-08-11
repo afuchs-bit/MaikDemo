@@ -25,8 +25,8 @@
 <link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(min-width: 901px)"
       imagesizes="38vw"
       imagesrcset="../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-480.avif 480w, ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-800.avif 800w, ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-1200.avif 1200w, ../assets/img/privat/hero/generated/desktop/teichgarten-mit-palmen-1600.avif 1600w" />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260811h" />
-<link rel="stylesheet" href="../assets/css/privat-form.css?v=20260811a" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260811i" />
+<link rel="stylesheet" href="../assets/css/privat-form.css?v=20260811e" />
 <link rel="stylesheet" href="../assets/css/customer-hero.css?v=20260811d" />
 <link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260809c" />
 
@@ -146,6 +146,15 @@
           Gartenbaumeister
         </text>
       </g>
+    </symbol>
+    <!-- Two-tone glyphs adapted from Google Material Design Icons (Apache-2.0): forum and lightbulb. -->
+    <symbol id="private-icon-advice" viewBox="0 0 24 24">
+      <path d="M15 11V4H4v8.17L5.17 11H6z" opacity=".3"/>
+      <path d="M16 13c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10zm-12-.83V4h11v7H5.17L4 12.17zM22 7c0-.55-.45-1-1-1h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7z"/>
+    </symbol>
+    <symbol id="private-icon-idea" viewBox="0 0 24 24">
+      <path d="M12 4C8.97 4 6.5 6.47 6.5 9.5c0 2.47 1.49 3.89 2.35 4.5h6.3c.86-.61 2.35-2.03 2.35-4.5C17.5 6.47 15.03 4 12 4z" opacity=".3"/>
+      <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm-4-5h8v2H8zm4-15C7.86 2 4.5 5.36 4.5 9.5c0 3.82 2.66 5.86 3.77 6.5h7.46c1.11-.64 3.77-2.68 3.77-6.5C19.5 5.36 16.14 2 12 2zm3.15 12h-6.3C7.99 13.39 6.5 11.97 6.5 9.5 6.5 6.47 8.97 4 12 4s5.5 2.47 5.5 5.5c0 2.47-1.49 3.89-2.35 4.5z"/>
     </symbol>
   </defs>
 </svg>
@@ -297,19 +306,10 @@
           </picture>
         </div>
 
-        <div class="private-hero-controls" data-private-hero-controls hidden>
-          <div class="private-hero-dots" data-private-hero-dots aria-label="Hero-Bild auswählen"></div>
-          <button class="private-hero-toggle" type="button" data-private-hero-toggle aria-label="Bildwechsel pausieren">
-            <svg class="private-hero-icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
-            <svg class="private-hero-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
-          </button>
-        </div>
-
         <figcaption>
           <span>Von Maik Rohdich</span>
           <strong>Geplant und umgesetzt in der Region.</strong>
         </figcaption>
-        <span class="sr-only" data-private-hero-status aria-live="polite" aria-atomic="true"></span>
 
         <script type="application/json" data-private-hero-data>
           [
@@ -524,8 +524,8 @@
       </li>
     </ul>
     <div class="b2b-request-links reveal">
-      <a class="b2b-request-route b2b-request-procurement" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon b2b-request-icon--advice" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M10 9h23a6 6 0 0 1 6 6v12a6 6 0 0 1-6 6H21l-9 7v-7h-2a6 6 0 0 1-6-6V15a6 6 0 0 1 6-6Z"/><path d="M14 18h15M14 24h10"/><circle class="b2b-request-icon-accent-fill" cx="36" cy="33" r="6.5"/><path class="b2b-request-icon-accent" d="m33.3 33 1.8 1.8 3.8-4.5"/></svg></span><span><strong>Noch unsicher?</strong><span>Maik Rohdich nimmt sich persönlich die Zeit, um Sie zu beraten.</span></span><b aria-hidden="true">→</b></a>
-      <a class="b2b-request-route b2b-request-other" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon b2b-request-icon--idea" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M6 39h36M10 37c3-6 8-9 14-9s11 3 14 9M24 28V16M24 20c-5 0-8-3-8-8 5-1 8 2 8 8Zm0 0c5 0 8-3 8-8-5-1-8 2-8 8Z"/><path class="b2b-request-icon-accent" d="M38 7v7M34.5 10.5h7M35.5 17.5l-2 2M40.5 17.5l2 2"/></svg></span><span><strong>Anderes Vorhaben?</strong><span>Gartenwunsch besprechen</span></span><b aria-hidden="true">→</b></a>
+      <a class="b2b-request-route b2b-request-procurement" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon" aria-hidden="true"><svg focusable="false"><use href="#private-icon-advice"/></svg></span><span><strong>Noch unsicher?</strong><span>Maik Rohdich nimmt sich persönlich die Zeit, um Sie zu beraten.</span></span><b aria-hidden="true">→</b></a>
+      <a class="b2b-request-route b2b-request-other" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon" aria-hidden="true"><svg focusable="false"><use href="#private-icon-idea"/></svg></span><span><strong>Anderes Vorhaben?</strong><span>Gartenwunsch besprechen</span></span><b aria-hidden="true">→</b></a>
     </div>
   </div>
 </section>
@@ -899,7 +899,7 @@
 </section>
 
 <!-- ============ GARTENPROJEKT-ANFRAGE ============ -->
-<section class="section private-contact" id="anfrage" aria-labelledby="anfrage-title">
+<section class="section private-contact" aria-labelledby="anfrage-title">
   <div class="container">
     <header class="private-contact-intro reveal">
       <h2 id="anfrage-title">Der erste Schritt zu Ihrem Gartenprojekt.</h2>
@@ -951,7 +951,7 @@
                 <span aria-hidden="true">→</span>
               </a>
             </aside>
-            <div class="private-form-main">
+            <div class="private-form-main" id="anfrage">
               <div class="b2b-form-head form-contact-head">
                 <div class="private-form-head-copy form-contact-head__copy">
                   <span class="b2b-form-step" data-form-head-kicker>Ihre Anfrage in wenigen Schritten</span>
@@ -1471,7 +1471,7 @@
 
 <!-- ============ FOOTER ============ -->
 <!-- BUILD:site-footer:start -->
-<footer class="site-footer" data-footer-context="private">
+<footer class="site-footer">
   <div class="container">
     <div class="footer-main">
       <div class="footer-brand-block">
@@ -1484,20 +1484,6 @@
           <svg class="brand-logo brand-logo-light" viewBox="0 0 640 150" role="img" aria-hidden="true"><use href="#brand-logo"/></svg>
         </a>
       </div>
-
-      <nav class="footer-navigation" aria-label="Footer-Navigation">
-        <details class="footer-nav-group" data-footer-disclosure open>
-          <summary><span>Schnellzugriff</span><span class="footer-disclosure-icon" aria-hidden="true"></span></summary>
-          <ul class="footer-link-list">
-            <li><a href="../privatkunden/">Privatkunden</a></li>
-            <li><a href="../gewerbekunden/">Gewerbekunden</a></li>
-            <li><a href="../projekte/?ansicht=galerie">Galerie</a></li>
-            <li><a href="../#ueber">Über uns</a></li>
-            <li><a href="../kontakt/">Kontakt</a></li>
-          </ul>
-        </details>
-
-      </nav>
 
       <section class="footer-contact-block" aria-labelledby="footer-contact-title">
         <h2 class="footer-heading" id="footer-contact-title">Direkter Kontakt</h2>
@@ -1519,14 +1505,26 @@
             <span><small>E-Mail</small><strong>Maik@rohdich.de</strong></span>
           </a>
         </div>
-        <div class="footer-contact-action-row">
-          <p class="footer-hours"><strong>Mo–Fr 09:00–17:00 <span aria-hidden="true">·</span> Sa 09:00–12:00</strong><span>WhatsApp jederzeit <span aria-hidden="true">·</span> Besuche nach Vereinbarung</span></p>
-          <a class="btn btn-primary footer-cta" href="../privatkunden/#anfrage">Gartenprojekt anfragen <span aria-hidden="true">→</span></a>
-        </div>
+        <p class="footer-hours"><strong>Mo–Fr 09:00–17:00 <span aria-hidden="true">·</span> Sa 09:00–12:00</strong><span>WhatsApp jederzeit <span aria-hidden="true">·</span> Besuche nach Vereinbarung</span></p>
       </section>
     </div>
 
-    <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen-Buer <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
+    <div class="footer-utility">
+      <nav class="footer-navigation" aria-label="Footer-Navigation">
+        <details class="footer-nav-group" data-footer-disclosure open>
+          <summary><span>Schnellzugriff</span><span class="footer-disclosure-icon" aria-hidden="true"></span></summary>
+          <ul class="footer-link-list">
+            <li><a href="../privatkunden/">Privatkunden</a></li>
+            <li><a href="../gewerbekunden/">Gewerbekunden</a></li>
+            <li><a href="../projekte/?ansicht=galerie">Galerie</a></li>
+            <li><a href="../#ueber">Über uns</a></li>
+            <li><a href="../kontakt/">Kontakt</a></li>
+          </ul>
+        </details>
+      </nav>
+
+      <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen-Buer <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
+    </div>
 
     <div class="footer-bottom">
       <small>© <span id="year"></span> Maik Rohdich Garten- und Landschaftsbau <span aria-hidden="true">·</span> Gartenbaumeister</small>
@@ -1537,10 +1535,10 @@
 <!-- BUILD:site-footer:end -->
 
 <script src="../assets/js/main.js?v=20260810a" defer></script>
-<script src="../assets/js/private-hero.js?v=20260810b" defer></script>
+<script src="../assets/js/private-hero.js?v=20260811a" defer></script>
 <script type="module" src="../assets/js/projekte-privat.js?v=20260810c"></script>
 <script src="../assets/js/private-gallery-teaser.js?v=20260810f" defer></script>
 <script src="../assets/js/private-proof.js?v=20260809d" defer></script>
-<script src="../assets/js/privat-form.js?v=20260810b" defer></script>
+<script src="../assets/js/privat-form.js?v=20260811a" defer></script>
 </body>
 </html>

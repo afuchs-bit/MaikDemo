@@ -24,13 +24,6 @@ function pageBase(file) {
   return '../'.repeat(relativeDir.split(path.sep).length);
 }
 
-function pageContext(file) {
-  const relative = path.relative(REPO_ROOT, file).split(path.sep).join('/');
-  if (relative.startsWith('privatkunden/')) return 'private';
-  if (relative.startsWith('gewerbekunden/')) return 'business';
-  return 'neutral';
-}
-
 async function findHtmlFiles(dir) {
   const files = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
@@ -63,7 +56,7 @@ async function main() {
     const html = await readFile(file, 'utf8');
     if (!html.includes('class="site-footer"')) continue;
 
-    const data = footerTemplateData(pageBase(file), pageContext(file));
+    const data = footerTemplateData(pageBase(file));
     const footer = fill(template, data).trim();
     if (/\{\{footer|\{\{base\}\}/.test(footer)) {
       throw new Error(`Nicht aufgelöster Footer-Platzhalter in ${path.relative(REPO_ROOT, file)}`);

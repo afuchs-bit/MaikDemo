@@ -19,8 +19,8 @@
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" type="image/webp" imagesizes="(max-width: 760px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 64px), 38vw" imagesrcset="../assets/img/gewerbe/hero-objektpflege-480.webp 480w, ../assets/img/gewerbe/hero-objektpflege-800.webp 800w, ../assets/img/gewerbe/hero-objektpflege-1200.webp 1200w, ../assets/img/gewerbe/hero-objektpflege-1600.webp 1600w">
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260811h">
-<link rel="stylesheet" href="../assets/css/gewerbe.css?v=20260811c">
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260811i">
+<link rel="stylesheet" href="../assets/css/gewerbe.css?v=20260811e">
 <link rel="stylesheet" href="../assets/css/customer-hero.css?v=20260810c">
 <link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260809c">
 
@@ -130,15 +130,14 @@
         <text x="200" y="124" font-size="22" font-weight="700" fill="#FFED00" stroke="#315200" stroke-width="2.4" stroke-linejoin="round" letter-spacing="0.4">Gartenbaumeister</text>
       </g>
     </symbol>
-    <symbol id="b2b-icon-document" viewBox="0 0 48 48">
-      <path d="M11 5h18l8 8v30H11Z" fill="currentColor" stroke="none" opacity=".08"/>
-      <path d="M11 5h18l8 8v30H11ZM29 5v9h8M17 23h14M17 30h14M17 37h9"/>
+    <!-- Two-tone glyphs adapted from Google Material Design Icons (Apache-2.0): assignment and business_center. -->
+    <symbol id="b2b-icon-document" viewBox="0 0 24 24">
+      <path d="M5 5v14h14V5H5zm9 12H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" opacity=".3"/>
+      <path d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7zm12-4h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64S3 4.72 3 5v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z"/>
     </symbol>
-    <symbol id="b2b-icon-object" viewBox="0 0 48 48">
-      <path d="M5 39h38M8 36l10-10 8 7 6-5 8 8"/>
-      <path d="M15 25v-8M10 18c1-5 9-5 10 0 1 4-2 7-5 7s-6-3-5-7Z"/>
-      <circle cx="36" cy="12" r="6"/>
-      <path d="M36 9v6M33 12h6"/>
+    <symbol id="b2b-icon-object" viewBox="0 0 24 24">
+      <path d="M15 17H9v-1H5v3h14v-3h-4zM4 14h5v-3h6v3h5V9H4z" opacity=".3"/>
+      <path d="M20 7h-4V5l-2-2h-4L8 5v2H4c-1.1 0-2 .9-2 2v5c0 .75.4 1.38 1 1.73V19c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2v-3.28c.59-.35 1-.99 1-1.72V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm9 14H5v-3h4v1h6v-1h4v3zm-8-4v-2h2v2h-2zm9-1h-5v-3H9v3H4V9h16v5z"/>
     </symbol>
   </defs>
 </svg>
@@ -490,7 +489,7 @@
   </section>
 
   <!-- 7: Anfrage -->
-  <section class="section b2b-contact" id="anfrage" aria-labelledby="anfrage-title">
+  <section class="section b2b-contact" aria-labelledby="anfrage-title">
     <div class="container">
       <header class="b2b-contact-intro reveal">
         <h2 id="anfrage-title">Objektanfrage senden</h2>
@@ -538,7 +537,7 @@
                   <span aria-hidden="true">→</span>
                 </a>
               </aside>
-              <div class="b2b-form-main">
+              <div class="b2b-form-main" id="anfrage">
                 <div class="b2b-form-head form-contact-head">
                   <div class="form-contact-head__copy"><span class="b2b-form-step" data-b2b-form-kicker>Objektanfrage</span><h3 data-b2b-form-title>Ihre Angaben in vier übersichtlichen Kapiteln</h3></div>
                   <div class="form-contact-head__note form-contact-head__note--standard" data-form-head-note><p>Pflichtfelder sind mit <span class="b2b-required-mark" aria-hidden="true">*</span><span class="b2b-visually-hidden">Stern</span> gekennzeichnet.</p></div>
@@ -753,7 +752,7 @@
 </main>
 
 <!-- BUILD:site-footer:start -->
-<footer class="site-footer" data-footer-context="business">
+<footer class="site-footer">
   <div class="container">
     <div class="footer-main">
       <div class="footer-brand-block">
@@ -766,20 +765,6 @@
           <svg class="brand-logo brand-logo-light" viewBox="0 0 640 150" role="img" aria-hidden="true"><use href="#brand-logo"/></svg>
         </a>
       </div>
-
-      <nav class="footer-navigation" aria-label="Footer-Navigation">
-        <details class="footer-nav-group" data-footer-disclosure open>
-          <summary><span>Schnellzugriff</span><span class="footer-disclosure-icon" aria-hidden="true"></span></summary>
-          <ul class="footer-link-list">
-            <li><a href="../privatkunden/">Privatkunden</a></li>
-            <li><a href="../gewerbekunden/">Gewerbekunden</a></li>
-            <li><a href="../projekte/?ansicht=galerie">Galerie</a></li>
-            <li><a href="../#ueber">Über uns</a></li>
-            <li><a href="../kontakt/">Kontakt</a></li>
-          </ul>
-        </details>
-
-      </nav>
 
       <section class="footer-contact-block" aria-labelledby="footer-contact-title">
         <h2 class="footer-heading" id="footer-contact-title">Direkter Kontakt</h2>
@@ -801,14 +786,26 @@
             <span><small>E-Mail</small><strong>Maik@rohdich.de</strong></span>
           </a>
         </div>
-        <div class="footer-contact-action-row">
-          <p class="footer-hours"><strong>Mo–Fr 09:00–17:00 <span aria-hidden="true">·</span> Sa 09:00–12:00</strong><span>WhatsApp jederzeit <span aria-hidden="true">·</span> Besuche nach Vereinbarung</span></p>
-          <a class="btn btn-primary footer-cta" href="../gewerbekunden/#anfrage">Objekt anfragen <span aria-hidden="true">→</span></a>
-        </div>
+        <p class="footer-hours"><strong>Mo–Fr 09:00–17:00 <span aria-hidden="true">·</span> Sa 09:00–12:00</strong><span>WhatsApp jederzeit <span aria-hidden="true">·</span> Besuche nach Vereinbarung</span></p>
       </section>
     </div>
 
-    <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen-Buer <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
+    <div class="footer-utility">
+      <nav class="footer-navigation" aria-label="Footer-Navigation">
+        <details class="footer-nav-group" data-footer-disclosure open>
+          <summary><span>Schnellzugriff</span><span class="footer-disclosure-icon" aria-hidden="true"></span></summary>
+          <ul class="footer-link-list">
+            <li><a href="../privatkunden/">Privatkunden</a></li>
+            <li><a href="../gewerbekunden/">Gewerbekunden</a></li>
+            <li><a href="../projekte/?ansicht=galerie">Galerie</a></li>
+            <li><a href="../#ueber">Über uns</a></li>
+            <li><a href="../kontakt/">Kontakt</a></li>
+          </ul>
+        </details>
+      </nav>
+
+      <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen-Buer <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
+    </div>
 
     <div class="footer-bottom">
       <small>© <span id="year"></span> Maik Rohdich Garten- und Landschaftsbau <span aria-hidden="true">·</span> Gartenbaumeister</small>

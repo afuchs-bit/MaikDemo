@@ -560,6 +560,9 @@
 }
 .b2b-page main { overflow: clip; }
 .b2b-page [id] { scroll-margin-top: 100px; }
+/* Das Anfrageziel beginnt am Formular statt an der umgebenden Sektion. Für
+   diesen Anker genügt die globale scroll-padding unter dem festen Header. */
+.b2b-page .b2b-form-main#anfrage { scroll-margin-top: 0; }
 .b2b-page a:focus-visible,
 .b2b-page button:focus-visible,
 .b2b-page summary:focus-visible,
@@ -804,7 +807,7 @@
 .b2b-request-route { display: grid; grid-template-columns: 42px minmax(0,1fr) auto; gap: 14px; align-items: center; min-height: 86px; padding: 15px 18px; border: 1px solid rgba(49,82,0,.14); border-radius: 15px; color: var(--ink-2); text-decoration: none; box-shadow: 0 18px 34px -31px rgba(19,26,8,.48); transition: border-color .2s var(--ease),box-shadow .2s var(--ease),transform .2s var(--ease); }
 .b2b-request-route:hover { border-color: rgba(49,82,0,.32); box-shadow: 0 23px 36px -29px rgba(19,26,8,.42); transform: translateY(-2px); }
 .b2b-request-route .b2b-request-icon { width: 42px; height: 42px; border-radius: 11px; background: #fff; }
-.b2b-request-route .b2b-request-icon svg { width: 22px; height: 22px; }
+.b2b-request-route .b2b-request-icon svg { width: 26px; height: 26px; fill: currentColor; stroke: none; stroke-width: 0; }
 .b2b-request-route strong,.b2b-request-route span span { display: block; }
 .b2b-request-route strong { color: var(--green-900); font-family: var(--display); font-size: clamp(.92rem,1vw,1rem); line-height: 1.2; }
 .b2b-request-route span span { margin-top: 4px; color: var(--green-700); font-size: .78rem; font-weight: 800; }

@@ -6,11 +6,7 @@
 
   const dataNode = hero.querySelector('[data-private-hero-data]');
   const slides = hero.querySelector('[data-private-hero-slides]');
-  const controls = hero.querySelector('[data-private-hero-controls]');
-  const dotsHost = hero.querySelector('[data-private-hero-dots]');
-  const toggle = hero.querySelector('[data-private-hero-toggle]');
-  const status = hero.querySelector('[data-private-hero-status]');
-  if (!dataNode || !slides || !controls || !dotsHost || !toggle) return;
+  if (!dataNode || !slides) return;
 
   let images;
   try {
@@ -20,7 +16,7 @@
   }
   if (!Array.isArray(images) || images.length < 2) return;
 
-  const INTERVAL = 6000;
+  const INTERVAL = 5000;
   const TRANSITION = 650;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const landscapeLayout = window.matchMedia('(max-width: 900px)');
@@ -29,28 +25,13 @@
   let timerStartedAt = 0;
   let remaining = INTERVAL;
   let changing = false;
-  let hovered = false;
-  let focused = false;
   let visible = !document.hidden;
   let inView = true;
-  let manuallyPaused = false;
 
-  const dots = images.map((image, index) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'private-hero-dot';
-    button.setAttribute('aria-label', `Gartenbild ${index + 1} von ${images.length} anzeigen`);
-    button.setAttribute('aria-current', index === 0 ? 'true' : 'false');
-    button.addEventListener('click', () => select(index, true));
-    dotsHost.append(button);
-    return button;
-  });
-
-  controls.hidden = false;
   hero.classList.add('is-enhanced');
 
   function canAutoplay() {
-    return !reducedMotion.matches && !manuallyPaused && !hovered && !focused && visible && inView && !changing;
+    return !reducedMotion.matches && visible && inView && !changing;
   }
 
   function stopTimer() {
@@ -68,31 +49,13 @@
     timer = window.setTimeout(() => {
       timer = 0;
       remaining = INTERVAL;
-      select((current + 1) % images.length, false);
+      select((current + 1) % images.length);
     }, remaining);
   }
 
   function reconcileTimer() {
     if (canAutoplay()) startTimer();
     else stopTimer();
-  }
-
-  function setControlsDisabled(disabled) {
-    dots.forEach((dot) => { dot.disabled = disabled; });
-    toggle.disabled = disabled;
-  }
-
-  function updateControls() {
-    dots.forEach((dot, index) => {
-      dot.setAttribute('aria-current', index === current ? 'true' : 'false');
-    });
-  }
-
-  function updateToggle() {
-    const paused = manuallyPaused;
-    toggle.classList.toggle('is-paused', paused);
-    toggle.setAttribute('aria-label', paused ? 'Bildwechsel fortsetzen' : 'Bildwechsel pausieren');
-    toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
   }
 
   function activeBase(image) {
@@ -173,24 +136,20 @@
     return -1;
   }
 
-  async function select(requested, manual) {
+  async function select(requested) {
     if (changing || requested === current) {
-      if (manual) {
-        remaining = INTERVAL;
-        reconcileTimer();
-      }
+      remaining = INTERVAL;
+      reconcileTimer();
       return;
     }
 
     stopTimer();
     changing = true;
-    setControlsDisabled(true);
 
     const direction = requested < current ? -1 : 1;
     const next = await findLoadable(requested, direction);
     if (next < 0) {
       changing = false;
-      setControlsDisabled(false);
       remaining = INTERVAL;
       reconcileTimer();
       return;
@@ -217,8 +176,6 @@
     }
 
     current = next;
-    updateControls();
-    if (manual && status) status.textContent = `Gartenbild ${current + 1} von ${images.length} wird angezeigt.`;
 
     if (reducedMotion.matches) {
       oldSlide?.remove();
@@ -229,27 +186,9 @@
 
     picture.classList.remove('is-outgoing');
     changing = false;
-    setControlsDisabled(false);
     remaining = Math.max(250, INTERVAL - (performance.now() - transitionStarted));
     reconcileTimer();
   }
-
-  toggle.addEventListener('click', () => {
-    manuallyPaused = !manuallyPaused;
-    remaining = INTERVAL;
-    updateToggle();
-    reconcileTimer();
-  });
-
-  hero.addEventListener('pointerenter', () => { hovered = true; reconcileTimer(); });
-  hero.addEventListener('pointerleave', () => { hovered = false; reconcileTimer(); });
-  hero.addEventListener('focusin', () => { focused = true; reconcileTimer(); });
-  hero.addEventListener('focusout', () => {
-    window.setTimeout(() => {
-      focused = hero.contains(document.activeElement);
-      reconcileTimer();
-    }, 0);
-  });
 
   document.addEventListener('visibilitychange', () => {
     visible = !document.hidden;
@@ -265,12 +204,10 @@
   }
 
   function applyMotionPreference() {
-    toggle.hidden = reducedMotion.matches;
     remaining = INTERVAL;
     reconcileTimer();
   }
   reducedMotion.addEventListener?.('change', applyMotionPreference);
-  updateToggle();
   applyMotionPreference();
 
   // Folgeinhalte erst nach dem initialen Seitenaufbau in den Browsercache legen.
