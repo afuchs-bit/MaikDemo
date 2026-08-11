@@ -3366,8 +3366,13 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   border-top: 1px solid rgba(255,255,255,.16);
 }
 .fork-rule { background: rgba(255,255,255,.16); }
+/* AP-117: Kachelinhalte zentriert (war align-items: flex-start). Fuehrt das
+   Muster von .fork-head fort und trifft die Spaltenmitten, auf die die
+   Weichen-Grafik (.fork-switch, 310/930) ohnehin schon zeigt. text-align
+   zusaetzlich noetig: align-items zentriert nur die Kindboxen, nicht den
+   umbrechenden Text darin (zweizeilige .fork-path-title, .fork-desc). */
 .fork-path {
-  position: relative; display: flex; flex-direction: column; align-items: flex-start;
+  position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
   padding: clamp(34px, 4.4vw, 56px) clamp(20px, 3.4vw, 52px) clamp(40px, 5vw, 64px);
   transition: background .45s var(--ease);
 }
