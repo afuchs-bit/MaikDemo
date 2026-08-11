@@ -790,16 +790,7 @@
 .b2b-request-card:hover .b2b-request-arrow b { transform: translateX(3px); }
 .b2b-request-card--storm { border-color: rgba(192,85,47,.32); background: linear-gradient(180deg,#fff,#fffaf7); }
 .b2b-request-card--storm .b2b-request-media { border-bottom-color: rgba(192,85,47,.2); }
-.b2b-request-storm { position: relative; transition: transform .2s var(--ease); }
-.b2b-request-storm:hover { transform: translateY(-3px); }
-.b2b-request-storm:hover .b2b-request-card--storm { border-color: rgba(49,82,0,.38); box-shadow: 0 27px 42px -31px rgba(19,26,8,.4); transform: none; }
-.b2b-request-storm:hover .b2b-request-media img { transform: scale(1.008); }
-.b2b-request-storm:hover .b2b-request-arrow b { transform: translateX(3px); }
 .b2b-request-card--storm .b2b-request-arrow { padding-right: clamp(155px,12vw,172px); color: var(--coral-700); }
-.b2b-storm-phone { display: inline-flex; gap: 6px; align-items: center; justify-content: center; position: absolute; z-index: 2; right: clamp(16px,2vw,24px); bottom: 11px; min-height: 36px; padding: 6px 10px; border: 1px solid rgba(192,85,47,.25); border-radius: 999px; background: #fff2ed; color: var(--coral-700); font-family: var(--display); font-size: .75rem; font-weight: 800; line-height: 1; text-decoration: none; white-space: nowrap; transition: border-color .2s var(--ease),background .2s var(--ease),transform .2s var(--ease); }
-.b2b-storm-phone:hover { border-color: rgba(192,85,47,.48); background: #ffe8df; }
-.b2b-storm-phone:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
-.b2b-storm-phone strong { color: inherit; font-size: inherit; }
 .b2b-request-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(14px,1.5vw,20px); align-items: stretch; margin-top: 24px; }
 .b2b-request-route { display: grid; grid-template-columns: 42px minmax(0,1fr) auto; gap: 14px; align-items: center; min-height: 86px; padding: 15px 18px; border: 1px solid rgba(49,82,0,.14); border-radius: 15px; color: var(--ink-2); text-decoration: none; box-shadow: 0 18px 34px -31px rgba(19,26,8,.48); transition: border-color .2s var(--ease),box-shadow .2s var(--ease),transform .2s var(--ease); }
 .b2b-request-route:hover { border-color: rgba(49,82,0,.32); box-shadow: 0 23px 36px -29px rgba(19,26,8,.42); transform: translateY(-2px); }
@@ -1750,7 +1741,6 @@
   .b2b-request-copy > span { margin-top: 6px; font-size: .84rem; }
   .b2b-request-arrow { align-self: auto; margin-top: 0; padding: 13px 18px 18px; }
   .b2b-request-card--storm .b2b-request-arrow { padding-right: 154px; }
-  .b2b-storm-phone { right: 17px; bottom: 12px; }
   .b2b-request-links { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
   .b2b-request-route { min-height: 90px; padding: 14px 15px; }
   .b2b-section { padding: 70px 0; }
@@ -1832,16 +1822,13 @@
 
 @media (max-width: 360px) {
   .b2b-request-card--storm .b2b-request-arrow { padding-right: 18px; padding-bottom: 58px; }
-  .b2b-storm-phone { right: auto; left: 18px; bottom: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .b2b-request-card,.b2b-request-route,.b2b-request-storm,.b2b-storm-phone,.b2b-request-media img,.b2b-request-arrow b,.b2b-request-route > b { transition: none; }
+  .b2b-request-card,.b2b-request-route,.b2b-request-media img,.b2b-request-arrow b,.b2b-request-route > b { transition: none; }
   .b2b-request-card:hover,
   .b2b-request-route:hover,
   .b2b-request-route:hover > b,
-  .b2b-request-storm:hover,
-  .b2b-storm-phone:hover,
   .b2b-request-card:hover .b2b-request-media img,
   .b2b-request-card:hover .b2b-request-arrow b { transform: none; }
 }
@@ -1948,31 +1935,23 @@
 .gewerbe-request-paths .private-service-back-button { display: inline-flex; gap: 8px; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: 9px 14px; border: 1px solid rgba(255,255,255,.38); border-radius: 999px; background: transparent; color: #fff; font-family: var(--body); font-size: .8rem; font-weight: 800; line-height: 1.2; cursor: pointer; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease); }
 .gewerbe-request-paths .private-service-back-button:hover { border-color: #fff; background: rgba(255,255,255,.12); }
 
-/* Sturm-Kachel: eigene Storm-Optik auf der Kartenfront. Aktionszeile einspaltig,
-   damit die absolut positionierte Notfallnummer (.b2b-storm-phone, liegt
-   AUSSERHALB des Artikels im <li>) rechts unten neben dem Anfrage-Link Platz
-   hat. AP-119: Die Karte hat nur ein Ziel und flippt nicht mehr - das Ausblenden
-   der Nummer beim Flip ist damit entfallen, min-height und Padding bleiben. */
-.gewerbe-request-paths .b2b-request-storm { transition: none; }
-.gewerbe-request-paths .b2b-request-storm:hover { transform: none; }
-.gewerbe-request-paths .private-service-flip--storm { min-height: 400px; }
+/* Sturm-Kachel: eigene Storm-Optik auf der Kartenfront. AP-121: Die
+   Notfallnummer im Kachelfuss ist entfallen - damit brauchen Aktionszeile
+   und Anfrage-Link keine Sonderbehandlung mehr und die Kachel nutzt
+   dieselbe min-height wie alle anderen. Es bleiben nur Farbakzente. */
 .gewerbe-request-paths .private-service-flip--storm .private-service-face--front { border-color: rgba(192,85,47,.32); background: linear-gradient(180deg,#fff,#fffaf7); }
 .gewerbe-request-paths .private-service-flip--storm .b2b-request-media { border-bottom-color: rgba(192,85,47,.2); }
-.gewerbe-request-paths .private-service-flip--storm .private-service-actions { grid-template-columns: 1fr; }
-.gewerbe-request-paths .private-service-flip--storm .private-service-request-link { justify-content: flex-start; padding-right: clamp(150px,11vw,165px); color: var(--coral-700); text-align: left; }
+.gewerbe-request-paths .private-service-flip--storm .private-service-request-link { color: var(--coral-700); }
 .gewerbe-request-paths .private-service-flip--storm .private-service-request-link:hover { color: var(--coral-700); }
-.gewerbe-request-paths .b2b-storm-phone { transition: border-color .2s var(--ease),background .2s var(--ease),transform .2s var(--ease); }
 
 @media (max-width:1160px) { .gewerbe-request-paths .b2b-request-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (min-width:768px) and (max-width:900px) {
   .gewerbe-request-paths .private-service-flip { min-height: 365px; }
-  .gewerbe-request-paths .private-service-flip--storm { min-height: 410px; }
   .gewerbe-request-paths .private-service-actions { padding-right: 10px; padding-left: 10px; }
 }
 @media (max-width:767px) {
   .gewerbe-request-paths .b2b-request-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
   .gewerbe-request-paths .private-service-flip { min-height: 360px; }
-  .gewerbe-request-paths .private-service-flip--storm { min-height: 408px; }
   .gewerbe-request-paths .b2b-request-media { height: clamp(120px,33vw,134px); }
   .gewerbe-request-paths .b2b-request-copy { padding: 18px 18px 10px; }
   .gewerbe-request-paths .b2b-request-copy h3 { font-size: 1.15rem; }
@@ -1983,7 +1962,6 @@
 @media (max-width:380px) {
   .gewerbe-request-paths .private-service-actions { grid-template-columns: 1fr; }
   .gewerbe-request-paths .private-service-flip { min-height: 440px; }
-  .gewerbe-request-paths .private-service-flip--storm { min-height: 452px; }
 }
 @media (prefers-reduced-motion:reduce) {
   .gewerbe-request-paths .private-service-flip,.gewerbe-request-paths .private-service-flip__inner { transition: none; }
