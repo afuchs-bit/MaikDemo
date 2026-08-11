@@ -3038,7 +3038,7 @@
 .private-proof-rating {
   display: grid;
   gap: 5px;
-  margin-top: 18px;
+  margin-top: clamp(26px,2.4vw,34px);
   padding: 18px 20px;
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 17px;
@@ -3080,7 +3080,7 @@
 .private-proof-summary .private-proof-google-link {
   align-self: flex-start;
   min-height: 50px;
-  margin-top: 18px;
+  margin-top: clamp(22px,1.8vw,28px);
   border-color: rgba(255,255,255,.58);
   background: rgba(255,255,255,.96);
   color: var(--green-900);

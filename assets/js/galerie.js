@@ -32,7 +32,7 @@ const TYP_OPTIONS = [
   { value: 'gewerbe', label: 'Gewerbekunde' },
 ];
 
-const state = { view: 'projekte', tab: 'alle', typ: 'alle', leistungen: new Set() };
+const state = { view: 'galerie', tab: 'alle', typ: 'alle', leistungen: new Set() };
 
 let allProjekte = [];
 let taxonomie = []; // [{ slug, label }]
@@ -391,7 +391,11 @@ function updateCta() {
 // ---------- URL-Sync ----------
 function readStateFromUrl() {
   const params = new URLSearchParams(location.search);
-  state.view = params.get('ansicht') === 'galerie' ? 'galerie' : 'projekte';
+  const requestedView = params.get('ansicht');
+  const hasProjectFilter = params.has('tab') || params.has('typ') || params.has('leistung');
+  state.view = requestedView === 'projekte' || (requestedView !== 'galerie' && hasProjectFilter)
+    ? 'projekte'
+    : 'galerie';
   state.tab = params.get('tab') === 'highlights' ? 'highlights' : 'alle';
   const typ = params.get('typ');
   state.typ = (typ === 'privat' || typ === 'gewerbe') ? typ : 'alle';
@@ -405,9 +409,8 @@ function readStateFromUrl() {
 
 function writeStateToUrl() {
   const params = new URLSearchParams();
-  if (state.view === 'galerie') {
-    params.set('ansicht', 'galerie');
-  } else {
+  if (state.view === 'projekte') {
+    params.set('ansicht', 'projekte');
     if (state.tab === 'highlights') params.set('tab', 'highlights');
     if (state.typ !== 'alle') params.set('typ', state.typ);
     if (state.leistungen.size) params.set('leistung', [...state.leistungen].join(','));
