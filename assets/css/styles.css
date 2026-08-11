@@ -3376,7 +3376,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   background: var(--yellow); transform: scaleX(0); transform-origin: left;
   transition: transform .55s var(--ease);
 }
-.fork-kind { margin: 0 0 14px; font-size: .72rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.fork-kind { margin: 0 0 14px; font-size: .72rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--yellow); }
 .fork-path-title {
   margin: 0; color: #fff; font-family: var(--display); font-weight: 650;
   font-size: clamp(1.4rem, 2.2vw, 1.85rem); line-height: 1.12; letter-spacing: -.03em;
@@ -3429,7 +3429,12 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .fork-path:hover { background: #16260a; }          /* Tiefe im dunklen Block, kein Token vorhanden */
   .fork-path:hover::before { transform: scaleX(1); }
   .fork-btn:hover { color: var(--green-900); }
-  .fork-btn:hover::after { transform: scale(16); }
+  /* Der 28px-Kreis sitzt 28px vor der rechten Kante; gedeckt ist der Button erst,
+     wenn der Radius bis zur gegenueberliegenden Ecke reicht. Breitester Button
+     ("Zum Privatkundenbereich", 277px) braucht scale(17.9) - scale(16) liess dort
+     eine Sichel frei. 20 gibt Reserve, ohne die Fuellwelle zu verschlucken:
+     zu grosse Werte decken den Button schon in den ersten Millisekunden ab. */
+  .fork-btn:hover::after { transform: scale(20); }
   .fork-btn:hover .fork-btn-dot { background: transparent; color: var(--green-900); }
   .fork-btn:hover .fork-btn-dot svg { transform: translateX(3px); }
   .fork-direct:hover { color: #fff; }
@@ -3458,6 +3463,12 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 @media (min-width: 901px) { .fork-switch--mobile { display: none; } }
 @media (max-width: 600px) {
   .fork-btn { width: 100%; justify-content: space-between; padding-left: 22px; }
+}
+/* Full-Width-Button (ab hier bis zu 551px breit) braucht scale(37.4). Nur fuer
+   Zeigergeraete, sonst klebt der Hover-Zustand auf Touch fest - gleiche Bedingung
+   wie beim Basis-Hover oben. */
+@media (hover: hover) and (pointer: fine) and (max-width: 600px) {
+  .fork-btn:hover::after { transform: scale(42); }
 }
 @media (prefers-reduced-motion: reduce) {
   .fork-switch path { stroke-dashoffset: 0; }
