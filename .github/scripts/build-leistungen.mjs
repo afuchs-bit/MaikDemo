@@ -44,6 +44,10 @@ const HAND_PAGES = [
   { file: 'projekte/index.html', base: '../' },
   // AP-33: 404 trug die Leistungs-Nav fest verdrahtet – jetzt ebenfalls aus einer Quelle.
   { file: '404.html', base: '' },
+  // AP-108: kontakt/ und leistungen/ trugen das Dropdown ebenfalls fest verdrahtet
+  // und drifteten bei jeder Nav-Änderung still weg – jetzt aus derselben Quelle.
+  { file: 'kontakt/index.html', base: '../' },
+  { file: 'leistungen/index.html', base: '../' },
 ];
 
 const isNonEmptyString = (v) => typeof v === 'string' && v.trim().length > 0;
