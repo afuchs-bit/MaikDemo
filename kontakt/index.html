@@ -18,9 +18,9 @@
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260810c" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260810i" />
 <link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260809c" />
-<link rel="stylesheet" href="../assets/css/kontakt.css?v=20260809f" />
+<link rel="stylesheet" href="../assets/css/kontakt.css?v=20260810p" />
 
 <script type="application/ld+json">
 {
@@ -41,36 +41,6 @@
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://rohdich.de/" },
         { "@type": "ListItem", "position": 2, "name": "Kontakt", "item": "https://rohdich.de/kontakt/" }
       ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "In welchem Gebiet sind Sie tätig?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Unser Kerngebiet umfasst Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer. Weitere Orte prüfen wir abhängig vom Projekt." }
-        },
-        {
-          "@type": "Question",
-          "name": "Kann ich anrufen, wenn ich noch nicht genau weiß, was benötigt wird?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Eine grobe Beschreibung genügt. Maik Rohdich hilft Ihnen, das Anliegen und den passenden nächsten Schritt einzuordnen." }
-        },
-        {
-          "@type": "Question",
-          "name": "Welche Informationen helfen bei einer Anfrage?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Hilfreich sind Ort oder Postleitzahl, eine kurze Beschreibung der aktuellen Situation und Ihr gewünschtes Ergebnis. Fotos und Unterlagen sind optional." }
-        },
-        {
-          "@type": "Question",
-          "name": "Sind Vor-Ort-Termine möglich?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Termine bei Ihnen vor Ort sowie Beratungen und Besichtigungen auf unseren 1.500 m² Musterflächen in Herne sind nach vorheriger Vereinbarung möglich. Unangemeldete Besuche am Betriebsstandort sind nicht vorgesehen." }
-        },
-        {
-          "@type": "Question",
-          "name": "Kann ich Fotos vorab senden?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ja. Nutzen Sie dafür das passende Anfrageformular oder WhatsApp. WhatsApp-Nachrichten können rund um die Uhr gesendet werden; die Antwort erfolgt zu den Geschäftszeiten." }
-        }
-      ]
     }
   ]
 }
@@ -89,13 +59,13 @@
         <li><a href="../privatkunden/">Privatkunden</a></li>
         <li><a href="../gewerbekunden/">Gewerbekunden</a></li>
         <li class="menu-item menu-item--sub">
-          <a href="../leistungen/">Leistungen</a>
+          <span class="menu-label">Leistungen</span>
           <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-leistungen" aria-label="Alle Leistungen anzeigen">
             <svg class="submenu-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
             <li class="nav-submenu-group">
-              <a class="nav-submenu-head" href="../privatkunden/leistungen/">Für Privatkunden</a>
+              <a class="nav-submenu-head" href="../privatkunden/">Für Privatkunden</a>
               <ul>
                 <li><a href="../privatkunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
                 <li><a href="../privatkunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
@@ -113,7 +83,7 @@
               </ul>
             </li>
             <li class="nav-submenu-group">
-              <a class="nav-submenu-head" href="../gewerbekunden/leistungen/">Für Gewerbekunden</a>
+              <a class="nav-submenu-head" href="../gewerbekunden/">Für Gewerbekunden</a>
               <ul>
                 <li><a href="../gewerbekunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
                 <li><a href="../gewerbekunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
@@ -157,7 +127,6 @@
       <nav class="breadcrumbs reveal" aria-label="Sie sind hier"><ol><li><a href="../">Startseite</a></li><li aria-current="page">Kontakt</li></ol></nav>
       <div class="contact-hero-copy reveal">
         <h1 id="contact-page-title">Kontakt zu Maik Rohdich</h1>
-        <p class="contact-hero-lead">Ob privater Garten oder gewerbliches Objekt: Wählen Sie den passenden Anfrageweg oder sprechen Sie direkt mit Maik Rohdich.</p>
       </div>
 
       <div class="contact-hub">
@@ -170,6 +139,11 @@
             <a class="form-trust-card__whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener"><span class="form-trust-card__action-icon" aria-hidden="true"><svg viewBox="0 0 720 720" fill="currentColor"><path d="M360,0C161.18,0,0,161.18,0,360c0,65.41,17.45,126.75,47.94,179.61L0,720l187.02-44.21c51.34,28.18,110.28,44.21,172.98,44.21,198.82,0,360-161.18,360-360S558.82,0,360,0ZM360,655.52c-60.17,0-116.13-17.98-162.82-48.87l-110.49,28.14,30.99-105.61c-33.53-47.93-53.2-106.26-53.2-169.19,0-163.21,132.31-295.52,295.52-295.52s295.52,132.31,295.52,295.52-132.31,295.52-295.52,295.52Z"/><path d="M444.35,407.52l87.1,41.06c4,1.88,6.56,5.94,6.2,10.34-.94,11.46-5.54,34.43-26.13,55.02-58.12,58.12-162.49-7.64-166.74-10.18-25.67-13.79-50.06-32.24-73.19-55.36s-41.58-47.52-55.37-73.19c-2.55-4.24-68.31-108.61-10.18-166.74,20.59-20.59,43.56-25.19,55.02-26.13,4.41-.36,8.46,2.2,10.34,6.2l41.07,87.1c1.94,4.12,1.09,9.02-2.13,12.24l-30.61,30.61c-6.62,6.62-8.56,16.93-4,25.11,11.17,20.03,26.19,39.32,43.59,57.07,17.75,17.4,37.04,32.43,57.07,43.59,8.18,4.56,18.48,2.62,25.11-4l30.61-30.61c3.22-3.22,8.12-4.08,12.24-2.13Z"/></svg></span><span><small>WhatsApp</small><strong>Nachricht senden</strong></span></a>
           </address>
 
+          <div class="contact-callback-note">
+            <span class="contact-callback-note__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg></span>
+            <p><strong>Gerade nicht erreichbar?</strong><span>Dann ist Maik wahrscheinlich auf einer Baustelle. Er meldet sich schnellstmöglich persönlich bei Ihnen zurück.</span></p>
+          </div>
+
           <section class="contact-coverage form-trust-card__coverage" aria-labelledby="contact-coverage-title">
             <div class="form-trust-card__coverage-heading"><span id="contact-coverage-title">Unser Einsatzgebiet</span></div>
             <p>Herne · Bochum<br>Castrop-Rauxel · Recklinghausen<br>Gelsenkirchen-Buer</p>
@@ -178,7 +152,7 @@
 
           <div class="contact-hours">
             <span class="contact-hours-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.4 2"/></svg></span>
-            <span><strong>Montag bis Freitag, 08:00–20:00 Uhr</strong><small>WhatsApp-Nachrichten jederzeit – Antwort zu den Geschäftszeiten</small></span>
+            <span><strong>Montag bis Freitag, 09:00–17:00 Uhr</strong><strong>Samstag, 09:00–12:00 Uhr · Sonntag geschlossen</strong><small>WhatsApp-Nachrichten jederzeit – Antwort zu den Geschäftszeiten</small></span>
           </div>
         </aside>
 
@@ -186,11 +160,11 @@
           <div class="contact-location-card-grid">
             <div class="contact-location-copy">
               <span class="contact-location-label">Anfahrt &amp; Besuch</span>
-              <h2 id="contact-location-title">Hülsstraße 5 in Herne.</h2>
+              <h2 id="contact-location-title">Unser Standort in Herne</h2>
               <p>Hier befinden sich unser Betrieb und die 1.500 m² Musterflächen. Besichtigungen und Beratungen finden nach vorheriger Terminvereinbarung statt.</p>
               <div class="contact-location-actions">
                 <address class="contact-location-address"><span class="contact-location-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg></span><span><small>Adresse</small><strong>Hülsstraße 5</strong><span>44625 Herne</span></span></address>
-                <a class="contact-location-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=H%C3%BClsstra%C3%9Fe%205%2C%2044625%20Herne" target="_blank" rel="noopener"><span class="contact-location-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 9 5l3 6 7-3-5 11-3-6-7 6Z"/></svg></span><span><strong>Route planen</strong><small>In Google Maps öffnen</small></span><b aria-hidden="true">→</b></a>
+                <a class="contact-location-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=H%C3%BClsstra%C3%9Fe%205%2C%2044625%20Herne" target="_blank" rel="noopener"><span class="contact-location-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></svg></span><span><strong>Route planen</strong><small>In Google Maps öffnen</small></span></a>
               </div>
             </div>
 
@@ -215,66 +189,35 @@
     </div>
   </section>
 
-  <section class="contact-paths" aria-labelledby="contact-paths-title">
+  <section class="contact-paths" id="anfragewege" aria-labelledby="contact-paths-title">
     <div class="container">
       <div class="contact-section-head reveal">
-        <span class="kicker">Passender Anfrageweg</span>
-        <h2 id="contact-paths-title">Damit Ihre Anfrage direkt richtig ankommt.</h2>
-        <p>Die spezialisierten Formulare fragen nur die Angaben ab, die für Ihr Vorhaben hilfreich sind. Maik Rohdich prüft Ihre Angaben persönlich.</p>
+        <h2 id="contact-paths-title">Welcher Bereich passt zu Ihrem Vorhaben?</h2>
+        <p>Die spezialisierten Anfragen zeigen nur die Fragen, die für Ihr Projekt hilfreich sind. Fotos und Unterlagen können Sie optional ergänzen.</p>
       </div>
       <div class="contact-path-grid">
-        <article class="contact-path-card reveal">
+        <article class="contact-path-card contact-path-card--private reveal">
+          <picture class="contact-path-media"><source srcset="../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne-480.avif 480w, ../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne-960.avif 960w" type="image/avif"><img src="../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne.webp" alt="Fertig gestalteter Privatgarten mit Pool, Natursteinen und Bepflanzung" width="960" height="720" loading="lazy" decoding="async"></picture>
           <span class="contact-path-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V10"/><path d="M12 14c-4.8 0-8-2.7-8-7 4.8 0 8 2.2 8 7Z"/><path d="M12 11c4.8 0 8-2.7 8-7-4.8 0-8 2.2-8 7Z"/></svg></span>
           <span class="contact-path-label">Für Privatkunden</span>
-          <h3>Ihr Gartenprojekt</h3>
-          <p>Beschreiben Sie kurz Ihren Garten und Ihr Vorhaben. Fotos und Unterlagen können Sie optional ergänzen.</p>
+          <h3>Ihr Garten. Persönlich geplant.</h3>
+          <p>Ob Neugestaltung, Pflege oder Poolumfeld: Maik Rohdich prüft Ihre Anfrage persönlich und bespricht mit Ihnen den passenden nächsten Schritt.</p>
           <div class="contact-path-actions">
             <a class="btn btn-primary" href="../privatkunden/#anfrage">Gartenprojekt anfragen</a>
-            <a class="btn btn-outline" href="../privatkunden/">Privatkundenseite ansehen</a>
+            <a class="contact-path-text-link" href="../privatkunden/"><span>Privatleistungen ansehen</span><b aria-hidden="true">→</b></a>
           </div>
         </article>
-        <article class="contact-path-card reveal">
+        <article class="contact-path-card contact-path-card--business reveal">
+          <picture class="contact-path-media"><source srcset="../assets/img/gewerbe/hero-objektpflege-480.webp 480w, ../assets/img/gewerbe/hero-objektpflege-800.webp 800w, ../assets/img/gewerbe/hero-objektpflege-1200.webp 1200w" type="image/webp"><img src="../assets/img/gewerbe/hero-objektpflege-1200.jpg" alt="Mitarbeiter pflegen die begrünte Fassade einer gewerblichen Außenanlage" width="1200" height="1500" loading="lazy" decoding="async"></picture>
           <span class="contact-path-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V7l8-4v18"/><path d="M12 9h8v12"/><path d="M7 9h2M7 13h2M7 17h2M15 13h2M15 17h2"/></svg></span>
           <span class="contact-path-label">Für Gewerbekunden</span>
-          <h3>Ihr Objekt oder Ihre Außenanlage</h3>
-          <p>Schildern Sie Objekt, gewünschte Leistung und Rahmenbedingungen – auch für laufende Pflege, Baumkontrollen oder Ausschreibungen.</p>
+          <h3>Ihr Objekt. Verlässlich betreut.</h3>
+          <p>Ob laufende Pflege, Baumkontrolle oder Ausschreibung: Maik Rohdich prüft Ihr Anliegen persönlich und stimmt Leistungsumfang, Ablauf und nächste Schritte klar mit Ihnen ab.</p>
           <div class="contact-path-actions">
             <a class="btn btn-primary" href="../gewerbekunden/#anfrage">Objektanfrage starten</a>
-            <a class="btn btn-outline" href="../gewerbekunden/">Gewerbekundenseite ansehen</a>
+            <a class="contact-path-text-link" href="../gewerbekunden/"><span>Gewerbeleistungen ansehen</span><b aria-hidden="true">→</b></a>
           </div>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-faq" aria-labelledby="contact-faq-title">
-    <div class="container contact-faq-grid">
-      <div class="contact-faq-heading reveal">
-        <span class="kicker">Gut zu wissen</span>
-        <h2 id="contact-faq-title">Häufige Fragen zur Kontaktaufnahme</h2>
-        <p>Die wichtigsten Antworten, bevor Sie Ihr Vorhaben schildern.</p>
-      </div>
-      <div class="faq-list reveal">
-        <details>
-          <summary><span>In welchem Gebiet sind Sie tätig?</span><span class="chev" aria-hidden="true"></span></summary>
-          <div class="faq-body"><p>Unser Kerngebiet umfasst Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer. Weitere Orte prüfen wir abhängig vom Projekt.</p></div>
-        </details>
-        <details>
-          <summary><span>Kann ich anrufen, wenn ich noch nicht genau weiß, was benötigt wird?</span><span class="chev" aria-hidden="true"></span></summary>
-          <div class="faq-body"><p>Ja. Eine grobe Beschreibung genügt. Maik Rohdich hilft Ihnen, das Anliegen und den passenden nächsten Schritt einzuordnen.</p></div>
-        </details>
-        <details>
-          <summary><span>Welche Informationen helfen bei einer Anfrage?</span><span class="chev" aria-hidden="true"></span></summary>
-          <div class="faq-body"><p>Hilfreich sind Ort oder Postleitzahl, eine kurze Beschreibung der aktuellen Situation und Ihr gewünschtes Ergebnis. Fotos und Unterlagen sind optional.</p></div>
-        </details>
-        <details>
-          <summary><span>Sind Vor-Ort-Termine möglich?</span><span class="chev" aria-hidden="true"></span></summary>
-          <div class="faq-body"><p>Ja. Termine bei Ihnen vor Ort sowie Beratungen und Besichtigungen auf unseren 1.500 m² Musterflächen in Herne sind nach vorheriger Vereinbarung möglich. Unangemeldete Besuche am Betriebsstandort sind nicht vorgesehen.</p></div>
-        </details>
-        <details>
-          <summary><span>Kann ich Fotos vorab senden?</span><span class="chev" aria-hidden="true"></span></summary>
-          <div class="faq-body"><p>Ja. Nutzen Sie dafür das passende Anfrageformular oder WhatsApp. WhatsApp-Nachrichten können rund um die Uhr gesendet werden; die Antwort erfolgt zu den Geschäftszeiten.</p></div>
-        </details>
       </div>
     </div>
   </section>

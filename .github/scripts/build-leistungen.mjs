@@ -20,7 +20,7 @@ import { readFile, readdir, writeFile, mkdir, rm, access } from 'node:fs/promise
 import { constants as FS } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderLeistungPage, renderLeistungenOverview, renderNavSubmenu, renderFaqDetails, renderFaqSchema, LEISTUNGEN_NAV, WELTEN } from './lib/render.mjs';
+import { renderLeistungPage, renderNavSubmenu, renderFooterLeistungen, renderFaqDetails, renderFaqSchema, LEISTUNGEN_NAV, WELTEN } from './lib/render.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
@@ -31,8 +31,7 @@ const OUT_ROOT = REPO_ROOT; // Ziel je Welt: <welt.pfad>leistungen/
 const INDEX_HTML = path.join(REPO_ROOT, 'index.html');
 const GEN_SENTINEL = 'AUTO-GENERIERT von .github/scripts/build-leistungen.mjs';
 
-// AP-33: Reihenfolge und Zugehörigkeit kommen aus WELTEN[*].slugs (render.mjs),
-// die Gruppierung der Übersicht aus LEISTUNGS_GRUPPEN. Kein eigenes ORDER mehr.
+// Reihenfolge und Zugehörigkeit kommen aus WELTEN[*].slugs (render.mjs).
 
 const KUNDENTYPEN = ['privat', 'gewerbe'];
 const errors = [];
@@ -43,8 +42,6 @@ const HAND_PAGES = [
   { file: 'privatkunden/index.html', base: '../' },
   { file: 'gewerbekunden/index.html', base: '../' },
   { file: 'projekte/index.html', base: '../' },
-  // AP-33: /leistungen/ ist jetzt die handgepflegte Weiche – Nav trotzdem mitpflegen.
-  { file: 'leistungen/index.html', base: '../' },
   // AP-33: 404 trug die Leistungs-Nav fest verdrahtet – jetzt ebenfalls aus einer Quelle.
   { file: '404.html', base: '' },
 ];
@@ -248,10 +245,8 @@ async function main() {
       await writeFile(path.join(dir, 'index.html'), html, 'utf8');
     }
 
-    // Übersicht in der Reihenfolge aus WELTEN[*].slugs.
-    const ordered = welt.slugs.map((slug) => ({ slug, ...bySlug.get(slug) }));
-    const overview = await renderLeistungenOverview({ leistungen: ordered, welt, cssVersion, jsVersion });
-    await writeFile(path.join(outDir, 'index.html'), overview, 'utf8');
+    // Keine Verteilerseite: Im Header führt das Hover-Menü direkt zu den Details.
+    await rm(path.join(outDir, 'index.html'), { force: true });
 
     // Verwaiste generierte Ordner entfernen (nur mit Sentinel, nie die Übersicht).
     const entries = await readdir(outDir, { withFileTypes: true });
@@ -264,7 +259,7 @@ async function main() {
       }
     }
 
-    console.log(`✅ ${welt.uebersichtLabel}: Übersicht /${welt.pfad}leistungen/ und ${bySlug.size} Leistungsseiten generiert:`);
+    console.log(`✅ ${welt.navLabel}: ${bySlug.size} direkte Leistungsseiten generiert:`);
     for (const slug of welt.slugs) console.log(`   /${welt.pfad}leistungen/${slug}/`);
   }
 

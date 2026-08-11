@@ -362,11 +362,7 @@ ${cards}
 
 export const BASE_LEISTUNG = '../../'; // Alt-Pfad /leistungen/<slug>/ (nur noch Weiche)
 
-// AP-33: Die beiden Leistungswelten. Einzige Quelle für Pfade, Labels und Zugehörigkeit.
-// Breadcrumb-Knoten der Leistungsübersicht – weltunabhängig „Leistungen"; die Welt
-// steht schon im vorherigen Knoten (weltLabel). uebersichtLabel bleibt weltspezifisch
-// für den ogTitle (Social-Share-Title je Welt eindeutig).
-const LEISTUNGEN_CRUMB = 'Leistungen';
+// Die beiden Leistungswelten. Einzige Quelle für Pfade, Labels und Zugehörigkeit.
 
 export const WELTEN = {
   privat: {
@@ -374,11 +370,7 @@ export const WELTEN = {
     pfad: 'privatkunden/',
     weltLabel: 'Privatkunde',
     navLabel: 'Für Privatkunden',
-    uebersichtLabel: 'Leistungen – Privatkunde',
-    h1: 'Leistungen für Privatkunden',
-    lead: 'Von der Gartengestaltung über Teichanlagen und Pflasterarbeiten bis zur Baumkontrolle und laufenden Pflege – für private Gärten in Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer.',
     base: '../../../',        // /privatkunden/leistungen/<slug>/
-    baseUebersicht: '../../', // /privatkunden/leistungen/
     slugs: [
       'baumkontrolle', 'baumarbeiten', 'sturmnotdienst', 'holzverkauf',
       'gartengestaltung', 'vorgarten', 'teichbau', 'terrasse-pflasterarbeiten',
@@ -391,11 +383,7 @@ export const WELTEN = {
     pfad: 'gewerbekunden/',
     weltLabel: 'Gewerbekunde',
     navLabel: 'Für Gewerbekunden',
-    uebersichtLabel: 'Leistungen – Gewerbekunde',
-    h1: 'Leistungen für Gewerbekunden',
-    lead: 'Außenanlagenpflege, Baumkontrolle, Baumarbeiten, Dachbegrünung und Sturmnotdienst für gewerbliche Objekte in Herne, Bochum, Castrop-Rauxel, Recklinghausen und Gelsenkirchen-Buer.',
     base: '../../../',
-    baseUebersicht: '../../',
     slugs: ['baumkontrolle', 'baumarbeiten', 'sturmnotdienst', 'dachbegruenung', 'aussenanlagenpflege'],
   },
 };
@@ -409,13 +397,6 @@ export function weltPfadFuerSlug(slug) {
   return NUR_GEWERBE.has(slug) ? WELTEN.gewerbe.pfad : WELTEN.privat.pfad;
 }
 
-// AP-33: Gruppierung der Übersicht. Pro Welt wird auf die vorhandenen Slugs gefiltert;
-// leere Gruppen entfallen. Slugs ohne Gruppe landen in "Weitere Leistungen".
-export const LEISTUNGS_GRUPPEN = [
-  { label: 'Bäume & Sicherheit', slugs: ['baumkontrolle', 'baumarbeiten', 'sturmnotdienst', 'holzverkauf'] },
-  { label: 'Gartengestaltung', slugs: ['gartengestaltung', 'vorgarten', 'teichbau', 'terrasse-pflasterarbeiten', 'bepflanzung', 'dachbegruenung'] },
-  { label: 'Pflege & Sonderleistungen', slugs: ['gartenpflege', 'aussenanlagenpflege', 'palmen-winterfest', 'pool-whirlpool-umfeld'] },
-];
 export const AREA_SERVED = ['Herne', 'Bochum', 'Castrop-Rauxel', 'Recklinghausen', 'Gelsenkirchen-Buer'];
 
 const KUNDENGRUPPE_META = {
@@ -452,7 +433,7 @@ export function renderNavSubmenu(base) {
       .map((s) => `<li><a href="${base}${welt.pfad}leistungen/${s}/">${esc(labelBySlug.get(s) || s)}</a></li>`)
       .join('\n              ');
     return `<li class="nav-submenu-group">
-            <a class="nav-submenu-head" href="${base}${welt.pfad}leistungen/">${esc(welt.navLabel)}</a>
+            <a class="nav-submenu-head" href="${base}${welt.pfad}">${esc(welt.navLabel)}</a>
             <ul>
               ${items}
             </ul>
@@ -518,13 +499,40 @@ function footerContextForKundentyp(kundentyp) {
 
 // AP-19 – Startseiten-FAQ aus content/faq-startseite.json.
 // Sichtbare <details>-Liste UND FAQPage-Schema aus DERSELBEN Quelle → identischer Text.
-export function renderFaqDetails(faq) {
-  return faq
-    .map((f) => `<details>
+//
+// AP-94: Ab FAQ_VISIBLE Fragen wandert der Rest in einen Ausklapper. Bewusst ein
+// verschachteltes <details> und kein JS: alle Fragen bleiben serverseitig im HTML
+// und damit fuer Suchmaschinen wie fuer Antwortmaschinen lesbar - eingeklappter
+// Inhalt wird indexiert, per Klick nachgeladener nicht. Das FAQPage-Schema unten
+// listet unveraendert ALLE Fragen; es darf nichts enthalten, was nicht auf der
+// Seite steht, und eingeklappt zaehlt als vorhanden.
+const FAQ_VISIBLE = 8;
+
+const faqItem = (f) => `<details>
         <summary><span>${esc(f.frage)}</span><span class="chev" aria-hidden="true"></span></summary>
         <div class="faq-body"><p>${esc(f.antwort)}</p></div>
-      </details>`)
-    .join('\n      ');
+      </details>`;
+
+export function renderFaqDetails(faq) {
+  const items = faq.map(faqItem);
+  if (items.length <= FAQ_VISIBLE) return items.join('\n      ');
+
+  const rest = items.slice(FAQ_VISIBLE);
+  const label = rest.length === 1
+    ? 'Eine weitere Frage anzeigen'
+    : `Weitere ${rest.length} Fragen anzeigen`;
+
+  return [
+    ...items.slice(0, FAQ_VISIBLE),
+    `<details class="faq-more">
+        <summary>
+          <span class="faq-more-open">${label}</span>
+          <span class="faq-more-close">Weniger anzeigen</span>
+          <span class="chev" aria-hidden="true"></span>
+        </summary>
+        ${rest.join('\n        ')}
+      </details>`,
+  ].join('\n      ');
 }
 
 export function renderFaqSchema(faq) {
@@ -696,7 +704,7 @@ function lpVerlinkung(leistung, labelBySlug, base, welt, contactHref) {
 }
 
 // ---------- JSON-LD ----------
-// AP-33: vierstufig, weltabhängig. Muss mit der sichtbaren Breadcrumb übereinstimmen.
+// Die Verteilerseite ist entfallen: Startseite, Kundenwelt und Detailleistung.
 function leistungBreadcrumb(h1, canonical, welt) {
   return JSON.stringify({
     '@context': 'https://schema.org',
@@ -704,8 +712,7 @@ function leistungBreadcrumb(h1, canonical, welt) {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
       { '@type': 'ListItem', position: 2, name: welt.weltLabel, item: `${SITE}/${welt.pfad}` },
-      { '@type': 'ListItem', position: 3, name: LEISTUNGEN_CRUMB, item: `${SITE}/${welt.pfad}leistungen/` },
-      { '@type': 'ListItem', position: 4, name: h1, item: canonical },
+      { '@type': 'ListItem', position: 3, name: h1, item: canonical },
     ],
   }, null, 2);
 }
@@ -714,15 +721,7 @@ function leistungBreadcrumb(h1, canonical, welt) {
 function breadcrumbTrail(welt, base, h1) {
   return `<li><a href="${base}">Startseite</a></li>
         <li><a href="${base}${welt.pfad}">${esc(welt.weltLabel)}</a></li>
-        <li><a href="${base}${welt.pfad}leistungen/">${esc(LEISTUNGEN_CRUMB)}</a></li>
         <li aria-current="page">${esc(h1)}</li>`;
-}
-
-// AP-33: Breadcrumb der Welt-Übersicht (dreistufig).
-function uebersichtBreadcrumbTrail(welt, base) {
-  return `<li><a href="${base}">Startseite</a></li>
-        <li><a href="${base}${welt.pfad}">${esc(welt.weltLabel)}</a></li>
-        <li aria-current="page">${esc(LEISTUNGEN_CRUMB)}</li>`;
 }
 
 function serviceJsonLd(leistung, canonical) {
@@ -773,7 +772,8 @@ export async function renderLeistungPage(opts) {
     ogImage: escAttr(ogImage),
     breadcrumbJsonLd: leistungBreadcrumb(leistung.h1, canonical, welt),
     breadcrumbTrail: breadcrumbTrail(welt, base, leistung.h1),
-    weltLeistungenHref: `${base}${welt.pfad}leistungen/`,
+    weltHref: `${base}${welt.pfad}`,
+    weltCtaLabel: welt.key === 'privat' ? 'Zum Privatkundenbereich' : 'Zum Gewerbekundenbereich',
     contactHref: escAttr(contactHref),
     serviceJsonLd: serviceJsonLd(leistung, canonical),
     faqJsonLd: faqJsonLd(leistung.faq),
@@ -791,80 +791,6 @@ export async function renderLeistungPage(opts) {
     referenzprojekte: lpRefs(refProjects, base),
     faqHtml: lpFaq(leistung.faq || []),
     verlinkung: lpVerlinkung(leistung, labelBySlug, base, welt, contactHref),
-  });
-}
-
-// ---------- Leistungs-Übersichtsseite ----------
-export async function renderLeistungenOverview(opts) {
-  const { leistungen, welt, cssVersion, jsVersion } = opts;
-  const [page, header, footer, logo] = await Promise.all([
-    loadTpl('leistungen-index.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
-  ]);
-  const base = welt.baseUebersicht;
-  const canonical = `${SITE}/${welt.pfad}leistungen/`;
-
-  // AP-33: Kein Kundentyp-Tag mehr – die Welt ist durch die Seite bereits eindeutig.
-  const renderCard = (l) => `<a class="lpx-card" href="${encodeURIComponent(l.slug)}/">
-          <h2>${esc(l.h1)}</h2>
-          <p>${esc(firstSentence(l.intro))}</p>
-          <span class="lpx-more">Mehr erfahren <span aria-hidden="true">→</span></span>
-        </a>`;
-
-  // AP-33: Gruppierung, auf die Leistungen dieser Welt gefiltert. Leere Gruppen entfallen,
-  // nicht zugeordnete Slugs landen gesammelt in "Weitere Leistungen" – nichts verschwindet.
-  const vorhanden = new Map(leistungen.map((l) => [l.slug, l]));
-  const gruppen = LEISTUNGS_GRUPPEN
-    .map((g) => ({ label: g.label, items: g.slugs.map((s) => vorhanden.get(s)).filter(Boolean) }))
-    .filter((g) => g.items.length);
-  const zugeordnet = new Set(LEISTUNGS_GRUPPEN.flatMap((g) => g.slugs));
-  const rest = leistungen.filter((l) => !zugeordnet.has(l.slug));
-  if (rest.length) gruppen.push({ label: 'Weitere Leistungen', items: rest });
-
-  const cards = gruppen.map((g) => `<div class="lpx-group">
-      <h3 class="lpx-group-label">${esc(g.label)}</h3>
-      <div class="lpx-grid">
-        ${g.items.map(renderCard).join('\n        ')}
-      </div>
-    </div>`).join('\n    ');
-
-  const breadcrumb = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
-      { '@type': 'ListItem', position: 2, name: welt.weltLabel, item: `${SITE}/${welt.pfad}` },
-      { '@type': 'ListItem', position: 3, name: LEISTUNGEN_CRUMB, item: canonical },
-    ],
-  }, null, 2);
-
-  const itemList = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    itemListElement: leistungen.map((l, i) => ({
-      '@type': 'ListItem', position: i + 1, name: l.h1, url: `${SITE}/${welt.pfad}leistungen/${l.slug}/`,
-    })),
-  }, null, 2);
-
-  const titel = `Leistungen für ${welt.weltLabel}n in Herne, Bochum & Recklinghausen | Maik Rohdich`;
-
-  return fill(page, {
-    base,
-    cssVersion: escAttr(cssVersion),
-    jsVersion: escAttr(jsVersion),
-    title: esc(titel),
-    ogTitle: escAttr(`${welt.uebersichtLabel} – Maik Rohdich Garten- und Landschaftsbau`),
-    description: escAttr(truncate(`Alle Leistungen von Maik Rohdich Garten- und Landschaftsbau für ${welt.weltLabel}n in Herne, Bochum, Castrop-Rauxel und Recklinghausen im Überblick.`, 160)),
-    canonical: escAttr(canonical),
-    ogImage: escAttr(`${SITE}/assets/img/hero/hero-garten-herne-1600.webp`),
-    breadcrumbJsonLd: breadcrumb,
-    breadcrumbTrail: uebersichtBreadcrumbTrail(welt, base),
-    h1: esc(welt.h1),
-    lead: esc(welt.lead),
-    logo: logo.trim(),
-    header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, footerTemplateData(base, welt.key)).trim(),
-    itemListJsonLd: itemList,
-    cards,
   });
 }
 

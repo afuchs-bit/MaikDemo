@@ -30,7 +30,11 @@ const QUALITY_FLOOR = 28; // untere Grenze, darunter nicht mehr
 // src = Quelldatei (relativ zum Repo-Root).
 const SOURCES = [
   { src: 'assets/img/_src/hero-garten-herne.png',            dir: 'assets/img/hero',                              name: 'hero-garten-herne' },
-  { src: 'assets/img/_src/hero-pool.jpg',                     dir: 'assets/img/hero',                              name: 'hero-pool' },
+  // Privat-Tuer im Hero. Quelle 1440x1080 (4:3), Tuer ist ~3:2 - daher leichter
+  // Zuschnitt (nur ~11 % Hoehe). focusY 0.65 laesst oben etwas Himmel stehen und
+  // behaelt unten die Natursteinmauer als Bildbasis.
+  { src: 'assets/img/_src/51FE5CE2-95A1-43F9-A555-963573FFD55C.JPG', dir: 'assets/img/hero', name: 'gate-privat',
+    widths: [480, 960, 1200], crop: { aspect: 3 / 2, focusY: 0.65 } },
   { src: 'assets/img/_src/vorgarten-herne.png',              dir: 'assets/img/projekte/vorgarten-herne-2026',    name: 'vorgarten-herne' },
   { src: 'assets/img/_src/teichanlage-bochum.png',           dir: 'assets/img/projekte/teichanlage-bochum-2026', name: 'teichanlage-bochum' },
   { src: 'assets/img/_src/aussenanlagen-recklinghausen.png', dir: 'assets/img/projekte/aussenanlagen-recklinghausen-2026', name: 'aussenanlagen-recklinghausen' },

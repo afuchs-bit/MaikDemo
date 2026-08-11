@@ -287,14 +287,16 @@ p  { margin: 0; }
   border-radius: 999px;
   padding: 4px;
 }
-.menu a {
+.menu a,
+.menu-label {
   display: inline-flex; padding: 8px 14px; border-radius: 999px;
   font-size: .9rem; font-weight: 500; color: var(--ink-2);
   text-decoration: none; transition: color .2s var(--ease), background .2s var(--ease);
 }
 @media (min-width: 901px) and (max-width: 1339px) {
   .menu { gap: 2px; }
-  .menu a { padding-inline: 9px; font-size: .86rem; }
+  .menu a,
+  .menu-label { padding-inline: 9px; font-size: .86rem; }
 }
 @media (hover: hover) and (pointer: fine) { .menu a:hover { background: var(--bg-elev); color: var(--ink); } }
 
@@ -606,6 +608,10 @@ p  { margin: 0; }
 .section-head { max-width: 720px; margin-bottom: 56px; }
 .section-head.center { margin-inline: auto; text-align: center; }
 .section-head h2 { margin-top: 14px; }
+/* AP-96: Der Abstand oben war Luft unter dem Kicker. Faellt der weg, ist die H2
+   erstes Kind und braucht ihn nicht - sonst kollabiert er aus .section-head
+   heraus und schiebt den ganzen Sektionskopf nach unten. */
+.section-head > h2:first-child { margin-top: 0; }
 .section-head .lead { margin-top: 18px; }
 
 /* ---------- Wood / Special services ---------- */
@@ -1032,13 +1038,23 @@ p  { margin: 0; }
   transform: translate(-50%, -50%);
 }
 .chev::after { transform: translate(-50%, -50%) rotate(90deg); transition: transform .3s var(--ease); }
-.faq-list details[open] .chev { background: var(--green-100); }
-.faq-list details[open] .chev::after { transform: translate(-50%, -50%) rotate(0deg); }
+/* AP-94: Kind-Kombinator statt Nachfahre - sonst dreht der geoeffnete
+   .faq-more-Ausklapper die Chevrons aller darin liegenden Fragen mit. */
+.faq-list details[open] > summary > .chev { background: var(--green-100); }
+.faq-list details[open] > summary > .chev::after { transform: translate(-50%, -50%) rotate(0deg); }
 .faq-body {
   padding: 0 22px 18px;
   color: var(--ink-2);
 }
 .faq-body a { color: var(--green-700); }
+
+/* AP-94: Ausklapper fuer die Fragen ab Position 9. Natives <details>, kein JS -
+   die Fragen stehen im ausgelieferten HTML und bleiben fuer Suchmaschinen und
+   Antwortmaschinen lesbar, auch solange sie zugeklappt sind. */
+.faq-more > summary { color: var(--green-700); }
+.faq-more[open] > summary { border-bottom: 1px solid var(--line-2); }
+.faq-more[open] > summary > .faq-more-open,
+.faq-more:not([open]) > summary > .faq-more-close { display: none; }
 
 /* ---------- Contact ---------- */
 .section-contact { background: var(--bg-dark); color: #f4f1e8; padding-bottom: 80px; }
@@ -1458,7 +1474,8 @@ p  { margin: 0; }
     overscroll-behavior: contain;
   }
   /* AP-39: Touchziele auf mindestens 44px. Die Eintraege lagen bei 42,9px. */
-  .primary-nav.is-open .menu a {
+  .primary-nav.is-open .menu a,
+  .primary-nav.is-open .menu-label {
     padding: 12px 16px;
     min-height: 44px;
     display: flex; align-items: center;
@@ -2621,6 +2638,10 @@ body.has-welt-dialog { overflow: hidden; }
    (Reihenfolge sorgt für korrekte Kaskade unter 900px).
    ============================================================ */
 .menu-item--sub { position: relative; display: flex; align-items: center; }
+.menu-item--sub > .menu-label { cursor: default; }
+@media (hover: hover) and (pointer: fine) {
+  .menu-item--sub:hover > .menu-label { background: var(--bg-elev); color: var(--ink); }
+}
 .submenu-toggle {
   display: inline-flex; align-items: center; justify-content: center;
   background: none; border: 0; cursor: pointer; color: var(--ink-2);
@@ -2684,7 +2705,7 @@ body.has-welt-dialog { overflow: hidden; }
 @media (max-width: 900px) {
   /* Untermenü unter dem Eintrag, per Toggle ausklappbar */
   .menu-item--sub { flex-wrap: wrap; position: static; }
-  .menu-item--sub > a { flex: 1; }
+  .menu-item--sub > .menu-label { flex: 1; }
   /* AP-39: Der Aufklapp-Button mass 34x34px. Er sitzt direkt neben dem
      Leistungen-Link, beide brauchen eine eigene, ausreichend grosse Flaeche. */
   .submenu-toggle {
@@ -3100,8 +3121,11 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 .hero--gate {
   /* AP-84: war clamp(20px, 4vw, 48px) 0 0. Obergrenze bewusst unter dem
      Entwurfswert (76px): bei 1440x900 muessen die Kachel-Buttons ueber der
-     Falz bleiben - Budgetrechnung siehe Commit-Message. */
-  padding: clamp(32px, 3vw, 52px) 0 clamp(28px, 3.4vw, 44px);
+     Falz bleiben - Budgetrechnung siehe Commit-Message.
+     AP-103: Oberer Wert von clamp(32px,3vw,52px) auf clamp(20px,2vw,34px)
+     gesenkt. Zusammen mit dem entfernten H1-Margin faellt die optisch
+     wahrgenommene Luecke unter dem Header bei 1440px von 81px auf 47px. */
+  padding: clamp(20px, 2vw, 34px) 0 clamp(28px, 3.4vw, 44px);
   background: var(--bg-hero);              /* AP-84: eigener Ton, hebt den Hero vom Seitenrest ab */
   border-bottom: 1px solid var(--line);    /* AP-84 */
 }
@@ -3124,7 +3148,11 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   padding-bottom: clamp(20px, 2.2vw, 32px);  /* AP-84: war clamp(24px, 3.4vw, 42px), Falz-Budget */
 }
 .gate-head .hero-title {
-  margin-top: 20px;                        /* AP-84: war 18px */
+  /* AP-103: war 20px. Die H1 ist erstes Kind von .gate-head, der Abstand
+     kollabierte also nach oben aus dem Kasten heraus und addierte sich auf das
+     Hero-Padding - reine Totluft unter dem Header. Gleiches Muster wie bei
+     .section-head > h2:first-child. */
+  margin-top: 0;
   font-size: clamp(2.25rem, 4.5vw, 4.1rem); /* AP-86: war clamp(2.5rem, 5.2vw, 4.75rem) */
   line-height: .97;                        /* AP-84: enger, damit die drei Zeilen als Block wirken */
   letter-spacing: -.042em;                 /* AP-84 */
@@ -3173,15 +3201,22 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 }
 .gate-door:hover img.gate-photo { transform: scale(1.04); }
 
+/* AP-102: Ziel war "weniger dunkle Flaeche, mehr Foto". Der Entwurf wollte dafuer
+   die HOEHE auf 54% senken - im Browser nachgemessen faellt die gelbe Eyebrow
+   damit auf 1,4:1 (Gewerbe-Tuer), weil sie bei zweizeiliger H2 rund 179px ueber
+   der Kartenunterkante sitzt und dort dann kaum noch Schleier liegt. Ausserdem
+   bringt das nichts: unten blieb der Verlauf mit .95 praktisch schwarz.
+   Stattdessen andersherum - Hoehe leicht ANHEBEN (72 -> 76%) und den Verlauf
+   insgesamt duenner machen. Deckt den Text besser ab und gibt gleichzeitig mehr
+   Foto frei (mittlere Deckkraft ueber die Karte 0,50 -> 0,42).
+   Gemessen (schlechtestes Pixel unter dem Text, Eyebrow braucht 4,5:1):
+   880px 6,6/6,5 | 1024px 6,5/6,8 | 1440px 6,3/5,6 | 1920px 6,3/5,6 (Gewerbe/Privat). */
 .gate-veil {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 72%;                             /* AP-84: Entwurfswert 62% verworfen - gelber Kicker fiel auf 3.8:1, mit 72% gemessen >= 5.6:1 */
+  height: 76%;
   z-index: -1;
-  /* Stops dunkler als im Entwurf: gelbe Eyebrow braucht 4.5:1 auch auf hellen
-     Fotostellen. AP-91 nochmals nachgezogen (.82 -> .90), weil das helle Laub
-     im Baumarbeiten-Foto den Kicker sonst auf 3,3:1 druecken wuerde. */
-  background: linear-gradient(to top, rgba(8,20,0,.96) 0%, rgba(8,20,0,.90) 50%, rgba(8,20,0,0) 100%);
+  background: linear-gradient(to top, rgba(8,20,0,.58) 0%, rgba(8,20,0,.72) 68%, rgba(8,20,0,0) 100%);
 }
 
 .gate-body {
@@ -3242,7 +3277,24 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 @media (max-width: 860px) {
   .gate-doors { grid-template-columns: 1fr; }
   .gate-door { height: clamp(220px, 46vw, 300px); min-height: 220px; border-radius: 20px; }  /* AP-84: war aspect-ratio 3/2, min-height 210px */
-  .gate-cta { width: 100%; justify-content: center; padding: 14px 18px; }
+  /* AP-102: Bestandsfehler, beim Nachmessen gefunden. Auf 390px ist die Karte nur
+     220px hoch, der Textblock 142px - die Eyebrow beginnt 160px ueber der
+     Unterkante, der 72%-Schleier reichte aber nur 158px hoch. Sie stand also
+     KOMPLETT ueber dem Verlauf auf dem hellen Laub: gemessen 1,1:1 statt 4,5:1.
+     Hoehe deshalb auf 84%, Verlauf dafuer duenner - gleiche mittlere Deckkraft
+     wie bisher (0,50), aber der Text liegt jetzt wirklich darauf.
+     Gemessen: 390px 6,4/6,5 | 860px 5,4/5,3 (Gewerbe/Privat). */
+  .gate-veil {
+    height: 84%;
+    background: linear-gradient(to top, rgba(8,20,0,.54) 0%, rgba(8,20,0,.74) 85%, rgba(8,20,0,0) 100%);
+  }
+  /* AP-104: Der Pill lag ueber die volle Kartenbreite und war ~53px hoch - auf 390px
+     verdeckte er damit rund ein Fuenftel der Kachel als geschlossene helle Flaeche.
+     Die ganze Kachel ist verlinkt (<a class="gate-door">), der Button ist also reine
+     Affordanz; die Trefferflaeche bleibt unabhaengig davon die volle Karte.
+     Breite jetzt textabhaengig (Basis .gate-cta ist inline-flex), Hoehe ~53 -> ~40px. */
+  .gate-cta { font-size: .88rem; padding: 10px 16px; gap: 7px; }
+  .gate-cta svg { width: 14px; height: 14px; }   /* uebersteuert die width/height-Attribute im HTML */
   .gate-head { padding-top: max(0px, env(safe-area-inset-top)); }
   .gate-head .hero-title { font-size: clamp(1.85rem, 7.6vw, 2.6rem); }  /* AP-86: war clamp(2rem, 8.5vw, 2.9rem) */
   .hero--gate { padding-top: clamp(24px, 6vw, 40px); }               /* AP-84 */
@@ -3259,4 +3311,156 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
    und verhalten sich wie bisher. */
 @media (scripting: none) {
   .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- AP-106: Kontaktweiche (nur Startseite) ----------
+   Loest den kw-Block aus AP-99/101 ab. Klassen bewusst praefixiert (.fork-):
+   der Entwurf brachte generische Namen wie .btn und .path mit, die die
+   19 bestehenden .btn-Regeln der Seite ueberschrieben haetten.
+   AP-106: Die Musterflaechen-Sektion aus AP-105 ist wieder entfallen. */
+
+/* --- Kontaktweiche --- */
+.fork {
+  background: var(--green-900); color: #fff;
+  padding: clamp(70px, 8.5vw, 116px) 0 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: var(--header-h, 90px);
+}
+.fork-head { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.fork-title {
+  font-family: var(--display); font-weight: 700; color: #fff;
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.02; letter-spacing: -.04em;
+  margin: 0;
+}
+.fork-lede { margin: 20px auto 0; max-width: 42ch; color: rgba(255,255,255,.66); font-size: clamp(.98rem, 1.15vw, 1.06rem); line-height: 1.68; }
+
+/* Signatur: die Weiche (AP-107, Werte aus der SwitchLine-Vorlage).
+   Die viewBox ist 1240 breit wie das Spaltenraster, deshalb enden die Aeste bei
+   310/930 - genau auf den Spaltenmitten von .fork-paths. Die Hoehe bleibt dabei
+   120px wie zuvor, die Weiche wird nur breiter.
+   Die dasharray-Werte sind die im Browser gemessenen Pfadlaengen (44/327/327);
+   dadurch laeuft die Animation ohne JS, main.js setzt nur .is-in wie bei jedem
+   .reveal. non-scaling-stroke haelt die Haarlinie bei 1px - ohne wuerde sie mit
+   der Skalierung mitwachsen (bei Containerbreite gemessen 2,04px). */
+.fork-switch { display: block; width: min(var(--container), 100%); margin: 36px auto 0; height: auto; overflow: visible; }
+.fork-switch path {
+  fill: none; stroke: rgba(228,231,223,.34); stroke-width: 1;
+  transition: stroke-dashoffset .9s var(--ease);
+}
+.fork-switch path:nth-of-type(1) { stroke-dasharray: 44;  stroke-dashoffset: 44; }
+.fork-switch path:nth-of-type(2) { stroke-dasharray: 327; stroke-dashoffset: 327; transition-delay: .55s; }
+.fork-switch path:nth-of-type(3) { stroke-dasharray: 327; stroke-dashoffset: 327; transition-delay: .62s; }
+.fork-switch.is-in path { stroke-dashoffset: 0; }
+/* transform-box: fill-box, damit sich transform-origin auf den Kreis bezieht
+   und nicht auf das SVG-Koordinatensystem. */
+.fork-switch circle {
+  fill: var(--yellow); opacity: 0;
+  transform: scale(.4); transform-box: fill-box; transform-origin: center;
+  transition: opacity .35s ease .5s, transform .35s ease .5s;
+}
+.fork-switch.is-in circle { opacity: 1; transform: scale(1); }
+
+.fork-paths {
+  display: grid; grid-template-columns: 1fr 1px 1fr;
+  width: min(var(--container), 100%); margin: -1px auto 0;
+  border-top: 1px solid rgba(255,255,255,.16);
+}
+.fork-rule { background: rgba(255,255,255,.16); }
+.fork-path {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start;
+  padding: clamp(34px, 4.4vw, 56px) clamp(20px, 3.4vw, 52px) clamp(40px, 5vw, 64px);
+  transition: background .45s var(--ease);
+}
+.fork-path::before {
+  content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px;
+  background: var(--yellow); transform: scaleX(0); transform-origin: left;
+  transition: transform .55s var(--ease);
+}
+.fork-kind { margin: 0 0 14px; font-size: .72rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.fork-path-title {
+  margin: 0; color: #fff; font-family: var(--display); font-weight: 650;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem); line-height: 1.12; letter-spacing: -.03em;
+}
+.fork-desc { margin: 14px 0 0; max-width: 34ch; color: rgba(255,255,255,.62); font-size: .94rem; line-height: 1.6; }
+
+/* Primaerbutton: der Punkt waechst zur Fuellung */
+.fork-btn {
+  --fork-fill: #fff;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; gap: 16px;
+  margin-top: 30px; padding: 13px 13px 13px 26px;
+  border-radius: 999px; border: 1px solid var(--fork-fill); color: var(--fork-fill);
+  font-size: .95rem; font-weight: 600; text-decoration: none;
+  transition: color .45s var(--ease);
+}
+.fork-btn-label { position: relative; z-index: 2; }
+.fork-btn-dot {
+  position: relative; z-index: 2; flex: none;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--fork-fill); color: var(--green-900);
+  transition: background .45s var(--ease), color .45s var(--ease);
+}
+.fork-btn-dot svg { transition: transform .45s var(--ease); }
+.fork-btn::after {
+  content: ""; position: absolute; z-index: 1; right: 14px; top: 50%;
+  width: 28px; height: 28px; margin-top: -14px; border-radius: 50%;
+  background: var(--fork-fill); transform: scale(0); transform-origin: center;
+  transition: transform .55s var(--ease);
+}
+.fork-direct {
+  display: inline-flex; align-items: center; gap: 9px;
+  margin-top: 18px; padding: 6px 0;
+  color: rgba(255,255,255,.62); font-size: .85rem; text-decoration: none;
+  transition: color .35s var(--ease);
+}
+.fork-direct span { position: relative; }
+.fork-direct span::after {
+  content: ""; position: absolute; left: 0; bottom: -3px; height: 1px; width: 100%;
+  background: currentColor; transform: scaleX(0); transform-origin: right;
+  transition: transform .45s var(--ease);
+}
+.fork-direct svg { transition: transform .35s var(--ease); }
+.fork-foot { text-align: center; padding: 24px 0 32px; color: rgba(255,255,255,.45); font-size: .8rem; }
+.fork-foot a { color: #fff; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,237,0,.55); padding-bottom: 1px; }
+.fork-btn:focus-visible, .fork-direct:focus-visible, .fork-foot a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; border-radius: 4px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .fork-path:hover { background: #16260a; }          /* Tiefe im dunklen Block, kein Token vorhanden */
+  .fork-path:hover::before { transform: scaleX(1); }
+  .fork-btn:hover { color: var(--green-900); }
+  .fork-btn:hover::after { transform: scale(16); }
+  .fork-btn:hover .fork-btn-dot { background: transparent; color: var(--green-900); }
+  .fork-btn:hover .fork-btn-dot svg { transform: translateX(3px); }
+  .fork-direct:hover { color: #fff; }
+  .fork-direct:hover span::after { transform: scaleX(1); transform-origin: left; }
+  .fork-direct:hover svg { transform: translate(3px,-3px); }
+  .fork-foot a:hover { border-bottom-color: var(--yellow); }
+}
+
+@media (max-width: 900px) {
+  .fork-switch { display: none; }
+  /* AP-107: Der Strich wird von oben aufgezogen. Das scaleY sitzt auf dem
+     Pseudo-Element, weil .reveal.is-in am Element selbst transform:translateY(0)
+     setzt und ein scaleY dort ueberschreiben wuerde. */
+  .fork-switch--mobile { position: relative; width: 1px; height: 56px; margin: 30px auto 0; }
+  .fork-switch--mobile::after {
+    content: ""; position: absolute; inset: 0;
+    background: rgba(228,231,223,.34);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform .7s var(--ease);
+  }
+  .fork-switch--mobile.is-in::after { transform: scaleY(1); }
+  .fork-paths { grid-template-columns: 1fr; }
+  .fork-rule { height: 1px; }
+  .fork-path { padding-inline: var(--gutter); }
+}
+@media (min-width: 901px) { .fork-switch--mobile { display: none; } }
+@media (max-width: 600px) {
+  .fork-btn { width: 100%; justify-content: space-between; padding-left: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fork-switch path { stroke-dashoffset: 0; }
+  .fork-switch circle { opacity: 1; transform: scale(1); }
+  .fork-switch--mobile::after { transform: scaleY(1); }
 }
