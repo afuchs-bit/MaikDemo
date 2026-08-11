@@ -7,10 +7,9 @@
   "scripts": {
     "build-index": "node build-index.mjs",
     "build-leistungen": "node build-leistungen.mjs",
-    "build-ratgeber": "node build-ratgeber.mjs",
     "build-rechtstexte": "node build-rechtstexte.mjs",
     "build-footers": "node build-footers.mjs",
-    "build": "node build-index.mjs && node build-leistungen.mjs && node build-ratgeber.mjs && node build-rechtstexte.mjs && node build-footers.mjs",
+    "build": "node build-index.mjs && node build-leistungen.mjs && node build-rechtstexte.mjs && node build-footers.mjs",
     "build-images": "node build-images.mjs",
     "build-hero-images": "node build-hero-images.mjs",
     "build-gallery-teaser": "node build-gallery-teaser.mjs",

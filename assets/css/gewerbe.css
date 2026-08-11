@@ -1066,7 +1066,7 @@
 .b2b-process-intro {
   display: grid;
   grid-template-columns: minmax(0,.82fr) minmax(440px,1.18fr);
-  gap: clamp(36px,5vw,72px);
+  gap: clamp(28px,3.2vw,48px);
   align-items: start;
   margin-bottom: clamp(28px,3.5vw,48px);
 }
@@ -1082,22 +1082,20 @@
   color: var(--green-900);
 }
 .b2b-process-intro-body { min-width: 0; }
-.b2b-process-intro .lead {
-  max-width: 56ch;
-  margin: 0;
-  color: var(--ink-2);
-  font-size: clamp(1rem,1.2vw,1.12rem);
-  line-height: 1.65;
-}
 .b2b-process-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 18px;
   align-items: center;
-  margin-top: 24px;
+  margin-top: 0;
 }
 
 @media (min-width: 1024px) and (hover: hover) {
+  .b2b-process-intro-body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
   .b2b-page .section-process { padding: 0; }
   .b2b-page .section-process.is-scrollytelling .b2b-process-scene {
     position: sticky;
@@ -1115,7 +1113,8 @@
   }
   .b2b-page .section-process.is-scrollytelling .b2b-process-intro {
     grid-template-columns: minmax(0,.72fr) minmax(0,1.28fr);
-    gap: clamp(28px,4vw,58px);
+    gap: clamp(22px,2.6vw,38px);
+    align-items: center;
     margin-bottom: 0;
     padding-bottom: 16px;
   }
@@ -1127,14 +1126,10 @@
     font-size: clamp(2rem,2.8vw,2.75rem);
     line-height: 1.04;
   }
-  .b2b-page .section-process.is-scrollytelling .b2b-process-intro .lead {
-    max-width: 62ch;
-    font-size: clamp(.9rem,1vw,1rem);
-    line-height: 1.5;
-  }
   .b2b-page .section-process.is-scrollytelling .b2b-process-actions {
     gap: 10px;
-    margin-top: 17px;
+    flex-wrap: nowrap;
+    margin-top: 0;
   }
   .b2b-page .section-process.is-scrollytelling .b2b-process-actions .btn {
     --pad-y: 10px;
@@ -1178,7 +1173,6 @@
     margin-bottom: 34px;
   }
   .b2b-process-intro h2 { max-width: 20ch; }
-  .b2b-process-intro .lead { max-width: 62ch; }
 }
 
 @media (max-width: 600px) {
@@ -1186,7 +1180,7 @@
     gap: 20px;
   }
   .b2b-process-intro-heading { padding-left: 18px; }
-  .b2b-process-actions { display: grid; grid-template-columns: 1fr; margin-top: 21px; }
+  .b2b-process-actions { display: grid; grid-template-columns: 1fr; margin-top: 0; }
   .b2b-process-actions .btn { width: 100%; justify-content: center; text-align: center; }
 }
 

@@ -20,7 +20,7 @@ import { readFile, readdir, writeFile, mkdir, rm, access } from 'node:fs/promise
 import { constants as FS } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderLeistungPage, renderNavSubmenu, renderFooterLeistungen, renderFaqDetails, renderFaqSchema, LEISTUNGEN_NAV, WELTEN } from './lib/render.mjs';
+import { renderLeistungPage, renderNavSubmenu, renderFaqDetails, renderFaqSchema, LEISTUNGEN_NAV, WELTEN } from './lib/render.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
@@ -44,10 +44,9 @@ const HAND_PAGES = [
   { file: 'projekte/index.html', base: '../' },
   // AP-33: 404 trug die Leistungs-Nav fest verdrahtet – jetzt ebenfalls aus einer Quelle.
   { file: '404.html', base: '' },
-  // AP-108: kontakt/ und leistungen/ trugen das Dropdown ebenfalls fest verdrahtet
-  // und drifteten bei jeder Nav-Änderung still weg – jetzt aus derselben Quelle.
+  // AP-108: kontakt/ trug das Dropdown ebenfalls fest verdrahtet und driftete
+  // bei jeder Nav-Änderung still weg – jetzt aus derselben Quelle.
   { file: 'kontakt/index.html', base: '../' },
-  { file: 'leistungen/index.html', base: '../' },
 ];
 
 const isNonEmptyString = (v) => typeof v === 'string' && v.trim().length > 0;

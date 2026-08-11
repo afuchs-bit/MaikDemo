@@ -10,7 +10,7 @@ Die Demo läuft mit vollständiger Sperre. Beim Umschalten beides entfernen:
 - [ ] `<meta name="robots" content="noindex,nofollow" />` aus `index.html`,
       `privatkunden/index.html`, `gewerbekunden/index.html`, `projekte/index.html`
       **und aus allen bis dahin neu entstandenen Seiten** entfernen
-      (Leistungsseiten, Projektseiten, Ortsseiten, Ratgeber, Impressum, Datenschutz)
+      (Leistungsseiten, Projektseiten, Ortsseiten, Impressum, Datenschutz)
 - [ ] `robots.txt` durch `robots-live.txt` ersetzen (AP-08)
 
 > **Ausnahme — nicht anfassen:** `admin/index.html` behält sein `noindex` dauerhaft.
