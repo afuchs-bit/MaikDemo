@@ -3352,18 +3352,57 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 
 @media (max-width: 860px) {
   .gate-doors { grid-template-columns: 1fr; }
-  .gate-door { height: clamp(220px, 46vw, 300px); min-height: 220px; border-radius: 20px; }  /* AP-84: war aspect-ratio 3/2, min-height 210px */
-  /* AP-102: Bestandsfehler, beim Nachmessen gefunden. Auf 390px ist die Karte nur
-     220px hoch, der Textblock 142px - die Eyebrow beginnt 160px ueber der
-     Unterkante, der 72%-Schleier reichte aber nur 158px hoch. Sie stand also
-     KOMPLETT ueber dem Verlauf auf dem hellen Laub: gemessen 1,1:1 statt 4,5:1.
-     Hoehe deshalb auf 84%, Verlauf dafuer duenner - gleiche mittlere Deckkraft
-     wie bisher (0,50), aber der Text liegt jetzt wirklich darauf.
-     Gemessen: 390px 6,4/6,5 | 860px 5,4/5,3 (Gewerbe/Privat). */
-  .gate-veil {
-    height: 84%;
-    background: linear-gradient(to top, rgba(8,20,0,.54) 0%, rgba(8,20,0,.74) 85%, rgba(8,20,0,0) 100%);
+  /* AP-132: war height clamp(220px,46vw,300px). 4:3 statt ~16:9 - dadurch wird der
+     Bildinhalt 12 % groesser dargestellt (0,365x -> 0,409x der Quelle), ohne neue
+     Derivate. max-height 300px greift ab ca. 440px Viewport und haelt die Kachel
+     dort auf der bisherigen Obergrenze; min-height 230px ab ca. 347px abwaerts.
+     Beide Quellen sind 1200x800 (3:2): in der 4:3-Box beschneidet object-fit:cover
+     die BREITE, nicht die Hoehe - das bestehende object-position 50% 58% auf der
+     Privat-Kachel wird dadurch wirkungslos, zentriert sitzt das Motiv richtig. */
+  .gate-door {
+    width: 100%;          /* AP-132: MUSS gesetzt bleiben. Sobald min-/max-height
+                             greift, leitet der Browser sonst die BREITE aus
+                             aspect-ratio ab (230 * 4/3 = 306,7px) - die Kachel wird
+                             dann breiter als ihre Spalte und ragt rechts heraus. */
+    height: auto;
+    aspect-ratio: 4 / 3;
+    min-height: 230px;
+    max-height: 300px;
+    border-radius: 20px;
   }
+  /* AP-132: Der Vollverlauf aus AP-102 hielt zwar den Kontrast, dunkelte die Kachel
+     dafuer im Mittel zu 50 % ab - nur die obersten 16 % der Hoehe blieben frei, und
+     dort steht bei der Privat-Kachel Himmel. Statt eines Verlaufs ueber die ganze
+     Kachel traegt jetzt eine Platte genau unter dem Text.
+     Deckkraft nach demselben Verfahren wie AP-102 hergeleitet (hellstes Pixel unter
+     der Platte, Eyebrow #FFED00 braucht 4,5:1): noetig sind 0,626, gesetzt 0,64,
+     gemessen 4,74:1. Der Wert ist bewusst gegen ein REINWEISSES Pixel gerechnet und
+     damit die obere Schranke - er haelt unabhaengig vom Motiv und von der Breite.
+     Mittlere Abdunklung der Kachel faellt damit von 0,50 auf 0,31-0,40. */
+  .gate-veil { display: none; }
+  .gate-body {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 14px;
+    background: rgba(8, 20, 0, .64);
+    border-radius: 18px 18px 0 0;
+  }
+  /* AP-132: Schriftgrad aus der gemessenen Textbreite hergeleitet, damit
+     "Aussenanlagen, gepflegt und geprueft." einzeilig bleibt - der Wortlaut sollte
+     erhalten bleiben. Massgeblich ist .type-subsection-title am h2 mit
+     letter-spacing -0.022em; die Klasse (0,1,0) schlaegt die h2-Elementregel mit
+     -0.028em. Im Browser nachgemessen misst Outfit 700 damit 16,196 px Breite je
+     1 px Schriftgrad (Privat 13,759). Verfuegbar sind
+     (100vw - 40px Gutter - 28px Innenabstand) = 100vw - 68px.
+     Daraus mit 5 % Reserve: 0,95 * (100vw - 68) / 16,196 = 5,85vw - 4px.
+     Ergibt 14,7 / 17,1 / 18,8 / 20,8 px bei 320 / 360 / 390 / 430 px Viewport,
+     Reserve durchgehend 13-25 px. Unter ~304px greift der 0,86rem-Boden, dort
+     bleiben noch 9 px.
+     ACHTUNG: an diese beiden Strings UND an das letter-spacing gebunden. Aendert
+     sich eine Ueberschrift oder die Laufweite, muss der Wert neu hergeleitet
+     werden - sonst bricht die Zeile um. */
+  .gate-door h2 { font-size: clamp(0.86rem, 5.85vw - 4px, 1.3rem); }
   /* AP-104: Der Pill lag ueber die volle Kartenbreite und war ~53px hoch - auf 390px
      verdeckte er damit rund ein Fuenftel der Kachel als geschlossene helle Flaeche.
      Die ganze Kachel ist verlinkt (<a class="gate-door">), der Button ist also reine
