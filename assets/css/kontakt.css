@@ -23,10 +23,12 @@
 
 .contact-hero-copy h1 {
   margin: 0;
-  font-size: clamp(3rem,5.1vw,4.9rem);
-  line-height: .98;
-  letter-spacing: -.045em;
-  white-space: nowrap;
+  font-family: var(--display);
+  font-size: var(--type-page-h1-size);
+  font-weight: 800;
+  line-height: 1.03;
+  letter-spacing: -.043em;
+  text-wrap: balance;
 }
 
 .contact-hub {
@@ -175,9 +177,9 @@
 
 .contact-location-copy h2 {
   margin: 10px 0 12px;
-  font-size: clamp(1.75rem,2.45vw,2.45rem);
-  line-height: 1.04;
-  letter-spacing: -.035em;
+  font-size: var(--type-subsection-title-size);
+  line-height: 1.1;
+  letter-spacing: -.028em;
 }
 
 .contact-location-copy > p {
@@ -303,26 +305,31 @@
 
 .contact-visit-note strong { color: var(--green-900); font-family: var(--display); }
 
-.contact-paths { padding: clamp(76px,8vw,116px) 0; }
+.contact-paths { padding: var(--space-section) 0; }
 
 .contact-paths { background: var(--bg); }   /* AP-129 */
 
 .contact-section-head {
   max-width: 780px;
-  margin-bottom: clamp(34px,4.5vw,58px);
+  margin-bottom: var(--space-section-head);
 }
 
 .contact-section-head h2 {
-  margin: 0 0 18px;
-  font-size: clamp(2.2rem,4.2vw,4rem);
-  line-height: 1.04;
+  margin: 0 0 var(--space-title-subtext);
+  font-family: var(--display);
+  font-size: var(--type-section-title-size);
+  font-weight: 700;
+  line-height: 1.05;
   letter-spacing: -.035em;
 }
 
 .contact-section-head > p {
+  max-width: 62ch;
+  margin: 0;
   color: var(--ink-2);
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-family: var(--body);
+  font-size: var(--type-section-lead-size);
+  line-height: 1.62;
 }
 
 .contact-path-grid {
@@ -353,7 +360,7 @@
 .contact-path-icon { display: none; }
 
 .contact-path-label { margin: 26px clamp(24px,3vw,38px) 0; }
-.contact-path-card h3 { max-width: 19ch; margin: 11px clamp(24px,3vw,38px) 12px; font-size: clamp(1.55rem,2.35vw,2.15rem); line-height: 1.08; }
+.contact-path-card h3 { max-width: 19ch; margin: 11px clamp(24px,3vw,38px) 12px; font-size: var(--type-subsection-title-size); line-height: 1.1; }
 .contact-path-card > p { max-width: 56ch; margin: 0 clamp(24px,3vw,38px) 24px; color: var(--ink-2); line-height: 1.65; }
 
 .contact-path-actions {
@@ -403,7 +410,7 @@
   margin-top: 26px;
 }
 
-.contact-final { padding: 0 0 clamp(76px,8vw,116px); background: var(--bg); }
+.contact-final { padding: 0 0 var(--space-section); background: var(--bg); }
 
 .contact-final-card {
   display: grid;
@@ -418,7 +425,7 @@
 }
 
 .contact-final-card .contact-card-label { color: var(--yellow); font-size: .68rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
-.contact-final-card h2 { margin: 10px 0 8px; color: #fff; font-size: clamp(2rem,3.6vw,3.25rem); line-height: 1.05; }
+.contact-final-card h2 { margin: 10px 0 8px; color: #fff; font-size: var(--type-subsection-title-size); line-height: 1.1; }
 .contact-final-card p { margin: 0; color: rgba(255,255,255,.72); }
 .contact-final-actions { justify-content: flex-end; margin-top: 0; }
 .contact-final-primary { background: var(--yellow); color: var(--green-900); }
@@ -458,7 +465,7 @@
 @media (max-width:600px) {
   .contact-hero { padding-top: 24px; }
   .contact-hero .breadcrumbs { margin-bottom: 28px; }
-  .contact-hero-copy h1 { font-size: clamp(1.9rem,8.2vw,2.8rem); }
+  .contact-hero-copy h1 { font-size: var(--type-page-h1-size); }
   .contact-direct-card { padding: 26px 22px; border-radius: 22px 22px 38px 22px; }
   .contact-direct-list { grid-template-columns: 1fr; }
   .contact-callback-note { grid-template-columns: 34px minmax(0,1fr); gap: 10px; padding: 12px; }

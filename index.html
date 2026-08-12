@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260812j" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260812k" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -268,8 +268,8 @@
 <!-- ============ HERO / ZIELGRUPPENWEICHE (AP-82) ============ -->
 <section class="hero hero--gate" aria-labelledby="gate-title">
 
-  <div class="gate-head">
-    <h1 class="hero-title" id="gate-title">
+  <div class="gate-head reveal">
+    <h1 class="hero-title type-marketing-title" id="gate-title">
       <span class="line">Gärten gestalten.</span>
       <span class="line">Außenanlagen, <em>die bleiben.</em></span>
     </h1>
@@ -278,7 +278,7 @@
     </p>
   </div>
 
-  <div class="gate-doors">
+  <div class="gate-doors reveal">
 
     <a class="gate-door gate-door--privat" href="privatkunden/">
       <picture>
@@ -293,7 +293,7 @@
       <span class="gate-veil" aria-hidden="true"></span>
       <div class="gate-body">
         <span class="gate-eyebrow">Für Privatkunden</span>
-        <h2>Ihr Garten, geplant und gebaut.</h2>
+        <h2 class="type-subsection-title">Ihr Garten, geplant und gebaut.</h2>
         <span class="gate-cta">
           Zum Privatkundenbereich
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -314,7 +314,7 @@
       <span class="gate-veil" aria-hidden="true"></span>
       <div class="gate-body">
         <span class="gate-eyebrow">Für Gewerbekunden</span>
-        <h2>Außenanlagen, gepflegt und geprüft.</h2>
+        <h2 class="type-subsection-title">Außenanlagen, gepflegt und geprüft.</h2>
         <span class="gate-cta">
           Zum Gewerbekundenbereich
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -330,7 +330,7 @@
 <section class="section section-proof" aria-labelledby="proof-title">
   <div class="container">
     <div class="section-head center reveal">
-      <h2 id="proof-title">Vertrauen, das durch verlässliche Arbeit gewachsen ist.</h2>
+      <h2 class="type-section-title" id="proof-title">Vertrauen, das durch verlässliche Arbeit gewachsen ist.</h2>
     </div>
 
     <!-- Fünf eigenständige Nachweise: Erfahrung, Beständigkeit, Bewertung, Qualifikation und Präsenz. -->
@@ -446,7 +446,7 @@
 <!-- ============ KONTAKTWEICHE (AP-105/106) ============ -->
 <section class="fork" id="kontakt" aria-labelledby="kontakt-title">
   <div class="container fork-head">
-    <h2 class="fork-title reveal" id="kontakt-title">Zwei Wege zu uns.</h2>
+    <h2 class="fork-title type-section-title reveal" id="kontakt-title">Zwei Wege zu uns.</h2>
     <p class="fork-lede reveal">Damit Sie direkt bei den passenden Leistungen und beim richtigen Formular landen.</p>
   </div>
 
@@ -497,8 +497,8 @@
 <section class="section section-faq" id="faq" aria-labelledby="faq-title">
   <div class="container faq-wrap">
     <div class="section-head reveal">
-      <h2 id="faq-title">Was Kunden uns oft fragen.</h2>
-      <p class="lead">Wenn Sie unten keine Antwort finden, reicht eine kurze Nachricht per WhatsApp – wir melden uns.</p>
+      <h2 class="type-section-title" id="faq-title">Was Kunden uns oft fragen.</h2>
+      <p class="lead type-section-lead">Wenn Sie unten keine Antwort finden, reicht eine kurze Nachricht per WhatsApp – wir melden uns.</p>
     </div>
 
     <div class="faq-list reveal">

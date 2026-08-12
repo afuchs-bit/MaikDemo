@@ -263,7 +263,7 @@ function renderPhotoGrid() {
   const cards = galleryTeaserImages.map((image, index) => {
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = 'gallery-photo';
+    button.className = 'gallery-photo reveal';
     button.style.setProperty('--gallery-focus-desktop', image.fokusDesktop || '50% 50%');
     button.style.setProperty('--gallery-focus-mobile', image.fokusMobil || image.fokusDesktop || '50% 50%');
     button.setAttribute('aria-label', `${image.alt} – Bild vergrößern`);

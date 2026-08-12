@@ -107,6 +107,22 @@
   --display: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
   --body:    "Inter",  system-ui, -apple-system, "Segoe UI", sans-serif;
 
+  /* Rollenbasierte Typografie: gleiche Funktion = gleiche Darstellung. */
+  --type-marketing-h1-size: clamp(2.9rem, 4.45vw, 4.75rem);
+  --type-marketing-h1-size-mobile: clamp(2.17rem, 9.6vw, 3.15rem);
+  --type-page-h1-size: clamp(2.25rem, 3.4vw, 3.2rem);
+  --type-section-title-size: clamp(2rem, 3.4vw, 3.2rem);
+  --type-subsection-title-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  --type-module-title-size: clamp(1.05rem, 1.55vw, 1.3rem);
+  --type-hero-lead-size: clamp(1.05rem, 1.22vw, 1.2rem);
+  --type-section-lead-size: clamp(1rem, 1.3vw, 1.125rem);
+
+  /* Einheitlicher vertikaler Rhythmus. */
+  --space-section: clamp(52px, 7.5vw, 96px);
+  --space-section-compact: clamp(44px, 5.3vw, 68px);
+  --space-title-subtext: 16px;
+  --space-section-head: clamp(28px, 3.5vw, 44px);
+
   /* Layout */
   --container: 1240px;
   --gutter: clamp(20px, 4vw, 56px);
@@ -148,13 +164,20 @@ a { color: inherit; }
 }
 
 /* ---------- Type ---------- */
-h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin: 0; color: var(--ink); }
-h1 { font-size: clamp(2.4rem, 6.2vw, 5.6rem); font-weight: 800; letter-spacing: -0.035em; }
-h2 { font-size: clamp(1.8rem, 3.4vw, 3.2rem); letter-spacing: -0.028em; }
-h3 { font-size: clamp(1.2rem, 1.8vw, 1.6rem); letter-spacing: -0.02em; }
-h4 { font-size: 1.05rem; font-weight: 600; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; margin: 0; color: var(--ink); }
+h1 { font-size: var(--type-page-h1-size); font-weight: 800; line-height: 1.03; letter-spacing: -0.043em; }
+h2 { font-size: var(--type-section-title-size); line-height: 1.05; letter-spacing: -0.028em; }
+h3 { font-size: var(--type-module-title-size); line-height: 1.2; letter-spacing: -0.02em; }
+h4 { font-size: 1.05rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 p  { margin: 0; }
-.lead { font-size: clamp(1.05rem, 1.3vw, 1.2rem); color: var(--ink-2); max-width: 62ch; }
+.lead { font-size: var(--type-section-lead-size); line-height: 1.62; color: var(--ink-2); max-width: 62ch; }
+.type-marketing-title { font-size: var(--type-marketing-h1-size); font-weight: 800; line-height: .99; letter-spacing: -.043em; }
+.type-page-title { font-size: var(--type-page-h1-size); font-weight: 800; line-height: 1.03; letter-spacing: -.043em; }
+.type-section-title { font-size: var(--type-section-title-size); font-weight: 700; line-height: 1.05; letter-spacing: -.028em; }
+.type-subsection-title { font-size: var(--type-subsection-title-size); font-weight: 700; line-height: 1.1; letter-spacing: -.022em; }
+.type-module-title { font-size: var(--type-module-title-size); font-weight: 700; line-height: 1.2; letter-spacing: -.02em; }
+.type-hero-lead { font-family: var(--body); font-size: var(--type-hero-lead-size); line-height: 1.62; max-width: 62ch; }
+.type-section-lead { font-family: var(--body); font-size: var(--type-section-lead-size); line-height: 1.62; max-width: 62ch; }
 .muted { color: var(--ink-mute); }
 .muted-tiny { color: var(--ink-mute); font-size: .85em; }
 .small { font-size: .9rem; }
@@ -440,10 +463,10 @@ p  { margin: 0; }
 
 .hero-title {
   margin-top: 24px;
-  font-size: clamp(2.6rem, 7.2vw, 6.4rem);
+  font-size: var(--type-marketing-h1-size);
   font-weight: 800;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
+  line-height: .99;
+  letter-spacing: -.043em;
 }
 .hero-title .line { display: block; }
 .hero-title em,
@@ -471,9 +494,10 @@ p  { margin: 0; }
 }
 .hero-sub {
   margin-top: 22px;
-  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  font-size: var(--type-hero-lead-size);
+  line-height: 1.62;
   color: var(--ink-2);
-  max-width: 60ch;
+  max-width: 62ch;
 }
 
 .hero-ctas {
@@ -499,16 +523,16 @@ p  { margin: 0; }
    ============================================================ */
 .section {
   position: relative;
-  padding: clamp(70px, 11vw, 140px) 0;
+  padding: var(--space-section) 0;
 }
-.section-head { max-width: 720px; margin-bottom: 56px; }
+.section-head { max-width: 720px; margin-bottom: var(--space-section-head); }
 .section-head.center { margin-inline: auto; text-align: center; }
 .section-head h2 { margin-top: 14px; }
 /* AP-96: Der Abstand oben war Luft unter dem Kicker. Faellt der weg, ist die H2
    erstes Kind und braucht ihn nicht - sonst kollabiert er aus .section-head
    heraus und schiebt den ganzen Sektionskopf nach unten. */
 .section-head > h2:first-child { margin-top: 0; }
-.section-head .lead { margin-top: 18px; }
+.section-head .lead { margin-top: var(--space-title-subtext); }
 
 /* ---------- Wood / Special services ---------- */
 .section-wood { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
@@ -849,8 +873,8 @@ p  { margin: 0; }
     padding-bottom: clamp(58px, 6vh, 76px);
   }
   .section-proof .section-head { margin-bottom: clamp(44px, 4vw, 56px); }
-  .section-proof .section-head h2 { font-size: clamp(2rem, 2.7vw, 2.65rem); }
-  .section-proof .section-head .lead { margin-top: clamp(14px, 1.5vw, 18px); }
+  .section-proof .section-head h2 { font-size: var(--type-section-title-size); }
+  .section-proof .section-head .lead { margin-top: var(--space-title-subtext); }
   .proof-stats { margin-bottom: clamp(48px, 4.5vw, 62px); }
   .proof-feature { grid-template-columns: 1fr 1fr; gap: clamp(30px, 3vw, 42px); }
   /* Karte hoehengesteuert statt breitengesteuert: max-height in vh begrenzt die SVG-Hoehe,
@@ -1704,7 +1728,9 @@ p  { margin: 0; }
 /* ---------- Kompakter Seiten-Hero ---------- */
 .hero--page { padding-bottom: clamp(50px, 7vw, 90px); }
 .hero--page .hero-title {
-  font-size: clamp(2.2rem, 5.4vw, 4.6rem);
+  font-size: var(--type-page-h1-size);
+  line-height: 1.03;
+  letter-spacing: -.043em;
 }
 .hero--page .hero-content {
   padding-bottom: 0;
@@ -1752,20 +1778,22 @@ p  { margin: 0; }
   margin-top: clamp(18px, 2.4vw, 30px);
 }
 .hero-split-title {
-  font-size: clamp(2rem, 3.1vw, 2.9rem);
+  font-size: var(--type-page-h1-size);
   font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -.028em;
+  line-height: 1.03;
+  letter-spacing: -.043em;
   /* AP-68: kein margin-top mehr - die 14px waren der Abstand zur entfernten
      Eyebrow-Pille. Die H1 folgt jetzt direkt auf den Breadcrumb, dessen ol
      bereits margin-bottom: 20px traegt. */
   margin: 0;
 }
 .hero-split-sub {
-  margin-top: 16px;
-  max-width: 46ch;
+  margin-top: var(--space-title-subtext);
+  max-width: 62ch;
   color: var(--ink-2);
-  font-size: 1.05rem;
+  font-family: var(--body);
+  font-size: var(--type-hero-lead-size);
+  line-height: 1.62;
 }
 
 .hero-split-ctas {
@@ -1805,7 +1833,7 @@ p  { margin: 0; }
 
 @media (max-width: 900px) {
   .hero-split-grid { grid-template-columns: 1fr; gap: 26px; }
-  .hero-split-title { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+  .hero-split-title { font-size: var(--type-page-h1-size); }
   .hero-split-sub { max-width: none; }
 }
 @media (max-width: 600px) {
@@ -2308,8 +2336,9 @@ p  { margin: 0; }
    Nur bestehende Tokens; keine neue visuelle Sprache.
    ============================================================ */
 
-/* H1 der Galerie wie ein Sektions-H2 (globales h1 ist deutlich größer) */
-.section-head h1 { margin-top: 14px; font-size: clamp(1.8rem, 3.4vw, 3.2rem); font-weight: 700; letter-spacing: -0.028em; }
+/* Seiten-H1 in Galerie, Leistungen, Projekten und Rechtstexten. */
+.section-head h1 { margin-top: 14px; font-size: var(--type-page-h1-size); font-weight: 800; line-height: 1.03; letter-spacing: -.043em; }
+.section-head > h1:first-child { margin-top: 0; }
 
 /* „Alle Projekte ansehen"-CTA unter der Startseiten-Sektion */
 .projects-more { margin-top: 36px; }
@@ -2538,7 +2567,7 @@ body.has-lightbox { overflow: hidden; }
    Nutzt bestehende Tokens & Klassen (.section, .section-head,
    .breadcrumbs, .project-tag). Nur wenige seitenspezifische Regeln.
    ============================================================ */
-.section-projekt { padding-top: clamp(90px, 12vh, 140px); }
+.section-projekt { padding-top: var(--space-section); }
 .projekt-head { max-width: 760px; }
 /* Badge im Fließtext statt als Karten-Overlay: .project-tag-Position zurücksetzen. */
 .projekt-badge { position: static; display: inline-block; margin-top: 18px; }
@@ -2573,7 +2602,7 @@ body.has-lightbox { overflow: hidden; }
   padding-top: clamp(24px, 4vh, 40px);
   border-top: 1px solid var(--line);
 }
-.projekt-meta-block h2 { font-size: 1.1rem; margin-bottom: 14px; }
+.projekt-meta-block h2 { font-size: var(--type-module-title-size); line-height: 1.2; margin-bottom: 14px; }
 .tag-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .tag-link {
   display: inline-block; padding: 8px 14px;
@@ -2593,7 +2622,7 @@ body.has-lightbox { overflow: hidden; }
    Bestehende Tokens & Klassen (.section, .section-head, .breadcrumbs,
    .kicker, .project-card, .tag-link, .faq-list, .projekt-cta) wiederverwendet.
    ============================================================ */
-.section-leistung { padding-top: clamp(90px, 12vh, 140px); }
+.section-leistung { padding-top: var(--space-section); }
 /* Mobil: die vh-basierte Kopf-Leerflaeche der breadcrumb-gefuehrten Unterseiten
    stark reduzieren. Der Header ist sticky (immer sichtbar), daher genuegt ein
    kleiner Abstand ueber der Breadcrumb. Der grosszuegige Desktop-Kopf bleibt
@@ -2603,13 +2632,13 @@ body.has-lightbox { overflow: hidden; }
   .section-leistung,
   .section-leistungen,
   .section-projekt,
-  .section-rechtstext { padding-top: clamp(20px, 6vw, 34px); }
+  .section-rechtstext { padding-top: var(--space-section); }
 }
 .lp-head { max-width: 760px; }
 .lp-head .btn { margin-top: 20px; }
 
 .lp-block { margin: clamp(34px, 5vh, 60px) 0; }
-.lp-block > h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom: 22px; }
+.lp-block > h2 { font-size: var(--type-subsection-title-size); line-height: 1.1; margin-bottom: 22px; }
 .lp-list, .lp-myths, .lp-steps, .lp-note { max-width: 820px; }
 
 /* Für wen sich das eignet */
@@ -2628,7 +2657,7 @@ body.has-lightbox { overflow: hidden; }
   position: absolute; left: 0; top: -2px;
   font-family: var(--display); font-weight: 800; font-size: 1.4rem; color: var(--green-300);
 }
-.lp-steps h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.lp-steps h3 { margin: 0 0 4px; font-size: var(--type-module-title-size); line-height: 1.2; }
 .lp-steps p { margin: 0; color: var(--ink-2); }
 
 /* Was den Aufwand bestimmt – Kostentreiber als Karten */
@@ -2646,7 +2675,7 @@ body.has-lightbox { overflow: hidden; }
 /* Häufige Fehleinschätzungen */
 .lp-myths { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
 .lp-myths li { border-left: 3px solid var(--coral); padding: 2px 0 2px 18px; }
-.lp-myths h3 { margin: 0 0 4px; font-size: 1.02rem; color: var(--ink); }
+.lp-myths h3 { margin: 0 0 4px; font-size: var(--type-module-title-size); line-height: 1.2; color: var(--ink); }
 .lp-myths p { margin: 0; color: var(--ink-2); }
 
 /* Referenzprojekte: nutzt .projects-grid + .project-card */
@@ -2661,7 +2690,7 @@ body.has-lightbox { overflow: hidden; }
 }
 
 /* Leistungsübersicht /leistungen/ */
-.section-leistungen { padding-top: clamp(90px, 12vh, 140px); }
+.section-leistungen { padding-top: var(--space-section); }
 .lpx-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: clamp(16px, 2vw, 24px); margin-top: clamp(32px, 5vh, 56px);
@@ -2675,7 +2704,7 @@ body.has-lightbox { overflow: hidden; }
 }
 @media (hover: hover) and (pointer: fine) { .lpx-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); } }
 .lpx-tag { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--green-500); }
-.lpx-card h2 { font-size: 1.25rem; margin: 0; letter-spacing: -0.01em; }
+.lpx-card h2 { font-size: var(--type-module-title-size); line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
 .lpx-card p { color: var(--ink-2); font-size: .95rem; margin: 0; flex: 1; }
 .lpx-more { font-weight: 600; color: var(--green-700); font-size: .9rem; margin-top: 6px; }
 
@@ -2824,7 +2853,7 @@ body.has-lightbox { overflow: hidden; }
 }
 .lp-fachtext > h2 { margin-top: 0; }
 .lp-fachtext-intro { font-size: 1.05rem; color: var(--ink); margin: 0 0 8px; }
-.lp-fachtext h3 { margin: 22px 0 6px; font-size: 1.02rem; }
+.lp-fachtext h3 { margin: 22px 0 6px; font-size: var(--type-module-title-size); line-height: 1.2; }
 .lp-fachtext p { color: var(--ink-2); margin: 0; }
 .lp-fachtext-hinweis {
   margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--green-100);
@@ -2868,9 +2897,9 @@ body.has-lightbox { overflow: hidden; }
 .seg:has(input:focus-visible) { outline: 2px solid var(--green-500); outline-offset: 2px; }
 
 /* Rechtstextseiten: Impressum / Datenschutz (AP-11) */
-.section-rechtstext { padding-top: clamp(90px, 12vh, 140px); }
+.section-rechtstext { padding-top: var(--space-section-compact); }
 .rt-body { max-width: 760px; }
-.rt-body h2 { font-size: 1.25rem; margin: clamp(24px, 4vh, 36px) 0 10px; }
+.rt-body h2 { font-size: var(--type-module-title-size); line-height: 1.2; margin: clamp(24px, 4vh, 36px) 0 10px; }
 .rt-body p { color: var(--ink-2); margin: 0 0 14px; }
 .rt-body address { font-style: normal; line-height: 1.7; color: var(--ink-2); margin: 0 0 14px; }
 .rt-body a { color: var(--green-700); }
@@ -3206,8 +3235,8 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   margin-top: 0;
   max-width: 14.5ch;
   margin-inline: auto;
-  font-size: clamp(2.4rem, 4.65vw, 4.25rem);
-  line-height: .98;
+  font-size: var(--type-marketing-h1-size);
+  line-height: .99;
   letter-spacing: -.043em;
   text-wrap: balance;
 }
@@ -3299,8 +3328,8 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   color: var(--yellow);
 }
 .gate-door h2 {
-  font-size: clamp(1.3rem, 2.1vw, 1.9rem); /* AP-84: leicht groesser */
-  line-height: 1.14;
+  font-size: var(--type-subsection-title-size);
+  line-height: 1.1;
   color: #fff;
   margin: 7px 0 16px;                      /* AP-84: mehr Luft zum Button */
 }
@@ -3345,10 +3374,14 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .gate-head { padding-top: max(0px, env(safe-area-inset-top)); }
   .gate-head .hero-title {
     max-width: 12ch;
-    font-size: clamp(2rem, 8vw, 2.7rem);
+    font-size: var(--type-marketing-h1-size-mobile);
     line-height: 1;
   }
   .hero--gate { padding-top: clamp(24px, 6vw, 40px); }               /* AP-84 */
+}
+
+@media (max-width: 600px) {
+  .type-marketing-title { font-size: var(--type-marketing-h1-size-mobile); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3380,10 +3413,15 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 .fork-head { text-align: center; display: flex; flex-direction: column; align-items: center; }
 .fork-title {
   font-family: var(--display); font-weight: 700; color: #fff;
-  font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.02; letter-spacing: -.04em;
+  font-size: var(--type-section-title-size); line-height: 1.05; letter-spacing: -.028em;
   margin: 0;
 }
-.fork-lede { margin: 20px auto 0; max-width: 42ch; color: rgba(255,255,255,.66); font-size: clamp(.98rem, 1.15vw, 1.06rem); line-height: 1.68; }
+.fork-lede { margin: var(--space-title-subtext) auto 0; max-width: 42ch; color: rgba(255,255,255,.66); font-size: var(--type-section-lead-size); line-height: 1.62; }
+
+@media (max-width: 900px) {
+  .type-marketing-title,
+  .hero-title { font-size: var(--type-marketing-h1-size-mobile); }
+}
 
 /* Signatur: die Weiche (AP-107, Werte aus der SwitchLine-Vorlage).
    Die viewBox ist 1240 breit wie das Spaltenraster, deshalb enden die Aeste bei
