@@ -511,7 +511,7 @@ p  { margin: 0; }
 .section-head .lead { margin-top: 18px; }
 
 /* ---------- Wood / Special services ---------- */
-.section-wood { background: var(--bg-soft); }
+.section-wood { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
 .wood-grid {
   display: grid; gap: 22px;
   grid-template-columns: 1.4fr 1fr 1fr;
@@ -888,7 +888,7 @@ p  { margin: 0; }
 .ap p  { color: var(--ink-2); font-size: .95rem; }
 
 /* ---------- Projects ---------- */
-/* AP-89: Paper/Soft-Rhythmus für Projektübersichten und FAQ. */
+/* AP-129: Helle Sektionen verwenden durchgehend denselben Cremeton. */
 .section-projects { background: var(--bg); }
 .projects-grid {
   display: grid; gap: 22px;
@@ -970,7 +970,7 @@ p  { margin: 0; }
 }
 
 /* ---------- FAQ ---------- */
-.section-faq { background: var(--bg-soft); }   /* AP-89: war --bg, s. .section-projects */
+.section-faq { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
 /* AP-120: war 1fr 1.4fr (Kopf links, Liste rechts). Der Kopf steht jetzt oben,
    damit die Liste die volle Containerbreite fuer zwei Spalten hat - daneben
    waeren die Karten nur 336px breit und jede Frage wuerde umbrechen. */
@@ -1740,7 +1740,7 @@ p  { margin: 0; }
    linksbuendig, ohne Vollbild-Motiv. Rechts steht der Vorher/Nachher-
    Slider, damit der staerkste Beweis ueber der Falz liegt. */
 .hero-split {
-  background: var(--bg-soft);
+  background: var(--bg);   /* AP-129: einheitlicher Cremeton */
   border-bottom: 1px solid var(--line);
   padding: clamp(20px, 3vw, 36px) 0 clamp(44px, 6vw, 80px);
 }
@@ -2000,7 +2000,7 @@ p  { margin: 0; }
    ist zugleich der Reduced-Motion-/No-JS-Fallback.
    Enhancement (>=1024px, .is-scrollytelling per JS): horizontaler
    Pin-Journey mit Scroll-Fortschritt. Siehe main.js. */
-.section-process { background: var(--bg-soft); }
+.section-process { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
 
 .process-scroller { position: relative; }
 .process-stage {
@@ -2185,7 +2185,7 @@ p  { margin: 0; }
         /* Die verkuerzte Buehne gibt unten blankes --bg-soft frei. Diese
            Ebene blendet die Tints zur Unterkante auf genau diese Farbe
            aus, sonst zieht sich dort eine sichtbare Kante durchs Bild. */
-        linear-gradient(to bottom, transparent 74%, var(--bg-soft) 100%),
+        linear-gradient(to bottom, transparent 74%, var(--bg) 100%),
         radial-gradient(1000px 620px at 14% 12%, rgba(255,237,0,.10), transparent 60%),
         radial-gradient(1000px 720px at 86% 92%, rgba(235,108,68,.10), transparent 60%);
     }
@@ -3054,7 +3054,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
    und gemischte Klickbarkeit ist schlechter als gar keine. Den Weg in die
    Galerie traegt der Kopfzeilen-Link. */
 .proof-shots {
-  background: var(--bg-soft);
+  background: var(--bg);   /* AP-129: einheitlicher Cremeton */
   border-bottom: 1px solid var(--line);
   padding: clamp(26px, 3.4vw, 42px) 0 clamp(32px, 4.4vw, 56px);
 }

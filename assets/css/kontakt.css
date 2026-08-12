@@ -305,7 +305,7 @@
 
 .contact-paths { padding: clamp(76px,8vw,116px) 0; }
 
-.contact-paths { background: var(--bg-soft); }
+.contact-paths { background: var(--bg); }   /* AP-129 */
 
 .contact-section-head {
   max-width: 780px;
