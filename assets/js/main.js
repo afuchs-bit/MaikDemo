@@ -281,9 +281,9 @@
     }
   }
 
-  // --- Subtle parallax on hero dots ---
+  // --- Subtle parallax on hero dots (nicht im ruhigen Startseiten-Gate) ---
   if (!reduced) {
-    const hero = document.querySelector('.hero');
+    const hero = document.querySelector('.hero:not(.hero--gate)');
     if (hero) {
       document.addEventListener('scroll', () => {
         const y = window.scrollY;
