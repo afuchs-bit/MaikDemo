@@ -3324,18 +3324,30 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
    Die viewBox ist 1240 breit wie das Spaltenraster, deshalb enden die Aeste bei
    310/930 - genau auf den Spaltenmitten von .fork-paths. Die Hoehe bleibt dabei
    120px wie zuvor, die Weiche wird nur breiter.
-   Die dasharray-Werte sind die im Browser gemessenen Pfadlaengen (44/327/327);
-   dadurch laeuft die Animation ohne JS, main.js setzt nur .is-in wie bei jedem
-   .reveal. non-scaling-stroke haelt die Haarlinie bei 1px - ohne wuerde sie mit
-   der Skalierung mitwachsen (bei Containerbreite gemessen 2,04px). */
+   Die Animation laeuft ohne JS, main.js setzt nur .is-in wie bei jedem .reveal.
+
+   AP-125: Vorher standen hier die von Hand gemessenen Pfadlaengen (44/327/327)
+   zusammen mit vector-effect="non-scaling-stroke" im Markup. non-scaling-stroke
+   verlagert nicht nur die Strichstaerke, sondern das gesamte Dash-Muster in den
+   Geraeteraum: auf einem 2x-Display entsprachen 327 Einheiten nur 163 CSS-Pixel,
+   also der halben Kurve. Gemessen: Stamm 21,5 statt 44px, Aeste bis t=0,50 -
+   beide Linien endeten in der Luft. Gegenprobe: 327 / (326,5 x 1,0 x 2) = 0,50.
+   Jetzt tragen die Pfade pathLength="1", die Dash-Werte sind damit Anteile der
+   jeweiligen Pfadlaenge und unabhaengig von Koordinatensystem, Skalierung und
+   Pixeldichte. Es steht keine gemessene Laenge mehr im CSS - eine spaetere
+   Aenderung der Kurven kann die Animation nicht mehr zerschneiden.
+   non-scaling-stroke ist entfallen: die SVG-Skalierung ist durch
+   width:min(--container,100%) bei viewBox 1240 nie groesser als 1, der Strich
+   wird ohne den vector-effect also nie dicker als 1px (ab 1240px exakt 1px,
+   bei 901px minimal 0,73px). */
 .fork-switch { display: block; width: min(var(--container), 100%); margin: 36px auto 0; height: auto; overflow: visible; }
 .fork-switch path {
   fill: none; stroke: rgba(228,231,223,.34); stroke-width: 1;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
   transition: stroke-dashoffset .9s var(--ease);
 }
-.fork-switch path:nth-of-type(1) { stroke-dasharray: 44;  stroke-dashoffset: 44; }
-.fork-switch path:nth-of-type(2) { stroke-dasharray: 327; stroke-dashoffset: 327; transition-delay: .55s; }
-.fork-switch path:nth-of-type(3) { stroke-dasharray: 327; stroke-dashoffset: 327; transition-delay: .62s; }
+.fork-switch path:nth-of-type(2) { transition-delay: .55s; }
+.fork-switch path:nth-of-type(3) { transition-delay: .62s; }
 .fork-switch.is-in path { stroke-dashoffset: 0; }
 /* transform-box: fill-box, damit sich transform-origin auf den Kreis bezieht
    und nicht auf das SVG-Koordinatensystem. */
