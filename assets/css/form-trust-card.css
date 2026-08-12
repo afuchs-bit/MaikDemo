@@ -382,17 +382,81 @@
   .private-form .form-trust-card,
   .b2b-form--modern .form-trust-card {
     display: flex;
-    gap: 22px;
+    gap: 0;
     justify-content: flex-start;
-    padding: 25px 20px;
+    padding: 20px;
   }
-  .form-trust-card__person h3 { font-size: 1.85rem; }
-  .form-trust-card__copy { font-size: .84rem; }
+  .form-trust-card__eyebrow { margin-bottom: 7px; }
+  .form-trust-card__person h3 { font-size: 1.78rem; }
+  .form-trust-card__role { margin-top: 8px; font-size: .88rem; }
+  .form-trust-card__copy {
+    margin-top: 12px;
+    font-size: .8rem;
+    line-height: 1.45;
+  }
+  .form-trust-card__copy strong { font-size: .86rem; line-height: 1.34; }
+  .form-trust-card__copy span { margin-top: 5px; }
   .form-trust-card__actions,
   .form-trust-card__coverage,
   .form-trust-card__location,
   .b2b-form--modern .b2b-contact-facts { width: 100%; margin: 0; }
-  .form-trust-card__location { min-height: 60px; }
+  :is(.private-form,.b2b-form--modern) .form-trust-card__actions,
+  .b2b-form--modern .b2b-contact-direct.form-trust-card__actions {
+    gap: 7px;
+    margin-top: 16px;
+  }
+  :is(.private-form,.b2b-form--modern) .form-trust-card__actions > a,
+  .b2b-form--modern .form-trust-card__actions > a {
+    grid-template-columns: 32px minmax(0,1fr);
+    gap: 10px;
+    min-height: 54px;
+    padding: 7px 9px;
+    border-color: rgba(255,255,255,.12);
+    border-radius: 13px;
+    background: rgba(255,255,255,.035);
+  }
+  :is(.private-form,.b2b-form--modern) .form-trust-card__action-icon,
+  :is(.private-form,.b2b-form--modern) .form-trust-card__actions .b2b-contact-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+  :is(.private-form,.b2b-form--modern) .form-trust-card__action-icon svg,
+  :is(.private-form,.b2b-form--modern) .form-trust-card__actions .b2b-contact-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  :is(.private-form,.b2b-form--modern) .form-trust-card__actions small { font-size: .6rem; }
+  :is(.private-form,.b2b-form--modern) .form-trust-card__actions strong { font-size: .8rem; }
+  .form-trust-card__coverage,
+  .b2b-form--modern .b2b-contact-facts {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.13);
+  }
+  .b2b-form--modern .form-trust-card__coverage {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .form-trust-card__coverage-heading { font-size: .65rem; }
+  .form-trust-card__coverage p,
+  .b2b-form--modern .form-trust-card__coverage p {
+    margin-top: 7px;
+    font-size: .88rem;
+    line-height: 1.38;
+  }
+  .form-trust-card__coverage small,
+  .b2b-form--modern .form-trust-card__coverage small {
+    margin-top: 4px;
+    font-size: .67rem;
+  }
+  .form-trust-card__location {
+    min-height: 58px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top-color: rgba(255,255,255,.13);
+  }
 }
 
 @media (hover:none) {

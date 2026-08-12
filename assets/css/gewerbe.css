@@ -558,6 +558,29 @@
   .b2b-form--modern .b2b-contact-emergency-arrow { transition: none; }
   .b2b-form--modern .b2b-contact-emergency-action:hover { transform: none; }
 }
+
+/* Mobile Kontaktführung: Vertrauen vor Formularkopf und Fortschritt. */
+@media (max-width:767px) {
+  .b2b-contact .b2b-contact-layout { margin-top: 32px; }
+  .b2b-form--modern .b2b-form-shell { gap: 0; }
+  .b2b-form--modern .b2b-contact-aside {
+    order: 1;
+    margin: 0 0 30px;
+  }
+  .b2b-contact .b2b-form--modern .b2b-form-head {
+    order: 2;
+    padding: 0 2px 16px;
+  }
+  .b2b-form--modern .b2b-form-progress {
+    order: 3;
+    padding: 8px 2px 18px;
+  }
+  .b2b-form--modern .b2b-form-status {
+    order: 4;
+    margin: 0 2px 16px;
+  }
+  .b2b-form--modern .b2b-form-workspace { order: 5; }
+}
 .b2b-page main { overflow: clip; }
 .b2b-page [id] { scroll-margin-top: 100px; }
 /* Das Anfrageziel beginnt am Formular statt an der umgebenden Sektion. Für
@@ -990,6 +1013,7 @@
 .b2b-partner-label::before { content: none; }
 .b2b-partner-benefits h3 { grid-area: title; font-size: var(--type-module-title-size); line-height: 1.2; }
 .b2b-partner-benefits p { grid-area: text; margin-top: 9px; color: var(--ink-2); font-size: clamp(.85rem,.92vw,.93rem); line-height: 1.62; }
+.private-partner-benefit-toggle { display: none; }
 
 @media (min-width: 1200px) {
   .b2b-partner-layout { align-items: center; }
@@ -1050,6 +1074,165 @@
   .b2b-partner-benefits p { max-width: 55ch; margin-top: 8px; font-size: .9rem; }
   .b2b-partner-label { justify-self: start; max-width: none; font-size: .84rem; line-height: 1.25; text-align: left; }
   .b2b-partner-label > span { display: inline; }
+
+  /* Progressive mobile Trust-Liste: erst nach erfolgreicher JS-Initialisierung kompakt. */
+  .b2b-partner.has-partner-disclosures .b2b-partner-layout { gap: 24px; }
+  .b2b-partner.has-partner-disclosures .b2b-partner-benefits {
+    overflow: hidden;
+    border: 1px solid rgba(49,82,0,.15);
+    border-radius: 18px;
+    background: rgba(255,255,255,.76);
+    box-shadow: 0 22px 46px -40px rgba(19,26,8,.62);
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit] {
+    grid-template-columns: minmax(0,1fr) auto;
+    grid-template-areas: "title toggle";
+    column-gap: 12px;
+    align-items: center;
+    min-height: 74px;
+    padding: 13px 12px 13px 16px;
+    border-bottom: 1px solid rgba(49,82,0,.11);
+    background: transparent;
+    transition: background-color .2s var(--ease),box-shadow .2s var(--ease);
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit]:last-child { border-bottom: 0; }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit] > .b2b-partner-label,
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit] > p {
+    display: none;
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit] > h3 {
+    grid-area: title;
+    min-width: 0;
+    margin: 0;
+    color: var(--green-900);
+    font-size: clamp(1rem,4.4vw,1.1rem);
+    line-height: 1.24;
+    text-wrap: balance;
+  }
+  .b2b-partner.has-partner-disclosures .private-partner-benefit-toggle {
+    grid-area: toggle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: center;
+    gap: 7px;
+    min-width: 0;
+    min-height: 44px;
+    margin: 0;
+    padding: 6px 2px 6px 7px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--green-700);
+    font-family: var(--body);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .b2b-partner.has-partner-disclosures .private-partner-benefit-state {
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .01em;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+  .b2b-partner .private-partner-benefit-state--open { display: none; }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded .private-partner-benefit-state--closed { display: none; }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded .private-partner-benefit-state--open { display: inline; }
+  .b2b-partner.has-partner-disclosures .private-partner-benefit-chevron {
+    display: grid;
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border: 1px solid rgba(49,82,0,.18);
+    border-radius: 50%;
+    background: var(--green-50);
+    transition: transform .24s var(--ease),background-color .2s var(--ease),border-color .2s var(--ease);
+  }
+  .b2b-partner.has-partner-disclosures .private-partner-benefit-chevron::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin-top: -4px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded {
+    grid-template-areas:
+      "label toggle"
+      "title title"
+      "text text";
+    align-items: start;
+    min-height: 0;
+    padding: 16px;
+    background: rgba(240,245,232,.72);
+    box-shadow: inset 3px 0 0 var(--green-500);
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded > .b2b-partner-label {
+    grid-area: label;
+    display: block;
+    align-self: center;
+    justify-self: start;
+    margin: 0;
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded > h3 {
+    margin-top: 8px;
+    font-size: clamp(1.08rem,4.8vw,1.2rem);
+    line-height: 1.2;
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded > p {
+    grid-area: text;
+    display: block;
+    max-width: 55ch;
+    margin-top: 9px;
+    color: var(--ink-2);
+    font-size: .86rem;
+    line-height: 1.56;
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded .private-partner-benefit-toggle {
+    align-self: start;
+    color: var(--green-800);
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded .private-partner-benefit-chevron {
+    border-color: var(--green-700);
+    background: var(--green-700);
+    color: #fff;
+    transform: rotate(180deg);
+  }
+  .b2b-partner.has-partner-disclosures .private-partner-benefit-toggle:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 2px;
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-opening,
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-closing {
+    will-change: height;
+  }
+}
+
+@media (max-width:340px) {
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit]:not(.is-expanded) {
+    grid-template-areas:
+      "title title"
+      "toggle toggle";
+    row-gap: 2px;
+    padding-block: 13px 10px;
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit]:not(.is-expanded) .private-partner-benefit-toggle {
+    justify-self: start;
+    margin-left: -7px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit],
+  .b2b-partner.has-partner-disclosures .private-partner-benefit-chevron {
+    transition: none;
+  }
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-opening,
+  .b2b-partner.has-partner-disclosures [data-private-partner-benefit].is-closing {
+    will-change: auto;
+  }
 }
 
 /* 4 — Redaktioneller Einstieg in den Ablauf */
@@ -1083,6 +1266,7 @@
   align-items: center;
   margin-top: 0;
 }
+.b2b-process-end-actions--mobile { display: none; }
 
 @media (min-width: 1024px) and (hover: hover) {
   .b2b-process-intro-body {
@@ -1176,6 +1360,30 @@
   .b2b-process-intro-heading { padding-left: 18px; }
   .b2b-process-actions { display: grid; grid-template-columns: 1fr; margin-top: 0; }
   .b2b-process-actions .btn { width: 100%; justify-content: center; text-align: center; }
+}
+
+@media (max-width:767px) {
+  .b2b-process-intro {
+    gap: 0;
+    margin-bottom: 30px;
+  }
+  .b2b-process-intro-heading {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .b2b-process-intro-body { display: none; }
+  .b2b-process-end-actions--mobile {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .b2b-process-end-actions--mobile .btn {
+    width: 100%;
+    min-height: 54px;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 /* 6 — Einblicke und freigegebene Fallstudien */

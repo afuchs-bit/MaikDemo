@@ -237,7 +237,7 @@
           <nav class="breadcrumbs reveal" aria-label="Sie sind hier"><ol><li><a href="../">Startseite</a></li><li aria-current="page">Gewerbekunden</li></ol></nav>
           <p class="b2b-brandline customer-hero-brandline reveal"><strong>Seit 2003</strong> <span>persönlich geführt von Gartenbaumeister Maik Rohdich.</span></p>
           <h1 class="customer-hero-title type-marketing-title reveal" id="b2b-title">Außenanlagen fachgerecht pflegen, entwickeln und erhalten.</h1>
-          <p class="b2b-hero-lead customer-hero-lead reveal">Wir pflegen, erneuern und prüfen Außenanlagen von Unternehmen, Hausverwaltungen und weiteren gewerblichen Auftraggebern – als Einzelmaßnahme oder im festen Turnus. Gartenbaumeister Maik Rohdich begleitet Ihr Vorhaben persönlich und stimmt Ausführung, Termine und erforderliche Maßnahmen auf Ihr Objekt und den laufenden Betrieb ab.</p>
+          <p class="b2b-hero-lead customer-hero-lead reveal"><span class="b2b-hero-lead-copy b2b-hero-lead-copy--default">Wir pflegen, erneuern und prüfen Außenanlagen von Unternehmen, Hausverwaltungen und weiteren gewerblichen Auftraggebern – als Einzelmaßnahme oder im festen Turnus. Gartenbaumeister Maik Rohdich begleitet Ihr Vorhaben persönlich und stimmt Ausführung, Termine und erforderliche Maßnahmen auf Ihr Objekt und den laufenden Betrieb ab.</span><span class="b2b-hero-lead-copy b2b-hero-lead-copy--mobile">Persönliche Betreuung und fachgerechte Ausführung – für gewerbliche Außenanlagen in Herne und dem mittleren Ruhrgebiet.</span></p>
           <div class="b2b-hero-actions customer-hero-actions reveal">
             <a class="btn btn-primary" href="#anfrage">Vorhaben persönlich besprechen <span aria-hidden="true">→</span></a>
           </div>
@@ -255,23 +255,28 @@
         <ul class="b2b-proof-strip customer-proof-strip customer-proof-strip--b2b" aria-labelledby="b2b-proof-title">
           <li>
             <strong>Gartenbaumeister</strong>
-            <span>Meister im Garten- und Landschaftsbau</span>
+            <span class="b2b-proof-copy b2b-proof-copy--default">Meister im Garten- und Landschaftsbau</span>
+            <span class="b2b-proof-copy b2b-proof-copy--mobile">Meister im GaLaBau</span>
           </li>
           <li>
             <strong>Sachverständiger</strong>
-            <span>Gutachter für Garten- und Landschaftsbau (2.4.1)</span>
+            <span class="b2b-proof-copy b2b-proof-copy--default">Gutachter für Garten- und Landschaftsbau (2.4.1)</span>
+            <span class="b2b-proof-copy b2b-proof-copy--mobile">GaLaBau · Sachgebiet 2.4.1</span>
           </li>
           <li>
             <strong>Baumkontrolleur</strong>
-            <span>LWK-zertifiziert</span>
+            <span class="b2b-proof-copy b2b-proof-copy--default">LWK-zertifiziert</span>
+            <span class="b2b-proof-copy b2b-proof-copy--mobile">LWK-zertifiziert</span>
           </li>
           <li>
             <strong>Sachkundiger</strong>
-            <span>Pflanzenschutz · Wildkrautbekämpfung</span>
+            <span class="b2b-proof-copy b2b-proof-copy--default">Pflanzenschutz · Wildkrautbekämpfung</span>
+            <span class="b2b-proof-copy b2b-proof-copy--mobile">Pflanzenschutz · Wildkrautbekämpfung</span>
           </li>
           <li>
             <strong>Ausbildungsbetrieb</strong>
-            <span>Wir bilden im GaLaBau aus</span>
+            <span class="b2b-proof-copy b2b-proof-copy--default">Wir bilden im GaLaBau aus</span>
+            <span class="b2b-proof-copy b2b-proof-copy--mobile">Ausbildung im GaLaBau</span>
           </li>
         </ul>
       </div>
@@ -367,7 +372,7 @@
   </section>
 
   <!-- 3: Zusammenarbeit im Alltag -->
-  <section class="b2b-section b2b-partner" aria-labelledby="partner-title">
+  <section class="b2b-section b2b-partner" aria-labelledby="partner-title" data-private-partner-disclosures>
     <div class="container">
       <div class="b2b-partner-intro reveal">
         <div class="b2b-partner-heading">
@@ -393,25 +398,29 @@
           </picture>
         </figure>
         <ul class="b2b-partner-benefits reveal">
-          <li>
+          <li data-private-partner-benefit>
             <span class="b2b-partner-label"><span>Persönlich</span> <span>verantwortlich</span></span>
             <h3>Ein Ansprechpartner, der Ihr Objekt kennt.</h3>
-            <p>Maik Rohdich begleitet Ihr Vorhaben von der ersten Einschätzung bis zur Ausführung. Absprachen, Besonderheiten und nächste Schritte bleiben bei einem verantwortlichen Ansprechpartner.</p>
+            <p id="b2b-partner-benefit-copy-1">Maik Rohdich begleitet Ihr Vorhaben von der ersten Einschätzung bis zur Ausführung. Absprachen, Besonderheiten und nächste Schritte bleiben bei einem verantwortlichen Ansprechpartner.</p>
+            <button class="private-partner-benefit-toggle" type="button" aria-expanded="false" aria-controls="b2b-partner-benefit-copy-1" data-private-partner-toggle><span class="private-partner-benefit-state private-partner-benefit-state--closed">Mehr erfahren</span><span class="private-partner-benefit-state private-partner-benefit-state--open">Weniger anzeigen</span><span class="private-partner-benefit-chevron" aria-hidden="true"></span></button>
           </li>
-          <li>
+          <li data-private-partner-benefit>
             <span class="b2b-partner-label"><span>Eigene</span> <span>Kapazitäten</span></span>
             <h3>Eigenes Team, eigener Fuhrpark.</h3>
-            <p>Ein eingespieltes Team und eigene Maschinen halten die Abstimmungswege kurz. Pflege-, Erd- und Umgestaltungsarbeiten lassen sich dadurch koordiniert umsetzen.</p>
+            <p id="b2b-partner-benefit-copy-2">Ein eingespieltes Team und eigene Maschinen halten die Abstimmungswege kurz. Pflege-, Erd- und Umgestaltungsarbeiten lassen sich dadurch koordiniert umsetzen.</p>
+            <button class="private-partner-benefit-toggle" type="button" aria-expanded="false" aria-controls="b2b-partner-benefit-copy-2" data-private-partner-toggle><span class="private-partner-benefit-state private-partner-benefit-state--closed">Mehr erfahren</span><span class="private-partner-benefit-state private-partner-benefit-state--open">Weniger anzeigen</span><span class="private-partner-benefit-chevron" aria-hidden="true"></span></button>
           </li>
-          <li>
+          <li data-private-partner-benefit>
             <span class="b2b-partner-label"><span>Abgestimmte</span> <span>Ausführung</span></span>
             <h3>Auf Ihren Betrieb abgestimmt.</h3>
-            <p>Arbeitszeiten, Zufahrten und Bauabschnitte stimmen wir mit Ihnen ab. Wir sichern Arbeitsbereiche und hinterlassen sie sauber, damit Ihr Betrieb möglichst ungestört weiterläuft.</p>
+            <p id="b2b-partner-benefit-copy-3">Arbeitszeiten, Zufahrten und Bauabschnitte stimmen wir mit Ihnen ab. Wir sichern Arbeitsbereiche und hinterlassen sie sauber, damit Ihr Betrieb möglichst ungestört weiterläuft.</p>
+            <button class="private-partner-benefit-toggle" type="button" aria-expanded="false" aria-controls="b2b-partner-benefit-copy-3" data-private-partner-toggle><span class="private-partner-benefit-state private-partner-benefit-state--closed">Mehr erfahren</span><span class="private-partner-benefit-state private-partner-benefit-state--open">Weniger anzeigen</span><span class="private-partner-benefit-chevron" aria-hidden="true"></span></button>
           </li>
-          <li>
+          <li data-private-partner-benefit>
             <span class="b2b-partner-label"><span>1.500 m² Mustergarten</span> <span>in Herne</span></span>
             <h3>Entscheidungen vor Ort absichern.</h3>
-            <p>Im 1.500 m² Mustergarten sehen und vergleichen Sie Pflanzen, Materialien und Gestaltungsmöglichkeiten vor der Entscheidung – ausschließlich nach Terminvereinbarung.</p>
+            <p id="b2b-partner-benefit-copy-4">Im 1.500 m² Mustergarten sehen und vergleichen Sie Pflanzen, Materialien und Gestaltungsmöglichkeiten vor der Entscheidung – ausschließlich nach Terminvereinbarung.</p>
+            <button class="private-partner-benefit-toggle" type="button" aria-expanded="false" aria-controls="b2b-partner-benefit-copy-4" data-private-partner-toggle><span class="private-partner-benefit-state private-partner-benefit-state--closed">Mehr erfahren</span><span class="private-partner-benefit-state private-partner-benefit-state--open">Weniger anzeigen</span><span class="private-partner-benefit-chevron" aria-hidden="true"></span></button>
           </li>
         </ul>
       </div>
@@ -481,6 +490,11 @@
             </div>
           </li>
         </ol>
+        </div>
+
+        <div class="container b2b-process-end-actions b2b-process-end-actions--mobile" aria-label="Nächste Schritte">
+          <a class="btn btn-primary" href="#anfrage">Objektanfrage senden</a>
+          <a class="btn btn-secondary" href="#anfrage" data-prefill-anliegen="ausschreibung" data-prefill-zusammenarbeit="ausschreibung" aria-label="Ausschreibung oder Leistungsverzeichnis einreichen">Ausschreibung / LV einreichen</a>
         </div>
       </div>
     </div>
@@ -813,6 +827,6 @@
 <!-- BUILD:site-footer:end -->
 
 <script src="../assets/js/main.js?v=20260812a" defer></script>
-<script src="../assets/js/gewerbe.js?v=20260811a" defer></script>
+<script src="../assets/js/gewerbe.js?v=20260812b" defer></script>
 </body>
 </html>

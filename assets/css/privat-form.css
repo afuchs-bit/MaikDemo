@@ -2517,6 +2517,29 @@
   .private-form-progress-track > span { transition: none; }
 }
 
+/* Mobile Kontaktführung: Vertrauen vor Formularkopf und Fortschritt. */
+@media (max-width:767px) {
+  .private-contact-layout { margin-top: 32px; }
+  .private-form-shell { gap: 0; }
+  .private-form-trust {
+    order: 1;
+    margin: 0 0 30px;
+  }
+  .private-contact .private-form .b2b-form-head {
+    order: 2;
+    padding: 0 2px 16px;
+  }
+  .private-form-progress {
+    order: 3;
+    padding: 8px 2px 18px;
+  }
+  .private-form-main > .b2b-form-status {
+    order: 4;
+    margin: 0 2px 16px;
+  }
+  .private-form .b2b-form-workspace { order: 5; }
+}
+
 /* Persönliche Verantwortung – übernommen aus dem Gewerbekundenbereich */
 .private-partner {
   padding: var(--space-section) 0;
@@ -2652,6 +2675,7 @@
   font-size: clamp(.85rem,.92vw,.93rem);
   line-height: 1.62;
 }
+.private-partner-benefit-toggle { display: none; }
 .private-partner .b2b-partner-extension {
   display: grid;
   grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
@@ -2762,6 +2786,172 @@
     width: 100%;
     justify-content: center;
     text-align: center;
+  }
+
+  /* Progressive mobile Trust-Liste: erst nach erfolgreicher JS-Initialisierung kompakt. */
+  .private-partner.has-partner-disclosures .b2b-partner-layout { gap: 24px; }
+  .private-partner.has-partner-disclosures .b2b-partner-benefits {
+    overflow: hidden;
+    border: 1px solid rgba(49,82,0,.15);
+    border-radius: 18px 18px 0 0;
+    background: rgba(255,255,255,.76);
+    box-shadow: 0 22px 46px -40px rgba(19,26,8,.62);
+  }
+  .private-partner.has-partner-disclosures .b2b-partner-benefits--extension {
+    border-top: 0;
+    border-radius: 0 0 18px 18px;
+  }
+  .private-partner.has-partner-disclosures .b2b-partner-extension { row-gap: 18px; }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit] {
+    grid-template-columns: minmax(0,1fr) auto;
+    grid-template-areas: "title toggle";
+    column-gap: 12px;
+    align-items: center;
+    min-height: 74px;
+    padding: 13px 12px 13px 16px;
+    border-bottom: 1px solid rgba(49,82,0,.11);
+    background: transparent;
+    transition: background-color .2s var(--ease),box-shadow .2s var(--ease);
+  }
+  .private-partner.has-partner-disclosures .b2b-partner-benefits--extension [data-private-partner-benefit]:last-child {
+    border-bottom: 0;
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit] > .b2b-partner-label,
+  .private-partner.has-partner-disclosures [data-private-partner-benefit] > p {
+    display: none;
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit] > h3 {
+    grid-area: title;
+    min-width: 0;
+    margin: 0;
+    color: var(--green-900);
+    font-size: clamp(1rem,4.4vw,1.1rem);
+    line-height: 1.24;
+    text-wrap: balance;
+  }
+  .private-partner.has-partner-disclosures .private-partner-benefit-toggle {
+    grid-area: toggle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: center;
+    gap: 7px;
+    min-width: 0;
+    min-height: 44px;
+    margin: 0;
+    padding: 6px 2px 6px 7px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--green-700);
+    font-family: var(--body);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .private-partner.has-partner-disclosures .private-partner-benefit-state {
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .01em;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+  .private-partner .private-partner-benefit-state--open { display: none; }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded .private-partner-benefit-state--closed { display: none; }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded .private-partner-benefit-state--open { display: inline; }
+  .private-partner.has-partner-disclosures .private-partner-benefit-chevron {
+    display: grid;
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border: 1px solid rgba(49,82,0,.18);
+    border-radius: 50%;
+    background: var(--green-50);
+    transition: transform .24s var(--ease),background-color .2s var(--ease),border-color .2s var(--ease);
+  }
+  .private-partner.has-partner-disclosures .private-partner-benefit-chevron::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin-top: -4px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded {
+    grid-template-areas:
+      "label toggle"
+      "title title"
+      "text text";
+    align-items: start;
+    min-height: 0;
+    padding: 16px;
+    background: rgba(240,245,232,.72);
+    box-shadow: inset 3px 0 0 var(--green-500);
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded > .b2b-partner-label {
+    grid-area: label;
+    display: block;
+    align-self: center;
+    justify-self: start;
+    margin: 0;
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded > h3 {
+    margin-top: 8px;
+    font-size: clamp(1.08rem,4.8vw,1.2rem);
+    line-height: 1.2;
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded > p {
+    grid-area: text;
+    display: block;
+    max-width: 55ch;
+    margin-top: 9px;
+    color: var(--ink-2);
+    font-size: .86rem;
+    line-height: 1.56;
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded .private-partner-benefit-toggle {
+    align-self: start;
+    color: var(--green-800);
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-expanded .private-partner-benefit-chevron {
+    border-color: var(--green-700);
+    background: var(--green-700);
+    color: #fff;
+    transform: rotate(180deg);
+  }
+  .private-partner.has-partner-disclosures .private-partner-benefit-toggle:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 2px;
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-opening,
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-closing {
+    will-change: height;
+  }
+}
+
+@media (max-width:340px) {
+  .private-partner.has-partner-disclosures [data-private-partner-benefit]:not(.is-expanded) {
+    grid-template-areas:
+      "title title"
+      "toggle toggle";
+    row-gap: 2px;
+    padding-block: 13px 10px;
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit]:not(.is-expanded) .private-partner-benefit-toggle {
+    justify-self: start;
+    margin-left: -7px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .private-partner.has-partner-disclosures [data-private-partner-benefit],
+  .private-partner.has-partner-disclosures .private-partner-benefit-chevron {
+    transition: none;
+  }
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-opening,
+  .private-partner.has-partner-disclosures [data-private-partner-benefit].is-closing {
+    will-change: auto;
   }
 }
 
@@ -2919,6 +3109,35 @@
   }
   .private-process-updated .b2b-process-end-actions .btn {
     width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width:767px) {
+  .private-process-updated .b2b-process-intro {
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+  .private-process-updated .b2b-process-intro-heading {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .private-process-updated .b2b-process-actions { display: block; }
+  .private-process-updated .b2b-process-actions > .btn { display: none; }
+  .private-process-updated .b2b-process-reassurance {
+    max-width: 38ch;
+    padding-left: 0;
+    border-left: 0;
+    font-size: .86rem;
+    line-height: 1.5;
+  }
+  .private-process-updated .b2b-process-end-actions {
+    margin-top: 32px;
+  }
+  .private-process-updated .b2b-process-end-actions .btn {
+    width: 100%;
+    min-height: 54px;
     justify-content: center;
     text-align: center;
   }
