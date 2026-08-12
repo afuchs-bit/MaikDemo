@@ -3273,7 +3273,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   background-image: radial-gradient(circle at 1px 1px, rgba(19,26,8,.11) 1px, transparent 0);
   background-size: 20px 20px;
 }
-.gate-doors, .gate-escape { position: relative; z-index: 1; }  /* AP-84: sicher ueber ::before */
+.gate-doors { position: relative; z-index: 1; }  /* AP-84: sicher ueber ::before */
 
 .gate-head {
   position: relative;
@@ -3393,13 +3393,6 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 .gate-door--gewerbe:hover .gate-cta { background: #fff; }
 .gate-door:focus-visible { outline: 3px solid var(--green-700); outline-offset: 3px; }
 
-.gate-escape {
-  text-align: center;
-  margin: clamp(20px, 2.4vw, 30px) auto 0;
-  font-size: .93rem;
-  color: var(--ink-mute);
-}
-.gate-escape a { color: var(--green-700); font-weight: 600; text-underline-offset: 3px; }
 
 /* Huelle fuer die verschobenen Bloecke — .hero-teasers und .trust-bar behalten
    ihre bestehenden Margins; das padding-top schafft nur Abstand zur neuen
