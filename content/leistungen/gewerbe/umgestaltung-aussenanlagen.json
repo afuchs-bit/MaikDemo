@@ -13,7 +13,7 @@
   ],
   "ablauf": [
     { "titel": "Objektbegehung", "text": "Wir sehen uns Fläche, Zustand und Nutzung an und klären, was erreicht werden soll – und in welchen Schritten sich das umsetzen lässt." },
-    { "titel": "Planung und Abstimmung", "text": "Sie erhalten einen Vorschlag mit Umfang und Terminrahmen. Arbeitszeiten, Zufahrten und Bauabschnitte stimmen wir auf Ihren Betrieb ab. Auf unseren Musterflächen in Herne können Sie Pflanzen und Materialien vorab vergleichen – nach Terminvereinbarung." },
+    { "titel": "Planung und Abstimmung", "text": "Sie erhalten einen Vorschlag mit Umfang und Terminrahmen. Arbeitszeiten, Zufahrten und Bauabschnitte stimmen wir auf Ihren Betrieb ab. Im 1.500 m² Mustergarten in Herne können Sie Pflanzen und Materialien vorab vergleichen – ausschließlich nach Terminvereinbarung." },
     { "titel": "Ausführung", "text": "Erd- und Baggerarbeiten, Bepflanzung, befestigte Flächen sowie Bewässerung und Beleuchtung führen wir mit eigenem Team und eigenen Maschinen koordiniert aus. Arbeitsbereiche werden gesichert und sauber hinterlassen." },
     { "titel": "Übergabe", "text": "Sie übernehmen eine fertige, nutzbare Fläche. Ob anschließend eine wiederkehrende Pflege sinnvoll ist, besprechen wir zum Abschluss – beides kommt bei uns aus einer Hand." }
   ],
@@ -31,7 +31,7 @@
   "faq": [
     { "frage": "Übernehmen Sie auch die Erd- und Baggerarbeiten?", "antwort": "Ja. Erd- und Baggerarbeiten gehören zu unserem Leistungsumfang und werden mit eigenen Maschinen ausgeführt. Das Vorbereiten der Flächen und die anschließenden Pflanz- oder Belagsarbeiten kommen so aus einer Hand." },
     { "frage": "Können die Arbeiten bei laufendem Betrieb stattfinden?", "antwort": "In der Regel ja. Arbeitszeiten, Zufahrten und Bauabschnitte stimmen wir vorab mit Ihnen ab. Arbeitsbereiche werden gesichert und sauber hinterlassen, damit Ihr Betrieb möglichst ungestört weiterläuft." },
-    { "frage": "Kann ich Materialien und Pflanzen vorab ansehen?", "antwort": "Ja. Auf unseren Musterflächen in Herne sehen und vergleichen Sie Pflanzen, Materialien und Gestaltungsmöglichkeiten vor der Entscheidung – nach Terminvereinbarung." },
+    { "frage": "Kann ich Materialien und Pflanzen vorab ansehen?", "antwort": "Ja. Im 1.500 m² Mustergarten in Herne sehen und vergleichen Sie Pflanzen, Materialien und Gestaltungsmöglichkeiten vor der Entscheidung – ausschließlich nach Terminvereinbarung." },
     { "frage": "Übernehmen Sie nach der Umgestaltung auch die laufende Pflege?", "antwort": "Ja, auf Wunsch. Viele Auftraggeber lassen neu angelegte Flächen anschließend im festen Turnus pflegen – vom selben Ansprechpartner, der das Objekt bereits kennt." }
   ],
   "nachbarn": ["aussenanlagenpflege", "dachbegruenung"],

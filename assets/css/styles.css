@@ -18,11 +18,6 @@
 
    Bewusste Ausnahmen, die NICHT zum Layout-Raster gehoeren:
      min-width: 1024px   section-proof – ganze Sektion in einen Viewport.
-     min-width: 1280px   section-maik – ganze Sektion in einen Viewport.
-                         Nicht 1024px wie section-proof: darunter brechen die
-                         Schaltflaechen des Abschlussblocks um und die Sektion
-                         passt rechnerisch nicht mehr.
-                         Reines Layout, gilt auch auf Touch.
      min-width: 1024px
        and (hover: hover)
                          process-scroller – horizontaler Pin-Journey.
@@ -516,7 +511,7 @@ p  { margin: 0; }
 .section-head .lead { margin-top: 18px; }
 
 /* ---------- Wood / Special services ---------- */
-.section-wood { background: var(--bg); }   /* AP-129 */
+.section-wood { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
 .wood-grid {
   display: grid; gap: 22px;
   grid-template-columns: 1.4fr 1fr 1fr;
@@ -555,35 +550,194 @@ p  { margin: 0; }
 @media (hover: hover) and (pointer: fine) { .card-link:hover span { transform: translateX(4px); } }
 
 /* ---------- Social Proof ---------- */
-.section-proof { background: var(--bg); }
-/* Kennzahlen-Leiste + Jahresringe */
+.section-proof {
+  background: var(--bg);
+  padding-top: clamp(70px, 8vw, 104px);
+  padding-bottom: clamp(70px, 8vw, 104px);
+}
+.section-proof .section-head {
+  max-width: 790px;
+  margin-bottom: clamp(38px, 4vw, 52px);
+}
+.section-proof .section-head h2 {
+  max-width: 21ch;
+  margin-inline: auto;
+  line-height: 1.08;
+  letter-spacing: -.032em;
+  text-wrap: balance;
+}
+.section-proof .section-head .lead {
+  max-width: 64ch;
+  margin: clamp(14px, 1.7vw, 20px) auto 0;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+/* Eine organische Route verbindet die versetzte 2+3-Komposition visuell,
+   ohne die fuenf eigenstaendigen Nachweise in Karten einzuschliessen. */
+.proof-stats-stage {
+  position: relative;
+  margin-bottom: clamp(46px, 5vw, 64px);
+}
+.proof-stats-route {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.proof-stats-route path {
+  fill: none;
+  stroke: var(--green-500);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.proof-stats-route-glow {
+  stroke-width: 14;
+  opacity: .055;
+}
+.proof-stats-route-line {
+  stroke-width: 1.35;
+  opacity: .3;
+}
 .proof-stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(2, auto);
+  align-items: start;
+  row-gap: clamp(42px, 5vw, 64px);
+  margin: 0;
+  padding: clamp(4px, .8vw, 10px) 0;
+  list-style: none;
+}
+.proof-stat {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: 54px minmax(44px, auto);
+  align-items: start;
+  justify-items: center;
+  row-gap: 5px;
+  padding: 0 clamp(10px, 1.5vw, 20px);
+  text-align: center;
+}
+.proof-stat:nth-child(1) { grid-column: 1 / span 2; grid-row: 2; }
+.proof-stat:nth-child(2) { grid-column: 2 / span 2; grid-row: 1; }
+.proof-stat:nth-child(3) { grid-column: 3 / span 2; grid-row: 2; }
+.proof-stat:nth-child(4) { grid-column: 4 / span 2; grid-row: 1; }
+.proof-stat:nth-child(5) { grid-column: 5 / span 2; grid-row: 2; }
+.proof-stat-visual {
+  position: relative;
+  isolation: isolate;
+  grid-row: 1;
+  width: 100%;
+  height: 54px;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: clamp(20px, 4vw, 48px);
-  margin-bottom: clamp(28px, 4vw, 46px);
+  color: var(--green-700);
 }
-.proof-rings { display: flex; justify-content: center; }
-.proof-rings svg { display: block; width: clamp(118px, 13vw, 148px); height: auto; }
-.proof-rings-num { font-family: var(--display); font-weight: 800; font-size: 40px; letter-spacing: -.01em; fill: var(--green-700); }
-.proof-figures { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(16px, 3vw, 40px); }
-.proof-stat { display: flex; flex-direction: column; gap: 5px; }
+.proof-stat-visual::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: clamp(76px, 7vw, 92px);
+  height: clamp(58px, 5.4vw, 72px);
+  border-radius: 48% 52% 50% 46%;
+  background: radial-gradient(circle at 38% 32%, rgba(255,255,255,.92), rgba(221,230,206,.68) 58%, rgba(221,230,206,.24));
+  box-shadow: 0 12px 30px rgba(69, 91, 31, .055);
+  transform: translate(-50%, -50%) rotate(-2deg);
+}
 .proof-stat .num {
   font-family: var(--display); font-weight: 800; line-height: 1;
-  font-size: clamp(2.2rem, 4.4vw, 3.2rem); letter-spacing: -.02em; color: var(--ink);
+  font-size: clamp(2.15rem, 3.2vw, 2.85rem); letter-spacing: -.035em; color: var(--green-700);
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 .proof-stat .num .star { color: #FFB300; font-size: .58em; margin-left: .1em; }
-.proof-stat .lab { font-size: .85rem; color: var(--ink-mute); font-weight: 500; }
-.proof-sep { width: 1px; align-self: stretch; min-height: 46px; background: var(--line); }
+.proof-stat .lab {
+  grid-row: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: var(--ink-2);
+  font-size: clamp(.82rem, .9vw, .9rem);
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.proof-stat-seal { width: 50px; height: 50px; display: block; }
+.proof-stat-area { font-size: clamp(1.85rem, 2.5vw, 2.35rem) !important; }
+
+/* Dieselbe 2+3-Komposition auf schmalen Tablets, kompakter skaliert. */
+@media (min-width: 700px) and (max-width: 899px) {
+  .proof-stats-stage { margin-bottom: 48px; }
+  .proof-stats {
+    row-gap: clamp(30px, 5vw, 40px);
+    padding-block: 4px;
+  }
+  .proof-stat {
+    grid-template-rows: 50px minmax(48px, auto);
+    row-gap: 4px;
+    padding-inline: clamp(5px, 1.2vw, 10px);
+  }
+  .proof-stat-visual { height: 50px; }
+  .proof-stat .num { font-size: clamp(1.85rem, 4.4vw, 2.25rem); }
+  .proof-stat-area { font-size: clamp(1.55rem, 3.7vw, 1.9rem) !important; }
+  .proof-stat-seal { width: 44px; height: 44px; }
+  .proof-stat .lab {
+    font-size: clamp(.76rem, 1.7vw, .84rem);
+    line-height: 1.28;
+  }
+}
+
+/* Mobil: zwei Paare und eine breite Abschlusszeile fuer den Mustergarten. */
+@media (max-width: 699px) {
+  .proof-stats-stage { margin-bottom: 42px; }
+  .proof-stats-route { display: none; }
+  .proof-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    align-items: stretch;
+    column-gap: clamp(8px, 3vw, 16px);
+    row-gap: 8px;
+    padding-block: 4px;
+  }
+  .proof-stat {
+    grid-template-rows: 50px minmax(38px, auto);
+    row-gap: 4px;
+    padding: 10px clamp(6px, 2.5vw, 12px);
+  }
+  .proof-stat:nth-child(n) { grid-column: auto; grid-row: auto; }
+  .proof-stat-visual { height: 50px; }
+  .proof-stat-visual::before { width: 76px; height: 58px; }
+  .proof-stat .num { font-size: clamp(2rem, 10vw, 2.45rem); }
+  .proof-stat-area { font-size: clamp(1.75rem, 8.5vw, 2.1rem) !important; }
+  .proof-stat-seal { width: 46px; height: 46px; }
+  .proof-stat.proof-stat--garden {
+    grid-column: 1 / -1;
+    display: flex;
+    min-height: 82px;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 5vw, 24px);
+    padding-block: 12px;
+  }
+  .proof-stat--garden .proof-stat-visual { width: auto; height: 50px; margin: 0; }
+  .proof-stat--garden .lab { display: block; max-width: 18ch; text-align: left; }
+}
 
 /* Revier-Karte + Bewertungen */
 .proof-feature {
   display: grid;
   grid-template-columns: 1.15fr .85fr;
-  gap: clamp(22px, 3.5vw, 40px);
+  gap: clamp(28px, 4vw, 48px);
   align-items: stretch;
 }
 .proof-trust {
@@ -596,7 +750,7 @@ p  { margin: 0; }
 .proof-map {
   margin: 0;
   padding: 0;
-  display: flex; flex-direction: column; gap: 14px;
+  display: flex; flex-direction: column; justify-content: center; gap: 14px;
 }
 .proof-map svg { width: 100%; height: auto; max-height: 340px; }
 
@@ -645,8 +799,8 @@ p  { margin: 0; }
 }
 
 .proof-trust {
-  padding: clamp(22px, 2.6vw, 30px);
-  display: flex; flex-direction: column; gap: 18px;
+  padding: clamp(24px, 3vw, 32px);
+  display: flex; flex-direction: column; gap: clamp(16px, 2vw, 20px);
 }
 .proof-trust-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .google-mark { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
@@ -682,30 +836,23 @@ p  { margin: 0; }
 }
 .proof-lead + .proof-reviews { border-top: 1px solid var(--line); padding-top: 14px; }
 
-.proof-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.proof-chip {
-  font-size: .8rem; font-weight: 600; color: var(--green-700);
-  background: var(--green-100); border: 1px solid rgba(49,82,0,.16);
-  padding: 6px 12px; border-radius: 999px;
-}
 .proof-trust .btn-outline { align-self: flex-start; margin-top: auto; }
 
 /* Desktop: ganze Proof-Sektion ohne Scrollen in einen Viewport (unter den Sticky-Header ausgerichtet) */
 @media (min-width: 1024px) {
   .section-proof {
-    min-height: 100dvh;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: clamp(84px, 12vh, 108px);
-    padding-bottom: clamp(20px, 3vh, 44px);
+    padding-top: clamp(78px, 8vh, 96px);
+    padding-bottom: clamp(58px, 6vh, 76px);
   }
-  .section-proof .section-head { margin-bottom: clamp(12px, 1.8vh, 22px); }
-  .section-proof .section-head h2 { font-size: clamp(1.7rem, 2.5vw, 2.5rem); }
-  .section-proof .section-head .lead { margin-top: 10px; }
-  .proof-stats { margin-bottom: clamp(12px, 1.8vh, 22px); }
-  .proof-rings svg { width: clamp(110px, 9vw, 128px); }
-  .proof-feature { grid-template-columns: 1fr 1fr; gap: clamp(20px, 2vw, 34px); }
+  .section-proof .section-head { margin-bottom: clamp(44px, 4vw, 56px); }
+  .section-proof .section-head h2 { font-size: clamp(2rem, 2.7vw, 2.65rem); }
+  .section-proof .section-head .lead { margin-top: clamp(14px, 1.5vw, 18px); }
+  .proof-stats { margin-bottom: clamp(48px, 4.5vw, 62px); }
+  .proof-feature { grid-template-columns: 1fr 1fr; gap: clamp(30px, 3vw, 42px); }
   /* Karte hoehengesteuert statt breitengesteuert: max-height in vh begrenzt die SVG-Hoehe,
      die Breite schrumpft mit dem Seitenverhaeltnis. So bestimmt die kompakte Bewertungs-Karte
      die Zeilenhoehe und die Sektion bleibt in einem Viewport. */
@@ -718,128 +865,8 @@ p  { margin: 0; }
     max-height: clamp(220px, 34vh, 320px);
     margin: 0 auto;
   }
-  .proof-trust { padding: clamp(16px, 1.6vw, 24px); gap: clamp(10px, 1.4vh, 16px); }
-  .proof-reviews { min-height: 88px; }
-}
-
-/* ---------- Maik Section ---------- */
-.section-maik { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
-.maik-grid {
-  display: grid; gap: clamp(30px, 5vw, 70px);
-  /* AP-128: war 7fr 5fr. Nach dem Umzug des Abschlussblocks in die rechte Spalte
-     ist nicht mehr der Bildblock der Hoehentreiber, sondern die Textspalte. Etwas
-     mehr Breite dort spart bei H2 und Lead je eine Zeile; das Leitfoto verliert
-     dafuer 7% Breite (396px -> 367px bei 1240px Container). */
-  grid-template-columns: 6.5fr 5.5fr;
-  align-items: start;   /* AP-127: war center - erzeugte 261px Leerraum je Seite */
-}
-/* AP-127: Fotoleiste statt Polaroid-Collage. Die Collage war 4/6 hoch, bei
-   1240px Container also 1024px - gegen 502px Textspalte blieben mit
-   align-items:center je 261px Leerraum (gemessen). Die drei Karten ueberlappten
-   sich ausserdem und verdeckten einander. Jetzt ein grosses Leitfoto plus zwei
-   kleine, alle vollstaendig sichtbar und mit Bildunterschrift. */
-.ueber-media {
-  display: grid;
-  /* AP-128: Die drei Fotos bilden einen zusammenhaengenden Block mit schmaler Fuge.
-     Das Verhaeltnis ist nicht frei gewaehlt: damit das Leitfoto (4/5) genauso hoch
-     wird wie der Stapel aus zwei 4/3-Bildern plus Fuge, muss gelten
-       1,25 * b_lead = 1,5 * b_side + fuge,  also  b_lead = (1,5*m + fuge) / 2,75.
-     Ueber den relevanten Breitenbereich ergibt das ein Verhaeltnis zwischen 1,218
-     und 1,229 - deshalb der feste Wert. Restabweichung gemessen: max. 2,3px.
-     Mit dem alten 1.42fr stand unter der rechten Bildspalte ein Loch von 46-83px. */
-  grid-template-columns: 1.223fr 1fr;
-  gap: 8px;
-  align-items: start;
-}
-.ueber-shot { margin: 0; position: relative; }
-.ueber-shot img {
-  /* height bewusst auto: zusammen mit height:100% wuerde die Grid-Zeile eine
-     definite Hoehe bekommen und das Bild um die Hoehe seiner Bildunterschrift
-     dehnen (gemessen: +27px bei einzeiliger, +45px bei zweizeiliger Zeile, die
-     beiden Kleinbilder wurden dadurch ungleich hoch). Die Hoehe kommt allein
-     aus aspect-ratio, object-fit:cover beschneidet die Pixel. */
-  width: 100%; height: auto; object-fit: cover;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: #fff;
-}
-/* AP-128: Die Radien sitzen nur noch an den Aussenkanten des Blocks, die
-   Innenkanten bleiben gerade. Sonst wirkt der 8px-Spalt wie ein Fehler. */
-.ueber-shot--lead img {
-  aspect-ratio: 4/5;
-  border-radius: var(--radius) 0 0 var(--radius);
-  box-shadow: var(--shadow-card);
-}
-.ueber-side { display: grid; gap: 8px; align-content: start; }
-.ueber-shot--small img {
-  aspect-ratio: 4/3;
-  box-shadow: 0 18px 34px -26px rgba(19,26,8,.35);
-}
-.ueber-side .ueber-shot:first-child img { border-radius: 0 var(--radius) 0 0; }
-.ueber-side .ueber-shot:last-child  img { border-radius: 0 0 var(--radius) 0; }
-/* AP-128: Es gibt nur noch eine Bildunterschrift (unter dem Leitfoto). Sie traegt
-   jetzt eine Aussage statt einer Bildbeschreibung und darf deshalb kraeftiger sein. */
-.ueber-shot figcaption {
-  margin-top: 10px;
-  font-size: .82rem; line-height: 1.45; font-weight: 600;
-  color: var(--ink-2);
-}
-
-/* Textspalte: oben ausgerichtet, damit sie neben der Fotoleiste beginnt. */
-.ueber-content { display: grid; gap: 0; align-content: start; padding-top: clamp(0px, 1vw, 10px); }
-.ueber-content .kicker { margin-bottom: 16px; }
-.ueber-content h2 { margin-bottom: 18px; }
-.ueber-lead { color: var(--ink-2); font-size: 1.05rem; max-width: 46ch; }
-
-/* Abschlussblock: niedrigschwelliger Einstieg, seit AP-128 in der rechten
-   Textspalte statt ueber die volle Containerbreite. Deshalb einspaltig
-   gestapelt und mit festem, kleinerem Innenabstand. */
-.einstieg {
-  margin-top: clamp(24px, 2.8vw, 40px);
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 26px;
-  box-shadow: 0 24px 46px -34px rgba(19,26,8,.22);
-}
-.einstieg h3 { margin-bottom: 10px; font-size: clamp(1.3rem, 1.6vw, 1.6rem); }
-.einstieg p { color: var(--ink-2); font-size: .98rem; }
-.einstieg-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-/* WhatsApp-Gruen wie im Header-Button. */
-.btn-wa { background: #25D366; color: #0b2b16; border-color: #25D366; }
-@media (hover: hover) and (pointer: fine) {
-  .btn-wa:hover { background: #1eb857; }
-}
-
-/* AP-128: Ganze Sektion in einen Viewport, gleiches Muster wie .section-proof.
-   Groesster Posten war das Section-Padding (2x140px). Grenze bewusst 1280px und
-   nicht 1024px wie bei .section-proof: darunter brechen die beiden Schaltflaechen
-   des Abschlussblocks untereinander um und die Sektion passt rechnerisch nicht
-   mehr (gemessen 1152x640: +38px). Dort laeuft sie im normalen Fluss weiter.
-   min-height statt height: laeuft der Inhalt doch ueber, wird gescrollt statt
-   abgeschnitten. */
-@media (min-width: 1280px) {
-  .section-maik {
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: clamp(84px, 12vh, 108px);
-    padding-bottom: clamp(20px, 3vh, 44px);
-  }
-  .section-maik h2 { font-size: clamp(1.7rem, 2.8vw, 2.8rem); }
-}
-.image-placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--bg-soft), #e3ddc9);
-  position: relative;
-}
-.image-placeholder svg { width: 70%; height: 70%; }
-.placeholder-label { display: none; }
-.image-caption {
-  display: block; margin-top: 14px;
-  font-size: .85rem; color: var(--ink-mute);
+  .proof-trust { padding: clamp(24px, 2.3vw, 30px); gap: clamp(14px, 1.7vw, 18px); }
+  .proof-reviews { min-height: 96px; }
 }
 
 /* ---------- Nummerierte Schritt-Punkte (gewerbekunden/index.html) ---------- */
@@ -861,9 +888,7 @@ p  { margin: 0; }
 .ap p  { color: var(--ink-2); font-size: .95rem; }
 
 /* ---------- Projects ---------- */
-/* AP-129: Der Paper/Soft-Rhythmus aus AP-89 ist aufgeloest - alle Creme-
-   Sektionen liegen jetzt auf --bg. Trennung entsteht ueber Padding und die
-   dunklen Zwischensektionen, nicht mehr ueber den Farbwechsel. */
+/* AP-129: Helle Sektionen verwenden durchgehend denselben Cremeton. */
 .section-projects { background: var(--bg); }
 .projects-grid {
   display: grid; gap: 22px;
@@ -945,7 +970,7 @@ p  { margin: 0; }
 }
 
 /* ---------- FAQ ---------- */
-.section-faq { background: var(--bg); }        /* AP-129: einheitlicher Cremeton, hebt AP-89 auf */
+.section-faq { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
 /* AP-120: war 1fr 1.4fr (Kopf links, Liste rechts). Der Kopf steht jetzt oben,
    damit die Liste die volle Containerbreite fuer zwei Spalten hat - daneben
    waeren die Karten nur 336px breit und jede Frage wuerde umbrechen. */
@@ -1570,7 +1595,6 @@ p  { margin: 0; }
   .menu { display: none; }
   .primary-nav.is-open .menu { display: flex; }
 
-  .maik-grid,
   .projects-grid,
   .faq-wrap,
   .contact-grid {
@@ -1637,26 +1661,6 @@ p  { margin: 0; }
 }
 
 @media (max-width: 600px) {
-  /* AP-127: Leitfoto ueber die volle Breite, die beiden Kleinbilder daneben. */
-  .ueber-media { grid-template-columns: 1fr; gap: 14px; }
-  .ueber-side { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .ueber-shot--lead img { aspect-ratio: 4/3; }
-  /* AP-128: Auf Mobil bricht der Block um - die Aussenkanten-Radien aus dem
-     Desktop-Layout wuerden dort an falschen Stellen sitzen. Die beiden
-     :first/:last-child-Selektoren muessen hier mitgefuehrt werden: der einfache
-     Reset (.ueber-shot img, Spezifitaet 0,1,1) verliert sonst gegen die
-     Ecken-Regeln der Basis (0,3,1) und nur das Leitfoto wuerde zurueckgesetzt. */
-  .ueber-shot img,
-  .ueber-side .ueber-shot:first-child img,
-  .ueber-side .ueber-shot:last-child img { border-radius: var(--radius-sm); }
-  .einstieg-actions { flex-direction: column; }
-  .einstieg-actions .btn { width: 100%; }
-}
-
-@media (max-width: 600px) {
-  .proof-stats { gap: 22px; }
-  .proof-figures { justify-content: center; text-align: center; }
-  .proof-stat { align-items: center; }
   .contact-form { padding: 22px; }
   .menu { display: none; }
   .hero-content { padding-top: 20px; }
@@ -1736,7 +1740,7 @@ p  { margin: 0; }
    linksbuendig, ohne Vollbild-Motiv. Rechts steht der Vorher/Nachher-
    Slider, damit der staerkste Beweis ueber der Falz liegt. */
 .hero-split {
-  background: var(--bg);   /* AP-129 */
+  background: var(--bg);   /* AP-129: einheitlicher Cremeton */
   border-bottom: 1px solid var(--line);
   padding: clamp(20px, 3vw, 36px) 0 clamp(44px, 6vw, 80px);
 }
@@ -1996,7 +2000,7 @@ p  { margin: 0; }
    ist zugleich der Reduced-Motion-/No-JS-Fallback.
    Enhancement (>=1024px, .is-scrollytelling per JS): horizontaler
    Pin-Journey mit Scroll-Fortschritt. Siehe main.js. */
-.section-process { background: var(--bg); }   /* AP-129 */
+.section-process { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
 
 .process-scroller { position: relative; }
 .process-stage {
@@ -2178,10 +2182,9 @@ p  { margin: 0; }
       height: 84vh;
       height: 84dvh;
       background:
-        /* Die verkuerzte Buehne gibt unten blankes --bg frei. Diese
+        /* Die verkuerzte Buehne gibt unten blankes --bg-soft frei. Diese
            Ebene blendet die Tints zur Unterkante auf genau diese Farbe
-           aus, sonst zieht sich dort eine sichtbare Kante durchs Bild.
-           AP-129: war --bg-soft, muss der Sektionsflaeche folgen. */
+           aus, sonst zieht sich dort eine sichtbare Kante durchs Bild. */
         linear-gradient(to bottom, transparent 74%, var(--bg) 100%),
         radial-gradient(1000px 620px at 14% 12%, rgba(255,237,0,.10), transparent 60%),
         radial-gradient(1000px 720px at 86% 92%, rgba(235,108,68,.10), transparent 60%);
@@ -2290,7 +2293,6 @@ p  { margin: 0; }
   display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;
   margin-bottom: clamp(24px, 3.5vw, 40px);
 }
-.proof-region .proof-chips { justify-content: center; }
 
 @media (max-width: 900px) {
   .ba-grid { grid-template-columns: 1fr; }
@@ -3052,7 +3054,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
    und gemischte Klickbarkeit ist schlechter als gar keine. Den Weg in die
    Galerie traegt der Kopfzeilen-Link. */
 .proof-shots {
-  background: var(--bg);   /* AP-129 */
+  background: var(--bg);   /* AP-129: einheitlicher Cremeton */
   border-bottom: 1px solid var(--line);
   padding: clamp(26px, 3.4vw, 42px) 0 clamp(32px, 4.4vw, 56px);
 }
@@ -3175,18 +3177,18 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
      gesenkt. Zusammen mit dem entfernten H1-Margin faellt die optisch
      wahrgenommene Luecke unter dem Header bei 1440px von 81px auf 47px. */
   padding: clamp(20px, 2vw, 34px) 0 clamp(28px, 3.4vw, 44px);
-  background: var(--bg-hero);              /* AP-84: eigener Ton, hebt den Hero vom Seitenrest ab */
+  background: linear-gradient(180deg, #f3f5ed 0%, var(--bg-hero) 100%);
   border-bottom: 1px solid var(--line);    /* AP-84 */
 }
-/* AP-84: Dot-Grid aus .hero::before im Gate kraeftiger und engmaschiger -
-   Werte-Override am bestehenden Pseudo-Element, kein zweites ::before.
-   Die Ellipsen-Maske der Basisregel bleibt: sie laesst die Punkte hinter
-   den Tueren auslaufen, dort braucht es keine Textur. */
+/* Auf der Startseite bleibt die Fläche bewusst ruhig: keine Punkttextur und
+   kein Ersatzmuster. Die Fotos und die Typografie tragen die Blickführung. */
 .hero--gate::before {
-  background-image: radial-gradient(circle at 1px 1px, rgba(19,26,8,.11) 1px, transparent 0);
-  background-size: 20px 20px;
+  content: none;
+  background: none;
+  mask-image: none;
+  -webkit-mask-image: none;
 }
-.gate-doors { position: relative; z-index: 1; }  /* AP-84: sicher ueber ::before */
+.gate-doors { position: relative; z-index: 1; }
 
 .gate-head {
   position: relative;
@@ -3202,22 +3204,31 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
      Hero-Padding - reine Totluft unter dem Header. Gleiches Muster wie bei
      .section-head > h2:first-child. */
   margin-top: 0;
-  font-size: clamp(2.25rem, 4.5vw, 4.1rem); /* AP-86: war clamp(2.5rem, 5.2vw, 4.75rem) */
-  line-height: .97;                        /* AP-84: enger, damit die drei Zeilen als Block wirken */
-  letter-spacing: -.042em;                 /* AP-84 */
+  max-width: 14.5ch;
+  margin-inline: auto;
+  font-size: clamp(2.4rem, 4.65vw, 4.25rem);
+  line-height: .98;
+  letter-spacing: -.043em;
+  text-wrap: balance;
 }
-/* AP-84: Bei line-height .97 ist die em-Fontbox hoeher als die Zeilenbox -
-   der Basis-Marker (bottom -.1em) rutscht sonst optisch unter die NAECHSTE
-   Zeile. Nur im Gate anheben; einzeilige Heros anderer Seiten bleiben wie sie sind. */
-.gate-head .hero-title em::after { bottom: .12em; }
+.gate-head .hero-title em {
+  color: var(--green-700);
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+}
+.gate-head .hero-title em::after { content: none; }
 
 .gate-region {
-  margin-top: 18px;                        /* AP-84: war 15px */
-  max-width: 46ch;                         /* AP-84: verhindert eine ueberlange Zeile */
-  margin-inline: auto;                     /* AP-84 */
-  font-size: clamp(.92rem, 1.4vw, 1.12rem);
+  margin-top: 20px;
+  max-width: 62ch;
+  margin-inline: auto;
+  font-size: clamp(.95rem, 1.25vw, 1.08rem);
   font-weight: 500;
   color: var(--ink-2);
+  line-height: 1.55;
+  text-wrap: balance;
 }
 
 .gate-doors {
@@ -3237,7 +3248,8 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   min-height: 300px;                       /* AP-84: war 250px */
   display: block;
   text-decoration: none;
-  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(49,82,0,.10);
+  box-shadow: 0 24px 58px -40px rgba(19,26,8,.48);
 }
 .gate-door img.gate-photo {
   position: absolute;
@@ -3245,10 +3257,14 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  filter: saturate(.96) contrast(1.025);
   z-index: -2;
   transition: transform .55s var(--ease);
 }
-.gate-door:hover img.gate-photo { transform: scale(1.04); }
+.gate-door:hover img.gate-photo { transform: scale(1.035); }
+.gate-door--privat img.gate-photo { object-position: 50% 58%; }
+.gate-door--gewerbe img.gate-photo { object-position: 50% 50%; }
 
 /* AP-102: Ziel war "weniger dunkle Flaeche, mehr Foto". Der Entwurf wollte dafuer
    die HOEHE auf 54% senken - im Browser nachgemessen faellt die gelbe Eyebrow
@@ -3263,9 +3279,9 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 .gate-veil {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 76%;
+  height: 74%;
   z-index: -1;
-  background: linear-gradient(to top, rgba(8,20,0,.58) 0%, rgba(8,20,0,.72) 68%, rgba(8,20,0,0) 100%);
+  background: linear-gradient(to top, rgba(8,20,0,.66) 0%, rgba(8,20,0,.60) 62%, rgba(8,20,0,0) 100%);
 }
 
 .gate-body {
@@ -3302,19 +3318,8 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   transition: transform .22s var(--ease), background-color .22s var(--ease);
 }
 .gate-door:hover .gate-cta { transform: translateY(-2px); background: var(--yellow); }
-.gate-door--gewerbe .gate-cta { background: var(--yellow); }
-.gate-door--gewerbe:hover .gate-cta { background: #fff; }
 .gate-door:focus-visible { outline: 3px solid var(--green-700); outline-offset: 3px; }
 
-
-/* Huelle fuer den Hero-Unterbau. Seit AP-123 enthaelt der Abschnitt nur noch
-   die Proofleiste (Markup 1:1 aus /privatkunden/, Gestaltung aus
-   customer-hero.css); das padding-top schafft den Abstand zur Hero-Unterkante
-   (AP-84), der Abstand nach unten steht im AP-123-Block am Dateiende. */
-.hero-followup {
-  background: var(--bg);
-  padding-top: clamp(18px, 2.4vw, 32px);   /* AP-84 */
-}
 
 @media (max-width: 860px) {
   .gate-doors { grid-template-columns: 1fr; }
@@ -3338,7 +3343,11 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .gate-cta { font-size: .88rem; padding: 10px 16px; gap: 7px; }
   .gate-cta svg { width: 14px; height: 14px; }   /* uebersteuert die width/height-Attribute im HTML */
   .gate-head { padding-top: max(0px, env(safe-area-inset-top)); }
-  .gate-head .hero-title { font-size: clamp(1.85rem, 7.6vw, 2.6rem); }  /* AP-86: war clamp(2rem, 8.5vw, 2.9rem) */
+  .gate-head .hero-title {
+    max-width: 12ch;
+    font-size: clamp(2rem, 8vw, 2.7rem);
+    line-height: 1;
+  }
   .hero--gate { padding-top: clamp(24px, 6vw, 40px); }               /* AP-84 */
 }
 
@@ -3534,41 +3543,3 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .fork-switch circle { opacity: 1; transform: scale(1); }
   .fork-switch--mobile::after { transform: scaleY(1); }
 }
-
-/* ============================================================
-   AP-123 — Proofleiste der Startseite
-   Das Markup ist 1:1 die Leiste aus /privatkunden/. Die Gestaltung
-   liefert customer-hero.css (auf der Startseite ab AP-123 eingebunden).
-   Hier stehen nur zwei Dinge:
-   1) die drei Basisregeln, die auf /privatkunden/ aus privat-form.css
-      kommen. Diese Datei (3.941 Zeilen Formular-CSS) gehoert nicht auf
-      die Startseite; die Regeln sind wortgleich uebernommen und stehen
-      hier VOR customer-hero.css - dieselbe Kaskadenreihenfolge wie dort.
-   2) der Aussenabstand nach unten, den auf /privatkunden/ das Hero-Grid
-      uebernimmt. Bewusst NUR margin-bottom: die responsiven margin-top-
-      Werte aus customer-hero.css bleiben damit unangetastet.
-   ============================================================ */
-.private-proof-google {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: #fff;
-  font-weight: 750;
-}
-.private-proof-google svg { flex: 0 0 auto; }
-.private-proof-stars {
-  color: #ffbf24;
-  font-size: 1.02rem;
-  letter-spacing: .08em;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.hero-followup .customer-proof-area {
-  margin-bottom: clamp(56px, 6vw, 90px);   /* entspricht der alten .trust-bar: 90px Desktop, 60px Mobil */
-}
-
-/* Optional (E4): Original-Proportionen der Privatkunden-Leiste statt voller
-   Containerbreite. Nur einkommentieren, wenn Sascha das ausdruecklich will.
-.hero-followup .customer-proof-area { max-width: 940px; margin-inline: auto; }
-*/

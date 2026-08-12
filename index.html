@@ -20,8 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260812e" />
-<link rel="stylesheet" href="assets/css/customer-hero.css?v=20260811d" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260812j" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -232,7 +231,6 @@
         </li>
         <li><a href="projekte/">Galerie</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#ueber">Über&nbsp;uns</a></li>
         <li><a href="kontakt/">Kontakt</a></li>
       </ul>
     </nav>
@@ -272,12 +270,11 @@
 
   <div class="gate-head">
     <h1 class="hero-title" id="gate-title">
-      <span class="line">Vom Vorgarten</span>
-      <span class="line">bis zur <em>Gewerbefläche</em>.</span>
-      <span class="line">Ein Meisterbetrieb.</span>
+      <span class="line">Gärten gestalten.</span>
+      <span class="line">Außenanlagen, <em>die bleiben.</em></span>
     </h1>
     <p class="gate-region">
-      Garten- und Landschaftsbau in Herne, Bochum, Recklinghausen und Umgebung.
+      Meisterbetrieb für Garten- und Landschaftsbau in Herne, Bochum, Recklinghausen und Umgebung.
     </p>
   </div>
 
@@ -290,7 +287,7 @@
         <source type="image/webp" sizes="(max-width: 860px) 100vw, 50vw"
                 srcset="assets/img/hero/gate-privat-480.webp 480w, assets/img/hero/gate-privat-960.webp 960w, assets/img/hero/gate-privat-1200.webp 1200w">
         <img class="gate-photo" src="assets/img/hero/gate-privat.webp"
-             alt="Angelegtes Staudenbeet mit Natursteinmauer und Hochbeet in einem Privatgarten"
+             alt=""
              width="960" height="640" fetchpriority="high" decoding="async">
       </picture>
       <span class="gate-veil" aria-hidden="true"></span>
@@ -307,12 +304,11 @@
     <a class="gate-door gate-door--gewerbe" href="gewerbekunden/">
       <picture>
         <source type="image/avif" sizes="(max-width: 860px) 100vw, 50vw"
-                srcset="assets/img/hero/gate-gewerbe-baumarbeiten-480.avif 480w, assets/img/hero/gate-gewerbe-baumarbeiten-960.avif 960w, assets/img/hero/gate-gewerbe-baumarbeiten-1200.avif 1200w">
-        <!-- WebP nur bis 960: die 1200er Stufe sprengt mit dem dichten Laub das 200-KB-Budget (AP-25). -->
+                srcset="assets/img/hero/gate-gewerbe-grossbaum-480.avif 480w, assets/img/hero/gate-gewerbe-grossbaum-960.avif 960w, assets/img/hero/gate-gewerbe-grossbaum-1200.avif 1200w">
         <source type="image/webp" sizes="(max-width: 860px) 100vw, 50vw"
-                srcset="assets/img/hero/gate-gewerbe-baumarbeiten-480.webp 480w, assets/img/hero/gate-gewerbe-baumarbeiten-960.webp 960w">
-        <img class="gate-photo" src="assets/img/hero/gate-gewerbe-baumarbeiten.webp"
-             alt="Zwei Mitarbeiter zerlegen einen gefällten Baum mit der Motorsäge"
+                srcset="assets/img/hero/gate-gewerbe-grossbaum-480.webp 480w, assets/img/hero/gate-gewerbe-grossbaum-960.webp 960w, assets/img/hero/gate-gewerbe-grossbaum-1200.webp 1200w">
+        <img class="gate-photo" src="assets/img/hero/gate-gewerbe-grossbaum.webp"
+             alt=""
              width="960" height="640" loading="lazy" decoding="async">
       </picture>
       <span class="gate-veil" aria-hidden="true"></span>
@@ -330,96 +326,47 @@
 
 </section>
 
-<!-- ============ HERO-UNTERBAU: Vertrauensleiste (AP-123) ============ -->
-<section class="hero-followup" aria-label="Qualifikationen und Bewertungen">
-  <!-- Vertrauensleiste – 1:1 aus /privatkunden/ (AP-123) -->
-  <div class="container">
-    <aside class="private-hero-proof customer-proof-area" aria-label="Vertrauen auf einen Blick">
-      <ul class="customer-proof-strip customer-proof-strip--private">
-        <li class="private-proof-item">
-          <span class="private-proof-visual private-proof-metric" aria-hidden="true">20+</span>
-          <strong>Jahre Erfahrung</strong>
-          <span class="private-proof-detail">Seit 2003 in Herne und Umgebung</span>
-        </li>
-        <li class="private-proof-item private-proof-item--google">
-          <div class="private-proof-visual private-proof-google" role="img" aria-label="4,9 von 5 Sternen">
-            <svg class="private-proof-google-logo" viewBox="0 0 24 24" focusable="false">
-              <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.4-1.1 2.7-2.3 3.5v2.9h3.7c2.2-2 3.6-5 3.6-8.5Z"/>
-              <path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-3l-3.7-2.9c-1 .7-2.4 1.1-4.2 1.1-3.1 0-5.7-2.1-6.7-4.9H1.5v3c1.9 4 5.9 6.7 10.5 6.7Z"/>
-              <path fill="#FBBC05" d="M5.3 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3v-3H1.5C.6 8.3.1 10.1.1 12s.5 3.7 1.4 5.3l3.8-3Z"/>
-              <path fill="#EA4335" d="M12 4.8c1.7 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.5 6.7l3.8 3C6.3 6.9 8.9 4.8 12 4.8Z"/>
-            </svg>
-            <span class="private-hero-trust-score">4,9</span>
-            <svg class="private-proof-stars" viewBox="0 0 112 20" focusable="false">
-              <defs>
-                <path id="privateHeroTrustStar" d="M10 1.4 12.7 6.9 18.8 7.8 14.4 12.1 15.4 18.2 10 15.3 4.6 18.2 5.6 12.1 1.2 7.8 7.3 6.9 10 1.4Z"/>
-              </defs>
-              <use href="#privateHeroTrustStar" x="0"/>
-              <use href="#privateHeroTrustStar" x="22"/>
-              <use href="#privateHeroTrustStar" x="44"/>
-              <use href="#privateHeroTrustStar" x="66"/>
-              <use href="#privateHeroTrustStar" x="88"/>
-            </svg>
-          </div>
-          <strong>67 Google-Bewertungen</strong>
-          <span class="private-proof-supplement">Und viele weitere zufriedene Kunden</span>
-        </li>
-        <li class="private-proof-item">
-          <svg class="private-proof-visual private-proof-seal" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
-            <path d="M32 7.5 38 13.2l8.3-.5 2.1 8 7.1 4.3-3.8 7 3.8 7-7.1 4.3-2.1 8-8.3-.5-6 5.7-6-5.7-8.3.5-2.1-8L8.5 39l3.8-7-3.8-7 7.1-4.3 2.1-8 8.3.5 6-5.7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"/>
-            <circle cx="32" cy="32" r="14" stroke="currentColor" stroke-width="2.6"/>
-            <path d="M25.5 32.5 30.2 37l8.8-10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"/>
-          </svg>
-          <strong>Meister- &amp; Ausbildungsbetrieb</strong>
-          <span class="private-proof-detail">Geführt von Gartenbaumeister Maik Rohdich</span>
-        </li>
-        <li class="private-proof-item">
-          <span class="private-proof-visual private-proof-metric private-proof-metric--area" aria-hidden="true">1.500 m²</span>
-          <strong>Musterflächen in Herne</strong>
-          <span class="private-proof-detail">Besichtigung nach Terminvereinbarung</span>
-        </li>
-      </ul>
-    </aside>
-  </div>
-</section>
-
 <!-- ============ SOCIAL PROOF ============ -->
 <section class="section section-proof" aria-labelledby="proof-title">
   <div class="container">
     <div class="section-head center reveal">
-      <h2 id="proof-title">Vertrauen, das aus 20+ Jahren Arbeit gewachsen ist.</h2>
-      <p class="lead">Kein Vertriebsdruck, keine Ferndiagnose. Echte Nachweise, ehrliche Einschätzung und über 20 Jahre Arbeit fest in der Region.</p>
+      <h2 id="proof-title">Vertrauen, das durch verlässliche Arbeit gewachsen ist.</h2>
     </div>
 
-    <!-- Kennzahlen-Leiste + Jahresringe (Erfahrung) -->
-    <div class="proof-stats reveal">
-      <div class="proof-rings">
-        <svg viewBox="0 0 168 168" role="img" aria-label="Über 20 Jahre Erfahrung, seit 2003 gewachsen">
-          <g fill="none" stroke-linecap="round">
-            <circle cx="84" cy="84" r="79" stroke="#315200" stroke-opacity=".12" stroke-width="5"/>
-            <circle cx="84" cy="84" r="67" stroke="#315200" stroke-opacity=".18" stroke-width="5"/>
-            <circle cx="84" cy="84" r="55" stroke="#315200" stroke-opacity=".26" stroke-width="5"/>
-            <circle cx="84" cy="84" r="43" stroke="#5a8a1c" stroke-opacity=".55" stroke-width="5"/>
-          </g>
-          <text x="84" y="85" text-anchor="middle" dominant-baseline="central" class="proof-rings-num">20+</text>
-        </svg>
-      </div>
-      <div class="proof-figures">
-        <div class="proof-stat">
-          <span class="num">2003</span>
-          <span class="lab">gegründet in Herne</span>
-        </div>
-        <span class="proof-sep" aria-hidden="true"></span>
-        <div class="proof-stat">
-          <span class="num"><span data-countup="4.9" data-decimals="1">4,9</span><span class="star" aria-hidden="true">★</span></span>
-          <span class="lab">Google-Bewertung</span>
-        </div>
-        <span class="proof-sep" aria-hidden="true"></span>
-        <div class="proof-stat">
-          <span class="num" data-countup="67">67</span>
-          <span class="lab">Bewertungen</span>
-        </div>
-      </div>
+    <!-- Fünf eigenständige Nachweise: Erfahrung, Beständigkeit, Bewertung, Qualifikation und Präsenz. -->
+    <div class="proof-stats-stage reveal">
+      <svg class="proof-stats-route" viewBox="0 0 1200 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path class="proof-stats-route-glow" d="M200 700 C275 700 325 120 400 120 S525 700 600 700 S725 120 800 120 S925 700 1000 700"/>
+        <path class="proof-stats-route-line" d="M200 700 C275 700 325 120 400 120 S525 700 600 700 S725 120 800 120 S925 700 1000 700"/>
+      </svg>
+      <ul class="proof-stats" aria-label="Vertrauen auf einen Blick">
+      <li class="proof-stat">
+        <span class="proof-stat-visual num" aria-label="Mehr als 20">20+</span>
+        <span class="lab">Jahre Erfahrung</span>
+      </li>
+      <li class="proof-stat">
+        <span class="proof-stat-visual num">2003</span>
+        <span class="lab">gegründet in Herne</span>
+      </li>
+      <li class="proof-stat">
+        <span class="proof-stat-visual num" aria-label="4,9 von 5 Sternen"><span data-countup="4.9" data-decimals="1">4,9</span><span class="star" aria-hidden="true">★</span></span>
+        <span class="lab">Google-Bewertung</span>
+      </li>
+      <li class="proof-stat proof-stat--qualification">
+        <span class="proof-stat-visual" aria-hidden="true">
+          <svg class="proof-stat-seal" viewBox="0 0 64 64" fill="none" focusable="false">
+            <path d="M32 7.5 38 13.2l8.3-.5 2.1 8 7.1 4.3-3.8 7 3.8 7-7.1 4.3-2.1 8-8.3-.5-6 5.7-6-5.7-8.3.5-2.1-8L8.5 39l3.8-7-3.8-7 7.1-4.3 2.1-8 8.3.5 6-5.7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"/>
+            <circle cx="32" cy="32" r="14" stroke="currentColor" stroke-width="2.6"/>
+            <path d="M25.5 32.5 30.2 37l8.8-10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"/>
+          </svg>
+        </span>
+        <span class="lab proof-stat-title">Meister- &amp; Ausbildungsbetrieb</span>
+      </li>
+      <li class="proof-stat proof-stat--garden">
+        <span class="proof-stat-visual num proof-stat-area">1.500 m²</span>
+        <span class="lab">Mustergarten in Herne</span>
+      </li>
+      </ul>
     </div>
 
     <!-- Revier-Karte + Bewertungen -->
@@ -490,150 +437,8 @@
           </figure>
         </div>
 
-        <ul class="proof-chips">
-          <li class="proof-chip">Gartenbaumeister</li>
-          <li class="proof-chip">Ausbildungsbetrieb</li>
-          <li class="proof-chip">Sachverständiger Baumkontrolle</li>
-        </ul>
-
         <a class="btn btn-outline" href="https://www.google.com/search?q=Maik+Rohdich+Garten-+und+Landschaftsbau" target="_blank" rel="noopener">Alle Bewertungen ansehen</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PERSÖNLICHE MAIK-SEKTION ============ -->
-<section class="section section-maik" id="ueber" aria-labelledby="maik-title">
-  <div class="container maik-grid">
-
-    <div class="ueber-media reveal">
-      <figure class="ueber-shot ueber-shot--lead">
-        <picture>
-          <source type="image/avif" sizes="(max-width: 600px) 92vw, (max-width: 900px) 54vw, 27vw" srcset="assets/img/ueber/ueber-team-480.avif 480w">
-          <source type="image/webp" sizes="(max-width: 600px) 92vw, (max-width: 900px) 54vw, 27vw" srcset="assets/img/ueber/ueber-team-480.webp 480w">
-          <img src="assets/img/ueber/ueber-team.webp" alt="Mitarbeiter in Arbeitsweste mit rohdich.de-Schriftzug, Helm und Gehörschutz bei Baumarbeiten" loading="lazy" decoding="async" width="480" height="600">
-        </picture>
-        <figcaption>Auf der Baustelle, nicht im Büro.</figcaption>
-      </figure>
-      <div class="ueber-side">
-        <figure class="ueber-shot ueber-shot--small">
-          <picture>
-            <source type="image/avif" sizes="(max-width: 600px) 45vw, (max-width: 900px) 38vw, 19vw" srcset="assets/img/ueber/ueber-hebeaktion-480.avif 480w">
-            <source type="image/webp" sizes="(max-width: 600px) 45vw, (max-width: 900px) 38vw, 19vw" srcset="assets/img/ueber/ueber-hebeaktion-480.webp 480w">
-            <img src="assets/img/ueber/ueber-hebeaktion.webp" alt="Zwei Mitarbeiter versetzen einen großen Findling, der an einem Hebegurt am Baggerarm hängt" loading="lazy" decoding="async" width="480" height="360">
-          </picture>
-        </figure>
-        <figure class="ueber-shot ueber-shot--small">
-          <picture>
-            <source type="image/avif" sizes="(max-width: 600px) 45vw, (max-width: 900px) 38vw, 19vw" srcset="assets/img/ueber/ueber-1-480.avif 480w, assets/img/ueber/ueber-1-960.avif 960w">
-            <source type="image/webp" sizes="(max-width: 600px) 45vw, (max-width: 900px) 38vw, 19vw" srcset="assets/img/ueber/ueber-1-480.webp 480w, assets/img/ueber/ueber-1-960.webp 960w">
-            <img src="assets/img/ueber/ueber-1.webp" alt="Angelegte Gartenteichanlage mit Palmen, Uferbepflanzung und Natursteineinfassung" loading="lazy" decoding="async" width="960" height="720">
-          </picture>
-        </figure>
-      </div>
-    </div>
-
-    <div class="ueber-content reveal">
-      <span class="kicker">Die Person hinter dem Betrieb</span>
-      <h2 id="maik-title">Zum ersten Termin kommt Maik Rohdich selbst.</h2>
-      <p class="ueber-lead">
-        Kein Außendienst, kein Katalog, kein Verkaufsgespräch am Telefon. Er schaut sich Ihr
-        Grundstück an und sagt Ihnen, was dort funktioniert. Seit 2003, aus Herne.
-      </p>
-      <!-- OFFEN: Die drei O-Toene des Mockups (zwei Zitate von Maik Rohdich, eine
-           Sammelaussage ueber Kunden) sind nicht freigegeben und stehen deshalb
-           nicht auf der Seite. Siehe docs/offene-punkte.md. Das CSS dafuer wird
-           erst mit der Freigabe angelegt, damit keine toten Regeln entstehen. -->
-
-      <!-- AP-128: Abschlussblock aus der vollen Containerbreite in die Textspalte
-           geholt. Unter dem Grid kostete er 302px Sektionshoehe; hier laeuft er
-           parallel zum Bildblock. -->
-      <div class="einstieg">
-        <h3>Sie müssen noch nicht wissen, was Sie wollen.</h3>
-        <p>Ein Foto und ein Satz reichen für den Anfang. Alles Weitere klärt sich beim Termin vor Ort.</p>
-        <div class="einstieg-actions">
-          <a class="btn btn-wa" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener">Foto per WhatsApp senden</a>
-          <a class="btn btn-outline" href="kontakt/">Termin anfragen</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROJEKTE ============ -->
-<section class="section section-projects" id="projekte" aria-labelledby="proj-title">
-  <div class="container">
-    <div class="section-head center reveal">
-      <h2 id="proj-title">Was wir zuletzt umgesetzt haben.</h2>
-      <p class="lead">Echte Arbeiten, echte Orte. Drei Beispiele aus dem aktuellen Portfolio.</p>
-    </div>
-
-    <!-- Statisches Fallback-Markup (Progressive Enhancement): bleibt sichtbar, falls
-         data/projekte-index.json nicht geladen werden kann. Wird sonst von
-         assets/js/projekte.js aus den Content-Daten neu gerendert. -->
-    <div class="projects-grid">
-      <article class="project-card reveal">
-        <div class="project-media">
-          <picture>
-            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-480.avif 480w, assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-960.avif 960w, assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-1600.avif 1600w">
-            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-480.webp 480w, assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-960.webp 960w, assets/img/projekte/vorgarten-herne-2026/vorgarten-herne-1600.webp 1600w">
-            <img src="assets/img/projekte/vorgarten-herne-2026/vorgarten-herne.webp"
-               alt="Neu gestalteter Vorgarten mit Natursteinweg und strukturierter Bepflanzung"
-               loading="lazy" decoding="async" width="800" height="600">
-          </picture>
-          <span class="project-tag">Privatkunde</span>
-        </div>
-        <div class="project-body">
-          <span class="project-location">Herne</span>
-          <h3>Vorgarten &amp; Bepflanzung</h3>
-          <p>Vorgarten-Neugestaltung mit Naturstein, strukturierter Bepflanzung und integrierter Beleuchtung.</p>
-          <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
-        </div>
-        <a class="card-open" href="projekte/vorgarten-herne-2026/" aria-label="Projekt „Vorgarten &amp; Bepflanzung“ ansehen"></a>
-      </article>
-
-      <article class="project-card reveal">
-        <div class="project-media">
-          <picture>
-            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-480.avif 480w, assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-960.avif 960w, assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-1600.avif 1600w">
-            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-480.webp 480w, assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-960.webp 960w, assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-1600.webp 1600w">
-            <img src="assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum.webp"
-               alt="Angelegte Teichanlage mit natürlicher Uferzone und Sitzplatz"
-               loading="lazy" decoding="async" width="800" height="600">
-          </picture>
-          <span class="project-tag">Privatkunde</span>
-        </div>
-        <div class="project-body">
-          <span class="project-location">Bochum</span>
-          <h3>Teichanlage &amp; Außenbereich</h3>
-          <p>Teichbau mit natürlicher Uferzone, Sitzplatz und passender Bepflanzung rund um den Whirlpool.</p>
-          <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
-        </div>
-        <a class="card-open" href="projekte/teichanlage-bochum-2026/" aria-label="Projekt „Teichanlage &amp; Außenbereich“ ansehen"></a>
-      </article>
-
-      <article class="project-card reveal">
-        <div class="project-media">
-          <picture>
-            <source type="image/avif" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-480.avif 480w, assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-960.avif 960w, assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-1600.avif 1600w">
-            <source type="image/webp" sizes="(max-width: 700px) 90vw, 30vw" srcset="assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-480.webp 480w, assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-960.webp 960w, assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen-1600.webp 1600w">
-            <img src="assets/img/projekte/aussenanlagen-recklinghausen-2026/aussenanlagen-recklinghausen.webp"
-               alt="Gepflegte Außenanlage eines Bürokomplexes mit hohem Publikumsverkehr"
-               loading="lazy" decoding="async" width="800" height="600">
-          </picture>
-          <span class="project-tag warn">Gewerbekunde</span>
-        </div>
-        <div class="project-body">
-          <span class="project-location">Recklinghausen</span>
-          <h3>Außenanlagenpflege Bürokomplex</h3>
-          <p>Pflege, Baumkontrolle und Verkehrssicherheit für einen gewerblichen Standort mit hohem Publikumsverkehr.</p>
-          <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
-        </div>
-        <a class="card-open" href="projekte/aussenanlagen-recklinghausen-2026/" aria-label="Projekt „Außenanlagenpflege Bürokomplex“ ansehen"></a>
-      </article>
-    </div>
-    <div class="projects-more center">
-      <a class="btn btn-outline" href="projekte/">Alle Projekte ansehen <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -765,8 +570,8 @@
         <div class="faq-body"><p>Ja. Aus unseren Baumarbeiten fällt Holz an, das wir zu Brennholz und Stammholz aufarbeiten und regional abgeben. Verfügbarkeit, Holzart und Menge schwanken je nachdem, was gerade anfällt. Am besten fragen Sie kurz an, was vorrätig ist – Abholung oder Lieferung stimmen wir dann ab.</p></div>
       </details>
         <details>
-        <summary><span>Gibt es einen Beispielgarten oder Musterbereiche?</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>Ja, allerdings nicht als frei zugängliche Ausstellung. Bei passenden Gestaltungsprojekten sehen wir Materialien, Pflanzen und Gestaltungsideen gemeinsam am Betrieb an – ausschließlich nach vorheriger Terminvereinbarung. So bekommen Sie ein Gefühl dafür, was zusammenpasst. Unangemeldete Besuche sind nicht möglich.</p></div>
+        <summary><span>Kann ich den Mustergarten besichtigen?</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="faq-body"><p>Ja. Im 1.500 m² Mustergarten in Herne sehen Sie Pflanzen, Materialien, Teichanlage und Gestaltungsideen im echten Maßstab. Die Besichtigung ist ausschließlich nach vorheriger Terminvereinbarung möglich, damit Maik Rohdich sich Zeit für Ihre Fragen nehmen kann. Unangemeldete Besuche sind nicht möglich.</p></div>
       </details>
         <details>
         <summary><span>Sind Sie Ausbildungsbetrieb?</span><span class="chev" aria-hidden="true"></span></summary>
@@ -905,10 +710,10 @@
     },
     {
       "@type": "Question",
-      "name": "Gibt es einen Beispielgarten oder Musterbereiche?",
+      "name": "Kann ich den Mustergarten besichtigen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ja, allerdings nicht als frei zugängliche Ausstellung. Bei passenden Gestaltungsprojekten sehen wir Materialien, Pflanzen und Gestaltungsideen gemeinsam am Betrieb an – ausschließlich nach vorheriger Terminvereinbarung. So bekommen Sie ein Gefühl dafür, was zusammenpasst. Unangemeldete Besuche sind nicht möglich."
+        "text": "Ja. Im 1.500 m² Mustergarten in Herne sehen Sie Pflanzen, Materialien, Teichanlage und Gestaltungsideen im echten Maßstab. Die Besichtigung ist ausschließlich nach vorheriger Terminvereinbarung möglich, damit Maik Rohdich sich Zeit für Ihre Fragen nehmen kann. Unangemeldete Besuche sind nicht möglich."
       }
     },
     {
@@ -975,7 +780,6 @@
             <li><a href="privatkunden/">Privatkunden</a></li>
             <li><a href="gewerbekunden/">Gewerbekunden</a></li>
             <li><a href="projekte/?ansicht=galerie">Galerie</a></li>
-            <li><a href="#ueber">Über uns</a></li>
             <li><a href="kontakt/">Kontakt</a></li>
           </ul>
         </details>
@@ -993,6 +797,5 @@
 <!-- BUILD:site-footer:end -->
 
 <script src="assets/js/main.js?v=20260812a" defer></script>
-<script type="module" src="assets/js/projekte.js?v=20260807b"></script>
 </body>
 </html>
