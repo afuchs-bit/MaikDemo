@@ -245,22 +245,55 @@
   }
 
   // --- Scroll reveal ---
-  const els = document.querySelectorAll('.reveal');
+  const revealElements = new Set();
+  const registeredRevealElements = new WeakSet();
+  const revealDelay = (el) => {
+    const siblings = Array.from(el.parentElement?.children || []);
+    const index = siblings.indexOf(el);
+    // Auch lange Galerie- und Kartenraster sollen ohne sekundenlange Wartezeit
+    // reagieren. Der Gewerbe-Stagger bleibt erhalten, wird aber sinnvoll begrenzt.
+    return `${Math.min(4, Math.max(0, index)) * 60}ms`;
+  };
+  const revealNow = (el) => {
+    if (!el || revealElements.has(el)) return;
+    revealElements.add(el);
+    el.style.transitionDelay = revealDelay(el);
+    el.classList.add('is-in');
+  };
+
+  let revealObserver = null;
   if (!reduced && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          // stagger siblings slightly
-          const idx = Array.from(entry.target.parentNode?.children || []).indexOf(entry.target);
-          entry.target.style.transitionDelay = (Math.max(0, idx) * 60) + 'ms';
-          entry.target.classList.add('is-in');
-          io.unobserve(entry.target);
-        }
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        revealNow(entry.target);
+        revealObserver.unobserve(entry.target);
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-    els.forEach(el => io.observe(el));
-  } else {
-    els.forEach(el => el.classList.add('is-in'));
+  }
+
+  const registerReveal = (root = document) => {
+    const candidates = [];
+    if (root.nodeType === Node.ELEMENT_NODE && root.matches('.reveal')) candidates.push(root);
+    root.querySelectorAll?.('.reveal').forEach((el) => candidates.push(el));
+    candidates.forEach((el) => {
+      if (registeredRevealElements.has(el)) return;
+      registeredRevealElements.add(el);
+      if (!revealObserver) revealNow(el);
+      else revealObserver.observe(el);
+    });
+  };
+  registerReveal();
+
+  // Galeriebilder und Projektkarten entstehen erst nach dem Datenabruf. Neue
+  // Reveal-Elemente werden ueber dieselbe zentrale Bewegung registriert.
+  if ('MutationObserver' in window) {
+    const revealMutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE) registerReveal(node);
+      }));
+    });
+    revealMutationObserver.observe(document.body, { childList: true, subtree: true });
   }
 
   // --- Hero video: reduced-motion fallback + fade-in when playing ---

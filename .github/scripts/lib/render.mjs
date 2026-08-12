@@ -170,8 +170,8 @@ function lpFachtext(f) {
     .map((b) => `      <h3>${esc(b.h3)}</h3>\n      <p>${esc(b.text)}</p>`)
     .join('\n');
   const hinweis = f.hinweis ? `\n      <p class="lp-fachtext-hinweis">${esc(f.hinweis)}</p>` : '';
-  return `<section class="lp-block lp-fachtext" aria-labelledby="lp-fachtext-title">
-      <h2 id="lp-fachtext-title">${esc(f.titel)}</h2>${intro}
+  return `<section class="lp-block lp-fachtext reveal" aria-labelledby="lp-fachtext-title">
+      <h2 class="type-subsection-title" id="lp-fachtext-title">${esc(f.titel)}</h2>${intro}
 ${bloecke}${hinweis}
     </section>`;
 }
@@ -183,8 +183,8 @@ function lpRechner(rechner, base) {
   if (!rechner) return '';
   const waDefault = 'https://wa.me/491711738943?text=' +
     encodeURIComponent('Hallo Herr Rohdich, ich interessiere mich für mein Pool- oder Whirlpool-Umfeld und würde das gern besprechen.');
-  return `<section class="lp-block pool-rechner" id="pool-rechner" aria-labelledby="pr-title">
-      <h2 id="pr-title">Ihr Vorhaben grob einordnen</h2>
+  return `<section class="lp-block pool-rechner reveal" id="pool-rechner" aria-labelledby="pr-title">
+      <h2 class="type-subsection-title" id="pr-title">Ihr Vorhaben grob einordnen</h2>
       <p class="lp-note">Diese Einordnung ist eine erste Orientierung – <strong>keine Preisauskunft</strong>. Eine belastbare Einschätzung geben wir nach der Besichtigung. Die Berechnung läuft ausschließlich in Ihrem Browser; erst wenn Sie die Anfrage abschicken, werden Ihre Angaben übermittelt. Eine Budgetangabe ist eine persönliche Angabe – Näheres in der Datenschutzerklärung.</p>
 
       <form class="pr-form" id="prForm" novalidate>
@@ -244,7 +244,7 @@ function optionalText(p) {
   const blocks = parts
     .map(([h, t]) => `<h2>${esc(h)}</h2>\n      <p>${esc(t)}</p>`)
     .join('\n      ');
-  return `<div class="projekt-text">\n      ${blocks}\n    </div>`;
+  return `<div class="projekt-text reveal">\n      ${blocks}\n    </div>`;
 }
 
 // ---------- JSON-LD ----------
@@ -335,7 +335,7 @@ export function renderGalleryList(projekte, base = BASE_GALLERY) {
       });
       const href = `${encodeURIComponent(p.slug)}/`;
       const label = escAttr(`Projekt „${p.titel}“ in ${p.ort} ansehen`);
-      return `      <article class="project-card">
+      return `      <article class="project-card reveal">
         <div class="project-media">
           ${pic}
           <span class="project-tag ${b.cls}">${esc(b.label)}</span>
