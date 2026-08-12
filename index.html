@@ -20,7 +20,8 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260811k" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260812a" />
+<link rel="stylesheet" href="assets/css/customer-hero.css?v=20260811d" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -329,106 +330,56 @@
 
 </section>
 
-<!-- ============ HERO-UNTERBAU: Sonderleistungen + Vertrauensleiste (AP-82) ============ -->
-<section class="hero-followup" aria-label="Sonderleistungen und Qualifikationen">
+<!-- ============ HERO-UNTERBAU: Vertrauensleiste (AP-123) ============ -->
+<section class="hero-followup" aria-label="Qualifikationen und Bewertungen">
+  <!-- Vertrauensleiste – 1:1 aus /privatkunden/ (AP-123) -->
   <div class="container">
-    <ul class="hero-teasers reveal" aria-label="Sonderleistungen">
-      <li>
-        <a class="teaser teaser-strong" href="privatkunden/leistungen/baumkontrolle/" data-welt-dialog="baumkontrolle">
-          <span class="teaser-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-4M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M22 12h-4M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg>
-          </span>
-          <div>
-            <span class="teaser-title">Baumkontrolle</span>
-            <span class="teaser-sub">Fachgutachten &amp; Verkehrssicherheit</span>
+    <aside class="private-hero-proof customer-proof-area" aria-label="Vertrauen auf einen Blick">
+      <ul class="customer-proof-strip customer-proof-strip--private">
+        <li class="private-proof-item">
+          <span class="private-proof-visual private-proof-metric" aria-hidden="true">20+</span>
+          <strong>Jahre Erfahrung</strong>
+          <span class="private-proof-detail">Seit 2003 in Herne und Umgebung</span>
+        </li>
+        <li class="private-proof-item private-proof-item--google">
+          <div class="private-proof-visual private-proof-google" role="img" aria-label="4,9 von 5 Sternen">
+            <svg class="private-proof-google-logo" viewBox="0 0 24 24" focusable="false">
+              <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5c-.3 1.4-1.1 2.7-2.3 3.5v2.9h3.7c2.2-2 3.6-5 3.6-8.5Z"/>
+              <path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-3l-3.7-2.9c-1 .7-2.4 1.1-4.2 1.1-3.1 0-5.7-2.1-6.7-4.9H1.5v3c1.9 4 5.9 6.7 10.5 6.7Z"/>
+              <path fill="#FBBC05" d="M5.3 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3v-3H1.5C.6 8.3.1 10.1.1 12s.5 3.7 1.4 5.3l3.8-3Z"/>
+              <path fill="#EA4335" d="M12 4.8c1.7 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.5 6.7l3.8 3C6.3 6.9 8.9 4.8 12 4.8Z"/>
+            </svg>
+            <span class="private-hero-trust-score">4,9</span>
+            <svg class="private-proof-stars" viewBox="0 0 112 20" focusable="false">
+              <defs>
+                <path id="privateHeroTrustStar" d="M10 1.4 12.7 6.9 18.8 7.8 14.4 12.1 15.4 18.2 10 15.3 4.6 18.2 5.6 12.1 1.2 7.8 7.3 6.9 10 1.4Z"/>
+              </defs>
+              <use href="#privateHeroTrustStar" x="0"/>
+              <use href="#privateHeroTrustStar" x="22"/>
+              <use href="#privateHeroTrustStar" x="44"/>
+              <use href="#privateHeroTrustStar" x="66"/>
+              <use href="#privateHeroTrustStar" x="88"/>
+            </svg>
           </div>
-        </a>
-      </li>
-      <li>
-        <a class="teaser" href="privatkunden/leistungen/sturmnotdienst/" data-welt-dialog="sturmnotdienst">
-          <span class="teaser-icon storm" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
-          </span>
-          <div>
-            <span class="teaser-title">Sturmnotdienst</span>
-            <span class="teaser-sub">Hilfe bei Sturmschäden</span>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a class="teaser" href="privatkunden/leistungen/holzverkauf/">
-          <span class="teaser-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13M9 21V12h6v9"/></svg>
-          </span>
-          <div>
-            <span class="teaser-title">Holzverkauf</span>
-            <span class="teaser-sub">Brennholz nach Absprache</span>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <!-- Vertrauensleiste – Teil des Hero-Unterbaus -->
-  <div class="container trust-bar reveal">
-    <div class="trust-item">
-      <svg class="trust-icon" viewBox="0 0 64 64" role="img" aria-label="Seit 2003 – über 20 Jahre Erfahrung" focusable="false">
-        <title>Seit 2003 – über 20 Jahre Erfahrung</title>
-        <g fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
-          <rect x="10" y="14" width="44" height="38" rx="7"/>
-          <path d="M18 10v8M46 10v8M10 24h44"/>
-        </g>
-      </svg>
-      <span class="trust-num" data-count="2003">2003</span>
-      <span class="trust-label">gegründet</span>
-    </div>
-    <div class="trust-item">
-      <svg class="trust-icon" viewBox="0 0 64 64" role="img" aria-label="Ausbildungsbetrieb" focusable="false">
-        <title>Ausbildungsbetrieb</title>
-        <g fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
-          <path d="M8 25.5 32 15l24 10.5L32 36 8 25.5Z"/>
-          <path d="M18 30.5v7.5c0 3.5 6.5 7 14 7s14-3.5 14-7v-7.5"/>
-          <path d="M48 28v10"/>
-          <circle cx="48" cy="41" r="2.5"/>
-        </g>
-      </svg>
-      <span class="trust-num">Ausbildungs­betrieb</span>
-      <span class="trust-label">Fachlichkeit &amp; Verantwortung</span>
-    </div>
-    <div class="trust-item">
-      <svg class="trust-icon" viewBox="0 0 64 64" role="img" aria-label="Zertifikate und Qualifikationen" focusable="false">
-        <title>Zertifikate und Qualifikationen</title>
-        <g fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
-          <path d="M18 10h20l8 8v28a6 6 0 0 1-6 6H18a6 6 0 0 1-6-6V16a6 6 0 0 1 6-6Z"/>
-          <path d="M38 10v10h10"/>
-          <path d="M22 27l5 5 10-10"/>
-          <circle cx="24" cy="45" r="7"/>
-          <path d="M21 45l2.2 2.2L27 43.5"/>
-          <path d="M20 51l-1.5 5 5-2.5M28 51l1.5 5-5-2.5"/>
-        </g>
-      </svg>
-      <span class="trust-num">Zertifiziert</span>
-      <span class="trust-label">Gartenbaumeister · Gutachter</span>
-    </div>
-    <div class="trust-item trust-item--google" aria-label="Google Bewertungen: 4,9 von 5 Sternen aus 67 Bewertungen">
-      <!-- Hinweis: Text-Nachbildung der Google-Wortmarke, kein offizielles Google-Asset.
-           Für Demo/Vorschau ok; für Live-Einsatz offizielles Google-Brand-Asset einsetzen. -->
-      <div class="g-row g-row--top">
-        <svg class="trust-icon trust-icon--google" viewBox="0 0 92 30" role="img" aria-hidden="true" focusable="false">
-          <title>Google</title>
-          <text x="0" y="23" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" letter-spacing="-0.5">
-            <tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC05">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e</tspan>
-          </text>
-        </svg>
-        <span class="g-rating">4,9</span>
-      </div>
-      <span class="stars" data-rating="4.9" aria-hidden="true">
-        <span class="stars-fg" style="width:98%"></span>
-      </span>
-      <div class="g-row g-row--bottom">
-        <span class="g-src">Google Bewertungen</span>
-        <span class="g-count">67</span>
-      </div>
-    </div>
+          <strong>67 Google-Bewertungen</strong>
+          <span class="private-proof-supplement">Und viele weitere zufriedene Kunden</span>
+        </li>
+        <li class="private-proof-item">
+          <svg class="private-proof-visual private-proof-seal" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+            <path d="M32 7.5 38 13.2l8.3-.5 2.1 8 7.1 4.3-3.8 7 3.8 7-7.1 4.3-2.1 8-8.3-.5-6 5.7-6-5.7-8.3.5-2.1-8L8.5 39l3.8-7-3.8-7 7.1-4.3 2.1-8 8.3.5 6-5.7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"/>
+            <circle cx="32" cy="32" r="14" stroke="currentColor" stroke-width="2.6"/>
+            <path d="M25.5 32.5 30.2 37l8.8-10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"/>
+          </svg>
+          <strong>Meisterbetrieb</strong>
+          <span class="private-proof-detail">Geführt von Gartenbaumeister Maik Rohdich</span>
+        </li>
+        <li class="private-proof-item">
+          <span class="private-proof-visual private-proof-metric private-proof-metric--area" aria-hidden="true">1.500 m²</span>
+          <strong>Musterflächen in Herne</strong>
+          <span class="private-proof-detail">Besichtigung nach Terminvereinbarung</span>
+        </li>
+      </ul>
+    </aside>
   </div>
 </section>
 
@@ -1029,27 +980,7 @@
 </footer>
 <!-- BUILD:site-footer:end -->
 
-<!-- AP-59: Welt-Auswahl fuer die Hero-Teaser. Baumkontrolle und Sturmnotdienst gibt es
-     als private und als gewerbliche Leistungsseite - der Dialog fragt nach dem Bereich
-     und leitet auf die passende Seite weiter. Der Teaser-href zeigt auf die private
-     Seite und greift unveraendert, wenn kein JS laeuft. Holzverkauf hat keine
-     gewerbliche Seite und oeffnet daher bewusst keinen Dialog. -->
-<div class="welt-dialog" id="weltDialog" role="dialog" aria-modal="true" aria-labelledby="weltDialogTitle" hidden>
-  <div class="welt-dialog-backdrop" data-welt-close></div>
-  <div class="welt-dialog-panel">
-    <button type="button" class="welt-dialog-close" data-welt-close aria-label="Auswahl schließen">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-    </button>
-    <h2 class="welt-dialog-title" id="weltDialogTitle">Leistung</h2>
-    <p class="welt-dialog-text">Für welchen Bereich suchen Sie diese Leistung?</p>
-    <div class="welt-dialog-actions">
-      <button type="button" class="btn btn-primary" data-welt="privatkunden">Privater Garten</button>
-      <button type="button" class="btn btn-secondary" data-welt="gewerbekunden">Gewerbliches Objekt</button>
-    </div>
-  </div>
-</div>
-
-<script src="assets/js/main.js?v=20260810a" defer></script>
+<script src="assets/js/main.js?v=20260812a" defer></script>
 <script type="module" src="assets/js/projekte.js?v=20260807b"></script>
 </body>
 </html>

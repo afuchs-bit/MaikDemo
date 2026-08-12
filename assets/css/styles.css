@@ -482,94 +482,6 @@ p  { margin: 0; }
   display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
 }
 
-.hero-teasers {
-  list-style: none; padding: 0; margin: 40px 0 0;
-  display: grid; gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  max-width: 760px;
-}
-.hero-teasers li { list-style: none; }
-.teaser {
-  display: flex; gap: 12px; align-items: center;
-  height: 100%;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  padding: 14px 16px;
-  border-radius: 16px;
-  box-shadow: var(--shadow-card);
-  text-decoration: none; color: inherit; cursor: pointer;
-  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
-}
-@media (hover: hover) and (pointer: fine) { .teaser:hover { transform: translateY(-3px); box-shadow: var(--shadow-float); border-color: var(--green-300); } }
-.teaser:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; }
-.teaser-icon {
-  width: 40px; height: 40px; flex: 0 0 auto;
-  border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
-  background: var(--green-50); color: var(--green-700);
-}
-.teaser-icon.storm { background: rgba(235,108,68,.12); color: var(--coral); }
-.teaser-title { display:block; font-family: var(--display); font-weight: 700; font-size: 1rem; letter-spacing: -.01em; }
-.teaser-sub { display:block; font-size: .8rem; color: var(--ink-mute); }
-.teaser-strong {
-  background: linear-gradient(180deg, #fff, var(--green-50));
-  border-color: var(--green-300);
-}
-.teaser-strong .teaser-title { color: var(--green-800); }
-
-/* ---------- Trust Bar ---------- */
-.trust-bar {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: start;
-  column-gap: 0;
-  padding: 22px 28px;
-  margin: 60px auto 90px;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  box-shadow: var(--shadow-card);
-  width: min(100% - calc(var(--gutter) * 2), var(--container));
-}
-/* AP-60: Inhalt in allen 4 Boxen zentriert statt nur im ersten Item –
-   vorher stretchten Item 2-4 per Flex-Default auf volle Spaltenbreite
-   und blieben linksbündig, während Item 1 zentriert war. Trennlinie
-   sitzt jetzt auf der Spaltengrenze (left:0) statt 14px versetzt in
-   der alten padding-left-Zone. */
-.trust-item {
-  position: relative;
-  display: flex; flex-direction: column; gap: 2px;
-  align-items: center; text-align: center;
-  padding: 0 16px;
-}
-.trust-item:not(:first-child)::before {
-  content: ""; position: absolute; left: 0; top: 2px;
-  width: 1px; height: 52px; background: var(--line);
-}
-.trust-icon {
-  width: 30px; height: 30px;
-  color: var(--ink);          /* füllt currentColor der Outline-Icons */
-  margin-bottom: 6px;
-  display: block;
-}
-.trust-icon--google {         /* Wortmarke ist breiter als hoch */
-  width: auto; height: 22px;
-}
-.trust-num {
-  font-family: var(--display);
-  font-weight: 700; font-size: 1.05rem;
-  color: var(--ink); letter-spacing: -.01em;
-}
-.trust-label {
-  font-size: .78rem;
-  color: var(--ink-mute);
-  letter-spacing: .04em;
-}
-.trust-divider {
-  width: 1px; height: 36px; background: var(--line);
-}
-.trust-stars { display: flex; flex-direction: column; gap: 4px; }
 .stars {
   position: relative; display: inline-block;
   /* Breite = genau eine Kachel (5 Sterne a 16px); mehr wuerde repeat-x sichtbar machen */
@@ -582,21 +494,6 @@ p  { margin: 0; }
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 16'><g fill='%23FFB300'><polygon points='8,1 10.2,5.8 15.5,6.6 11.7,10.3 12.6,15.6 8,13 3.4,15.6 4.3,10.3 0.5,6.6 5.8,5.8'/><polygon points='24,1 26.2,5.8 31.5,6.6 27.7,10.3 28.6,15.6 24,13 19.4,15.6 20.3,10.3 16.5,6.6 21.8,5.8'/><polygon points='40,1 42.2,5.8 47.5,6.6 43.7,10.3 44.6,15.6 40,13 35.4,15.6 36.3,10.3 32.5,6.6 37.8,5.8'/><polygon points='56,1 58.2,5.8 63.5,6.6 59.7,10.3 60.6,15.6 56,13 51.4,15.6 52.3,10.3 48.5,6.6 53.8,5.8'/><polygon points='72,1 74.2,5.8 79.5,6.6 75.7,10.3 76.6,15.6 72,13 67.4,15.6 68.3,10.3 64.5,6.6 69.8,5.8'/></g></svg>") repeat-x;
   background-size: 80px 16px;
 }
-.rating-value { font-family: var(--display); font-weight: 700; font-size: .95rem; margin-left: 6px; }
-.rating-source { font-size: .72rem; color: var(--ink-mute); display: block; }
-
-/* Google-Zelle: Logo+4,8 / Sterne / Bewertungen+67 */
-.trust-item--google .g-row {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-.trust-item--google .trust-icon--google { height: 20px; width: auto; margin: 0; }
-.g-rating {
-  font-family: var(--display); font-weight: 700; font-size: 1.6rem;
-  line-height: 1; color: var(--ink); letter-spacing: -.01em;
-}
-.trust-item--google .stars { margin: 6px 0; }
-.g-src { font-size: .72rem; color: var(--ink-mute); }
-.g-count { font-size: .72rem; font-weight: 700; color: var(--ink-mute); }
 
 /* ============================================================
    SECTIONS
@@ -1646,11 +1543,6 @@ p  { margin: 0; }
   }
   .proof-feature { grid-template-columns: 1fr; }
   .wood-grid { grid-template-columns: 1fr; }
-  .trust-bar { grid-template-columns: repeat(2, 1fr); padding: 20px; margin: 40px auto 60px; row-gap: 24px; column-gap: 20px; }
-  .trust-item:not(:first-child)::before { display: none; }
-  /* AP-60: Basis-Regel zentriert jetzt bereits alle 4 Items einheitlich –
-     die frühere Sonderregel (alle Items linksbündig) entfällt. */
-  .trust-item { padding: 0; }
   /* AP-51: `.btn` traegt `white-space: nowrap`. Auf Desktop sinnvoll, auf dem
      Telefon erzwang es eine Mindestbreite der ganzen Seite: der laengste CTA
      („Jetzt Schritt 1 starten – Objektbegehung anfragen") schob /gewerbekunden/
@@ -1713,7 +1605,6 @@ p  { margin: 0; }
   .contact-form { padding: 22px; }
   .menu { display: none; }
   .hero-content { padding-top: 20px; }
-  .trust-bar { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* AP-55: Lesbarkeit des Hero-Texts auf Mobile.
@@ -2584,41 +2475,6 @@ body.has-lightbox { overflow: hidden; }
   .lightbox-next { right: 10px; }
 }
 
-/* ---- Welt-Dialog der Hero-Teaser (AP-59) ---- */
-/* Gleiches Grundmuster wie die Lightbox: fixed Overlay, [hidden] als Schalter,
-   Scroll-Sperre am body. Panel ist hell, weil der Dialog auf dem Hero sitzt. */
-body.has-welt-dialog { overflow: hidden; }
-.welt-dialog {
-  position: fixed; inset: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: center;
-  padding: clamp(16px, 4vw, 40px);
-}
-.welt-dialog[hidden] { display: none; }
-.welt-dialog-backdrop { position: absolute; inset: 0; background: rgba(10,14,4,.82); backdrop-filter: blur(4px); }
-.welt-dialog-panel {
-  position: relative; z-index: 1;
-  width: min(420px, 100%);
-  background: #fff; color: var(--ink);
-  border-radius: var(--radius);
-  padding: clamp(26px, 5vw, 34px);
-  box-shadow: var(--shadow-float);
-  text-align: center;
-}
-.welt-dialog-title { font-size: 1.2rem; margin: 0 0 6px; }
-.welt-dialog-text { color: var(--ink-mute); font-size: .95rem; margin: 0 0 22px; }
-.welt-dialog-actions { display: flex; flex-direction: column; gap: 10px; }
-/* Buttons fuellen die Panelbreite; .btn bringt nowrap mit, das hier bewusst aufheben. */
-.welt-dialog-actions .btn { width: 100%; justify-content: center; white-space: normal; }
-.welt-dialog-close {
-  position: absolute; top: 10px; right: 10px;
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 999px;
-  border: 1px solid var(--line); background: var(--bg-soft); color: var(--ink-2);
-  cursor: pointer; transition: background .2s var(--ease);
-}
-@media (hover: hover) and (pointer: fine) { .welt-dialog-close:hover { background: var(--line); } }
-.welt-dialog-close:focus-visible { outline: 2px solid var(--green-500); outline-offset: 2px; }
-
 /* ============================================================
    Projekt-Detailseite  (AP-15 – /projekte/<slug>/)
    Nutzt bestehende Tokens & Klassen (.section, .section-head,
@@ -3251,7 +3107,8 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 
 /* ============================================================
    AP-82 — ZIELGRUPPENWEICHE STARTSEITE
-   Bestehende .hero-*, .teaser-*, .trust-* Klassen bleiben unveraendert.
+   Bestehende .hero-* Klassen bleiben unveraendert (.teaser-* / .trust-*
+   mit AP-123 entfernt).
    ============================================================ */
 
 .hero--gate {
@@ -3394,10 +3251,10 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 .gate-door:focus-visible { outline: 3px solid var(--green-700); outline-offset: 3px; }
 
 
-/* Huelle fuer die verschobenen Bloecke — .hero-teasers und .trust-bar behalten
-   ihre bestehenden Margins; das padding-top schafft nur Abstand zur neuen
-   Hero-Unterkante (AP-84), damit die Teaser bei 1440x900 angeschnitten
-   unter der Falz liegen. */
+/* Huelle fuer den Hero-Unterbau. Seit AP-123 enthaelt der Abschnitt nur noch
+   die Proofleiste (Markup 1:1 aus /privatkunden/, Gestaltung aus
+   customer-hero.css); das padding-top schafft den Abstand zur Hero-Unterkante
+   (AP-84), der Abstand nach unten steht im AP-123-Block am Dateiende. */
 .hero-followup {
   background: var(--bg);
   padding-top: clamp(18px, 2.4vw, 32px);   /* AP-84 */
@@ -3609,3 +3466,41 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .fork-switch circle { opacity: 1; transform: scale(1); }
   .fork-switch--mobile::after { transform: scaleY(1); }
 }
+
+/* ============================================================
+   AP-123 — Proofleiste der Startseite
+   Das Markup ist 1:1 die Leiste aus /privatkunden/. Die Gestaltung
+   liefert customer-hero.css (auf der Startseite ab AP-123 eingebunden).
+   Hier stehen nur zwei Dinge:
+   1) die drei Basisregeln, die auf /privatkunden/ aus privat-form.css
+      kommen. Diese Datei (3.941 Zeilen Formular-CSS) gehoert nicht auf
+      die Startseite; die Regeln sind wortgleich uebernommen und stehen
+      hier VOR customer-hero.css - dieselbe Kaskadenreihenfolge wie dort.
+   2) der Aussenabstand nach unten, den auf /privatkunden/ das Hero-Grid
+      uebernimmt. Bewusst NUR margin-bottom: die responsiven margin-top-
+      Werte aus customer-hero.css bleiben damit unangetastet.
+   ============================================================ */
+.private-proof-google {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #fff;
+  font-weight: 750;
+}
+.private-proof-google svg { flex: 0 0 auto; }
+.private-proof-stars {
+  color: #ffbf24;
+  font-size: 1.02rem;
+  letter-spacing: .08em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.hero-followup .customer-proof-area {
+  margin-bottom: clamp(56px, 6vw, 90px);   /* entspricht der alten .trust-bar: 90px Desktop, 60px Mobil */
+}
+
+/* Optional (E4): Original-Proportionen der Privatkunden-Leiste statt voller
+   Containerbreite. Nur einkommentieren, wenn Sascha das ausdruecklich will.
+.hero-followup .customer-proof-area { max-width: 940px; margin-inline: auto; }
+*/
