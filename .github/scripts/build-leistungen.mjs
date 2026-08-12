@@ -208,11 +208,19 @@ async function main() {
   }
 
   // AP-18/AP-33: LEISTUNGEN_NAV gegen die Vereinigungsmenge beider Welten prüfen.
+  // AP-125: renderNavSubmenu löst die Beschriftung als `welt.navLabels[slug] ||
+  // LEISTUNGEN_NAV || slug` auf. Diese Prüfung ging nur über LEISTUNGEN_NAV und
+  // warnte deshalb seit AP-108 dauerhaft für die gewerbe-eigenen Slugs
+  // (begutachtung, umgestaltung-aussenanlagen), die per navLabels längst
+  // beschriftet sind und in der Navigation stehen. Jetzt derselbe Weg wie im
+  // Renderer: gemeldet wird nur, was in einer Welt tatsächlich ohne Beschriftung
+  // bliebe und dort mit dem Rohslug erschiene.
   const alleSlugs = new Set([...weltDaten.values()].flatMap((m) => [...m.keys()]));
   const navSlugs = new Set(LEISTUNGEN_NAV.map((l) => l.slug));
-  const navMissing = [...alleSlugs].filter((s) => !navSlugs.has(s));
+  const navMissing = [...alleSlugs].filter((s) => !navSlugs.has(s)
+    && Object.values(WELTEN).some((w) => w.slugs.includes(s) && !w.navLabels?.[s]));
   const navExtra = [...navSlugs].filter((s) => !alleSlugs.has(s));
-  if (navMissing.length) console.warn(`⚠ Fehlt in LEISTUNGEN_NAV (render.mjs), taucht nicht in der Navigation auf: ${navMissing.join(', ')}`);
+  if (navMissing.length) console.warn(`⚠ Ohne Beschriftung in LEISTUNGEN_NAV (render.mjs) und in welt.navLabels – erscheint mit dem Rohslug in der Navigation: ${navMissing.join(', ')}`);
   if (navExtra.length) console.warn(`⚠ LEISTUNGEN_NAV verweist auf fehlende Leistung: ${navExtra.join(', ')}`);
 
   if (errors.length) {
