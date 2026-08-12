@@ -744,17 +744,28 @@ p  { margin: 0; }
   .proof-stat .num { font-size: clamp(2rem, 10vw, 2.45rem); }
   .proof-stat-area { font-size: clamp(1.75rem, 8.5vw, 2.1rem) !important; }
   .proof-stat-seal { width: 46px; height: 46px; }
+  /* AP-133: war eine Flex-Zeile (Zahl links, Label rechts daneben). Jetzt
+     gestapelt wie die vier Kacheln darueber - Zahl mittig, Label direkt
+     darunter. Die Regel setzt nur noch die volle Breite; Rasterzeilen,
+     Innenabstand und Zentrierung kommen aus .proof-stat (Zeile 642 und 736),
+     die Zentrierung des Labels aus .proof-stat .lab (Zeile 688). Deshalb
+     entfallen die drei bisherigen Ueberschreibungen ersatzlos.
+     Die doppelte Klasse haelt die Spezifitaet von .proof-stat:nth-child(n)
+     (Zeile 741), das grid-column sonst auf auto zuruecksetzen wuerde. */
   .proof-stat.proof-stat--garden {
     grid-column: 1 / -1;
-    display: flex;
-    min-height: 82px;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(14px, 5vw, 24px);
-    padding-block: 12px;
   }
-  .proof-stat--garden .proof-stat-visual { width: auto; height: 50px; margin: 0; }
-  .proof-stat--garden .lab { display: block; max-width: 18ch; text-align: left; }
+  /* AP-133: Die Bildunterschrift der Revier-Karte ist eine
+     space-between-Zeile. Auf dem Telefon bricht sie um, und beide Zeilen
+     standen linksbuendig unter der mittig sitzenden Karte. Gestapelt und
+     zentriert - das gilt auch fuer "Sitz in Herne", weil eine linksbuendige
+     zweite Zeile unter einer zentrierten ersten wie ein Fehler wirkt. */
+  .proof-map-cap {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
 }
 
 /* Revier-Karte + Bewertungen */
