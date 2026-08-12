@@ -24,7 +24,7 @@
 //   node build-hero-images.mjs
 
 import sharp from 'sharp';
-import { mkdir, writeFile, stat } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -42,6 +42,17 @@ const QUALITY_FLOOR = 28; // untere Grenze, darunter nicht mehr
 // widths = gewuenschte Breiten (groessere als das Original werden verworfen);
 // webpWidths = abweichende Breiten fuer WebP (optional, sonst wie widths).
 const SOURCES = [
+  // Startseiten-Gate Gewerbe: authentischer, gebrandeter Arbeitseinsatz ohne
+  // die riskante Bildwirkung der bisherigen Motorsaegen-Szene. Das Master ist
+  // bereits 3:2 und funktioniert deshalb ohne serverseitigen Beschnitt in der
+  // Desktop- wie Mobilkachel.
+  {
+    src: 'assets/img/gewerbe/partner-v4/partner-koordinierte-ausfuehrung-wide-1920.jpg',
+    dir: 'assets/img/hero',
+    name: 'gate-gewerbe-grossbaum',
+    widths: [480, 960, 1200],
+    fallbackWidth: 960,
+  },
   // Privatkunden-Hero: Desktop-Master bewahren die Hochformat-Komposition,
   // Landscape-Master liefern den vom B2B-Hero verwendeten 16:10-Ausschnitt
   // fuer Tablet und Mobil. Beide Familien stammen aus denselben korrigierten,
@@ -174,9 +185,18 @@ async function writeVariant(pipeline, outPath, format, baseOpts, maxBytes = MAX_
 
 async function main() {
   let over = 0;
-  const manifest = {};
+  const only = process.argv.find((arg) => arg.startsWith('--only='))?.slice('--only='.length);
+  const outManifest = path.join(ROOT, 'data', 'images-repo.json');
+  let manifest = {};
+  if (only) {
+    if (!SOURCES.some((source) => source.name === only)) {
+      throw new Error(`Unbekannte Bildquelle für --only: ${only}`);
+    }
+    manifest = JSON.parse(await readFile(outManifest, 'utf8')).bilder;
+    if (!manifest) throw new Error(`Ungültiges Manifest: ${path.relative(ROOT, outManifest)}`);
+  }
 
-  for (const s of SOURCES) {
+  for (const s of SOURCES.filter((source) => !only || source.name === only)) {
     const srcAbs = path.join(ROOT, s.src);
     try {
       await stat(srcAbs);
@@ -246,7 +266,6 @@ async function main() {
 
   if (over) { console.error(`\n❌ ${over} Datei(en) über 200 KB.`); process.exit(1); }
 
-  const outManifest = path.join(ROOT, 'data', 'images-repo.json');
   await mkdir(path.dirname(outManifest), { recursive: true });
   await writeFile(outManifest, JSON.stringify({
     _hinweis: 'AUTO-GENERIERT von .github/scripts/build-hero-images.mjs – NICHT von Hand editieren.',

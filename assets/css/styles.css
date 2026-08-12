@@ -18,7 +18,6 @@
 
    Bewusste Ausnahmen, die NICHT zum Layout-Raster gehoeren:
      min-width: 1024px   section-proof – ganze Sektion in einen Viewport.
-                         Reines Layout, gilt auch auf Touch.
      min-width: 1024px
        and (hover: hover)
                          process-scroller – horizontaler Pin-Journey.
@@ -506,94 +505,6 @@ p  { margin: 0; }
   display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
 }
 
-.hero-teasers {
-  list-style: none; padding: 0; margin: 40px 0 0;
-  display: grid; gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  max-width: 760px;
-}
-.hero-teasers li { list-style: none; }
-.teaser {
-  display: flex; gap: 12px; align-items: center;
-  height: 100%;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  padding: 14px 16px;
-  border-radius: 16px;
-  box-shadow: var(--shadow-card);
-  text-decoration: none; color: inherit; cursor: pointer;
-  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
-}
-@media (hover: hover) and (pointer: fine) { .teaser:hover { transform: translateY(-3px); box-shadow: var(--shadow-float); border-color: var(--green-300); } }
-.teaser:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; }
-.teaser-icon {
-  width: 40px; height: 40px; flex: 0 0 auto;
-  border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
-  background: var(--green-50); color: var(--green-700);
-}
-.teaser-icon.storm { background: rgba(235,108,68,.12); color: var(--coral); }
-.teaser-title { display:block; font-family: var(--display); font-weight: 700; font-size: 1rem; letter-spacing: -.01em; }
-.teaser-sub { display:block; font-size: .8rem; color: var(--ink-mute); }
-.teaser-strong {
-  background: linear-gradient(180deg, #fff, var(--green-50));
-  border-color: var(--green-300);
-}
-.teaser-strong .teaser-title { color: var(--green-800); }
-
-/* ---------- Trust Bar ---------- */
-.trust-bar {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: start;
-  column-gap: 0;
-  padding: 22px 28px;
-  margin: 60px auto 90px;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  box-shadow: var(--shadow-card);
-  width: min(100% - calc(var(--gutter) * 2), var(--container));
-}
-/* AP-60: Inhalt in allen 4 Boxen zentriert statt nur im ersten Item –
-   vorher stretchten Item 2-4 per Flex-Default auf volle Spaltenbreite
-   und blieben linksbündig, während Item 1 zentriert war. Trennlinie
-   sitzt jetzt auf der Spaltengrenze (left:0) statt 14px versetzt in
-   der alten padding-left-Zone. */
-.trust-item {
-  position: relative;
-  display: flex; flex-direction: column; gap: 2px;
-  align-items: center; text-align: center;
-  padding: 0 16px;
-}
-.trust-item:not(:first-child)::before {
-  content: ""; position: absolute; left: 0; top: 2px;
-  width: 1px; height: 52px; background: var(--line);
-}
-.trust-icon {
-  width: 30px; height: 30px;
-  color: var(--ink);          /* füllt currentColor der Outline-Icons */
-  margin-bottom: 6px;
-  display: block;
-}
-.trust-icon--google {         /* Wortmarke ist breiter als hoch */
-  width: auto; height: 22px;
-}
-.trust-num {
-  font-family: var(--display);
-  font-weight: 700; font-size: 1.05rem;
-  color: var(--ink); letter-spacing: -.01em;
-}
-.trust-label {
-  font-size: .78rem;
-  color: var(--ink-mute);
-  letter-spacing: .04em;
-}
-.trust-divider {
-  width: 1px; height: 36px; background: var(--line);
-}
-.trust-stars { display: flex; flex-direction: column; gap: 4px; }
 .stars {
   position: relative; display: inline-block;
   /* Breite = genau eine Kachel (5 Sterne a 16px); mehr wuerde repeat-x sichtbar machen */
@@ -606,21 +517,6 @@ p  { margin: 0; }
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 16'><g fill='%23FFB300'><polygon points='8,1 10.2,5.8 15.5,6.6 11.7,10.3 12.6,15.6 8,13 3.4,15.6 4.3,10.3 0.5,6.6 5.8,5.8'/><polygon points='24,1 26.2,5.8 31.5,6.6 27.7,10.3 28.6,15.6 24,13 19.4,15.6 20.3,10.3 16.5,6.6 21.8,5.8'/><polygon points='40,1 42.2,5.8 47.5,6.6 43.7,10.3 44.6,15.6 40,13 35.4,15.6 36.3,10.3 32.5,6.6 37.8,5.8'/><polygon points='56,1 58.2,5.8 63.5,6.6 59.7,10.3 60.6,15.6 56,13 51.4,15.6 52.3,10.3 48.5,6.6 53.8,5.8'/><polygon points='72,1 74.2,5.8 79.5,6.6 75.7,10.3 76.6,15.6 72,13 67.4,15.6 68.3,10.3 64.5,6.6 69.8,5.8'/></g></svg>") repeat-x;
   background-size: 80px 16px;
 }
-.rating-value { font-family: var(--display); font-weight: 700; font-size: .95rem; margin-left: 6px; }
-.rating-source { font-size: .72rem; color: var(--ink-mute); display: block; }
-
-/* Google-Zelle: Logo+4,8 / Sterne / Bewertungen+67 */
-.trust-item--google .g-row {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-.trust-item--google .trust-icon--google { height: 20px; width: auto; margin: 0; }
-.g-rating {
-  font-family: var(--display); font-weight: 700; font-size: 1.6rem;
-  line-height: 1; color: var(--ink); letter-spacing: -.01em;
-}
-.trust-item--google .stars { margin: 6px 0; }
-.g-src { font-size: .72rem; color: var(--ink-mute); }
-.g-count { font-size: .72rem; font-weight: 700; color: var(--ink-mute); }
 
 /* ============================================================
    SECTIONS
@@ -639,7 +535,7 @@ p  { margin: 0; }
 .section-head .lead { margin-top: var(--space-title-subtext); }
 
 /* ---------- Wood / Special services ---------- */
-.section-wood { background: var(--bg-soft); }
+.section-wood { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
 .wood-grid {
   display: grid; gap: 22px;
   grid-template-columns: 1.4fr 1fr 1fr;
@@ -678,35 +574,194 @@ p  { margin: 0; }
 @media (hover: hover) and (pointer: fine) { .card-link:hover span { transform: translateX(4px); } }
 
 /* ---------- Social Proof ---------- */
-.section-proof { background: var(--bg); }
-/* Kennzahlen-Leiste + Jahresringe */
+.section-proof {
+  background: var(--bg);
+  padding-top: clamp(70px, 8vw, 104px);
+  padding-bottom: clamp(70px, 8vw, 104px);
+}
+.section-proof .section-head {
+  max-width: 790px;
+  margin-bottom: clamp(38px, 4vw, 52px);
+}
+.section-proof .section-head h2 {
+  max-width: 21ch;
+  margin-inline: auto;
+  line-height: 1.08;
+  letter-spacing: -.032em;
+  text-wrap: balance;
+}
+.section-proof .section-head .lead {
+  max-width: 64ch;
+  margin: clamp(14px, 1.7vw, 20px) auto 0;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+/* Eine organische Route verbindet die versetzte 2+3-Komposition visuell,
+   ohne die fuenf eigenstaendigen Nachweise in Karten einzuschliessen. */
+.proof-stats-stage {
+  position: relative;
+  margin-bottom: clamp(46px, 5vw, 64px);
+}
+.proof-stats-route {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.proof-stats-route path {
+  fill: none;
+  stroke: var(--green-500);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.proof-stats-route-glow {
+  stroke-width: 14;
+  opacity: .055;
+}
+.proof-stats-route-line {
+  stroke-width: 1.35;
+  opacity: .3;
+}
 .proof-stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(2, auto);
+  align-items: start;
+  row-gap: clamp(42px, 5vw, 64px);
+  margin: 0;
+  padding: clamp(4px, .8vw, 10px) 0;
+  list-style: none;
+}
+.proof-stat {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: 54px minmax(44px, auto);
+  align-items: start;
+  justify-items: center;
+  row-gap: 5px;
+  padding: 0 clamp(10px, 1.5vw, 20px);
+  text-align: center;
+}
+.proof-stat:nth-child(1) { grid-column: 1 / span 2; grid-row: 2; }
+.proof-stat:nth-child(2) { grid-column: 2 / span 2; grid-row: 1; }
+.proof-stat:nth-child(3) { grid-column: 3 / span 2; grid-row: 2; }
+.proof-stat:nth-child(4) { grid-column: 4 / span 2; grid-row: 1; }
+.proof-stat:nth-child(5) { grid-column: 5 / span 2; grid-row: 2; }
+.proof-stat-visual {
+  position: relative;
+  isolation: isolate;
+  grid-row: 1;
+  width: 100%;
+  height: 54px;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: clamp(20px, 4vw, 48px);
-  margin-bottom: clamp(28px, 4vw, 46px);
+  color: var(--green-700);
 }
-.proof-rings { display: flex; justify-content: center; }
-.proof-rings svg { display: block; width: clamp(118px, 13vw, 148px); height: auto; }
-.proof-rings-num { font-family: var(--display); font-weight: 800; font-size: 40px; letter-spacing: -.01em; fill: var(--green-700); }
-.proof-figures { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(16px, 3vw, 40px); }
-.proof-stat { display: flex; flex-direction: column; gap: 5px; }
+.proof-stat-visual::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: clamp(76px, 7vw, 92px);
+  height: clamp(58px, 5.4vw, 72px);
+  border-radius: 48% 52% 50% 46%;
+  background: radial-gradient(circle at 38% 32%, rgba(255,255,255,.92), rgba(221,230,206,.68) 58%, rgba(221,230,206,.24));
+  box-shadow: 0 12px 30px rgba(69, 91, 31, .055);
+  transform: translate(-50%, -50%) rotate(-2deg);
+}
 .proof-stat .num {
   font-family: var(--display); font-weight: 800; line-height: 1;
-  font-size: clamp(2.2rem, 4.4vw, 3.2rem); letter-spacing: -.02em; color: var(--ink);
+  font-size: clamp(2.15rem, 3.2vw, 2.85rem); letter-spacing: -.035em; color: var(--green-700);
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 .proof-stat .num .star { color: #FFB300; font-size: .58em; margin-left: .1em; }
-.proof-stat .lab { font-size: .85rem; color: var(--ink-mute); font-weight: 500; }
-.proof-sep { width: 1px; align-self: stretch; min-height: 46px; background: var(--line); }
+.proof-stat .lab {
+  grid-row: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: var(--ink-2);
+  font-size: clamp(.82rem, .9vw, .9rem);
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.proof-stat-seal { width: 50px; height: 50px; display: block; }
+.proof-stat-area { font-size: clamp(1.85rem, 2.5vw, 2.35rem) !important; }
+
+/* Dieselbe 2+3-Komposition auf schmalen Tablets, kompakter skaliert. */
+@media (min-width: 700px) and (max-width: 899px) {
+  .proof-stats-stage { margin-bottom: 48px; }
+  .proof-stats {
+    row-gap: clamp(30px, 5vw, 40px);
+    padding-block: 4px;
+  }
+  .proof-stat {
+    grid-template-rows: 50px minmax(48px, auto);
+    row-gap: 4px;
+    padding-inline: clamp(5px, 1.2vw, 10px);
+  }
+  .proof-stat-visual { height: 50px; }
+  .proof-stat .num { font-size: clamp(1.85rem, 4.4vw, 2.25rem); }
+  .proof-stat-area { font-size: clamp(1.55rem, 3.7vw, 1.9rem) !important; }
+  .proof-stat-seal { width: 44px; height: 44px; }
+  .proof-stat .lab {
+    font-size: clamp(.76rem, 1.7vw, .84rem);
+    line-height: 1.28;
+  }
+}
+
+/* Mobil: zwei Paare und eine breite Abschlusszeile fuer den Mustergarten. */
+@media (max-width: 699px) {
+  .proof-stats-stage { margin-bottom: 42px; }
+  .proof-stats-route { display: none; }
+  .proof-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    align-items: stretch;
+    column-gap: clamp(8px, 3vw, 16px);
+    row-gap: 8px;
+    padding-block: 4px;
+  }
+  .proof-stat {
+    grid-template-rows: 50px minmax(38px, auto);
+    row-gap: 4px;
+    padding: 10px clamp(6px, 2.5vw, 12px);
+  }
+  .proof-stat:nth-child(n) { grid-column: auto; grid-row: auto; }
+  .proof-stat-visual { height: 50px; }
+  .proof-stat-visual::before { width: 76px; height: 58px; }
+  .proof-stat .num { font-size: clamp(2rem, 10vw, 2.45rem); }
+  .proof-stat-area { font-size: clamp(1.75rem, 8.5vw, 2.1rem) !important; }
+  .proof-stat-seal { width: 46px; height: 46px; }
+  .proof-stat.proof-stat--garden {
+    grid-column: 1 / -1;
+    display: flex;
+    min-height: 82px;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 5vw, 24px);
+    padding-block: 12px;
+  }
+  .proof-stat--garden .proof-stat-visual { width: auto; height: 50px; margin: 0; }
+  .proof-stat--garden .lab { display: block; max-width: 18ch; text-align: left; }
+}
 
 /* Revier-Karte + Bewertungen */
 .proof-feature {
   display: grid;
   grid-template-columns: 1.15fr .85fr;
-  gap: clamp(22px, 3.5vw, 40px);
+  gap: clamp(28px, 4vw, 48px);
   align-items: stretch;
 }
 .proof-trust {
@@ -719,7 +774,7 @@ p  { margin: 0; }
 .proof-map {
   margin: 0;
   padding: 0;
-  display: flex; flex-direction: column; gap: 14px;
+  display: flex; flex-direction: column; justify-content: center; gap: 14px;
 }
 .proof-map svg { width: 100%; height: auto; max-height: 340px; }
 
@@ -768,8 +823,8 @@ p  { margin: 0; }
 }
 
 .proof-trust {
-  padding: clamp(22px, 2.6vw, 30px);
-  display: flex; flex-direction: column; gap: 18px;
+  padding: clamp(24px, 3vw, 32px);
+  display: flex; flex-direction: column; gap: clamp(16px, 2vw, 20px);
 }
 .proof-trust-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .google-mark { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
@@ -805,30 +860,23 @@ p  { margin: 0; }
 }
 .proof-lead + .proof-reviews { border-top: 1px solid var(--line); padding-top: 14px; }
 
-.proof-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.proof-chip {
-  font-size: .8rem; font-weight: 600; color: var(--green-700);
-  background: var(--green-100); border: 1px solid rgba(49,82,0,.16);
-  padding: 6px 12px; border-radius: 999px;
-}
 .proof-trust .btn-outline { align-self: flex-start; margin-top: auto; }
 
 /* Desktop: ganze Proof-Sektion ohne Scrollen in einen Viewport (unter den Sticky-Header ausgerichtet) */
 @media (min-width: 1024px) {
   .section-proof {
-    min-height: 100dvh;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: clamp(84px, 12vh, 108px);
-    padding-bottom: clamp(20px, 3vh, 44px);
+    padding-top: clamp(78px, 8vh, 96px);
+    padding-bottom: clamp(58px, 6vh, 76px);
   }
-  .section-proof .section-head { margin-bottom: clamp(12px, 1.8vh, 22px); }
+  .section-proof .section-head { margin-bottom: clamp(44px, 4vw, 56px); }
   .section-proof .section-head h2 { font-size: var(--type-section-title-size); }
   .section-proof .section-head .lead { margin-top: var(--space-title-subtext); }
-  .proof-stats { margin-bottom: clamp(12px, 1.8vh, 22px); }
-  .proof-rings svg { width: clamp(110px, 9vw, 128px); }
-  .proof-feature { grid-template-columns: 1fr 1fr; gap: clamp(20px, 2vw, 34px); }
+  .proof-stats { margin-bottom: clamp(48px, 4.5vw, 62px); }
+  .proof-feature { grid-template-columns: 1fr 1fr; gap: clamp(30px, 3vw, 42px); }
   /* Karte hoehengesteuert statt breitengesteuert: max-height in vh begrenzt die SVG-Hoehe,
      die Breite schrumpft mit dem Seitenverhaeltnis. So bestimmt die kompakte Bewertungs-Karte
      die Zeilenhoehe und die Sektion bleibt in einem Viewport. */
@@ -841,83 +889,8 @@ p  { margin: 0; }
     max-height: clamp(220px, 34vh, 320px);
     margin: 0 auto;
   }
-  .proof-trust { padding: clamp(16px, 1.6vw, 24px); gap: clamp(10px, 1.4vh, 16px); }
-  .proof-reviews { min-height: 88px; }
-}
-
-/* ---------- Maik Section ---------- */
-.section-maik { background: var(--bg-soft); }
-.maik-grid {
-  display: grid; gap: clamp(30px, 5vw, 70px);
-  grid-template-columns: 7fr 5fr;
-  align-items: center;
-}
-/* Polaroid-Collage (ersetzt das frühere Einzelbild) */
-.maik-collage {
-  position: relative;
-  aspect-ratio: 4/6;
-  max-width: 100%;
-}
-.polaroid {
-  position: absolute;
-  width: 78%;
-  margin: 0;
-  aspect-ratio: 4/3;
-  border-radius: 26px;
-  overflow: hidden;
-  box-shadow: var(--shadow-float);
-  border: 1px solid var(--line);
-  background: #fff;
-  z-index: var(--z);
-}
-.polaroid img {
-  display: block; width: 100%; height: 100%; object-fit: cover;
-}
-/* Versetzte Positionen + Rotation via --rot. Zickzack links–rechts–links,
-   Karten an gegenüberliegenden Kanten für maximalen horizontalen Versatz.
-   --z steuert das Stapeln unabhängig von DOM-Reihenfolge/Bildtausch.
-   Default: mittlere Karte (--2) vorne. */
-.polaroid--1 { top: 0;    left: 0;  --rot: -3deg; --z: 1; }  /* hinten */
-.polaroid--2 { top: 30%;  right: 0; --rot:  2deg; --z: 3; }  /* vorne  */
-.polaroid--3 { bottom: 0; left: 0;  --rot: -2deg; --z: 2; }  /* mitte  */
-
-/* Einmaliger, gestaffelter Einflug – getriggert vom bestehenden .reveal-Observer.
-   Container-Standardreveal neutralisieren, Kinder reagieren auf .is-in. */
-.maik-collage.reveal { opacity: 1; transform: none; transition: none; }
-.polaroid {
-  opacity: 0;
-  transform: translateY(20px) rotate(var(--rot));
-  transition: opacity .8s var(--ease), transform .8s var(--ease);
-  transition-delay: calc(var(--i) * 130ms);
-}
-.maik-collage.is-in .polaroid {
-  opacity: 1;
-  transform: translateY(0) rotate(var(--rot));
-}
-.image-placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--bg-soft), #e3ddc9);
-  position: relative;
-}
-.image-placeholder svg { width: 70%; height: 70%; }
-.placeholder-label { display: none; }
-.image-caption {
-  display: block; margin-top: 14px;
-  font-size: .85rem; color: var(--ink-mute);
-}
-.maik-content h2 { margin-bottom: 14px; }
-.bullets { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px; }
-.bullets li {
-  position: relative; padding-left: 28px;
-  color: var(--ink-2);
-}
-.bullets li::before {
-  content:""; position: absolute; left: 0; top: 9px;
-  width: 14px; height: 14px;
-  background: var(--green-700);
-  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12l5 5L20 7' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;
-          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12l5 5L20 7' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;
+  .proof-trust { padding: clamp(24px, 2.3vw, 30px); gap: clamp(14px, 1.7vw, 18px); }
+  .proof-reviews { min-height: 96px; }
 }
 
 /* ---------- Nummerierte Schritt-Punkte (gewerbekunden/index.html) ---------- */
@@ -939,9 +912,7 @@ p  { margin: 0; }
 .ap p  { color: var(--ink-2); font-size: .95rem; }
 
 /* ---------- Projects ---------- */
-/* AP-89: war --bg-soft. Seit dem Wegfall der Split-Sektion (AP-88) stiess
-   Projekte sonst gleichfarbig an .section-maik; der Wechsel setzt den
-   Paper/Soft-Rhythmus fort - deshalb wird auch .section-faq mitgedreht. */
+/* AP-129: Helle Sektionen verwenden durchgehend denselben Cremeton. */
 .section-projects { background: var(--bg); }
 .projects-grid {
   display: grid; gap: 22px;
@@ -1023,7 +994,7 @@ p  { margin: 0; }
 }
 
 /* ---------- FAQ ---------- */
-.section-faq { background: var(--bg-soft); }   /* AP-89: war --bg, s. .section-projects */
+.section-faq { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
 /* AP-120: war 1fr 1.4fr (Kopf links, Liste rechts). Der Kopf steht jetzt oben,
    damit die Liste die volle Containerbreite fuer zwei Spalten hat - daneben
    waeren die Karten nur 336px breit und jede Frage wuerde umbrechen. */
@@ -1591,8 +1562,6 @@ p  { margin: 0; }
     transition-duration: .01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
-  /* Collage sofort sichtbar, Tilt bleibt, keine Bewegung */
-  .maik-collage .polaroid { opacity: 1; transform: rotate(var(--rot)); }
 }
 
 /* ============================================================
@@ -1650,7 +1619,6 @@ p  { margin: 0; }
   .menu { display: none; }
   .primary-nav.is-open .menu { display: flex; }
 
-  .maik-grid,
   .projects-grid,
   .faq-wrap,
   .contact-grid {
@@ -1670,11 +1638,6 @@ p  { margin: 0; }
   }
   .proof-feature { grid-template-columns: 1fr; }
   .wood-grid { grid-template-columns: 1fr; }
-  .trust-bar { grid-template-columns: repeat(2, 1fr); padding: 20px; margin: 40px auto 60px; row-gap: 24px; column-gap: 20px; }
-  .trust-item:not(:first-child)::before { display: none; }
-  /* AP-60: Basis-Regel zentriert jetzt bereits alle 4 Items einheitlich –
-     die frühere Sonderregel (alle Items linksbündig) entfällt. */
-  .trust-item { padding: 0; }
   /* AP-51: `.btn` traegt `white-space: nowrap`. Auf Desktop sinnvoll, auf dem
      Telefon erzwang es eine Mindestbreite der ganzen Seite: der laengste CTA
      („Jetzt Schritt 1 starten – Objektbegehung anfragen") schob /gewerbekunden/
@@ -1722,22 +1685,9 @@ p  { margin: 0; }
 }
 
 @media (max-width: 600px) {
-  /* Collage: Überlappung auflösen, sauber stapeln, im Viewport halten */
-  .maik-collage { aspect-ratio: auto; display: grid; gap: 18px; justify-items: center; }
-  .polaroid { position: static; width: min(78%, 300px); }
-  .polaroid--1 { --rot: -2deg; }
-  .polaroid--2 { --rot: 1.5deg; }
-  .polaroid--3 { --rot: -1.5deg; }
-}
-
-@media (max-width: 600px) {
-  .proof-stats { gap: 22px; }
-  .proof-figures { justify-content: center; text-align: center; }
-  .proof-stat { align-items: center; }
   .contact-form { padding: 22px; }
   .menu { display: none; }
   .hero-content { padding-top: 20px; }
-  .trust-bar { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* AP-55: Lesbarkeit des Hero-Texts auf Mobile.
@@ -1816,7 +1766,7 @@ p  { margin: 0; }
    linksbuendig, ohne Vollbild-Motiv. Rechts steht der Vorher/Nachher-
    Slider, damit der staerkste Beweis ueber der Falz liegt. */
 .hero-split {
-  background: var(--bg-soft);
+  background: var(--bg);   /* AP-129: einheitlicher Cremeton */
   border-bottom: 1px solid var(--line);
   padding: clamp(20px, 3vw, 36px) 0 clamp(44px, 6vw, 80px);
 }
@@ -2078,7 +2028,7 @@ p  { margin: 0; }
    ist zugleich der Reduced-Motion-/No-JS-Fallback.
    Enhancement (>=1024px, .is-scrollytelling per JS): horizontaler
    Pin-Journey mit Scroll-Fortschritt. Siehe main.js. */
-.section-process { background: var(--bg-soft); }
+.section-process { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
 
 .process-scroller { position: relative; }
 .process-stage {
@@ -2263,7 +2213,7 @@ p  { margin: 0; }
         /* Die verkuerzte Buehne gibt unten blankes --bg-soft frei. Diese
            Ebene blendet die Tints zur Unterkante auf genau diese Farbe
            aus, sonst zieht sich dort eine sichtbare Kante durchs Bild. */
-        linear-gradient(to bottom, transparent 74%, var(--bg-soft) 100%),
+        linear-gradient(to bottom, transparent 74%, var(--bg) 100%),
         radial-gradient(1000px 620px at 14% 12%, rgba(255,237,0,.10), transparent 60%),
         radial-gradient(1000px 720px at 86% 92%, rgba(235,108,68,.10), transparent 60%);
     }
@@ -2371,7 +2321,6 @@ p  { margin: 0; }
   display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;
   margin-bottom: clamp(24px, 3.5vw, 40px);
 }
-.proof-region .proof-chips { justify-content: center; }
 
 @media (max-width: 900px) {
   .ba-grid { grid-template-columns: 1fr; }
@@ -2612,41 +2561,6 @@ body.has-lightbox { overflow: hidden; }
   .lightbox-prev { left: 10px; }
   .lightbox-next { right: 10px; }
 }
-
-/* ---- Welt-Dialog der Hero-Teaser (AP-59) ---- */
-/* Gleiches Grundmuster wie die Lightbox: fixed Overlay, [hidden] als Schalter,
-   Scroll-Sperre am body. Panel ist hell, weil der Dialog auf dem Hero sitzt. */
-body.has-welt-dialog { overflow: hidden; }
-.welt-dialog {
-  position: fixed; inset: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: center;
-  padding: clamp(16px, 4vw, 40px);
-}
-.welt-dialog[hidden] { display: none; }
-.welt-dialog-backdrop { position: absolute; inset: 0; background: rgba(10,14,4,.82); backdrop-filter: blur(4px); }
-.welt-dialog-panel {
-  position: relative; z-index: 1;
-  width: min(420px, 100%);
-  background: #fff; color: var(--ink);
-  border-radius: var(--radius);
-  padding: clamp(26px, 5vw, 34px);
-  box-shadow: var(--shadow-float);
-  text-align: center;
-}
-.welt-dialog-title { font-size: 1.2rem; margin: 0 0 6px; }
-.welt-dialog-text { color: var(--ink-mute); font-size: .95rem; margin: 0 0 22px; }
-.welt-dialog-actions { display: flex; flex-direction: column; gap: 10px; }
-/* Buttons fuellen die Panelbreite; .btn bringt nowrap mit, das hier bewusst aufheben. */
-.welt-dialog-actions .btn { width: 100%; justify-content: center; white-space: normal; }
-.welt-dialog-close {
-  position: absolute; top: 10px; right: 10px;
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 999px;
-  border: 1px solid var(--line); background: var(--bg-soft); color: var(--ink-2);
-  cursor: pointer; transition: background .2s var(--ease);
-}
-@media (hover: hover) and (pointer: fine) { .welt-dialog-close:hover { background: var(--line); } }
-.welt-dialog-close:focus-visible { outline: 2px solid var(--green-500); outline-offset: 2px; }
 
 /* ============================================================
    Projekt-Detailseite  (AP-15 – /projekte/<slug>/)
@@ -3169,7 +3083,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
    und gemischte Klickbarkeit ist schlechter als gar keine. Den Weg in die
    Galerie traegt der Kopfzeilen-Link. */
 .proof-shots {
-  background: var(--bg-soft);
+  background: var(--bg);   /* AP-129: einheitlicher Cremeton */
   border-bottom: 1px solid var(--line);
   padding: clamp(26px, 3.4vw, 42px) 0 clamp(32px, 4.4vw, 56px);
 }
@@ -3280,7 +3194,8 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 
 /* ============================================================
    AP-82 — ZIELGRUPPENWEICHE STARTSEITE
-   Bestehende .hero-*, .teaser-*, .trust-* Klassen bleiben unveraendert.
+   Bestehende .hero-* Klassen bleiben unveraendert (.teaser-* / .trust-*
+   mit AP-123 entfernt).
    ============================================================ */
 
 .hero--gate {
@@ -3291,18 +3206,18 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
      gesenkt. Zusammen mit dem entfernten H1-Margin faellt die optisch
      wahrgenommene Luecke unter dem Header bei 1440px von 81px auf 47px. */
   padding: clamp(20px, 2vw, 34px) 0 clamp(28px, 3.4vw, 44px);
-  background: var(--bg-hero);              /* AP-84: eigener Ton, hebt den Hero vom Seitenrest ab */
+  background: linear-gradient(180deg, #f3f5ed 0%, var(--bg-hero) 100%);
   border-bottom: 1px solid var(--line);    /* AP-84 */
 }
-/* AP-84: Dot-Grid aus .hero::before im Gate kraeftiger und engmaschiger -
-   Werte-Override am bestehenden Pseudo-Element, kein zweites ::before.
-   Die Ellipsen-Maske der Basisregel bleibt: sie laesst die Punkte hinter
-   den Tueren auslaufen, dort braucht es keine Textur. */
+/* Auf der Startseite bleibt die Fläche bewusst ruhig: keine Punkttextur und
+   kein Ersatzmuster. Die Fotos und die Typografie tragen die Blickführung. */
 .hero--gate::before {
-  background-image: radial-gradient(circle at 1px 1px, rgba(19,26,8,.11) 1px, transparent 0);
-  background-size: 20px 20px;
+  content: none;
+  background: none;
+  mask-image: none;
+  -webkit-mask-image: none;
 }
-.gate-doors, .gate-escape { position: relative; z-index: 1; }  /* AP-84: sicher ueber ::before */
+.gate-doors { position: relative; z-index: 1; }
 
 .gate-head {
   position: relative;
@@ -3318,22 +3233,31 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
      Hero-Padding - reine Totluft unter dem Header. Gleiches Muster wie bei
      .section-head > h2:first-child. */
   margin-top: 0;
+  max-width: 14.5ch;
+  margin-inline: auto;
   font-size: var(--type-marketing-h1-size);
   line-height: .99;
   letter-spacing: -.043em;
+  text-wrap: balance;
 }
-/* AP-84: Bei line-height .97 ist die em-Fontbox hoeher als die Zeilenbox -
-   der Basis-Marker (bottom -.1em) rutscht sonst optisch unter die NAECHSTE
-   Zeile. Nur im Gate anheben; einzeilige Heros anderer Seiten bleiben wie sie sind. */
-.gate-head .hero-title em::after { bottom: .12em; }
+.gate-head .hero-title em {
+  color: var(--green-700);
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+}
+.gate-head .hero-title em::after { content: none; }
 
 .gate-region {
-  margin-top: 18px;                        /* AP-84: war 15px */
-  max-width: 46ch;                         /* AP-84: verhindert eine ueberlange Zeile */
-  margin-inline: auto;                     /* AP-84 */
-  font-size: clamp(.92rem, 1.4vw, 1.12rem);
+  margin-top: 20px;
+  max-width: 62ch;
+  margin-inline: auto;
+  font-size: clamp(.95rem, 1.25vw, 1.08rem);
   font-weight: 500;
   color: var(--ink-2);
+  line-height: 1.55;
+  text-wrap: balance;
 }
 
 .gate-doors {
@@ -3353,7 +3277,8 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   min-height: 300px;                       /* AP-84: war 250px */
   display: block;
   text-decoration: none;
-  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(49,82,0,.10);
+  box-shadow: 0 24px 58px -40px rgba(19,26,8,.48);
 }
 .gate-door img.gate-photo {
   position: absolute;
@@ -3361,10 +3286,14 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  filter: saturate(.96) contrast(1.025);
   z-index: -2;
   transition: transform .55s var(--ease);
 }
-.gate-door:hover img.gate-photo { transform: scale(1.04); }
+.gate-door:hover img.gate-photo { transform: scale(1.035); }
+.gate-door--privat img.gate-photo { object-position: 50% 58%; }
+.gate-door--gewerbe img.gate-photo { object-position: 50% 50%; }
 
 /* AP-102: Ziel war "weniger dunkle Flaeche, mehr Foto". Der Entwurf wollte dafuer
    die HOEHE auf 54% senken - im Browser nachgemessen faellt die gelbe Eyebrow
@@ -3379,9 +3308,9 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 .gate-veil {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 76%;
+  height: 74%;
   z-index: -1;
-  background: linear-gradient(to top, rgba(8,20,0,.58) 0%, rgba(8,20,0,.72) 68%, rgba(8,20,0,0) 100%);
+  background: linear-gradient(to top, rgba(8,20,0,.66) 0%, rgba(8,20,0,.60) 62%, rgba(8,20,0,0) 100%);
 }
 
 .gate-body {
@@ -3418,26 +3347,8 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   transition: transform .22s var(--ease), background-color .22s var(--ease);
 }
 .gate-door:hover .gate-cta { transform: translateY(-2px); background: var(--yellow); }
-.gate-door--gewerbe .gate-cta { background: var(--yellow); }
-.gate-door--gewerbe:hover .gate-cta { background: #fff; }
 .gate-door:focus-visible { outline: 3px solid var(--green-700); outline-offset: 3px; }
 
-.gate-escape {
-  text-align: center;
-  margin: clamp(20px, 2.4vw, 30px) auto 0;
-  font-size: .93rem;
-  color: var(--ink-mute);
-}
-.gate-escape a { color: var(--green-700); font-weight: 600; text-underline-offset: 3px; }
-
-/* Huelle fuer die verschobenen Bloecke — .hero-teasers und .trust-bar behalten
-   ihre bestehenden Margins; das padding-top schafft nur Abstand zur neuen
-   Hero-Unterkante (AP-84), damit die Teaser bei 1440x900 angeschnitten
-   unter der Falz liegen. */
-.hero-followup {
-  background: var(--bg);
-  padding-top: clamp(18px, 2.4vw, 32px);   /* AP-84 */
-}
 
 @media (max-width: 860px) {
   .gate-doors { grid-template-columns: 1fr; }
@@ -3461,7 +3372,11 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .gate-cta { font-size: .88rem; padding: 10px 16px; gap: 7px; }
   .gate-cta svg { width: 14px; height: 14px; }   /* uebersteuert die width/height-Attribute im HTML */
   .gate-head { padding-top: max(0px, env(safe-area-inset-top)); }
-  .gate-head .hero-title { font-size: var(--type-marketing-h1-size-mobile); }
+  .gate-head .hero-title {
+    max-width: 12ch;
+    font-size: var(--type-marketing-h1-size-mobile);
+    line-height: 1;
+  }
   .hero--gate { padding-top: clamp(24px, 6vw, 40px); }               /* AP-84 */
 }
 
@@ -3512,18 +3427,30 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
    Die viewBox ist 1240 breit wie das Spaltenraster, deshalb enden die Aeste bei
    310/930 - genau auf den Spaltenmitten von .fork-paths. Die Hoehe bleibt dabei
    120px wie zuvor, die Weiche wird nur breiter.
-   Die dasharray-Werte sind die im Browser gemessenen Pfadlaengen (44/327/327);
-   dadurch laeuft die Animation ohne JS, main.js setzt nur .is-in wie bei jedem
-   .reveal. non-scaling-stroke haelt die Haarlinie bei 1px - ohne wuerde sie mit
-   der Skalierung mitwachsen (bei Containerbreite gemessen 2,04px). */
+   Die Animation laeuft ohne JS, main.js setzt nur .is-in wie bei jedem .reveal.
+
+   AP-125: Vorher standen hier die von Hand gemessenen Pfadlaengen (44/327/327)
+   zusammen mit vector-effect="non-scaling-stroke" im Markup. non-scaling-stroke
+   verlagert nicht nur die Strichstaerke, sondern das gesamte Dash-Muster in den
+   Geraeteraum: auf einem 2x-Display entsprachen 327 Einheiten nur 163 CSS-Pixel,
+   also der halben Kurve. Gemessen: Stamm 21,5 statt 44px, Aeste bis t=0,50 -
+   beide Linien endeten in der Luft. Gegenprobe: 327 / (326,5 x 1,0 x 2) = 0,50.
+   Jetzt tragen die Pfade pathLength="1", die Dash-Werte sind damit Anteile der
+   jeweiligen Pfadlaenge und unabhaengig von Koordinatensystem, Skalierung und
+   Pixeldichte. Es steht keine gemessene Laenge mehr im CSS - eine spaetere
+   Aenderung der Kurven kann die Animation nicht mehr zerschneiden.
+   non-scaling-stroke ist entfallen: die SVG-Skalierung ist durch
+   width:min(--container,100%) bei viewBox 1240 nie groesser als 1, der Strich
+   wird ohne den vector-effect also nie dicker als 1px (ab 1240px exakt 1px,
+   bei 901px minimal 0,73px). */
 .fork-switch { display: block; width: min(var(--container), 100%); margin: 36px auto 0; height: auto; overflow: visible; }
 .fork-switch path {
   fill: none; stroke: rgba(228,231,223,.34); stroke-width: 1;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
   transition: stroke-dashoffset .9s var(--ease);
 }
-.fork-switch path:nth-of-type(1) { stroke-dasharray: 44;  stroke-dashoffset: 44; }
-.fork-switch path:nth-of-type(2) { stroke-dasharray: 327; stroke-dashoffset: 327; transition-delay: .55s; }
-.fork-switch path:nth-of-type(3) { stroke-dasharray: 327; stroke-dashoffset: 327; transition-delay: .62s; }
+.fork-switch path:nth-of-type(2) { transition-delay: .55s; }
+.fork-switch path:nth-of-type(3) { transition-delay: .62s; }
 .fork-switch.is-in path { stroke-dashoffset: 0; }
 /* transform-box: fill-box, damit sich transform-origin auf den Kreis bezieht
    und nicht auf das SVG-Koordinatensystem. */

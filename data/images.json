@@ -96,6 +96,24 @@
       "height": 720,
       "aspect": 0.75
     },
+    "/assets/img/ueber/ueber-team.webp": {
+      "base": "/assets/img/ueber/ueber-team",
+      "widths": [
+        480
+      ],
+      "width": 480,
+      "height": 600,
+      "aspect": 1.25
+    },
+    "/assets/img/ueber/ueber-hebeaktion.webp": {
+      "base": "/assets/img/ueber/ueber-hebeaktion",
+      "widths": [
+        480
+      ],
+      "width": 480,
+      "height": 360,
+      "aspect": 0.75
+    },
     "/assets/img/hero/gate-gewerbe-baumarbeiten.webp": {
       "base": "/assets/img/hero/gate-gewerbe-baumarbeiten",
       "widths": [

@@ -314,9 +314,9 @@
     }
   }
 
-  // --- Subtle parallax on hero dots ---
+  // --- Subtle parallax on hero dots (nicht im ruhigen Startseiten-Gate) ---
   if (!reduced) {
-    const hero = document.querySelector('.hero');
+    const hero = document.querySelector('.hero:not(.hero--gate)');
     if (hero) {
       document.addEventListener('scroll', () => {
         const y = window.scrollY;
@@ -376,63 +376,6 @@
       };
       weg.addEventListener('change', sync);
       sync(); // deckt Browser-Restore der Auswahl beim Zurueck-Navigieren ab
-    }
-  }
-
-  // --- Welt-Auswahl der Hero-Teaser (AP-59) ---
-  // Baumkontrolle und Sturmnotdienst gibt es privat wie gewerblich. Statt still auf
-  // die private Seite zu springen, fragt der Dialog nach dem Bereich. Der href des
-  // Teasers bleibt der Fallback ohne JS, deshalb wird der Klick nur hier abgefangen.
-  // Aufbau bewusst wie die Galerie-Lightbox: hidden-Schalter, Escape, Fokus-Falle,
-  // Scroll-Sperre, Fokus zurueck auf den Ausloeser.
-  {
-    const dialog = document.getElementById('weltDialog');
-    const ausloeser = document.querySelectorAll('[data-welt-dialog]');
-    if (dialog && ausloeser.length) {
-      const panel = dialog.querySelector('.welt-dialog-panel');
-      const titel = dialog.querySelector('.welt-dialog-title');
-      let opener = null;
-      let slug = '';
-
-      const close = () => {
-        dialog.hidden = true;
-        document.body.classList.remove('has-welt-dialog');
-        document.removeEventListener('keydown', onKeydown, true);
-        opener?.focus();
-      };
-
-      const onKeydown = (e) => {
-        if (dialog.hidden) return;
-        if (e.key === 'Escape') { e.preventDefault(); close(); return; }
-        if (e.key !== 'Tab') return;
-        const felder = panel.querySelectorAll('button:not([hidden]):not([disabled])');
-        if (!felder.length) return;
-        const first = felder[0];
-        const last = felder[felder.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      };
-
-      const open = (a) => {
-        slug = a.getAttribute('data-welt-dialog');
-        opener = a;
-        titel.textContent = a.querySelector('.teaser-title')?.textContent || 'Leistung';
-        dialog.hidden = false;
-        document.body.classList.add('has-welt-dialog');
-        document.addEventListener('keydown', onKeydown, true);
-        panel.querySelector('button[data-welt]')?.focus();
-      };
-
-      ausloeser.forEach((a) => {
-        a.addEventListener('click', (e) => { e.preventDefault(); open(a); });
-      });
-      dialog.querySelectorAll('[data-welt-close]').forEach((el) => el.addEventListener('click', close));
-      dialog.querySelectorAll('[data-welt]').forEach((b) => {
-        b.addEventListener('click', () => {
-          if (!slug) return;
-          location.href = b.getAttribute('data-welt') + '/leistungen/' + slug + '/';
-        });
-      });
     }
   }
 

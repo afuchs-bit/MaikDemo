@@ -7,7 +7,7 @@ so formuliert, dass sie auch ohne den Wert vollständig und richtig sind.
 Sobald ein Wert vorliegt: in `content/stammdaten.json` eintragen (AP-03), den
 `<!-- OFFEN -->`-Kommentar auflösen, Zeile hier streichen.
 
-**Stand:** 25.07.2026
+**Stand:** 12.08.2026
 
 ## Kontaktdaten — ERLEDIGT (AP-03, 25.07.2026)
 
@@ -55,6 +55,31 @@ Fragen wieder aufnehmen und beantworten.
 formuliert, dass sie nur bestätigte Fakten der Gewerbekunden-Seite verwenden.
 Die drei Zeilen oben nennen, was fehlt, um die Seiten inhaltlich zu vertiefen —
 keine sichtbaren Platzhalter im Seitentext.
+
+## Ueber-uns-Sektion (AP-127)
+
+| Wert | Fundstellen | AP |
+|---|---|---|
+| Freigabe der drei O-Töne des Redesign-Mockups | `index.html` (`<!-- OFFEN -->` in `.ueber-content`) | AP-127 |
+| Hochauflösende Originale für Leitfoto und Hebeaktion-Foto | `assets/img/_src/ueber-team.jpg`, `assets/img/_src/ueber-hebeaktion.jpg` | AP-127 |
+
+**O-Töne:** Das Mockup schlug drei Zitate für die Sektion vor, jedes dort selbst mit
+„Freigabe Maik" markiert — also ausdrücklich noch nicht freigegeben. Zwei sind wörtliche
+Aussagen von Maik Rohdich („Was auf Pinterest gut aussieht, funktioniert nicht auf jedem
+Grundstück …" und „Für die Palmen mische ich meine eigene Erde …"), eines ist eine
+Sammelaussage über Kunden („Er redet keinem nach dem Mund." / „Was Kunden am häufigsten
+über ihn sagen"). Keine dieser Aussagen ist im Repo belegt. Nach Grundregel 1 sind sie
+deshalb **nicht** veröffentlicht; die Sektion ist ohne sie vollständig und richtig. Das CSS
+für den Zitatblock wurde bewusst noch nicht angelegt, damit keine toten Regeln entstehen.
+Sobald die Freigabe vorliegt: Markup und Gestaltung nach Vorlage des Mockups ergänzen.
+Die Sammelaussage über Kunden bleibt auch dann heikel — sie lässt sich nicht belegen.
+
+**Fotos:** Leitfoto (Mitarbeiter mit `rohdich.de`-Weste) und Hebeaktion-Foto liegen nur als
+560 px breite Vorschauen vor, aus dem Mockup extrahiert. Das Leitfoto wird auf dem Desktop
+ca. 390 px breit angezeigt, für 2x-Displays bräuchte es ~780 px; aktuell ist es dort sichtbar
+weicher. Sobald die Originale vorliegen: Dateien in `assets/img/_src/` ersetzen (gleiche
+Namen) und `npm --prefix .github/scripts run build-images` laufen lassen — die Breitenliste
+passt sich selbst an, an `build-images.mjs` ist nichts zu ändern.
 
 ## Rechtstexte
 

@@ -393,7 +393,7 @@
   border-bottom: 1px solid var(--line);
   background:
     radial-gradient(circle at 92% 8%,rgba(224,217,39,.09),transparent 27%),
-    var(--bg-soft);
+    var(--bg);   /* AP-129 */
 }
 .private-gallery-teaser-head {
   display: grid;
@@ -1616,7 +1616,7 @@
   padding: var(--space-section) 0;
   border-top: 1px solid rgba(49,82,0,.08);
   border-bottom: 1px solid rgba(49,82,0,.08);
-  background: #efede5;
+  background: var(--bg);   /* AP-129: war #efede5 */
 }
 .private-request-paths .b2b-request-head { display: grid; grid-template-columns: minmax(0,1fr) clamp(330px,30vw,370px); gap: clamp(28px,3.5vw,50px); align-items: center; }
 .private-request-paths .private-request-head-copy { min-width: 0; }
@@ -2521,7 +2521,7 @@
 .private-partner {
   padding: var(--space-section) 0;
   border-block: 1px solid var(--line-2);
-  background: #f8f7f2;
+  background: var(--bg);   /* AP-129: war #f8f7f2 */
 }
 .private-partner .b2b-partner-intro {
   display: grid;
@@ -2836,7 +2836,7 @@
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
-    background: var(--bg-soft);
+    background: var(--bg);   /* AP-129 */
   }
   .private-process-updated.is-scrollytelling .b2b-process-scene > .container {
     padding-top: 140px;
@@ -3506,7 +3506,7 @@
   padding: var(--space-section-compact) 0;
   overflow-anchor: none;
   border-top: 1px solid var(--line-2);
-  background: #f8f7f2;
+  background: var(--bg);   /* AP-129: war #f8f7f2 */
 }
 .private-faq-wrap { display: block; }
 .private-faq-head {
@@ -3677,7 +3677,7 @@
   border-block: 1px solid rgba(49,82,0,.09);
   background:
     radial-gradient(circle at 92% 8%,rgba(180,212,154,.2),transparent 29%),
-    linear-gradient(180deg,#f5f3ec 0%,#efeee6 100%);
+    var(--bg);   /* AP-129: war linear-gradient(#f5f3ec -> #efeee6) */
 }
 .private-project-head {
   display: grid;

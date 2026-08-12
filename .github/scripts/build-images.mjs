@@ -42,6 +42,14 @@ const SOURCES = [
   { src: 'assets/img/_src/ueber-1.jpg', dir: 'assets/img/ueber', name: 'ueber-1' },
   { src: 'assets/img/_src/ueber-2.jpg', dir: 'assets/img/ueber', name: 'ueber-2' },
   { src: 'assets/img/_src/ueber-3.jpg', dir: 'assets/img/ueber', name: 'ueber-3' },
+  // AP-127: Leitfoto und zweites Kleinbild der neuen Ueber-Sektion.
+  // OFFEN: Beide Quellen sind bisher nur 560 px breite Vorschauen aus dem
+  // Mockup. Das Leitfoto wird ~390 px breit angezeigt, fuer 2x-Displays
+  // braeuchte es ~780 px. Sobald die Originale vorliegen: hier nichts
+  // aendern, nur die Datei in _src ersetzen und build-images neu laufen
+  // lassen - die Breitenliste passt sich per fit() selbst an.
+  { src: 'assets/img/_src/ueber-team.jpg', dir: 'assets/img/ueber', name: 'ueber-team' },
+  { src: 'assets/img/_src/ueber-hebeaktion.jpg', dir: 'assets/img/ueber', name: 'ueber-hebeaktion' },
   // Hochformat-Original (1440x1800, 4:5) fuer die Gewerbe-Tuer im Hero, die ein
   // liegendes Fenster von rund 3:2 ist. focusY 0.45 zeigt 21-74 % der Bildhoehe:
   // Strasse, Gebaeude und fremde Fahrzeuge fallen oben heraus, der Helm des
