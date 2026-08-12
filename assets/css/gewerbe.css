@@ -3,7 +3,7 @@
 .svg-sprite { position: absolute; overflow: hidden; }
 .b2b-page {
   --b2b-section-space: clamp(68px,7.5vw,104px);
-  background: #f6f4ee;
+  background: var(--bg);   /* AP-129: war Hardcode, wertgleich */
 }
 
 /* Gewerbliche Objektanfrage – gemeinsame Designsprache mit dem Privatkundenformular */
@@ -753,7 +753,7 @@
   padding: var(--b2b-section-space) 0;
   border-top: 1px solid rgba(49,82,0,.08);
   border-bottom: 1px solid rgba(49,82,0,.08);
-  background: #efede5;
+  background: var(--bg);   /* AP-129: war #efede5 */
 }
 .b2b-request-paths h2 {
   max-width: 780px;
@@ -817,7 +817,7 @@
 .b2b-section-head--split .lead { margin-top: 0; }
 
 /* 3 — Leistungen */
-.b2b-services { background: #f1efe8; }
+.b2b-services { background: var(--bg); }   /* AP-129 */
 .b2b-service-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .b2b-service-card { min-height: 242px; padding: clamp(23px,3vw,34px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.54); }
 .b2b-service-card > span { color: var(--coral-700); font-size: .7rem; font-weight: 800; }
@@ -867,7 +867,7 @@
 /* 3 — Verlässlich im Betriebsalltag */
 .b2b-partner {
   border-block: 1px solid var(--line-2);
-  background: #f8f7f2;
+  background: var(--bg);   /* AP-129: war #f8f7f2 */
 }
 .b2b-partner-intro {
   display: grid;
@@ -1100,7 +1100,7 @@
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
-    background: var(--bg-soft);
+    background: var(--bg);   /* AP-129 */
   }
   .b2b-page .section-process.is-scrollytelling .b2b-process-scene > .container {
     padding-top: 140px;
@@ -1208,7 +1208,7 @@
 .b2b-approved-case-body li { padding: 6px 9px; border: 1px solid var(--line); border-radius: 8px; background: #fff; font-size: .74rem; }
 
 /* 7 — FAQ */
-.b2b-region-faq { background: #f1efe8; }
+.b2b-region-faq { background: var(--bg); }   /* AP-129 */
 .b2b-region-faq-grid { display: grid; grid-template-columns: 1fr; align-items: start; }
 .b2b-location-module { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; padding: clamp(24px,3vw,36px); border-radius: 22px; background: var(--green-900); color: #fff; }
 .b2b-location-copy,.b2b-local-note { grid-column: 1/-1; }
@@ -1252,7 +1252,7 @@
   padding: clamp(56px,5.4vw,68px) 0;
   overflow-anchor: none;
   border-top: 1px solid var(--line-2);
-  background: #f8f7f2;
+  background: var(--bg);   /* AP-129: war #f8f7f2 */
 }
 .b2b-faq-wrap { display: block; }
 .b2b-faq-head {

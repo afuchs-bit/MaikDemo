@@ -516,7 +516,7 @@ p  { margin: 0; }
 .section-head .lead { margin-top: 18px; }
 
 /* ---------- Wood / Special services ---------- */
-.section-wood { background: var(--bg-soft); }
+.section-wood { background: var(--bg); }   /* AP-129 */
 .wood-grid {
   display: grid; gap: 22px;
   grid-template-columns: 1.4fr 1fr 1fr;
@@ -723,7 +723,7 @@ p  { margin: 0; }
 }
 
 /* ---------- Maik Section ---------- */
-.section-maik { background: var(--bg-soft); }
+.section-maik { background: var(--bg); }   /* AP-129: einheitlicher Cremeton */
 .maik-grid {
   display: grid; gap: clamp(30px, 5vw, 70px);
   /* AP-128: war 7fr 5fr. Nach dem Umzug des Abschlussblocks in die rechte Spalte
@@ -861,9 +861,9 @@ p  { margin: 0; }
 .ap p  { color: var(--ink-2); font-size: .95rem; }
 
 /* ---------- Projects ---------- */
-/* AP-89: war --bg-soft. Seit dem Wegfall der Split-Sektion (AP-88) stiess
-   Projekte sonst gleichfarbig an .section-maik; der Wechsel setzt den
-   Paper/Soft-Rhythmus fort - deshalb wird auch .section-faq mitgedreht. */
+/* AP-129: Der Paper/Soft-Rhythmus aus AP-89 ist aufgeloest - alle Creme-
+   Sektionen liegen jetzt auf --bg. Trennung entsteht ueber Padding und die
+   dunklen Zwischensektionen, nicht mehr ueber den Farbwechsel. */
 .section-projects { background: var(--bg); }
 .projects-grid {
   display: grid; gap: 22px;
@@ -945,7 +945,7 @@ p  { margin: 0; }
 }
 
 /* ---------- FAQ ---------- */
-.section-faq { background: var(--bg-soft); }   /* AP-89: war --bg, s. .section-projects */
+.section-faq { background: var(--bg); }        /* AP-129: einheitlicher Cremeton, hebt AP-89 auf */
 /* AP-120: war 1fr 1.4fr (Kopf links, Liste rechts). Der Kopf steht jetzt oben,
    damit die Liste die volle Containerbreite fuer zwei Spalten hat - daneben
    waeren die Karten nur 336px breit und jede Frage wuerde umbrechen. */
@@ -1736,7 +1736,7 @@ p  { margin: 0; }
    linksbuendig, ohne Vollbild-Motiv. Rechts steht der Vorher/Nachher-
    Slider, damit der staerkste Beweis ueber der Falz liegt. */
 .hero-split {
-  background: var(--bg-soft);
+  background: var(--bg);   /* AP-129 */
   border-bottom: 1px solid var(--line);
   padding: clamp(20px, 3vw, 36px) 0 clamp(44px, 6vw, 80px);
 }
@@ -1996,7 +1996,7 @@ p  { margin: 0; }
    ist zugleich der Reduced-Motion-/No-JS-Fallback.
    Enhancement (>=1024px, .is-scrollytelling per JS): horizontaler
    Pin-Journey mit Scroll-Fortschritt. Siehe main.js. */
-.section-process { background: var(--bg-soft); }
+.section-process { background: var(--bg); }   /* AP-129 */
 
 .process-scroller { position: relative; }
 .process-stage {
@@ -2178,10 +2178,11 @@ p  { margin: 0; }
       height: 84vh;
       height: 84dvh;
       background:
-        /* Die verkuerzte Buehne gibt unten blankes --bg-soft frei. Diese
+        /* Die verkuerzte Buehne gibt unten blankes --bg frei. Diese
            Ebene blendet die Tints zur Unterkante auf genau diese Farbe
-           aus, sonst zieht sich dort eine sichtbare Kante durchs Bild. */
-        linear-gradient(to bottom, transparent 74%, var(--bg-soft) 100%),
+           aus, sonst zieht sich dort eine sichtbare Kante durchs Bild.
+           AP-129: war --bg-soft, muss der Sektionsflaeche folgen. */
+        linear-gradient(to bottom, transparent 74%, var(--bg) 100%),
         radial-gradient(1000px 620px at 14% 12%, rgba(255,237,0,.10), transparent 60%),
         radial-gradient(1000px 720px at 86% 92%, rgba(235,108,68,.10), transparent 60%);
     }
@@ -3051,7 +3052,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
    und gemischte Klickbarkeit ist schlechter als gar keine. Den Weg in die
    Galerie traegt der Kopfzeilen-Link. */
 .proof-shots {
-  background: var(--bg-soft);
+  background: var(--bg);   /* AP-129 */
   border-bottom: 1px solid var(--line);
   padding: clamp(26px, 3.4vw, 42px) 0 clamp(32px, 4.4vw, 56px);
 }
