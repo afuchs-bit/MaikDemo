@@ -18,6 +18,10 @@
 
    Bewusste Ausnahmen, die NICHT zum Layout-Raster gehoeren:
      min-width: 1024px   section-proof – ganze Sektion in einen Viewport.
+     min-width: 1280px   section-maik – ganze Sektion in einen Viewport.
+                         Nicht 1024px wie section-proof: darunter brechen die
+                         Schaltflaechen des Abschlussblocks um und die Sektion
+                         passt rechnerisch nicht mehr.
                          Reines Layout, gilt auch auf Touch.
      min-width: 1024px
        and (hover: hover)
@@ -722,7 +726,11 @@ p  { margin: 0; }
 .section-maik { background: var(--bg-soft); }
 .maik-grid {
   display: grid; gap: clamp(30px, 5vw, 70px);
-  grid-template-columns: 7fr 5fr;
+  /* AP-128: war 7fr 5fr. Nach dem Umzug des Abschlussblocks in die rechte Spalte
+     ist nicht mehr der Bildblock der Hoehentreiber, sondern die Textspalte. Etwas
+     mehr Breite dort spart bei H2 und Lead je eine Zeile; das Leitfoto verliert
+     dafuer 7% Breite (396px -> 367px bei 1240px Container). */
+  grid-template-columns: 6.5fr 5.5fr;
   align-items: start;   /* AP-127: war center - erzeugte 261px Leerraum je Seite */
 }
 /* AP-127: Fotoleiste statt Polaroid-Collage. Die Collage war 4/6 hoch, bei
@@ -732,8 +740,15 @@ p  { margin: 0; }
    kleine, alle vollstaendig sichtbar und mit Bildunterschrift. */
 .ueber-media {
   display: grid;
-  grid-template-columns: 1.42fr 1fr;
-  gap: clamp(14px, 1.6vw, 22px);
+  /* AP-128: Die drei Fotos bilden einen zusammenhaengenden Block mit schmaler Fuge.
+     Das Verhaeltnis ist nicht frei gewaehlt: damit das Leitfoto (4/5) genauso hoch
+     wird wie der Stapel aus zwei 4/3-Bildern plus Fuge, muss gelten
+       1,25 * b_lead = 1,5 * b_side + fuge,  also  b_lead = (1,5*m + fuge) / 2,75.
+     Ueber den relevanten Breitenbereich ergibt das ein Verhaeltnis zwischen 1,218
+     und 1,229 - deshalb der feste Wert. Restabweichung gemessen: max. 2,3px.
+     Mit dem alten 1.42fr stand unter der rechten Bildspalte ein Loch von 46-83px. */
+  grid-template-columns: 1.223fr 1fr;
+  gap: 8px;
   align-items: start;
 }
 .ueber-shot { margin: 0; position: relative; }
@@ -748,20 +763,27 @@ p  { margin: 0; }
   border: 1px solid var(--line);
   background: #fff;
 }
-.ueber-shot--lead img { aspect-ratio: 4/5; box-shadow: var(--shadow-card); }
-.ueber-side { display: grid; gap: clamp(14px, 1.6vw, 22px); align-content: start; }
+/* AP-128: Die Radien sitzen nur noch an den Aussenkanten des Blocks, die
+   Innenkanten bleiben gerade. Sonst wirkt der 8px-Spalt wie ein Fehler. */
+.ueber-shot--lead img {
+  aspect-ratio: 4/5;
+  border-radius: var(--radius) 0 0 var(--radius);
+  box-shadow: var(--shadow-card);
+}
+.ueber-side { display: grid; gap: 8px; align-content: start; }
 .ueber-shot--small img {
   aspect-ratio: 4/3;
-  border-radius: var(--radius-sm);
   box-shadow: 0 18px 34px -26px rgba(19,26,8,.35);
 }
+.ueber-side .ueber-shot:first-child img { border-radius: 0 var(--radius) 0 0; }
+.ueber-side .ueber-shot:last-child  img { border-radius: 0 0 var(--radius) 0; }
+/* AP-128: Es gibt nur noch eine Bildunterschrift (unter dem Leitfoto). Sie traegt
+   jetzt eine Aussage statt einer Bildbeschreibung und darf deshalb kraeftiger sein. */
 .ueber-shot figcaption {
-  margin-top: 9px;
-  font-size: .78rem; line-height: 1.45;
-  color: var(--ink-mute);
+  margin-top: 10px;
+  font-size: .82rem; line-height: 1.45; font-weight: 600;
+  color: var(--ink-2);
 }
-.ueber-shot--lead figcaption { font-size: .82rem; }
-.ueber-shot figcaption b { font-weight: 600; color: var(--ink-2); }
 
 /* Textspalte: oben ausgerichtet, damit sie neben der Fotoleiste beginnt. */
 .ueber-content { display: grid; gap: 0; align-content: start; padding-top: clamp(0px, 1vw, 10px); }
@@ -769,25 +791,43 @@ p  { margin: 0; }
 .ueber-content h2 { margin-bottom: 18px; }
 .ueber-lead { color: var(--ink-2); font-size: 1.05rem; max-width: 46ch; }
 
-/* Abschlussblock: niedrigschwelliger Einstieg unter der Sektion. */
+/* Abschlussblock: niedrigschwelliger Einstieg, seit AP-128 in der rechten
+   Textspalte statt ueber die volle Containerbreite. Deshalb einspaltig
+   gestapelt und mit festem, kleinerem Innenabstand. */
 .einstieg {
-  margin-top: clamp(46px, 5vw, 72px);
+  margin-top: clamp(24px, 2.8vw, 40px);
   background: var(--bg-elev);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: clamp(26px, 3.4vw, 44px);
-  display: grid; grid-template-columns: 1.25fr 1fr;
-  gap: clamp(22px, 3vw, 48px);
-  align-items: center;
+  padding: 26px;
   box-shadow: 0 24px 46px -34px rgba(19,26,8,.22);
 }
-.einstieg h3 { margin-bottom: 10px; font-size: clamp(1.3rem, 2vw, 1.75rem); }
-.einstieg p { color: var(--ink-2); max-width: 52ch; }
-.einstieg-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; }
+.einstieg h3 { margin-bottom: 10px; font-size: clamp(1.3rem, 1.6vw, 1.6rem); }
+.einstieg p { color: var(--ink-2); font-size: .98rem; }
+.einstieg-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
 /* WhatsApp-Gruen wie im Header-Button. */
 .btn-wa { background: #25D366; color: #0b2b16; border-color: #25D366; }
 @media (hover: hover) and (pointer: fine) {
   .btn-wa:hover { background: #1eb857; }
+}
+
+/* AP-128: Ganze Sektion in einen Viewport, gleiches Muster wie .section-proof.
+   Groesster Posten war das Section-Padding (2x140px). Grenze bewusst 1280px und
+   nicht 1024px wie bei .section-proof: darunter brechen die beiden Schaltflaechen
+   des Abschlussblocks untereinander um und die Sektion passt rechnerisch nicht
+   mehr (gemessen 1152x640: +38px). Dort laeuft sie im normalen Fluss weiter.
+   min-height statt height: laeuft der Inhalt doch ueber, wird gescrollt statt
+   abgeschnitten. */
+@media (min-width: 1280px) {
+  .section-maik {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: clamp(84px, 12vh, 108px);
+    padding-bottom: clamp(20px, 3vh, 44px);
+  }
+  .section-maik h2 { font-size: clamp(1.7rem, 2.8vw, 2.8rem); }
 }
 .image-placeholder {
   width: 100%; height: 100%;
@@ -1536,9 +1576,6 @@ p  { margin: 0; }
   .contact-grid {
     grid-template-columns: 1fr;
   }
-  /* AP-127: Abschlussblock einspaltig, Buttons dann linksbuendig unter dem Text. */
-  .einstieg { grid-template-columns: 1fr; }
-  .einstieg-actions { justify-content: flex-start; }
   /* AP-120: Startseiten-FAQ zurueck auf eine Spalte. Der Spaltenfluss und die
      4 festen Zeilen der Basisregel muessen dabei mit aufgeloest werden, sonst
      bleibt der Umbruch nach 4 Fragen stehen. */
@@ -1604,6 +1641,14 @@ p  { margin: 0; }
   .ueber-media { grid-template-columns: 1fr; gap: 14px; }
   .ueber-side { grid-template-columns: 1fr 1fr; gap: 12px; }
   .ueber-shot--lead img { aspect-ratio: 4/3; }
+  /* AP-128: Auf Mobil bricht der Block um - die Aussenkanten-Radien aus dem
+     Desktop-Layout wuerden dort an falschen Stellen sitzen. Die beiden
+     :first/:last-child-Selektoren muessen hier mitgefuehrt werden: der einfache
+     Reset (.ueber-shot img, Spezifitaet 0,1,1) verliert sonst gegen die
+     Ecken-Regeln der Basis (0,3,1) und nur das Leitfoto wuerde zurueckgesetzt. */
+  .ueber-shot img,
+  .ueber-side .ueber-shot:first-child img,
+  .ueber-side .ueber-shot:last-child img { border-radius: var(--radius-sm); }
   .einstieg-actions { flex-direction: column; }
   .einstieg-actions .btn { width: 100%; }
 }
