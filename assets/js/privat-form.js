@@ -998,6 +998,158 @@
   });
 })();
 
+// Mobile Vertrauensliste: kompakte Einzelausklapper mit sicherem Volltext-Fallback.
+(() => {
+  'use strict';
+
+  const section = document.querySelector('[data-private-partner-disclosures]');
+  const entries = Array.from(section?.querySelectorAll('[data-private-partner-benefit]') || []);
+  if (!section || !entries.length) return;
+
+  const mobile = window.matchMedia('(max-width: 767px)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const duration = 260;
+  const easing = 'cubic-bezier(.22,.61,.36,1)';
+  const states = new WeakMap();
+
+  const getState = (entry) => {
+    if (!states.has(entry)) {
+      states.set(entry, {
+        animation: null,
+        detailAnimations: [],
+        targetExpanded: false
+      });
+    }
+    return states.get(entry);
+  };
+
+  const getToggle = (entry) => entry.querySelector('[data-private-partner-toggle]');
+  const getTitle = (entry) => entry.querySelector('h3')?.textContent.trim() || '';
+  const getDetails = (entry) => [
+    entry.querySelector('.b2b-partner-label'),
+    entry.querySelector('p')
+  ].filter(Boolean);
+
+  const setToggleState = (entry, expanded) => {
+    const toggle = getToggle(entry);
+    if (!toggle) return;
+    toggle.setAttribute('aria-expanded', String(expanded));
+    toggle.setAttribute('aria-label', `${expanded ? 'Weniger anzeigen' : 'Mehr erfahren'}: ${getTitle(entry)}`);
+  };
+
+  const applyState = (entry, expanded) => {
+    entry.classList.toggle('is-expanded', expanded);
+    setToggleState(entry, expanded);
+    getState(entry).targetExpanded = expanded;
+  };
+
+  const clearMotionStyles = (entry) => {
+    entry.classList.remove('is-opening', 'is-closing');
+    entry.style.removeProperty('height');
+    entry.style.removeProperty('overflow');
+  };
+
+  const stopAnimations = (entry) => {
+    const state = getState(entry);
+    state.animation?.cancel();
+    state.detailAnimations.forEach((animation) => animation.cancel());
+    state.animation = null;
+    state.detailAnimations = [];
+  };
+
+  const finishImmediately = (entry, expanded) => {
+    stopAnimations(entry);
+    applyState(entry, expanded);
+    clearMotionStyles(entry);
+  };
+
+  const measureTargetHeight = (entry, expanded) => {
+    const wasExpanded = entry.classList.contains('is-expanded');
+    entry.style.removeProperty('height');
+    entry.classList.toggle('is-expanded', expanded);
+    const targetHeight = entry.getBoundingClientRect().height;
+    entry.classList.toggle('is-expanded', wasExpanded);
+    return targetHeight;
+  };
+
+  const animateEntry = (entry, expanded) => {
+    const state = getState(entry);
+    if (state.animation) finishImmediately(entry, state.targetExpanded);
+
+    state.targetExpanded = expanded;
+    if (reducedMotion.matches || typeof entry.animate !== 'function') {
+      finishImmediately(entry, expanded);
+      return;
+    }
+
+    const currentHeight = entry.getBoundingClientRect().height;
+    const targetHeight = measureTargetHeight(entry, expanded);
+
+    if (expanded) entry.classList.add('is-expanded');
+    setToggleState(entry, expanded);
+    entry.style.height = `${currentHeight}px`;
+    entry.style.overflow = 'clip';
+    entry.classList.toggle('is-opening', expanded);
+    entry.classList.toggle('is-closing', !expanded);
+
+    state.animation = entry.animate(
+      { height: [`${currentHeight}px`, `${targetHeight}px`] },
+      { duration, easing }
+    );
+    state.detailAnimations = getDetails(entry).map((detail) => detail.animate(
+      { opacity: expanded ? [0,1] : [1,0] },
+      { duration: Math.round(duration * .72), easing, fill: 'both' }
+    ));
+
+    const activeAnimation = state.animation;
+    activeAnimation.addEventListener('finish', () => {
+      if (state.animation !== activeAnimation) return;
+      state.animation = null;
+      state.detailAnimations.forEach((animation) => animation.cancel());
+      state.detailAnimations = [];
+      applyState(entry, expanded);
+      clearMotionStyles(entry);
+    }, { once: true });
+  };
+
+  const syncMode = () => {
+    entries.forEach((entry) => finishImmediately(entry, false));
+    section.classList.toggle('has-partner-disclosures', mobile.matches);
+  };
+
+  entries.forEach((entry) => {
+    const toggle = getToggle(entry);
+    if (!toggle) return;
+    getState(entry);
+    setToggleState(entry, false);
+
+    toggle.addEventListener('click', () => {
+      if (!mobile.matches) return;
+      const state = getState(entry);
+      const shouldExpand = !state.targetExpanded;
+
+      if (shouldExpand) {
+        entries.forEach((other) => {
+          if (other === entry) return;
+          const otherState = getState(other);
+          if (otherState.targetExpanded || other.classList.contains('is-expanded')) {
+            animateEntry(other, false);
+          }
+        });
+      }
+
+      animateEntry(entry, shouldExpand);
+    });
+  });
+
+  syncMode();
+  mobile.addEventListener?.('change', syncMode);
+  reducedMotion.addEventListener?.('change', () => {
+    if (!reducedMotion.matches) return;
+    entries.forEach((entry) => finishImmediately(entry, getState(entry).targetExpanded));
+  });
+})();
+
 // Privatkunden-FAQ: weich animierte, voneinander unabhängige Akkordeon-Gruppen.
 (() => {
   'use strict';
