@@ -723,49 +723,71 @@ p  { margin: 0; }
 .maik-grid {
   display: grid; gap: clamp(30px, 5vw, 70px);
   grid-template-columns: 7fr 5fr;
-  align-items: center;
+  align-items: start;   /* AP-127: war center - erzeugte 261px Leerraum je Seite */
 }
-/* Polaroid-Collage (ersetzt das frühere Einzelbild) */
-.maik-collage {
-  position: relative;
-  aspect-ratio: 4/6;
-  max-width: 100%;
+/* AP-127: Fotoleiste statt Polaroid-Collage. Die Collage war 4/6 hoch, bei
+   1240px Container also 1024px - gegen 502px Textspalte blieben mit
+   align-items:center je 261px Leerraum (gemessen). Die drei Karten ueberlappten
+   sich ausserdem und verdeckten einander. Jetzt ein grosses Leitfoto plus zwei
+   kleine, alle vollstaendig sichtbar und mit Bildunterschrift. */
+.ueber-media {
+  display: grid;
+  grid-template-columns: 1.42fr 1fr;
+  gap: clamp(14px, 1.6vw, 22px);
+  align-items: start;
 }
-.polaroid {
-  position: absolute;
-  width: 78%;
-  margin: 0;
-  aspect-ratio: 4/3;
-  border-radius: 26px;
-  overflow: hidden;
-  box-shadow: var(--shadow-float);
+.ueber-shot { margin: 0; position: relative; }
+.ueber-shot img {
+  /* height bewusst auto: zusammen mit height:100% wuerde die Grid-Zeile eine
+     definite Hoehe bekommen und das Bild um die Hoehe seiner Bildunterschrift
+     dehnen (gemessen: +27px bei einzeiliger, +45px bei zweizeiliger Zeile, die
+     beiden Kleinbilder wurden dadurch ungleich hoch). Die Hoehe kommt allein
+     aus aspect-ratio, object-fit:cover beschneidet die Pixel. */
+  width: 100%; height: auto; object-fit: cover;
+  border-radius: var(--radius);
   border: 1px solid var(--line);
   background: #fff;
-  z-index: var(--z);
 }
-.polaroid img {
-  display: block; width: 100%; height: 100%; object-fit: cover;
+.ueber-shot--lead img { aspect-ratio: 4/5; box-shadow: var(--shadow-card); }
+.ueber-side { display: grid; gap: clamp(14px, 1.6vw, 22px); align-content: start; }
+.ueber-shot--small img {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 18px 34px -26px rgba(19,26,8,.35);
 }
-/* Versetzte Positionen + Rotation via --rot. Zickzack links–rechts–links,
-   Karten an gegenüberliegenden Kanten für maximalen horizontalen Versatz.
-   --z steuert das Stapeln unabhängig von DOM-Reihenfolge/Bildtausch.
-   Default: mittlere Karte (--2) vorne. */
-.polaroid--1 { top: 0;    left: 0;  --rot: -3deg; --z: 1; }  /* hinten */
-.polaroid--2 { top: 30%;  right: 0; --rot:  2deg; --z: 3; }  /* vorne  */
-.polaroid--3 { bottom: 0; left: 0;  --rot: -2deg; --z: 2; }  /* mitte  */
+.ueber-shot figcaption {
+  margin-top: 9px;
+  font-size: .78rem; line-height: 1.45;
+  color: var(--ink-mute);
+}
+.ueber-shot--lead figcaption { font-size: .82rem; }
+.ueber-shot figcaption b { font-weight: 600; color: var(--ink-2); }
 
-/* Einmaliger, gestaffelter Einflug – getriggert vom bestehenden .reveal-Observer.
-   Container-Standardreveal neutralisieren, Kinder reagieren auf .is-in. */
-.maik-collage.reveal { opacity: 1; transform: none; transition: none; }
-.polaroid {
-  opacity: 0;
-  transform: translateY(20px) rotate(var(--rot));
-  transition: opacity .8s var(--ease), transform .8s var(--ease);
-  transition-delay: calc(var(--i) * 130ms);
+/* Textspalte: oben ausgerichtet, damit sie neben der Fotoleiste beginnt. */
+.ueber-content { display: grid; gap: 0; align-content: start; padding-top: clamp(0px, 1vw, 10px); }
+.ueber-content .kicker { margin-bottom: 16px; }
+.ueber-content h2 { margin-bottom: 18px; }
+.ueber-lead { color: var(--ink-2); font-size: 1.05rem; max-width: 46ch; }
+
+/* Abschlussblock: niedrigschwelliger Einstieg unter der Sektion. */
+.einstieg {
+  margin-top: clamp(46px, 5vw, 72px);
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(26px, 3.4vw, 44px);
+  display: grid; grid-template-columns: 1.25fr 1fr;
+  gap: clamp(22px, 3vw, 48px);
+  align-items: center;
+  box-shadow: 0 24px 46px -34px rgba(19,26,8,.22);
 }
-.maik-collage.is-in .polaroid {
-  opacity: 1;
-  transform: translateY(0) rotate(var(--rot));
+.einstieg h3 { margin-bottom: 10px; font-size: clamp(1.3rem, 2vw, 1.75rem); }
+.einstieg p { color: var(--ink-2); max-width: 52ch; }
+.einstieg-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; }
+/* WhatsApp-Gruen wie im Header-Button. */
+.btn-wa { background: #25D366; color: #0b2b16; border-color: #25D366; }
+@media (hover: hover) and (pointer: fine) {
+  .btn-wa:hover { background: #1eb857; }
 }
 .image-placeholder {
   width: 100%; height: 100%;
@@ -778,19 +800,6 @@ p  { margin: 0; }
 .image-caption {
   display: block; margin-top: 14px;
   font-size: .85rem; color: var(--ink-mute);
-}
-.maik-content h2 { margin-bottom: 14px; }
-.bullets { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px; }
-.bullets li {
-  position: relative; padding-left: 28px;
-  color: var(--ink-2);
-}
-.bullets li::before {
-  content:""; position: absolute; left: 0; top: 9px;
-  width: 14px; height: 14px;
-  background: var(--green-700);
-  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12l5 5L20 7' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;
-          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12l5 5L20 7' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;
 }
 
 /* ---------- Nummerierte Schritt-Punkte (gewerbekunden/index.html) ---------- */
@@ -1464,8 +1473,6 @@ p  { margin: 0; }
     transition-duration: .01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
-  /* Collage sofort sichtbar, Tilt bleibt, keine Bewegung */
-  .maik-collage .polaroid { opacity: 1; transform: rotate(var(--rot)); }
 }
 
 /* ============================================================
@@ -1529,6 +1536,9 @@ p  { margin: 0; }
   .contact-grid {
     grid-template-columns: 1fr;
   }
+  /* AP-127: Abschlussblock einspaltig, Buttons dann linksbuendig unter dem Text. */
+  .einstieg { grid-template-columns: 1fr; }
+  .einstieg-actions { justify-content: flex-start; }
   /* AP-120: Startseiten-FAQ zurueck auf eine Spalte. Der Spaltenfluss und die
      4 festen Zeilen der Basisregel muessen dabei mit aufgeloest werden, sonst
      bleibt der Umbruch nach 4 Fragen stehen. */
@@ -1590,12 +1600,12 @@ p  { margin: 0; }
 }
 
 @media (max-width: 600px) {
-  /* Collage: Überlappung auflösen, sauber stapeln, im Viewport halten */
-  .maik-collage { aspect-ratio: auto; display: grid; gap: 18px; justify-items: center; }
-  .polaroid { position: static; width: min(78%, 300px); }
-  .polaroid--1 { --rot: -2deg; }
-  .polaroid--2 { --rot: 1.5deg; }
-  .polaroid--3 { --rot: -1.5deg; }
+  /* AP-127: Leitfoto ueber die volle Breite, die beiden Kleinbilder daneben. */
+  .ueber-media { grid-template-columns: 1fr; gap: 14px; }
+  .ueber-side { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ueber-shot--lead img { aspect-ratio: 4/3; }
+  .einstieg-actions { flex-direction: column; }
+  .einstieg-actions .btn { width: 100%; }
 }
 
 @media (max-width: 600px) {

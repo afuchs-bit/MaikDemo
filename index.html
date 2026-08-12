@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260812b" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260812c" />
 <link rel="stylesheet" href="assets/css/customer-hero.css?v=20260811d" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -505,45 +505,63 @@
 <!-- ============ PERSÖNLICHE MAIK-SEKTION ============ -->
 <section class="section section-maik" id="ueber" aria-labelledby="maik-title">
   <div class="container maik-grid">
-    <div class="maik-image">
-      <div class="maik-collage reveal">
-        <figure class="polaroid polaroid--1" style="--i:0">
+
+    <div class="ueber-media reveal">
+      <figure class="ueber-shot ueber-shot--lead">
+        <picture>
+          <source type="image/avif" sizes="(max-width: 600px) 92vw, (max-width: 900px) 54vw, 27vw" srcset="assets/img/ueber/ueber-team-480.avif 480w">
+          <source type="image/webp" sizes="(max-width: 600px) 92vw, (max-width: 900px) 54vw, 27vw" srcset="assets/img/ueber/ueber-team-480.webp 480w">
+          <img src="assets/img/ueber/ueber-team.webp" alt="Mitarbeiter in Arbeitsweste mit rohdich.de-Schriftzug, Helm und Gehörschutz bei Baumarbeiten" loading="lazy" decoding="async" width="480" height="600">
+        </picture>
+        <figcaption><b>Auf der Baustelle, nicht im Büro.</b> Baumarbeiten mit Helm und Gehörschutz.</figcaption>
+      </figure>
+      <div class="ueber-side">
+        <figure class="ueber-shot ueber-shot--small">
           <picture>
-            <source type="image/avif" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-2-480.avif 480w, assets/img/ueber/ueber-2-960.avif 960w">
-            <source type="image/webp" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-2-480.webp 480w, assets/img/ueber/ueber-2-960.webp 960w">
-            <img src="assets/img/ueber/ueber-2.webp" alt="Minibagger und Bohrhammer im Einsatz bei Erd- und Abbrucharbeiten an einer Hauswand" loading="lazy" decoding="async" width="1400" height="1050">
+            <source type="image/avif" sizes="(max-width: 600px) 45vw, (max-width: 900px) 38vw, 19vw" srcset="assets/img/ueber/ueber-hebeaktion-480.avif 480w">
+            <source type="image/webp" sizes="(max-width: 600px) 45vw, (max-width: 900px) 38vw, 19vw" srcset="assets/img/ueber/ueber-hebeaktion-480.webp 480w">
+            <img src="assets/img/ueber/ueber-hebeaktion.webp" alt="Zwei Mitarbeiter versetzen einen großen Findling, der an einem Hebegurt am Baggerarm hängt" loading="lazy" decoding="async" width="480" height="360">
           </picture>
+          <figcaption>Findling versetzen – zu zweit am Hebegurt.</figcaption>
         </figure>
-        <figure class="polaroid polaroid--2" style="--i:1">
+        <figure class="ueber-shot ueber-shot--small">
           <picture>
-            <source type="image/avif" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-1-480.avif 480w, assets/img/ueber/ueber-1-960.avif 960w">
-            <source type="image/webp" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-1-480.webp 480w, assets/img/ueber/ueber-1-960.webp 960w">
-            <img src="assets/img/ueber/ueber-1.webp" alt="Angelegte Gartenteichanlage mit Palmen, Uferbepflanzung und Natursteineinfassung" loading="lazy" decoding="async" width="1400" height="1050">
+            <source type="image/avif" sizes="(max-width: 600px) 45vw, (max-width: 900px) 38vw, 19vw" srcset="assets/img/ueber/ueber-1-480.avif 480w, assets/img/ueber/ueber-1-960.avif 960w">
+            <source type="image/webp" sizes="(max-width: 600px) 45vw, (max-width: 900px) 38vw, 19vw" srcset="assets/img/ueber/ueber-1-480.webp 480w, assets/img/ueber/ueber-1-960.webp 960w">
+            <img src="assets/img/ueber/ueber-1.webp" alt="Angelegte Gartenteichanlage mit Palmen, Uferbepflanzung und Natursteineinfassung" loading="lazy" decoding="async" width="960" height="720">
           </picture>
-        </figure>
-        <figure class="polaroid polaroid--3" style="--i:2">
-          <picture>
-            <source type="image/avif" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-3-480.avif 480w, assets/img/ueber/ueber-3-960.avif 960w">
-            <source type="image/webp" sizes="(max-width: 800px) 45vw, 30vw" srcset="assets/img/ueber/ueber-3-480.webp 480w, assets/img/ueber/ueber-3-960.webp 960w">
-            <img src="assets/img/ueber/ueber-3.webp" alt="Großer Findling wird mit Bagger und Hebegurten in einer Gartenanlage versetzt" loading="lazy" decoding="async" width="1400" height="1050">
-          </picture>
+          <figcaption>Teichanlage mit Palmen und Natursteineinfassung.</figcaption>
         </figure>
       </div>
     </div>
 
-    <div class="maik-content reveal">
-      <h2 id="maik-title">„Ein Garten muss zum Haus und zum Alltag passen – nicht umgekehrt."</h2>
-      <p>
-        Maik Rohdich führt den Betrieb seit 2003 mit einem klaren Anspruch: realistische Beratung statt schöner
-        Versprechen. Jede Planung beginnt mit einem Blick auf das, was tatsächlich da ist – Grundstück, Nutzung,
-        Pflegeaufwand, Budget. Erst dann wird gestaltet.
+    <div class="ueber-content reveal">
+      <span class="kicker">Die Person hinter dem Betrieb</span>
+      <h2 id="maik-title">Zum ersten Termin kommt Maik Rohdich selbst.</h2>
+      <p class="ueber-lead">
+        Kein Außendienst, kein Katalog, kein Verkaufsgespräch am Telefon. Er schaut sich Ihr
+        Grundstück an und sagt Ihnen, was dort funktioniert. Seit 2003, aus Herne.
       </p>
-      <ul class="bullets">
-        <li>Persönliche Beratung vor Ort, kein Vertriebsdruck.</li>
-        <li>Ehrliche Einschätzung – auch wenn etwas nicht sinnvoll ist.</li>
-        <li>Handwerkliche Qualität und langlebige Materialien.</li>
-        <li>Verantwortung für Pflanzen, Bäume und Substanz.</li>
-      </ul>
+      <!-- OFFEN: Die drei O-Toene des Mockups (zwei Zitate von Maik Rohdich, eine
+           Sammelaussage ueber Kunden) sind nicht freigegeben und stehen deshalb
+           nicht auf der Seite. Siehe docs/offene-punkte.md. Das CSS dafuer wird
+           erst mit der Freigabe angelegt, damit keine toten Regeln entstehen. -->
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="einstieg reveal">
+      <div>
+        <h3>Sie müssen noch nicht wissen, was Sie wollen.</h3>
+        <p>
+          Kein fertiger Plan nötig, keine Maße, kein Budgetrahmen. Ein Foto und ein Satz reichen
+          für den Anfang – alles Weitere klärt sich beim Termin bei Ihnen vor Ort.
+        </p>
+      </div>
+      <div class="einstieg-actions">
+        <a class="btn btn-wa" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener">Foto per WhatsApp senden</a>
+        <a class="btn btn-outline" href="kontakt/">Termin anfragen</a>
+      </div>
     </div>
   </div>
 </section>
