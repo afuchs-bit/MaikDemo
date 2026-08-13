@@ -1507,7 +1507,21 @@ p  { margin: 0; }
 }
 
 @media (max-width: 720px) {
-  .site-footer { padding: 28px 0 14px; }
+  /* AP-135: Der Footer laeuft mobil nicht mehr randbuendig, sondern sitzt als
+     abgerundeter Block mit sichtbarem Rand. Die Rahmenfarbe kommt aus
+     body { background: var(--bg) } (Zeile 146) und ist damit automatisch der
+     einheitliche helle Ton aus AP-129 - keine eigene Farbregel noetig.
+     border-top faellt weg: auf einem gerundeten Block zeichnet er nur einen
+     schwachen Bogen ueber die oberen Ecken.
+     Kein overflow: hidden - es gibt kein randbuendiges Kind (erstes Footer-Kind
+     ist .container), und es wuerde die Fokusringe der Footer-Links (Zeile 1488)
+     beschneiden. */
+  .site-footer {
+    margin: 0 12px max(12px, env(safe-area-inset-bottom, 0px));
+    border-radius: 24px;
+    border-top: 0;
+    padding: 26px 0 18px;
+  }
   .footer-main { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .brand-footer { width: min(195px, 63vw); margin-top: 14px; }
   .footer-brandline { margin: 0 0 6px; }
