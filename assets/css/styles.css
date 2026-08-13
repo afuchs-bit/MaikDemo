@@ -1659,6 +1659,39 @@ p  { margin: 0; }
     .faq-wrap .faq-list > .faq-more::details-content { grid-template-columns: 1fr; }
   }
   .proof-feature { grid-template-columns: 1fr; }
+  /* Die drei Startseiten-Rezensionen belegen mobil dieselbe Grid-Zeile. Die
+     unsichtbaren Zitate bestimmen weiterhin deren Hoehe; das aktive, kuerzere
+     Zitat sitzt mittig darin. Dadurch bleibt alles unter der Karte beim
+     Wechsel stabil, ohne dass die Differenz nur als Leerraum darunter landet. */
+  .proof-feature .proof-reviews {
+    display: grid;
+    grid-template-areas:
+      "quote"
+      "dots";
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .proof-feature .proof-reviews > .proof-quote,
+  .proof-feature .proof-reviews > .proof-quote:not(.is-active) {
+    grid-area: quote;
+    display: flex;
+    align-self: center;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .proof-feature .proof-reviews > .proof-quote.is-active {
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .proof-feature .proof-reviews > .proof-dots { grid-area: dots; }
+
+  /* Startseiten-Texte, die in der einspaltigen Mobilkomposition bewusst die
+     optische Mittelachse aufnehmen. */
+  .proof-feature .proof-map-src { text-align: center; }
+  .faq-wrap > .section-head {
+    justify-self: center;
+    margin-inline: auto;
+    text-align: center;
+  }
   .wood-grid { grid-template-columns: 1fr; }
   /* AP-51: `.btn` traegt `white-space: nowrap`. Auf Desktop sinnvoll, auf dem
      Telefon erzwang es eine Mindestbreite der ganzen Seite: der laengste CTA
@@ -3631,6 +3664,13 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .fork-paths { grid-template-columns: 1fr; }
   .fork-rule { height: 1px; }
   .fork-path { padding-inline: var(--gutter); }
+  .fork-foot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: var(--gutter);
+  }
 }
 @media (min-width: 901px) { .fork-switch--mobile { display: none; } }
 @media (max-width: 600px) {
