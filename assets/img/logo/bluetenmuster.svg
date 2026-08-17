@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 220 220">
+  <!-- Bluetenmuster aus der Wort-Bild-Marke, als Wasserzeichen-Kachel fuer
+       schwarze Flaechen (Design-Muster 6a). Farben: #191919 = Wasserzeichen,
+       #141414 = zweite Ebene. Transparenter Grund, die Flaeche darunter
+       liefert #0B0B0B. -->
+  <g fill="#191919">
+    <g transform="translate(110 108) scale(1.6)">
+      <ellipse cx="0" cy="-24" rx="14" ry="19"/>
+      <ellipse cx="23" cy="-7" rx="14" ry="19" transform="rotate(72 23 -7)"/>
+      <ellipse cx="14" cy="20" rx="14" ry="19" transform="rotate(144 14 20)"/>
+      <ellipse cx="-14" cy="20" rx="14" ry="19" transform="rotate(-144 -14 20)"/>
+      <ellipse cx="-23" cy="-7" rx="14" ry="19" transform="rotate(-72 -23 -7)"/>
+    </g>
+  </g>
+  <g fill="#141414">
+    <g transform="translate(38 36) scale(.72)">
+      <ellipse cx="0" cy="-24" rx="14" ry="19"/>
+      <ellipse cx="23" cy="-7" rx="14" ry="19" transform="rotate(72 23 -7)"/>
+      <ellipse cx="14" cy="20" rx="14" ry="19" transform="rotate(144 14 20)"/>
+      <ellipse cx="-14" cy="20" rx="14" ry="19" transform="rotate(-144 -14 20)"/>
+      <ellipse cx="-23" cy="-7" rx="14" ry="19" transform="rotate(-72 -23 -7)"/>
+    </g>
+    <g transform="translate(184 44) scale(.56)">
+      <ellipse cx="0" cy="-24" rx="14" ry="19"/>
+      <ellipse cx="23" cy="-7" rx="14" ry="19" transform="rotate(72 23 -7)"/>
+      <ellipse cx="14" cy="20" rx="14" ry="19" transform="rotate(144 14 20)"/>
+      <ellipse cx="-14" cy="20" rx="14" ry="19" transform="rotate(-144 -14 20)"/>
+      <ellipse cx="-23" cy="-7" rx="14" ry="19" transform="rotate(-72 -23 -7)"/>
+    </g>
+    <g transform="translate(44 186) scale(.62)">
+      <ellipse cx="0" cy="-24" rx="14" ry="19"/>
+      <ellipse cx="23" cy="-7" rx="14" ry="19" transform="rotate(72 23 -7)"/>
+      <ellipse cx="14" cy="20" rx="14" ry="19" transform="rotate(144 14 20)"/>
+      <ellipse cx="-14" cy="20" rx="14" ry="19" transform="rotate(-144 -14 20)"/>
+      <ellipse cx="-23" cy="-7" rx="14" ry="19" transform="rotate(-72 -23 -7)"/>
+    </g>
+  </g>
+</svg>
