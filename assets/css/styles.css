@@ -79,20 +79,26 @@
 }
 
 :root {
-  /* Brand */
+  /* Brand (AP-141: neue Palette aus dem Logo - Limette #8CC63F als Marke/
+     Aktion, Gelb #F2E20C, Rot #E22219, Papier #FAF8F1. Dunkler Leitton aller
+     Flaechen ist das Footer-Gruen --bg-dark, Kundenentscheid. Die Limette
+     traegt auf Papier keinen Text (2,1:1) - Text-Gruen ist --green-700, ein
+     dunkles Limett mit 4,7:1 auf --bg.) */
   --green-900: #1d3000;
-  --green-800: #2a4500;
-  --green-700: #315200;    /* Brand olive */
-  --green-500: #5a8a1c;
+  --green-800: #3d6410;
+  --green-700: #4a7a10;    /* Text-/Link-Gruen der Marke */
+  --green-500: #6ba21c;
   --green-300: #b4d49a;
   --green-100: #e6efd9;
   --green-50:  #f1f5e8;
-  --yellow:    #FFED00;
-  --coral:     #EB6C44;
-  --coral-700: #c0552f;
+  --lime:      #8CC63F;    /* Marke/Aktion: Buttons, nur mit dunkler Schrift */
+  --lime-700:  #7cb32e;    /* Button-Hover */
+  --yellow:    #F2E20C;
+  --coral:     #E22219;
+  --coral-700: #b1170f;
 
   /* Surfaces */
-  --bg:        #f6f4ee;    /* warm off-white paper */
+  --bg:        #FAF8F1;    /* warm off-white paper */
   --bg-elev:   #ffffff;
   --bg-soft:   #efece4;
   --bg-hero:   #eef0e6;    /* AP-84: leicht kuehler als --bg, nur Startseiten-Hero */
@@ -210,11 +216,13 @@ p  { margin: 0; }
 @media (hover: hover) and (pointer: fine) { .btn:hover { transform: translateY(-1px); } }
 .btn:active { transform: translateY(0); }
 
+/* AP-141: Marken-Button auf Limette mit dunkler Schrift (Kontrast ~8,6:1) -
+   die Mockup-Optik "Limette-Flaeche + dunkle Schrift" statt Oliv + Weiss. */
 .btn-primary {
-  background: var(--green-700); color: #fff;
-  box-shadow: 0 12px 26px -12px rgba(49,82,0,.6), inset 0 1px 0 rgba(255,255,255,.12);
+  background: var(--lime); color: var(--bg-dark);
+  box-shadow: 0 12px 26px -12px rgba(74,122,16,.55), inset 0 1px 0 rgba(255,255,255,.25);
 }
-@media (hover: hover) and (pointer: fine) { .btn-primary:hover { background: var(--green-800); box-shadow: 0 16px 34px -10px rgba(49,82,0,.7); } }
+@media (hover: hover) and (pointer: fine) { .btn-primary:hover { background: var(--lime-700); box-shadow: 0 16px 34px -10px rgba(74,122,16,.65); } }
 
 .btn-secondary {
   background: var(--bg-elev); color: var(--ink);
@@ -1094,13 +1102,13 @@ p  { margin: 0; }
 }
 .faq-wrap .faq-list details {
   border-bottom: 0; overflow: clip;
-  border: 1px solid rgba(49,82,0,.14); border-radius: 17px;
+  border: 1px solid rgba(74,122,16,.14); border-radius: 17px;
   background: rgba(255,255,255,.92);
   box-shadow: 0 18px 36px -34px rgba(19,26,8,.58);
   transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background-color .2s var(--ease);
 }
 .faq-wrap .faq-list details[open] {
-  border-color: rgba(49,82,0,.32); background: #fff;
+  border-color: rgba(74,122,16,.32); background: #fff;
   box-shadow: 0 22px 42px -34px rgba(19,26,8,.68);
 }
 /* Hover-Fuellung der Basisregel ist --bg-soft, also exakt der Sektionshintergrund.
@@ -1116,7 +1124,7 @@ p  { margin: 0; }
 .faq-wrap .faq-list details[open] > summary > .chev::after { background: #fff; }
 .faq-wrap .faq-list .faq-body {
   margin: 0 16px; padding: 13px 0 18px;
-  border-top: 1px solid rgba(49,82,0,.11);
+  border-top: 1px solid rgba(74,122,16,.11);
 }
 /* Der grid-gap greift nur fuer direkte Kinder der Liste - die Karten im
    Ausklapper haengen eine Ebene tiefer und brauchen eigene Abstaende.
@@ -1143,17 +1151,17 @@ p  { margin: 0; }
   width: max-content; max-width: 100%; margin-inline: auto;
   justify-content: center; gap: 12px;
   padding: 12px 14px 12px 24px;            /* rechts schmaler: dort sitzt der Chevron-Kreis */
-  border: 1px solid rgba(49,82,0,.22); border-radius: 999px;
+  border: 1px solid rgba(74,122,16,.22); border-radius: 999px;
   background: #fff; color: var(--green-700);
   box-shadow: 0 18px 36px -34px rgba(19,26,8,.58);
   transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
 }
 /* Basisregel setzt im offenen Zustand eine Trennlinie unter das summary -
    auf der Pille bliebe davon ein Strich quer durch den Rahmen stehen. */
-.faq-wrap .faq-list > .faq-more[open] > summary { border-bottom-color: rgba(49,82,0,.22); }
+.faq-wrap .faq-list > .faq-more[open] > summary { border-bottom-color: rgba(74,122,16,.22); }
 @media (hover: hover) and (pointer: fine) {
   .faq-wrap .faq-list > .faq-more > summary:hover {
-    border-color: rgba(49,82,0,.4); transform: translateY(-1px);
+    border-color: rgba(74,122,16,.4); transform: translateY(-1px);
   }
 }
 /* Fuer die FAQ gab es bisher keine eigene Fokusregel - als sichtbarer Schalter
@@ -1961,7 +1969,7 @@ p  { margin: 0; }
   z-index: 2;
 }
 .ba-label-before { left: 18px; }
-.ba-label-after  { right: 18px; background: rgba(49,82,0,.78); }
+.ba-label-after  { right: 18px; background: rgba(74,122,16,.78); }
 .ba-handle {
   position: absolute; top: 0; bottom: 0;
   left: var(--pos);
@@ -3019,7 +3027,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   align-items: flex-end;
   padding: clamp(60px, 8vw, 90px) 0 clamp(28px, 4vw, 48px);
   overflow: hidden;
-  background: var(--green-900); /* Farbe vor dem Bild-Load, kein Weissblitz */
+  background: var(--bg-dark); /* Farbe vor dem Bild-Load, kein Weissblitz (AP-141: Footer-Ton) */
 }
 .hero-shot-media {
   position: absolute; inset: 0; z-index: -2;
@@ -3358,7 +3366,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   min-height: 300px;                       /* AP-84: war 250px */
   display: block;
   text-decoration: none;
-  border: 1px solid rgba(49,82,0,.10);
+  border: 1px solid rgba(74,122,16,.10);
   box-shadow: 0 24px 58px -40px rgba(19,26,8,.48);
 }
 .gate-door img.gate-photo {
@@ -3391,7 +3399,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   left: 0; right: 0; bottom: 0;
   height: 74%;
   z-index: -1;
-  background: linear-gradient(to top, rgba(8,20,0,.66) 0%, rgba(8,20,0,.60) 62%, rgba(8,20,0,0) 100%);
+  background: linear-gradient(to top, rgba(19,26,8,.66) 0%, rgba(19,26,8,.60) 62%, rgba(19,26,8,0) 100%);
 }
 
 .gate-body {
@@ -3533,7 +3541,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   min-height: 540px;
   padding: 0;
   overflow: hidden;
-  background: #10130b;             /* dunkler Grund, bis das Foto paintet */
+  background: #131a08;             /* dunkler Grund, bis das Foto paintet */
   border-bottom: 1px solid var(--line);
 }
 
@@ -3553,14 +3561,14 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
    Deckkraft-Startwerte fuer hero-pool.jpg; bei Fotowechsel neu messen. */
 .hero-intro-scrim--full {
   background: radial-gradient(ellipse at 50% 50%,
-    rgba(11, 11, 11, .72) 0%, rgba(11, 11, 11, .55) 45%, rgba(11, 11, 11, .38) 100%);
+    rgba(19, 26, 8, .72) 0%, rgba(19, 26, 8, .55) 45%, rgba(19, 26, 8, .38) 100%);
 }
 /* Phase 2: Logo in der Ecke - nur noch Verlauf am oberen Rand */
 .hero-intro-scrim--top {
   inset: 0 0 auto 0;
   height: 220px;
   background: linear-gradient(to bottom,
-    rgba(11, 11, 11, .62) 0%, rgba(11, 11, 11, .28) 45%, rgba(11, 11, 11, 0) 100%);
+    rgba(19, 26, 8, .62) 0%, rgba(19, 26, 8, .28) 45%, rgba(19, 26, 8, 0) 100%);
 }
 /* Lesbarkeitsverlauf hinter Headline + Regionssatz unten links. Zwei Ebenen:
    Verlauf von unten plus radialer Schwerpunkt in der Text-Ecke - so bleibt
@@ -3572,9 +3580,9 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   height: 58%;
   background:
     radial-gradient(120% 95% at 16% 100%,
-      rgba(11, 11, 11, .62) 0%, rgba(11, 11, 11, .34) 42%, rgba(11, 11, 11, 0) 68%),
+      rgba(19, 26, 8, .62) 0%, rgba(19, 26, 8, .34) 42%, rgba(19, 26, 8, 0) 68%),
     linear-gradient(to top,
-      rgba(11, 11, 11, .80) 0%, rgba(11, 11, 11, .50) 42%, rgba(11, 11, 11, .18) 76%, rgba(11, 11, 11, 0) 100%);
+      rgba(19, 26, 8, .80) 0%, rgba(19, 26, 8, .50) 42%, rgba(19, 26, 8, .18) 76%, rgba(19, 26, 8, 0) 100%);
 }
 
 html:not([data-intro]) .hero-intro-scrim--top,
@@ -3695,7 +3703,7 @@ html[data-intro][data-header="visible"] .site-header { transform: none; opacity:
 
 /* --- Kontaktweiche --- */
 .fork {
-  background: var(--green-900); color: #fff;
+  background: var(--bg-dark); color: #fff;   /* AP-141: Footer-Ton als Leitton dunkler Flaechen */
   padding: clamp(70px, 8.5vw, 116px) 0 0;
   border-top: 1px solid var(--line);
   scroll-margin-top: var(--header-h, 90px);
