@@ -50,6 +50,14 @@ const SOURCES = [
   // lassen - die Breitenliste passt sich per fit() selbst an.
   { src: 'assets/img/_src/ueber-team.jpg', dir: 'assets/img/ueber', name: 'ueber-team' },
   { src: 'assets/img/_src/ueber-hebeaktion.jpg', dir: 'assets/img/ueber', name: 'ueber-hebeaktion' },
+  // Vollbild-Hero der Startseite (Logo-Intro). Quelle 4032x3024 (4:3), echtes
+  // Projektfoto (Pool). Kein Zuschnitt: Das 4:3-Format laesst object-fit: cover
+  // auf Desktop (breit) UND Mobil (hoch) genug Spielraum; den Bildausschnitt
+  // steuert CSS per object-position. 2400er nur als AVIF - WebP in der Breite
+  // reisst das 200-KB-Budget, und der Fallback-Pfad bedient ohnehin nur
+  // Browser ohne AVIF.
+  { src: 'assets/img/_src/hero-pool.jpg', dir: 'assets/img/hero', name: 'hero-pool',
+    widths: [480, 960, 1600, 2400], webpWidths: [480, 960, 1600] },
   // Hochformat-Original (1440x1800, 4:5) fuer die Gewerbe-Tuer im Hero, die ein
   // liegendes Fenster von rund 3:2 ist. focusY 0.45 zeigt 21-74 % der Bildhoehe:
   // Strasse, Gebaeude und fremde Fahrzeuge fallen oben heraus, der Helm des
