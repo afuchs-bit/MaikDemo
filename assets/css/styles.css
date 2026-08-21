@@ -3517,6 +3517,176 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
+/* ============ AP-138/139: Vollbild-Hero mit Logo-Intro (nur Startseite) ============
+   Zustandsmodell: html[data-intro="pending"|"playing"|"done"] und
+   html[data-header="hidden"|"visible"], gesetzt vom Head-Bootstrap in
+   index.html und assets/js/intro.js. Ohne JS existiert data-intro nicht:
+   dann greift keine dieser Header-/Intro-Regeln, der Header bleibt sticky
+   sichtbar und die Headline steht statisch auf dem Foto. Alle Selektoren
+   haengen deshalb bewusst an html[data-intro] bzw. den hero-intro-Klassen. */
+
+.hero--intro {
+  position: relative;
+  isolation: isolate;
+  height: 100vh;      /* Fallback ohne svh-Support */
+  height: 100svh;     /* iOS: sichtbarer Bereich ohne Browserleiste */
+  min-height: 540px;
+  padding: 0;
+  overflow: hidden;
+  background: #10130b;             /* dunkler Grund, bis das Foto paintet */
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-intro-media,
+.hero-intro-photo { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-intro-photo { object-fit: cover; object-position: 50% 58%; }
+
+.hero-intro-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .8s cubic-bezier(.16, 1, .3, 1);
+}
+/* Phase 1: Logo gross in der Mitte - kraeftiger Vollflaechen-Schleier.
+   Deckkraft-Startwerte fuer hero-pool.jpg; bei Fotowechsel neu messen. */
+.hero-intro-scrim--full {
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(11, 11, 11, .72) 0%, rgba(11, 11, 11, .55) 45%, rgba(11, 11, 11, .38) 100%);
+}
+/* Phase 2: Logo in der Ecke - nur noch Verlauf am oberen Rand */
+.hero-intro-scrim--top {
+  inset: 0 0 auto 0;
+  height: 220px;
+  background: linear-gradient(to bottom,
+    rgba(11, 11, 11, .62) 0%, rgba(11, 11, 11, .28) 45%, rgba(11, 11, 11, 0) 100%);
+}
+/* Lesbarkeitsverlauf hinter Headline + Regionssatz unten links. Zwei Ebenen:
+   Verlauf von unten plus radialer Schwerpunkt in der Text-Ecke - so bleibt
+   die rechte Bildhaelfte (Pool) sichtbar, waehrend die helle Pflasterflaeche
+   unter dem Textbeginn genug abdunkelt. Werte per Canvas-Messung justiert
+   (Ziel: Headline >= 3:1 als grosse Schrift, Regionssatz >= 4.5:1). */
+.hero-intro-scrim--text {
+  inset: auto 0 0 0;
+  height: 58%;
+  background:
+    radial-gradient(120% 95% at 16% 100%,
+      rgba(11, 11, 11, .62) 0%, rgba(11, 11, 11, .34) 42%, rgba(11, 11, 11, 0) 68%),
+    linear-gradient(to top,
+      rgba(11, 11, 11, .80) 0%, rgba(11, 11, 11, .50) 42%, rgba(11, 11, 11, .18) 76%, rgba(11, 11, 11, 0) 100%);
+}
+
+html:not([data-intro]) .hero-intro-scrim--top,
+html:not([data-intro]) .hero-intro-scrim--text { opacity: 1; }
+
+[data-intro="playing"] .hero-intro-scrim--full { opacity: 1; }
+[data-intro="done"] .hero-intro-scrim--full { opacity: 0; }
+[data-intro="done"] .hero-intro-scrim--top,
+[data-intro="done"] .hero-intro-scrim--text { opacity: 1; }
+/* Header uebernimmt: oberer und Vollflaechen-Schleier gehen mit dem Logo.
+   Der Text-Verlauf bleibt - die Headline steht sonst unlesbar auf dem Foto,
+   solange der Hero noch im Viewport ist. */
+[data-header="visible"] .hero-intro-scrim--full,
+[data-header="visible"] .hero-intro-scrim--top { opacity: 0; }
+
+.hero-intro-logo {
+  position: fixed;
+  z-index: 49;                     /* knapp unter dem Header (50): Uebergabe ohne Doppelbild */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(46vw, 620px);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.hero-intro-logo svg { display: block; width: 100%; height: auto; }
+html:not([data-intro]) .hero-intro-logo { display: none; }
+[data-header="visible"] .hero-intro-logo { opacity: 0 !important; transition: opacity .25s ease; }
+
+.hero-intro-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(22px, 4.5vh, 48px);
+  z-index: 2;
+  width: min(100% - calc(var(--gutter) * 2), var(--container));
+  margin-inline: auto;
+  color: #fff;
+  transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1);
+}
+[data-intro="pending"] .hero-intro-content,
+[data-intro="playing"] .hero-intro-content { opacity: 0; transform: translateY(14px); }
+.hero-intro-content .hero-title {
+  margin: 0;
+  max-width: 16ch;
+  color: #fff;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.hero-intro-content .hero-title em {
+  color: var(--yellow);
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+}
+.hero-intro-content .hero-title em::after { content: none; }
+.hero-intro-content .gate-region {
+  margin-top: 14px;
+  margin-inline: 0;
+  max-width: 58ch;
+  color: rgba(255, 255, 255, .88);
+}
+
+.hero-intro-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  z-index: 2;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, .85);
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+html:not([data-intro]) .hero-intro-hint { opacity: 1; }
+[data-intro="done"] .hero-intro-hint { opacity: 1; animation: introHint 2.2s ease-in-out infinite; }
+[data-header="visible"] .hero-intro-hint { opacity: 0; animation: none; }
+@keyframes introHint {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 6px); }
+}
+
+.hero-intro-sentinel { position: absolute; top: 55%; left: 0; width: 1px; height: 1px; }
+
+/* Header-Reveal: fixed statt sticky, initial ausgefahren. CLS-frei, weil der
+   Hero 100svh hoch ist und der Header keinen Flow-Platz mehr braucht. */
+html[data-intro] .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform .45s cubic-bezier(.16, 1, .3, 1), opacity .3s ease;
+}
+html[data-intro][data-header="visible"] .site-header { transform: none; opacity: 1; }
+
+@media (max-width: 860px) {
+  .hero-intro-photo { object-position: 62% 58%; }   /* Pool + Beet im Hochformat halten */
+  .hero-intro-logo { width: 78vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-intro] .site-header { transform: none; transition: opacity .2s ease; }
+  html[data-intro][data-header="hidden"] .site-header { opacity: 0; visibility: hidden; }
+  .hero-intro-scrim, .hero-intro-content { transition: none; }
+  [data-intro="done"] .hero-intro-hint { animation: none; }
+}
+
 /* ---------- AP-106: Kontaktweiche (nur Startseite) ----------
    Loest den kw-Block aus AP-99/101 ab. Klassen bewusst praefixiert (.fork-):
    der Entwurf brachte generische Namen wie .btn und .path mit, die die

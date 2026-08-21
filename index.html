@@ -18,9 +18,34 @@
 <link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
-<link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260821a" />
+<!-- LCP: Vollbild-Hero-Foto vorab laden (AVIF); sizes muss exakt der <source>
+     im Hero entsprechen, sonst laedt der Browser doppelt (200vw-Begruendung
+     steht am <picture>) -->
+<link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 200vw, 100vw" imagesrcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w, assets/img/hero/hero-pool-2400.avif 2400w" fetchpriority="high" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260821b" />
+<!-- Intro-Bootstrap (AP-139): setzt die Zustands-Attribute VOR dem ersten
+     Paint, damit der Header nicht aufblitzt. Nur hier inline statt in
+     assets/js/, weil jede externe Datei dafuer zu spaet kaeme. Ohne JS bleibt
+     data-intro ungesetzt und alle Intro-/Header-Regeln greifen nicht.
+     Sicherheitsnetz: meldet sich intro.js nicht binnen 3 s (Datei blockiert,
+     Ladefehler), werden Header und Endzustand erzwungen. -->
+<script>
+(function () {
+  var de = document.documentElement;
+  var played = false, reduced = false;
+  try { played = sessionStorage.getItem('introPlayed') === '1'; } catch (e) {}
+  try { reduced = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  de.setAttribute('data-intro', (played || reduced) ? 'done' : 'pending');
+  de.setAttribute('data-header', 'hidden');
+  setTimeout(function () {
+    if (window.__introReady) return;
+    de.setAttribute('data-intro', 'done');
+    de.setAttribute('data-header', 'visible');
+    var h = document.getElementById('siteHeader');
+    if (h) { h.removeAttribute('inert'); h.setAttribute('aria-hidden', 'false'); }
+  }, 3000);
+})();
+</script>
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -177,7 +202,10 @@
 </svg>
 
 <!-- ============ HEADER / NAV ============ -->
-<header class="site-header" id="siteHeader">
+<!-- aria-hidden/inert nur auf der Startseite: der Header startet versteckt
+     (Logo-Intro) und wird von intro.js bzw. dem Bootstrap-Sicherheitsnetz
+     freigegeben. -->
+<header class="site-header" id="siteHeader" aria-hidden="true" inert>
   <div class="container header-inner">
     <a class="brand" href="#top" aria-label="Maik Rohdich Garten- und Landschaftsbau – Startseite">
       <svg class="brand-logo" viewBox="0 0 640 150" role="img" aria-hidden="true">
@@ -265,10 +293,36 @@
 
 <main id="top">
 
-<!-- ============ HERO / ZIELGRUPPENWEICHE (AP-82) ============ -->
-<section class="hero hero--gate" aria-labelledby="gate-title">
+<!-- ============ HERO / LOGO-INTRO (AP-138) ============
+     Vollbild-Projektfoto, zwei Scrim-Ebenen und das Intro-Logo. Die Zustaende
+     steuert ein data-intro/data-header-Attribut am <html>, gesetzt vom
+     Head-Bootstrap und assets/js/intro.js. Ohne JS gibt es kein data-intro:
+     Header bleibt sticky sichtbar, Headline steht statisch auf dem Foto. -->
+<section class="hero hero--gate hero--intro" aria-labelledby="gate-title">
 
-  <div class="gate-head reveal">
+  <picture class="hero-intro-media">
+    <!-- sizes 200vw auf Mobil ist Absicht: object-fit: cover beschneidet das
+         4:3-Bild im Hochformat seitlich stark, die *Hoehe* braucht die Pixel.
+         100vw waehlte auf einem 390er-Display die 480er-Datei und rechnete sie
+         auf das Doppelte hoch. -->
+    <source type="image/avif" sizes="(max-width: 860px) 200vw, 100vw"
+            srcset="assets/img/hero/hero-pool-480.avif 480w, assets/img/hero/hero-pool-960.avif 960w, assets/img/hero/hero-pool-1600.avif 1600w, assets/img/hero/hero-pool-2400.avif 2400w">
+    <source type="image/webp" sizes="(max-width: 860px) 200vw, 100vw"
+            srcset="assets/img/hero/hero-pool-480.webp 480w, assets/img/hero/hero-pool-960.webp 960w, assets/img/hero/hero-pool-1600.webp 1600w">
+    <img class="hero-intro-photo" id="heroIntroPhoto" src="assets/img/hero/hero-pool.webp"
+         alt=""
+         width="4032" height="3024" fetchpriority="high" decoding="async">
+  </picture>
+
+  <div class="hero-intro-scrim hero-intro-scrim--full" aria-hidden="true"></div>
+  <div class="hero-intro-scrim hero-intro-scrim--top" aria-hidden="true"></div>
+  <div class="hero-intro-scrim hero-intro-scrim--text" aria-hidden="true"></div>
+
+  <div class="hero-intro-logo" id="heroIntroLogo" aria-hidden="true">
+    <svg viewBox="0 0 640 150" focusable="false"><use href="#brand-logo"/></svg>
+  </div>
+
+  <div class="hero-intro-content">
     <h1 class="hero-title type-marketing-title" id="gate-title">
       <span class="line">Gärten gestalten.</span>
       <span class="line">Außenanlagen, <em>die bleiben.</em></span>
@@ -277,6 +331,12 @@
       Meisterbetrieb für Garten- und Landschaftsbau in Herne, Bochum, Recklinghausen und Umgebung.
     </p>
   </div>
+
+  <div class="hero-intro-hint" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+
+  <div class="hero-intro-sentinel" id="introSentinel" aria-hidden="true"></div>
 
 </section>
 
@@ -292,7 +352,7 @@
                 srcset="assets/img/hero/gate-privat-480.webp 480w, assets/img/hero/gate-privat-960.webp 960w, assets/img/hero/gate-privat-1200.webp 1200w">
         <img class="gate-photo" src="assets/img/hero/gate-privat.webp"
              alt=""
-             width="960" height="640" fetchpriority="high" decoding="async">
+             width="960" height="640" loading="lazy" decoding="async">
       </picture>
       <span class="gate-veil" aria-hidden="true"></span>
       <div class="gate-body">
@@ -801,5 +861,6 @@
 <!-- BUILD:site-footer:end -->
 
 <script src="assets/js/main.js?v=20260812n" defer></script>
+<script src="assets/js/intro.js?v=20260821a" defer></script>
 </body>
 </html>
