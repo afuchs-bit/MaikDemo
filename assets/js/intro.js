@@ -32,6 +32,11 @@
   }
 
   var EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
+  // AP-144: Das Ecken-Logo steht auf dem Hero groesser als das Header-Logo
+  // (Kundenwunsch). Anker bleibt die top/left-Position des Header-Logos;
+  // die Uebergabe an den Header ist ein Opacity-Crossfade, der Groessen-
+  // unterschied ist dabei bewusst akzeptiert.
+  var HERO_LOGO_SCALE = 1.6;
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finished = false;
 
@@ -58,7 +63,7 @@
     logoBox.getAnimations().forEach(function (a) { a.cancel(); });
     logoBox.style.top = r.top + 'px';
     logoBox.style.left = r.left + 'px';
-    logoBox.style.width = r.width + 'px';
+    logoBox.style.width = (r.width * HERO_LOGO_SCALE) + 'px';
     logoBox.style.transform = 'none';
     logoBox.style.opacity = '1';
   };
@@ -149,7 +154,7 @@
             { transform: 'translate(0, 0) scale(1)' },
             {
               transform: 'translate(' + (to.left - from.left) + 'px, ' +
-                (to.top - from.top) + 'px) scale(' + (to.width / from.width) + ')'
+                (to.top - from.top) + 'px) scale(' + ((to.width * HERO_LOGO_SCALE) / from.width) + ')'
             }
           ],
           { duration: 800, easing: EASE, fill: 'forwards' }
