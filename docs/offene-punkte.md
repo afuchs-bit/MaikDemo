@@ -81,6 +81,18 @@ weicher. Sobald die Originale vorliegen: Dateien in `assets/img/_src/` ersetzen 
 Namen) und `npm --prefix .github/scripts run build-images` laufen lassen — die Breitenliste
 passt sich selbst an, an `build-images.mjs` ist nichts zu ändern.
 
+## Entscheidungen zum Startseiten-Hero (AP-136–139, 21.08.2026)
+
+Der neue Vollbild-Hero mit Logo-Intro ist mit Standardwerten umgesetzt; folgende Punkte
+entscheidet der Auftraggeber (nichts davon blockiert):
+
+| Punkt | Umgesetzter Standard | Zu klären |
+|---|---|---|
+| Hero-Foto | `hero-pool.jpg` (echtes Projektfoto, zeigt sichtbar Baustellenzustand: Schubkarre, Werkzeug, offene Erdflächen) | Anderes/aufgeräumtes Projektfoto in min. 2400 px? Bei Wechsel: Datei nach `assets/img/_src/`, Eintrag `build-images.mjs`, Schleier-Kontrast neu messen |
+| Intro-Häufigkeit | Einmal pro Browser-Session (`sessionStorage`) | Bei jedem Aufruf gewünscht? |
+| Header beim Hochscrollen | Fährt oben wieder aus, Ecken-Logo kehrt zurück | Dadurch sind Anrufen/WhatsApp ganz oben nicht sichtbar — Telefon-Chip im Hero ergänzen? |
+| Logo | Nachgebautes Inline-SVG (Schriftzug hängt am Webfont Outfit) | Echtes Logo als SVG vom Grafiker (siehe auch Zeile „Echtes Logo" oben, AP-06/AP-21) |
+
 ## Rechtstexte
 
 | Wert | Fundstellen | AP |
