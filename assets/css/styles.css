@@ -3293,6 +3293,13 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 }
 .gate-doors { position: relative; z-index: 1; }
 
+/* Eigenstaendige Sektion fuer die Kundenbereich-Tueren, aus dem Hero
+   ausgegliedert (Vorbereitung Logo-Intro-Hero). .gate-doors zentriert sich
+   selbst ueber width/margin-inline, daher kein .container noetig. */
+.section-doors {
+  padding: clamp(28px, 3.4vw, 44px) 0 clamp(32px, 4vw, 56px);
+}
+
 .gate-head {
   position: relative;
   z-index: 2;
