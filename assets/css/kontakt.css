@@ -14,7 +14,7 @@
 .contact-hero {
   padding: clamp(28px,3.8vw,52px) 0 clamp(64px,6.5vw,88px);
   background:
-    radial-gradient(circle at 8% 15%,rgba(235,108,68,.07),transparent 24%),
+    radial-gradient(circle at 8% 15%,rgba(226,34,25,.07),transparent 24%),
     linear-gradient(180deg,#f8f6f0 0%,var(--bg) 100%);
 }
 
@@ -135,7 +135,7 @@
   flex-direction: column;
   padding: clamp(24px,2.6vw,34px);
   overflow: hidden;
-  border: 1px solid rgba(49,82,0,.14);
+  border: 1px solid rgba(74,122,16,.14);
   border-radius: 22px;
   background: #fff;
   box-shadow: var(--shadow-card);
@@ -207,7 +207,7 @@
 
 .contact-location-actions { display: grid; grid-auto-rows: 1fr; gap: 10px; margin-top: 22px; }
 .contact-location-route { transition: border-color .18s var(--ease),box-shadow .18s var(--ease),transform .18s var(--ease); }
-.contact-location-route:hover { border-color: rgba(49,82,0,.32); box-shadow: 0 10px 24px -22px rgba(19,26,8,.75); transform: translateY(-1px); }
+.contact-location-route:hover { border-color: rgba(74,122,16,.32); box-shadow: 0 10px 24px -22px rgba(19,26,8,.75); transform: translateY(-1px); }
 
 .contact-location-icon {
   display: grid;
@@ -215,7 +215,7 @@
   height: 40px;
   place-items: center;
   border-radius: 12px;
-  border: 1px solid rgba(49,82,0,.16);
+  border: 1px solid rgba(74,122,16,.16);
   background: #fff;
   color: var(--green-700);
 }
@@ -235,12 +235,12 @@
   height: 100%;
   min-height: 440px;
   overflow: hidden;
-  border: 1px solid rgba(49,82,0,.15);
+  border: 1px solid rgba(74,122,16,.15);
   border-radius: 15px;
   background:
-    linear-gradient(36deg,transparent 47%,rgba(49,82,0,.08) 48%,rgba(49,82,0,.08) 51%,transparent 52%),
-    linear-gradient(-30deg,transparent 44%,rgba(235,108,68,.08) 45%,rgba(235,108,68,.08) 48%,transparent 49%),
-    radial-gradient(circle at 65% 32%,rgba(90,138,28,.18),transparent 16%),
+    linear-gradient(36deg,transparent 47%,rgba(74,122,16,.08) 48%,rgba(74,122,16,.08) 51%,transparent 52%),
+    linear-gradient(-30deg,transparent 44%,rgba(226,34,25,.08) 45%,rgba(226,34,25,.08) 48%,transparent 49%),
+    radial-gradient(circle at 65% 32%,rgba(107,162,28,.18),transparent 16%),
     #e7e4da;
   box-shadow: 0 20px 42px -34px rgba(28,48,0,.75);
 }
@@ -280,7 +280,7 @@
   border-radius: 14px;
   background: var(--green-700);
   color: #fff;
-  box-shadow: 0 12px 24px -14px rgba(49,82,0,.8);
+  box-shadow: 0 12px 24px -14px rgba(74,122,16,.8);
 }
 
 .contact-map-pin svg { width: 25px; height: 25px; }
@@ -288,7 +288,7 @@
 .contact-location-footer {
   margin-top: 22px;
   padding-top: 18px;
-  border-top: 1px solid rgba(49,82,0,.12);
+  border-top: 1px solid rgba(74,122,16,.12);
 }
 
 .contact-visit-note {
@@ -346,7 +346,7 @@
   align-items: flex-start;
   padding: 0;
   overflow: hidden;
-  border: 1px solid rgba(49,82,0,.16);
+  border: 1px solid rgba(74,122,16,.16);
   border-radius: 24px;
   background: #fff;
   box-shadow: 0 26px 54px -38px rgba(22,39,7,.55);

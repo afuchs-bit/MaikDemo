@@ -187,7 +187,7 @@
   min-width: 0;
   min-height: 72px;
   padding: 10px 12px;
-  border: 1px solid rgba(217,91,54,.3);
+  border: 1px solid rgba(226,34,25,.3);
   border-radius: 14px 14px 22px 14px;
   background: linear-gradient(145deg,#fff7f2 0%,#fbf2ea 100%);
   box-shadow: 0 12px 26px -24px rgba(95,38,18,.65),inset 0 0 0 1px rgba(255,255,255,.74);
@@ -201,7 +201,7 @@
   height: 36px;
   place-items: center;
   border-radius: 50%;
-  background: rgba(217,91,54,.1);
+  background: rgba(226,34,25,.1);
   color: #c74f31;
 }
 .form-emergency-shortcut__icon svg { width: 19px; height: 19px; }
@@ -462,7 +462,7 @@
 @media (hover:none) {
   .form-trust-card__actions > a:hover { border-color: rgba(255,255,255,.15); background: rgba(255,255,255,.045); }
   .form-trust-card__actions > a:hover :is(.form-trust-card__action-icon,.b2b-contact-icon) { background: rgba(255,255,255,.1); transform: none; }
-  .form-emergency-shortcut:hover { border-color: rgba(217,91,54,.3); background: linear-gradient(145deg,#fff7f2 0%,#fbf2ea 100%); }
+  .form-emergency-shortcut:hover { border-color: rgba(226,34,25,.3); background: linear-gradient(145deg,#fff7f2 0%,#fbf2ea 100%); }
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -565,7 +565,7 @@
   display: block;
   flex: 0 0 auto;
   padding-bottom: 14px;
-  border-bottom: 1px solid rgba(49,82,0,.11);
+  border-bottom: 1px solid rgba(74,122,16,.11);
 }
 .contact-form .form-acute-return {
   display: inline-flex;

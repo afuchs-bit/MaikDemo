@@ -197,7 +197,7 @@ p  { margin: 0; }
 }
 .kicker::before {
   content:""; width: 8px; height: 8px; border-radius: 50%;
-  background: var(--coral); box-shadow: 0 0 0 4px rgba(235,108,68,.18);
+  background: var(--coral); box-shadow: 0 0 0 4px rgba(226,34,25,.18);
 }
 
 /* ---------- Buttons ---------- */
@@ -461,12 +461,12 @@ p  { margin: 0; }
 .eyebrow-dot {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--coral);
-  box-shadow: 0 0 0 4px rgba(235,108,68,.22);
+  box-shadow: 0 0 0 4px rgba(226,34,25,.22);
   animation: pulse 2.4s var(--ease) infinite;
 }
 @keyframes pulse {
-  0%,100% { box-shadow: 0 0 0 4px rgba(235,108,68,.22); }
-  50%     { box-shadow: 0 0 0 8px rgba(235,108,68,0); }
+  0%,100% { box-shadow: 0 0 0 4px rgba(226,34,25,.22); }
+  50%     { box-shadow: 0 0 0 8px rgba(226,34,25,0); }
 }
 
 .hero-title {
@@ -570,7 +570,7 @@ p  { margin: 0; }
   background: var(--green-50); color: var(--green-700);
 }
 .wood-card-major .wood-tag { background: rgba(255,237,0,.22); color: var(--yellow); }
-.wood-tag.warn { background: rgba(235,108,68,.14); color: var(--coral); }
+.wood-tag.warn { background: rgba(226,34,25,.14); color: var(--coral-700); }
 .card-link {
   margin-top: auto;
   display: inline-flex; align-items: center; gap: 6px;
@@ -971,7 +971,7 @@ p  { margin: 0; }
   font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
   color: var(--green-700);
 }
-.project-tag.warn { color: var(--coral); }
+.project-tag.warn { color: var(--coral-700); }
 .project-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .project-location {
   font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .16em;
@@ -2246,7 +2246,7 @@ p  { margin: 0; }
 .section-process.is-vertical-journey .step.is-active .step-node {
   background: var(--green-700); color: #fff; border-color: var(--green-700);
   transform: scale(1.08);
-  box-shadow: 0 0 0 5px rgba(235,108,68,.20), var(--shadow-float);
+  box-shadow: 0 0 0 5px rgba(226,34,25,.20), var(--shadow-float);
 }
 
 /* Der Knoten frisst auf 375px knapp ein Viertel der Breite: 335px Buehne
@@ -2278,7 +2278,7 @@ p  { margin: 0; }
     z-index: 5;
     background:
       radial-gradient(1000px 620px at 14% 12%, rgba(255,237,0,.10), transparent 60%),
-      radial-gradient(1000px 720px at 86% 92%, rgba(235,108,68,.10), transparent 60%);
+      radial-gradient(1000px 720px at 86% 92%, rgba(226,34,25,.10), transparent 60%);
   }
 
   /* Die Karten haengen an der Mittellinie (50% + 56px). Ober- und unterhalb
@@ -2297,7 +2297,7 @@ p  { margin: 0; }
            aus, sonst zieht sich dort eine sichtbare Kante durchs Bild. */
         linear-gradient(to bottom, transparent 74%, var(--bg) 100%),
         radial-gradient(1000px 620px at 14% 12%, rgba(255,237,0,.10), transparent 60%),
-        radial-gradient(1000px 720px at 86% 92%, rgba(235,108,68,.10), transparent 60%);
+        radial-gradient(1000px 720px at 86% 92%, rgba(226,34,25,.10), transparent 60%);
     }
   }
 
@@ -2389,7 +2389,7 @@ p  { margin: 0; }
   .section-process.is-scrollytelling .step.is-active .step-node {
     background: var(--green-700); color: #fff; border-color: var(--green-700);
     transform: translate(-50%, -50%) scale(1.08);
-    box-shadow: 0 0 0 6px rgba(235,108,68,.20), var(--shadow-float);
+    box-shadow: 0 0 0 6px rgba(226,34,25,.20), var(--shadow-float);
   }
 }
 
