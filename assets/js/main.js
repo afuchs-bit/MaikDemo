@@ -48,6 +48,31 @@
 
   // --- Sticky header condense on scroll ---
   const header = document.getElementById('siteHeader');
+
+  // Mobile Reihenfolge der Kontaktwege: WhatsApp, Telefon, Menue. Die Knoten
+  // werden tatsaechlich verschoben statt nur per CSS sortiert, damit visuelle,
+  // Tastatur- und Screenreader-Reihenfolge uebereinstimmen. Desktop behaelt die
+  // bisherige Reihenfolge Telefon, WhatsApp, Menue.
+  const headerActions = header?.querySelector('.header-actions');
+  const headerCallWrap = headerActions?.querySelector('.call-wrap');
+  const headerWhatsApp = headerActions?.querySelector('.btn-whatsapp');
+  if (headerActions && headerCallWrap && headerWhatsApp) {
+    const mobileHeaderOrder = window.matchMedia('(max-width: 900px)');
+    const syncHeaderContactOrder = () => {
+      if (mobileHeaderOrder.matches) {
+        headerActions.insertBefore(headerWhatsApp, headerCallWrap);
+      } else {
+        headerActions.insertBefore(headerCallWrap, headerWhatsApp);
+      }
+    };
+    if (typeof mobileHeaderOrder.addEventListener === 'function') {
+      mobileHeaderOrder.addEventListener('change', syncHeaderContactOrder);
+    } else {
+      mobileHeaderOrder.addListener(syncHeaderContactOrder);
+    }
+    syncHeaderContactOrder();
+  }
+
   let lastY = 0;
   const onScroll = () => {
     const sc = window.scrollY > 12;

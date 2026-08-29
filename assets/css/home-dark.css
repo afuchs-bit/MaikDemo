@@ -1,0 +1,406 @@
+/* Dauerhafte dunkle Farbwelt. Diese Datei wird ausschliesslich in index.html geladen. */
+
+html.home-theme-dark {
+  color-scheme: dark;
+  background-color: rgb(var(--surface-rgb));
+
+  /* Unveraenderte Markenfarben */
+  --home-brand-green: #4A7A10;
+  --home-lime: #8CC63F;
+  --home-yellow: #F2E20C;
+  --home-red: #E22219;
+  --home-dark-accent: #B6D97A;
+
+  /* Bestehende semantische Markenrollen homepage-lokal angleichen. */
+  --green-700: var(--home-brand-green);
+  --green-500: var(--home-lime);
+  --yellow: var(--home-yellow);
+  --coral: var(--home-red);
+
+  --home-focus: var(--home-yellow);
+  --home-small-accent: var(--home-dark-accent);
+  --home-on-dark: #FAFAF6;
+  --home-on-dark-2: #D9DED5;
+  --home-on-dark-mute: #AEB5AA;
+  --home-dark-line: rgba(255,255,255,.12);
+  --home-dark-line-soft: rgba(255,255,255,.08);
+
+  --bg: #171916;
+  --bg-elev: #20241D;
+  --bg-soft: #2A2F26;
+  --bg-hero: #1B1E19;
+  --bg-dark: #0E100D;
+  --ink: #FAFAF6;
+  --ink-2: #D9DED5;
+  --ink-mute: #AEB5AA;
+  --line: rgba(255,255,255,.12);
+  --line-2: rgba(255,255,255,.08);
+  --surface-rgb: 23 25 22;
+  --shadow-card: 0 1px 0 rgba(255,255,255,.035), 0 28px 58px -30px rgba(0,0,0,.58), 0 16px 28px -24px rgba(0,0,0,.5);
+}
+
+/* Grundflaechen und bisher fest eingetragene Papierfarben */
+html.home-theme-dark body {
+  color: var(--ink);
+  background: var(--bg);
+}
+
+html.home-theme-dark .site-header {
+  background: rgb(var(--surface-rgb) / .82);
+  border-bottom-color: var(--line-2);
+}
+
+html.home-theme-dark .site-header.is-scrolled {
+  background: rgb(var(--surface-rgb) / .95);
+  border-bottom-color: var(--line);
+}
+
+html.home-theme-dark .hero--gate {
+  background: linear-gradient(180deg, var(--bg-elev) 0%, var(--bg-hero) 100%);
+  border-bottom-color: var(--line);
+}
+
+html.home-theme-dark .section-proof,
+html.home-theme-dark .section-faq {
+  background: var(--bg);
+}
+
+html.home-theme-dark .fork,
+html.home-theme-dark .site-footer {
+  background: var(--bg-dark);
+}
+
+html.home-theme-dark .fork-foot {
+  color: rgba(255,255,255,.48);
+}
+
+/* Header, Navigation und Popover */
+html.home-theme-dark .menu,
+html.home-theme-dark .call-popover,
+html.home-theme-dark .nav-submenu {
+  border-color: var(--line);
+}
+
+html.home-theme-dark .call-popover,
+html.home-theme-dark .nav-submenu,
+html.home-theme-dark .primary-nav.is-open .menu {
+  background: var(--bg-elev);
+  color: var(--ink);
+}
+
+html.home-theme-dark .call-row,
+html.home-theme-dark .nav-submenu a,
+html.home-theme-dark .menu a,
+html.home-theme-dark .menu-label,
+html.home-theme-dark .submenu-toggle {
+  color: var(--ink-2);
+}
+
+html.home-theme-dark .call-row:hover,
+html.home-theme-dark .nav-submenu a:hover,
+html.home-theme-dark .menu a:hover,
+html.home-theme-dark .menu-item--sub:hover > .menu-label {
+  background: var(--bg-soft);
+  color: var(--ink);
+}
+
+html.home-theme-dark .call-label {
+  color: var(--ink-mute);
+}
+
+html.home-theme-dark .nav-toggle {
+  border-color: var(--line);
+}
+
+html.home-theme-dark .nav-toggle span {
+  background: var(--ink);
+}
+
+html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(1) {
+  background: var(--green-50);
+}
+
+html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(2) {
+  background: var(--bg-soft);
+}
+
+/* Hero: Fotos bleiben unangetastet, nur Flaechen, Grenzen und Schleier reagieren. */
+html.home-theme-dark .gate-door {
+  border-color: var(--line);
+  box-shadow: var(--shadow-card);
+}
+
+html.home-theme-dark .gate-head .hero-title,
+html.home-theme-dark .gate-region {
+  color: var(--ink);
+}
+
+html.home-theme-dark .gate-region {
+  color: var(--ink-2);
+}
+
+html.home-theme-dark .gate-head .hero-title em {
+  color: var(--home-brand-green);
+}
+
+/* Dunkle Proof-Karten und Statistik-Halos. */
+html.home-theme-dark .proof-stat-visual::before {
+  background: radial-gradient(circle at 38% 32%, var(--bg-elev), var(--bg-soft) 60%, transparent 100%);
+  box-shadow: 0 12px 30px rgba(69,91,31,.055);
+}
+
+html.home-theme-dark .proof-trust {
+  background: var(--bg-elev);
+  border-color: var(--line);
+}
+
+html.home-theme-dark .proof-map .m-node circle {
+  fill: var(--bg-elev);
+}
+
+html.home-theme-dark .proof-map .m-node.seat circle {
+  fill: var(--home-red);
+  stroke: var(--bg-elev);
+}
+
+html.home-theme-dark .proof-map .m-label {
+  stroke: var(--bg);
+}
+
+/* FAQ-Karten reagieren auch dort, wo styles.css noch Weiss und Papier-RGB fest eintraegt. */
+html.home-theme-dark .faq-wrap .faq-list details {
+  background: var(--bg-elev);
+  border-color: var(--line);
+  box-shadow: var(--shadow-card);
+}
+
+html.home-theme-dark .faq-wrap .faq-list details[open] {
+  background: var(--bg-elev);
+  border-color: var(--home-small-accent);
+  box-shadow: var(--shadow-card);
+}
+
+html.home-theme-dark .faq-wrap .faq-list summary:hover {
+  background: var(--bg-soft);
+}
+
+html.home-theme-dark .faq-wrap .faq-list .chev {
+  background: var(--bg-soft);
+}
+
+html.home-theme-dark .faq-wrap .faq-list .chev::before,
+html.home-theme-dark .faq-wrap .faq-list .chev::after {
+  background: var(--home-small-accent);
+}
+
+html.home-theme-dark .faq-wrap .faq-list details[open] > summary > .chev {
+  background: var(--home-brand-green);
+}
+
+html.home-theme-dark .faq-wrap .faq-list details[open] > summary > .chev::before,
+html.home-theme-dark .faq-wrap .faq-list details[open] > summary > .chev::after {
+  background: #FFFFFF;
+}
+
+html.home-theme-dark .faq-wrap .faq-list .faq-body {
+  color: var(--ink-2);
+  border-top-color: var(--line);
+}
+
+html.home-theme-dark .faq-wrap .faq-list > .faq-more,
+html.home-theme-dark .faq-wrap .faq-list > .faq-more[open] {
+  background: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+html.home-theme-dark .faq-wrap .faq-list > .faq-more > summary {
+  background: var(--bg-elev);
+  color: var(--home-small-accent);
+  border-color: var(--line);
+  box-shadow: var(--shadow-card);
+}
+
+html.home-theme-dark .faq-wrap .faq-list > .faq-more[open] > summary {
+  border-bottom-color: var(--line);
+}
+
+/* Die Qualifikations-/Vertrauenssektion erhaelt eigene dunkle Rollen. */
+html.home-theme-dark .section-proof {
+  --bg: #171916;
+  --bg-elev: #20241D;
+  --bg-soft: #2A2F26;
+  --ink: var(--home-on-dark);
+  --ink-2: var(--home-on-dark-2);
+  --ink-mute: var(--home-on-dark-mute);
+  --line: var(--home-dark-line);
+  --line-2: var(--home-dark-line-soft);
+  --home-small-accent: var(--home-dark-accent);
+  --shadow-card: 0 1px 0 rgba(255,255,255,.035), 0 28px 58px -30px rgba(0,0,0,.58);
+  color: var(--ink);
+  background: var(--bg);
+}
+
+html.home-theme-dark .section-proof .proof-stats-route path,
+html.home-theme-dark .section-proof .proof-stat-visual,
+html.home-theme-dark .section-proof .proof-stat .num {
+  color: var(--home-lime);
+  stroke: var(--home-lime);
+}
+
+html.home-theme-dark .section-proof .proof-stat-visual::before {
+  background: radial-gradient(circle at 38% 32%, rgba(182,217,122,.16), rgba(140,198,63,.08) 60%, transparent 100%);
+  box-shadow: 0 12px 30px rgba(0,0,0,.22);
+}
+
+html.home-theme-dark .section-proof .proof-trust {
+  background: var(--bg-elev);
+  border-color: var(--line);
+}
+
+html.home-theme-dark .section-proof .proof-map .m-fill {
+  fill: var(--bg-soft);
+}
+
+html.home-theme-dark .section-proof .proof-map .m-inner {
+  stroke: var(--home-lime);
+}
+
+html.home-theme-dark .section-proof .proof-map .m-outline {
+  stroke: var(--home-dark-accent);
+}
+
+html.home-theme-dark .section-proof .proof-map .m-node circle {
+  fill: var(--bg-elev);
+  stroke: var(--home-lime);
+}
+
+html.home-theme-dark .section-proof .proof-map .m-node.seat circle {
+  fill: var(--home-red);
+  stroke: var(--home-on-dark);
+}
+
+html.home-theme-dark .section-proof .proof-map .m-label {
+  fill: var(--ink-2);
+  stroke: var(--bg);
+}
+
+html.home-theme-dark .section-proof .proof-map .m-label.seat {
+  fill: var(--ink);
+}
+
+html.home-theme-dark .section-proof .btn-outline {
+  color: #171916;
+  background: var(--home-lime);
+  border-color: var(--home-lime);
+}
+
+html.home-theme-dark .section-proof .btn-outline:hover {
+  color: #171916;
+  background: var(--home-yellow);
+  border-color: var(--home-yellow);
+}
+
+/* Vollstaendig dunkle Homepage. */
+html.home-theme-dark .site-header,
+html.home-theme-dark .site-header.is-scrolled {
+  background: #171916;
+}
+
+/* Safari erweitert die deckende, viewportgebundene Kante in die iPhone-Statusleiste. */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 900px) {
+    html.home-theme-dark body {
+      padding-top: calc(var(--mobile-header-h, 82px) + env(safe-area-inset-top, 0px));
+    }
+
+    html.home-theme-dark .site-header,
+    html.home-theme-dark .site-header.is-scrolled {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      background: rgb(var(--surface-rgb));
+      transition: border-color .25s var(--ease), padding .25s var(--ease);
+    }
+  }
+}
+
+html.home-theme-dark .menu {
+  background: rgba(32,36,29,.9);
+}
+
+html.home-theme-dark .btn-ghost:hover {
+  background: rgba(255,255,255,.08);
+}
+
+html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(1) {
+  background: var(--bg-soft);
+}
+
+html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(2) {
+  background: var(--bg-hero);
+}
+
+html.home-theme-dark .nav-submenu--welten .nav-submenu-group a:hover {
+  background: var(--bg-elev);
+}
+
+html.home-theme-dark .gate-door {
+  border-color: var(--line);
+  box-shadow: 0 28px 62px -34px rgba(0,0,0,.78);
+}
+
+html.home-theme-dark .gate-veil {
+  background: linear-gradient(to top, rgba(14,16,13,.78) 0%, rgba(14,16,13,.64) 62%, rgba(14,16,13,0) 100%);
+}
+
+html.home-theme-dark .gate-cta {
+  color: #171916;
+  background: var(--home-lime);
+}
+
+html.home-theme-dark .gate-door:hover .gate-cta {
+  color: #171916;
+  background: var(--home-yellow);
+}
+
+html.home-theme-dark .section-faq {
+  background: var(--bg-hero);
+}
+
+html.home-theme-dark .faq-wrap .faq-list details[open] {
+  background: var(--bg-soft);
+  border-color: var(--home-dark-accent);
+}
+
+html.home-theme-dark .faq-wrap .faq-list details[open] > summary > .chev {
+  background: var(--home-lime);
+}
+
+html.home-theme-dark .faq-wrap .faq-list details[open] > summary > .chev::before,
+html.home-theme-dark .faq-wrap .faq-list details[open] > summary > .chev::after {
+  background: #171916;
+}
+
+html.home-theme-dark .faq-wrap .faq-list > .faq-more > summary {
+  color: var(--home-dark-accent);
+}
+
+html.home-theme-dark .fork-path:hover {
+  background: #171916;
+}
+
+/* Mobil nutzt der Hero statt des Verlaufs eine Textplatte. */
+@media (max-width: 860px) {
+  html.home-theme-dark .gate-body {
+    background: rgba(14,16,13,.78);
+  }
+}
+
+/* Einheitlicher, kontrastreicher Tastaturfokus innerhalb der Homepage. */
+html.home-theme-dark :where(.site-header, .hero--gate, .section-proof, .fork, .section-faq, .site-footer) :focus-visible {
+  outline: 3px solid var(--home-focus);
+  outline-offset: 3px;
+}

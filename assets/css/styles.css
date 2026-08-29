@@ -79,6 +79,9 @@
 }
 
 :root {
+  --mobile-header-h: 82px;
+  --mobile-logo-green: #56E607;
+
   /* Brand */
   --green-900: #1d3000;
   --green-800: #2a4500;
@@ -295,6 +298,14 @@ p  { margin: 0; }
 @media (max-width: 900px) {
   .brand-logo { height: 44px; width: clamp(128px, 40vw, 155px); }
   .site-header.is-scrolled .brand-logo { height: 44px; width: clamp(128px, 40vw, 155px); }
+  .site-header .brand-logo,
+  .site-header.is-scrolled .brand-logo {
+    width: clamp(144px, calc(100vw - 188px), 203px);
+    height: clamp(46px, 16vw, 63px);
+    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png");
+    background-position: left center;
+    background-size: contain;
+  }
 }
 /* Footer dark background: lighten the wordmark slightly while keeping flowers intact */
 .brand-logo-light {
@@ -1612,13 +1623,75 @@ p  { margin: 0; }
      Das Menue bleibt als letzte Aktion direkt am rechten Rand. */
   .header-inner {
     grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: clamp(8px, 2vw, 12px);
+    column-gap: 4px;
     width: min(100% - 32px, 1360px);
+    min-height: calc(var(--mobile-header-h) - 1px);
+    padding: 8px 0;
   }
   .header-actions {
     grid-column: 2;
     grid-row: 1;
     justify-self: end;
+    gap: 6px;
+  }
+  .site-header .header-actions .call-wrap {
+    display: flex;
+    align-items: center;
+    height: 44px;
+  }
+  /* Mobile Kontakt-Symbole in unveraenderten 44px-Touchzielen. Das duenne
+     Telefonzeichen wird fuer optische Balance groesser als das kompakte
+     WhatsApp-Glyph dargestellt. */
+  .site-header .header-actions :is(.call-btn, .btn-whatsapp) {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    border-radius: var(--radius-sm);
+  }
+  .site-header .header-actions :is(.call-btn, .btn-whatsapp) > svg {
+    display: none;
+  }
+  .site-header .header-actions :is(.call-btn, .btn-whatsapp)::before {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .site-header .header-actions .call-btn.btn-ghost {
+    background: var(--bg-dark);
+    border-color: transparent;
+    box-shadow: none;
+  }
+  .site-header .header-actions .call-btn::before {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    background-image: url("../img/icons/phone-header-mobile.png");
+  }
+  .site-header .btn-whatsapp::before {
+    background-image: url("../img/icons/whatsapp-glyph-white.svg");
+  }
+  .site-header .header-actions .btn-whatsapp {
+    box-shadow: none;
+  }
+  .site-header .header-actions .nav-toggle {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    background: var(--bg-dark);
+    border-color: transparent;
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+  }
+  .site-header .header-actions .nav-toggle span {
+    background: #FAFAF6;
   }
   .primary-nav { order: 99; grid-column: 1 / -1; display: none; }
   .primary-nav.is-open { display: block; }
@@ -1721,6 +1794,10 @@ p  { margin: 0; }
 @media (max-width: 340px) {
   .header-inner { column-gap: 4px; }
   .header-actions { gap: 4px; }
+  .site-header .brand-logo,
+  .site-header.is-scrolled .brand-logo {
+    width: clamp(144px, calc(100vw - 176px), 203px);
+  }
 }
 
 /* AP-53: Kontaktformular auf Mobile vor die Kontaktdaten.

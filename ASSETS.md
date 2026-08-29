@@ -3,6 +3,23 @@
 Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem CloudFront-CDN.
 **Wichtig:** CDN-URLs können sich ändern – vor Live-Gang lokal sichern und in `assets/img/` / `assets/video/` legen.
 
+## Mobile Header-Symbole
+
+- `assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png` – mobile
+  640 × 180 px große Logoableitung aus dem vorhandenen Originallogo. Die Blüte
+  wurde pixelgenau aus dem bisherigen Mobilasset übernommen; die vollständige
+  Wortmarke `MAIK ROHDICH` wurde mechanisch aus dem Originallogo freigestellt,
+  mit transparenten Sicherheitskanten neu ausbalanciert und nicht generativ
+  verändert. Die gelben Zusatzzeilen sind nicht enthalten.
+- `assets/img/icons/phone-header-mobile.png` – mechanisch aus der vom Auftraggeber
+  gelieferten Datei `Design ohne Titel.png` freigestellt, quadratisch beschnitten und
+  einheitlich auf das Wortmarken-Grün `#56E607` gesetzt. Die Form wurde nicht verändert.
+- `assets/img/icons/whatsapp-glyph-white.svg` – unveränderte Datei
+  `Digital_Glyph_White_RGB_2026.svg` aus dem offiziellen
+  [WhatsApp Brand Resource Center](https://www.meta.com/brand/resources/whatsapp/whatsapp-brand/),
+  abgerufen am 25.08.2026. SHA-256:
+  `7FB054C0F4BEA644B4A4A014D6D8581AAD7E6DCB639049D17A578DC44F8E6FD4`.
+
 ## Hero
 - **Bild (16:9, 2048×1152):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060301_09419ab7-e3c1-4af3-b7a2-fa17bbd9ca87.png`
   → speichern als `assets/img/hero/hero.png`
