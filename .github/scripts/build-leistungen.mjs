@@ -39,7 +39,6 @@ const errors = [];
 // AP-18: Handseiten, in die das Header-Submenu injiziert wird.
 const HAND_PAGES = [
   { file: 'index.html', base: '' },
-  { file: 'privatkunden/index.html', base: '../' },
   { file: 'gewerbekunden/index.html', base: '../' },
   { file: 'projekte/index.html', base: '../' },
   // AP-33: 404 trug die Leistungs-Nav fest verdrahtet – jetzt ebenfalls aus einer Quelle.

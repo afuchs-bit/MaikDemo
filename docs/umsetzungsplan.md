@@ -995,3 +995,43 @@ Navigation mit doppeltem Einstieg („Projekte" als Anker, „Galerie" als Seite
 `#galleryGrid` im HTML leer und rein JS-befüllt; 3 Formulare mit `onsubmit="return false;"`;
 4 Seiten mit `href="#"` für Impressum und Datenschutz; keine `robots.txt`;
 12 Google-Fonts-Verweise; Bilder 1,3 MB / 880 KB / 2 × ~710 KB.
+
+## H.5 Nachtrag: Privatkundenbereich in die Startseite überführt (30.08.2026)
+
+**Abweichung von AP-23.** AP-23 schreibt `/privatkunden/` und `/gewerbekunden/` als zwei
+parallele Hubs fest. Auf Wunsch des Auftraggebers ist die Privatkunden-Hubseite entfallen:
+ihre Inhalte stehen jetzt auf der Startseite, `privatkunden/index.html` wurde gelöscht.
+`/gewerbekunden/` bleibt als eigenständiger Zweig unverändert bestehen.
+
+**Was bestehen bleibt.** Die 13 Leistungsseiten unter `/privatkunden/leistungen/*` sind
+unangetastet. Nur ihr Elternteil fehlt — die Breadcrumbs führen deshalb zweistufig von der
+Startseite direkt auf die Leistung, sichtbar wie im `BreadcrumbList`-Schema.
+
+**Folgeänderungen, alle im Generator und in den erzeugten Seiten gespiegelt.**
+
+- `WELTEN.privat` in `.github/scripts/lib/render.mjs` trägt jetzt `hubEntfaellt: true`.
+  Daran hängen Breadcrumb-Kette, Breadcrumb-Schema, Untermenü-Kopf und Welt-CTA.
+- Der Untermenü-Kopf „Für Privatkunden" ist ein `<span>` statt eines Links. Die Gruppe
+  bleibt, weil die 13 Leistungslinks darunter weiter gültig sind.
+- Der Nav- und Footer-Punkt „Privatkunden" ist ersatzlos entfallen.
+- 39 Formular-Deeplinks der Leistungsseiten (`?pfad=…&leistung=…#anfrage`) zeigen auf die
+  Startseite. Die Vorbelegung durch `privat-form.js` funktioniert dort unverändert.
+- `assets/js/galerie.js` legt seine CTA-Ziele ebenfalls auf die Startseite.
+- `/privatkunden/` ist aus `sitemap.xml` entfernt.
+
+**Offen für Phase 2.**
+
+- Kein Redirect möglich. Die Seite liefert ab sofort 404. Auf GitHub Pages
+  („Deploy from a branch", siehe H.2) wird eine `_redirects`-Datei **nicht** ausgewertet —
+  sie wäre wirkungslos. Solange die Site auf `noindex` steht, ist das folgenlos; vor dem
+  Go-Live braucht es entweder den Wechsel auf Cloudflare Pages oder eine
+  `privatkunden/index.html`, die per `<meta http-equiv="refresh">` und Canonical auf die
+  Startseite verweist.
+- Hero und Kontaktweiche haben je eine Kachel verloren und stehen einspaltig. Die
+  Übergangsregeln liegen in `assets/css/merge-light.css`, nicht in `styles.css`, um einen
+  `?v=`-Durchlauf über alle Seiten zu vermeiden. Sie fallen weg, sobald der kompakte
+  Gewerbe-Block steht.
+- Der Weg zum Formular ist deutlich länger geworden: `#anfrage` liegt rund 10.500 px unter
+  dem Seitenanfang. Das verstärkt die ohnehin geplante Lazy-Load-Maßnahme.
+- Eine Übersichtsseite unter `/privatkunden/leistungen/` fehlt weiterhin. Ohne sie hat das
+  Verzeichnis keine Elternseite.

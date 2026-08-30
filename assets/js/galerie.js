@@ -377,12 +377,12 @@ function updateCta() {
       : '../gewerbekunden/#anfrage';
   } else if (state.typ === 'privat') {
     ctaEl.href = slug
-      ? `../privatkunden/?leistung=${encodeURIComponent(slug)}#anfrage`
-      : '../privatkunden/#anfrage';
+      ? `../?leistung=${encodeURIComponent(slug)}#anfrage`
+      : '../#anfrage';
   } else if (slug === 'aussenanlagenpflege') {
     ctaEl.href = `../gewerbekunden/?anliegen=${GEWERBE_ANLIEGEN[slug]}#anfrage`;
   } else if (PRIVAT_ONLY.has(slug)) {
-    ctaEl.href = `../privatkunden/?leistung=${encodeURIComponent(slug)}#anfrage`;
+    ctaEl.href = `../?leistung=${encodeURIComponent(slug)}#anfrage`;
   } else {
     ctaEl.href = '../#kontakt';
   }

@@ -45,3 +45,25 @@
 
 /* Sichtbare Naht zwischen dunkler Startseite und heller Insel. */
 .merge-light-scope { border-top: 1px solid var(--line); }
+
+/* ------------------------------------------------------------------
+   Phase-1-Merge, Teil 2 · Einspaltige Einstiege
+
+   Mit dem Wegfall der Privatkunden-Hubseite verlieren Hero und Kontakt-
+   weiche je eine Kachel. Beide Raster sind in styles.css fest auf zwei
+   Spalten gesetzt (.gate-doors: 1fr 1fr, .fork-paths: 1fr 1px 1fr) und
+   liessen sonst eine leere Spalte stehen.
+
+   Hier statt in styles.css, weil ein Eingriff dort den ?v=-Parameter in
+   allen 45 HTML-Dateien nach sich zoege. Gehoert in Phase 2 aufgeloest,
+   sobald der Gewerbe-Block steht.
+   ------------------------------------------------------------------ */
+
+.gate-doors { grid-template-columns: minmax(0, 1fr); }
+
+@media (min-width: 861px) {
+  /* Eine einzelne Tuer soll nicht ueber die volle Breite laufen. */
+  .gate-doors { width: min(100% - calc(var(--gutter) * 2), 720px); }
+}
+
+.fork-paths { grid-template-columns: minmax(0, 1fr); }

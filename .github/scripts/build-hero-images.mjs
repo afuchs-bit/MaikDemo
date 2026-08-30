@@ -98,7 +98,7 @@ const SOURCES = [
     name: 'poolumfeld-herne',
     widths: [480, 960],
   },
-  // AP-83: Beweis-Grid (.proof-grid auf /privatkunden/) - Kachel 2 (Kuebelbepflanzung)
+  // AP-83: Beweis-Grid (.proof-grid, jetzt auf der Startseite) - Kachel 2 (Kuebelbepflanzung)
   // und Kachel 4 (Vorher/Nachher-Crossfade). Quellen liegen wie oben direkt im Repo
   // unter assets/img/proof/, nicht in _src/.
   {

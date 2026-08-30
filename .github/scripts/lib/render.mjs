@@ -368,6 +368,9 @@ export const WELTEN = {
   privat: {
     key: 'privat',
     pfad: 'privatkunden/',
+    // Die Hubseite /privatkunden/ ist entfallen, ihre Inhalte stehen auf der
+    // Startseite. Die Leistungsseiten bleiben unter /privatkunden/leistungen/.
+    hubEntfaellt: true,
     weltLabel: 'Privatkunde',
     navLabel: 'Für Privatkunden',
     base: '../../../',        // /privatkunden/leistungen/<slug>/
@@ -412,7 +415,7 @@ export function weltPfadFuerSlug(slug) {
 export const AREA_SERVED = ['Herne', 'Bochum', 'Castrop-Rauxel', 'Recklinghausen', 'Gelsenkirchen-Buer'];
 
 const KUNDENGRUPPE_META = {
-  privat: { href: 'privatkunden/', label: 'Für Privatkunden' },
+  privat: { href: '', label: 'Für Privatkunden' },   // Hub entfallen -> Startseite
   gewerbe: { href: 'gewerbekunden/', label: 'Für Gewerbekunden' },
 };
 
@@ -444,8 +447,11 @@ export function renderNavSubmenu(base) {
     const items = welt.slugs
       .map((s) => `<li><a href="${base}${welt.pfad}leistungen/${s}/">${esc(welt.navLabels?.[s] || labelBySlug.get(s) || s)}</a></li>`)
       .join('\n              ');
+    const kopf = welt.hubEntfaellt
+      ? `<span class="nav-submenu-head">${esc(welt.navLabel)}</span>`
+      : `<a class="nav-submenu-head" href="${base}${welt.pfad}">${esc(welt.navLabel)}</a>`;
     return `<li class="nav-submenu-group">
-            <a class="nav-submenu-head" href="${base}${welt.pfad}">${esc(welt.navLabel)}</a>
+            ${kopf}
             <ul>
               ${items}
             </ul>
@@ -676,16 +682,20 @@ function leistungBreadcrumb(h1, canonical, welt) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
-      { '@type': 'ListItem', position: 2, name: welt.weltLabel, item: `${SITE}/${welt.pfad}` },
-      { '@type': 'ListItem', position: 3, name: h1, item: canonical },
+      ...(welt.hubEntfaellt
+        ? []
+        : [{ '@type': 'ListItem', position: 2, name: welt.weltLabel, item: `${SITE}/${welt.pfad}` }]),
+      { '@type': 'ListItem', position: welt.hubEntfaellt ? 2 : 3, name: h1, item: canonical },
     ],
   }, null, 2);
 }
 
 // AP-33: sichtbare Breadcrumb-Kette (Template-Platzhalter {{breadcrumbTrail}}).
 function breadcrumbTrail(welt, base, h1) {
-  return `<li><a href="${base}">Startseite</a></li>
-        <li><a href="${base}${welt.pfad}">${esc(welt.weltLabel)}</a></li>
+  const mitte = welt.hubEntfaellt
+    ? ''
+    : `\n        <li><a href="${base}${welt.pfad}">${esc(welt.weltLabel)}</a></li>`;
+  return `<li><a href="${base}">Startseite</a></li>${mitte}
         <li aria-current="page">${esc(h1)}</li>`;
 }
 
@@ -737,8 +747,8 @@ export async function renderLeistungPage(opts) {
     ogImage: escAttr(ogImage),
     breadcrumbJsonLd: leistungBreadcrumb(leistung.h1, canonical, welt),
     breadcrumbTrail: breadcrumbTrail(welt, base, leistung.h1),
-    weltHref: `${base}${welt.pfad}`,
-    weltCtaLabel: welt.key === 'privat' ? 'Zum Privatkundenbereich' : 'Zum Gewerbekundenbereich',
+    weltHref: welt.hubEntfaellt ? `${base}#leistungen` : `${base}${welt.pfad}`,
+    weltCtaLabel: welt.key === 'privat' ? 'Zu den Leistungen für Privatkunden' : 'Zum Gewerbekundenbereich',
     contactHref: escAttr(contactHref),
     serviceJsonLd: serviceJsonLd(leistung, canonical),
     faqJsonLd: faqJsonLd(leistung.faq),

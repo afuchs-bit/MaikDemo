@@ -1,5 +1,5 @@
 // assets/js/projekte-privat.js
-// Rendert die Sektion #projekte-privat auf /privatkunden/ aus data/projekte-index.json.
+// Rendert die Sektion #projekte-privat auf der Startseite aus data/projekte-index.json.
 // Zeigt die 3 neuesten Projekte mit kundentyp "privat".
 // Progressive Enhancement: Das statische Fallback-Markup bleibt sichtbar, falls der
 // fetch fehlschlägt. Kartenoptik/Reveal kommen aus projekte-card.js.

@@ -29,7 +29,7 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/customer-hero.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260812n" />
-<link rel="stylesheet" href="assets/css/merge-light.css?v=20260830a" />
+<link rel="stylesheet" href="assets/css/merge-light.css?v=20260830b" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -230,7 +230,6 @@ html.home-theme-dark body { background-color: #171916; }
 
     <nav class="primary-nav" aria-label="Hauptnavigation">
       <ul id="primaryMenu" class="menu">
-        <li><a href="privatkunden/">Privatkunden</a></li>
         <li><a href="gewerbekunden/">Gewerbekunden</a></li>
         <li class="menu-item menu-item--sub">
           <span class="menu-label">Leistungen</span>
@@ -240,7 +239,7 @@ html.home-theme-dark body { background-color: #171916; }
           <!-- BUILD:leistungen-submenu:start -->
           <ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
           <li class="nav-submenu-group">
-            <a class="nav-submenu-head" href="privatkunden/">Für Privatkunden</a>
+            <span class="nav-submenu-head">Für Privatkunden</span>
             <ul>
               <li><a href="privatkunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
               <li><a href="privatkunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
@@ -322,27 +321,6 @@ html.home-theme-dark body { background-color: #171916; }
   </div>
 
   <div class="gate-doors reveal">
-
-    <a class="gate-door gate-door--privat" href="privatkunden/">
-      <picture>
-        <source type="image/avif" sizes="(max-width: 860px) 100vw, 50vw"
-                srcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w">
-        <source type="image/webp" sizes="(max-width: 860px) 100vw, 50vw"
-                srcset="assets/img/hero/gate-privat-480.webp 480w, assets/img/hero/gate-privat-960.webp 960w, assets/img/hero/gate-privat-1200.webp 1200w">
-        <img class="gate-photo" src="assets/img/hero/gate-privat.webp"
-             alt=""
-             width="960" height="640" fetchpriority="high" decoding="async">
-      </picture>
-      <span class="gate-veil" aria-hidden="true"></span>
-      <div class="gate-body">
-        <span class="gate-eyebrow">Für Privatkunden</span>
-        <h2 class="type-subsection-title">Ihr Garten, geplant und gebaut.</h2>
-        <span class="gate-cta">
-          Zum Privatkundenbereich
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </span>
-      </div>
-    </a>
 
     <a class="gate-door gate-door--gewerbe" href="gewerbekunden/">
       <picture>
@@ -489,35 +467,13 @@ html.home-theme-dark body { background-color: #171916; }
 <!-- ============ KONTAKTWEICHE (AP-105/106) ============ -->
 <section class="fork" id="kontakt" aria-labelledby="kontakt-title">
   <div class="container fork-head">
-    <h2 class="fork-title type-section-title reveal" id="kontakt-title">Zwei Wege zu uns.</h2>
-    <p class="fork-lede reveal">Damit Sie direkt bei den passenden Leistungen und beim richtigen Formular landen.</p>
+    <h2 class="fork-title type-section-title reveal" id="kontakt-title">Für Gewerbekunden.</h2>
+    <p class="fork-lede reveal">Pflege im Vertrag, Baumkontrolle und Verkehrssicherheit für Objekte – mit eigenem Bereich und eigenem Formular.</p>
   </div>
 
-  <svg class="fork-switch reveal" viewBox="0 0 1240 120" fill="none" aria-hidden="true">
-    <path d="M620 0 V44" pathLength="1"/>
-    <path d="M620 44 C 620 80, 310 84, 310 120" pathLength="1"/>
-    <path d="M620 44 C 620 80, 930 84, 930 120" pathLength="1"/>
-    <circle cx="620" cy="44" r="3.5"/>
-  </svg>
   <div class="fork-switch--mobile reveal" aria-hidden="true"></div>
 
   <div class="fork-paths">
-    <div class="fork-path">
-      <p class="fork-kind">Privatkunden</p>
-      <h3 class="fork-path-title">Garten, Terrasse,<br>Zuhause.</h3>
-      <p class="fork-desc">Neuanlage, Umgestaltung und Pflege rund ums Haus.</p>
-      <a class="fork-btn" href="privatkunden/">
-        <span class="fork-btn-label">Zum Privatkundenbereich</span>
-        <span class="fork-btn-dot"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8h11M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-      <a class="fork-direct" href="privatkunden/#anfrage">
-        <span>Direkt zum Kontaktformular</span>
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 9.5L9.5 2.5M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-
-    <div class="fork-rule" aria-hidden="true"></div>
-
     <div class="fork-path">
       <p class="fork-kind">Gewerbekunden</p>
       <h3 class="fork-path-title">Außenanlagen,<br>Baumbestand.</h3>
@@ -2033,7 +1989,6 @@ html.home-theme-dark body { background-color: #171916; }
         <details class="footer-nav-group" data-footer-disclosure open>
           <summary><span>Schnellzugriff</span><span class="footer-disclosure-icon" aria-hidden="true"></span></summary>
           <ul class="footer-link-list">
-            <li><a href="privatkunden/">Privatkunden</a></li>
             <li><a href="gewerbekunden/">Gewerbekunden</a></li>
             <li><a href="projekte/?ansicht=galerie">Galerie</a></li>
             <li><a href="kontakt/">Kontakt</a></li>
@@ -2053,7 +2008,7 @@ html.home-theme-dark body { background-color: #171916; }
 <!-- BUILD:site-footer:end -->
 
 <script src="assets/js/main.js?v=20260825a" defer></script>
-<script type="module" src="assets/js/projekte-privat.js?v=20260812n"></script>
+<script type="module" src="assets/js/projekte-privat.js?v=20260830a"></script>
 <script src="assets/js/private-gallery-teaser.js?v=20260812n" defer></script>
 <script src="assets/js/private-proof.js?v=20260812n" defer></script>
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>
