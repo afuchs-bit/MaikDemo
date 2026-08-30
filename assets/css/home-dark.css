@@ -1,8 +1,30 @@
 /* Dauerhafte dunkle Farbwelt. Diese Datei wird ausschliesslich in index.html geladen. */
 
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url("../fonts/nunito-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: italic;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url("../fonts/nunito-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 html.home-theme-dark {
   color-scheme: dark;
   background-color: rgb(var(--surface-rgb));
+
+  /* Homepage-Typografie: Logo und Unterseiten bleiben unveraendert. */
+  --display: "Nunito", sans-serif;
+  --body: "Nunito", sans-serif;
 
   /* Unveraenderte Markenfarben */
   --home-brand-green: #4A7A10;
@@ -55,9 +77,40 @@ html.home-theme-dark .site-header.is-scrolled {
   border-bottom-color: var(--line);
 }
 
-html.home-theme-dark .hero--gate {
+html.home-theme-dark .home-hero-stack {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
   background: linear-gradient(180deg, var(--bg-elev) 0%, var(--bg-hero) 100%);
-  border-bottom-color: var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+html.home-theme-dark .home-hero-stack > .hero--gate {
+  background: transparent;
+  border-bottom: 0;
+}
+
+html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+  isolation: auto;
+  overflow: visible;
+}
+
+html.home-theme-dark .hero-empty-media {
+  position: absolute;
+  inset: 0 0 25%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+html.home-theme-dark .hero-empty-media img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
 }
 
 html.home-theme-dark .section-proof,
@@ -396,6 +449,233 @@ html.home-theme-dark .fork-path:hover {
 @media (max-width: 860px) {
   html.home-theme-dark .gate-body {
     background: rgba(14,16,13,.78);
+  }
+}
+
+/* Homepage mobil: grosses Markenpanel am Einstieg, kompakter Header beim Scrollen. */
+@media (max-width: 900px) {
+  /* Referenznahe mobile Bildbuehne: Das Foto bleibt rein dekorativ. Die
+     dunkle Leerflaeche und ihre feine Kante entstehen ohne zusaetzliches
+     Markup aus zwei deckungsgleichen, leicht versetzten Keilen. */
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --hero-composition-offset-y: 20px;
+    --hero-image-wheel-offset-y: clamp(28px, 8vw, 36px);
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  html.home-theme-dark .hero-empty-media {
+    inset: 0 0 22%;
+    z-index: 1;
+  }
+
+  html.home-theme-dark .hero-empty-media img {
+    object-fit: cover;
+    object-position: center center;
+    transform: translateY(calc(clamp(-96px, -22vw, -70px) + var(--hero-composition-offset-y) + var(--hero-image-wheel-offset-y)));
+  }
+
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::before,
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::after {
+    content: "";
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    clip-path: polygon(0 0, 100% 28%, 100% 100%, 0 100%);
+    transform: translateY(var(--hero-composition-offset-y));
+  }
+
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::before {
+    z-index: 2;
+    height: calc(49% + 1px);
+    background: rgba(140,198,63,.78);
+    clip-path: polygon(0 0, 100% 27.32%, 100% 100%, 0 100%);
+  }
+
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::after {
+    z-index: 3;
+    height: 49%;
+    background: var(--bg-hero);
+  }
+
+  html.home-theme-dark.home-header-morph {
+    scrollbar-gutter: stable;
+  }
+
+  html.home-theme-dark.home-header-morph body {
+    padding-top: 0;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header,
+  html.home-theme-dark.home-header-morph .site-header.is-scrolled {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    padding-top: calc(env(safe-area-inset-top, 0px) + clamp(12px, 4vw, 18px));
+    background-color: transparent;
+    border-bottom-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition:
+      padding-top .42s cubic-bezier(.22, 1, .36, 1),
+      background-color .34s ease,
+      border-color .3s ease;
+  }
+
+  /* Ein schmaler, deckender Traeger behaelt die dunkle iPhone-Statusleistenfarbe,
+     waehrend das eigentliche Markenpanel sichtbar ueber dem Hero schwebt. */
+  html.home-theme-dark.home-header-morph .site-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: env(safe-area-inset-top, 0px);
+    min-height: 1px;
+    background: #171916;
+    pointer-events: none;
+  }
+
+  html.home-theme-dark.home-header-morph .header-inner {
+    width: calc(100% - 32px);
+    max-width: 560px;
+    min-height: 112px;
+    padding: 14px 12px;
+    background: #171916;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+    box-shadow: 0 24px 52px -26px rgba(0,0,0,.88), 0 8px 20px -14px rgba(0,0,0,.68);
+    transition:
+      max-width .42s cubic-bezier(.22, 1, .36, 1),
+      min-height .42s cubic-bezier(.22, 1, .36, 1),
+      padding .42s cubic-bezier(.22, 1, .36, 1),
+      border-color .28s ease,
+      border-radius .42s cubic-bezier(.22, 1, .36, 1),
+      box-shadow .32s ease;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header .brand-logo,
+  html.home-theme-dark.home-header-morph .site-header.is-scrolled .brand-logo {
+    width: clamp(158px, calc(100vw - 162px), 218px);
+    height: clamp(50px, 17vw, 66px);
+    transition:
+      width .42s cubic-bezier(.22, 1, .36, 1),
+      height .42s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  html.home-theme-dark.home-header-morph .header-actions {
+    gap: 6px;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header .header-actions .call-wrap {
+    width: 0;
+    max-width: 0;
+    flex: 0 0 0;
+    margin-inline: -3px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    overflow: clip;
+    transform: translateX(8px) scale(.88);
+    transition:
+      width .32s cubic-bezier(.22, 1, .36, 1),
+      max-width .32s cubic-bezier(.22, 1, .36, 1),
+      flex-basis .32s cubic-bezier(.22, 1, .36, 1),
+      margin .32s cubic-bezier(.22, 1, .36, 1),
+      opacity .18s ease,
+      transform .32s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  html.home-theme-dark.home-header-morph .site-header .header-actions :is(.btn-whatsapp, .nav-toggle) {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+    transition:
+      width .42s cubic-bezier(.22, 1, .36, 1),
+      height .42s cubic-bezier(.22, 1, .36, 1),
+      flex-basis .42s cubic-bezier(.22, 1, .36, 1),
+      background-color .2s ease;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed,
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed.is-scrolled {
+    padding-top: env(safe-area-inset-top, 0px);
+    background-color: #171916;
+    border-bottom-color: var(--line);
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .header-inner {
+    max-width: 1360px;
+    min-height: calc(var(--mobile-header-h) - 1px);
+    padding: 8px 0;
+    background: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand-logo,
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed.is-scrolled .brand-logo {
+    width: clamp(144px, calc(100vw - 188px), 203px);
+    height: clamp(46px, 16vw, 63px);
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .header-actions .call-wrap {
+    width: 44px;
+    max-width: 44px;
+    flex: 0 0 44px;
+    margin-inline: 0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    overflow: visible;
+    transform: none;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .header-actions :is(.btn-whatsapp, .nav-toggle) {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .call-popover {
+    display: none !important;
+  }
+}
+
+/* Smartphone-Einstieg: Die schwebende Markenkachel nutzt den verfuegbaren
+   Raum fast vollstaendig. Der kompakte Scroll-Header bleibt unveraendert. */
+@media (max-width: 430px) {
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 6px);
+  }
+
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .header-inner {
+    width: calc(100% - 12px);
+    max-width: none;
+    min-height: 120px;
+    padding: 12px 8px;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
+    width: clamp(166px, calc(100vw - 142px), 256px);
+    height: clamp(56px, 18.5vw, 72px);
+  }
+}
+
+/* Das Hochformat kann breite Mobil- und Tablet-Viewports nicht fuellen, ohne
+   Fahrzeug oder Palme stark abzuschneiden. Die Bildbox behaelt dort ihre
+   Originalproportion und bleibt zentriert; der Keil laeuft weiter vollbreit. */
+@media (max-width: 900px) and (min-aspect-ratio: 2 / 3) {
+  html.home-theme-dark .hero-empty-media img {
+    width: auto;
+    max-width: 100%;
+    aspect-ratio: 1023 / 1537;
   }
 }
 
