@@ -543,7 +543,9 @@ html.home-theme-dark .fork-path:hover {
     top: calc(51% + var(--hero-composition-offset-y) + 6px);
     left: var(--mobile-hero-kicker-inset);
     z-index: 4;
-    display: grid;
+    /* AP-145: Signatur vorerst deaktiviert; Layout bleibt fuer eine spaetere
+       Reaktivierung vollstaendig erhalten. */
+    display: none;
     grid-template-columns: max-content minmax(.45em, 1fr) max-content minmax(.45em, 1fr) max-content;
     align-items: baseline;
     width: calc(100% - var(--mobile-hero-kicker-inset));
