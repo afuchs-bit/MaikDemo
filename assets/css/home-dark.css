@@ -469,7 +469,7 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
     --hero-composition-offset-y: 20px;
     --hero-image-wheel-offset-y: clamp(28px, 8vw, 36px);
-    --mobile-hero-kicker-angle: 7deg;
+    --mobile-hero-kicker-angle: 7.1deg;
     min-height: clamp(700px, 100svh, 823px);
     isolation: isolate;
     overflow: hidden;
@@ -545,6 +545,7 @@ html.home-theme-dark .fork-path:hover {
     align-items: baseline;
     gap: .32em;
     margin: 0;
+    font-size: clamp(.55rem, 2.15vw, .7rem);
     line-height: 1.1;
     letter-spacing: .02em;
     white-space: nowrap;
@@ -554,13 +555,11 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .mobile-hero-signature {
     color: var(--home-on-dark-2);
-    font-size: clamp(.53rem, 2.1vw, .68rem);
     font-weight: 800;
   }
 
   html.home-theme-dark .mobile-hero-trusts {
     color: var(--home-dark-accent);
-    font-size: clamp(.6rem, 2.35vw, .74rem);
     font-weight: 900;
   }
 
@@ -784,15 +783,51 @@ html.home-theme-dark .fork-path:hover {
   }
 }
 
+@media (max-width: 860px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 7.6deg;
+  }
+}
+
+@media (max-width: 800px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 8.2deg;
+  }
+}
+
 @media (max-width: 700px) {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 10deg;
+    --mobile-hero-kicker-angle: 9.4deg;
+  }
+}
+
+@media (max-width: 620px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 10.6deg;
+  }
+}
+
+@media (max-width: 560px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 11.7deg;
   }
 }
 
 @media (max-width: 520px) {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 14deg;
+    --mobile-hero-kicker-angle: 12.6deg;
+  }
+}
+
+@media (max-width: 500px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 13.3deg;
+  }
+}
+
+@media (max-width: 480px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 13.7deg;
   }
 }
 
@@ -800,7 +835,7 @@ html.home-theme-dark .fork-path:hover {
    Raum fast vollstaendig. Der kompakte Scroll-Header bleibt unveraendert. */
 @media (max-width: 430px) {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 17deg;
+    --mobile-hero-kicker-angle: 15.2deg;
   }
 
   html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) {
@@ -820,8 +855,21 @@ html.home-theme-dark .fork-path:hover {
   }
 }
 
+@media (max-width: 390px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 16.8deg;
+  }
+}
+
+@media (max-width: 360px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 17.6deg;
+  }
+}
+
 @media (max-width: 359px) {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 17.9deg;
     min-height: clamp(716px, 100svh, 823px);
   }
 
@@ -829,15 +877,11 @@ html.home-theme-dark .fork-path:hover {
     flex-direction: column;
     align-items: flex-start;
     gap: 3px;
-  }
-
-  html.home-theme-dark .mobile-hero-signature {
     font-size: .62rem;
   }
 
   html.home-theme-dark .mobile-hero-trusts {
     margin-left: clamp(26px, 9vw, 34px);
-    font-size: .66rem;
   }
 }
 
