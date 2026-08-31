@@ -469,6 +469,7 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
     --hero-composition-offset-y: 20px;
     --hero-image-wheel-offset-y: clamp(28px, 8vw, 36px);
+    --mobile-hero-kicker-angle: 7deg;
     min-height: clamp(700px, 100svh, 823px);
     isolation: isolate;
     overflow: hidden;
@@ -536,19 +537,34 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .mobile-hero-kicker {
-    display: block;
+    position: absolute;
+    top: calc(51% + var(--hero-composition-offset-y) + 8px);
+    left: clamp(8px, 2.5vw, 20px);
+    z-index: 4;
+    display: flex;
+    align-items: baseline;
+    gap: .32em;
     margin: 0;
-    color: var(--home-dark-accent);
-    font-size: clamp(.68rem, 2.9vw, .8rem);
-    font-weight: 900;
-    line-height: 1.2;
-    letter-spacing: .115em;
-    text-transform: uppercase;
+    line-height: 1.1;
+    letter-spacing: .02em;
+    white-space: nowrap;
+    transform: rotate(var(--mobile-hero-kicker-angle));
+    transform-origin: left top;
   }
 
-  html.home-theme-dark .mobile-hero-kicker span {
-    display: inline-block;
-    margin-inline: .18em;
+  html.home-theme-dark .mobile-hero-signature {
+    color: var(--home-on-dark-2);
+    font-size: clamp(.53rem, 2.1vw, .68rem);
+    font-weight: 800;
+  }
+
+  html.home-theme-dark .mobile-hero-trusts {
+    color: var(--home-dark-accent);
+    font-size: clamp(.6rem, 2.35vw, .74rem);
+    font-weight: 900;
+  }
+
+  html.home-theme-dark .mobile-hero-kicker-dot {
     color: var(--home-lime);
   }
 
@@ -768,9 +784,25 @@ html.home-theme-dark .fork-path:hover {
   }
 }
 
+@media (max-width: 700px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 10deg;
+  }
+}
+
+@media (max-width: 520px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 14deg;
+  }
+}
+
 /* Smartphone-Einstieg: Die schwebende Markenkachel nutzt den verfuegbaren
    Raum fast vollstaendig. Der kompakte Scroll-Header bleibt unveraendert. */
 @media (max-width: 430px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-kicker-angle: 17deg;
+  }
+
   html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) {
     padding-top: calc(env(safe-area-inset-top, 0px) + 6px);
   }
@@ -788,10 +820,35 @@ html.home-theme-dark .fork-path:hover {
   }
 }
 
+@media (max-width: 359px) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    min-height: clamp(716px, 100svh, 823px);
+  }
+
+  html.home-theme-dark .mobile-hero-kicker {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  html.home-theme-dark .mobile-hero-signature {
+    font-size: .62rem;
+  }
+
+  html.home-theme-dark .mobile-hero-trusts {
+    margin-left: clamp(26px, 9vw, 34px);
+    font-size: .66rem;
+  }
+}
+
 /* Das Hochformat kann breite Mobil- und Tablet-Viewports nicht fuellen, ohne
    Fahrzeug oder Palme stark abzuschneiden. Die Bildbox behaelt dort ihre
    Originalproportion und bleibt zentriert; der Keil laeuft weiter vollbreit. */
 @media (max-width: 900px) and (min-aspect-ratio: 2 / 3) {
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    min-height: clamp(800px, 100svh, 823px);
+  }
+
   html.home-theme-dark .hero-empty-media img {
     width: auto;
     max-width: 100%;
