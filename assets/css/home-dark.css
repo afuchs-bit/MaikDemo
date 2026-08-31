@@ -469,6 +469,7 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
     --hero-composition-offset-y: 20px;
     --hero-image-wheel-offset-y: clamp(28px, 8vw, 36px);
+    --mobile-hero-diagonal-rise: clamp(96.04px, 13.72svh, 112.94px);
     --mobile-hero-kicker-angle: 7.1deg;
     min-height: clamp(700px, 100svh, 823px);
     isolation: isolate;
@@ -553,6 +554,26 @@ html.home-theme-dark .fork-path:hover {
     white-space: nowrap;
     transform: rotate(var(--mobile-hero-kicker-angle));
     transform-origin: left top;
+  }
+
+  /* AP-144: Der Fallback oben bleibt fuer alte Browser erhalten. Moderne
+     Browser leiten den Winkel direkt aus derselben Steigung wie der Keil ab. */
+  @supports (transform: rotate(atan2(1px, 1px))) {
+    html.home-theme-dark .mobile-hero-kicker {
+      transform: rotate(calc(atan2(var(--mobile-hero-diagonal-rise), 100vw)));
+    }
+  }
+
+  /* Container-Einheiten vermeiden selbst die kleine Abweichung klassischer
+     Scrollbars zwischen Viewport- und tatsaechlicher Hero-Breite. */
+  @supports (container-type: inline-size) and (width: 1cqi) and (transform: rotate(atan2(1px, 1px))) {
+    html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+      container-type: inline-size;
+    }
+
+    html.home-theme-dark .mobile-hero-kicker {
+      transform: rotate(calc(atan2(var(--mobile-hero-diagonal-rise), 100cqi)));
+    }
   }
 
   html.home-theme-dark .mobile-hero-signature {
@@ -890,6 +911,7 @@ html.home-theme-dark .fork-path:hover {
    Originalproportion und bleibt zentriert; der Keil laeuft weiter vollbreit. */
 @media (max-width: 900px) and (min-aspect-ratio: 2 / 3) {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --mobile-hero-diagonal-rise: clamp(109.76px, 13.72svh, 112.94px);
     min-height: clamp(800px, 100svh, 823px);
   }
 
