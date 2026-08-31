@@ -95,7 +95,7 @@ html.home-theme-dark .home-hero-stack > .hero--gate-empty {
 }
 
 /* Die neuen Textvarianten gehoeren ausschliesslich zur mobilen Bildbuehne. */
-html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .gate-region-mobile, .mobile-hero-link) {
+html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .mobile-hero-link) {
   display: none;
 }
 
@@ -629,17 +629,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-region {
-    max-width: 36ch;
-    margin: clamp(11px, 3vw, 15px) 0 0;
-    color: var(--home-on-dark-2);
-    font-size: clamp(.9rem, 3.75vw, 1rem);
-    font-weight: 600;
-    line-height: 1.42;
-    text-wrap: balance;
-  }
-
-  html.home-theme-dark .gate-region-mobile {
-    display: block;
+    display: none;
   }
 
   html.home-theme-dark .mobile-hero-link {
