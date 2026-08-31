@@ -469,48 +469,65 @@ export function footerTemplateData(base) {
 }
 
 // AP-19 – Startseiten-FAQ aus content/faq-startseite.json.
-// Sichtbare <details>-Liste UND FAQPage-Schema aus DERSELBEN Quelle → identischer Text.
+// Sichtbare Liste UND FAQPage-Schema aus DERSELBEN Quelle → identischer Text.
 //
-// AP-94: Ab FAQ_VISIBLE Fragen wandert der Rest in einen Ausklapper. Bewusst ein
+// AP-F9: Die Fragen stehen in Gruppen mit Zwischentiteln, Aufbau und Klassen wie in
+// der fruheren Privatkunden-FAQ (.private-faq-groups > .private-faq-group). Die
+// Akkordeon-Animation in privat-form.js haengt an [data-private-faq-group].
+//
+// AP-94: Ab "sichtbareGruppen" wandert der Rest in einen Ausklapper. Bewusst ein
 // verschachteltes <details> und kein JS: alle Fragen bleiben serverseitig im HTML
 // und damit fuer Suchmaschinen wie fuer Antwortmaschinen lesbar - eingeklappter
 // Inhalt wird indexiert, per Klick nachgeladener nicht. Das FAQPage-Schema unten
 // listet unveraendert ALLE Fragen; es darf nichts enthalten, was nicht auf der
 // Seite steht, und eingeklappt zaehlt als vorhanden.
-const FAQ_VISIBLE = 8;
 
 const faqItem = (f) => `<details>
-        <summary><span>${esc(f.frage)}</span><span class="chev" aria-hidden="true"></span></summary>
-        <div class="faq-body"><p>${esc(f.antwort)}</p></div>
-      </details>`;
+            <summary><span>${esc(f.frage)}</span><span class="chev" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>${esc(f.antwort)}</p></div>
+          </details>`;
 
-export function renderFaqDetails(faq) {
-  const items = faq.map(faqItem);
-  if (items.length <= FAQ_VISIBLE) return items.join('\n      ');
+const faqGruppe = (g) => {
+  const titelId = `faq-gruppe-${g.id}-title`;
+  return `<section class="private-faq-group" aria-labelledby="${titelId}">
+        <h3 id="${titelId}">${esc(g.titel)}</h3>
+        <div class="faq-list private-faq-list" data-private-faq-group>
+          ${g.faq.map(faqItem).join('\n          ')}
+        </div>
+      </section>`;
+};
 
-  const rest = items.slice(FAQ_VISIBLE);
-  const label = rest.length === 1
+const faqRaster = (gruppen) => `<div class="private-faq-groups reveal">
+      ${gruppen.map(faqGruppe).join('\n      ')}
+    </div>`;
+
+export function renderFaqDetails(gruppen, sichtbareGruppen = gruppen.length) {
+  const offen = gruppen.slice(0, sichtbareGruppen);
+  const verdeckt = gruppen.slice(sichtbareGruppen);
+  if (!verdeckt.length) return faqRaster(gruppen);
+
+  const anzahl = verdeckt.reduce((n, g) => n + g.faq.length, 0);
+  const label = anzahl === 1
     ? 'Eine weitere Frage anzeigen'
-    : `Weitere ${rest.length} Fragen anzeigen`;
+    : `Weitere ${anzahl} Fragen anzeigen`;
 
-  return [
-    ...items.slice(0, FAQ_VISIBLE),
-    `<details class="faq-more">
-        <summary>
-          <span class="faq-more-open">${label}</span>
-          <span class="faq-more-close">Weniger anzeigen</span>
-          <span class="chev" aria-hidden="true"></span>
-        </summary>
-        ${rest.join('\n        ')}
-      </details>`,
-  ].join('\n      ');
+  return `${faqRaster(offen)}
+
+    <details class="faq-more faq-more--gruppen">
+      <summary>
+        <span class="faq-more-open">${label}</span>
+        <span class="faq-more-close">Weniger anzeigen</span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      ${faqRaster(verdeckt)}
+    </details>`;
 }
 
-export function renderFaqSchema(faq) {
+export function renderFaqSchema(gruppen) {
   const json = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faq.map((f) => ({
+    mainEntity: gruppen.flatMap((g) => g.faq).map((f) => ({
       '@type': 'Question',
       name: f.frage,
       acceptedAnswer: { '@type': 'Answer', text: f.antwort },

@@ -130,16 +130,19 @@ async function injectFaq() {
   const FAQ_FILE = path.join(REPO_ROOT, 'content', 'faq-startseite.json');
   let data;
   try { data = await readJson(FAQ_FILE); } catch { console.warn('  ⚠ content/faq-startseite.json fehlt – FAQ nicht injiziert.'); return; }
-  const faq = Array.isArray(data?.faq) ? data.faq : [];
-  if (!faq.length) { console.warn('  ⚠ faq-startseite.json: leeres "faq"-Array.'); return; }
+  // AP-F9: Die Fragen stehen in Gruppen mit Zwischentiteln.
+  const gruppen = Array.isArray(data?.gruppen) ? data.gruppen : [];
+  if (!gruppen.length) { console.warn('  ⚠ faq-startseite.json: leeres "gruppen"-Array.'); return; }
+  const sichtbar = Number.isInteger(data?.sichtbareGruppen) ? data.sichtbareGruppen : gruppen.length;
+  const anzahl = gruppen.reduce((n, g) => n + (g.faq?.length || 0), 0);
   const p = path.join(REPO_ROOT, 'index.html');
   let html = await readFile(p, 'utf8');
-  const vis = injectBetween(html, '<!-- BUILD:faq:start -->', '<!-- BUILD:faq:end -->', renderFaqDetails(faq));
+  const vis = injectBetween(html, '<!-- BUILD:faq:start -->', '<!-- BUILD:faq:end -->', renderFaqDetails(gruppen, sichtbar));
   if (vis) html = vis; else console.warn('  ⚠ index.html: FAQ-Marker fehlen');
-  const sch = injectBetween(html, '<!-- BUILD:faq-schema:start -->', '<!-- BUILD:faq-schema:end -->', renderFaqSchema(faq));
+  const sch = injectBetween(html, '<!-- BUILD:faq-schema:start -->', '<!-- BUILD:faq-schema:end -->', renderFaqSchema(gruppen));
   if (sch) html = sch; else console.warn('  ⚠ index.html: FAQ-Schema-Marker fehlen');
   await writeFile(p, html, 'utf8');
-  console.log(`✅ FAQ (${faq.length} Fragen) in index.html injiziert – sichtbar + Schema aus einer Quelle.`);
+  console.log(`✅ FAQ (${anzahl} Fragen in ${gruppen.length} Gruppen, ${sichtbar} offen) in index.html injiziert – sichtbar + Schema aus einer Quelle.`);
 }
 
 // AP-18: Header-Submenu aus der EINEN Quelle in die Handseiten injizieren.

@@ -68,8 +68,11 @@ in allen HTML-Dateien hochzählen** (wie bei der CSS-Datei), sonst liefert der B
 
 ## Startseiten-FAQ (AP-19)
 
-Die FAQ auf der Startseite steht in `content/faq-startseite.json` (Array `faq` aus
-`{frage, antwort}`, Antworten answer-first, 40–60 Wörter). `build-leistungen.mjs` generiert
+Die FAQ auf der Startseite steht in `content/faq-startseite.json`. Seit AP-F9 in Gruppen:
+`gruppen` aus `{id, titel, faq}`, darin `faq` aus `{frage, antwort}` (Antworten
+answer-first, 40–60 Wörter). `sichtbareGruppen` legt fest, wie viele Gruppen offen stehen –
+die übrigen liegen hinter einem Schalter, bleiben aber im ausgelieferten HTML und damit für
+Antwortmaschinen lesbar. `build-leistungen.mjs` generiert
 daraus **beides** in `index.html`: die sichtbare `<details>`-Liste (zwischen
 `<!-- BUILD:faq -->`) **und** das `FAQPage`-Schema (zwischen `<!-- BUILD:faq-schema -->`) –
 aus derselben Quelle, also garantiert zeichengleich. Nie das Schema oder die Liste von Hand
