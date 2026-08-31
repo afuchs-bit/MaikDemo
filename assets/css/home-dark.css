@@ -94,6 +94,11 @@ html.home-theme-dark .home-hero-stack > .hero--gate-empty {
   overflow: visible;
 }
 
+/* Die neuen Textvarianten gehoeren ausschliesslich zur mobilen Bildbuehne. */
+html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .gate-region-mobile, .mobile-hero-link) {
+  display: none;
+}
+
 html.home-theme-dark .hero-empty-media {
   position: absolute;
   inset: 0 0 25%;
@@ -454,12 +459,17 @@ html.home-theme-dark .fork-path:hover {
 
 /* Homepage mobil: grosses Markenpanel am Einstieg, kompakter Header beim Scrollen. */
 @media (max-width: 900px) {
+  html.home-theme-dark .home-hero-stack {
+    grid-template-rows: auto auto;
+  }
+
   /* Referenznahe mobile Bildbuehne: Das Foto bleibt rein dekorativ. Die
      dunkle Leerflaeche und ihre feine Kante entstehen ohne zusaetzliches
      Markup aus zwei deckungsgleichen, leicht versetzten Keilen. */
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
     --hero-composition-offset-y: 20px;
     --hero-image-wheel-offset-y: clamp(28px, 8vw, 36px);
+    min-height: clamp(700px, 100svh, 823px);
     isolation: isolate;
     overflow: hidden;
   }
@@ -499,6 +509,116 @@ html.home-theme-dark .fork-path:hover {
     z-index: 3;
     height: 49%;
     background: var(--bg-hero);
+  }
+
+  /* AP-138: Auf Mobil wird die freie dunkle Keilflaeche zur eigentlichen
+     Positionierung. Alle Zeilen bleiben unter der Bildkante; nur die letzte
+     Titelzeile folgt ihr mit einem kleinen horizontalen Versatz. */
+  html.home-theme-dark .hero--gate-content {
+    position: relative;
+    overflow: visible;
+  }
+
+  html.home-theme-dark .hero--gate-content .gate-head {
+    position: absolute;
+    right: clamp(20px, 6vw, 44px);
+    bottom: calc(100% + clamp(18px, 5vw, 36px));
+    left: clamp(20px, 6vw, 44px);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    max-width: 560px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  html.home-theme-dark .mobile-hero-kicker {
+    display: block;
+    margin: 0;
+    color: var(--home-dark-accent);
+    font-size: clamp(.68rem, 2.9vw, .8rem);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: .115em;
+    text-transform: uppercase;
+  }
+
+  html.home-theme-dark .mobile-hero-kicker span {
+    display: inline-block;
+    margin-inline: .18em;
+    color: var(--home-lime);
+  }
+
+  html.home-theme-dark .gate-head .hero-title {
+    max-width: 100%;
+    margin: clamp(8px, 2.3vw, 12px) 0 0;
+    color: var(--home-on-dark);
+    font-family: var(--display);
+    font-size: clamp(2.05rem, 10.25vw, 2.8rem);
+    font-weight: 900;
+    line-height: .93;
+    letter-spacing: -.048em;
+  }
+
+  html.home-theme-dark .gate-title-desktop,
+  html.home-theme-dark .gate-region-desktop {
+    display: none;
+  }
+
+  html.home-theme-dark .gate-title-mobile {
+    display: block;
+  }
+
+  html.home-theme-dark .gate-title-mobile > span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  html.home-theme-dark .gate-title-mobile .mobile-hero-title-shift {
+    transform: translateX(clamp(12px, 4.6vw, 22px));
+  }
+
+  html.home-theme-dark .gate-head .gate-title-mobile em {
+    color: var(--home-lime);
+    font-style: normal;
+  }
+
+  html.home-theme-dark .gate-region {
+    max-width: 36ch;
+    margin: clamp(11px, 3vw, 15px) 0 0;
+    color: var(--home-on-dark-2);
+    font-size: clamp(.9rem, 3.75vw, 1rem);
+    font-weight: 600;
+    line-height: 1.42;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .gate-region-mobile {
+    display: block;
+  }
+
+  html.home-theme-dark .mobile-hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .48em;
+    margin-top: clamp(9px, 2.6vw, 13px);
+    padding-block: 7px;
+    color: var(--home-dark-accent);
+    font-size: clamp(.88rem, 3.65vw, .98rem);
+    font-weight: 900;
+    line-height: 1.2;
+    text-decoration: underline;
+    text-decoration-color: rgba(182,217,122,.55);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  html.home-theme-dark .mobile-hero-link:hover {
+    color: var(--home-yellow);
+    text-decoration-color: currentColor;
   }
 
   html.home-theme-dark.home-header-morph {

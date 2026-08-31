@@ -29,7 +29,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260825i" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260830l" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260831f" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -276,8 +276,8 @@ html.home-theme-dark body { background-color: #171916; }
 
 <!-- ============ HERO / ZIELGRUPPENWEICHE (AP-82) ============ -->
 <div class="home-hero-stack">
-<section class="hero hero--gate hero--gate-empty" aria-hidden="true">
-  <picture class="hero-empty-media">
+<div class="hero hero--gate hero--gate-empty">
+  <picture class="hero-empty-media" aria-hidden="true">
     <source media="(max-width: 900px)" type="image/webp"
             srcset="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp 1023w, assets/img/hero/hero-fahrzeug-palmengarten-v10-mobile-2046-q92.webp 2046w"
             sizes="100vw">
@@ -286,18 +286,30 @@ html.home-theme-dark body { background-color: #171916; }
     <img src="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.webp"
          alt="" width="1023" height="1537" fetchpriority="high" decoding="async">
   </picture>
-</section>
+</div>
 
 <section class="hero hero--gate hero--gate-content" aria-labelledby="gate-title">
 
   <div class="gate-head reveal">
+    <p class="mobile-hero-kicker">Familienbetrieb <span aria-hidden="true">·</span> Meisterbetrieb</p>
     <h1 class="hero-title type-marketing-title" id="gate-title">
-      <span class="line">Gärten gestalten.</span>
-      <span class="line">Außenanlagen, <em>die bleiben.</em></span>
+      <span class="gate-title-desktop">
+        <span class="line">Gärten gestalten.</span>
+        <span class="line">Außenanlagen, <em>die bleiben.</em></span>
+      </span>
+      <span class="gate-title-mobile">
+        <span>Ihr Partner für</span>
+        <span>alles rund um</span>
+        <span class="mobile-hero-title-shift">den <em>Garten</em></span>
+      </span>
     </h1>
     <p class="gate-region">
-      Meisterbetrieb für Garten- und Landschaftsbau in Herne, Bochum, Recklinghausen und Umgebung.
+      <span class="gate-region-desktop">Meisterbetrieb für Garten- und Landschaftsbau in Herne, Bochum, Recklinghausen und Umgebung.</span>
+      <span class="gate-region-mobile">Seit 2003 persönlich beraten, individuell geplant und fachgerecht umgesetzt.</span>
     </p>
+    <a class="mobile-hero-link" href="privatkunden/#anfrage">
+      Gartenprojekt besprechen <span aria-hidden="true">→</span>
+    </a>
   </div>
 
   <div class="gate-doors reveal">
