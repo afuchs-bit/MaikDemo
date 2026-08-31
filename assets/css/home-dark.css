@@ -537,13 +537,15 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .mobile-hero-kicker {
+    --mobile-hero-kicker-inset: clamp(8px, 2.5vw, 20px);
     position: absolute;
-    top: calc(51% + var(--hero-composition-offset-y) + 8px);
-    left: clamp(8px, 2.5vw, 20px);
+    top: calc(51% + var(--hero-composition-offset-y) + 6px);
+    left: var(--mobile-hero-kicker-inset);
     z-index: 4;
-    display: flex;
+    display: grid;
+    grid-template-columns: max-content minmax(.45em, 1fr) max-content minmax(.45em, 1fr) max-content;
     align-items: baseline;
-    gap: .32em;
+    width: calc(100% - var(--mobile-hero-kicker-inset));
     margin: 0;
     font-size: clamp(.55rem, 2.15vw, .7rem);
     line-height: 1.1;
@@ -565,6 +567,8 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .mobile-hero-kicker-dot {
     color: var(--home-lime);
+    font-weight: 900;
+    text-align: center;
   }
 
   html.home-theme-dark .gate-head .hero-title {
@@ -870,18 +874,14 @@ html.home-theme-dark .fork-path:hover {
 @media (max-width: 359px) {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
     --mobile-hero-kicker-angle: 17.9deg;
-    min-height: clamp(716px, 100svh, 823px);
   }
 
   html.home-theme-dark .mobile-hero-kicker {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
-    font-size: .62rem;
+    font-size: .5rem;
   }
 
-  html.home-theme-dark .mobile-hero-trusts {
-    margin-left: clamp(26px, 9vw, 34px);
+  html.home-theme-dark .hero--gate-content .gate-head {
+    bottom: calc(100% + 12px);
   }
 }
 
