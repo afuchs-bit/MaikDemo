@@ -591,6 +591,7 @@ html.home-theme-dark .fork-path:hover {
     font-weight: 800;
     line-height: .93;
     letter-spacing: -.048em;
+    transform: translateY(-8px);
   }
 
   html.home-theme-dark .gate-title-desktop,
