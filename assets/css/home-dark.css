@@ -461,16 +461,20 @@ html.home-theme-dark .fork-path:hover {
 @media (max-width: 900px) {
   html.home-theme-dark .home-hero-stack {
     grid-template-rows: auto auto;
+    --hero-composition-offset-y: 20px;
+    --hero-image-wheel-offset-y: clamp(28px, 8vw, 36px);
+    --mobile-hero-diagonal-rise: clamp(96.04px, 13.72svh, 112.94px);
+    --mobile-hero-slope-angle: 7.1deg;
+    --mobile-hero-gutter: clamp(20px, 6vw, 44px);
+    --mobile-hero-bottom-gap: clamp(18px, 5vw, 36px);
+    --mobile-hero-cta-width: clamp(122px, 32vw, 176px);
+    --mobile-hero-cta-height: clamp(116px, 31vw, 154px);
   }
 
   /* Referenznahe mobile Bildbuehne: Das Foto bleibt rein dekorativ. Die
      dunkle Leerflaeche und ihre feine Kante entstehen ohne zusaetzliches
      Markup aus zwei deckungsgleichen, leicht versetzten Keilen. */
   html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --hero-composition-offset-y: 20px;
-    --hero-image-wheel-offset-y: clamp(28px, 8vw, 36px);
-    --mobile-hero-diagonal-rise: clamp(96.04px, 13.72svh, 112.94px);
-    --mobile-hero-kicker-angle: 7.1deg;
     min-height: clamp(700px, 100svh, 823px);
     isolation: isolate;
     overflow: hidden;
@@ -523,15 +527,16 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .hero--gate-content .gate-head {
     position: absolute;
-    right: clamp(20px, 6vw, 44px);
-    bottom: calc(100% + clamp(18px, 5vw, 36px));
-    left: clamp(20px, 6vw, 44px);
+    right: var(--mobile-hero-gutter);
+    bottom: calc(100% + var(--mobile-hero-bottom-gap));
+    left: var(--mobile-hero-gutter);
     z-index: 4;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: auto;
-    max-width: 560px;
+    max-width: none;
+    min-height: var(--mobile-hero-cta-height);
     margin: 0;
     padding: 0;
     text-align: left;
@@ -554,27 +559,32 @@ html.home-theme-dark .fork-path:hover {
     line-height: 1.1;
     letter-spacing: .02em;
     white-space: nowrap;
-    transform: rotate(var(--mobile-hero-kicker-angle));
+    transform: rotate(var(--mobile-hero-slope-angle));
     transform-origin: left top;
   }
 
   /* AP-144: Der Fallback oben bleibt fuer alte Browser erhalten. Moderne
      Browser leiten den Winkel direkt aus derselben Steigung wie der Keil ab. */
   @supports (transform: rotate(atan2(1px, 1px))) {
+    html.home-theme-dark .home-hero-stack {
+      --mobile-hero-slope-angle: calc(atan2(var(--mobile-hero-diagonal-rise), 100vw));
+    }
+
     html.home-theme-dark .mobile-hero-kicker {
-      transform: rotate(calc(atan2(var(--mobile-hero-diagonal-rise), 100vw)));
+      transform: rotate(var(--mobile-hero-slope-angle));
     }
   }
 
   /* Container-Einheiten vermeiden selbst die kleine Abweichung klassischer
      Scrollbars zwischen Viewport- und tatsaechlicher Hero-Breite. */
   @supports (container-type: inline-size) and (width: 1cqi) and (transform: rotate(atan2(1px, 1px))) {
-    html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    html.home-theme-dark .home-hero-stack {
       container-type: inline-size;
+      --mobile-hero-slope-angle: calc(atan2(var(--mobile-hero-diagonal-rise), 100cqi));
     }
 
     html.home-theme-dark .mobile-hero-kicker {
-      transform: rotate(calc(atan2(var(--mobile-hero-diagonal-rise), 100cqi)));
+      transform: rotate(var(--mobile-hero-slope-angle));
     }
   }
 
@@ -595,11 +605,12 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-head .hero-title {
+    width: 100%;
     max-width: 100%;
     margin: clamp(8px, 2.3vw, 12px) 0 0;
     color: var(--home-on-dark);
     font-family: var(--display);
-    font-size: clamp(2.05rem, 10.25vw, 2.8rem);
+    font-size: clamp(2rem, 8.8vw, 2.55rem);
     font-weight: 900;
     line-height: .93;
     letter-spacing: -.048em;
@@ -620,7 +631,8 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-title-mobile .mobile-hero-title-shift {
-    transform: translateX(clamp(12px, 4.6vw, 22px));
+    max-width: calc(100% - var(--mobile-hero-cta-width) + var(--mobile-hero-gutter) - 12px);
+    transform: none;
   }
 
   html.home-theme-dark .gate-head .gate-title-mobile em {
@@ -633,24 +645,103 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .mobile-hero-link {
-    display: inline-flex;
-    align-items: center;
-    gap: .48em;
-    margin-top: clamp(9px, 2.6vw, 13px);
-    padding-block: 7px;
-    color: var(--home-dark-accent);
-    font-size: clamp(.88rem, 3.65vw, .98rem);
+    position: absolute;
+    right: calc(-1 * var(--mobile-hero-gutter));
+    bottom: calc(-1 * var(--mobile-hero-bottom-gap));
+    z-index: 2;
+    display: flex;
+    width: var(--mobile-hero-cta-width);
+    min-height: var(--mobile-hero-cta-height);
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding:
+      clamp(34px, 8vw, 48px)
+      clamp(14px, 3.2vw, 22px)
+      clamp(25px, 5.2vw, 34px);
+    isolation: isolate;
+    color: #171916;
+    font-family: var(--display);
+    font-size: clamp(.9rem, 2.3vw, 1.04rem);
     font-weight: 900;
-    line-height: 1.2;
-    text-decoration: underline;
-    text-decoration-color: rgba(182,217,122,.55);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
+    line-height: 1.08;
+    text-decoration: none;
+    text-wrap: balance;
   }
 
-  html.home-theme-dark .mobile-hero-link:hover {
-    color: var(--home-yellow);
-    text-decoration-color: currentColor;
+  html.home-theme-dark .mobile-hero-link-surface {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    box-shadow:
+      inset 1px 0 rgba(255,255,255,.5),
+      inset 0 -1px rgba(23,25,22,.12);
+  }
+
+  html.home-theme-dark .mobile-hero-link-surface::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -50%;
+    left: 0;
+    background: linear-gradient(145deg, #F2F1EA 0%, #E4E5DE 72%);
+    transform: skewY(var(--mobile-hero-slope-angle));
+    transform-origin: left top;
+    transition: filter .22s ease;
+  }
+
+  html.home-theme-dark .mobile-hero-link-surface::after {
+    content: "";
+    position: absolute;
+    top: clamp(22px, 5.6vw, 34px);
+    left: clamp(14px, 3.2vw, 22px);
+    width: clamp(24px, 6vw, 34px);
+    height: 2px;
+    background: #4A7A10;
+    transform: rotate(var(--mobile-hero-slope-angle));
+    transform-origin: left center;
+  }
+
+  html.home-theme-dark .mobile-hero-link-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  html.home-theme-dark .mobile-hero-link-arrow {
+    position: absolute;
+    right: clamp(12px, 2.8vw, 18px);
+    bottom: clamp(10px, 2.4vw, 16px);
+    z-index: 1;
+    color: #4A7A10;
+    font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+    line-height: 1;
+    transition: transform .22s ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    html.home-theme-dark .mobile-hero-link:hover .mobile-hero-link-surface::before {
+      filter: brightness(1.035);
+    }
+
+    html.home-theme-dark .mobile-hero-link:hover .mobile-hero-link-arrow {
+      transform: translateX(4px);
+    }
+  }
+
+  html.home-theme-dark .mobile-hero-link:active .mobile-hero-link-surface::before {
+    filter: brightness(.97);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.home-theme-dark .mobile-hero-link-surface::before,
+    html.home-theme-dark .mobile-hero-link-arrow {
+      transition: none;
+    }
   }
 
   html.home-theme-dark.home-header-morph {
@@ -801,58 +892,58 @@ html.home-theme-dark .fork-path:hover {
 }
 
 @media (max-width: 860px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 7.6deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 7.6deg;
   }
 }
 
 @media (max-width: 800px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 8.2deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 8.2deg;
   }
 }
 
 @media (max-width: 700px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 9.4deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 9.4deg;
   }
 }
 
 @media (max-width: 620px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 10.6deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 10.6deg;
   }
 }
 
 @media (max-width: 560px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 11.7deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 11.7deg;
   }
 }
 
 @media (max-width: 520px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 12.6deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 12.6deg;
   }
 }
 
 @media (max-width: 500px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 13.3deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 13.3deg;
   }
 }
 
 @media (max-width: 480px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 13.7deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 13.7deg;
   }
 }
 
 /* Smartphone-Einstieg: Die schwebende Markenkachel nutzt den verfuegbaren
    Raum fast vollstaendig. Der kompakte Scroll-Header bleibt unveraendert. */
 @media (max-width: 430px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 15.2deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 15.2deg;
   }
 
   html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) {
@@ -873,37 +964,38 @@ html.home-theme-dark .fork-path:hover {
 }
 
 @media (max-width: 390px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 16.8deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 16.8deg;
   }
 }
 
 @media (max-width: 360px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 17.6deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 17.6deg;
   }
 }
 
 @media (max-width: 359px) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
-    --mobile-hero-kicker-angle: 17.9deg;
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 17.9deg;
+    --mobile-hero-bottom-gap: 12px;
   }
 
   html.home-theme-dark .mobile-hero-kicker {
     font-size: .5rem;
   }
 
-  html.home-theme-dark .hero--gate-content .gate-head {
-    bottom: calc(100% + 12px);
-  }
 }
 
 /* Das Hochformat kann breite Mobil- und Tablet-Viewports nicht fuellen, ohne
    Fahrzeug oder Palme stark abzuschneiden. Die Bildbox behaelt dort ihre
    Originalproportion und bleibt zentriert; der Keil laeuft weiter vollbreit. */
 @media (max-width: 900px) and (min-aspect-ratio: 2 / 3) {
-  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+  html.home-theme-dark .home-hero-stack {
     --mobile-hero-diagonal-rise: clamp(109.76px, 13.72svh, 112.94px);
+  }
+
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
     min-height: clamp(800px, 100svh, 823px);
   }
 
