@@ -173,6 +173,9 @@ html.home-theme-dark .hero-proof-collage {
   width: clamp(158px, 11.5vw, 176px);
   height: 100%;
   min-height: 96px;
+  /* Die Kartenschatten bleiben vertikal sichtbar, duerfen aber nicht in die
+     optisch vermessenen horizontalen Zwischenraeume hineinragen. */
+  clip-path: inset(-24px 0);
 }
 
 html.home-theme-dark .hero-proof-photo {
@@ -217,7 +220,7 @@ html.home-theme-dark .hero-proof-photo img {
 
 html.home-theme-dark .hero-proof-location-text,
 html.home-theme-dark .hero-proof-customer-text {
-  min-width: 0;
+  min-width: max-content;
   margin: 0;
   color: var(--home-on-dark-2);
   font-family: var(--display);
