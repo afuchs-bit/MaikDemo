@@ -262,6 +262,12 @@ html.home-theme-dark .section-proof .proof-map .m-fill {
   fill: var(--bg-soft);
 }
 
+/* AP-F12: Kreisgrenzen auf Dunkel. --green-500 waere hier zu kraeftig fuer eine
+   Nebenlinie; --home-lime traegt die Karte, die Deckkraft kommt aus mapFadeKrs. */
+html.home-theme-dark .section-proof .proof-map .m-krs {
+  stroke: var(--home-lime);
+}
+
 html.home-theme-dark .section-proof .proof-map .m-inner {
   stroke: var(--home-lime);
 }

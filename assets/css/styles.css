@@ -806,6 +806,16 @@ p  { margin: 0; }
    mitgewachsen, damit die Darstellung auf dem Bildschirm gleich bleibt. */
 .proof-map .map { display: block; overflow: visible; }
 .proof-map .m-fill { fill: var(--green-100); opacity: 0; }
+/* AP-F12: Kreisgrenzen. Bewusst schwaecher als .m-inner (Einsatzgebiet), damit die
+   Rangfolge stimmt: Landesgrenze kraeftig, Kreise dezent, Einsatzgebiet hervorgehoben.
+   5 Einheiten sind bei rund 0,09 px/Einheit etwa ein halber Bildschirmpixel. */
+.proof-map .m-krs {
+  fill: none;
+  stroke: var(--green-500);
+  stroke-width: 5;
+  stroke-linejoin: round;
+  opacity: 0;
+}
 .proof-map .m-inner { fill: none; stroke: var(--green-500); stroke-width: 6.6; opacity: 0; stroke-linejoin: round; }
 .proof-map .m-outline { fill: none; stroke: var(--green-700); stroke-width: 16; stroke-linejoin: round; stroke-linecap: round; }
 .proof-map .m-node { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.6); }
@@ -820,6 +830,7 @@ p  { margin: 0; }
 
 /* Sequenz – getriggert vom bestehenden .reveal-Observer (is-in) */
 .proof-map.is-in .m-outline { animation: mapDraw 1150ms cubic-bezier(.33,.9,.28,1) forwards; }
+.proof-map.is-in .m-krs     { animation: mapFadeKrs 620ms ease-out 420ms forwards; }
 .proof-map.is-in .m-fill    { animation: mapFade 500ms ease-out 620ms forwards; }
 .proof-map.is-in .m-inner   { animation: mapFadeThin 600ms ease-out 900ms forwards; }
 .proof-map.is-in .m-node    { animation: mapPop 460ms cubic-bezier(.2,1.5,.4,1) forwards; }
@@ -827,6 +838,7 @@ p  { margin: 0; }
 .proof-map.is-in .m-pulse   { animation: mapPulse 1500ms cubic-bezier(.2,.7,.3,1) 1620ms forwards; }
 
 @keyframes mapDraw { to { stroke-dashoffset: 0; } }
+@keyframes mapFadeKrs { to { opacity: .42; } }
 @keyframes mapFade { to { opacity: 1; } }
 @keyframes mapFadeThin { to { opacity: .38; } }
 @keyframes mapPop { to { opacity: 1; transform: scale(1); } }
@@ -954,7 +966,7 @@ p  { margin: 0; }
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: clamp(220px, 34vh, 320px);
+    max-height: clamp(260px, 46vh, 348px);
     margin: 0 auto;
   }
   .proof-trust { padding: clamp(24px, 2.3vw, 30px); gap: clamp(14px, 1.7vw, 18px); }
