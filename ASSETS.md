@@ -36,6 +36,10 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   `7FB054C0F4BEA644B4A4A014D6D8581AAD7E6DCB639049D17A578DC44F8E6FD4`.
 
 ## Hero
+- `assets/img/icons/rohdich-standort.svg` – vom Auftraggeber bereitgestelltes
+  Standortzeichen mit abstrahierter Rohdich-Dreiblüte für die Vertrauensgruppe
+  im Homepage-Hero. Unverändert übernommen, SHA-256:
+  `7532F6E3793D2E0F6F54E5D55EF96D9A2ED12316AE8F5FEC6023221C9B75A3F3`.
 - **Foto im oberen Homepage-Hero:** Aus der vom Auftraggeber bereitgestellten
   Datei `maik-rohdich-hero-aufschrift-kraeftigere-farben.png` mechanisch und ohne Beschnitt,
   Filter oder generative Veränderung abgeleitet. Original: 1023 × 1537 px,
