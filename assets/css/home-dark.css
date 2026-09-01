@@ -605,7 +605,9 @@ html.home-theme-dark .fork-path:hover {
     --mobile-hero-cta-inset: clamp(8px, 2.5vw, 16px);
     --mobile-hero-cta-gap: clamp(8px, 2vw, 12px);
     --mobile-hero-cta-edge-inset: clamp(10px, 3.25vw, 12px);
+    --mobile-hero-cta-visual-inset: clamp(2.5px, .75vw, 4px);
     --mobile-hero-title-center-shift: clamp(36.5px, calc(26.82px + 3.025vw), 43px);
+    --mobile-hero-title-optical-lift: clamp(6px, calc(-12.4px + 5.75vw), 10px);
     grid-template-rows: auto auto;
   }
 
@@ -766,9 +768,13 @@ html.home-theme-dark .fork-path:hover {
     font-weight: 700;
     line-height: .93;
     letter-spacing: -.028em;
-    /* AP-168: Die sichtbare H1-Mitte liegt auf derselben Horizontalen wie
-       die Mitte des unveraendert positionierten mobilen CTA. */
-    transform: translateY(calc(-18px + var(--mobile-hero-title-center-shift)));
+    /* AP-169: Die H1 fuehrt optisch leicht oberhalb der mathematischen
+       CTA-Mitte und folgt dadurch der Bewegung der Hero-Diagonale. */
+    transform: translateY(calc(
+      -18px
+      + var(--mobile-hero-title-center-shift)
+      - var(--mobile-hero-title-optical-lift)
+    ));
   }
 
   html.home-theme-dark .gate-title-desktop,
@@ -827,10 +833,10 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .mobile-hero-link::after {
     content: "";
     position: absolute;
-    top: var(--mobile-hero-cta-edge-inset);
-    right: 0;
-    bottom: var(--mobile-hero-cta-edge-inset);
-    left: 0;
+    top: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset));
+    right: var(--mobile-hero-cta-visual-inset);
+    bottom: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset));
+    left: var(--mobile-hero-cta-visual-inset);
     z-index: -2;
     border-radius: 2px 14px 2px 14px;
     background: var(--home-lime);
@@ -840,10 +846,10 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .mobile-hero-link::after {
-    top: calc(var(--mobile-hero-cta-edge-inset) + 2px);
-    right: 2px;
-    bottom: calc(var(--mobile-hero-cta-edge-inset) + 2px);
-    left: 2px;
+    top: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset) + 2px);
+    right: calc(var(--mobile-hero-cta-visual-inset) + 2px);
+    bottom: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset) + 2px);
+    left: calc(var(--mobile-hero-cta-visual-inset) + 2px);
     z-index: -1;
     border-radius: 1px 12px 1px 12px;
     background: var(--mobile-hero-cta-surface);
@@ -1172,6 +1178,14 @@ html.home-theme-dark .fork-path:hover {
 @media (min-width: 540px) and (max-width: 900px) {
   html.home-theme-dark .home-hero-stack {
     --mobile-hero-title-center-shift: clamp(43px, calc(21.4px + 4vw), 48px);
+  }
+}
+
+/* Auf breiteren Mobilansichten darf die optische Hierarchie etwas staerker
+   ausfallen, ohne die kompakte Abstimmung kleiner Smartphones zu verlieren. */
+@media (min-width: 431px) and (max-width: 900px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-title-optical-lift: clamp(10px, 1.5vw, 12px);
   }
 }
 
