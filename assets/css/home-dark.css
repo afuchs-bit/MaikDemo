@@ -642,6 +642,7 @@ html.home-theme-dark .fork-path:hover {
     text-decoration: none;
     isolation: isolate;
     box-sizing: border-box;
+    transform: translateY(18px);
   }
 
   html.home-theme-dark .mobile-hero-link::before,
