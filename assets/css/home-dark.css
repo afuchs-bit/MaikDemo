@@ -696,7 +696,13 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty::after {
     z-index: 3;
     height: 49%;
-    background: var(--bg-hero);
+    background-color: var(--bg-hero);
+    background-image:
+      linear-gradient(rgba(23,25,22,.95), rgba(23,25,22,.95)),
+      url("../img/hero/rohdich-blueten-wasserzeichen.png");
+    background-position: 0 0, center 10px;
+    background-repeat: no-repeat, repeat;
+    background-size: 100% 100%, clamp(132px, 38vw, 216px) auto;
   }
 
   /* AP-151: Der Titel folgt der mobilen Hero-Diagonale mit bewusstem Abstand.

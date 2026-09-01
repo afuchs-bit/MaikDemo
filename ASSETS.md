@@ -45,6 +45,13 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   `assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png` isoliert.
   Form und Farben wurden nicht generativ verändert. SHA-256:
   `6D8489157F6CBA0265A864BC55E78AAB6AAE5458BF4A1D6814AA0099354397DA`.
+- `assets/img/hero/rohdich-blueten-wasserzeichen.png` – 512 × 512 px großes,
+  transparentes Hintergrundmotiv für den dunklen mobilen Homepage-Hero. Aus der
+  vom Auftraggeber bereitgestellten Datei `unnamed (6).png` mechanisch
+  freigestellt, auf warmes Steingrau `#D8D1C2` vereinheitlicht und mit
+  transparentem Innenabstand für eine gleichmäßige Wiederholung versehen. Das
+  1254 × 1254 px große Ausgangsbild wird nicht ins Repository übernommen.
+  SHA-256: `60E77C54AF0BACF630288604D3D6DAB9F55F63542E29FEE1707543B028DA29AD`.
 - **Foto im oberen Homepage-Hero:** Aus der vom Auftraggeber bereitgestellten
   Datei `maik-rohdich-hero-aufschrift-kraeftigere-farben.png` mechanisch und ohne Beschnitt,
   Filter oder generative Veränderung abgeleitet. Original: 1023 × 1537 px,
