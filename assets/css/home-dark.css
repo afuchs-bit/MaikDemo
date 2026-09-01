@@ -600,7 +600,7 @@ html.home-theme-dark .fork-path:hover {
     color: var(--home-on-dark);
     font-family: var(--display);
     font-size: clamp(2.05rem, 10.25vw, 2.8rem);
-    font-weight: 900;
+    font-weight: 700;
     line-height: .93;
     letter-spacing: -.048em;
   }
