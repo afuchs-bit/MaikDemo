@@ -513,9 +513,8 @@ html.home-theme-dark .fork-path:hover {
     background: var(--bg-hero);
   }
 
-  /* AP-138: Auf Mobil wird die freie dunkle Keilflaeche zur eigentlichen
-     Positionierung. Alle Zeilen bleiben unter der Bildkante; nur die letzte
-     Titelzeile folgt ihr mit einem kleinen horizontalen Versatz. */
+  /* AP-149: Der Titel beginnt unmittelbar unter der mobilen Hero-Diagonale.
+     Die vertikale Position folgt der auf 700 bis 823px begrenzten Bildbuehne. */
   html.home-theme-dark .hero--gate-content {
     position: relative;
     overflow: visible;
@@ -523,8 +522,9 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .hero--gate-content .gate-head {
     position: absolute;
+    top: clamp(-383px, calc(20px - 49svh), -323px);
     right: clamp(20px, 6vw, 44px);
-    bottom: calc(100% + clamp(18px, 5vw, 36px));
+    bottom: auto;
     left: clamp(20px, 6vw, 44px);
     z-index: 4;
     display: flex;
@@ -600,7 +600,7 @@ html.home-theme-dark .fork-path:hover {
     color: var(--home-on-dark);
     font-family: var(--display);
     font-size: clamp(2.05rem, 10.25vw, 2.8rem);
-    font-weight: 700;
+    font-weight: 800;
     line-height: .93;
     letter-spacing: -.048em;
   }
@@ -617,10 +617,6 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .gate-title-mobile > span {
     display: block;
     white-space: nowrap;
-  }
-
-  html.home-theme-dark .gate-title-mobile .mobile-hero-title-shift {
-    transform: translateX(clamp(12px, 4.6vw, 22px));
   }
 
   html.home-theme-dark .gate-head .gate-title-mobile em {
@@ -893,9 +889,6 @@ html.home-theme-dark .fork-path:hover {
     font-size: .5rem;
   }
 
-  html.home-theme-dark .hero--gate-content .gate-head {
-    bottom: calc(100% + 12px);
-  }
 }
 
 /* Das Hochformat kann breite Mobil- und Tablet-Viewports nicht fuellen, ohne
@@ -911,6 +904,10 @@ html.home-theme-dark .fork-path:hover {
     width: auto;
     max-width: 100%;
     aspect-ratio: 1023 / 1537;
+  }
+
+  html.home-theme-dark .hero--gate-content .gate-head {
+    top: clamp(-383px, calc(20px - 49svh), -372px);
   }
 }
 
