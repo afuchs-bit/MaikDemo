@@ -513,7 +513,7 @@ html.home-theme-dark .fork-path:hover {
     background: var(--bg-hero);
   }
 
-  /* AP-149: Der Titel beginnt unmittelbar unter der mobilen Hero-Diagonale.
+  /* AP-151: Der Titel folgt der mobilen Hero-Diagonale mit bewusstem Abstand.
      Die vertikale Position folgt der auf 700 bis 823px begrenzten Bildbuehne. */
   html.home-theme-dark .hero--gate-content {
     position: relative;
@@ -522,7 +522,7 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .hero--gate-content .gate-head {
     position: absolute;
-    top: clamp(-383px, calc(20px - 49svh), -323px);
+    top: clamp(-359px, calc(44px - 49svh), -299px);
     right: clamp(20px, 6vw, 44px);
     bottom: auto;
     left: clamp(20px, 6vw, 44px);
@@ -907,7 +907,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .hero--gate-content .gate-head {
-    top: clamp(-383px, calc(20px - 49svh), -372px);
+    top: clamp(-359px, calc(44px - 49svh), -348px);
   }
 }
 
