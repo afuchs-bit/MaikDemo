@@ -466,7 +466,7 @@ html.home-theme-dark .fork-path:hover {
     --mobile-hero-cta-width: clamp(84px, 24vw, 128px);
     --mobile-hero-cta-inset: clamp(8px, 2.5vw, 16px);
     --mobile-hero-cta-gap: clamp(8px, 2vw, 12px);
-    --mobile-hero-cta-rise: clamp(22px, 6vw, 30px);
+    --mobile-hero-cta-edge-inset: clamp(10px, 3.25vw, 12px);
     grid-template-rows: auto auto;
   }
 
@@ -634,7 +634,7 @@ html.home-theme-dark .fork-path:hover {
     width: var(--mobile-hero-cta-width);
     min-height: 100px;
     margin: 0;
-    padding: calc(var(--mobile-hero-cta-rise) / 2 + 7px) clamp(6px, 1.8vw, 10px);
+    padding: calc(var(--mobile-hero-cta-edge-inset) + 7px) clamp(6px, 1.8vw, 10px);
     color: var(--mobile-hero-cta-ink);
     font-weight: 800;
     line-height: 1.08;
@@ -648,9 +648,9 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .mobile-hero-link::after {
     content: "";
     position: absolute;
-    top: calc(var(--mobile-hero-cta-rise) / 2);
+    top: var(--mobile-hero-cta-edge-inset);
     right: 0;
-    bottom: calc(var(--mobile-hero-cta-rise) / 2);
+    bottom: var(--mobile-hero-cta-edge-inset);
     left: 0;
     z-index: -2;
     border-radius: 2px 14px 2px 14px;
@@ -661,9 +661,9 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .mobile-hero-link::after {
-    top: calc(var(--mobile-hero-cta-rise) / 2 + 2px);
+    top: calc(var(--mobile-hero-cta-edge-inset) + 2px);
     right: 2px;
-    bottom: calc(var(--mobile-hero-cta-rise) / 2 + 2px);
+    bottom: calc(var(--mobile-hero-cta-edge-inset) + 2px);
     left: 2px;
     z-index: -1;
     border-radius: 1px 12px 1px 12px;
@@ -984,14 +984,6 @@ html.home-theme-dark .fork-path:hover {
     html.home-theme-dark .home-hero-stack {
       container-type: inline-size;
       --mobile-hero-slope-angle: calc(atan2(var(--mobile-hero-diagonal-rise), 100cqi));
-    }
-  }
-}
-
-@supports (height: calc(tan(1deg) * 1px)) {
-  @media (max-width: 900px) {
-    html.home-theme-dark .home-hero-stack {
-      --mobile-hero-cta-rise: calc(tan(var(--mobile-hero-slope-angle)) * var(--mobile-hero-cta-width));
     }
   }
 }
