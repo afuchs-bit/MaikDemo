@@ -848,7 +848,37 @@ p  { margin: 0; }
   margin: 0; color: var(--ink-mute); font-size: 13.5px;
   display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
 }
+/* AP-F13: baseline statt des Standards stretch - der linke Teil ist jetzt zweizeilig,
+   sonst klebte "Sitz in Herne" oben statt auf der Staedtezeile. Bewusst in einer eigenen
+   Media Query ab 700px: die Mobil-Regel oben (max-width: 699px) stapelt zentriert und
+   steht frueher in der Datei - ohne diese Trennung wuerde sie hier ueberschrieben und der
+   Sitz stuende auf dem Telefon linksbuendig unter der zentrierten Staedtezeile. */
+@media (min-width: 700px) {
+  .proof-map-cap { align-items: baseline; }
+}
 .proof-map-cap em { font-style: normal; color: var(--ink-2); }
+
+/* AP-F13: Zusatz des Auftraggebers, bewusst zurueckhaltender als die Staedte.
+   Siehe Nachtrag H.6 im Umsetzungsplan. */
+.proof-map-reach { display: block; margin-top: 3px; color: var(--ink-mute); }
+
+/* AP-F13: Der Sitz war blasser gesetzt als die Staedtenamen. Der Punkt traegt die
+   Farbe der Marke auf der Karte - die Beschriftung wird damit zu deren Legende. */
+.proof-map-cap .proof-map-seat {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink-2);
+  font-weight: 700;
+}
+.proof-map-cap .proof-map-seat::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--coral);
+}
 .proof-map-src { font-size: 11px; color: var(--ink-mute); opacity: .8; letter-spacing: .01em; }
 
 @media (prefers-reduced-motion: reduce) {

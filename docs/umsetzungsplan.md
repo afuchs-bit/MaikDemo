@@ -1035,3 +1035,29 @@ Startseite direkt auf die Leistung, sichtbar wie im `BreadcrumbList`-Schema.
   dem Seitenanfang. Das verstärkt die ohnehin geplante Lazy-Load-Maßnahme.
 - Eine Übersichtsseite unter `/privatkunden/leistungen/` fehlt weiterhin. Ohne sie hat das
   Verzeichnis keine Elternseite.
+
+## H.6 Nachtrag: Deutschlandweite Aufträge auf Anfrage (31.08.2026)
+
+**Ergänzung zu Teil B, Zeile 76.** Dort ist das Einsatzgebiet festgelegt als „Herne (Sitz),
+Bochum, Castrop-Rauxel, Recklinghausen, Gelsenkirchen-Buer, weitere Orte nach Projekt".
+Der Auftraggeber hat am 31.08.2026 ergänzt, dass Maik Rohdich auf Anfrage auch
+deutschlandweit tätig wird. Die Angabe stammt vom Auftraggeber selbst; sie ist damit belegt
+und keine Annahme.
+
+**Wo sie steht.** Ausschließlich in der Bildunterschrift der Einsatzgebiets-Karte auf der
+Startseite: „Auf Anfrage auch deutschlandweit." Das „auch" ist gesetzt, weil der Schwerpunkt
+weiterhin die fünf Städte sind — ohne das Wort widerspräche der Satz der Karte, die
+Nordrhein-Westfalen zeigt.
+
+**Wo sie bewusst nicht steht.** Footer, Kontaktkarte und die FAQ-Antwort „In welchen Orten
+arbeiten Sie?" bleiben unverändert bei „weitere Orte nach Projekt" beziehungsweise „auch
+darüber hinaus". Beides passt zur neuen Angabe und widerspricht ihr nicht.
+
+**`areaServed` bleibt unverändert** bei den fünf Städten — in beiden JSON-LD-Blöcken der
+Startseite und in `AREA_SERVED` in `.github/scripts/lib/render.mjs`. Teil D des Plans setzt
+mit der Ortsliste bewusst ein lokales Signal; „Deutschland" würde es verwässern, ohne dass
+ein Nutzen dagegenstünde.
+
+**Keine weitergehenden Zusagen.** Weder Radius noch Fristen noch Konditionen für Aufträge
+außerhalb des Schwerpunkts sind bekannt. Sie dürfen nicht ergänzt werden, solange der
+Auftraggeber sie nicht nennt.
