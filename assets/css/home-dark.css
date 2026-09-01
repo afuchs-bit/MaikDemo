@@ -522,7 +522,7 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .hero--gate-content .gate-head {
     position: absolute;
-    top: clamp(-359px, calc(44px - 49svh), -299px);
+    top: clamp(-311px, calc(92px - 49svh), -251px);
     right: clamp(20px, 6vw, 44px);
     bottom: auto;
     left: clamp(20px, 6vw, 44px);
@@ -907,7 +907,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .hero--gate-content .gate-head {
-    top: clamp(-359px, calc(44px - 49svh), -348px);
+    top: clamp(-311px, calc(92px - 49svh), -300px);
   }
 }
 
