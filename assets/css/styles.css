@@ -800,20 +800,23 @@ p  { margin: 0; }
 }
 .proof-map svg { width: 100%; height: auto; max-height: 340px; }
 
-/* ----- Einzugsgebiet-Karte (animiert, echte Gemeindegrenzen) ----- */
+/* ----- Einsatzgebiet-Karte (animiert, echte Verwaltungsgrenzen) -----
+   AP-F11: Die viewBox zeigt jetzt ganz NRW und ist 6,6-fach groesser als zuvor
+   (588 -> 3879 Einheiten). Alle Strichstaerken und Radien sind mit diesem Faktor
+   mitgewachsen, damit die Darstellung auf dem Bildschirm gleich bleibt. */
 .proof-map .map { display: block; overflow: visible; }
 .proof-map .m-fill { fill: var(--green-100); opacity: 0; }
-.proof-map .m-inner { fill: none; stroke: var(--green-500); stroke-width: 1; opacity: 0; stroke-linejoin: round; }
-.proof-map .m-outline { fill: none; stroke: var(--green-700); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.proof-map .m-inner { fill: none; stroke: var(--green-500); stroke-width: 6.6; opacity: 0; stroke-linejoin: round; }
+.proof-map .m-outline { fill: none; stroke: var(--green-700); stroke-width: 16; stroke-linejoin: round; stroke-linecap: round; }
 .proof-map .m-node { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.6); }
-.proof-map .m-node circle { fill: #fff; stroke: var(--green-700); stroke-width: 2.4; }
-.proof-map .m-node.seat circle { fill: var(--coral); stroke: #fff; stroke-width: 3; }
+.proof-map .m-node circle { fill: #fff; stroke: var(--green-700); stroke-width: 16; }
+.proof-map .m-node.seat circle { fill: var(--coral); stroke: #fff; stroke-width: 20; }
 .proof-map .m-label {
   opacity: 0; font-family: var(--body); font-size: 12.5px; font-weight: 600; fill: var(--ink-2);
   paint-order: stroke; stroke: var(--bg); stroke-width: 3.5px; stroke-linejoin: round;
 }
 .proof-map .m-label.seat { fill: var(--ink); font-weight: 700; font-size: 13.5px; }
-.proof-map .m-pulse { fill: none; stroke: var(--coral); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.proof-map .m-pulse { fill: none; stroke: var(--coral); stroke-width: 13; opacity: 0; transform-box: fill-box; transform-origin: center; }
 
 /* Sequenz – getriggert vom bestehenden .reveal-Observer (is-in) */
 .proof-map.is-in .m-outline { animation: mapDraw 1150ms cubic-bezier(.33,.9,.28,1) forwards; }
@@ -849,6 +852,49 @@ p  { margin: 0; }
   display: flex; flex-direction: column; gap: clamp(16px, 2vw, 20px);
 }
 .proof-trust-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+/* AP-F11: Block "kleine und einmalige Arbeiten" an der Stelle der Rezensionen.
+   Die Kartenhuelle .proof-trust bleibt unveraendert; hier steht nur der Innenaufbau.
+   Alle Aussagen stammen aus freigegebenen FAQ-Antworten. */
+.proof-trust--klein { justify-content: center; }
+.proof-klein-title {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+  line-height: 1.28;
+}
+.proof-klein-list {
+  display: grid;
+  gap: clamp(14px, 1.6vw, 18px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.proof-klein-list li {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+.proof-klein-list > li > svg {
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  color: var(--green-700);
+}
+.proof-klein-list strong {
+  display: block;
+  color: var(--ink);
+  font-size: .95rem;
+  line-height: 1.3;
+}
+.proof-klein-list p {
+  margin: 5px 0 0;
+  color: var(--ink-2);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+.proof-trust--klein .btn-outline { align-self: start; }
 .google-mark { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
 
 .proof-reviews { position: relative; }

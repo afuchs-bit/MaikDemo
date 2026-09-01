@@ -289,6 +289,12 @@ html.home-theme-dark .section-proof .proof-map .m-label.seat {
   fill: var(--ink);
 }
 
+/* AP-F11: Haken des Kleinauftrags-Blocks. --green-700 ist auf Dunkel das
+   Markenoliv und stuende fast unsichtbar auf der Karte. */
+html.home-theme-dark .section-proof .proof-klein-list > li > svg {
+  color: var(--home-small-accent);
+}
+
 html.home-theme-dark .section-proof .btn-outline {
   color: #171916;
   background: var(--home-lime);
