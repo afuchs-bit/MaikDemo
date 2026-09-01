@@ -3696,6 +3696,20 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 }
 .fork-lede { margin: var(--space-title-subtext) auto 0; max-width: 42ch; color: rgba(255,255,255,.66); font-size: var(--type-section-lead-size); line-height: 1.62; }
 
+/* AP-F14: Gewerbe-Sektion auf eine Aussage und einen CTA reduziert.
+   Als Modifier statt als Aenderung an .fork, damit die Basisregeln der
+   Weiche unangetastet bleiben. Begruendungen der Werte:
+   - padding-bottom: .fork setzt bewusst 0, weil frueher .fork-paths und
+     .fork-foot den Abschluss trugen. .fork-foot bleibt zwar, traegt aber
+     nur 24/32px - zu wenig, seit die Kachelflaeche darueber fehlt.
+   - max-width auf .fork-title: der gewaehlte Satz hat 69 Zeichen. Ohne
+     Begrenzung laeuft er bei --type-section-title-size und --container
+     einzeilig ueber die volle Breite. 26ch halten die Zeilenlaenge lesbar.
+     Wird der Satz getauscht, ist dieser Wert nachzumessen, nicht zu schaetzen. */
+.fork--single { padding-bottom: clamp(40px, 4.6vw, 64px); }
+.fork--single .fork-title { max-width: 26ch; }
+.fork--single .fork-btn { margin-top: clamp(28px, 3.4vw, 40px); }
+
 @media (max-width: 900px) {
   .type-marketing-title,
   .hero-title { font-size: var(--type-marketing-h1-size-mobile); }

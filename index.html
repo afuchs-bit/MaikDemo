@@ -24,7 +24,7 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260831c" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260901a" />
 <link rel="stylesheet" href="assets/css/home-dark.css?v=20260831b" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260812n" />
@@ -523,32 +523,24 @@ html.home-theme-dark body { background-color: #171916; }
   </div>
 </section>
 
-<!-- ============ KONTAKTWEICHE (AP-105/106) ============ -->
-<section class="fork" id="kontakt" aria-labelledby="kontakt-title">
+<!-- ============ GEWERBEKUNDEN (AP-F14) ============
+     Eine Aussage, ein Ziel. Die Sektion erklaert das Gewerbeangebot nicht,
+     sie fuehrt dorthin. Zuvor trug sie denselben Satz doppelt (fork-lede und
+     fork-desc) und fuenf Textebenen vor dem Button.
+     Die ID kontakt bleibt bewusst stehen: 36 Verweise aus 22 Dateien springen
+     diesen Anker von aussen an (Leistungs- und Projektseiten, 404, galerie.js,
+     projekt.html-Vorlage). Eine Umbenennung erzeugte 36 tote Links. -->
+<section class="fork fork--single" id="kontakt" aria-labelledby="gewerbe-title">
   <div class="container fork-head">
-    <h2 class="fork-title type-section-title reveal" id="kontakt-title">Für Gewerbekunden.</h2>
-    <p class="fork-lede reveal">Pflege im Vertrag, Baumkontrolle und Verkehrssicherheit für Objekte – mit eigenem Bereich und eigenem Formular.</p>
+    <p class="fork-kind reveal">Gewerbekunden</p>
+    <h2 class="fork-title type-section-title reveal" id="gewerbe-title">Ein Ansprechpartner für Pflege, Baumkontrolle und Verkehrssicherheit.</h2>
+    <a class="fork-btn reveal" href="gewerbekunden/">
+      <span class="fork-btn-label">Zum Gewerbebereich</span>
+      <span class="fork-btn-dot"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8h11M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
   </div>
 
-  <div class="fork-switch--mobile reveal" aria-hidden="true"></div>
-
-  <div class="fork-paths">
-    <div class="fork-path">
-      <p class="fork-kind">Gewerbekunden</p>
-      <h3 class="fork-path-title">Außenanlagen,<br>Baumbestand.</h3>
-      <p class="fork-desc">Pflege im Vertrag, Baumkontrolle und Verkehrssicherheit für Objekte.</p>
-      <a class="fork-btn" href="gewerbekunden/">
-        <span class="fork-btn-label">Zum Gewerbebereich</span>
-        <span class="fork-btn-dot"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8h11M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-      <a class="fork-direct" href="gewerbekunden/#anfrage">
-        <span>Direkt zum Kontaktformular</span>
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 9.5L9.5 2.5M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-  </div>
-
-  <div class="fork-foot">Nicht sicher, oder akuter Sturm- bzw. Baumschaden? <a href="tel:+491711738943">0171 / 173 89 43</a></div>
+  <div class="fork-foot">Akuter Sturm- oder Baumschaden am Objekt? <a href="tel:+491711738943">0171 / 173 89 43</a></div>
 </section>
 
 
