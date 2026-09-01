@@ -12,7 +12,7 @@
 // assets/img/_src/ und werden per .gitignore NICHT deployt.
 
 import sharp from 'sharp';
-import { mkdir, writeFile, readdir, unlink, stat } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, readdir, unlink, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -25,6 +25,7 @@ const WEBP = { quality: 74, effort: 6 };
 const MAX_BYTES = 200 * 1024;
 const QUALITY_STEP = 6;   // Absenkung je Versuch, bis < 200 KB
 const QUALITY_FLOOR = 28; // untere Grenze, darunter nicht mehr
+const ONLY = new Set(process.argv.slice(2));
 
 // name = Basisname der Ausgabedateien; dir = Zielordner (relativ zum Repo-Root);
 // src = Quelldatei (relativ zum Repo-Root).
@@ -42,6 +43,11 @@ const SOURCES = [
   { src: 'assets/img/_src/ueber-1.jpg', dir: 'assets/img/ueber', name: 'ueber-1' },
   { src: 'assets/img/_src/ueber-2.jpg', dir: 'assets/img/ueber', name: 'ueber-2' },
   { src: 'assets/img/_src/ueber-3.jpg', dir: 'assets/img/ueber', name: 'ueber-3' },
+  // AP-160: kompakte Arbeitsbeispiele fuer die Vertrauensleiste im Homepage-Hero.
+  // Die hochaufloesenden Originale bleiben in _src und werden nicht deployt.
+  { src: 'assets/img/_src/rasengarten-forsythie.jpeg', dir: 'assets/img/home-proof', name: 'rasengarten-forsythie', widths: [160, 240, 320] },
+  { src: 'assets/img/_src/gartenteich-palmen.jpeg', dir: 'assets/img/home-proof', name: 'gartenteich-palmen', widths: [160, 240, 320] },
+  { src: 'assets/img/_src/kiesgarten-naturstein.jpeg', dir: 'assets/img/home-proof', name: 'kiesgarten-naturstein', widths: [160, 240, 320] },
   // AP-127: Leitfoto und zweites Kleinbild der neuen Ueber-Sektion.
   // OFFEN: Beide Quellen sind bisher nur 560 px breite Vorschauen aus dem
   // Mockup. Das Leitfoto wird ~390 px breit angezeigt, fuer 2x-Displays
@@ -96,10 +102,20 @@ async function writeVariant(pipeline, outPath, format, baseOpts) {
 }
 
 async function main() {
-  const manifest = {};
+  const outManifest = path.join(ROOT, 'data', 'images.json');
+  let manifest = {};
+  if (ONLY.size) {
+    try {
+      const current = JSON.parse(await readFile(outManifest, 'utf8'));
+      manifest = current.bilder ?? {};
+    } catch {
+      // Ein gefilterter Erstlauf darf auch ohne vorhandenes Manifest starten.
+    }
+  }
   let over = 0;
 
   for (const s of SOURCES) {
+    if (ONLY.size && !ONLY.has(s.name)) continue;
     const srcAbs = path.join(ROOT, s.src);
     const outDir = path.join(ROOT, s.dir);
     await mkdir(outDir, { recursive: true });
@@ -157,7 +173,6 @@ async function main() {
     console.log(`✅ ${s.name}: ${widths.join('/')} px  (Original ${srcW}×${srcH})`);
   }
 
-  const outManifest = path.join(ROOT, 'data', 'images.json');
   await mkdir(path.dirname(outManifest), { recursive: true });
   await writeFile(outManifest, JSON.stringify({
     _hinweis: 'AUTO-GENERIERT von .github/scripts/build-images.mjs – NICHT von Hand editieren.',

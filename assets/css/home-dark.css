@@ -118,6 +118,117 @@ html.home-theme-dark .hero-empty-media img {
   object-position: center top;
 }
 
+/* AP-160: Echte Arbeitsbeispiele und belastbarer Zeitbezug als kompakte,
+   nicht interaktive Vertrauensleiste im freien Bereich der Bildbuehne. */
+html.home-theme-dark .hero-proof-strip {
+  position: absolute;
+  right: auto;
+  bottom: clamp(18px, 2vw, 30px);
+  left: 50%;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: clamp(178px, 18vw, 220px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(18px, 2.4vw, 32px);
+  width: min(calc(100% - 40px), 820px);
+  min-height: clamp(120px, 10vw, 150px);
+  margin: 0;
+  padding: clamp(13px, 1.5vw, 20px) clamp(18px, 2vw, 26px);
+  overflow: hidden;
+  border: 1px solid rgba(140, 198, 63, .34);
+  border-radius: clamp(20px, 2vw, 26px);
+  background:
+    radial-gradient(circle at 17% 8%, rgba(242, 226, 12, .07), transparent 36%),
+    radial-gradient(circle at 92% 100%, rgba(140, 198, 63, .09), transparent 42%),
+    linear-gradient(135deg, rgba(32, 36, 29, .98), rgba(22, 25, 20, .99));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .05) inset,
+    0 28px 54px -30px rgba(0, 0, 0, .82),
+    0 0 28px -20px rgba(140, 198, 63, .5);
+  box-sizing: border-box;
+  transform: translateX(-50%);
+}
+
+html.home-theme-dark .hero-proof-collage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 92px;
+}
+
+html.home-theme-dark .hero-proof-photo {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: clamp(58px, 6.2vw, 76px);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid rgba(250, 250, 246, .45);
+  border-radius: 9px;
+  background: var(--bg-soft);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, .78);
+  transform: translateY(-50%);
+}
+
+html.home-theme-dark .hero-proof-photo--lawn {
+  left: 0;
+  z-index: 1;
+}
+
+html.home-theme-dark .hero-proof-photo--pond {
+  left: 50%;
+  z-index: 3;
+  width: clamp(68px, 7.35vw, 90px);
+  border-color: rgba(182, 217, 122, .72);
+  box-shadow: 0 16px 28px -10px rgba(0, 0, 0, .86), 0 0 20px -14px rgba(140, 198, 63, .8);
+  transform: translate(-50%, -50%);
+}
+
+html.home-theme-dark .hero-proof-photo--gravel {
+  right: 0;
+  z-index: 2;
+}
+
+html.home-theme-dark .hero-proof-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+html.home-theme-dark .hero-proof-copy {
+  min-width: 0;
+}
+
+html.home-theme-dark .hero-proof-title,
+html.home-theme-dark .hero-proof-region {
+  margin: 0;
+}
+
+html.home-theme-dark .hero-proof-title {
+  max-width: 25ch;
+  color: var(--home-on-dark-2);
+  font-family: var(--display);
+  font-size: clamp(1rem, 2vw, 1.42rem);
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -.018em;
+  text-wrap: balance;
+}
+
+html.home-theme-dark .hero-proof-title strong {
+  color: var(--home-lime);
+  font: inherit;
+}
+
+html.home-theme-dark .hero-proof-region {
+  margin-top: clamp(4px, .65vw, 7px);
+  color: var(--home-on-dark-mute);
+  font-size: clamp(.82rem, 1.3vw, 1rem);
+  font-weight: 650;
+  line-height: 1.25;
+}
+
 html.home-theme-dark .section-proof,
 html.home-theme-dark .section-faq {
   background: var(--bg);
@@ -479,6 +590,41 @@ html.home-theme-dark .fork-path:hover {
     min-height: clamp(700px, 100svh, 823px);
     isolation: isolate;
     overflow: hidden;
+  }
+
+  html.home-theme-dark .hero-proof-strip {
+    bottom: clamp(8px, 1.4svh, 12px);
+    grid-template-columns: clamp(106px, 29vw, 150px) minmax(0, 1fr);
+    gap: clamp(10px, 3vw, 18px);
+    width: min(calc(100% - 40px), 680px);
+    height: clamp(98px, 13svh, 112px);
+    min-height: 0;
+    padding: clamp(8px, 2.4vw, 12px);
+    border-radius: clamp(16px, 4.8vw, 20px);
+  }
+
+  html.home-theme-dark .hero-proof-collage {
+    min-height: 0;
+  }
+
+  html.home-theme-dark .hero-proof-photo {
+    width: clamp(48px, 15vw, 72px);
+    border-radius: clamp(6px, 2vw, 9px);
+  }
+
+  html.home-theme-dark .hero-proof-photo--pond {
+    width: clamp(57px, 17.7vw, 85px);
+  }
+
+  html.home-theme-dark .hero-proof-title {
+    max-width: 22ch;
+    font-size: clamp(.78rem, 3.55vw, 1.04rem);
+    line-height: 1.12;
+  }
+
+  html.home-theme-dark .hero-proof-region {
+    margin-top: clamp(3px, .8vw, 5px);
+    font-size: clamp(.68rem, 2.8vw, .84rem);
   }
 
   html.home-theme-dark .hero-empty-media {

@@ -128,6 +128,39 @@
         480,
         960
       ]
+    },
+    "/assets/img/home-proof/rasengarten-forsythie.webp": {
+      "base": "/assets/img/home-proof/rasengarten-forsythie",
+      "widths": [
+        160,
+        240,
+        320
+      ],
+      "width": 320,
+      "height": 427,
+      "aspect": 1.3333
+    },
+    "/assets/img/home-proof/gartenteich-palmen.webp": {
+      "base": "/assets/img/home-proof/gartenteich-palmen",
+      "widths": [
+        160,
+        240,
+        320
+      ],
+      "width": 320,
+      "height": 427,
+      "aspect": 1.3333
+    },
+    "/assets/img/home-proof/kiesgarten-naturstein.webp": {
+      "base": "/assets/img/home-proof/kiesgarten-naturstein",
+      "widths": [
+        160,
+        240,
+        320
+      ],
+      "width": 320,
+      "height": 427,
+      "aspect": 1.3333
     }
   }
 }
