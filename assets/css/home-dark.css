@@ -605,6 +605,7 @@ html.home-theme-dark .fork-path:hover {
     --mobile-hero-cta-inset: clamp(8px, 2.5vw, 16px);
     --mobile-hero-cta-gap: clamp(8px, 2vw, 12px);
     --mobile-hero-cta-edge-inset: clamp(10px, 3.25vw, 12px);
+    --mobile-hero-title-center-shift: clamp(36.5px, calc(26.82px + 3.025vw), 43px);
     grid-template-rows: auto auto;
   }
 
@@ -765,7 +766,9 @@ html.home-theme-dark .fork-path:hover {
     font-weight: 700;
     line-height: .93;
     letter-spacing: -.028em;
-    transform: translateY(-18px);
+    /* AP-168: Die sichtbare H1-Mitte liegt auf derselben Horizontalen wie
+       die Mitte des unveraendert positionierten mobilen CTA. */
+    transform: translateY(calc(-18px + var(--mobile-hero-title-center-shift)));
   }
 
   html.home-theme-dark .gate-title-desktop,
@@ -1161,6 +1164,14 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .hero--gate-content .gate-head {
     top: clamp(-311px, calc(92px - 49svh), -300px);
+  }
+}
+
+/* Ab 540px erreicht der CTA seine breitere Geometrie; die zweite lineare
+   Teilstrecke haelt beide Mittelpunkte weiterhin deckungsgleich. */
+@media (min-width: 540px) and (max-width: 900px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-title-center-shift: clamp(43px, calc(21.4px + 4vw), 48px);
   }
 }
 
