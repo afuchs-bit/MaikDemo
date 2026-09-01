@@ -588,9 +588,9 @@ html.home-theme-dark .fork-path:hover {
     color: var(--home-on-dark);
     font-family: var(--display);
     font-size: clamp(1.75rem, 9.65vw, 2.8rem);
-    font-weight: 800;
+    font-weight: 700;
     line-height: .93;
-    letter-spacing: -.048em;
+    letter-spacing: -.028em;
     transform: translateY(-8px);
   }
 
