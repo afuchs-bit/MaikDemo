@@ -606,8 +606,11 @@ html.home-theme-dark .fork-path:hover {
     --mobile-hero-cta-gap: clamp(8px, 2vw, 12px);
     --mobile-hero-cta-edge-inset: clamp(10px, 3.25vw, 12px);
     --mobile-hero-cta-visual-inset: clamp(2.5px, .75vw, 4px);
+    --mobile-hero-cta-trial-drop: 8px;
+    --mobile-hero-content-group-lift: 10px;
     --mobile-hero-title-center-shift: clamp(36.5px, calc(26.82px + 3.025vw), 43px);
     --mobile-hero-title-optical-lift: clamp(6px, calc(-12.4px + 5.75vw), 10px);
+    --mobile-hero-title-trial-drop: clamp(2px, calc(-9.64px + 3.64vw), 6px);
     grid-template-rows: auto auto;
   }
 
@@ -634,6 +637,7 @@ html.home-theme-dark .fork-path:hover {
     height: clamp(76px, 10.2svh, 92px);
     min-height: 0;
     padding: 0 var(--hero-proof-space);
+    transform: translate(-50%, calc(0px - var(--mobile-hero-content-group-lift)));
   }
 
   html.home-theme-dark .hero-proof-collage {
@@ -717,6 +721,7 @@ html.home-theme-dark .fork-path:hover {
     margin: 0;
     padding: 0;
     text-align: left;
+    transform: translateY(calc(0px - var(--mobile-hero-content-group-lift)));
   }
 
   html.home-theme-dark .mobile-hero-kicker {
@@ -774,6 +779,7 @@ html.home-theme-dark .fork-path:hover {
       -18px
       + var(--mobile-hero-title-center-shift)
       - var(--mobile-hero-title-optical-lift)
+      + var(--mobile-hero-title-trial-drop)
     ));
   }
 
@@ -826,7 +832,7 @@ html.home-theme-dark .fork-path:hover {
     text-decoration: none;
     isolation: isolate;
     box-sizing: border-box;
-    transform: translateY(18px);
+    transform: translateY(calc(18px + var(--mobile-hero-cta-trial-drop)));
   }
 
   html.home-theme-dark .mobile-hero-link::before,
@@ -1186,6 +1192,7 @@ html.home-theme-dark .fork-path:hover {
 @media (min-width: 431px) and (max-width: 900px) {
   html.home-theme-dark .home-hero-stack {
     --mobile-hero-title-optical-lift: clamp(10px, 1.5vw, 12px);
+    --mobile-hero-title-trial-drop: clamp(6px, calc(-.435px + 1.493vw), 13px);
   }
 }
 
