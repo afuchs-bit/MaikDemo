@@ -118,9 +118,13 @@ html.home-theme-dark .hero-empty-media img {
   object-position: center top;
 }
 
-/* AP-164: Alle fuenf Zwischenraeume der Vertrauenszeile folgen demselben Raster. */
+/* AP-165: Das Raster folgt den sichtbaren Motivkanten statt transparenten Bildboxen. */
 html.home-theme-dark .hero-proof-strip {
-  --hero-proof-space: clamp(20px, 2vw, 28px);
+  --hero-proof-icon-size: clamp(56px, 4.5vw, 64px);
+  --hero-proof-icon-inset: clamp(10.325px, .8296875vw, 11.8px);
+  --hero-proof-icon-visible-width: clamp(35.35px, 2.840625vw, 40.4px);
+  --hero-proof-base-space: clamp(20px, 2vw, 28px);
+  --hero-proof-space: calc(var(--hero-proof-base-space) + var(--hero-proof-icon-inset));
   position: absolute;
   right: auto;
   bottom: clamp(18px, 2vw, 30px);
@@ -145,11 +149,23 @@ html.home-theme-dark .hero-proof-customer {
   display: contents;
 }
 
-html.home-theme-dark .hero-proof-location-icon {
+html.home-theme-dark .hero-proof-location-mark {
+  position: relative;
   display: block;
-  width: clamp(56px, 4.5vw, 64px);
-  height: auto;
+  width: var(--hero-proof-icon-visible-width);
+  height: var(--hero-proof-icon-size);
   filter: drop-shadow(0 5px 8px rgba(0, 0, 0, .26));
+}
+
+html.home-theme-dark .hero-proof-location-icon {
+  position: absolute;
+  top: 0;
+  left: calc(0px - var(--hero-proof-icon-inset));
+  display: block;
+  width: var(--hero-proof-icon-size);
+  max-width: none;
+  height: var(--hero-proof-icon-size);
+  pointer-events: none;
 }
 
 html.home-theme-dark .hero-proof-collage {
@@ -587,17 +603,17 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .hero-proof-strip {
-    --hero-proof-space: clamp(8px, 2vw, 16px);
+    --hero-proof-icon-size: clamp(38px, 10.5vw, 48px);
+    --hero-proof-icon-inset: clamp(7.00625px, 1.9359375vw, 8.85px);
+    --hero-proof-icon-visible-width: clamp(23.9875px, 6.628125vw, 30.3px);
+    --hero-proof-base-space: clamp(8px, 2vw, 16px);
+    --hero-proof-space: calc(var(--hero-proof-base-space) + var(--hero-proof-icon-inset));
     bottom: clamp(8px, 1.4svh, 12px);
     width: max-content;
     max-width: calc(100% - var(--hero-proof-space) - var(--hero-proof-space));
     height: clamp(76px, 10.2svh, 92px);
     min-height: 0;
     padding: 0 var(--hero-proof-space);
-  }
-
-  html.home-theme-dark .hero-proof-location-icon {
-    width: clamp(38px, 10.5vw, 48px);
   }
 
   html.home-theme-dark .hero-proof-collage {
@@ -1087,11 +1103,10 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .hero-proof-strip {
+    --hero-proof-icon-size: 34px;
+    --hero-proof-icon-inset: 6.26875px;
+    --hero-proof-icon-visible-width: 21.4625px;
     --hero-proof-space: 3px;
-  }
-
-  html.home-theme-dark .hero-proof-location-icon {
-    width: 34px;
   }
 
   html.home-theme-dark .hero-proof-location-text,
@@ -1101,11 +1116,11 @@ html.home-theme-dark .fork-path:hover {
 
 }
 
-/* 360px breite Geraete benoetigen einen halben Pixel weniger Rasterluft,
-   damit auch die laengste Standortzeile ohne typografische Stauchung passt. */
-@media (min-width: 360px) and (max-width: 375px) {
+/* Auf schmalen Geraeten bleibt jeder sichtbare Abstand identisch, wird aber
+   gemeinsam verdichtet, damit Schrift und Flow-Line einzeilig bleiben. */
+@media (min-width: 360px) and (max-width: 389px) {
   html.home-theme-dark .hero-proof-strip {
-    --hero-proof-space: 7.5px;
+    --hero-proof-space: clamp(7.5px, 2vw, 8px);
   }
 }
 
