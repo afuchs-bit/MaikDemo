@@ -3,6 +3,21 @@
 Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem CloudFront-CDN.
 **Wichtig:** CDN-URLs können sich ändern – vor Live-Gang lokal sichern und in `assets/img/` / `assets/video/` legen.
 
+## Homepage-Schrift
+
+- `assets/fonts/nunito-latin.woff2` – offizieller variabler Latin-Schnitt von
+  Nunito, normal, Gewichte 200–1000. Quelle: [Google Fonts / Nunito](https://github.com/google/fonts/tree/main/ofl/nunito),
+  abgerufen am 29.08.2026. SHA-256:
+  `BA344451EAB25B217A165363B1982048A5E5830A0DAF36577973955A04CAC793`.
+- `assets/fonts/nunito-italic-latin.woff2` – offizieller variabler Latin-Schnitt
+  von Nunito, kursiv, Gewichte 200–1000. Quelle und Abrufdatum wie oben. SHA-256:
+  `6CFCC3786D5BA3B5C3A41797F95272E57F4290CCBD283A4BFD0033A3D857E64C`.
+- `assets/fonts/nunito-OFL.txt` – zugehörige SIL Open Font License 1.1 aus dem
+  [offiziellen Google-Fonts-Repository](https://github.com/google/fonts/blob/main/ofl/nunito/OFL.txt),
+  abgerufen am 29.08.2026. Die Schrift wird ausschließlich auf der Homepage
+  eingebunden; das grafische Logo und die Typografie der Unterseiten bleiben
+  unverändert.
+
 ## Mobile Header-Symbole
 
 - `assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png` – mobile
@@ -21,6 +36,30 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   `7FB054C0F4BEA644B4A4A014D6D8581AAD7E6DCB639049D17A578DC44F8E6FD4`.
 
 ## Hero
+- `assets/img/icons/rohdich-standort.svg` – Pin-Kontur des vom Auftraggeber
+  bereitgestellten Standortzeichens. Das frühere abstrahierte Innenmotiv wurde
+  für die Kombination mit der echten Markenblüte entfernt. SHA-256:
+  `45E1F44021C65C6E6BBF8337D386775AFFA8BE0833D94F027179BB85A93735A3`.
+- `assets/img/icons/rohdich-blume.png` – 160 × 160 px große, transparente
+  Einzelblüte, mechanisch aus
+  `assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png` isoliert.
+  Form und Farben wurden nicht generativ verändert. SHA-256:
+  `6D8489157F6CBA0265A864BC55E78AAB6AAE5458BF4A1D6814AA0099354397DA`.
+- **Foto im oberen Homepage-Hero:** Aus der vom Auftraggeber bereitgestellten
+  Datei `maik-rohdich-hero-aufschrift-kraeftigere-farben.png` mechanisch und ohne Beschnitt,
+  Filter oder generative Veränderung abgeleitet. Original: 1023 × 1537 px,
+  SHA-256 `556C87DA184AD11F23FCB71305BE6DBD47A5E36BA70CE0E520873EB7CCADA1C1`.
+  Für die maximal verfügbare Auflösung wird das native Format als AVIF und WebP
+  unter `assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.{avif,webp}` geladen.
+  Mobil wird die originalgetreuere WebP-Neukodierung
+  `assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp` bevorzugt
+  (Qualität 95, Encoder-Methode 6, unveränderte 1023 × 1537 px). Für
+  hochauflösende Mobilgeräte steht zusätzlich
+  `assets/img/hero/hero-fahrzeug-palmengarten-v10-mobile-2046-q92.webp` bereit:
+  deterministisches 2×-Lanczos-Upscaling auf 2046 × 3074 px, milde
+  Unsharp-Mask-Schärfung (Radius 1,2; Stärke 35 %; Schwellenwert 3),
+  WebP-Qualität 92 und Encoder-Methode 6. SHA-256:
+  `2C176EE7BD22E1B3169EE23CED611062ED4E29D8C3EA97EE4AEF72BABCA4FEB7`.
 - **Bild (16:9, 2048×1152):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060301_09419ab7-e3c1-4af3-b7a2-fa17bbd9ca87.png`
   → speichern als `assets/img/hero/hero.png`
 - **Video (16:9, 4s, 720p, MP4):** `https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060910_79733f0c-ce85-436f-80ae-361b74394d07.mp4`

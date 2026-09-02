@@ -8,6 +8,7 @@
 html.home-theme-dark,
 html.home-theme-dark body { background-color: #171916; }
 </style>
+<script>document.documentElement.classList.add('home-header-morph');</script>
 <!-- AP-01: Demo-Sperre. Beim Go-Live entfernen, siehe docs/go-live-checkliste.md Position 1. -->
 <meta name="robots" content="noindex,nofollow" />
 <title>Maik Rohdich Garten- und Landschaftsbau – Herne, Bochum, Recklinghausen</title>
@@ -20,12 +21,19 @@ html.home-theme-dark body { background-color: #171916; }
 <meta property="og:url" content="https://rohdich.de/" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml" />
-<link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
-<link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w" fetchpriority="high" />
+<!-- AP-F16: Font- und Bild-Preloads aus der Hero-Arbeit von davidk. Outfit und Inter
+     entfallen hier: home-dark.css setzt --display/--body innerhalb von
+     html.home-theme-dark auf Nunito, und diese Datei laedt nur die Startseite.
+     Auf allen Unterseiten gelten Outfit/Inter ueber styles.css unveraendert. -->
+<link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+<!-- LCP: Foto im oberen Homepage-Hero vorab laden. -->
+<link rel="preload" as="image" type="image/webp"
+      href="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp"
+      imagesrcset="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp 1023w, assets/img/hero/hero-fahrzeug-palmengarten-v10-mobile-2046-q92.webp 2046w"
+      imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
+<link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902a" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260831b" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260902b" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260902a" />
@@ -308,20 +316,100 @@ html.home-theme-dark body { background-color: #171916; }
 <main id="top">
 
 <!-- ============ HERO / ZIELGRUPPENWEICHE (AP-82) ============ -->
-<section class="hero hero--gate" aria-labelledby="gate-title">
+<div class="home-hero-stack">
+<div class="hero hero--gate hero--gate-empty">
+  <picture class="hero-empty-media" aria-hidden="true">
+    <source media="(max-width: 900px)" type="image/webp"
+            srcset="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp 1023w, assets/img/hero/hero-fahrzeug-palmengarten-v10-mobile-2046-q92.webp 2046w"
+            sizes="100vw">
+    <source type="image/avif" srcset="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif">
+    <source type="image/webp" srcset="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.webp">
+    <img src="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.webp"
+         alt="" width="1023" height="1537" fetchpriority="high" decoding="async">
+  </picture>
+  <p class="mobile-hero-kicker">
+    <span class="mobile-hero-signature">Garten- &amp; Landschaftsbau Maik Rohdich</span>
+    <span class="mobile-hero-kicker-dot" aria-hidden="true">·</span>
+    <span class="mobile-hero-trusts">Familienbetrieb</span>
+    <span class="mobile-hero-kicker-dot" aria-hidden="true">·</span>
+    <span class="mobile-hero-trusts">Meisterbetrieb</span>
+  </p>
+  <aside class="hero-proof-strip" aria-label="Standort und Kundenvertrauen">
+    <div class="hero-proof-location">
+      <span class="hero-proof-location-mark" aria-hidden="true">
+        <img class="hero-proof-location-icon" src="assets/img/icons/rohdich-standort.svg"
+             alt="" width="24" height="24" decoding="async">
+        <img class="hero-proof-location-flower" src="assets/img/icons/rohdich-blume.png"
+             alt="" width="160" height="160" decoding="async">
+      </span>
+      <p class="hero-proof-location-text">
+        <span>Unser Mustergarten</span>
+        <span>mit Sitz in <strong>Herne</strong></span>
+      </p>
+    </div>
+    <div class="hero-proof-customer">
+      <div class="hero-proof-collage" role="img" aria-label="Drei Gartenbeispiele: Rasengarten mit Blüten, Gartenteich mit Palmen und Kiesgarten mit Naturstein">
+        <picture class="hero-proof-photo hero-proof-photo--lawn">
+          <source type="image/avif" sizes="(max-width: 430px) 42px, (max-width: 900px) 52px, 62px"
+                  srcset="assets/img/home-proof/rasengarten-forsythie-160.avif 160w, assets/img/home-proof/rasengarten-forsythie-240.avif 240w, assets/img/home-proof/rasengarten-forsythie-320.avif 320w">
+          <source type="image/webp" sizes="(max-width: 430px) 42px, (max-width: 900px) 52px, 62px"
+                  srcset="assets/img/home-proof/rasengarten-forsythie-160.webp 160w, assets/img/home-proof/rasengarten-forsythie-240.webp 240w, assets/img/home-proof/rasengarten-forsythie-320.webp 320w">
+          <img src="assets/img/home-proof/rasengarten-forsythie.webp" alt="" width="320" height="427" loading="lazy" decoding="async">
+        </picture>
+        <picture class="hero-proof-photo hero-proof-photo--pond">
+          <source type="image/avif" sizes="(max-width: 430px) 50px, (max-width: 900px) 62px, 73px"
+                  srcset="assets/img/home-proof/gartenteich-palmen-160.avif 160w, assets/img/home-proof/gartenteich-palmen-240.avif 240w, assets/img/home-proof/gartenteich-palmen-320.avif 320w">
+          <source type="image/webp" sizes="(max-width: 430px) 50px, (max-width: 900px) 62px, 73px"
+                  srcset="assets/img/home-proof/gartenteich-palmen-160.webp 160w, assets/img/home-proof/gartenteich-palmen-240.webp 240w, assets/img/home-proof/gartenteich-palmen-320.webp 320w">
+          <img src="assets/img/home-proof/gartenteich-palmen.webp" alt="" width="320" height="427" loading="lazy" decoding="async">
+        </picture>
+        <picture class="hero-proof-photo hero-proof-photo--gravel">
+          <source type="image/avif" sizes="(max-width: 430px) 42px, (max-width: 900px) 52px, 62px"
+                  srcset="assets/img/home-proof/kiesgarten-naturstein-160.avif 160w, assets/img/home-proof/kiesgarten-naturstein-240.avif 240w, assets/img/home-proof/kiesgarten-naturstein-320.avif 320w">
+          <source type="image/webp" sizes="(max-width: 430px) 42px, (max-width: 900px) 52px, 62px"
+                  srcset="assets/img/home-proof/kiesgarten-naturstein-160.webp 160w, assets/img/home-proof/kiesgarten-naturstein-240.webp 240w, assets/img/home-proof/kiesgarten-naturstein-320.webp 320w">
+          <img src="assets/img/home-proof/kiesgarten-naturstein.webp" alt="" width="320" height="427" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <p class="hero-proof-customer-text">
+        <span><strong>Über 400</strong> Kunden</span>
+        <span>vertrauen auf uns</span>
+      </p>
+    </div>
+  </aside>
+</div>
+
+<section class="hero hero--gate hero--gate-content" aria-labelledby="gate-title">
 
   <div class="gate-head reveal">
     <h1 class="hero-title type-marketing-title" id="gate-title">
-      <span class="line">Gärten gestalten.</span>
-      <span class="line">Außenanlagen, <em>die bleiben.</em></span>
+      <span class="gate-title-desktop">
+        <span class="line">Gärten gestalten.</span>
+        <span class="line">Außenanlagen, <em>die bleiben.</em></span>
+      </span>
+      <span class="gate-title-mobile">
+        <span>Ihr Partner</span>
+        <span>für alles rund</span>
+        <span>um den <em>Garten</em></span>
+      </span>
     </h1>
     <p class="gate-region">
-      Meisterbetrieb für Garten- und Landschaftsbau in Herne, Bochum, Recklinghausen und Umgebung.
+      <span class="gate-region-desktop">Meisterbetrieb für Garten- und Landschaftsbau in Herne, Bochum, Recklinghausen und Umgebung.</span>
     </p>
+    <!-- AP-F16: Ziel war privatkunden/#anfrage. Seite seit AP-F8 geloescht, das
+         Anfrageformular steht seither auf dieser Seite. -->
+    <a class="mobile-hero-link" href="#anfrage">
+      <span class="mobile-hero-link-label">Gartenprojekt<br>besprechen</span>
+      <span class="mobile-hero-link-arrow" aria-hidden="true">→</span>
+    </a>
   </div>
 
   <div class="gate-doors reveal">
 
+    <!-- AP-F16: Die Privatkunden-Tuer kommt bewusst nicht zurueck. Sie verlinkte auf
+         privatkunden/, und diese Seite ist seit AP-F8 geloescht - der Link waere tot.
+         Kein Gestaltungskonflikt, sondern der Stand vor unserer Entfernung. Geprueft:
+         weder home-dark.css noch home-header-morph.js verweisen auf .gate-door--privat. -->
     <a class="gate-door gate-door--gewerbe" href="gewerbekunden/">
       <picture>
         <source type="image/avif" sizes="(max-width: 860px) 100vw, 50vw"
@@ -346,6 +434,7 @@ html.home-theme-dark body { background-color: #171916; }
   </div>
 
 </section>
+</div>
 
 <!-- ============ SOCIAL PROOF ============ -->
 <section class="section section-proof" aria-labelledby="proof-title">
@@ -1844,5 +1933,6 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/js/private-proof.js?v=20260812n" defer></script>
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>
 <script src="assets/js/anfrage.js?v=20260902a" defer></script>
+<script src="assets/js/home-header-morph.js?v=20260830b" defer></script>
 </body>
 </html>

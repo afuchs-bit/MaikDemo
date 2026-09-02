@@ -1,8 +1,30 @@
 /* Dauerhafte dunkle Farbwelt. Diese Datei wird ausschliesslich in index.html geladen. */
 
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url("../fonts/nunito-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: italic;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url("../fonts/nunito-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 html.home-theme-dark {
   color-scheme: dark;
   background-color: rgb(var(--surface-rgb));
+
+  /* Homepage-Typografie: Logo und Unterseiten bleiben unveraendert. */
+  --display: "Nunito", sans-serif;
+  --body: "Nunito", sans-serif;
 
   /* Unveraenderte Markenfarben */
   --home-brand-green: #4A7A10;
@@ -55,9 +77,183 @@ html.home-theme-dark .site-header.is-scrolled {
   border-bottom-color: var(--line);
 }
 
-html.home-theme-dark .hero--gate {
+html.home-theme-dark .home-hero-stack {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
   background: linear-gradient(180deg, var(--bg-elev) 0%, var(--bg-hero) 100%);
-  border-bottom-color: var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+html.home-theme-dark .home-hero-stack > .hero--gate {
+  background: transparent;
+  border-bottom: 0;
+}
+
+html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+  isolation: auto;
+  overflow: visible;
+}
+
+/* Die neuen Textvarianten gehoeren ausschliesslich zur mobilen Bildbuehne. */
+html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .mobile-hero-link) {
+  display: none;
+}
+
+html.home-theme-dark .hero-empty-media {
+  position: absolute;
+  inset: 0 0 25%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+html.home-theme-dark .hero-empty-media img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+}
+
+/* AP-165: Das Raster folgt den sichtbaren Motivkanten statt transparenten Bildboxen. */
+html.home-theme-dark .hero-proof-strip {
+  --hero-proof-icon-size: clamp(56px, 4.5vw, 64px);
+  --hero-proof-icon-inset: clamp(10.325px, .8296875vw, 11.8px);
+  --hero-proof-icon-visible-width: clamp(35.35px, 2.840625vw, 40.4px);
+  --hero-proof-base-space: clamp(20px, 2vw, 28px);
+  --hero-proof-space: calc(var(--hero-proof-base-space) + var(--hero-proof-icon-inset));
+  position: absolute;
+  right: auto;
+  bottom: clamp(18px, 2vw, 30px);
+  left: 50%;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+  justify-content: center;
+  column-gap: var(--hero-proof-space);
+  width: max-content;
+  max-width: calc(100% - var(--hero-proof-space) - var(--hero-proof-space));
+  min-height: clamp(104px, 8vw, 120px);
+  margin: 0;
+  padding: 0 var(--hero-proof-space);
+  box-sizing: content-box;
+  transform: translateX(-50%);
+}
+
+html.home-theme-dark .hero-proof-location,
+html.home-theme-dark .hero-proof-customer {
+  display: contents;
+}
+
+html.home-theme-dark .hero-proof-location-mark {
+  position: relative;
+  display: block;
+  width: var(--hero-proof-icon-visible-width);
+  height: var(--hero-proof-icon-size);
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, .26));
+}
+
+html.home-theme-dark .hero-proof-location-icon {
+  position: absolute;
+  top: 0;
+  left: calc(0px - var(--hero-proof-icon-inset));
+  display: block;
+  width: var(--hero-proof-icon-size);
+  max-width: none;
+  height: var(--hero-proof-icon-size);
+  pointer-events: none;
+}
+
+html.home-theme-dark .hero-proof-location-flower {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  z-index: 1;
+  display: block;
+  width: 68%;
+  max-width: none;
+  height: auto;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .34));
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+html.home-theme-dark .hero-proof-collage {
+  position: relative;
+  width: clamp(158px, 11.5vw, 176px);
+  height: 100%;
+  min-height: 96px;
+  /* Die Kartenschatten bleiben vertikal sichtbar, duerfen aber nicht in die
+     optisch vermessenen horizontalen Zwischenraeume hineinragen. */
+  clip-path: inset(-24px 0);
+}
+
+html.home-theme-dark .hero-proof-photo {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: clamp(56px, 4.2vw, 62px);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid rgba(250, 250, 246, .38);
+  border-radius: 7px;
+  background: var(--bg-soft);
+  box-shadow: 0 9px 18px -9px rgba(0, 0, 0, .78);
+  transform: translateY(-50%);
+}
+
+html.home-theme-dark .hero-proof-photo--lawn {
+  left: 0;
+  z-index: 1;
+}
+
+html.home-theme-dark .hero-proof-photo--pond {
+  left: 50%;
+  z-index: 3;
+  width: clamp(66px, 4.95vw, 73px);
+  border-color: rgba(182, 217, 122, .62);
+  box-shadow: 0 11px 21px -9px rgba(0, 0, 0, .84), 0 0 14px -11px rgba(140, 198, 63, .72);
+  transform: translate(-50%, -50%);
+}
+
+html.home-theme-dark .hero-proof-photo--gravel {
+  right: 0;
+  z-index: 2;
+}
+
+html.home-theme-dark .hero-proof-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+html.home-theme-dark .hero-proof-location-text,
+html.home-theme-dark .hero-proof-customer-text {
+  min-width: max-content;
+  margin: 0;
+  color: var(--home-on-dark-2);
+  font-family: var(--display);
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  font-weight: 750;
+  line-height: 1.18;
+  letter-spacing: -.012em;
+  text-align: center;
+}
+
+html.home-theme-dark .hero-proof-location-text > span,
+html.home-theme-dark .hero-proof-customer-text > span {
+  display: block;
+  white-space: nowrap;
+}
+
+html.home-theme-dark :is(.hero-proof-location-text, .hero-proof-customer-text) strong {
+  color: var(--home-lime);
+  font: inherit;
 }
 
 html.home-theme-dark .section-proof,
@@ -408,6 +604,643 @@ html.home-theme-dark .fork-path:hover {
 @media (max-width: 860px) {
   html.home-theme-dark .gate-body {
     background: rgba(14,16,13,.78);
+  }
+}
+
+/* Homepage mobil: grosses Markenpanel am Einstieg, kompakter Header beim Scrollen. */
+@media (max-width: 900px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-diagonal-rise: clamp(96.04px, 13.72svh, 112.94px);
+    --mobile-hero-slope-angle: 7.1deg;
+    --mobile-hero-head-inset: clamp(20px, 6vw, 44px);
+    --mobile-hero-cta-width: clamp(84px, 24vw, 128px);
+    --mobile-hero-cta-inset: clamp(8px, 2.5vw, 16px);
+    --mobile-hero-cta-gap: clamp(8px, 2vw, 12px);
+    --mobile-hero-cta-edge-inset: clamp(10px, 3.25vw, 12px);
+    --mobile-hero-cta-visual-inset: clamp(2.5px, .75vw, 4px);
+    --mobile-hero-cta-trial-drop: 8px;
+    --mobile-hero-content-group-lift: 10px;
+    --mobile-hero-title-center-shift: clamp(36.5px, calc(26.82px + 3.025vw), 43px);
+    --mobile-hero-title-optical-lift: clamp(6px, calc(-12.4px + 5.75vw), 10px);
+    --mobile-hero-title-trial-drop: clamp(2px, calc(-9.64px + 3.64vw), 6px);
+    grid-template-rows: auto auto;
+  }
+
+  /* Referenznahe mobile Bildbuehne: Das Foto bleibt rein dekorativ. Die
+     dunkle Leerflaeche und ihre feine Kante entstehen ohne zusaetzliches
+     Markup aus zwei deckungsgleichen, leicht versetzten Keilen. */
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    --hero-composition-offset-y: 20px;
+    --hero-image-wheel-offset-y: clamp(28px, 8vw, 36px);
+    min-height: clamp(700px, 100svh, 823px);
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  html.home-theme-dark .hero-proof-strip {
+    --hero-proof-icon-size: clamp(38px, 10.5vw, 48px);
+    --hero-proof-icon-inset: clamp(7.00625px, 1.9359375vw, 8.85px);
+    --hero-proof-icon-visible-width: clamp(23.9875px, 6.628125vw, 30.3px);
+    --hero-proof-base-space: clamp(8px, 2vw, 16px);
+    --hero-proof-space: calc(var(--hero-proof-base-space) + var(--hero-proof-icon-inset));
+    bottom: clamp(8px, 1.4svh, 12px);
+    width: max-content;
+    max-width: calc(100% - var(--hero-proof-space) - var(--hero-proof-space));
+    height: clamp(76px, 10.2svh, 92px);
+    min-height: 0;
+    padding: 0 var(--hero-proof-space);
+    transform: translate(-50%, calc(0px - var(--mobile-hero-content-group-lift)));
+  }
+
+  html.home-theme-dark .hero-proof-collage {
+    width: clamp(52px, 16.5vw, 124px);
+    min-height: 0;
+    height: 100%;
+  }
+
+  html.home-theme-dark .hero-proof-photo {
+    width: clamp(33px, 9.8vw, 52px);
+    border-radius: clamp(4px, 1.5vw, 7px);
+  }
+
+  html.home-theme-dark .hero-proof-photo--pond {
+    width: clamp(39px, 11.6vw, 62px);
+  }
+
+  html.home-theme-dark .hero-proof-location-text,
+  html.home-theme-dark .hero-proof-customer-text {
+    font-size: clamp(.8125rem, 3.45vw, 1rem);
+    line-height: 1.18;
+    letter-spacing: -.012em;
+  }
+
+  html.home-theme-dark .hero-empty-media {
+    inset: 0 0 22%;
+    z-index: 1;
+  }
+
+  html.home-theme-dark .hero-empty-media img {
+    object-fit: cover;
+    object-position: center center;
+    transform: translateY(calc(clamp(-96px, -22vw, -70px) + var(--hero-composition-offset-y) + var(--hero-image-wheel-offset-y)));
+  }
+
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::before,
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::after {
+    content: "";
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    clip-path: polygon(0 0, 100% 28%, 100% 100%, 0 100%);
+    transform: translateY(var(--hero-composition-offset-y));
+  }
+
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::before {
+    z-index: 2;
+    height: calc(49% + 1px);
+    background: rgba(140,198,63,.78);
+    clip-path: polygon(0 0, 100% 27.32%, 100% 100%, 0 100%);
+  }
+
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::after {
+    z-index: 3;
+    height: 49%;
+    background: var(--bg-hero);
+  }
+
+  /* AP-151: Der Titel folgt der mobilen Hero-Diagonale mit bewusstem Abstand.
+     Die vertikale Position folgt der auf 700 bis 823px begrenzten Bildbuehne. */
+  html.home-theme-dark .hero--gate-content {
+    position: relative;
+    overflow: visible;
+  }
+
+  html.home-theme-dark .hero--gate-content .gate-head {
+    position: absolute;
+    top: clamp(-311px, calc(92px - 49svh), -251px);
+    right: var(--mobile-hero-head-inset);
+    bottom: auto;
+    left: var(--mobile-hero-head-inset);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    transform: translateY(calc(0px - var(--mobile-hero-content-group-lift)));
+  }
+
+  html.home-theme-dark .mobile-hero-kicker {
+    --mobile-hero-kicker-inset: clamp(8px, 2.5vw, 20px);
+    position: absolute;
+    top: calc(51% + var(--hero-composition-offset-y) + 6px);
+    left: var(--mobile-hero-kicker-inset);
+    z-index: 4;
+    /* AP-145: Signatur vorerst deaktiviert; Layout bleibt fuer eine spaetere
+       Reaktivierung vollstaendig erhalten. */
+    display: none;
+    grid-template-columns: max-content minmax(.45em, 1fr) max-content minmax(.45em, 1fr) max-content;
+    align-items: baseline;
+    width: calc(100% - var(--mobile-hero-kicker-inset));
+    margin: 0;
+    font-size: clamp(.55rem, 2.15vw, .7rem);
+    line-height: 1.1;
+    letter-spacing: .02em;
+    white-space: nowrap;
+    transform: rotate(var(--mobile-hero-slope-angle));
+    transform-origin: left top;
+  }
+
+  html.home-theme-dark .mobile-hero-signature {
+    color: var(--home-on-dark-2);
+    font-weight: 800;
+  }
+
+  html.home-theme-dark .mobile-hero-trusts {
+    color: var(--home-dark-accent);
+    font-weight: 900;
+  }
+
+  html.home-theme-dark .mobile-hero-kicker-dot {
+    color: var(--home-lime);
+    font-weight: 900;
+    text-align: center;
+  }
+
+  html.home-theme-dark .gate-head .hero-title {
+    max-width: calc(
+      100% + var(--mobile-hero-head-inset) - var(--mobile-hero-cta-inset)
+      - var(--mobile-hero-cta-width) - var(--mobile-hero-cta-gap)
+    );
+    margin: clamp(8px, 2.3vw, 12px) 0 0;
+    color: var(--home-on-dark);
+    font-family: var(--display);
+    font-size: clamp(1.75rem, 9.65vw, 2.8rem);
+    font-weight: 700;
+    line-height: .93;
+    letter-spacing: -.028em;
+    /* AP-169: Die H1 fuehrt optisch leicht oberhalb der mathematischen
+       CTA-Mitte und folgt dadurch der Bewegung der Hero-Diagonale. */
+    transform: translateY(calc(
+      -18px
+      + var(--mobile-hero-title-center-shift)
+      - var(--mobile-hero-title-optical-lift)
+      + var(--mobile-hero-title-trial-drop)
+    ));
+  }
+
+  html.home-theme-dark .gate-title-desktop,
+  html.home-theme-dark .gate-region-desktop {
+    display: none;
+  }
+
+  html.home-theme-dark .gate-title-mobile {
+    display: block;
+  }
+
+  html.home-theme-dark .gate-title-mobile > span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  html.home-theme-dark .gate-head .gate-title-mobile em {
+    color: var(--home-lime);
+    font-style: normal;
+  }
+
+  html.home-theme-dark .gate-region {
+    display: none;
+  }
+
+  html.home-theme-dark .mobile-hero-link {
+    --mobile-hero-cta-surface: #e4e5de;
+    --mobile-hero-cta-surface-hover: #f2f1ea;
+    --mobile-hero-cta-surface-active: #d6d8cf;
+    --mobile-hero-cta-ink: #171916;
+    position: absolute;
+    top: clamp(-5px, calc(8vw - 30px), 22px);
+    right: calc(var(--mobile-hero-cta-inset) - var(--mobile-hero-head-inset));
+    bottom: -14px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(7px, 2.2vw, 13px);
+    width: var(--mobile-hero-cta-width);
+    min-height: 100px;
+    margin: 0;
+    padding: calc(var(--mobile-hero-cta-edge-inset) + 7px) clamp(6px, 1.8vw, 10px);
+    color: var(--mobile-hero-cta-ink);
+    font-weight: 800;
+    line-height: 1.08;
+    text-align: center;
+    text-decoration: none;
+    isolation: isolate;
+    box-sizing: border-box;
+    transform: translateY(calc(18px + var(--mobile-hero-cta-trial-drop)));
+  }
+
+  html.home-theme-dark .mobile-hero-link::before,
+  html.home-theme-dark .mobile-hero-link::after {
+    content: "";
+    position: absolute;
+    top: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset));
+    right: var(--mobile-hero-cta-visual-inset);
+    bottom: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset));
+    left: var(--mobile-hero-cta-visual-inset);
+    z-index: -2;
+    border-radius: 2px 14px 2px 14px;
+    background: var(--home-lime);
+    pointer-events: none;
+    transform: skewY(var(--mobile-hero-slope-angle));
+    transform-origin: center;
+  }
+
+  html.home-theme-dark .mobile-hero-link::after {
+    top: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset) + 2px);
+    right: calc(var(--mobile-hero-cta-visual-inset) + 2px);
+    bottom: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset) + 2px);
+    left: calc(var(--mobile-hero-cta-visual-inset) + 2px);
+    z-index: -1;
+    border-radius: 1px 12px 1px 12px;
+    background: var(--mobile-hero-cta-surface);
+    transition: background-color .2s ease;
+  }
+
+  html.home-theme-dark .mobile-hero-link-label {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(.66rem, 2.6vw, .82rem);
+    letter-spacing: -.02em;
+    white-space: nowrap;
+  }
+
+  html.home-theme-dark .mobile-hero-link-arrow {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(34px, 9vw, 44px);
+    aspect-ratio: 1;
+    border: 1.25px solid currentColor;
+    border-radius: 50%;
+    font-size: clamp(1.25rem, 5vw, 1.55rem);
+    font-weight: 500;
+    line-height: 1;
+    transition: transform .2s ease;
+  }
+
+  html.home-theme-dark .mobile-hero-link:active::after {
+    background: var(--mobile-hero-cta-surface-active);
+  }
+
+  html.home-theme-dark.home-header-morph {
+    scrollbar-gutter: stable;
+  }
+
+  html.home-theme-dark.home-header-morph body {
+    padding-top: 0;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header,
+  html.home-theme-dark.home-header-morph .site-header.is-scrolled {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    padding-top: calc(env(safe-area-inset-top, 0px) + clamp(12px, 4vw, 18px));
+    background-color: transparent;
+    border-bottom-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition:
+      padding-top .42s cubic-bezier(.22, 1, .36, 1),
+      background-color .34s ease,
+      border-color .3s ease;
+  }
+
+  /* Ein schmaler, deckender Traeger behaelt die dunkle iPhone-Statusleistenfarbe,
+     waehrend das eigentliche Markenpanel sichtbar ueber dem Hero schwebt. */
+  html.home-theme-dark.home-header-morph .site-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: env(safe-area-inset-top, 0px);
+    min-height: 1px;
+    background: #171916;
+    pointer-events: none;
+  }
+
+  html.home-theme-dark.home-header-morph .header-inner {
+    width: calc(100% - 32px);
+    max-width: 560px;
+    min-height: 112px;
+    padding: 14px 12px;
+    background: #171916;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+    box-shadow: 0 24px 52px -26px rgba(0,0,0,.88), 0 8px 20px -14px rgba(0,0,0,.68);
+    transition:
+      max-width .42s cubic-bezier(.22, 1, .36, 1),
+      min-height .42s cubic-bezier(.22, 1, .36, 1),
+      padding .42s cubic-bezier(.22, 1, .36, 1),
+      border-color .28s ease,
+      border-radius .42s cubic-bezier(.22, 1, .36, 1),
+      box-shadow .32s ease;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header .brand-logo,
+  html.home-theme-dark.home-header-morph .site-header.is-scrolled .brand-logo {
+    width: clamp(158px, calc(100vw - 162px), 218px);
+    height: clamp(50px, 17vw, 66px);
+    transition:
+      width .42s cubic-bezier(.22, 1, .36, 1),
+      height .42s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  html.home-theme-dark.home-header-morph .header-actions {
+    gap: 6px;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header .header-actions .call-wrap {
+    width: 0;
+    max-width: 0;
+    flex: 0 0 0;
+    margin-inline: -3px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    overflow: clip;
+    transform: translateX(8px) scale(.88);
+    transition:
+      width .32s cubic-bezier(.22, 1, .36, 1),
+      max-width .32s cubic-bezier(.22, 1, .36, 1),
+      flex-basis .32s cubic-bezier(.22, 1, .36, 1),
+      margin .32s cubic-bezier(.22, 1, .36, 1),
+      opacity .18s ease,
+      transform .32s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  html.home-theme-dark.home-header-morph .site-header .header-actions :is(.btn-whatsapp, .nav-toggle) {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+    transition:
+      width .42s cubic-bezier(.22, 1, .36, 1),
+      height .42s cubic-bezier(.22, 1, .36, 1),
+      flex-basis .42s cubic-bezier(.22, 1, .36, 1),
+      background-color .2s ease;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed,
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed.is-scrolled {
+    padding-top: env(safe-area-inset-top, 0px);
+    background-color: #171916;
+    border-bottom-color: var(--line);
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .header-inner {
+    max-width: 1360px;
+    min-height: calc(var(--mobile-header-h) - 1px);
+    padding: 8px 0;
+    background: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand-logo,
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed.is-scrolled .brand-logo {
+    width: clamp(144px, calc(100vw - 188px), 203px);
+    height: clamp(46px, 16vw, 63px);
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .header-actions .call-wrap {
+    width: 44px;
+    max-width: 44px;
+    flex: 0 0 44px;
+    margin-inline: 0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    overflow: visible;
+    transform: none;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .header-actions :is(.btn-whatsapp, .nav-toggle) {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .call-popover {
+    display: none !important;
+  }
+}
+
+@media (max-width: 860px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 7.6deg;
+  }
+}
+
+@media (max-width: 800px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 8.2deg;
+  }
+}
+
+@media (max-width: 700px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 9.4deg;
+  }
+}
+
+@media (max-width: 620px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 10.6deg;
+  }
+}
+
+@media (max-width: 560px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 11.7deg;
+  }
+}
+
+@media (max-width: 520px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 12.6deg;
+  }
+}
+
+@media (max-width: 500px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 13.3deg;
+  }
+}
+
+@media (max-width: 480px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 13.7deg;
+  }
+}
+
+/* Smartphone-Einstieg: Die schwebende Markenkachel nutzt den verfuegbaren
+   Raum fast vollstaendig. Der kompakte Scroll-Header bleibt unveraendert. */
+@media (max-width: 430px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 15.2deg;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 6px);
+  }
+
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .header-inner {
+    width: calc(100% - 12px);
+    max-width: none;
+    min-height: 120px;
+    padding: 12px 8px;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
+    width: clamp(166px, calc(100vw - 142px), 256px);
+    height: clamp(56px, 18.5vw, 72px);
+  }
+}
+
+@media (max-width: 390px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 16.8deg;
+  }
+}
+
+@media (max-width: 360px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 17.6deg;
+  }
+}
+
+@media (max-width: 359px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-slope-angle: 17.9deg;
+  }
+
+  html.home-theme-dark .mobile-hero-kicker {
+    font-size: .5rem;
+  }
+
+  html.home-theme-dark .gate-head .hero-title {
+    font-size: 1.75rem;
+  }
+
+  html.home-theme-dark .hero-proof-strip {
+    --hero-proof-icon-size: 34px;
+    --hero-proof-icon-inset: 6.26875px;
+    --hero-proof-icon-visible-width: 21.4625px;
+    --hero-proof-space: 3px;
+  }
+
+  html.home-theme-dark .hero-proof-location-text,
+  html.home-theme-dark .hero-proof-customer-text {
+    font-size: .78125rem;
+  }
+
+}
+
+/* Auf schmalen Geraeten bleibt jeder sichtbare Abstand identisch, wird aber
+   gemeinsam verdichtet, damit Schrift und Flow-Line einzeilig bleiben. */
+@media (min-width: 360px) and (max-width: 389px) {
+  html.home-theme-dark .hero-proof-strip {
+    --hero-proof-space: clamp(7.5px, 2vw, 8px);
+  }
+}
+
+/* Das Hochformat kann breite Mobil- und Tablet-Viewports nicht fuellen, ohne
+   Fahrzeug oder Palme stark abzuschneiden. Die Bildbox behaelt dort ihre
+   Originalproportion und bleibt zentriert; der Keil laeuft weiter vollbreit. */
+@media (max-width: 900px) and (min-aspect-ratio: 2 / 3) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-diagonal-rise: clamp(109.76px, 13.72svh, 112.94px);
+  }
+
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    min-height: clamp(800px, 100svh, 823px);
+  }
+
+  html.home-theme-dark .hero-empty-media img {
+    width: auto;
+    max-width: 100%;
+    aspect-ratio: 1023 / 1537;
+  }
+
+  html.home-theme-dark .hero--gate-content .gate-head {
+    top: clamp(-311px, calc(92px - 49svh), -300px);
+  }
+}
+
+/* Ab 540px erreicht der CTA seine breitere Geometrie; die zweite lineare
+   Teilstrecke haelt beide Mittelpunkte weiterhin deckungsgleich. */
+@media (min-width: 540px) and (max-width: 900px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-title-center-shift: clamp(43px, calc(21.4px + 4vw), 48px);
+  }
+}
+
+/* Auf breiteren Mobilansichten darf die optische Hierarchie etwas staerker
+   ausfallen, ohne die kompakte Abstimmung kleiner Smartphones zu verlieren. */
+@media (min-width: 431px) and (max-width: 900px) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-title-optical-lift: clamp(10px, 1.5vw, 12px);
+    --mobile-hero-title-trial-drop: clamp(6px, calc(-.435px + 1.493vw), 13px);
+  }
+}
+
+/* AP-153: Moderne Browser berechnen Keil und CTA-Lasche aus derselben
+   Steigung. Die Gradwerte der Breiten-Breakpoints bleiben der Fallback. */
+@supports (transform: rotate(atan2(1px, 1px))) {
+  @media (max-width: 900px) {
+    html.home-theme-dark .home-hero-stack {
+      --mobile-hero-slope-angle: calc(atan2(var(--mobile-hero-diagonal-rise), 100vw));
+    }
+  }
+}
+
+/* Container-Einheiten vermeiden Abweichungen durch klassische Scrollbars. */
+@supports (container-type: inline-size) and (width: 1cqi) and (transform: rotate(atan2(1px, 1px))) {
+  @media (max-width: 900px) {
+    html.home-theme-dark .home-hero-stack {
+      container-type: inline-size;
+      --mobile-hero-slope-angle: calc(atan2(var(--mobile-hero-diagonal-rise), 100cqi));
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (max-width: 900px) {
+  html.home-theme-dark .mobile-hero-link:hover::after {
+    background: var(--mobile-hero-cta-surface-hover);
+  }
+
+  html.home-theme-dark .mobile-hero-link:hover .mobile-hero-link-arrow {
+    transform: translateX(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 900px) {
+  html.home-theme-dark .mobile-hero-link:hover .mobile-hero-link-arrow {
+    transform: none;
   }
 }
 
