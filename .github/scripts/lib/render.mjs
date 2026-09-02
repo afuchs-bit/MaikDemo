@@ -182,7 +182,10 @@ ${bloecke}${hinweis}
 
 // AP-24 – optionaler Pool-Rechner (nur auf Seiten mit "rechner": true).
 // Qualitative Einordnung OHNE Preise; Berechnung clientseitig (pool-rechner.js).
-const POOL_RECHNER_VERSION = '20260725a';
+// AP-F18: War '20260725a' und haette bei jedem Build den Wert der ausgelieferten
+// Seite zurueckgestuft. Der hoehere Wert stammt aus fc930cd "Safari-Cache mit neuen
+// Asset-Versionen leeren" - dort wurde nur das HTML angefasst, nicht diese Konstante.
+const POOL_RECHNER_VERSION = '20260812n';
 function lpRechner(rechner, base) {
   if (!rechner) return '';
   const waDefault = 'https://wa.me/491711738943?text=' +
