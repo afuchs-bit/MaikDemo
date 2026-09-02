@@ -477,6 +477,21 @@ html.home-theme-dark .section-proof .proof-map .m-node circle {
   stroke: var(--home-lime);
 }
 
+/* AP-F19: Standortzeichen auf Herne - Pin plus Rohdich-Bluete, wie im Hero.
+   Der 3D-Effekt haengt AUSSCHLIESSLICH am Zeichen. Karte, Umriss, Kreisgrenzen und
+   Einsatzgebiet bleiben ohne Filter.
+
+   Der Schatten steht bewusst NICHT hier, sondern als <filter id="seat-schatten">
+   in der Karten-SVG: ein CSS-drop-shadow rechnet im lokalen System des Pins und
+   wird von der Standard-Filterregion (nur 120 % der Bounding-Box) abgeschnitten -
+   nachgewiesen mit einem harten Testschatten, der gar nicht erschien. Die
+   SVG-Variante setzt die Region explizit auf 200 %.
+
+   Diese Regel haelt nur fest, dass am Zeichen selbst kein zusaetzlicher
+   CSS-Filter liegt.
+   Hier steht deshalb bewusst KEINE filter-Deklaration: sie wuerde das
+   Attribut filter="url(#seat-schatten)" am Element ueberschreiben. */
+
 html.home-theme-dark .section-proof .proof-map .m-node.seat circle {
   fill: var(--home-red);
   stroke: var(--home-on-dark);

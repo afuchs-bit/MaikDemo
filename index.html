@@ -33,7 +33,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902a" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260902b" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260902c" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260902a" />
@@ -485,6 +485,22 @@ html.home-theme-dark body { background-color: #171916; }
         <svg class="map" viewBox="-1158 -1530 3879 3829" role="img"
              aria-label="Nordrhein-Westfalen mit dem Einsatzgebiet um Herne, Bochum, Gelsenkirchen, Recklinghausen und Castrop-Rauxel">
 
+          <!-- AP-F19: Schatten des Standortzeichens. Bewusst als SVG-Filter und nicht
+               per CSS drop-shadow: der Filter rechnet im LOKALEN System des Pins, wo das
+               Objekt nur 17,9 Einheiten hoch ist, und die Standard-Filterregion reicht
+               nur 10 % ueber die Bounding-Box hinaus. Ein CSS-Schatten mit brauchbarem
+               Versatz wurde dadurch abgeschnitten und war unsichtbar - nachgewiesen mit
+               einem harten Testschatten, der gar nicht erschien. Hier ist die Region
+               explizit auf 200 % gesetzt.
+               Werte aus dem Hero uebertragen: dort 0 5px 8px auf 48 px Hoehe, hier
+               dieselben Anteile auf 17,9 lokale Einheiten. -->
+          <defs>
+            <filter id="seat-schatten" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="1.86" stdDeviation="1.49" flood-color="#000" flood-opacity=".32"/>
+              <feDropShadow dx="0" dy="0.5"  stdDeviation="0.25" flood-color="#000" flood-opacity=".34"/>
+            </filter>
+          </defs>
+
           <!-- AP-F11 Landesgrenze Nordrhein-Westfalen.
                Quelle: Verwaltungsgebiete VG2500, Stand 01.01.2026,
                (c) GeoBasis-DE / BKG (dl-de/by-2-0).
@@ -570,7 +586,27 @@ html.home-theme-dark body { background-color: #171916; }
 
           <!-- Sitz Herne: echte Ortskoordinaten, Radien auf den neuen Massstab gebracht -->
           <circle class="m-pulse" cx="324.9" cy="217.7" r="59"/>
-          <g class="m-node seat" style="--i:0"><circle cx="324.9" cy="217.7" r="46"/></g>
+          <!-- AP-F19: Standortzeichen aus dem Hero (Pin + Rohdich-Bluete).
+               Der Pin ist der Pfad aus assets/img/icons/rohdich-standort.svg, wortwoertlich
+               uebernommen und inline gesetzt - so bleibt er bei jeder Groesse scharf.
+               Geometrie: massgeblich ist die SICHTBARE Pfadhoehe von 17,9 Einheiten
+               (y 3,6 bis 21,5), nicht die 24er-Box des Quell-SVG. 32 px Zielhoehe sind
+               bei 0,0888 px/Einheit 360 Einheiten, also scale(20). Die Pin-SPITZE liegt
+               bei (12;21,5), nach der Skalierung bei (240;430) - translate(84.9,-212.3)
+               setzt sie auf Herne (324,9;217,7). Ohne das stuende das Zeichen mit der
+               Mitte statt der Spitze auf dem Ort.
+               Die Bluete sitzt im Pinkopf: der Bogen a6.75 6.75 0 1 0-13.5 0 beschreibt
+               einen Kreis um (12;10,35), dort liegt sie auch im Hero. -->
+          <g class="m-node seat" style="--i:0">
+            <g class="m-seat-pin" filter="url(#seat-schatten)" transform="translate(84.9,-212.3) scale(20)">
+              <path d="M12 21.5c.65-.77 6.75-7.04 6.75-11.15a6.75 6.75 0 1 0-13.5 0C5.25 14.46 11.35 20.73 12 21.5Z"
+                    fill="none" stroke="#B2CA48" stroke-width="1.65"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+              <image href="assets/img/icons/rohdich-blume.png"
+                     x="6.75" y="5.1" width="10.5" height="10.5"
+                     preserveAspectRatio="xMidYMid meet"/>
+            </g>
+          </g>
         </svg>
 
         <figcaption class="proof-map-cap">
