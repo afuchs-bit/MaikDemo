@@ -36,7 +36,7 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="stylesheet" href="assets/css/home-dark.css?v=20260902d" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260812n" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20260902b" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260902c" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260830c" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -1030,7 +1030,6 @@ html.home-theme-dark body { background-color: #171916; }
   <div class="container">
     <header class="private-contact-intro reveal">
       <h2 class="type-section-title" id="anfrage-title">Der erste Schritt zu Ihrem Gartenprojekt.</h2>
-      <p class="lead type-section-lead">Wählen Sie Ihr Anliegen – Maik Rohdich meldet sich persönlich.</p>
     </header>
 
     <div class="private-contact-layout">
@@ -1056,6 +1055,11 @@ html.home-theme-dark body { background-color: #171916; }
              Alle Felder optional - das bisherige Versprechen bleibt gewahrt. -->
         <div class="anf">
           <fieldset class="anf__vorwahl" data-anf-vorwahl>
+            <!-- AP-F23: Die Frage steht nicht mehr auf dem Bildschirm, bleibt aber im
+                 Markup. Ein fieldset mit Radioknoepfen ist eine Gruppe, und die legend
+                 ist ihr Name - ohne sie hoert ein Screenreader-Nutzer nur "Kurz
+                 anfragen, Optionsfeld, 1 von 2", ohne zu erfahren, worum es geht.
+                 Versteckt wird in anfrage.css, nicht hier. -->
             <legend class="anf__vorwahl-legende">Wie möchten Sie anfragen?</legend>
 
             <label class="anf__wahl">
@@ -1083,19 +1087,15 @@ html.home-theme-dark body { background-color: #171916; }
 
             <div class="anf__raster">
               <p class="anf__feld">
-                <label for="anf-name">Name <span class="anf__optional">(optional)</span></label>
+                <label for="anf-name">Name</label>
                 <input type="text" id="anf-name" name="name" autocomplete="name">
               </p>
               <p class="anf__feld">
-                <label for="anf-ort">Ort <span class="anf__optional">(optional)</span></label>
-                <input type="text" id="anf-ort" name="ort" autocomplete="address-level2">
-              </p>
-              <p class="anf__feld">
-                <label for="anf-email">E-Mail <span class="anf__optional">(optional)</span></label>
+                <label for="anf-email">E-Mail</label>
                 <input type="email" id="anf-email" name="email" autocomplete="email">
               </p>
               <p class="anf__feld">
-                <label for="anf-telefon">Telefon <span class="anf__optional">(optional)</span></label>
+                <label for="anf-telefon">Telefon</label>
                 <input type="tel" id="anf-telefon" name="telefon" autocomplete="tel">
               </p>
             </div>

@@ -27,9 +27,14 @@
 
   const kurzForm = document.querySelector('form[data-anf-form]');
 
-  // Felder, die beim Moduswechsel mitwandern. Kurzformular und Assistent
-  // fuehren dieselben name-Attribute, der Abgleich ist deshalb ein reiner
+  // Felder, die beim Moduswechsel mitwandern. Der Abgleich ist ein reiner
   // Namensvergleich – nicht geraten, im Markup nachgesehen.
+  //
+  // AP-F23: 'ort' gibt es seit dem Entschlacken NUR NOCH IM ASSISTENTEN; im
+  // Kurzformular wird der Ort im Freitext erfragt ("… was ist zu tun, und wo?").
+  // Der Eintrag bleibt trotzdem stehen: werteUebernehmen prueft beide Seiten auf
+  // null und laeuft dann einfach ins Leere. Kommt das Feld je zurueck, wandert der
+  // Wert sofort wieder mit, ohne dass jemand daran denken muss.
   const UEBERNAHME = ['name', 'email', 'telefon', 'ort'];
 
   let aktuell = null;
