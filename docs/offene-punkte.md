@@ -110,6 +110,21 @@ vor dem Go-live anwaltlich rueckversichern.
 
 ## AP-F17 — `#kontakt` zeigt seit AP-F14 auf den Gewerbe-Teaser
 
+> **Weitgehend erledigt mit AP-F20 (02.09.2026).** Der Auftraggeber hat den Gewerbe-Zweig
+> von der Startseite entfernt. Damit gab es keinen Grund mehr, den Anker dort zu lassen:
+> `id="kontakt"` sitzt jetzt auf der Sektion „Der erste Schritt zu Ihrem Gartenprojekt."
+> Alle 35 Verweise aus 21 Dateien landen dadurch beim Anfrageformular — ohne dass eine
+> einzige der 21 Dateien angefasst werden musste. Gemessen: Sprungziel 96 px unter der
+> Fensterkante, 5 px unter dem festen Header, Überschrift sichtbar.
+>
+> **Offen bleibt allein die Feinsteuerung:** ob die 21 Links aus
+> `gewerbekunden/leistungen/*` weiterhin zur Startseite führen sollen oder besser zu
+> `gewerbekunden/#anfrage`, wo das passende Gewerbeformular steht. Das ist eine
+> inhaltliche Entscheidung, kein Fehler mehr — der bisherige Zustand (Landung auf einem
+> Knopf nach `/gewerbekunden/`) ist in jedem Fall behoben.
+
+Der ursprüngliche Befund zur Nachvollziehbarkeit:
+
 **Befund vom 02.09.2026**, aufgedeckt bei der Generator-Prüfung. Kein Fehler im Generator —
 der erzeugt exakt das, was ausgeliefert ist. Es ist eine inhaltliche Verschiebung.
 
