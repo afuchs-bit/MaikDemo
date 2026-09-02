@@ -512,6 +512,35 @@ html.home-theme-dark .section-proof .proof-klein-list > li > svg {
   color: var(--home-small-accent);
 }
 
+/* AP-F24: Die Erklaerabsaetze unter den Stichworten sind entfallen, jeder Punkt ist
+   jetzt einzeilig. align-items: start und das margin-top: 2px am Haken (beides in
+   styles.css) waren darauf ausgelegt, das Symbol auf der ERSTEN von mehreren Zeilen
+   zu setzen - bei einer Zeile sass es dadurch 3,1px zu tief, an allen drei Punkten
+   gemessen. Steht hier statt in styles.css, weil die Karte nur auf der Startseite
+   vorkommt, home-dark.css nur von ihr geladen wird und die Datei fuer genau diesen
+   Haken schon eine Regel besitzt (die Zeile darueber). Ein Eingriff in styles.css
+   zoege dagegen den ?v=-Durchlauf ueber 37 Dateien nach sich.
+   ACHTUNG: gilt nur, solange die Stichworte einzeilig bleiben. Wird eines laenger
+   und bricht um, muss das hier zurueck auf start. */
+html.home-theme-dark .section-proof .proof-klein-list > li {
+  align-items: center;
+}
+html.home-theme-dark .section-proof .proof-klein-list > li > svg {
+  margin-top: 0;
+}
+
+/* AP-F24: styles.css:973 gibt jedem .proof-trust .btn-outline ein margin-top: auto.
+   Das stammt aus der Rezensionskarte, wo der Knopf unten kleben soll. Hier kaempft
+   es gegen das justify-content: center aus styles.css:901 - und gewinnt, weil eine
+   auto-Marge den kompletten Freiraum frisst. Mit den Erklaerabsaetzen war der
+   Freiraum klein genug, dass es niemand sah; ohne sie klafften gemessene 106px
+   zwischen letztem Haken und Knopf. Zuruecknehmen, damit die Karte tut, was
+   .proof-trust--klein immer wollte: den Block als Ganzes mittig setzen - so wie die
+   NRW-Karte daneben. align-self: flex-start bleibt, der Knopf steht weiter links. */
+html.home-theme-dark .section-proof .proof-trust--klein .btn-outline {
+  margin-top: 0;
+}
+
 html.home-theme-dark .section-proof .btn-outline {
   color: #171916;
   background: var(--home-lime);

@@ -172,3 +172,29 @@ Sektionsfolge der Startseite wurde gerade erst festgelegt.
 Entfernung an Anruf-Button und WhatsApp-Link (davidk., 01.09.2026). Unkritisch, beide
 Elemente behalten ihren Namen aus dem sichtbaren Text — beim nächsten Handlauf gleicht es
 sich an.
+
+## AP-F24 — „Spontane Einsätze möglich" ist eine neue Aussage des Auftraggebers
+
+**Vom 02.09.2026.** Der dritte Punkt der Karte „Auch kleine und einmalige Arbeiten." auf
+der Startseite hieß bis dahin „Ohne Vorkasse" mit dem Zusatz „Bei kleineren Aufträgen ist
+eine Anzahlung in der Regel nicht nötig." Das war aus einer **freigegebenen** FAQ-Antwort
+abgeleitet (Umsetzungsplan Teil B, Zeile 574: „Verlangen Sie Vorkasse?").
+
+Der Auftraggeber hat den Punkt auf **„Spontane Einsätze möglich"** geändert. Diese Aussage
+steht so **nirgends in Teil B**.
+
+**Warum sie trotzdem drin ist:** Sie nennt keine Frist. Der Umsetzungsplan führt
+„Reaktionszeit Sturmnotdienst" ausdrücklich als offenen Punkt (Zeile 101) und gibt für
+genau diesen Fall die Anweisung, den Satz ohne den fehlenden Fakt vollständig zu
+formulieren (Zeile 87). „möglich" tut das. Der Auftraggeber hat den Wortlaut selbst
+gewählt — aus drei vorgelegten Varianten die zurückhaltendste.
+
+**Zu bestätigen:** Ob spontane Einsätze tatsächlich zugesagt werden sollen und in welchem
+Rahmen. Falls daraus je eine konkrete Frist werden soll, gehört sie zuerst nach Teil B.
+
+**Nachzuziehen bei nächster Gelegenheit:** Der Kommentar über den Regeln in
+`assets/css/styles.css:899` lautet „Alle Aussagen stammen aus freigegebenen FAQ-Antworten."
+Das greift seit dieser Änderung zu weit. Nicht sofort korrigiert, weil jede Änderung an
+`styles.css` den `?v=`-Durchlauf über 37 HTML-Dateien nach sich zieht — für einen
+Kommentar ohne sichtbare Wirkung. Beim nächsten Durchgang, der die Datei ohnehin anfasst,
+mitnehmen. Dort wird auch die dann tote Regel `.proof-klein-list p` fällig.
