@@ -18,48 +18,16 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* AP-F25: Der Token-Block dieser Regel ist nach styles.css :root gewandert - die
+   Farbwelt gilt jetzt fuer die ganze Website, nicht nur fuer diese Seite. Zurueck
+   bleibt allein die Typografie: Nunito war ausdruecklich nur fuer die Startseite
+   gedacht ("Logo und Unterseiten bleiben unveraendert") und war nicht Teil des
+   Farbauftrags. */
 html.home-theme-dark {
-  color-scheme: dark;
-  background-color: rgb(var(--surface-rgb));
-
-  /* Homepage-Typografie: Logo und Unterseiten bleiben unveraendert. */
   --display: "Nunito", sans-serif;
   --body: "Nunito", sans-serif;
-
-  /* Unveraenderte Markenfarben */
-  --home-brand-green: #4A7A10;
-  --home-lime: #8CC63F;
-  --home-yellow: #F2E20C;
-  --home-red: #E22219;
-  --home-dark-accent: #B6D97A;
-
-  /* Bestehende semantische Markenrollen homepage-lokal angleichen. */
-  --green-700: var(--home-brand-green);
-  --green-500: var(--home-lime);
-  --yellow: var(--home-yellow);
-  --coral: var(--home-red);
-
-  --home-focus: var(--home-yellow);
-  --home-small-accent: var(--home-dark-accent);
-  --home-on-dark: #FAFAF6;
-  --home-on-dark-2: #D9DED5;
-  --home-on-dark-mute: #AEB5AA;
-  --home-dark-line: rgba(255,255,255,.12);
-  --home-dark-line-soft: rgba(255,255,255,.08);
-
-  --bg: #171916;
-  --bg-elev: #20241D;
-  --bg-soft: #2A2F26;
-  --bg-hero: #1B1E19;
-  --bg-dark: #0E100D;
-  --ink: #FAFAF6;
-  --ink-2: #D9DED5;
-  --ink-mute: #AEB5AA;
-  --line: rgba(255,255,255,.12);
-  --line-2: rgba(255,255,255,.08);
-  --surface-rgb: 23 25 22;
-  --shadow-card: 0 1px 0 rgba(255,255,255,.035), 0 28px 58px -30px rgba(0,0,0,.58), 0 16px 28px -24px rgba(0,0,0,.5);
 }
+
 
 /* Grundflaechen und bisher fest eingetragene Papierfarben */
 html.home-theme-dark body {

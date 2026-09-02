@@ -1,50 +1,20 @@
 /* ------------------------------------------------------------------
-   Phase-1-Merge · Helle Insel fuer die uebernommenen Privatkunden-Sektionen
+   Reste des Phase-1-Merges
 
-   index.html traegt html.home-theme-dark. home-dark.css schreibt die
-   globalen Farb-Token auf dunkle Werte um, deckt aber nur die
-   Startseiten-Sektionen ab. Die uebernommenen private-*-Sektionen sind
-   gegen die helle Palette gebaut und enthalten rund 430 fest kodierte
-   Hellwerte (#fff, #f7f6f1 ...). Ohne diese Datei stuende heller Text
-   auf hellen Flaechen.
+   AP-F25: Die helle Insel ist entfallen. Sie hatte die von home-dark.css
+   ueberschriebenen Token innerhalb der uebernommenen Privatkunden-Sektionen
+   auf ihre hellen Ausgangswerte zurueckgesetzt - noetig, solange nur die
+   Startseite dunkel war. Seit die Farbwelt in styles.css :root steht, gilt
+   sie ueberall, und die Insel haette sie nur wieder aufgebrochen.
 
-   Deshalb: die von home-dark.css ueberschriebenen Token innerhalb des
-   Merge-Bereichs auf ihre Werte aus styles.css :root zuruecksetzen.
+   Mit ihr sind der Token-Block, die Nahtlinie und der Wrapper
+   <div class="merge-light-scope"> in index.html verschwunden. Geprueft:
+   keine verbleibende Regel haengt unter der Klasse, und es gibt keine
+   Geschwister- oder Positionsselektoren auf Sektionsebene, die das
+   Auspacken der sechs Sektionen getroffen haetten.
 
-   Reines Geruest fuer den Zwischenstand. Faellt in Phase 2 weg, sobald
-   entschieden ist, welche Sektionen bleiben und in welcher Farbwelt.
+   Was hier bleibt, hat mit Farbe nichts zu tun.
    ------------------------------------------------------------------ */
-
-.merge-light-scope {
-  color-scheme: light;
-
-  --bg:        #f6f4ee;
-  --bg-elev:   #ffffff;
-  --bg-soft:   #efece4;
-  --bg-hero:   #eef0e6;
-  --bg-dark:   #131a08;
-
-  --ink:       #131a08;
-  --ink-2:     #3a4032;
-  --ink-mute:  #6b6f60;
-
-  --line:      rgba(19,26,8,.10);
-  --line-2:    rgba(19,26,8,.06);
-
-  --green-700: #315200;
-  --green-500: #5a8a1c;
-  --coral:     #EB6C44;
-  --yellow:    #FFED00;
-
-  --surface-rgb: 246 244 238;
-  --shadow-card: 0 1px 0 rgba(19,26,8,.04), 0 30px 60px -30px rgba(19,26,8,.18), 0 18px 30px -25px rgba(19,26,8,.12);
-
-  background: var(--bg);
-  color: var(--ink);
-}
-
-/* Sichtbare Naht zwischen dunkler Startseite und heller Insel. */
-.merge-light-scope { border-top: 1px solid var(--line); }
 
 /* ------------------------------------------------------------------
    Phase-1-Merge, Teil 2 · Einspaltige Einstiege

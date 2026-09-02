@@ -85,26 +85,49 @@
   /* Brand */
   --green-900: #1d3000;
   --green-800: #2a4500;
-  --green-700: #315200;    /* Brand olive */
-  --green-500: #5a8a1c;
+  --green-700: #4A7A10;    /* Markenoliv, aufgehellt fuer dunklen Grund */
+  --green-500: #8CC63F;    /* Lime */
   --green-300: #b4d49a;
   --green-100: #e6efd9;
   --green-50:  #f1f5e8;
-  --yellow:    #FFED00;
-  --coral:     #EB6C44;
+  --yellow:    #F2E20C;
+  --coral:     #E22219;
   --coral-700: #c0552f;
 
-  /* Surfaces */
-  --bg:        #f6f4ee;    /* warm off-white paper */
-  --bg-elev:   #ffffff;
-  --bg-soft:   #efece4;
-  --bg-hero:   #eef0e6;    /* AP-84: leicht kuehler als --bg, nur Startseiten-Hero */
-  --bg-dark:   #131a08;
-  --ink:       #131a08;
-  --ink-2:     #3a4032;
-  --ink-mute:  #6b6f60;
-  --line:      rgba(19,26,8,.10);
-  --line-2:    rgba(19,26,8,.06);
+  /* Surfaces
+     AP-F25: Die Website laeuft durchgehend in der dunklen Farbwelt. Diese Werte
+     standen bis hierher unter html.home-theme-dark in home-dark.css und galten nur
+     fuer die Startseite. Eine Scoping-Klasse, die ueberall gilt, ist tote Zeremonie
+     - deshalb stehen sie jetzt hier, und alle Seiten ziehen von allein mit.
+     home-dark.css behaelt nur, was wirklich nur die Startseite betrifft. */
+  --bg:        #171916;
+  --bg-elev:   #20241D;
+  --bg-soft:   #2A2F26;
+  --bg-hero:   #1B1E19;
+  --bg-dark:   #0E100D;
+  --ink:       #FAFAF6;
+  --ink-2:     #D9DED5;
+  --ink-mute:  #AEB5AA;
+  --line:      rgba(255,255,255,.12);
+  --line-2:    rgba(255,255,255,.08);
+  --surface-rgb: 23 25 22;
+
+  /* Benannte Farben der dunklen Welt. Die --home-*-Namen stammen aus der Zeit, als
+     nur die Startseite dunkel war; sie sind bewusst NICHT umbenannt worden - rund
+     70 Regeln in home-dark.css verweisen darauf, und ein Umbenennen waere ein
+     zweiter, unabhaengiger Umbau ohne sichtbaren Nutzen. */
+  --home-brand-green: #4A7A10;
+  --home-lime:        #8CC63F;
+  --home-yellow:      #F2E20C;
+  --home-red:         #E22219;
+  --home-dark-accent: #B6D97A;
+  --home-focus:        var(--home-yellow);
+  --home-small-accent: var(--home-dark-accent);
+  --home-on-dark:      #FAFAF6;
+  --home-on-dark-2:    #D9DED5;
+  --home-on-dark-mute: #AEB5AA;
+  --home-dark-line:      rgba(255,255,255,.12);
+  --home-dark-line-soft: rgba(255,255,255,.08);
 
   /* Type */
   --display: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -131,15 +154,15 @@
   --gutter: clamp(20px, 4vw, 56px);
   --radius: 22px;
   --radius-sm: 14px;
-  --shadow-card: 0 1px 0 rgba(19,26,8,.04), 0 30px 60px -30px rgba(19,26,8,.18), 0 18px 30px -25px rgba(19,26,8,.12);
-  --shadow-float: 0 50px 80px -40px rgba(19,26,8,.35), 0 30px 40px -30px rgba(19,26,8,.18);
+  --shadow-card: 0 1px 0 rgba(255,255,255,.035), 0 28px 58px -30px rgba(0,0,0,.58), 0 16px 28px -24px rgba(0,0,0,.5);
+  --shadow-float: 0 50px 80px -40px rgba(0,0,0,.62), 0 30px 40px -30px rgba(0,0,0,.44);
 
   /* Motion */
   --ease: cubic-bezier(.22,.61,.36,1);
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; color-scheme: dark; }
 html, body { margin: 0; padding: 0; }
 body {
   font-family: var(--body);
