@@ -212,11 +212,9 @@ und ohne gemeinsame Slugs. `taxonomie.json` ist ab jetzt die verbindliche Refere
 der folgenden Stellen an diese Labels/Slugs ist bewusst **noch nicht** erfolgt (eigener Schritt),
 hier dokumentiert:
 
-Stellen im Markup:
+Stellen im Markup (Stand AP-F15 — die Kontakt-Selects B1/B2 und der Privatkunden-Footer A2
+sind mit der Zusammenfuehrung entfallen; die Tabelle unten fuehrt sie noch als Spalten):
 - **A1** Footer „Leistungen" (`index.html`)
-- **A2** Footer „Leistungen für Privatkunden" (`privatkunden/index.html`)
-- **B1** Kontakt-Select „Bereich" (`index.html`, `name="bereich"`, ohne `value`)
-- **B2** Kontakt-Select „Worum geht es?" (`privatkunden/index.html`, `name="bereich"`)
 - **C1** Privatkunden-Chips (`index.html`, `.chips`)
 - **C2** Gewerbekunden-Chips (`index.html`, `.chips`)
 - (zusätzlich: Leistungskarten-Überschriften `.svc-card h3` und JSON-LD `OfferCatalog` auf der Privatkunden-Seite)
@@ -278,19 +276,18 @@ stellen den Zustand beim Laden wieder her. Default-Werte werden aus der URL wegg
 Leistungs-Zahlen den aktiven Kundentyp (jeweils innerhalb des gewählten Tabs). Chips mit 0 Treffern
 werden **deaktiviert** (nicht versteckt); ein bereits aktiver Chip bleibt abwählbar.
 
-**CTA-Vorbefüllung:** Der „Jetzt anfragen"-Button verlinkt kontextabhängig auf das Kontaktformular der
-Startseite mit `?bereich=<Option-Text>#kontakt`. `main.js` liest `?bereich=` beim Laden und setzt das
-Dropdown (der Wert muss exakt einem `<option>`-Text entsprechen). Zuordnung Leistungs-Slug → Bereich
-(nur bei genau einer aktiven Leistung, sonst typ-basierter Default, sonst ohne Vorwahl):
+**CTA-Vorbefüllung (Stand AP-F15):** Der „Jetzt anfragen"-Button der Galerie verlinkt auf das
+Anfrageformular der Startseite und übergibt den **Taxonomie-Slug** direkt:
+`../?leistung=<slug>#anfrage`. Das frühere `?bereich=<Option-Text>` ist entfallen — es verglich
+Options-Texte statt Slugs und brach bei jeder Umformulierung eines Dropdown-Eintrags. Das
+zugehörige Select `name="bereich"` existiert seit der Zusammenführung von Startseite und
+Privatkundenseite nicht mehr; die beiden verwaisten Handler in `main.js` sind entfernt.
 
-| Leistungs-Slug | Bereich-Option |
-|----------------|----------------|
-| `gartengestaltung`, `vorgarten` | Garten / Vorgarten |
-| `teichbau` | Teich / Wasser im Garten |
-| `bepflanzung` | Bepflanzung |
-| `dachbegruenung` | Dachbegrünung |
-| `baumkontrolle` | Baumkontrolle / Gutachten |
-| `sturmnotdienst` | Sturmschaden / Sturmnotdienst |
-| `holzverkauf` | Holzverkauf |
-| `aussenanlagenpflege` | Gewerbliche Pflege |
-| `baumarbeiten` | *(kein exaktes Pendant → keine Vorwahl)* |
+Gelesen wird der Parameter von `assets/js/privat-form.js`; unbekannte Slugs werden verworfen.
+Derselbe Mechanismus trägt `?pfad=<hauptpfad>` aus den Leistungsseiten. Zusätzlich schaltet
+`assets/js/anfrage.js` die Vorwahl auf „Mehr Angaben", sobald einer der beiden Parameter
+vorhanden ist — wer mit konkretem Kontext kommt, landet direkt im ausführlichen Formular.
+
+Die früher hier geführte Zuordnungstabelle „Leistungs-Slug → Bereich-Option" ist damit
+gegenstandslos und wurde entfernt. Der Slug ist jetzt der Wert; eine Übersetzung entfällt.
+Damit hat auch `baumarbeiten` ein Ziel — im Text-Mapping hatte es kein Pendant.

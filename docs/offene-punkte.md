@@ -87,3 +87,23 @@ passt sich selbst an, an `build-images.mjs` ist nichts zu ändern.
 |---|---|---|
 | Impressum (Pflichtangaben vom Anbieter: Kontakt, USt-/Steuernr. usw.) | `content/rechtstexte/impressum.body.html` | AP-11 |
 | Datenschutzerklärung (Volltext vom Anbieter) | `content/rechtstexte/datenschutz.body.html` | AP-11 |
+
+## AP-F15 — Wortlaut des Versandhinweises
+
+Das Kurzanfrageformular hat keinen Endpunkt; ein Versand findet nicht statt. Beim Absenden
+erscheint deshalb ein Hinweis statt einer Erfolgsmeldung — ein Erfolgszustand ohne echten
+Versand ist ausgeschlossen.
+
+Der derzeitige Wortlaut nennt ausschliesslich belegte Angaben (Mobilnummer, WhatsApp-Link,
+`maik@rohdich.de` — alle bereits an anderer Stelle der Seite gefuehrt):
+
+> Der Formularversand ist noch nicht aktiv. Ihre Anfrage erreicht uns bis dahin telefonisch
+> unter 0171 / 173 89 43, per WhatsApp oder per E-Mail an maik@rohdich.de.
+
+**Offen:** Bestaetigung des Wortlauts durch den Auftraggeber. Er darf unter keinen Umstaenden
+nach „gesendet" klingen. Fundstelle: `assets/js/anfrage.js`, Konstante `HINWEIS`.
+
+**Offen:** Der Datenschutz-Hinweis unter dem Kurzformular verweist auf `datenschutz/`, statt
+eine Einwilligungs-Checkbox zu erzwingen. Begruendung: die Bearbeitung einer Anfrage stuetzt
+sich ueblicherweise auf Vertragsanbahnung, nicht auf Einwilligung. Das ist eine Rechtsfrage —
+vor dem Go-live anwaltlich rueckversichern.

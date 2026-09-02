@@ -367,24 +367,10 @@
     });
   });
 
-  // --- Sonderthemen-CTA: Bereich im Kontaktformular vorbefüllen ---
-  document.querySelectorAll('[data-prefill-bereich]').forEach((a) => {
-    a.addEventListener('click', () => {
-      const sel = document.querySelector('#contactForm select[name="bereich"]');
-      if (sel) sel.value = a.getAttribute('data-prefill-bereich');
-    });
-  });
-
-  // --- Bereich aus URL vorbefüllen (Deep-Link von der Galerie: ?bereich=<Option-Text>) ---
-  // Ergänzt den Same-Page-Mechanismus oben um seitenübergreifende Vorbefüllung.
-  // Der Wert muss exakt einem <option>-Text entsprechen, sonst no-op.
-  {
-    const bereich = new URLSearchParams(location.search).get('bereich');
-    if (bereich) {
-      const sel = document.querySelector('#contactForm select[name="bereich"]');
-      if (sel) sel.value = bereich;
-    }
-  }
+  // AP-F15: Hier standen zwei Handler fuer select[name="bereich"] - Klick-Vorbelegung
+  // und ?bereich=<Option-Text> aus der URL. Das Select existiert seit dem Merge der
+  // Startseite nicht mehr; beide Bloecke liefen ins Leere. Die Vorbelegung uebernimmt
+  // privat-form.js ueber [data-prefill-bereich] und ?pfad=/?leistung= mit Taxonomie-Slugs.
 
   // --- Bevorzugter Kontaktweg: passendes Detailfeld einblenden ---
   // Die <option>s tragen keine value-Attribute, der Wert ist also der Optionstext

@@ -24,10 +24,11 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Hero-Standbild vorab laden (AVIF), damit es frueh paintet -->
 <link rel="preload" as="image" type="image/avif" imagesizes="(max-width: 860px) 100vw, 50vw" imagesrcset="assets/img/hero/gate-privat-480.avif 480w, assets/img/hero/gate-privat-960.avif 960w, assets/img/hero/gate-privat-1200.avif 1200w" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260901a" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260902a" />
 <link rel="stylesheet" href="assets/css/home-dark.css?v=20260831b" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260812n" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260902a" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260830c" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -933,6 +934,78 @@ html.home-theme-dark body { background-color: #171916; }
           <p class="b2b-confirmation-note">Mit der Anfrage ist noch kein Auftrag und kein Vor-Ort-Termin zustande gekommen. Beides stimmen wir erst persönlich mit Ihnen ab.</p>
         </section>
 
+        <!-- ============ VORWAHL + KURZANFRAGE (AP-F15) ============
+             Kurz ist der Regelfall und steht ohne Klick bereit. "Mehr Angaben"
+             klappt den bestehenden Vierstufen-Assistenten auf, der unveraendert
+             darunter liegt. Zwei getrennte <form>: HTML verbietet Verschachtelung,
+             und der Assistent bringt eigene Absende- und Pruefroutinen mit.
+             Alle Felder optional - das bisherige Versprechen bleibt gewahrt. -->
+        <div class="anf">
+          <fieldset class="anf__vorwahl" data-anf-vorwahl>
+            <legend class="anf__vorwahl-legende">Wie möchten Sie anfragen?</legend>
+
+            <label class="anf__wahl">
+              <input type="radio" name="_vorwahl" value="kurz" checked>
+              <span class="anf__wahl-text">
+                <span class="anf__wahl-titel">Kurz anfragen</span>
+                <span class="anf__wahl-info">Ein paar Zeilen genügen. Maik Rohdich meldet sich und klärt den Rest im Gespräch.</span>
+              </span>
+            </label>
+
+            <label class="anf__wahl">
+              <input type="radio" name="_vorwahl" value="detail">
+              <span class="anf__wahl-text">
+                <span class="anf__wahl-titel">Ich möchte mehr Angaben machen</span>
+                <span class="anf__wahl-info">Leistungen, Ort und Zeitrahmen — in vier Schritten.</span>
+              </span>
+            </label>
+          </fieldset>
+
+          <form class="anf__form" data-anf-modus="kurz" data-anf-form novalidate>
+            <div class="anf__honeypot" aria-hidden="true">
+              <label for="anf-hp">Firmenwebsite (bitte frei lassen)</label>
+              <input type="text" id="anf-hp" name="_hp_website" tabindex="-1" autocomplete="off">
+            </div>
+            <input type="hidden" name="modus" value="kurz" data-anf-modus-feld>
+            <input type="hidden" name="geladen_um" value="" data-anf-zeitstempel>
+
+            <div class="anf__raster">
+              <p class="anf__feld">
+                <label for="anf-name">Name <span class="anf__optional">(optional)</span></label>
+                <input type="text" id="anf-name" name="name" autocomplete="name">
+              </p>
+              <p class="anf__feld">
+                <label for="anf-ort">Ort <span class="anf__optional">(optional)</span></label>
+                <input type="text" id="anf-ort" name="ort" autocomplete="address-level2">
+              </p>
+              <p class="anf__feld">
+                <label for="anf-email">E-Mail <span class="anf__optional">(optional)</span></label>
+                <input type="email" id="anf-email" name="email" autocomplete="email">
+              </p>
+              <p class="anf__feld">
+                <label for="anf-telefon">Telefon <span class="anf__optional">(optional)</span></label>
+                <input type="tel" id="anf-telefon" name="telefon" autocomplete="tel">
+              </p>
+            </div>
+
+            <p class="anf__feld">
+              <label for="anf-nachricht">Worum geht es?</label>
+              <textarea id="anf-nachricht" name="nachricht" rows="5"
+                placeholder="Eine kurze Beschreibung genügt — was ist zu tun, und wo?"></textarea>
+            </p>
+
+            <p class="anf__rechtliches">
+              Fotos senden Sie am schnellsten direkt per WhatsApp mit.
+              Wie wir Ihre Angaben verarbeiten, steht in der <a href="datenschutz/">Datenschutzerklärung</a>.
+            </p>
+
+            <div class="anf__abschluss">
+              <button type="submit" class="anf__knopf" data-anf-senden>Anfrage senden</button>
+              <p class="anf__status" data-anf-status role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div data-anf-modus="detail" hidden>
         <form class="contact-form b2b-form private-form" id="contactForm" enctype="multipart/form-data" novalidate>
           <input type="hidden" name="js_enabled" value="0" data-js-enabled>
           <input type="radio" name="hauptpfad" value="sturmschaden" required hidden>
@@ -1389,6 +1462,8 @@ html.home-theme-dark body { background-color: #171916; }
             </div>
           </div>
         </form>
+          </div>
+        </div>
       </div>
 
       <aside class="private-contact-aside reveal" aria-labelledby="private-contact-person-legacy" hidden>
@@ -1764,9 +1839,10 @@ html.home-theme-dark body { background-color: #171916; }
 </footer>
 <!-- BUILD:site-footer:end -->
 
-<script src="assets/js/main.js?v=20260825a" defer></script>
+<script src="assets/js/main.js?v=20260902a" defer></script>
 <script src="assets/js/private-gallery-teaser.js?v=20260812n" defer></script>
 <script src="assets/js/private-proof.js?v=20260812n" defer></script>
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>
+<script src="assets/js/anfrage.js?v=20260902a" defer></script>
 </body>
 </html>
