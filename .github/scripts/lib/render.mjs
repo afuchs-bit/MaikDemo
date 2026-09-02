@@ -153,7 +153,11 @@ function leistungLinks(slugs, base, taxLabels, leistungPagesExist) {
 function kundengruppeLinks(kundentyp, base) {
   const out = [];
   if (kundentyp.includes('privat')) {
-    out.push(`<li><a class="tag-link" href="${base}privatkunden/">Privatkunden</a></li>`);
+    // AP-F17: Ziel ist die Startseite, nicht privatkunden/ - der Hub ist seit AP-F8
+    // geloescht. Dieselbe Regel wie in KUNDENGRUPPE_META.privat.href, die damals
+    // bereits umgestellt wurde; diese Stelle war uebersehen worden und hat den
+    // toten Link bei jedem Build neu erzeugt.
+    out.push(`<li><a class="tag-link" href="${base}">Privatkunden</a></li>`);
   }
   if (kundentyp.includes('gewerbe')) {
     out.push(`<li><a class="tag-link" href="${base}gewerbekunden/">Gewerbekunden</a></li>`);
@@ -651,7 +655,11 @@ function leistungContactHref(slug, base, welt) {
   const [path, service] = PRIVATE_FORM_PREFILL[slug] || ['unsicher', ''];
   const query = new URLSearchParams({ pfad: path });
   if (service) query.set('leistung', service);
-  return `${base}privatkunden/?${query.toString()}#anfrage`;
+  // AP-F17: Ziel ist die Startseite, nicht privatkunden/ - der Hub ist seit AP-F8
+  // geloescht und das Anfrageformular steht dort. Die ausgelieferten Seiten trugen
+  // das richtige Ziel bereits, diese Stelle haette es bei jedem Build wieder auf
+  // den toten Hub zurueckgesetzt - 39 Links auf einen Schlag.
+  return `${base}?${query.toString()}#anfrage`;
 }
 
 function lpVerlinkung(leistung, labelBySlug, base, welt, contactHref) {
