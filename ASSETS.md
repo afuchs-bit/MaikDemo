@@ -35,6 +35,14 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   Wortmarke `MAIK ROHDICH` wurde mechanisch aus dem Originallogo freigestellt,
   mit transparenten Sicherheitskanten neu ausbalanciert und nicht generativ
   verändert. Die gelben Zusatzzeilen sind nicht enthalten.
+- `assets/img/logo/maik-rohdich-logo-mobile-horizontal-meister.png` – Variante
+  der mobilen Logoableitung für die große Homepage-Kopfkachel. Der originale
+  Schriftzug `Gartenbaumeister` wurde mechanisch aus
+  `assets/img/logo/maik-rohdich-logo.png` ausgeschnitten, proportional zur
+  mobilen Wortmarke skaliert, linksbündig unter `MAIK ROHDICH` eingesetzt und
+  mit ihr als Gruppe optisch vertikal zentriert. Keine generative Veränderung.
+  SHA-256:
+  `F96D95894E72E1A7A31371CD6418545BD696D778A2035EDC218A61B1EF4400B6`.
 - `assets/img/icons/phone-header-mobile.png` – mechanisch aus der vom Auftraggeber
   gelieferten Datei `Design ohne Titel.png` freigestellt, quadratisch beschnitten und
   einheitlich auf das Wortmarken-Grün `#56E607` gesetzt. Die Form wurde nicht verändert.
@@ -45,6 +53,20 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   `7FB054C0F4BEA644B4A4A014D6D8581AAD7E6DCB639049D17A578DC44F8E6FD4`.
 
 ## Hero
+- `assets/img/hero/rohdich-blueten-wasserzeichen.webp` – 960 × 768 px große,
+  transparente WebP-Ableitung der vom Auftraggeber bereitgestellten
+  Drei-Blüten-Illustration. Der fest eingebrannte Schachbretthintergrund wurde
+  per Bildbearbeitung entfernt; anschließend wurde das Ergebnis über Sharp
+  verlustarm für den asymmetrischen mobilen Hero-Hintergrund optimiert.
+  SHA-256: `682B78563B334B34B162F8547A75D88254CFD53B7CC8E9482F2E9D5E7BEE292E`.
+- `assets/img/hero/garten-schriftzug.png` – 800 × 196 px große, transparente
+  Ableitung des vom Auftraggeber gelieferten Schriftzugs `Garten`. Das fest
+  eingebrannte neutrale Schachbrett wurde mechanisch entfernt; Form,
+  Proportionen und Pinselkontur blieben unverändert. Die Farbe wurde auf das
+  exakte mobile Wortmarken-Grün `#56E607` von `MAIK ROHDICH` vereinheitlicht.
+  Verwendung ausschließlich als Bildwort in der mobilen Homepage-H1.
+  SHA-256:
+  `8221FBA34AC389A6F11E4381FB44A4B0EF40F2AA1497FBEAFC3599A6FFE1638D`.
 - `assets/img/icons/rohdich-standort.svg` – Pin-Kontur des vom Auftraggeber
   bereitgestellten Standortzeichens. Das frühere abstrahierte Innenmotiv wurde
   für die Kombination mit der echten Markenblüte entfernt. SHA-256:

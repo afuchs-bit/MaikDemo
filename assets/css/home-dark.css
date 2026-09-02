@@ -104,7 +104,7 @@ html.home-theme-dark .home-hero-stack > .hero--gate-empty {
 }
 
 /* Die neuen Textvarianten gehoeren ausschliesslich zur mobilen Bildbuehne. */
-html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .mobile-hero-link) {
+html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .mobile-hero-cta-stack, .mobile-hero-link) {
   display: none;
 }
 
@@ -140,7 +140,7 @@ html.home-theme-dark .hero-proof-strip {
   left: 50%;
   z-index: 4;
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto;
   align-items: center;
   justify-content: center;
   column-gap: var(--hero-proof-space);
@@ -153,8 +153,7 @@ html.home-theme-dark .hero-proof-strip {
   transform: translateX(-50%);
 }
 
-html.home-theme-dark .hero-proof-location,
-html.home-theme-dark .hero-proof-customer {
+html.home-theme-dark .hero-proof-location {
   display: contents;
 }
 
@@ -191,58 +190,7 @@ html.home-theme-dark .hero-proof-location-flower {
   pointer-events: none;
 }
 
-html.home-theme-dark .hero-proof-collage {
-  position: relative;
-  width: clamp(158px, 11.5vw, 176px);
-  height: 100%;
-  min-height: 96px;
-  /* Die Kartenschatten bleiben vertikal sichtbar, duerfen aber nicht in die
-     optisch vermessenen horizontalen Zwischenraeume hineinragen. */
-  clip-path: inset(-24px 0);
-}
-
-html.home-theme-dark .hero-proof-photo {
-  position: absolute;
-  top: 50%;
-  display: block;
-  width: clamp(56px, 4.2vw, 62px);
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border: 1px solid rgba(250, 250, 246, .38);
-  border-radius: 7px;
-  background: var(--bg-soft);
-  box-shadow: 0 9px 18px -9px rgba(0, 0, 0, .78);
-  transform: translateY(-50%);
-}
-
-html.home-theme-dark .hero-proof-photo--lawn {
-  left: 0;
-  z-index: 1;
-}
-
-html.home-theme-dark .hero-proof-photo--pond {
-  left: 50%;
-  z-index: 3;
-  width: clamp(66px, 4.95vw, 73px);
-  border-color: rgba(182, 217, 122, .62);
-  box-shadow: 0 11px 21px -9px rgba(0, 0, 0, .84), 0 0 14px -11px rgba(140, 198, 63, .72);
-  transform: translate(-50%, -50%);
-}
-
-html.home-theme-dark .hero-proof-photo--gravel {
-  right: 0;
-  z-index: 2;
-}
-
-html.home-theme-dark .hero-proof-photo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-html.home-theme-dark .hero-proof-location-text,
-html.home-theme-dark .hero-proof-customer-text {
+html.home-theme-dark .hero-proof-location-text {
   min-width: max-content;
   margin: 0;
   color: var(--home-on-dark-2);
@@ -254,13 +202,12 @@ html.home-theme-dark .hero-proof-customer-text {
   text-align: center;
 }
 
-html.home-theme-dark .hero-proof-location-text > span,
-html.home-theme-dark .hero-proof-customer-text > span {
+html.home-theme-dark .hero-proof-location-text > span {
   display: block;
   white-space: nowrap;
 }
 
-html.home-theme-dark :is(.hero-proof-location-text, .hero-proof-customer-text) strong {
+html.home-theme-dark .hero-proof-location-text strong {
   color: var(--home-lime);
   font: inherit;
 }
@@ -647,41 +594,23 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .hero-proof-strip {
-    --hero-proof-icon-size: clamp(38px, 10.5vw, 48px);
-    --hero-proof-icon-inset: clamp(7.00625px, 1.9359375vw, 8.85px);
-    --hero-proof-icon-visible-width: clamp(23.9875px, 6.628125vw, 30.3px);
+    --hero-proof-icon-size: clamp(42px, 11.8vw, 54px);
+    --hero-proof-icon-inset: calc(var(--hero-proof-icon-size) * .184375);
+    --hero-proof-icon-visible-width: calc(var(--hero-proof-icon-size) * .63125);
     --hero-proof-base-space: clamp(8px, 2vw, 16px);
     --hero-proof-space: calc(var(--hero-proof-base-space) + var(--hero-proof-icon-inset));
+    --mobile-hero-proof-lift: clamp(14px, 2.5svh, 21px);
     bottom: clamp(8px, 1.4svh, 12px);
-    width: 100%;
-    max-width: none;
+    left: max(0px, calc(var(--mobile-hero-head-inset) - var(--hero-proof-space)));
     height: clamp(76px, 10.2svh, 92px);
     min-height: 0;
-    padding: 0;
-    column-gap: 0;
-    justify-content: space-evenly;
-    box-sizing: border-box;
-    transform: translate(-50%, calc(0px - var(--mobile-hero-content-group-lift)));
+    transform: translateY(calc(
+      0px - var(--mobile-hero-content-group-lift) - var(--mobile-hero-proof-lift)
+    ));
   }
 
-  html.home-theme-dark .hero-proof-collage {
-    width: clamp(44px, 13.5vw, 116px);
-    min-height: 0;
-    height: 100%;
-  }
-
-  html.home-theme-dark .hero-proof-photo {
-    width: clamp(33px, 9.8vw, 52px);
-    border-radius: clamp(4px, 1.5vw, 7px);
-  }
-
-  html.home-theme-dark .hero-proof-photo--pond {
-    width: clamp(39px, 11.6vw, 62px);
-  }
-
-  html.home-theme-dark .hero-proof-location-text,
-  html.home-theme-dark .hero-proof-customer-text {
-    font-size: clamp(.6875rem, 3vw, 1rem);
+  html.home-theme-dark .hero-proof-location-text {
+    font-size: clamp(.875rem, 3.6vw, 1rem);
     line-height: 1.18;
     letter-spacing: -.012em;
   }
@@ -720,7 +649,15 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .home-hero-stack > .hero--gate-empty::after {
     z-index: 3;
     height: 49%;
-    background: var(--bg-hero);
+    background-color: var(--bg-hero);
+    background-image:
+      linear-gradient(rgba(27, 30, 25, .86), rgba(27, 30, 25, .86)),
+      url("../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a");
+    background-repeat: no-repeat, no-repeat;
+    background-position:
+      center,
+      calc(100% + clamp(74px, 22.5vw, 165px)) clamp(20px, 3.4svh, 30px);
+    background-size: cover, clamp(280px, 82vw, 460px) auto;
   }
 
   /* AP-151: Der Titel folgt der mobilen Hero-Diagonale mit bewusstem Abstand.
@@ -821,46 +758,52 @@ html.home-theme-dark .fork-path:hover {
     white-space: nowrap;
   }
 
-  html.home-theme-dark .gate-head .gate-title-mobile em {
-    color: var(--home-lime);
-    font-style: normal;
+  html.home-theme-dark .gate-head .hero-title-garten-word {
+    display: inline-block;
+    width: 3.2em;
+    margin-left: .04em;
+    line-height: 0;
+    vertical-align: -.08em;
+  }
+
+  html.home-theme-dark .gate-head .hero-title-garten-word img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
   }
 
   html.home-theme-dark .gate-region {
     display: none;
   }
 
-  html.home-theme-dark .mobile-hero-link {
-    --mobile-hero-cta-surface: #e4e5de;
-    --mobile-hero-cta-surface-hover: #f2f1ea;
-    --mobile-hero-cta-surface-active: #d6d8cf;
-    --mobile-hero-cta-ink: #171916;
+  html.home-theme-dark .mobile-hero-cta-stack {
+    --mobile-hero-cta-surface: rgba(35, 40, 31, .86);
+    --mobile-hero-cta-border: rgba(140, 198, 63, .64);
+    --mobile-hero-cta-ink: #f4f2ea;
+    --mobile-hero-cta-top: clamp(-5px, calc(8vw - 30px), 22px);
+    --mobile-hero-cta-optical-shift: calc(
+      clamp(5px, 1.625vw, 6px)
+      + clamp(1.25px, .375vw, 2px)
+      + 1px
+    );
     position: absolute;
-    top: clamp(-5px, calc(8vw - 30px), 22px);
+    top: var(--mobile-hero-cta-top);
     right: calc(var(--mobile-hero-cta-inset) - var(--mobile-hero-head-inset));
-    bottom: -14px;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(7px, 2.2vw, 13px);
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
     width: var(--mobile-hero-cta-width);
+    height: clamp(176px, 54vw, 218px);
     min-height: 100px;
     margin: 0;
-    padding: calc(var(--mobile-hero-cta-edge-inset) + 7px) clamp(6px, 1.8vw, 10px);
-    color: var(--mobile-hero-cta-ink);
-    font-weight: 800;
-    line-height: 1.08;
-    text-align: center;
-    text-decoration: none;
     isolation: isolate;
     box-sizing: border-box;
     transform: translateY(calc(18px + var(--mobile-hero-cta-trial-drop)));
   }
 
-  html.home-theme-dark .mobile-hero-link::before,
-  html.home-theme-dark .mobile-hero-link::after {
+  html.home-theme-dark .mobile-hero-cta-stack::before,
+  html.home-theme-dark .mobile-hero-cta-stack::after {
     content: "";
     position: absolute;
     top: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset));
@@ -869,49 +812,115 @@ html.home-theme-dark .fork-path:hover {
     left: var(--mobile-hero-cta-visual-inset);
     z-index: -2;
     border-radius: 2px 14px 2px 14px;
-    background: var(--home-lime);
+    background: var(--mobile-hero-cta-border);
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .22));
     pointer-events: none;
     transform: skewY(var(--mobile-hero-slope-angle));
     transform-origin: center;
   }
 
-  html.home-theme-dark .mobile-hero-link::after {
+  html.home-theme-dark .mobile-hero-cta-stack::after {
     top: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset) + 2px);
     right: calc(var(--mobile-hero-cta-visual-inset) + 2px);
     bottom: calc(var(--mobile-hero-cta-edge-inset) + var(--mobile-hero-cta-visual-inset) + 2px);
     left: calc(var(--mobile-hero-cta-visual-inset) + 2px);
     z-index: -1;
     border-radius: 1px 12px 1px 12px;
-    background: var(--mobile-hero-cta-surface);
-    transition: background-color .2s ease;
+    background:
+      linear-gradient(
+        to bottom,
+        transparent calc(50% - .65px),
+        rgba(255, 255, 255, .13) calc(50% - .65px),
+        rgba(255, 255, 255, .13) calc(50% + .65px),
+        transparent calc(50% + .65px)
+      ),
+      var(--mobile-hero-cta-surface);
+    -webkit-backdrop-filter: blur(3px) saturate(.85);
+    backdrop-filter: blur(3px) saturate(.85);
+  }
+
+  html.home-theme-dark .mobile-hero-link {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 44px;
+    margin: 0;
+    padding: clamp(5px, 1.5vw, 8px) clamp(6px, 1.8vw, 10px);
+    color: var(--mobile-hero-cta-ink);
+    font-weight: 800;
+    line-height: 1.08;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  html.home-theme-dark .mobile-hero-link-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2px, .65vw, 4px);
+  }
+
+  html.home-theme-dark .mobile-hero-link--project .mobile-hero-link-content {
+    transform: translateY(var(--mobile-hero-cta-optical-shift));
+  }
+
+  html.home-theme-dark .mobile-hero-link--call .mobile-hero-link-content {
+    transform: translateY(calc(0px - var(--mobile-hero-cta-optical-shift)));
   }
 
   html.home-theme-dark .mobile-hero-link-label {
     position: relative;
     z-index: 1;
-    font-size: clamp(.66rem, 2.6vw, .82rem);
-    letter-spacing: -.02em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 3em;
+    font-size: clamp(.82rem, 3.35vw, .95rem);
+    line-height: 1;
+    letter-spacing: -.01em;
     white-space: nowrap;
   }
 
-  html.home-theme-dark .mobile-hero-link-arrow {
+  html.home-theme-dark .mobile-hero-link-label > span {
+    display: block;
+  }
+
+  html.home-theme-dark .mobile-hero-link-symbol {
     position: relative;
     z-index: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: clamp(34px, 9vw, 44px);
+    width: clamp(32px, 8vw, 36px);
     aspect-ratio: 1;
-    border: 1.25px solid currentColor;
-    border-radius: 50%;
-    font-size: clamp(1.25rem, 5vw, 1.55rem);
+    font-size: clamp(1.75rem, 7.5vw, 2rem);
     font-weight: 500;
     line-height: 1;
     transition: transform .2s ease;
   }
 
-  html.home-theme-dark .mobile-hero-link:active::after {
-    background: var(--mobile-hero-cta-surface-active);
+  html.home-theme-dark .mobile-hero-link-phone {
+    width: clamp(40px, 10vw, 44px);
+  }
+
+  html.home-theme-dark .mobile-hero-link-phone img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: contain;
+    opacity: .9;
+  }
+
+  html.home-theme-dark .mobile-hero-link:active {
+    opacity: .72;
   }
 
   html.home-theme-dark.home-header-morph {
@@ -979,6 +988,10 @@ html.home-theme-dark .fork-path:hover {
     transition:
       width .42s cubic-bezier(.22, 1, .36, 1),
       height .42s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
+    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister.png?v=20260902a");
   }
 
   html.home-theme-dark.home-header-morph .header-actions {
@@ -1158,38 +1171,6 @@ html.home-theme-dark .fork-path:hover {
     font-size: 1.75rem;
   }
 
-  html.home-theme-dark .hero-proof-strip {
-    --hero-proof-icon-size: 34px;
-    --hero-proof-icon-inset: 6.26875px;
-    --hero-proof-icon-visible-width: 21.4625px;
-    --hero-proof-space: 3px;
-  }
-
-  html.home-theme-dark .hero-proof-location-text,
-  html.home-theme-dark .hero-proof-customer-text {
-    font-size: .65625rem;
-  }
-
-  html.home-theme-dark .hero-proof-collage {
-    width: 41px;
-  }
-
-  html.home-theme-dark .hero-proof-photo {
-    width: 28px;
-  }
-
-  html.home-theme-dark .hero-proof-photo--pond {
-    width: 33px;
-  }
-
-}
-
-/* Auf schmalen Geraeten bleibt jeder sichtbare Abstand identisch, wird aber
-   gemeinsam verdichtet, damit Schrift und Flow-Line einzeilig bleiben. */
-@media (min-width: 360px) and (max-width: 389px) {
-  html.home-theme-dark .hero-proof-strip {
-    --hero-proof-space: clamp(7.5px, 2vw, 8px);
-  }
 }
 
 /* Das Hochformat kann breite Mobil- und Tablet-Viewports nicht fuellen, ohne
@@ -1253,17 +1234,17 @@ html.home-theme-dark .fork-path:hover {
 }
 
 @media (hover: hover) and (pointer: fine) and (max-width: 900px) {
-  html.home-theme-dark .mobile-hero-link:hover::after {
-    background: var(--mobile-hero-cta-surface-hover);
-  }
-
   html.home-theme-dark .mobile-hero-link:hover .mobile-hero-link-arrow {
     transform: translateX(3px);
+  }
+
+  html.home-theme-dark .mobile-hero-link:hover .mobile-hero-link-phone {
+    transform: translateY(-2px) rotate(-6deg);
   }
 }
 
 @media (prefers-reduced-motion: reduce) and (max-width: 900px) {
-  html.home-theme-dark .mobile-hero-link:hover .mobile-hero-link-arrow {
+  html.home-theme-dark .mobile-hero-link:hover .mobile-hero-link-symbol {
     transform: none;
   }
 }
