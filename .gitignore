@@ -14,3 +14,16 @@ assets/img/_src/
 # der sie wieder entfernt.
 * 2.*
 * 2
+
+# Werkzeugstand der KI-Sitzungen. Gehoert nicht ins Projekt:
+#   .claude/          Arbeitsbaeume, lokale Berechtigungen, Vorschau-Konfiguration.
+#                     Allein die worktrees darin sind rund 359 MB - Kopien des Repos
+#                     aus fremden Sitzungen.
+#   .agents/          heruntergeladene Skill-Pakete
+#   skills-lock.json  Sperrdatei dazu, mit Quellen und Pruefsummen
+# Sollte hier je eine GETEILTE Konfiguration entstehen (etwa .claude/settings.json
+# statt settings.local.json), braucht sie eine Ausnahme - sonst faellt sie still
+# unter diese Regel.
+.claude/
+.agents/
+skills-lock.json

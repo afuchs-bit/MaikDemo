@@ -82,29 +82,64 @@
   --mobile-header-h: 82px;
   --mobile-logo-green: #56E607;
 
+  /* Brand
+     AP-F26: Die Gruenrampe war fuer helles Papier gebaut - 50 am hellsten, 900 am
+     dunkelsten. Auf dunklem Grund laeuft sie andersherum: die hellen Stufen (50, 100)
+     sind jetzt getoente DUNKLE Flaechen, 300 traegt Linien.
+     900 und 800 bleiben absichtlich dunkel: sie sind ueberladen und dienen auch als
+     dunkle FLAECHE (Hero-Shot, Kontakt-Abschlusskarte, Hover-Zustand der Primaerknoepfe).
+     Ihre 83 Verwendungen als SCHRIFTFARBE sind stattdessen auf --ink/--ink-2 umgehaengt
+     worden - das war schon immer ihre Bedeutung, nur unter anderem Namen. */
   /* Brand */
   --green-900: #1d3000;
   --green-800: #2a4500;
-  --green-700: #315200;    /* Brand olive */
-  --green-500: #5a8a1c;
-  --green-300: #b4d49a;
-  --green-100: #e6efd9;
-  --green-50:  #f1f5e8;
-  --yellow:    #FFED00;
-  --coral:     #EB6C44;
-  --coral-700: #c0552f;
+  --green-700: #4A7A10;    /* Markenoliv, aufgehellt fuer dunklen Grund */
+  --green-500: #8CC63F;    /* Lime */
+  --green-300: #6E8C52;    /* Linien und Raender auf dunklem Grund */
+  --green-100: #2B331F;    /* getoente Flaeche, eine Stufe ueber --green-50 */
+  --green-50:  #232A1C;    /* leicht gruenstichige Flaeche knapp ueber --bg */
+  --yellow:    #F2E20C;
+  --coral:     #E22219;
+  --coral-700: #F2937A;    /* Warnschrift, aufgehellt fuer dunklen Grund */
+  /* AP-F26: Warn- und Notfallflaechen waren warme Weisstoene (#fff0ea, #fff8f5 ...).
+     Auf dunklem Grund braucht es dasselbe Signal in dunkel: ein warmer, leicht
+     roetlicher Ton, der sich von --bg-elev abhebt, ohne wie ein Fehler zu schreien. */
+  --warn-flaeche: #2E211C;
 
-  /* Surfaces */
-  --bg:        #f6f4ee;    /* warm off-white paper */
-  --bg-elev:   #ffffff;
-  --bg-soft:   #efece4;
-  --bg-hero:   #eef0e6;    /* AP-84: leicht kuehler als --bg, nur Startseiten-Hero */
-  --bg-dark:   #131a08;
-  --ink:       #131a08;
-  --ink-2:     #3a4032;
-  --ink-mute:  #6b6f60;
-  --line:      rgba(19,26,8,.10);
-  --line-2:    rgba(19,26,8,.06);
+  /* Surfaces
+     AP-F25: Die Website laeuft durchgehend in der dunklen Farbwelt. Diese Werte
+     standen bis hierher unter html.home-theme-dark in home-dark.css und galten nur
+     fuer die Startseite. Eine Scoping-Klasse, die ueberall gilt, ist tote Zeremonie
+     - deshalb stehen sie jetzt hier, und alle Seiten ziehen von allein mit.
+     home-dark.css behaelt nur, was wirklich nur die Startseite betrifft. */
+  --bg:        #171916;
+  --bg-elev:   #20241D;
+  --bg-soft:   #2A2F26;
+  --bg-hero:   #1B1E19;
+  --bg-dark:   #0E100D;
+  --ink:       #FAFAF6;
+  --ink-2:     #D9DED5;
+  --ink-mute:  #AEB5AA;
+  --line:      rgba(255,255,255,.12);
+  --line-2:    rgba(255,255,255,.08);
+  --surface-rgb: 23 25 22;
+
+  /* Benannte Farben der dunklen Welt. Die --home-*-Namen stammen aus der Zeit, als
+     nur die Startseite dunkel war; sie sind bewusst NICHT umbenannt worden - rund
+     70 Regeln in home-dark.css verweisen darauf, und ein Umbenennen waere ein
+     zweiter, unabhaengiger Umbau ohne sichtbaren Nutzen. */
+  --home-brand-green: #4A7A10;
+  --home-lime:        #8CC63F;
+  --home-yellow:      #F2E20C;
+  --home-red:         #E22219;
+  --home-dark-accent: #B6D97A;
+  --home-focus:        var(--home-yellow);
+  --home-small-accent: var(--home-dark-accent);
+  --home-on-dark:      #FAFAF6;
+  --home-on-dark-2:    #D9DED5;
+  --home-on-dark-mute: #AEB5AA;
+  --home-dark-line:      rgba(255,255,255,.12);
+  --home-dark-line-soft: rgba(255,255,255,.08);
 
   /* Type */
   --display: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -131,15 +166,15 @@
   --gutter: clamp(20px, 4vw, 56px);
   --radius: 22px;
   --radius-sm: 14px;
-  --shadow-card: 0 1px 0 rgba(19,26,8,.04), 0 30px 60px -30px rgba(19,26,8,.18), 0 18px 30px -25px rgba(19,26,8,.12);
-  --shadow-float: 0 50px 80px -40px rgba(19,26,8,.35), 0 30px 40px -30px rgba(19,26,8,.18);
+  --shadow-card: 0 1px 0 rgba(255,255,255,.035), 0 28px 58px -30px rgba(0,0,0,.58), 0 16px 28px -24px rgba(0,0,0,.5);
+  --shadow-float: 0 50px 80px -40px rgba(0,0,0,.62), 0 30px 40px -30px rgba(0,0,0,.44);
 
   /* Motion */
   --ease: cubic-bezier(.22,.61,.36,1);
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; color-scheme: dark; }
 html, body { margin: 0; padding: 0; }
 body {
   font-family: var(--body);
@@ -190,7 +225,7 @@ p  { margin: 0; }
   font-family: var(--body);
   font-size: .78rem; font-weight: 600;
   text-transform: uppercase; letter-spacing: .18em;
-  color: var(--green-700);
+  color: var(--green-500);
 }
 .kicker::before {
   content:""; width: 8px; height: 8px; border-radius: 50%;
@@ -226,7 +261,7 @@ p  { margin: 0; }
 @media (hover: hover) and (pointer: fine) { .btn-secondary:hover { border-color: var(--ink); } }
 
 .btn-outline {
-  background: transparent; color: var(--green-700); border-color: var(--green-700);
+  background: transparent; color: var(--green-500); border-color: var(--green-500);
 }
 @media (hover: hover) and (pointer: fine) { .btn-outline:hover { background: var(--green-700); color: #fff; } }
 
@@ -256,14 +291,14 @@ p  { margin: 0; }
      Browserleiste den Notch-Bereich belegt. Relevant wird er, sobald die
      Seite ohne Browserchrome laeuft (zum Homescreen hinzugefuegt). */
   padding-top: env(safe-area-inset-top, 0px);
-  background: rgba(246,244,238,.78);
+  background: var(--bg-elev);
   backdrop-filter: saturate(160%) blur(14px);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-bottom: 1px solid var(--line-2);
   transition: background .25s var(--ease), border-color .25s var(--ease), padding .25s var(--ease);
 }
 .site-header.is-scrolled {
-  background: rgba(246,244,238,.92);
+  background: var(--bg-elev);
   border-bottom-color: var(--line);
 }
 .header-inner {
@@ -315,7 +350,7 @@ p  { margin: 0; }
 .primary-nav { display: flex; justify-content: center; }
 .menu {
   display: flex; gap: 6px; list-style: none; padding: 0; margin: 0;
-  background: rgba(255,255,255,.55);
+  background: var(--bg-elev);
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 4px;
@@ -429,10 +464,9 @@ p  { margin: 0; }
      weich nach unten rechts auf. Keine harte Kante. Zusaetzlich duenne
      Fuss-Abblendung nach --bg fuer den nahtlosen Uebergang in die folgende
      Section. */
-  background:
-    linear-gradient(125deg,
-      rgba(246,244,238,.80) 0%,
-      rgba(246,244,238,.60) 28%,
+  background: linear-gradient(125deg,
+      var(--bg-elev) 0%,
+      var(--bg-elev) 28%,
       rgba(246,244,238,.18) 52%,
       rgba(246,244,238,0)   72%),
     linear-gradient(180deg, transparent 80%, var(--bg) 100%);
@@ -570,7 +604,7 @@ p  { margin: 0; }
   display: inline-flex; align-self: flex-start;
   font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .14em;
   padding: 6px 10px; border-radius: 999px;
-  background: var(--green-50); color: var(--green-700);
+  background: var(--green-50); color: var(--green-500);
 }
 .wood-card-major .wood-tag { background: rgba(255,237,0,.22); color: var(--yellow); }
 .wood-tag.warn { background: rgba(235,108,68,.14); color: var(--coral); }
@@ -578,7 +612,7 @@ p  { margin: 0; }
   margin-top: auto;
   display: inline-flex; align-items: center; gap: 6px;
   font-weight: 600; text-decoration: none;
-  color: var(--green-700);
+  color: var(--green-500);
 }
 .wood-card-major .card-link { color: var(--yellow); }
 .card-link span { transition: transform .25s var(--ease); display: inline-block; }
@@ -674,7 +708,7 @@ p  { margin: 0; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--green-700);
+  color: var(--green-500);
 }
 .proof-stat-visual::before {
   content: "";
@@ -685,13 +719,13 @@ p  { margin: 0; }
   width: clamp(76px, 7vw, 92px);
   height: clamp(58px, 5.4vw, 72px);
   border-radius: 48% 52% 50% 46%;
-  background: radial-gradient(circle at 38% 32%, rgba(255,255,255,.92), rgba(221,230,206,.68) 58%, rgba(221,230,206,.24));
+  background: radial-gradient(circle at 38% 32%, var(--bg-elev), var(--bg-elev) 58%, rgba(221,230,206,.24));
   box-shadow: 0 12px 30px rgba(69, 91, 31, .055);
   transform: translate(-50%, -50%) rotate(-2deg);
 }
 .proof-stat .num {
   font-family: var(--display); font-weight: 800; line-height: 1;
-  font-size: clamp(2.15rem, 3.2vw, 2.85rem); letter-spacing: -.035em; color: var(--green-700);
+  font-size: clamp(2.15rem, 3.2vw, 2.85rem); letter-spacing: -.035em; color: var(--green-500);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -922,7 +956,7 @@ p  { margin: 0; }
   width: 22px;
   height: 22px;
   margin-top: 2px;
-  color: var(--green-700);
+  color: var(--green-500);
 }
 .proof-klein-list strong {
   display: block;
@@ -1012,10 +1046,10 @@ p  { margin: 0; }
 }
 .ap-num {
   font-family: var(--display); font-weight: 800;
-  font-size: 1.05rem; color: var(--green-700);
+  font-size: 1.05rem; color: var(--green-500);
   border: 1px solid var(--green-300); border-radius: 12px;
   padding: 10px 0; text-align: center;
-  background: #fff;
+  background: var(--bg-elev);
   transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
 }
 .ap h4 { margin: 0 0 4px; }
@@ -1057,10 +1091,10 @@ p  { margin: 0; }
 }
 .project-tag {
   position: absolute; top: 14px; left: 14px; z-index: 1;
-  background: #fff; border: 1px solid var(--line);
+  background: var(--bg-elev); border: 1px solid var(--line);
   border-radius: 999px; padding: 6px 12px;
   font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--green-700);
+  color: var(--green-500);
 }
 .project-tag.warn { color: var(--coral); }
 .project-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
@@ -1095,12 +1129,12 @@ p  { margin: 0; }
   margin-top: auto;
   padding-top: 8px;
   font-size: .82rem; font-weight: 600;
-  color: var(--green-700);
+  color: var(--green-500);
   border-bottom: 1px solid transparent;
   transition: border-color .2s var(--ease);
 }
 @media (hover: hover) and (pointer: fine) {
-  .project-card:hover .card-more { border-bottom-color: var(--green-700); }
+  .project-card:hover .card-more { border-bottom-color: var(--green-500); }
 }
 
 /* ---------- FAQ ---------- */
@@ -1154,12 +1188,12 @@ p  { margin: 0; }
   padding: 0 22px 18px;
   color: var(--ink-2);
 }
-.faq-body a { color: var(--green-700); }
+.faq-body a { color: var(--green-500); }
 
 /* AP-94: Ausklapper fuer die Fragen ab Position 9. Natives <details>, kein JS -
    die Fragen stehen im ausgelieferten HTML und bleiben fuer Suchmaschinen und
    Antwortmaschinen lesbar, auch solange sie zugeklappt sind. */
-.faq-more > summary { color: var(--green-700); }
+.faq-more > summary { color: var(--green-500); }
 .faq-more[open] > summary { border-bottom: 1px solid var(--line-2); }
 .faq-more[open] > summary > .faq-more-open,
 .faq-more:not([open]) > summary > .faq-more-close { display: none; }
@@ -1194,12 +1228,12 @@ p  { margin: 0; }
 .faq-wrap .faq-list details {
   border-bottom: 0; overflow: clip;
   border: 1px solid rgba(49,82,0,.14); border-radius: 17px;
-  background: rgba(255,255,255,.92);
+  background: var(--bg-elev);
   box-shadow: 0 18px 36px -34px rgba(19,26,8,.58);
   transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background-color .2s var(--ease);
 }
 .faq-wrap .faq-list details[open] {
-  border-color: rgba(49,82,0,.32); background: #fff;
+  border-color: rgba(49,82,0,.32); background: var(--bg-elev);
   box-shadow: 0 22px 42px -34px rgba(19,26,8,.68);
 }
 /* Hover-Fuellung der Basisregel ist --bg-soft, also exakt der Sektionshintergrund.
@@ -1212,7 +1246,7 @@ p  { margin: 0; }
    Chevrons aller darin liegenden Fragen mit ein. */
 .faq-wrap .faq-list details[open] > summary > .chev { background: var(--green-700); }
 .faq-wrap .faq-list details[open] > summary > .chev::before,
-.faq-wrap .faq-list details[open] > summary > .chev::after { background: #fff; }
+.faq-wrap .faq-list details[open] > summary > .chev::after { background: var(--bg-elev); }
 .faq-wrap .faq-list .faq-body {
   margin: 0 16px; padding: 13px 0 18px;
   border-top: 1px solid rgba(49,82,0,.11);
@@ -1243,7 +1277,7 @@ p  { margin: 0; }
   justify-content: center; gap: 12px;
   padding: 12px 14px 12px 24px;            /* rechts schmaler: dort sitzt der Chevron-Kreis */
   border: 1px solid rgba(49,82,0,.22); border-radius: 999px;
-  background: #fff; color: var(--green-700);
+  background: var(--bg-elev); color: var(--green-500);
   box-shadow: 0 18px 36px -34px rgba(19,26,8,.58);
   transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
 }
@@ -1335,7 +1369,7 @@ p  { margin: 0; }
 .contact-content > .note + .btn { margin-top: 28px; }
 
 .contact-form {
-  background: #fff; color: var(--ink);
+  background: var(--bg-elev); color: var(--ink);
   border-radius: var(--radius);
   padding: 32px;
   box-shadow: var(--shadow-float);
@@ -1357,7 +1391,7 @@ p  { margin: 0; }
 }
 .seg input { position: absolute; opacity: 0; pointer-events: none; }
 .seg:has(input:checked) {
-  background: var(--green-700); color: #fff; border-color: var(--green-700);
+  background: var(--green-700); color: #fff; border-color: var(--green-500);
 }
 .field { display: flex; flex-direction: column; gap: 6px; font-size: .85rem; color: var(--ink-2); }
 .field input, .field select, .field textarea {
@@ -1379,14 +1413,14 @@ p  { margin: 0; }
   max-width: 100%;
 }
 .field input:focus, .field select:focus, .field textarea:focus {
-  border-color: var(--green-700);
-  background: #fff;
+  border-color: var(--green-500);
+  background: var(--bg-elev);
 }
 /* AP-57: .field setzt display:flex - das schlaegt das UA-[hidden].
    Ohne diese Regel bleibt das nicht gewaehlte Detailfeld sichtbar. */
 .weg-detail[hidden] { display: none; }
 .form-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-.form-actions .btn-link { color: var(--green-700); }
+.form-actions .btn-link { color: var(--green-500); }
 
 /* ============================================================
    FOOTER
@@ -1948,10 +1982,9 @@ p  { margin: 0; }
   .hero-scrim {
     /* AP-53a: Text stapelt oben in voller Breite -> weisser Hauch oben hinter
        dem Text, weich auslaufend, untere Poolzone bleibt klar. */
-    background:
-      linear-gradient(180deg,
-        rgba(246,244,238,.80) 0%,
-        rgba(246,244,238,.66) 34%,
+    background: linear-gradient(180deg,
+        var(--bg-elev) 0%,
+        var(--bg-elev) 34%,
         rgba(246,244,238,.30) 52%,
         rgba(246,244,238,0)   66%),
       linear-gradient(180deg, transparent 82%, var(--bg) 100%);
@@ -1981,7 +2014,7 @@ p  { margin: 0; }
   font-size: .85rem; color: var(--ink-mute);
 }
 .breadcrumbs a { color: var(--ink-2); text-decoration: none; }
-@media (hover: hover) and (pointer: fine) { .breadcrumbs a:hover { color: var(--green-700); text-decoration: underline; text-underline-offset: 3px; } }
+@media (hover: hover) and (pointer: fine) { .breadcrumbs a:hover { color: var(--green-500); text-decoration: underline; text-underline-offset: 3px; } }
 .breadcrumbs li + li::before { content: "›"; margin-right: 8px; color: var(--ink-mute); }
 .breadcrumbs li[aria-current="page"] { color: var(--ink); font-weight: 600; }
 
@@ -2067,7 +2100,7 @@ p  { margin: 0; }
 .hero-media-link {
   display: inline-block; margin-top: 12px;
   font-size: .9rem; font-weight: 600;
-  color: var(--green-700); text-underline-offset: 4px;
+  color: var(--green-500); text-underline-offset: 4px;
 }
 
 @media (max-width: 900px) {
@@ -2136,7 +2169,7 @@ p  { margin: 0; }
   content: "";
   position: absolute; top: 0; bottom: 0; left: -2px;
   width: 4px;
-  background: #fff;
+  background: var(--bg-elev);
   box-shadow: 0 0 16px rgba(0,0,0,.4);
 }
 .ba-grip {
@@ -2144,7 +2177,7 @@ p  { margin: 0; }
   transform: translate(-50%, -50%);
   width: 56px; height: 56px;
   border-radius: 50%;
-  background: #fff; color: var(--green-700);
+  background: var(--bg-elev); color: var(--green-500);
   border: 2px solid var(--green-700);
   display: inline-flex; align-items: center; justify-content: center;
   box-shadow: var(--shadow-float);
@@ -2178,11 +2211,11 @@ p  { margin: 0; }
 }
 .ba-range:focus-visible {
   opacity: 1;
-  accent-color: var(--green-700);
+  accent-color: var(--green-500);
   outline: 3px solid var(--yellow);
   outline-offset: 3px;
   border-radius: 999px;
-  background: rgba(255,255,255,.85);
+  background: var(--bg-elev);
 }
 @media (max-width: 900px) {
   .ba-hint { display: none; }
@@ -2233,7 +2266,7 @@ p  { margin: 0; }
 .svc-ic {
   width: 48px; height: 48px; border-radius: 13px;
   display: flex; align-items: center; justify-content: center;
-  background: var(--green-50); color: var(--green-700);
+  background: var(--green-50); color: var(--green-500);
   margin-bottom: 15px;
   transition: background .35s var(--ease), color .35s var(--ease);
 }
@@ -2246,7 +2279,7 @@ p  { margin: 0; }
 .svc-long { font-size: .9rem; line-height: 1.5; margin: 0 0 12px; color: var(--ink-2); }
 .svc-more {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: .88rem; font-weight: 600; color: var(--green-700); text-decoration: none;
+  font-size: .88rem; font-weight: 600; color: var(--green-500); text-decoration: none;
 }
 .svc-more span { transition: transform .25s var(--ease); }
 @media (hover: hover) and (pointer: fine) { .svc-more:hover span { transform: translateX(4px); } }
@@ -2306,8 +2339,8 @@ p  { margin: 0; }
   width: 54px; height: 54px;
   display: inline-flex; align-items: center; justify-content: center;
   font-family: var(--display); font-weight: 800; font-size: 1.18rem;
-  color: var(--green-700);
-  background: #fff; border: 1px solid var(--green-300);
+  color: var(--green-500);
+  background: var(--bg-elev); border: 1px solid var(--green-300);
   border-radius: 50%;
   box-shadow: var(--shadow-card);
   z-index: 1;
@@ -2360,7 +2393,7 @@ p  { margin: 0; }
   position: absolute;
   left: var(--path-x); top: 0;
   width: 30px; height: 30px;
-  background: #fff;
+  background: var(--bg-elev);
   border: 1px solid var(--green-300);
   border-radius: 50%;
   transform: translate(-50%, calc(
@@ -2401,7 +2434,7 @@ p  { margin: 0; }
               box-shadow .35s var(--ease);
 }
 .section-process.is-vertical-journey .step.is-active .step-node {
-  background: var(--green-700); color: #fff; border-color: var(--green-700);
+  background: var(--green-700); color: #fff; border-color: var(--green-500);
   transform: scale(1.08);
   box-shadow: 0 0 0 5px rgba(235,108,68,.20), var(--shadow-float);
 }
@@ -2502,7 +2535,7 @@ p  { margin: 0; }
     transform: translate(-50%, -50%) translateX(calc(var(--progress, 0) * -46px));
     font-family: var(--display); font-weight: 800; line-height: 1;
     font-size: clamp(7rem, 13vw, 13rem);
-    color: var(--green-700); opacity: .06;
+    color: var(--green-500); opacity: .06;
     white-space: nowrap; pointer-events: none; z-index: 0;
   }
 
@@ -2544,7 +2577,7 @@ p  { margin: 0; }
   }
   .section-process.is-scrollytelling .step.is-active .step-figure { opacity: .12; }
   .section-process.is-scrollytelling .step.is-active .step-node {
-    background: var(--green-700); color: #fff; border-color: var(--green-700);
+    background: var(--green-700); color: #fff; border-color: var(--green-500);
     transform: translate(-50%, -50%) scale(1.08);
     box-shadow: 0 0 0 6px rgba(235,108,68,.20), var(--shadow-float);
   }
@@ -2615,7 +2648,7 @@ p  { margin: 0; }
   transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
 }
 @media (hover: hover) and (pointer: fine) { .filter-chip:hover:not(:disabled) { border-color: var(--ink); transform: translateY(-1px); } }
-.filter-chip[aria-pressed="true"] { background: var(--green-700); color: #fff; border-color: var(--green-700); }
+.filter-chip[aria-pressed="true"] { background: var(--green-700); color: #fff; border-color: var(--green-500); }
 .filter-chip:disabled { opacity: .4; cursor: not-allowed; }
 .filter-chip .chip-count { font-weight: 500; opacity: .75; font-variant-numeric: tabular-nums; }
 .filter-chip:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; }
@@ -2719,9 +2752,9 @@ p  { margin: 0; }
   padding: 7px 10px;
   border: 1px solid rgba(255,255,255,.5);
   border-radius: 999px;
-  background: rgba(255,253,245,.9);
+  background: var(--bg-elev);
   box-shadow: 0 7px 20px rgba(19,26,8,.15);
-  color: var(--green-800);
+  color: var(--ink);
   font: 750 .7rem/1 var(--body);
   opacity: 0;
   transform: translateY(5px);
@@ -2846,7 +2879,7 @@ body.has-lightbox { overflow: hidden; }
 .tag-link {
   display: inline-block; padding: 8px 14px;
   background: var(--bg-elev); border: 1px solid var(--line); border-radius: 999px;
-  font-size: .9rem; font-weight: 600; color: var(--green-700); text-decoration: none;
+  font-size: .9rem; font-weight: 600; color: var(--green-500); text-decoration: none;
   transition: background .15s var(--ease), border-color .15s var(--ease);
 }
 @media (hover: hover) and (pointer: fine) { .tag-link:hover { background: var(--green-50); border-color: var(--green-300); } }
@@ -2945,13 +2978,13 @@ body.has-lightbox { overflow: hidden; }
 .lpx-tag { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--green-500); }
 .lpx-card h2 { font-size: var(--type-module-title-size); line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
 .lpx-card p { color: var(--ink-2); font-size: .95rem; margin: 0; flex: 1; }
-.lpx-more { font-weight: 600; color: var(--green-700); font-size: .9rem; margin-top: 6px; }
+.lpx-more { font-weight: 600; color: var(--green-500); font-size: .9rem; margin-top: 6px; }
 
 /* AP-33: Gruppierte Leistungsübersicht je Welt. */
 .lpx-group + .lpx-group { margin-top: clamp(32px, 5vh, 48px); }
 .lpx-group-label {
   font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
-  color: var(--green-700); margin: 0 0 14px;
+  color: var(--green-500); margin: 0 0 14px;
 }
 
 /* AP-33: Leistungs-Dropdown und Footer-Spalte nach Welten gruppiert.
@@ -3141,7 +3174,7 @@ body.has-lightbox { overflow: hidden; }
 .rt-body h2 { font-size: var(--type-module-title-size); line-height: 1.2; margin: clamp(24px, 4vh, 36px) 0 10px; }
 .rt-body p { color: var(--ink-2); margin: 0 0 14px; }
 .rt-body address { font-style: normal; line-height: 1.7; color: var(--ink-2); margin: 0 0 14px; }
-.rt-body a { color: var(--green-700); }
+.rt-body a { color: var(--green-500); }
 
 /* ============================================================
    AP-76: Privatkunden-Foto-Hero (Full-Bleed) + Beweis-Grid
@@ -3287,11 +3320,11 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
    Rest der Seite gruen. */
 .hero-shot-ctas .btn-primary {
   background: var(--bg);
-  color: var(--green-700);
+  color: var(--green-500);
   box-shadow: 0 12px 26px -12px rgba(19, 26, 8, .35), inset 0 1px 0 rgba(255, 255, 255, .6);
 }
 @media (hover: hover) and (pointer: fine) {
-  .hero-shot-ctas .btn-primary:hover { background: #fff; }
+  .hero-shot-ctas .btn-primary:hover { background: var(--bg-elev); }
 }
 
 /* Es gibt projektweit keine .btn:focus-visible-Regel - die Buttons erben sonst
@@ -3302,7 +3335,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 /* AP-81: Auf dem jetzt hellen Primaerbutton waere ein weisser Ring unsichtbar,
    deshalb hier auf Markengruen. Steht bewusst nach der Regel darueber -
    gleiche Spezifitaet, spaetere Quelle gewinnt. */
-.hero-shot-ctas .btn-primary:focus-visible { outline-color: var(--green-700); }
+.hero-shot-ctas .btn-primary:focus-visible { outline-color: var(--green-500); }
 
 .hero-shot-trust {
   margin-top: clamp(20px, 2.4vw, 28px);
@@ -3337,7 +3370,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   margin: 0; letter-spacing: -.01em;
 }
 .proof-shots-head a {
-  font-size: .9rem; font-weight: 700; color: var(--green-700);
+  font-size: .9rem; font-weight: 700; color: var(--green-500);
   text-underline-offset: 4px;
 }
 .proof-grid {
@@ -3480,7 +3513,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   text-wrap: balance;
 }
 .gate-head .hero-title em {
-  color: var(--green-700);
+  color: var(--green-500);
   background: none;
   -webkit-background-clip: border-box;
   background-clip: border-box;
@@ -3581,8 +3614,8 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   font-size: .98rem;
   padding: 13px 22px;
   border-radius: 999px;
-  background: #fff;
-  color: var(--green-800);
+  background: var(--bg-elev);
+  color: var(--ink);
   transition: transform .22s var(--ease), background-color .22s var(--ease);
 }
 .gate-door:hover .gate-cta { transform: translateY(-2px); background: var(--yellow); }
@@ -3796,7 +3829,7 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
   position: relative; z-index: 2; flex: none;
   width: 30px; height: 30px; border-radius: 50%;
   display: grid; place-items: center;
-  background: var(--fork-fill); color: var(--green-900);
+  background: var(--fork-fill); color: var(--ink);
   transition: background .45s var(--ease), color .45s var(--ease);
 }
 .fork-btn-dot svg { transition: transform .45s var(--ease); }
@@ -3826,14 +3859,14 @@ body:has(.hero-shot-bar) .site-header:not(.is-scrolled) {
 @media (hover: hover) and (pointer: fine) {
   .fork-path:hover { background: #16260a; }          /* Tiefe im dunklen Block, kein Token vorhanden */
   .fork-path:hover::before { transform: scaleX(1); }
-  .fork-btn:hover { color: var(--green-900); }
+  .fork-btn:hover { color: var(--ink); }
   /* Der 28px-Kreis sitzt 28px vor der rechten Kante; gedeckt ist der Button erst,
      wenn der Radius bis zur gegenueberliegenden Ecke reicht. Breitester Button
      ("Zum Privatkundenbereich", 277px) braucht scale(17.9) - scale(16) liess dort
      eine Sichel frei. 20 gibt Reserve, ohne die Fuellwelle zu verschlucken:
      zu grosse Werte decken den Button schon in den ersten Millisekunden ab. */
   .fork-btn:hover::after { transform: scale(20); }
-  .fork-btn:hover .fork-btn-dot { background: transparent; color: var(--green-900); }
+  .fork-btn:hover .fork-btn-dot { background: transparent; color: var(--ink); }
   .fork-btn:hover .fork-btn-dot svg { transform: translateX(3px); }
   .fork-direct:hover { color: #fff; }
   .fork-direct:hover span::after { transform: scaleX(1); transform-origin: left; }

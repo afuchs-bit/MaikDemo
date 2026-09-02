@@ -27,48 +27,16 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* AP-F25: Der Token-Block dieser Regel ist nach styles.css :root gewandert - die
+   Farbwelt gilt jetzt fuer die ganze Website, nicht nur fuer diese Seite. Zurueck
+   bleibt allein die Typografie: Nunito war ausdruecklich nur fuer die Startseite
+   gedacht ("Logo und Unterseiten bleiben unveraendert") und war nicht Teil des
+   Farbauftrags. */
 html.home-theme-dark {
-  color-scheme: dark;
-  background-color: rgb(var(--surface-rgb));
-
-  /* Homepage-Typografie: Logo und Unterseiten bleiben unveraendert. */
   --display: "Nunito", sans-serif;
   --body: "Nunito", sans-serif;
-
-  /* Unveraenderte Markenfarben */
-  --home-brand-green: #4A7A10;
-  --home-lime: #8CC63F;
-  --home-yellow: #F2E20C;
-  --home-red: #E22219;
-  --home-dark-accent: #B6D97A;
-
-  /* Bestehende semantische Markenrollen homepage-lokal angleichen. */
-  --green-700: var(--home-brand-green);
-  --green-500: var(--home-lime);
-  --yellow: var(--home-yellow);
-  --coral: var(--home-red);
-
-  --home-focus: var(--home-yellow);
-  --home-small-accent: var(--home-dark-accent);
-  --home-on-dark: #FAFAF6;
-  --home-on-dark-2: #D9DED5;
-  --home-on-dark-mute: #AEB5AA;
-  --home-dark-line: rgba(255,255,255,.12);
-  --home-dark-line-soft: rgba(255,255,255,.08);
-
-  --bg: #171916;
-  --bg-elev: #20241D;
-  --bg-soft: #2A2F26;
-  --bg-hero: #1B1E19;
-  --bg-dark: #0E100D;
-  --ink: #FAFAF6;
-  --ink-2: #D9DED5;
-  --ink-mute: #AEB5AA;
-  --line: rgba(255,255,255,.12);
-  --line-2: rgba(255,255,255,.08);
-  --surface-rgb: 23 25 22;
-  --shadow-card: 0 1px 0 rgba(255,255,255,.035), 0 28px 58px -30px rgba(0,0,0,.58), 0 16px 28px -24px rgba(0,0,0,.5);
 }
+
 
 /* Grundflaechen und bisher fest eingetragene Papierfarben */
 html.home-theme-dark body {
@@ -433,6 +401,21 @@ html.home-theme-dark .section-proof .proof-map .m-node circle {
   stroke: var(--home-lime);
 }
 
+/* AP-F19: Standortzeichen auf Herne - Pin plus Rohdich-Bluete, wie im Hero.
+   Der 3D-Effekt haengt AUSSCHLIESSLICH am Zeichen. Karte, Umriss, Kreisgrenzen und
+   Einsatzgebiet bleiben ohne Filter.
+
+   Der Schatten steht bewusst NICHT hier, sondern als <filter id="seat-schatten">
+   in der Karten-SVG: ein CSS-drop-shadow rechnet im lokalen System des Pins und
+   wird von der Standard-Filterregion (nur 120 % der Bounding-Box) abgeschnitten -
+   nachgewiesen mit einem harten Testschatten, der gar nicht erschien. Die
+   SVG-Variante setzt die Region explizit auf 200 %.
+
+   Diese Regel haelt nur fest, dass am Zeichen selbst kein zusaetzlicher
+   CSS-Filter liegt.
+   Hier steht deshalb bewusst KEINE filter-Deklaration: sie wuerde das
+   Attribut filter="url(#seat-schatten)" am Element ueberschreiben. */
+
 html.home-theme-dark .section-proof .proof-map .m-node.seat circle {
   fill: var(--home-red);
   stroke: var(--home-on-dark);
@@ -451,6 +434,35 @@ html.home-theme-dark .section-proof .proof-map .m-label.seat {
    Markenoliv und stuende fast unsichtbar auf der Karte. */
 html.home-theme-dark .section-proof .proof-klein-list > li > svg {
   color: var(--home-small-accent);
+}
+
+/* AP-F24: Die Erklaerabsaetze unter den Stichworten sind entfallen, jeder Punkt ist
+   jetzt einzeilig. align-items: start und das margin-top: 2px am Haken (beides in
+   styles.css) waren darauf ausgelegt, das Symbol auf der ERSTEN von mehreren Zeilen
+   zu setzen - bei einer Zeile sass es dadurch 3,1px zu tief, an allen drei Punkten
+   gemessen. Steht hier statt in styles.css, weil die Karte nur auf der Startseite
+   vorkommt, home-dark.css nur von ihr geladen wird und die Datei fuer genau diesen
+   Haken schon eine Regel besitzt (die Zeile darueber). Ein Eingriff in styles.css
+   zoege dagegen den ?v=-Durchlauf ueber 37 Dateien nach sich.
+   ACHTUNG: gilt nur, solange die Stichworte einzeilig bleiben. Wird eines laenger
+   und bricht um, muss das hier zurueck auf start. */
+html.home-theme-dark .section-proof .proof-klein-list > li {
+  align-items: center;
+}
+html.home-theme-dark .section-proof .proof-klein-list > li > svg {
+  margin-top: 0;
+}
+
+/* AP-F24: styles.css:973 gibt jedem .proof-trust .btn-outline ein margin-top: auto.
+   Das stammt aus der Rezensionskarte, wo der Knopf unten kleben soll. Hier kaempft
+   es gegen das justify-content: center aus styles.css:901 - und gewinnt, weil eine
+   auto-Marge den kompletten Freiraum frisst. Mit den Erklaerabsaetzen war der
+   Freiraum klein genug, dass es niemand sah; ohne sie klafften gemessene 106px
+   zwischen letztem Haken und Knopf. Zuruecknehmen, damit die Karte tut, was
+   .proof-trust--klein immer wollte: den Block als Ganzes mittig setzen - so wie die
+   NRW-Karte daneben. align-self: flex-start bleibt, der Knopf steht weiter links. */
+html.home-theme-dark .section-proof .proof-trust--klein .btn-outline {
+  margin-top: 0;
 }
 
 html.home-theme-dark .section-proof .btn-outline {
@@ -516,13 +528,36 @@ html.home-theme-dark .gate-door {
   box-shadow: 0 28px 62px -34px rgba(0,0,0,.78);
 }
 
-html.home-theme-dark .gate-veil {
-  background: linear-gradient(to top, rgba(14,16,13,.78) 0%, rgba(14,16,13,.64) 62%, rgba(14,16,13,0) 100%);
-}
+/* AP-F21: Seit die Tuer nur noch Foto und Pille traegt, gibt es keinen Schleier mehr,
+   der die Pille vom Motiv trennt. Die BESCHRIFTUNG braucht ihn auch nicht - #171916
+   auf --home-lime sind 8,65:1, motivunabhaengig. Die KANTE dagegen schon: im Canvas
+   nachgemessen (Foto nach object-fit: cover entzerrt, Ring von 8px um die Pille,
+   Pixel fuer Pixel) liegt das schlechteste Verhaeltnis bei 1,00:1 - rgb(167,185,183)
+   hat exakt dieselbe Leuchtdichte wie die Pille (0,463). Ohne Absetzung verschwindet
+   die Kante dort im Bild.
 
+   Zur Einordnung, weil die Zahl leicht falsch gelesen wird: WCAG 1.4.11 ist hier
+   ueber die BESCHRIFTUNG erfuellt, nicht ueber die Kante. Ein Bedienelement, das
+   durch seinen Text identifizierbar ist, braucht keine eigene 3:1-Umrandung - und
+   der Text steht bei 8,65:1. Der Saum ist also Auffindbarkeit, keine Konformitaet.
+   Das ist der Grund, warum er nicht weitergedreht wurde: das hellste angrenzende
+   Motivpixel ist rgb(255,251,236), praktisch weiss. Fuer echte 3:1 an der Kante
+   braeuchte es rund 64 % Schwarz VOLL anliegend, in der Praxis einen fast schwarzen
+   Ring von rund 10px um die Pille - das widerspricht dem Ziel dieser Sektion.
+   Gemessen im Komposit (Foto nach cover entzerrt, Saum als Gauss nachgebaut,
+   Abstandsfeld der Kapselform statt der Bounding-Box):
+     Desktop 1,00:1 ohne Saum -> 2,22:1 mit  |  mobil 1,05:1 -> 2,57:1,
+     jeweils im ersten Pixel an der Kante. Beschriftung 8,65:1, im Hover
+     auf --home-yellow 13,19:1.
+   Ein Schatten laeuft weich aus und passiert dabei zwangslaeufig die Leuchtdichte
+   der Pille (0,463) - weiter aussen steht deshalb immer 1,00:1, unabhaengig von den
+   Werten. Diese Zahl ist kein Mangel, sondern eine Eigenschaft von Verlaeufen. */
 html.home-theme-dark .gate-cta {
   color: #171916;
   background: var(--home-lime);
+  box-shadow:
+    0 0 6px 3px rgba(10,14,8,.72),       /* Saum - hebt die Kante vom Motiv ab */
+    0 12px 26px -8px rgba(10,14,8,.55);  /* Tiefe - rein gestalterisch */
 }
 
 html.home-theme-dark .gate-door:hover .gate-cta {
@@ -556,10 +591,19 @@ html.home-theme-dark .fork-path:hover {
   background: #171916;
 }
 
-/* Mobil nutzt der Hero statt des Verlaufs eine Textplatte. */
+/* AP-F21: Unter 860px lag der Text nicht unter einem Verlauf, sondern auf einer
+   Platte ueber die volle Kachelbreite (styles.css:3622, hier auf .78 gehoben). Auch
+   das ist ein Schleier. Mit dem Text faellt er weg; die Huelle wird eingerueckt wie
+   am Desktop, damit die Pille nicht an der Unterkante klebt. 14px Abstand geben dem
+   10px-Saum Platz - .gate-door hat overflow: hidden und wuerde ihn sonst kappen. */
 @media (max-width: 860px) {
   html.home-theme-dark .gate-body {
-    background: rgba(14,16,13,.78);
+    left: 14px;
+    right: auto;
+    bottom: 14px;
+    padding: 0;
+    background: none;
+    border-radius: 0;
   }
 }
 

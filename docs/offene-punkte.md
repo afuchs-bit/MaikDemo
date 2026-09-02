@@ -110,6 +110,21 @@ vor dem Go-live anwaltlich rueckversichern.
 
 ## AP-F17 — `#kontakt` zeigt seit AP-F14 auf den Gewerbe-Teaser
 
+> **Weitgehend erledigt mit AP-F20 (02.09.2026).** Der Auftraggeber hat den Gewerbe-Zweig
+> von der Startseite entfernt. Damit gab es keinen Grund mehr, den Anker dort zu lassen:
+> `id="kontakt"` sitzt jetzt auf der Sektion „Der erste Schritt zu Ihrem Gartenprojekt."
+> Alle 35 Verweise aus 21 Dateien landen dadurch beim Anfrageformular — ohne dass eine
+> einzige der 21 Dateien angefasst werden musste. Gemessen: Sprungziel 96 px unter der
+> Fensterkante, 5 px unter dem festen Header, Überschrift sichtbar.
+>
+> **Offen bleibt allein die Feinsteuerung:** ob die 21 Links aus
+> `gewerbekunden/leistungen/*` weiterhin zur Startseite führen sollen oder besser zu
+> `gewerbekunden/#anfrage`, wo das passende Gewerbeformular steht. Das ist eine
+> inhaltliche Entscheidung, kein Fehler mehr — der bisherige Zustand (Landung auf einem
+> Knopf nach `/gewerbekunden/`) ist in jedem Fall behoben.
+
+Der ursprüngliche Befund zur Nachvollziehbarkeit:
+
 **Befund vom 02.09.2026**, aufgedeckt bei der Generator-Prüfung. Kein Fehler im Generator —
 der erzeugt exakt das, was ausgeliefert ist. Es ist eine inhaltliche Verschiebung.
 
@@ -157,3 +172,29 @@ Sektionsfolge der Startseite wurde gerade erst festgelegt.
 Entfernung an Anruf-Button und WhatsApp-Link (davidk., 01.09.2026). Unkritisch, beide
 Elemente behalten ihren Namen aus dem sichtbaren Text — beim nächsten Handlauf gleicht es
 sich an.
+
+## AP-F24 — „Spontane Einsätze möglich" ist eine neue Aussage des Auftraggebers
+
+**Vom 02.09.2026.** Der dritte Punkt der Karte „Auch kleine und einmalige Arbeiten." auf
+der Startseite hieß bis dahin „Ohne Vorkasse" mit dem Zusatz „Bei kleineren Aufträgen ist
+eine Anzahlung in der Regel nicht nötig." Das war aus einer **freigegebenen** FAQ-Antwort
+abgeleitet (Umsetzungsplan Teil B, Zeile 574: „Verlangen Sie Vorkasse?").
+
+Der Auftraggeber hat den Punkt auf **„Spontane Einsätze möglich"** geändert. Diese Aussage
+steht so **nirgends in Teil B**.
+
+**Warum sie trotzdem drin ist:** Sie nennt keine Frist. Der Umsetzungsplan führt
+„Reaktionszeit Sturmnotdienst" ausdrücklich als offenen Punkt (Zeile 101) und gibt für
+genau diesen Fall die Anweisung, den Satz ohne den fehlenden Fakt vollständig zu
+formulieren (Zeile 87). „möglich" tut das. Der Auftraggeber hat den Wortlaut selbst
+gewählt — aus drei vorgelegten Varianten die zurückhaltendste.
+
+**Zu bestätigen:** Ob spontane Einsätze tatsächlich zugesagt werden sollen und in welchem
+Rahmen. Falls daraus je eine konkrete Frist werden soll, gehört sie zuerst nach Teil B.
+
+**Nachzuziehen bei nächster Gelegenheit:** Der Kommentar über den Regeln in
+`assets/css/styles.css:899` lautet „Alle Aussagen stammen aus freigegebenen FAQ-Antworten."
+Das greift seit dieser Änderung zu weit. Nicht sofort korrigiert, weil jede Änderung an
+`styles.css` den `?v=`-Durchlauf über 37 HTML-Dateien nach sich zieht — für einen
+Kommentar ohne sichtbare Wirkung. Beim nächsten Durchgang, der die Datei ohnehin anfasst,
+mitnehmen. Dort wird auch die dann tote Regel `.proof-klein-list p` fällig.

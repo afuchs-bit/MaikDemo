@@ -33,12 +33,12 @@ html.home-theme-dark body { background-color: #171916; }
       imagesrcset="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp 1023w, assets/img/hero/hero-fahrzeug-palmengarten-v10-mobile-2046-q92.webp 2046w"
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260902a" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260902w" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260812n" />
-<link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260812n" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20260902a" />
-<link rel="stylesheet" href="assets/css/merge-light.css?v=20260830c" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260902x" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260902g" />
+<link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260902g" />
+<link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -409,12 +409,16 @@ html.home-theme-dark body { background-color: #171916; }
              alt=""
              width="960" height="640" loading="lazy" decoding="async">
       </picture>
-      <span class="gate-veil" aria-hidden="true"></span>
+      <!-- AP-F21: Schleier, Eyebrow und H2 sind entfallen - das Foto soll sprechen.
+           Der Schleier war kein Schmuck: er hielt den Kontrast der gelben Eyebrow
+           und der weissen Ueberschrift (Messreihen in styles.css, AP-102/AP-132).
+           Ohne diesen Text hat er keine Aufgabe mehr und faellt ersatzlos weg.
+           Die Pille traegt ihren Kontrast selbst: #171916 auf --home-lime ergibt
+           gemessene 8,65:1, unabhaengig vom Motiv. Ihre KANTE dagegen lag bei
+           1,00:1 gegen das Foto - dafuer steht der Saum in home-dark.css. -->
       <div class="gate-body">
-        <span class="gate-eyebrow">Für Gewerbekunden</span>
-        <h2 class="type-subsection-title">Außenanlagen, gepflegt und geprüft.</h2>
         <span class="gate-cta">
-          Zum Gewerbekundenbereich
+          Für Gewerbekunden
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </span>
       </div>
@@ -473,6 +477,22 @@ html.home-theme-dark body { background-color: #171916; }
       <figure class="proof-map reveal">
         <svg class="map" viewBox="-1158 -1530 3879 3829" role="img"
              aria-label="Nordrhein-Westfalen mit dem Einsatzgebiet um Herne, Bochum, Gelsenkirchen, Recklinghausen und Castrop-Rauxel">
+
+          <!-- AP-F19: Schatten des Standortzeichens. Bewusst als SVG-Filter und nicht
+               per CSS drop-shadow: der Filter rechnet im LOKALEN System des Pins, wo das
+               Objekt nur 17,9 Einheiten hoch ist, und die Standard-Filterregion reicht
+               nur 10 % ueber die Bounding-Box hinaus. Ein CSS-Schatten mit brauchbarem
+               Versatz wurde dadurch abgeschnitten und war unsichtbar - nachgewiesen mit
+               einem harten Testschatten, der gar nicht erschien. Hier ist die Region
+               explizit auf 200 % gesetzt.
+               Werte aus dem Hero uebertragen: dort 0 5px 8px auf 48 px Hoehe, hier
+               dieselben Anteile auf 17,9 lokale Einheiten. -->
+          <defs>
+            <filter id="seat-schatten" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="1.86" stdDeviation="1.49" flood-color="#000" flood-opacity=".32"/>
+              <feDropShadow dx="0" dy="0.5"  stdDeviation="0.25" flood-color="#000" flood-opacity=".34"/>
+            </filter>
+          </defs>
 
           <!-- AP-F11 Landesgrenze Nordrhein-Westfalen.
                Quelle: Verwaltungsgebiete VG2500, Stand 01.01.2026,
@@ -559,7 +579,27 @@ html.home-theme-dark body { background-color: #171916; }
 
           <!-- Sitz Herne: echte Ortskoordinaten, Radien auf den neuen Massstab gebracht -->
           <circle class="m-pulse" cx="324.9" cy="217.7" r="59"/>
-          <g class="m-node seat" style="--i:0"><circle cx="324.9" cy="217.7" r="46"/></g>
+          <!-- AP-F19: Standortzeichen aus dem Hero (Pin + Rohdich-Bluete).
+               Der Pin ist der Pfad aus assets/img/icons/rohdich-standort.svg, wortwoertlich
+               uebernommen und inline gesetzt - so bleibt er bei jeder Groesse scharf.
+               Geometrie: massgeblich ist die SICHTBARE Pfadhoehe von 17,9 Einheiten
+               (y 3,6 bis 21,5), nicht die 24er-Box des Quell-SVG. 32 px Zielhoehe sind
+               bei 0,0888 px/Einheit 360 Einheiten, also scale(20). Die Pin-SPITZE liegt
+               bei (12;21,5), nach der Skalierung bei (240;430) - translate(84.9,-212.3)
+               setzt sie auf Herne (324,9;217,7). Ohne das stuende das Zeichen mit der
+               Mitte statt der Spitze auf dem Ort.
+               Die Bluete sitzt im Pinkopf: der Bogen a6.75 6.75 0 1 0-13.5 0 beschreibt
+               einen Kreis um (12;10,35), dort liegt sie auch im Hero. -->
+          <g class="m-node seat" style="--i:0">
+            <g class="m-seat-pin" filter="url(#seat-schatten)" transform="translate(84.9,-212.3) scale(20)">
+              <path d="M12 21.5c.65-.77 6.75-7.04 6.75-11.15a6.75 6.75 0 1 0-13.5 0C5.25 14.46 11.35 20.73 12 21.5Z"
+                    fill="none" stroke="#B2CA48" stroke-width="1.65"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+              <image href="assets/img/icons/rohdich-blume.png"
+                     x="6.75" y="5.1" width="10.5" height="10.5"
+                     preserveAspectRatio="xMidYMid meet"/>
+            </g>
+          </g>
         </svg>
 
         <figcaption class="proof-map-cap">
@@ -577,21 +617,18 @@ html.home-theme-dark body { background-color: #171916; }
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
             <div>
               <strong>Vorgärten und kleinere Flächen</strong>
-              <p>Auch kleinere Flächen planen und gestalten wir passend zu Grundstück, Nutzung und Ihren Wünschen.</p>
             </div>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
             <div>
               <strong>Einmalige Pflegearbeiten</strong>
-              <p>Einen einzelnen Auftrag übernehmen wir ebenso wie laufende Gartenpflege – im Rhythmus, der zu Ihrem Garten passt.</p>
             </div>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
             <div>
-              <strong>Ohne Vorkasse</strong>
-              <p>Bei kleineren Aufträgen ist eine Anzahlung in der Regel nicht nötig. Was vereinbart wird, steht vorher fest.</p>
+              <strong>Spontane Einsätze möglich</strong>
             </div>
           </li>
         </ul>
@@ -602,32 +639,6 @@ html.home-theme-dark body { background-color: #171916; }
   </div>
 </section>
 
-<!-- ============ GEWERBEKUNDEN (AP-F14) ============
-     Eine Aussage, ein Ziel. Die Sektion erklaert das Gewerbeangebot nicht,
-     sie fuehrt dorthin. Zuvor trug sie denselben Satz doppelt (fork-lede und
-     fork-desc) und fuenf Textebenen vor dem Button.
-     Die ID kontakt bleibt bewusst stehen: 36 Verweise aus 22 Dateien springen
-     diesen Anker von aussen an (Leistungs- und Projektseiten, 404, galerie.js,
-     projekt.html-Vorlage). Eine Umbenennung erzeugte 36 tote Links. -->
-<section class="fork fork--single" id="kontakt" aria-labelledby="gewerbe-title">
-  <div class="container fork-head">
-    <p class="fork-kind reveal">Gewerbekunden</p>
-    <h2 class="fork-title type-section-title reveal" id="gewerbe-title">Ein Ansprechpartner für Pflege, Baumkontrolle und Verkehrssicherheit.</h2>
-    <a class="fork-btn reveal" href="gewerbekunden/">
-      <span class="fork-btn-label">Zum Gewerbebereich</span>
-      <span class="fork-btn-dot"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8h11M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    </a>
-  </div>
-
-  <div class="fork-foot">Akuter Sturm- oder Baumschaden am Objekt? <a href="tel:+491711738943">0171 / 173 89 43</a></div>
-</section>
-
-
-<!-- ================================================================= -->
-<!-- BEGIN PHASE-1-MERGE  ·  Privatkunden-Sektionen, mechanisch uebernommen -->
-<!-- Zwischenstand zum Sortieren. Doppelungen sind gewollt. Nicht deployen. -->
-<!-- ================================================================= -->
-<div class="merge-light-scope">
 <!-- ============ KURATIERTER GALERIE-TEASER ============ -->
 <section class="private-gallery-teaser" aria-labelledby="gallery-teaser-title" data-gallery-teaser>
   <div class="container">
@@ -989,12 +1000,17 @@ html.home-theme-dark body { background-color: #171916; }
     </div>
   </div>
 </section>
-<!-- ============ GARTENPROJEKT-ANFRAGE ============ -->
-<section class="section private-contact" aria-labelledby="anfrage-title">
+<!-- ============ GARTENPROJEKT-ANFRAGE ============
+     AP-F20: Die id kontakt sass bis hierher auf dem Gewerbe-Zweig, weil sie dort
+     historisch entstanden ist. Mit dem Entfernen der Sektion zieht sie an die
+     Stelle, die sie immer gemeint hat. 35 Verweise aus 21 Dateien springen sie an
+     ("Jetzt anfragen", "Kontakt aufnehmen", "Termin vereinbaren") und landen nun
+     beim Anfrageformular statt bei einem Knopf nach /gewerbekunden/.
+     Nicht umbenennen. Siehe docs/offene-punkte.md, Abschnitt AP-F17. -->
+<section class="section private-contact" id="kontakt" aria-labelledby="anfrage-title">
   <div class="container">
     <header class="private-contact-intro reveal">
       <h2 class="type-section-title" id="anfrage-title">Der erste Schritt zu Ihrem Gartenprojekt.</h2>
-      <p class="lead type-section-lead">Wählen Sie Ihr Anliegen – Maik Rohdich meldet sich persönlich.</p>
     </header>
 
     <div class="private-contact-layout">
@@ -1020,13 +1036,17 @@ html.home-theme-dark body { background-color: #171916; }
              Alle Felder optional - das bisherige Versprechen bleibt gewahrt. -->
         <div class="anf">
           <fieldset class="anf__vorwahl" data-anf-vorwahl>
+            <!-- AP-F23: Die Frage steht nicht mehr auf dem Bildschirm, bleibt aber im
+                 Markup. Ein fieldset mit Radioknoepfen ist eine Gruppe, und die legend
+                 ist ihr Name - ohne sie hoert ein Screenreader-Nutzer nur "Kurz
+                 anfragen, Optionsfeld, 1 von 2", ohne zu erfahren, worum es geht.
+                 Versteckt wird in anfrage.css, nicht hier. -->
             <legend class="anf__vorwahl-legende">Wie möchten Sie anfragen?</legend>
 
             <label class="anf__wahl">
               <input type="radio" name="_vorwahl" value="kurz" checked>
               <span class="anf__wahl-text">
                 <span class="anf__wahl-titel">Kurz anfragen</span>
-                <span class="anf__wahl-info">Ein paar Zeilen genügen. Maik Rohdich meldet sich und klärt den Rest im Gespräch.</span>
               </span>
             </label>
 
@@ -1034,7 +1054,6 @@ html.home-theme-dark body { background-color: #171916; }
               <input type="radio" name="_vorwahl" value="detail">
               <span class="anf__wahl-text">
                 <span class="anf__wahl-titel">Ich möchte mehr Angaben machen</span>
-                <span class="anf__wahl-info">Leistungen, Ort und Zeitrahmen — in vier Schritten.</span>
               </span>
             </label>
           </fieldset>
@@ -1049,19 +1068,15 @@ html.home-theme-dark body { background-color: #171916; }
 
             <div class="anf__raster">
               <p class="anf__feld">
-                <label for="anf-name">Name <span class="anf__optional">(optional)</span></label>
+                <label for="anf-name">Name</label>
                 <input type="text" id="anf-name" name="name" autocomplete="name">
               </p>
               <p class="anf__feld">
-                <label for="anf-ort">Ort <span class="anf__optional">(optional)</span></label>
-                <input type="text" id="anf-ort" name="ort" autocomplete="address-level2">
-              </p>
-              <p class="anf__feld">
-                <label for="anf-email">E-Mail <span class="anf__optional">(optional)</span></label>
+                <label for="anf-email">E-Mail</label>
                 <input type="email" id="anf-email" name="email" autocomplete="email">
               </p>
               <p class="anf__feld">
-                <label for="anf-telefon">Telefon <span class="anf__optional">(optional)</span></label>
+                <label for="anf-telefon">Telefon</label>
                 <input type="tel" id="anf-telefon" name="telefon" autocomplete="tel">
               </p>
             </div>
@@ -1847,9 +1862,6 @@ html.home-theme-dark body { background-color: #171916; }
 </script>
           <!-- BUILD:faq-schema:end -->
 </section>
-
-</div>
-<!-- END PHASE-1-MERGE -->
 
 
 </main>

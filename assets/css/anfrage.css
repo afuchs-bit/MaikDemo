@@ -12,24 +12,26 @@
    ------------------------------------------------------------------ */
 
 .anf {
-  --anf-vg:           var(--green-900);   /* #1d3000 */
-  --anf-leise:        var(--green-700);   /* #315200 */
-  --anf-linie:        rgba(49, 82, 0, .22);
-  --anf-linie-stark:  var(--green-800);   /* #2a4500 */
-  --anf-flaeche:      #fff;
-  --anf-flaeche-tief: var(--green-100);   /* #e6efd9 */
+  /* AP-F26: Die Bruecke zeigte auf die helle Welt - dunkles Gruen als Schrift,
+     Weiss als Feldflaeche. Beides ist auf dunklem Grund falsch herum. Genau dafuer
+     gibt es diese Bruecke: sechs Zeilen statt vierzig Einzelregeln. */
+  --anf-vg:           var(--ink);
+  --anf-leise:        var(--ink-2);
+  --anf-linie:        var(--line);
+  --anf-linie-stark:  var(--green-500);
+  --anf-flaeche:      var(--bg-elev);
+  --anf-flaeche-tief: var(--green-100);
 
   /* Wie .btn-primary, nicht --green-800: sonst haette die Seite zwei
      verschiedene Primaerbuttons. */
   --anf-akzent:       var(--green-700);
   --anf-akzent-vg:    #fff;
 
-  /* Gemessen, nicht geschaetzt: --coral-700 (#c0552f) erreicht auf dem
-     Sektionsgrund #eef1e7 nur 4,01:1 und verfehlt die 4,5:1 fuer Fliesstext.
-     #ad4926 ist derselbe Ton, abgedunkelt bis 4,89:1 auf dem Sektionsgrund
-     und 5,59:1 auf der weissen Feldflaeche. Bewusst lokal in .anf und nicht
-     in :root - ausserhalb dieser Komponente gilt weiter --coral-700. */
-  --anf-fehler:       #ad4926;
+  /* AP-F26: Hier stand #ad4926 - ein abgedunkeltes Koralle, das eigens fuer den
+     HELLEN Sektionsgrund #eef1e7 hergeleitet worden war (4,89:1). Dieser Grund
+     existiert nicht mehr; auf dunkler Flaeche waere der Wert jetzt zu dunkel.
+     --coral-700 traegt seit AP-F26 den aufgehellten Ton und passt wieder. */
+  --anf-fehler:       var(--coral-700);
 
   --anf-radius:       var(--radius-sm);   /* 14px */
   --anf-luft:         1.5rem;
@@ -39,25 +41,49 @@
 
 /* -------------------------------------------------------------------- Vorwahl */
 
+/* AP-F22: Die Erklaersaetze unter den Beschriftungen sind entfallen, die Kacheln
+   stehen jetzt nebeneinander.
+   20.5rem ist gemessen, nicht addiert: die Kachel mit der laengeren Beschriftung
+   ("Ich moechte mehr Angaben machen") hat eine natuerliche Breite von 318px -
+   ermittelt an einem Klon mit width: max-content, nicht aus Einzelteilen
+   zusammengerechnet. Der erste Versuch ueber die Summe der Teile ergab 312px und
+   war zu knapp: der Radio bringt 5px links und 3px rechts an Eigenrand mit, die in
+   keiner CSS-Regel dieser Datei stehen. Bei 700px Fenster brach die Beschriftung
+   dadurch still zweizeilig um. 328px lassen 10px Luft fuer abweichende
+   Schriftwiedergabe.
+   Dasselbe auto-fit-Muster wie .anf__raster weiter unten: zwei Spalten, solange
+   664px da sind (2x328 + Luecke), sonst von selbst untereinander - keine
+   Medienabfrage noetig. Aendert sich eine Beschriftung, muss der Wert neu gemessen
+   werden, sonst bricht die Zeile still um. */
 .anf__vorwahl {
   margin: 0 0 var(--anf-luft);
   padding: 0;
   border: 0;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20.5rem, 1fr));
   gap: .5rem;
 }
 
+/* AP-F23: Die Frage soll nicht mehr zu sehen sein, die Radiogruppe aber weiterhin
+   einen Namen haben. Dieselbe Technik wie .anf__honeypot am Ende dieser Datei -
+   keine neue Hilfsklasse. display: none oder visibility: hidden waeren falsch: sie
+   nehmen den Text auch aus der Vorlesereihenfolge. */
 .anf__vorwahl-legende {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
   padding: 0;
-  margin-bottom: .75rem;
-  font-weight: 600;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .anf__wahl {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: .75rem;
-  align-items: start;
+  align-items: center;   /* AP-F22: war start - richtete den Radio auf die erste
+                            von zwei Zeilen aus. Einzeilig gehoert er auf die Mitte. */
   padding: .875rem 1rem;
   border: 1px solid var(--anf-linie);
   border-radius: var(--anf-radius);
@@ -75,11 +101,14 @@
   outline-offset: 2px;
 }
 
-.anf__wahl input { margin-top: .25rem; }
 
-.anf__wahl-text  { display: grid; gap: .2rem; }
+/* AP-F22: Der Browser gibt dem Radio von sich aus 3px oben und 0 unten. Bei
+   align-items: center schiebt das die Marke 1,5px unter die Textmitte - gemessen,
+   nicht vermutet. Vertikale Raender daher zuruecknehmen. */
+.anf__wahl input { margin-block: 0; }
+
+.anf__wahl-text  { display: grid; }
 .anf__wahl-titel { font-weight: 600; }
-.anf__wahl-info  { font-size: .875rem; color: var(--anf-leise); line-height: 1.45; }
 
 /* --------------------------------------------------------------------- Felder */
 
@@ -96,8 +125,6 @@
 }
 
 .anf__feld label { font-weight: 500; font-size: .9375rem; }
-
-.anf__optional { font-weight: 400; color: var(--anf-leise); }
 
 .anf__feld input,
 .anf__feld select,
