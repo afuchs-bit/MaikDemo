@@ -50,7 +50,7 @@
   line-height: 1.35;
   letter-spacing: .015em;
 }
-.customer-hero-brandline > strong { color: var(--green-700); font-weight: 800; }
+.customer-hero-brandline > strong { color: var(--green-500); font-weight: 800; }
 .customer-hero-brandline > span { min-width: 0; }
 .customer-hero .customer-hero-title {
   max-width: 760px;
@@ -95,7 +95,7 @@
   justify-content: center;
   min-height: 44px;
   padding: 2px 3px;
-  color: var(--green-700);
+  color: var(--green-500);
   font-size: .84rem;
   font-weight: 800;
   text-decoration: underline;
@@ -121,7 +121,7 @@
   box-shadow: 0 38px 70px -40px rgba(19,26,8,.55);
 }
 .customer-hero-media--private {
-  background: #dfe6d5;
+  background: var(--green-100);
   isolation: isolate;
 }
 .customer-hero-media picture { display: block; width: 100%; height: 100%; }
@@ -684,7 +684,7 @@
     border: 0;
     background: transparent;
     box-shadow: none;
-    color: var(--green-700);
+    color: var(--green-500);
     font-size: .86rem;
     font-weight: 800;
     text-decoration: underline;
@@ -695,7 +695,7 @@
   .private-hero .private-hero-actions .private-hero-secondary:hover,
   .private-hero .private-hero-actions .private-hero-secondary:focus-visible {
     background: transparent;
-    color: var(--green-800);
+    color: var(--ink);
     box-shadow: none;
     transform: none;
   }

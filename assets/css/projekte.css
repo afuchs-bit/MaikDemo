@@ -54,7 +54,7 @@
   padding: 15px 17px 13px;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: rgba(255, 255, 255, .5);
+  background: var(--bg-elev);
   box-shadow: 0 10px 28px rgba(31, 48, 17, .055);
 }
 

@@ -12,24 +12,26 @@
    ------------------------------------------------------------------ */
 
 .anf {
-  --anf-vg:           var(--green-900);   /* #1d3000 */
-  --anf-leise:        var(--green-700);   /* #315200 */
-  --anf-linie:        rgba(49, 82, 0, .22);
-  --anf-linie-stark:  var(--green-800);   /* #2a4500 */
-  --anf-flaeche:      #fff;
-  --anf-flaeche-tief: var(--green-100);   /* #e6efd9 */
+  /* AP-F26: Die Bruecke zeigte auf die helle Welt - dunkles Gruen als Schrift,
+     Weiss als Feldflaeche. Beides ist auf dunklem Grund falsch herum. Genau dafuer
+     gibt es diese Bruecke: sechs Zeilen statt vierzig Einzelregeln. */
+  --anf-vg:           var(--ink);
+  --anf-leise:        var(--ink-2);
+  --anf-linie:        var(--line);
+  --anf-linie-stark:  var(--green-500);
+  --anf-flaeche:      var(--bg-elev);
+  --anf-flaeche-tief: var(--green-100);
 
   /* Wie .btn-primary, nicht --green-800: sonst haette die Seite zwei
      verschiedene Primaerbuttons. */
   --anf-akzent:       var(--green-700);
   --anf-akzent-vg:    #fff;
 
-  /* Gemessen, nicht geschaetzt: --coral-700 (#c0552f) erreicht auf dem
-     Sektionsgrund #eef1e7 nur 4,01:1 und verfehlt die 4,5:1 fuer Fliesstext.
-     #ad4926 ist derselbe Ton, abgedunkelt bis 4,89:1 auf dem Sektionsgrund
-     und 5,59:1 auf der weissen Feldflaeche. Bewusst lokal in .anf und nicht
-     in :root - ausserhalb dieser Komponente gilt weiter --coral-700. */
-  --anf-fehler:       #ad4926;
+  /* AP-F26: Hier stand #ad4926 - ein abgedunkeltes Koralle, das eigens fuer den
+     HELLEN Sektionsgrund #eef1e7 hergeleitet worden war (4,89:1). Dieser Grund
+     existiert nicht mehr; auf dunkler Flaeche waere der Wert jetzt zu dunkel.
+     --coral-700 traegt seit AP-F26 den aufgehellten Ton und passt wieder. */
+  --anf-fehler:       var(--coral-700);
 
   --anf-radius:       var(--radius-sm);   /* 14px */
   --anf-luft:         1.5rem;

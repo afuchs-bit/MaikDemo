@@ -2,7 +2,7 @@
 
 .contact-page h1,
 .contact-page h2,
-.contact-page h3 { color: var(--green-900); }
+.contact-page h3 { color: var(--ink); }
 
 .contact-page .btn:focus-visible,
 .contact-page a:focus-visible,
@@ -137,7 +137,7 @@
   overflow: hidden;
   border: 1px solid rgba(49,82,0,.14);
   border-radius: 22px;
-  background: #fff;
+  background: var(--bg-elev);
   box-shadow: var(--shadow-card);
 }
 
@@ -167,7 +167,7 @@
 .contact-location-label,
 .contact-path-label {
   display: inline-flex;
-  color: var(--green-700);
+  color: var(--green-500);
   font-size: .68rem;
   font-weight: 800;
   letter-spacing: .11em;
@@ -199,7 +199,7 @@
   padding: 11px 12px;
   border: 1px solid rgba(24,38,13,.13);
   border-radius: 14px;
-  background: #fff;
+  background: var(--bg-elev);
   color: var(--ink-2);
   font-style: normal;
   text-decoration: none;
@@ -216,15 +216,15 @@
   place-items: center;
   border-radius: 12px;
   border: 1px solid rgba(49,82,0,.16);
-  background: #fff;
-  color: var(--green-700);
+  background: var(--bg-elev);
+  color: var(--green-500);
 }
 
 .contact-location-icon svg { width: 20px; height: 20px; }
 .contact-location-address > span:last-child,
 .contact-location-route > span:nth-child(2) { display: grid; gap: 3px; min-width: 0; }
-.contact-location-address strong { color: var(--green-900); font-family: var(--display); font-size: .98rem; line-height: 1.18; }
-.contact-location-route strong { color: var(--green-900); font-family: var(--display); font-size: .8rem; line-height: 1.25; }
+.contact-location-address strong { color: var(--ink); font-family: var(--display); font-size: .98rem; line-height: 1.18; }
+.contact-location-route strong { color: var(--ink); font-family: var(--display); font-size: .8rem; line-height: 1.25; }
 .contact-location-address small,
 .contact-location-route small { color: var(--ink-mute); font-size: .65rem; line-height: 1.4; }
 .contact-location-address > span:last-child > small { letter-spacing: .045em; text-transform: uppercase; }
@@ -241,7 +241,7 @@
     linear-gradient(36deg,transparent 47%,rgba(49,82,0,.08) 48%,rgba(49,82,0,.08) 51%,transparent 52%),
     linear-gradient(-30deg,transparent 44%,rgba(235,108,68,.08) 45%,rgba(235,108,68,.08) 48%,transparent 49%),
     radial-gradient(circle at 65% 32%,rgba(90,138,28,.18),transparent 16%),
-    #e7e4da;
+    var(--bg-soft);
   box-shadow: 0 20px 42px -34px rgba(28,48,0,.75);
 }
 
@@ -265,7 +265,7 @@
 }
 
 .contact-map-placeholder > div { display: grid; gap: 3px; }
-.contact-map-placeholder > div strong { color: var(--green-900); font-family: var(--display); font-size: 1.03rem; line-height: 1.25; }
+.contact-map-placeholder > div strong { color: var(--ink); font-family: var(--display); font-size: 1.03rem; line-height: 1.25; }
 .contact-map-placeholder > div span,
 .contact-map-placeholder > p { color: var(--ink-2); }
 .contact-map-placeholder > div span { font-size: .82rem; }
@@ -303,7 +303,7 @@
   line-height: 1.5;
 }
 
-.contact-visit-note strong { color: var(--green-900); font-family: var(--display); }
+.contact-visit-note strong { color: var(--ink); font-family: var(--display); }
 
 .contact-paths { padding: var(--space-section) 0; }
 
@@ -348,7 +348,7 @@
   overflow: hidden;
   border: 1px solid rgba(49,82,0,.16);
   border-radius: 24px;
-  background: #fff;
+  background: var(--bg-elev);
   box-shadow: 0 26px 54px -38px rgba(22,39,7,.55);
   color: var(--ink);
 }
@@ -383,7 +383,7 @@
   min-width: 0;
   min-height: 54px;
   padding: 8px 0;
-  color: var(--green-700);
+  color: var(--green-500);
   font-family: var(--body);
   font-size: .86rem;
   font-weight: 800;
@@ -393,7 +393,7 @@
   white-space: nowrap;
   transition: color .2s var(--ease);
 }
-.contact-path-text-link:hover { color: var(--green-900); }
+.contact-path-text-link:hover { color: var(--ink); }
 .contact-path-text-link b {
   flex: 0 0 auto;
   color: var(--coral-700);
@@ -428,7 +428,9 @@
 .contact-final-card h2 { margin: 10px 0 8px; color: #fff; font-size: var(--type-subsection-title-size); line-height: 1.1; }
 .contact-final-card p { margin: 0; color: rgba(255,255,255,.72); }
 .contact-final-actions { justify-content: flex-end; margin-top: 0; }
-.contact-final-primary { background: var(--yellow); color: var(--green-900); }
+/* AP-F26: --ink ist seit AP-F25 hell - auf gelbem Grund waren das 1,28:1.
+   Auf einer hellen Signalflaeche gehoert dunkler Text, unabhaengig vom Thema. */
+.contact-final-primary { background: var(--yellow); color: var(--bg-dark); }
 .contact-final-secondary { border-color: rgba(255,255,255,.55); background: transparent; color: #fff; }
 
 @media (hover:hover) and (pointer:fine) {
