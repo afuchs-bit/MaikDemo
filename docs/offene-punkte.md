@@ -107,3 +107,53 @@ nach „gesendet" klingen. Fundstelle: `assets/js/anfrage.js`, Konstante `HINWEI
 eine Einwilligungs-Checkbox zu erzwingen. Begruendung: die Bearbeitung einer Anfrage stuetzt
 sich ueblicherweise auf Vertragsanbahnung, nicht auf Einwilligung. Das ist eine Rechtsfrage —
 vor dem Go-live anwaltlich rueckversichern.
+
+## AP-F17 — `#kontakt` zeigt seit AP-F14 auf den Gewerbe-Teaser
+
+**Befund vom 02.09.2026**, aufgedeckt bei der Generator-Prüfung. Kein Fehler im Generator —
+der erzeugt exakt das, was ausgeliefert ist. Es ist eine inhaltliche Verschiebung.
+
+AP-F14 hat die `fork`-Sektion der Startseite auf „ein Satz, ein CTA" reduziert; sie ist
+seither der **Gewerbe-Zweig**. Ihre `id="kontakt"` blieb bewusst stehen, weil zahlreiche
+Seiten diesen Anker anspringen — eine Umbenennung hätte sie alle gebrochen. Damit stimmt
+aber das Ziel nicht mehr: `#kontakt` ist heute eine Überschrift mit einem Knopf nach
+`/gewerbekunden/`, **kein Kontaktformular**.
+
+**33 Links landen dort:**
+
+| Herkunft | Anzahl | Beschriftung |
+|---|---|---|
+| `projekte/*` | 10 | „Ähnliches Projekt geplant? Jetzt anfragen" |
+| `gewerbekunden/leistungen/*` | 21 | „Termin vereinbaren", „Projekt besprechen", „Kontakt aufnehmen" |
+| `privatkunden/leistungen/pool-whirlpool-umfeld/` | 1 | „Zum Kontakt" (Pool-Rechner) |
+| `404.html` | 1 | |
+
+Wer auf einer Projektseite „Jetzt anfragen" klickt, landet beim Gewerbe-Teaser statt beim
+Anfrageformular. Die Links sind nicht tot, sie führen an der Absicht vorbei.
+
+**Fundstellen im Generator** (drei Stellen, alles andere läuft bereits richtig):
+
+- `.github/scripts/lib/render.mjs:234` — Pool-Rechner, „Zum Kontakt"
+- `.github/scripts/lib/render.mjs:654` — der `#kontakt`-Zweig in `leistungContactHref()`,
+  greift für die Gewerbe-Welt
+- `.github/scripts/templates/projekt.html:82` — „Ähnliches Projekt geplant?"
+
+Die 13 Privat-Leistungsseiten sind **nicht** betroffen; sie laufen seit AP-F17 über
+`?pfad=…#anfrage`.
+
+**Zielanker sind vorhanden:** `#anfrage` auf der Startseite (Kurzformular und Assistent),
+`#anfrage` auch auf `/gewerbekunden/` (eigenes Gewerbeformular).
+
+**Offen: Entscheidung des Auftraggebers.** Zwei sinnvolle Wege — entweder alle 33 Links auf
+`#anfrage` der Startseite, oder je Welt getrennt: Projektseiten, Pool-Seite und 404 auf die
+Startseite, die 21 Gewerbe-Links auf `gewerbekunden/#anfrage`, wo das passende Formular
+steht. Bewusst zurückgestellt, bis die Kontaktführung insgesamt entschieden ist — die
+Sektionsfolge der Startseite wurde gerade erst festgelegt.
+
+**Nebenbefund:** Die GitHub Action ruft nur `check-config-sync`, `build-index`,
+`build-gallery-teaser` und `build-footers` auf. `build-leistungen.mjs` und
+`build-rechtstexte.mjs` laufen nur von Hand. Deshalb hinken die 20 Leistungsseiten und die
+2 Rechtstextseiten derzeit der Header-Vorlage hinterher: dort fehlt die `aria-label`-
+Entfernung an Anruf-Button und WhatsApp-Link (davidk., 01.09.2026). Unkritisch, beide
+Elemente behalten ihren Namen aus dem sichtbaren Text — beim nächsten Handlauf gleicht es
+sich an.
