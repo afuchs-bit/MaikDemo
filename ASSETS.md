@@ -5,6 +5,15 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
 
 ## Homepage-Schrift
 
+- `assets/fonts/baloo2-700-latin.woff2` – offizieller Latin-Schnitt von
+  Baloo 2, Gewicht 700. Quelle: [Google Fonts / Baloo 2](https://github.com/google/fonts/tree/main/ofl/baloo2),
+  abgerufen am 02.09.2026. Die Schrift wird ausschließlich für die mobile
+  Homepage-H1 bis 900 px verwendet. SHA-256:
+  `8E7FFC9B993AA8CAA89BCAB81E103C9EB2DA4E3E042F37B7A5115D0DDBFF12C0`.
+- `assets/fonts/baloo2-OFL.txt` – zugehörige SIL Open Font License 1.1 aus dem
+  [offiziellen Google-Fonts-Repository](https://github.com/google/fonts/blob/main/ofl/baloo2/OFL.txt),
+  abgerufen am 02.09.2026.
+
 - `assets/fonts/nunito-latin.woff2` – offizieller variabler Latin-Schnitt von
   Nunito, normal, Gewichte 200–1000. Quelle: [Google Fonts / Nunito](https://github.com/google/fonts/tree/main/ofl/nunito),
   abgerufen am 29.08.2026. SHA-256:

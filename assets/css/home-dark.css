@@ -10,6 +10,15 @@
 }
 
 @font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/baloo2-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
   font-family: "Nunito";
   font-style: italic;
   font-weight: 200 1000;
@@ -644,16 +653,19 @@ html.home-theme-dark .fork-path:hover {
     --hero-proof-base-space: clamp(8px, 2vw, 16px);
     --hero-proof-space: calc(var(--hero-proof-base-space) + var(--hero-proof-icon-inset));
     bottom: clamp(8px, 1.4svh, 12px);
-    width: max-content;
-    max-width: calc(100% - var(--hero-proof-space) - var(--hero-proof-space));
+    width: 100%;
+    max-width: none;
     height: clamp(76px, 10.2svh, 92px);
     min-height: 0;
-    padding: 0 var(--hero-proof-space);
+    padding: 0;
+    column-gap: 0;
+    justify-content: space-evenly;
+    box-sizing: border-box;
     transform: translate(-50%, calc(0px - var(--mobile-hero-content-group-lift)));
   }
 
   html.home-theme-dark .hero-proof-collage {
-    width: clamp(52px, 16.5vw, 124px);
+    width: clamp(44px, 13.5vw, 116px);
     min-height: 0;
     height: 100%;
   }
@@ -669,7 +681,7 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .hero-proof-location-text,
   html.home-theme-dark .hero-proof-customer-text {
-    font-size: clamp(.8125rem, 3.45vw, 1rem);
+    font-size: clamp(.6875rem, 3vw, 1rem);
     line-height: 1.18;
     letter-spacing: -.012em;
   }
@@ -780,7 +792,7 @@ html.home-theme-dark .fork-path:hover {
     );
     margin: clamp(8px, 2.3vw, 12px) 0 0;
     color: var(--home-on-dark);
-    font-family: var(--display);
+    font-family: "Baloo 2", sans-serif;
     font-size: clamp(1.75rem, 9.65vw, 2.8rem);
     font-weight: 700;
     line-height: .93;
@@ -1155,7 +1167,19 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .hero-proof-location-text,
   html.home-theme-dark .hero-proof-customer-text {
-    font-size: .78125rem;
+    font-size: .65625rem;
+  }
+
+  html.home-theme-dark .hero-proof-collage {
+    width: 41px;
+  }
+
+  html.home-theme-dark .hero-proof-photo {
+    width: 28px;
+  }
+
+  html.home-theme-dark .hero-proof-photo--pond {
+    width: 33px;
   }
 
 }

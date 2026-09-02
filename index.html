@@ -26,6 +26,7 @@ html.home-theme-dark body { background-color: #171916; }
      html.home-theme-dark auf Nunito, und diese Datei laedt nur die Startseite.
      Auf allen Unterseiten gelten Outfit/Inter ueber styles.css unveraendert. -->
 <link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/baloo2-700-latin.woff2" as="font" type="font/woff2" crossorigin media="(max-width: 900px)" />
 <!-- LCP: Foto im oberen Homepage-Hero vorab laden. -->
 <link rel="preload" as="image" type="image/webp"
       href="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp"
@@ -33,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902a" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260902b" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260902f" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260902a" />
@@ -343,8 +344,8 @@ html.home-theme-dark body { background-color: #171916; }
              alt="" width="160" height="160" decoding="async">
       </span>
       <p class="hero-proof-location-text">
-        <span>Unser Mustergarten</span>
-        <span>mit Sitz in <strong>Herne</strong></span>
+        <span>1.500 m² Mustergarten</span>
+        <span>am Firmensitz in <strong>Herne</strong></span>
       </p>
     </div>
     <div class="hero-proof-customer">
@@ -372,8 +373,8 @@ html.home-theme-dark body { background-color: #171916; }
         </picture>
       </div>
       <p class="hero-proof-customer-text">
-        <span><strong>Über 400</strong> Kunden</span>
-        <span>vertrauen auf uns</span>
+        <span>Bereits <strong>über 400</strong> Kunden</span>
+        <span>haben uns beauftragt</span>
       </p>
     </div>
   </aside>
