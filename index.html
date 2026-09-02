@@ -33,7 +33,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902a" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260902c" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260902d" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260812n" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260902a" />
@@ -420,12 +420,16 @@ html.home-theme-dark body { background-color: #171916; }
              alt=""
              width="960" height="640" loading="lazy" decoding="async">
       </picture>
-      <span class="gate-veil" aria-hidden="true"></span>
+      <!-- AP-F21: Schleier, Eyebrow und H2 sind entfallen - das Foto soll sprechen.
+           Der Schleier war kein Schmuck: er hielt den Kontrast der gelben Eyebrow
+           und der weissen Ueberschrift (Messreihen in styles.css, AP-102/AP-132).
+           Ohne diesen Text hat er keine Aufgabe mehr und faellt ersatzlos weg.
+           Die Pille traegt ihren Kontrast selbst: #171916 auf --home-lime ergibt
+           gemessene 8,65:1, unabhaengig vom Motiv. Ihre KANTE dagegen lag bei
+           1,00:1 gegen das Foto - dafuer steht der Saum in home-dark.css. -->
       <div class="gate-body">
-        <span class="gate-eyebrow">Für Gewerbekunden</span>
-        <h2 class="type-subsection-title">Außenanlagen, gepflegt und geprüft.</h2>
         <span class="gate-cta">
-          Zum Gewerbekundenbereich
+          Für Gewerbekunden
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </span>
       </div>
