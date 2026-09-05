@@ -1,15 +1,41 @@
-/* AP-177: Kleinere, optisch ausgewogene Kennzahlen auf einer linken Kante.
-   Eine einzelne dezente Bluete ergaenzt die offene Typografie. */
+/* AP-178: Ein grosses, weich ausgeblendetes Markenmotiv hinter den Kennzahlen.
+   Das Motiv wird separat beschnitten und erweitert nicht die Seitenbreite. */
 .mobile-social-proof {
   display: none;
 }
 
 @media (max-width: 900px) {
   .mobile-social-proof {
+    position: relative;
+    isolation: isolate;
     display: block;
     padding: 32px 24px 40px;
     color: var(--ink);
     scroll-margin-top: calc(var(--mobile-header-h) + 16px);
+  }
+
+  .mobile-social-proof__brand-art {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent 18%, #000 90%);
+    mask-image: linear-gradient(90deg, transparent 18%, #000 90%);
+  }
+
+  .mobile-social-proof__brand-art img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: block;
+    width: clamp(620px, 180vw, 900px);
+    max-width: none;
+    height: auto;
+    opacity: .14;
+    transform: translate(65%, -50%) rotate(14deg);
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 15%, #000 85%, transparent);
+    mask-image: linear-gradient(180deg, transparent, #000 15%, #000 85%, transparent);
   }
 
   .mobile-social-proof__sr-only {
@@ -25,6 +51,8 @@
   }
 
   .mobile-social-proof__list {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 36px;
@@ -63,17 +91,6 @@
 
   .mobile-social-proof__number--area {
     height: 36px;
-  }
-
-  .mobile-social-proof__flower {
-    display: block;
-    flex: 0 0 32px;
-    align-self: center;
-    width: 32px;
-    height: 32px;
-    margin-left: auto;
-    object-fit: contain;
-    opacity: .55;
   }
 
   .mobile-social-proof__label {

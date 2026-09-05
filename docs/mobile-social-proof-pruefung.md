@@ -103,3 +103,21 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Sämtliche KPI-Bezeichnungen und Kurztexte sowie das Homepage-Markup außerhalb
   der Sektion und ihrer CSS-Version sind gegenüber AP-176 identisch.
 - `git diff --check` bestanden. Keine neue JavaScript-Funktionalität.
+
+## AP-178 – Großes angeschnittenes Blumenlogo (05.09.2026)
+
+- Bestehendes Hero-Motiv einmalig als dekorativer Hintergrund eingebunden;
+  Originaldatei unverändert. Ausgeblendet für Screenreader, ohne Zeigerinteraktion.
+- Kontrolle bei 320, 375, 390, 430 und 900 px: Motiv geladen, eigene Dekorationsebene
+  innerhalb der Sektion beschnitten, kein horizontaler Überstand bei normaler Schrift.
+  Ab 901 px bleibt die Sektion ausgeblendet. Texte liegen innerhalb ihrer Bereiche.
+- Visuelle Kontrolle bei 320 und 390 px: große Blüte rechts beim mittleren KPI,
+  Blätter nach oben und unten, weicher Übergang zur Textseite. Keine neue Hintergrundfläche.
+- Kontrast konservativ berechnet: Selbst rein weiße Motivpixel mit voller 14-%-Deckkraft
+  ohne abschwächende Maske ergeben mindestens 8,49:1 für den Kurztext, 11,10:1 für
+  Bezeichnungen und 7,03:1 für die grünen Zahlen auf dem vorhandenen Seitenhintergrund.
+- Bei 320 px und 200 % Schriftgröße keine Textabschneidung in der neuen Sektion.
+  Der zuvor dokumentierte Überstand anderer Bestandssektionen bleibt unverändert
+  (423 px Scrollbreite bei 305 px nutzbarer Breite).
+- KPI-Wortlaut und Homepage außerhalb dieser Sektion und ihrer CSS-Version sind
+  gegenüber AP-177 identisch. `git diff --check` bestanden.

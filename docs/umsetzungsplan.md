@@ -1116,3 +1116,11 @@ Bezeichnungen: Nunito 18 px, Gewicht 700, Zeilenhöhe 1,25; Kurztexte weiterhin 
 Abstände und Wortlaut bleiben erhalten. Das einzelne vorhandene Blumen-Icon erscheint
 einmal rechts in der ersten Zahlenzeile, 32 × 32 px, Deckkraft 55 %, dekorativ und
 vertikal zentriert. Keine neuen Flächen, Rahmen, Trennlinien oder Animationen.
+
+**AP-178, großes Logo nach Bildvorlage des Auftraggebers, 05.09.2026:**
+Das kleine Blumen-Icon wird durch ein einziges großes, rechts angeschnittenes
+Hero-Blumenmotiv hinter der gesamten Sektion ersetzt. Das bestehende WebP bleibt
+unverändert. Die Darstellung verwendet 14 % Deckkraft, eine leichte Drehung und
+weiche Masken zur Textseite sowie an den Bildenden. Eine eigene, nicht interaktive
+Dekorationsebene beschneidet den Überstand; Texte stehen darüber. Zahlengrößen,
+Typografie, Abstände und Inhalte bleiben unverändert. Keine Kacheln oder neuen Flächen.
