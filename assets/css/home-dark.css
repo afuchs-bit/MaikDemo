@@ -2046,7 +2046,13 @@ html.home-theme-dark .mr-ueber__flow::after { content: ""; display: block; clear
 html.home-theme-dark .mr-ueber__buehne {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
-  margin-block: var(--space-section-compact);
+  /* AP-213: Der Titel soll knapp ueber dem Video stehen. Die frueheren 64px kamen
+     NICHT vom Titel (dessen Abstand betrug 16,8px), sondern von diesem Rand: ein
+     margin-block setzt oben wie unten denselben Wert, und beide Raender fielen
+     zusammen. Deshalb getrennt - oben knapp, unten bleibt der Sektionsabstand,
+     sonst klebte der Text darunter am Band. */
+  margin-top: clamp(6px, .8vw, 10px);
+  margin-bottom: var(--space-section-compact);
   background: var(--bg-dark);
 }
 
@@ -2085,16 +2091,31 @@ html.home-theme-dark .mr-ueber__video {
    kursive "Willkommen" entsteht durch synthetische Schraegstellung - bei einem
    Titel mit Ziffern faellt das unangenehm auf. Die mobile H1 weiter oben in
    dieser Datei setzt die Schrift ebenfalls aufrecht. */
-html.home-theme-dark .mr-ueber__videokopf { margin-bottom: clamp(12px, 1.4vw, 18px); }
+/* AP-213: Zusammenfallende Raender - der Abstand zum Band ist das Maximum aus
+   diesem Rand und dem margin-top der Buehne, nicht deren Summe. Nur die Buehne
+   zu senken brachte deshalb nichts: gemessen blieben 17px, weil dieser Wert
+   (16,8px) der groessere war. Beide muessen klein sein. */
+html.home-theme-dark .mr-ueber__videokopf { margin-bottom: clamp(6px, .8vw, 10px); }
 
+/* AP-213: Look des Wortes "Garten" aus dem mobilen Hero.
+   Dort ist "Garten" KEIN Text, sondern ein handgezeichneter Pinselschriftzug
+   (assets/img/hero/garten-schriftzug.png, 800x196). Die Buchstaben lassen sich nicht
+   uebernehmen - die Datei schreibt "Garten" und kann nichts anderes sagen.
+   Uebertragbar ist der Charakter: das grelle Gruen und die Neigung.
+   Die Farbe ist aus dem PNG ausgelesen, nicht geschaetzt: 43.187 Bildpunkte tragen
+   exakt #56E607 - und genau dieser Wert steht bereits als --mobile-logo-green in
+   styles.css :root. Kein neuer Ton.
+   Die Neigung entsteht synthetisch; es gibt nur einen aufrechten Baloo-2-Schnitt.
+   Der Willkommen-Text macht es beim Wort "Willkommen" genauso. */
 html.home-theme-dark .mr-ueber__videotitel {
   margin: 0;
   font-family: "Baloo 2", cursive;
   font-weight: 700;
+  font-style: italic;
   font-size: clamp(1.7rem, 3.1vw, 2.6rem);
   line-height: 1.1;
   letter-spacing: -.01em;
-  color: var(--ink);
+  color: var(--mobile-logo-green);
 }
 
 /* --- Text unter dem Band ------------------------------------------------- */
