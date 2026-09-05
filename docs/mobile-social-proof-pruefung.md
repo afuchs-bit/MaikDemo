@@ -37,3 +37,34 @@ Die Seitenbreite wird nicht durch eine globale Zoom- oder Breitenkorrektur verä
 
 Die Seitengestaltung oberhalb von 900 px erhält keine neuen Darstellungsregeln.
 Eine Prüfung auf einem physischen iPhone/Safari wurde durch den Agenten nicht ausgeführt.
+
+## AP-175 – Gemeinsame matte Fläche (05.09.2026)
+
+Der vorherige Stand ist oben dokumentiert. Der aktuelle Entwurf verwendet eine
+gemeinsame gerundete Fläche, eine einzelne Diagonale und zwei Trennlinien.
+Es gibt keine Blumen und keinen Hintergrundverlauf. Die Zahlen und Aussagen bleiben
+unverändert; die Kurztexte verwenden jetzt 16 px statt 15 px.
+
+| Viewportbreite | Höhen der drei Inhaltsbereiche (px) | Horizontaler Überstand | Sektion |
+|---|---|---|---|
+| 320 | 215 / 236 / 190 | keiner | sichtbar |
+| 375 | 215 / 236 / 167 | keiner | sichtbar |
+| 390 | 215 / 212 / 167 | keiner | sichtbar |
+| 430 | 193 / 190 / 167 | keiner | sichtbar |
+| 900 | 193 / 190 / 167 | keiner | sichtbar |
+| 901 | 0 / 0 / 0 | keiner | ausgeblendet |
+
+- Visuelle Kontrolle bei 320 und 390 px: proportionale Grafiken, klare Hierarchie,
+  neutrale Fläche und nur eine grüne diagonale Kante. Eine einzige SVG-Kontur im DOM.
+- Bei 320 px und 200 % Schriftgröße wachsen die Inhaltsbereiche auf 534 / 579 / 351 px.
+  Der gesamte Inhalt der neuen Sektion bleibt innerhalb der Fläche.
+- Die gesamte Bestandsseite hat bei dieser vergrößerten Schrift allerdings einen
+  Überstand außerhalb der neuen Sektion (unter anderem Hero, alte Proof-Inhalte und
+  Formulartexte). Vergleich mit dem vorherigen Commit: in beiden Ständen 423 px
+  Scrollbreite bei 305 px nutzbarer Breite. Dies ist keine neue Regression und wurde
+  im Rahmen dieser Gestaltung nicht verändert.
+- Das Homepage-Markup außerhalb der neuen Sektion und ihrer Cache-Versionen ist
+  gegenüber AP-174 identisch. Desktop und alte Proof-Sektion bleiben unverändert.
+- `node --check assets/js/mobile-social-proof.js` und `git diff --check` bestanden.
+
+Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPhone.

@@ -1092,3 +1092,11 @@ innerhalb der Karte begrenzt, damit sie die mobile Seitenbreite nicht erweitert.
 Die Zahlen wurden nach erfolglosen ImageGen-Freistellversuchen technisch aus den
 Originalen aufbereitet. Dateinachweise stehen in ASSETS.md, Prüfergebnisse in
 docs/mobile-social-proof-pruefung.md.
+
+**AP-175, neue Gestaltungsrichtung auf Wunsch des Auftraggebers, 05.09.2026:**
+Die wiederholten Blumen und der grüne Flächenverlauf entfallen. Die drei Aussagen
+stehen jetzt in einer gemeinsamen matten Fläche (#20211f), gegliedert durch feine
+neutrale Trennlinien. Nur die äußere Form trägt einen gerundeten diagonalen Anschnitt;
+ein kurzer grüner Strich betont diese Kante. Die gelieferten Handschriftgrafiken bleiben
+der Blickfang. Fließtext steht für bessere Lesbarkeit wieder in 16 px. Alle Aussagen,
+die Reihenfolge und die Begrenzung auf maximal 900 px bleiben erhalten.
