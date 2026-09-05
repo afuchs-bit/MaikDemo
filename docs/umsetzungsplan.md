@@ -1459,15 +1459,3 @@ MAIK“-Stempel wird auf Wunsch des Auftraggebers vollständig aus dem CTA und
 seinem zugänglichen Namen entfernt. Der Button bleibt 64 px hoch, verwendet
 weiterhin die verstärkte Beschriftung bis 18 px, seine grüne asymmetrische Form
 und den dezenten Schatten. Es wird kein Ersatzsymbol eingesetzt.
-
-
-**AP-212, zwei mobile Bild-Einbindungen zur Auswahl (05.09.2026):** Für den
-Willkommenbereich entstehen zwei per URL getrennte Vorschauen, die ausschließlich
-die Einbindung des vorhandenen Poolgarten-Fotos verändern. Der normale
-Homepage-Aufruf bleibt unverändert.
-
-Variante `flaechig` nutzt das Foto als vollbreite Bühne hinter Kicker und
-Überschrift und führt es mit einem dunklen Verlauf in den Inhalt. Variante
-`fenster` setzt es als geneigtes, links stark gerundetes Bildfenster zwischen
-Überschrift und Text; die rechte Kante reicht bis an den Ansichtsrand. Beide
-Vorschauen gelten nur für die vereinbarten Hochformatbreiten von 390 bis 404 px.
