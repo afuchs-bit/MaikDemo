@@ -415,3 +415,15 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Unverändertes 4:3-Format gemessen: 345 × 258,75 px beziehungsweise
   354 × 265,5 px. Kein horizontaler Überstand.
 - Blumensiegel, Galerie-CTA, Navigationspunkte, Bildwechsel und Texte unverändert.
+
+
+## AP-200 – Siegel unten links, Galerie-CTA mittig (05.09.2026)
+
+- Siegel unten links mit früherer Zwei-Drittel-Überlappung: bei 393 px 44,91 px
+  auf dem Foto und 22,45 px darunter; bei 402 px 45,72 px und 22,84 px.
+- Galerie-Link bei beiden Zielbreiten exakt auf der Bildmitte gemessen:
+  196,5 px bei 393 px und 201 px bei 402 px Inhaltsbreite.
+- Linkbox beginnt unterhalb des Bildes und berührt die Navigationspunkte nicht.
+  Zwischen Siegelbox und Link bleiben 23,94 beziehungsweise 26,53 px frei.
+- Kein horizontaler Überstand; Bildwechsel, Linkziele, Texte und übrige CTAs
+  unverändert.

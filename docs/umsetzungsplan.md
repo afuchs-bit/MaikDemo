@@ -1344,3 +1344,14 @@ gleichmäßigen Ecken von 16 px Radius.
 Der nicht mehr benötigte SVG-Clip samt CSS-Hilfsregel wird entfernt. Blumensiegel
 oben links, Galerie-Pinsel unten rechts, Navigationspunkte, Bildwechsel und
 darunterliegende Inhalte bleiben unverändert.
+
+
+**AP-200, Blumensiegel unten links und Galerie-Link mittig (05.09.2026):** Das
+Blumensiegel wechselt an die untere linke Bildecke und übernimmt erneut das
+frühere Verhältnis: zwei Drittel liegen auf dem Foto, ein Drittel ragt darunter
+hervor. Der Galerie-Pinsel sitzt horizontal exakt mittig unter dem Bild.
+
+Die Linkfläche beginnt an der unteren Bildkante, sodass sie die mittigen
+Navigationspunkte nicht überlagert. Der Markenbereich wächst auf 48 px und hält
+den folgenden Textabstand stabil. Bildform, Größen, Links und übrige Inhalte
+bleiben unverändert.
