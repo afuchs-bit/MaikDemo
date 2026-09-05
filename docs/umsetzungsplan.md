@@ -1100,3 +1100,10 @@ neutrale Trennlinien. Nur die äußere Form trägt einen gerundeten diagonalen A
 ein kurzer grüner Strich betont diese Kante. Die gelieferten Handschriftgrafiken bleiben
 der Blickfang. Fließtext steht für bessere Lesbarkeit wieder in 16 px. Alle Aussagen,
 die Reihenfolge und die Begrenzung auf maximal 900 px bleiben erhalten.
+
+**AP-176, freistehende Variante auf Wunsch des Auftraggebers, 05.09.2026:**
+Die Kennzahlen stehen direkt auf dem Seitenhintergrund. Gemeinsame Fläche, Kontur,
+Schräge und Trennlinien entfallen. Die Handschriftgrafiken erhalten 64 px Höhe;
+36 px Abstand gliedern die Aussagen. Der mittlere Block ist um 20 px eingerückt,
+alle Texte bleiben linksbündig. Außen stehen 24 px Abstand zur Verfügung. Die
+SVG-Kontur und ihr JavaScript werden entfernt. Inhalte und mobiler Einbau bleiben gleich.

@@ -68,3 +68,20 @@ unverändert; die Kurztexte verwenden jetzt 16 px statt 15 px.
 - `node --check assets/js/mobile-social-proof.js` und `git diff --check` bestanden.
 
 Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPhone.
+
+## AP-176 – Freistehende Kennzahlen (05.09.2026)
+
+- Kontrolle bei 320, 375, 390, 430 und 900 px: alle Grafiken geladen, Texte und
+  Zahlen innerhalb ihrer Inhaltsbereiche, kein horizontaler Überstand bei normaler Schrift.
+  Ab 901 px bleibt die neue Sektion ausgeblendet.
+- Visuell bei 320 und 390 px geprüft: transparenter Hintergrund, keine Rahmen,
+  Trennlinien oder SVG-Kontur. Der mittlere Block ist leicht eingerückt.
+- Die drei Inhaltsbereiche sind bei 390 px 149 / 171 / 126 px hoch, mit jeweils
+  36 px Abstand. Bei 320 px betragen die Höhen 171 / 195 / 126 px.
+- Bei 320 px und 200 % Schriftgröße wachsen sie auf 445 / 493 / 310 px,
+  ohne Inhalte abzuschneiden. Der unter AP-175 dokumentierte Überstand anderer
+  Bestandssektionen bei 200 % Schriftgröße bleibt unverändert (423 px Scrollbreite).
+- Die Rahmen-JavaScriptdatei und ihre Einbindung sind entfernt. Keine verbliebenen
+  Verweise auf die entfernten Panel-, Rahmen- oder Kartenklassen im Anwendungscode.
+- Homepage außerhalb der neuen Sektion und ihrer CSS-/JS-Einbindungen mit dem
+  vorherigen Commit verglichen: identisch. `git diff --check` bestanden.
