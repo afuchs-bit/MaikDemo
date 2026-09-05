@@ -1,4 +1,4 @@
-/* AP-198: Blumensiegel mit gespiegelter Zwei-Drittel-Überlappung oben links.
+/* AP-199: Gartenbilder wieder rechteckig mit ruhiger 16-px-Rundung.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -104,18 +104,10 @@
     margin: 0;
   }
 
-  .mobile-proof-gallery__geometry {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
   .mobile-proof-gallery__frame {
     position: relative;
     overflow: hidden;
-    clip-path: url("#mobile-proof-photo-clip");
+    border-radius: 16px;
     isolation: isolate;
   }
 

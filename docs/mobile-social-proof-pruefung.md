@@ -405,3 +405,13 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Bei 402 px: 22,84 px außen und 45,72 px auf dem Bild bei 68,56 px Siegelhöhe.
 - Visuell auf beiden Zielbreiten geprüft. Abstand zum letzten KPI bleibt frei,
   kein horizontaler Überstand; Galerie-CTA und übrige Sektion unverändert.
+
+
+## AP-199 – Rechteckige Bilder mit runden Ecken (05.09.2026)
+
+- SVG-Clip und zugehörige ausgeblendete Geometrie aus Markup und CSS entfernt.
+- Berechneter Bildstil bei 393 × 852 und 402 × 874 CSS-Pixeln geprüft:
+  clip-path: none und border-radius: 16px.
+- Unverändertes 4:3-Format gemessen: 345 × 258,75 px beziehungsweise
+  354 × 265,5 px. Kein horizontaler Überstand.
+- Blumensiegel, Galerie-CTA, Navigationspunkte, Bildwechsel und Texte unverändert.

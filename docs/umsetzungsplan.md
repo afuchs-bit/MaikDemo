@@ -1334,3 +1334,13 @@ Bildrand hinaus; zwei Drittel liegen auf dem Foto.
 Die Position wird proportional aus der unveränderten 210:180-Siegelgrafik
 berechnet und bleibt dadurch auf beiden Zielbreiten gleich. Horizontale
 Ausrichtung, Größe, Galerie-CTA, Bilder und übrige Sektion bleiben unverändert.
+
+
+**AP-199, Gartenbilder wieder mit runden Ecken (05.09.2026):** Die gedrehte
+Hero-CTA-Kontur wird auf Wunsch des Auftraggebers vollständig von der Bildfolge
+entfernt. Alle Fotos erscheinen wieder im unveränderten 4:3-Format mit vier
+gleichmäßigen Ecken von 16 px Radius.
+
+Der nicht mehr benötigte SVG-Clip samt CSS-Hilfsregel wird entfernt. Blumensiegel
+oben links, Galerie-Pinsel unten rechts, Navigationspunkte, Bildwechsel und
+darunterliegende Inhalte bleiben unverändert.
