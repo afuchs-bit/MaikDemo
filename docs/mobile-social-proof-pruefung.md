@@ -515,3 +515,13 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Sichtbaren Antworttext und zugängliche Lesereihenfolge auf „Maiks Antwort:
   Kein Anliegen ist uns zu klein oder zu spontan.“ geprüft.
 - Keine CSS-, Layout- oder Bedienänderung.
+
+
+## AP-209 – Dialogtexte sprachlich schärfen (05.09.2026)
+
+- Beide Fragen und Antworten wortgetreu gegen die abgestimmte Fassung geprüft.
+- Zweite Frage beginnt direkt mit „Im Urlaub“; „Länger weg“ und „nur“ entfallen.
+- Formelle Anrede „Ihren“ sowie Gedankenstriche und Zeichensetzung geprüft.
+- Bei 393 × 852 und 402 × 874 CSS-Pixeln erscheinen beide Antworten mit
+  identischer Höhe von 91,17 px über jeweils drei Zeilen. Kein horizontaler
+  Überstand; keine CSS- oder Bedienänderung.

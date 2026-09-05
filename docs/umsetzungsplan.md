@@ -1162,8 +1162,8 @@ Darunter führt „Alle Gartenbilder ansehen →“ zur vorhandenen Galerie. Die
 Texte sind auf ausdrücklichen Wunsch einschließlich Schreibweise und Zeichensetzung
 wortgetreu übernommen; jeweils die erste Frage ist hervorgehoben:
 
-- „Der Geburtstag steht an und für den Garten bleibt keine Zeit mehr? Kein Anliegen ist uns zu klein oder zu spontan.“
-- „Länger weg, im Urlaub oder einfach nur wenig Zeit? Damit ihr Garten Sie jederzeit willkommen heißt übernehmen wir auch laufende Pflegearbeiten.“
+- „Der Geburtstag steht an, aber für den Garten bleibt keine Zeit? Kein Anliegen ist uns zu klein – oft sind auch kurzfristige Einsätze möglich.“
+- „Im Urlaub oder einfach wenig Zeit? Auf Wunsch pflegen wir Ihren Garten regelmäßig – auch während Ihrer Abwesenheit.“
 
 Der Haupt-CTA „Gartenwunsch besprechen →“ trägt das Hero-Button-Grün #8CC63F und eine
 skalierbare Vektorfläche mit kleiner gerundeter Diagonale. Sein Ziel bleibt #anfrage.
@@ -1431,3 +1431,11 @@ unverändert.
 Geburtstagsfrage lautet nun „Kein Anliegen ist uns zu klein oder zu spontan.“
 Die vorangestellte Formulierung „Keine Panik!“ entfällt. Gestaltung,
 Screenreader-Absender und übrige Inhalte bleiben unverändert.
+
+
+**AP-209, Dialogtexte sprachlich schärfen (05.09.2026):** Beide Frage-Antwort-
+Paare werden grammatikalisch geglättet und nennen die konkrete Leistung klarer.
+Die erste Antwort verweist auf häufig mögliche kurzfristige Einsätze, ohne eine
+generelle Verfügbarkeit zu versprechen. Das zweite Paar lautet „Im Urlaub oder
+einfach wenig Zeit?“ und beschreibt Maiks regelmäßige Gartenpflege während der
+Abwesenheit. Gestaltung und zugängliche Absenderhinweise bleiben unverändert.
