@@ -344,3 +344,17 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   unter „Damit ihr Garten Sie jederzeit … laufende Pflegearbeiten.“ und bleibt einzeilig.
 - Buttonziel #anfrage, Bildfolge, Blumensiegel, zweiteiliger CTA und Textwortlaut
   unverändert. Kein horizontaler Überstand der neuen Sektion; git diff --check bestanden.
+
+
+## AP-194 – Gelber Pinselstrich zur Galerie (05.09.2026)
+
+- Markenfarbe anhand der vorhandenen Logo-SVGs bestätigt: #FFED00. Skalierbarer
+  SVG-Pinselstrich mit dezenter dunkler Farbspur und Schatten umgesetzt.
+- „Zur Galerie“ nur noch einmal sichtbar und als eigener Link am Blumensiegel;
+  bisheriger Galerie-Bereich im rechten CTA entfernt. „Maik kontaktieren“ bleibt
+  als eigenständiger kompakter CTA erhalten.
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln: Beschriftung frei,
+  Blume nur über dem oberen Strichrand, kein horizontaler Seitenüberstand.
+- Galerie-Link, Kontakt-CTA und grüner Haupt-CTA per Tastatur erreichbar; Fokusrahmen
+  sichtbar. Linkziele unverändert. Bildwechsel und Texte unverändert.
+- git diff --check bestanden.

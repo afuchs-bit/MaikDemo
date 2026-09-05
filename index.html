@@ -35,7 +35,7 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/home-dark.css?v=20260902x" />
-<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260905v" />
+<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260905x" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260902g" />
@@ -521,15 +521,19 @@ html.home-theme-dark body { background-color: #171916; }
         <!-- Exakt die Header-Datei; der Ausschnitt endet vor der Wortmarke. -->
         <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180"/>
       </svg>
+      <a class="mobile-proof-gallery__brush-link" href="projekte/?ansicht=galerie">
+        <svg class="mobile-proof-gallery__brush" viewBox="0 0 132 40" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <path class="mobile-proof-gallery__brush-base" d="M4 7C24 4 44 7 64 6C88 4 109 6 128 9L127 13L131 16L128 20L131 24L126 27L129 31C106 31 88 35 67 32C43 35 24 31 5 34C4 29 5 25 2 21C4 17 2 11 4 7Z"/>
+          <path class="mobile-proof-gallery__brush-grain" d="M8 29C31 27 52 30 73 28C94 26 111 28 125 25"/>
+        </svg>
+        <span>Zur Galerie</span>
+      </a>
     </div>
   </div>
   <div class="mobile-proof-invitation">
     <div class="mobile-proof-invitation__layout">
-      <!-- AP-187: Zwei eigenstaendige Links in der gemeinsamen Hero-CTA-Form. -->
-      <div class="mobile-proof-invitation__actions" role="group" aria-label="Galerie und Kontakt">
-        <a class="mobile-proof-invitation__action" href="projekte/?ansicht=galerie">
-          <span class="mobile-proof-invitation__action-content"><span>Zur Galerie</span><span class="mobile-proof-invitation__arrow" aria-hidden="true">→</span></span>
-        </a>
+      <!-- AP-194: Der Galerie-Link sitzt am Blumensiegel; hier bleibt der Kontakt. -->
+      <div class="mobile-proof-invitation__actions">
         <a class="mobile-proof-invitation__action mobile-proof-invitation__cta" href="#kontakt">
           <span class="mobile-proof-invitation__action-content"><span>Maik kontaktieren</span><span class="mobile-proof-invitation__arrow" aria-hidden="true">→</span></span>
         </a>

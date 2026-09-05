@@ -1275,3 +1275,16 @@ Der grüne CTA „Gartenwunsch besprechen →“ steht nicht mehr direkt unter d
 Bildfolge, sondern nach der vollständigen Einladung unter dem Satz zu den laufenden
 Pflegearbeiten. Zum Text-/CTA-Block hält er 28 px Abstand. Gestaltung, Breite und
 Formularsprung bleiben unverändert; ebenso Bildfolge, Blumensiegel und zweiteiliger CTA.
+
+
+**AP-194, gelber Pinselstrich als Galerie-Link (05.09.2026):** Unter dem
+Blumensiegel sitzt ein eigenständiger, organisch geformter Pinselstrich im exakten
+Logo-Gelb #FFED00. Eine feine dunklere Farbspur und ein zurückhaltender Schatten
+geben ihm Tiefe, ohne eine neue Bilddatei zu benötigen. Die waagerechte dunkle
+Beschriftung „Zur Galerie“ führt zur bestehenden Galerie. Die Blume überlappt nur
+den oberen Rand des Strichs, sodass die Beschriftung frei bleibt.
+
+Der bisherige Galerie-Link im rechten Hero-CTA entfällt, damit die Aktion nur einmal
+vorkommt. „Maik kontaktieren“ bleibt dort als kompakter einzelner CTA. Die Einladung
+beginnt 24 px nach dem 56 px hohen Markenbereich; der grüne Haupt-CTA bleibt unter
+den Texten. Prüfung weiterhin bei iPhone 15 Pro und iPhone 16 Pro.

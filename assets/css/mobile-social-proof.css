@@ -1,4 +1,4 @@
-/* AP-193: Gartenwunsch-CTA unter die persoenlichen Texte verschoben.
+/* AP-194: Gelber Pinselstrich als Galerie-Link unter dem Blumensiegel.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -209,6 +209,7 @@
   .mobile-proof-gallery__footer {
     --proof-brand-width: clamp(65px, 20vw, 80px);
     position: relative;
+    height: max(56px, 3.5rem);
   }
 
   .mobile-proof-gallery__brand {
@@ -217,12 +218,68 @@
        Der rechte Rand steht 12px ueber die schraege Bildecke hinaus. */
     top: calc(var(--proof-brand-width) * -4 / 7);
     right: calc(5.5% - 12px);
-    z-index: 1;
+    z-index: 2;
     display: block;
     width: var(--proof-brand-width);
     height: auto;
     filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
     pointer-events: none;
+  }
+
+  .mobile-proof-gallery__brush-link {
+    position: absolute;
+    top: max(16px, 1rem);
+    right: -12px;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: max(clamp(124px, 33vw, 132px), 9.25em);
+    max-width: calc(100% + 12px);
+    height: max(40px, 2.75em);
+    color: #171916;
+    font: 800 .875rem/1 var(--display);
+    letter-spacing: -.01em;
+    text-decoration: none;
+  }
+
+  .mobile-proof-gallery__brush {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 2px 2px rgb(0 0 0 / 28%));
+    transform: rotate(-1deg);
+    transform-origin: center;
+    pointer-events: none;
+  }
+
+  .mobile-proof-gallery__brush-base {
+    fill: #FFED00;
+  }
+
+  .mobile-proof-gallery__brush-grain {
+    fill: none;
+    stroke: #D9BD00;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    opacity: .46;
+  }
+
+  .mobile-proof-gallery__brush-link > span {
+    position: relative;
+    z-index: 1;
+    transform: translateY(-1px);
+  }
+
+  .mobile-proof-gallery__brush-link:hover {
+    color: #171916;
+  }
+
+  .mobile-proof-gallery__brush-link:focus-visible {
+    outline: 2px solid var(--home-focus);
+    outline-offset: 4px;
+    border-radius: 4px;
   }
 
   /* Originaler CTA aus AP-186, jetzt nach der gesamten Einladung. */
@@ -272,7 +329,7 @@
   .mobile-proof-invitation {
     container: proof-invitation / inline-size;
     max-width: 640px;
-    margin: 40px auto 0;
+    margin: 24px auto 0;
     font: 400 1rem/1.4 var(--body);
   }
 
@@ -302,25 +359,24 @@
     font: 700 1.125rem/1.4 var(--display);
   }
 
-  /* Die Hero-Kontur bleibt erhalten, ihre Neigung ist fuer die breiteren
-     Beschriftungen auf 13 Grad beruhigt. Nur die Flaechen werden geneigt. */
+  /* Verkleinerte Hero-Kontur fuer den verbleibenden Kontakt-CTA. */
   .mobile-proof-invitation__actions {
     float: right;
     position: relative;
     isolation: isolate;
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: 1fr;
     width: clamp(6.875rem, 32%, 9rem);
     max-width: 100%;
     margin: 0 0 0 16px;
-    padding: 1.25rem 0;
+    padding: .875rem 0;
   }
 
   .mobile-proof-invitation__actions::before,
   .mobile-proof-invitation__actions::after {
     content: "";
     position: absolute;
-    inset: 1.125rem 0;
+    inset: .75rem 0;
     z-index: -2;
     border-radius: 2px 14px 2px 14px;
     background: rgba(140, 198, 63, .64);
@@ -330,16 +386,10 @@
   }
 
   .mobile-proof-invitation__actions::after {
-    inset: calc(1.125rem + 2px) 2px;
+    inset: calc(.75rem + 2px) 2px;
     z-index: -1;
     border-radius: 1px 12px 1px 12px;
-    background:
-      linear-gradient(to bottom,
-        transparent calc(50% - .65px),
-        rgba(255, 255, 255, .13) calc(50% - .65px),
-        rgba(255, 255, 255, .13) calc(50% + .65px),
-        transparent calc(50% + .65px)),
-      rgba(35, 40, 31, .86);
+    background: rgba(35, 40, 31, .86);
     filter: none;
   }
 
@@ -366,11 +416,11 @@
     gap: 6px;
     min-width: 0;
     max-width: 100%;
-    transform: translateY(.5rem);
+    transform: none;
   }
 
   .mobile-proof-invitation__cta .mobile-proof-invitation__action-content {
-    transform: translateY(-.5rem);
+    transform: none;
   }
 
   .mobile-proof-invitation__action-content > span:first-child {
