@@ -778,16 +778,27 @@ html.home-theme-dark body { background-color: #171916; }
   </div>
 
   <!-- Block 3 - Mustergarten-Video, randlos ueber die volle Fensterbreite.
-       [OFFEN: Videodatei und Plakatbild liegen noch nicht vor. Auf diesem Rechner
-        gibt es kein ffmpeg, ein Standbild laesst sich nicht selbst erzeugen.]
+
+       controls + preload="metadata", KEIN Autostart: Ohne Zutun wird nur der
+       Kopfbereich geladen, nicht die vollen 9 MB. Ein randloses Video, das von
+       selbst laeuft, kostet Datenvolumen und stoert bei prefers-reduced-motion.
+
+       Kein poster-Attribut: Auf dem Entwicklungsrechner liegt kein ffmpeg, ein
+       Standbild laesst sich nicht erzeugen. Browser zeigen mit preload="metadata"
+       in aller Regel das erste Einzelbild - im Browser nachgemessen, nicht
+       angenommen. Sollte spaeter ein eigenes Plakatbild kommen, hier eintragen.
+
+       [OFFEN: Die Aufnahme ist KI-generiert und bildet den realen Mustergarten
+        nicht ab. Vom Auftraggeber so entschieden, siehe docs/offene-punkte.md,
+        AP-179.] -->
   <div class="mr-ueber__buehne">
-    <video class="mr-ueber__video" controls preload="metadata"
-           poster="assets/img/ueber/mustergarten-poster.webp"
-           aria-label="Rundgang durch den Mustergarten in Herne">
+    <video class="mr-ueber__video" controls preload="metadata" playsinline
+           aria-label="Rundgang durch den Mustergarten">
       <source src="assets/video/mustergarten.mp4" type="video/mp4">
+      <p>Ihr Browser kann dieses Video nicht abspielen.
+         <a href="assets/video/mustergarten.mp4">Video herunterladen</a>.</p>
     </video>
   </div>
-  -->
 
   <!-- Block 4 - Text unter dem Video, wieder im normalen Raster, ohne Umfluss.
        [OFFEN: Wortlaut wird nachgeliefert. Stichworte aus der Skizze: "Damit wir uns

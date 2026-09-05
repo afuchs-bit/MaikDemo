@@ -2050,9 +2050,20 @@ html.home-theme-dark .mr-ueber__buehne {
   background: var(--bg-dark);
 }
 
+/* Das Video misst nativ 720x544 - fast 4:3. Randlos ueber 1200px gezogen ergaebe
+   das einen 907px hohen Block, der die Seite erschlaegt und auf gaengigen Fenstern
+   nicht mehr in den Blick passt. Die Skizze zeigt ein BAND, kein Quadrat.
+   Deshalb ein festes Seitenverhaeltnis mit object-fit: cover - der Film wird oben
+   und unten beschnitten statt verzerrt. max-height deckelt zusaetzlich auf niedrigen
+   Fenstern.
+   Hinweis zur Schaerfe: Die Quelle ist nur 720px breit und wird ab etwa 720px
+   Fensterbreite hochskaliert. Das laesst sich hier nicht beheben, es braeuchte eine
+   hoeher aufgeloeste Fassung. Vermerkt in docs/offene-punkte.md. */
 html.home-theme-dark .mr-ueber__video {
   width: 100%;
-  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 62svh;
+  object-fit: cover;
   display: block;
 }
 

@@ -237,7 +237,7 @@ brächte rund 48 Zeichen.
 | Was | Wohin | Status |
 |---|---|---|
 | Foto für Block 2 | `assets/img/_src/` | fehlt; `figure` ist auskommentiert |
-| Mustergarten-Video | `assets/video/` | fehlt; Block 3 ist auskommentiert |
+| Mustergarten-Video | `assets/video/mustergarten.mp4` | **geliefert** — siehe eigenen Abschnitt unten |
 | Plakatbild zum Video | `assets/img/_src/` | fehlt — auf dem Entwicklungsrechner liegt kein `ffmpeg`, ein Standbild lässt sich nicht selbst erzeugen |
 | Bildunterschrift Block 2 | — | beginnt laut Skizze mit „Unser …" |
 | Text Block 4 | — | Stichworte: „Damit wir uns Zeit nur für Sie nehmen", „Inspiration Mustergarten" |
@@ -252,3 +252,31 @@ flachen Bildausschnitt** (etwa 16:9 oder flacher) oder mehr Text.
 
 `assets/img/ueber/ueber-3` liegt um 90° gedreht vor — die Ableitung wurde ohne Beachtung
 der EXIF-Orientierung erzeugt. Vor einer Verwendung neu bauen.
+
+### Das Mustergarten-Video ist KI-generiert
+
+**Vom 05.09.2026.** Die gelieferte Datei stammt aus Midjourney — erkennbar am
+Ursprungsnamen `u1187684669_httpss.mj.run…`. Sie zeigt **nicht** den realen Mustergarten
+in Herne.
+
+Das steht in Spannung zu Grundregel 1 („Niemals Fakten erfinden") und zum Bildbestand
+dieses Projekts, in dem generiertes Material nicht als Referenzaufnahme dienen soll. Die
+Seite behauptet an mehreren Stellen etwas Konkretes: „1.500 m² Mustergarten in Herne",
+„Unser Mustergarten mit Sitz in Herne".
+
+**Der Auftraggeber hat nach Rückfrage entschieden, sie trotzdem als Mustergarten
+einzubauen.** Hier festgehalten, damit es bei einer späteren Prüfung nicht übersehen wird.
+
+**Zu klären:** ob der Betriebsinhaber das mitträgt — es geht um die Darstellung seines
+eigenen Betriebsgeländes gegenüber Kunden.
+
+### Technische Punkte zum Video
+
+| Punkt | Befund |
+|---|---|
+| Auflösung | **720 × 544**. Randlos hochskaliert auf 1,67× bei 1200 px und 2,22× bei 1600 px Fensterbreite. Auf dem Telefon wird sie herunterskaliert (0,52×) und ist dort scharf. Eine höher aufgelöste Fassung würde das beheben. |
+| Format | 4:3-nah. Ungeschnitten ergäbe das randlos einen 907 px hohen Block. Deshalb als Band gesetzt: `aspect-ratio: 16/9` mit `object-fit: cover`, gedeckelt auf 62 % Fensterhöhe. Der Film wird oben und unten beschnitten, nicht verzerrt. |
+| Dauer | 5,2 Sekunden |
+| Dateigröße | 9,0 MB, im Repository versioniert |
+| Plakatbild | keines. Ohne `ffmpeg` lässt sich kein Standbild erzeugen; Browser zeigen mit `preload="metadata"` das erste Einzelbild. Ein eigenes Plakatbild wäre trotzdem besser. |
+| Vorladen | `preload="metadata"`, kein Autostart. Der Vollabruf im lokalen Vorschauserver ist ein Artefakt: Pythons `SimpleHTTPRequestHandler` beantwortet Bereichsabrufe mit `200` und der ganzen Datei. GitHub Pages beherrscht Range, dort lädt nur der Kopf. |
