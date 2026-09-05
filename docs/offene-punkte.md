@@ -279,4 +279,21 @@ eigenen Betriebsgeländes gegenüber Kunden.
 | Dauer | 5,2 Sekunden |
 | Dateigröße | 9,0 MB, im Repository versioniert |
 | Plakatbild | keines. Ohne `ffmpeg` lässt sich kein Standbild erzeugen; Browser zeigen mit `preload="metadata"` das erste Einzelbild. Ein eigenes Plakatbild wäre trotzdem besser. |
-| Vorladen | `preload="metadata"`, kein Autostart. Der Vollabruf im lokalen Vorschauserver ist ein Artefakt: Pythons `SimpleHTTPRequestHandler` beantwortet Bereichsabrufe mit `200` und der ganzen Datei. GitHub Pages beherrscht Range, dort lädt nur der Kopf. |
+| Vorladen | **AP-180:** `preload="none"`, Start erst im Sichtfeld. Autostart würde sonst die 9 MB bei jedem Seitenaufruf laden, auch für Besucher, die den Block nie erreichen. Ein `IntersectionObserver` lädt und startet erst beim Erscheinen und hält beim Verlassen an. |
+
+### AP-180 — Autostart in Schleife, 0,75-fache Geschwindigkeit
+
+**Vom 05.09.2026.** Auf Wunsch des Auftraggebers läuft das Video stumm, in Endlosschleife
+und startet von selbst.
+
+| Punkt | Umsetzung |
+|---|---|
+| Geschwindigkeit | 0,75×. `playbackRate` gibt es **nur** als JavaScript-Eigenschaft, kein HTML-Attribut — deshalb `assets/js/ueber-video.js`. Die Rate wird bei `loadedmetadata` **und** bei jedem `play` gesetzt, weil manche Browser sie nach einem `load()` auf 1 zurückstellen. |
+| Laufzeit | aus 5,21 s werden **6,95 s** |
+| Datenmenge | Start ist ans Sichtfeld gekoppelt (`preload="none"` + `IntersectionObserver`). Wer den Block nie erreicht, lädt die 9 MB nicht. Ausserhalb des Blicks hält das Video an. |
+| Anhalten | `controls` bleibt. Bewegung, die von selbst startet und länger als 5 s läuft, muss sich nach WCAG 2.2.2 anhalten lassen — bei 6,95 s ist das der Fall. |
+| Bewegungsreduzierung | Bei `prefers-reduced-motion: reduce` **kein** Autostart. Im Vorschau-Panel liess sich die Einstellung nicht emulieren; stattdessen wurde die Bedingung direkt geprüft, indem `matchMedia` umgebogen wurde. Auf einem echten Gerät mit der Einstellung sollte das noch einmal gegengeprüft werden. |
+
+**Offen:** Ob ein automatisch startendes Video über die volle Breite inhaltlich gewollt ist,
+sobald der Betriebsinhaber die Seite sieht — es ist das auffälligste Element der Startseite
+und zeigt einen Garten, den es so nicht gibt (siehe Abschnitt oben).

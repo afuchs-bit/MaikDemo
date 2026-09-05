@@ -779,9 +779,14 @@ html.home-theme-dark body { background-color: #171916; }
 
   <!-- Block 3 - Mustergarten-Video, randlos ueber die volle Fensterbreite.
 
-       controls + preload="metadata", KEIN Autostart: Ohne Zutun wird nur der
-       Kopfbereich geladen, nicht die vollen 9 MB. Ein randloses Video, das von
-       selbst laeuft, kostet Datenvolumen und stoert bei prefers-reduced-motion.
+       AP-180: laeuft stumm in Schleife und startet von selbst - aber erst, wenn
+       der Block ins Sichtfeld kommt. Deshalb preload="none" und KEIN
+       autoplay-Attribut: der Start kommt aus ueber-video.js, sonst wuerden zwei
+       Mechaniken gegeneinander laufen und die 9 MB laeden bei jedem Seitenaufruf.
+       controls bleibt: Bewegung, die von selbst startet und laenger als fuenf
+       Sekunden laeuft, muss sich anhalten lassen (WCAG 2.2.2) - bei 0,75-facher
+       Geschwindigkeit sind es 6,95 s. Die Geschwindigkeit selbst setzt das Skript,
+       fuer playbackRate gibt es kein HTML-Attribut.
 
        Kein poster-Attribut: Auf dem Entwicklungsrechner liegt kein ffmpeg, ein
        Standbild laesst sich nicht erzeugen. Browser zeigen mit preload="metadata"
@@ -792,7 +797,7 @@ html.home-theme-dark body { background-color: #171916; }
         nicht ab. Vom Auftraggeber so entschieden, siehe docs/offene-punkte.md,
         AP-179.] -->
   <div class="mr-ueber__buehne">
-    <video class="mr-ueber__video" controls preload="metadata" playsinline
+    <video class="mr-ueber__video" muted loop playsinline controls preload="none"
            aria-label="Rundgang durch den Mustergarten">
       <source src="assets/video/mustergarten.mp4" type="video/mp4">
       <p>Ihr Browser kann dieses Video nicht abspielen.
@@ -2200,5 +2205,6 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>
 <script src="assets/js/anfrage.js?v=20260902a" defer></script>
 <script src="assets/js/home-header-morph.js?v=20260830b" defer></script>
+<script src="assets/js/ueber-video.js?v=20260905a" defer></script>
 </body>
 </html>
