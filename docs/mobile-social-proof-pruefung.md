@@ -259,3 +259,20 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   weiterhin 16 px zwischen Galerie-Link und Logo. Ab 901 px ausgeblendet.
 - Homepage-Markup außerhalb von Bildkontur und CSS-Version gegenüber AP-184 identisch.
   Hero, Bilder, Texte und JavaScript unverändert. git diff --check bestanden.
+
+
+## AP-186 – Blumenlogo als Siegel am Gartenfoto (05.09.2026)
+
+- Originale Header-Blütengruppe proportional auf 65–80 px Breite verkleinert;
+  etwa zwei Drittel auf dem Foto, ein Drittel darunter. Rechter Überstand an der
+  schrägen Bildecke 8 px. Feiner dunkler Schlagschatten, unveränderte Bilddatei.
+- 320, 375, 390, 430 und 900 px ohne horizontalen Seitenüberstand bei normaler
+  Schrift. Ab 901 px bleibt die mobile Sektion ausgeblendet.
+- Visuelle Kontrolle des Vorgartens bei 390 px und des Poolgartens bei 320 px:
+  erkennbare Verbindung zur Bildkante, untergeordnete Größe, freie Navigationspunkte.
+- Bei 320 px bleiben 5,375 px zwischen dem sichtbaren aktiven vierten Punkt und
+  dem SVG-Sichtfenster. Direkte Auswahl des vierten Motivs erfolgreich; aktiver
+  Punkt und Bild synchron. Das Siegel hat weiterhin pointer-events: none.
+- Homepage-Markup gegenüber AP-185 bis auf die CSS-Cache-Version identisch.
+  Hero, Bildkontur, Kennzahlen, Texte, Originalgrafiken und JavaScript unverändert.
+  git diff --check bestanden.

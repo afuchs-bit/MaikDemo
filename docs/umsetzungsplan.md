@@ -1220,3 +1220,13 @@ wird die Seitenneigung von ca. 6,1 auf 4,2 Grad reduziert. Der seitliche Versatz
 von 8 auf 5,5 % der Bildbreite, sodass mehr vom Motiv sichtbar bleibt. Die gedrehte
 Hero-Form mit ihren gegenüberliegenden weichen Ecken bleibt erhalten. Das Blumenlogo
 folgt der Bildecke mit 5,5 % Einrückung. Der bereits abgenommene Hero bleibt unverändert.
+
+
+**AP-186, Blumenlogo als Siegel am Gartenfoto (05.09.2026):** Die originale
+Header-Blütengruppe wird auf 65–80 px Breite verkleinert und unabhängig von der
+Mittelachse des Galerie-Links am unteren rechten Bildrand verankert. Etwa zwei
+Drittel ihrer Höhe liegen auf dem Foto, ein Drittel ragt unten heraus. Rechts
+steht das Siegel 8 px über die schräge Bildecke. Ein feiner dunkler Schlagschatten
+trennt die unveränderten Originalfarben vom Motiv. Form, Ausrichtung und Datei
+bleiben erhalten; die Dekoration fängt keine Berührungen ab. Der Galerie-Link
+bleibt außerhalb des Fotos. Hero, Bildkontur und Bildwechsel unverändert.

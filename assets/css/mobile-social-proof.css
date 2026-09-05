@@ -1,4 +1,4 @@
-/* AP-185: Flachere Hero-CTA-Form fuer mehr sichtbares Gartenmotiv.
+/* AP-186: Originale Header-Blueten als kleines Siegel am Foto.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -207,20 +207,22 @@
   }
 
   .mobile-proof-gallery__footer {
-    --proof-brand-width: clamp(88px, 25vw, 104px);
+    --proof-brand-width: clamp(65px, 20vw, 80px);
     position: relative;
-    padding-right: calc(var(--proof-brand-width) + 16px + 5.5%);
-    padding-bottom: calc(var(--proof-brand-width) * 3 / 7 - 22px);
+    padding-right: calc(var(--proof-brand-width) + 16px + 5.5% - 8px);
   }
 
   .mobile-proof-gallery__brand {
     position: absolute;
-    top: calc(22px - var(--proof-brand-width) * 3 / 7);
-    right: 5.5%;
+    /* Originalformat 210:180: zwei Drittel oberhalb der unteren Bildkante.
+       Der rechte Rand steht 8px ueber die schraege Bildecke hinaus. */
+    top: calc(var(--proof-brand-width) * -4 / 7);
+    right: calc(5.5% - 8px);
     z-index: 1;
     display: block;
     width: var(--proof-brand-width);
     height: auto;
+    filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
     pointer-events: none;
   }
 
