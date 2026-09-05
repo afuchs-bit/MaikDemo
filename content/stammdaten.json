@@ -28,6 +28,7 @@
   "einsatzgebiet": ["Herne", "Bochum", "Castrop-Rauxel", "Recklinghausen", "Gelsenkirchen-Buer"],
   "bewertungen": { "anzahl": 67, "durchschnitt": 4.9 },
   "besonderheiten": ["Ausbildungsbetrieb", "Sachverständiger für Baumkontrolle", "Meisterbetrieb"],
+  "baumkontrolleZertifizierung": "Landwirtschaftskammer",
   "offen": {
     "_hinweis": "Noch vom Auftraggeber nachzuliefern – siehe docs/offene-punkte.md.",
     "geo": null,

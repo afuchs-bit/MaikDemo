@@ -33,7 +33,7 @@ und das JSON-LD verteilt:
 
 | Wert | Fundstellen | AP |
 |---|---|---|
-| Zertifizierungsstandard der Baumkontrolle (FLL o. a.) | `gewerbekunden/index.html`, `content/leistungen/gewerbe/baumkontrolle.json` | AP-13 / AP-33 |
+| ~~Zertifizierungsstandard der Baumkontrolle (FLL o. a.)~~ — **ERLEDIGT (AP-176, 05.09.2026):** Landwirtschaftskammer-Zertifizierung, vom Auftraggeber auf Rückfrage bestätigt. Steht in Teil B. Nicht FLL — `stammdaten.json → offen.fllZertifizierung` bleibt daher `null`. | — | AP-176 |
 | Reaktionszeit Sturmnotdienst | `gewerbekunden/index.html`, `content/leistungen/gewerbe/sturmnotdienst.json` | AP-13 / AP-33 |
 | Betriebshaftpflicht: Versicherer und Deckungssumme | `gewerbekunden/index.html`, `content/leistungen/gewerbe/baumarbeiten.json` | AP-13 / AP-33 |
 | Zwei gewerbliche Referenzobjekte inkl. Ort und Objektart | `gewerbekunden/index.html` | AP-13 / AP-23 |
