@@ -1230,3 +1230,20 @@ steht das Siegel 8 px über die schräge Bildecke. Ein feiner dunkler Schlagscha
 trennt die unveränderten Originalfarben vom Motiv. Form, Ausrichtung und Datei
 bleiben erhalten; die Dekoration fängt keine Berührungen ab. Der Galerie-Link
 bleibt außerhalb des Fotos. Hero, Bildkontur und Bildwechsel unverändert.
+
+
+**AP-187, zweiteiliger Hero-CTA neben der Einladung (05.09.2026):** Auf Wunsch
+des Auftraggebers stehen unter dem Foto rechts „Zur Galerie“ und „Maik kontaktieren“
+in einer gemeinsamen Form nach dem Vorbild des Hero-CTAs. Dunkle Fläche, grüne
+Kontur, gegenüberliegende weiche Ecken und schräge Teilung werden übernommen.
+Die Neigung beträgt für die breiteren Textbeschriftungen 13 Grad; die Schrift
+bleibt waagerecht. Beide Bereiche sind eigenständige Links, oben zur bestehenden
+Galerie und unten zum sichtbaren Anfrageformular. Der bisherige Galerie-Textlink
+und der breite grüne Anfrage-Button entfallen zugunsten dieser Gruppe.
+
+Die beiden persönlichen Texte bleiben wortgetreu erhalten und beginnen links
+neben dem CTA. Unterhalb der Gruppe nutzt der Text wieder die verfügbare Breite,
+damit auf Handys keine durchgehend schmale, lange Textspalte entsteht. Ein
+schriftabhängiger Container-Breakpoint stellt die Gruppe bei stark vergrößerter
+Schrift über den Text. Blumensiegel, Bilder, Kennzahlen, Hero, Desktop und alte
+Bestandsbereiche bleiben erhalten. Keine Änderungen an der JavaScript-Bedienung.

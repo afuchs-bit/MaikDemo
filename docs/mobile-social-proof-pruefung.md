@@ -276,3 +276,29 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Homepage-Markup gegenüber AP-185 bis auf die CSS-Cache-Version identisch.
   Hero, Bildkontur, Kennzahlen, Texte, Originalgrafiken und JavaScript unverändert.
   git diff --check bestanden.
+
+
+## AP-187 – Zweiteiliger Hero-CTA neben der Einladung (05.09.2026)
+
+- Hero-CTA bei 390 px visuell und per CSS verglichen: ca. 16,8 Grad Neigung,
+  Radien 2 / 14 px, dunkle Fläche und grüne Kontur. Neue Gruppe verwendet dieselbe
+  Gestaltung mit 13 Grad Neigung und zwei waagerecht beschrifteten Links.
+- 320, 375, 390, 430 und 900 px: Gruppe 110–144 px breit, beide Linkflächen jeweils
+  96 px hoch. Keine abgeschnittenen Beschriftungen oder horizontalen Seitenüberstände.
+  „Maik kontaktieren“ steht auf kleinen Handys in zwei Zeilen ohne Worttrennung.
+  Ab 901 px ist die mobile Sektion weiterhin vollständig ausgeblendet.
+- Visuelle Kontrolle bei 320 und 390 px. Texte beginnen links neben der Gruppe und
+  laufen darunter über die verfügbare Breite weiter. Das unveränderte Blumensiegel
+  bleibt am Bildrand; die Einladung beginnt 40 px unter dem Foto.
+- Beide Links per Tastatur fokussierbar; Fokusrahmen sichtbar. Galerie-Link tatsächlich
+  geöffnet: bestehende „Unsere Garten- und Projektgalerie“. Kontakt-Link tatsächlich
+  geöffnet: #anfrage, sichtbarer Formulareinstieg mit Tastaturfokus unterhalb des Headers.
+  Kein Formular abgesendet; vorhandener Sprunghandler unverändert.
+- 200 % Schrift bei 320 px: Container-Regel stellt die Gruppe über den Text. Beide
+  Links wachsen auf je 192 px Höhe; neue Sektion 305 px breit ohne eigenen Überstand.
+  Beschriftungen und Texte werden nicht abgeschnitten. Bekannter Überstand anderer
+  Bestandssektionen weiterhin 423 px Dokumentbreite bei 305 px verfügbarer Breite.
+- Beide persönlichen Texte automatisiert wortgetreu mit AP-186 verglichen. Übrige
+  Homepage außerhalb der mobilen Sektion bis auf die eigene CSS-Version identisch.
+  Hero, Kennzahlen, Bildkontur, Originalgrafiken und JavaScript unverändert.
+- git diff --check bestanden. Temporäre Schriftprüfseite nach der Prüfung entfernt.
