@@ -508,3 +508,10 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Bei 393 px und 402 px stimmen Dokument- und Ansichtsbreite exakt überein. In der
   Desktop-Vorschau bleibt die mobile Sektion ausgeblendet; CSS-Cachekennung
   `20260905am` ist geladen.
+
+
+## AP-208 – Erste Dialogantwort präzisieren (05.09.2026)
+
+- Sichtbaren Antworttext und zugängliche Lesereihenfolge auf „Maiks Antwort:
+  Kein Anliegen ist uns zu klein oder zu spontan.“ geprüft.
+- Keine CSS-, Layout- oder Bedienänderung.

@@ -1162,7 +1162,7 @@ Darunter führt „Alle Gartenbilder ansehen →“ zur vorhandenen Galerie. Die
 Texte sind auf ausdrücklichen Wunsch einschließlich Schreibweise und Zeichensetzung
 wortgetreu übernommen; jeweils die erste Frage ist hervorgehoben:
 
-- „Der Geburtstag steht an und für den Garten bleibt keine Zeit mehr? Keine Panik! Kein Anliegen ist zu klein oder zu spontan.“
+- „Der Geburtstag steht an und für den Garten bleibt keine Zeit mehr? Kein Anliegen ist uns zu klein oder zu spontan.“
 - „Länger weg, im Urlaub oder einfach nur wenig Zeit? Damit ihr Garten Sie jederzeit willkommen heißt übernehmen wir auch laufende Pflegearbeiten.“
 
 Der Haupt-CTA „Gartenwunsch besprechen →“ trägt das Hero-Button-Grün #8CC63F und eine
@@ -1425,3 +1425,9 @@ persönliches Absenderzeichen. Die Blüten bleiben dekorativ; ein visuell
 ausgeblendetes „Maiks Antwort:“ stellt die Bedeutung und Lesereihenfolge für
 Screenreader her. Fragen, Wortlaut, Bilder, Galerie-Link und Haupt-CTA bleiben
 unverändert.
+
+
+**AP-208, erste Dialogantwort präzisieren (05.09.2026):** Die Antwort auf die
+Geburtstagsfrage lautet nun „Kein Anliegen ist uns zu klein oder zu spontan.“
+Die vorangestellte Formulierung „Keine Panik!“ entfällt. Gestaltung,
+Screenreader-Absender und übrige Inhalte bleiben unverändert.
