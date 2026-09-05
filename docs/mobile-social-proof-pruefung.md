@@ -150,3 +150,46 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Nur zwei Subtexte umformuliert. Das übrige Markup der Sektion, Hero, alte Proof-Sektion
   und Homepage außerhalb der neuen Sektion und ihrer CSS-Version bleiben identisch.
 - `git diff --check` bestanden.
+
+
+## AP-181 – Bildfolge und persönliche Einladung (05.09.2026)
+
+- Browserprüfung bei 320, 375, 390, 430 und 900 px: keine zusätzliche horizontale
+  Scrollbreite. Fotobreiten 257 / 312 / 327 / 367 / 640 px (Browser mit 15-px-Scrollbar),
+  jeweils exakt 4:3. Außenabstand 24 px, ab maximaler Inhaltsbreite zentriert.
+- Abstand vom letzten KPI-Textblock zum Foto exakt 32 px. Die Zahlen und KPI-Texte
+  bleiben unverändert; normale Subtext-Zeilenanzahl weiterhin 2 / 2 / 1.
+- Ab 901 px ist die gesamte neue Sektion ausgeblendet. Rückkehr zu 900 px und weitere
+  Größenwechsel behalten die korrekte Bildposition. Alte Proof-Sektion und alte Galerie
+  bleiben auf allen geprüften Breiten sichtbar.
+- Visuelle Kontrolle bei 320 und 390 px: vollständige Motive, 16-px-Eckenradius,
+  Punkte unten im Bild, gemeinsame linke Kante, ruhiger Galerie-Link und hervorgehobene
+  Fragen. Der grüne Anfrage-CTA wächst bei 320 px auf zwei Beschriftungszeilen.
+- Horizontale Scrollgesten im In-App-Browser: alle vier Motive in der vereinbarten
+  Reihenfolge; letzter → erster und erster → letzter mit identischer Randkopie und
+  anschließend korrekter realer Scrollposition. Bildunterschrift, aktiver Punkt und
+  Screenreader-Status synchron. Dies ist eine Browserprüfung, kein physischer iOS-Test.
+- Direkte Punktauswahl sowie rechte Pfeiltaste geprüft; Tastaturfokus sichtbar (2 px),
+  Randduplikate aria-hidden und inert. Ein Klick auf das Foto verändert weder Bild noch URL.
+- Galerie-Link führt zur vorhandenen Garten- und Projektgalerie. Haupt-CTA nutzt #anfrage,
+  fokussiert den sichtbaren Formulareinstieg und hält ihn unterhalb des mobilen Headers.
+  Vorwahl und Formularinhalt bleiben bestehen; kein Formular abgesendet.
+- Simulierte vier Sekunden Dekodierverzögerung: erstes Foto bleibt sichtbar, die
+  Bedienelemente erscheinen erst nach Bereitschaft aller Bilder. Simulierte reduzierte
+  Bewegung: direkte Punktauswahl erreicht die Zielposition ohne Animation.
+- Absichtlich nicht erreichbare AVIF-/WebP-Dateien eines späteren Motivs: erstes Foto
+  bleibt als Standbild sichtbar. Bei ausgefallenem ersten Motiv übernimmt das geladene
+  Pflastermotiv. Keine bedienbaren Punkte für eine unvollständig geladene Bildfolge.
+- Ohne neues JavaScript bleiben erstes Foto, Bildunterschrift und beide Links erhalten.
+  Der statische CTA verwendet den sichtbaren Kontaktbereich #kontakt als Fallback;
+  das Modul setzt anschließend #anfrage und übernimmt den präzisen Formularsprung.
+- 200 % Schrift bei 320 px: keine abgeschnittenen Texte oder seitlicher Überstand der
+  neuen Sektion (305 px Inhalts-/Scrollbreite). Der CTA wächst frei; deutsche Silbentrennung
+  erhält lesbare Wortteile. Der dokumentierte Überstand anderer Bestandssektionen bleibt
+  unverändert (423 px Dokument-Scrollbreite bei 305 px nutzbarer Bildschirmbreite).
+- KPI-Markup und übrige Homepage gegen AP-180 verglichen: identisch, abgesehen vom
+  neuen Bereich, seiner CSS-Version und dem neuen Skript. Beide persönlichen Texte
+  einschließlich Schreibweise und Zeichensetzung wortgetreu übernommen.
+- JavaScript-Syntaxprüfung und git diff --check bestanden. LAN-Vorschau liefert HTTP 200.
+  Temporäre Fehler-/Schrift-/Bewegungsprüfseiten liegen nur während der Prüfung im
+  ignorierten .agents-Verzeichnis und werden anschließend entfernt.

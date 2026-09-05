@@ -1141,3 +1141,40 @@ Zahl und Bezeichnung stehen 8 px auseinander, zum Subtext folgen ebenfalls 8 px.
 Die Textbereiche reservieren mindestens zwei Zeilen für einen gleichmäßigen Rhythmus.
 Die nächste gestalterische Empfehlung ist ein echtes Projektfoto unter den Kennzahlen;
 Fotos und deren Übergang sind weiterhin kein Bestandteil dieses Arbeitspakets.
+
+
+## H.8 Nachtrag: Mobile Bildfolge und persönliche Einladung (05.09.2026)
+
+**AP-181, abgestimmter Plan des Auftraggebers.** Die freistehenden Kennzahlen werden
+innerhalb derselben mobilen Sektion um vier echte Gartenmotive ergänzt. Reihenfolge:
+Blühender Vorgarten, Pflasterflächen und Rasen, Eingewachsener Garten, Poolgarten am Abend.
+Die bestehenden AVIF-/WebP-Dateien bleiben unverändert. Fotoformat 4:3 ohne Beschnitt,
+16 px Radius, gemeinsame linke Kante bei 24 px Außenabstand und maximal 640 px Breite.
+Nach dem Kundenhinweis folgen 32 px Abstand; nur dessen reservierte zweite Leerzeile entfällt.
+
+Die Bildfolge verwendet natives horizontales Scrollen mit Einrasten und dekorativen
+Randduplikaten für den endlosen Wechsel. Vier antippbare Punkte liegen unten im Foto,
+ohne Pfeile, Zahlenzähler, automatische Wechsel oder Vergrößerungsfunktion. Bildunterschrift
+und Screenreader-Status folgen der Auswahl. Fehler beim Laden führen auf ein verfügbares
+Standbild zurück; die Erweiterung startet erst nach erfolgreicher Bilddekodierung.
+
+Darunter führt „Alle Gartenbilder ansehen →“ zur vorhandenen Galerie. Die folgenden
+Texte sind auf ausdrücklichen Wunsch einschließlich Schreibweise und Zeichensetzung
+wortgetreu übernommen; jeweils die erste Frage ist hervorgehoben:
+
+- „Der Geburtstag steht an und für den Garten bleibt keine Zeit mehr? Keine Panik! Kein Anliegen ist zu klein oder zu spontan.“
+- „Länger weg, im Urlaub oder einfach nur wenig Zeit? Damit ihr Garten Sie jederzeit willkommen heißt übernehmen wir auch laufende Pflegearbeiten.“
+
+Der Haupt-CTA „Gartenwunsch besprechen →“ trägt das Hero-Button-Grün #8CC63F und eine
+skalierbare Vektorfläche mit kleiner gerundeter Diagonale. Sein Ziel bleibt #anfrage.
+Nur dieser neue CTA nutzt den sichtbaren Formulareinstieg mit Headerabstand, weil der
+bestehende globale Handler bei aktiver Kurzanfrage auf den verborgenen Assistenten zielt.
+Formularmodus und vorhandene Eingaben werden dabei nicht verändert.
+
+Die Kennzahlen, der Hero, die alte Proof-Sektion und die alte Galerie bleiben erhalten.
+Sämtliche neuen Gestaltungsvorgaben gelten ausschließlich bis einschließlich 900 px.
+Prüfprotokoll: docs/mobile-social-proof-pruefung.md, Abschnitt AP-181.
+
+**Robuster Link-Fallback:** Ohne das neue Skript führt der CTA nativ zum sichtbaren
+Kontaktbereich #kontakt. Sobald das Modul verfügbar ist, setzt es wie vereinbart
+#anfrage und übernimmt den präzisen Sprung. Dadurch bleibt der CTA auch ohne Erweiterung nutzbar.
