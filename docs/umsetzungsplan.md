@@ -1261,3 +1261,13 @@ der Button füllt die Bildbreite und hält 40 px Abstand zum Foto für das Blume
 Der zweiteilige CTA und beide Texte bleiben für den gewünschten Vergleich stehen.
 Beide Anfrage-Links verwenden denselben vorhandenen Sprung zum sichtbaren Formular;
 ohne Erweiterung bleibt #kontakt als natives Ziel erhalten.
+
+
+**AP-189, Bildanschnitt für das Blumensiegel und engerer Buttonabstand (05.09.2026):**
+Die Original-Blütengruppe rückt auf den beiden iPhone-Prüfbreiten um etwa 17 px nach
+rechts. Ihr Sichtfenster steht nun 6 px über die gemeinsame Bild-/Buttonkante hinaus.
+Die untere rechte Bildecke erhält einen etwas größeren, weich gerundeten diagonalen
+Anschnitt, der gezielt Platz für das Siegel schafft. Die übrige flache Bildkontur
+bleibt erhalten. Der grüne Gartenwunsch-Button steht 10 px höher: Abstand zum Foto
+30 statt 40 px. Logo, Bild und Button bleiben voneinander klar erkennbar; die
+persönlichen Texte und der zweiteilige CTA behalten ihre Gestaltung.

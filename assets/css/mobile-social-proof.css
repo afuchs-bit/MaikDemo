@@ -1,4 +1,4 @@
-/* AP-188: Gruener Gartenwunsch-CTA wieder direkt unter der Bildfolge.
+/* AP-189: Bildanschnitt und Blumensiegel als gemeinsame Gestaltung.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -214,9 +214,9 @@
   .mobile-proof-gallery__brand {
     position: absolute;
     /* Originalformat 210:180: zwei Drittel oberhalb der unteren Bildkante.
-       Der rechte Rand steht 8px ueber die schraege Bildecke hinaus. */
+       Leichter Ueberstand nach rechts; die Bildkontur gibt dem Siegel Platz. */
     top: calc(var(--proof-brand-width) * -4 / 7);
-    right: calc(5.5% - 8px);
+    right: -6px;
     z-index: 1;
     display: block;
     width: var(--proof-brand-width);
@@ -226,7 +226,7 @@
   }
 
   /* Originaler CTA aus AP-186, jetzt auf der gemeinsamen Bildbreite.
-     40px Abstand lassen dem Blumensiegel am Bildrand ausreichend Platz. */
+     30px Abstand halten den Button nah am Foto und frei vom Blumensiegel. */
   .mobile-proof-request {
     position: relative;
     isolation: isolate;
@@ -237,7 +237,7 @@
     width: 100%;
     max-width: 640px;
     min-height: 56px;
-    margin: 40px auto 0;
+    margin: 30px auto 0;
     padding: 16px 22px;
     border-radius: 14px;
     color: #171916;

@@ -325,3 +325,20 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Gesamtes vorhandenes Homepage-Markup gegen AP-187 verglichen: identisch nach
   Abzug des ergänzten Buttons und beider Cache-Versionen. JavaScript-Syntax und
   git diff --check bestanden. Temporäre iPhone-Prüfseiten anschließend entfernt.
+
+
+## AP-189 – Bildanschnitt passend zum Blumensiegel (05.09.2026)
+
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln mit voller
+  Inhaltsbreite wie in AP-188. Vorgarten und Poolgarten kontrolliert: weicher
+  diagonaler Anschnitt unten rechts, Siegel an der Kante, Foto selbst unverzerrt.
+- Blumenlogo ca. 17 px weiter rechts; 18 px Abstand vom rechten Bildschirmrand.
+  Originalgrafik, Größe, vertikale Position und Schatten unverändert.
+- Buttonabstand zum Foto 30 px; freie Distanz zum Logo ca. 7,1–7,5 px. Auf beiden
+  Breiten kein horizontaler Seitenüberstand und keine Überlagerung mit dem Button.
+- Direkte Auswahl des Poolgartens erfolgreich; aktiver vierter Punkt synchron.
+  Auf der 402-px-Ansicht liegen 51 px zwischen sichtbarem Punkt und Logo-Sichtfenster.
+  Fotoformat weiterhin 4:3, Bildwechsel-Code unverändert.
+- Homepage-Markup außer Clipkontur, zugehörigem Kommentar und CSS-Version identisch
+  mit AP-188. Hero, Texte, Linkziele und Desktop-Regeln unverändert.
+- git diff --check bestanden. Temporäre iPhone-Prüfseite anschließend entfernt.
