@@ -74,7 +74,7 @@ Diese Werte sind final abgestimmt und müssen **zeichengenau identisch** an alle
 | **WhatsApp** | **24/7 erreichbar für Nachrichten** — Antwort zu den Geschäftszeiten |
 | Besuche vor Ort | **ausschließlich nach vorheriger Terminvereinbarung** |
 | Einsatzgebiet | Herne (Sitz), Bochum, Castrop-Rauxel, Recklinghausen, Gelsenkirchen-Buer, weitere Orte nach Projekt |
-| Besonderheiten | Ausbildungsbetrieb · Sachverständiger für Baumkontrolle · Meisterbetrieb |
+| Besonderheiten | Ausbildungsbetrieb · Sachverständiger für Baumkontrolle (Landwirtschaftskammer-zertifizierter Baumkontrolleur, vom Auftraggeber am 05.09.2026 bestätigt) · Meisterbetrieb |
 | Partnerbetrieb | Partnerfirma in Bochum (Details offen) |
 
 ## B.1 OFFEN — vom Auftraggeber nachzuliefern

@@ -33,7 +33,7 @@ und das JSON-LD verteilt:
 
 | Wert | Fundstellen | AP |
 |---|---|---|
-| Zertifizierungsstandard der Baumkontrolle (FLL o. a.) | `gewerbekunden/index.html`, `content/leistungen/gewerbe/baumkontrolle.json` | AP-13 / AP-33 |
+| ~~Zertifizierungsstandard der Baumkontrolle (FLL o. a.)~~ — **ERLEDIGT (AP-176, 05.09.2026):** Landwirtschaftskammer-Zertifizierung, vom Auftraggeber auf Rückfrage bestätigt. Steht in Teil B. Nicht FLL — `stammdaten.json → offen.fllZertifizierung` bleibt daher `null`. | — | AP-176 |
 | Reaktionszeit Sturmnotdienst | `gewerbekunden/index.html`, `content/leistungen/gewerbe/sturmnotdienst.json` | AP-13 / AP-33 |
 | Betriebshaftpflicht: Versicherer und Deckungssumme | `gewerbekunden/index.html`, `content/leistungen/gewerbe/baumarbeiten.json` | AP-13 / AP-33 |
 | Zwei gewerbliche Referenzobjekte inkl. Ort und Objektart | `gewerbekunden/index.html` | AP-13 / AP-23 |
@@ -43,6 +43,7 @@ und das JSON-LD verteilt:
 | Fassaden-/Stellplatzbegrünung: Systeme, Aufbauten, Referenzen | `content/leistungen/gewerbe/dachbegruenung.json` | AP-110 |
 | Umgestaltung: Maschinenpark-Details, typische Projektgrößen | `content/leistungen/gewerbe/umgestaltung-aussenanlagen.json` | AP-111 |
 | Begutachtung: Bestellungskörperschaft des Gutachtertitels (2.4.1), Honorarrahmen, Beispiel-Gutachten | `content/leistungen/gewerbe/begutachtung.json` | AP-112 |
+| Porträtfoto Maik Rohdich, quadratisch — für die Kreismitte des Vertrauens-Siegels. Es existiert kein Gesichtsfoto im Repo; das frühere war KI-generiert und wurde laut `ASSETS.md` bewusst aus Datenschutzgründen entfernt. Bis zur Lieferung bleibt die Fläche leer. | `index.html` (`.mr-siegel__foto`) | AP-176 |
 
 **AP-33:** In den vier Gewerbe-Leistungsdateien waren zu diesen Punkten FAQ-Antworten als
 `[OFFEN: …]` entworfen. Da FAQ-Antworten sichtbar auf der Seite **und** im FAQPage-Schema
