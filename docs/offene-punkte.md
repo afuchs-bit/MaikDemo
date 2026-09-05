@@ -220,7 +220,7 @@ laut Teil B von ihm selbst.
 ### Was geändert wurde
 
 Der gelieferte Text nannte **„Seit über 25 Jahren"**. Angeglichen auf **20**: Die Seite
-nennt 2003 als Gründung an vier Stellen, die Proof-Sektion „20+ Jahre", und der
+nennt 2003 als Gründung, und der
 Willkommen-Text weiter oben „Seit über 20 Jahren". Derselbe Fall war bei AP-174 schon
 einmal so entschieden worden.
 
@@ -340,3 +340,37 @@ Der Text darunter stammt vom Auftraggeber. Angeglichen: fehlendes „nach" in �
 Absprache", doppelte Leerzeichen, Halbgeviertstriche, Schlusspunkt. **Inhaltlich gedeckt**
 durch Teil B, Zeile 75: „Besuche vor Ort — ausschließlich nach vorheriger
 Terminvereinbarung."
+
+## AP-215 — Kein Social-Proof-Block mehr auf dem Desktop
+
+**Vom 05.09.2026.** Der Auftraggeber hat zwei Sektionen entfernen lassen:
+„Vertrauen, das durch verlässliche Arbeit gewachsen ist." und „Gärten, die für sich
+sprechen".
+
+**Folge, die vor der Entfernung nicht offensichtlich war:** Der Ersatz von davidk.
+(`.mobile-social-proof`, AP-174 ff.) ist auf `max-width: 900px` begrenzt. Oberhalb davon
+steht damit **kein** Kennzahlen- oder Vertrauensblock mehr. Vorher zeigten beide Sektionen
+auf schmalen Geräten sogar gleichzeitig — dieses Doppel ist jetzt aufgelöst, aber der
+Desktop steht leer.
+
+**Mit der Proof-Sektion verschwunden sind:**
+
+| Angabe | Sonst noch auf der Seite? |
+|---|---|
+| „20+ Jahre Erfahrung" | **nein, nirgends mehr** |
+| „2003 gegründet in Herne" | ja, zweimal |
+| „4,9 ★ Google-Bewertung" | ja, im Rezensionskarussell |
+| „Meister- & Ausbildungsbetrieb" | ja, zweimal („Meisterbetrieb seit 2003") |
+| „1.500 m² Mustergarten" | ja, dreimal |
+| Karte „Auch kleine und einmalige Arbeiten." samt Knopf zum Anfrageformular | **nein** |
+
+Die NRW-Karte ist nicht betroffen — sie war in AP-179 in die Über-uns-Sektion umgezogen.
+
+**Zu entscheiden:** ob der Desktop einen Ersatz bekommen soll. Entweder davidk.s Block
+auch oberhalb 900 px zeigen (er ist gestalterisch auf schmale Geräte ausgelegt), oder eine
+eigene Fassung. Solange nichts geschieht, sehen Desktop-Besucher weder Kennzahlen noch den
+Hinweis auf kleine Aufträge.
+
+**Nebenbefund:** Der Begründungssatz zur Jahresangabe in AP-179 berief sich unter anderem
+auf „20+ Jahre" aus der Proof-Sektion. Der Beleg ist entfallen; die Angabe „über 20 Jahren"
+bleibt aber richtig, weil das Gründungsjahr 2003 weiterhin auf der Seite steht.
