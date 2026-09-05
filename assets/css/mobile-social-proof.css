@@ -1,4 +1,4 @@
-/* AP-210: Auffaelliger Anfrage-CTA mit persoenlichem Maik-Stempel.
+/* AP-211: Grosser Anfrage-CTA ohne zusaetzliches Symbol.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -289,15 +289,14 @@
   .mobile-proof-request {
     position: relative;
     isolation: isolate;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 74px;
+    display: flex;
     align-items: center;
-    column-gap: 6px;
+    justify-content: flex-start;
     width: 100%;
     max-width: 640px;
     min-height: 64px;
     margin: 28px auto 0;
-    padding: 7px 5px 7px 22px;
+    padding: 7px 22px;
     border-radius: 14px;
     color: #171916;
     font: 800 clamp(1.05rem, 4.58vw, 1.125rem)/1.25 var(--display);
@@ -327,62 +326,10 @@
     transition: fill .18s ease;
   }
 
-  .mobile-proof-request__stamp {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    place-content: center;
-    width: 74px;
-    height: 50px;
-    padding-top: 1px;
-    color: #171916;
-    font-family: var(--display);
-    font-size: .58rem;
-    font-weight: 800;
-    line-height: .92;
-    letter-spacing: .08em;
-    text-align: center;
-    transform: rotate(-3deg);
-    transform-origin: center;
-    transition: transform .16s ease;
-  }
-
-  .mobile-proof-request__stamp svg {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    overflow: visible;
-    fill: var(--home-yellow);
-    filter: drop-shadow(0 2px 2px rgb(0 0 0 / 22%));
-  }
-
-  .mobile-proof-request__stamp > span,
-  .mobile-proof-request__stamp > strong {
-    display: block;
-  }
-
-  .mobile-proof-request__stamp > strong {
-    font-size: .83rem;
-    font-weight: 900;
-    letter-spacing: .045em;
-  }
-
   @media (hover: hover) and (pointer: fine) {
     .mobile-proof-request:hover .mobile-proof-request__shape {
       fill: #9DD34F;
     }
-
-    .mobile-proof-request:hover .mobile-proof-request__stamp {
-      transform: rotate(-1.5deg) translateY(-1px);
-    }
-  }
-
-  .mobile-proof-request:active .mobile-proof-request__stamp {
-    transform: rotate(-3deg) translateY(1px);
   }
 
   .mobile-proof-request:focus-visible {
@@ -391,8 +338,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .mobile-proof-request__shape,
-    .mobile-proof-request__stamp {
+    .mobile-proof-request__shape {
       transition: none;
     }
   }

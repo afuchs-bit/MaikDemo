@@ -1452,3 +1452,10 @@ Der grüne CTA wächst auf mindestens 64 px Höhe, seine Beschriftung auf bis zu
 und erhält einen dezenten Schatten. Der Stempel verwendet Maiks vorhandenes
 Logogelb `#F2E20C`; Buttonfarbe, Linkziel und Fokusfarbe bleiben unverändert.
 Bei reduzierter Bewegung entfallen sämtliche Übergänge.
+
+
+**AP-211, Maik-Stempel wieder entfernen (05.09.2026):** Der gelbe „MIT
+MAIK“-Stempel wird auf Wunsch des Auftraggebers vollständig aus dem CTA und
+seinem zugänglichen Namen entfernt. Der Button bleibt 64 px hoch, verwendet
+weiterhin die verstärkte Beschriftung bis 18 px, seine grüne asymmetrische Form
+und den dezenten Schatten. Es wird kein Ersatzsymbol eingesetzt.

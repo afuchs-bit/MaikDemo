@@ -546,3 +546,14 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   dem Stempel. Kein horizontaler Seitenüberstand.
 - Laufzeit-Linkziel `#anfrage`, zugänglicher Name, gelber Fokusrahmen und
   praktisch deaktivierte Übergangsdauer bei reduzierter Bewegung geprüft.
+
+
+## AP-211 – „MIT MAIK“-Stempel entfernen (05.09.2026)
+
+- Gelben Stempel, Stempeltext und ausschließlich dafür benötigte CSS-Regeln
+  vollständig entfernt.
+- Sichtbarer und zugänglicher Linktext lautet wieder ausschließlich
+  „Gartenwunsch besprechen“.
+- Höhe von 64 px, Schriftgröße bis 18 px, Gewicht 800, Grundform, Buttonfarbe,
+  Schatten, Fokusrahmen und Linkziel bleiben erhalten.
+- CSS-Cachekennung auf `20260905ao` erhöht.
