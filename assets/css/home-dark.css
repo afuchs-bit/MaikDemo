@@ -1433,22 +1433,27 @@ html.home-theme-dark .mr-willkommen__blume img,
 html.home-theme-dark .mr-willkommen__steg-mobil img {
   transform-origin: 50% 118%;
   will-change: transform;
-  animation: mr-blume-wind 9s ease-in-out infinite;
+  animation: mr-blume-wind 7s ease-in-out infinite;
 }
 
+/* Bewusst von der Desktop-Dauer abweichend, damit die beiden Blueten nicht
+   synchron laufen. */
 html.home-theme-dark .mr-willkommen__steg-mobil img {
-  animation-duration: 11s;
+  animation-duration: 8.5s;
 }
 
+/* AP-175: Ausschlag verdreifacht - 4,1deg Gesamtweg waren zu zaghaft.
+   Jetzt -5,1deg bis +7,2deg, Hub 6px. Die Verteilung der Stuetzstellen ueber die
+   Zeit bleibt unangetastet: sie erzeugt den unregelmaessigen, boeigen Eindruck. */
 @keyframes mr-blume-wind {
-  0%   { transform: rotate(-1.2deg) translateY(0); }
-  14%  { transform: rotate(1.4deg)  translateY(-1px); }
-  27%  { transform: rotate(-0.5deg) translateY(0); }
-  41%  { transform: rotate(2.4deg)  translateY(-2px); }
-  52%  { transform: rotate(0.2deg)  translateY(-0.5px); }
-  66%  { transform: rotate(-1.7deg) translateY(0); }
-  80%  { transform: rotate(0.8deg)  translateY(-1px); }
-  100% { transform: rotate(-1.2deg) translateY(0); }
+  0%   { transform: rotate(-3.6deg) translateY(0); }
+  14%  { transform: rotate(4.2deg)  translateY(-3px); }
+  27%  { transform: rotate(-1.5deg) translateY(0); }
+  41%  { transform: rotate(7.2deg)  translateY(-6px); }
+  52%  { transform: rotate(0.6deg)  translateY(-1.5px); }
+  66%  { transform: rotate(-5.1deg) translateY(0); }
+  80%  { transform: rotate(2.4deg)  translateY(-3px); }
+  100% { transform: rotate(-3.6deg) translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
