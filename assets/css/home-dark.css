@@ -560,6 +560,10 @@ html.home-theme-dark .gate-cta {
     0 12px 26px -8px rgba(10,14,8,.55);  /* Tiefe - rein gestalterisch */
 }
 
+html.home-theme-dark :is(.gate-cta-label--iphone, .gate-cta-action--iphone, .gate-welcome--iphone) {
+  display: none;
+}
+
 html.home-theme-dark .gate-door:hover .gate-cta {
   color: #171916;
   background: var(--home-yellow);
@@ -1290,6 +1294,417 @@ html.home-theme-dark .fork-path:hover {
 @media (prefers-reduced-motion: reduce) and (max-width: 900px) {
   html.home-theme-dark .mobile-hero-link:hover .mobile-hero-link-symbol {
     transform: none;
+  }
+}
+
+/* AP-184: Die Gewerbekunden-Weiche wird fuer die Hochformat-Ansichten des
+   iPhone 15 Pro (393px) und iPhone 16 Pro (402px) neu komponiert. Die
+   hochkantige Formsprache des Hero-CTA ist um 90 Grad in eine horizontale
+   Karte uebersetzt: skewY wird zu skewX, die asymmetrischen Radien drehen mit.
+   Das Bestandsfoto belegt bewusst weniger als die Haelfte; der gesamte Verbund
+   bleibt ein einzelner Link. */
+@media (min-width: 390px) and (max-width: 404px) {
+  html.home-theme-dark .hero--gate-content .gate-doors {
+    width: calc(100% - 20px);
+    margin-top: 0;
+  }
+}
+
+/* Mobiler Willkommenbereich: eingeruecktes Gartenfoto und kompaktes Register.
+   Die native Details-Gruppe benoetigt kein zusaetzliches JavaScript. */
+@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+  html.home-theme-dark .gate-welcome--iphone {
+    position: relative;
+    display: block;
+    width: calc(100% - 48px);
+    margin: clamp(38px, 6.5svh, 54px) auto 36px;
+    font-family: var(--display);
+    overflow-wrap: anywhere;
+  }
+
+  html.home-theme-dark .gate-welcome-kicker {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    margin: 0;
+    font-family: var(--display);
+    font-size: 1rem;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+
+  html.home-theme-dark .gate-welcome-intro {
+    color: var(--home-yellow);
+    font-size: .75rem;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  html.home-theme-dark .gate-welcome-wordmark {
+    display: block;
+    width: 9.25rem;
+    max-width: 100%;
+    height: auto;
+    flex: 0 1 9.25rem;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  html.home-theme-dark .gate-welcome-lead {
+    margin: 28px 0 0;
+    color: var(--home-on-dark);
+    font-family: var(--display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -.032em;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .gate-welcome-photo {
+    width: 100%;
+    margin: 26px 0 0;
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--green-50);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .2);
+  }
+
+  html.home-theme-dark .gate-welcome-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+  }
+
+  html.home-theme-dark .gate-welcome-feeling {
+    margin: 22px 0 0;
+    color: var(--home-on-dark);
+    font-size: 1.3125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -.015em;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .gate-welcome-feeling em {
+    color: var(--home-yellow);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  html.home-theme-dark .gate-welcome-copy {
+    margin: 20px 0 0;
+    color: var(--home-on-dark-2);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .gate-welcome-outro {
+    margin: 26px 0 0;
+    color: var(--home-on-dark-2);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .gate-welcome-outro strong {
+    color: var(--home-dark-accent);
+    font-weight: 700;
+  }
+
+  html.home-theme-dark .gate-welcome-qualifications {
+    margin: 24px 0 0;
+    padding: 4px 16px;
+    background: var(--green-50);
+    border: 1px solid #3d4831;
+    border-radius: 18px 5px 18px 5px;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification + .gate-welcome-qualification {
+    border-top: 1px solid #414b35;
+  }
+
+  html.home-theme-dark .gate-welcome-master {
+    margin: 0;
+    padding: 15px 0;
+    color: var(--home-yellow);
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  html.home-theme-dark .gate-welcome-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
+    min-height: 51px;
+    margin: 0;
+    padding: 12px 0;
+    border: 0;
+    color: var(--home-on-dark);
+    background: transparent;
+    cursor: pointer;
+    list-style: none;
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html.home-theme-dark .gate-welcome-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  html.home-theme-dark .gate-welcome-toggle:focus-visible {
+    outline: 2px solid var(--home-yellow);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  html.home-theme-dark .gate-welcome-label {
+    min-width: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  html.home-theme-dark .gate-welcome-chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 26px;
+    height: 26px;
+    color: var(--home-dark-accent);
+    transition: transform .18s ease;
+  }
+
+  html.home-theme-dark .gate-welcome-chevron svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.8;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification[open] > .gate-welcome-toggle {
+    color: var(--home-yellow);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification[open] > .gate-welcome-toggle::before {
+    content: "";
+    position: absolute;
+    left: -17px;
+    top: 13px;
+    bottom: 13px;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+    background: var(--home-yellow);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification[open] .gate-welcome-chevron {
+    color: var(--home-yellow);
+    transform: rotate(180deg);
+  }
+
+  html.home-theme-dark .gate-welcome-answer {
+    padding: 0 25px 17px 0;
+  }
+
+  html.home-theme-dark .gate-welcome-answer p {
+    margin: 0;
+    color: var(--home-on-dark-2);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  html.home-theme-dark .gate-welcome-answer .gate-welcome-qualification-detail {
+    margin-top: 7px;
+    font-size: .875rem;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) and (prefers-reduced-motion: reduce) {
+  html.home-theme-dark .gate-welcome-chevron {
+    transition: none;
+  }
+}
+
+@media (min-width: 390px) and (max-width: 404px) {
+  html.home-theme-dark .gate-door--gewerbe {
+    --iphone-gate-angle: -7deg;
+    --iphone-gate-image-width: 41%;
+    width: calc(100% - 16px);
+    height: 104px;
+    min-height: 0;
+    max-height: none;
+    aspect-ratio: auto;
+    margin-inline: auto;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .2s var(--ease);
+  }
+
+  html.home-theme-dark .gate-door--gewerbe::before,
+  html.home-theme-dark .gate-door--gewerbe::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    transform: skewX(var(--iphone-gate-angle));
+    transform-origin: center;
+  }
+
+  html.home-theme-dark .gate-door--gewerbe::before {
+    inset: 0;
+    z-index: -2;
+    border-radius: 14px 2px 14px 2px;
+    background: rgba(140,198,63,.74);
+    box-shadow:
+      0 0 0 1px rgba(215,236,187,.13) inset,
+      0 18px 38px -22px rgba(0,0,0,.92);
+  }
+
+  html.home-theme-dark .gate-door--gewerbe::after {
+    inset: 2px;
+    z-index: -1;
+    border-radius: 12px 1px 12px 1px;
+    background:
+      radial-gradient(circle at 84% 12%, rgba(140,198,63,.12), transparent 44%),
+      linear-gradient(135deg, rgba(40,46,35,.98), rgba(24,28,22,.99));
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.08) inset,
+      0 -1px 0 rgba(0,0,0,.32) inset;
+  }
+
+  html.home-theme-dark .gate-door--gewerbe picture {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    z-index: 0;
+    display: block;
+    width: var(--iphone-gate-image-width);
+    overflow: hidden;
+    border-radius: 12px 0 0 1px;
+    clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 100%, 0 100%);
+    box-shadow: none;
+    transform: skewX(var(--iphone-gate-angle));
+    transform-origin: center;
+  }
+
+  html.home-theme-dark .gate-door--gewerbe img.gate-photo {
+    position: absolute;
+    inset: -1px -12px;
+    width: calc(100% + 24px);
+    height: calc(100% + 2px);
+    object-fit: cover;
+    object-position: 38% 52%;
+    filter: saturate(.96) contrast(1.035) brightness(.94);
+    transform: skewX(7deg) scale(1.02);
+    transform-origin: center;
+  }
+
+  html.home-theme-dark .gate-door--gewerbe .gate-body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: var(--iphone-gate-image-width);
+    z-index: 2;
+    display: flex;
+    align-items: stretch;
+    padding: 8px 10px 8px 17px;
+  }
+
+  html.home-theme-dark .gate-door--gewerbe .gate-cta {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
+    padding: 0;
+    color: var(--home-on-dark);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  html.home-theme-dark .gate-door.gate-door--gewerbe:hover .gate-cta,
+  html.home-theme-dark .gate-door.gate-door--gewerbe:active .gate-cta {
+    color: var(--home-on-dark);
+    background: transparent;
+  }
+
+  html.home-theme-dark .gate-door--gewerbe .gate-cta-label--desktop {
+    display: none;
+  }
+
+  html.home-theme-dark .gate-door--gewerbe .gate-cta-label--iphone {
+    display: block;
+    max-width: 100%;
+    font-family: var(--display);
+    font-size: .9rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.018em;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .gate-door--gewerbe .gate-cta-action--iphone {
+    display: inline-block;
+    width: max-content;
+    max-width: 100%;
+    padding-bottom: 2px;
+    color: var(--home-lime);
+    border-bottom: 1px solid rgba(140,198,63,.62);
+    font-family: var(--display);
+    font-size: .875rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: .012em;
+  }
+
+  html.home-theme-dark .gate-door--gewerbe .gate-cta svg {
+    display: none;
+  }
+
+  html.home-theme-dark .gate-door--gewerbe:active {
+    transform: scale(.992);
+  }
+
+  html.home-theme-dark .gate-door--gewerbe:active .gate-cta-action--iphone {
+    color: var(--home-lime);
+    border-bottom-color: rgba(140,198,63,.62);
+  }
+
+  html.home-theme-dark .gate-door--gewerbe:hover img.gate-photo {
+    transform: skewX(7deg) scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 390px) and (max-width: 404px) {
+  html.home-theme-dark .gate-door--gewerbe {
+    transition: none;
   }
 }
 

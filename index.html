@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260902x" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260905p" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260905m" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -394,13 +394,66 @@ html.home-theme-dark body { background-color: #171916; }
     </div>
   </div>
 
+  <section class="gate-welcome gate-welcome--iphone" aria-labelledby="gate-welcome-title">
+    <h2 class="gate-welcome-kicker" id="gate-welcome-title" aria-label="Willkommen bei Maik Rohdich">
+      <span class="gate-welcome-intro" aria-hidden="true">WILLKOMMEN BEI</span>
+      <svg class="gate-welcome-wordmark" viewBox="218 58 422 82" width="422" height="82" overflow="hidden" aria-hidden="true" focusable="false">
+        <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180" />
+      </svg>
+    </h2>
+    <p class="gate-welcome-lead">Ein Garten ist mehr als eine Fläche rund ums Haus.</p>
+
+    <figure class="gate-welcome-photo">
+      <img src="assets/img/willkommen/poolgarten-720.webp"
+           srcset="assets/img/willkommen/poolgarten-720.webp 720w, assets/img/willkommen/poolgarten-1200.webp 1200w"
+           sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 48px), 1px"
+           alt="Garten mit Pool, geschwungenen Rasenflächen, Natursteinen, bepflanzten Beeten und Palmen."
+           width="1200" height="900" loading="lazy" decoding="async">
+    </figure>
+
+    <p class="gate-welcome-feeling">Er ist Rückzugsort, Treffpunkt und ein Stück <em>Lebensqualität.</em></p>
+    <p class="gate-welcome-copy">Gemeinsam machen wir aus Ihren Wünschen einen Garten, der zu Ihnen und Ihrem Alltag passt – ob neu angelegt, umgestaltet oder dauerhaft gepflegt.</p>
+    <p class="gate-welcome-outro">Entdecken Sie, was draußen möglich ist – <strong>mit Fachwissen, auf das Sie sich verlassen können.</strong></p>
+
+    <div class="gate-welcome-qualifications" role="group" aria-label="Fachliche Qualifikationen">
+      <div class="gate-welcome-qualification">
+        <p class="gate-welcome-master">Gartenbaumeister</p>
+      </div>
+      <details class="gate-welcome-qualification" name="gate-welcome-qualifications">
+        <summary class="gate-welcome-toggle">
+          <span class="gate-welcome-label">Baumkontrolle</span>
+          <span class="gate-welcome-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span>
+        </summary>
+        <div class="gate-welcome-answer"><p>LWK-zertifizierter Baumkontrolleur</p></div>
+      </details>
+      <details class="gate-welcome-qualification" name="gate-welcome-qualifications">
+        <summary class="gate-welcome-toggle">
+          <span class="gate-welcome-label">Sachverständiger</span>
+          <span class="gate-welcome-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span>
+        </summary>
+        <div class="gate-welcome-answer">
+          <p>Sachverständiger für Garten- und Landschaftsbau</p>
+          <p class="gate-welcome-qualification-detail">Sachgebiet 2.4.1 · Herstellung und Unterhaltung</p>
+        </div>
+      </details>
+      <details class="gate-welcome-qualification" name="gate-welcome-qualifications">
+        <summary class="gate-welcome-toggle">
+          <span class="gate-welcome-label">Pflanzenschutz</span>
+          <span class="gate-welcome-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span>
+        </summary>
+        <div class="gate-welcome-answer"><p>Sachkundiger für Pflanzenschutz und Wildkrautbekämpfung</p></div>
+      </details>
+    </div>
+  </section>
+
   <div class="gate-doors reveal">
 
     <!-- AP-F16: Die Privatkunden-Tuer kommt bewusst nicht zurueck. Sie verlinkte auf
          privatkunden/, und diese Seite ist seit AP-F8 geloescht - der Link waere tot.
          Kein Gestaltungskonflikt, sondern der Stand vor unserer Entfernung. Geprueft:
          weder home-dark.css noch home-header-morph.js verweisen auf .gate-door--privat. -->
-    <a class="gate-door gate-door--gewerbe" href="gewerbekunden/">
+    <a class="gate-door gate-door--gewerbe" href="gewerbekunden/"
+       aria-label="Gewerblich oder öffentlich genutzte Flächen und Gartenanlagen? Zur Gewerbekundenseite">
       <picture>
         <source type="image/avif" sizes="(max-width: 860px) 100vw, 50vw"
                 srcset="assets/img/hero/gate-gewerbe-grossbaum-480.avif 480w, assets/img/hero/gate-gewerbe-grossbaum-960.avif 960w, assets/img/hero/gate-gewerbe-grossbaum-1200.avif 1200w">
@@ -419,7 +472,9 @@ html.home-theme-dark body { background-color: #171916; }
            1,00:1 gegen das Foto - dafuer steht der Saum in home-dark.css. -->
       <div class="gate-body">
         <span class="gate-cta">
-          Für Gewerbekunden
+          <span class="gate-cta-label gate-cta-label--desktop">Für Gewerbekunden</span>
+          <span class="gate-cta-label gate-cta-label--iphone">Gewerblich oder öffentlich genutzte Flächen und Gartenanlagen?</span>
+          <span class="gate-cta-action gate-cta-action--iphone">Für gewerbliche Kunden</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </span>
       </div>
