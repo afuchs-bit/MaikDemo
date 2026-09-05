@@ -454,3 +454,15 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Bei 393 px und 402 px verbleiben jeweils 8 px zwischen SVG-Rahmen und Ansichtsrand.
 - Visuell bei 393 px sowie rechnerisch bei 402 px geprüft; kein horizontaler
   Überstand. Größe, Überlappung und übrige Sektion unverändert.
+
+
+## AP-204 – Drei Bilder und Galerie-Link tiefer (05.09.2026)
+
+- „Blühender Vorgarten“ vollständig aus der mobilen Bildfolge entfernt.
+- Drei reale Motive und drei passende Punkte geprüft. Startbild, Fallback-
+  Unterschrift und erster Alternativtext gehören zu „Pflasterflächen und Rasen“.
+- Alle drei Punkte bei 402 px betätigt: aktive Position und versteckte
+  Bildunterschrift wechseln synchron; drei Originale plus zwei Randduplikate.
+- Galerie-Link beginnt 6 px unter der Bildkante, Markenbereich 54 px hoch.
+- Visuell bei 393 × 852 und 402 × 874 CSS-Pixeln geprüft. Kein horizontaler
+  Überstand; Siegel, Linkziel, Texte und übrige CTAs unverändert.

@@ -1380,3 +1380,14 @@ Zielbreiten verbleiben 12 px bis zum Ansichtsrand.
 rückt auf Wunsch des Auftraggebers um exakt 4 px weiter nach rechts. Größe,
 vertikale Überlappung, Galerie-Pinsel und alle übrigen Elemente bleiben
 unverändert. Auf beiden Zielbreiten verbleiben 8 px bis zum Ansichtsrand.
+
+
+**AP-204, Bildfolge auf drei Motive reduzieren (05.09.2026):** Das bisherige
+erste Motiv „Blühender Vorgarten“ wird aus der mobilen Bildfolge entfernt.
+„Pflasterflächen und Rasen“ ist nun das sichtbare Startbild; danach folgen
+„Eingewachsener Garten“ und „Poolgarten am Abend“.
+
+Punkte, Positionsangaben und versteckte Bildunterschrift werden auf drei Bilder
+aktualisiert. Der mittige Galerie-Pinsel rückt 6 px nach unten und der
+Markenbereich wächst entsprechend auf 54 px. Siegel, Bildformat, Linkziel und
+übrige Inhalte bleiben unverändert.

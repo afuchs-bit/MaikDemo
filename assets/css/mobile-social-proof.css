@@ -1,4 +1,4 @@
-/* AP-203: Blumensiegel auf der unteren rechten Bildecke feinjustiert.
+/* AP-204: Drei Gartenbilder; Galerie-Pinsel etwas tiefer gesetzt.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -202,7 +202,7 @@
 
   .mobile-proof-gallery__footer {
     position: relative;
-    height: max(48px, 3rem);
+    height: max(54px, 3.375rem);
   }
 
   .mobile-proof-gallery__brand {
@@ -221,7 +221,7 @@
 
   .mobile-proof-gallery__brush-link {
     position: absolute;
-    top: 0;
+    top: 6px;
     left: 50%;
     z-index: 1;
     display: grid;
