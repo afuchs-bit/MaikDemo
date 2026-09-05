@@ -1288,3 +1288,15 @@ Der bisherige Galerie-Link im rechten Hero-CTA entfällt, damit die Aktion nur e
 vorkommt. „Maik kontaktieren“ bleibt dort als kompakter einzelner CTA. Die Einladung
 beginnt 24 px nach dem 56 px hohen Markenbereich; der grüne Haupt-CTA bleibt unter
 den Texten. Prüfung weiterhin bei iPhone 15 Pro und iPhone 16 Pro.
+
+
+**AP-195, Bildsignatur auf beide unteren Ecken verteilen (05.09.2026):** Das
+Blumensiegel bleibt unverändert an der unteren rechten Bildecke. Der gelbe
+Galerie-Pinsel sitzt nun an der unteren linken Ecke und greift 8 px in das Foto,
+sodass beide Elemente eine ruhige Gegenbewegung bilden. Seine Breite wird auf
+ca. 123 px reduziert und seine leichte Drehung folgt der neuen Platzierung.
+
+Der Markenbereich unter dem Foto wird von 56 auf 40 px verkürzt. Dadurch bleibt
+der Abstand zur persönlichen Einladung trotz der höheren Galerieposition
+ausgewogen. Bildkontur, Navigationspunkte, Siegel, Links und Texte bleiben
+inhaltlich unverändert. Prüfung weiterhin bei iPhone 15 Pro und iPhone 16 Pro.

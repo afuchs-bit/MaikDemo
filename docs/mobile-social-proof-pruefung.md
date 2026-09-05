@@ -358,3 +358,15 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Galerie-Link, Kontakt-CTA und grüner Haupt-CTA per Tastatur erreichbar; Fokusrahmen
   sichtbar. Linkziele unverändert. Bildwechsel und Texte unverändert.
 - git diff --check bestanden.
+
+
+## AP-195 – Galerie und Siegel auf gegenüberliegenden Bildecken (05.09.2026)
+
+- Das unveränderte Blumensiegel bleibt unten rechts; der gelbe Galerie-Link sitzt
+  unten links und überlappt die Bildkante um exakt 8 px.
+- Pinselbreite bei beiden Zielbreiten 122,5 px; Markenbereich auf 40 px verkürzt.
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln. Navigationspunkte
+  bleiben frei; kein horizontaler Überstand der neuen Sektion.
+- Galerie-Link per Tastatur fokussiert; der 2-px-Fokusrahmen mit 4 px Abstand bleibt
+  vollständig sichtbar. Linkziel, Bildwechsel, Kontakt-CTA, Haupt-CTA und Einladung
+  bleiben unverändert.

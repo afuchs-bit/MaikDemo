@@ -1,4 +1,4 @@
-/* AP-194: Gelber Pinselstrich als Galerie-Link unter dem Blumensiegel.
+/* AP-195: Galerie-Pinsel und Blumensiegel balancieren die unteren Bildecken.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -209,7 +209,7 @@
   .mobile-proof-gallery__footer {
     --proof-brand-width: clamp(65px, 20vw, 80px);
     position: relative;
-    height: max(56px, 3.5rem);
+    height: max(40px, 2.5rem);
   }
 
   .mobile-proof-gallery__brand {
@@ -228,13 +228,13 @@
 
   .mobile-proof-gallery__brush-link {
     position: absolute;
-    top: max(16px, 1rem);
-    right: -12px;
+    top: -8px;
+    left: 0;
     z-index: 1;
     display: grid;
     place-items: center;
-    width: max(clamp(124px, 33vw, 132px), 9.25em);
-    max-width: calc(100% + 12px);
+    width: max(clamp(118px, 30vw, 124px), 8.75em);
+    max-width: 100%;
     height: max(40px, 2.75em);
     color: #171916;
     font: 800 .875rem/1 var(--display);
@@ -249,7 +249,7 @@
     height: 100%;
     overflow: visible;
     filter: drop-shadow(0 2px 2px rgb(0 0 0 / 28%));
-    transform: rotate(-1deg);
+    transform: rotate(1deg);
     transform-origin: center;
     pointer-events: none;
   }
