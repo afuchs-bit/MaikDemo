@@ -136,3 +136,17 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   anderer Bestandssektionen bleibt unverändert (423 px Scrollbreite).
 - Homepage außerhalb der Sektion und ihrer CSS-Version sowie KPI-Wortlaut mit
   AP-178 verglichen: identisch. `git diff --check` bestanden.
+
+## AP-180 – Subtexte mit höchstens zwei Zeilen (05.09.2026)
+
+- Bei 320, 375, 390, 430 und 900 px mit normaler Schrift per DOM-Textmessung geprüft:
+  Zeilenanzahl jeweils 2 / 2 / 1. Kein horizontaler Überstand, vollständige Texte.
+  Die sichtbaren Zeilenbreiten liegen bei 216 / 206 px, 206 / 205 px und 235 px.
+- Ab 901 px bleibt die neue Sektion ausgeblendet. Zahlen und Bezeichnungen unverändert.
+- Visuelle Kontrolle bei 390 px und bei 200 % Schriftgröße auf 320 px.
+  Vergrößerte Schrift darf mehr als zwei Zeilen beanspruchen; keine maximale Texthöhe,
+  kein Abschneiden oder Verbergen von Text. Alle Absätze passen in ihre Inhaltsbereiche.
+  Der dokumentierte Überstand anderer Bestandssektionen bleibt bei 423 px unverändert.
+- Nur zwei Subtexte umformuliert. Das übrige Markup der Sektion, Hero, alte Proof-Sektion
+  und Homepage außerhalb der neuen Sektion und ihrer CSS-Version bleiben identisch.
+- `git diff --check` bestanden.

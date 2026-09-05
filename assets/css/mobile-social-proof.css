@@ -1,5 +1,5 @@
-/* AP-179: Freistehende Kennzahlen ohne Dekoration.
-   Eine gemeinsame Textbreite und ausgewogene Umbrueche beruhigen die Kurztexte. */
+/* AP-180: Praegnante Kurztexte und ein einheitlicher typografischer Rhythmus.
+   Zwei Zeilen bei normaler Schrift; vergroesserter Text darf frei mitwachsen. */
 .mobile-social-proof {
   display: none;
 }
@@ -67,7 +67,7 @@
   }
 
   .mobile-social-proof__label {
-    margin: 10px 0 0;
+    margin: 8px 0 0;
     max-width: 30ch;
     color: var(--ink);
     font-family: var(--display);
@@ -78,8 +78,9 @@
   }
 
   .mobile-social-proof__text {
-    margin: 6px 0 0;
+    margin: 8px 0 0;
     max-width: 28ch;
+    min-height: 2.8em;
     text-wrap: balance;
     color: var(--ink-2);
     font-family: var(--body);

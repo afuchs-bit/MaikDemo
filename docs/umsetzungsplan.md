@@ -1130,3 +1130,14 @@ Das Hintergrundmotiv und seine Darstellungsebene entfallen. Alle Kurztexte erhal
 dieselbe maximale Breite von 28ch und ausgewogene Zeilenumbrüche (`text-wrap: balance`).
 Die beiden längeren Texte erscheinen so annähernd so breit wie der kurze Kundenhinweis.
 Wortlaut, Schriftgröße, Kennzahlen und linke Ausrichtung bleiben unverändert.
+
+**AP-180, maximal zweizeilige Subtexte und typografische Verfeinerung, 05.09.2026:**
+Der Auftraggeber wünscht kürzere Subtexte und eine kritische gestalterische Überarbeitung.
+Der Erfahrungstext lautet jetzt „Für einen Garten, der zu Ihnen und Ihrem Grundstück passt.“,
+der Kontakttext „Maik und sein Fachteam sind persönlich vor Ort für Sie da.“.
+Der Hinweis auf über 400 zufriedene Kunden bleibt erhalten. Bei normaler 16-px-Schrift
+ergeben sich höchstens zwei Zeilen. Vergrößerte Schrift darf ohne Abschneiden mitwachsen.
+Zahl und Bezeichnung stehen 8 px auseinander, zum Subtext folgen ebenfalls 8 px.
+Die Textbereiche reservieren mindestens zwei Zeilen für einen gleichmäßigen Rhythmus.
+Die nächste gestalterische Empfehlung ist ein echtes Projektfoto unter den Kennzahlen;
+Fotos und deren Übergang sind weiterhin kein Bestandteil dieses Arbeitspakets.
