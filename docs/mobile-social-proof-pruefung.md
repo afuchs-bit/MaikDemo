@@ -85,3 +85,21 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   Verweise auf die entfernten Panel-, Rahmen- oder Kartenklassen im Anwendungscode.
 - Homepage außerhalb der neuen Sektion und ihrer CSS-/JS-Einbindungen mit dem
   vorherigen Commit verglichen: identisch. `git diff --check` bestanden.
+
+## AP-177 – Kleinere Kennzahlen mit einzelner Blüte (05.09.2026)
+
+- Bei 320, 375, 390, 430 und 900 px geprüft: kein horizontaler Überstand bei normaler
+  Schrift. Ab 901 px ist die neue Sektion ausgeblendet.
+- Zahlenhöhen exakt 44 / 42 / 36 px, jeweils proportional und unten in einer
+  44-px-Zeile ausgerichtet. Alle drei Aussagen haben dieselbe linke Kante.
+- Bezeichnungen: 18 px, Gewicht 700. Bei 390 px sind die Inhaltsbereiche
+  127 / 127 / 105 px hoch, bei 320 px 150 / 150 / 105 px.
+- Eine einzige Blüte: geladen, 32 × 32 px, Deckkraft 0,55, vertikal zentriert,
+  vollständig innerhalb der ersten Zahlenzeile und für Screenreader dekorativ.
+- Visuelle Kontrolle bei 320 und 390 px sowie bei 200 % Schriftgröße auf 320 px.
+  Bei vergrößerter Schrift wachsen die Bereiche auf 374 / 464 / 284 px;
+  keine Textabschneidung und keine Überlagerung mit der Blüte. Der dokumentierte
+  Überstand anderer Bestandssektionen bleibt bei 423 px Scrollbreite unverändert.
+- Sämtliche KPI-Bezeichnungen und Kurztexte sowie das Homepage-Markup außerhalb
+  der Sektion und ihrer CSS-Version sind gegenüber AP-176 identisch.
+- `git diff --check` bestanden. Keine neue JavaScript-Funktionalität.

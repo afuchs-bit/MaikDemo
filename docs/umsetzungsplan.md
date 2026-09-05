@@ -1107,3 +1107,12 @@ Schräge und Trennlinien entfallen. Die Handschriftgrafiken erhalten 64 px Höhe
 36 px Abstand gliedern die Aussagen. Der mittlere Block ist um 20 px eingerückt,
 alle Texte bleiben linksbündig. Außen stehen 24 px Abstand zur Verfügung. Die
 SVG-Kontur und ihr JavaScript werden entfernt. Inhalte und mobiler Einbau bleiben gleich.
+
+**AP-177, abgestimmte Verfeinerung nach Gestaltungsfragen, 05.09.2026:**
+Ruhig, persönlich und luftig; alle drei Aussagen auf einer gemeinsamen linken Kante.
+Zahlenhöhen: 25+ 44 px, 100 % 42 px, 8000 m² 36 px, jeweils unten in einer 44-px-Zeile.
+Die vorhandenen transparenten Zahlengrafiken im Hero-Grün bleiben unverändert.
+Bezeichnungen: Nunito 18 px, Gewicht 700, Zeilenhöhe 1,25; Kurztexte weiterhin 16 px.
+Abstände und Wortlaut bleiben erhalten. Das einzelne vorhandene Blumen-Icon erscheint
+einmal rechts in der ersten Zahlenzeile, 32 × 32 px, Deckkraft 55 %, dekorativ und
+vertikal zentriert. Keine neuen Flächen, Rahmen, Trennlinien oder Animationen.
