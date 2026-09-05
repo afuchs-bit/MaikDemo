@@ -210,8 +210,8 @@ wollen. Damit später niemand rätselt, woher sie stammen:
 
 | Formulierung | Konflikt |
 |---|---|
-| „ein umfangreicher Maschinenpark" | Teil B, Zeile 43: „Keine Mitarbeiterzahlen, keine Fuhrparkgrößen, kein Teamfoto — **ausdrücklicher Wunsch des Betriebsinhabers**" |
-| „Eigene Fachkräfte" | grenzt an eine Personalangabe |
+| „eigenem Maschinenpark" | Teil B, Zeile 43: „Keine Mitarbeiterzahlen, keine Fuhrparkgrößen, kein Teamfoto — **ausdrücklicher Wunsch des Betriebsinhabers**" |
+| „eigenen Fachkräften" | grenzt an eine Personalangabe |
 | „termingerecht umgesetzt" | Terminversprechen; Teil B führt Reaktionszeiten als offenen Punkt |
 
 **Zu klären:** ob der Betriebsinhaber diese drei Aussagen mitträgt — die Vorgabe stammt
@@ -243,10 +243,16 @@ brächte rund 48 Zeichen.
 | Text Block 4 | — | Stichworte: „Damit wir uns Zeit nur für Sie nehmen", „Inspiration Mustergarten" |
 
 **Wichtig für die Fotoauswahl:** Der Textumfluss ist eingerichtet, greift aber nur, wenn der
-Text **länger** ist als das Foto hoch. Mit einem 4:3-Foto bei 42 % Breite gemessen: Foto
-375 px hoch, Text 245 px — der Text endet 131 px **vor** dem Fotoende, es läuft also keine
-Zeile darunter. Damit der skizzierte Umfluss sichtbar wird, braucht es einen **breiten,
-flachen Bildausschnitt** (etwa 16:9 oder flacher) oder mehr Text.
+Text **länger** ist als das Foto hoch.
+
+Der Fließtext wurde am 05.09.2026 gekürzt und misst jetzt nur noch **82 px** - drei Zeilen
+bei 1200 px Fensterbreite, zuvor 245 px. Ein 4:3-Foto bei 42 % Breite wäre 375 px hoch; der
+Text endete also fast 300 px **vor** dem Fotoende, und es liefe keine einzige Zeile darunter.
+
+Damit der in der Skizze gezeigte Umfluss überhaupt entsteht, müsste das Foto **flacher als
+etwa 5:1** sein. Das ist kein üblicher Bildausschnitt. Realistisch bleiben zwei Wege: auf den
+Umfluss verzichten und Text und Foto schlicht nebeneinanderstellen, oder den Text wieder
+verlängern. **Zu entscheiden, sobald das Foto vorliegt.**
 
 ### Ebenfalls offen
 
