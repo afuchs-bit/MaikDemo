@@ -1178,3 +1178,14 @@ Prüfprotokoll: docs/mobile-social-proof-pruefung.md, Abschnitt AP-181.
 **Robuster Link-Fallback:** Ohne das neue Skript führt der CTA nativ zum sichtbaren
 Kontaktbereich #kontakt. Sobald das Modul verfügbar ist, setzt es wie vereinbart
 #anfrage und übernimmt den präzisen Sprung. Dadurch bleibt der CTA auch ohne Erweiterung nutzbar.
+
+
+**AP-182, Blumenlogo am unteren Bildrand (05.09.2026):** Auf Wunsch des Auftraggebers
+entfällt die sichtbare Bildbeschreibung. Die vorhandenen Alternativtexte und die für
+Screenreader zugängliche Bildunterschrift bleiben für die Bedienbarkeit erhalten.
+Das bestehende dreiblütige Hero-Motiv erscheint einmal in Originalfarben rechts unten,
+88–104 px breit. Es überlappt den Bildrand um etwa 13–20 px und bleibt beim Wischen fest.
+Links daneben steht „Zur Galerie →“, vollständig außerhalb des Fotos und bei normaler
+Schrift auf derselben Mittelachse wie das Logo. Der kürzere Galerie-Link lässt beiden
+Elementen auch auf kleinen Handys Platz. Der Anfrage-CTA bleibt unter den persönlichen
+Texten. Neue Assets oder Änderungen an der Wischfunktion sind nicht erforderlich.

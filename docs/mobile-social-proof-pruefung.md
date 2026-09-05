@@ -193,3 +193,23 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - JavaScript-Syntaxprüfung und git diff --check bestanden. LAN-Vorschau liefert HTTP 200.
   Temporäre Fehler-/Schrift-/Bewegungsprüfseiten liegen nur während der Prüfung im
   ignorierten .agents-Verzeichnis und werden anschließend entfernt.
+
+
+## AP-182 – Blumenlogo und Galerie-CTA unter dem Bild (05.09.2026)
+
+- Sichtbare Bildunterschrift entfernt; Screenreader-Beschreibung und Bildwechsel bleiben
+  erhalten. Ein horizontaler Bildwechsel mit aktualisiertem aktiven Punkt geprüft.
+- Vorhandenes transparentes Hero-Blumenmotiv unverändert eingebunden, geladen,
+  dekorativ und ohne Zeigerinteraktion. Kein neuer Hintergrund oder Filter.
+- 320 / 375 / 390 / 430 / 900 px geprüft: Logo 88–104 px breit, ca. 13–20 px Überlappung
+  in das Foto und 57–64 px unterhalb. Link vollständig außerhalb des Fotos. Die vertikalen
+  Mittelpunkte von Logo und Link stimmen bei normaler Schrift überein (Rundung < 0,01 px).
+  Zwischen Linkbereich und Logo bleiben 16 px Platz. Keine horizontale Seitenerweiterung.
+- Ab 901 px bleibt die mobile Sektion ausgeblendet. Visuelle Kontrolle bei 390 px.
+- Bei 320 px mit 200 % Schrift wächst der Link auf 134 px Höhe, ohne Abschneiden oder
+  Überlagern des Logos. Galeriebreite und Scrollbreite jeweils 257 px. Bereits dokumentierter
+  Überstand anderer Bestandsbereiche weiterhin 423 px.
+- KPI-Markup, persönliche Texte, Anfrage-CTA, Hero und sämtliche Bestandssektionen mit
+  AP-181 verglichen: identisch. Nur Galerie-Markup, eigene mobile CSS-Datei und deren
+  Cache-Version angepasst; bestehende JavaScript-Datei unverändert.
+- git diff --check bestanden; temporäre Schriftprüfseite anschließend entfernt.

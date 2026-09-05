@@ -1,4 +1,4 @@
-/* AP-181: Freistehende Kennzahlen, echte Gartenbilder und persoenliche Einladung.
+/* AP-182: Gartenbilder mit ueberlappendem Blumenlogo und Galerie-Link.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -156,13 +156,6 @@
     object-fit: contain;
   }
 
-  .mobile-proof-gallery__caption {
-    margin: 12px 0 0;
-    color: var(--ink);
-    font: 700 1rem/1.4 var(--display);
-    overflow-wrap: anywhere;
-  }
-
   .mobile-proof-gallery__dots {
     position: absolute;
     bottom: 0;
@@ -205,12 +198,34 @@
     background: rgb(0 0 0 / 45%);
   }
 
+  .mobile-proof-gallery__footer {
+    --proof-brand-width: clamp(88px, 25vw, 104px);
+    position: relative;
+    padding-right: calc(var(--proof-brand-width) + 16px);
+    padding-bottom: calc(var(--proof-brand-width) * .4 - 22px);
+  }
+
+  .mobile-proof-gallery__brand {
+    position: absolute;
+    top: calc(22px - var(--proof-brand-width) * .4);
+    right: 0;
+    z-index: 1;
+    display: block;
+    width: var(--proof-brand-width);
+    height: auto;
+    pointer-events: none;
+  }
+
   .mobile-proof-gallery__link {
-    display: table;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0 8px;
     max-width: 100%;
-    margin-top: 12px;
-    color: var(--ink-2);
-    font: 400 1rem/1.4 var(--body);
+    min-height: 44px;
+    margin: 0;
+    color: var(--ink);
+    font: 700 1rem/1.4 var(--display);
     text-decoration: underline;
     text-decoration-color: var(--home-on-dark-mute);
     text-underline-offset: 4px;
