@@ -1,5 +1,5 @@
-/* AP-178: Ein grosses, weich ausgeblendetes Markenmotiv hinter den Kennzahlen.
-   Das Motiv wird separat beschnitten und erweitert nicht die Seitenbreite. */
+/* AP-179: Freistehende Kennzahlen ohne Dekoration.
+   Eine gemeinsame Textbreite und ausgewogene Umbrueche beruhigen die Kurztexte. */
 .mobile-social-proof {
   display: none;
 }
@@ -7,35 +7,10 @@
 @media (max-width: 900px) {
   .mobile-social-proof {
     position: relative;
-    isolation: isolate;
     display: block;
     padding: 32px 24px 40px;
     color: var(--ink);
     scroll-margin-top: calc(var(--mobile-header-h) + 16px);
-  }
-
-  .mobile-social-proof__brand-art {
-    position: absolute;
-    z-index: 0;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    -webkit-mask-image: linear-gradient(90deg, transparent 18%, #000 90%);
-    mask-image: linear-gradient(90deg, transparent 18%, #000 90%);
-  }
-
-  .mobile-social-proof__brand-art img {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    display: block;
-    width: clamp(620px, 180vw, 900px);
-    max-width: none;
-    height: auto;
-    opacity: .14;
-    transform: translate(65%, -50%) rotate(14deg);
-    -webkit-mask-image: linear-gradient(180deg, transparent, #000 15%, #000 85%, transparent);
-    mask-image: linear-gradient(180deg, transparent, #000 15%, #000 85%, transparent);
   }
 
   .mobile-social-proof__sr-only {
@@ -51,8 +26,6 @@
   }
 
   .mobile-social-proof__list {
-    position: relative;
-    z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 36px;
@@ -106,7 +79,8 @@
 
   .mobile-social-proof__text {
     margin: 6px 0 0;
-    max-width: 38ch;
+    max-width: 28ch;
+    text-wrap: balance;
     color: var(--ink-2);
     font-family: var(--body);
     font-size: 1rem;

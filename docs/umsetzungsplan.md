@@ -1124,3 +1124,9 @@ unverändert. Die Darstellung verwendet 14 % Deckkraft, eine leichte Drehung und
 weiche Masken zur Textseite sowie an den Bildenden. Eine eigene, nicht interaktive
 Dekorationsebene beschneidet den Überstand; Texte stehen darüber. Zahlengrößen,
 Typografie, Abstände und Inhalte bleiben unverändert. Keine Kacheln oder neuen Flächen.
+
+**AP-179, Blume entfernen und Subtexte harmonisieren, 05.09.2026:**
+Das Hintergrundmotiv und seine Darstellungsebene entfallen. Alle Kurztexte erhalten
+dieselbe maximale Breite von 28ch und ausgewogene Zeilenumbrüche (`text-wrap: balance`).
+Die beiden längeren Texte erscheinen so annähernd so breit wie der kurze Kundenhinweis.
+Wortlaut, Schriftgröße, Kennzahlen und linke Ausrichtung bleiben unverändert.

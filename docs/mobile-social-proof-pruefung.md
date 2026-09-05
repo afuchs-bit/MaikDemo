@@ -121,3 +121,18 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   (423 px Scrollbreite bei 305 px nutzbarer Breite).
 - KPI-Wortlaut und Homepage außerhalb dieser Sektion und ihrer CSS-Version sind
   gegenüber AP-177 identisch. `git diff --check` bestanden.
+
+## AP-179 – Ohne Blume, einheitliche Subtextbreite (05.09.2026)
+
+- Das Blumenmotiv samt Dekorationsebene ist aus dieser Sektion entfernt.
+- Kontrolle bei 320, 375, 390, 430 und 900 px: kein horizontaler Überstand,
+  alle Kurztexte auf gemeinsamer linker Kante und mit identischer Blockbreite.
+  Die Breite beträgt 257 px bei 320 px Viewport, sonst maximal ca. 269 px (28ch).
+  Die ersten beiden Kurztexte haben jeweils drei ausgewogene Zeilen, der dritte eine.
+- Visuell bei 320 und 390 px geprüft. Bei 390 px betragen die längsten sichtbaren
+  Textzeilen etwa 207 / 227 / 235 px; der Wortlaut wurde nicht verändert.
+- Ab 901 px bleibt die Sektion ausgeblendet. Bei 320 px und 200 % Schriftgröße
+  bleiben alle Kurztexte innerhalb ihrer Bereiche. Der dokumentierte Überstand
+  anderer Bestandssektionen bleibt unverändert (423 px Scrollbreite).
+- Homepage außerhalb der Sektion und ihrer CSS-Version sowie KPI-Wortlaut mit
+  AP-178 verglichen: identisch. `git diff --check` bestanden.
