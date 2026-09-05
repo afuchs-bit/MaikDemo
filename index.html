@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260905q" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zj" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260905ao" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -401,48 +401,62 @@ html.home-theme-dark body { background-color: #171916; }
         <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180" />
       </svg>
     </h2>
-    <p class="gate-welcome-lead">Ein Garten ist mehr als eine Fläche rund ums Haus.</p>
-
     <figure class="gate-welcome-photo">
       <img src="assets/img/willkommen/poolgarten-720.webp"
            srcset="assets/img/willkommen/poolgarten-720.webp 720w, assets/img/willkommen/poolgarten-1200.webp 1200w"
-           sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 48px), 1px"
+           sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 14px), 1px"
            alt="Garten mit Pool, geschwungenen Rasenflächen, Natursteinen, bepflanzten Beeten und Palmen."
            width="1200" height="900" loading="lazy" decoding="async">
+      <svg class="gate-welcome-photo-outline" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <defs>
+          <clipPath id="gate-welcome-photo-shape" clipPathUnits="objectBoundingBox">
+            <path d="M .085 .178 L 1 .006 L 1 .994 L .145 .862 Q .105 .855 .1 .815 L .035 .255 Q .03 .2 .085 .178 Z" />
+          </clipPath>
+        </defs>
+        <path fill-rule="evenodd" d="M .085 .178 L 1 .006 L 1 .994 L .145 .862 Q .105 .855 .1 .815 L .035 .255 Q .03 .2 .085 .178 Z M .092 .191 L 1 .008 L 1 .992 L .151 .847 Q .118 .842 .112 .808 L .047 .258 Q .043 .216 .092 .191 Z" />
+      </svg>
     </figure>
+
+    <p class="gate-welcome-statement">Ein Garten ist mehr als eine Fläche rund ums Haus. Er ist Rückzugsort, Treffpunkt und ein Stück Lebensqualität – gemeinsam gestalten wir ihn so, dass er zu Ihnen und Ihrem Alltag passt.</p>
+
+    <p class="gate-welcome-lead"><span>Ein Garten ist mehr</span><span>als eine Fläche</span><span>rund ums Haus.</span></p>
 
     <p class="gate-welcome-feeling">Er ist Rückzugsort, Treffpunkt und ein Stück <em>Lebensqualität.</em></p>
     <p class="gate-welcome-copy">Gemeinsam machen wir aus Ihren Wünschen einen Garten, der zu Ihnen und Ihrem Alltag passt – ob neu angelegt, umgestaltet oder dauerhaft gepflegt.</p>
     <p class="gate-welcome-outro">Entdecken Sie, was draußen möglich ist – <strong>mit Fachwissen, auf das Sie sich verlassen können.</strong></p>
 
-    <div class="gate-welcome-qualifications" role="group" aria-label="Fachliche Qualifikationen">
-      <div class="gate-welcome-qualification">
-        <p class="gate-welcome-master">Gartenbaumeister</p>
+    <div class="gate-welcome-qualifications" data-mobile-qualifications>
+      <div class="gate-welcome-qualification-grid" role="group" aria-label="Fachliche Qualifikationen">
+        <button class="gate-welcome-qualification-option" type="button" id="gate-qualification-master" aria-expanded="false" aria-controls="gate-qualification-master-detail" data-qualification-target="gate-qualification-master-detail">
+          <span class="gate-welcome-qualification-content"><img class="gate-welcome-qualification-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async"><span class="gate-welcome-qualification-label">Gartenbau<wbr>meister</span></span>
+        </button>
+        <button class="gate-welcome-qualification-option" type="button" id="gate-qualification-tree" aria-expanded="false" aria-controls="gate-qualification-tree-detail" data-qualification-target="gate-qualification-tree-detail">
+          <span class="gate-welcome-qualification-content"><img class="gate-welcome-qualification-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async"><span class="gate-welcome-qualification-label">Baum<wbr>kontrolle</span></span>
+        </button>
+        <button class="gate-welcome-qualification-option" type="button" id="gate-qualification-expert" aria-expanded="false" aria-controls="gate-qualification-expert-detail" data-qualification-target="gate-qualification-expert-detail">
+          <span class="gate-welcome-qualification-content"><img class="gate-welcome-qualification-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async"><span class="gate-welcome-qualification-label">Sachver<wbr>ständiger</span></span>
+        </button>
+        <button class="gate-welcome-qualification-option" type="button" id="gate-qualification-plant" aria-expanded="false" aria-controls="gate-qualification-plant-detail" data-qualification-target="gate-qualification-plant-detail">
+          <span class="gate-welcome-qualification-content"><img class="gate-welcome-qualification-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async"><span class="gate-welcome-qualification-label">Pflanzen<wbr>schutz</span></span>
+        </button>
       </div>
-      <details class="gate-welcome-qualification" name="gate-welcome-qualifications">
-        <summary class="gate-welcome-toggle">
-          <span class="gate-welcome-label">Baumkontrolle</span>
-          <span class="gate-welcome-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span>
-        </summary>
-        <div class="gate-welcome-answer"><p>LWK-zertifizierter Baumkontrolleur</p></div>
-      </details>
-      <details class="gate-welcome-qualification" name="gate-welcome-qualifications">
-        <summary class="gate-welcome-toggle">
-          <span class="gate-welcome-label">Sachverständiger</span>
-          <span class="gate-welcome-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span>
-        </summary>
-        <div class="gate-welcome-answer">
+
+      <div class="gate-welcome-qualification-details" data-qualification-details hidden>
+        <div class="gate-welcome-qualification-panel" id="gate-qualification-master-detail" role="region" aria-labelledby="gate-qualification-master" hidden>
+          <p>Gartenbaumeister</p>
+        </div>
+        <div class="gate-welcome-qualification-panel" id="gate-qualification-tree-detail" role="region" aria-labelledby="gate-qualification-tree" hidden>
+          <p>Zertifizierter Baumkontrolleur der Landwirtschaftskammer</p>
+        </div>
+        <div class="gate-welcome-qualification-panel" id="gate-qualification-expert-detail" role="region" aria-labelledby="gate-qualification-expert" hidden>
           <p>Sachverständiger für Garten- und Landschaftsbau</p>
           <p class="gate-welcome-qualification-detail">Sachgebiet 2.4.1 · Herstellung und Unterhaltung</p>
         </div>
-      </details>
-      <details class="gate-welcome-qualification" name="gate-welcome-qualifications">
-        <summary class="gate-welcome-toggle">
-          <span class="gate-welcome-label">Pflanzenschutz</span>
-          <span class="gate-welcome-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span>
-        </summary>
-        <div class="gate-welcome-answer"><p>Sachkundiger für Pflanzenschutz und Wildkrautbekämpfung</p></div>
-      </details>
+        <div class="gate-welcome-qualification-panel" id="gate-qualification-plant-detail" role="region" aria-labelledby="gate-qualification-plant" hidden>
+          <p>Sachkundiger für Pflanzenschutz und Wildkrautbekämpfung</p>
+        </div>
+      </div>
+      <noscript><p class="gate-welcome-qualification-fallback">Gartenbaumeister · Zertifizierter Baumkontrolleur der Landwirtschaftskammer · Sachverständiger für Garten- und Landschaftsbau, Sachgebiet 2.4.1 · Herstellung und Unterhaltung · Sachkundiger für Pflanzenschutz und Wildkrautbekämpfung</p></noscript>
     </div>
   </section>
 
@@ -2121,6 +2135,7 @@ html.home-theme-dark body { background-color: #171916; }
 <!-- BUILD:site-footer:end -->
 
 <script src="assets/js/main.js?v=20260902a" defer></script>
+<script src="assets/js/mobile-qualifications.js?v=20260905a" defer></script>
 <script src="assets/js/mobile-social-proof-gallery.js?v=20260905b" defer></script>
 <script src="assets/js/private-gallery-teaser.js?v=20260812n" defer></script>
 <script src="assets/js/private-proof.js?v=20260812n" defer></script>

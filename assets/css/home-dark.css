@@ -1359,32 +1359,85 @@ html.home-theme-dark .fork-path:hover {
     overflow: hidden;
   }
 
+  html.home-theme-dark :is(
+    .gate-welcome-lead,
+    .gate-welcome-feeling,
+    .gate-welcome-copy,
+    .gate-welcome-outro
+  ) {
+    display: none;
+  }
+
   html.home-theme-dark .gate-welcome-lead {
-    margin: 28px 0 0;
+    margin: 8px 0 0;
     color: var(--home-on-dark);
     font-family: var(--display);
-    font-size: 1.75rem;
+    font-size: 2.25rem;
     font-weight: 700;
     line-height: 1.08;
-    letter-spacing: -.032em;
-    text-wrap: balance;
+    letter-spacing: -.035em;
+    overflow-wrap: normal;
   }
 
   html.home-theme-dark .gate-welcome-photo {
-    width: 100%;
-    margin: 26px 0 0;
-    overflow: hidden;
-    border-radius: 18px;
-    background: var(--green-50);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, .2);
+    position: relative;
+    isolation: isolate;
+    width: calc(100% + 34px);
+    height: clamp(298px, 77vw, 310px);
+    margin: 24px -24px 0 -10px;
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   html.home-theme-dark .gate-welcome-photo img {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: contain;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center center;
+    -webkit-clip-path: polygon(8.5% 17.8%, 100% .6%, 100% 99.4%, 14.5% 86.2%, 10% 81.5%, 3.5% 25.5%);
+    clip-path: polygon(8.5% 17.8%, 100% .6%, 100% 99.4%, 14.5% 86.2%, 10% 81.5%, 3.5% 25.5%);
+    -webkit-clip-path: url("#gate-welcome-photo-shape");
+    clip-path: url("#gate-welcome-photo-shape");
+  }
+
+  html.home-theme-dark .gate-welcome-photo-outline {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  html.home-theme-dark .gate-welcome-photo-outline > path {
+    fill: var(--home-lime);
+    fill-rule: evenodd;
+    stroke: none;
+  }
+
+  html.home-theme-dark .gate-welcome-statement {
+    margin: 16px 0 0;
+    color: var(--home-on-dark);
+    font-family: var(--display);
+    font-size: clamp(1.95rem, 8.25vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.13;
+    letter-spacing: -.035em;
+    overflow-wrap: normal;
+    text-wrap: pretty;
+    hyphens: none;
+  }
+
+  html.home-theme-dark .gate-welcome-lead > span {
+    display: block;
   }
 
   html.home-theme-dark .gate-welcome-feeling {
@@ -1432,121 +1485,170 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-qualifications {
     margin: 24px 0 0;
-    padding: 4px 16px;
-    background: var(--green-50);
-    border: 1px solid #3d4831;
-    border-radius: 18px 5px 18px 5px;
+    padding: 0;
   }
 
-  html.home-theme-dark .gate-welcome-qualification + .gate-welcome-qualification {
-    border-top: 1px solid #414b35;
+  html.home-theme-dark .gate-welcome-qualification-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 16px;
   }
 
-  html.home-theme-dark .gate-welcome-master {
-    margin: 0;
-    padding: 15px 0;
-    color: var(--home-yellow);
-    font-size: 1.25rem;
-    font-weight: 800;
-    line-height: 1.3;
-  }
-
-  html.home-theme-dark .gate-welcome-toggle {
+  html.home-theme-dark .gate-welcome-qualification-option {
+    appearance: none;
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    width: 100%;
-    min-height: 51px;
+    justify-content: center;
+    min-width: 0;
+    min-height: 76px;
     margin: 0;
-    padding: 12px 0;
+    padding: 7px 0 11px;
     border: 0;
-    color: var(--home-on-dark);
+    color: var(--home-yellow);
     background: transparent;
     cursor: pointer;
-    list-style: none;
     text-align: left;
     -webkit-tap-highlight-color: transparent;
   }
 
-  html.home-theme-dark .gate-welcome-toggle::-webkit-details-marker {
-    display: none;
-  }
-
-  html.home-theme-dark .gate-welcome-toggle:focus-visible {
-    outline: 2px solid var(--home-yellow);
-    outline-offset: 4px;
-    border-radius: 2px;
-  }
-
-  html.home-theme-dark .gate-welcome-label {
-    min-width: 0;
-    font-size: 1.125rem;
-    font-weight: 700;
-    line-height: 1.3;
-    overflow-wrap: anywhere;
-  }
-
-  html.home-theme-dark .gate-welcome-chevron {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 26px;
-    height: 26px;
-    color: var(--home-dark-accent);
-    transition: transform .18s ease;
-  }
-
-  html.home-theme-dark .gate-welcome-chevron svg {
-    width: 18px;
-    height: 18px;
-    stroke-width: 1.8;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification[open] > .gate-welcome-toggle {
-    color: var(--home-yellow);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification[open] > .gate-welcome-toggle::before {
+  html.home-theme-dark .gate-welcome-qualification-option::after {
     content: "";
     position: absolute;
-    left: -17px;
-    top: 13px;
-    bottom: 13px;
-    width: 3px;
-    border-radius: 0 2px 2px 0;
+    bottom: 3px;
+    left: calc(50% - 35px);
+    width: 80px;
+    height: 2px;
+    border-radius: 999px;
     background: var(--home-yellow);
+    box-shadow: 0 0 7px rgba(242, 226, 12, .2);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .2s var(--ease);
   }
 
-  html.home-theme-dark .gate-welcome-qualification[open] .gate-welcome-chevron {
+  html.home-theme-dark .gate-welcome-qualification-option:focus-visible {
+    outline: 2px solid var(--home-yellow);
+    outline-offset: 4px;
+    border-radius: 5px;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"]::after {
+    transform: scaleX(1);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-content {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    align-items: center;
+    gap: 9px;
+    width: min(100%, 148px);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-flower {
+    display: block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: saturate(.94) drop-shadow(1px 2px 1px rgba(0, 0, 0, .36));
+    transform: rotate(-8deg);
+    transform-origin: 50% 62%;
+    transition: transform .2s var(--ease), filter .2s var(--ease);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-option:nth-child(2) .gate-welcome-qualification-flower {
+    transform: rotate(6deg);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-option:nth-child(3) .gate-welcome-qualification-flower {
+    transform: rotate(5deg);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-option:nth-child(4) .gate-welcome-qualification-flower {
+    transform: rotate(-5deg);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"] .gate-welcome-qualification-flower {
+    filter: saturate(1.08) drop-shadow(0 0 7px rgba(242, 226, 12, .3));
+    transform: rotate(10deg) scale(1.1);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-label {
+    min-width: 0;
     color: var(--home-yellow);
-    transform: rotate(180deg);
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: 1.0625rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+    overflow-wrap: normal;
+    text-shadow:
+      1px 1px 0 #315200,
+      0 0 7px rgba(242, 226, 12, .16);
   }
 
-  html.home-theme-dark .gate-welcome-answer {
-    padding: 0 25px 17px 0;
+  html.home-theme-dark .gate-welcome-qualification-details {
+    position: relative;
+    margin: 12px 0 0 39px;
+    padding: 19px 0 1px;
   }
 
-  html.home-theme-dark .gate-welcome-answer p {
+  html.home-theme-dark .gate-welcome-qualification-details::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--home-lime), rgba(140, 198, 63, .12));
+    box-shadow: 0 0 7px rgba(140, 198, 63, .18);
+    transform: rotate(-1deg);
+    transform-origin: left center;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-panel {
+    animation: gate-qualification-in .2s var(--ease) both;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-panel p,
+  html.home-theme-dark .gate-welcome-qualification-fallback {
     margin: 0;
     color: var(--home-on-dark-2);
+    font-family: var(--body);
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+    text-wrap: pretty;
   }
 
-  html.home-theme-dark .gate-welcome-answer .gate-welcome-qualification-detail {
+  html.home-theme-dark .gate-welcome-qualification-panel .gate-welcome-qualification-detail {
     margin-top: 7px;
     font-size: .875rem;
     line-height: 1.5;
   }
+
+  html.home-theme-dark .gate-welcome-qualification-fallback {
+    margin-top: 18px;
+  }
 }
 
 @media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) and (prefers-reduced-motion: reduce) {
-  html.home-theme-dark .gate-welcome-chevron {
+  html.home-theme-dark .gate-welcome-qualification-option::after,
+  html.home-theme-dark .gate-welcome-qualification-flower {
     transition: none;
   }
+
+  html.home-theme-dark .gate-welcome-qualification-panel {
+    animation: none;
+  }
+}
+
+@keyframes gate-qualification-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (min-width: 390px) and (max-width: 404px) {
