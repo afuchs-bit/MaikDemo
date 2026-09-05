@@ -1,4 +1,4 @@
-/* AP-196: Blumensiegel oben links und Galerie-Pinsel unten rechts am Bild.
+/* AP-197: Galerie-Pinsel höher, besser greifbar und plastischer ausgearbeitet.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -228,17 +228,17 @@
 
   .mobile-proof-gallery__brush-link {
     position: absolute;
-    top: -8px;
+    top: -14px;
     right: 0;
     z-index: 1;
     display: grid;
     place-items: center;
-    width: max(clamp(118px, 30vw, 124px), 8.75em);
+    width: max(clamp(124px, 31vw, 130px), 9em);
     max-width: 100%;
-    height: max(40px, 2.75em);
+    height: max(44px, 2.75em);
     color: #171916;
     font: 800 .875rem/1 var(--display);
-    letter-spacing: -.01em;
+    letter-spacing: 0;
     text-decoration: none;
   }
 
@@ -248,7 +248,7 @@
     width: 100%;
     height: 100%;
     overflow: visible;
-    filter: drop-shadow(0 2px 2px rgb(0 0 0 / 28%));
+    filter: drop-shadow(0 3px 3px rgb(0 0 0 / 22%));
     transform: rotate(-1deg);
     transform-origin: center;
     pointer-events: none;
@@ -266,10 +266,19 @@
     opacity: .46;
   }
 
+  .mobile-proof-gallery__brush-highlight {
+    fill: none;
+    stroke: #FFF36B;
+    stroke-width: .9;
+    stroke-linecap: round;
+    opacity: .55;
+  }
+
   .mobile-proof-gallery__brush-link > span {
     position: relative;
     z-index: 1;
     transform: translateY(-1px);
+    text-shadow: 0 1px 0 rgb(255 255 255 / 24%);
   }
 
   .mobile-proof-gallery__brush-link:hover {

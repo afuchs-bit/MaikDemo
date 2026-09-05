@@ -1312,3 +1312,15 @@ Die leichte Pinseldrehung wird zur rechten Platzierung gespiegelt. Der Siegelcod
 liegt nun direkt an der Bildfigur, damit seine obere Position unabhängig von der
 Bildbreite stabil bleibt. Größen, Linkziel, Bildwechsel und die darunterliegende
 Einladung bleiben unverändert. Prüfung weiterhin bei iPhone 15 Pro und iPhone 16 Pro.
+
+
+**AP-197, Galerie-Pinsel höher und greifbarer (05.09.2026):** Der sekundäre
+Galerie-CTA rückt 6 px weiter nach oben. Seine Linkfläche überlappt den Bildrahmen
+damit 14 px und wächst von 122,5 × 40 px auf 126 × 44 px. Die Aktion bleibt
+deutlich kleiner als der grüne Haupt-CTA, erreicht aber eine verlässliche
+Berührungshöhe.
+
+Eine feine hellgelbe Farbspur, ein weicherer Schatten und eine minimale
+Textaufhellung geben dem vorhandenen Logo-Gelb mehr Tiefe. Der organische
+Pinselumriss, das Linkziel und die Position unten rechts bleiben erhalten.
+Blumensiegel, Bildwechsel, Texte und übrige CTAs bleiben unverändert.

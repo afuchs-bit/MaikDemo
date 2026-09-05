@@ -384,3 +384,14 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Galerie-Link 122,5 px breit und 8 px über der Bildkante; bei 402 px endet er bei
   x = 378 px innerhalb der 402 px breiten Ansicht. Kein horizontaler Überstand.
 - Linkziel, Kontakt-CTA, Haupt-CTA, Bildwechsel und Texte unverändert.
+
+
+## AP-197 – Galerie-CTA höher und verfeinert (05.09.2026)
+
+- Linkfläche bei 393 × 852 und 402 × 874 CSS-Pixeln mit 126 × 44 px gemessen.
+- Linkbox 14 px über der unteren Bildkante; der sichtbare gelbe Pinsel greift durch
+  seinen organischen Innenrand etwa 6 px in das Foto.
+- Helle Farbspur, weicher Schatten und dezente Textaufhellung visuell auf beiden
+  Zielbreiten geprüft. Der CTA bleibt klar kleiner als der grüne Haupt-CTA.
+- Kein horizontaler Überstand. Fokusrahmen per Tastatur geprüft und vollständig
+  sichtbar; Linkziel und übrige Bedienung unverändert.
