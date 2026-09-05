@@ -1966,3 +1966,110 @@ html.home-theme-dark .mr-willkommen__steg-mobil img {
     min-height: clamp(580px, 53vw, 810px);
   }
 }
+
+/* ==================================================================
+   AP-179 · Ueber-uns-Sektion
+
+   Aufbau nach der Skizze des Auftraggebers. Nur vorhandene Token der dunklen
+   Farbwelt, keine neuen Farbwerte.
+   ================================================================== */
+
+html.home-theme-dark .mr-ueber {
+  padding-block: var(--space-section);
+  background: var(--bg);
+}
+
+/* --- Block 1: Kopfzeile. Ohne Linie darueber, ohne Icon - so skizziert. --- */
+html.home-theme-dark .mr-ueber__kopf { margin-bottom: var(--space-section-head); }
+
+html.home-theme-dark .mr-ueber__kopf h2 { margin: 0; }
+
+html.home-theme-dark .mr-ueber__unter {
+  margin: var(--space-title-subtext) 0 0;
+  color: var(--ink-2);
+  font-family: var(--display);
+  font-size: var(--type-subsection-title-size);
+  line-height: 1.15;
+}
+
+/* --- Block 2: Text mit umflossenem Foto ---------------------------------
+   float statt Raster ist hier keine Geschmacksfrage: Nur ein Float laesst die
+   letzte Zeile UNTER dem Bild weiterlaufen. Ein zweispaltiges Raster haelt den
+   Text stur in seiner Spalte, auch wenn das Bild laengst zu Ende ist.
+
+   Die Textbreite wird NICHT gesetzt. Sie ergibt sich aus dem, was der Float
+   uebriglaesst - eine eigene Breite am Absatz wuerde den Umfluss aufheben.
+
+   Nebeneinander bleibt es auch auf Mobil. Gemessen bei 375px: Inhaltsbreite
+   363px, davon rund 52% Text = 189px, bei 7,27px je Zeichen also 26 Zeichen je
+   Zeile (typografisch empfohlen: 45-75). Der Auftraggeber hat das in Kenntnis
+   dieser Zahl so entschieden - siehe docs/offene-punkte.md, AP-179. */
+html.home-theme-dark .mr-ueber__foto {
+  float: right;
+  width: 42%;
+  margin: 0 0 clamp(14px, 1.6vw, 22px) clamp(18px, 3vw, 42px);
+}
+
+html.home-theme-dark .mr-ueber__foto img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+html.home-theme-dark .mr-ueber__foto figcaption {
+  margin-top: .55rem;
+  color: var(--ink-mute);
+  font-size: .8125rem;
+  line-height: 1.45;
+}
+
+html.home-theme-dark .mr-ueber__text {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: var(--type-section-lead-size);
+  line-height: 1.7;
+}
+
+/* Der Float ragt sonst aus dem Container heraus und schiebt sich unter den
+   naechsten Block. */
+html.home-theme-dark .mr-ueber__flow::after { content: ""; display: block; clear: both; }
+
+/* --- Block 3: randlose Buehne fuer das Video ----------------------------
+   Der Ausbruch sitzt an der HUELLE, nicht am Video: styles.css:190 setzt
+   `img, svg, video { max-width: 100% }` und wuerde ein direktes width:100vw
+   am Video wieder kappen.
+
+   100vw schliesst die Scrollleiste ein. Das faengt das bereits vorhandene
+   body { overflow-x: hidden } (styles.css:187) ab; der klebende Header bleibt
+   funktionsfaehig, weil html der Scroll-Container ist und die Regel auf body
+   steht. Beides ist nachgemessen. */
+html.home-theme-dark .mr-ueber__buehne {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  margin-block: var(--space-section-compact);
+  background: var(--bg-dark);
+}
+
+html.home-theme-dark .mr-ueber__video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Block 5: NRW-Karte, links gesetzt, rund 40% der Inhaltsbreite ------ */
+html.home-theme-dark .mr-ueber__karte { margin-top: var(--space-section-compact); }
+
+html.home-theme-dark .mr-ueber__karte .proof-map {
+  width: 40%;
+  min-width: 260px;
+  margin: 0;
+  align-items: flex-start;   /* Beschriftung linksbuendig zur Bildkante */
+  text-align: left;
+}
+
+/* --- Alte Stelle: ohne die Karte bleibt nur der Kleinauftrags-Block ------
+   .proof-feature ist in styles.css an drei Stellen zweispaltig (817, 1023,
+   1731). Die Korrektur steht hier statt dort, weil die Klasse nur auf der
+   Startseite vorkommt und home-dark.css nur von ihr geladen wird - ein
+   ?v=-Zaehler statt eines Durchlaufs ueber 36 Seiten. */
+html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }

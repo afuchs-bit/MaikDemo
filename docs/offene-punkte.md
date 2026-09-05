@@ -198,3 +198,57 @@ Das greift seit dieser Änderung zu weit. Nicht sofort korrigiert, weil jede Än
 `styles.css` den `?v=`-Durchlauf über 37 HTML-Dateien nach sich zieht — für einen
 Kommentar ohne sichtbare Wirkung. Beim nächsten Durchgang, der die Datei ohnehin anfasst,
 mitnehmen. Dort wird auch die dann tote Regel `.proof-klein-list p` fällig.
+
+## AP-179 — Über-uns-Sektion: Aussagen, Entscheidungen, fehlendes Material
+
+**Vom 05.09.2026.** Die Sektion steht zwischen Galerie-Teaser und Leistungen.
+
+### Drei Formulierungen aus dem gelieferten Text stehen nicht in Teil B
+
+Der Auftraggeber hat sie nach Rückfrage **ausdrücklich unverändert** übernommen haben
+wollen. Damit später niemand rätselt, woher sie stammen:
+
+| Formulierung | Konflikt |
+|---|---|
+| „ein umfangreicher Maschinenpark" | Teil B, Zeile 43: „Keine Mitarbeiterzahlen, keine Fuhrparkgrößen, kein Teamfoto — **ausdrücklicher Wunsch des Betriebsinhabers**" |
+| „Eigene Fachkräfte" | grenzt an eine Personalangabe |
+| „termingerecht umgesetzt" | Terminversprechen; Teil B führt Reaktionszeiten als offenen Punkt |
+
+**Zu klären:** ob der Betriebsinhaber diese drei Aussagen mitträgt — die Vorgabe stammt
+laut Teil B von ihm selbst.
+
+### Was geändert wurde
+
+Der gelieferte Text nannte **„Seit über 25 Jahren"**. Angeglichen auf **20**: Die Seite
+nennt 2003 als Gründung an vier Stellen, die Proof-Sektion „20+ Jahre", und der
+Willkommen-Text weiter oben „Seit über 20 Jahren". Derselbe Fall war bei AP-174 schon
+einmal so entschieden worden.
+
+### Zeilenlänge auf Mobil — bewusst so entschieden
+
+Block 2 steht **auch auf Mobil** nebeneinander, wie skizziert. Gemessen bei 375 px:
+Inhaltsbreite 363 px, Textspalte 52 % = 189 px, bei 7,27 px je Zeichen also **26 Zeichen
+pro Zeile**. Typografisch empfohlen sind 45–75. Der Auftraggeber hat das in Kenntnis dieser
+Zahl bestätigt. Falls es sich im Betrieb als zu eng erweist: ein Umbruchpunkt bei ~600 px
+brächte rund 48 Zeichen.
+
+### Fehlendes Material — die Sektion ist unvollständig
+
+| Was | Wohin | Status |
+|---|---|---|
+| Foto für Block 2 | `assets/img/_src/` | fehlt; `figure` ist auskommentiert |
+| Mustergarten-Video | `assets/video/` | fehlt; Block 3 ist auskommentiert |
+| Plakatbild zum Video | `assets/img/_src/` | fehlt — auf dem Entwicklungsrechner liegt kein `ffmpeg`, ein Standbild lässt sich nicht selbst erzeugen |
+| Bildunterschrift Block 2 | — | beginnt laut Skizze mit „Unser …" |
+| Text Block 4 | — | Stichworte: „Damit wir uns Zeit nur für Sie nehmen", „Inspiration Mustergarten" |
+
+**Wichtig für die Fotoauswahl:** Der Textumfluss ist eingerichtet, greift aber nur, wenn der
+Text **länger** ist als das Foto hoch. Mit einem 4:3-Foto bei 42 % Breite gemessen: Foto
+375 px hoch, Text 245 px — der Text endet 131 px **vor** dem Fotoende, es läuft also keine
+Zeile darunter. Damit der skizzierte Umfluss sichtbar wird, braucht es einen **breiten,
+flachen Bildausschnitt** (etwa 16:9 oder flacher) oder mehr Text.
+
+### Ebenfalls offen
+
+`assets/img/ueber/ueber-3` liegt um 90° gedreht vor — die Ableitung wurde ohne Beachtung
+der EXIF-Orientierung erzeugt. Vor einer Verwendung neu bauen.
