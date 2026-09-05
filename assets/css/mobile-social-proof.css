@@ -1,4 +1,4 @@
-/* AP-182: Gartenbilder mit ueberlappendem Blumenlogo und Galerie-Link.
+/* AP-183: Originale Header-Blueten am unteren Bildrand.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -202,12 +202,12 @@
     --proof-brand-width: clamp(88px, 25vw, 104px);
     position: relative;
     padding-right: calc(var(--proof-brand-width) + 16px);
-    padding-bottom: calc(var(--proof-brand-width) * .4 - 22px);
+    padding-bottom: calc(var(--proof-brand-width) * 3 / 7 - 22px);
   }
 
   .mobile-proof-gallery__brand {
     position: absolute;
-    top: calc(22px - var(--proof-brand-width) * .4);
+    top: calc(22px - var(--proof-brand-width) * 3 / 7);
     right: 0;
     z-index: 1;
     display: block;

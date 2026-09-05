@@ -213,3 +213,17 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   AP-181 verglichen: identisch. Nur Galerie-Markup, eigene mobile CSS-Datei und deren
   Cache-Version angepasst; bestehende JavaScript-Datei unverändert.
 - git diff --check bestanden; temporäre Schriftprüfseite anschließend entfernt.
+
+
+## AP-183 – Originale Header-Blüten am Foto (05.09.2026)
+
+- Im Browser nachgewiesen: Header-Hintergrund und SVG-Bild verwenden dieselbe
+  maik-rohdich-logo-mobile-horizontal-balanced.png. Keine Veränderung der Bilddatei.
+- Pixelanalyse: Blütenbereich beider Header-Varianten identisch, transparente Spalten
+  204–219 trennen Blüten und Wortmarke. Das Sichtfenster 0/0/210/180 zeigt nur die Blüten.
+- Bei 390 px visuell mit dem sichtbaren Header verglichen: identische Formen, Konturen
+  und Farben. Kein Rest der Wortmarke sichtbar. Logo und Link vertikal zentriert.
+- 320, 390 und 900 px ohne horizontalen Seitenüberstand; Originalproportion 210:180
+  erhalten. Ab 901 px ist die mobile Sektion weiterhin ausgeblendet.
+- Galerie-Bedienung und übrige Inhalte unverändert. CSS-Version erhöht;
+  git diff --check bestanden.

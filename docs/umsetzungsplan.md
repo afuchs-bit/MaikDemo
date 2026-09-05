@@ -1189,3 +1189,12 @@ Links daneben steht „Zur Galerie →“, vollständig außerhalb des Fotos und
 Schrift auf derselben Mittelachse wie das Logo. Der kürzere Galerie-Link lässt beiden
 Elementen auch auf kleinen Handys Platz. Der Anfrage-CTA bleibt unter den persönlichen
 Texten. Neue Assets oder Änderungen an der Wischfunktion sind nicht erforderlich.
+
+
+**AP-183, exakt das Blumenmotiv des Headers (05.09.2026):** Das Hero-Wasserzeichen
+am Foto wird durch die originale Blütengruppe des mobilen Headers ersetzt. Ein SVG-
+Sichtfenster (210 × 180) zeigt den linken Teil derselben unveränderten Datei
+maik-rohdich-logo-mobile-horizontal-balanced.png. Keine neue Bildableitung, Nachzeichnung
+oder Farbänderung. Die Blüten sind in beiden mobilen Header-Varianten pixelidentisch.
+Die Höhe und der Überlappungsabstand folgen den Originalproportionen; Galerie-Link und
+Logo bleiben bei normaler Schrift auf derselben Mittelachse.
