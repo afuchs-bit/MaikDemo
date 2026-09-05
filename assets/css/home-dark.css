@@ -1562,7 +1562,18 @@ html.home-theme-dark .mr-willkommen__steg-mobil img {
 
 html.home-theme-dark .mr-siegel {
   --mr-dur: 60s;
-  --mr-radius: min(34vw, 222px);
+  /* AP-177: Alle Massen haengen an einer Buehnenvariable, damit Radius, Ring und
+     Foto nicht auseinanderlaufen. Der dritte Term ist der Fix fuer einen Fehler des
+     Entwurfs: 94vw ignoriert das 16px-Polster der Sektion, dadurch wurde die Sektion
+     bei 360px 370px breit und die Seite scrollte quer. Der alte Mobilblock hatte das
+     zufaellig verdeckt, weil er die Buehne auf 58vw zog. */
+  --mr-buehne: min(94vw, 640px, calc(100vw - 32px));
+  --mr-radius: calc(var(--mr-buehne) * .375);
+  /* Der zweite Term haelt die Plaketten auch im schmalen Desktopband frei: die
+     Plakettenbreite ist fest, der Rest skaliert - bei 601px blieben sonst nur
+     3,8px Luft. So laeuft das Foto von 601px an weich auf die vollen 46 % hoch,
+     die es ab rund 740px erreicht. */
+  --mr-foto: min(46%, calc(46vw - 46px));
   color: var(--ink);
   display: flex;
   flex-direction: column;
@@ -1573,7 +1584,7 @@ html.home-theme-dark .mr-siegel {
 html.home-theme-dark .mr-siegel__buehne {
   position: relative;
   aspect-ratio: 1 / 1;
-  width: min(94vw, 640px);
+  width: var(--mr-buehne);
   max-width: 100%;
   margin: 0 auto;
 }
@@ -1608,11 +1619,17 @@ html.home-theme-dark .mr-siegel__ring {
   stroke-width: 1;
 }
 
+/* AP-177: von 34 % auf 46 % der Buehne (218 -> 294px). Der Platz dafuer kommt aus
+   der Plakettenbreite, nicht aus dem Radius - siehe Kommentar bei __chip.
+   Zentriert ueber die Mitte statt ueber inset, weil die Groesse jetzt variabel ist. */
 html.home-theme-dark .mr-siegel__foto {
   position: absolute;
-  inset: 33%;
-  width: 34%;
-  height: 34%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--mr-foto);
+  aspect-ratio: 1 / 1;
+  height: auto;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--line);
@@ -1623,23 +1640,30 @@ html.home-theme-dark .mr-siegel__foto {
 html.home-theme-dark .mr-siegel__orbit {
   position: absolute;
   inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 html.home-theme-dark .mr-siegel__plakette {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 190px;
-  margin-left: -95px;
+  width: 150px;
+  margin-left: -75px;
   transform: rotate(var(--winkel)) translateY(calc(var(--mr-radius) * -1)) rotate(calc(var(--winkel) * -1));
 }
 
+/* AP-177: 190px waren fuer die alten Volltexte noetig. Seit die Plaketten je ein
+   Wort tragen, reichen 150px - das laengste ("Ausbildungsbetrieb") misst 121px,
+   mit Polster und Rand 147px. Der frei werdende Platz geht an das Foto: bei 46 %
+   Kreis bleiben so 14,7px Luft zur naechsten Plakettenecke statt -22,1px. */
 html.home-theme-dark .mr-siegel__chip {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 190px;
+  width: 150px;
   min-height: 44px;
   padding: 8px 12px;
   border: 1px solid var(--line);
@@ -1649,26 +1673,6 @@ html.home-theme-dark .mr-siegel__chip {
   text-align: center;
   transform: translateY(-50%);
   text-wrap: balance;
-}
-
-html.home-theme-dark .mr-siegel__voll {
-  list-style: none;
-  margin: 28px auto 0;
-  padding: 0;
-  max-width: 520px;
-  width: 100%;
-}
-
-html.home-theme-dark .mr-siegel__voll li {
-  border-top: 1px solid var(--line);
-  padding: 8px 6px;
-  font: 400 14px/1.5 var(--body);
-  color: var(--ink-2);
-  text-align: center;
-}
-
-html.home-theme-dark .mr-siegel__voll li:last-child {
-  border-bottom: 1px solid var(--line);
 }
 
 /* Entwurf: #17191E auf #FAF8F1 - auf dunklem Grund waere der Knopf unsichtbar.
@@ -1711,19 +1715,32 @@ html.home-theme-dark .mr-siegel__mikro {
   text-align: center;
 }
 
-/* Unter 600px loest sich der Ring auf: Kreis, Liste, CTA. Unveraendert. */
+/* AP-177: Der Entwurf loeste den Ring unter 600px auf und gab die ganze Buehne dem
+   Foto. Der Ring bleibt jetzt auf allen Breiten stehen - dafuer muss das Foto hier
+   zurueck, sonst liegen die Plaketten darauf. Gemessen bei 360px Breite:
+   14,0px Luft zwischen Foto und Plakette, 10,6px zum Bildrand.
+   10px ist der kleinste Grad, bei dem "Ausbildungsbetrieb" einzeilig in 107px passt
+   (89px Text + 16px Polster + 2px Rand). */
 @media (max-width: 600px) {
-  html.home-theme-dark .mr-siegel__orbit,
-  html.home-theme-dark .mr-siegel__deko,
-  html.home-theme-dark .mr-siegel__dreh { display: none; }
-
-  html.home-theme-dark .mr-siegel__buehne { width: min(58vw, 240px); }
-
-  html.home-theme-dark .mr-siegel__foto {
-    inset: 0;
-    width: 100%;
-    height: 100%;
+  html.home-theme-dark .mr-siegel {
+    --mr-radius: calc(var(--mr-buehne) * .36);
+    --mr-foto: 30%;
   }
 
-  html.home-theme-dark .mr-siegel__voll { margin-top: 22px; }
+  html.home-theme-dark .mr-siegel__plakette {
+    width: 107px;
+    margin-left: -53.5px;
+  }
+
+  html.home-theme-dark .mr-siegel__chip {
+    width: 107px;
+    min-height: 32px;
+    padding: 6px 8px;
+    font-size: 10px;
+    border-radius: 16px;
+  }
+
+  /* Der Ring folgt dem kleineren Plakettenradius. r als CSS-Eigenschaft ist SVG2;
+     wo das fehlt, bleibt r=225 aus dem Markup - ein Unterschied von 5px. */
+  html.home-theme-dark .mr-siegel__ring { r: 216px; }
 }
