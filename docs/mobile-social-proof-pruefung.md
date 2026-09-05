@@ -525,3 +525,24 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Bei 393 × 852 und 402 × 874 CSS-Pixeln erscheinen beide Antworten mit
   identischer Höhe von 91,17 px über jeweils drei Zeilen. Kein horizontaler
   Überstand; keine CSS- oder Bedienänderung.
+
+
+## AP-210 – Anfrage-CTA mit „MIT MAIK“-Stempel (05.09.2026)
+
+- Standardpfeil vollständig entfernt; sichtbare Beschriftung und zugänglicher
+  Name lauten „Gartenwunsch besprechen“ beziehungsweise „Gartenwunsch mit Maik
+  besprechen“.
+- Eigenständige gelbe Vektorfläche mit zweizeiligem „MIT MAIK“ innerhalb der
+  diagonalen rechten Ecke ergänzt.
+- Mindesthöhe auf 64 px, Beschriftung auf bis zu 18 px und Gewicht 800 erhöht.
+- Linkziel und gelber Fokusrahmen bleiben erhalten; Übergänge werden bei
+  reduzierter Bewegung deaktiviert.
+- CSS-Cachekennung auf `20260905an` erhöht.
+- Bei 393 × 852 und 402 × 874 CSS-Pixeln misst der CTA 345 × 64 px
+  beziehungsweise 354 × 64 px. Beschriftung und Stempel bleiben einzeilig;
+  zwischen beiden verbleiben mindestens 4,74 px sichtbarer Freiraum.
+- Bei 200 % Beschriftungsgröße wächst der CTA auf 104 px Höhe. Der Text bricht
+  ausschließlich zwischen ganzen Wörtern um und bleibt ohne Überlagerung neben
+  dem Stempel. Kein horizontaler Seitenüberstand.
+- Laufzeit-Linkziel `#anfrage`, zugänglicher Name, gelber Fokusrahmen und
+  praktisch deaktivierte Übergangsdauer bei reduzierter Bewegung geprüft.

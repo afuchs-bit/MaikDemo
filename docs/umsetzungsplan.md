@@ -1439,3 +1439,16 @@ Die erste Antwort verweist auf häufig mögliche kurzfristige Einsätze, ohne ei
 generelle Verfügbarkeit zu versprechen. Das zweite Paar lautet „Im Urlaub oder
 einfach wenig Zeit?“ und beschreibt Maiks regelmäßige Gartenpflege während der
 Abwesenheit. Gestaltung und zugängliche Absenderhinweise bleiben unverändert.
+
+
+**AP-210, Anfrage-CTA mit persönlichem Maik-Stempel (05.09.2026):** Der kleine
+Standardpfeil entfällt. Ein eigens gezeichneter gelber Pinselstempel sitzt in
+der diagonalen rechten Ecke und trägt zweizeilig „MIT MAIK“. Damit benennt das
+visuelle Element die persönliche Beratung, statt nur eine allgemeine Richtung
+anzuzeigen.
+
+Der grüne CTA wächst auf mindestens 64 px Höhe, seine Beschriftung auf bis zu
+18 px bei Gewicht 800. Die bestehende asymmetrische Vektorform bleibt erhalten
+und erhält einen dezenten Schatten. Der Stempel verwendet Maiks vorhandenes
+Logogelb `#F2E20C`; Buttonfarbe, Linkziel und Fokusfarbe bleiben unverändert.
+Bei reduzierter Bewegung entfallen sämtliche Übergänge.
