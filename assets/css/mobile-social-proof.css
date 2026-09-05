@@ -1,4 +1,4 @@
-/* AP-187: Zweiteiliger Hero-CTA neben der persoenlichen Einladung.
+/* AP-188: Gruener Gartenwunsch-CTA wieder direkt unter der Bildfolge.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -223,6 +223,51 @@
     height: auto;
     filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
     pointer-events: none;
+  }
+
+  /* Originaler CTA aus AP-186, jetzt auf der gemeinsamen Bildbreite.
+     40px Abstand lassen dem Blumensiegel am Bildrand ausreichend Platz. */
+  .mobile-proof-request {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    max-width: 640px;
+    min-height: 56px;
+    margin: 40px auto 0;
+    padding: 16px 22px;
+    border-radius: 14px;
+    color: #171916;
+    font: 700 1rem/1.4 var(--display);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+
+  .mobile-proof-request > span:first-of-type {
+    min-width: 0;
+    hyphens: auto;
+  }
+
+  .mobile-proof-request__shape {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    fill: var(--home-lime);
+    pointer-events: none;
+  }
+
+  .mobile-proof-request:hover .mobile-proof-request__shape {
+    fill: #9DD34F;
+  }
+
+  .mobile-proof-request:focus-visible {
+    outline: 2px solid var(--home-focus);
+    outline-offset: 5px;
   }
 
   .mobile-proof-invitation {

@@ -7,21 +7,22 @@
   const mobile = window.matchMedia('(max-width: 900px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  // Nur dieser CTA: Der bestehende globale Handler zielt auf den Assistenten,
+  // Nur die CTAs dieser Sektion: Der globale Handler zielt auf den Assistenten,
   // der bei aktiver Kurzanfrage verborgen ist. Auswahl und Eingaben bleiben bestehen.
-  const requestLink = section.querySelector('.mobile-proof-invitation__cta');
-  // Ohne dieses Modul bleibt #kontakt als sichtbares natives Sprungziel nutzbar.
-  if (requestLink) requestLink.href = '#anfrage';
-  requestLink?.addEventListener('click', (event) => {
-    if (!mobile.matches || event.defaultPrevented || event.button !== 0
-        || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const entry = document.querySelector('[data-anf-vorwahl]');
-    if (!entry) return;
-    event.preventDefault();
-    if (location.hash !== '#anfrage') history.pushState(null, '', event.currentTarget.href);
-    entry.tabIndex = -1;
-    entry.focus({ preventScroll: true });
-    entry.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'start' });
+  section.querySelectorAll('.mobile-proof-request, .mobile-proof-invitation__cta').forEach((requestLink) => {
+    // Ohne dieses Modul bleibt #kontakt als sichtbares natives Sprungziel nutzbar.
+    requestLink.href = '#anfrage';
+    requestLink.addEventListener('click', (event) => {
+      if (!mobile.matches || event.defaultPrevented || event.button !== 0
+          || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const entry = document.querySelector('[data-anf-vorwahl]');
+      if (!entry) return;
+      event.preventDefault();
+      if (location.hash !== '#anfrage') history.pushState(null, '', event.currentTarget.href);
+      entry.tabIndex = -1;
+      entry.focus({ preventScroll: true });
+      entry.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'start' });
+    });
   });
 
   const gallery = section.querySelector('[data-mobile-proof-gallery]');

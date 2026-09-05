@@ -1247,3 +1247,17 @@ damit auf Handys keine durchgehend schmale, lange Textspalte entsteht. Ein
 schriftabhängiger Container-Breakpoint stellt die Gruppe bei stark vergrößerter
 Schrift über den Text. Blumensiegel, Bilder, Kennzahlen, Hero, Desktop und alte
 Bestandsbereiche bleiben erhalten. Keine Änderungen an der JavaScript-Bedienung.
+
+
+**AP-188, grünen Gartenwunsch-Button unter den Bildern wiederherstellen (05.09.2026):**
+Der Auftraggeber legt ab jetzt iPhone 15 Pro und iPhone 16 Pro als ausschließlichen
+Gestaltungs- und Prüfrahmen fest. Verwendete Hochformat-Prüfraster: 393 × 852 und
+402 × 874 CSS-Pixel. Die bestehende mobile Sichtbarkeitsgrenze bleibt erhalten;
+es werden keine gerätespezifischen Ausblendungen ergänzt.
+
+„Gartenwunsch besprechen →“ steht wieder in der ursprünglichen grünen Vektorform
+aus AP-186 direkt unter der Bildfolge. Kontur, Farbe und Typografie sind übernommen;
+der Button füllt die Bildbreite und hält 40 px Abstand zum Foto für das Blumensiegel.
+Der zweiteilige CTA und beide Texte bleiben für den gewünschten Vergleich stehen.
+Beide Anfrage-Links verwenden denselben vorhandenen Sprung zum sichtbaren Formular;
+ohne Erweiterung bleibt #kontakt als natives Ziel erhalten.

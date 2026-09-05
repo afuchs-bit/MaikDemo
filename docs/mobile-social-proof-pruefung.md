@@ -302,3 +302,26 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   Homepage außerhalb der mobilen Sektion bis auf die eigene CSS-Version identisch.
   Hero, Kennzahlen, Bildkontur, Originalgrafiken und JavaScript unverändert.
 - git diff --check bestanden. Temporäre Schriftprüfseite nach der Prüfung entfernt.
+
+
+## AP-188 – Gartenwunsch-Button wieder unter der Bildfolge (05.09.2026)
+
+- Neuer Prüfrahmen des Auftraggebers: ausschließlich iPhone 15 Pro und iPhone 16 Pro.
+  Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln. Die temporären Prüfseiten
+  entfernen nur den Platzbedarf des Desktop-Scrollbalkens, sodass 393 bzw. 402 px
+  tatsächliche Inhaltsbreite zur Verfügung stehen. Kein Test auf physischen iPhones.
+- Auf beiden Breiten visuell geprüft: Button 345 bzw. 354 px breit, 56 px hoch,
+  Beschriftung einzeilig. 40 px Abstand zum Foto und mindestens 17 px freie Distanz
+  zum Blumensiegel. Kein horizontaler Seitenüberstand bei normaler Schrift.
+- SVG-Pfad automatisiert mit AP-186 verglichen: identisch. Ursprüngliches Grün
+  #8CC63F, dunkle Schrift und ursprüngliche Typografie wiederhergestellt.
+- Grüner Button und vorhandener „Maik kontaktieren“-Link tatsächlich angeklickt:
+  beide führen zu #anfrage und fokussieren den sichtbaren Formulareinstieg unter
+  dem Header. Kein Formular abgesendet. Bildwechsel-Code unverändert.
+- 200 % Schrift bei 393 px: Button wächst auf ca. 122 px Höhe, Beschriftung auf
+  zwei Zeilen. Fokusrahmen vollständig sichtbar; Buttonbreite/Scrollbreite 345 px,
+  neue Sektion 393 px ohne eigenen Überstand. Bekannte Bestandsbereiche erzeugen
+  bei dieser Schriftgröße weiterhin einen Dokumentüberstand (448 px).
+- Gesamtes vorhandenes Homepage-Markup gegen AP-187 verglichen: identisch nach
+  Abzug des ergänzten Buttons und beider Cache-Versionen. JavaScript-Syntax und
+  git diff --check bestanden. Temporäre iPhone-Prüfseiten anschließend entfernt.
