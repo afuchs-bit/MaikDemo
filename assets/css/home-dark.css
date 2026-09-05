@@ -2065,6 +2065,47 @@ html.home-theme-dark .mr-ueber__video {
   max-height: 62svh;
   object-fit: cover;
   display: block;
+
+  /* AP-181: Das Video soll gar nicht bedienbar sein. controls ist im Markup
+     entfallen; pointer-events: none nimmt zusaetzlich das Kontextmenue beim
+     Rechtsklick (Herunterladen, Wiedergabesteuerung, Schleife) und jede Reaktion
+     auf die Maus. Ohne diese Zeile bliebe das Video anklickbar, obwohl keine
+     Leiste zu sehen ist. */
+  pointer-events: none;
+}
+
+/* --- Titel ueber dem Band ------------------------------------------------
+   Baloo 2 ist die runde Zweitschrift des Hauses und steht im @font-face-Block
+   oben in dieser Datei.
+
+   Eine eigene Regel ist noetig: Die bestehende Comic-Regel haengt an
+   .mr-willkommen__gross .mr-comic, eine Klasse allein greift hier also nicht.
+
+   Aufrecht, nicht kursiv: Es existiert nur ein aufrechter Schnitt (700). Das
+   kursive "Willkommen" entsteht durch synthetische Schraegstellung - bei einem
+   Titel mit Ziffern faellt das unangenehm auf. Die mobile H1 weiter oben in
+   dieser Datei setzt die Schrift ebenfalls aufrecht. */
+html.home-theme-dark .mr-ueber__videokopf { margin-bottom: clamp(12px, 1.4vw, 18px); }
+
+html.home-theme-dark .mr-ueber__videotitel {
+  margin: 0;
+  font-family: "Baloo 2", cursive;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.1vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+/* --- Text unter dem Band ------------------------------------------------- */
+html.home-theme-dark .mr-ueber__videotext { margin-top: clamp(14px, 1.8vw, 22px); }
+
+html.home-theme-dark .mr-ueber__videotext p {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--ink-2);
+  font-size: var(--type-section-lead-size);
+  line-height: 1.7;
 }
 
 /* --- Block 5: NRW-Karte, links gesetzt, rund 40% der Inhaltsbreite ------ */

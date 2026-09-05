@@ -783,10 +783,15 @@ html.home-theme-dark body { background-color: #171916; }
        der Block ins Sichtfeld kommt. Deshalb preload="none" und KEIN
        autoplay-Attribut: der Start kommt aus ueber-video.js, sonst wuerden zwei
        Mechaniken gegeneinander laufen und die 9 MB laeden bei jedem Seitenaufruf.
-       controls bleibt: Bewegung, die von selbst startet und laenger als fuenf
-       Sekunden laeuft, muss sich anhalten lassen (WCAG 2.2.2) - bei 0,75-facher
-       Geschwindigkeit sind es 6,95 s. Die Geschwindigkeit selbst setzt das Skript,
-       fuer playbackRate gibt es kein HTML-Attribut.
+       AP-181: controls ist entfallen - das Video soll gar nicht bedienbar sein.
+       Dazu traegt es in home-dark.css pointer-events: none, sonst bliebe es
+       anklickbar und boete ueber das Kontextmenue Herunterladen und Steuerung an.
+       Ohne controls liegt es ausserdem nicht in der Tabreihenfolge.
+       ACHTUNG, bewusste Abweichung: Damit laesst sich die Bewegung nicht mehr
+       anhalten. WCAG 2.2.2 verlangt das bei selbst startender Bewegung ueber fuenf
+       Sekunden - hier sind es 6,95 s je Umlauf. Vom Auftraggeber nach Rueckfrage so
+       entschieden, siehe docs/offene-punkte.md, AP-181.
+       Die Geschwindigkeit setzt das Skript, fuer playbackRate gibt es kein Attribut.
 
        Kein poster-Attribut: Auf dem Entwicklungsrechner liegt kein ffmpeg, ein
        Standbild laesst sich nicht erzeugen. Browser zeigen mit preload="metadata"
@@ -796,8 +801,12 @@ html.home-theme-dark body { background-color: #171916; }
        [OFFEN: Die Aufnahme ist KI-generiert und bildet den realen Mustergarten
         nicht ab. Vom Auftraggeber so entschieden, siehe docs/offene-punkte.md,
         AP-179.] -->
+  <div class="container mr-ueber__videokopf">
+    <h3 class="mr-ueber__videotitel">1.500 m² Mustergarten</h3>
+  </div>
+
   <div class="mr-ueber__buehne">
-    <video class="mr-ueber__video" muted loop playsinline controls preload="none"
+    <video class="mr-ueber__video" muted loop playsinline preload="none" tabindex="-1"
            aria-label="Rundgang durch den Mustergarten">
       <source src="assets/video/mustergarten.mp4" type="video/mp4">
       <p>Ihr Browser kann dieses Video nicht abspielen.
@@ -806,8 +815,17 @@ html.home-theme-dark body { background-color: #171916; }
   </div>
 
   <!-- Block 4 - Text unter dem Video, wieder im normalen Raster, ohne Umfluss.
-       [OFFEN: Wortlaut wird nachgeliefert. Stichworte aus der Skizze: "Damit wir uns
-        Zeit nur fuer Sie nehmen", "Inspiration Mustergarten".] -->
+       Wortlaut vom Auftraggeber. Angeglichen: fehlendes "nach" in "nur nach
+       Absprache", doppelte Leerzeichen, Halbgeviertstriche wie im Rest der Seite,
+       Schlusspunkt. "1.500 m²" folgt der Schreibweise aus Proofleiste und Kennzahl.
+       Inhaltlich gedeckt: Teil B, Zeile 75 - "Besuche vor Ort: ausschliesslich nach
+       vorheriger Terminvereinbarung". -->
+  <div class="container mr-ueber__videotext">
+    <p>Hier sehen Sie Materialien, Pflanzen und Wege in echt, bevor Sie sich
+       entscheiden müssen – Inspiration zum Anfassen für Ihren eigenen Garten.
+       Besichtigungen nur nach Absprache – dann können wir uns Zeit nur für Sie
+       nehmen.</p>
+  </div>
 
   <!-- Block 5 - NRW-Karte, aus der Proof-Sektion hierher VERSCHOBEN.
        Nicht kopiert: die Karten-SVG fuehrt eigene IDs, unter anderem den Filter

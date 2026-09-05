@@ -291,9 +291,45 @@ und startet von selbst.
 | Geschwindigkeit | 0,75×. `playbackRate` gibt es **nur** als JavaScript-Eigenschaft, kein HTML-Attribut — deshalb `assets/js/ueber-video.js`. Die Rate wird bei `loadedmetadata` **und** bei jedem `play` gesetzt, weil manche Browser sie nach einem `load()` auf 1 zurückstellen. |
 | Laufzeit | aus 5,21 s werden **6,95 s** |
 | Datenmenge | Start ist ans Sichtfeld gekoppelt (`preload="none"` + `IntersectionObserver`). Wer den Block nie erreicht, lädt die 9 MB nicht. Ausserhalb des Blicks hält das Video an. |
-| Anhalten | `controls` bleibt. Bewegung, die von selbst startet und länger als 5 s läuft, muss sich nach WCAG 2.2.2 anhalten lassen — bei 6,95 s ist das der Fall. |
+| Anhalten | **Seit AP-181 nicht mehr möglich** — siehe eigenen Abschnitt unten. |
 | Bewegungsreduzierung | Bei `prefers-reduced-motion: reduce` **kein** Autostart. Im Vorschau-Panel liess sich die Einstellung nicht emulieren; stattdessen wurde die Bedingung direkt geprüft, indem `matchMedia` umgebogen wurde. Auf einem echten Gerät mit der Einstellung sollte das noch einmal gegengeprüft werden. |
 
 **Offen:** Ob ein automatisch startendes Video über die volle Breite inhaltlich gewollt ist,
 sobald der Betriebsinhaber die Seite sieht — es ist das auffälligste Element der Startseite
 und zeigt einen Garten, den es so nicht gibt (siehe Abschnitt oben).
+
+### AP-181 — Das Video lässt sich nicht mehr anhalten (WCAG 2.2.2)
+
+**Vom 05.09.2026.** Auf Wunsch des Auftraggebers ist das Video **nicht bedienbar**: keine
+Steuerleiste, kein Kontextmenü, keine Reaktion auf die Maus (`controls` entfernt,
+`pointer-events: none`, `tabindex="-1"`).
+
+**Damit lässt sich die Bewegung nicht mehr anhalten.** Das Video startet von selbst und
+läuft endlos, effektiv 6,95 s je Umlauf.
+
+**WCAG 2.2.2 (Pause, Stop, Hide)** verlangt für Bewegung, die automatisch startet und
+länger als fünf Sekunden dauert, eine Möglichkeit zum Anhalten, Stoppen oder Ausblenden.
+Diese Möglichkeit gibt es nicht mehr. Der Auftraggeber hat das nach Rückfrage im Wissen um
+die Folge so entschieden.
+
+**Was als Milderung bleibt:**
+
+- Bei `prefers-reduced-motion: reduce` startet das Video gar nicht erst.
+- Außerhalb des Sichtfelds hält es an.
+- Es ist stumm und nicht fokussierbar, erzeugt also keine Tastaturfalle.
+
+**Zu klären:** ob das so bleiben soll. Eine Variante, die optisch identisch wäre und die
+Anforderung erfüllte: Klick auf das Video hält an, erneuter Klick startet wieder — ohne
+sichtbare Steuerleiste. Das war als Option angeboten und wurde nicht gewählt; es lässt sich
+jederzeit nachrüsten.
+
+### AP-181 — Titel und Text am Videoblock
+
+Titel „1.500 m² Mustergarten" als `h3` über dem Band, in Baloo 2 (der Zweitschrift des
+Hauses), aufrecht. Die Schreibweise folgt Hero-Proofleiste und Kennzahl der Proof-Sektion;
+geliefert war „1500m2".
+
+Der Text darunter stammt vom Auftraggeber. Angeglichen: fehlendes „nach" in „nur nach
+Absprache", doppelte Leerzeichen, Halbgeviertstriche, Schlusspunkt. **Inhaltlich gedeckt**
+durch Teil B, Zeile 75: „Besuche vor Ort — ausschließlich nach vorheriger
+Terminvereinbarung."
