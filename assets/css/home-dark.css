@@ -2068,3 +2068,192 @@ html.home-theme-dark .mr-willkommen__steg-mobil img {
     min-height: clamp(580px, 53vw, 810px);
   }
 }
+
+/* ==================================================================
+   AP-179 · Ueber-uns-Sektion
+
+   Aufbau nach der Skizze des Auftraggebers. Nur vorhandene Token der dunklen
+   Farbwelt, keine neuen Farbwerte.
+   ================================================================== */
+
+html.home-theme-dark .mr-ueber {
+  padding-block: var(--space-section);
+  background: var(--bg);
+}
+
+/* --- Block 1: Kopfzeile. Ohne Linie darueber, ohne Icon - so skizziert. --- */
+html.home-theme-dark .mr-ueber__kopf { margin-bottom: var(--space-section-head); }
+
+html.home-theme-dark .mr-ueber__kopf h2 { margin: 0; }
+
+html.home-theme-dark .mr-ueber__unter {
+  margin: var(--space-title-subtext) 0 0;
+  color: var(--ink-2);
+  font-family: var(--display);
+  font-size: var(--type-subsection-title-size);
+  line-height: 1.15;
+}
+
+/* --- Block 2: Text mit umflossenem Foto ---------------------------------
+   float statt Raster ist hier keine Geschmacksfrage: Nur ein Float laesst die
+   letzte Zeile UNTER dem Bild weiterlaufen. Ein zweispaltiges Raster haelt den
+   Text stur in seiner Spalte, auch wenn das Bild laengst zu Ende ist.
+
+   Die Textbreite wird NICHT gesetzt. Sie ergibt sich aus dem, was der Float
+   uebriglaesst - eine eigene Breite am Absatz wuerde den Umfluss aufheben.
+
+   Nebeneinander bleibt es auch auf Mobil. Gemessen bei 375px: Inhaltsbreite
+   363px, davon rund 52% Text = 189px, bei 7,27px je Zeichen also 26 Zeichen je
+   Zeile (typografisch empfohlen: 45-75). Der Auftraggeber hat das in Kenntnis
+   dieser Zahl so entschieden - siehe docs/offene-punkte.md, AP-179. */
+html.home-theme-dark .mr-ueber__foto {
+  float: right;
+  width: 42%;
+  margin: 0 0 clamp(14px, 1.6vw, 22px) clamp(18px, 3vw, 42px);
+}
+
+html.home-theme-dark .mr-ueber__foto img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+html.home-theme-dark .mr-ueber__foto figcaption {
+  margin-top: .55rem;
+  color: var(--ink-mute);
+  font-size: .8125rem;
+  line-height: 1.45;
+}
+
+html.home-theme-dark .mr-ueber__text {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: var(--type-section-lead-size);
+  line-height: 1.7;
+}
+
+/* Der Float ragt sonst aus dem Container heraus und schiebt sich unter den
+   naechsten Block. */
+html.home-theme-dark .mr-ueber__flow::after { content: ""; display: block; clear: both; }
+
+/* --- Block 3: randlose Buehne fuer das Video ----------------------------
+   Der Ausbruch sitzt an der HUELLE, nicht am Video: styles.css:190 setzt
+   `img, svg, video { max-width: 100% }` und wuerde ein direktes width:100vw
+   am Video wieder kappen.
+
+   100vw schliesst die Scrollleiste ein. Das faengt das bereits vorhandene
+   body { overflow-x: hidden } (styles.css:187) ab; der klebende Header bleibt
+   funktionsfaehig, weil html der Scroll-Container ist und die Regel auf body
+   steht. Beides ist nachgemessen. */
+html.home-theme-dark .mr-ueber__buehne {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  /* AP-213: Der Titel soll knapp ueber dem Video stehen. Die frueheren 64px kamen
+     NICHT vom Titel (dessen Abstand betrug 16,8px), sondern von diesem Rand: ein
+     margin-block setzt oben wie unten denselben Wert, und beide Raender fielen
+     zusammen. Deshalb getrennt - oben knapp, unten bleibt der Sektionsabstand,
+     sonst klebte der Text darunter am Band. */
+  margin-top: clamp(6px, .8vw, 10px);
+  margin-bottom: var(--space-section-compact);
+  background: var(--bg-dark);
+}
+
+/* Das Video misst nativ 720x544 - fast 4:3. Randlos ueber 1200px gezogen ergaebe
+   das einen 907px hohen Block, der die Seite erschlaegt und auf gaengigen Fenstern
+   nicht mehr in den Blick passt. Die Skizze zeigt ein BAND, kein Quadrat.
+   Deshalb ein festes Seitenverhaeltnis mit object-fit: cover - der Film wird oben
+   und unten beschnitten statt verzerrt. max-height deckelt zusaetzlich auf niedrigen
+   Fenstern.
+   Hinweis zur Schaerfe: Die Quelle ist nur 720px breit und wird ab etwa 720px
+   Fensterbreite hochskaliert. Das laesst sich hier nicht beheben, es braeuchte eine
+   hoeher aufgeloeste Fassung. Vermerkt in docs/offene-punkte.md. */
+html.home-theme-dark .mr-ueber__video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 62svh;
+  object-fit: cover;
+  display: block;
+
+  /* AP-181: Das Video soll gar nicht bedienbar sein. controls ist im Markup
+     entfallen; pointer-events: none nimmt zusaetzlich das Kontextmenue beim
+     Rechtsklick (Herunterladen, Wiedergabesteuerung, Schleife) und jede Reaktion
+     auf die Maus. Ohne diese Zeile bliebe das Video anklickbar, obwohl keine
+     Leiste zu sehen ist. */
+  pointer-events: none;
+}
+
+/* --- Titel ueber dem Band ------------------------------------------------
+   Baloo 2 ist die runde Zweitschrift des Hauses und steht im @font-face-Block
+   oben in dieser Datei.
+
+   Eine eigene Regel ist noetig: Die bestehende Comic-Regel haengt an
+   .mr-willkommen__gross .mr-comic, eine Klasse allein greift hier also nicht.
+
+   Aufrecht, nicht kursiv: Es existiert nur ein aufrechter Schnitt (700). Das
+   kursive "Willkommen" entsteht durch synthetische Schraegstellung - bei einem
+   Titel mit Ziffern faellt das unangenehm auf. Die mobile H1 weiter oben in
+   dieser Datei setzt die Schrift ebenfalls aufrecht. */
+/* AP-213: Zusammenfallende Raender - der Abstand zum Band ist das Maximum aus
+   diesem Rand und dem margin-top der Buehne, nicht deren Summe. Nur die Buehne
+   zu senken brachte deshalb nichts: gemessen blieben 17px, weil dieser Wert
+   (16,8px) der groessere war. Beide muessen klein sein. */
+/* AP-214: Der Titel stiess ohne Abstand an den Fliesstext darueber - gemessen 0px.
+   Folge von AP-213: dort ging es darum, ihn an das VIDEO heranzuruecken; nach oben
+   hatte der Kopf nie einen Rand, und weder der Absatz noch der Umflussblock
+   bringen einen mit.
+   --space-section-compact und keine gegriffene Zahl: derselbe Wert trennt in dieser
+   Sektion bereits Videoband von Text und Text von Karte. */
+html.home-theme-dark .mr-ueber__videokopf {
+  margin-top: var(--space-section-compact);
+  margin-bottom: clamp(6px, .8vw, 10px);
+}
+
+/* AP-213: Look des Wortes "Garten" aus dem mobilen Hero.
+   Dort ist "Garten" KEIN Text, sondern ein handgezeichneter Pinselschriftzug
+   (assets/img/hero/garten-schriftzug.png, 800x196). Die Buchstaben lassen sich nicht
+   uebernehmen - die Datei schreibt "Garten" und kann nichts anderes sagen.
+   Uebertragbar ist der Charakter: das grelle Gruen und die Neigung.
+   Die Farbe ist aus dem PNG ausgelesen, nicht geschaetzt: 43.187 Bildpunkte tragen
+   exakt #56E607 - und genau dieser Wert steht bereits als --mobile-logo-green in
+   styles.css :root. Kein neuer Ton.
+   Die Neigung entsteht synthetisch; es gibt nur einen aufrechten Baloo-2-Schnitt.
+   Der Willkommen-Text macht es beim Wort "Willkommen" genauso. */
+html.home-theme-dark .mr-ueber__videotitel {
+  margin: 0;
+  font-family: "Baloo 2", cursive;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(1.7rem, 3.1vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  color: var(--mobile-logo-green);
+}
+
+/* --- Text unter dem Band ------------------------------------------------- */
+html.home-theme-dark .mr-ueber__videotext { margin-top: clamp(14px, 1.8vw, 22px); }
+
+html.home-theme-dark .mr-ueber__videotext p {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--ink-2);
+  font-size: var(--type-section-lead-size);
+  line-height: 1.7;
+}
+
+/* --- Block 5: NRW-Karte, links gesetzt, rund 40% der Inhaltsbreite ------ */
+html.home-theme-dark .mr-ueber__karte { margin-top: var(--space-section-compact); }
+
+html.home-theme-dark .mr-ueber__karte .proof-map {
+  width: 40%;
+  min-width: 260px;
+  margin: 0;
+  align-items: flex-start;   /* Beschriftung linksbuendig zur Bildkante */
+  text-align: left;
+}
+
+/* --- Alte Stelle: ohne die Karte bleibt nur der Kleinauftrags-Block ------
+   .proof-feature ist in styles.css an drei Stellen zweispaltig (817, 1023,
+   1731). Die Korrektur steht hier statt dort, weil die Klasse nur auf der
+   Startseite vorkommt und home-dark.css nur von ihr geladen wird - ein
+   ?v=-Zaehler statt eines Durchlaufs ueber 36 Seiten. */
+html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }

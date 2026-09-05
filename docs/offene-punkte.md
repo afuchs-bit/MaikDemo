@@ -198,3 +198,179 @@ Das greift seit dieser Änderung zu weit. Nicht sofort korrigiert, weil jede Än
 `styles.css` den `?v=`-Durchlauf über 37 HTML-Dateien nach sich zieht — für einen
 Kommentar ohne sichtbare Wirkung. Beim nächsten Durchgang, der die Datei ohnehin anfasst,
 mitnehmen. Dort wird auch die dann tote Regel `.proof-klein-list p` fällig.
+
+## AP-179 — Über-uns-Sektion: Aussagen, Entscheidungen, fehlendes Material
+
+**Vom 05.09.2026.** Die Sektion steht zwischen Galerie-Teaser und Leistungen.
+
+### Drei Formulierungen aus dem gelieferten Text stehen nicht in Teil B
+
+Der Auftraggeber hat sie nach Rückfrage **ausdrücklich unverändert** übernommen haben
+wollen. Damit später niemand rätselt, woher sie stammen:
+
+| Formulierung | Konflikt |
+|---|---|
+| „eigenem Maschinenpark" | Teil B, Zeile 43: „Keine Mitarbeiterzahlen, keine Fuhrparkgrößen, kein Teamfoto — **ausdrücklicher Wunsch des Betriebsinhabers**" |
+| „eigenen Fachkräften" | grenzt an eine Personalangabe |
+| „termingerecht umgesetzt" | Terminversprechen; Teil B führt Reaktionszeiten als offenen Punkt |
+
+**Zu klären:** ob der Betriebsinhaber diese drei Aussagen mitträgt — die Vorgabe stammt
+laut Teil B von ihm selbst.
+
+### Was geändert wurde
+
+Der gelieferte Text nannte **„Seit über 25 Jahren"**. Angeglichen auf **20**: Die Seite
+nennt 2003 als Gründung, und der
+Willkommen-Text weiter oben „Seit über 20 Jahren". Derselbe Fall war bei AP-174 schon
+einmal so entschieden worden.
+
+### Zeilenlänge auf Mobil — bewusst so entschieden
+
+Block 2 steht **auch auf Mobil** nebeneinander, wie skizziert. Gemessen bei 375 px:
+Inhaltsbreite 363 px, Textspalte 52 % = 189 px, bei 7,27 px je Zeichen also **26 Zeichen
+pro Zeile**. Typografisch empfohlen sind 45–75. Der Auftraggeber hat das in Kenntnis dieser
+Zahl bestätigt. Falls es sich im Betrieb als zu eng erweist: ein Umbruchpunkt bei ~600 px
+brächte rund 48 Zeichen.
+
+### Fehlendes Material — die Sektion ist unvollständig
+
+| Was | Wohin | Status |
+|---|---|---|
+| Foto für Block 2 | `assets/img/_src/` | fehlt; `figure` ist auskommentiert |
+| Mustergarten-Video | `assets/video/mustergarten.mp4` | **geliefert** — siehe eigenen Abschnitt unten |
+| Plakatbild zum Video | `assets/img/_src/` | fehlt — auf dem Entwicklungsrechner liegt kein `ffmpeg`, ein Standbild lässt sich nicht selbst erzeugen |
+| Bildunterschrift Block 2 | — | beginnt laut Skizze mit „Unser …" |
+| Text Block 4 | — | Stichworte: „Damit wir uns Zeit nur für Sie nehmen", „Inspiration Mustergarten" |
+
+**Wichtig für die Fotoauswahl:** Der Textumfluss ist eingerichtet, greift aber nur, wenn der
+Text **länger** ist als das Foto hoch.
+
+Der Fließtext wurde am 05.09.2026 gekürzt und misst jetzt nur noch **82 px** - drei Zeilen
+bei 1200 px Fensterbreite, zuvor 245 px. Ein 4:3-Foto bei 42 % Breite wäre 375 px hoch; der
+Text endete also fast 300 px **vor** dem Fotoende, und es liefe keine einzige Zeile darunter.
+
+Damit der in der Skizze gezeigte Umfluss überhaupt entsteht, müsste das Foto **flacher als
+etwa 5:1** sein. Das ist kein üblicher Bildausschnitt. Realistisch bleiben zwei Wege: auf den
+Umfluss verzichten und Text und Foto schlicht nebeneinanderstellen, oder den Text wieder
+verlängern. **Zu entscheiden, sobald das Foto vorliegt.**
+
+### Ebenfalls offen
+
+`assets/img/ueber/ueber-3` liegt um 90° gedreht vor — die Ableitung wurde ohne Beachtung
+der EXIF-Orientierung erzeugt. Vor einer Verwendung neu bauen.
+
+### Das Mustergarten-Video ist KI-generiert
+
+**Vom 05.09.2026.** Die gelieferte Datei stammt aus Midjourney — erkennbar am
+Ursprungsnamen `u1187684669_httpss.mj.run…`. Sie zeigt **nicht** den realen Mustergarten
+in Herne.
+
+Das steht in Spannung zu Grundregel 1 („Niemals Fakten erfinden") und zum Bildbestand
+dieses Projekts, in dem generiertes Material nicht als Referenzaufnahme dienen soll. Die
+Seite behauptet an mehreren Stellen etwas Konkretes: „1.500 m² Mustergarten in Herne",
+„Unser Mustergarten mit Sitz in Herne".
+
+**Der Auftraggeber hat nach Rückfrage entschieden, sie trotzdem als Mustergarten
+einzubauen.** Hier festgehalten, damit es bei einer späteren Prüfung nicht übersehen wird.
+
+**Zu klären:** ob der Betriebsinhaber das mitträgt — es geht um die Darstellung seines
+eigenen Betriebsgeländes gegenüber Kunden.
+
+### Technische Punkte zum Video
+
+| Punkt | Befund |
+|---|---|
+| Auflösung | **720 × 544**. Randlos hochskaliert auf 1,67× bei 1200 px und 2,22× bei 1600 px Fensterbreite. Auf dem Telefon wird sie herunterskaliert (0,52×) und ist dort scharf. Eine höher aufgelöste Fassung würde das beheben. |
+| Format | 4:3-nah. Ungeschnitten ergäbe das randlos einen 907 px hohen Block. Deshalb als Band gesetzt: `aspect-ratio: 16/9` mit `object-fit: cover`, gedeckelt auf 62 % Fensterhöhe. Der Film wird oben und unten beschnitten, nicht verzerrt. |
+| Dauer | 5,2 Sekunden |
+| Dateigröße | 9,0 MB, im Repository versioniert |
+| Plakatbild | keines. Ohne `ffmpeg` lässt sich kein Standbild erzeugen; Browser zeigen mit `preload="metadata"` das erste Einzelbild. Ein eigenes Plakatbild wäre trotzdem besser. |
+| Vorladen | **AP-180:** `preload="none"`, Start erst im Sichtfeld. Autostart würde sonst die 9 MB bei jedem Seitenaufruf laden, auch für Besucher, die den Block nie erreichen. Ein `IntersectionObserver` lädt und startet erst beim Erscheinen und hält beim Verlassen an. |
+
+### AP-180 — Autostart in Schleife, verlangsamte Wiedergabe
+
+**Vom 05.09.2026.** Auf Wunsch des Auftraggebers läuft das Video stumm, in Endlosschleife
+und startet von selbst.
+
+| Punkt | Umsetzung |
+|---|---|
+| Geschwindigkeit | **0,6×** (AP-182, zuvor 0,75). `playbackRate` gibt es **nur** als JavaScript-Eigenschaft, kein HTML-Attribut — deshalb `assets/js/ueber-video.js`. Die Rate wird bei `loadedmetadata` **und** bei jedem `play` gesetzt, weil manche Browser sie nach einem `load()` auf 1 zurückstellen. |
+| Laufzeit | aus 5,21 s werden **8,7 s** |
+| Untergrenze | Die Quelle hat **24 fps** (gemessen: 72 Bilder in 3 s bei Tempo 1). Verlangsamen fügt keine Bilder hinzu: 0,6× ergibt effektiv 14,4 fps, 0,5× nur 12, 0,4× nur 9,6. Unter etwa 15 fps beginnt eine Kamerafahrt sichtbar zu haken. Weiter verlangsamen ginge nur mit Quellmaterial höherer Bildrate. |
+| Datenmenge | Start ist ans Sichtfeld gekoppelt (`preload="none"` + `IntersectionObserver`). Wer den Block nie erreicht, lädt die 9 MB nicht. Ausserhalb des Blicks hält das Video an. |
+| Anhalten | **Seit AP-181 nicht mehr möglich** — siehe eigenen Abschnitt unten. |
+| Bewegungsreduzierung | Bei `prefers-reduced-motion: reduce` **kein** Autostart. Im Vorschau-Panel liess sich die Einstellung nicht emulieren; stattdessen wurde die Bedingung direkt geprüft, indem `matchMedia` umgebogen wurde. Auf einem echten Gerät mit der Einstellung sollte das noch einmal gegengeprüft werden. |
+
+**Offen:** Ob ein automatisch startendes Video über die volle Breite inhaltlich gewollt ist,
+sobald der Betriebsinhaber die Seite sieht — es ist das auffälligste Element der Startseite
+und zeigt einen Garten, den es so nicht gibt (siehe Abschnitt oben).
+
+### AP-181 — Das Video lässt sich nicht mehr anhalten (WCAG 2.2.2)
+
+**Vom 05.09.2026.** Auf Wunsch des Auftraggebers ist das Video **nicht bedienbar**: keine
+Steuerleiste, kein Kontextmenü, keine Reaktion auf die Maus (`controls` entfernt,
+`pointer-events: none`, `tabindex="-1"`).
+
+**Damit lässt sich die Bewegung nicht mehr anhalten.** Das Video startet von selbst und
+läuft endlos, effektiv 8,7 s je Umlauf.
+
+**WCAG 2.2.2 (Pause, Stop, Hide)** verlangt für Bewegung, die automatisch startet und
+länger als fünf Sekunden dauert, eine Möglichkeit zum Anhalten, Stoppen oder Ausblenden.
+Diese Möglichkeit gibt es nicht mehr. Der Auftraggeber hat das nach Rückfrage im Wissen um
+die Folge so entschieden.
+
+**Was als Milderung bleibt:**
+
+- Bei `prefers-reduced-motion: reduce` startet das Video gar nicht erst.
+- Außerhalb des Sichtfelds hält es an.
+- Es ist stumm und nicht fokussierbar, erzeugt also keine Tastaturfalle.
+
+**Zu klären:** ob das so bleiben soll. Eine Variante, die optisch identisch wäre und die
+Anforderung erfüllte: Klick auf das Video hält an, erneuter Klick startet wieder — ohne
+sichtbare Steuerleiste. Das war als Option angeboten und wurde nicht gewählt; es lässt sich
+jederzeit nachrüsten.
+
+### AP-181 — Titel und Text am Videoblock
+
+Titel „1.500 m² Mustergarten" als `h3` über dem Band, in Baloo 2 (der Zweitschrift des
+Hauses), aufrecht. Die Schreibweise folgt Hero-Proofleiste und Kennzahl der Proof-Sektion;
+geliefert war „1500m2".
+
+Der Text darunter stammt vom Auftraggeber. Angeglichen: fehlendes „nach" in „nur nach
+Absprache", doppelte Leerzeichen, Halbgeviertstriche, Schlusspunkt. **Inhaltlich gedeckt**
+durch Teil B, Zeile 75: „Besuche vor Ort — ausschließlich nach vorheriger
+Terminvereinbarung."
+
+## AP-215 — Kein Social-Proof-Block mehr auf dem Desktop
+
+**Vom 05.09.2026.** Der Auftraggeber hat zwei Sektionen entfernen lassen:
+„Vertrauen, das durch verlässliche Arbeit gewachsen ist." und „Gärten, die für sich
+sprechen".
+
+**Folge, die vor der Entfernung nicht offensichtlich war:** Der Ersatz von davidk.
+(`.mobile-social-proof`, AP-174 ff.) ist auf `max-width: 900px` begrenzt. Oberhalb davon
+steht damit **kein** Kennzahlen- oder Vertrauensblock mehr. Vorher zeigten beide Sektionen
+auf schmalen Geräten sogar gleichzeitig — dieses Doppel ist jetzt aufgelöst, aber der
+Desktop steht leer.
+
+**Mit der Proof-Sektion verschwunden sind:**
+
+| Angabe | Sonst noch auf der Seite? |
+|---|---|
+| „20+ Jahre Erfahrung" | **nein, nirgends mehr** |
+| „2003 gegründet in Herne" | ja, zweimal |
+| „4,9 ★ Google-Bewertung" | ja, im Rezensionskarussell |
+| „Meister- & Ausbildungsbetrieb" | ja, zweimal („Meisterbetrieb seit 2003") |
+| „1.500 m² Mustergarten" | ja, dreimal |
+| Karte „Auch kleine und einmalige Arbeiten." samt Knopf zum Anfrageformular | **nein** |
+
+Die NRW-Karte ist nicht betroffen — sie war in AP-179 in die Über-uns-Sektion umgezogen.
+
+**Zu entscheiden:** ob der Desktop einen Ersatz bekommen soll. Entweder davidk.s Block
+auch oberhalb 900 px zeigen (er ist gestalterisch auf schmale Geräte ausgelegt), oder eine
+eigene Fassung. Solange nichts geschieht, sehen Desktop-Besucher weder Kennzahlen noch den
+Hinweis auf kleine Aufträge.
+
+**Nebenbefund:** Der Begründungssatz zur Jahresangabe in AP-179 berief sich unter anderem
+auf „20+ Jahre" aus der Proof-Sektion. Der Beleg ist entfallen; die Angabe „über 20 Jahren"
+bleibt aber richtig, weil das Gründungsjahr 2003 weiterhin auf der Seite steht.
