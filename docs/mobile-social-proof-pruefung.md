@@ -227,3 +227,24 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   erhalten. Ab 901 px ist die mobile Sektion weiterhin ausgeblendet.
 - Galerie-Bedienung und übrige Inhalte unverändert. CSS-Version erhöht;
   git diff --check bestanden.
+
+
+## AP-184 – Gedrehte Hero-Form für die Bildfolge (05.09.2026)
+
+- Hero bei 390 px visuell und per CSS geprüft: skewY-Matrix mit Faktor 0,301173
+  (ca. 16,8 Grad), gegenüberliegende Eckenradien 2 / 14 px. Für das Foto im Uhrzeigersinn
+  gedrehte Anordnung und reduzierte Neigung von ca. 6,1 Grad umgesetzt.
+- Skalierbarer Clip mit 8 % seitlichem Versatz, waagerechten Ober-/Unterkanten und
+  weichen Ecken oben links/unten rechts. Keine Transformation der eigentlichen Bilder.
+- 320, 375, 390, 430 und 900 px: Fotoformat weiterhin 4:3; kein horizontaler Seitenüberstand.
+  Ab 901 px bleibt die gesamte mobile Sektion ausgeblendet. Visuelle Kontrolle bei 390 px.
+- Alle vier Motive vorwärts durchgewischt, einschließlich letztes → erstes. Aktiver Punkt
+  und Scrollposition stimmen, die Maske bleibt am gemeinsamen Rahmen. Punkte bleiben bedienbar.
+- Blumenlogo folgt der neuen Bildecke mit 8 % Einrückung. Link und Logo haben weiterhin
+  16 px Abstand; ihre Anordnung steht vollständig außerhalb der Scrollspur.
+- 320 px bei 200 % Schrift: Galeriebreite/Scrollbreite jeweils 257 px; Linkbreite/Scrollbreite
+  jeweils 132 px. Keine Überlagerung oder Textabschneidung. Bekannter Überstand anderer
+  Bestandsbereiche bleibt unverändert bei 423 px Dokumentbreite.
+- Homepage-Markup gegen AP-183 verglichen: nur neue Clipdefinition und CSS-Version geändert.
+  Hero, Fotoquellen, Original-Blumenlogo, Texte, CTAs und JavaScript unverändert.
+- git diff --check bestanden; temporäre Schriftprüfseite nach der Kontrolle entfernt.

@@ -1198,3 +1198,18 @@ maik-rohdich-logo-mobile-horizontal-balanced.png. Keine neue Bildableitung, Nach
 oder Farbänderung. Die Blüten sind in beiden mobilen Header-Varianten pixelidentisch.
 Die Höhe und der Überlappungsabstand folgen den Originalproportionen; Galerie-Link und
 Logo bleiben bei normaler Schrift auf derselben Mittelachse.
+
+
+**AP-184, gedrehte Hero-CTA-Form als Bildkontur (05.09.2026):** Die Kontur der
+Hero-CTA-Gruppe wird auf Wunsch des Auftraggebers um 90 Grad nach rechts gedreht
+auf die mobile Bildfolge übertragen. Die Seiten neigen sich nach oben rechts;
+Ober- und Unterkante bleiben waagerecht. Die im Hero gegenüberliegenden weichen
+Ecken liegen nach der Drehung oben links und unten rechts, die anderen Ecken
+bleiben knapp gerundet. Für die Gartenfotos wird die Neigung auf ca. 6,1 Grad
+reduziert (seitlicher Versatz 8 % der Breite im bestehenden 4:3-Format).
+
+Ein skalierbarer SVG-Clip formt den gemeinsamen Bildrahmen. Die Fotos selbst werden
+weder geschert noch gedreht; nur die seitlichen Randbereiche werden beschnitten.
+Das unveränderte Header-Blumenlogo folgt der neuen unteren rechten Ecke mit 8 %
+Einrückung. Der Galerie-Link bleibt außerhalb des Fotos auf der gemeinsamen linken
+Kante. Keine zusätzliche Kontur, Fläche oder Animation; Hero und Bildwechsel unverändert.
