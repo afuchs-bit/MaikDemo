@@ -1261,3 +1261,10 @@ der Button füllt die Bildbreite und hält 40 px Abstand zum Foto für das Blume
 Der zweiteilige CTA und beide Texte bleiben für den gewünschten Vergleich stehen.
 Beide Anfrage-Links verwenden denselben vorhandenen Sprung zum sichtbaren Formular;
 ohne Erweiterung bleibt #kontakt als natives Ziel erhalten.
+
+
+**AP-192, Blumensiegel minimal nach rechts versetzen (05.09.2026):** Das
+unveränderte Header-Blumenmotiv rückt auf Wunsch des Auftraggebers ausschließlich
+horizontal um 4 px nach rechts. Größe, Höhe, Bildkontur, Buttonabstand und alle
+übrigen Elemente bleiben unverändert. Prüfung weiterhin bei iPhone 15 Pro und
+iPhone 16 Pro.

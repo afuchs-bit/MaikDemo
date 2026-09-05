@@ -325,3 +325,12 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Gesamtes vorhandenes Homepage-Markup gegen AP-187 verglichen: identisch nach
   Abzug des ergänzten Buttons und beider Cache-Versionen. JavaScript-Syntax und
   git diff --check bestanden. Temporäre iPhone-Prüfseiten anschließend entfernt.
+
+
+## AP-192 – Blumensiegel minimal nach rechts (05.09.2026)
+
+- CSS-Position um exakt 4 px nach rechts verschoben; Größe, vertikale Position,
+  Schatten und Originalgrafik unverändert.
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln. Kein horizontaler
+  Überstand der neuen Sektion und keine Berührung mit Bildpunkten oder Button.
+- Homepage-Markup bis auf die CSS-Cache-Version unverändert; git diff --check bestanden.

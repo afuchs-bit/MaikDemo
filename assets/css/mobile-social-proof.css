@@ -1,4 +1,4 @@
-/* AP-188: Gruener Gartenwunsch-CTA wieder direkt unter der Bildfolge.
+/* AP-192: Blumensiegel am Bildrand minimal nach rechts versetzt.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -214,9 +214,9 @@
   .mobile-proof-gallery__brand {
     position: absolute;
     /* Originalformat 210:180: zwei Drittel oberhalb der unteren Bildkante.
-       Der rechte Rand steht 8px ueber die schraege Bildecke hinaus. */
+       Der rechte Rand steht 12px ueber die schraege Bildecke hinaus. */
     top: calc(var(--proof-brand-width) * -4 / 7);
-    right: calc(5.5% - 8px);
+    right: calc(5.5% - 12px);
     z-index: 1;
     display: block;
     width: var(--proof-brand-width);
