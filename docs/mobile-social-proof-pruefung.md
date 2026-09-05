@@ -334,3 +334,13 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln. Kein horizontaler
   Überstand der neuen Sektion und keine Berührung mit Bildpunkten oder Button.
 - Homepage-Markup bis auf die CSS-Cache-Version unverändert; git diff --check bestanden.
+
+
+## AP-193 – Gartenwunsch-Button unter den Texten (05.09.2026)
+
+- Button im Markup hinter die vollständige Einladung verschoben; 28 px Abstand
+  nach dem gemeinsamen Text-/CTA-Block.
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln: Button erscheint
+  unter „Damit ihr Garten Sie jederzeit … laufende Pflegearbeiten.“ und bleibt einzeilig.
+- Buttonziel #anfrage, Bildfolge, Blumensiegel, zweiteiliger CTA und Textwortlaut
+  unverändert. Kein horizontaler Überstand der neuen Sektion; git diff --check bestanden.

@@ -1,4 +1,4 @@
-/* AP-192: Blumensiegel am Bildrand minimal nach rechts versetzt.
+/* AP-193: Gartenwunsch-CTA unter die persoenlichen Texte verschoben.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -225,8 +225,7 @@
     pointer-events: none;
   }
 
-  /* Originaler CTA aus AP-186, jetzt auf der gemeinsamen Bildbreite.
-     40px Abstand lassen dem Blumensiegel am Bildrand ausreichend Platz. */
+  /* Originaler CTA aus AP-186, jetzt nach der gesamten Einladung. */
   .mobile-proof-request {
     position: relative;
     isolation: isolate;
@@ -237,7 +236,7 @@
     width: 100%;
     max-width: 640px;
     min-height: 56px;
-    margin: 40px auto 0;
+    margin: 28px auto 0;
     padding: 16px 22px;
     border-radius: 14px;
     color: #171916;

@@ -1268,3 +1268,10 @@ unveränderte Header-Blumenmotiv rückt auf Wunsch des Auftraggebers ausschließ
 horizontal um 4 px nach rechts. Größe, Höhe, Bildkontur, Buttonabstand und alle
 übrigen Elemente bleiben unverändert. Prüfung weiterhin bei iPhone 15 Pro und
 iPhone 16 Pro.
+
+
+**AP-193, Gartenwunsch-Button unter die persönlichen Texte verschieben (05.09.2026):**
+Der grüne CTA „Gartenwunsch besprechen →“ steht nicht mehr direkt unter der
+Bildfolge, sondern nach der vollständigen Einladung unter dem Satz zu den laufenden
+Pflegearbeiten. Zum Text-/CTA-Block hält er 28 px Abstand. Gestaltung, Breite und
+Formularsprung bleiben unverändert; ebenso Bildfolge, Blumensiegel und zweiteiliger CTA.
