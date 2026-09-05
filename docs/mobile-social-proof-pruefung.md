@@ -436,3 +436,13 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Abstand zum mittigen Galerie-Link bei 393 px: 23,94 px; bei 402 px: 26,53 px.
 - Visuell auf beiden Zielbreiten geprüft. Kein horizontaler Überstand;
   Galerie-Link, Bildwechsel, Linkziele und übrige Inhalte unverändert.
+
+
+## AP-202 – Siegel direkt auf der unteren rechten Ecke (05.09.2026)
+
+- Siegelrahmen auf beiden Zielbreiten exakt 12 px über die rechte Bildkante
+  hinausgeführt; vertikale Überlappung und Größe unverändert.
+- Verbleibender Abstand zum Ansichtsrand: 12 px bei 393 px und 402 px.
+- Freiraum zum mittigen Galerie-Pinsel: 42,91 px beziehungsweise 46 px.
+- Visuell auf beiden iPhone-Breiten geprüft; kein horizontaler Überstand.
+  Galerie-Link, Bildwechsel, Texte und übrige Inhalte unverändert.

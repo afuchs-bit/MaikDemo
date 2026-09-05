@@ -1364,3 +1364,13 @@ unterhalb bleiben exakt erhalten.
 
 Der Galerie-Pinsel bleibt horizontal mittig unter dem Bild. Abstände,
 Bildwechsel, Linkziele und die übrige Sektion bleiben unverändert.
+
+
+**AP-202, Blumensiegel auf die untere rechte Ecke setzen (05.09.2026):** Das
+Siegel rückt horizontal weiter nach rechts und greift mit seinem SVG-Rahmen
+12 px über die abgerundete Bildkante. Dadurch sitzt das sichtbare Blumenmotiv
+direkt auf der Ecke.
+
+Die vertikale Zwei-Drittel-Überlappung und die Siegelgröße bleiben unverändert.
+Der mittige Galerie-Pinsel erhält durch die Verschiebung mehr Abstand. Auf beiden
+Zielbreiten verbleiben 12 px bis zum Ansichtsrand.
