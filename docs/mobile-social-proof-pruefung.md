@@ -477,3 +477,14 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   Ziel. Galerie-Link, Bilder, Siegel und Texte unverändert.
 - Visuell auf beiden Zielbreiten geprüft; keine Lücke und kein horizontaler
   Überstand.
+
+
+## AP-206 – Fragen links, Antworten rechts (05.09.2026)
+
+- Beide Antwortsätze in eigene Blockelemente überführt; Fragen und Wortlaut
+  unverändert.
+- Berechnete Antwortausrichtung auf beiden Zielbreiten rechtsbündig. Breite
+  jeweils 307,19 px; rechte Kante bei x = 369 px beziehungsweise x = 378 px.
+- Erster Antworttext über zwei Zeilen, zweiter über drei Zeilen visuell geprüft.
+- Grüner Haupt-CTA bleibt darunter; kein horizontaler Überstand und keine
+  zusätzlichen dekorativen Elemente.

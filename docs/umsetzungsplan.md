@@ -1401,3 +1401,14 @@ dafür verwendeten CSS-Regeln.
 Die beiden persönlichen Texte nutzen anschließend die vollständige Inhaltsbreite.
 Der mittige Galerie-Link und der grüne Haupt-CTA „Gartenwunsch besprechen“
 bleiben erhalten.
+
+
+**AP-206, Einladung als typografischen Dialog setzen (05.09.2026):** Die beiden
+Fragen bleiben fett und linksbündig. Die jeweiligen Antwortsätze erhalten eigene
+Markup-Elemente, eine maximale Breite von 32 typografischen Zeichenbreiten und
+schließen rechtsbündig mit der Inhaltskante ab.
+
+So entsteht die gewünschte Chatwirkung ausschließlich durch den wechselnden
+Satz und die Einrückung. Zusätzliche Sprechblasen, Flächen oder Symbole werden
+nicht eingeführt. Wortlaut, Abstände zwischen den Themen und Haupt-CTA bleiben
+unverändert.

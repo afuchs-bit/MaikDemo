@@ -1,4 +1,4 @@
-/* AP-205: Sekundären Kontakt-CTA entfernen und Textfluss öffnen.
+/* AP-206: Fragen links, Antworten rechts als ruhiger Dialogsatz.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -355,6 +355,14 @@
     margin-bottom: 8px;
     color: var(--ink);
     font: 700 1.125rem/1.4 var(--display);
+  }
+
+  .mobile-proof-invitation__answer {
+    display: block;
+    max-width: 32ch;
+    margin-left: auto;
+    text-align: right;
+    text-wrap: pretty;
   }
 
   /* Der bestehende #anfrage-Handler zielt auch bei aktivem Kurzformular auf
