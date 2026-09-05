@@ -1374,3 +1374,9 @@ direkt auf der Ecke.
 Die vertikale Zwei-Drittel-Überlappung und die Siegelgröße bleiben unverändert.
 Der mittige Galerie-Pinsel erhält durch die Verschiebung mehr Abstand. Auf beiden
 Zielbreiten verbleiben 12 px bis zum Ansichtsrand.
+
+
+**AP-203, Blumensiegel minimal weiter nach rechts (05.09.2026):** Das Siegel
+rückt auf Wunsch des Auftraggebers um exakt 4 px weiter nach rechts. Größe,
+vertikale Überlappung, Galerie-Pinsel und alle übrigen Elemente bleiben
+unverändert. Auf beiden Zielbreiten verbleiben 8 px bis zum Ansichtsrand.

@@ -1,4 +1,4 @@
-/* AP-202: Blumensiegel direkt auf der unteren rechten Bildecke.
+/* AP-203: Blumensiegel auf der unteren rechten Bildecke feinjustiert.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -210,7 +210,7 @@
     /* Fruehere Siegelueberlappung: zwei Drittel auf dem Foto,
        ein Drittel unterhalb. Originalformat 210:180. */
     bottom: calc(var(--proof-brand-width) * -2 / 7);
-    right: -12px;
+    right: -16px;
     z-index: 2;
     display: block;
     width: var(--proof-brand-width);

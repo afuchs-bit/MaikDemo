@@ -446,3 +446,11 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Freiraum zum mittigen Galerie-Pinsel: 42,91 px beziehungsweise 46 px.
 - Visuell auf beiden iPhone-Breiten geprüft; kein horizontaler Überstand.
   Galerie-Link, Bildwechsel, Texte und übrige Inhalte unverändert.
+
+
+## AP-203 – Siegel 4 px weiter rechts (05.09.2026)
+
+- Ausschließlich die horizontale Siegelposition von -12 px auf -16 px geändert.
+- Bei 393 px und 402 px verbleiben jeweils 8 px zwischen SVG-Rahmen und Ansichtsrand.
+- Visuell bei 393 px sowie rechnerisch bei 402 px geprüft; kein horizontaler
+  Überstand. Größe, Überlappung und übrige Sektion unverändert.
