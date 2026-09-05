@@ -1,5 +1,5 @@
 // assets/js/ueber-video.js
-// AP-180 – Mustergarten-Video: Schleife, 0,75-fache Geschwindigkeit, Start im Sichtfeld.
+// AP-180/AP-182 – Mustergarten-Video: Schleife, 0,6-fache Geschwindigkeit, Start im Sichtfeld.
 //
 // Warum ueberhaupt ein Skript: playbackRate gibt es NUR als JavaScript-Eigenschaft.
 // Fuer loop und muted existieren HTML-Attribute, fuer die Geschwindigkeit nicht.
@@ -16,7 +16,13 @@
   const video = document.querySelector('.mr-ueber__video');
   if (!video) return;
 
-  const TEMPO = 0.75;
+  // AP-182: von 0,75 auf 0,6 gesenkt. Die Untergrenze ist nicht Geschmack, sondern
+  // die Bildrate der Quelle: gemessen 24 fps (72 Bilder in 3 s bei Tempo 1). Beim
+  // Verlangsamen kommen keine Bilder hinzu, sie stehen nur laenger - 0,6 ergibt
+  // effektiv 14,4 fps. Unter etwa 15 fps faengt eine Kamerafahrt sichtbar an zu
+  // haken; 0,5 waeren 12 fps, 0,4 nur noch 9,6. Wer weiter verlangsamen will,
+  // braucht Quellmaterial mit hoeherer Bildrate.
+  const TEMPO = 0.6;
 
   // Die Rate wird an ZWEI Stellen gesetzt. Beim Schleifendurchlauf und nach einem
   // load() setzen manche Browser sie auf 1 zurueck - einmaliges Setzen reicht nicht.

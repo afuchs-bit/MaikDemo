@@ -281,15 +281,16 @@ eigenen Betriebsgeländes gegenüber Kunden.
 | Plakatbild | keines. Ohne `ffmpeg` lässt sich kein Standbild erzeugen; Browser zeigen mit `preload="metadata"` das erste Einzelbild. Ein eigenes Plakatbild wäre trotzdem besser. |
 | Vorladen | **AP-180:** `preload="none"`, Start erst im Sichtfeld. Autostart würde sonst die 9 MB bei jedem Seitenaufruf laden, auch für Besucher, die den Block nie erreichen. Ein `IntersectionObserver` lädt und startet erst beim Erscheinen und hält beim Verlassen an. |
 
-### AP-180 — Autostart in Schleife, 0,75-fache Geschwindigkeit
+### AP-180 — Autostart in Schleife, verlangsamte Wiedergabe
 
 **Vom 05.09.2026.** Auf Wunsch des Auftraggebers läuft das Video stumm, in Endlosschleife
 und startet von selbst.
 
 | Punkt | Umsetzung |
 |---|---|
-| Geschwindigkeit | 0,75×. `playbackRate` gibt es **nur** als JavaScript-Eigenschaft, kein HTML-Attribut — deshalb `assets/js/ueber-video.js`. Die Rate wird bei `loadedmetadata` **und** bei jedem `play` gesetzt, weil manche Browser sie nach einem `load()` auf 1 zurückstellen. |
-| Laufzeit | aus 5,21 s werden **6,95 s** |
+| Geschwindigkeit | **0,6×** (AP-182, zuvor 0,75). `playbackRate` gibt es **nur** als JavaScript-Eigenschaft, kein HTML-Attribut — deshalb `assets/js/ueber-video.js`. Die Rate wird bei `loadedmetadata` **und** bei jedem `play` gesetzt, weil manche Browser sie nach einem `load()` auf 1 zurückstellen. |
+| Laufzeit | aus 5,21 s werden **8,7 s** |
+| Untergrenze | Die Quelle hat **24 fps** (gemessen: 72 Bilder in 3 s bei Tempo 1). Verlangsamen fügt keine Bilder hinzu: 0,6× ergibt effektiv 14,4 fps, 0,5× nur 12, 0,4× nur 9,6. Unter etwa 15 fps beginnt eine Kamerafahrt sichtbar zu haken. Weiter verlangsamen ginge nur mit Quellmaterial höherer Bildrate. |
 | Datenmenge | Start ist ans Sichtfeld gekoppelt (`preload="none"` + `IntersectionObserver`). Wer den Block nie erreicht, lädt die 9 MB nicht. Ausserhalb des Blicks hält das Video an. |
 | Anhalten | **Seit AP-181 nicht mehr möglich** — siehe eigenen Abschnitt unten. |
 | Bewegungsreduzierung | Bei `prefers-reduced-motion: reduce` **kein** Autostart. Im Vorschau-Panel liess sich die Einstellung nicht emulieren; stattdessen wurde die Bedingung direkt geprüft, indem `matchMedia` umgebogen wurde. Auf einem echten Gerät mit der Einstellung sollte das noch einmal gegengeprüft werden. |
@@ -305,7 +306,7 @@ Steuerleiste, kein Kontextmenü, keine Reaktion auf die Maus (`controls` entfern
 `pointer-events: none`, `tabindex="-1"`).
 
 **Damit lässt sich die Bewegung nicht mehr anhalten.** Das Video startet von selbst und
-läuft endlos, effektiv 6,95 s je Umlauf.
+läuft endlos, effektiv 8,7 s je Umlauf.
 
 **WCAG 2.2.2 (Pause, Stop, Hide)** verlangt für Bewegung, die automatisch startet und
 länger als fünf Sekunden dauert, eine Möglichkeit zum Anhalten, Stoppen oder Ausblenden.
