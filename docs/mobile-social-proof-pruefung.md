@@ -466,3 +466,14 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Galerie-Link beginnt 6 px unter der Bildkante, Markenbereich 54 px hoch.
 - Visuell bei 393 × 852 und 402 × 874 CSS-Pixeln geprüft. Kein horizontaler
   Überstand; Siegel, Linkziel, Texte und übrige CTAs unverändert.
+
+
+## AP-205 – „Maik kontaktieren“ entfernen (05.09.2026)
+
+- Kontakt-Link, Aktionscontainer und sämtliche nur dafür verwendeten CSS-Regeln
+  entfernt; kein sichtbares oder verstecktes Vorkommen mehr vorhanden.
+- Textspalte bei 393 px mit 345 px und bei 402 px mit 354 px Breite gemessen.
+- Grüner Haupt-CTA besitzt weiterhin dieselbe volle Breite und sein bestehendes
+  Ziel. Galerie-Link, Bilder, Siegel und Texte unverändert.
+- Visuell auf beiden Zielbreiten geprüft; keine Lücke und kein horizontaler
+  Überstand.

@@ -1391,3 +1391,13 @@ Punkte, Positionsangaben und versteckte Bildunterschrift werden auf drei Bilder
 aktualisiert. Der mittige Galerie-Pinsel rückt 6 px nach unten und der
 Markenbereich wächst entsprechend auf 54 px. Siegel, Bildformat, Linkziel und
 übrige Inhalte bleiben unverändert.
+
+
+**AP-205, sekundären Kontakt-CTA entfernen (05.09.2026):** Der dunkle
+„Maik kontaktieren“-CTA unterhalb der Bildfolge wird vollständig entfernt.
+Mit ihm entfallen sein Aktionscontainer, die Hero-Kontur und alle ausschließlich
+dafür verwendeten CSS-Regeln.
+
+Die beiden persönlichen Texte nutzen anschließend die vollständige Inhaltsbreite.
+Der mittige Galerie-Link und der grüne Haupt-CTA „Gartenwunsch besprechen“
+bleiben erhalten.

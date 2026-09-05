@@ -1,4 +1,4 @@
-/* AP-204: Drei Gartenbilder; Galerie-Pinsel etwas tiefer gesetzt.
+/* AP-205: Sekundären Kontakt-CTA entfernen und Textfluss öffnen.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -330,14 +330,9 @@
   }
 
   .mobile-proof-invitation {
-    container: proof-invitation / inline-size;
     max-width: 640px;
     margin: 24px auto 0;
     font: 400 1rem/1.4 var(--body);
-  }
-
-  .mobile-proof-invitation__layout {
-    display: flow-root;
   }
 
   .mobile-proof-invitation__copy {
@@ -360,100 +355,6 @@
     margin-bottom: 8px;
     color: var(--ink);
     font: 700 1.125rem/1.4 var(--display);
-  }
-
-  /* Verkleinerte Hero-Kontur fuer den verbleibenden Kontakt-CTA. */
-  .mobile-proof-invitation__actions {
-    float: right;
-    position: relative;
-    isolation: isolate;
-    display: grid;
-    grid-template-rows: 1fr;
-    width: clamp(6.875rem, 32%, 9rem);
-    max-width: 100%;
-    margin: 0 0 0 16px;
-    padding: .875rem 0;
-  }
-
-  .mobile-proof-invitation__actions::before,
-  .mobile-proof-invitation__actions::after {
-    content: "";
-    position: absolute;
-    inset: .75rem 0;
-    z-index: -2;
-    border-radius: 2px 14px 2px 14px;
-    background: rgba(140, 198, 63, .64);
-    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .22));
-    transform: skewY(13deg);
-    pointer-events: none;
-  }
-
-  .mobile-proof-invitation__actions::after {
-    inset: calc(.75rem + 2px) 2px;
-    z-index: -1;
-    border-radius: 1px 12px 1px 12px;
-    background: rgba(35, 40, 31, .86);
-    filter: none;
-  }
-
-  .mobile-proof-invitation__action {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 0;
-    min-height: 6rem;
-    padding: 1rem .5rem;
-    border-radius: 2px 14px 2px 14px;
-    color: #f4f2ea;
-    font: 800 .875rem/1.2 var(--display);
-    text-align: center;
-    text-decoration: none;
-    overflow-wrap: anywhere;
-  }
-
-  .mobile-proof-invitation__action-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    min-width: 0;
-    max-width: 100%;
-    transform: none;
-  }
-
-  .mobile-proof-invitation__cta .mobile-proof-invitation__action-content {
-    transform: none;
-  }
-
-  .mobile-proof-invitation__action-content > span:first-child {
-    max-width: 100%;
-  }
-
-  .mobile-proof-invitation__arrow {
-    color: var(--home-lime);
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  .mobile-proof-invitation__action:hover {
-    color: var(--home-lime);
-  }
-
-  .mobile-proof-invitation__action:focus-visible {
-    outline: 2px solid var(--home-focus);
-    outline-offset: 5px;
-  }
-
-  /* em bezieht sich auf die Schrift des Containers: bei stark vergroesserter
-     Schrift stehen Links und Text untereinander, ohne eine enge Restspalte. */
-  @container proof-invitation (max-width: 14em) {
-    .mobile-proof-invitation__actions {
-      float: none;
-      width: min(100%, 9rem);
-      margin: 0 0 28px auto;
-    }
   }
 
   /* Der bestehende #anfrage-Handler zielt auch bei aktivem Kurzformular auf
