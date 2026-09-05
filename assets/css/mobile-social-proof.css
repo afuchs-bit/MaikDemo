@@ -1,0 +1,121 @@
+/* AP-174: Eigenstaendiger mobiler KPI-Entwurf. Die Formensprache stammt
+   ausschliesslich aus dem Hero; keine Abhaengigkeit von .section-proof. */
+.mobile-social-proof {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-social-proof {
+    display: block;
+    padding: 24px 16px;
+    background: var(--bg);
+    color: var(--ink);
+    scroll-margin-top: calc(var(--mobile-header-h) + 16px);
+  }
+
+  .mobile-social-proof__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .mobile-social-proof__cards {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .mobile-social-proof__card {
+    position: relative;
+    isolation: isolate;
+    min-width: 0;
+    margin: 0;
+    padding: 20px 20px 18px;
+    border-radius: 22px;
+    /* clip-path zeichnet die Form, begrenzt aber nicht den Scrollbereich.
+       overflow: hidden haelt auch die angeschnittene Blume innerhalb der Karte. */
+    overflow: hidden;
+    background: linear-gradient(120deg, #2c3823 0%, #232b1e 48%, #1b2118 100%);
+    box-shadow: inset 0 0 0 1px rgb(140 198 63 / .48);
+  }
+
+  .mobile-social-proof__frame {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .mobile-social-proof__frame > path {
+    fill: none;
+    stroke: rgb(140 198 63 / .58);
+    stroke-width: 1.3px;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .mobile-social-proof__card--shaped {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .mobile-social-proof__card::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: -14px;
+    right: -42px;
+    width: 204px;
+    height: 164px;
+    background: url("../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a") center / contain no-repeat;
+    opacity: .26;
+    pointer-events: none;
+  }
+
+  .mobile-social-proof__content {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  .mobile-social-proof__number {
+    display: block;
+    width: auto;
+    height: 58px;
+    /* Rechts Freiraum fuer die angeschraegte Kante, auch beim langen 8000-m2-Motiv. */
+    max-width: calc(100% - 24px);
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .mobile-social-proof__label {
+    margin: 10px 0 0;
+    max-width: 30ch;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .mobile-social-proof__text {
+    margin: 6px 0 0;
+    max-width: 52ch;
+    color: var(--ink-2);
+    font-family: var(--body);
+    font-size: .9375rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+}

@@ -35,6 +35,7 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/home-dark.css?v=20260902x" />
+<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260905c" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260902g" />
@@ -428,6 +429,39 @@ html.home-theme-dark body { background-color: #171916; }
 
 </section>
 </div>
+
+<!-- AP-174: Eigenstaendiger mobiler Entwurf. Die bisherige Proof-Sektion bleibt
+     darunter als Referenz erhalten. 25+ bezeichnet Maiks Berufserfahrung, nicht
+     das Betriebsalter. Zahlen und Wortlaut: Auftraggeber, 05.09.2026. -->
+<section class="mobile-social-proof" id="social-proof" aria-labelledby="mobile-social-proof-title">
+  <h2 class="mobile-social-proof__sr-only" id="mobile-social-proof-title">Erfahrung und persönliche Betreuung</h2>
+  <ul class="mobile-social-proof__cards" role="list">
+    <li class="mobile-social-proof__card">
+      <div class="mobile-social-proof__content">
+        <img class="mobile-social-proof__number" src="assets/img/mobile-social-proof/kpi-25plus.webp"
+             alt="Über 25" width="404" height="168" loading="lazy" decoding="async">
+        <h3 class="mobile-social-proof__label">Jahre Erfahrung</h3>
+        <p class="mobile-social-proof__text">Damit aus Ihren Wünschen ein Garten wird, der zu Ihnen und Ihrem Grundstück passt.</p>
+      </div>
+    </li>
+    <li class="mobile-social-proof__card">
+      <div class="mobile-social-proof__content">
+        <img class="mobile-social-proof__number" src="assets/img/mobile-social-proof/kpi-100prozent.webp"
+             alt="100 Prozent" width="556" height="168" loading="lazy" decoding="async">
+        <h3 class="mobile-social-proof__label">Chef am Telefon und im Garten</h3>
+        <p class="mobile-social-proof__text">Auch unser ausgebildetes Team vor Ort ist für Sie da – mit Fachwissen und Leidenschaft.</p>
+      </div>
+    </li>
+    <li class="mobile-social-proof__card">
+      <div class="mobile-social-proof__content">
+        <img class="mobile-social-proof__number" src="assets/img/mobile-social-proof/kpi-8000qm.webp"
+             alt="8000 Quadratmeter" width="739" height="168" loading="lazy" decoding="async">
+        <h3 class="mobile-social-proof__label">Gartenfläche gestaltet</h3>
+        <p class="mobile-social-proof__text">Für über 400 zufriedene Kunden.</p>
+      </div>
+    </li>
+  </ul>
+</section>
 
 <!-- ============ SOCIAL PROOF ============ -->
 <section class="section section-proof" aria-labelledby="proof-title">
@@ -1930,6 +1964,7 @@ html.home-theme-dark body { background-color: #171916; }
 <!-- BUILD:site-footer:end -->
 
 <script src="assets/js/main.js?v=20260902a" defer></script>
+<script src="assets/js/mobile-social-proof.js?v=20260905a" defer></script>
 <script src="assets/js/private-gallery-teaser.js?v=20260812n" defer></script>
 <script src="assets/js/private-proof.js?v=20260812n" defer></script>
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>

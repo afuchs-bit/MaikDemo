@@ -1061,3 +1061,34 @@ ein Nutzen dagegenstünde.
 **Keine weitergehenden Zusagen.** Weder Radius noch Fristen noch Konditionen für Aufträge
 außerhalb des Schwerpunkts sind bekannt. Sie dürfen nicht ergänzt werden, solange der
 Auftraggeber sie nicht nennt.
+
+## H.7 Nachtrag: Eigenständige mobile Social-Proof-Kacheln (05.09.2026)
+
+**AP-174, ausdrücklicher Auftrag des Auftraggebers.** Die neue mobile Sektion steht vor
+der bisherigen Proof-Sektion. Diese bleibt vollständig und sichtbar als Referenz erhalten;
+sie ist ausdrücklich keine gestalterische Vorlage. Die neue Gestaltung verwendet nur die
+Formensprache des mobilen Heros und die drei gelieferten handschriftlichen Zahlengrafiken.
+Bis einschließlich 900 px werden die neuen Kacheln angezeigt, darüber nicht.
+
+**Neue, vom Auftraggeber bestätigte Aussagen:**
+
+- **25+ Jahre Erfahrung** bezeichnet Maiks gesamte Berufserfahrung, einschließlich der
+  Zeit vor der Betriebsgründung. Das Gründungsdatum 01.01.2003 bleibt unverändert.
+- **100 % Chef am Telefon und im Garten** ist der ausdrücklich gewählte Wortlaut.
+  Das ausgebildete Team vor Ort wird im Begleittext ebenfalls als Ansprechpartner genannt.
+- **8000 m² Gartenfläche gestaltet**, mit dem Begleittext **Für über 400 zufriedene Kunden.**
+
+Die Kacheln beginnen ohne sichtbare Sektionsüberschrift. Ihre Texte sind eine erste
+Entwurfsfassung. Das kräftige Grün des Hero-Schriftzugs (#56E607) gilt auch für die Zahlen.
+Es gibt keine Zähleranimationen oder zusätzlichen Buttons. Der neue Gewerbe-/Qualifikationsblock,
+der Bildübergang und der spätere Hinweis auf kleinere, einmalige, spontane und wiederkehrende
+Arbeiten werden in gesonderten Schritten gestaltet.
+
+**Überarbeitung nach mobiler Rückmeldung, ebenfalls 05.09.2026:** Runde 22-px-Ecken
+mit weich gerundeter Diagonale, stärkere Blume und leicht aufgehellte Grünflächen.
+Die anfängliche Mindesthöhe von 240 px entfällt. Die Karten wachsen nur mit ihrem
+Inhalt; der Chef-Begleittext wurde dafür sinngemäß gekürzt. Die Dekoration wird
+innerhalb der Karte begrenzt, damit sie die mobile Seitenbreite nicht erweitert.
+Die Zahlen wurden nach erfolglosen ImageGen-Freistellversuchen technisch aus den
+Originalen aufbereitet. Dateinachweise stehen in ASSETS.md, Prüfergebnisse in
+docs/mobile-social-proof-pruefung.md.

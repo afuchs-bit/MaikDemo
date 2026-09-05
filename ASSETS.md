@@ -155,3 +155,32 @@ Früheres, nicht mehr genutztes KI-Bild:
 sed -i 's|https://d8j0ntlcm91z4.cloudfront.net/user_3FJEDA6UDaxninowAcaUWRzghT2/hf_20260622_060301_09419ab7[^"]*\.png|assets/img/hero/hero.png|g' index.html assets/css/styles.css
 # (für jedes Asset analog)
 ```
+
+
+## Mobile Social-Proof-Zahlen (AP-174, 05.09.2026)
+
+Die vom Auftraggeber gelieferten Originalgrafiken bleiben unverändert. Die Web-Assets
+wurden technisch mit Python/Pillow aufbereitet: vorhandene Transparenz bei 25+ erhalten,
+bei 100 % und 8000 m² den neutralen Schachbretthintergrund über Farbtrennung entfernt,
+Kantenalphawerte erhalten, eng zugeschnitten und als verlustfreies WebP gespeichert.
+Alle sichtbaren Pixel tragen das Hero-Grün #56E607. Die Handschrift stammt aus den
+Originalen; die erfolglosen ImageGen-Ausgaben wurden nicht eingebunden.
+
+- `assets/img/mobile-social-proof/kpi-25plus.webp` – 404 × 168 px, 8246 Bytes.
+  Original: `25plus_Maik_Rohdich.png`.
+  Original-SHA-256: `4c12179b85832d829512ba752427a10bd0bbd4c12ef844178d4129da409c6e13`.
+  WebP-SHA-256: `c23ac8689f364ccc65c30e912d4bc186c32967893eead94bfe6c42e69aff661d`.
+- `assets/img/mobile-social-proof/kpi-100prozent.webp` – 556 × 168 px, 11368 Bytes.
+  Original: `ChatGPT Image 5. Sept. 2026, 09_47_34.png`.
+  Original-SHA-256: `fd858d959b4be774441f5d15d40e59c91735cbe8ded7f36d54d853eae5b072f6`.
+  WebP-SHA-256: `e2e8a4bbce47c57bc3103e50934fa0d1f84b139b167897c899a40bc61d02e340`.
+- `assets/img/mobile-social-proof/kpi-8000qm.webp` – 739 × 168 px, 16254 Bytes.
+  Original: `ChatGPT Image 5. Sept. 2026, 09_47_40.png`.
+  Original-SHA-256: `ca0d411329f1043e2dc1537795e6c43068a4b04dd6790f7b17439c098f76945c`.
+  WebP-SHA-256: `9096739f2e003f9bb23a68bbfad6af41a382db007aeb3eaddaeb6d92d7ede771`.
+
+Bildbearbeitung vor der technischen Freistellung: integriertes ImageGen, zwei Versuche
+pro RGB-Vorlage. Der Auftrag lautete: Schachbrett vollständig entfernen, echte PNG-
+Transparenz erzeugen, sämtliche Zahlenformen und Proportionen erhalten, flächig
+#56E607 verwenden, eng mit Sicherheitsrand zuschneiden. Beide Versuche lieferten RGB
+ohne Alphakanal. Daher wurden die gelieferten Originale für die finalen Derivate verwendet.
