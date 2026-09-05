@@ -1,0 +1,107 @@
+/* AP-212: Zwei isolierte Vorschauen fuer die Einbindung des Poolgarten-Fotos.
+   Ohne den URL-Parameter bildvorschau bleibt der aktuelle Stand unveraendert. */
+@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome--iphone {
+    isolation: isolate;
+    width: 100%;
+    margin-top: clamp(38px, 6.5svh, 54px);
+    padding: 0 24px 36px;
+    overflow: hidden;
+  }
+
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-photo {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 430px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0;
+    background: var(--green-50);
+    box-shadow: none;
+  }
+
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-photo::before,
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-photo::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset-inline: 0;
+    pointer-events: none;
+  }
+
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-photo::before {
+    top: 0;
+    height: 46%;
+    background: linear-gradient(180deg, rgba(8, 13, 7, .72), rgba(8, 13, 7, .2) 72%, transparent);
+  }
+
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-photo::after {
+    bottom: 0;
+    height: 58%;
+    background: linear-gradient(180deg, transparent, rgba(23, 25, 22, .62) 38%, #171916 92%);
+  }
+
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-photo img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: 53% center;
+  }
+
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-kicker,
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-lead,
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-feeling,
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-copy,
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-outro,
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-qualifications {
+    position: relative;
+    z-index: 2;
+  }
+
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-kicker {
+    padding-top: 34px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, .74));
+  }
+
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-lead {
+    margin-top: 270px;
+    max-width: 10.5em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, .82);
+  }
+
+  html[data-welcome-image-preview="flaechig"].home-theme-dark .gate-welcome-feeling {
+    margin-top: 38px;
+  }
+
+  html[data-welcome-image-preview="fenster"].home-theme-dark .gate-welcome-photo {
+    width: calc(100% + 24px);
+    height: 272px;
+    margin: 34px -24px 34px 0;
+    overflow: hidden;
+    border: 2px solid var(--home-lime);
+    border-right: 0;
+    border-radius: 52px 0 0 52px;
+    background: var(--green-50);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, .28);
+    transform: skewY(-3deg);
+    transform-origin: right center;
+  }
+
+  html[data-welcome-image-preview="fenster"].home-theme-dark .gate-welcome-photo img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    border-radius: 49px 0 0 49px;
+    object-fit: cover;
+    object-position: 52% center;
+    transform: skewY(3deg) scale(1.055);
+  }
+
+  html[data-welcome-image-preview="fenster"].home-theme-dark .gate-welcome-feeling {
+    margin-top: 0;
+  }
+}
