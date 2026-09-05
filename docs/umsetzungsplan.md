@@ -74,7 +74,7 @@ Diese Werte sind final abgestimmt und müssen **zeichengenau identisch** an alle
 | **WhatsApp** | **24/7 erreichbar für Nachrichten** — Antwort zu den Geschäftszeiten |
 | Besuche vor Ort | **ausschließlich nach vorheriger Terminvereinbarung** |
 | Einsatzgebiet | Herne (Sitz), Bochum, Castrop-Rauxel, Recklinghausen, Gelsenkirchen-Buer, weitere Orte nach Projekt |
-| Besonderheiten | Ausbildungsbetrieb · Sachverständiger für Baumkontrolle · Meisterbetrieb |
+| Besonderheiten | Ausbildungsbetrieb · Sachverständiger für Baumkontrolle (Landwirtschaftskammer-zertifizierter Baumkontrolleur, vom Auftraggeber am 05.09.2026 bestätigt) · Meisterbetrieb |
 | Partnerbetrieb | Partnerfirma in Bochum (Details offen) |
 
 ## B.1 OFFEN — vom Auftraggeber nachzuliefern
@@ -1162,8 +1162,8 @@ Darunter führt „Alle Gartenbilder ansehen →“ zur vorhandenen Galerie. Die
 Texte sind auf ausdrücklichen Wunsch einschließlich Schreibweise und Zeichensetzung
 wortgetreu übernommen; jeweils die erste Frage ist hervorgehoben:
 
-- „Der Geburtstag steht an und für den Garten bleibt keine Zeit mehr? Keine Panik! Kein Anliegen ist zu klein oder zu spontan.“
-- „Länger weg, im Urlaub oder einfach nur wenig Zeit? Damit ihr Garten Sie jederzeit willkommen heißt übernehmen wir auch laufende Pflegearbeiten.“
+- „Der Geburtstag steht an, aber für den Garten bleibt keine Zeit? Kein Anliegen ist uns zu klein – oft sind auch kurzfristige Einsätze möglich.“
+- „Im Urlaub oder einfach wenig Zeit? Auf Wunsch pflegen wir Ihren Garten regelmäßig – auch während Ihrer Abwesenheit.“
 
 Der Haupt-CTA „Gartenwunsch besprechen →“ trägt das Hero-Button-Grün #8CC63F und eine
 skalierbare Vektorfläche mit kleiner gerundeter Diagonale. Sein Ziel bleibt #anfrage.
@@ -1198,3 +1198,264 @@ maik-rohdich-logo-mobile-horizontal-balanced.png. Keine neue Bildableitung, Nach
 oder Farbänderung. Die Blüten sind in beiden mobilen Header-Varianten pixelidentisch.
 Die Höhe und der Überlappungsabstand folgen den Originalproportionen; Galerie-Link und
 Logo bleiben bei normaler Schrift auf derselben Mittelachse.
+
+
+**AP-184, gedrehte Hero-CTA-Form als Bildkontur (05.09.2026):** Die Kontur der
+Hero-CTA-Gruppe wird auf Wunsch des Auftraggebers um 90 Grad nach rechts gedreht
+auf die mobile Bildfolge übertragen. Die Seiten neigen sich nach oben rechts;
+Ober- und Unterkante bleiben waagerecht. Die im Hero gegenüberliegenden weichen
+Ecken liegen nach der Drehung oben links und unten rechts, die anderen Ecken
+bleiben knapp gerundet. Für die Gartenfotos wird die Neigung auf ca. 6,1 Grad
+reduziert (seitlicher Versatz 8 % der Breite im bestehenden 4:3-Format).
+
+Ein skalierbarer SVG-Clip formt den gemeinsamen Bildrahmen. Die Fotos selbst werden
+weder geschert noch gedreht; nur die seitlichen Randbereiche werden beschnitten.
+Das unveränderte Header-Blumenlogo folgt der neuen unteren rechten Ecke mit 8 %
+Einrückung. Der Galerie-Link bleibt außerhalb des Fotos auf der gemeinsamen linken
+Kante. Keine zusätzliche Kontur, Fläche oder Animation; Hero und Bildwechsel unverändert.
+
+
+**AP-185, Bildschräge weiter abflachen (05.09.2026):** Auf Wunsch des Auftraggebers
+wird die Seitenneigung von ca. 6,1 auf 4,2 Grad reduziert. Der seitliche Versatz sinkt
+von 8 auf 5,5 % der Bildbreite, sodass mehr vom Motiv sichtbar bleibt. Die gedrehte
+Hero-Form mit ihren gegenüberliegenden weichen Ecken bleibt erhalten. Das Blumenlogo
+folgt der Bildecke mit 5,5 % Einrückung. Der bereits abgenommene Hero bleibt unverändert.
+
+
+**AP-186, Blumenlogo als Siegel am Gartenfoto (05.09.2026):** Die originale
+Header-Blütengruppe wird auf 65–80 px Breite verkleinert und unabhängig von der
+Mittelachse des Galerie-Links am unteren rechten Bildrand verankert. Etwa zwei
+Drittel ihrer Höhe liegen auf dem Foto, ein Drittel ragt unten heraus. Rechts
+steht das Siegel 8 px über die schräge Bildecke. Ein feiner dunkler Schlagschatten
+trennt die unveränderten Originalfarben vom Motiv. Form, Ausrichtung und Datei
+bleiben erhalten; die Dekoration fängt keine Berührungen ab. Der Galerie-Link
+bleibt außerhalb des Fotos. Hero, Bildkontur und Bildwechsel unverändert.
+
+
+**AP-187, zweiteiliger Hero-CTA neben der Einladung (05.09.2026):** Auf Wunsch
+des Auftraggebers stehen unter dem Foto rechts „Zur Galerie“ und „Maik kontaktieren“
+in einer gemeinsamen Form nach dem Vorbild des Hero-CTAs. Dunkle Fläche, grüne
+Kontur, gegenüberliegende weiche Ecken und schräge Teilung werden übernommen.
+Die Neigung beträgt für die breiteren Textbeschriftungen 13 Grad; die Schrift
+bleibt waagerecht. Beide Bereiche sind eigenständige Links, oben zur bestehenden
+Galerie und unten zum sichtbaren Anfrageformular. Der bisherige Galerie-Textlink
+und der breite grüne Anfrage-Button entfallen zugunsten dieser Gruppe.
+
+Die beiden persönlichen Texte bleiben wortgetreu erhalten und beginnen links
+neben dem CTA. Unterhalb der Gruppe nutzt der Text wieder die verfügbare Breite,
+damit auf Handys keine durchgehend schmale, lange Textspalte entsteht. Ein
+schriftabhängiger Container-Breakpoint stellt die Gruppe bei stark vergrößerter
+Schrift über den Text. Blumensiegel, Bilder, Kennzahlen, Hero, Desktop und alte
+Bestandsbereiche bleiben erhalten. Keine Änderungen an der JavaScript-Bedienung.
+
+
+**AP-188, grünen Gartenwunsch-Button unter den Bildern wiederherstellen (05.09.2026):**
+Der Auftraggeber legt ab jetzt iPhone 15 Pro und iPhone 16 Pro als ausschließlichen
+Gestaltungs- und Prüfrahmen fest. Verwendete Hochformat-Prüfraster: 393 × 852 und
+402 × 874 CSS-Pixel. Die bestehende mobile Sichtbarkeitsgrenze bleibt erhalten;
+es werden keine gerätespezifischen Ausblendungen ergänzt.
+
+„Gartenwunsch besprechen →“ steht wieder in der ursprünglichen grünen Vektorform
+aus AP-186 direkt unter der Bildfolge. Kontur, Farbe und Typografie sind übernommen;
+der Button füllt die Bildbreite und hält 40 px Abstand zum Foto für das Blumensiegel.
+Der zweiteilige CTA und beide Texte bleiben für den gewünschten Vergleich stehen.
+Beide Anfrage-Links verwenden denselben vorhandenen Sprung zum sichtbaren Formular;
+ohne Erweiterung bleibt #kontakt als natives Ziel erhalten.
+
+
+**AP-192, Blumensiegel minimal nach rechts versetzen (05.09.2026):** Das
+unveränderte Header-Blumenmotiv rückt auf Wunsch des Auftraggebers ausschließlich
+horizontal um 4 px nach rechts. Größe, Höhe, Bildkontur, Buttonabstand und alle
+übrigen Elemente bleiben unverändert. Prüfung weiterhin bei iPhone 15 Pro und
+iPhone 16 Pro.
+
+
+**AP-193, Gartenwunsch-Button unter die persönlichen Texte verschieben (05.09.2026):**
+Der grüne CTA „Gartenwunsch besprechen →“ steht nicht mehr direkt unter der
+Bildfolge, sondern nach der vollständigen Einladung unter dem Satz zu den laufenden
+Pflegearbeiten. Zum Text-/CTA-Block hält er 28 px Abstand. Gestaltung, Breite und
+Formularsprung bleiben unverändert; ebenso Bildfolge, Blumensiegel und zweiteiliger CTA.
+
+
+**AP-194, gelber Pinselstrich als Galerie-Link (05.09.2026):** Unter dem
+Blumensiegel sitzt ein eigenständiger, organisch geformter Pinselstrich im exakten
+Logo-Gelb #FFED00. Eine feine dunklere Farbspur und ein zurückhaltender Schatten
+geben ihm Tiefe, ohne eine neue Bilddatei zu benötigen. Die waagerechte dunkle
+Beschriftung „Zur Galerie“ führt zur bestehenden Galerie. Die Blume überlappt nur
+den oberen Rand des Strichs, sodass die Beschriftung frei bleibt.
+
+Der bisherige Galerie-Link im rechten Hero-CTA entfällt, damit die Aktion nur einmal
+vorkommt. „Maik kontaktieren“ bleibt dort als kompakter einzelner CTA. Die Einladung
+beginnt 24 px nach dem 56 px hohen Markenbereich; der grüne Haupt-CTA bleibt unter
+den Texten. Prüfung weiterhin bei iPhone 15 Pro und iPhone 16 Pro.
+
+
+**AP-195, Bildsignatur auf beide unteren Ecken verteilen (05.09.2026):** Das
+Blumensiegel bleibt unverändert an der unteren rechten Bildecke. Der gelbe
+Galerie-Pinsel sitzt nun an der unteren linken Ecke und greift 8 px in das Foto,
+sodass beide Elemente eine ruhige Gegenbewegung bilden. Seine Breite wird auf
+ca. 123 px reduziert und seine leichte Drehung folgt der neuen Platzierung.
+
+Der Markenbereich unter dem Foto wird von 56 auf 40 px verkürzt. Dadurch bleibt
+der Abstand zur persönlichen Einladung trotz der höheren Galerieposition
+ausgewogen. Bildkontur, Navigationspunkte, Siegel, Links und Texte bleiben
+inhaltlich unverändert. Prüfung weiterhin bei iPhone 15 Pro und iPhone 16 Pro.
+
+
+**AP-196, Blumensiegel oben links und Galerie-Link unten rechts (05.09.2026):**
+Auf Wunsch des Auftraggebers stehen die beiden Akzente diagonal gegenüber. Das
+unveränderte Blumensiegel greift oben links in die weiche diagonale Bildkontur;
+der gelbe Pinsel „Zur Galerie“ liegt rechts unten und greift weiterhin 8 px in
+das Foto.
+
+Die leichte Pinseldrehung wird zur rechten Platzierung gespiegelt. Der Siegelcode
+liegt nun direkt an der Bildfigur, damit seine obere Position unabhängig von der
+Bildbreite stabil bleibt. Größen, Linkziel, Bildwechsel und die darunterliegende
+Einladung bleiben unverändert. Prüfung weiterhin bei iPhone 15 Pro und iPhone 16 Pro.
+
+
+**AP-197, Galerie-Pinsel höher und greifbarer (05.09.2026):** Der sekundäre
+Galerie-CTA rückt 6 px weiter nach oben. Seine Linkfläche überlappt den Bildrahmen
+damit 14 px und wächst von 122,5 × 40 px auf 126 × 44 px. Die Aktion bleibt
+deutlich kleiner als der grüne Haupt-CTA, erreicht aber eine verlässliche
+Berührungshöhe.
+
+Eine feine hellgelbe Farbspur, ein weicherer Schatten und eine minimale
+Textaufhellung geben dem vorhandenen Logo-Gelb mehr Tiefe. Der organische
+Pinselumriss, das Linkziel und die Position unten rechts bleiben erhalten.
+Blumensiegel, Bildwechsel, Texte und übrige CTAs bleiben unverändert.
+
+
+**AP-198, frühere Siegel-Überlappung oben links spiegeln (05.09.2026):** Die
+Überlappung des Blumensiegels übernimmt exakt das Verhältnis seiner früheren
+Position unten rechts. Oben links ragt nun ein Drittel der Siegelhöhe über den
+Bildrand hinaus; zwei Drittel liegen auf dem Foto.
+
+Die Position wird proportional aus der unveränderten 210:180-Siegelgrafik
+berechnet und bleibt dadurch auf beiden Zielbreiten gleich. Horizontale
+Ausrichtung, Größe, Galerie-CTA, Bilder und übrige Sektion bleiben unverändert.
+
+
+**AP-199, Gartenbilder wieder mit runden Ecken (05.09.2026):** Die gedrehte
+Hero-CTA-Kontur wird auf Wunsch des Auftraggebers vollständig von der Bildfolge
+entfernt. Alle Fotos erscheinen wieder im unveränderten 4:3-Format mit vier
+gleichmäßigen Ecken von 16 px Radius.
+
+Der nicht mehr benötigte SVG-Clip samt CSS-Hilfsregel wird entfernt. Blumensiegel
+oben links, Galerie-Pinsel unten rechts, Navigationspunkte, Bildwechsel und
+darunterliegende Inhalte bleiben unverändert.
+
+
+**AP-200, Blumensiegel unten links und Galerie-Link mittig (05.09.2026):** Das
+Blumensiegel wechselt an die untere linke Bildecke und übernimmt erneut das
+frühere Verhältnis: zwei Drittel liegen auf dem Foto, ein Drittel ragt darunter
+hervor. Der Galerie-Pinsel sitzt horizontal exakt mittig unter dem Bild.
+
+Die Linkfläche beginnt an der unteren Bildkante, sodass sie die mittigen
+Navigationspunkte nicht überlagert. Der Markenbereich wächst auf 48 px und hält
+den folgenden Textabstand stabil. Bildform, Größen, Links und übrige Inhalte
+bleiben unverändert.
+
+
+**AP-201, Blumensiegel unten rechts korrigieren (05.09.2026):** Das Siegel wird
+auf Wunsch des Auftraggebers von unten links nach unten rechts gespiegelt. Seine
+Größe und das Verhältnis mit zwei Dritteln auf dem Foto und einem Drittel
+unterhalb bleiben exakt erhalten.
+
+Der Galerie-Pinsel bleibt horizontal mittig unter dem Bild. Abstände,
+Bildwechsel, Linkziele und die übrige Sektion bleiben unverändert.
+
+
+**AP-202, Blumensiegel auf die untere rechte Ecke setzen (05.09.2026):** Das
+Siegel rückt horizontal weiter nach rechts und greift mit seinem SVG-Rahmen
+12 px über die abgerundete Bildkante. Dadurch sitzt das sichtbare Blumenmotiv
+direkt auf der Ecke.
+
+Die vertikale Zwei-Drittel-Überlappung und die Siegelgröße bleiben unverändert.
+Der mittige Galerie-Pinsel erhält durch die Verschiebung mehr Abstand. Auf beiden
+Zielbreiten verbleiben 12 px bis zum Ansichtsrand.
+
+
+**AP-203, Blumensiegel minimal weiter nach rechts (05.09.2026):** Das Siegel
+rückt auf Wunsch des Auftraggebers um exakt 4 px weiter nach rechts. Größe,
+vertikale Überlappung, Galerie-Pinsel und alle übrigen Elemente bleiben
+unverändert. Auf beiden Zielbreiten verbleiben 8 px bis zum Ansichtsrand.
+
+
+**AP-204, Bildfolge auf drei Motive reduzieren (05.09.2026):** Das bisherige
+erste Motiv „Blühender Vorgarten“ wird aus der mobilen Bildfolge entfernt.
+„Pflasterflächen und Rasen“ ist nun das sichtbare Startbild; danach folgen
+„Eingewachsener Garten“ und „Poolgarten am Abend“.
+
+Punkte, Positionsangaben und versteckte Bildunterschrift werden auf drei Bilder
+aktualisiert. Der mittige Galerie-Pinsel rückt 6 px nach unten und der
+Markenbereich wächst entsprechend auf 54 px. Siegel, Bildformat, Linkziel und
+übrige Inhalte bleiben unverändert.
+
+
+**AP-205, sekundären Kontakt-CTA entfernen (05.09.2026):** Der dunkle
+„Maik kontaktieren“-CTA unterhalb der Bildfolge wird vollständig entfernt.
+Mit ihm entfallen sein Aktionscontainer, die Hero-Kontur und alle ausschließlich
+dafür verwendeten CSS-Regeln.
+
+Die beiden persönlichen Texte nutzen anschließend die vollständige Inhaltsbreite.
+Der mittige Galerie-Link und der grüne Haupt-CTA „Gartenwunsch besprechen“
+bleiben erhalten.
+
+
+**AP-206, Einladung als typografischen Dialog setzen (05.09.2026):** Die beiden
+Fragen bleiben fett und linksbündig. Die jeweiligen Antwortsätze erhalten eigene
+Markup-Elemente, eine maximale Breite von 32 typografischen Zeichenbreiten und
+schließen rechtsbündig mit der Inhaltskante ab.
+
+So entsteht die gewünschte Chatwirkung ausschließlich durch den wechselnden
+Satz und die Einrückung. Zusätzliche Sprechblasen, Flächen oder Symbole werden
+nicht eingeführt. Wortlaut, Abstände zwischen den Themen und Haupt-CTA bleiben
+unverändert.
+
+
+**AP-207, Antworten als offenen Dialog gestalten (05.09.2026):** Die beiden
+Antworten stehen weiterhin rechts, erhalten nun aber eine sanft von transparent
+zu dunklem Markengrün auslaufende Fläche. Eine feine rechte Kontur und nur rechts
+gerundete Ecken formen eine offene Antwortzeile statt einer klassischen
+Chatblase. Antworttext erscheint im ruhigen Akzentgrün `#B6D97A`.
+
+Rechts neben jeder Antwort sitzt exakt die einzelne Blüte aus dem Hero als
+persönliches Absenderzeichen. Die Blüten bleiben dekorativ; ein visuell
+ausgeblendetes „Maiks Antwort:“ stellt die Bedeutung und Lesereihenfolge für
+Screenreader her. Fragen, Wortlaut, Bilder, Galerie-Link und Haupt-CTA bleiben
+unverändert.
+
+
+**AP-208, erste Dialogantwort präzisieren (05.09.2026):** Die Antwort auf die
+Geburtstagsfrage lautet nun „Kein Anliegen ist uns zu klein oder zu spontan.“
+Die vorangestellte Formulierung „Keine Panik!“ entfällt. Gestaltung,
+Screenreader-Absender und übrige Inhalte bleiben unverändert.
+
+
+**AP-209, Dialogtexte sprachlich schärfen (05.09.2026):** Beide Frage-Antwort-
+Paare werden grammatikalisch geglättet und nennen die konkrete Leistung klarer.
+Die erste Antwort verweist auf häufig mögliche kurzfristige Einsätze, ohne eine
+generelle Verfügbarkeit zu versprechen. Das zweite Paar lautet „Im Urlaub oder
+einfach wenig Zeit?“ und beschreibt Maiks regelmäßige Gartenpflege während der
+Abwesenheit. Gestaltung und zugängliche Absenderhinweise bleiben unverändert.
+
+
+**AP-210, Anfrage-CTA mit persönlichem Maik-Stempel (05.09.2026):** Der kleine
+Standardpfeil entfällt. Ein eigens gezeichneter gelber Pinselstempel sitzt in
+der diagonalen rechten Ecke und trägt zweizeilig „MIT MAIK“. Damit benennt das
+visuelle Element die persönliche Beratung, statt nur eine allgemeine Richtung
+anzuzeigen.
+
+Der grüne CTA wächst auf mindestens 64 px Höhe, seine Beschriftung auf bis zu
+18 px bei Gewicht 800. Die bestehende asymmetrische Vektorform bleibt erhalten
+und erhält einen dezenten Schatten. Der Stempel verwendet Maiks vorhandenes
+Logogelb `#F2E20C`; Buttonfarbe, Linkziel und Fokusfarbe bleiben unverändert.
+Bei reduzierter Bewegung entfallen sämtliche Übergänge.
+
+
+**AP-211, Maik-Stempel wieder entfernen (05.09.2026):** Der gelbe „MIT
+MAIK“-Stempel wird auf Wunsch des Auftraggebers vollständig aus dem CTA und
+seinem zugänglichen Namen entfernt. Der Button bleibt 64 px hoch, verwendet
+weiterhin die verstärkte Beschriftung bis 18 px, seine grüne asymmetrische Form
+und den dezenten Schatten. Es wird kein Ersatzsymbol eingesetzt.

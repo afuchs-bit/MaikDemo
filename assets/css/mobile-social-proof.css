@@ -1,4 +1,4 @@
-/* AP-183: Originale Header-Blueten am unteren Bildrand.
+/* AP-211: Grosser Anfrage-CTA ohne zusaetzliches Symbol.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -94,11 +94,13 @@
   }
 
   .mobile-proof-gallery {
+    --proof-brand-width: clamp(65px, 20vw, 80px);
     max-width: 640px;
     margin: 32px auto 0;
   }
 
   .mobile-proof-gallery__figure {
+    position: relative;
     margin: 0;
   }
 
@@ -199,52 +201,156 @@
   }
 
   .mobile-proof-gallery__footer {
-    --proof-brand-width: clamp(88px, 25vw, 104px);
     position: relative;
-    padding-right: calc(var(--proof-brand-width) + 16px);
-    padding-bottom: calc(var(--proof-brand-width) * 3 / 7 - 22px);
+    height: max(54px, 3.375rem);
   }
 
   .mobile-proof-gallery__brand {
     position: absolute;
-    top: calc(22px - var(--proof-brand-width) * 3 / 7);
-    right: 0;
-    z-index: 1;
+    /* Fruehere Siegelueberlappung: zwei Drittel auf dem Foto,
+       ein Drittel unterhalb. Originalformat 210:180. */
+    bottom: calc(var(--proof-brand-width) * -2 / 7);
+    right: -16px;
+    z-index: 2;
     display: block;
     width: var(--proof-brand-width);
     height: auto;
+    filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
     pointer-events: none;
   }
 
-  .mobile-proof-gallery__link {
+  .mobile-proof-gallery__brush-link {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: max(clamp(124px, 31vw, 130px), 9em);
+    max-width: 100%;
+    height: max(44px, 2.75em);
+    color: #171916;
+    font: 800 .875rem/1 var(--display);
+    letter-spacing: 0;
+    text-decoration: none;
+    transform: translateX(-50%);
+  }
+
+  .mobile-proof-gallery__brush {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 3px 3px rgb(0 0 0 / 22%));
+    transform: rotate(-1deg);
+    transform-origin: center;
+    pointer-events: none;
+  }
+
+  .mobile-proof-gallery__brush-base {
+    fill: #FFED00;
+  }
+
+  .mobile-proof-gallery__brush-grain {
+    fill: none;
+    stroke: #D9BD00;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    opacity: .46;
+  }
+
+  .mobile-proof-gallery__brush-highlight {
+    fill: none;
+    stroke: #FFF36B;
+    stroke-width: .9;
+    stroke-linecap: round;
+    opacity: .55;
+  }
+
+  .mobile-proof-gallery__brush-link > span {
+    position: relative;
+    z-index: 1;
+    transform: translateY(-1px);
+    text-shadow: 0 1px 0 rgb(255 255 255 / 24%);
+  }
+
+  .mobile-proof-gallery__brush-link:hover {
+    color: #171916;
+  }
+
+  .mobile-proof-gallery__brush-link:focus-visible {
+    outline: 2px solid var(--home-focus);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  /* Originaler CTA aus AP-186, jetzt nach der gesamten Einladung. */
+  .mobile-proof-request {
+    position: relative;
+    isolation: isolate;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 0 8px;
-    max-width: 100%;
-    min-height: 44px;
-    margin: 0;
-    color: var(--ink);
-    font: 700 1rem/1.4 var(--display);
-    text-decoration: underline;
-    text-decoration-color: var(--home-on-dark-mute);
-    text-underline-offset: 4px;
-    text-decoration-thickness: 1px;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 640px;
+    min-height: 64px;
+    margin: 28px auto 0;
+    padding: 7px 22px;
+    border-radius: 14px;
+    color: #171916;
+    font: 800 clamp(1.05rem, 4.58vw, 1.125rem)/1.25 var(--display);
+    text-decoration: none;
     overflow-wrap: anywhere;
   }
 
-  .mobile-proof-gallery__link:hover {
-    color: var(--ink);
+  .mobile-proof-request__label {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    text-wrap: balance;
+  }
+
+  .mobile-proof-request__shape {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    fill: var(--home-lime);
+    filter: drop-shadow(0 8px 10px rgb(0 0 0 / 24%));
+    pointer-events: none;
+    transition: fill .18s ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .mobile-proof-request:hover .mobile-proof-request__shape {
+      fill: #9DD34F;
+    }
+  }
+
+  .mobile-proof-request:focus-visible {
+    outline: 2px solid var(--home-focus);
+    outline-offset: 5px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-proof-request__shape {
+      transition: none;
+    }
   }
 
   .mobile-proof-invitation {
     max-width: 640px;
-    margin: 32px auto 0;
+    margin: 24px auto 0;
+    font: 400 1rem/1.4 var(--body);
   }
 
   .mobile-proof-invitation__copy {
     max-width: 38ch;
-    font: 400 1rem/1.4 var(--body);
   }
 
   .mobile-proof-invitation__text {
@@ -260,52 +366,47 @@
 
   .mobile-proof-invitation__text strong {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: var(--ink);
     font: 700 1.125rem/1.4 var(--display);
   }
 
-  .mobile-proof-invitation__cta {
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    width: 100%;
-    min-height: 56px;
-    margin-top: 24px;
-    padding: 16px 22px;
-    border-radius: 14px;
-    color: #171916;
-    font: 700 1rem/1.4 var(--display);
-    text-decoration: none;
-    overflow-wrap: anywhere;
+  .mobile-proof-invitation__response {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(28px, 7.5vw, 32px);
+    align-items: end;
+    gap: 8px;
+    width: min(100%, 34ch);
+    margin-left: auto;
   }
 
-  .mobile-proof-invitation__cta > span:first-of-type {
+  .mobile-proof-invitation__answer {
+    display: block;
     min-width: 0;
-    hyphens: auto;
+    padding: 12px 14px 12px 18px;
+    border-right: 1px solid rgb(182 217 122 / 30%);
+    border-radius: 0 14px 14px 0;
+    background: linear-gradient(
+      90deg,
+      rgb(74 122 16 / 0%) 0%,
+      rgb(74 122 16 / 10%) 28%,
+      rgb(74 122 16 / 18%) 100%
+    );
+    color: var(--home-dark-accent);
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: right;
+    text-wrap: pretty;
   }
 
-  .mobile-proof-invitation__shape {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    fill: var(--home-lime);
+  .mobile-proof-invitation__flower {
+    display: block;
+    align-self: end;
+    width: clamp(28px, 7.5vw, 32px);
+    max-width: none;
+    height: auto;
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 34%));
     pointer-events: none;
-  }
-
-  .mobile-proof-invitation__cta:hover .mobile-proof-invitation__shape {
-    fill: #9DD34F;
-  }
-
-  .mobile-proof-invitation__cta:focus-visible,
-  .mobile-proof-gallery__link:focus-visible {
-    outline: 2px solid var(--home-focus);
-    outline-offset: 5px;
   }
 
   /* Der bestehende #anfrage-Handler zielt auch bei aktivem Kurzformular auf

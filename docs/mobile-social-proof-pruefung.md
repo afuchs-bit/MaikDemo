@@ -227,3 +227,333 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   erhalten. Ab 901 px ist die mobile Sektion weiterhin ausgeblendet.
 - Galerie-Bedienung und übrige Inhalte unverändert. CSS-Version erhöht;
   git diff --check bestanden.
+
+
+## AP-184 – Gedrehte Hero-Form für die Bildfolge (05.09.2026)
+
+- Hero bei 390 px visuell und per CSS geprüft: skewY-Matrix mit Faktor 0,301173
+  (ca. 16,8 Grad), gegenüberliegende Eckenradien 2 / 14 px. Für das Foto im Uhrzeigersinn
+  gedrehte Anordnung und reduzierte Neigung von ca. 6,1 Grad umgesetzt.
+- Skalierbarer Clip mit 8 % seitlichem Versatz, waagerechten Ober-/Unterkanten und
+  weichen Ecken oben links/unten rechts. Keine Transformation der eigentlichen Bilder.
+- 320, 375, 390, 430 und 900 px: Fotoformat weiterhin 4:3; kein horizontaler Seitenüberstand.
+  Ab 901 px bleibt die gesamte mobile Sektion ausgeblendet. Visuelle Kontrolle bei 390 px.
+- Alle vier Motive vorwärts durchgewischt, einschließlich letztes → erstes. Aktiver Punkt
+  und Scrollposition stimmen, die Maske bleibt am gemeinsamen Rahmen. Punkte bleiben bedienbar.
+- Blumenlogo folgt der neuen Bildecke mit 8 % Einrückung. Link und Logo haben weiterhin
+  16 px Abstand; ihre Anordnung steht vollständig außerhalb der Scrollspur.
+- 320 px bei 200 % Schrift: Galeriebreite/Scrollbreite jeweils 257 px; Linkbreite/Scrollbreite
+  jeweils 132 px. Keine Überlagerung oder Textabschneidung. Bekannter Überstand anderer
+  Bestandsbereiche bleibt unverändert bei 423 px Dokumentbreite.
+- Homepage-Markup gegen AP-183 verglichen: nur neue Clipdefinition und CSS-Version geändert.
+  Hero, Fotoquellen, Original-Blumenlogo, Texte, CTAs und JavaScript unverändert.
+- git diff --check bestanden; temporäre Schriftprüfseite nach der Kontrolle entfernt.
+
+
+## AP-185 – Flachere Bilddiagonale (05.09.2026)
+
+- Seitenversatz im SVG-Clip von 8 auf 5,5 % reduziert (ca. 4,19 Grad bei 4:3).
+  Eckrundungen erhalten; Blumenlogo an die neue untere rechte Ecke angepasst.
+- Bei 390 px visuell geprüft: mehr sichtbare Bildränder, weiterhin erkennbare Hero-Form.
+  Galerie-Punkt bedienbar. Zusätzlich 320 und 900 px ohne horizontalen Seitenüberstand;
+  weiterhin 16 px zwischen Galerie-Link und Logo. Ab 901 px ausgeblendet.
+- Homepage-Markup außerhalb von Bildkontur und CSS-Version gegenüber AP-184 identisch.
+  Hero, Bilder, Texte und JavaScript unverändert. git diff --check bestanden.
+
+
+## AP-186 – Blumenlogo als Siegel am Gartenfoto (05.09.2026)
+
+- Originale Header-Blütengruppe proportional auf 65–80 px Breite verkleinert;
+  etwa zwei Drittel auf dem Foto, ein Drittel darunter. Rechter Überstand an der
+  schrägen Bildecke 8 px. Feiner dunkler Schlagschatten, unveränderte Bilddatei.
+- 320, 375, 390, 430 und 900 px ohne horizontalen Seitenüberstand bei normaler
+  Schrift. Ab 901 px bleibt die mobile Sektion ausgeblendet.
+- Visuelle Kontrolle des Vorgartens bei 390 px und des Poolgartens bei 320 px:
+  erkennbare Verbindung zur Bildkante, untergeordnete Größe, freie Navigationspunkte.
+- Bei 320 px bleiben 5,375 px zwischen dem sichtbaren aktiven vierten Punkt und
+  dem SVG-Sichtfenster. Direkte Auswahl des vierten Motivs erfolgreich; aktiver
+  Punkt und Bild synchron. Das Siegel hat weiterhin pointer-events: none.
+- Homepage-Markup gegenüber AP-185 bis auf die CSS-Cache-Version identisch.
+  Hero, Bildkontur, Kennzahlen, Texte, Originalgrafiken und JavaScript unverändert.
+  git diff --check bestanden.
+
+
+## AP-187 – Zweiteiliger Hero-CTA neben der Einladung (05.09.2026)
+
+- Hero-CTA bei 390 px visuell und per CSS verglichen: ca. 16,8 Grad Neigung,
+  Radien 2 / 14 px, dunkle Fläche und grüne Kontur. Neue Gruppe verwendet dieselbe
+  Gestaltung mit 13 Grad Neigung und zwei waagerecht beschrifteten Links.
+- 320, 375, 390, 430 und 900 px: Gruppe 110–144 px breit, beide Linkflächen jeweils
+  96 px hoch. Keine abgeschnittenen Beschriftungen oder horizontalen Seitenüberstände.
+  „Maik kontaktieren“ steht auf kleinen Handys in zwei Zeilen ohne Worttrennung.
+  Ab 901 px ist die mobile Sektion weiterhin vollständig ausgeblendet.
+- Visuelle Kontrolle bei 320 und 390 px. Texte beginnen links neben der Gruppe und
+  laufen darunter über die verfügbare Breite weiter. Das unveränderte Blumensiegel
+  bleibt am Bildrand; die Einladung beginnt 40 px unter dem Foto.
+- Beide Links per Tastatur fokussierbar; Fokusrahmen sichtbar. Galerie-Link tatsächlich
+  geöffnet: bestehende „Unsere Garten- und Projektgalerie“. Kontakt-Link tatsächlich
+  geöffnet: #anfrage, sichtbarer Formulareinstieg mit Tastaturfokus unterhalb des Headers.
+  Kein Formular abgesendet; vorhandener Sprunghandler unverändert.
+- 200 % Schrift bei 320 px: Container-Regel stellt die Gruppe über den Text. Beide
+  Links wachsen auf je 192 px Höhe; neue Sektion 305 px breit ohne eigenen Überstand.
+  Beschriftungen und Texte werden nicht abgeschnitten. Bekannter Überstand anderer
+  Bestandssektionen weiterhin 423 px Dokumentbreite bei 305 px verfügbarer Breite.
+- Beide persönlichen Texte automatisiert wortgetreu mit AP-186 verglichen. Übrige
+  Homepage außerhalb der mobilen Sektion bis auf die eigene CSS-Version identisch.
+  Hero, Kennzahlen, Bildkontur, Originalgrafiken und JavaScript unverändert.
+- git diff --check bestanden. Temporäre Schriftprüfseite nach der Prüfung entfernt.
+
+
+## AP-188 – Gartenwunsch-Button wieder unter der Bildfolge (05.09.2026)
+
+- Neuer Prüfrahmen des Auftraggebers: ausschließlich iPhone 15 Pro und iPhone 16 Pro.
+  Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln. Die temporären Prüfseiten
+  entfernen nur den Platzbedarf des Desktop-Scrollbalkens, sodass 393 bzw. 402 px
+  tatsächliche Inhaltsbreite zur Verfügung stehen. Kein Test auf physischen iPhones.
+- Auf beiden Breiten visuell geprüft: Button 345 bzw. 354 px breit, 56 px hoch,
+  Beschriftung einzeilig. 40 px Abstand zum Foto und mindestens 17 px freie Distanz
+  zum Blumensiegel. Kein horizontaler Seitenüberstand bei normaler Schrift.
+- SVG-Pfad automatisiert mit AP-186 verglichen: identisch. Ursprüngliches Grün
+  #8CC63F, dunkle Schrift und ursprüngliche Typografie wiederhergestellt.
+- Grüner Button und vorhandener „Maik kontaktieren“-Link tatsächlich angeklickt:
+  beide führen zu #anfrage und fokussieren den sichtbaren Formulareinstieg unter
+  dem Header. Kein Formular abgesendet. Bildwechsel-Code unverändert.
+- 200 % Schrift bei 393 px: Button wächst auf ca. 122 px Höhe, Beschriftung auf
+  zwei Zeilen. Fokusrahmen vollständig sichtbar; Buttonbreite/Scrollbreite 345 px,
+  neue Sektion 393 px ohne eigenen Überstand. Bekannte Bestandsbereiche erzeugen
+  bei dieser Schriftgröße weiterhin einen Dokumentüberstand (448 px).
+- Gesamtes vorhandenes Homepage-Markup gegen AP-187 verglichen: identisch nach
+  Abzug des ergänzten Buttons und beider Cache-Versionen. JavaScript-Syntax und
+  git diff --check bestanden. Temporäre iPhone-Prüfseiten anschließend entfernt.
+
+
+## AP-192 – Blumensiegel minimal nach rechts (05.09.2026)
+
+- CSS-Position um exakt 4 px nach rechts verschoben; Größe, vertikale Position,
+  Schatten und Originalgrafik unverändert.
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln. Kein horizontaler
+  Überstand der neuen Sektion und keine Berührung mit Bildpunkten oder Button.
+- Homepage-Markup bis auf die CSS-Cache-Version unverändert; git diff --check bestanden.
+
+
+## AP-193 – Gartenwunsch-Button unter den Texten (05.09.2026)
+
+- Button im Markup hinter die vollständige Einladung verschoben; 28 px Abstand
+  nach dem gemeinsamen Text-/CTA-Block.
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln: Button erscheint
+  unter „Damit ihr Garten Sie jederzeit … laufende Pflegearbeiten.“ und bleibt einzeilig.
+- Buttonziel #anfrage, Bildfolge, Blumensiegel, zweiteiliger CTA und Textwortlaut
+  unverändert. Kein horizontaler Überstand der neuen Sektion; git diff --check bestanden.
+
+
+## AP-194 – Gelber Pinselstrich zur Galerie (05.09.2026)
+
+- Markenfarbe anhand der vorhandenen Logo-SVGs bestätigt: #FFED00. Skalierbarer
+  SVG-Pinselstrich mit dezenter dunkler Farbspur und Schatten umgesetzt.
+- „Zur Galerie“ nur noch einmal sichtbar und als eigener Link am Blumensiegel;
+  bisheriger Galerie-Bereich im rechten CTA entfernt. „Maik kontaktieren“ bleibt
+  als eigenständiger kompakter CTA erhalten.
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln: Beschriftung frei,
+  Blume nur über dem oberen Strichrand, kein horizontaler Seitenüberstand.
+- Galerie-Link, Kontakt-CTA und grüner Haupt-CTA per Tastatur erreichbar; Fokusrahmen
+  sichtbar. Linkziele unverändert. Bildwechsel und Texte unverändert.
+- git diff --check bestanden.
+
+
+## AP-195 – Galerie und Siegel auf gegenüberliegenden Bildecken (05.09.2026)
+
+- Das unveränderte Blumensiegel bleibt unten rechts; der gelbe Galerie-Link sitzt
+  unten links und überlappt die Bildkante um exakt 8 px.
+- Pinselbreite bei beiden Zielbreiten 122,5 px; Markenbereich auf 40 px verkürzt.
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln. Navigationspunkte
+  bleiben frei; kein horizontaler Überstand der neuen Sektion.
+- Galerie-Link per Tastatur fokussiert; der 2-px-Fokusrahmen mit 4 px Abstand bleibt
+  vollständig sichtbar. Linkziel, Bildwechsel, Kontakt-CTA, Haupt-CTA und Einladung
+  bleiben unverändert.
+
+
+## AP-196 – Blumensiegel oben links, Galerie-Link unten rechts (05.09.2026)
+
+- Beide Akzente diagonal verteilt: unverändertes Header-Blumensiegel oben links,
+  gelber Galerie-Pinsel unten rechts.
+- Siegel in die Bildfigur verschoben und 12 px unter deren Oberkante verankert.
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln. Der Galerie-Link
+  berührt die mittigen Navigationspunkte nicht.
+- Alle vier Gartenmotive bei 402 px durchgeschaltet: Siegel bleibt erkennbar und
+  verdeckt keinen für die Bildaussage entscheidenden Bereich.
+- Galerie-Link 122,5 px breit und 8 px über der Bildkante; bei 402 px endet er bei
+  x = 378 px innerhalb der 402 px breiten Ansicht. Kein horizontaler Überstand.
+- Linkziel, Kontakt-CTA, Haupt-CTA, Bildwechsel und Texte unverändert.
+
+
+## AP-197 – Galerie-CTA höher und verfeinert (05.09.2026)
+
+- Linkfläche bei 393 × 852 und 402 × 874 CSS-Pixeln mit 126 × 44 px gemessen.
+- Linkbox 14 px über der unteren Bildkante; der sichtbare gelbe Pinsel greift durch
+  seinen organischen Innenrand etwa 6 px in das Foto.
+- Helle Farbspur, weicher Schatten und dezente Textaufhellung visuell auf beiden
+  Zielbreiten geprüft. Der CTA bleibt klar kleiner als der grüne Haupt-CTA.
+- Kein horizontaler Überstand. Fokusrahmen per Tastatur geprüft und vollständig
+  sichtbar; Linkziel und übrige Bedienung unverändert.
+
+
+## AP-198 – Siegel-Überlappung oben links spiegeln (05.09.2026)
+
+- Frühere Zwei-Drittel-Überlappung von unten rechts proportional nach oben links
+  gespiegelt: ein Drittel oberhalb des Bildes, zwei Drittel auf dem Foto.
+- Bei 393 px: 22,45 px außen und 44,91 px auf dem Bild bei 67,36 px Siegelhöhe.
+- Bei 402 px: 22,84 px außen und 45,72 px auf dem Bild bei 68,56 px Siegelhöhe.
+- Visuell auf beiden Zielbreiten geprüft. Abstand zum letzten KPI bleibt frei,
+  kein horizontaler Überstand; Galerie-CTA und übrige Sektion unverändert.
+
+
+## AP-199 – Rechteckige Bilder mit runden Ecken (05.09.2026)
+
+- SVG-Clip und zugehörige ausgeblendete Geometrie aus Markup und CSS entfernt.
+- Berechneter Bildstil bei 393 × 852 und 402 × 874 CSS-Pixeln geprüft:
+  clip-path: none und border-radius: 16px.
+- Unverändertes 4:3-Format gemessen: 345 × 258,75 px beziehungsweise
+  354 × 265,5 px. Kein horizontaler Überstand.
+- Blumensiegel, Galerie-CTA, Navigationspunkte, Bildwechsel und Texte unverändert.
+
+
+## AP-200 – Siegel unten links, Galerie-CTA mittig (05.09.2026)
+
+- Siegel unten links mit früherer Zwei-Drittel-Überlappung: bei 393 px 44,91 px
+  auf dem Foto und 22,45 px darunter; bei 402 px 45,72 px und 22,84 px.
+- Galerie-Link bei beiden Zielbreiten exakt auf der Bildmitte gemessen:
+  196,5 px bei 393 px und 201 px bei 402 px Inhaltsbreite.
+- Linkbox beginnt unterhalb des Bildes und berührt die Navigationspunkte nicht.
+  Zwischen Siegelbox und Link bleiben 23,94 beziehungsweise 26,53 px frei.
+- Kein horizontaler Überstand; Bildwechsel, Linkziele, Texte und übrige CTAs
+  unverändert.
+
+
+## AP-201 – Siegel unten rechts (05.09.2026)
+
+- Siegel horizontal nach unten rechts gespiegelt; Größe und vertikale
+  Zwei-Drittel-Überlappung unverändert.
+- Abstand zum mittigen Galerie-Link bei 393 px: 23,94 px; bei 402 px: 26,53 px.
+- Visuell auf beiden Zielbreiten geprüft. Kein horizontaler Überstand;
+  Galerie-Link, Bildwechsel, Linkziele und übrige Inhalte unverändert.
+
+
+## AP-202 – Siegel direkt auf der unteren rechten Ecke (05.09.2026)
+
+- Siegelrahmen auf beiden Zielbreiten exakt 12 px über die rechte Bildkante
+  hinausgeführt; vertikale Überlappung und Größe unverändert.
+- Verbleibender Abstand zum Ansichtsrand: 12 px bei 393 px und 402 px.
+- Freiraum zum mittigen Galerie-Pinsel: 42,91 px beziehungsweise 46 px.
+- Visuell auf beiden iPhone-Breiten geprüft; kein horizontaler Überstand.
+  Galerie-Link, Bildwechsel, Texte und übrige Inhalte unverändert.
+
+
+## AP-203 – Siegel 4 px weiter rechts (05.09.2026)
+
+- Ausschließlich die horizontale Siegelposition von -12 px auf -16 px geändert.
+- Bei 393 px und 402 px verbleiben jeweils 8 px zwischen SVG-Rahmen und Ansichtsrand.
+- Visuell bei 393 px sowie rechnerisch bei 402 px geprüft; kein horizontaler
+  Überstand. Größe, Überlappung und übrige Sektion unverändert.
+
+
+## AP-204 – Drei Bilder und Galerie-Link tiefer (05.09.2026)
+
+- „Blühender Vorgarten“ vollständig aus der mobilen Bildfolge entfernt.
+- Drei reale Motive und drei passende Punkte geprüft. Startbild, Fallback-
+  Unterschrift und erster Alternativtext gehören zu „Pflasterflächen und Rasen“.
+- Alle drei Punkte bei 402 px betätigt: aktive Position und versteckte
+  Bildunterschrift wechseln synchron; drei Originale plus zwei Randduplikate.
+- Galerie-Link beginnt 6 px unter der Bildkante, Markenbereich 54 px hoch.
+- Visuell bei 393 × 852 und 402 × 874 CSS-Pixeln geprüft. Kein horizontaler
+  Überstand; Siegel, Linkziel, Texte und übrige CTAs unverändert.
+
+
+## AP-205 – „Maik kontaktieren“ entfernen (05.09.2026)
+
+- Kontakt-Link, Aktionscontainer und sämtliche nur dafür verwendeten CSS-Regeln
+  entfernt; kein sichtbares oder verstecktes Vorkommen mehr vorhanden.
+- Textspalte bei 393 px mit 345 px und bei 402 px mit 354 px Breite gemessen.
+- Grüner Haupt-CTA besitzt weiterhin dieselbe volle Breite und sein bestehendes
+  Ziel. Galerie-Link, Bilder, Siegel und Texte unverändert.
+- Visuell auf beiden Zielbreiten geprüft; keine Lücke und kein horizontaler
+  Überstand.
+
+
+## AP-206 – Fragen links, Antworten rechts (05.09.2026)
+
+- Beide Antwortsätze in eigene Blockelemente überführt; Fragen und Wortlaut
+  unverändert.
+- Berechnete Antwortausrichtung auf beiden Zielbreiten rechtsbündig. Breite
+  jeweils 307,19 px; rechte Kante bei x = 369 px beziehungsweise x = 378 px.
+- Erster Antworttext über zwei Zeilen, zweiter über drei Zeilen visuell geprüft.
+- Grüner Haupt-CTA bleibt darunter; kein horizontaler Überstand und keine
+  zusätzlichen dekorativen Elemente.
+
+
+## AP-207 – Offene Antwortflächen mit Hero-Blüte (05.09.2026)
+
+- Visuell bei 393 × 852 und 402 × 874 CSS-Pixeln geprüft. Beide Antwortzeilen
+  schließen rechts bei x = 369 px beziehungsweise x = 378 px ab; ihre maximale
+  Breite beträgt jeweils 326,39 px.
+- Die Textflächen messen bei beiden Zielbreiten rund 289 px. Blüten erscheinen
+  proportional mit 29,47 px beziehungsweise 30,14 px, bleiben vollständig
+  sichtbar und stehen mit 8 px Abstand außerhalb der Textfläche.
+- Antwortfarbe, 500er Gewicht, 22,4 px Zeilenhöhe, rechte Kontur und ausschließlich
+  rechts gerundete 14-px-Ecken per berechnetem Stil bestätigt. Der Kontrast von
+  `#B6D97A` auf dem stärksten 18-prozentigen Verlaufsteil beträgt rund 9,4:1.
+- Screenreader-Reihenfolge im Markup geprüft: Frage, „Maiks Antwort:“, Antwort.
+  Beide Bilder besitzen leeren Alternativtext und `aria-hidden="true"`.
+- Mit gezielt auf 200 % gesetzten Frage-, Antwort- und CTA-Schriftgrößen wachsen
+  alle Flächen ohne Abschneiden, Blütenüberlagerung oder horizontalen Überstand.
+- Bei 393 px und 402 px stimmen Dokument- und Ansichtsbreite exakt überein. In der
+  Desktop-Vorschau bleibt die mobile Sektion ausgeblendet; CSS-Cachekennung
+  `20260905am` ist geladen.
+
+
+## AP-208 – Erste Dialogantwort präzisieren (05.09.2026)
+
+- Sichtbaren Antworttext und zugängliche Lesereihenfolge auf „Maiks Antwort:
+  Kein Anliegen ist uns zu klein oder zu spontan.“ geprüft.
+- Keine CSS-, Layout- oder Bedienänderung.
+
+
+## AP-209 – Dialogtexte sprachlich schärfen (05.09.2026)
+
+- Beide Fragen und Antworten wortgetreu gegen die abgestimmte Fassung geprüft.
+- Zweite Frage beginnt direkt mit „Im Urlaub“; „Länger weg“ und „nur“ entfallen.
+- Formelle Anrede „Ihren“ sowie Gedankenstriche und Zeichensetzung geprüft.
+- Bei 393 × 852 und 402 × 874 CSS-Pixeln erscheinen beide Antworten mit
+  identischer Höhe von 91,17 px über jeweils drei Zeilen. Kein horizontaler
+  Überstand; keine CSS- oder Bedienänderung.
+
+
+## AP-210 – Anfrage-CTA mit „MIT MAIK“-Stempel (05.09.2026)
+
+- Standardpfeil vollständig entfernt; sichtbare Beschriftung und zugänglicher
+  Name lauten „Gartenwunsch besprechen“ beziehungsweise „Gartenwunsch mit Maik
+  besprechen“.
+- Eigenständige gelbe Vektorfläche mit zweizeiligem „MIT MAIK“ innerhalb der
+  diagonalen rechten Ecke ergänzt.
+- Mindesthöhe auf 64 px, Beschriftung auf bis zu 18 px und Gewicht 800 erhöht.
+- Linkziel und gelber Fokusrahmen bleiben erhalten; Übergänge werden bei
+  reduzierter Bewegung deaktiviert.
+- CSS-Cachekennung auf `20260905an` erhöht.
+- Bei 393 × 852 und 402 × 874 CSS-Pixeln misst der CTA 345 × 64 px
+  beziehungsweise 354 × 64 px. Beschriftung und Stempel bleiben einzeilig;
+  zwischen beiden verbleiben mindestens 4,74 px sichtbarer Freiraum.
+- Bei 200 % Beschriftungsgröße wächst der CTA auf 104 px Höhe. Der Text bricht
+  ausschließlich zwischen ganzen Wörtern um und bleibt ohne Überlagerung neben
+  dem Stempel. Kein horizontaler Seitenüberstand.
+- Laufzeit-Linkziel `#anfrage`, zugänglicher Name, gelber Fokusrahmen und
+  praktisch deaktivierte Übergangsdauer bei reduzierter Bewegung geprüft.
+
+
+## AP-211 – „MIT MAIK“-Stempel entfernen (05.09.2026)
+
+- Gelben Stempel, Stempeltext und ausschließlich dafür benötigte CSS-Regeln
+  vollständig entfernt.
+- Sichtbarer und zugänglicher Linktext lautet wieder ausschließlich
+  „Gartenwunsch besprechen“.
+- Höhe von 64 px, Schriftgröße bis 18 px, Gewicht 800, Grundform, Buttonfarbe,
+  Schatten, Fokusrahmen und Linkziel bleiben erhalten.
+- CSS-Cachekennung auf `20260905ao` erhöht.

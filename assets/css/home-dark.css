@@ -1313,6 +1313,12 @@ html.home-theme-dark .fork-path:hover {
 /* Mobiler Willkommenbereich: eingeruecktes Gartenfoto und kompaktes Register.
    Die native Details-Gruppe benoetigt kein zusaetzliches JavaScript. */
 @media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+  /* Den parallelen Willkommenentwurf nur auf den vereinbarten iPhones ersetzen.
+     Desktop und alle anderen Bildschirmgroessen behalten .mr-willkommen. */
+  html.home-theme-dark .mr-willkommen {
+    display: none;
+  }
+
   html.home-theme-dark .gate-welcome--iphone {
     position: relative;
     display: block;
@@ -1712,4 +1718,251 @@ html.home-theme-dark .fork-path:hover {
 html.home-theme-dark :where(.site-header, .hero--gate, .section-proof, .fork, .section-faq, .site-footer) :focus-visible {
   outline: 3px solid var(--home-focus);
   outline-offset: 3px;
+}
+
+/* ============================================================================
+   AP-174: WILLKOMMEN
+   Entwurf des Auftraggebers (Variante 2c) 1:1 uebernommen, umgeschluesselt auf die
+   dunkle Farbwelt. Der Abschnitt steht im Fluss zwischen .gate-head und .gate-doors,
+   liegt also im Verlauf des .home-hero-stack (--bg-elev -> --bg-hero).
+
+   Drei Stellen mussten dabei anders geloest werden als im Entwurf, weil sie sich auf
+   dunklem Grund nicht uebertragen lassen - sie sind unten einzeln begruendet:
+   die Flaechenfarbe, die Kapsel hinter der Blume und der Blendmodus des Wasserzeichens.
+   Alles andere (Raster, Abstaende, Groessen, Windanimation) steht unveraendert.
+   ============================================================================ */
+
+/* Entwurf: background #FAF8F1. Hier bewusst KEINE eigene Flaeche - eine deckende
+   Farbe wuerde im Verlauf des Hero-Stacks als Naht sichtbar. */
+html.home-theme-dark .mr-willkommen {
+  position: relative;
+  overflow: hidden;
+  color: var(--ink);
+}
+
+html.home-theme-dark .mr-willkommen__wasserzeichen {
+  position: absolute;
+  right: 48px;
+  bottom: -60px;
+  width: 380px;
+  height: auto;
+  opacity: .28;
+  pointer-events: none;
+}
+
+/* Entwurf: max-width 1440px, padding 120px 72px. Der horizontale Anteil weicht dem
+   Seitenraster - der Block steht direkt ueber .gate-doors und muss mit dessen
+   Kanten fluchten (gleiche Formel wie styles.css .gate-doors). */
+html.home-theme-dark .mr-willkommen__inner {
+  position: relative;
+  width: min(100% - calc(var(--gutter) * 2), var(--container));
+  margin-inline: auto;
+  padding: 120px 0;
+  display: grid;
+  grid-template-columns: 1fr 1px 460px;
+  column-gap: 64px;
+}
+
+html.home-theme-dark .mr-willkommen__gross {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.2;
+  text-wrap: pretty;
+}
+
+/* Entwurf: Comic Neue italic 700 ueber Google Fonts. Die Startseite laedt
+   ausschliesslich selbst gehostete Schriften; Baloo 2 ist die runde Zweitschrift
+   des Hauses und steht bereits im @font-face-Block oben. */
+html.home-theme-dark .mr-willkommen__gross .mr-comic {
+  font-family: "Baloo 2", cursive;
+  font-style: italic;
+  font-weight: 700;
+}
+
+html.home-theme-dark .mr-willkommen__absatz {
+  display: inline-block;
+  margin-top: 18px;
+}
+
+/* Entwurf: durchgehende Linie in #17191E, die von einer Kapsel in Papierfarbe
+   gebrochen wird. Eine Deckfarbe gibt es hier nicht - der Untergrund ist ein
+   Verlauf. Die Luecke wird deshalb aus der Linie selbst geschnitten: gleiches
+   Bild, aber unabhaengig vom Grund. 60px = halbe Kapselhoehe (84px Blume + 2x18px). */
+html.home-theme-dark .mr-willkommen__steg {
+  position: relative;
+  background: linear-gradient(180deg,
+    var(--line) 0 calc(50% - 60px),
+    transparent calc(50% - 60px) calc(50% + 60px),
+    var(--line) calc(50% + 60px) 100%);
+}
+
+/* Der Steg ist eine 1px-Rasterspalte, die Kapsel haengt absolut darin - ihr
+   Enthaeltnisblock ist also 1px breit. Ohne eigene Breite greift der globale
+   Reset img { max-width: 100% } (styles.css) und staucht die Bluete auf 0,5px.
+   In der Entwurfsdatei allein gab es diesen Reset nicht, dort fiel es nicht auf. */
+html.home-theme-dark .mr-willkommen__blume {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 84px;
+  padding: 18px 0;
+}
+
+html.home-theme-dark .mr-willkommen__blume img {
+  display: block;
+  width: 84px;
+  max-width: none;
+  height: auto;
+}
+
+html.home-theme-dark .mr-willkommen__klein {
+  align-self: center;
+}
+
+html.home-theme-dark .mr-willkommen__klein p {
+  margin: 0;
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+/* Die Signatur braucht mehr Spezifitaet als .mr-willkommen__klein p { margin: 0 },
+   sonst schluckt diese Regel den Abstand. Im Entwurf war der Abstand angelegt
+   (margin-top: 36px), kam dort aus demselben Grund aber nie an. */
+html.home-theme-dark .mr-willkommen__klein .mr-willkommen__name {
+  margin-top: 36px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+html.home-theme-dark .mr-willkommen__steg-mobil {
+  display: none;
+}
+
+/* Blume im Wind: Drehpunkt knapp unterhalb der Grafik, als saesse die Bluete auf
+   einem unsichtbaren Stiel. Unveraendert aus dem Entwurf.
+   Kein Konflikt mit .reveal: die Animation laeuft auf dem img, das
+   Reveal-transform auf dem Rasterkind darueber. */
+html.home-theme-dark .mr-willkommen__blume img,
+html.home-theme-dark .mr-willkommen__steg-mobil img {
+  transform-origin: 50% 118%;
+  will-change: transform;
+  animation: mr-blume-wind 7s ease-in-out infinite;
+}
+
+/* Bewusst von der Desktop-Dauer abweichend, damit die beiden Blueten nicht
+   synchron laufen. */
+html.home-theme-dark .mr-willkommen__steg-mobil img {
+  animation-duration: 8.5s;
+}
+
+/* AP-175: Ausschlag verdreifacht - 4,1deg Gesamtweg waren zu zaghaft.
+   Jetzt -5,1deg bis +7,2deg, Hub 6px. Die Verteilung der Stuetzstellen ueber die
+   Zeit bleibt unangetastet: sie erzeugt den unregelmaessigen, boeigen Eindruck. */
+@keyframes mr-blume-wind {
+  0%   { transform: rotate(-3.6deg) translateY(0); }
+  14%  { transform: rotate(4.2deg)  translateY(-3px); }
+  27%  { transform: rotate(-1.5deg) translateY(0); }
+  41%  { transform: rotate(7.2deg)  translateY(-6px); }
+  52%  { transform: rotate(0.6deg)  translateY(-1.5px); }
+  66%  { transform: rotate(-5.1deg) translateY(0); }
+  80%  { transform: rotate(2.4deg)  translateY(-3px); }
+  100% { transform: rotate(-3.6deg) translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.home-theme-dark .mr-willkommen__blume img,
+  html.home-theme-dark .mr-willkommen__steg-mobil img { animation: none; }
+}
+
+/* Entwurf: Umbruch bei 768px. In dieser Seite zu spaet - die feste 460px-Spalte
+   plus 64px Bundsteg passt darunter nicht neben die Textspalte:
+   bei 800px lief die Seite 58px horizontal ueber, und bis rund 1140px blieb die
+   grosse Textspalte schmaler als die kleine, was das Verhaeltnis des Entwurfs
+   umkehrt. Ab 1140px sind die Spalten erstmals ausgewogen (441px vs. 460px bei
+   1120px, 478px vs. 460px bei 1160px) - dort liegt der Umbruch. */
+@media (max-width: 1139px) {
+  html.home-theme-dark .mr-willkommen__wasserzeichen {
+    right: -30px;
+    bottom: -40px;
+    width: 200px;
+  }
+
+  html.home-theme-dark .mr-willkommen__inner {
+    display: block;
+    padding: 56px 0;
+  }
+
+  html.home-theme-dark .mr-willkommen__gross {
+    font-size: 23px;
+    line-height: 1.24;
+  }
+
+  html.home-theme-dark .mr-willkommen__absatz {
+    margin-top: 12px;
+  }
+
+  html.home-theme-dark .mr-willkommen__steg {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-willkommen__steg-mobil {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 22px 0;
+  }
+
+  html.home-theme-dark .mr-willkommen__steg-mobil::before,
+  html.home-theme-dark .mr-willkommen__steg-mobil::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  html.home-theme-dark .mr-willkommen__steg-mobil img {
+    width: 46px;
+    height: auto;
+  }
+
+  html.home-theme-dark .mr-willkommen__klein p {
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  html.home-theme-dark .mr-willkommen__klein .mr-willkommen__name {
+    margin-top: 24px;
+    font-size: 13px;
+  }
+}
+
+/* AP-174: Foto-Buehne von der Textspalte entkoppelt.
+   Vorher hatte .home-hero-stack auf dem Desktop grid-template-rows: repeat(2, minmax(0,1fr)),
+   und .hero--gate-empty besitzt keine eigene Hoehe - ihr Inhalt (picture, proof-strip) ist
+   absolut positioniert und misst 73px. Die sichtbare Hoehe der Buehne entstand also
+   ausschliesslich aus der Angleichung an die Textspalte. Damit kostete jeder Block in der
+   Textspalte doppelt: der Willkommens-Abschnitt (482px bei 1440px) haette die Buehne von
+   768px auf 1250px getrieben und die Hero von 1538px auf 2502px.
+
+   Die Buehne bekommt deshalb eine eigene Hoehe. Der clamp ist an das bisherige Verhalten
+   angepasst gemessen - Abweichung ueber 960 bis 1920px hoechstens 19px, meist unter 14:
+     960 579->580 | 1100 602->583 | 1280 692->678 | 1440 768->763 | 1680 805->810 | 1920 809->810
+   Unter 901px greift die Regel nicht: dort steht das Raster laengst auf auto auto und die
+   Buehne traegt ihre eigene min-height (siehe oben, AP-151). */
+@media (min-width: 901px) {
+  html.home-theme-dark .home-hero-stack {
+    grid-template-rows: auto auto;
+  }
+
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty {
+    min-height: clamp(580px, 53vw, 810px);
+  }
 }
