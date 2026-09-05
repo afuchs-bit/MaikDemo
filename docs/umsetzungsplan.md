@@ -1300,3 +1300,15 @@ Der Markenbereich unter dem Foto wird von 56 auf 40 px verkürzt. Dadurch bleibt
 der Abstand zur persönlichen Einladung trotz der höheren Galerieposition
 ausgewogen. Bildkontur, Navigationspunkte, Siegel, Links und Texte bleiben
 inhaltlich unverändert. Prüfung weiterhin bei iPhone 15 Pro und iPhone 16 Pro.
+
+
+**AP-196, Blumensiegel oben links und Galerie-Link unten rechts (05.09.2026):**
+Auf Wunsch des Auftraggebers stehen die beiden Akzente diagonal gegenüber. Das
+unveränderte Blumensiegel greift oben links in die weiche diagonale Bildkontur;
+der gelbe Pinsel „Zur Galerie“ liegt rechts unten und greift weiterhin 8 px in
+das Foto.
+
+Die leichte Pinseldrehung wird zur rechten Platzierung gespiegelt. Der Siegelcode
+liegt nun direkt an der Bildfigur, damit seine obere Position unabhängig von der
+Bildbreite stabil bleibt. Größen, Linkziel, Bildwechsel und die darunterliegende
+Einladung bleiben unverändert. Prüfung weiterhin bei iPhone 15 Pro und iPhone 16 Pro.

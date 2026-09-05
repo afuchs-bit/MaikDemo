@@ -370,3 +370,17 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Galerie-Link per Tastatur fokussiert; der 2-px-Fokusrahmen mit 4 px Abstand bleibt
   vollständig sichtbar. Linkziel, Bildwechsel, Kontakt-CTA, Haupt-CTA und Einladung
   bleiben unverändert.
+
+
+## AP-196 – Blumensiegel oben links, Galerie-Link unten rechts (05.09.2026)
+
+- Beide Akzente diagonal verteilt: unverändertes Header-Blumensiegel oben links,
+  gelber Galerie-Pinsel unten rechts.
+- Siegel in die Bildfigur verschoben und 12 px unter deren Oberkante verankert.
+- Visuelle Browserprüfung bei 393 × 852 und 402 × 874 CSS-Pixeln. Der Galerie-Link
+  berührt die mittigen Navigationspunkte nicht.
+- Alle vier Gartenmotive bei 402 px durchgeschaltet: Siegel bleibt erkennbar und
+  verdeckt keinen für die Bildaussage entscheidenden Bereich.
+- Galerie-Link 122,5 px breit und 8 px über der Bildkante; bei 402 px endet er bei
+  x = 378 px innerhalb der 402 px breiten Ansicht. Kein horizontaler Überstand.
+- Linkziel, Kontakt-CTA, Haupt-CTA, Bildwechsel und Texte unverändert.
