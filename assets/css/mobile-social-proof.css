@@ -1,4 +1,4 @@
-/* AP-206: Fragen links, Antworten rechts als ruhiger Dialogsatz.
+/* AP-207: Offene Antwortflaechen mit einzelner Hero-Bluete als Absender.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -352,17 +352,47 @@
 
   .mobile-proof-invitation__text strong {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: var(--ink);
     font: 700 1.125rem/1.4 var(--display);
   }
 
+  .mobile-proof-invitation__response {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(28px, 7.5vw, 32px);
+    align-items: end;
+    gap: 8px;
+    width: min(100%, 34ch);
+    margin-left: auto;
+  }
+
   .mobile-proof-invitation__answer {
     display: block;
-    max-width: 32ch;
-    margin-left: auto;
+    min-width: 0;
+    padding: 12px 14px 12px 18px;
+    border-right: 1px solid rgb(182 217 122 / 30%);
+    border-radius: 0 14px 14px 0;
+    background: linear-gradient(
+      90deg,
+      rgb(74 122 16 / 0%) 0%,
+      rgb(74 122 16 / 10%) 28%,
+      rgb(74 122 16 / 18%) 100%
+    );
+    color: var(--home-dark-accent);
+    font-weight: 500;
+    line-height: 1.4;
     text-align: right;
     text-wrap: pretty;
+  }
+
+  .mobile-proof-invitation__flower {
+    display: block;
+    align-self: end;
+    width: clamp(28px, 7.5vw, 32px);
+    max-width: none;
+    height: auto;
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 34%));
+    pointer-events: none;
   }
 
   /* Der bestehende #anfrage-Handler zielt auch bei aktivem Kurzformular auf

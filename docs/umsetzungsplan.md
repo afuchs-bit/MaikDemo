@@ -1412,3 +1412,16 @@ So entsteht die gewünschte Chatwirkung ausschließlich durch den wechselnden
 Satz und die Einrückung. Zusätzliche Sprechblasen, Flächen oder Symbole werden
 nicht eingeführt. Wortlaut, Abstände zwischen den Themen und Haupt-CTA bleiben
 unverändert.
+
+
+**AP-207, Antworten als offenen Dialog gestalten (05.09.2026):** Die beiden
+Antworten stehen weiterhin rechts, erhalten nun aber eine sanft von transparent
+zu dunklem Markengrün auslaufende Fläche. Eine feine rechte Kontur und nur rechts
+gerundete Ecken formen eine offene Antwortzeile statt einer klassischen
+Chatblase. Antworttext erscheint im ruhigen Akzentgrün `#B6D97A`.
+
+Rechts neben jeder Antwort sitzt exakt die einzelne Blüte aus dem Hero als
+persönliches Absenderzeichen. Die Blüten bleiben dekorativ; ein visuell
+ausgeblendetes „Maiks Antwort:“ stellt die Bedeutung und Lesereihenfolge für
+Screenreader her. Fragen, Wortlaut, Bilder, Galerie-Link und Haupt-CTA bleiben
+unverändert.

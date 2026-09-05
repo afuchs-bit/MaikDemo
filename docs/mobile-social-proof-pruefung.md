@@ -488,3 +488,23 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Erster Antworttext über zwei Zeilen, zweiter über drei Zeilen visuell geprüft.
 - Grüner Haupt-CTA bleibt darunter; kein horizontaler Überstand und keine
   zusätzlichen dekorativen Elemente.
+
+
+## AP-207 – Offene Antwortflächen mit Hero-Blüte (05.09.2026)
+
+- Visuell bei 393 × 852 und 402 × 874 CSS-Pixeln geprüft. Beide Antwortzeilen
+  schließen rechts bei x = 369 px beziehungsweise x = 378 px ab; ihre maximale
+  Breite beträgt jeweils 326,39 px.
+- Die Textflächen messen bei beiden Zielbreiten rund 289 px. Blüten erscheinen
+  proportional mit 29,47 px beziehungsweise 30,14 px, bleiben vollständig
+  sichtbar und stehen mit 8 px Abstand außerhalb der Textfläche.
+- Antwortfarbe, 500er Gewicht, 22,4 px Zeilenhöhe, rechte Kontur und ausschließlich
+  rechts gerundete 14-px-Ecken per berechnetem Stil bestätigt. Der Kontrast von
+  `#B6D97A` auf dem stärksten 18-prozentigen Verlaufsteil beträgt rund 9,4:1.
+- Screenreader-Reihenfolge im Markup geprüft: Frage, „Maiks Antwort:“, Antwort.
+  Beide Bilder besitzen leeren Alternativtext und `aria-hidden="true"`.
+- Mit gezielt auf 200 % gesetzten Frage-, Antwort- und CTA-Schriftgrößen wachsen
+  alle Flächen ohne Abschneiden, Blütenüberlagerung oder horizontalen Überstand.
+- Bei 393 px und 402 px stimmen Dokument- und Ansichtsbreite exakt überein. In der
+  Desktop-Vorschau bleibt die mobile Sektion ausgeblendet; CSS-Cachekennung
+  `20260905am` ist geladen.
