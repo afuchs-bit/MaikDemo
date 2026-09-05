@@ -2095,7 +2095,16 @@ html.home-theme-dark .mr-ueber__video {
    diesem Rand und dem margin-top der Buehne, nicht deren Summe. Nur die Buehne
    zu senken brachte deshalb nichts: gemessen blieben 17px, weil dieser Wert
    (16,8px) der groessere war. Beide muessen klein sein. */
-html.home-theme-dark .mr-ueber__videokopf { margin-bottom: clamp(6px, .8vw, 10px); }
+/* AP-214: Der Titel stiess ohne Abstand an den Fliesstext darueber - gemessen 0px.
+   Folge von AP-213: dort ging es darum, ihn an das VIDEO heranzuruecken; nach oben
+   hatte der Kopf nie einen Rand, und weder der Absatz noch der Umflussblock
+   bringen einen mit.
+   --space-section-compact und keine gegriffene Zahl: derselbe Wert trennt in dieser
+   Sektion bereits Videoband von Text und Text von Karte. */
+html.home-theme-dark .mr-ueber__videokopf {
+  margin-top: var(--space-section-compact);
+  margin-bottom: clamp(6px, .8vw, 10px);
+}
 
 /* AP-213: Look des Wortes "Garten" aus dem mobilen Hero.
    Dort ist "Garten" KEIN Text, sondern ein handgezeichneter Pinselschriftzug
