@@ -1,4 +1,4 @@
-/* AP-184: Gedrehte Hero-CTA-Form fuer die Gartenbilder.
+/* AP-185: Flachere Hero-CTA-Form fuer mehr sichtbares Gartenmotiv.
    Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
 .mobile-social-proof {
   display: none;
@@ -209,14 +209,14 @@
   .mobile-proof-gallery__footer {
     --proof-brand-width: clamp(88px, 25vw, 104px);
     position: relative;
-    padding-right: calc(var(--proof-brand-width) + 16px + 8%);
+    padding-right: calc(var(--proof-brand-width) + 16px + 5.5%);
     padding-bottom: calc(var(--proof-brand-width) * 3 / 7 - 22px);
   }
 
   .mobile-proof-gallery__brand {
     position: absolute;
     top: calc(22px - var(--proof-brand-width) * 3 / 7);
-    right: 8%;
+    right: 5.5%;
     z-index: 1;
     display: block;
     width: var(--proof-brand-width);

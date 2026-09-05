@@ -248,3 +248,14 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
 - Homepage-Markup gegen AP-183 verglichen: nur neue Clipdefinition und CSS-Version geändert.
   Hero, Fotoquellen, Original-Blumenlogo, Texte, CTAs und JavaScript unverändert.
 - git diff --check bestanden; temporäre Schriftprüfseite nach der Kontrolle entfernt.
+
+
+## AP-185 – Flachere Bilddiagonale (05.09.2026)
+
+- Seitenversatz im SVG-Clip von 8 auf 5,5 % reduziert (ca. 4,19 Grad bei 4:3).
+  Eckrundungen erhalten; Blumenlogo an die neue untere rechte Ecke angepasst.
+- Bei 390 px visuell geprüft: mehr sichtbare Bildränder, weiterhin erkennbare Hero-Form.
+  Galerie-Punkt bedienbar. Zusätzlich 320 und 900 px ohne horizontalen Seitenüberstand;
+  weiterhin 16 px zwischen Galerie-Link und Logo. Ab 901 px ausgeblendet.
+- Homepage-Markup außerhalb von Bildkontur und CSS-Version gegenüber AP-184 identisch.
+  Hero, Bilder, Texte und JavaScript unverändert. git diff --check bestanden.

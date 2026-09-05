@@ -1213,3 +1213,10 @@ weder geschert noch gedreht; nur die seitlichen Randbereiche werden beschnitten.
 Das unveränderte Header-Blumenlogo folgt der neuen unteren rechten Ecke mit 8 %
 Einrückung. Der Galerie-Link bleibt außerhalb des Fotos auf der gemeinsamen linken
 Kante. Keine zusätzliche Kontur, Fläche oder Animation; Hero und Bildwechsel unverändert.
+
+
+**AP-185, Bildschräge weiter abflachen (05.09.2026):** Auf Wunsch des Auftraggebers
+wird die Seitenneigung von ca. 6,1 auf 4,2 Grad reduziert. Der seitliche Versatz sinkt
+von 8 auf 5,5 % der Bildbreite, sodass mehr vom Motiv sichtbar bleibt. Die gedrehte
+Hero-Form mit ihren gegenüberliegenden weichen Ecken bleibt erhalten. Das Blumenlogo
+folgt der Bildecke mit 5,5 % Einrückung. Der bereits abgenommene Hero bleibt unverändert.
