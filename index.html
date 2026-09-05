@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260905d" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260905e" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260902g" />
@@ -418,62 +418,6 @@ html.home-theme-dark body { background-color: #171916; }
         <p class="mr-willkommen__name">Maik Rohdich</p>
       </div>
     </div>
-  </section>
-
-  <!-- ============ VERTRAUENS-SIEGEL (AP-176) ============
-       Entwurf des Auftraggebers unveraendert uebernommen: fuenf Plaketten in exakten
-       72-Grad-Schritten auf gleichem Radius, statische Haarlinien-Strahlen, eine
-       langsam rotierende gestrichelte Kreislinie als einziges bewegtes Element.
-       Der Fusspunkt bleibt frei - er ist die Blickachse zum CTA. Gestaltung in
-       home-dark.css, nur auf die dunkle Farbwelt umgeschluesselt.
-
-       Fakten gegen Teil B und content/stammdaten.json gezogen. Der Entwurf enthielt
-       eine Platzhalter-Telefonnummer (02323 000 000), eine Erreichbarkeitsangabe, die
-       den belegten Zeiten widersprach (7-17 Uhr, "Rueckruf"), und die Berufsbezeichnung
-       "Landschaftsgaertnermeister", die es im Repo nicht gibt. Beim Pflanzenschutz
-       heisst es "Sachkundiger", nicht "Sachverstaendiger" - so auch auf
-       gewerbekunden/index.html. Die LWK-Zertifizierung der Baumkontrolle hat der
-       Auftraggeber am 05.09.2026 auf Rueckfrage bestaetigt. -->
-  <section class="mr-siegel" aria-label="Qualifikationen von Maik Rohdich">
-    <div class="mr-siegel__buehne reveal">
-      <!-- statische Haarlinien-Strahlen zu den 5 Plakettenpunkten -->
-      <svg class="mr-siegel__deko" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
-        <line x1="300" y1="300" x2="300" y2="75" class="mr-siegel__haarlinie"></line>
-        <line x1="300" y1="300" x2="514" y2="230.5" class="mr-siegel__haarlinie"></line>
-        <line x1="300" y1="300" x2="432.3" y2="482" class="mr-siegel__haarlinie"></line>
-        <line x1="300" y1="300" x2="167.7" y2="482" class="mr-siegel__haarlinie"></line>
-        <line x1="300" y1="300" x2="86" y2="230.5" class="mr-siegel__haarlinie"></line>
-      </svg>
-      <!-- einziges bewegtes Element: gestrichelte Kreislinie, im Uhrzeigersinn -->
-      <svg class="mr-siegel__dreh" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
-        <circle class="mr-siegel__ring" cx="300" cy="300" r="225" stroke-dasharray="3 10"></circle>
-      </svg>
-      <!-- OFFEN: Portraetfoto Maik Rohdich, quadratisch, wird kreisfoermig maskiert.
-           Es gibt im Repo kein Gesichtsfoto; das fruehere war KI-generiert und wurde
-           laut ASSETS.md bewusst aus Datenschutzgruenden entfernt. Der Auftraggeber
-           liefert nach. Bis dahin bleibt die Flaeche leer - ein <img> mit totem src
-           zeigte ein kaputtes Bildsymbol, sichtbarer Platzhaltertext ist untersagt.
-           Beim Nachziehen wird daraus:
-           <img class="mr-siegel__foto" src="..." width="..." height="..."
-                alt="Maik Rohdich, Gartenbaumeister und Inhaber" loading="lazy" decoding="async"> -->
-      <div class="mr-siegel__foto" aria-hidden="true"></div>
-      <!-- AP-177: Die Plaketten sind seit dem Wegfall der Liste die einzige Textquelle.
-           Deshalb kein aria-hidden mehr und eine echte Liste, damit Screenreader
-           "Liste mit 5 Eintraegen" ansagen statt fuenf loser Textfragmente.
-           Pro Eintrag wird weiterhin nur --winkel gesetzt. -->
-      <ul class="mr-siegel__orbit">
-        <li class="mr-siegel__plakette" style="--winkel:0deg"><span class="mr-siegel__chip">Meisterbetrieb</span></li>
-        <li class="mr-siegel__plakette" style="--winkel:72deg"><span class="mr-siegel__chip">Gutachter</span></li>
-        <li class="mr-siegel__plakette" style="--winkel:144deg"><span class="mr-siegel__chip">Pflanzenschutz</span></li>
-        <li class="mr-siegel__plakette" style="--winkel:216deg"><span class="mr-siegel__chip">Baumkontrolleur</span></li>
-        <li class="mr-siegel__plakette" style="--winkel:288deg"><span class="mr-siegel__chip">Ausbildungsbetrieb</span></li>
-      </ul>
-    </div>
-    <a class="mr-siegel__cta reveal" href="tel:+491711738943">
-      <svg class="mr-siegel__cta-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.8 21 3 13.2 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.2 2.2Z" fill="currentColor"></path></svg>
-      <span>Maik anrufen <span aria-hidden="true">&middot;</span> 0171 / 173 89 43</span>
-    </a>
-    <p class="mr-siegel__mikro reveal">Mo&ndash;Fr 09:00&ndash;17:00 <span aria-hidden="true">&middot;</span> Sa 09:00&ndash;12:00 <span aria-hidden="true">&middot;</span> WhatsApp jederzeit</p>
   </section>
 
   <div class="gate-doors reveal">
