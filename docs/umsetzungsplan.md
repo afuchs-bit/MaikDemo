@@ -1324,3 +1324,13 @@ Eine feine hellgelbe Farbspur, ein weicherer Schatten und eine minimale
 Textaufhellung geben dem vorhandenen Logo-Gelb mehr Tiefe. Der organische
 Pinselumriss, das Linkziel und die Position unten rechts bleiben erhalten.
 Blumensiegel, Bildwechsel, Texte und übrige CTAs bleiben unverändert.
+
+
+**AP-198, frühere Siegel-Überlappung oben links spiegeln (05.09.2026):** Die
+Überlappung des Blumensiegels übernimmt exakt das Verhältnis seiner früheren
+Position unten rechts. Oben links ragt nun ein Drittel der Siegelhöhe über den
+Bildrand hinaus; zwei Drittel liegen auf dem Foto.
+
+Die Position wird proportional aus der unveränderten 210:180-Siegelgrafik
+berechnet und bleibt dadurch auf beiden Zielbreiten gleich. Horizontale
+Ausrichtung, Größe, Galerie-CTA, Bilder und übrige Sektion bleiben unverändert.

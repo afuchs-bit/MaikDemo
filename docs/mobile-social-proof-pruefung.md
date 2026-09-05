@@ -395,3 +395,13 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   Zielbreiten geprüft. Der CTA bleibt klar kleiner als der grüne Haupt-CTA.
 - Kein horizontaler Überstand. Fokusrahmen per Tastatur geprüft und vollständig
   sichtbar; Linkziel und übrige Bedienung unverändert.
+
+
+## AP-198 – Siegel-Überlappung oben links spiegeln (05.09.2026)
+
+- Frühere Zwei-Drittel-Überlappung von unten rechts proportional nach oben links
+  gespiegelt: ein Drittel oberhalb des Bildes, zwei Drittel auf dem Foto.
+- Bei 393 px: 22,45 px außen und 44,91 px auf dem Bild bei 67,36 px Siegelhöhe.
+- Bei 402 px: 22,84 px außen und 45,72 px auf dem Bild bei 68,56 px Siegelhöhe.
+- Visuell auf beiden Zielbreiten geprüft. Abstand zum letzten KPI bleibt frei,
+  kein horizontaler Überstand; Galerie-CTA und übrige Sektion unverändert.
