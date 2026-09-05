@@ -1355,3 +1355,12 @@ Die Linkfläche beginnt an der unteren Bildkante, sodass sie die mittigen
 Navigationspunkte nicht überlagert. Der Markenbereich wächst auf 48 px und hält
 den folgenden Textabstand stabil. Bildform, Größen, Links und übrige Inhalte
 bleiben unverändert.
+
+
+**AP-201, Blumensiegel unten rechts korrigieren (05.09.2026):** Das Siegel wird
+auf Wunsch des Auftraggebers von unten links nach unten rechts gespiegelt. Seine
+Größe und das Verhältnis mit zwei Dritteln auf dem Foto und einem Drittel
+unterhalb bleiben exakt erhalten.
+
+Der Galerie-Pinsel bleibt horizontal mittig unter dem Bild. Abstände,
+Bildwechsel, Linkziele und die übrige Sektion bleiben unverändert.

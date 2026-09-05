@@ -427,3 +427,12 @@ Auch diese Kontrolle erfolgte im lokalen Browser, nicht auf einem physischen iPh
   Zwischen Siegelbox und Link bleiben 23,94 beziehungsweise 26,53 px frei.
 - Kein horizontaler Überstand; Bildwechsel, Linkziele, Texte und übrige CTAs
   unverändert.
+
+
+## AP-201 – Siegel unten rechts (05.09.2026)
+
+- Siegel horizontal nach unten rechts gespiegelt; Größe und vertikale
+  Zwei-Drittel-Überlappung unverändert.
+- Abstand zum mittigen Galerie-Link bei 393 px: 23,94 px; bei 402 px: 26,53 px.
+- Visuell auf beiden Zielbreiten geprüft. Kein horizontaler Überstand;
+  Galerie-Link, Bildwechsel, Linkziele und übrige Inhalte unverändert.
