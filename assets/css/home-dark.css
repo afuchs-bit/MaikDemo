@@ -12,6 +12,15 @@
 @font-face {
   font-family: "Baloo 2";
   font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../fonts/baloo2-variable-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: url("../fonts/baloo2-700-latin.woff2") format("woff2");
@@ -562,6 +571,12 @@ html.home-theme-dark .gate-cta {
 
 html.home-theme-dark :is(.gate-cta-label--iphone, .gate-cta-action--iphone, .gate-welcome--iphone) {
   display: none;
+}
+
+/* Zwischenstand: Die Gewerbekunden-Landingpage ist archiviert. Ihre sichtbaren
+   Einstiege auf der Startseite bleiben im Markup und sind so direkt reaktivierbar. */
+html.home-theme-dark :is(.saved-gewerbe-link, .gate-doors--saved-iphone) {
+  display: none !important;
 }
 
 html.home-theme-dark .gate-door:hover .gate-cta {
@@ -1308,6 +1323,7 @@ html.home-theme-dark .fork-path:hover {
     width: calc(100% - 20px);
     margin-top: 0;
   }
+
 }
 
 /* Mobiler Willkommenbereich: eingeruecktes Gartenfoto und kompaktes Register.
@@ -1332,7 +1348,7 @@ html.home-theme-dark .fork-path:hover {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px 10px;
+    gap: 8px 12px;
     margin: 0;
     font-family: var(--display);
     font-size: 1rem;
@@ -1342,7 +1358,7 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-intro {
     color: var(--home-yellow);
-    font-size: .75rem;
+    font-size: .8125rem;
     font-weight: 800;
     line-height: 1.3;
     letter-spacing: .09em;
@@ -1351,16 +1367,15 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-wordmark {
     display: block;
-    width: 9.25rem;
+    width: 10.75rem;
     max-width: 100%;
     height: auto;
-    flex: 0 1 9.25rem;
+    flex: 0 1 10.75rem;
     margin: 0;
     overflow: hidden;
   }
 
   html.home-theme-dark :is(
-    .gate-welcome-lead,
     .gate-welcome-feeling,
     .gate-welcome-copy,
     .gate-welcome-outro
@@ -1368,27 +1383,19 @@ html.home-theme-dark .fork-path:hover {
     display: none;
   }
 
-  html.home-theme-dark .gate-welcome-lead {
-    margin: 8px 0 0;
-    color: var(--home-on-dark);
-    font-family: var(--display);
-    font-size: 2.25rem;
-    font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -.035em;
-    overflow-wrap: normal;
-  }
-
   html.home-theme-dark .gate-welcome-photo {
+    --gate-welcome-brand-width: clamp(65px, 20vw, 80px);
     position: relative;
     isolation: isolate;
-    width: calc(100% + 34px);
-    height: clamp(298px, 77vw, 310px);
-    margin: 24px -24px 0 -10px;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    margin: 24px 0 0;
     overflow: visible;
-    border-radius: 0;
+    border-radius: 16px;
     background: transparent;
-    box-shadow: none;
+    box-shadow:
+      0 22px 38px -24px rgb(0 0 0 / 88%),
+      0 18px 34px -28px rgb(93 224 35 / 62%);
   }
 
   html.home-theme-dark .gate-welcome-photo img {
@@ -1398,23 +1405,28 @@ html.home-theme-dark .fork-path:hover {
     width: 100%;
     height: 100%;
     max-width: none;
-    object-fit: cover;
+    border-radius: inherit;
+    object-fit: contain;
     object-position: center center;
-    -webkit-clip-path: polygon(8.5% 17.8%, 100% .6%, 100% 99.4%, 14.5% 86.2%, 10% 81.5%, 3.5% 25.5%);
-    clip-path: polygon(8.5% 17.8%, 100% .6%, 100% 99.4%, 14.5% 86.2%, 10% 81.5%, 3.5% 25.5%);
-    -webkit-clip-path: url("#gate-welcome-photo-shape");
-    clip-path: url("#gate-welcome-photo-shape");
+    filter: brightness(1.06) saturate(1.08) contrast(1.04);
+    -webkit-clip-path: none;
+    clip-path: none;
   }
 
-  html.home-theme-dark .gate-welcome-photo-outline {
+  html.home-theme-dark .gate-welcome-photo::after {
     position: absolute;
     inset: 0;
     z-index: 1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
+    border-radius: inherit;
+    content: "";
+    background:
+      linear-gradient(90deg, rgb(92 234 20 / 72%), rgb(92 234 20 / 22%) 38%, transparent 74%) 0 0 / 100% 1px no-repeat,
+      linear-gradient(180deg, rgb(92 234 20 / 62%), rgb(92 234 20 / 16%) 48%, transparent 78%) 0 0 / 1px 100% no-repeat;
     pointer-events: none;
+  }
+
+  html.home-theme-dark .gate-welcome-photo-outline {
+    display: none;
   }
 
   html.home-theme-dark .gate-welcome-photo-outline > path {
@@ -1423,21 +1435,56 @@ html.home-theme-dark .fork-path:hover {
     stroke: none;
   }
 
+  html.home-theme-dark .gate-welcome-photo-brand {
+    position: absolute;
+    right: -16px;
+    bottom: calc(var(--gate-welcome-brand-width) * -2 / 7);
+    z-index: 2;
+    display: block;
+    width: var(--gate-welcome-brand-width);
+    height: auto;
+    overflow: hidden;
+    filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
+    pointer-events: none;
+  }
+
+  html.home-theme-dark .gate-welcome-message {
+    margin: 44px 12px 0;
+  }
+
   html.home-theme-dark .gate-welcome-statement {
-    margin: 16px 0 0;
-    color: var(--home-on-dark);
-    font-family: var(--display);
-    font-size: clamp(1.95rem, 8.25vw, 2.1rem);
-    font-weight: 700;
-    line-height: 1.13;
-    letter-spacing: -.035em;
+    margin: 0;
+    font-family: "Nunito", sans-serif;
     overflow-wrap: normal;
-    text-wrap: pretty;
     hyphens: none;
   }
 
-  html.home-theme-dark .gate-welcome-lead > span {
+  html.home-theme-dark .gate-welcome-statement__lead {
     display: block;
+    color: var(--home-on-dark);
+    font-family: "Baloo 2", sans-serif;
+    font-size: clamp(1.3125rem, 5.45vw, 1.375rem);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -.01em;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .gate-welcome-statement__closing {
+    display: block;
+    margin-top: 14px;
+    color: rgb(235 239 229 / 82%);
+    font-family: "Nunito", sans-serif;
+    font-size: 1.1875rem;
+    font-weight: 400;
+    line-height: 1.62;
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .gate-welcome-statement strong {
+    color: var(--mobile-logo-green);
+    font-weight: 600;
   }
 
   html.home-theme-dark .gate-welcome-feeling {
@@ -1492,6 +1539,7 @@ html.home-theme-dark .fork-path:hover {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px 16px;
+    transform: translateX(4px);
   }
 
   html.home-theme-dark .gate-welcome-qualification-option {
@@ -1512,29 +1560,10 @@ html.home-theme-dark .fork-path:hover {
     -webkit-tap-highlight-color: transparent;
   }
 
-  html.home-theme-dark .gate-welcome-qualification-option::after {
-    content: "";
-    position: absolute;
-    bottom: 3px;
-    left: calc(50% - 35px);
-    width: 80px;
-    height: 2px;
-    border-radius: 999px;
-    background: var(--home-yellow);
-    box-shadow: 0 0 7px rgba(242, 226, 12, .2);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform .2s var(--ease);
-  }
-
   html.home-theme-dark .gate-welcome-qualification-option:focus-visible {
     outline: 2px solid var(--home-yellow);
     outline-offset: 4px;
     border-radius: 5px;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"]::after {
-    transform: scaleX(1);
   }
 
   html.home-theme-dark .gate-welcome-qualification-content {
@@ -1574,6 +1603,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-qualification-label {
+    display: block;
     min-width: 0;
     color: var(--home-yellow);
     font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
@@ -1584,9 +1614,25 @@ html.home-theme-dark .fork-path:hover {
     letter-spacing: .025em;
     text-transform: uppercase;
     overflow-wrap: normal;
+    opacity: .9;
     text-shadow:
       1px 1px 0 #315200,
       0 0 7px rgba(242, 226, 12, .16);
+    transition: opacity .2s var(--ease), text-shadow .2s var(--ease), transform .2s var(--ease);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-label--tree {
+    font-size: 1rem;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"] .gate-welcome-qualification-label {
+    opacity: 1;
+    text-shadow:
+      1px 1px 0 #315200,
+      0 0 11px rgba(242, 226, 12, .3);
+    transform: translateY(-1px);
   }
 
   html.home-theme-dark .gate-welcome-qualification-details {
@@ -1636,8 +1682,8 @@ html.home-theme-dark .fork-path:hover {
 }
 
 @media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) and (prefers-reduced-motion: reduce) {
-  html.home-theme-dark .gate-welcome-qualification-option::after,
-  html.home-theme-dark .gate-welcome-qualification-flower {
+  html.home-theme-dark .gate-welcome-qualification-flower,
+  html.home-theme-dark .gate-welcome-qualification-label {
     transition: none;
   }
 
@@ -2275,8 +2321,18 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .brand-footer {
+    order: -1;
     width: min(300px, 95%);
-    margin-top: 16px;
+    margin: 0 0 16px;
+  }
+
+  html.home-theme-dark .site-footer .footer-brandline {
+    display: none;
+  }
+
+  html.home-theme-dark .site-footer .footer-brand-block {
+    display: flex;
+    flex-direction: column;
   }
 
   html.home-theme-dark .site-footer .footer-contact-grid {
@@ -2349,11 +2405,11 @@ html.home-theme-dark .footer-social-iphone {
 
   html.home-theme-dark .site-footer .footer-social-iphone {
     display: grid;
-    grid-template-columns: 44px minmax(0, 1fr);
-    grid-template-rows: repeat(2, minmax(44px, auto));
+    grid-template-columns: 44px 44px minmax(0, 1fr);
+    grid-template-rows: minmax(44px, auto);
     align-items: center;
     justify-content: start;
-    gap: 6px 8px;
+    column-gap: 2px;
     margin-top: 14px;
   }
 
@@ -2374,8 +2430,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-link--instagram {
-    grid-column: 1;
-    grid-row: 2;
+    grid-column: 2;
+    grid-row: 1;
   }
 
   html.home-theme-dark .site-footer .footer-social-icon {
@@ -2411,20 +2467,21 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-availability {
-    grid-column: 2;
-    grid-row: 1 / 3;
+    grid-column: 3;
+    grid-row: 1;
     align-self: center;
     min-width: 0;
     width: 100%;
     margin: 0;
     color: rgba(235, 239, 229, .72);
-    font-size: .67rem;
+    font-size: clamp(.59rem, 2.4vw, .625rem);
     line-height: 1.48;
-    letter-spacing: .005em;
+    letter-spacing: -.012em;
   }
 
   html.home-theme-dark .site-footer .footer-social-line {
     display: block;
+    white-space: nowrap;
   }
 
   html.home-theme-dark .site-footer .footer-social-dot {

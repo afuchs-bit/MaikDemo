@@ -67,7 +67,7 @@ Diese Werte sind final abgestimmt und müssen **zeichengenau identisch** an alle
 | PLZ / Ort | 44625 Herne |
 | Land | DE |
 | Gegründet | 2003 (seit 01.01.2003) |
-| Google-Bewertungen | 67 Bewertungen, Durchschnitt 4,9 |
+| Google-Bewertungen | 68 Bewertungen, Durchschnitt 4,9 |
 | **Öffnungszeiten** | **Montag bis Freitag, 09:00–17:00 Uhr** |
 | **Samstag** | **09:00–12:00 Uhr** |
 | **Sonntag** | **geschlossen** |
@@ -588,7 +588,7 @@ Struktur: `/gartenbau-<stadt>/` mit Ortsbezug im ersten Absatz, mindestens zwei 
 
 ### AP-20 · Google-Bewertungen offiziell einbinden
 
-**Ziel:** 4,9 Sterne aus 67 Bewertungen sichtbar auf der Website, DSGVO-konform, ohne Consent-Banner, ohne Drittanbieter-Widget, ohne Richtlinienverstoß.
+**Ziel:** 4,9 Sterne aus 68 Bewertungen sichtbar auf der Website, DSGVO-konform, ohne Consent-Banner, ohne Drittanbieter-Widget, ohne Richtlinienverstoß.
 
 **Warum dieser Weg:** Ein kostenloses offizielles Google-Widget existiert nicht mehr. Drittanbieter-Widgets laden bei jedem Seitenaufruf fremde Skripte und brauchen deshalb ein Consent-Banner. Der saubere Weg ist, die Bewertungen serverseitig abzuholen, zu cachen und selbst als HTML zu rendern — beim Seitenaufruf läuft dann keine Verbindung zu Google.
 

@@ -1905,7 +1905,7 @@ p  { margin: 0; }
   /* AP-51: `.btn` traegt `white-space: nowrap`. Auf Desktop sinnvoll, auf dem
      Telefon erzwang es eine Mindestbreite der ganzen Seite: der laengste CTA
      („Jetzt Schritt 1 starten – Objektbegehung anfragen") schob /gewerbekunden/
-     auf 437px, „Alle 67 Bewertungen auf Google ansehen" /privatkunden/ auf
+     auf 437px, „Alle 68 Bewertungen auf Google ansehen" /privatkunden/ auf
      392px. Beide Seiten liefen damit auf jedem verbreiteten Telefon seitlich
      ueber. Unterhalb 900px darf die Beschriftung umbrechen; der Pfeil bleibt
      als eigenes Flex-Item am Zeilenende. */
