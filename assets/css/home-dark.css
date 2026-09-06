@@ -2439,6 +2439,16 @@ html.home-theme-dark .mr-ueber__video {
   max-height: 62svh;
   object-fit: cover;
 
+  /* AP-240: Der Radius muss am Video selbst stehen, nicht nur an der Buehne.
+     Die traegt zwar border-radius plus overflow: hidden, aber ein <video> wird in
+     einem eigenen Compositing-Layer gezeichnet und laesst sich davon nicht
+     beschneiden - gemessen: Buehne 20px Radius, Video 0, Ecken im Beweisbild
+     scharf. Die Werte sind je 1px kleiner als aussen, weil die Buehne einen
+     1px-Rahmen traegt: innerer Radius = aeusserer minus Rahmenbreite, sonst
+     blitzt in der Rundung ein Spalt zwischen Video und Rahmen durch.
+     Gilt auch fuer das poster-Standbild, das dasselbe Element zeichnet. */
+  border-radius: 23px 23px 43px 23px;
+
   /* AP-181: Das Video soll gar nicht bedienbar sein. controls ist im Markup
      entfallen; pointer-events: none nimmt zusaetzlich das Kontextmenue beim
      Rechtsklick (Herunterladen, Wiedergabesteuerung, Schleife) und jede Reaktion
@@ -2515,7 +2525,10 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
    Grund, warum sie dort 2414px hoch wurde. Dazwischen liegt 16:9. */
 @media (max-width: 860px) {
   html.home-theme-dark .mr-ueber__buehne { border-radius: 20px 20px 34px 20px; }
-  html.home-theme-dark .mr-ueber__video { aspect-ratio: 16 / 9; }
+  html.home-theme-dark .mr-ueber__video {
+    aspect-ratio: 16 / 9;
+    border-radius: 19px 19px 33px 19px;   /* wieder je 1px unter der Buehne */
+  }
   html.home-theme-dark .mr-ueber__mustertext {
     grid-template-columns: minmax(0, 1fr);
     gap: 12px;

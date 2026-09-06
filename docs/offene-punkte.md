@@ -822,3 +822,39 @@ quadratisch und gleich groß, Button und Fotopaar weiterhin exakt gleich breit (
 in AP-236/237 erarbeitet und hier nicht gekippt), kein horizontaler Overflow. **Der Hund
 bleibt auch bei 162 px Kachelbreite klar erkennbar**; die Bildunterschrift passt weiterhin
 zum Bild.
+
+
+## AP-240 — Ecken des Mustergartenbands abgerundet
+
+**Vom 06.09.2026.** Das Videoband hatte scharfe Ecken, obwohl die Bühne seit AP-231
+`border-radius: 24px 24px 44px 24px` **und** `overflow: hidden` trägt.
+
+**Ursache:** Ein `<video>` wird in einem eigenen Compositing-Layer gezeichnet und lässt sich
+vom `overflow: hidden` des Elternelements nicht beschneiden. Gemessen: Bühne 20 px Radius,
+Video 0 — im Beweisbild waren die Ecken scharf, während die Kapsel „1.500 m² Mustergarten"
+darüber sauber gerundet war.
+
+**Behoben** durch `border-radius` am Video selbst. Die Werte liegen je 1 px unter denen der
+Bühne, weil diese einen 1-px-Rahmen trägt: innerer Radius = äußerer minus Rahmenbreite.
+Ohne das blitzt in der Rundung ein Spalt zwischen Video und Rahmen durch.
+
+| | Bühne | Video |
+|---|---|---|
+| ab 861 px | 24 / 24 / 44 / 24 | 23 / 23 / 43 / 23 |
+| darunter | 20 / 20 / 34 / 20 | 19 / 19 / 33 / 19 |
+
+Gilt auch für das `poster`-Standbild — dasselbe Element zeichnet es. Geprüft in acht Breiten
+(320 / 375 / 390 / 599 / 600 / 861 / 1440 / 1920 px): Differenz je Ecke überall exakt 1 px,
+kein horizontaler Overflow.
+
+### Nebenbefund: parallele Sitzung, kollidierte Nummer
+
+Während dieser Arbeit hat eine parallele Sitzung **AP-239** („Mobilgestaltung von einem
+iPhone auf alle Handys ausgedehnt", Commit `0dd9f4d`) eingebracht. Dieser AP heißt deshalb
+240, nicht 239. Der Cache-Bust-Zähler war dadurch schon auf `zz46` gestiegen, ohne dass
+diese Sitzung ihn gesetzt hätte — beim Weiterzählen auf `zz47` fiel es auf.
+
+**Die Über-uns-Sektion ist von AP-239 nicht betroffen** (null geänderte `mr-ueber`-Zeilen),
+wohl aber mittelbar: Die dort eingeführte Wurzelschriftgröße
+`clamp(12.736px, 3.9801vw, 19.104px)` unter 480 px zieht alle `rem`-Werte der Sektion mit.
+Die Messwerte dieses AP wurden auf diesem Stand erhoben.
