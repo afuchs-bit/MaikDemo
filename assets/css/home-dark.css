@@ -2341,10 +2341,11 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-iphone {
-    display: flex;
+    display: grid;
+    grid-template-columns: 44px 44px minmax(0, 1fr);
     align-items: center;
-    justify-content: center;
-    gap: 14px;
+    justify-content: start;
+    gap: 8px;
     margin-top: 14px;
   }
 
@@ -2389,5 +2390,29 @@ html.home-theme-dark .footer-social-iphone {
   html.home-theme-dark .site-footer a.footer-social-link:focus-visible {
     outline: 2px solid var(--mobile-logo-green);
     outline-offset: 2px;
+  }
+
+  html.home-theme-dark .site-footer .footer-social-availability {
+    min-width: 0;
+    margin: 0 0 0 4px;
+    color: rgba(235, 239, 229, .72);
+    font-size: .67rem;
+    line-height: 1.48;
+    letter-spacing: .005em;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .site-footer .footer-social-availability strong {
+    color: #fff;
+    font-weight: 750;
+  }
+
+  html.home-theme-dark .site-footer .footer-social-dot {
+    color: var(--mobile-logo-green);
+    font-weight: 900;
+  }
+
+  html.home-theme-dark .site-footer .footer-hours {
+    display: none;
   }
 }

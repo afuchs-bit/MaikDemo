@@ -1524,3 +1524,10 @@ Header-Buttons. Größe, Symbol und 44-px-Berührungsfläche bleiben unveränder
 „Einsatzgebiet“ wird auf den vereinbarten iPhone-Breiten zusammen mit dem bereits
 entfernten Schnellzugriff ausgeblendet. Kontaktbereich und rechtliche Links
 rücken ohne Leerstelle nach; andere Bildschirmbreiten bleiben unverändert.
+
+
+**AP-225, mobile Erreichbarkeit neben Social-Icons setzen (06.09.2026):** Die
+einzelnen WhatsApp- und Instagram-Icons rücken links an den Rand. Rechts daneben
+steht „Jederzeit erreichbar · Auch an Feiertagen und Wochenenden · Mustergarten
+nur nach Vereinbarung“ mit grünen Mittelpunkt-Trennern. Die bisherigen
+Öffnungszeiten werden auf den vereinbarten iPhone-Breiten ausgeblendet.
