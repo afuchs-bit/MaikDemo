@@ -464,16 +464,21 @@ Formenvorrat der Seite: keinen Eyebrow, keine Karte, keine Fläche, keinen Akzen
 | Aussage | Beleg |
 |---|---|
 | „Meisterbetrieb seit 2003 in Herne" | `content/stammdaten.json`: `firma.gegruendet 2003-01-01`, `besonderheiten[2]` |
-| „Maik Rohdich, Gartenbaumeister" | `index.html` JSON-LD Z. 122, `gate-welcome` Z. 446 |
-| „Zertifizierter Baumkontrolleur der Landwirtschaftskammer" | `gate-welcome` Z. 449 |
 | „Sachverständiger für Baumkontrolle, Ausbildungsbetrieb" | `stammdaten.json` `besonderheiten[0]` und `[1]` |
 | „Alles aus einer Hand … eigenen Fachkräften und eigenem Maschinenpark" | bestehender Fließtext, vom Auftraggeber ausdrücklich so gewollt (AP-179) |
 | „1.500 m² Mustergarten" | bestehende H3 aus AP-213, unverändert im Wortlaut |
 
-**Warum die Qualifikationen keine Dopplung sind:** Sie stehen zwar in `.gate-welcome`, aber
-diese Sektion ist ab 901 px `display: none` — auf dem Desktop stand „Gartenbaumeister"
-bisher **nirgends sichtbar** auf der Startseite (gemessen bei 1440 px). Auf dem Telefon
-liegen zwischen beiden Stellen 2.335 px.
+**Nachtrag vom 06.09.2026 — die Signatur ist wieder entfallen.** Der Entwurf hatte unter
+dem Fließtext eine Signatur „Maik Rohdich — Gartenbaumeister · Zertifizierter
+Baumkontrolleur der Landwirtschaftskammer". Sie ist auf Wunsch des Auftraggebers entfernt
+worden.
+
+**Folge, hier festgehalten:** Damit steht auf dem Desktop weiterhin **nirgends sichtbar**
+„Gartenbaumeister" auf der Startseite. Die Qualifikationsleiste in `.gate-welcome` ist ab
+901 px `display: none` (gemessen bei 1440 px), und die Sektion nennt jetzt keinen Namen
+mehr. Was bleibt, ist die Faktenzeile „Fachlich abgesichert — Sachverständiger für
+Baumkontrolle, Ausbildungsbetrieb" in der Belegspalte. Falls die Meisterqualifikation auf
+dem Desktop sichtbar werden soll, wäre die Faktenzeile die naheliegende Stelle.
 
 **Korrektur an der Vorlage:** Die Analyse führte „Ausbildungsbetrieb" als Angabe, die
 „bisher nirgends sichtbar auf der Startseite" stehe. Das trifft nur für den Desktop zu —

@@ -2208,28 +2208,6 @@ html.home-theme-dark .mr-ueber__text {
   max-width: 62ch;
 }
 
-/* Die Signatur steht nach einer Trennlinie, nicht auf einer Karte: sie ist die
-   Unterschrift unter das Gesagte, kein eigener Baustein. Die Linie ist bewusst
-   kurz (Breite 42px) - eine durchlaufende haette die Spalte geteilt. */
-html.home-theme-dark .mr-ueber__signatur {
-  margin: 22px 0 0;
-  padding-top: 18px;
-  border-top: 2px solid var(--home-small-accent);
-  max-width: 42ch;
-  color: var(--ink-mute);
-  font-size: .88rem;
-  line-height: 1.5;
-  border-image: linear-gradient(to right, var(--home-small-accent) 0 42px, transparent 42px) 1;
-}
-
-html.home-theme-dark .mr-ueber__signatur b {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--ink);
-  font-weight: 800;
-  font-size: .98rem;
-}
-
 /* Die Faktenzeilen nehmen die Kartenwerte der Leistungssektion auf, bleiben aber
    flacher (13/15px Innenabstand statt 24): sie sind Beleg zur Aussage nebenan,
    keine eigenstaendigen Karten. */
