@@ -2264,4 +2264,15 @@ html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }
   html.home-theme-dark .site-footer .footer-navigation {
     display: none;
   }
+
+  html.home-theme-dark .site-footer .footer-contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] strong,
+  html.home-theme-dark .site-footer .footer-contact-link[href^="mailto:"] strong {
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: nowrap;
+  }
 }

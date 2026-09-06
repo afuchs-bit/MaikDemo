@@ -1465,3 +1465,9 @@ und den dezenten Schatten. Es wird kein Ersatzsymbol eingesetzt.
 Homepage wird die Navigation „Schnellzugriff“ ausschließlich auf den
 vereinbarten iPhone-Breiten von 390 bis 404 px im Hochformat ausgeblendet.
 Kontaktangaben, Einsatzgebiet sowie Impressum und Datenschutz bleiben erhalten.
+
+
+**AP-216, Kontaktdaten im mobilen Footer zusammenhalten (06.09.2026):** Die
+Kontaktfelder stehen auf den vereinbarten iPhone-Breiten einspaltig. E-Mail-
+Adresse sowie Mobil- und Festnetznummer werden als untrennbare Angaben gesetzt,
+damit sie vollständig in jeweils einer Zeile erscheinen.
