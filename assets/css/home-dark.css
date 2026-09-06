@@ -1357,7 +1357,7 @@ html.home-theme-dark .fork-path:hover {
 
 /* Mobiler Willkommenbereich: eingeruecktes Gartenfoto und kompaktes Register.
    Die native Details-Gruppe benoetigt kein zusaetzliches JavaScript. */
-@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+@media (max-width: 480px) {
   html.home-theme-dark .home-hero-stack {
     --mobile-hero-title-trial-drop: -3px;
   }
@@ -2640,7 +2640,7 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
    asymmetrische Bildnotiz inszeniert: drei Viertel Bild, ein Viertel freie
    Signaturflaeche. Der flachere Beschnitt reduziert die Blockhoehe; die
    Belichtungskorrektur nimmt den sehr hellen Spitzen die Haerte. */
-@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+@media (max-width: 480px) {
   html.home-theme-dark .mr-ueber__mehr {
     margin-top: 32px;
   }
@@ -2843,7 +2843,7 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
   }
 }
 
-@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+@media (max-width: 480px) {
   html.home-theme-dark .mr-ueber__muster {
     margin-bottom: 28px;
   }
