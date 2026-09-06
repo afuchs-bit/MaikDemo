@@ -1538,3 +1538,9 @@ nur nach Vereinbarung“ mit grünen Mittelpunkt-Trennern. Die bisherigen
 Schriftstärke und Farbe wie der restliche Hinweis. Engere Abstände zur Icongruppe
 und die vollständige Nutzung der dritten Rasterspalte geben dem Text auf dem
 iPhone 16 Pro mehr Raum bis zur rechten Footerkante.
+
+
+**AP-227, grauen Schimmer der mobilen Kontaktfelder entfernen (06.09.2026):**
+Die vier Kontaktfelder stehen auf den vereinbarten iPhone-Breiten ohne graue
+Flächenfüllung direkt auf dem dunklen Footer. Eine sehr feine grüne Kontur erhält
+ihre Form und Bedienbarkeit; Inhalte, Ziele und Raster bleiben unverändert.

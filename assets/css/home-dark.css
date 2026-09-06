@@ -2290,6 +2290,8 @@ html.home-theme-dark .footer-social-iphone {
     grid-template-columns: 30px minmax(0, 1fr);
     gap: 7px;
     padding-inline: 7px;
+    border-color: rgba(86, 230, 7, .14);
+    background: transparent;
   }
 
   html.home-theme-dark .site-footer .footer-contact-icon {
