@@ -464,6 +464,15 @@
 
 .anf__feld--frei { margin-block-start: 0; }
 
+/* AP-250: Der Rechtshinweis klebte am Absendeknopf - gemessen 0px Abstand.
+   .anf__rechtliches traegt nur margin-bottom, und .anf__abschluss bringt keinen
+   Aussenabstand mit. Als abschliessende Fussnote nach der Hauptaktion bekommt er
+   --anf-luft (1,5rem), also mehr als die 16,8px zwischen zwei Feldern - er gehoert
+   nicht mehr zur Eingabe.
+   Als Geschwister-Selektor statt am Element selbst: die Regel gilt genau dort, wo
+   der Hinweis auf den Abschluss folgt, und nicht in anderen Zusammenhaengen. */
+.anf__abschluss + .anf__rechtliches { margin-top: var(--anf-luft); }
+
 /* --------------------------------------------- hidden durchsetzen */
 
 /* AP-248: [hidden] ist eine Regel des BROWSERS und hat damit die niedrigste
