@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zz42" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zz43" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260906ba" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260906r" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -754,10 +754,19 @@ html.home-theme-dark body { background-color: #171916; }
            Fuellung: dort ist der Pfad in --home-lime gefuellt, hier steht er als
            Umriss. Der Button ist ein Nebenweg, die Hauptaktion bleibt die Anfrage.
 
-           Das Logo traegt die Textalternative, nicht das <a>. Vorgelesen wird der
-           Link damit zu "Mehr zu Maik Rohdich Garten- und Landschaftsbau" und
-           bleibt ein vollstaendiger Satz. Das Symbol #brand-logo liegt bereits als
-           Sprite weiter oben in dieser Datei - kein zusaetzlicher Download.
+           AP-236: Das Logo ist dasselbe Bild, das der Header auf schmalen Geraeten
+           zeigt. Achtung, nicht offensichtlich: Der Header fuehrt im Markup zwar
+           <use href="#brand-logo">, blendet das Symbol aber per CSS aus
+           (styles.css:325 `.brand-logo > use { display: none }`) und legt das PNG
+           als Hintergrund darunter. Sichtbar ist im Header also nie das Symbol.
+           Genommen ist die kompakte Fassung, nicht maik-rohdich-logo.png: die
+           breite setzt zwei ihrer drei Zeilen dunkel, was in Buttongroesse auf
+           dunklem Grund untergeht.
+
+           Als <img> und nicht als CSS-Hintergrund wie im Header, weil nur ein
+           <img> eine Textalternative tragen kann. Sie sitzt hier und nicht am <a>:
+           vorgelesen wird der Link damit zu "Mehr zu Maik Rohdich
+           Gartenbaumeister" und bleibt ein vollstaendiger Satz.
 
            preserveAspectRatio="none" zieht den Pfad auf die Buttongroesse. Beim
            gefuellten Vorbild faellt das nicht auf; bei einem Umriss schon, deshalb
@@ -766,7 +775,8 @@ html.home-theme-dark body { background-color: #171916; }
       <a class="mr-ueber__mehr reveal" href="ueber-uns/">
         <svg class="mr-ueber__mehr-form" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
         <span class="mr-ueber__mehr-text">Mehr zu</span>
-        <svg class="mr-ueber__mehr-logo" viewBox="0 0 640 150" role="img" aria-label="Maik Rohdich Garten- und Landschaftsbau"><use href="#brand-logo"/></svg>
+        <img class="mr-ueber__mehr-logo" src="assets/img/logo/maik-rohdich-logo-mobile-horizontal-meister.png"
+             width="640" height="180" alt="Maik Rohdich Gartenbaumeister" loading="lazy" decoding="async">
       </a>
 
       <!-- Fotopaar. Beide Aufnahmen lagen ungenutzt im Repo.

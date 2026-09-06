@@ -714,3 +714,58 @@ Fotos in allen acht Breiten quadratisch und gleich groß. Der Button passt über
 Spalte; unter 421 px schaltet er auf das kleinere Maß (Logo 30 statt 36 px). Sektionshöhe
 1824 → **1769 px** am Desktop. `mobile-social-proof.css` ist unverändert — die Vorlage darf
 sich nicht mitbewegen.
+
+
+## AP-236 — Header-Logo im Button, Breite an das Fotopaar
+
+**Vom 06.09.2026.** Zwei Nachbesserungen an dem Button aus AP-234.
+
+### Das Logo war ein anderes als im Header
+
+Der Button nutzte das SVG-Symbol `#brand-logo`. Der Header führt dasselbe Symbol zwar im
+Markup, **blendet es aber per CSS aus** und legt ein PNG als Hintergrund darunter:
+
+```css
+/* styles.css:317-325 */
+.brand-logo { background: url("../img/logo/maik-rohdich-logo.png") center / contain no-repeat; }
+.brand-logo > use { display: none; }
+```
+
+Sichtbar ist im Header also nie das Symbol. Das erklärt, warum Button und Header
+unterschiedlich aussahen, obwohl beide scheinbar dasselbe Logo führten — eine Falle für
+jeden, der nur ins Markup schaut.
+
+Übernommen ist die **kompakte** Fassung `maik-rohdich-logo-mobile-horizontal-meister.png`,
+die der Header unter rund 900 px zeigt: zwei Zeilen statt drei, Schrift in Grün mit heller
+Kontur. Die breite Desktop-Fassung setzt zwei ihrer drei Zeilen dunkel — im Header bei
+67 px Höhe unproblematisch, in Buttongröße auf dunklem Grund nicht.
+
+Eingebunden als `<img>`, nicht als Hintergrund wie im Header: nur ein `<img>` kann eine
+Textalternative tragen. Vorgelesen ergibt der Link damit **„Mehr zu Maik Rohdich
+Gartenbaumeister"** — am zugänglichen Namen nachgemessen.
+
+**Kontrast**, als Canvas-Komposit über den echten Bildpixeln gegen `--bg` gemessen, nur der
+Schriftbereich rechts der Blüten: Median **8,05 : 1**, hellstes Pixel 16,48 : 1, 68 % der
+Schriftpixel über 4,5 : 1. Deutlich besser als das SVG-Symbol mit seinen 4,29 : 1 — der
+`drop-shadow` aus AP-235 ist deshalb entfallen, das PNG bringt seine eigene Kontur mit.
+
+### Der Button fluchtet jetzt mit den Bildern
+
+`inline-flex` → `flex` plus `width: 100%`, Inhalt zentriert. Damit füllt er die Belegspalte,
+und die ist deckungsgleich mit dem Fotopaar darunter.
+
+**Ein Fund beim Messen:** Bei 768 px lief der Button auf 706 px, während das Paar bei 420
+stehen blieb — Differenz 286 px, die rechten Kanten klafften auseinander. Ursache war der
+Tablet-Deckel aus AP-231 (`.mr-ueber__paar { max-width: 420px }` unter 860 px), den der
+Button nicht kannte. Er trägt ihn jetzt ebenfalls. **Beide Werte müssen zusammen bleiben** —
+wer einen ändert, muss den anderen mitziehen.
+
+Nachgemessen in elf Breiten (320 / 375 / 390 / 420 / 600 / 768 / 859 / 861 / 1024 / 1440 /
+1920 px): Differenz **0** in jeder, linke und rechte Kante fluchten überall, kein
+horizontaler Overflow.
+
+### Offen
+
+| # | Punkt | |
+|---|---|---|
+| O16 | **Logogröße im Button** | Das Logo steht bei 107 × 30 px (mobil) bzw. 128 × 36 px in einem jetzt 335 bis 566 px breiten Button. Der Schriftzug ist dadurch klein, links und rechts bleibt Luft. Die Größe stammt aus AP-235, als der Button noch inhaltsbreit war. Ob das Logo mitwachsen soll, ist eine Gestaltungsfrage und nicht Teil dieses AP. |

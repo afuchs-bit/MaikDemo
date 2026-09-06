@@ -2226,8 +2226,16 @@ html.home-theme-dark .mr-ueber__text {
 html.home-theme-dark .mr-ueber__mehr {
   position: relative;
   isolation: isolate;
-  align-self: start;
-  display: inline-flex;
+
+  /* AP-236: volle Spaltenbreite statt inhaltsbreit. Die Belegspalte ist per
+     Messung deckungsgleich mit dem Fotopaar darunter (.mr-ueber__paar nimmt
+     ebenfalls die ganze Spalte), Button und Bilder fluchten damit auf beiden
+     Kanten. justify-content: center, weil der Inhalt sonst bei 566px Desktop-
+     breite links klebt. align-self: start ist entfallen - im Block-Kontext
+     dieser Spalte hatte es ohnehin keine Wirkung. */
+  display: flex;
+  width: 100%;
+  justify-content: center;
   align-items: center;
   gap: 12px;
   min-height: 68px;
@@ -2259,27 +2267,17 @@ html.home-theme-dark .mr-ueber__mehr-text {
   flex: none;
 }
 
-/* 36px Hoehe: Der Footer zeigt dasselbe Logo bei 46px, der Header bei 60px. Bei 36
-   ist "MAIK ROHDICH" 13,9px gross und damit lesbar; die beiden Nebenzeilen liegen
-   bei 5,3px und wirken als Bildmarke - im Footer bei 6,6px genauso. Deshalb traegt
-   das Logo im Markup ein aria-label: vorgelesen wird der Name, nicht geraten. */
+/* AP-236: Das Bild ist 640x180 (Seitenverhaeltnis 3,56:1). Die Hoehe steuert,
+   width bleibt auto - so bestimmt das Bild selbst seine Breite und wird nicht
+   verzerrt. object-fit braucht es nicht, es gibt keinen Beschnitt.
+   Der drop-shadow aus AP-235 ist entfallen: er half dem SVG-Schriftzug ueber
+   seine 4,29:1: das PNG bringt eine eigene helle Kontur mit. */
 html.home-theme-dark .mr-ueber__mehr-logo {
   position: relative;
   z-index: 1;
   flex: none;
   height: 36px;
   width: auto;
-  aspect-ratio: 640 / 150;
-
-  /* Derselbe Schatten wie am Footer-Logo (.brand-logo-light, styles.css:346).
-     Grund gemessen: Der Schriftzug traegt im Symbol fill #5a8a1c und kommt gegen
-     --bg #171916 auf 4,29:1 - knapp unter den 4,5, die WCAG AA fuer Text dieser
-     Groesse verlangt. Als Markenzeichen ist es davon ausgenommen (WCAG 1.4.3
-     nimmt Logos und Markennamen aus), und der Wert gilt im Header und im Footer
-     genauso. Der Schatten setzt das Logo trotzdem sichtbar von der Flaeche ab,
-     ohne die Markenfarben anzutasten. Die beiden gelben Nebenzeilen liegen bei
-     14,63:1. Vorgelesen wird ohnehin das aria-label am SVG. */
-  filter: drop-shadow(0 2px 12px rgba(0,0,0,.45));
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -2369,6 +2367,12 @@ html.home-theme-dark .mr-ueber__foto figcaption {
      die volle Spalte. 420px halten das Paar auf der Groesse, die es auch
      zweispaltig hat (2x200px plus Fuge). */
   html.home-theme-dark .mr-ueber__paar { max-width: 420px; }
+
+  /* AP-236: Der Button traegt denselben Deckel. Ohne ihn lief er bei 768px auf
+     706px Breite, waehrend das Paar darunter bei 420 stehen blieb - gemessene
+     Differenz 286px, die rechten Kanten klafften auseinander. Beide Werte
+     muessen zusammen bleiben. */
+  html.home-theme-dark .mr-ueber__mehr { max-width: 420px; }
 }
 
 /* --- Block 3: Mustergarten als Medienkachel (AP-217) ---------------------
