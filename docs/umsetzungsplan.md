@@ -1544,3 +1544,9 @@ iPhone 16 Pro mehr Raum bis zur rechten Footerkante.
 Die vier Kontaktfelder stehen auf den vereinbarten iPhone-Breiten ohne graue
 Flächenfüllung direkt auf dem dunklen Footer. Eine sehr feine grüne Kontur erhält
 ihre Form und Bedienbarkeit; Inhalte, Ziele und Raster bleiben unverändert.
+
+
+**AP-228, Footer-Logo auf den Ziel-iPhones vergrößern (06.09.2026):** Maik
+Rohdichs vollständiges Logo wächst auf den vereinbarten iPhone-Breiten von zuvor
+maximal 195 px auf bis zu 300 px Breite. Die proportionale Skalierung und ein
+angepasster oberer Abstand halten Wortmarke und Blume unverzerrt und frei.

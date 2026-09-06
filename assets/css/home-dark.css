@@ -2274,6 +2274,11 @@ html.home-theme-dark .footer-social-iphone {
     display: none;
   }
 
+  html.home-theme-dark .site-footer .brand-footer {
+    width: min(300px, 95%);
+    margin-top: 16px;
+  }
+
   html.home-theme-dark .site-footer .footer-contact-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
