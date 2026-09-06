@@ -224,9 +224,9 @@ nennt 2003 als Gründung, und der
 Willkommen-Text weiter oben „Seit über 20 Jahren". Derselbe Fall war bei AP-174 schon
 einmal so entschieden worden.
 
-### Zeilenlänge auf Mobil — bewusst so entschieden ~~(überholt durch AP-216)~~
+### Zeilenlänge auf Mobil — bewusst so entschieden ~~(überholt durch AP-230)~~
 
-> **Überholt am 06.09.2026 durch AP-216.** Der Float ist einem Raster gewichen; unter
+> **Überholt am 06.09.2026 durch AP-230.** Der Float ist einem Raster gewichen; unter
 > 860 px steht das Foto jetzt **unter** dem Text. Damit ist die unten dokumentierte
 > Freigabe „auch auf Mobil nebeneinander" abgelöst — vom Auftraggeber am 06.09.2026 so
 > entschieden. Grund: Die 26-Zeichen-Rechnung stützte sich auf einen Textstand von vor
@@ -246,14 +246,14 @@ brächte rund 48 Zeichen.
 
 | Was | Wohin | Status |
 |---|---|---|
-| Foto für Block 2 | `assets/img/_src/` | **geliefert** (AP-216, 06.09.2026): `ueber-hund.jpg`, 980 × 980 |
+| Foto für Block 2 | `assets/img/_src/` | **geliefert** (AP-230, 06.09.2026): `ueber-hund.jpg`, 980 × 980 |
 | Mustergarten-Video | `assets/video/mustergarten.mp4` | **geliefert** — siehe eigenen Abschnitt unten |
-| Plakatbild zum Video | `assets/img/_src/` | **gesetzt** (AP-217): `mustergarten-standbild.jpg`, 960 × 725. Ein Einzelbild aus derselben Datei; auf diesem Rechner liegt weiterhin kein `ffmpeg`, der Frame kam fertig aus dem Entwurf |
-| Bildunterschrift Block 2 | — | **gesetzt** (AP-216): „Feierabend im Garten." Der Entwurf „Unser …" der Skizze setzte den Namen des Hundes voraus, der weiterhin fehlt — siehe AP-216, O1 |
+| Plakatbild zum Video | `assets/img/_src/` | **gesetzt** (AP-231): `mustergarten-standbild.jpg`, 960 × 725. Ein Einzelbild aus derselben Datei; auf diesem Rechner liegt weiterhin kein `ffmpeg`, der Frame kam fertig aus dem Entwurf |
+| Bildunterschrift Block 2 | — | **gesetzt** (AP-230): „Feierabend im Garten." Der Entwurf „Unser …" der Skizze setzte den Namen des Hundes voraus, der weiterhin fehlt — siehe AP-230, O1 |
 | Text Block 4 | — | Stichworte: „Damit wir uns Zeit nur für Sie nehmen", „Inspiration Mustergarten" |
 
 **Wichtig für die Fotoauswahl:** ~~Der Textumfluss ist eingerichtet, greift aber nur, wenn der
-Text **länger** ist als das Foto hoch.~~ **Gegenstandslos seit AP-216** — es gibt keinen
+Text **länger** ist als das Foto hoch.~~ **Gegenstandslos seit AP-230** — es gibt keinen
 Umfluss mehr. Die Bildspalte ist fest (220–300 px am Desktop, 240 px darunter), die
 Textlänge spielt für das Layout keine Rolle mehr.
 
@@ -281,7 +281,7 @@ der EXIF-Orientierung erzeugt. Vor einer Verwendung neu bauen.
 > die Herkunft des Bildinhalts.
 >
 > **Folge:** Grundregel 1 ist nicht berührt, und das Standbild darf als
-> Referenzaufnahme dienen. AP-217 setzt es deshalb als `poster` ein — bis dahin
+> Referenzaufnahme dienen. AP-231 setzt es deshalb als `poster` ein — bis dahin
 > stand bis zum Ladeende ein schwarzes Band.
 >
 > Der ursprüngliche Text bleibt darunter stehen, damit die Korrektur nachvollziehbar
@@ -402,7 +402,16 @@ auf „20+ Jahre" aus der Proof-Sektion. Der Beleg ist entfallen; die Angabe „
 bleibt aber richtig, weil das Gründungsjahr 2003 weiterhin auf der Seite steht.
 
 
-## AP-216 — Über-uns-Sektion: Raster, Hundefoto, Kartenfarben
+## AP-230 (committet als AP-216) — Über-uns-Sektion: Raster, Hundefoto, Kartenfarben
+
+
+> **Warum die Nummern springen.** Diese fünf Arbeitspakete wurden lokal als AP-216 bis
+> AP-220 committet. Parallel hat davidk. auf demselben Branch AP-215 bis AP-229 für den
+> mobilen Footer und die Leistungsbilder vergeben — die Nummern gab es damit doppelt.
+> Beim Zusammenführen am 06.09.2026 sind die hiesigen Abschnitte auf **AP-230 bis AP-234**
+> gerückt. Die Commit-Meldungen tragen weiterhin die alten Nummern; sie umzuschreiben
+> hieße, Historie zu ändern, während andere darauf aufbauen. Die Klammer in jeder
+> Überschrift stellt die Zuordnung her.
 
 **Vom 06.09.2026.** Die Sektion steht jetzt als Raster statt als Float, trägt ein kleines
 Foto und die NRW-Karte hat ihre Dunkelfarben zurück. Was dabei offen geblieben ist:
@@ -412,7 +421,7 @@ Foto und die NRW-Karte hat ihre Dunkelfarben zurück. Was dabei offen geblieben 
 | O1 | **Name des Hundes** | Die Bildunterschrift lautet „Feierabend im Garten." und behauptet damit nichts. Mit Namen wäre etwa „Feierabend für ⟨Name⟩." möglich. Am 06.09.2026 beim Auftraggeber angefragt, liegt nicht vor. |
 | O2 | **Aufnahmeort** — Musterfläche oder Kundengarten? | Deshalb steht im `alt` nur, was zu sehen ist. Eine Unterschrift wie „in unserem Mustergarten" wäre ohne Bestätigung eine Tatsachenbehauptung (§ 5 UWG) und ist bewusst nicht formuliert. Hängt mit dem offenen Punkt zu den Teich- und Palmenfotos zusammen. |
 | O3 | **Hunderasse** | Im `alt` bewusst nicht benannt — sie ist nicht bestätigt. |
-| O5 | ~~**Rechtes Drittel der Kartenzeile**~~ | **Erledigt mit AP-217.** Die Karte ist auf 300 px verkleinert, die Legende hat einen Eyebrow bekommen und füllt die Zeile. Die Qualifikationen stehen jetzt in der Signatur weiter oben. |
+| O5 | ~~**Rechtes Drittel der Kartenzeile**~~ | **Erledigt mit AP-231.** Die Karte ist auf 300 px verkleinert, die Legende hat einen Eyebrow bekommen und füllt die Zeile. Die Qualifikationen stehen jetzt in der Signatur weiter oben. |
 
 ### Bewusste Abweichungen, keine offenen Punkte
 
@@ -423,7 +432,7 @@ Foto und die NRW-Karte hat ihre Dunkelfarben zurück. Was dabei offen geblieben 
 - **Die Freigabe „auch auf Mobil nebeneinander" aus AP-179 ist abgelöst.** Begründung im
   dortigen Abschnitt.
 
-### Bei der Prüfung aufgefallen, nicht Teil von AP-216
+### Bei der Prüfung aufgefallen, nicht Teil von AP-230
 
 Gehört in ein eigenes Arbeitspaket, teils mit Entscheidungsbedarf:
 
@@ -434,7 +443,7 @@ Gehört in ein eigenes Arbeitspaket, teils mit Entscheidungsbedarf:
    Sektion, neben `--home-lime` #8CC63F, `--green-700` #4A7A10 und `--home-dark-accent`
    #B6D97A. Dazu synthetisch kursiv gestellt — es existiert nur ein aufrechter
    Baloo-2-Schnitt. AP-213 hat das ausdrücklich so entschieden; Änderung nur nach Rückfrage.
-3. **Toter `.section-proof`-Code in `home-dark.css`.** AP-216 hat vier Regeln entscopt,
+3. **Toter `.section-proof`-Code in `home-dark.css`.** AP-230 hat vier Regeln entscopt,
    weil eine davon sichtbar falsch war. Der Token-Block und rund ein Dutzend weiterer
    Regeln stehen weiterhin ohne passendes Element in der Datei. Eigener Aufräum-AP.
 4. **Der Absatz „Über uns" nennt Maik Rohdich nicht.** Kein Name, kein Meistertitel, keine
@@ -448,12 +457,12 @@ Gehört in ein eigenes Arbeitspaket, teils mit Entscheidungsbedarf:
 6. **Zeilenlänge zwischen 700 und 860 px.** Der 62ch-Deckel der Textspalte greift nur im
    zweispaltigen Modus. Zwischen dem Umbruchpunkt und etwa 700 px läuft der Absatz über die
    volle Containerbreite — bei 859 px sind das 790 px Spaltenbreite gegenüber 595 px am
-   Desktop. Gegenüber dem Stand vor AP-216 ist das keine Verschlechterung (dort war es auf
+   Desktop. Gegenüber dem Stand vor AP-230 ist das keine Verschlechterung (dort war es auf
    allen Breiten die volle Breite), aber es unterläuft das Ziel des Deckels. Ein
    `max-width: 62ch` am Absatz in der Mobil-Query würde es beheben.
 
 
-## AP-217 — Über uns als Signatur-Sektion
+## AP-231 (committet als AP-217) — Über uns als Signatur-Sektion
 
 **Vom 06.09.2026.** Umbau auf Grundlage des gelieferten Entwurfs B („Signatur"), Fassung
 „Über uns". Die Sektion hatte als einzige der Startseite keinen einzigen Baustein aus dem
@@ -465,7 +474,7 @@ Formenvorrat der Seite: keinen Eyebrow, keine Karte, keine Fläche, keinen Akzen
 |---|---|
 | „Meisterbetrieb seit 2003 in Herne" | `content/stammdaten.json`: `firma.gegruendet 2003-01-01`, `besonderheiten[2]` |
 | „Sachverständiger für Baumkontrolle, Ausbildungsbetrieb" | `stammdaten.json` `besonderheiten[0]` und `[1]` |
-| „alles aus einer Hand … eigenen Fachkräften und eigenem Maschinenpark" | bestehender Fließtext, vom Auftraggeber ausdrücklich so gewollt (AP-179). Die gleichnamige Faktenkachel ist mit AP-219 entfallen, die Aussage steht weiterhin im Absatz |
+| „alles aus einer Hand … eigenen Fachkräften und eigenem Maschinenpark" | bestehender Fließtext, vom Auftraggeber ausdrücklich so gewollt (AP-179). Die gleichnamige Faktenkachel ist mit AP-233 entfallen, die Aussage steht weiterhin im Absatz |
 | „1.500 m² Mustergarten" | bestehende H3 aus AP-213, unverändert im Wortlaut |
 
 **Nachtrag vom 06.09.2026 — die Signatur ist wieder entfallen.** Der Entwurf hatte unter
@@ -490,7 +499,7 @@ auf 390 px ist sie sichtbar.
 |---|---|---|
 | E1 | Welcher Entwurf? | **B · Signatur** |
 | E2 | H2 als Etikett oder Aussage? | **Etikett** — die H2 bleibt „Über uns" |
-| E7 | Zitat „Wir reden Ihnen nicht nach dem Mund."? | **Nicht verwendet.** Der Satz ist im Repo nirgends belegt und stammt aus Gesprächsnotizen. An seiner Stelle steht „Gartenbau mit Handschlagqualität." — bis AP-216 die Unterzeile dieser Sektion und damit freigegeben. Gesetzt **ohne** Anführungszeichen, damit er kein Zitat vortäuscht |
+| E7 | Zitat „Wir reden Ihnen nicht nach dem Mund."? | **Nicht verwendet.** Der Satz ist im Repo nirgends belegt und stammt aus Gesprächsnotizen. An seiner Stelle steht „Gartenbau mit Handschlagqualität." — bis AP-230 die Unterzeile dieser Sektion und damit freigegeben. Gesetzt **ohne** Anführungszeichen, damit er kein Zitat vortäuscht |
 | E8 | Video-Standbild? | **Ja** — siehe die Herkunftsklärung oben |
 | E6 | Ersten Satz des Fließtexts streichen? | **Ja.** Reine Streichung der Dopplung zum Willkommen-Abschnitt |
 
@@ -503,10 +512,10 @@ auf 390 px ist sie sichtbar.
 - **Die H3 aus AP-213 sitzt jetzt als Kapsel im Bild.** Wortlaut unverändert, Position und
   Farbe geändert: `--mobile-logo-green` #56E607 wäre auf dem Foto nicht lesbar gewesen
   (gemessen 1,37 : 1 ohne Kapselgrund, 9,22 : 1 mit).
-- **Der 42 %-Float bzw. das 62ch-Raster aus AP-216 ist abgelöst.** Die Kartenfarben-
-  Entscopung aus AP-216 gilt unverändert weiter.
+- **Der 42 %-Float bzw. das 62ch-Raster aus AP-230 ist abgelöst.** Die Kartenfarben-
+  Entscopung aus AP-230 gilt unverändert weiter.
 
-### Die geneigte Kante ~~(entfallen mit AP-219)~~
+### Die geneigte Kante ~~(entfallen mit AP-233)~~
 
 > **Am 06.09.2026 auf Wunsch des Auftraggebers wieder entfernt**, in beiden Lagen.
 > Die Spalten werden jetzt allein durch den Abstand getrennt. Damit trägt die Sektion
@@ -516,7 +525,7 @@ auf 390 px ist sie sichtbar.
 
 Der Hero schneidet seine Kante mit `clip-path: polygon(0 0, 100% 28%, …)` im Winkel
 `--mobile-hero-slope-angle`; AP-184 hat dasselbe Motiv schon einmal um 90° gedreht
-(„skewY wird zu skewX, die asymmetrischen Radien drehen mit"). AP-217 übertrug das auf die
+(„skewY wird zu skewX, die asymmetrischen Radien drehen mit"). AP-231 übertrug das auf die
 Trennung zwischen Aussage und Beleg: am Desktop eine geneigte Senkrechte, unter 860 px
 dieselbe Kante um 90° gedreht.
 
@@ -528,7 +537,7 @@ im Beweisbild unsichtbar. Sie brauchte einen Verlauf in `--home-small-accent`.
 
 ### Gemessene Höhen
 
-| Fensterbreite | vor AP-217 | nach AP-217 |
+| Fensterbreite | vor AP-231 | nach AP-231 |
 |---|---|---|
 | 390 px | 1.741 | **2.015** |
 | 768 px | — | **2.001** |
@@ -545,28 +554,28 @@ darüber). Ohne sie wäre die Sektion bei 859 px 2.414 px hoch geworden.
 
 | # | Punkt | |
 |---|---|---|
-| O1 | Name des Hundes | unverändert offen, siehe AP-216 |
-| O2 | Aufnahmeort des Hundefotos | unverändert offen, siehe AP-216 |
+| O1 | Name des Hundes | unverändert offen, siehe AP-230 |
+| O2 | Aufnahmeort des Hundefotos | unverändert offen, siehe AP-230 |
 | O10 | **Auflösung des Videos** | Die Quelle ist 720 px breit und wird ab etwa dieser Fensterbreite hochskaliert; bei 1440 px läuft sie auf 1.240 px. Eine höher aufgelöste Fassung würde das beheben. |
 | O11 | **Dateigröße des Videos** | 9.468.292 Bytes. Unverändert der größte Einzelposten der Startseite. Das `poster` mildert nur den ersten Eindruck, nicht die Ladelast. |
 | O12 | **WCAG 2.2.2** | Das Video startet selbsttätig, läuft in Schleife und lässt sich nicht anhalten. Unverändert gegenüber AP-181, dort als Auftraggeberentscheidung vermerkt. |
 
-### Rücknahmen vom 06.09.2026 (AP-218, AP-219)
+### Rücknahmen vom 06.09.2026 (AP-232 und AP-233, committet als AP-218 und AP-219)
 
 Nach dem Bau hat der Auftraggeber drei Bauteile wieder streichen lassen. Der Reihe nach:
 
 | AP | Entfernt | Was das bedeutet |
 |---|---|---|
-| AP-218 | Signatur „Maik Rohdich — Gartenbaumeister · Zertifizierter Baumkontrolleur der Landwirtschaftskammer" | „Gartenbaumeister" steht damit auf dem Desktop weiterhin nirgends sichtbar auf der Startseite |
-| AP-219 | Geneigte Trennkante zwischen Wort- und Belegspalte | Die Sektion trägt kein Schräg-Motiv mehr |
-| AP-219 | Faktenkachel „Alles aus einer Hand" | Die Belegspalte hat nur noch eine Kachel; die Aussage selbst steht weiterhin im Fließtext |
+| AP-232 | Signatur „Maik Rohdich — Gartenbaumeister · Zertifizierter Baumkontrolleur der Landwirtschaftskammer" | „Gartenbaumeister" steht damit auf dem Desktop weiterhin nirgends sichtbar auf der Startseite |
+| AP-233 | Geneigte Trennkante zwischen Wort- und Belegspalte | Die Sektion trägt kein Schräg-Motiv mehr |
+| AP-233 | Faktenkachel „Alles aus einer Hand" | Die Belegspalte hat nur noch eine Kachel; die Aussage selbst steht weiterhin im Fließtext |
 
-**Höhen nach den Rücknahmen:** Desktop 1.843 px (Ausgangswert vor AP-217: 2.026),
+**Höhen nach den Rücknahmen:** Desktop 1.843 px (Ausgangswert vor AP-231: 2.026),
 Mobil 1.778 px (vorher 1.741). Die Sektion ist damit auf dem Desktop 183 px kürzer als
 vor dem Umbau und auf dem Telefon nur noch 37 px länger.
 
 
-## AP-220 — Über-uns-Unterseite und Button auf der Startseite
+## AP-234 (committet als AP-220) — Über-uns-Unterseite und Button auf der Startseite
 
 **Vom 06.09.2026.** Die Faktenkachel „Fachlich abgesichert" in der Über-uns-Sektion ist
 einem Button gewichen, der auf die neue Unterseite `/ueber-uns/` führt.
