@@ -2593,6 +2593,15 @@ html.home-theme-dark .mr-ueber__karte .proof-map-cap {
   gap: 6px;
 }
 
+/* Der Schwerpunkt steht als eigene Zeile ueber den Staedten. Vorbild ist
+   .proof-map-reach (styles.css) - ein display:block im <em>, das die Struktur der
+   Legende unveraendert laesst. Die Farbe kommt vom <em> und liegt damit auf der
+   Stufe der Staedte; der Deutschlandweit-Zusatz bleibt darunter zurueckhaltender. */
+html.home-theme-dark .mr-ueber__karte .proof-map-focus {
+  display: block;
+  margin-bottom: 2px;
+}
+
 html.home-theme-dark .mr-ueber__karte .proof-map-src {
   grid-column: 2;
   grid-row: 3;
@@ -2600,20 +2609,28 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   margin-top: 4px;
 }
 
-/* Unter 860px wieder gestapelt. text-align: left, weil styles.css:808 die
-   Legende auf Mobil zentriert - als einziges Element der Sektion, alles andere
-   steht linksbuendig. */
+/* Unter 860px wieder gestapelt, und dann mittig: Kopf, Karte, Legende und
+   Quellenangabe stehen untereinander und bilden einen zentrierten Block. Bis
+   AP-241 war das hier linksbuendig erzwungen, damit nichts als einziges Element
+   der Sektion zentriert stand - mit dem mitzentrierten Kopf faellt der Grund weg.
+   Ab 861px steht die Legende neben der Karte und bleibt dort linksbuendig. */
 @media (max-width: 860px) {
   html.home-theme-dark .mr-ueber__karte {
     margin-top: var(--space-section-compact);
   }
   html.home-theme-dark .mr-ueber__karte .proof-map {
     grid-template-columns: minmax(0, 1fr);
-    justify-items: start;
+    justify-items: center;
+  }
+  html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte {
+    justify-self: center;
   }
   html.home-theme-dark .mr-ueber__karte .proof-map-cap {
-    text-align: left;
-    align-items: flex-start;
+    text-align: center;
+    align-items: center;
+  }
+  html.home-theme-dark .mr-ueber__karte .proof-map-src {
+    text-align: center;
   }
   html.home-theme-dark .mr-ueber__karte .proof-map svg,
   html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte,
