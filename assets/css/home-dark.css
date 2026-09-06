@@ -1318,15 +1318,37 @@ html.home-theme-dark .fork-path:hover {
   }
 }
 
-/* AP-184: Die Gewerbekunden-Weiche wird fuer die Hochformat-Ansichten des
-   iPhone 15 Pro (393px) und iPhone 16 Pro (402px) neu komponiert. Die
+/* Proportionale Handy-Skalierung.
+
+   Die mobile Startseite war urspruenglich nur zwischen 390px und 404px gueltig -
+   praktisch nur iPhone 12-16 und iPhone 16 Pro. Auf jedem anderen Geraet fielen der
+   Willkommenbereich, die Vertrauenszahlen und der mobile Footer ersatzlos weg.
+
+   Die Blockregeln darunter sind fast vollstaendig in rem und Prozent gebaut. rem
+   loest gegen die Wurzel-Schriftgroesse auf, also genuegt es, diese eine Groesse
+   an die Viewportbreite zu binden: die Komposition bleibt identisch und skaliert
+   als Ganzes mit.
+
+   Der Faktor ist 16px / 402px = 3.9801vw. Bei genau 402px Breite ergibt das wieder
+   16px, die Darstellung auf dem iPhone 16 Pro bleibt damit unveraendert. Die
+   Grenzen entsprechen 320px und 480px Viewportbreite.
+
+   Bewusst auf .home-theme-dark begrenzt - die Unterseiten tragen diese Klasse
+   nicht und behalten ihre feste Wurzelgroesse. */
+@media (max-width: 480px) {
+  html.home-theme-dark {
+    font-size: clamp(12.736px, 3.9801vw, 19.104px);
+  }
+}
+
+/* AP-184: Die Gewerbekunden-Weiche wird fuer Handy-Hochformate neu komponiert. Die
    hochkantige Formsprache des Hero-CTA ist um 90 Grad in eine horizontale
    Karte uebersetzt: skewY wird zu skewX, die asymmetrischen Radien drehen mit.
    Das Bestandsfoto belegt bewusst weniger als die Haelfte; der gesamte Verbund
    bleibt ein einzelner Link. */
-@media (min-width: 390px) and (max-width: 404px) {
+@media (max-width: 480px) {
   html.home-theme-dark .hero--gate-content .gate-doors {
-    width: calc(100% - 20px);
+    width: calc(100% - 1.25rem);
     margin-top: 0;
   }
 
@@ -1334,9 +1356,9 @@ html.home-theme-dark .fork-path:hover {
 
 /* Mobiler Willkommenbereich: eingeruecktes Gartenfoto und kompaktes Register.
    Die native Details-Gruppe benoetigt kein zusaetzliches JavaScript. */
-@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
-  /* Den parallelen Willkommenentwurf nur auf den vereinbarten iPhones ersetzen.
-     Desktop und alle anderen Bildschirmgroessen behalten .mr-willkommen. */
+@media (max-width: 480px) {
+  /* Auf Handys ersetzt der Willkommenentwurf die Bestandssektion.
+     Ab 481px behaelt die Seite .mr-willkommen. */
   html.home-theme-dark .mr-willkommen {
     display: none;
   }
@@ -1344,8 +1366,8 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .gate-welcome--iphone {
     position: relative;
     display: block;
-    width: calc(100% - 48px);
-    margin: clamp(38px, 6.5svh, 54px) auto 36px;
+    width: calc(100% - 3rem);
+    margin: clamp(2.375rem, 6.5svh, 3.375rem) auto 2.25rem;
     font-family: var(--display);
     overflow-wrap: anywhere;
   }
@@ -1354,7 +1376,7 @@ html.home-theme-dark .fork-path:hover {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px 12px;
+    gap: 0.5rem 0.75rem;
     margin: 0;
     font-family: var(--display);
     font-size: 1rem;
@@ -1390,12 +1412,12 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-photo {
-    --gate-welcome-brand-width: clamp(65px, 20vw, 80px);
+    --gate-welcome-brand-width: clamp(4.0625rem, 20vw, 5rem);
     position: relative;
     isolation: isolate;
     width: 100%;
     aspect-ratio: 4 / 3;
-    margin: 24px 0 0;
+    margin: 1.5rem 0 0;
     overflow: visible;
     border-radius: 16px;
     background: transparent;
@@ -1443,7 +1465,7 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-photo-brand {
     position: absolute;
-    right: -16px;
+    right: -1rem;
     bottom: calc(var(--gate-welcome-brand-width) * -2 / 7);
     z-index: 2;
     display: block;
@@ -1455,7 +1477,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-message {
-    margin: 44px 12px 0;
+    margin: 2.75rem 0.75rem 0;
   }
 
   html.home-theme-dark .gate-welcome-statement {
@@ -1478,7 +1500,7 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-statement__closing {
     display: block;
-    margin-top: 14px;
+    margin-top: 0.875rem;
     color: rgb(235 239 229 / 82%);
     font-family: "Nunito", sans-serif;
     font-size: 1.1875rem;
@@ -1494,7 +1516,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-feeling {
-    margin: 22px 0 0;
+    margin: 1.375rem 0 0;
     color: var(--home-on-dark);
     font-size: 1.3125rem;
     font-weight: 600;
@@ -1510,7 +1532,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-copy {
-    margin: 20px 0 0;
+    margin: 1.25rem 0 0;
     color: var(--home-on-dark-2);
     font-family: var(--body);
     font-size: 1.0625rem;
@@ -1521,7 +1543,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-outro {
-    margin: 26px 0 0;
+    margin: 1.625rem 0 0;
     color: var(--home-on-dark-2);
     font-family: var(--body);
     font-size: 1.0625rem;
@@ -1537,14 +1559,14 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-qualifications {
-    margin: 24px 0 0;
+    margin: 1.5rem 0 0;
     padding: 0;
   }
 
   html.home-theme-dark .gate-welcome-qualification-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px 16px;
+    gap: 0.875rem 1rem;
     transform: translateX(4px);
   }
 
@@ -1555,9 +1577,9 @@ html.home-theme-dark .fork-path:hover {
     align-items: center;
     justify-content: center;
     min-width: 0;
-    min-height: 76px;
+    min-height: 4.75rem;
     margin: 0;
-    padding: 7px 0 11px;
+    padding: 0.4375rem 0 0.6875rem;
     border: 0;
     color: var(--home-yellow);
     background: transparent;
@@ -1574,16 +1596,16 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-qualification-content {
     display: grid;
-    grid-template-columns: 30px minmax(0, 1fr);
+    grid-template-columns: 1.875rem minmax(0, 1fr);
     align-items: center;
-    gap: 9px;
-    width: min(100%, 148px);
+    gap: 0.5625rem;
+    width: min(100%, 9.25rem);
   }
 
   html.home-theme-dark .gate-welcome-qualification-flower {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     object-fit: contain;
     filter: saturate(.94) drop-shadow(1px 2px 1px rgba(0, 0, 0, .36));
     transform: rotate(-8deg);
@@ -1643,8 +1665,8 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-qualification-details {
     position: relative;
-    margin: 12px 0 0 39px;
-    padding: 19px 0 1px;
+    margin: 0.75rem 0 0 2.4375rem;
+    padding: 1.1875rem 0 1px;
   }
 
   html.home-theme-dark .gate-welcome-qualification-details::before {
@@ -1652,7 +1674,7 @@ html.home-theme-dark .fork-path:hover {
     position: absolute;
     top: 0;
     left: 0;
-    width: 72px;
+    width: 4.5rem;
     height: 2px;
     border-radius: 999px;
     background: linear-gradient(90deg, var(--home-lime), rgba(140, 198, 63, .12));
@@ -1677,17 +1699,17 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-qualification-panel .gate-welcome-qualification-detail {
-    margin-top: 7px;
+    margin-top: 0.4375rem;
     font-size: .875rem;
     line-height: 1.5;
   }
 
   html.home-theme-dark .gate-welcome-qualification-fallback {
-    margin-top: 18px;
+    margin-top: 1.125rem;
   }
 }
 
-@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) and (prefers-reduced-motion: reduce) {
+@media (max-width: 480px) and (prefers-reduced-motion: reduce) {
   html.home-theme-dark .gate-welcome-qualification-flower,
   html.home-theme-dark .gate-welcome-qualification-label {
     transition: none;
@@ -1703,12 +1725,12 @@ html.home-theme-dark .fork-path:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (min-width: 390px) and (max-width: 404px) {
+@media (max-width: 480px) {
   html.home-theme-dark .gate-door--gewerbe {
     --iphone-gate-angle: -7deg;
     --iphone-gate-image-width: 41%;
-    width: calc(100% - 16px);
-    height: 104px;
+    width: calc(100% - 1rem);
+    height: 6.5rem;
     min-height: 0;
     max-height: none;
     aspect-ratio: auto;
@@ -1764,7 +1786,7 @@ html.home-theme-dark .fork-path:hover {
     width: var(--iphone-gate-image-width);
     overflow: hidden;
     border-radius: 12px 0 0 1px;
-    clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, calc(100% - 0.8125rem) 0, 100% 100%, 0 100%);
     box-shadow: none;
     transform: skewX(var(--iphone-gate-angle));
     transform-origin: center;
@@ -1772,8 +1794,8 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-door--gewerbe img.gate-photo {
     position: absolute;
-    inset: -1px -12px;
-    width: calc(100% + 24px);
+    inset: -1px -0.75rem;
+    width: calc(100% + 1.5rem);
     height: calc(100% + 2px);
     object-fit: cover;
     object-position: 38% 52%;
@@ -1791,7 +1813,7 @@ html.home-theme-dark .fork-path:hover {
     z-index: 2;
     display: flex;
     align-items: stretch;
-    padding: 8px 10px 8px 17px;
+    padding: 0.5rem 0.625rem 0.5rem 1.0625rem;
   }
 
   html.home-theme-dark .gate-door--gewerbe .gate-cta {
@@ -1800,7 +1822,7 @@ html.home-theme-dark .fork-path:hover {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 6px;
+    gap: 0.375rem;
     min-width: 0;
     padding: 0;
     color: var(--home-on-dark);
@@ -1862,7 +1884,7 @@ html.home-theme-dark .fork-path:hover {
   }
 }
 
-@media (prefers-reduced-motion: reduce) and (min-width: 390px) and (max-width: 404px) {
+@media (prefers-reduced-motion: reduce) and (max-width: 480px) {
   html.home-theme-dark .gate-door--gewerbe {
     transition: none;
   }
@@ -2618,9 +2640,9 @@ html.home-theme-dark .footer-social-iphone {
   display: none;
 }
 
-/* AP-215/AP-224: Auf den vereinbarten iPhone-Breiten entfallen Schnellzugriff
-   und Einsatzgebiet. Kontakt und rechtliche Links bleiben stehen. */
-@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+/* AP-215/AP-224: Auf Handy-Breiten entfallen Schnellzugriff und Einsatzgebiet.
+   Kontakt und rechtliche Links bleiben stehen. */
+@media (max-width: 480px) {
   html.home-theme-dark .site-footer .footer-navigation,
   html.home-theme-dark .site-footer .footer-coverage {
     display: none;
@@ -2628,8 +2650,8 @@ html.home-theme-dark .footer-social-iphone {
 
   html.home-theme-dark .site-footer .brand-footer {
     order: -1;
-    width: min(300px, 95%);
-    margin: 0 0 16px;
+    width: min(18.75rem, 95%);
+    margin: 0 0 1rem;
   }
 
   html.home-theme-dark .site-footer .footer-brandline {
@@ -2654,16 +2676,16 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-contact-link {
-    grid-template-columns: 30px minmax(0, 1fr);
-    gap: 7px;
-    padding-inline: 7px;
+    grid-template-columns: 1.875rem minmax(0, 1fr);
+    gap: 0.4375rem;
+    padding-inline: 0.4375rem;
     border-color: rgba(86, 230, 7, .14);
     background: transparent;
   }
 
   html.home-theme-dark .site-footer .footer-contact-icon {
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
   }
 
   html.home-theme-dark .site-footer .footer-contact-link--iphone-form .footer-contact-icon,
@@ -2682,8 +2704,8 @@ html.home-theme-dark .footer-social-iphone {
 
   html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon::before {
     content: "";
-    width: 23px;
-    height: 23px;
+    width: 1.4375rem;
+    height: 1.4375rem;
     background: url("../img/icons/phone-header-mobile.png?v=20260902a") center / contain no-repeat;
   }
 
@@ -2711,12 +2733,14 @@ html.home-theme-dark .footer-social-iphone {
 
   html.home-theme-dark .site-footer .footer-social-iphone {
     display: grid;
+    /* Tippziele bleiben absolut: 44px ist die Mindestgroesse nach WCAG 2.5.8.
+       Mitskaliert waeren es auf einem 320px-Geraet nur noch 35px. */
     grid-template-columns: 44px 44px minmax(0, 1fr);
     grid-template-rows: minmax(44px, auto);
     align-items: center;
     justify-content: start;
     column-gap: 2px;
-    margin-top: 14px;
+    margin-top: 0.875rem;
   }
 
   html.home-theme-dark .site-footer .footer-social-link {
@@ -2724,7 +2748,7 @@ html.home-theme-dark .footer-social-iphone {
     place-items: center;
     width: 44px;
     height: 44px;
-    padding: 4px;
+    padding: 0.25rem;
     border: 0;
     border-radius: 50%;
     background: transparent;
@@ -2743,8 +2767,8 @@ html.home-theme-dark .footer-social-iphone {
   html.home-theme-dark .site-footer .footer-social-icon {
     display: grid;
     place-items: center;
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 11px;
     color: #fff;
   }
@@ -2754,8 +2778,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--whatsapp img {
-    width: 22px;
-    height: 22px;
+    width: 1.375rem;
+    height: 1.375rem;
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram {
@@ -2763,8 +2787,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram svg {
-    width: 22px;
-    height: 22px;
+    width: 1.375rem;
+    height: 1.375rem;
   }
 
   html.home-theme-dark .site-footer a.footer-social-link:focus-visible {
