@@ -1477,3 +1477,11 @@ damit sie vollständig in jeweils einer Zeile erscheinen.
 Kontaktfelder im mobilen Footer stehen wieder in zwei Spalten und zwei Reihen.
 Leicht verdichtete Innenabstände, Icons und Beschriftungen halten Telefonnummern
 und E-Mail-Adresse weiterhin jeweils vollständig in einer Zeile.
+
+
+**AP-218, WhatsApp durch Kontaktformular ersetzen (06.09.2026):** Im 2×2-
+Kontaktraster der vereinbarten iPhone-Ansichten ersetzt „Kontakt aufnehmen“ die
+WhatsApp-Kachel und führt zum vorhandenen Formularanker `#anfrage`. Ein klares
+Formularsymbol kennzeichnet das Ziel. Der zusätzliche WhatsApp-Hinweis unter den
+Öffnungszeiten entfällt dort ebenfalls; außerhalb dieser Ansichten bleibt die
+bisherige WhatsApp-Verknüpfung erhalten.

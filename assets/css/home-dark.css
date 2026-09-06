@@ -2258,6 +2258,10 @@ html.home-theme-dark .mr-ueber__karte .proof-map {
    ?v=-Zaehler statt eines Durchlaufs ueber 36 Seiten. */
 html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }
 
+html.home-theme-dark .footer-contact-link--iphone-form {
+  display: none;
+}
+
 /* AP-215: Auf den vereinbarten iPhone-Breiten entfaellt der Schnellzugriff im
    Homepage-Footer. Einsatzgebiet, Kontakt und rechtliche Links bleiben stehen. */
 @media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
@@ -2267,6 +2271,15 @@ html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }
 
   html.home-theme-dark .site-footer .footer-contact-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  html.home-theme-dark .site-footer .footer-contact-link--whatsapp,
+  html.home-theme-dark .site-footer .footer-hours-whatsapp {
+    display: none;
+  }
+
+  html.home-theme-dark .site-footer .footer-contact-link--iphone-form {
+    display: grid;
   }
 
   html.home-theme-dark .site-footer .footer-contact-link {
@@ -2282,6 +2295,17 @@ html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }
 
   html.home-theme-dark .site-footer .footer-contact-link strong {
     font-size: .73rem;
+  }
+
+  html.home-theme-dark .site-footer .footer-contact-link--iphone-form strong {
+    font-size: .67rem;
+    letter-spacing: -.01em;
+    white-space: nowrap;
+  }
+
+  html.home-theme-dark .site-footer .footer-contact-link--iphone-form small {
+    font-size: .52rem;
+    letter-spacing: .055em;
   }
 
   html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] strong,
