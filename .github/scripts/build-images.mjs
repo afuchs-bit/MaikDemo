@@ -55,11 +55,12 @@ const SOURCES = [
   // aendern, nur die Datei in _src ersetzen und build-images neu laufen
   // lassen - die Breitenliste passt sich per fit() selbst an.
   { src: 'assets/img/_src/ueber-team.jpg', dir: 'assets/img/ueber', name: 'ueber-team' },
-  // AP-216: kleines Warmbild der Ueber-uns-Sektion. Quelle ist bereits auf 1:1
-  // zugeschnitten (aus 1280x1600, crop box 245/500/1225/1480) - deshalb KEIN
-  // crop-Feld hier: pipelineFor() schneidet nur vertikal (left: 0), der stoerende
-  // Bildrand liegt aber links. Nur 480/960: die Kachel wird hoechstens 300 px
-  // breit dargestellt, 1600 waere nie abgerufen worden.
+  // Warmbild der Ueber-uns-Sektion.
+  // AP-238: Quelle gegen die weite Ansicht getauscht (1068x1070). Die vorige war
+  // ein enger Ausschnitt um den Hund, in dem vom Garten fast nichts zu sehen war.
+  // Kein crop-Feld: die Quelle ist praktisch quadratisch (Verhaeltnis 0,998) und
+  // die Kachel ist es auch - es gibt nichts zu schneiden. Nur 480/960: die Kachel
+  // wird hoechstens 277 px breit dargestellt.
   { src: 'assets/img/_src/ueber-hund.jpg', dir: 'assets/img/ueber', name: 'ueber-hund', widths: [480, 960] },
   { src: 'assets/img/_src/ueber-hebeaktion.jpg', dir: 'assets/img/ueber', name: 'ueber-hebeaktion' },
   // AP-217: Standbild des Mustergarten-Videos, dient als poster und traegt die

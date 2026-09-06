@@ -419,7 +419,7 @@ Foto und die NRW-Karte hat ihre Dunkelfarben zurück. Was dabei offen geblieben 
 | # | Punkt | Warum es offen ist |
 |---|---|---|
 | O1 | **Name des Hundes** | Die Bildunterschrift lautet „Feierabend im Garten." und behauptet damit nichts. Mit Namen wäre etwa „Feierabend für ⟨Name⟩." möglich. Am 06.09.2026 beim Auftraggeber angefragt, liegt nicht vor. |
-| O2 | **Aufnahmeort** — Musterfläche oder Kundengarten? | Deshalb steht im `alt` nur, was zu sehen ist. Eine Unterschrift wie „in unserem Mustergarten" wäre ohne Bestätigung eine Tatsachenbehauptung (§ 5 UWG) und ist bewusst nicht formuliert. Hängt mit dem offenen Punkt zu den Teich- und Palmenfotos zusammen. |
+| O2 | ~~**Aufnahmeort** — Musterfläche oder Kundengarten?~~ | **Geklärt am 06.09.2026:** die Musterfläche am Firmensitz. Vom Auftraggeber auf Rückfrage bestätigt. Die Bildunterschrift lautet seit AP-238 „Feierabend im Mustergarten." — bis dahin blieb sie bewusst neutral, weil eine Ortsangabe ohne Bestätigung eine Tatsachenbehauptung nach § 5 UWG gewesen wäre. |
 | O3 | **Hunderasse** | Im `alt` bewusst nicht benannt — sie ist nicht bestätigt. |
 | O5 | ~~**Rechtes Drittel der Kartenzeile**~~ | **Erledigt mit AP-231.** Die Karte ist auf 300 px verkleinert, die Legende hat einen Eyebrow bekommen und füllt die Zeile. Die Qualifikationen stehen jetzt in der Signatur weiter oben. |
 
@@ -769,3 +769,56 @@ horizontaler Overflow.
 | # | Punkt | |
 |---|---|---|
 | O16 | ~~**Logogröße im Button**~~ | **Erledigt mit AP-237** (06.09.2026). Das Logo ist von 30/36 px auf **44/52 px** gewachsen: 156 × 44 px unter 421 px Fensterbreite, 185 × 52 px darüber. 52 px ist die Grenze, die der Button ohne zu wachsen trägt (52 + 2 × 10 px Innenabstand = 72 px, knapp über der `min-height` von 68). Der engste Fall ist 320 px Fensterbreite: Button 280 px, Inhalt 224 px, je 10 px Luft links und rechts — `scrollWidth` gleich `clientWidth`, kein Überlauf. |
+
+
+## AP-238 — Weite Hundeaufnahme, Mustergarten benannt
+
+**Vom 06.09.2026.** Die bisherige Aufnahme war ein enger Ausschnitt um den Hund; vom Garten
+war fast nichts zu sehen. In AP-235 ließ sich das nur begrenzt beheben — die Quelle
+(980 × 980) war bereits der fertige Zuschnitt, mehr als das Format von 4:5 auf 1:1 zu
+stellen ging nicht.
+
+Jetzt liegt die weite Ansicht vor: **1068 × 1070 px**, Verhältnis 0,998 — praktisch
+quadratisch, also kein Zuschnitt nötig. Zu sehen sind Pool und Palmen links, Sonnenschirm,
+Kiesbeet mit Natursteinen, Pflasterweg, das Formgehölz im Topf rechts, zwei Liegen und der
+Hund vorn.
+
+### Zwei Stolperstellen beim Ablegen
+
+1. **Die Datei landete unter dem Namen `assets:img:_src:ueber-hund.jpg`** — direkt in
+   `_src`, mit Doppelpunkten statt Schrägstrichen. Das passiert, wenn im macOS-Speichern-
+   Dialog ein Pfad in das Namensfeld getippt wird: Der Finder macht daraus einen einzigen
+   Dateinamen. Wer die Datei sucht, findet sie so nicht am erwarteten Ort.
+2. **Sie war ein PNG mit `.jpg`-Endung.** `sharp` liest das Format aus dem Inhalt und wäre
+   damit klargekommen, aber es widerspricht der Konvention in diesem Ordner. Vor dem Bau in
+   echtes JPEG umgewandelt (Qualität 95), die falsch benannte Datei entfernt.
+
+   > Nicht verwechseln: Die Merkregel „PNG-Quellen in `_src` sind KI-generiert" gilt für den
+   > Altbestand. Hier war die Endung ein Artefakt des Speicherns aus der Unterhaltung, die
+   > Aufnahme selbst ist echt.
+
+### Ableitungen
+
+| Datei | Größe | Budget 200 KB |
+|---|---|---|
+| `ueber-hund-480.avif` | 33 KB | ✓ |
+| `ueber-hund-480.webp` | 54 KB | ✓ |
+| `ueber-hund-960.avif` | 112 KB | ✓ |
+| `ueber-hund-960.webp` | 184 KB | ✓ |
+
+Die WebP-Fassung liegt mit 184 KB deutlich näher am Budget als beim engen Ausschnitt
+(163 KB) — das detailreichere Motiv kostet. Bei einer künftigen Quelle mit mehr Struktur
+könnte `webpWidths` nötig werden, wie bei `gate-gewerbe-baumarbeiten`.
+
+### Text
+
+Der `alt`-Text beschrieb den engen Ausschnitt und war damit sachlich falsch geworden. Neu
+formuliert am gerenderten Bild. Die Bildunterschrift nennt jetzt den Ort — siehe O2 oben.
+
+### Gemessen
+
+Kein Problem in sieben Breiten (320 / 375 / 390 / 768 / 861 / 1440 / 1920 px): beide Kacheln
+quadratisch und gleich groß, Button und Fotopaar weiterhin exakt gleich breit (Differenz 0 —
+in AP-236/237 erarbeitet und hier nicht gekippt), kein horizontaler Overflow. **Der Hund
+bleibt auch bei 162 px Kachelbreite klar erkennbar**; die Bildunterschrift passt weiterhin
+zum Bild.

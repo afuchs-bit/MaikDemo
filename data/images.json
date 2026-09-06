@@ -169,8 +169,8 @@
         960
       ],
       "width": 960,
-      "height": 960,
-      "aspect": 1
+      "height": 962,
+      "aspect": 1.0019
     },
     "/assets/img/ueber/mustergarten-standbild.webp": {
       "base": "/assets/img/ueber/mustergarten-standbild",
