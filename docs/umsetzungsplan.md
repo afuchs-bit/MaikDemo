@@ -1471,3 +1471,9 @@ Kontaktangaben, Einsatzgebiet sowie Impressum und Datenschutz bleiben erhalten.
 Kontaktfelder stehen auf den vereinbarten iPhone-Breiten einspaltig. E-Mail-
 Adresse sowie Mobil- und Festnetznummer werden als untrennbare Angaben gesetzt,
 damit sie vollständig in jeweils einer Zeile erscheinen.
+
+
+**AP-217, Kontaktfelder wieder als 2×2-Raster setzen (06.09.2026):** Die vier
+Kontaktfelder im mobilen Footer stehen wieder in zwei Spalten und zwei Reihen.
+Leicht verdichtete Innenabstände, Icons und Beschriftungen halten Telefonnummern
+und E-Mail-Adresse weiterhin jeweils vollständig in einer Zeile.
