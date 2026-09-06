@@ -156,7 +156,13 @@ function currentResults() {
 }
 
 // ---------- Chips aufbauen ----------
+// AP-247: Die Filter-Toolbar ist aus projekte/index.html entfernt. Die Chip-Funktionen
+// bleiben stehen und steigen aus, wenn ihre Container fehlen - ohne den Wächter liefe
+// appendChild auf null und riss die ganze Galerie mit. Der uebrige Filtercode traegt
+// weiter baseList(), currentResults() und render(); im Anfangszustand (tab 'alle',
+// typ 'alle', leeres Leistungs-Set) heisst das: alle Projekte, nach Datum sortiert.
 function buildChips() {
+  if (!typGroup || !leistungGroup) return;
   TYP_OPTIONS.forEach((opt) => {
     const btn = makeChip(opt.label);
     btn.addEventListener('click', () => {
@@ -303,6 +309,7 @@ function renderPhotoGrid() {
 }
 
 function updateChipStates() {
+  if (!typGroup || !leistungGroup) return;   // siehe buildChips (AP-247)
   const base = baseList();
 
   // Kundentyp-Zähler: Basis(tab) + aktiver Leistungsfilter, gezählt je Typ.

@@ -858,3 +858,220 @@ diese Sitzung ihn gesetzt hätte — beim Weiterzählen auf `zz47` fiel es auf.
 wohl aber mittelbar: Die dort eingeführte Wurzelschriftgröße
 `clamp(12.736px, 3.9801vw, 19.104px)` unter 480 px zieht alle `rem`-Werte der Sektion mit.
 Die Messwerte dieses AP wurden auf diesem Stand erhoben.
+
+
+## AP-246 — Kurzkontaktformular neu gestaltet
+
+**Vom 06.09.2026.** Das kurze Anfrageformular hatte keine Fläche, Felder als bloße Umrisse
+und einen Radio-Punkt in Browser-Blau. Direkt darunter zeigt der Footer die Formsprache, die
+ihm fehlte.
+
+### Der gelieferte Fremdentwurf wurde verworfen
+
+Zum Auftrag kam ein ausgearbeiteter Entwurf samt Referenz-HTML. Der Auftraggeber hat dessen
+**Gestaltung** abgelehnt — sie passte nicht zur Website. Seine **inhaltlichen** Entscheidungen
+bleiben gültig und sind umgesetzt: Chips statt Freitext, Direktkontakt über dem Formular, ein
+kombiniertes Feld für Nummer oder E-Mail, kein Ortsfeld.
+
+Nicht übernommen wurden: die eigene Farbpalette (dreizehn Werte, von denen nur einer einem
+Token entsprach), die schrägen `clip-path`-Schnitte, der handgezeichnete Marker-Strich als
+Absendefläche und die Blüte als Wasserzeichen.
+
+### Woher jeder Baustein stammt
+
+| Element | Vorbild im Bestand |
+|---|---|
+| Karte, Marken-Ecke 24/24/44/24 | `form-trust-card.css:16`, `kontakt.css:52`, `gewerbe.css:51`, `privat-form.css:2111` |
+| Eyebrow | `.private-proof-since`, `privat-form.css:3174` |
+| Kontaktkacheln | `.footer-contact-link`, `styles.css:1527` |
+| Telefon-Icon | `phone-header-mobile.png` aus dem Hero |
+| WhatsApp-Glyph auf `#25D366` | `whatsapp-glyph-white.svg` + `.btn-whatsapp`, `styles.css:279/1801` |
+| Chips | Pillenform von `.btn`, `styles.css:236` |
+| Absendeknopf | `.btn .btn-primary`, unverändert übernommen |
+
+Alle Farben sind Tokens. Einziger fester Wert ist `#25D366` — die WhatsApp-Marke, die so
+bereits in `styles.css:280` steht.
+
+### Was an der Umschaltung nicht angetastet wurde
+
+`setzeModus()`, `werteUebernehmen()` und `UEBERNAHME` in `anfrage.js` sind unverändert; die
+Datei ist nur um die Chip- und Freitextlogik **ergänzt** (keine Zeile entfernt, per Diff
+belegt). Erhalten sind `data-anf-modus="kurz"`, `data-anf-form`, `data-anf-status`,
+`data-anf-zeitstempel`, `data-anf-modus-feld`, der Honeypot und der Feldname `name`.
+
+**Bewusst aufgegeben:** E-Mail und Telefon sind zu einem Feld `kontakt` zusammengelegt.
+`UEBERNAHME` kennt es nicht, die Übertragung läuft dort ins Leere — wer erst kurz tippt und
+dann auf „mehr Angaben" wechselt, gibt seinen Kontaktkanal erneut ein. Vom Auftraggeber so
+entschieden, damit `anfrage.js` unberührt bleibt.
+
+### Gemessen
+
+| Prüfung | Ergebnis |
+|---|---|
+| Umschaltung kurz → lang → kurz | funktioniert, Name wird übertragen |
+| Chips an/aus, Themenfeld | sammelt korrekt, Abwahl funktioniert |
+| Chipbreite beim Umschalten | 144,5 px → 144,5 px, unverändert (Rand bleibt 2 px) |
+| „Etwas anderes" | öffnet das Freitextfeld, `aria-expanded` wechselt |
+| Absenden | zeigt weiterhin den Hinweis, dass kein Versand aktiv ist |
+| Radio-Punkt | `rgb(140, 198, 63)` statt Browser-Blau |
+| Chips unter 560 px | zwei Spalten, drei Zeilen — in vier Breiten geprüft |
+| Overflow | keiner bei 320 / 360 / 390 / 560 / 561 / 768 / 1024 / 1440 px |
+
+### Weiterhin offen
+
+Der Formularversand. Es gibt keinen Endpunkt; `anfrage.js` zeigt nur einen Hinweis. Die
+Chip-Auswahl landet im versteckten Feld `themen`, damit sie im Datensatz steht, sobald ein
+Endpunkt existiert. Die QA-Forderung des Fremdentwurfs „Ausgewählte Chips landen in der Mail
+an Maik" ist bis dahin nicht erfüllbar.
+
+Erreichbarkeitszeiten und ein Satz zur Rückmeldung stehen **nicht** im Formular — am
+06.09.2026 so entschieden.
+
+
+## AP-247 — Kartenlegende: „Für Ihre Anliegen in ganz NRW tätig"
+
+**Vom 06.09.2026.** Unter der Einsatzgebiets-Karte standen der Vorspann „Hauptsächlich in
+Nordrhein-Westfalen:" und darunter die fünf Städte. Beides ist durch einen Satz ersetzt:
+**„Für Ihre Anliegen in ganz NRW tätig"**. „Auf Anfrage auch deutschlandweit." und „Sitz in
+Herne" bleiben.
+
+### Abweichung von H.6 — bewusst und begründet
+
+H.6 des Umsetzungsplans legt fest: „Der Schwerpunkt sind weiterhin die fünf Städte" und
+„Teil D des Plans setzt mit der Ortsliste bewusst ein lokales Signal". Der Vorspann stammte
+aus AP-241 und war ausdrücklich darauf gestützt. **Der Auftraggeber hat am 06.09.2026
+entschieden, die Städtezeile an dieser Stelle zu streichen.**
+
+Inhaltlich ist die neue Aussage gedeckt: H.6 hält selbst fest, dass Maik Rohdich auf Anfrage
+deutschlandweit tätig wird — „ganz NRW" bleibt dahinter zurück, behauptet also nichts
+Zusätzliches.
+
+**Das lokale Signal geht nicht verloren**, es entfällt nur an dieser einen Stelle. Nachgezählt:
+
+| Ort | Städte weiterhin genannt |
+|---|---|
+| `.github/scripts/templates/_footer.html` | ja — propagiert in alle 37 Seiten |
+| JSON-LD `areaServed` | ja, in drei Blöcken |
+| `index.html` übrige Stellen | ja, acht Vorkommen |
+| `AREA_SERVED` in `render.mjs` | unberührt |
+
+### Nicht angefasst
+
+Das `aria-label` der Karte nennt weiterhin die fünf Städte
+(„Nordrhein-Westfalen mit dem Einsatzgebiet um Herne, Bochum, Gelsenkirchen, Recklinghausen
+und Castrop-Rauxel"). Es beschreibt, was die Grafik **zeigt** — und sie hebt diese Kreise
+weiterhin hervor. Eine Bildbeschreibung folgt dem Bild, nicht dem Text daneben.
+
+Kein CSS geändert: `.proof-map-focus` behält seine Regel aus AP-241 (`display: block`,
+2 px Abstand), die auch für einen alleinstehenden Satz richtig ist.
+
+### Gemessen
+
+Der Satz steht in allen geprüften Breiten (320 / 390 / 861 / 1440 px) einzeilig, kein
+Doppelpunkt, keine Städte mehr in der Legende, kein horizontaler Overflow. Die Ausrichtung
+aus AP-241/AP-242 ist unverändert: bis 860 px zentriert, ab 861 px linksbündig neben der
+Karte.
+
+### Offen
+
+| # | Punkt | |
+|---|---|---|
+| O17 | **Hervorhebung auf der Karte ohne Erklärung** | Die Grafik betont weiterhin fünf Kreise um Herne, der Text nennt sie nicht mehr. Kein Widerspruch — die Karte zeigt ganz NRW, die Betonung markiert den Schwerpunkt — aber wer die Grafik liest, sieht eine Hervorhebung, die im Text keine Entsprechung hat. Falls das stören sollte, wäre die Hervorhebung anzupassen, nicht der Satz. |
+
+
+## AP-249 — Freitextfeld stand trotz `hidden` offen (Fehler aus AP-246)
+
+**Vom 06.09.2026.** Das Feld „Worum geht es?" im Kurzformular war dauerhaft sichtbar,
+obwohl es erst auf Klick erscheinen sollte.
+
+> Dieser Abschnitt hieß zunächst AP-248. Eine parallel laufende Sitzung hatte dieselbe
+> Nummer Sekunden früher für „Ungenutzte Stile der Galerie-Filter entfernt“ vergeben
+> (Commit `996d283`); der hiesige Commit war noch nicht gepusht und ist auf **AP-249**
+> gerückt — derselbe Fall wie bei AP-230.
+
+**Ursache:** `[hidden] { display: none }` ist eine Regel des **Browsers** und hat damit die
+niedrigste Priorität. `anfrage.css:121` setzt `.anf__feld { display: grid }` und sticht sie
+aus. Das Markup trug `hidden`, `anfrage.js` setzte es korrekt — gezeichnet wurde das Feld
+trotzdem.
+
+| | Freitextfeld | Umschaltung kurz/lang |
+|---|---|---|
+| `hidden`-Attribut | gesetzt | gesetzt |
+| berechnetes `display` | `grid` | `none` |
+| tatsächlich sichtbar | **ja, 297 × 160 px** | nein |
+
+Die Umschaltung war nie betroffen: `.anf__form` und `.anf__karte` setzen kein `display`.
+
+**Behoben** mit `.anf [hidden] { display: none; }` — am Wrapper statt an der einzelnen
+Klasse, damit künftige Elemente mit `hidden` mitversorgt sind. Dasselbe Muster nutzt
+`privat-form.css:824` für das ausführliche Formular.
+
+### Warum die Prüfung in AP-246 das nicht gefunden hat
+
+Getestet wurde `element.hidden` — die DOM-**Eigenschaft**. Die war korrekt `true`. Sie sagt
+aber nichts darüber, ob das Element gezeichnet wird; das entscheidet allein das berechnete
+`display`. Der Test war grün, während das Feld offen dastand.
+
+> **Merksatz für künftige Prüfungen:** Sichtbarkeit nie über `element.hidden`,
+> `classList.contains()` oder gesetzte Attribute feststellen. Nur
+> `getComputedStyle(el).display` und `getBoundingClientRect()` sagen, was der Nutzer sieht.
+
+### Gemessen
+
+Startzustand `display: none`, Höhe 0. Nach Klick `display: grid`, Höhe 160 px,
+`aria-expanded="true"`, Fokus im Textfeld. Zweiter Klick schließt wieder. Der Chip „Etwas
+anderes" öffnet ebenfalls. Umschaltung kurz → lang → kurz an `display` geprüft: unverändert
+richtig, das Freitextfeld bleibt beim Rückwechsel zu. Kein Overflow bei 320 / 390 / 768 /
+1440 px.
+
+---
+
+## AP-252 — „Willkommen" von Baloo 2 auf Nunito
+
+Im Willkommens-Absatz der Startseite lief das Wort „Willkommen" als einziges Element in
+**Baloo 2**, der Rest der Zeile in Nunito. Eine Schriftinventur der Startseite zeigte: auf
+der Desktop-Ansicht war das die **einzige** Fundstelle von Baloo 2. Auf Wunsch des
+Auftraggebers läuft das Wort jetzt in Nunito und setzt sich nur noch über Kursiv und
+Gewicht 700 vom Absatz ab.
+
+Umgesetzt in [home-dark.css:2134](../assets/css/home-dark.css:2134) durch **Streichen** der
+Zeile `font-family: "Baloo 2", cursive;`. Keine neue `font-family` gesetzt — der Absatz
+`.mr-willkommen__gross` trägt bereits `font-family: var(--display)`, und `--display` ist auf
+der Startseite Nunito (home-dark.css:45). So folgt die Stelle einem späteren Tokenwechsel
+von allein.
+
+### Nebenbefund: das bisherige Kursiv war errechnet
+
+Baloo 2 ist in beiden `@font-face`-Blöcken (home-dark.css:12–27) nur mit
+`font-style: normal` eingebunden — einen Kursivschnitt gibt es nicht. Die Schrägstellung
+hat der Browser bislang selbst berechnet. Nunito bringt mit `nunito-italic-latin.woff2`
+(Gewichte 200–1000) einen echten Kursivschnitt mit; `document.fonts.check('italic 700 40px
+Nunito')` meldet `true`.
+
+**Baloo 2 bleibt eingebunden.** Die Handy-Ansicht nutzt sie weiter für die Hero-Zeilen
+(home-dark.css:801) und `.gate-welcome-statement` (home-dark.css:1663). Weder
+`@font-face`-Blöcke noch Schriftdateien wurden entfernt.
+
+### Gemessen
+
+| | vorher (Baloo 2) | nachher (Nunito) |
+|---|---|---|
+| Wortbreite „Willkommen" bei 1440 px | 222,5 px | 241,6 px |
+| Absatzhöhe | 242 px | 240 px |
+| Zeilenumbruch | nein | nein |
+
+Bei 768 px: Nunito, 138,9 px Wortbreite, kein waagerechter Überlauf. Bei 390 px ist
+`.mr-willkommen` unverändert `display: none` (bestehende Mobilregel, von dieser Änderung
+nicht berührt).
+
+### Offen — zwei Fremdschriften in der Handy-Ansicht
+
+Bei der Inventur mit aufgefallen, **nicht** beauftragt und deshalb unverändert:
+
+- [home-dark.css:1792](../assets/css/home-dark.css:1792) setzt für die vier
+  Qualifikations-Etiketten (Gartenbaumeister, LWK-BaumKontrolleur, Sachverständiger,
+  Sachkundiger) `font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive` —
+  keine Hausschrift darin. Auf Android greift der generische `cursive`-Zweig, die Darstellung
+  ist dort geräteabhängig.
+- [mobile-social-proof.css:115](../assets/css/mobile-social-proof.css:115) setzt für die
+  Sterne der Google-Bewertung `Arial, sans-serif`. Bei reinen Symbolzeichen unkritisch.

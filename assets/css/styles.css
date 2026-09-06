@@ -28,9 +28,6 @@
                          bricht dort Momentum-Scrolling und Pull-to-Refresh.
                          Diese Geraete bekommen die vertikale Journey.
      min-height: 760px   Feinjustierung innerhalb des 1024er-Blocks.
-     min-width:  601px   .filter-group – Gegenstueck zur 600er-Grenze:
-                         bis 600px scrollt die Filterleiste seitlich,
-                         darueber bricht sie um.
      prefers-reduced-motion – orthogonal zur Breite.
 
    Die Bloecke stehen weiterhin bei ihren Komponenten und wurden bewusst
@@ -2628,7 +2625,7 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
 .projects-more { margin-top: 36px; }
 .projects-more.center { text-align: center; }
 
-/* ---- Toolbar ---- */
+/* ---- Modus-Umschalter Bildergalerie / Projekte ---- */
 .gallery-mode-tabs {
   display: flex;
   width: min(100%, 470px);
@@ -2636,67 +2633,6 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
 }
 .gallery-mode-tabs .seg { flex: 1 1 50%; }
 .gallery-mode-tabs .seg span { width: 100%; justify-content: center; text-align: center; }
-.gallery-toolbar { margin: 8px 0 40px; }
-.gallery-tabs { display: flex; max-width: 360px; margin: 0 auto 6px; }
-.gallery-filters { margin-top: 20px; }
-.filter-row + .filter-row { margin-top: 16px; }
-.filter-label {
-  display: block; margin-bottom: 8px;
-  font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em;
-  color: var(--ink-mute);
-}
-.filter-scroll { overflow-x: auto; scrollbar-width: thin; }
-.filter-group { display: flex; gap: 8px; flex-wrap: nowrap; padding-bottom: 4px; }
-@media (min-width: 601px) { .filter-group { flex-wrap: wrap; } }
-
-.filter-chip {
-  flex: 0 0 auto;
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--body); font-size: .82rem; font-weight: 600;
-  padding: 8px 14px; border-radius: 999px;
-  background: var(--bg-elev); color: var(--ink-2);
-  border: 1px solid var(--line);
-  cursor: pointer; white-space: nowrap;
-  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
-}
-@media (hover: hover) and (pointer: fine) { .filter-chip:hover:not(:disabled) { border-color: var(--ink); transform: translateY(-1px); } }
-.filter-chip[aria-pressed="true"] { background: var(--green-700); color: #fff; border-color: var(--green-500); }
-.filter-chip:disabled { opacity: .4; cursor: not-allowed; }
-.filter-chip .chip-count { font-weight: 500; opacity: .75; font-variant-numeric: tabular-nums; }
-.filter-chip:focus-visible { outline: 2px solid var(--green-700); outline-offset: 3px; }
-.filter-chip[aria-pressed="true"]:focus-visible { outline-color: var(--ink); }
-
-/* AP-31: Kundentyp-Filter als zusammenhaengendes Segmented Control (Optik; Logik unveraendert). */
-.filter-group[data-filter="typ"] {
-  gap: 0;
-  width: max-content;
-  max-width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--bg-elev);
-}
-.filter-group[data-filter="typ"] .filter-chip {
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  padding: 10px 20px;
-}
-.filter-group[data-filter="typ"] .filter-chip + .filter-chip {
-  border-left: 1px solid var(--line);
-}
-@media (hover: hover) and (pointer: fine) {
-  .filter-group[data-filter="typ"] .filter-chip:hover:not(:disabled) {
-    transform: none;
-    background: var(--bg);
-  }
-}
-.filter-group[data-filter="typ"] .filter-chip[aria-pressed="true"] {
-  background: var(--green-700);
-  color: #fff;
-}
-/* Zaehler im Segmented Control ausblenden - reduziert Rauschen auf der Haupt-Weiche. */
-.filter-group[data-filter="typ"] .chip-count { display: none; }
 
 /* ---- Interaktive Karte (Overlay öffnet Lightbox bzw. verlinkt in die Galerie) ---- */
 /* Global relativ, damit der Overlay-Link/-Button auch in #projekte (Startseite) greift. */
@@ -2714,12 +2650,11 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
 .gallery-empty[hidden], .gallery-error[hidden] { display: none; }
 
 /* AP-31: [hidden] muss display-Overrides schlagen, sonst bleiben Elemente sichtbar.
-   Behebt die Galerie-Doppelung (galleryStatic) und ist Voraussetzung dafuer,
-   dass ausgeblendete Leistungs-Chips und die Tab-Leiste wirklich verschwinden. */
+   Behebt die Galerie-Doppelung (galleryStatic).
+   AP-248: Die Eintraege fuer .filter-chip und .gallery-tabs sind entfallen - beide
+   Bauteile gibt es seit AP-247 nicht mehr. */
 .projects-grid[hidden],
-.gallery-photo-grid[hidden],
-.filter-chip[hidden],
-.gallery-tabs[hidden] { display: none; }
+.gallery-photo-grid[hidden] { display: none; }
 .gallery-empty p, .gallery-error p { margin: 0 0 16px; }
 .gallery-cta { margin-top: 44px; }
 .gallery-cta.center { text-align: center; }

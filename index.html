@@ -34,11 +34,11 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260906i" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zz84" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zz85" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260906bf" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260906af" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20260902g" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260906ap250" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -1017,7 +1017,7 @@ html.home-theme-dark body { background-color: #171916; }
       </p>
 
       <figcaption class="proof-map-cap">
-        <em><span class="proof-map-focus">Hauptsächlich in Nordrhein-Westfalen:</span>Herne · Bochum · Gelsenkirchen · Recklinghausen · Castrop-Rauxel<span class="proof-map-reach">Auf Anfrage auch deutschlandweit.</span></em>
+        <em><span class="proof-map-focus">Für Ihre Anliegen in ganz NRW tätig</span><span class="proof-map-reach">Auf Anfrage auch deutschlandweit.</span></em>
         <span class="proof-map-seat">Sitz in Herne</span>
       </figcaption>
       <div class="proof-map-src">Verwaltungsgrenzen: © GeoBasis-DE / BKG (dl-de/by-2-0)</div>
@@ -1610,7 +1610,28 @@ html.home-theme-dark body { background-color: #171916; }
             </label>
           </fieldset>
 
-          <form class="anf__form" data-anf-modus="kurz" data-anf-form novalidate>
+          <!-- AP-246: Kurzformular in der Formsprache der Seite.
+
+               Was hier NICHT geaendert werden darf, sonst bricht die Umschaltung
+               kurz/lang in assets/js/anfrage.js:
+                 data-anf-modus="kurz"  - danach sucht setzeModus() (Z. 65)
+                 data-anf-form          - Selektor fuer Zeitstempel und Submit (Z. 30)
+                 data-anf-status        - ohne das bricht der Submit-Handler ab (Z. 96)
+                 data-anf-zeitstempel, data-anf-modus-feld, der Honeypot
+                 name="name"            - wandert beim Wechsel ins lange Formular
+
+               Bewusst aufgegeben: E-Mail und Telefon sind zu einem Feld
+               zusammengelegt. anfrage.js uebernimmt beim Wechsel weiterhin
+               name/email/telefon/ort - "kontakt" ist nicht dabei und laeuft damit
+               ins Leere. Vom Auftraggeber am 06.09.2026 so entschieden; anfrage.js
+               bleibt dafuer unangetastet.
+
+               Die Bausteine stammen aus dem Bestand: Karte wie die Leistungskarten,
+               Marken-Ecke 24/24/44/24 (form-trust-card.css:16 u.a.), Eyebrow wie
+               .private-proof-since, Kontaktkacheln wie .footer-contact-link
+               (styles.css:1527), Chips in Pillenform wie .btn, Absendeknopf
+               unveraendert. -->
+          <form class="anf__form anf__karte" data-anf-modus="kurz" data-anf-form novalidate>
             <div class="anf__honeypot" aria-hidden="true">
               <label for="anf-hp">Firmenwebsite (bitte frei lassen)</label>
               <input type="text" id="anf-hp" name="_hp_website" tabindex="-1" autocomplete="off">
@@ -1618,36 +1639,76 @@ html.home-theme-dark body { background-color: #171916; }
             <input type="hidden" name="modus" value="kurz" data-anf-modus-feld>
             <input type="hidden" name="geladen_um" value="" data-anf-zeitstempel>
 
-            <div class="anf__raster">
-              <p class="anf__feld">
-                <label for="anf-name">Name</label>
-                <input type="text" id="anf-name" name="name" autocomplete="name">
-              </p>
-              <p class="anf__feld">
-                <label for="anf-email">E-Mail</label>
-                <input type="email" id="anf-email" name="email" autocomplete="email">
-              </p>
-              <p class="anf__feld">
-                <label for="anf-telefon">Telefon</label>
-                <input type="tel" id="anf-telefon" name="telefon" autocomplete="tel">
-              </p>
+            <p class="anf__eyebrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+              <span>Am schnellsten geht es direkt</span>
+            </p>
+
+            <!-- Telefon und WhatsApp stehen VOR den Feldern: der Anruf ist das Ziel,
+                 nicht die Formularabsendung. Die Icons sind die der Seite - der
+                 Hoerer aus dem Hero (index.html, mobile-hero-link-phone) und das
+                 Glyph aus dem Header (styles.css:1801) auf WhatsApp-Gruen. -->
+            <div class="anf__kanaele">
+              <a class="anf__kanal" href="tel:+491711738943">
+                <span class="anf__kanal-icon anf__kanal-icon--tel" aria-hidden="true"></span>
+                <span><small>Anrufen</small><strong>0171 / 173 89 43</strong></span>
+              </a>
+              <a class="anf__kanal" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener">
+                <span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span>
+                <span><small>WhatsApp</small><strong>Fotos mitschicken</strong></span>
+              </a>
             </div>
 
+            <p class="anf__oder"><span>oder hier hinterlassen</span></p>
+
+            <!-- Die Chips bilden NICHT content/taxonomie.json ab - sie sind
+                 Kundensprache. Genauer wird es am Telefon oder im ausfuehrlichen
+                 Formular. Sturmschaden fehlt bewusst: ein Notfall gehoert ans
+                 Telefon, nicht in ein Formular ohne Versand. -->
+            <p class="anf__frage" id="anf-chips-label">Es geht um <span>— mehreres möglich</span></p>
+            <div class="anf__chips" role="group" aria-labelledby="anf-chips-label" data-anf-chips>
+              <button type="button" class="anf__chip" aria-pressed="false" data-anf-chip="Garten neu">Garten neu</button>
+              <button type="button" class="anf__chip" aria-pressed="false" data-anf-chip="Pflege">Pflege</button>
+              <button type="button" class="anf__chip" aria-pressed="false" data-anf-chip="Bäume">Bäume</button>
+              <button type="button" class="anf__chip" aria-pressed="false" data-anf-chip="Terrasse &amp; Wege">Terrasse &amp; Wege</button>
+              <button type="button" class="anf__chip" aria-pressed="false" data-anf-chip="Teich &amp; Pool">Teich &amp; Pool</button>
+              <button type="button" class="anf__chip" aria-pressed="false" data-anf-chip="Etwas anderes" data-anf-chip-frei>Etwas anderes</button>
+            </div>
+            <!-- Traegt die Auswahl in den Formulardatensatz, sobald es einen
+                 Endpunkt gibt. Ohne JavaScript bleibt das Feld leer, die uebrigen
+                 Angaben sind trotzdem absendbar. -->
+            <input type="hidden" name="themen" value="" data-anf-themen>
+
             <p class="anf__feld">
+              <label for="anf-name">Ihr Name</label>
+              <input type="text" id="anf-name" name="name" autocomplete="name" placeholder="Vor- und Nachname">
+            </p>
+            <!-- Ein Feld statt zwei: Maik braucht genau einen Rueckkanal. Der
+                 Placeholder schubst bewusst Richtung Telefon, das Label erlaubt
+                 beides. type="text", weil type="tel" die E-Mail-Eingabe erschwert. -->
+            <p class="anf__feld">
+              <label for="anf-kontakt">Nummer oder E-Mail</label>
+              <input type="text" id="anf-kontakt" name="kontakt" autocomplete="tel" placeholder="0171 …" inputmode="text">
+            </p>
+
+            <button type="button" class="anf__mehr" data-anf-mehr aria-expanded="false" aria-controls="anf-nachricht-feld">
+              <span aria-hidden="true">+</span> Ich möchte etwas dazu schreiben
+            </button>
+            <p class="anf__feld anf__feld--frei" id="anf-nachricht-feld" hidden>
               <label for="anf-nachricht">Worum geht es?</label>
-              <textarea id="anf-nachricht" name="nachricht" rows="5"
+              <textarea id="anf-nachricht" name="nachricht" rows="4"
                 placeholder="Eine kurze Beschreibung genügt — was ist zu tun, und wo?"></textarea>
             </p>
+
+            <div class="anf__abschluss">
+              <button type="submit" class="btn btn-primary" data-anf-senden>Anfrage senden</button>
+              <p class="anf__status" data-anf-status role="status" aria-live="polite"></p>
+            </div>
 
             <p class="anf__rechtliches">
               Fotos senden Sie am schnellsten direkt per WhatsApp mit.
               Wie wir Ihre Angaben verarbeiten, steht in der <a href="datenschutz/">Datenschutzerklärung</a>.
             </p>
-
-            <div class="anf__abschluss">
-              <button type="submit" class="anf__knopf" data-anf-senden>Anfrage senden</button>
-              <p class="anf__status" data-anf-status role="status" aria-live="polite"></p>
-            </div>
           </form>
 
           <div data-anf-modus="detail" hidden>
@@ -2503,7 +2564,7 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/js/mobile-private-review.js?v=20260906a" defer></script>
 <script src="assets/js/private-proof.js?v=20260906a" defer></script>
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>
-<script src="assets/js/anfrage.js?v=20260902a" defer></script>
+<script src="assets/js/anfrage.js?v=20260906ap246" defer></script>
 <script src="assets/js/home-header-morph.js?v=20260830b" defer></script>
 <script src="assets/js/ueber-video.js?v=20260905b" defer></script>
 </body>

@@ -2136,11 +2136,13 @@ html.home-theme-dark .mr-willkommen__gross {
   text-wrap: pretty;
 }
 
-/* Entwurf: Comic Neue italic 700 ueber Google Fonts. Die Startseite laedt
-   ausschliesslich selbst gehostete Schriften; Baloo 2 ist die runde Zweitschrift
-   des Hauses und steht bereits im @font-face-Block oben. */
+/* Entwurf: Comic Neue italic 700 ueber Google Fonts, danach Baloo 2 (AP-217).
+   Seit AP-252 laeuft das Wort in derselben Schrift wie der uebrige Absatz -
+   Nunito ueber --display - und setzt sich nur noch ueber Kursiv und Gewicht 700
+   ab. Keine eigene font-family, damit die Stelle dem Token folgt. Nebeneffekt:
+   Baloo 2 ist ohne Kursivschnitt eingebunden, die Schraege war errechnet;
+   Nunito bringt einen echten Kursivschnitt mit. */
 html.home-theme-dark .mr-willkommen__gross .mr-comic {
-  font-family: "Baloo 2", cursive;
   font-style: italic;
   font-weight: 700;
 }
@@ -2639,6 +2641,10 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
    Signaturflaeche. Der flachere Beschnitt reduziert die Blockhoehe; die
    Belichtungskorrektur nimmt den sehr hellen Spitzen die Haerte. */
 @media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+  html.home-theme-dark .mr-ueber__mehr {
+    margin-top: 32px;
+  }
+
   html.home-theme-dark .mr-ueber__paar {
     width: 100%;
     max-width: none;
