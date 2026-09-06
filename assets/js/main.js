@@ -272,13 +272,14 @@
   // --- Scroll reveal ---
   const revealElements = new Set();
   const registeredRevealElements = new WeakSet();
-  const revealDelay = (el) => {
+  const revealDelayMs = (el) => {
     const siblings = Array.from(el.parentElement?.children || []);
     const index = siblings.indexOf(el);
     // Auch lange Galerie- und Kartenraster sollen ohne sekundenlange Wartezeit
     // reagieren. Der Gewerbe-Stagger bleibt erhalten, wird aber sinnvoll begrenzt.
-    return `${Math.min(4, Math.max(0, index)) * 60}ms`;
+    return Math.min(4, Math.max(0, index)) * 55;
   };
+  const revealDelay = (el) => `${revealDelayMs(el)}ms`;
   const revealNow = (el) => {
     if (!el || revealElements.has(el)) return;
     revealElements.add(el);
@@ -286,8 +287,53 @@
     el.classList.add('is-in');
   };
 
+  const gsapRevealEnabled = !reduced && Boolean(window.gsap && window.ScrollTrigger);
+  if (gsapRevealEnabled) {
+    window.gsap.registerPlugin(window.ScrollTrigger);
+    document.documentElement.classList.add('gsap-reveal-active');
+  }
+
+  const revealWithGsap = (el) => {
+    // Der gelbe Willkommensstempel besitzt eine eigene Markenanimation.
+    // ScrollTrigger setzt hier nur den Startzeitpunkt.
+    if (el.classList.contains('gate-welcome-kicker')) {
+      window.ScrollTrigger.create({
+        trigger: el,
+        start: 'top 88%',
+        once: true,
+        onEnter: () => revealNow(el)
+      });
+      return;
+    }
+
+    const isWelcomePhoto = el.classList.contains('gate-welcome-photo');
+
+    window.gsap.fromTo(el, {
+      autoAlpha: 0,
+      y: isWelcomePhoto ? 14 : 18
+    }, {
+      autoAlpha: 1,
+      y: 0,
+      duration: isWelcomePhoto ? 0.64 : 0.72,
+      delay: isWelcomePhoto ? 0 : revealDelayMs(el) / 1000,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: isWelcomePhoto ? 'top bottom+=72px' : 'top 88%',
+        once: true
+      },
+      onStart: () => {
+        revealElements.add(el);
+        el.classList.add('is-in');
+      },
+      onComplete: () => {
+        window.gsap.set(el, { clearProps: 'opacity,visibility,transform' });
+      }
+    });
+  };
+
   let revealObserver = null;
-  if (!reduced && 'IntersectionObserver' in window) {
+  if (!gsapRevealEnabled && !reduced && 'IntersectionObserver' in window) {
     revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
@@ -304,7 +350,8 @@
     candidates.forEach((el) => {
       if (registeredRevealElements.has(el)) return;
       registeredRevealElements.add(el);
-      if (!revealObserver) revealNow(el);
+      if (gsapRevealEnabled) revealWithGsap(el);
+      else if (!revealObserver) revealNow(el);
       else revealObserver.observe(el);
     });
   };
