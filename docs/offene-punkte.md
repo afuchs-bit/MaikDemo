@@ -768,4 +768,4 @@ horizontaler Overflow.
 
 | # | Punkt | |
 |---|---|---|
-| O16 | **Logogröße im Button** | Das Logo steht bei 107 × 30 px (mobil) bzw. 128 × 36 px in einem jetzt 335 bis 566 px breiten Button. Der Schriftzug ist dadurch klein, links und rechts bleibt Luft. Die Größe stammt aus AP-235, als der Button noch inhaltsbreit war. Ob das Logo mitwachsen soll, ist eine Gestaltungsfrage und nicht Teil dieses AP. |
+| O16 | ~~**Logogröße im Button**~~ | **Erledigt mit AP-237** (06.09.2026). Das Logo ist von 30/36 px auf **44/52 px** gewachsen: 156 × 44 px unter 421 px Fensterbreite, 185 × 52 px darüber. 52 px ist die Grenze, die der Button ohne zu wachsen trägt (52 + 2 × 10 px Innenabstand = 72 px, knapp über der `min-height` von 68). Der engste Fall ist 320 px Fensterbreite: Button 280 px, Inhalt 224 px, je 10 px Luft links und rechts — `scrollWidth` gleich `clientWidth`, kein Überlauf. |

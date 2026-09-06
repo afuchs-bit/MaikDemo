@@ -2271,12 +2271,18 @@ html.home-theme-dark .mr-ueber__mehr-text {
    width bleibt auto - so bestimmt das Bild selbst seine Breite und wird nicht
    verzerrt. object-fit braucht es nicht, es gibt keinen Beschnitt.
    Der drop-shadow aus AP-235 ist entfallen: er half dem SVG-Schriftzug ueber
-   seine 4,29:1: das PNG bringt eine eigene helle Kontur mit. */
+   seine 4,29:1; das PNG bringt eine eigene helle Kontur mit.
+
+   AP-237: von 36 auf 52px vergroessert. Die alten 36 stammten aus AP-235, als der
+   Button noch inhaltsbreit war; seit AP-236 ist er so breit wie das Fotopaar
+   (335 bis 566px), und darin stand der Schriftzug verloren. 52px ist die Grenze,
+   die der Button ohne zu wachsen traegt: 52 plus 2x10px Innenabstand ergibt 72px,
+   knapp ueber der min-height von 68. */
 html.home-theme-dark .mr-ueber__mehr-logo {
   position: relative;
   z-index: 1;
   flex: none;
-  height: 36px;
+  height: 52px;
   width: auto;
 }
 
@@ -2305,7 +2311,10 @@ html.home-theme-dark .mr-ueber__mehr:focus-visible {
     padding: 10px 18px;
     font-size: .95rem;
   }
-  html.home-theme-dark .mr-ueber__mehr-logo { height: 30px; }
+  /* AP-237: mitgewachsen. Bei 320px Fenster ist der Button 280px breit; mit
+     "Mehr zu", Fuge und Innenabstand bleiben rund 170px fuer das Logo - 44px Hoehe
+     ergeben 157px Breite und passen. Mehr liefe ueber. */
+  html.home-theme-dark .mr-ueber__mehr-logo { height: 44px; }
 }
 
 /* Das Fotopaar. AP-235: quadratisch statt 4:5 stehend.
