@@ -1618,9 +1618,10 @@
   border-bottom: 1px solid rgba(49,82,0,.08);
   background: var(--bg);   /* AP-129: war #efede5 */
 }
+.iphone-service-directory { display: none; }
 .private-request-paths .b2b-request-head { display: grid; grid-template-columns: minmax(0,1fr) clamp(330px,30vw,370px); gap: clamp(28px,3.5vw,50px); align-items: center; }
 .private-request-paths .private-request-head-copy { min-width: 0; }
-.private-request-paths h2 { max-width: 780px; font-size: var(--type-section-title-size); line-height: 1.05; letter-spacing: -.028em; }
+.private-request-paths h2 { max-width: 780px; font-family: var(--display); font-size: var(--type-section-title-size); font-weight: 700; line-height: 1.05; letter-spacing: -.028em; }
 .private-request-paths .b2b-request-intro { max-width: 62ch; margin: var(--space-title-subtext) 0 0; color: var(--ink-mute); font-size: var(--type-section-lead-size); line-height: 1.62; }
 .private-request-paths .private-request-emergency { grid-template-columns: 46px minmax(0,1fr) 18px; gap: 14px; min-height: 96px; padding: 15px 18px; border-radius: 18px 18px 28px 18px; }
 .private-request-paths .private-request-emergency .form-emergency-shortcut__icon { width: 46px; height: 46px; }
@@ -4178,6 +4179,316 @@
   }
   .private-project-conversion p span { display: none; }
   .private-project-conversion .btn { width: 100%; justify-content: center; text-align: center; }
+}
+
+/* Vereinbarte Hochformat-Ansichten des iPhone 15 Pro und 16 Pro: Die
+   Leistungsübersicht beginnt ohne Einleitung direkt mit dem zentrierten Titel. */
+@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+  .private-request-paths {
+    padding: 58px 0 56px;
+    border-color: rgba(151, 206, 32, .12);
+  }
+
+  .private-request-paths .private-request-head-copy {
+    text-align: center;
+  }
+
+  .private-request-paths #b2b-request-paths-title {
+    max-width: 100%;
+    margin-inline: auto;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .private-request-paths .b2b-request-intro {
+    display: none;
+  }
+
+  .private-request-paths .private-request-emergency,
+  .private-request-paths > .container > .b2b-request-grid,
+  .private-request-paths > .container > .b2b-request-links {
+    display: none;
+  }
+
+  .iphone-service-directory {
+    display: grid;
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .iphone-service-feature,
+  .iphone-service-card {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(151, 206, 32, .22);
+    background:
+      radial-gradient(circle at 92% 106%, rgba(151, 206, 32, .1), transparent 38%),
+      linear-gradient(145deg, #23291f 0%, #1c211a 100%);
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);
+  }
+
+  .iphone-service-feature {
+    min-height: 232px;
+    border-radius: 22px 6px 22px 6px;
+  }
+
+  .iphone-service-feature__media,
+  .iphone-service-card__media {
+    position: relative;
+    z-index: 1;
+    display: block;
+    flex: 0 0 auto;
+    width: 100%;
+    overflow: hidden;
+    background: #20261d;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), 0 100%);
+  }
+
+  .iphone-service-feature__media {
+    height: 142px;
+    margin-bottom: -12px;
+  }
+
+  .iphone-service-feature__media::after {
+    position: absolute;
+    right: -1px;
+    bottom: 0;
+    left: -1px;
+    height: 14px;
+    background: linear-gradient(90deg, #80b514 0%, #97ce20 58%, #b3e33c 100%);
+    clip-path: polygon(0 calc(100% - 4px), 100% 0, 100% 2px, 0 100%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .iphone-service-feature__media picture,
+  .iphone-service-card__media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .iphone-service-feature__media img,
+  .iphone-service-card__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(.93) contrast(1.02);
+    transform: scale(1.01);
+    transition: transform .22s var(--ease), filter .22s var(--ease);
+  }
+
+  .iphone-service-feature__body {
+    position: relative;
+    z-index: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 14px;
+    align-items: end;
+    min-height: 102px;
+    padding: 25px 18px 15px;
+  }
+
+  .iphone-service-feature__eyebrow {
+    grid-column: 1 / -1;
+    color: var(--yellow);
+    font-size: .72rem;
+    font-weight: 900;
+    letter-spacing: .09em;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+
+  .iphone-service-feature__body > strong {
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 1.22rem;
+    font-weight: 800;
+    letter-spacing: -.025em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .iphone-service-feature__meta {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    color: var(--home-lime, #97ce20);
+    font-size: .82rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .iphone-service-feature__meta b,
+  .iphone-service-card__title > b {
+    position: relative;
+    flex: 0 0 auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    overflow: hidden;
+    background: url("../img/icons/rohdich-blume.png") center / contain no-repeat;
+    color: transparent;
+    font-size: 0;
+    filter: saturate(1.02) drop-shadow(0 0 5px rgba(242, 226, 12, .16));
+    transition: transform .18s var(--ease);
+  }
+
+  .iphone-service-feature__meta b::before,
+  .iphone-service-card__title > b::before,
+  .iphone-service-feature__meta b::after,
+  .iphone-service-card__title > b::after {
+    content: none;
+  }
+
+  .iphone-service-feature--emergency {
+    border-color: rgba(255, 227, 0, .34);
+    background:
+      radial-gradient(circle at 94% 110%, rgba(255, 227, 0, .1), transparent 38%),
+      linear-gradient(145deg, #262a20 0%, #1c211a 100%);
+  }
+
+  .iphone-service-feature--emergency .iphone-service-feature__media::after {
+    background: linear-gradient(90deg, #86ba17 0%, #b7d51e 62%, #ffe300 100%);
+  }
+
+  .iphone-service-feature--advice {
+    min-height: 213px;
+  }
+
+  .iphone-service-feature--advice .iphone-service-feature__body {
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 83px;
+  }
+
+  .iphone-service-feature--advice .iphone-service-feature__body > strong {
+    grid-column: 1;
+    align-self: center;
+  }
+
+  .iphone-service-feature--advice .iphone-service-feature__meta {
+    grid-column: 2;
+    align-self: center;
+    justify-content: flex-end;
+    margin-top: 0;
+  }
+
+  .iphone-service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .iphone-service-grid > li {
+    min-width: 0;
+  }
+
+  .iphone-service-card {
+    height: 230px;
+    min-height: 230px;
+    border: 0;
+    border-radius: 18px 5px 18px 5px;
+  }
+
+  .iphone-service-card__media {
+    height: 184px;
+    margin-bottom: -12px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 12px));
+  }
+
+  .iphone-service-card--explained .iphone-service-card__media {
+    height: 158px;
+  }
+
+  .iphone-service-card__title {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 6px;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 52px;
+    padding: 9px 8px 9px 10px;
+  }
+
+  .iphone-service-card__title strong {
+    min-width: 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: .875rem;
+    font-weight: 800;
+    letter-spacing: -.018em;
+    line-height: 1.08;
+    overflow-wrap: normal;
+    text-wrap: balance;
+  }
+
+  .iphone-service-card__title--explained {
+    align-items: center;
+  }
+
+  .iphone-service-card__title--explained > span {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .iphone-service-card__title small {
+    color: var(--ink-mute);
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.14;
+  }
+
+  .iphone-service-contact-cta {
+    justify-content: center;
+    max-width: none;
+    min-height: 64px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .iphone-service-feature:focus-visible,
+  .iphone-service-card:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 3px;
+  }
+
+  .iphone-service-feature:active,
+  .iphone-service-card:active {
+    border-color: rgba(151, 206, 32, .8);
+    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .28);
+    transform: scale(.985);
+  }
+
+  .iphone-service-card:active {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  }
+
+  .iphone-service-feature:active img,
+  .iphone-service-card:active img {
+    filter: saturate(1) contrast(1.04);
+    transform: scale(1.035);
+  }
+
+  .iphone-service-feature:active .iphone-service-feature__meta b,
+  .iphone-service-card:active .iphone-service-card__title > b {
+    transform: translateX(2px);
+  }
 }
 
 @media (prefers-reduced-motion:reduce) {

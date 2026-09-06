@@ -34,9 +34,9 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zp" />
-<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260905ao" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260902g" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zz41" />
+<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260906ba" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260906r" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
@@ -240,7 +240,7 @@ html.home-theme-dark body { background-color: #171916; }
 
     <nav class="primary-nav" aria-label="Hauptnavigation">
       <ul id="primaryMenu" class="menu">
-        <li><a href="gewerbekunden/">Gewerbekunden</a></li>
+        <li class="saved-gewerbe-link"><a href="gewerbekunden/">Gewerbekunden</a></li>
         <li class="menu-item menu-item--sub">
           <span class="menu-label">Leistungen</span>
           <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-leistungen" aria-label="Alle Leistungen anzeigen">
@@ -266,7 +266,7 @@ html.home-theme-dark body { background-color: #171916; }
               <li><a href="privatkunden/leistungen/pool-whirlpool-umfeld/">Pool- &amp; Whirlpool-Umfeld</a></li>
             </ul>
           </li>
-          <li class="nav-submenu-group">
+          <li class="nav-submenu-group saved-gewerbe-link">
             <a class="nav-submenu-head" href="gewerbekunden/">Für Gewerbekunden</a>
             <ul>
               <li><a href="gewerbekunden/leistungen/aussenanlagenpflege/">Pflege &amp; Instandhaltung</a></li>
@@ -404,7 +404,7 @@ html.home-theme-dark body { background-color: #171916; }
     <figure class="gate-welcome-photo">
       <img src="assets/img/willkommen/poolgarten-720.webp"
            srcset="assets/img/willkommen/poolgarten-720.webp 720w, assets/img/willkommen/poolgarten-1200.webp 1200w"
-           sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 14px), 1px"
+           sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 48px), 1px"
            alt="Garten mit Pool, geschwungenen Rasenflächen, Natursteinen, bepflanzten Beeten und Palmen."
            width="1200" height="900" loading="lazy" decoding="async">
       <svg class="gate-welcome-photo-outline" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true" focusable="false">
@@ -415,11 +415,58 @@ html.home-theme-dark body { background-color: #171916; }
         </defs>
         <path fill-rule="evenodd" d="M .085 .178 L 1 .006 L 1 .994 L .145 .862 Q .105 .855 .1 .815 L .035 .255 Q .03 .2 .085 .178 Z M .092 .191 L 1 .008 L 1 .992 L .151 .847 Q .118 .842 .112 .808 L .047 .258 Q .043 .216 .092 .191 Z" />
       </svg>
+      <svg class="gate-welcome-photo-brand" viewBox="0 0 210 180" width="210" height="180"
+           overflow="hidden" aria-hidden="true" focusable="false">
+        <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180" />
+      </svg>
     </figure>
 
-    <p class="gate-welcome-statement">Ein Garten ist mehr als eine Fläche rund ums Haus. Er ist Rückzugsort, Treffpunkt und ein Stück Lebensqualität – gemeinsam gestalten wir ihn so, dass er zu Ihnen und Ihrem Alltag passt.</p>
+    <div class="gate-welcome-message">
+      <p class="gate-welcome-statement">
+        <span class="gate-welcome-statement__lead">Ein Garten ist mehr als eine Fläche rund ums Haus – er ist Rückzugsort, Treffpunkt und <strong>Lebensqualität</strong>.</span>
+        <span class="gate-welcome-statement__closing">Wir gestalten ihn so, dass er zu Ihnen und Ihrem Alltag passt.</span>
+      </p>
+    </div>
 
-    <p class="gate-welcome-lead"><span>Ein Garten ist mehr</span><span>als eine Fläche</span><span>rund ums Haus.</span></p>
+    <div class="mobile-kpi-signature" role="group" aria-label="Erfahrung, Kundenvertrauen und persönliche Betreuung">
+      <ul class="mobile-kpi-signature__facts" role="list">
+        <li class="mobile-kpi-signature__fact">
+          <img class="mobile-kpi-signature__figure mobile-kpi-signature__figure--25"
+               src="assets/img/mobile-social-proof/maik-rohdich-25plus-v4.png"
+               alt="25+" width="1532" height="613" loading="lazy" decoding="async">
+          <p>Jahre Erfahrung<br>im Gartenbau</p>
+        </li>
+        <li class="mobile-kpi-signature__fact">
+          <img class="mobile-kpi-signature__figure mobile-kpi-signature__figure--400"
+               src="assets/img/mobile-social-proof/maik-rohdich-400plus-v4.png"
+               alt="400+" width="1793" height="540" loading="lazy" decoding="async">
+          <p>Kunden haben uns<br>vertraut</p>
+        </li>
+      </ul>
+
+      <div class="mobile-kpi-signature__team">
+        <img class="mobile-kpi-signature__team-wordmark"
+             src="assets/img/mobile-social-proof/maik-rohdich-ihr-fachteam-v4.png"
+             alt="Ihr Fachteam" width="1986" height="350" loading="lazy" decoding="async">
+        <p>Mit Maik als festem Ansprechpartner</p>
+      </div>
+
+      <a class="mobile-kpi-signature__google"
+         href="https://www.google.com/maps?cid=17269983059863253129"
+         target="_blank" rel="noopener"
+         aria-label="Google-Bewertungen ansehen: 4,9 von 5 Sternen bei 68 Bewertungen">
+        <span class="mobile-kpi-signature__rule" aria-hidden="true"></span>
+        <span class="mobile-kpi-signature__google-content">
+          <span class="mobile-kpi-signature__rating">
+            <svg class="mobile-kpi-signature__google-mark" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.55-.21-2.27H12v4.29h6.46c-.29 1.5-1.15 2.77-2.45 3.62v3h3.96c2.32-2.13 3.52-5.27 3.52-8.64Z"/><path fill="#34A853" d="M12 24c3.31 0 6.09-1.1 8.12-2.98l-3.96-3c-1.1.74-2.5 1.18-4.16 1.18-3.2 0-5.91-2.16-6.88-5.07H1.04v3.18C3.05 21.3 7.18 24 12 24Z"/><path fill="#FBBC05" d="M5.12 14.13a7.2 7.2 0 0 1 0-4.27V6.68H1.04A12 12 0 0 0 0 12c0 1.93.46 3.76 1.04 5.32l4.08-3.19Z"/><path fill="#EA4335" d="M12 4.75c1.8 0 3.42.62 4.7 1.83l3.52-3.52C18.09 1.06 15.31 0 12 0 7.18 0 3.05 2.7 1.04 6.68l4.08 3.18C6.09 6.91 8.8 4.75 12 4.75Z"/></svg>
+            <span class="mobile-kpi-signature__stars" aria-hidden="true">★★★★★</span>
+            <strong>4,9/5</strong>
+          </span>
+          <span class="mobile-kpi-signature__reviews">68 Google-Bewertungen</span>
+        </span>
+        <span class="mobile-kpi-signature__rule" aria-hidden="true"></span>
+      </a>
+    </div>
 
     <p class="gate-welcome-feeling">Er ist Rückzugsort, Treffpunkt und ein Stück <em>Lebensqualität.</em></p>
     <p class="gate-welcome-copy">Gemeinsam machen wir aus Ihren Wünschen einen Garten, der zu Ihnen und Ihrem Alltag passt – ob neu angelegt, umgestaltet oder dauerhaft gepflegt.</p>
@@ -430,23 +477,23 @@ html.home-theme-dark body { background-color: #171916; }
         <button class="gate-welcome-qualification-option" type="button" id="gate-qualification-master" aria-expanded="false" aria-controls="gate-qualification-master-detail" data-qualification-target="gate-qualification-master-detail">
           <span class="gate-welcome-qualification-content"><img class="gate-welcome-qualification-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async"><span class="gate-welcome-qualification-label">Gartenbau<wbr>meister</span></span>
         </button>
-        <button class="gate-welcome-qualification-option" type="button" id="gate-qualification-tree" aria-expanded="false" aria-controls="gate-qualification-tree-detail" data-qualification-target="gate-qualification-tree-detail">
-          <span class="gate-welcome-qualification-content"><img class="gate-welcome-qualification-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async"><span class="gate-welcome-qualification-label">Baum<wbr>kontrolle</span></span>
+        <button class="gate-welcome-qualification-option" type="button" id="gate-qualification-tree" aria-label="Zertifizierter Baumkontrolleur" aria-expanded="false" aria-controls="gate-qualification-tree-detail" data-qualification-target="gate-qualification-tree-detail">
+          <span class="gate-welcome-qualification-content"><img class="gate-welcome-qualification-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async"><span class="gate-welcome-qualification-label gate-welcome-qualification-label--tree">LWK-Baum<br>Kontrolleur</span></span>
         </button>
         <button class="gate-welcome-qualification-option" type="button" id="gate-qualification-expert" aria-expanded="false" aria-controls="gate-qualification-expert-detail" data-qualification-target="gate-qualification-expert-detail">
           <span class="gate-welcome-qualification-content"><img class="gate-welcome-qualification-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async"><span class="gate-welcome-qualification-label">Sachver<wbr>ständiger</span></span>
         </button>
-        <button class="gate-welcome-qualification-option" type="button" id="gate-qualification-plant" aria-expanded="false" aria-controls="gate-qualification-plant-detail" data-qualification-target="gate-qualification-plant-detail">
-          <span class="gate-welcome-qualification-content"><img class="gate-welcome-qualification-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async"><span class="gate-welcome-qualification-label">Pflanzen<wbr>schutz</span></span>
+        <button class="gate-welcome-qualification-option" type="button" id="gate-qualification-plant" aria-label="Sachkundiger" aria-expanded="false" aria-controls="gate-qualification-plant-detail" data-qualification-target="gate-qualification-plant-detail">
+          <span class="gate-welcome-qualification-content"><img class="gate-welcome-qualification-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async"><span class="gate-welcome-qualification-label">Sach<br>kundiger</span></span>
         </button>
       </div>
 
       <div class="gate-welcome-qualification-details" data-qualification-details hidden>
         <div class="gate-welcome-qualification-panel" id="gate-qualification-master-detail" role="region" aria-labelledby="gate-qualification-master" hidden>
-          <p>Gartenbaumeister</p>
+          <p>Gartenbaumeister und Ausbildungsbetrieb</p>
         </div>
         <div class="gate-welcome-qualification-panel" id="gate-qualification-tree-detail" role="region" aria-labelledby="gate-qualification-tree" hidden>
-          <p>Zertifizierter Baumkontrolleur der Landwirtschaftskammer</p>
+          <p>Zertifizierter Baumkontrolleur gem. FLL-Richtlinie der LWK (Landwirtschaftskammer) NRW</p>
         </div>
         <div class="gate-welcome-qualification-panel" id="gate-qualification-expert-detail" role="region" aria-labelledby="gate-qualification-expert" hidden>
           <p>Sachverständiger für Garten- und Landschaftsbau</p>
@@ -487,7 +534,9 @@ html.home-theme-dark body { background-color: #171916; }
     </div>
   </section>
 
-  <div class="gate-doors reveal">
+  <!-- Auf den vereinbarten iPhone-Breiten vorübergehend ausgeblendet. Der
+       vollständige Stand bleibt hier für eine spätere Wiederherstellung erhalten. -->
+  <div class="gate-doors gate-doors--saved-iphone reveal">
 
     <!-- AP-F16: Die Privatkunden-Tuer kommt bewusst nicht zurueck. Sie verlinkte auf
          privatkunden/, und diese Seite ist seit AP-F8 geloescht - der Link waere tot.
@@ -531,7 +580,7 @@ html.home-theme-dark body { background-color: #171916; }
      das Betriebsalter. Zahlen und Wortlaut: Auftraggeber, 05.09.2026. -->
 <section class="mobile-social-proof" id="social-proof" aria-labelledby="mobile-social-proof-title">
   <h2 class="mobile-social-proof__sr-only" id="mobile-social-proof-title">Erfahrung und persönliche Betreuung</h2>
-  <ul class="mobile-social-proof__list" role="list">
+  <ul class="mobile-social-proof__list mobile-social-proof__list--standalone" role="list">
     <li class="mobile-social-proof__item">
       <div class="mobile-social-proof__number-row">
         <img class="mobile-social-proof__number" src="assets/img/mobile-social-proof/kpi-25plus.webp"
@@ -939,13 +988,162 @@ html.home-theme-dark body { background-color: #171916; }
   <div class="container">
     <div class="b2b-request-head reveal">
       <div class="private-request-head-copy">
-        <h2 class="type-section-title" id="b2b-request-paths-title">Was möchten Sie in Ihrem Garten verändern?</h2>
+        <h2 class="type-section-title" id="b2b-request-paths-title">Unsere Leistungen von A bis Z im Überblick</h2>
         <p class="b2b-request-intro">Wählen Sie den passenden Bereich: Starten Sie direkt Ihre Anfrage oder informieren Sie sich zuerst über die einzelnen Leistungen.</p>
       </div>
       <a class="form-emergency-shortcut private-request-emergency" href="#anfrage" data-prefill-bereich="sturmschaden" aria-label="Akuten Sturm- oder Baumschaden melden, Notfalltelefon 0171 173 89 43">
         <span class="form-emergency-shortcut__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.8 19h18.4L12 3Z"/><path d="M12 9v4"/><path d="M12 16.7h.01"/></svg></span>
         <span class="form-emergency-shortcut__copy"><strong>Akuter Sturm- oder Baumschaden</strong><small>Notfalltelefon · 0171 / 173 89 43</small></span>
         <span class="form-emergency-shortcut__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="iphone-service-directory" aria-label="Leistungen für Privatkunden">
+      <a class="iphone-service-feature iphone-service-feature--emergency" href="privatkunden/leistungen/sturmnotdienst/" aria-label="24 Stunden Baum- und Sturmnotdienst ansehen">
+        <span class="iphone-service-feature__media" aria-hidden="true">
+          <picture><source type="image/avif" srcset="assets/img/leistungen-mobile/notdienst-640.avif 640w, assets/img/leistungen-mobile/notdienst-1200.avif 1200w" sizes="(max-width: 404px) calc(100vw - 48px), 640px"><source type="image/webp" srcset="assets/img/leistungen-mobile/notdienst-640.webp 640w, assets/img/leistungen-mobile/notdienst-1200.webp 1200w" sizes="(max-width: 404px) calc(100vw - 48px), 640px"><img src="assets/img/leistungen-mobile/notdienst-1200.webp" alt="" width="1200" height="500" loading="lazy" decoding="async"></picture>
+        </span>
+        <span class="iphone-service-feature__body">
+          <span class="iphone-service-feature__eyebrow">Rund um die Uhr erreichbar</span>
+          <strong>24h Baum- &amp; Sturmnotdienst</strong>
+          <span class="iphone-service-feature__meta">0171 / 173 89 43 <b aria-hidden="true">→</b></span>
+        </span>
+      </a>
+
+      <ul class="iphone-service-grid" aria-label="Alle weiteren Leistungen">
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/baumarbeiten/" aria-label="Baumfällung ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/baumfaellung-480.avif 480w, assets/img/leistungen-mobile/baumfaellung-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/baumfaellung-480.webp 480w, assets/img/leistungen-mobile/baumfaellung-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/baumfaellung-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Baumfällung</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/baumarbeiten/" aria-label="Baumpflege ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/baumpflege-480.avif 480w, assets/img/leistungen-mobile/baumpflege-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/baumpflege-480.webp 480w, assets/img/leistungen-mobile/baumpflege-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/baumpflege-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Baumpflege</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/dachbegruenung/" aria-label="Dachbegrünung ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/dachbegruenung-480.avif 480w, assets/img/leistungen-mobile/dachbegruenung-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/dachbegruenung-480.webp 480w, assets/img/leistungen-mobile/dachbegruenung-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/dachbegruenung-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Dachbegrünung</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Erd- und Baggerarbeiten ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/erd-baggerarbeiten-480.avif 480w, assets/img/leistungen-mobile/erd-baggerarbeiten-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/erd-baggerarbeiten-480.webp 480w, assets/img/leistungen-mobile/erd-baggerarbeiten-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/erd-baggerarbeiten-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Erd- &amp; Baggerarbeiten</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Gartenbeleuchtung ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/gartenbeleuchtung-480.avif 480w, assets/img/leistungen-mobile/gartenbeleuchtung-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/gartenbeleuchtung-480.webp 480w, assets/img/leistungen-mobile/gartenbeleuchtung-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/gartenbeleuchtung-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Garten<wbr>beleuchtung</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Gartenentwässerung ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/gartenentwaesserung-480.avif 480w, assets/img/leistungen-mobile/gartenentwaesserung-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/gartenentwaesserung-480.webp 480w, assets/img/leistungen-mobile/gartenentwaesserung-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/gartenentwaesserung-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Garten<wbr>entwässerung</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Gartengestaltung ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/gartengestaltung-480.avif 480w, assets/img/leistungen-mobile/gartengestaltung-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/gartengestaltung-480.webp 480w, assets/img/leistungen-mobile/gartengestaltung-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/gartengestaltung-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Gartengestaltung</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/gartenpflege/" aria-label="Gartenpflege ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/gartenpflege-480.avif 480w, assets/img/leistungen-mobile/gartenpflege-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/gartenpflege-480.webp 480w, assets/img/leistungen-mobile/gartenpflege-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/gartenpflege-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Gartenpflege</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/holzverkauf/" aria-label="Kaminholz ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/kaminholz-480.avif 480w, assets/img/leistungen-mobile/kaminholz-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/kaminholz-480.webp 480w, assets/img/leistungen-mobile/kaminholz-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/kaminholz-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Kaminholz</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/terrasse-pflasterarbeiten/" aria-label="Naturstein und Findlinge ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/naturstein-findlinge-480.avif 480w, assets/img/leistungen-mobile/naturstein-findlinge-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/naturstein-findlinge-480.webp 480w, assets/img/leistungen-mobile/naturstein-findlinge-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/naturstein-findlinge-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Naturstein &amp; Findlinge</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/bepflanzung/" aria-label="Pflanzarbeiten ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/pflanzarbeiten-480.avif 480w, assets/img/leistungen-mobile/pflanzarbeiten-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/pflanzarbeiten-480.webp 480w, assets/img/leistungen-mobile/pflanzarbeiten-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/pflanzarbeiten-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Pflanzarbeiten</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/terrasse-pflasterarbeiten/" aria-label="Pflasterarbeiten ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/pflasterarbeiten-480.avif 480w, assets/img/leistungen-mobile/pflasterarbeiten-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/pflasterarbeiten-480.webp 480w, assets/img/leistungen-mobile/pflasterarbeiten-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/pflasterarbeiten-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Pflasterarbeiten</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/pool-whirlpool-umfeld/" aria-label="Pool- und Whirlpoolumfeld ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/pool-whirlpoolumfeld-480.avif 480w, assets/img/leistungen-mobile/pool-whirlpoolumfeld-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/pool-whirlpoolumfeld-480.webp 480w, assets/img/leistungen-mobile/pool-whirlpoolumfeld-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/pool-whirlpoolumfeld-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Pool- &amp; Whirlpool<wbr>umfeld</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Rasen und Rollrasen ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/rasen-rollrasen-480.avif 480w, assets/img/leistungen-mobile/rasen-rollrasen-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/rasen-rollrasen-480.webp 480w, assets/img/leistungen-mobile/rasen-rollrasen-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/rasen-rollrasen-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Rasen &amp; Rollrasen</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card iphone-service-card--explained" href="privatkunden/leistungen/bepflanzung/" aria-label="Rohdichs Grubengold, Maiks eigene Gartenerde, ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/rohdichs-grubengold-480.avif 480w, assets/img/leistungen-mobile/rohdichs-grubengold-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/rohdichs-grubengold-480.webp 480w, assets/img/leistungen-mobile/rohdichs-grubengold-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/rohdichs-grubengold-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title iphone-service-card__title--explained"><span><strong>Rohdichs Grubengold</strong><small>Maiks eigene Gartenerde</small></span><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card iphone-service-card--explained" href="privatkunden/leistungen/teichbau/" aria-label="Teichbau und Teichtechnik einschließlich Ufergestaltung ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/teichbau-technik-480.avif 480w, assets/img/leistungen-mobile/teichbau-technik-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/teichbau-technik-480.webp 480w, assets/img/leistungen-mobile/teichbau-technik-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/teichbau-technik-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title iphone-service-card__title--explained"><span><strong>Teichbau &amp; -technik</strong><small>inklusive Ufergestaltung</small></span><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/terrasse-pflasterarbeiten/" aria-label="Terrassenbau ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/terrassenbau-480.avif 480w, assets/img/leistungen-mobile/terrassenbau-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/terrassenbau-480.webp 480w, assets/img/leistungen-mobile/terrassenbau-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/terrassenbau-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Terrassenbau</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/vorgarten/" aria-label="Vorgartengestaltung ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/vorgartengestaltung-480.avif 480w, assets/img/leistungen-mobile/vorgartengestaltung-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/vorgartengestaltung-480.webp 480w, assets/img/leistungen-mobile/vorgartengestaltung-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/vorgartengestaltung-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Vorgarten<wbr>gestaltung</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/palmen-winterfest/" aria-label="Winterfeste Palmen ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/winterfeste-palmen-480.avif 480w, assets/img/leistungen-mobile/winterfeste-palmen-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/winterfeste-palmen-480.webp 480w, assets/img/leistungen-mobile/winterfeste-palmen-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/winterfeste-palmen-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Winterfeste Palmen</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+        <li>
+          <a class="iphone-service-card" href="privatkunden/leistungen/terrasse-pflasterarbeiten/" aria-label="Zäune und Sichtschutz ansehen">
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/zaeune-sichtschutz-480.avif 480w, assets/img/leistungen-mobile/zaeune-sichtschutz-640.avif 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><source type="image/webp" srcset="assets/img/leistungen-mobile/zaeune-sichtschutz-480.webp 480w, assets/img/leistungen-mobile/zaeune-sichtschutz-640.webp 640w" sizes="(max-width: 404px) calc((100vw - 60px) / 2), 320px"><img src="assets/img/leistungen-mobile/zaeune-sichtschutz-640.webp" alt="" width="640" height="704" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__title"><strong>Zäune &amp; Sichtschutz</strong><b aria-hidden="true">→</b></span>
+          </a>
+        </li>
+      </ul>
+      <a class="iphone-service-feature iphone-service-feature--advice" href="#anfrage" data-prefill-bereich="unsicher" aria-label="Persönliche Beratung anfragen">
+        <span class="iphone-service-feature__media" aria-hidden="true">
+          <picture><source type="image/avif" srcset="assets/img/leistungen-mobile/beratung-640.avif 640w, assets/img/leistungen-mobile/beratung-1200.avif 1200w" sizes="(max-width: 404px) calc(100vw - 48px), 640px"><source type="image/webp" srcset="assets/img/leistungen-mobile/beratung-640.webp 640w, assets/img/leistungen-mobile/beratung-1200.webp 1200w" sizes="(max-width: 404px) calc(100vw - 48px), 640px"><img src="assets/img/leistungen-mobile/beratung-1200.webp" alt="" width="1200" height="500" loading="lazy" decoding="async"></picture>
+        </span>
+        <span class="iphone-service-feature__body">
+          <span class="iphone-service-feature__eyebrow">Noch nicht sicher?</span>
+          <strong>Persönlich beraten lassen</strong>
+          <span class="iphone-service-feature__meta"><b aria-hidden="true">→</b></span>
+        </span>
+      </a>
+      <a class="mobile-proof-request iphone-service-contact-cta" href="#anfrage" data-prefill-bereich="unsicher">
+        <svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+        <span class="mobile-proof-request__label">Zum Kontaktformular</span>
       </a>
     </div>
     <ul class="b2b-request-grid reveal" aria-label="Direkter Einstieg nach Anliegen">
@@ -1085,32 +1283,32 @@ html.home-theme-dark body { background-color: #171916; }
             <span class="step-figure" aria-hidden="true">01</span>
             <span class="step-node">01</span>
             <div class="step-card">
-              <h3>Projekt kurz beschreiben</h3>
-              <p>Ein paar Angaben genügen. Maik Rohdich meldet sich persönlich bei Ihnen und klärt die ersten Fragen – per Formular, Telefon oder WhatsApp.</p>
+              <h3>Termin vor Ort</h3>
+              <p>Wir lernen Ihr Grundstück und Ihre Vorstellungen in Ruhe kennen – bei Bedarf ergänzt durch einen Besuch in unserem Mustergarten.</p>
             </div>
           </li>
           <li class="step" data-step="2">
             <span class="step-figure" aria-hidden="true">02</span>
             <span class="step-node">02</span>
             <div class="step-card">
-              <h3>Garten vor Ort besprechen</h3>
-              <p>Maik Rohdich bespricht Ihre Wünsche persönlich bei Ihnen im Garten – oder berät Sie nach Terminvereinbarung im 1.500 m² Mustergarten in Herne.</p>
+              <h3>Kostenermittlung</h3>
+              <p>Wir ermitteln die Kosten transparent und stellen Ihnen passende Alternativen vor – so können Sie sicher entscheiden.</p>
             </div>
           </li>
           <li class="step" data-step="3">
             <span class="step-figure" aria-hidden="true">03</span>
             <span class="step-node">03</span>
             <div class="step-card">
-              <h3>Klares Angebot erhalten</h3>
-              <p>Leistungen, Kosten und Zeitrahmen sind nachvollziehbar aufgeführt – als klare Grundlage für Ihre Entscheidung.</p>
+              <h3>Umsetzung &amp; Koordination</h3>
+              <p>Wir koordinieren alle Arbeiten zuverlässig und halten Sie während der Umsetzung auf dem Laufenden.</p>
             </div>
           </li>
           <li class="step" data-step="4">
             <span class="step-figure" aria-hidden="true">04</span>
             <span class="step-node">04</span>
             <div class="step-card">
-              <h3>Garten umsetzen lassen</h3>
-              <p>Unser Team setzt die vereinbarten Arbeiten fachgerecht um. Danach genießen Sie Ihren neuen Garten – auf Wunsch mit laufender Pflege.</p>
+              <h3>Pflege</h3>
+              <p>Auf Wunsch kümmern wir uns auch danach um die passende Pflege Ihres Gartens.</p>
             </div>
           </li>
         </ol>
@@ -1140,7 +1338,7 @@ html.home-theme-dark body { background-color: #171916; }
         <h3>Vertrauen aus über 20 Jahren Gartenbau.</h3>
         <p>Echte Bewertungen und fachliche Qualifikationen machen unsere Erfahrung nachvollziehbar.</p>
 
-        <div class="private-proof-rating" role="group" aria-label="Google-Bewertung: 4,9 von 5 Sternen bei 67 Bewertungen">
+        <div class="private-proof-rating" role="group" aria-label="Google-Bewertung: 4,9 von 5 Sternen bei 68 Bewertungen">
           <div class="private-proof-rating-head">
             <span class="private-proof-google" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.55-.21-2.27H12v4.29h6.46c-.29 1.5-1.15 2.77-2.45 3.62v3h3.96c2.32-2.13 3.52-5.27 3.52-8.64Z"/><path fill="#34A853" d="M12 24c3.31 0 6.09-1.1 8.12-2.98l-3.96-3c-1.1.74-2.5 1.18-4.16 1.18-3.2 0-5.91-2.16-6.88-5.07H1.04v3.18C3.05 21.3 7.18 24 12 24Z"/><path fill="#FBBC05" d="M5.12 14.13a7.2 7.2 0 0 1 0-4.27V6.68H1.04A12 12 0 0 0 0 12c0 1.93.46 3.76 1.04 5.32l4.08-3.19Z"/><path fill="#EA4335" d="M12 4.75c1.8 0 3.42.62 4.7 1.83l3.52-3.52C18.09 1.06 15.31 0 12 0 7.18 0 3.05 2.7 1.04 6.68l4.08 3.18C6.09 6.91 8.8 4.75 12 4.75Z"/></svg>
@@ -1149,7 +1347,7 @@ html.home-theme-dark body { background-color: #171916; }
             <span class="private-proof-stars" aria-hidden="true">★★★★★</span>
           </div>
           <strong>4,9 von 5</strong>
-          <span>aus 67 Google-Bewertungen</span>
+          <span>aus 68 Google-Bewertungen</span>
         </div>
 
         <a class="btn btn-outline private-proof-google-link" href="https://www.google.com/maps?cid=17269983059863253129" target="_blank" rel="noopener">Alle Bewertungen auf Google ansehen</a>
@@ -1162,9 +1360,9 @@ html.home-theme-dark body { background-color: #171916; }
               <svg viewBox="0 0 24 24" width="23" height="23" aria-hidden="true"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.55-.21-2.27H12v4.29h6.46c-.29 1.5-1.15 2.77-2.45 3.62v3h3.96c2.32-2.13 3.52-5.27 3.52-8.64Z"/><path fill="#34A853" d="M12 24c3.31 0 6.09-1.1 8.12-2.98l-3.96-3c-1.1.74-2.5 1.18-4.16 1.18-3.2 0-5.91-2.16-6.88-5.07H1.04v3.18C3.05 21.3 7.18 24 12 24Z"/><path fill="#FBBC05" d="M5.12 14.13a7.2 7.2 0 0 1 0-4.27V6.68H1.04A12 12 0 0 0 0 12c0 1.93.46 3.76 1.04 5.32l4.08-3.19Z"/><path fill="#EA4335" d="M12 4.75c1.8 0 3.42.62 4.7 1.83l3.52-3.52C18.09 1.06 15.31 0 12 0 7.18 0 3.05 2.7 1.04 6.68l4.08 3.18C6.09 6.91 8.8 4.75 12 4.75Z"/></svg>
               <span><strong>Google Rezensionen</strong><small>Echte Stimmen unserer Kunden</small></span>
             </div>
-            <div class="private-review-total" aria-label="4,9 von 5 Sternen bei 67 Google-Bewertungen">
+            <div class="private-review-total" aria-label="4,9 von 5 Sternen bei 68 Google-Bewertungen">
               <span class="private-review-scoreline"><strong>4,9</strong><span class="private-proof-stars" aria-hidden="true">★★★★★</span></span>
-              <small>67 Bewertungen</small>
+              <small>68 Bewertungen</small>
             </div>
           </header>
 

@@ -67,7 +67,7 @@ Diese Werte sind final abgestimmt und müssen **zeichengenau identisch** an alle
 | PLZ / Ort | 44625 Herne |
 | Land | DE |
 | Gegründet | 2003 (seit 01.01.2003) |
-| Google-Bewertungen | 67 Bewertungen, Durchschnitt 4,9 |
+| Google-Bewertungen | 68 Bewertungen, Durchschnitt 4,9 |
 | **Öffnungszeiten** | **Montag bis Freitag, 09:00–17:00 Uhr** |
 | **Samstag** | **09:00–12:00 Uhr** |
 | **Sonntag** | **geschlossen** |
@@ -588,7 +588,7 @@ Struktur: `/gartenbau-<stadt>/` mit Ortsbezug im ersten Absatz, mindestens zwei 
 
 ### AP-20 · Google-Bewertungen offiziell einbinden
 
-**Ziel:** 4,9 Sterne aus 67 Bewertungen sichtbar auf der Website, DSGVO-konform, ohne Consent-Banner, ohne Drittanbieter-Widget, ohne Richtlinienverstoß.
+**Ziel:** 4,9 Sterne aus 68 Bewertungen sichtbar auf der Website, DSGVO-konform, ohne Consent-Banner, ohne Drittanbieter-Widget, ohne Richtlinienverstoß.
 
 **Warum dieser Weg:** Ein kostenloses offizielles Google-Widget existiert nicht mehr. Drittanbieter-Widgets laden bei jedem Seitenaufruf fremde Skripte und brauchen deshalb ein Consent-Banner. Der saubere Weg ist, die Bewertungen serverseitig abzuholen, zu cachen und selbst als HTML zu rendern — beim Seitenaufruf läuft dann keine Verbindung zu Google.
 
@@ -1459,3 +1459,101 @@ MAIK“-Stempel wird auf Wunsch des Auftraggebers vollständig aus dem CTA und
 seinem zugänglichen Namen entfernt. Der Button bleibt 64 px hoch, verwendet
 weiterhin die verstärkte Beschriftung bis 18 px, seine grüne asymmetrische Form
 und den dezenten Schatten. Es wird kein Ersatzsymbol eingesetzt.
+
+
+**AP-215, mobilen Schnellzugriff entfernen (06.09.2026):** Im Footer der
+Homepage wird die Navigation „Schnellzugriff“ ausschließlich auf den
+vereinbarten iPhone-Breiten von 390 bis 404 px im Hochformat ausgeblendet.
+Kontaktangaben, Einsatzgebiet sowie Impressum und Datenschutz bleiben erhalten.
+
+
+**AP-216, Kontaktdaten im mobilen Footer zusammenhalten (06.09.2026):** Die
+Kontaktfelder stehen auf den vereinbarten iPhone-Breiten einspaltig. E-Mail-
+Adresse sowie Mobil- und Festnetznummer werden als untrennbare Angaben gesetzt,
+damit sie vollständig in jeweils einer Zeile erscheinen.
+
+
+**AP-217, Kontaktfelder wieder als 2×2-Raster setzen (06.09.2026):** Die vier
+Kontaktfelder im mobilen Footer stehen wieder in zwei Spalten und zwei Reihen.
+Leicht verdichtete Innenabstände, Icons und Beschriftungen halten Telefonnummern
+und E-Mail-Adresse weiterhin jeweils vollständig in einer Zeile.
+
+
+**AP-218, WhatsApp durch Kontaktformular ersetzen (06.09.2026):** Im 2×2-
+Kontaktraster der vereinbarten iPhone-Ansichten ersetzt „Kontakt aufnehmen“ die
+WhatsApp-Kachel und führt zum vorhandenen Formularanker `#anfrage`. Ein klares
+Formularsymbol kennzeichnet das Ziel. Der zusätzliche WhatsApp-Hinweis unter den
+Öffnungszeiten entfällt dort ebenfalls; außerhalb dieser Ansichten bleibt die
+bisherige WhatsApp-Verknüpfung erhalten.
+
+
+**AP-219, Header-Telefonzeichen im mobilen Footer wiederverwenden
+(06.09.2026):** Mobil- und Festnetzfeld verwenden auf den vereinbarten
+iPhone-Breiten exakt das grüne Telefon-Asset des mobilen Headers. Es wird für die
+kleineren Footer-Felder proportional auf 23 px skaliert; die bisherigen
+Linien-SVGs bleiben außerhalb dieser Ansichten unverändert.
+
+
+**AP-220, WhatsApp und Instagram separat ergänzen (06.09.2026):** Unter dem
+2×2-Kontaktraster erscheint auf den vereinbarten iPhone-Breiten eine eigene
+zweispaltige Social-Zeile. WhatsApp verwendet das vorhandene offizielle Symbol
+und öffnet den bestätigten Chat-Link. Instagram erhält ein eigenständiges,
+farbiges Kamerasymbol; mangels bestätigter Profiladresse bleibt es zunächst ein
+nicht interaktiver visueller Eintrag. Der Hinweis „WhatsApp jederzeit“ ist durch
+den wieder sichtbaren separaten Kanal erneut schlüssig.
+
+
+**AP-221, Mail- und Formularzeichen farblich angleichen (06.09.2026):** E-Mail-
+und Kontaktformularsymbol verwenden auf den vereinbarten iPhone-Breiten nun
+exakt das Hero-Grün `#56E607` auf derselben dunklen Iconfläche wie die
+Telefonzeichen. Formen, Ziele und das 2×2-Raster bleiben unverändert.
+
+
+**AP-222, Social-Kanäle auf einzelne Icons reduzieren (06.09.2026):** WhatsApp
+und Instagram stehen auf den vereinbarten iPhone-Breiten als zwei kompakte,
+zentrierte Einzelicons unter dem 2×2-Kontaktraster. Sichtbare Begleittexte und
+Kachelhintergründe entfallen; die zugänglichen Bezeichnungen bleiben erhalten.
+
+
+**AP-223, WhatsApp-Icon an Headerform angleichen (06.09.2026):** Das einzelne
+WhatsApp-Icon im mobilen Footer übernimmt die abgerundete quadratische Form des
+Header-Buttons. Größe, Symbol und 44-px-Berührungsfläche bleiben unverändert.
+
+
+**AP-224, Einsatzgebiet im mobilen Footer entfernen (06.09.2026):** Der Block
+„Einsatzgebiet“ wird auf den vereinbarten iPhone-Breiten zusammen mit dem bereits
+entfernten Schnellzugriff ausgeblendet. Kontaktbereich und rechtliche Links
+rücken ohne Leerstelle nach; andere Bildschirmbreiten bleiben unverändert.
+
+
+**AP-225, mobile Erreichbarkeit neben Social-Icons setzen (06.09.2026):** Die
+einzelnen WhatsApp- und Instagram-Icons rücken links an den Rand. Rechts daneben
+steht „Jederzeit erreichbar · Auch an Feiertagen und Wochenenden · Mustergarten
+nur nach Vereinbarung“ mit grünen Mittelpunkt-Trennern. Die bisherigen
+Öffnungszeiten werden auf den vereinbarten iPhone-Breiten ausgeblendet.
+
+
+**AP-226, Erreichbarkeitstext typografisch vereinheitlichen (06.09.2026):**
+„Jederzeit erreichbar“ und die Mittelpunkt-Trenner verwenden nun dieselbe
+Schriftstärke und Farbe wie der restliche Hinweis. Engere Abstände zur Icongruppe
+und die vollständige Nutzung der dritten Rasterspalte geben dem Text auf dem
+iPhone 16 Pro mehr Raum bis zur rechten Footerkante.
+
+
+**AP-227, grauen Schimmer der mobilen Kontaktfelder entfernen (06.09.2026):**
+Die vier Kontaktfelder stehen auf den vereinbarten iPhone-Breiten ohne graue
+Flächenfüllung direkt auf dem dunklen Footer. Eine sehr feine grüne Kontur erhält
+ihre Form und Bedienbarkeit; Inhalte, Ziele und Raster bleiben unverändert.
+
+
+**AP-228, Footer-Logo auf den Ziel-iPhones vergrößern (06.09.2026):** Maik
+Rohdichs vollständiges Logo wächst auf den vereinbarten iPhone-Breiten von zuvor
+maximal 195 px auf bis zu 300 px Breite. Die proportionale Skalierung und ein
+angepasster oberer Abstand halten Wortmarke und Blume unverzerrt und frei.
+
+
+**AP-229, Erreichbarkeit als Zweizeiler setzen (06.09.2026):** WhatsApp und
+Instagram stehen links kompakt untereinander. Die dadurch breitere Textspalte
+setzt den Erreichbarkeitshinweis bei normaler Schriftgröße in genau zwei
+festgelegten, ausgewogenen Zeilen; bei Schriftvergrößerung darf er weiter
+umbrechen, ohne abgeschnitten zu werden.
