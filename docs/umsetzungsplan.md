@@ -1513,3 +1513,8 @@ Telefonzeichen. Formen, Ziele und das 2×2-Raster bleiben unverändert.
 und Instagram stehen auf den vereinbarten iPhone-Breiten als zwei kompakte,
 zentrierte Einzelicons unter dem 2×2-Kontaktraster. Sichtbare Begleittexte und
 Kachelhintergründe entfallen; die zugänglichen Bezeichnungen bleiben erhalten.
+
+
+**AP-223, WhatsApp-Icon an Headerform angleichen (06.09.2026):** Das einzelne
+WhatsApp-Icon im mobilen Footer übernimmt die abgerundete quadratische Form des
+Header-Buttons. Größe, Symbol und 44-px-Berührungsfläche bleiben unverändert.
