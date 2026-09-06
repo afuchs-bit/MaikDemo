@@ -2266,10 +2266,11 @@ html.home-theme-dark .footer-social-iphone {
   display: none;
 }
 
-/* AP-215: Auf den vereinbarten iPhone-Breiten entfaellt der Schnellzugriff im
-   Homepage-Footer. Einsatzgebiet, Kontakt und rechtliche Links bleiben stehen. */
+/* AP-215/AP-224: Auf den vereinbarten iPhone-Breiten entfallen Schnellzugriff
+   und Einsatzgebiet. Kontakt und rechtliche Links bleiben stehen. */
 @media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
-  html.home-theme-dark .site-footer .footer-navigation {
+  html.home-theme-dark .site-footer .footer-navigation,
+  html.home-theme-dark .site-footer .footer-coverage {
     display: none;
   }
 

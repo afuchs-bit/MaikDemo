@@ -1518,3 +1518,9 @@ Kachelhintergründe entfallen; die zugänglichen Bezeichnungen bleiben erhalten.
 **AP-223, WhatsApp-Icon an Headerform angleichen (06.09.2026):** Das einzelne
 WhatsApp-Icon im mobilen Footer übernimmt die abgerundete quadratische Form des
 Header-Buttons. Größe, Symbol und 44-px-Berührungsfläche bleiben unverändert.
+
+
+**AP-224, Einsatzgebiet im mobilen Footer entfernen (06.09.2026):** Der Block
+„Einsatzgebiet“ wird auf den vereinbarten iPhone-Breiten zusammen mit dem bereits
+entfernten Schnellzugriff ausgeblendet. Kontaktbereich und rechtliche Links
+rücken ohne Leerstelle nach; andere Bildschirmbreiten bleiben unverändert.
