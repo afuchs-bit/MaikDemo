@@ -3158,7 +3158,7 @@
 }
 
 /* Projektablauf mit Bildführung für die freigegebenen iPhone-Ansichten. */
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+@media (max-width: 480px) {
   /* Exakt dieselbe asymmetrische CTA-Form wie "Zum Kontaktformular". */
   .private-process-updated .b2b-process-end-actions .process-contact-cta {
     position: relative;
@@ -3404,7 +3404,7 @@
   .private-proof-summary h3 { max-width: 15ch; }
 }
 
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+@media (max-width: 480px) {
   .private-proof-bento .private-proof-summary { display: none; }
   .private-proof-bento .private-proof-grid { gap: 0; }
 }
@@ -4634,7 +4634,7 @@
 
 /* AP-208: Auf iPhone 15 Pro und 16 Pro erscheint immer genau eine Rezension.
    Die horizontale Wischbewegung folgt der mobilen Gartenbild-Vorschau. */
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+@media (max-width: 480px) {
   .private-review-carousel.has-review-swipe {
     --ink: #f4f6f0;
     --ink-2: #d5dccf;
@@ -4821,7 +4821,7 @@
   }
 }
 
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) and (prefers-reduced-motion:reduce) {
+@media (max-width: 480px) and (prefers-reduced-motion: reduce) {
   .private-review-carousel.has-review-swipe .private-review-viewport {
     scroll-behavior: auto;
   }
@@ -4834,7 +4834,7 @@
 /* AP-209: Die beiden bereits freigegebenen Hintergrundtöne aus Willkommen
    (#1B1E19) und Über uns (#171916) führen als ruhiger Rhythmus durch die
    vollständige iPhone-Seite. Inhaltlich verbundene Bereiche teilen eine Fläche. */
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+@media (max-width: 480px) {
   html.home-theme-dark body {
     background: #171916;
   }

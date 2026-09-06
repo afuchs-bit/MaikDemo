@@ -591,7 +591,7 @@
 
 /* Der mobile Willkommenbereich bekommt auf den beiden abgestimmten
    iPhone-Breiten mehr Ruhe zwischen Galerie, Einladung und Abschluss-CTA. */
-@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+@media (max-width: 480px) {
   .mobile-social-proof {
     padding: 28px 32px 96px;
   }
