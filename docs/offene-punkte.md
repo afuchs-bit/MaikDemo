@@ -564,3 +564,73 @@ Nach dem Bau hat der Auftraggeber drei Bauteile wieder streichen lassen. Der Rei
 **Höhen nach den Rücknahmen:** Desktop 1.843 px (Ausgangswert vor AP-217: 2.026),
 Mobil 1.778 px (vorher 1.741). Die Sektion ist damit auf dem Desktop 183 px kürzer als
 vor dem Umbau und auf dem Telefon nur noch 37 px länger.
+
+
+## AP-220 — Über-uns-Unterseite und Button auf der Startseite
+
+**Vom 06.09.2026.** Die Faktenkachel „Fachlich abgesichert" in der Über-uns-Sektion ist
+einem Button gewichen, der auf die neue Unterseite `/ueber-uns/` führt.
+
+### Die Seite
+
+Fünf Abschnitte: Kopf mit Eyebrow und Leitsatz · „Ein Betrieb, der die Arbeit selbst macht"
+mit dem bis dahin ungenutzten Foto `ueber-hebeaktion` · „Wofür wir geradestehen" mit den
+vier Qualifikationen · [Team, auskommentiert] · „Wo wir arbeiten" mit Ortsliste und
+Erreichbarkeitskarte.
+
+Gerüst aus `kontakt/index.html` — `privatkunden/index.html` gibt es seit `980c79c` nicht
+mehr. Eigene Datei `assets/css/ueber-uns.css` nach dem Muster von `kontakt.css`, damit
+`styles.css` unberührt bleibt und kein `?v=`-Durchlauf über 37 Dateien nötig wird. Die
+Farbwelt kommt vollständig aus `:root`; seit AP-F25 läuft die ganze Website dunkel.
+
+### Belegherkunft jeder Aussage
+
+| Aussage | Beleg |
+|---|---|
+| „Meisterbetrieb seit 2003 in Herne" | `stammdaten.json`: `firma.gegruendet`, `besonderheiten[2]` |
+| „Maik Rohdich führt den Betrieb seit 2003" | `stammdaten.json`: `firma.inhaber`, `inhaberTitel` |
+| „alles aus einer Hand – mit eigenen Fachkräften und eigenem Maschinenpark" | bestehender Fließtext der Startseite, vom Auftraggeber ausdrücklich so gewollt (AP-179) |
+| „Der Betrieb bildet aus." | `stammdaten.json`: `besonderheiten[0]` — Ausbildungsbetrieb |
+| „Was nicht sinnvoll ist, sagen wir Ihnen vorher." | Teil A.4: „Der Inhaber sagt Kunden auch, wenn etwas nicht sinnvoll ist." |
+| die vier Qualifikationen | `index.html` (gate-welcome), Wortlaut übernommen; Baumkontrolle am 05.09.2026 bestätigt |
+| Ortsliste | `stammdaten.json`: `einsatzgebiet`, zeichengleich mit dem Footer |
+| Erreichbarkeitsblock | Teil B.2, verbindliche Formulierung |
+
+Die Erläuterungen zu den vier Qualifikationen (was ein Meisterbrief berechtigt, wozu eine
+Regelkontrolle dient) sind **fachliche Einordnung, keine Betriebsangaben** — sie behaupten
+nichts über diesen Betrieb, was nicht anderswo belegt ist.
+
+### Der Team-Abschnitt ist gebaut, aber ausgeschaltet
+
+Auf Wunsch des Auftraggebers („erst Gerüst, Inhalte später") liegt das Markup fertig im
+Quelltext von `ueber-uns/index.html`, **auskommentiert**. Auf der Seite ist davon nichts zu
+sehen — kein Platzhaltertext, wie Grundregel 2 verlangt. Die CSS-Regeln (`.ueber-team*`)
+stehen bereits in `ueber-uns.css` und greifen bis dahin auf kein Element.
+
+**Vor dem Einschalten sind drei Dinge nötig, nicht nur die Daten:**
+
+| # | Was fehlt | |
+|---|---|---|
+| O13 | **Namen, Funktionen, optional Qualifikation je Person** | Teil B nennt keine Personen außer dem Inhaber |
+| O14 | **Freigabe, die Grundregel 3 für diese Seite aufhebt** | „Keine Mitarbeiterzahlen, keine Fuhrparkgrößen, kein Teamfoto — ausdrücklicher Wunsch des Betriebsinhabers" (Teil A.3). Ohne diese Freigabe bleibt der Block aus, auch wenn die Daten vorliegen |
+| O15 | **Einwilligung der Abgebildeten**, falls Fotos verwendet werden | |
+
+### Anschluss an die Build-Kette
+
+- `.github/scripts/templates/_footer.html`: eine `<li>`-Zeile im Schnellzugriff → per
+  `build-footers` in 36 Dateien propagiert, jeweils mit korrekt aufgelöstem `{{base}}`.
+- `.github/scripts/build-leistungen.mjs`: `HAND_PAGES` um die neue Seite ergänzt, sonst
+  driftet ihr Leistungs-Dropdown bei der nächsten Nav-Änderung still weg — derselbe Fall,
+  den der AP-108-Kommentar dort beschreibt.
+- `sitemap.xml` hat `/ueber-uns/` **automatisch** aufgenommen (On-Disk-Discovery in
+  `build-index.mjs`). `robots.txt` und `_headers` führen keine Einzel-URLs.
+
+**Die Hauptnavigation bleibt unangetastet** — fünf Punkte wie bisher. Vom Auftraggeber so
+entschieden; die Seite hängt am Button und am Footer.
+
+### Gemessen
+
+Buttonkontrast 11,12 : 1 gegen `--bg` (WCAG AA verlangt 4,5). Kein horizontaler Overflow auf
+beiden Seiten bei 320 / 390 / 720 / 768 / 861 / 1024 / 1440 / 1920 px. Der auskommentierte
+Team-Abschnitt erzeugt in allen acht Breiten **null** Elemente. Sektionshöhe der Startseite
+1843 → 1824 px.

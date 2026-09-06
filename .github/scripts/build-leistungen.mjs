@@ -46,6 +46,8 @@ const HAND_PAGES = [
   // AP-108: kontakt/ trug das Dropdown ebenfalls fest verdrahtet und driftete
   // bei jeder Nav-Änderung still weg – jetzt aus derselben Quelle.
   { file: 'kontakt/index.html', base: '../' },
+  // AP-220: neue Ueber-uns-Unterseite - aus demselben Grund wie kontakt/ oben.
+  { file: 'ueber-uns/index.html', base: '../' },
 ];
 
 const isNonEmptyString = (v) => typeof v === 'string' && v.trim().length > 0;

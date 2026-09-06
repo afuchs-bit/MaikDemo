@@ -1,0 +1,311 @@
+/* ==========================================================================
+   AP-220 — Unterseite /ueber-uns/
+
+   Eigene Datei nach dem Muster von kontakt.css: nur diese Seite laedt sie, und
+   styles.css bleibt unangetastet - sonst muesste der ?v=-Zaehler ueber alle 36
+   HTML-Dateien hochgezaehlt werden.
+
+   Die Farbwelt kommt vollstaendig aus :root in styles.css. Seit AP-F25 laeuft
+   die gesamte Website dunkel; die Tokens --bg, --bg-elev, --ink, --line stehen
+   dort und gelten hier ohne Zutun. Kein einziger neuer Farbwert in dieser Datei.
+   ========================================================================== */
+
+.ueber-page { background: var(--bg); }
+
+/* --- Kopf ---------------------------------------------------------------- */
+
+.ueber-kopf {
+  padding: clamp(24px, 3.4vw, 44px) 0 clamp(30px, 4vw, 48px);
+}
+
+/* Zeichengleich mit .private-proof-since (privat-form.css:3174) und dem Eyebrow
+   der Ueber-uns-Sektion auf der Startseite. Nur die Textfarbe weicht ab: dort
+   steht er auf gruenem Panel, hier auf --bg. */
+.ueber-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 14px;
+  color: var(--ink-mute);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.ueber-eyebrow svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: var(--home-yellow);
+}
+
+/* Der Leitsatz wiederholt die Zeile aus der Startseiten-Sektion. Kein Zitat,
+   deshalb keine Anfuehrungszeichen - er soll auch keines vortaeuschen. */
+.ueber-leitsatz {
+  margin: 18px 0 0;
+  max-width: 20ch;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.9vw, 2.5rem);
+  line-height: 1.16;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+.ueber-leitsatz em {
+  font-style: normal;
+  color: var(--home-lime);
+}
+
+/* --- Der Betrieb --------------------------------------------------------- */
+
+.ueber-betrieb__raster {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  gap: clamp(28px, 4vw, 60px);
+  align-items: start;
+}
+
+.ueber-betrieb__wort .lead + .lead { margin-top: 1em; }
+
+.ueber-betrieb__bild { margin: 0; }
+
+/* Rahmen, Radius und Schatten sind die Kartenwerte der uebrigen Seite. Das
+   asymmetrische Eck 24/24/44/24 ist die Marken-Ecke des Projekts - sie steht so
+   in form-trust-card.css:16, kontakt.css:52, gewerbe.css:51 und
+   privat-form.css:2111. */
+.ueber-betrieb__bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 24px 24px 44px 24px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+}
+
+.ueber-betrieb__bild figcaption {
+  margin-top: .7rem;
+  color: var(--ink-mute);
+  font-size: .8125rem;
+  line-height: 1.45;
+}
+
+/* --- Qualifikationen ----------------------------------------------------- */
+
+.ueber-qualifikationen { background: var(--bg-hero); }
+
+/* Zwei Spalten, nicht auto-fit: Bei vier Kacheln und 300px Mindestbreite
+   brachen sie im Container (1240px) auf 3+1 um - die vierte stand allein in
+   der zweiten Reihe und die Zeile wirkte abgerissen. 2x2 teilt vier Elemente
+   ohne Rest. Unter 720px steht eine Kachel je Zeile. */
+.ueber-quali-liste {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.8vw, 20px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 720px) {
+  .ueber-quali-liste { grid-template-columns: minmax(0, 1fr); }
+}
+
+.ueber-quali {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: clamp(18px, 2vw, 24px);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+}
+
+/* Die Bluete ist dasselbe Zeichen, das die Qualifikationsleiste im
+   Willkommen-Bereich der Startseite fuehrt (assets/img/icons/rohdich-blume.png).
+   Rein dekorativ, deshalb aria-hidden am Element und alt="" am Bild. */
+.ueber-quali__zeichen {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+}
+
+.ueber-quali__zeichen img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ueber-quali h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.ueber-quali p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+/* --- Team (vorbereitet, im Markup auskommentiert) -------------------------
+   Diese Regeln stehen bewusst schon hier: Wenn der Abschnitt eines Tages
+   freigegeben wird, ist nur der HTML-Kommentar aufzuloesen, am CSS nichts zu
+   tun. Sie greifen bis dahin auf kein Element. */
+
+.ueber-team-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: clamp(16px, 2.2vw, 26px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ueber-person__bild { margin: 0 0 14px; }
+
+.ueber-person__bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+}
+
+.ueber-person h3 {
+  margin: 0 0 2px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.ueber-person__rolle {
+  margin: 0 0 8px;
+  color: var(--home-lime);
+  font-size: .8125rem;
+  font-weight: 700;
+}
+
+.ueber-person p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+
+/* --- Einsatzgebiet und Erreichbarkeit ------------------------------------ */
+
+.ueber-gebiet__raster {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  gap: clamp(28px, 4vw, 60px);
+  align-items: start;
+}
+
+.ueber-orte {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ueber-orte li {
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.ueber-orte__zusatz { color: var(--ink-mute); font-weight: 400; }
+
+.ueber-orte__nachsatz {
+  margin: 16px 0 0;
+  color: var(--ink-mute);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+
+/* Die Erreichbarkeit steht als Karte, weil sie zwei Dinge gleichzeitig sagen
+   muss: es gibt Zeiten, aber keine Ladenoeffnung. Als Flaeche liest sich das
+   zusammenhaengend, als Fliesstext waere der Hinweis untergegangen. */
+.ueber-erreichbar {
+  padding: clamp(22px, 2.6vw, 32px);
+  border-radius: 24px 24px 44px 24px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+}
+
+.ueber-erreichbar__titel {
+  margin: 0 0 16px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.ueber-zeiten { margin: 0 0 16px; }
+
+.ueber-zeiten > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.ueber-zeiten > div:last-child { border-bottom: 0; }
+
+.ueber-zeiten dt { color: var(--ink-2); font-size: .92rem; }
+.ueber-zeiten dd { margin: 0; color: var(--ink); font-size: .92rem; font-weight: 700; }
+
+.ueber-erreichbar p {
+  margin: 0 0 12px;
+  color: var(--ink-2);
+  font-size: .92rem;
+  line-height: 1.6;
+}
+
+.ueber-erreichbar__hinweis {
+  padding-left: 14px;
+  border-left: 2px solid var(--home-small-accent);
+  color: var(--ink) !important;
+  font-weight: 600;
+}
+
+.ueber-erreichbar .btn { margin-top: 6px; }
+
+/* --- Umbruch -------------------------------------------------------------
+   860px ist derselbe Punkt, an dem die Ueber-uns-Sektion der Startseite
+   umbricht. Gleiche Zahl, damit beide Seiten beim Verkleinern im selben Moment
+   umspringen. */
+@media (max-width: 860px) {
+  .ueber-betrieb__raster,
+  .ueber-gebiet__raster {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Das Bild steht im Quelltext NACH dem Text - im gestapelten Zustand ist das
+     die richtige Lesereihenfolge, hier ist also nichts umzusortieren. Nur die
+     Breite wird gedeckelt: ueber die volle Spalte wuerde die Aufnahme zum
+     Leitbild der Seite. */
+  .ueber-betrieb__bild { max-width: 420px; }
+
+  .ueber-leitsatz { max-width: none; }
+}

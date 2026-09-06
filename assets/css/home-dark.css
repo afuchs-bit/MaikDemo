@@ -2160,44 +2160,32 @@ html.home-theme-dark .mr-ueber__text {
   max-width: 62ch;
 }
 
-/* Die Faktenzeilen nehmen die Kartenwerte der Leistungssektion auf, bleiben aber
-   flacher (13/15px Innenabstand statt 24): sie sind Beleg zur Aussage nebenan,
-   keine eigenstaendigen Karten. */
-html.home-theme-dark .mr-ueber__fakten {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+/* AP-220: An der Stelle der Faktenkachel steht jetzt der Weg zur Unterseite.
+
+   styles.css:263 setzt .btn-outline auf --green-500 #8CC63F. Das traegt auf --bg
+   #171916, schliesst aber nicht an die uebrigen Akzente der Sektion an - Eyebrow
+   und Leitsatz arbeiten mit --home-lime und --home-yellow. Die passenden
+   Ueberschreibungen in dieser Datei haengen an .section-proof, das seit AP-215 in
+   keiner HTML-Datei mehr vorkommt und deshalb tot ist.
+
+   Bewusst als Umriss und nicht gefuellt: Der Button ist ein Nebenweg, keine
+   Hauptaktion - die Hauptaktion der Seite ist die Anfrage. Ein gefuellter
+   Limettenknopf haette hier mehr Gewicht als das Anfrageformular weiter unten. */
+html.home-theme-dark .mr-ueber__mehr {
+  align-self: start;
+  color: var(--home-dark-accent);
+  border-color: var(--home-dark-accent);
+  background: transparent;
+  white-space: normal;   /* .btn setzt nowrap - der Satz ist zu lang dafuer */
+  text-align: left;
 }
 
-html.home-theme-dark .mr-ueber__fakten li {
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
-  padding: 13px 15px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-elev);
-  border: 1px solid var(--line-2);
-  color: var(--ink-2);
-  font-size: .92rem;
-  line-height: 1.45;
-}
-
-html.home-theme-dark .mr-ueber__fakten li b {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--ink);
-  font-weight: 800;
-  font-size: .95rem;
-}
-
-html.home-theme-dark .mr-ueber__fakten li svg {
-  width: 19px;
-  height: 19px;
-  flex: none;
-  margin-top: 1px;
-  color: var(--home-lime);
+@media (hover: hover) and (pointer: fine) {
+  html.home-theme-dark .mr-ueber__mehr:hover {
+    color: #171916;
+    background: var(--home-dark-accent);
+    border-color: var(--home-dark-accent);
+  }
 }
 
 /* Das Fotopaar. 4:5 stehend, weil beide Quellen hochformatig gedacht sind
@@ -2245,10 +2233,8 @@ html.home-theme-dark .mr-ueber__foto figcaption {
      486px Hoehe - die Sektion wuchs auf 2414px, mehr als in jeder anderen
      Breite. Beide Kacheln blieben in ihrem Raster korrekt, nur war das Raster
      die volle Spalte. 420px halten das Paar auf der Groesse, die es auch
-     zweispaltig hat (2x200px plus Fuge); die Fakten folgen dem Textmass von
-     62ch, sonst laufen die Belegzeilen breiter als die Aussage daneben. */
+     zweispaltig hat (2x200px plus Fuge). */
   html.home-theme-dark .mr-ueber__paar { max-width: 420px; }
-  html.home-theme-dark .mr-ueber__fakten { max-width: 62ch; }
 }
 
 /* --- Block 3: Mustergarten als Medienkachel (AP-217) ---------------------
