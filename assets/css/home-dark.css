@@ -378,21 +378,27 @@ html.home-theme-dark .section-proof .proof-trust {
   border-color: var(--line);
 }
 
-html.home-theme-dark .section-proof .proof-map .m-fill {
+/* AP-216: Diese vier Regeln hingen an .section-proof. AP-179 hat die Karte nach
+   .mr-ueber__karte verschoben, AP-215 die Proof-Sektion entfernt - .section-proof
+   kommt seither in KEINER HTML-Datei mehr vor, die Regeln waren tot. Sichtbar war
+   nur eine davon: m-outline stand auf var(--green-700) #4A7A10 und damit bei
+   3,44:1 gegen --bg statt bei 11,12:1. Entscopt statt unter .mr-ueber__karte
+   dupliziert, weil .proof-map genau einmal im Repo vorkommt. */
+html.home-theme-dark .proof-map .m-fill {
   fill: var(--bg-soft);
 }
 
 /* AP-F12: Kreisgrenzen auf Dunkel. --green-500 waere hier zu kraeftig fuer eine
    Nebenlinie; --home-lime traegt die Karte, die Deckkraft kommt aus mapFadeKrs. */
-html.home-theme-dark .section-proof .proof-map .m-krs {
+html.home-theme-dark .proof-map .m-krs {
   stroke: var(--home-lime);
 }
 
-html.home-theme-dark .section-proof .proof-map .m-inner {
+html.home-theme-dark .proof-map .m-inner {
   stroke: var(--home-lime);
 }
 
-html.home-theme-dark .section-proof .proof-map .m-outline {
+html.home-theme-dark .proof-map .m-outline {
   stroke: var(--home-dark-accent);
 }
 
@@ -2094,35 +2100,35 @@ html.home-theme-dark .mr-ueber__unter {
   line-height: 1.15;
 }
 
-/* --- Block 2: Text mit umflossenem Foto ---------------------------------
-   float statt Raster ist hier keine Geschmacksfrage: Nur ein Float laesst die
-   letzte Zeile UNTER dem Bild weiterlaufen. Ein zweispaltiges Raster haelt den
-   Text stur in seiner Spalte, auch wenn das Bild laengst zu Ende ist.
+/* --- Block 2: Text und Foto als Raster (AP-216) ---------------------------
+   Ersetzt den Float aus AP-179. Der Kommentar dort rechnete 26 Zeichen je Zeile
+   vor und berief sich auf eine Entscheidung des Auftraggebers. Die Zahl stammt
+   aus der Zeit vor der Textkuerzung (AP-212) und stimmt nicht mehr: mit dem Foto
+   eingesetzt und bei 390 px nachgemessen standen SECHS Zeilen mit 17-21 Zeichen
+   da, danach sprang der Text auf 48 - das Bild ist nur wenige Zeilen hoch, der
+   Umfluss endet mitten im Absatz. Ein Raster haelt die Spaltenbreite konstant.
 
-   Die Textbreite wird NICHT gesetzt. Sie ergibt sich aus dem, was der Float
-   uebriglaesst - eine eigene Breite am Absatz wuerde den Umfluss aufheben.
+   Die Textspalte wird auf 62ch gedeckelt. Ohne Deckel mass sie bei 1440 px
+   Fensterbreite 124 Zeichen je Zeile, waehrend der Absatz unter dem Video im
+   SELBEN Abschnitt bei 75 lag (max-width: 68ch). 62ch ist der Wert, den
+   styles.css bereits fuer .lead und .type-section-lead setzt - kein neuer.
 
-   Nebeneinander bleibt es auch auf Mobil. Gemessen bei 375px: Inhaltsbreite
-   363px, davon rund 52% Text = 189px, bei 7,27px je Zeichen also 26 Zeichen je
-   Zeile (typografisch empfohlen: 45-75). Der Auftraggeber hat das in Kenntnis
-   dieser Zahl so entschieden - siehe docs/offene-punkte.md, AP-179. */
-html.home-theme-dark .mr-ueber__foto {
-  float: right;
-  width: 42%;
-  margin: 0 0 clamp(14px, 1.6vw, 22px) clamp(18px, 3vw, 42px);
-}
+   justify-content: space-between statt einer 1fr-Spalte: bei 1240 px Container
+   ergeben 62ch + 300 px + Spalte rund 1010 px. Mit 1fr waere der Rest in die
+   Textspalte geflossen und haette den 62ch-Deckel wieder sichtbar gemacht
+   (Spalte 844 px, Text 620 px, 224 px Loch dazwischen). So sitzt das Bild
+   buendig an der rechten Containerkante.
 
-html.home-theme-dark .mr-ueber__foto img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-sm);
-}
-
-html.home-theme-dark .mr-ueber__foto figcaption {
-  margin-top: .55rem;
-  color: var(--ink-mute);
-  font-size: .8125rem;
-  line-height: 1.45;
+   align-items: center: die Bildkachel ist mit Unterschrift rund 330 px hoch, der
+   Absatz 153 px. Bei start haengt der Text oben und laesst darunter 180 px Loch;
+   zentriert verteilt sich der Ueberschuss auf beide Seiten. */
+html.home-theme-dark .mr-ueber__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 62ch) clamp(220px, 21vw, 300px);
+  justify-content: space-between;
+  column-gap: clamp(24px, 3.2vw, 56px);
+  row-gap: clamp(20px, 4vw, 32px);
+  align-items: center;
 }
 
 html.home-theme-dark .mr-ueber__text {
@@ -2132,9 +2138,50 @@ html.home-theme-dark .mr-ueber__text {
   line-height: 1.7;
 }
 
-/* Der Float ragt sonst aus dem Container heraus und schiebt sich unter den
-   naechsten Block. */
-html.home-theme-dark .mr-ueber__flow::after { content: ""; display: block; clear: both; }
+html.home-theme-dark .mr-ueber__foto { margin: 0; }
+
+/* aspect-ratio 1/1 plus object-fit: cover, obwohl die Quelle bereits quadratisch
+   ist: so bleibt die Kachel quadratisch, falls das Bild spaeter durch ein anderes
+   Seitenverhaeltnis ersetzt wird, und die Zeilenhoehe des Rasters springt nicht.
+   Rahmen und Schatten sind die Kartenwerte der Leistungssektion (--line,
+   --shadow-card) - dieselbe Erhebung wie bei den Leistungskarten, damit die
+   Sektion nicht als einzige ohne Flaeche dasteht. */
+html.home-theme-dark .mr-ueber__foto img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+}
+
+html.home-theme-dark .mr-ueber__foto figcaption {
+  margin-top: .6rem;
+  color: var(--ink-mute);
+  font-size: .8125rem;
+  line-height: 1.45;
+}
+
+/* Unter 860 px steht das Foto unter dem Text. max-width: 240px ist Absicht: ueber
+   die volle Spaltenbreite (350 px bei 390 px Fenster) wuerde die Kachel zum
+   Leitbild der Sektion und damit zu einer Aussage, die sie nicht treffen soll.
+   Damit faellt die Freigabe aus AP-179 ("auch auf Mobil nebeneinander"): sie
+   stuetzte sich auf eine Zeilenlaengenrechnung von vor AP-212, die nicht mehr
+   zutrifft. Vom Auftraggeber am 06.09.2026 so entschieden. */
+@media (max-width: 860px) {
+  html.home-theme-dark .mr-ueber__intro {
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: start;
+  }
+  html.home-theme-dark .mr-ueber__foto { max-width: 240px; }
+}
+
+/* Die Unterzeile lief bis zur Containerkante mit. Bei 22ch bricht sie nach
+   "Gartenbau mit" um und steht als zweizeiliger Block unter der H2 - dieselbe
+   Staffelung wie im Willkommen-Abschnitt. */
+html.home-theme-dark .mr-ueber__unter { max-width: 22ch; }
 
 /* --- Block 3: randlose Buehne fuer das Video ----------------------------
    Der Ausbruch sitzt an der HUELLE, nicht am Video: styles.css:190 setzt
@@ -2244,11 +2291,67 @@ html.home-theme-dark .mr-ueber__videotext p {
 html.home-theme-dark .mr-ueber__karte { margin-top: var(--space-section-compact); }
 
 html.home-theme-dark .mr-ueber__karte .proof-map {
-  width: 40%;
-  min-width: 260px;
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 34ch);
+  justify-content: start;
+  column-gap: clamp(24px, 3.2vw, 56px);
+  row-gap: 10px;
+  align-items: start;
+  width: 100%;
   margin: 0;
-  align-items: flex-start;   /* Beschriftung linksbuendig zur Bildkante */
   text-align: left;
+}
+
+/* max-height: none hebt den Hoehendeckel fuer das Karten-SVG auf (styles.css:835
+   sowie die Regel ab 1024 px, die auf clamp(260px, 46vh, 348px) deckelt). Er
+   stammt aus der Zeit, als die Karte in einer schmalen Spalte stand; hier liess
+   er die figure 496 px breit werden, waehrend das SVG darin nur 353 px belegte -
+   143 px Leerraum INNERHALB der figure, gemessen. */
+html.home-theme-dark .mr-ueber__karte .proof-map svg {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+  max-height: none;
+}
+
+/* Die Legende war fuer eine schmale Spalte UNTER der Karte gebaut
+   (styles.css:883, flex + space-between). Neben der Karte schob sie den Sitz an
+   die rechte Containerkante - gemessen rund 300 px Loch zwischen Staedtezeile
+   und "Sitz in Herne". Hier stapelt sie. */
+html.home-theme-dark .mr-ueber__karte .proof-map-cap {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+html.home-theme-dark .mr-ueber__karte .proof-map-src {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+}
+
+/* Unter 860 px wieder gestapelt. justify-items/text-align: left, weil
+   styles.css:808 die Legende auf Mobil zentriert - als einziges Element der
+   Sektion, alles andere steht linksbuendig. */
+@media (max-width: 860px) {
+  html.home-theme-dark .mr-ueber__karte .proof-map {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+  }
+  html.home-theme-dark .mr-ueber__karte .proof-map-cap {
+    text-align: left;
+    align-items: flex-start;
+  }
+  html.home-theme-dark .mr-ueber__karte .proof-map svg,
+  html.home-theme-dark .mr-ueber__karte .proof-map-cap,
+  html.home-theme-dark .mr-ueber__karte .proof-map-src {
+    grid-column: 1;
+    grid-row: auto;
+  }
 }
 
 /* --- Alte Stelle: ohne die Karte bleibt nur der Kleinauftrags-Block ------

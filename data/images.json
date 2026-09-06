@@ -161,6 +161,16 @@
       "width": 320,
       "height": 427,
       "aspect": 1.3333
+    },
+    "/assets/img/ueber/ueber-hund.webp": {
+      "base": "/assets/img/ueber/ueber-hund",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 960,
+      "aspect": 1
     }
   }
 }

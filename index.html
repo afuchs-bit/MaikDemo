@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zk" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zl" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260905ao" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -659,28 +659,48 @@ html.home-theme-dark body { background-color: #171916; }
   <!-- Block 1 - Kopfzeile. Bewusst ausserhalb des Umflussbereichs, damit die
        Foto-Oberkante auf der ersten TEXTZEILE sitzt und nicht auf der Ueberschrift. -->
   <div class="container mr-ueber__kopf">
-    <h2 class="type-section-title" id="ueber-title">Über uns</h2>
-    <p class="mr-ueber__unter">Gartenbau mit Handschlagqualität.</p>
+    <h2 class="type-section-title reveal" id="ueber-title">Über uns</h2>
+    <p class="mr-ueber__unter reveal">Gartenbau mit Handschlagqualität.</p>
   </div>
 
-  <!-- Block 2 - Text mit umflossenem Foto.
-       Die figure steht im Markup VOR dem Absatz: ein float umfliesst nur, was ihm
-       folgt. Umgekehrt bliebe der Umfluss aus, und der Text stuende ueber dem Bild.
-       [OFFEN: Foto und Bildunterschrift ("Unser ...") liegen noch nicht vor. Die
-        figure bleibt bis dahin auskommentiert - sichtbarer Platzhaltertext ist laut
-        CLAUDE.md nicht zulaessig.] -->
-  <div class="container mr-ueber__flow">
-    <!--
-    <figure class="mr-ueber__foto">
-      <picture>…</picture>
-      <figcaption>Unser …</figcaption>
-    </figure>
-    -->
-    <p class="mr-ueber__text">Seit über 20 Jahren planen, bauen und pflegen wir Gärten
+  <!-- Block 2 - Text und Foto als Raster (AP-216).
+       Loest den Float aus AP-179 ab. Die figure steht jetzt NACH dem Absatz: im
+       Raster bestimmt die Spalte die Lage, die Quelltextreihenfolge folgt dem
+       Lesefluss - Text zuerst, Bild als Zugabe. Fuer Vorlesewerkzeuge ist das die
+       richtige Reihenfolge, beim Float war sie umgekehrt erzwungen.
+
+       Foto: Rueckseite des Betriebs, bewusst klein. Es ersetzt kein Leitbild und
+       traegt die Sektion nicht - es waermt sie an. Der Auftraggeber stellt kein
+       Portraetfoto zur Verfuegung (AP-178), das hier ist die tragfaehige
+       Alternative: ein Zeichen von Naehe ohne Person im Bild.
+
+       ACHTUNG: Die sizes-Werte unten sind identisch mit den Spaltenbreiten in
+       home-dark.css (.mr-ueber__intro). Wird eines geaendert, muss das andere mit.
+
+       [OFFEN: Name des Hundes und Aufnahmeort (Musterflaeche oder Kundengarten).
+        Solange beides fehlt, behauptet weder alt noch figcaption etwas darueber -
+        beschrieben ist nur, was im Bild zu sehen ist.] -->
+  <div class="container mr-ueber__intro">
+    <p class="mr-ueber__text reveal">Seit über 20 Jahren planen, bauen und pflegen wir Gärten
        und Außenanlagen in Herne und Umgebung. Jeder Garten entsteht aus Ihren
        Vorstellungen, den Möglichkeiten des Grundstücks und unserer Erfahrung. Von der
        ersten Beratung bis zur Pflege alles aus einer Hand – mit eigenen Fachkräften und
        eigenem Maschinenpark, termingerecht umgesetzt.</p>
+
+    <figure class="mr-ueber__foto reveal">
+      <picture>
+        <source type="image/avif"
+                srcset="assets/img/ueber/ueber-hund-480.avif 480w, assets/img/ueber/ueber-hund-960.avif 960w"
+                sizes="(max-width: 860px) 240px, clamp(220px, 21vw, 300px)">
+        <source type="image/webp"
+                srcset="assets/img/ueber/ueber-hund-480.webp 480w, assets/img/ueber/ueber-hund-960.webp 960w"
+                sizes="(max-width: 860px) 240px, clamp(220px, 21vw, 300px)">
+        <img src="assets/img/ueber/ueber-hund.webp" width="980" height="980"
+             alt="Ein brauner Hund döst auf einer Gartenliege; dahinter ein Pflasterweg, ein Kiesbeet und ein Formgehölz."
+             loading="lazy" decoding="async">
+      </picture>
+      <figcaption>Feierabend im Garten.</figcaption>
+    </figure>
   </div>
 
   <!-- Block 3 - Mustergarten-Video, randlos ueber die volle Fensterbreite.
@@ -708,7 +728,7 @@ html.home-theme-dark body { background-color: #171916; }
         nicht ab. Vom Auftraggeber so entschieden, siehe docs/offene-punkte.md,
         AP-179.] -->
   <div class="container mr-ueber__videokopf">
-    <h3 class="mr-ueber__videotitel">1.500 m² Mustergarten</h3>
+    <h3 class="mr-ueber__videotitel reveal">1.500 m² Mustergarten</h3>
   </div>
 
   <div class="mr-ueber__buehne">
@@ -726,7 +746,7 @@ html.home-theme-dark body { background-color: #171916; }
        Schlusspunkt. "1.500 m²" folgt der Schreibweise aus Proofleiste und Kennzahl.
        Inhaltlich gedeckt: Teil B, Zeile 75 - "Besuche vor Ort: ausschliesslich nach
        vorheriger Terminvereinbarung". -->
-  <div class="container mr-ueber__videotext">
+  <div class="container mr-ueber__videotext reveal">
     <p>Hier sehen Sie Materialien, Pflanzen und Wege in echt, bevor Sie sich
        entscheiden müssen – Inspiration zum Anfassen für Ihren eigenen Garten.
        Besichtigungen nur nach Absprache – dann können wir uns Zeit nur für Sie

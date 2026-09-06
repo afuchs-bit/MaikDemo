@@ -7,7 +7,7 @@ so formuliert, dass sie auch ohne den Wert vollständig und richtig sind.
 Sobald ein Wert vorliegt: in `content/stammdaten.json` eintragen (AP-03), den
 `<!-- OFFEN -->`-Kommentar auflösen, Zeile hier streichen.
 
-**Stand:** 12.08.2026
+**Stand:** 06.09.2026
 
 ## Kontaktdaten — ERLEDIGT (AP-03, 25.07.2026)
 
@@ -224,7 +224,17 @@ nennt 2003 als Gründung, und der
 Willkommen-Text weiter oben „Seit über 20 Jahren". Derselbe Fall war bei AP-174 schon
 einmal so entschieden worden.
 
-### Zeilenlänge auf Mobil — bewusst so entschieden
+### Zeilenlänge auf Mobil — bewusst so entschieden ~~(überholt durch AP-216)~~
+
+> **Überholt am 06.09.2026 durch AP-216.** Der Float ist einem Raster gewichen; unter
+> 860 px steht das Foto jetzt **unter** dem Text. Damit ist die unten dokumentierte
+> Freigabe „auch auf Mobil nebeneinander" abgelöst — vom Auftraggeber am 06.09.2026 so
+> entschieden. Grund: Die 26-Zeichen-Rechnung stützte sich auf einen Textstand von vor
+> der Kürzung in AP-212. Mit dem eingesetzten Foto nachgemessen standen bei 390 px sechs
+> Zeilen mit 17–21 Zeichen da, danach sprang der Text auf 48 — der Umfluss endete mitten
+> im Absatz. Heute sind es rund 39 Zeichen je Zeile über den ganzen Absatz.
+> Der Abschnitt bleibt stehen, damit nachvollziehbar ist, worauf die alte Entscheidung
+> beruhte.
 
 Block 2 steht **auch auf Mobil** nebeneinander, wie skizziert. Gemessen bei 375 px:
 Inhaltsbreite 363 px, Textspalte 52 % = 189 px, bei 7,27 px je Zeichen also **26 Zeichen
@@ -236,14 +246,16 @@ brächte rund 48 Zeichen.
 
 | Was | Wohin | Status |
 |---|---|---|
-| Foto für Block 2 | `assets/img/_src/` | fehlt; `figure` ist auskommentiert |
+| Foto für Block 2 | `assets/img/_src/` | **geliefert** (AP-216, 06.09.2026): `ueber-hund.jpg`, 980 × 980 |
 | Mustergarten-Video | `assets/video/mustergarten.mp4` | **geliefert** — siehe eigenen Abschnitt unten |
 | Plakatbild zum Video | `assets/img/_src/` | fehlt — auf dem Entwicklungsrechner liegt kein `ffmpeg`, ein Standbild lässt sich nicht selbst erzeugen |
-| Bildunterschrift Block 2 | — | beginnt laut Skizze mit „Unser …" |
+| Bildunterschrift Block 2 | — | **gesetzt** (AP-216): „Feierabend im Garten." Der Entwurf „Unser …" der Skizze setzte den Namen des Hundes voraus, der weiterhin fehlt — siehe AP-216, O1 |
 | Text Block 4 | — | Stichworte: „Damit wir uns Zeit nur für Sie nehmen", „Inspiration Mustergarten" |
 
-**Wichtig für die Fotoauswahl:** Der Textumfluss ist eingerichtet, greift aber nur, wenn der
-Text **länger** ist als das Foto hoch.
+**Wichtig für die Fotoauswahl:** ~~Der Textumfluss ist eingerichtet, greift aber nur, wenn der
+Text **länger** ist als das Foto hoch.~~ **Gegenstandslos seit AP-216** — es gibt keinen
+Umfluss mehr. Die Bildspalte ist fest (220–300 px am Desktop, 240 px darunter), die
+Textlänge spielt für das Layout keine Rolle mehr.
 
 Der Fließtext wurde am 05.09.2026 gekürzt und misst jetzt nur noch **82 px** - drei Zeilen
 bei 1200 px Fensterbreite, zuvor 245 px. Ein 4:3-Foto bei 42 % Breite wäre 375 px hoch; der
@@ -374,3 +386,54 @@ Hinweis auf kleine Aufträge.
 **Nebenbefund:** Der Begründungssatz zur Jahresangabe in AP-179 berief sich unter anderem
 auf „20+ Jahre" aus der Proof-Sektion. Der Beleg ist entfallen; die Angabe „über 20 Jahren"
 bleibt aber richtig, weil das Gründungsjahr 2003 weiterhin auf der Seite steht.
+
+
+## AP-216 — Über-uns-Sektion: Raster, Hundefoto, Kartenfarben
+
+**Vom 06.09.2026.** Die Sektion steht jetzt als Raster statt als Float, trägt ein kleines
+Foto und die NRW-Karte hat ihre Dunkelfarben zurück. Was dabei offen geblieben ist:
+
+| # | Punkt | Warum es offen ist |
+|---|---|---|
+| O1 | **Name des Hundes** | Die Bildunterschrift lautet „Feierabend im Garten." und behauptet damit nichts. Mit Namen wäre etwa „Feierabend für ⟨Name⟩." möglich. Am 06.09.2026 beim Auftraggeber angefragt, liegt nicht vor. |
+| O2 | **Aufnahmeort** — Musterfläche oder Kundengarten? | Deshalb steht im `alt` nur, was zu sehen ist. Eine Unterschrift wie „in unserem Mustergarten" wäre ohne Bestätigung eine Tatsachenbehauptung (§ 5 UWG) und ist bewusst nicht formuliert. Hängt mit dem offenen Punkt zu den Teich- und Palmenfotos zusammen. |
+| O3 | **Hunderasse** | Im `alt` bewusst nicht benannt — sie ist nicht bestätigt. |
+| O5 | **Rechtes Drittel der Kartenzeile** | Bleibt bei rund 430 px leer. Der naheliegende Füller wäre die für AP-151 geplante Qualifikationsleiste (Gartenbaumeister, Sachverständiger für Baumkontrolle). Braucht bestätigten Wortlaut. |
+
+### Bewusste Abweichungen, keine offenen Punkte
+
+- **Die Sektion wird länger:** Desktop +213 px (1813 → 2026), Mobil +346 px (1395 → 1741).
+  Bei einer Startseite, die bereits als lang gilt, ist das eine bewusste Gegenbuchung —
+  das Bild kostet Länge und bringt Wärme. Der weit größere Längenposten bleibt das
+  Videoband.
+- **Die Freigabe „auch auf Mobil nebeneinander" aus AP-179 ist abgelöst.** Begründung im
+  dortigen Abschnitt.
+
+### Bei der Prüfung aufgefallen, nicht Teil von AP-216
+
+Gehört in ein eigenes Arbeitspaket, teils mit Entscheidungsbedarf:
+
+1. **`mustergarten.mp4`: 9.468.292 Bytes bei nativ 720 × 544.** Wird auf 1440 px
+   Fensterbreite randlos gezogen, also gut zweifach hochskaliert. Kein `poster` — bis zum
+   Ladeende steht ein schwarzes Band von 558 px (Desktop) bzw. 219 px (Mobil).
+2. **Grünton des Videotitels.** `--mobile-logo-green` #56E607 ist der vierte Grünton der
+   Sektion, neben `--home-lime` #8CC63F, `--green-700` #4A7A10 und `--home-dark-accent`
+   #B6D97A. Dazu synthetisch kursiv gestellt — es existiert nur ein aufrechter
+   Baloo-2-Schnitt. AP-213 hat das ausdrücklich so entschieden; Änderung nur nach Rückfrage.
+3. **Toter `.section-proof`-Code in `home-dark.css`.** AP-216 hat vier Regeln entscopt,
+   weil eine davon sichtbar falsch war. Der Token-Block und rund ein Dutzend weiterer
+   Regeln stehen weiterhin ohne passendes Element in der Datei. Eigener Aufräum-AP.
+4. **Der Absatz „Über uns" nennt Maik Rohdich nicht.** Kein Name, kein Meistertitel, keine
+   Baumkontrolle — ausgerechnet in der Sektion, die dafür da ist. Copy-AP.
+5. **Dopplung zum Willkommen-Abschnitt.** Willkommen: „Seit über 20 Jahren legen wir Gärten
+   an, bauen Terrassen, Teiche und halten Außenanlagen in Form". Über uns: „Seit über 20
+   Jahren planen, bauen und pflegen wir Gärten und Außenanlagen in Herne und Umgebung."
+   Zwei Sektionen Abstand. Vorschlag: den ersten Satz in „Über uns" streichen, der Absatz
+   beginnt dann bei „Jeder Garten entsteht aus Ihren Vorstellungen…". Reine Streichung,
+   keine neue Behauptung — gehört trotzdem in einen Copy-AP.
+6. **Zeilenlänge zwischen 700 und 860 px.** Der 62ch-Deckel der Textspalte greift nur im
+   zweispaltigen Modus. Zwischen dem Umbruchpunkt und etwa 700 px läuft der Absatz über die
+   volle Containerbreite — bei 859 px sind das 790 px Spaltenbreite gegenüber 595 px am
+   Desktop. Gegenüber dem Stand vor AP-216 ist das keine Verschlechterung (dort war es auf
+   allen Breiten die volle Breite), aber es unterläuft das Ziel des Deckels. Ein
+   `max-width: 62ch` am Absatz in der Mobil-Query würde es beheben.
