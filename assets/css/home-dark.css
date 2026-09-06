@@ -2228,26 +2228,34 @@ html.home-theme-dark .mr-ueber__text {
   max-width: 62ch;
 }
 
-/* AP-235: Der Weg zur Unterseite als Logo-Lasche.
+/* AP-235/AP-243: Der Weg zur Unterseite.
 
-   Die Form stammt aus .mobile-proof-request ("Gartenwunsch besprechen",
-   mobile-social-proof.css:462 ff.) - dort ist sie ein SVG hinter dem Text statt
-   eines border-radius, weil die abgeschraegte Lasche oben rechts mit Radien nicht
-   zu bauen ist. Uebernommen sind Aufbau und Pfad, NICHT die Fuellung: die Vorlage
-   ist in --home-lime gefuellt und traegt einen Schlagschatten, hier steht der Pfad
-   als Umriss. Der Button ist ein Nebenweg; die Hauptaktion der Seite bleibt die
-   Anfrage, und eine zweite gefuellte Limettenflaeche haette ihr Gewicht genommen.
+   Die Ecken folgen den Leistungskacheln: 18px oben links und unten rechts, 5px an
+   den beiden anderen. Derselbe Wert wie .iphone-service-card (privat-form.css:4404),
+   die Kachelwand, neben der der Button auf dem Telefon steht. Bewusst in allen
+   Breiten, nicht nur bis 480px - eine Form, die sich beim Aufziehen des Fensters
+   aendert, waere fuer ein einzelnes Bauteil zu viel Bewegung.
 
-   Zwei Unterschiede zur Vorlage, beide bewusst:
-   - Sie steht in @media (max-width: 900px) und gilt nur mobil. Diese Regeln gelten
-     in allen Breiten.
-   - Ihr Pfad ist gefuellt, deshalb faellt dort nicht auf, dass
-     preserveAspectRatio="none" die Geometrie verzerrt. Bei einem Umriss waeren
-     waagerechte und senkrechte Kanten unterschiedlich dick - das faengt
-     vector-effect="non-scaling-stroke" am Pfad im Markup ab. */
+   Bis AP-243 trug der Button die abgeschraegte Lasche aus .mobile-proof-request
+   (mobile-social-proof.css:462 ff.). Die ist mit Radien nicht zu bauen und lag
+   deshalb als SVG-Umriss hinter dem Text; mit dem Wechsel auf border-radius ist
+   das SVG entfallen. Die Lasche selbst bleibt dort, wo sie herkommt: bei den
+   mobilen Kontakt-CTAs, wo sie gefuellt die Hauptaktion traegt.
+
+   Der Rand bleibt der duenne Umriss in --home-dark-accent. Die Kacheln tragen einen
+   fast durchsichtigen Rand, der auf dem dunklen Grund dieser Sektion verschwaende;
+   und der Button ist ein Nebenweg - eine gefuellte Limettenflaeche haette der
+   Anfrage als Hauptaktion Gewicht genommen. */
 html.home-theme-dark .mr-ueber__mehr {
   position: relative;
-  isolation: isolate;
+  border-radius: 18px 5px 18px 5px;
+  /* Der Umriss als inset-Schatten und nicht als border: Chrome rundet
+     border-width auf ganze CSS-Pixel, aus 1.5px wuerde 1px - duenner als der
+     bisherige SVG-Strich (stroke-width 1.5 mit non-scaling-stroke). Der
+     inset-Schatten wird nicht gerundet, folgt dem border-radius und laesst
+     ausserdem die Kastengroesse unveraendert. */
+  box-shadow: inset 0 0 0 1.5px var(--home-dark-accent);
+  transition: box-shadow .18s var(--ease), background-color .18s var(--ease);
 
   /* AP-236: volle Spaltenbreite statt inhaltsbreit. Die Belegspalte ist per
      Messung deckungsgleich mit dem Fotopaar darunter (.mr-ueber__paar nimmt
@@ -2270,22 +2278,7 @@ html.home-theme-dark .mr-ueber__mehr {
   text-decoration: none;
 }
 
-html.home-theme-dark .mr-ueber__mehr-form {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: var(--home-dark-accent);
-  stroke-width: 1.5;
-  pointer-events: none;
-  transition: stroke .18s var(--ease), fill .18s var(--ease);
-}
-
 html.home-theme-dark .mr-ueber__mehr-text {
-  position: relative;
-  z-index: 1;
   flex: none;
 }
 
@@ -2301,17 +2294,15 @@ html.home-theme-dark .mr-ueber__mehr-text {
    die der Button ohne zu wachsen traegt: 52 plus 2x10px Innenabstand ergibt 72px,
    knapp ueber der min-height von 68. */
 html.home-theme-dark .mr-ueber__mehr-logo {
-  position: relative;
-  z-index: 1;
   flex: none;
   height: 52px;
   width: auto;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  html.home-theme-dark .mr-ueber__mehr:hover .mr-ueber__mehr-form {
-    fill: rgba(182, 217, 122, .12);
-    stroke: var(--home-lime);
+  html.home-theme-dark .mr-ueber__mehr:hover {
+    background-color: rgba(182, 217, 122, .12);
+    box-shadow: inset 0 0 0 1.5px var(--home-lime);
   }
 }
 
@@ -2323,7 +2314,7 @@ html.home-theme-dark .mr-ueber__mehr:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.home-theme-dark .mr-ueber__mehr-form { transition: none; }
+  html.home-theme-dark .mr-ueber__mehr { transition: none; }
 }
 
 /* Unter 420px wird die Lasche sonst breiter als die Spalte. */
