@@ -193,28 +193,14 @@
       </div>
     </div>
 
-    <!-- Filter-Toolbar -->
-    <div class="gallery-toolbar reveal" data-project-controls>
-      <div class="field-group gallery-tabs" role="group" aria-label="Ansicht wählen">
-        <label class="seg"><input type="radio" name="tab" value="highlights"><span>Highlights</span></label>
-        <label class="seg"><input type="radio" name="tab" value="alle" checked><span>Alle Projekte</span></label>
-      </div>
-
-      <div class="gallery-filters">
-        <div class="filter-row">
-          <span class="filter-label" id="lbl-typ">Kundentyp</span>
-          <div class="filter-scroll">
-            <div class="filter-group" role="group" aria-labelledby="lbl-typ" data-filter="typ"></div>
-          </div>
-        </div>
-        <div class="filter-row">
-          <span class="filter-label" id="lbl-leistung">Leistung</span>
-          <div class="filter-scroll">
-            <div class="filter-group" role="group" aria-labelledby="lbl-leistung" data-filter="leistung"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- AP-247: Die Filter-Toolbar (Reiter Highlights/Alle Projekte, Chips fuer
+         Kundentyp und Leistung) ist auf Wunsch des Auftraggebers entfallen. Unter
+         "Projekte mit Details" stehen jetzt direkt alle Projekte.
+         An der Filterlogik in galerie.js musste dafuer nichts geaendert werden: der
+         Anfangszustand ist tab 'alle', typ 'alle' und ein leeres Leistungs-Set, und
+         genau das liefert alle Projekte nach Datum sortiert. Ohne Bedienleiste bleibt
+         es dauerhaft dabei. Die Chip-Funktionen dort sind nur abgesichert, nicht
+         geloescht - sie muessten zurueck, falls die Leiste je wieder gewuenscht ist. -->
 
     <!-- Vollständige Ergebnisgalerie; wird per JS aus den kuratierten Bilddaten gefüllt. -->
     <div class="gallery-photo-grid" id="galleryPhotoGrid" aria-label="Gartenergebnisse" aria-live="polite" aria-busy="true" hidden></div>
@@ -386,9 +372,11 @@ Neben der harmonischen Anordnung der Beete und Wege wurde besonderer Wert auf ei
 
 
     <!-- Leerzustand -->
+    <!-- AP-247: Ohne Filter kann dieser Zustand nur noch eintreten, wenn ueberhaupt
+         kein Projekt geladen wurde. Der Verweis auf die Filter und der Knopf
+         "Filter zuruecksetzen" sind deshalb entfallen. -->
     <div class="gallery-empty reveal" id="galleryEmpty" hidden>
-      <p>Zu dieser Auswahl haben wir gerade kein Projekt. Passen Sie die Filter an oder sehen Sie sich alles an.</p>
-      <button type="button" class="btn btn-outline" id="galleryReset">Filter zurücksetzen</button>
+      <p>Hier stehen gerade keine Projekte. Schauen Sie gern in die Bildergalerie oder später noch einmal vorbei.</p>
     </div>
 
     <!-- Fehlerzustand -->
@@ -498,6 +486,6 @@ Neben der harmonischen Anordnung der Beete und Wege wurde besonderer Wert auf ei
 <!-- BUILD:site-footer:end -->
 
 <script src="../assets/js/main.js?v=20260902a" defer></script>
-<script type="module" src="../assets/js/galerie.js?v=20260830a"></script>
+<script type="module" src="../assets/js/galerie.js?v=20260906a1"></script>
 </body>
 </html>
