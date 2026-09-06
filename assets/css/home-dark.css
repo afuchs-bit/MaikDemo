@@ -2345,7 +2345,7 @@ html.home-theme-dark .footer-social-iphone {
     grid-template-columns: 44px 44px minmax(0, 1fr);
     align-items: center;
     justify-content: start;
-    gap: 8px;
+    gap: 6px;
     margin-top: 14px;
   }
 
@@ -2394,22 +2394,22 @@ html.home-theme-dark .footer-social-iphone {
 
   html.home-theme-dark .site-footer .footer-social-availability {
     min-width: 0;
-    margin: 0 0 0 4px;
+    width: 100%;
+    margin: 0;
     color: rgba(235, 239, 229, .72);
     font-size: .67rem;
     line-height: 1.48;
     letter-spacing: .005em;
-    text-wrap: pretty;
   }
 
   html.home-theme-dark .site-footer .footer-social-availability strong {
-    color: #fff;
-    font-weight: 750;
+    color: inherit;
+    font-weight: inherit;
   }
 
   html.home-theme-dark .site-footer .footer-social-dot {
-    color: var(--mobile-logo-green);
-    font-weight: 900;
+    color: inherit;
+    font-weight: inherit;
   }
 
   html.home-theme-dark .site-footer .footer-hours {

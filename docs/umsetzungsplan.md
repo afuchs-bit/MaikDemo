@@ -1531,3 +1531,10 @@ einzelnen WhatsApp- und Instagram-Icons rücken links an den Rand. Rechts danebe
 steht „Jederzeit erreichbar · Auch an Feiertagen und Wochenenden · Mustergarten
 nur nach Vereinbarung“ mit grünen Mittelpunkt-Trennern. Die bisherigen
 Öffnungszeiten werden auf den vereinbarten iPhone-Breiten ausgeblendet.
+
+
+**AP-226, Erreichbarkeitstext typografisch vereinheitlichen (06.09.2026):**
+„Jederzeit erreichbar“ und die Mittelpunkt-Trenner verwenden nun dieselbe
+Schriftstärke und Farbe wie der restliche Hinweis. Engere Abstände zur Icongruppe
+und die vollständige Nutzung der dritten Rasterspalte geben dem Text auf dem
+iPhone 16 Pro mehr Raum bis zur rechten Footerkante.
