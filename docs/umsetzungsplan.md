@@ -1485,3 +1485,10 @@ WhatsApp-Kachel und führt zum vorhandenen Formularanker `#anfrage`. Ein klares
 Formularsymbol kennzeichnet das Ziel. Der zusätzliche WhatsApp-Hinweis unter den
 Öffnungszeiten entfällt dort ebenfalls; außerhalb dieser Ansichten bleibt die
 bisherige WhatsApp-Verknüpfung erhalten.
+
+
+**AP-219, Header-Telefonzeichen im mobilen Footer wiederverwenden
+(06.09.2026):** Mobil- und Festnetzfeld verwenden auf den vereinbarten
+iPhone-Breiten exakt das grüne Telefon-Asset des mobilen Headers. Es wird für die
+kleineren Footer-Felder proportional auf 23 px skaliert; die bisherigen
+Linien-SVGs bleiben außerhalb dieser Ansichten unverändert.

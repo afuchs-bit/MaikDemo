@@ -2293,6 +2293,21 @@ html.home-theme-dark .footer-contact-link--iphone-form {
     height: 30px;
   }
 
+  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon {
+    background: rgba(5, 10, 5, .58);
+  }
+
+  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon svg {
+    display: none;
+  }
+
+  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon::before {
+    content: "";
+    width: 23px;
+    height: 23px;
+    background: url("../img/icons/phone-header-mobile.png?v=20260902a") center / contain no-repeat;
+  }
+
   html.home-theme-dark .site-footer .footer-contact-link strong {
     font-size: .73rem;
   }
