@@ -34,9 +34,9 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zz40" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zz57" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260906ba" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260906r" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260906w" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
@@ -337,6 +337,19 @@ html.home-theme-dark body { background-color: #171916; }
     <span class="mobile-hero-trusts">Meisterbetrieb</span>
   </p>
   <aside class="hero-proof-strip" aria-label="Firmensitz und Mustergarten">
+    <a class="hero-proof-instagram"
+       href="https://www.instagram.com/rohdich_garten_landschaftsbau/"
+       target="_blank" rel="noopener"
+       aria-label="Einblicke live bei Maik Rohdich auf Instagram ansehen">
+      <span class="hero-proof-instagram-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <span>Einblicke <strong>Live</strong></span>
+    </a>
     <div class="hero-proof-location">
       <span class="hero-proof-location-mark" aria-hidden="true">
         <img class="hero-proof-location-icon" src="assets/img/icons/rohdich-standort.svg"
@@ -395,13 +408,18 @@ html.home-theme-dark body { background-color: #171916; }
   </div>
 
   <section class="gate-welcome gate-welcome--iphone" aria-labelledby="gate-welcome-title">
-    <h2 class="gate-welcome-kicker" id="gate-welcome-title" aria-label="Willkommen bei Maik Rohdich">
+    <h2 class="gate-welcome-kicker gate-welcome-reveal reveal" id="gate-welcome-title" aria-label="Willkommen bei Maik Rohdich">
+      <svg class="gate-welcome-stamp" viewBox="0 0 132 40" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path class="gate-welcome-stamp__base" d="M4 7C24 4 44 7 64 6C88 4 109 6 128 9L127 13L131 16L128 20L131 24L126 27L129 31C106 31 88 35 67 32C43 35 24 31 5 34C4 29 5 25 2 21C4 17 2 11 4 7Z"/>
+        <path class="gate-welcome-stamp__highlight" d="M10 11C31 8 51 11 70 9C90 8 107 9 122 11"/>
+        <path class="gate-welcome-stamp__grain" d="M8 29C31 27 52 30 73 28C94 26 111 28 125 25"/>
+      </svg>
       <span class="gate-welcome-intro" aria-hidden="true">WILLKOMMEN BEI</span>
       <svg class="gate-welcome-wordmark" viewBox="218 58 422 82" width="422" height="82" overflow="hidden" aria-hidden="true" focusable="false">
         <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180" />
       </svg>
     </h2>
-    <figure class="gate-welcome-photo">
+    <figure class="gate-welcome-photo gate-welcome-reveal reveal">
       <img src="assets/img/willkommen/poolgarten-720.webp"
            srcset="assets/img/willkommen/poolgarten-720.webp 720w, assets/img/willkommen/poolgarten-1200.webp 1200w"
            sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 48px), 1px"
@@ -423,8 +441,7 @@ html.home-theme-dark body { background-color: #171916; }
 
     <div class="gate-welcome-message">
       <p class="gate-welcome-statement">
-        <span class="gate-welcome-statement__lead">Ein Garten ist mehr als eine Fläche rund ums Haus – er ist Rückzugsort, Treffpunkt und <strong>Lebensqualität</strong>.</span>
-        <span class="gate-welcome-statement__closing">Wir gestalten ihn so, dass er zu Ihnen und Ihrem Alltag passt.</span>
+        Ein Garten ist mehr als eine Fläche rund ums Haus – er ist Rückzugsort, Treffpunkt und Lebensqualität. Wir gestalten ihn so, dass er zu Ihnen und Ihrem Alltag passt.
       </p>
     </div>
 
@@ -1211,12 +1228,14 @@ html.home-theme-dark body { background-color: #171916; }
       <div class="process-stage">
         <div class="process-path" aria-hidden="true"></div>
         <div class="process-marker" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="26" height="26" role="img" aria-label="">
+          <svg class="process-marker__leaf" viewBox="0 0 32 32" width="26" height="26" role="img" aria-label="">
             <path d="M16 3 C 6 9, 6 25, 16 30 C 26 25, 26 9, 16 3 Z" fill="var(--green-700)"/>
             <path d="M16 3 L 16 30" stroke="#fff" stroke-width="1.4" opacity=".55"/>
             <path d="M16 11 Q 11 14 9 18" stroke="#fff" stroke-width="1" fill="none" opacity=".45"/>
             <path d="M16 11 Q 21 14 23 18" stroke="#fff" stroke-width="1" fill="none" opacity=".45"/>
           </svg>
+          <img class="process-marker__flower" src="assets/img/icons/rohdich-blume.png"
+               alt="" width="160" height="160" decoding="async">
         </div>
 
         <ol class="process-track" data-process-track>
@@ -1224,39 +1243,78 @@ html.home-theme-dark body { background-color: #171916; }
             <span class="step-figure" aria-hidden="true">01</span>
             <span class="step-node">01</span>
             <div class="step-card">
-              <h3>Termin vor Ort</h3>
-              <p>Wir lernen Ihr Grundstück und Ihre Vorstellungen in Ruhe kennen – bei Bedarf ergänzt durch einen Besuch in unserem Mustergarten.</p>
+              <span class="step-card__media">
+                <picture>
+                  <source type="image/avif" srcset="assets/img/projektablauf/termin-vor-ort-480.avif 480w, assets/img/projektablauf/termin-vor-ort-640.avif 640w, assets/img/projektablauf/termin-vor-ort-960.avif 960w" sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 108px), 1px">
+                  <source type="image/webp" srcset="assets/img/projektablauf/termin-vor-ort-480.webp 480w, assets/img/projektablauf/termin-vor-ort-640.webp 640w, assets/img/projektablauf/termin-vor-ort-960.webp 960w" sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 108px), 1px">
+                  <img src="assets/img/projektablauf/termin-vor-ort-640.webp" alt="Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück" width="640" height="480" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="step-card__body">
+                <h3>Termin vor Ort</h3>
+                <p>Wir lernen Ihr Grundstück und Ihre Vorstellungen in Ruhe kennen – bei Bedarf ergänzt durch einen Besuch in unserem Mustergarten.</p>
+              </span>
             </div>
           </li>
           <li class="step" data-step="2">
             <span class="step-figure" aria-hidden="true">02</span>
             <span class="step-node">02</span>
             <div class="step-card">
-              <h3>Kostenermittlung</h3>
-              <p>Wir ermitteln die Kosten transparent und stellen Ihnen passende Alternativen vor – so können Sie sicher entscheiden.</p>
+              <span class="step-card__media">
+                <picture>
+                  <source type="image/avif" srcset="assets/img/projektablauf/kostenermittlung-480.avif 480w, assets/img/projektablauf/kostenermittlung-640.avif 640w, assets/img/projektablauf/kostenermittlung-960.avif 960w" sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 108px), 1px">
+                  <source type="image/webp" srcset="assets/img/projektablauf/kostenermittlung-480.webp 480w, assets/img/projektablauf/kostenermittlung-640.webp 640w, assets/img/projektablauf/kostenermittlung-960.webp 960w" sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 108px), 1px">
+                  <img src="assets/img/projektablauf/kostenermittlung-640.webp" alt="Verschiedene Palmen und Pflanzgefäße als Auswahlmöglichkeiten" width="640" height="480" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="step-card__body">
+                <h3>Kostenermittlung</h3>
+                <p>Wir ermitteln die Kosten transparent und stellen Ihnen passende Alternativen vor – so können Sie sicher entscheiden.</p>
+              </span>
             </div>
           </li>
           <li class="step" data-step="3">
             <span class="step-figure" aria-hidden="true">03</span>
             <span class="step-node">03</span>
             <div class="step-card">
-              <h3>Umsetzung &amp; Koordination</h3>
-              <p>Wir koordinieren alle Arbeiten zuverlässig und halten Sie während der Umsetzung auf dem Laufenden.</p>
+              <span class="step-card__media">
+                <picture>
+                  <source type="image/avif" srcset="assets/img/projektablauf/umsetzung-koordination-480.avif 480w, assets/img/projektablauf/umsetzung-koordination-640.avif 640w, assets/img/projektablauf/umsetzung-koordination-960.avif 960w" sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 108px), 1px">
+                  <source type="image/webp" srcset="assets/img/projektablauf/umsetzung-koordination-480.webp 480w, assets/img/projektablauf/umsetzung-koordination-640.webp 640w, assets/img/projektablauf/umsetzung-koordination-960.webp 960w" sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 108px), 1px">
+                  <img src="assets/img/projektablauf/umsetzung-koordination-640.webp" alt="Bagger setzt einen großen Naturstein in eine Gartenanlage" width="640" height="480" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="step-card__body">
+                <h3>Umsetzung &amp; Koordination</h3>
+                <p>Wir koordinieren alle Arbeiten zuverlässig und halten Sie während der Umsetzung auf dem Laufenden.</p>
+              </span>
             </div>
           </li>
           <li class="step" data-step="4">
             <span class="step-figure" aria-hidden="true">04</span>
             <span class="step-node">04</span>
             <div class="step-card">
-              <h3>Pflege</h3>
-              <p>Auf Wunsch kümmern wir uns auch danach um die passende Pflege Ihres Gartens.</p>
+              <span class="step-card__media">
+                <picture>
+                  <source type="image/avif" srcset="assets/img/projektablauf/pflege-480.avif 480w, assets/img/projektablauf/pflege-640.avif 640w, assets/img/projektablauf/pflege-960.avif 960w" sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 108px), 1px">
+                  <source type="image/webp" srcset="assets/img/projektablauf/pflege-480.webp 480w, assets/img/projektablauf/pflege-640.webp 640w, assets/img/projektablauf/pflege-960.webp 960w" sizes="(min-width: 390px) and (max-width: 404px) and (orientation: portrait) calc(100vw - 108px), 1px">
+                  <img src="assets/img/projektablauf/pflege-640.webp" alt="Bewässerung eines gepflegten Rasens" width="640" height="480" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="step-card__body">
+                <h3>Pflege</h3>
+                <p>Auf Wunsch kümmern wir uns auch danach um die passende Pflege Ihres Gartens.</p>
+              </span>
             </div>
           </li>
         </ol>
       </div>
 
       <div class="container b2b-process-end-actions">
-        <a class="btn btn-primary" href="#anfrage" aria-describedby="private-process-reassurance">Projekt anfragen</a>
+        <a class="btn btn-primary mobile-proof-request process-contact-cta" href="#anfrage" aria-describedby="private-process-reassurance">
+          <svg class="mobile-proof-request__shape process-contact-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+          <span class="mobile-proof-request__label">Projekt anfragen</span>
+        </a>
       </div>
     </div>
   </div>

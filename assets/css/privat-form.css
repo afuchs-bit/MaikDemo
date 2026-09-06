@@ -3009,6 +3009,17 @@
   outline: 3px solid var(--yellow);
   outline-offset: 3px;
 }
+.private-process-updated .step-card__media { display: none; }
+.private-process-updated .step-card__body { display: block; }
+.private-process-updated .process-marker__flower {
+  display: none;
+}
+
+/* Die individuelle Buttonform wird ausserhalb der beiden freigegebenen
+   iPhone-Ansichten ausgeblendet; dort bleibt der bestehende Desktop-CTA. */
+.private-process-updated .process-contact-cta__shape {
+  display: none;
+}
 
 @media (min-width:1024px) and (hover:hover) {
   .private-process-updated { padding: 0; }
@@ -3140,6 +3151,101 @@
     min-height: 54px;
     justify-content: center;
     text-align: center;
+  }
+}
+
+/* Projektablauf mit Bildführung für die freigegebenen iPhone-Ansichten. */
+@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+  /* Exakt dieselbe asymmetrische CTA-Form wie "Zum Kontaktformular". */
+  .private-process-updated .b2b-process-end-actions .process-contact-cta {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+    min-height: 64px;
+    margin: 0 auto;
+    padding: 7px 22px;
+    border: 0;
+    border-radius: 14px;
+    color: #171916;
+    background: transparent;
+    box-shadow: none;
+    font: 800 clamp(1.05rem,4.58vw,1.125rem)/1.25 var(--display);
+    text-align: center;
+    text-decoration: none;
+    white-space: normal;
+  }
+
+  .private-process-updated .b2b-process-end-actions .process-contact-cta:hover,
+  .private-process-updated .b2b-process-end-actions .process-contact-cta:active {
+    color: #171916;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .private-process-updated .process-contact-cta__shape {
+    display: block;
+  }
+
+  .private-process-updated .process-contact-cta:focus-visible {
+    outline: 2px solid var(--home-focus);
+    outline-offset: 5px;
+  }
+
+  .private-process-updated .process-marker__leaf {
+    display: none;
+  }
+  .private-process-updated .process-marker__flower {
+    display: block;
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+  }
+  .private-process-updated .step-card {
+    overflow: hidden;
+    border-radius: 18px 5px 18px 5px;
+    padding: 0;
+  }
+  .private-process-updated .step-card__media,
+  .private-process-updated .step-card__media picture {
+    display: block;
+  }
+  .private-process-updated .step-card__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #151a13;
+  }
+  .private-process-updated .step-card__media::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--green-500), var(--green-300));
+    opacity: .72;
+    pointer-events: none;
+  }
+  .private-process-updated .step-card__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .private-process-updated .step-card__body {
+    padding: 16px 17px 18px;
+  }
+  .private-process-updated .step-card h3 {
+    margin-bottom: 6px;
+    font-size: 1.06rem;
+    line-height: 1.25;
+  }
+  .private-process-updated .step-card p {
+    font-size: .9rem;
+    line-height: 1.5;
   }
 }
 

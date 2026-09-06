@@ -81,7 +81,7 @@ html.home-theme-dark .home-hero-stack > .hero--gate-empty {
 }
 
 /* Die neuen Textvarianten gehoeren ausschliesslich zur mobilen Bildbuehne. */
-html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .mobile-hero-cta-stack, .mobile-hero-link) {
+html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .mobile-hero-cta-stack, .mobile-hero-link, .hero-proof-instagram) {
   display: none;
 }
 
@@ -1304,6 +1304,7 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .mobile-hero-link:hover .mobile-hero-link-phone {
     transform: translateY(-2px) rotate(-6deg);
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) and (max-width: 900px) {
@@ -1329,35 +1330,206 @@ html.home-theme-dark .fork-path:hover {
 /* Mobiler Willkommenbereich: eingeruecktes Gartenfoto und kompaktes Register.
    Die native Details-Gruppe benoetigt kein zusaetzliches JavaScript. */
 @media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+  html.home-theme-dark .home-hero-stack {
+    --mobile-hero-title-trial-drop: -3px;
+  }
+
+  html.home-theme-dark .hero-proof-strip {
+    transform: translateY(calc(
+      0px - var(--mobile-hero-content-group-lift) - var(--mobile-hero-proof-lift) + 34px
+    ));
+  }
+
+  html.home-theme-dark .hero-proof-instagram {
+    position: absolute;
+    bottom: calc(100% + 1px);
+    left: var(--hero-proof-space);
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--hero-proof-space) - 4px);
+    min-height: 44px;
+    color: var(--home-on-dark);
+    font-family: "Nunito", sans-serif;
+    font-size: .9rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: .005em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  html.home-theme-dark .hero-proof-instagram strong {
+    color: var(--home-lime);
+    font: inherit;
+  }
+
+  html.home-theme-dark .hero-proof-instagram-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    border-radius: 10px;
+    color: #fff;
+    background: radial-gradient(circle at 30% 105%, #feda75 0 20%, #fa7e1e 34%, #d62976 57%, #962fbf 76%, #4f5bd5 100%);
+    box-shadow: 0 5px 12px rgb(0 0 0 / 24%);
+    transition: transform .2s ease;
+  }
+
+  html.home-theme-dark .hero-proof-instagram-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  html.home-theme-dark .hero-proof-instagram:active {
+    opacity: .74;
+  }
+
   /* Den parallelen Willkommenentwurf nur auf den vereinbarten iPhones ersetzen.
      Desktop und alle anderen Bildschirmgroessen behalten .mr-willkommen. */
   html.home-theme-dark .mr-willkommen {
     display: none;
   }
 
+  /* Hero-Keil und Willkommenbereich liegen auf einer einzigen Farbfläche. Der
+     vorherige Verlauf des gemeinsamen Containers erzeugte genau an der Grenze
+     der beiden Hero-Elemente einen sichtbaren Tonwertsprung. */
+  html.home-theme-dark .home-hero-stack,
+  html.home-theme-dark .home-hero-stack > .hero--gate-content {
+    background: #1B1E19;
+  }
+
+  html.home-theme-dark .home-hero-stack {
+    border-bottom: 0;
+  }
+
+  /* Das Wasserzeichen verschwindet vor dem Ende des Hero-Keils in dessen
+     Grundfarbe. Dadurch kann an der Elementgrenze weder Motiv noch Alpha-Kante
+     abgeschnitten erscheinen; die grüne Diagonale darueber bleibt unveraendert. */
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::after {
+    background-color: #1B1E19;
+    background-image:
+      linear-gradient(180deg,
+        rgb(27 30 25 / 86%) 0%,
+        rgb(27 30 25 / 86%) 68%,
+        #1B1E19 100%),
+      url("../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a");
+  }
+
   html.home-theme-dark .gate-welcome--iphone {
     position: relative;
     display: block;
     width: calc(100% - 48px);
-    margin: clamp(38px, 6.5svh, 54px) auto 36px;
+    margin: clamp(44px, 6svh, 50px) auto 36px;
     font-family: var(--display);
     overflow-wrap: anywhere;
   }
 
   html.home-theme-dark .gate-welcome-kicker {
+    position: relative;
+    isolation: isolate;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 8px 12px;
-    margin: 0;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 12px 18px 13px;
     font-family: var(--display);
     font-size: 1rem;
     line-height: 1.25;
     letter-spacing: 0;
+    text-align: center;
+  }
+
+  /* Exakt derselbe handgemalte Stempel wie am Link "Zur Galerie": dieselbe
+     Pinselkontur, dieselbe leichte Neigung und dieselben beiden Pinselspuren. */
+  html.home-theme-dark .gate-welcome-stamp {
+    position: absolute;
+    inset: -2px -7px -3px;
+    z-index: -1;
+    width: calc(100% + 14px);
+    height: calc(100% + 5px);
+    overflow: visible;
+    filter: drop-shadow(0 3px 3px rgb(0 0 0 / 22%));
+    transform: rotate(-1deg);
+    transform-origin: center;
+    pointer-events: none;
+  }
+
+  html.home-theme-dark .gate-welcome-stamp__base {
+    fill: #FFED00;
+  }
+
+  html.home-theme-dark .gate-welcome-stamp__grain {
+    fill: none;
+    stroke: #D9BD00;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    opacity: .46;
+  }
+
+  html.home-theme-dark .gate-welcome-stamp__highlight {
+    fill: none;
+    stroke: #FFF36B;
+    stroke-width: .9;
+    stroke-linecap: round;
+    opacity: .55;
+  }
+
+  /* Der Stempel wird mit einer weich auslaufenden Maskenkante wie ein ruhiger
+     Pinselzug von links freigelegt. Die Bewegung bleibt am Element selbst und
+     ist nicht an die Scrollposition gekoppelt. */
+  html.home-theme-dark .gate-welcome-kicker.gate-welcome-reveal {
+    opacity: .18;
+    -webkit-clip-path: none;
+    clip-path: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 0 47%, transparent 51% 100%);
+    mask-image: linear-gradient(90deg, #000 0 47%, transparent 51% 100%);
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 220% 100%;
+    mask-size: 220% 100%;
+    transform: translateX(-18px);
+    transition:
+      opacity .78s cubic-bezier(.16, 1, .3, 1),
+      transform 1.15s cubic-bezier(.16, 1, .3, 1),
+      -webkit-mask-position 1.15s cubic-bezier(.16, 1, .3, 1),
+      mask-position 1.15s cubic-bezier(.16, 1, .3, 1);
+  }
+
+  html.home-theme-dark .gate-welcome-kicker.gate-welcome-reveal.is-in {
+    opacity: 1;
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+    transform: translateX(0);
+  }
+
+  /* Das Foto beginnt erst gegen Ende des Pinselzugs. Dauer und Ease greifen
+     den ruhigen Reveal-Rhythmus der restlichen Website auf. */
+  html.home-theme-dark .gate-welcome-photo.gate-welcome-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity .92s cubic-bezier(.16, 1, .3, 1),
+      transform .92s cubic-bezier(.16, 1, .3, 1);
+    transition-delay: .72s !important;
+  }
+
+  html.home-theme-dark .gate-welcome-photo.gate-welcome-reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   html.home-theme-dark .gate-welcome-intro {
-    color: var(--home-yellow);
+    position: relative;
+    z-index: 1;
+    color: #171916;
     font-size: .8125rem;
     font-weight: 800;
     line-height: 1.3;
@@ -1366,6 +1538,8 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-wordmark {
+    position: relative;
+    z-index: 1;
     display: block;
     width: 10.75rem;
     max-width: 100%;
@@ -1373,6 +1547,7 @@ html.home-theme-dark .fork-path:hover {
     flex: 0 1 10.75rem;
     margin: 0;
     overflow: hidden;
+    filter: drop-shadow(0 1px 0 rgb(23 25 22 / 58%));
   }
 
   html.home-theme-dark :is(
@@ -1454,37 +1629,15 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-statement {
     margin: 0;
-    font-family: "Nunito", sans-serif;
-    overflow-wrap: normal;
-    hyphens: none;
-  }
-
-  html.home-theme-dark .gate-welcome-statement__lead {
-    display: block;
     color: var(--home-on-dark);
     font-family: "Baloo 2", sans-serif;
-    font-size: clamp(1.3125rem, 5.45vw, 1.375rem);
+    font-size: clamp(1.4375rem, 5.95vw, 1.5rem);
     font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: -.01em;
+    line-height: 1.5;
+    letter-spacing: .015em;
+    overflow-wrap: normal;
     text-wrap: pretty;
-  }
-
-  html.home-theme-dark .gate-welcome-statement__closing {
-    display: block;
-    margin-top: 14px;
-    color: rgb(235 239 229 / 82%);
-    font-family: "Nunito", sans-serif;
-    font-size: 1.1875rem;
-    font-weight: 400;
-    line-height: 1.62;
-    letter-spacing: 0;
-    text-wrap: pretty;
-  }
-
-  html.home-theme-dark .gate-welcome-statement strong {
-    color: var(--mobile-logo-green);
-    font-weight: 600;
+    hyphens: none;
   }
 
   html.home-theme-dark .gate-welcome-feeling {
@@ -1682,6 +1835,19 @@ html.home-theme-dark .fork-path:hover {
 }
 
 @media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) and (prefers-reduced-motion: reduce) {
+  html.home-theme-dark .gate-welcome-reveal {
+    opacity: 1 !important;
+    -webkit-clip-path: none !important;
+    clip-path: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    -webkit-mask-position: 0 0 !important;
+    mask-position: 0 0 !important;
+    transform: none !important;
+    transition: none !important;
+    transition-delay: 0s !important;
+  }
+
   html.home-theme-dark .gate-welcome-qualification-flower,
   html.home-theme-dark .gate-welcome-qualification-label {
     transition: none;
@@ -1689,6 +1855,21 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-qualification-panel {
     animation: none;
+  }
+}
+
+@media (scripting: none) and (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+  html.home-theme-dark .gate-welcome-reveal {
+    opacity: 1 !important;
+    -webkit-clip-path: none !important;
+    clip-path: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    -webkit-mask-position: 0 0 !important;
+    mask-position: 0 0 !important;
+    transform: none !important;
+    transition: none !important;
+    transition-delay: 0s !important;
   }
 }
 
