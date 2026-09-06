@@ -1023,3 +1023,55 @@ Startzustand `display: none`, Höhe 0. Nach Klick `display: grid`, Höhe 160 px,
 anderes" öffnet ebenfalls. Umschaltung kurz → lang → kurz an `display` geprüft: unverändert
 richtig, das Freitextfeld bleibt beim Rückwechsel zu. Kein Overflow bei 320 / 390 / 768 /
 1440 px.
+
+---
+
+## AP-252 — „Willkommen" von Baloo 2 auf Nunito
+
+Im Willkommens-Absatz der Startseite lief das Wort „Willkommen" als einziges Element in
+**Baloo 2**, der Rest der Zeile in Nunito. Eine Schriftinventur der Startseite zeigte: auf
+der Desktop-Ansicht war das die **einzige** Fundstelle von Baloo 2. Auf Wunsch des
+Auftraggebers läuft das Wort jetzt in Nunito und setzt sich nur noch über Kursiv und
+Gewicht 700 vom Absatz ab.
+
+Umgesetzt in [home-dark.css:2134](../assets/css/home-dark.css:2134) durch **Streichen** der
+Zeile `font-family: "Baloo 2", cursive;`. Keine neue `font-family` gesetzt — der Absatz
+`.mr-willkommen__gross` trägt bereits `font-family: var(--display)`, und `--display` ist auf
+der Startseite Nunito (home-dark.css:45). So folgt die Stelle einem späteren Tokenwechsel
+von allein.
+
+### Nebenbefund: das bisherige Kursiv war errechnet
+
+Baloo 2 ist in beiden `@font-face`-Blöcken (home-dark.css:12–27) nur mit
+`font-style: normal` eingebunden — einen Kursivschnitt gibt es nicht. Die Schrägstellung
+hat der Browser bislang selbst berechnet. Nunito bringt mit `nunito-italic-latin.woff2`
+(Gewichte 200–1000) einen echten Kursivschnitt mit; `document.fonts.check('italic 700 40px
+Nunito')` meldet `true`.
+
+**Baloo 2 bleibt eingebunden.** Die Handy-Ansicht nutzt sie weiter für die Hero-Zeilen
+(home-dark.css:801) und `.gate-welcome-statement` (home-dark.css:1663). Weder
+`@font-face`-Blöcke noch Schriftdateien wurden entfernt.
+
+### Gemessen
+
+| | vorher (Baloo 2) | nachher (Nunito) |
+|---|---|---|
+| Wortbreite „Willkommen" bei 1440 px | 222,5 px | 241,6 px |
+| Absatzhöhe | 242 px | 240 px |
+| Zeilenumbruch | nein | nein |
+
+Bei 768 px: Nunito, 138,9 px Wortbreite, kein waagerechter Überlauf. Bei 390 px ist
+`.mr-willkommen` unverändert `display: none` (bestehende Mobilregel, von dieser Änderung
+nicht berührt).
+
+### Offen — zwei Fremdschriften in der Handy-Ansicht
+
+Bei der Inventur mit aufgefallen, **nicht** beauftragt und deshalb unverändert:
+
+- [home-dark.css:1792](../assets/css/home-dark.css:1792) setzt für die vier
+  Qualifikations-Etiketten (Gartenbaumeister, LWK-BaumKontrolleur, Sachverständiger,
+  Sachkundiger) `font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive` —
+  keine Hausschrift darin. Auf Android greift der generische `cursive`-Zweig, die Darstellung
+  ist dort geräteabhängig.
+- [mobile-social-proof.css:115](../assets/css/mobile-social-proof.css:115) setzt für die
+  Sterne der Google-Bewertung `Arial, sans-serif`. Bei reinen Symbolzeichen unkritisch.
