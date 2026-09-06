@@ -2257,3 +2257,11 @@ html.home-theme-dark .mr-ueber__karte .proof-map {
    Startseite vorkommt und home-dark.css nur von ihr geladen wird - ein
    ?v=-Zaehler statt eines Durchlaufs ueber 36 Seiten. */
 html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }
+
+/* AP-215: Auf den vereinbarten iPhone-Breiten entfaellt der Schnellzugriff im
+   Homepage-Footer. Einsatzgebiet, Kontakt und rechtliche Links bleiben stehen. */
+@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+  html.home-theme-dark .site-footer .footer-navigation {
+    display: none;
+  }
+}
