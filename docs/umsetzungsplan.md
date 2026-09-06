@@ -1550,3 +1550,10 @@ ihre Form und Bedienbarkeit; Inhalte, Ziele und Raster bleiben unverändert.
 Rohdichs vollständiges Logo wächst auf den vereinbarten iPhone-Breiten von zuvor
 maximal 195 px auf bis zu 300 px Breite. Die proportionale Skalierung und ein
 angepasster oberer Abstand halten Wortmarke und Blume unverzerrt und frei.
+
+
+**AP-229, Erreichbarkeit als Zweizeiler setzen (06.09.2026):** WhatsApp und
+Instagram stehen links kompakt untereinander. Die dadurch breitere Textspalte
+setzt den Erreichbarkeitshinweis bei normaler Schriftgröße in genau zwei
+festgelegten, ausgewogenen Zeilen; bei Schriftvergrößerung darf er weiter
+umbrechen, ohne abgeschnitten zu werden.
