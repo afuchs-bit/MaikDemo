@@ -1507,3 +1507,9 @@ den wieder sichtbaren separaten Kanal erneut schlüssig.
 und Kontaktformularsymbol verwenden auf den vereinbarten iPhone-Breiten nun
 exakt das Hero-Grün `#56E607` auf derselben dunklen Iconfläche wie die
 Telefonzeichen. Formen, Ziele und das 2×2-Raster bleiben unverändert.
+
+
+**AP-222, Social-Kanäle auf einzelne Icons reduzieren (06.09.2026):** WhatsApp
+und Instagram stehen auf den vereinbarten iPhone-Breiten als zwei kompakte,
+zentrierte Einzelicons unter dem 2×2-Kontaktraster. Sichtbare Begleittexte und
+Kachelhintergründe entfallen; die zugänglichen Bezeichnungen bleiben erhalten.

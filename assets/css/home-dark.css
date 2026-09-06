@@ -2340,40 +2340,41 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-iphone {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 14px;
   }
 
   html.home-theme-dark .site-footer .footer-social-link {
     display: grid;
-    grid-template-columns: 30px minmax(0, 1fr);
-    gap: 7px;
-    align-items: center;
-    min-height: 46px;
-    padding: 7px;
-    border: 1px solid rgba(255, 255, 255, .11);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, .04);
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 4px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
   }
 
   html.home-theme-dark .site-footer .footer-social-icon {
     display: grid;
     place-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 9px;
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
     color: #fff;
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--whatsapp {
+    border-radius: 50%;
     background: #25d366;
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--whatsapp img {
-    width: 19px;
-    height: 19px;
+    width: 22px;
+    height: 22px;
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram {
@@ -2381,28 +2382,12 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
   }
 
-  html.home-theme-dark .site-footer .footer-social-link > span:last-child {
-    display: grid;
-    min-width: 0;
-    gap: 1px;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-link small {
-    color: rgba(255, 255, 255, .52);
-    font-size: .52rem;
-    font-weight: 750;
-    letter-spacing: .055em;
-    line-height: 1.2;
-    text-transform: uppercase;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-link strong {
-    color: #fff;
-    font-size: .73rem;
-    line-height: 1.25;
+  html.home-theme-dark .site-footer a.footer-social-link:focus-visible {
+    outline: 2px solid var(--mobile-logo-green);
+    outline-offset: 2px;
   }
 }
