@@ -1492,3 +1492,12 @@ bisherige WhatsApp-Verknüpfung erhalten.
 iPhone-Breiten exakt das grüne Telefon-Asset des mobilen Headers. Es wird für die
 kleineren Footer-Felder proportional auf 23 px skaliert; die bisherigen
 Linien-SVGs bleiben außerhalb dieser Ansichten unverändert.
+
+
+**AP-220, WhatsApp und Instagram separat ergänzen (06.09.2026):** Unter dem
+2×2-Kontaktraster erscheint auf den vereinbarten iPhone-Breiten eine eigene
+zweispaltige Social-Zeile. WhatsApp verwendet das vorhandene offizielle Symbol
+und öffnet den bestätigten Chat-Link. Instagram erhält ein eigenständiges,
+farbiges Kamerasymbol; mangels bestätigter Profiladresse bleibt es zunächst ein
+nicht interaktiver visueller Eintrag. Der Hinweis „WhatsApp jederzeit“ ist durch
+den wieder sichtbaren separaten Kanal erneut schlüssig.
