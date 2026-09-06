@@ -3014,6 +3014,9 @@
 .private-process-updated .process-marker__flower {
   display: none;
 }
+.private-process-updated .step-node__number {
+  display: none;
+}
 
 /* Die individuelle Buttonform wird ausserhalb der beiden freigegebenen
    iPhone-Ansichten ausgeblendet; dort bleibt der bestehende Desktop-CTA. */
@@ -3205,6 +3208,21 @@
     height: 23px;
     object-fit: contain;
   }
+  .private-process-updated .step-node__text {
+    display: none;
+  }
+  .private-process-updated .step-node__number {
+    display: block;
+    width: auto;
+    max-width: 29px;
+    height: auto;
+    max-height: 29px;
+    object-fit: contain;
+  }
+  .private-process-updated.is-vertical-journey .step.is-active .step-node {
+    background: var(--bg-elev);
+    color: var(--green-500);
+  }
   .private-process-updated .step-card {
     overflow: hidden;
     border-radius: 18px 5px 18px 5px;
@@ -3384,6 +3402,11 @@
 @media (max-width:900px) {
   .private-proof-grid { grid-template-columns: 1fr; }
   .private-proof-summary h3 { max-width: 15ch; }
+}
+
+@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+  .private-proof-bento .private-proof-summary { display: none; }
+  .private-proof-bento .private-proof-grid { gap: 0; }
 }
 
 @media (max-width:520px) {
@@ -4604,4 +4627,260 @@
   .private-project-showcase .project-card:hover,
   .private-project-showcase .project-card:hover .project-media img,
   .private-project-showcase .project-card:hover .card-more b { transform: none; }
+}
+
+/* AP-208: Auf iPhone 15 Pro und 16 Pro erscheint immer genau eine Rezension.
+   Die horizontale Wischbewegung folgt der mobilen Gartenbild-Vorschau. */
+@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+  .private-review-carousel.has-review-swipe {
+    --ink: #f4f6f0;
+    --ink-2: #d5dccf;
+    --ink-mute: #aeb8a8;
+    --green-500: #b6d97a;
+    --green-700: #8cc63f;
+    height: auto;
+    min-height: 0;
+    border-color: rgba(140,198,63,.28);
+    border-radius: 20px;
+    background:
+      radial-gradient(circle at 92% 4%,rgba(140,198,63,.09),transparent 31%),
+      #20251f;
+    box-shadow: 0 26px 58px -38px rgba(0,0,0,.92),inset 0 1px 0 rgba(255,255,255,.035);
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-carousel-head {
+    align-items: center;
+    padding: 17px 18px 16px;
+    border-bottom-color: rgba(182,217,122,.14);
+    background: linear-gradient(135deg,rgba(43,53,39,.98),rgba(31,37,30,.92));
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-viewport {
+    display: flex;
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 258px;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-viewport.is-jumping {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-item {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    min-height: 258px;
+    padding: 20px 20px 18px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-top: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scrollbar-color: rgba(49,82,0,.28) transparent;
+    scrollbar-width: thin;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-item::before {
+    content: "“";
+    position: absolute;
+    z-index: 0;
+    margin: 34px 0 0 -5px;
+    color: rgba(182,217,122,.065);
+    font-family: Georgia,serif;
+    font-size: 5.4rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-item > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-item-head {
+    min-height: 20px;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-item-head > span:last-child {
+    max-width: 52%;
+    font-size: .64rem;
+    letter-spacing: .07em;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-excerpt {
+    margin-top: 17px;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-excerpt p {
+    font-size: .94rem;
+    line-height: 1.52;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-item figcaption {
+    margin-top: auto;
+    padding-top: 18px;
+    font-size: .69rem;
+    letter-spacing: .012em;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-details {
+    margin-top: 15px;
+    border-color: rgba(182,217,122,.2);
+    background: linear-gradient(135deg,rgba(182,217,122,.075),rgba(255,255,255,.025));
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-details:hover {
+    border-color: rgba(182,217,122,.34);
+    box-shadow: 0 12px 28px -24px rgba(0,0,0,.9);
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-details-chevron {
+    background: rgba(182,217,122,.12);
+    color: #b6d97a;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-details[open] .private-review-details-chevron {
+    background: #8cc63f;
+    color: #151a13;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-details[open] > summary {
+    border-bottom-color: rgba(182,217,122,.16);
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-details blockquote {
+    border-left-color: rgba(182,217,122,.44);
+    background: rgba(182,217,122,.075);
+  }
+
+  .private-review-swipe-controls {
+    justify-content: center;
+    min-height: 58px;
+    margin: 0;
+    padding: 7px 16px;
+    border-top-color: rgba(182,217,122,.14);
+    background: linear-gradient(180deg,rgba(35,42,33,.72),rgba(29,35,28,.96));
+  }
+
+  .private-review-swipe-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+
+  .private-review-swipe-dots button {
+    display: grid;
+    width: 42px;
+    height: 44px;
+    padding: 0;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .private-review-swipe-dots button > span {
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(244,246,240,.28);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+    transition: width .2s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease);
+  }
+
+  .private-review-swipe-dots button[aria-current="true"] > span {
+    width: 22px;
+    background: #8cc63f;
+    box-shadow: 0 0 0 1px rgba(182,217,122,.14);
+  }
+
+  .private-review-swipe-dots button:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: -5px;
+    border-radius: 999px;
+  }
+}
+
+@media (min-width:390px) and (max-width:404px) and (orientation:portrait) and (prefers-reduced-motion:reduce) {
+  .private-review-carousel.has-review-swipe .private-review-viewport {
+    scroll-behavior: auto;
+  }
+
+  .private-review-swipe-dots button > span {
+    transition: none;
+  }
+}
+
+/* AP-209: Die beiden bereits freigegebenen Hintergrundtöne aus Willkommen
+   (#1B1E19) und Über uns (#171916) führen als ruhiger Rhythmus durch die
+   vollständige iPhone-Seite. Inhaltlich verbundene Bereiche teilen eine Fläche. */
+@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+  html.home-theme-dark body {
+    background: #171916;
+  }
+
+  html.home-theme-dark :is(
+    .mobile-social-proof,
+    .private-request-paths,
+    .private-proof-bento,
+    .private-faq
+  ) {
+    background: #1b1e19;
+  }
+
+  html.home-theme-dark :is(
+    .mr-ueber,
+    .private-process-updated,
+    .private-contact,
+    .site-footer
+  ) {
+    background: #171916;
+  }
+
+  html.home-theme-dark :is(
+    .mr-ueber,
+    .private-request-paths,
+    .private-process-updated,
+    .private-proof-bento,
+    .private-contact,
+    .private-faq,
+    .site-footer
+  ) {
+    border-color: rgba(151,206,32,.075);
+    box-shadow: inset 0 1px 0 rgba(151,206,32,.045);
+  }
+
+  html.home-theme-dark .private-process-updated .step-card h3 {
+    margin-bottom: 8px;
+    color: var(--home-yellow);
+    font-family: "Comic Sans MS","Comic Sans","Chalkboard SE",cursive;
+    font-size: 1.0625rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+    overflow-wrap: normal;
+    opacity: .9;
+    text-shadow:
+      1px 1px 0 #315200,
+      0 0 7px rgba(242,226,12,.16);
+  }
 }

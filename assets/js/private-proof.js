@@ -1,6 +1,7 @@
 (() => {
   const carousel = document.querySelector('[data-review-pair-rotator]');
   if (!carousel) return;
+  if (carousel.dataset.iphoneReviewSwipe === 'true') return;
 
   const pairs = Array.from(carousel.querySelectorAll('[data-review-pair]'));
   const controls = carousel.querySelector('[data-review-controls]');

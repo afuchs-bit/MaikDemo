@@ -1713,6 +1713,18 @@ p  { margin: 0; }
   transform: translateY(0);
 }
 
+/* Wenn GSAP verfuegbar ist, steuert es die sichtbaren Reveal-Eigenschaften.
+   Spezielle Markenanimationen wie der Willkommensstempel behalten ihre eigene
+   CSS-Kurve und werden von ScrollTrigger lediglich ausgeloest. */
+html.gsap-reveal-active .reveal:not(.gate-welcome-kicker) {
+  transition: none;
+  will-change: opacity, transform;
+}
+
+html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
+  will-change: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
