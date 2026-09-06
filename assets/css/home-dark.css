@@ -2087,69 +2087,205 @@ html.home-theme-dark .mr-ueber {
   background: var(--bg);
 }
 
-/* --- Block 1: Kopfzeile. Ohne Linie darueber, ohne Icon - so skizziert. --- */
+/* --- Block 1: Kopf mit Eyebrow (AP-217) ---------------------------------
+   Der Eyebrow ist zeichengleich das Bauteil der Rezensionssektion
+   (.private-proof-since, privat-form.css:3174): 0.76rem, 800, 0.08em gesperrt,
+   Versalien, Zeichen in --home-yellow. Nur die Textfarbe weicht ab - dort steht
+   er auf gruenem Panel und braucht rgba(255,255,255,.8), hier auf --bg. */
 html.home-theme-dark .mr-ueber__kopf { margin-bottom: var(--space-section-head); }
 
 html.home-theme-dark .mr-ueber__kopf h2 { margin: 0; }
 
-html.home-theme-dark .mr-ueber__unter {
-  margin: var(--space-title-subtext) 0 0;
-  color: var(--ink-2);
-  font-family: var(--display);
-  font-size: var(--type-subsection-title-size);
-  line-height: 1.15;
+html.home-theme-dark .mr-ueber__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 14px;
+  color: var(--ink-mute);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
-/* --- Block 2: Text und Foto als Raster (AP-216) ---------------------------
-   Ersetzt den Float aus AP-179. Der Kommentar dort rechnete 26 Zeichen je Zeile
-   vor und berief sich auf eine Entscheidung des Auftraggebers. Die Zahl stammt
-   aus der Zeit vor der Textkuerzung (AP-212) und stimmt nicht mehr: mit dem Foto
-   eingesetzt und bei 390 px nachgemessen standen SECHS Zeilen mit 17-21 Zeichen
-   da, danach sprang der Text auf 48 - das Bild ist nur wenige Zeilen hoch, der
-   Umfluss endet mitten im Absatz. Ein Raster haelt die Spaltenbreite konstant.
+html.home-theme-dark .mr-ueber__eyebrow svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: var(--home-yellow);
+}
 
-   Die Textspalte wird auf 62ch gedeckelt. Ohne Deckel mass sie bei 1440 px
-   Fensterbreite 124 Zeichen je Zeile, waehrend der Absatz unter dem Video im
-   SELBEN Abschnitt bei 75 lag (max-width: 68ch). 62ch ist der Wert, den
-   styles.css bereits fuer .lead und .type-section-lead setzt - kein neuer.
+/* ==========================================================================
+   AP-217: Der Hangwinkel der Sektion.
 
-   justify-content: space-between statt einer 1fr-Spalte: bei 1240 px Container
-   ergeben 62ch + 300 px + Spalte rund 1010 px. Mit 1fr waere der Rest in die
-   Textspalte geflossen und haette den 62ch-Deckel wieder sichtbar gemacht
-   (Spalte 844 px, Text 620 px, 224 px Loch dazwischen). So sitzt das Bild
-   buendig an der rechten Containerkante.
+   Der Hero schneidet seine Kante mit clip-path polygon(0 0, 100% 28%, ...) und
+   fuehrt dafuer --mobile-hero-slope-angle (7,1deg bei 900px bis 17,9deg auf sehr
+   schmalen Geraeten). Bisher gab es die Schraege nur dort und nur unter 900px.
 
-   align-items: center: die Bildkachel ist mit Unterschrift rund 330 px hoch, der
-   Absatz 153 px. Bei start haengt der Text oben und laesst darunter 180 px Loch;
-   zentriert verteilt sich der Ueberschuss auf beide Seiten. */
-html.home-theme-dark .mr-ueber__intro {
+   Hier wird derselbe Gedanke auf den Trennstrich zwischen Wort und Beleg
+   angewandt. 4deg ist bewusst flacher als der Hero: der steht ueber der vollen
+   Fensterbreite, diese Kante nur ueber rund 510px Hoehe. Bei 7deg schoebe sich
+   ihr oberes Ende 31px aus der Mitte und die Spalten wirkten verrutscht;
+   bei 4deg sind es 18px - sichtbar, aber ohne die Zweispaltigkeit zu stoeren.
+
+   --mr-ueber-kante-breite ist die Standardbreite einer Haarlinie im Projekt. */
+html.home-theme-dark .mr-ueber {
+  --mr-ueber-winkel: 4deg;
+  --mr-ueber-kante: 1px;
+}
+
+/* --- Block 2: Wort und Beleg (AP-217) ------------------------------------
+   Ersetzt das Raster aus AP-216. Die Verhaeltnisse 1.05fr / 1px / 0.95fr
+   stammen aus dem freigegebenen Entwurf: die Wortspalte bekommt etwas mehr
+   Platz als die Belegspalte, ohne dass die Kante aus der Mitte rutscht.
+
+   align-items: start statt center - anders als beim Raster aus AP-216 sind
+   beide Spalten mehrzeilig; zentriert haetten sie oben wie unten ungleiche
+   Abstaende zur Kante. */
+html.home-theme-dark .mr-ueber__split {
   display: grid;
-  grid-template-columns: minmax(0, 62ch) clamp(220px, 21vw, 300px);
-  justify-content: space-between;
-  column-gap: clamp(24px, 3.2vw, 56px);
-  row-gap: clamp(20px, 4vw, 32px);
-  align-items: center;
+  grid-template-columns: minmax(0, 1.05fr) var(--mr-ueber-kante) minmax(0, .95fr);
+  gap: clamp(26px, 3.4vw, 54px);
+  align-items: start;
+}
+
+/* Die Kante selbst. Sie ist ein leeres Element und traegt keinen Text, deshalb
+   aria-hidden im Markup.
+
+   Warum transform: skewX und nicht ein gedrehtes Pseudo-Element: rotate wuerde
+   die Linie an ihren Enden aus der Rasterzelle schieben und dort abgeschnitten
+   werden. skewX laesst Ober- und Unterkante auf ihrer Hoehe und neigt nur die
+   Senkrechte - genau das, was der Hero mit skewY(--mobile-hero-slope-angle)
+   fuer seine waagerechte Kante tut. */
+html.home-theme-dark .mr-ueber__kante {
+  align-self: stretch;
+  transform: skewX(calc(var(--mr-ueber-winkel) * -1));
+
+  /* Nicht var(--line): eine Haarlinie mit 12% Weiss kommt auf --bg auf 1,15:1
+     und ist auf dem Schirm nicht mehr als Neigung zu erkennen - gemessen, sie
+     verschwand im Beweisbild vollstaendig. Als reine Trennlinie waere das
+     richtig, hier traegt sie aber das Motiv der Sektion.
+     Der Verlauf setzt die Kante dort kraeftig, wo die Neigung am meisten auffaellt
+     (auf halber Hoehe), und laesst sie zu beiden Enden auslaufen, damit sie nicht
+     wie ein Rahmen wirkt. Der Ton ist --home-small-accent, derselbe wie unter der
+     Signatur zwei Spalten weiter links. */
+  background: linear-gradient(
+    to bottom,
+    transparent 0,
+    var(--home-small-accent) 22%,
+    var(--home-small-accent) 78%,
+    transparent 100%);
+  opacity: .55;
+}
+
+html.home-theme-dark .mr-ueber__wort,
+html.home-theme-dark .mr-ueber__beleg { min-width: 0; }
+
+/* Der Leitsatz. Displayschrift wie jede H2 der Seite, aber als Absatz gesetzt -
+   die Ueberschrift der Sektion ist "Ueber uns", nicht dieser Satz.
+   KEINE Anfuehrungszeichen: er ist kein Zitat und soll auch keines vortaeuschen. */
+html.home-theme-dark .mr-ueber__leitsatz {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.9vw, 2.5rem);
+  line-height: 1.16;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+html.home-theme-dark .mr-ueber__leitsatz em {
+  font-style: normal;
+  color: var(--home-lime);
 }
 
 html.home-theme-dark .mr-ueber__text {
-  margin: 0;
+  margin: 22px 0 0;
   color: var(--ink-2);
   font-size: var(--type-section-lead-size);
   line-height: 1.7;
+  max-width: 62ch;
+}
+
+/* Die Signatur steht nach einer Trennlinie, nicht auf einer Karte: sie ist die
+   Unterschrift unter das Gesagte, kein eigener Baustein. Die Linie ist bewusst
+   kurz (Breite 42px) - eine durchlaufende haette die Spalte geteilt. */
+html.home-theme-dark .mr-ueber__signatur {
+  margin: 22px 0 0;
+  padding-top: 18px;
+  border-top: 2px solid var(--home-small-accent);
+  max-width: 42ch;
+  color: var(--ink-mute);
+  font-size: .88rem;
+  line-height: 1.5;
+  border-image: linear-gradient(to right, var(--home-small-accent) 0 42px, transparent 42px) 1;
+}
+
+html.home-theme-dark .mr-ueber__signatur b {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--ink);
+  font-weight: 800;
+  font-size: .98rem;
+}
+
+/* Die Faktenzeilen nehmen die Kartenwerte der Leistungssektion auf, bleiben aber
+   flacher (13/15px Innenabstand statt 24): sie sind Beleg zur Aussage nebenan,
+   keine eigenstaendigen Karten. */
+html.home-theme-dark .mr-ueber__fakten {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html.home-theme-dark .mr-ueber__fakten li {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 13px 15px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+  border: 1px solid var(--line-2);
+  color: var(--ink-2);
+  font-size: .92rem;
+  line-height: 1.45;
+}
+
+html.home-theme-dark .mr-ueber__fakten li b {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--ink);
+  font-weight: 800;
+  font-size: .95rem;
+}
+
+html.home-theme-dark .mr-ueber__fakten li svg {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  margin-top: 1px;
+  color: var(--home-lime);
+}
+
+/* Das Fotopaar. 4:5 stehend, weil beide Quellen hochformatig gedacht sind
+   (ueber-team ist 480x600) und ein Paar nur dann als Paar liest, wenn beide
+   Kacheln dieselbe Form haben. */
+html.home-theme-dark .mr-ueber__paar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 26px;
 }
 
 html.home-theme-dark .mr-ueber__foto { margin: 0; }
 
-/* aspect-ratio 1/1 plus object-fit: cover, obwohl die Quelle bereits quadratisch
-   ist: so bleibt die Kachel quadratisch, falls das Bild spaeter durch ein anderes
-   Seitenverhaeltnis ersetzt wird, und die Zeilenhoehe des Rasters springt nicht.
-   Rahmen und Schatten sind die Kartenwerte der Leistungssektion (--line,
-   --shadow-card) - dieselbe Erhebung wie bei den Leistungskarten, damit die
-   Sektion nicht als einzige ohne Flaeche dasteht. */
 html.home-theme-dark .mr-ueber__foto img {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
   height: auto;
   object-fit: cover;
   border-radius: var(--radius-sm);
@@ -2164,62 +2300,77 @@ html.home-theme-dark .mr-ueber__foto figcaption {
   line-height: 1.45;
 }
 
-/* Unter 860 px steht das Foto unter dem Text. max-width: 240px ist Absicht: ueber
-   die volle Spaltenbreite (350 px bei 390 px Fenster) wuerde die Kachel zum
-   Leitbild der Sektion und damit zu einer Aussage, die sie nicht treffen soll.
-   Damit faellt die Freigabe aus AP-179 ("auch auf Mobil nebeneinander"): sie
-   stuetzte sich auf eine Zeilenlaengenrechnung von vor AP-212, die nicht mehr
-   zutrifft. Vom Auftraggeber am 06.09.2026 so entschieden. */
+/* --- Umbruch: die Kante kippt um 90 Grad --------------------------------
+   AP-184 hat dieselbe Uebersetzung fuer die Gewerbeweiche beschrieben - "skewY
+   wird zu skewX, die asymmetrischen Radien drehen mit". Hier andersherum: aus
+   der geneigten Senkrechten wird die geneigte Waagerechte.
+
+   Ohne das faellt mit der Zweispaltigkeit auch das Motiv weg, und die Sektion
+   waere auf dem Telefon wieder eine reine Textstrecke - genau die Schwaeche,
+   die der Entwurf bei sich selbst benennt. */
 @media (max-width: 860px) {
-  html.home-theme-dark .mr-ueber__intro {
+  html.home-theme-dark .mr-ueber__split {
     grid-template-columns: minmax(0, 1fr);
-    justify-content: start;
+    gap: clamp(22px, 5vw, 32px);
   }
-  html.home-theme-dark .mr-ueber__foto { max-width: 240px; }
+
+  html.home-theme-dark .mr-ueber__kante {
+    height: var(--mr-ueber-kante);
+    align-self: auto;
+    transform: skewY(calc(var(--mr-ueber-winkel) * -1));
+    /* Der Verlauf dreht mit der Kante: aus to bottom wird to right. */
+    background: linear-gradient(
+      to right,
+      transparent 0,
+      var(--home-small-accent) 22%,
+      var(--home-small-accent) 78%,
+      transparent 100%);
+  }
+
+  html.home-theme-dark .mr-ueber__paar { margin-top: 20px; }
+
+  /* Gemessen bei 859px: ohne Deckel bekommt jedes Foto 389px Breite und damit
+     486px Hoehe - die Sektion wuchs auf 2414px, mehr als in jeder anderen
+     Breite. Beide Kacheln blieben in ihrem Raster korrekt, nur war das Raster
+     die volle Spalte. 420px halten das Paar auf der Groesse, die es auch
+     zweispaltig hat (2x200px plus Fuge); die Fakten folgen dem Textmass von
+     62ch, sonst laufen die Belegzeilen breiter als die Aussage daneben. */
+  html.home-theme-dark .mr-ueber__paar { max-width: 420px; }
+  html.home-theme-dark .mr-ueber__fakten { max-width: 62ch; }
 }
 
-/* Die Unterzeile lief bis zur Containerkante mit. Bei 22ch bricht sie nach
-   "Gartenbau mit" um und steht als zweizeiliger Block unter der H2 - dieselbe
-   Staffelung wie im Willkommen-Abschnitt. */
-html.home-theme-dark .mr-ueber__unter { max-width: 22ch; }
+/* --- Block 3: Mustergarten als Medienkachel (AP-217) ---------------------
+   Der 100vw-Ausbruch aus AP-179 entfaellt. Das Video sitzt jetzt in der
+   Containerbreite und traegt dieselbe Erhebung wie die Karten der Leistungs-
+   und Ablaufsektion, dazu das asymmetrische Eck 24/24/44/24, das im Projekt an
+   fuenf Stellen die Marken-Ecke ist (form-trust-card.css:16, kontakt.css:52,
+   gewerbe.css:51, privat-form.css:2111).
 
-/* --- Block 3: randlose Buehne fuer das Video ----------------------------
-   Der Ausbruch sitzt an der HUELLE, nicht am Video: styles.css:190 setzt
-   `img, svg, video { max-width: 100% }` und wuerde ein direktes width:100vw
-   am Video wieder kappen.
+   overflow: hidden ist noetig, damit das Video den Radius annimmt - ein
+   <video> beschneidet sich nicht selbst an der Elternecke. */
+html.home-theme-dark .mr-ueber__muster { margin-top: var(--space-section-compact); }
 
-   100vw schliesst die Scrollleiste ein. Das faengt das bereits vorhandene
-   body { overflow-x: hidden } (styles.css:187) ab; der klebende Header bleibt
-   funktionsfaehig, weil html der Scroll-Container ist und die Regel auf body
-   steht. Beides ist nachgemessen. */
 html.home-theme-dark .mr-ueber__buehne {
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-  /* AP-213: Der Titel soll knapp ueber dem Video stehen. Die frueheren 64px kamen
-     NICHT vom Titel (dessen Abstand betrug 16,8px), sondern von diesem Rand: ein
-     margin-block setzt oben wie unten denselben Wert, und beide Raender fielen
-     zusammen. Deshalb getrennt - oben knapp, unten bleibt der Sektionsabstand,
-     sonst klebte der Text darunter am Band. */
-  margin-top: clamp(6px, .8vw, 10px);
-  margin-bottom: var(--space-section-compact);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px 24px 44px 24px;
+  box-shadow: var(--shadow-card);
   background: var(--bg-dark);
 }
 
-/* Das Video misst nativ 720x544 - fast 4:3. Randlos ueber 1200px gezogen ergaebe
-   das einen 907px hohen Block, der die Seite erschlaegt und auf gaengigen Fenstern
-   nicht mehr in den Blick passt. Die Skizze zeigt ein BAND, kein Quadrat.
-   Deshalb ein festes Seitenverhaeltnis mit object-fit: cover - der Film wird oben
-   und unten beschnitten statt verzerrt. max-height deckelt zusaetzlich auf niedrigen
-   Fenstern.
-   Hinweis zur Schaerfe: Die Quelle ist nur 720px breit und wird ab etwa 720px
-   Fensterbreite hochskaliert. Das laesst sich hier nicht beheben, es braeuchte eine
-   hoeher aufgeloeste Fassung. Vermerkt in docs/offene-punkte.md. */
+/* Das Video misst nativ 720x544 - fast 4:3. In der Containerbreite (1240px)
+   ergaebe das unbeschnitten 937px Hoehe. Die Skizze zeigt ein BAND, deshalb ein
+   festes Seitenverhaeltnis mit object-fit: cover - der Film wird oben und unten
+   beschnitten statt verzerrt.
+   Hinweis zur Schaerfe: Die Quelle ist nur 720px breit und wird ab etwa dieser
+   Fensterbreite hochskaliert. Vermerkt in docs/offene-punkte.md. */
 html.home-theme-dark .mr-ueber__video {
+  display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 21 / 9;
   max-height: 62svh;
   object-fit: cover;
-  display: block;
 
   /* AP-181: Das Video soll gar nicht bedienbar sein. controls ist im Markup
      entfallen; pointer-events: none nimmt zusaetzlich das Kontextmenue beim
@@ -2229,57 +2380,54 @@ html.home-theme-dark .mr-ueber__video {
   pointer-events: none;
 }
 
-/* --- Titel ueber dem Band ------------------------------------------------
-   Baloo 2 ist die runde Zweitschrift des Hauses und steht im @font-face-Block
-   oben in dieser Datei.
-
-   Eine eigene Regel ist noetig: Die bestehende Comic-Regel haengt an
-   .mr-willkommen__gross .mr-comic, eine Klasse allein greift hier also nicht.
-
-   Aufrecht, nicht kursiv: Es existiert nur ein aufrechter Schnitt (700). Das
-   kursive "Willkommen" entsteht durch synthetische Schraegstellung - bei einem
-   Titel mit Ziffern faellt das unangenehm auf. Die mobile H1 weiter oben in
-   dieser Datei setzt die Schrift ebenfalls aufrecht. */
-/* AP-213: Zusammenfallende Raender - der Abstand zum Band ist das Maximum aus
-   diesem Rand und dem margin-top der Buehne, nicht deren Summe. Nur die Buehne
-   zu senken brachte deshalb nichts: gemessen blieben 17px, weil dieser Wert
-   (16,8px) der groessere war. Beide muessen klein sein. */
-/* AP-214: Der Titel stiess ohne Abstand an den Fliesstext darueber - gemessen 0px.
-   Folge von AP-213: dort ging es darum, ihn an das VIDEO heranzuruecken; nach oben
-   hatte der Kopf nie einen Rand, und weder der Absatz noch der Umflussblock
-   bringen einen mit.
-   --space-section-compact und keine gegriffene Zahl: derselbe Wert trennt in dieser
-   Sektion bereits Videoband von Text und Text von Karte. */
-html.home-theme-dark .mr-ueber__videokopf {
-  margin-top: var(--space-section-compact);
-  margin-bottom: clamp(6px, .8vw, 10px);
-}
-
-/* AP-213: Look des Wortes "Garten" aus dem mobilen Hero.
-   Dort ist "Garten" KEIN Text, sondern ein handgezeichneter Pinselschriftzug
-   (assets/img/hero/garten-schriftzug.png, 800x196). Die Buchstaben lassen sich nicht
-   uebernehmen - die Datei schreibt "Garten" und kann nichts anderes sagen.
-   Uebertragbar ist der Charakter: das grelle Gruen und die Neigung.
-   Die Farbe ist aus dem PNG ausgelesen, nicht geschaetzt: 43.187 Bildpunkte tragen
-   exakt #56E607 - und genau dieser Wert steht bereits als --mobile-logo-green in
-   styles.css :root. Kein neuer Ton.
-   Die Neigung entsteht synthetisch; es gibt nur einen aufrechten Baloo-2-Schnitt.
-   Der Willkommen-Text macht es beim Wort "Willkommen" genauso. */
-html.home-theme-dark .mr-ueber__videotitel {
+/* Die Kapsel traegt die H3 des Blocks. Der dunkle Grund ist keine Zierde: an
+   dieser Stelle steht im Standbild heller Himmel. Gemessen als Canvas-Komposit
+   ueber dem tatsaechlichen Bildausschnitt, schlechtestes Pixel unter der Kapsel,
+   gegen die Textfarbe rgb(250,250,246):
+     ohne Kapsel  1,37 : 1   (unlesbar)
+     mit Kapsel   9,22 : 1   (WCAG AA verlangt 4,5)
+   Der Weichzeichner ist Zugabe - die Deckkraft allein traegt den Wert. */
+html.home-theme-dark .mr-ueber__badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
-  font-family: "Baloo 2", cursive;
-  font-weight: 700;
-  font-style: italic;
-  font-size: clamp(1.7rem, 3.1vw, 2.6rem);
-  line-height: 1.1;
-  letter-spacing: -.01em;
-  color: var(--mobile-logo-green);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(11,12,10,.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.18);
+  color: var(--home-on-dark);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: .92rem;
+  line-height: 1.2;
 }
 
-/* --- Text unter dem Band ------------------------------------------------- */
-html.home-theme-dark .mr-ueber__videotext { margin-top: clamp(14px, 1.8vw, 22px); }
+html.home-theme-dark .mr-ueber__badge i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--home-lime);
+}
 
-html.home-theme-dark .mr-ueber__videotext p {
+/* Zwei Spalten: die Erklaerung traegt die Zeile, der Besuchshinweis ist eine
+   Nebenbemerkung und steht deshalb schmaler und blasser rechts daneben. */
+html.home-theme-dark .mr-ueber__mustertext {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  gap: clamp(20px, 3vw, 44px);
+  align-items: start;
+  margin-top: 22px;
+}
+
+html.home-theme-dark .mr-ueber__mustertext p {
   margin: 0;
   max-width: 68ch;
   color: var(--ink-2);
@@ -2287,15 +2435,46 @@ html.home-theme-dark .mr-ueber__videotext p {
   line-height: 1.7;
 }
 
-/* --- Block 5: NRW-Karte, links gesetzt, rund 40% der Inhaltsbreite ------ */
+html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
+  color: var(--ink-mute);
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+/* Das Band wird zum Bild, sobald es keine Bandbreite mehr hat. Der Zuschnitt
+   ist in drei Stufen gestaffelt, weil ein fester Wert an beiden Enden falsch
+   waere: bei 390px zeigt 21:9 nur noch einen Streifen, bei 859px ergibt 4:3
+   ein 593px hohes Bild - gemessen der groesste Einzelposten der Sektion und der
+   Grund, warum sie dort 2414px hoch wurde. Dazwischen liegt 16:9. */
+@media (max-width: 860px) {
+  html.home-theme-dark .mr-ueber__buehne { border-radius: 20px 20px 34px 20px; }
+  html.home-theme-dark .mr-ueber__video { aspect-ratio: 16 / 9; }
+  html.home-theme-dark .mr-ueber__mustertext {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 599px) {
+  html.home-theme-dark .mr-ueber__video { aspect-ratio: 4 / 3; }
+}
+
+/* --- Block 4: Einsatzgebiet (AP-216, Spaltenmass ueberarbeitet in AP-217) ---
+   AP-216 hatte 420px Karte plus 34ch Legende; rechts blieben rund 430px leer
+   (dort als offener Punkt O5 vermerkt). AP-217 nimmt das Mass des Entwurfs:
+   die Karte wird kleiner, die Legende bekommt einen Eyebrow und fuellt die
+   Zeile. Die Karte ist hier Beleg, nicht Hauptsache - die Sektion traegt jetzt
+   das Mustergartenband.
+
+   Vier Kinder statt drei: der Eyebrow ist in AP-217 dazugekommen. */
 html.home-theme-dark .mr-ueber__karte { margin-top: var(--space-section-compact); }
 
 html.home-theme-dark .mr-ueber__karte .proof-map {
   display: grid;
-  grid-template-columns: minmax(0, 420px) minmax(0, 34ch);
+  grid-template-columns: minmax(0, 300px) minmax(0, 46ch);
   justify-content: start;
   column-gap: clamp(24px, 3.2vw, 56px);
-  row-gap: 10px;
+  row-gap: 8px;
   align-items: start;
   width: 100%;
   margin: 0;
@@ -2303,25 +2482,31 @@ html.home-theme-dark .mr-ueber__karte .proof-map {
 }
 
 /* max-height: none hebt den Hoehendeckel fuer das Karten-SVG auf (styles.css:835
-   sowie die Regel ab 1024 px, die auf clamp(260px, 46vh, 348px) deckelt). Er
-   stammt aus der Zeit, als die Karte in einer schmalen Spalte stand; hier liess
-   er die figure 496 px breit werden, waehrend das SVG darin nur 353 px belegte -
-   143 px Leerraum INNERHALB der figure, gemessen. */
+   sowie die Regel ab 1024px, die auf clamp(260px, 46vh, 348px) deckelt). Er
+   stammt aus der Zeit, als die Karte in einer schmalen Spalte stand. */
 html.home-theme-dark .mr-ueber__karte .proof-map svg {
   grid-column: 1;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 3;
   align-self: center;
   max-height: none;
 }
 
-/* Die Legende war fuer eine schmale Spalte UNTER der Karte gebaut
-   (styles.css:883, flex + space-between). Neben der Karte schob sie den Sitz an
-   die rechte Containerkante - gemessen rund 300 px Loch zwischen Staedtezeile
-   und "Sitz in Herne". Hier stapelt sie. */
-html.home-theme-dark .mr-ueber__karte .proof-map-cap {
+html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte {
   grid-column: 2;
   grid-row: 1;
   align-self: end;
+  justify-self: start;   /* sonst zieht das Raster das inline-flex auf Spaltenbreite */
+  margin: 0;
+}
+
+/* Die Legende war fuer eine schmale Spalte UNTER der Karte gebaut
+   (styles.css:883, flex + space-between). Neben der Karte schob sie den Sitz an
+   die rechte Containerkante - gemessen rund 300px Loch zwischen Staedtezeile
+   und "Sitz in Herne". Hier stapelt sie. */
+html.home-theme-dark .mr-ueber__karte .proof-map-cap {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -2330,14 +2515,18 @@ html.home-theme-dark .mr-ueber__karte .proof-map-cap {
 
 html.home-theme-dark .mr-ueber__karte .proof-map-src {
   grid-column: 2;
-  grid-row: 2;
+  grid-row: 3;
   align-self: start;
+  margin-top: 4px;
 }
 
-/* Unter 860 px wieder gestapelt. justify-items/text-align: left, weil
-   styles.css:808 die Legende auf Mobil zentriert - als einziges Element der
-   Sektion, alles andere steht linksbuendig. */
+/* Unter 860px wieder gestapelt. text-align: left, weil styles.css:808 die
+   Legende auf Mobil zentriert - als einziges Element der Sektion, alles andere
+   steht linksbuendig. */
 @media (max-width: 860px) {
+  html.home-theme-dark .mr-ueber__karte {
+    margin-top: var(--space-section-compact);
+  }
   html.home-theme-dark .mr-ueber__karte .proof-map {
     grid-template-columns: minmax(0, 1fr);
     justify-items: start;
@@ -2347,10 +2536,25 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
     align-items: flex-start;
   }
   html.home-theme-dark .mr-ueber__karte .proof-map svg,
+  html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte,
   html.home-theme-dark .mr-ueber__karte .proof-map-cap,
   html.home-theme-dark .mr-ueber__karte .proof-map-src {
     grid-column: 1;
     grid-row: auto;
+  }
+  /* Auf Mobil steht der Eyebrow VOR der Karte - er ordnet sie ein. */
+  html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte { order: -1; }
+
+  /* AP-217 gibt der Sektion mit Fotopaar und Mustergartenband deutlich mehr
+     Inhalt; die Karte ist hier nur noch Beleg. Ueber die volle Spaltenbreite
+     wurde sie 345px hoch - mehr als am Desktop (296px), wo sie neben der
+     Legende steht. 260px ist die Hoehe, ab der die Kreisgrenzen unleserlich
+     wuerden; darueber bringt die Karte auf dem Telefon keine Information mehr
+     dazu, nur Laenge. Spart gemessen 85px. */
+  html.home-theme-dark .mr-ueber__karte .proof-map svg {
+    align-self: start;
+    justify-self: start;
+    max-height: 260px;
   }
 }
 

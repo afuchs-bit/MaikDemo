@@ -248,7 +248,7 @@ brächte rund 48 Zeichen.
 |---|---|---|
 | Foto für Block 2 | `assets/img/_src/` | **geliefert** (AP-216, 06.09.2026): `ueber-hund.jpg`, 980 × 980 |
 | Mustergarten-Video | `assets/video/mustergarten.mp4` | **geliefert** — siehe eigenen Abschnitt unten |
-| Plakatbild zum Video | `assets/img/_src/` | fehlt — auf dem Entwicklungsrechner liegt kein `ffmpeg`, ein Standbild lässt sich nicht selbst erzeugen |
+| Plakatbild zum Video | `assets/img/_src/` | **gesetzt** (AP-217): `mustergarten-standbild.jpg`, 960 × 725. Ein Einzelbild aus derselben Datei; auf diesem Rechner liegt weiterhin kein `ffmpeg`, der Frame kam fertig aus dem Entwurf |
 | Bildunterschrift Block 2 | — | **gesetzt** (AP-216): „Feierabend im Garten." Der Entwurf „Unser …" der Skizze setzte den Namen des Hundes voraus, der weiterhin fehlt — siehe AP-216, O1 |
 | Text Block 4 | — | Stichworte: „Damit wir uns Zeit nur für Sie nehmen", „Inspiration Mustergarten" |
 
@@ -271,11 +271,25 @@ verlängern. **Zu entscheiden, sobald das Foto vorliegt.**
 `assets/img/ueber/ueber-3` liegt um 90° gedreht vor — die Ableitung wurde ohne Beachtung
 der EXIF-Orientierung erzeugt. Vor einer Verwendung neu bauen.
 
-### Das Mustergarten-Video ist KI-generiert
+### Das Mustergarten-Video — Herkunft geklärt (Korrektur vom 06.09.2026)
 
-**Vom 05.09.2026.** Die gelieferte Datei stammt aus Midjourney — erkennbar am
-Ursprungsnamen `u1187684669_httpss.mj.run…`. Sie zeigt **nicht** den realen Mustergarten
-in Herne.
+> **Diese Einschätzung war falsch und ist am 06.09.2026 richtiggestellt worden.**
+> Das Video **zeigt die reale Anlage**. Midjourney wurde ausschließlich zur
+> Qualitätsverbesserung des vorhandenen Materials eingesetzt, nicht zur Erzeugung
+> des Motivs — vom Auftraggeber auf Rückfrage klargestellt. Der Ursprungsname
+> `u1187684669_httpss.mj.run…` belegt nur den Durchlauf durch das Werkzeug, nicht
+> die Herkunft des Bildinhalts.
+>
+> **Folge:** Grundregel 1 ist nicht berührt, und das Standbild darf als
+> Referenzaufnahme dienen. AP-217 setzt es deshalb als `poster` ein — bis dahin
+> stand bis zum Ladeende ein schwarzes Band.
+>
+> Der ursprüngliche Text bleibt darunter stehen, damit die Korrektur nachvollziehbar
+> ist.
+
+**Ursprünglicher Eintrag vom 05.09.2026 (überholt):** Die gelieferte Datei stammt aus
+Midjourney — erkennbar am Ursprungsnamen `u1187684669_httpss.mj.run…`. Sie zeigt
+~~**nicht** den realen Mustergarten in Herne~~.
 
 Das steht in Spannung zu Grundregel 1 („Niemals Fakten erfinden") und zum Bildbestand
 dieses Projekts, in dem generiertes Material nicht als Referenzaufnahme dienen soll. Die
@@ -283,7 +297,7 @@ Seite behauptet an mehreren Stellen etwas Konkretes: „1.500 m² Mustergarten i
 „Unser Mustergarten mit Sitz in Herne".
 
 **Der Auftraggeber hat nach Rückfrage entschieden, sie trotzdem als Mustergarten
-einzubauen.** Hier festgehalten, damit es bei einer späteren Prüfung nicht übersehen wird.
+einzubauen.**
 
 **Zu klären:** ob der Betriebsinhaber das mitträgt — es geht um die Darstellung seines
 eigenen Betriebsgeländes gegenüber Kunden.
@@ -398,7 +412,7 @@ Foto und die NRW-Karte hat ihre Dunkelfarben zurück. Was dabei offen geblieben 
 | O1 | **Name des Hundes** | Die Bildunterschrift lautet „Feierabend im Garten." und behauptet damit nichts. Mit Namen wäre etwa „Feierabend für ⟨Name⟩." möglich. Am 06.09.2026 beim Auftraggeber angefragt, liegt nicht vor. |
 | O2 | **Aufnahmeort** — Musterfläche oder Kundengarten? | Deshalb steht im `alt` nur, was zu sehen ist. Eine Unterschrift wie „in unserem Mustergarten" wäre ohne Bestätigung eine Tatsachenbehauptung (§ 5 UWG) und ist bewusst nicht formuliert. Hängt mit dem offenen Punkt zu den Teich- und Palmenfotos zusammen. |
 | O3 | **Hunderasse** | Im `alt` bewusst nicht benannt — sie ist nicht bestätigt. |
-| O5 | **Rechtes Drittel der Kartenzeile** | Bleibt bei rund 430 px leer. Der naheliegende Füller wäre die für AP-151 geplante Qualifikationsleiste (Gartenbaumeister, Sachverständiger für Baumkontrolle). Braucht bestätigten Wortlaut. |
+| O5 | ~~**Rechtes Drittel der Kartenzeile**~~ | **Erledigt mit AP-217.** Die Karte ist auf 300 px verkleinert, die Legende hat einen Eyebrow bekommen und füllt die Zeile. Die Qualifikationen stehen jetzt in der Signatur weiter oben. |
 
 ### Bewusste Abweichungen, keine offenen Punkte
 
@@ -437,3 +451,90 @@ Gehört in ein eigenes Arbeitspaket, teils mit Entscheidungsbedarf:
    Desktop. Gegenüber dem Stand vor AP-216 ist das keine Verschlechterung (dort war es auf
    allen Breiten die volle Breite), aber es unterläuft das Ziel des Deckels. Ein
    `max-width: 62ch` am Absatz in der Mobil-Query würde es beheben.
+
+
+## AP-217 — Über uns als Signatur-Sektion
+
+**Vom 06.09.2026.** Umbau auf Grundlage des gelieferten Entwurfs B („Signatur"), Fassung
+„Über uns". Die Sektion hatte als einzige der Startseite keinen einzigen Baustein aus dem
+Formenvorrat der Seite: keinen Eyebrow, keine Karte, keine Fläche, keinen Akzent.
+
+### Was die Sektion jetzt zeigt — und woher es belegt ist
+
+| Aussage | Beleg |
+|---|---|
+| „Meisterbetrieb seit 2003 in Herne" | `content/stammdaten.json`: `firma.gegruendet 2003-01-01`, `besonderheiten[2]` |
+| „Maik Rohdich, Gartenbaumeister" | `index.html` JSON-LD Z. 122, `gate-welcome` Z. 446 |
+| „Zertifizierter Baumkontrolleur der Landwirtschaftskammer" | `gate-welcome` Z. 449 |
+| „Sachverständiger für Baumkontrolle, Ausbildungsbetrieb" | `stammdaten.json` `besonderheiten[0]` und `[1]` |
+| „Alles aus einer Hand … eigenen Fachkräften und eigenem Maschinenpark" | bestehender Fließtext, vom Auftraggeber ausdrücklich so gewollt (AP-179) |
+| „1.500 m² Mustergarten" | bestehende H3 aus AP-213, unverändert im Wortlaut |
+
+**Warum die Qualifikationen keine Dopplung sind:** Sie stehen zwar in `.gate-welcome`, aber
+diese Sektion ist ab 901 px `display: none` — auf dem Desktop stand „Gartenbaumeister"
+bisher **nirgends sichtbar** auf der Startseite (gemessen bei 1440 px). Auf dem Telefon
+liegen zwischen beiden Stellen 2.335 px.
+
+**Korrektur an der Vorlage:** Die Analyse führte „Ausbildungsbetrieb" als Angabe, die
+„bisher nirgends sichtbar auf der Startseite" stehe. Das trifft nur für den Desktop zu —
+auf 390 px ist sie sichtbar.
+
+### Entscheidungen des Auftraggebers vom 06.09.2026
+
+| # | Frage | Entscheidung |
+|---|---|---|
+| E1 | Welcher Entwurf? | **B · Signatur** |
+| E2 | H2 als Etikett oder Aussage? | **Etikett** — die H2 bleibt „Über uns" |
+| E7 | Zitat „Wir reden Ihnen nicht nach dem Mund."? | **Nicht verwendet.** Der Satz ist im Repo nirgends belegt und stammt aus Gesprächsnotizen. An seiner Stelle steht „Gartenbau mit Handschlagqualität." — bis AP-216 die Unterzeile dieser Sektion und damit freigegeben. Gesetzt **ohne** Anführungszeichen, damit er kein Zitat vortäuscht |
+| E8 | Video-Standbild? | **Ja** — siehe die Herkunftsklärung oben |
+| E6 | Ersten Satz des Fließtexts streichen? | **Ja.** Reine Streichung der Dopplung zum Willkommen-Abschnitt |
+
+### Bewusste Abweichungen von früheren Arbeitspaketen
+
+- **Der randlose 100vw-Ausbruch des Videos (AP-179) entfällt.** Das Video sitzt jetzt in
+  der Containerbreite, mit Rahmen, Schatten und dem asymmetrischen Eck 24/24/44/24 — der
+  Marken-Ecke, die im Projekt an fünf Stellen so gesetzt ist. So verlangt es der
+  freigegebene Entwurf.
+- **Die H3 aus AP-213 sitzt jetzt als Kapsel im Bild.** Wortlaut unverändert, Position und
+  Farbe geändert: `--mobile-logo-green` #56E607 wäre auf dem Foto nicht lesbar gewesen
+  (gemessen 1,37 : 1 ohne Kapselgrund, 9,22 : 1 mit).
+- **Der 42 %-Float bzw. das 62ch-Raster aus AP-216 ist abgelöst.** Die Kartenfarben-
+  Entscopung aus AP-216 gilt unverändert weiter.
+
+### Die geneigte Kante
+
+Der Hero schneidet seine Kante mit `clip-path: polygon(0 0, 100% 28%, …)` im Winkel
+`--mobile-hero-slope-angle`; AP-184 hat dasselbe Motiv schon einmal um 90° gedreht
+(„skewY wird zu skewX, die asymmetrischen Radien drehen mit"). AP-217 überträgt das auf die
+Trennung zwischen Aussage und Beleg: am Desktop eine geneigte Senkrechte, unter 860 px
+dieselbe Kante um 90° gedreht. Damit überlebt das Motiv den Umbruch, statt mit der
+Zweispaltigkeit wegzufallen — die Schwäche, die der Entwurf bei sich selbst benennt.
+
+Der Winkel ist mit 4° flacher als der Hero (7,1–17,9°): dieser steht über die volle
+Fensterbreite, die Kante hier nur über rund 510 px Höhe. Bei 7° schöbe sich ihr oberes
+Ende 31 px aus der Mitte und die Spalten wirkten verrutscht; bei 4° sind es 18 px.
+
+### Gemessene Höhen
+
+| Fensterbreite | vor AP-217 | nach AP-217 |
+|---|---|---|
+| 390 px | 1.741 | **2.015** |
+| 768 px | — | **2.001** |
+| 859 px | — | **2.068** |
+| 1440 px | 2.026 | **1.933** |
+
+Auf dem Desktop wird die Sektion trotz Fotopaar, Faktenzeilen und Mustergartenband
+**kürzer**. Auf dem Telefon kostet sie 274 px mehr. Drei Maßnahmen haben dort gegengesteuert
+(zusammen rund 400 px): die Karte auf 260 px gedeckelt, das Fotopaar auf 420 px begrenzt
+und der Videozuschnitt in drei Stufen gestaffelt (4:3 unter 600 px, 16:9 bis 860 px, 21:9
+darüber). Ohne sie wäre die Sektion bei 859 px 2.414 px hoch geworden.
+
+### Weiterhin offen
+
+| # | Punkt | |
+|---|---|---|
+| O1 | Name des Hundes | unverändert offen, siehe AP-216 |
+| O2 | Aufnahmeort des Hundefotos | unverändert offen, siehe AP-216 |
+| O10 | **Auflösung des Videos** | Die Quelle ist 720 px breit und wird ab etwa dieser Fensterbreite hochskaliert; bei 1440 px läuft sie auf 1.240 px. Eine höher aufgelöste Fassung würde das beheben. |
+| O11 | **Dateigröße des Videos** | 9.468.292 Bytes. Unverändert der größte Einzelposten der Startseite. Das `poster` mildert nur den ersten Eindruck, nicht die Ladelast. |
+| O12 | **WCAG 2.2.2** | Das Video startet selbsttätig, läuft in Schleife und lässt sich nicht anhalten. Unverändert gegenüber AP-181, dort als Auftraggeberentscheidung vermerkt. |

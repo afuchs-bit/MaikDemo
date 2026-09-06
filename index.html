@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zl" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zm" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260905ao" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -656,101 +656,149 @@ html.home-theme-dark body { background-color: #171916; }
      Willkommen-Text zwei Sektionen darueber "Seit ueber 20 Jahren". -->
 <section class="mr-ueber" id="ueber" aria-labelledby="ueber-title">
 
-  <!-- Block 1 - Kopfzeile. Bewusst ausserhalb des Umflussbereichs, damit die
-       Foto-Oberkante auf der ersten TEXTZEILE sitzt und nicht auf der Ueberschrift. -->
+  <!-- Block 1 - Kopf. Eyebrow plus H2 (AP-217).
+       Der Eyebrow ist das Bauteil aus der Rezensionssektion (.private-proof-since):
+       Standortzeichen, Versalien, 0.08em gesperrt. Ueber uns war die einzige Sektion
+       der Startseite ohne eins. Wortlaut aus content/stammdaten.json - Meisterbetrieb,
+       gegruendet 2003, Sitz Herne.
+       Die H2 bleibt das Etikett "Ueber uns" - vom Auftraggeber am 06.09.2026 so
+       entschieden. Die Aussage steht darunter als Leitsatz. -->
   <div class="container mr-ueber__kopf">
+    <p class="mr-ueber__eyebrow reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+      <span>Meisterbetrieb seit 2003 in Herne</span>
+    </p>
     <h2 class="type-section-title reveal" id="ueber-title">Über uns</h2>
-    <p class="mr-ueber__unter reveal">Gartenbau mit Handschlagqualität.</p>
   </div>
 
-  <!-- Block 2 - Text und Foto als Raster (AP-216).
-       Loest den Float aus AP-179 ab. Die figure steht jetzt NACH dem Absatz: im
-       Raster bestimmt die Spalte die Lage, die Quelltextreihenfolge folgt dem
-       Lesefluss - Text zuerst, Bild als Zugabe. Fuer Vorlesewerkzeuge ist das die
-       richtige Reihenfolge, beim Float war sie umgekehrt erzwungen.
+  <!-- Block 2 - Wort und Beleg, getrennt durch die geneigte Kante (AP-217).
+       Loest das Raster aus AP-216 ab. Links die Aussage, rechts der Beleg dafuer.
 
-       Foto: Rueckseite des Betriebs, bewusst klein. Es ersetzt kein Leitbild und
-       traegt die Sektion nicht - es waermt sie an. Der Auftraggeber stellt kein
-       Portraetfoto zur Verfuegung (AP-178), das hier ist die tragfaehige
-       Alternative: ein Zeichen von Naehe ohne Person im Bild.
+       Der Leitsatz ist KEIN Zitat und traegt deshalb auch keine Anfuehrungszeichen:
+       "Gartenbau mit Handschlagqualitaet." stand bis AP-216 als Unterzeile in dieser
+       Sektion und ist damit freigegeben. Der Entwurf hatte an dieser Stelle einen
+       Satz aus Gespraechsnotizen ("Wir reden Ihnen nicht nach dem Mund."), der im
+       Repo nirgends belegt ist - nach Ruecksprache am 06.09.2026 ersetzt.
 
-       ACHTUNG: Die sizes-Werte unten sind identisch mit den Spaltenbreiten in
-       home-dark.css (.mr-ueber__intro). Wird eines geaendert, muss das andere mit.
+       Der erste Satz des Flisstextes ist gestrichen. Er wiederholte "Seit ueber 20
+       Jahren ..." aus dem Willkommen-Abschnitt zwei Sektionen weiter oben; die
+       Dopplung ist in docs/offene-punkte.md unter AP-216 vermerkt. Reine Streichung,
+       keine neue Aussage.
 
-       [OFFEN: Name des Hundes und Aufnahmeort (Musterflaeche oder Kundengarten).
-        Solange beides fehlt, behauptet weder alt noch figcaption etwas darueber -
-        beschrieben ist nur, was im Bild zu sehen ist.] -->
-  <div class="container mr-ueber__intro">
-    <p class="mr-ueber__text reveal">Seit über 20 Jahren planen, bauen und pflegen wir Gärten
-       und Außenanlagen in Herne und Umgebung. Jeder Garten entsteht aus Ihren
-       Vorstellungen, den Möglichkeiten des Grundstücks und unserer Erfahrung. Von der
-       ersten Beratung bis zur Pflege alles aus einer Hand – mit eigenen Fachkräften und
-       eigenem Maschinenpark, termingerecht umgesetzt.</p>
+       Die Signatur nennt zum ersten Mal auf der Startseite einen Namen und die
+       Qualifikationen. Beide sind belegt (JSON-LD Z. 122, gate-welcome Z. 446/449) -
+       nur ist gate-welcome ab 901px display:none, auf dem Desktop stand bisher also
+       nirgends "Gartenbaumeister". -->
+  <div class="container mr-ueber__split">
+    <div class="mr-ueber__wort">
+      <p class="mr-ueber__leitsatz reveal">Gartenbau mit <em>Handschlag&shy;qualität.</em></p>
+      <p class="mr-ueber__text reveal">Jeder Garten entsteht aus Ihren Vorstellungen, den
+         Möglichkeiten des Grundstücks und unserer Erfahrung. Von der ersten Beratung bis
+         zur Pflege alles aus einer Hand – mit eigenen Fachkräften und eigenem
+         Maschinenpark, termingerecht umgesetzt.</p>
+      <p class="mr-ueber__signatur reveal">
+        <b>Maik Rohdich</b>
+        Gartenbaumeister · Zertifizierter Baumkontrolleur der Landwirtschaftskammer
+      </p>
+    </div>
 
-    <figure class="mr-ueber__foto reveal">
-      <picture>
-        <source type="image/avif"
-                srcset="assets/img/ueber/ueber-hund-480.avif 480w, assets/img/ueber/ueber-hund-960.avif 960w"
-                sizes="(max-width: 860px) 240px, clamp(220px, 21vw, 300px)">
-        <source type="image/webp"
-                srcset="assets/img/ueber/ueber-hund-480.webp 480w, assets/img/ueber/ueber-hund-960.webp 960w"
-                sizes="(max-width: 860px) 240px, clamp(220px, 21vw, 300px)">
-        <img src="assets/img/ueber/ueber-hund.webp" width="980" height="980"
-             alt="Ein brauner Hund döst auf einer Gartenliege; dahinter ein Pflasterweg, ein Kiesbeet und ein Formgehölz."
-             loading="lazy" decoding="async">
-      </picture>
-      <figcaption>Feierabend im Garten.</figcaption>
-    </figure>
+    <!-- Die geneigte Kante. Sie ersetzt die senkrechte Haarlinie des Entwurfs und
+         nimmt den Hangwinkel des Hero auf (dort clip-path polygon(0 0, 100% 28%, ...)
+         im Winkel --mobile-hero-slope-angle). Unter 860px kippt sie um 90 Grad und
+         wird zur waagerechten Trennkante zwischen Wort- und Belegblock - dieselbe
+         Uebersetzung, die AP-184 fuer die Gewerbeweiche beschreibt ("skewY wird zu
+         skewX, die asymmetrischen Radien drehen mit"). So bleibt das Motiv auf dem
+         Telefon erhalten, statt mit der Zweispaltigkeit wegzufallen. -->
+    <div class="mr-ueber__kante" aria-hidden="true"></div>
+
+    <div class="mr-ueber__beleg">
+      <ul class="mr-ueber__fakten reveal">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+          <span><b>Alles aus einer Hand</b>Planung, Bau und Pflege mit eigenen Fachkräften und eigenem Maschinenpark.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V12M12 12 5 8m7 4 7-4"/><path d="M5 8v8l7 4 7-4V8l-7-4Z"/></svg>
+          <span><b>Fachlich abgesichert</b>Sachverständiger für Baumkontrolle, Ausbildungsbetrieb.</span>
+        </li>
+      </ul>
+
+      <!-- Fotopaar. Beide Aufnahmen lagen ungenutzt im Repo.
+           [OFFEN: Name des Hundes und Aufnahmeort - siehe docs/offene-punkte.md,
+            AP-216 O1/O2. Weder alt noch Bildunterschrift behaupten etwas darueber.]
+           "Eigene Fachkraefte." wiederholt nur, was im Flisstext daneben steht und
+           vom Auftraggeber ausdruecklich so gewollt ist (AP-179). -->
+      <div class="mr-ueber__paar reveal">
+        <figure class="mr-ueber__foto">
+          <picture>
+            <source type="image/avif"
+                    srcset="assets/img/ueber/ueber-hund-480.avif 480w, assets/img/ueber/ueber-hund-960.avif 960w"
+                    sizes="(max-width: 860px) 45vw, 245px">
+            <source type="image/webp"
+                    srcset="assets/img/ueber/ueber-hund-480.webp 480w, assets/img/ueber/ueber-hund-960.webp 960w"
+                    sizes="(max-width: 860px) 45vw, 245px">
+            <img src="assets/img/ueber/ueber-hund.webp" width="980" height="980"
+                 alt="Ein brauner Hund döst auf einer Gartenliege; dahinter ein Pflasterweg, ein Kiesbeet und ein Formgehölz."
+                 loading="lazy" decoding="async">
+          </picture>
+          <figcaption>Feierabend im Garten.</figcaption>
+        </figure>
+        <figure class="mr-ueber__foto">
+          <picture>
+            <source type="image/avif"
+                    srcset="assets/img/ueber/ueber-team-480.avif 480w"
+                    sizes="(max-width: 860px) 45vw, 245px">
+            <source type="image/webp"
+                    srcset="assets/img/ueber/ueber-team-480.webp 480w"
+                    sizes="(max-width: 860px) 45vw, 245px">
+            <img src="assets/img/ueber/ueber-team.webp" width="480" height="600"
+                 alt="Rückenansicht eines Mitarbeiters mit Schutzhelm und Gehörschutz; auf der Arbeitsweste steht rohdich.de."
+                 loading="lazy" decoding="async">
+          </picture>
+          <figcaption>Eigene Fachkräfte.</figcaption>
+        </figure>
+      </div>
+    </div>
   </div>
 
-  <!-- Block 3 - Mustergarten-Video, randlos ueber die volle Fensterbreite.
+  <!-- Block 3 - Mustergarten als Medienkachel (AP-217).
+       Der randlose 100vw-Ausbruch aus AP-179 entfaellt: der Entwurf setzt das Video
+       in die Containerbreite, damit es dieselbe Flaeche und dasselbe Eck bekommt wie
+       die Karten der Leistungs- und Ablaufsektion.
 
-       AP-180: laeuft stumm in Schleife und startet von selbst - aber erst, wenn
-       der Block ins Sichtfeld kommt. Deshalb preload="none" und KEIN
-       autoplay-Attribut: der Start kommt aus ueber-video.js, sonst wuerden zwei
-       Mechaniken gegeneinander laufen und die 9 MB laeden bei jedem Seitenaufruf.
-       AP-181: controls ist entfallen - das Video soll gar nicht bedienbar sein.
-       Dazu traegt es in home-dark.css pointer-events: none, sonst bliebe es
-       anklickbar und boete ueber das Kontextmenue Herunterladen und Steuerung an.
-       Ohne controls liegt es ausserdem nicht in der Tabreihenfolge.
-       ACHTUNG, bewusste Abweichung: Damit laesst sich die Bewegung nicht mehr
-       anhalten. WCAG 2.2.2 verlangt das bei selbst startender Bewegung ueber fuenf
-       Sekunden - bei 0,6-fachem Tempo sind es 8,7 s je Umlauf. Vom Auftraggeber so
-       entschieden, siehe docs/offene-punkte.md, AP-181.
-       Die Geschwindigkeit setzt das Skript, fuer playbackRate gibt es kein Attribut.
+       AP-180/181 bleiben unangetastet: stumm, in Schleife, Start aus ueber-video.js,
+       preload="none", kein controls, pointer-events: none im CSS. Die bewusste
+       Abweichung von WCAG 2.2.2 (Bewegung laesst sich nicht anhalten) besteht
+       unveraendert fort - siehe docs/offene-punkte.md, AP-181.
 
-       Kein poster-Attribut: Auf dem Entwicklungsrechner liegt kein ffmpeg, ein
-       Standbild laesst sich nicht erzeugen. Browser zeigen mit preload="metadata"
-       in aller Regel das erste Einzelbild - im Browser nachgemessen, nicht
-       angenommen. Sollte spaeter ein eigenes Plakatbild kommen, hier eintragen.
+       NEU ist das poster-Attribut. Bis AP-216 stand bis zum Ladeende ein schwarzes
+       Band (558px am Desktop). Das Standbild ist ein Einzelbild aus derselben Datei,
+       die Aufnahme zeigt die reale Anlage - vom Auftraggeber am 06.09.2026
+       klargestellt, die gegenteilige Notiz in docs/offene-punkte.md war falsch.
 
-       [OFFEN: Die Aufnahme ist KI-generiert und bildet den realen Mustergarten
-        nicht ab. Vom Auftraggeber so entschieden, siehe docs/offene-punkte.md,
-        AP-179.] -->
-  <div class="container mr-ueber__videokopf">
-    <h3 class="mr-ueber__videotitel reveal">1.500 m² Mustergarten</h3>
-  </div>
+       Die H3 aus AP-213 bleibt die Ueberschrift des Blocks, sitzt jetzt aber als
+       Kapsel IM Bild. Damit steht "1.500 m² Mustergarten" weiterhin genau einmal
+       hier. Gegenueber AP-213 geaendert: Farbe und Kursivstellung - auf dem Foto
+       waere --mobile-logo-green #56E607 nicht lesbar. -->
+  <div class="container mr-ueber__muster reveal">
+    <div class="mr-ueber__buehne">
+      <video class="mr-ueber__video" muted loop playsinline preload="none" tabindex="-1"
+             poster="assets/img/ueber/mustergarten-standbild-960.webp"
+             aria-label="Rundgang durch den Mustergarten">
+        <source src="assets/video/mustergarten.mp4" type="video/mp4">
+        <p>Ihr Browser kann dieses Video nicht abspielen.
+           <a href="assets/video/mustergarten.mp4">Video herunterladen</a>.</p>
+      </video>
+      <h3 class="mr-ueber__badge"><i aria-hidden="true"></i>1.500 m² Mustergarten</h3>
+    </div>
 
-  <div class="mr-ueber__buehne">
-    <video class="mr-ueber__video" muted loop playsinline preload="none" tabindex="-1"
-           aria-label="Rundgang durch den Mustergarten">
-      <source src="assets/video/mustergarten.mp4" type="video/mp4">
-      <p>Ihr Browser kann dieses Video nicht abspielen.
-         <a href="assets/video/mustergarten.mp4">Video herunterladen</a>.</p>
-    </video>
-  </div>
-
-  <!-- Block 4 - Text unter dem Video, wieder im normalen Raster, ohne Umfluss.
-       Wortlaut vom Auftraggeber. Angeglichen: fehlendes "nach" in "nur nach
-       Absprache", doppelte Leerzeichen, Halbgeviertstriche wie im Rest der Seite,
-       Schlusspunkt. "1.500 m²" folgt der Schreibweise aus Proofleiste und Kennzahl.
-       Inhaltlich gedeckt: Teil B, Zeile 75 - "Besuche vor Ort: ausschliesslich nach
-       vorheriger Terminvereinbarung". -->
-  <div class="container mr-ueber__videotext reveal">
-    <p>Hier sehen Sie Materialien, Pflanzen und Wege in echt, bevor Sie sich
-       entscheiden müssen – Inspiration zum Anfassen für Ihren eigenen Garten.
-       Besichtigungen nur nach Absprache – dann können wir uns Zeit nur für Sie
-       nehmen.</p>
+    <!-- Wortlaut vom Auftraggeber, unveraendert aus AP-179. -->
+    <div class="mr-ueber__mustertext">
+      <p>Hier sehen Sie Materialien, Pflanzen und Wege in echt, bevor Sie sich
+         entscheiden müssen – Inspiration zum Anfassen für Ihren eigenen Garten.</p>
+      <p class="mr-ueber__hinweis">Besichtigungen nur nach Absprache – dann können wir
+         uns Zeit nur für Sie nehmen.</p>
+    </div>
   </div>
 
   <!-- Block 5 - NRW-Karte, aus der Proof-Sektion hierher VERSCHOBEN.
@@ -885,6 +933,14 @@ html.home-theme-dark body { background-color: #171916; }
           </g>
         </g>
       </svg>
+
+      <!-- AP-217: Eyebrow ueber der Legende, damit die Kartenzeile denselben Kopf
+           traegt wie die Sektion selbst. Die Beschriftung stand vorher ohne
+           Einordnung neben der Karte. -->
+      <p class="mr-ueber__eyebrow mr-ueber__eyebrow--karte">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+        <span>Einsatzgebiet</span>
+      </p>
 
       <figcaption class="proof-map-cap">
         <em>Herne · Bochum · Gelsenkirchen · Recklinghausen · Castrop-Rauxel<span class="proof-map-reach">Auf Anfrage auch deutschlandweit.</span></em>
