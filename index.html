@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zz41" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260906zz42" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260906ba" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260906r" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -747,12 +747,26 @@ html.home-theme-dark body { background-color: #171916; }
     </div>
 
     <div class="mr-ueber__beleg">
-      <!-- AP-220: Weiterleitung auf die Unterseite. Der Pfeil ist ein reines
-           Schmuckzeichen und deshalb aria-hidden - Vorlesewerkzeuge lesen den
-           Linktext, nicht den Pfeil. Positioniert allein ueber .btn { gap: 10px },
-           kein eigenes CSS noetig; dasselbe Muster wie gewerbekunden/index.html:241. -->
-      <a class="btn btn-outline mr-ueber__mehr reveal" href="ueber-uns/">
-        Wollen Sie mehr über uns erfahren? <span aria-hidden="true">→</span>
+      <!-- AP-235: Weiterleitung auf die Unterseite, jetzt als Logo-Lasche.
+           Die Form ist der Pfad aus .mobile-proof-request ("Gartenwunsch
+           besprechen", mobile-social-proof.css:490) - eine Kapsel mit
+           abgeschraegter Lasche oben rechts. Uebernommen ist die FORM, nicht die
+           Fuellung: dort ist der Pfad in --home-lime gefuellt, hier steht er als
+           Umriss. Der Button ist ein Nebenweg, die Hauptaktion bleibt die Anfrage.
+
+           Das Logo traegt die Textalternative, nicht das <a>. Vorgelesen wird der
+           Link damit zu "Mehr zu Maik Rohdich Garten- und Landschaftsbau" und
+           bleibt ein vollstaendiger Satz. Das Symbol #brand-logo liegt bereits als
+           Sprite weiter oben in dieser Datei - kein zusaetzlicher Download.
+
+           preserveAspectRatio="none" zieht den Pfad auf die Buttongroesse. Beim
+           gefuellten Vorbild faellt das nicht auf; bei einem Umriss schon, deshalb
+           traegt der Pfad vector-effect="non-scaling-stroke" - sonst waeren
+           waagerechte und senkrechte Kanten unterschiedlich dick. -->
+      <a class="mr-ueber__mehr reveal" href="ueber-uns/">
+        <svg class="mr-ueber__mehr-form" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+        <span class="mr-ueber__mehr-text">Mehr zu</span>
+        <svg class="mr-ueber__mehr-logo" viewBox="0 0 640 150" role="img" aria-label="Maik Rohdich Garten- und Landschaftsbau"><use href="#brand-logo"/></svg>
       </a>
 
       <!-- Fotopaar. Beide Aufnahmen lagen ungenutzt im Repo.

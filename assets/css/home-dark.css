@@ -2206,37 +2206,117 @@ html.home-theme-dark .mr-ueber__text {
   max-width: 62ch;
 }
 
-/* AP-220: An der Stelle der Faktenkachel steht jetzt der Weg zur Unterseite.
+/* AP-235: Der Weg zur Unterseite als Logo-Lasche.
 
-   styles.css:263 setzt .btn-outline auf --green-500 #8CC63F. Das traegt auf --bg
-   #171916, schliesst aber nicht an die uebrigen Akzente der Sektion an - Eyebrow
-   und Leitsatz arbeiten mit --home-lime und --home-yellow. Die passenden
-   Ueberschreibungen in dieser Datei haengen an .section-proof, das seit AP-215 in
-   keiner HTML-Datei mehr vorkommt und deshalb tot ist.
+   Die Form stammt aus .mobile-proof-request ("Gartenwunsch besprechen",
+   mobile-social-proof.css:462 ff.) - dort ist sie ein SVG hinter dem Text statt
+   eines border-radius, weil die abgeschraegte Lasche oben rechts mit Radien nicht
+   zu bauen ist. Uebernommen sind Aufbau und Pfad, NICHT die Fuellung: die Vorlage
+   ist in --home-lime gefuellt und traegt einen Schlagschatten, hier steht der Pfad
+   als Umriss. Der Button ist ein Nebenweg; die Hauptaktion der Seite bleibt die
+   Anfrage, und eine zweite gefuellte Limettenflaeche haette ihr Gewicht genommen.
 
-   Bewusst als Umriss und nicht gefuellt: Der Button ist ein Nebenweg, keine
-   Hauptaktion - die Hauptaktion der Seite ist die Anfrage. Ein gefuellter
-   Limettenknopf haette hier mehr Gewicht als das Anfrageformular weiter unten. */
+   Zwei Unterschiede zur Vorlage, beide bewusst:
+   - Sie steht in @media (max-width: 900px) und gilt nur mobil. Diese Regeln gelten
+     in allen Breiten.
+   - Ihr Pfad ist gefuellt, deshalb faellt dort nicht auf, dass
+     preserveAspectRatio="none" die Geometrie verzerrt. Bei einem Umriss waeren
+     waagerechte und senkrechte Kanten unterschiedlich dick - das faengt
+     vector-effect="non-scaling-stroke" am Pfad im Markup ab. */
 html.home-theme-dark .mr-ueber__mehr {
+  position: relative;
+  isolation: isolate;
   align-self: start;
-  color: var(--home-dark-accent);
-  border-color: var(--home-dark-accent);
-  background: transparent;
-  white-space: normal;   /* .btn setzt nowrap - der Satz ist zu lang dafuer */
-  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 68px;
+  padding: 10px 26px;
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+html.home-theme-dark .mr-ueber__mehr-form {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--home-dark-accent);
+  stroke-width: 1.5;
+  pointer-events: none;
+  transition: stroke .18s var(--ease), fill .18s var(--ease);
+}
+
+html.home-theme-dark .mr-ueber__mehr-text {
+  position: relative;
+  z-index: 1;
+  flex: none;
+}
+
+/* 36px Hoehe: Der Footer zeigt dasselbe Logo bei 46px, der Header bei 60px. Bei 36
+   ist "MAIK ROHDICH" 13,9px gross und damit lesbar; die beiden Nebenzeilen liegen
+   bei 5,3px und wirken als Bildmarke - im Footer bei 6,6px genauso. Deshalb traegt
+   das Logo im Markup ein aria-label: vorgelesen wird der Name, nicht geraten. */
+html.home-theme-dark .mr-ueber__mehr-logo {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  height: 36px;
+  width: auto;
+  aspect-ratio: 640 / 150;
+
+  /* Derselbe Schatten wie am Footer-Logo (.brand-logo-light, styles.css:346).
+     Grund gemessen: Der Schriftzug traegt im Symbol fill #5a8a1c und kommt gegen
+     --bg #171916 auf 4,29:1 - knapp unter den 4,5, die WCAG AA fuer Text dieser
+     Groesse verlangt. Als Markenzeichen ist es davon ausgenommen (WCAG 1.4.3
+     nimmt Logos und Markennamen aus), und der Wert gilt im Header und im Footer
+     genauso. Der Schatten setzt das Logo trotzdem sichtbar von der Flaeche ab,
+     ohne die Markenfarben anzutasten. Die beiden gelben Nebenzeilen liegen bei
+     14,63:1. Vorgelesen wird ohnehin das aria-label am SVG. */
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,.45));
 }
 
 @media (hover: hover) and (pointer: fine) {
-  html.home-theme-dark .mr-ueber__mehr:hover {
-    color: #171916;
-    background: var(--home-dark-accent);
-    border-color: var(--home-dark-accent);
+  html.home-theme-dark .mr-ueber__mehr:hover .mr-ueber__mehr-form {
+    fill: rgba(182, 217, 122, .12);
+    stroke: var(--home-lime);
   }
 }
 
-/* Das Fotopaar. 4:5 stehend, weil beide Quellen hochformatig gedacht sind
-   (ueber-team ist 480x600) und ein Paar nur dann als Paar liest, wenn beide
-   Kacheln dieselbe Form haben. */
+/* Der Fokusring darf nicht unter der Form verschwinden - sie liegt auf z-index -1,
+   der Ring gehoert an das <a> selbst. */
+html.home-theme-dark .mr-ueber__mehr:focus-visible {
+  outline: 2px solid var(--home-focus, var(--home-lime));
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.home-theme-dark .mr-ueber__mehr-form { transition: none; }
+}
+
+/* Unter 420px wird die Lasche sonst breiter als die Spalte. */
+@media (max-width: 420px) {
+  html.home-theme-dark .mr-ueber__mehr {
+    gap: 10px;
+    padding: 10px 18px;
+    font-size: .95rem;
+  }
+  html.home-theme-dark .mr-ueber__mehr-logo { height: 30px; }
+}
+
+/* Das Fotopaar. AP-235: quadratisch statt 4:5 stehend.
+   Grund: Die Hundeaufnahme IST quadratisch (980x980). Bei 4:5 schnitt
+   object-fit: cover 20 % der Breite weg - je 10 % links und rechts, und genau
+   dort liegen das Kiesbeet mit den Graesern und das Formgehoelz im Topf. Bei 1:1
+   ist das ganze Bild zu sehen; mehr Garten gibt die Quelle nicht her, ein
+   groesseres Original liegt nicht vor.
+   Beide Kacheln bleiben gleich geformt - ein Paar liest sich nur dann als Paar. */
 html.home-theme-dark .mr-ueber__paar {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2249,12 +2329,20 @@ html.home-theme-dark .mr-ueber__foto { margin: 0; }
 html.home-theme-dark .mr-ueber__foto img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   height: auto;
   object-fit: cover;
   border-radius: var(--radius-sm);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-card);
+}
+
+/* Die Arbeitsjacke ist 480x600 und verliert im Quadrat 20 % Hoehe. Der Ausschnitt
+   wandert deshalb nach oben: Helm und Gehoerschutz bleiben vollstaendig, weg
+   faellt unten Westenflaeche. Bei einem Ruecken-Foto ist das der richtige
+   Beschnitt - der Schriftzug auf der Weste sitzt mittig und bleibt drin. */
+html.home-theme-dark .mr-ueber__paar .mr-ueber__foto:last-child img {
+  object-position: 50% 22%;
 }
 
 html.home-theme-dark .mr-ueber__foto figcaption {

@@ -643,3 +643,74 @@ Buttonkontrast 11,12 : 1 gegen `--bg` (WCAG AA verlangt 4,5). Kein horizontaler 
 beiden Seiten bei 320 / 390 / 720 / 768 / 861 / 1024 / 1440 / 1920 px. Der auskommentierte
 Team-Abschnitt erzeugt in allen acht Breiten **null** Elemente. Sektionshöhe der Startseite
 1843 → 1824 px.
+
+
+## AP-235 — Hundefoto quadratisch, Button als Logo-Lasche
+
+**Vom 06.09.2026.** Zwei Wünsche des Auftraggebers an der Über-uns-Sektion der Startseite.
+
+### Das Foto zeigt jetzt den ganzen Garten
+
+Die Kachel stand auf `aspect-ratio: 4/5`, die Aufnahme ist aber quadratisch (980 × 980).
+`object-fit: cover` schnitt dadurch **20 % der Breite** weg — je 10 % links und rechts, und
+genau dort liegen das Kiesbeet mit den Gräsern und das Formgehölz im Topf. Auf 1:1 ist das
+ganze Bild zu sehen.
+
+**Mehr geht ohne neues Material nicht.** `assets/img/_src/ueber-hund.jpg` ist bereits die
+zugeschnittene Fassung; die in AP-230 erwähnte Quelle mit 1280 × 1600 liegt nicht im Repo.
+Sollte sie nachgeliefert werden, ließe sich ein echter weiterer Ausschnitt wählen.
+
+Die Arbeitsjacke daneben ist 480 × 600 und verliert im Quadrat 20 % Höhe. Ihr Ausschnitt
+wandert deshalb auf `object-position: 50% 22%` — Helm und Gehörschutz bleiben vollständig,
+weg fällt unten Westenfläche. Der Schriftzug auf der Weste sitzt mittig und bleibt drin.
+Beide Kacheln behalten dieselbe Form; ein Paar liest sich nur dann als Paar.
+
+### Der Button trägt jetzt das Logo
+
+Aus „Wollen Sie mehr über uns erfahren? →" wird **„Mehr zu" plus Logo**. Die Form stammt
+aus `.mobile-proof-request` („Gartenwunsch besprechen", `mobile-social-proof.css:462`): eine
+Kapsel mit abgeschrägter Lasche oben rechts, gebaut als SVG hinter dem Text, weil sich diese
+Ecke mit `border-radius` nicht bauen lässt.
+
+Übernommen ist die **Form**, nicht die Füllung — die Vorlage ist in `--home-lime` gefüllt und
+trägt einen Schlagschatten, hier steht der Pfad als Umriss. Der Button ist ein Nebenweg; die
+Hauptaktion der Seite bleibt die Anfrage.
+
+Zwei Unterschiede zur Vorlage, beide bewusst:
+
+- Sie gilt nur unter 900 px, diese Regeln gelten in allen Breiten.
+- Ihr Pfad ist gefüllt, deshalb fällt dort nicht auf, dass `preserveAspectRatio="none"` die
+  Geometrie verzerrt. Bei einem Umriss schon. **Gemessen** bei 231 × 68 px (Skalierung
+  X 0,643 / Y 1,063), Deckung subpixelgenau über ein Canvas:
+
+  | | senkrechte Kante | waagerechte Kante |
+  |---|---|---|
+  | ohne `vector-effect` | 0,48 px | 0,79 px |
+  | mit `non-scaling-stroke` | 0,75 px | 0,75 px |
+
+  Ohne das Attribut wären die Kanten um 65 % unterschiedlich dick.
+
+### Barrierefreiheit
+
+Das Logo trägt die Textalternative, nicht das `<a>`. Vorgelesen wird der Link damit als
+**„Mehr zu Maik Rohdich Garten- und Landschaftsbau"** — nachgemessen am zugänglichen Namen,
+nicht angenommen. Die Form ist `aria-hidden`.
+
+**Ein Kontrastwert, der festgehalten gehört:** Der Schriftzug „MAIK ROHDICH" trägt im Symbol
+`fill="#5a8a1c"` und kommt gegen `--bg` #171916 auf **4,29 : 1** — knapp unter den 4,5, die
+WCAG AA für Text dieser Größe verlangt. Als Markenzeichen ist er davon ausgenommen (WCAG
+1.4.3 nimmt Logos und Markennamen aus), und derselbe Wert gilt im Header und im Footer. Der
+Button übernimmt deshalb den Schatten des Footer-Logos (`.brand-logo-light`), der es von der
+Fläche abhebt, ohne die Markenfarben anzutasten. Die beiden gelben Nebenzeilen liegen bei
+14,63 : 1, der Umriss bei 11,12 : 1.
+
+> **Falls die Marke einmal überarbeitet wird:** Ein Schriftzug in `--home-dark-accent`
+> #B6D97A käme auf 11,12 : 1. Das wäre eine Markenentscheidung, kein Layout-AP.
+
+### Gemessen
+
+Kein horizontaler Overflow bei 320 / 390 / 420 / 421 / 768 / 861 / 1440 / 1920 px. Beide
+Fotos in allen acht Breiten quadratisch und gleich groß. Der Button passt überall in seine
+Spalte; unter 421 px schaltet er auf das kleinere Maß (Logo 30 statt 36 px). Sektionshöhe
+1824 → **1769 px** am Desktop. `mobile-social-proof.css` ist unverändert — die Vorlage darf
+sich nicht mitbewegen.
