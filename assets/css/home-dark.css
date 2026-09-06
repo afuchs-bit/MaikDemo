@@ -2296,6 +2296,12 @@ html.home-theme-dark .footer-social-iphone {
     height: 30px;
   }
 
+  html.home-theme-dark .site-footer .footer-contact-link--iphone-form .footer-contact-icon,
+  html.home-theme-dark .site-footer .footer-contact-link[href^="mailto:"] .footer-contact-icon {
+    color: var(--mobile-logo-green);
+    background: rgba(5, 10, 5, .58);
+  }
+
   html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon {
     background: rgba(5, 10, 5, .58);
   }

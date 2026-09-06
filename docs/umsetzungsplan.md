@@ -1501,3 +1501,9 @@ und öffnet den bestätigten Chat-Link. Instagram erhält ein eigenständiges,
 farbiges Kamerasymbol; mangels bestätigter Profiladresse bleibt es zunächst ein
 nicht interaktiver visueller Eintrag. Der Hinweis „WhatsApp jederzeit“ ist durch
 den wieder sichtbaren separaten Kanal erneut schlüssig.
+
+
+**AP-221, Mail- und Formularzeichen farblich angleichen (06.09.2026):** E-Mail-
+und Kontaktformularsymbol verwenden auf den vereinbarten iPhone-Breiten nun
+exakt das Hero-Grün `#56E607` auf derselben dunklen Iconfläche wie die
+Telefonzeichen. Formen, Ziele und das 2×2-Raster bleiben unverändert.
