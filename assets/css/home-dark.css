@@ -2116,25 +2116,6 @@ html.home-theme-dark .mr-ueber__eyebrow svg {
   color: var(--home-yellow);
 }
 
-/* ==========================================================================
-   AP-217: Der Hangwinkel der Sektion.
-
-   Der Hero schneidet seine Kante mit clip-path polygon(0 0, 100% 28%, ...) und
-   fuehrt dafuer --mobile-hero-slope-angle (7,1deg bei 900px bis 17,9deg auf sehr
-   schmalen Geraeten). Bisher gab es die Schraege nur dort und nur unter 900px.
-
-   Hier wird derselbe Gedanke auf den Trennstrich zwischen Wort und Beleg
-   angewandt. 4deg ist bewusst flacher als der Hero: der steht ueber der vollen
-   Fensterbreite, diese Kante nur ueber rund 510px Hoehe. Bei 7deg schoebe sich
-   ihr oberes Ende 31px aus der Mitte und die Spalten wirkten verrutscht;
-   bei 4deg sind es 18px - sichtbar, aber ohne die Zweispaltigkeit zu stoeren.
-
-   --mr-ueber-kante-breite ist die Standardbreite einer Haarlinie im Projekt. */
-html.home-theme-dark .mr-ueber {
-  --mr-ueber-winkel: 4deg;
-  --mr-ueber-kante: 1px;
-}
-
 /* --- Block 2: Wort und Beleg (AP-217) ------------------------------------
    Ersetzt das Raster aus AP-216. Die Verhaeltnisse 1.05fr / 1px / 0.95fr
    stammen aus dem freigegebenen Entwurf: die Wortspalte bekommt etwas mehr
@@ -2145,38 +2126,9 @@ html.home-theme-dark .mr-ueber {
    Abstaende zur Kante. */
 html.home-theme-dark .mr-ueber__split {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) var(--mr-ueber-kante) minmax(0, .95fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
   gap: clamp(26px, 3.4vw, 54px);
   align-items: start;
-}
-
-/* Die Kante selbst. Sie ist ein leeres Element und traegt keinen Text, deshalb
-   aria-hidden im Markup.
-
-   Warum transform: skewX und nicht ein gedrehtes Pseudo-Element: rotate wuerde
-   die Linie an ihren Enden aus der Rasterzelle schieben und dort abgeschnitten
-   werden. skewX laesst Ober- und Unterkante auf ihrer Hoehe und neigt nur die
-   Senkrechte - genau das, was der Hero mit skewY(--mobile-hero-slope-angle)
-   fuer seine waagerechte Kante tut. */
-html.home-theme-dark .mr-ueber__kante {
-  align-self: stretch;
-  transform: skewX(calc(var(--mr-ueber-winkel) * -1));
-
-  /* Nicht var(--line): eine Haarlinie mit 12% Weiss kommt auf --bg auf 1,15:1
-     und ist auf dem Schirm nicht mehr als Neigung zu erkennen - gemessen, sie
-     verschwand im Beweisbild vollstaendig. Als reine Trennlinie waere das
-     richtig, hier traegt sie aber das Motiv der Sektion.
-     Der Verlauf setzt die Kante dort kraeftig, wo die Neigung am meisten auffaellt
-     (auf halber Hoehe), und laesst sie zu beiden Enden auslaufen, damit sie nicht
-     wie ein Rahmen wirkt. Der Ton ist --home-small-accent, derselbe wie unter der
-     Signatur zwei Spalten weiter links. */
-  background: linear-gradient(
-    to bottom,
-    transparent 0,
-    var(--home-small-accent) 22%,
-    var(--home-small-accent) 78%,
-    transparent 100%);
-  opacity: .55;
 }
 
 html.home-theme-dark .mr-ueber__wort,
@@ -2278,31 +2230,13 @@ html.home-theme-dark .mr-ueber__foto figcaption {
   line-height: 1.45;
 }
 
-/* --- Umbruch: die Kante kippt um 90 Grad --------------------------------
-   AP-184 hat dieselbe Uebersetzung fuer die Gewerbeweiche beschrieben - "skewY
-   wird zu skewX, die asymmetrischen Radien drehen mit". Hier andersherum: aus
-   der geneigten Senkrechten wird die geneigte Waagerechte.
-
-   Ohne das faellt mit der Zweispaltigkeit auch das Motiv weg, und die Sektion
-   waere auf dem Telefon wieder eine reine Textstrecke - genau die Schwaeche,
-   die der Entwurf bei sich selbst benennt. */
+/* --- Umbruch: Wort und Beleg stapeln ------------------------------------
+   AP-219: Die geneigte Trennkante ist auf Wunsch des Auftraggebers entfallen -
+   in beiden Lagen. Damit fuehrt allein der Abstand die Spalten auseinander. */
 @media (max-width: 860px) {
   html.home-theme-dark .mr-ueber__split {
     grid-template-columns: minmax(0, 1fr);
     gap: clamp(22px, 5vw, 32px);
-  }
-
-  html.home-theme-dark .mr-ueber__kante {
-    height: var(--mr-ueber-kante);
-    align-self: auto;
-    transform: skewY(calc(var(--mr-ueber-winkel) * -1));
-    /* Der Verlauf dreht mit der Kante: aus to bottom wird to right. */
-    background: linear-gradient(
-      to right,
-      transparent 0,
-      var(--home-small-accent) 22%,
-      var(--home-small-accent) 78%,
-      transparent 100%);
   }
 
   html.home-theme-dark .mr-ueber__paar { margin-top: 20px; }

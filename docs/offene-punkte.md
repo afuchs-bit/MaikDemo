@@ -465,7 +465,7 @@ Formenvorrat der Seite: keinen Eyebrow, keine Karte, keine Fläche, keinen Akzen
 |---|---|
 | „Meisterbetrieb seit 2003 in Herne" | `content/stammdaten.json`: `firma.gegruendet 2003-01-01`, `besonderheiten[2]` |
 | „Sachverständiger für Baumkontrolle, Ausbildungsbetrieb" | `stammdaten.json` `besonderheiten[0]` und `[1]` |
-| „Alles aus einer Hand … eigenen Fachkräften und eigenem Maschinenpark" | bestehender Fließtext, vom Auftraggeber ausdrücklich so gewollt (AP-179) |
+| „alles aus einer Hand … eigenen Fachkräften und eigenem Maschinenpark" | bestehender Fließtext, vom Auftraggeber ausdrücklich so gewollt (AP-179). Die gleichnamige Faktenkachel ist mit AP-219 entfallen, die Aussage steht weiterhin im Absatz |
 | „1.500 m² Mustergarten" | bestehende H3 aus AP-213, unverändert im Wortlaut |
 
 **Nachtrag vom 06.09.2026 — die Signatur ist wieder entfallen.** Der Entwurf hatte unter
@@ -506,18 +506,25 @@ auf 390 px ist sie sichtbar.
 - **Der 42 %-Float bzw. das 62ch-Raster aus AP-216 ist abgelöst.** Die Kartenfarben-
   Entscopung aus AP-216 gilt unverändert weiter.
 
-### Die geneigte Kante
+### Die geneigte Kante ~~(entfallen mit AP-219)~~
+
+> **Am 06.09.2026 auf Wunsch des Auftraggebers wieder entfernt**, in beiden Lagen.
+> Die Spalten werden jetzt allein durch den Abstand getrennt. Damit trägt die Sektion
+> kein Schräg-Motiv mehr; die Formsprache der Seite kommt hier über Eyebrow,
+> Faktenkachel und die Marken-Ecke am Videoband. Der Abschnitt bleibt stehen, weil
+> die Maße für einen späteren Anlauf brauchbar sind.
 
 Der Hero schneidet seine Kante mit `clip-path: polygon(0 0, 100% 28%, …)` im Winkel
 `--mobile-hero-slope-angle`; AP-184 hat dasselbe Motiv schon einmal um 90° gedreht
-(„skewY wird zu skewX, die asymmetrischen Radien drehen mit"). AP-217 überträgt das auf die
+(„skewY wird zu skewX, die asymmetrischen Radien drehen mit"). AP-217 übertrug das auf die
 Trennung zwischen Aussage und Beleg: am Desktop eine geneigte Senkrechte, unter 860 px
-dieselbe Kante um 90° gedreht. Damit überlebt das Motiv den Umbruch, statt mit der
-Zweispaltigkeit wegzufallen — die Schwäche, die der Entwurf bei sich selbst benennt.
+dieselbe Kante um 90° gedreht.
 
-Der Winkel ist mit 4° flacher als der Hero (7,1–17,9°): dieser steht über die volle
-Fensterbreite, die Kante hier nur über rund 510 px Höhe. Bei 7° schöbe sich ihr oberes
+Der Winkel war mit 4° flacher als der Hero (7,1–17,9°): dieser steht über die volle
+Fensterbreite, die Kante nur über rund 510 px Höhe. Bei 7° schöbe sich ihr oberes
 Ende 31 px aus der Mitte und die Spalten wirkten verrutscht; bei 4° sind es 18 px.
+Eine Haarlinie in `--line` reichte dafür nicht — auf `--bg` sind das 1,15 : 1, sie war
+im Beweisbild unsichtbar. Sie brauchte einen Verlauf in `--home-small-accent`.
 
 ### Gemessene Höhen
 
@@ -543,3 +550,17 @@ darüber). Ohne sie wäre die Sektion bei 859 px 2.414 px hoch geworden.
 | O10 | **Auflösung des Videos** | Die Quelle ist 720 px breit und wird ab etwa dieser Fensterbreite hochskaliert; bei 1440 px läuft sie auf 1.240 px. Eine höher aufgelöste Fassung würde das beheben. |
 | O11 | **Dateigröße des Videos** | 9.468.292 Bytes. Unverändert der größte Einzelposten der Startseite. Das `poster` mildert nur den ersten Eindruck, nicht die Ladelast. |
 | O12 | **WCAG 2.2.2** | Das Video startet selbsttätig, läuft in Schleife und lässt sich nicht anhalten. Unverändert gegenüber AP-181, dort als Auftraggeberentscheidung vermerkt. |
+
+### Rücknahmen vom 06.09.2026 (AP-218, AP-219)
+
+Nach dem Bau hat der Auftraggeber drei Bauteile wieder streichen lassen. Der Reihe nach:
+
+| AP | Entfernt | Was das bedeutet |
+|---|---|---|
+| AP-218 | Signatur „Maik Rohdich — Gartenbaumeister · Zertifizierter Baumkontrolleur der Landwirtschaftskammer" | „Gartenbaumeister" steht damit auf dem Desktop weiterhin nirgends sichtbar auf der Startseite |
+| AP-219 | Geneigte Trennkante zwischen Wort- und Belegspalte | Die Sektion trägt kein Schräg-Motiv mehr |
+| AP-219 | Faktenkachel „Alles aus einer Hand" | Die Belegspalte hat nur noch eine Kachel; die Aussage selbst steht weiterhin im Fließtext |
+
+**Höhen nach den Rücknahmen:** Desktop 1.843 px (Ausgangswert vor AP-217: 2.026),
+Mobil 1.778 px (vorher 1.741). Die Sektion ist damit auf dem Desktop 183 px kürzer als
+vor dem Umbau und auf dem Telefon nur noch 37 px länger.
