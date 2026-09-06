@@ -705,18 +705,19 @@ html.home-theme-dark body { background-color: #171916; }
      Willkommen-Text zwei Sektionen darueber "Seit ueber 20 Jahren". -->
 <section class="mr-ueber" id="ueber" aria-labelledby="ueber-title">
 
-  <!-- Block 1 - Kopf. Eyebrow plus H2 (AP-217).
-       Der Eyebrow ist das Bauteil aus der Rezensionssektion (.private-proof-since):
-       Standortzeichen, Versalien, 0.08em gesperrt. Ueber uns war die einzige Sektion
-       der Startseite ohne eins. Wortlaut aus content/stammdaten.json - Meisterbetrieb,
-       gegruendet 2003, Sitz Herne.
+  <!-- Block 1 - Kopf. Nur noch die H2 (AP-244).
+       Bis AP-243 stand darueber ein Eyebrow "Meisterbetrieb seit 2003 in Herne" -
+       das Bauteil aus der Rezensionssektion (.private-proof-since). Der
+       Auftraggeber hat ihn am 06.09.2026 gestrichen.
+       ACHTUNG fuer spaetere Aenderungen: sichtbar steht "seit 2003" jetzt nur
+       noch in der Fusszeile (.footer-brandline) - und die ist unter 480px
+       ausgeblendet (home-dark.css, AP-215/AP-224). Auf dem Telefon traegt die
+       Seite die Angabe damit nirgends mehr sichtbar. Maschinenlesbar bleibt sie:
+       foundingDate im JSON-LD, Meta-Description und "gegruendet" in
+       content/stammdaten.json.
        Die H2 bleibt das Etikett "Ueber uns" - vom Auftraggeber am 06.09.2026 so
        entschieden. Die Aussage steht darunter als Leitsatz. -->
   <div class="container mr-ueber__kopf">
-    <p class="mr-ueber__eyebrow reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
-      <span>Meisterbetrieb seit 2003 in Herne</span>
-    </p>
     <h2 class="type-section-title reveal" id="ueber-title">Über uns</h2>
   </div>
 
