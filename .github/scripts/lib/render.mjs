@@ -471,8 +471,49 @@ export function renderNavSubmenu(base) {
 }
 
 // Der Footer bleibt in allen Seitengeneratoren identisch.
-export function footerTemplateData(base) {
-  return { base };
+// Nur-Startseite-Bausteine im Footer.
+//
+// build-footers.mjs schreibt den Footer JEDER Seite aus templates/_footer.html neu.
+// Wer einen Baustein von Hand in eine Seite schreibt, verliert ihn beim naechsten
+// Action-Lauf - genau so verschwanden die mobilen Footer-Bausteine der Startseite
+// im Commit 5932af2, der sich "Projekt-Index & Sitemap" nannte.
+//
+// Diese drei Bausteine gehoeren ausschliesslich auf die Startseite:
+//   - der Formular-Link zeigt auf #anfrage, und dieses Ziel gibt es nur dort
+//   - die Gestaltung steht komplett in home-dark.css, die nur index.html laedt
+// Deshalb liefert footerTemplateData sie nur fuer base === '' (Repo-Wurzel) und
+// sonst den leeren String. Die Platzhalter stehen im Template ohne eigene Zeile,
+// damit der Footer aller anderen Seiten zeichengleich bleibt.
+const STARTSEITE_FORMULAR_LINK = `
+          <a class="footer-contact-link footer-contact-link--iphone-form" href="#anfrage" aria-label="Kontaktformular öffnen und Kontakt aufnehmen">
+            <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg></span>
+            <span><small>Kontaktformular</small><strong>Kontakt aufnehmen</strong></span>
+          </a>`;
+
+const STARTSEITE_SOCIAL = `
+        <div class="footer-social-iphone" aria-label="Weitere Kontaktmöglichkeiten">
+          <a class="footer-social-link" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener" aria-label="Maik Rohdich über WhatsApp schreiben">
+            <span class="footer-social-icon footer-social-icon--whatsapp" aria-hidden="true"><img src="assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+          </a>
+          <span class="footer-social-link footer-social-link--instagram" aria-label="Instagram">
+            <span class="footer-social-icon footer-social-icon--instagram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>
+          </span>
+          <p class="footer-social-availability"><span class="footer-social-line">Jederzeit erreichbar <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
+        </div>`;
+
+const STUNDEN_ZUSATZ_STARTSEITE = '<span class="footer-hours-whatsapp">WhatsApp jederzeit <span aria-hidden="true">\u00b7</span> </span>Besuche nach Vereinbarung';
+const STUNDEN_ZUSATZ = 'WhatsApp jederzeit <span aria-hidden="true">\u00b7</span> Besuche nach Vereinbarung';
+
+export function footerTemplateData(base, seitenPfad = '') {
+  // Nicht ueber base pruefen: 404.html liegt ebenfalls in der Wurzel und haette
+  // die Bausteine sonst mitbekommen.
+  const istStartseite = seitenPfad === 'index.html';
+  return {
+    base,
+    startseiteFormularLink: istStartseite ? STARTSEITE_FORMULAR_LINK : '',
+    startseiteSocial: istStartseite ? STARTSEITE_SOCIAL : '',
+    stundenZusatz: istStartseite ? STUNDEN_ZUSATZ_STARTSEITE : STUNDEN_ZUSATZ,
+  };
 }
 
 // AP-19 – Startseiten-FAQ aus content/faq-startseite.json.

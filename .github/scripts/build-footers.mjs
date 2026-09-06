@@ -56,7 +56,7 @@ async function main() {
     const html = await readFile(file, 'utf8');
     if (!html.includes('class="site-footer"')) continue;
 
-    const data = footerTemplateData(pageBase(file));
+    const data = footerTemplateData(pageBase(file), path.relative(REPO_ROOT, file));
     const footer = fill(template, data).trim();
     if (/\{\{footer|\{\{base\}\}/.test(footer)) {
       throw new Error(`Nicht aufgelöster Footer-Platzhalter in ${path.relative(REPO_ROOT, file)}`);

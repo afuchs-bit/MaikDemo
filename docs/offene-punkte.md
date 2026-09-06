@@ -1075,3 +1075,66 @@ Bei der Inventur mit aufgefallen, **nicht** beauftragt und deshalb unverändert:
   ist dort geräteabhängig.
 - [mobile-social-proof.css:115](../assets/css/mobile-social-proof.css:115) setzt für die
   Sterne der Google-Bewertung `Arial, sans-serif`. Bei reinen Symbolzeichen unkritisch.
+
+---
+
+## AP-254 — Footer-Generator löschte die mobilen Startseiten-Bausteine
+
+Beim Livegang fiel auf: die Website zeigte nicht den Branch-Stand. Ursache war **nicht**
+der Merge, sondern der Commit `5932af2` von `github-actions[bot]`. Er trug den Titel
+„chore: Projekt-Index & Sitemap aktualisiert" und hat tatsächlich **nur 14 Zeilen aus
+`index.html` gelöscht** — die mobilen Footer-Bausteine:
+
+- `footer-contact-link--iphone-form` (Link auf `#anfrage`)
+- `footer-social-iphone` mit WhatsApp- und Instagram-Symbol und Erreichbarkeitszeile
+- die `footer-hours-whatsapp`-Umhüllung in der Öffnungszeiten-Zeile
+
+### Ursache
+
+[build-footers.mjs:41](../.github/scripts/build-footers.mjs:41) ersetzt auf **jeder** Seite
+den kompletten `<footer class="site-footer">…</footer>` durch den gefüllten Inhalt von
+[templates/_footer.html](../.github/scripts/templates/_footer.html). Einen Mechanismus für
+seitenspezifische Bausteine gab es nicht. Wer etwas von Hand in den Footer einer Seite
+schreibt, verliert es beim nächsten Lauf der Action — und die Action läuft bei jedem Push,
+der `content/**`, `admin/**`, `assets/img/projekte/**`, `assets/img/galerie-teaser/**` oder
+`.github/scripts/**` berührt.
+
+### Behoben
+
+Drei Platzhalter im Template, gefüllt von
+[`footerTemplateData`](../.github/scripts/lib/render.mjs:474):
+`{{startseiteFormularLink}}`, `{{startseiteSocial}}`, `{{stundenZusatz}}`.
+
+Die Bausteine gehören nachweislich nur auf die Startseite:
+
+- `id="anfrage"` gibt es ausschließlich in `index.html` — auf jeder anderen Seite wäre der
+  Link tot
+- die gesamte Gestaltung steht in `home-dark.css`, und die wird nur von `index.html` geladen
+
+Die Fallunterscheidung prüft **den Seitenpfad**, nicht `base`: `404.html` liegt ebenfalls in
+der Wurzel und hätte die Bausteine sonst mitbekommen (beim ersten Versuch genau so passiert).
+Dafür bekommt `footerTemplateData` jetzt den relativen Pfad als zweites Argument.
+
+Die Platzhalter stehen im Template **ohne eigene Zeile** (`</a>{{startseiteFormularLink}}`),
+damit der Footer aller übrigen Seiten zeichengleich bleibt.
+
+### Gegenprobe
+
+Alle vier Schritte der Action lokal nachgefahren — `check-config-sync`, `build-index`,
+`build-gallery-teaser`, `build-footers`:
+
+```
+✅ Einheitlicher Footer in 0 von 38 HTML-Dateien aktualisiert.
+git status --porcelain -- data/projekte-index.json data/galerie-teaser.json \
+  assets/img/galerie-teaser/generated sitemap.xml '*.html'   → keine Seite geändert
+```
+
+Der Generator erzeugt `index.html` jetzt zeichengleich mit dem Handstand, und keine der
+anderen 37 Seiten ändert sich. Der Bot hat nichts mehr zu committen.
+
+### Merksatz
+
+Der Footer einer Seite ist **generierter Inhalt**. Änderungen daran gehören ins Template
+plus, wenn sie nur eine Seite betreffen, in einen Platzhalter mit Fallunterscheidung in
+`footerTemplateData`. Ein Handstand in der HTML-Datei hält bis zum nächsten Push auf
+`content/**`.
