@@ -7,7 +7,7 @@ so formuliert, dass sie auch ohne den Wert vollständig und richtig sind.
 Sobald ein Wert vorliegt: in `content/stammdaten.json` eintragen (AP-03), den
 `<!-- OFFEN -->`-Kommentar auflösen, Zeile hier streichen.
 
-**Stand:** 12.08.2026
+**Stand:** 06.09.2026
 
 ## Kontaktdaten — ERLEDIGT (AP-03, 25.07.2026)
 
@@ -224,7 +224,17 @@ nennt 2003 als Gründung, und der
 Willkommen-Text weiter oben „Seit über 20 Jahren". Derselbe Fall war bei AP-174 schon
 einmal so entschieden worden.
 
-### Zeilenlänge auf Mobil — bewusst so entschieden
+### Zeilenlänge auf Mobil — bewusst so entschieden ~~(überholt durch AP-230)~~
+
+> **Überholt am 06.09.2026 durch AP-230.** Der Float ist einem Raster gewichen; unter
+> 860 px steht das Foto jetzt **unter** dem Text. Damit ist die unten dokumentierte
+> Freigabe „auch auf Mobil nebeneinander" abgelöst — vom Auftraggeber am 06.09.2026 so
+> entschieden. Grund: Die 26-Zeichen-Rechnung stützte sich auf einen Textstand von vor
+> der Kürzung in AP-212. Mit dem eingesetzten Foto nachgemessen standen bei 390 px sechs
+> Zeilen mit 17–21 Zeichen da, danach sprang der Text auf 48 — der Umfluss endete mitten
+> im Absatz. Heute sind es rund 39 Zeichen je Zeile über den ganzen Absatz.
+> Der Abschnitt bleibt stehen, damit nachvollziehbar ist, worauf die alte Entscheidung
+> beruhte.
 
 Block 2 steht **auch auf Mobil** nebeneinander, wie skizziert. Gemessen bei 375 px:
 Inhaltsbreite 363 px, Textspalte 52 % = 189 px, bei 7,27 px je Zeichen also **26 Zeichen
@@ -236,14 +246,16 @@ brächte rund 48 Zeichen.
 
 | Was | Wohin | Status |
 |---|---|---|
-| Foto für Block 2 | `assets/img/_src/` | fehlt; `figure` ist auskommentiert |
+| Foto für Block 2 | `assets/img/_src/` | **geliefert** (AP-230, 06.09.2026): `ueber-hund.jpg`, 980 × 980 |
 | Mustergarten-Video | `assets/video/mustergarten.mp4` | **geliefert** — siehe eigenen Abschnitt unten |
-| Plakatbild zum Video | `assets/img/_src/` | fehlt — auf dem Entwicklungsrechner liegt kein `ffmpeg`, ein Standbild lässt sich nicht selbst erzeugen |
-| Bildunterschrift Block 2 | — | beginnt laut Skizze mit „Unser …" |
+| Plakatbild zum Video | `assets/img/_src/` | **gesetzt** (AP-231): `mustergarten-standbild.jpg`, 960 × 725. Ein Einzelbild aus derselben Datei; auf diesem Rechner liegt weiterhin kein `ffmpeg`, der Frame kam fertig aus dem Entwurf |
+| Bildunterschrift Block 2 | — | **gesetzt** (AP-230): „Feierabend im Garten." Der Entwurf „Unser …" der Skizze setzte den Namen des Hundes voraus, der weiterhin fehlt — siehe AP-230, O1 |
 | Text Block 4 | — | Stichworte: „Damit wir uns Zeit nur für Sie nehmen", „Inspiration Mustergarten" |
 
-**Wichtig für die Fotoauswahl:** Der Textumfluss ist eingerichtet, greift aber nur, wenn der
-Text **länger** ist als das Foto hoch.
+**Wichtig für die Fotoauswahl:** ~~Der Textumfluss ist eingerichtet, greift aber nur, wenn der
+Text **länger** ist als das Foto hoch.~~ **Gegenstandslos seit AP-230** — es gibt keinen
+Umfluss mehr. Die Bildspalte ist fest (220–300 px am Desktop, 240 px darunter), die
+Textlänge spielt für das Layout keine Rolle mehr.
 
 Der Fließtext wurde am 05.09.2026 gekürzt und misst jetzt nur noch **82 px** - drei Zeilen
 bei 1200 px Fensterbreite, zuvor 245 px. Ein 4:3-Foto bei 42 % Breite wäre 375 px hoch; der
@@ -259,11 +271,25 @@ verlängern. **Zu entscheiden, sobald das Foto vorliegt.**
 `assets/img/ueber/ueber-3` liegt um 90° gedreht vor — die Ableitung wurde ohne Beachtung
 der EXIF-Orientierung erzeugt. Vor einer Verwendung neu bauen.
 
-### Das Mustergarten-Video ist KI-generiert
+### Das Mustergarten-Video — Herkunft geklärt (Korrektur vom 06.09.2026)
 
-**Vom 05.09.2026.** Die gelieferte Datei stammt aus Midjourney — erkennbar am
-Ursprungsnamen `u1187684669_httpss.mj.run…`. Sie zeigt **nicht** den realen Mustergarten
-in Herne.
+> **Diese Einschätzung war falsch und ist am 06.09.2026 richtiggestellt worden.**
+> Das Video **zeigt die reale Anlage**. Midjourney wurde ausschließlich zur
+> Qualitätsverbesserung des vorhandenen Materials eingesetzt, nicht zur Erzeugung
+> des Motivs — vom Auftraggeber auf Rückfrage klargestellt. Der Ursprungsname
+> `u1187684669_httpss.mj.run…` belegt nur den Durchlauf durch das Werkzeug, nicht
+> die Herkunft des Bildinhalts.
+>
+> **Folge:** Grundregel 1 ist nicht berührt, und das Standbild darf als
+> Referenzaufnahme dienen. AP-231 setzt es deshalb als `poster` ein — bis dahin
+> stand bis zum Ladeende ein schwarzes Band.
+>
+> Der ursprüngliche Text bleibt darunter stehen, damit die Korrektur nachvollziehbar
+> ist.
+
+**Ursprünglicher Eintrag vom 05.09.2026 (überholt):** Die gelieferte Datei stammt aus
+Midjourney — erkennbar am Ursprungsnamen `u1187684669_httpss.mj.run…`. Sie zeigt
+~~**nicht** den realen Mustergarten in Herne~~.
 
 Das steht in Spannung zu Grundregel 1 („Niemals Fakten erfinden") und zum Bildbestand
 dieses Projekts, in dem generiertes Material nicht als Referenzaufnahme dienen soll. Die
@@ -271,7 +297,7 @@ Seite behauptet an mehreren Stellen etwas Konkretes: „1.500 m² Mustergarten i
 „Unser Mustergarten mit Sitz in Herne".
 
 **Der Auftraggeber hat nach Rückfrage entschieden, sie trotzdem als Mustergarten
-einzubauen.** Hier festgehalten, damit es bei einer späteren Prüfung nicht übersehen wird.
+einzubauen.**
 
 **Zu klären:** ob der Betriebsinhaber das mitträgt — es geht um die Darstellung seines
 eigenen Betriebsgeländes gegenüber Kunden.
@@ -374,3 +400,461 @@ Hinweis auf kleine Aufträge.
 **Nebenbefund:** Der Begründungssatz zur Jahresangabe in AP-179 berief sich unter anderem
 auf „20+ Jahre" aus der Proof-Sektion. Der Beleg ist entfallen; die Angabe „über 20 Jahren"
 bleibt aber richtig, weil das Gründungsjahr 2003 weiterhin auf der Seite steht.
+
+
+## AP-230 (committet als AP-216) — Über-uns-Sektion: Raster, Hundefoto, Kartenfarben
+
+
+> **Warum die Nummern springen.** Diese fünf Arbeitspakete wurden lokal als AP-216 bis
+> AP-220 committet. Parallel hat davidk. auf demselben Branch AP-215 bis AP-229 für den
+> mobilen Footer und die Leistungsbilder vergeben — die Nummern gab es damit doppelt.
+> Beim Zusammenführen am 06.09.2026 sind die hiesigen Abschnitte auf **AP-230 bis AP-234**
+> gerückt. Die Commit-Meldungen tragen weiterhin die alten Nummern; sie umzuschreiben
+> hieße, Historie zu ändern, während andere darauf aufbauen. Die Klammer in jeder
+> Überschrift stellt die Zuordnung her.
+
+**Vom 06.09.2026.** Die Sektion steht jetzt als Raster statt als Float, trägt ein kleines
+Foto und die NRW-Karte hat ihre Dunkelfarben zurück. Was dabei offen geblieben ist:
+
+| # | Punkt | Warum es offen ist |
+|---|---|---|
+| O1 | **Name des Hundes** | Die Bildunterschrift lautet „Feierabend im Garten." und behauptet damit nichts. Mit Namen wäre etwa „Feierabend für ⟨Name⟩." möglich. Am 06.09.2026 beim Auftraggeber angefragt, liegt nicht vor. |
+| O2 | ~~**Aufnahmeort** — Musterfläche oder Kundengarten?~~ | **Geklärt am 06.09.2026:** die Musterfläche am Firmensitz. Vom Auftraggeber auf Rückfrage bestätigt. Die Bildunterschrift lautet seit AP-238 „Feierabend im Mustergarten." — bis dahin blieb sie bewusst neutral, weil eine Ortsangabe ohne Bestätigung eine Tatsachenbehauptung nach § 5 UWG gewesen wäre. |
+| O3 | **Hunderasse** | Im `alt` bewusst nicht benannt — sie ist nicht bestätigt. |
+| O5 | ~~**Rechtes Drittel der Kartenzeile**~~ | **Erledigt mit AP-231.** Die Karte ist auf 300 px verkleinert, die Legende hat einen Eyebrow bekommen und füllt die Zeile. Die Qualifikationen stehen jetzt in der Signatur weiter oben. |
+
+### Bewusste Abweichungen, keine offenen Punkte
+
+- **Die Sektion wird länger:** Desktop +213 px (1813 → 2026), Mobil +346 px (1395 → 1741).
+  Bei einer Startseite, die bereits als lang gilt, ist das eine bewusste Gegenbuchung —
+  das Bild kostet Länge und bringt Wärme. Der weit größere Längenposten bleibt das
+  Videoband.
+- **Die Freigabe „auch auf Mobil nebeneinander" aus AP-179 ist abgelöst.** Begründung im
+  dortigen Abschnitt.
+
+### Bei der Prüfung aufgefallen, nicht Teil von AP-230
+
+Gehört in ein eigenes Arbeitspaket, teils mit Entscheidungsbedarf:
+
+1. **`mustergarten.mp4`: 9.468.292 Bytes bei nativ 720 × 544.** Wird auf 1440 px
+   Fensterbreite randlos gezogen, also gut zweifach hochskaliert. Kein `poster` — bis zum
+   Ladeende steht ein schwarzes Band von 558 px (Desktop) bzw. 219 px (Mobil).
+2. **Grünton des Videotitels.** `--mobile-logo-green` #56E607 ist der vierte Grünton der
+   Sektion, neben `--home-lime` #8CC63F, `--green-700` #4A7A10 und `--home-dark-accent`
+   #B6D97A. Dazu synthetisch kursiv gestellt — es existiert nur ein aufrechter
+   Baloo-2-Schnitt. AP-213 hat das ausdrücklich so entschieden; Änderung nur nach Rückfrage.
+3. **Toter `.section-proof`-Code in `home-dark.css`.** AP-230 hat vier Regeln entscopt,
+   weil eine davon sichtbar falsch war. Der Token-Block und rund ein Dutzend weiterer
+   Regeln stehen weiterhin ohne passendes Element in der Datei. Eigener Aufräum-AP.
+4. **Der Absatz „Über uns" nennt Maik Rohdich nicht.** Kein Name, kein Meistertitel, keine
+   Baumkontrolle — ausgerechnet in der Sektion, die dafür da ist. Copy-AP.
+5. **Dopplung zum Willkommen-Abschnitt.** Willkommen: „Seit über 20 Jahren legen wir Gärten
+   an, bauen Terrassen, Teiche und halten Außenanlagen in Form". Über uns: „Seit über 20
+   Jahren planen, bauen und pflegen wir Gärten und Außenanlagen in Herne und Umgebung."
+   Zwei Sektionen Abstand. Vorschlag: den ersten Satz in „Über uns" streichen, der Absatz
+   beginnt dann bei „Jeder Garten entsteht aus Ihren Vorstellungen…". Reine Streichung,
+   keine neue Behauptung — gehört trotzdem in einen Copy-AP.
+6. **Zeilenlänge zwischen 700 und 860 px.** Der 62ch-Deckel der Textspalte greift nur im
+   zweispaltigen Modus. Zwischen dem Umbruchpunkt und etwa 700 px läuft der Absatz über die
+   volle Containerbreite — bei 859 px sind das 790 px Spaltenbreite gegenüber 595 px am
+   Desktop. Gegenüber dem Stand vor AP-230 ist das keine Verschlechterung (dort war es auf
+   allen Breiten die volle Breite), aber es unterläuft das Ziel des Deckels. Ein
+   `max-width: 62ch` am Absatz in der Mobil-Query würde es beheben.
+
+
+## AP-231 (committet als AP-217) — Über uns als Signatur-Sektion
+
+**Vom 06.09.2026.** Umbau auf Grundlage des gelieferten Entwurfs B („Signatur"), Fassung
+„Über uns". Die Sektion hatte als einzige der Startseite keinen einzigen Baustein aus dem
+Formenvorrat der Seite: keinen Eyebrow, keine Karte, keine Fläche, keinen Akzent.
+
+### Was die Sektion jetzt zeigt — und woher es belegt ist
+
+| Aussage | Beleg |
+|---|---|
+| „Meisterbetrieb seit 2003 in Herne" | `content/stammdaten.json`: `firma.gegruendet 2003-01-01`, `besonderheiten[2]` |
+| „Sachverständiger für Baumkontrolle, Ausbildungsbetrieb" | `stammdaten.json` `besonderheiten[0]` und `[1]` |
+| „alles aus einer Hand … eigenen Fachkräften und eigenem Maschinenpark" | bestehender Fließtext, vom Auftraggeber ausdrücklich so gewollt (AP-179). Die gleichnamige Faktenkachel ist mit AP-233 entfallen, die Aussage steht weiterhin im Absatz |
+| „1.500 m² Mustergarten" | bestehende H3 aus AP-213, unverändert im Wortlaut |
+
+**Nachtrag vom 06.09.2026 — die Signatur ist wieder entfallen.** Der Entwurf hatte unter
+dem Fließtext eine Signatur „Maik Rohdich — Gartenbaumeister · Zertifizierter
+Baumkontrolleur der Landwirtschaftskammer". Sie ist auf Wunsch des Auftraggebers entfernt
+worden.
+
+**Folge, hier festgehalten:** Damit steht auf dem Desktop weiterhin **nirgends sichtbar**
+„Gartenbaumeister" auf der Startseite. Die Qualifikationsleiste in `.gate-welcome` ist ab
+901 px `display: none` (gemessen bei 1440 px), und die Sektion nennt jetzt keinen Namen
+mehr. Was bleibt, ist die Faktenzeile „Fachlich abgesichert — Sachverständiger für
+Baumkontrolle, Ausbildungsbetrieb" in der Belegspalte. Falls die Meisterqualifikation auf
+dem Desktop sichtbar werden soll, wäre die Faktenzeile die naheliegende Stelle.
+
+**Korrektur an der Vorlage:** Die Analyse führte „Ausbildungsbetrieb" als Angabe, die
+„bisher nirgends sichtbar auf der Startseite" stehe. Das trifft nur für den Desktop zu —
+auf 390 px ist sie sichtbar.
+
+### Entscheidungen des Auftraggebers vom 06.09.2026
+
+| # | Frage | Entscheidung |
+|---|---|---|
+| E1 | Welcher Entwurf? | **B · Signatur** |
+| E2 | H2 als Etikett oder Aussage? | **Etikett** — die H2 bleibt „Über uns" |
+| E7 | Zitat „Wir reden Ihnen nicht nach dem Mund."? | **Nicht verwendet.** Der Satz ist im Repo nirgends belegt und stammt aus Gesprächsnotizen. An seiner Stelle steht „Gartenbau mit Handschlagqualität." — bis AP-230 die Unterzeile dieser Sektion und damit freigegeben. Gesetzt **ohne** Anführungszeichen, damit er kein Zitat vortäuscht |
+| E8 | Video-Standbild? | **Ja** — siehe die Herkunftsklärung oben |
+| E6 | Ersten Satz des Fließtexts streichen? | **Ja.** Reine Streichung der Dopplung zum Willkommen-Abschnitt |
+
+### Bewusste Abweichungen von früheren Arbeitspaketen
+
+- **Der randlose 100vw-Ausbruch des Videos (AP-179) entfällt.** Das Video sitzt jetzt in
+  der Containerbreite, mit Rahmen, Schatten und dem asymmetrischen Eck 24/24/44/24 — der
+  Marken-Ecke, die im Projekt an fünf Stellen so gesetzt ist. So verlangt es der
+  freigegebene Entwurf.
+- **Die H3 aus AP-213 sitzt jetzt als Kapsel im Bild.** Wortlaut unverändert, Position und
+  Farbe geändert: `--mobile-logo-green` #56E607 wäre auf dem Foto nicht lesbar gewesen
+  (gemessen 1,37 : 1 ohne Kapselgrund, 9,22 : 1 mit).
+- **Der 42 %-Float bzw. das 62ch-Raster aus AP-230 ist abgelöst.** Die Kartenfarben-
+  Entscopung aus AP-230 gilt unverändert weiter.
+
+### Die geneigte Kante ~~(entfallen mit AP-233)~~
+
+> **Am 06.09.2026 auf Wunsch des Auftraggebers wieder entfernt**, in beiden Lagen.
+> Die Spalten werden jetzt allein durch den Abstand getrennt. Damit trägt die Sektion
+> kein Schräg-Motiv mehr; die Formsprache der Seite kommt hier über Eyebrow,
+> Faktenkachel und die Marken-Ecke am Videoband. Der Abschnitt bleibt stehen, weil
+> die Maße für einen späteren Anlauf brauchbar sind.
+
+Der Hero schneidet seine Kante mit `clip-path: polygon(0 0, 100% 28%, …)` im Winkel
+`--mobile-hero-slope-angle`; AP-184 hat dasselbe Motiv schon einmal um 90° gedreht
+(„skewY wird zu skewX, die asymmetrischen Radien drehen mit"). AP-231 übertrug das auf die
+Trennung zwischen Aussage und Beleg: am Desktop eine geneigte Senkrechte, unter 860 px
+dieselbe Kante um 90° gedreht.
+
+Der Winkel war mit 4° flacher als der Hero (7,1–17,9°): dieser steht über die volle
+Fensterbreite, die Kante nur über rund 510 px Höhe. Bei 7° schöbe sich ihr oberes
+Ende 31 px aus der Mitte und die Spalten wirkten verrutscht; bei 4° sind es 18 px.
+Eine Haarlinie in `--line` reichte dafür nicht — auf `--bg` sind das 1,15 : 1, sie war
+im Beweisbild unsichtbar. Sie brauchte einen Verlauf in `--home-small-accent`.
+
+### Gemessene Höhen
+
+| Fensterbreite | vor AP-231 | nach AP-231 |
+|---|---|---|
+| 390 px | 1.741 | **2.015** |
+| 768 px | — | **2.001** |
+| 859 px | — | **2.068** |
+| 1440 px | 2.026 | **1.933** |
+
+Auf dem Desktop wird die Sektion trotz Fotopaar, Faktenzeilen und Mustergartenband
+**kürzer**. Auf dem Telefon kostet sie 274 px mehr. Drei Maßnahmen haben dort gegengesteuert
+(zusammen rund 400 px): die Karte auf 260 px gedeckelt, das Fotopaar auf 420 px begrenzt
+und der Videozuschnitt in drei Stufen gestaffelt (4:3 unter 600 px, 16:9 bis 860 px, 21:9
+darüber). Ohne sie wäre die Sektion bei 859 px 2.414 px hoch geworden.
+
+### Weiterhin offen
+
+| # | Punkt | |
+|---|---|---|
+| O1 | Name des Hundes | unverändert offen, siehe AP-230 |
+| O2 | Aufnahmeort des Hundefotos | unverändert offen, siehe AP-230 |
+| O10 | **Auflösung des Videos** | Die Quelle ist 720 px breit und wird ab etwa dieser Fensterbreite hochskaliert; bei 1440 px läuft sie auf 1.240 px. Eine höher aufgelöste Fassung würde das beheben. |
+| O11 | **Dateigröße des Videos** | 9.468.292 Bytes. Unverändert der größte Einzelposten der Startseite. Das `poster` mildert nur den ersten Eindruck, nicht die Ladelast. |
+| O12 | **WCAG 2.2.2** | Das Video startet selbsttätig, läuft in Schleife und lässt sich nicht anhalten. Unverändert gegenüber AP-181, dort als Auftraggeberentscheidung vermerkt. |
+
+### Rücknahmen vom 06.09.2026 (AP-232 und AP-233, committet als AP-218 und AP-219)
+
+Nach dem Bau hat der Auftraggeber drei Bauteile wieder streichen lassen. Der Reihe nach:
+
+| AP | Entfernt | Was das bedeutet |
+|---|---|---|
+| AP-232 | Signatur „Maik Rohdich — Gartenbaumeister · Zertifizierter Baumkontrolleur der Landwirtschaftskammer" | „Gartenbaumeister" steht damit auf dem Desktop weiterhin nirgends sichtbar auf der Startseite |
+| AP-233 | Geneigte Trennkante zwischen Wort- und Belegspalte | Die Sektion trägt kein Schräg-Motiv mehr |
+| AP-233 | Faktenkachel „Alles aus einer Hand" | Die Belegspalte hat nur noch eine Kachel; die Aussage selbst steht weiterhin im Fließtext |
+
+**Höhen nach den Rücknahmen:** Desktop 1.843 px (Ausgangswert vor AP-231: 2.026),
+Mobil 1.778 px (vorher 1.741). Die Sektion ist damit auf dem Desktop 183 px kürzer als
+vor dem Umbau und auf dem Telefon nur noch 37 px länger.
+
+
+## AP-234 (committet als AP-220) — Über-uns-Unterseite und Button auf der Startseite
+
+**Vom 06.09.2026.** Die Faktenkachel „Fachlich abgesichert" in der Über-uns-Sektion ist
+einem Button gewichen, der auf die neue Unterseite `/ueber-uns/` führt.
+
+### Die Seite
+
+Fünf Abschnitte: Kopf mit Eyebrow und Leitsatz · „Ein Betrieb, der die Arbeit selbst macht"
+mit dem bis dahin ungenutzten Foto `ueber-hebeaktion` · „Wofür wir geradestehen" mit den
+vier Qualifikationen · [Team, auskommentiert] · „Wo wir arbeiten" mit Ortsliste und
+Erreichbarkeitskarte.
+
+Gerüst aus `kontakt/index.html` — `privatkunden/index.html` gibt es seit `980c79c` nicht
+mehr. Eigene Datei `assets/css/ueber-uns.css` nach dem Muster von `kontakt.css`, damit
+`styles.css` unberührt bleibt und kein `?v=`-Durchlauf über 37 Dateien nötig wird. Die
+Farbwelt kommt vollständig aus `:root`; seit AP-F25 läuft die ganze Website dunkel.
+
+### Belegherkunft jeder Aussage
+
+| Aussage | Beleg |
+|---|---|
+| „Meisterbetrieb seit 2003 in Herne" | `stammdaten.json`: `firma.gegruendet`, `besonderheiten[2]` |
+| „Maik Rohdich führt den Betrieb seit 2003" | `stammdaten.json`: `firma.inhaber`, `inhaberTitel` |
+| „alles aus einer Hand – mit eigenen Fachkräften und eigenem Maschinenpark" | bestehender Fließtext der Startseite, vom Auftraggeber ausdrücklich so gewollt (AP-179) |
+| „Der Betrieb bildet aus." | `stammdaten.json`: `besonderheiten[0]` — Ausbildungsbetrieb |
+| „Was nicht sinnvoll ist, sagen wir Ihnen vorher." | Teil A.4: „Der Inhaber sagt Kunden auch, wenn etwas nicht sinnvoll ist." |
+| die vier Qualifikationen | `index.html` (gate-welcome), Wortlaut übernommen; Baumkontrolle am 05.09.2026 bestätigt |
+| Ortsliste | `stammdaten.json`: `einsatzgebiet`, zeichengleich mit dem Footer |
+| Erreichbarkeitsblock | Teil B.2, verbindliche Formulierung |
+
+Die Erläuterungen zu den vier Qualifikationen (was ein Meisterbrief berechtigt, wozu eine
+Regelkontrolle dient) sind **fachliche Einordnung, keine Betriebsangaben** — sie behaupten
+nichts über diesen Betrieb, was nicht anderswo belegt ist.
+
+### Der Team-Abschnitt ist gebaut, aber ausgeschaltet
+
+Auf Wunsch des Auftraggebers („erst Gerüst, Inhalte später") liegt das Markup fertig im
+Quelltext von `ueber-uns/index.html`, **auskommentiert**. Auf der Seite ist davon nichts zu
+sehen — kein Platzhaltertext, wie Grundregel 2 verlangt. Die CSS-Regeln (`.ueber-team*`)
+stehen bereits in `ueber-uns.css` und greifen bis dahin auf kein Element.
+
+**Vor dem Einschalten sind drei Dinge nötig, nicht nur die Daten:**
+
+| # | Was fehlt | |
+|---|---|---|
+| O13 | **Namen, Funktionen, optional Qualifikation je Person** | Teil B nennt keine Personen außer dem Inhaber |
+| O14 | **Freigabe, die Grundregel 3 für diese Seite aufhebt** | „Keine Mitarbeiterzahlen, keine Fuhrparkgrößen, kein Teamfoto — ausdrücklicher Wunsch des Betriebsinhabers" (Teil A.3). Ohne diese Freigabe bleibt der Block aus, auch wenn die Daten vorliegen |
+| O15 | **Einwilligung der Abgebildeten**, falls Fotos verwendet werden | |
+
+### Anschluss an die Build-Kette
+
+- `.github/scripts/templates/_footer.html`: eine `<li>`-Zeile im Schnellzugriff → per
+  `build-footers` in 36 Dateien propagiert, jeweils mit korrekt aufgelöstem `{{base}}`.
+- `.github/scripts/build-leistungen.mjs`: `HAND_PAGES` um die neue Seite ergänzt, sonst
+  driftet ihr Leistungs-Dropdown bei der nächsten Nav-Änderung still weg — derselbe Fall,
+  den der AP-108-Kommentar dort beschreibt.
+- `sitemap.xml` hat `/ueber-uns/` **automatisch** aufgenommen (On-Disk-Discovery in
+  `build-index.mjs`). `robots.txt` und `_headers` führen keine Einzel-URLs.
+
+**Die Hauptnavigation bleibt unangetastet** — fünf Punkte wie bisher. Vom Auftraggeber so
+entschieden; die Seite hängt am Button und am Footer.
+
+### Gemessen
+
+Buttonkontrast 11,12 : 1 gegen `--bg` (WCAG AA verlangt 4,5). Kein horizontaler Overflow auf
+beiden Seiten bei 320 / 390 / 720 / 768 / 861 / 1024 / 1440 / 1920 px. Der auskommentierte
+Team-Abschnitt erzeugt in allen acht Breiten **null** Elemente. Sektionshöhe der Startseite
+1843 → 1824 px.
+
+
+## AP-235 — Hundefoto quadratisch, Button als Logo-Lasche
+
+**Vom 06.09.2026.** Zwei Wünsche des Auftraggebers an der Über-uns-Sektion der Startseite.
+
+### Das Foto zeigt jetzt den ganzen Garten
+
+Die Kachel stand auf `aspect-ratio: 4/5`, die Aufnahme ist aber quadratisch (980 × 980).
+`object-fit: cover` schnitt dadurch **20 % der Breite** weg — je 10 % links und rechts, und
+genau dort liegen das Kiesbeet mit den Gräsern und das Formgehölz im Topf. Auf 1:1 ist das
+ganze Bild zu sehen.
+
+**Mehr geht ohne neues Material nicht.** `assets/img/_src/ueber-hund.jpg` ist bereits die
+zugeschnittene Fassung; die in AP-230 erwähnte Quelle mit 1280 × 1600 liegt nicht im Repo.
+Sollte sie nachgeliefert werden, ließe sich ein echter weiterer Ausschnitt wählen.
+
+Die Arbeitsjacke daneben ist 480 × 600 und verliert im Quadrat 20 % Höhe. Ihr Ausschnitt
+wandert deshalb auf `object-position: 50% 22%` — Helm und Gehörschutz bleiben vollständig,
+weg fällt unten Westenfläche. Der Schriftzug auf der Weste sitzt mittig und bleibt drin.
+Beide Kacheln behalten dieselbe Form; ein Paar liest sich nur dann als Paar.
+
+### Der Button trägt jetzt das Logo
+
+Aus „Wollen Sie mehr über uns erfahren? →" wird **„Mehr zu" plus Logo**. Die Form stammt
+aus `.mobile-proof-request` („Gartenwunsch besprechen", `mobile-social-proof.css:462`): eine
+Kapsel mit abgeschrägter Lasche oben rechts, gebaut als SVG hinter dem Text, weil sich diese
+Ecke mit `border-radius` nicht bauen lässt.
+
+Übernommen ist die **Form**, nicht die Füllung — die Vorlage ist in `--home-lime` gefüllt und
+trägt einen Schlagschatten, hier steht der Pfad als Umriss. Der Button ist ein Nebenweg; die
+Hauptaktion der Seite bleibt die Anfrage.
+
+Zwei Unterschiede zur Vorlage, beide bewusst:
+
+- Sie gilt nur unter 900 px, diese Regeln gelten in allen Breiten.
+- Ihr Pfad ist gefüllt, deshalb fällt dort nicht auf, dass `preserveAspectRatio="none"` die
+  Geometrie verzerrt. Bei einem Umriss schon. **Gemessen** bei 231 × 68 px (Skalierung
+  X 0,643 / Y 1,063), Deckung subpixelgenau über ein Canvas:
+
+  | | senkrechte Kante | waagerechte Kante |
+  |---|---|---|
+  | ohne `vector-effect` | 0,48 px | 0,79 px |
+  | mit `non-scaling-stroke` | 0,75 px | 0,75 px |
+
+  Ohne das Attribut wären die Kanten um 65 % unterschiedlich dick.
+
+### Barrierefreiheit
+
+Das Logo trägt die Textalternative, nicht das `<a>`. Vorgelesen wird der Link damit als
+**„Mehr zu Maik Rohdich Garten- und Landschaftsbau"** — nachgemessen am zugänglichen Namen,
+nicht angenommen. Die Form ist `aria-hidden`.
+
+**Ein Kontrastwert, der festgehalten gehört:** Der Schriftzug „MAIK ROHDICH" trägt im Symbol
+`fill="#5a8a1c"` und kommt gegen `--bg` #171916 auf **4,29 : 1** — knapp unter den 4,5, die
+WCAG AA für Text dieser Größe verlangt. Als Markenzeichen ist er davon ausgenommen (WCAG
+1.4.3 nimmt Logos und Markennamen aus), und derselbe Wert gilt im Header und im Footer. Der
+Button übernimmt deshalb den Schatten des Footer-Logos (`.brand-logo-light`), der es von der
+Fläche abhebt, ohne die Markenfarben anzutasten. Die beiden gelben Nebenzeilen liegen bei
+14,63 : 1, der Umriss bei 11,12 : 1.
+
+> **Falls die Marke einmal überarbeitet wird:** Ein Schriftzug in `--home-dark-accent`
+> #B6D97A käme auf 11,12 : 1. Das wäre eine Markenentscheidung, kein Layout-AP.
+
+### Gemessen
+
+Kein horizontaler Overflow bei 320 / 390 / 420 / 421 / 768 / 861 / 1440 / 1920 px. Beide
+Fotos in allen acht Breiten quadratisch und gleich groß. Der Button passt überall in seine
+Spalte; unter 421 px schaltet er auf das kleinere Maß (Logo 30 statt 36 px). Sektionshöhe
+1824 → **1769 px** am Desktop. `mobile-social-proof.css` ist unverändert — die Vorlage darf
+sich nicht mitbewegen.
+
+
+## AP-236 — Header-Logo im Button, Breite an das Fotopaar
+
+**Vom 06.09.2026.** Zwei Nachbesserungen an dem Button aus AP-234.
+
+### Das Logo war ein anderes als im Header
+
+Der Button nutzte das SVG-Symbol `#brand-logo`. Der Header führt dasselbe Symbol zwar im
+Markup, **blendet es aber per CSS aus** und legt ein PNG als Hintergrund darunter:
+
+```css
+/* styles.css:317-325 */
+.brand-logo { background: url("../img/logo/maik-rohdich-logo.png") center / contain no-repeat; }
+.brand-logo > use { display: none; }
+```
+
+Sichtbar ist im Header also nie das Symbol. Das erklärt, warum Button und Header
+unterschiedlich aussahen, obwohl beide scheinbar dasselbe Logo führten — eine Falle für
+jeden, der nur ins Markup schaut.
+
+Übernommen ist die **kompakte** Fassung `maik-rohdich-logo-mobile-horizontal-meister.png`,
+die der Header unter rund 900 px zeigt: zwei Zeilen statt drei, Schrift in Grün mit heller
+Kontur. Die breite Desktop-Fassung setzt zwei ihrer drei Zeilen dunkel — im Header bei
+67 px Höhe unproblematisch, in Buttongröße auf dunklem Grund nicht.
+
+Eingebunden als `<img>`, nicht als Hintergrund wie im Header: nur ein `<img>` kann eine
+Textalternative tragen. Vorgelesen ergibt der Link damit **„Mehr zu Maik Rohdich
+Gartenbaumeister"** — am zugänglichen Namen nachgemessen.
+
+**Kontrast**, als Canvas-Komposit über den echten Bildpixeln gegen `--bg` gemessen, nur der
+Schriftbereich rechts der Blüten: Median **8,05 : 1**, hellstes Pixel 16,48 : 1, 68 % der
+Schriftpixel über 4,5 : 1. Deutlich besser als das SVG-Symbol mit seinen 4,29 : 1 — der
+`drop-shadow` aus AP-235 ist deshalb entfallen, das PNG bringt seine eigene Kontur mit.
+
+### Der Button fluchtet jetzt mit den Bildern
+
+`inline-flex` → `flex` plus `width: 100%`, Inhalt zentriert. Damit füllt er die Belegspalte,
+und die ist deckungsgleich mit dem Fotopaar darunter.
+
+**Ein Fund beim Messen:** Bei 768 px lief der Button auf 706 px, während das Paar bei 420
+stehen blieb — Differenz 286 px, die rechten Kanten klafften auseinander. Ursache war der
+Tablet-Deckel aus AP-231 (`.mr-ueber__paar { max-width: 420px }` unter 860 px), den der
+Button nicht kannte. Er trägt ihn jetzt ebenfalls. **Beide Werte müssen zusammen bleiben** —
+wer einen ändert, muss den anderen mitziehen.
+
+Nachgemessen in elf Breiten (320 / 375 / 390 / 420 / 600 / 768 / 859 / 861 / 1024 / 1440 /
+1920 px): Differenz **0** in jeder, linke und rechte Kante fluchten überall, kein
+horizontaler Overflow.
+
+### Offen
+
+| # | Punkt | |
+|---|---|---|
+| O16 | ~~**Logogröße im Button**~~ | **Erledigt mit AP-237** (06.09.2026). Das Logo ist von 30/36 px auf **44/52 px** gewachsen: 156 × 44 px unter 421 px Fensterbreite, 185 × 52 px darüber. 52 px ist die Grenze, die der Button ohne zu wachsen trägt (52 + 2 × 10 px Innenabstand = 72 px, knapp über der `min-height` von 68). Der engste Fall ist 320 px Fensterbreite: Button 280 px, Inhalt 224 px, je 10 px Luft links und rechts — `scrollWidth` gleich `clientWidth`, kein Überlauf. |
+
+
+## AP-238 — Weite Hundeaufnahme, Mustergarten benannt
+
+**Vom 06.09.2026.** Die bisherige Aufnahme war ein enger Ausschnitt um den Hund; vom Garten
+war fast nichts zu sehen. In AP-235 ließ sich das nur begrenzt beheben — die Quelle
+(980 × 980) war bereits der fertige Zuschnitt, mehr als das Format von 4:5 auf 1:1 zu
+stellen ging nicht.
+
+Jetzt liegt die weite Ansicht vor: **1068 × 1070 px**, Verhältnis 0,998 — praktisch
+quadratisch, also kein Zuschnitt nötig. Zu sehen sind Pool und Palmen links, Sonnenschirm,
+Kiesbeet mit Natursteinen, Pflasterweg, das Formgehölz im Topf rechts, zwei Liegen und der
+Hund vorn.
+
+### Zwei Stolperstellen beim Ablegen
+
+1. **Die Datei landete unter dem Namen `assets:img:_src:ueber-hund.jpg`** — direkt in
+   `_src`, mit Doppelpunkten statt Schrägstrichen. Das passiert, wenn im macOS-Speichern-
+   Dialog ein Pfad in das Namensfeld getippt wird: Der Finder macht daraus einen einzigen
+   Dateinamen. Wer die Datei sucht, findet sie so nicht am erwarteten Ort.
+2. **Sie war ein PNG mit `.jpg`-Endung.** `sharp` liest das Format aus dem Inhalt und wäre
+   damit klargekommen, aber es widerspricht der Konvention in diesem Ordner. Vor dem Bau in
+   echtes JPEG umgewandelt (Qualität 95), die falsch benannte Datei entfernt.
+
+   > Nicht verwechseln: Die Merkregel „PNG-Quellen in `_src` sind KI-generiert" gilt für den
+   > Altbestand. Hier war die Endung ein Artefakt des Speicherns aus der Unterhaltung, die
+   > Aufnahme selbst ist echt.
+
+### Ableitungen
+
+| Datei | Größe | Budget 200 KB |
+|---|---|---|
+| `ueber-hund-480.avif` | 33 KB | ✓ |
+| `ueber-hund-480.webp` | 54 KB | ✓ |
+| `ueber-hund-960.avif` | 112 KB | ✓ |
+| `ueber-hund-960.webp` | 184 KB | ✓ |
+
+Die WebP-Fassung liegt mit 184 KB deutlich näher am Budget als beim engen Ausschnitt
+(163 KB) — das detailreichere Motiv kostet. Bei einer künftigen Quelle mit mehr Struktur
+könnte `webpWidths` nötig werden, wie bei `gate-gewerbe-baumarbeiten`.
+
+### Text
+
+Der `alt`-Text beschrieb den engen Ausschnitt und war damit sachlich falsch geworden. Neu
+formuliert am gerenderten Bild. Die Bildunterschrift nennt jetzt den Ort — siehe O2 oben.
+
+### Gemessen
+
+Kein Problem in sieben Breiten (320 / 375 / 390 / 768 / 861 / 1440 / 1920 px): beide Kacheln
+quadratisch und gleich groß, Button und Fotopaar weiterhin exakt gleich breit (Differenz 0 —
+in AP-236/237 erarbeitet und hier nicht gekippt), kein horizontaler Overflow. **Der Hund
+bleibt auch bei 162 px Kachelbreite klar erkennbar**; die Bildunterschrift passt weiterhin
+zum Bild.
+
+
+## AP-240 — Ecken des Mustergartenbands abgerundet
+
+**Vom 06.09.2026.** Das Videoband hatte scharfe Ecken, obwohl die Bühne seit AP-231
+`border-radius: 24px 24px 44px 24px` **und** `overflow: hidden` trägt.
+
+**Ursache:** Ein `<video>` wird in einem eigenen Compositing-Layer gezeichnet und lässt sich
+vom `overflow: hidden` des Elternelements nicht beschneiden. Gemessen: Bühne 20 px Radius,
+Video 0 — im Beweisbild waren die Ecken scharf, während die Kapsel „1.500 m² Mustergarten"
+darüber sauber gerundet war.
+
+**Behoben** durch `border-radius` am Video selbst. Die Werte liegen je 1 px unter denen der
+Bühne, weil diese einen 1-px-Rahmen trägt: innerer Radius = äußerer minus Rahmenbreite.
+Ohne das blitzt in der Rundung ein Spalt zwischen Video und Rahmen durch.
+
+| | Bühne | Video |
+|---|---|---|
+| ab 861 px | 24 / 24 / 44 / 24 | 23 / 23 / 43 / 23 |
+| darunter | 20 / 20 / 34 / 20 | 19 / 19 / 33 / 19 |
+
+Gilt auch für das `poster`-Standbild — dasselbe Element zeichnet es. Geprüft in acht Breiten
+(320 / 375 / 390 / 599 / 600 / 861 / 1440 / 1920 px): Differenz je Ecke überall exakt 1 px,
+kein horizontaler Overflow.
+
+### Nebenbefund: parallele Sitzung, kollidierte Nummer
+
+Während dieser Arbeit hat eine parallele Sitzung **AP-239** („Mobilgestaltung von einem
+iPhone auf alle Handys ausgedehnt", Commit `0dd9f4d`) eingebracht. Dieser AP heißt deshalb
+240, nicht 239. Der Cache-Bust-Zähler war dadurch schon auf `zz46` gestiegen, ohne dass
+diese Sitzung ihn gesetzt hätte — beim Weiterzählen auf `zz47` fiel es auf.
+
+**Die Über-uns-Sektion ist von AP-239 nicht betroffen** (null geänderte `mr-ueber`-Zeilen),
+wohl aber mittelbar: Die dort eingeführte Wurzelschriftgröße
+`clamp(12.736px, 3.9801vw, 19.104px)` unter 480 px zieht alle `rem`-Werte der Sektion mit.
+Die Messwerte dieses AP wurden auf diesem Stand erhoben.

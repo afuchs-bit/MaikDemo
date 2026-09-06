@@ -4287,11 +4287,11 @@
   .private-project-conversion .btn { width: 100%; justify-content: center; text-align: center; }
 }
 
-/* Vereinbarte Hochformat-Ansichten des iPhone 15 Pro und 16 Pro: Die
-   Leistungsübersicht beginnt ohne Einleitung direkt mit dem zentrierten Titel. */
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+/* Handy-Breiten: Die Leistungsübersicht beginnt ohne Einleitung direkt mit
+   dem zentrierten Titel. */
+@media (max-width:480px) {
   .private-request-paths {
-    padding: 58px 0 56px;
+    padding: 3.625rem 0 3.5rem;
     border-color: rgba(151, 206, 32, .12);
   }
 
@@ -4318,8 +4318,8 @@
 
   .iphone-service-directory {
     display: grid;
-    gap: 14px;
-    margin-top: 28px;
+    gap: 0.875rem;
+    margin-top: 1.75rem;
   }
 
   .iphone-service-feature,
@@ -4341,7 +4341,7 @@
   }
 
   .iphone-service-feature {
-    min-height: 232px;
+    min-height: 14.5rem;
     border-radius: 22px 6px 22px 6px;
   }
 
@@ -4354,12 +4354,12 @@
     width: 100%;
     overflow: hidden;
     background: #20261d;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.75rem), 0 100%);
   }
 
   .iphone-service-feature__media {
-    height: 142px;
-    margin-bottom: -12px;
+    height: 8.875rem;
+    margin-bottom: -0.75rem;
   }
 
   .iphone-service-feature__media::after {
@@ -4367,9 +4367,9 @@
     right: -1px;
     bottom: 0;
     left: -1px;
-    height: 14px;
+    height: 0.875rem;
     background: linear-gradient(90deg, #80b514 0%, #97ce20 58%, #b3e33c 100%);
-    clip-path: polygon(0 calc(100% - 4px), 100% 0, 100% 2px, 0 100%);
+    clip-path: polygon(0 calc(100% - 0.25rem), 100% 0, 100% 2px, 0 100%);
     content: "";
     pointer-events: none;
   }
@@ -4397,10 +4397,10 @@
     z-index: 0;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 6px 14px;
+    gap: 0.375rem 0.875rem;
     align-items: end;
-    min-height: 102px;
-    padding: 25px 18px 15px;
+    min-height: 6.375rem;
+    padding: 1.5625rem 1.125rem 0.9375rem;
   }
 
   .iphone-service-feature__eyebrow {
@@ -4426,10 +4426,10 @@
   .iphone-service-feature__meta {
     grid-column: 1 / -1;
     display: flex;
-    gap: 10px;
+    gap: 0.625rem;
     align-items: center;
     justify-content: space-between;
-    margin-top: 4px;
+    margin-top: 0.25rem;
     color: var(--home-lime, #97ce20);
     font-size: .82rem;
     font-weight: 800;
@@ -4469,12 +4469,12 @@
   }
 
   .iphone-service-feature--advice {
-    min-height: 213px;
+    min-height: 13.3125rem;
   }
 
   .iphone-service-feature--advice .iphone-service-feature__body {
     grid-template-columns: minmax(0, 1fr) auto;
-    min-height: 83px;
+    min-height: 5.1875rem;
   }
 
   .iphone-service-feature--advice .iphone-service-feature__body > strong {
@@ -4493,7 +4493,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: 1fr;
-    gap: 12px;
+    gap: 0.75rem;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -4504,30 +4504,30 @@
   }
 
   .iphone-service-card {
-    height: 230px;
-    min-height: 230px;
+    height: 14.375rem;
+    min-height: 14.375rem;
     border: 0;
     border-radius: 18px 5px 18px 5px;
   }
 
   .iphone-service-card__media {
-    height: 184px;
-    margin-bottom: -12px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 12px));
+    height: 11.5rem;
+    margin-bottom: -0.75rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 0.75rem));
   }
 
   .iphone-service-card--explained .iphone-service-card__media {
-    height: 158px;
+    height: 9.875rem;
   }
 
   .iphone-service-card__title {
     display: flex;
     flex: 1 1 auto;
-    gap: 6px;
+    gap: 0.375rem;
     align-items: center;
     justify-content: space-between;
-    min-height: 52px;
-    padding: 9px 8px 9px 10px;
+    min-height: 3.25rem;
+    padding: 0.5625rem 0.5rem 0.5625rem 0.625rem;
   }
 
   .iphone-service-card__title strong {
@@ -4563,7 +4563,7 @@
   .iphone-service-contact-cta {
     justify-content: center;
     max-width: none;
-    min-height: 64px;
+    min-height: 4rem;
     margin: 0 auto;
     text-align: center;
   }

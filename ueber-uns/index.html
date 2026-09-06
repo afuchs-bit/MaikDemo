@@ -3,47 +3,49 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<!-- AP-01: Demo-Sperre. Beim Go-Live entfernen (Impressum darf indexiert werden), siehe docs/go-live-checkliste.md. -->
+<!-- AP-01: Demo-Sperre. Beim Go-Live entfernen, siehe docs/go-live-checkliste.md. -->
 <meta name="robots" content="noindex,nofollow" />
 <meta name="theme-color" content="#315200" />
-<!-- AUTO-GENERIERT von .github/scripts/build-rechtstexte.mjs aus content/rechtstexte/datenschutz.* – NICHT von Hand editieren. -->
-<title>Datenschutzerklärung | Maik Rohdich Garten- und Landschaftsbau</title>
-<meta name="description" content="Datenschutzerklärung von Maik Rohdich Garten- und Landschaftsbau – Informationen zur Verarbeitung Ihrer Daten bei Besuch der Website und bei einer Anfrage." />
-<link rel="canonical" href="https://rohdich.de/datenschutz/" />
-<meta property="og:title" content="Datenschutzerklärung | Maik Rohdich Garten- und Landschaftsbau" />
-<meta property="og:description" content="Datenschutzerklärung von Maik Rohdich Garten- und Landschaftsbau – Informationen zur Verarbeitung Ihrer Daten bei Besuch der Website und bei einer Anfrage." />
-<meta property="og:image" content="https://rohdich.de/assets/img/hero/hero-garten-herne-1600.webp" />
+<title>Über uns | Maik Rohdich Garten- und Landschaftsbau in Herne</title>
+<meta name="description" content="Meisterbetrieb für Garten- und Landschaftsbau in Herne, seit 2003. Gartenbaumeister, zertifizierter Baumkontrolleur der Landwirtschaftskammer, Ausbildungsbetrieb." />
+<link rel="canonical" href="https://rohdich.de/ueber-uns/" />
+<meta property="og:title" content="Über uns | Maik Rohdich Garten- und Landschaftsbau" />
+<meta property="og:description" content="Meisterbetrieb für Garten- und Landschaftsbau in Herne, seit 2003. Planung, Bau und Pflege aus einer Hand." />
+<meta property="og:image" content="https://rohdich.de/assets/img/ueber/ueber-1.webp" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://rohdich.de/datenschutz/" />
+<meta property="og:url" content="https://rohdich.de/ueber-uns/" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260902g" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260906a" />
 
-<!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Startseite",
-      "item": "https://rohdich.de/"
+      "@type": "AboutPage",
+      "@id": "https://rohdich.de/ueber-uns/#webpage",
+      "url": "https://rohdich.de/ueber-uns/",
+      "name": "Über uns – Maik Rohdich Garten- und Landschaftsbau",
+      "description": "Meisterbetrieb für Garten- und Landschaftsbau in Herne, seit 2003. Planung, Bau und Pflege aus einer Hand.",
+      "inLanguage": "de-DE",
+      "about": { "@id": "https://rohdich.de/#business" }
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Datenschutzerklärung",
-      "item": "https://rohdich.de/datenschutz/"
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://rohdich.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Über uns", "item": "https://rohdich.de/ueber-uns/" }
+      ]
     }
   ]
 }
 </script>
 </head>
-<body>
+<body class="ueber-page">
 
 <!-- ============ LOGO SYMBOL (reused in header + footer) ============ -->
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
@@ -100,13 +102,10 @@
   </defs>
 </svg>
 
-<!-- ============ HEADER / NAV ============ -->
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a class="brand" href="../" aria-label="Maik Rohdich Garten- und Landschaftsbau – Startseite">
-      <svg class="brand-logo" viewBox="0 0 640 150" role="img" aria-hidden="true">
-        <use href="#brand-logo"/>
-      </svg>
+      <span class="brand-logo" aria-hidden="true"></span>
     </a>
 
     <nav class="primary-nav" aria-label="Hauptnavigation">
@@ -117,6 +116,7 @@
           <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-leistungen" aria-label="Alle Leistungen anzeigen">
             <svg class="submenu-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
+          <!-- BUILD:leistungen-submenu:start -->
           <ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
           <li class="nav-submenu-group">
             <span class="nav-submenu-head">Für Privatkunden</span>
@@ -149,6 +149,7 @@
             </ul>
           </li>
           </ul>
+          <!-- BUILD:leistungen-submenu:end -->
         </li>
         <li><a href="../projekte/">Galerie</a></li>
         <li><a href="../#faq">FAQ</a></li>
@@ -158,75 +159,222 @@
 
     <div class="header-actions">
       <div class="call-wrap">
-        <button type="button" class="btn btn-ghost call-btn" id="callBtn" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-ghost call-btn" id="callBtn" aria-label="Telefonnummer auswählen" aria-haspopup="true" aria-expanded="false">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
           <span>Anrufen</span>
         </button>
         <div class="call-popover" id="callPopover" role="menu" hidden>
-          <a role="menuitem" href="tel:+492325585790" class="call-row">
-            <span class="call-label">Festnetz</span>
-            <span class="call-num">02325 / 58 57 90</span>
-          </a>
-          <a role="menuitem" href="tel:+491711738943" class="call-row">
-            <span class="call-label">Mobil</span>
-            <span class="call-num">0171 / 173 89 43</span>
-          </a>
+          <a role="menuitem" href="tel:+492325585790" class="call-row"><span class="call-label">Festnetz</span><span class="call-num">02325 / 58 57 90</span></a>
+          <a role="menuitem" href="tel:+491711738943" class="call-row"><span class="call-label">Mobil</span><span class="call-num">0171 / 173 89 43</span></a>
         </div>
       </div>
-      <a class="btn btn-whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20ein%20Projekt%20gesehen..." target="_blank" rel="noopener">
+      <a class="btn btn-whatsapp" aria-label="WhatsApp-Nachricht senden" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 720 720" fill="#fff" aria-hidden="true"><path d="M360,0C161.18,0,0,161.18,0,360c0,65.41,17.45,126.75,47.94,179.61L0,720l187.02-44.21c51.34,28.18,110.28,44.21,172.98,44.21,198.82,0,360-161.18,360-360S558.82,0,360,0ZM360,655.52c-60.17,0-116.13-17.98-162.82-48.87l-110.49,28.14,30.99-105.61c-33.53-47.93-53.2-106.26-53.2-169.19,0-163.21,132.31-295.52,295.52-295.52s295.52,132.31,295.52,295.52-132.31,295.52-295.52,295.52Z"/><path d="M444.35,407.52l87.1,41.06c4,1.88,6.56,5.94,6.2,10.34-.94,11.46-5.54,34.43-26.13,55.02-58.12,58.12-162.49-7.64-166.74-10.18-25.67-13.79-50.06-32.24-73.19-55.36s-41.58-47.52-55.37-73.19c-2.55-4.24-68.31-108.61-10.18-166.74,20.59-20.59,43.56-25.19,55.02-26.13,4.41-.36,8.46,2.2,10.34,6.2l41.07,87.1c1.94,4.12,1.09,9.02-2.13,12.24l-30.61,30.61c-6.62,6.62-8.56,16.93-4,25.11,11.17,20.03,26.19,39.32,43.59,57.07,17.75,17.4,37.04,32.43,57.07,43.59,8.18,4.56,18.48,2.62,25.11-4l30.61-30.61c3.22-3.22,8.12-4.08,12.24-2.13Z"/></svg>
         <span>WhatsApp</span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menü öffnen">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 
 <main id="top">
 
-<!-- ============ RECHTSTEXT ============ -->
-<section class="section section-rechtstext" aria-labelledby="rt-title">
-  <div class="container">
+  <!-- ===== Kopf =========================================================
+       Eyebrow, H1, Leitsatz. Der Eyebrow ist dasselbe Bauteil wie in der
+       Ueber-uns-Sektion der Startseite und in der Rezensionssektion
+       (.private-proof-since): Standortzeichen, Versalien, 0.08em gesperrt.
+       Alle Angaben aus content/stammdaten.json - gegruendet 2003,
+       Meisterbetrieb, Sitz Herne. -->
+  <section class="ueber-kopf">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Brotkrumennavigation">
+        <ol>
+          <li><a href="../">Startseite</a></li>
+          <li aria-current="page">Über uns</li>
+        </ol>
+      </nav>
 
-    <nav class="breadcrumbs reveal" aria-label="Sie sind hier">
-      <ol>
-        <li><a href="../">Startseite</a></li>
-        <li aria-current="page">Datenschutzerklärung</li>
-      </ol>
-    </nav>
+      <p class="ueber-eyebrow reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+        <span>Meisterbetrieb seit 2003 in Herne</span>
+      </p>
 
-    <div class="section-head rt-head reveal">
-      <h1 class="type-page-title" id="rt-title">Datenschutzerklärung</h1>
+      <h1 class="reveal">Über uns</h1>
+      <p class="ueber-leitsatz reveal">Gartenbau mit <em>Handschlagqualität.</em></p>
     </div>
+  </section>
 
-    <div class="rt-body reveal">
-      <!-- OFFEN: Vollständige Datenschutzerklärung vom Anbieter einsetzen (z. B. anwaltlich
-     geprüft oder über einen Generator erstellt). Die unten skizzierten Verarbeitungs-
-     kontexte sind bereits bekannt und sollten in der finalen Fassung ausformuliert
-     werden: Hosting, Server-Logs, Kontaktformular inkl. Bild-Upload, WhatsApp-Kontakt,
-     Pool-Rechner (Budgetangabe), Analyse (falls eingesetzt). Danach diesen Hinweis
-     und die Platzhalter-Absätze entfernen. Siehe docs/offene-punkte.md. -->
-<p>Die vollständige Datenschutzerklärung wird vor der Veröffentlichung ergänzt. Sie beschreibt, welche personenbezogenen Daten beim Besuch dieser Website und bei einer Anfrage verarbeitet werden, auf welcher Rechtsgrundlage und wie lange. Verantwortlich ist der im <a href="../impressum/">Impressum</a> genannte Anbieter.</p>
+  <!-- ===== Der Betrieb ===================================================
+       Wortlaut in Anlehnung an den Flisstext der Startseite, den der
+       Auftraggeber ausdruecklich so wollte (AP-179): "alles aus einer Hand -
+       mit eigenen Fachkraeften und eigenem Maschinenpark". Keine
+       Mitarbeiterzahl, keine Fuhrparkgroesse - Grundregel 3.
+       Das Foto lag ungenutzt im Repo. -->
+  <section class="section ueber-betrieb" aria-labelledby="betrieb-title">
+    <div class="container ueber-betrieb__raster">
+      <div class="ueber-betrieb__wort reveal">
+        <h2 class="type-section-title" id="betrieb-title">Ein Betrieb, der die Arbeit selbst macht</h2>
+        <p class="lead">Maik Rohdich führt den Betrieb seit 2003 als Meisterbetrieb für Garten-
+           und Landschaftsbau. Sitz ist Herne, gearbeitet wird im gesamten mittleren
+           Ruhrgebiet.</p>
+        <p class="lead">Jeder Garten entsteht aus Ihren Vorstellungen, den Möglichkeiten des
+           Grundstücks und unserer Erfahrung. Von der ersten Beratung bis zur Pflege alles aus
+           einer Hand – mit eigenen Fachkräften und eigenem Maschinenpark, termingerecht
+           umgesetzt. Was nicht sinnvoll ist, sagen wir Ihnen vorher.</p>
+        <p class="lead">Der Betrieb bildet aus. Wer hier lernt, arbeitet vom ersten Tag an auf
+           echten Baustellen mit.</p>
+      </div>
 
-<h2>Beim Besuch der Website</h2>
-<p>Technisch notwendige Verbindungsdaten (z. B. IP-Adresse, Zeitpunkt, abgerufene Seite) werden verarbeitet, um die Website auszuliefern. Details zu Hosting und Speicherdauer ergänzt der Anbieter.</p>
-
-<h2>Bei einer Anfrage</h2>
-<p>Wenn Sie uns über das Anfrageformular, per E-Mail, Telefon oder WhatsApp kontaktieren, verarbeiten wir die von Ihnen gemachten Angaben, um Ihre Anfrage zu bearbeiten. Bilder, die Sie mitsenden, werden für die Einschätzung Ihres Projekts genutzt.</p>
-
-<h2>Pool- und Whirlpool-Rechner</h2>
-<p>Der Rechner auf der Seite Pool- und Whirlpool-Umfeld berechnet ausschließlich in Ihrem Browser und speichert nichts. Erst wenn Sie die Angaben aktiv als Anfrage absenden, werden sie übermittelt. Eine freiwillig gemachte Budgetangabe ist eine persönliche Angabe und wird nur zur Vorbereitung des Gesprächs verwendet.</p>
-
-<h2>Ihre Rechte</h2>
-<p>Ihnen stehen die Rechte nach der Datenschutz-Grundverordnung zu, insbesondere auf Auskunft, Berichtigung, Löschung und Widerspruch. Die konkreten Ansprechwege und weitere Pflichtangaben ergänzt der Anbieter in der finalen Fassung.</p>
+      <figure class="ueber-betrieb__bild reveal">
+        <picture>
+          <source type="image/avif" srcset="../assets/img/ueber/ueber-hebeaktion-480.avif 480w" sizes="(max-width: 860px) 100vw, 420px">
+          <source type="image/webp" srcset="../assets/img/ueber/ueber-hebeaktion-480.webp 480w" sizes="(max-width: 860px) 100vw, 420px">
+          <img src="../assets/img/ueber/ueber-hebeaktion.webp" width="480" height="360"
+               alt="Ein Findling hängt an den Gurten eines Krans und wird über eine Baustelle im Garten gehoben."
+               loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Schwere Steine kommen mit eigenem Gerät an ihren Platz.</figcaption>
+      </figure>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- ===== Qualifikationen ===============================================
+       Wortlaut zeichengleich aus index.html (gate-welcome, Z. 446-459). Dort
+       stehen sie nur auf schmalen Geraeten: .gate-welcome ist ab 901px
+       display:none. Auf dem Desktop kamen sie bisher nirgends sichtbar vor.
+       Alle vier sind vom Auftraggeber bestaetigt, siehe Teil B des
+       Umsetzungsplans und docs/offene-punkte.md (AP-179, 05.09.2026). -->
+  <section class="section ueber-qualifikationen" aria-labelledby="qualifikationen-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 class="type-section-title" id="qualifikationen-title">Wofür wir geradestehen</h2>
+        <p class="lead">Vier Qualifikationen, die nicht nur auf dem Papier stehen – sie
+           entscheiden, welche Arbeiten wir überhaupt annehmen dürfen.</p>
+      </div>
+
+      <ul class="ueber-quali-liste reveal">
+        <li class="ueber-quali">
+          <span class="ueber-quali__zeichen" aria-hidden="true"><img src="../assets/img/icons/rohdich-blume.png" alt="" width="160" height="160" loading="lazy" decoding="async"></span>
+          <div>
+            <h3>Gartenbaumeister</h3>
+            <p>Der Meisterbrief im Garten- und Landschaftsbau. Er berechtigt zur Ausbildung
+               und steht für die geprüfte fachliche Leitung des Betriebs.</p>
+          </div>
+        </li>
+        <li class="ueber-quali">
+          <span class="ueber-quali__zeichen" aria-hidden="true"><img src="../assets/img/icons/rohdich-blume.png" alt="" width="160" height="160" loading="lazy" decoding="async"></span>
+          <div>
+            <h3>Zertifizierter Baumkontrolleur der Landwirtschaftskammer</h3>
+            <p>Regelkontrollen an Bäumen, dokumentiert und nachvollziehbar. Für Eigentümer
+               ist das der Nachweis, ihrer Verkehrssicherungspflicht nachgekommen zu sein.</p>
+          </div>
+        </li>
+        <li class="ueber-quali">
+          <span class="ueber-quali__zeichen" aria-hidden="true"><img src="../assets/img/icons/rohdich-blume.png" alt="" width="160" height="160" loading="lazy" decoding="async"></span>
+          <div>
+            <h3>Sachverständiger für Garten- und Landschaftsbau</h3>
+            <p>Sachgebiet 2.4.1 · Herstellung und Unterhaltung. Fachliche Begutachtung dort,
+               wo strittig ist, ob eine Ausführung den Regeln der Technik entspricht.</p>
+          </div>
+        </li>
+        <li class="ueber-quali">
+          <span class="ueber-quali__zeichen" aria-hidden="true"><img src="../assets/img/icons/rohdich-blume.png" alt="" width="160" height="160" loading="lazy" decoding="async"></span>
+          <div>
+            <h3>Sachkundiger für Pflanzenschutz und Wildkrautbekämpfung</h3>
+            <p>Voraussetzung dafür, Pflanzenschutzmittel gewerblich anzuwenden – und dafür,
+               zu beurteilen, wann es auch ohne geht.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Team =========================================================
+       BEWUSST AUSKOMMENTIERT - auf der Seite ist hiervon nichts zu sehen.
+
+       [OFFEN: Namen, Rollen und Fotos der Mitarbeiter liegen nicht vor. Teil B
+        des Umsetzungsplans nennt keine Personen ausser dem Inhaber.]
+
+       Vor dem Einschalten sind ZWEI Dinge noetig, nicht nur die Daten:
+       1. Die Angaben selbst - Name, Funktion, optional Qualifikation je Person.
+       2. Eine Freigabe des Betriebsinhabers, die Grundregel 3 fuer diese Seite
+          aufhebt ("Keine Mitarbeiterzahlen, keine Fuhrparkgroessen, kein
+          Teamfoto - ausdruecklicher Wunsch des Betriebsinhabers", Teil A.3).
+          Ohne sie bleibt der Block aus, auch wenn die Daten da sind.
+       3. Bei Fotos zusaetzlich die Einwilligung der Abgebildeten.
+
+       Das Markup ist fertig und an ueber-uns.css angeschlossen (.ueber-team*).
+       Zum Aktivieren: diesen Kommentar aufloesen, die drei Beispielkarten durch
+       echte ersetzen, sonst nichts. Die CSS-Regeln stehen bereits.
+
+  <section class="section ueber-team" aria-labelledby="team-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 class="type-section-title" id="team-title">Wer bei uns arbeitet</h2>
+        <p class="lead">TEXT FOLGT.</p>
+      </div>
+      <ul class="ueber-team-liste reveal">
+        <li class="ueber-person">
+          <figure class="ueber-person__bild">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/team/PLATZHALTER-480.avif 480w" sizes="(max-width: 860px) 45vw, 260px">
+              <img src="../assets/img/team/PLATZHALTER.webp" width="480" height="600" alt="BESCHREIBUNG FOLGT" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <h3>NAME</h3>
+          <p class="ueber-person__rolle">FUNKTION</p>
+          <p>SATZ ZUR PERSON.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+       Ende des vorbereiteten Team-Abschnitts. -->
+
+  <!-- ===== Einsatzgebiet und Erreichbarkeit ==============================
+       Die Ortsliste ist zeichengleich mit dem Footer und mit
+       content/stammdaten.json. Bewusst OHNE die NRW-Karte: die ist ein
+       130-Zeilen-Inline-SVG mit eigenen Filter-IDs und steht bereits auf der
+       Startseite - ein zweites Vorkommen waere eine Dublette, die niemand
+       pflegt.
+
+       Der Erreichbarkeitsblock folgt der verbindlichen Formulierung aus Teil
+       B.2 des Umsetzungsplans. Sie muss den Widerspruch tragen: es gibt
+       Oeffnungszeiten, aber keine Ladenoeffnung. -->
+  <section class="section ueber-gebiet" aria-labelledby="gebiet-title">
+    <div class="container ueber-gebiet__raster">
+      <div class="reveal">
+        <h2 class="type-section-title" id="gebiet-title">Wo wir arbeiten</h2>
+        <p class="lead">Der Sitz ist Herne. Regelmäßig im Einsatz sind wir außerdem in:</p>
+        <ul class="ueber-orte">
+          <li>Herne <span class="ueber-orte__zusatz">– Sitz</span></li>
+          <li>Bochum</li>
+          <li>Castrop-Rauxel</li>
+          <li>Recklinghausen</li>
+          <li>Gelsenkirchen-Buer</li>
+        </ul>
+        <p class="ueber-orte__nachsatz">Weitere Orte nach Projekt – auf Anfrage auch
+           deutschlandweit.</p>
+      </div>
+
+      <div class="ueber-erreichbar reveal">
+        <h2 class="ueber-erreichbar__titel">Erreichbarkeit</h2>
+        <dl class="ueber-zeiten">
+          <div><dt>Montag bis Freitag</dt><dd>09:00–17:00 Uhr</dd></div>
+          <div><dt>Samstag</dt><dd>09:00–12:00 Uhr</dd></div>
+          <div><dt>Sonntag</dt><dd>geschlossen</dd></div>
+        </dl>
+        <p>Per WhatsApp erreichen Sie uns rund um die Uhr – wir antworten innerhalb der
+           Geschäftszeiten.</p>
+        <p class="ueber-erreichbar__hinweis">Besuche am Betrieb sind ausschließlich nach
+           vorheriger Terminvereinbarung möglich.</p>
+        <a class="btn btn-primary" href="../kontakt/">Termin vereinbaren <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
 
 </main>
+
 
 <!-- BUILD:site-footer:start -->
 <footer class="site-footer">

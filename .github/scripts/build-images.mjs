@@ -55,7 +55,20 @@ const SOURCES = [
   // aendern, nur die Datei in _src ersetzen und build-images neu laufen
   // lassen - die Breitenliste passt sich per fit() selbst an.
   { src: 'assets/img/_src/ueber-team.jpg', dir: 'assets/img/ueber', name: 'ueber-team' },
+  // Warmbild der Ueber-uns-Sektion.
+  // AP-238: Quelle gegen die weite Ansicht getauscht (1068x1070). Die vorige war
+  // ein enger Ausschnitt um den Hund, in dem vom Garten fast nichts zu sehen war.
+  // Kein crop-Feld: die Quelle ist praktisch quadratisch (Verhaeltnis 0,998) und
+  // die Kachel ist es auch - es gibt nichts zu schneiden. Nur 480/960: die Kachel
+  // wird hoechstens 277 px breit dargestellt.
+  { src: 'assets/img/_src/ueber-hund.jpg', dir: 'assets/img/ueber', name: 'ueber-hund', widths: [480, 960] },
   { src: 'assets/img/_src/ueber-hebeaktion.jpg', dir: 'assets/img/ueber', name: 'ueber-hebeaktion' },
+  // AP-217: Standbild des Mustergarten-Videos, dient als poster und traegt die
+  // Medienkachel. Quelle ist ein Einzelbild aus mustergarten.mp4 (960x725) - auf
+  // diesem Rechner liegt kein ffmpeg, der Frame kam fertig aus dem Entwurf.
+  // KEIN crop: die Kachel ist am Desktop 21:9 und auf dem Telefon 4:3, den
+  // Ausschnitt macht object-fit im CSS. Mehr als 960 px gibt die Quelle nicht her.
+  { src: 'assets/img/_src/mustergarten-standbild.jpg', dir: 'assets/img/ueber', name: 'mustergarten-standbild', widths: [480, 960] },
   // Hochformat-Original (1440x1800, 4:5) fuer die Gewerbe-Tuer im Hero, die ein
   // liegendes Fenster von rund 3:2 ist. focusY 0.45 zeigt 21-74 % der Bildhoehe:
   // Strasse, Gebaeude und fremde Fahrzeuge fallen oben heraus, der Helm des

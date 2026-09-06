@@ -387,21 +387,27 @@ html.home-theme-dark .section-proof .proof-trust {
   border-color: var(--line);
 }
 
-html.home-theme-dark .section-proof .proof-map .m-fill {
+/* AP-216: Diese vier Regeln hingen an .section-proof. AP-179 hat die Karte nach
+   .mr-ueber__karte verschoben, AP-215 die Proof-Sektion entfernt - .section-proof
+   kommt seither in KEINER HTML-Datei mehr vor, die Regeln waren tot. Sichtbar war
+   nur eine davon: m-outline stand auf var(--green-700) #4A7A10 und damit bei
+   3,44:1 gegen --bg statt bei 11,12:1. Entscopt statt unter .mr-ueber__karte
+   dupliziert, weil .proof-map genau einmal im Repo vorkommt. */
+html.home-theme-dark .proof-map .m-fill {
   fill: var(--bg-soft);
 }
 
 /* AP-F12: Kreisgrenzen auf Dunkel. --green-500 waere hier zu kraeftig fuer eine
    Nebenlinie; --home-lime traegt die Karte, die Deckkraft kommt aus mapFadeKrs. */
-html.home-theme-dark .section-proof .proof-map .m-krs {
+html.home-theme-dark .proof-map .m-krs {
   stroke: var(--home-lime);
 }
 
-html.home-theme-dark .section-proof .proof-map .m-inner {
+html.home-theme-dark .proof-map .m-inner {
   stroke: var(--home-lime);
 }
 
-html.home-theme-dark .section-proof .proof-map .m-outline {
+html.home-theme-dark .proof-map .m-outline {
   stroke: var(--home-dark-accent);
 }
 
@@ -1313,15 +1319,37 @@ html.home-theme-dark .fork-path:hover {
   }
 }
 
-/* AP-184: Die Gewerbekunden-Weiche wird fuer die Hochformat-Ansichten des
-   iPhone 15 Pro (393px) und iPhone 16 Pro (402px) neu komponiert. Die
+/* Proportionale Handy-Skalierung.
+
+   Die mobile Startseite war urspruenglich nur zwischen 390px und 404px gueltig -
+   praktisch nur iPhone 12-16 und iPhone 16 Pro. Auf jedem anderen Geraet fielen der
+   Willkommenbereich, die Vertrauenszahlen und der mobile Footer ersatzlos weg.
+
+   Die Blockregeln darunter sind fast vollstaendig in rem und Prozent gebaut. rem
+   loest gegen die Wurzel-Schriftgroesse auf, also genuegt es, diese eine Groesse
+   an die Viewportbreite zu binden: die Komposition bleibt identisch und skaliert
+   als Ganzes mit.
+
+   Der Faktor ist 16px / 402px = 3.9801vw. Bei genau 402px Breite ergibt das wieder
+   16px, die Darstellung auf dem iPhone 16 Pro bleibt damit unveraendert. Die
+   Grenzen entsprechen 320px und 480px Viewportbreite.
+
+   Bewusst auf .home-theme-dark begrenzt - die Unterseiten tragen diese Klasse
+   nicht und behalten ihre feste Wurzelgroesse. */
+@media (max-width: 480px) {
+  html.home-theme-dark {
+    font-size: clamp(12.736px, 3.9801vw, 19.104px);
+  }
+}
+
+/* AP-184: Die Gewerbekunden-Weiche wird fuer Handy-Hochformate neu komponiert. Die
    hochkantige Formsprache des Hero-CTA ist um 90 Grad in eine horizontale
    Karte uebersetzt: skewY wird zu skewX, die asymmetrischen Radien drehen mit.
    Das Bestandsfoto belegt bewusst weniger als die Haelfte; der gesamte Verbund
    bleibt ein einzelner Link. */
-@media (min-width: 390px) and (max-width: 404px) {
+@media (max-width: 480px) {
   html.home-theme-dark .hero--gate-content .gate-doors {
-    width: calc(100% - 20px);
+    width: calc(100% - 1.25rem);
     margin-top: 0;
   }
 
@@ -1385,9 +1413,11 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .hero-proof-instagram:active {
     opacity: .74;
   }
+}
 
-  /* Den parallelen Willkommenentwurf nur auf den vereinbarten iPhones ersetzen.
-     Desktop und alle anderen Bildschirmgroessen behalten .mr-willkommen. */
+@media (max-width: 480px) {
+  /* Auf Handys ersetzt der Willkommenentwurf die Bestandssektion.
+     Ab 481px behaelt die Seite .mr-willkommen. */
   html.home-theme-dark .mr-willkommen {
     display: none;
   }
@@ -1559,12 +1589,12 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-photo {
-    --gate-welcome-brand-width: clamp(65px, 20vw, 80px);
+    --gate-welcome-brand-width: clamp(4.0625rem, 20vw, 5rem);
     position: relative;
     isolation: isolate;
     width: 100%;
     aspect-ratio: 4 / 3;
-    margin: 24px 0 0;
+    margin: 1.5rem 0 0;
     overflow: visible;
     border-radius: 16px;
     background: transparent;
@@ -1612,7 +1642,7 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-photo-brand {
     position: absolute;
-    right: -16px;
+    right: -1rem;
     bottom: calc(var(--gate-welcome-brand-width) * -2 / 7);
     z-index: 2;
     display: block;
@@ -1624,7 +1654,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-message {
-    margin: 44px 12px 0;
+    margin: 2.75rem 0.75rem 0;
   }
 
   html.home-theme-dark .gate-welcome-statement {
@@ -1641,7 +1671,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-feeling {
-    margin: 22px 0 0;
+    margin: 1.375rem 0 0;
     color: var(--home-on-dark);
     font-size: 1.3125rem;
     font-weight: 600;
@@ -1657,7 +1687,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-copy {
-    margin: 20px 0 0;
+    margin: 1.25rem 0 0;
     color: var(--home-on-dark-2);
     font-family: var(--body);
     font-size: 1.0625rem;
@@ -1668,7 +1698,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-outro {
-    margin: 26px 0 0;
+    margin: 1.625rem 0 0;
     color: var(--home-on-dark-2);
     font-family: var(--body);
     font-size: 1.0625rem;
@@ -1684,14 +1714,14 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-qualifications {
-    margin: 24px 0 0;
+    margin: 1.5rem 0 0;
     padding: 0;
   }
 
   html.home-theme-dark .gate-welcome-qualification-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px 16px;
+    gap: 0.875rem 1rem;
     transform: translateX(4px);
   }
 
@@ -1702,9 +1732,9 @@ html.home-theme-dark .fork-path:hover {
     align-items: center;
     justify-content: center;
     min-width: 0;
-    min-height: 76px;
+    min-height: 4.75rem;
     margin: 0;
-    padding: 7px 0 11px;
+    padding: 0.4375rem 0 0.6875rem;
     border: 0;
     color: var(--home-yellow);
     background: transparent;
@@ -1721,16 +1751,16 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-qualification-content {
     display: grid;
-    grid-template-columns: 30px minmax(0, 1fr);
+    grid-template-columns: 1.875rem minmax(0, 1fr);
     align-items: center;
-    gap: 9px;
-    width: min(100%, 148px);
+    gap: 0.5625rem;
+    width: min(100%, 9.25rem);
   }
 
   html.home-theme-dark .gate-welcome-qualification-flower {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     object-fit: contain;
     filter: saturate(.94) drop-shadow(1px 2px 1px rgba(0, 0, 0, .36));
     transform: rotate(-8deg);
@@ -1790,8 +1820,8 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-qualification-details {
     position: relative;
-    margin: 12px 0 0 39px;
-    padding: 19px 0 1px;
+    margin: 0.75rem 0 0 2.4375rem;
+    padding: 1.1875rem 0 1px;
   }
 
   html.home-theme-dark .gate-welcome-qualification-details::before {
@@ -1799,7 +1829,7 @@ html.home-theme-dark .fork-path:hover {
     position: absolute;
     top: 0;
     left: 0;
-    width: 72px;
+    width: 4.5rem;
     height: 2px;
     border-radius: 999px;
     background: linear-gradient(90deg, var(--home-lime), rgba(140, 198, 63, .12));
@@ -1824,17 +1854,17 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-qualification-panel .gate-welcome-qualification-detail {
-    margin-top: 7px;
+    margin-top: 0.4375rem;
     font-size: .875rem;
     line-height: 1.5;
   }
 
   html.home-theme-dark .gate-welcome-qualification-fallback {
-    margin-top: 18px;
+    margin-top: 1.125rem;
   }
 }
 
-@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) and (prefers-reduced-motion: reduce) {
+@media (max-width: 480px) and (prefers-reduced-motion: reduce) {
   html.home-theme-dark .gate-welcome-reveal {
     opacity: 1 !important;
     -webkit-clip-path: none !important;
@@ -1858,7 +1888,7 @@ html.home-theme-dark .fork-path:hover {
   }
 }
 
-@media (scripting: none) and (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+@media (scripting: none) and (max-width: 480px) {
   html.home-theme-dark .gate-welcome-reveal {
     opacity: 1 !important;
     -webkit-clip-path: none !important;
@@ -1878,12 +1908,12 @@ html.home-theme-dark .fork-path:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (min-width: 390px) and (max-width: 404px) {
+@media (max-width: 480px) {
   html.home-theme-dark .gate-door--gewerbe {
     --iphone-gate-angle: -7deg;
     --iphone-gate-image-width: 41%;
-    width: calc(100% - 16px);
-    height: 104px;
+    width: calc(100% - 1rem);
+    height: 6.5rem;
     min-height: 0;
     max-height: none;
     aspect-ratio: auto;
@@ -1939,7 +1969,7 @@ html.home-theme-dark .fork-path:hover {
     width: var(--iphone-gate-image-width);
     overflow: hidden;
     border-radius: 12px 0 0 1px;
-    clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, calc(100% - 0.8125rem) 0, 100% 100%, 0 100%);
     box-shadow: none;
     transform: skewX(var(--iphone-gate-angle));
     transform-origin: center;
@@ -1947,8 +1977,8 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-door--gewerbe img.gate-photo {
     position: absolute;
-    inset: -1px -12px;
-    width: calc(100% + 24px);
+    inset: -1px -0.75rem;
+    width: calc(100% + 1.5rem);
     height: calc(100% + 2px);
     object-fit: cover;
     object-position: 38% 52%;
@@ -1966,7 +1996,7 @@ html.home-theme-dark .fork-path:hover {
     z-index: 2;
     display: flex;
     align-items: stretch;
-    padding: 8px 10px 8px 17px;
+    padding: 0.5rem 0.625rem 0.5rem 1.0625rem;
   }
 
   html.home-theme-dark .gate-door--gewerbe .gate-cta {
@@ -1975,7 +2005,7 @@ html.home-theme-dark .fork-path:hover {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 6px;
+    gap: 0.375rem;
     min-width: 0;
     padding: 0;
     color: var(--home-on-dark);
@@ -2037,7 +2067,7 @@ html.home-theme-dark .fork-path:hover {
   }
 }
 
-@media (prefers-reduced-motion: reduce) and (min-width: 390px) and (max-width: 404px) {
+@media (prefers-reduced-motion: reduce) and (max-width: 480px) {
   html.home-theme-dark .gate-door--gewerbe {
     transition: none;
   }
@@ -2308,98 +2338,290 @@ html.home-theme-dark .mr-ueber {
   background: var(--bg);
 }
 
-/* --- Block 1: Kopfzeile. Ohne Linie darueber, ohne Icon - so skizziert. --- */
+/* --- Block 1: Kopf mit Eyebrow (AP-217) ---------------------------------
+   Der Eyebrow ist zeichengleich das Bauteil der Rezensionssektion
+   (.private-proof-since, privat-form.css:3174): 0.76rem, 800, 0.08em gesperrt,
+   Versalien, Zeichen in --home-yellow. Nur die Textfarbe weicht ab - dort steht
+   er auf gruenem Panel und braucht rgba(255,255,255,.8), hier auf --bg. */
 html.home-theme-dark .mr-ueber__kopf { margin-bottom: var(--space-section-head); }
 
 html.home-theme-dark .mr-ueber__kopf h2 { margin: 0; }
 
-html.home-theme-dark .mr-ueber__unter {
-  margin: var(--space-title-subtext) 0 0;
-  color: var(--ink-2);
+html.home-theme-dark .mr-ueber__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 14px;
+  color: var(--ink-mute);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+html.home-theme-dark .mr-ueber__eyebrow svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: var(--home-yellow);
+}
+
+/* --- Block 2: Wort und Beleg (AP-217) ------------------------------------
+   Ersetzt das Raster aus AP-216. Die Verhaeltnisse 1.05fr / 1px / 0.95fr
+   stammen aus dem freigegebenen Entwurf: die Wortspalte bekommt etwas mehr
+   Platz als die Belegspalte, ohne dass die Kante aus der Mitte rutscht.
+
+   align-items: start statt center - anders als beim Raster aus AP-216 sind
+   beide Spalten mehrzeilig; zentriert haetten sie oben wie unten ungleiche
+   Abstaende zur Kante. */
+html.home-theme-dark .mr-ueber__split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(26px, 3.4vw, 54px);
+  align-items: start;
+}
+
+html.home-theme-dark .mr-ueber__wort,
+html.home-theme-dark .mr-ueber__beleg { min-width: 0; }
+
+/* Der Leitsatz. Displayschrift wie jede H2 der Seite, aber als Absatz gesetzt -
+   die Ueberschrift der Sektion ist "Ueber uns", nicht dieser Satz.
+   KEINE Anfuehrungszeichen: er ist kein Zitat und soll auch keines vortaeuschen. */
+html.home-theme-dark .mr-ueber__leitsatz {
+  margin: 0;
   font-family: var(--display);
-  font-size: var(--type-subsection-title-size);
-  line-height: 1.15;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.9vw, 2.5rem);
+  line-height: 1.16;
+  letter-spacing: -.01em;
+  color: var(--ink);
 }
 
-/* --- Block 2: Text mit umflossenem Foto ---------------------------------
-   float statt Raster ist hier keine Geschmacksfrage: Nur ein Float laesst die
-   letzte Zeile UNTER dem Bild weiterlaufen. Ein zweispaltiges Raster haelt den
-   Text stur in seiner Spalte, auch wenn das Bild laengst zu Ende ist.
-
-   Die Textbreite wird NICHT gesetzt. Sie ergibt sich aus dem, was der Float
-   uebriglaesst - eine eigene Breite am Absatz wuerde den Umfluss aufheben.
-
-   Nebeneinander bleibt es auch auf Mobil. Gemessen bei 375px: Inhaltsbreite
-   363px, davon rund 52% Text = 189px, bei 7,27px je Zeichen also 26 Zeichen je
-   Zeile (typografisch empfohlen: 45-75). Der Auftraggeber hat das in Kenntnis
-   dieser Zahl so entschieden - siehe docs/offene-punkte.md, AP-179. */
-html.home-theme-dark .mr-ueber__foto {
-  float: right;
-  width: 42%;
-  margin: 0 0 clamp(14px, 1.6vw, 22px) clamp(18px, 3vw, 42px);
+html.home-theme-dark .mr-ueber__leitsatz em {
+  font-style: normal;
+  color: var(--home-lime);
 }
+
+html.home-theme-dark .mr-ueber__text {
+  margin: 22px 0 0;
+  color: var(--ink-2);
+  font-size: var(--type-section-lead-size);
+  line-height: 1.7;
+  max-width: 62ch;
+}
+
+/* AP-235/AP-243: Der Weg zur Unterseite.
+
+   Die Ecken folgen den Leistungskacheln: 18px oben links und unten rechts, 5px an
+   den beiden anderen. Derselbe Wert wie .iphone-service-card (privat-form.css:4404),
+   die Kachelwand, neben der der Button auf dem Telefon steht. Bewusst in allen
+   Breiten, nicht nur bis 480px - eine Form, die sich beim Aufziehen des Fensters
+   aendert, waere fuer ein einzelnes Bauteil zu viel Bewegung.
+
+   Bis AP-243 trug der Button die abgeschraegte Lasche aus .mobile-proof-request
+   (mobile-social-proof.css:462 ff.). Die ist mit Radien nicht zu bauen und lag
+   deshalb als SVG-Umriss hinter dem Text; mit dem Wechsel auf border-radius ist
+   das SVG entfallen. Die Lasche selbst bleibt dort, wo sie herkommt: bei den
+   mobilen Kontakt-CTAs, wo sie gefuellt die Hauptaktion traegt.
+
+   Der Rand bleibt der duenne Umriss in --home-dark-accent. Die Kacheln tragen einen
+   fast durchsichtigen Rand, der auf dem dunklen Grund dieser Sektion verschwaende;
+   und der Button ist ein Nebenweg - eine gefuellte Limettenflaeche haette der
+   Anfrage als Hauptaktion Gewicht genommen. */
+html.home-theme-dark .mr-ueber__mehr {
+  position: relative;
+  border-radius: 18px 5px 18px 5px;
+  /* Der Umriss als inset-Schatten und nicht als border: Chrome rundet
+     border-width auf ganze CSS-Pixel, aus 1.5px wuerde 1px - duenner als der
+     bisherige SVG-Strich (stroke-width 1.5 mit non-scaling-stroke). Der
+     inset-Schatten wird nicht gerundet, folgt dem border-radius und laesst
+     ausserdem die Kastengroesse unveraendert. */
+  box-shadow: inset 0 0 0 1.5px var(--home-dark-accent);
+  transition: box-shadow .18s var(--ease), background-color .18s var(--ease);
+
+  /* AP-236: volle Spaltenbreite statt inhaltsbreit. Die Belegspalte ist per
+     Messung deckungsgleich mit dem Fotopaar darunter (.mr-ueber__paar nimmt
+     ebenfalls die ganze Spalte), Button und Bilder fluchten damit auf beiden
+     Kanten. justify-content: center, weil der Inhalt sonst bei 566px Desktop-
+     breite links klebt. align-self: start ist entfallen - im Block-Kontext
+     dieser Spalte hatte es ohnehin keine Wirkung. */
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  min-height: 68px;
+  padding: 10px 26px;
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+html.home-theme-dark .mr-ueber__mehr-text {
+  flex: none;
+}
+
+/* AP-236: Das Bild ist 640x180 (Seitenverhaeltnis 3,56:1). Die Hoehe steuert,
+   width bleibt auto - so bestimmt das Bild selbst seine Breite und wird nicht
+   verzerrt. object-fit braucht es nicht, es gibt keinen Beschnitt.
+   Der drop-shadow aus AP-235 ist entfallen: er half dem SVG-Schriftzug ueber
+   seine 4,29:1; das PNG bringt eine eigene helle Kontur mit.
+
+   AP-237: von 36 auf 52px vergroessert. Die alten 36 stammten aus AP-235, als der
+   Button noch inhaltsbreit war; seit AP-236 ist er so breit wie das Fotopaar
+   (335 bis 566px), und darin stand der Schriftzug verloren. 52px ist die Grenze,
+   die der Button ohne zu wachsen traegt: 52 plus 2x10px Innenabstand ergibt 72px,
+   knapp ueber der min-height von 68. */
+html.home-theme-dark .mr-ueber__mehr-logo {
+  flex: none;
+  height: 52px;
+  width: auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.home-theme-dark .mr-ueber__mehr:hover {
+    background-color: rgba(182, 217, 122, .12);
+    box-shadow: inset 0 0 0 1.5px var(--home-lime);
+  }
+}
+
+/* Der Fokusring darf nicht unter der Form verschwinden - sie liegt auf z-index -1,
+   der Ring gehoert an das <a> selbst. */
+html.home-theme-dark .mr-ueber__mehr:focus-visible {
+  outline: 2px solid var(--home-focus, var(--home-lime));
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.home-theme-dark .mr-ueber__mehr { transition: none; }
+}
+
+/* Unter 420px wird die Lasche sonst breiter als die Spalte. */
+@media (max-width: 420px) {
+  html.home-theme-dark .mr-ueber__mehr {
+    gap: 10px;
+    padding: 10px 18px;
+    font-size: .95rem;
+  }
+  /* AP-237: mitgewachsen. Bei 320px Fenster ist der Button 280px breit; mit
+     "Mehr zu", Fuge und Innenabstand bleiben rund 170px fuer das Logo - 44px Hoehe
+     ergeben 157px Breite und passen. Mehr liefe ueber. */
+  html.home-theme-dark .mr-ueber__mehr-logo { height: 44px; }
+}
+
+/* Das Fotopaar. AP-235: quadratisch statt 4:5 stehend.
+   Grund: Die Hundeaufnahme IST quadratisch (980x980). Bei 4:5 schnitt
+   object-fit: cover 20 % der Breite weg - je 10 % links und rechts, und genau
+   dort liegen das Kiesbeet mit den Graesern und das Formgehoelz im Topf. Bei 1:1
+   ist das ganze Bild zu sehen; mehr Garten gibt die Quelle nicht her, ein
+   groesseres Original liegt nicht vor.
+   Beide Kacheln bleiben gleich geformt - ein Paar liest sich nur dann als Paar. */
+html.home-theme-dark .mr-ueber__paar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+html.home-theme-dark .mr-ueber__foto { margin: 0; }
 
 html.home-theme-dark .mr-ueber__foto img {
+  display: block;
   width: 100%;
+  aspect-ratio: 1 / 1;
   height: auto;
+  object-fit: cover;
   border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+}
+
+/* Die Arbeitsjacke ist 480x600 und verliert im Quadrat 20 % Hoehe. Der Ausschnitt
+   wandert deshalb nach oben: Helm und Gehoerschutz bleiben vollstaendig, weg
+   faellt unten Westenflaeche. Bei einem Ruecken-Foto ist das der richtige
+   Beschnitt - der Schriftzug auf der Weste sitzt mittig und bleibt drin. */
+html.home-theme-dark .mr-ueber__paar .mr-ueber__foto:last-child img {
+  object-position: 50% 22%;
 }
 
 html.home-theme-dark .mr-ueber__foto figcaption {
-  margin-top: .55rem;
+  margin-top: .6rem;
   color: var(--ink-mute);
   font-size: .8125rem;
   line-height: 1.45;
 }
 
-html.home-theme-dark .mr-ueber__text {
-  margin: 0;
-  color: var(--ink-2);
-  font-size: var(--type-section-lead-size);
-  line-height: 1.7;
+/* --- Umbruch: Wort und Beleg stapeln ------------------------------------
+   AP-219: Die geneigte Trennkante ist auf Wunsch des Auftraggebers entfallen -
+   in beiden Lagen. Damit fuehrt allein der Abstand die Spalten auseinander. */
+@media (max-width: 860px) {
+  html.home-theme-dark .mr-ueber__split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(22px, 5vw, 32px);
+  }
+
+  html.home-theme-dark .mr-ueber__paar { margin-top: 20px; }
+
+  /* Gemessen bei 859px: ohne Deckel bekommt jedes Foto 389px Breite und damit
+     486px Hoehe - die Sektion wuchs auf 2414px, mehr als in jeder anderen
+     Breite. Beide Kacheln blieben in ihrem Raster korrekt, nur war das Raster
+     die volle Spalte. 420px halten das Paar auf der Groesse, die es auch
+     zweispaltig hat (2x200px plus Fuge). */
+  html.home-theme-dark .mr-ueber__paar { max-width: 420px; }
+
+  /* AP-236: Der Button traegt denselben Deckel. Ohne ihn lief er bei 768px auf
+     706px Breite, waehrend das Paar darunter bei 420 stehen blieb - gemessene
+     Differenz 286px, die rechten Kanten klafften auseinander. Beide Werte
+     muessen zusammen bleiben. */
+  html.home-theme-dark .mr-ueber__mehr { max-width: 420px; }
 }
 
-/* Der Float ragt sonst aus dem Container heraus und schiebt sich unter den
-   naechsten Block. */
-html.home-theme-dark .mr-ueber__flow::after { content: ""; display: block; clear: both; }
+/* --- Block 3: Mustergarten als Medienkachel (AP-217) ---------------------
+   Der 100vw-Ausbruch aus AP-179 entfaellt. Das Video sitzt jetzt in der
+   Containerbreite und traegt dieselbe Erhebung wie die Karten der Leistungs-
+   und Ablaufsektion, dazu das asymmetrische Eck 24/24/44/24, das im Projekt an
+   fuenf Stellen die Marken-Ecke ist (form-trust-card.css:16, kontakt.css:52,
+   gewerbe.css:51, privat-form.css:2111).
 
-/* --- Block 3: randlose Buehne fuer das Video ----------------------------
-   Der Ausbruch sitzt an der HUELLE, nicht am Video: styles.css:190 setzt
-   `img, svg, video { max-width: 100% }` und wuerde ein direktes width:100vw
-   am Video wieder kappen.
+   overflow: hidden ist noetig, damit das Video den Radius annimmt - ein
+   <video> beschneidet sich nicht selbst an der Elternecke. */
+html.home-theme-dark .mr-ueber__muster { margin-top: var(--space-section-compact); }
 
-   100vw schliesst die Scrollleiste ein. Das faengt das bereits vorhandene
-   body { overflow-x: hidden } (styles.css:187) ab; der klebende Header bleibt
-   funktionsfaehig, weil html der Scroll-Container ist und die Regel auf body
-   steht. Beides ist nachgemessen. */
 html.home-theme-dark .mr-ueber__buehne {
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-  /* AP-213: Der Titel soll knapp ueber dem Video stehen. Die frueheren 64px kamen
-     NICHT vom Titel (dessen Abstand betrug 16,8px), sondern von diesem Rand: ein
-     margin-block setzt oben wie unten denselben Wert, und beide Raender fielen
-     zusammen. Deshalb getrennt - oben knapp, unten bleibt der Sektionsabstand,
-     sonst klebte der Text darunter am Band. */
-  margin-top: clamp(6px, .8vw, 10px);
-  margin-bottom: var(--space-section-compact);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px 24px 44px 24px;
+  box-shadow: var(--shadow-card);
   background: var(--bg-dark);
 }
 
-/* Das Video misst nativ 720x544 - fast 4:3. Randlos ueber 1200px gezogen ergaebe
-   das einen 907px hohen Block, der die Seite erschlaegt und auf gaengigen Fenstern
-   nicht mehr in den Blick passt. Die Skizze zeigt ein BAND, kein Quadrat.
-   Deshalb ein festes Seitenverhaeltnis mit object-fit: cover - der Film wird oben
-   und unten beschnitten statt verzerrt. max-height deckelt zusaetzlich auf niedrigen
-   Fenstern.
-   Hinweis zur Schaerfe: Die Quelle ist nur 720px breit und wird ab etwa 720px
-   Fensterbreite hochskaliert. Das laesst sich hier nicht beheben, es braeuchte eine
-   hoeher aufgeloeste Fassung. Vermerkt in docs/offene-punkte.md. */
+/* Das Video misst nativ 720x544 - fast 4:3. In der Containerbreite (1240px)
+   ergaebe das unbeschnitten 937px Hoehe. Die Skizze zeigt ein BAND, deshalb ein
+   festes Seitenverhaeltnis mit object-fit: cover - der Film wird oben und unten
+   beschnitten statt verzerrt.
+   Hinweis zur Schaerfe: Die Quelle ist nur 720px breit und wird ab etwa dieser
+   Fensterbreite hochskaliert. Vermerkt in docs/offene-punkte.md. */
 html.home-theme-dark .mr-ueber__video {
+  display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 21 / 9;
   max-height: 62svh;
   object-fit: cover;
-  display: block;
+
+  /* AP-240: Der Radius muss am Video selbst stehen, nicht nur an der Buehne.
+     Die traegt zwar border-radius plus overflow: hidden, aber ein <video> wird in
+     einem eigenen Compositing-Layer gezeichnet und laesst sich davon nicht
+     beschneiden - gemessen: Buehne 20px Radius, Video 0, Ecken im Beweisbild
+     scharf. Die Werte sind je 1px kleiner als aussen, weil die Buehne einen
+     1px-Rahmen traegt: innerer Radius = aeusserer minus Rahmenbreite, sonst
+     blitzt in der Rundung ein Spalt zwischen Video und Rahmen durch.
+     Gilt auch fuer das poster-Standbild, das dasselbe Element zeichnet. */
+  border-radius: 23px 23px 43px 23px;
 
   /* AP-181: Das Video soll gar nicht bedienbar sein. controls ist im Markup
      entfallen; pointer-events: none nimmt zusaetzlich das Kontextmenue beim
@@ -2409,57 +2631,54 @@ html.home-theme-dark .mr-ueber__video {
   pointer-events: none;
 }
 
-/* --- Titel ueber dem Band ------------------------------------------------
-   Baloo 2 ist die runde Zweitschrift des Hauses und steht im @font-face-Block
-   oben in dieser Datei.
-
-   Eine eigene Regel ist noetig: Die bestehende Comic-Regel haengt an
-   .mr-willkommen__gross .mr-comic, eine Klasse allein greift hier also nicht.
-
-   Aufrecht, nicht kursiv: Es existiert nur ein aufrechter Schnitt (700). Das
-   kursive "Willkommen" entsteht durch synthetische Schraegstellung - bei einem
-   Titel mit Ziffern faellt das unangenehm auf. Die mobile H1 weiter oben in
-   dieser Datei setzt die Schrift ebenfalls aufrecht. */
-/* AP-213: Zusammenfallende Raender - der Abstand zum Band ist das Maximum aus
-   diesem Rand und dem margin-top der Buehne, nicht deren Summe. Nur die Buehne
-   zu senken brachte deshalb nichts: gemessen blieben 17px, weil dieser Wert
-   (16,8px) der groessere war. Beide muessen klein sein. */
-/* AP-214: Der Titel stiess ohne Abstand an den Fliesstext darueber - gemessen 0px.
-   Folge von AP-213: dort ging es darum, ihn an das VIDEO heranzuruecken; nach oben
-   hatte der Kopf nie einen Rand, und weder der Absatz noch der Umflussblock
-   bringen einen mit.
-   --space-section-compact und keine gegriffene Zahl: derselbe Wert trennt in dieser
-   Sektion bereits Videoband von Text und Text von Karte. */
-html.home-theme-dark .mr-ueber__videokopf {
-  margin-top: var(--space-section-compact);
-  margin-bottom: clamp(6px, .8vw, 10px);
-}
-
-/* AP-213: Look des Wortes "Garten" aus dem mobilen Hero.
-   Dort ist "Garten" KEIN Text, sondern ein handgezeichneter Pinselschriftzug
-   (assets/img/hero/garten-schriftzug.png, 800x196). Die Buchstaben lassen sich nicht
-   uebernehmen - die Datei schreibt "Garten" und kann nichts anderes sagen.
-   Uebertragbar ist der Charakter: das grelle Gruen und die Neigung.
-   Die Farbe ist aus dem PNG ausgelesen, nicht geschaetzt: 43.187 Bildpunkte tragen
-   exakt #56E607 - und genau dieser Wert steht bereits als --mobile-logo-green in
-   styles.css :root. Kein neuer Ton.
-   Die Neigung entsteht synthetisch; es gibt nur einen aufrechten Baloo-2-Schnitt.
-   Der Willkommen-Text macht es beim Wort "Willkommen" genauso. */
-html.home-theme-dark .mr-ueber__videotitel {
+/* Die Kapsel traegt die H3 des Blocks. Der dunkle Grund ist keine Zierde: an
+   dieser Stelle steht im Standbild heller Himmel. Gemessen als Canvas-Komposit
+   ueber dem tatsaechlichen Bildausschnitt, schlechtestes Pixel unter der Kapsel,
+   gegen die Textfarbe rgb(250,250,246):
+     ohne Kapsel  1,37 : 1   (unlesbar)
+     mit Kapsel   9,22 : 1   (WCAG AA verlangt 4,5)
+   Der Weichzeichner ist Zugabe - die Deckkraft allein traegt den Wert. */
+html.home-theme-dark .mr-ueber__badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
-  font-family: "Baloo 2", cursive;
-  font-weight: 700;
-  font-style: italic;
-  font-size: clamp(1.7rem, 3.1vw, 2.6rem);
-  line-height: 1.1;
-  letter-spacing: -.01em;
-  color: var(--mobile-logo-green);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(11,12,10,.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.18);
+  color: var(--home-on-dark);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: .92rem;
+  line-height: 1.2;
 }
 
-/* --- Text unter dem Band ------------------------------------------------- */
-html.home-theme-dark .mr-ueber__videotext { margin-top: clamp(14px, 1.8vw, 22px); }
+html.home-theme-dark .mr-ueber__badge i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--home-lime);
+}
 
-html.home-theme-dark .mr-ueber__videotext p {
+/* Zwei Spalten: die Erklaerung traegt die Zeile, der Besuchshinweis ist eine
+   Nebenbemerkung und steht deshalb schmaler und blasser rechts daneben. */
+html.home-theme-dark .mr-ueber__mustertext {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  gap: clamp(20px, 3vw, 44px);
+  align-items: start;
+  margin-top: 22px;
+}
+
+html.home-theme-dark .mr-ueber__mustertext p {
   margin: 0;
   max-width: 68ch;
   color: var(--ink-2);
@@ -2467,15 +2686,144 @@ html.home-theme-dark .mr-ueber__videotext p {
   line-height: 1.7;
 }
 
-/* --- Block 5: NRW-Karte, links gesetzt, rund 40% der Inhaltsbreite ------ */
+html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
+  color: var(--ink-mute);
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+/* Das Band wird zum Bild, sobald es keine Bandbreite mehr hat. Der Zuschnitt
+   ist in drei Stufen gestaffelt, weil ein fester Wert an beiden Enden falsch
+   waere: bei 390px zeigt 21:9 nur noch einen Streifen, bei 859px ergibt 4:3
+   ein 593px hohes Bild - gemessen der groesste Einzelposten der Sektion und der
+   Grund, warum sie dort 2414px hoch wurde. Dazwischen liegt 16:9. */
+@media (max-width: 860px) {
+  html.home-theme-dark .mr-ueber__buehne { border-radius: 20px 20px 34px 20px; }
+  html.home-theme-dark .mr-ueber__video {
+    aspect-ratio: 16 / 9;
+    border-radius: 19px 19px 33px 19px;   /* wieder je 1px unter der Buehne */
+  }
+  html.home-theme-dark .mr-ueber__mustertext {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 599px) {
+  html.home-theme-dark .mr-ueber__video { aspect-ratio: 4 / 3; }
+}
+
+/* --- Block 4: Einsatzgebiet (AP-216, Spaltenmass ueberarbeitet in AP-217) ---
+   AP-216 hatte 420px Karte plus 34ch Legende; rechts blieben rund 430px leer
+   (dort als offener Punkt O5 vermerkt). AP-217 nimmt das Mass des Entwurfs:
+   die Karte wird kleiner, die Legende bekommt einen Eyebrow und fuellt die
+   Zeile. Die Karte ist hier Beleg, nicht Hauptsache - die Sektion traegt jetzt
+   das Mustergartenband.
+
+   Vier Kinder statt drei: der Eyebrow ist in AP-217 dazugekommen. */
 html.home-theme-dark .mr-ueber__karte { margin-top: var(--space-section-compact); }
 
 html.home-theme-dark .mr-ueber__karte .proof-map {
-  width: 40%;
-  min-width: 260px;
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 46ch);
+  justify-content: start;
+  column-gap: clamp(24px, 3.2vw, 56px);
+  row-gap: 8px;
+  align-items: start;
+  width: 100%;
   margin: 0;
-  align-items: flex-start;   /* Beschriftung linksbuendig zur Bildkante */
   text-align: left;
+}
+
+/* max-height: none hebt den Hoehendeckel fuer das Karten-SVG auf (styles.css:835
+   sowie die Regel ab 1024px, die auf clamp(260px, 46vh, 348px) deckelt). Er
+   stammt aus der Zeit, als die Karte in einer schmalen Spalte stand. */
+html.home-theme-dark .mr-ueber__karte .proof-map svg {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  align-self: center;
+  max-height: none;
+}
+
+html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  justify-self: start;   /* sonst zieht das Raster das inline-flex auf Spaltenbreite */
+  margin: 0;
+}
+
+/* Die Legende war fuer eine schmale Spalte UNTER der Karte gebaut
+   (styles.css:883, flex + space-between). Neben der Karte schob sie den Sitz an
+   die rechte Containerkante - gemessen rund 300px Loch zwischen Staedtezeile
+   und "Sitz in Herne". Hier stapelt sie. */
+html.home-theme-dark .mr-ueber__karte .proof-map-cap {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* Der Schwerpunkt steht als eigene Zeile ueber den Staedten. Vorbild ist
+   .proof-map-reach (styles.css) - ein display:block im <em>, das die Struktur der
+   Legende unveraendert laesst. Die Farbe kommt vom <em> und liegt damit auf der
+   Stufe der Staedte; der Deutschlandweit-Zusatz bleibt darunter zurueckhaltender. */
+html.home-theme-dark .mr-ueber__karte .proof-map-focus {
+  display: block;
+  margin-bottom: 2px;
+}
+
+html.home-theme-dark .mr-ueber__karte .proof-map-src {
+  grid-column: 2;
+  grid-row: 3;
+  align-self: start;
+  margin-top: 4px;
+}
+
+/* Unter 860px wieder gestapelt. Karte, Legende und Quellenangabe stehen mittig
+   (AP-241); der Kopf "Einsatzgebiet" bleibt linksbuendig wie die uebrigen
+   Abschnittskoepfe der Seite (AP-242) - dafuer genuegt die Basisregel weiter
+   oben mit justify-self: start, die das justify-items: center des Rasters
+   ueberstimmt. Ab 861px steht die Legende neben der Karte, dort linksbuendig. */
+@media (max-width: 860px) {
+  html.home-theme-dark .mr-ueber__karte {
+    margin-top: var(--space-section-compact);
+  }
+  html.home-theme-dark .mr-ueber__karte .proof-map {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+  html.home-theme-dark .mr-ueber__karte .proof-map-cap {
+    text-align: center;
+    align-items: center;
+  }
+  html.home-theme-dark .mr-ueber__karte .proof-map-src {
+    text-align: center;
+  }
+  html.home-theme-dark .mr-ueber__karte .proof-map svg,
+  html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte,
+  html.home-theme-dark .mr-ueber__karte .proof-map-cap,
+  html.home-theme-dark .mr-ueber__karte .proof-map-src {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  /* Auf Mobil steht der Eyebrow VOR der Karte - er ordnet sie ein. */
+  html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte { order: -1; }
+
+  /* AP-217 gibt der Sektion mit Fotopaar und Mustergartenband deutlich mehr
+     Inhalt; die Karte ist hier nur noch Beleg. Ueber die volle Spaltenbreite
+     wurde sie 345px hoch - mehr als am Desktop (296px), wo sie neben der
+     Legende steht. 260px ist die Hoehe, ab der die Kreisgrenzen unleserlich
+     wuerden; darueber bringt die Karte auf dem Telefon keine Information mehr
+     dazu, nur Laenge. Spart gemessen 85px. */
+  html.home-theme-dark .mr-ueber__karte .proof-map svg {
+    align-self: start;
+    justify-self: start;
+    max-height: 260px;
+  }
 }
 
 /* --- Alte Stelle: ohne die Karte bleibt nur der Kleinauftrags-Block ------
@@ -2493,9 +2841,9 @@ html.home-theme-dark .footer-social-iphone {
   display: none;
 }
 
-/* AP-215/AP-224: Auf den vereinbarten iPhone-Breiten entfallen Schnellzugriff
-   und Einsatzgebiet. Kontakt und rechtliche Links bleiben stehen. */
-@media (min-width: 390px) and (max-width: 404px) and (orientation: portrait) {
+/* AP-215/AP-224: Auf Handy-Breiten entfallen Schnellzugriff und Einsatzgebiet.
+   Kontakt und rechtliche Links bleiben stehen. */
+@media (max-width: 480px) {
   html.home-theme-dark .site-footer .footer-navigation,
   html.home-theme-dark .site-footer .footer-coverage {
     display: none;
@@ -2503,8 +2851,8 @@ html.home-theme-dark .footer-social-iphone {
 
   html.home-theme-dark .site-footer .brand-footer {
     order: -1;
-    width: min(300px, 95%);
-    margin: 0 0 16px;
+    width: min(18.75rem, 95%);
+    margin: 0 0 1rem;
   }
 
   html.home-theme-dark .site-footer .footer-brandline {
@@ -2529,16 +2877,16 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-contact-link {
-    grid-template-columns: 30px minmax(0, 1fr);
-    gap: 7px;
-    padding-inline: 7px;
+    grid-template-columns: 1.875rem minmax(0, 1fr);
+    gap: 0.4375rem;
+    padding-inline: 0.4375rem;
     border-color: rgba(86, 230, 7, .14);
     background: transparent;
   }
 
   html.home-theme-dark .site-footer .footer-contact-icon {
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
   }
 
   html.home-theme-dark .site-footer .footer-contact-link--iphone-form .footer-contact-icon,
@@ -2557,8 +2905,8 @@ html.home-theme-dark .footer-social-iphone {
 
   html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon::before {
     content: "";
-    width: 23px;
-    height: 23px;
+    width: 1.4375rem;
+    height: 1.4375rem;
     background: url("../img/icons/phone-header-mobile.png?v=20260902a") center / contain no-repeat;
   }
 
@@ -2586,12 +2934,14 @@ html.home-theme-dark .footer-social-iphone {
 
   html.home-theme-dark .site-footer .footer-social-iphone {
     display: grid;
+    /* Tippziele bleiben absolut: 44px ist die Mindestgroesse nach WCAG 2.5.8.
+       Mitskaliert waeren es auf einem 320px-Geraet nur noch 35px. */
     grid-template-columns: 44px 44px minmax(0, 1fr);
     grid-template-rows: minmax(44px, auto);
     align-items: center;
     justify-content: start;
     column-gap: 2px;
-    margin-top: 14px;
+    margin-top: 0.875rem;
   }
 
   html.home-theme-dark .site-footer .footer-social-link {
@@ -2599,7 +2949,7 @@ html.home-theme-dark .footer-social-iphone {
     place-items: center;
     width: 44px;
     height: 44px;
-    padding: 4px;
+    padding: 0.25rem;
     border: 0;
     border-radius: 50%;
     background: transparent;
@@ -2618,8 +2968,8 @@ html.home-theme-dark .footer-social-iphone {
   html.home-theme-dark .site-footer .footer-social-icon {
     display: grid;
     place-items: center;
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 11px;
     color: #fff;
   }
@@ -2629,8 +2979,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--whatsapp img {
-    width: 22px;
-    height: 22px;
+    width: 1.375rem;
+    height: 1.375rem;
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram {
@@ -2638,8 +2988,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram svg {
-    width: 22px;
-    height: 22px;
+    width: 1.375rem;
+    height: 1.375rem;
   }
 
   html.home-theme-dark .site-footer a.footer-social-link:focus-visible {

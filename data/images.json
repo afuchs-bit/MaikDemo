@@ -161,6 +161,26 @@
       "width": 320,
       "height": 427,
       "aspect": 1.3333
+    },
+    "/assets/img/ueber/ueber-hund.webp": {
+      "base": "/assets/img/ueber/ueber-hund",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 962,
+      "aspect": 1.0019
+    },
+    "/assets/img/ueber/mustergarten-standbild.webp": {
+      "base": "/assets/img/ueber/mustergarten-standbild",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 725,
+      "aspect": 0.7552
     }
   }
 }
