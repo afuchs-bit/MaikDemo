@@ -858,3 +858,71 @@ diese Sitzung ihn gesetzt hätte — beim Weiterzählen auf `zz47` fiel es auf.
 wohl aber mittelbar: Die dort eingeführte Wurzelschriftgröße
 `clamp(12.736px, 3.9801vw, 19.104px)` unter 480 px zieht alle `rem`-Werte der Sektion mit.
 Die Messwerte dieses AP wurden auf diesem Stand erhoben.
+
+
+## AP-246 — Kurzkontaktformular neu gestaltet
+
+**Vom 06.09.2026.** Das kurze Anfrageformular hatte keine Fläche, Felder als bloße Umrisse
+und einen Radio-Punkt in Browser-Blau. Direkt darunter zeigt der Footer die Formsprache, die
+ihm fehlte.
+
+### Der gelieferte Fremdentwurf wurde verworfen
+
+Zum Auftrag kam ein ausgearbeiteter Entwurf samt Referenz-HTML. Der Auftraggeber hat dessen
+**Gestaltung** abgelehnt — sie passte nicht zur Website. Seine **inhaltlichen** Entscheidungen
+bleiben gültig und sind umgesetzt: Chips statt Freitext, Direktkontakt über dem Formular, ein
+kombiniertes Feld für Nummer oder E-Mail, kein Ortsfeld.
+
+Nicht übernommen wurden: die eigene Farbpalette (dreizehn Werte, von denen nur einer einem
+Token entsprach), die schrägen `clip-path`-Schnitte, der handgezeichnete Marker-Strich als
+Absendefläche und die Blüte als Wasserzeichen.
+
+### Woher jeder Baustein stammt
+
+| Element | Vorbild im Bestand |
+|---|---|
+| Karte, Marken-Ecke 24/24/44/24 | `form-trust-card.css:16`, `kontakt.css:52`, `gewerbe.css:51`, `privat-form.css:2111` |
+| Eyebrow | `.private-proof-since`, `privat-form.css:3174` |
+| Kontaktkacheln | `.footer-contact-link`, `styles.css:1527` |
+| Telefon-Icon | `phone-header-mobile.png` aus dem Hero |
+| WhatsApp-Glyph auf `#25D366` | `whatsapp-glyph-white.svg` + `.btn-whatsapp`, `styles.css:279/1801` |
+| Chips | Pillenform von `.btn`, `styles.css:236` |
+| Absendeknopf | `.btn .btn-primary`, unverändert übernommen |
+
+Alle Farben sind Tokens. Einziger fester Wert ist `#25D366` — die WhatsApp-Marke, die so
+bereits in `styles.css:280` steht.
+
+### Was an der Umschaltung nicht angetastet wurde
+
+`setzeModus()`, `werteUebernehmen()` und `UEBERNAHME` in `anfrage.js` sind unverändert; die
+Datei ist nur um die Chip- und Freitextlogik **ergänzt** (keine Zeile entfernt, per Diff
+belegt). Erhalten sind `data-anf-modus="kurz"`, `data-anf-form`, `data-anf-status`,
+`data-anf-zeitstempel`, `data-anf-modus-feld`, der Honeypot und der Feldname `name`.
+
+**Bewusst aufgegeben:** E-Mail und Telefon sind zu einem Feld `kontakt` zusammengelegt.
+`UEBERNAHME` kennt es nicht, die Übertragung läuft dort ins Leere — wer erst kurz tippt und
+dann auf „mehr Angaben" wechselt, gibt seinen Kontaktkanal erneut ein. Vom Auftraggeber so
+entschieden, damit `anfrage.js` unberührt bleibt.
+
+### Gemessen
+
+| Prüfung | Ergebnis |
+|---|---|
+| Umschaltung kurz → lang → kurz | funktioniert, Name wird übertragen |
+| Chips an/aus, Themenfeld | sammelt korrekt, Abwahl funktioniert |
+| Chipbreite beim Umschalten | 144,5 px → 144,5 px, unverändert (Rand bleibt 2 px) |
+| „Etwas anderes" | öffnet das Freitextfeld, `aria-expanded` wechselt |
+| Absenden | zeigt weiterhin den Hinweis, dass kein Versand aktiv ist |
+| Radio-Punkt | `rgb(140, 198, 63)` statt Browser-Blau |
+| Chips unter 560 px | zwei Spalten, drei Zeilen — in vier Breiten geprüft |
+| Overflow | keiner bei 320 / 360 / 390 / 560 / 561 / 768 / 1024 / 1440 px |
+
+### Weiterhin offen
+
+Der Formularversand. Es gibt keinen Endpunkt; `anfrage.js` zeigt nur einen Hinweis. Die
+Chip-Auswahl landet im versteckten Feld `themen`, damit sie im Datensatz steht, sobald ein
+Endpunkt existiert. Die QA-Forderung des Fremdentwurfs „Ausgewählte Chips landen in der Mail
+an Maik" ist bis dahin nicht erfüllbar.
+
+Erreichbarkeitszeiten und ein Satz zur Rückmeldung stehen **nicht** im Formular — am
+06.09.2026 so entschieden.

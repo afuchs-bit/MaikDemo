@@ -231,3 +231,241 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+/* ===================================================================
+   AP-246 — Kurzformular in der Formsprache der Seite
+
+   Der Fremdentwurf zu diesem Umbau brachte eine eigene Farbpalette und
+   schraege clip-path-Schnitte mit. Beides ist verworfen: Der Auftraggeber
+   hat am 06.09.2026 entschieden, dass ausschliesslich die Farben und
+   Bauteile der Website verwendet werden, damit keine abweichenden Toene
+   entstehen. Jeder Wert unten ist ein Token oder stammt aus einer
+   bestehenden Regel; die einzige feste Farbe ist WhatsApp-Gruen #25D366,
+   das so bereits in styles.css:280 steht.
+   =================================================================== */
+
+/* Die Karte traegt dieselben Werte wie die Leistungs- und Ablaufkarten,
+   dazu die Marken-Ecke 24/24/44/24 aus form-trust-card.css:16,
+   kontakt.css:52, gewerbe.css:51 und privat-form.css:2111. */
+.anf__karte {
+  padding: clamp(18px, 4vw, 28px);
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 24px 24px 44px 24px;
+  box-shadow: var(--shadow-card);
+}
+
+/* Zeichengleich mit .private-proof-since (privat-form.css:3174) und dem
+   Eyebrow der Ueber-uns-Sektion. */
+.anf__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 14px;
+  color: var(--ink-mute);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.anf__eyebrow svg {
+  inline-size: 20px;
+  block-size: 20px;
+  flex: none;
+  color: var(--home-yellow);
+}
+
+/* --------------------------------------------------- Direktkontakt */
+
+.anf__kanaele {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 10px;
+  margin: 0 0 4px;
+}
+
+/* Aufbau wie .footer-contact-link (styles.css:1527): Icon-Spalte fest,
+   Text daneben, kleine Grossbuchstaben-Zeile ueber dem Wert. */
+.anf__kanal {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 11px;
+  align-items: center;
+  min-block-size: 60px;
+  padding: 10px 12px;
+  border: 1px solid rgba(219,233,189,.2);
+  border-radius: 14px;
+  background: rgba(255,255,255,.055);
+  text-decoration: none;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .anf__kanal:hover {
+    border-color: var(--green-500);
+    background: rgba(140,198,63,.09);
+  }
+}
+
+.anf__kanal:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+}
+
+.anf__kanal-icon {
+  inline-size: 38px;
+  block-size: 38px;
+  border-radius: 11px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Der Hoerer aus dem Hero auf dunklem Grund - dieselbe Paarung wie der
+   Anrufknopf im Header (styles.css:1794 ff.). */
+.anf__kanal-icon--tel {
+  background-color: var(--bg-dark);
+  background-image: url("../img/icons/phone-header-mobile.png");
+  background-size: 24px 24px;
+}
+
+/* Das weisse Glyph des Headers auf WhatsApp-Gruen - wie .btn-whatsapp
+   (styles.css:279) mit whatsapp-glyph-white.svg (styles.css:1801). */
+.anf__kanal-icon--wa {
+  background-color: #25D366;
+  background-image: url("../img/icons/whatsapp-glyph-white.svg");
+  background-size: 22px 22px;
+}
+
+.anf__kanal small {
+  display: block;
+  color: var(--ink-mute);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.anf__kanal strong {
+  display: block;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+/* ---------------------------------------------------------- Trenner */
+
+.anf__oder {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 22px 0 18px;
+  color: var(--ink-mute);
+  font-size: .8125rem;
+}
+
+.anf__oder::before,
+.anf__oder::after {
+  content: "";
+  flex: 1;
+  block-size: 1px;
+  background: var(--line);
+}
+
+/* ------------------------------------------------------------ Chips */
+
+.anf__frage {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: .95rem;
+  font-weight: 800;
+}
+
+.anf__frage span { color: var(--ink-mute); font-weight: 400; }
+
+.anf__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+}
+
+/* Pillenform wie .btn (styles.css:236 ff.). Die Randstaerke bleibt in
+   beiden Zustaenden bei 2px, damit sich die Chipbreite beim Umschalten
+   nicht aendert und die Zeile nicht umbricht. */
+.anf__chip {
+  appearance: none;
+  padding: 9px 16px;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-2);
+  font-family: var(--body);
+  font-size: .9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .anf__chip:hover { border-color: var(--home-dark-accent); }
+}
+
+.anf__chip[aria-pressed="true"] {
+  background: var(--green-500);
+  border-color: var(--green-500);
+  color: var(--bg);
+}
+
+.anf__chip:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+}
+
+/* Sechs Chips brechen im Fliessumbruch 3/2/1 - "Etwas anderes" stuende
+   allein in der letzten Zeile. Zwei feste Spalten teilen sechs ohne Rest,
+   unabhaengig von Textbreite und Systemschriftgroesse. */
+@media (max-width: 560px) {
+  .anf__chips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .anf__chip {
+    padding: 10px 8px;
+    font-size: .85rem;
+    text-align: center;
+  }
+}
+
+/* ----------------------------------------------------- Freitextfeld */
+
+.anf__mehr {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--home-dark-accent);
+  font-family: var(--body);
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.anf__mehr:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+}
+
+.anf__feld--frei { margin-block-start: 0; }
+
+/* ----------------------------------------- Vorwahl: Punkt in Marke */
+
+/* Ohne accent-color zeichnet der Browser den Punkt in seinem eigenen
+   Blau - der einzige nicht markengerechte Farbwert der ganzen Sektion. */
+.anf__wahl input { accent-color: var(--green-500); }
