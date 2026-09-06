@@ -2609,11 +2609,11 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   margin-top: 4px;
 }
 
-/* Unter 860px wieder gestapelt, und dann mittig: Kopf, Karte, Legende und
-   Quellenangabe stehen untereinander und bilden einen zentrierten Block. Bis
-   AP-241 war das hier linksbuendig erzwungen, damit nichts als einziges Element
-   der Sektion zentriert stand - mit dem mitzentrierten Kopf faellt der Grund weg.
-   Ab 861px steht die Legende neben der Karte und bleibt dort linksbuendig. */
+/* Unter 860px wieder gestapelt. Karte, Legende und Quellenangabe stehen mittig
+   (AP-241); der Kopf "Einsatzgebiet" bleibt linksbuendig wie die uebrigen
+   Abschnittskoepfe der Seite (AP-242) - dafuer genuegt die Basisregel weiter
+   oben mit justify-self: start, die das justify-items: center des Rasters
+   ueberstimmt. Ab 861px steht die Legende neben der Karte, dort linksbuendig. */
 @media (max-width: 860px) {
   html.home-theme-dark .mr-ueber__karte {
     margin-top: var(--space-section-compact);
@@ -2621,9 +2621,6 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   html.home-theme-dark .mr-ueber__karte .proof-map {
     grid-template-columns: minmax(0, 1fr);
     justify-items: center;
-  }
-  html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte {
-    justify-self: center;
   }
   html.home-theme-dark .mr-ueber__karte .proof-map-cap {
     text-align: center;
