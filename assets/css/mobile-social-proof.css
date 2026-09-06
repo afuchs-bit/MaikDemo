@@ -593,7 +593,7 @@
    iPhone-Breiten mehr Ruhe zwischen Galerie, Einladung und Abschluss-CTA. */
 @media (max-width: 480px) {
   .mobile-social-proof {
-    padding: 28px 32px 96px;
+    padding: 28px clamp(24px, 8.14vw, 36px) 96px;
   }
 
   .mobile-proof-gallery {
