@@ -926,3 +926,54 @@ an Maik" ist bis dahin nicht erfüllbar.
 
 Erreichbarkeitszeiten und ein Satz zur Rückmeldung stehen **nicht** im Formular — am
 06.09.2026 so entschieden.
+
+
+## AP-247 — Kartenlegende: „Für Ihre Anliegen in ganz NRW tätig"
+
+**Vom 06.09.2026.** Unter der Einsatzgebiets-Karte standen der Vorspann „Hauptsächlich in
+Nordrhein-Westfalen:" und darunter die fünf Städte. Beides ist durch einen Satz ersetzt:
+**„Für Ihre Anliegen in ganz NRW tätig"**. „Auf Anfrage auch deutschlandweit." und „Sitz in
+Herne" bleiben.
+
+### Abweichung von H.6 — bewusst und begründet
+
+H.6 des Umsetzungsplans legt fest: „Der Schwerpunkt sind weiterhin die fünf Städte" und
+„Teil D des Plans setzt mit der Ortsliste bewusst ein lokales Signal". Der Vorspann stammte
+aus AP-241 und war ausdrücklich darauf gestützt. **Der Auftraggeber hat am 06.09.2026
+entschieden, die Städtezeile an dieser Stelle zu streichen.**
+
+Inhaltlich ist die neue Aussage gedeckt: H.6 hält selbst fest, dass Maik Rohdich auf Anfrage
+deutschlandweit tätig wird — „ganz NRW" bleibt dahinter zurück, behauptet also nichts
+Zusätzliches.
+
+**Das lokale Signal geht nicht verloren**, es entfällt nur an dieser einen Stelle. Nachgezählt:
+
+| Ort | Städte weiterhin genannt |
+|---|---|
+| `.github/scripts/templates/_footer.html` | ja — propagiert in alle 37 Seiten |
+| JSON-LD `areaServed` | ja, in drei Blöcken |
+| `index.html` übrige Stellen | ja, acht Vorkommen |
+| `AREA_SERVED` in `render.mjs` | unberührt |
+
+### Nicht angefasst
+
+Das `aria-label` der Karte nennt weiterhin die fünf Städte
+(„Nordrhein-Westfalen mit dem Einsatzgebiet um Herne, Bochum, Gelsenkirchen, Recklinghausen
+und Castrop-Rauxel"). Es beschreibt, was die Grafik **zeigt** — und sie hebt diese Kreise
+weiterhin hervor. Eine Bildbeschreibung folgt dem Bild, nicht dem Text daneben.
+
+Kein CSS geändert: `.proof-map-focus` behält seine Regel aus AP-241 (`display: block`,
+2 px Abstand), die auch für einen alleinstehenden Satz richtig ist.
+
+### Gemessen
+
+Der Satz steht in allen geprüften Breiten (320 / 390 / 861 / 1440 px) einzeilig, kein
+Doppelpunkt, keine Städte mehr in der Legende, kein horizontaler Overflow. Die Ausrichtung
+aus AP-241/AP-242 ist unverändert: bis 860 px zentriert, ab 861 px linksbündig neben der
+Karte.
+
+### Offen
+
+| # | Punkt | |
+|---|---|---|
+| O17 | **Hervorhebung auf der Karte ohne Erklärung** | Die Grafik betont weiterhin fünf Kreise um Herne, der Text nennt sie nicht mehr. Kein Widerspruch — die Karte zeigt ganz NRW, die Betonung markiert den Schwerpunkt — aber wer die Grafik liest, sieht eine Hervorhebung, die im Text keine Entsprechung hat. Falls das stören sollte, wäre die Hervorhebung anzupassen, nicht der Satz. |
