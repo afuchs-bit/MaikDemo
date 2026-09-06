@@ -977,3 +977,49 @@ Karte.
 | # | Punkt | |
 |---|---|---|
 | O17 | **Hervorhebung auf der Karte ohne Erklärung** | Die Grafik betont weiterhin fünf Kreise um Herne, der Text nennt sie nicht mehr. Kein Widerspruch — die Karte zeigt ganz NRW, die Betonung markiert den Schwerpunkt — aber wer die Grafik liest, sieht eine Hervorhebung, die im Text keine Entsprechung hat. Falls das stören sollte, wäre die Hervorhebung anzupassen, nicht der Satz. |
+
+
+## AP-249 — Freitextfeld stand trotz `hidden` offen (Fehler aus AP-246)
+
+**Vom 06.09.2026.** Das Feld „Worum geht es?" im Kurzformular war dauerhaft sichtbar,
+obwohl es erst auf Klick erscheinen sollte.
+
+> Dieser Abschnitt hieß zunächst AP-248. Eine parallel laufende Sitzung hatte dieselbe
+> Nummer Sekunden früher für „Ungenutzte Stile der Galerie-Filter entfernt“ vergeben
+> (Commit `996d283`); der hiesige Commit war noch nicht gepusht und ist auf **AP-249**
+> gerückt — derselbe Fall wie bei AP-230.
+
+**Ursache:** `[hidden] { display: none }` ist eine Regel des **Browsers** und hat damit die
+niedrigste Priorität. `anfrage.css:121` setzt `.anf__feld { display: grid }` und sticht sie
+aus. Das Markup trug `hidden`, `anfrage.js` setzte es korrekt — gezeichnet wurde das Feld
+trotzdem.
+
+| | Freitextfeld | Umschaltung kurz/lang |
+|---|---|---|
+| `hidden`-Attribut | gesetzt | gesetzt |
+| berechnetes `display` | `grid` | `none` |
+| tatsächlich sichtbar | **ja, 297 × 160 px** | nein |
+
+Die Umschaltung war nie betroffen: `.anf__form` und `.anf__karte` setzen kein `display`.
+
+**Behoben** mit `.anf [hidden] { display: none; }` — am Wrapper statt an der einzelnen
+Klasse, damit künftige Elemente mit `hidden` mitversorgt sind. Dasselbe Muster nutzt
+`privat-form.css:824` für das ausführliche Formular.
+
+### Warum die Prüfung in AP-246 das nicht gefunden hat
+
+Getestet wurde `element.hidden` — die DOM-**Eigenschaft**. Die war korrekt `true`. Sie sagt
+aber nichts darüber, ob das Element gezeichnet wird; das entscheidet allein das berechnete
+`display`. Der Test war grün, während das Feld offen dastand.
+
+> **Merksatz für künftige Prüfungen:** Sichtbarkeit nie über `element.hidden`,
+> `classList.contains()` oder gesetzte Attribute feststellen. Nur
+> `getComputedStyle(el).display` und `getBoundingClientRect()` sagen, was der Nutzer sieht.
+
+### Gemessen
+
+Startzustand `display: none`, Höhe 0. Nach Klick `display: grid`, Höhe 160 px,
+`aria-expanded="true"`, Fokus im Textfeld. Zweiter Klick schließt wieder. Der Chip „Etwas
+anderes" öffnet ebenfalls. Umschaltung kurz → lang → kurz an `display` geprüft: unverändert
+richtig, das Freitextfeld bleibt beim Rückwechsel zu. Kein Overflow bei 320 / 390 / 768 /
+1440 px.

@@ -464,6 +464,22 @@
 
 .anf__feld--frei { margin-block-start: 0; }
 
+/* --------------------------------------------- hidden durchsetzen */
+
+/* AP-248: [hidden] ist eine Regel des BROWSERS und hat damit die niedrigste
+   Prioritaet - jede display-Deklaration im Baustein sticht sie aus. Genau das
+   passierte: .anf__feld { display: grid } (Z. 121) liess das Freitextfeld trotz
+   hidden offen stehen, obwohl anfrage.js das Attribut korrekt setzte.
+
+   Am Wrapper statt an der einzelnen Klasse, damit kuenftige Elemente mit hidden
+   mitversorgt sind, ohne dass jemand daran denken muss. Dasselbe Muster nutzt
+   privat-form.css:824 fuer das ausfuehrliche Formular.
+
+   Achtung beim Pruefen: element.hidden meldet nur das ATTRIBUT und bleibt true,
+   waehrend das Element sichtbar ist. Zu messen ist getComputedStyle().display
+   oder die Hoehe. */
+.anf [hidden] { display: none; }
+
 /* ----------------------------------------- Vorwahl: Punkt in Marke */
 
 /* Ohne accent-color zeichnet der Browser den Punkt in seinem eigenen
