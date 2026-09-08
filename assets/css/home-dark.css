@@ -1732,7 +1732,7 @@ html.home-theme-dark .fork-path:hover {
     margin: 0;
     padding: 0.4375rem 0 0.6875rem;
     border: 0;
-    color: var(--home-yellow);
+    color: var(--mobile-logo-green);
     background: transparent;
     cursor: pointer;
     text-align: left;
@@ -1740,7 +1740,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-qualification-option:focus-visible {
-    outline: 2px solid var(--home-yellow);
+    outline: 2px solid var(--mobile-logo-green);
     outline-offset: 4px;
     border-radius: 5px;
   }
@@ -1784,7 +1784,7 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark .gate-welcome-qualification-label {
     display: block;
     min-width: 0;
-    color: var(--home-yellow);
+    color: var(--mobile-logo-green);
     font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
     font-size: 1.0625rem;
     font-style: italic;
