@@ -2372,7 +2372,7 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
    Ausklappen der Safari-Adressleiste erzeugt keinen Sprung im Layout.
    --node-start und --travel setzt main.js aus den gemessenen Knoten-
    mittelpunkten: nur so startet der Marker exakt auf Station 1 und endet
-   exakt auf Station 4, statt ueber die Sektionsgrenzen hinauszuschiessen.
+   exakt auf der letzten Station, statt ueber die Sektionsgrenzen hinauszuschiessen.
    Ohne JS und bei prefers-reduced-motion fehlt die Klasse – dann bleibt
    der statische Zeitstrahl der Basis vollstaendig sichtbar. */
 

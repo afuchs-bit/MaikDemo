@@ -53,6 +53,13 @@
     object-fit: contain;
   }
 
+  /* Die handgezeichnete 1000+ besitzt bewusst mehr transparente Luft als die
+     uebrigen KPI-Schriftzuege. Die rein visuelle Skalierung haelt Grundlinie,
+     Zeilenhoehe und den Abstand zum Begleittext unveraendert. */
+  .gate-welcome--iphone .mobile-kpi-signature__figure--1000 {
+    transform: scale(1.22);
+  }
+
   .gate-welcome--iphone .mobile-kpi-signature__fact p {
     margin: 1rem 0 0;
     color: var(--home-on-dark);
