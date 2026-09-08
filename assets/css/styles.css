@@ -1463,7 +1463,7 @@ p  { margin: 0; }
 .site-footer a { color: rgba(255,255,255,.86); text-decoration: none; }
 .footer-route {
   width: fit-content;
-  color: #dbe9bd !important;
+  color: var(--coral) !important;
   font-weight: 750;
 }
 .footer-navigation {
