@@ -429,12 +429,12 @@
   }
 
   .mobile-proof-gallery__brush-base {
-    fill: #FFED00;
+    fill: #B6D97A;
   }
 
   .mobile-proof-gallery__brush-grain {
     fill: none;
-    stroke: #D9BD00;
+    stroke: #8CC63F;
     stroke-width: 1.2;
     stroke-linecap: round;
     opacity: .46;
@@ -442,7 +442,7 @@
 
   .mobile-proof-gallery__brush-highlight {
     fill: none;
-    stroke: #FFF36B;
+    stroke: #D8ECB2;
     stroke-width: .9;
     stroke-linecap: round;
     opacity: .55;

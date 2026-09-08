@@ -1482,12 +1482,12 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-stamp__base {
-    fill: #FFED00;
+    fill: #B6D97A;
   }
 
   html.home-theme-dark .gate-welcome-stamp__grain {
     fill: none;
-    stroke: #D9BD00;
+    stroke: #8CC63F;
     stroke-width: 1.2;
     stroke-linecap: round;
     opacity: .46;
@@ -1495,7 +1495,7 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark .gate-welcome-stamp__highlight {
     fill: none;
-    stroke: #FFF36B;
+    stroke: #D8ECB2;
     stroke-width: .9;
     stroke-linecap: round;
     opacity: .55;
@@ -2381,11 +2381,11 @@ html.home-theme-dark .mr-ueber__stempel {
   pointer-events: none;
 }
 
-html.home-theme-dark .mr-ueber__stempel-basis { fill: #FFED00; }
+html.home-theme-dark .mr-ueber__stempel-basis { fill: #B6D97A; }
 
 html.home-theme-dark .mr-ueber__stempel-struktur {
   fill: none;
-  stroke: #D9BD00;
+  stroke: #8CC63F;
   stroke-width: 1.2;
   stroke-linecap: round;
   opacity: .46;
@@ -2393,7 +2393,7 @@ html.home-theme-dark .mr-ueber__stempel-struktur {
 
 html.home-theme-dark .mr-ueber__stempel-licht {
   fill: none;
-  stroke: #FFF36B;
+  stroke: #D8ECB2;
   stroke-width: .9;
   stroke-linecap: round;
   opacity: .55;
