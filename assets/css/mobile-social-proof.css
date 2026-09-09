@@ -503,6 +503,19 @@
     text-wrap: balance;
   }
 
+  .mobile-proof-request__arrow {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-left: 8px;
+    animation: mobile-proof-request-arrow-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes mobile-proof-request-arrow-pulse {
+    0%, 100% { transform: translateX(0); opacity: 1; }
+    50% { transform: translateX(5px); opacity: .55; }
+  }
+
   .mobile-proof-request__shape {
     position: absolute;
     inset: 0;
@@ -529,6 +542,10 @@
   @media (prefers-reduced-motion: reduce) {
     .mobile-proof-request__shape {
       transition: none;
+    }
+
+    .mobile-proof-request__arrow {
+      animation: none;
     }
   }
 
