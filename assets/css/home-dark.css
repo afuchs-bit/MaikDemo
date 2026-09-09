@@ -1703,23 +1703,11 @@ html.home-theme-dark .fork-path:hover {
     cursor: pointer;
     text-align: left;
     -webkit-tap-highlight-color: transparent;
-    transition:
-      border-color .22s var(--ease),
-      background-color .22s var(--ease),
-      box-shadow .22s var(--ease);
   }
 
   html.home-theme-dark .gate-welcome-qualification-option:focus-visible {
     outline: 2px solid rgba(183, 221, 132, .72);
     outline-offset: 2px;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"] {
-    border-color: rgba(140, 198, 63, .22);
-    background: rgba(49, 82, 0, .12);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, .035),
-      0 12px 24px -24px rgba(0, 0, 0, .8);
   }
 
   html.home-theme-dark .gate-welcome-qualification-content {
@@ -1787,7 +1775,9 @@ html.home-theme-dark .fork-path:hover {
     opacity: 1;
     text-shadow:
       1px 1px 0 #315200,
-      0 0 11px rgba(242, 226, 12, .3);
+      0 0 6px rgba(242, 226, 12, .75),
+      0 0 16px rgba(242, 226, 12, .45),
+      0 0 30px rgba(242, 226, 12, .22);
     transform: translateY(-1px);
   }
 
