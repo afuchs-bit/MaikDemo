@@ -34,8 +34,8 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260906l" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260908l" />
-<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260908bl" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260908p" />
+<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260908bm" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260906am" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260906ap250" />
@@ -408,11 +408,6 @@ html.home-theme-dark body { background-color: #171916; }
 
   <section class="gate-welcome gate-welcome--iphone" aria-labelledby="gate-welcome-title">
     <h2 class="gate-welcome-kicker gate-welcome-reveal reveal" id="gate-welcome-title" aria-label="Willkommen bei Maik Rohdich">
-      <svg class="gate-welcome-stamp" viewBox="0 0 132 40" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path class="gate-welcome-stamp__base" d="M4 7C24 4 44 7 64 6C88 4 109 6 128 9L127 13L131 16L128 20L131 24L126 27L129 31C106 31 88 35 67 32C43 35 24 31 5 34C4 29 5 25 2 21C4 17 2 11 4 7Z"/>
-        <path class="gate-welcome-stamp__highlight" d="M10 11C31 8 51 11 70 9C90 8 107 9 122 11"/>
-        <path class="gate-welcome-stamp__grain" d="M8 29C31 27 52 30 73 28C94 26 111 28 125 25"/>
-      </svg>
       <span class="gate-welcome-intro" aria-hidden="true">WILLKOMMEN BEI</span>
       <svg class="gate-welcome-wordmark" viewBox="218 58 422 82" width="422" height="82" overflow="hidden" aria-hidden="true" focusable="false">
         <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180" />
@@ -506,17 +501,28 @@ html.home-theme-dark body { background-color: #171916; }
 
       <div class="gate-welcome-qualification-details" data-qualification-details hidden>
         <div class="gate-welcome-qualification-panel" id="gate-qualification-master-detail" role="region" aria-labelledby="gate-qualification-master" hidden>
-          <p>Gartenbaumeister und Ausbildungsbetrieb</p>
+          <img class="gate-welcome-qualification-panel-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async">
+          <p class="gate-welcome-qualification-panel-title">Gartenbaumeister</p>
+          <p class="gate-welcome-qualification-panel-benefit">Fundierte Planung, fachgerechte Ausführung und ein Team, das sein Handwerk von Grund auf gelernt hat.</p>
+          <p class="gate-welcome-qualification-panel-proof">Ausbildungsbetrieb</p>
         </div>
         <div class="gate-welcome-qualification-panel" id="gate-qualification-tree-detail" role="region" aria-labelledby="gate-qualification-tree" hidden>
-          <p>Zertifizierter Baumkontrolleur gem. FLL-Richtlinie der LWK (Landwirtschaftskammer) NRW</p>
+          <img class="gate-welcome-qualification-panel-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async">
+          <p class="gate-welcome-qualification-panel-title">Zertifizierter Baumkontrolleur</p>
+          <p class="gate-welcome-qualification-panel-benefit">Wir beurteilen den Zustand Ihrer Bäume fachkundig und erkennen mögliche Risiken frühzeitig.</p>
+          <p class="gate-welcome-qualification-panel-proof">Gemäß FLL-Richtlinie · LWK NRW</p>
         </div>
         <div class="gate-welcome-qualification-panel" id="gate-qualification-expert-detail" role="region" aria-labelledby="gate-qualification-expert" hidden>
-          <p>Sachverständiger für Garten- und Landschaftsbau</p>
-          <p class="gate-welcome-qualification-detail">Sachgebiet 2.4.1 · Herstellung und Unterhaltung</p>
+          <img class="gate-welcome-qualification-panel-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async">
+          <p class="gate-welcome-qualification-panel-title">Sachverständiger für Garten- und Landschaftsbau</p>
+          <p class="gate-welcome-qualification-panel-benefit">Komplexe Fragen zu Anlage, Ausführung und Unterhaltung werden fachlich fundiert bewertet.</p>
+          <p class="gate-welcome-qualification-panel-proof">Sachgebiet 2.4.1 · Herstellung und Unterhaltung</p>
         </div>
         <div class="gate-welcome-qualification-panel" id="gate-qualification-plant-detail" role="region" aria-labelledby="gate-qualification-plant" hidden>
-          <p>Sachkundiger für Pflanzenschutz und Wildkrautbekämpfung</p>
+          <img class="gate-welcome-qualification-panel-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async">
+          <p class="gate-welcome-qualification-panel-title">Sachkundiger Pflanzenschutz</p>
+          <p class="gate-welcome-qualification-panel-benefit">Pflanzenschutz und Wildkrautbekämpfung erfolgen gezielt, verantwortungsvoll und nach den geltenden Vorgaben.</p>
+          <p class="gate-welcome-qualification-panel-proof">Pflanzenschutz · Wildkrautbekämpfung</p>
         </div>
       </div>
       <noscript><p class="gate-welcome-qualification-fallback">Gartenbaumeister · Zertifizierter Baumkontrolleur der Landwirtschaftskammer · Sachverständiger für Garten- und Landschaftsbau, Sachgebiet 2.4.1 · Herstellung und Unterhaltung · Sachkundiger für Pflanzenschutz und Wildkrautbekämpfung</p></noscript>
@@ -678,16 +684,9 @@ html.home-theme-dark body { background-color: #171916; }
   <div class="mobile-proof-invitation reveal">
     <div class="mobile-proof-invitation__copy">
       <p class="mobile-proof-invitation__text">
-        <strong>Der Geburtstag steht an, aber für den Garten bleibt keine Zeit?</strong>
+        <strong>Bleibt im Alltag, vor einem besonderen Anlass oder während Ihres Urlaubs keine Zeit für den Garten?</strong>
         <span class="mobile-proof-invitation__response">
-          <span class="mobile-proof-invitation__answer"><span class="mobile-social-proof__sr-only">Maiks Antwort: </span>Kein Anliegen ist uns zu klein – oft sind auch kurzfristige Einsätze möglich.</span>
-          <img class="mobile-proof-invitation__flower" src="assets/img/icons/rohdich-blume.png" alt="" width="160" height="160" loading="lazy" decoding="async" aria-hidden="true">
-        </span>
-      </p>
-      <p class="mobile-proof-invitation__text">
-        <strong>Im Urlaub oder einfach wenig Zeit?</strong>
-        <span class="mobile-proof-invitation__response">
-          <span class="mobile-proof-invitation__answer"><span class="mobile-social-proof__sr-only">Maiks Antwort: </span>Auf Wunsch pflegen wir Ihren Garten regelmäßig – auch während Ihrer Abwesenheit.</span>
+          <span class="mobile-proof-invitation__answer"><span class="mobile-social-proof__sr-only">Maiks Antwort: </span><span class="mobile-proof-invitation__answer-line">Kein Anliegen ist uns zu klein.</span><span class="mobile-proof-invitation__answer-line">Ob kurzfristig oder regelmäßig: Wir kümmern uns als Team zuverlässig und fachgerecht um Ihren Garten.</span><span class="mobile-proof-invitation__answer-line">Gemeinsam finden wir eine Lösung, die zu Ihnen passt.</span></span>
           <img class="mobile-proof-invitation__flower" src="assets/img/icons/rohdich-blume.png" alt="" width="160" height="160" loading="lazy" decoding="async" aria-hidden="true">
         </span>
       </p>

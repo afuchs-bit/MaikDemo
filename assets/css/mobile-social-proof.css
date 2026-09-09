@@ -588,6 +588,14 @@
     text-wrap: pretty;
   }
 
+  .mobile-proof-invitation__answer-line {
+    display: block;
+  }
+
+  .mobile-proof-invitation__answer-line + .mobile-proof-invitation__answer-line {
+    margin-top: .48em;
+  }
+
   .mobile-proof-invitation__flower {
     display: block;
     align-self: end;
