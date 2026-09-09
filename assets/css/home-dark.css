@@ -1874,6 +1874,15 @@ html.home-theme-dark .fork-path:hover {
     letter-spacing: .018em;
   }
 
+  html.home-theme-dark .gate-welcome-qualification-panel-certificate {
+    grid-column: 1 / -1;
+    margin-top: 0.75rem;
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .6);
+  }
+
   html.home-theme-dark .gate-welcome-qualification-fallback {
     margin: 1.125rem 0 0;
     color: var(--home-on-dark-2);
