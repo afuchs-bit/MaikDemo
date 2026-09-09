@@ -508,6 +508,7 @@
     z-index: 1;
     display: inline-block;
     margin-left: 8px;
+    font-size: 1.4em;
     animation: mobile-proof-request-arrow-pulse 1.6s ease-in-out infinite;
   }
 
