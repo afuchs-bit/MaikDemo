@@ -364,14 +364,21 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #FAFAF6;
-    box-shadow: 0 0 0 1px rgb(0 0 0 / 65%);
+    background: rgba(226, 34, 25, .32);
+    box-shadow:
+      0 0 0 1px rgb(0 0 0 / 65%),
+      0 0 4px rgba(255, 255, 255, .28),
+      0 0 9px rgba(255, 255, 255, .12);
   }
 
   .mobile-proof-gallery__dot[aria-current="true"] span {
     width: 8px;
     height: 8px;
-    background: #56E607;
+    background: var(--coral);
+    box-shadow:
+      0 0 0 1px rgb(0 0 0 / 65%),
+      0 0 4px rgba(255, 255, 255, .28),
+      0 0 9px rgba(255, 255, 255, .12);
   }
 
   .mobile-proof-gallery__dot:focus-visible {
