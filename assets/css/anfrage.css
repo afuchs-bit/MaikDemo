@@ -184,6 +184,7 @@
 [data-anf-senden] {
   position: relative;
   isolation: isolate;
+  color: #171916;
   background: none;
   box-shadow: none;
 }
@@ -199,13 +200,18 @@
   z-index: -1;
   width: 100%;
   height: 100%;
-  fill: var(--green-700);
+  fill: var(--home-lime);
   filter: drop-shadow(0 8px 10px rgb(0 0 0 / 24%));
   pointer-events: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  [data-anf-senden]:hover .anf-senden__shape { fill: var(--green-800); }
+  [data-anf-senden]:hover {
+    color: #171916;
+    background: none;
+    box-shadow: none;
+  }
+  [data-anf-senden]:hover .anf-senden__shape { fill: #9DD34F; }
 }
 
 .anf__knopf {
