@@ -2765,6 +2765,10 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
   line-height: 1.3;
   letter-spacing: -.01em;
   text-wrap: balance;
+  text-shadow:
+    0 0 6px rgba(242, 226, 12, .75),
+    0 0 16px rgba(242, 226, 12, .45),
+    0 0 30px rgba(242, 226, 12, .22);
 }
 
 html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
