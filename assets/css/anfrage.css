@@ -181,6 +181,33 @@
   gap: .75rem;
 }
 
+[data-anf-senden] {
+  position: relative;
+  isolation: isolate;
+  background: none;
+  box-shadow: none;
+}
+
+[data-anf-senden] .anf-senden__label {
+  position: relative;
+  z-index: 1;
+}
+
+[data-anf-senden] .anf-senden__shape {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  fill: var(--green-700);
+  filter: drop-shadow(0 8px 10px rgb(0 0 0 / 24%));
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-anf-senden]:hover .anf-senden__shape { fill: var(--green-800); }
+}
+
 .anf__knopf {
   font: inherit;
   font-weight: 600;

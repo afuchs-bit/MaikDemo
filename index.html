@@ -38,7 +38,7 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260908bn" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260906am" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20260906ap250" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260906ap251" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -1724,7 +1724,10 @@ html.home-theme-dark body { background-color: #171916; }
             </p>
 
             <div class="anf__abschluss">
-              <button type="submit" class="btn btn-primary" data-anf-senden>Anfrage senden</button>
+              <button type="submit" class="btn btn-primary" data-anf-senden>
+                <svg class="anf-senden__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+                <span class="anf-senden__label">Anfrage senden</span>
+              </button>
               <p class="anf__status" data-anf-status role="status" aria-live="polite"></p>
             </div>
 
