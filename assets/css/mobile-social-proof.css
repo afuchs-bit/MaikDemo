@@ -408,67 +408,60 @@
     pointer-events: none;
   }
 
-  .mobile-proof-gallery__brush-link {
+  .mobile-proof-gallery__link {
     position: absolute;
     top: 6px;
     left: 50%;
     z-index: 1;
-    display: grid;
-    place-items: center;
-    width: max(clamp(124px, 31vw, 130px), 9em);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: max(124px, 9em);
     max-width: 100%;
     height: max(44px, 2.75em);
-    color: #171916;
-    font: 800 .875rem/1 var(--display);
-    letter-spacing: 0;
+    padding: 0 0.625rem 0.125rem;
+    color: rgba(244, 246, 240, .82);
+    font: 700 .875rem/1 var(--body);
+    letter-spacing: 0.015em;
     text-decoration: none;
     transform: translateX(-50%);
   }
 
-  .mobile-proof-gallery__brush {
+  .mobile-proof-gallery__link::after {
+    content: "";
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    filter: drop-shadow(0 3px 3px rgb(0 0 0 / 22%));
-    transform: rotate(-1deg);
-    transform-origin: center;
-    pointer-events: none;
+    left: 50%;
+    bottom: 7px;
+    width: 72%;
+    height: 1px;
+    background: rgba(49, 82, 0, .92);
+    transform: translateX(-50%);
+    transition: width .2s var(--ease), background-color .2s var(--ease);
   }
 
-  .mobile-proof-gallery__brush-base {
-    fill: #8CC63F;
+  .mobile-proof-gallery__link:hover {
+    color: rgba(244, 246, 240, .9);
   }
 
-  .mobile-proof-gallery__brush-grain {
-    fill: none;
-    stroke: #4A7A10;
-    stroke-width: 1.2;
-    stroke-linecap: round;
-    opacity: .46;
+  .mobile-proof-gallery__link:is(:hover, :focus-visible)::after {
+    width: 82%;
+    background: rgba(74, 122, 16, .95);
   }
 
-  .mobile-proof-gallery__brush-highlight {
-    fill: none;
-    stroke: #B6D97A;
-    stroke-width: .9;
-    stroke-linecap: round;
-    opacity: .55;
+  .mobile-proof-gallery__link-arrow {
+    color: rgba(140, 198, 63, .72);
+    font-size: 1rem;
+    line-height: 1;
+    transition: transform .2s var(--ease), color .2s var(--ease);
   }
 
-  .mobile-proof-gallery__brush-link > span {
-    position: relative;
-    z-index: 1;
-    transform: translateY(-1px);
-    text-shadow: 0 1px 0 rgb(255 255 255 / 24%);
+  .mobile-proof-gallery__link:is(:hover, :focus-visible) .mobile-proof-gallery__link-arrow {
+    color: rgba(140, 198, 63, .9);
+    transform: translateX(2px);
   }
 
-  .mobile-proof-gallery__brush-link:hover {
-    color: #171916;
-  }
-
-  .mobile-proof-gallery__brush-link:focus-visible {
+  .mobile-proof-gallery__link:focus-visible {
     outline: 2px solid var(--home-focus);
     outline-offset: 4px;
     border-radius: 4px;
@@ -624,9 +617,9 @@
     pointer-events: none;
   }
 
-  /* Der bestehende #anfrage-Handler zielt auch bei aktivem Kurzformular auf
-     den ausgeblendeten Assistenten. Unser CTA nutzt den sichtbaren Einstieg. */
-  .home-theme-dark [data-anf-vorwahl] {
+  /* Der CTA landet mit ausreichend Abstand unter dem mobilen Header direkt am
+     jetzt einzigen sichtbaren Kurzformular. */
+  .home-theme-dark form[data-anf-form] {
     scroll-margin-top: calc(var(--mobile-header-h) + 16px);
   }
 }

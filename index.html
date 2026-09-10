@@ -34,11 +34,11 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260906l" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260908t" />
-<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260908bo" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260906am" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260909d" />
+<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260908bq" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260909a" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20260906ap252" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260909a" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -499,6 +499,8 @@ html.home-theme-dark body { background-color: #171916; }
         </button>
       </div>
 
+      <p class="gate-welcome-qualification-hint" data-qualification-hint>Zum Öffnen antippen</p>
+
       <div class="gate-welcome-qualification-details" data-qualification-details hidden>
         <div class="gate-welcome-qualification-panel" id="gate-qualification-master-detail" role="region" aria-labelledby="gate-qualification-master" hidden>
           <img class="gate-welcome-qualification-panel-flower" src="assets/img/icons/rohdich-blume.png" alt="" aria-hidden="true" width="160" height="160" loading="lazy" decoding="async">
@@ -670,13 +672,9 @@ html.home-theme-dark body { background-color: #171916; }
     </figure>
     <p class="mobile-social-proof__sr-only" data-proof-announcement aria-live="polite" aria-atomic="true"></p>
     <div class="mobile-proof-gallery__footer">
-      <a class="mobile-proof-gallery__brush-link" href="projekte/?ansicht=galerie">
-        <svg class="mobile-proof-gallery__brush" viewBox="0 0 132 40" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <path class="mobile-proof-gallery__brush-base" d="M4 7C24 4 44 7 64 6C88 4 109 6 128 9L127 13L131 16L128 20L131 24L126 27L129 31C106 31 88 35 67 32C43 35 24 31 5 34C4 29 5 25 2 21C4 17 2 11 4 7Z"/>
-          <path class="mobile-proof-gallery__brush-highlight" d="M10 11C31 8 51 11 70 9C90 8 107 9 122 11"/>
-          <path class="mobile-proof-gallery__brush-grain" d="M8 29C31 27 52 30 73 28C94 26 111 28 125 25"/>
-        </svg>
+      <a class="mobile-proof-gallery__link" href="projekte/?ansicht=galerie">
         <span>Zur Galerie</span>
+        <span class="mobile-proof-gallery__link-arrow" aria-hidden="true">→</span>
       </a>
     </div>
   </div>
@@ -734,11 +732,6 @@ html.home-theme-dark body { background-color: #171916; }
        entschieden. Die Aussage steht darunter als Leitsatz. -->
   <div class="container mr-ueber__kopf">
     <h2 class="type-section-title reveal mr-ueber__titel" id="ueber-title">
-      <svg class="mr-ueber__stempel" viewBox="0 0 132 40" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path class="mr-ueber__stempel-basis" d="M4 7C24 4 44 7 64 6C88 4 109 6 128 9L127 13L131 16L128 20L131 24L126 27L129 31C106 31 88 35 67 32C43 35 24 31 5 34C4 29 5 25 2 21C4 17 2 11 4 7Z"/>
-        <path class="mr-ueber__stempel-licht" d="M10 11C31 8 51 11 70 9C90 8 107 9 122 11"/>
-        <path class="mr-ueber__stempel-struktur" d="M8 29C31 27 52 30 73 28C94 26 111 28 125 25"/>
-      </svg>
       <span>Über uns</span>
     </h2>
   </div>
@@ -1187,6 +1180,74 @@ html.home-theme-dark body { background-color: #171916; }
         <span class="mobile-proof-request__arrow" aria-hidden="true">→</span>
       </a>
     </div>
+
+    <div class="mobile-service-register" aria-labelledby="mobile-service-register-title">
+      <header class="mobile-service-register__head">
+        <img class="mobile-service-register__flower" src="assets/img/icons/rohdich-blume.png" alt="" width="54" height="54" loading="lazy" decoding="async" />
+        <div>
+          <p>Leistungen kompakt</p>
+          <h3 id="mobile-service-register-title">Alles auf einen Blick</h3>
+        </div>
+      </header>
+      <p class="mobile-service-register__intro">Viele Leistungen greifen ineinander. Entdecken Sie direkt, was sich für Ihr Projekt mitplanen lässt.</p>
+
+      <a class="mobile-service-register__emergency" href="privatkunden/leistungen/sturmnotdienst/">
+        <span><small>Im Notfall</small><strong>24h Baum- &amp; Sturmnotdienst</strong></span>
+        <b aria-hidden="true">→</b>
+      </a>
+
+      <div class="mobile-service-register__groups">
+        <section class="mobile-service-register__group" aria-labelledby="mobile-services-build">
+          <h4 id="mobile-services-build">Garten gestalten</h4>
+          <ul>
+            <li><a href="privatkunden/leistungen/gartengestaltung/"><span>Gartengestaltung</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/vorgarten/"><span>Vorgartengestaltung</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/bepflanzung/"><span>Pflanzarbeiten</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/gartengestaltung/"><span>Rasen &amp; Rollrasen</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/gartenpflege/"><span>Gartenpflege</span><b aria-hidden="true">→</b></a></li>
+          </ul>
+        </section>
+
+        <section class="mobile-service-register__group" aria-labelledby="mobile-services-care">
+          <h4 id="mobile-services-care">Bauen &amp; Begrenzen</h4>
+          <ul>
+            <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/"><span>Terrassenbau</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/"><span>Pflasterarbeiten</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/"><span>Naturstein &amp; Findlinge</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/"><span>Zäune &amp; Sichtschutz</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/gartengestaltung/"><span>Erd- &amp; Baggerarbeiten</span><b aria-hidden="true">→</b></a></li>
+          </ul>
+        </section>
+
+        <section class="mobile-service-register__group" aria-labelledby="mobile-services-water">
+          <h4 id="mobile-services-water">Wasser &amp; Technik</h4>
+          <ul>
+            <li><a href="privatkunden/leistungen/gartengestaltung/"><span>Gartenbeleuchtung</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/gartengestaltung/"><span>Gartenentwässerung</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/pool-whirlpool-umfeld/"><span>Pool- &amp; Whirlpoolumfeld</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/teichbau/"><span>Teichbau &amp; -technik</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/dachbegruenung/"><span>Dachbegrünung</span><b aria-hidden="true">→</b></a></li>
+          </ul>
+        </section>
+
+        <section class="mobile-service-register__group" aria-labelledby="mobile-services-special">
+          <h4 id="mobile-services-special">Bäume &amp; Besonderes</h4>
+          <ul>
+            <li><a href="privatkunden/leistungen/baumarbeiten/"><span>Baumfällung</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/baumarbeiten/"><span>Baumpflege</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/palmen-winterfest/"><span>Winterfeste Palmen</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/holzverkauf/"><span>Kaminholz</span><b aria-hidden="true">→</b></a></li>
+            <li><a href="privatkunden/leistungen/bepflanzung/"><span>Rohdichs Grubengold</span><b aria-hidden="true">→</b></a></li>
+          </ul>
+        </section>
+      </div>
+
+      <a class="mobile-service-register__contact" href="#anfrage" data-prefill-bereich="unsicher">
+        <span>Mehrere Leistungen kombinieren?</span>
+        <strong>Gartenwunsch besprechen</strong>
+        <b aria-hidden="true">→</b>
+      </a>
+    </div>
     <ul class="b2b-request-grid reveal" aria-label="Direkter Einstieg nach Anliegen">
       <li>
         <article class="private-service-flip">
@@ -1602,51 +1663,16 @@ html.home-theme-dark body { background-color: #171916; }
           <p class="b2b-confirmation-note">Mit der Anfrage ist noch kein Auftrag und kein Vor-Ort-Termin zustande gekommen. Beides stimmen wir erst persönlich mit Ihnen ab.</p>
         </section>
 
-        <!-- ============ VORWAHL + KURZANFRAGE (AP-F15) ============
-             Kurz ist der Regelfall und steht ohne Klick bereit. "Mehr Angaben"
-             klappt den bestehenden Vierstufen-Assistenten auf, der unveraendert
-             darunter liegt. Zwei getrennte <form>: HTML verbietet Verschachtelung,
-             und der Assistent bringt eigene Absende- und Pruefroutinen mit.
-             Alle Felder optional - das bisherige Versprechen bleibt gewahrt. -->
+        <!-- ============ KURZANFRAGE ============
+             Das kurze Formular ist der einzige Anfrageweg auf der Startseite und
+             steht ohne Vorwahl direkt bereit. -->
         <div class="anf">
-          <fieldset class="anf__vorwahl" data-anf-vorwahl>
-            <!-- AP-F23: Die Frage steht nicht mehr auf dem Bildschirm, bleibt aber im
-                 Markup. Ein fieldset mit Radioknoepfen ist eine Gruppe, und die legend
-                 ist ihr Name - ohne sie hoert ein Screenreader-Nutzer nur "Kurz
-                 anfragen, Optionsfeld, 1 von 2", ohne zu erfahren, worum es geht.
-                 Versteckt wird in anfrage.css, nicht hier. -->
-            <legend class="anf__vorwahl-legende">Wie möchten Sie anfragen?</legend>
-
-            <label class="anf__wahl">
-              <input type="radio" name="_vorwahl" value="kurz" checked>
-              <span class="anf__wahl-text">
-                <span class="anf__wahl-titel">Kurz anfragen</span>
-              </span>
-            </label>
-
-            <label class="anf__wahl">
-              <input type="radio" name="_vorwahl" value="detail">
-              <span class="anf__wahl-text">
-                <span class="anf__wahl-titel">Ich möchte mehr Angaben machen</span>
-              </span>
-            </label>
-          </fieldset>
-
           <!-- AP-246: Kurzformular in der Formsprache der Seite.
 
-               Was hier NICHT geaendert werden darf, sonst bricht die Umschaltung
-               kurz/lang in assets/js/anfrage.js:
-                 data-anf-modus="kurz"  - danach sucht setzeModus() (Z. 65)
-                 data-anf-form          - Selektor fuer Zeitstempel und Submit (Z. 30)
+               Fuer die Formularlogik werden benoetigt:
+                 data-anf-form          - Selektor fuer Zeitstempel und Submit
                  data-anf-status        - ohne das bricht der Submit-Handler ab (Z. 96)
                  data-anf-zeitstempel, data-anf-modus-feld, der Honeypot
-                 name="name"            - wandert beim Wechsel ins lange Formular
-
-               Bewusst aufgegeben: E-Mail und Telefon sind zu einem Feld
-               zusammengelegt. anfrage.js uebernimmt beim Wechsel weiterhin
-               name/email/telefon/ort - "kontakt" ist nicht dabei und laeuft damit
-               ins Leere. Vom Auftraggeber am 06.09.2026 so entschieden; anfrage.js
-               bleibt dafuer unangetastet.
 
                Die Bausteine stammen aus dem Bestand: Karte wie die Leistungskarten,
                Marken-Ecke 24/24/44/24 (form-trust-card.css:16 u.a.), Eyebrow wie
@@ -1684,8 +1710,8 @@ html.home-theme-dark body { background-color: #171916; }
             <p class="anf__oder"><span>oder hier hinterlassen</span></p>
 
             <!-- Die Chips bilden NICHT content/taxonomie.json ab - sie sind
-                 Kundensprache. Genauer wird es am Telefon oder im ausfuehrlichen
-                 Formular. Sturmschaden fehlt bewusst: ein Notfall gehoert ans
+                 Kundensprache. Genauer wird es im persoenlichen Gespraech.
+                 Sturmschaden fehlt bewusst: ein Notfall gehoert ans
                  Telefon, nicht in ein Formular ohne Versand. -->
             <p class="anf__frage" id="anf-chips-label">Es geht um <span>— mehreres möglich</span></p>
             <div class="anf__chips" role="group" aria-labelledby="anf-chips-label" data-anf-chips>
@@ -1736,7 +1762,7 @@ html.home-theme-dark body { background-color: #171916; }
             </p>
           </form>
 
-          <div data-anf-modus="detail" hidden>
+          <div data-anf-modus="detail" hidden inert aria-hidden="true">
         <form class="contact-form b2b-form private-form" id="contactForm" enctype="multipart/form-data" novalidate>
           <input type="hidden" name="js_enabled" value="0" data-js-enabled>
           <input type="radio" name="hauptpfad" value="sturmschaden" required hidden>
@@ -2572,12 +2598,12 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/vendor/gsap/gsap.min.js?v=3.13.0" defer></script>
 <script src="assets/vendor/gsap/ScrollTrigger.min.js?v=3.13.0" defer></script>
 <script src="assets/js/main.js?v=20260906d" defer></script>
-<script src="assets/js/mobile-qualifications.js?v=20260905a" defer></script>
-<script src="assets/js/mobile-social-proof-gallery.js?v=20260905b" defer></script>
+<script src="assets/js/mobile-qualifications.js?v=20260909a" defer></script>
+<script src="assets/js/mobile-social-proof-gallery.js?v=20260909a" defer></script>
 <script src="assets/js/mobile-private-review.js?v=20260906b" defer></script>
 <script src="assets/js/private-proof.js?v=20260906a" defer></script>
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>
-<script src="assets/js/anfrage.js?v=20260906ap246" defer></script>
+<script src="assets/js/anfrage.js?v=20260909a" defer></script>
 <script src="assets/js/home-header-morph.js?v=20260830b" defer></script>
 <script src="assets/js/ueber-video.js?v=20260905b" defer></script>
 </body>
