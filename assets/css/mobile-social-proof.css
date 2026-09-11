@@ -512,7 +512,7 @@
     hyphens: none;
     text-wrap: balance;
     text-align: left;
-    transition: transform .15s var(--ease);
+    transition: transform .12s var(--ease);
   }
 
   /* AP-290 (Variante C2): Der Pfeil sitzt in einem dunklen Chip am rechten
@@ -532,7 +532,7 @@
     border-radius: 50%;
     background: #171916;
     color: var(--home-lime);
-    transition: transform .15s var(--ease);
+    transition: transform .12s var(--ease);
   }
 
   .mobile-proof-request__arrow svg {
@@ -559,9 +559,12 @@
     pointer-events: none;
   }
 
-  /* Puls: Kopie der Flaeche per Maske, 3 Durchlaeufe, danach Ruhe. Die
-     Skalierung bleibt in x klein (1.05 = gut 8px je Seite bei 342px), damit
-     sie innerhalb des Containerabstands bleibt. */
+  /* Puls: Kopie der Flaeche per Maske, 3 Durchlaeufe, danach Ruhe.
+     AP-291: Mit .5 Startdeckkraft und 1.05/1.4 war er auf dem Handy kaum zu
+     sehen (Render bei 390 px: nach 400 ms nur noch ein duenner Saum). Jetzt
+     .85 und 1.08/1.8: bei 350 px Breite 14 px je Seite - innerhalb der 20 px
+     Containerabstand - und 26 px nach oben und unten. Linear mit Zwischenstufe
+     bei 45 %, sonst ist die Deckkraft nach einem Drittel schon weg. */
   .mobile-proof-request::before {
     content: "";
     position: absolute;
@@ -575,12 +578,25 @@
   }
 
   .mobile-proof-request.is-pulsing::before {
-    animation: mobile-proof-request-pulse 1.5s var(--ease) .3s 3;
+    animation: mobile-proof-request-pulse 1.4s linear .2s 3;
   }
 
   @keyframes mobile-proof-request-pulse {
-    0% { transform: scale(1); opacity: .5; }
-    100% { transform: scale(1.05, 1.4); opacity: 0; }
+    0% { transform: scale(1); opacity: .85; }
+    45% { opacity: .45; }
+    100% { transform: scale(1.08, 1.8); opacity: 0; }
+  }
+
+  /* Der Pfeil geht bei jedem Pulsschlag einmal nach rechts - so zeigt er
+     auch ohne Hover, wohin es geht. Gleicher Takt und gleiche Anzahl wie
+     der Puls, danach steht er still (WCAG 2.2.2). */
+  .mobile-proof-request.is-pulsing .mobile-proof-request__arrow svg {
+    animation: mobile-proof-request-arrow 1.4s var(--ease) .2s 3;
+  }
+
+  @keyframes mobile-proof-request-arrow {
+    0%, 55%, 100% { transform: translateX(0); }
+    25% { transform: translateX(6px); }
   }
 
   .mobile-proof-request__shape {
@@ -591,7 +607,7 @@
     height: 100%;
     fill: var(--home-lime);
     pointer-events: none;
-    transition: fill .18s ease, transform .15s var(--ease);
+    transition: fill .18s ease, transform .12s var(--ease);
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -609,9 +625,21 @@
   }
 
   /* Beim Tippen rastet der Button in den Rahmen ein. Der Rahmen selbst bleibt
-     stehen, deshalb wandern nur Flaeche, Label und Chip. */
-  .mobile-proof-request:active :is(.mobile-proof-request__shape, .mobile-proof-request__label, .mobile-proof-request__arrow) {
+     stehen, deshalb wandern nur Flaeche, Label und Chip.
+     AP-291: :active allein reicht auf dem Handy nicht - ein Tipp dauert unter
+     100 ms, danach springt die Seite weg. .is-pressed setzt cta-signal.js
+     beim Klick und haelt es 180 ms, bevor die Navigation weiterlaeuft. */
+  .mobile-proof-request:is(:active, .is-pressed) :is(.mobile-proof-request__shape, .mobile-proof-request__label, .mobile-proof-request__arrow) {
     transform: translate(6px, 6px);
+  }
+
+  .mobile-proof-request:is(:active, .is-pressed) .mobile-proof-request__arrow svg {
+    transform: translateX(4px);
+  }
+
+  .mobile-proof-request.is-pressed::before,
+  .mobile-proof-request.is-pressed .mobile-proof-request__arrow svg {
+    animation: none;
   }
 
   .mobile-proof-request:focus-visible {
@@ -627,7 +655,8 @@
       transition: none;
     }
 
-    .mobile-proof-request.is-pulsing::before {
+    .mobile-proof-request.is-pulsing::before,
+    .mobile-proof-request.is-pulsing .mobile-proof-request__arrow svg {
       animation: none;
     }
   }

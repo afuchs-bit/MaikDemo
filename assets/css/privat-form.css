@@ -3047,6 +3047,7 @@
   }
   .private-process-updated .process-contact-cta :is(.mobile-proof-request__label, .mobile-proof-request__arrow, .mobile-proof-request__arrow svg) {
     transform: none;
+    animation: none;
   }
 }
 
