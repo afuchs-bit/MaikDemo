@@ -2463,6 +2463,7 @@ html.home-theme-dark .mr-ueber__eyebrow svg {
    beide Spalten mehrzeilig; zentriert haetten sie oben wie unten ungleiche
    Abstaende zur Kante. */
 html.home-theme-dark .mr-ueber__split {
+  margin-top: 36px; /* AP-292: folgt jetzt auf den Mustergarten-Block */
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
   gap: clamp(26px, 3.4vw, 54px);
@@ -2472,36 +2473,63 @@ html.home-theme-dark .mr-ueber__split {
 html.home-theme-dark .mr-ueber__wort,
 html.home-theme-dark .mr-ueber__beleg { min-width: 0; }
 
-/* Der Leitsatz. Displayschrift wie jede H2 der Seite, aber als Absatz gesetzt -
-   die Ueberschrift der Sektion ist "Ueber uns", nicht dieser Satz.
-   KEINE Anfuehrungszeichen: er ist kein Zitat und soll auch keines vortaeuschen. */
-html.home-theme-dark .mr-ueber__leitsatz {
-  margin: 0;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.5rem, 2.9vw, 2.5rem);
-  line-height: 1.16;
-  letter-spacing: -.01em;
-  color: var(--ink);
-}
+/* AP-285: Die beiden Regeln fuer .mr-ueber__leitsatz sind mit dem Satz
+   "Gartenbau mit Handschlagqualitaet." entfallen - die Klasse kommt im Repo
+   nirgends mehr vor. */
 
-html.home-theme-dark .mr-ueber__leitsatz em {
-  font-style: normal;
-  color: var(--home-lime);
-}
+/* AP-283: Der Absatz stand auf clamp(1.4375rem, 5.95vw, 1.5rem), also bei rund
+   23-24px praktisch unabhaengig von der Breite - fast so gross wie der Leitsatz
+   darueber. Auf Wunsch des Auftraggebers traegt er jetzt dieselbe Groesse wie
+   der Mustergarten-Hinweis ("Besichtigungen nur nach Absprache ...",
+   .mr-ueber__hinweis weiter unten in dieser Datei): .9rem.
 
+   AP-284: Dazu jetzt auch dieselbe Schriftart. Der Absatz war mit "Baloo 2" der
+   einzige Ausreisser in dieser Sektion; die dunkle Startseite laeuft sonst
+   durchgehend auf Nunito (--display und --body, Z. 45-46). Statt Nunito hier zu
+   wiederholen, entfaellt die font-family-Zeile ganz - der Absatz erbt damit
+   dieselbe Schrift wie der Hinweis und folgt kuenftigen Token-Aenderungen von
+   selbst. Das letter-spacing von .015em faellt mit weg: es war fuer die runde
+   Baloo gesetzt, der Hinweis steht auf "normal". */
 html.home-theme-dark .mr-ueber__text {
   margin: 0;
   color: var(--home-on-dark);
-  font-family: "Baloo 2", sans-serif;
-  font-size: clamp(1.4375rem, 5.95vw, 1.5rem);
+  font-size: .9rem;
   font-weight: 600;
   line-height: 1.5;
-  letter-spacing: .015em;
   max-width: 62ch;
   overflow-wrap: normal;
   text-wrap: pretty;
   hyphens: none;
+}
+
+/* AP-292: Drei Kernaussagen statt Absatz. Typografie aus .mr-ueber__text
+   (AP-283/284); hier nur Listenform, Symbol und Linien. Linie in --line wie die
+   Zeilen der Leistungsliste, Symbol in --home-dark-accent wie der Umriss von
+   .mr-ueber__mehr. Symbol auf der ersten Textzeile:
+   (1.5 * 14.4px - 20px) / 2 = 0.8px -> margin-top 1px. */
+html.home-theme-dark .mr-ueber__punkte {
+  list-style: none;
+  padding: 0;
+}
+
+html.home-theme-dark .mr-ueber__punkte li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+html.home-theme-dark .mr-ueber__punkt-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  fill: none;
+  stroke: var(--home-dark-accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* AP-235/AP-243: Der Weg zur Unterseite.
@@ -2524,7 +2552,7 @@ html.home-theme-dark .mr-ueber__text {
    Anfrage als Hauptaktion Gewicht genommen. */
 html.home-theme-dark .mr-ueber__mehr {
   position: relative;
-  margin-top: 22px;
+  margin-top: 0; /* AP-292: 22px -> 0, siehe Kommentar in AP-292 C8 */
   border-radius: 18px 5px 18px 5px;
   /* Der Umriss als inset-Schatten und nicht als border: Chrome rundet
      border-width auf ganze CSS-Pixel, aus 1.5px wuerde 1px - duenner als der
@@ -2540,11 +2568,15 @@ html.home-theme-dark .mr-ueber__mehr {
      Kanten. justify-content: center, weil der Inhalt sonst bei 566px Desktop-
      breite links klebt. align-self: start ist entfallen - im Block-Kontext
      dieser Spalte hatte es ohnehin keine Wirkung. */
+  /* AP-288: Aus der einen Zeile "Mehr zu + Logo" sind drei gestapelte Zeilen
+     geworden - Titel mit Pfeil, Unterzeile, Blume. Deshalb column statt row
+     und eine engere Fuge. */
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
   min-height: 68px;
   padding: 10px 26px;
   color: var(--ink);
@@ -2552,23 +2584,52 @@ html.home-theme-dark .mr-ueber__mehr {
   font-weight: 800;
   font-size: 1.05rem;
   line-height: 1.2;
+  text-align: center;
   text-decoration: none;
 }
 
-html.home-theme-dark .mr-ueber__mehr-text {
+html.home-theme-dark .mr-ueber__mehr-titel {
   flex: none;
 }
 
+/* Der Pfeil steht INNERHALB des Titel-Spans, damit er beim Umbruch der letzten
+   Zeile folgt statt allein in einer eigenen zu landen. Ruhig mit leichtem
+   Nachruecken beim Mauszeiger - wie die uebrigen Verweis-Pfeile der Seite und
+   bewusst nicht der pulsierende Pfeil der Haupt-CTAs (AP-270): dieser Button
+   ist ein Nebenweg, siehe Kommentar oben. */
+html.home-theme-dark .mr-ueber__mehr-pfeil {
+  display: inline-block;
+  margin-left: .45em;
+  transition: transform .18s var(--ease);
+}
+
+html.home-theme-dark .mr-ueber__mehr-sub {
+  flex: none;
+  color: var(--ink-mute);
+  font-size: .8rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Seit AP-288 ein SVG statt eines <img>: der viewBox-Ausschnitt zeigt nur den
+   Bluetenstrauss des Logos. overflow: hidden haelt den abgeschnittenen
+   Schriftzug draussen - ohne das wuerde das ganze 640px-Bild gemalt. */
 html.home-theme-dark .mr-ueber__mehr-logo {
   flex: none;
-  height: 52px;
+  display: block;
   width: auto;
+  height: 46px;
+  overflow: hidden;
 }
 
 @media (hover: hover) and (pointer: fine) {
   html.home-theme-dark .mr-ueber__mehr:hover {
     background-color: rgba(182, 217, 122, .12);
     box-shadow: inset 0 0 0 1.5px var(--home-lime);
+  }
+
+  html.home-theme-dark .mr-ueber__mehr:hover .mr-ueber__mehr-pfeil {
+    transform: translateX(2px);
   }
 }
 
@@ -2581,6 +2642,7 @@ html.home-theme-dark .mr-ueber__mehr:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   html.home-theme-dark .mr-ueber__mehr { transition: none; }
+  html.home-theme-dark .mr-ueber__mehr-pfeil { transition: none; }
 }
 
 /* Unter 420px wird die Lasche sonst breiter als die Spalte. */
@@ -2590,7 +2652,7 @@ html.home-theme-dark .mr-ueber__mehr:focus-visible {
     padding: 10px 18px;
     font-size: .95rem;
   }
-  html.home-theme-dark .mr-ueber__mehr-logo { height: 44px; }
+  html.home-theme-dark .mr-ueber__mehr-logo { height: 30px; }
 }
 
 /* Das verbleibende Mustergartenfoto. AP-235: quadratisch statt 4:5 stehend.
@@ -2665,8 +2727,45 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
 /* AP-250: Auf Handybreiten bleibt das Gartenfoto als ruhige 4:3-Kachel ohne
    die fruehere handschriftliche Bildnotiz und deren Hinweispfeil. */
 @media (max-width: 480px) {
+  /* AP-282: Foto und Button stehen auf Handybreiten nebeneinander statt
+     untereinander - je die halbe Spalte, gleich hoch. Die Spalte selbst wird
+     zum Raster, die beiden vorhandenen Kinder werden ihre Zellen; kein
+     zusaetzliches Markup noetig. Ueber 480px bleibt es gestapelt, weil dort
+     die handschriftliche Bildunterschrift unter dem Foto steht und die beiden
+     Kaesten ungleich hoch machen wuerde. */
+  /* AP-292: Das Zweierraster aus AP-282 (Foto | Button) ist mit dem Foto
+     entfallen. Der Button steht unter den Kernaussagen in voller Breite, als
+     eine Zeile: Blume links, Titel und Unterzeile daneben. */
+  html.home-theme-dark .mr-ueber__kopf { text-align: left; }
+  html.home-theme-dark .mr-ueber__titel { justify-content: flex-start; text-align: left; }
+
+  html.home-theme-dark .mr-ueber__split { margin-top: 24px; }
+
   html.home-theme-dark .mr-ueber__mehr {
-    margin-top: 32px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "logo titel" "logo sub";
+    justify-items: start;
+    align-items: center;
+    column-gap: 14px;
+    row-gap: 2px;
+    min-height: 64px;
+    padding: 12px 18px;
+    text-align: left;
+  }
+
+  html.home-theme-dark .mr-ueber__mehr-titel { grid-area: titel; align-self: end; }
+  html.home-theme-dark .mr-ueber__mehr-sub   { grid-area: sub; align-self: start; }
+  html.home-theme-dark .mr-ueber__mehr-logo  { grid-area: logo; }
+
+  /* Die Blume ist seit AP-288 nahezu quadratisch (210x180) statt eines breiten
+     Schriftzugs - gesteuert wird deshalb wieder ueber die Hoehe. 30px, damit
+     Titel (zweizeilig), Unterzeile und Blume zusammen unter die 121px der
+     Rasterzelle passen. Diese Regel steht bewusst nach dem 420px-Block weiter
+     oben - bei gleicher Spezifitaet gewinnt die spaetere. */
+  html.home-theme-dark .mr-ueber__mehr-logo {
+    height: 30px;
+    width: auto;
   }
 
   html.home-theme-dark .mr-ueber__paar {
@@ -2699,13 +2798,15 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
    Der 100vw-Ausbruch aus AP-179 entfaellt. Das Video sitzt jetzt in der
    Containerbreite. AP-246 gleicht die vier 16px-Ecken und die rechts unten
    ueberlappende Markenblume exakt an Willkommenfoto und Galerievorschau an. */
+/* AP-292: Der Block steht jetzt direkt unter dem Kopf - dessen
+   margin-bottom traegt den Abstand, deshalb 0 statt
+   --space-section-compact. */
 html.home-theme-dark .mr-ueber__muster {
   margin-top: 0;
-  margin-bottom: var(--space-section-compact);
+  margin-bottom: 0;
 }
 
 html.home-theme-dark .mr-ueber__buehne {
-  --mr-ueber-brand-width: clamp(65px, 20vw, 80px);
   position: relative;
   isolation: isolate;
   overflow: visible;
@@ -2737,17 +2838,31 @@ html.home-theme-dark .mr-ueber__video {
   pointer-events: none;
 }
 
-html.home-theme-dark .mr-ueber__brand {
+/* AP-292: Das Hundefoto ersetzt die Markenblume (AP-246) an derselben Ecke.
+   Gerade, nicht gedreht (Entscheidung 11.09.2026). 40 % der Kachelbreite,
+   mindestens 130px (darunter ist der Hund nicht mehr zu erkennen), hoechstens
+   260px. Der 4px-Rand in --bg loest das Foto vom bewegten Video, der Schatten
+   hebt es an. Es ragt 40px ueber die Unterkante - der Abstand zu
+   .mr-ueber__mustertext darunter ist darauf abgestimmt (64px, siehe dort). */
+html.home-theme-dark .mr-ueber__hund {
   position: absolute;
-  right: -16px;
-  bottom: calc(var(--mr-ueber-brand-width) * -2 / 7);
+  right: -10px;
+  bottom: -40px;
   z-index: 2;
   display: block;
-  width: var(--mr-ueber-brand-width);
-  height: auto;
-  overflow: hidden;
-  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
+  width: clamp(130px, 40%, 260px);
   pointer-events: none;
+}
+
+html.home-theme-dark .mr-ueber__hund img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 4px solid var(--bg);
+  border-radius: 14px 4px 14px 4px;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 45%);
 }
 
 /* Zwei Spalten: die Erklaerung traegt die Zeile, der Besuchshinweis ist eine
@@ -2757,7 +2872,8 @@ html.home-theme-dark .mr-ueber__mustertext {
   grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
   gap: clamp(20px, 3vw, 44px);
   align-items: start;
-  margin-top: 32px;
+  /* AP-292: 32px -> 64px. 40px Ueberstand des Hundefotos + 24px Luft. */
+  margin-top: 64px;
 }
 
 html.home-theme-dark .mr-ueber__mustertext p {
@@ -2804,14 +2920,13 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
 }
 
 @media (max-width: 480px) {
-  html.home-theme-dark .mr-ueber__muster {
-    margin-bottom: 28px;
-  }
-
+  /* AP-292: margin-top der Kachel entfaellt (Block steht unter dem Kopf).
+     Name und Besuchshinweis untereinander: rechts laege der Hinweis sonst
+     unter dem ueberstehenden Hundefoto. */
   html.home-theme-dark .mr-ueber__mustertext {
-    grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
-    gap: 16px;
-    margin-top: 48px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    margin-top: 56px;
   }
 
   html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
@@ -2831,6 +2946,17 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
    das Mustergartenband.
 
    Vier Kinder statt drei: der Eyebrow ist in AP-217 dazugekommen. */
+/* AP-281: Trennlinie vor dem Einsatzgebiet (Entwurf B). <hr> hat in styles.css
+   keine Basisregel, der Standardrahmen des Browsers muss also weg. Der Abstand
+   nach unten bleibt der Karte ueberlassen - benachbarte Aussenabstaende fallen
+   zusammen, sonst stuende hier der doppelte Wert. */
+html.home-theme-dark .mr-ueber__trenner {
+  height: 1px;
+  margin: var(--space-section-compact) 0 0;
+  border: 0;
+  background: var(--line);
+}
+
 html.home-theme-dark .mr-ueber__karte { margin-top: var(--space-section-compact); }
 
 html.home-theme-dark .mr-ueber__karte .proof-map {

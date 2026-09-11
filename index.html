@@ -34,9 +34,9 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260906l" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260909d" />
-<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260910w" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260910c" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260911a" />
+<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260911c" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260911d" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260910u" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
@@ -689,10 +689,10 @@ html.home-theme-dark body { background-color: #171916; }
         </span>
       </p>
     </div>
-    <a class="mobile-proof-request" href="#kontakt" data-draw-arrow>
-      <svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-      <span class="mobile-proof-request__label mobile-proof-request__label--qualification">Gartenwunsch besprechen</span>
-      <span class="mobile-proof-request__arrow mobile-proof-request__arrow--brand" aria-hidden="true"></span>
+    <a class="mobile-proof-request" href="#kontakt">
+      <svg class="mobile-proof-request__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+      <span class="mobile-proof-request__label">Gartenwunsch besprechen</span>
+      <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
   </div>
 </section>
@@ -737,7 +737,7 @@ html.home-theme-dark body { background-color: #171916; }
     </h2>
   </div>
 
-  <!-- Block 2 - Mustergarten als Medienkachel (AP-217).
+  <!-- Block 3 - Mustergarten als Medienkachel (AP-217, Reihenfolge AP-281).
        Direkt unter die Sektionsueberschrift verschoben, damit die Anlage zuerst
        erlebbar wird und der persoenliche Beleg danach folgt.
 
@@ -765,10 +765,24 @@ html.home-theme-dark body { background-color: #171916; }
         <p>Ihr Browser kann dieses Video nicht abspielen.
            <a href="assets/video/mustergarten.mp4">Video herunterladen</a>.</p>
       </video>
-      <svg class="mr-ueber__brand" viewBox="0 0 210 180" width="210" height="180"
-           overflow="hidden" aria-hidden="true" focusable="false">
-        <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180" />
-      </svg>
+      <!-- AP-292: Das Hundefoto ersetzt an dieser Kachel die Markenblume aus
+           AP-246 und sitzt an ihrer Stelle unten rechts, ueber die Kante ragend.
+           Bewusst die WEITE Ansicht aus AP-238: Man soll den Garten sehen und
+           dass der Hund darin liegt. Aufnahmeort vom Auftraggeber bestaetigt
+           (Musterflaeche am Firmensitz, 06.09.2026), deshalb nennt der Alt-Text
+           den Mustergarten. Das eigenstaendige Foto im Beleg-Block ist entfallen.
+           [OFFEN: Name des Hundes - docs/offene-punkte.md, AP-230 O1.] -->
+      <picture class="mr-ueber__hund">
+        <source type="image/avif"
+                srcset="assets/img/ueber/ueber-hund-480.avif 480w, assets/img/ueber/ueber-hund-960.avif 960w"
+                sizes="(max-width: 480px) 40vw, 260px">
+        <source type="image/webp"
+                srcset="assets/img/ueber/ueber-hund-480.webp 480w, assets/img/ueber/ueber-hund-960.webp 960w"
+                sizes="(max-width: 480px) 40vw, 260px">
+        <img src="assets/img/ueber/ueber-hund.webp" width="1068" height="1070"
+             alt="Feierabend im Mustergarten: ein brauner Hund döst auf einer Gartenliege, dahinter führt ein Pflasterweg an einem Kiesbeet mit Natursteinen und einem Formgehölz im Topf vorbei, links liegt der Pool zwischen Palmen."
+             loading="lazy" decoding="async">
+      </picture>
     </div>
 
     <!-- AP-247: Der erklaerende Hauptsatz ist entfallen. Unter dem Video stehen
@@ -780,92 +794,66 @@ html.home-theme-dark body { background-color: #171916; }
     </div>
   </div>
 
-  <!-- Block 3 - Wort und Beleg, getrennt durch die geneigte Kante (AP-217).
+  <!-- Block 2 - Wort und Beleg (AP-217, Reihenfolge AP-281).
        Loest das Raster aus AP-216 ab. Links die Aussage, rechts der Beleg dafuer.
 
-       Der Leitsatz ist KEIN Zitat und traegt deshalb auch keine Anfuehrungszeichen:
-       "Gartenbau mit Handschlagqualitaet." stand bis AP-216 als Unterzeile in dieser
-       Sektion und ist damit freigegeben. Der Entwurf hatte an dieser Stelle einen
-       Satz aus Gespraechsnotizen ("Wir reden Ihnen nicht nach dem Mund."), der im
-       Repo nirgends belegt ist - nach Ruecksprache am 06.09.2026 ersetzt.
+       AP-285: Der Leitsatz "Gartenbau mit Handschlagqualitaet." ist auf Wunsch des
+       Auftraggebers entfallen. Die Spalte traegt jetzt allein den Flisstext; die
+       Ueberschrift der Sektion bleibt die H2 "Ueber uns".
 
-       Der erste Satz des Flisstextes ist gestrichen. Er wiederholte "Seit ueber 20
-       Jahren ..." aus dem Willkommen-Abschnitt zwei Sektionen weiter oben; die
-       Dopplung ist in docs/offene-punkte.md unter AP-216 vermerkt. Reine Streichung,
-       keine neue Aussage.
+       AP-286: Der Flisstext ist vom Auftraggeber neu gefasst worden und ersetzt den
+       bisherigen Absatz vollstaendig. Die Angaben "seit 2003" und "Herne" sind in
+       content/stammdaten.json belegt (firma.gegruendet, adresse.ort).
 
        Der Entwurf hatte hier eine Signatur mit Namen und Qualifikationen. Sie ist
        am 06.09.2026 auf Wunsch des Auftraggebers wieder entfallen. Die fachliche
        Absicherung steht weiterhin in der Belegspalte nebenan. -->
   <div class="container mr-ueber__split">
-    <div class="mr-ueber__wort"></div>
+    <div class="mr-ueber__wort">
+      <!-- AP-292: Der Absatz aus AP-286 ist zu drei Kernaussagen verdichtet.
+           Jede Aussage stammt inhaltlich aus dem Absatz des Auftraggebers, keine
+           ist neu. Kurzfassung freigegeben am 11.09.2026.
+           "Seit 2003" und "Herne" belegt in content/stammdaten.json
+           (firma.gegruendet, adresse.ort). Die Klasse .mr-ueber__text bleibt an
+           der Liste, damit Groesse, Schnitt und Farbe aus AP-283/284 gelten. -->
+      <ul class="mr-ueber__text mr-ueber__punkte reveal">
+        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 10.5l2 2 4-4"/></svg>
+          <span>Ehrliche Einschätzung statt schneller Versprechen</span></li>
+        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16v16H4z"/><path d="M4 11h7"/><path d="M11 4v16"/><path d="M15 15h2"/></svg>
+          <span>Geplant für Grundstück, Nutzung und spätere Pflege</span></li>
+        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>
+          <span>Seit 2003 in Herne – verlässlich und termingerecht</span></li>
+      </ul>
+    </div>
 
     <div class="mr-ueber__beleg">
-      <!-- Gartenfoto.
-           AP-238: Die Hundeaufnahme ist gegen die weite Ansicht getauscht - die
-           vorige war ein enger Ausschnitt, in dem vom Garten fast nichts zu sehen
-           war. Der Aufnahmeort ist am 06.09.2026 vom Auftraggeber bestaetigt: die
-           Musterflaeche am Firmensitz. Deshalb darf die Bildunterschrift ihn jetzt
-           benennen; bis dahin blieb sie bewusst neutral, weil eine Ortsangabe ohne
-           Bestaetigung eine Tatsachenbehauptung waere (§ 5 UWG).
-           [OFFEN: Name des Hundes - siehe docs/offene-punkte.md, AP-230 O1.]
-           "Eigene Fachkraefte." wiederholt nur, was im Flisstext daneben steht und
-           vom Auftraggeber ausdruecklich so gewollt ist (AP-179). -->
-      <div class="mr-ueber__paar reveal">
-        <figure class="mr-ueber__foto">
-          <picture>
-            <source type="image/avif"
-                    srcset="assets/img/ueber/ueber-hund-480.avif 480w, assets/img/ueber/ueber-hund-960.avif 960w"
-                    sizes="(max-width: 480px) calc(70vw - 42px), (max-width: 860px) 45vw, 245px">
-            <source type="image/webp"
-                    srcset="assets/img/ueber/ueber-hund-480.webp 480w, assets/img/ueber/ueber-hund-960.webp 960w"
-                    sizes="(max-width: 480px) calc(70vw - 42px), (max-width: 860px) 45vw, 245px">
-            <img src="assets/img/ueber/ueber-hund.webp" width="1068" height="1070"
-                 alt="Blick über den Mustergarten: vorn döst ein brauner Hund auf einer Gartenliege, dahinter führt ein Pflasterweg an einem Kiesbeet mit Natursteinen und einem Formgehölz im Topf vorbei, links liegt der Pool zwischen Palmen."
-                 loading="lazy" decoding="async">
-          </picture>
-          <figcaption role="img" aria-label="Feierabend im Mustergarten.">
-            <span class="mr-ueber__foto-caption-text">Feierabend<br>im Muster&shy;garten</span>
-            <svg class="mr-ueber__foto-caption mr-ueber__foto-caption--first"
-                 viewBox="20 220 1090 300" preserveAspectRatio="xMidYMid meet"
-                 aria-hidden="true" focusable="false">
-              <defs>
-                <filter id="mr-ueber-caption-freisteller" color-interpolation-filters="sRGB">
-                  <feColorMatrix type="matrix" values="
-                    0 0 0 0 .32
-                    0 0 0 0 .9
-                    0 0 0 0 .02
-                    -1.2 2.4 -1.2 0 0"/>
-                </filter>
-              </defs>
-              <image href="assets/img/ueber/feierabend-im-mustergarten.png"
-                     width="2172" height="724" filter="url(#mr-ueber-caption-freisteller)"/>
-            </svg>
-            <svg class="mr-ueber__foto-caption mr-ueber__foto-caption--second"
-                 viewBox="1080 220 1072 300" preserveAspectRatio="xMidYMid meet"
-                 aria-hidden="true" focusable="false">
-              <image href="assets/img/ueber/feierabend-im-mustergarten.png"
-                     width="2172" height="724" filter="url(#mr-ueber-caption-freisteller)"/>
-            </svg>
-          </figcaption>
-          <svg class="mr-ueber__foto-pointer" viewBox="0 0 220 96"
-               aria-hidden="true" focusable="false">
-            <path d="M34 8C76 10 96 34 120 51C143 67 169 72 205 74"/>
-            <path d="M188 60L207 75L183 81"/>
-          </svg>
-        </figure>
-      </div>
-
+      <!-- AP-292: Das Hundefoto sitzt jetzt an der Mustergarten-Kachel (siehe
+           dort). Der Beleg-Block traegt nur noch den Verweis zur Unterseite. -->
       <!-- AP-249: Der Link zur Unterseite steht auf Wunsch des Auftraggebers
            direkt unter dem Hundefoto. Logo, Linkziel und Gestaltung bleiben
            unveraendert. -->
       <a class="mr-ueber__mehr reveal" href="ueber-uns/">
-        <span class="mr-ueber__mehr-text">Mehr zu</span>
-        <img class="mr-ueber__mehr-logo" src="assets/img/logo/maik-rohdich-logo-mobile-horizontal-meister.png"
-             width="640" height="180" alt="Maik Rohdich Gartenbaumeister" loading="lazy" decoding="async">
+        <span class="mr-ueber__mehr-titel">Mehr über Maik Rohdich<span
+              class="mr-ueber__mehr-pfeil" aria-hidden="true">→</span></span>
+        <span class="mr-ueber__mehr-sub">Zur Über-uns-Seite</span>
+        <!-- AP-288: Blume ohne Schriftzug. Kein neues Bild noetig - dasselbe
+             viewBox-Verfahren wie bei .mr-ueber__brand an der Mustergarten-
+             Kachel: vom 640px breiten Logo werden nur die linken 210px gezeigt,
+             also der Bluetenstrauss ohne "MAIK ROHDICH". Dekorativ, weil der
+             sichtbare Text das Ziel bereits vollstaendig benennt. -->
+        <svg class="mr-ueber__mehr-logo" viewBox="0 0 210 180"
+             aria-hidden="true" focusable="false">
+          <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png"
+                 width="640" height="180" />
+        </svg>
       </a>
     </div>
   </div>
+
+  <!-- AP-281: Trennlinie zwischen Mustergarten und Einsatzgebiet, wie in
+       Entwurf B. Ein echtes <hr>, kein dekoratives div: der Wechsel vom
+       Mustergarten zum Einsatzgebiet ist ein thematischer Schnitt. -->
+  <hr class="container mr-ueber__trenner">
 
   <!-- Block 4 - NRW-Karte, aus der Proof-Sektion hierher VERSCHOBEN.
        Nicht kopiert: die Karten-SVG fuehrt eigene IDs, unter anderem den Filter
@@ -1176,9 +1164,9 @@ html.home-theme-dark body { background-color: #171916; }
         </span>
       </a>
       <a class="mobile-proof-request iphone-service-contact-cta" href="#anfrage" data-prefill-bereich="unsicher">
-        <svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+        <svg class="mobile-proof-request__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
         <span class="mobile-proof-request__label">Zum Kontaktformular</span>
-        <span class="mobile-proof-request__arrow" aria-hidden="true">→</span>
+        <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
 
@@ -1498,9 +1486,9 @@ html.home-theme-dark body { background-color: #171916; }
 
       <div class="container b2b-process-end-actions">
         <a class="btn btn-primary mobile-proof-request process-contact-cta" href="#anfrage" aria-describedby="private-process-reassurance">
-          <svg class="mobile-proof-request__shape process-contact-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+          <svg class="mobile-proof-request__frame process-contact-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape process-contact-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
           <span class="mobile-proof-request__label">Projekt anfragen</span>
-          <span class="mobile-proof-request__arrow" aria-hidden="true">→</span>
+          <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
       </div>
     </div>
@@ -2624,7 +2612,8 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/vendor/gsap/ScrollTrigger.min.js?v=3.13.0" defer></script>
 <script src="assets/js/main.js?v=20260906d" defer></script>
 <script src="assets/js/mobile-qualifications.js?v=20260909a" defer></script>
-<script src="assets/js/mobile-social-proof-gallery.js?v=20260910b" defer></script>
+<script src="assets/js/mobile-social-proof-gallery.js?v=20260911c" defer></script>
+<script src="assets/js/cta-signal.js?v=20260911b" defer></script>
 <script src="assets/js/mobile-private-review.js?v=20260906b" defer></script>
 <script src="assets/js/private-proof.js?v=20260906a" defer></script>
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>

@@ -25,19 +25,6 @@
     });
   });
 
-  const arrowDrawButton = section.querySelector('[data-draw-arrow]');
-  if (arrowDrawButton && !reducedMotion.matches && 'IntersectionObserver' in window) {
-    document.documentElement.classList.add('home-arrow-draw-ready');
-    const arrowDrawObserver = new IntersectionObserver((entries, observer) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
-      arrowDrawButton.classList.add('is-arrow-drawn');
-      observer.disconnect();
-    }, { threshold: 0.65 });
-    arrowDrawObserver.observe(arrowDrawButton);
-  } else if (arrowDrawButton) {
-    arrowDrawButton.classList.add('is-arrow-drawn');
-  }
-
   const gallery = section.querySelector('[data-mobile-proof-gallery]');
   if (!gallery) return;
   const track = gallery.querySelector('.mobile-proof-gallery__track');
