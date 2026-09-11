@@ -3247,10 +3247,17 @@
   }
 
   /* Das breite Originalmotiv bekommt statt eines Kreises eine flache Kapsel.
-     Die Markenfarbe des PNG bleibt unveraendert. */
+     Die Markenfarbe des PNG bleibt unveraendert.
+
+     AP-294: Die Kapsel rueckt 12px nach links. Mit 62px Breite und nur den
+     10px Innenabstand des Buttons sass ihre obere rechte Ecke exakt auf der
+     Schraege der Lasche - gemessen 0,0px Luft. Jetzt 22px vom Buttonrand und
+     5,1px unter der Schraege. Der Wert gilt nur fuer diesen CTA; die beiden
+     runden 40px-Chips der anderen zwei bleiben, wo sie sind. */
   .private-process-updated .process-contact-cta .mobile-proof-request__arrow {
     width: 62px;
     height: 40px;
+    margin-right: 12px;
     border-radius: 999px;
     box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .16);
   }
