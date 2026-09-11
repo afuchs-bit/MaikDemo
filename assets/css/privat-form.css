@@ -5078,6 +5078,10 @@
     background: #171916;
   }
 
+  html.home-theme-dark .private-contact::before {
+    display: none;
+  }
+
   html.home-theme-dark :is(
     .mobile-social-proof,
     .private-request-paths,

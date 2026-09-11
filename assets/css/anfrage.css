@@ -450,3 +450,279 @@
    waehrend das Element sichtbar ist. Zu messen ist getComputedStyle().display
    oder die Hoehe. */
 .anf [hidden] { display: none; }
+
+/* Mobil steht die Kurzanfrage direkt auf dem ruhigen Sektionsgrund. Die
+   grosse umschliessende Kartenflaeche wird dort bewusst aufgeloest. */
+@media (max-width: 480px) {
+  .private-contact .anf__karte {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .private-contact .anf__kanaele {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .private-contact .anf__oder {
+    margin-block: 28px;
+  }
+
+  .private-contact .anf__frage {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: clamp(12px, 3.45vw, 14px);
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .private-contact .anf__feld label {
+    font-size: clamp(12px, 3.45vw, 14px);
+  }
+
+  .private-contact .anf__feld input,
+  .private-contact .anf__feld textarea {
+    min-height: 52px;
+    padding: 13px 15px;
+    border-color: rgba(151, 206, 32, .19);
+    border-radius: 15px 5px 15px 5px;
+    background: rgba(255, 255, 255, .025);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .025);
+    transition: border-color .18s var(--ease), background-color .18s var(--ease), box-shadow .18s var(--ease);
+  }
+
+  .private-contact .anf__feld input::placeholder,
+  .private-contact .anf__feld textarea::placeholder {
+    color: rgba(235, 239, 229, .42);
+    opacity: 1;
+  }
+
+  .private-contact .anf__feld input:focus-visible,
+  .private-contact .anf__feld textarea:focus-visible {
+    outline: 0;
+    border-color: rgba(140, 198, 63, .22);
+    background: rgba(49, 82, 0, .12);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .035),
+      0 12px 24px -24px rgba(0, 0, 0, .8);
+  }
+
+  .private-contact .anf__chips {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 68px;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .private-contact .anf__chip {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 68px;
+    padding: 9px 12px;
+    border: 1px solid rgba(151, 206, 32, .19);
+    border-radius: 15px 5px 15px 5px;
+    background: rgba(255, 255, 255, .025);
+    color: var(--ink-2);
+    text-align: center;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .025);
+  }
+
+  .private-contact .anf__chip::after {
+    display: none;
+  }
+
+  .private-contact .anf__chip > strong,
+  .private-contact .anf__chip--consultation strong {
+    display: block;
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: .86rem;
+    font-weight: 820;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+
+  .private-contact .anf__chip--service strong > span {
+    display: block;
+  }
+
+  .private-contact .anf__chip > small,
+  .private-contact .anf__chip--consultation small {
+    display: none;
+  }
+
+  .private-contact .anf__chip--consultation {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 30px auto;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    min-height: 68px;
+    padding: 9px 13px;
+    border-color: rgba(151, 206, 32, .3);
+    border-radius: 17px 6px 17px 6px;
+    background: rgba(49, 82, 0, .14);
+  }
+
+  .private-contact .anf__chip--consultation img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: saturate(.92) drop-shadow(1px 2px 1px rgba(0, 0, 0, .34));
+    transform: rotate(-7deg);
+  }
+
+  .private-contact .anf__chip--consultation span {
+    text-align: left;
+  }
+
+  .private-contact .anf__chip--consultation strong {
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: .025em;
+  }
+
+  .private-contact .anf__chip[aria-pressed="true"] {
+    border-color: rgba(140, 198, 63, .22);
+    background: rgba(49, 82, 0, .12);
+    color: var(--ink);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .035),
+      0 12px 24px -24px rgba(0, 0, 0, .8);
+  }
+
+  .private-contact .anf__chip[aria-pressed="true"] strong {
+    color: var(--home-lime);
+  }
+
+  .private-contact .anf__kanal {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 11px;
+    block-size: 64px;
+    min-block-size: 64px;
+    padding: 8px 12px;
+    border-color: rgba(86, 230, 7, .14);
+    border-radius: 12px;
+    background: transparent;
+    box-sizing: border-box;
+  }
+
+  .private-contact .anf__kanal-icon {
+    inline-size: 40px;
+    block-size: 40px;
+    border-radius: 10px;
+  }
+
+  .private-contact .anf__kanal-icon--tel {
+    background-color: rgba(5, 10, 5, .58);
+    background-size: 24px 24px;
+  }
+
+  .private-contact .anf__kanal-icon--wa {
+    background-color: #25D366;
+    background-size: 22px 22px;
+  }
+
+  .private-contact .anf__kanal small {
+    color: rgba(255, 255, 255, .52);
+    font-size: .7rem;
+    font-weight: 750;
+    letter-spacing: .09em;
+    line-height: 1.2;
+  }
+
+  .private-contact .anf__kanal strong {
+    overflow-wrap: normal;
+    color: #fff;
+    font-size: .95rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .private-contact .anf__mehr {
+    margin-bottom: 26px;
+    color: rgba(235, 239, 229, .8);
+    font-weight: 600;
+  }
+
+  .private-contact .anf__mehr > span {
+    color: var(--coral);
+  }
+
+  .private-contact .anf__feld--frei {
+    margin-bottom: 26px;
+  }
+
+  .private-contact .anf__kanal:active {
+    border-color: rgba(140, 198, 63, .22);
+    background: rgba(49, 82, 0, .12);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .035),
+      0 12px 24px -24px rgba(0, 0, 0, .8);
+  }
+
+  .private-contact .anf__abschluss {
+    display: block;
+    width: 100%;
+  }
+
+  .private-contact [data-anf-senden] {
+    justify-content: center;
+    width: 100%;
+    min-height: 64px;
+    padding: 7px 22px;
+    border: 0;
+    border-radius: 14px;
+    background: none;
+    color: #171916;
+    font: 800 clamp(1rem, 4.3vw, 1.125rem)/1.2 var(--display);
+    box-shadow: none;
+  }
+
+  .private-contact [data-anf-senden] .anf-senden__shape {
+    display: block;
+  }
+
+  .private-contact [data-anf-senden]:active {
+    background: none;
+    transform: translateY(1px);
+  }
+
+  .private-contact [data-anf-senden]:active .anf-senden__shape {
+    fill: #82b93b;
+  }
+
+  .private-contact [data-anf-senden]:focus-visible {
+    outline: 2px solid var(--home-dark-accent);
+    outline-offset: 5px;
+  }
+
+  .private-contact .anf__abschluss + .anf__rechtliches {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 340px) {
+  .private-contact .anf__chip > strong,
+  .private-contact .anf__chip--consultation strong {
+    font-size: .8rem;
+    line-height: 1.18;
+  }
+
+  .private-contact .anf__kanal strong {
+    font-size: .9rem;
+  }
+}
