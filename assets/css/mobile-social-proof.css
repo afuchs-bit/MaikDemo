@@ -721,6 +721,11 @@
     font: 700 1.125rem/1.4 var(--display);
   }
 
+  .mobile-proof-invitation__question--iphone,
+  .mobile-proof-invitation__answer-copy--iphone {
+    display: none;
+  }
+
   .mobile-proof-invitation__response {
     display: grid;
     grid-template-columns: minmax(0, 1fr) clamp(28px, 7.5vw, 32px);
@@ -791,6 +796,21 @@
 
   .mobile-proof-invitation__text + .mobile-proof-invitation__text {
     margin-top: 48px;
+  }
+
+  .mobile-proof-invitation__question--default,
+  .mobile-proof-invitation__answer-copy--default {
+    display: none;
+  }
+
+  .mobile-proof-invitation__question--iphone,
+  .mobile-proof-invitation__answer-copy--iphone,
+  .mobile-proof-invitation__question-line {
+    display: block;
+  }
+
+  .mobile-proof-invitation__question-line + .mobile-proof-invitation__question-line {
+    margin-top: .18em;
   }
 
   .mobile-proof-request {
