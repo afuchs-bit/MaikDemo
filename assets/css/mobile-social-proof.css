@@ -4,6 +4,29 @@
   display: none;
 }
 
+/* AP-290: Der Pfeil ist seit C2 ein SVG. Ohne diese Grundregel stuende es in
+   Breiten ohne Mobilregeln (Desktop-Pill des Ablauf-CTAs) in 300x150 da. */
+.mobile-proof-request__arrow svg {
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* AP-295: Das Pfeilmotiv steht im Markup aller drei CTAs, sichtbar wird es
+   erst unter 481px. Ohne diese Grundregel stuende das 1883px breite PNG in
+   Breiten ohne Mobilregeln in Originalgroesse im Button. */
+.mobile-proof-request__arrow-bild {
+  display: none;
+}
+
+.mobile-proof-request__frame {
+  display: none;
+}
+
 /* Auf Handy-Breiten folgt der messbare Vertrauensbeleg direkt auf den
    persönlichen Einstieg; die spätere Kopie entfällt dort. */
 @media (max-width: 480px) {
@@ -51,6 +74,13 @@
     height: 2.375rem;
     max-width: 100%;
     object-fit: contain;
+  }
+
+  /* Die handgezeichnete 1000+ besitzt bewusst mehr transparente Luft als die
+     uebrigen KPI-Schriftzuege. Die rein visuelle Skalierung haelt Grundlinie,
+     Zeilenhoehe und den Abstand zum Begleittext unveraendert. */
+  .gate-welcome--iphone .mobile-kpi-signature__figure--1000 {
+    transform: scale(1.22);
   }
 
   .gate-welcome--iphone .mobile-kpi-signature__fact p {
@@ -357,14 +387,23 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #FAFAF6;
-    box-shadow: 0 0 0 1px rgb(0 0 0 / 65%);
+    background: rgba(226, 34, 25, .32);
+    box-shadow:
+      inset 0 0 0 1px #fff,
+      0 0 0 1px rgb(0 0 0 / 65%),
+      0 0 4px rgba(255, 255, 255, .28),
+      0 0 9px rgba(255, 255, 255, .12);
   }
 
   .mobile-proof-gallery__dot[aria-current="true"] span {
     width: 8px;
     height: 8px;
-    background: #56E607;
+    background: var(--coral);
+    box-shadow:
+      inset 0 0 0 1px #fff,
+      0 0 0 1px rgb(0 0 0 / 65%),
+      0 0 4px rgba(255, 255, 255, .28),
+      0 0 9px rgba(255, 255, 255, .12);
   }
 
   .mobile-proof-gallery__dot:focus-visible {
@@ -375,7 +414,7 @@
 
   .mobile-proof-gallery__footer {
     position: relative;
-    height: max(54px, 3.375rem);
+    height: max(64px, 4rem);
   }
 
   .mobile-proof-gallery__brand {
@@ -392,70 +431,95 @@
     pointer-events: none;
   }
 
-  .mobile-proof-gallery__brush-link {
+  .mobile-proof-gallery__link {
     position: absolute;
-    top: 6px;
+    isolation: isolate;
+    top: 14px;
     left: 50%;
     z-index: 1;
-    display: grid;
-    place-items: center;
-    width: max(clamp(124px, 31vw, 130px), 9em);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    min-width: max(184px, 11.5em);
     max-width: 100%;
     height: max(44px, 2.75em);
-    color: #171916;
-    font: 800 .875rem/1 var(--display);
-    letter-spacing: 0;
+    padding: 0 1rem 0.125rem;
+    border: 0;
+    background: transparent;
+    color: rgba(244, 246, 240, .9);
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: .025em;
+    text-transform: uppercase;
     text-decoration: none;
+    white-space: nowrap;
     transform: translateX(-50%);
+    transition: color .2s var(--ease);
   }
 
-  .mobile-proof-gallery__brush {
+  .mobile-proof-gallery__link > span,
+  .mobile-proof-gallery__link-arrow {
+    position: relative;
+    z-index: 1;
+  }
+
+  .mobile-proof-gallery__link-shape {
     position: absolute;
     inset: 0;
+    z-index: 0;
     width: 100%;
     height: 100%;
     overflow: visible;
-    filter: drop-shadow(0 3px 3px rgb(0 0 0 / 22%));
-    transform: rotate(-1deg);
-    transform-origin: center;
     pointer-events: none;
   }
 
-  .mobile-proof-gallery__brush-base {
-    fill: #FFED00;
+  .mobile-proof-gallery__link-shape path {
+    fill: rgba(49, 82, 0, .1);
+    stroke: rgba(140, 198, 63, .27);
+    stroke-width: 1px;
+    stroke-linejoin: round;
+    transition: fill .2s var(--ease), stroke .2s var(--ease);
   }
 
-  .mobile-proof-gallery__brush-grain {
-    fill: none;
-    stroke: #D9BD00;
-    stroke-width: 1.2;
-    stroke-linecap: round;
-    opacity: .46;
+  .mobile-proof-gallery__link::after {
+    content: none;
   }
 
-  .mobile-proof-gallery__brush-highlight {
-    fill: none;
-    stroke: #FFF36B;
-    stroke-width: .9;
-    stroke-linecap: round;
-    opacity: .55;
+  .mobile-proof-gallery__link:hover {
+    color: rgba(244, 246, 240, .96);
   }
 
-  .mobile-proof-gallery__brush-link > span {
-    position: relative;
-    z-index: 1;
-    transform: translateY(-1px);
-    text-shadow: 0 1px 0 rgb(255 255 255 / 24%);
+  .mobile-proof-gallery__link:is(:hover, :focus-visible) .mobile-proof-gallery__link-shape path {
+    fill: rgba(49, 82, 0, .18);
+    stroke: rgba(140, 198, 63, .48);
   }
 
-  .mobile-proof-gallery__brush-link:hover {
-    color: #171916;
+  .mobile-proof-gallery__link:is(:hover, :focus-visible)::after {
+    content: none;
   }
 
-  .mobile-proof-gallery__brush-link:focus-visible {
+  .mobile-proof-gallery__link-arrow {
+    display: block;
+    flex: 0 0 auto;
+    width: 1.375rem;
+    height: auto;
+    object-fit: contain;
+    filter: saturate(.92) brightness(.94);
+    transform: none;
+    transition: transform .2s var(--ease);
+  }
+
+  .mobile-proof-gallery__link:is(:hover, :focus-visible) .mobile-proof-gallery__link-arrow {
+    transform: translate(2px, -1px);
+  }
+
+  .mobile-proof-gallery__link:focus-visible {
     outline: 2px solid var(--home-focus);
     outline-offset: 4px;
-    border-radius: 4px;
   }
 
   /* Originaler CTA aus AP-186, jetzt nach der gesamten Einladung. */
@@ -464,12 +528,13 @@
     isolation: isolate;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
+    gap: 12px;
     width: 100%;
     max-width: 640px;
     min-height: 64px;
     margin: 28px auto 0;
-    padding: 7px 22px;
+    padding: 7px 10px 7px 22px;
     border-radius: 14px;
     color: #171916;
     font: 800 clamp(1.05rem, 4.58vw, 1.125rem)/1.25 var(--display);
@@ -485,6 +550,93 @@
     word-break: normal;
     hyphens: none;
     text-wrap: balance;
+    text-align: left;
+    transition: transform .12s var(--ease);
+  }
+
+  /* AP-290 (Variante C2): Der Pfeil sitzt in einem dunklen Chip am rechten
+     Rand. #171916 ist der Seitengrund (index.html, Zeile 9). Der bisherige
+     Dauerpuls entfaellt - er lief endlos und damit gegen WCAG 2.2.2; das
+     Signal kommt jetzt einmalig ueber .is-pulsing (cta-signal.js). */
+  .mobile-proof-request__arrow {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    border-radius: 50%;
+    background: #171916;
+    color: var(--home-lime);
+    transition: transform .12s var(--ease);
+  }
+
+  .mobile-proof-request__arrow svg {
+    width: 20px;
+    height: 20px;
+    transition: transform .2s var(--ease);
+  }
+
+  /* Versatzrahmen: gleicher Umriss wie die Flaeche, 6px nach rechts unten,
+     1.5px Linie (non-scaling-stroke im Markup). overflow: visible, damit die
+     halbe Strichbreite an den Kanten nicht abgeschnitten wird. */
+  .mobile-proof-request__frame {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: var(--home-lime);
+    stroke-width: 1.5px;
+    transform: translate(6px, 6px);
+    pointer-events: none;
+  }
+
+  /* Puls: Kopie der Flaeche per Maske, 3 Durchlaeufe, danach Ruhe.
+     AP-291: Mit .5 Startdeckkraft und 1.05/1.4 war er auf dem Handy kaum zu
+     sehen (Render bei 390 px: nach 400 ms nur noch ein duenner Saum). Jetzt
+     .85 und 1.08/1.8: bei 350 px Breite 14 px je Seite - innerhalb der 20 px
+     Containerabstand - und 26 px nach oben und unten. Linear mit Zwischenstufe
+     bei 45 %, sonst ist die Deckkraft nach einem Drittel schon weg. */
+  .mobile-proof-request::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: var(--home-lime);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 64' preserveAspectRatio='none'%3E%3Cpath d='M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 64' preserveAspectRatio='none'%3E%3Cpath d='M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mobile-proof-request.is-pulsing::before {
+    animation: mobile-proof-request-pulse 1.4s linear .2s 1;
+  }
+
+  @keyframes mobile-proof-request-pulse {
+    0% { transform: scale(1); opacity: .85; }
+    45% { opacity: .45; }
+    100% { transform: scale(1.08, 1.8); opacity: 0; }
+  }
+
+  /* Der Pfeil geht mit dem Puls einmal nach rechts - so zeigt er auch ohne
+     Hover, wohin es geht. Gleicher Takt und gleiche Anzahl wie der Puls,
+     danach steht er still (WCAG 2.2.2).
+     AP-298: ein Durchlauf statt drei, auf Wunsch des Auftraggebers. */
+  .mobile-proof-request.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
+    animation: mobile-proof-request-arrow 1.4s var(--ease) .2s 1;
+  }
+
+  @keyframes mobile-proof-request-arrow {
+    0%, 55%, 100% { transform: translateX(0); }
+    25% { transform: translateX(6px); }
   }
 
   .mobile-proof-request__shape {
@@ -494,25 +646,58 @@
     width: 100%;
     height: 100%;
     fill: var(--home-lime);
-    filter: drop-shadow(0 8px 10px rgb(0 0 0 / 24%));
     pointer-events: none;
-    transition: fill .18s ease;
+    transition: fill .18s ease, transform .12s var(--ease);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .mobile-proof-request:hover .mobile-proof-request__shape {
       fill: #9DD34F;
     }
+
+    .mobile-proof-request:hover :is(.mobile-proof-request__shape, .mobile-proof-request__label, .mobile-proof-request__arrow) {
+      transform: translate(2px, 2px);
+    }
+
+    .mobile-proof-request:hover .mobile-proof-request__arrow :is(svg, img) {
+      transform: translateX(3px);
+    }
+  }
+
+  /* Beim Tippen rastet der Button in den Rahmen ein. Der Rahmen selbst bleibt
+     stehen, deshalb wandern nur Flaeche, Label und Chip.
+     AP-291: :active allein reicht auf dem Handy nicht - ein Tipp dauert unter
+     100 ms, danach springt die Seite weg. .is-pressed setzt cta-signal.js
+     beim Klick und haelt es 180 ms, bevor die Navigation weiterlaeuft. */
+  .mobile-proof-request:is(:active, .is-pressed) :is(.mobile-proof-request__shape, .mobile-proof-request__label, .mobile-proof-request__arrow) {
+    transform: translate(6px, 6px);
+  }
+
+  .mobile-proof-request:is(:active, .is-pressed) .mobile-proof-request__arrow :is(svg, img) {
+    transform: translateX(4px);
+  }
+
+  .mobile-proof-request.is-pressed::before,
+  .mobile-proof-request.is-pressed .mobile-proof-request__arrow :is(svg, img) {
+    animation: none;
   }
 
   .mobile-proof-request:focus-visible {
     outline: 2px solid var(--home-focus);
-    outline-offset: 5px;
+    outline-offset: 9px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .mobile-proof-request__shape {
+    .mobile-proof-request__shape,
+    .mobile-proof-request__label,
+    .mobile-proof-request__arrow,
+    .mobile-proof-request__arrow svg {
       transition: none;
+    }
+
+    .mobile-proof-request.is-pulsing::before,
+    .mobile-proof-request.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
+      animation: none;
     }
   }
 
@@ -544,6 +729,11 @@
     font: 700 1.125rem/1.4 var(--display);
   }
 
+  .mobile-proof-invitation__question--iphone,
+  .mobile-proof-invitation__answer-copy--iphone {
+    display: none;
+  }
+
   .mobile-proof-invitation__response {
     display: grid;
     grid-template-columns: minmax(0, 1fr) clamp(28px, 7.5vw, 32px);
@@ -572,6 +762,14 @@
     text-wrap: pretty;
   }
 
+  .mobile-proof-invitation__answer-line {
+    display: block;
+  }
+
+  .mobile-proof-invitation__answer-line + .mobile-proof-invitation__answer-line {
+    margin-top: .48em;
+  }
+
   .mobile-proof-invitation__flower {
     display: block;
     align-self: end;
@@ -582,9 +780,9 @@
     pointer-events: none;
   }
 
-  /* Der bestehende #anfrage-Handler zielt auch bei aktivem Kurzformular auf
-     den ausgeblendeten Assistenten. Unser CTA nutzt den sichtbaren Einstieg. */
-  .home-theme-dark [data-anf-vorwahl] {
+  /* Der CTA landet mit ausreichend Abstand unter dem mobilen Header direkt am
+     jetzt einzigen sichtbaren Kurzformular. */
+  .home-theme-dark form[data-anf-form] {
     scroll-margin-top: calc(var(--mobile-header-h) + 16px);
   }
 }
@@ -593,7 +791,7 @@
    iPhone-Breiten mehr Ruhe zwischen Galerie, Einladung und Abschluss-CTA. */
 @media (max-width: 480px) {
   .mobile-social-proof {
-    padding: 28px 32px 96px;
+    padding: 28px clamp(24px, 8.14vw, 36px) 96px;
   }
 
   .mobile-proof-gallery {
@@ -608,7 +806,64 @@
     margin-top: 48px;
   }
 
+  .mobile-proof-invitation__question--default,
+  .mobile-proof-invitation__answer-copy--default {
+    display: none;
+  }
+
+  .mobile-proof-invitation__question--iphone,
+  .mobile-proof-invitation__answer-copy--iphone,
+  .mobile-proof-invitation__question-line {
+    display: block;
+  }
+
+  .mobile-proof-invitation__question-line + .mobile-proof-invitation__question-line {
+    margin-top: .18em;
+  }
+
   .mobile-proof-request {
     margin-top: 52px;
+  }
+
+  /* AP-295: Gestaltung des Ablauf-CTAs auf die anderen beiden uebertragen -
+     Handschrift-Label und das Pfeilmotiv in der flachen Kapsel. Die Vorlage
+     steht in privat-form.css am .process-contact-cta (dort aus e99b93b); die
+     Werte sind absichtlich dieselben, damit die drei nicht auseinanderlaufen.
+
+     Was bewusst NICHT mitkommt: die Markenblume links. Sie ist die Pointe des
+     Zeitstrahls - sie wandert dort in den CTA und erscheint erst mit
+     .is-process-complete. Ausserhalb des Ablaufs hat sie keinen Anlass.
+
+     Nur bis 480px, wie der Ablauf-CTA: ab 481px bleibt es bei der bisherigen
+     Darstellung. */
+  .mobile-proof-request__label {
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: clamp(.9rem, 4.25vw, 1.0625rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+  }
+
+  .mobile-proof-request__arrow {
+    width: 62px;
+    height: 40px;
+    margin-right: 12px;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .16);
+  }
+
+  /* Das gezeichnete Motiv ersetzt das SVG-Zeichen. Beide bleiben im Markup:
+     ueber 480px und ohne Bilder ist das SVG weiter das sichtbare Zeichen. */
+  .mobile-proof-request__arrow svg {
+    display: none;
+  }
+
+  .mobile-proof-request__arrow-bild {
+    display: block;
+    width: 46px;
+    height: auto;
+    object-fit: contain;
   }
 }

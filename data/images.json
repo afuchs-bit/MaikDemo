@@ -181,6 +181,25 @@
       "width": 960,
       "height": 725,
       "aspect": 0.7552
+    },
+    "/assets/img/zertifikate/zertifikat-lwk-baumkontrolleur.webp": {
+      "base": "/assets/img/zertifikate/zertifikat-lwk-baumkontrolleur",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 1358,
+      "aspect": 1.4147
+    },
+    "/assets/img/ueber/feierabend-im-mustergarten.webp": {
+      "base": "/assets/img/ueber/feierabend-im-mustergarten",
+      "widths": [
+        1600
+      ],
+      "width": 960,
+      "height": 320,
+      "aspect": 0.3333
     }
   }
 }

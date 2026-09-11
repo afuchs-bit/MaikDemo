@@ -1138,3 +1138,189 @@ Der Footer einer Seite ist **generierter Inhalt**. Änderungen daran gehören in
 plus, wenn sie nur eine Seite betreffen, in einen Platzhalter mit Fallunterscheidung in
 `footerTemplateData`. Ein Handstand in der HTML-Datei hält bis zum nächsten Push auf
 `content/**`.
+
+---
+
+## AP-287 — Footer auf dem Handy wieder als eigene Kachel
+
+Auftrag: der Footer soll auf dem Handy als einzelne, abgerundete Kachel stehen.
+
+**Beim Nachmessen zeigte sich: die Kachel gab es bereits — sie war nur unsichtbar.**
+`styles.css:1652` gibt dem Footer bis 720 px `margin: 0 12px …` und `border-radius: 24px`,
+auf allen Seiten. Auf der Startseite hatte er aber exakt die Farbe der Seite dahinter.
+
+| bei 390 px | Startseite vorher | Unterseite `/kontakt/` |
+|---|---|---|
+| Footer-Hintergrund | `#171916` | `#0E100D` |
+| Seiten-Hintergrund | `#171916` | `#171916` |
+| Abstand / Radius | 12 px / 24 px | 12 px / 24 px |
+| box-shadow | inset 1 px | keine |
+
+### Ursache
+
+[privat-form.css:5093](../assets/css/privat-form.css:5093), innerhalb
+`@media (max-width: 480px)`. Der Block vereinheitlicht bewusst die Flächen zusammengehöriger
+Abschnitte („Inhaltlich verbundene Bereiche teilen eine Fläche", Kommentar Zeile 5075) — der
+Footer war dort mitgerutscht. Eine zweite Gruppe (Zeile 5101) legte ihm zusätzlich
+`box-shadow: inset 0 1px 0` auf; auf einer gerundeten Kachel zeichnet diese Linie einen
+schwachen Bogen über die oberen Ecken, genau der Effekt, den `styles.css:1645` für
+`border-top` schon beschreibt und dort abschaltet.
+
+Gefunden über die CSSOM-Trefferliste am Element selbst, nicht über Textsuche — die Regel
+steht in einer Datei, die man beim Footer nicht vermutet, und nennt `.site-footer` nur als
+vierten Eintrag einer `:is()`-Liste.
+
+### Behoben
+
+`.site-footer` aus **beiden** Selektorlisten gestrichen. Damit gilt wieder
+`var(--bg-dark)` = `#0E100D` aus `styles.css:1425` / `home-dark.css:198`. Kein neuer Wert,
+keine Sonderregel für die Startseite — sie gleicht sich den 37 Unterseiten an. Beide Stellen
+tragen jetzt einen Kommentar, warum der Footer nicht in diese Gruppen gehört.
+
+### Gemessen (nachher, 390 px)
+
+Startseite und `/kontakt/` liefern identische Werte: Hintergrund `rgb(14, 16, 13)` gegen
+Seite `rgb(23, 25, 22)`, 12 px eingerückt, 366 px breit, Radius 24 px, `box-shadow: none`,
+Inhalt 32 px vom Bildschirmrand. Kein waagerechter Überlauf.
+
+Die Nachbarsektionen sind unverändert: `.mr-ueber`, `.private-process-updated`,
+`.private-contact` weiterhin `#171916`, `.private-faq` `#1b1e19`, alle randbündig mit
+Radius 0.
+
+Bei 481 px und 720 px bleibt es bei der Kachel — dort hatte die 480er-Regel ohnehin nie
+gegriffen, der Footer war also schon vorher dunkler abgesetzt. Ab 721 px läuft er wie bisher
+randbündig ohne Radius.
+
+---
+
+## AP-289 — Grund hinter der Footer-Kachel auf den FAQ-Ton
+
+Nachtrag zu AP-287. Die Footer-Kachel war danach sichtbar schwarz (`#0E100D`), der 12 px
+breite Streifen um sie herum trug aber die Seitenfarbe `#171916` — während die Sektion
+**direkt darüber** die FAQ mit `#1b1e19` ist. An der Oberkante der Kachel entstand dadurch
+eine Kante.
+
+Auf Wunsch des Auftraggebers bleibt die Kachel schwarz, der Grund um sie herum bekommt den
+Ton der FAQ-Sektion. Aus drei gemessenen Kandidaten gewählt: **`#1b1e19`** (die Fläche der
+FAQ-Sektion), nicht das Marken-Grün `#8CC63F` und nicht der FAQ-Kachelton `#232A1C`.
+
+### Wer den Streifen malt — gemessen bei 390 px
+
+| Bereich | Dokumentposition | gemalt von |
+|---|---|---|
+| links und rechts der Kachel | 0 … 13826 | `body` |
+| **unter** der Kachel | 13826 … 13838 | `html` |
+
+Der untere Streifen hängt an `html`, nicht an `body`: die 12 px `margin-bottom` des Footers
+fallen durch Margin Collapsing aus dem Body-Kasten heraus, `body` endet an der
+Kachelunterkante. Eine Regel nur auf `body` hätte den unteren Streifen stehen lassen — das
+war der Punkt, an dem die Änderung beinahe halb fertig geworden wäre.
+
+### Warum der Grundton und kein Rahmen am Footer
+
+Gegenprobe im Browser: `html` und `body` versuchsweise auf Magenta gesetzt und die Seite
+abgefahren. Magenta erschien **ausschließlich** in den drei Streifen um die Footer-Kachel.
+`<main>` läuft lückenlos von 0 bis 13351, alle acht Sektionen darin sind randbündig und
+haben eine eigene Hintergrundfarbe — keine senkrechte Lücke, keine seitliche Einrückung
+außer beim Footer. Der Grundton ist damit gleichbedeutend mit „der Streifen", nur ohne
+zusätzlichen Mechanismus.
+
+Ein `box-shadow` am Footer wäre enger gefasst gewesen, hätte aber an den vier Ecken der
+Kachel kleine Bögen der alten Farbe stehen lassen (Außenradius 24 + 12 = 36 px).
+
+### Umgesetzt
+
+[privat-form.css:5077](../assets/css/privat-form.css:5077), im bestehenden
+`@media (max-width: 480px)`-Block: `html.home-theme-dark` neben `html.home-theme-dark body`,
+beide auf `#1b1e19`. Derselbe Selektor steht im Inline-`<style>` in `index.html:8`; die
+Regel aus `privat-form.css` steht in der Dokumentreihenfolge dahinter und gewinnt (über die
+CSSOM-Trefferliste geprüft: vier passende Regeln, `privat-form.css` als letzte).
+
+Der AP-209-Kommentar über dem Block nennt `#171916` als Grundton — er ist um einen Hinweis
+auf die Änderung ergänzt, sonst widerspricht er der Regel darunter.
+
+### Gemessen (390 px)
+
+`html` und `body` beide `rgb(27, 30, 25)`, identisch mit `.private-faq`. Kachel unverändert
+`rgb(14, 16, 13)`, 12 px eingerückt, 366 px breit, Radius 24 px, `box-shadow: none`. Die
+übrigen Sektionen unverändert bei `rgb(23, 25, 22)`. Kein waagerechter Überlauf.
+
+Bei 481 px und 1440 px bleibt der Grundton `rgb(23, 25, 22)` — die Regel gilt nur bis
+480 px, und oberhalb hat die FAQ-Sektion ohnehin nicht `#1b1e19`. `/kontakt/` bei 390 px
+unverändert.
+
+---
+
+## AP-292 — Über uns: Hundefoto an der Mustergarten-Kachel, drei Kernaussagen
+
+Umsetzung des vom Auftraggeber gelieferten Dokuments `AP-291-ueber-uns-hund-mustergarten.md`
+(`files (12).zip`, mit Referenzbildern für 390 px und 1280 px). Die Nummer AP-291 war beim
+Umsetzen bereits vergeben (C2-Bewegung, `b7ef6fe`), deshalb läuft das Paket als AP-292.
+
+Neue Reihenfolge der Sektion `#ueber` in allen Breiten: Überschrift → Mustergarten-Video mit
+Hundefoto unten rechts → „1.500 m² Mustergarten in Herne" und Besuchshinweis → drei
+Kernaussagen → Button. Danach unverändert Trennlinie und Einsatzgebiet-Karte.
+
+### Zwei Freigaben, erteilt am 11.09.2026
+
+- **F1 — Kurzfassung des Texts.** Der Absatz aus AP-286 ist zu drei Aussagen verdichtet.
+  „saubere Arbeit" und „Gartenanlagen, die langfristig funktionieren" sind nicht mehr
+  enthalten. Das Datum steht im HTML-Kommentar über der Liste.
+- **F2 — Umbau der Sektion.** Das eigenständige Hundefoto samt handschriftlicher
+  Bildunterschrift entfällt in allen Breiten. Auf dem Desktop trug es mit 532 × 746 px die
+  rechte Spalte; der Hund sitzt jetzt als 260-px-Einschub an der Videokachel.
+
+### Prüfung vor dem Lauf
+
+Alle 17 Anker des gelieferten Skripts gegen `b7ef6fe` gezählt — jeder genau einmal. Das
+Dokument war gegen `6e92191` geschrieben; dazwischen lag nur AP-291, das andere Dateien
+angefasst hat. Das Skript lief unverändert durch, mit zwei Substitutionen vorab:
+`AP-291` → `AP-292` und `[OFFEN: Datum der Freigabe]` → `11.09.2026`.
+
+### Das Video ist unverändert geblieben
+
+Ausdrückliche Auflage. Im Diff erscheint `<video class="mr-ueber__video">` nur als
+Verschiebung — Zeile für Zeile identisch. Nachgemessen im Browser: `readyState 4`,
+`videoWidth 720 × 544`, `playbackRate 0.6`, Poster gesetzt, Quelle `mustergarten.mp4`,
+`pointer-events: none`, Seitenverhältnis 21:9 ab 861 px und 4:3 bis 599 px.
+
+### Gemessen
+
+| Breite | Hundefoto | Überstand unten | Luft zum Text | Muster → Buttonende | Überlauf |
+|---|---|---|---|---|---|
+| 360 px | 130 px | 40 px | 16 px | 670 px | 0 |
+| 390 px | 140 px | 40 px | 16 px | 687 px | 0 |
+| 480 px | 176 px | 40 px | 16 px | 777 px | 0 |
+| 1280 px | 260 px | 40 px | 24 px | zweispaltig | 0 |
+
+Bei 360 px ragt das Foto 10 px über die rechte Kachelkante — der Container hat 20 px
+Innenabstand, deshalb bleibt der Überlauf bei 0. Überschrift bis 480 px linksbündig, darüber
+zentriert. Punkte und Button fluchten ab 861 px oben auf derselben Linie (beide y = 832 bei
+1280 px). Die Sektion ist auf dem Handy 131 px kürzer als vorher.
+
+### Stolperstelle bei der Prüfung: GSAP macht Elemente unsichtbar
+
+Der Button meldete in der Vorschau korrekte Maße (350 × 64 px an der richtigen Stelle), war
+aber nicht zu sehen. Ursache: seit AP-278 liegt GSAP mit ScrollTrigger im Projekt, und der
+setzt als Inline-Style `opacity: 0; visibility: hidden` bis die Animation startet. Im
+Browser-Pane läuft sie nie an (eingefrorener IntersectionObserver). **Kein Fehler dieses AP**
+— aber der Pane-Shim braucht seither zusätzlich `visibility: visible !important`, sonst
+zeigt die Vorschau leere Flächen, wo alles in Ordnung ist.
+
+### Offene Punkte
+
+- **O1 — Bildunterschrift.** „Feierabend im Mustergarten" steht nur noch im Alt-Text. Die
+  handschriftliche Grafik `feierabend-im-mustergarten-*.webp` liegt weiterhin unter
+  `assets/img/ueber/`, wird auf der Startseite aber nicht mehr verwendet.
+- **O2 — Tote CSS-Regeln.** `.mr-ueber__paar`, `.mr-ueber__foto*` und Reste von
+  `.mr-ueber__beleg` greifen ins Leere. Aufräumen als eigenes AP — bewusst nicht hier.
+- **O3 — Verwaiste Kommentarstelle.** `index.html` verweist im Kommentar über dem
+  Button-Logo auf „das viewBox-Verfahren wie bei `.mr-ueber__brand`"; diese Klasse gibt es
+  nicht mehr. Gehört zu O2.
+- **O4 — Einheitlichkeit der Markenblume.** AP-246 hatte Willkommen, Galerie und
+  Mustergarten gleich signiert. Die Mustergarten-Kachel weicht jetzt bewusst ab.
+- **O5 — Achse der Sektionsköpfe.** „Über uns" steht auf dem Handy linksbündig. Gemessen
+  stehen vier weitere Sektionsüberschriften dort ohnehin links; zentriert sind nur noch
+  „Unsere Leistungen von A bis Z" und der Willkommensgruß.
+- **O6 — Name des Hundes.** Weiter offen (AP-230 O1). Falls bekannt, gehört er in den
+  Alt-Text.
