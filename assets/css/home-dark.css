@@ -2494,17 +2494,21 @@ html.home-theme-dark .mr-ueber__leitsatz em {
    23-24px praktisch unabhaengig von der Breite - fast so gross wie der Leitsatz
    darueber. Auf Wunsch des Auftraggebers traegt er jetzt dieselbe Groesse wie
    der Mustergarten-Hinweis ("Besichtigungen nur nach Absprache ...",
-   .mr-ueber__hinweis weiter unten in dieser Datei): .9rem. Nur die Groesse ist
-   angeglichen - Schriftschnitt, Farbe und Zeilenhoehe bleiben, damit der Absatz
-   weiter als Flisstext der Sektion lesbar bleibt und nicht wie eine Fussnote. */
+   .mr-ueber__hinweis weiter unten in dieser Datei): .9rem.
+
+   AP-284: Dazu jetzt auch dieselbe Schriftart. Der Absatz war mit "Baloo 2" der
+   einzige Ausreisser in dieser Sektion; die dunkle Startseite laeuft sonst
+   durchgehend auf Nunito (--display und --body, Z. 45-46). Statt Nunito hier zu
+   wiederholen, entfaellt die font-family-Zeile ganz - der Absatz erbt damit
+   dieselbe Schrift wie der Hinweis und folgt kuenftigen Token-Aenderungen von
+   selbst. Das letter-spacing von .015em faellt mit weg: es war fuer die runde
+   Baloo gesetzt, der Hinweis steht auf "normal". */
 html.home-theme-dark .mr-ueber__text {
   margin: 0;
   color: var(--home-on-dark);
-  font-family: "Baloo 2", sans-serif;
   font-size: .9rem;
   font-weight: 600;
   line-height: 1.5;
-  letter-spacing: .015em;
   max-width: 62ch;
   overflow-wrap: normal;
   text-wrap: pretty;
