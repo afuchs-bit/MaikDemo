@@ -617,7 +617,7 @@
   }
 
   .mobile-proof-request.is-pulsing::before {
-    animation: mobile-proof-request-pulse 1.4s linear .2s 3;
+    animation: mobile-proof-request-pulse 1.4s linear .2s 1;
   }
 
   @keyframes mobile-proof-request-pulse {
@@ -626,11 +626,12 @@
     100% { transform: scale(1.08, 1.8); opacity: 0; }
   }
 
-  /* Der Pfeil geht bei jedem Pulsschlag einmal nach rechts - so zeigt er
-     auch ohne Hover, wohin es geht. Gleicher Takt und gleiche Anzahl wie
-     der Puls, danach steht er still (WCAG 2.2.2). */
+  /* Der Pfeil geht mit dem Puls einmal nach rechts - so zeigt er auch ohne
+     Hover, wohin es geht. Gleicher Takt und gleiche Anzahl wie der Puls,
+     danach steht er still (WCAG 2.2.2).
+     AP-298: ein Durchlauf statt drei, auf Wunsch des Auftraggebers. */
   .mobile-proof-request.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
-    animation: mobile-proof-request-arrow 1.4s var(--ease) .2s 3;
+    animation: mobile-proof-request-arrow 1.4s var(--ease) .2s 1;
   }
 
   @keyframes mobile-proof-request-arrow {
