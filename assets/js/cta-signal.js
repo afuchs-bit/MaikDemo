@@ -1,4 +1,4 @@
-// AP-290/AP-291: Signal und Einrasten der mobilen Haupt-CTAs (Variante C2).
+// AP-290/AP-291/AP-301: Signal und Einrasten der mobilen Haupt-CTAs (C2).
 // Der Puls laeuft einmal, sobald ein CTA gut sichtbar im Bild ist, und danach
 // nie wieder - endlose Bewegung neben Inhalt waere ein Verstoss gegen WCAG 2.2.2.
 // (Bis AP-297 waren es drei Durchlaeufe, seit AP-298 einer.)
@@ -8,41 +8,41 @@
   const ctas = document.querySelectorAll('.mobile-proof-request');
   if (!ctas.length) return;
 
-  // iOS Safari setzt :active nur, wenn am Element ein Touch-Listener haengt.
-  ctas.forEach((cta) => cta.addEventListener('touchstart', () => {}, { passive: true }));
+  // AP-301: Rueckmeldung am Finger, nicht am Klick.
+  //
+  // AP-291 hat den Klick abgefangen, .is-pressed gesetzt, 180 ms gewartet und
+  // dann per cta.click() einen zweiten, synthetischen Klick ausgeloest. In
+  // Chromium funktioniert das - auf dem echten iPhone fuehrte es dazu, dass die
+  // Buttons nicht mehr zum Formular navigieren und die Einrast-Bewegung
+  // mehrfach kurz hintereinander wirkte. Der synthetische Klick laeuft aus
+  // einem Zeitgeber, also ausserhalb der Nutzergeste; WebKit ist dort strenger.
+  //
+  // Der Klick wird jetzt gar nicht mehr angefasst. Navigation, das Prefill in
+  // privat-form.js und der Galerie-Sprung laufen wieder unveraendert. Das
+  // Einrasten haengt am pointerdown und ist damit sogar frueher zu sehen als
+  // vorher - im Moment der Beruehrung statt nach dem Loslassen.
+  //
+  // Auch :active steuert die Bewegung nicht mehr mit (siehe
+  // mobile-social-proof.css): Zwei Quellen fuer dieselbe Transform sind je nach
+  // Engine unterschiedlich getaktet - WebKit setzt :active beim Aufsetzen des
+  // Fingers, Chromium erst rund 160 ms spaeter.
+  const HALTEN_MS = 200;
 
-  // AP-291: Einrasten sichtbar machen. Ein Tipp ist kuerzer als die Transition,
-  // danach springt die Seite zum Formular - man sah das Einrasten nie. Deshalb:
-  // Klick abfangen (Capture auf document, also vor allen anderen Handlern),
-  // .is-pressed setzen, 180 ms warten, dann denselben Klick erneut ausloesen.
-  // Der zweite Klick laeuft unveraendert durch alle bestehenden Handler
-  // (Galerie-Sprung, Prefill in privat-form.js, native Ankernavigation).
-  const PRESS_MS = 180;
-  const passThrough = new WeakSet();
-
-  document.addEventListener('click', (event) => {
-    const cta = event.target instanceof Element ? event.target.closest('.mobile-proof-request') : null;
-    if (!cta) return;
-    if (passThrough.has(cta)) {
-      passThrough.delete(cta);
-      return;
-    }
-    if (event.defaultPrevented || event.button !== 0
-        || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    // Nur wo die C2-Form sichtbar ist; die Desktop-Pill (#3 ab 481 px) klickt sofort.
-    const frame = cta.querySelector('.mobile-proof-request__frame');
-    if (!frame || getComputedStyle(frame).display === 'none') return;
-
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    if (cta.classList.contains('is-pressed')) return;
-    cta.classList.add('is-pressed');
-    window.setTimeout(() => {
-      passThrough.add(cta);
-      cta.click();
-      window.setTimeout(() => cta.classList.remove('is-pressed'), 60);
-    }, PRESS_MS);
-  }, true);
+  ctas.forEach((cta) => {
+    let zeitgeber = 0;
+    const los = () => {
+      window.clearTimeout(zeitgeber);
+      cta.classList.remove('is-pressed');
+    };
+    cta.addEventListener('pointerdown', () => {
+      cta.classList.add('is-pressed');
+      window.clearTimeout(zeitgeber);
+      zeitgeber = window.setTimeout(los, HALTEN_MS);
+    }, { passive: true });
+    // Scrollen mit dem Finger auf dem Button darf nicht einrasten lassen.
+    cta.addEventListener('pointercancel', los);
+    cta.addEventListener('pointerleave', los);
+  });
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) return;
