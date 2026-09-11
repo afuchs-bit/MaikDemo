@@ -2950,17 +2950,6 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
    das Mustergartenband.
 
    Vier Kinder statt drei: der Eyebrow ist in AP-217 dazugekommen. */
-/* AP-281: Trennlinie vor dem Einsatzgebiet (Entwurf B). <hr> hat in styles.css
-   keine Basisregel, der Standardrahmen des Browsers muss also weg. Der Abstand
-   nach unten bleibt der Karte ueberlassen - benachbarte Aussenabstaende fallen
-   zusammen, sonst stuende hier der doppelte Wert. */
-html.home-theme-dark .mr-ueber__trenner {
-  height: 1px;
-  margin: var(--space-section-compact) 0 0;
-  border: 0;
-  background: var(--line);
-}
-
 html.home-theme-dark .mr-ueber__karte { margin-top: var(--space-section-compact); }
 
 html.home-theme-dark .mr-ueber__karte .proof-map {
