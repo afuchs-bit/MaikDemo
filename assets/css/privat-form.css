@@ -3021,8 +3021,33 @@
 
 /* Die individuelle Buttonform wird ausserhalb der beiden freigegebenen
    iPhone-Ansichten ausgeblendet; dort bleibt der bestehende Desktop-CTA. */
-.private-process-updated .process-contact-cta__shape {
+.private-process-updated .process-contact-cta__shape,
+.private-process-updated .process-contact-cta__frame {
   display: none;
+}
+
+/* AP-290: Ausserhalb der iPhone-Ansicht ist der Ablauf-CTA die Desktop-Pill.
+   Chip, Puls und Einrast-Bewegung aus mobile-social-proof.css gehoeren dort
+   nicht hin; der Pfeil bleibt ein schlichtes Zeichen in Textfarbe. */
+@media (min-width: 481px) {
+  .private-process-updated .process-contact-cta::before {
+    content: none;
+  }
+  .private-process-updated .process-contact-cta .mobile-proof-request__arrow {
+    width: auto;
+    height: auto;
+    margin-left: 0;
+    border-radius: 0;
+    background: none;
+    color: inherit;
+  }
+  .private-process-updated .process-contact-cta .mobile-proof-request__arrow svg {
+    width: 1.1em;
+    height: 1.1em;
+  }
+  .private-process-updated .process-contact-cta :is(.mobile-proof-request__label, .mobile-proof-request__arrow, .mobile-proof-request__arrow svg) {
+    transform: none;
+  }
 }
 
 @media (min-width:1024px) and (hover:hover) {
@@ -3166,19 +3191,19 @@
     isolation: isolate;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     max-width: none;
     min-height: 64px;
     margin: 0 auto;
-    padding: 7px 22px;
+    padding: 7px 10px 7px 22px;
     border: 0;
     border-radius: 14px;
     color: #171916;
     background: transparent;
     box-shadow: none;
     font: 800 clamp(1.05rem,4.58vw,1.125rem)/1.25 var(--display);
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     white-space: normal;
   }
@@ -3191,13 +3216,14 @@
     transform: none;
   }
 
-  .private-process-updated .process-contact-cta__shape {
+  .private-process-updated .process-contact-cta__shape,
+  .private-process-updated .process-contact-cta__frame {
     display: block;
   }
 
   .private-process-updated .process-contact-cta:focus-visible {
     outline: 2px solid var(--home-focus);
-    outline-offset: 5px;
+    outline-offset: 9px;
   }
 
   .private-process-updated .process-marker__leaf {
@@ -4592,11 +4618,11 @@
   }
 
   .iphone-service-contact-cta {
-    justify-content: center;
+    justify-content: space-between;
     max-width: none;
     min-height: 4rem;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
   }
 
   .iphone-service-feature:focus-visible,

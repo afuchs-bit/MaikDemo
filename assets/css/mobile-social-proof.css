@@ -4,6 +4,22 @@
   display: none;
 }
 
+/* AP-290: Der Pfeil ist seit C2 ein SVG. Ohne diese Grundregel stuende es in
+   Breiten ohne Mobilregeln (Desktop-Pill des Ablauf-CTAs) in 300x150 da. */
+.mobile-proof-request__arrow svg {
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mobile-proof-request__frame {
+  display: none;
+}
+
 /* Auf Handy-Breiten folgt der messbare Vertrauensbeleg direkt auf den
    persönlichen Einstieg; die spätere Kopie entfällt dort. */
 @media (max-width: 480px) {
@@ -473,12 +489,13 @@
     isolation: isolate;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
+    gap: 12px;
     width: 100%;
     max-width: 640px;
     min-height: 64px;
     margin: 28px auto 0;
-    padding: 7px 22px;
+    padding: 7px 10px 7px 22px;
     border-radius: 14px;
     color: #171916;
     font: 800 clamp(1.05rem, 4.58vw, 1.125rem)/1.25 var(--display);
@@ -494,20 +511,76 @@
     word-break: normal;
     hyphens: none;
     text-wrap: balance;
+    text-align: left;
+    transition: transform .15s var(--ease);
   }
 
+  /* AP-290 (Variante C2): Der Pfeil sitzt in einem dunklen Chip am rechten
+     Rand. #171916 ist der Seitengrund (index.html, Zeile 9). Der bisherige
+     Dauerpuls entfaellt - er lief endlos und damit gegen WCAG 2.2.2; das
+     Signal kommt jetzt einmalig ueber .is-pulsing (cta-signal.js). */
   .mobile-proof-request__arrow {
     position: relative;
     z-index: 1;
-    display: inline-block;
-    margin-left: 8px;
-    font-size: 1.4em;
-    animation: mobile-proof-request-arrow-pulse 1.6s ease-in-out infinite;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    border-radius: 50%;
+    background: #171916;
+    color: var(--home-lime);
+    transition: transform .15s var(--ease);
   }
 
-  @keyframes mobile-proof-request-arrow-pulse {
-    0%, 100% { transform: translateX(0); opacity: 1; }
-    50% { transform: translateX(5px); opacity: .55; }
+  .mobile-proof-request__arrow svg {
+    width: 20px;
+    height: 20px;
+    transition: transform .2s var(--ease);
+  }
+
+  /* Versatzrahmen: gleicher Umriss wie die Flaeche, 6px nach rechts unten,
+     1.5px Linie (non-scaling-stroke im Markup). overflow: visible, damit die
+     halbe Strichbreite an den Kanten nicht abgeschnitten wird. */
+  .mobile-proof-request__frame {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: var(--home-lime);
+    stroke-width: 1.5px;
+    transform: translate(6px, 6px);
+    pointer-events: none;
+  }
+
+  /* Puls: Kopie der Flaeche per Maske, 3 Durchlaeufe, danach Ruhe. Die
+     Skalierung bleibt in x klein (1.05 = gut 8px je Seite bei 342px), damit
+     sie innerhalb des Containerabstands bleibt. */
+  .mobile-proof-request::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: var(--home-lime);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 64' preserveAspectRatio='none'%3E%3Cpath d='M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 64' preserveAspectRatio='none'%3E%3Cpath d='M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mobile-proof-request.is-pulsing::before {
+    animation: mobile-proof-request-pulse 1.5s var(--ease) .3s 3;
+  }
+
+  @keyframes mobile-proof-request-pulse {
+    0% { transform: scale(1); opacity: .5; }
+    100% { transform: scale(1.05, 1.4); opacity: 0; }
   }
 
   .mobile-proof-request__shape {
@@ -517,28 +590,44 @@
     width: 100%;
     height: 100%;
     fill: var(--home-lime);
-    filter: drop-shadow(0 8px 10px rgb(0 0 0 / 24%));
     pointer-events: none;
-    transition: fill .18s ease;
+    transition: fill .18s ease, transform .15s var(--ease);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .mobile-proof-request:hover .mobile-proof-request__shape {
       fill: #9DD34F;
     }
+
+    .mobile-proof-request:hover :is(.mobile-proof-request__shape, .mobile-proof-request__label, .mobile-proof-request__arrow) {
+      transform: translate(2px, 2px);
+    }
+
+    .mobile-proof-request:hover .mobile-proof-request__arrow svg {
+      transform: translateX(3px);
+    }
+  }
+
+  /* Beim Tippen rastet der Button in den Rahmen ein. Der Rahmen selbst bleibt
+     stehen, deshalb wandern nur Flaeche, Label und Chip. */
+  .mobile-proof-request:active :is(.mobile-proof-request__shape, .mobile-proof-request__label, .mobile-proof-request__arrow) {
+    transform: translate(6px, 6px);
   }
 
   .mobile-proof-request:focus-visible {
     outline: 2px solid var(--home-focus);
-    outline-offset: 5px;
+    outline-offset: 9px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .mobile-proof-request__shape {
+    .mobile-proof-request__shape,
+    .mobile-proof-request__label,
+    .mobile-proof-request__arrow,
+    .mobile-proof-request__arrow svg {
       transition: none;
     }
 
-    .mobile-proof-request__arrow {
+    .mobile-proof-request.is-pulsing::before {
       animation: none;
     }
   }
