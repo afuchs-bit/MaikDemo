@@ -34,9 +34,9 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260906l" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260911a" />
-<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260911c" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260911d" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260911d" />
+<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260911d" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260911i" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260910u" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
@@ -682,9 +682,15 @@ html.home-theme-dark body { background-color: #171916; }
   <div class="mobile-proof-invitation reveal">
     <div class="mobile-proof-invitation__copy">
       <p class="mobile-proof-invitation__text">
-        <strong>Bleibt im Alltag, vor einem besonderen Anlass oder während Ihres Urlaubs keine Zeit für den Garten?</strong>
+        <strong>
+          <span class="mobile-proof-invitation__question mobile-proof-invitation__question--default">Bleibt im Alltag, vor einem besonderen Anlass oder während Ihres Urlaubs keine Zeit für den Garten?</span>
+          <span class="mobile-proof-invitation__question mobile-proof-invitation__question--iphone"><span class="mobile-proof-invitation__question-line">Keine Zeit für den Garten?</span><span class="mobile-proof-invitation__question-line">Steht ein besonderer Anlass oder Ihr Urlaub bevor?</span></span>
+        </strong>
         <span class="mobile-proof-invitation__response">
-          <span class="mobile-proof-invitation__answer"><span class="mobile-social-proof__sr-only">Maiks Antwort: </span><span class="mobile-proof-invitation__answer-line">Kein Anliegen ist uns zu klein.</span><span class="mobile-proof-invitation__answer-line">Ob kurzfristig oder regelmäßig: Wir kümmern uns als Team zuverlässig und fachgerecht um Ihren Garten.</span><span class="mobile-proof-invitation__answer-line">Gemeinsam finden wir eine Lösung, die zu Ihnen passt.</span></span>
+          <span class="mobile-proof-invitation__answer">
+            <span class="mobile-proof-invitation__answer-copy mobile-proof-invitation__answer-copy--default"><span class="mobile-social-proof__sr-only">Maiks Antwort: </span><span class="mobile-proof-invitation__answer-line">Kein Anliegen ist uns zu klein.</span><span class="mobile-proof-invitation__answer-line">Ob kurzfristig oder regelmäßig: Wir kümmern uns als Team zuverlässig und fachgerecht um Ihren Garten.</span><span class="mobile-proof-invitation__answer-line">Gemeinsam finden wir eine Lösung, die zu Ihnen passt.</span></span>
+            <span class="mobile-proof-invitation__answer-copy mobile-proof-invitation__answer-copy--iphone"><span class="mobile-social-proof__sr-only">Antwort: </span><span class="mobile-proof-invitation__answer-line">Wir kümmern uns zuverlässig um Ihren Garten.</span><span class="mobile-proof-invitation__answer-line">Regelmäßig, kurzfristig oder einmalig.</span><span class="mobile-proof-invitation__answer-line">Kein Anliegen ist uns zu klein.</span></span>
+          </span>
           <img class="mobile-proof-invitation__flower" src="assets/img/icons/rohdich-blume.png" alt="" width="160" height="160" loading="lazy" decoding="async" aria-hidden="true">
         </span>
       </p>
@@ -1366,7 +1372,7 @@ html.home-theme-dark body { background-color: #171916; }
             <path d="M16 11 Q 11 14 9 18" stroke="#fff" stroke-width="1" fill="none" opacity=".45"/>
             <path d="M16 11 Q 21 14 23 18" stroke="#fff" stroke-width="1" fill="none" opacity=".45"/>
           </svg>
-          <img class="process-marker__flower" src="assets/img/icons/rohdich-blume.png"
+          <img class="process-marker__flower" src="assets/img/icons/rohdich-blume-prozess-clean.png?v=20260911a"
                alt="" width="160" height="160" decoding="async">
         </div>
 
@@ -1388,8 +1394,14 @@ html.home-theme-dark body { background-color: #171916; }
                 </picture>
               </span>
               <span class="step-card__body">
-                <h3>Termin vor Ort - Aufmaß und Beratung</h3>
-                <p>Wir lernen Ihr Grundstück und Ihre Vorstellungen in Ruhe kennen.</p>
+                <h3>
+                  <span class="step-card__copy--default">Termin vor Ort - Aufmaß und Beratung</span>
+                  <span class="step-card__copy--iphone">Termin vor Ort</span>
+                </h3>
+                <p>
+                  <span class="step-card__copy--default">Wir lernen Ihr Grundstück und Ihre Vorstellungen in Ruhe kennen.</span>
+                  <span class="step-card__copy--iphone">Wir lernen Ihr Grundstück und Ihre Vorstellungen in Ruhe kennen. Anschließend beraten wir Sie persönlich und erstellen ein präzises Aufmaß.</span>
+                </p>
               </span>
             </div>
           </li>
@@ -1487,8 +1499,12 @@ html.home-theme-dark body { background-color: #171916; }
       <div class="container b2b-process-end-actions">
         <a class="btn btn-primary mobile-proof-request process-contact-cta" href="#anfrage" aria-describedby="private-process-reassurance">
           <svg class="mobile-proof-request__frame process-contact-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape process-contact-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+          <img class="process-contact-cta__flower" src="assets/img/icons/rohdich-blume-prozess-clean.png?v=20260911a" alt="" aria-hidden="true" width="160" height="160" decoding="async">
           <span class="mobile-proof-request__label">Projekt anfragen</span>
-          <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="mobile-proof-request__arrow" aria-hidden="true">
+            <svg class="process-contact-cta__arrow-default" viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <img class="process-contact-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async">
+          </span>
         </a>
       </div>
     </div>
@@ -2610,7 +2626,7 @@ html.home-theme-dark body { background-color: #171916; }
 
 <script src="assets/vendor/gsap/gsap.min.js?v=3.13.0" defer></script>
 <script src="assets/vendor/gsap/ScrollTrigger.min.js?v=3.13.0" defer></script>
-<script src="assets/js/main.js?v=20260906d" defer></script>
+<script src="assets/js/main.js?v=20260911a" defer></script>
 <script src="assets/js/mobile-qualifications.js?v=20260909a" defer></script>
 <script src="assets/js/mobile-social-proof-gallery.js?v=20260911c" defer></script>
 <script src="assets/js/cta-signal.js?v=20260911b" defer></script>

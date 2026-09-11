@@ -3015,6 +3015,12 @@
 .private-process-updated .process-marker__flower {
   display: none;
 }
+.private-process-updated .process-contact-cta__flower {
+  display: none;
+}
+.private-process-updated .process-contact-cta__arrow-image {
+  display: none;
+}
 .private-process-updated .step-node__number {
   display: none;
 }
@@ -3227,6 +3233,80 @@
     outline-offset: 9px;
   }
 
+  /* Handschriftlicher Markenstil wie bei den Qualifikationen. Auf dem hellen
+     CTA bleibt der Text bewusst ohne deren Leuchtschatten klar und ruhig. */
+  .private-process-updated .process-contact-cta .mobile-proof-request__label {
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: clamp(.98rem, 4.25vw, 1.0625rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Das breite Originalmotiv bekommt statt eines Kreises eine flache Kapsel.
+     Die Markenfarbe des PNG bleibt unveraendert. */
+  .private-process-updated .process-contact-cta .mobile-proof-request__arrow {
+    width: 62px;
+    height: 40px;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .16);
+  }
+
+  .private-process-updated .process-contact-cta__arrow-default {
+    display: none;
+  }
+
+  .private-process-updated .process-contact-cta__arrow-image {
+    display: block;
+    width: 46px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Am Ende des vorhandenen Zeitstrahls wechselt die Markenblume in den CTA.
+     Sie ist absolut platziert, damit nur der Text nach rechts gleitet und die
+     Buttonform sowie der Pfeil unverrueckt bleiben. */
+  .private-process-updated .process-contact-cta__flower {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    z-index: 2;
+    display: block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) scale(.82);
+    pointer-events: none;
+  }
+
+  .private-process-updated .process-contact-cta .mobile-proof-request__label {
+    transition: transform .28s var(--ease);
+  }
+
+  .private-process-updated.is-process-complete .process-marker {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta__flower {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta .mobile-proof-request__label {
+    transform: translateX(38px);
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta:is(:active, .is-pressed) .mobile-proof-request__label {
+    transform: translate(44px, 6px);
+  }
+
   .private-process-updated .process-marker__leaf {
     display: none;
   }
@@ -3292,6 +3372,12 @@
   .private-process-updated .step-card p {
     font-size: .9rem;
     line-height: 1.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .private-process-updated .process-contact-cta .mobile-proof-request__label {
+      transition: none;
+    }
   }
 }
 
@@ -5101,6 +5187,10 @@
    (#1B1E19) und Über uns (#171916) führen als ruhiger Rhythmus durch die
    vollständige iPhone-Seite. Inhaltlich verbundene Bereiche teilen eine Fläche.
    AP-289: Der Grundton der Seite ist seither #1B1E19 - siehe Regel unten. */
+.private-process-updated .step-card__copy--iphone {
+  display: none;
+}
+
 @media (max-width: 480px) {
   /* AP-289: Grundton auf den Ton der FAQ-Sektion. Die FAQ steht direkt ueber
      dem Footer; damit laeuft ihre Flaeche ohne Kante hinter der Footer-Kachel
@@ -5161,7 +5251,7 @@
 
   html.home-theme-dark .private-process-updated .step-card h3 {
     margin-bottom: 8px;
-    color: var(--home-yellow);
+    color: var(--mobile-logo-green);
     font-family: "Comic Sans MS","Comic Sans","Chalkboard SE",cursive;
     font-size: 1.0625rem;
     font-style: italic;
@@ -5173,6 +5263,14 @@
     opacity: .9;
     text-shadow:
       1px 1px 0 #315200,
-      0 0 7px rgba(242,226,12,.16);
+      0 0 7px rgba(86,230,7,.16);
+  }
+
+  html.home-theme-dark .private-process-updated .step-card__copy--default {
+    display: none;
+  }
+
+  html.home-theme-dark .private-process-updated .step-card__copy--iphone {
+    display: inline;
   }
 }

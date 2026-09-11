@@ -587,9 +587,10 @@
     if (!scroller) return;
     const section = scroller.closest('.section-process');
     const stage = scroller.querySelector('.process-stage');
+    const path = scroller.querySelector('.process-path');
     const pin = scroller.querySelector('[data-process-pin]') || stage;
     const track = scroller.querySelector('[data-process-track]');
-    if (!section || !stage || !pin || !track) return;
+    if (!section || !stage || !path || !pin || !track) return;
 
     const steps = Array.from(track.querySelectorAll('.step'));
     if (!steps.length) return;
@@ -598,6 +599,7 @@
     // auf Touch bricht Momentum-Scrolling und kollidiert mit Pull-to-Refresh;
     // diese Geraete bekommen deshalb die vertikale Journey.
     const mq = window.matchMedia('(min-width: 1024px) and (hover: hover)');
+    const iphoneMq = window.matchMedia('(max-width: 480px)');
 
     let mode = null;                    // null | 'h' | 'v'
     let ticking = false, lastIndex = -1;
@@ -636,9 +638,9 @@
     };
 
     // ---- 'v': vertikale Journey (Mobile/Tablet) ----
-    // Bezugspunkte sind die Knotenmittelpunkte, nicht die Sektionsgrenzen:
-    // nur so startet der Marker exakt auf Station 1 und endet auf Station n,
-    // statt darueber hinauszuschiessen.
+    // Bezugspunkte sind die Knotenmittelpunkte. Auf dem iPhone endet die Reise
+    // nach Knoten 5 am bereits vorhandenen Linienende; auf groesseren mobilen
+    // Ansichten bleibt das bisherige Ende exakt auf dem letzten Knoten.
     // offsetTop statt getBoundingClientRect: die Karten tragen waehrend des
     // Reveals ein translateY, das in die Rect-Werte einfliessen wuerde.
     const measureV = () => {
@@ -647,7 +649,9 @@
         return node ? s.offsetTop + node.offsetTop + node.offsetHeight / 2
                     : s.offsetTop + s.offsetHeight / 2;
       });
-      travel = Math.max(0, nodeTops[nodeTops.length - 1] - nodeTops[0]);
+      const lineEnd = path.offsetTop + path.offsetHeight;
+      const journeyEnd = iphoneMq.matches ? lineEnd : nodeTops[nodeTops.length - 1];
+      travel = Math.max(0, journeyEnd - nodeTops[0]);
       section.style.setProperty('--node-start', nodeTops[0].toFixed(2) + 'px');
       section.style.setProperty('--travel', travel.toFixed(2) + 'px');
     };
@@ -664,6 +668,7 @@
         ? Math.min(1, Math.max(0, (anchor - stageTop - nodeTops[0]) / travel))
         : 0;
       section.style.setProperty('--progress', progress.toFixed(4));
+      section.classList.toggle('is-process-complete', iphoneMq.matches && progress >= 1);
 
       // Aktiv ist der letzte Knoten, der den Anker bereits passiert hat.
       // Math.round(progress * (n-1)) wie im Horizontal-Zweig taugt hier
@@ -695,6 +700,7 @@
       mode = null;
       document.removeEventListener('scroll', onScroll);
       section.classList.remove('is-scrollytelling', 'is-vertical-journey');
+      section.classList.remove('is-process-complete');
       scroller.style.height = '';
       section.style.removeProperty('--progress');
       section.style.removeProperty('--max-shift');

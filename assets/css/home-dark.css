@@ -3080,6 +3080,16 @@ html.home-theme-dark .footer-social-iphone {
 /* AP-215/AP-224: Auf Handy-Breiten entfallen Schnellzugriff und Einsatzgebiet.
    Kontakt und rechtliche Links bleiben stehen. */
 @media (max-width: 480px) {
+  /* Auf dem iPhone greift die Footer-Kachel den Grundton des mobilen Headers
+     auf. Die Regel bleibt bewusst lokal; Tablet und Desktop behalten --bg-dark. */
+  html.home-theme-dark .site-footer {
+    background: #171916;
+  }
+
+  html.home-theme-dark .site-footer .footer-route {
+    text-shadow: none;
+  }
+
   html.home-theme-dark .site-footer .footer-navigation,
   html.home-theme-dark .site-footer .footer-coverage {
     display: none;
