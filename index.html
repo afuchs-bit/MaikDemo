@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260906l" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260909d" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260909e" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260908bq" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260909a" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -736,50 +736,7 @@ html.home-theme-dark body { background-color: #171916; }
     </h2>
   </div>
 
-  <!-- Block 2 - Mustergarten als Medienkachel (AP-217).
-       Direkt unter die Sektionsueberschrift verschoben, damit die Anlage zuerst
-       erlebbar wird und der persoenliche Beleg danach folgt.
-
-       Der randlose 100vw-Ausbruch aus AP-179 entfaellt: der Entwurf setzt das Video
-       in die Containerbreite, damit es dieselbe Flaeche und dasselbe Eck bekommt wie
-       die Karten der Leistungs- und Ablaufsektion.
-
-       AP-180/181 bleiben unangetastet: stumm, in Schleife, Start aus ueber-video.js,
-       preload="none", kein controls, pointer-events: none im CSS. Die bewusste
-       Abweichung von WCAG 2.2.2 (Bewegung laesst sich nicht anhalten) besteht
-       unveraendert fort - siehe docs/offene-punkte.md, AP-181.
-
-       Das poster-Attribut verhindert bis zum Ladeende ein schwarzes Band. Das
-       Standbild ist ein Einzelbild aus derselben Datei und zeigt die reale Anlage.
-
-       AP-246: Die Beschriftung "1.500 m² Mustergarten" ist auf Wunsch des
-       Auftraggebers entfallen. Die Blume entspricht exakt dem Ausschnitt, der
-       auch das Willkommenfoto und die mobile Galerievorschau signiert. -->
-  <div class="container mr-ueber__muster reveal">
-    <div class="mr-ueber__buehne">
-      <video class="mr-ueber__video" muted loop playsinline preload="none" tabindex="-1"
-             poster="assets/img/ueber/mustergarten-standbild-960.webp"
-             aria-label="Rundgang durch den Mustergarten">
-        <source src="assets/video/mustergarten.mp4" type="video/mp4">
-        <p>Ihr Browser kann dieses Video nicht abspielen.
-           <a href="assets/video/mustergarten.mp4">Video herunterladen</a>.</p>
-      </video>
-      <svg class="mr-ueber__brand" viewBox="0 0 210 180" width="210" height="180"
-           overflow="hidden" aria-hidden="true" focusable="false">
-        <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180" />
-      </svg>
-    </div>
-
-    <!-- AP-247: Der erklaerende Hauptsatz ist entfallen. Unter dem Video stehen
-         jetzt links die Groesse und der Ort, rechts der Besuchshinweis. -->
-    <div class="mr-ueber__mustertext">
-      <p class="mr-ueber__mustername">1.500 m² Mustergarten in Herne</p>
-      <p class="mr-ueber__hinweis">Besichtigungen nur nach Absprache – so können wir
-         uns nur Zeit für Sie nehmen.</p>
-    </div>
-  </div>
-
-  <!-- Block 3 - Wort und Beleg, getrennt durch die geneigte Kante (AP-217).
+  <!-- Block 2 - Wort und Beleg (AP-217, Reihenfolge AP-281).
        Loest das Raster aus AP-216 ab. Links die Aussage, rechts der Beleg dafuer.
 
        Der Leitsatz ist KEIN Zitat und traegt deshalb auch keine Anfuehrungszeichen:
@@ -871,6 +828,54 @@ html.home-theme-dark body { background-color: #171916; }
       </a>
     </div>
   </div>
+
+  <!-- Block 3 - Mustergarten als Medienkachel (AP-217, Reihenfolge AP-281).
+       Direkt unter die Sektionsueberschrift verschoben, damit die Anlage zuerst
+       erlebbar wird und der persoenliche Beleg danach folgt.
+
+       Der randlose 100vw-Ausbruch aus AP-179 entfaellt: der Entwurf setzt das Video
+       in die Containerbreite, damit es dieselbe Flaeche und dasselbe Eck bekommt wie
+       die Karten der Leistungs- und Ablaufsektion.
+
+       AP-180/181 bleiben unangetastet: stumm, in Schleife, Start aus ueber-video.js,
+       preload="none", kein controls, pointer-events: none im CSS. Die bewusste
+       Abweichung von WCAG 2.2.2 (Bewegung laesst sich nicht anhalten) besteht
+       unveraendert fort - siehe docs/offene-punkte.md, AP-181.
+
+       Das poster-Attribut verhindert bis zum Ladeende ein schwarzes Band. Das
+       Standbild ist ein Einzelbild aus derselben Datei und zeigt die reale Anlage.
+
+       AP-246: Die Beschriftung "1.500 m² Mustergarten" ist auf Wunsch des
+       Auftraggebers entfallen. Die Blume entspricht exakt dem Ausschnitt, der
+       auch das Willkommenfoto und die mobile Galerievorschau signiert. -->
+  <div class="container mr-ueber__muster reveal">
+    <div class="mr-ueber__buehne">
+      <video class="mr-ueber__video" muted loop playsinline preload="none" tabindex="-1"
+             poster="assets/img/ueber/mustergarten-standbild-960.webp"
+             aria-label="Rundgang durch den Mustergarten">
+        <source src="assets/video/mustergarten.mp4" type="video/mp4">
+        <p>Ihr Browser kann dieses Video nicht abspielen.
+           <a href="assets/video/mustergarten.mp4">Video herunterladen</a>.</p>
+      </video>
+      <svg class="mr-ueber__brand" viewBox="0 0 210 180" width="210" height="180"
+           overflow="hidden" aria-hidden="true" focusable="false">
+        <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180" />
+      </svg>
+    </div>
+
+    <!-- AP-247: Der erklaerende Hauptsatz ist entfallen. Unter dem Video stehen
+         jetzt links die Groesse und der Ort, rechts der Besuchshinweis. -->
+    <div class="mr-ueber__mustertext">
+      <p class="mr-ueber__mustername">1.500 m² Mustergarten in Herne</p>
+      <p class="mr-ueber__hinweis">Besichtigungen nur nach Absprache – so können wir
+         uns nur Zeit für Sie nehmen.</p>
+    </div>
+  </div>
+
+  <!-- AP-281: Trennlinie zwischen Mustergarten und Einsatzgebiet, wie in
+       Entwurf B. Ein echtes <hr>, kein dekoratives div: der Wechsel vom
+       Mustergarten zum Einsatzgebiet ist ein thematischer Schnitt. -->
+  <hr class="container mr-ueber__trenner">
 
   <!-- Block 4 - NRW-Karte, aus der Proof-Sektion hierher VERSCHOBEN.
        Nicht kopiert: die Karten-SVG fuehrt eigene IDs, unter anderem den Filter

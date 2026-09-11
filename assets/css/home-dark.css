@@ -2700,8 +2700,8 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
    Containerbreite. AP-246 gleicht die vier 16px-Ecken und die rechts unten
    ueberlappende Markenblume exakt an Willkommenfoto und Galerievorschau an. */
 html.home-theme-dark .mr-ueber__muster {
-  margin-top: 0;
-  margin-bottom: var(--space-section-compact);
+  margin-top: var(--space-section-compact);
+  margin-bottom: 0;
 }
 
 html.home-theme-dark .mr-ueber__buehne {
@@ -2805,7 +2805,7 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
 
 @media (max-width: 480px) {
   html.home-theme-dark .mr-ueber__muster {
-    margin-bottom: 28px;
+    margin-top: 28px;
   }
 
   html.home-theme-dark .mr-ueber__mustertext {
@@ -2831,6 +2831,17 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
    das Mustergartenband.
 
    Vier Kinder statt drei: der Eyebrow ist in AP-217 dazugekommen. */
+/* AP-281: Trennlinie vor dem Einsatzgebiet (Entwurf B). <hr> hat in styles.css
+   keine Basisregel, der Standardrahmen des Browsers muss also weg. Der Abstand
+   nach unten bleibt der Karte ueberlassen - benachbarte Aussenabstaende fallen
+   zusammen, sonst stuende hier der doppelte Wert. */
+html.home-theme-dark .mr-ueber__trenner {
+  height: 1px;
+  margin: var(--space-section-compact) 0 0;
+  border: 0;
+  background: var(--line);
+}
+
 html.home-theme-dark .mr-ueber__karte { margin-top: var(--space-section-compact); }
 
 html.home-theme-dark .mr-ueber__karte .proof-map {
