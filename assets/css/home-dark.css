@@ -2472,23 +2472,9 @@ html.home-theme-dark .mr-ueber__split {
 html.home-theme-dark .mr-ueber__wort,
 html.home-theme-dark .mr-ueber__beleg { min-width: 0; }
 
-/* Der Leitsatz. Displayschrift wie jede H2 der Seite, aber als Absatz gesetzt -
-   die Ueberschrift der Sektion ist "Ueber uns", nicht dieser Satz.
-   KEINE Anfuehrungszeichen: er ist kein Zitat und soll auch keines vortaeuschen. */
-html.home-theme-dark .mr-ueber__leitsatz {
-  margin: 0;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.5rem, 2.9vw, 2.5rem);
-  line-height: 1.16;
-  letter-spacing: -.01em;
-  color: var(--ink);
-}
-
-html.home-theme-dark .mr-ueber__leitsatz em {
-  font-style: normal;
-  color: var(--home-lime);
-}
+/* AP-285: Die beiden Regeln fuer .mr-ueber__leitsatz sind mit dem Satz
+   "Gartenbau mit Handschlagqualitaet." entfallen - die Klasse kommt im Repo
+   nirgends mehr vor. */
 
 /* AP-283: Der Absatz stand auf clamp(1.4375rem, 5.95vw, 1.5rem), also bei rund
    23-24px praktisch unabhaengig von der Breite - fast so gross wie der Leitsatz
