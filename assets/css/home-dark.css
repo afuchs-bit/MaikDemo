@@ -2665,8 +2665,35 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
 /* AP-250: Auf Handybreiten bleibt das Gartenfoto als ruhige 4:3-Kachel ohne
    die fruehere handschriftliche Bildnotiz und deren Hinweispfeil. */
 @media (max-width: 480px) {
+  /* AP-282: Foto und Button stehen auf Handybreiten nebeneinander statt
+     untereinander - je die halbe Spalte, gleich hoch. Die Spalte selbst wird
+     zum Raster, die beiden vorhandenen Kinder werden ihre Zellen; kein
+     zusaetzliches Markup noetig. Ueber 480px bleibt es gestapelt, weil dort
+     die handschriftliche Bildunterschrift unter dem Foto steht und die beiden
+     Kaesten ungleich hoch machen wuerde. */
+  html.home-theme-dark .mr-ueber__beleg {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    align-items: stretch;
+  }
+
   html.home-theme-dark .mr-ueber__mehr {
-    margin-top: 32px;
+    margin-top: 0;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  /* Neben "Mehr zu" passt das Logo in der halben Spalte nicht mehr: 156px Logo
+     plus 12px Fuge plus Text gegen rund 137px nutzbare Breite. Es rutscht
+     deshalb darunter. width statt height, damit es bei 320px Fensterbreite
+     mitschrumpft, statt die Zelle zu sprengen. Diese Regel steht bewusst nach
+     dem 420px-Block weiter oben - bei gleicher Spezifitaet gewinnt die
+     spaetere, sonst bliebe dort height: 44px stehen. */
+  html.home-theme-dark .mr-ueber__mehr-logo {
+    width: min(100%, 121px);
+    height: auto;
   }
 
   html.home-theme-dark .mr-ueber__paar {
