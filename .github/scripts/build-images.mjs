@@ -69,6 +69,13 @@ const SOURCES = [
   // KEIN crop: die Kachel ist am Desktop 21:9 und auf dem Telefon 4:3, den
   // Ausschnitt macht object-fit im CSS. Mehr als 960 px gibt die Quelle nicht her.
   { src: 'assets/img/_src/mustergarten-standbild.jpg', dir: 'assets/img/ueber', name: 'mustergarten-standbild', widths: [480, 960] },
+  // AP-280: Handschrift-Bildunterschrift der Ueber-uns-Sektion. Lag als 2,17-MB-PNG
+  // ungerechnet im Deploy und ist zweimal eingebunden (zwei SVGs zeigen per viewBox
+  // je die halbe Bildbreite). 1600 statt der ueblichen 480/960: das figcaption ist
+  // 360 CSS-px breit, jedes SVG zeigt rund die halbe Breite - bei DPR 2 werden also
+  // rund 1440 Geraetepixel ueber die volle Bildbreite gebraucht, 960 waere weich.
+  { src: 'assets/img/_src/feierabend-im-mustergarten.png', dir: 'assets/img/ueber',
+    name: 'feierabend-im-mustergarten', widths: [1600] },
   // Hochformat-Original (1440x1800, 4:5) fuer die Gewerbe-Tuer im Hero, die ein
   // liegendes Fenster von rund 3:2 ist. focusY 0.45 zeigt 21-74 % der Bildhoehe:
   // Strasse, Gebaeude und fremde Fahrzeuge fallen oben heraus, der Helm des
@@ -76,6 +83,8 @@ const SOURCES = [
   { src: 'assets/img/_src/baumarbeiten-gewerbe.jpg', dir: 'assets/img/hero', name: 'gate-gewerbe-baumarbeiten',
     widths: [480, 960, 1200], webpWidths: [480, 960],   // 1200er WebP sprengt mit dichtem Laub das 200-KB-Budget
     crop: { aspect: 3 / 2, focusY: 0.45 } },
+  // Rezertifizierungs-Bescheinigung LWK-Baumkontrolleur (AP-274), Quelle 1131x1600 (Portrait).
+  { src: 'assets/img/_src/zertifikat-lwk-baumkontrolleur.png', dir: 'assets/img/zertifikate', name: 'zertifikat-lwk-baumkontrolleur' },
 ];
 
 async function fileSize(p) {

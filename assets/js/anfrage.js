@@ -1,76 +1,24 @@
 // assets/js/anfrage.js
-// AP-F15 – Vorwahl vor dem Anfrageformular.
-//
-// Portiert aus der Vorlage anfrage.ts, reduziert auf das, was diese Bauform
-// braucht. Uebernommen: die generische Modus-Umschaltung ueber [data-anf-modus]
-// und die Wertuebernahme beim Wechsel. Nicht uebernommen: Schrittnavigation
-// (die traegt der bestehende Assistent), Pflichtfeldpruefung (es gibt keine
-// Pflichtfelder) und der fetch-Versand (es gibt keinen Endpunkt).
-//
-// WICHTIG – Unterschied zur Vorlage: Kurzformular und Assistent sind zwei
-// getrennte <form>-Elemente. Die Vorlage deaktiviert die Felder des inaktiven
-// Modus, damit sie nicht im selben Formular mitgesendet werden; getrennte
-// Formulare senden ohnehin nur ihre eigenen Felder. Deshalb wird hier NICHT
-// pauschal disabled gesetzt: der Assistent verwaltet seinen eigenen
-// disabled-Zustand (Akutpfad), und ein Massen-disabled darueber wuerde genau
-// den Fehler erzeugen, vor dem die Vorlage warnt – die Anfrage sieht im
-// Browser vollstaendig aus und kaeme halb leer an.
+// Kurzanfrage auf der Startseite. Es gibt bewusst keine Auswahl mehr zwischen
+// kurzem Formular und Assistent: Das kurze Formular ist der einzige sichtbare
+// und erreichbare Anfrageweg.
 
 (() => {
   'use strict';
 
-  const vorwahl = document.querySelector('[data-anf-vorwahl]');
-  if (!vorwahl) return;
-
-  const bereiche = Array.from(document.querySelectorAll('[data-anf-modus]'));
-  if (!bereiche.length) return;
-
   const kurzForm = document.querySelector('form[data-anf-form]');
+  if (!kurzForm) return;
 
-  // Felder, die beim Moduswechsel mitwandern. Der Abgleich ist ein reiner
-  // Namensvergleich – nicht geraten, im Markup nachgesehen.
-  //
-  // AP-F23: 'ort' gibt es seit dem Entschlacken NUR NOCH IM ASSISTENTEN; im
-  // Kurzformular wird der Ort im Freitext erfragt ("… was ist zu tun, und wo?").
-  // Der Eintrag bleibt trotzdem stehen: werteUebernehmen prueft beide Seiten auf
-  // null und laeuft dann einfach ins Leere. Kommt das Feld je zurueck, wandert der
-  // Wert sofort wieder mit, ohne dass jemand daran denken muss.
-  const UEBERNAHME = ['name', 'email', 'telefon', 'ort'];
-
-  let aktuell = null;
-
-  function werteUebernehmen(vonEl, nachEl) {
-    if (!vonEl || !nachEl) return;
-    UEBERNAHME.forEach((feldname) => {
-      const quelle = vonEl.querySelector(`[name="${feldname}"]`);
-      const ziel = nachEl.querySelector(`[name="${feldname}"]`);
-      if (!quelle || !ziel) return;
-      if (!quelle.value) return;
-      if (ziel.value) return;          // Bereits Eingetipptes nicht ueberschreiben.
-      ziel.value = quelle.value;
-    });
-  }
-
-  function setzeModus(modus, opt = {}) {
-    const vorher = aktuell;
-    const vonEl = vorher ? bereiche.find((el) => el.dataset.anfModus === vorher) : null;
-    const nachEl = bereiche.find((el) => el.dataset.anfModus === modus);
-    if (!nachEl) return;
-
-    if (opt.uebernehmen !== false && vorher && vorher !== modus) {
-      werteUebernehmen(vonEl, nachEl);
+  document.querySelectorAll('[data-anf-modus]').forEach((bereich) => {
+    const istKurz = bereich === kurzForm;
+    bereich.hidden = !istKurz;
+    if (istKurz) {
+      bereich.removeAttribute('inert');
+      bereich.removeAttribute('aria-hidden');
+    } else {
+      bereich.setAttribute('inert', '');
+      bereich.setAttribute('aria-hidden', 'true');
     }
-
-    bereiche.forEach((el) => { el.hidden = el.dataset.anfModus !== modus; });
-    aktuell = modus;
-
-    const radio = vorwahl.querySelector(`input[name="_vorwahl"][value="${modus}"]`);
-    if (radio && !radio.checked) radio.checked = true;
-  }
-
-  vorwahl.addEventListener('change', (ev) => {
-    const radio = ev.target;
-    if (radio && radio.name === '_vorwahl' && radio.checked) setzeModus(radio.value);
   });
 
   // --- Zeitstempel fuer die spaetere serverseitige Zeitfalle ---
@@ -103,9 +51,8 @@
   }
 
   // --- AP-246: Chips und Freitextfeld im Kurzformular ---
-  // Beruehrt setzeModus() und werteUebernehmen() nicht. Ohne JavaScript bleiben
-  // die Chips sichtbar, aber wirkungslos, und das Freitextfeld bleibt zu - die
-  // uebrigen Angaben sind trotzdem absendbar.
+  // Ohne JavaScript bleiben die Chips sichtbar, aber wirkungslos, und das
+  // Freitextfeld bleibt zu - die uebrigen Angaben sind trotzdem absendbar.
   const chipGruppe = kurzForm ? kurzForm.querySelector('[data-anf-chips]') : null;
   const themenFeld = kurzForm ? kurzForm.querySelector('[data-anf-themen]') : null;
   const mehrKnopf = kurzForm ? kurzForm.querySelector('[data-anf-mehr]') : null;
@@ -150,12 +97,4 @@
     });
   }
 
-  // --- Startzustand: immer "kurz" ---
-  setzeModus('kurz', { uebernehmen: false });
-
-  // --- Deep-Links oeffnen den Assistenten ---
-  // Wer aus einer Leistungsseite oder der Galerie mit ?pfad= oder ?leistung=
-  // kommt, hat den Kontext schon. Die Vorwahl bleibt sichtbar und umschaltbar.
-  const params = new URLSearchParams(location.search);
-  if (params.has('pfad') || params.has('leistung')) setzeModus('detail', { uebernehmen: false });
 })();

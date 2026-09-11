@@ -1,8 +1,8 @@
-// AP-208: Einzelne, nativ wischbare Rezensionen für iPhone 15 Pro und 16 Pro.
+// AP-208: Einzelne, nativ wischbare Rezensionen für alle schmalen Hochformate.
 (() => {
   'use strict';
 
-  const iphoneProof = window.matchMedia('(min-width: 390px) and (max-width: 404px) and (orientation: portrait)');
+  const iphoneProof = window.matchMedia('(max-width: 480px) and (orientation: portrait)');
   if (!iphoneProof.matches) return;
 
   const carousel = document.querySelector('[data-review-pair-rotator]');

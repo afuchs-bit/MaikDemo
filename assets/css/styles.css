@@ -1463,8 +1463,11 @@ p  { margin: 0; }
 .site-footer a { color: rgba(255,255,255,.86); text-decoration: none; }
 .footer-route {
   width: fit-content;
-  color: #dbe9bd !important;
+  color: var(--coral) !important;
   font-weight: 750;
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, .28),
+    0 0 9px rgba(255, 255, 255, .12);
 }
 .footer-navigation {
   min-width: 0;
@@ -2372,7 +2375,7 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
    Ausklappen der Safari-Adressleiste erzeugt keinen Sprung im Layout.
    --node-start und --travel setzt main.js aus den gemessenen Knoten-
    mittelpunkten: nur so startet der Marker exakt auf Station 1 und endet
-   exakt auf Station 4, statt ueber die Sektionsgrenzen hinauszuschiessen.
+   exakt auf der letzten Station, statt ueber die Sektionsgrenzen hinauszuschiessen.
    Ohne JS und bei prefers-reduced-motion fehlt die Klasse – dann bleibt
    der statische Zeitstrahl der Basis vollstaendig sichtbar. */
 

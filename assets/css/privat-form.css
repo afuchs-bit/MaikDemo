@@ -3014,14 +3014,46 @@
 .private-process-updated .process-marker__flower {
   display: none;
 }
+.private-process-updated .process-contact-cta__flower {
+  display: none;
+}
+.private-process-updated .process-contact-cta__arrow-image {
+  display: none;
+}
 .private-process-updated .step-node__number {
   display: none;
 }
 
 /* Die individuelle Buttonform wird ausserhalb der beiden freigegebenen
    iPhone-Ansichten ausgeblendet; dort bleibt der bestehende Desktop-CTA. */
-.private-process-updated .process-contact-cta__shape {
+.private-process-updated .process-contact-cta__shape,
+.private-process-updated .process-contact-cta__frame {
   display: none;
+}
+
+/* AP-290: Ausserhalb der iPhone-Ansicht ist der Ablauf-CTA die Desktop-Pill.
+   Chip, Puls und Einrast-Bewegung aus mobile-social-proof.css gehoeren dort
+   nicht hin; der Pfeil bleibt ein schlichtes Zeichen in Textfarbe. */
+@media (min-width: 481px) {
+  .private-process-updated .process-contact-cta::before {
+    content: none;
+  }
+  .private-process-updated .process-contact-cta .mobile-proof-request__arrow {
+    width: auto;
+    height: auto;
+    margin-left: 0;
+    border-radius: 0;
+    background: none;
+    color: inherit;
+  }
+  .private-process-updated .process-contact-cta .mobile-proof-request__arrow svg {
+    width: 1.1em;
+    height: 1.1em;
+  }
+  .private-process-updated .process-contact-cta :is(.mobile-proof-request__label, .mobile-proof-request__arrow, .mobile-proof-request__arrow svg) {
+    transform: none;
+    animation: none;
+  }
 }
 
 @media (min-width:1024px) and (hover:hover) {
@@ -3158,26 +3190,26 @@
 }
 
 /* Projektablauf mit Bildführung für die freigegebenen iPhone-Ansichten. */
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+@media (max-width: 480px) {
   /* Exakt dieselbe asymmetrische CTA-Form wie "Zum Kontaktformular". */
   .private-process-updated .b2b-process-end-actions .process-contact-cta {
     position: relative;
     isolation: isolate;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     max-width: none;
     min-height: 64px;
     margin: 0 auto;
-    padding: 7px 22px;
+    padding: 7px 10px 7px 22px;
     border: 0;
     border-radius: 14px;
     color: #171916;
     background: transparent;
     box-shadow: none;
     font: 800 clamp(1.05rem,4.58vw,1.125rem)/1.25 var(--display);
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     white-space: normal;
   }
@@ -3190,13 +3222,95 @@
     transform: none;
   }
 
-  .private-process-updated .process-contact-cta__shape {
+  .private-process-updated .process-contact-cta__shape,
+  .private-process-updated .process-contact-cta__frame {
     display: block;
   }
 
   .private-process-updated .process-contact-cta:focus-visible {
     outline: 2px solid var(--home-focus);
-    outline-offset: 5px;
+    outline-offset: 9px;
+  }
+
+  /* Handschriftlicher Markenstil wie bei den Qualifikationen. Auf dem hellen
+     CTA bleibt der Text bewusst ohne deren Leuchtschatten klar und ruhig. */
+  .private-process-updated .process-contact-cta .mobile-proof-request__label {
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: clamp(.98rem, 4.25vw, 1.0625rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Das breite Originalmotiv bekommt statt eines Kreises eine flache Kapsel.
+     Die Markenfarbe des PNG bleibt unveraendert.
+
+     AP-294: Die Kapsel rueckt 12px nach links. Mit 62px Breite und nur den
+     10px Innenabstand des Buttons sass ihre obere rechte Ecke exakt auf der
+     Schraege der Lasche - gemessen 0,0px Luft. Jetzt 22px vom Buttonrand und
+     5,1px unter der Schraege. Der Wert gilt nur fuer diesen CTA; die beiden
+     runden 40px-Chips der anderen zwei bleiben, wo sie sind. */
+  .private-process-updated .process-contact-cta .mobile-proof-request__arrow {
+    width: 62px;
+    height: 40px;
+    margin-right: 12px;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .16);
+  }
+
+  .private-process-updated .process-contact-cta__arrow-default {
+    display: none;
+  }
+
+  .private-process-updated .process-contact-cta__arrow-image {
+    display: block;
+    width: 46px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Am Ende des vorhandenen Zeitstrahls wechselt die Markenblume in den CTA.
+     Sie ist absolut platziert, damit nur der Text nach rechts gleitet und die
+     Buttonform sowie der Pfeil unverrueckt bleiben. */
+  .private-process-updated .process-contact-cta__flower {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    z-index: 2;
+    display: block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) scale(.82);
+    pointer-events: none;
+  }
+
+  .private-process-updated .process-contact-cta .mobile-proof-request__label {
+    transition: transform .28s var(--ease);
+  }
+
+  .private-process-updated.is-process-complete .process-marker {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta__flower {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta .mobile-proof-request__label {
+    transform: translateX(38px);
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta:is(:active, .is-pressed) .mobile-proof-request__label {
+    transform: translate(44px, 6px);
   }
 
   .private-process-updated .process-marker__leaf {
@@ -3264,6 +3378,12 @@
   .private-process-updated .step-card p {
     font-size: .9rem;
     line-height: 1.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .private-process-updated .process-contact-cta .mobile-proof-request__label {
+      transition: none;
+    }
   }
 }
 
@@ -3358,6 +3478,10 @@
   letter-spacing: .08em;
   line-height: 1;
   white-space: nowrap;
+  text-shadow:
+    0 0 4px rgba(255, 191, 36, .9),
+    0 0 10px rgba(255, 191, 36, .6),
+    0 0 20px rgba(255, 191, 36, .35);
 }
 .private-proof-rating > strong {
   color: #fff;
@@ -3404,7 +3528,7 @@
   .private-proof-summary h3 { max-width: 15ch; }
 }
 
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+@media (max-width: 480px) {
   .private-proof-bento .private-proof-summary { display: none; }
   .private-proof-bento .private-proof-grid { gap: 0; }
 }
@@ -4587,11 +4711,11 @@
   }
 
   .iphone-service-contact-cta {
-    justify-content: center;
+    justify-content: space-between;
     max-width: none;
     min-height: 4rem;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
   }
 
   .iphone-service-feature:focus-visible,
@@ -4634,7 +4758,7 @@
 
 /* AP-208: Auf iPhone 15 Pro und 16 Pro erscheint immer genau eine Rezension.
    Die horizontale Wischbewegung folgt der mobilen Gartenbild-Vorschau. */
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+@media (max-width: 480px) {
   .private-review-carousel.has-review-swipe {
     --ink: #f4f6f0;
     --ink-2: #d5dccf;
@@ -4656,6 +4780,10 @@
     padding: 17px 18px 16px;
     border-bottom-color: rgba(182,217,122,.14);
     background: linear-gradient(135deg,rgba(43,53,39,.98),rgba(31,37,30,.92));
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-google-mark strong {
+    color: #fff;
   }
 
   .private-review-carousel.has-review-swipe .private-review-viewport {
@@ -4803,15 +4931,15 @@
     width: 7px;
     height: 7px;
     border-radius: 999px;
-    background: rgba(244,246,240,.28);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+    background: rgba(182,217,122,.32);
+    box-shadow: inset 0 0 0 1px #fff;
     transition: width .2s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease);
   }
 
   .private-review-swipe-dots button[aria-current="true"] > span {
     width: 22px;
-    background: #8cc63f;
-    box-shadow: 0 0 0 1px rgba(182,217,122,.14);
+    background: var(--green-500);
+    box-shadow: inset 0 0 0 1px #fff;
   }
 
   .private-review-swipe-dots button:focus-visible {
@@ -4821,7 +4949,7 @@
   }
 }
 
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) and (prefers-reduced-motion:reduce) {
+@media (max-width: 480px) and (prefers-reduced-motion: reduce) {
   .private-review-carousel.has-review-swipe .private-review-viewport {
     scroll-behavior: auto;
   }
@@ -4833,10 +4961,29 @@
 
 /* AP-209: Die beiden bereits freigegebenen Hintergrundtöne aus Willkommen
    (#1B1E19) und Über uns (#171916) führen als ruhiger Rhythmus durch die
-   vollständige iPhone-Seite. Inhaltlich verbundene Bereiche teilen eine Fläche. */
-@media (min-width:390px) and (max-width:404px) and (orientation:portrait) {
+   vollständige iPhone-Seite. Inhaltlich verbundene Bereiche teilen eine Fläche.
+   AP-289: Der Grundton der Seite ist seither #1B1E19 - siehe Regel unten. */
+.private-process-updated .step-card__copy--iphone {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  /* AP-289: Grundton auf den Ton der FAQ-Sektion. Die FAQ steht direkt ueber
+     dem Footer; damit laeuft ihre Flaeche ohne Kante hinter der Footer-Kachel
+     weiter. Die Kachel selbst bleibt var(--bg-dark) = #0E100D (AP-287).
+     Bewusst auch html und nicht nur body: der Streifen UNTER der Kachel haengt
+     an html - die 12px margin-bottom des Footers fallen aus dem Body-Kasten
+     heraus (Margin Collapsing), body endet an der Kachelunterkante.
+     Sichtbar ist dieser Grundton ausschliesslich in den drei Streifen um die
+     Kachel - main laeuft lueckenlos, alle acht Sektionen darin sind randbuendig
+     und haben eine eigene Hintergrundfarbe. */
+  html.home-theme-dark,
   html.home-theme-dark body {
-    background: #171916;
+    background: #1b1e19;
+  }
+
+  html.home-theme-dark .private-contact::before {
+    display: none;
   }
 
   html.home-theme-dark :is(
@@ -4848,23 +4995,31 @@
     background: #1b1e19;
   }
 
+  /* AP-287: .site-footer gehoert NICHT in diese Gruppe. Er ist kein Abschnitt
+     des Seiteninhalts, sondern der Seitenfuss - und als einziges Element der
+     Mobilansicht eingerueckt (12px) und gerundet (24px, styles.css:1652). Mit
+     #171916 haette er exakt die Farbe der Seite dahinter, die Kachel waere
+     unsichtbar. Er behaelt deshalb var(--bg-dark) = #0E100D, wie auf allen
+     37 Unterseiten. */
   html.home-theme-dark :is(
     .mr-ueber,
     .private-process-updated,
-    .private-contact,
-    .site-footer
+    .private-contact
   ) {
     background: #171916;
   }
 
+  /* AP-287: ebenfalls ohne .site-footer. Auf einer gerundeten Kachel zeichnet
+     eine inset-Linie einen schwachen Bogen ueber die oberen Ecken - derselbe
+     Grund, aus dem styles.css:1645 dort schon den border-top abschaltet.
+     Die Unterseiten haben box-shadow: none. */
   html.home-theme-dark :is(
     .mr-ueber,
     .private-request-paths,
     .private-process-updated,
     .private-proof-bento,
     .private-contact,
-    .private-faq,
-    .site-footer
+    .private-faq
   ) {
     border-color: rgba(151,206,32,.075);
     box-shadow: inset 0 1px 0 rgba(151,206,32,.045);
@@ -4872,7 +5027,7 @@
 
   html.home-theme-dark .private-process-updated .step-card h3 {
     margin-bottom: 8px;
-    color: var(--home-yellow);
+    color: var(--mobile-logo-green);
     font-family: "Comic Sans MS","Comic Sans","Chalkboard SE",cursive;
     font-size: 1.0625rem;
     font-style: italic;
@@ -4884,6 +5039,14 @@
     opacity: .9;
     text-shadow:
       1px 1px 0 #315200,
-      0 0 7px rgba(242,226,12,.16);
+      0 0 7px rgba(86,230,7,.16);
+  }
+
+  html.home-theme-dark .private-process-updated .step-card__copy--default {
+    display: none;
+  }
+
+  html.home-theme-dark .private-process-updated .step-card__copy--iphone {
+    display: inline;
   }
 }
