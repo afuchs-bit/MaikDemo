@@ -1190,3 +1190,61 @@ Radius 0.
 Bei 481 px und 720 px bleibt es bei der Kachel — dort hatte die 480er-Regel ohnehin nie
 gegriffen, der Footer war also schon vorher dunkler abgesetzt. Ab 721 px läuft er wie bisher
 randbündig ohne Radius.
+
+---
+
+## AP-289 — Grund hinter der Footer-Kachel auf den FAQ-Ton
+
+Nachtrag zu AP-287. Die Footer-Kachel war danach sichtbar schwarz (`#0E100D`), der 12 px
+breite Streifen um sie herum trug aber die Seitenfarbe `#171916` — während die Sektion
+**direkt darüber** die FAQ mit `#1b1e19` ist. An der Oberkante der Kachel entstand dadurch
+eine Kante.
+
+Auf Wunsch des Auftraggebers bleibt die Kachel schwarz, der Grund um sie herum bekommt den
+Ton der FAQ-Sektion. Aus drei gemessenen Kandidaten gewählt: **`#1b1e19`** (die Fläche der
+FAQ-Sektion), nicht das Marken-Grün `#8CC63F` und nicht der FAQ-Kachelton `#232A1C`.
+
+### Wer den Streifen malt — gemessen bei 390 px
+
+| Bereich | Dokumentposition | gemalt von |
+|---|---|---|
+| links und rechts der Kachel | 0 … 13826 | `body` |
+| **unter** der Kachel | 13826 … 13838 | `html` |
+
+Der untere Streifen hängt an `html`, nicht an `body`: die 12 px `margin-bottom` des Footers
+fallen durch Margin Collapsing aus dem Body-Kasten heraus, `body` endet an der
+Kachelunterkante. Eine Regel nur auf `body` hätte den unteren Streifen stehen lassen — das
+war der Punkt, an dem die Änderung beinahe halb fertig geworden wäre.
+
+### Warum der Grundton und kein Rahmen am Footer
+
+Gegenprobe im Browser: `html` und `body` versuchsweise auf Magenta gesetzt und die Seite
+abgefahren. Magenta erschien **ausschließlich** in den drei Streifen um die Footer-Kachel.
+`<main>` läuft lückenlos von 0 bis 13351, alle acht Sektionen darin sind randbündig und
+haben eine eigene Hintergrundfarbe — keine senkrechte Lücke, keine seitliche Einrückung
+außer beim Footer. Der Grundton ist damit gleichbedeutend mit „der Streifen", nur ohne
+zusätzlichen Mechanismus.
+
+Ein `box-shadow` am Footer wäre enger gefasst gewesen, hätte aber an den vier Ecken der
+Kachel kleine Bögen der alten Farbe stehen lassen (Außenradius 24 + 12 = 36 px).
+
+### Umgesetzt
+
+[privat-form.css:5077](../assets/css/privat-form.css:5077), im bestehenden
+`@media (max-width: 480px)`-Block: `html.home-theme-dark` neben `html.home-theme-dark body`,
+beide auf `#1b1e19`. Derselbe Selektor steht im Inline-`<style>` in `index.html:8`; die
+Regel aus `privat-form.css` steht in der Dokumentreihenfolge dahinter und gewinnt (über die
+CSSOM-Trefferliste geprüft: vier passende Regeln, `privat-form.css` als letzte).
+
+Der AP-209-Kommentar über dem Block nennt `#171916` als Grundton — er ist um einen Hinweis
+auf die Änderung ergänzt, sonst widerspricht er der Regel darunter.
+
+### Gemessen (390 px)
+
+`html` und `body` beide `rgb(27, 30, 25)`, identisch mit `.private-faq`. Kachel unverändert
+`rgb(14, 16, 13)`, 12 px eingerückt, 366 px breit, Radius 24 px, `box-shadow: none`. Die
+übrigen Sektionen unverändert bei `rgb(23, 25, 22)`. Kein waagerechter Überlauf.
+
+Bei 481 px und 1440 px bleibt der Grundton `rgb(23, 25, 22)` — die Regel gilt nur bis
+480 px, und oberhalb hat die FAQ-Sektion ohnehin nicht `#1b1e19`. `/kontakt/` bei 390 px
+unverändert.

@@ -5072,10 +5072,21 @@
 
 /* AP-209: Die beiden bereits freigegebenen Hintergrundtöne aus Willkommen
    (#1B1E19) und Über uns (#171916) führen als ruhiger Rhythmus durch die
-   vollständige iPhone-Seite. Inhaltlich verbundene Bereiche teilen eine Fläche. */
+   vollständige iPhone-Seite. Inhaltlich verbundene Bereiche teilen eine Fläche.
+   AP-289: Der Grundton der Seite ist seither #1B1E19 - siehe Regel unten. */
 @media (max-width: 480px) {
+  /* AP-289: Grundton auf den Ton der FAQ-Sektion. Die FAQ steht direkt ueber
+     dem Footer; damit laeuft ihre Flaeche ohne Kante hinter der Footer-Kachel
+     weiter. Die Kachel selbst bleibt var(--bg-dark) = #0E100D (AP-287).
+     Bewusst auch html und nicht nur body: der Streifen UNTER der Kachel haengt
+     an html - die 12px margin-bottom des Footers fallen aus dem Body-Kasten
+     heraus (Margin Collapsing), body endet an der Kachelunterkante.
+     Sichtbar ist dieser Grundton ausschliesslich in den drei Streifen um die
+     Kachel - main laeuft lueckenlos, alle acht Sektionen darin sind randbuendig
+     und haben eine eigene Hintergrundfarbe. */
+  html.home-theme-dark,
   html.home-theme-dark body {
-    background: #171916;
+    background: #1b1e19;
   }
 
   html.home-theme-dark :is(
