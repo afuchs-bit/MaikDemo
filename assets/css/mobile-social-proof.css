@@ -16,6 +16,13 @@
   stroke-linejoin: round;
 }
 
+/* AP-295: Das Pfeilmotiv steht im Markup aller drei CTAs, sichtbar wird es
+   erst unter 481px. Ohne diese Grundregel stuende das 1883px breite PNG in
+   Breiten ohne Mobilregeln in Originalgroesse im Button. */
+.mobile-proof-request__arrow-bild {
+  display: none;
+}
+
 .mobile-proof-request__frame {
   display: none;
 }
@@ -622,7 +629,7 @@
   /* Der Pfeil geht bei jedem Pulsschlag einmal nach rechts - so zeigt er
      auch ohne Hover, wohin es geht. Gleicher Takt und gleiche Anzahl wie
      der Puls, danach steht er still (WCAG 2.2.2). */
-  .mobile-proof-request.is-pulsing .mobile-proof-request__arrow svg {
+  .mobile-proof-request.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
     animation: mobile-proof-request-arrow 1.4s var(--ease) .2s 3;
   }
 
@@ -651,7 +658,7 @@
       transform: translate(2px, 2px);
     }
 
-    .mobile-proof-request:hover .mobile-proof-request__arrow svg {
+    .mobile-proof-request:hover .mobile-proof-request__arrow :is(svg, img) {
       transform: translateX(3px);
     }
   }
@@ -665,12 +672,12 @@
     transform: translate(6px, 6px);
   }
 
-  .mobile-proof-request:is(:active, .is-pressed) .mobile-proof-request__arrow svg {
+  .mobile-proof-request:is(:active, .is-pressed) .mobile-proof-request__arrow :is(svg, img) {
     transform: translateX(4px);
   }
 
   .mobile-proof-request.is-pressed::before,
-  .mobile-proof-request.is-pressed .mobile-proof-request__arrow svg {
+  .mobile-proof-request.is-pressed .mobile-proof-request__arrow :is(svg, img) {
     animation: none;
   }
 
@@ -688,7 +695,7 @@
     }
 
     .mobile-proof-request.is-pulsing::before,
-    .mobile-proof-request.is-pulsing .mobile-proof-request__arrow svg {
+    .mobile-proof-request.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
       animation: none;
     }
   }
@@ -815,5 +822,47 @@
 
   .mobile-proof-request {
     margin-top: 52px;
+  }
+
+  /* AP-295: Gestaltung des Ablauf-CTAs auf die anderen beiden uebertragen -
+     Handschrift-Label und das Pfeilmotiv in der flachen Kapsel. Die Vorlage
+     steht in privat-form.css am .process-contact-cta (dort aus e99b93b); die
+     Werte sind absichtlich dieselben, damit die drei nicht auseinanderlaufen.
+
+     Was bewusst NICHT mitkommt: die Markenblume links. Sie ist die Pointe des
+     Zeitstrahls - sie wandert dort in den CTA und erscheint erst mit
+     .is-process-complete. Ausserhalb des Ablaufs hat sie keinen Anlass.
+
+     Nur bis 480px, wie der Ablauf-CTA: ab 481px bleibt es bei der bisherigen
+     Darstellung. */
+  .mobile-proof-request__label {
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: clamp(.9rem, 4.25vw, 1.0625rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+  }
+
+  .mobile-proof-request__arrow {
+    width: 62px;
+    height: 40px;
+    margin-right: 12px;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .16);
+  }
+
+  /* Das gezeichnete Motiv ersetzt das SVG-Zeichen. Beide bleiben im Markup:
+     ueber 480px und ohne Bilder ist das SVG weiter das sichtbare Zeichen. */
+  .mobile-proof-request__arrow svg {
+    display: none;
+  }
+
+  .mobile-proof-request__arrow-bild {
+    display: block;
+    width: 46px;
+    height: auto;
+    object-fit: contain;
   }
 }

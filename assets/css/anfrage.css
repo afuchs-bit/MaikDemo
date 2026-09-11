@@ -123,6 +123,14 @@
   z-index: 1;
 }
 
+/* AP-295: Pfeilkapsel wie bei den drei Kontakt-CTAs. Sie erscheint nur in der
+   Handy-Ansicht; ohne diese Grundregel stuende das 1883px breite PNG in allen
+   anderen Breiten in Originalgroesse im Button. */
+[data-anf-senden] .anf-senden__arrow,
+[data-anf-senden] .anf-senden__frame {
+  display: none;
+}
+
 [data-anf-senden] .anf-senden__shape {
   position: absolute;
   inset: 0;
@@ -694,6 +702,77 @@
 
   .private-contact [data-anf-senden] .anf-senden__shape {
     display: block;
+  }
+
+  /* AP-295: Gestaltung des Ablauf-CTAs uebernommen. Der Button behaelt seine
+     Laschenform, Breite und Hoehe; dazu kommen Handschrift-Label und das
+     Pfeilmotiv in der Kapsel. Die Werte sind dieselben wie in
+     mobile-social-proof.css, damit die vier Knoepfe nicht auseinanderlaufen.
+     Der Innenabstand wird rechts auf 10px gezogen, damit die Kapsel denselben
+     Abstand zur Lasche hat wie dort. */
+  .private-contact [data-anf-senden] {
+    justify-content: space-between;
+    padding: 7px 10px 7px 22px;
+  }
+
+  .private-contact [data-anf-senden] .anf-senden__label {
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: clamp(.9rem, 4.25vw, 1.0625rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+  }
+
+  .private-contact [data-anf-senden] .anf-senden__arrow {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 40px;
+    margin-right: 12px;
+    border-radius: 999px;
+    background: #171916;
+    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .16);
+    transition: transform .12s var(--ease);
+  }
+
+  .private-contact [data-anf-senden] .anf-senden__arrow-bild {
+    display: block;
+    width: 46px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Versetzter Rahmen wie bei den drei CTAs; Werte gespiegelt aus
+     mobile-social-proof.css. Der Knopf hat isolation: isolate, der Stapel ist
+     also lokal - die Flaeche liegt auf -1, der Rahmen muss dahinter.
+     .private-contact klemmt mit overflow: clip bei x=390, der Knopf endet bei
+     370: die 6px Versatz landen bei 376 und bleiben drin. Kein Eingriff an
+     einem overflow noetig. */
+  .private-contact [data-anf-senden] .anf-senden__frame {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: var(--home-lime);
+    stroke-width: 1.5px;
+    transform: translate(6px, 6px);
+    pointer-events: none;
+  }
+
+  /* Der Knopf rastet beim Tippen genauso ein wie die CTAs: Flaeche, Label und
+     Kapsel wandern in die Form, der Rahmen gibt es hier nicht. */
+  .private-contact [data-anf-senden]:active :is(.anf-senden__label, .anf-senden__arrow) {
+    transform: translate(2px, 2px);
   }
 
   .private-contact [data-anf-senden]:active {
