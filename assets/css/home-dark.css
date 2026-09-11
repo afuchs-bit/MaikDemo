@@ -2537,11 +2537,15 @@ html.home-theme-dark .mr-ueber__mehr {
      Kanten. justify-content: center, weil der Inhalt sonst bei 566px Desktop-
      breite links klebt. align-self: start ist entfallen - im Block-Kontext
      dieser Spalte hatte es ohnehin keine Wirkung. */
+  /* AP-288: Aus der einen Zeile "Mehr zu + Logo" sind drei gestapelte Zeilen
+     geworden - Titel mit Pfeil, Unterzeile, Blume. Deshalb column statt row
+     und eine engere Fuge. */
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
   min-height: 68px;
   padding: 10px 26px;
   color: var(--ink);
@@ -2549,23 +2553,52 @@ html.home-theme-dark .mr-ueber__mehr {
   font-weight: 800;
   font-size: 1.05rem;
   line-height: 1.2;
+  text-align: center;
   text-decoration: none;
 }
 
-html.home-theme-dark .mr-ueber__mehr-text {
+html.home-theme-dark .mr-ueber__mehr-titel {
   flex: none;
 }
 
+/* Der Pfeil steht INNERHALB des Titel-Spans, damit er beim Umbruch der letzten
+   Zeile folgt statt allein in einer eigenen zu landen. Ruhig mit leichtem
+   Nachruecken beim Mauszeiger - wie die uebrigen Verweis-Pfeile der Seite und
+   bewusst nicht der pulsierende Pfeil der Haupt-CTAs (AP-270): dieser Button
+   ist ein Nebenweg, siehe Kommentar oben. */
+html.home-theme-dark .mr-ueber__mehr-pfeil {
+  display: inline-block;
+  margin-left: .45em;
+  transition: transform .18s var(--ease);
+}
+
+html.home-theme-dark .mr-ueber__mehr-sub {
+  flex: none;
+  color: var(--ink-mute);
+  font-size: .8rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Seit AP-288 ein SVG statt eines <img>: der viewBox-Ausschnitt zeigt nur den
+   Bluetenstrauss des Logos. overflow: hidden haelt den abgeschnittenen
+   Schriftzug draussen - ohne das wuerde das ganze 640px-Bild gemalt. */
 html.home-theme-dark .mr-ueber__mehr-logo {
   flex: none;
-  height: 52px;
+  display: block;
   width: auto;
+  height: 46px;
+  overflow: hidden;
 }
 
 @media (hover: hover) and (pointer: fine) {
   html.home-theme-dark .mr-ueber__mehr:hover {
     background-color: rgba(182, 217, 122, .12);
     box-shadow: inset 0 0 0 1.5px var(--home-lime);
+  }
+
+  html.home-theme-dark .mr-ueber__mehr:hover .mr-ueber__mehr-pfeil {
+    transform: translateX(2px);
   }
 }
 

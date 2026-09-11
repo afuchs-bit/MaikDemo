@@ -1138,3 +1138,55 @@ Der Footer einer Seite ist **generierter Inhalt**. Änderungen daran gehören in
 plus, wenn sie nur eine Seite betreffen, in einen Platzhalter mit Fallunterscheidung in
 `footerTemplateData`. Ein Handstand in der HTML-Datei hält bis zum nächsten Push auf
 `content/**`.
+
+---
+
+## AP-287 — Footer auf dem Handy wieder als eigene Kachel
+
+Auftrag: der Footer soll auf dem Handy als einzelne, abgerundete Kachel stehen.
+
+**Beim Nachmessen zeigte sich: die Kachel gab es bereits — sie war nur unsichtbar.**
+`styles.css:1652` gibt dem Footer bis 720 px `margin: 0 12px …` und `border-radius: 24px`,
+auf allen Seiten. Auf der Startseite hatte er aber exakt die Farbe der Seite dahinter.
+
+| bei 390 px | Startseite vorher | Unterseite `/kontakt/` |
+|---|---|---|
+| Footer-Hintergrund | `#171916` | `#0E100D` |
+| Seiten-Hintergrund | `#171916` | `#171916` |
+| Abstand / Radius | 12 px / 24 px | 12 px / 24 px |
+| box-shadow | inset 1 px | keine |
+
+### Ursache
+
+[privat-form.css:5093](../assets/css/privat-form.css:5093), innerhalb
+`@media (max-width: 480px)`. Der Block vereinheitlicht bewusst die Flächen zusammengehöriger
+Abschnitte („Inhaltlich verbundene Bereiche teilen eine Fläche", Kommentar Zeile 5075) — der
+Footer war dort mitgerutscht. Eine zweite Gruppe (Zeile 5101) legte ihm zusätzlich
+`box-shadow: inset 0 1px 0` auf; auf einer gerundeten Kachel zeichnet diese Linie einen
+schwachen Bogen über die oberen Ecken, genau der Effekt, den `styles.css:1645` für
+`border-top` schon beschreibt und dort abschaltet.
+
+Gefunden über die CSSOM-Trefferliste am Element selbst, nicht über Textsuche — die Regel
+steht in einer Datei, die man beim Footer nicht vermutet, und nennt `.site-footer` nur als
+vierten Eintrag einer `:is()`-Liste.
+
+### Behoben
+
+`.site-footer` aus **beiden** Selektorlisten gestrichen. Damit gilt wieder
+`var(--bg-dark)` = `#0E100D` aus `styles.css:1425` / `home-dark.css:198`. Kein neuer Wert,
+keine Sonderregel für die Startseite — sie gleicht sich den 37 Unterseiten an. Beide Stellen
+tragen jetzt einen Kommentar, warum der Footer nicht in diese Gruppen gehört.
+
+### Gemessen (nachher, 390 px)
+
+Startseite und `/kontakt/` liefern identische Werte: Hintergrund `rgb(14, 16, 13)` gegen
+Seite `rgb(23, 25, 22)`, 12 px eingerückt, 366 px breit, Radius 24 px, `box-shadow: none`,
+Inhalt 32 px vom Bildschirmrand. Kein waagerechter Überlauf.
+
+Die Nachbarsektionen sind unverändert: `.mr-ueber`, `.private-process-updated`,
+`.private-contact` weiterhin `#171916`, `.private-faq` `#1b1e19`, alle randbündig mit
+Radius 0.
+
+Bei 481 px und 720 px bleibt es bei der Kachel — dort hatte die 480er-Regel ohnehin nie
+gegriffen, der Footer war also schon vorher dunkler abgesetzt. Ab 721 px läuft er wie bisher
+randbündig ohne Radius.

@@ -36,7 +36,7 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="stylesheet" href="assets/css/styles.css?v=20260906l" />
 <link rel="stylesheet" href="assets/css/home-dark.css?v=20260909i" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260908bq" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260909a" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260911a" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260909a" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
@@ -819,9 +819,19 @@ html.home-theme-dark body { background-color: #171916; }
            direkt unter dem Hundefoto. Logo, Linkziel und Gestaltung bleiben
            unveraendert. -->
       <a class="mr-ueber__mehr reveal" href="ueber-uns/">
-        <span class="mr-ueber__mehr-text">Mehr zu</span>
-        <img class="mr-ueber__mehr-logo" src="assets/img/logo/maik-rohdich-logo-mobile-horizontal-meister.png"
-             width="640" height="180" alt="Maik Rohdich Gartenbaumeister" loading="lazy" decoding="async">
+        <span class="mr-ueber__mehr-titel">Mehr über Maik Rohdich<span
+              class="mr-ueber__mehr-pfeil" aria-hidden="true">→</span></span>
+        <span class="mr-ueber__mehr-sub">Zur Über-uns-Seite</span>
+        <!-- AP-288: Blume ohne Schriftzug. Kein neues Bild noetig - dasselbe
+             viewBox-Verfahren wie bei .mr-ueber__brand an der Mustergarten-
+             Kachel: vom 640px breiten Logo werden nur die linken 210px gezeigt,
+             also der Bluetenstrauss ohne "MAIK ROHDICH". Dekorativ, weil der
+             sichtbare Text das Ziel bereits vollstaendig benennt. -->
+        <svg class="mr-ueber__mehr-logo" viewBox="0 0 210 180"
+             aria-hidden="true" focusable="false">
+          <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png"
+                 width="640" height="180" />
+        </svg>
       </a>
     </div>
   </div>

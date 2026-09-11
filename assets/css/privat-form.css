@@ -5087,23 +5087,31 @@
     background: #1b1e19;
   }
 
+  /* AP-287: .site-footer gehoert NICHT in diese Gruppe. Er ist kein Abschnitt
+     des Seiteninhalts, sondern der Seitenfuss - und als einziges Element der
+     Mobilansicht eingerueckt (12px) und gerundet (24px, styles.css:1652). Mit
+     #171916 haette er exakt die Farbe der Seite dahinter, die Kachel waere
+     unsichtbar. Er behaelt deshalb var(--bg-dark) = #0E100D, wie auf allen
+     37 Unterseiten. */
   html.home-theme-dark :is(
     .mr-ueber,
     .private-process-updated,
-    .private-contact,
-    .site-footer
+    .private-contact
   ) {
     background: #171916;
   }
 
+  /* AP-287: ebenfalls ohne .site-footer. Auf einer gerundeten Kachel zeichnet
+     eine inset-Linie einen schwachen Bogen ueber die oberen Ecken - derselbe
+     Grund, aus dem styles.css:1645 dort schon den border-top abschaltet.
+     Die Unterseiten haben box-shadow: none. */
   html.home-theme-dark :is(
     .mr-ueber,
     .private-request-paths,
     .private-process-updated,
     .private-proof-bento,
     .private-contact,
-    .private-faq,
-    .site-footer
+    .private-faq
   ) {
     border-color: rgba(151,206,32,.075);
     box-shadow: inset 0 1px 0 rgba(151,206,32,.045);
