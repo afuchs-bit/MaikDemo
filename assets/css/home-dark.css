@@ -2490,11 +2490,18 @@ html.home-theme-dark .mr-ueber__leitsatz em {
   color: var(--home-lime);
 }
 
+/* AP-283: Der Absatz stand auf clamp(1.4375rem, 5.95vw, 1.5rem), also bei rund
+   23-24px praktisch unabhaengig von der Breite - fast so gross wie der Leitsatz
+   darueber. Auf Wunsch des Auftraggebers traegt er jetzt dieselbe Groesse wie
+   der Mustergarten-Hinweis ("Besichtigungen nur nach Absprache ...",
+   .mr-ueber__hinweis weiter unten in dieser Datei): .9rem. Nur die Groesse ist
+   angeglichen - Schriftschnitt, Farbe und Zeilenhoehe bleiben, damit der Absatz
+   weiter als Flisstext der Sektion lesbar bleibt und nicht wie eine Fussnote. */
 html.home-theme-dark .mr-ueber__text {
   margin: 0;
   color: var(--home-on-dark);
   font-family: "Baloo 2", sans-serif;
-  font-size: clamp(1.4375rem, 5.95vw, 1.5rem);
+  font-size: .9rem;
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: .015em;
