@@ -1,6 +1,7 @@
 // AP-290/AP-291: Signal und Einrasten der mobilen Haupt-CTAs (Variante C2).
-// Der Puls laeuft dreimal, sobald ein CTA gut sichtbar im Bild ist, und danach
+// Der Puls laeuft einmal, sobald ein CTA gut sichtbar im Bild ist, und danach
 // nie wieder - endlose Bewegung neben Inhalt waere ein Verstoss gegen WCAG 2.2.2.
+// (Bis AP-297 waren es drei Durchlaeufe, seit AP-298 einer.)
 (() => {
   'use strict';
 

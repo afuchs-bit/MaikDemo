@@ -34,11 +34,11 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260906l" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260911d" />
-<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260911d" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260911f" />
+<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260911f" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260911k" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20260910u" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260911a" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -698,7 +698,7 @@ html.home-theme-dark body { background-color: #171916; }
     <a class="mobile-proof-request" href="#kontakt">
       <svg class="mobile-proof-request__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
       <span class="mobile-proof-request__label">Gartenwunsch besprechen</span>
-      <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
     </a>
   </div>
 </section>
@@ -796,7 +796,7 @@ html.home-theme-dark body { background-color: #171916; }
     <div class="mr-ueber__mustertext">
       <p class="mr-ueber__mustername">1.500 m² Mustergarten in Herne</p>
       <p class="mr-ueber__hinweis">Besichtigungen nur nach Absprache – so können wir
-         uns nur Zeit für Sie nehmen.</p>
+         uns Zeit nur für Sie nehmen.</p>
     </div>
   </div>
 
@@ -819,16 +819,19 @@ html.home-theme-dark body { background-color: #171916; }
       <!-- AP-292: Der Absatz aus AP-286 ist zu drei Kernaussagen verdichtet.
            Jede Aussage stammt inhaltlich aus dem Absatz des Auftraggebers, keine
            ist neu. Kurzfassung freigegeben am 11.09.2026.
-           "Seit 2003" und "Herne" belegt in content/stammdaten.json
-           (firma.gegruendet, adresse.ort). Die Klasse .mr-ueber__text bleibt an
-           der Liste, damit Groesse, Schnitt und Farbe aus AP-283/284 gelten. -->
+           AP-296: Punkt 2 und 3 tragen jetzt den Wortlaut des Auftraggebers.
+           Der dritte nennt "Seit 2003" und "Herne" nicht mehr; beide Angaben
+           stehen weiter in content/stammdaten.json (firma.gegruendet,
+           adresse.ort) und erscheinen unveraendert in der Proofleiste.
+           Die Klasse .mr-ueber__text bleibt an der Liste, damit Groesse,
+           Schnitt und Farbe aus AP-283/284 gelten. -->
       <ul class="mr-ueber__text mr-ueber__punkte reveal">
         <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 10.5l2 2 4-4"/></svg>
           <span>Ehrliche Einschätzung statt schneller Versprechen</span></li>
-        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16v16H4z"/><path d="M4 11h7"/><path d="M11 4v16"/><path d="M15 15h2"/></svg>
-          <span>Geplant für Grundstück, Nutzung und spätere Pflege</span></li>
-        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>
-          <span>Seit 2003 in Herne – verlässlich und termingerecht</span></li>
+        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>
+          <span>Im Mittelpunkt stehen hochwertige Gartenanlagen, termingerecht umgesetzt</span></li>
+        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="2.6"/><circle cx="15.5" cy="8.5" r="2.6"/><path d="M3.5 18.5a5 5 0 0 1 10 0"/><path d="M10.5 18.5a5 5 0 0 1 10 0"/></svg>
+          <span>Wir legen besonderen Wert auf partnerschaftliche Zusammenarbeit, die über Jahre hält</span></li>
       </ul>
     </div>
 
@@ -856,10 +859,6 @@ html.home-theme-dark body { background-color: #171916; }
     </div>
   </div>
 
-  <!-- AP-281: Trennlinie zwischen Mustergarten und Einsatzgebiet, wie in
-       Entwurf B. Ein echtes <hr>, kein dekoratives div: der Wechsel vom
-       Mustergarten zum Einsatzgebiet ist ein thematischer Schnitt. -->
-  <hr class="container mr-ueber__trenner">
 
   <!-- Block 4 - NRW-Karte, aus der Proof-Sektion hierher VERSCHOBEN.
        Nicht kopiert: die Karten-SVG fuehrt eigene IDs, unter anderem den Filter
@@ -1172,77 +1171,10 @@ html.home-theme-dark body { background-color: #171916; }
       <a class="mobile-proof-request iphone-service-contact-cta" href="#anfrage" data-prefill-bereich="unsicher">
         <svg class="mobile-proof-request__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
         <span class="mobile-proof-request__label">Zum Kontaktformular</span>
-        <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
       </a>
     </div>
 
-    <div class="mobile-service-register" aria-labelledby="mobile-service-register-title">
-      <header class="mobile-service-register__head">
-        <img class="mobile-service-register__flower" src="assets/img/icons/rohdich-blume.png" alt="" width="54" height="54" loading="lazy" decoding="async" />
-        <div>
-          <p>Leistungen kompakt</p>
-          <h3 id="mobile-service-register-title">Alles auf einen Blick</h3>
-        </div>
-      </header>
-      <p class="mobile-service-register__intro">Viele Leistungen greifen ineinander. Entdecken Sie direkt, was sich für Ihr Projekt mitplanen lässt.</p>
-
-      <a class="mobile-service-register__emergency" href="privatkunden/leistungen/sturmnotdienst/">
-        <span><small>Im Notfall</small><strong>24h Baum- &amp; Sturmnotdienst</strong></span>
-        <b aria-hidden="true">→</b>
-      </a>
-
-      <div class="mobile-service-register__groups">
-        <section class="mobile-service-register__group" aria-labelledby="mobile-services-build">
-          <h4 id="mobile-services-build">Garten gestalten</h4>
-          <ul>
-            <li><a href="privatkunden/leistungen/gartengestaltung/"><span>Gartengestaltung</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/vorgarten/"><span>Vorgartengestaltung</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/bepflanzung/"><span>Pflanzarbeiten</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/gartengestaltung/"><span>Rasen &amp; Rollrasen</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/gartenpflege/"><span>Gartenpflege</span><b aria-hidden="true">→</b></a></li>
-          </ul>
-        </section>
-
-        <section class="mobile-service-register__group" aria-labelledby="mobile-services-care">
-          <h4 id="mobile-services-care">Bauen &amp; Begrenzen</h4>
-          <ul>
-            <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/"><span>Terrassenbau</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/"><span>Pflasterarbeiten</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/"><span>Naturstein &amp; Findlinge</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/"><span>Zäune &amp; Sichtschutz</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/gartengestaltung/"><span>Erd- &amp; Baggerarbeiten</span><b aria-hidden="true">→</b></a></li>
-          </ul>
-        </section>
-
-        <section class="mobile-service-register__group" aria-labelledby="mobile-services-water">
-          <h4 id="mobile-services-water">Wasser &amp; Technik</h4>
-          <ul>
-            <li><a href="privatkunden/leistungen/gartengestaltung/"><span>Gartenbeleuchtung</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/gartengestaltung/"><span>Gartenentwässerung</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/pool-whirlpool-umfeld/"><span>Pool- &amp; Whirlpoolumfeld</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/teichbau/"><span>Teichbau &amp; -technik</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/dachbegruenung/"><span>Dachbegrünung</span><b aria-hidden="true">→</b></a></li>
-          </ul>
-        </section>
-
-        <section class="mobile-service-register__group" aria-labelledby="mobile-services-special">
-          <h4 id="mobile-services-special">Bäume &amp; Besonderes</h4>
-          <ul>
-            <li><a href="privatkunden/leistungen/baumarbeiten/"><span>Baumfällung</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/baumarbeiten/"><span>Baumpflege</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/palmen-winterfest/"><span>Winterfeste Palmen</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/holzverkauf/"><span>Kaminholz</span><b aria-hidden="true">→</b></a></li>
-            <li><a href="privatkunden/leistungen/bepflanzung/"><span>Rohdichs Grubengold</span><b aria-hidden="true">→</b></a></li>
-          </ul>
-        </section>
-      </div>
-
-      <a class="mobile-service-register__contact" href="#anfrage" data-prefill-bereich="unsicher">
-        <span>Mehrere Leistungen kombinieren?</span>
-        <strong>Gartenwunsch besprechen</strong>
-        <b aria-hidden="true">→</b>
-      </a>
-    </div>
     <ul class="b2b-request-grid reveal" aria-label="Direkter Einstieg nach Anliegen">
       <li>
         <article class="private-service-flip">
@@ -1779,8 +1711,9 @@ html.home-theme-dark body { background-color: #171916; }
 
             <div class="anf__abschluss">
               <button type="submit" class="btn btn-primary" data-anf-senden>
-                <svg class="anf-senden__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+                <svg class="anf-senden__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="anf-senden__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
                 <span class="anf-senden__label">Anfrage senden</span>
+                <span class="anf-senden__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
               </button>
               <p class="anf__status" data-anf-status role="status" aria-live="polite"></p>
             </div>
@@ -2629,7 +2562,7 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/js/main.js?v=20260911a" defer></script>
 <script src="assets/js/mobile-qualifications.js?v=20260909a" defer></script>
 <script src="assets/js/mobile-social-proof-gallery.js?v=20260911c" defer></script>
-<script src="assets/js/cta-signal.js?v=20260911b" defer></script>
+<script src="assets/js/cta-signal.js?v=20260911c" defer></script>
 <script src="assets/js/mobile-private-review.js?v=20260906b" defer></script>
 <script src="assets/js/private-proof.js?v=20260906a" defer></script>
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>
