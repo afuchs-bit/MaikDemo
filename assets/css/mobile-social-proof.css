@@ -666,14 +666,18 @@
 
   /* Beim Tippen rastet der Button in den Rahmen ein. Der Rahmen selbst bleibt
      stehen, deshalb wandern nur Flaeche, Label und Chip.
-     AP-291: :active allein reicht auf dem Handy nicht - ein Tipp dauert unter
-     100 ms, danach springt die Seite weg. .is-pressed setzt cta-signal.js
-     beim Klick und haelt es 180 ms, bevor die Navigation weiterlaeuft. */
-  .mobile-proof-request:is(:active, .is-pressed) :is(.mobile-proof-request__shape, .mobile-proof-request__label, .mobile-proof-request__arrow) {
+
+     AP-301: Nur noch .is-pressed, kein :active mehr. Zwei Quellen fuer
+     dieselbe Transform sind je nach Engine unterschiedlich getaktet - WebKit
+     setzt :active beim Aufsetzen des Fingers, Chromium erst rund 160 ms
+     spaeter. Auf dem iPhone wirkte die Bewegung dadurch mehrfach. .is-pressed
+     setzt cta-signal.js am pointerdown und haelt es 200 ms; der Klick selbst
+     wird nicht mehr angefasst. */
+  .mobile-proof-request.is-pressed :is(.mobile-proof-request__shape, .mobile-proof-request__label, .mobile-proof-request__arrow) {
     transform: translate(6px, 6px);
   }
 
-  .mobile-proof-request:is(:active, .is-pressed) .mobile-proof-request__arrow :is(svg, img) {
+  .mobile-proof-request.is-pressed .mobile-proof-request__arrow :is(svg, img) {
     transform: translateX(4px);
   }
 

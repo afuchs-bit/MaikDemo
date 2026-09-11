@@ -3286,6 +3286,7 @@
     object-fit: contain;
     opacity: 0;
     visibility: hidden;
+    filter: none;
     transform: translateY(-50%) scale(.82);
     pointer-events: none;
   }
@@ -3321,6 +3322,9 @@
     width: 23px;
     height: 23px;
     object-fit: contain;
+    filter: saturate(.94) drop-shadow(1px 2px 1px rgba(0, 0, 0, .36));
+    transform: rotate(-8deg);
+    transform-origin: 50% 62%;
   }
   .private-process-updated .step-node__text {
     display: none;
