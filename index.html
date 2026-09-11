@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260906l" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260909j" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260911a" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260911b" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260911d" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -736,106 +736,6 @@ html.home-theme-dark body { background-color: #171916; }
     </h2>
   </div>
 
-  <!-- Block 2 - Wort und Beleg (AP-217, Reihenfolge AP-281).
-       Loest das Raster aus AP-216 ab. Links die Aussage, rechts der Beleg dafuer.
-
-       AP-285: Der Leitsatz "Gartenbau mit Handschlagqualitaet." ist auf Wunsch des
-       Auftraggebers entfallen. Die Spalte traegt jetzt allein den Flisstext; die
-       Ueberschrift der Sektion bleibt die H2 "Ueber uns".
-
-       AP-286: Der Flisstext ist vom Auftraggeber neu gefasst worden und ersetzt den
-       bisherigen Absatz vollstaendig. Die Angaben "seit 2003" und "Herne" sind in
-       content/stammdaten.json belegt (firma.gegruendet, adresse.ort).
-
-       Der Entwurf hatte hier eine Signatur mit Namen und Qualifikationen. Sie ist
-       am 06.09.2026 auf Wunsch des Auftraggebers wieder entfallen. Die fachliche
-       Absicherung steht weiterhin in der Belegspalte nebenan. -->
-  <div class="container mr-ueber__split">
-    <div class="mr-ueber__wort">
-      <p class="mr-ueber__text reveal">Bei Maik Rohdich zählt nicht das schnelle Versprechen,
-         sondern eine ehrliche Einschätzung und saubere Arbeit. Jeder Garten wird so geplant,
-         dass er zum Grundstück, zur Nutzung und zur späteren Pflege passt. Seit 2003 steht
-         der Betrieb in Herne für verlässliche Absprachen, termingerechte Umsetzung und
-         Gartenanlagen, die langfristig funktionieren.</p>
-    </div>
-
-    <div class="mr-ueber__beleg">
-      <!-- Gartenfoto.
-           AP-238: Die Hundeaufnahme ist gegen die weite Ansicht getauscht - die
-           vorige war ein enger Ausschnitt, in dem vom Garten fast nichts zu sehen
-           war. Der Aufnahmeort ist am 06.09.2026 vom Auftraggeber bestaetigt: die
-           Musterflaeche am Firmensitz. Deshalb darf die Bildunterschrift ihn jetzt
-           benennen; bis dahin blieb sie bewusst neutral, weil eine Ortsangabe ohne
-           Bestaetigung eine Tatsachenbehauptung waere (§ 5 UWG).
-           [OFFEN: Name des Hundes - siehe docs/offene-punkte.md, AP-230 O1.]
-           "Eigene Fachkraefte." wiederholt nur, was im Flisstext daneben steht und
-           vom Auftraggeber ausdruecklich so gewollt ist (AP-179). -->
-      <div class="mr-ueber__paar reveal">
-        <figure class="mr-ueber__foto">
-          <picture>
-            <source type="image/avif"
-                    srcset="assets/img/ueber/ueber-hund-480.avif 480w, assets/img/ueber/ueber-hund-960.avif 960w"
-                    sizes="(max-width: 480px) calc(70vw - 42px), (max-width: 860px) 45vw, 245px">
-            <source type="image/webp"
-                    srcset="assets/img/ueber/ueber-hund-480.webp 480w, assets/img/ueber/ueber-hund-960.webp 960w"
-                    sizes="(max-width: 480px) calc(70vw - 42px), (max-width: 860px) 45vw, 245px">
-            <img src="assets/img/ueber/ueber-hund.webp" width="1068" height="1070"
-                 alt="Blick über den Mustergarten: vorn döst ein brauner Hund auf einer Gartenliege, dahinter führt ein Pflasterweg an einem Kiesbeet mit Natursteinen und einem Formgehölz im Topf vorbei, links liegt der Pool zwischen Palmen."
-                 loading="lazy" decoding="async">
-          </picture>
-          <figcaption role="img" aria-label="Feierabend im Mustergarten.">
-            <span class="mr-ueber__foto-caption-text">Feierabend<br>im Muster&shy;garten</span>
-            <svg class="mr-ueber__foto-caption mr-ueber__foto-caption--first"
-                 viewBox="20 220 1090 300" preserveAspectRatio="xMidYMid meet"
-                 aria-hidden="true" focusable="false">
-              <defs>
-                <filter id="mr-ueber-caption-freisteller" color-interpolation-filters="sRGB">
-                  <feColorMatrix type="matrix" values="
-                    0 0 0 0 .32
-                    0 0 0 0 .9
-                    0 0 0 0 .02
-                    -1.2 2.4 -1.2 0 0"/>
-                </filter>
-              </defs>
-              <image href="assets/img/ueber/feierabend-im-mustergarten-1600.webp"
-                     width="2172" height="724" filter="url(#mr-ueber-caption-freisteller)"/>
-            </svg>
-            <svg class="mr-ueber__foto-caption mr-ueber__foto-caption--second"
-                 viewBox="1080 220 1072 300" preserveAspectRatio="xMidYMid meet"
-                 aria-hidden="true" focusable="false">
-              <image href="assets/img/ueber/feierabend-im-mustergarten-1600.webp"
-                     width="2172" height="724" filter="url(#mr-ueber-caption-freisteller)"/>
-            </svg>
-          </figcaption>
-          <svg class="mr-ueber__foto-pointer" viewBox="0 0 220 96"
-               aria-hidden="true" focusable="false">
-            <path d="M34 8C76 10 96 34 120 51C143 67 169 72 205 74"/>
-            <path d="M188 60L207 75L183 81"/>
-          </svg>
-        </figure>
-      </div>
-
-      <!-- AP-249: Der Link zur Unterseite steht auf Wunsch des Auftraggebers
-           direkt unter dem Hundefoto. Logo, Linkziel und Gestaltung bleiben
-           unveraendert. -->
-      <a class="mr-ueber__mehr reveal" href="ueber-uns/">
-        <span class="mr-ueber__mehr-titel">Mehr über Maik Rohdich<span
-              class="mr-ueber__mehr-pfeil" aria-hidden="true">→</span></span>
-        <span class="mr-ueber__mehr-sub">Zur Über-uns-Seite</span>
-        <!-- AP-288: Blume ohne Schriftzug. Kein neues Bild noetig - dasselbe
-             viewBox-Verfahren wie bei .mr-ueber__brand an der Mustergarten-
-             Kachel: vom 640px breiten Logo werden nur die linken 210px gezeigt,
-             also der Bluetenstrauss ohne "MAIK ROHDICH". Dekorativ, weil der
-             sichtbare Text das Ziel bereits vollstaendig benennt. -->
-        <svg class="mr-ueber__mehr-logo" viewBox="0 0 210 180"
-             aria-hidden="true" focusable="false">
-          <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png"
-                 width="640" height="180" />
-        </svg>
-      </a>
-    </div>
-  </div>
-
   <!-- Block 3 - Mustergarten als Medienkachel (AP-217, Reihenfolge AP-281).
        Direkt unter die Sektionsueberschrift verschoben, damit die Anlage zuerst
        erlebbar wird und der persoenliche Beleg danach folgt.
@@ -864,10 +764,24 @@ html.home-theme-dark body { background-color: #171916; }
         <p>Ihr Browser kann dieses Video nicht abspielen.
            <a href="assets/video/mustergarten.mp4">Video herunterladen</a>.</p>
       </video>
-      <svg class="mr-ueber__brand" viewBox="0 0 210 180" width="210" height="180"
-           overflow="hidden" aria-hidden="true" focusable="false">
-        <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180" />
-      </svg>
+      <!-- AP-292: Das Hundefoto ersetzt an dieser Kachel die Markenblume aus
+           AP-246 und sitzt an ihrer Stelle unten rechts, ueber die Kante ragend.
+           Bewusst die WEITE Ansicht aus AP-238: Man soll den Garten sehen und
+           dass der Hund darin liegt. Aufnahmeort vom Auftraggeber bestaetigt
+           (Musterflaeche am Firmensitz, 06.09.2026), deshalb nennt der Alt-Text
+           den Mustergarten. Das eigenstaendige Foto im Beleg-Block ist entfallen.
+           [OFFEN: Name des Hundes - docs/offene-punkte.md, AP-230 O1.] -->
+      <picture class="mr-ueber__hund">
+        <source type="image/avif"
+                srcset="assets/img/ueber/ueber-hund-480.avif 480w, assets/img/ueber/ueber-hund-960.avif 960w"
+                sizes="(max-width: 480px) 40vw, 260px">
+        <source type="image/webp"
+                srcset="assets/img/ueber/ueber-hund-480.webp 480w, assets/img/ueber/ueber-hund-960.webp 960w"
+                sizes="(max-width: 480px) 40vw, 260px">
+        <img src="assets/img/ueber/ueber-hund.webp" width="1068" height="1070"
+             alt="Feierabend im Mustergarten: ein brauner Hund döst auf einer Gartenliege, dahinter führt ein Pflasterweg an einem Kiesbeet mit Natursteinen und einem Formgehölz im Topf vorbei, links liegt der Pool zwischen Palmen."
+             loading="lazy" decoding="async">
+      </picture>
     </div>
 
     <!-- AP-247: Der erklaerende Hauptsatz ist entfallen. Unter dem Video stehen
@@ -876,6 +790,62 @@ html.home-theme-dark body { background-color: #171916; }
       <p class="mr-ueber__mustername">1.500 m² Mustergarten in Herne</p>
       <p class="mr-ueber__hinweis">Besichtigungen nur nach Absprache – so können wir
          uns nur Zeit für Sie nehmen.</p>
+    </div>
+  </div>
+
+  <!-- Block 2 - Wort und Beleg (AP-217, Reihenfolge AP-281).
+       Loest das Raster aus AP-216 ab. Links die Aussage, rechts der Beleg dafuer.
+
+       AP-285: Der Leitsatz "Gartenbau mit Handschlagqualitaet." ist auf Wunsch des
+       Auftraggebers entfallen. Die Spalte traegt jetzt allein den Flisstext; die
+       Ueberschrift der Sektion bleibt die H2 "Ueber uns".
+
+       AP-286: Der Flisstext ist vom Auftraggeber neu gefasst worden und ersetzt den
+       bisherigen Absatz vollstaendig. Die Angaben "seit 2003" und "Herne" sind in
+       content/stammdaten.json belegt (firma.gegruendet, adresse.ort).
+
+       Der Entwurf hatte hier eine Signatur mit Namen und Qualifikationen. Sie ist
+       am 06.09.2026 auf Wunsch des Auftraggebers wieder entfallen. Die fachliche
+       Absicherung steht weiterhin in der Belegspalte nebenan. -->
+  <div class="container mr-ueber__split">
+    <div class="mr-ueber__wort">
+      <!-- AP-292: Der Absatz aus AP-286 ist zu drei Kernaussagen verdichtet.
+           Jede Aussage stammt inhaltlich aus dem Absatz des Auftraggebers, keine
+           ist neu. Kurzfassung freigegeben am 11.09.2026.
+           "Seit 2003" und "Herne" belegt in content/stammdaten.json
+           (firma.gegruendet, adresse.ort). Die Klasse .mr-ueber__text bleibt an
+           der Liste, damit Groesse, Schnitt und Farbe aus AP-283/284 gelten. -->
+      <ul class="mr-ueber__text mr-ueber__punkte reveal">
+        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 10.5l2 2 4-4"/></svg>
+          <span>Ehrliche Einschätzung statt schneller Versprechen</span></li>
+        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16v16H4z"/><path d="M4 11h7"/><path d="M11 4v16"/><path d="M15 15h2"/></svg>
+          <span>Geplant für Grundstück, Nutzung und spätere Pflege</span></li>
+        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6-5.4-6-10a6 6 0 1 1 12 0c0 4.6-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>
+          <span>Seit 2003 in Herne – verlässlich und termingerecht</span></li>
+      </ul>
+    </div>
+
+    <div class="mr-ueber__beleg">
+      <!-- AP-292: Das Hundefoto sitzt jetzt an der Mustergarten-Kachel (siehe
+           dort). Der Beleg-Block traegt nur noch den Verweis zur Unterseite. -->
+      <!-- AP-249: Der Link zur Unterseite steht auf Wunsch des Auftraggebers
+           direkt unter dem Hundefoto. Logo, Linkziel und Gestaltung bleiben
+           unveraendert. -->
+      <a class="mr-ueber__mehr reveal" href="ueber-uns/">
+        <span class="mr-ueber__mehr-titel">Mehr über Maik Rohdich<span
+              class="mr-ueber__mehr-pfeil" aria-hidden="true">→</span></span>
+        <span class="mr-ueber__mehr-sub">Zur Über-uns-Seite</span>
+        <!-- AP-288: Blume ohne Schriftzug. Kein neues Bild noetig - dasselbe
+             viewBox-Verfahren wie bei .mr-ueber__brand an der Mustergarten-
+             Kachel: vom 640px breiten Logo werden nur die linken 210px gezeigt,
+             also der Bluetenstrauss ohne "MAIK ROHDICH". Dekorativ, weil der
+             sichtbare Text das Ziel bereits vollstaendig benennt. -->
+        <svg class="mr-ueber__mehr-logo" viewBox="0 0 210 180"
+             aria-hidden="true" focusable="false">
+          <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png"
+                 width="640" height="180" />
+        </svg>
+      </a>
     </div>
   </div>
 

@@ -1248,3 +1248,79 @@ auf die Änderung ergänzt, sonst widerspricht er der Regel darunter.
 Bei 481 px und 1440 px bleibt der Grundton `rgb(23, 25, 22)` — die Regel gilt nur bis
 480 px, und oberhalb hat die FAQ-Sektion ohnehin nicht `#1b1e19`. `/kontakt/` bei 390 px
 unverändert.
+
+---
+
+## AP-292 — Über uns: Hundefoto an der Mustergarten-Kachel, drei Kernaussagen
+
+Umsetzung des vom Auftraggeber gelieferten Dokuments `AP-291-ueber-uns-hund-mustergarten.md`
+(`files (12).zip`, mit Referenzbildern für 390 px und 1280 px). Die Nummer AP-291 war beim
+Umsetzen bereits vergeben (C2-Bewegung, `b7ef6fe`), deshalb läuft das Paket als AP-292.
+
+Neue Reihenfolge der Sektion `#ueber` in allen Breiten: Überschrift → Mustergarten-Video mit
+Hundefoto unten rechts → „1.500 m² Mustergarten in Herne" und Besuchshinweis → drei
+Kernaussagen → Button. Danach unverändert Trennlinie und Einsatzgebiet-Karte.
+
+### Zwei Freigaben, erteilt am 11.09.2026
+
+- **F1 — Kurzfassung des Texts.** Der Absatz aus AP-286 ist zu drei Aussagen verdichtet.
+  „saubere Arbeit" und „Gartenanlagen, die langfristig funktionieren" sind nicht mehr
+  enthalten. Das Datum steht im HTML-Kommentar über der Liste.
+- **F2 — Umbau der Sektion.** Das eigenständige Hundefoto samt handschriftlicher
+  Bildunterschrift entfällt in allen Breiten. Auf dem Desktop trug es mit 532 × 746 px die
+  rechte Spalte; der Hund sitzt jetzt als 260-px-Einschub an der Videokachel.
+
+### Prüfung vor dem Lauf
+
+Alle 17 Anker des gelieferten Skripts gegen `b7ef6fe` gezählt — jeder genau einmal. Das
+Dokument war gegen `6e92191` geschrieben; dazwischen lag nur AP-291, das andere Dateien
+angefasst hat. Das Skript lief unverändert durch, mit zwei Substitutionen vorab:
+`AP-291` → `AP-292` und `[OFFEN: Datum der Freigabe]` → `11.09.2026`.
+
+### Das Video ist unverändert geblieben
+
+Ausdrückliche Auflage. Im Diff erscheint `<video class="mr-ueber__video">` nur als
+Verschiebung — Zeile für Zeile identisch. Nachgemessen im Browser: `readyState 4`,
+`videoWidth 720 × 544`, `playbackRate 0.6`, Poster gesetzt, Quelle `mustergarten.mp4`,
+`pointer-events: none`, Seitenverhältnis 21:9 ab 861 px und 4:3 bis 599 px.
+
+### Gemessen
+
+| Breite | Hundefoto | Überstand unten | Luft zum Text | Muster → Buttonende | Überlauf |
+|---|---|---|---|---|---|
+| 360 px | 130 px | 40 px | 16 px | 670 px | 0 |
+| 390 px | 140 px | 40 px | 16 px | 687 px | 0 |
+| 480 px | 176 px | 40 px | 16 px | 777 px | 0 |
+| 1280 px | 260 px | 40 px | 24 px | zweispaltig | 0 |
+
+Bei 360 px ragt das Foto 10 px über die rechte Kachelkante — der Container hat 20 px
+Innenabstand, deshalb bleibt der Überlauf bei 0. Überschrift bis 480 px linksbündig, darüber
+zentriert. Punkte und Button fluchten ab 861 px oben auf derselben Linie (beide y = 832 bei
+1280 px). Die Sektion ist auf dem Handy 131 px kürzer als vorher.
+
+### Stolperstelle bei der Prüfung: GSAP macht Elemente unsichtbar
+
+Der Button meldete in der Vorschau korrekte Maße (350 × 64 px an der richtigen Stelle), war
+aber nicht zu sehen. Ursache: seit AP-278 liegt GSAP mit ScrollTrigger im Projekt, und der
+setzt als Inline-Style `opacity: 0; visibility: hidden` bis die Animation startet. Im
+Browser-Pane läuft sie nie an (eingefrorener IntersectionObserver). **Kein Fehler dieses AP**
+— aber der Pane-Shim braucht seither zusätzlich `visibility: visible !important`, sonst
+zeigt die Vorschau leere Flächen, wo alles in Ordnung ist.
+
+### Offene Punkte
+
+- **O1 — Bildunterschrift.** „Feierabend im Mustergarten" steht nur noch im Alt-Text. Die
+  handschriftliche Grafik `feierabend-im-mustergarten-*.webp` liegt weiterhin unter
+  `assets/img/ueber/`, wird auf der Startseite aber nicht mehr verwendet.
+- **O2 — Tote CSS-Regeln.** `.mr-ueber__paar`, `.mr-ueber__foto*` und Reste von
+  `.mr-ueber__beleg` greifen ins Leere. Aufräumen als eigenes AP — bewusst nicht hier.
+- **O3 — Verwaiste Kommentarstelle.** `index.html` verweist im Kommentar über dem
+  Button-Logo auf „das viewBox-Verfahren wie bei `.mr-ueber__brand`"; diese Klasse gibt es
+  nicht mehr. Gehört zu O2.
+- **O4 — Einheitlichkeit der Markenblume.** AP-246 hatte Willkommen, Galerie und
+  Mustergarten gleich signiert. Die Mustergarten-Kachel weicht jetzt bewusst ab.
+- **O5 — Achse der Sektionsköpfe.** „Über uns" steht auf dem Handy linksbündig. Gemessen
+  stehen vier weitere Sektionsüberschriften dort ohnehin links; zentriert sind nur noch
+  „Unsere Leistungen von A bis Z" und der Willkommensgruß.
+- **O6 — Name des Hundes.** Weiter offen (AP-230 O1). Falls bekannt, gehört er in den
+  Alt-Text.
