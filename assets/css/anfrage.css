@@ -322,7 +322,13 @@
 /* AP-310: Die E-Mail-Kachel steht unter der Trennzeile und beschriftet den
    Formularblock. Als eigenstaendiger Block braucht sie den Abstand selbst -
    dieselben 1.125rem, mit denen .anf__feld (Z. 50) die Felder trennt. */
-.anf__kanal--mail { margin: 0 0 1.125rem; }
+.anf__kanal--mail {
+  margin: 0 0 1.125rem;
+  /* AP-312: derselbe Strich wie an den Eingabefeldern darunter
+     (.anf__feld input, Z. 58 ff.). Die Kachel gehoert optisch zum Formular,
+     nicht zu den beiden Direktkanaelen darueber. */
+  border-color: var(--anf-linie);
+}
 
 /* Der Umschlag ist dasselbe Zeichen wie in der Kontaktliste der Sektion; als
    Inline-SVG statt Hintergrundbild, damit er die Farbe der Kachel erbt. */
@@ -464,6 +470,12 @@
     border-radius: 12px;
     background: transparent;
     box-sizing: border-box;
+  }
+
+  /* Spezifitaet gleich wie .private-contact .anf__kanal (0,2,0) - die spaetere
+     Position entscheidet. Wert woertlich aus .private-contact .anf__feld input. */
+  .private-contact .anf__kanal--mail {
+    border-color: rgba(151, 206, 32, .19);
   }
 
   .private-contact .anf__kanal-icon {
