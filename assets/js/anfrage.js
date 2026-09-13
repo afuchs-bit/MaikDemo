@@ -54,4 +54,18 @@
     });
   }
 
+  // --- AP-307: E-Mail-Kachel fuehrt ins Formular ---
+  // Den Sprung macht der Anker selbst, also auch ohne JavaScript. Hier kommt
+  // nur der Cursor dazu: preventScroll, damit der Fokus die Bewegung des Ankers
+  // nicht unterbricht. Auf iOS oeffnet sich dabei die Tastatur - gewollt, der
+  // Besucher soll sofort tippen koennen. Kein preventDefault, kein
+  // synthetischer Klick: die Lehre aus AP-301 gilt weiter.
+  const zumFormular = kurzForm.querySelector('[data-anf-zum-formular]');
+  if (zumFormular) {
+    zumFormular.addEventListener('click', () => {
+      const feld = kurzForm.querySelector('#anf-name');
+      if (feld) feld.focus({ preventScroll: true });
+    });
+  }
+
 })();

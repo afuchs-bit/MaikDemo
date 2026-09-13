@@ -249,11 +249,19 @@
 
 /* --------------------------------------------------- Direktkontakt */
 
+/* AP-307: Feste zwei Spalten statt auto-fit. auto-fit bildet die Spaltenzahl aus
+   der CONTAINERBREITE, nicht aus der Zahl der Kacheln - eine Kachel mit
+   grid-column: 1 / -1 haette die leeren Spuren am Zusammenfallen gehindert und
+   die beiden oberen Kacheln auf 220px zusammengeschnuert. */
 .anf__kanaele {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin: 0 0 4px;
+}
+
+@media (max-width: 560px) {
+  .anf__kanaele { grid-template-columns: 1fr; }
 }
 
 /* Aufbau wie .footer-contact-link (styles.css:1527): Icon-Spalte fest,
@@ -306,6 +314,24 @@
   background-color: #25D366;
   background-image: url("../img/icons/whatsapp-glyph-white.svg");
   background-size: 22px 22px;
+}
+
+/* Die E-Mail-Kachel fuehrt ins Formular, nicht nach draussen. Sie steht deshalb
+   als eigene Zeile unter den beiden Direktkanaelen - auf jeder Breite. */
+.anf__kanal--mail { grid-column: 1 / -1; }
+
+/* Der Umschlag ist dasselbe Zeichen wie in der Kontaktliste der Sektion; als
+   Inline-SVG statt Hintergrundbild, damit er die Farbe der Kachel erbt. */
+.anf__kanal-icon--mail {
+  display: grid;
+  place-items: center;
+  background-color: var(--bg-dark);
+  color: var(--green-500);
+}
+
+.anf__kanal-icon--mail svg {
+  inline-size: 21px;
+  block-size: 21px;
 }
 
 .anf__kanal small {
