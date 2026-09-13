@@ -273,7 +273,9 @@
   align-items: center;
   min-block-size: 60px;
   padding: 10px 12px;
-  border: 1px solid rgba(219,233,189,.2);
+  /* AP-313: derselbe Strich wie an den Eingabefeldern (.anf__feld input,
+     Z. 58 ff.) - dasselbe Token, kein zweiter Farbwert. */
+  border: 1px solid var(--anf-linie);
   border-radius: 14px;
   background: rgba(255,255,255,.055);
   text-decoration: none;
@@ -322,13 +324,7 @@
 /* AP-310: Die E-Mail-Kachel steht unter der Trennzeile und beschriftet den
    Formularblock. Als eigenstaendiger Block braucht sie den Abstand selbst -
    dieselben 1.125rem, mit denen .anf__feld (Z. 50) die Felder trennt. */
-.anf__kanal--mail {
-  margin: 0 0 1.125rem;
-  /* AP-312: derselbe Strich wie an den Eingabefeldern darunter
-     (.anf__feld input, Z. 58 ff.). Die Kachel gehoert optisch zum Formular,
-     nicht zu den beiden Direktkanaelen darueber. */
-  border-color: var(--anf-linie);
-}
+.anf__kanal--mail { margin: 0 0 1.125rem; }
 
 /* Der Umschlag ist dasselbe Zeichen wie in der Kontaktliste der Sektion; als
    Inline-SVG statt Hintergrundbild, damit er die Farbe der Kachel erbt. */
@@ -466,16 +462,10 @@
     block-size: 64px;
     min-block-size: 64px;
     padding: 8px 12px;
-    border-color: rgba(86, 230, 7, .14);
+    border-color: rgba(151, 206, 32, .19);
     border-radius: 12px;
     background: transparent;
     box-sizing: border-box;
-  }
-
-  /* Spezifitaet gleich wie .private-contact .anf__kanal (0,2,0) - die spaetere
-     Position entscheidet. Wert woertlich aus .private-contact .anf__feld input. */
-  .private-contact .anf__kanal--mail {
-    border-color: rgba(151, 206, 32, .19);
   }
 
   .private-contact .anf__kanal-icon {
