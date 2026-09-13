@@ -81,7 +81,7 @@ html.home-theme-dark .home-hero-stack > .hero--gate-empty {
 }
 
 /* Die neuen Textvarianten gehoeren ausschliesslich zur mobilen Bildbuehne. */
-html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .mobile-hero-cta-stack, .mobile-hero-link, .header-instagram) {
+html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .mobile-hero-cta-stack, .mobile-hero-link, .header-instagram, .hero-proof-instagram) {
   display: none;
 }
 
@@ -1221,8 +1221,12 @@ html.home-theme-dark .fork-path:hover {
     --mobile-hero-slope-angle: 13.7deg;
   }
 
+  html.home-theme-dark.home-header-morph .site-header .header-instagram {
+    display: none;
+  }
+
   html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
-    width: clamp(158px, calc(100vw - 218px), 218px);
+    width: clamp(166px, calc(100vw - 142px), 256px);
   }
 }
 
@@ -1245,7 +1249,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
-    width: clamp(154px, calc(100vw - 194px), 230px);
+    width: clamp(166px, calc(100vw - 142px), 256px);
     height: clamp(56px, 18.5vw, 72px);
   }
 
@@ -1400,7 +1404,76 @@ html.home-theme-dark .fork-path:hover {
    Die native Details-Gruppe benoetigt kein zusaetzliches JavaScript. */
 @media (max-width: 480px) {
   html.home-theme-dark .home-hero-stack {
-    --mobile-hero-title-trial-drop: -3px;
+    --mobile-hero-title-trial-drop: -18px;
+  }
+
+  html.home-theme-dark .hero-proof-strip {
+    grid-template-columns: 48px auto;
+    justify-content: start;
+    column-gap: calc(var(--hero-proof-space) - 4px);
+    transform: translateY(calc(
+      0px - var(--mobile-hero-content-group-lift) - var(--mobile-hero-proof-lift)
+      + 10px + clamp(0px, calc(276px - 35svh), 30px)
+      + clamp(0px, calc(23vw - 90px), 20px)
+    ));
+  }
+
+  html.home-theme-dark .mobile-hero-cta-stack {
+    transform: translateY(calc(14px + var(--mobile-hero-cta-trial-drop)));
+  }
+
+  html.home-theme-dark .hero-proof-location-mark {
+    justify-self: center;
+  }
+
+  html.home-theme-dark .hero-proof-location-text {
+    text-align: left;
+  }
+
+  html.home-theme-dark .hero-proof-instagram {
+    position: absolute;
+    bottom: calc(100% + 1px);
+    left: var(--hero-proof-space);
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--hero-proof-space) - 4px);
+    min-height: 52px;
+    color: var(--home-on-dark);
+    font-family: "Nunito", sans-serif;
+    font-size: .9rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: .005em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  html.home-theme-dark .hero-proof-instagram strong {
+    color: var(--home-lime);
+    font: inherit;
+  }
+
+  html.home-theme-dark .hero-proof-instagram-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 14px;
+    color: #fff;
+    background: radial-gradient(circle at 30% 105%, #feda75 0 20%, #fa7e1e 34%, #d62976 57%, #962fbf 76%, #4f5bd5 100%);
+    box-shadow: 0 5px 12px rgb(0 0 0 / 24%);
+    transition: transform .2s ease;
+  }
+
+  html.home-theme-dark .hero-proof-instagram-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  html.home-theme-dark .hero-proof-instagram:active {
+    opacity: .74;
   }
 
 }
