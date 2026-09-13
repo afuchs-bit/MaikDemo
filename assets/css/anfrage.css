@@ -280,8 +280,11 @@
   transition: border-color .2s var(--ease), background .2s var(--ease);
 }
 
+/* Nur die Links reagieren. Die E-Mail-Kachel ist eine Beschriftung - eine
+   Flaeche, die auf Beruehrung antwortet, ohne etwas zu tun, ist ein falsches
+   Versprechen. */
 @media (hover: hover) and (pointer: fine) {
-  .anf__kanal:hover {
+  a.anf__kanal:hover {
     border-color: var(--green-500);
     background: rgba(140,198,63,.09);
   }
@@ -316,9 +319,10 @@
   background-size: 22px 22px;
 }
 
-/* Die E-Mail-Kachel fuehrt ins Formular, nicht nach draussen. Sie steht deshalb
-   als eigene Zeile unter den beiden Direktkanaelen - auf jeder Breite. */
-.anf__kanal--mail { grid-column: 1 / -1; }
+/* AP-310: Die E-Mail-Kachel steht unter der Trennzeile und beschriftet den
+   Formularblock. Als eigenstaendiger Block braucht sie den Abstand selbst -
+   dieselben 1.125rem, mit denen .anf__feld (Z. 50) die Felder trennt. */
+.anf__kanal--mail { margin: 0 0 1.125rem; }
 
 /* Der Umschlag ist dasselbe Zeichen wie in der Kontaktliste der Sektion; als
    Inline-SVG statt Hintergrundbild, damit er die Farbe der Kachel erbt. */
@@ -498,7 +502,7 @@
     margin-bottom: 26px;
   }
 
-  .private-contact .anf__kanal:active {
+  .private-contact a.anf__kanal:active {
     border-color: rgba(140, 198, 63, .22);
     background: rgba(49, 82, 0, .12);
     box-shadow:
