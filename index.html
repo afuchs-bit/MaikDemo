@@ -1616,6 +1616,14 @@ html.home-theme-dark body { background-color: #171916; }
         <!-- ============ KURZANFRAGE ============
              Das kurze Formular ist der einzige Anfrageweg auf der Startseite und
              steht ohne Vorwahl direkt bereit. -->
+        <!-- AP-308: Der Anfrage-Anker hing bis hierher an .private-form-main im
+             ausfuehrlichen Formular - und das ist seit AP-246 hidden und inert.
+             Ein verstecktes Element laesst sich nicht anspringen: gemessen blieb
+             scrollY bei jedem Tipp auf "Zum Kontaktformular" und "Projekt
+             anfragen" unveraendert, ebenso bei den Anfrage-Links der
+             Leistungsseiten. Er sitzt jetzt am Kurzformular - nicht am .anf-Block
+             darum herum, denn der umschliesst das ausfuehrliche Formular mit,
+             und privat-form.js sucht im Anker nach .b2b-form-head. -->
         <div class="anf">
           <!-- AP-246: Kurzformular in der Formsprache der Seite.
 
@@ -1631,7 +1639,7 @@ html.home-theme-dark body { background-color: #171916; }
 
                AP-304: Die Leistungsauswahl (Chips) ist entfernt, das Freitextfeld
                steht dauerhaft offen - es gibt keinen Aufklapp-Knopf mehr. -->
-          <form class="anf__form anf__karte" data-anf-modus="kurz" data-anf-form novalidate>
+          <form class="anf__form anf__karte" id="anfrage" data-anf-modus="kurz" data-anf-form novalidate>
             <div class="anf__honeypot" aria-hidden="true">
               <label for="anf-hp">Firmenwebsite (bitte frei lassen)</label>
               <input type="text" id="anf-hp" name="_hp_website" tabindex="-1" autocomplete="off">
@@ -1726,7 +1734,7 @@ html.home-theme-dark body { background-color: #171916; }
                 <span aria-hidden="true">→</span>
               </a>
             </aside>
-            <div class="private-form-main" id="anfrage">
+            <div class="private-form-main">
               <div class="b2b-form-head form-contact-head">
                 <div class="private-form-head-copy form-contact-head__copy">
                   <span class="b2b-form-step" data-form-head-kicker>Ihre Anfrage in wenigen Schritten</span>
