@@ -3261,7 +3261,9 @@ html.home-theme-dark .footer-social-iphone {
     place-items: center;
     width: 44px;
     height: 44px;
-    padding: 0.25rem;
+    /* 2px statt 4px: nur so passt die auf 2.5rem vergroesserte Kachel in die
+       44px-Tippflaeche, ohne deren Groesse anzutasten. */
+    padding: 0.125rem;
     border: 0;
     border-radius: 50%;
     background: transparent;
@@ -3280,9 +3282,9 @@ html.home-theme-dark .footer-social-iphone {
   html.home-theme-dark .site-footer .footer-social-icon {
     display: grid;
     place-items: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 11px;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 12px;
     color: #fff;
   }
 
@@ -3291,8 +3293,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--whatsapp img {
-    width: 1.375rem;
-    height: 1.375rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram {
@@ -3300,8 +3302,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram svg {
-    width: 1.375rem;
-    height: 1.375rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   html.home-theme-dark .site-footer a.footer-social-link:focus-visible {

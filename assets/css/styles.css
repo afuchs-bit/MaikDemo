@@ -1462,7 +1462,19 @@ p  { margin: 0; }
 }
 .site-footer a { color: rgba(255,255,255,.86); text-decoration: none; }
 .footer-route {
+  /* Die Kapsel gibt dem Korallenrot eine Kante gegen den dunklen Footer.
+     display: inline-flex macht Text und Pfeil zu zwei Flex-Items - das
+     Leerzeichen zwischen ihnen im Markup faellt dabei ersatzlos weg, deshalb
+     ist gap hier Pflicht und nicht Kosmetik. width: fit-content muss bleiben:
+     .footer-address ist ein Grid, sonst zoege sich die Kapsel ueber die volle
+     Spaltenbreite. */
+  display: inline-flex;
+  align-items: center;
+  gap: .35em;
   width: fit-content;
+  padding: .34em .8em;
+  border: 1px solid rgba(255, 255, 255, .32);
+  border-radius: 999px;
   color: var(--coral) !important;
   font-weight: 750;
   text-shadow:
