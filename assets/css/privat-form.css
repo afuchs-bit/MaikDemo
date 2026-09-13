@@ -3477,15 +3477,15 @@
 }
 .private-proof-google svg { flex: 0 0 auto; }
 .private-proof-stars {
-  color: #ffbf24;
+  color: var(--yellow);
   font-size: 1.02rem;
   letter-spacing: .08em;
   line-height: 1;
   white-space: nowrap;
   text-shadow:
-    0 0 4px rgba(255, 191, 36, .9),
-    0 0 10px rgba(255, 191, 36, .6),
-    0 0 20px rgba(255, 191, 36, .35);
+    0 0 4px rgba(242, 226, 12, .9),
+    0 0 10px rgba(242, 226, 12, .6),
+    0 0 20px rgba(242, 226, 12, .35);
 }
 .private-proof-rating > strong {
   color: #fff;
