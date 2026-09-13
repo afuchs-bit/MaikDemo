@@ -43,6 +43,18 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   mit ihr als Gruppe optisch vertikal zentriert. Keine generative Veränderung.
   SHA-256:
   `F96D95894E72E1A7A31371CD6418545BD696D778A2035EDC218A61B1EF4400B6`.
+- `assets/img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png`
+  und `assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced-full-flower.png`
+  – mobile Headervarianten mit der vom Auftraggeber gelieferten vollständigen
+  Blumengruppe. Nur die Blumengruppe wurde mechanisch ausgetauscht und vom
+  weißen Hintergrund befreit; Wortmarken, Format und übrige Logoelemente
+  blieben unverändert. SHA-256:
+  `296DA7D5AFD5A30D3CA63CADC2C76B32A2D689D4ABA1A561B4DFB0480E6BA6F0`
+  und `06D46156A5FF3FE6AEE165E3D70123C149B0D3DDDA9CFA1B1F9A1C2E9704DCC3`.
+- `assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png` – die
+  gelieferte vollständige Header-Blumengruppe, ausschließlich mechanisch vom
+  weißen Hintergrund und zwei fremden Randpixelspalten befreit. SHA-256:
+  `8708DEB1FB616A7EED53AA24E325DDFEB1AE57D3EC31FDD3B17C5B4ADB437FE9`.
 - `assets/img/icons/phone-header-mobile.png` – mechanisch aus der vom Auftraggeber
   gelieferten Datei `Design ohne Titel.png` freigestellt, quadratisch beschnitten und
   einheitlich auf das Wortmarken-Grün `#56E607` gesetzt. Die Form wurde nicht verändert.
@@ -76,6 +88,11 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   `assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png` isoliert.
   Form und Farben wurden nicht generativ verändert. SHA-256:
   `6D8489157F6CBA0265A864BC55E78AAB6AAE5458BF4A1D6814AA0099354397DA`.
+- `assets/img/icons/maik-rohdich-bluete-original.png` – 526 × 430 px große,
+  transparente Einzelblüte aus der vom Auftraggeber gelieferten Datei
+  `Maik-Rohdich-Bluete-Ausschnitt.png`. Sie ersetzt die zuvor verwendete
+  Einzelblüte an allen sichtbaren Einsätzen. Unverändert übernommen. SHA-256:
+  `AD31F382E4C157D41EB3379873F5814911F15274D81F1E78127B58AAB8B2470C`.
 - **Foto im oberen Homepage-Hero:** Aus der vom Auftraggeber bereitgestellten
   Datei `maik-rohdich-hero-aufschrift-kraeftigere-farben.png` mechanisch und ohne Beschnitt,
   Filter oder generative Veränderung abgeleitet. Original: 1023 × 1537 px,

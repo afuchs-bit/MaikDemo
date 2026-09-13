@@ -3323,7 +3323,7 @@
     height: 23px;
     object-fit: contain;
     filter: saturate(.94) drop-shadow(1px 2px 1px rgba(0, 0, 0, .36));
-    transform: rotate(-8deg);
+    transform: translateX(.9px) rotate(-8deg);
     transform-origin: 50% 62%;
   }
   .private-process-updated .step-node__text {
@@ -4597,7 +4597,7 @@
     width: 1.5rem;
     height: 1.5rem;
     overflow: hidden;
-    background: url("../img/icons/rohdich-blume.png") center / contain no-repeat;
+    background: url("../img/icons/maik-rohdich-bluete-original.png?v=20260913b") center / contain no-repeat;
     color: transparent;
     font-size: 0;
     filter: saturate(1.02) drop-shadow(0 0 5px rgba(242, 226, 12, .16));

@@ -127,7 +127,7 @@
 }
 
 /* Die Bluete ist dasselbe Zeichen, das die Qualifikationsleiste im
-   Willkommen-Bereich der Startseite fuehrt (assets/img/icons/rohdich-blume.png).
+   Willkommen-Bereich der Startseite fuehrt (assets/img/icons/maik-rohdich-bluete-original.png).
    Rein dekorativ, deshalb aria-hidden am Element und alt="" am Bild. */
 .ueber-quali__zeichen {
   flex: none;
