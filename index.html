@@ -1669,39 +1669,45 @@ html.home-theme-dark body { background-color: #171916; }
               </a>
             </div>
 
-            <p class="anf__oder"><span>oder Anfrageformular ausfüllen</span></p>
+            <!-- AP-309: Alles ab hier erscheint erst auf Wunsch - die E-Mail-Kachel
+                 oben oder jeder Weg, der auf #anfrage zeigt, klappt es auf.
+                 Eingeklappt wird ausschliesslich in anfrage.js: ohne JavaScript
+                 steht das Formular offen da, sonst waere es unerreichbar. -->
+            <div class="anf__eingabe" id="anf-eingabe" data-anf-eingabe>
+              <p class="anf__oder"><span>oder Anfrageformular ausfüllen</span></p>
 
-            <p class="anf__feld" id="anf-name-feld">
-              <label for="anf-name">Wie möchten Sie angesprochen werden?</label>
-              <input type="text" id="anf-name" name="name" autocomplete="name" placeholder="Vor- und Nachname">
-            </p>
-            <!-- Ein Feld statt zwei: Maik braucht genau einen Rueckkanal. Der
-                 Placeholder schubst bewusst Richtung Telefon, das Label erlaubt
-                 beides. type="text", weil type="tel" die E-Mail-Eingabe erschwert. -->
-            <p class="anf__feld">
-              <label for="anf-kontakt">Wie erreichen wir Sie?</label>
-              <input type="text" id="anf-kontakt" name="kontakt" autocomplete="tel" placeholder="Telefonnummer oder E-Mail" inputmode="text">
-            </p>
+              <p class="anf__feld" id="anf-name-feld">
+                <label for="anf-name">Wie möchten Sie angesprochen werden?</label>
+                <input type="text" id="anf-name" name="name" autocomplete="name" placeholder="Vor- und Nachname">
+              </p>
+              <!-- Ein Feld statt zwei: Maik braucht genau einen Rueckkanal. Der
+                   Placeholder schubst bewusst Richtung Telefon, das Label erlaubt
+                   beides. type="text", weil type="tel" die E-Mail-Eingabe erschwert. -->
+              <p class="anf__feld">
+                <label for="anf-kontakt">Wie erreichen wir Sie?</label>
+                <input type="text" id="anf-kontakt" name="kontakt" autocomplete="tel" placeholder="Telefonnummer oder E-Mail" inputmode="text">
+              </p>
 
-            <p class="anf__feld anf__feld--frei" id="anf-nachricht-feld">
-              <label for="anf-nachricht">Worum geht es?</label>
-              <textarea id="anf-nachricht" name="nachricht" rows="4"
-                placeholder="Eine kurze Beschreibung genügt — was ist zu tun, und wo?"></textarea>
-            </p>
+              <p class="anf__feld anf__feld--frei" id="anf-nachricht-feld">
+                <label for="anf-nachricht">Worum geht es?</label>
+                <textarea id="anf-nachricht" name="nachricht" rows="4"
+                  placeholder="Eine kurze Beschreibung genügt — was ist zu tun, und wo?"></textarea>
+              </p>
 
-            <div class="anf__abschluss">
-              <button type="submit" class="btn btn-primary" data-anf-senden>
-                <svg class="anf-senden__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="anf-senden__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-                <span class="anf-senden__label">Anfrage senden</span>
-                <span class="anf-senden__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
-              </button>
-              <p class="anf__status" data-anf-status role="status" aria-live="polite"></p>
+              <div class="anf__abschluss">
+                <button type="submit" class="btn btn-primary" data-anf-senden>
+                  <svg class="anf-senden__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="anf-senden__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+                  <span class="anf-senden__label">Anfrage senden</span>
+                  <span class="anf-senden__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
+                </button>
+                <p class="anf__status" data-anf-status role="status" aria-live="polite"></p>
+              </div>
+
+              <p class="anf__rechtliches">
+                Fotos senden Sie am schnellsten direkt per WhatsApp mit.
+                Wie wir Ihre Angaben verarbeiten, steht in der <a href="datenschutz/">Datenschutzerklärung</a>.
+              </p>
             </div>
-
-            <p class="anf__rechtliches">
-              Fotos senden Sie am schnellsten direkt per WhatsApp mit.
-              Wie wir Ihre Angaben verarbeiten, steht in der <a href="datenschutz/">Datenschutzerklärung</a>.
-            </p>
           </form>
 
           <div data-anf-modus="detail" hidden inert aria-hidden="true">
@@ -2546,7 +2552,7 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/js/mobile-private-review.js?v=20260906b" defer></script>
 <script src="assets/js/private-proof.js?v=20260906a" defer></script>
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>
-<script src="assets/js/anfrage.js?v=20260913p" defer></script>
+<script src="assets/js/anfrage.js?v=20260913q" defer></script>
 <script src="assets/js/home-header-morph.js?v=20260830b" defer></script>
 <script src="assets/js/ueber-video.js?v=20260905b" defer></script>
 </body>
