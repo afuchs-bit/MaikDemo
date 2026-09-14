@@ -3256,15 +3256,20 @@ html.home-theme-dark .footer-social-iphone {
     white-space: nowrap;
   }
 
+  /* AP-323: Zwei Zeilen statt einer. Die Erreichbarkeitszeile steht jetzt OBEN
+     und ueber die ganze Breite, darunter die beiden Kacheln. Die dritte Spalte
+     bleibt im Raster, damit die Zeile die volle Containerbreite bekommt - sie
+     war vorher auf gut 200px eingezwaengt und stand bei 360px auf Kante. */
   html.home-theme-dark .site-footer .footer-social-iphone {
     display: grid;
     /* Tippziele bleiben absolut: 44px ist die Mindestgroesse nach WCAG 2.5.8.
        Mitskaliert waeren es auf einem 320px-Geraet nur noch 35px. */
     grid-template-columns: 44px 44px minmax(0, 1fr);
-    grid-template-rows: minmax(44px, auto);
+    grid-template-rows: auto minmax(44px, auto);
     align-items: center;
     justify-content: start;
     column-gap: 2px;
+    row-gap: 8px;
     margin-top: 0.875rem;
   }
 
@@ -3281,14 +3286,16 @@ html.home-theme-dark .footer-social-iphone {
     background: transparent;
   }
 
-  html.home-theme-dark .site-footer .footer-social-link:first-child {
+  /* Nicht mehr :first-child - das ist seit AP-323 der Absatz. Die WhatsApp-
+     Kachel ist das einzige <a> in diesem Block, Instagram ein <span>. */
+  html.home-theme-dark .site-footer a.footer-social-link {
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 2;
   }
 
   html.home-theme-dark .site-footer .footer-social-link--instagram {
     grid-column: 2;
-    grid-row: 1;
+    grid-row: 2;
   }
 
   /* AP-321: 42px statt 2.5rem - fest in Pixeln, weil die Wurzel-Schriftgroesse
@@ -3331,7 +3338,7 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-availability {
-    grid-column: 3;
+    grid-column: 1 / -1;
     grid-row: 1;
     align-self: center;
     min-width: 0;
