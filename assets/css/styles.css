@@ -1462,20 +1462,15 @@ p  { margin: 0; }
 }
 .site-footer a { color: rgba(255,255,255,.86); text-decoration: none; }
 .footer-route {
-  /* Der Schleier folgt den Buchstaben und dem Pfeil, nicht einem Kasten um sie
-     herum: dafuer gibt es in CSS nur den weichgezeichneten Textschatten - jede
-     background-Loesung ist rechteckig, egal wie eng sie anliegt. Zwei Stufen,
-     beide ohne Versatz: die enge 2px-Stufe hellt direkt an der Glyphenkante
-     auf, die weite 5px-Stufe laeuft aus. Kein Padding und kein Rahmen mehr.
+  /* AP-321: Der weisse Schleier hinter den Buchstaben ist entfallen - das Rot
+     steht ohne Aufhellung auf dem dunklen Grund. Was vorher hier stand
+     (Kapsel, Kontur, Schleier), ist damit vollstaendig zurueckgenommen.
      width: fit-content muss bleiben - .footer-address ist ein Grid, jedes Kind
      wird blockifiziert und zoege sich sonst ueber die volle Spaltenbreite. */
   width: fit-content;
   color: var(--coral) !important;
   font-size: .76rem;
   font-weight: 750;
-  text-shadow:
-    0 0 2px rgba(255, 255, 255, .45),
-    0 0 5px rgba(255, 255, 255, .2);
 }
 .footer-navigation {
   min-width: 0;

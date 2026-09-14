@@ -3273,9 +3273,9 @@ html.home-theme-dark .footer-social-iphone {
     place-items: center;
     width: 44px;
     height: 44px;
-    /* 2px statt 4px: nur so passt die auf 2.5rem vergroesserte Kachel in die
-       44px-Tippflaeche, ohne deren Groesse anzutasten. */
-    padding: 0.125rem;
+    /* AP-321: Kein Padding mehr - die Kachel misst jetzt 42px und laesst in der
+       44px-Tippflaeche nur noch 1px Luft. */
+    padding: 0;
     border: 0;
     border-radius: 50%;
     background: transparent;
@@ -3291,11 +3291,18 @@ html.home-theme-dark .footer-social-iphone {
     grid-row: 1;
   }
 
+  /* AP-321: 42px statt 2.5rem - fest in Pixeln, weil die Wurzel-Schriftgroesse
+     unter 480px fluid ist und die Kachel sonst je nach Geraet zwischen 36 und
+     48px schwankte. 42 ist das Maximum, das die 44px-Tippflaeche und damit die
+     Rasterspalten unangetastet laesst: die dritte Spalte mit der
+     Erreichbarkeitszeile steht bei 360px exakt auf Kante, jeder Pixel mehr
+     wuerde sie herausbrechen lassen. Sichtbar bleiben 4px zwischen den
+     beiden Kacheln. */
   html.home-theme-dark .site-footer .footer-social-icon {
     display: grid;
     place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 42px;
+    height: 42px;
     border-radius: 12px;
     color: #fff;
   }
@@ -3305,8 +3312,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--whatsapp img {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 25px;
+    height: 25px;
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram {
@@ -3314,8 +3321,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram svg {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 25px;
+    height: 25px;
   }
 
   html.home-theme-dark .site-footer a.footer-social-link:focus-visible {
