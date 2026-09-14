@@ -55,13 +55,8 @@ const SOURCES = [
   // aendern, nur die Datei in _src ersetzen und build-images neu laufen
   // lassen - die Breitenliste passt sich per fit() selbst an.
   { src: 'assets/img/_src/ueber-team.jpg', dir: 'assets/img/ueber', name: 'ueber-team' },
-  // Warmbild der Ueber-uns-Sektion.
-  // AP-238: Quelle gegen die weite Ansicht getauscht (1068x1070). Die vorige war
-  // ein enger Ausschnitt um den Hund, in dem vom Garten fast nichts zu sehen war.
-  // Kein crop-Feld: die Quelle ist praktisch quadratisch (Verhaeltnis 0,998) und
-  // die Kachel ist es auch - es gibt nichts zu schneiden. Nur 480/960: die Kachel
-  // wird hoechstens 277 px breit dargestellt.
-  { src: 'assets/img/_src/ueber-hund.jpg', dir: 'assets/img/ueber', name: 'ueber-hund', widths: [480, 960] },
+  // AP-310: Der Eintrag 'ueber-hund' ist entfallen - das Foto steht auf keiner
+  // Seite mehr. Die Quelle liegt weiter in _src (gitignored), falls es zurueck soll.
   { src: 'assets/img/_src/ueber-hebeaktion.jpg', dir: 'assets/img/ueber', name: 'ueber-hebeaktion' },
   // AP-217: Standbild des Mustergarten-Videos, dient als poster und traegt die
   // Medienkachel. Quelle ist ein Einzelbild aus mustergarten.mp4 (960x725) - auf
