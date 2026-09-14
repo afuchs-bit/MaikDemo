@@ -1324,3 +1324,19 @@ zeigt die Vorschau leere Flächen, wo alles in Ordnung ist.
   „Unsere Leistungen von A bis Z" und der Willkommensgruß.
 - **O6 — Name des Hundes.** Weiter offen (AP-230 O1). Falls bekannt, gehört er in den
   Alt-Text.
+
+## AP-322 — Foto für „Sichtschutzbepflanzung"
+
+Die Leistung steht seit AP-322 in der A–Z-Liste der Startseite (zwischen „Rohdichs
+Grubengold" und „Teichbau & -technik"). Das Foto liefert der Auftraggeber nach.
+
+| Wert | Fundstelle | AP |
+|---|---|---|
+| Foto der Sichtschutzbepflanzung, quadratisch | `index.html`, Zeile der Leistung; ersetzt `assets/img/leistungen-mobile/platzhalter.svg` | AP-322 |
+
+Bis dahin steht dort ein neutraler Platzhalter **ohne Text** — auf der Seite darf kein
+sichtbarer Platzhaltertext erscheinen. Sobald das Foto vorliegt: wie bei den übrigen
+zwanzig Zeilen als `<picture>` mit AVIF und WebP in 480 und 640 px unter
+`assets/img/leistungen-mobile/sichtschutzbepflanzung-*` ablegen, den `<!-- OFFEN -->`-
+Kommentar in `index.html` auflösen und diesen Abschnitt streichen. Die Dateien dieses
+Ordners sind von Hand angelegt, es gibt dafür kein Build-Skript.

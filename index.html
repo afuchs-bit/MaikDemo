@@ -730,7 +730,7 @@ html.home-theme-dark body { background-color: #171916; }
     <a class="mobile-proof-request" href="#kontakt">
       <svg class="mobile-proof-request__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
       <span class="mobile-proof-request__label">Gartenwunsch besprechen</span>
-      <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
+      <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
     </a>
   </div>
 </section>
@@ -1159,6 +1159,18 @@ html.home-theme-dark body { background-color: #171916; }
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/rohdichs-grubengold-480.avif 480w, assets/img/leistungen-mobile/rohdichs-grubengold-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/rohdichs-grubengold-480.webp 480w, assets/img/leistungen-mobile/rohdichs-grubengold-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/rohdichs-grubengold-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
+        <!-- AP-322: Neue Leistung, alphabetisch zwischen R und T. Ziel ist die
+             Bepflanzungsseite - sie traegt die Hecken als Sichtschutz.
+             [OFFEN: Foto fuer Sichtschutzbepflanzung - docs/offene-punkte.md.
+             Bis dahin der neutrale Platzhalter ohne Text; sobald das Bild da
+             ist, wird daraus derselbe picture-Block wie in den uebrigen
+             Zeilen: avif und webp in 480 und 640.] -->
+        <li class="iphone-service-row iphone-service-row--start">
+          <a class="iphone-service-card" href="privatkunden/leistungen/bepflanzung/" aria-label="Sichtschutzbepflanzung ansehen">
+            <span class="iphone-service-card__letter" aria-hidden="true">S</span><span class="iphone-service-card__title"><strong>Sichtschutz<wbr>bepflanzung</strong></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><img src="assets/img/leistungen-mobile/platzhalter.svg" alt="" width="640" height="640" loading="lazy" decoding="async"></span>
+          </a>
+        </li>
         <li class="iphone-service-row iphone-service-row--start">
           <a class="iphone-service-card" href="privatkunden/leistungen/teichbau/" aria-label="Teichbau und Teichtechnik einschließlich Ufergestaltung ansehen">
             <span class="iphone-service-card__letter" aria-hidden="true">T</span><span class="iphone-service-card__title"><strong>Teichbau &amp; -technik</strong><small>inklusive Ufergestaltung</small></span>
@@ -1190,20 +1202,14 @@ html.home-theme-dark body { background-color: #171916; }
           </a>
         </li>
       </ul>
-      <a class="iphone-service-feature iphone-service-feature--advice" href="#anfrage" data-prefill-bereich="unsicher" aria-label="Persönliche Beratung anfragen">
-        <span class="iphone-service-feature__media" aria-hidden="true">
-          <picture><source type="image/avif" srcset="assets/img/leistungen-mobile/beratung-640.avif 640w, assets/img/leistungen-mobile/beratung-1200.avif 1200w" sizes="(max-width: 404px) calc(100vw - 48px), 640px"><source type="image/webp" srcset="assets/img/leistungen-mobile/beratung-640.webp 640w, assets/img/leistungen-mobile/beratung-1200.webp 1200w" sizes="(max-width: 404px) calc(100vw - 48px), 640px"><img src="assets/img/leistungen-mobile/beratung-1200.webp" alt="" width="1200" height="500" loading="lazy" decoding="async"></picture>
-        </span>
-        <span class="iphone-service-feature__body">
-          <span class="iphone-service-feature__eyebrow">Noch nicht sicher?</span>
-          <strong>Persönlich beraten lassen</strong>
-          <span class="iphone-service-feature__meta"><b aria-hidden="true">→</b></span>
-        </span>
-      </a>
+      <!-- AP-322: Die Karte "Persoenlich beraten lassen" ist auf Wunsch des
+           Auftraggebers entfallen. Der Weg ins Formular bleibt ueber den
+           Knopf "Zum Kontaktformular" darunter erhalten - er traegt
+           dasselbe Ziel und dasselbe data-prefill-bereich. -->
       <a class="mobile-proof-request iphone-service-contact-cta" href="#anfrage" data-prefill-bereich="unsicher">
         <svg class="mobile-proof-request__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
         <span class="mobile-proof-request__label">Zum Kontaktformular</span>
-        <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
+        <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
       </a>
     </div>
 
@@ -1713,7 +1719,7 @@ html.home-theme-dark body { background-color: #171916; }
               <button type="submit" class="btn btn-primary" data-anf-senden>
                 <svg class="anf-senden__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="anf-senden__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
                 <span class="anf-senden__label">Anfrage senden</span>
-                <span class="anf-senden__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
+                <span class="anf-senden__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
               </button>
               <p class="anf__status" data-anf-status role="status" aria-live="polite"></p>
             </div>

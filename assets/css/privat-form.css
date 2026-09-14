@@ -4613,27 +4613,6 @@
     background: linear-gradient(90deg, #86ba17 0%, #b7d51e 62%, #ffe300 100%);
   }
 
-  .iphone-service-feature--advice {
-    min-height: 13.3125rem;
-  }
-
-  .iphone-service-feature--advice .iphone-service-feature__body {
-    grid-template-columns: minmax(0, 1fr) auto;
-    min-height: 5.1875rem;
-  }
-
-  .iphone-service-feature--advice .iphone-service-feature__body > strong {
-    grid-column: 1;
-    align-self: center;
-  }
-
-  .iphone-service-feature--advice .iphone-service-feature__meta {
-    grid-column: 2;
-    align-self: center;
-    justify-content: flex-end;
-    margin-top: 0;
-  }
-
   /* AP-317: A-Z-Liste statt Kachelraster. Eine Spalte, kein Abstand zwischen
      den Zeilen - getrennt wird nur beim Buchstabenwechsel. */
   .iphone-service-grid {
