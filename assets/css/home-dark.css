@@ -1230,6 +1230,12 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
     width: clamp(166px, calc(100vw - 142px), 256px);
+    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png?v=20260913b");
+  }
+
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand-logo,
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed.is-scrolled .brand-logo {
+    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-balanced-full-flower.png?v=20260913b");
   }
 }
 
@@ -1429,6 +1435,14 @@ html.home-theme-dark .fork-path:hover {
     justify-self: center;
   }
 
+  /* Der sichtbare Schwerpunkt der neuen Bluete liegt innerhalb ihrer
+     transparenten Bildflaeche leicht links. Der kleine optische Ausgleich
+     zentriert die Form im Kopf des Standort-Pins. */
+  html.home-theme-dark .hero-proof-location-flower {
+    top: calc(43% + .5px);
+    left: calc(50% + .4px);
+  }
+
   html.home-theme-dark .hero-proof-location-text {
     text-align: left;
   }
@@ -1526,10 +1540,10 @@ html.home-theme-dark .fork-path:hover {
     position: relative;
     isolation: isolate;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px 14px;
+    gap: 8px;
     width: fit-content;
     max-width: 100%;
     margin: 0 auto;
@@ -1556,19 +1570,18 @@ html.home-theme-dark .fork-path:hover {
     mask-repeat: no-repeat;
     -webkit-mask-size: 220% 100%;
     mask-size: 220% 100%;
-    transform: translateX(-18px);
+    transform: none;
     transition:
       opacity .78s cubic-bezier(.16, 1, .3, 1),
-      transform 1.15s cubic-bezier(.16, 1, .3, 1),
-      -webkit-mask-position 1.15s cubic-bezier(.16, 1, .3, 1),
-      mask-position 1.15s cubic-bezier(.16, 1, .3, 1);
+      -webkit-mask-position .78s cubic-bezier(.16, 1, .3, 1),
+      mask-position .78s cubic-bezier(.16, 1, .3, 1);
   }
 
   html.home-theme-dark .gate-welcome-kicker.gate-welcome-reveal.is-in {
     opacity: 1;
     -webkit-mask-position: 0 0;
     mask-position: 0 0;
-    transform: translateX(0);
+    transform: none;
   }
 
   /* Ohne GSAP folgt das Foto dem Pinselzug als ruhiger Fallback. */
@@ -1610,11 +1623,11 @@ html.home-theme-dark .fork-path:hover {
     width: 10.75rem;
     max-width: 100%;
     height: auto;
-    flex: 0 1 10.75rem;
+    flex: 0 0 auto;
     margin: 0;
     overflow: hidden;
     filter: saturate(.86) brightness(1.18) drop-shadow(0 1px 1px rgb(0 0 0 / 35%));
-    transform: translateY(2px);
+    transform: none;
   }
 
   html.home-theme-dark :is(
@@ -1631,7 +1644,7 @@ html.home-theme-dark .fork-path:hover {
     isolation: isolate;
     width: 100%;
     aspect-ratio: 4 / 3;
-    margin: 2rem 0 0;
+    margin: 2.5rem 0 0;
     overflow: visible;
     border-radius: 16px;
     background: transparent;
@@ -1813,7 +1826,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-qualification-option:nth-child(4) .gate-welcome-qualification-content {
-    transform: translateX(-2px);
+    transform: translateX(2.675px);
   }
 
   html.home-theme-dark .gate-welcome-qualification-flower {
