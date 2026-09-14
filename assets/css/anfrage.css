@@ -324,7 +324,9 @@
 /* AP-310: Die E-Mail-Kachel steht unter der Trennzeile und beschriftet den
    Formularblock. Als eigenstaendiger Block braucht sie den Abstand selbst -
    dieselben 1.125rem, mit denen .anf__feld (Z. 50) die Felder trennt. */
-.anf__kanal--mail { margin: 0 0 1.125rem; }
+/* AP-314: wieder Rasterkind - die Kachel spannt die volle Zeile unter den
+   beiden Direktkanaelen. Den Abstand macht das gap des Rasters. */
+.anf__kanal--mail { grid-column: 1 / -1; }
 
 /* Der Umschlag ist dasselbe Zeichen wie in der Kontaktliste der Sektion; als
    Inline-SVG statt Hintergrundbild, damit er die Farbe der Kachel erbt. */
