@@ -4657,16 +4657,20 @@
   }
 
   /* AP-317: Zeile statt Kachel. Spalten: Buchstabe | Name | Foto.
-     Mindesthoehe 4.5rem = 72px, damit das 64px-Foto 4px Luft nach oben und
-     unten hat und die Tippflaeche ueber 48px liegt. Kein Rahmen, kein
-     Hintergrund - die Zeilen sollen als Liste lesen, nicht als Kacheln. */
+     Kein Rahmen, kein Hintergrund - die Zeilen sollen als Liste lesen, nicht
+     als Kacheln.
+     AP-320: Das Foto steht auf 88px und damit fest in Pixeln, nicht in rem.
+     Die Wurzel-Schriftgroesse ist unter 480px fluid; in rem waere das Foto je
+     nach Geraet 79 bis 105px gross geworden, nie die gewuenschten 88. Die
+     Mindesthoehe folgt derselben Rechnung wie vorher: Foto plus 4px Luft nach
+     oben und unten, also 96px. */
   .iphone-service-card {
     display: grid;
-    grid-template-columns: 1.5rem minmax(0, 1fr) 4rem;
+    grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
     align-items: center;
     column-gap: 0.75rem;
     height: auto;
-    min-height: 4.5rem;
+    min-height: 96px;
     padding: 0.25rem 0;
     border: 0;
     border-radius: 0;
@@ -4687,8 +4691,8 @@
 
   .iphone-service-card__media {
     grid-column: 3;
-    width: 4rem;
-    height: 4rem;
+    width: 88px;
+    height: 88px;
     margin-bottom: 0;
     border-radius: 12px 4px 12px 4px;
     clip-path: none;
