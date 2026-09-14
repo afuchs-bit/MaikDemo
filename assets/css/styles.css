@@ -1455,31 +1455,27 @@ p  { margin: 0; }
   display: grid;
   gap: 7px;
   margin: 0;
-  color: rgba(255,255,255,.7);
+  color: #fff;
   font-style: normal;
   font-size: .88rem;
   line-height: 1.45;
 }
 .site-footer a { color: rgba(255,255,255,.86); text-decoration: none; }
 .footer-route {
-  /* Ein weisser Schleier hinter der Schrift statt einer Kante an ihr: der
-     Farbverlauf laeuft nach aussen auf 0 aus, damit keine sichtbare Kontur
-     entsteht - eine flaechige Fuellung mit border-radius haette wieder einen
-     Rand. Das negative margin-left gleicht das linke Padding aus, sonst
-     ruecken die Buchstaben gegen die Adresszeile darueber ein.
+  /* Der Schleier folgt den Buchstaben und dem Pfeil, nicht einem Kasten um sie
+     herum: dafuer gibt es in CSS nur den weichgezeichneten Textschatten - jede
+     background-Loesung ist rechteckig, egal wie eng sie anliegt. Zwei Stufen,
+     beide ohne Versatz: die enge 2px-Stufe hellt direkt an der Glyphenkante
+     auf, die weite 5px-Stufe laeuft aus. Kein Padding und kein Rahmen mehr.
      width: fit-content muss bleiben - .footer-address ist ein Grid, jedes Kind
      wird blockifiziert und zoege sich sonst ueber die volle Spaltenbreite. */
   width: fit-content;
-  margin-left: -.6em;
-  padding: .22em .6em;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, .26) 0%,
-    rgba(255, 255, 255, .13) 52%,
-    rgba(255, 255, 255, 0) 100%);
   color: var(--coral) !important;
   font-size: .76rem;
   font-weight: 750;
+  text-shadow:
+    0 0 2px rgba(255, 255, 255, .45),
+    0 0 5px rgba(255, 255, 255, .2);
 }
 .footer-navigation {
   min-width: 0;

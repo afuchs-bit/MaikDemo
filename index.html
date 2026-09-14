@@ -33,10 +33,10 @@ html.home-theme-dark body { background-color: #171916; }
       imagesrcset="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp 1023w, assets/img/hero/hero-fahrzeug-palmengarten-v10-mobile-2046-q92.webp 2046w"
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260913n" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260913m" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260913o" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260913n" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260911g" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260913l" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260914a" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260914a" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
@@ -977,13 +977,19 @@ html.home-theme-dark body { background-color: #171916; }
              Geometrie: massgeblich ist die SICHTBARE Pfadhoehe von 17,9 Einheiten
              (y 3,6 bis 21,5), nicht die 24er-Box des Quell-SVG. 32 px Zielhoehe sind
              bei 0,0888 px/Einheit 360 Einheiten, also scale(20). Die Pin-SPITZE liegt
-             bei (12;21,5), nach der Skalierung bei (240;430) - translate(84.9,-212.3)
+             bei (12;21,5), nach der Skalierung bei (240;430) - der translate-Anteil
              setzt sie auf Herne (324,9;217,7). Ohne das stuende das Zeichen mit der
              Mitte statt der Spitze auf dem Ort.
+             AP-310: Auf Wunsch des Auftraggebers in zwei Schritten vergroessert,
+             scale(20) -> scale(28), also 40 % mehr. Der translate-Anteil ist jedes
+             Mal mitzurechnen, sonst wandert die Spitze vom Ort weg:
+             tx = 324,9 - 12*s, ty = 217,7 - 21,5*s; fuer s=28 also
+             translate(-11.1,-384.3). Strichstaerke und Schatten liegen in lokalen
+             Einheiten und wachsen im selben Verhaeltnis mit.
              Die Bluete sitzt im Pinkopf: der Bogen a6.75 6.75 0 1 0-13.5 0 beschreibt
              einen Kreis um (12;10,35), dort liegt sie auch im Hero. -->
         <g class="m-node seat" style="--i:0">
-          <g class="m-seat-pin" filter="url(#seat-schatten)" transform="translate(84.9,-212.3) scale(20)">
+          <g class="m-seat-pin" filter="url(#seat-schatten)" transform="translate(-11.1,-384.3) scale(28)">
             <path d="M12 21.5c.65-.77 6.75-7.04 6.75-11.15a6.75 6.75 0 1 0-13.5 0C5.25 14.46 11.35 20.73 12 21.5Z"
                   fill="none" stroke="#B2CA48" stroke-width="1.65"
                   stroke-linecap="round" stroke-linejoin="round"/>

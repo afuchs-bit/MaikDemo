@@ -3581,13 +3581,6 @@
   line-height: 1.05;
   letter-spacing: -.028em;
 }
-.private-proof-section-head p {
-  max-width: 62ch;
-  margin: 16px auto 0;
-  color: var(--ink-2);
-  font-size: var(--type-section-lead-size);
-  line-height: 1.62;
-}
 .private-proof-summary h3 {
   max-width: 12ch;
   margin: clamp(20px,2.2vw,28px) 0 0;
@@ -3965,7 +3958,6 @@
 @media (max-width:520px) {
   .private-proof-section-head { margin-bottom: var(--space-section-head); text-align: left; }
   .private-proof-section-head h2 { margin-inline: 0; font-size: var(--type-section-title-size); }
-  .private-proof-section-head p { margin-top: var(--space-title-subtext); font-size: var(--type-section-lead-size); }
   .private-proof-summary h3 {
     margin-top: 15px;
     font-size: clamp(1.78rem,8.1vw,2.1rem);
@@ -4890,6 +4882,10 @@
   }
 
   .private-review-carousel.has-review-swipe .private-review-excerpt p {
+    /* Reines Weiss statt des Papiertons --ink. Die Regel steht bewusst hier im
+       480px-Block: ausserhalb davon liegt das Zitat auf der hellen Karte, wo
+       --ink dunkel ist (Zeile 3616) - weiss waere dort unlesbar. */
+    color: #fff;
     font-size: .94rem;
     line-height: 1.52;
   }
