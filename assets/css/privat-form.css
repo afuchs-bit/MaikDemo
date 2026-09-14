@@ -4590,8 +4590,9 @@
     line-height: 1.2;
   }
 
-  .iphone-service-feature__meta b,
-  .iphone-service-card__title > b {
+  /* AP-317: .iphone-service-card__title > b entfaellt - die Zeilen tragen
+     keine Bluete mehr. Die Regel bleibt fuer .iphone-service-feature__meta b. */
+  .iphone-service-feature__meta b {
     position: relative;
     flex: 0 0 auto;
     width: 1.5rem;
@@ -4605,9 +4606,7 @@
   }
 
   .iphone-service-feature__meta b::before,
-  .iphone-service-card__title > b::before,
-  .iphone-service-feature__meta b::after,
-  .iphone-service-card__title > b::after {
+  .iphone-service-feature__meta b::after {
     content: none;
   }
 
@@ -4643,57 +4642,86 @@
     margin-top: 0;
   }
 
+  /* AP-317: A-Z-Liste statt Kachelraster. Eine Spalte, kein Abstand zwischen
+     den Zeilen - getrennt wird nur beim Buchstabenwechsel. */
   .iphone-service-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 1fr;
-    gap: 0.75rem;
+    display: block;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .iphone-service-grid > li {
+  .iphone-service-row {
     min-width: 0;
   }
 
+  /* Linie nur oberhalb einer neuen Buchstabengruppe, nicht ueber der ersten. */
+  .iphone-service-row--start {
+    border-top: 1px solid rgba(255, 255, 255, .12);
+  }
+
+  .iphone-service-grid > .iphone-service-row:first-child {
+    border-top: 0;
+  }
+
+  /* AP-317: Zeile statt Kachel. Spalten: Buchstabe | Name | Foto.
+     Mindesthoehe 4.5rem = 72px, damit das 64px-Foto 4px Luft nach oben und
+     unten hat und die Tippflaeche ueber 48px liegt. Kein Rahmen, kein
+     Hintergrund - die Zeilen sollen als Liste lesen, nicht als Kacheln. */
   .iphone-service-card {
-    height: 14.375rem;
-    min-height: 14.375rem;
+    display: grid;
+    grid-template-columns: 1.5rem minmax(0, 1fr) 4rem;
+    align-items: center;
+    column-gap: 0.75rem;
+    height: auto;
+    min-height: 4.5rem;
+    padding: 0.25rem 0;
     border: 0;
-    border-radius: 18px 5px 18px 5px;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  /* Anfangsbuchstabe. 1.25rem = 20px, zwischen Name (.9375rem) und der
+     fruheren Kachelschrift. Sitzt in Zeile 1 und damit auf der Namenszeile. */
+  .iphone-service-card__letter {
+    grid-column: 1;
+    color: var(--home-lime, #97ce20);
+    font-family: var(--body);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
   }
 
   .iphone-service-card__media {
-    height: 11.5rem;
-    margin-bottom: -0.75rem;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 0.75rem));
+    grid-column: 3;
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 0;
+    border-radius: 12px 4px 12px 4px;
+    clip-path: none;
   }
 
-  .iphone-service-card--explained .iphone-service-card__media {
-    height: 9.875rem;
-  }
-
+  /* AP-317: Der Name steht in der mittleren Spalte, linksbuendig. */
   .iphone-service-card__title {
-    display: flex;
-    flex: 1 1 auto;
-    gap: 0.375rem;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 3.25rem;
-    padding: 0.5625rem 0.5rem 0.5625rem 0.625rem;
+    display: grid;
+    grid-column: 2;
+    gap: 2px;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
   }
 
   .iphone-service-card__title strong {
     min-width: 0;
     color: var(--ink);
-    font-family: var(--display);
-    font-size: .875rem;
-    font-weight: 800;
-    letter-spacing: -.018em;
-    line-height: 1.08;
+    font-family: var(--body);
+    font-size: .9375rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.3;
     overflow-wrap: normal;
-    text-wrap: balance;
+    text-wrap: pretty;
   }
 
   .iphone-service-card__title--explained {
@@ -4728,15 +4756,16 @@
     outline-offset: 3px;
   }
 
-  .iphone-service-feature:active,
-  .iphone-service-card:active {
+  .iphone-service-feature:active {
     border-color: rgba(151, 206, 32, .8);
     box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .28);
     transform: scale(.985);
   }
 
-  .iphone-service-card:active {
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  /* AP-317: Die Zeile hat keinen Rahmen mehr - Rueckmeldung nur ueber den
+     Namen und das leichte Zoomen des Fotos (Regel darunter). */
+  .iphone-service-card:active .iphone-service-card__title strong {
+    color: var(--home-lime, #97ce20);
   }
 
   .iphone-service-feature:active img,
@@ -4745,8 +4774,7 @@
     transform: scale(1.035);
   }
 
-  .iphone-service-feature:active .iphone-service-feature__meta b,
-  .iphone-service-card:active .iphone-service-card__title > b {
+  .iphone-service-feature:active .iphone-service-feature__meta b {
     transform: translateX(2px);
   }
 }
