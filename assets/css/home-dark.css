@@ -2689,10 +2689,35 @@ html.home-theme-dark .mr-ueber__mehr-titel {
    Zeile folgt statt allein in einer eigenen zu landen. Ruhig mit leichtem
    Nachruecken beim Mauszeiger - wie die uebrigen Verweis-Pfeile der Seite und
    bewusst nicht der pulsierende Pfeil der Haupt-CTAs (AP-270): dieser Button
-   ist ein Nebenweg, siehe Kommentar oben. */
+   ist ein Nebenweg, siehe Kommentar oben.
+
+   AP-324: Seit dieser Fassung ist der Pfeil keine Glyphe mehr, sondern dasselbe
+   Bild wie in der Galeriezeile (.mobile-proof-gallery__link-arrow-chip,
+   mobile-social-proof.css:884) - der gezeichnete gerade Pfeil, dort wie hier
+   30px breit. display muss gesetzt bleiben, der Bild-Reset in styles.css:187
+   stellt jedes img auf block.
+
+   Weiss statt des Gruens der Datei: Die Grafik traegt ihr #56E607 fest im Pfad
+   (assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg), und ein <img> laesst
+   sich nicht per fill einfaerben - dieselbe Datei haengt an drei weiteren
+   Buttons (AP-322) und soll dort gruen bleiben. brightness(0) zieht die
+   Fuellung auf Schwarz, invert(1) dreht sie auf Weiss; die Transparenz bleibt
+   dabei erhalten, gefaerbt wird nur die Zeichnung. Ergebnis ist reines #fff,
+   0,4 % heller als das --ink der Titelzeile - im Nebeneinander nicht
+   unterscheidbar. */
 html.home-theme-dark .mr-ueber__mehr-pfeil {
   display: inline-block;
+  width: 30px;
+  height: auto;
   margin-left: .45em;
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
+  /* Der Hoehenversatz steht in einer eigenen Variablen statt direkt im
+     transform. Zwei transform-Deklarationen auf demselben Element ersetzen
+     einander vollstaendig - der Hover-Versatz unten wuerde die Verschiebung
+     sonst beim Zeigen zuruecksetzen. Ausserhalb der Handybreiten ist sie 0. */
+  --pfeil-y: 0px;
+  transform: translate(0, var(--pfeil-y));
   transition: transform .18s var(--ease);
 }
 
@@ -2722,7 +2747,7 @@ html.home-theme-dark .mr-ueber__mehr-logo {
   }
 
   html.home-theme-dark .mr-ueber__mehr:hover .mr-ueber__mehr-pfeil {
-    transform: translateX(2px);
+    transform: translate(2px, var(--pfeil-y));
   }
 }
 
@@ -2850,6 +2875,33 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
   html.home-theme-dark .mr-ueber__mehr-titel { grid-area: titel; align-self: end; }
   html.home-theme-dark .mr-ueber__mehr-sub   { grid-area: sub; align-self: start; }
   html.home-theme-dark .mr-ueber__mehr-logo  { grid-area: logo; }
+
+  /* AP-324: Der gezeichnete Pfeil an der rechten Kante, auf halber Buttonhoehe.
+
+     Der Pfeil steht im Markup weiter im Titel-Span, verlaesst hier aber den
+     Textfluss: absolut am Button (der traegt position: relative), rechts auf
+     dessen Innenkante - right: 18px ist sein padding-right - und ueber
+     top: 50% mit translate(0, -50%) auf der Mittelachse. Prozentwerte im
+     transform beziehen sich auf die eigene Groesse, die Zentrierung stimmt
+     deshalb bei jeder Schriftgroesse; die Variable --pfeil-y aus der Grundregel
+     traegt hier eben diese -50%, damit der Hover-Versatz sie nicht loescht.
+
+     Weil der Pfeil aus dem Fluss ist, bleibt die Titelzeile so hoch wie vorher -
+     das Bild kostet den Button keine Hoehe (gemessen 64px bei 360 und 390,
+     unveraendert). Dafuer wuerde ein langer Titel unter dem Pfeil durchlaufen,
+     deshalb haelt padding-right am Titel den Platz frei.
+
+     Nur bis 480px: darueber steht der Button dreizeilig (Titel, Unterzeile,
+     Blume), seine Mitte laege dann im Logo. */
+  html.home-theme-dark .mr-ueber__mehr-pfeil {
+    --pfeil-y: -50%;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    margin-left: 0;
+  }
+
+  html.home-theme-dark .mr-ueber__mehr-titel { padding-right: 2.2em; }
 
   /* Die Blume ist seit AP-288 nahezu quadratisch (210x180) statt eines breiten
      Schriftzugs - gesteuert wird deshalb wieder ueber die Hoehe. 30px, damit
