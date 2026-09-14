@@ -1088,10 +1088,19 @@ html.home-theme-dark body { background-color: #171916; }
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/dachbegruenung-480.avif 480w, assets/img/leistungen-mobile/dachbegruenung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/dachbegruenung-480.webp 480w, assets/img/leistungen-mobile/dachbegruenung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/dachbegruenung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
+        <!-- AP-325: Neues Foto des Auftraggebers - die Baugrube statt der
+             bisherigen Aufnahme. Quadratischer Ausschnitt ueber die volle
+             Breite des aufgerichteten Originals (4284x5712), ab y=571; das
+             nimmt den Streifen mit Haus, Strasse und Mischmaschine oben
+             heraus, die Grube fuellt das Bild.
+             Der ?v=-Anhang ist noetig, weil die Dateinamen gleich bleiben und
+             der Inhalt wechselt - ohne ihn zeigt ein Geraet mit altem Cache
+             weiter das alte Bild. Nur diese Zeile traegt ihn, alle uebrigen
+             Dateien des Ordners sind unveraendert. -->
         <li class="iphone-service-row iphone-service-row--start">
           <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Erd- und Baggerarbeiten ansehen">
             <span class="iphone-service-card__letter" aria-hidden="true">E</span><span class="iphone-service-card__title"><strong>Erd- &amp; Baggerarbeiten</strong></span>
-            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/erd-baggerarbeiten-480.avif 480w, assets/img/leistungen-mobile/erd-baggerarbeiten-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/erd-baggerarbeiten-480.webp 480w, assets/img/leistungen-mobile/erd-baggerarbeiten-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/erd-baggerarbeiten-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/erd-baggerarbeiten-480.avif?v=20260914a 480w, assets/img/leistungen-mobile/erd-baggerarbeiten-640.avif?v=20260914a 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/erd-baggerarbeiten-480.webp?v=20260914a 480w, assets/img/leistungen-mobile/erd-baggerarbeiten-640.webp?v=20260914a 640w" sizes="88px"><img src="assets/img/leistungen-mobile/erd-baggerarbeiten-480.webp?v=20260914a" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <li class="iphone-service-row iphone-service-row--start">
@@ -1162,14 +1171,15 @@ html.home-theme-dark body { background-color: #171916; }
         </li>
         <!-- AP-322: Neue Leistung, alphabetisch zwischen R und T. Ziel ist die
              Bepflanzungsseite - sie traegt die Hecken als Sichtschutz.
-             [OFFEN: Foto fuer Sichtschutzbepflanzung - docs/offene-punkte.md.
-             Bis dahin der neutrale Platzhalter ohne Text; sobald das Bild da
-             ist, wird daraus derselbe picture-Block wie in den uebrigen
-             Zeilen: avif und webp in 480 und 640.] -->
+             AP-325: Das Foto des Auftraggebers ersetzt den Platzhalter. Aus dem
+             Original (1440x1080) ist ein quadratischer Ausschnitt von 820px ab
+             x=390, y=250 geschnitten - ein leichter Zoom (Faktor 1,32), der
+             Himmel und Rasen zuruecknimmt, damit die Kirschlorbeerhecke links
+             und die Pflanzung an der Mauer rechts das Bild fuellen. -->
         <li class="iphone-service-row iphone-service-row--start">
           <a class="iphone-service-card" href="privatkunden/leistungen/bepflanzung/" aria-label="Sichtschutzbepflanzung ansehen">
             <span class="iphone-service-card__letter" aria-hidden="true">S</span><span class="iphone-service-card__title"><strong>Sichtschutz<wbr>bepflanzung</strong></span>
-            <span class="iphone-service-card__media" aria-hidden="true"><img src="assets/img/leistungen-mobile/platzhalter.svg" alt="" width="640" height="640" loading="lazy" decoding="async"></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/sichtschutzbepflanzung-480.avif 480w, assets/img/leistungen-mobile/sichtschutzbepflanzung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/sichtschutzbepflanzung-480.webp 480w, assets/img/leistungen-mobile/sichtschutzbepflanzung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/sichtschutzbepflanzung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <li class="iphone-service-row iphone-service-row--start">
@@ -1178,10 +1188,15 @@ html.home-theme-dark body { background-color: #171916; }
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/teichbau-technik-480.avif 480w, assets/img/leistungen-mobile/teichbau-technik-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/teichbau-technik-480.webp 480w, assets/img/leistungen-mobile/teichbau-technik-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/teichbau-technik-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
+        <!-- AP-325: Neues Foto des Auftraggebers. Quadratischer Ausschnitt ueber
+             die volle Hoehe des Originals (1280x720), ab x=300 - die frisch
+             verlegte Pflasterflaeche fuellt das Bild, Haustuer und Rasen bleiben
+             als Zusammenhang. Zum ?v=-Anhang siehe den Kommentar an der Zeile
+             "Erd- & Baggerarbeiten" weiter oben. -->
         <li class="iphone-service-row">
           <a class="iphone-service-card" href="privatkunden/leistungen/terrasse-pflasterarbeiten/" aria-label="Terrassenbau ansehen">
             <span class="iphone-service-card__title"><strong>Terrassenbau</strong></span>
-            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/terrassenbau-480.avif 480w, assets/img/leistungen-mobile/terrassenbau-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/terrassenbau-480.webp 480w, assets/img/leistungen-mobile/terrassenbau-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/terrassenbau-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/terrassenbau-480.avif?v=20260914a 480w, assets/img/leistungen-mobile/terrassenbau-640.avif?v=20260914a 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/terrassenbau-480.webp?v=20260914a 480w, assets/img/leistungen-mobile/terrassenbau-640.webp?v=20260914a 640w" sizes="88px"><img src="assets/img/leistungen-mobile/terrassenbau-480.webp?v=20260914a" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <li class="iphone-service-row iphone-service-row--start">
