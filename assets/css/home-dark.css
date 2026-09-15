@@ -2623,6 +2623,48 @@ html.home-theme-dark .mr-ueber__punkt-icon {
   stroke-linejoin: round;
 }
 
+html.home-theme-dark .mr-ueber__punkt-icon-art {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  html.home-theme-dark .mr-ueber__punkte li {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon--default {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-top: -4px;
+    pointer-events: none;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform-origin: center;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art--dialog img {
+    transform: scale(1.25);
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art--calendar img {
+    transform: scale(1.18);
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art--partnership img {
+    transform: scale(1.52);
+  }
+}
+
 /* AP-235/AP-243: Der Weg zur Unterseite.
 
    Die Ecken folgen den Leistungskacheln: 18px oben links und unten rechts, 5px an
@@ -2854,8 +2896,8 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
   /* AP-292: Das Zweierraster aus AP-282 (Foto | Button) ist mit dem Foto
      entfallen. Der Button steht unter den Kernaussagen in voller Breite, als
      eine Zeile: Blume links, Titel und Unterzeile daneben. */
-  html.home-theme-dark .mr-ueber__kopf { text-align: left; }
-  html.home-theme-dark .mr-ueber__titel { justify-content: flex-start; text-align: left; }
+  html.home-theme-dark .mr-ueber__kopf { text-align: center; }
+  html.home-theme-dark .mr-ueber__titel { justify-content: center; text-align: center; }
 
   html.home-theme-dark .mr-ueber__split { margin-top: 24px; }
 
@@ -3032,14 +3074,7 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
   line-height: 1.3;
   letter-spacing: -.01em;
   text-wrap: balance;
-  /* AP-293: Deutlich zurueckgenommen. Die .75 auf 6px sassen als harter Saum
-     direkt an den Buchstaben und liessen die Zeile leuchten wie eine Leuchtreklame.
-     Die dritte, breiteste Stufe entfaellt ganz. Damit liegt der Schleier wieder
-     in der Groessenordnung der Qualifikationen (dort .16 bzw. .3 offen), die er
-     laut Auftrag von Anfang an aufnehmen sollte. */
-  text-shadow:
-    0 0 9px rgba(242, 226, 12, .24),
-    0 0 20px rgba(242, 226, 12, .1);
+  text-shadow: none;
 }
 
 html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
@@ -3064,6 +3099,10 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
 }
 
 @media (max-width: 480px) {
+  html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
+    color: var(--mobile-logo-green, #56e607);
+  }
+
   /* Name und Besuchshinweis stehen auf dem Telefon untereinander - neben dem
      Namen bliebe fuer den Hinweis keine lesbare Spalte.
      AP-310: margin-top zurueck auf 48px, nachdem das ueberstehende Hundefoto

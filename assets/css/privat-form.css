@@ -4785,14 +4785,73 @@
   }
 
   .iphone-service-feature--emergency {
-    border-color: rgba(255, 227, 0, .34);
-    background:
-      radial-gradient(circle at 94% 110%, rgba(255, 227, 0, .1), transparent 38%),
-      linear-gradient(145deg, #262a20 0%, #1c211a 100%);
+    min-height: 0;
+    border-color: rgba(151, 206, 32, .24);
+    border-radius: 18px 5px 18px 5px;
+    background: linear-gradient(145deg, #232720 0%, #1c201a 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .035),
+      0 12px 24px -24px rgba(0, 0, 0, .78);
   }
 
-  .iphone-service-feature--emergency .iphone-service-feature__media::after {
-    background: linear-gradient(90deg, #86ba17 0%, #b7d51e 62%, #ffe300 100%);
+  .iphone-service-feature--emergency .iphone-service-feature__body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .5rem;
+    align-content: center;
+    align-items: start;
+    min-height: 7rem;
+    padding: 1.0625rem 6.25rem 1.0625rem 1.125rem;
+  }
+
+  .iphone-service-feature--emergency .iphone-service-feature__eyebrow {
+    grid-column: 1;
+    color: var(--ink-mute);
+    font-size: .68rem;
+    letter-spacing: .075em;
+    opacity: .84;
+  }
+
+  .iphone-service-feature--emergency .iphone-service-feature__body > strong {
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: 1.0625rem;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: .015em;
+    line-height: 1.16;
+    text-transform: none;
+  }
+
+  .iphone-service-feature--emergency .iphone-service-feature__meta {
+    grid-column: 1;
+    justify-content: flex-start;
+    margin-top: 0;
+    color: var(--mobile-logo-green, #56e607);
+    font-size: .78rem;
+  }
+
+  .iphone-service-feature--emergency .iphone-service-feature__meta b {
+    position: absolute;
+    top: 50%;
+    right: 1.125rem;
+    display: grid;
+    place-items: center;
+    width: 3.875rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    background: #0e100d;
+    filter: none;
+    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .2);
+    transform: translateY(-50%);
+  }
+
+  .iphone-service-feature--emergency .iphone-service-feature__meta b img {
+    display: block;
+    width: 2.875rem;
+    height: auto;
+    object-fit: contain;
+    filter: none;
+    transform: none;
+    transition: none;
   }
 
   /* AP-317: A-Z-Liste statt Kachelraster. Eine Spalte, kein Abstand zwischen
@@ -4872,11 +4931,13 @@
   .iphone-service-card__title strong {
     min-width: 0;
     color: var(--ink);
-    font-family: var(--body);
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
     font-size: .9375rem;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 1.3;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: .015em;
+    line-height: 1.22;
+    text-transform: none;
     overflow-wrap: normal;
     text-wrap: pretty;
   }
@@ -4913,6 +4974,10 @@
     outline-offset: 3px;
   }
 
+  .iphone-service-feature--emergency:focus-visible {
+    outline-color: var(--home-lime, #97ce20);
+  }
+
   .iphone-service-feature:active {
     border-color: rgba(151, 206, 32, .8);
     box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .28);
@@ -4933,6 +4998,15 @@
 
   .iphone-service-feature:active .iphone-service-feature__meta b {
     transform: translateX(2px);
+  }
+
+  .iphone-service-feature--emergency:active .iphone-service-feature__meta b {
+    transform: translateY(-50%);
+  }
+
+  .iphone-service-feature--emergency:active .iphone-service-feature__meta b img {
+    filter: none;
+    transform: none;
   }
 }
 
