@@ -36,10 +36,11 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="stylesheet" href="assets/css/styles.css?v=20260906l" />
 <link rel="stylesheet" href="assets/css/home-dark.css?v=20260913za" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260913c" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260913c" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260914z" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260911a" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
+<link rel="stylesheet" href="assets/css/cta-family.css?v=20260915g" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -225,6 +226,9 @@ html.home-theme-dark body { background-color: #171916; }
     <symbol id="private-icon-idea" viewBox="0 0 24 24">
       <path d="M12 4C8.97 4 6.5 6.47 6.5 9.5c0 2.47 1.49 3.89 2.35 4.5h6.3c.86-.61 2.35-2.03 2.35-4.5C17.5 6.47 15.03 4 12 4z" opacity=".3"/>
       <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm-4-5h8v2H8zm4-15C7.86 2 4.5 5.36 4.5 9.5c0 3.82 2.66 5.86 3.77 6.5h7.46c1.11-.64 3.77-2.68 3.77-6.5C19.5 5.36 16.14 2 12 2zm3.15 12h-6.3C7.99 13.39 6.5 11.97 6.5 9.5 6.5 6.47 8.97 4 12 4s5.5 2.47 5.5 5.5c0 2.47-1.49 3.89-2.35 4.5z"/>
+    </symbol>
+    <symbol id="maik-cta-shape" viewBox="0 0 360 64">
+      <path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/>
     </symbol>
   </defs>
 </svg>
@@ -699,14 +703,14 @@ html.home-theme-dark body { background-color: #171916; }
     </figure>
     <p class="mobile-social-proof__sr-only" data-proof-announcement aria-live="polite" aria-atomic="true"></p>
     <div class="mobile-proof-gallery__footer">
-      <a class="mobile-proof-gallery__link" href="projekte/?ansicht=galerie">
-        <svg class="mobile-proof-gallery__link-frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-        <svg class="mobile-proof-gallery__link-shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+      <a class="mobile-proof-gallery__link maik-cta maik-cta--compact maik-cta--gallery" href="projekte/?ansicht=galerie" data-cta-sync-trigger="social-proof" data-cta-sync-group="social-proof">
+        <svg class="mobile-proof-gallery__link-frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+        <svg class="mobile-proof-gallery__link-shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
         <img class="mobile-proof-gallery__link-flower" src="assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" aria-hidden="true" width="85" height="70" loading="lazy" decoding="async" />
-        <span class="mobile-proof-gallery__link-label">Zur Galerie</span>
+        <span class="mobile-proof-gallery__link-label maik-cta__label">Zur Galerie</span>
         <img class="mobile-proof-gallery__link-arrow mobile-proof-gallery__link-arrow--default" src="assets/img/icons/rohdich-gallery-arrow.png" alt="" aria-hidden="true" width="196" height="150" loading="lazy" decoding="async" />
-        <span class="mobile-proof-gallery__link-arrow-chip" aria-hidden="true">
-          <img src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" loading="lazy" decoding="async" />
+        <span class="mobile-proof-gallery__link-arrow-chip maik-cta__arrow" aria-hidden="true">
+          <img class="maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" loading="lazy" decoding="async" />
         </span>
       </a>
     </div>
@@ -727,10 +731,11 @@ html.home-theme-dark body { background-color: #171916; }
         </span>
       </p>
     </div>
-    <a class="mobile-proof-request" href="#kontakt">
-      <svg class="mobile-proof-request__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-      <span class="mobile-proof-request__label">Gartenwunsch besprechen</span>
-      <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
+    <a class="mobile-proof-request maik-cta maik-cta--attention maik-cta--long" href="#kontakt" data-cta-sync-group="social-proof">
+      <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+      <svg class="mobile-proof-request__frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><svg class="mobile-proof-request__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+      <span class="mobile-proof-request__label maik-cta__label">Gartenwunsch besprechen</span>
+      <span class="mobile-proof-request__arrow maik-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
     </a>
   </div>
 </section>
@@ -873,8 +878,12 @@ html.home-theme-dark body { background-color: #171916; }
       <!-- AP-249: Der Link zur Unterseite steht auf Wunsch des Auftraggebers
            direkt unter dem Hundefoto. Logo, Linkziel und Gestaltung bleiben
            unveraendert. -->
-      <a class="mr-ueber__mehr reveal" href="ueber-uns/">
-        <span class="mr-ueber__mehr-titel">Mehr über Maik Rohdich<span
+      <a class="mr-ueber__mehr reveal maik-cta maik-cta--attention" href="ueber-uns/">
+        <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+        <svg class="maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+        <svg class="maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+        <img class="maik-cta__brand-icon" src="assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png?v=20260915a" alt="" aria-hidden="true" width="359" height="295" loading="lazy" decoding="async">
+        <span class="mr-ueber__mehr-titel maik-cta__label"><span class="mr-ueber__mehr-titel--default">Mehr über Maik Rohdich</span><span class="mr-ueber__mehr-titel--iphone">Mehr über uns</span><span
               class="mr-ueber__mehr-pfeil" aria-hidden="true">→</span></span>
         <span class="mr-ueber__mehr-sub">Zur Über-uns-Seite</span>
         <!-- AP-288: Blume ohne Schriftzug. Kein neues Bild noetig - dasselbe
@@ -887,6 +896,7 @@ html.home-theme-dark body { background-color: #171916; }
           <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png"
                  width="640" height="180" />
         </svg>
+        <span class="maik-cta__arrow" aria-hidden="true"><img class="maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
       </a>
     </div>
   </div>
@@ -1200,10 +1210,11 @@ html.home-theme-dark body { background-color: #171916; }
           <span class="iphone-service-feature__meta"><b aria-hidden="true">→</b></span>
         </span>
       </a>
-      <a class="mobile-proof-request iphone-service-contact-cta" href="#anfrage" data-prefill-bereich="unsicher">
-        <svg class="mobile-proof-request__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-        <span class="mobile-proof-request__label">Zum Kontaktformular</span>
-        <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
+      <a class="mobile-proof-request iphone-service-contact-cta maik-cta maik-cta--attention" href="#anfrage" data-prefill-bereich="unsicher">
+        <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+        <svg class="mobile-proof-request__frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><svg class="mobile-proof-request__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+        <span class="mobile-proof-request__label maik-cta__label">Zum Kontaktformular</span>
+        <span class="mobile-proof-request__arrow maik-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
       </a>
     </div>
 
@@ -1462,6 +1473,7 @@ html.home-theme-dark body { background-color: #171916; }
 
       <div class="container b2b-process-end-actions">
         <a class="btn btn-primary mobile-proof-request process-contact-cta" href="#anfrage" aria-describedby="private-process-reassurance">
+          <svg class="process-contact-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="process-contact-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="process-contact-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="process-contact-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
           <svg class="mobile-proof-request__frame process-contact-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape process-contact-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
           <img class="process-contact-cta__flower" src="assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" aria-hidden="true" width="85" height="70" decoding="async">
           <span class="mobile-proof-request__label">Projekt anfragen</span>
@@ -1742,10 +1754,11 @@ html.home-theme-dark body { background-color: #171916; }
             </p>
 
             <div class="anf__abschluss">
-              <button type="submit" class="btn btn-primary" data-anf-senden>
-                <svg class="anf-senden__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="anf-senden__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-                <span class="anf-senden__label">Anfrage senden</span>
-                <span class="anf-senden__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.png" alt="" width="1883" height="567" decoding="async"></span>
+              <button type="submit" class="btn btn-primary maik-cta maik-cta--attention" data-anf-senden>
+                <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+                <svg class="anf-senden__frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><svg class="anf-senden__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+                <span class="anf-senden__label maik-cta__label">Anfrage senden</span>
+                <span class="anf-senden__arrow maik-cta__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
               </button>
               <p class="anf__status" data-anf-status role="status" aria-live="polite"></p>
             </div>
@@ -2594,10 +2607,10 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/js/main.js?v=20260911a" defer></script>
 <script src="assets/js/mobile-qualifications.js?v=20260909a" defer></script>
 <script src="assets/js/mobile-social-proof-gallery.js?v=20260911c" defer></script>
-<script src="assets/js/cta-signal.js?v=20260911d" defer></script>
+<script src="assets/js/cta-signal.js?v=20260914a" defer></script>
 <script src="assets/js/mobile-private-review.js?v=20260906b" defer></script>
 <script src="assets/js/private-proof.js?v=20260906a" defer></script>
-<script src="assets/js/privat-form.js?v=20260812n" defer></script>
+<script src="assets/js/privat-form.js?v=20260914a" defer></script>
 <script src="assets/js/anfrage.js?v=20260909a" defer></script>
 <script src="assets/js/home-header-morph.js?v=20260830b" defer></script>
 <script src="assets/js/ueber-video.js?v=20260905b" defer></script>

@@ -3027,7 +3027,8 @@
 /* Die individuelle Buttonform wird ausserhalb der beiden freigegebenen
    iPhone-Ansichten ausgeblendet; dort bleibt der bestehende Desktop-CTA. */
 .private-process-updated .process-contact-cta__shape,
-.private-process-updated .process-contact-cta__frame {
+.private-process-updated .process-contact-cta__frame,
+.private-process-updated .process-contact-cta__halo {
   display: none;
 }
 
@@ -3223,7 +3224,8 @@
   }
 
   .private-process-updated .process-contact-cta__shape,
-  .private-process-updated .process-contact-cta__frame {
+  .private-process-updated .process-contact-cta__frame,
+  .private-process-updated .process-contact-cta__halo {
     display: block;
   }
 
@@ -3243,6 +3245,7 @@
     letter-spacing: .025em;
     text-transform: uppercase;
     white-space: nowrap;
+    padding-right: .2em;
   }
 
   /* Das breite Originalmotiv bekommt statt eines Kreises eine flache Kapsel.
@@ -3270,6 +3273,164 @@
     width: 46px;
     height: auto;
     object-fit: contain;
+    transition: transform .28s cubic-bezier(.22, .7, .25, 1);
+    will-change: transform;
+  }
+
+  /* Der breite Markenpfeil bleibt bei jeder Bewegung klar innerhalb seiner
+     Kapsel. Ein kurzer, weicher Impuls wiederholt sich mit einer bewussten
+     Ruhephase, sobald der CTA im Blickfeld angekommen ist. */
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
+    animation: process-contact-cta-arrow-rhythm 1.9s cubic-bezier(.22, .7, .25, 1) 2.5s infinite;
+  }
+
+  .private-process-updated:not(.is-process-complete) .process-contact-cta.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
+    animation: none;
+    transform: translateX(0);
+  }
+
+  @keyframes process-contact-cta-arrow-rhythm {
+    0%, 19%, 100% { transform: translateX(0); }
+    7% { transform: translateX(2px); }
+    12% { transform: translateX(-.35px); }
+    16% { transform: translateX(.55px); }
+  }
+
+  /* Der generische, rechteckige Puls wird fuer diesen CTA ausgeschaltet. */
+  .private-process-updated .process-contact-cta::before {
+    content: none;
+  }
+
+  /* Drei transparente Konturen ergeben einen weichen Halo entlang derselben
+     SVG-Geometrie wie Button und Rahmen. So folgt auch die obere rechte
+     Schattierung exakt der Diagonalen; animiert werden nur opacity/transform. */
+  .private-process-updated .process-contact-cta__halo {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: var(--home-lime);
+    stroke-linejoin: round;
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(.985, .922);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+  }
+
+  .private-process-updated .process-contact-cta__halo-line--wide {
+    stroke-width: 12px;
+    opacity: .12;
+  }
+
+  .private-process-updated .process-contact-cta__halo-line--medium {
+    stroke-width: 7px;
+    opacity: .24;
+  }
+
+  .private-process-updated .process-contact-cta__halo-line--core {
+    stroke-width: 3px;
+    opacity: .48;
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing .process-contact-cta__halo {
+    animation:
+      process-contact-cta-arrival-halo 1.2s ease-out .35s 1,
+      process-contact-cta-rhythm-halo 1.9s linear 2.5s infinite;
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing {
+    animation:
+      process-contact-cta-arrival-breath 1.1s ease-in-out .35s 1,
+      process-contact-cta-rhythm-breath 1.9s linear 2.5s infinite;
+    backface-visibility: hidden;
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  @keyframes process-contact-cta-arrival-breath {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    46% { transform: translate3d(0, 0, 0) scale(1.018); }
+  }
+
+  @keyframes process-contact-cta-arrival-halo {
+    0% { opacity: 0; transform: translate3d(0, 0, 0) scale(.985, .922); }
+    32% { opacity: .72; transform: translate3d(0, 0, 0) scale(1.012, 1.063); }
+    100% { opacity: 0; transform: translate3d(0, 0, 0) scale(1.07, 1.367); }
+  }
+
+  /* Der wiederkehrende, etwas ruhigere Puls folgt nach dem ersten Auftritt
+     jedem Pfeilimpuls im gemeinsamen 1,9s-Rhythmus. */
+  @keyframes process-contact-cta-rhythm-breath {
+    0%, 58%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    7% { transform: translate3d(0, 0, 0) scale(1.012); }
+  }
+
+  @keyframes process-contact-cta-rhythm-halo {
+    0%, 63.2%, 100% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(.985, .922);
+    }
+    7% {
+      opacity: .54;
+      transform: translate3d(0, 0, 0) scale(1.009, 1.047);
+    }
+    63.1% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(1.055, 1.285);
+    }
+  }
+
+  /* Auf feinen Zeigegeraeten reagiert nicht mehr nur der Pfeil: Die Kapsel
+     bekommt ebenfalls eine dezente Kontur. So wirkt der Hover geschlossen,
+     ohne dass Pfeil oder Inhalt zum Rand wandern. */
+  @media (hover: hover) and (pointer: fine) {
+    .private-process-updated .process-contact-cta:hover :is(
+      .process-contact-cta__shape,
+      .mobile-proof-request__label,
+      .mobile-proof-request__arrow
+    ) {
+      transform: translate(2px, 2px);
+    }
+
+    .private-process-updated.is-process-complete .process-contact-cta:hover .mobile-proof-request__label {
+      transform: translate(40px, 2px);
+    }
+
+    .private-process-updated.is-process-complete .process-contact-cta:hover .process-contact-cta__flower {
+      transform: translate(2px, -50%) translateY(2px) scale(1);
+    }
+
+    .private-process-updated .process-contact-cta:hover .mobile-proof-request__arrow {
+      box-shadow:
+        inset 0 0 0 1px rgba(151, 206, 32, .34),
+        0 0 0 2px rgba(23, 25, 22, .08);
+    }
+
+    .private-process-updated .process-contact-cta:hover .mobile-proof-request__arrow :is(svg, img) {
+      animation: none;
+      transform: translateX(1.5px);
+    }
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing.is-pressed .mobile-proof-request__arrow :is(svg, img) {
+    animation: none;
+    transform: translateX(1px);
+  }
+
+  /* Beim Tippen hat die eindeutige Einrastbewegung Vorrang vor dem
+     Aufmerksamkeitspuls. Der Puls setzt erst nach dem Loslassen wieder ein. */
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing.is-pressed {
+    animation: none;
+    transform: none;
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing.is-pressed .process-contact-cta__halo {
+    animation: none;
+    opacity: 0;
   }
 
   /* Am Ende des vorhandenen Zeitstrahls wechselt die Markenblume in den CTA.
@@ -3288,6 +3449,7 @@
     visibility: hidden;
     filter: none;
     transform: translateY(-50%) scale(.82);
+    transition: transform .12s var(--ease);
     pointer-events: none;
   }
 
@@ -3312,6 +3474,10 @@
 
   .private-process-updated.is-process-complete .process-contact-cta:is(:active, .is-pressed) .mobile-proof-request__label {
     transform: translate(44px, 6px);
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta:is(:active, .is-pressed) .process-contact-cta__flower {
+    transform: translate(6px, calc(-50% + 6px)) scale(1);
   }
 
   .private-process-updated .process-marker__leaf {
@@ -3385,9 +3551,25 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .private-process-updated .process-contact-cta .mobile-proof-request__label {
+    .private-process-updated .process-contact-cta :is(
+      .mobile-proof-request__label,
+      .process-contact-cta__arrow-image
+    ) {
       transition: none;
     }
+
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
+      animation: none;
+    }
+
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing {
+      animation: none;
+    }
+
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing .process-contact-cta__halo {
+      animation: none;
+    }
+
   }
 }
 
