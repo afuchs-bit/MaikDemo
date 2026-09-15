@@ -407,8 +407,11 @@ html.home-theme-dark .proof-map .m-inner {
   stroke: var(--home-lime);
 }
 
+/* AP-310: Der Umriss folgt den uebrigen Kartenebenen auf --home-lime; die Karte
+   ist damit in einem Ton. Die Ebenen bleiben ueber Strichstaerke (16 gegen 6,6)
+   und Deckkraft unterscheidbar. #8CC63F auf --bg sind 8,8:1. */
 html.home-theme-dark .proof-map .m-outline {
-  stroke: var(--home-dark-accent);
+  stroke: var(--home-lime);
 }
 
 html.home-theme-dark .section-proof .proof-map .m-node circle {
@@ -2612,7 +2615,9 @@ html.home-theme-dark .mr-ueber__punkt-icon {
   height: 20px;
   margin-top: 1px;
   fill: none;
-  stroke: var(--home-dark-accent);
+  /* AP-310: --home-lime statt des blasseren --home-dark-accent, wie die uebrigen
+     gruenen Bauteile der Sektion. */
+  stroke: var(--home-lime);
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -2645,7 +2650,9 @@ html.home-theme-dark .mr-ueber__mehr {
      bisherige SVG-Strich (stroke-width 1.5 mit non-scaling-stroke). Der
      inset-Schatten wird nicht gerundet, folgt dem border-radius und laesst
      ausserdem die Kastengroesse unveraendert. */
-  box-shadow: inset 0 0 0 1.5px var(--home-dark-accent);
+  /* AP-310: Rand auf --home-lime. Nur der Umriss - Titel und Unterzeile
+     behalten ihre Farben. */
+  box-shadow: inset 0 0 0 1.5px var(--home-lime);
   transition: box-shadow .18s var(--ease), background-color .18s var(--ease);
 
   /* AP-236: volle Spaltenbreite statt inhaltsbreit. Die Belegspalte ist per
@@ -2682,10 +2689,35 @@ html.home-theme-dark .mr-ueber__mehr-titel {
    Zeile folgt statt allein in einer eigenen zu landen. Ruhig mit leichtem
    Nachruecken beim Mauszeiger - wie die uebrigen Verweis-Pfeile der Seite und
    bewusst nicht der pulsierende Pfeil der Haupt-CTAs (AP-270): dieser Button
-   ist ein Nebenweg, siehe Kommentar oben. */
+   ist ein Nebenweg, siehe Kommentar oben.
+
+   AP-324: Seit dieser Fassung ist der Pfeil keine Glyphe mehr, sondern dasselbe
+   Bild wie in der Galeriezeile (.mobile-proof-gallery__link-arrow-chip,
+   mobile-social-proof.css:884) - der gezeichnete gerade Pfeil, dort wie hier
+   30px breit. display muss gesetzt bleiben, der Bild-Reset in styles.css:187
+   stellt jedes img auf block.
+
+   Weiss statt des Gruens der Datei: Die Grafik traegt ihr #56E607 fest im Pfad
+   (assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg), und ein <img> laesst
+   sich nicht per fill einfaerben - dieselbe Datei haengt an drei weiteren
+   Buttons (AP-322) und soll dort gruen bleiben. brightness(0) zieht die
+   Fuellung auf Schwarz, invert(1) dreht sie auf Weiss; die Transparenz bleibt
+   dabei erhalten, gefaerbt wird nur die Zeichnung. Ergebnis ist reines #fff,
+   0,4 % heller als das --ink der Titelzeile - im Nebeneinander nicht
+   unterscheidbar. */
 html.home-theme-dark .mr-ueber__mehr-pfeil {
   display: inline-block;
+  width: 30px;
+  height: auto;
   margin-left: .45em;
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
+  /* Der Hoehenversatz steht in einer eigenen Variablen statt direkt im
+     transform. Zwei transform-Deklarationen auf demselben Element ersetzen
+     einander vollstaendig - der Hover-Versatz unten wuerde die Verschiebung
+     sonst beim Zeigen zuruecksetzen. Ausserhalb der Handybreiten ist sie 0. */
+  --pfeil-y: 0px;
+  transform: translate(0, var(--pfeil-y));
   transition: transform .18s var(--ease);
 }
 
@@ -2715,7 +2747,7 @@ html.home-theme-dark .mr-ueber__mehr-logo {
   }
 
   html.home-theme-dark .mr-ueber__mehr:hover .mr-ueber__mehr-pfeil {
-    transform: translateX(2px);
+    transform: translate(2px, var(--pfeil-y));
   }
 }
 
@@ -2844,6 +2876,33 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
   html.home-theme-dark .mr-ueber__mehr-sub   { grid-area: sub; align-self: start; }
   html.home-theme-dark .mr-ueber__mehr-logo  { grid-area: logo; }
 
+  /* AP-324: Der gezeichnete Pfeil an der rechten Kante, auf halber Buttonhoehe.
+
+     Der Pfeil steht im Markup weiter im Titel-Span, verlaesst hier aber den
+     Textfluss: absolut am Button (der traegt position: relative), rechts auf
+     dessen Innenkante - right: 18px ist sein padding-right - und ueber
+     top: 50% mit translate(0, -50%) auf der Mittelachse. Prozentwerte im
+     transform beziehen sich auf die eigene Groesse, die Zentrierung stimmt
+     deshalb bei jeder Schriftgroesse; die Variable --pfeil-y aus der Grundregel
+     traegt hier eben diese -50%, damit der Hover-Versatz sie nicht loescht.
+
+     Weil der Pfeil aus dem Fluss ist, bleibt die Titelzeile so hoch wie vorher -
+     das Bild kostet den Button keine Hoehe (gemessen 64px bei 360 und 390,
+     unveraendert). Dafuer wuerde ein langer Titel unter dem Pfeil durchlaufen,
+     deshalb haelt padding-right am Titel den Platz frei.
+
+     Nur bis 480px: darueber steht der Button dreizeilig (Titel, Unterzeile,
+     Blume), seine Mitte laege dann im Logo. */
+  html.home-theme-dark .mr-ueber__mehr-pfeil {
+    --pfeil-y: -50%;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    margin-left: 0;
+  }
+
+  html.home-theme-dark .mr-ueber__mehr-titel { padding-right: 2.2em; }
+
   /* Die Blume ist seit AP-288 nahezu quadratisch (210x180) statt eines breiten
      Schriftzugs - gesteuert wird deshalb wieder ueber die Hoehe. 30px, damit
      Titel (zweizeilig), Unterzeile und Blume zusammen unter die 121px der
@@ -2893,6 +2952,7 @@ html.home-theme-dark .mr-ueber__muster {
 }
 
 html.home-theme-dark .mr-ueber__buehne {
+  --mr-ueber-brand-width: clamp(65px, 20vw, 80px);
   position: relative;
   isolation: isolate;
   overflow: visible;
@@ -2924,31 +2984,21 @@ html.home-theme-dark .mr-ueber__video {
   pointer-events: none;
 }
 
-/* AP-292: Das Hundefoto ersetzt die Markenblume (AP-246) an derselben Ecke.
-   Gerade, nicht gedreht (Entscheidung 11.09.2026). 40 % der Kachelbreite,
-   mindestens 130px (darunter ist der Hund nicht mehr zu erkennen), hoechstens
-   260px. Der 4px-Rand in --bg loest das Foto vom bewegten Video, der Schatten
-   hebt es an. Es ragt 40px ueber die Unterkante - der Abstand zu
-   .mr-ueber__mustertext darunter ist darauf abgestimmt (64px, siehe dort). */
-html.home-theme-dark .mr-ueber__hund {
+/* AP-310: Das Hundefoto ist entfallen, die Markenblume aus AP-246 steht wieder
+   an der Ecke - Werte unveraendert aus dem Stand vor AP-292. Sie ragt um zwei
+   Siebtel ihrer Breite ueber die Unterkante, also rund 23px; die Abstaende
+   darunter sind darauf abgestimmt (32px bzw. 48px, siehe .mr-ueber__mustertext). */
+html.home-theme-dark .mr-ueber__brand {
   position: absolute;
-  right: -10px;
-  bottom: -40px;
+  right: -16px;
+  bottom: calc(var(--mr-ueber-brand-width) * -2 / 7);
   z-index: 2;
   display: block;
-  width: clamp(130px, 40%, 260px);
-  pointer-events: none;
-}
-
-html.home-theme-dark .mr-ueber__hund img {
-  display: block;
-  width: 100%;
+  width: var(--mr-ueber-brand-width);
   height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border: 4px solid var(--bg);
-  border-radius: 14px 4px 14px 4px;
-  box-shadow: 0 6px 18px rgb(0 0 0 / 45%);
+  overflow: hidden;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
+  pointer-events: none;
 }
 
 /* Zwei Spalten: die Erklaerung traegt die Zeile, der Besuchshinweis ist eine
@@ -2958,8 +3008,9 @@ html.home-theme-dark .mr-ueber__mustertext {
   grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
   gap: clamp(20px, 3vw, 44px);
   align-items: start;
-  /* AP-292: 32px -> 64px. 40px Ueberstand des Hundefotos + 24px Luft. */
-  margin-top: 64px;
+  /* AP-310: zurueck auf 32px. Die 64px waren der 40px-Ueberstand des
+     Hundefotos plus Luft; die Blume ragt nur rund 23px ueber die Kante. */
+  margin-top: 32px;
 }
 
 html.home-theme-dark .mr-ueber__mustertext p {
@@ -2971,7 +3022,10 @@ html.home-theme-dark .mr-ueber__mustertext p {
 }
 
 html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
-  color: var(--home-on-dark);
+  /* AP-310: Statt Weiss das Lindgruen der Marke - derselbe Token, aus dem die
+     Flaeche des Knopfes "Gartenwunsch besprechen" ihre Farbe zieht
+     (mobile-social-proof.css, .mobile-proof-request__shape). */
+  color: var(--home-lime);
   font-family: var(--display);
   font-size: clamp(1.2rem, 2.1vw, 1.55rem);
   font-weight: 800;
@@ -3010,13 +3064,14 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
 }
 
 @media (max-width: 480px) {
-  /* AP-292: margin-top der Kachel entfaellt (Block steht unter dem Kopf).
-     Name und Besuchshinweis untereinander: rechts laege der Hinweis sonst
-     unter dem ueberstehenden Hundefoto. */
+  /* Name und Besuchshinweis stehen auf dem Telefon untereinander - neben dem
+     Namen bliebe fuer den Hinweis keine lesbare Spalte.
+     AP-310: margin-top zurueck auf 48px, nachdem das ueberstehende Hundefoto
+     entfallen ist (AP-292 hatte dafuer auf 56px erhoeht). */
   html.home-theme-dark .mr-ueber__mustertext {
     grid-template-columns: minmax(0, 1fr);
     gap: 8px;
-    margin-top: 56px;
+    margin-top: 48px;
   }
 
   html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
@@ -3165,10 +3220,6 @@ html.home-theme-dark .footer-social-iphone {
     background: #171916;
   }
 
-  html.home-theme-dark .site-footer .footer-route {
-    text-shadow: none;
-  }
-
   html.home-theme-dark .site-footer .footer-navigation,
   html.home-theme-dark .site-footer .footer-coverage {
     display: none;
@@ -3257,15 +3308,20 @@ html.home-theme-dark .footer-social-iphone {
     white-space: nowrap;
   }
 
+  /* AP-323: Zwei Zeilen statt einer. Die Erreichbarkeitszeile steht jetzt OBEN
+     und ueber die ganze Breite, darunter die beiden Kacheln. Die dritte Spalte
+     bleibt im Raster, damit die Zeile die volle Containerbreite bekommt - sie
+     war vorher auf gut 200px eingezwaengt und stand bei 360px auf Kante. */
   html.home-theme-dark .site-footer .footer-social-iphone {
     display: grid;
     /* Tippziele bleiben absolut: 44px ist die Mindestgroesse nach WCAG 2.5.8.
        Mitskaliert waeren es auf einem 320px-Geraet nur noch 35px. */
     grid-template-columns: 44px 44px minmax(0, 1fr);
-    grid-template-rows: minmax(44px, auto);
+    grid-template-rows: auto minmax(44px, auto);
     align-items: center;
     justify-content: start;
     column-gap: 2px;
+    row-gap: 8px;
     margin-top: 0.875rem;
   }
 
@@ -3274,28 +3330,39 @@ html.home-theme-dark .footer-social-iphone {
     place-items: center;
     width: 44px;
     height: 44px;
-    padding: 0.25rem;
+    /* AP-321: Kein Padding mehr - die Kachel misst jetzt 42px und laesst in der
+       44px-Tippflaeche nur noch 1px Luft. */
+    padding: 0;
     border: 0;
     border-radius: 50%;
     background: transparent;
   }
 
-  html.home-theme-dark .site-footer .footer-social-link:first-child {
+  /* Nicht mehr :first-child - das ist seit AP-323 der Absatz. Die WhatsApp-
+     Kachel ist das einzige <a> in diesem Block, Instagram ein <span>. */
+  html.home-theme-dark .site-footer a.footer-social-link {
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 2;
   }
 
   html.home-theme-dark .site-footer .footer-social-link--instagram {
     grid-column: 2;
-    grid-row: 1;
+    grid-row: 2;
   }
 
+  /* AP-321: 42px statt 2.5rem - fest in Pixeln, weil die Wurzel-Schriftgroesse
+     unter 480px fluid ist und die Kachel sonst je nach Geraet zwischen 36 und
+     48px schwankte. 42 ist das Maximum, das die 44px-Tippflaeche und damit die
+     Rasterspalten unangetastet laesst: die dritte Spalte mit der
+     Erreichbarkeitszeile steht bei 360px exakt auf Kante, jeder Pixel mehr
+     wuerde sie herausbrechen lassen. Sichtbar bleiben 4px zwischen den
+     beiden Kacheln. */
   html.home-theme-dark .site-footer .footer-social-icon {
     display: grid;
     place-items: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 11px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
     color: #fff;
   }
 
@@ -3304,8 +3371,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--whatsapp img {
-    width: 1.375rem;
-    height: 1.375rem;
+    width: 25px;
+    height: 25px;
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram {
@@ -3313,8 +3380,8 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-icon--instagram svg {
-    width: 1.375rem;
-    height: 1.375rem;
+    width: 25px;
+    height: 25px;
   }
 
   html.home-theme-dark .site-footer a.footer-social-link:focus-visible {
@@ -3323,7 +3390,7 @@ html.home-theme-dark .footer-social-iphone {
   }
 
   html.home-theme-dark .site-footer .footer-social-availability {
-    grid-column: 3;
+    grid-column: 1 / -1;
     grid-row: 1;
     align-self: center;
     min-width: 0;

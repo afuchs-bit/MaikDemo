@@ -1455,19 +1455,22 @@ p  { margin: 0; }
   display: grid;
   gap: 7px;
   margin: 0;
-  color: rgba(255,255,255,.7);
+  color: #fff;
   font-style: normal;
   font-size: .88rem;
   line-height: 1.45;
 }
 .site-footer a { color: rgba(255,255,255,.86); text-decoration: none; }
 .footer-route {
+  /* AP-321: Der weisse Schleier hinter den Buchstaben ist entfallen - das Rot
+     steht ohne Aufhellung auf dem dunklen Grund. Was vorher hier stand
+     (Kapsel, Kontur, Schleier), ist damit vollstaendig zurueckgenommen.
+     width: fit-content muss bleiben - .footer-address ist ein Grid, jedes Kind
+     wird blockifiziert und zoege sich sonst ueber die volle Spaltenbreite. */
   width: fit-content;
   color: var(--coral) !important;
+  font-size: .76rem;
   font-weight: 750;
-  text-shadow:
-    0 0 4px rgba(255, 255, 255, .28),
-    0 0 9px rgba(255, 255, 255, .12);
 }
 .footer-navigation {
   min-width: 0;

@@ -1324,3 +1324,4 @@ zeigt die Vorschau leere Flächen, wo alles in Ordnung ist.
   „Unsere Leistungen von A bis Z" und der Willkommensgruß.
 - **O6 — Name des Hundes.** Weiter offen (AP-230 O1). Falls bekannt, gehört er in den
   Alt-Text.
+
