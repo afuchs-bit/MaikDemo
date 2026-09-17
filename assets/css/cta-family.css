@@ -325,6 +325,11 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
+    html.home-theme-dark .mr-ueber__mehr.maik-cta:hover {
+      background-color: transparent;
+      box-shadow: none;
+    }
+
     html.home-theme-dark .maik-cta:hover :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
       transform: translate(2px, 2px);
     }

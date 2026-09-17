@@ -4898,15 +4898,28 @@
     box-shadow: none;
   }
 
-  /* Anfangsbuchstabe. 1.25rem = 20px, zwischen Name (.9375rem) und der
-     fruheren Kachelschrift. Sitzt in Zeile 1 und damit auf der Namenszeile. */
+  /* Handschriftliche Anfangsbuchstaben des Auftraggebers. Die quadratische
+     Buehne haelt alle unterschiedlichen Glyphen optisch gleich gross und
+     exakt auf derselben Achse. */
   .iphone-service-card__letter {
     grid-column: 1;
-    color: var(--home-lime, #97ce20);
-    font-family: var(--body);
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.3;
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .iphone-service-card__letter img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Beim einzigen Eintrag mit Unterzeile folgt der Buchstabe optisch der
+     Hauptbezeichnung statt der Mitte des gesamten Textblocks. */
+  .iphone-service-card__letter--title-line {
+    transform: translateY(-0.55rem);
   }
 
   .iphone-service-card__media {

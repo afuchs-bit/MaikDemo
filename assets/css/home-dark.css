@@ -2494,6 +2494,14 @@ html.home-theme-dark .mr-ueber {
   background: var(--bg);
 }
 
+/* Mobile Vertrauens- und Kurzfassungen duerfen die bestehende Tablet-/Desktop-
+   Fassung nicht veraendern. */
+html.home-theme-dark .mr-ueber__punkt-text--iphone,
+html.home-theme-dark .proof-map-copy--iphone,
+html.home-theme-dark .proof-map-seat-mark {
+  display: none;
+}
+
 /* --- Block 1: Kopf mit Eyebrow (AP-217) ---------------------------------
    Der Eyebrow ist zeichengleich das Bauteil der Rezensionssektion
    (.private-proof-since, privat-form.css:3174): 0.76rem, 800, 0.08em gesperrt,
@@ -2628,8 +2636,51 @@ html.home-theme-dark .mr-ueber__punkt-icon-art {
 }
 
 @media (max-width: 480px) {
+  html.home-theme-dark .mr-ueber {
+    padding-top: 44px;
+  }
+
+  html.home-theme-dark .mr-ueber__kopf {
+    margin-bottom: 24px;
+  }
+
+  html.home-theme-dark .mr-ueber__text {
+    color: var(--home-on-dark);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte {
+    display: grid;
+    width: min(100%, 20rem);
+    margin-inline: auto;
+    gap: 2.25rem;
+  }
+
   html.home-theme-dark .mr-ueber__punkte li {
-    grid-template-columns: 30px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: .625rem;
+    padding-block: 0;
+    border-bottom: 0;
+    text-align: center;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte li > span:last-child {
+    max-width: 18.25rem;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-text--default {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-text--iphone {
+    display: block;
   }
 
   html.home-theme-dark .mr-ueber__punkt-icon--default {
@@ -2638,9 +2689,9 @@ html.home-theme-dark .mr-ueber__punkt-icon-art {
 
   html.home-theme-dark .mr-ueber__punkt-icon-art {
     display: block;
-    width: 30px;
-    height: 30px;
-    margin-top: -4px;
+    width: 34px;
+    height: 34px;
+    margin-top: 0;
     pointer-events: none;
   }
 
@@ -2653,7 +2704,7 @@ html.home-theme-dark .mr-ueber__punkt-icon-art {
   }
 
   html.home-theme-dark .mr-ueber__punkt-icon-art--dialog img {
-    transform: scale(1.25);
+    transform: scale(1.36);
   }
 
   html.home-theme-dark .mr-ueber__punkt-icon-art--calendar img {
@@ -2661,7 +2712,7 @@ html.home-theme-dark .mr-ueber__punkt-icon-art {
   }
 
   html.home-theme-dark .mr-ueber__punkt-icon-art--partnership img {
-    transform: scale(1.52);
+    transform: scale(1.45);
   }
 }
 
@@ -2897,9 +2948,13 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
      entfallen. Der Button steht unter den Kernaussagen in voller Breite, als
      eine Zeile: Blume links, Titel und Unterzeile daneben. */
   html.home-theme-dark .mr-ueber__kopf { text-align: center; }
+
   html.home-theme-dark .mr-ueber__titel { justify-content: center; text-align: center; }
 
-  html.home-theme-dark .mr-ueber__split { margin-top: 24px; }
+  html.home-theme-dark .mr-ueber__split {
+    gap: 2.5rem;
+    margin-top: 36px;
+  }
 
   html.home-theme-dark .mr-ueber__mehr {
     display: grid;
@@ -3099,6 +3154,14 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
 }
 
 @media (max-width: 480px) {
+  html.home-theme-dark .mr-ueber__buehne {
+    --mr-ueber-brand-width: clamp(58px, 18vw, 72px);
+  }
+
+  html.home-theme-dark .mr-ueber__brand {
+    right: -10px;
+  }
+
   html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
     color: var(--mobile-logo-green, #56e607);
   }
@@ -3109,12 +3172,21 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
      entfallen ist (AP-292 hatte dafuer auf 56px erhoeht). */
   html.home-theme-dark .mr-ueber__mustertext {
     grid-template-columns: minmax(0, 1fr);
-    gap: 8px;
+    justify-items: center;
+    width: min(100%, 20.5rem);
+    margin-inline: auto;
+    gap: 10px;
     margin-top: 48px;
+    text-align: center;
   }
 
   html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
     font-size: clamp(1.25rem, 5.25vw, 1.325rem);
+  }
+
+  html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
+    max-width: 20rem;
+    text-wrap: balance;
   }
 }
 
@@ -3232,6 +3304,109 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
     align-self: start;
     justify-self: start;
     max-height: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  html.home-theme-dark .mr-ueber__karte {
+    box-sizing: border-box;
+    margin-top: 48px;
+    padding: 20px 16px 16px;
+    border: 1px solid var(--line);
+    border-radius: 18px 5px 18px 5px;
+    background: var(--bg-elev);
+    box-shadow: 0 12px 26px rgb(0 0 0 / 14%);
+  }
+
+  /* Auf dem iPhone wird NRW als eine ruhige, zusammenhaengende Flaeche gezeigt.
+     Die Kreis- und Regierungsbezirksgrenzen konkurrieren dort sonst mit dem
+     kleinen Format; der Landesumriss bleibt als klare Kontur erhalten. */
+  html.home-theme-dark .mr-ueber__karte .proof-map .m-outline {
+    fill: #44533a;
+    stroke: #708448;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map :is(.m-krs, .m-fill, .m-inner) {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map {
+    row-gap: 8px;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte {
+    justify-self: center;
+    margin-bottom: 2px;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map > svg.map {
+    justify-self: center;
+    width: min(100%, 224px);
+    max-height: 200px;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-cap {
+    gap: 7px;
+    max-width: 19rem;
+    font-size: .875rem;
+    line-height: 1.5;
+  }
+
+  html.home-theme-dark .proof-map-copy--default {
+    display: none;
+  }
+
+  html.home-theme-dark .proof-map-copy--iphone {
+    display: inline;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-focus {
+    margin-bottom: 3px;
+    color: var(--home-on-dark);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-reach {
+    margin-top: 0;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-seat::before {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-seat-mark {
+    position: relative;
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 20px;
+    height: 22px;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-seat-pin {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 20px;
+    height: 22px;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-seat-flower {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: block;
+    width: 10px;
+    height: auto;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-src {
+    max-width: 18rem;
+    margin-top: 4px;
+    font-size: .625rem;
+    line-height: 1.4;
+    opacity: .62;
   }
 }
 
