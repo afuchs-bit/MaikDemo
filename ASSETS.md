@@ -213,3 +213,29 @@ Vom Auftraggeber gelieferte transparente PNG-Grafiken, unverändert übernommen:
 
 Beide verwenden dieselbe quadratische CSS-Bühne von 1,35 rem wie die bisherigen
 Buchstabengrafiken. Deren Dateien und Größenregeln bleiben unverändert.
+
+## Weitere mobile Leistungsfotos (AP-334, 18.09.2026)
+
+Quelle: [vom Auftraggeber freigegebener Drive-Ordner](https://drive.google.com/drive/folders/1F9BMKg1AfKgpQC493XWx1wiaxEPYq2gI).
+Alle sechs Motive wurden im Drive-Viewer visuell geprüft. Lokal gesichert sind die
+von Drive gerenderten JPEG-Vorschauen unter
+`assets/img/_src/mobile-<Web-Dateistamm>-drive-preview.jpg` (ignorierter Quellordner).
+Diese sind keine Originaldateien; insbesondere wurden die HEIC-Aufnahmen über die
+JPEG-Vorschau verarbeitet, da der lokale HEIC-Decoder das Original nicht dekodiert.
+Die Webseite lädt ausschließlich die lokalen Derivate und benötigt keinen Drive-Zugriff.
+
+| Leistung / Web-Dateistamm | Drive-Datei | Drive-ID | JPEG-Größe | Quadratischer Ausschnitt |
+|---|---|---|---|---|
+| Baumkontrolle / `baumkontrolle` | `3267655C-68C4-4166-89E5-B485B9C473D0.JPG` | `1LhQcdKy8zg4oCG9Xh_Ct78-jFKHr1oE7` | 864 × 1080 | unten; Hand und geschädigte Baumstelle |
+| Nassschneidearbeiten / `nassschneidearbeiten` | `IMG_4966.HEIC` | `10eiYkIjIuICjPai-l3MjYZsJ5bdd1OC7` | 1440 × 1080 | mittig; Arbeit an der wassergekühlten Steinsäge |
+| Objekt- & Grünflächenpflege / `objekt-gruenflaechenpflege` | `8a6eb6fa-982d-403d-ac2d-f54ed94a781d.JPG` | `1m4dl1Ez8ja2TWbdLGST7WVsGsbKHp6-Q` | 810 × 1080 | oben; Grünanlage mit Rasen und Hecken am Gebäude |
+| Rodungsarbeiten / `rodungsarbeiten` | `43C74B26-0831-4D49-88F7-F90DA4126C3D.JPG` | `1tg-xJPyOawTrUms7EKLwERUaJ6zoN1gJ` | 864 × 1080 | unten; Bagger mit gerodetem Wurzelstock |
+| Verkehrssicherheit herstellen / `verkehrssicherheit` | `IMG_1997.JPG` | `1iHg5r8TxKnelPOz0DIo76m7XAIuLPkjq` | 1440 × 1080 | rechts; Warnschild vor Baumarbeiten an der Straße |
+| Vermessungs- & Lasertechnik / `vermessung-lasertechnik` | `IMG_2700.HEIC` | `1nHPgC3w25pS3w7AV0G50akjSXThJ29DQ` | 810 × 1080 | unten; Rotationslaser im Vordergrund |
+
+Derivate: `assets/img/leistungen-mobile/<Web-Dateistamm>-{480,640}.{avif,webp}`,
+jeweils quadratisch, ohne Verzerrung oder inhaltliche Retusche. Verarbeitung mit
+Sharp: automatische Orientierung, `resize(size, size, {fit: 'cover', position})`,
+Positionen entsprechend der Tabelle (`south`, `centre`, `north`, `south`, `east`,
+`south`), AVIF Qualität 50 / effort 4, WebP Qualität 74 / effort 6, ohne EXIF.
+Die bestehenden 88 × 88 px großen Bildflächen und alle Abstandsregeln bleiben gleich.
