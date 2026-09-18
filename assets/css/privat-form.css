@@ -5513,12 +5513,6 @@
     margin-top: 24px;
     padding-top: 16px;
   }
-
-  /* AP-356: Weiße Buchstabenkontur bei unveränderter roter Textfüllung. */
-  html.home-theme-dark .site-footer .footer-route {
-    -webkit-text-stroke: 1.5px #fff;
-    paint-order: stroke fill;
-  }
 }
 
 /* AP-354: Dezente Flächenhierarchie auf dem gemeinsamen mobilen Hintergrund.
