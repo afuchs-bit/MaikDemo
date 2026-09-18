@@ -4656,7 +4656,7 @@
    dem zentrierten Titel. */
 @media (max-width:480px) {
   .private-request-paths {
-    padding: 3.625rem 0 3.5rem;
+    padding: 4.5rem 0;
     border-color: rgba(151, 206, 32, .12);
   }
 
@@ -4683,8 +4683,8 @@
 
   .iphone-service-directory {
     display: grid;
-    gap: 0.875rem;
-    margin-top: 1.75rem;
+    gap: 1.75rem;
+    margin-top: 3rem;
   }
 
   .iphone-service-feature,
@@ -4833,11 +4833,11 @@
 
   .iphone-service-feature--emergency .iphone-service-feature__body {
     grid-template-columns: minmax(0, 1fr);
-    gap: .5rem;
+    gap: .625rem;
     align-content: center;
     align-items: start;
-    min-height: 7rem;
-    padding: 1.0625rem 6.25rem 1.0625rem 1.125rem;
+    min-height: 7.5rem;
+    padding: 1.25rem 6.25rem 1.25rem 1.125rem;
   }
 
   .iphone-service-feature--emergency .iphone-service-feature__eyebrow {
@@ -4918,17 +4918,17 @@
      als Kacheln.
      AP-320: Das Foto steht auf 88px und damit fest in Pixeln, nicht in rem.
      Die Wurzel-Schriftgroesse ist unter 480px fluid; in rem waere das Foto je
-     nach Geraet 79 bis 105px gross geworden, nie die gewuenschten 88. Die
-     Mindesthoehe folgt derselben Rechnung wie vorher: Foto plus 4px Luft nach
-     oben und unten, also 96px. */
+     nach Geraet 79 bis 105px gross geworden, nie die gewuenschten 88.
+     Die Zeile gibt dem Foto oben und unten je .75rem Luft. Die Mindesthoehe
+     folgt der festen Bildhoehe und diesem responsiven vertikalen Abstand. */
   .iphone-service-card {
     display: grid;
     grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
     align-items: center;
     column-gap: 0.75rem;
     height: auto;
-    min-height: 96px;
-    padding: 0.25rem 0;
+    min-height: calc(88px + 1.5rem);
+    padding: 0.75rem 0;
     border: 0;
     border-radius: 0;
     background: none;
@@ -5014,7 +5014,7 @@
     justify-content: space-between;
     max-width: none;
     min-height: 4rem;
-    margin: 0 auto;
+    margin: 1.25rem auto 0;
     text-align: left;
   }
 
