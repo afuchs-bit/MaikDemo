@@ -3357,14 +3357,6 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
     display: inline;
   }
 
-  html.home-theme-dark .proof-map-leader {
-    fill: none;
-    stroke: rgba(255, 255, 255, .55);
-    stroke-width: 12;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
   html.home-theme-dark .proof-map-city {
     font-family: var(--body);
     font-size: 176px;
@@ -3381,9 +3373,8 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   }
 
   html.home-theme-dark .proof-map-dot {
-    fill: #d86a56;
-    stroke: #efece4;
-    stroke-width: 18;
+    fill: var(--coral);
+    stroke: none;
   }
 
   html.home-theme-dark .mr-ueber__karte .proof-map-cap {

@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260914a" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260918d" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260918e" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260913c" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260918i" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -898,7 +898,7 @@ html.home-theme-dark body { background-color: #171916; }
   <div class="container mr-ueber__karte" id="einsatzgebiet">
     <figure class="proof-map reveal">
       <svg class="map" viewBox="-1158 -1530 3879 3829" role="img"
-           aria-label="Nordrhein-Westfalen mit dem Einsatzgebiet um Herne, Bochum, Gelsenkirchen, Recklinghausen und Castrop-Rauxel">
+           aria-label="Nordrhein-Westfalen mit Sitz in Herne und Einsatzgebiet in ganz NRW">
 
         <!-- AP-F19: Schatten des Standortzeichens. Bewusst als SVG-Filter und nicht
              per CSS drop-shadow: der Filter rechnet im LOKALEN System des Pins, wo das
@@ -1028,16 +1028,16 @@ html.home-theme-dark body { background-color: #171916; }
                    preserveAspectRatio="xMidYMid meet"/>
           </g>
         </g>
-        <!-- AP-341: Mobile Ortsbeschriftungen mit Führungslinien, da die Städte
-             im NRW-Maßstab eng beieinanderliegen. Herne bleibt am vorhandenen
-             Standort (324,9;217,7). Koordinaten und Quellen: ASSETS.md. -->
+        <!-- AP-342: Ortsnamen ohne Führungslinien direkt in der Kartenfläche.
+             Auf Wunsch grob angeordnet, mit ausreichend Abstand für Lesbarkeit.
+             Der Standortpunkt bleibt exakt bei Herne (324,9;217,7). -->
         <g class="proof-map-mobile" aria-hidden="true">
-          <path class="proof-map-leader" d="M324.9 217.7 565 -65H715"/>
-          <path class="proof-map-leader" d="M192 264 -5 80H-95"/>
-          <path class="proof-map-leader" d="M324.3 313.1 585 650H715"/>
-          <text class="proof-map-city proof-map-city--seat" x="775" y="-5">Herne</text>
-          <text class="proof-map-city" x="-95" y="15" text-anchor="end">Gelsenkirchen</text>
-          <text class="proof-map-city" x="775" y="710">Bochum</text>
+          <text class="proof-map-city" x="671" y="-339" text-anchor="middle">Recklinghausen</text>
+          <text class="proof-map-city" x="1239" y="-6" text-anchor="middle">Castrop-Rauxel</text>
+          <text class="proof-map-city proof-map-city--seat" x="588" y="280">Herne</text>
+          <text class="proof-map-city" x="-146" y="548" text-anchor="middle">Gelsenkirchen</text>
+          <text class="proof-map-city" x="906" y="715" text-anchor="middle">Bochum</text>
+          <text class="proof-map-city" x="130" y="1171" text-anchor="middle">Köln</text>
           <circle class="proof-map-dot" cx="324.9" cy="217.7" r="55"/>
         </g>
       </svg>

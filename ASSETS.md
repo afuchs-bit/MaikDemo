@@ -293,3 +293,13 @@ Bereitsteller, zur [Datenlizenz](https://www.govdata.de/dl-de/by-2-0), zur
 und zu den [Datenquellen](https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/datenquellen_vg_nuts.pdf),
 sowie den Veränderungshinweis. Tablet und Desktop behalten die bisherige
 Karte, Beschriftung und Quellenzeile.
+
+### Überarbeitung der mobilen Ortsnamen und des Punkts (AP-342, 18.09.2026)
+
+Auf Wunsch des Auftraggebers entfallen die Führungslinien. Köln, Gelsenkirchen,
+Bochum, Recklinghausen und Castrop-Rauxel stehen direkt innerhalb der Kartenfläche.
+Herne bleibt als Sitz neben dem einzigen Standortpunkt beschriftet. Die Namen sind
+für die Lesbarkeit bewusst grob angeordnet; ihre Textpositionen sind keine präzisen
+Ortskoordinaten. NRW-Geometrie, Kartenfarbe, Größe und Abstände bleiben erhalten.
+Der Punkt bleibt bei (324,9; 217,7), verwendet jetzt denselben Farbtoken `--coral`
+(#E22219) wie „Route planen“ und hat keine Kontur.
