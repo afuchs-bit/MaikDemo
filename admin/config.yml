@@ -85,6 +85,10 @@ collections:
           - { label: "Terrassen & Pflaster", value: terrasse-pflasterarbeiten }
           - { label: "Palmen & winterfest", value: palmen-winterfest }
           - { label: "Pool- & Whirlpool-Umfeld", value: pool-whirlpool-umfeld }
+          - { label: "Nassschneidearbeiten", value: nassschneidearbeiten }
+          - { label: "Rodungsarbeiten", value: rodungsarbeiten }
+          - { label: "Verkehrssicherheit", value: verkehrssicherheit }
+          - { label: "Vermessungs- & Lasertechnik", value: vermessung-lasertechnik }
         hint: "Mehrfachauswahl – ein Projekt hat meist mehrere Leistungen."
       - { name: datum, label: "Datum", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, hint: "Für die Sortierung und die Aktuell-Ansicht (neueste zuerst)." }
       - { name: featured, label: "Als Highlight auszeichnen", widget: boolean, default: false, hint: "Erscheint auf der Startseite (die 3 neuesten Highlights) und im Tab „Highlights“ der Galerie. Für die Reihenfolge ist das Datum zuständig, nicht dieses Feld." }

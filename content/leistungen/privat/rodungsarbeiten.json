@@ -1,0 +1,39 @@
+{
+  "h1": "Rodungsarbeiten",
+  "navLabel": "Rodungsarbeiten",
+  "title": "Rodungsarbeiten in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Rodung von Bewuchs, Sträuchern und Wurzelstöcken in Herne, Bochum und Recklinghausen – mit Klärung der Genehmigungslage und geräumter Fläche. Jetzt anfragen.",
+  "serviceType": "Rodung von Gehölzen, Bewuchs und Wurzelstöcken",
+  "intro": "Wir räumen zugewachsene Flächen frei: Sträucher, Gehölze und Wurzelstöcke kommen heraus, das Material wird abgefahren, die Fläche bleibt bearbeitbar zurück. Eine Rodung ist mehr als Fällen – erst wenn die Wurzeln draußen sind, lässt sich die Fläche neu anlegen. Vorher klären wir, was am Standort überhaupt zulässig ist. Für Grundstücke in Herne und Umgebung.",
+  "eignung": [
+    "Verwilderte Grundstücke, die wieder nutzbar werden sollen.",
+    "Flächen, auf denen ein Garten, eine Terrasse oder ein Stellplatz neu entstehen soll.",
+    "Abgängige oder zu dicht stehende Gehölze, die samt Wurzelstock verschwinden sollen.",
+    "Zurückgebliebene Stubben aus früheren Fällungen, die stören oder wieder austreiben."
+  ],
+  "ablauf": [
+    { "titel": "Begehung und Genehmigungslage", "text": "Wir sehen uns den Bestand an und klären, was zulässig ist – Brutzeit, örtliche Baumschutzregeln und mögliche Genehmigungen gehören vor den ersten Schnitt." },
+    { "titel": "Entnahme des Bewuchses", "text": "Gehölze und Sträucher werden entnommen, bei Bäumen abschnittsweise, wenn der Platz zum Fällen fehlt." },
+    { "titel": "Wurzelstöcke heraus", "text": "Die Stubben werden gerodet oder gefräst, damit nichts wieder austreibt und die Fläche neu aufgebaut werden kann." },
+    { "titel": "Fläche räumen", "text": "Schnittgut und Wurzelwerk werden abgefahren, die Fläche wird grob hergerichtet und ist bereit für den nächsten Schritt." }
+  ],
+  "aufwand": [
+    { "titel": "Dichte und Stärke des Bewuchses", "text": "Ein zugewachsenes Grundstück mit starken Stämmen ist etwas anderes als eine Reihe Sträucher." },
+    { "titel": "Zugänglichkeit", "text": "Ob Gerät und Fahrzeug an die Fläche kommen, entscheidet stark über den Aufwand – eingeschlossene Hinterhöfe sind Handarbeit." },
+    { "titel": "Wurzelstöcke", "text": "Wie viele Stubben herauskommen und wie tief sie sitzen, bestimmt den Geräteeinsatz." },
+    { "titel": "Entsorgungsmenge", "text": "Grünschnitt, Stammholz und Wurzelwerk fallen in erheblicher Menge an und müssen abgefahren werden." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Auf dem eigenen Grundstück darf ich jederzeit roden.“", "text": "Vom 1. März bis 30. September dürfen Bäume, Hecken und Gebüsche nicht auf den Stock gesetzt oder beseitigt werden – das schützt brütende Vögel. Dazu können örtliche Baumschutzregeln kommen, die für bestimmte Bäume eine Genehmigung verlangen. Beides klären wir vorab." },
+    { "titel": "„Der Stubben kann ruhig stehen bleiben.“", "text": "Viele Gehölze treiben aus dem Stumpf wieder aus. Außerdem verrottet er über Jahre, zieht Pilze an und steht jedem neuen Aufbau im Weg. Wer die Fläche nutzen will, braucht die Wurzel heraus." },
+    { "titel": "„Rodung ist im Wesentlichen Fällen.“", "text": "Der Schnitt ist der kürzeste Teil. Wurzeln herausholen, Material zerkleinern, abfahren und die Fläche herrichten macht den größeren Anteil der Arbeit aus." }
+  ],
+  "faq": [
+    { "frage": "Wann darf gerodet werden?", "antwort": "Für das Beseitigen und starke Zurückschneiden von Bäumen, Hecken und Gebüschen gilt vom 1. März bis 30. September eine gesetzliche Schonzeit zum Schutz brütender Vögel. Schonende Form- und Pflegeschnitte bleiben möglich. Größere Rodungen planen wir deshalb ins Winterhalbjahr. Ausnahmen sind im Einzelfall möglich, etwa wenn von einem Baum eine Gefahr ausgeht." },
+    { "frage": "Brauche ich eine Genehmigung?", "antwort": "Das hängt vom Standort und vom Baum ab. Viele Städte schützen Bäume ab einem bestimmten Stammumfang über eine eigene Satzung; dann ist vor der Fällung ein Antrag nötig. Wir sehen uns den Bestand an und sagen Ihnen, was für Ihr Grundstück gilt, bevor Arbeiten beginnen." },
+    { "frage": "Was passiert mit dem Holz und dem Grünschnitt?", "antwort": "Wir fahren das Material ab und entsorgen es. Brauchbares Stammholz lässt sich auf Wunsch als Brennholz aufarbeiten – sprechen Sie uns darauf an, wenn Sie selbst mit Holz heizen. Was nicht verwertbar ist, geht in die Grünentsorgung." },
+    { "frage": "Kann die Fläche danach direkt bepflanzt werden?", "antwort": "Nach der Rodung ist die Fläche geräumt, aber noch nicht aufgebaut. Je nachdem, was entstehen soll, folgen Bodenaustausch, Planum und Aufbau. Wir stimmen gleich mit ab, wie es weitergeht, damit die Rodung schon auf das spätere Ziel hinarbeitet und nicht zweimal Gerät anrücken muss." }
+  ],
+  "nachbarn": ["baumarbeiten", "gartengestaltung"],
+  "kundengruppe": ["privat"]
+}

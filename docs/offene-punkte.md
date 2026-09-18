@@ -113,6 +113,32 @@ Checkbox. **Nur wer ein Foto beilegt**, bestaetigt vor dem Absenden, dass er die
 weitergeben darf und keine ungefragten Personen darauf zu erkennen sind. Ein Bild kann
 Daten Dritter enthalten, die blosse Kontaktangabe nicht.
 
+## AP-360 — Vier neue Leistungsseiten: Texte brauchen Freigabe
+
+Nassschneidearbeiten, Rodungsarbeiten, Verkehrssicherheit und Vermessungs- & Lasertechnik
+standen in der A-Z-Liste der Startseite, hatten aber keine eigene Seite - sie zeigten aufs
+Anfrageformular. Die vier Seiten sind jetzt gebaut.
+
+**Die Texte sind von mir entworfen, nicht vom Auftraggeber geliefert.** Sie stuetzen sich
+ausschliesslich auf Fachwissen zum Gewerk und auf geltendes Recht, nicht auf Betriebsinterna -
+so, wie es die uebrigen dreizehn Leistungsseiten auch tun. Vor dem Go-live muss Maik Rohdich
+sie lesen und freigeben.
+
+Bewusst **nicht** geschrieben, weil unbekannt:
+
+| Offen | Fundstelle |
+|---|---|
+| Welche Geraete und Verfahren tatsaechlich eingesetzt werden (Trennschneider, Wurzelfraese, Nivelliergeraet, Seilklettertechnik, Hebebuehne) | alle vier `content/leistungen/privat/*.json`, Abschnitt `ablauf` und `aufwand` |
+| Ob fuer die Verkehrssicherung Nachweise vorliegen, die genannt werden duerfen | `verkehrssicherheit.json` |
+| Ab welcher Groesse Rodungen uebernommen werden und ob es eine Mindestmenge gibt | `rodungsarbeiten.json` |
+| Ob Zuschnitte auch ohne eigenen Auftrag uebernommen werden | `nassschneidearbeiten.json`, FAQ 3 - dort bewusst als "sprechen Sie uns an" formuliert |
+
+**Rechtsangaben, die geprueft gehoeren:** Die Schonzeit vom 1. Maerz bis 30. September fuer
+das Beseitigen von Baeumen, Hecken und Gebueschen steht in `rodungsarbeiten.json` als
+geltendes Recht. Ob fuer Herne zusaetzlich eine Baumschutzsatzung mit Genehmigungspflicht
+gilt, ist auf der Seite bewusst offen gelassen ("das klaeren wir vorab") - hier wurde
+nichts behauptet, was nicht belegt ist.
+
 ## AP-329/330 — Foto-Upload: was noch fehlt
 
 Der Empfangsweg ist gebaut (`api/anfrage.js`, `vercel.json`, Versand in `anfrage.js`),

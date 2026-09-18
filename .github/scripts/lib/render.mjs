@@ -391,6 +391,10 @@ export const WELTEN = {
       'gartengestaltung', 'vorgarten', 'teichbau', 'terrasse-pflasterarbeiten',
       'bepflanzung', 'dachbegruenung', 'gartenpflege', 'palmen-winterfest',
       'pool-whirlpool-umfeld',
+      // AP-360: Vier Leistungen, die in der A-Z-Liste der Startseite standen,
+      // aber keine eigene Seite hatten - sie zeigten dort aufs Anfrageformular.
+      'nassschneidearbeiten', 'rodungsarbeiten', 'verkehrssicherheit',
+      'vermessung-lasertechnik',
     ],
     // AP-341: Das Dropdown spiegelt die A-Z-Liste der Startseite
     // (index.html, Abschnitt #leistungen) zeichengleich - Reihenfolge, Wortlaut
@@ -489,6 +493,13 @@ export const LEISTUNGEN_NAV = [
   { slug: 'pool-whirlpool-umfeld', label: 'Pool- & Whirlpool-Umfeld' },
   { slug: 'sturmnotdienst', label: 'Sturmnotdienst' },
   { slug: 'holzverkauf', label: 'Brennholz & Stammholz' },
+  // AP-360: Labels der vier neuen Seiten. Sie muessen mit navLabel in
+  // content/leistungen/privat/<slug>.json uebereinstimmen - build-leistungen.mjs
+  // warnt sonst bei jedem Lauf.
+  { slug: 'nassschneidearbeiten', label: 'Nassschneidearbeiten' },
+  { slug: 'rodungsarbeiten', label: 'Rodungsarbeiten' },
+  { slug: 'verkehrssicherheit', label: 'Verkehrssicherheit' },
+  { slug: 'vermessung-lasertechnik', label: 'Vermessungs- & Lasertechnik' },
 ];
 
 // AP-33: Dropdown nach Welten getrennt. Der Besucher wählt beim Einstieg seine Welt

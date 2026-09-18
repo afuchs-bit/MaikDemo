@@ -15,6 +15,10 @@
     { "slug": "gartenpflege",              "label": "Gartenpflege" },
     { "slug": "terrasse-pflasterarbeiten", "label": "Terrassen & Pflaster" },
     { "slug": "palmen-winterfest",         "label": "Palmen & winterfest" },
-    { "slug": "pool-whirlpool-umfeld",     "label": "Pool- & Whirlpool-Umfeld" }
+    { "slug": "pool-whirlpool-umfeld",     "label": "Pool- & Whirlpool-Umfeld" },
+    { "slug": "nassschneidearbeiten", "label": "Nassschneidearbeiten" },
+    { "slug": "rodungsarbeiten", "label": "Rodungsarbeiten" },
+    { "slug": "verkehrssicherheit", "label": "Verkehrssicherheit" },
+    { "slug": "vermessung-lasertechnik", "label": "Vermessungs- & Lasertechnik" }
   ]
 }
