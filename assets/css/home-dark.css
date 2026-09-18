@@ -1056,13 +1056,12 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark.home-header-morph .site-header.is-scrolled .brand-logo {
     width: clamp(158px, calc(100vw - 162px), 218px);
     height: clamp(50px, 17vw, 66px);
+    /* Eine gemeinsame Grafik haelt Name, Meisterzeile und Blueten in beiden
+       Scrollzustaenden proportional und verhindert einen sichtbaren Motivwechsel. */
+    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister.png?v=20260902a");
     transition:
       width .42s cubic-bezier(.22, 1, .36, 1),
       height .42s cubic-bezier(.22, 1, .36, 1);
-  }
-
-  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
-    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister.png?v=20260902a");
   }
 
   html.home-theme-dark.home-header-morph .header-actions {
@@ -1228,14 +1227,13 @@ html.home-theme-dark .fork-path:hover {
     display: none;
   }
 
-  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
-    width: clamp(166px, calc(100vw - 142px), 256px);
+  html.home-theme-dark.home-header-morph .site-header .brand-logo,
+  html.home-theme-dark.home-header-morph .site-header.is-scrolled .brand-logo {
     background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png?v=20260913b");
   }
 
-  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand-logo,
-  html.home-theme-dark.home-header-morph .site-header.is-home-condensed.is-scrolled .brand-logo {
-    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-balanced-full-flower.png?v=20260913b");
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
+    width: clamp(166px, calc(100vw - 142px), 256px);
   }
 }
 
