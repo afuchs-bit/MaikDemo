@@ -133,11 +133,13 @@
   }
 
   html.home-theme-dark .maik-cta__arrow-image {
+    position: relative;
+    left: 0;
     display: block;
     width: 46px;
     height: auto;
     object-fit: contain;
-    transition: transform .28s cubic-bezier(.22, .7, .25, 1);
+    transition: left .18s ease, transform .28s cubic-bezier(.22, .7, .25, 1);
     will-change: transform;
   }
 
@@ -340,9 +342,18 @@
         0 0 0 2px rgba(23, 25, 22, .08);
     }
 
+    /* Alle Teile stoppen auf derselben Zeitposition. Nach dem Hover laufen
+       Pfeil, Button-Atem und Halo daher phasengleich weiter, statt den Pfeil
+       mit neuer Verzoegerung bei null zu starten. Der sichtbare Einzug liegt
+       separat auf left und ueberschreibt die animierte transform nicht. */
+    html.home-theme-dark .maik-cta--attention.is-pulsing:hover,
+    html.home-theme-dark .maik-cta--attention.is-pulsing:hover .maik-cta__halo,
+    html.home-theme-dark :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing:hover .maik-cta__arrow-image {
+      animation-play-state: paused;
+    }
+
     html.home-theme-dark .maik-cta:hover .maik-cta__arrow-image {
-      animation: none;
-      transform: translateX(1.5px);
+      left: 1.5px;
     }
 
     html.home-theme-dark .mr-ueber__mehr.maik-cta:hover .maik-cta__brand-icon {

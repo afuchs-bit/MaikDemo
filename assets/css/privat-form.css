@@ -3269,11 +3269,13 @@
   }
 
   .private-process-updated .process-contact-cta__arrow-image {
+    position: relative;
+    left: 0;
     display: block;
     width: 46px;
     height: auto;
     object-fit: contain;
-    transition: transform .28s cubic-bezier(.22, .7, .25, 1);
+    transition: left .18s ease, transform .28s cubic-bezier(.22, .7, .25, 1);
     will-change: transform;
   }
 
@@ -3410,9 +3412,16 @@
         0 0 0 2px rgba(23, 25, 22, .08);
     }
 
-    .private-process-updated .process-contact-cta:hover .mobile-proof-request__arrow :is(svg, img) {
-      animation: none;
-      transform: translateX(1.5px);
+    /* Hover pausiert alle drei Taktgeber gemeinsam. So bleiben Pfeil, Atem
+       und Halo auch nach dem Verlassen exakt in derselben 1,9-s-Phase. */
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing:hover,
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing:hover .process-contact-cta__halo,
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing:hover .process-contact-cta__arrow-image {
+      animation-play-state: paused;
+    }
+
+    .private-process-updated .process-contact-cta:hover .process-contact-cta__arrow-image {
+      left: 1.5px;
     }
   }
 
@@ -4172,6 +4181,34 @@
   .private-review-nav { gap: 7px; }
   .private-review-nav button { min-width: 40px; min-height: 40px; padding: 7px; }
   .private-review-autoplay { min-height: 40px; padding: 7px 13px; }
+}
+
+/* Einheitliches iPhone-Titelsystem der Startseite: warmweisse Schrift mit einer
+   sehr feinen, gedeckten Markenkontur. Die kurze Lime-Linie traegt den klaren
+   Markenakzent, ohne mit den deutlich staerkeren CTA-Flaechen zu konkurrieren. */
+@media (max-width:480px) {
+  html.home-theme-dark .maik-section-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #fafaf6;
+    -webkit-text-stroke: .7px #6f8f3d;
+    paint-order: stroke fill;
+  }
+
+  html.home-theme-dark .maik-section-title::after {
+    content: "";
+    display: block;
+    width: 46px;
+    height: 3px;
+    margin-top: 11px;
+    border-radius: 999px;
+    background: var(--green-500);
+  }
+
+  html.home-theme-dark .maik-section-title--center {
+    align-items: center;
+  }
 }
 
 /* Kompakte FAQ-Gruppen ausschließlich auf der Privatkundenseite */
