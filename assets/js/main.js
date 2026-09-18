@@ -106,24 +106,26 @@
   document.addEventListener('scroll', setHeaderHeight, { passive: true });
 
   if (navToggle && primaryNav) {
-    // Scroll-Lock: `overflow: hidden` am body reicht auf iOS nicht zuverlaessig.
-    // `position: fixed` haelt zuverlaessig, verliert aber die Scrollposition –
-    // die wird gemerkt und beim Schliessen wiederhergestellt.
-    let gemerkteScrollPosition = 0;
+    // Scroll-Lock. AP-363: Hier stand `position: fixed` am body. Das sperrt
+    // zuverlaessig, laesst aber die Dokumenthoehe auf Viewporthoehe
+    // zusammenfallen – bei 375px und Scrollstand 900 gemessen 13235px -> 812px,
+    // die Scrollposition ging dabei auf 0. iOS Safari haelt eine Seite, die
+    // genau viewporthoch ist, fuer nicht scrollbar und faehrt seine
+    // eingeklappte Bedienleiste wieder zur vollen Groesse aus. Auf dem iPhone
+    // erschien dadurch bei jedem Oeffnen ein Balken hinter den Bedienknoepfen.
+    //
+    // `overflow` am WURZELELEMENT sperrt ebenfalls, laesst Hoehe und
+    // Scrollposition aber unangetastet (gemessen: 13235px und 900 bleiben).
+    // Der alte Kommentar bezog sich auf `overflow: hidden` am BODY - das ist
+    // tatsaechlich unzuverlaessig, am Wurzelelement ist die Lage eine andere.
+    // Das Merken und Wiederherstellen der Position entfaellt damit ersatzlos.
     const sperreScroll = () => {
-      gemerkteScrollPosition = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = '-' + gemerkteScrollPosition + 'px';
-      document.body.style.left = '0';
-      document.body.style.right = '0';
-      document.body.style.width = '100%';
+      document.documentElement.style.overflow = 'hidden';
+      document.documentElement.style.overscrollBehavior = 'none';
     };
     const gibScrollFrei = () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.width = '';
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.overscrollBehavior = '';
     };
 
     // Das Menue sitzt nicht direkt unter der Headerkante: .primary-nav ist eine
@@ -144,6 +146,18 @@
     };
 
     const navOffen = () => primaryNav.classList.contains('is-open');
+
+    // AP-363: Sicherheitsnetz fuer iOS. Ob `overflow` am Wurzelelement dort
+    // jede Fingerbewegung abfaengt, laesst sich von hier aus nicht beweisen -
+    // dieser Waechter tut es in jedem Fall. Er greift nur bei offenem Menue und
+    // nur ausserhalb davon; im Menue bleibt das Scrollen erlaubt, sonst liesse
+    // sich die Liste nicht bedienen. `passive: false` ist Pflicht, ein passiver
+    // Zuhoerer darf nicht abbrechen.
+    document.addEventListener('touchmove', (ev) => {
+      if (!navOffen()) return;
+      if (menuEl && menuEl.contains(ev.target)) return;
+      ev.preventDefault();
+    }, { passive: false });
 
     const oeffneNav = () => {
       setHeaderHeight();                  // muss VOR dem Aufklappen passieren
@@ -169,13 +183,10 @@
       navToggle.setAttribute('aria-expanded', 'false');
       if (menuEl) menuEl.style.maxHeight = '';
       gibScrollFrei();
-      // Erst fokussieren, dann die Position wiederherstellen - focus() kann
-      // das Ziel in den Blick scrollen und wuerde die Position sonst zerstoeren.
+      // AP-363: preventScroll bleibt noetig - focus() wuerde das Ziel sonst in
+      // den Blick scrollen. Ein Wiederherstellen der Position braucht es nicht
+      // mehr, sie hat sich waehrend der Sperre nicht bewegt.
       if (fokusZurueck) navToggle.focus({ preventScroll: true });
-      // `behavior: instant` ist hier wesentlich: html traegt
-      // `scroll-behavior: smooth`, eine gemerkte Position wuerde sonst
-      // animiert angefahren und unterwegs von anderen Scrolls ueberholt.
-      window.scrollTo({ top: gemerkteScrollPosition, behavior: 'instant' });
     };
 
     navToggle.addEventListener('click', () => {
@@ -183,8 +194,8 @@
     });
 
     // Klick auf einen Link schliesst weiter – jetzt inklusive Scroll-Freigabe.
-    // Der Sprung zum Anker muss NACH dem Aufheben von `position: fixed`
-    // passieren, sonst landet die Seite an der gemerkten alten Position.
+    // Der Sprung zum Anker muss NACH dem Aufheben der Sperre passieren, sonst
+    // laeuft er gegen ein Wurzelelement mit overflow: hidden.
     primaryNav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', (e) => {
         if (!navOffen()) return;
@@ -194,9 +205,6 @@
         navToggle.setAttribute('aria-expanded', 'false');
         if (menuEl) menuEl.style.maxHeight = '';
         gibScrollFrei();
-        // Erst zurueck an die gemerkte Stelle, damit der Sprung zum Anker von
-        // dort ausgeht und nicht sichtbar ueber den Seitenanfang huepft.
-        window.scrollTo({ top: gemerkteScrollPosition, behavior: 'instant' });
         if (anker) {
           e.preventDefault();
           anker.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
