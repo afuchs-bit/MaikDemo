@@ -3359,17 +3359,14 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
 
   html.home-theme-dark .proof-map-city {
     font-family: var(--body);
-    font-size: 176px;
-    font-weight: 600;
-    fill: var(--home-on-dark);
-    paint-order: stroke;
-    stroke: var(--bg);
-    stroke-width: 32;
-    stroke-linejoin: round;
+    font-size: 164px;
+    font-weight: 500;
+    fill: #d9ddd5;
+    stroke: none;
   }
 
   html.home-theme-dark .proof-map-city--seat {
-    font-weight: 800;
+    font-weight: 600;
   }
 
   html.home-theme-dark .proof-map-dot {

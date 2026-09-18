@@ -303,3 +303,20 @@ für die Lesbarkeit bewusst grob angeordnet; ihre Textpositionen sind keine prä
 Ortskoordinaten. NRW-Geometrie, Kartenfarbe, Größe und Abstände bleiben erhalten.
 Der Punkt bleibt bei (324,9; 217,7), verwendet jetzt denselben Farbtoken `--coral`
 (#E22219) wie „Route planen“ und hat keine Kontur.
+
+### Feinere mobile Kartenbeschriftung (AP-343, 18.09.2026)
+
+Nunito bleibt erhalten. Die Ortsnamen verwenden 164 statt 176 SVG-Einheiten
+Schriftgröße (rund 7 % kleiner; bei 265–280 px Kartenbreite etwa 11,2–11,8 px),
+Schriftgewicht 500 und Hellgrau #D9DDD5. Die dunkle Schriftkontur entfällt.
+Der berechnete Kontrast zum unveränderten Kartengrund #596351 liegt bei 4,58:1.
+Herne wird nur noch mit Gewicht 600 hervorgehoben. Der Punkt bleibt #E22219
+ohne Rand, Radius 48 statt 55 SVG-Einheiten, etwa 6,6–6,9 px Durchmesser.
+
+Die Beschriftungen im Ruhrgebiet rücken näher zusammen, bleiben zur Vermeidung
+von Überlagerungen bewusst versetzt. Köln steht bei (42; 1225), gerundet aus der
+bestehenden Projektion und den von der Stadt veröffentlichten Koordinaten
+des Kölner Doms: 50° 56′ 33,2607″ N, 6° 57′ 32,3136″ O,
+[Statistisches Jahrbuch Köln 2024, Stadtgebiet und Flächennutzung](https://www.stadt-koeln.de/mediaasset/content/pdf15/statistik-jahrbuch/statistisches_jahrbuch_2024_koeln__kap_0_stadtgebiet_und_flaechennutzung.pdf).
+Diese Änderungen betreffen ausschließlich die mobile SVG-Beschriftung und
+die bis 480 px begrenzten Stilregeln.
