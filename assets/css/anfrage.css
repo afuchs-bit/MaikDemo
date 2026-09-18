@@ -73,12 +73,20 @@
 
 .anf__feld textarea { resize: vertical; line-height: 1.5; min-height: 132px; }
 
+/* AP-326: Angetippt/fokussiert sahen Kachel und Feld verschieden aus. Unter
+   480px ist das seit AP-239 angeglichen (Z. 440 ff. und Z. 509 ff. tragen
+   dieselben vier Werte); ab 481px liefen die Grundregeln auseinander - das Feld
+   bekam einen 3px-Ring in --green-700 ohne Flaechenwechsel, die Kachel eine
+   Fuellung in --green-500. Jetzt beide Male dieselben Werte wie an
+   a.anf__kanal:hover (Z. 291) und .anf__kanal:focus-visible (Z. 295).
+   Die ruhende Feldflaeche (--anf-flaeche, Z. 69) bleibt unberuehrt. */
 .anf__feld input:focus-visible,
 .anf__feld textarea:focus-visible,
 .anf__feld select:focus-visible {
-  outline: 3px solid var(--anf-akzent);
-  outline-offset: 1px;
-  border-color: var(--anf-akzent);
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+  border-color: var(--green-500);
+  background: rgba(140, 198, 63, .09);
 }
 
 .anf__feld [aria-invalid="true"] { border-color: var(--anf-fehler); }
