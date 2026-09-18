@@ -37,12 +37,13 @@ html.home-theme-dark body { background-color: #171916; }
       imagesrcset="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp 1023w, assets/img/hero/hero-fahrzeug-palmengarten-v10-mobile-2046-q92.webp 2046w"
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20260914a" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260918i" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260918o" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260918j" />
+<link rel="stylesheet" href="assets/css/footer-kontakt.css?v=20260916a" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260913c" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260918r" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20260918a" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260918g" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/cta-family.css?v=20260917b" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
@@ -128,7 +129,9 @@ html.home-theme-dark body { background-color: #171916; }
       "worksFor": {"@id": "https://rohdich.de/#business"},
       "hasCredential": [
         {"@type": "EducationalOccupationalCredential", "credentialCategory": "Meisterbrief", "name": "Gartenbaumeister"},
-        {"@type": "EducationalOccupationalCredential", "credentialCategory": "Zertifizierung", "name": "Sachverständiger für Baumkontrolle"}
+        {"@type": "EducationalOccupationalCredential", "credentialCategory": "Zertifizierung", "name": "Zertifizierter Baumkontrolleur der Landwirtschaftskammer", "recognizedBy": {"@type": "Organization", "name": "Landwirtschaftskammer"}},
+        {"@type": "EducationalOccupationalCredential", "credentialCategory": "Zertifizierung", "name": "Sachverständiger für Garten- und Landschaftsbau"},
+        {"@type": "EducationalOccupationalCredential", "credentialCategory": "Sachkundenachweis", "name": "Sachkundiger für Pflanzenschutz und Wildkrautbekämpfung"}
       ]
     },
     {
@@ -257,41 +260,39 @@ html.home-theme-dark body { background-color: #171916; }
           <!-- BUILD:leistungen-submenu:start -->
           <ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
           <li class="nav-submenu-group">
-            <span class="nav-submenu-head">Für Privatkunden</span>
+            <span class="nav-submenu-head">Unsere Leistungen von A bis Z</span>
             <ul>
-              <li><a href="privatkunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
-              <li><a href="privatkunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
-              <li><a href="privatkunden/leistungen/sturmnotdienst/">Sturmnotdienst</a></li>
-              <li><a href="privatkunden/leistungen/holzverkauf/">Brennholz &amp; Stammholz</a></li>
-              <li><a href="privatkunden/leistungen/gartengestaltung/">Gartengestaltung</a></li>
-              <li><a href="privatkunden/leistungen/vorgarten/">Vorgartengestaltung</a></li>
-              <li><a href="privatkunden/leistungen/teichbau/">Teichanlagen</a></li>
-              <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/">Terrassen &amp; Pflaster</a></li>
-              <li><a href="privatkunden/leistungen/bepflanzung/">Bepflanzung</a></li>
+              <li><a href="privatkunden/leistungen/baumarbeiten/">Baumfällung</a></li>
+              <li><a href="privatkunden/leistungen/baumarbeiten/">Baumpflege</a></li>
               <li><a href="privatkunden/leistungen/dachbegruenung/">Dachbegrünung</a></li>
+              <li><a href="privatkunden/leistungen/gartengestaltung/">Erd- &amp; Baggerarbeiten</a></li>
+              <li><a href="privatkunden/leistungen/gartengestaltung/">Gartenbeleuchtung</a></li>
+              <li><a href="privatkunden/leistungen/gartengestaltung/">Gartenentwässerung</a></li>
+              <li><a href="privatkunden/leistungen/gartengestaltung/">Gartengestaltung</a></li>
               <li><a href="privatkunden/leistungen/gartenpflege/">Gartenpflege</a></li>
-              <li><a href="privatkunden/leistungen/palmen-winterfest/">Palmen &amp; winterfest</a></li>
-              <li><a href="privatkunden/leistungen/pool-whirlpool-umfeld/">Pool- &amp; Whirlpool-Umfeld</a></li>
-            </ul>
-          </li>
-          <li class="nav-submenu-group saved-gewerbe-link">
-            <a class="nav-submenu-head" href="gewerbekunden/">Für Gewerbekunden</a>
-            <ul>
-              <li><a href="gewerbekunden/leistungen/aussenanlagenpflege/">Pflege &amp; Instandhaltung</a></li>
-              <li><a href="gewerbekunden/leistungen/umgestaltung-aussenanlagen/">Umgestaltung &amp; Außenanlagen</a></li>
-              <li><a href="gewerbekunden/leistungen/dachbegruenung/">Dach-, Fassaden- &amp; Stellplatzbegrünung</a></li>
-              <li><a href="gewerbekunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
-              <li><a href="gewerbekunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
-              <li><a href="gewerbekunden/leistungen/sturmnotdienst/">Sturmnotdienst</a></li>
-              <li><a href="gewerbekunden/leistungen/begutachtung/">Fachliche Begutachtung</a></li>
+              <li><a href="privatkunden/leistungen/holzverkauf/">Kaminholz</a></li>
+              <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/">Naturstein &amp; Findlinge</a></li>
+              <li><a href="privatkunden/leistungen/bepflanzung/">Pflanzarbeiten</a></li>
+              <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/">Pflasterarbeiten</a></li>
+              <li><a href="privatkunden/leistungen/pool-whirlpool-umfeld/">Pool- &amp; Whirlpoolumfeld</a></li>
+              <li><a href="privatkunden/leistungen/gartengestaltung/">Rasen &amp; Rollrasen</a></li>
+              <li><a href="privatkunden/leistungen/bepflanzung/">Rohdichs Grubengold</a></li>
+              <li><a href="privatkunden/leistungen/bepflanzung/">Sichtschutzbepflanzung</a></li>
+              <li><a href="privatkunden/leistungen/teichbau/">Teichbau &amp; -technik</a></li>
+              <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/">Terrassenbau</a></li>
+              <li><a href="privatkunden/leistungen/vorgarten/">Vorgartengestaltung</a></li>
+              <li><a href="privatkunden/leistungen/palmen-winterfest/">Winterfeste Palmen</a></li>
+              <li><a href="privatkunden/leistungen/terrasse-pflasterarbeiten/">Zäune &amp; Sichtschutz</a></li>
             </ul>
           </li>
           </ul>
           <!-- BUILD:leistungen-submenu:end -->
         </li>
         <li><a href="projekte/">Galerie</a></li>
+        <li><a href="ueber-uns/">Über uns</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="kontakt/">Kontakt</a></li>
+        <li class="menu-meta"><a class="menu-meta__link" href="https://www.instagram.com/rohdich_garten_landschaftsbau/" target="_blank" rel="noopener noreferrer" aria-label="Maik Rohdich auf Instagram"><span class="menu-meta__text">Folgen Sie uns</span><span class="menu-meta__glyphe"><span class="menu-meta__kachel" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span></span></a></li>
       </ul>
     </nav>
 
@@ -677,11 +678,11 @@ html.home-theme-dark body { background-color: #171916; }
               <img src="assets/img/galerie-teaser/generated/moderne-aussenanlage-mit-pflasterung-e5cd55a.webp" alt="Moderne Außenanlage mit großzügiger Pflasterfläche, Rasen und klarer Gartengestaltung" width="960" height="720" loading="lazy" decoding="async">
             </picture>
           </div>
-          <div class="mobile-proof-gallery__slide" data-proof-slide data-caption="Eingewachsener Garten" hidden>
+          <div class="mobile-proof-gallery__slide" data-proof-slide data-caption="Poolumfeld mit Kiesbeet" hidden>
             <picture>
-              <source type="image/avif" srcset="assets/img/galerie-teaser/generated/eingewachsener-garten-mit-palme-810b31c-480.avif 480w, assets/img/galerie-teaser/generated/eingewachsener-garten-mit-palme-810b31c-960.avif 960w, assets/img/galerie-teaser/generated/eingewachsener-garten-mit-palme-810b31c-1440.avif 1440w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 688px) calc(100vw - 48px), 640px">
-              <source type="image/webp" srcset="assets/img/galerie-teaser/generated/eingewachsener-garten-mit-palme-810b31c-480.webp 480w, assets/img/galerie-teaser/generated/eingewachsener-garten-mit-palme-810b31c-960.webp 960w, assets/img/galerie-teaser/generated/eingewachsener-garten-mit-palme-810b31c-1440.webp 1440w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 688px) calc(100vw - 48px), 640px">
-              <img src="assets/img/galerie-teaser/generated/eingewachsener-garten-mit-palme-810b31c.webp" alt="Eingewachsener Privatgarten mit großer Palme, Hortensien und gepflasterter Terrasse" width="960" height="720" loading="lazy" decoding="async">
+              <source type="image/avif" srcset="assets/img/galerie-teaser/generated/poolumfeld-mit-kiesbeet-cfd12a3-480.avif 480w, assets/img/galerie-teaser/generated/poolumfeld-mit-kiesbeet-cfd12a3-960.avif 960w, assets/img/galerie-teaser/generated/poolumfeld-mit-kiesbeet-cfd12a3-1440.avif 1440w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 688px) calc(100vw - 48px), 640px">
+              <source type="image/webp" srcset="assets/img/galerie-teaser/generated/poolumfeld-mit-kiesbeet-cfd12a3-480.webp 480w, assets/img/galerie-teaser/generated/poolumfeld-mit-kiesbeet-cfd12a3-960.webp 960w, assets/img/galerie-teaser/generated/poolumfeld-mit-kiesbeet-cfd12a3-1440.webp 1440w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 688px) calc(100vw - 48px), 640px">
+              <img src="assets/img/galerie-teaser/generated/poolumfeld-mit-kiesbeet-cfd12a3.webp" alt="Rechteckiges Schwimmbecken mit Natursteinkante, davor ein Kiesbeet mit Buchskugel und rot blühendem Strauch" width="960" height="720" loading="lazy" decoding="async">
             </picture>
           </div>
           <div class="mobile-proof-gallery__slide" data-proof-slide data-caption="Poolgarten am Abend" hidden>
@@ -694,7 +695,7 @@ html.home-theme-dark body { background-color: #171916; }
         </div>
         <div class="mobile-proof-gallery__dots" role="group" aria-label="Gartenbild auswählen" hidden>
           <button class="mobile-proof-gallery__dot" type="button" aria-label="Bild 1 von 3: Pflasterflächen und Rasen" aria-controls="mobile-proof-gallery-track" aria-current="true"><span aria-hidden="true"></span></button>
-          <button class="mobile-proof-gallery__dot" type="button" aria-label="Bild 2 von 3: Eingewachsener Garten" aria-controls="mobile-proof-gallery-track"><span aria-hidden="true"></span></button>
+          <button class="mobile-proof-gallery__dot" type="button" aria-label="Bild 2 von 3: Poolumfeld mit Kiesbeet" aria-controls="mobile-proof-gallery-track"><span aria-hidden="true"></span></button>
           <button class="mobile-proof-gallery__dot" type="button" aria-label="Bild 3 von 3: Poolgarten am Abend" aria-controls="mobile-proof-gallery-track"><span aria-hidden="true"></span></button>
         </div>
       </div>
@@ -1761,7 +1762,11 @@ html.home-theme-dark body { background-color: #171916; }
 
                AP-304: Die Leistungsauswahl (Chips) ist entfernt, das Freitextfeld
                steht dauerhaft offen - es gibt keinen Aufklapp-Knopf mehr. -->
-          <form class="anf__form anf__karte" id="anfrage" data-anf-modus="kurz" data-anf-form novalidate>
+          <!-- AP-330: data-endpoint ist der Schalter. Solange er leer ist, verhaelt sich
+                 das Formular wie bisher: kein Versand, kein Foto-Feld, der Hinweis auf
+                 Telefon, WhatsApp und E-Mail. Mit dem Umzug auf Vercel hier "/api/anfrage"
+                 eintragen - mehr ist zum Scharfschalten nicht noetig. -->
+          <form class="anf__form anf__karte" id="anfrage" data-anf-modus="kurz" data-anf-form data-endpoint="" novalidate>
             <div class="anf__honeypot" aria-hidden="true">
               <label for="anf-hp">Firmenwebsite (bitte frei lassen)</label>
               <input type="text" id="anf-hp" name="_hp_website" tabindex="-1" autocomplete="off">
@@ -1810,6 +1815,42 @@ html.home-theme-dark body { background-color: #171916; }
                 placeholder="Eine kurze Beschreibung genügt — was ist zu tun, und wo?"></textarea>
             </p>
 
+            <!-- ============ FOTO ============
+                 AP-350: Eine Kachel in Spaltenbreite, eine Zeile hoch - Plus und
+                 Beschriftung, sonst nichts. Vorher stand hier ein eigener Block mit
+                 Ueberschrift und drei Zeilen Text; das wirkte wie ein abgesonderter
+                 Baustein und nicht wie ein Bedienteil des Formulars.
+
+                 Das <label> umschliesst den Eingang ohne for-Attribut: so traegt das
+                 Feld den Namen "Foto auswaehlen", ohne dass es eine Ueberschrift oder
+                 ein aria-label braucht. Muster wie .b2b-upload (privat-form.css:919).
+
+                 Kein hidden mehr: der Auftraggeber will die Seite so sehen, wie sie
+                 fertig aussieht. Der Versand bleibt davon unberuehrt - ohne
+                 data-endpoint wird weiterhin nichts gesendet.
+
+                 Der Satz ueber die Ortsangaben steht jetzt unten bei den rechtlichen
+                 Angaben. Er ist die Unterrichtung nach Art. 13 DSGVO und faellt nicht
+                 weg, nur weil die Kachel schrumpft. Das Entfernen selbst passiert in
+                 anfrage.js (AP-327), bevor die Daten das Geraet verlassen. -->
+            <p class="anf__feld anf__feld--foto" data-anf-foto-feld>
+              <label class="anf__foto">
+                <input type="file" id="anf-fotos" name="fotos" accept="image/jpeg,image/png,image/webp,.heic,.heif" multiple data-anf-fotos>
+                <span class="anf__foto-kachel">
+                  <span class="anf__foto-plus" aria-hidden="true"></span>
+                  <span class="anf__foto-wort">Foto auswählen</span>
+                </span>
+              </label>
+              <small class="anf__foto-stand" data-anf-foto-auswahl role="status" hidden></small>
+            </p>
+
+            <p class="anf__einwilligung" data-anf-foto-freigabe hidden>
+              <label>
+                <input type="checkbox" name="foto_freigabe" value="1">
+                <span>Ich darf diese Aufnahmen weitergeben. Personen, die nicht gefragt wurden, sind darauf nicht zu erkennen.</span>
+              </label>
+            </p>
+
             <div class="anf__abschluss">
               <button type="submit" class="btn btn-primary maik-cta maik-cta--attention" data-anf-senden>
                 <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
@@ -1821,7 +1862,7 @@ html.home-theme-dark body { background-color: #171916; }
             </div>
 
             <p class="anf__rechtliches">
-              Fotos senden Sie am schnellsten direkt per WhatsApp mit.
+              Ortsangaben aus Fotos entfernen wir, bevor sie Ihr Gerät verlassen.
               Wie wir Ihre Angaben verarbeiten, steht in der <a href="datenschutz/">Datenschutzerklärung</a>.
             </p>
           </form>
@@ -2668,7 +2709,7 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/js/mobile-private-review.js?v=20260906b" defer></script>
 <script src="assets/js/private-proof.js?v=20260906a" defer></script>
 <script src="assets/js/privat-form.js?v=20260914a" defer></script>
-<script src="assets/js/anfrage.js?v=20260913r" defer></script>
+<script src="assets/js/anfrage.js?v=20260918c" defer></script>
 <script src="assets/js/home-header-morph.js?v=20260830b" defer></script>
 <script src="assets/js/ueber-video.js?v=20260905b" defer></script>
 </body>

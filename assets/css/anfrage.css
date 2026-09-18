@@ -73,12 +73,20 @@
 
 .anf__feld textarea { resize: vertical; line-height: 1.5; min-height: 132px; }
 
+/* AP-326: Angetippt/fokussiert sahen Kachel und Feld verschieden aus. Unter
+   480px ist das seit AP-239 angeglichen (Z. 440 ff. und Z. 509 ff. tragen
+   dieselben vier Werte); ab 481px liefen die Grundregeln auseinander - das Feld
+   bekam einen 3px-Ring in --green-700 ohne Flaechenwechsel, die Kachel eine
+   Fuellung in --green-500. Jetzt beide Male dieselben Werte wie an
+   a.anf__kanal:hover (Z. 291) und .anf__kanal:focus-visible (Z. 295).
+   Die ruhende Feldflaeche (--anf-flaeche, Z. 69) bleibt unberuehrt. */
 .anf__feld input:focus-visible,
 .anf__feld textarea:focus-visible,
 .anf__feld select:focus-visible {
-  outline: 3px solid var(--anf-akzent);
-  outline-offset: 1px;
-  border-color: var(--anf-akzent);
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+  border-color: var(--green-500);
+  background: rgba(140, 198, 63, .09);
 }
 
 .anf__feld [aria-invalid="true"] { border-color: var(--anf-fehler); }
@@ -89,6 +97,134 @@
   font-size: .8125rem;
   color: var(--anf-fehler);
 }
+
+/* ------------------------------------------------------------------ Foto */
+
+/* AP-350: Eine Kachel in Spaltenbreite, eine Zeile hoch - Plus links,
+   Beschriftung daneben. Vorher ein grosser gestrichelter Kasten mit drei Zeilen
+   Inhalt; der sah aus wie ein eigener Baustein neben dem Formular.
+
+   Tokens wie an den Feldern und den drei Kanalkacheln: --anf-linie als Strich,
+   --anf-radius als Radius. Aufbau angelehnt an .b2b-upload (privat-form.css:919),
+   das aber fuer die helle Welt gebaut ist (--green-50 als Flaeche). */
+
+.anf__foto { position: relative; display: block; }
+
+/* Der Eingang bleibt bedienbar und mit der Tastatur erreichbar, nur unsichtbar -
+   display:none wuerde ihn aus der Tabfolge werfen. Die Masse der Feld-Grundregel
+   (Z. 57 ff.) muessen dabei ausdruecklich zurueckgenommen werden, sonst bleibt
+   ein 44px hoher unsichtbarer Kasten stehen und schiebt die Box. */
+.anf__foto > input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  opacity: 0;
+}
+
+.anf__foto-kachel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-block-size: 56px;
+  padding: 10px 14px;
+  /* Durchgezogen, nicht gestrichelt: die Kachel soll aussehen wie ein Bedienteil
+     des Formulars, nicht wie ein abgesetzter Ablagebereich. Die Bedeutung
+     "etwas hinzufuegen" traegt schon das Plus. */
+  border: 1px solid var(--anf-linie);
+  border-radius: var(--anf-radius);
+  cursor: pointer;
+  transition: border-color .18s var(--ease), background-color .18s var(--ease);
+}
+
+/* Aufbau wie .chev in der FAQ-Liste (styles.css:1175): zwei Balken in einem
+   runden Feld, einer gedreht. Eigener Klassenname, weil .chev an details[open]
+   haengt und sich dort zum Minus dreht - das waere hier falsch. Farben wie im
+   dunklen FAQ (home-dark.css:320). */
+.anf__foto-plus {
+  position: relative;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+}
+
+.anf__foto-plus::before,
+.anf__foto-plus::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: 11px;
+  block-size: 2px;
+  border-radius: 2px;
+  background: var(--home-small-accent);
+  transform: translate(-50%, -50%);
+}
+
+.anf__foto-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+.anf__foto-wort { color: var(--anf-vg); font-size: .95rem; font-weight: 600; }
+
+/* Meldet nur, was es zu melden gibt: gewaehlte Dateien oder einen Fehler. Im
+   Ruhezustand traegt sie hidden - der erklaerende Satz steht unten bei den
+   rechtlichen Angaben. */
+.anf__foto-stand {
+  display: block;
+  margin-top: 7px;
+  color: var(--anf-leise);
+  font-size: .78rem;
+  line-height: 1.45;
+}
+
+/* Wie an den Kanalkacheln seit AP-326: dieselbe Fuellung, derselbe Rand. */
+@media (hover: hover) and (pointer: fine) {
+  .anf__foto:hover .anf__foto-kachel {
+    border-color: var(--green-500);
+    background-color: rgba(140, 198, 63, .09);
+  }
+}
+
+.anf__foto > input:focus-visible + .anf__foto-kachel {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+  border-color: var(--green-500);
+}
+
+.anf__foto.is-invalid .anf__foto-kachel { border-color: var(--anf-fehler); }
+.anf__foto.is-invalid + .anf__foto-stand { color: var(--anf-fehler); font-weight: 700; }
+
+/* Die Bestaetigung erscheint erst, wenn wirklich ein Bild gewaehlt wurde. Sie
+   fragt nach Rechten Dritter - Nachbarn, Kennzeichen, Hausfassaden -, die auf
+   einem Gartenfoto mitlaufen, ohne gefragt worden zu sein. */
+.anf__einwilligung {
+  margin: 0 0 1.125rem;
+  font-size: .8125rem;
+  line-height: 1.5;
+  color: var(--anf-leise);
+}
+
+.anf__einwilligung label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  cursor: pointer;
+}
+
+.anf__einwilligung input {
+  inline-size: 20px;
+  block-size: 20px;
+  margin: 1px 0 0;
+  accent-color: var(--green-500);
+  color-scheme: dark;
+}
+
+.anf__einwilligung.is-invalid { color: var(--anf-fehler); font-weight: 600; }
 
 /* -------------------------------------------------------------- Datenschutz */
 
@@ -163,6 +299,10 @@
   cursor: pointer;
 }
 
+/* Waehrend des Sendens gesperrt - sonst tippen Leute ein zweites Mal und die
+   Anfrage geht doppelt raus. */
+[data-anf-senden]:disabled { opacity: .6; cursor: default; }
+
 .anf__knopf:hover:not(:disabled) { opacity: .88; }
 .anf__knopf:disabled { opacity: .55; cursor: default; }
 
@@ -179,8 +319,17 @@
 }
 .anf__status:empty { display: none; }
 
-/* Es gibt keinen Erfolgszustand: ohne Endpunkt wird nichts gesendet.
-   Deshalb existiert hier bewusst kein data-art="erfolg". */
+/* AP-330: Den Erfolgszustand gibt es jetzt - aber nur, wenn am Formular ein
+   data-endpoint steht und die Funktion ihn bestaetigt hat. Ohne Endpunkt bleibt
+   es beim Hinweis; eine Erfolgsmeldung ohne Versand waere eine Luege. */
+.anf__status[data-art="erfolg"] {
+  padding: .875rem 1rem;
+  border: 1px solid var(--green-500);
+  border-radius: var(--anf-radius);
+  background-color: rgba(140, 198, 63, .12);
+  color: var(--anf-vg);
+}
+
 .anf__status[data-art="hinweis"] {
   padding: .875rem 1rem;
   border: 1px solid var(--anf-linie);
@@ -387,6 +536,15 @@
 
 /* ----------------------------------------------------- Freitextfeld */
 
+/* AP-353: Hier steht bewusst kein margin-bottom mehr, und an .anf__feld--foto
+   auch nicht. Beide nehmen die 1.125rem aus .anf__feld (Z. 52) - derselbe
+   Abstand, den jedes Feld des Formulars unter sich traegt. Damit hat die
+   Foto-Kachel oben und unten gleich viel Luft, ohne dass irgendwo eine Zahl
+   gepflegt werden muesste.
+
+   Bis AP-352 stand im 480er-Block ein margin-bottom: 26px. Das stammte aus
+   AP-239, als hinter dem Freitextfeld direkt der Absendeknopf kam und dort Luft
+   gebraucht wurde. Seit AP-350 steht die Foto-Kachel dazwischen. */
 .anf__feld--frei { margin-block-start: 0; }
 
 /* AP-250: Der Rechtshinweis klebte am Absendeknopf - gemessen 0px Abstand.
@@ -509,8 +667,23 @@
     white-space: nowrap;
   }
 
-  .private-contact .anf__feld--frei {
-    margin-bottom: 26px;
+  .private-contact .anf__foto-kachel {
+    min-block-size: 58px;
+    padding: 10px 15px;
+    border-color: rgba(151, 206, 32, .19);
+    border-radius: 15px 5px 15px 5px;
+  }
+
+  /* Wie .private-contact a.anf__kanal:active weiter unten - beruehrt fuehlt sich
+     die Kachel an wie die drei Kacheln ueber dem Formular. */
+  .private-contact .anf__foto:active .anf__foto-kachel {
+    border-color: rgba(140, 198, 63, .22);
+    background-color: rgba(49, 82, 0, .12);
+  }
+
+  .private-contact .anf__einwilligung {
+    margin-bottom: 22px;
+    font-size: .8rem;
   }
 
   .private-contact a.anf__kanal:active {
