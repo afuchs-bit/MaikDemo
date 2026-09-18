@@ -259,3 +259,37 @@ Bildquellen dieser Zeile verhindert die Anzeige des alten Ausschnitts aus dem Br
 Die bisherige `contain`-Sonderregel entfällt; es gelten dieselben Bildregeln wie
 für die übrigen Kacheln.
 Bildfläche (88 × 88 px), Zeilenhöhe und Abstände bleiben unverändert.
+
+## Mobile Einsatzgebietskarte (AP-341, 18.09.2026)
+
+Die bestehende NRW-Geometrie in `index.html` wird weiterverwendet. Quelle laut
+ursprünglichem SVG-Nachweis: Verwaltungsgebiete VG2500, Stand 01.01.2026,
+© GeoBasis-DE / BKG, dl-de/by-2-0; vereinfachter Landesumriss in Web-Mercator.
+Keine neue Rastergrafik, kein externer Kartendienst und keine Änderung am Umriss.
+
+Nur bis einschließlich 480 px: Karte maximal 280 px breit (vorher 224 px mit
+200-px-Höhendeckel), gedeckte grüngraue Fläche #596351, bestehendes Markengrün
+#8CC63F als Kontur. Ein statischer roter Punkt #D86A56 mit heller Kontur ersetzt
+den Standort-Pin. Die anderen beiden Standort-Icons entfallen in dieser Ansicht.
+Die Ortsnamen haben bei 265–280 px Kartenbreite etwa 12–13 px Schriftgröße.
+Führungslinien verbinden die versetzten Beschriftungen mit den Ortspositionen:
+
+- Herne: unveränderte vorhandene SVG-Position (324,9; 217,7).
+- Gelsenkirchen: 51,511111111111° N, 7,1005555555556° O,
+  [Koordinaten der Stadt](https://de.wikipedia.org/wiki/Gelsenkirchen),
+  projiziert auf (192,0; 264,0).
+- Bochum: 51° 28′ 56″ N, 7° 13′ 31″ O,
+  [Flächenschwerpunkt laut Stadt Bochum](https://www.bochum.de/Bochumer-Fakten-/-Infos),
+  projiziert auf (324,3; 313,1).
+
+Es gilt die bestehende Projektion:
+`x = 60783.81 * rad(lon) - 7340.83`,
+`y = -60626.24 * ln(tan(PI/4 + rad(lat)/2)) + 64065.70`.
+
+Der mobile Kartennachweis ist ein natives, aufklappbares `details`-Element,
+mit sichtbarem BKG-Kurznachweis im Titel. Er enthält verlinkte Angaben zum
+Bereitsteller, zur [Datenlizenz](https://www.govdata.de/dl-de/by-2-0), zur
+[Datensatzdokumentation](https://sg.geodatenzentrum.de/web_public/gdz/dokumentation/deu/vg2500.pdf)
+und zu den [Datenquellen](https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/datenquellen_vg_nuts.pdf),
+sowie den Veränderungshinweis. Tablet und Desktop behalten die bisherige
+Karte, Beschriftung und Quellenzeile.

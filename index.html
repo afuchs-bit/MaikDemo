@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260914a" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260918c" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260918d" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260913c" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260918i" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -895,7 +895,7 @@ html.home-theme-dark body { background-color: #171916; }
        Nicht kopiert: die Karten-SVG fuehrt eigene IDs, unter anderem den Filter
        seat-schatten des Standortzeichens. Ein zweites Vorkommen haette sie
        verdoppelt und die Zuordnung unbestimmt gemacht. -->
-  <div class="container mr-ueber__karte">
+  <div class="container mr-ueber__karte" id="einsatzgebiet">
     <figure class="proof-map reveal">
       <svg class="map" viewBox="-1158 -1530 3879 3829" role="img"
            aria-label="Nordrhein-Westfalen mit dem Einsatzgebiet um Herne, Bochum, Gelsenkirchen, Recklinghausen und Castrop-Rauxel">
@@ -1028,6 +1028,18 @@ html.home-theme-dark body { background-color: #171916; }
                    preserveAspectRatio="xMidYMid meet"/>
           </g>
         </g>
+        <!-- AP-341: Mobile Ortsbeschriftungen mit Führungslinien, da die Städte
+             im NRW-Maßstab eng beieinanderliegen. Herne bleibt am vorhandenen
+             Standort (324,9;217,7). Koordinaten und Quellen: ASSETS.md. -->
+        <g class="proof-map-mobile" aria-hidden="true">
+          <path class="proof-map-leader" d="M324.9 217.7 565 -65H715"/>
+          <path class="proof-map-leader" d="M192 264 -5 80H-95"/>
+          <path class="proof-map-leader" d="M324.3 313.1 585 650H715"/>
+          <text class="proof-map-city proof-map-city--seat" x="775" y="-5">Herne</text>
+          <text class="proof-map-city" x="-95" y="15" text-anchor="end">Gelsenkirchen</text>
+          <text class="proof-map-city" x="775" y="710">Bochum</text>
+          <circle class="proof-map-dot" cx="324.9" cy="217.7" r="55"/>
+        </g>
       </svg>
 
       <!-- AP-217: Eyebrow ueber der Legende, damit die Kartenzeile denselben Kopf
@@ -1039,10 +1051,20 @@ html.home-theme-dark body { background-color: #171916; }
       </p>
 
       <figcaption class="proof-map-cap">
-        <em><span class="proof-map-focus"><span class="proof-map-copy--default">Für Ihre Anliegen in ganz NRW tätig</span><span class="proof-map-copy--iphone">Für Ihre Anliegen in ganz NRW tätig</span></span><span class="proof-map-reach"><span class="proof-map-copy--default">Auf Anfrage auch deutschlandweit.</span><span class="proof-map-copy--iphone">Auf Anfrage auch deutschlandweit.</span></span></em>
+        <em><span class="proof-map-focus"><span class="proof-map-copy--default">Für Ihre Anliegen in ganz NRW tätig</span><span class="proof-map-copy--iphone">In ganz NRW für Sie da.</span></span><span class="proof-map-reach"><span class="proof-map-copy--default">Auf Anfrage auch deutschlandweit.</span><span class="proof-map-copy--iphone">Auf Anfrage auch deutschlandweit.</span></span></em>
         <span class="proof-map-seat"><span class="proof-map-seat-mark" aria-hidden="true"><img class="proof-map-seat-pin" src="assets/img/icons/rohdich-standort.svg" alt="" width="24" height="24" loading="lazy" decoding="async"><img class="proof-map-seat-flower" src="assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="526" height="430" loading="lazy" decoding="async"></span><span>Sitz in Herne</span></span>
       </figcaption>
-      <div class="proof-map-src">Verwaltungsgrenzen: © GeoBasis-DE / BKG (dl-de/by-2-0)</div>
+      <div class="proof-map-src">
+        <span class="proof-map-source--default">Verwaltungsgrenzen: © GeoBasis-DE / BKG (dl-de/by-2-0)</span>
+        <details class="proof-map-credit">
+          <summary>Kartennachweis · © BKG</summary>
+          <p>Verwaltungsgebiete VG2500: © GeoBasis-DE / <a href="https://www.bkg.bund.de">BKG</a> 2026,
+            <a href="https://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a> (Daten verändert).</p>
+          <p><a href="https://sg.geodatenzentrum.de/web_public/gdz/dokumentation/deu/vg2500.pdf">Datensatz VG2500</a> ·
+            <a href="https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/datenquellen_vg_nuts.pdf">Datenquellen</a>.
+            Grenzen vereinfacht, Farben angepasst und Ortsbeschriftungen ergänzt.</p>
+        </details>
+      </div>
     </figure>
   </div>
 

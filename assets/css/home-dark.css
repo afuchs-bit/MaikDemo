@@ -2500,6 +2500,11 @@ html.home-theme-dark .proof-map-seat-mark {
   display: none;
 }
 
+html.home-theme-dark .proof-map-mobile,
+html.home-theme-dark .proof-map-credit {
+  display: none;
+}
+
 /* --- Block 1: Kopf mit Eyebrow (AP-217) ---------------------------------
    Der Eyebrow ist zeichengleich das Bauteil der Rezensionssektion
    (.private-proof-since, privat-form.css:3174): 0.76rem, 800, 0.08em gesperrt,
@@ -3307,10 +3312,10 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
 
 @media (max-width: 480px) {
   html.home-theme-dark .mr-ueber__karte {
-    /* AP-340: Nur die Kacheloptik entfällt; Karte und Texte bleiben sichtbar. */
+    /* AP-341: Freistehende Karte ohne Kachel, mit mehr Raum für Ortsnamen. */
     box-sizing: border-box;
     margin-top: 48px;
-    padding: 20px 16px 16px;
+    padding-block: 20px 16px;
     border: 0;
     border-radius: 0;
     background: transparent;
@@ -3321,37 +3326,75 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
      Die Kreis- und Regierungsbezirksgrenzen konkurrieren dort sonst mit dem
      kleinen Format; der Landesumriss bleibt als klare Kontur erhalten. */
   html.home-theme-dark .mr-ueber__karte .proof-map .m-outline {
-    fill: #44533a;
-    stroke: #708448;
+    fill: #596351;
+    stroke: var(--home-lime);
   }
 
-  html.home-theme-dark .mr-ueber__karte .proof-map :is(.m-krs, .m-fill, .m-inner) {
+  html.home-theme-dark .mr-ueber__karte .proof-map :is(.m-krs, .m-fill, .m-inner, .m-node) {
     display: none;
   }
 
   html.home-theme-dark .mr-ueber__karte .proof-map {
-    row-gap: 8px;
+    row-gap: 14px;
   }
 
   html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte {
     justify-self: center;
-    margin-bottom: 2px;
+    margin-bottom: 8px;
+  }
+
+  html.home-theme-dark .mr-ueber__eyebrow--karte > svg {
+    display: none;
   }
 
   html.home-theme-dark .mr-ueber__karte .proof-map > svg.map {
     justify-self: center;
-    width: min(100%, 224px);
-    max-height: 200px;
+    width: min(100%, 280px);
+    max-height: none;
+  }
+
+  html.home-theme-dark .proof-map-mobile {
+    display: inline;
+  }
+
+  html.home-theme-dark .proof-map-leader {
+    fill: none;
+    stroke: rgba(255, 255, 255, .55);
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  html.home-theme-dark .proof-map-city {
+    font-family: var(--body);
+    font-size: 176px;
+    font-weight: 600;
+    fill: var(--home-on-dark);
+    paint-order: stroke;
+    stroke: var(--bg);
+    stroke-width: 32;
+    stroke-linejoin: round;
+  }
+
+  html.home-theme-dark .proof-map-city--seat {
+    font-weight: 800;
+  }
+
+  html.home-theme-dark .proof-map-dot {
+    fill: #d86a56;
+    stroke: #efece4;
+    stroke-width: 18;
   }
 
   html.home-theme-dark .mr-ueber__karte .proof-map-cap {
-    gap: 7px;
-    max-width: 19rem;
+    gap: 0;
+    max-width: 22rem;
     font-size: .875rem;
     line-height: 1.5;
   }
 
-  html.home-theme-dark .proof-map-copy--default {
+  html.home-theme-dark .proof-map-copy--default,
+  html.home-theme-dark .proof-map-source--default {
     display: none;
   }
 
@@ -3360,9 +3403,10 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   }
 
   html.home-theme-dark .mr-ueber__karte .proof-map-focus {
-    margin-bottom: 3px;
+    margin-bottom: 4px;
     color: var(--home-on-dark);
     font-weight: 700;
+    font-size: 1rem;
     text-wrap: balance;
   }
 
@@ -3371,41 +3415,66 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
     text-wrap: balance;
   }
 
-  html.home-theme-dark .mr-ueber__karte .proof-map-seat::before {
+  html.home-theme-dark .mr-ueber__karte .proof-map-seat {
     display: none;
   }
 
-  html.home-theme-dark .mr-ueber__karte .proof-map-seat-mark {
-    position: relative;
-    display: inline-block;
-    flex: 0 0 auto;
-    width: 20px;
-    height: 22px;
-  }
-
-  html.home-theme-dark .mr-ueber__karte .proof-map-seat-pin {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 20px;
-    height: 22px;
-  }
-
-  html.home-theme-dark .mr-ueber__karte .proof-map-seat-flower {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    display: block;
-    width: 10px;
-    height: auto;
-  }
-
   html.home-theme-dark .mr-ueber__karte .proof-map-src {
-    max-width: 18rem;
-    margin-top: 4px;
-    font-size: .625rem;
-    line-height: 1.4;
-    opacity: .62;
+    width: 100%;
+    max-width: 22rem;
+    margin-top: 0;
+    font-size: .75rem;
+    line-height: 1.55;
+    opacity: 1;
+  }
+
+  html.home-theme-dark .proof-map-credit {
+    display: block;
+  }
+
+  html.home-theme-dark .proof-map-credit > summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    color: var(--ink-mute);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  html.home-theme-dark .proof-map-credit > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  html.home-theme-dark .proof-map-credit > summary::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+  }
+
+  html.home-theme-dark .proof-map-credit[open] > summary::after {
+    transform: translateY(1px) rotate(225deg);
+  }
+
+  html.home-theme-dark .proof-map-credit > summary:focus-visible {
+    outline: 2px solid var(--home-lime);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  html.home-theme-dark .proof-map-credit p {
+    margin: 0 0 8px;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .proof-map-credit a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 }
 
