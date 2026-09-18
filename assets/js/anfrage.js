@@ -31,6 +31,67 @@
     if (stempel) stempel.value = String(Date.now());
   }
 
+  // --- Foto aufbereiten: verkleinern und von Metadaten befreien ----------------
+  // AP-327: In den EXIF-Daten eines Handyfotos stehen GPS-Koordinaten, Aufnahmezeit
+  // und Geraetekennung. Ein Gartenfoto verriete damit die Wohnadresse, bevor der
+  // Kunde sie selbst genannt hat. Wird das Bild ueber ein Canvas neu gezeichnet,
+  // entstehen die Bytes neu - es gibt keinen Weg, die Metadaten versehentlich doch
+  // mitzuschicken, weil sie schlicht nicht mehr existieren.
+  //
+  // Zweiter Grund: Vercel nimmt hoechstens 4,5 MB Request-Body an. Ein Handyfoto hat
+  // heute 3-6 MB. Ohne diesen Schritt scheitert schon das erste Bild.
+  //
+  // Warum ein <img> und nicht createImageBitmap: Browser wenden die EXIF-Drehung auf
+  // <img> von sich aus an (image-orientation: from-image ist der Ausgangswert), und
+  // drawImage uebernimmt das gedrehte Ergebnis. Bei createImageBitmap haengt das an
+  // einer Option, die aeltere Fassungen ignorieren - dann laegen Hochkantfotos quer
+  // im Anhang. Ein Pfad, der ueberall stimmt, ist zwei Pfaden mit Fallunterscheidung
+  // vorzuziehen. HEIC von iPhones dekodiert Safari dabei ueber den Systemcodec.
+
+  const GROESSTE_KANTE = 1600;
+  const ZIEL_BYTES = 1200000;
+  const MAX_FOTOS = 3;
+
+  const bildLaden = (datei) => new Promise((erfuellen, ablehnen) => {
+    const adresse = URL.createObjectURL(datei);
+    const bild = new Image();
+    bild.onload = () => { URL.revokeObjectURL(adresse); erfuellen(bild); };
+    bild.onerror = () => { URL.revokeObjectURL(adresse); ablehnen(new Error('dekodieren')); };
+    bild.src = adresse;
+  });
+
+  const fotoAufbereiten = async (datei, index) => {
+    const bild = await bildLaden(datei);
+    const kante = Math.max(bild.naturalWidth, bild.naturalHeight);
+    if (!kante) throw new Error('dekodieren');
+
+    const faktor = Math.min(1, GROESSTE_KANTE / kante);
+    const flaeche = document.createElement('canvas');
+    flaeche.width = Math.max(1, Math.round(bild.naturalWidth * faktor));
+    flaeche.height = Math.max(1, Math.round(bild.naturalHeight * faktor));
+    flaeche.getContext('2d').drawImage(bild, 0, 0, flaeche.width, flaeche.height);
+
+    // Absteigende Guete, bis das Bild unter die Zielgroesse passt. Der Abbruch bei
+    // 0.3 ist Absicht: darunter wird aus einem Foto ein Klotzmuster, und ein
+    // unbrauchbares Bild hilft bei der Einschaetzung des Gartens niemandem.
+    let guete = 0.72;
+    let klecks = null;
+    for (;;) {
+      klecks = await new Promise((f) => flaeche.toBlob(f, 'image/jpeg', guete));
+      if (!klecks) throw new Error('kodieren');
+      if (klecks.size <= ZIEL_BYTES || guete <= 0.3) break;
+      guete -= 0.12;
+    }
+
+    // Der Originalname wird verworfen. Er traegt oft den Kundennamen ("Garten
+    // Mueller.jpg"), manchmal Pfadzeichen, und er wird spaeter zum Dateinamen eines
+    // E-Mail-Anhangs - eine Stelle, an der man nichts Ungeprueftes durchreichen will.
+    return new File([klecks], 'foto-' + (index + 1) + '.jpg', {
+      type: 'image/jpeg',
+      lastModified: Date.now()
+    });
+  };
+
   // --- Versand: es gibt keinen Endpunkt, also gibt es keinen Erfolgszustand ---
   // Das Formular bleibt stehen und nennt die Wege, die tatsaechlich funktionieren.
   // [OFFEN: Wortlaut des Hinweises durch den Auftraggeber bestaetigen lassen.
