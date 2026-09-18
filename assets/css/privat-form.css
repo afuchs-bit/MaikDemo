@@ -5508,3 +5508,82 @@
     padding-top: 16px;
   }
 }
+
+/* AP-354: Dezente Flächenhierarchie auf dem gemeinsamen mobilen Hintergrund.
+   Die Tonwerte betreffen nur bestehende Kacheln ab Über uns. */
+@media (max-width: 480px) {
+  html.home-theme-dark :is(
+    .private-request-paths,
+    .private-process-updated,
+    .private-proof-bento,
+    .private-contact,
+    .private-faq
+  ) {
+    --home-surface-low: #22271f;
+    --home-surface-card: #252b22;
+    --home-surface-high: #2b3327;
+    --home-surface-border: rgba(183, 203, 160, .18);
+  }
+
+  html.home-theme-dark .iphone-service-feature--emergency {
+    background: linear-gradient(145deg, #2b3226, var(--home-surface-card));
+  }
+
+  html.home-theme-dark .private-process-updated .step-card {
+    background: var(--home-surface-card);
+  }
+
+  html.home-theme-dark .private-proof-bento .private-review-carousel.has-review-swipe {
+    background: var(--home-surface-card);
+    border-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-review-carousel.has-review-swipe .private-review-carousel-head {
+    background: var(--home-surface-high);
+    border-bottom-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-review-carousel.has-review-swipe .private-review-swipe-controls {
+    background: var(--home-surface-low);
+    border-top-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-contact .anf__kanal {
+    background: var(--home-surface-card);
+    border-color: var(--home-surface-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  }
+
+  html.home-theme-dark .private-contact .anf__feld :is(input, textarea) {
+    background: var(--home-surface-low);
+    border-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-contact .anf__feld :is(input, textarea):focus-visible {
+    background: var(--home-surface-card);
+    border-color: rgba(140, 198, 63, .65);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  }
+
+  html.home-theme-dark .private-contact a.anf__kanal:active {
+    background: var(--home-surface-high);
+    border-color: rgba(140, 198, 63, .5);
+  }
+
+  html.home-theme-dark .private-faq .private-faq-list details {
+    background: var(--home-surface-low);
+    border-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-faq .private-faq-list details[open] {
+    background: var(--home-surface-card);
+    border-color: rgba(183, 203, 160, .3);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    html.home-theme-dark .private-contact a.anf__kanal:hover {
+      background: var(--home-surface-high);
+      border-color: rgba(140, 198, 63, .5);
+    }
+  }
+}
