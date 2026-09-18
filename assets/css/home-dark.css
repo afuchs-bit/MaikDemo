@@ -3386,7 +3386,7 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   html.home-theme-dark .mr-ueber__karte .proof-map-cap {
     gap: 0;
     max-width: 22rem;
-    font-size: .875rem;
+    font-size: 14px;
     line-height: 1.5;
   }
 
@@ -3403,26 +3403,12 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
     margin-bottom: 0;
     color: var(--home-on-dark);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 16px;
     text-wrap: balance;
   }
 
-  /* AP-345: Ruhige Ortsliste der freigegebenen Variante B, nur auf Mobil. */
-  html.home-theme-dark .proof-map-places {
-    display: block;
-    margin-block: 16px;
-    color: var(--ink-mute);
-    font-size: .875rem;
-    font-weight: 500;
-    line-height: 1.75;
-  }
-
-  html.home-theme-dark .proof-map-places > span {
-    display: block;
-  }
-
   html.home-theme-dark .mr-ueber__karte .proof-map-reach {
-    margin-top: 0;
+    margin-top: 6px;
     text-wrap: balance;
   }
 
@@ -3431,19 +3417,31 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   }
 
   html.home-theme-dark .mr-ueber__karte .proof-map-src {
+    /* AP-346: Die beiden Details stehen geschlossen auf einer gemeinsamen Zeile. */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0 16px;
     width: 100%;
     max-width: 22rem;
-    margin-top: 0;
-    font-size: .75rem;
+    margin-top: -2px;
+    font-size: 12px;
     line-height: 1.55;
+    letter-spacing: normal;
     opacity: 1;
   }
 
+  html.home-theme-dark .proof-map-places,
   html.home-theme-dark .proof-map-credit {
     display: block;
   }
 
-  html.home-theme-dark .proof-map-credit > summary {
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit)[open] {
+    flex-basis: 100%;
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -3454,11 +3452,11 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
     list-style: none;
   }
 
-  html.home-theme-dark .proof-map-credit > summary::-webkit-details-marker {
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary::-webkit-details-marker {
     display: none;
   }
 
-  html.home-theme-dark .proof-map-credit > summary::after {
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary::after {
     content: "";
     width: 5px;
     height: 5px;
@@ -3467,11 +3465,11 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
     transform: translateY(-2px) rotate(45deg);
   }
 
-  html.home-theme-dark .proof-map-credit[open] > summary::after {
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit)[open] > summary::after {
     transform: translateY(1px) rotate(225deg);
   }
 
-  html.home-theme-dark .proof-map-credit > summary:focus-visible {
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary:focus-visible {
     outline: 2px solid var(--home-lime);
     outline-offset: 3px;
     border-radius: 4px;
@@ -3480,6 +3478,16 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   html.home-theme-dark .proof-map-credit p {
     margin: 0 0 8px;
     text-wrap: pretty;
+  }
+
+  html.home-theme-dark .proof-map-places-copy {
+    max-width: 290px;
+    margin: 0 auto 8px;
+    color: var(--ink-mute);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    text-wrap: balance;
   }
 
   html.home-theme-dark .proof-map-credit a {

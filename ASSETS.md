@@ -350,3 +350,23 @@ verwendet 205 Einheiten, Gewicht 400, 7 Einheiten Laufweite und #D0D5CB.
 Die Ortsliste nutzt die vorhandene gedeckte Textfarbe, 14 px Schriftgröße und
 1,75 Zeilenhöhe. Alle neuen Stilregeln sind auf Mobil begrenzt; die Ortsliste
 und die mobile SVG-Gruppe sind auf Tablet und Desktop ausgeblendet.
+
+### Reduzierte mobile Kartenlegende (AP-346, 18.09.2026)
+
+Die vom Auftraggeber freigegebene Textvariante C ersetzt die dauerhaft sichtbare
+dreizeilige Ortsliste. Direkt unter der unveränderten Karte stehen weiterhin
+„In ganz NRW für Sie da.“ und „Auf Anfrage auch deutschlandweit.“ mit 6 px Abstand.
+Nunito, 16 px / Gewicht 700 für die Hauptaussage und 14 px für den Zusatz entsprechen
+dem freigegebenen Entwurf; diese Größen bleiben auch auf schmalen Handys lesbar.
+
+Darunter teilen sich „Orte ansehen“ und „© BKG“ eine dezente Zeile in der bestehenden
+gedeckten Textfarbe, mit 12 px Schriftgröße und 16 px Abstand. Beide sind native
+`details`-Elemente mit mindestens 44 px hohen, per Tastatur bedienbaren Titeln.
+Beim Öffnen erhält der jeweilige Detailblock die volle Breite. Die Ortsnamen bleiben
+vollständig als kompakter Text erhalten; der Kartennachweis behält alle bisherigen
+Quellenlinks, Lizenzangaben und Veränderungshinweise. „© BKG“ trägt zusätzlich die
+zugängliche Beschriftung „Kartennachweis: © BKG“.
+
+Nur die mobilen Regeln bis einschließlich 480 px und die zugehörige Legende ändern
+sich. Kartenposition, SVG-Geometrie, Beschriftungen, Standortpunkt und die Darstellung
+auf Tablet und Desktop bleiben erhalten. Keine neuen Bildassets oder Kartendaten.
