@@ -342,6 +342,13 @@
   block-size: 21px;
 }
 
+/* AP-338: Mobil dieselbe Umschlagfarbe wie im Footer. */
+@media (max-width: 480px) {
+  .anf__kanal-icon--mail {
+    color: var(--mobile-logo-green);
+  }
+}
+
 .anf__kanal small {
   display: block;
   color: var(--ink-mute);
