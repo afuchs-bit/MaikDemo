@@ -5320,10 +5320,8 @@
     background: var(--home-page-background);
   }
 
-  /* AP-287: ebenfalls ohne .site-footer. Auf einer gerundeten Kachel zeichnet
-     eine inset-Linie einen schwachen Bogen ueber die oberen Ecken - derselbe
-     Grund, aus dem styles.css:1645 dort schon den border-top abschaltet.
-     Die Unterseiten haben box-shadow: none. */
+  /* AP-351: Die Abschnitte gehen ohne Rand oder Schattenlinie ineinander über.
+     Die Trennung erfolgt ausschließlich durch den Abstand. */
   html.home-theme-dark :is(
     .mr-ueber,
     .private-request-paths,
@@ -5332,8 +5330,8 @@
     .private-contact,
     .private-faq
   ) {
-    border-color: rgba(151,206,32,.075);
-    box-shadow: inset 0 1px 0 rgba(151,206,32,.045);
+    border-block: 0;
+    box-shadow: none;
   }
 
   html.home-theme-dark .private-process-updated .step-card h3 {
@@ -5359,5 +5357,144 @@
 
   html.home-theme-dark .private-process-updated .step-card__copy--iphone {
     display: inline;
+  }
+}
+
+/* AP-351: Gemeinsamer Abstandsmaßstab ab Über uns, nur auf Handy-Breiten.
+   8px verbinden Beschriftung und Inhalt, 24px trennen wiederholte Elemente,
+   40px führen vom Abschnittskopf zum Inhalt und vom Inhalt zum CTA.
+   Zwei 56px-Abschnittsränder ergeben 112px zwischen den Sektionen.
+   Die bereits freigegebene Einleitung vor Über uns wird nicht angesprochen. */
+@media (max-width: 480px) {
+  html.home-theme-dark :is(
+    .mr-ueber,
+    .private-request-paths,
+    .private-process-updated,
+    .private-proof-bento,
+    .private-contact,
+    .private-faq
+  ) {
+    --home-space-copy: 8px;
+    --home-space-lead: 16px;
+    --home-space-list: 24px;
+    --home-space-block: 40px;
+    --home-space-feature: 48px;
+    --home-space-section: 56px;
+    padding-block: var(--home-space-section);
+  }
+
+  /* Der Anschluss an den freigegebenen oberen Bereich bleibt bei 44px. */
+  html.home-theme-dark .mr-ueber {
+    padding-top: 44px;
+  }
+
+  html.home-theme-dark .mr-ueber__kopf {
+    margin-bottom: var(--home-space-block);
+  }
+
+  html.home-theme-dark .mr-ueber__mustertext {
+    margin-top: var(--home-space-feature);
+    gap: var(--home-space-copy);
+  }
+
+  html.home-theme-dark .mr-ueber__split {
+    margin-top: var(--home-space-block);
+    row-gap: var(--home-space-block);
+  }
+
+  html.home-theme-dark .mr-ueber__punkte {
+    gap: 32px;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte li {
+    gap: var(--home-space-copy);
+  }
+
+  html.home-theme-dark .mr-ueber__karte {
+    margin-top: var(--home-space-feature);
+    padding-block: 0;
+  }
+
+  html.home-theme-dark .iphone-service-directory {
+    margin-top: var(--home-space-block);
+    gap: 32px;
+  }
+
+  /* 88px-Fotos plus zweimal 12px: 24px Abstand zwischen den Bildern. */
+  html.home-theme-dark .iphone-service-card {
+    min-height: 112px;
+    padding-block: 12px;
+  }
+
+  html.home-theme-dark .iphone-service-contact-cta {
+    /* Der Rasterabstand trägt bereits 32px zum gemeinsamen 40px-Abstand bei. */
+    margin-top: var(--home-space-copy);
+  }
+
+  html.home-theme-dark .private-process-updated .b2b-process-intro {
+    gap: var(--home-space-lead);
+    margin-bottom: var(--home-space-block);
+  }
+
+  html.home-theme-dark .private-process-updated .process-track {
+    gap: var(--home-space-list);
+  }
+
+  html.home-theme-dark .private-process-updated .b2b-process-end-actions {
+    margin-top: var(--home-space-block);
+  }
+
+  html.home-theme-dark :is(.private-proof-section-head, .private-faq-head) {
+    margin-bottom: var(--home-space-block);
+  }
+
+  html.home-theme-dark .private-contact-layout {
+    margin-top: var(--home-space-block);
+  }
+
+  html.home-theme-dark .private-contact .anf__kanaele {
+    gap: 12px;
+  }
+
+  html.home-theme-dark .private-contact .anf__oder {
+    margin-block: 32px;
+  }
+
+  html.home-theme-dark .private-contact .anf__feld {
+    gap: var(--home-space-copy);
+    margin-bottom: var(--home-space-list);
+  }
+
+  html.home-theme-dark .private-contact .anf__feld--frei {
+    margin-bottom: var(--home-space-block);
+  }
+
+  html.home-theme-dark .private-contact .anf__rechtliches {
+    margin-block: var(--home-space-list) 0;
+  }
+
+  html.home-theme-dark .private-faq-groups {
+    gap: var(--home-space-list);
+  }
+
+  html.home-theme-dark .private-faq .private-faq-list {
+    gap: var(--home-space-copy);
+  }
+
+  html.home-theme-dark .private-faq .faq-more--gruppen {
+    margin-top: 32px;
+  }
+
+  html.home-theme-dark .private-faq .faq-more--gruppen > .private-faq-groups {
+    margin-top: var(--home-space-list);
+  }
+
+  html.home-theme-dark .site-footer .footer-social-iphone {
+    margin-top: 16px;
+  }
+
+  html.home-theme-dark .site-footer .footer-bottom {
+    margin-top: 24px;
+    padding-top: 16px;
   }
 }
