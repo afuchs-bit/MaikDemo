@@ -5441,6 +5441,12 @@
     margin-bottom: var(--home-space-block);
   }
 
+  /* AP-355: Anfragehinweis auf derselben Mittelachse wie die Überschrift. */
+  html.home-theme-dark .private-process-updated .b2b-process-reassurance {
+    margin-inline: auto;
+    text-align: center;
+  }
+
   html.home-theme-dark .private-process-updated .process-track {
     gap: var(--home-space-list);
   }
