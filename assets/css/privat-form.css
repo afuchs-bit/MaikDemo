@@ -4919,8 +4919,8 @@
      AP-320: Das Foto steht auf 88px und damit fest in Pixeln, nicht in rem.
      Die Wurzel-Schriftgroesse ist unter 480px fluid; in rem waere das Foto je
      nach Geraet 79 bis 105px gross geworden, nie die gewuenschten 88.
-     AP-331: Der vertikale Abstand wird um 20 Prozent reduziert: .75rem -> .6rem.
-     Die Zeile gibt dem Foto oben und unten je .6rem Luft. Die Mindesthoehe
+     AP-333: Der aktuelle vertikale Abstand steigt um 20 Prozent: .6rem -> .72rem.
+     Die Zeile gibt dem Foto oben und unten je .72rem Luft. Die Mindesthoehe
      folgt der festen Bildhoehe und diesem responsiven vertikalen Abstand. */
   .iphone-service-card {
     display: grid;
@@ -4928,8 +4928,8 @@
     align-items: center;
     column-gap: 0.75rem;
     height: auto;
-    min-height: calc(88px + 1.2rem);
-    padding: 0.6rem 0;
+    min-height: calc(88px + 1.44rem);
+    padding: 0.72rem 0;
     border: 0;
     border-radius: 0;
     background: none;
