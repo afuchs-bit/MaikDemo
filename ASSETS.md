@@ -240,17 +240,19 @@ Positionen entsprechend der Tabelle (`south`, `centre`, `north`, `south`, `east`
 `south`), AVIF Qualität 50 / effort 4, WebP Qualität 74 / effort 6, ohne EXIF.
 Die bestehenden 88 × 88 px großen Bildflächen und alle Abstandsregeln bleiben gleich.
 
-## Produktfoto Rohdichs Grubengold (AP-335, 18.09.2026)
+## Produktfoto Rohdichs Grubengold (AP-335 / AP-336, 18.09.2026)
 
 Vom Auftraggeber geliefertes Foto: `WhatsApp Image 2026-09-16 at 22.01.10.jpeg`,
 1200 × 1600 px. Unverändert lokal gesichert als
 `assets/img/_src/mobile-rohdichs-grubengold-user-20260918.jpg` (ignorierter Quellordner).
 Es ersetzt das bisherige Gartenfoto ausschließlich in der mobilen Leistungsübersicht.
 
-Quadratischer Ausschnitt: 750 × 750 px ab x=300, y=45. Die Produktbeschriftung auf
-dem oberen Substratsack bleibt vollständig sichtbar. Keine inhaltliche Retusche.
+Auf Wunsch des Auftraggebers bleibt das vollständige Foto sichtbar. Kein Ausschnitt,
+keine Verzerrung oder inhaltliche Retusche. Derivate in 480 × 640 und 640 × 853 px.
 Derivate: `assets/img/leistungen-mobile/rohdichs-grubengold-{480,640}.{avif,webp}`,
-Sharp mit automatischer Orientierung und anschließendem Ausschnitt; AVIF Qualität
-50 / effort 4, WebP Qualität 74 / effort 6, ohne EXIF. `?v=20260918a` an allen
-Bildquellen dieser Zeile verhindert die Anzeige des alten Fotos aus dem Browsercache.
+Sharp mit automatischer Orientierung und proportionaler Skalierung; AVIF Qualität
+50 / effort 4, WebP Qualität 74 / effort 6, ohne EXIF. `?v=20260918b` an allen
+Bildquellen dieser Zeile verhindert die Anzeige des alten Ausschnitts aus dem Browsercache.
+`iphone-service-card__media--contain` passt das ganze Hochformat mit `object-fit: contain`
+in die bestehende Fläche ein; die leichte Bildvergrößerung ist für dieses Foto deaktiviert.
 Bildfläche (88 × 88 px), Zeilenhöhe und Abstände bleiben unverändert.
