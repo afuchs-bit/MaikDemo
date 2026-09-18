@@ -370,3 +370,21 @@ zugängliche Beschriftung „Kartennachweis: © BKG“.
 Nur die mobilen Regeln bis einschließlich 480 px und die zugehörige Legende ändern
 sich. Kartenposition, SVG-Geometrie, Beschriftungen, Standortpunkt und die Darstellung
 auf Tablet und Desktop bleiben erhalten. Keine neuen Bildassets oder Kartendaten.
+
+### Dickere Original-Icons für „Über uns“ (AP-347, 18.09.2026)
+
+Quelle: drei vom Auftraggeber am 18.09.2026 gelieferte PNG-Dateien. Die Originale
+werden unverändert als transparente RGBA-Bilder mit jeweils 1254 × 1254 px übernommen:
+
+- `30a6bcfb-7a4f-409a-9fcd-efb2cd32acbf.png` →
+  `assets/img/icons/maik-rohdich-ehrliche-einschaetzung.png` (Sprechblasen).
+- `d32f9025-e827-4da8-8c52-23c82a61c179.png` →
+  `assets/img/icons/maik-rohdich-termintreue.png` (Kalender mit Haken).
+- `483e6e8d-eac4-452b-9272-e85929dab27c.png` →
+  `assets/img/icons/maik-rohdich-partnerschaft.png` (verbundene Glieder).
+
+Die neuen Strichstärken und das Grün stammen vollständig aus den gelieferten Bildern.
+Keine Nachzeichnung, Umfärbung oder Änderung der Bilddateien. Die bisherigen mobilen
+34-px-Iconfelder, Skalierungen, Ausrichtung und Textabstände bleiben erhalten.
+Die Bild-URLs auf der Startseite erhalten einen neuen Versionsparameter gegen alte
+Browser-Caches. Auf Tablet und Desktop bleiben die bisherigen SVG-Icons sichtbar.
