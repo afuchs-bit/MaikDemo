@@ -102,17 +102,153 @@
     'per <a href="https://wa.me/491711738943" target="_blank" rel="noopener">WhatsApp</a> ' +
     'oder per E-Mail an <a href="mailto:maik@rohdich.de">maik@rohdich.de</a>.';
 
-  if (kurzForm) {
-    kurzForm.addEventListener('submit', (ev) => {
-      ev.preventDefault();
-      const status = kurzForm.querySelector('[data-anf-status]');
-      if (!status) return;
-      // Der Honeypot-Pfad fuehrt bewusst auf denselben Hinweis, nicht auf eine
-      // Erfolgsmeldung: ein echter Mensch mit Browser-Autofill darf nicht
-      // faelschlich hoeren, seine Anfrage sei eingegangen.
-      status.setAttribute('data-art', 'hinweis');
-      status.innerHTML = HINWEIS;
+  const DANK =
+    'Vielen Dank \u2014 Ihre Anfrage ist eingegangen. Maik Rohdich sieht sie sich ' +
+    'pers\u00f6nlich an und meldet sich bei Ihnen.';
+
+  // --- Bedienteile -------------------------------------------------------------
+  const status = kurzForm.querySelector('[data-anf-status]');
+  const knopf = kurzForm.querySelector('[data-anf-senden]');
+  const knopfText = kurzForm.querySelector('.anf-senden__label');
+  const fotoFeld = kurzForm.querySelector('[data-anf-foto-feld]');
+  const fotoEingang = kurzForm.querySelector('[data-anf-fotos]');
+  const fotoAuswahl = kurzForm.querySelector('[data-anf-foto-auswahl]');
+  const freigabeZeile = kurzForm.querySelector('[data-anf-foto-freigabe]');
+  const freigabeHaken = freigabeZeile && freigabeZeile.querySelector('input');
+  const fotoHuelle = fotoEingang && fotoEingang.closest('.anf__foto');
+
+  // AP-330: Der Endpunkt entscheidet ueber alles. Ohne ihn bleibt die Seite genau
+  // so, wie sie heute ist - samt Hinweis auf Telefon, WhatsApp und E-Mail. Der
+  // Foto-Block wird erst aufgedeckt, wenn es jemanden gibt, der ihn entgegennimmt.
+  const endpunkt = (kurzForm.dataset.endpoint || '').trim();
+
+  if (endpunkt && fotoFeld) {
+    fotoFeld.hidden = false;
+    // Der Satz galt, solange WhatsApp der einzige Fotoweg war.
+    const whatsappSatz = document.querySelector('[data-anf-ohne-upload]');
+    if (whatsappSatz) whatsappSatz.remove();
+  }
+
+  // --- Fotoauswahl -------------------------------------------------------------
+  let vorbereitet = [];
+
+  const inKB = (bytes) => bytes >= 1048576
+    ? (bytes / 1048576).toFixed(1).replace('.', ',') + ' MB'
+    : Math.ceil(bytes / 1024) + ' KB';
+
+  const fotoMeldung = (text, fehlerhaft) => {
+    if (fotoAuswahl) fotoAuswahl.textContent = text;
+    if (fotoHuelle) fotoHuelle.classList.toggle('is-invalid', Boolean(fehlerhaft));
+  };
+
+  const freigabeZeigen = (sichtbar) => {
+    if (!freigabeZeile) return;
+    freigabeZeile.hidden = !sichtbar;
+    freigabeZeile.classList.remove('is-invalid');
+    // Ein stehengebliebener Haken duerfte sonst fuer Bilder gelten, die es
+    // gar nicht mehr gibt.
+    if (!sichtbar && freigabeHaken) freigabeHaken.checked = false;
+  };
+
+  const fotosZuruecksetzen = () => {
+    vorbereitet = [];
+    if (fotoEingang) fotoEingang.value = '';
+    fotoMeldung('Noch kein Foto gewählt', false);
+    freigabeZeigen(false);
+  };
+
+  if (fotoEingang) {
+    fotoEingang.addEventListener('change', async () => {
+      const gewaehlt = Array.from(fotoEingang.files || []);
+      vorbereitet = [];
+
+      if (!gewaehlt.length) { fotosZuruecksetzen(); return; }
+
+      if (gewaehlt.length > MAX_FOTOS) {
+        fotoMeldung('Bitte höchstens ' + MAX_FOTOS + ' Bilder auswählen.', true);
+        freigabeZeigen(false);
+        return;
+      }
+
+      fotoMeldung('Bilder werden vorbereitet …', false);
+      try {
+        for (let i = 0; i < gewaehlt.length; i++) {
+          vorbereitet.push(await fotoAufbereiten(gewaehlt[i], i));
+        }
+      } catch (fehler) {
+        vorbereitet = [];
+        fotoMeldung('Ein Bild ließ sich nicht lesen. Bitte ein anderes Format wählen ' +
+          'oder das Foto per WhatsApp schicken.', true);
+        freigabeZeigen(false);
+        return;
+      }
+
+      const gesamt = vorbereitet.reduce((summe, datei) => summe + datei.size, 0);
+      fotoMeldung(vorbereitet.map((d) => d.name).join(', ') + ' · ' + inKB(gesamt), false);
+      freigabeZeigen(true);
     });
   }
+
+  // --- Versand -----------------------------------------------------------------
+  const melden = (art, html) => {
+    if (!status) return;
+    status.setAttribute('data-art', art);
+    status.innerHTML = html;
+  };
+
+  const knopfSperren = (gesperrt, beschriftung) => {
+    if (knopf) knopf.disabled = gesperrt;
+    if (knopfText && beschriftung) knopfText.textContent = beschriftung;
+  };
+
+  kurzForm.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    if (!status) return;
+
+    // Ohne Endpunkt wird nichts gesendet, also gibt es auch keinen Erfolgszustand.
+    // Der Honeypot-Pfad fuehrt bewusst auf denselben Hinweis: ein echter Mensch mit
+    // Browser-Autofill darf nicht faelschlich hoeren, seine Anfrage sei eingegangen.
+    if (!endpunkt) { melden('hinweis', HINWEIS); return; }
+
+    if (vorbereitet.length && freigabeHaken && !freigabeHaken.checked) {
+      freigabeZeile.classList.add('is-invalid');
+      freigabeHaken.focus({ preventScroll: true });
+      freigabeZeile.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      return;
+    }
+
+    const daten = new FormData(kurzForm);
+    // Die Originale muessen raus: im Formular haengen die unbearbeiteten Dateien
+    // mit ihren Metadaten. Nur die aufbereiteten Fassungen duerfen das Geraet
+    // verlassen.
+    daten.delete('fotos');
+    vorbereitet.forEach((datei) => daten.append('fotos', datei));
+
+    const ursprung = knopfText ? knopfText.textContent : '';
+    knopfSperren(true, 'Wird gesendet …');
+    melden('', '');
+
+    try {
+      const antwort = await fetch(endpunkt, {
+        method: 'POST',
+        body: daten,
+        headers: { Accept: 'application/json' }
+      });
+      const ergebnis = await antwort.json().catch(() => null);
+      if (!antwort.ok || !ergebnis || ergebnis.ok !== true) throw new Error('abgelehnt');
+
+      kurzForm.reset();
+      fotosZuruecksetzen();
+      const stempel = kurzForm.querySelector('[data-anf-zeitstempel]');
+      if (stempel) stempel.value = String(Date.now());
+      knopfSperren(false, ursprung);
+      melden('erfolg', DANK);
+    } catch (fehler) {
+      knopfSperren(false, ursprung);
+      // Der Weg darf nicht an der Technik enden: die drei Kanaele, die sicher
+      // funktionieren, stehen hier noch einmal.
+      melden('hinweis', HINWEIS);
+    }
+  });
 
 })();

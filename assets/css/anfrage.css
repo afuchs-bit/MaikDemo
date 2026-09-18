@@ -256,6 +256,10 @@
   cursor: pointer;
 }
 
+/* Waehrend des Sendens gesperrt - sonst tippen Leute ein zweites Mal und die
+   Anfrage geht doppelt raus. */
+[data-anf-senden]:disabled { opacity: .6; cursor: default; }
+
 .anf__knopf:hover:not(:disabled) { opacity: .88; }
 .anf__knopf:disabled { opacity: .55; cursor: default; }
 
@@ -272,8 +276,17 @@
 }
 .anf__status:empty { display: none; }
 
-/* Es gibt keinen Erfolgszustand: ohne Endpunkt wird nichts gesendet.
-   Deshalb existiert hier bewusst kein data-art="erfolg". */
+/* AP-330: Den Erfolgszustand gibt es jetzt - aber nur, wenn am Formular ein
+   data-endpoint steht und die Funktion ihn bestaetigt hat. Ohne Endpunkt bleibt
+   es beim Hinweis; eine Erfolgsmeldung ohne Versand waere eine Luege. */
+.anf__status[data-art="erfolg"] {
+  padding: .875rem 1rem;
+  border: 1px solid var(--green-500);
+  border-radius: var(--anf-radius);
+  background-color: rgba(140, 198, 63, .12);
+  color: var(--anf-vg);
+}
+
 .anf__status[data-art="hinweis"] {
   padding: .875rem 1rem;
   border: 1px solid var(--anf-linie);
