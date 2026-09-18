@@ -98,6 +98,91 @@
   color: var(--anf-fehler);
 }
 
+/* ------------------------------------------------------------------ Foto */
+
+/* AP-328: Aufbau wie .b2b-upload (privat-form.css:919) - dort aber fuer die
+   helle Welt gebaut (--green-50 als Flaeche). Auf dunklem Grund sind die Werte
+   falsch herum, deshalb eigene Regeln mit denselben Tokens wie die Felder und
+   die drei Kanalkacheln: --anf-linie als Strich, --anf-radius als Radius. */
+
+.anf__feld--foto { margin-bottom: .875rem; }
+
+.anf__foto { position: relative; display: block; }
+
+/* Der Eingang bleibt bedienbar und mit der Tastatur erreichbar, nur unsichtbar -
+   display:none wuerde ihn aus der Tabfolge werfen. Die Masse der Feld-Grundregel
+   (Z. 57 ff.) muessen dabei ausdruecklich zurueckgenommen werden, sonst bleibt
+   ein 44px hoher unsichtbarer Kasten stehen und schiebt die Box. */
+.anf__foto > input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  opacity: 0;
+}
+
+.anf__foto-box {
+  display: grid;
+  gap: 4px;
+  padding: 14px 15px;
+  border: 1px dashed var(--anf-linie);
+  border-radius: var(--anf-radius);
+  cursor: pointer;
+  transition: border-color .18s var(--ease), background-color .18s var(--ease);
+}
+
+.anf__foto-box strong { color: var(--green-500); font-size: .9rem; }
+.anf__foto-box small { color: var(--anf-leise); font-size: .72rem; line-height: 1.45; }
+.anf__foto-box em { color: var(--anf-leise); font-size: .74rem; font-style: normal; line-height: 1.45; }
+
+/* Wie an den Kanalkacheln seit AP-326: dieselbe Fuellung, derselbe Rand. */
+@media (hover: hover) and (pointer: fine) {
+  .anf__foto:hover .anf__foto-box {
+    border-color: var(--green-500);
+    background-color: rgba(140, 198, 63, .09);
+  }
+}
+
+.anf__foto > input:focus-visible + .anf__foto-box {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+  border-color: var(--green-500);
+}
+
+.anf__foto.is-invalid .anf__foto-box { border-color: var(--anf-fehler); }
+.anf__foto.is-invalid .anf__foto-box em { color: var(--anf-fehler); font-weight: 700; }
+
+/* Die Bestaetigung erscheint erst, wenn wirklich ein Bild gewaehlt wurde. Sie
+   fragt nach Rechten Dritter - Nachbarn, Kennzeichen, Hausfassaden -, die auf
+   einem Gartenfoto mitlaufen, ohne gefragt worden zu sein. */
+.anf__einwilligung {
+  margin: 0 0 1.125rem;
+  font-size: .8125rem;
+  line-height: 1.5;
+  color: var(--anf-leise);
+}
+
+.anf__einwilligung label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  cursor: pointer;
+}
+
+.anf__einwilligung input {
+  inline-size: 20px;
+  block-size: 20px;
+  margin: 1px 0 0;
+  accent-color: var(--green-500);
+  color-scheme: dark;
+}
+
+.anf__einwilligung.is-invalid { color: var(--anf-fehler); font-weight: 600; }
+
 /* -------------------------------------------------------------- Datenschutz */
 
 .anf__rechtliches {
@@ -508,6 +593,28 @@
     font-size: .95rem;
     line-height: 1.2;
     white-space: nowrap;
+  }
+
+  .private-contact .anf__foto-box {
+    padding: 15px;
+    border-color: rgba(151, 206, 32, .19);
+    border-radius: 15px 5px 15px 5px;
+  }
+
+  .private-contact .anf__foto-box strong { font-size: .95rem; }
+  .private-contact .anf__foto-box small,
+  .private-contact .anf__foto-box em { font-size: .78rem; }
+
+  /* Wie .private-contact a.anf__kanal:active weiter unten - beruehrt fuehlt sich
+     die Box an wie die drei Kacheln darueber. */
+  .private-contact .anf__foto:active .anf__foto-box {
+    border-color: rgba(140, 198, 63, .22);
+    background-color: rgba(49, 82, 0, .12);
+  }
+
+  .private-contact .anf__einwilligung {
+    margin-bottom: 22px;
+    font-size: .8rem;
   }
 
   .private-contact .anf__feld--frei {

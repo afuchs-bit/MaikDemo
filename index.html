@@ -38,7 +38,7 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260913c" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260914d" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20260918a" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260918b" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -1731,6 +1731,35 @@ html.home-theme-dark body { background-color: #171916; }
                 placeholder="Eine kurze Beschreibung genügt — was ist zu tun, und wo?"></textarea>
             </p>
 
+            <!-- ============ FOTO ============
+                 AP-328: Das Bedienfeld traegt hidden und wird von anfrage.js erst
+                 aufgedeckt, wenn am Formular ein data-endpoint steht. Ohne
+                 Empfaenger soll niemand ein Foto aussuchen, das anschliessend
+                 nirgends ankommt.
+
+                 Der Satz ueber die Ortsangaben ist kein Beiwerk: Er ist die
+                 Unterrichtung nach Art. 13 DSGVO an der Stelle, an der sie
+                 jemand tatsaechlich liest. Das Entfernen selbst passiert in
+                 anfrage.js (AP-327), bevor die Daten das Geraet verlassen. -->
+            <p class="anf__feld anf__feld--foto" data-anf-foto-feld hidden>
+              <label for="anf-fotos">Möchten Sie ein Foto mitschicken?</label>
+              <span class="anf__foto">
+                <input type="file" id="anf-fotos" name="fotos" accept="image/jpeg,image/png,image/webp,.heic,.heif" multiple data-anf-fotos>
+                <span class="anf__foto-box">
+                  <strong>Foto auswählen</strong>
+                  <small>Bis zu 3 Bilder. Ortsangaben aus dem Foto entfernen wir, bevor es Ihr Gerät verlässt.</small>
+                  <em data-anf-foto-auswahl>Noch kein Foto gewählt</em>
+                </span>
+              </span>
+            </p>
+
+            <p class="anf__einwilligung" data-anf-foto-freigabe hidden>
+              <label>
+                <input type="checkbox" name="foto_freigabe" value="1">
+                <span>Ich darf diese Aufnahmen weitergeben. Personen, die nicht gefragt wurden, sind darauf nicht zu erkennen.</span>
+              </label>
+            </p>
+
             <div class="anf__abschluss">
               <button type="submit" class="btn btn-primary" data-anf-senden>
                 <svg class="anf-senden__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="anf-senden__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
@@ -1741,7 +1770,7 @@ html.home-theme-dark body { background-color: #171916; }
             </div>
 
             <p class="anf__rechtliches">
-              Fotos senden Sie am schnellsten direkt per WhatsApp mit.
+              <span data-anf-ohne-upload>Fotos senden Sie am schnellsten direkt per WhatsApp mit. </span>
               Wie wir Ihre Angaben verarbeiten, steht in der <a href="datenschutz/">Datenschutzerklärung</a>.
             </p>
           </form>
