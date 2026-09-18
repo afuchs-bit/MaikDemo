@@ -28,6 +28,7 @@ const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const TAXONOMIE = path.join(REPO_ROOT, 'content', 'taxonomie.json');
 const CONFIG = path.join(REPO_ROOT, 'admin', 'config.yml');
 const LEISTUNGEN_ROOT = path.join(REPO_ROOT, 'content', 'leistungen');
+const STAMMDATEN = path.join(REPO_ROOT, 'content', 'stammdaten.json');
 
 function fail(msg) {
   console.error(`\n❌ ${msg}\n`);
@@ -135,6 +136,8 @@ async function main() {
     }
   }
 
+  await checkJsonLd();
+
   const weltSummary = Object.values(WELTEN).map((w) => `${w.key} ${w.slugs.length}`).join(', ');
   console.log(`✅ Taxonomie-Sync ok: ${taxSlugs.size} leistungen-Slugs stimmen zwischen taxonomie.json und config.yml überein.`);
   console.log(`✅ Leistungs-Quelldateien vollständig (${weltSummary}).`);
@@ -142,6 +145,94 @@ async function main() {
     console.log('\n⚠️  Abweichende Labels (nur Hinweis, kein Fehler):');
     for (const w of labelWarnings) console.log(w);
   }
+}
+
+// AP-326: JSON-LD gegen content/stammdaten.json pruefen.
+//
+// Der Graph der Ueber-uns-Seite definiert #business und #maik-rohdich selbst,
+// statt per @id auf index.html zu verweisen - sonst laeuft der Verweis beim
+// seitenweisen Auslesen ins Leere. Derselbe @id darf dann aber nicht auf zwei
+// Seiten Verschiedenes behaupten, und keine der beiden Kopien darf von den
+// Stammdaten abweichen. Genau das prueft diese Funktion.
+async function checkJsonLd() {
+  const stamm = JSON.parse(await readFile(STAMMDATEN, 'utf8'));
+  const errors = [];
+  const warnings = [];
+
+  const sollBusiness = {
+    name: stamm.firma.name,
+    telephone: stamm.kontakt.mobil.href.replace('tel:', ''),
+    email: stamm.kontakt.email,
+    foundingDate: stamm.firma.gegruendet,
+  };
+  const sollAdresse = {
+    streetAddress: stamm.adresse.strasse,
+    postalCode: stamm.adresse.plz,
+    addressLocality: stamm.adresse.ort,
+    addressCountry: stamm.adresse.land,
+  };
+  const sollGebiet = stamm.einsatzgebiet.join('|');
+
+  const credentialsJeSeite = new Map();
+
+  for (const file of await htmlFiles(REPO_ROOT)) {
+    const rel = path.relative(REPO_ROOT, file);
+    // *.saved.html sind geparkte Seitenstaende (z. B. gewerbekunden/), die nicht
+    // verlinkt sind. Ihre Stammdaten duerfen veraltet sein - beim Zurueckbenennen
+    // muessen sie aber stimmen, deshalb Warnung statt Fehler.
+    const nurWarnen = rel.endsWith('.saved.html');
+    const melden = (msg) => (nurWarnen ? warnings : errors).push(msg);
+    const html = await readFile(file, 'utf8');
+    for (const [, raw] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+      let data;
+      try {
+        data = JSON.parse(raw);
+      } catch (err) {
+        melden(`${rel}: JSON-LD ist kein gültiges JSON (${err.message}).`);
+        continue;
+      }
+      for (const node of [].concat(data['@graph'] || data)) {
+        if (node?.['@id'] === 'https://rohdich.de/#business') {
+          for (const [key, soll] of Object.entries(sollBusiness)) {
+            if (node[key] !== soll) melden(`${rel}: #business.${key} = "${node[key]}", erwartet "${soll}".`);
+          }
+          for (const [key, soll] of Object.entries(sollAdresse)) {
+            if (node.address?.[key] !== soll) melden(`${rel}: #business.address.${key} = "${node.address?.[key]}", erwartet "${soll}".`);
+          }
+          const ist = [].concat(node.areaServed || []).join('|');
+          if (ist !== sollGebiet) melden(`${rel}: #business.areaServed = "${ist}", erwartet "${sollGebiet}".`);
+        }
+        if (node?.['@id'] === 'https://rohdich.de/#maik-rohdich') {
+          if (!nurWarnen) credentialsJeSeite.set(rel, [].concat(node.hasCredential || []).map((c) => c.name).join('|'));
+        }
+      }
+    }
+  }
+
+  const varianten = new Set(credentialsJeSeite.values());
+  if (varianten.size > 1) {
+    errors.push('#maik-rohdich.hasCredential weicht zwischen den Seiten ab:');
+    for (const [rel, list] of credentialsJeSeite) errors.push(`  • ${rel}: ${list}`);
+  }
+
+  if (errors.length) fail(`JSON-LD stimmt nicht mit content/stammdaten.json überein:\n   - ${errors.join('\n   - ')}`);
+  if (warnings.length) {
+    console.log('\n⚠️  JSON-LD in geparkten Seitenstaenden (nur Hinweis, kein Fehler):');
+    for (const w of warnings) console.log(`  • ${w}`);
+  }
+  console.log(`✅ JSON-LD-Sync ok: #business und #maik-rohdich stimmen auf ${credentialsJeSeite.size} Seite(n) mit stammdaten.json überein.`);
+}
+
+// Alle HTML-Dateien des Repos, ohne node_modules und versteckte Ordner.
+async function htmlFiles(dir) {
+  const out = [];
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    if (entry.name.startsWith('.') || entry.name === 'node_modules') continue;
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...await htmlFiles(full));
+    else if (entry.isFile() && entry.name.endsWith('.html')) out.push(full);
+  }
+  return out;
 }
 
 await main();

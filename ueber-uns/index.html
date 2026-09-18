@@ -11,16 +11,45 @@
 <link rel="canonical" href="https://rohdich.de/ueber-uns/" />
 <meta property="og:title" content="Über uns | Maik Rohdich Garten- und Landschaftsbau" />
 <meta property="og:description" content="Meisterbetrieb für Garten- und Landschaftsbau in Herne, seit 2003. Planung, Bau und Pflege aus einer Hand." />
-<meta property="og:image" content="https://rohdich.de/assets/img/ueber/ueber-1.webp" />
+<!-- AP-326: Das bisherige og:image (ueber-1.webp) kommt auf dieser Seite gar
+     nicht vor. Jetzt das Leitfoto der Seite, mit Massen und Alternativtext. -->
+<meta property="og:image" content="https://rohdich.de/assets/img/ueber/ueber-hebeaktion-960.webp" />
+<meta property="og:image:width" content="960" />
+<meta property="og:image:height" content="720" />
+<meta property="og:image:alt" content="Ein Findling hängt an den Gurten eines Krans und wird über eine Baustelle im Garten gehoben." />
+<meta property="og:locale" content="de_DE" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rohdich.de/ueber-uns/" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260914a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260906a" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260918o" />
+<link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260916a" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260917c" />
 
+<!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
+     #business, das nur in index.html definiert ist - ein Verweis, der beim
+     seitenweisen Auslesen ins Leere laeuft. Die Knoten stehen jetzt auf
+     dieser Seite selbst.
+
+     Die Werte sind zeichengleich mit content/stammdaten.json;
+     check-config-sync.mjs prueft das in der Action und vergleicht ausserdem
+     hasCredential mit der Startseite.
+
+     AP-327: Die Sektion "Wofuer wir geradestehen" ist entfallen, die an ihre
+     Stelle getretene Chip-Zeile am 16.09.2026 ebenfalls. Im sichtbaren Text
+     nennt die Seite die vier Nachweise nur noch in der FAQ-Antwort
+     "Was bringt mir ein Meisterbetrieb?"; die ausstellenden Stellen stehen
+     dort nur fuer den Baumkontrolleur und den Sachverstaendigen.
+
+     recognizedBy steht nur beim Baumkontrolleur: nur dort ist die
+     ausstellende Stelle belegt (stammdaten.baumkontrolleZertifizierung).
+     Bei den uebrigen drei ist sie offen - siehe docs/offene-punkte.md.
+     Nicht raten, Grundregel 1.
+
+     dateModified ist handgepflegt: an dieser Seite arbeitet kein Buildskript.
+     Bei jeder inhaltlichen Aenderung mitziehen. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,14 +61,124 @@
       "name": "Über uns – Maik Rohdich Garten- und Landschaftsbau",
       "description": "Meisterbetrieb für Garten- und Landschaftsbau in Herne, seit 2003. Planung, Bau und Pflege aus einer Hand.",
       "inLanguage": "de-DE",
-      "about": { "@id": "https://rohdich.de/#business" }
+      "isPartOf": { "@id": "https://rohdich.de/#website" },
+      "about": { "@id": "https://rohdich.de/#business" },
+      "mainEntity": { "@id": "https://rohdich.de/#maik-rohdich" },
+      "primaryImageOfPage": { "@id": "https://rohdich.de/ueber-uns/#leitbild" },
+      "datePublished": "2026-09-06",
+      "dateModified": "2026-09-15"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://rohdich.de/ueber-uns/#leitbild",
+      "url": "https://rohdich.de/assets/img/ueber/ueber-hebeaktion-960.webp",
+      "width": 960,
+      "height": 720,
+      "caption": "Schwere Steine kommen mit eigenem Gerät an ihren Platz."
+    },
+    {
+      "@type": "LandscapingBusiness",
+      "@id": "https://rohdich.de/#business",
+      "name": "Maik Rohdich Garten- und Landschaftsbau",
+      "url": "https://rohdich.de/",
+      "image": "https://rohdich.de/assets/img/ueber/ueber-hebeaktion-960.webp",
+      "telephone": "+491711738943",
+      "email": "Maik@rohdich.de",
+      "foundingDate": "2003-01-01",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hülsstraße 5",
+        "postalCode": "44625",
+        "addressLocality": "Herne",
+        "addressCountry": "DE"
+      },
+      "areaServed": ["Herne", "Bochum", "Castrop-Rauxel", "Recklinghausen", "Gelsenkirchen-Buer"],
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "12:00"}
+      ],
+      "founder": {"@id": "https://rohdich.de/#maik-rohdich"}
+    },
+    {
+      "@type": "Person",
+      "@id": "https://rohdich.de/#maik-rohdich",
+      "name": "Maik Rohdich",
+      "jobTitle": "Gartenbaumeister",
+      "worksFor": {"@id": "https://rohdich.de/#business"},
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Meisterbrief",
+          "name": "Gartenbaumeister"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Zertifizierung",
+          "name": "Zertifizierter Baumkontrolleur der Landwirtschaftskammer",
+          "recognizedBy": {"@type": "Organization", "name": "Landwirtschaftskammer"}
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Zertifizierung",
+          "name": "Sachverständiger für Garten- und Landschaftsbau"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Sachkundenachweis",
+          "name": "Sachkundiger für Pflanzenschutz und Wildkrautbekämpfung"
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://rohdich.de/ueber-uns/#breadcrumb",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://rohdich.de/" },
         { "@type": "ListItem", "position": 2, "name": "Über uns", "item": "https://rohdich.de/ueber-uns/" }
       ]
+    }
+  ]
+}
+</script>
+<!-- AP-327: FAQ der Seite als eigener Block, wie in index.html und auf den
+     Gewerbe-Leistungsseiten. Fragen und Antworten sind zeichengleich mit den
+     <details> im Markup - wer dort etwas aendert, muss hier mitziehen. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Seit wann gibt es Maik Rohdich Garten- und Landschaftsbau?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Seit 2003, mit Sitz in Herne. Geführt wird der Betrieb von Gartenbaumeister Maik Rohdich. Gearbeitet wird in ganz NRW, auf Anfrage auch darüber hinaus."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was bringt mir ein Meisterbetrieb?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Meisterzwang ist im Garten- und Landschaftsbau gefallen – anlegen darf heute fast jeder. Der Meisterbrief steht für die geprüfte fachliche Leitung und berechtigt zur Ausbildung. Dazu kommen die Zertifizierung als Baumkontrolleur der Landwirtschaftskammer, der Sachverständigentitel im Sachgebiet 2.4.1 und der Sachkundenachweis Pflanzenschutz."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Arbeiten Sie auch für Kommunen und Hausverwaltungen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Neben privaten Gärten arbeitet der Betrieb für Gewerbe, Hausverwaltungen und kommunale Auftraggeber."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sind kleine Aufträge zu klein?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Eine Stunde Hecke zählt genauso wie ein ganzer Garten. Kurzfristige Pflegeeinsätze übernehmen wir ebenso wie die komplette Neuanlage."
+      }
     }
   ]
 }
@@ -119,41 +258,39 @@
           <!-- BUILD:leistungen-submenu:start -->
           <ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
           <li class="nav-submenu-group">
-            <span class="nav-submenu-head">Für Privatkunden</span>
+            <span class="nav-submenu-head">Unsere Leistungen von A bis Z</span>
             <ul>
-              <li><a href="../privatkunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
-              <li><a href="../privatkunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
-              <li><a href="../privatkunden/leistungen/sturmnotdienst/">Sturmnotdienst</a></li>
-              <li><a href="../privatkunden/leistungen/holzverkauf/">Brennholz &amp; Stammholz</a></li>
-              <li><a href="../privatkunden/leistungen/gartengestaltung/">Gartengestaltung</a></li>
-              <li><a href="../privatkunden/leistungen/vorgarten/">Vorgartengestaltung</a></li>
-              <li><a href="../privatkunden/leistungen/teichbau/">Teichanlagen</a></li>
-              <li><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/">Terrassen &amp; Pflaster</a></li>
-              <li><a href="../privatkunden/leistungen/bepflanzung/">Bepflanzung</a></li>
+              <li><a href="../privatkunden/leistungen/baumarbeiten/">Baumfällung</a></li>
+              <li><a href="../privatkunden/leistungen/baumarbeiten/">Baumpflege</a></li>
               <li><a href="../privatkunden/leistungen/dachbegruenung/">Dachbegrünung</a></li>
+              <li><a href="../privatkunden/leistungen/gartengestaltung/">Erd- &amp; Baggerarbeiten</a></li>
+              <li><a href="../privatkunden/leistungen/gartengestaltung/">Gartenbeleuchtung</a></li>
+              <li><a href="../privatkunden/leistungen/gartengestaltung/">Gartenentwässerung</a></li>
+              <li><a href="../privatkunden/leistungen/gartengestaltung/">Gartengestaltung</a></li>
               <li><a href="../privatkunden/leistungen/gartenpflege/">Gartenpflege</a></li>
-              <li><a href="../privatkunden/leistungen/palmen-winterfest/">Palmen &amp; winterfest</a></li>
-              <li><a href="../privatkunden/leistungen/pool-whirlpool-umfeld/">Pool- &amp; Whirlpool-Umfeld</a></li>
-            </ul>
-          </li>
-          <li class="nav-submenu-group">
-            <a class="nav-submenu-head" href="../gewerbekunden/">Für Gewerbekunden</a>
-            <ul>
-              <li><a href="../gewerbekunden/leistungen/aussenanlagenpflege/">Pflege &amp; Instandhaltung</a></li>
-              <li><a href="../gewerbekunden/leistungen/umgestaltung-aussenanlagen/">Umgestaltung &amp; Außenanlagen</a></li>
-              <li><a href="../gewerbekunden/leistungen/dachbegruenung/">Dach-, Fassaden- &amp; Stellplatzbegrünung</a></li>
-              <li><a href="../gewerbekunden/leistungen/baumkontrolle/">Baumkontrolle &amp; Gutachten</a></li>
-              <li><a href="../gewerbekunden/leistungen/baumarbeiten/">Baumfällung &amp; Baumarbeiten</a></li>
-              <li><a href="../gewerbekunden/leistungen/sturmnotdienst/">Sturmnotdienst</a></li>
-              <li><a href="../gewerbekunden/leistungen/begutachtung/">Fachliche Begutachtung</a></li>
+              <li><a href="../privatkunden/leistungen/holzverkauf/">Kaminholz</a></li>
+              <li><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/">Naturstein &amp; Findlinge</a></li>
+              <li><a href="../privatkunden/leistungen/bepflanzung/">Pflanzarbeiten</a></li>
+              <li><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/">Pflasterarbeiten</a></li>
+              <li><a href="../privatkunden/leistungen/pool-whirlpool-umfeld/">Pool- &amp; Whirlpoolumfeld</a></li>
+              <li><a href="../privatkunden/leistungen/gartengestaltung/">Rasen &amp; Rollrasen</a></li>
+              <li><a href="../privatkunden/leistungen/bepflanzung/">Rohdichs Grubengold</a></li>
+              <li><a href="../privatkunden/leistungen/bepflanzung/">Sichtschutzbepflanzung</a></li>
+              <li><a href="../privatkunden/leistungen/teichbau/">Teichbau &amp; -technik</a></li>
+              <li><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/">Terrassenbau</a></li>
+              <li><a href="../privatkunden/leistungen/vorgarten/">Vorgartengestaltung</a></li>
+              <li><a href="../privatkunden/leistungen/palmen-winterfest/">Winterfeste Palmen</a></li>
+              <li><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/">Zäune &amp; Sichtschutz</a></li>
             </ul>
           </li>
           </ul>
           <!-- BUILD:leistungen-submenu:end -->
         </li>
         <li><a href="../projekte/">Galerie</a></li>
+        <li><a href="./" aria-current="page">Über uns</a></li>
         <li><a href="../#faq">FAQ</a></li>
         <li><a href="../kontakt/">Kontakt</a></li>
+        <li class="menu-meta"><a class="menu-meta__link" href="https://www.instagram.com/rohdich_garten_landschaftsbau/" target="_blank" rel="noopener noreferrer" aria-label="Maik Rohdich auf Instagram"><span class="menu-meta__text">Folgen Sie uns</span><span class="menu-meta__glyphe"><span class="menu-meta__kachel" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span></span></a></li>
       </ul>
     </nav>
 
@@ -178,13 +315,19 @@
 </header>
 
 <main id="top">
-
   <!-- ===== Kopf =========================================================
-       Eyebrow, H1, Leitsatz. Der Eyebrow ist dasselbe Bauteil wie in der
-       Ueber-uns-Sektion der Startseite und in der Rezensionssektion
-       (.private-proof-since): Standortzeichen, Versalien, 0.08em gesperrt.
-       Alle Angaben aus content/stammdaten.json - gegruendet 2003,
-       Meisterbetrieb, Sitz Herne. -->
+       H1, Leitsatz, Faktensatz.
+       AP-327: Der Eyebrow "Meisterbetrieb seit 2003 in Herne" ist am 16.09.2026
+       auf Wunsch des Auftraggebers entfallen. Verloren geht dadurch nichts:
+       Meisterbetrieb, Gruendungsjahr und Sitz stehen im Faktensatz zwei Zeilen
+       darunter.
+       Der Faktensatz ist auf eine Zeile gekuerzt. Jede Angabe ist belegt:
+       Gruendung 2003 und Sitz Herne aus content/stammdaten.json, "eigene
+       Fachkraefte und eigener Maschinenpark" aus dem vom Auftraggeber
+       freigegebenen Startseitentext (AP-179), die 1.500 m2 aus der
+       Mustergarten-Kachel der Startseite, die drei Auftraggebergruppen vom
+       Auftraggeber am 15.09.2026 bestaetigt. Keine Mitarbeiterzahl, keine
+       Fuhrparkgroesse - Grundregel 3. -->
   <section class="ueber-kopf">
     <div class="container">
       <nav class="breadcrumbs" aria-label="Brotkrumennavigation">
@@ -193,104 +336,65 @@
           <li aria-current="page">Über uns</li>
         </ol>
       </nav>
-
-      <p class="ueber-eyebrow reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
-        <span>Meisterbetrieb seit 2003 in Herne</span>
-      </p>
-
       <h1 class="reveal">Über uns</h1>
       <p class="ueber-leitsatz reveal">Gartenbau mit <em>Handschlagqualität.</em></p>
+      <p class="ueber-aufschlag reveal"><b>Maik Rohdich</b> führt seinen Meisterbetrieb seit 2003
+         von Herne aus – mit eigenen Fachkräften, eigenem Maschinenpark und 1.500 m²
+         Mustergarten. Für private Gärten, für Gewerbe und Hausverwaltungen, für Kommunen.</p>
     </div>
   </section>
+  <!-- ===== Die Person ====================================================
+       [OFFEN: Text und Zitat von Maik Rohdich - docs/offene-punkte.md.
+        DER SICHTBARE TEXT DIESER SEKTION IST VORLAEUFIG. Er steht hier auf
+        ausdrueckliche Entscheidung des Auftraggebers vom 15.09.2026, damit das
+        Layout im Zusammenhang beurteilt werden kann - abweichend von
+        Grundregel 2 (kein sichtbarer Platzhaltertext). Vor dem Go-Live muss er
+        ersetzt sein; der Punkt steht dafuer in docs/go-live-checkliste.md.
 
-  <!-- ===== Der Betrieb ===================================================
-       Wortlaut in Anlehnung an den Flisstext der Startseite, den der
-       Auftraggeber ausdruecklich so wollte (AP-179): "alles aus einer Hand -
-       mit eigenen Fachkraeften und eigenem Maschinenpark". Keine
-       Mitarbeiterzahl, keine Fuhrparkgroesse - Grundregel 3.
-       Das Foto lag ungenutzt im Repo. -->
-  <section class="section ueber-betrieb" aria-labelledby="betrieb-title">
-    <div class="container ueber-betrieb__raster">
-      <div class="ueber-betrieb__wort reveal">
-        <h2 class="type-section-title" id="betrieb-title">Ein Betrieb, der die Arbeit selbst macht</h2>
-        <p class="lead">Maik Rohdich führt den Betrieb seit 2003 als Meisterbetrieb für Garten-
-           und Landschaftsbau. Sitz ist Herne, gearbeitet wird im gesamten mittleren
-           Ruhrgebiet.</p>
-        <p class="lead">Jeder Garten entsteht aus Ihren Vorstellungen, den Möglichkeiten des
-           Grundstücks und unserer Erfahrung. Von der ersten Beratung bis zur Pflege alles aus
-           einer Hand – mit eigenen Fachkräften und eigenem Maschinenpark, termingerecht
-           umgesetzt. Was nicht sinnvoll ist, sagen wir Ihnen vorher.</p>
-        <p class="lead">Der Betrieb bildet aus. Wer hier lernt, arbeitet vom ersten Tag an auf
-           echten Baustellen mit.</p>
+        Gebraucht werden:
+        1. Drei bis vier Saetze in der Ich-Form von Maik Rohdich - warum er 2003
+           angefangen hat, worauf er bei einem Grundstueck zuerst schaut, warum
+           er lieber abraet als etwas zu bauen, das nicht traegt.
+        2. Ein Zitat, das die Haltung traegt, mit Freigabe des Wortlauts.
+        Beide Stellen tragen .ueber-inhaber__platzhalter - gedaempft und kursiv,
+        damit vorlaeufiger Text auch auf der Seite als solcher zu erkennen ist.
+        Beim Ersetzen die Klasse mit entfernen.]
+
+       Diese Sektion ist der Kern der Entwuerfe vom 15.09.2026: Wer auf der
+       Startseite "Mehr ueber Maik Rohdich" klickt, sucht die Person und findet
+       sonst einen Betrieb. Sie steht deshalb vor der Betriebssektion.
+
+       Aufbau: grosse Zeile links, senkrechter Steg mit der Markenbluete in der
+       Mitte, Zitat rechts; unter 860px gestapelt, der Steg wird dann zur
+       liegenden Bluete zwischen den beiden Bloecken. Das Wasserzeichen in der
+       unteren Ecke ist dieselbe Bluetengruppe, nur gross und angeschnitten -
+       kein neues Bild. -->
+  <section class="section ueber-inhaber">
+    <img class="ueber-inhaber__wasserzeichen" src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" aria-hidden="true" width="526" height="430" loading="lazy" decoding="async">
+    <div class="container ueber-inhaber__raster">
+      <div>
+        <h2 class="ueber-inhaber__gross"><span>Die Person</span> hinter dem Betrieb.</h2>
+        <p class="ueber-inhaber__text ueber-inhaber__platzhalter">Drei Sätze in der Ich-Form.
+           Warum 2003, worauf er zuerst schaut, warum er lieber abrät.</p>
       </div>
-
-      <figure class="ueber-betrieb__bild reveal">
-        <picture>
-          <source type="image/avif" srcset="../assets/img/ueber/ueber-hebeaktion-480.avif 480w" sizes="(max-width: 860px) 100vw, 420px">
-          <source type="image/webp" srcset="../assets/img/ueber/ueber-hebeaktion-480.webp 480w" sizes="(max-width: 860px) 100vw, 420px">
-          <img src="../assets/img/ueber/ueber-hebeaktion.webp" width="480" height="360"
-               alt="Ein Findling hängt an den Gurten eines Krans und wird über eine Baustelle im Garten gehoben."
-               loading="lazy" decoding="async">
-        </picture>
-        <figcaption>Schwere Steine kommen mit eigenem Gerät an ihren Platz.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ===== Qualifikationen ===============================================
-       Wortlaut zeichengleich aus index.html (gate-welcome, Z. 446-459). Dort
-       stehen sie nur auf schmalen Geraeten: .gate-welcome ist ab 901px
-       display:none. Auf dem Desktop kamen sie bisher nirgends sichtbar vor.
-       Alle vier sind vom Auftraggeber bestaetigt, siehe Teil B des
-       Umsetzungsplans und docs/offene-punkte.md (AP-179, 05.09.2026). -->
-  <section class="section ueber-qualifikationen" aria-labelledby="qualifikationen-title">
-    <div class="container">
-      <div class="section-head reveal">
-        <h2 class="type-section-title" id="qualifikationen-title">Wofür wir geradestehen</h2>
-        <p class="lead">Vier Qualifikationen, die nicht nur auf dem Papier stehen – sie
-           entscheiden, welche Arbeiten wir überhaupt annehmen dürfen.</p>
+      <div class="ueber-inhaber__steg" aria-hidden="true">
+        <span class="ueber-inhaber__blume"><img src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async"></span>
       </div>
-
-      <ul class="ueber-quali-liste reveal">
-        <li class="ueber-quali">
-          <span class="ueber-quali__zeichen" aria-hidden="true"><img src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async"></span>
-          <div>
-            <h3>Gartenbaumeister</h3>
-            <p>Der Meisterbrief im Garten- und Landschaftsbau. Er berechtigt zur Ausbildung
-               und steht für die geprüfte fachliche Leitung des Betriebs.</p>
-          </div>
-        </li>
-        <li class="ueber-quali">
-          <span class="ueber-quali__zeichen" aria-hidden="true"><img src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async"></span>
-          <div>
-            <h3>Zertifizierter Baumkontrolleur der Landwirtschaftskammer</h3>
-            <p>Regelkontrollen an Bäumen, dokumentiert und nachvollziehbar. Für Eigentümer
-               ist das der Nachweis, ihrer Verkehrssicherungspflicht nachgekommen zu sein.</p>
-          </div>
-        </li>
-        <li class="ueber-quali">
-          <span class="ueber-quali__zeichen" aria-hidden="true"><img src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async"></span>
-          <div>
-            <h3>Sachverständiger für Garten- und Landschaftsbau</h3>
-            <p>Sachgebiet 2.4.1 · Herstellung und Unterhaltung. Fachliche Begutachtung dort,
-               wo strittig ist, ob eine Ausführung den Regeln der Technik entspricht.</p>
-          </div>
-        </li>
-        <li class="ueber-quali">
-          <span class="ueber-quali__zeichen" aria-hidden="true"><img src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async"></span>
-          <div>
-            <h3>Sachkundiger für Pflanzenschutz und Wildkrautbekämpfung</h3>
-            <p>Voraussetzung dafür, Pflanzenschutzmittel gewerblich anzuwenden – und dafür,
-               zu beurteilen, wann es auch ohne geht.</p>
-          </div>
-        </li>
-      </ul>
+      <div class="ueber-inhaber__bluete-mobil" aria-hidden="true">
+        <img src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async">
+      </div>
+      <blockquote class="ueber-inhaber__zitat">
+        <p class="ueber-inhaber__platzhalter">„Ein Satz von Maik – der, mit dem er abrät, statt
+           zu verkaufen, was nicht hält.“</p>
+        <p class="ueber-inhaber__name">Maik Rohdich, Gartenbaumeister</p>
+      </blockquote>
     </div>
   </section>
-
   <!-- ===== Team =========================================================
        BEWUSST AUSKOMMENTIERT - auf der Seite ist hiervon nichts zu sehen.
+       AP-327: Beim Umbau der Seite an diese Stelle gewandert, damit die beiden
+       vorbereiteten Bloecke (Person und Team) beieinanderstehen. Inhaltlich
+       unveraendert.
 
        [OFFEN: Namen, Rollen und Fotos der Mitarbeiter liegen nicht vor. Teil B
         des Umsetzungsplans nennt keine Personen ausser dem Inhaber.]
@@ -330,49 +434,261 @@
   </section>
 
        Ende des vorbereiteten Team-Abschnitts. -->
-
-  <!-- ===== Einsatzgebiet und Erreichbarkeit ==============================
-       Die Ortsliste ist zeichengleich mit dem Footer und mit
-       content/stammdaten.json. Bewusst OHNE die NRW-Karte: die ist ein
-       130-Zeilen-Inline-SVG mit eigenen Filter-IDs und steht bereits auf der
-       Startseite - ein zweites Vorkommen waere eine Dublette, die niemand
-       pflegt.
-
-       Der Erreichbarkeitsblock folgt der verbindlichen Formulierung aus Teil
-       B.2 des Umsetzungsplans. Sie muss den Widerspruch tragen: es gibt
-       Oeffnungszeiten, aber keine Ladenoeffnung. -->
-  <section class="section ueber-gebiet" aria-labelledby="gebiet-title">
-    <div class="container ueber-gebiet__raster">
-      <div class="reveal">
-        <h2 class="type-section-title" id="gebiet-title">Wo wir arbeiten</h2>
-        <p class="lead">Der Sitz ist Herne. Regelmäßig im Einsatz sind wir außerdem in:</p>
-        <ul class="ueber-orte">
-          <li>Herne <span class="ueber-orte__zusatz">– Sitz</span></li>
-          <li>Bochum</li>
-          <li>Castrop-Rauxel</li>
-          <li>Recklinghausen</li>
-          <li>Gelsenkirchen-Buer</li>
-        </ul>
-        <p class="ueber-orte__nachsatz">Weitere Orte nach Projekt – auf Anfrage auch
-           deutschlandweit.</p>
+  <!-- ===== Der Betrieb ===================================================
+       Wortlaut in Anlehnung an den Fliesstext der Startseite, den der
+       Auftraggeber ausdruecklich so wollte (AP-179): "alles aus einer Hand -
+       mit eigenen Fachkraeften und eigenem Maschinenpark". Keine
+       Mitarbeiterzahl, keine Fuhrparkgroesse - Grundregel 3.
+       AP-327: Von vier Absaetzen auf zwei gekuerzt. "In ganz NRW" ist dieselbe
+       Aussage wie in der Kartenlegende der Startseite (AP-247); die Ortsliste
+       steht im Footer 200 px weiter unten und wird hier nicht wiederholt. Die
+       Ausbildung ist in die FAQ gewandert. -->
+  <section class="section ueber-betrieb" aria-labelledby="betrieb-title">
+    <div class="container ueber-betrieb__raster">
+      <div class="ueber-betrieb__wort reveal">
+        <h2 class="type-section-title ueber-steg" id="betrieb-title">Ein Betrieb, der die Arbeit selbst macht</h2>
+        <p class="lead">Seit über 20 Jahren planen, bauen und pflegen wir anspruchsvolle Gärten
+           und Außenanlagen in Herne und Umgebung – nach Anfrage und Absprache auch gerne
+           deutschlandweit. Jeder Garten entsteht aus den Vorstellungen seiner Besitzer, den
+           Möglichkeiten des Grundstücks und unserer Erfahrung.</p>
+        <p class="ueber-betrieb__merksatz type-subsection-title ueber-steg">Was nicht sinnvoll ist, sagen wir Ihnen vorher.</p>
+        <p class="lead">Von der ersten Beratung bis zur fertigen Anlage führen wir Planung,
+           Ausführung, Koordination und Pflege zusammen. Eigene Fachkräfte, zuverlässige
+           Spezialisten und ein umfangreicher Maschinenpark ermöglichen individuelle Lösungen aus
+           einer Hand – hochwertig ausgeführt und termingerecht umgesetzt.</p>
       </div>
+      <figure class="ueber-betrieb__bild reveal">
+        <picture>
+          <!-- AP-326: 480 und 960. Das Bild wird am Desktop 440 CSS-px breit
+               angezeigt, auf 2x-Displays also 880 Geraetepixel - die bisherige
+               480er Quelle war dafuer sichtbar zu weich. width/height
+               beschreiben die Datei hinter src; das Verhaeltnis bleibt 4:3, CSS
+               setzt ohnehin aspect-ratio: 4 / 3 - kein Layout-Shift. -->
+          <source type="image/avif" srcset="../assets/img/ueber/ueber-hebeaktion-480.avif 480w, ../assets/img/ueber/ueber-hebeaktion-960.avif 960w" sizes="(max-width: 860px) 100vw, 440px">
+          <source type="image/webp" srcset="../assets/img/ueber/ueber-hebeaktion-480.webp 480w, ../assets/img/ueber/ueber-hebeaktion-960.webp 960w" sizes="(max-width: 860px) 100vw, 440px">
+          <img src="../assets/img/ueber/ueber-hebeaktion.webp" width="960" height="720"
+               alt="Ein Findling hängt an den Gurten eines Krans und wird über eine Baustelle im Garten gehoben."
+               loading="lazy" decoding="async">
+        </picture>
+        <!-- AP-327: Die Markenbluete sitzt als Siegel in der unteren Ecke des
+             Fotos - dasselbe Zeichen wie an der Willkommen-Sektion der
+             Startseite, hier nur als Aufkleber statt als Signatur. -->
+        <img class="ueber-betrieb__marke" src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" aria-hidden="true" width="85" height="70" loading="lazy" decoding="async">
+        <figcaption>Schwere Steine kommen mit eigenem Gerät an ihren Platz.</figcaption>
+      </figure>
+    </div>
 
-      <div class="ueber-erreichbar reveal">
-        <h2 class="ueber-erreichbar__titel">Erreichbarkeit</h2>
-        <dl class="ueber-zeiten">
-          <div><dt>Montag bis Freitag</dt><dd>09:00–17:00 Uhr</dd></div>
-          <div><dt>Samstag</dt><dd>09:00–12:00 Uhr</dd></div>
-          <div><dt>Sonntag</dt><dd>geschlossen</dd></div>
-        </dl>
-        <p>Per WhatsApp erreichen Sie uns rund um die Uhr – wir antworten innerhalb der
-           Geschäftszeiten.</p>
-        <p class="ueber-erreichbar__hinweis">Besuche am Betrieb sind ausschließlich nach
-           vorheriger Terminvereinbarung möglich.</p>
-        <a class="btn btn-primary" href="../kontakt/">Termin vereinbaren <span aria-hidden="true">→</span></a>
+    <!-- AP-327: Drei Auftraggebergruppen, vom Auftraggeber am 15.09.2026
+         bestaetigt. Linkziele bewusst gewaehlt: Privat auf ../#leistungen, so
+         verlinken auch die 13 generierten Leistungsseiten; Gewerbe auf die
+         Aussenanlagenpflege und NICHT auf ../gewerbekunden/ - das ist derzeit
+         ein Weiterleitungs-Stub auf die Startseite; Kommunen ohne Link.
+         [OFFEN: Welche Leistungen der Betrieb fuer Staedte uebernimmt und ob
+          eine Referenzkommune genannt werden darf - docs/offene-punkte.md.
+          Der Entwurf hatte hier einen Platzhaltersatz; er bleibt weg.] -->
+    <div class="container ueber-fuerwen">
+      <h3 class="ueber-fuerwen__titel">Für wen wir arbeiten</h3>
+      <ul class="ueber-fuerwen__liste">
+        <li>
+          <h4>Private Gärten</h4>
+          <p>Gestaltung, Vorgarten, Terrasse, Teich, die Pflege danach – und vieles mehr.</p>
+          <a href="../#leistungen">Für Privatkunden</a>
+        </li>
+        <li>
+          <h4>Gewerbe und Hausverwaltungen</h4>
+          <p>Außenanlagen pflegen und umgestalten, Baumkontrollen mit Dokumentation und Gutachten.</p>
+          <a href="../gewerbekunden/leistungen/aussenanlagenpflege/">Für Gewerbekunden</a>
+        </li>
+        <li>
+          <h4>Kommunen und öffentliche Auftraggeber</h4>
+          <p>Unser Team arbeitet auch mit Kommunen und öffentlichen Auftraggebern.</p>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+  <!-- ===== Drei Projekte =================================================
+       AP-327: Steht direkt hinter dem Betriebsabschnitt - erst wer und wie,
+       dann was dabei herauskommt. (Bis zum 16.09.2026 stand zwischen beidem
+       eine Chip-Zeile mit den vier Nachweisen; sie ist auf Wunsch des
+       Auftraggebers entfallen.)
+
+       Echte Projekte aus data/projekte-index.json mit dem vorhandenen Bauteil
+       .projects-grid/.project-card aus styles.css (Vorlage: projekte/index.html).
+       Beschreibungstext und Kundentyp-Aufkleber der Galerie bleiben weg; hier
+       zaehlt der Weg in die Galerie, nicht die Wiederholung ihres Textes.
+       Gewaehlt sind drei verschiedene Gewerke in zwei Orten.
+
+       Bis 860px ein Karussell: die Spur scrollt waagerecht und rastet an den
+       Kartenkanten ein, die naechste Karte schaut am Rand hervor. Technik wie
+       bei den beiden Karussells der Startseite (mobile-social-proof.css:331,
+       privat-form.css:4806), aber ohne JS und ohne Punktleiste - die beiden
+       dort bringen je ein eigenes Modul mit, fuer drei feste Karten waere ein
+       drittes Pflegelast ohne Gegenwert. Ab 861px steht das gewohnte
+       Dreierraster. -->
+  <section class="section ueber-projekte" aria-labelledby="projekte-title">
+    <div class="container">
+      <div class="ueber-projekte__kopf reveal">
+        <div>
+          <h2 class="type-section-title ueber-steg" id="projekte-title">Was daraus wird</h2>
+          <p class="lead">Drei Beispiele aus der Umgebung.</p>
+        </div>
+        <a class="btn btn-ghost" href="../projekte/">Alle Projekte</a>
+      </div>
+      <div class="ueber-projekte__spur projects-grid reveal">
+        <article class="project-card">
+          <div class="project-media">
+            <picture>
+              <source type="image/avif" sizes="(max-width: 860px) 78vw, 30vw" srcset="../assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne-480.avif 480w, ../assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne-960.avif 960w">
+              <source type="image/webp" sizes="(max-width: 860px) 78vw, 30vw" srcset="../assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne-480.webp 480w, ../assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne-960.webp 960w">
+              <img src="../assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/vorgarten-einfahrt-herne.webp" alt="Gepflasterte Einfahrt mit angrenzendem Staudenbeet und Gehölzbepflanzung im Vorgartenbereich" width="800" height="600" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="project-body">
+            <span class="project-location">Herne</span>
+            <h3>Vorgartengestaltung mit gepflasterter Einfahrt</h3>
+            <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
+          </div>
+          <a class="card-open" href="../projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/" aria-label="Projekt „Vorgartengestaltung mit gepflasterter Einfahrt“ in Herne ansehen"></a>
+        </article>
+        <article class="project-card">
+          <div class="project-media">
+            <picture>
+              <source type="image/avif" sizes="(max-width: 860px) 78vw, 30vw" srcset="../assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-480.avif 480w, ../assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-960.avif 960w">
+              <source type="image/webp" sizes="(max-width: 860px) 78vw, 30vw" srcset="../assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-480.webp 480w, ../assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum-960.webp 960w">
+              <img src="../assets/img/projekte/teichanlage-bochum-2026/teichanlage-bochum.webp" alt="Angelegte Teichanlage mit natürlicher Uferzone und Sitzplatz" width="800" height="600" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="project-body">
+            <span class="project-location">Bochum</span>
+            <h3>Teichanlage &amp; Außenbereich</h3>
+            <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
+          </div>
+          <a class="card-open" href="../projekte/teichanlage-bochum-2026/" aria-label="Projekt „Teichanlage &amp; Außenbereich“ in Bochum ansehen"></a>
+        </article>
+        <article class="project-card">
+          <div class="project-media">
+            <picture>
+              <source type="image/avif" sizes="(max-width: 860px) 78vw, 30vw" srcset="../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne-480.avif 480w, ../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne-960.avif 960w">
+              <source type="image/webp" sizes="(max-width: 860px) 78vw, 30vw" srcset="../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne-480.webp 480w, ../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne-960.webp 960w">
+              <img src="../assets/img/projekte/poolbau-mit-individueller-gartengestaltung-herne/poolumfeld-herne.webp" alt="Poolbau und Gartengestaltung" width="800" height="600" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="project-body">
+            <span class="project-location">Herne</span>
+            <h3>Poolbau mit individueller Gartengestaltung</h3>
+            <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
+          </div>
+          <a class="card-open" href="../projekte/poolbau-mit-individueller-gartengestaltung-herne/" aria-label="Projekt „Poolbau mit individueller Gartengestaltung“ in Herne ansehen"></a>
+        </article>
       </div>
     </div>
   </section>
-
+  <!-- ===== Auch fuer die kleine Sache ====================================
+       AP-327: Neu aus Entwurf 3. Der Wortlaut stammt vom Auftraggeber und
+       nimmt eine Sorge auf, die in keiner anderen Sektion vorkommt: dass ein
+       Meisterbetrieb fuer eine Stunde Heckenschnitt nicht kommt. -->
+  <section class="section ueber-klein">
+    <div class="container">
+      <div class="ueber-klein__panel reveal">
+        <div>
+          <h2 class="ueber-klein__titel">Kein Auftrag ist zu klein.</h2>
+          <p>Eine Stunde Hecke vor dem Geburtstag, ein Beet auffrischen, ein Baum, der weg muss.</p>
+          <p>Dafür kommen wir mit denselben Leuten und demselben Gerät wie für die großen
+             Aufträge. Es muss nicht gleich der ganze Garten sein.</p>
+        </div>
+        <a class="ueber-klein__ruf" href="tel:+491711738943">
+          <svg class="ueber-klein__ruf-frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+          <svg class="ueber-klein__ruf-shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+          <span class="ueber-klein__ruf-label">Kurz anrufen</span>
+          <span class="ueber-klein__ruf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- ===== Mustergarten ==================================================
+       AP-327: Neu. Der Mustergarten ist das staerkste Unterscheidungsmerkmal
+       des Betriebs und stand bisher nur auf der Startseite. Die 1.500 m2 und
+       "am Firmensitz" sind zeichengleich mit der Kachel dort; die Terminregel
+       folgt content/stammdaten.json (oeffnungszeiten.besuche) und Teil B.2 des
+       Umsetzungsplans.
+       Der Anruf steht bewusst schon hier und nicht erst am Seitenende: der
+       Mustergarten ist der haeufigste Anlass fuer einen Anruf.
+       Das Standbild lag bereits im Repo (Einzelbild des Mustergarten-Videos,
+       960x725) und wird hier zum zweiten Mal genutzt - kein neues Asset. -->
+  <section class="section ueber-muster" aria-labelledby="muster-title">
+    <div class="container ueber-muster__raster">
+      <div class="ueber-muster__wort reveal">
+        <p class="ueber-muster__zahl">1.500 m²</p>
+        <h2 class="ueber-muster__titel" id="muster-title">Mustergarten am Firmensitz</h2>
+        <p class="lead">Pflanzen, Materialien und Teichanlage im echten Maßstab. Hier sehen Sie,
+           wie ein Belag nach fünf Jahren aussieht.</p>
+        <p class="ueber-muster__regel">Besichtigungen nur nach Absprache – so können wir uns
+           Zeit nur für Sie nehmen.</p>
+        <div class="ueber-muster__cta">
+          <a class="btn btn-primary" href="tel:+491711738943">Termin abstimmen</a>
+          <a class="btn btn-ghost" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener">Per WhatsApp</a>
+        </div>
+      </div>
+      <figure class="ueber-muster__bild reveal">
+        <picture>
+          <source type="image/avif" srcset="../assets/img/ueber/mustergarten-standbild-480.avif 480w, ../assets/img/ueber/mustergarten-standbild-960.avif 960w" sizes="(max-width: 860px) 100vw, 560px">
+          <source type="image/webp" srcset="../assets/img/ueber/mustergarten-standbild-480.webp 480w, ../assets/img/ueber/mustergarten-standbild-960.webp 960w" sizes="(max-width: 860px) 100vw, 560px">
+          <img src="../assets/img/ueber/mustergarten-standbild.webp" width="960" height="725"
+               alt="Blick über den Mustergarten in Herne mit Teichanlage, Rasenflächen und Bepflanzung."
+               loading="lazy" decoding="async">
+        </picture>
+        <img class="ueber-muster__marke" src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" aria-hidden="true" width="85" height="70" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </section>
+  <!-- ===== Haeufige Fragen ================================================
+       AP-327: Vier Fragen in zwei Gruppen. Keine Dublette zur Startseiten-FAQ -
+       die beantwortet den Ablauf einer Anfrage, hier geht es um den Betrieb
+       selbst. Bauteil .faq-list aus styles.css, dasselbe wie auf den
+       Leistungsseiten.
+       Die Fragen stehen zusaetzlich als FAQPage im Graph - so halten es
+       index.html und die Gewerbe-Leistungsseiten auch. Wer eine Frage aendert,
+       muss den Knoten mitziehen.
+       [OFFEN: Welche Leistungen der Betrieb fuer Staedte konkret uebernimmt -
+        docs/offene-punkte.md. Der Entwurf hatte dafuer einen zweiten Satz
+        vorgesehen; er bleibt weg, bis die Angaben vorliegen.] -->
+  <section class="section ueber-faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 class="type-section-title ueber-steg" id="faq-title">Häufige Fragen zum Betrieb</h2>
+        <p class="lead">Fragen zum Ablauf beantwortet die FAQ auf der Startseite.</p>
+      </div>
+      <div class="ueber-faq__gruppen reveal">
+        <div>
+          <p class="ueber-faq__kicker">Betrieb und Qualifikation</p>
+          <div class="faq-list">
+            <details>
+              <summary><span>Seit wann gibt es Maik Rohdich Garten- und Landschaftsbau?</span><span class="chev" aria-hidden="true"></span></summary>
+              <div class="faq-body"><p>Seit 2003, mit Sitz in Herne. Geführt wird der Betrieb von Gartenbaumeister Maik Rohdich. Gearbeitet wird in ganz NRW, auf Anfrage auch darüber hinaus.</p></div>
+            </details>
+            <details>
+              <summary><span>Was bringt mir ein Meisterbetrieb?</span><span class="chev" aria-hidden="true"></span></summary>
+              <div class="faq-body"><p>Der Meisterzwang ist im Garten- und Landschaftsbau gefallen – anlegen darf heute fast jeder. Der Meisterbrief steht für die geprüfte fachliche Leitung und berechtigt zur Ausbildung. Dazu kommen die Zertifizierung als Baumkontrolleur der Landwirtschaftskammer, der Sachverständigentitel im Sachgebiet 2.4.1 und der Sachkundenachweis Pflanzenschutz.</p></div>
+            </details>
+          </div>
+        </div>
+        <div>
+          <p class="ueber-faq__kicker">Auftraggeber</p>
+          <div class="faq-list">
+            <details>
+              <summary><span>Arbeiten Sie auch für Kommunen und Hausverwaltungen?</span><span class="chev" aria-hidden="true"></span></summary>
+              <div class="faq-body"><p>Ja. Neben privaten Gärten arbeitet der Betrieb für Gewerbe, Hausverwaltungen und kommunale Auftraggeber.</p></div>
+            </details>
+            <details>
+              <summary><span>Sind kleine Aufträge zu klein?</span><span class="chev" aria-hidden="true"></span></summary>
+              <div class="faq-body"><p>Nein. Eine Stunde Hecke zählt genauso wie ein ganzer Garten. Kurzfristige Pflegeeinsätze übernehmen wir ebenso wie die komplette Neuanlage.</p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 
@@ -402,6 +718,10 @@
             <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2a9.84 9.84 0 0 0-8.48 14.8L2.1 22l5.33-1.4A9.91 9.91 0 1 0 12.04 2Zm0 17.93a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.17.83.85-3.08-.2-.32a8.08 8.08 0 1 1 6.95 3.88Zm4.43-6.05c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21a7.37 7.37 0 0 1-1.35-1.68c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.41.08-.16.04-.3-.02-.42-.06-.12-.55-1.31-.75-1.8-.2-.47-.4-.41-.55-.42h-.46c-.16 0-.42.06-.65.3-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.72 2.62 4.16 3.67.58.25 1.04.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28Z"/></svg></span>
             <span><small>WhatsApp</small><strong>Nachricht senden</strong></span>
           </a>
+          <a class="footer-contact-link footer-contact-link--iphone-form" href="../#anfrage" aria-label="Kontaktformular öffnen und Kontakt aufnehmen">
+            <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg></span>
+            <span><small>Kontaktformular</small><strong>Kontakt aufnehmen</strong></span>
+          </a>
           <a class="footer-contact-link" href="tel:+492325585790">
             <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
             <span><small>Festnetz</small><strong>02325 / 58 57 90</strong></span>
@@ -411,7 +731,16 @@
             <span><small>E-Mail</small><strong>Maik@rohdich.de</strong></span>
           </a>
         </div>
-        <p class="footer-hours"><strong>Mo–Fr 09:00–17:00 <span aria-hidden="true">·</span> Sa 09:00–12:00</strong><span>WhatsApp jederzeit <span aria-hidden="true">·</span> Besuche nach Vereinbarung</span></p>
+        <div class="footer-social-iphone" aria-label="Weitere Kontaktmöglichkeiten">
+          <p class="footer-social-availability"><span class="footer-social-line">Jederzeit erreichbar <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
+          <a class="footer-social-link" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener" aria-label="Maik Rohdich über WhatsApp schreiben">
+            <span class="footer-social-icon footer-social-icon--whatsapp" aria-hidden="true"><img src="../assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+          </a>
+          <span class="footer-social-link footer-social-link--instagram" aria-label="Instagram">
+            <span class="footer-social-icon footer-social-icon--instagram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>
+          </span>
+        </div>
+        <p class="footer-hours"><strong>Mo–Fr 09:00–17:00 <span aria-hidden="true">·</span> Sa 09:00–12:00</strong><span><span class="footer-hours-whatsapp">WhatsApp jederzeit <span aria-hidden="true">·</span> </span>Besuche nach Vereinbarung</span></p>
       </section>
     </div>
 

@@ -194,8 +194,12 @@ html.home-theme-dark .section-faq {
   background: var(--bg);
 }
 
-html.home-theme-dark .fork,
-html.home-theme-dark .site-footer {
+/* AP-339: .site-footer stand hier mit demselben Wert, den styles.css:1426 ohnehin
+   setzt - eine Verdopplung ohne Wirkung. Sie hatte aber eine: mit zwei Klassen und
+   einem Element stach sie die Handy-Regel aus footer-kontakt.css, die den Footer
+   unter 481px auf #171916 hebt. Auf der Startseite sah man deshalb den dunkleren
+   Grundton. Der Selektor ist ersatzlos entfallen. */
+html.home-theme-dark .fork {
   background: var(--bg-dark);
 }
 
@@ -225,6 +229,23 @@ html.home-theme-dark .submenu-toggle {
   color: var(--ink-2);
 }
 
+/* AP-344: Der Aufklapp-Knopf ist rund (styles.css: border-radius 999px). Der
+   Sammel-Fokusring weiter unten (3px gelb, 3px abgesetzt) wurde dadurch zu einem
+   gelben Kreis, der frei um den Knopf schwebte - im Handymenue die auffaelligste
+   Flaeche der ganzen Karte. Jetzt liegt er auf der Knopfkante statt 3px davor, ist
+   2 statt 3px stark und traegt --ink-mute, die gedaempfteste Schriftfarbe der
+   Karte (7,50:1 auf dem Kartengrund #20241D - deutlich ueber den 3:1, die ein
+   Fokusring braucht). Er bleibt: Ohne ihn saehe man bei Tastaturbedienung nicht
+   mehr, wo man steht. Beim Tippen mit dem Finger erscheint er ohnehin nicht -
+   :focus-visible greift dort nicht, und das JS fokussiert den Knopf nicht.
+   Spezifitaet: Die Sammelregel steht in :where(), das nichts beitraegt - dort
+   zaehlen nur html + .home-theme-dark + :focus-visible. Zwei Klassen und eine
+   Pseudoklasse reichen also. */
+html.home-theme-dark .submenu-toggle:focus-visible {
+  outline: 2px solid var(--ink-mute);
+  outline-offset: 0;
+}
+
 html.home-theme-dark .call-row:hover,
 html.home-theme-dark .nav-submenu a:hover,
 html.home-theme-dark .menu a:hover,
@@ -243,14 +264,6 @@ html.home-theme-dark .nav-toggle {
 
 html.home-theme-dark .nav-toggle span {
   background: var(--ink);
-}
-
-html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(1) {
-  background: var(--green-50);
-}
-
-html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(2) {
-  background: var(--bg-soft);
 }
 
 /* Hero: Fotos bleiben unangetastet, nur Flaechen, Grenzen und Schleier reagieren. */
@@ -529,17 +542,11 @@ html.home-theme-dark .btn-ghost:hover {
   background: rgba(255,255,255,.08);
 }
 
-html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(1) {
-  background: var(--bg-soft);
-}
-
-html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(2) {
-  background: var(--bg-hero);
-}
-
-html.home-theme-dark .nav-submenu--welten .nav-submenu-group a:hover {
-  background: var(--bg-elev);
-}
+/* AP-344: Hier standen die Flaechen der beiden Leistungsgruppen und der dazu
+   passende, aufgehellte Zeilen-Hover. Die Gruppenflaeche ist entfallen - seit
+   AP-342 gibt es nur noch eine Gruppe, ein abgesetztes Panel im Panel hatte
+   damit keinen Zweck mehr. Der Sonder-Hover ging mit: Er war nur noetig, weil
+   der Basis-Hover (--bg-soft) auf der Flaeche unsichtbar gewesen waere. */
 
 html.home-theme-dark .gate-door {
   border-color: var(--line);
@@ -3203,216 +3210,7 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
    ?v=-Zaehler statt eines Durchlaufs ueber 36 Seiten. */
 html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }
 
-html.home-theme-dark .footer-contact-link--iphone-form {
-  display: none;
-}
-
-html.home-theme-dark .footer-social-iphone {
-  display: none;
-}
-
-/* AP-215/AP-224: Auf Handy-Breiten entfallen Schnellzugriff und Einsatzgebiet.
-   Kontakt und rechtliche Links bleiben stehen. */
-@media (max-width: 480px) {
-  /* Auf dem iPhone greift die Footer-Kachel den Grundton des mobilen Headers
-     auf. Die Regel bleibt bewusst lokal; Tablet und Desktop behalten --bg-dark. */
-  html.home-theme-dark .site-footer {
-    background: #171916;
-  }
-
-  html.home-theme-dark .site-footer .footer-navigation,
-  html.home-theme-dark .site-footer .footer-coverage {
-    display: none;
-  }
-
-  html.home-theme-dark .site-footer .brand-footer {
-    order: -1;
-    width: min(18.75rem, 95%);
-    margin: 0 0 1rem;
-  }
-
-  html.home-theme-dark .site-footer .footer-brandline {
-    display: none;
-  }
-
-  html.home-theme-dark .site-footer .footer-brand-block {
-    display: flex;
-    flex-direction: column;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link--whatsapp {
-    display: none;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link--iphone-form {
-    display: grid;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link {
-    grid-template-columns: 1.875rem minmax(0, 1fr);
-    gap: 0.4375rem;
-    padding-inline: 0.4375rem;
-    border-color: rgba(86, 230, 7, .14);
-    background: transparent;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-icon {
-    width: 1.875rem;
-    height: 1.875rem;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link--iphone-form .footer-contact-icon,
-  html.home-theme-dark .site-footer .footer-contact-link[href^="mailto:"] .footer-contact-icon {
-    color: var(--mobile-logo-green);
-    background: rgba(5, 10, 5, .58);
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon {
-    background: rgba(5, 10, 5, .58);
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon svg {
-    display: none;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon::before {
-    content: "";
-    width: 1.4375rem;
-    height: 1.4375rem;
-    background: url("../img/icons/phone-header-mobile.png?v=20260902a") center / contain no-repeat;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link strong {
-    font-size: .73rem;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link--iphone-form strong {
-    font-size: .67rem;
-    letter-spacing: -.01em;
-    white-space: nowrap;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link--iphone-form small {
-    font-size: .52rem;
-    letter-spacing: .055em;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] strong,
-  html.home-theme-dark .site-footer .footer-contact-link[href^="mailto:"] strong {
-    overflow-wrap: normal;
-    word-break: normal;
-    white-space: nowrap;
-  }
-
-  /* AP-323: Zwei Zeilen statt einer. Die Erreichbarkeitszeile steht jetzt OBEN
-     und ueber die ganze Breite, darunter die beiden Kacheln. Die dritte Spalte
-     bleibt im Raster, damit die Zeile die volle Containerbreite bekommt - sie
-     war vorher auf gut 200px eingezwaengt und stand bei 360px auf Kante. */
-  html.home-theme-dark .site-footer .footer-social-iphone {
-    display: grid;
-    /* Tippziele bleiben absolut: 44px ist die Mindestgroesse nach WCAG 2.5.8.
-       Mitskaliert waeren es auf einem 320px-Geraet nur noch 35px. */
-    grid-template-columns: 44px 44px minmax(0, 1fr);
-    grid-template-rows: auto minmax(44px, auto);
-    align-items: center;
-    justify-content: start;
-    column-gap: 2px;
-    row-gap: 8px;
-    margin-top: 0.875rem;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-link {
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    /* AP-321: Kein Padding mehr - die Kachel misst jetzt 42px und laesst in der
-       44px-Tippflaeche nur noch 1px Luft. */
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: transparent;
-  }
-
-  /* Nicht mehr :first-child - das ist seit AP-323 der Absatz. Die WhatsApp-
-     Kachel ist das einzige <a> in diesem Block, Instagram ein <span>. */
-  html.home-theme-dark .site-footer a.footer-social-link {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-link--instagram {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  /* AP-321: 42px statt 2.5rem - fest in Pixeln, weil die Wurzel-Schriftgroesse
-     unter 480px fluid ist und die Kachel sonst je nach Geraet zwischen 36 und
-     48px schwankte. 42 ist das Maximum, das die 44px-Tippflaeche und damit die
-     Rasterspalten unangetastet laesst: die dritte Spalte mit der
-     Erreichbarkeitszeile steht bei 360px exakt auf Kante, jeder Pixel mehr
-     wuerde sie herausbrechen lassen. Sichtbar bleiben 4px zwischen den
-     beiden Kacheln. */
-  html.home-theme-dark .site-footer .footer-social-icon {
-    display: grid;
-    place-items: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    color: #fff;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-icon--whatsapp {
-    background: #25d366;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-icon--whatsapp img {
-    width: 25px;
-    height: 25px;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-icon--instagram {
-    background: radial-gradient(circle at 30% 105%, #feda75 0 20%, #fa7e1e 34%, #d62976 57%, #962fbf 76%, #4f5bd5 100%);
-  }
-
-  html.home-theme-dark .site-footer .footer-social-icon--instagram svg {
-    width: 25px;
-    height: 25px;
-  }
-
-  html.home-theme-dark .site-footer a.footer-social-link:focus-visible {
-    outline: 2px solid var(--mobile-logo-green);
-    outline-offset: 2px;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-availability {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    align-self: center;
-    min-width: 0;
-    width: 100%;
-    margin: 0;
-    color: rgba(235, 239, 229, .72);
-    font-size: clamp(.59rem, 2.4vw, .625rem);
-    line-height: 1.48;
-    letter-spacing: -.012em;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-line {
-    display: block;
-    white-space: nowrap;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-dot {
-    color: inherit;
-    font-weight: inherit;
-  }
-
-  html.home-theme-dark .site-footer .footer-hours {
-    display: none;
-  }
-}
+/* AP-339: Die Footer-Kacheln fuer das Telefon (Kontaktformular, WhatsApp/Instagram,
+   Erreichbarkeitszeile) sind nach assets/css/footer-kontakt.css gewandert. Die
+   Ueber-uns-Seite hat denselben Footer bekommen und laedt diese Datei hier nicht;
+   eine zweite Kopie waere sofort auseinandergelaufen. */

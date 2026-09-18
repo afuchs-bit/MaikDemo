@@ -20,6 +20,22 @@ Die Demo läuft mit vollständiger Sperre. Beim Umschalten beides entfernen:
 **Prüfung:** `grep -rn "noindex" --include="*.html" .` darf nur noch `admin/index.html`
 und `404.html` liefern.
 
+## 1b. Vorläufigen Text auf /ueber-uns/ ersetzen (AP-327)
+
+Die Sektion „Die Person hinter dem Betrieb" trägt seit dem 15.09.2026 **sichtbaren
+Platzhaltertext** — auf ausdrückliche Entscheidung des Auftraggebers, damit das Layout im
+Zusammenhang beurteilt werden kann. Das weicht bewusst von Grundregel 2 ab und darf nicht
+live gehen.
+
+- [ ] Die drei bis vier Sätze in der Ich-Form von Maik Rohdich stehen im Absatz
+      `.ueber-inhaber__text`
+- [ ] Das Zitat ist durch den freigegebenen Wortlaut ersetzt
+- [ ] An beiden Stellen ist die Klasse `ueber-inhaber__platzhalter` entfernt
+- [ ] Der `[OFFEN: …]`-Kommentar über der Sektion in `ueber-uns/index.html` ist aufgelöst
+
+**Prüfung:** `grep -n "ueber-inhaber__platzhalter" ueber-uns/index.html assets/css/ueber-uns.css`
+liefert keine Treffer mehr im Markup.
+
 ## 2. Domain und Transport
 
 - [ ] Domain `rohdich.de` auf **Vercel** aufgeschaltet, HTTPS aktiv, HSTS gesetzt

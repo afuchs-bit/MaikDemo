@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AP-220 — Unterseite /ueber-uns/
+   AP-220 / AP-327 — Unterseite /ueber-uns/
 
    Eigene Datei nach dem Muster von kontakt.css: nur diese Seite laedt sie, und
    styles.css bleibt unangetastet - sonst muesste der ?v=-Zaehler ueber alle 36
@@ -8,47 +8,39 @@
    Die Farbwelt kommt vollstaendig aus :root in styles.css. Seit AP-F25 laeuft
    die gesamte Website dunkel; die Tokens --bg, --bg-elev, --ink, --line stehen
    dort und gelten hier ohne Zutun. Kein einziger neuer Farbwert in dieser Datei.
+
+   AP-327 hat die Seite auf den kurzen Aufbau umgestellt: Die Sektion
+   "Wofuer wir geradestehen" ist entfallen (ihre Regeln .ueber-quali* sind
+   gestrichen), dafuer sind Projektkarussell, Panel, Fotoband und
+   Kontaktkacheln dazugekommen. Am 16.09.2026 sind die Nachweis-Chips
+   (.ueber-nachweise) und die Belegleiste (.ueber-beleg*) auf Wunsch des
+   Auftraggebers wieder entfallen; ihre Regeln sind mit ihnen gestrichen.
    ========================================================================== */
 
 .ueber-page { background: var(--bg); }
 
+/* Der gruene Steg vor den Sektionsueberschriften ist das wiederkehrende
+   Zeichen dieser Seite - dieselbe Rolle wie die Schraege auf der Startseite,
+   nur ruhiger. */
+.ueber-steg {
+  padding-left: 20px;
+  border-left: 4px solid var(--home-lime);
+}
+
 /* --- Kopf ---------------------------------------------------------------- */
 
 .ueber-kopf {
-  padding: clamp(24px, 3.4vw, 44px) 0 clamp(30px, 4vw, 48px);
-}
-
-/* Zeichengleich mit .private-proof-since (privat-form.css:3174) und dem Eyebrow
-   der Ueber-uns-Sektion auf der Startseite. Nur die Textfarbe weicht ab: dort
-   steht er auf gruenem Panel, hier auf --bg. */
-.ueber-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0 0 14px;
-  color: var(--ink-mute);
-  font-size: .76rem;
-  font-weight: 800;
-  letter-spacing: .08em;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.ueber-eyebrow svg {
-  width: 20px;
-  height: 20px;
-  flex: none;
-  color: var(--home-yellow);
+  padding: clamp(22px, 3vw, 40px) 0 clamp(26px, 3.4vw, 40px);
 }
 
 /* Der Leitsatz wiederholt die Zeile aus der Startseiten-Sektion. Kein Zitat,
    deshalb keine Anfuehrungszeichen - er soll auch keines vortaeuschen. */
 .ueber-leitsatz {
-  margin: 18px 0 0;
+  margin: 16px 0 0;
   max-width: 20ch;
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(1.5rem, 2.9vw, 2.5rem);
+  font-size: clamp(1.45rem, 2.7vw, 2.3rem);
   line-height: 1.16;
   letter-spacing: -.01em;
   color: var(--ink);
@@ -59,24 +51,163 @@
   color: var(--home-lime);
 }
 
+/* Der Faktensatz traegt den Kopf inhaltlich - der Leitsatz darueber stimmt nur
+   den Ton an. Deshalb eine Spur groesser als der Fliesstext der Seite, aber
+   klar unter dem Leitsatz. */
+.ueber-aufschlag {
+  margin: 18px 0 0;
+  max-width: 60ch;
+  color: var(--ink-2);
+  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+  line-height: 1.55;
+}
+
+.ueber-aufschlag b { color: var(--ink); font-weight: 700; }
+
+/* --- Die Person ----------------------------------------------------------
+   Seit dem 15.09.2026 sichtbar - mit vorlaeufigem Text, siehe den Kommentar an
+   der Sektion im Markup und docs/go-live-checkliste.md. Eigener Namensraum
+   .ueber-inhaber*, weil der vorbereitete Team-Block .ueber-person* fuer seine
+   Mitarbeiterkarten braucht. */
+
+/* AP-327: Die Sektion traegt das Wasserzeichen, deshalb position und overflow.
+   overflow: hidden schneidet die Bluete an der Sektionskante ab - ohne das
+   waechst das Dokument nach rechts und die ganze Seite laesst sich seitlich
+   schieben. */
+.ueber-inhaber {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dieselbe Bluetengruppe wie an den Chips, nur gross, gedaempft und
+   angeschnitten. Rein dekorativ: aria-hidden am Bild, pointer-events aus. */
+.ueber-inhaber__wasserzeichen {
+  position: absolute;
+  right: -96px;
+  bottom: -104px;
+  z-index: 0;
+  width: 340px;
+  height: auto;
+  opacity: .17;
+  pointer-events: none;
+}
+
+.ueber-inhaber__raster {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 420px);
+  column-gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+}
+
+.ueber-inhaber__gross {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 2.7vw, 2.3rem);
+  line-height: 1.2;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+/* Outfit hat keinen echten Kursivschnitt, der Browser schraegt nach. Die
+   geneigte Endkante frisst den Wortabstand zum folgenden "hinter" - gemessen
+   blieb davon nichts uebrig. Das padding stellt ihn wieder her. */
+.ueber-inhaber__gross span {
+  font-style: italic;
+  font-weight: 800;
+  padding-right: .14em;
+}
+
+.ueber-inhaber__text {
+  margin: 18px 0 0;
+  color: var(--ink-2);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+/* Der Steg ist eine Linie mit einer Luecke in der Mitte, in der die Bluete
+   sitzt - als Verlauf gebaut, damit es ein einziges Element bleibt. */
+.ueber-inhaber__steg {
+  position: relative;
+  background: linear-gradient(180deg,
+    var(--line) 0 calc(50% - 60px),
+    transparent calc(50% - 60px) calc(50% + 60px),
+    var(--line) calc(50% + 60px) 100%);
+}
+
+.ueber-inhaber__blume {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 18px 0;
+  background: var(--bg);
+}
+
+.ueber-inhaber__blume img { display: block; width: 72px; height: auto; max-width: none; }
+
+.ueber-inhaber__bluete-mobil { display: none; }
+
+.ueber-inhaber__zitat {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.ueber-inhaber__zitat p { margin: 0; }
+
+/* AP-327: Vorlaeufiger Text. Gedaempft und kursiv, damit auf der Seite zu sehen
+   ist, dass hier noch nicht die endgueltigen Saetze stehen. Beim Ersetzen faellt
+   die Klasse weg - der Punkt steht in docs/go-live-checkliste.md. */
+.ueber-inhaber .ueber-inhaber__platzhalter {
+  color: var(--ink-mute);
+  font-style: italic;
+}
+
+.ueber-inhaber__name {
+  margin-top: 28px !important;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: .9375rem;
+  color: var(--ink);
+}
+
 /* --- Der Betrieb --------------------------------------------------------- */
 
 .ueber-betrieb__raster {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
-  gap: clamp(28px, 4vw, 60px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  gap: clamp(26px, 3.6vw, 56px);
   align-items: start;
 }
 
-.ueber-betrieb__wort .lead + .lead { margin-top: 1em; }
+/* Die Ueberschrift traegt margin: 0 (Reset in styles.css), der Absatz ebenfalls -
+   ohne diese Regel klebt der erste Satz an der Grundlinie der Ueberschrift. 20px
+   ist derselbe Abstand, den der Entwurf dort als Inline-Stil hatte; die uebrigen
+   Sektionskoepfe dieser Seite bringen ihn ueber .lead { margin-top } selbst mit. */
+.ueber-betrieb__wort .type-section-title + .lead { margin-top: 20px; }
 
-.ueber-betrieb__bild { margin: 0; }
+.ueber-betrieb__wort .lead + .lead { margin-top: .9em; }
+
+/* Der Merksatz ist optisch schwerer (fett, groesser) als die beiden
+   Fliesstext-Absaetze - etwas mehr Abstand als zwischen .lead + .lead, sonst
+   klebt er am Fliesstext. */
+.ueber-betrieb__wort .lead + .ueber-betrieb__merksatz,
+.ueber-betrieb__wort .ueber-betrieb__merksatz + .lead {
+  margin-top: 1.1em;
+}
+
+.ueber-betrieb__bild { margin: 0; position: relative; }
 
 /* Rahmen, Radius und Schatten sind die Kartenwerte der uebrigen Seite. Das
    asymmetrische Eck 24/24/44/24 ist die Marken-Ecke des Projekts - sie steht so
    in form-trust-card.css:16, kontakt.css:52, gewerbe.css:51 und
    privat-form.css:2111. */
-.ueber-betrieb__bild img {
+.ueber-betrieb__bild img:not(.ueber-betrieb__marke) {
   display: block;
   width: 100%;
   height: auto;
@@ -87,75 +218,333 @@
   box-shadow: var(--shadow-card);
 }
 
+/* Die Bluete sitzt halb ueber der Bildkante, wie ein aufgeklebtes Siegel. Sie
+   liegt im Markup NACH dem Bild, damit sie ohne z-index darueber steht. */
+.ueber-betrieb__marke,
+.ueber-muster__marke {
+  position: absolute;
+  right: -14px;
+  bottom: -26px;
+  width: 112px;
+  height: auto;
+  pointer-events: none;
+}
+
 .ueber-betrieb__bild figcaption {
-  margin-top: .7rem;
+  margin-top: 1.4rem;
+  padding-right: 112px;
   color: var(--ink-mute);
   font-size: .8125rem;
   line-height: 1.45;
 }
 
-/* --- Qualifikationen ----------------------------------------------------- */
+/* --- Fuer wen wir arbeiten ------------------------------------------------
+   Steht in derselben Sektion wie der Betrieb, nur durch eine Linie abgesetzt -
+   es ist dieselbe Aussage, eine Ebene konkreter. */
 
-.ueber-qualifikationen { background: var(--bg-hero); }
+.ueber-fuerwen {
+  margin-top: clamp(30px, 3.6vw, 48px);
+  padding-top: clamp(24px, 3vw, 34px);
+  border-top: 1px solid var(--line-2);
+}
 
-/* Zwei Spalten, nicht auto-fit: Bei vier Kacheln und 300px Mindestbreite
-   brachen sie im Container (1240px) auf 3+1 um - die vierte stand allein in
-   der zweiten Reihe und die Zeile wirkte abgerissen. 2x2 teilt vier Elemente
-   ohne Rest. Unter 720px steht eine Kachel je Zeile. */
-.ueber-quali-liste {
+.ueber-fuerwen__titel {
+  margin: 0 0 18px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+.ueber-fuerwen__liste {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(14px, 1.8vw, 20px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.8vw, 22px);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-@media (max-width: 720px) {
-  .ueber-quali-liste { grid-template-columns: minmax(0, 1fr); }
-}
-
-.ueber-quali {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: clamp(18px, 2vw, 24px);
+.ueber-fuerwen__liste li {
+  padding: clamp(16px, 2vw, 22px);
   border-radius: var(--radius);
   background: var(--bg-elev);
+  border: 1px solid var(--line);
+}
+
+.ueber-fuerwen__liste h4 {
+  margin: 0 0 6px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.3;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+.ueber-fuerwen__liste p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.ueber-fuerwen__liste a {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--home-lime);
+  font-size: .85rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.ueber-fuerwen__liste a:hover { border-bottom-color: var(--home-lime); }
+
+/* --- Drei Projekte -------------------------------------------------------
+   Das Raster der Kacheln kommt aus styles.css (.projects-grid/.project-card),
+   hier steht nur der Kopf der Sektion, was die Kacheln ohne Beschreibungstext
+   brauchen - und ab hier die Karussellfassung fuer schmale Geraete. */
+
+.ueber-projekte__kopf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: clamp(20px, 2.6vw, 32px);
+}
+
+.ueber-projekte__kopf > div { flex: 1 1 360px; max-width: 56ch; }
+.ueber-projekte__kopf .lead { margin-top: 12px; }
+
+.ueber-projekte__spur .project-body { display: grid; gap: 6px; }
+.ueber-projekte__spur .card-more { margin-top: 6px; }
+
+/* --- Auch fuer die kleine Sache ------------------------------------------- */
+
+.ueber-klein__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(20px, 3.4vw, 44px);
+  align-items: center;
+  padding: clamp(24px, 3.4vw, 44px);
+  border-radius: 24px 24px 44px 24px;
+  border: 1px solid var(--home-lime);
+  background: linear-gradient(135deg, var(--green-800), var(--green-700) 60%, var(--green-900));
+}
+
+.ueber-klein__titel {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+  line-height: 1.16;
+  letter-spacing: -.015em;
+  color: var(--ink);
+}
+
+.ueber-klein__panel p {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--ink);
+  font-size: clamp(1rem, 1.25vw, 1.1rem);
+  line-height: 1.55;
+}
+
+.ueber-klein__panel p + p { margin-top: .9em; }
+
+/* Form 1:1 vom CTA "Zum Kontaktformular" uebernommen (.mobile-proof-request in
+   mobile-social-proof.css: schraeg gestutzte Karte aus versetztem Rahmen +
+   Flaeche, Pfeil in eigenem Chip). Eigene Klassen statt der dortigen BEM-Namen,
+   weil .mobile-proof-request nur innerhalb von @media (max-width: 900px)
+   ueberhaupt Regeln traegt - auf dieser Seite muss der Knopf auch am Desktop
+   stehen. Farbe und Groesse sind an den bisherigen Knopf angepasst: creme
+   (--ink) statt Limette, dunkles Gruen (--green-900) statt Schwarz, niedriger
+   als das 64px-Vorbild. */
+.ueber-klein__ruf {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 5px 8px 5px 20px;
+  border-radius: 12px;
+  color: var(--green-900);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: .95rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform .12s var(--ease);
+}
+
+.ueber-klein__ruf-frame {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5px;
+  transform: translate(5px, 5px);
+  pointer-events: none;
+}
+
+.ueber-klein__ruf-shape {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  fill: var(--ink);
+  pointer-events: none;
+  transition: transform .12s var(--ease);
+}
+
+.ueber-klein__ruf-label {
+  position: relative;
+  z-index: 1;
+}
+
+.ueber-klein__ruf-arrow {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--green-700);
+  color: var(--ink);
+  transition: transform .12s var(--ease);
+}
+
+/* Ohne fill/stroke faellt ein SVG auf den Standardwert fill:black zurueck -
+   bei einem offenen Linienzug (kein geschlossenes Polygon) macht das nur einen
+   duennen dunklen Schmier statt eines Pfeils. Vorlage:
+   mobile-social-proof.css:9 (.mobile-proof-request__arrow svg). */
+.ueber-klein__ruf-arrow svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ueber-klein__ruf:hover :is(.ueber-klein__ruf-shape, .ueber-klein__ruf-label, .ueber-klein__ruf-arrow) {
+    transform: translate(2px, 2px);
+  }
+
+  .ueber-klein__ruf:hover .ueber-klein__ruf-arrow svg { transform: translateX(2px); }
+}
+
+.ueber-klein__ruf:focus-visible {
+  outline: 2px solid var(--home-focus);
+  outline-offset: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ueber-klein__ruf,
+  .ueber-klein__ruf-shape,
+  .ueber-klein__ruf-arrow,
+  .ueber-klein__ruf-arrow svg {
+    transition: none;
+  }
+}
+
+/* --- Mustergarten --------------------------------------------------------
+   Zahl, Text und Regel links, Foto rechts. Die Massszahl ist das Erste, was
+   gelesen wird - sie ist das Argument, nicht die Ueberschrift. */
+
+.ueber-muster__raster {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(26px, 3.6vw, 52px);
+  align-items: center;
+}
+
+.ueber-muster__zahl {
+  margin: 0 0 4px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -.03em;
+  color: var(--home-lime);
+}
+
+.ueber-muster__titel {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+  line-height: 1.16;
+  letter-spacing: -.015em;
+  color: var(--ink);
+}
+
+/* Die Terminregel ist kein Nebensatz, sondern die Bedingung fuer einen Besuch -
+   deshalb als abgesetzter Kasten, wie der Hinweis im Erreichbarkeitsblock. */
+.ueber-muster__regel {
+  margin: 18px 0 0;
+  padding: 13px 16px;
+  background: var(--green-50);
+  border-left: 3px solid var(--home-lime);
+  color: var(--ink-2);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.ueber-muster__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.ueber-muster__bild { margin: 0; position: relative; }
+
+.ueber-muster__bild img:not(.ueber-muster__marke) {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 24px 24px 44px 24px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-card);
 }
 
-/* Die Bluete ist dasselbe Zeichen, das die Qualifikationsleiste im
-   Willkommen-Bereich der Startseite fuehrt (assets/img/icons/maik-rohdich-bluete-original.png).
-   Rein dekorativ, deshalb aria-hidden am Element und alt="" am Bild. */
-.ueber-quali__zeichen {
-  flex: none;
-  width: 34px;
-  height: 34px;
+/* --- Haeufige Fragen ------------------------------------------------------
+   Bauteil .faq-list aus styles.css, hier in zwei Spalten mit je einem Kicker.
+   Der Kicker ersetzt eine dritte Ueberschriftenebene: er ordnet, ohne wie eine
+   eigene Sektion auszusehen. */
+
+.ueber-faq__gruppen {
   display: grid;
-  place-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 38px);
 }
 
-.ueber-quali__zeichen img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.ueber-quali h3 {
-  margin: 0 0 6px;
-  font-size: 1rem;
+.ueber-faq__kicker {
+  margin: 0 0 12px;
+  color: var(--home-lime);
+  font-size: .71rem;
   font-weight: 800;
-  line-height: 1.25;
-  color: var(--ink);
-}
-
-.ueber-quali p {
-  margin: 0;
-  color: var(--ink-2);
-  font-size: .92rem;
-  line-height: 1.55;
+  letter-spacing: .09em;
+  text-transform: uppercase;
 }
 
 /* --- Team (vorbereitet, im Markup auskommentiert) -------------------------
@@ -205,107 +594,87 @@
   line-height: 1.55;
 }
 
-/* --- Einsatzgebiet und Erreichbarkeit ------------------------------------ */
-
-.ueber-gebiet__raster {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
-  gap: clamp(28px, 4vw, 60px);
-  align-items: start;
-}
-
-.ueber-orte {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 22px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.ueber-orte li {
-  padding: 9px 15px;
-  border-radius: 999px;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  color: var(--ink-2);
-  font-size: .9rem;
-  font-weight: 600;
-}
-
-.ueber-orte__zusatz { color: var(--ink-mute); font-weight: 400; }
-
-.ueber-orte__nachsatz {
-  margin: 16px 0 0;
-  color: var(--ink-mute);
-  font-size: .9rem;
-  line-height: 1.55;
-}
-
-/* Die Erreichbarkeit steht als Karte, weil sie zwei Dinge gleichzeitig sagen
-   muss: es gibt Zeiten, aber keine Ladenoeffnung. Als Flaeche liest sich das
-   zusammenhaengend, als Fliesstext waere der Hinweis untergegangen. */
-.ueber-erreichbar {
-  padding: clamp(22px, 2.6vw, 32px);
-  border-radius: 24px 24px 44px 24px;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-card);
-}
-
-.ueber-erreichbar__titel {
-  margin: 0 0 16px;
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--ink);
-}
-
-.ueber-zeiten { margin: 0 0 16px; }
-
-.ueber-zeiten > div {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--line-2);
-}
-
-.ueber-zeiten > div:last-child { border-bottom: 0; }
-
-.ueber-zeiten dt { color: var(--ink-2); font-size: .92rem; }
-.ueber-zeiten dd { margin: 0; color: var(--ink); font-size: .92rem; font-weight: 700; }
-
-.ueber-erreichbar p {
-  margin: 0 0 12px;
-  color: var(--ink-2);
-  font-size: .92rem;
-  line-height: 1.6;
-}
-
-.ueber-erreichbar__hinweis {
-  padding-left: 14px;
-  border-left: 2px solid var(--home-small-accent);
-  color: var(--ink) !important;
-  font-weight: 600;
-}
-
-.ueber-erreichbar .btn { margin-top: 6px; }
-
 /* --- Umbruch -------------------------------------------------------------
    860px ist derselbe Punkt, an dem die Ueber-uns-Sektion der Startseite
    umbricht. Gleiche Zahl, damit beide Seiten beim Verkleinern im selben Moment
    umspringen. */
 @media (max-width: 860px) {
   .ueber-betrieb__raster,
-  .ueber-gebiet__raster {
+  .ueber-inhaber__raster,
+  .ueber-muster__raster,
+  .ueber-fuerwen__liste,
+  .ueber-faq__gruppen,
+  .ueber-klein__panel {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  /* Gestapelt zieht Grid den Knopf sonst per justify-items:stretch auf die
+     volle Spaltenbreite (285px bei 375px Fensterbreite) - fuer "Kurz anrufen"
+     plus Pfeil-Chip zu lang. */
+  .ueber-klein__ruf { max-width: 220px; }
+
+  /* Der senkrechte Steg der Person ergibt gestapelt keinen Sinn; an seine
+     Stelle tritt die liegende Bluete zwischen den beiden Bloecken. */
+  .ueber-inhaber__steg { display: none; }
+  /* Gestapelt rueckt das Zitat in die Ecke, in der das Wasserzeichen liegt.
+     Deshalb blasser und weiter heraus als am Desktop - gemessen bleibt der Text
+     darueber sonst nur knapp lesbar. */
+  .ueber-inhaber__wasserzeichen { width: 230px; right: -74px; bottom: -48px; opacity: .12; }
+  /* text-align greift nicht: der Bild-Reset in styles.css:187 stellt jedes img
+     auf block. Zentriert wird deshalb ueber die Aussenabstaende. */
+  .ueber-inhaber__bluete-mobil { display: block; margin: 24px 0; }
+  .ueber-inhaber__bluete-mobil img { width: 64px; height: auto; margin-inline: auto; }
 
   /* Das Bild steht im Quelltext NACH dem Text - im gestapelten Zustand ist das
      die richtige Lesereihenfolge, hier ist also nichts umzusortieren. Nur die
      Breite wird gedeckelt: ueber die volle Spalte wuerde die Aufnahme zum
      Leitbild der Seite. */
-  .ueber-betrieb__bild { max-width: 420px; }
+  .ueber-betrieb__bild { max-width: 440px; }
 
   .ueber-leitsatz { max-width: none; }
+
+  /* AP-327: Die drei Projekte werden zum Karussell. Technik wie bei den beiden
+     Karussells der Startseite (mobile-social-proof.css:331, privat-form.css:4806):
+     waagerechte Spur mit Schnapppunkten an den Kartenkanten, ausgeblendeter
+     Leiste und gekapseltem Overscroll, damit das Wischen nicht die ganze Seite
+     mitnimmt.
+
+     Ohne JS und ohne Punktleiste: Die beiden Karussells der Startseite bringen
+     dafuer je ein eigenes Modul mit; fuer drei feste Karten waere ein drittes
+     Pflegelast ohne Gegenwert. Den Hinweis, dass es weitergeht, gibt die
+     angeschnittene Nachbarkarte - deshalb 78 % Kartenbreite und nicht 100 %.
+
+     Die Spur laeuft ueber die Containerkanten hinaus (negative Aussenabstaende),
+     damit die angeschnittene Karte am Bildschirmrand endet und nicht an einer
+     unsichtbaren Linie 20 px davor. scroll-padding haelt die Schnapppunkte
+     trotzdem auf der Textkante. */
+  .ueber-projekte__spur {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ueber-projekte__spur::-webkit-scrollbar { display: none; }
+
+  .ueber-projekte__spur .project-card {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  /* Die Karte waechst sonst mit dem Text der Ueberschrift; im Karussell sollen
+     alle drei gleich hoch sein. */
+  .ueber-projekte__spur .project-body { align-content: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ueber-projekte__spur { scroll-behavior: auto; }
 }
