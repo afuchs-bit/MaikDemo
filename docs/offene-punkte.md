@@ -108,6 +108,60 @@ eine Einwilligungs-Checkbox zu erzwingen. Begruendung: die Bearbeitung einer Anf
 sich ueblicherweise auf Vertragsanbahnung, nicht auf Einwilligung. Das ist eine Rechtsfrage —
 vor dem Go-live anwaltlich rueckversichern.
 
+**Entschieden am 18.09.2026 (AP-327 bis AP-331):** Das Formular bleibt ohne Einwilligungs-
+Checkbox. **Nur wer ein Foto beilegt**, bestaetigt vor dem Absenden, dass er die Aufnahmen
+weitergeben darf und keine ungefragten Personen darauf zu erkennen sind. Ein Bild kann
+Daten Dritter enthalten, die blosse Kontaktangabe nicht.
+
+## AP-360 — Vier neue Leistungsseiten: Texte brauchen Freigabe
+
+Nassschneidearbeiten, Rodungsarbeiten, Verkehrssicherheit und Vermessungs- & Lasertechnik
+standen in der A-Z-Liste der Startseite, hatten aber keine eigene Seite - sie zeigten aufs
+Anfrageformular. Die vier Seiten sind jetzt gebaut.
+
+**Die Texte sind von mir entworfen, nicht vom Auftraggeber geliefert.** Sie stuetzen sich
+ausschliesslich auf Fachwissen zum Gewerk und auf geltendes Recht, nicht auf Betriebsinterna -
+so, wie es die uebrigen dreizehn Leistungsseiten auch tun. Vor dem Go-live muss Maik Rohdich
+sie lesen und freigeben.
+
+Bewusst **nicht** geschrieben, weil unbekannt:
+
+| Offen | Fundstelle |
+|---|---|
+| Welche Geraete und Verfahren tatsaechlich eingesetzt werden (Trennschneider, Wurzelfraese, Nivelliergeraet, Seilklettertechnik, Hebebuehne) | alle vier `content/leistungen/privat/*.json`, Abschnitt `ablauf` und `aufwand` |
+| Ob fuer die Verkehrssicherung Nachweise vorliegen, die genannt werden duerfen | `verkehrssicherheit.json` |
+| Ab welcher Groesse Rodungen uebernommen werden und ob es eine Mindestmenge gibt | `rodungsarbeiten.json` |
+| Ob Zuschnitte auch ohne eigenen Auftrag uebernommen werden | `nassschneidearbeiten.json`, FAQ 3 - dort bewusst als "sprechen Sie uns an" formuliert |
+
+**Rechtsangaben, die geprueft gehoeren:** Die Schonzeit vom 1. Maerz bis 30. September fuer
+das Beseitigen von Baeumen, Hecken und Gebueschen steht in `rodungsarbeiten.json` als
+geltendes Recht. Ob fuer Herne zusaetzlich eine Baumschutzsatzung mit Genehmigungspflicht
+gilt, ist auf der Seite bewusst offen gelassen ("das klaeren wir vorab") - hier wurde
+nichts behauptet, was nicht belegt ist.
+
+## AP-329/330 — Foto-Upload: was noch fehlt
+
+Der Empfangsweg ist gebaut (`api/anfrage.js`, `vercel.json`, Versand in `anfrage.js`),
+aber **nicht scharfgeschaltet**: `data-endpoint` am Formular ist leer, das Foto-Feld
+bleibt deshalb unsichtbar und das Formular verhaelt sich wie bisher. Zum Einschalten
+fehlen Angaben, die nur der Auftraggeber liefern kann:
+
+| Was | Wofuer | Ohne das |
+|---|---|---|
+| SMTP-Zugangsdaten zu `maik@rohdich.de` (Host, Port, Benutzer, Passwort) | Versand aus der Funktion | kein Versand |
+| Vercel-Tarif **Pro** | Hobby verbietet kommerzielle Nutzung; der AVV nach Art. 28 DSGVO gilt nur fuer Pro und Enterprise | keine Rechtsgrundlage fuer die Verarbeitung durch Vercel |
+| Aufbewahrungsdauer im Postfach | Pflichtangabe nach Art. 13 Abs. 2 lit. a DSGVO | Datenschutzerklaerung unvollstaendig |
+| Anwaltlich geprueftere Datenschutzerklaerung | siehe AP-11 weiter oben | Verstoss gegen die Unterrichtungspflicht, sobald Bilder entgegengenommen werden |
+
+Die Verarbeitungsvorgaenge sind in `content/rechtstexte/datenschutz.body.html` bereits
+ausformuliert, damit der Anwalt nur noch pruefen und einsetzen muss. Zwei `OFFEN`-Marken
+stehen dort: der Name des Auftragsverarbeiters und die Aufbewahrungsdauer.
+
+**Nicht gebaut, mit Absicht:** ein Versandweg ohne JavaScript. Ein gewoehnliches
+Formular-POST wuerde das Bild ungeschrumpft und **mit** GPS-Daten uebertragen — das
+Entfernen der Metadaten passiert im Browser. Ohne JavaScript bleibt es beim Hinweis auf
+Telefon, WhatsApp und E-Mail.
+
 ## AP-F17 — `#kontakt` zeigt seit AP-F14 auf den Gewerbe-Teaser
 
 > **Weitgehend erledigt mit AP-F20 (02.09.2026).** Der Auftraggeber hat den Gewerbe-Zweig
@@ -1111,6 +1165,11 @@ Die Bausteine gehören nachweislich nur auf die Startseite:
   Link tot
 - die gesamte Gestaltung steht in `home-dark.css`, und die wird nur von `index.html` geladen
 
+> **Überholt durch AP-339 (16.09.2026).** Beide Begründungen gelten nicht mehr: der Link
+> bekommt sein Präfix aus `base`, die Gestaltung steht in `assets/css/footer-kontakt.css`.
+> `/ueber-uns/` trägt die Bausteine seitdem ebenfalls. Die Platzhalter heißen jetzt
+> `{{handyFormularLink}}` und `{{handySocial}}`.
+
 Die Fallunterscheidung prüft **den Seitenpfad**, nicht `base`: `404.html` liegt ebenfalls in
 der Wurzel und hätte die Bausteine sonst mitbekommen (beim ersten Versuch genau so passiert).
 Dafür bekommt `footerTemplateData` jetzt den relativen Pfad als zweites Argument.
@@ -1324,3 +1383,155 @@ zeigt die Vorschau leere Flächen, wo alles in Ordnung ist.
   „Unsere Leistungen von A bis Z" und der Willkommensgruß.
 - **O6 — Name des Hundes.** Weiter offen (AP-230 O1). Falls bekannt, gehört er in den
   Alt-Text.
+
+
+## AP-327 — Über-uns-Unterseite: neuer Seitenaufbau
+
+Die Seite folgt seit AP-327 dem kurzen Aufbau aus dem dritten Entwurf vom 15.09.2026:
+Kopf mit Faktensatz, Person, Betrieb mit Auftraggeberkarten, drei Projekte (auf dem Handy
+als Karussell), das Panel „Auch für die kleine Sache", Mustergarten, Fotoband, FAQ und
+Erreichbarkeit mit Kontaktkacheln.
+Aus 283 Wörtern sind rund 500 geworden, davon etwa 110 in eingeklappten FAQ-Antworten.
+
+| Wert | Fundstelle | AP |
+|---|---|---|
+| **Text und Zitat von Maik Rohdich** für die Sektion „Die Person" — drei bis vier Sätze in der Ich-Form, dazu ein Zitat mit freigegebenem Wortlaut | `ueber-uns/index.html`, auskommentierter Abschnitt hinter dem Kopf | AP-327 |
+| **Leistungen für Kommunen und öffentliche Auftraggeber** — was der Betrieb dort konkret übernimmt, und ob eine Kommune als Referenz genannt werden darf | `ueber-uns/index.html`, dritte Auftraggeberkarte und die FAQ-Frage „Arbeiten Sie auch für Kommunen und Hausverwaltungen?" | AP-327 |
+| **Ausstellende Stellen** für Meisterbrief (Handwerkskammer, Jahr) und Sachkundenachweis Pflanzenschutz | standen bis AP-327 in den Qualifikationskarten; die Sektion ist entfallen, die Angaben fehlen weiterhin | AP-327 |
+| **Foto „Kranich"** für das fünfte Feld des Fotobands | `ueber-uns/index.html`, Sektion „So sieht es bei uns aus" — das Feld ist nicht gebaut, solange das Bild fehlt | AP-327 |
+| **Google-Unternehmensprofil-URL in den Stammdaten** — der Link (`https://www.google.com/maps?cid=17269983059863253129`) steht seit AP-F1 in `index.html`, `stammdaten.json → offen.googleProfilUrl` ist trotzdem `null`. Er gehört in die Stammdaten, damit `sameAs` ihn nutzen kann | `content/stammdaten.json`, `index.html` | AP-327 |
+
+**Sektion „Die Person" ist sichtbar — mit vorläufigem Text.** Sie ist der Kern der Entwürfe:
+Wer auf der Startseite „Mehr über Maik Rohdich" klickt, sucht die Person. Bauen lässt sie
+sich trotzdem nicht, ohne Sätze zu erfinden. Sie stand deshalb zunächst auskommentiert im
+Quelltext; am 15.09.2026 hat der Auftraggeber entschieden, sie mit dem Blindtext aus seinem
+Entwurf **sichtbar** zu schalten, damit das Layout im Zusammenhang zu beurteilen ist.
+
+Das weicht bewusst von Grundregel 2 ab (kein sichtbarer Platzhaltertext) und ist auf diesen
+Übergangsstand begrenzt. Zwei Sicherungen: Der vorläufige Text trägt die Klasse
+`ueber-inhaber__platzhalter` und erscheint gedämpft und kursiv; in
+`docs/go-live-checkliste.md` steht der Austausch als **Position 1b**, also vor dem
+Aufheben der Indexierungssperre. Sobald Maiks Sätze vorliegen: Text ersetzen, Klasse
+entfernen, Kommentar auflösen.
+
+**Entschieden am 15.09.2026 (Auftraggeber):**
+
+- Der Leitsatz „Gartenbau mit Handschlagqualität." bleibt auf dieser Seite, obwohl er in
+  AP-285 von der Startseite gestrichen wurde.
+- **Hausverwaltungen** sind als Auftraggebergruppe bestätigt; die zweite Karte heißt
+  „Gewerbe und Hausverwaltungen".
+- Kommunale Auftraggeber sind bestätigt und stehen wieder als eigene, dritte Karte.
+  (Eine Zwischenfassung desselben Tages hatte sie in die Gewerbekarte gezogen; der dritte
+  Entwurf hat sie zurückgeholt.)
+- Das **Hundefoto** kommt zurück. Es war in AP-318/319 entfernt worden, weil es auf keiner
+  Seite mehr stand; jetzt trägt es das Fotoband. Die fünf Ableitungen sind byte-genau aus
+  der Historie zurückgeholt (`git show 9a5354f^:…`), der Eintrag steht wieder in
+  `.github/scripts/build-images.mjs`. **Der Schlüssel `ueber-hund` fehlt weiterhin in
+  `data/images.json`** — `build-images.mjs` wurde nicht ausgeführt, weil ein Lauf sämtliche
+  Derivate und das ganze Manifest neu schriebe. Folgenlos, solange die Seite die Dateien
+  direkt einbindet; beim nächsten regulären Lauf kommt der Schlüssel von selbst zurück.
+- Das Projektkarussell greift nur bis 860 px; darüber stehen die drei Karten nebeneinander.
+  Es stand auf Wunsch zunächst direkt unter der Chip-Zeile; seit deren Wegfall folgt es
+  unmittelbar auf den Betriebsabschnitt.
+- Schrift bleibt Outfit/Inter — das im Entwurf angebotene Nunito wurde verworfen.
+- **Am 16.09.2026 entfallen:** die Chip-Zeile mit den vier Nachweisen und die Belegleiste
+  („4,9 aus 68 Google-Bewertungen" samt Verweis ins Profil). Die Bewertungen kommen auf
+  dieser Seite damit nicht mehr vor; auf der Startseite stehen sie unverändert.
+
+**Die Qualifikationen stehen nur noch in der FAQ.** Erst ist die Sektion „Wofür wir
+geradestehen" mit ihren vier erklärten Karten entfallen, dann am 16.09.2026 auf Wunsch des
+Auftraggebers auch die Chip-Zeile, die an ihre Stelle getreten war. Damit sind aus dem
+sichtbaren Text verschwunden: die ausstellenden Stellen („Landwirtschaftskammer",
+„Sachgebiet 2.4.1"), die drei Verweise auf Baumkontrolle, Begutachtung und Gartenpflege —
+und die Nachweise selbst, bis auf die FAQ-Antwort „Was bringt mir ein Meisterbetrieb?".
+Im `Person`-Knoten des JSON-LD stehen weiter alle vier.
+
+Das ist eine bewusste Entscheidung, aber sie hat eine gemessene Kehrseite: Die vier Chips
+der Startseite hängen in `.gate-welcome`, und dieser Block ist ab 901 px `display: none`.
+Auf dem Desktop kommen „Sachverständiger", „Sachkundiger" und „Baumkontrolleur" damit auf
+der ganzen Website nur in dieser einen FAQ-Antwort vor. Das Kundenfeedback vom August
+verlangt das Gegenteil („sodass jeder Kunde sie zu 100 % sieht").
+**Die saubere Lösung wäre, die Chips auf der Startseite auch im Desktop einzuschalten** —
+eigenes AP an der Startseite, hier nicht entschieden.
+
+**Wortlaut aus dem Entwurf, nicht aus den Projektunterlagen belegt:** „Wir schauen uns auch
+an, wie es drinnen aussieht …", der Text des Panels „Auch für die kleine Sache." und die
+FAQ-Antwort zum gefallenen Meisterzwang (fachlich richtig — der Garten- und Landschaftsbau
+ist zulassungsfreies Handwerk). Die Sätze stammen aus dem Entwurf des Auftraggebers.
+
+**Nicht übernommen aus den Entwürfen:** Die Projektkacheln des zweiten Entwurfs trugen
+Ortsangaben („Herne", „Bochum"), die es zu den verwendeten Fotos nicht gibt — die Bilder
+stammen aus `content/galerie-teaser.json` und haben weder Ort noch Projekttitel. Die
+Kacheln zeigen deshalb drei echte Projekte aus `data/projekte-index.json`.
+
+---
+
+## AP-339 — Startseiten-Footer auch auf `/ueber-uns/`, „Über uns" ins Hauptmenü
+
+**Auftrag vom 16.09.2026:** „Übernehme 1:1 den Footer aus der Homepage für die Über Uns
+Unterseite und füge im Menü Über Uns ein."
+
+### Was der Unterschied tatsächlich war
+
+Beide Seiten bekamen ihren Footer schon vorher aus derselben Vorlage. Verschieden waren nur
+die drei Platzhalter aus [AP-254](#ap-254--footer-generator-löschte-die-mobilen-startseiten-bausteine)
+— und die sind **reine Handy-Bauteile**: außerhalb von `@media (max-width: 480px)` standen
+sie auf `display: none`. Ab 481 px waren die beiden Footer bereits deckungsgleich. Der
+Auftrag betraf in der Sache also die Ansicht auf dem Telefon.
+
+### Die zwei Gründe aus AP-254 sind aufgelöst
+
+Dort steht, die Bausteine gehörten „nachweislich nur auf die Startseite". Beide Begründungen
+gelten nicht mehr:
+
+- **`#anfrage` gibt es nur in `index.html`.** Der Link bekommt sein Präfix jetzt aus `base`.
+  Auf der Startseite bleibt es zeichengleich `#anfrage`, von `/ueber-uns/` aus wird
+  `../#anfrage` daraus — der Sprung landet im Formular der Startseite. `/kontakt/` kam als
+  Ziel nicht in Frage: die Seite hat kein Formular.
+- **Die Gestaltung steht in `home-dark.css`.** Sie steht jetzt in
+  `assets/css/footer-kontakt.css` und wird von beiden Seiten geladen.
+
+Die Platzhalter heißen deshalb nicht mehr `{{startseiteFormularLink}}` / `{{startseiteSocial}}`,
+sondern `{{handyFormularLink}}` / `{{handySocial}}`. Welche Seiten sie bekommen, steht in
+`HANDY_FOOTER_SEITEN` in [render.mjs](../.github/scripts/lib/render.mjs). **Wer dort eine
+Seite einträgt, muss `footer-kontakt.css` auf ihr auch einbinden** — sonst liegt das Markup
+in der Seite und ist unsichtbar.
+
+### Eine stille Doppelung, die dabei aufflog
+
+`home-dark.css:198` setzte `.site-footer` auf `var(--bg-dark)` — denselben Wert, den
+`styles.css:1426` ohnehin vergibt. Wirkungslos, solange beide dasselbe sagen. Beim Umzug
+war sie es nicht mehr: mit zwei Klassen und einem Element stach sie die entschärfte
+Handy-Regel aus, und die Startseite zeigte unter 481 px plötzlich `#0E100D` statt `#171916`.
+Der Selektor ist ersatzlos entfallen; `.fork` bleibt in der Regel stehen.
+
+Gemessen: Startseite bei 375 px vorher wie nachher `rgb(23, 25, 22)`, bei 1280 px
+`rgb(14, 16, 13)`. Pixelvergleich der ganzen Startseite gegen den Stand davor — bei 375 px
+und 1280 px **identisch**, abgesehen vom neuen Menüpunkt.
+
+### Was auf `/ueber-uns/` nicht 1:1 wird
+
+Der Footer ist in Aufbau, Farbe, Radius, Rasterung und Sichtbarkeitsschaltung identisch
+(gemessen bei 375 px und 1280 px). Zwei Dinge bleiben verschieden, und beide sind
+Eigenschaften der **Seite**, nicht des Footers:
+
+- **Schriftgröße.** `home-dark.css:1398` gibt der Startseite unter 480 px eine fließende
+  Wurzelgröße (14,93 px bei 375 px). Unterseiten stehen auf 16 px. Der Footer erbt das und
+  ist dadurch rund 5 % größer: 528 px hoch statt 500 px, das Logo 295 px breit statt 280 px.
+  Nachziehen ließe sich das nur über die Wurzelgröße — also für die ganze Seite.
+- **Schriftart.** Nunito gilt bewusst nur für die Startseite, Unterseiten behalten
+  Outfit/Inter. So entschieden in AP-327.
+
+### Menüpunkt
+
+`<li><a href="{{base}}ueber-uns/">Über uns</a></li>`, eingefügt **nach** „Galerie", auf allen
+37 ausgelieferten Seiten und in `templates/_header.html`. Auf `/ueber-uns/` selbst steht er
+wie bei `/kontakt/` und `/projekte/` als `<a href="./" aria-current="page">`.
+
+Die erzeugten Seiten wurden **nicht** über `build-leistungen.mjs` neu gebaut — der Lauf
+reißt handgesetzte Klassen mit (siehe `saved-gewerbe-link`). Vorlage und Seiten tragen
+trotzdem dieselbe Zeile.
+
+Gemessen bei 901 / 1024 / 1280 px: sechs Punkte, eine Zeile, Menübreite 515 px, kleinster
+Abstand zu den Kopfknöpfen 37 px (bei 901 px, direkt über dem Umbruch auf das Hamburger-Menü).
+Kein waagerechter Überlauf. Im offenen Handy-Menü sind alle Punkte 47 px hoch.

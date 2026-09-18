@@ -73,12 +73,20 @@
 
 .anf__feld textarea { resize: vertical; line-height: 1.5; min-height: 132px; }
 
+/* AP-326: Angetippt/fokussiert sahen Kachel und Feld verschieden aus. Unter
+   480px ist das seit AP-239 angeglichen (Z. 440 ff. und Z. 509 ff. tragen
+   dieselben vier Werte); ab 481px liefen die Grundregeln auseinander - das Feld
+   bekam einen 3px-Ring in --green-700 ohne Flaechenwechsel, die Kachel eine
+   Fuellung in --green-500. Jetzt beide Male dieselben Werte wie an
+   a.anf__kanal:hover (Z. 291) und .anf__kanal:focus-visible (Z. 295).
+   Die ruhende Feldflaeche (--anf-flaeche, Z. 69) bleibt unberuehrt. */
 .anf__feld input:focus-visible,
 .anf__feld textarea:focus-visible,
 .anf__feld select:focus-visible {
-  outline: 3px solid var(--anf-akzent);
-  outline-offset: 1px;
-  border-color: var(--anf-akzent);
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+  border-color: var(--green-500);
+  background: rgba(140, 198, 63, .09);
 }
 
 .anf__feld [aria-invalid="true"] { border-color: var(--anf-fehler); }
@@ -89,6 +97,134 @@
   font-size: .8125rem;
   color: var(--anf-fehler);
 }
+
+/* ------------------------------------------------------------------ Foto */
+
+/* AP-350: Eine Kachel in Spaltenbreite, eine Zeile hoch - Plus links,
+   Beschriftung daneben. Vorher ein grosser gestrichelter Kasten mit drei Zeilen
+   Inhalt; der sah aus wie ein eigener Baustein neben dem Formular.
+
+   Tokens wie an den Feldern und den drei Kanalkacheln: --anf-linie als Strich,
+   --anf-radius als Radius. Aufbau angelehnt an .b2b-upload (privat-form.css:919),
+   das aber fuer die helle Welt gebaut ist (--green-50 als Flaeche). */
+
+.anf__foto { position: relative; display: block; }
+
+/* Der Eingang bleibt bedienbar und mit der Tastatur erreichbar, nur unsichtbar -
+   display:none wuerde ihn aus der Tabfolge werfen. Die Masse der Feld-Grundregel
+   (Z. 57 ff.) muessen dabei ausdruecklich zurueckgenommen werden, sonst bleibt
+   ein 44px hoher unsichtbarer Kasten stehen und schiebt die Box. */
+.anf__foto > input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  opacity: 0;
+}
+
+.anf__foto-kachel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-block-size: 56px;
+  padding: 10px 14px;
+  /* Durchgezogen, nicht gestrichelt: die Kachel soll aussehen wie ein Bedienteil
+     des Formulars, nicht wie ein abgesetzter Ablagebereich. Die Bedeutung
+     "etwas hinzufuegen" traegt schon das Plus. */
+  border: 1px solid var(--anf-linie);
+  border-radius: var(--anf-radius);
+  cursor: pointer;
+  transition: border-color .18s var(--ease), background-color .18s var(--ease);
+}
+
+/* Aufbau wie .chev in der FAQ-Liste (styles.css:1175): zwei Balken in einem
+   runden Feld, einer gedreht. Eigener Klassenname, weil .chev an details[open]
+   haengt und sich dort zum Minus dreht - das waere hier falsch. Farben wie im
+   dunklen FAQ (home-dark.css:320). */
+.anf__foto-plus {
+  position: relative;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+}
+
+.anf__foto-plus::before,
+.anf__foto-plus::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: 11px;
+  block-size: 2px;
+  border-radius: 2px;
+  background: var(--home-small-accent);
+  transform: translate(-50%, -50%);
+}
+
+.anf__foto-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+.anf__foto-wort { color: var(--anf-vg); font-size: .95rem; font-weight: 600; }
+
+/* Meldet nur, was es zu melden gibt: gewaehlte Dateien oder einen Fehler. Im
+   Ruhezustand traegt sie hidden - der erklaerende Satz steht unten bei den
+   rechtlichen Angaben. */
+.anf__foto-stand {
+  display: block;
+  margin-top: 7px;
+  color: var(--anf-leise);
+  font-size: .78rem;
+  line-height: 1.45;
+}
+
+/* Wie an den Kanalkacheln seit AP-326: dieselbe Fuellung, derselbe Rand. */
+@media (hover: hover) and (pointer: fine) {
+  .anf__foto:hover .anf__foto-kachel {
+    border-color: var(--green-500);
+    background-color: rgba(140, 198, 63, .09);
+  }
+}
+
+.anf__foto > input:focus-visible + .anf__foto-kachel {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+  border-color: var(--green-500);
+}
+
+.anf__foto.is-invalid .anf__foto-kachel { border-color: var(--anf-fehler); }
+.anf__foto.is-invalid + .anf__foto-stand { color: var(--anf-fehler); font-weight: 700; }
+
+/* Die Bestaetigung erscheint erst, wenn wirklich ein Bild gewaehlt wurde. Sie
+   fragt nach Rechten Dritter - Nachbarn, Kennzeichen, Hausfassaden -, die auf
+   einem Gartenfoto mitlaufen, ohne gefragt worden zu sein. */
+.anf__einwilligung {
+  margin: 0 0 1.125rem;
+  font-size: .8125rem;
+  line-height: 1.5;
+  color: var(--anf-leise);
+}
+
+.anf__einwilligung label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  cursor: pointer;
+}
+
+.anf__einwilligung input {
+  inline-size: 20px;
+  block-size: 20px;
+  margin: 1px 0 0;
+  accent-color: var(--green-500);
+  color-scheme: dark;
+}
+
+.anf__einwilligung.is-invalid { color: var(--anf-fehler); font-weight: 600; }
 
 /* -------------------------------------------------------------- Datenschutz */
 
@@ -163,6 +299,10 @@
   cursor: pointer;
 }
 
+/* Waehrend des Sendens gesperrt - sonst tippen Leute ein zweites Mal und die
+   Anfrage geht doppelt raus. */
+[data-anf-senden]:disabled { opacity: .6; cursor: default; }
+
 .anf__knopf:hover:not(:disabled) { opacity: .88; }
 .anf__knopf:disabled { opacity: .55; cursor: default; }
 
@@ -179,8 +319,17 @@
 }
 .anf__status:empty { display: none; }
 
-/* Es gibt keinen Erfolgszustand: ohne Endpunkt wird nichts gesendet.
-   Deshalb existiert hier bewusst kein data-art="erfolg". */
+/* AP-330: Den Erfolgszustand gibt es jetzt - aber nur, wenn am Formular ein
+   data-endpoint steht und die Funktion ihn bestaetigt hat. Ohne Endpunkt bleibt
+   es beim Hinweis; eine Erfolgsmeldung ohne Versand waere eine Luege. */
+.anf__status[data-art="erfolg"] {
+  padding: .875rem 1rem;
+  border: 1px solid var(--green-500);
+  border-radius: var(--anf-radius);
+  background-color: rgba(140, 198, 63, .12);
+  color: var(--anf-vg);
+}
+
 .anf__status[data-art="hinweis"] {
   padding: .875rem 1rem;
   border: 1px solid var(--anf-linie);
@@ -249,11 +398,19 @@
 
 /* --------------------------------------------------- Direktkontakt */
 
+/* AP-307: Feste zwei Spalten statt auto-fit. auto-fit bildet die Spaltenzahl aus
+   der CONTAINERBREITE, nicht aus der Zahl der Kacheln - eine Kachel mit
+   grid-column: 1 / -1 haette die leeren Spuren am Zusammenfallen gehindert und
+   die beiden oberen Kacheln auf 220px zusammengeschnuert. */
 .anf__kanaele {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin: 0 0 4px;
+}
+
+@media (max-width: 560px) {
+  .anf__kanaele { grid-template-columns: 1fr; }
 }
 
 /* Aufbau wie .footer-contact-link (styles.css:1527): Icon-Spalte fest,
@@ -265,15 +422,20 @@
   align-items: center;
   min-block-size: 60px;
   padding: 10px 12px;
-  border: 1px solid rgba(219,233,189,.2);
+  /* AP-313: derselbe Strich wie an den Eingabefeldern (.anf__feld input,
+     Z. 58 ff.) - dasselbe Token, kein zweiter Farbwert. */
+  border: 1px solid var(--anf-linie);
   border-radius: 14px;
   background: rgba(255,255,255,.055);
   text-decoration: none;
   transition: border-color .2s var(--ease), background .2s var(--ease);
 }
 
+/* Nur die Links reagieren. Die E-Mail-Kachel ist eine Beschriftung - eine
+   Flaeche, die auf Beruehrung antwortet, ohne etwas zu tun, ist ein falsches
+   Versprechen. */
 @media (hover: hover) and (pointer: fine) {
-  .anf__kanal:hover {
+  a.anf__kanal:hover {
     border-color: var(--green-500);
     background: rgba(140,198,63,.09);
   }
@@ -306,6 +468,34 @@
   background-color: #25D366;
   background-image: url("../img/icons/whatsapp-glyph-white.svg");
   background-size: 22px 22px;
+}
+
+/* AP-310: Die E-Mail-Kachel steht unter der Trennzeile und beschriftet den
+   Formularblock. Als eigenstaendiger Block braucht sie den Abstand selbst -
+   dieselben 1.125rem, mit denen .anf__feld (Z. 50) die Felder trennt. */
+/* AP-314: wieder Rasterkind - die Kachel spannt die volle Zeile unter den
+   beiden Direktkanaelen. Den Abstand macht das gap des Rasters. */
+.anf__kanal--mail { grid-column: 1 / -1; }
+
+/* Der Umschlag ist dasselbe Zeichen wie in der Kontaktliste der Sektion; als
+   Inline-SVG statt Hintergrundbild, damit er die Farbe der Kachel erbt. */
+.anf__kanal-icon--mail {
+  display: grid;
+  place-items: center;
+  background-color: var(--bg-dark);
+  color: var(--green-500);
+}
+
+.anf__kanal-icon--mail svg {
+  inline-size: 21px;
+  block-size: 21px;
+}
+
+/* AP-338: Mobil dieselbe Umschlagfarbe wie im Footer. */
+@media (max-width: 480px) {
+  .anf__kanal-icon--mail {
+    color: var(--mobile-logo-green);
+  }
 }
 
 .anf__kanal small {
@@ -344,94 +534,17 @@
   background: var(--line);
 }
 
-/* ------------------------------------------------------------ Chips */
-
-.anf__frage {
-  margin: 0 0 10px;
-  color: var(--ink);
-  font-size: .95rem;
-  font-weight: 800;
-}
-
-.anf__frage span { color: var(--ink-mute); font-weight: 400; }
-
-.anf__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0 0 20px;
-}
-
-/* Pillenform wie .btn (styles.css:236 ff.). Die Randstaerke bleibt in
-   beiden Zustaenden bei 2px, damit sich die Chipbreite beim Umschalten
-   nicht aendert und die Zeile nicht umbricht. */
-.anf__chip {
-  appearance: none;
-  padding: 9px 16px;
-  border: 2px solid var(--line);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ink-2);
-  font-family: var(--body);
-  font-size: .9rem;
-  font-weight: 600;
-  line-height: 1.2;
-  cursor: pointer;
-  transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .anf__chip:hover { border-color: var(--home-dark-accent); }
-}
-
-.anf__chip[aria-pressed="true"] {
-  background: var(--green-500);
-  border-color: var(--green-500);
-  color: var(--bg);
-}
-
-.anf__chip:focus-visible {
-  outline: 2px solid var(--green-500);
-  outline-offset: 3px;
-}
-
-/* Sechs Chips brechen im Fliessumbruch 3/2/1 - "Etwas anderes" stuende
-   allein in der letzten Zeile. Zwei feste Spalten teilen sechs ohne Rest,
-   unabhaengig von Textbreite und Systemschriftgroesse. */
-@media (max-width: 560px) {
-  .anf__chips {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .anf__chip {
-    padding: 10px 8px;
-    font-size: .85rem;
-    text-align: center;
-  }
-}
-
 /* ----------------------------------------------------- Freitextfeld */
 
-.anf__mehr {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 18px;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--home-dark-accent);
-  font-family: var(--body);
-  font-size: .9rem;
-  font-weight: 700;
-  cursor: pointer;
-}
+/* AP-353: Hier steht bewusst kein margin-bottom mehr, und an .anf__feld--foto
+   auch nicht. Beide nehmen die 1.125rem aus .anf__feld (Z. 52) - derselbe
+   Abstand, den jedes Feld des Formulars unter sich traegt. Damit hat die
+   Foto-Kachel oben und unten gleich viel Luft, ohne dass irgendwo eine Zahl
+   gepflegt werden muesste.
 
-.anf__mehr:focus-visible {
-  outline: 2px solid var(--green-500);
-  outline-offset: 3px;
-}
-
+   Bis AP-352 stand im 480er-Block ein margin-bottom: 26px. Das stammte aus
+   AP-239, als hinter dem Freitextfeld direkt der Absendeknopf kam und dort Luft
+   gebraucht wurde. Seit AP-350 steht die Foto-Kachel dazwischen. */
 .anf__feld--frei { margin-block-start: 0; }
 
 /* AP-250: Der Rechtshinweis klebte am Absendeknopf - gemessen 0px Abstand.
@@ -479,17 +592,6 @@
     margin-block: 28px;
   }
 
-  .private-contact .anf__frage {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 14px;
-    font-size: clamp(12px, 3.45vw, 14px);
-    font-weight: 400;
-    white-space: nowrap;
-  }
-
   .private-contact .anf__feld label {
     font-size: clamp(12px, 3.45vw, 14px);
   }
@@ -521,108 +623,13 @@
       0 12px 24px -24px rgba(0, 0, 0, .8);
   }
 
-  .private-contact .anf__chips {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 68px;
-    gap: 10px;
-    margin-bottom: 26px;
-  }
-
-  .private-contact .anf__chip {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 68px;
-    padding: 9px 12px;
-    border: 1px solid rgba(151, 206, 32, .19);
-    border-radius: 15px 5px 15px 5px;
-    background: rgba(255, 255, 255, .025);
-    color: var(--ink-2);
-    text-align: center;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .025);
-  }
-
-  .private-contact .anf__chip::after {
-    display: none;
-  }
-
-  .private-contact .anf__chip > strong,
-  .private-contact .anf__chip--consultation strong {
-    display: block;
-    color: var(--ink);
-    font-family: var(--body);
-    font-size: .86rem;
-    font-weight: 820;
-    line-height: 1.25;
-    text-wrap: balance;
-  }
-
-  .private-contact .anf__chip--service strong > span {
-    display: block;
-  }
-
-  .private-contact .anf__chip > small,
-  .private-contact .anf__chip--consultation small {
-    display: none;
-  }
-
-  .private-contact .anf__chip--consultation {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 30px auto;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    min-height: 68px;
-    padding: 9px 13px;
-    border-color: rgba(151, 206, 32, .3);
-    border-radius: 17px 6px 17px 6px;
-    background: rgba(49, 82, 0, .14);
-  }
-
-  .private-contact .anf__chip--consultation img {
-    display: block;
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-    filter: saturate(.92) drop-shadow(1px 2px 1px rgba(0, 0, 0, .34));
-    transform: rotate(-7deg);
-  }
-
-  .private-contact .anf__chip--consultation span {
-    text-align: left;
-  }
-
-  .private-contact .anf__chip--consultation strong {
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: .025em;
-  }
-
-  .private-contact .anf__chip[aria-pressed="true"] {
-    border-color: rgba(140, 198, 63, .22);
-    background: rgba(49, 82, 0, .12);
-    color: var(--ink);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, .035),
-      0 12px 24px -24px rgba(0, 0, 0, .8);
-  }
-
-  .private-contact .anf__chip[aria-pressed="true"] strong {
-    color: var(--home-lime);
-  }
-
   .private-contact .anf__kanal {
     grid-template-columns: 40px minmax(0, 1fr);
     gap: 11px;
     block-size: 64px;
     min-block-size: 64px;
     padding: 8px 12px;
-    border-color: rgba(86, 230, 7, .14);
+    border-color: rgba(151, 206, 32, .19);
     border-radius: 12px;
     background: transparent;
     box-sizing: border-box;
@@ -660,21 +667,26 @@
     white-space: nowrap;
   }
 
-  .private-contact .anf__mehr {
-    margin-bottom: 26px;
-    color: rgba(235, 239, 229, .8);
-    font-weight: 600;
+  .private-contact .anf__foto-kachel {
+    min-block-size: 58px;
+    padding: 10px 15px;
+    border-color: rgba(151, 206, 32, .19);
+    border-radius: 15px 5px 15px 5px;
   }
 
-  .private-contact .anf__mehr > span {
-    color: var(--coral);
+  /* Wie .private-contact a.anf__kanal:active weiter unten - beruehrt fuehlt sich
+     die Kachel an wie die drei Kacheln ueber dem Formular. */
+  .private-contact .anf__foto:active .anf__foto-kachel {
+    border-color: rgba(140, 198, 63, .22);
+    background-color: rgba(49, 82, 0, .12);
   }
 
-  .private-contact .anf__feld--frei {
-    margin-bottom: 26px;
+  .private-contact .anf__einwilligung {
+    margin-bottom: 22px;
+    font-size: .8rem;
   }
 
-  .private-contact .anf__kanal:active {
+  .private-contact a.anf__kanal:active {
     border-color: rgba(140, 198, 63, .22);
     background: rgba(49, 82, 0, .12);
     box-shadow:
@@ -795,12 +807,6 @@
 }
 
 @media (max-width: 340px) {
-  .private-contact .anf__chip > strong,
-  .private-contact .anf__chip--consultation strong {
-    font-size: .8rem;
-    line-height: 1.18;
-  }
-
   .private-contact .anf__kanal strong {
     font-size: .9rem;
   }

@@ -1,0 +1,39 @@
+{
+  "h1": "Nassschneidearbeiten",
+  "navLabel": "Nassschneidearbeiten",
+  "title": "Nassschneidearbeiten in Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Nassschnitt von Pflaster, Platten und Randsteinen in Herne, Bochum und Recklinghausen – staubarm, saubere Kanten, passgenaue Zuschnitte. Jetzt Termin anfragen.",
+  "serviceType": "Nassschneidearbeiten an Pflaster, Platten und Naturstein",
+  "intro": "Wir schneiden Pflastersteine, Platten, Randsteine und Blockstufen im Nassschnitt: Die Trennscheibe läuft unter Wasser, das den Staub bindet und die Scheibe kühlt. Das Ergebnis sind saubere, passgenaue Kanten – und deutlich weniger Staub auf dem Grundstück und beim Nachbarn. Für Flächen in Herne und Umgebung.",
+  "eignung": [
+    "Pflaster- und Plattenflächen, bei denen Anschlüsse und Randabschlüsse passgenau sitzen sollen.",
+    "Harte Natursteine, die sich trocken nur schlecht sauber trennen lassen.",
+    "Arbeiten in enger Bebauung, auf Terrassen und Balkonen, wo Staub zum Problem wird.",
+    "Zuschnitte um Schächte, Abläufe, Pfosten und Hausecken herum."
+  ],
+  "ablauf": [
+    { "titel": "Aufmaß und Anriss", "text": "Wir nehmen die Maße direkt an der Fläche ab und reißen den Schnitt an – erst dann wird geschnitten." },
+    { "titel": "Schnitt unter Wasser", "text": "Die Trennscheibe wird während des Schnitts mit Wasser geführt. Das bindet den Staub und hält die Schnittkante sauber." },
+    { "titel": "Schlamm aufnehmen", "text": "Der beim Schneiden entstehende Schlamm wird aufgenommen und ordnungsgemäß entsorgt, nicht in die Entwässerung gespült." },
+    { "titel": "Einbau", "text": "Die zugeschnittenen Steine werden eingesetzt, ausgerichtet und in die Fläche eingebunden." }
+  ],
+  "aufwand": [
+    { "titel": "Material und Härte", "text": "Beton, Keramik und harte Natursteine verhalten sich beim Schnitt unterschiedlich und brauchen unterschiedlich viel Zeit." },
+    { "titel": "Art und Zahl der Schnitte", "text": "Ein gerader Trennschnitt ist schnell gemacht. Gehrungen, Rundungen und Aussparungen sind aufwendiger." },
+    { "titel": "Zugang und Wasser", "text": "Wie gut die Schnittstelle erreichbar ist und ob Wasser vor Ort zur Verfügung steht, wirkt sich auf den Ablauf aus." },
+    { "titel": "Entsorgung", "text": "Schneidschlamm und Verschnitt müssen aufgenommen und abgefahren werden." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Nass oder trocken – der Schnitt ist derselbe.“", "text": "Beim Trockenschnitt von Beton und Naturstein entsteht feiner Quarzstaub, der tief in die Lunge gelangt. Wasser bindet ihn an der Entstehungsstelle. Das ist der eigentliche Grund für den Nassschnitt, nicht die Optik." },
+    { "titel": "„Der Schlamm kann in den Gully.“", "text": "Schneidschlamm enthält Feststoffe und ist stark alkalisch. Er gehört nicht in die Kanalisation, sondern muss aufgenommen und entsorgt werden." },
+    { "titel": "„Kanten kann man nachträglich noch anpassen.“", "text": "Ein zu knapp geschnittener Stein lässt sich nicht verlängern. Deshalb wird vorher angerissen und Stein für Stein gearbeitet, statt auf Verdacht zuzuschneiden." }
+  ],
+  "faq": [
+    { "frage": "Warum wird nass geschnitten und nicht trocken?", "antwort": "Beim Trennen von Beton, Keramik und Naturstein entsteht feiner Quarzstaub. Er ist gesundheitlich problematisch und legt sich außerdem über das ganze Grundstück und die Nachbarschaft. Wasser bindet diesen Staub genau dort, wo er entsteht. Nebenbei kühlt es die Scheibe, was die Schnittkante sauberer macht und das Werkzeug schont." },
+    { "frage": "Bleibt dabei viel Schmutz zurück?", "antwort": "Es entsteht Schneidschlamm – Wasser mit feinem Steinmehl. Der wird aufgenommen und abgefahren, statt ihn wegzuspülen. In die Kanalisation darf er nicht, weil er Feststoffe enthält und alkalisch ist. Verglichen mit dem Staub eines Trockenschnitts bleibt die Fläche danach deutlich sauberer." },
+    { "frage": "Können Sie auch nur die Zuschnitte übernehmen?", "antwort": "Sprechen Sie uns an. In der Regel schneiden wir im Zusammenhang mit den Pflaster- und Plattenarbeiten, die wir ausführen – dann sitzen Maß und Anschluss von vornherein. Ob ein reiner Zuschnitt sinnvoll ist, hängt vom Material, von der Menge und von der Baustelle ab. Das klären wir vorab am Telefon oder vor Ort." },
+    { "frage": "Geht das auch auf einer fertigen Terrasse?", "antwort": "Ja, mit entsprechender Vorbereitung. Die Fläche wird abgedeckt und der Schlamm aufgenommen, damit nichts in Fugen oder Abläufe gerät. Gerade auf fertigen Belägen und in enger Bebauung spielt der Nassschnitt seine Stärke aus: Es fliegt kein Staub über die ganze Anlage und in die Nachbargärten." }
+  ],
+  "nachbarn": ["terrasse-pflasterarbeiten", "gartengestaltung"],
+  "kundengruppe": ["privat"]
+}

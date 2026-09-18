@@ -3027,7 +3027,8 @@
 /* Die individuelle Buttonform wird ausserhalb der beiden freigegebenen
    iPhone-Ansichten ausgeblendet; dort bleibt der bestehende Desktop-CTA. */
 .private-process-updated .process-contact-cta__shape,
-.private-process-updated .process-contact-cta__frame {
+.private-process-updated .process-contact-cta__frame,
+.private-process-updated .process-contact-cta__halo {
   display: none;
 }
 
@@ -3223,7 +3224,8 @@
   }
 
   .private-process-updated .process-contact-cta__shape,
-  .private-process-updated .process-contact-cta__frame {
+  .private-process-updated .process-contact-cta__frame,
+  .private-process-updated .process-contact-cta__halo {
     display: block;
   }
 
@@ -3243,6 +3245,7 @@
     letter-spacing: .025em;
     text-transform: uppercase;
     white-space: nowrap;
+    padding-right: .2em;
   }
 
   /* Das breite Originalmotiv bekommt statt eines Kreises eine flache Kapsel.
@@ -3266,10 +3269,177 @@
   }
 
   .private-process-updated .process-contact-cta__arrow-image {
+    position: relative;
+    left: 0;
     display: block;
     width: 46px;
     height: auto;
     object-fit: contain;
+    transition: left .18s ease, transform .28s cubic-bezier(.22, .7, .25, 1);
+    will-change: transform;
+  }
+
+  /* Der breite Markenpfeil bleibt bei jeder Bewegung klar innerhalb seiner
+     Kapsel. Ein kurzer, weicher Impuls wiederholt sich mit einer bewussten
+     Ruhephase, sobald der CTA im Blickfeld angekommen ist. */
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
+    animation: process-contact-cta-arrow-rhythm 1.9s cubic-bezier(.22, .7, .25, 1) 2.5s infinite;
+  }
+
+  .private-process-updated:not(.is-process-complete) .process-contact-cta.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
+    animation: none;
+    transform: translateX(0);
+  }
+
+  @keyframes process-contact-cta-arrow-rhythm {
+    0%, 19%, 100% { transform: translateX(0); }
+    7% { transform: translateX(2px); }
+    12% { transform: translateX(-.35px); }
+    16% { transform: translateX(.55px); }
+  }
+
+  /* Der generische, rechteckige Puls wird fuer diesen CTA ausgeschaltet. */
+  .private-process-updated .process-contact-cta::before {
+    content: none;
+  }
+
+  /* Drei transparente Konturen ergeben einen weichen Halo entlang derselben
+     SVG-Geometrie wie Button und Rahmen. So folgt auch die obere rechte
+     Schattierung exakt der Diagonalen; animiert werden nur opacity/transform. */
+  .private-process-updated .process-contact-cta__halo {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: var(--home-lime);
+    stroke-linejoin: round;
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(.985, .922);
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+  }
+
+  .private-process-updated .process-contact-cta__halo-line--wide {
+    stroke-width: 12px;
+    opacity: .12;
+  }
+
+  .private-process-updated .process-contact-cta__halo-line--medium {
+    stroke-width: 7px;
+    opacity: .24;
+  }
+
+  .private-process-updated .process-contact-cta__halo-line--core {
+    stroke-width: 3px;
+    opacity: .48;
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing .process-contact-cta__halo {
+    animation:
+      process-contact-cta-arrival-halo 1.2s ease-out .35s 1,
+      process-contact-cta-rhythm-halo 1.9s linear 2.5s infinite;
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing {
+    animation:
+      process-contact-cta-arrival-breath 1.1s ease-in-out .35s 1,
+      process-contact-cta-rhythm-breath 1.9s linear 2.5s infinite;
+    backface-visibility: hidden;
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  @keyframes process-contact-cta-arrival-breath {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    46% { transform: translate3d(0, 0, 0) scale(1.018); }
+  }
+
+  @keyframes process-contact-cta-arrival-halo {
+    0% { opacity: 0; transform: translate3d(0, 0, 0) scale(.985, .922); }
+    32% { opacity: .72; transform: translate3d(0, 0, 0) scale(1.012, 1.063); }
+    100% { opacity: 0; transform: translate3d(0, 0, 0) scale(1.07, 1.367); }
+  }
+
+  /* Der wiederkehrende, etwas ruhigere Puls folgt nach dem ersten Auftritt
+     jedem Pfeilimpuls im gemeinsamen 1,9s-Rhythmus. */
+  @keyframes process-contact-cta-rhythm-breath {
+    0%, 58%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    7% { transform: translate3d(0, 0, 0) scale(1.012); }
+  }
+
+  @keyframes process-contact-cta-rhythm-halo {
+    0%, 63.2%, 100% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(.985, .922);
+    }
+    7% {
+      opacity: .54;
+      transform: translate3d(0, 0, 0) scale(1.009, 1.047);
+    }
+    63.1% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(1.055, 1.285);
+    }
+  }
+
+  /* Auf feinen Zeigegeraeten reagiert nicht mehr nur der Pfeil: Die Kapsel
+     bekommt ebenfalls eine dezente Kontur. So wirkt der Hover geschlossen,
+     ohne dass Pfeil oder Inhalt zum Rand wandern. */
+  @media (hover: hover) and (pointer: fine) {
+    .private-process-updated .process-contact-cta:hover :is(
+      .process-contact-cta__shape,
+      .mobile-proof-request__label,
+      .mobile-proof-request__arrow
+    ) {
+      transform: translate(2px, 2px);
+    }
+
+    .private-process-updated.is-process-complete .process-contact-cta:hover .mobile-proof-request__label {
+      transform: translate(40px, 2px);
+    }
+
+    .private-process-updated.is-process-complete .process-contact-cta:hover .process-contact-cta__flower {
+      transform: translate(2px, -50%) translateY(2px) scale(1);
+    }
+
+    .private-process-updated .process-contact-cta:hover .mobile-proof-request__arrow {
+      box-shadow:
+        inset 0 0 0 1px rgba(151, 206, 32, .34),
+        0 0 0 2px rgba(23, 25, 22, .08);
+    }
+
+    /* Hover pausiert alle drei Taktgeber gemeinsam. So bleiben Pfeil, Atem
+       und Halo auch nach dem Verlassen exakt in derselben 1,9-s-Phase. */
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing:hover,
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing:hover .process-contact-cta__halo,
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing:hover .process-contact-cta__arrow-image {
+      animation-play-state: paused;
+    }
+
+    .private-process-updated .process-contact-cta:hover .process-contact-cta__arrow-image {
+      left: 1.5px;
+    }
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing.is-pressed .mobile-proof-request__arrow :is(svg, img) {
+    animation: none;
+    transform: translateX(1px);
+  }
+
+  /* Beim Tippen hat die eindeutige Einrastbewegung Vorrang vor dem
+     Aufmerksamkeitspuls. Der Puls setzt erst nach dem Loslassen wieder ein. */
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing.is-pressed {
+    animation: none;
+    transform: none;
+  }
+
+  .private-process-updated.is-process-complete .process-contact-cta.is-pulsing.is-pressed .process-contact-cta__halo {
+    animation: none;
+    opacity: 0;
   }
 
   /* Am Ende des vorhandenen Zeitstrahls wechselt die Markenblume in den CTA.
@@ -3288,6 +3458,7 @@
     visibility: hidden;
     filter: none;
     transform: translateY(-50%) scale(.82);
+    transition: transform .12s var(--ease);
     pointer-events: none;
   }
 
@@ -3314,6 +3485,10 @@
     transform: translate(44px, 6px);
   }
 
+  .private-process-updated.is-process-complete .process-contact-cta:is(:active, .is-pressed) .process-contact-cta__flower {
+    transform: translate(6px, calc(-50% + 6px)) scale(1);
+  }
+
   .private-process-updated .process-marker__leaf {
     display: none;
   }
@@ -3323,7 +3498,7 @@
     height: 23px;
     object-fit: contain;
     filter: saturate(.94) drop-shadow(1px 2px 1px rgba(0, 0, 0, .36));
-    transform: rotate(-8deg);
+    transform: translateX(.9px) rotate(-8deg);
     transform-origin: 50% 62%;
   }
   .private-process-updated .step-node__text {
@@ -3385,9 +3560,25 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .private-process-updated .process-contact-cta .mobile-proof-request__label {
+    .private-process-updated .process-contact-cta :is(
+      .mobile-proof-request__label,
+      .process-contact-cta__arrow-image
+    ) {
       transition: none;
     }
+
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
+      animation: none;
+    }
+
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing {
+      animation: none;
+    }
+
+    .private-process-updated.is-process-complete .process-contact-cta.is-pulsing .process-contact-cta__halo {
+      animation: none;
+    }
+
   }
 }
 
@@ -3477,15 +3668,15 @@
 }
 .private-proof-google svg { flex: 0 0 auto; }
 .private-proof-stars {
-  color: #ffbf24;
+  color: var(--yellow);
   font-size: 1.02rem;
   letter-spacing: .08em;
   line-height: 1;
   white-space: nowrap;
   text-shadow:
-    0 0 4px rgba(255, 191, 36, .9),
-    0 0 10px rgba(255, 191, 36, .6),
-    0 0 20px rgba(255, 191, 36, .35);
+    0 0 4px rgba(242, 226, 12, .9),
+    0 0 10px rgba(242, 226, 12, .6),
+    0 0 20px rgba(242, 226, 12, .35);
 }
 .private-proof-rating > strong {
   color: #fff;
@@ -3580,13 +3771,6 @@
   font-size: var(--type-section-title-size);
   line-height: 1.05;
   letter-spacing: -.028em;
-}
-.private-proof-section-head p {
-  max-width: 62ch;
-  margin: 16px auto 0;
-  color: var(--ink-2);
-  font-size: var(--type-section-lead-size);
-  line-height: 1.62;
 }
 .private-proof-summary h3 {
   max-width: 12ch;
@@ -3965,7 +4149,6 @@
 @media (max-width:520px) {
   .private-proof-section-head { margin-bottom: var(--space-section-head); text-align: left; }
   .private-proof-section-head h2 { margin-inline: 0; font-size: var(--type-section-title-size); }
-  .private-proof-section-head p { margin-top: var(--space-title-subtext); font-size: var(--type-section-lead-size); }
   .private-proof-summary h3 {
     margin-top: 15px;
     font-size: clamp(1.78rem,8.1vw,2.1rem);
@@ -3998,6 +4181,42 @@
   .private-review-nav { gap: 7px; }
   .private-review-nav button { min-width: 40px; min-height: 40px; padding: 7px; }
   .private-review-autoplay { min-height: 40px; padding: 7px 13px; }
+}
+
+/* AP-348: Freigegebene Variante G fuer die sechs mobilen Sektionsueberschriften.
+   Baloo 2 und mittig; AP-349 entfernt nur die Kursivstellung. Die vorhandene
+   lokale Schrift wird wiederverwendet; Text, H2-IDs und Sektionsabstaende bleiben.
+   Gemeinsame Textbreite statt der bisherigen 17-/18-ch-Begrenzungen. */
+@media (max-width:480px) {
+  html.home-theme-dark h2.maik-section-title {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 31px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: -.015em;
+    text-align: center;
+    text-wrap: balance;
+    color: var(--home-on-dark);
+    -webkit-text-stroke: 0;
+    paint-order: normal;
+  }
+
+  html.home-theme-dark h2.maik-section-title::after {
+    content: none;
+    display: none;
+  }
+}
+
+@media (max-width:360px) {
+  html.home-theme-dark h2.maik-section-title {
+    font-size: 28px;
+  }
 }
 
 /* Kompakte FAQ-Gruppen ausschließlich auf der Privatkundenseite */
@@ -4445,7 +4664,7 @@
    dem zentrierten Titel. */
 @media (max-width:480px) {
   .private-request-paths {
-    padding: 3.625rem 0 3.5rem;
+    padding: 4.5rem 0;
     border-color: rgba(151, 206, 32, .12);
   }
 
@@ -4472,8 +4691,8 @@
 
   .iphone-service-directory {
     display: grid;
-    gap: 0.875rem;
-    margin-top: 1.75rem;
+    gap: 1.75rem;
+    margin-top: 3rem;
   }
 
   .iphone-service-feature,
@@ -4590,14 +4809,15 @@
     line-height: 1.2;
   }
 
-  .iphone-service-feature__meta b,
-  .iphone-service-card__title > b {
+  /* AP-317: .iphone-service-card__title > b entfaellt - die Zeilen tragen
+     keine Bluete mehr. Die Regel bleibt fuer .iphone-service-feature__meta b. */
+  .iphone-service-feature__meta b {
     position: relative;
     flex: 0 0 auto;
     width: 1.5rem;
     height: 1.5rem;
     overflow: hidden;
-    background: url("../img/icons/rohdich-blume.png") center / contain no-repeat;
+    background: url("../img/icons/maik-rohdich-bluete-original.png?v=20260913b") center / contain no-repeat;
     color: transparent;
     font-size: 0;
     filter: saturate(1.02) drop-shadow(0 0 5px rgba(242, 226, 12, .16));
@@ -4605,95 +4825,180 @@
   }
 
   .iphone-service-feature__meta b::before,
-  .iphone-service-card__title > b::before,
-  .iphone-service-feature__meta b::after,
-  .iphone-service-card__title > b::after {
+  .iphone-service-feature__meta b::after {
     content: none;
   }
 
   .iphone-service-feature--emergency {
-    border-color: rgba(255, 227, 0, .34);
-    background:
-      radial-gradient(circle at 94% 110%, rgba(255, 227, 0, .1), transparent 38%),
-      linear-gradient(145deg, #262a20 0%, #1c211a 100%);
+    min-height: 0;
+    border-color: rgba(151, 206, 32, .24);
+    border-radius: 18px 5px 18px 5px;
+    background: linear-gradient(145deg, #232720 0%, #1c201a 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .035),
+      0 12px 24px -24px rgba(0, 0, 0, .78);
   }
 
-  .iphone-service-feature--emergency .iphone-service-feature__media::after {
-    background: linear-gradient(90deg, #86ba17 0%, #b7d51e 62%, #ffe300 100%);
+  .iphone-service-feature--emergency .iphone-service-feature__body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .625rem;
+    align-content: center;
+    align-items: start;
+    min-height: 7.5rem;
+    padding: 1.25rem 6.25rem 1.25rem 1.125rem;
   }
 
-  .iphone-service-feature--advice {
-    min-height: 13.3125rem;
-  }
-
-  .iphone-service-feature--advice .iphone-service-feature__body {
-    grid-template-columns: minmax(0, 1fr) auto;
-    min-height: 5.1875rem;
-  }
-
-  .iphone-service-feature--advice .iphone-service-feature__body > strong {
+  .iphone-service-feature--emergency .iphone-service-feature__eyebrow {
     grid-column: 1;
-    align-self: center;
+    color: var(--ink-mute);
+    font-size: .68rem;
+    letter-spacing: .075em;
+    opacity: .84;
   }
 
-  .iphone-service-feature--advice .iphone-service-feature__meta {
-    grid-column: 2;
-    align-self: center;
-    justify-content: flex-end;
+  .iphone-service-feature--emergency .iphone-service-feature__body > strong {
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: 1.0625rem;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: .015em;
+    line-height: 1.16;
+    text-transform: none;
+  }
+
+  .iphone-service-feature--emergency .iphone-service-feature__meta {
+    grid-column: 1;
+    justify-content: flex-start;
     margin-top: 0;
+    color: var(--mobile-logo-green, #56e607);
+    font-size: .78rem;
   }
 
-  .iphone-service-grid {
+  .iphone-service-feature--emergency .iphone-service-feature__meta b {
+    position: absolute;
+    top: 50%;
+    right: 1.125rem;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 1fr;
-    gap: 0.75rem;
+    place-items: center;
+    width: 3.875rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    background: #0e100d;
+    filter: none;
+    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .2);
+    transform: translateY(-50%);
+  }
+
+  .iphone-service-feature--emergency .iphone-service-feature__meta b img {
+    display: block;
+    width: 2.875rem;
+    height: auto;
+    object-fit: contain;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+
+  /* AP-317: A-Z-Liste statt Kachelraster. Eine Spalte, kein Abstand zwischen
+     den Zeilen - getrennt wird nur beim Buchstabenwechsel. */
+  .iphone-service-grid {
+    display: block;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .iphone-service-grid > li {
+  .iphone-service-row {
     min-width: 0;
   }
 
+  /* Linie nur oberhalb einer neuen Buchstabengruppe, nicht ueber der ersten. */
+  .iphone-service-row--start {
+    border-top: 1px solid rgba(255, 255, 255, .12);
+  }
+
+  .iphone-service-grid > .iphone-service-row:first-child {
+    border-top: 0;
+  }
+
+  /* AP-317: Zeile statt Kachel. Spalten: Buchstabe | Name | Foto.
+     Kein Rahmen, kein Hintergrund - die Zeilen sollen als Liste lesen, nicht
+     als Kacheln.
+     AP-320: Das Foto steht auf 88px und damit fest in Pixeln, nicht in rem.
+     Die Wurzel-Schriftgroesse ist unter 480px fluid; in rem waere das Foto je
+     nach Geraet 79 bis 105px gross geworden, nie die gewuenschten 88.
+     AP-331: Der vertikale Abstand wird um 20 Prozent reduziert: .75rem -> .6rem.
+     Die Zeile gibt dem Foto oben und unten je .6rem Luft. Die Mindesthoehe
+     folgt der festen Bildhoehe und diesem responsiven vertikalen Abstand. */
   .iphone-service-card {
-    height: 14.375rem;
-    min-height: 14.375rem;
+    display: grid;
+    grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
+    align-items: center;
+    column-gap: 0.75rem;
+    height: auto;
+    min-height: calc(88px + 1.2rem);
+    padding: 0.6rem 0;
     border: 0;
-    border-radius: 18px 5px 18px 5px;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  /* Handschriftliche Anfangsbuchstaben des Auftraggebers. Die quadratische
+     Buehne haelt alle unterschiedlichen Glyphen optisch gleich gross und
+     exakt auf derselben Achse. */
+  .iphone-service-card__letter {
+    grid-column: 1;
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .iphone-service-card__letter img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Bei Eintraegen mit Unterzeile folgt der Buchstabe optisch der
+     Hauptbezeichnung statt der Mitte des gesamten Textblocks. */
+  .iphone-service-card__letter--title-line {
+    transform: translateY(-0.55rem);
   }
 
   .iphone-service-card__media {
-    height: 11.5rem;
-    margin-bottom: -0.75rem;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 0.75rem));
+    grid-column: 3;
+    width: 88px;
+    height: 88px;
+    margin-bottom: 0;
+    border-radius: 12px 4px 12px 4px;
+    clip-path: none;
   }
 
-  .iphone-service-card--explained .iphone-service-card__media {
-    height: 9.875rem;
-  }
-
+  /* AP-317: Der Name steht in der mittleren Spalte, linksbuendig. */
   .iphone-service-card__title {
-    display: flex;
-    flex: 1 1 auto;
-    gap: 0.375rem;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 3.25rem;
-    padding: 0.5625rem 0.5rem 0.5625rem 0.625rem;
+    display: grid;
+    grid-column: 2;
+    gap: 2px;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
   }
 
   .iphone-service-card__title strong {
     min-width: 0;
     color: var(--ink);
-    font-family: var(--display);
-    font-size: .875rem;
-    font-weight: 800;
-    letter-spacing: -.018em;
-    line-height: 1.08;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: .9375rem;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: .015em;
+    line-height: 1.22;
+    text-transform: none;
     overflow-wrap: normal;
-    text-wrap: balance;
+    text-wrap: pretty;
   }
 
   .iphone-service-card__title--explained {
@@ -4718,7 +5023,7 @@
     justify-content: space-between;
     max-width: none;
     min-height: 4rem;
-    margin: 0 auto;
+    margin: 1.25rem auto 0;
     text-align: left;
   }
 
@@ -4728,15 +5033,20 @@
     outline-offset: 3px;
   }
 
-  .iphone-service-feature:active,
-  .iphone-service-card:active {
+  .iphone-service-feature--emergency:focus-visible {
+    outline-color: var(--home-lime, #97ce20);
+  }
+
+  .iphone-service-feature:active {
     border-color: rgba(151, 206, 32, .8);
     box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .28);
     transform: scale(.985);
   }
 
-  .iphone-service-card:active {
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  /* AP-317: Die Zeile hat keinen Rahmen mehr - Rueckmeldung nur ueber den
+     Namen und das leichte Zoomen des Fotos (Regel darunter). */
+  .iphone-service-card:active .iphone-service-card__title strong {
+    color: var(--home-lime, #97ce20);
   }
 
   .iphone-service-feature:active img,
@@ -4745,9 +5055,17 @@
     transform: scale(1.035);
   }
 
-  .iphone-service-feature:active .iphone-service-feature__meta b,
-  .iphone-service-card:active .iphone-service-card__title > b {
+  .iphone-service-feature:active .iphone-service-feature__meta b {
     transform: translateX(2px);
+  }
+
+  .iphone-service-feature--emergency:active .iphone-service-feature__meta b {
+    transform: translateY(-50%);
+  }
+
+  .iphone-service-feature--emergency:active .iphone-service-feature__meta b img {
+    filter: none;
+    transform: none;
   }
 }
 
@@ -4862,6 +5180,10 @@
   }
 
   .private-review-carousel.has-review-swipe .private-review-excerpt p {
+    /* Reines Weiss statt des Papiertons --ink. Die Regel steht bewusst hier im
+       480px-Block: ausserhalb davon liegt das Zitat auf der hellen Karte, wo
+       --ink dunkel ist (Zeile 3616) - weiss waere dort unlesbar. */
+    color: #fff;
     font-size: .94rem;
     line-height: 1.52;
   }
@@ -4963,27 +5285,23 @@
   }
 }
 
-/* AP-209: Die beiden bereits freigegebenen Hintergrundtöne aus Willkommen
-   (#1B1E19) und Über uns (#171916) führen als ruhiger Rhythmus durch die
-   vollständige iPhone-Seite. Inhaltlich verbundene Bereiche teilen eine Fläche.
-   AP-289: Der Grundton der Seite ist seither #1B1E19 - siehe Regel unten. */
+/* AP-350: Der Hintergrund direkt nach dem Hero (#1B1E19) gilt durchgehend
+   für die mobile Startseite. Er ersetzt den Wechsel zwischen den beiden
+   Abschnittstönen aus AP-209; Karten behalten ihre eigenen Oberflächen. */
 .private-process-updated .step-card__copy--iphone {
   display: none;
 }
 
 @media (max-width: 480px) {
-  /* AP-289: Grundton auf den Ton der FAQ-Sektion. Die FAQ steht direkt ueber
-     dem Footer; damit laeuft ihre Flaeche ohne Kante hinter der Footer-Kachel
-     weiter. Die Kachel selbst bleibt var(--bg-dark) = #0E100D (AP-287).
-     Bewusst auch html und nicht nur body: der Streifen UNTER der Kachel haengt
-     an html - die 12px margin-bottom des Footers fallen aus dem Body-Kasten
-     heraus (Margin Collapsing), body endet an der Kachelunterkante.
-     Sichtbar ist dieser Grundton ausschliesslich in den drei Streifen um die
-     Kachel - main laeuft lueckenlos, alle acht Sektionen darin sind randbuendig
-     und haben eine eigene Hintergrundfarbe. */
+  /* Auch html färben: Der untere Abstand der eingerückten Footer-Kachel
+     liegt durch Margin Collapsing außerhalb des Body-Kastens (AP-289). */
+  html.home-theme-dark {
+    --home-page-background: #1b1e19;
+  }
+
   html.home-theme-dark,
   html.home-theme-dark body {
-    background: #1b1e19;
+    background: var(--home-page-background);
   }
 
   html.home-theme-dark .private-contact::before {
@@ -4992,31 +5310,18 @@
 
   html.home-theme-dark :is(
     .mobile-social-proof,
+    .mr-ueber,
     .private-request-paths,
+    .private-process-updated,
     .private-proof-bento,
+    .private-contact,
     .private-faq
   ) {
-    background: #1b1e19;
+    background: var(--home-page-background);
   }
 
-  /* AP-287: .site-footer gehoert NICHT in diese Gruppe. Er ist kein Abschnitt
-     des Seiteninhalts, sondern der Seitenfuss - und als einziges Element der
-     Mobilansicht eingerueckt (12px) und gerundet (24px, styles.css:1652). Mit
-     #171916 haette er exakt die Farbe der Seite dahinter, die Kachel waere
-     unsichtbar. Er behaelt deshalb var(--bg-dark) = #0E100D, wie auf allen
-     37 Unterseiten. */
-  html.home-theme-dark :is(
-    .mr-ueber,
-    .private-process-updated,
-    .private-contact
-  ) {
-    background: #171916;
-  }
-
-  /* AP-287: ebenfalls ohne .site-footer. Auf einer gerundeten Kachel zeichnet
-     eine inset-Linie einen schwachen Bogen ueber die oberen Ecken - derselbe
-     Grund, aus dem styles.css:1645 dort schon den border-top abschaltet.
-     Die Unterseiten haben box-shadow: none. */
+  /* AP-351: Die Abschnitte gehen ohne Rand oder Schattenlinie ineinander über.
+     Die Trennung erfolgt ausschließlich durch den Abstand. */
   html.home-theme-dark :is(
     .mr-ueber,
     .private-request-paths,
@@ -5025,8 +5330,8 @@
     .private-contact,
     .private-faq
   ) {
-    border-color: rgba(151,206,32,.075);
-    box-shadow: inset 0 1px 0 rgba(151,206,32,.045);
+    border-block: 0;
+    box-shadow: none;
   }
 
   html.home-theme-dark .private-process-updated .step-card h3 {
@@ -5052,5 +5357,239 @@
 
   html.home-theme-dark .private-process-updated .step-card__copy--iphone {
     display: inline;
+  }
+}
+
+/* AP-351: Gemeinsamer Abstandsmaßstab ab Über uns, nur auf Handy-Breiten.
+   8px verbinden Beschriftung und Inhalt, 24px trennen wiederholte Elemente,
+   40px führen vom Abschnittskopf zum Inhalt und vom Inhalt zum CTA.
+   AP-353: Zwei 40px-Abschnittsränder ergeben 80px zwischen den Sektionen.
+   Vor Über uns wird nur der abschließende Leerraum nach dem CTA verkürzt. */
+@media (max-width: 480px) {
+  html.home-theme-dark :is(
+    .mr-ueber,
+    .private-request-paths,
+    .private-process-updated,
+    .private-proof-bento,
+    .private-contact,
+    .private-faq
+  ) {
+    --home-space-copy: 8px;
+    --home-space-lead: 16px;
+    --home-space-list: 24px;
+    --home-space-block: 40px;
+    --home-space-feature: 48px;
+    --home-space-section: 40px;
+    padding-block: var(--home-space-section);
+  }
+
+  /* AP-353: Auch vom Gartenwunsch-CTA zu Über uns insgesamt 80px. */
+  html.home-theme-dark .mobile-social-proof {
+    padding-bottom: 40px;
+  }
+
+  html.home-theme-dark .mr-ueber__kopf {
+    margin-bottom: var(--home-space-block);
+  }
+
+  html.home-theme-dark .mr-ueber__mustertext {
+    margin-top: var(--home-space-feature);
+    gap: var(--home-space-copy);
+  }
+
+  html.home-theme-dark .mr-ueber__split {
+    margin-top: var(--home-space-block);
+    row-gap: var(--home-space-block);
+  }
+
+  html.home-theme-dark .mr-ueber__punkte {
+    gap: 32px;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte li {
+    gap: var(--home-space-copy);
+  }
+
+  html.home-theme-dark .mr-ueber__karte {
+    /* AP-352: Überschrift und Karte gemeinsam weiter vom Über-uns-CTA abrücken. */
+    margin-top: calc(2 * var(--home-space-block));
+    padding-block: 0;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-focus {
+    color: var(--mobile-logo-green, #56e607);
+  }
+
+  html.home-theme-dark .iphone-service-directory {
+    margin-top: var(--home-space-block);
+    gap: 32px;
+  }
+
+  /* 88px-Fotos plus zweimal 12px: 24px Abstand zwischen den Bildern. */
+  html.home-theme-dark .iphone-service-card {
+    min-height: 112px;
+    padding-block: 12px;
+  }
+
+  html.home-theme-dark .iphone-service-contact-cta {
+    /* Der Rasterabstand trägt bereits 32px zum gemeinsamen 40px-Abstand bei. */
+    margin-top: var(--home-space-copy);
+  }
+
+  html.home-theme-dark .private-process-updated .b2b-process-intro {
+    gap: var(--home-space-lead);
+    margin-bottom: var(--home-space-block);
+  }
+
+  /* AP-355: Anfragehinweis auf derselben Mittelachse wie die Überschrift. */
+  html.home-theme-dark .private-process-updated .b2b-process-reassurance {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  html.home-theme-dark .private-process-updated .process-track {
+    gap: var(--home-space-list);
+  }
+
+  html.home-theme-dark .private-process-updated .b2b-process-end-actions {
+    margin-top: var(--home-space-block);
+  }
+
+  html.home-theme-dark :is(.private-proof-section-head, .private-faq-head) {
+    margin-bottom: var(--home-space-block);
+  }
+
+  html.home-theme-dark .private-contact-layout {
+    margin-top: var(--home-space-block);
+  }
+
+  html.home-theme-dark .private-contact .anf__kanaele {
+    gap: 12px;
+  }
+
+  html.home-theme-dark .private-contact .anf__oder {
+    margin-block: 32px;
+  }
+
+  html.home-theme-dark .private-contact .anf__feld {
+    gap: var(--home-space-copy);
+    margin-bottom: var(--home-space-list);
+  }
+
+  html.home-theme-dark .private-contact .anf__feld--frei {
+    margin-bottom: var(--home-space-block);
+  }
+
+  html.home-theme-dark .private-contact .anf__rechtliches {
+    margin-block: var(--home-space-list) 0;
+  }
+
+  /* Der Abstand von den Fragen zum Footer gehört nicht zu den sechs Übergängen. */
+  html.home-theme-dark .private-faq {
+    padding-bottom: 56px;
+  }
+
+  html.home-theme-dark .private-faq-groups {
+    gap: var(--home-space-list);
+  }
+
+  html.home-theme-dark .private-faq .private-faq-list {
+    gap: var(--home-space-copy);
+  }
+
+  html.home-theme-dark .private-faq .faq-more--gruppen {
+    margin-top: 32px;
+  }
+
+  html.home-theme-dark .private-faq .faq-more--gruppen > .private-faq-groups {
+    margin-top: var(--home-space-list);
+  }
+
+  html.home-theme-dark .site-footer .footer-social-iphone {
+    margin-top: 16px;
+  }
+
+  html.home-theme-dark .site-footer .footer-bottom {
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+}
+
+/* AP-354: Dezente Flächenhierarchie auf dem gemeinsamen mobilen Hintergrund.
+   Die Tonwerte betreffen nur bestehende Kacheln ab Über uns. */
+@media (max-width: 480px) {
+  html.home-theme-dark :is(
+    .private-request-paths,
+    .private-process-updated,
+    .private-proof-bento,
+    .private-contact,
+    .private-faq
+  ) {
+    --home-surface-low: #22271f;
+    --home-surface-card: #252b22;
+    --home-surface-high: #2b3327;
+    --home-surface-border: rgba(183, 203, 160, .18);
+  }
+
+  html.home-theme-dark .iphone-service-feature--emergency {
+    background: linear-gradient(145deg, #2b3226, var(--home-surface-card));
+  }
+
+  html.home-theme-dark .private-process-updated .step-card {
+    background: var(--home-surface-card);
+  }
+
+  html.home-theme-dark .private-proof-bento .private-review-carousel.has-review-swipe {
+    background: var(--home-surface-card);
+    border-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-review-carousel.has-review-swipe .private-review-carousel-head {
+    background: var(--home-surface-high);
+    border-bottom-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-review-carousel.has-review-swipe .private-review-swipe-controls {
+    background: var(--home-surface-low);
+    border-top-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-contact .anf__kanal {
+    background: var(--home-surface-card);
+    border-color: var(--home-surface-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  }
+
+  html.home-theme-dark .private-contact .anf__feld :is(input, textarea) {
+    background: var(--home-surface-low);
+    border-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-contact .anf__feld :is(input, textarea):focus-visible {
+    background: var(--home-surface-card);
+    border-color: rgba(140, 198, 63, .65);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  }
+
+  html.home-theme-dark .private-contact a.anf__kanal:active {
+    background: var(--home-surface-high);
+    border-color: rgba(140, 198, 63, .5);
+  }
+
+  html.home-theme-dark .private-faq .private-faq-list details {
+    background: var(--home-surface-low);
+    border-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-faq .private-faq-list details[open] {
+    background: var(--home-surface-card);
+    border-color: rgba(183, 203, 160, .3);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    html.home-theme-dark .private-contact a.anf__kanal:hover {
+      background: var(--home-surface-high);
+      border-color: rgba(140, 198, 63, .5);
+    }
   }
 }

@@ -1,0 +1,229 @@
+/* AP-339 - Handy-Kacheln im Footer: Kontaktformular, WhatsApp/Instagram und die
+   Erreichbarkeitszeile.
+
+   Diese Regeln standen bis AP-339 in home-dark.css und galten damit nur fuer die
+   Startseite. Seit die Ueber-uns-Seite denselben Footer bekommt, waeren sie dort
+   doppelt gepflegt - deshalb diese eigene Datei. Sie wird von index.html und von
+   ueber-uns/index.html geladen, und zwar NACH styles.css: die Regel
+   ".site-footer { background: #171916 }" weiter unten hat nur eine Klasse und
+   gewinnt gegen styles.css:1655 allein ueber die Dateireihenfolge. Alle uebrigen
+   Selektoren tragen zwei Klassen und stechen styles.css schon dadurch.
+
+   Wer den Footer einer weiteren Seite so haben will, traegt sie in
+   HANDY_FOOTER_SEITEN (.github/scripts/lib/render.mjs) ein UND bindet diese Datei
+   dort ein. Ohne die Datei bleiben beide Bausteine auf display:none - das Markup
+   waere da, man saehe es nur nicht. */
+
+.footer-contact-link--iphone-form {
+  display: none;
+}
+
+.footer-social-iphone {
+  display: none;
+}
+
+/* AP-215/AP-224: Auf Handy-Breiten entfallen Schnellzugriff und Einsatzgebiet.
+   Kontakt und rechtliche Links bleiben stehen. */
+@media (max-width: 480px) {
+  /* Auf dem iPhone greift die Footer-Kachel den Grundton des mobilen Headers
+     auf. Die Regel bleibt bewusst lokal; Tablet und Desktop behalten --bg-dark. */
+  .site-footer {
+    background: #171916;
+  }
+
+  .site-footer .footer-navigation,
+  .site-footer .footer-coverage {
+    display: none;
+  }
+
+  .site-footer .brand-footer {
+    order: -1;
+    width: min(18.75rem, 95%);
+    margin: 0 0 1rem;
+  }
+
+  .site-footer .footer-brandline {
+    display: none;
+  }
+
+  .site-footer .footer-brand-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .site-footer .footer-contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer .footer-contact-link--whatsapp {
+    display: none;
+  }
+
+  .site-footer .footer-contact-link--iphone-form {
+    display: grid;
+  }
+
+  .site-footer .footer-contact-link {
+    grid-template-columns: 1.875rem minmax(0, 1fr);
+    gap: 0.4375rem;
+    padding-inline: 0.4375rem;
+    border-color: rgba(86, 230, 7, .14);
+    background: transparent;
+  }
+
+  .site-footer .footer-contact-icon {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+
+  .site-footer .footer-contact-link--iphone-form .footer-contact-icon,
+  .site-footer .footer-contact-link[href^="mailto:"] .footer-contact-icon {
+    color: var(--mobile-logo-green);
+    background: rgba(5, 10, 5, .58);
+  }
+
+  .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon {
+    background: rgba(5, 10, 5, .58);
+  }
+
+  .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon svg {
+    display: none;
+  }
+
+  .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon::before {
+    content: "";
+    width: 1.4375rem;
+    height: 1.4375rem;
+    background: url("../img/icons/phone-header-mobile.png?v=20260902a") center / contain no-repeat;
+  }
+
+  .site-footer .footer-contact-link strong {
+    font-size: .73rem;
+  }
+
+  .site-footer .footer-contact-link--iphone-form strong {
+    font-size: .67rem;
+    letter-spacing: -.01em;
+    white-space: nowrap;
+  }
+
+  .site-footer .footer-contact-link--iphone-form small {
+    font-size: .52rem;
+    letter-spacing: .055em;
+  }
+
+  .site-footer .footer-contact-link[href^="tel:"] strong,
+  .site-footer .footer-contact-link[href^="mailto:"] strong {
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: nowrap;
+  }
+
+  /* AP-323: Zwei Zeilen statt einer. Die Erreichbarkeitszeile steht jetzt OBEN
+     und ueber die ganze Breite, darunter die beiden Kacheln. Die dritte Spalte
+     bleibt im Raster, damit die Zeile die volle Containerbreite bekommt - sie
+     war vorher auf gut 200px eingezwaengt und stand bei 360px auf Kante. */
+  .site-footer .footer-social-iphone {
+    display: grid;
+    /* Tippziele bleiben absolut: 44px ist die Mindestgroesse nach WCAG 2.5.8.
+       Mitskaliert waeren es auf einem 320px-Geraet nur noch 35px. */
+    grid-template-columns: 44px 44px minmax(0, 1fr);
+    grid-template-rows: auto minmax(44px, auto);
+    align-items: center;
+    justify-content: start;
+    column-gap: 2px;
+    row-gap: 8px;
+    margin-top: 0.875rem;
+  }
+
+  .site-footer .footer-social-link {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    /* AP-321: Kein Padding mehr - die Kachel misst jetzt 42px und laesst in der
+       44px-Tippflaeche nur noch 1px Luft. */
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  /* Nicht mehr :first-child - das ist seit AP-323 der Absatz. Die WhatsApp-
+     Kachel ist das einzige <a> in diesem Block, Instagram ein <span>. */
+  .site-footer a.footer-social-link {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .site-footer .footer-social-link--instagram {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* AP-321: 42px statt 2.5rem - fest in Pixeln, weil die Wurzel-Schriftgroesse
+     unter 480px fluid ist und die Kachel sonst je nach Geraet zwischen 36 und
+     48px schwankte. 42 ist das Maximum, das die 44px-Tippflaeche und damit die
+     Rasterspalten unangetastet laesst: die dritte Spalte mit der
+     Erreichbarkeitszeile steht bei 360px exakt auf Kante, jeder Pixel mehr
+     wuerde sie herausbrechen lassen. Sichtbar bleiben 4px zwischen den
+     beiden Kacheln. */
+  .site-footer .footer-social-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    color: #fff;
+  }
+
+  .site-footer .footer-social-icon--whatsapp {
+    background: #25d366;
+  }
+
+  .site-footer .footer-social-icon--whatsapp img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .site-footer .footer-social-icon--instagram {
+    background: radial-gradient(circle at 30% 105%, #feda75 0 20%, #fa7e1e 34%, #d62976 57%, #962fbf 76%, #4f5bd5 100%);
+  }
+
+  .site-footer .footer-social-icon--instagram svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .site-footer a.footer-social-link:focus-visible {
+    outline: 2px solid var(--mobile-logo-green);
+    outline-offset: 2px;
+  }
+
+  .site-footer .footer-social-availability {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    align-self: center;
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    color: rgba(235, 239, 229, .72);
+    font-size: clamp(.59rem, 2.4vw, .625rem);
+    line-height: 1.48;
+    letter-spacing: -.012em;
+  }
+
+  .site-footer .footer-social-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .site-footer .footer-social-dot {
+    color: inherit;
+    font-weight: inherit;
+  }
+
+  .site-footer .footer-hours {
+    display: none;
+  }
+}

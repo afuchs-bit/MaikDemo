@@ -55,14 +55,17 @@ const SOURCES = [
   // aendern, nur die Datei in _src ersetzen und build-images neu laufen
   // lassen - die Breitenliste passt sich per fit() selbst an.
   { src: 'assets/img/_src/ueber-team.jpg', dir: 'assets/img/ueber', name: 'ueber-team' },
-  // Warmbild der Ueber-uns-Sektion.
-  // AP-238: Quelle gegen die weite Ansicht getauscht (1068x1070). Die vorige war
-  // ein enger Ausschnitt um den Hund, in dem vom Garten fast nichts zu sehen war.
-  // Kein crop-Feld: die Quelle ist praktisch quadratisch (Verhaeltnis 0,998) und
-  // die Kachel ist es auch - es gibt nichts zu schneiden. Nur 480/960: die Kachel
-  // wird hoechstens 277 px breit dargestellt.
+  // AP-310/AP-319: Der Eintrag 'ueber-hund' war entfallen, weil das Foto auf
+  // keiner Seite mehr stand. AP-327 holt es zurueck - es steht jetzt im Fotoband
+  // der Ueber-uns-Unterseite. Die fuenf Ableitungen sind byte-genau aus der
+  // Historie zurueckgeholt (git show 9a5354f^:...), nicht neu gerechnet; dieser
+  // Eintrag sorgt dafuer, dass ein spaeterer Lauf sie wieder erzeugt.
   { src: 'assets/img/_src/ueber-hund.jpg', dir: 'assets/img/ueber', name: 'ueber-hund', widths: [480, 960] },
-  { src: 'assets/img/_src/ueber-hebeaktion.jpg', dir: 'assets/img/ueber', name: 'ueber-hebeaktion' },
+  // AP-326: 'ueber-hebeaktion' ist nach build-hero-images.mjs umgezogen. Das
+  // Original in _src ist nur 560 px breit (AP-127); dieselbe Aufnahme liegt
+  // als 1440er Master IM Repo unter assets/img/gewerbe/partner/. Bliebe der
+  // Eintrag hier stehen, wuerde ein lokaler Lauf dieses Skripts die 960er
+  // Derivate wieder auf 480 zurueckschreiben.
   // AP-217: Standbild des Mustergarten-Videos, dient als poster und traegt die
   // Medienkachel. Quelle ist ein Einzelbild aus mustergarten.mp4 (960x725) - auf
   // diesem Rechner liegt kein ffmpeg, der Frame kam fertig aus dem Entwurf.

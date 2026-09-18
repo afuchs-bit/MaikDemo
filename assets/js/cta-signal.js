@@ -1,11 +1,10 @@
-// AP-290/AP-291/AP-301: Signal und Einrasten der mobilen Haupt-CTAs (C2).
-// Der Puls laeuft einmal, sobald ein CTA gut sichtbar im Bild ist, und danach
-// nie wieder - endlose Bewegung neben Inhalt waere ein Verstoss gegen WCAG 2.2.2.
-// (Bis AP-297 waren es drei Durchlaeufe, seit AP-298 einer.)
+// Signal und Einrasten der mobilen Haupt-CTAs. Welche Pulsfolge ein CTA nutzt,
+// bestimmt seine eigene CSS-Variante; dieser Baustein setzt nur den sichtbaren
+// Zustand und die gemeinsame Rueckmeldung am Finger.
 (() => {
   'use strict';
 
-  const ctas = document.querySelectorAll('.mobile-proof-request');
+  const ctas = document.querySelectorAll('.mobile-proof-request, .maik-cta--attention, .maik-cta--gallery');
   if (!ctas.length) return;
 
   // AP-301: Rueckmeldung am Finger, nicht am Klick.
@@ -52,8 +51,14 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-pulsing');
-      observer.unobserve(entry.target);
+      const syncGroup = entry.target.getAttribute('data-cta-sync-group');
+      const targets = syncGroup
+        ? Array.from(document.querySelectorAll('[data-cta-sync-group]')).filter((target) => target.getAttribute('data-cta-sync-group') === syncGroup)
+        : [entry.target];
+      targets.forEach((target) => {
+        target.classList.add('is-pulsing');
+        observer.unobserve(target);
+      });
     });
   }, { threshold: 0.95, rootMargin: '0px 0px -20% 0px' });
 

@@ -43,6 +43,18 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   mit ihr als Gruppe optisch vertikal zentriert. Keine generative Veränderung.
   SHA-256:
   `F96D95894E72E1A7A31371CD6418545BD696D778A2035EDC218A61B1EF4400B6`.
+- `assets/img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png`
+  und `assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced-full-flower.png`
+  – mobile Headervarianten mit der vom Auftraggeber gelieferten vollständigen
+  Blumengruppe. Nur die Blumengruppe wurde mechanisch ausgetauscht und vom
+  weißen Hintergrund befreit; Wortmarken, Format und übrige Logoelemente
+  blieben unverändert. SHA-256:
+  `296DA7D5AFD5A30D3CA63CADC2C76B32A2D689D4ABA1A561B4DFB0480E6BA6F0`
+  und `06D46156A5FF3FE6AEE165E3D70123C149B0D3DDDA9CFA1B1F9A1C2E9704DCC3`.
+- `assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png` – die
+  gelieferte vollständige Header-Blumengruppe, ausschließlich mechanisch vom
+  weißen Hintergrund und zwei fremden Randpixelspalten befreit. SHA-256:
+  `8708DEB1FB616A7EED53AA24E325DDFEB1AE57D3EC31FDD3B17C5B4ADB437FE9`.
 - `assets/img/icons/phone-header-mobile.png` – mechanisch aus der vom Auftraggeber
   gelieferten Datei `Design ohne Titel.png` freigestellt, quadratisch beschnitten und
   einheitlich auf das Wortmarken-Grün `#56E607` gesetzt. Die Form wurde nicht verändert.
@@ -76,6 +88,11 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   `assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png` isoliert.
   Form und Farben wurden nicht generativ verändert. SHA-256:
   `6D8489157F6CBA0265A864BC55E78AAB6AAE5458BF4A1D6814AA0099354397DA`.
+- `assets/img/icons/maik-rohdich-bluete-original.png` – 526 × 430 px große,
+  transparente Einzelblüte aus der vom Auftraggeber gelieferten Datei
+  `Maik-Rohdich-Bluete-Ausschnitt.png`. Sie ersetzt die zuvor verwendete
+  Einzelblüte an allen sichtbaren Einsätzen. Unverändert übernommen. SHA-256:
+  `AD31F382E4C157D41EB3379873F5814911F15274D81F1E78127B58AAB8B2470C`.
 - **Foto im oberen Homepage-Hero:** Aus der vom Auftraggeber bereitgestellten
   Datei `maik-rohdich-hero-aufschrift-kraeftigere-farben.png` mechanisch und ohne Beschnitt,
   Filter oder generative Veränderung abgeleitet. Original: 1023 × 1537 px,
@@ -184,3 +201,190 @@ pro RGB-Vorlage. Der Auftrag lautete: Schachbrett vollständig entfernen, echte 
 Transparenz erzeugen, sämtliche Zahlenformen und Proportionen erhalten, flächig
 #56E607 verwenden, eng mit Sicherheitsrand zuschneiden. Beide Versuche lieferten RGB
 ohne Alphakanal. Daher wurden die gelieferten Originale für die finalen Derivate verwendet.
+
+## Mobile Leistungsbuchstaben F und O (AP-330, 18.09.2026)
+
+Vom Auftraggeber gelieferte transparente PNG-Grafiken, unverändert übernommen:
+
+- `assets/img/icons/leistung-f.png` – 1254 × 1254 px.
+  Original: `c32ed128-5280-44f5-ab21-30b28d71321c.png`.
+- `assets/img/icons/leistung-o.png` – 1254 × 1254 px.
+  Original: `39925e25-52f4-4197-9b3c-bcf998a971c9.png`.
+
+Beide verwenden dieselbe quadratische CSS-Bühne von 1,35 rem wie die bisherigen
+Buchstabengrafiken. Deren Dateien und Größenregeln bleiben unverändert.
+
+## Weitere mobile Leistungsfotos (AP-334, 18.09.2026)
+
+Quelle: [vom Auftraggeber freigegebener Drive-Ordner](https://drive.google.com/drive/folders/1F9BMKg1AfKgpQC493XWx1wiaxEPYq2gI).
+Alle sechs Motive wurden im Drive-Viewer visuell geprüft. Lokal gesichert sind die
+von Drive gerenderten JPEG-Vorschauen unter
+`assets/img/_src/mobile-<Web-Dateistamm>-drive-preview.jpg` (ignorierter Quellordner).
+Diese sind keine Originaldateien; insbesondere wurden die HEIC-Aufnahmen über die
+JPEG-Vorschau verarbeitet, da der lokale HEIC-Decoder das Original nicht dekodiert.
+Die Webseite lädt ausschließlich die lokalen Derivate und benötigt keinen Drive-Zugriff.
+
+| Leistung / Web-Dateistamm | Drive-Datei | Drive-ID | JPEG-Größe | Quadratischer Ausschnitt |
+|---|---|---|---|---|
+| Baumkontrolle / `baumkontrolle` | `3267655C-68C4-4166-89E5-B485B9C473D0.JPG` | `1LhQcdKy8zg4oCG9Xh_Ct78-jFKHr1oE7` | 864 × 1080 | unten; Hand und geschädigte Baumstelle |
+| Nassschneidearbeiten / `nassschneidearbeiten` | `IMG_4966.HEIC` | `10eiYkIjIuICjPai-l3MjYZsJ5bdd1OC7` | 1440 × 1080 | mittig; Arbeit an der wassergekühlten Steinsäge |
+| Objekt- & Grünflächenpflege / `objekt-gruenflaechenpflege` | `8a6eb6fa-982d-403d-ac2d-f54ed94a781d.JPG` | `1m4dl1Ez8ja2TWbdLGST7WVsGsbKHp6-Q` | 810 × 1080 | oben; Grünanlage mit Rasen und Hecken am Gebäude |
+| Rodungsarbeiten / `rodungsarbeiten` | `43C74B26-0831-4D49-88F7-F90DA4126C3D.JPG` | `1tg-xJPyOawTrUms7EKLwERUaJ6zoN1gJ` | 864 × 1080 | unten; Bagger mit gerodetem Wurzelstock |
+| Verkehrssicherheit herstellen / `verkehrssicherheit` | `IMG_1997.JPG` | `1iHg5r8TxKnelPOz0DIo76m7XAIuLPkjq` | 1440 × 1080 | rechts; Warnschild vor Baumarbeiten an der Straße |
+| Vermessungs- & Lasertechnik / `vermessung-lasertechnik` | `IMG_2700.HEIC` | `1nHPgC3w25pS3w7AV0G50akjSXThJ29DQ` | 810 × 1080 | unten; Rotationslaser im Vordergrund |
+
+Derivate: `assets/img/leistungen-mobile/<Web-Dateistamm>-{480,640}.{avif,webp}`,
+jeweils quadratisch, ohne Verzerrung oder inhaltliche Retusche. Verarbeitung mit
+Sharp: automatische Orientierung, `resize(size, size, {fit: 'cover', position})`,
+Positionen entsprechend der Tabelle (`south`, `centre`, `north`, `south`, `east`,
+`south`), AVIF Qualität 50 / effort 4, WebP Qualität 74 / effort 6, ohne EXIF.
+Die bestehenden 88 × 88 px großen Bildflächen und alle Abstandsregeln bleiben gleich.
+
+## Produktfoto Rohdichs Grubengold (AP-335 bis AP-337, 18.09.2026)
+
+Vom Auftraggeber geliefertes Foto: `WhatsApp Image 2026-09-16 at 22.01.10.jpeg`,
+1200 × 1600 px. Unverändert lokal gesichert als
+`assets/img/_src/mobile-rohdichs-grubengold-user-20260918.jpg` (ignorierter Quellordner).
+Es ersetzt das bisherige Gartenfoto ausschließlich in der mobilen Leistungsübersicht.
+
+Auf Wunsch des Auftraggebers füllt das Foto die quadratische Kachel aus und zeigt
+möglichst viel vom Original: volle Bildbreite, 1200 × 1200 px ab x=0, y=160.
+Das erhält 75 % der ursprünglichen Bildhöhe. Die obere Produktbeschriftung und
+„PROFI-LINE“ bleiben vollständig im Ausschnitt. Keine Verzerrung oder inhaltliche Retusche.
+Derivate: `assets/img/leistungen-mobile/rohdichs-grubengold-{480,640}.{avif,webp}`,
+quadratisch in 480 und 640 px, Sharp mit automatischer Orientierung, Ausschnitt
+und proportionaler Skalierung; AVIF Qualität 50 / effort 4, WebP Qualität 74 /
+effort 6, ohne EXIF. `?v=20260918c` an allen
+Bildquellen dieser Zeile verhindert die Anzeige des alten Ausschnitts aus dem Browsercache.
+Die bisherige `contain`-Sonderregel entfällt; es gelten dieselben Bildregeln wie
+für die übrigen Kacheln.
+Bildfläche (88 × 88 px), Zeilenhöhe und Abstände bleiben unverändert.
+
+## Mobile Einsatzgebietskarte (AP-341, 18.09.2026)
+
+Die bestehende NRW-Geometrie in `index.html` wird weiterverwendet. Quelle laut
+ursprünglichem SVG-Nachweis: Verwaltungsgebiete VG2500, Stand 01.01.2026,
+© GeoBasis-DE / BKG, dl-de/by-2-0; vereinfachter Landesumriss in Web-Mercator.
+Keine neue Rastergrafik, kein externer Kartendienst und keine Änderung am Umriss.
+
+Nur bis einschließlich 480 px: Karte maximal 280 px breit (vorher 224 px mit
+200-px-Höhendeckel), gedeckte grüngraue Fläche #596351, bestehendes Markengrün
+#8CC63F als Kontur. Ein statischer roter Punkt #D86A56 mit heller Kontur ersetzt
+den Standort-Pin. Die anderen beiden Standort-Icons entfallen in dieser Ansicht.
+Die Ortsnamen haben bei 265–280 px Kartenbreite etwa 12–13 px Schriftgröße.
+Führungslinien verbinden die versetzten Beschriftungen mit den Ortspositionen:
+
+- Herne: unveränderte vorhandene SVG-Position (324,9; 217,7).
+- Gelsenkirchen: 51,511111111111° N, 7,1005555555556° O,
+  [Koordinaten der Stadt](https://de.wikipedia.org/wiki/Gelsenkirchen),
+  projiziert auf (192,0; 264,0).
+- Bochum: 51° 28′ 56″ N, 7° 13′ 31″ O,
+  [Flächenschwerpunkt laut Stadt Bochum](https://www.bochum.de/Bochumer-Fakten-/-Infos),
+  projiziert auf (324,3; 313,1).
+
+Es gilt die bestehende Projektion:
+`x = 60783.81 * rad(lon) - 7340.83`,
+`y = -60626.24 * ln(tan(PI/4 + rad(lat)/2)) + 64065.70`.
+
+Der mobile Kartennachweis ist ein natives, aufklappbares `details`-Element,
+mit sichtbarem BKG-Kurznachweis im Titel. Er enthält verlinkte Angaben zum
+Bereitsteller, zur [Datenlizenz](https://www.govdata.de/dl-de/by-2-0), zur
+[Datensatzdokumentation](https://sg.geodatenzentrum.de/web_public/gdz/dokumentation/deu/vg2500.pdf)
+und zu den [Datenquellen](https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/datenquellen_vg_nuts.pdf),
+sowie den Veränderungshinweis. Tablet und Desktop behalten die bisherige
+Karte, Beschriftung und Quellenzeile.
+
+### Überarbeitung der mobilen Ortsnamen und des Punkts (AP-342, 18.09.2026)
+
+Auf Wunsch des Auftraggebers entfallen die Führungslinien. Köln, Gelsenkirchen,
+Bochum, Recklinghausen und Castrop-Rauxel stehen direkt innerhalb der Kartenfläche.
+Herne bleibt als Sitz neben dem einzigen Standortpunkt beschriftet. Die Namen sind
+für die Lesbarkeit bewusst grob angeordnet; ihre Textpositionen sind keine präzisen
+Ortskoordinaten. NRW-Geometrie, Kartenfarbe, Größe und Abstände bleiben erhalten.
+Der Punkt bleibt bei (324,9; 217,7), verwendet jetzt denselben Farbtoken `--coral`
+(#E22219) wie „Route planen“ und hat keine Kontur.
+
+### Feinere mobile Kartenbeschriftung (AP-343, 18.09.2026)
+
+Nunito bleibt erhalten. Die Ortsnamen verwenden 164 statt 176 SVG-Einheiten
+Schriftgröße (rund 7 % kleiner; bei 265–280 px Kartenbreite etwa 11,2–11,8 px),
+Schriftgewicht 500 und Hellgrau #D9DDD5. Die dunkle Schriftkontur entfällt.
+Der berechnete Kontrast zum unveränderten Kartengrund #596351 liegt bei 4,58:1.
+Herne wird nur noch mit Gewicht 600 hervorgehoben. Der Punkt bleibt #E22219
+ohne Rand, Radius 48 statt 55 SVG-Einheiten, etwa 6,6–6,9 px Durchmesser.
+
+Die Beschriftungen im Ruhrgebiet rücken näher zusammen, bleiben zur Vermeidung
+von Überlagerungen bewusst versetzt. Köln steht bei (42; 1225), gerundet aus der
+bestehenden Projektion und den von der Stadt veröffentlichten Koordinaten
+des Kölner Doms: 50° 56′ 33,2607″ N, 6° 57′ 32,3136″ O,
+[Statistisches Jahrbuch Köln 2024, Stadtgebiet und Flächennutzung](https://www.stadt-koeln.de/mediaasset/content/pdf15/statistik-jahrbuch/statistisches_jahrbuch_2024_koeln__kap_0_stadtgebiet_und_flaechennutzung.pdf).
+Diese Änderungen betreffen ausschließlich die mobile SVG-Beschriftung und
+die bis 480 px begrenzten Stilregeln.
+
+### Dunklere mobile Ortsnamen (AP-344, 18.09.2026)
+
+Auf Wunsch des Auftraggebers verwenden die mobilen Städtenamen jetzt das
+dunklere Grau #C2C7BF statt #D9DDD5. Schriftgröße, Gewicht, Positionen,
+Kartenfläche und Standortpunkt bleiben unverändert.
+
+### Mobile Karte mit regionaler Orientierung (AP-345, 18.09.2026)
+
+Die vom Auftraggeber freigegebene Variante B wird bis einschließlich 480 px
+übernommen: Auf der Karte stehen „Ruhrgebiet“, „Herne“ und „Köln“. Zusätzlich
+nutzt „Paderborn“ die freie östliche Kartenfläche als geografische Orientierung.
+Die vorhandenen NRW-Grenzen, Flächenfarbe, Kontur und der einzige rote
+Standortpunkt in Herne bleiben erhalten. Unter „In ganz NRW für Sie da.“ steht
+die Ortsliste mit Gelsenkirchen, Bochum, Recklinghausen, Castrop-Rauxel und Köln
+in drei Zeilen, gefolgt vom bestehenden Deutschlandweit-Hinweis.
+
+Quelle für Paderborn: [Geographische Lage, Stadt Paderborn](https://www.paderborn.de/rathaus-service/stadtportrait/109010100000056021.php),
+abgerufen am 18.09.2026. Die Stadt veröffentlicht für ihre Kernstadt
+51° 43′ N und 8° 45′ O. Mit der bestehenden Web-Mercator-Projektion ergibt
+sich (1941,8; −86,2), im SVG auf (1942; −86) gerundet. Der Ortsname kennzeichnet
+keinen weiteren Unternehmenssitz. Köln und Herne behalten ihre vorhandenen
+Positionen; „Ruhrgebiet“ ist eine bewusst angenäherte Regionsbeschriftung.
+
+Die Städte verwenden Nunito, 176 SVG-Einheiten (etwa 12–13 px bei 265–280 px
+Kartenbreite), Gewicht 500 und #C2C7BF; Herne Gewicht 600. Die Regionsbezeichnung
+verwendet 205 Einheiten, Gewicht 400, 7 Einheiten Laufweite und #D0D5CB.
+Die Ortsliste nutzt die vorhandene gedeckte Textfarbe, 14 px Schriftgröße und
+1,75 Zeilenhöhe. Alle neuen Stilregeln sind auf Mobil begrenzt; die Ortsliste
+und die mobile SVG-Gruppe sind auf Tablet und Desktop ausgeblendet.
+
+### Reduzierte mobile Kartenlegende (AP-346, 18.09.2026)
+
+Die vom Auftraggeber freigegebene Textvariante C ersetzt die dauerhaft sichtbare
+dreizeilige Ortsliste. Direkt unter der unveränderten Karte stehen weiterhin
+„In ganz NRW für Sie da.“ und „Auf Anfrage auch deutschlandweit.“ mit 6 px Abstand.
+Nunito, 16 px / Gewicht 700 für die Hauptaussage und 14 px für den Zusatz entsprechen
+dem freigegebenen Entwurf; diese Größen bleiben auch auf schmalen Handys lesbar.
+
+Darunter teilen sich „Orte ansehen“ und „© BKG“ eine dezente Zeile in der bestehenden
+gedeckten Textfarbe, mit 12 px Schriftgröße und 16 px Abstand. Beide sind native
+`details`-Elemente mit mindestens 44 px hohen, per Tastatur bedienbaren Titeln.
+Beim Öffnen erhält der jeweilige Detailblock die volle Breite. Die Ortsnamen bleiben
+vollständig als kompakter Text erhalten; der Kartennachweis behält alle bisherigen
+Quellenlinks, Lizenzangaben und Veränderungshinweise. „© BKG“ trägt zusätzlich die
+zugängliche Beschriftung „Kartennachweis: © BKG“.
+
+Nur die mobilen Regeln bis einschließlich 480 px und die zugehörige Legende ändern
+sich. Kartenposition, SVG-Geometrie, Beschriftungen, Standortpunkt und die Darstellung
+auf Tablet und Desktop bleiben erhalten. Keine neuen Bildassets oder Kartendaten.
+
+### Dickere Original-Icons für „Über uns“ (AP-347, 18.09.2026)
+
+Quelle: drei vom Auftraggeber am 18.09.2026 gelieferte PNG-Dateien. Die Originale
+werden unverändert als transparente RGBA-Bilder mit jeweils 1254 × 1254 px übernommen:
+
+- `30a6bcfb-7a4f-409a-9fcd-efb2cd32acbf.png` →
+  `assets/img/icons/maik-rohdich-ehrliche-einschaetzung.png` (Sprechblasen).
+- `d32f9025-e827-4da8-8c52-23c82a61c179.png` →
+  `assets/img/icons/maik-rohdich-termintreue.png` (Kalender mit Haken).
+- `483e6e8d-eac4-452b-9272-e85929dab27c.png` →
+  `assets/img/icons/maik-rohdich-partnerschaft.png` (verbundene Glieder).
+
+Die neuen Strichstärken und das Grün stammen vollständig aus den gelieferten Bildern.
+Keine Nachzeichnung, Umfärbung oder Änderung der Bilddateien. Die bisherigen mobilen
+34-px-Iconfelder, Skalierungen, Ausrichtung und Textabstände bleiben erhalten.
+Die Bild-URLs auf der Startseite erhalten einen neuen Versionsparameter gegen alte
+Browser-Caches. Auf Tablet und Desktop bleiben die bisherigen SVG-Icons sichtbar.

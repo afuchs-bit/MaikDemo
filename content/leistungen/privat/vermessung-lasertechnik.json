@@ -1,0 +1,39 @@
+{
+  "h1": "Vermessungs- und Lasertechnik",
+  "navLabel": "Vermessungs- & Lasertechnik",
+  "title": "Vermessungs- & Lasertechnik im Garten – Herne, Bochum & Recklinghausen | Maik Rohdich",
+  "metaDescription": "Höhen einmessen, Gefälle festlegen, Fluchten abstecken: Vermessungs- und Lasertechnik für Terrassen, Pflaster und Hanglagen in Herne und Umgebung. Jetzt anfragen.",
+  "serviceType": "Höhenaufnahme, Gefälleplanung und Absteckung im Garten- und Landschaftsbau",
+  "intro": "Bevor die erste Fläche aufgebaut wird, muss klar sein, wo sie liegt und wie sie fällt. Wir nehmen die Höhen des Grundstücks auf, legen Gefälle und Anschlusshöhen fest und stecken die Fluchten ab. Das ist die Arbeit, die man später nicht sieht – und die darüber entscheidet, ob Wasser abläuft und Kanten fluchten. Für Grundstücke in Herne und Umgebung.",
+  "eignung": [
+    "Terrassen, Wege und Einfahrten, auf denen kein Wasser stehen bleiben soll.",
+    "Grundstücke in Hanglage, bei denen Höhen und Stufen aufgehen müssen.",
+    "Anschlüsse an Haustür, Keller, Bordstein oder Nachbargrundstück.",
+    "Teiche, Poolumfelder und Entwässerungen, bei denen es auf wenige Zentimeter ankommt."
+  ],
+  "ablauf": [
+    { "titel": "Bestand aufnehmen", "text": "Wir messen die vorhandenen Höhen ein: Hausanschluss, Türschwellen, Bordstein, Geländeverlauf und bestehende Abläufe." },
+    { "titel": "Sollhöhen festlegen", "text": "Daraus ergeben sich Oberkanten und Gefälle – vom Gebäude weg und auf einen Punkt hin, an dem das Wasser bleiben darf." },
+    { "titel": "Abstecken", "text": "Fluchten, Höhen und Kanten werden auf dem Grundstück markiert, sodass jeder Arbeitsschritt eine Bezugsgröße hat." },
+    { "titel": "Während der Ausführung prüfen", "text": "Beim Aufbau wird nachgemessen. So fällt eine Abweichung auf, solange sie noch ohne Aufwand zu korrigieren ist." }
+  ],
+  "aufwand": [
+    { "titel": "Größe und Zuschnitt der Fläche", "text": "Eine rechteckige Terrasse ist schnell eingemessen, ein verwinkeltes Grundstück mit mehreren Ebenen nicht." },
+    { "titel": "Höhenunterschiede", "text": "Je stärker das Gelände fällt, desto mehr Bezugspunkte und Zwischenhöhen sind nötig." },
+    { "titel": "Zahl der Anschlusspunkte", "text": "Jede Tür, jeder Bordstein und jeder vorhandene Ablauf ist eine feste Höhe, an der die Planung aufgehen muss." },
+    { "titel": "Sichtverhältnisse", "text": "Bewuchs, Mauern und Ecken unterbrechen die Sichtachsen und machen zusätzliche Standpunkte nötig." }
+  ],
+  "fehleinschaetzungen": [
+    { "titel": "„Augenmaß und Wasserwaage reichen.“", "text": "Auf kurzer Strecke oft ja. Über eine ganze Terrasse addieren sich kleine Abweichungen, und am Ende steht das Wasser an der Hauswand statt am Ablauf." },
+    { "titel": "„Gefälle braucht nur die Terrasse.“", "text": "Auch Wege, Einfahrten und Stellplätze müssen Wasser ableiten. Eine gepflasterte Fläche ohne definiertes Gefälle wird zur Pfütze, sobald es länger regnet." },
+    { "titel": "„Einmal einmessen genügt.“", "text": "Beim Aufbau verschiebt sich etwas, Material setzt sich. Wer erst am Ende misst, stellt Abweichungen fest, wenn die Fläche schon liegt." }
+  ],
+  "faq": [
+    { "frage": "Warum ist das Einmessen so wichtig?", "antwort": "Fast jeder Mangel an einer fertigen Fläche geht auf Höhen zurück: Wasser läuft zum Haus statt davon weg, eine Stufe fällt zu hoch aus, die Terrasse schließt nicht an die Türschwelle an. Diese Fehler lassen sich hinterher nur durch Rückbau beheben. Vorher gemessen, kosten sie eine Stunde Arbeit." },
+    { "frage": "Was wird konkret gemessen?", "antwort": "Zuerst die festen Punkte, an denen sich nichts ändern lässt – Türschwellen, Kellerfenster, Bordstein, vorhandene Abläufe und Grenzen. Dann der Geländeverlauf dazwischen. Daraus ergibt sich, welche Oberkante die neue Fläche bekommt, in welche Richtung sie fällt und wo das Wasser hingeht." },
+    { "frage": "Gilt das auch für kleine Flächen?", "antwort": "Je kleiner die Fläche, desto eher genügt die Wasserwaage. Sobald Anschlusshöhen zusammenkommen – Haus, Weg, Bordstein – oder das Gelände fällt, lohnt das Einmessen auch bei wenigen Quadratmetern. Wir sagen Ihnen bei der Begehung, ob es in Ihrem Fall nötig ist." },
+    { "frage": "Ersetzt das eine amtliche Vermessung?", "antwort": "Nein. Wir messen für die Ausführung: Höhen, Gefälle und Fluchten der Anlage, die entstehen soll. Grenzen rechtsverbindlich festzustellen ist Aufgabe eines öffentlich bestellten Vermessungsingenieurs. Wenn der Grenzverlauf unklar ist, sagen wir das und Sie klären es dort, bevor gebaut wird." }
+  ],
+  "nachbarn": ["terrasse-pflasterarbeiten", "gartengestaltung"],
+  "kundengruppe": ["privat"]
+}

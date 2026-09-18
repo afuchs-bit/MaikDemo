@@ -81,7 +81,7 @@ html.home-theme-dark .home-hero-stack > .hero--gate-empty {
 }
 
 /* Die neuen Textvarianten gehoeren ausschliesslich zur mobilen Bildbuehne. */
-html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .mobile-hero-cta-stack, .mobile-hero-link, .header-instagram) {
+html.home-theme-dark :is(.mobile-hero-kicker, .gate-title-mobile, .mobile-hero-cta-stack, .mobile-hero-link, .header-instagram, .hero-proof-instagram) {
   display: none;
 }
 
@@ -194,8 +194,12 @@ html.home-theme-dark .section-faq {
   background: var(--bg);
 }
 
-html.home-theme-dark .fork,
-html.home-theme-dark .site-footer {
+/* AP-339: .site-footer stand hier mit demselben Wert, den styles.css:1426 ohnehin
+   setzt - eine Verdopplung ohne Wirkung. Sie hatte aber eine: mit zwei Klassen und
+   einem Element stach sie die Handy-Regel aus footer-kontakt.css, die den Footer
+   unter 481px auf #171916 hebt. Auf der Startseite sah man deshalb den dunkleren
+   Grundton. Der Selektor ist ersatzlos entfallen. */
+html.home-theme-dark .fork {
   background: var(--bg-dark);
 }
 
@@ -225,6 +229,23 @@ html.home-theme-dark .submenu-toggle {
   color: var(--ink-2);
 }
 
+/* AP-344: Der Aufklapp-Knopf ist rund (styles.css: border-radius 999px). Der
+   Sammel-Fokusring weiter unten (3px gelb, 3px abgesetzt) wurde dadurch zu einem
+   gelben Kreis, der frei um den Knopf schwebte - im Handymenue die auffaelligste
+   Flaeche der ganzen Karte. Jetzt liegt er auf der Knopfkante statt 3px davor, ist
+   2 statt 3px stark und traegt --ink-mute, die gedaempfteste Schriftfarbe der
+   Karte (7,50:1 auf dem Kartengrund #20241D - deutlich ueber den 3:1, die ein
+   Fokusring braucht). Er bleibt: Ohne ihn saehe man bei Tastaturbedienung nicht
+   mehr, wo man steht. Beim Tippen mit dem Finger erscheint er ohnehin nicht -
+   :focus-visible greift dort nicht, und das JS fokussiert den Knopf nicht.
+   Spezifitaet: Die Sammelregel steht in :where(), das nichts beitraegt - dort
+   zaehlen nur html + .home-theme-dark + :focus-visible. Zwei Klassen und eine
+   Pseudoklasse reichen also. */
+html.home-theme-dark .submenu-toggle:focus-visible {
+  outline: 2px solid var(--ink-mute);
+  outline-offset: 0;
+}
+
 html.home-theme-dark .call-row:hover,
 html.home-theme-dark .nav-submenu a:hover,
 html.home-theme-dark .menu a:hover,
@@ -243,14 +264,6 @@ html.home-theme-dark .nav-toggle {
 
 html.home-theme-dark .nav-toggle span {
   background: var(--ink);
-}
-
-html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(1) {
-  background: var(--green-50);
-}
-
-html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(2) {
-  background: var(--bg-soft);
 }
 
 /* Hero: Fotos bleiben unangetastet, nur Flaechen, Grenzen und Schleier reagieren. */
@@ -407,8 +420,11 @@ html.home-theme-dark .proof-map .m-inner {
   stroke: var(--home-lime);
 }
 
+/* AP-310: Der Umriss folgt den uebrigen Kartenebenen auf --home-lime; die Karte
+   ist damit in einem Ton. Die Ebenen bleiben ueber Strichstaerke (16 gegen 6,6)
+   und Deckkraft unterscheidbar. #8CC63F auf --bg sind 8,8:1. */
 html.home-theme-dark .proof-map .m-outline {
-  stroke: var(--home-dark-accent);
+  stroke: var(--home-lime);
 }
 
 html.home-theme-dark .section-proof .proof-map .m-node circle {
@@ -526,17 +542,11 @@ html.home-theme-dark .btn-ghost:hover {
   background: rgba(255,255,255,.08);
 }
 
-html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(1) {
-  background: var(--bg-soft);
-}
-
-html.home-theme-dark .nav-submenu--welten .nav-submenu-group:nth-child(2) {
-  background: var(--bg-hero);
-}
-
-html.home-theme-dark .nav-submenu--welten .nav-submenu-group a:hover {
-  background: var(--bg-elev);
-}
+/* AP-344: Hier standen die Flaechen der beiden Leistungsgruppen und der dazu
+   passende, aufgehellte Zeilen-Hover. Die Gruppenflaeche ist entfallen - seit
+   AP-342 gibt es nur noch eine Gruppe, ein abgesetztes Panel im Panel hatte
+   damit keinen Zweck mehr. Der Sonder-Hover ging mit: Er war nur noetig, weil
+   der Basis-Hover (--bg-soft) auf der Flaeche unsichtbar gewesen waere. */
 
 html.home-theme-dark .gate-door {
   border-color: var(--line);
@@ -1053,13 +1063,12 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark.home-header-morph .site-header.is-scrolled .brand-logo {
     width: clamp(158px, calc(100vw - 162px), 218px);
     height: clamp(50px, 17vw, 66px);
+    /* Eine gemeinsame Grafik haelt Name, Meisterzeile und Blueten in beiden
+       Scrollzustaenden proportional und verhindert einen sichtbaren Motivwechsel. */
+    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister.png?v=20260902a");
     transition:
       width .42s cubic-bezier(.22, 1, .36, 1),
       height .42s cubic-bezier(.22, 1, .36, 1);
-  }
-
-  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
-    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister.png?v=20260902a");
   }
 
   html.home-theme-dark.home-header-morph .header-actions {
@@ -1221,8 +1230,17 @@ html.home-theme-dark .fork-path:hover {
     --mobile-hero-slope-angle: 13.7deg;
   }
 
+  html.home-theme-dark.home-header-morph .site-header .header-instagram {
+    display: none;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header .brand-logo,
+  html.home-theme-dark.home-header-morph .site-header.is-scrolled .brand-logo {
+    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png?v=20260913b");
+  }
+
   html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
-    width: clamp(158px, calc(100vw - 218px), 218px);
+    width: clamp(166px, calc(100vw - 142px), 256px);
   }
 }
 
@@ -1245,7 +1263,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
-    width: clamp(154px, calc(100vw - 194px), 230px);
+    width: clamp(166px, calc(100vw - 142px), 256px);
     height: clamp(56px, 18.5vw, 72px);
   }
 
@@ -1400,7 +1418,84 @@ html.home-theme-dark .fork-path:hover {
    Die native Details-Gruppe benoetigt kein zusaetzliches JavaScript. */
 @media (max-width: 480px) {
   html.home-theme-dark .home-hero-stack {
-    --mobile-hero-title-trial-drop: -3px;
+    --mobile-hero-title-trial-drop: -18px;
+  }
+
+  html.home-theme-dark .hero-proof-strip {
+    grid-template-columns: 48px auto;
+    justify-content: start;
+    column-gap: calc(var(--hero-proof-space) - 4px);
+    transform: translateY(calc(
+      0px - var(--mobile-hero-content-group-lift) - var(--mobile-hero-proof-lift)
+      + 10px + clamp(0px, calc(276px - 35svh), 30px)
+      + clamp(0px, calc(23vw - 90px), 20px)
+    ));
+  }
+
+  html.home-theme-dark .mobile-hero-cta-stack {
+    transform: translateY(calc(14px + var(--mobile-hero-cta-trial-drop)));
+  }
+
+  html.home-theme-dark .hero-proof-location-mark {
+    justify-self: center;
+  }
+
+  /* Der sichtbare Schwerpunkt der neuen Bluete liegt innerhalb ihrer
+     transparenten Bildflaeche leicht links. Der kleine optische Ausgleich
+     zentriert die Form im Kopf des Standort-Pins. */
+  html.home-theme-dark .hero-proof-location-flower {
+    top: calc(43% + .5px);
+    left: calc(50% + .4px);
+  }
+
+  html.home-theme-dark .hero-proof-location-text {
+    text-align: left;
+  }
+
+  html.home-theme-dark .hero-proof-instagram {
+    position: absolute;
+    bottom: calc(100% + 1px);
+    left: var(--hero-proof-space);
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--hero-proof-space) - 4px);
+    min-height: 52px;
+    color: var(--home-on-dark);
+    font-family: "Nunito", sans-serif;
+    font-size: .9rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: .005em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  html.home-theme-dark .hero-proof-instagram strong {
+    color: var(--home-lime);
+    font: inherit;
+  }
+
+  html.home-theme-dark .hero-proof-instagram-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 14px;
+    color: #fff;
+    background: radial-gradient(circle at 30% 105%, #feda75 0 20%, #fa7e1e 34%, #d62976 57%, #962fbf 76%, #4f5bd5 100%);
+    box-shadow: 0 5px 12px rgb(0 0 0 / 24%);
+    transition: transform .2s ease;
+  }
+
+  html.home-theme-dark .hero-proof-instagram-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  html.home-theme-dark .hero-proof-instagram:active {
+    opacity: .74;
   }
 
 }
@@ -1450,10 +1545,10 @@ html.home-theme-dark .fork-path:hover {
     position: relative;
     isolation: isolate;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px 14px;
+    gap: 8px;
     width: fit-content;
     max-width: 100%;
     margin: 0 auto;
@@ -1480,19 +1575,18 @@ html.home-theme-dark .fork-path:hover {
     mask-repeat: no-repeat;
     -webkit-mask-size: 220% 100%;
     mask-size: 220% 100%;
-    transform: translateX(-18px);
+    transform: none;
     transition:
       opacity .78s cubic-bezier(.16, 1, .3, 1),
-      transform 1.15s cubic-bezier(.16, 1, .3, 1),
-      -webkit-mask-position 1.15s cubic-bezier(.16, 1, .3, 1),
-      mask-position 1.15s cubic-bezier(.16, 1, .3, 1);
+      -webkit-mask-position .78s cubic-bezier(.16, 1, .3, 1),
+      mask-position .78s cubic-bezier(.16, 1, .3, 1);
   }
 
   html.home-theme-dark .gate-welcome-kicker.gate-welcome-reveal.is-in {
     opacity: 1;
     -webkit-mask-position: 0 0;
     mask-position: 0 0;
-    transform: translateX(0);
+    transform: none;
   }
 
   /* Ohne GSAP folgt das Foto dem Pinselzug als ruhiger Fallback. */
@@ -1534,11 +1628,11 @@ html.home-theme-dark .fork-path:hover {
     width: 10.75rem;
     max-width: 100%;
     height: auto;
-    flex: 0 1 10.75rem;
+    flex: 0 0 auto;
     margin: 0;
     overflow: hidden;
     filter: saturate(.86) brightness(1.18) drop-shadow(0 1px 1px rgb(0 0 0 / 35%));
-    transform: translateY(2px);
+    transform: none;
   }
 
   html.home-theme-dark :is(
@@ -1555,7 +1649,7 @@ html.home-theme-dark .fork-path:hover {
     isolation: isolate;
     width: 100%;
     aspect-ratio: 4 / 3;
-    margin: 2rem 0 0;
+    margin: 2.5rem 0 0;
     overflow: visible;
     border-radius: 16px;
     background: transparent;
@@ -1737,7 +1831,7 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark .gate-welcome-qualification-option:nth-child(4) .gate-welcome-qualification-content {
-    transform: translateX(-2px);
+    transform: translateX(2.675px);
   }
 
   html.home-theme-dark .gate-welcome-qualification-flower {
@@ -2405,6 +2499,20 @@ html.home-theme-dark .mr-ueber {
   background: var(--bg);
 }
 
+/* Mobile Vertrauens- und Kurzfassungen duerfen die bestehende Tablet-/Desktop-
+   Fassung nicht veraendern. */
+html.home-theme-dark .mr-ueber__punkt-text--iphone,
+html.home-theme-dark .proof-map-copy--iphone,
+html.home-theme-dark .proof-map-seat-mark {
+  display: none;
+}
+
+html.home-theme-dark .proof-map-mobile,
+html.home-theme-dark .proof-map-places,
+html.home-theme-dark .proof-map-credit {
+  display: none;
+}
+
 /* --- Block 1: Kopf mit Eyebrow (AP-217) ---------------------------------
    Der Eyebrow ist zeichengleich das Bauteil der Rezensionssektion
    (.private-proof-since, privat-form.css:3174): 0.76rem, 800, 0.08em gesperrt,
@@ -2526,10 +2634,97 @@ html.home-theme-dark .mr-ueber__punkt-icon {
   height: 20px;
   margin-top: 1px;
   fill: none;
-  stroke: var(--home-dark-accent);
+  /* AP-310: --home-lime statt des blasseren --home-dark-accent, wie die uebrigen
+     gruenen Bauteile der Sektion. */
+  stroke: var(--home-lime);
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+html.home-theme-dark .mr-ueber__punkt-icon-art {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  html.home-theme-dark .mr-ueber {
+    padding-top: 44px;
+  }
+
+  html.home-theme-dark .mr-ueber__kopf {
+    margin-bottom: 24px;
+  }
+
+  html.home-theme-dark .mr-ueber__text {
+    color: var(--home-on-dark);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte {
+    display: grid;
+    width: min(100%, 20rem);
+    margin-inline: auto;
+    gap: 2.25rem;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte li {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: .625rem;
+    padding-block: 0;
+    border-bottom: 0;
+    text-align: center;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte li > span:last-child {
+    max-width: 18.25rem;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-text--default {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-text--iphone {
+    display: block;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon--default {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art {
+    display: block;
+    width: 34px;
+    height: 34px;
+    margin-top: 0;
+    pointer-events: none;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform-origin: center;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art--dialog img {
+    transform: scale(1.36);
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art--calendar img {
+    transform: scale(1.18);
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art--partnership img {
+    transform: scale(1.45);
+  }
 }
 
 /* AP-235/AP-243: Der Weg zur Unterseite.
@@ -2559,7 +2754,9 @@ html.home-theme-dark .mr-ueber__mehr {
      bisherige SVG-Strich (stroke-width 1.5 mit non-scaling-stroke). Der
      inset-Schatten wird nicht gerundet, folgt dem border-radius und laesst
      ausserdem die Kastengroesse unveraendert. */
-  box-shadow: inset 0 0 0 1.5px var(--home-dark-accent);
+  /* AP-310: Rand auf --home-lime. Nur der Umriss - Titel und Unterzeile
+     behalten ihre Farben. */
+  box-shadow: inset 0 0 0 1.5px var(--home-lime);
   transition: box-shadow .18s var(--ease), background-color .18s var(--ease);
 
   /* AP-236: volle Spaltenbreite statt inhaltsbreit. Die Belegspalte ist per
@@ -2596,10 +2793,35 @@ html.home-theme-dark .mr-ueber__mehr-titel {
    Zeile folgt statt allein in einer eigenen zu landen. Ruhig mit leichtem
    Nachruecken beim Mauszeiger - wie die uebrigen Verweis-Pfeile der Seite und
    bewusst nicht der pulsierende Pfeil der Haupt-CTAs (AP-270): dieser Button
-   ist ein Nebenweg, siehe Kommentar oben. */
+   ist ein Nebenweg, siehe Kommentar oben.
+
+   AP-324: Seit dieser Fassung ist der Pfeil keine Glyphe mehr, sondern dasselbe
+   Bild wie in der Galeriezeile (.mobile-proof-gallery__link-arrow-chip,
+   mobile-social-proof.css:884) - der gezeichnete gerade Pfeil, dort wie hier
+   30px breit. display muss gesetzt bleiben, der Bild-Reset in styles.css:187
+   stellt jedes img auf block.
+
+   Weiss statt des Gruens der Datei: Die Grafik traegt ihr #56E607 fest im Pfad
+   (assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg), und ein <img> laesst
+   sich nicht per fill einfaerben - dieselbe Datei haengt an drei weiteren
+   Buttons (AP-322) und soll dort gruen bleiben. brightness(0) zieht die
+   Fuellung auf Schwarz, invert(1) dreht sie auf Weiss; die Transparenz bleibt
+   dabei erhalten, gefaerbt wird nur die Zeichnung. Ergebnis ist reines #fff,
+   0,4 % heller als das --ink der Titelzeile - im Nebeneinander nicht
+   unterscheidbar. */
 html.home-theme-dark .mr-ueber__mehr-pfeil {
   display: inline-block;
+  width: 30px;
+  height: auto;
   margin-left: .45em;
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
+  /* Der Hoehenversatz steht in einer eigenen Variablen statt direkt im
+     transform. Zwei transform-Deklarationen auf demselben Element ersetzen
+     einander vollstaendig - der Hover-Versatz unten wuerde die Verschiebung
+     sonst beim Zeigen zuruecksetzen. Ausserhalb der Handybreiten ist sie 0. */
+  --pfeil-y: 0px;
+  transform: translate(0, var(--pfeil-y));
   transition: transform .18s var(--ease);
 }
 
@@ -2629,7 +2851,7 @@ html.home-theme-dark .mr-ueber__mehr-logo {
   }
 
   html.home-theme-dark .mr-ueber__mehr:hover .mr-ueber__mehr-pfeil {
-    transform: translateX(2px);
+    transform: translate(2px, var(--pfeil-y));
   }
 }
 
@@ -2736,10 +2958,14 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
   /* AP-292: Das Zweierraster aus AP-282 (Foto | Button) ist mit dem Foto
      entfallen. Der Button steht unter den Kernaussagen in voller Breite, als
      eine Zeile: Blume links, Titel und Unterzeile daneben. */
-  html.home-theme-dark .mr-ueber__kopf { text-align: left; }
-  html.home-theme-dark .mr-ueber__titel { justify-content: flex-start; text-align: left; }
+  html.home-theme-dark .mr-ueber__kopf { text-align: center; }
 
-  html.home-theme-dark .mr-ueber__split { margin-top: 24px; }
+  html.home-theme-dark .mr-ueber__titel { justify-content: center; text-align: center; }
+
+  html.home-theme-dark .mr-ueber__split {
+    gap: 2.5rem;
+    margin-top: 36px;
+  }
 
   html.home-theme-dark .mr-ueber__mehr {
     display: grid;
@@ -2757,6 +2983,33 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
   html.home-theme-dark .mr-ueber__mehr-titel { grid-area: titel; align-self: end; }
   html.home-theme-dark .mr-ueber__mehr-sub   { grid-area: sub; align-self: start; }
   html.home-theme-dark .mr-ueber__mehr-logo  { grid-area: logo; }
+
+  /* AP-324: Der gezeichnete Pfeil an der rechten Kante, auf halber Buttonhoehe.
+
+     Der Pfeil steht im Markup weiter im Titel-Span, verlaesst hier aber den
+     Textfluss: absolut am Button (der traegt position: relative), rechts auf
+     dessen Innenkante - right: 18px ist sein padding-right - und ueber
+     top: 50% mit translate(0, -50%) auf der Mittelachse. Prozentwerte im
+     transform beziehen sich auf die eigene Groesse, die Zentrierung stimmt
+     deshalb bei jeder Schriftgroesse; die Variable --pfeil-y aus der Grundregel
+     traegt hier eben diese -50%, damit der Hover-Versatz sie nicht loescht.
+
+     Weil der Pfeil aus dem Fluss ist, bleibt die Titelzeile so hoch wie vorher -
+     das Bild kostet den Button keine Hoehe (gemessen 64px bei 360 und 390,
+     unveraendert). Dafuer wuerde ein langer Titel unter dem Pfeil durchlaufen,
+     deshalb haelt padding-right am Titel den Platz frei.
+
+     Nur bis 480px: darueber steht der Button dreizeilig (Titel, Unterzeile,
+     Blume), seine Mitte laege dann im Logo. */
+  html.home-theme-dark .mr-ueber__mehr-pfeil {
+    --pfeil-y: -50%;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    margin-left: 0;
+  }
+
+  html.home-theme-dark .mr-ueber__mehr-titel { padding-right: 2.2em; }
 
   /* Die Blume ist seit AP-288 nahezu quadratisch (210x180) statt eines breiten
      Schriftzugs - gesteuert wird deshalb wieder ueber die Hoehe. 30px, damit
@@ -2807,6 +3060,7 @@ html.home-theme-dark .mr-ueber__muster {
 }
 
 html.home-theme-dark .mr-ueber__buehne {
+  --mr-ueber-brand-width: clamp(65px, 20vw, 80px);
   position: relative;
   isolation: isolate;
   overflow: visible;
@@ -2838,31 +3092,21 @@ html.home-theme-dark .mr-ueber__video {
   pointer-events: none;
 }
 
-/* AP-292: Das Hundefoto ersetzt die Markenblume (AP-246) an derselben Ecke.
-   Gerade, nicht gedreht (Entscheidung 11.09.2026). 40 % der Kachelbreite,
-   mindestens 130px (darunter ist der Hund nicht mehr zu erkennen), hoechstens
-   260px. Der 4px-Rand in --bg loest das Foto vom bewegten Video, der Schatten
-   hebt es an. Es ragt 40px ueber die Unterkante - der Abstand zu
-   .mr-ueber__mustertext darunter ist darauf abgestimmt (64px, siehe dort). */
-html.home-theme-dark .mr-ueber__hund {
+/* AP-310: Das Hundefoto ist entfallen, die Markenblume aus AP-246 steht wieder
+   an der Ecke - Werte unveraendert aus dem Stand vor AP-292. Sie ragt um zwei
+   Siebtel ihrer Breite ueber die Unterkante, also rund 23px; die Abstaende
+   darunter sind darauf abgestimmt (32px bzw. 48px, siehe .mr-ueber__mustertext). */
+html.home-theme-dark .mr-ueber__brand {
   position: absolute;
-  right: -10px;
-  bottom: -40px;
+  right: -16px;
+  bottom: calc(var(--mr-ueber-brand-width) * -2 / 7);
   z-index: 2;
   display: block;
-  width: clamp(130px, 40%, 260px);
-  pointer-events: none;
-}
-
-html.home-theme-dark .mr-ueber__hund img {
-  display: block;
-  width: 100%;
+  width: var(--mr-ueber-brand-width);
   height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border: 4px solid var(--bg);
-  border-radius: 14px 4px 14px 4px;
-  box-shadow: 0 6px 18px rgb(0 0 0 / 45%);
+  overflow: hidden;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
+  pointer-events: none;
 }
 
 /* Zwei Spalten: die Erklaerung traegt die Zeile, der Besuchshinweis ist eine
@@ -2872,8 +3116,9 @@ html.home-theme-dark .mr-ueber__mustertext {
   grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
   gap: clamp(20px, 3vw, 44px);
   align-items: start;
-  /* AP-292: 32px -> 64px. 40px Ueberstand des Hundefotos + 24px Luft. */
-  margin-top: 64px;
+  /* AP-310: zurueck auf 32px. Die 64px waren der 40px-Ueberstand des
+     Hundefotos plus Luft; die Blume ragt nur rund 23px ueber die Kante. */
+  margin-top: 32px;
 }
 
 html.home-theme-dark .mr-ueber__mustertext p {
@@ -2885,21 +3130,17 @@ html.home-theme-dark .mr-ueber__mustertext p {
 }
 
 html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
-  color: var(--home-on-dark);
+  /* AP-310: Statt Weiss das Lindgruen der Marke - derselbe Token, aus dem die
+     Flaeche des Knopfes "Gartenwunsch besprechen" ihre Farbe zieht
+     (mobile-social-proof.css, .mobile-proof-request__shape). */
+  color: var(--home-lime);
   font-family: var(--display);
   font-size: clamp(1.2rem, 2.1vw, 1.55rem);
   font-weight: 800;
   line-height: 1.3;
   letter-spacing: -.01em;
   text-wrap: balance;
-  /* AP-293: Deutlich zurueckgenommen. Die .75 auf 6px sassen als harter Saum
-     direkt an den Buchstaben und liessen die Zeile leuchten wie eine Leuchtreklame.
-     Die dritte, breiteste Stufe entfaellt ganz. Damit liegt der Schleier wieder
-     in der Groessenordnung der Qualifikationen (dort .16 bzw. .3 offen), die er
-     laut Auftrag von Anfang an aufnehmen sollte. */
-  text-shadow:
-    0 0 9px rgba(242, 226, 12, .24),
-    0 0 20px rgba(242, 226, 12, .1);
+  text-shadow: none;
 }
 
 html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
@@ -2924,17 +3165,39 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
 }
 
 @media (max-width: 480px) {
-  /* AP-292: margin-top der Kachel entfaellt (Block steht unter dem Kopf).
-     Name und Besuchshinweis untereinander: rechts laege der Hinweis sonst
-     unter dem ueberstehenden Hundefoto. */
+  html.home-theme-dark .mr-ueber__buehne {
+    --mr-ueber-brand-width: clamp(58px, 18vw, 72px);
+  }
+
+  html.home-theme-dark .mr-ueber__brand {
+    right: -10px;
+  }
+
+  html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
+    color: var(--mobile-logo-green, #56e607);
+  }
+
+  /* Name und Besuchshinweis stehen auf dem Telefon untereinander - neben dem
+     Namen bliebe fuer den Hinweis keine lesbare Spalte.
+     AP-310: margin-top zurueck auf 48px, nachdem das ueberstehende Hundefoto
+     entfallen ist (AP-292 hatte dafuer auf 56px erhoeht). */
   html.home-theme-dark .mr-ueber__mustertext {
     grid-template-columns: minmax(0, 1fr);
-    gap: 8px;
-    margin-top: 56px;
+    justify-items: center;
+    width: min(100%, 20.5rem);
+    margin-inline: auto;
+    gap: 10px;
+    margin-top: 48px;
+    text-align: center;
   }
 
   html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
     font-size: clamp(1.25rem, 5.25vw, 1.325rem);
+  }
+
+  html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
+    max-width: 20rem;
+    text-wrap: balance;
   }
 }
 
@@ -3055,6 +3318,192 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   }
 }
 
+@media (max-width: 480px) {
+  html.home-theme-dark .mr-ueber__karte {
+    /* AP-341: Freistehende Karte ohne Kachel, mit mehr Raum für Ortsnamen. */
+    box-sizing: border-box;
+    margin-top: 48px;
+    padding-block: 20px 16px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* Auf dem iPhone wird NRW als eine ruhige, zusammenhaengende Flaeche gezeigt.
+     Die Kreis- und Regierungsbezirksgrenzen konkurrieren dort sonst mit dem
+     kleinen Format; der Landesumriss bleibt als klare Kontur erhalten. */
+  html.home-theme-dark .mr-ueber__karte .proof-map .m-outline {
+    fill: #596351;
+    stroke: var(--home-lime);
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map :is(.m-krs, .m-fill, .m-inner, .m-node) {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map {
+    row-gap: 14px;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte {
+    justify-self: center;
+    margin-bottom: 8px;
+  }
+
+  html.home-theme-dark .mr-ueber__eyebrow--karte > svg {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map > svg.map {
+    justify-self: center;
+    width: min(100%, 280px);
+    max-height: none;
+    margin-bottom: 8px;
+  }
+
+  html.home-theme-dark .proof-map-mobile {
+    display: inline;
+  }
+
+  html.home-theme-dark .proof-map-city {
+    font-family: var(--body);
+    font-size: 176px;
+    font-weight: 500;
+    fill: #c2c7bf;
+    stroke: none;
+  }
+
+  html.home-theme-dark .proof-map-city--seat {
+    font-weight: 600;
+  }
+
+  html.home-theme-dark .proof-map-city--region {
+    font-size: 205px;
+    font-weight: 400;
+    letter-spacing: 7px;
+    fill: #d0d5cb;
+  }
+
+  html.home-theme-dark .proof-map-dot {
+    fill: var(--coral);
+    stroke: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-cap {
+    gap: 0;
+    max-width: 22rem;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  html.home-theme-dark .proof-map-copy--default,
+  html.home-theme-dark .proof-map-source--default {
+    display: none;
+  }
+
+  html.home-theme-dark .proof-map-copy--iphone {
+    display: inline;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-focus {
+    margin-bottom: 0;
+    color: var(--home-on-dark);
+    font-weight: 700;
+    font-size: 16px;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-reach {
+    margin-top: 6px;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-seat {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-src {
+    /* AP-346: Die beiden Details stehen geschlossen auf einer gemeinsamen Zeile. */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0 16px;
+    width: 100%;
+    max-width: 22rem;
+    margin-top: -2px;
+    font-size: 12px;
+    line-height: 1.55;
+    letter-spacing: normal;
+    opacity: 1;
+  }
+
+  html.home-theme-dark .proof-map-places,
+  html.home-theme-dark .proof-map-credit {
+    display: block;
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit)[open] {
+    flex-basis: 100%;
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    color: var(--ink-mute);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit)[open] > summary::after {
+    transform: translateY(1px) rotate(225deg);
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary:focus-visible {
+    outline: 2px solid var(--home-lime);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  html.home-theme-dark .proof-map-credit p {
+    margin: 0 0 8px;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .proof-map-places-copy {
+    max-width: 290px;
+    margin: 0 auto 8px;
+    color: var(--ink-mute);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .proof-map-credit a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 /* --- Alte Stelle: ohne die Karte bleibt nur der Kleinauftrags-Block ------
    .proof-feature ist in styles.css an drei Stellen zweispaltig (817, 1023,
    1731). Die Korrektur steht hier statt dort, weil die Klasse nur auf der
@@ -3062,204 +3511,7 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
    ?v=-Zaehler statt eines Durchlaufs ueber 36 Seiten. */
 html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }
 
-html.home-theme-dark .footer-contact-link--iphone-form {
-  display: none;
-}
-
-html.home-theme-dark .footer-social-iphone {
-  display: none;
-}
-
-/* AP-215/AP-224: Auf Handy-Breiten entfallen Schnellzugriff und Einsatzgebiet.
-   Kontakt und rechtliche Links bleiben stehen. */
-@media (max-width: 480px) {
-  /* Auf dem iPhone greift die Footer-Kachel den Grundton des mobilen Headers
-     auf. Die Regel bleibt bewusst lokal; Tablet und Desktop behalten --bg-dark. */
-  html.home-theme-dark .site-footer {
-    background: #171916;
-  }
-
-  html.home-theme-dark .site-footer .footer-route {
-    text-shadow: none;
-  }
-
-  html.home-theme-dark .site-footer .footer-navigation,
-  html.home-theme-dark .site-footer .footer-coverage {
-    display: none;
-  }
-
-  html.home-theme-dark .site-footer .brand-footer {
-    order: -1;
-    width: min(18.75rem, 95%);
-    margin: 0 0 1rem;
-  }
-
-  html.home-theme-dark .site-footer .footer-brandline {
-    display: none;
-  }
-
-  html.home-theme-dark .site-footer .footer-brand-block {
-    display: flex;
-    flex-direction: column;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link--whatsapp {
-    display: none;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link--iphone-form {
-    display: grid;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link {
-    grid-template-columns: 1.875rem minmax(0, 1fr);
-    gap: 0.4375rem;
-    padding-inline: 0.4375rem;
-    border-color: rgba(86, 230, 7, .14);
-    background: transparent;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-icon {
-    width: 1.875rem;
-    height: 1.875rem;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link--iphone-form .footer-contact-icon,
-  html.home-theme-dark .site-footer .footer-contact-link[href^="mailto:"] .footer-contact-icon {
-    color: var(--mobile-logo-green);
-    background: rgba(5, 10, 5, .58);
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon {
-    background: rgba(5, 10, 5, .58);
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon svg {
-    display: none;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon::before {
-    content: "";
-    width: 1.4375rem;
-    height: 1.4375rem;
-    background: url("../img/icons/phone-header-mobile.png?v=20260902a") center / contain no-repeat;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link strong {
-    font-size: .73rem;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link--iphone-form strong {
-    font-size: .67rem;
-    letter-spacing: -.01em;
-    white-space: nowrap;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link--iphone-form small {
-    font-size: .52rem;
-    letter-spacing: .055em;
-  }
-
-  html.home-theme-dark .site-footer .footer-contact-link[href^="tel:"] strong,
-  html.home-theme-dark .site-footer .footer-contact-link[href^="mailto:"] strong {
-    overflow-wrap: normal;
-    word-break: normal;
-    white-space: nowrap;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-iphone {
-    display: grid;
-    /* Tippziele bleiben absolut: 44px ist die Mindestgroesse nach WCAG 2.5.8.
-       Mitskaliert waeren es auf einem 320px-Geraet nur noch 35px. */
-    grid-template-columns: 44px 44px minmax(0, 1fr);
-    grid-template-rows: minmax(44px, auto);
-    align-items: center;
-    justify-content: start;
-    column-gap: 2px;
-    margin-top: 0.875rem;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-link {
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    padding: 0.25rem;
-    border: 0;
-    border-radius: 50%;
-    background: transparent;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-link:first-child {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-link--instagram {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-icon {
-    display: grid;
-    place-items: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 11px;
-    color: #fff;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-icon--whatsapp {
-    background: #25d366;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-icon--whatsapp img {
-    width: 1.375rem;
-    height: 1.375rem;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-icon--instagram {
-    background: radial-gradient(circle at 30% 105%, #feda75 0 20%, #fa7e1e 34%, #d62976 57%, #962fbf 76%, #4f5bd5 100%);
-  }
-
-  html.home-theme-dark .site-footer .footer-social-icon--instagram svg {
-    width: 1.375rem;
-    height: 1.375rem;
-  }
-
-  html.home-theme-dark .site-footer a.footer-social-link:focus-visible {
-    outline: 2px solid var(--mobile-logo-green);
-    outline-offset: 2px;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-availability {
-    grid-column: 3;
-    grid-row: 1;
-    align-self: center;
-    min-width: 0;
-    width: 100%;
-    margin: 0;
-    color: rgba(235, 239, 229, .72);
-    font-size: clamp(.59rem, 2.4vw, .625rem);
-    line-height: 1.48;
-    letter-spacing: -.012em;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-line {
-    display: block;
-    white-space: nowrap;
-  }
-
-  html.home-theme-dark .site-footer .footer-social-dot {
-    color: inherit;
-    font-weight: inherit;
-  }
-
-  html.home-theme-dark .site-footer .footer-hours {
-    display: none;
-  }
-}
+/* AP-339: Die Footer-Kacheln fuer das Telefon (Kontaktformular, WhatsApp/Instagram,
+   Erreichbarkeitszeile) sind nach assets/css/footer-kontakt.css gewandert. Die
+   Ueber-uns-Seite hat denselben Footer bekommen und laedt diese Datei hier nicht;
+   eine zweite Kopie waere sofort auseinandergelaufen. */

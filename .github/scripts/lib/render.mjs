@@ -380,12 +380,70 @@ export const WELTEN = {
     hubEntfaellt: true,
     weltLabel: 'Privatkunde',
     navLabel: 'Für Privatkunden',
+    // AP-341: Eigene Ueberschrift fuers Dropdown. Bewusst nicht navLabel
+    // ueberschrieben - das ist auch die Kennung der Welt im Build-Protokoll
+    // (build-leistungen.mjs:277, "Für Privatkunden: 13 direkte Leistungsseiten
+    // generiert"), und dort waere der A-Z-Satz schlicht falsch.
+    navKopf: 'Unsere Leistungen von A bis Z',
     base: '../../../',        // /privatkunden/leistungen/<slug>/
     slugs: [
       'baumkontrolle', 'baumarbeiten', 'sturmnotdienst', 'holzverkauf',
       'gartengestaltung', 'vorgarten', 'teichbau', 'terrasse-pflasterarbeiten',
       'bepflanzung', 'dachbegruenung', 'gartenpflege', 'palmen-winterfest',
       'pool-whirlpool-umfeld',
+      // AP-360: Vier Leistungen, die in der A-Z-Liste der Startseite standen,
+      // aber keine eigene Seite hatten - sie zeigten dort aufs Anfrageformular.
+      'nassschneidearbeiten', 'rodungsarbeiten', 'verkehrssicherheit',
+      'vermessung-lasertechnik',
+    ],
+    // AP-341: Das Dropdown spiegelt die A-Z-Liste der Startseite
+    // (index.html, Abschnitt #leistungen) zeichengleich - Reihenfolge, Wortlaut
+    // und Ziele. Mehrere Themen zeigen deshalb auf dieselbe Seite:
+    // gartengestaltung fuenfmal, terrasse-pflasterarbeiten viermal,
+    // bepflanzung dreimal.
+    //
+    // Das kann `slugs` nicht abbilden: dieselbe Liste steuert, welche
+    // Leistungsseiten gebaut werden - ein fuenffaches 'gartengestaltung' darin
+    // wuerde fuenfmal dieselbe Seite erzeugen. Deshalb diese eigene Liste, die
+    // NUR die Navigation fuellt.
+    //
+    // Die <wbr> der Startseiten-Kacheln sind hier nicht uebernommen: sie sind
+    // ein Umbruchhinweis fuer die schmalen Kacheln, die Menuezeile ist breit
+    // genug - und esc() gaebe sie ohnehin als Text aus.
+    //
+    // Wer hier etwas aendert, muss die Startseite mitziehen; die beiden Listen
+    // sollen zeichengleich bleiben.
+    navListe: [
+      { slug: 'baumarbeiten', label: 'Baumfällung' },
+      { slug: 'baumkontrolle', label: 'Baumkontrolle' },
+      { slug: 'baumarbeiten', label: 'Baumpflege' },
+      { slug: 'gartengestaltung', label: 'Beleuchtung' },
+      { slug: 'dachbegruenung', label: 'Dachbegrünung' },
+      { slug: 'gartengestaltung', label: 'Entwässerung' },
+      { slug: 'gartengestaltung', label: 'Erd- & Baggerarbeiten' },
+      { slug: 'terrasse-pflasterarbeiten', label: 'Findlinge und Natursteineinfassungen' },
+      { slug: 'gartengestaltung', label: 'Gartengestaltung' },
+      { slug: 'gartenpflege', label: 'Gartenpflege' },
+      { slug: 'holzverkauf', label: 'Kaminholz' },
+      { slug: 'nassschneidearbeiten', label: 'Nassschneidearbeiten' },
+      // Einziger Eintrag, der aus der Privatwelt herausfuehrt: die Leistung gibt
+      // es nur als Gewerbeseite. Deshalb ein ausgeschriebenes Ziel statt eines
+      // Slugs - siehe renderNavSubmenu weiter unten.
+      { href: 'gewerbekunden/leistungen/aussenanlagenpflege/', label: 'Objekt- & Grünflächenpflege' },
+      { slug: 'palmen-winterfest', label: 'Palmen winterfest' },
+      { slug: 'bepflanzung', label: 'Pflanzarbeiten' },
+      { slug: 'terrasse-pflasterarbeiten', label: 'Pflasterarbeiten' },
+      { slug: 'pool-whirlpool-umfeld', label: 'Pool- & Whirlpoolumfeld' },
+      { slug: 'rodungsarbeiten', label: 'Rodungsarbeiten' },
+      { slug: 'bepflanzung', label: 'Rohdichs Grubengold' },
+      { slug: 'gartengestaltung', label: 'Rollrasen' },
+      { slug: 'bepflanzung', label: 'Sichtschutzbepflanzung' },
+      { slug: 'teichbau', label: 'Teichbau & -technik' },
+      { slug: 'terrasse-pflasterarbeiten', label: 'Terrassenbau' },
+      { slug: 'verkehrssicherheit', label: 'Verkehrssicherheit herstellen' },
+      { slug: 'vermessung-lasertechnik', label: 'Vermessungs- & Lasertechnik' },
+      { slug: 'vorgarten', label: 'Vorgartengestaltung' },
+      { slug: 'terrasse-pflasterarbeiten', label: 'Zäune & Sichtschutz' },
     ],
   },
   gewerbe: {
@@ -444,6 +502,13 @@ export const LEISTUNGEN_NAV = [
   { slug: 'pool-whirlpool-umfeld', label: 'Pool- & Whirlpool-Umfeld' },
   { slug: 'sturmnotdienst', label: 'Sturmnotdienst' },
   { slug: 'holzverkauf', label: 'Brennholz & Stammholz' },
+  // AP-360: Labels der vier neuen Seiten. Sie muessen mit navLabel in
+  // content/leistungen/privat/<slug>.json uebereinstimmen - build-leistungen.mjs
+  // warnt sonst bei jedem Lauf.
+  { slug: 'nassschneidearbeiten', label: 'Nassschneidearbeiten' },
+  { slug: 'rodungsarbeiten', label: 'Rodungsarbeiten' },
+  { slug: 'verkehrssicherheit', label: 'Verkehrssicherheit' },
+  { slug: 'vermessung-lasertechnik', label: 'Vermessungs- & Lasertechnik' },
 ];
 
 // AP-33: Dropdown nach Welten getrennt. Der Besucher wählt beim Einstieg seine Welt
@@ -451,12 +516,26 @@ export const LEISTUNGEN_NAV = [
 export function renderNavSubmenu(base) {
   const labelBySlug = new Map(LEISTUNGEN_NAV.map((l) => [l.slug, l.label]));
   const block = (welt) => {
-    const items = welt.slugs
-      .map((s) => `<li><a href="${base}${welt.pfad}leistungen/${s}/">${esc(welt.navLabels?.[s] || labelBySlug.get(s) || s)}</a></li>`)
+    // AP-341: navListe hat Vorrang - sie kann Mehrfachziele und eigene
+    // Beschriftungen, was die slugs-Liste nicht kann. Ohne navListe bleibt
+    // alles beim Alten (Gewerbe-Welt).
+    const eintraege = welt.navListe || welt.slugs.map((slug) => ({ slug }));
+    // AP-361: Ein Eintrag darf ein eigenes Ziel mitbringen. Ohne das liesse sich
+    // nur "<welt>/leistungen/<slug>/" bilden - die A-Z-Liste der Startseite
+    // enthaelt aber auch eine Leistung, die es nur in der Gewerbewelt gibt.
+    // base wird in beiden Faellen vorangestellt, damit die Pfade auf den sechs
+    // Handseiten stimmen (index.html und 404.html liegen an der Wurzel, die
+    // uebrigen eine Ebene tiefer).
+    const items = eintraege
+      .map(({ slug, label, href }) => {
+        const ziel = href || `${welt.pfad}leistungen/${slug}/`;
+        return `<li><a href="${base}${ziel}">${esc(label || welt.navLabels?.[slug] || labelBySlug.get(slug) || slug)}</a></li>`;
+      })
       .join('\n              ');
+    const kopfText = welt.navKopf || welt.navLabel;
     const kopf = welt.hubEntfaellt
-      ? `<span class="nav-submenu-head">${esc(welt.navLabel)}</span>`
-      : `<a class="nav-submenu-head" href="${base}${welt.pfad}">${esc(welt.navLabel)}</a>`;
+      ? `<span class="nav-submenu-head">${esc(kopfText)}</span>`
+      : `<a class="nav-submenu-head" href="${base}${welt.pfad}">${esc(kopfText)}</a>`;
     return `<li class="nav-submenu-group">
             ${kopf}
             <ul>
@@ -464,55 +543,68 @@ export function renderNavSubmenu(base) {
             </ul>
           </li>`;
   };
+  // AP-342: Nur noch die Privatwelt im Dropdown. WELTEN.gewerbe bleibt
+  // vollstaendig erhalten - der Eintrag steuert weiterhin die Seitengenerierung,
+  // die Brotkrumen und weltPfadFuerSlug. Die sieben Gewerbe-Leistungsseiten sind
+  // weiter verlinkt: Startseite, 404.html, /kontakt/, /ueber-uns/, /datenschutz/
+  // sowie ueber den Menuepunkt "Gewerbekunden" in der obersten Ebene.
   return `<ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
           ${block(WELTEN.privat)}
-          ${block(WELTEN.gewerbe)}
           </ul>`;
 }
 
 // Der Footer bleibt in allen Seitengeneratoren identisch.
-// Nur-Startseite-Bausteine im Footer.
+// Bausteine, die nur die Handy-Ansicht bestimmter Seiten tragen.
 //
 // build-footers.mjs schreibt den Footer JEDER Seite aus templates/_footer.html neu.
 // Wer einen Baustein von Hand in eine Seite schreibt, verliert ihn beim naechsten
 // Action-Lauf - genau so verschwanden die mobilen Footer-Bausteine der Startseite
 // im Commit 5932af2, der sich "Projekt-Index & Sitemap" nannte.
 //
-// Diese drei Bausteine gehoeren ausschliesslich auf die Startseite:
-//   - der Formular-Link zeigt auf #anfrage, und dieses Ziel gibt es nur dort
-//   - die Gestaltung steht komplett in home-dark.css, die nur index.html laedt
-// Deshalb liefert footerTemplateData sie nur fuer base === '' (Repo-Wurzel) und
-// sonst den leeren String. Die Platzhalter stehen im Template ohne eigene Zeile,
-// damit der Footer aller anderen Seiten zeichengleich bleibt.
-const STARTSEITE_FORMULAR_LINK = `
-          <a class="footer-contact-link footer-contact-link--iphone-form" href="#anfrage" aria-label="Kontaktformular öffnen und Kontakt aufnehmen">
+// AP-339: Bis dahin gab es die drei Bausteine ausschliesslich auf der Startseite.
+// Zwei Gruende hielten sie dort, beide sind aufgeloest:
+//   - der Formular-Link zeigt auf #anfrage, und dieses Ziel gibt es nur dort.
+//     Er bekommt sein Praefix jetzt aus base; von /ueber-uns/ aus wird
+//     "../#anfrage" daraus, auf der Startseite bleibt es zeichengleich "#anfrage".
+//   - die Gestaltung stand in home-dark.css, die nur index.html laedt. Sie liegt
+//     jetzt in assets/css/footer-kontakt.css.
+// Wer eine weitere Seite aufnimmt, traegt sie unten ein UND bindet dort
+// footer-kontakt.css ein - ohne die Datei stehen beide Bausteine auf display:none.
+//
+// Die Platzhalter stehen im Template ohne eigene Zeile, damit der Footer aller
+// uebrigen Seiten zeichengleich bleibt.
+const HANDY_FOOTER_SEITEN = new Set(['index.html', 'ueber-uns/index.html']);
+
+const handyFormularLink = (base) => `
+          <a class="footer-contact-link footer-contact-link--iphone-form" href="${base}#anfrage" aria-label="Kontaktformular öffnen und Kontakt aufnehmen">
             <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg></span>
             <span><small>Kontaktformular</small><strong>Kontakt aufnehmen</strong></span>
           </a>`;
 
-const STARTSEITE_SOCIAL = `
+const handySocial = (base) => `
         <div class="footer-social-iphone" aria-label="Weitere Kontaktmöglichkeiten">
+          <p class="footer-social-availability"><span class="footer-social-line">Jederzeit erreichbar <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
           <a class="footer-social-link" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener" aria-label="Maik Rohdich über WhatsApp schreiben">
-            <span class="footer-social-icon footer-social-icon--whatsapp" aria-hidden="true"><img src="assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+            <span class="footer-social-icon footer-social-icon--whatsapp" aria-hidden="true"><img src="${base}assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
           </a>
           <span class="footer-social-link footer-social-link--instagram" aria-label="Instagram">
             <span class="footer-social-icon footer-social-icon--instagram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>
           </span>
-          <p class="footer-social-availability"><span class="footer-social-line">Jederzeit erreichbar <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
         </div>`;
 
-const STUNDEN_ZUSATZ_STARTSEITE = '<span class="footer-hours-whatsapp">WhatsApp jederzeit <span aria-hidden="true">\u00b7</span> </span>Besuche nach Vereinbarung';
+const STUNDEN_ZUSATZ_HANDY = '<span class="footer-hours-whatsapp">WhatsApp jederzeit <span aria-hidden="true">\u00b7</span> </span>Besuche nach Vereinbarung';
 const STUNDEN_ZUSATZ = 'WhatsApp jederzeit <span aria-hidden="true">\u00b7</span> Besuche nach Vereinbarung';
 
 export function footerTemplateData(base, seitenPfad = '') {
   // Nicht ueber base pruefen: 404.html liegt ebenfalls in der Wurzel und haette
-  // die Bausteine sonst mitbekommen.
-  const istStartseite = seitenPfad === 'index.html';
+  // die Bausteine sonst mitbekommen. Windows-Trennzeichen vorher angleichen.
+  const pfad = seitenPfad.split('\\').join('/');
+  const handy = HANDY_FOOTER_SEITEN.has(pfad);
   return {
     base,
-    startseiteFormularLink: istStartseite ? STARTSEITE_FORMULAR_LINK : '',
-    startseiteSocial: istStartseite ? STARTSEITE_SOCIAL : '',
-    stundenZusatz: istStartseite ? STUNDEN_ZUSATZ_STARTSEITE : STUNDEN_ZUSATZ,
+    handyFormularLink: handy ? handyFormularLink(base) : '',
+    handySocial: handy ? handySocial(base) : '',
+    stundenZusatz: handy ? STUNDEN_ZUSATZ_HANDY : STUNDEN_ZUSATZ,
   };
 }
 

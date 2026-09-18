@@ -247,6 +247,16 @@
       "width": 960,
       "height": 640,
       "aspect": 0.6667
+    },
+    "/assets/img/gewerbe/partner/partner-team-hebeaktion-1440.jpg": {
+      "base": "/assets/img/ueber/ueber-hebeaktion",
+      "widths": [
+        480,
+        960
+      ],
+      "width": 960,
+      "height": 720,
+      "aspect": 0.75
     }
   }
 }

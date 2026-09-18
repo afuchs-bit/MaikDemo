@@ -151,6 +151,22 @@ const SOURCES = [
     name: 'vorgarten-einfahrt-herne',
     widths: [480, 960],
   },
+  // AP-326: Leitfoto der Ueber-uns-Seite, umgezogen aus build-images.mjs.
+  // Die Quelle dort (assets/img/_src/ueber-hebeaktion.jpg) ist nur 560 px
+  // breit (AP-127) und liegt ausserhalb des Repos; dieselbe Aufnahme steht
+  // als 1440er Master IM Repo unter assets/img/gewerbe/partner/. Geprueft
+  // per Pixelvergleich: der 1440er auf 480x360 heruntergerechnet weicht vom
+  // bisherigen Derivat im Mittel um 8,1 / 7,5 / 9,4 von 255 je Kanal ab -
+  // gleicher Ausschnitt, nur andere Kompression.
+  // Angezeigt wird das Bild 420 CSS-px breit (Desktop), auf 2x-Displays also
+  // 840 Geraetepixel - die 480er Quelle reichte dafuer nicht.
+  {
+    src: 'assets/img/gewerbe/partner/partner-team-hebeaktion-1440.jpg',
+    dir: 'assets/img/ueber',
+    name: 'ueber-hebeaktion',
+    widths: [480, 960],
+    fallbackWidth: 960,
+  },
 ];
 
 // Liefert die Resize-Pipeline fuer eine Zielbreite. Ohne crop: reines
