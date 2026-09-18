@@ -161,11 +161,31 @@
       }
     },
     {
+      "id": "poolumfeld-mit-kiesbeet-cfd12a3",
+      "bild": "/assets/img/galerie-teaser/originale/poolumfeld-mit-kiesbeet.jpg",
+      "alt": "Rechteckiges Schwimmbecken mit Natursteinkante, davor ein Kiesbeet mit Buchskugel und rot blühendem Strauch",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "60% 55%",
+      "fokusMobil": "58% 60%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/poolumfeld-mit-kiesbeet-cfd12a3",
+        "widths": [
+          480,
+          960,
+          1440,
+          1600
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
       "id": "eingewachsener-garten-mit-palme-810b31c",
       "bild": "/assets/img/galerie-teaser/originale/eingewachsener-garten-mit-palme.jpg",
       "alt": "Eingewachsener Privatgarten mit großer Palme, Hortensien und gepflasterter Terrasse",
-      "imTeaser": true,
-      "leitbildGeeignet": true,
+      "imTeaser": false,
+      "leitbildGeeignet": false,
       "fokusDesktop": "58% 56%",
       "fokusMobil": "56% 58%",
       "variants": {
