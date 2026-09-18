@@ -531,7 +531,16 @@
 
 /* ----------------------------------------------------- Freitextfeld */
 
-.anf__feld--frei { margin-block-start: 0; }
+/* AP-352: Derselbe Wert wie an .anf__feld--foto (Z. 111) - die Kachel soll oben
+   und unten gleich viel Luft haben. Dasselbe Mass, nicht dieselbe gerundete
+   Pixelzahl: die Wurzel-Schriftgroesse ist auf Handybreiten fluid, zwei
+   Pixelwerte liefen also auseinander.
+
+   Vorher stand hier nur margin-block-start und im 480er-Block ein
+   margin-bottom: 26px. Das stammte aus AP-239, als hinter dem Freitextfeld
+   direkt der Absendeknopf kam und dort Luft gebraucht wurde. Seit AP-350 steht
+   die Foto-Kachel dazwischen - die Begruendung ist entfallen. */
+.anf__feld--frei { margin-block-start: 0; margin-block-end: .875rem; }
 
 /* AP-250: Der Rechtshinweis klebte am Absendeknopf - gemessen 0px Abstand.
    .anf__rechtliches traegt nur margin-bottom, und .anf__abschluss bringt keinen
@@ -670,10 +679,6 @@
   .private-contact .anf__einwilligung {
     margin-bottom: 22px;
     font-size: .8rem;
-  }
-
-  .private-contact .anf__feld--frei {
-    margin-bottom: 26px;
   }
 
   .private-contact a.anf__kanal:active {
