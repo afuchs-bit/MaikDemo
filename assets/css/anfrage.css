@@ -108,8 +108,6 @@
    --anf-radius als Radius. Aufbau angelehnt an .b2b-upload (privat-form.css:919),
    das aber fuer die helle Welt gebaut ist (--green-50 als Flaeche). */
 
-.anf__feld--foto { margin-bottom: .875rem; }
-
 .anf__foto { position: relative; display: block; }
 
 /* Der Eingang bleibt bedienbar und mit der Tastatur erreichbar, nur unsichtbar -
@@ -531,16 +529,16 @@
 
 /* ----------------------------------------------------- Freitextfeld */
 
-/* AP-352: Derselbe Wert wie an .anf__feld--foto (Z. 111) - die Kachel soll oben
-   und unten gleich viel Luft haben. Dasselbe Mass, nicht dieselbe gerundete
-   Pixelzahl: die Wurzel-Schriftgroesse ist auf Handybreiten fluid, zwei
-   Pixelwerte liefen also auseinander.
+/* AP-353: Hier steht bewusst kein margin-bottom mehr, und an .anf__feld--foto
+   auch nicht. Beide nehmen die 1.125rem aus .anf__feld (Z. 52) - derselbe
+   Abstand, den jedes Feld des Formulars unter sich traegt. Damit hat die
+   Foto-Kachel oben und unten gleich viel Luft, ohne dass irgendwo eine Zahl
+   gepflegt werden muesste.
 
-   Vorher stand hier nur margin-block-start und im 480er-Block ein
-   margin-bottom: 26px. Das stammte aus AP-239, als hinter dem Freitextfeld
-   direkt der Absendeknopf kam und dort Luft gebraucht wurde. Seit AP-350 steht
-   die Foto-Kachel dazwischen - die Begruendung ist entfallen. */
-.anf__feld--frei { margin-block-start: 0; margin-block-end: .875rem; }
+   Bis AP-352 stand im 480er-Block ein margin-bottom: 26px. Das stammte aus
+   AP-239, als hinter dem Freitextfeld direkt der Absendeknopf kam und dort Luft
+   gebraucht wurde. Seit AP-350 steht die Foto-Kachel dazwischen. */
+.anf__feld--frei { margin-block-start: 0; }
 
 /* AP-250: Der Rechtshinweis klebte am Absendeknopf - gemessen 0px Abstand.
    .anf__rechtliches traegt nur margin-bottom, und .anf__abschluss bringt keinen
