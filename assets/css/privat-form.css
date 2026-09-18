@@ -5411,7 +5411,8 @@
   }
 
   html.home-theme-dark .mr-ueber__karte {
-    margin-top: var(--home-space-feature);
+    /* AP-352: Überschrift und Karte gemeinsam weiter vom Über-uns-CTA abrücken. */
+    margin-top: calc(2 * var(--home-space-block));
     padding-block: 0;
   }
 
