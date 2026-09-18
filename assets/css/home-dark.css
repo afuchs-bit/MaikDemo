@@ -3307,15 +3307,14 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
 
 @media (max-width: 480px) {
   html.home-theme-dark .mr-ueber__karte {
-    /* AP-339: Einsatzgebietkachel bis zur Neugestaltung komplett ausblenden. */
-    display: none;
+    /* AP-340: Nur die Kacheloptik entfällt; Karte und Texte bleiben sichtbar. */
     box-sizing: border-box;
     margin-top: 48px;
     padding: 20px 16px 16px;
-    border: 1px solid var(--line);
-    border-radius: 18px 5px 18px 5px;
-    background: var(--bg-elev);
-    box-shadow: 0 12px 26px rgb(0 0 0 / 14%);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   /* Auf dem iPhone wird NRW als eine ruhige, zusammenhaengende Flaeche gezeigt.
