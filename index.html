@@ -38,7 +38,7 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260913c" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260914d" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20260918c" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260918d" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -1736,25 +1736,32 @@ html.home-theme-dark body { background-color: #171916; }
             </p>
 
             <!-- ============ FOTO ============
-                 AP-328: Das Bedienfeld traegt hidden und wird von anfrage.js erst
-                 aufgedeckt, wenn am Formular ein data-endpoint steht. Ohne
-                 Empfaenger soll niemand ein Foto aussuchen, das anschliessend
-                 nirgends ankommt.
+                 AP-350: Eine Kachel in Spaltenbreite, eine Zeile hoch - Plus und
+                 Beschriftung, sonst nichts. Vorher stand hier ein eigener Block mit
+                 Ueberschrift und drei Zeilen Text; das wirkte wie ein abgesonderter
+                 Baustein und nicht wie ein Bedienteil des Formulars.
 
-                 Der Satz ueber die Ortsangaben ist kein Beiwerk: Er ist die
-                 Unterrichtung nach Art. 13 DSGVO an der Stelle, an der sie
-                 jemand tatsaechlich liest. Das Entfernen selbst passiert in
+                 Das <label> umschliesst den Eingang ohne for-Attribut: so traegt das
+                 Feld den Namen "Foto auswaehlen", ohne dass es eine Ueberschrift oder
+                 ein aria-label braucht. Muster wie .b2b-upload (privat-form.css:919).
+
+                 Kein hidden mehr: der Auftraggeber will die Seite so sehen, wie sie
+                 fertig aussieht. Der Versand bleibt davon unberuehrt - ohne
+                 data-endpoint wird weiterhin nichts gesendet.
+
+                 Der Satz ueber die Ortsangaben steht jetzt unten bei den rechtlichen
+                 Angaben. Er ist die Unterrichtung nach Art. 13 DSGVO und faellt nicht
+                 weg, nur weil die Kachel schrumpft. Das Entfernen selbst passiert in
                  anfrage.js (AP-327), bevor die Daten das Geraet verlassen. -->
-            <p class="anf__feld anf__feld--foto" data-anf-foto-feld hidden>
-              <label for="anf-fotos">Möchten Sie ein Foto mitschicken?</label>
-              <span class="anf__foto">
+            <p class="anf__feld anf__feld--foto" data-anf-foto-feld>
+              <label class="anf__foto">
                 <input type="file" id="anf-fotos" name="fotos" accept="image/jpeg,image/png,image/webp,.heic,.heif" multiple data-anf-fotos>
-                <span class="anf__foto-box">
-                  <strong>Foto auswählen</strong>
-                  <small>Bis zu 3 Bilder. Ortsangaben aus dem Foto entfernen wir, bevor es Ihr Gerät verlässt.</small>
-                  <em data-anf-foto-auswahl>Noch kein Foto gewählt</em>
+                <span class="anf__foto-kachel">
+                  <span class="anf__foto-plus" aria-hidden="true"></span>
+                  <span class="anf__foto-wort">Foto auswählen</span>
                 </span>
-              </span>
+              </label>
+              <small class="anf__foto-stand" data-anf-foto-auswahl role="status" hidden></small>
             </p>
 
             <p class="anf__einwilligung" data-anf-foto-freigabe hidden>
@@ -1775,6 +1782,7 @@ html.home-theme-dark body { background-color: #171916; }
 
             <p class="anf__rechtliches">
               <span data-anf-ohne-upload>Fotos senden Sie am schnellsten direkt per WhatsApp mit. </span>
+              Ortsangaben aus Fotos entfernen wir, bevor sie Ihr Gerät verlassen.
               Wie wir Ihre Angaben verarbeiten, steht in der <a href="datenschutz/">Datenschutzerklärung</a>.
             </p>
           </form>
@@ -2621,7 +2629,7 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/js/mobile-private-review.js?v=20260906b" defer></script>
 <script src="assets/js/private-proof.js?v=20260906a" defer></script>
 <script src="assets/js/privat-form.js?v=20260812n" defer></script>
-<script src="assets/js/anfrage.js?v=20260918a" defer></script>
+<script src="assets/js/anfrage.js?v=20260918b" defer></script>
 <script src="assets/js/home-header-morph.js?v=20260830b" defer></script>
 <script src="assets/js/ueber-video.js?v=20260905b" defer></script>
 </body>

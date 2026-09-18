@@ -110,7 +110,6 @@
   const status = kurzForm.querySelector('[data-anf-status]');
   const knopf = kurzForm.querySelector('[data-anf-senden]');
   const knopfText = kurzForm.querySelector('.anf-senden__label');
-  const fotoFeld = kurzForm.querySelector('[data-anf-foto-feld]');
   const fotoEingang = kurzForm.querySelector('[data-anf-fotos]');
   const fotoAuswahl = kurzForm.querySelector('[data-anf-foto-auswahl]');
   const freigabeZeile = kurzForm.querySelector('[data-anf-foto-freigabe]');
@@ -122,9 +121,11 @@
   // Foto-Block wird erst aufgedeckt, wenn es jemanden gibt, der ihn entgegennimmt.
   const endpunkt = (kurzForm.dataset.endpoint || '').trim();
 
-  if (endpunkt && fotoFeld) {
-    fotoFeld.hidden = false;
-    // Der Satz galt, solange WhatsApp der einzige Fotoweg war.
+  // AP-350: Die Kachel steht jetzt immer im Markup - der Auftraggeber will die
+  // Seite so sehen, wie sie fertig aussieht. Am Endpunkt haengt nur noch, ob
+  // tatsaechlich versendet wird und ob der WhatsApp-Satz stehen bleibt: solange
+  // nichts ankommt, ist er schlicht wahr.
+  if (endpunkt) {
     const whatsappSatz = document.querySelector('[data-anf-ohne-upload]');
     if (whatsappSatz) whatsappSatz.remove();
   }
@@ -136,8 +137,13 @@
     ? (bytes / 1048576).toFixed(1).replace('.', ',') + ' MB'
     : Math.ceil(bytes / 1024) + ' KB';
 
+  // Leerer Text heisst: nichts zu melden, Zeile verschwindet. Der erklaerende
+  // Satz steht seit AP-350 unten bei den rechtlichen Angaben, nicht mehr hier.
   const fotoMeldung = (text, fehlerhaft) => {
-    if (fotoAuswahl) fotoAuswahl.textContent = text;
+    if (fotoAuswahl) {
+      fotoAuswahl.textContent = text;
+      fotoAuswahl.hidden = !text;
+    }
     if (fotoHuelle) fotoHuelle.classList.toggle('is-invalid', Boolean(fehlerhaft));
   };
 
@@ -153,7 +159,7 @@
   const fotosZuruecksetzen = () => {
     vorbereitet = [];
     if (fotoEingang) fotoEingang.value = '';
-    fotoMeldung('Noch kein Foto gewählt', false);
+    fotoMeldung('', false);
     freigabeZeigen(false);
   };
 
@@ -205,17 +211,20 @@
     ev.preventDefault();
     if (!status) return;
 
-    // Ohne Endpunkt wird nichts gesendet, also gibt es auch keinen Erfolgszustand.
-    // Der Honeypot-Pfad fuehrt bewusst auf denselben Hinweis: ein echter Mensch mit
-    // Browser-Autofill darf nicht faelschlich hoeren, seine Anfrage sei eingegangen.
-    if (!endpunkt) { melden('hinweis', HINWEIS); return; }
-
+    // AP-350: Die Einwilligung wird vor dem Endpunkt geprueft. Sonst zeigte die
+    // Vorschau nur den Hinweis, ohne das Haekchen je zu verlangen - und genau
+    // dieses Verhalten soll schon jetzt aussehen wie spaeter.
     if (vorbereitet.length && freigabeHaken && !freigabeHaken.checked) {
       freigabeZeile.classList.add('is-invalid');
       freigabeHaken.focus({ preventScroll: true });
       freigabeZeile.scrollIntoView({ block: 'center', behavior: 'smooth' });
       return;
     }
+
+    // Ohne Endpunkt wird nichts gesendet, also gibt es auch keinen Erfolgszustand.
+    // Der Honeypot-Pfad fuehrt bewusst auf denselben Hinweis: ein echter Mensch mit
+    // Browser-Autofill darf nicht faelschlich hoeren, seine Anfrage sei eingegangen.
+    if (!endpunkt) { melden('hinweis', HINWEIS); return; }
 
     const daten = new FormData(kurzForm);
     // Die Originale muessen raus: im Formular haengen die unbearbeiteten Dateien

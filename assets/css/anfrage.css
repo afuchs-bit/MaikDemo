@@ -100,10 +100,13 @@
 
 /* ------------------------------------------------------------------ Foto */
 
-/* AP-328: Aufbau wie .b2b-upload (privat-form.css:919) - dort aber fuer die
-   helle Welt gebaut (--green-50 als Flaeche). Auf dunklem Grund sind die Werte
-   falsch herum, deshalb eigene Regeln mit denselben Tokens wie die Felder und
-   die drei Kanalkacheln: --anf-linie als Strich, --anf-radius als Radius. */
+/* AP-350: Eine Kachel in Spaltenbreite, eine Zeile hoch - Plus links,
+   Beschriftung daneben. Vorher ein grosser gestrichelter Kasten mit drei Zeilen
+   Inhalt; der sah aus wie ein eigener Baustein neben dem Formular.
+
+   Tokens wie an den Feldern und den drei Kanalkacheln: --anf-linie als Strich,
+   --anf-radius als Radius. Aufbau angelehnt an .b2b-upload (privat-form.css:919),
+   das aber fuer die helle Welt gebaut ist (--green-50 als Flaeche). */
 
 .anf__feld--foto { margin-bottom: .875rem; }
 
@@ -124,36 +127,78 @@
   opacity: 0;
 }
 
-.anf__foto-box {
+.anf__foto-kachel {
   display: grid;
-  gap: 4px;
-  padding: 14px 15px;
-  border: 1px dashed var(--anf-linie);
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-block-size: 56px;
+  padding: 10px 14px;
+  /* Durchgezogen, nicht gestrichelt: die Kachel soll aussehen wie ein Bedienteil
+     des Formulars, nicht wie ein abgesetzter Ablagebereich. Die Bedeutung
+     "etwas hinzufuegen" traegt schon das Plus. */
+  border: 1px solid var(--anf-linie);
   border-radius: var(--anf-radius);
   cursor: pointer;
   transition: border-color .18s var(--ease), background-color .18s var(--ease);
 }
 
-.anf__foto-box strong { color: var(--green-500); font-size: .9rem; }
-.anf__foto-box small { color: var(--anf-leise); font-size: .72rem; line-height: 1.45; }
-.anf__foto-box em { color: var(--anf-leise); font-size: .74rem; font-style: normal; line-height: 1.45; }
+/* Aufbau wie .chev in der FAQ-Liste (styles.css:1175): zwei Balken in einem
+   runden Feld, einer gedreht. Eigener Klassenname, weil .chev an details[open]
+   haengt und sich dort zum Minus dreht - das waere hier falsch. Farben wie im
+   dunklen FAQ (home-dark.css:320). */
+.anf__foto-plus {
+  position: relative;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+}
+
+.anf__foto-plus::before,
+.anf__foto-plus::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: 11px;
+  block-size: 2px;
+  border-radius: 2px;
+  background: var(--home-small-accent);
+  transform: translate(-50%, -50%);
+}
+
+.anf__foto-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+.anf__foto-wort { color: var(--anf-vg); font-size: .95rem; font-weight: 600; }
+
+/* Meldet nur, was es zu melden gibt: gewaehlte Dateien oder einen Fehler. Im
+   Ruhezustand traegt sie hidden - der erklaerende Satz steht unten bei den
+   rechtlichen Angaben. */
+.anf__foto-stand {
+  display: block;
+  margin-top: 7px;
+  color: var(--anf-leise);
+  font-size: .78rem;
+  line-height: 1.45;
+}
 
 /* Wie an den Kanalkacheln seit AP-326: dieselbe Fuellung, derselbe Rand. */
 @media (hover: hover) and (pointer: fine) {
-  .anf__foto:hover .anf__foto-box {
+  .anf__foto:hover .anf__foto-kachel {
     border-color: var(--green-500);
     background-color: rgba(140, 198, 63, .09);
   }
 }
 
-.anf__foto > input:focus-visible + .anf__foto-box {
+.anf__foto > input:focus-visible + .anf__foto-kachel {
   outline: 2px solid var(--green-500);
   outline-offset: 3px;
   border-color: var(--green-500);
 }
 
-.anf__foto.is-invalid .anf__foto-box { border-color: var(--anf-fehler); }
-.anf__foto.is-invalid .anf__foto-box em { color: var(--anf-fehler); font-weight: 700; }
+.anf__foto.is-invalid .anf__foto-kachel { border-color: var(--anf-fehler); }
+.anf__foto.is-invalid + .anf__foto-stand { color: var(--anf-fehler); font-weight: 700; }
 
 /* Die Bestaetigung erscheint erst, wenn wirklich ein Bild gewaehlt wurde. Sie
    fragt nach Rechten Dritter - Nachbarn, Kennzeichen, Hausfassaden -, die auf
@@ -608,19 +653,16 @@
     white-space: nowrap;
   }
 
-  .private-contact .anf__foto-box {
-    padding: 15px;
+  .private-contact .anf__foto-kachel {
+    min-block-size: 58px;
+    padding: 10px 15px;
     border-color: rgba(151, 206, 32, .19);
     border-radius: 15px 5px 15px 5px;
   }
 
-  .private-contact .anf__foto-box strong { font-size: .95rem; }
-  .private-contact .anf__foto-box small,
-  .private-contact .anf__foto-box em { font-size: .78rem; }
-
   /* Wie .private-contact a.anf__kanal:active weiter unten - beruehrt fuehlt sich
-     die Box an wie die drei Kacheln darueber. */
-  .private-contact .anf__foto:active .anf__foto-box {
+     die Kachel an wie die drei Kacheln ueber dem Formular. */
+  .private-contact .anf__foto:active .anf__foto-kachel {
     border-color: rgba(140, 198, 63, .22);
     background-color: rgba(49, 82, 0, .12);
   }
