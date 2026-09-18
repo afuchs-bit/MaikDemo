@@ -5363,8 +5363,8 @@
 /* AP-351: Gemeinsamer Abstandsmaßstab ab Über uns, nur auf Handy-Breiten.
    8px verbinden Beschriftung und Inhalt, 24px trennen wiederholte Elemente,
    40px führen vom Abschnittskopf zum Inhalt und vom Inhalt zum CTA.
-   Zwei 56px-Abschnittsränder ergeben 112px zwischen den Sektionen.
-   Die bereits freigegebene Einleitung vor Über uns wird nicht angesprochen. */
+   AP-353: Zwei 40px-Abschnittsränder ergeben 80px zwischen den Sektionen.
+   Vor Über uns wird nur der abschließende Leerraum nach dem CTA verkürzt. */
 @media (max-width: 480px) {
   html.home-theme-dark :is(
     .mr-ueber,
@@ -5379,13 +5379,13 @@
     --home-space-list: 24px;
     --home-space-block: 40px;
     --home-space-feature: 48px;
-    --home-space-section: 56px;
+    --home-space-section: 40px;
     padding-block: var(--home-space-section);
   }
 
-  /* Der Anschluss an den freigegebenen oberen Bereich bleibt bei 44px. */
-  html.home-theme-dark .mr-ueber {
-    padding-top: 44px;
+  /* AP-353: Auch vom Gartenwunsch-CTA zu Über uns insgesamt 80px. */
+  html.home-theme-dark .mobile-social-proof {
+    padding-bottom: 40px;
   }
 
   html.home-theme-dark .mr-ueber__kopf {
@@ -5414,6 +5414,10 @@
     /* AP-352: Überschrift und Karte gemeinsam weiter vom Über-uns-CTA abrücken. */
     margin-top: calc(2 * var(--home-space-block));
     padding-block: 0;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-focus {
+    color: var(--mobile-logo-green, #56e607);
   }
 
   html.home-theme-dark .iphone-service-directory {
@@ -5472,6 +5476,11 @@
 
   html.home-theme-dark .private-contact .anf__rechtliches {
     margin-block: var(--home-space-list) 0;
+  }
+
+  /* Der Abstand von den Fragen zum Footer gehört nicht zu den sechs Übergängen. */
+  html.home-theme-dark .private-faq {
+    padding-bottom: 56px;
   }
 
   html.home-theme-dark .private-faq-groups {
