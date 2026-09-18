@@ -4953,7 +4953,17 @@
     object-fit: contain;
   }
 
-  /* Beim einzigen Eintrag mit Unterzeile folgt der Buchstabe optisch der
+  /* Neue Buchstabengruppen ohne vorhandene Buchstabengrafik, im selben Raster. */
+  .iphone-service-card__letter--text {
+    color: var(--mobile-logo-green, #56e607);
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: 1.35rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  /* Bei Eintraegen mit Unterzeile folgt der Buchstabe optisch der
      Hauptbezeichnung statt der Mitte des gesamten Textblocks. */
   .iphone-service-card__letter--title-line {
     transform: translateY(-0.55rem);
