@@ -838,11 +838,19 @@
   const scrollToRequestForm = (behavior = 'smooth') => {
     const target = document.getElementById('anfrage');
     if (!target) return;
+    // Auf dem iPhone liegt #anfrage noch am ausgeblendeten, historischen
+    // Formularzweig. Der sichtbare Einstieg ist die Ueberschrift direkt vor
+    // der Kurz-Anfrage; so erscheinen Kontext und erste Felder gemeinsam.
+    const iphoneTarget = window.matchMedia('(max-width: 480px)').matches
+      ? document.querySelector('#kontakt .private-contact-intro')
+      : null;
     // Unterhalb 1161px wird .private-form-main fuer die responsive Reihenfolge
     // zu display:contents. Der Anker hat dann keine eigene Box und
     // scrollIntoView() springt wirkungslos an den Dokumentanfang. In diesem
     // Layout ist der sichtbare Formularkopf das semantisch gleiche Ziel.
-    const scrollTarget = target.querySelector('.b2b-form-head, [data-form-progress], [data-stage-panel="1"]') || target;
+    const scrollTarget = iphoneTarget
+      || target.querySelector('.b2b-form-head, [data-form-progress], [data-stage-panel="1"]')
+      || target;
     if (!scrollTarget) return;
     // Pfadwechsel (insbesondere der Akutpfad) verändern die Formularhöhe und
     // stellen den bisherigen Viewport über zwei Frames wieder her. Erst danach

@@ -1063,13 +1063,12 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark.home-header-morph .site-header.is-scrolled .brand-logo {
     width: clamp(158px, calc(100vw - 162px), 218px);
     height: clamp(50px, 17vw, 66px);
+    /* Eine gemeinsame Grafik haelt Name, Meisterzeile und Blueten in beiden
+       Scrollzustaenden proportional und verhindert einen sichtbaren Motivwechsel. */
+    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister.png?v=20260902a");
     transition:
       width .42s cubic-bezier(.22, 1, .36, 1),
       height .42s cubic-bezier(.22, 1, .36, 1);
-  }
-
-  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
-    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister.png?v=20260902a");
   }
 
   html.home-theme-dark.home-header-morph .header-actions {
@@ -1235,14 +1234,13 @@ html.home-theme-dark .fork-path:hover {
     display: none;
   }
 
-  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
-    width: clamp(166px, calc(100vw - 142px), 256px);
+  html.home-theme-dark.home-header-morph .site-header .brand-logo,
+  html.home-theme-dark.home-header-morph .site-header.is-scrolled .brand-logo {
     background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png?v=20260913b");
   }
 
-  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand-logo,
-  html.home-theme-dark.home-header-morph .site-header.is-home-condensed.is-scrolled .brand-logo {
-    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-balanced-full-flower.png?v=20260913b");
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
+    width: clamp(166px, calc(100vw - 142px), 256px);
   }
 }
 
@@ -2501,6 +2499,20 @@ html.home-theme-dark .mr-ueber {
   background: var(--bg);
 }
 
+/* Mobile Vertrauens- und Kurzfassungen duerfen die bestehende Tablet-/Desktop-
+   Fassung nicht veraendern. */
+html.home-theme-dark .mr-ueber__punkt-text--iphone,
+html.home-theme-dark .proof-map-copy--iphone,
+html.home-theme-dark .proof-map-seat-mark {
+  display: none;
+}
+
+html.home-theme-dark .proof-map-mobile,
+html.home-theme-dark .proof-map-places,
+html.home-theme-dark .proof-map-credit {
+  display: none;
+}
+
 /* --- Block 1: Kopf mit Eyebrow (AP-217) ---------------------------------
    Der Eyebrow ist zeichengleich das Bauteil der Rezensionssektion
    (.private-proof-since, privat-form.css:3174): 0.76rem, 800, 0.08em gesperrt,
@@ -2628,6 +2640,91 @@ html.home-theme-dark .mr-ueber__punkt-icon {
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+html.home-theme-dark .mr-ueber__punkt-icon-art {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  html.home-theme-dark .mr-ueber {
+    padding-top: 44px;
+  }
+
+  html.home-theme-dark .mr-ueber__kopf {
+    margin-bottom: 24px;
+  }
+
+  html.home-theme-dark .mr-ueber__text {
+    color: var(--home-on-dark);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte {
+    display: grid;
+    width: min(100%, 20rem);
+    margin-inline: auto;
+    gap: 2.25rem;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte li {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: .625rem;
+    padding-block: 0;
+    border-bottom: 0;
+    text-align: center;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte li > span:last-child {
+    max-width: 18.25rem;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-text--default {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-text--iphone {
+    display: block;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon--default {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art {
+    display: block;
+    width: 34px;
+    height: 34px;
+    margin-top: 0;
+    pointer-events: none;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform-origin: center;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art--dialog img {
+    transform: scale(1.36);
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art--calendar img {
+    transform: scale(1.18);
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art--partnership img {
+    transform: scale(1.45);
+  }
 }
 
 /* AP-235/AP-243: Der Weg zur Unterseite.
@@ -2861,10 +2958,14 @@ html.home-theme-dark .mr-ueber__foto-pointer { display: none; }
   /* AP-292: Das Zweierraster aus AP-282 (Foto | Button) ist mit dem Foto
      entfallen. Der Button steht unter den Kernaussagen in voller Breite, als
      eine Zeile: Blume links, Titel und Unterzeile daneben. */
-  html.home-theme-dark .mr-ueber__kopf { text-align: left; }
-  html.home-theme-dark .mr-ueber__titel { justify-content: flex-start; text-align: left; }
+  html.home-theme-dark .mr-ueber__kopf { text-align: center; }
 
-  html.home-theme-dark .mr-ueber__split { margin-top: 24px; }
+  html.home-theme-dark .mr-ueber__titel { justify-content: center; text-align: center; }
+
+  html.home-theme-dark .mr-ueber__split {
+    gap: 2.5rem;
+    margin-top: 36px;
+  }
 
   html.home-theme-dark .mr-ueber__mehr {
     display: grid;
@@ -3039,14 +3140,7 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
   line-height: 1.3;
   letter-spacing: -.01em;
   text-wrap: balance;
-  /* AP-293: Deutlich zurueckgenommen. Die .75 auf 6px sassen als harter Saum
-     direkt an den Buchstaben und liessen die Zeile leuchten wie eine Leuchtreklame.
-     Die dritte, breiteste Stufe entfaellt ganz. Damit liegt der Schleier wieder
-     in der Groessenordnung der Qualifikationen (dort .16 bzw. .3 offen), die er
-     laut Auftrag von Anfang an aufnehmen sollte. */
-  text-shadow:
-    0 0 9px rgba(242, 226, 12, .24),
-    0 0 20px rgba(242, 226, 12, .1);
+  text-shadow: none;
 }
 
 html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
@@ -3071,18 +3165,39 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
 }
 
 @media (max-width: 480px) {
+  html.home-theme-dark .mr-ueber__buehne {
+    --mr-ueber-brand-width: clamp(58px, 18vw, 72px);
+  }
+
+  html.home-theme-dark .mr-ueber__brand {
+    right: -10px;
+  }
+
+  html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
+    color: var(--mobile-logo-green, #56e607);
+  }
+
   /* Name und Besuchshinweis stehen auf dem Telefon untereinander - neben dem
      Namen bliebe fuer den Hinweis keine lesbare Spalte.
      AP-310: margin-top zurueck auf 48px, nachdem das ueberstehende Hundefoto
      entfallen ist (AP-292 hatte dafuer auf 56px erhoeht). */
   html.home-theme-dark .mr-ueber__mustertext {
     grid-template-columns: minmax(0, 1fr);
-    gap: 8px;
+    justify-items: center;
+    width: min(100%, 20.5rem);
+    margin-inline: auto;
+    gap: 10px;
     margin-top: 48px;
+    text-align: center;
   }
 
   html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
     font-size: clamp(1.25rem, 5.25vw, 1.325rem);
+  }
+
+  html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
+    max-width: 20rem;
+    text-wrap: balance;
   }
 }
 
@@ -3200,6 +3315,192 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
     align-self: start;
     justify-self: start;
     max-height: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  html.home-theme-dark .mr-ueber__karte {
+    /* AP-341: Freistehende Karte ohne Kachel, mit mehr Raum für Ortsnamen. */
+    box-sizing: border-box;
+    margin-top: 48px;
+    padding-block: 20px 16px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* Auf dem iPhone wird NRW als eine ruhige, zusammenhaengende Flaeche gezeigt.
+     Die Kreis- und Regierungsbezirksgrenzen konkurrieren dort sonst mit dem
+     kleinen Format; der Landesumriss bleibt als klare Kontur erhalten. */
+  html.home-theme-dark .mr-ueber__karte .proof-map .m-outline {
+    fill: #596351;
+    stroke: var(--home-lime);
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map :is(.m-krs, .m-fill, .m-inner, .m-node) {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map {
+    row-gap: 14px;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte {
+    justify-self: center;
+    margin-bottom: 8px;
+  }
+
+  html.home-theme-dark .mr-ueber__eyebrow--karte > svg {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map > svg.map {
+    justify-self: center;
+    width: min(100%, 280px);
+    max-height: none;
+    margin-bottom: 8px;
+  }
+
+  html.home-theme-dark .proof-map-mobile {
+    display: inline;
+  }
+
+  html.home-theme-dark .proof-map-city {
+    font-family: var(--body);
+    font-size: 176px;
+    font-weight: 500;
+    fill: #c2c7bf;
+    stroke: none;
+  }
+
+  html.home-theme-dark .proof-map-city--seat {
+    font-weight: 600;
+  }
+
+  html.home-theme-dark .proof-map-city--region {
+    font-size: 205px;
+    font-weight: 400;
+    letter-spacing: 7px;
+    fill: #d0d5cb;
+  }
+
+  html.home-theme-dark .proof-map-dot {
+    fill: var(--coral);
+    stroke: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-cap {
+    gap: 0;
+    max-width: 22rem;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  html.home-theme-dark .proof-map-copy--default,
+  html.home-theme-dark .proof-map-source--default {
+    display: none;
+  }
+
+  html.home-theme-dark .proof-map-copy--iphone {
+    display: inline;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-focus {
+    margin-bottom: 0;
+    color: var(--home-on-dark);
+    font-weight: 700;
+    font-size: 16px;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-reach {
+    margin-top: 6px;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-seat {
+    display: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-src {
+    /* AP-346: Die beiden Details stehen geschlossen auf einer gemeinsamen Zeile. */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0 16px;
+    width: 100%;
+    max-width: 22rem;
+    margin-top: -2px;
+    font-size: 12px;
+    line-height: 1.55;
+    letter-spacing: normal;
+    opacity: 1;
+  }
+
+  html.home-theme-dark .proof-map-places,
+  html.home-theme-dark .proof-map-credit {
+    display: block;
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit)[open] {
+    flex-basis: 100%;
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    color: var(--ink-mute);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit)[open] > summary::after {
+    transform: translateY(1px) rotate(225deg);
+  }
+
+  html.home-theme-dark :is(.proof-map-places, .proof-map-credit) > summary:focus-visible {
+    outline: 2px solid var(--home-lime);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  html.home-theme-dark .proof-map-credit p {
+    margin: 0 0 8px;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark .proof-map-places-copy {
+    max-width: 290px;
+    margin: 0 auto 8px;
+    color: var(--ink-mute);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .proof-map-credit a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 }
 

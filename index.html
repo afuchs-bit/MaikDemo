@@ -7,6 +7,10 @@
 <style>
 html.home-theme-dark,
 html.home-theme-dark body { background-color: #171916; }
+@media (max-width: 480px) {
+  html.home-theme-dark,
+  html.home-theme-dark body { background-color: #1B1E19; }
+}
 </style>
 <script>document.documentElement.classList.add('home-header-morph');</script>
 <!-- AP-01: Demo-Sperre. Beim Go-Live entfernen, siehe docs/go-live-checkliste.md Position 1. -->
@@ -34,13 +38,14 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260918o" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260918a" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260918j" />
 <link rel="stylesheet" href="assets/css/footer-kontakt.css?v=20260916a" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260913c" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260914d" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260918q" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20260918f" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20260918g" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
+<link rel="stylesheet" href="assets/css/cta-family.css?v=20260917b" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -228,6 +233,9 @@ html.home-theme-dark body { background-color: #171916; }
     <symbol id="private-icon-idea" viewBox="0 0 24 24">
       <path d="M12 4C8.97 4 6.5 6.47 6.5 9.5c0 2.47 1.49 3.89 2.35 4.5h6.3c.86-.61 2.35-2.03 2.35-4.5C17.5 6.47 15.03 4 12 4z" opacity=".3"/>
       <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm-4-5h8v2H8zm4-15C7.86 2 4.5 5.36 4.5 9.5c0 3.82 2.66 5.86 3.77 6.5h7.46c1.11-.64 3.77-2.68 3.77-6.5C19.5 5.36 16.14 2 12 2zm3.15 12h-6.3C7.99 13.39 6.5 11.97 6.5 9.5 6.5 6.47 8.97 4 12 4s5.5 2.47 5.5 5.5c0 2.47-1.49 3.89-2.35 4.5z"/>
+    </symbol>
+    <symbol id="maik-cta-shape" viewBox="0 0 360 64">
+      <path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/>
     </symbol>
   </defs>
 </svg>
@@ -700,14 +708,14 @@ html.home-theme-dark body { background-color: #171916; }
     </figure>
     <p class="mobile-social-proof__sr-only" data-proof-announcement aria-live="polite" aria-atomic="true"></p>
     <div class="mobile-proof-gallery__footer">
-      <a class="mobile-proof-gallery__link" href="projekte/?ansicht=galerie">
-        <svg class="mobile-proof-gallery__link-frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-        <svg class="mobile-proof-gallery__link-shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+      <a class="mobile-proof-gallery__link maik-cta maik-cta--compact maik-cta--gallery" href="projekte/?ansicht=galerie" data-cta-sync-trigger="social-proof" data-cta-sync-group="social-proof">
+        <svg class="mobile-proof-gallery__link-frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+        <svg class="mobile-proof-gallery__link-shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
         <img class="mobile-proof-gallery__link-flower" src="assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" aria-hidden="true" width="85" height="70" loading="lazy" decoding="async" />
-        <span class="mobile-proof-gallery__link-label">Zur Galerie</span>
+        <span class="mobile-proof-gallery__link-label maik-cta__label">Zur Galerie</span>
         <img class="mobile-proof-gallery__link-arrow mobile-proof-gallery__link-arrow--default" src="assets/img/icons/rohdich-gallery-arrow.png" alt="" aria-hidden="true" width="196" height="150" loading="lazy" decoding="async" />
-        <span class="mobile-proof-gallery__link-arrow-chip" aria-hidden="true">
-          <img src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" loading="lazy" decoding="async" />
+        <span class="mobile-proof-gallery__link-arrow-chip maik-cta__arrow" aria-hidden="true">
+          <img class="maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" loading="lazy" decoding="async" />
         </span>
       </a>
     </div>
@@ -722,16 +730,17 @@ html.home-theme-dark body { background-color: #171916; }
         <span class="mobile-proof-invitation__response">
           <span class="mobile-proof-invitation__answer">
             <span class="mobile-proof-invitation__answer-copy mobile-proof-invitation__answer-copy--default"><span class="mobile-social-proof__sr-only">Maiks Antwort: </span><span class="mobile-proof-invitation__answer-line">Kein Anliegen ist uns zu klein.</span><span class="mobile-proof-invitation__answer-line">Ob kurzfristig oder regelmäßig: Wir kümmern uns als Team zuverlässig und fachgerecht um Ihren Garten.</span><span class="mobile-proof-invitation__answer-line">Gemeinsam finden wir eine Lösung, die zu Ihnen passt.</span></span>
-            <span class="mobile-proof-invitation__answer-copy mobile-proof-invitation__answer-copy--iphone"><span class="mobile-social-proof__sr-only">Antwort: </span><span class="mobile-proof-invitation__answer-line">Wir kümmern uns zuverlässig um Ihren Garten.</span><span class="mobile-proof-invitation__answer-line">Regelmäßig, kurzfristig oder einmalig.</span><span class="mobile-proof-invitation__answer-line">Kein Anliegen ist uns zu klein.</span></span>
+            <span class="mobile-proof-invitation__answer-copy mobile-proof-invitation__answer-copy--iphone"><span class="mobile-social-proof__sr-only">Antwort: </span><span class="mobile-proof-invitation__answer-line">Wir kümmern uns zuverlässig um die Erhaltungspflege Ihres Gartens.</span><span class="mobile-proof-invitation__answer-line">Regelmäßig, kurzfristig oder einmalig.</span><span class="mobile-proof-invitation__answer-line">Kein Anliegen ist uns zu klein.</span></span>
           </span>
           <img class="mobile-proof-invitation__flower" src="assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async" aria-hidden="true">
         </span>
       </p>
     </div>
-    <a class="mobile-proof-request" href="#kontakt">
-      <svg class="mobile-proof-request__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-      <span class="mobile-proof-request__label">Gartenwunsch besprechen</span>
-      <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
+    <a class="mobile-proof-request maik-cta maik-cta--attention maik-cta--long" href="#kontakt" data-cta-sync-group="social-proof">
+      <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+      <svg class="mobile-proof-request__frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><svg class="mobile-proof-request__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+      <span class="mobile-proof-request__label maik-cta__label">Gartenwunsch besprechen</span>
+      <span class="mobile-proof-request__arrow maik-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
     </a>
   </div>
 </section>
@@ -762,16 +771,10 @@ html.home-theme-dark body { background-color: #171916; }
        Bis AP-243 stand darueber ein Eyebrow "Meisterbetrieb seit 2003 in Herne" -
        das Bauteil aus der Rezensionssektion (.private-proof-since). Der
        Auftraggeber hat ihn am 06.09.2026 gestrichen.
-       ACHTUNG fuer spaetere Aenderungen: sichtbar steht "seit 2003" jetzt nur
-       noch in der Fusszeile (.footer-brandline) - und die ist unter 480px
-       ausgeblendet (home-dark.css, AP-215/AP-224). Auf dem Telefon traegt die
-       Seite die Angabe damit nirgends mehr sichtbar. Maschinenlesbar bleibt sie:
-       foundingDate im JSON-LD, Meta-Description und "gegruendet" in
-       content/stammdaten.json.
-       Die H2 bleibt das Etikett "Ueber uns" - vom Auftraggeber am 06.09.2026 so
-       entschieden. Die Aussage steht darunter als Leitsatz. -->
+       Die H2 bleibt in allen Ansichten das reduzierte Etikett "Ueber uns". Der
+       naechste sichtbare Inhalt ist unmittelbar der Mustergarten. -->
   <div class="container mr-ueber__kopf">
-    <h2 class="type-section-title reveal mr-ueber__titel" id="ueber-title">
+    <h2 class="type-section-title reveal mr-ueber__titel maik-section-title maik-section-title--center" id="ueber-title">
       <span>Über uns</span>
     </h2>
   </div>
@@ -817,8 +820,8 @@ html.home-theme-dark body { background-color: #171916; }
          jetzt links die Groesse und der Ort, rechts der Besuchshinweis. -->
     <div class="mr-ueber__mustertext">
       <p class="mr-ueber__mustername">1.500 m² Mustergarten in Herne</p>
-      <p class="mr-ueber__hinweis">Besichtigungen nur nach Absprache – so können wir
-         uns Zeit nur für Sie nehmen.</p>
+      <p class="mr-ueber__hinweis">Besichtigungen nach Absprache – damit wir uns
+         persönlich Zeit für Sie nehmen können.</p>
     </div>
   </div>
 
@@ -848,12 +851,18 @@ html.home-theme-dark body { background-color: #171916; }
            Die Klasse .mr-ueber__text bleibt an der Liste, damit Groesse,
            Schnitt und Farbe aus AP-283/284 gelten. -->
       <ul class="mr-ueber__text mr-ueber__punkte reveal">
-        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 10.5l2 2 4-4"/></svg>
-          <span>Ehrliche Einschätzung statt schneller Versprechen</span></li>
-        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>
-          <span>Im Mittelpunkt stehen hochwertige Gartenanlagen, termingerecht umgesetzt</span></li>
-        <li><svg class="mr-ueber__punkt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="2.6"/><circle cx="15.5" cy="8.5" r="2.6"/><path d="M3.5 18.5a5 5 0 0 1 10 0"/><path d="M10.5 18.5a5 5 0 0 1 10 0"/></svg>
-          <span>Wir legen besonderen Wert auf partnerschaftliche Zusammenarbeit, die über Jahre hält</span></li>
+        <li><svg class="mr-ueber__punkt-icon mr-ueber__punkt-icon--default" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9l-5 4z"/><path d="M9 10.5l2 2 4-4"/></svg>
+          <span class="mr-ueber__punkt-icon-art mr-ueber__punkt-icon-art--dialog" aria-hidden="true"><img src="assets/img/icons/maik-rohdich-ehrliche-einschaetzung.png?v=20260918a" alt="" width="1254" height="1254" loading="lazy" decoding="async"></span>
+          <span class="mr-ueber__punkt-text mr-ueber__punkt-text--default">Ehrliche Einschätzung statt schneller Versprechen</span>
+          <span class="mr-ueber__punkt-text mr-ueber__punkt-text--iphone">Ehrlich beraten – ohne schnelle Versprechen.</span></li>
+        <li><svg class="mr-ueber__punkt-icon mr-ueber__punkt-icon--default" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>
+          <span class="mr-ueber__punkt-icon-art mr-ueber__punkt-icon-art--calendar" aria-hidden="true"><img src="assets/img/icons/maik-rohdich-termintreue.png?v=20260918a" alt="" width="1254" height="1254" loading="lazy" decoding="async"></span>
+          <span class="mr-ueber__punkt-text mr-ueber__punkt-text--default">Im Mittelpunkt stehen hochwertige Gartenanlagen, termingerecht umgesetzt</span>
+          <span class="mr-ueber__punkt-text mr-ueber__punkt-text--iphone">Hochwertig gebaut – termingerecht umgesetzt.</span></li>
+        <li><svg class="mr-ueber__punkt-icon mr-ueber__punkt-icon--default" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="2.6"/><circle cx="15.5" cy="8.5" r="2.6"/><path d="M3.5 18.5a5 5 0 0 1 10 0"/><path d="M10.5 18.5a5 5 0 0 1 10 0"/></svg>
+          <span class="mr-ueber__punkt-icon-art mr-ueber__punkt-icon-art--partnership" aria-hidden="true"><img src="assets/img/icons/maik-rohdich-partnerschaft.png?v=20260918a" alt="" width="1254" height="1254" loading="lazy" decoding="async"></span>
+          <span class="mr-ueber__punkt-text mr-ueber__punkt-text--default">Wir legen besonderen Wert auf partnerschaftliche Zusammenarbeit, die über Jahre hält</span>
+          <span class="mr-ueber__punkt-text mr-ueber__punkt-text--iphone">Partnerschaftlich begleitet – auch langfristig.</span></li>
       </ul>
     </div>
 
@@ -862,10 +871,14 @@ html.home-theme-dark body { background-color: #171916; }
            das hier bis AP-292 stand, ist in AP-310 ganz entfallen.
            AP-249: Logo, Linkziel und Gestaltung des Verweises bleiben
            unveraendert. -->
-      <a class="mr-ueber__mehr reveal" href="ueber-uns/">
-        <span class="mr-ueber__mehr-titel">Mehr über Maik Rohdich<img
+      <a class="mr-ueber__mehr reveal maik-cta maik-cta--attention" href="ueber-uns/">
+        <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+        <svg class="maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+        <svg class="maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+        <img class="maik-cta__brand-icon" src="assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png?v=20260915a" alt="" aria-hidden="true" width="359" height="295" loading="lazy" decoding="async">
+        <span class="mr-ueber__mehr-titel maik-cta__label"><span class="mr-ueber__mehr-titel--default">Mehr über Maik Rohdich<img
               class="mr-ueber__mehr-pfeil" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg"
-              alt="" aria-hidden="true" width="1883" height="567" loading="lazy" decoding="async" /></span>
+              alt="" aria-hidden="true" width="1883" height="567" loading="lazy" decoding="async" /></span><span class="mr-ueber__mehr-titel--iphone">Mehr über uns</span></span>
         <span class="mr-ueber__mehr-sub">Zur Über Uns Seite</span>
         <!-- AP-288: Blume ohne Schriftzug. Kein neues Bild noetig - dasselbe
              viewBox-Verfahren wie bei .mr-ueber__brand an der Mustergarten-
@@ -877,6 +890,7 @@ html.home-theme-dark body { background-color: #171916; }
           <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png"
                  width="640" height="180" />
         </svg>
+        <span class="maik-cta__arrow" aria-hidden="true"><img class="maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
       </a>
     </div>
   </div>
@@ -886,10 +900,10 @@ html.home-theme-dark body { background-color: #171916; }
        Nicht kopiert: die Karten-SVG fuehrt eigene IDs, unter anderem den Filter
        seat-schatten des Standortzeichens. Ein zweites Vorkommen haette sie
        verdoppelt und die Zuordnung unbestimmt gemacht. -->
-  <div class="container mr-ueber__karte">
+  <div class="container mr-ueber__karte" id="einsatzgebiet">
     <figure class="proof-map reveal">
       <svg class="map" viewBox="-1158 -1530 3879 3829" role="img"
-           aria-label="Nordrhein-Westfalen mit dem Einsatzgebiet um Herne, Bochum, Gelsenkirchen, Recklinghausen und Castrop-Rauxel">
+           aria-label="Nordrhein-Westfalen mit Sitz in Herne und Einsatzgebiet in ganz NRW">
 
         <!-- AP-F19: Schatten des Standortzeichens. Bewusst als SVG-Filter und nicht
              per CSS drop-shadow: der Filter rechnet im LOKALEN System des Pins, wo das
@@ -1019,6 +1033,17 @@ html.home-theme-dark body { background-color: #171916; }
                    preserveAspectRatio="xMidYMid meet"/>
           </g>
         </g>
+        <!-- AP-345: Variante B trennt regionale Orientierung und die Ortsliste.
+             Paderborn ergänzt den freien Osten; Position aus den Stadtkoordinaten
+             mit der bestehenden Projektion berechnet (Nachweis in ASSETS.md).
+             Der einzige Standortpunkt bleibt exakt bei Herne (324,9;217,7). -->
+        <g class="proof-map-mobile" aria-hidden="true">
+          <text class="proof-map-city proof-map-city--region" x="750" y="-140" text-anchor="middle">Ruhrgebiet</text>
+          <text class="proof-map-city proof-map-city--seat" x="508" y="280">Herne</text>
+          <text class="proof-map-city" x="42" y="1225" text-anchor="middle">Köln</text>
+          <text class="proof-map-city" x="1942" y="-86" text-anchor="middle">Paderborn</text>
+          <circle class="proof-map-dot" cx="324.9" cy="217.7" r="48"/>
+        </g>
       </svg>
 
       <!-- AP-217: Eyebrow ueber der Legende, damit die Kartenzeile denselben Kopf
@@ -1030,10 +1055,28 @@ html.home-theme-dark body { background-color: #171916; }
       </p>
 
       <figcaption class="proof-map-cap">
-        <em><span class="proof-map-focus">Für Ihre Anliegen in ganz NRW tätig</span><span class="proof-map-reach">Auf Anfrage auch deutschlandweit.</span></em>
-        <span class="proof-map-seat">Sitz in Herne</span>
+        <em>
+          <span class="proof-map-focus"><span class="proof-map-copy--default">Für Ihre Anliegen in ganz NRW tätig</span><span class="proof-map-copy--iphone">In ganz NRW für Sie da.</span></span>
+          <span class="proof-map-reach"><span class="proof-map-copy--default">Auf Anfrage auch deutschlandweit.</span><span class="proof-map-copy--iphone">Auf Anfrage auch deutschlandweit.</span></span>
+        </em>
+        <span class="proof-map-seat"><span class="proof-map-seat-mark" aria-hidden="true"><img class="proof-map-seat-pin" src="assets/img/icons/rohdich-standort.svg" alt="" width="24" height="24" loading="lazy" decoding="async"><img class="proof-map-seat-flower" src="assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="526" height="430" loading="lazy" decoding="async"></span><span>Sitz in Herne</span></span>
       </figcaption>
-      <div class="proof-map-src">Verwaltungsgrenzen: © GeoBasis-DE / BKG (dl-de/by-2-0)</div>
+      <div class="proof-map-src">
+        <span class="proof-map-source--default">Verwaltungsgrenzen: © GeoBasis-DE / BKG (dl-de/by-2-0)</span>
+        <!-- AP-346: Variante C zeigt die Reichweite direkt, Ortsdetails bei Bedarf. -->
+        <details class="proof-map-places">
+          <summary>Orte ansehen</summary>
+          <p class="proof-map-places-copy">Gelsenkirchen · Bochum · Recklinghausen · Castrop-Rauxel · Köln</p>
+        </details>
+        <details class="proof-map-credit">
+          <summary aria-label="Kartennachweis: © BKG">© BKG</summary>
+          <p>Verwaltungsgebiete VG2500: © GeoBasis-DE / <a href="https://www.bkg.bund.de">BKG</a> 2026,
+            <a href="https://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a> (Daten verändert).</p>
+          <p><a href="https://sg.geodatenzentrum.de/web_public/gdz/dokumentation/deu/vg2500.pdf">Datensatz VG2500</a> ·
+            <a href="https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/datenquellen_vg_nuts.pdf">Datenquellen</a>.
+            Grenzen vereinfacht, Farben angepasst und Ortsbeschriftungen ergänzt.</p>
+        </details>
+      </div>
     </figure>
   </div>
 
@@ -1043,7 +1086,7 @@ html.home-theme-dark body { background-color: #171916; }
   <div class="container">
     <div class="b2b-request-head reveal">
       <div class="private-request-head-copy">
-        <h2 class="type-section-title" id="b2b-request-paths-title">Unsere Leistungen von A bis Z im Überblick</h2>
+        <h2 class="type-section-title maik-section-title maik-section-title--center" id="b2b-request-paths-title">Unsere Leistungen von A bis Z im Überblick</h2>
         <p class="b2b-request-intro">Wählen Sie den passenden Bereich: Starten Sie direkt Ihre Anfrage oder informieren Sie sich zuerst über die einzelnen Leistungen.</p>
       </div>
       <a class="form-emergency-shortcut private-request-emergency" href="#anfrage" data-prefill-bereich="sturmschaden" aria-label="Akuten Sturm- oder Baumschaden melden, Notfalltelefon 0171 173 89 43">
@@ -1054,27 +1097,31 @@ html.home-theme-dark body { background-color: #171916; }
     </div>
     <div class="iphone-service-directory" aria-label="Leistungen für Privatkunden">
       <a class="iphone-service-feature iphone-service-feature--emergency" href="privatkunden/leistungen/sturmnotdienst/" aria-label="24 Stunden Baum- und Sturmnotdienst ansehen">
-        <span class="iphone-service-feature__media" aria-hidden="true">
-          <picture><source type="image/avif" srcset="assets/img/leistungen-mobile/notdienst-640.avif 640w, assets/img/leistungen-mobile/notdienst-1200.avif 1200w" sizes="(max-width: 404px) calc(100vw - 48px), 640px"><source type="image/webp" srcset="assets/img/leistungen-mobile/notdienst-640.webp 640w, assets/img/leistungen-mobile/notdienst-1200.webp 1200w" sizes="(max-width: 404px) calc(100vw - 48px), 640px"><img src="assets/img/leistungen-mobile/notdienst-1200.webp" alt="" width="1200" height="500" loading="lazy" decoding="async"></picture>
-        </span>
         <span class="iphone-service-feature__body">
           <span class="iphone-service-feature__eyebrow">Rund um die Uhr erreichbar</span>
           <strong>24h Baum- &amp; Sturmnotdienst</strong>
-          <span class="iphone-service-feature__meta">0171 / 173 89 43 <b aria-hidden="true">→</b></span>
+          <span class="iphone-service-feature__meta">0171 / 173 89 43 <b aria-hidden="true"><img src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></b></span>
         </span>
       </a>
 
-      <!-- AP-317: Aus dem zweispaltigen Kachelraster wird eine A-Z-Liste.
-           Je Zeile: gruener Anfangsbuchstabe (nur beim ersten Eintrag einer
-           Buchstabengruppe), Name, quadratisches Foto rechts. Reihenfolge,
-           Namen, Ziele, aria-Label und Bilder sind unveraendert. Die
-           Bluete hinter dem Namen ist entfallen [OFFEN: O2].
+      <!-- AP-329: Alphabetische A-Z-Liste mit aktualisierten Bezeichnungen.
+           Je Zeile: gruener Anfangsbuchstabe beim ersten Eintrag einer
+           Buchstabengruppe, Name und optionaler Untertext, Foto rechts.
+           AP-334: Die sechs neuen Eintraege zeigen ausgewaehlte Fotos aus
+           dem Drive-Ordner des Auftraggebers im vorhandenen 88px-Raster.
+           Ohne eigene Detailseite fuehrt ihr Link zum Anfrageformular.
            Die Liste ist weiterhin nur bis 480px sichtbar. -->
       <ul class="iphone-service-grid" aria-label="Alle weiteren Leistungen">
         <li class="iphone-service-row iphone-service-row--start">
           <a class="iphone-service-card" href="privatkunden/leistungen/baumarbeiten/" aria-label="Baumfällung ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">B</span><span class="iphone-service-card__title"><strong>Baumfällung</strong></span>
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-b.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Baumfällung</strong></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/baumfaellung-480.avif 480w, assets/img/leistungen-mobile/baumfaellung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/baumfaellung-480.webp 480w, assets/img/leistungen-mobile/baumfaellung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/baumfaellung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          </a>
+        </li>
+        <li class="iphone-service-row">
+          <a class="iphone-service-card" href="privatkunden/leistungen/baumkontrolle/" aria-label="Baumkontrolle ansehen">
+            <span class="iphone-service-card__title"><strong>Baumkontrolle</strong></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/baumkontrolle-480.avif 480w, assets/img/leistungen-mobile/baumkontrolle-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/baumkontrolle-480.webp 480w, assets/img/leistungen-mobile/baumkontrolle-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/baumkontrolle-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <li class="iphone-service-row">
@@ -1083,10 +1130,22 @@ html.home-theme-dark body { background-color: #171916; }
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/baumpflege-480.avif 480w, assets/img/leistungen-mobile/baumpflege-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/baumpflege-480.webp 480w, assets/img/leistungen-mobile/baumpflege-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/baumpflege-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
+        <li class="iphone-service-row">
+          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Beleuchtung ansehen">
+            <span class="iphone-service-card__title"><strong>Beleuchtung</strong></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/gartenbeleuchtung-480.avif 480w, assets/img/leistungen-mobile/gartenbeleuchtung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/gartenbeleuchtung-480.webp 480w, assets/img/leistungen-mobile/gartenbeleuchtung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/gartenbeleuchtung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          </a>
+        </li>
         <li class="iphone-service-row iphone-service-row--start">
           <a class="iphone-service-card" href="privatkunden/leistungen/dachbegruenung/" aria-label="Dachbegrünung ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">D</span><span class="iphone-service-card__title"><strong>Dachbegrünung</strong></span>
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-d.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Dachbegrünung</strong></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/dachbegruenung-480.avif 480w, assets/img/leistungen-mobile/dachbegruenung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/dachbegruenung-480.webp 480w, assets/img/leistungen-mobile/dachbegruenung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/dachbegruenung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          </a>
+        </li>
+        <li class="iphone-service-row iphone-service-row--start">
+          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Entwässerung ansehen">
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-e.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Entwässerung</strong></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/gartenentwaesserung-480.avif 480w, assets/img/leistungen-mobile/gartenentwaesserung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/gartenentwaesserung-480.webp 480w, assets/img/leistungen-mobile/gartenentwaesserung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/gartenentwaesserung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <!-- AP-325: Neues Foto des Auftraggebers - die Baugrube statt der
@@ -1098,27 +1157,21 @@ html.home-theme-dark body { background-color: #171916; }
              der Inhalt wechselt - ohne ihn zeigt ein Geraet mit altem Cache
              weiter das alte Bild. Nur diese Zeile traegt ihn, alle uebrigen
              Dateien des Ordners sind unveraendert. -->
-        <li class="iphone-service-row iphone-service-row--start">
+        <li class="iphone-service-row">
           <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Erd- und Baggerarbeiten ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">E</span><span class="iphone-service-card__title"><strong>Erd- &amp; Baggerarbeiten</strong></span>
+            <span class="iphone-service-card__title"><strong>Erd- &amp; Baggerarbeiten</strong></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/erd-baggerarbeiten-480.avif?v=20260914a 480w, assets/img/leistungen-mobile/erd-baggerarbeiten-640.avif?v=20260914a 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/erd-baggerarbeiten-480.webp?v=20260914a 480w, assets/img/leistungen-mobile/erd-baggerarbeiten-640.webp?v=20260914a 640w" sizes="88px"><img src="assets/img/leistungen-mobile/erd-baggerarbeiten-480.webp?v=20260914a" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <li class="iphone-service-row iphone-service-row--start">
-          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Gartenbeleuchtung ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">G</span><span class="iphone-service-card__title"><strong>Garten<wbr>beleuchtung</strong></span>
-            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/gartenbeleuchtung-480.avif 480w, assets/img/leistungen-mobile/gartenbeleuchtung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/gartenbeleuchtung-480.webp 480w, assets/img/leistungen-mobile/gartenbeleuchtung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/gartenbeleuchtung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          <a class="iphone-service-card" href="privatkunden/leistungen/terrasse-pflasterarbeiten/" aria-label="Findlinge und Natursteineinfassungen ansehen">
+            <span class="iphone-service-card__letter iphone-service-card__letter--title-line" aria-hidden="true"><img src="assets/img/icons/leistung-f.png" alt="" width="1254" height="1254" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Findlinge</strong><small>und Naturstein<wbr>einfassungen</small></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/naturstein-findlinge-480.avif 480w, assets/img/leistungen-mobile/naturstein-findlinge-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/naturstein-findlinge-480.webp 480w, assets/img/leistungen-mobile/naturstein-findlinge-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/naturstein-findlinge-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
-        <li class="iphone-service-row">
-          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Gartenentwässerung ansehen">
-            <span class="iphone-service-card__title"><strong>Garten<wbr>entwässerung</strong></span>
-            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/gartenentwaesserung-480.avif 480w, assets/img/leistungen-mobile/gartenentwaesserung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/gartenentwaesserung-480.webp 480w, assets/img/leistungen-mobile/gartenentwaesserung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/gartenentwaesserung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
-          </a>
-        </li>
-        <li class="iphone-service-row">
+        <li class="iphone-service-row iphone-service-row--start">
           <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Gartengestaltung ansehen">
-            <span class="iphone-service-card__title"><strong>Gartengestaltung</strong></span>
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-g.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Gartengestaltung</strong></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/gartengestaltung-480.avif 480w, assets/img/leistungen-mobile/gartengestaltung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/gartengestaltung-480.webp 480w, assets/img/leistungen-mobile/gartengestaltung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/gartengestaltung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
@@ -1130,19 +1183,31 @@ html.home-theme-dark body { background-color: #171916; }
         </li>
         <li class="iphone-service-row iphone-service-row--start">
           <a class="iphone-service-card" href="privatkunden/leistungen/holzverkauf/" aria-label="Kaminholz ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">K</span><span class="iphone-service-card__title"><strong>Kaminholz</strong></span>
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-k.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Kaminholz</strong></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/kaminholz-480.avif 480w, assets/img/leistungen-mobile/kaminholz-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/kaminholz-480.webp 480w, assets/img/leistungen-mobile/kaminholz-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/kaminholz-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <li class="iphone-service-row iphone-service-row--start">
-          <a class="iphone-service-card" href="privatkunden/leistungen/terrasse-pflasterarbeiten/" aria-label="Naturstein und Findlinge ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">N</span><span class="iphone-service-card__title"><strong>Naturstein &amp; Findlinge</strong></span>
-            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/naturstein-findlinge-480.avif 480w, assets/img/leistungen-mobile/naturstein-findlinge-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/naturstein-findlinge-480.webp 480w, assets/img/leistungen-mobile/naturstein-findlinge-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/naturstein-findlinge-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          <a class="iphone-service-card" href="#anfrage" aria-label="Nassschneidearbeiten anfragen">
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-n.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Nassschneide<wbr>arbeiten</strong></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/nassschneidearbeiten-480.avif 480w, assets/img/leistungen-mobile/nassschneidearbeiten-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/nassschneidearbeiten-480.webp 480w, assets/img/leistungen-mobile/nassschneidearbeiten-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/nassschneidearbeiten-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <li class="iphone-service-row iphone-service-row--start">
+          <a class="iphone-service-card" href="gewerbekunden/leistungen/aussenanlagenpflege/" aria-label="Objekt- und Grünflächenpflege ansehen">
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-o.png" alt="" width="1254" height="1254" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Objekt- &amp; Grünflächen<wbr>pflege</strong></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/objekt-gruenflaechenpflege-480.avif 480w, assets/img/leistungen-mobile/objekt-gruenflaechenpflege-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/objekt-gruenflaechenpflege-480.webp 480w, assets/img/leistungen-mobile/objekt-gruenflaechenpflege-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/objekt-gruenflaechenpflege-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          </a>
+        </li>
+        <li class="iphone-service-row iphone-service-row--start">
+          <a class="iphone-service-card" href="privatkunden/leistungen/palmen-winterfest/" aria-label="Winterfeste Palmen ansehen">
+            <span class="iphone-service-card__letter iphone-service-card__letter--title-line" aria-hidden="true"><img src="assets/img/icons/leistung-p.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Palmen</strong><small>winterfest</small></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/winterfeste-palmen-480.avif 480w, assets/img/leistungen-mobile/winterfeste-palmen-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/winterfeste-palmen-480.webp 480w, assets/img/leistungen-mobile/winterfeste-palmen-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/winterfeste-palmen-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          </a>
+        </li>
+        <li class="iphone-service-row">
           <a class="iphone-service-card" href="privatkunden/leistungen/bepflanzung/" aria-label="Pflanzarbeiten ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">P</span><span class="iphone-service-card__title"><strong>Pflanzarbeiten</strong></span>
+            <span class="iphone-service-card__title"><strong>Pflanzarbeiten</strong></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/pflanzarbeiten-480.avif 480w, assets/img/leistungen-mobile/pflanzarbeiten-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/pflanzarbeiten-480.webp 480w, assets/img/leistungen-mobile/pflanzarbeiten-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/pflanzarbeiten-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
@@ -1159,15 +1224,21 @@ html.home-theme-dark body { background-color: #171916; }
           </a>
         </li>
         <li class="iphone-service-row iphone-service-row--start">
-          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Rasen und Rollrasen ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">R</span><span class="iphone-service-card__title"><strong>Rasen &amp; Rollrasen</strong></span>
-            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/rasen-rollrasen-480.avif 480w, assets/img/leistungen-mobile/rasen-rollrasen-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/rasen-rollrasen-480.webp 480w, assets/img/leistungen-mobile/rasen-rollrasen-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/rasen-rollrasen-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          <a class="iphone-service-card" href="#anfrage" aria-label="Rodungsarbeiten anfragen">
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-r.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Rodungsarbeiten</strong></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/rodungsarbeiten-480.avif 480w, assets/img/leistungen-mobile/rodungsarbeiten-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/rodungsarbeiten-480.webp 480w, assets/img/leistungen-mobile/rodungsarbeiten-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/rodungsarbeiten-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <li class="iphone-service-row">
-          <a class="iphone-service-card" href="privatkunden/leistungen/bepflanzung/" aria-label="Rohdichs Grubengold, Maiks eigene Gartenerde, ansehen">
-            <span class="iphone-service-card__title"><strong>Rohdichs Grubengold</strong><small>Maiks eigene Gartenerde</small></span>
-            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/rohdichs-grubengold-480.avif 480w, assets/img/leistungen-mobile/rohdichs-grubengold-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/rohdichs-grubengold-480.webp 480w, assets/img/leistungen-mobile/rohdichs-grubengold-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/rohdichs-grubengold-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          <a class="iphone-service-card" href="privatkunden/leistungen/bepflanzung/" aria-label="Rohdichs Grubengold, unser eigenes Substrat, ansehen">
+            <span class="iphone-service-card__title"><strong>Rohdichs Grubengold</strong><small>Unser eigenes Substrat</small></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/rohdichs-grubengold-480.avif?v=20260918c 480w, assets/img/leistungen-mobile/rohdichs-grubengold-640.avif?v=20260918c 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/rohdichs-grubengold-480.webp?v=20260918c 480w, assets/img/leistungen-mobile/rohdichs-grubengold-640.webp?v=20260918c 640w" sizes="88px"><img src="assets/img/leistungen-mobile/rohdichs-grubengold-480.webp?v=20260918c" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          </a>
+        </li>
+        <li class="iphone-service-row">
+          <a class="iphone-service-card" href="privatkunden/leistungen/gartengestaltung/" aria-label="Rollrasen ansehen">
+            <span class="iphone-service-card__title"><strong>Rollrasen</strong></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/rasen-rollrasen-480.avif 480w, assets/img/leistungen-mobile/rasen-rollrasen-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/rasen-rollrasen-480.webp 480w, assets/img/leistungen-mobile/rasen-rollrasen-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/rasen-rollrasen-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <!-- AP-322: Neue Leistung, alphabetisch zwischen R und T. Ziel ist die
@@ -1179,13 +1250,13 @@ html.home-theme-dark body { background-color: #171916; }
              und die Pflanzung an der Mauer rechts das Bild fuellen. -->
         <li class="iphone-service-row iphone-service-row--start">
           <a class="iphone-service-card" href="privatkunden/leistungen/bepflanzung/" aria-label="Sichtschutzbepflanzung ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">S</span><span class="iphone-service-card__title"><strong>Sichtschutz<wbr>bepflanzung</strong></span>
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-s.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Sichtschutz<wbr>bepflanzung</strong></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/sichtschutzbepflanzung-480.avif 480w, assets/img/leistungen-mobile/sichtschutzbepflanzung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/sichtschutzbepflanzung-480.webp 480w, assets/img/leistungen-mobile/sichtschutzbepflanzung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/sichtschutzbepflanzung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <li class="iphone-service-row iphone-service-row--start">
           <a class="iphone-service-card" href="privatkunden/leistungen/teichbau/" aria-label="Teichbau und Teichtechnik einschließlich Ufergestaltung ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">T</span><span class="iphone-service-card__title"><strong>Teichbau &amp; -technik</strong><small>inklusive Ufergestaltung</small></span>
+            <span class="iphone-service-card__letter iphone-service-card__letter--title-line" aria-hidden="true"><img src="assets/img/icons/leistung-t.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Teichbau &amp; -technik</strong><small>inklusive Ufergestaltung</small></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/teichbau-technik-480.avif 480w, assets/img/leistungen-mobile/teichbau-technik-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/teichbau-technik-480.webp 480w, assets/img/leistungen-mobile/teichbau-technik-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/teichbau-technik-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
@@ -1201,20 +1272,26 @@ html.home-theme-dark body { background-color: #171916; }
           </a>
         </li>
         <li class="iphone-service-row iphone-service-row--start">
+          <a class="iphone-service-card" href="#anfrage" aria-label="Herstellung der Verkehrssicherheit anfragen">
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-v.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Verkehrs<wbr>sicherheit herstellen</strong></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/verkehrssicherheit-480.avif 480w, assets/img/leistungen-mobile/verkehrssicherheit-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/verkehrssicherheit-480.webp 480w, assets/img/leistungen-mobile/verkehrssicherheit-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/verkehrssicherheit-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          </a>
+        </li>
+        <li class="iphone-service-row">
+          <a class="iphone-service-card" href="#anfrage" aria-label="Vermessungs- und Lasertechnik anfragen">
+            <span class="iphone-service-card__title"><strong>Vermessungs- &amp; Laser<wbr>technik</strong></span>
+            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/vermessung-lasertechnik-480.avif 480w, assets/img/leistungen-mobile/vermessung-lasertechnik-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/vermessung-lasertechnik-480.webp 480w, assets/img/leistungen-mobile/vermessung-lasertechnik-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/vermessung-lasertechnik-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
+          </a>
+        </li>
+        <li class="iphone-service-row">
           <a class="iphone-service-card" href="privatkunden/leistungen/vorgarten/" aria-label="Vorgartengestaltung ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">V</span><span class="iphone-service-card__title"><strong>Vorgarten<wbr>gestaltung</strong></span>
+            <span class="iphone-service-card__title"><strong>Vorgarten<wbr>gestaltung</strong></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/vorgartengestaltung-480.avif 480w, assets/img/leistungen-mobile/vorgartengestaltung-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/vorgartengestaltung-480.webp 480w, assets/img/leistungen-mobile/vorgartengestaltung-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/vorgartengestaltung-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
         <li class="iphone-service-row iphone-service-row--start">
-          <a class="iphone-service-card" href="privatkunden/leistungen/palmen-winterfest/" aria-label="Winterfeste Palmen ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">W</span><span class="iphone-service-card__title"><strong>Winterfeste Palmen</strong></span>
-            <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/winterfeste-palmen-480.avif 480w, assets/img/leistungen-mobile/winterfeste-palmen-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/winterfeste-palmen-480.webp 480w, assets/img/leistungen-mobile/winterfeste-palmen-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/winterfeste-palmen-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
-          </a>
-        </li>
-        <li class="iphone-service-row iphone-service-row--start">
           <a class="iphone-service-card" href="privatkunden/leistungen/terrasse-pflasterarbeiten/" aria-label="Zäune und Sichtschutz ansehen">
-            <span class="iphone-service-card__letter" aria-hidden="true">Z</span><span class="iphone-service-card__title"><strong>Zäune &amp; Sichtschutz</strong></span>
+            <span class="iphone-service-card__letter" aria-hidden="true"><img src="assets/img/icons/leistung-z.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Zäune &amp; Sichtschutz</strong></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/zaeune-sichtschutz-480.avif 480w, assets/img/leistungen-mobile/zaeune-sichtschutz-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/zaeune-sichtschutz-480.webp 480w, assets/img/leistungen-mobile/zaeune-sichtschutz-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/zaeune-sichtschutz-480.webp" alt="" width="640" height="640" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
@@ -1223,10 +1300,11 @@ html.home-theme-dark body { background-color: #171916; }
            Auftraggebers entfallen. Der Weg ins Formular bleibt ueber den
            Knopf "Zum Kontaktformular" darunter erhalten - er traegt
            dasselbe Ziel und dasselbe data-prefill-bereich. -->
-      <a class="mobile-proof-request iphone-service-contact-cta" href="#anfrage" data-prefill-bereich="unsicher">
-        <svg class="mobile-proof-request__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-        <span class="mobile-proof-request__label">Zum Kontaktformular</span>
-        <span class="mobile-proof-request__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
+      <a class="mobile-proof-request iphone-service-contact-cta maik-cta maik-cta--attention" href="#anfrage" data-prefill-bereich="unsicher">
+        <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+        <svg class="mobile-proof-request__frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><svg class="mobile-proof-request__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+        <span class="mobile-proof-request__label maik-cta__label">Zum Kontaktformular</span>
+        <span class="mobile-proof-request__arrow maik-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
       </a>
     </div>
 
@@ -1337,7 +1415,7 @@ html.home-theme-dark body { background-color: #171916; }
       <div class="container">
         <div class="b2b-process-intro reveal">
           <div class="b2b-process-intro-heading">
-            <h2 class="type-section-title" id="ablauf-title">In fünf Schritten zu Ihrem neuen Garten.</h2>
+            <h2 class="type-section-title maik-section-title" id="ablauf-title">In fünf Schritten zu Ihrem neuen Garten</h2>
           </div>
           <div class="b2b-process-intro-body">
             <div class="b2b-process-actions">
@@ -1432,7 +1510,7 @@ html.home-theme-dark body { background-color: #171916; }
               </span>
               <span class="step-card__body">
                 <h3>Ausarbeitung Individualangebot</h3>
-                <p>Wir stellen Ihnen die passende Lösung vor</p>
+                <p>Wir stellen Ihnen die passende Lösung vor.</p>
               </span>
             </div>
           </li>
@@ -1485,6 +1563,7 @@ html.home-theme-dark body { background-color: #171916; }
 
       <div class="container b2b-process-end-actions">
         <a class="btn btn-primary mobile-proof-request process-contact-cta" href="#anfrage" aria-describedby="private-process-reassurance">
+          <svg class="process-contact-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="process-contact-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="process-contact-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="process-contact-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
           <svg class="mobile-proof-request__frame process-contact-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="mobile-proof-request__shape process-contact-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
           <img class="process-contact-cta__flower" src="assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" aria-hidden="true" width="85" height="70" decoding="async">
           <span class="mobile-proof-request__label">Projekt anfragen</span>
@@ -1502,7 +1581,7 @@ html.home-theme-dark body { background-color: #171916; }
 <section class="section section-proof-lite private-proof-bento" aria-labelledby="proof-privat-title">
   <div class="container">
     <header class="private-proof-section-head reveal">
-      <h2 class="type-section-title" id="proof-privat-title">Vertrauen, das durch verlässliche Arbeit gewachsen ist</h2>
+      <h2 class="type-section-title maik-section-title" id="proof-privat-title">Vertrauen, das durch verlässliche Arbeit gewachsen ist</h2>
       <!-- AP-310: Der Untertitel "Echte Erfahrungen aus Gartenprojekten und
            Baumarbeiten in der Region." ist auf Wunsch des Auftraggebers
            entfallen. Der Kopf traegt jetzt allein die Ueberschrift. -->
@@ -1639,7 +1718,7 @@ html.home-theme-dark body { background-color: #171916; }
 <section class="section private-contact" id="kontakt" aria-labelledby="anfrage-title">
   <div class="container">
     <header class="private-contact-intro reveal">
-      <h2 class="type-section-title" id="anfrage-title">Der erste Schritt zu Ihrem Gartenprojekt.</h2>
+      <h2 class="type-section-title maik-section-title" id="anfrage-title">Der erste Schritt zu Ihrem Gartenprojekt</h2>
     </header>
 
     <div class="private-contact-layout">
@@ -1773,10 +1852,11 @@ html.home-theme-dark body { background-color: #171916; }
             </p>
 
             <div class="anf__abschluss">
-              <button type="submit" class="btn btn-primary" data-anf-senden>
-                <svg class="anf-senden__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="anf-senden__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-                <span class="anf-senden__label">Anfrage senden</span>
-                <span class="anf-senden__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
+              <button type="submit" class="btn btn-primary maik-cta maik-cta--attention" data-anf-senden>
+                <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+                <svg class="anf-senden__frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><svg class="anf-senden__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+                <span class="anf-senden__label maik-cta__label">Anfrage senden</span>
+                <span class="anf-senden__arrow maik-cta__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
               </button>
               <p class="anf__status" data-anf-status role="status" aria-live="polite"></p>
             </div>
@@ -2273,7 +2353,7 @@ html.home-theme-dark body { background-color: #171916; }
 <section class="section section-faq private-faq" id="faq" aria-labelledby="faq-title">
   <div class="container private-faq-wrap">
     <header class="private-faq-head reveal">
-      <h2 class="type-section-title" id="faq-title">Häufige Fragen.</h2>
+      <h2 class="type-section-title maik-section-title" id="faq-title">Häufige Fragen</h2>
     </header>
 
     <!-- BUILD:faq:start -->
@@ -2625,10 +2705,10 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/js/main.js?v=20260911a" defer></script>
 <script src="assets/js/mobile-qualifications.js?v=20260909a" defer></script>
 <script src="assets/js/mobile-social-proof-gallery.js?v=20260911c" defer></script>
-<script src="assets/js/cta-signal.js?v=20260911d" defer></script>
+<script src="assets/js/cta-signal.js?v=20260914a" defer></script>
 <script src="assets/js/mobile-private-review.js?v=20260906b" defer></script>
 <script src="assets/js/private-proof.js?v=20260906a" defer></script>
-<script src="assets/js/privat-form.js?v=20260812n" defer></script>
+<script src="assets/js/privat-form.js?v=20260914a" defer></script>
 <script src="assets/js/anfrage.js?v=20260918c" defer></script>
 <script src="assets/js/home-header-morph.js?v=20260830b" defer></script>
 <script src="assets/js/ueber-video.js?v=20260905b" defer></script>
