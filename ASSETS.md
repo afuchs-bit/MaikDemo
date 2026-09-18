@@ -201,3 +201,15 @@ pro RGB-Vorlage. Der Auftrag lautete: Schachbrett vollständig entfernen, echte 
 Transparenz erzeugen, sämtliche Zahlenformen und Proportionen erhalten, flächig
 #56E607 verwenden, eng mit Sicherheitsrand zuschneiden. Beide Versuche lieferten RGB
 ohne Alphakanal. Daher wurden die gelieferten Originale für die finalen Derivate verwendet.
+
+## Mobile Leistungsbuchstaben F und O (AP-330, 18.09.2026)
+
+Vom Auftraggeber gelieferte transparente PNG-Grafiken, unverändert übernommen:
+
+- `assets/img/icons/leistung-f.png` – 1254 × 1254 px.
+  Original: `c32ed128-5280-44f5-ab21-30b28d71321c.png`.
+- `assets/img/icons/leistung-o.png` – 1254 × 1254 px.
+  Original: `39925e25-52f4-4197-9b3c-bcf998a971c9.png`.
+
+Beide verwenden dieselbe quadratische CSS-Bühne von 1,35 rem wie die bisherigen
+Buchstabengrafiken. Deren Dateien und Größenregeln bleiben unverändert.
