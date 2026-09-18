@@ -320,3 +320,9 @@ des Kölner Doms: 50° 56′ 33,2607″ N, 6° 57′ 32,3136″ O,
 [Statistisches Jahrbuch Köln 2024, Stadtgebiet und Flächennutzung](https://www.stadt-koeln.de/mediaasset/content/pdf15/statistik-jahrbuch/statistisches_jahrbuch_2024_koeln__kap_0_stadtgebiet_und_flaechennutzung.pdf).
 Diese Änderungen betreffen ausschließlich die mobile SVG-Beschriftung und
 die bis 480 px begrenzten Stilregeln.
+
+### Dunklere mobile Ortsnamen (AP-344, 18.09.2026)
+
+Auf Wunsch des Auftraggebers verwenden die mobilen Städtenamen jetzt das
+dunklere Grau #C2C7BF statt #D9DDD5. Schriftgröße, Gewicht, Positionen,
+Kartenfläche und Standortpunkt bleiben unverändert.
