@@ -34,7 +34,7 @@ html.home-theme-dark body { background-color: #171916; }
       imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high" />
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260914a" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260918g" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260918h" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260913c" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260918i" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260902g" />
@@ -1028,16 +1028,15 @@ html.home-theme-dark body { background-color: #171916; }
                    preserveAspectRatio="xMidYMid meet"/>
           </g>
         </g>
-        <!-- AP-343: Kleinere Ortsnamen ohne Kontur, um Herne dichter angeordnet.
-             Die Textpositionen bleiben für die Lesbarkeit bewusst angenähert.
-             Der Standortpunkt bleibt exakt bei Herne (324,9;217,7). -->
+        <!-- AP-345: Variante B trennt regionale Orientierung und die Ortsliste.
+             Paderborn ergänzt den freien Osten; Position aus den Stadtkoordinaten
+             mit der bestehenden Projektion berechnet (Nachweis in ASSETS.md).
+             Der einzige Standortpunkt bleibt exakt bei Herne (324,9;217,7). -->
         <g class="proof-map-mobile" aria-hidden="true">
-          <text class="proof-map-city" x="671" y="-240" text-anchor="middle">Recklinghausen</text>
-          <text class="proof-map-city" x="1239" y="65" text-anchor="middle">Castrop-Rauxel</text>
-          <text class="proof-map-city proof-map-city--seat" x="508" y="337">Herne</text>
-          <text class="proof-map-city" x="409" y="410" text-anchor="end">Gelsenkirchen</text>
-          <text class="proof-map-city" x="480" y="604">Bochum</text>
+          <text class="proof-map-city proof-map-city--region" x="750" y="-140" text-anchor="middle">Ruhrgebiet</text>
+          <text class="proof-map-city proof-map-city--seat" x="508" y="280">Herne</text>
           <text class="proof-map-city" x="42" y="1225" text-anchor="middle">Köln</text>
+          <text class="proof-map-city" x="1942" y="-86" text-anchor="middle">Paderborn</text>
           <circle class="proof-map-dot" cx="324.9" cy="217.7" r="48"/>
         </g>
       </svg>
@@ -1051,7 +1050,15 @@ html.home-theme-dark body { background-color: #171916; }
       </p>
 
       <figcaption class="proof-map-cap">
-        <em><span class="proof-map-focus"><span class="proof-map-copy--default">Für Ihre Anliegen in ganz NRW tätig</span><span class="proof-map-copy--iphone">In ganz NRW für Sie da.</span></span><span class="proof-map-reach"><span class="proof-map-copy--default">Auf Anfrage auch deutschlandweit.</span><span class="proof-map-copy--iphone">Auf Anfrage auch deutschlandweit.</span></span></em>
+        <em>
+          <span class="proof-map-focus"><span class="proof-map-copy--default">Für Ihre Anliegen in ganz NRW tätig</span><span class="proof-map-copy--iphone">In ganz NRW für Sie da.</span></span>
+          <span class="proof-map-places">
+            <span>Gelsenkirchen · Bochum</span>
+            <span>Recklinghausen · Castrop-Rauxel</span>
+            <span>Köln</span>
+          </span>
+          <span class="proof-map-reach"><span class="proof-map-copy--default">Auf Anfrage auch deutschlandweit.</span><span class="proof-map-copy--iphone">Auf Anfrage auch deutschlandweit.</span></span>
+        </em>
         <span class="proof-map-seat"><span class="proof-map-seat-mark" aria-hidden="true"><img class="proof-map-seat-pin" src="assets/img/icons/rohdich-standort.svg" alt="" width="24" height="24" loading="lazy" decoding="async"><img class="proof-map-seat-flower" src="assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="526" height="430" loading="lazy" decoding="async"></span><span>Sitz in Herne</span></span>
       </figcaption>
       <div class="proof-map-src">

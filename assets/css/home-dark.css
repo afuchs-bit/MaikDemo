@@ -2501,6 +2501,7 @@ html.home-theme-dark .proof-map-seat-mark {
 }
 
 html.home-theme-dark .proof-map-mobile,
+html.home-theme-dark .proof-map-places,
 html.home-theme-dark .proof-map-credit {
   display: none;
 }
@@ -3351,6 +3352,7 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
     justify-self: center;
     width: min(100%, 280px);
     max-height: none;
+    margin-bottom: 8px;
   }
 
   html.home-theme-dark .proof-map-mobile {
@@ -3359,7 +3361,7 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
 
   html.home-theme-dark .proof-map-city {
     font-family: var(--body);
-    font-size: 164px;
+    font-size: 176px;
     font-weight: 500;
     fill: #c2c7bf;
     stroke: none;
@@ -3367,6 +3369,13 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
 
   html.home-theme-dark .proof-map-city--seat {
     font-weight: 600;
+  }
+
+  html.home-theme-dark .proof-map-city--region {
+    font-size: 205px;
+    font-weight: 400;
+    letter-spacing: 7px;
+    fill: #d0d5cb;
   }
 
   html.home-theme-dark .proof-map-dot {
@@ -3391,11 +3400,25 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   }
 
   html.home-theme-dark .mr-ueber__karte .proof-map-focus {
-    margin-bottom: 4px;
+    margin-bottom: 0;
     color: var(--home-on-dark);
     font-weight: 700;
     font-size: 1rem;
     text-wrap: balance;
+  }
+
+  /* AP-345: Ruhige Ortsliste der freigegebenen Variante B, nur auf Mobil. */
+  html.home-theme-dark .proof-map-places {
+    display: block;
+    margin-block: 16px;
+    color: var(--ink-mute);
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.75;
+  }
+
+  html.home-theme-dark .proof-map-places > span {
+    display: block;
   }
 
   html.home-theme-dark .mr-ueber__karte .proof-map-reach {

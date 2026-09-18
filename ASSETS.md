@@ -326,3 +326,27 @@ die bis 480 px begrenzten Stilregeln.
 Auf Wunsch des Auftraggebers verwenden die mobilen Städtenamen jetzt das
 dunklere Grau #C2C7BF statt #D9DDD5. Schriftgröße, Gewicht, Positionen,
 Kartenfläche und Standortpunkt bleiben unverändert.
+
+### Mobile Karte mit regionaler Orientierung (AP-345, 18.09.2026)
+
+Die vom Auftraggeber freigegebene Variante B wird bis einschließlich 480 px
+übernommen: Auf der Karte stehen „Ruhrgebiet“, „Herne“ und „Köln“. Zusätzlich
+nutzt „Paderborn“ die freie östliche Kartenfläche als geografische Orientierung.
+Die vorhandenen NRW-Grenzen, Flächenfarbe, Kontur und der einzige rote
+Standortpunkt in Herne bleiben erhalten. Unter „In ganz NRW für Sie da.“ steht
+die Ortsliste mit Gelsenkirchen, Bochum, Recklinghausen, Castrop-Rauxel und Köln
+in drei Zeilen, gefolgt vom bestehenden Deutschlandweit-Hinweis.
+
+Quelle für Paderborn: [Geographische Lage, Stadt Paderborn](https://www.paderborn.de/rathaus-service/stadtportrait/109010100000056021.php),
+abgerufen am 18.09.2026. Die Stadt veröffentlicht für ihre Kernstadt
+51° 43′ N und 8° 45′ O. Mit der bestehenden Web-Mercator-Projektion ergibt
+sich (1941,8; −86,2), im SVG auf (1942; −86) gerundet. Der Ortsname kennzeichnet
+keinen weiteren Unternehmenssitz. Köln und Herne behalten ihre vorhandenen
+Positionen; „Ruhrgebiet“ ist eine bewusst angenäherte Regionsbeschriftung.
+
+Die Städte verwenden Nunito, 176 SVG-Einheiten (etwa 12–13 px bei 265–280 px
+Kartenbreite), Gewicht 500 und #C2C7BF; Herne Gewicht 600. Die Regionsbezeichnung
+verwendet 205 Einheiten, Gewicht 400, 7 Einheiten Laufweite und #D0D5CB.
+Die Ortsliste nutzt die vorhandene gedeckte Textfarbe, 14 px Schriftgröße und
+1,75 Zeilenhöhe. Alle neuen Stilregeln sind auf Mobil begrenzt; die Ortsliste
+und die mobile SVG-Gruppe sind auf Tablet und Desktop ausgeblendet.
