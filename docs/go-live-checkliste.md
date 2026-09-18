@@ -22,7 +22,15 @@ und `404.html` liefern.
 
 ## 2. Domain und Transport
 
-- [ ] Domain `rohdich.de` auf Cloudflare Pages aufgeschaltet, HTTPS aktiv, HSTS gesetzt
+- [ ] Domain `rohdich.de` auf **Vercel** aufgeschaltet, HTTPS aktiv, HSTS gesetzt
+- [ ] **Vercel-Tarif Pro.** Nicht optional: Hobby ist laut Nutzungsbedingungen auf
+      nicht-kommerzielle private Nutzung beschränkt, und der Auftragsverarbeitungs-
+      vertrag gilt ausdrücklich nur für Pro und Enterprise — „This Addendum applies
+      to Vercel's Processing of Personal Data as a Processor under the Agreement for
+      Customers who are on Enterprise and Pro plans."
+- [ ] Die übrigen Punkte dieses Abschnitts stammen aus der Zeit, als Cloudflare Pages
+      das Ziel war (`_redirects`, `_headers`, weiter unten „AI Crawl Control"). Sie
+      sind plattformspezifisch und müssen für Vercel neu bestimmt werden
 - [ ] Preview-Deployments liefern weiterhin `X-Robots-Tag: noindex` (`curl -I` nachweisbar)
 - [ ] `_redirects` und `_headers` greifen nachweislich (`curl -I`)
 - [ ] Alte Seite unter `rohdich.de` abgeschaltet, Weiterleitungen stichprobenartig geprüft
@@ -42,8 +50,21 @@ und `404.html` liefern.
 
 ## 4. Technik
 
-- [ ] Formular getestet: E-Mail kommt an, Bild-Upload funktioniert, ohne Einwilligung
-      kein Absenden
+- [ ] `data-endpoint="/api/anfrage"` am Kurzformular in `index.html` eingetragen —
+      ohne das bleibt das Formular im heutigen Zustand und zeigt nur den Hinweis
+- [ ] Umgebungsvariablen in Vercel gesetzt: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`,
+      `SMTP_PASS`, `EMPFAENGER`, optional `SMTP_ABSENDER`. **Niemals ins Repo** — es
+      ist öffentlich
+- [ ] `fra1` als Ausführungsort in den Projekteinstellungen sichtbar (Standard neuer
+      Projekte ist `iad1`, Washington D.C.)
+- [ ] Testanfrage **ohne** Foto kommt im Postfach an
+- [ ] Testanfrage **mit** Foto kommt an; im Anhang ist nachweislich kein EXIF mehr
+      (`exiftool` oder Bytes nach dem Marker `Exif` durchsuchen)
+- [ ] Foto ausgewählt, Häkchen nicht gesetzt → kein Absenden. Ohne Foto wird nicht
+      nach einer Einwilligung gefragt; die Anfrage selbst stützt sich auf
+      Vertragsanbahnung (Art. 6 Abs. 1 lit. b DSGVO), nicht auf Einwilligung
+- [ ] Der Satz „Fotos senden Sie am schnellsten direkt per WhatsApp mit." ist
+      verschwunden, sobald der Upload läuft (macht `anfrage.js` selbst)
 - [ ] Keine Anfrage an Google-Domains beim Seitenaufruf (Netzwerk-Tab)
 - [ ] Rich Results Test auf allen Seitentypen ohne Fehler
 - [ ] Lighthouse mobil: Performance ≥ 90, SEO 100, Accessibility ≥ 95, CLS < 0,1

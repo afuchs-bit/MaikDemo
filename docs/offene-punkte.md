@@ -108,6 +108,34 @@ eine Einwilligungs-Checkbox zu erzwingen. Begruendung: die Bearbeitung einer Anf
 sich ueblicherweise auf Vertragsanbahnung, nicht auf Einwilligung. Das ist eine Rechtsfrage —
 vor dem Go-live anwaltlich rueckversichern.
 
+**Entschieden am 18.09.2026 (AP-327 bis AP-331):** Das Formular bleibt ohne Einwilligungs-
+Checkbox. **Nur wer ein Foto beilegt**, bestaetigt vor dem Absenden, dass er die Aufnahmen
+weitergeben darf und keine ungefragten Personen darauf zu erkennen sind. Ein Bild kann
+Daten Dritter enthalten, die blosse Kontaktangabe nicht.
+
+## AP-329/330 — Foto-Upload: was noch fehlt
+
+Der Empfangsweg ist gebaut (`api/anfrage.js`, `vercel.json`, Versand in `anfrage.js`),
+aber **nicht scharfgeschaltet**: `data-endpoint` am Formular ist leer, das Foto-Feld
+bleibt deshalb unsichtbar und das Formular verhaelt sich wie bisher. Zum Einschalten
+fehlen Angaben, die nur der Auftraggeber liefern kann:
+
+| Was | Wofuer | Ohne das |
+|---|---|---|
+| SMTP-Zugangsdaten zu `maik@rohdich.de` (Host, Port, Benutzer, Passwort) | Versand aus der Funktion | kein Versand |
+| Vercel-Tarif **Pro** | Hobby verbietet kommerzielle Nutzung; der AVV nach Art. 28 DSGVO gilt nur fuer Pro und Enterprise | keine Rechtsgrundlage fuer die Verarbeitung durch Vercel |
+| Aufbewahrungsdauer im Postfach | Pflichtangabe nach Art. 13 Abs. 2 lit. a DSGVO | Datenschutzerklaerung unvollstaendig |
+| Anwaltlich geprueftere Datenschutzerklaerung | siehe AP-11 weiter oben | Verstoss gegen die Unterrichtungspflicht, sobald Bilder entgegengenommen werden |
+
+Die Verarbeitungsvorgaenge sind in `content/rechtstexte/datenschutz.body.html` bereits
+ausformuliert, damit der Anwalt nur noch pruefen und einsetzen muss. Zwei `OFFEN`-Marken
+stehen dort: der Name des Auftragsverarbeiters und die Aufbewahrungsdauer.
+
+**Nicht gebaut, mit Absicht:** ein Versandweg ohne JavaScript. Ein gewoehnliches
+Formular-POST wuerde das Bild ungeschrumpft und **mit** GPS-Daten uebertragen — das
+Entfernen der Metadaten passiert im Browser. Ohne JavaScript bleibt es beim Hinweis auf
+Telefon, WhatsApp und E-Mail.
+
 ## AP-F17 — `#kontakt` zeigt seit AP-F14 auf den Gewerbe-Teaser
 
 > **Weitgehend erledigt mit AP-F20 (02.09.2026).** Der Auftraggeber hat den Gewerbe-Zweig
