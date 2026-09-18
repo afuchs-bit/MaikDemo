@@ -121,14 +121,11 @@
   // Foto-Block wird erst aufgedeckt, wenn es jemanden gibt, der ihn entgegennimmt.
   const endpunkt = (kurzForm.dataset.endpoint || '').trim();
 
-  // AP-350: Die Kachel steht jetzt immer im Markup - der Auftraggeber will die
-  // Seite so sehen, wie sie fertig aussieht. Am Endpunkt haengt nur noch, ob
-  // tatsaechlich versendet wird und ob der WhatsApp-Satz stehen bleibt: solange
-  // nichts ankommt, ist er schlicht wahr.
-  if (endpunkt) {
-    const whatsappSatz = document.querySelector('[data-anf-ohne-upload]');
-    if (whatsappSatz) whatsappSatz.remove();
-  }
+  // AP-350: Die Kachel steht immer im Markup - der Auftraggeber will die Seite so
+  // sehen, wie sie fertig aussieht. Am Endpunkt haengt nur noch, ob tatsaechlich
+  // versendet wird.
+  // AP-351: Der Hinweis auf WhatsApp ist aus der Rechtszeile entfernt; damit
+  // entfaellt auch das Aufraeumen, das hier stand.
 
   // --- Fotoauswahl -------------------------------------------------------------
   let vorbereitet = [];
