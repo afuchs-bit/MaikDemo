@@ -240,19 +240,22 @@ Positionen entsprechend der Tabelle (`south`, `centre`, `north`, `south`, `east`
 `south`), AVIF Qualität 50 / effort 4, WebP Qualität 74 / effort 6, ohne EXIF.
 Die bestehenden 88 × 88 px großen Bildflächen und alle Abstandsregeln bleiben gleich.
 
-## Produktfoto Rohdichs Grubengold (AP-335 / AP-336, 18.09.2026)
+## Produktfoto Rohdichs Grubengold (AP-335 bis AP-337, 18.09.2026)
 
 Vom Auftraggeber geliefertes Foto: `WhatsApp Image 2026-09-16 at 22.01.10.jpeg`,
 1200 × 1600 px. Unverändert lokal gesichert als
 `assets/img/_src/mobile-rohdichs-grubengold-user-20260918.jpg` (ignorierter Quellordner).
 Es ersetzt das bisherige Gartenfoto ausschließlich in der mobilen Leistungsübersicht.
 
-Auf Wunsch des Auftraggebers bleibt das vollständige Foto sichtbar. Kein Ausschnitt,
-keine Verzerrung oder inhaltliche Retusche. Derivate in 480 × 640 und 640 × 853 px.
+Auf Wunsch des Auftraggebers füllt das Foto die quadratische Kachel aus und zeigt
+möglichst viel vom Original: volle Bildbreite, 1200 × 1200 px ab x=0, y=160.
+Das erhält 75 % der ursprünglichen Bildhöhe. Die obere Produktbeschriftung und
+„PROFI-LINE“ bleiben vollständig im Ausschnitt. Keine Verzerrung oder inhaltliche Retusche.
 Derivate: `assets/img/leistungen-mobile/rohdichs-grubengold-{480,640}.{avif,webp}`,
-Sharp mit automatischer Orientierung und proportionaler Skalierung; AVIF Qualität
-50 / effort 4, WebP Qualität 74 / effort 6, ohne EXIF. `?v=20260918b` an allen
+quadratisch in 480 und 640 px, Sharp mit automatischer Orientierung, Ausschnitt
+und proportionaler Skalierung; AVIF Qualität 50 / effort 4, WebP Qualität 74 /
+effort 6, ohne EXIF. `?v=20260918c` an allen
 Bildquellen dieser Zeile verhindert die Anzeige des alten Ausschnitts aus dem Browsercache.
-`iphone-service-card__media--contain` passt das ganze Hochformat mit `object-fit: contain`
-in die bestehende Fläche ein; die leichte Bildvergrößerung ist für dieses Foto deaktiviert.
+Die bisherige `contain`-Sonderregel entfällt; es gelten dieselben Bildregeln wie
+für die übrigen Kacheln.
 Bildfläche (88 × 88 px), Zeilenhöhe und Abstände bleiben unverändert.

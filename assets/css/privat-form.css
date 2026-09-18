@@ -4969,12 +4969,6 @@
     clip-path: none;
   }
 
-  /* AP-336: Das Produktfoto bleibt innerhalb der gleichen Bildflaeche komplett. */
-  .iphone-service-card__media--contain img {
-    object-fit: contain;
-    transform: none;
-  }
-
   /* AP-317: Der Name steht in der mittleren Spalte, linksbuendig. */
   .iphone-service-card__title {
     display: grid;
