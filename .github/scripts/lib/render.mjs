@@ -415,25 +415,34 @@ export const WELTEN = {
     // sollen zeichengleich bleiben.
     navListe: [
       { slug: 'baumarbeiten', label: 'Baumfällung' },
+      { slug: 'baumkontrolle', label: 'Baumkontrolle' },
       { slug: 'baumarbeiten', label: 'Baumpflege' },
+      { slug: 'gartengestaltung', label: 'Beleuchtung' },
       { slug: 'dachbegruenung', label: 'Dachbegrünung' },
+      { slug: 'gartengestaltung', label: 'Entwässerung' },
       { slug: 'gartengestaltung', label: 'Erd- & Baggerarbeiten' },
-      { slug: 'gartengestaltung', label: 'Gartenbeleuchtung' },
-      { slug: 'gartengestaltung', label: 'Gartenentwässerung' },
+      { slug: 'terrasse-pflasterarbeiten', label: 'Findlinge und Natursteineinfassungen' },
       { slug: 'gartengestaltung', label: 'Gartengestaltung' },
       { slug: 'gartenpflege', label: 'Gartenpflege' },
       { slug: 'holzverkauf', label: 'Kaminholz' },
-      { slug: 'terrasse-pflasterarbeiten', label: 'Naturstein & Findlinge' },
+      { slug: 'nassschneidearbeiten', label: 'Nassschneidearbeiten' },
+      // Einziger Eintrag, der aus der Privatwelt herausfuehrt: die Leistung gibt
+      // es nur als Gewerbeseite. Deshalb ein ausgeschriebenes Ziel statt eines
+      // Slugs - siehe renderNavSubmenu weiter unten.
+      { href: 'gewerbekunden/leistungen/aussenanlagenpflege/', label: 'Objekt- & Grünflächenpflege' },
+      { slug: 'palmen-winterfest', label: 'Palmen winterfest' },
       { slug: 'bepflanzung', label: 'Pflanzarbeiten' },
       { slug: 'terrasse-pflasterarbeiten', label: 'Pflasterarbeiten' },
       { slug: 'pool-whirlpool-umfeld', label: 'Pool- & Whirlpoolumfeld' },
-      { slug: 'gartengestaltung', label: 'Rasen & Rollrasen' },
+      { slug: 'rodungsarbeiten', label: 'Rodungsarbeiten' },
       { slug: 'bepflanzung', label: 'Rohdichs Grubengold' },
+      { slug: 'gartengestaltung', label: 'Rollrasen' },
       { slug: 'bepflanzung', label: 'Sichtschutzbepflanzung' },
       { slug: 'teichbau', label: 'Teichbau & -technik' },
       { slug: 'terrasse-pflasterarbeiten', label: 'Terrassenbau' },
+      { slug: 'verkehrssicherheit', label: 'Verkehrssicherheit herstellen' },
+      { slug: 'vermessung-lasertechnik', label: 'Vermessungs- & Lasertechnik' },
       { slug: 'vorgarten', label: 'Vorgartengestaltung' },
-      { slug: 'palmen-winterfest', label: 'Winterfeste Palmen' },
       { slug: 'terrasse-pflasterarbeiten', label: 'Zäune & Sichtschutz' },
     ],
   },
@@ -511,8 +520,17 @@ export function renderNavSubmenu(base) {
     // Beschriftungen, was die slugs-Liste nicht kann. Ohne navListe bleibt
     // alles beim Alten (Gewerbe-Welt).
     const eintraege = welt.navListe || welt.slugs.map((slug) => ({ slug }));
+    // AP-361: Ein Eintrag darf ein eigenes Ziel mitbringen. Ohne das liesse sich
+    // nur "<welt>/leistungen/<slug>/" bilden - die A-Z-Liste der Startseite
+    // enthaelt aber auch eine Leistung, die es nur in der Gewerbewelt gibt.
+    // base wird in beiden Faellen vorangestellt, damit die Pfade auf den sechs
+    // Handseiten stimmen (index.html und 404.html liegen an der Wurzel, die
+    // uebrigen eine Ebene tiefer).
     const items = eintraege
-      .map(({ slug, label }) => `<li><a href="${base}${welt.pfad}leistungen/${slug}/">${esc(label || welt.navLabels?.[slug] || labelBySlug.get(slug) || slug)}</a></li>`)
+      .map(({ slug, label, href }) => {
+        const ziel = href || `${welt.pfad}leistungen/${slug}/`;
+        return `<li><a href="${base}${ziel}">${esc(label || welt.navLabels?.[slug] || labelBySlug.get(slug) || slug)}</a></li>`;
+      })
       .join('\n              ');
     const kopfText = welt.navKopf || welt.navLabel;
     const kopf = welt.hubEntfaellt
