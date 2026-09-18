@@ -5285,27 +5285,23 @@
   }
 }
 
-/* AP-209: Die beiden bereits freigegebenen Hintergrundtöne aus Willkommen
-   (#1B1E19) und Über uns (#171916) führen als ruhiger Rhythmus durch die
-   vollständige iPhone-Seite. Inhaltlich verbundene Bereiche teilen eine Fläche.
-   AP-289: Der Grundton der Seite ist seither #1B1E19 - siehe Regel unten. */
+/* AP-350: Der Hintergrund direkt nach dem Hero (#1B1E19) gilt durchgehend
+   für die mobile Startseite. Er ersetzt den Wechsel zwischen den beiden
+   Abschnittstönen aus AP-209; Karten behalten ihre eigenen Oberflächen. */
 .private-process-updated .step-card__copy--iphone {
   display: none;
 }
 
 @media (max-width: 480px) {
-  /* AP-289: Grundton auf den Ton der FAQ-Sektion. Die FAQ steht direkt ueber
-     dem Footer; damit laeuft ihre Flaeche ohne Kante hinter der Footer-Kachel
-     weiter. Die Kachel selbst bleibt var(--bg-dark) = #0E100D (AP-287).
-     Bewusst auch html und nicht nur body: der Streifen UNTER der Kachel haengt
-     an html - die 12px margin-bottom des Footers fallen aus dem Body-Kasten
-     heraus (Margin Collapsing), body endet an der Kachelunterkante.
-     Sichtbar ist dieser Grundton ausschliesslich in den drei Streifen um die
-     Kachel - main laeuft lueckenlos, alle acht Sektionen darin sind randbuendig
-     und haben eine eigene Hintergrundfarbe. */
+  /* Auch html färben: Der untere Abstand der eingerückten Footer-Kachel
+     liegt durch Margin Collapsing außerhalb des Body-Kastens (AP-289). */
+  html.home-theme-dark {
+    --home-page-background: #1b1e19;
+  }
+
   html.home-theme-dark,
   html.home-theme-dark body {
-    background: #1b1e19;
+    background: var(--home-page-background);
   }
 
   html.home-theme-dark .private-contact::before {
@@ -5314,25 +5310,14 @@
 
   html.home-theme-dark :is(
     .mobile-social-proof,
+    .mr-ueber,
     .private-request-paths,
+    .private-process-updated,
     .private-proof-bento,
+    .private-contact,
     .private-faq
   ) {
-    background: #1b1e19;
-  }
-
-  /* AP-287: .site-footer gehoert NICHT in diese Gruppe. Er ist kein Abschnitt
-     des Seiteninhalts, sondern der Seitenfuss - und als einziges Element der
-     Mobilansicht eingerueckt (12px) und gerundet (24px, styles.css:1652). Mit
-     #171916 haette er exakt die Farbe der Seite dahinter, die Kachel waere
-     unsichtbar. Er behaelt deshalb var(--bg-dark) = #0E100D, wie auf allen
-     37 Unterseiten. */
-  html.home-theme-dark :is(
-    .mr-ueber,
-    .private-process-updated,
-    .private-contact
-  ) {
-    background: #171916;
+    background: var(--home-page-background);
   }
 
   /* AP-287: ebenfalls ohne .site-footer. Auf einer gerundeten Kachel zeichnet
