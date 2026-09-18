@@ -4183,31 +4183,39 @@
   .private-review-autoplay { min-height: 40px; padding: 7px 13px; }
 }
 
-/* Einheitliches iPhone-Titelsystem der Startseite: warmweisse Schrift mit einer
-   sehr feinen, gedeckten Markenkontur. Die kurze Lime-Linie traegt den klaren
-   Markenakzent, ohne mit den deutlich staerkeren CTA-Flaechen zu konkurrieren. */
+/* AP-348: Freigegebene Variante G fuer die sechs mobilen Sektionsueberschriften.
+   Baloo 2, leicht kursiv und mittig, wie im Entwurfsvergleich. Die vorhandene
+   lokale Schrift wird wiederverwendet; Text, H2-IDs und Sektionsabstaende bleiben.
+   Gemeinsame Textbreite statt der bisherigen 17-/18-ch-Begrenzungen. */
 @media (max-width:480px) {
-  html.home-theme-dark .maik-section-title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    color: #fafaf6;
-    -webkit-text-stroke: .7px #6f8f3d;
-    paint-order: stroke fill;
-  }
-
-  html.home-theme-dark .maik-section-title::after {
-    content: "";
+  html.home-theme-dark h2.maik-section-title {
     display: block;
-    width: 46px;
-    height: 3px;
-    margin-top: 11px;
-    border-radius: 999px;
-    background: var(--green-500);
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 31px;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.13;
+    letter-spacing: -.015em;
+    text-align: center;
+    text-wrap: balance;
+    color: var(--home-on-dark);
+    -webkit-text-stroke: 0;
+    paint-order: normal;
   }
 
-  html.home-theme-dark .maik-section-title--center {
-    align-items: center;
+  html.home-theme-dark h2.maik-section-title::after {
+    content: none;
+    display: none;
+  }
+}
+
+@media (max-width:360px) {
+  html.home-theme-dark h2.maik-section-title {
+    font-size: 28px;
   }
 }
 
