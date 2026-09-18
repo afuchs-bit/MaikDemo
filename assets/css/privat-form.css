@@ -4184,7 +4184,7 @@
 }
 
 /* AP-348: Freigegebene Variante G fuer die sechs mobilen Sektionsueberschriften.
-   Baloo 2, leicht kursiv und mittig, wie im Entwurfsvergleich. Die vorhandene
+   Baloo 2 und mittig; AP-349 entfernt nur die Kursivstellung. Die vorhandene
    lokale Schrift wird wiederverwendet; Text, H2-IDs und Sektionsabstaende bleiben.
    Gemeinsame Textbreite statt der bisherigen 17-/18-ch-Begrenzungen. */
 @media (max-width:480px) {
@@ -4197,7 +4197,7 @@
     font-family: "Baloo 2", sans-serif;
     font-size: 31px;
     font-weight: 600;
-    font-style: italic;
+    font-style: normal;
     line-height: 1.13;
     letter-spacing: -.015em;
     text-align: center;
