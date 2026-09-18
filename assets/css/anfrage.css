@@ -141,32 +141,27 @@
   transition: border-color .18s var(--ease), background-color .18s var(--ease);
 }
 
-/* Aufbau wie .chev in der FAQ-Liste (styles.css:1175): zwei Balken in einem
-   runden Feld, einer gedreht. Eigener Klassenname, weil .chev an details[open]
-   haengt und sich dort zum Minus dreht - das waere hier falsch. Farben wie im
-   dunklen FAQ (home-dark.css:320). */
+/* AP-362: Das gezeichnete Plus des Auftraggebers steht jetzt im Kreis. Vorher
+   waren es zwei gerade Balken ueber ::before und ::after, nachgebaut nach .chev
+   aus der FAQ-Liste (styles.css:1175).
+
+   Als Hintergrundbild und nicht als <img>: Der Kreis ist rein dekorativ
+   (aria-hidden im Markup), und so bleibt das Markup unberuehrt - die Aenderung
+   liegt vollstaendig im Stylesheet.
+
+   Angezeigt wird das Zeichen 18px breit, die Datei misst 144px. Damit bleibt es
+   auch auf einem 3x-Display scharf. Die Hoehe steht auf auto, weil das Zeichen
+   mit 351:308 breiter als hoch ist - eine feste Hoehe wuerde es verzerren. */
 .anf__foto-plus {
-  position: relative;
   inline-size: 28px;
   block-size: 28px;
   border-radius: 50%;
-  background: var(--bg-soft);
+  background-color: var(--bg-soft);
+  background-image: url("../img/icons/maik-rohdich-plus.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px auto;
 }
-
-.anf__foto-plus::before,
-.anf__foto-plus::after {
-  content: "";
-  position: absolute;
-  inset-block-start: 50%;
-  inset-inline-start: 50%;
-  inline-size: 11px;
-  block-size: 2px;
-  border-radius: 2px;
-  background: var(--home-small-accent);
-  transform: translate(-50%, -50%);
-}
-
-.anf__foto-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
 
 .anf__foto-wort { color: var(--anf-vg); font-size: .95rem; font-weight: 600; }
 
