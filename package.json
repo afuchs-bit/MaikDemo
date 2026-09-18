@@ -1,0 +1,10 @@
+{
+  "name": "maik-rohdich-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Statische Website. Dieses Paket existiert allein fuer die Vercel Function in api/ - das Frontend hat keinen Build-Schritt.",
+  "type": "module",
+  "dependencies": {
+    "nodemailer": "^10.0.10"
+  }
+}
