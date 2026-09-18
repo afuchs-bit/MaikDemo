@@ -4904,9 +4904,11 @@
     min-width: 0;
   }
 
-  /* Linie nur oberhalb einer neuen Buchstabengruppe, nicht ueber der ersten. */
+  /* Linie nur beim Buchstabenwechsel. Wie die Google-Trennlinie: 1px,
+     gedecktes Gruen und transparente Spitzen, hier an beiden Enden. */
   .iphone-service-row--start {
-    border-top: 1px solid rgba(255, 255, 255, .12);
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(90deg, transparent, rgb(164 206 91 / 34%) 50%, transparent) 1;
   }
 
   .iphone-service-grid > .iphone-service-row:first-child {
