@@ -1854,22 +1854,48 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
        Fallback fuer den Moment vor der ersten Messung und fuer No-JS.
        100vh steht vor 100dvh: Safari unter 15.4 kennt dvh nicht und faellt
        auf die vh-Zeile zurueck. */
-    /* AP-343: Feste Hoehe statt nur eines Deckels. Die Karte misst zugeklappt
-       genau 396px (gemessen bei 360, 390 und 430px Breite: 8+8 Polster,
-       6 Eintraege a 47px, Instagram-Zeile 56px, 6 Abstaende a 6px). Diesen Wert
-       behaelt sie jetzt auch aufgeklappt - das Untermenue fuellt den Platz der
+    /* AP-343: Feste Hoehe statt nur eines Deckels. Die Karte behaelt ihre
+       zugeklappte Hoehe auch aufgeklappt - das Untermenue fuellt den Platz der
        ausgeblendeten Eintraege und scrollt in sich, statt die Karte auf 746px
        wachsen zu lassen.
-       Wer Menuepunkte hinzunimmt oder streicht, muss den Wert mitziehen; sonst
-       bleibt entweder Leerraum unter dem letzten Eintrag oder die Karte scrollt
-       selbst.
        min() behaelt den bisherigen Deckel als Sicherung fuer kleine Geraete. */
-    --menue-karte: 396px;
+    /* AP-371: Die Hoehe wird gerechnet, nicht gemessen. Die feste Zahl aus AP-343
+       (396px) war auf einer Unterseite ermittelt - Wurzelschrift 16px, 6 Eintraege
+       a 47px - und stimmte dort auch. Auf der Startseite nicht: Deren Wurzelschrift
+       ist fluid und ihr erster Punkt "Gewerbekunden" ist ausgeblendet, also 5
+       Eintraege a 45,5px. Dort standen 60,5px Luft unter der Instagram-Zeile.
+       Ein anderer fester Wert verschiebt das nur, weil die Eintraege mit der
+       Schrift wachsen: 44px @320, 45,5 @375, 51,5 @480. Ein auf 375px passender
+       Wert waere bei 480px zu kurz, und dann scrollt die zugeklappte Karte.
+
+       --menue-eintrag: 12+12px Polster plus die Zeile (.9rem x 1.6 Zeilenhoehe),
+       nach unten begrenzt durch das 44px-Touchziel aus AP-39.
+       + 6px je Eintrag ist der Zeilenabstand (gap), einmal je Eintrag: N-1
+       zwischen den Punkten und einer vor der Instagram-Zeile.
+       + 79px sind die Teile, die nicht mitskalieren: 4px Aussenabstand und 56px
+       Hoehe der Instagram-Zeile (8 Polster + 48 Touchziel), 16px Polster der
+       Karte und 2px Rahmen - plus 1px Spiel. Das Spiel ist noetig, weil der
+       Browser die Zeilenbox aufrundet: .9rem x 1.6 ergibt rechnerisch 21,4478px,
+       gemessen sind es 21,4925px. Ohne den Zuschlag liegt die Karte je Eintrag
+       rund 0,05px zu niedrig, und overflow-y: auto macht daraus ein 1px
+       scrollbares Feld.
+
+       Der einzige Wert, der bei Aenderungen am Menue mitzuziehen ist, ist
+       --menue-eintraege. Die Breitenabhaengigkeit rechnet sich von selbst. */
+    --menue-eintrag: max(44px, calc(1.44rem + 24px));
+    --menue-eintraege: 6;
+    --menue-karte: calc(var(--menue-eintraege) * (var(--menue-eintrag) + 6px) + 79px);
     height: min(var(--menue-karte), calc(100vh - var(--header-h, 76px) - 16px));
     height: min(var(--menue-karte), calc(100dvh - var(--header-h, 76px) - 16px));
     overflow-y: auto;
     overscroll-behavior: contain;
   }
+
+  /* AP-371: Auf der Startseite ist "Gewerbekunden" ausgeblendet
+     (home-dark.css:594) - ein Eintrag weniger als auf allen anderen Seiten.
+     Faellt die Klasse dort einmal weg (build-leistungen.mjs entfernt sie auf
+     generierten Seiten), scrollt die Karte um genau einen Eintrag. */
+  html.home-theme-dark .primary-nav.is-open .menu { --menue-eintraege: 5; }
   /* AP-39: Touchziele auf mindestens 44px. Die Eintraege lagen bei 42,9px. */
   .primary-nav.is-open .menu a,
   .primary-nav.is-open .menu-label {
@@ -1890,12 +1916,20 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
      Es sitzt am <li>, nicht am Link: Die Trennlinie haengt als ::before mit
      top: 0 am Polsterrand des <li> und bleibt deshalb liegen, wo sie ist. */
   .primary-nav.is-open .menu .menu-meta {
-    /* Spaltenbreite und Kachelgroesse stehen hier als Variablen, weil drei
-       Stellen sie gemeinsam brauchen: die Kachel selbst, die Spalte fuer die
-       Chevron-Ausrichtung und das rechte Ende der Trennlinie. Wird die Kachel
-       spaeter nachjustiert, bleibt die Linie von allein buendig. */
-    --menu-meta-spalte: 44px;
-    --menu-meta-kachel: 30px;
+    /* AP-368: --menu-meta-spalte ist entfallen. Sie hielt die Kachel rechts in
+       einer 44px-Spalte, damit sie exakt unter dem Chevron von "Leistungen"
+       sass, und aus ihr rechnete sich das rechte Ende der Trennlinie. Seit
+       Text und Kachel mittig in der Zeile stehen, gibt es nichts mehr
+       auszurichten - und die Linie steht symmetrisch statt an der Kachel. */
+    /* AP-367: 44px statt 30px - die Groesse der Kopf-Knoepfe im eingeklappten
+       Zustand (home-dark.css:1171). Ganz oben auf der Seite misst der Kopf
+       clamp(40px, 12.3077vw, 48px), also 46px bei 375px; die 44px sind der
+       Zustand, in dem Kopf und Menue meistens zusammen zu sehen sind.
+       Die Kachel fuellt damit die Spalte genau aus: Sie steht weiterhin unter
+       dem Chevron von "Leistungen", und das rechte Ende der Trennlinie faellt
+       rechnerisch auf 0, bleibt also buendig. Zum Kartenrand bleiben die 9px
+       Polster der Menuekarte. */
+    --menu-meta-kachel: 44px;
     position: relative;
     display: block;
     margin-top: 4px;
@@ -1906,10 +1940,9 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
     content: "";
     position: absolute;
     top: 0;
-    /* Links auf der Textkante der Menuepunkte, rechts buendig mit der Kachel -
-       die sitzt mittig in der Spalte, also endet sie um deren halbe Restbreite
-       vor dem Zeilenrand. */
-    inset-inline: 16px calc((var(--menu-meta-spalte) - var(--menu-meta-kachel)) / 2);
+    /* AP-368: Beidseitig 16px. Vorher lag das rechte Ende auf der Kachelkante;
+       das ergab nur Sinn, solange die Kachel rechts aussen sass. */
+    inset-inline: 16px;
     height: 1px;
     background: var(--line);
   }
@@ -1917,9 +1950,13 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
   .primary-nav.is-open .menu .menu-meta__link {
     display: flex;
     align-items: center;
+    /* AP-368: Text und Kachel stehen als Paar in der Zeilenmitte. Das linke
+       Polster von 16px faellt damit weg - es hielt den Text auf der Textkante
+       der uebrigen Menuepunkte, was bei mittiger Ausrichtung falsch waere. */
+    justify-content: center;
     gap: 12px;
     min-height: 48px;
-    padding: 0 0 0 16px;
+    padding: 0;
     color: var(--ink-mute);
     font-size: .8rem;
     font-weight: 500;
@@ -1927,17 +1964,16 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
   }
 
   /* Zwei Ebenen, weil sie zwei verschiedene Aufgaben haben:
-     .menu-meta__glyphe ist die 44px-Spalte - dieselbe Breite und dasselbe
-     margin-left:auto wie .submenu-toggle, damit die Kachel ohne geratene
-     Pixelzahl exakt unter dem Chevron von "Leistungen" sitzt.
+     .menu-meta__glyphe ist die Huelle, die die Kachel senkrecht in der Zeile
+     haelt. Ihre frueheren Aufgaben - 44px Spaltenbreite und margin-left:auto
+     wie bei .submenu-toggle - sind mit AP-368 entfallen, seit die Zeile mittig
+     steht.
      .menu-meta__kachel ist die Kachel selbst: Verlauf, Radius und weisse Glyphe
-     wie die Footer-Kachel (footer-kontakt.css:171/189), aber zwei Stufen kleiner.
-     Die Verhaeltnisse des Vorbilds sind dabei mitskaliert - Radius und Glyphe
-     stehen zur Kante wie dort (12/42 und 25/42, hier 9/30 und 18/30), sonst
-     wirkt die verkleinerte Kachel klobiger als die grosse. */
+     wie die Footer-Kachel (footer-kontakt.css:171/189).
+     Die Verhaeltnisse des Vorbilds sind mitskaliert - Radius und Glyphe stehen
+     zur Kante wie dort. AP-367: Die Footer-Kachel misst seit AP-366 46px mit
+     Radius 12 und Glyphe 27; auf 44px gerechnet sind das 12 und 26. */
   .primary-nav.is-open .menu .menu-meta__glyphe {
-    margin-left: auto;
-    min-width: var(--menu-meta-spalte);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1948,15 +1984,15 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
     place-items: center;
     width: var(--menu-meta-kachel);
     height: var(--menu-meta-kachel);
-    border-radius: 9px;
+    border-radius: 12px;
     color: #fff;
     background: radial-gradient(circle at 30% 105%, #feda75 0 20%, #fa7e1e 34%, #d62976 57%, #962fbf 76%, #4f5bd5 100%);
   }
 
   .primary-nav.is-open .menu .menu-meta__kachel svg {
     display: block;
-    width: 18px;
-    height: 18px;
+    width: 26px;
+    height: 26px;
   }
 
   /* Ring nach innen versetzt: die Menuekarte scrollt (overflow-y: auto, AP-39),
@@ -3185,6 +3221,13 @@ body.has-lightbox { overflow: hidden; }
      sagt das ausdruecklich - ohne es bliebe sie zwar auch stehen, aber nur, weil
      ihre eigene Regel (vier Klassen) staerker ist. Auf so einen Zufall soll sich
      niemand verlassen muessen. */
+  /* AP-370: Die ganze Zeile schaltet das Untermenue, also sieht sie auch so
+     aus. Die Regel .menu-item--sub > .menu-label { cursor: default } weiter
+     oben bleibt fuer den Desktop stehen - dort oeffnet das Untermenue per
+     Hover, und das Wort schaltet weiterhin nicht. */
+  .primary-nav.is-open .menu-item--sub,
+  .primary-nav.is-open .menu-item--sub > .menu-label { cursor: pointer; }
+
   .menu-item--sub.is-open { flex: 1 1 auto; min-height: 0; }
   .menu-item--sub.is-open ~ li:not(.menu-meta) { display: none; }
   /* AP-39: Der Aufklapp-Button mass 34x34px. Er sitzt direkt neben dem

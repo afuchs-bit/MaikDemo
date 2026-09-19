@@ -16,7 +16,7 @@
     "mobil":    { "anzeige": "0171 / 173 89 43", "href": "tel:+491711738943" },
     "festnetz": { "anzeige": "02325 / 58 57 90", "href": "tel:+492325585790" },
     "whatsapp": { "nummer": "491711738943", "href": "https://wa.me/491711738943" },
-    "email": "Maik@rohdich.de"
+    "email": "maik@rohdich.de"
   },
   "oeffnungszeiten": {
     "montagBisFreitag": "09:00–17:00 Uhr",

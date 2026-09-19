@@ -239,13 +239,27 @@
       li.querySelector('.submenu-toggle')?.setAttribute('aria-expanded', 'false');
     });
   };
-  document.querySelectorAll('.submenu-toggle').forEach(btn => {
-    const li = btn.closest('.menu-item--sub');
-    btn.addEventListener('click', e => {
+  // AP-370: Das Umschalten hing nur am Pfeil - das Wort "Leistungen" war ein
+  // <span> und reagierte nicht. Jetzt schaltet die ganze Zeile: Wort, Pfeil und
+  // die Luecke dazwischen, die margin-left:auto am Knopf aufspannt.
+  document.querySelectorAll('.menu-item--sub').forEach(li => {
+    const btn = li.querySelector('.submenu-toggle');
+    li.addEventListener('click', (e) => {
+      // Klicks im Untermenue sind Navigation, kein Umschalten.
+      if (e.target.closest('.nav-submenu')) return;
+      // Ausserhalb des aufgeklappten Handy-Menues bleibt es beim Knopf: Am
+      // Desktop oeffnet das Untermenue per Hover (styles.css:3134). Ein
+      // zusaetzlich gesetztes .is-open bliebe dort haengen, nachdem die Maus
+      // weggezogen ist - das Untermenue stuende offen, ohne dass es jemand
+      // aufgeklappt haette.
+      const imHandymenue = primaryNav?.classList.contains('is-open');
+      if (!imHandymenue && !e.target.closest('.submenu-toggle')) return;
       e.preventDefault();
+      // Muss bleiben: der Dokument-Zuhoerer weiter unten schliesst sonst
+      // sofort wieder, was gerade geoeffnet wurde.
       e.stopPropagation();
-      const open = li.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', String(open));
+      const offen = li.classList.toggle('is-open');
+      btn?.setAttribute('aria-expanded', String(offen));
     });
   });
   document.addEventListener('click', e => {

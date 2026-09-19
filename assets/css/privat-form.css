@@ -3970,6 +3970,14 @@
   font-size: .72rem;
   font-weight: 650;
 }
+/* AP-352: Die Fusszeile traegt zwei Fassungen. Ab 481px steht wie bisher die
+   Quelle; der Link auf alle Rezensionen ist dort ueberfluessig, weil der Knopf
+   "Alle Bewertungen auf Google ansehen" ueber der Kachel sichtbar ist.
+   display: none nimmt ihn auch aus dem Zugaenglichkeitsbaum - es entsteht also
+   kein zweiter, unsichtbarer Weg zum selben Ziel. Unter 481px ist es umgekehrt:
+   Dort steht der Knopf auf display: none (Zeile 3727), und ohne diesen Link
+   fuehrte vom Telefon aus gar nichts zu den Rezensionen. */
+.private-review-alle { display: none; }
 .private-review-details {
   margin-top: 10px;
   overflow: clip;
@@ -4373,20 +4381,166 @@
   .private-faq-head h2 { font-size: var(--type-section-title-size); }
   .private-faq-head p { font-size: var(--type-section-lead-size); line-height: 1.62; }
   .private-faq-groups { gap: 22px; }
-  .private-faq-group > h3 { margin-bottom: 9px; font-size: .67rem; }
-  .private-faq .private-faq-list { gap: 7px; }
-  .private-faq .private-faq-list summary {
-    min-height: 52px;
-    padding: 11px 13px;
-    font-size: .85rem;
-    line-height: 1.28;
+  .private-faq-group {
+    overflow: clip;
+    border: 1px solid var(--home-surface-border, rgba(49,82,0,.18));
+    border-radius: 18px 5px 18px 5px;
+    background: var(--home-surface-low, var(--bg-elev));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
   }
-  .private-faq .private-faq-list .chev { width: 26px; height: 26px; }
+  .private-faq-group > h3 {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 14px 16px 11px;
+    border-bottom: 1px solid var(--home-surface-border, rgba(49,82,0,.18));
+    font-size: .78rem;
+    letter-spacing: .085em;
+  }
+  .private-faq .private-faq-list { gap: 0; }
+  .private-faq .private-faq-list details,
+  .private-faq .private-faq-list details:last-child {
+    position: relative;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .private-faq .private-faq-list details + details {
+    border-top: 0;
+  }
+  .private-faq .private-faq-list details + details::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: var(--home-surface-border, rgba(183,203,160,.18));
+    pointer-events: none;
+  }
+  .private-faq .private-faq-list details[open] {
+    border-color: transparent;
+    background: var(--home-surface-card, var(--bg-elev));
+    box-shadow: none;
+  }
+  .private-faq .private-faq-list summary {
+    height: 68px;
+    min-height: 68px;
+    box-sizing: border-box;
+    padding: 0 14px 0 16px;
+    gap: 14px;
+    font-size: .94rem;
+    line-height: 1.32;
+  }
+  .private-faq .private-faq-list summary > span:first-child {
+    flex: 1 1 auto;
+    min-width: 0;
+    transform: translateY(1px);
+  }
+  .private-faq .private-faq-list summary:focus-visible {
+    outline-width: 2px;
+    outline-offset: -3px;
+    border-radius: 0;
+  }
+  .private-faq .private-faq-list .chev {
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(140,198,63,.52);
+    background: transparent;
+  }
+  .private-faq .private-faq-list .chev::before,
+  .private-faq .private-faq-list .chev::after {
+    background: var(--green-500);
+  }
+  .private-faq .private-faq-list details[open] .chev,
+  .private-faq .private-faq-list details.is-closing .chev {
+    border-color: rgba(140,198,63,.78);
+    background: transparent;
+  }
+  .private-faq .private-faq-list details[open] .chev::before,
+  .private-faq .private-faq-list details[open] .chev::after,
+  .private-faq .private-faq-list details.is-closing .chev::before,
+  .private-faq .private-faq-list details.is-closing .chev::after {
+    background: var(--green-500);
+  }
   .private-faq .private-faq-list .faq-body {
-    margin-inline: 13px;
-    padding: 11px 0 13px;
-    font-size: .8rem;
+    margin-inline: 16px;
+    padding: 1px 0 16px;
+    border-top: 0;
+    font-size: .9rem;
     line-height: 1.52;
+  }
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen {
+    margin-top: 22px;
+  }
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    min-height: 58px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 14px 0 18px;
+    justify-content: space-between;
+    border: 1px solid var(--home-surface-border,rgba(183,203,160,.18));
+    border-radius: 18px 5px 18px 5px;
+    background: var(--home-surface-low,var(--bg));
+    color: var(--ink);
+    font-size: .92rem;
+    font-weight: 750;
+    letter-spacing: .005em;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+    transition: background .2s var(--ease),border-color .2s var(--ease),box-shadow .2s var(--ease),transform .16s var(--ease);
+  }
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen[open] > summary {
+    border-color: rgba(140,198,63,.56);
+    background: var(--home-surface-card,var(--bg-elev));
+  }
+  @media (hover:hover) and (pointer:fine) {
+    .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary:hover {
+      border-color: rgba(140,198,63,.62);
+      background: var(--home-surface-high,var(--home-surface-card,var(--bg-elev)));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.045),0 14px 30px -22px rgba(140,198,63,.48);
+      transform: translateY(-1px);
+    }
+  }
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary:active {
+    transform: translateY(1px);
+  }
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary:focus-visible {
+    outline: 2px solid var(--yellow);
+    outline-offset: 3px;
+  }
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary > .chev {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(140,198,63,.58);
+    background: transparent;
+  }
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary > .chev::before,
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary > .chev::after {
+    background: var(--green-500);
+  }
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary > .chev::before {
+    transform: translate(-50%,-50%) translate(-3px,0) rotate(45deg);
+  }
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary > .chev::after,
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen[open] > summary > .chev::after {
+    transform: translate(-50%,-50%) translate(3px,0) rotate(-45deg);
+  }
+  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > .private-faq-groups {
+    margin-top: 22px;
+  }
+}
+
+@media (max-width:359px) {
+  .private-faq .private-faq-list summary {
+    height: 80px;
+    min-height: 80px;
   }
 }
 
@@ -4831,7 +4985,11 @@
 
   .iphone-service-feature--emergency {
     min-height: 0;
-    border-color: rgba(151, 206, 32, .24);
+    /* AP-358: Rot am Rahmen. 50 % statt der gruenen 24 % ist kein Versehen:
+       #E22219 ist deutlich dunkler als #97CE20; bei gleicher Deckkraft kaeme
+       der Rahmen nur auf 1,17:1 gegen die Kachel statt 1,69:1 und waere kaum zu
+       sehen. Mit 50 % sind es 1,57:1 - so praesent wie der gruene zuvor. */
+    border-color: rgba(226, 34, 25, .5);
     border-radius: 18px 5px 18px 5px;
     background: linear-gradient(145deg, #232720 0%, #1c201a 100%);
     box-shadow:
@@ -4850,6 +5008,9 @@
 
   .iphone-service-feature--emergency .iphone-service-feature__eyebrow {
     grid-column: 1;
+    /* AP-358: zurueck auf den Ausgangston. Rot trugen zwischenzeitlich
+       --coral-700 (AP-356) und --coral (AP-357); beides ist zurueckgenommen -
+       die Vorzeile tritt wieder zurueck, Rot tragen Rand, Nummer und Pfeil. */
     color: var(--ink-mute);
     font-size: .68rem;
     letter-spacing: .075em;
@@ -4857,6 +5018,15 @@
   }
 
   .iphone-service-feature--emergency .iphone-service-feature__body > strong {
+    /* AP-359: der Name der Leistung im kraeftigen --coral, dem Ton von "Route
+       planen". Auf der Kachelflaeche sind das 3,09:1 - vorher stand die Zeile
+       mit 13,87:1 nahezu in Weiss und war das am besten lesbare Element der
+       Kachel. Die Zeile misst 13,5px bei 320 bis 18,2px bei 430, mager und
+       kursiv; als "grosse Schrift" im Sinne der Richtlinie zaehlt sie damit
+       nicht, gefordert waeren 4,5:1.
+       Auf Ansage des Auftraggebers, nach Offenlegung der Zahlen. Wer hier
+       spaeter aufraeumt: Das ist gewollt, kein Versehen. */
+    color: var(--coral);
     font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
     font-size: 1.0625rem;
     font-style: italic;
@@ -4870,7 +5040,14 @@
     grid-column: 1;
     justify-content: flex-start;
     margin-top: 0;
-    color: var(--mobile-logo-green, #56e607);
+    /* AP-360: derselbe Ton wie die Vorzeile darueber, --ink-mute. Rot traegt
+       die Kachel jetzt an Rand, Ueberschrift und Pfeil; die Nummer tritt mit
+       der Vorzeile zurueck.
+       Ohne deren Daempfung auf .84: Die liegt am Elternelement und wuerde die
+       Pille samt Pfeil mit abdunkeln, denn das <b> haengt in derselben Zeile.
+       Die Nummer steht dadurch eine Spur heller als die Vorzeile - 6,90:1
+       gegen 5,34:1. */
+    color: var(--ink-mute);
     font-size: .78rem;
   }
 
@@ -4897,6 +5074,33 @@
     filter: none;
     transform: none;
     transition: none;
+  }
+
+  /* AP-358: Der Pfeil traegt das kraeftige --coral - dasselbe Rot wie "Route
+     planen" im Footer. Auf der fast schwarzen Pille sind das 4,07:1; als
+     Grafik braucht er 3:1. Die Telefonnummer daneben bleibt auf dem
+     aufgehellten --coral-700, weil sie auf der helleren Kachelflaeche steht,
+     wo dieses Rot nur 3,09:1 erreicht - zwei Rottoene, jeder auf seinem
+     Untergrund richtig.
+     Die Maske ist noetig, weil die Grafik ihr fill="#56E607" fest im SVG
+     traegt: An einem <img> greift weder color noch background, und eine
+     Filterkette traefe die Zielfarbe nur ungefaehr. Dieselbe Technik steht in
+     mobile-social-proof.css am Knopfrahmen.
+     Das @supports ist der Sicherheitsgurt - ohne Maskenunterstuetzung bleibt
+     das <img> stehen und der Pfeil ist gruen statt verschwunden. */
+  @supports ((mask-image: url("")) or (-webkit-mask-image: url(""))) {
+    .iphone-service-feature--emergency .iphone-service-feature__meta b img {
+      display: none;
+    }
+
+    .iphone-service-feature--emergency .iphone-service-feature__meta b::after {
+      content: "";
+      width: 2.875rem;
+      aspect-ratio: 1883 / 567;           /* Masse der Grafik */
+      background: var(--coral);
+      -webkit-mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
+              mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
+    }
   }
 
   /* AP-317: A-Z-Liste statt Kachelraster. Eine Spalte, kein Abstand zwischen
@@ -5037,9 +5241,12 @@
     outline-color: var(--home-lime, #97ce20);
   }
 
+  /* AP-358: mit dem Rahmen auf Rot. Es gibt genau eine
+     .iphone-service-feature, den Notdienst; bliebe der Wechsel gruen, blitzte
+     beim Antippen ein gruener Rahmen an einer rot umrandeten Kachel auf. */
   .iphone-service-feature:active {
-    border-color: rgba(151, 206, 32, .8);
-    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .28);
+    border-color: rgba(226, 34, 25, .8);
+    box-shadow: inset 0 0 0 1px rgba(226, 34, 25, .28);
     transform: scale(.985);
   }
 
@@ -5085,7 +5292,13 @@
     --ink: #f4f6f0;
     --ink-2: #d5dccf;
     --ink-mute: #aeb8a8;
-    --green-500: #b6d97a;
+    /* AP-349: Ein Gruen fuer die Karte, und zwar das der Marke - #8CC63F, der
+       Ton des Knopfes "Projekt anfragen" (--home-lime). Vorher stand hier ein
+       aufgehelltes #B6D97A, waehrend Rahmen und Lichtschimmer der Karte schon
+       #8CC63F trugen: zwei Gruen nebeneinander im selben Bauteil.
+       Kontrast auf dem Kartengrund #252B22: 7,09:1 - die Kategoriezeile ist
+       klein (10px, 800), 4,5:1 waeren gefordert. */
+    --green-500: #8cc63f;
     --green-700: #8cc63f;
     height: auto;
     min-height: 0;
@@ -5100,7 +5313,7 @@
   .private-review-carousel.has-review-swipe .private-review-carousel-head {
     align-items: center;
     padding: 17px 18px 16px;
-    border-bottom-color: rgba(182,217,122,.14);
+    border-bottom-color: rgba(140,198,63,.14);
     background: linear-gradient(135deg,rgba(43,53,39,.98),rgba(31,37,30,.92));
   }
 
@@ -5153,7 +5366,7 @@
     position: absolute;
     z-index: 0;
     margin: 34px 0 0 -5px;
-    color: rgba(182,217,122,.065);
+    color: rgba(140,198,63,.065);
     font-family: Georgia,serif;
     font-size: 5.4rem;
     line-height: 1;
@@ -5195,20 +5408,50 @@
     letter-spacing: .012em;
   }
 
+  /* AP-352: Auf dem Telefon tritt die Quellenangabe zurueck und die Fusszeile
+     wird zum Weg auf das Google-Profil. Der Zusatz geht dabei nicht verloren -
+     "Vorgarten-Neugestaltung" und die anderen stehen oben in derselben Karte
+     als Kategoriezeile.
+     Gruen wie der Rest der Karte (--green-500 ist hier #8CC63F, 7,09:1 auf dem
+     Kartengrund). Die Unterstreichung muss sein: Farbe allein darf einen Link
+     nicht kenntlich machen.
+     24px Mindesthoehe ist die Zielgroesse nach WCAG 2.5.8; mehr ginge nicht,
+     ohne die Karte wachsen zu lassen - ihre Hoehe haengt in dieser Breite an
+     festen Massen. */
+  .private-review-carousel.has-review-swipe .private-review-item .private-review-quelle {
+    display: none;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-item .private-review-alle {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    color: var(--green-500);
+    font-weight: 650;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-item .private-review-alle:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
   .private-review-carousel.has-review-swipe .private-review-details {
     margin-top: 15px;
-    border-color: rgba(182,217,122,.2);
-    background: linear-gradient(135deg,rgba(182,217,122,.075),rgba(255,255,255,.025));
+    border-color: rgba(140,198,63,.2);
+    background: linear-gradient(135deg,rgba(140,198,63,.075),rgba(255,255,255,.025));
   }
 
   .private-review-carousel.has-review-swipe .private-review-details:hover {
-    border-color: rgba(182,217,122,.34);
+    border-color: rgba(140,198,63,.34);
     box-shadow: 0 12px 28px -24px rgba(0,0,0,.9);
   }
 
   .private-review-carousel.has-review-swipe .private-review-details-chevron {
-    background: rgba(182,217,122,.12);
-    color: #b6d97a;
+    background: rgba(140,198,63,.12);
+    color: #8cc63f;
   }
 
   .private-review-carousel.has-review-swipe .private-review-details[open] .private-review-details-chevron {
@@ -5217,12 +5460,12 @@
   }
 
   .private-review-carousel.has-review-swipe .private-review-details[open] > summary {
-    border-bottom-color: rgba(182,217,122,.16);
+    border-bottom-color: rgba(140,198,63,.16);
   }
 
   .private-review-carousel.has-review-swipe .private-review-details blockquote {
-    border-left-color: rgba(182,217,122,.44);
-    background: rgba(182,217,122,.075);
+    border-left-color: rgba(140,198,63,.44);
+    background: rgba(140,198,63,.075);
   }
 
   .private-review-swipe-controls {
@@ -5230,7 +5473,7 @@
     min-height: 58px;
     margin: 0;
     padding: 7px 16px;
-    border-top-color: rgba(182,217,122,.14);
+    border-top-color: rgba(140,198,63,.14);
     background: linear-gradient(180deg,rgba(35,42,33,.72),rgba(29,35,28,.96));
   }
 
@@ -5252,12 +5495,21 @@
     cursor: pointer;
   }
 
+  /* AP-351: Der weisse Innenring steht wieder, auf Ansage des Auftraggebers.
+     AP-350 hatte ihn entfernt, weil er die Punkte aufhellt: Bei 7px Durchmesser
+     frisst der 1px-Ring den Rand, gemessen Mitte 140,198,63, Rand 255,255,255 -
+     die Punkte lesen sich dadurch heller als das Markengruen darunter. Das ist
+     so gewollt.
+     Die Deckkraft der inaktiven Punkte geht mit zurueck auf .32. Sie war in
+     AP-350 nur auf .6 gestiegen, um den fehlenden Ring auszugleichen (ohne ihn
+     kamen sie auf 1,98:1 gegen den Kartengrund); mit Ring uebernimmt er das
+     wieder. */
   .private-review-swipe-dots button > span {
     display: block;
     width: 7px;
     height: 7px;
     border-radius: 999px;
-    background: rgba(182,217,122,.32);
+    background: rgba(140,198,63,.32);
     box-shadow: inset 0 0 0 1px #fff;
     transition: width .2s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease);
   }
@@ -5477,7 +5729,7 @@
   }
 
   html.home-theme-dark .private-contact .anf__feld--frei {
-    margin-bottom: var(--home-space-block);
+    margin-bottom: var(--home-space-list);
   }
 
   html.home-theme-dark .private-contact .anf__rechtliches {
@@ -5497,12 +5749,12 @@
     gap: var(--home-space-copy);
   }
 
-  html.home-theme-dark .private-faq .faq-more--gruppen {
-    margin-top: 32px;
+  html.home-theme-dark .private-faq.is-faq-mobile-disclosure .faq-more--gruppen {
+    margin-top: 22px;
   }
 
-  html.home-theme-dark .private-faq .faq-more--gruppen > .private-faq-groups {
-    margin-top: var(--home-space-list);
+  html.home-theme-dark .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > .private-faq-groups {
+    margin-top: 22px;
   }
 
   html.home-theme-dark .site-footer .footer-social-iphone {
@@ -5540,8 +5792,29 @@
   }
 
   html.home-theme-dark .private-proof-bento .private-review-carousel.has-review-swipe {
+    /* AP-348: Flaeche und Rand wie die Ablauf-Kachel (.step-card) daneben. Die
+       Grundflaeche war ohnehin schon dieselbe - den sichtbaren Unterschied
+       trugen das hellere Kopfband (--home-surface-high), das dunklere Fussband
+       (--home-surface-low) und der gruenliche Rand.
+       Die drei Token werden hier umdefiniert statt in den beiden Folgeregeln:
+       Kopf und Fuss lesen sie ohnehin, und innerhalb dieses Stylesheets liest
+       sie sonst niemand, der unter dieser Karte haengt.
+       rgba(255,255,255,.12) ist --line der dunklen Welt, also genau der Wert,
+       den .step-card bekommt. Die Karte kann ihn nicht ueber var(--line) holen:
+       Sie setzt --line fuer ihren hellen Ursprung selbst auf einen dunklen Wert
+       (weiter oben in dieser Datei), der auf dunklem Grund unsichtbar waere. */
+    --home-surface-border: rgba(255, 255, 255, .12);
+    --home-surface-high: var(--home-surface-card);
+    --home-surface-low:  var(--home-surface-card);
     background: var(--home-surface-card);
-    border-color: var(--home-surface-border);
+    /* AP-353: Der Rahmen traegt jetzt das Gruen des Kastens "Vollstaendige
+       Bewertung lesen" (.private-review-details in diesem Block, rgba(140,198,63,.2)) -
+       damit ist die Randentscheidung aus AP-348 abgeloest.
+       Bewusst ein fester Wert statt var(--home-surface-border): Das Token faerbt
+       auch die beiden Querlinien in Kopf und Fuss, und die sollen neutral
+       bleiben. Wer den Rahmen spaeter nachzieht, muss also den Kasten
+       mitdenken, nicht die Linien. */
+    border-color: rgba(140, 198, 63, .2);
   }
 
   html.home-theme-dark .private-review-carousel.has-review-swipe .private-review-carousel-head {
