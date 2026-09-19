@@ -163,6 +163,18 @@
     font-size: .875rem;
     font-weight: 700;
     line-height: 1;
+    /* AP-355: Ein Pixel tiefer, auf Ansage des Auftraggebers.
+       Rechnerisch stand die Zahl schon mittig - an den gemalten Pixeln gemessen
+       lag der Tintenschwerpunkt der Sterne bei 1933,06 und der der Ziffern bei
+       1933,45, also 0,4px auseinander. Den Eindruck macht die Form: Die
+       Sternspitzen ragen oben ueber die Ziffern hinaus, die Sternbeine unten
+       darunter; die Zahl steckt beidseitig eingerueckt drin und liest sich
+       dadurch hochgesetzt.
+       .07em statt 1px, weil die Schriftgroessen dieser Zeile mit dem Fenster
+       skalieren (11,1px bei 320 bis 15,0px bei 430). Ein fester Pixelwert waere
+       auf kleinen Geraeten anteilig doppelt so viel. .07em von 13,58px sind die
+       gewuenschten rund 0,95px. */
+    transform: translateY(.07em);
   }
 
   .gate-welcome--iphone .mobile-kpi-signature__reviews {

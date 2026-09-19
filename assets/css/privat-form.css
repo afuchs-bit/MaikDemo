@@ -3970,6 +3970,14 @@
   font-size: .72rem;
   font-weight: 650;
 }
+/* AP-352: Die Fusszeile traegt zwei Fassungen. Ab 481px steht wie bisher die
+   Quelle; der Link auf alle Rezensionen ist dort ueberfluessig, weil der Knopf
+   "Alle Bewertungen auf Google ansehen" ueber der Kachel sichtbar ist.
+   display: none nimmt ihn auch aus dem Zugaenglichkeitsbaum - es entsteht also
+   kein zweiter, unsichtbarer Weg zum selben Ziel. Unter 481px ist es umgekehrt:
+   Dort steht der Knopf auf display: none (Zeile 3727), und ohne diesen Link
+   fuehrte vom Telefon aus gar nichts zu den Rezensionen. */
+.private-review-alle { display: none; }
 .private-review-details {
   margin-top: 10px;
   overflow: clip;
@@ -4831,7 +4839,11 @@
 
   .iphone-service-feature--emergency {
     min-height: 0;
-    border-color: rgba(151, 206, 32, .24);
+    /* AP-358: Rot am Rahmen. 50 % statt der gruenen 24 % ist kein Versehen:
+       #E22219 ist deutlich dunkler als #97CE20; bei gleicher Deckkraft kaeme
+       der Rahmen nur auf 1,17:1 gegen die Kachel statt 1,69:1 und waere kaum zu
+       sehen. Mit 50 % sind es 1,57:1 - so praesent wie der gruene zuvor. */
+    border-color: rgba(226, 34, 25, .5);
     border-radius: 18px 5px 18px 5px;
     background: linear-gradient(145deg, #232720 0%, #1c201a 100%);
     box-shadow:
@@ -4850,6 +4862,9 @@
 
   .iphone-service-feature--emergency .iphone-service-feature__eyebrow {
     grid-column: 1;
+    /* AP-358: zurueck auf den Ausgangston. Rot trugen zwischenzeitlich
+       --coral-700 (AP-356) und --coral (AP-357); beides ist zurueckgenommen -
+       die Vorzeile tritt wieder zurueck, Rot tragen Rand, Nummer und Pfeil. */
     color: var(--ink-mute);
     font-size: .68rem;
     letter-spacing: .075em;
@@ -4857,6 +4872,15 @@
   }
 
   .iphone-service-feature--emergency .iphone-service-feature__body > strong {
+    /* AP-359: der Name der Leistung im kraeftigen --coral, dem Ton von "Route
+       planen". Auf der Kachelflaeche sind das 3,09:1 - vorher stand die Zeile
+       mit 13,87:1 nahezu in Weiss und war das am besten lesbare Element der
+       Kachel. Die Zeile misst 13,5px bei 320 bis 18,2px bei 430, mager und
+       kursiv; als "grosse Schrift" im Sinne der Richtlinie zaehlt sie damit
+       nicht, gefordert waeren 4,5:1.
+       Auf Ansage des Auftraggebers, nach Offenlegung der Zahlen. Wer hier
+       spaeter aufraeumt: Das ist gewollt, kein Versehen. */
+    color: var(--coral);
     font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
     font-size: 1.0625rem;
     font-style: italic;
@@ -4870,7 +4894,14 @@
     grid-column: 1;
     justify-content: flex-start;
     margin-top: 0;
-    color: var(--mobile-logo-green, #56e607);
+    /* AP-360: derselbe Ton wie die Vorzeile darueber, --ink-mute. Rot traegt
+       die Kachel jetzt an Rand, Ueberschrift und Pfeil; die Nummer tritt mit
+       der Vorzeile zurueck.
+       Ohne deren Daempfung auf .84: Die liegt am Elternelement und wuerde die
+       Pille samt Pfeil mit abdunkeln, denn das <b> haengt in derselben Zeile.
+       Die Nummer steht dadurch eine Spur heller als die Vorzeile - 6,90:1
+       gegen 5,34:1. */
+    color: var(--ink-mute);
     font-size: .78rem;
   }
 
@@ -4897,6 +4928,33 @@
     filter: none;
     transform: none;
     transition: none;
+  }
+
+  /* AP-358: Der Pfeil traegt das kraeftige --coral - dasselbe Rot wie "Route
+     planen" im Footer. Auf der fast schwarzen Pille sind das 4,07:1; als
+     Grafik braucht er 3:1. Die Telefonnummer daneben bleibt auf dem
+     aufgehellten --coral-700, weil sie auf der helleren Kachelflaeche steht,
+     wo dieses Rot nur 3,09:1 erreicht - zwei Rottoene, jeder auf seinem
+     Untergrund richtig.
+     Die Maske ist noetig, weil die Grafik ihr fill="#56E607" fest im SVG
+     traegt: An einem <img> greift weder color noch background, und eine
+     Filterkette traefe die Zielfarbe nur ungefaehr. Dieselbe Technik steht in
+     mobile-social-proof.css am Knopfrahmen.
+     Das @supports ist der Sicherheitsgurt - ohne Maskenunterstuetzung bleibt
+     das <img> stehen und der Pfeil ist gruen statt verschwunden. */
+  @supports ((mask-image: url("")) or (-webkit-mask-image: url(""))) {
+    .iphone-service-feature--emergency .iphone-service-feature__meta b img {
+      display: none;
+    }
+
+    .iphone-service-feature--emergency .iphone-service-feature__meta b::after {
+      content: "";
+      width: 2.875rem;
+      aspect-ratio: 1883 / 567;           /* Masse der Grafik */
+      background: var(--coral);
+      -webkit-mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
+              mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
+    }
   }
 
   /* AP-317: A-Z-Liste statt Kachelraster. Eine Spalte, kein Abstand zwischen
@@ -5037,9 +5095,12 @@
     outline-color: var(--home-lime, #97ce20);
   }
 
+  /* AP-358: mit dem Rahmen auf Rot. Es gibt genau eine
+     .iphone-service-feature, den Notdienst; bliebe der Wechsel gruen, blitzte
+     beim Antippen ein gruener Rahmen an einer rot umrandeten Kachel auf. */
   .iphone-service-feature:active {
-    border-color: rgba(151, 206, 32, .8);
-    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .28);
+    border-color: rgba(226, 34, 25, .8);
+    box-shadow: inset 0 0 0 1px rgba(226, 34, 25, .28);
     transform: scale(.985);
   }
 
@@ -5199,6 +5260,36 @@
     padding-top: 18px;
     font-size: .69rem;
     letter-spacing: .012em;
+  }
+
+  /* AP-352: Auf dem Telefon tritt die Quellenangabe zurueck und die Fusszeile
+     wird zum Weg auf das Google-Profil. Der Zusatz geht dabei nicht verloren -
+     "Vorgarten-Neugestaltung" und die anderen stehen oben in derselben Karte
+     als Kategoriezeile.
+     Gruen wie der Rest der Karte (--green-500 ist hier #8CC63F, 7,09:1 auf dem
+     Kartengrund). Die Unterstreichung muss sein: Farbe allein darf einen Link
+     nicht kenntlich machen.
+     24px Mindesthoehe ist die Zielgroesse nach WCAG 2.5.8; mehr ginge nicht,
+     ohne die Karte wachsen zu lassen - ihre Hoehe haengt in dieser Breite an
+     festen Massen. */
+  .private-review-carousel.has-review-swipe .private-review-item .private-review-quelle {
+    display: none;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-item .private-review-alle {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    color: var(--green-500);
+    font-weight: 650;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .private-review-carousel.has-review-swipe .private-review-item .private-review-alle:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 
   .private-review-carousel.has-review-swipe .private-review-details {
@@ -5570,7 +5661,14 @@
     --home-surface-high: var(--home-surface-card);
     --home-surface-low:  var(--home-surface-card);
     background: var(--home-surface-card);
-    border-color: var(--home-surface-border);
+    /* AP-353: Der Rahmen traegt jetzt das Gruen des Kastens "Vollstaendige
+       Bewertung lesen" (.private-review-details in diesem Block, rgba(140,198,63,.2)) -
+       damit ist die Randentscheidung aus AP-348 abgeloest.
+       Bewusst ein fester Wert statt var(--home-surface-border): Das Token faerbt
+       auch die beiden Querlinien in Kopf und Fuss, und die sollen neutral
+       bleiben. Wer den Rahmen spaeter nachzieht, muss also den Kasten
+       mitdenken, nicht die Linien. */
+    border-color: rgba(140, 198, 63, .2);
   }
 
   html.home-theme-dark .private-review-carousel.has-review-swipe .private-review-carousel-head {
