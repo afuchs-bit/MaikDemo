@@ -1895,7 +1895,15 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
        Chevron-Ausrichtung und das rechte Ende der Trennlinie. Wird die Kachel
        spaeter nachjustiert, bleibt die Linie von allein buendig. */
     --menu-meta-spalte: 44px;
-    --menu-meta-kachel: 30px;
+    /* AP-367: 44px statt 30px - die Groesse der Kopf-Knoepfe im eingeklappten
+       Zustand (home-dark.css:1171). Ganz oben auf der Seite misst der Kopf
+       clamp(40px, 12.3077vw, 48px), also 46px bei 375px; die 44px sind der
+       Zustand, in dem Kopf und Menue meistens zusammen zu sehen sind.
+       Die Kachel fuellt damit die Spalte genau aus: Sie steht weiterhin unter
+       dem Chevron von "Leistungen", und das rechte Ende der Trennlinie faellt
+       rechnerisch auf 0, bleibt also buendig. Zum Kartenrand bleiben die 9px
+       Polster der Menuekarte. */
+    --menu-meta-kachel: 44px;
     position: relative;
     display: block;
     margin-top: 4px;
@@ -1931,10 +1939,10 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
      margin-left:auto wie .submenu-toggle, damit die Kachel ohne geratene
      Pixelzahl exakt unter dem Chevron von "Leistungen" sitzt.
      .menu-meta__kachel ist die Kachel selbst: Verlauf, Radius und weisse Glyphe
-     wie die Footer-Kachel (footer-kontakt.css:171/189), aber zwei Stufen kleiner.
-     Die Verhaeltnisse des Vorbilds sind dabei mitskaliert - Radius und Glyphe
-     stehen zur Kante wie dort (12/42 und 25/42, hier 9/30 und 18/30), sonst
-     wirkt die verkleinerte Kachel klobiger als die grosse. */
+     wie die Footer-Kachel (footer-kontakt.css:171/189).
+     Die Verhaeltnisse des Vorbilds sind mitskaliert - Radius und Glyphe stehen
+     zur Kante wie dort. AP-367: Die Footer-Kachel misst seit AP-366 46px mit
+     Radius 12 und Glyphe 27; auf 44px gerechnet sind das 12 und 26. */
   .primary-nav.is-open .menu .menu-meta__glyphe {
     margin-left: auto;
     min-width: var(--menu-meta-spalte);
@@ -1948,15 +1956,15 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
     place-items: center;
     width: var(--menu-meta-kachel);
     height: var(--menu-meta-kachel);
-    border-radius: 9px;
+    border-radius: 12px;
     color: #fff;
     background: radial-gradient(circle at 30% 105%, #feda75 0 20%, #fa7e1e 34%, #d62976 57%, #962fbf 76%, #4f5bd5 100%);
   }
 
   .primary-nav.is-open .menu .menu-meta__kachel svg {
     display: block;
-    width: 18px;
-    height: 18px;
+    width: 26px;
+    height: 26px;
   }
 
   /* Ring nach innen versetzt: die Menuekarte scrollt (overflow-y: auto, AP-39),
