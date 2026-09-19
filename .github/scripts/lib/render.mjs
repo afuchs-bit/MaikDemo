@@ -584,12 +584,12 @@ const handyFormularLink = (base) => `
 const handySocial = (base) => `
         <div class="footer-social-iphone" aria-label="Weitere Kontaktmöglichkeiten">
           <p class="footer-social-availability"><span class="footer-social-line">Jederzeit erreichbar <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
-          <a class="footer-social-link" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener" aria-label="Maik Rohdich über WhatsApp schreiben">
+          <a class="footer-social-link footer-social-link--whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener" aria-label="Maik Rohdich über WhatsApp schreiben">
             <span class="footer-social-icon footer-social-icon--whatsapp" aria-hidden="true"><img src="${base}assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
           </a>
-          <span class="footer-social-link footer-social-link--instagram" aria-label="Instagram">
+          <a class="footer-social-link footer-social-link--instagram" href="https://www.instagram.com/rohdich_garten_landschaftsbau/" target="_blank" rel="noopener noreferrer" aria-label="Maik Rohdich auf Instagram ansehen">
             <span class="footer-social-icon footer-social-icon--instagram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>
-          </span>
+          </a>
         </div>`;
 
 const STUNDEN_ZUSATZ_HANDY = '<span class="footer-hours-whatsapp">WhatsApp jederzeit <span aria-hidden="true">\u00b7</span> </span>Besuche nach Vereinbarung';

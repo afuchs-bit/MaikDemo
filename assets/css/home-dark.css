@@ -1102,7 +1102,17 @@ html.home-theme-dark .fork-path:hover {
       width .42s cubic-bezier(.22, 1, .36, 1),
       height .42s cubic-bezier(.22, 1, .36, 1),
       flex-basis .42s cubic-bezier(.22, 1, .36, 1),
-      background-color .2s ease;
+      background-color .2s ease,
+      opacity .12s ease,
+      transform .12s ease;
+  }
+
+  html.home-theme-dark.home-header-morph .site-header .header-actions .call-btn {
+    transform-origin: center;
+    transition:
+      background-color .2s ease,
+      opacity .12s ease,
+      transform .12s ease;
   }
 
   html.home-theme-dark.home-header-morph .site-header .header-instagram {
@@ -1129,8 +1139,21 @@ html.home-theme-dark .fork-path:hover {
     height: 28px;
   }
 
-  html.home-theme-dark.home-header-morph .site-header .header-instagram:active {
-    opacity: .74;
+  /* Telefon, WhatsApp, Instagram (bei breiteren Mobilansichten) und Menue sind
+     eine Icon-Gruppe. Ihr Feedback bleibt auf dem Element selbst und kann das
+     Flexlayout daher nicht verschieben. */
+  html.home-theme-dark.home-header-morph .site-header .header-actions :is(.header-instagram, .call-btn, .btn-whatsapp, .nav-toggle):active {
+    opacity: .78;
+    transform: scale(.94);
+  }
+
+  /* Menue- und Telefonzeilen sind keine Iconkacheln. Hier signalisiert nur die
+     Flaeche den Druck; die Zeile selbst bleibt unbewegt. */
+  html.home-theme-dark .primary-nav.is-open .menu a:active,
+  html.home-theme-dark .primary-nav.is-open .submenu-toggle:active,
+  html.home-theme-dark .call-popover .call-row:active {
+    color: var(--ink);
+    background: var(--bg-soft);
   }
 
   html.home-theme-dark.home-header-morph .site-header.is-home-condensed,
@@ -1180,6 +1203,12 @@ html.home-theme-dark .fork-path:hover {
 
   html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .call-popover {
     display: none !important;
+  }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  html.home-theme-dark.home-header-morph .site-header .header-actions :is(.header-instagram, .call-btn, .btn-whatsapp, .nav-toggle):active {
+    transform: none;
   }
 }
 
@@ -3330,15 +3359,16 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
     box-shadow: none;
   }
 
-  /* Auf dem iPhone wird NRW als eine ruhige, zusammenhaengende Flaeche gezeigt.
-     Die Kreis- und Regierungsbezirksgrenzen konkurrieren dort sonst mit dem
-     kleinen Format; der Landesumriss bleibt als klare Kontur erhalten. */
+  /* AP-367: Auf dem iPhone wieder die urspruengliche NRW-Karte mit ihren
+     Kreis- und Stadtgrenzen zeigen. Einsatzgebietsflaeche, Puls und frueheres
+     Standort-Symbol bleiben zugunsten des statischen roten Punkts und der
+     Ortsbeschriftungen ausgeblendet. */
   html.home-theme-dark .mr-ueber__karte .proof-map .m-outline {
-    fill: #596351;
+    fill: none;
     stroke: var(--home-lime);
   }
 
-  html.home-theme-dark .mr-ueber__karte .proof-map :is(.m-krs, .m-fill, .m-inner, .m-node) {
+  html.home-theme-dark .mr-ueber__karte .proof-map :is(.m-fill, .m-pulse, .m-node) {
     display: none;
   }
 
@@ -3367,22 +3397,27 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   }
 
   html.home-theme-dark .proof-map-city {
-    font-family: var(--body);
-    font-size: 176px;
-    font-weight: 500;
-    fill: #c2c7bf;
-    stroke: none;
+    font-family: "Nunito", sans-serif;
+    font-size: 190px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    fill: #d6dad3;
+    stroke: rgb(27 30 25 / 92%);
+    stroke-width: 18px;
+    stroke-linejoin: round;
+    paint-order: stroke fill;
   }
 
   html.home-theme-dark .proof-map-city--seat {
-    font-weight: 600;
+    font-weight: 700;
+    fill: #f1f3ef;
   }
 
   html.home-theme-dark .proof-map-city--region {
-    font-size: 205px;
-    font-weight: 400;
-    letter-spacing: 7px;
-    fill: #d0d5cb;
+    font-size: 190px;
+    font-weight: 600;
+    letter-spacing: 8px;
+    fill: #dfe3dc;
   }
 
   html.home-theme-dark .proof-map-dot {

@@ -373,7 +373,11 @@
     transform: translateY(-50%) translate(6px, 6px);
   }
 
-  html.home-theme-dark .maik-cta.is-pulsing.is-pressed {
+  /* AP-366: Nur die grossen Aufmerksamkeit-CTAs tragen eine Animation auf dem
+     Link selbst. Beim kompakten Galerie-CTA ist translateX(-50%) dagegen die
+     Zentrierung; transform:none liess ihn beim Antippen eine halbe Breite nach
+     rechts springen. */
+  html.home-theme-dark .maik-cta--attention.is-pulsing.is-pressed {
     animation: none;
     transform: none;
   }

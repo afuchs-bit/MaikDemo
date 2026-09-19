@@ -1167,7 +1167,9 @@
   if (!section || !groups.length) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileGrouped = window.matchMedia('(max-width: 520px)');
   const duration = 280;
+  const mobileDuration = 235;
   const easing = 'cubic-bezier(.22,.61,.36,1)';
   const states = new WeakMap();
 
@@ -1241,13 +1243,15 @@
     entry.classList.toggle('is-opening', shouldOpen);
     entry.classList.toggle('is-closing', !shouldOpen);
 
+    const activeDuration = mobileGrouped.matches ? mobileDuration : duration;
+
     state.animation = entry.animate(
       { height: [`${currentHeight}px`, `${targetHeight}px`] },
-      { duration, easing }
+      { duration: activeDuration, easing }
     );
     state.bodyAnimation = body.animate(
       { opacity: [currentOpacity, shouldOpen ? 1 : 0] },
-      { duration: Math.round(duration * .72), easing, fill: 'forwards' }
+      { duration: Math.round(activeDuration * .72), easing, fill: 'forwards' }
     );
 
     const activeAnimation = state.animation;
@@ -1273,7 +1277,7 @@
         const state = getState(entry);
         const shouldOpen = !state.targetOpen;
 
-        if (shouldOpen) {
+        if (shouldOpen && !mobileGrouped.matches) {
           entries.forEach((other) => {
             if (other === entry) return;
             const otherState = getState(other);
@@ -1294,6 +1298,132 @@
       });
     });
   });
+
+  const moreGroups = section.querySelector('.faq-more--gruppen');
+  const primaryGroupList = section.querySelector('.private-faq-wrap > .private-faq-groups');
+  const moreGroupList = moreGroups?.querySelector(':scope > .private-faq-groups');
+  const mobileMovedGroup = primaryGroupList?.querySelector(':scope > .private-faq-group:nth-child(2)');
+  const moreSummary = moreGroups?.querySelector(':scope > summary');
+  const moreOpenLabel = moreSummary?.querySelector('.faq-more-open');
+  const moreCloseLabel = moreSummary?.querySelector('.faq-more-close');
+  const desktopOpenLabel = moreOpenLabel?.textContent ?? '';
+  const desktopCloseLabel = moreCloseLabel?.textContent ?? '';
+  const firstQuestion = groups[0]?.querySelector(':scope > details');
+  const firstGroupQuestionCount = groups[0]?.querySelectorAll(':scope > details').length ?? 0;
+  const mobileHiddenQuestionCount = section.querySelectorAll('.private-faq-list > details').length - firstGroupQuestionCount;
+  let mobileLayoutActive = false;
+  let desktopMoreGroupsOpen = moreGroups?.open ?? false;
+  let desktopFirstQuestionOpen = firstQuestion?.open ?? false;
+  let moreTargetOpen = moreGroups?.open ?? false;
+  let moreAnimation = null;
+  let moreContentAnimation = null;
+
+  const clearMoreMotion = () => {
+    if (!moreGroups || !moreGroupList) return;
+    moreGroups.classList.remove('is-opening', 'is-closing');
+    moreGroups.style.removeProperty('height');
+    moreGroups.style.removeProperty('overflow');
+    moreGroupList.style.removeProperty('opacity');
+    moreGroupList.style.removeProperty('transform');
+  };
+
+  const finishMoreImmediately = (shouldOpen) => {
+    if (!moreGroups) return;
+    moreAnimation?.cancel();
+    moreContentAnimation?.cancel();
+    moreAnimation = null;
+    moreContentAnimation = null;
+    moreTargetOpen = shouldOpen;
+    moreGroups.open = shouldOpen;
+    clearMoreMotion();
+  };
+
+  const animateMoreGroups = (shouldOpen) => {
+    if (!moreGroups || !moreSummary || !moreGroupList) return;
+    moreTargetOpen = shouldOpen;
+
+    if (reducedMotion.matches || typeof moreGroups.animate !== 'function') {
+      finishMoreImmediately(shouldOpen);
+      return;
+    }
+
+    const currentHeight = moreGroups.getBoundingClientRect().height;
+    moreAnimation?.cancel();
+    moreContentAnimation?.cancel();
+    moreAnimation = null;
+    moreContentAnimation = null;
+
+    if (shouldOpen && !moreGroups.open) moreGroups.open = true;
+
+    moreGroups.style.removeProperty('height');
+    const openHeight = moreGroups.getBoundingClientRect().height;
+    const closedHeight = moreSummary.getBoundingClientRect().height;
+    const targetHeight = shouldOpen ? openHeight : closedHeight;
+
+    moreGroups.style.height = `${currentHeight}px`;
+    moreGroups.style.overflow = 'clip';
+    moreGroups.classList.toggle('is-opening', shouldOpen);
+    moreGroups.classList.toggle('is-closing', !shouldOpen);
+
+    moreAnimation = moreGroups.animate(
+      { height: [`${currentHeight}px`, `${targetHeight}px`] },
+      { duration: 300, easing }
+    );
+    moreContentAnimation = moreGroupList.animate(
+      {
+        opacity: shouldOpen ? [0, 1] : [1, 0],
+        transform: shouldOpen
+          ? ['translateY(-8px)', 'translateY(0)']
+          : ['translateY(0)', 'translateY(-8px)']
+      },
+      { duration: 230, easing, fill: 'forwards' }
+    );
+
+    const activeAnimation = moreAnimation;
+    activeAnimation.addEventListener('finish', () => {
+      if (moreAnimation !== activeAnimation) return;
+      if (!shouldOpen) moreGroups.open = false;
+      moreAnimation = null;
+      moreContentAnimation?.cancel();
+      moreContentAnimation = null;
+      clearMoreMotion();
+    }, { once: true });
+  };
+
+  moreSummary?.addEventListener('click', (event) => {
+    if (!mobileGrouped.matches) return;
+    event.preventDefault();
+    animateMoreGroups(!moreTargetOpen);
+  });
+
+  const syncMobileGroupedLayout = () => {
+    if (!moreGroups || !primaryGroupList || !moreGroupList) return;
+
+    if (mobileGrouped.matches && !mobileLayoutActive) {
+      desktopMoreGroupsOpen = moreGroups.open;
+      desktopFirstQuestionOpen = firstQuestion?.open ?? false;
+      if (mobileMovedGroup) moreGroupList.prepend(mobileMovedGroup);
+      if (moreOpenLabel) moreOpenLabel.textContent = `Weitere ${mobileHiddenQuestionCount} Fragen anzeigen`;
+      if (moreCloseLabel) moreCloseLabel.textContent = 'Weniger anzeigen';
+      finishMoreImmediately(false);
+      section.classList.add('is-faq-mobile-disclosure');
+      mobileLayoutActive = true;
+      return;
+    }
+
+    if (!mobileGrouped.matches && mobileLayoutActive) {
+      finishMoreImmediately(desktopMoreGroupsOpen);
+      if (mobileMovedGroup) primaryGroupList.append(mobileMovedGroup);
+      if (moreOpenLabel) moreOpenLabel.textContent = desktopOpenLabel;
+      if (moreCloseLabel) moreCloseLabel.textContent = desktopCloseLabel;
+      section.classList.remove('is-faq-mobile-disclosure');
+      if (firstQuestion) finishImmediately(firstQuestion, desktopFirstQuestionOpen);
+      mobileLayoutActive = false;
+    }
+  };
+
+  syncMobileGroupedLayout();
+  mobileGrouped.addEventListener?.('change', syncMobileGroupedLayout);
 
   section.classList.add('is-faq-animated');
 })();
