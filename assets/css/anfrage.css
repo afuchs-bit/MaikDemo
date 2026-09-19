@@ -641,8 +641,12 @@
     border-radius: 10px;
   }
 
-  .private-contact .anf__kanal-icon--tel {
+  .private-contact .anf__kanal-icon--tel,
+  .private-contact .anf__kanal-icon--mail {
     background-color: rgba(5, 10, 5, .58);
+  }
+
+  .private-contact .anf__kanal-icon--tel {
     background-size: 24px 24px;
   }
 

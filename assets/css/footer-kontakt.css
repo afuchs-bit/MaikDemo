@@ -69,6 +69,19 @@
     padding-inline: 0.4375rem;
     border-color: rgba(86, 230, 7, .14);
     background: transparent;
+    transform-origin: center;
+    transition:
+      border-color .16s var(--ease),
+      background-color .16s var(--ease),
+      transform .12s ease;
+  }
+
+  /* Alle vier Kontaktkacheln reagieren gleich. Die Skalierung veraendert nur
+     die Darstellung, nie Rasterbreite oder Nachbarkacheln. */
+  .site-footer .footer-contact-link:active {
+    border-color: rgba(151, 206, 32, .42);
+    background-color: rgba(151, 206, 32, .08);
+    transform: scale(.985);
   }
 
   .site-footer .footer-contact-icon {
@@ -150,11 +163,11 @@
     border: 0;
     border-radius: 50%;
     background: transparent;
+    text-decoration: none;
   }
 
-  /* Nicht mehr :first-child - das ist seit AP-323 der Absatz. Die WhatsApp-
-     Kachel ist das einzige <a> in diesem Block, Instagram ein <span>. */
-  .site-footer a.footer-social-link {
+  /* Beide Kacheln sind Links; Modifier halten ihre Rasterposition eindeutig. */
+  .site-footer .footer-social-link--whatsapp {
     grid-column: 1;
     grid-row: 2;
   }
@@ -183,6 +196,8 @@
     height: 46px;
     border-radius: 12px;
     color: #fff;
+    transform-origin: center;
+    transition: transform .12s ease, filter .12s ease;
   }
 
   .site-footer .footer-social-icon--whatsapp {
@@ -201,6 +216,13 @@
   .site-footer .footer-social-icon--instagram svg {
     width: 27px;
     height: 27px;
+  }
+
+  /* WhatsApp und Instagram gehoeren sichtbar zu einer Gruppe und geben daher
+     dieselbe, rein optische Druckrueckmeldung ohne Positionssprung. */
+  .site-footer .footer-social-link:active .footer-social-icon {
+    filter: brightness(.88);
+    transform: scale(.9);
   }
 
   .site-footer a.footer-social-link:focus-visible {
@@ -233,5 +255,16 @@
 
   .site-footer .footer-hours {
     display: none;
+  }
+}
+
+@media (max-width: 480px) and (prefers-reduced-motion: reduce) {
+  .site-footer .footer-contact-link:active,
+  .site-footer .footer-social-link:active .footer-social-icon {
+    transform: none;
+  }
+
+  .site-footer .footer-social-link:active .footer-social-icon {
+    opacity: .74;
   }
 }

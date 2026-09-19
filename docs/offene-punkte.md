@@ -17,7 +17,7 @@ und das JSON-LD verteilt:
 
 - Mobil / WhatsApp: `0171 / 173 89 43` (`tel:+491711738943`, `wa.me/491711738943`)
 - Festnetz: `02325 / 58 57 90` (`tel:+492325585790`)
-- E-Mail: `Maik@rohdich.de`
+- E-Mail: `maik@rohdich.de`
 
 ## Standort und Profile
 
