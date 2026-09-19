@@ -5258,6 +5258,15 @@
     cursor: pointer;
   }
 
+  /* AP-351: Der weisse Innenring steht wieder, auf Ansage des Auftraggebers.
+     AP-350 hatte ihn entfernt, weil er die Punkte aufhellt: Bei 7px Durchmesser
+     frisst der 1px-Ring den Rand, gemessen Mitte 140,198,63, Rand 255,255,255 -
+     die Punkte lesen sich dadurch heller als das Markengruen darunter. Das ist
+     so gewollt.
+     Die Deckkraft der inaktiven Punkte geht mit zurueck auf .32. Sie war in
+     AP-350 nur auf .6 gestiegen, um den fehlenden Ring auszugleichen (ohne ihn
+     kamen sie auf 1,98:1 gegen den Kartengrund); mit Ring uebernimmt er das
+     wieder. */
   .private-review-swipe-dots button > span {
     display: block;
     width: 7px;
