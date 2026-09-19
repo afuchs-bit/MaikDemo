@@ -3195,6 +3195,13 @@ body.has-lightbox { overflow: hidden; }
      sagt das ausdruecklich - ohne es bliebe sie zwar auch stehen, aber nur, weil
      ihre eigene Regel (vier Klassen) staerker ist. Auf so einen Zufall soll sich
      niemand verlassen muessen. */
+  /* AP-370: Die ganze Zeile schaltet das Untermenue, also sieht sie auch so
+     aus. Die Regel .menu-item--sub > .menu-label { cursor: default } weiter
+     oben bleibt fuer den Desktop stehen - dort oeffnet das Untermenue per
+     Hover, und das Wort schaltet weiterhin nicht. */
+  .primary-nav.is-open .menu-item--sub,
+  .primary-nav.is-open .menu-item--sub > .menu-label { cursor: pointer; }
+
   .menu-item--sub.is-open { flex: 1 1 auto; min-height: 0; }
   .menu-item--sub.is-open ~ li:not(.menu-meta) { display: none; }
   /* AP-39: Der Aufklapp-Button mass 34x34px. Er sitzt direkt neben dem
