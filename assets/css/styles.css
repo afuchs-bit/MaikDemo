@@ -1890,11 +1890,11 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
      Es sitzt am <li>, nicht am Link: Die Trennlinie haengt als ::before mit
      top: 0 am Polsterrand des <li> und bleibt deshalb liegen, wo sie ist. */
   .primary-nav.is-open .menu .menu-meta {
-    /* Spaltenbreite und Kachelgroesse stehen hier als Variablen, weil drei
-       Stellen sie gemeinsam brauchen: die Kachel selbst, die Spalte fuer die
-       Chevron-Ausrichtung und das rechte Ende der Trennlinie. Wird die Kachel
-       spaeter nachjustiert, bleibt die Linie von allein buendig. */
-    --menu-meta-spalte: 44px;
+    /* AP-368: --menu-meta-spalte ist entfallen. Sie hielt die Kachel rechts in
+       einer 44px-Spalte, damit sie exakt unter dem Chevron von "Leistungen"
+       sass, und aus ihr rechnete sich das rechte Ende der Trennlinie. Seit
+       Text und Kachel mittig in der Zeile stehen, gibt es nichts mehr
+       auszurichten - und die Linie steht symmetrisch statt an der Kachel. */
     /* AP-367: 44px statt 30px - die Groesse der Kopf-Knoepfe im eingeklappten
        Zustand (home-dark.css:1171). Ganz oben auf der Seite misst der Kopf
        clamp(40px, 12.3077vw, 48px), also 46px bei 375px; die 44px sind der
@@ -1914,10 +1914,9 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
     content: "";
     position: absolute;
     top: 0;
-    /* Links auf der Textkante der Menuepunkte, rechts buendig mit der Kachel -
-       die sitzt mittig in der Spalte, also endet sie um deren halbe Restbreite
-       vor dem Zeilenrand. */
-    inset-inline: 16px calc((var(--menu-meta-spalte) - var(--menu-meta-kachel)) / 2);
+    /* AP-368: Beidseitig 16px. Vorher lag das rechte Ende auf der Kachelkante;
+       das ergab nur Sinn, solange die Kachel rechts aussen sass. */
+    inset-inline: 16px;
     height: 1px;
     background: var(--line);
   }
@@ -1925,9 +1924,13 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
   .primary-nav.is-open .menu .menu-meta__link {
     display: flex;
     align-items: center;
+    /* AP-368: Text und Kachel stehen als Paar in der Zeilenmitte. Das linke
+       Polster von 16px faellt damit weg - es hielt den Text auf der Textkante
+       der uebrigen Menuepunkte, was bei mittiger Ausrichtung falsch waere. */
+    justify-content: center;
     gap: 12px;
     min-height: 48px;
-    padding: 0 0 0 16px;
+    padding: 0;
     color: var(--ink-mute);
     font-size: .8rem;
     font-weight: 500;
@@ -1935,17 +1938,16 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
   }
 
   /* Zwei Ebenen, weil sie zwei verschiedene Aufgaben haben:
-     .menu-meta__glyphe ist die 44px-Spalte - dieselbe Breite und dasselbe
-     margin-left:auto wie .submenu-toggle, damit die Kachel ohne geratene
-     Pixelzahl exakt unter dem Chevron von "Leistungen" sitzt.
+     .menu-meta__glyphe ist die Huelle, die die Kachel senkrecht in der Zeile
+     haelt. Ihre frueheren Aufgaben - 44px Spaltenbreite und margin-left:auto
+     wie bei .submenu-toggle - sind mit AP-368 entfallen, seit die Zeile mittig
+     steht.
      .menu-meta__kachel ist die Kachel selbst: Verlauf, Radius und weisse Glyphe
      wie die Footer-Kachel (footer-kontakt.css:171/189).
      Die Verhaeltnisse des Vorbilds sind mitskaliert - Radius und Glyphe stehen
      zur Kante wie dort. AP-367: Die Footer-Kachel misst seit AP-366 46px mit
      Radius 12 und Glyphe 27; auf 44px gerechnet sind das 12 und 26. */
   .primary-nav.is-open .menu .menu-meta__glyphe {
-    margin-left: auto;
-    min-width: var(--menu-meta-spalte);
     display: inline-flex;
     align-items: center;
     justify-content: center;
