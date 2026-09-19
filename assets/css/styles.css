@@ -1854,22 +1854,48 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
        Fallback fuer den Moment vor der ersten Messung und fuer No-JS.
        100vh steht vor 100dvh: Safari unter 15.4 kennt dvh nicht und faellt
        auf die vh-Zeile zurueck. */
-    /* AP-343: Feste Hoehe statt nur eines Deckels. Die Karte misst zugeklappt
-       genau 396px (gemessen bei 360, 390 und 430px Breite: 8+8 Polster,
-       6 Eintraege a 47px, Instagram-Zeile 56px, 6 Abstaende a 6px). Diesen Wert
-       behaelt sie jetzt auch aufgeklappt - das Untermenue fuellt den Platz der
+    /* AP-343: Feste Hoehe statt nur eines Deckels. Die Karte behaelt ihre
+       zugeklappte Hoehe auch aufgeklappt - das Untermenue fuellt den Platz der
        ausgeblendeten Eintraege und scrollt in sich, statt die Karte auf 746px
        wachsen zu lassen.
-       Wer Menuepunkte hinzunimmt oder streicht, muss den Wert mitziehen; sonst
-       bleibt entweder Leerraum unter dem letzten Eintrag oder die Karte scrollt
-       selbst.
        min() behaelt den bisherigen Deckel als Sicherung fuer kleine Geraete. */
-    --menue-karte: 396px;
+    /* AP-371: Die Hoehe wird gerechnet, nicht gemessen. Die feste Zahl aus AP-343
+       (396px) war auf einer Unterseite ermittelt - Wurzelschrift 16px, 6 Eintraege
+       a 47px - und stimmte dort auch. Auf der Startseite nicht: Deren Wurzelschrift
+       ist fluid und ihr erster Punkt "Gewerbekunden" ist ausgeblendet, also 5
+       Eintraege a 45,5px. Dort standen 60,5px Luft unter der Instagram-Zeile.
+       Ein anderer fester Wert verschiebt das nur, weil die Eintraege mit der
+       Schrift wachsen: 44px @320, 45,5 @375, 51,5 @480. Ein auf 375px passender
+       Wert waere bei 480px zu kurz, und dann scrollt die zugeklappte Karte.
+
+       --menue-eintrag: 12+12px Polster plus die Zeile (.9rem x 1.6 Zeilenhoehe),
+       nach unten begrenzt durch das 44px-Touchziel aus AP-39.
+       + 6px je Eintrag ist der Zeilenabstand (gap), einmal je Eintrag: N-1
+       zwischen den Punkten und einer vor der Instagram-Zeile.
+       + 79px sind die Teile, die nicht mitskalieren: 4px Aussenabstand und 56px
+       Hoehe der Instagram-Zeile (8 Polster + 48 Touchziel), 16px Polster der
+       Karte und 2px Rahmen - plus 1px Spiel. Das Spiel ist noetig, weil der
+       Browser die Zeilenbox aufrundet: .9rem x 1.6 ergibt rechnerisch 21,4478px,
+       gemessen sind es 21,4925px. Ohne den Zuschlag liegt die Karte je Eintrag
+       rund 0,05px zu niedrig, und overflow-y: auto macht daraus ein 1px
+       scrollbares Feld.
+
+       Der einzige Wert, der bei Aenderungen am Menue mitzuziehen ist, ist
+       --menue-eintraege. Die Breitenabhaengigkeit rechnet sich von selbst. */
+    --menue-eintrag: max(44px, calc(1.44rem + 24px));
+    --menue-eintraege: 6;
+    --menue-karte: calc(var(--menue-eintraege) * (var(--menue-eintrag) + 6px) + 79px);
     height: min(var(--menue-karte), calc(100vh - var(--header-h, 76px) - 16px));
     height: min(var(--menue-karte), calc(100dvh - var(--header-h, 76px) - 16px));
     overflow-y: auto;
     overscroll-behavior: contain;
   }
+
+  /* AP-371: Auf der Startseite ist "Gewerbekunden" ausgeblendet
+     (home-dark.css:594) - ein Eintrag weniger als auf allen anderen Seiten.
+     Faellt die Klasse dort einmal weg (build-leistungen.mjs entfernt sie auf
+     generierten Seiten), scrollt die Karte um genau einen Eintrag. */
+  html.home-theme-dark .primary-nav.is-open .menu { --menue-eintraege: 5; }
   /* AP-39: Touchziele auf mindestens 44px. Die Eintraege lagen bei 42,9px. */
   .primary-nav.is-open .menu a,
   .primary-nav.is-open .menu-label {
