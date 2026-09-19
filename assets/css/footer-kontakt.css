@@ -127,11 +127,14 @@
     display: grid;
     /* Tippziele bleiben absolut: 44px ist die Mindestgroesse nach WCAG 2.5.8.
        Mitskaliert waeren es auf einem 320px-Geraet nur noch 35px. */
-    grid-template-columns: 44px 44px minmax(0, 1fr);
-    grid-template-rows: auto minmax(44px, auto);
+    grid-template-columns: 46px 46px minmax(0, 1fr);
+    grid-template-rows: auto minmax(46px, auto);
     align-items: center;
     justify-content: start;
-    column-gap: 2px;
+    /* AP-366: 4px statt 2px. Kachel und Tippflaeche sind jetzt gleich gross,
+       der fruehere 1px-Rand auf jeder Seite faellt weg - ohne diese Anpassung
+       waere der sichtbare Abstand von 4px auf 2px geschrumpft. */
+    column-gap: 4px;
     row-gap: 8px;
     margin-top: 0.875rem;
   }
@@ -139,10 +142,10 @@
   .site-footer .footer-social-link {
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
-    /* AP-321: Kein Padding mehr - die Kachel misst jetzt 42px und laesst in der
-       44px-Tippflaeche nur noch 1px Luft. */
+    width: 46px;
+    height: 46px;
+    /* AP-366: Tippflaeche und Kachel sind deckungsgleich. 46px liegt ueber den
+       44px, die WCAG 2.5.8 als Mindestgroesse verlangt. */
     padding: 0;
     border: 0;
     border-radius: 50%;
@@ -161,18 +164,23 @@
     grid-row: 2;
   }
 
-  /* AP-321: 42px statt 2.5rem - fest in Pixeln, weil die Wurzel-Schriftgroesse
-     unter 480px fluid ist und die Kachel sonst je nach Geraet zwischen 36 und
-     48px schwankte. 42 ist das Maximum, das die 44px-Tippflaeche und damit die
-     Rasterspalten unangetastet laesst: die dritte Spalte mit der
-     Erreichbarkeitszeile steht bei 360px exakt auf Kante, jeder Pixel mehr
-     wuerde sie herausbrechen lassen. Sichtbar bleiben 4px zwischen den
-     beiden Kacheln. */
+  /* AP-366: 46px - dieselbe Kantenlaenge wie die Knoepfe im Kopf
+     (.btn-whatsapp und .nav-toggle, gemessen 46x46).
+
+     Fest in Pixeln bleibt es aus dem Grund von AP-321: Die Wurzel-Schriftgroesse
+     ist unter 480px fluid, mit einer rem-Angabe schwankte die Kachel je nach
+     Geraet zwischen 36 und 48px.
+
+     Die Deckelung auf 42px aus AP-321 ist entfallen. Sie hatte damit begruendet,
+     dass die Erreichbarkeitszeile in der dritten Rasterspalte bei 360px auf
+     Kante stehe - seit AP-323 steht diese Zeile aber in einer eigenen Zeile
+     ueber die volle Breite (grid-column: 1 / -1), die Spalte traegt sie nicht
+     mehr. Gemessen bleiben bei 375px 311px fuer die Zeile uebrig. */
   .site-footer .footer-social-icon {
     display: grid;
     place-items: center;
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     border-radius: 12px;
     color: #fff;
   }
@@ -182,8 +190,8 @@
   }
 
   .site-footer .footer-social-icon--whatsapp img {
-    width: 25px;
-    height: 25px;
+    width: 27px;
+    height: 27px;
   }
 
   .site-footer .footer-social-icon--instagram {
@@ -191,8 +199,8 @@
   }
 
   .site-footer .footer-social-icon--instagram svg {
-    width: 25px;
-    height: 25px;
+    width: 27px;
+    height: 27px;
   }
 
   .site-footer a.footer-social-link:focus-visible {
