@@ -5085,7 +5085,13 @@
     --ink: #f4f6f0;
     --ink-2: #d5dccf;
     --ink-mute: #aeb8a8;
-    --green-500: #b6d97a;
+    /* AP-349: Ein Gruen fuer die Karte, und zwar das der Marke - #8CC63F, der
+       Ton des Knopfes "Projekt anfragen" (--home-lime). Vorher stand hier ein
+       aufgehelltes #B6D97A, waehrend Rahmen und Lichtschimmer der Karte schon
+       #8CC63F trugen: zwei Gruen nebeneinander im selben Bauteil.
+       Kontrast auf dem Kartengrund #252B22: 7,09:1 - die Kategoriezeile ist
+       klein (10px, 800), 4,5:1 waeren gefordert. */
+    --green-500: #8cc63f;
     --green-700: #8cc63f;
     height: auto;
     min-height: 0;
@@ -5100,7 +5106,7 @@
   .private-review-carousel.has-review-swipe .private-review-carousel-head {
     align-items: center;
     padding: 17px 18px 16px;
-    border-bottom-color: rgba(182,217,122,.14);
+    border-bottom-color: rgba(140,198,63,.14);
     background: linear-gradient(135deg,rgba(43,53,39,.98),rgba(31,37,30,.92));
   }
 
@@ -5153,7 +5159,7 @@
     position: absolute;
     z-index: 0;
     margin: 34px 0 0 -5px;
-    color: rgba(182,217,122,.065);
+    color: rgba(140,198,63,.065);
     font-family: Georgia,serif;
     font-size: 5.4rem;
     line-height: 1;
@@ -5197,18 +5203,18 @@
 
   .private-review-carousel.has-review-swipe .private-review-details {
     margin-top: 15px;
-    border-color: rgba(182,217,122,.2);
-    background: linear-gradient(135deg,rgba(182,217,122,.075),rgba(255,255,255,.025));
+    border-color: rgba(140,198,63,.2);
+    background: linear-gradient(135deg,rgba(140,198,63,.075),rgba(255,255,255,.025));
   }
 
   .private-review-carousel.has-review-swipe .private-review-details:hover {
-    border-color: rgba(182,217,122,.34);
+    border-color: rgba(140,198,63,.34);
     box-shadow: 0 12px 28px -24px rgba(0,0,0,.9);
   }
 
   .private-review-carousel.has-review-swipe .private-review-details-chevron {
-    background: rgba(182,217,122,.12);
-    color: #b6d97a;
+    background: rgba(140,198,63,.12);
+    color: #8cc63f;
   }
 
   .private-review-carousel.has-review-swipe .private-review-details[open] .private-review-details-chevron {
@@ -5217,12 +5223,12 @@
   }
 
   .private-review-carousel.has-review-swipe .private-review-details[open] > summary {
-    border-bottom-color: rgba(182,217,122,.16);
+    border-bottom-color: rgba(140,198,63,.16);
   }
 
   .private-review-carousel.has-review-swipe .private-review-details blockquote {
-    border-left-color: rgba(182,217,122,.44);
-    background: rgba(182,217,122,.075);
+    border-left-color: rgba(140,198,63,.44);
+    background: rgba(140,198,63,.075);
   }
 
   .private-review-swipe-controls {
@@ -5230,7 +5236,7 @@
     min-height: 58px;
     margin: 0;
     padding: 7px 16px;
-    border-top-color: rgba(182,217,122,.14);
+    border-top-color: rgba(140,198,63,.14);
     background: linear-gradient(180deg,rgba(35,42,33,.72),rgba(29,35,28,.96));
   }
 
@@ -5257,7 +5263,7 @@
     width: 7px;
     height: 7px;
     border-radius: 999px;
-    background: rgba(182,217,122,.32);
+    background: rgba(140,198,63,.32);
     box-shadow: inset 0 0 0 1px #fff;
     transition: width .2s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease);
   }
@@ -5540,6 +5546,20 @@
   }
 
   html.home-theme-dark .private-proof-bento .private-review-carousel.has-review-swipe {
+    /* AP-348: Flaeche und Rand wie die Ablauf-Kachel (.step-card) daneben. Die
+       Grundflaeche war ohnehin schon dieselbe - den sichtbaren Unterschied
+       trugen das hellere Kopfband (--home-surface-high), das dunklere Fussband
+       (--home-surface-low) und der gruenliche Rand.
+       Die drei Token werden hier umdefiniert statt in den beiden Folgeregeln:
+       Kopf und Fuss lesen sie ohnehin, und innerhalb dieses Stylesheets liest
+       sie sonst niemand, der unter dieser Karte haengt.
+       rgba(255,255,255,.12) ist --line der dunklen Welt, also genau der Wert,
+       den .step-card bekommt. Die Karte kann ihn nicht ueber var(--line) holen:
+       Sie setzt --line fuer ihren hellen Ursprung selbst auf einen dunklen Wert
+       (weiter oben in dieser Datei), der auf dunklem Grund unsichtbar waere. */
+    --home-surface-border: rgba(255, 255, 255, .12);
+    --home-surface-high: var(--home-surface-card);
+    --home-surface-low:  var(--home-surface-card);
     background: var(--home-surface-card);
     border-color: var(--home-surface-border);
   }
