@@ -141,7 +141,16 @@
   }
 
   .gate-welcome--iphone .mobile-kpi-signature__stars {
-    color: #fbbc05;
+    /* AP-369: Zitronengelb wie die Sterne der Rezensionssektion
+       (privat-form.css:3671, dort ebenfalls var(--yellow)). Vorher stand hier
+       Google-Bernstein #fbbc05.
+
+       Den dreilagigen Schein von dort uebernimmt diese Stelle bewusst nicht:
+       Die Signaturzeile ist schmal, und das Leuchten staende direkt neben der
+       scharfen Google-Grafik.
+
+       Kontrast auf dem Grund #1B1E19 gemessen: 12,56:1 statt vorher 9,87:1. */
+    color: var(--yellow);
     font-family: Arial, sans-serif;
     font-size: .9375rem;
     line-height: 1;
