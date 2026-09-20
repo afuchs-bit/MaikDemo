@@ -1535,3 +1535,79 @@ trotzdem dieselbe Zeile.
 Gemessen bei 901 / 1024 / 1280 px: sechs Punkte, eine Zeile, Menübreite 515 px, kleinster
 Abstand zu den Kopfknöpfen 37 px (bei 901 px, direkt über dem Umbruch auf das Hamburger-Menü).
 Kein waagerechter Überlauf. Im offenen Handy-Menü sind alle Punkte 47 px hoch.
+
+---
+
+## AP-376 — Betriebsabschnitt der Über-uns-Seite: Wortlaut der alten Website
+
+Der Fließtext in `<div class="ueber-betrieb__wort">` ist seit dem 20.09.2026 der Text der
+**alten Website des Auftraggebers**, auf seine ausdrückliche Ansage wörtlich übernommen. Er
+löst die zwei Absätze aus AP-220/AP-327 ab.
+
+### Bewusste Abweichung von Grundregel 5
+
+Der Text enthält Werbesprache, die Grundregel 5 (`CLAUDE.md`, „Keine Superlative, keine
+Werbesprache") sonst ausschließt. Der Auftraggeber wurde auf den Konflikt hingewiesen und hat
+sich für die wörtliche Übernahme entschieden. **Diese Stellen sind kein Versehen und nicht zu
+glätten:**
+
+- „seit über 20 Jahren **erfolgreich**!" — wertende Selbstbeschreibung samt Ausrufezeichen
+- „**anspruchsvoller** Außenanlagen", „**anspruchsvoller** Privatgärten" (2×)
+- „**hochwertiger** … Privatgärten", „qualitativ **hochwertigen** Gartenanlage"
+- „**partnerschaftliche** Zusammenarbeit", „**langjährigen** Geschäftsbeziehungen"
+- „Getroffene Absprachen haben für uns den gleichen Stellenwert wie schriftliche Verträge"
+- „**alle** Arbeiten aus einer Hand"
+
+### Zwei Aussagen, die neu belegt sind
+
+Beide standen bisher in keinem Dokument des Teils B. **Belegquelle ist die alte Website des
+Auftraggebers**, überbracht am 20.09.2026:
+
+| Aussage | Bisheriger Stand |
+|---|---|
+| Ausführung von Außenanlagen im **öffentlichen** Bereich | Kommunen waren seit 15.09.2026 als Auftraggebergruppe bestätigt, die Leistungen dort aber offen |
+| **Spezialisten aus angrenzenden Gewerken, etwa der Entwässerungstechnik** | Teil B kannte nur „Partnerfirma in Bochum (Details offen)" |
+
+**Weiterhin offen:** *welche* Leistungen der Betrieb für Kommunen konkret übernimmt und ob
+eine Referenzkommune genannt werden darf. Der Alttext sagt nur, **dass** im öffentlichen
+Bereich gearbeitet wird. Die Kachel „Kommunen und öffentliche Auftraggeber" bleibt deshalb
+bei ihrem zurückhaltenden Satz und ohne Link.
+
+### Einzige inhaltliche Änderung am Original
+
+„seit **über** 20 Jahren" statt „seit 20 Jahren". Die Seite nennt an drei Stellen das
+Gründungsjahr 2003 — in der Meta-Beschreibung, im JSON-LD und in der FAQ („Seit 2003, mit
+Sitz in Herne"). Bei Stand 2026 sind das 23 Jahre; ohne das „über" widerspräche sich die
+Seite selbst. Der Auftraggeber hat der Ergänzung zugestimmt.
+
+### „Deutschlandweit" steht nicht mehr auf dieser Seite
+
+Der bisherige Text sagte „nach Anfrage und Absprache auch gerne deutschlandweit", der
+Alttext kennt die Angabe nicht. Teil H.6 des Umsetzungsplans will sie ohnehin nur an einer
+Stelle — in der Bildunterschrift der Einsatzgebiets-Karte der Startseite. Der Wegfall bringt
+die Seite also näher an die Vorgabe. `areaServed` im JSON-LD bleibt unverändert.
+
+### Was stehen geblieben ist
+
+- **Der Absatz unter „Über uns"** (`.ueber-aufschlag`, „Maik Rohdich führt seinen
+  Meisterbetrieb seit 2003 …") — unverändert, obwohl ursprünglich mitmarkiert. Entscheidung
+  des Auftraggebers: der ganze Alttext kommt in den unteren Abschnitt.
+- **Der Merksatz** „Was nicht sinnvoll ist, sagen wir Ihnen vorher." (Beleg: Teil A.4). Er
+  sitzt jetzt zwischen Liste und Absprachen-Absatz — beide handeln davon, worauf man sich
+  ohne Papier verlassen kann.
+- **Die drei Kacheln „Für wen wir arbeiten".** Sie überschneiden sich teilweise mit den fünf
+  Tätigkeitsschwerpunkten, sagen aber etwas anderes: die Liste, *welche* Arbeiten der Betrieb
+  macht, die Kacheln, *für wen* — mit den Links dorthin. Auftraggeber-Entscheidung, beides zu
+  behalten.
+
+### Technische Notizen
+
+- Die Liste trägt `class="lp-list lead"`. `.lp-list` (`styles.css:3014`) ist der
+  Projektstandard für Aufzählungen im Fließtext und steht in einer Datei, die die Seite
+  ohnehin lädt — kein seitenweites Cache-Busting nötig. Das zweite `lead` ist **nicht**
+  Zierde: Die Abstandsregeln in `ueber-uns.css` arbeiten mit dem Nachbar-Kombinator und
+  kennen nur `.lead`. Ohne die Klasse fielen die Abstände vor und hinter der Liste auf 0.
+- `.ueber-betrieb__raster` steht auf `align-items: center` statt `start`. Der Textblock ist
+  bei 1280 px 993 px hoch, das Foto 390 px; mit `start` blieben darunter rund 600 px
+  Leerfläche. Gemessen nach der Änderung: 302 px über und 302 px unter dem Foto.
+- `ueber-uns.css` wird nur von dieser einen Seite geladen — `?v=` nur dort hochzählen.

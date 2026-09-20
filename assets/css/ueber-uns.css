@@ -182,7 +182,12 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
   gap: clamp(26px, 3.6vw, 56px);
-  align-items: start;
+  /* AP-376: center statt start. Seit der Textblock den Wortlaut der alten
+     Website traegt, ist er rund doppelt so hoch wie das 440px breite Foto -
+     mit start blieb darunter eine Leerflaeche von mehreren hundert Pixeln
+     stehen, bis .ueber-fuerwen ueber die volle Breite folgte. Unter 861px ist
+     die Zeile wirkungslos: dort ist das Raster einspaltig (Zeile 602). */
+  align-items: center;
 }
 
 /* Die Ueberschrift traegt margin: 0 (Reset in styles.css), der Absatz ebenfalls -
@@ -196,6 +201,13 @@
 /* Der Merksatz ist optisch schwerer (fett, groesser) als die beiden
    Fliesstext-Absaetze - etwas mehr Abstand als zwischen .lead + .lead, sonst
    klebt er am Fliesstext. */
+/* AP-376: Diese Regeln arbeiten mit dem Nachbar-Kombinator und kennen nur
+   .lead. Die Liste der Taetigkeitsschwerpunkte traegt deshalb class="lp-list
+   lead" - .lead bringt ihr nicht nur Schriftgroesse und Zeilenhoehe der
+   Absaetze daneben, sondern haelt auch diese Abstandskette geschlossen.
+   Nimmt jemand das lead von der <ul>, fallen die Abstaende davor und dahinter
+   auf 0 zurueck, weil styles.css p und ul ohne Rand setzt. Gemessen bei 375px:
+   14,4px vor der Liste, 24,64px vor dem Merksatz, 17,6px dahinter. */
 .ueber-betrieb__wort .lead + .ueber-betrieb__merksatz,
 .ueber-betrieb__wort .ueber-betrieb__merksatz + .lead {
   margin-top: 1.1em;
