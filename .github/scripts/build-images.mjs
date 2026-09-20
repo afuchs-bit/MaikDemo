@@ -36,9 +36,11 @@ const SOURCES = [
   // behaelt unten die Natursteinmauer als Bildbasis.
   { src: 'assets/img/_src/51FE5CE2-95A1-43F9-A555-963573FFD55C.JPG', dir: 'assets/img/hero', name: 'gate-privat',
     widths: [480, 960, 1200], crop: { aspect: 3 / 2, focusY: 0.65 } },
-  { src: 'assets/img/_src/vorgarten-herne.png',              dir: 'assets/img/projekte/vorgarten-herne-2026',    name: 'vorgarten-herne' },
-  { src: 'assets/img/_src/teichanlage-bochum.png',           dir: 'assets/img/projekte/teichanlage-bochum-2026', name: 'teichanlage-bochum' },
-  { src: 'assets/img/_src/aussenanlagen-recklinghausen.png', dir: 'assets/img/projekte/aussenanlagen-recklinghausen-2026', name: 'aussenanlagen-recklinghausen' },
+  // AP-374: vorgarten-herne-2026, teichanlage-bochum-2026 und
+  // aussenanlagen-recklinghausen-2026 sind im CMS geloescht. Ihre Eintraege sind
+  // hier entfernt, sonst legt der naechste Lauf die abgeleiteten Bilder wieder
+  // an. Die Originale liegen unveraendert in assets/img/_src/ - wer die Projekte
+  // zurueckholt, traegt sie hier wieder ein.
   { src: 'assets/img/_src/baumarbeiten-herne.webp', dir: 'assets/img/projekte/baumarbeiten-herne', name: 'baumarbeiten-herne' },
   { src: 'assets/img/_src/ueber-1.jpg', dir: 'assets/img/ueber', name: 'ueber-1' },
   { src: 'assets/img/_src/ueber-2.jpg', dir: 'assets/img/ueber', name: 'ueber-2' },
