@@ -51,19 +51,6 @@
   color: var(--home-lime);
 }
 
-/* Der Faktensatz traegt den Kopf inhaltlich - der Leitsatz darueber stimmt nur
-   den Ton an. Deshalb eine Spur groesser als der Fliesstext der Seite, aber
-   klar unter dem Leitsatz. */
-.ueber-aufschlag {
-  margin: 18px 0 0;
-  max-width: 60ch;
-  color: var(--ink-2);
-  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
-  line-height: 1.55;
-}
-
-.ueber-aufschlag b { color: var(--ink); font-weight: 700; }
-
 /* --- Die Person ----------------------------------------------------------
    Seit dem 15.09.2026 sichtbar - mit vorlaeufigem Text, siehe den Kommentar an
    der Sektion im Markup und docs/go-live-checkliste.md. Eigener Namensraum
