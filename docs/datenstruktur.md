@@ -11,13 +11,13 @@ werden muss.
 content/
   taxonomie.json                     ← verbindliche Liste aller Leistungen (Single Source of Truth)
   projekte/
-    vorgarten-herne-2026.json        ← ein Eintrag = eine Datei (Sveltia Folder-Collection)
-    teichanlage-bochum-2026.json
-    aussenanlagen-recklinghausen-2026.json
+    baumarbeiten-herne.json          ← ein Eintrag = eine Datei (Sveltia Folder-Collection)
+    gartengestaltung-herne.json
+    poolbau-mit-individueller-gartengestaltung-herne.json
 data/
   projekte-index.json                ← GENERIERT (nicht editieren) – von der GitHub Action gebaut
 assets/
-  img/projekte/<slug>/01.webp …      ← Projektbilder (Ziel-Ablage, siehe „Bilder")
+  img/projekte/<slug>/<name>.webp …  ← Projektbilder (Ziel-Ablage, siehe „Bilder")
   js/config.js                       ← Basis-Pfad an genau einer Stelle
   js/projekte.js                     ← Renderer der Startseiten-Sektion #projekte
 .github/
@@ -27,7 +27,7 @@ assets/
 
 ## Ein Projekt = eine Datei
 
-Dateiname = **Slug** (z. B. `vorgarten-herne-2026`). Keine Taxonomie im Dateipfad.
+Dateiname = **Slug** (z. B. `baumarbeiten-herne`). Keine Taxonomie im Dateipfad.
 Schema je Datei:
 
 | Feld           | Typ             | Pflicht | Beschreibung |
@@ -45,15 +45,15 @@ Beispiel:
 
 ```json
 {
-  "titel": "Vorgarten & Bepflanzung",
+  "titel": "Vorgartengestaltung mit gepflasterter Einfahrt",
   "ort": "Herne",
   "kundentyp": ["privat"],
-  "leistungen": ["vorgarten", "bepflanzung"],
-  "datum": "2026-05-01",
+  "leistungen": ["vorgarten", "terrasse-pflasterarbeiten", "bepflanzung"],
+  "datum": "2026-08-08",
   "featured": true,
-  "beschreibung": "Vorgarten-Neugestaltung mit Naturstein, strukturierter Bepflanzung und integrierter Beleuchtung.",
+  "beschreibung": "Strukturierte Vorgartenanlage mit farblich changiertem Pflasterbelag und angrenzendem, dicht bepflanztem Staudenbeet.",
   "bilder": [
-    { "bild": "/assets/img/projekte/vorgarten-herne-2026/01.webp", "alt": "Neu gestalteter Vorgarten mit Natursteinweg" }
+    { "bild": "/assets/img/projekte/vorgartengestaltung-mit-gepflasterter-einfahrt-herne/img_3629.webp", "alt": "Gepflasterte Einfahrt mit angrenzendem Staudenbeet und Gehölzbepflanzung im Vorgartenbereich" }
   ]
 }
 ```
@@ -265,7 +265,7 @@ stellen den Zustand beim Laden wieder her. Default-Werte werden aus der URL wegg
 | `tab`      | `highlights` | Ansicht „Highlights" (nur Projekte mit `featured: true`). Ohne Parameter = alle Projekte, nach `datum` absteigend. |
 | `typ`      | `privat` \| `gewerbe` | Kundentyp-Filter. Ohne Parameter = alle. |
 | `leistung` | Komma-Liste von Taxonomie-Slugs, z. B. `baumkontrolle,bepflanzung` | Leistungs-Filter, **ODER-Semantik**: ein Projekt erscheint, wenn es **mindestens eine** der gewählten Leistungen hat. Unbekannte Slugs werden ignoriert. |
-| `projekt`  | ein Projekt-Slug, z. B. `teichanlage-bochum-2026` | **Deep-Link:** öffnet beim Laden direkt die Lightbox dieses Projekts. Schaltet immer auf die Alle-Ansicht (Sichtbarkeit im Grid). Unbekannter Slug → ignoriert. Der Param wird beim Laden aus der URL entfernt (`replaceState`), damit ein Reload die Lightbox nicht erneut öffnet. Wird von den Startseiten-Karten (`#projekte`) genutzt. |
+| `projekt`  | ein Projekt-Slug, z. B. `gartengestaltung-herne` | **Deep-Link:** öffnet beim Laden direkt die Lightbox dieses Projekts. Schaltet immer auf die Alle-Ansicht (Sichtbarkeit im Grid). Unbekannter Slug → ignoriert. Der Param wird beim Laden aus der URL entfernt (`replaceState`), damit ein Reload die Lightbox nicht erneut öffnet. Wird von den Startseiten-Karten (`#projekte`) genutzt. |
 
 **Beispiel-Deeplinks** (z. B. für Direktlinks aus der Sonderthemen-Sektion):
 - Alle Baumkontrolle-Projekte: `…/MaikDemo/projekte/?leistung=baumkontrolle`
