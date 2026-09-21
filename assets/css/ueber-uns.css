@@ -439,69 +439,6 @@
   }
 }
 
-/* --- Mustergarten --------------------------------------------------------
-   Zahl, Text und Regel links, Foto rechts. Die Massszahl ist das Erste, was
-   gelesen wird - sie ist das Argument, nicht die Ueberschrift. */
-
-.ueber-muster__raster {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(26px, 3.6vw, 52px);
-  align-items: center;
-}
-
-.ueber-muster__zahl {
-  margin: 0 0 4px;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
-  line-height: 1;
-  letter-spacing: -.03em;
-  color: var(--home-lime);
-}
-
-.ueber-muster__titel {
-  margin: 0 0 12px;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
-  line-height: 1.16;
-  letter-spacing: -.015em;
-  color: var(--ink);
-}
-
-/* Die Terminregel ist kein Nebensatz, sondern die Bedingung fuer einen Besuch -
-   deshalb als abgesetzter Kasten, wie der Hinweis im Erreichbarkeitsblock. */
-.ueber-muster__regel {
-  margin: 18px 0 0;
-  padding: 13px 16px;
-  background: var(--green-50);
-  border-left: 3px solid var(--home-lime);
-  color: var(--ink-2);
-  font-size: .9rem;
-  line-height: 1.5;
-}
-
-.ueber-muster__cta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.ueber-muster__bild { margin: 0; position: relative; }
-
-.ueber-muster__bild img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 24px 24px 44px 24px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-card);
-}
-
 /* --- Haeufige Fragen ------------------------------------------------------
    Bauteil .faq-list aus styles.css, hier in zwei Spalten mit je einem Kicker.
    Der Kicker ersetzt eine dritte Ueberschriftenebene: er ordnet, ohne wie eine
@@ -576,7 +513,6 @@
 @media (max-width: 860px) {
   .ueber-betrieb__raster,
   .ueber-inhaber__raster,
-  .ueber-muster__raster,
   .ueber-fuerwen__liste,
   .ueber-faq__gruppen,
   .ueber-klein__panel {

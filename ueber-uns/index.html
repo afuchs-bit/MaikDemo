@@ -26,7 +26,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260919d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260919b" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260921b" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260921c" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -331,7 +331,8 @@
        der Seite verloren, jede steht weiter unten und dort ausfuehrlicher:
          2003 und Herne   -> FAQ "Seit wann gibt es den Betrieb?", dazu
                              Meta-Beschreibung und JSON-LD im Kopf
-         1.500 m2         -> .ueber-muster__zahl im Mustergarten-Abschnitt
+         1.500 m2         -> seit AP-380 nicht mehr auf dieser Seite; die Zahl
+                             steht weiter auf der Startseite
          Fachkraefte      -> Betriebsabschnitt (AP-376)
          Auftraggeber     -> die drei Kacheln "Fuer wen wir arbeiten"
        Der Kopf traegt jetzt nur noch H1 und Leitsatz; der Einstieg in den
@@ -641,40 +642,6 @@
           <span class="ueber-klein__ruf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
       </div>
-    </div>
-  </section>
-  <!-- ===== Mustergarten ==================================================
-       AP-327: Neu. Der Mustergarten ist das staerkste Unterscheidungsmerkmal
-       des Betriebs und stand bisher nur auf der Startseite. Die 1.500 m2 und
-       "am Firmensitz" sind zeichengleich mit der Kachel dort; die Terminregel
-       folgt content/stammdaten.json (oeffnungszeiten.besuche) und Teil B.2 des
-       Umsetzungsplans.
-       Der Anruf steht bewusst schon hier und nicht erst am Seitenende: der
-       Mustergarten ist der haeufigste Anlass fuer einen Anruf.
-       Das Standbild lag bereits im Repo (Einzelbild des Mustergarten-Videos,
-       960x725) und wird hier zum zweiten Mal genutzt - kein neues Asset. -->
-  <section class="section ueber-muster" aria-labelledby="muster-title">
-    <div class="container ueber-muster__raster">
-      <div class="ueber-muster__wort reveal">
-        <p class="ueber-muster__zahl">1.500 m²</p>
-        <h2 class="ueber-muster__titel" id="muster-title">Mustergarten am Firmensitz</h2>
-        <p class="lead">Pflanzen, Materialien und Teichanlage im echten Maßstab. Hier sehen Sie,
-           wie ein Belag nach fünf Jahren aussieht.</p>
-        <p class="ueber-muster__regel">Besichtigungen nur nach Absprache – so können wir uns
-           Zeit nur für Sie nehmen.</p>
-        <div class="ueber-muster__cta">
-          <a class="btn btn-primary" href="tel:+491711738943">Termin abstimmen</a>
-        </div>
-      </div>
-      <figure class="ueber-muster__bild reveal">
-        <picture>
-          <source type="image/avif" srcset="../assets/img/ueber/mustergarten-standbild-480.avif 480w, ../assets/img/ueber/mustergarten-standbild-960.avif 960w" sizes="(max-width: 860px) 100vw, 560px">
-          <source type="image/webp" srcset="../assets/img/ueber/mustergarten-standbild-480.webp 480w, ../assets/img/ueber/mustergarten-standbild-960.webp 960w" sizes="(max-width: 860px) 100vw, 560px">
-          <img src="../assets/img/ueber/mustergarten-standbild.webp" width="960" height="725"
-               alt="Blick über den Mustergarten in Herne mit Teichanlage, Rasenflächen und Bepflanzung."
-               loading="lazy" decoding="async">
-        </picture>
-      </figure>
     </div>
   </section>
   <!-- ===== Haeufige Fragen ================================================
