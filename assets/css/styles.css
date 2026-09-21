@@ -1881,21 +1881,20 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
        scrollbares Feld.
 
        Der einzige Wert, der bei Aenderungen am Menue mitzuziehen ist, ist
-       --menue-eintraege. Die Breitenabhaengigkeit rechnet sich von selbst. */
+       --menue-eintraege. Die Breitenabhaengigkeit rechnet sich von selbst.
+
+       AP-387: 5 statt 6. Der Menuepunkt "Gewerbekunden" ist aus Kopf und Fuss
+       aller Seiten entfernt; die Sonderregel, die ihn nur auf der Startseite
+       abzog, ist damit entfallen. Alle Seiten haben jetzt dieselben fuenf
+       Eintraege. */
     --menue-eintrag: max(44px, calc(1.44rem + 24px));
-    --menue-eintraege: 6;
+    --menue-eintraege: 5;
     --menue-karte: calc(var(--menue-eintraege) * (var(--menue-eintrag) + 6px) + 79px);
     height: min(var(--menue-karte), calc(100vh - var(--header-h, 76px) - 16px));
     height: min(var(--menue-karte), calc(100dvh - var(--header-h, 76px) - 16px));
     overflow-y: auto;
     overscroll-behavior: contain;
   }
-
-  /* AP-371: Auf der Startseite ist "Gewerbekunden" ausgeblendet
-     (home-dark.css:594) - ein Eintrag weniger als auf allen anderen Seiten.
-     Faellt die Klasse dort einmal weg (build-leistungen.mjs entfernt sie auf
-     generierten Seiten), scrollt die Karte um genau einen Eintrag. */
-  html.home-theme-dark .primary-nav.is-open .menu { --menue-eintraege: 5; }
   /* AP-39: Touchziele auf mindestens 44px. Die Eintraege lagen bei 42,9px. */
   .primary-nav.is-open .menu a,
   .primary-nav.is-open .menu-label {

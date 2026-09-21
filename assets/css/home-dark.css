@@ -497,9 +497,12 @@ html.home-theme-dark :is(.gate-cta-label--iphone, .gate-cta-action--iphone, .gat
   display: none;
 }
 
-/* Zwischenstand: Die Gewerbekunden-Landingpage ist archiviert. Ihre sichtbaren
-   Einstiege auf der Startseite bleiben im Markup und sind so direkt reaktivierbar. */
-html.home-theme-dark :is(.saved-gewerbe-link, .gate-doors--saved-iphone) {
+/* Zwischenstand: Die Gewerbekunden-Landingpage ist archiviert. Die Gewerbe-Tuer
+   im Hero bleibt im Markup und ist so direkt reaktivierbar.
+   AP-387: .saved-gewerbe-link ist hier entfallen - der Menuepunkt "Gewerbekunden"
+   wurde aus Kopf und Fuss aller Seiten geloescht, es gibt nichts mehr zu
+   verstecken. */
+html.home-theme-dark .gate-doors--saved-iphone {
   display: none !important;
 }
 
