@@ -1611,3 +1611,61 @@ die Seite also näher an die Vorgabe. `areaServed` im JSON-LD bleibt unveränder
   bei 1280 px 993 px hoch, das Foto 390 px; mit `start` blieben darunter rund 600 px
   Leerfläche. Gemessen nach der Änderung: 302 px über und 302 px unter dem Foto.
 - `ueber-uns.css` wird nur von dieser einen Seite geladen — `?v=` nur dort hochzählen.
+
+---
+
+## AP-381 — Der Leitsatz wird Überschrift des Betriebsabschnitts
+
+„Gartenbau mit Handschlagqualität" steht seit dem 21.09.2026 nicht mehr als Leitsatz im
+Kopf der Über-uns-Seite, sondern als Überschrift über dem Abschnitt, der den Betrieb
+beschreibt. Er ersetzt dort „Ein Betrieb, der die Arbeit selbst macht" (Sektionstitel seit
+AP-220). Ansage des Auftraggebers.
+
+### Verhältnis zu den bisherigen Entscheidungen
+
+Die Festlegung vom 15.09.2026 lautet: „Der Leitsatz bleibt **auf dieser Seite**, obwohl er in
+AP-285 von der Startseite gestrichen wurde." Sie gilt unverändert — der Satz bleibt auf der
+Seite, nur an anderer Stelle. Eine Entscheidung, die ihn an den **Kopf** bindet, gibt es
+nicht; geprüft in `docs/` und in der Commit-Historie.
+
+Ebenfalls unverändert gilt E7 vom 06.09.2026: **ohne Anführungszeichen**, damit er kein Zitat
+vortäuscht. Das ist beim Umzug so geblieben.
+
+**Neu ist der fehlende Schlusspunkt.** Bisher stand „Handschlagqualität." mit Punkt. Als
+Überschrift steht er ohne — alle drei anderen Überschriften mit grünem Steg
+(„Was daraus wird", „Häufige Fragen zum Betrieb", vormals „Ein Betrieb …") stehen ebenfalls
+ohne. Punkte tragen auf dieser Seite nur die beiden eigenständig gestalteten
+Aussage-Überschriften und der Merksatz.
+
+### Der Kopfbereich ist damit leer
+
+Er trägt nur noch Brotkrumen und die H1 „Über uns". Das ist die dritte Entnahme in Folge:
+AP-377 der Faktensatz, AP-380 die Mustergarten-Sektion, AP-381 der Leitsatz. Vom Auftraggeber
+so gewollt. Nächstes Vorbild im Projekt ist `kontakt/index.html` — dort besteht der Kopf
+ebenfalls nur aus Brotkrumen und H1.
+
+### Was technisch mitwandern musste
+
+`.ueber-leitsatz` und `.ueber-leitsatz em` sind entfallen, ebenso der Eintrag
+`max-width: none` in der 860px-Medienabfrage — die Klasse kam im Repo sonst nirgends vor.
+
+Die Auszeichnung des Wortes brauchte dagegen einen neuen Träger. Ohne Regel wäre
+„Handschlagqualität" in der Überschrift **kursiv und ohne Akzentfarbe** erschienen: Es gibt
+im Projekt keine `em`-Regel, die `.type-section-title` trifft, und Outfit ist nur mit
+`font-style: normal` geladen — der Browser hätte synthetisch geschrägt. Die Behandlung steht
+deshalb jetzt an der Überschrift:
+
+```css
+.ueber-betrieb__wort .type-section-title em {
+  font-style: normal;
+  color: var(--home-lime);
+}
+```
+
+Gemessen nach der Änderung: `rgb(140, 198, 63)`, `font-style: normal`, restliche Überschrift
+in `--ink`, grüner Steg unverändert `4px solid rgb(140, 198, 63)`. Bei 375 px wie bei 1280 px
+bricht „Handschlagqualität" auf eine eigene Zeile — grüner Balken und grünes Wort stehen also
+nicht nebeneinander in derselben Zeile.
+
+`id="betrieb-title"` ist erhalten geblieben; das `aria-labelledby` der Sektion löst weiterhin
+auf. Kein Sprungziel im Menü verweist darauf.
