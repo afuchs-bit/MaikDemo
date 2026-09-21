@@ -206,7 +206,7 @@
    asymmetrische Eck 24/24/44/24 ist die Marken-Ecke des Projekts - sie steht so
    in form-trust-card.css:16, kontakt.css:52, gewerbe.css:51 und
    privat-form.css:2111. */
-.ueber-betrieb__bild img:not(.ueber-betrieb__marke) {
+.ueber-betrieb__bild img {
   display: block;
   width: 100%;
   height: auto;
@@ -215,18 +215,6 @@
   border-radius: 24px 24px 44px 24px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-card);
-}
-
-/* Die Bluete sitzt halb ueber der Bildkante, wie ein aufgeklebtes Siegel. Sie
-   liegt im Markup NACH dem Bild, damit sie ohne z-index darueber steht. */
-.ueber-betrieb__marke,
-.ueber-muster__marke {
-  position: absolute;
-  right: -14px;
-  bottom: -26px;
-  width: 112px;
-  height: auto;
-  pointer-events: none;
 }
 
 .ueber-betrieb__bild figcaption {
@@ -515,7 +503,7 @@
 
 .ueber-muster__bild { margin: 0; position: relative; }
 
-.ueber-muster__bild img:not(.ueber-muster__marke) {
+.ueber-muster__bild img {
   display: block;
   width: 100%;
   height: auto;
