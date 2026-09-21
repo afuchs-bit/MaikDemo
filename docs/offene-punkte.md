@@ -1669,3 +1669,51 @@ nicht nebeneinander in derselben Zeile.
 
 `id="betrieb-title"` ist erhalten geblieben; das `aria-labelledby` der Sektion löst weiterhin
 auf. Kein Sprungziel im Menü verweist darauf.
+
+---
+
+## AP-383/384 — Die Inhaber-Sektion wird zur Team-Sektion
+
+Am 21.09.2026 auf Ansage des Auftraggebers:
+
+- Die Überschrift heißt statt „**Die Person** hinter dem Betrieb." jetzt
+  „**Das Team** hinter dem Betrieb." (AP-383).
+- Der Absatz darunter trägt den Text des Auftraggebers und **keinen Platzhalter mehr**
+  (AP-384). Die Klasse `ueber-inhaber__platzhalter` ist dort entfernt, der Text steht
+  aufrecht und in der normalen Textfarbe statt gedämpft und kursiv.
+
+Der neue Wortlaut:
+
+> Auf der Baustelle treffen Sie unser Team – Leute vom Fach, die ansprechbar sind und Ihnen
+> gern erklären, was sie gerade tun. Mit Ihrem Grundstück gehen wir sorgfältig um –
+> schließlich wird es auch während der Bauzeit weiter genutzt.
+
+### Was damit hinfällig ist
+
+Die Sektion war als **Personen-Sektion** angelegt: „Wer auf der Startseite ‚Mehr über Maik
+Rohdich' klickt, sucht die Person und findet sonst einen Betrieb." Gebraucht wurden dafür
+„drei bis vier Sätze in der **Ich-Form** von Maik Rohdich — warum er 2003 angefangen hat,
+worauf er bei einem Grundstück zuerst schaut, warum er lieber abrät".
+
+**Dieser Text wird nicht mehr gebraucht.** Der gelieferte Absatz steht in der Wir-Form und
+handelt vom Team auf der Baustelle, nicht vom Inhaber. Die Anforderung ist damit nicht
+offen, sondern gegenstandslos — sie ist in `docs/go-live-checkliste.md` unter 1b als erledigt
+abgehakt, nicht gestrichen, damit die Änderung nachvollziehbar bleibt.
+
+### Was offen bleibt
+
+- **Das Zitat** darunter ist weiter Platzhalter („Ein Satz von Maik – der, mit dem er abrät
+  …") und trägt weiter `ueber-inhaber__platzhalter`. Es ist die letzte Stelle auf der Seite,
+  die von Grundregel 2 abweicht, und steht als einziger verbleibender Punkt unter 1b.
+- **Die Namenszeile** unter dem Zitat lautet „Maik Rohdich, Gartenbaumeister". Unter einer
+  Team-Überschrift ist ein Einzelzitat vertretbar, solange es als Zitat erkennbar bleibt —
+  beim Ersetzen aber mitzudenken.
+- **Der Namensraum** der Sektion heißt weiterhin `.ueber-inhaber*`. Umbenennen erst, wenn
+  entschieden ist, ob der vorbereitete, auskommentierte Block `.ueber-team*` („Wer bei uns
+  arbeitet") kommt — der braucht Namen, Einwilligungen und eine Freigabe, die Grundregel 3
+  aufhebt. Sonst kollidieren zwei Namensräume für dasselbe Thema.
+
+### Grundregel 3 ist gewahrt
+
+Der Text nennt weder Mitarbeiterzahlen noch Fuhrparkgrößen und verlangt kein Teamfoto.
+„Leute vom Fach" ist eine Eigenschaft, keine Menge.

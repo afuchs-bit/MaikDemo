@@ -20,17 +20,20 @@ Die Demo läuft mit vollständiger Sperre. Beim Umschalten beides entfernen:
 **Prüfung:** `grep -rn "noindex" --include="*.html" .` darf nur noch `admin/index.html`
 und `404.html` liefern.
 
-## 1b. Vorläufigen Text auf /ueber-uns/ ersetzen (AP-327)
+## 1b. Vorläufiges Zitat auf /ueber-uns/ ersetzen (AP-327, AP-384)
 
-Die Sektion „Die Person hinter dem Betrieb" trägt seit dem 15.09.2026 **sichtbaren
+Die Sektion „Das Team hinter dem Betrieb" trägt seit dem 15.09.2026 **sichtbaren
 Platzhaltertext** — auf ausdrückliche Entscheidung des Auftraggebers, damit das Layout im
 Zusammenhang beurteilt werden kann. Das weicht bewusst von Grundregel 2 ab und darf nicht
 live gehen.
 
-- [ ] Die drei bis vier Sätze in der Ich-Form von Maik Rohdich stehen im Absatz
-      `.ueber-inhaber__text`
+**Der Absatz ist seit AP-384 erledigt** (21.09.2026): Er trägt den Text des Auftraggebers,
+in der Wir-Form, und nicht mehr die Platzhalter-Klasse. Die ursprünglich vorgesehenen Sätze
+in der Ich-Form von Maik Rohdich werden nicht mehr gebraucht. Offen ist nur noch das Zitat.
+
+- [x] Der Absatz `.ueber-inhaber__text` trägt den endgültigen Text (AP-384)
 - [ ] Das Zitat ist durch den freigegebenen Wortlaut ersetzt
-- [ ] An beiden Stellen ist die Klasse `ueber-inhaber__platzhalter` entfernt
+- [ ] Am Zitat ist die Klasse `ueber-inhaber__platzhalter` entfernt
 - [ ] Der `[OFFEN: …]`-Kommentar über der Sektion in `ueber-uns/index.html` ist aufgelöst
 
 **Prüfung:** `grep -n "ueber-inhaber__platzhalter" ueber-uns/index.html assets/css/ueber-uns.css`
