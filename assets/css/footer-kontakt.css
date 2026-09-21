@@ -3,8 +3,9 @@
 
    Diese Regeln standen bis AP-339 in home-dark.css und galten damit nur fuer die
    Startseite. Seit die Ueber-uns-Seite denselben Footer bekommt, waeren sie dort
-   doppelt gepflegt - deshalb diese eigene Datei. Sie wird von index.html und von
-   ueber-uns/index.html geladen, und zwar NACH styles.css: die Regel
+   doppelt gepflegt - deshalb diese eigene Datei. Sie wird von index.html,
+   ueber-uns/index.html und seit AP-385 auch von projekte/index.html und
+   kontakt/index.html geladen, und zwar NACH styles.css: die Regel
    ".site-footer { background: #171916 }" weiter unten hat nur eine Klasse und
    gewinnt gegen styles.css:1655 allein ueber die Dateireihenfolge. Alle uebrigen
    Selektoren tragen zwei Klassen und stechen styles.css schon dadurch.
@@ -149,7 +150,10 @@
        waere der sichtbare Abstand von 4px auf 2px geschrumpft. */
     column-gap: 4px;
     row-gap: 8px;
-    margin-top: 0.875rem;
+    /* AP-385: Stand bis hierher als margin-top: 0.875rem hier und wurde auf der
+       Startseite von privat-form.css auf 16px korrigiert. Fest in Pixeln aus dem
+       Grund von AP-321: die Wurzel-Schriftgroesse ist unter 480px fluid. */
+    margin-top: 16px;
   }
 
   .site-footer .footer-social-link {
@@ -255,6 +259,13 @@
 
   .site-footer .footer-hours {
     display: none;
+  }
+
+  /* AP-385: Stand bis hierher in privat-form.css hinter html.home-theme-dark und
+     galt damit nur fuer die Startseite. Zwei Klassen stechen styles.css:1696. */
+  .site-footer .footer-bottom {
+    margin-top: 24px;
+    padding-top: 16px;
   }
 }
 

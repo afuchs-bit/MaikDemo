@@ -571,9 +571,15 @@ export function renderNavSubmenu(base) {
 // Wer eine weitere Seite aufnimmt, traegt sie unten ein UND bindet dort
 // footer-kontakt.css ein - ohne die Datei stehen beide Bausteine auf display:none.
 //
+// AP-385: Galerie und Kontakt sind auf demselben Weg dazugekommen. Beide laden
+// footer-kontakt.css seit dem gleich nach styles.css; der Formular-Link zeigt von
+// dort aus auf "../#anfrage", genau wie die Privatkunden-Kachel der Kontaktseite.
+//
 // Die Platzhalter stehen im Template ohne eigene Zeile, damit der Footer aller
 // uebrigen Seiten zeichengleich bleibt.
-const HANDY_FOOTER_SEITEN = new Set(['index.html', 'ueber-uns/index.html']);
+const HANDY_FOOTER_SEITEN = new Set([
+  'index.html', 'ueber-uns/index.html', 'projekte/index.html', 'kontakt/index.html',
+]);
 
 const handyFormularLink = (base) => `
           <a class="footer-contact-link footer-contact-link--iphone-form" href="${base}#anfrage" aria-label="Kontaktformular öffnen und Kontakt aufnehmen">
