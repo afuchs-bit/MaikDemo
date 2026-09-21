@@ -277,18 +277,6 @@
   line-height: 1.5;
 }
 
-.ueber-fuerwen__liste a {
-  display: inline-block;
-  margin-top: 10px;
-  color: var(--home-lime);
-  font-size: .85rem;
-  font-weight: 700;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-.ueber-fuerwen__liste a:hover { border-bottom-color: var(--home-lime); }
-
 /* --- Drei Projekte -------------------------------------------------------
    Das Raster der Kacheln kommt aus styles.css (.projects-grid/.project-card),
    hier steht nur der Kopf der Sektion, was die Kacheln ohne Beschreibungstext
