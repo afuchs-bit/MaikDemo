@@ -53,15 +53,12 @@ html.home-theme-dark body {
   background: var(--bg);
 }
 
-html.home-theme-dark .site-header {
-  background: rgb(var(--surface-rgb) / .82);
-  border-bottom-color: var(--line-2);
-}
-
-html.home-theme-dark .site-header.is-scrolled {
-  background: rgb(var(--surface-rgb) / .95);
-  border-bottom-color: var(--line);
-}
+/* AP-386: Hier standen zwei halbdeckende Kopf-Flaechen (--surface-rgb / .82 bzw.
+   / .95). Sie waren seit jeher tot - die Regel "background: #171916" weiter unten
+   hatte dieselbe Spezifitaet und stand spaeter; gemessen kam am Kopf immer
+   rgb(23, 25, 22) heraus. Die border-bottom-color-Haelften wiederholten nur
+   styles.css:288 und :299. Die deckende Flaeche liegt jetzt in
+   assets/css/header-home.css. */
 
 html.home-theme-dark .home-hero-stack {
   display: grid;
@@ -205,65 +202,6 @@ html.home-theme-dark .fork {
 
 html.home-theme-dark .fork-foot {
   color: rgba(255,255,255,.48);
-}
-
-/* Header, Navigation und Popover */
-html.home-theme-dark .menu,
-html.home-theme-dark .call-popover,
-html.home-theme-dark .nav-submenu {
-  border-color: var(--line);
-}
-
-html.home-theme-dark .call-popover,
-html.home-theme-dark .nav-submenu,
-html.home-theme-dark .primary-nav.is-open .menu {
-  background: var(--bg-elev);
-  color: var(--ink);
-}
-
-html.home-theme-dark .call-row,
-html.home-theme-dark .nav-submenu a,
-html.home-theme-dark .menu a,
-html.home-theme-dark .menu-label,
-html.home-theme-dark .submenu-toggle {
-  color: var(--ink-2);
-}
-
-/* AP-344: Der Aufklapp-Knopf ist rund (styles.css: border-radius 999px). Der
-   Sammel-Fokusring weiter unten (3px gelb, 3px abgesetzt) wurde dadurch zu einem
-   gelben Kreis, der frei um den Knopf schwebte - im Handymenue die auffaelligste
-   Flaeche der ganzen Karte. Jetzt liegt er auf der Knopfkante statt 3px davor, ist
-   2 statt 3px stark und traegt --ink-mute, die gedaempfteste Schriftfarbe der
-   Karte (7,50:1 auf dem Kartengrund #20241D - deutlich ueber den 3:1, die ein
-   Fokusring braucht). Er bleibt: Ohne ihn saehe man bei Tastaturbedienung nicht
-   mehr, wo man steht. Beim Tippen mit dem Finger erscheint er ohnehin nicht -
-   :focus-visible greift dort nicht, und das JS fokussiert den Knopf nicht.
-   Spezifitaet: Die Sammelregel steht in :where(), das nichts beitraegt - dort
-   zaehlen nur html + .home-theme-dark + :focus-visible. Zwei Klassen und eine
-   Pseudoklasse reichen also. */
-html.home-theme-dark .submenu-toggle:focus-visible {
-  outline: 2px solid var(--ink-mute);
-  outline-offset: 0;
-}
-
-html.home-theme-dark .call-row:hover,
-html.home-theme-dark .nav-submenu a:hover,
-html.home-theme-dark .menu a:hover,
-html.home-theme-dark .menu-item--sub:hover > .menu-label {
-  background: var(--bg-soft);
-  color: var(--ink);
-}
-
-html.home-theme-dark .call-label {
-  color: var(--ink-mute);
-}
-
-html.home-theme-dark .nav-toggle {
-  border-color: var(--line);
-}
-
-html.home-theme-dark .nav-toggle span {
-  background: var(--ink);
 }
 
 /* Hero: Fotos bleiben unangetastet, nur Flaechen, Grenzen und Schleier reagieren. */
@@ -506,36 +444,6 @@ html.home-theme-dark .section-proof .btn-outline:hover {
   color: #171916;
   background: var(--home-yellow);
   border-color: var(--home-yellow);
-}
-
-/* Vollstaendig dunkle Homepage. */
-html.home-theme-dark .site-header,
-html.home-theme-dark .site-header.is-scrolled {
-  background: #171916;
-}
-
-/* Safari erweitert die deckende, viewportgebundene Kante in die iPhone-Statusleiste. */
-@supports (-webkit-touch-callout: none) {
-  @media (max-width: 900px) {
-    html.home-theme-dark body {
-      padding-top: calc(var(--mobile-header-h, 82px) + env(safe-area-inset-top, 0px));
-    }
-
-    html.home-theme-dark .site-header,
-    html.home-theme-dark .site-header.is-scrolled {
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-      width: 100%;
-      background: rgb(var(--surface-rgb));
-      transition: border-color .25s var(--ease), padding .25s var(--ease);
-    }
-  }
-}
-
-html.home-theme-dark .menu {
-  background: rgba(32,36,29,.9);
 }
 
 html.home-theme-dark .btn-ghost:hover {
@@ -1145,15 +1053,6 @@ html.home-theme-dark .fork-path:hover {
   html.home-theme-dark.home-header-morph .site-header .header-actions :is(.header-instagram, .call-btn, .btn-whatsapp, .nav-toggle):active {
     opacity: .78;
     transform: scale(.94);
-  }
-
-  /* Menue- und Telefonzeilen sind keine Iconkacheln. Hier signalisiert nur die
-     Flaeche den Druck; die Zeile selbst bleibt unbewegt. */
-  html.home-theme-dark .primary-nav.is-open .menu a:active,
-  html.home-theme-dark .primary-nav.is-open .submenu-toggle:active,
-  html.home-theme-dark .call-popover .call-row:active {
-    color: var(--ink);
-    background: var(--bg-soft);
   }
 
   html.home-theme-dark.home-header-morph .site-header.is-home-condensed,
