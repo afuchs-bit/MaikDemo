@@ -1,7 +1,11 @@
 /* ============================================================
    Maik Rohdich Garten- und Landschaftsbau
    Style: premium, airy, scroll-driven story, 3D-floating cards.
-   Brand: #315200 (oliv), #FFED00 (gelb), #EB6C44 (koralle), weiss.
+   Brand: #4A7A10 (oliv), #F2E20C (gelb), #E22219 (koralle), #FAFAF6 (weiss).
+   AP-404: Hier standen bis heute #315200, #FFED00 und #EB6C44 - die Werte VOR
+   der Farbumstellung AP-F26. Keiner davon stand noch im :root. Genau diese drei
+   tauchten in kontakt.css und form-trust-card.css als Literale wieder auf; der
+   Kommentar war die Quelle. Massgeblich ist ausschliesslich der :root-Block unten.
    ============================================================ */
 
 /* ============================================================
@@ -121,6 +125,19 @@
   --line-2:    rgba(255,255,255,.08);
   --surface-rgb: 23 25 22;
 
+  /* AP-404: Dieselben Farben noch einmal als Kanaltripel. Viele Bausteine brauchen
+     einen Token-Ton mit eigener Deckkraft - ohne Tripel liesse sich das nur als
+     rgba()-Literal schreiben, und genau so sind die Altwerte ins CSS gekommen.
+     Schreibweise wie --surface-rgb: rgb(var(--ink-rgb) / .62). */
+  --ink-rgb:       250 250 246;
+  --ink-2-rgb:     217 222 213;
+  --green-900-rgb:  29 48 0;
+  --green-800-rgb:  42 69 0;
+  --green-700-rgb:  74 122 16;
+  --green-500-rgb: 140 198 63;
+  --yellow-rgb:    242 226 12;
+  --coral-rgb:     226 34 25;
+
   /* Benannte Farben der dunklen Welt. Die --home-*-Namen stammen aus der Zeit, als
      nur die Startseite dunkel war; sie sind bewusst NICHT umbenannt worden - rund
      70 Regeln in home-dark.css verweisen darauf, und ein Umbenennen waere ein
@@ -181,7 +198,32 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* AP-388: Zwei Zeilen, absichtlich. `overflow-x: hidden` zwingt die andere
+     Achse auf `auto` (gemessen: overflow-y wird `auto`), und damit ist der BODY
+     ein eigener Scrollcontainer. Solange das Wurzelelement `visible` ist, faellt
+     das nicht auf - der Browser reicht die Regel ans Fenster weiter. Sobald
+     main.js beim Oeffnen des Menues aber `overflow: hidden` ans Wurzelelement
+     setzt (AP-364), endet die Weiterreichung: Der body wird zum Scrollport mit
+     scrollTop 0, und der klebende Kopf (styles.css:286) klebt an einem
+     ungescrollten Port - also ganz oben im Dokument, weit ueber dem Sichtbaren.
+     Der Kopf verschwand dadurch auf jeder Seite ohne header-home.css, sobald
+     man gescrollt das Menue oeffnete.
+     `clip` klippt genauso, erzeugt aber keinen Scrollcontainer - overflow-y
+     bleibt `visible`, der Kopf klebt weiter am Fenster. Gemessen mit gesetzter
+     Sperre: Kopf top 0 statt -900.
+     Die `hidden`-Zeile bleibt als Rueckfall fuer Safari unter 16 davor stehen;
+     dort gilt weiter der alte Zustand, aber kein waagerechter Ueberlauf. */
   overflow-x: hidden;
+  overflow-x: clip;
+}
+
+/* AP-407: Unter 481px traegt die Seite #1B1E19 statt #171916. Siehe den
+   ausfuehrlichen Kommentar auf dem Zweig fix/kopf-scrollsperre. */
+@media (max-width: 480px) {
+  html,
+  body {
+    background-color: #1B1E19;
+  }
 }
 
 img, svg, video { max-width: 100%; display: block; }
@@ -2829,8 +2871,15 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
   cursor: zoom-in;
   isolation: isolate;
 }
-.gallery-photo:nth-child(8n + 1) { border-radius: 22px 22px 36px 22px; }
-.gallery-photo:nth-child(8n + 4) { border-radius: 19px 31px 19px 19px; }
+/* AP-403: Hier standen zwei Akzentecken - .gallery-photo:nth-child(8n+1) mit
+   22/22/36/22 und :nth-child(8n+4) mit 19/31/19/19. Der Zaehlrhythmus war fuer
+   das vierspaltige Raster gerechnet und traf dort die Aussenecken jeder zweiten
+   Zeile. Das Raster schaltet aber auf drei Spalten (Zeile 2874) und zwei Spalten
+   (Zeile 2877) um; derselbe Rhythmus wanderte dann quer durchs Bild - bei zwei
+   Spalten auf Zeile 1 links, Zeile 2 rechts, dann vier Zeilen nichts. Auf dem
+   Handy sah das nach Zufall aus, nicht nach Takt. Alle Kacheln tragen jetzt die
+   gleichmaessigen 19px aus der Regel darueber. Nicht wieder eintragen, ohne den
+   Rhythmus pro Spaltenzahl mitzurechnen. */
 .gallery-photo picture,
 .gallery-photo img { display: block; width: 100%; height: 100%; }
 .gallery-photo img {

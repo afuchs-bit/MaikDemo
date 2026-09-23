@@ -19,6 +19,21 @@
 
 .ueber-page { background: var(--bg); }
 
+/* AP-407: Unter 481px traegt die Seite #1B1E19 statt #171916 - die Regel dafuer
+   steht in styles.css und gilt fuer alle Seiten. Sie greift hier aber nicht:
+   .ueber-page ist eine Klasse und schlaegt `html, body` unabhaengig von der
+   Medienabfrage. Deshalb dieselbe Stelle noch einmal mit der Klasse, in der
+   Datei, die diese Seite als letzte laedt - genau so haelt es kontakt.css mit
+   body.contact-page.
+   html kommt mit, weil der untere Abstand der eingerueckten Footer-Kachel durch
+   Margin Collapsing ausserhalb des Body-Kastens liegt. */
+@media (max-width: 480px) {
+  html,
+  body.ueber-page {
+    background: #1B1E19;
+  }
+}
+
 /* Der gruene Steg vor den Sektionsueberschriften ist das wiederkehrende
    Zeichen dieser Seite - dieselbe Rolle wie die Schraege auf der Startseite,
    nur ruhiger. */
