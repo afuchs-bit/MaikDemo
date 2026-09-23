@@ -3164,6 +3164,7 @@ body.has-lightbox { overflow: hidden; }
   display: block; padding: 9px 14px; border-radius: 10px; white-space: nowrap;
   font-size: .88rem; font-weight: 500; color: var(--ink-2); text-decoration: none;
 }
+.nav-submenu .nav-entry--mobile-only { display: none; }
 @media (hover: hover) and (pointer: fine) { .nav-submenu a:hover { background: var(--bg-soft); color: var(--ink); } }
 
 /* AP-34: Farblich abgesetztes Panel im Leistungs-Dropdown.
@@ -3189,6 +3190,8 @@ body.has-lightbox { overflow: hidden; }
 .nav-submenu--welten .nav-submenu-head { padding: 2px 8px 8px; }
 
 @media (max-width: 900px) {
+  .nav-submenu .nav-entry--mobile-only { display: list-item; }
+
   /* Untermenü unter dem Eintrag, per Toggle ausklappbar.
      AP-343: Der Eintrag ist ein Raster statt einer umbrechenden Flexzeile.
      Zeile 1 traegt Beschriftung und Aufklapp-Knopf, Zeile 2 das Untermenue.
