@@ -40,7 +40,16 @@
      Fensterbreite nach links versetzt - mittig im linksbuendigen Kasten, nicht
      mittig auf der Seite. text-align: left bleibt: es gilt fuer alles andere
      im Kasten, die Ueberschrift setzt sich mit ihrem eigenen text-align
-     darueber. */
+     darueber.
+
+     AP-416: margin-block: 0 muss dazu. Das kurze margin: 0 hatte vorher alle
+     vier Seiten zurueckgesetzt und damit auch den margin-bottom von
+     .section-head (styles.css:620, clamp(28px, 3.5vw, 44px)) unterdrueckt.
+     margin-inline allein setzt nur links und rechts - der untere Rand kam
+     dadurch zurueck und der Abstand zwischen Ueberschrift und Umschalter
+     sprang bei 375px von 26 auf 54px. Der Abstand nach unten gehoert allein
+     dem klebenden Umschalter (sein padding traegt ihn), nicht dem Kopfkasten. */
+  margin-block: 0;
   margin-inline: auto;
   text-align: left;
 }
