@@ -1,3 +1,23 @@
+/* AP-415: "Baloo 2" fuer den Seitentitel. Das @font-face steht sonst nur in
+   home-dark.css, und die laedt diese Seite nicht - ein blosses
+   font-family: "Baloo 2" fiele hier still auf die Ersatzschrift zurueck.
+   Gebraucht wird die variable Schnittdatei: die Ueberschrift traegt
+   Strichstaerke 600, und diese Datei deckt 400-600 ab. baloo2-700-latin.woff2
+   wird nicht gebraucht, obwohl die Startseite ausgerechnet die vorlaedt.
+   Woertlich aus home-dark.css:12-19 uebernommen, unicode-range eingeschlossen.
+   Die Deklaration steht doppelt (hier und in kontakt.css) statt in styles.css:
+   dort haette sie einen ?v=-Durchlauf ueber 37 Seiten nach sich gezogen. Die
+   Schriftdatei selbst laedt der Browser trotzdem nur einmal - gleiche URL.
+   Kommt eine dritte Seite dazu, gehoert sie nach styles.css. */
+@font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../fonts/baloo2-variable-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 .contact-page { background: var(--bg); }
 
 .contact-page h1,
@@ -29,12 +49,28 @@
 
 .contact-hero-copy h1 {
   margin: 0;
-  font-family: var(--display);
-  font-size: var(--type-page-h1-size);
-  font-weight: 800;
-  line-height: 1.03;
-  letter-spacing: -.043em;
+  /* AP-415: Schriftbild der Startseiten-Ueberschrift "Ueber uns"
+     (privat-form.css:4198). Auf Ansage des Auftraggebers auf allen Breiten,
+     nicht nur bis 480px wie dort - und mit dem kompletten Satz, nicht nur
+     Schriftart, Groesse und Zentrierung: Baloo 2 mit der Strichstaerke 800 und
+     der Laufweite -.043em von Outfit saehe gedraengt und verzerrt aus, die
+     Werte gehoeren zusammen.
+     Einzige Abweichung von der Vorlage: Ersatzschrift ist var(--display)
+     statt sans-serif. Das greift nur, wenn Baloo 2 nicht laedt - dann ist die
+     Hausschrift die bessere Wahl als die Systemschrift. */
+  font-family: "Baloo 2", var(--display);
+  font-size: 31px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: -.015em;
+  text-align: center;
   text-wrap: balance;
+}
+
+@media (max-width: 360px) {
+  /* AP-415: Dieselbe Stufe wie die Vorlage (privat-form.css:4224). */
+  .contact-hero-copy h1 { font-size: 28px; }
 }
 
 .contact-hub {
@@ -384,7 +420,9 @@
 @media (max-width:600px) {
   .contact-hero { padding-top: 24px; }
   .contact-hero .breadcrumbs { margin-bottom: 28px; }
-  .contact-hero-copy h1 { font-size: var(--type-page-h1-size); }
+  /* AP-415: Hier stand eine Wiederholung von font-size:
+     var(--type-page-h1-size). Sie steht spaeter in der Datei als die Regel
+     oben und haette die 31px unterhalb 600px wieder zurueckgedreht. */
   .contact-direct-card { padding: 26px 22px; border-radius: 22px 22px 38px 22px; }
   .contact-direct-list { grid-template-columns: 1fr; }
   .contact-location-card { border-radius: 19px; }
