@@ -6,13 +6,12 @@
   padding-bottom: var(--space-section);
 }
 
-.projects-overview-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(390px, 470px);
-  gap: clamp(28px, 4vw, 64px);
-  align-items: end;
-  margin-bottom: clamp(22px, 2.6vw, 34px);
-}
+/* AP-409: Hier stand das zweispaltige Raster aus Ueberschrift und Umschalter.
+   Der Umschalter ist aus diesem Kasten heraus (Begruendung im Markup), das
+   Raster sitzt jetzt auf .projects-overview > .container - nur dort liegen
+   beide noch als Geschwister. Der untere Abstand ist mitgewandert: ab 901px in
+   den row-gap des Containers, darunter in das padding des klebenden Wrappers.
+   Zweimal gesetzt haette er doppelt gezaehlt. */
 
 .projects-overview-head {
   max-width: 720px;
@@ -30,14 +29,10 @@
   text-wrap: balance;
 }
 
-.projects-overview-head .lead {
-  max-width: 660px;
-  margin-top: var(--space-title-subtext);
-  font-family: var(--body);
-  font-size: var(--type-hero-lead-size);
-  line-height: 1.62;
-  text-wrap: pretty;
-}
+/* AP-409: Die Unterzeile unter der Ueberschrift ist entfallen - sie erklaerte
+   die beiden Schaltflaechen, die unmittelbar darunter stehen. Die Regel
+   .projects-overview-head .lead stand nur fuer sie und faellt mit weg.
+   .type-hero-lead in styles.css:256 ist geteilt und bleibt. */
 
 .projects-overview .gallery-mode-tabs {
   width: 100%;
@@ -46,11 +41,6 @@
 }
 
 @media (max-width: 900px) {
-  .projects-overview-intro {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
   .projects-overview .gallery-mode-tabs {
     max-width: 540px;
   }
@@ -62,23 +52,235 @@
     padding-bottom: var(--space-section);
   }
 
-  .projects-overview-intro {
-    gap: 18px;
-    margin-bottom: 22px;
-  }
-
   .projects-overview-head h1 {
     font-size: var(--type-page-h1-size);
   }
 
-  .projects-overview-head .lead {
-    margin-top: var(--space-title-subtext);
-    font-size: var(--type-hero-lead-size);
-    line-height: 1.62;
+  /* AP-409: Die Antippflaeche von 48px aus AP-402 sitzt jetzt am .seg selbst
+     und gilt auf allen Breiten - siehe den Segmented-Control-Block weiter
+     unten. Hier bleibt nichts zu tun. */
+}
+
+/* AP-388: Seitengrund wie auf der Startseite. Begruendung und Herkunft des
+   Tons stehen im gleichnamigen Block in kontakt.css.
+   .section-projects ist die einzige Sektion dieser Seite (styles.css:1065) und
+   setzt dort var(--bg) - diese Datei wird nach styles.css geladen und sticht
+   die Regel bei gleicher Spezifitaet. */
+@media (max-width: 480px) {
+  html,
+  body,
+  .section-projects {
+    background: #1B1E19;
+  }
+}
+
+/* AP-401: Der Galerie-CTA traegt seit diesem Arbeitspaket die Knopf-Familie der
+   Startseite (assets/css/cta-family.css). Die greift ausschliesslich bis 480px -
+   darueber bleibt der Knopf die btn-primary-Pille, die er vorher war.
+
+   Dafuer muessen drei Bausteine oberhalb der Handybreite verschwinden. Auf der
+   Startseite erledigen das die Praefix-Klassen aus mobile-social-proof.css
+   (dort Zeile 22 und 26). Diese Datei gehoert zur Startseiten-Sektion und waere
+   hier reiner Ballast, also stehen die drei Zeilen lokal - nur fuer diesen einen
+   Knopf, ueber seine id. */
+@media (min-width: 481px) {
+  #galleryCta .maik-cta__frame,
+  #galleryCta .maik-cta__shape,
+  #galleryCta .maik-cta__arrow-image {
+    display: none;
   }
 
-  .projects-overview .gallery-mode-tabs .seg span {
-    min-height: 48px;
-    padding-inline: 10px;
+  /* AP-408: Oberhalb der Handybreite faellt die ganze maik-cta-Gestaltung weg -
+     cta-family.css steht bis auf Druck- und Fokuszustaende komplett in
+     max-width: 480px - und uebrig bleibt .btn-primary in --green-700. Derselbe
+     Knopf war damit unter 481px hell (#8CC63F, die SVG-Flaeche mit --home-lime)
+     und darueber dunkeloliv (#4A7A10). Oberhalb passte er dadurch nicht mehr zu
+     den gruenen Texten der Kacheln, die durchgaengig --green-500 tragen -
+     denselben Hexwert wie --home-lime.
+     Die id gewinnt ohne !important gegen .btn-primary.
+     Die weisse Schrift von .btn-primary muss mit: Weiss auf #8CC63F traegt nur
+     1,8:1. #171916 ist dieselbe Textfarbe, die der Knopf unter 481px schon hat
+     (cta-family.css:46), und kommt auf 9,7:1. Der Pfeil folgt von selbst, sein
+     SVG zeichnet mit stroke: currentColor. */
+  #galleryCta {
+    background: var(--home-lime);
+    color: #171916;
+    box-shadow: 0 12px 26px -12px rgba(140, 198, 63, .45),
+                inset 0 1px 0 rgba(255, 255, 255, .18);
+  }
+
+  /* Der Inline-Chevron ersetzt oberhalb 480px den Pfeil, der bis AP-401 als
+     Textzeichen "→" im Markup stand. Ohne Masse waere das SVG 300x150px gross;
+     1.1em entspricht dem alten Zeichen und folgt mobile-social-proof.css:9. */
+  #galleryCta .maik-cta__arrow {
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-left: .5em;
+  }
+
+  #galleryCta .maik-cta__arrow > svg {
+    width: 1.1em;
+    height: 1.1em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+/* AP-401: Das Label der Familie steht auf white-space: nowrap
+   (cta-family.css) - gerechnet fuer "GARTENWUNSCH BESPRECHEN", 23 Zeichen auf
+   einer Zeile. "PASSENDES PROJEKT GESEHEN JETZT ANFRAGEN" sind 40 Zeichen; mit
+   nowrap laeuft der Text unter die Pfeilkapsel und aus dem Knopf heraus.
+
+   Also nur fuer diesen Knopf: umbrechen erlaubt. Die Knopfhoehe von 64px bleibt,
+   zwei Zeilen zu je 1.16 Zeilenhoehe passen hinein. Alles Uebrige - Form,
+   Rahmen, Halo, Schrift, Pfeil - bleibt wie bei der Startseite. */
+@media (max-width: 480px) {
+  #galleryCta .maik-cta__label {
+    white-space: normal;
+    text-wrap: balance;
+  }
+}
+
+/* AP-409: Aus zwei freistehenden Schaltflaechen mit Luecke wird ein Rahmen mit
+   zwei gleich breiten Haelften. Das sagt "zwei Zustaende derselben Ansicht"
+   statt "zwei Aktionen".
+
+   AP-402 gilt unveraendert weiter und ist hier aufgegangen: Die Segmente tragen
+   die Ecke der Leistungskacheln - 18px oben links und unten rechts, 5px an den
+   beiden anderen, woertlich aus .iphone-service-feature--emergency
+   (privat-form.css:4992), der Notdienst-Kachel der Startseite. Eine Variable
+   dafuer gibt es im Projekt nicht. Die Aussenform nimmt denselben Schnitt plus
+   das 4px-Polster (18+4, 5+4), damit Innen- und Aussenkante parallel laufen.
+
+   min-height: 48px ist die Antippflaeche nach WCAG. Sie stand seit AP-402 am
+   span, weil dort ein Block die Zeile nach oben gedrueckt haette; am .seg selbst
+   braucht es den Kunstgriff nicht, denn .seg ist bereits ein Flex-Container mit
+   align-items: center (styles.css:1428). Dadurch gilt das Mass jetzt auf allen
+   Breiten statt nur unter 600px.
+
+   Die Regeln haengen an .gallery-mode-tabs und nicht an .seg: dieselbe Klasse
+   tragen elf Segmente des Pool-Rechners
+   (privatkunden/leistungen/pool-whirlpool-umfeld/), die teils mehrzeilig
+   umbrechen - dort wirkt eine asymmetrische Ecke anders. .gallery-mode-tabs
+   kommt nur auf dieser Seite vor.
+
+   Die Farben bleiben unberuehrt: .seg:has(input:checked) in styles.css:1440
+   traegt Weiss auf --green-700, am Pixel gemessene 5,14:1. Fuer den Fokus gilt
+   weiter styles.css:3385 - bei Radio-Markup landet er auf dem input, nicht auf
+   dem label, und genau darauf zielt die dortige :has()-Regel. */
+.projects-overview .gallery-mode-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 22px 9px 22px 9px;
+  background: var(--bg-elev);
+}
+
+.gallery-mode-tabs .seg {
+  min-height: 48px;
+  padding: 6px;
+  border: 0;
+  border-radius: 18px 5px 18px 5px;
+}
+
+.gallery-mode-tabs .seg span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 10px;
+  text-align: center;
+}
+
+/* AP-409: Bis 900px klebt der Umschalter beim Scrollen unter dem Seitenkopf,
+   damit der Wechsel zu "Projekte mit Details" aus jeder Scrollposition
+   erreichbar ist.
+
+   top folgt dem Kopf, der unter 900px auf position: fixed steht
+   (header-home.css:107) und deshalb keinen Platz im Fluss belegt; dieselbe
+   Rechnung nutzt mobile-social-proof.css:237 schon fuer scroll-margin-top.
+   z-index 4 liegt unter den 50 des Kopfes (styles.css:327) - der Umschalter
+   schiebt sich also darunter, nicht darueber.
+
+   Der deckende Hintergrund ist zwingend, sonst scrollen Kacheln sichtbar
+   hindurch. Kein overflow: hidden auf diesem Kasten - der Fokusring aus
+   styles.css:3385 steht 2px ausserhalb und wuerde abgeschnitten.
+
+   Das padding traegt zugleich den Abstand zur Ueberschrift und zur ersten
+   Kachel; deshalb hat .projects-overview-intro hier keinen margin-bottom. */
+@media (max-width: 900px) {
+  .gallery-mode-sticky {
+    position: sticky;
+    top: calc(var(--mobile-header-h, 82px) + env(safe-area-inset-top, 0px));
+    z-index: 4;
+    /* AP-410: war 14px. Der Wert traegt beide Abstaende zugleich - nach oben zur
+       Ueberschrift, nach unten zur ersten Kachel. Damit beginnt die erste Kachel
+       bei 310 statt 286px; die 290px aus dem Designdokument sind auf Ansage des
+       Auftraggebers bewusst ueberschritten. Gegenueber dem Ausgangszustand von
+       412px bleibt der Kopf rund 100px kuerzer. */
+    padding: 26px 0;
+    background: var(--bg);
+    box-shadow: 0 12px 14px -12px rgba(0, 0, 0, .85);
+  }
+}
+
+/* AP-410: Dieser Block MUSS hinter dem Block darueber stehen. Unter 481px passen
+   beide Media Queries, und beide Selektoren sind (0,1,0) - entschieden wird
+   allein ueber die Reihenfolge. In AP-409 stand die Regel weiter oben im
+   AP-388-Block und griff deshalb nie: der Umschalter trug var(--bg) = #171916
+   auf einer #1B1E19-Seite, sichtbar als Kante ueber die ganze Breite.
+   Der Literalwert wiederholt sich absichtlich, siehe die Begruendung im
+   AP-388-Block. */
+@media (max-width: 480px) {
+  .gallery-mode-sticky {
+    background: #1B1E19;
+  }
+}
+
+/* AP-409: Ab 901px steht der Umschalter wieder neben der Ueberschrift, wie vor
+   diesem Arbeitspaket. Das Raster dafuer sitzt jetzt auf dem Container, weil
+   Ueberschrift und Umschalter erst dort wieder Geschwister sind. Alle weiteren
+   Kinder laufen ueber beide Spalten; row-gap ersetzt den frueheren
+   margin-bottom des Intros. */
+@media (min-width: 901px) {
+  .projects-overview > .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(390px, 470px);
+    column-gap: clamp(28px, 4vw, 64px);
+    row-gap: clamp(22px, 2.6vw, 34px);
+    align-items: start;
+  }
+
+  .projects-overview > .container > * {
+    grid-column: 1 / -1;
+  }
+
+  /* Der Selektor oben ist (0,2,0) und schlaegt eine einzelne Klasse - die beiden
+     Ausnahmen brauchen denselben Pfad, sonst gewinnt grid-column: 1 / -1. */
+  .projects-overview > .container > .projects-overview-intro {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .projects-overview > .container > .gallery-mode-sticky {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+  }
+}
+
+/* AP-408: .btn-primary:hover zieht auf --green-800 (#2a4500) - auf einem hellen
+   Knopf waere das ein Sprung ins fast Schwarze. Stattdessen eine Stufe heller,
+   mit dem vorhandenen Hausakzent statt einem neu erfundenen Wert. Die dunkle
+   Schrift bleibt lesbar, der Kontrast steigt dabei sogar. */
+@media (min-width: 481px) and (hover: hover) and (pointer: fine) {
+  #galleryCta:hover {
+    background: var(--home-dark-accent);
+    box-shadow: 0 16px 34px -10px rgba(140, 198, 63, .55);
   }
 }

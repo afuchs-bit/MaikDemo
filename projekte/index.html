@@ -3,9 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<style>
+html, body { background-color: #171916; }
+@media (max-width: 480px) {
+  html, body { background-color: #1B1E19; }
+}
+</style>
 <!-- AP-01: Demo-Sperre. Beim Go-Live entfernen, siehe docs/go-live-checkliste.md Position 1. -->
 <meta name="robots" content="noindex,nofollow" />
-<meta name="theme-color" content="#315200" />
+<meta name="theme-color" content="#171916" />
 <title>Gartenbilder & Projekte – Garten- und Landschaftsbau | Maik Rohdich</title>
 <meta name="description" content="Echte Gartenbilder und ausgeführte Projekte von Maik Rohdich: Gartengestaltung, Teichanlagen, Pflasterarbeiten, Bepflanzung und Außenanlagen." />
 <link rel="canonical" href="https://rohdich.de/projekte/" />
@@ -18,10 +24,11 @@
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260921g" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260921g" />
-<link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260921f" />
-<link rel="stylesheet" href="../assets/css/projekte.css?v=20260906a" />
+<link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
+<link rel="stylesheet" href="../assets/css/cta-family.css?v=20260923a" />
+<link rel="stylesheet" href="../assets/css/projekte.css?v=20260923f" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -88,6 +95,9 @@
         <text x="198" y="92" font-size="58" font-weight="800" fill="#5a8a1c" stroke="#1d3000" stroke-width="2.6" stroke-linejoin="round" letter-spacing="0.2">MAIK ROHDICH</text>
         <text x="200" y="124" font-size="22" font-weight="700" fill="#FFED00" stroke="#315200" stroke-width="2.4" stroke-linejoin="round" letter-spacing="0.4">Gartenbaumeister</text>
       </g>
+    </symbol>
+    <symbol id="maik-cta-shape" viewBox="0 0 360 64">
+      <path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/>
     </symbol>
   </defs>
 </svg>
@@ -188,10 +198,21 @@
   <div class="container">
     <div class="projects-overview-intro reveal">
       <div class="section-head projects-overview-head">
-        <h1 class="type-page-title" id="gal-title">Unsere Garten- und Projektgalerie</h1>
-        <p class="lead type-hero-lead">Entdecken Sie echte Gartenergebnisse oder öffnen Sie Projekte mit weiteren Details zu Leistung und Umsetzung.</p>
+        <h1 class="type-page-title" id="gal-title">Garten- und Projektgalerie</h1>
       </div>
+    </div>
 
+    <!-- AP-409: Der Umschalter steht bewusst NICHT mehr in .projects-overview-intro.
+         Bis 900px klebt er beim Scrollen unter dem Seitenkopf, und ein sticky-Element
+         klebt nur innerhalb seines Elternkastens - das Intro endet unmittelbar hinter
+         ihm, er haette sich nach wenigen Pixeln wieder geloest. .container reicht als
+         einziger Kasten ueber die ganze Galerie.
+         Ab 901px setzt projekte.css ihn ueber ein Raster auf .container wieder neben
+         die Ueberschrift; das Desktop-Bild bleibt damit, wie es war.
+         Kein .reveal auf dem Wrapper: die Klasse startet auf opacity 0 und wartet auf
+         den IntersectionObserver. Ein Bedienelement am Seitenanfang muss sofort da
+         sein, und ein ausbleibendes is-in wuerde es unsichtbar machen. -->
+    <div class="gallery-mode-sticky">
       <div class="field-group gallery-mode-tabs" role="group" aria-label="Galerieansicht wählen">
         <label class="seg"><input type="radio" name="gallery-mode" value="galerie" checked><span>Bildergalerie</span></label>
         <label class="seg"><input type="radio" name="gallery-mode" value="projekte"><span>Projekte mit Details</span></label>
@@ -344,7 +365,12 @@ Neben der harmonischen Anordnung der Beete und Wege wurde besonderer Wert auf ei
 
     <!-- CTA -->
     <div class="gallery-cta center reveal">
-      <a class="btn btn-primary" id="galleryCta" href="../#kontakt">Passendes Projekt gesehen? Jetzt anfragen <span aria-hidden="true">→</span></a>
+      <a class="btn btn-primary maik-cta maik-cta--attention maik-cta--long" id="galleryCta" href="../#kontakt">
+        <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+        <svg class="maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><svg class="maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+        <span class="maik-cta__label">Passendes Projekt gesehen? Jetzt anfragen</span>
+        <span class="maik-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="maik-cta__arrow-image" src="../assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
+      </a>
     </div>
   </div>
 </section>
@@ -416,7 +442,7 @@ Neben der harmonischen Anordnung der Beete und Wege wurde besonderer Wert auf ei
           </a>
         </div>
         <div class="footer-social-iphone" aria-label="Weitere Kontaktmöglichkeiten">
-          <p class="footer-social-availability"><span class="footer-social-line">Jederzeit erreichbar <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
+          <p class="footer-social-availability"><span class="footer-social-line">WhatsApp jederzeit <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
           <a class="footer-social-link footer-social-link--whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener" aria-label="Maik Rohdich über WhatsApp schreiben">
             <span class="footer-social-icon footer-social-icon--whatsapp" aria-hidden="true"><img src="../assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
           </a>
@@ -440,7 +466,7 @@ Neben der harmonischen Anordnung der Beete und Wege wurde besonderer Wert auf ei
         </details>
       </nav>
 
-      <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen-Buer <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
+      <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Essen <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
     </div>
 
     <div class="footer-bottom">
@@ -452,6 +478,7 @@ Neben der harmonischen Anordnung der Beete und Wege wurde besonderer Wert auf ei
 <!-- BUILD:site-footer:end -->
 
 <script src="../assets/js/main.js?v=20260919b" defer></script>
+<script src="../assets/js/cta-signal.js?v=20260914a" defer></script>
 <script type="module" src="../assets/js/galerie.js?v=20260906a1"></script>
 </body>
 </html>
