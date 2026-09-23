@@ -1,5 +1,15 @@
 # HTTP-Header fuer Cloudflare Pages (AP-27).
 # Doku: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# AP-398: NICHT MEHR WIRKSAM. Zielplattform ist laut Go-Live-Checkliste Position 2
+# Vercel, und Vercel liest diese Datei nicht - sie wuerde als gewoehnliche Datei
+# unter /_headers ausgeliefert. Die Header stehen seit AP-398 in vercel.json,
+# dazu eine Content-Security-Policy, die es hier nie gab. .vercelignore haelt
+# diese Datei aus der Auslieferung heraus.
+#
+# Sie bleibt liegen, falls doch wieder Cloudflare Pages das Ziel wird. Wer sie
+# reaktiviert: der Inhalt unten ist der Stand vor AP-398 und kennt die CSP nicht.
+# HSTS setzt Vercel bei eigener Domain selbst.
 
 /*
   X-Content-Type-Options: nosniff
