@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923a" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923b" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -469,65 +469,75 @@ html, body { background-color: #171916; }
        AP-220). Das ausgezeichnete Wort behaelt seine Akzentfarbe, die Regel
        dafuer steht jetzt an der Ueberschrift statt am Leitsatz.
 
-       AP-376: Der Fliesstext ist der Wortlaut der alten Website des
-       Auftraggebers, auf seine ausdrueckliche Ansage vom 20.09.2026 woertlich
-       uebernommen. Er loest den Text aus AP-220/AP-327 ab.
+       AP-411 (23.09.2026): Der Abschnitt ist nach "Variante D" neu gebaut.
+       Er war seit AP-376 der woertliche Wortlaut der alten Website; der
+       Auftraggeber hat diese Entscheidung am 23.09.2026 aufgehoben und die
+       Kuerzung ausdruecklich angeordnet. Von 212 auf 97 Woerter. Die Belege
+       und die gestrichenen Stellen stehen in docs/offene-punkte.md unter
+       AP-411; der ueberholte AP-376-Eintrag bleibt dort als Vorgeschichte
+       stehen.
 
-       Drei Dinge, die dabei bewusst entschieden sind - Begruendung und
-       Belegstellen in docs/offene-punkte.md unter AP-376:
-       1. Der Text enthaelt Werbesprache ("erfolgreich!", "anspruchsvoll",
-          "hochwertig", "partnerschaftliche Zusammenarbeit"), die Grundregel 5
-          sonst ausschliesst. Nicht glaetten - das ist der Wunsch des
-          Auftraggebers, kein Versehen.
-       2. Zwei Aussagen sind neu und stehen in keinem Dokument des Teils B:
-          Arbeiten im oeffentlichen Bereich und Spezialisten aus angrenzenden
-          Gewerken (Entwaesserungstechnik). Beleg ist die alte Website.
-       3. "Deutschlandweit" faellt weg - der Alttext kennt die Angabe nicht.
-          Teil H.6 will sie ohnehin nur in der Kartenlegende der Startseite.
+       Genau ein Satz ist neu formuliert - "Im Mittelpunkt steht immer das
+       Ziel, die Anlage termingerecht fertigzustellen. Grundlage dafuer sind
+       partnerschaftliche Zusammenarbeit und langjaehrige
+       Geschaeftsbeziehungen." Er fasst zwei Originalsaetze zusammen und
+       bleibt bewusst bei "Ziel": "Der Termin ist Teil der Absprache" waere
+       eine Zusage statt einer Absicht und damit unter Paragraf 5 UWG eine
+       andere Kategorie. Nicht verschaerfen.
 
-       Einzige Abweichung vom Original: "seit ueber 20 Jahren" statt "seit
-       20 Jahren". Die Seite nennt an drei Stellen 2003, die FAQ weiter unten
-       ebenfalls - ohne das "ueber" widerspraeche sich die Seite selbst.
+       Zwei Aussagen stehen weiterhin in keinem Dokument des Teils B und haben
+       die alte Website als einzigen Beleg: Arbeiten im oeffentlichen Bereich
+       und Spezialisten aus angrenzenden Gewerken (Entwaesserungstechnik).
 
-       Der Merksatz aus AP-220 bleibt (Auftraggeber, 20.09.2026) und sitzt
-       jetzt vor dem Absatz ueber Absprachen: Beide handeln davon, worauf man
-       sich ohne Papier verlassen kann.
+       "seit ueber 20 Jahren" bleibt. Die Seite nennt an drei Stellen 2003 -
+       ohne das "ueber" widerspraeche sie sich selbst.
 
-       Die Kacheln "Fuer wen wir arbeiten" weiter unten bleiben ebenfalls. Sie
-       sagen, fuer wen gearbeitet wird, und verlinken dorthin; die Liste sagt,
-       welche Arbeiten das sind. Verwandt, aber nicht dasselbe. -->
+       Das Raster hat seit AP-411 DREI Kinder: Text, Foto, Nachsatz. Das Foto
+       steht im Quelltext zwischen den beiden Textbloecken. Gestapelt ergibt
+       sich daraus von selbst die Reihenfolge der Variante D - ohne order und
+       ohne display:contents. Vorher stand das Foto hinter dem gesamten Text;
+       auf dem Handy lag seine Oberkante dadurch 1517px unter dem
+       Sektionsanfang. Am Desktop verteilt grid-template-areas die beiden
+       Textbloecke auf Spalte 1 und laesst das Foto rechts ueber beide Zeilen
+       stehen - dort aendert sich das Bild nicht.
+
+       Der Merksatz aus AP-220 bleibt (Auftraggeber, 20.09.2026), ist jetzt
+       aber die Haltungszeile direkt unter der Ueberschrift. Er hat dabei
+       ueber-steg verloren: die H2 darueber traegt den gruenen Steg schon,
+       zwei Balken uebereinander waeren ein Fehler.
+
+       Die Zusage-Kachel ist bewusst KEIN blockquote und traegt KEINE
+       Anfuehrungszeichen. Der Satz ist kein Zitat, sondern der Betrieb ueber
+       sich selbst - derselbe Grundsatz wie bei der Ueberschrift, siehe
+       ueber-uns.css:62.
+
+       "Unsere Taetigkeitsschwerpunkte liegen in:" bleibt als Absatz stehen.
+       Die Variante D macht daraus eine Zwischenueberschrift, weil die Punkte
+       dort zu Chips werden; sie bleiben auf Ansage des Auftraggebers eine
+       Liste, und ihre fuenf Punkte stehen im Dativ ("der Planung, dem Bau
+       ...") - ohne den einleitenden Satz haenge die Aufzaehlung grammatisch
+       in der Luft.
+
+       Die Kacheln "Fuer wen wir arbeiten" weiter unten bleiben unveraendert.
+       Sie sagen, fuer wen gearbeitet wird, und verlinken dorthin; die Liste
+       sagt, welche Arbeiten das sind. Verwandt, aber nicht dasselbe. -->
   <section class="section ueber-betrieb" aria-labelledby="betrieb-title">
     <div class="container ueber-betrieb__raster">
       <div class="ueber-betrieb__wort reveal">
         <h2 class="type-section-title ueber-steg" id="betrieb-title">Gartenbau mit <em>Handschlagqualität</em></h2>
-        <p class="lead">In Herne und Umgebung – seit über 20 Jahren erfolgreich! Wir übernehmen
-           die Ausführung anspruchsvoller Außenanlagen im öffentlichen, gewerblichen und
-           privaten Bereich.</p>
-        <p class="lead">Unsere Schwerpunkte liegen in der Realisierung hochwertiger und
-           anspruchsvoller Privatgärten sowie gewerblich genutzter Flächen und Gartenanlagen.
-           Im Mittelpunkt steht dabei immer ein Ziel, nämlich die termingerechte Herstellung
-           einer qualitativ hochwertigen Gartenanlage.</p>
-        <p class="lead">Unsere Tätigkeitsschwerpunkte liegen in:</p>
-        <ul class="lp-list lead">
-          <li>der Planung, dem Bau und der Pflege anspruchsvoller Privatgärten</li>
-          <li>der Planung, dem Bau und der Pflege von Teichen und Zäunen</li>
-          <li>dem Landschaftsbau und dem Bau gewerblicher Außenanlagen</li>
-          <li>der dauerhaften Pflege von privaten und gewerblichen Außenanlagen</li>
-          <li>der Baumpflege</li>
-        </ul>
-        <p class="ueber-betrieb__merksatz type-subsection-title ueber-steg">Was nicht sinnvoll ist, sagen wir Ihnen vorher.</p>
-        <p class="lead">Besonderen Wert legen wir auf eine partnerschaftliche Zusammenarbeit und
-           den daraus resultierenden langjährigen Geschäftsbeziehungen. Getroffene Absprachen
-           haben für uns den gleichen Stellenwert wie schriftliche Verträge. Dem kommt aufgrund
-           der immer kürzer werdenden Bauzeiten besondere Bedeutung zu, da nicht alle
-           Vereinbarungen, die auf der Baustelle getroffen werden, vor allem kurzfristige
-           Änderungen, auch schriftlich zu Papier gebracht werden können.</p>
-        <p class="lead">Für unsere Aufträge stehen uns unsere eigenen Fachleute aus dem
-           Mitarbeiterkreis sowie Spezialisten aus den verschiedenen angrenzenden Gewerken, wie
-           etwa der Entwässerungstechnik, zur Seite.</p>
-        <p class="lead">Somit sind wir in der Lage, von der Planung, über die Kostenermittlung,
-           Realisierung und Koordinierung, bis hin zur Pflege alle Arbeiten aus einer Hand zu
-           erledigen.</p>
+        <p class="ueber-betrieb__haltung type-subsection-title">Was nicht sinnvoll ist, sagen wir Ihnen vorher.</p>
+        <p class="ueber-betrieb__fakten">In Herne und Umgebung, seit über 20&nbsp;Jahren.
+           Außenanlagen im öffentlichen, gewerblichen und privaten Bereich.</p>
+        <p class="lead">Im Mittelpunkt steht immer das Ziel, die Anlage termingerecht
+           fertigzustellen. Grundlage dafür sind partnerschaftliche Zusammenarbeit und
+           langjährige Geschäftsbeziehungen.</p>
+        <div class="ueber-betrieb__zusage">
+          <p class="ueber-betrieb__zusage-satz">Getroffene Absprachen haben für uns den gleichen
+             Stellenwert wie schriftliche Verträge.</p>
+          <p class="ueber-betrieb__zusage-grund">Bauzeiten werden immer kürzer, und nicht jede
+             Vereinbarung, die auf der Baustelle getroffen wird, lässt sich schriftlich
+             festhalten.</p>
+        </div>
       </div>
       <figure class="ueber-betrieb__bild reveal">
         <picture>
@@ -544,6 +554,46 @@ html, body { background-color: #171916; }
         </picture>
         <figcaption>Schwere Steine kommen mit eigenem Gerät an ihren Platz.</figcaption>
       </figure>
+
+      <div class="ueber-betrieb__nachsatz reveal">
+        <h3 class="ueber-betrieb__kicker">Alles aus einer Hand</h3>
+        <!-- AP-411: Die fuenf Glieder stehen im HTML, nicht im Skript. Wuerde JS
+             sie einsetzen, verschwaenden "Kostenermittlung" und "Koordinierung"
+             aus dem ausgelieferten Quelltext. Ohne JS bleibt die Kette sichtbar;
+             die Schreibmaschine in main.js versteckt sie nur voruebergehend und
+             liest ihre Woerter aus genau dieser Liste. -->
+        <ul class="ueber-betrieb__kette">
+          <li>Planung</li>
+          <li>Kostenermittlung</li>
+          <li>Realisierung</li>
+          <li>Koordinierung</li>
+          <li>Pflege</li>
+        </ul>
+
+        <!-- AP-411: startet hidden - kein Aufblitzen vor der Initialisierung, und
+             ohne JS bleibt der Block weg. aria-hidden, weil Screenreader die Kette
+             lesen sollen und nicht ein Textfeld, das sich staendig aendert. Der
+             sizer ist ein unsichtbarer Platzhalter mit dem laengsten Wort; ohne
+             ihn wackelt bei jedem Buchstaben alles darunter. Der Pause-Knopf wird
+             bei MODE 'once' nie eingeblendet - er steht hier, damit ein spaeterer
+             Wechsel auf 'loop' nicht gegen WCAG 2.2.2 laeuft. -->
+        <div class="ueber-betrieb__typer" aria-hidden="true" hidden>
+          <span class="ueber-betrieb__typer-box"><span class="ueber-betrieb__typer-sizer">Kostenermittlung</span><span class="ueber-betrieb__typer-out"></span></span>
+          <button class="ueber-betrieb__typer-pause" type="button" aria-pressed="false" hidden>Pause</button>
+        </div>
+
+        <p class="ueber-betrieb__notiz">Eigene Fachleute im Team, dazu Spezialisten aus
+           angrenzenden Gewerken wie der Entwässerungstechnik.</p>
+
+        <p class="lead">Unsere Tätigkeitsschwerpunkte liegen in:</p>
+        <ul class="lp-list lead">
+          <li>der Planung, dem Bau und der Pflege anspruchsvoller Privatgärten</li>
+          <li>der Planung, dem Bau und der Pflege von Teichen und Zäunen</li>
+          <li>dem Landschaftsbau und dem Bau gewerblicher Außenanlagen</li>
+          <li>der dauerhaften Pflege von privaten und gewerblichen Außenanlagen</li>
+          <li>der Baumpflege</li>
+        </ul>
+      </div>
     </div>
 
     <!-- AP-327: Drei Auftraggebergruppen, vom Auftraggeber am 15.09.2026
@@ -797,6 +847,6 @@ html, body { background-color: #171916; }
 </footer>
 <!-- BUILD:site-footer:end -->
 
-<script src="../assets/js/main.js?v=20260919b" defer></script>
+<script src="../assets/js/main.js?v=20260923e" defer></script>
 </body>
 </html>

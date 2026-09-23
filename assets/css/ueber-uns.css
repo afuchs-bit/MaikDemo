@@ -180,42 +180,245 @@
 
 /* --- Der Betrieb --------------------------------------------------------- */
 
+/* AP-411: Drei Kinder statt zwei. Im Quelltext steht das Foto zwischen den
+   beiden Textbloecken - gestapelt ergibt das die Lesereihenfolge der Variante D
+   ohne order und ohne display:contents. Am Desktop holen die Bereichsnamen die
+   beiden Textbloecke in Spalte 1 zurueck, das Foto steht rechts ueber beide
+   Zeilen. Das Desktop-Bild ist danach unveraendert: Foto 440px breit, Oberkante
+   bei 375px, Sektion 1399px hoch (gemessen bei 1280px, vorher wie nachher).
+
+   align-items: center aus AP-376 ist zu align-self am Foto geworden. Die
+   Textspalte besteht jetzt aus zwei Rasterzeilen; als Ganzes zentriert wuerde
+   sie gegen das Foto verrutschen. Zentriert gehoert nur noch das Foto - es
+   loest dieselbe Aufgabe wie vorher: der Text ist hoeher als das Bild, und mit
+   start bliebe darunter eine Leerflaeche stehen. */
 .ueber-betrieb__raster {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  grid-template-areas:
+    "wort     bild"
+    "nachsatz bild";
   gap: clamp(26px, 3.6vw, 56px);
-  /* AP-376: center statt start. Seit der Textblock den Wortlaut der alten
-     Website traegt, ist er rund doppelt so hoch wie das 440px breite Foto -
-     mit start blieb darunter eine Leerflaeche von mehreren hundert Pixeln
-     stehen, bis .ueber-fuerwen ueber die volle Breite folgte. Unter 861px ist
-     die Zeile wirkungslos: dort ist das Raster einspaltig (Zeile 602). */
-  align-items: center;
+  align-items: start;
 }
 
+.ueber-betrieb__wort { grid-area: wort; }
+.ueber-betrieb__nachsatz { grid-area: nachsatz; }
+
 /* Die Ueberschrift traegt margin: 0 (Reset in styles.css), der Absatz ebenfalls -
-   ohne diese Regel klebt der erste Satz an der Grundlinie der Ueberschrift. 20px
-   ist derselbe Abstand, den der Entwurf dort als Inline-Stil hatte; die uebrigen
-   Sektionskoepfe dieser Seite bringen ihn ueber .lead { margin-top } selbst mit. */
-.ueber-betrieb__wort .type-section-title + .lead { margin-top: 20px; }
+   ohne diese Regel klebt der erste Satz an der Grundlinie der Ueberschrift. */
+.ueber-betrieb__wort .type-section-title + .ueber-betrieb__haltung { margin-top: 16px; }
 
-.ueber-betrieb__wort .lead + .lead { margin-top: .9em; }
-
-/* Der Merksatz ist optisch schwerer (fett, groesser) als die beiden
-   Fliesstext-Absaetze - etwas mehr Abstand als zwischen .lead + .lead, sonst
-   klebt er am Fliesstext. */
-/* AP-376: Diese Regeln arbeiten mit dem Nachbar-Kombinator und kennen nur
+/* AP-376/AP-411: Diese Regel arbeitet mit dem Nachbar-Kombinator und kennt nur
    .lead. Die Liste der Taetigkeitsschwerpunkte traegt deshalb class="lp-list
    lead" - .lead bringt ihr nicht nur Schriftgroesse und Zeilenhoehe der
    Absaetze daneben, sondern haelt auch diese Abstandskette geschlossen.
    Nimmt jemand das lead von der <ul>, fallen die Abstaende davor und dahinter
-   auf 0 zurueck, weil styles.css p und ul ohne Rand setzt. Gemessen bei 375px:
-   14,4px vor der Liste, 24,64px vor dem Merksatz, 17,6px dahinter. */
-.ueber-betrieb__wort .lead + .ueber-betrieb__merksatz,
-.ueber-betrieb__wort .ueber-betrieb__merksatz + .lead {
-  margin-top: 1.1em;
+   auf 0 zurueck, weil styles.css p und ul ohne Rand setzt. Seit AP-411 steht
+   das Paar "Taetigkeitsschwerpunkte + Liste" im Nachsatz-Block. */
+.ueber-betrieb__wort .lead + .lead,
+.ueber-betrieb__nachsatz .lead + .lead { margin-top: .9em; }
+
+/* AP-411: Die Haltungszeile ist der Merksatz aus AP-220. Sie sitzt jetzt direkt
+   unter der H2 und hat dabei ueber-steg verloren - die H2 traegt den gruenen
+   Steg schon, zwei Balken uebereinander waeren ein Fehler. Die Zeilenbreite ist
+   knapp gehalten, damit der Satz als Haltung steht und nicht als Fliesstext
+   durchlaeuft. */
+.ueber-betrieb__haltung {
+  margin: 0;
+  max-width: 24ch;
 }
 
-.ueber-betrieb__bild { margin: 0; position: relative; }
+/* Faktenzeile: leiser als der Fliesstext daneben. --ink-mute auf --bg traegt
+   8,42:1 und liegt damit ueber der Fassung der Vorlage (#A2A8B1, 7,39:1). */
+.ueber-betrieb__fakten {
+  margin: 10px 0 0;
+  max-width: 44ch;
+  color: var(--ink-mute);
+  font-size: .9375rem;
+  line-height: 1.5;
+}
+
+.ueber-betrieb__wort .ueber-betrieb__fakten + .lead { margin-top: 16px; }
+
+/* AP-411: Die Zusage-Kachel. Bewusst kein blockquote und ohne
+   Anfuehrungszeichen - der Satz ist kein Zitat, sondern der Betrieb ueber sich
+   selbst. Derselbe Grundsatz wie bei der Ueberschrift, siehe oben. Der Steg ist
+   4px stark wie .ueber-steg, damit die Seite ein einziges Balkenmass kennt. */
+.ueber-betrieb__zusage {
+  margin: 20px 0 0;
+  padding: 18px 18px 16px;
+  background: var(--bg-elev);
+  border-left: 4px solid var(--home-lime);
+  border-radius: 0 16px 16px 0;
+}
+
+.ueber-betrieb__zusage-satz {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: var(--type-module-title-size);
+  line-height: 1.22;
+  letter-spacing: -.02em;
+  color: var(--ink);
+}
+
+.ueber-betrieb__zusage-grund {
+  margin: 10px 0 0;
+  max-width: 42ch;
+  color: var(--ink-mute);
+  font-size: .90625rem;
+  line-height: 1.5;
+}
+
+/* --- Alles aus einer Hand ------------------------------------------------- */
+
+.ueber-betrieb__kicker {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.ueber-betrieb__kette {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 9px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ueber-betrieb__kette li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: .90625rem;
+  font-weight: 500;
+}
+
+/* Der Pfeil steht VOR dem Glied, nie hinter ihm. Haengte er hinten an, stuende
+   beim Umbruch ein Pfeil am Zeilenende und zeigte ins Leere. */
+.ueber-betrieb__kette li:not(:first-child)::before {
+  content: "";
+  width: 13px;
+  height: 9px;
+  background: var(--home-lime);
+  clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
+}
+
+.ueber-betrieb__notiz {
+  margin: 12px 0 0;
+  max-width: 42ch;
+  color: var(--ink-mute);
+  font-size: .90625rem;
+  line-height: 1.5;
+}
+
+.ueber-betrieb__notiz + .lead { margin-top: 1.1em; }
+
+/* --- Schreibmaschine ------------------------------------------------------
+   Die Kette wird waehrend des Laufs optisch versteckt, bleibt aber im
+   Zugaenglichkeitsbaum und im Quelltext. Die Eigenschaften stehen direkt hier:
+   eine .sr-only-Hilfsklasse gibt es auf dieser Seite nicht - die beiden
+   vorhandenen stecken in gewerbe.css und privat-form.css, die Ueber-uns nicht
+   laedt. */
+
+.ueber-betrieb.is-typing .ueber-betrieb__kette {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ueber-betrieb__typer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 0;
+}
+
+/* [hidden] ist nur eine Browser-Regel und verliert gegen jedes display. Ohne
+   diese Zeile staende der Block sichtbar da, bevor JS ihn anfasst. */
+.ueber-betrieb__typer[hidden] { display: none; }
+
+.ueber-betrieb__typer-box {
+  position: relative;
+  display: inline-block;
+  padding-right: 10px;               /* Platz fuer den Cursor */
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: var(--type-module-title-size);
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+/* Unsichtbarer Platzhalter mit dem laengsten Wort - er haelt die Breite fest,
+   sonst wackelt bei jedem Buchstaben alles darunter. */
+.ueber-betrieb__typer-sizer { visibility: hidden; }
+
+.ueber-betrieb__typer-out {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+}
+
+/* Der Cursor ist ein Pseudoelement. Damit schreibt JS ausschliesslich in
+   textContent und nie in innerHTML - kein Pfad, ueber den Text als Markup
+   interpretiert werden koennte. */
+.ueber-betrieb__typer-out::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: .95em;
+  background: var(--home-lime);
+  vertical-align: -.12em;
+  margin-left: 3px;
+  animation: ueber-caret 1s step-end infinite;
+}
+
+@keyframes ueber-caret { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+
+/* Bleibt bei MODE 'once' dauerhaft hidden. Gebaut ist er, damit ein spaeterer
+   Wechsel auf 'loop' nicht gegen WCAG 2.2.2 laeuft. Kein overflow: hidden am
+   .ueber-betrieb__typer - der Fokusring hier wuerde abgeschnitten. */
+.ueber-betrieb__typer-pause {
+  flex: 0 0 auto;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink-mute);
+  border-radius: 999px;
+  padding: 6px 11px;
+  font-size: .75rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ueber-betrieb__typer-pause:focus-visible {
+  outline: 2px solid var(--home-lime);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ueber-betrieb.is-typing .ueber-betrieb__kette {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    clip-path: none;
+  }
+  .ueber-betrieb__typer { display: none !important; }
+  .ueber-betrieb__typer-out::after { animation: none; }
+}
+
+.ueber-betrieb__bild { grid-area: bild; align-self: center; margin: 0; position: relative; }
 
 /* Rahmen, Radius und Schatten sind die Kartenwerte der uebrigen Seite. Das
    asymmetrische Eck 24/24/44/24 ist die Marken-Ecke des Projekts - sie steht so
@@ -532,6 +735,13 @@
   .ueber-faq__gruppen,
   .ueber-klein__panel {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* AP-411: Die Bereichsnamen muessen mit umgestellt werden, sonst wirkt die
+     zweispaltige Zuweisung von oben weiter und das Raster bliebe zweispaltig.
+     Die Reihenfolge ist die Quelltextreihenfolge - Text, Foto, Nachsatz. */
+  .ueber-betrieb__raster {
+    grid-template-areas: "wort" "bild" "nachsatz";
   }
 
   /* Gestapelt zieht Grid den Knopf sonst per justify-items:stretch auf die

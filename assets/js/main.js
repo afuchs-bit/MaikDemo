@@ -918,3 +918,131 @@
   })();
 
 })();
+
+/* ===== AP-411: Schreibmaschine "Alles aus einer Hand" =======================
+   Nur auf der Ueber-uns-Seite. main.js ist seitenweit, deshalb der fruehe
+   return, wenn .ueber-betrieb fehlt.
+
+   Vier Eigenschaften, die Absicht sind:
+   - Die Woerter kommen aus dem DOM, nicht aus einem Array hier. Aendert jemand
+     die Kette im HTML, laeuft die Animation automatisch mit; zwei Quellen fuer
+     dieselbe Liste driften sonst auseinander.
+   - Der return bei prefers-reduced-motion steht VOR allem anderen. Die Kette
+     bleibt dann voellig unberuehrt.
+   - Start erst bei Sichtbarkeit, danach disconnect(). Sonst waere der Durchlauf
+     bei MODE 'once' vorbei, bevor jemand hinsieht.
+   - done-Flag, damit 'once' bei erneutem Hineinscrollen nicht neu anlaeuft.
+
+   Geschrieben wird ausschliesslich in textContent. Der Cursor ist ein
+   ::after-Pseudoelement in ueber-uns.css - es gibt keinen Pfad, ueber den Text
+   als Markup interpretiert werden koennte. */
+(function () {
+  'use strict';
+
+  var MODE = 'once';        // 'once' = einmal durch, danach bleibt die Liste stehen
+                            // 'loop' = Dauerschleife (dann ist der Pause-Knopf zwingend,
+                            //          WCAG 2.2.2 - er steht im Markup bereit)
+  var TYPE_MS = 58, DELETE_MS = 28, HOLD_MS = 1100, GAP_MS = 260, START_MS = 420;
+
+  var sec = document.querySelector('.ueber-betrieb');
+  if (!sec) return;
+
+  var chain = sec.querySelector('.ueber-betrieb__kette');
+  var typer = sec.querySelector('.ueber-betrieb__typer');
+  var out   = sec.querySelector('.ueber-betrieb__typer-out');
+  var pause = sec.querySelector('.ueber-betrieb__typer-pause');
+  if (!chain || !typer || !out) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var STEPS = Array.prototype.map.call(chain.querySelectorAll('li'), function (li) {
+    return li.textContent.trim();
+  }).filter(Boolean);
+  if (STEPS.length < 2) return;
+
+  var timer = null, paused = false, running = false, done = false;
+  var i = 0, pos = 0, deleting = false;
+
+  function draw(text) { out.textContent = text; }
+  function stop() { if (timer) { clearTimeout(timer); timer = null; } }
+
+  function settle() {
+    stop();
+    running = false;
+    done = true;
+    sec.classList.remove('is-typing');
+    typer.hidden = true;
+    if (pause) pause.hidden = true;
+  }
+
+  function tick() {
+    if (paused) { timer = setTimeout(tick, 220); return; }
+    var word = STEPS[i];
+
+    if (!deleting) {
+      pos += 1;
+      draw(word.slice(0, pos));
+      if (pos === word.length) {
+        if (MODE === 'once' && i === STEPS.length - 1) {
+          timer = setTimeout(settle, HOLD_MS);
+          return;
+        }
+        deleting = true;
+        timer = setTimeout(tick, HOLD_MS);
+        return;
+      }
+      timer = setTimeout(tick, TYPE_MS);
+    } else {
+      pos -= 1;
+      draw(word.slice(0, pos));
+      if (pos === 0) {
+        deleting = false;
+        i = (i + 1) % STEPS.length;
+        timer = setTimeout(tick, GAP_MS);
+        return;
+      }
+      timer = setTimeout(tick, DELETE_MS);
+    }
+  }
+
+  function start() {
+    if (running || done) return;
+    running = true;
+    sec.classList.add('is-typing');
+    typer.hidden = false;
+    if (MODE === 'loop' && pause) pause.hidden = false;
+    draw('');
+    timer = setTimeout(tick, START_MS);
+  }
+
+  if (pause) {
+    pause.addEventListener('click', function () {
+      paused = !paused;
+      pause.textContent = paused ? 'Weiter' : 'Pause';
+      pause.setAttribute('aria-pressed', String(paused));
+    });
+  }
+
+  // Kein Timer im versteckten Tab.
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { stop(); }
+    else if (running && !timer) { timer = setTimeout(tick, GAP_MS); }
+  });
+
+  /* Beobachtet wird die KETTE, nicht der Typer. Der Typer startet hidden, ist
+     damit display:none und hat ein Rechteck von 0x0 - ein IntersectionObserver
+     meldet darauf dauerhaft ratio 0 und isIntersecting false, die Animation
+     kaeme nie in Gang. Gemessen: auf dem Typer ratio 0, auf der Kette ratio 1.
+     Die Kette steht an derselben Stelle und ist sichtbar, bis start() sie
+     wegklappt - danach ist der Observer ohnehin schon getrennt. */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries, obs) {
+      for (var n = 0; n < entries.length; n++) {
+        if (entries[n].isIntersecting) { obs.disconnect(); start(); return; }
+      }
+    }, { threshold: 0.4 });
+    io.observe(chain);
+  } else {
+    start();
+  }
+})();
