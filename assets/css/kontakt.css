@@ -357,14 +357,28 @@
 
 /* AP-420: Symbol und Text stehen mittig in der Kachel statt links. Vorher zog
    minmax(0,1fr) die Textspalte auf die volle Restbreite, das Paar klebte am
-   linken Rand und rechts blieb Leerflaeche. Mit auto sind beide Spuren so breit
-   wie ihr Inhalt, justify-content ruecken sie gemeinsam in die Mitte.
-   minmax(0,auto) statt blossem auto: die Spur darf unter ihren Inhalt
-   schrumpfen, sonst liefe ein langer Text aus der Kachel heraus. */
+   linken Rand und rechts blieb Leerflaeche. justify-content ruecken beide
+   Spuren gemeinsam in die Mitte.
+
+   AP-421: Die Textspur ist fest 7rem breit statt inhaltsbreit. Mit auto war sie
+   je Kachel unterschiedlich - 90px bei der Adresse, 112px bei der Route - und
+   weil jede Kachel ihren eigenen Inhalt zentriert, standen die beiden Symbole
+   10px versetzt. Eine gemeinsame Spurbreite stellt sie wieder auf eine Linie.
+
+   7rem sind genau die gemessenen 112px der breiteren Kachel ("In Google Maps
+   oeffnen"). Der Wert ist fest, weil er es sein darf: Die Schriften hier sind
+   rem-basiert und Unterseiten stehen auf 16px Wurzel, die Textbreiten sind
+   deshalb auf JEDER Bildschirmbreite gleich - bei 320, 375, 700 und 1280px
+   nachgemessen, immer 90 und 112px. Aendert jemand einen der beiden Texte,
+   gehoert der Wert nachgemessen.
+
+   min(..., 100%) ist die Bremse fuer den engsten Fall: 40 + 12 + 112 = 164px
+   passen in die 210px Innenbreite bei 320px Fensterbreite, aber die Zeile
+   sichert es ab, falls die Kachel je schmaler wird. */
 .contact-location-address,
 .contact-location-route {
   display: grid;
-  grid-template-columns: 40px minmax(0,auto);
+  grid-template-columns: 40px min(7rem, 100%);
   gap: 12px;
   align-items: center;
   justify-content: center;
