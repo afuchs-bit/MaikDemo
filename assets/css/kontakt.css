@@ -355,12 +355,19 @@
 /* AP-413: Der einzige direkte Absatz dieses Kastens war der Mustergarten-Satz.
    Er ist entfallen, seine Regel damit auch. */
 
+/* AP-420: Symbol und Text stehen mittig in der Kachel statt links. Vorher zog
+   minmax(0,1fr) die Textspalte auf die volle Restbreite, das Paar klebte am
+   linken Rand und rechts blieb Leerflaeche. Mit auto sind beide Spuren so breit
+   wie ihr Inhalt, justify-content ruecken sie gemeinsam in die Mitte.
+   minmax(0,auto) statt blossem auto: die Spur darf unter ihren Inhalt
+   schrumpfen, sonst liefe ein langer Text aus der Kachel heraus. */
 .contact-location-address,
 .contact-location-route {
   display: grid;
-  grid-template-columns: 40px minmax(0,1fr);
+  grid-template-columns: 40px minmax(0,auto);
   gap: 12px;
   align-items: center;
+  justify-content: center;
   min-height: 79px;
   padding: 11px 12px;
   border: 1px solid rgba(24,38,13,.13);
