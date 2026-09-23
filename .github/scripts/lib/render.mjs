@@ -414,13 +414,18 @@ export const WELTEN = {
     // Wer hier etwas aendert, muss die Startseite mitziehen; die beiden Listen
     // sollen zeichengleich bleiben.
     navListe: [
+      { slug: 'gartengestaltung', label: 'Außergewöhnliches für den Garten', mobilOnly: true },
+      { slug: 'bepflanzung', label: 'Balkonkastenbepflanzung', mobilOnly: true },
       { slug: 'baumarbeiten', label: 'Baumfällung' },
       { slug: 'baumkontrolle', label: 'Baumkontrolle' },
       { slug: 'baumarbeiten', label: 'Baumpflege' },
       { slug: 'gartengestaltung', label: 'Beleuchtung' },
+      { slug: 'bepflanzung', label: 'Bonsai / Formgehölze', mobilOnly: true },
       { slug: 'dachbegruenung', label: 'Dachbegrünung' },
       { slug: 'gartengestaltung', label: 'Entwässerung' },
       { slug: 'gartengestaltung', label: 'Erd- & Baggerarbeiten' },
+      { slug: 'bepflanzung', label: 'Ersatz- & Ausgleichspflanzungen', mobilOnly: true },
+      { slug: 'gartengestaltung', label: 'Feuerstellen', mobilOnly: true },
       { slug: 'terrasse-pflasterarbeiten', label: 'Findlinge und Natursteineinfassungen' },
       { slug: 'gartengestaltung', label: 'Gartengestaltung' },
       { slug: 'gartenpflege', label: 'Gartenpflege' },
@@ -433,16 +438,21 @@ export const WELTEN = {
       { slug: 'palmen-winterfest', label: 'Palmen winterfest' },
       { slug: 'bepflanzung', label: 'Pflanzarbeiten' },
       { slug: 'terrasse-pflasterarbeiten', label: 'Pflasterarbeiten' },
+      { slug: 'terrasse-pflasterarbeiten', label: 'Pflasterreinigung / Fugenreinigung', mobilOnly: true },
       { slug: 'pool-whirlpool-umfeld', label: 'Pool- & Whirlpoolumfeld' },
       { slug: 'rodungsarbeiten', label: 'Rodungsarbeiten' },
       { slug: 'bepflanzung', label: 'Rohdichs Grubengold' },
       { slug: 'gartengestaltung', label: 'Rollrasen' },
+      { slug: 'bepflanzung', label: 'Saisonbepflanzung', mobilOnly: true },
+      { slug: 'rodungsarbeiten', label: 'Schredderarbeiten', mobilOnly: true },
       { slug: 'bepflanzung', label: 'Sichtschutzbepflanzung' },
+      { slug: 'rodungsarbeiten', label: 'Stubbenfräseneinsatz', mobilOnly: true },
       { slug: 'teichbau', label: 'Teichbau & -technik' },
       { slug: 'terrasse-pflasterarbeiten', label: 'Terrassenbau' },
       { slug: 'verkehrssicherheit', label: 'Verkehrssicherheit herstellen' },
       { slug: 'vermessung-lasertechnik', label: 'Vermessungs- & Lasertechnik' },
       { slug: 'vorgarten', label: 'Vorgartengestaltung' },
+      { slug: 'rodungsarbeiten', label: 'Wurzelentfernung', mobilOnly: true },
       { slug: 'terrasse-pflasterarbeiten', label: 'Zäune & Sichtschutz' },
     ],
   },
@@ -527,9 +537,10 @@ export function renderNavSubmenu(base) {
     // Handseiten stimmen (index.html und 404.html liegen an der Wurzel, die
     // uebrigen eine Ebene tiefer).
     const items = eintraege
-      .map(({ slug, label, href }) => {
+      .map(({ slug, label, href, mobilOnly }) => {
         const ziel = href || `${welt.pfad}leistungen/${slug}/`;
-        return `<li><a href="${base}${ziel}">${esc(label || welt.navLabels?.[slug] || labelBySlug.get(slug) || slug)}</a></li>`;
+        const klasse = mobilOnly ? ' class="nav-entry--mobile-only"' : '';
+        return `<li${klasse}><a href="${base}${ziel}">${esc(label || welt.navLabels?.[slug] || labelBySlug.get(slug) || slug)}</a></li>`;
       })
       .join('\n              ');
     const kopfText = welt.navKopf || welt.navLabel;

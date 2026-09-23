@@ -5125,6 +5125,96 @@
     border-top: 0;
   }
 
+  /* Offener Auftakt der A-Gruppe: keine zweite Kachel neben dem Notdienst,
+     sondern ein ruhiger, typografischer Kontaktweg im Raster der normalen
+     Leistungszeilen. */
+  .iphone-service-inquiry {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
+    align-content: center;
+    align-items: center;
+    column-gap: 0.75rem;
+    min-height: 112px;
+    padding: 12px 0;
+    color: var(--home-on-dark, var(--ink));
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .iphone-service-inquiry > .iphone-service-card__letter {
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .iphone-service-inquiry__copy {
+    display: contents;
+    color: var(--home-on-dark, var(--ink));
+    font-family: "Baloo 2", sans-serif;
+    font-size: .9375rem;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: .015em;
+    line-height: 1.22;
+    text-align: left;
+  }
+
+  .iphone-service-inquiry__lead {
+    display: contents;
+  }
+
+  .iphone-service-inquiry__lead > span {
+    grid-column: 2;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .iphone-service-inquiry__copy strong {
+    display: flex;
+    align-items: center;
+    grid-column: 2;
+    gap: 6px;
+    min-width: 0;
+    margin-top: 6px;
+    color: #56e607;
+    font: inherit;
+    letter-spacing: .015em;
+    line-height: 1.22;
+    white-space: nowrap;
+  }
+
+  .iphone-service-inquiry__arrow {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    width: 28px;
+    transition: transform .18s var(--ease);
+  }
+
+  .iphone-service-inquiry__arrow img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .iphone-service-inquiry__mark {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    transform: translateY(-50%);
+  }
+
+  .iphone-service-inquiry__mark img {
+    display: block;
+    width: 64px;
+    height: auto;
+    filter: saturate(.94) drop-shadow(0 4px 7px rgba(0, 0, 0, .3));
+  }
+
   /* AP-317: Zeile statt Kachel. Spalten: Buchstabe | Name | Foto.
      Kein Rahmen, kein Hintergrund - die Zeilen sollen als Liste lesen, nicht
      als Kacheln.
@@ -5232,7 +5322,8 @@
   }
 
   .iphone-service-feature:focus-visible,
-  .iphone-service-card:focus-visible {
+  .iphone-service-card:focus-visible,
+  .iphone-service-inquiry:focus-visible {
     outline: 3px solid var(--yellow);
     outline-offset: 3px;
   }
@@ -5256,6 +5347,10 @@
     color: var(--home-lime, #97ce20);
   }
 
+  .iphone-service-inquiry:active .iphone-service-inquiry__arrow {
+    transform: translateX(2px);
+  }
+
   .iphone-service-feature:active img,
   .iphone-service-card:active img {
     filter: saturate(1) contrast(1.04);
@@ -5273,6 +5368,29 @@
   .iphone-service-feature--emergency:active .iphone-service-feature__meta b img {
     filter: none;
     transform: none;
+  }
+}
+
+@media (max-width:350px) {
+  .iphone-service-inquiry {
+    grid-template-columns: 1.5rem minmax(0, 1fr) 72px;
+  }
+
+  .iphone-service-inquiry__mark {
+    width: 72px;
+    transform: translate(-8px, -50%);
+  }
+
+  .iphone-service-inquiry__mark img {
+    width: 56px;
+  }
+
+  .iphone-service-inquiry__copy strong {
+    gap: 5px;
+  }
+
+  .iphone-service-inquiry__arrow {
+    width: 22px;
   }
 }
 
