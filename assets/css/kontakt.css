@@ -108,74 +108,186 @@
    Rest ohne Bezug. */
 .contact-direct-list { margin: 0; }
 
-/* AP-392: Die beiden Telefonkacheln tragen das Glyph des Anrufknopfs aus dem
-   Kopf (styles.css:1818) statt des Feather-Hoerers. Dasselbe Bild nutzt schon
-   .anf__kanal-icon--tel in anfrage.css:457.
+/* AP-418: Die fuenf Kontaktwege tragen das Kachel-Design der drei Kanalkacheln
+   aus dem Anfrageformular der Startseite (.anf__kanal). Auf Ansage des
+   Auftraggebers alle fuenf Wege und die Handy-Fassung auf ALLEN Breiten - die
+   durchscheinende Desktop-Fassung der Vorlage ist gegen den Formularkasten
+   (--bg-elev) gerechnet und haette hier, seit AP-417 die gruene Kachel weg ist,
+   auf dem nackten Seitengrund zu wenig Halt.
 
-   Das SVG bleibt im Markup und wird nur ausgeblendet - so greift der Tausch
-   allein hier und laesst denselben Baustein auf der Startseite in Ruhe.
-   .form-trust-card__action-icon ist ein Grid mit place-items: center, das
-   ::before setzt sich also von selbst mittig.
+   ACHTUNG, die Vorlage steht in ZWEI Dateien. anfrage.css:626 setzt fuer die
+   Handy-Fassung background: transparent - das ist aber nicht, was man sieht.
+   privat-form.css:5939 sticht es mit 0,3,1 gegen 0,2,0:
+     html.home-theme-dark .private-contact .anf__kanal {
+       background: var(--home-surface-card);      == #252b22
+       border-color: var(--home-surface-border);  == rgba(183,203,160,.18)
+       box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
+     }
+   Beide Token existieren ausschliesslich unter html.home-theme-dark innerhalb
+   @media (max-width:480px) (privat-form.css:5882). Diese Seite hat weder die
+   HTML-Klasse noch den .private-contact-Vorfahren - deshalb stehen hier die
+   Literalwerte statt der Token. Wer sie aendert, muss dort nachziehen.
 
-   24px uebernimmt das Mass aus anfrage.css (24px Glyph in 38px Kachel); der
-   Kopf faehrt 28px in 44px, dasselbe Verhaeltnis. Das bisherige SVG war mit
-   20px kleiner - das Glyph traegt einen Ring um den Hoerer und wirkt bei
-   gleicher Boxgroesse kleiner. */
-.contact-direct-list a[href^="tel:"] .form-trust-card__action-icon > svg {
+   Spezifitaet: .contact-direct-list > a und .form-trust-card__actions > a sind
+   beide (0,1,1). kontakt.css laedt nach form-trust-card.css, der Gleichstand
+   entscheidet sich ueber die Reihenfolge - kein !important noetig.
+   form-trust-card.css selbst bleibt unangetastet: denselben Baustein benutzen
+   die Startseite, das Privatkunden- und das Gewerbeformular. */
+.contact-direct-list > a {
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 11px;
+  block-size: 64px;
+  min-block-size: 64px;
+  min-height: 0;                 /* sticht die 68px aus form-trust-card.css:82 */
+  padding: 8px 12px;
+  box-sizing: border-box;
+  border: 1px solid rgba(183, 203, 160, .18);
+  border-radius: 12px;
+  background: #252b22;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+
+.contact-direct-list > a .form-trust-card__action-icon {
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Der Innenring aus form-trust-card.css:100 muss weg - die Vorlage hat keinen. */
+  box-shadow: none;
+}
+
+/* Telefon, E-Mail und Anfrageformular auf dem dunklen Grund der Vorlage,
+   WhatsApp auf seiner Markenfarbe. form-trust-card.css:136 faerbte die
+   WhatsApp-Kachel bisher erst beim Hovern - jetzt ist sie es immer, jene Regel
+   laeuft ins Leere. */
+.contact-direct-list > a .form-trust-card__action-icon {
+  background-color: rgba(5, 10, 5, .58);
+}
+
+.contact-direct-list > a.form-trust-card__whatsapp .form-trust-card__action-icon {
+  background-color: #25D366;
+}
+
+/* AP-392/AP-418: Die beiden Telefonkacheln tragen das Glyph des Anrufknopfs als
+   PNG - dieselbe Datei, die auch .anf__kanal-icon--tel in anfrage.css:459
+   einsetzt. Das SVG bleibt im Markup und wird nur ausgeblendet, damit der
+   Tausch allein hier greift.
+
+   AP-418: Der filter: brightness(0) invert(1) aus AP-392 ist entfallen. Er
+   faerbte das Glyph weiss; die Vorlage zeigt es in seinem nativen #56E607. Das
+   PNG ist zu 100 Prozent in diesem Ton (7782 von 7782 deckenden Pixeln,
+   pixelweise nachgezaehlt) - kein Filter heisst genau die Farbe der Vorlage. */
+.contact-direct-list > a[href^="tel:"] .form-trust-card__action-icon > svg {
   display: none;
 }
 
-.contact-direct-list a[href^="tel:"] .form-trust-card__action-icon::before {
+.contact-direct-list > a[href^="tel:"] .form-trust-card__action-icon::before {
   content: "";
   width: 24px;
   height: 24px;
   background: url("../img/icons/phone-header-mobile.png") center / contain no-repeat;
-  /* Das Glyph liegt als gruenes PNG vor, eine weisse Fassung gibt es nicht.
-     brightness(0) zieht alle deckenden Pixel auf Schwarz, invert(1) dreht sie
-     auf Weiss - die Alphakante bleibt dabei unangetastet. Dasselbe Mittel
-     nutzt home-dark.css:2749 fuer den Pfeil der Ueber-uns-Sektion. */
-  filter: brightness(0) invert(1);
-  transition: filter .18s var(--ease);
 }
 
-/* AP-405: Beim Hovern und beim Antippen bekommen die Symbole Farbe - die Kachel
-   bleibt dunkel. Vorbild sind die Kanalkacheln der Startseite (anfrage.css:480
-   ff.): dort traegt das Symbol die Farbe, nicht die Flaeche. Der WhatsApp-Eintrag
-   behaelt seine gefuellte Kachel aus form-trust-card.css:136 - Markenfarbe. Er
-   ist per :not() ausgenommen: jene Regel setzt nur den Kachelgrund, nicht die
-   Symbolfarbe. Ohne die Ausnahme saesse ein gruenes Symbol auf gruener Kachel.
+/* AP-418: WhatsApp wie in der Vorlage als Hintergrundbild statt des
+   Inline-SVGs - anfrage.css:467 legt dieselbe Datei in 22x22 auf die gruene
+   Flaeche. Gleiche Technik wie beim Telefon: SVG aus, Bild drauf. Der Pfad
+   stimmt unveraendert, kontakt.css liegt im selben Ordner wie anfrage.css. */
+.contact-direct-list > a.form-trust-card__whatsapp .form-trust-card__action-icon > svg {
+  display: none;
+}
 
-   Warum ausgerechnet --mobile-logo-green: Die beiden Telefonkacheln tragen kein
-   SVG mehr, sondern das PNG von oben. An einem Hintergrundbild greift color
-   nicht - nur ein anderer Filter oder gar keiner. Das PNG ist zu 100 Prozent
-   (7782 von 7782 deckenden Pixeln, pixelweise nachgezaehlt) in #56E607, also
-   genau diesem Token. Filter weg = Symbol in diesem Ton. Jeder andere Wert
-   liesse Telefon- und SVG-Symbole auseinanderlaufen.
+.contact-direct-list > a.form-trust-card__whatsapp .form-trust-card__action-icon {
+  background-image: url("../img/icons/whatsapp-glyph-white.svg");
+  background-size: 22px 22px;
+}
 
-   Hover steht hinter (hover: hover) and (pointer: fine) - die Projektkonvention,
-   siehe styles.css:30. :active steht bewusst OHNE Media Query davor: auf dem
-   Handy gibt es kein Hover, und der Auftraggeber wollte beides. Vorbild dafuer
-   ist anfrage.css:693. */
+/* E-Mail traegt schon dasselbe Umschlag-SVG wie die Vorlage; nur Groesse und
+   Farbe werden angeglichen (anfrage.css:482 ff. und :496).
+
+   Das Anfrageformular hat auf der Startseite kein Vorbild - es bekommt die
+   Behandlung der E-Mail-Kachel. Das ist eine Setzung, keine Uebernahme. */
 .contact-direct-list > a .form-trust-card__action-icon > svg {
-  transition: color .18s var(--ease);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .contact-direct-list > a:not(.form-trust-card__whatsapp):hover .form-trust-card__action-icon > svg {
-    color: var(--mobile-logo-green);
-  }
-
-  .contact-direct-list > a[href^="tel:"]:hover .form-trust-card__action-icon::before {
-    filter: none;
-  }
-}
-
-.contact-direct-list > a:not(.form-trust-card__whatsapp):active .form-trust-card__action-icon > svg {
   color: var(--mobile-logo-green);
+  width: 21px;
+  height: 21px;
 }
 
-.contact-direct-list > a[href^="tel:"]:active .form-trust-card__action-icon::before {
-  filter: none;
+.contact-direct-list > a small {
+  color: rgba(255, 255, 255, .52);
+  font-size: .7rem;
+  font-weight: 750;
+  letter-spacing: .09em;
+  line-height: 1.2;
+}
+
+.contact-direct-list > a strong {
+  overflow-wrap: normal;
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: normal;
+  white-space: nowrap;
+}
+
+/* AP-418: Die Schriftgroessen sind unter 481px NICHT in rem angegeben, obwohl
+   die Vorlage .7rem und .95rem schreibt - und das ist der Punkt, an dem eine
+   woertliche Uebernahme falsch aussieht.
+
+   Die Startseite faehrt unter 481px eine fluide Wurzelgroesse
+   (home-dark.css:1329: clamp(12.736px, 3.9801vw, 19.104px)); Unterseiten
+   stehen auf den 16px des Browsers. Dieselben .7rem rendern dort deshalb
+   10,45px und hier 11,2px - rund 7 Prozent zu gross. Gemessen, nicht geschaetzt.
+
+   Die clamps unten sind die Vorlage mal ihrem Faktor gerechnet:
+     small   0,70 * clamp(12.736px, 3.9801vw, 19.104px)
+     strong  0,95 * dasselbe
+   Bei 375px ergibt das 10,4478px und 14,1791px - exakt die Werte der
+   Startseite. Laufweite (.09em) und Zeilenhoehe (1.2, einheitenlos) haengen an
+   der Schriftgroesse und folgen von selbst.
+
+   Ab 481px steht die Startseite ebenfalls auf 16px Wurzel; dort stimmen die
+   rem-Werte oben ohne Umrechnung. */
+@media (max-width: 480px) {
+  .contact-direct-list > a small {
+    font-size: clamp(8.9152px, 2.78607vw, 13.3728px);
+  }
+
+  .contact-direct-list > a strong {
+    font-size: clamp(12.0992px, 3.78110vw, 18.1488px);
+  }
+}
+
+@media (max-width: 340px) {
+  /* Wie anfrage.css:814 - dort .9rem, hier derselbe Faktor auf die fluide
+     Wurzel der Startseite gerechnet. */
+  .contact-direct-list > a strong {
+    font-size: clamp(11.4624px, 3.58209vw, 17.1936px);
+  }
+}
+
+/* AP-418: Die Vorlage faerbt beim Hovern und Antippen die KACHEL, nicht das
+   Symbol (privat-form.css:5956 und :5972). Die AP-405-Regeln, die hier bisher
+   umgekehrt das Symbol einfaerbten, sind damit entfallen.
+   :active steht bewusst ohne Media Query - auf dem Handy gibt es kein Hover,
+   und beides war gewuenscht. Vorbild ist anfrage.css:693. */
+@media (hover: hover) and (pointer: fine) {
+  .contact-direct-list > a:hover {
+    background: #2b3327;
+    border-color: rgba(140, 198, 63, .5);
+  }
+}
+
+.contact-direct-list > a:active {
+  background: #2b3327;
+  border-color: rgba(140, 198, 63, .5);
+}
+
+.contact-direct-list > a:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
 }
 
 /* AP-413/AP-414: Hier standen die Regeln fuer drei Bausteine der Kontaktkarte,
