@@ -222,7 +222,25 @@
        bei 310 statt 286px; die 290px aus dem Designdokument sind auf Ansage des
        Auftraggebers bewusst ueberschritten. Gegenueber dem Ausgangszustand von
        412px bleibt der Kopf rund 100px kuerzer. */
-    padding: 26px 0;
+    /* AP-412: Das Band reicht bis an die Bildschirmkanten. Der negative
+       Aussenabstand hebt genau die Einrueckung von .container auf
+       (styles.css:233 - width: min(100% - 2*--gutter, ...) plus margin-inline:
+       auto), das gleich grosse Innenpolster haelt die Umschaltkarte auf ihrem
+       alten Mass. Ohne das lief beim Scrollen jede Kachel durch die beiden
+       20px-Spalten neben dem Band, und der Schatten brach dort ab.
+
+       Die Seiteninsets muessen mit: .container polstert sich um
+       env(safe-area-inset-left/right) (styles.css:239). Im Hochformat sind
+       beide 0px und die Zeilen entsprechen dem Vorbild in ueber-uns.css:792.
+       Im Querformat auf einem Geraet mit Notch sind sie es nicht - ein iPhone
+       liegt quer bei 852px und damit unter dieser Abfrage, das Band bliebe
+       ohne sie am Notch-Rand stehen. Unter dem Band darf Flaeche liegen, der
+       Inhalt bleibt ueber das Polster davor geschuetzt. */
+    margin-left: calc((var(--gutter) + env(safe-area-inset-left, 0px)) * -1);
+    margin-right: calc((var(--gutter) + env(safe-area-inset-right, 0px)) * -1);
+    padding-block: 26px;
+    padding-left: calc(var(--gutter) + env(safe-area-inset-left, 0px));
+    padding-right: calc(var(--gutter) + env(safe-area-inset-right, 0px));
     background: var(--bg);
     box-shadow: 0 12px 14px -12px rgba(0, 0, 0, .85);
   }
