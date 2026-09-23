@@ -81,25 +81,32 @@
   margin-top: clamp(24px,3vw,40px);
 }
 
+/* AP-417: Die gruene Kachel ist auf Ansage des Auftraggebers entfallen - der
+   Verlauf mit dem gelben Lichtpunkt, der Rahmen, die Marken-Ecke, der Schatten
+   und das Polster. Die fuenf Kontaktwege bleiben und stehen jetzt direkt auf
+   dem Seitengrund; ihre eigenen hellen Zeilen bringen sie selbst mit
+   (form-trust-card.css).
+
+   Mitgegangen sind drei Zeilen, die nur der Flaeche dienten: position und
+   isolation spannten den Stapelkontext fuer den Verlauf auf, overflow: hidden
+   beschnitt ihn an der runden Ecke. Ohne Flaeche haben sie keine Aufgabe mehr.
+
+   Geblieben sind die Spalte (display/flex-direction), min-width: 0 gegen das
+   Sprengen der Rasterspalte, height: 100% fuer das gestreckte Raster und die
+   Textfarbe. */
 .contact-direct-card {
-  position: relative;
-  isolation: isolate;
   display: flex;
   min-width: 0;
   height: 100%;
   flex-direction: column;
-  padding: clamp(30px,2.7vw,38px) clamp(25px,2.6vw,34px) clamp(28px,2.5vw,34px);
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 24px 24px 44px 24px;
-  background:
-    radial-gradient(circle at 82% 5%,rgb(var(--yellow-rgb) / .13),transparent 27%),
-    linear-gradient(155deg,var(--green-900) 0%,var(--green-800) 52%,var(--green-900) 100%);
-  box-shadow: 0 30px 58px -42px rgba(18,31,5,.82),inset 0 0 0 1px rgba(255,255,255,.05);
   color: var(--ink);
 }
 
-.contact-direct-list { margin: 18px 0 0; }
+/* AP-417: war margin: 18px 0 0. Der obere Abstand trennte die Liste von der
+   Ueberschrift "Direkt erreichbar", die in AP-413 entfallen ist; seither ist
+   die Liste das einzige Kind. Mit dem Polster der Kachel waere er jetzt ein
+   Rest ohne Bezug. */
+.contact-direct-list { margin: 0; }
 
 /* AP-392: Die beiden Telefonkacheln tragen das Glyph des Anrufknopfs aus dem
    Kopf (styles.css:1818) statt des Feather-Hoerers. Dasselbe Bild nutzt schon
@@ -423,7 +430,8 @@
   /* AP-415: Hier stand eine Wiederholung von font-size:
      var(--type-page-h1-size). Sie steht spaeter in der Datei als die Regel
      oben und haette die 31px unterhalb 600px wieder zurueckgedreht. */
-  .contact-direct-card { padding: 26px 22px; border-radius: 22px 22px 38px 22px; }
+  /* AP-417: Hier stand die Handy-Fassung von padding und border-radius der
+     gruenen Kachel. Beide Eigenschaften gibt es dort nicht mehr. */
   .contact-direct-list { grid-template-columns: 1fr; }
   .contact-location-card { border-radius: 19px; }
   .contact-location-card { padding: 26px 22px; }
