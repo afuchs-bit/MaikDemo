@@ -408,8 +408,12 @@
 }
 
 .contact-location-icon svg { width: 20px; height: 20px; }
+/* AP-422: text-align: center. Die drei bzw. zwei Zeilen standen linksbuendig
+   untereinander; jetzt sitzen sie mittig in ihrer Spur. Weil beide Kacheln
+   seit AP-421 dieselbe Spurbreite von 7rem haben, zentrieren sie an derselben
+   Stelle - die Zeilen beider Kacheln stehen also auch zueinander mittig. */
 .contact-location-address > span:last-child,
-.contact-location-route > span:nth-child(2) { display: grid; gap: 3px; min-width: 0; }
+.contact-location-route > span:nth-child(2) { display: grid; gap: 3px; min-width: 0; text-align: center; }
 .contact-location-address strong { color: var(--ink); font-family: var(--display); font-size: .98rem; line-height: 1.18; }
 .contact-location-route strong { color: var(--ink); font-family: var(--display); font-size: .8rem; line-height: 1.25; }
 .contact-location-address small,
