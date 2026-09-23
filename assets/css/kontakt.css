@@ -135,43 +135,8 @@
   filter: none;
 }
 
-.contact-callback-note {
-  display: grid;
-  grid-template-columns: 38px minmax(0,1fr);
-  gap: 12px;
-  align-items: center;
-  margin-top: 16px;
-  padding: 13px 14px 13px 12px;
-  border: 1px solid rgb(var(--yellow-rgb) / .28);
-  border-left: 3px solid var(--yellow);
-  border-radius: 14px;
-  background: rgba(255,255,255,.075);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.035);
-}
-
-.contact-callback-note__icon {
-  display: grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  border-radius: 12px;
-  background: rgb(var(--yellow-rgb) / .14);
-  color: var(--yellow);
-}
-
-.contact-callback-note__icon svg { width: 20px; height: 20px; }
-.contact-callback-note p { display: grid; gap: 3px; min-width: 0; margin: 0; }
-.contact-callback-note strong {
-  color: var(--ink);
-  font-family: var(--display);
-  font-size: .8rem;
-  line-height: 1.25;
-}
-.contact-callback-note p > span {
-  color: rgb(var(--ink-rgb) / .8);
-  font-size: .72rem;
-  line-height: 1.45;
-}
+/* AP-413: Der Rueckruf-Kasten ".contact-callback-note" ist entfallen; seine
+   Regeln sind mit ihm gegangen. Die Klasse kommt im ganzen Repo nicht mehr vor. */
 
 .contact-coverage {
   margin: 20px 0 0;
@@ -179,42 +144,22 @@
   border-top: 1px solid var(--line);
 }
 
-/* AP-390: Die Ortsliste laeuft durch und bricht um, wo der Platz ausgeht. Zwei
-   Stellen brauchen dabei eine Bremse:
-   - Vor jedem Trennpunkt steht im Markup ein geschuetztes Leerzeichen, damit
-     keine Zeile mit einem einzeln stehenden "·" beginnt.
-   - Ortsnamen mit Bindestrich duerfen nicht am Bindestrich zerfallen. Bei 320px
-     wurde aus "Castrop-Rauxel" sonst "Castrop-" und "Rauxel". word-break:
-     keep-all hilft dort nicht - in Chrome gemessen, der Umbruch blieb. Deshalb
-     traegt der Ortsname ein <span>, das hier auf nowrap steht. */
-.contact-coverage p span {
-  white-space: nowrap;
-}
+/* AP-413: Die AP-390-Bremse gegen den Umbruch in "Castrop-Rauxel" ist mit der
+   Ortsliste entfallen. Der Kasten traegt nur noch den Nachsatz "Auch
+   deutschlandweit nach Absprache"; Trennlinie und Abstand oben bleiben. */
 
+/* AP-413: War ein zweispaltiges Raster "40px minmax(0,1fr)" fuer Uhr-Symbol und
+   Text. Das Symbol ist entfallen - ohne diese Aenderung waere der verbleibende
+   Text in die 40px breite Symbolspalte gerutscht und dort zerquetscht worden.
+   margin-top: auto bleibt: es schiebt die Zeiten an den Fuss der Karte. */
 .contact-hours {
-  display: grid;
-  grid-template-columns: 40px minmax(0,1fr);
-  gap: 12px;
-  align-items: center;
   margin-top: auto;
   padding-top: 24px;
   color: var(--ink);
 }
 
-.contact-hours-icon {
-  display: grid;
-  width: 40px;
-  height: 40px;
-  place-items: center;
-  border-radius: 12px;
-  background: rgba(255,255,255,.1);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
-}
-
-.contact-hours-icon svg { width: 20px; height: 20px; }
 .contact-hours > span:last-child { display: grid; gap: 4px; min-width: 0; }
 .contact-hours strong { color: var(--ink); font-family: var(--display); font-size: .8rem; line-height: 1.3; }
-.contact-hours small { color: rgb(var(--ink-rgb) / .62); font-size: .68rem; line-height: 1.45; }
 
 .contact-location-card {
   position: relative;
@@ -269,12 +214,8 @@
   letter-spacing: -.028em;
 }
 
-.contact-location-copy > p {
-  margin: 0;
-  color: var(--ink-2);
-  font-size: .92rem;
-  line-height: 1.55;
-}
+/* AP-413: Der einzige direkte Absatz dieses Kastens war der Mustergarten-Satz.
+   Er ist entfallen, seine Regel damit auch. */
 
 .contact-location-address,
 .contact-location-route {
@@ -373,15 +314,9 @@
    Die Regeln stehen hier und nicht in form-trust-card.css: denselben Baustein
    benutzt die Startseite mit ihrem eigenen Markup, und die soll sich nicht
    mitaendern. */
-.contact-direct-card > h2.form-trust-card__eyebrow,
-.contact-coverage > h3.form-trust-card__coverage-heading {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.contact-direct-card > h2.form-trust-card__eyebrow {
-  margin-bottom: 10px;
-}
+/* AP-413: Beide Ueberschriften sind entfallen, die Abstandsregeln dafuer damit
+   auch. form-trust-card.css bleibt unangetastet - denselben Baustein benutzt die
+   Startseite mit eigenem Markup. */
 
 /* AP-397: Der Terminhinweis traegt jetzt einen Weg zur Terminanfrage. Der Verweis
    steht mitten im Fließtext und braucht deshalb eine Unterstreichung, sonst ist er
@@ -469,8 +404,6 @@
   .contact-hero-copy h1 { font-size: var(--type-page-h1-size); }
   .contact-direct-card { padding: 26px 22px; border-radius: 22px 22px 38px 22px; }
   .contact-direct-list { grid-template-columns: 1fr; }
-  .contact-callback-note { grid-template-columns: 34px minmax(0,1fr); gap: 10px; padding: 12px; }
-  .contact-callback-note__icon { width: 34px; height: 34px; border-radius: 10px; }
   .contact-location-card { border-radius: 19px; }
   .contact-location-card { padding: 26px 22px; }
   .contact-map-shell { height: 340px; min-height: 340px; }

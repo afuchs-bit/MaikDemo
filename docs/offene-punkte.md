@@ -1852,3 +1852,64 @@ Anweisung, kein Umsetzungsfehler — und der zweite Wert, die Oberkante des Foto
   genannt werden darf. Unverändert offen seit AP-376.
 - Der neu formulierte Satz hat als einzigen Beleg dieses Auftragsdokument. Falls Teil B je
   ergänzt wird, gehört er dort verankert.
+
+---
+
+## AP-413 — Kontaktseite: sieben Bausteine entfernt
+
+Auf Ansage des Auftraggebers vom 23.09.2026 sind aus `kontakt/index.html` entfallen:
+
+1. Die Überschrift **„Direkt erreichbar"** über der Kontaktkarte.
+2. Der Kasten **„Gerade nicht erreichbar? Dann ist Maik wahrscheinlich auf einer
+   Baustelle …"** samt Uhr-Pfeil-Symbol.
+3. Die Ortsliste **„Herne · Bochum · Essen · Castrop-Rauxel · Recklinghausen ·
+   Gelsenkirchen · Und Umgebung"**.
+4. Die Überschrift **„Unser Einsatzgebiet"**.
+5. Der Nachsatz **„WhatsApp-Nachrichten jederzeit – Antwort zu den Geschäftszeiten"**.
+6. Das **Uhr-Symbol** neben den Öffnungszeiten.
+7. Der Absatz **„Hier befinden sich unser Betrieb und der 1.500 m² Mustergarten.
+   Besichtigungen und Beratungen finden ausschließlich nach vorheriger
+   Terminvereinbarung statt."**
+
+### Zwei Entscheidungen, ausdrücklich so gewollt
+
+- **„Auch deutschlandweit nach Absprache" bleibt stehen** — samt der Trennlinie darüber.
+  Der Auftraggeber wurde darauf hingewiesen, dass der Nachsatz damit ohne den Satz
+  dasteht, auf den er sich bezieht, und hat sich dafür entschieden.
+- **Der Mustergarten wird weiterhin genannt.** Der Hinweis unter der Karte („Bitte vorab
+  Termin vereinbaren. So können wir uns Zeit für Ihre Beratung und die Besichtigung des
+  Mustergartens nehmen.") bleibt wörtlich. Auf der Über-uns-Seite war die
+  Mustergarten-Sektion in AP-380 vollständig entfallen; auf der Kontaktseite steht sie
+  also weiter.
+
+Dass ein Besuch nur nach Termin möglich ist, geht nicht verloren: Punkt 7 sagte es, der
+bleibende Hinweis sagt es ebenfalls.
+
+**Die Ortsliste des Einsatzgebiets steht damit nicht mehr auf der Kontaktseite.** Teil H.6
+des Umsetzungsplans will die Angabe ohnehin nur an einer Stelle — in der Bildunterschrift
+der Einsatzgebiets-Karte der Startseite. Der Wegfall bringt die Seite also näher an die
+Vorgabe. `areaServed` im JSON-LD der Seite bleibt unberührt.
+
+### Technische Notizen
+
+- **Zwei `aria-labelledby` zeigten auf die entfernten Überschriften.** `aside.contact-direct-card`
+  trägt jetzt `aria-label="Direkt erreichbar"` — unsichtbar, hält den Namen des
+  Landmark-Bereichs. Aus `section.contact-coverage` ist ein `div` geworden: ohne Überschrift
+  gibt es nichts mehr zu referenzieren, und ein `<section>` ohne Überschrift ist die falsche
+  Auszeichnung. Nach der Änderung zeigt kein `aria-labelledby`/`aria-describedby` der Seite
+  mehr ins Leere (geprüft).
+- **`.contact-hours` war ein zweispaltiges Raster** `40px minmax(0,1fr)` für Symbol und Text.
+  Ohne die Spaltendefinition wäre der verbleibende Text in die 40-px-Symbolspalte gerutscht
+  und dort zerquetscht worden. Gemessen: Textbreite 237 → 289 px.
+- **`form-trust-card.css` blieb unangetastet.** `form-trust-card__eyebrow` und
+  `__coverage` benutzt auch die Startseite mit eigenem Markup. Gegenprobe: beide Bausteine
+  dort vorher und nachher identisch.
+- Tote Regeln in `kontakt.css` entfernt: `.contact-callback-note*`, `.contact-hours-icon*`,
+  `.contact-hours small`, `.contact-coverage p span` (die AP-390-Bremse, die
+  „Castrop-Rauxel" am Bindestrich zusammenhielt — sie stirbt mit der Ortsliste), die
+  Abstandsregeln der beiden Überschriften und `.contact-location-copy > p`.
+
+### Gemessen (375 px, echtes Chrome)
+
+Höhe der Kontaktkarte **854 → 590 px**. Überschriftenebenen danach H1 → H2 ohne Sprung.
+Keine Konsolenmeldungen.

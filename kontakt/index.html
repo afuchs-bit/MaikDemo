@@ -28,7 +28,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260921g" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
 <link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260923d" />
-<link rel="stylesheet" href="../assets/css/kontakt.css?v=20260923j" />
+<link rel="stylesheet" href="../assets/css/kontakt.css?v=20260923k" />
 
 <script type="application/ld+json">
 {
@@ -178,8 +178,12 @@ html, body { background-color: #171916; }
       </div>
 
       <div class="contact-hub">
-        <aside class="contact-direct-card form-trust-card reveal" aria-labelledby="contact-direct-title">
-          <h2 class="form-trust-card__eyebrow" id="contact-direct-title">Direkt erreichbar</h2>
+        <!-- AP-413: Die sichtbare Ueberschrift "Direkt erreichbar" ist auf Ansage des
+             Auftraggebers entfallen. aria-labelledby zeigte auf genau diese h2 und
+             haette danach ins Leere gewiesen; aside ist ein Landmark-Bereich und
+             behaelt seinen Namen deshalb ueber aria-label - unsichtbar, nur fuer
+             Screenreader. -->
+        <aside class="contact-direct-card form-trust-card reveal" aria-label="Direkt erreichbar">
           <address class="contact-direct-list form-trust-card__actions">
             <a href="tel:+491711738943"><span class="form-trust-card__action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 1 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span><small>Mobil</small><strong>0171 / 173 89 43</strong></span></a>
             <a href="tel:+492325585790"><span class="form-trust-card__action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 1 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span><small>Festnetz</small><strong>02325 / 58 57 90</strong></span></a>
@@ -188,20 +192,22 @@ html, body { background-color: #171916; }
             <a class="contact-direct-form" href="../#anfrage"><span class="form-trust-card__action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg></span><span><small>Anfrageformular</small><strong>Anfrage senden</strong></span></a>
           </address>
 
-          <div class="contact-callback-note">
-            <span class="contact-callback-note__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg></span>
-            <p><strong>Gerade nicht erreichbar?</strong><span>Dann ist Maik wahrscheinlich auf einer Baustelle. Er meldet sich schnellstmöglich persönlich bei Ihnen zurück.</span></p>
+
+          <!-- AP-413: Ueberschrift "Unser Einsatzgebiet" und die Ortsliste sind auf
+               Ansage des Auftraggebers entfallen, der Nachsatz bleibt ausdruecklich
+               stehen. Aus dem section wird ein div: ohne Ueberschrift gibt es nichts
+               mehr, worauf aria-labelledby zeigen koennte, und ein section ohne
+               Ueberschrift ist die falsche Auszeichnung. Trennlinie und Abstand
+               haengen an .contact-coverage und bleiben unberuehrt. -->
+          <div class="contact-coverage form-trust-card__coverage">
+            <small>Auch deutschlandweit nach Absprache</small>
           </div>
 
-          <section class="contact-coverage form-trust-card__coverage" aria-labelledby="contact-coverage-title">
-            <h3 class="form-trust-card__coverage-heading" id="contact-coverage-title">Unser Einsatzgebiet</h3>
-            <p>Herne&nbsp;· Bochum&nbsp;· Essen&nbsp;· <span>Castrop-Rauxel</span>&nbsp;· Recklinghausen&nbsp;· Gelsenkirchen&nbsp;· Und Umgebung</p>
-            <small>Auch deutschlandweit nach Absprache</small>
-          </section>
-
+          <!-- AP-413: Uhr-Symbol und der Nachsatz zu WhatsApp sind entfallen. Das
+               zweispaltige Raster in kontakt.css ist damit mitgegangen - sonst waere
+               der Text in die 40px-Symbolspalte gerutscht. -->
           <div class="contact-hours">
-            <span class="contact-hours-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.4 2"/></svg></span>
-            <span><strong>Montag bis Freitag, 09:00–17:00 Uhr</strong><strong>Samstag, 09:00–12:00 Uhr · Sonntag geschlossen</strong><small>WhatsApp-Nachrichten jederzeit – Antwort zu den Geschäftszeiten</small></span>
+            <span><strong>Montag bis Freitag, 09:00–17:00 Uhr</strong><strong>Samstag, 09:00–12:00 Uhr · Sonntag geschlossen</strong></span>
           </div>
         </aside>
 
@@ -210,7 +216,10 @@ html, body { background-color: #171916; }
             <div class="contact-location-copy">
               <span class="contact-location-label">Anfahrt &amp; Besuch</span>
               <h2 class="type-subsection-title" id="contact-location-title">Unser Standort in Herne</h2>
-              <p>Hier befinden sich unser Betrieb und der 1.500 m² Mustergarten. Besichtigungen und Beratungen finden ausschließlich nach vorheriger Terminvereinbarung statt.</p>
+              <!-- AP-413: Der Absatz "Hier befinden sich unser Betrieb und der
+                   1.500 m² Mustergarten ..." ist auf Ansage des Auftraggebers
+                   entfallen. Der Hinweis auf die Terminpflicht geht dabei nicht
+                   verloren - er steht weiter unten in .contact-visit-note. -->
               <div class="contact-location-actions">
                 <address class="contact-location-address"><span class="contact-location-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg></span><span><small>Adresse</small><strong>Hülsstraße 5</strong><span>44625 Herne</span></span></address>
                 <a class="contact-location-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=H%C3%BClsstra%C3%9Fe%205%2C%2044625%20Herne" target="_blank" rel="noopener"><span class="contact-location-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></svg></span><span><strong>Route planen</strong><small>In Google Maps öffnen</small></span></a>
