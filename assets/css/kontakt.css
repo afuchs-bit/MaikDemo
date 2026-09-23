@@ -490,10 +490,27 @@
 
 .contact-map-pin svg { width: 25px; height: 25px; }
 
+/* AP-419: Der Hinweis ist seit diesem Arbeitspaket ein Kind des Rasters und
+   steht im Quelltext vor der Kartenschale - gestapelt also zwischen
+   Adressblock und Karte. Ueber beide Spalten gespannt bleibt er am Rechner
+   genau das, was er vorher war: eine Zeile in voller Breite unter dem Raster. */
 .contact-location-footer {
+  grid-column: 1 / -1;
   margin-top: 22px;
   padding-top: 18px;
   border-top: 1px solid rgb(var(--green-800-rgb) / .12);
+}
+
+/* AP-419: Ab 721px stehen Adressblock und Karte fest in Zeile 1, damit der
+   Hinweis trotz seiner neuen Stelle im Quelltext in Zeile 2 faellt - das Bild
+   am Rechner bleibt dadurch unveraendert.
+   row-gap: 0 ist noetig, weil das Raster jetzt zwei Zeilen hat: Den Abstand
+   zum Hinweis traegt weiterhin allein sein margin-top von 22px, sonst kaeme
+   der Rasterabstand obendrauf. Der Spaltenabstand bleibt unberuehrt. */
+@media (min-width: 721px) {
+  .contact-location-card-grid { row-gap: 0; }
+  .contact-location-copy { grid-column: 1; grid-row: 1; }
+  .contact-map-shell { grid-column: 2; grid-row: 1; }
 }
 
 .contact-visit-note {
@@ -534,6 +551,10 @@
   .contact-location-card-grid { grid-template-columns: 1fr; }
   .contact-location-copy { justify-content: flex-start; }
   .contact-map-shell { height: 380px; min-height: 380px; }
+  /* AP-419: Gestapelt traegt der Zeilenabstand des Rasters die Abstaende nach
+     oben UND nach unten. Der eigene Aussenabstand des Hinweises kaeme sonst
+     oben doppelt und unten gar nicht. */
+  .contact-location-footer { margin-top: 0; }
 }
 
 @media (max-width:600px) {
