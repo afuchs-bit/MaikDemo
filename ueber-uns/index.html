@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<style>
+html, body { background-color: #171916; }
+@media (max-width: 480px) {
+  html, body { background-color: #1B1E19; }
+}
+</style>
 <!-- AP-01: Demo-Sperre. Beim Go-Live entfernen, siehe docs/go-live-checkliste.md. -->
 <meta name="robots" content="noindex,nofollow" />
 <meta name="theme-color" content="#315200" />
@@ -24,9 +30,10 @@
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260921g" />
-<link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260921f" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260921e" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
+<link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
+<link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923a" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -92,7 +99,7 @@
         "addressLocality": "Herne",
         "addressCountry": "DE"
       },
-      "areaServed": ["Herne", "Bochum", "Castrop-Rauxel", "Recklinghausen", "Gelsenkirchen-Buer"],
+      "areaServed": ["Herne", "Bochum", "Essen", "Castrop-Rauxel", "Recklinghausen", "Gelsenkirchen"],
       "openingHoursSpecification": [
         {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00"},
         {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "12:00"}
@@ -745,7 +752,7 @@
           </a>
         </div>
         <div class="footer-social-iphone" aria-label="Weitere Kontaktmöglichkeiten">
-          <p class="footer-social-availability"><span class="footer-social-line">Jederzeit erreichbar <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
+          <p class="footer-social-availability"><span class="footer-social-line">WhatsApp jederzeit <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
           <a class="footer-social-link footer-social-link--whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener" aria-label="Maik Rohdich über WhatsApp schreiben">
             <span class="footer-social-icon footer-social-icon--whatsapp" aria-hidden="true"><img src="../assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
           </a>
@@ -769,7 +776,7 @@
         </details>
       </nav>
 
-      <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen-Buer <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
+      <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Essen <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
     </div>
 
     <div class="footer-bottom">
