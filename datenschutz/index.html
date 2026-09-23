@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<style>
+html, body { background-color: #171916; }
+@media (max-width: 480px) {
+  html, body { background-color: #1B1E19; }
+}
+</style>
 <!-- AP-01: Demo-Sperre. Beim Go-Live entfernen (Impressum darf indexiert werden), siehe docs/go-live-checkliste.md. -->
 <meta name="robots" content="noindex,nofollow" />
 <meta name="theme-color" content="#315200" />
@@ -19,7 +25,8 @@
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20260921g" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
+<link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -121,25 +128,31 @@
             <span class="nav-submenu-head">Unsere Leistungen von A bis Z</span>
             <ul>
               <li><a href="../privatkunden/leistungen/baumarbeiten/">Baumfällung</a></li>
+              <li><a href="../privatkunden/leistungen/baumkontrolle/">Baumkontrolle</a></li>
               <li><a href="../privatkunden/leistungen/baumarbeiten/">Baumpflege</a></li>
+              <li><a href="../privatkunden/leistungen/gartengestaltung/">Beleuchtung</a></li>
               <li><a href="../privatkunden/leistungen/dachbegruenung/">Dachbegrünung</a></li>
+              <li><a href="../privatkunden/leistungen/gartengestaltung/">Entwässerung</a></li>
               <li><a href="../privatkunden/leistungen/gartengestaltung/">Erd- &amp; Baggerarbeiten</a></li>
-              <li><a href="../privatkunden/leistungen/gartengestaltung/">Gartenbeleuchtung</a></li>
-              <li><a href="../privatkunden/leistungen/gartengestaltung/">Gartenentwässerung</a></li>
+              <li><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/">Findlinge und Natursteineinfassungen</a></li>
               <li><a href="../privatkunden/leistungen/gartengestaltung/">Gartengestaltung</a></li>
               <li><a href="../privatkunden/leistungen/gartenpflege/">Gartenpflege</a></li>
               <li><a href="../privatkunden/leistungen/holzverkauf/">Kaminholz</a></li>
-              <li><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/">Naturstein &amp; Findlinge</a></li>
+              <li><a href="../privatkunden/leistungen/nassschneidearbeiten/">Nassschneidearbeiten</a></li>
+              <li><a href="../gewerbekunden/leistungen/aussenanlagenpflege/">Objekt- &amp; Grünflächenpflege</a></li>
+              <li><a href="../privatkunden/leistungen/palmen-winterfest/">Palmen winterfest</a></li>
               <li><a href="../privatkunden/leistungen/bepflanzung/">Pflanzarbeiten</a></li>
               <li><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/">Pflasterarbeiten</a></li>
               <li><a href="../privatkunden/leistungen/pool-whirlpool-umfeld/">Pool- &amp; Whirlpoolumfeld</a></li>
-              <li><a href="../privatkunden/leistungen/gartengestaltung/">Rasen &amp; Rollrasen</a></li>
+              <li><a href="../privatkunden/leistungen/rodungsarbeiten/">Rodungsarbeiten</a></li>
               <li><a href="../privatkunden/leistungen/bepflanzung/">Rohdichs Grubengold</a></li>
+              <li><a href="../privatkunden/leistungen/gartengestaltung/">Rollrasen</a></li>
               <li><a href="../privatkunden/leistungen/bepflanzung/">Sichtschutzbepflanzung</a></li>
               <li><a href="../privatkunden/leistungen/teichbau/">Teichbau &amp; -technik</a></li>
               <li><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/">Terrassenbau</a></li>
+              <li><a href="../privatkunden/leistungen/verkehrssicherheit/">Verkehrssicherheit herstellen</a></li>
+              <li><a href="../privatkunden/leistungen/vermessung-lasertechnik/">Vermessungs- &amp; Lasertechnik</a></li>
               <li><a href="../privatkunden/leistungen/vorgarten/">Vorgartengestaltung</a></li>
-              <li><a href="../privatkunden/leistungen/palmen-winterfest/">Winterfeste Palmen</a></li>
               <li><a href="../privatkunden/leistungen/terrasse-pflasterarbeiten/">Zäune &amp; Sichtschutz</a></li>
             </ul>
           </li>
@@ -203,8 +216,9 @@
      geprüft oder über einen Generator erstellt). Die unten skizzierten Verarbeitungs-
      kontexte sind bereits bekannt und sollten in der finalen Fassung ausformuliert
      werden: Hosting, Server-Logs, Kontaktformular inkl. Bild-Upload, WhatsApp-Kontakt,
-     Pool-Rechner (Budgetangabe), Analyse (falls eingesetzt). Danach diesen Hinweis
-     und die Platzhalter-Absätze entfernen. Siehe docs/offene-punkte.md. -->
+     Pool-Rechner (Budgetangabe), Google-Maps-Karte auf der Kontaktseite, Analyse
+     (falls eingesetzt). Danach diesen Hinweis und die Platzhalter-Absätze entfernen.
+     Siehe docs/offene-punkte.md. -->
 <p>Die vollständige Datenschutzerklärung wird vor der Veröffentlichung ergänzt. Sie beschreibt, welche personenbezogenen Daten beim Besuch dieser Website und bei einer Anfrage verarbeitet werden, auf welcher Rechtsgrundlage und wie lange. Verantwortlich ist der im <a href="../impressum/">Impressum</a> genannte Anbieter.</p>
 
 <h2>Beim Besuch der Website</h2>
@@ -227,6 +241,15 @@
      Verarbeitungsort und die Grundlage einer etwaigen Drittlandsuebermittlung.
      Erst eintragen, wenn der Vertrag tatsaechlich geschlossen ist - eine Angabe
      ueber einen Vertrag, den es nicht gibt, waere schlimmer als keine. -->
+
+<h2>Karte auf der Kontaktseite</h2>
+<p>Auf der <a href="../kontakt/">Kontaktseite</a> lässt sich eine Karte von Google Maps einblenden. <strong>Die Karte lädt nicht von selbst.</strong> Solange Sie den Knopf „Karte laden“ nicht betätigen, wird keine Verbindung zu Google aufgebaut und es gehen keine Daten dorthin.</p>
+<p>Erst mit Ihrem Klick binden wir die Karte ein. Dabei erfährt Google Ihre IP-Adresse sowie technische Angaben Ihres Browsers und kann Cookies auf Ihrem Gerät setzen. Rechtsgrundlage ist Ihre Einwilligung nach Artikel 6 Absatz 1 Buchstabe a der Datenschutz-Grundverordnung, die Sie mit dem Klick erteilen. Die Karte zu laden ist freiwillig; Adresse und Anfahrt stehen auch ohne sie auf der Seite.</p>
+<p><strong>Widerruf:</strong> Ihre Einwilligung gilt nur für den laufenden Seitenaufruf. Wir speichern sie nicht – weder in einem Cookie noch sonst. Laden Sie die Seite neu, ist die Karte wieder ungeladen und es besteht keine Verbindung zu Google.</p>
+<!-- OFFEN: In der finalen Fassung die verantwortliche Google-Gesellschaft mit Sitz
+     benennen (für Nutzer im EWR regelmäßig Google Ireland Limited) und die Grundlage
+     einer Übermittlung in die USA angeben. Beides gehört anwaltlich geprüft und nicht
+     geschätzt. Siehe docs/offene-punkte.md. -->
 
 <h2>Pool- und Whirlpool-Rechner</h2>
 <p>Der Rechner auf der Seite Pool- und Whirlpool-Umfeld berechnet ausschließlich in Ihrem Browser und speichert nichts. Erst wenn Sie die Angaben aktiv als Anfrage absenden, werden sie übermittelt. Eine freiwillig gemachte Budgetangabe ist eine persönliche Angabe und wird nur zur Vorbereitung des Gesprächs verwendet.</p>
@@ -291,7 +314,7 @@
         </details>
       </nav>
 
-      <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen-Buer <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
+      <p class="footer-coverage"><strong>Einsatzgebiet</strong><span>Herne <b aria-hidden="true">·</b> Bochum <b aria-hidden="true">·</b> Essen <b aria-hidden="true">·</b> Castrop-Rauxel <b aria-hidden="true">·</b> Recklinghausen <b aria-hidden="true">·</b> Gelsenkirchen <b aria-hidden="true">·</b> weitere Orte nach Projekt</span></p>
     </div>
 
     <div class="footer-bottom">

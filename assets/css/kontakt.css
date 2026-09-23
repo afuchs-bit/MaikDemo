@@ -11,11 +11,17 @@
   outline-offset: 3px;
 }
 
+/* AP-388: Hier stand ein Verlauf von #F8F6F0 auf var(--bg), dazu ein
+   Korallen-Hauch oben links - ein Rest aus der hellen Farbwelt, der bei der
+   Umstellung auf Dunkel nicht mitgezogen wurde. Die Flaeche reicht ueber den
+   ganzen oberen Seitenteil (bei 375px 1907px hoch) und war damit der
+   auffaelligste Unterschied zur Startseite.
+   Sie war zugleich ein Lesbarkeitsfehler: Die H1 sitzt bei 5,8 % des Verlaufs,
+   also auf rgb(235,233,227), und traegt var(--ink) = rgb(250,250,246).
+   Gemessenes Kontrastverhaeltnis 1,16:1 - WCAG verlangt 3:1 fuer grosse
+   Schrift. Ohne eigene Flaeche scheint jetzt der Seitengrund durch. */
 .contact-hero {
   padding: clamp(28px,3.8vw,52px) 0 clamp(64px,6.5vw,88px);
-  background:
-    radial-gradient(circle at 8% 15%,rgba(235,108,68,.07),transparent 24%),
-    linear-gradient(180deg,#f8f6f0 0%,var(--bg) 100%);
 }
 
 .contact-hero .breadcrumbs { margin-bottom: clamp(28px,3vw,40px); }
@@ -48,16 +54,86 @@
   flex-direction: column;
   padding: clamp(30px,2.7vw,38px) clamp(25px,2.6vw,34px) clamp(28px,2.5vw,34px);
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.13);
+  border: 1px solid var(--line);
   border-radius: 24px 24px 44px 24px;
   background:
-    radial-gradient(circle at 82% 5%,rgba(224,217,39,.13),transparent 27%),
-    linear-gradient(155deg,#203506 0%,#315200 52%,#263f08 100%);
+    radial-gradient(circle at 82% 5%,rgb(var(--yellow-rgb) / .13),transparent 27%),
+    linear-gradient(155deg,var(--green-900) 0%,var(--green-800) 52%,var(--green-900) 100%);
   box-shadow: 0 30px 58px -42px rgba(18,31,5,.82),inset 0 0 0 1px rgba(255,255,255,.05);
-  color: #fffdf5;
+  color: var(--ink);
 }
 
 .contact-direct-list { margin: 18px 0 0; }
+
+/* AP-392: Die beiden Telefonkacheln tragen das Glyph des Anrufknopfs aus dem
+   Kopf (styles.css:1818) statt des Feather-Hoerers. Dasselbe Bild nutzt schon
+   .anf__kanal-icon--tel in anfrage.css:457.
+
+   Das SVG bleibt im Markup und wird nur ausgeblendet - so greift der Tausch
+   allein hier und laesst denselben Baustein auf der Startseite in Ruhe.
+   .form-trust-card__action-icon ist ein Grid mit place-items: center, das
+   ::before setzt sich also von selbst mittig.
+
+   24px uebernimmt das Mass aus anfrage.css (24px Glyph in 38px Kachel); der
+   Kopf faehrt 28px in 44px, dasselbe Verhaeltnis. Das bisherige SVG war mit
+   20px kleiner - das Glyph traegt einen Ring um den Hoerer und wirkt bei
+   gleicher Boxgroesse kleiner. */
+.contact-direct-list a[href^="tel:"] .form-trust-card__action-icon > svg {
+  display: none;
+}
+
+.contact-direct-list a[href^="tel:"] .form-trust-card__action-icon::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: url("../img/icons/phone-header-mobile.png") center / contain no-repeat;
+  /* Das Glyph liegt als gruenes PNG vor, eine weisse Fassung gibt es nicht.
+     brightness(0) zieht alle deckenden Pixel auf Schwarz, invert(1) dreht sie
+     auf Weiss - die Alphakante bleibt dabei unangetastet. Dasselbe Mittel
+     nutzt home-dark.css:2749 fuer den Pfeil der Ueber-uns-Sektion. */
+  filter: brightness(0) invert(1);
+  transition: filter .18s var(--ease);
+}
+
+/* AP-405: Beim Hovern und beim Antippen bekommen die Symbole Farbe - die Kachel
+   bleibt dunkel. Vorbild sind die Kanalkacheln der Startseite (anfrage.css:480
+   ff.): dort traegt das Symbol die Farbe, nicht die Flaeche. Der WhatsApp-Eintrag
+   behaelt seine gefuellte Kachel aus form-trust-card.css:136 - Markenfarbe. Er
+   ist per :not() ausgenommen: jene Regel setzt nur den Kachelgrund, nicht die
+   Symbolfarbe. Ohne die Ausnahme saesse ein gruenes Symbol auf gruener Kachel.
+
+   Warum ausgerechnet --mobile-logo-green: Die beiden Telefonkacheln tragen kein
+   SVG mehr, sondern das PNG von oben. An einem Hintergrundbild greift color
+   nicht - nur ein anderer Filter oder gar keiner. Das PNG ist zu 100 Prozent
+   (7782 von 7782 deckenden Pixeln, pixelweise nachgezaehlt) in #56E607, also
+   genau diesem Token. Filter weg = Symbol in diesem Ton. Jeder andere Wert
+   liesse Telefon- und SVG-Symbole auseinanderlaufen.
+
+   Hover steht hinter (hover: hover) and (pointer: fine) - die Projektkonvention,
+   siehe styles.css:30. :active steht bewusst OHNE Media Query davor: auf dem
+   Handy gibt es kein Hover, und der Auftraggeber wollte beides. Vorbild dafuer
+   ist anfrage.css:693. */
+.contact-direct-list > a .form-trust-card__action-icon > svg {
+  transition: color .18s var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-direct-list > a:not(.form-trust-card__whatsapp):hover .form-trust-card__action-icon > svg {
+    color: var(--mobile-logo-green);
+  }
+
+  .contact-direct-list > a[href^="tel:"]:hover .form-trust-card__action-icon::before {
+    filter: none;
+  }
+}
+
+.contact-direct-list > a:not(.form-trust-card__whatsapp):active .form-trust-card__action-icon > svg {
+  color: var(--mobile-logo-green);
+}
+
+.contact-direct-list > a[href^="tel:"]:active .form-trust-card__action-icon::before {
+  filter: none;
+}
 
 .contact-callback-note {
   display: grid;
@@ -66,7 +142,7 @@
   align-items: center;
   margin-top: 16px;
   padding: 13px 14px 13px 12px;
-  border: 1px solid rgba(224,217,39,.28);
+  border: 1px solid rgb(var(--yellow-rgb) / .28);
   border-left: 3px solid var(--yellow);
   border-radius: 14px;
   background: rgba(255,255,255,.075);
@@ -79,20 +155,20 @@
   height: 38px;
   place-items: center;
   border-radius: 12px;
-  background: rgba(224,217,39,.14);
+  background: rgb(var(--yellow-rgb) / .14);
   color: var(--yellow);
 }
 
 .contact-callback-note__icon svg { width: 20px; height: 20px; }
 .contact-callback-note p { display: grid; gap: 3px; min-width: 0; margin: 0; }
 .contact-callback-note strong {
-  color: #fffdf5;
+  color: var(--ink);
   font-family: var(--display);
   font-size: .8rem;
   line-height: 1.25;
 }
 .contact-callback-note p > span {
-  color: rgba(255,253,245,.8);
+  color: rgb(var(--ink-rgb) / .8);
   font-size: .72rem;
   line-height: 1.45;
 }
@@ -100,7 +176,19 @@
 .contact-coverage {
   margin: 20px 0 0;
   padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,.17);
+  border-top: 1px solid var(--line);
+}
+
+/* AP-390: Die Ortsliste laeuft durch und bricht um, wo der Platz ausgeht. Zwei
+   Stellen brauchen dabei eine Bremse:
+   - Vor jedem Trennpunkt steht im Markup ein geschuetztes Leerzeichen, damit
+     keine Zeile mit einem einzeln stehenden "·" beginnt.
+   - Ortsnamen mit Bindestrich duerfen nicht am Bindestrich zerfallen. Bei 320px
+     wurde aus "Castrop-Rauxel" sonst "Castrop-" und "Rauxel". word-break:
+     keep-all hilft dort nicht - in Chrome gemessen, der Umbruch blieb. Deshalb
+     traegt der Ortsname ein <span>, das hier auf nowrap steht. */
+.contact-coverage p span {
+  white-space: nowrap;
 }
 
 .contact-hours {
@@ -110,7 +198,7 @@
   align-items: center;
   margin-top: auto;
   padding-top: 24px;
-  color: #fffdf5;
+  color: var(--ink);
 }
 
 .contact-hours-icon {
@@ -125,8 +213,8 @@
 
 .contact-hours-icon svg { width: 20px; height: 20px; }
 .contact-hours > span:last-child { display: grid; gap: 4px; min-width: 0; }
-.contact-hours strong { color: #fffdf5; font-family: var(--display); font-size: .8rem; line-height: 1.3; }
-.contact-hours small { color: rgba(255,253,245,.62); font-size: .68rem; line-height: 1.45; }
+.contact-hours strong { color: var(--ink); font-family: var(--display); font-size: .8rem; line-height: 1.3; }
+.contact-hours small { color: rgb(var(--ink-rgb) / .62); font-size: .68rem; line-height: 1.45; }
 
 .contact-location-card {
   position: relative;
@@ -135,7 +223,7 @@
   flex-direction: column;
   padding: clamp(24px,2.6vw,34px);
   overflow: hidden;
-  border: 1px solid rgba(49,82,0,.14);
+  border: 1px solid rgb(var(--green-800-rgb) / .14);
   border-radius: 22px;
   background: var(--bg-elev);
   box-shadow: var(--shadow-card);
@@ -164,8 +252,7 @@
   justify-content: center;
 }
 
-.contact-location-label,
-.contact-path-label {
+.contact-location-label {
   display: inline-flex;
   color: var(--green-500);
   font-size: .68rem;
@@ -207,7 +294,7 @@
 
 .contact-location-actions { display: grid; grid-auto-rows: 1fr; gap: 10px; margin-top: 22px; }
 .contact-location-route { transition: border-color .18s var(--ease),box-shadow .18s var(--ease),transform .18s var(--ease); }
-.contact-location-route:hover { border-color: rgba(49,82,0,.32); box-shadow: 0 10px 24px -22px rgba(19,26,8,.75); transform: translateY(-1px); }
+.contact-location-route:hover { border-color: rgb(var(--green-800-rgb) / .32); box-shadow: 0 10px 24px -22px rgba(19,26,8,.75); transform: translateY(-1px); }
 
 .contact-location-icon {
   display: grid;
@@ -215,7 +302,7 @@
   height: 40px;
   place-items: center;
   border-radius: 12px;
-  border: 1px solid rgba(49,82,0,.16);
+  border: 1px solid rgb(var(--green-800-rgb) / .16);
   background: var(--bg-elev);
   color: var(--green-500);
 }
@@ -235,11 +322,11 @@
   height: 100%;
   min-height: 440px;
   overflow: hidden;
-  border: 1px solid rgba(49,82,0,.15);
+  border: 1px solid rgb(var(--green-800-rgb) / .15);
   border-radius: 15px;
   background:
-    linear-gradient(36deg,transparent 47%,rgba(49,82,0,.08) 48%,rgba(49,82,0,.08) 51%,transparent 52%),
-    linear-gradient(-30deg,transparent 44%,rgba(235,108,68,.08) 45%,rgba(235,108,68,.08) 48%,transparent 49%),
+    linear-gradient(36deg,transparent 47%,rgb(var(--green-800-rgb) / .08) 48%,rgb(var(--green-800-rgb) / .08) 51%,transparent 52%),
+    linear-gradient(-30deg,transparent 44%,rgb(var(--coral-rgb) / .08) 45%,rgb(var(--coral-rgb) / .08) 48%,transparent 49%),
     radial-gradient(circle at 65% 32%,rgba(90,138,28,.18),transparent 16%),
     var(--bg-soft);
   box-shadow: 0 20px 42px -34px rgba(28,48,0,.75);
@@ -269,7 +356,52 @@
 .contact-map-placeholder > div span,
 .contact-map-placeholder > p { color: var(--ink-2); }
 .contact-map-placeholder > div span { font-size: .82rem; }
-.contact-map-placeholder > p { max-width: 34ch; margin: 10px 0 14px; font-size: .7rem; line-height: 1.45; }
+.contact-map-placeholder > p { max-width: 42ch; margin: 10px 0 14px; font-size: .7rem; line-height: 1.45; }
+
+/* AP-394: Der Hinweis nennt jetzt Empfaenger, Umfang und Widerruf und verweist auf
+   die Datenschutzerklaerung. Er ist damit laenger als die eine Zeile von vorher -
+   daher 42ch statt 34ch. Der Verweis braucht eine eigene Farbe: die Seitenfarbe
+   fuer Verweise ist das Rot von "Route planen", das hier auf dem hellen Kartengrund
+   unruhig wirkt und den Blick vom Knopf zieht. */
+/* AP-396: "Direkt erreichbar" und "Unser Einsatzgebiet" waren ein <span> und ein
+   <div><span>. Die Kontaktkarte - der halbe Seiteninhalt - tauchte damit in keiner
+   Dokumentgliederung auf; Screenreader-Nutzer konnten sie nicht anspringen, und
+   Antwortmaschinen fanden ueber der Ortsliste keine Ueberschrift.
+
+   Jetzt h2 und h3 unter der h1. Beide Klassen setzen Groesse, Gewicht und Farbe
+   ohnehin selbst, es fehlen nur die Standardabstaende der Ueberschriften-Elemente.
+   Die Regeln stehen hier und nicht in form-trust-card.css: denselben Baustein
+   benutzt die Startseite mit ihrem eigenen Markup, und die soll sich nicht
+   mitaendern. */
+.contact-direct-card > h2.form-trust-card__eyebrow,
+.contact-coverage > h3.form-trust-card__coverage-heading {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.contact-direct-card > h2.form-trust-card__eyebrow {
+  margin-bottom: 10px;
+}
+
+/* AP-397: Der Terminhinweis traegt jetzt einen Weg zur Terminanfrage. Der Verweis
+   steht mitten im Fließtext und braucht deshalb eine Unterstreichung, sonst ist er
+   von der umgebenden Zeile nicht zu unterscheiden. */
+.contact-visit-note a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-map-placeholder > p a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-map-placeholder > p a:hover,
+.contact-map-placeholder > p a:focus-visible {
+  color: var(--ink);
+}
 
 .contact-map-pin {
   display: grid;
@@ -279,8 +411,8 @@
   place-items: center;
   border-radius: 14px;
   background: var(--green-700);
-  color: #fff;
-  box-shadow: 0 12px 24px -14px rgba(49,82,0,.8);
+  color: var(--ink);
+  box-shadow: 0 12px 24px -14px rgb(var(--green-800-rgb) / .8);
 }
 
 .contact-map-pin svg { width: 25px; height: 25px; }
@@ -288,7 +420,7 @@
 .contact-location-footer {
   margin-top: 22px;
   padding-top: 18px;
-  border-top: 1px solid rgba(49,82,0,.12);
+  border-top: 1px solid rgb(var(--green-800-rgb) / .12);
 }
 
 .contact-visit-note {
@@ -305,163 +437,30 @@
 
 .contact-visit-note strong { color: var(--ink); font-family: var(--display); }
 
-.contact-paths { padding: var(--space-section) 0; }
+   /* AP-129 */
 
-.contact-paths { background: var(--bg); }   /* AP-129 */
-
-.contact-section-head {
-  max-width: 780px;
-  margin-bottom: var(--space-section-head);
-}
-
-.contact-section-head h2 {
-  margin: 0 0 var(--space-title-subtext);
-  font-family: var(--display);
-  font-size: var(--type-section-title-size);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -.035em;
-}
-
-.contact-section-head > p {
-  max-width: 62ch;
-  margin: 0;
-  color: var(--ink-2);
-  font-family: var(--body);
-  font-size: var(--type-section-lead-size);
-  line-height: 1.62;
-}
-
-.contact-path-grid {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: clamp(18px,2.2vw,28px);
-  align-items: stretch;
-}
-
-.contact-path-card {
-  display: flex;
-  min-height: 540px;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0;
-  overflow: hidden;
-  border: 1px solid rgba(49,82,0,.16);
-  border-radius: 24px;
-  background: var(--bg-elev);
-  box-shadow: 0 26px 54px -38px rgba(22,39,7,.55);
-  color: var(--ink);
-}
-
-.contact-path-media { display: block; width: 100%; height: clamp(210px,24vw,310px); overflow: hidden; background: var(--green-50); }
-.contact-path-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s var(--ease); }
-.contact-path-card--private .contact-path-media img { object-position: 50% 60%; }
-.contact-path-card--business .contact-path-media img { object-position: 50% 58%; }
-.contact-path-icon { display: none; }
-
-.contact-path-label { margin: 26px clamp(24px,3vw,38px) 0; }
-.contact-path-card h3 { max-width: 19ch; margin: 11px clamp(24px,3vw,38px) 12px; font-size: var(--type-subsection-title-size); line-height: 1.1; }
-.contact-path-card > p { max-width: 56ch; margin: 0 clamp(24px,3vw,38px) 24px; color: var(--ink-2); line-height: 1.65; }
-
-.contact-path-actions {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  align-self: stretch;
-  width: auto;
-  gap: 12px;
-  align-items: stretch;
-  margin: auto clamp(24px,3vw,38px) 0;
-  padding: 0 0 30px;
-}
-
-.contact-path-actions .btn { min-height: 54px; justify-content: center; text-align: center; }
-.contact-path-text-link {
-  display: inline-flex;
-  gap: 4px;
-  align-items: center;
-  justify-content: flex-end;
-  min-width: 0;
-  min-height: 54px;
-  padding: 8px 0;
-  color: var(--green-500);
-  font-family: var(--body);
-  font-size: .86rem;
-  font-weight: 800;
-  line-height: 1.2;
-  text-align: center;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color .2s var(--ease);
-}
-.contact-path-text-link:hover { color: var(--ink); }
-.contact-path-text-link b {
-  flex: 0 0 auto;
-  color: var(--coral-700);
-  font-size: 1.05rem;
-  transition: transform .2s var(--ease);
-}
-.contact-path-text-link:hover b { transform: translateX(3px); }
-.contact-path-text-link:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
-
-.contact-final-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 26px;
-}
-
-.contact-final { padding: 0 0 var(--space-section); background: var(--bg); }
-
-.contact-final-card {
-  display: grid;
-  grid-template-columns: minmax(0,1fr) auto;
-  gap: 32px;
-  align-items: center;
-  padding: clamp(30px,5vw,58px);
-  border-radius: 22px;
-  background: var(--green-900);
-  color: #fff;
-  box-shadow: 0 30px 58px -42px rgba(18,31,5,.82);
-}
-
-.contact-final-card .contact-card-label { color: var(--yellow); font-size: .68rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
-.contact-final-card h2 { margin: 10px 0 8px; color: #fff; font-size: var(--type-subsection-title-size); line-height: 1.1; }
-.contact-final-card p { margin: 0; color: rgba(255,255,255,.72); }
-.contact-final-actions { justify-content: flex-end; margin-top: 0; }
 /* AP-F26: --ink ist seit AP-F25 hell - auf gelbem Grund waren das 1,28:1.
    Auf einer hellen Signalflaeche gehoert dunkler Text, unabhaengig vom Thema. */
-.contact-final-primary { background: var(--yellow); color: var(--bg-dark); }
-.contact-final-secondary { border-color: rgba(255,255,255,.55); background: transparent; color: #fff; }
-
-@media (hover:hover) and (pointer:fine) {
-  .contact-path-card:hover .contact-path-media img { transform: scale(1.025); }
-  .contact-final-primary:hover { background: #fff176; }
-  .contact-final-secondary:hover { border-color: #fff; background: rgba(255,255,255,.08); }
-}
 
 @media (min-width:1051px) {
   .contact-location-card { align-self: center; height: auto; }
   .contact-location-card-grid { flex: 0 1 auto; }
 }
 
-@media (max-width:1200px) {
-  .contact-path-actions { display: grid; grid-template-columns: 1fr; }
-  .contact-path-actions .btn { width: 100%; }
-}
-
 @media (max-width:1050px) {
   .contact-hub { grid-template-columns: 1fr; }
   .contact-direct-list { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+  /* AP-397: Fuenf Wege auf zwei Spalten lassen den letzten allein in der Schlusszeile
+     stehen. Statt einer halben Kachel mit Luecke daneben laeuft das Formular ueber
+     beide Spalten - es ist ohnehin der einzige Weg, der kein Direktkanal ist. */
+  .contact-direct-form { grid-column: 1 / -1; }
   .contact-location-card-grid { grid-template-columns: minmax(0,1fr) minmax(330px,1.08fr); }
 }
 
 @media (max-width:720px) {
-  .contact-location-card-grid,
-  .contact-path-grid { grid-template-columns: 1fr; }
+  .contact-location-card-grid { grid-template-columns: 1fr; }
   .contact-location-copy { justify-content: flex-start; }
   .contact-map-shell { height: 380px; min-height: 380px; }
-  .contact-final-card { grid-template-columns: 1fr; }
-  .contact-final-actions { justify-content: flex-start; }
 }
 
 @media (max-width:600px) {
@@ -472,25 +471,32 @@
   .contact-direct-list { grid-template-columns: 1fr; }
   .contact-callback-note { grid-template-columns: 34px minmax(0,1fr); gap: 10px; padding: 12px; }
   .contact-callback-note__icon { width: 34px; height: 34px; border-radius: 10px; }
-  .contact-location-card,
-  .contact-path-card,
-  .contact-final-card { border-radius: 19px; }
+  .contact-location-card { border-radius: 19px; }
   .contact-location-card { padding: 26px 22px; }
-  .contact-path-card { min-height: 0; padding: 0; border-radius: 20px; }
-  .contact-path-media { height: 220px; }
-  .contact-path-label { margin: 23px 22px 0; }
-  .contact-path-card h3,
-  .contact-path-card > p { margin-inline: 22px; }
-  .contact-path-actions { display: grid; width: calc(100% - 44px); margin-inline: 22px; padding-bottom: 24px; }
-  .contact-path-actions .btn { width: 100%; }
   .contact-map-shell { height: 340px; min-height: 340px; }
-  .contact-final-actions { display: grid; grid-template-columns: 1fr; width: 100%; }
-  .contact-final-actions .btn { width: 100%; justify-content: center; text-align: center; }
 }
 
 @media (prefers-reduced-motion:reduce) {
   .contact-location-route { transition: none; }
-  .contact-path-media img { transition: none; }
-  .contact-path-text-link,
-  .contact-path-text-link b { transition: none; }
+}
+
+/* AP-388: Unter 481px traegt die Startseite #1B1E19 statt #171916 - gesetzt vom
+   Inline-Style in index.html:10 und von --home-page-background in
+   privat-form.css:5551, das nur sie laedt. Der Wert steht hier als Literal,
+   damit ein grep nach 1B1E19 alle Stellen zusammen findet; so haelt es die
+   Startseite schon heute.
+
+   html kommt mit, weil der untere Abstand der eingerueckten Footer-Kachel durch
+   Margin Collapsing ausserhalb des Body-Kastens liegt (Begruendung in
+   privat-form.css:5548).
+
+   Die Regeln stehen in dieser Datei und nicht in header-home.css: Der
+   Seitengrund ist keine Kopf-Angelegenheit, und kontakt.css wird als letzte
+   geladen - nur von hier aus laesst sich .contact-page aus Zeile 1
+   ueberschreiben. */
+@media (max-width: 480px) {
+  html,
+  body.contact-page {
+    background: #1B1E19;
+  }
 }
