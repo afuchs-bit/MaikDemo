@@ -1913,3 +1913,48 @@ Vorgabe. `areaServed` im JSON-LD der Seite bleibt unberührt.
 
 Höhe der Kontaktkarte **854 → 590 px**. Überschriftenebenen danach H1 → H2 ohne Sprung.
 Keine Konsolenmeldungen.
+
+---
+
+## AP-414 — Kontaktseite: Einsatzgebiet-Rest und Geschäftszeiten entfernt
+
+Nachtrag zu AP-413, am selben Tag auf Ansage des Auftraggebers. Aus der Kontaktkarte sind
+die letzten beiden Blöcke entfallen:
+
+1. **„Auch deutschlandweit nach Absprache"** — der Rest des Einsatzgebiet-Kastens, den
+   AP-413 auf ausdrücklichen Wunsch noch hatte stehen lassen, samt der Trennlinie darüber.
+2. **Die Geschäftszeiten** „Montag bis Freitag, 09:00–17:00 Uhr / Samstag, 09:00–12:00 Uhr ·
+   Sonntag geschlossen".
+
+Die Karte besteht damit nur noch aus den fünf Kontaktwegen (Mobil, Festnetz, E-Mail,
+WhatsApp, Anfrageformular). Höhe bei 375 px: **590 → 452 px**; über AP-413 und AP-414
+zusammen **854 → 452 px**.
+
+### Wichtig: Auf dem Handy stehen die Geschäftszeiten jetzt nirgends mehr
+
+Nachgemessen, nicht vermutet:
+
+| Ort | Status |
+|---|---|
+| Fußzeile (`.footer-hours`) | **bis 480 px unsichtbar** (`display: none`, `footer-kontakt.css:260`), ab 481 px sichtbar |
+| JSON-LD am Seitenkopf | `openingHoursSpecification` unverändert, auf jeder Breite |
+| Kontaktkarte | entfernt |
+
+Wer die Kontaktseite auf dem Telefon öffnet, findet die Geschäftszeiten also **nicht mehr**.
+Am Desktop nennt sie weiterhin die Fußzeile. Maschinenlesbar bleiben sie über das JSON-LD
+erhalten, für Suchmaschinen und das Google-Unternehmensprofil ändert sich nichts.
+
+Das ist eine bewusste Entscheidung des Auftraggebers vom 23.09.2026 und kein Versehen.
+**Falls die Zeiten auf dem Handy wieder auftauchen sollen**, ist der kleinste Weg, die Regel
+in `footer-kontakt.css:260` zu streichen — dann zeigt die Fußzeile sie auf allen Breiten.
+
+### Technische Notizen
+
+- Alle drei `.contact-*`-Regelsätze der Karte sind damit tot und entfernt:
+  `.contact-callback-note*` (AP-413), `.contact-coverage` und `.contact-hours*`. Keine der
+  Klassen kommt im Repo noch vor.
+- `form-trust-card.css` bleibt weiterhin unangetastet — denselben Baustein benutzt die
+  Startseite mit eigenem Markup.
+- Kein `aria-labelledby`/`aria-describedby` der Seite zeigt ins Leere (geprüft). Die Karte
+  behält ihren Namen über das `aria-label` aus AP-413.
+- Keine Konsolenmeldungen.

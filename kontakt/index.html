@@ -28,7 +28,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260921g" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
 <link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260923d" />
-<link rel="stylesheet" href="../assets/css/kontakt.css?v=20260923k" />
+<link rel="stylesheet" href="../assets/css/kontakt.css?v=20260923l" />
 
 <script type="application/ld+json">
 {
@@ -192,23 +192,21 @@ html, body { background-color: #171916; }
             <a class="contact-direct-form" href="../#anfrage"><span class="form-trust-card__action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg></span><span><small>Anfrageformular</small><strong>Anfrage senden</strong></span></a>
           </address>
 
-
-          <!-- AP-413: Ueberschrift "Unser Einsatzgebiet" und die Ortsliste sind auf
-               Ansage des Auftraggebers entfallen, der Nachsatz bleibt ausdruecklich
-               stehen. Aus dem section wird ein div: ohne Ueberschrift gibt es nichts
-               mehr, worauf aria-labelledby zeigen koennte, und ein section ohne
-               Ueberschrift ist die falsche Auszeichnung. Trennlinie und Abstand
-               haengen an .contact-coverage und bleiben unberuehrt. -->
-          <div class="contact-coverage form-trust-card__coverage">
-            <small>Auch deutschlandweit nach Absprache</small>
-          </div>
-
-          <!-- AP-413: Uhr-Symbol und der Nachsatz zu WhatsApp sind entfallen. Das
-               zweispaltige Raster in kontakt.css ist damit mitgegangen - sonst waere
-               der Text in die 40px-Symbolspalte gerutscht. -->
-          <div class="contact-hours">
-            <span><strong>Montag bis Freitag, 09:00–17:00 Uhr</strong><strong>Samstag, 09:00–12:00 Uhr · Sonntag geschlossen</strong></span>
-          </div>
+          <!-- AP-414: Hier standen bis zum 23.09.2026 noch zwei Bloecke, beide auf
+               Ansage des Auftraggebers entfallen:
+               1. "Auch deutschlandweit nach Absprache" - der Rest des
+                  Einsatzgebiet-Kastens aus AP-413, samt Trennlinie darueber.
+               2. Die Geschaeftszeiten "Montag bis Freitag ... Sonntag geschlossen".
+               Wo die Zeiten danach noch stehen - nachgemessen, nicht vermutet:
+               am Desktop in der Fusszeile ("Mo-Fr 09:00-17:00 . Sa 09:00-12:00")
+               und auf jeder Breite im JSON-LD am Seitenkopf
+               (openingHoursSpecification, unveraendert). NICHT mehr sichtbar sind
+               sie auf dem Handy: footer-kontakt.css:260 stellt .footer-hours im
+               Block max-width:480px auf display: none. Gemessen: bis 480px
+               unsichtbar, ab 481px sichtbar. Wer die Seite auf dem Telefon oeffnet,
+               findet die Geschaeftszeiten dort also nirgends mehr - bewusste
+               Entscheidung des Auftraggebers vom 23.09.2026.
+               Die Karte endet jetzt mit den fuenf Kontaktwegen. -->
         </aside>
 
         <section class="contact-location-card reveal" aria-labelledby="contact-location-title">
