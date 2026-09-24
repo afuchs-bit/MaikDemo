@@ -435,13 +435,9 @@
   box-shadow: var(--shadow-card);
 }
 
-.ueber-betrieb__bild figcaption {
-  margin-top: 1.4rem;
-  padding-right: 112px;
-  color: var(--ink-mute);
-  font-size: .8125rem;
-  line-height: 1.45;
-}
+/* AP-437: Hier stand die Regel fuer .ueber-betrieb__bild figcaption. Die
+   Bildunterschrift ist auf Ansage des Auftraggebers entfallen, und sie war die
+   einzige der Seite - die Regel lief damit ins Leere. */
 
 /* --- Fuer wen wir arbeiten ------------------------------------------------
    Steht in derselben Sektion wie der Betrieb, nur durch eine Linie abgesetzt -

@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923b" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923c" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -552,7 +552,11 @@ html, body { background-color: #171916; }
                alt="Ein Findling hängt an den Gurten eines Krans und wird über eine Baustelle im Garten gehoben."
                loading="lazy" decoding="async">
         </picture>
-        <figcaption>Schwere Steine kommen mit eigenem Gerät an ihren Platz.</figcaption>
+        <!-- AP-437: Die Bildunterschrift "Schwere Steine kommen mit eigenem Geraet an
+             ihren Platz." ist auf Ansage des Auftraggebers entfallen. Der Satz steht
+             weiterhin im JSON-LD am Seitenkopf als caption des ImageObject - dort
+             beschreibt er das Foto fuer Suchmaschinen und stimmt unveraendert; das
+             alt-Attribut des Bildes bleibt davon ohnehin unberuehrt. -->
       </figure>
 
       <div class="ueber-betrieb__nachsatz reveal">
