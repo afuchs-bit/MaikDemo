@@ -33,6 +33,28 @@
    den row-gap des Containers, darunter in das padding des klebenden Wrappers.
    Zweimal gesetzt haette er doppelt gezaehlt. */
 
+/* AP-435: "Projekt ansehen" in der Schrift der Qualifikationsschilder vom
+   Startseiten-Tor (home-dark.css:1796, ".gate-welcome-qualification-label" -
+   "Sachkundiger", "Baumkontrolleur"). Auf Ansage des Auftraggebers nur Schriftart
+   und Neigung; Groesse, Strichstaerke, das Gruen, die gemischte Schreibweise und
+   die Unterstreichung beim Ueberfahren bleiben, wie styles.css:1171 sie setzt.
+   NICHT uebernommen sind deshalb die Versalien, die Laufweite .025em, die helle
+   Farbe, die Deckkraft .9 und die Schattierung des Vorbilds.
+
+   Der Stapel ist woertlich der der Vorlage. Es ist ein System-Schriftstapel ohne
+   @font-face - anders als bei "Baloo 2" oder "Nunito" ist also keine Datei
+   nachzuziehen. Wo keine der drei Schriften liegt, greift cursive, und was das
+   ist, entscheidet das Geraet. Dasselbe gilt am Tor der Startseite seit jeher.
+
+   Reichweite auf Ansage: nur die Galerie. Dieselbe Kachel steht auch auf
+   "Ueber uns" und den sieben Privatkunden-Leistungsseiten - dort bleibt die
+   Zeile unveraendert, weil die Grundregel in styles.css unangetastet bleibt.
+   .projects-overview .card-more wiegt (0,2,0) und schlaegt sie damit sicher. */
+.projects-overview .card-more {
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-style: italic;
+}
+
 /* AP-434: Abstand des Kruemelpfads zur Ueberschrift. Derselbe Wert wie auf der
    Kontaktseite (kontakt.css:70), damit beide Unterseiten oben gleich atmen.
    Er ersetzt die 20px aus der Grundregel styles.css:2212; linksbuendig ist er
