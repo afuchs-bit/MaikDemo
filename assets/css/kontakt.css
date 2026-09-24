@@ -92,7 +92,10 @@
 }
 
 @media (max-width: 360px) {
-  /* AP-415: Dieselbe Stufe wie die Vorlage (privat-form.css:4224). */
+  /* AP-415: Dieselbe Stufe wie die Vorlage (privat-form.css:4224).
+     AP-432: Die Standort-Ueberschrift nimmt dieselbe Stufe, ihre Regel steht
+     aber weiter unten - sonst verlaere sie hier den Gleichstand gegen die
+     spaetere Grundregel. Siehe den zweiten 360px-Block bei der Ueberschrift. */
   .contact-hero-copy h1 { font-size: 28px; }
 }
 
@@ -399,7 +402,34 @@
   text-transform: uppercase;
 }
 
-.contact-location-head h2 { margin: 10px 0 12px; }
+/* AP-432: Schriftbild des Seitentitels, auf Ansage des Auftraggebers auf allen
+   Breiten. Die Werte sind die aus .contact-hero-copy h1 (Zeile 84 ff.), nicht
+   neu erfunden - Baloo 2, 31px, Strichstaerke 600. Zeilenhoehe und Laufweite
+   gehen mit: dieselbe Schrift in derselben Groesse, aber mit 1.15/-.01em statt
+   1.13/-.015em gesetzt, saehe nebeneinander nicht gleich aus.
+   Nicht mitgenommen ist die Farbe. Bis 600px bleibt die Ueberschrift gruen und
+   hebt sich damit vom Seitentitel ab; darueber war sie schon immer weiss und
+   ist von ihm jetzt im Schriftbild nicht mehr zu unterscheiden.
+   Spezifitaet (0,1,1) - das schlaegt .type-subsection-title (0,1,0) aus
+   styles.css:254, von dem bis hierher Groesse, Gewicht, Zeile und Laufweite
+   kamen. */
+.contact-location-head h2 {
+  margin: 10px 0 12px;
+  font-family: "Baloo 2", var(--display);
+  font-size: 31px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: -.015em;
+  text-wrap: balance;
+}
+
+@media (max-width: 360px) {
+  /* AP-432: Die Stufe des Seitentitels aus Zeile 96. Sie muss HINTER der
+     Grundregel stehen: beide Selektoren wiegen (0,1,1), und bei Gleichstand
+     entscheidet die Reihenfolge - im 360px-Block oben waere sie wirkungslos. */
+  .contact-location-head h2 { font-size: 28px; }
+}
 
 .contact-location-copy h2 {
   margin: 10px 0 12px;
@@ -849,14 +879,14 @@
     font-weight: 800;
     letter-spacing: .14em;
   }
+  /* AP-432: Hier standen bis zum 24.09.2026 Schriftart, Groesse (1.55rem),
+     Strichstaerke 700, Zeilenhoehe und Laufweite aus dem AP-428-Dokument. Sie
+     sind entfallen - das Schriftbild kommt jetzt fuer alle Breiten aus der
+     Grundregel und ist damit das des Seitentitels. Geblieben sind Abstand und
+     Farbe; das Gruen unterscheidet die beiden Titel auf dem Handy. */
   .contact-location-head h2 {
     margin: 8px 0 0;
     color: var(--mobile-logo-green);
-    font-family: "Baloo 2", var(--display);
-    font-size: 1.55rem;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -.01em;
   }
 
   /* AP-426 hatte die Kachel um den Standort aufgeloest. Auf Handybreite kommt
