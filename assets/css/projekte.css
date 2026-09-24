@@ -249,10 +249,10 @@
    umbrechen - dort wirkt eine asymmetrische Ecke anders. .gallery-mode-tabs
    kommt nur auf dieser Seite vor.
 
-   Die Farben bleiben unberuehrt: .seg:has(input:checked) in styles.css:1440
-   traegt Weiss auf --green-700, am Pixel gemessene 5,14:1. Fuer den Fokus gilt
-   weiter styles.css:3385 - bei Radio-Markup landet er auf dem input, nicht auf
-   dem label, und genau darauf zielt die dortige :has()-Regel. */
+   Die Farben des aktiven Segments stehen seit AP-436 weiter unten; bis dahin
+   kamen sie unberuehrt aus .seg:has(input:checked) in styles.css:1440. Fuer den
+   Fokus gilt weiter styles.css:3385 - bei Radio-Markup landet er auf dem input,
+   nicht auf dem label, und genau darauf zielt die dortige :has()-Regel. */
 .projects-overview .gallery-mode-tabs {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -268,6 +268,25 @@
   padding: 6px;
   border: 0;
   border-radius: 18px 5px 18px 5px;
+}
+
+/* AP-436: Das aktive Segment traegt auf Ansage des Auftraggebers das Gruen des
+   Gartenwunsch-Knopfs der Startseite. Dessen Flaeche ist var(--home-lime)
+   (cta-family.css:114); auf dieser Seite heisst derselbe Wert --green-500 -
+   beide sind #8CC63F, nachgemessen auf beiden Seiten. Genommen ist das Token
+   dieser Seite.
+
+   Die Schriftfarbe MUSSTE mit. Bis hierher stand Weiss auf --green-700 (#4A7A10),
+   gemessene 5,14:1. Dasselbe Weiss auf #8CC63F waeren 2,05:1 - das reisst WCAG AA
+   fuer normale Schrift (4,5:1) deutlich. Der Knopf auf der Startseite loest es
+   genauso: dunkle Schrift auf heller Flaeche, #171916 (cta-family.css:46,
+   dort ebenfalls als Literal). Damit sind es 8,65:1.
+
+   Der Rahmen bleibt aussen vor: .gallery-mode-tabs .seg setzt border: 0, die
+   border-color der Grundregel laeuft hier ohnehin ins Leere. */
+.gallery-mode-tabs .seg:has(input:checked) {
+  background: var(--green-500);
+  color: #171916;
 }
 
 .gallery-mode-tabs .seg span {
