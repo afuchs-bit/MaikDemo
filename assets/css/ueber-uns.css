@@ -81,18 +81,17 @@
   overflow: hidden;
 }
 
-/* Dieselbe Bluetengruppe wie an den Chips, nur gross, gedaempft und
-   angeschnitten. Rein dekorativ: aria-hidden am Bild, pointer-events aus. */
-.ueber-inhaber__wasserzeichen {
-  position: absolute;
-  right: -96px;
-  bottom: -104px;
-  z-index: 0;
-  width: 340px;
-  height: auto;
-  opacity: .17;
-  pointer-events: none;
-}
+/* AP-442: Hier stand .ueber-inhaber__wasserzeichen - die grosse, gedaempfte
+   Bluetengruppe in der unteren Ecke. Auf Ansage des Auftraggebers entfallen,
+   samt der Handy-Fassung weiter unten im 860px-Block.
+
+   overflow: hidden an .ueber-inhaber bleibt trotzdem stehen. Es hielt frueher
+   das angeschnittene Wasserzeichen im Rahmen, traegt seit AP-441 aber das
+   randlose Foto: dessen negative Aussenabstaende reichen bis an die
+   Bildschirmkante, und ohne die Klammer entstuende dort waagerechter Ueberlauf.
+
+   z-index: 1 an .ueber-inhaber__raster bleibt ebenfalls - es kostet nichts und
+   der Abschnitt ist weiter position: relative. */
 
 .ueber-inhaber__raster {
   position: relative;
@@ -815,10 +814,9 @@
   /* Der senkrechte Steg der Person ergibt gestapelt keinen Sinn; an seine
      Stelle tritt die liegende Bluete zwischen den beiden Bloecken. */
   .ueber-inhaber__steg { display: none; }
-  /* Gestapelt rueckt das Zitat in die Ecke, in der das Wasserzeichen liegt.
-     Deshalb blasser und weiter heraus als am Desktop - gemessen bleibt der Text
-     darueber sonst nur knapp lesbar. */
-  .ueber-inhaber__wasserzeichen { width: 230px; right: -74px; bottom: -48px; opacity: .12; }
+  /* AP-442: Hier stand die Handy-Fassung des Wasserzeichens - blasser und
+     weiter heraus als am Desktop, damit das Zitat darueber lesbar blieb. Mit
+     dem Wasserzeichen ist auch sie entfallen. */
   /* text-align greift nicht: der Bild-Reset in styles.css:187 stellt jedes img
      auf block. Zentriert wird deshalb ueber die Aussenabstaende. */
   .ueber-inhaber__bluete-mobil { display: block; margin: 24px 0; }
