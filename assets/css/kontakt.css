@@ -778,32 +778,25 @@
     font-size: .7rem;
   }
 
-  /* ---------- Mobil: lindgruene Breitkachel ----------
-     Flaeche, Schnitt oben rechts und versetzte Linie wie "Zum Kontaktformular"
-     (cta-family.css). Der Schnitt entsteht ueber den Verlauf statt clip-path,
-     damit drop-shadow der Kontur folgt - clip-path wuerde den Schatten
-     mitschneiden. 16px Schnitt entlang 45 Grad = 16 / Wurzel 2 = 11,3px
-     Abstand zur Ecke. */
+  /* ---------- Mobil: Breitkachel ----------
+     AP-429: War bis hierher lindgruen - Flaeche ueber einen Verlauf, Schnitt an
+     der oberen rechten Ecke, versetzte Linie, dunkle Schrift. Auf Ansage des
+     Auftraggebers traegt sie jetzt dieselbe Farbe wie die vier Kacheln darunter.
+     Damit faellt die ganze Sonderbehandlung weg: Flaeche, Rahmen, Ecke, Schrift-
+     und Symbolfarbe kommen wieder aus der AP-418-Regel.
+
+     Der Schnitt ist mitgegangen, nicht aus Versehen - er wurde vom Verlauf
+     selbst gezeichnet, und ein Rahmen kann einer Schraege nicht folgen. Die
+     Kachel haette als einzige keinen Rahmen gehabt.
+
+     Geblieben sind die beiden Dinge, die sie weiter als ersten Weg auszeichnen:
+     Sie spannt ueber die ganze Zeile, und ihre Nummer steht groesser in
+     Baloo 2. Die Innenmasse sind die vollen aus AP-418 (40px Symbol, 11px
+     Abstand) - anders als bei den Halbkacheln ist hier Platz dafuer. */
   .contact-direct-list > a.contact-direct-mobile {
     grid-column: 1 / -1;
-    padding: 8px 12px;
-    border: 0;
-    border-radius: 14px 0 14px 14px;
-    background: linear-gradient(225deg, transparent 11px, var(--home-lime) 11.8px);
-    box-shadow: none;
-    color: #171916;
-    filter: drop-shadow(3px 3px 0 #1B1E19) drop-shadow(1px 1px 0 var(--home-lime));
   }
-  .contact-direct-list > a.contact-direct-mobile:active {
-    background: linear-gradient(225deg, transparent 11px, #9BD24E 11.8px);
-    border: 0;
-  }
-  .contact-direct-mobile .form-trust-card__action-icon {
-    background-color: #171916;
-  }
-  .contact-direct-mobile small { color: rgb(23 25 22 / .66); }
   .contact-direct-mobile strong {
-    color: #171916;
     font-family: "Baloo 2", var(--display);
     font-size: 1.22rem;
     font-weight: 700;
