@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923l" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923m" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -147,49 +147,11 @@ html, body { background-color: #171916; }
   ]
 }
 </script>
-<!-- AP-327: FAQ der Seite als eigener Block, wie in index.html und auf den
-     Gewerbe-Leistungsseiten. Fragen und Antworten sind zeichengleich mit den
-     <details> im Markup - wer dort etwas aendert, muss hier mitziehen. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Seit wann gibt es Maik Rohdich Garten- und Landschaftsbau?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Seit 2003, mit Sitz in Herne. Geführt wird der Betrieb von Gartenbaumeister Maik Rohdich. Gearbeitet wird in ganz NRW, auf Anfrage auch darüber hinaus."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Was bringt mir ein Meisterbetrieb?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Der Meisterzwang ist im Garten- und Landschaftsbau gefallen – anlegen darf heute fast jeder. Der Meisterbrief steht für die geprüfte fachliche Leitung und berechtigt zur Ausbildung. Dazu kommen die Zertifizierung als Baumkontrolleur der Landwirtschaftskammer, der Sachverständigentitel im Sachgebiet 2.4.1 und der Sachkundenachweis Pflanzenschutz."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Arbeiten Sie auch für Kommunen und Hausverwaltungen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. Neben privaten Gärten arbeitet der Betrieb für Gewerbe, Hausverwaltungen und kommunale Auftraggeber."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Sind kleine Aufträge zu klein?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nein. Eine Stunde Hecke zählt genauso wie ein ganzer Garten. Kurzfristige Pflegeeinsätze übernehmen wir ebenso wie die komplette Neuanlage."
-      }
-    }
-  ]
-}
-</script>
+<!-- AP-451: Hier stand der FAQPage-Block mit vier Fragen. Er ist mit der
+     sichtbaren FAQ-Sektion entfallen - strukturierte Daten muessen den Inhalt
+     der Seite abbilden. Eine FAQPage ohne sichtbare Fragen waere ein Verstoss
+     gegen die Richtlinien und braechte kein Rich Result, sondern ein Risiko.
+     Der LocalBusiness-Graph darueber bleibt unberuehrt. -->
 </head>
 <body class="ueber-page">
 
@@ -763,52 +725,17 @@ html, body { background-color: #171916; }
        weitere Telefonlinks, dazu den Anrufknopf im Seitenkopf. Saemtliche
        .ueber-klein*-Regeln sind aus ueber-uns.css entfernt. -->
   <!-- ===== Haeufige Fragen ================================================
-       AP-327: Vier Fragen in zwei Gruppen. Keine Dublette zur Startseiten-FAQ -
-       die beantwortet den Ablauf einer Anfrage, hier geht es um den Betrieb
-       selbst. Bauteil .faq-list aus styles.css, dasselbe wie auf den
-       Leistungsseiten.
-       Die Fragen stehen zusaetzlich als FAQPage im Graph - so halten es
-       index.html und die Gewerbe-Leistungsseiten auch. Wer eine Frage aendert,
-       muss den Knoten mitziehen.
-       [OFFEN: Welche Leistungen der Betrieb fuer Staedte konkret uebernimmt -
-        docs/offene-punkte.md. Der Entwurf hatte dafuer einen zweiten Satz
-        vorgesehen; er bleibt weg, bis die Angaben vorliegen.] -->
-  <section class="section ueber-faq" aria-labelledby="faq-title">
-    <div class="container">
-      <div class="section-head reveal">
-        <h2 class="type-section-title ueber-steg" id="faq-title">Häufige Fragen zum Betrieb</h2>
-        <p class="lead">Fragen zum Ablauf beantwortet die FAQ auf der Startseite.</p>
-      </div>
-      <div class="ueber-faq__gruppen reveal">
-        <div>
-          <p class="ueber-faq__kicker">Betrieb und Qualifikation</p>
-          <div class="faq-list">
-            <details>
-              <summary><span>Seit wann gibt es Maik Rohdich Garten- und Landschaftsbau?</span><span class="chev" aria-hidden="true"></span></summary>
-              <div class="faq-body"><p>Seit 2003, mit Sitz in Herne. Geführt wird der Betrieb von Gartenbaumeister Maik Rohdich. Gearbeitet wird in ganz NRW, auf Anfrage auch darüber hinaus.</p></div>
-            </details>
-            <details>
-              <summary><span>Was bringt mir ein Meisterbetrieb?</span><span class="chev" aria-hidden="true"></span></summary>
-              <div class="faq-body"><p>Der Meisterzwang ist im Garten- und Landschaftsbau gefallen – anlegen darf heute fast jeder. Der Meisterbrief steht für die geprüfte fachliche Leitung und berechtigt zur Ausbildung. Dazu kommen die Zertifizierung als Baumkontrolleur der Landwirtschaftskammer, der Sachverständigentitel im Sachgebiet 2.4.1 und der Sachkundenachweis Pflanzenschutz.</p></div>
-            </details>
-          </div>
-        </div>
-        <div>
-          <p class="ueber-faq__kicker">Auftraggeber</p>
-          <div class="faq-list">
-            <details>
-              <summary><span>Arbeiten Sie auch für Kommunen und Hausverwaltungen?</span><span class="chev" aria-hidden="true"></span></summary>
-              <div class="faq-body"><p>Ja. Neben privaten Gärten arbeitet der Betrieb für Gewerbe, Hausverwaltungen und kommunale Auftraggeber.</p></div>
-            </details>
-            <details>
-              <summary><span>Sind kleine Aufträge zu klein?</span><span class="chev" aria-hidden="true"></span></summary>
-              <div class="faq-body"><p>Nein. Eine Stunde Hecke zählt genauso wie ein ganzer Garten. Kurzfristige Pflegeeinsätze übernehmen wir ebenso wie die komplette Neuanlage.</p></div>
-            </details>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+       AP-451 (24.09.2026): Hier stand die FAQ-Sektion der Seite - vier Fragen in
+       zwei Gruppen ("Betrieb und Qualifikation", "Auftraggeber"), dazu der
+       FAQPage-Block im Seitenkopf. Auf Ansage des Auftraggebers entfallen.
+
+       Es war KEINE Dublette: Die FAQ der Startseite beantwortet den Ablauf einer
+       Anfrage, diese hier den Betrieb selbst. Die vier Antworten stehen damit
+       nirgends mehr auf der Website - vermerkt in docs/offene-punkte.md.
+
+       Der Baustein .faq-list aus styles.css bleibt: Startseite und die
+       Gewerbe-Leistungsseiten benutzen ihn weiter. Entfernt sind nur die beiden
+       Regeln .ueber-faq__gruppen und .ueber-faq__kicker. -->
 </main>
 
 

@@ -2069,3 +2069,44 @@ Ihre Aussage trägt jetzt das Zitat.
   geschrieben werden.
 - **Der Knopf „Kurz anrufen"** fällt ersatzlos weg, so entschieden. Die Seite behält vier
   weitere Telefonlinks, dazu den Anrufknopf im Seitenkopf.
+
+---
+
+## AP-451 — Die FAQ der Über-uns-Seite entfällt
+
+Auf Ansage des Auftraggebers vom **24.09.2026** ist die Sektion „Häufige Fragen zum
+Betrieb" entfallen — vier Fragen in zwei Gruppen, dazu der `FAQPage`-Block im Seitenkopf.
+
+### Was damit verloren geht
+
+**Es war keine Dublette.** Der Markup-Kommentar zu AP-327 hielt ausdrücklich fest: Die FAQ
+der Startseite beantwortet den Ablauf einer Anfrage, diese hier den Betrieb selbst. Die vier
+Antworten stehen damit **nirgends mehr auf der Website**:
+
+| Frage | Was die Antwort enthielt |
+|---|---|
+| Seit wann gibt es den Betrieb? | Seit 2003, Sitz Herne, geführt von Gartenbaumeister Maik Rohdich, tätig in ganz NRW |
+| Was bringt mir ein Meisterbetrieb? | Meisterzwang gefallen, Meisterbrief als geprüfte fachliche Leitung und Ausbildungsberechtigung, dazu Baumkontrolleur der Landwirtschaftskammer, Sachverständigentitel 2.4.1, Sachkundenachweis Pflanzenschutz |
+| Arbeiten Sie auch für Kommunen und Hausverwaltungen? | Ja — privat, Gewerbe, Hausverwaltungen, kommunal |
+| Ist ein kleiner Auftrag zu klein? | „Eine Stunde Hecke zählt genauso wie ein ganzer Garten." |
+
+Die dritte und vierte Antwort sind die letzten Stellen, an denen die Website den
+kommunalen Auftraggeber und die kleinen Aufträge erklärt hat — die Kachel dazu ist mit
+AP-450 entfallen, die Kundenkarte „Kommunen" nennt die Gruppe, ohne sie zu erklären.
+
+**Der Meisterbrief-Absatz war der einzige Ort**, an dem die vier Qualifikationen in einem
+Satz zusammenstanden und erklärt wurden. Die Startseite nennt sie am Tor als Schilder, ohne
+Erläuterung.
+
+### SEO
+
+`FAQPage` musste mitgehen. Strukturierte Daten müssen den sichtbaren Inhalt abbilden; eine
+`FAQPage` ohne sichtbare Fragen ist ein Richtlinienverstoß und bringt kein Rich Result,
+sondern das Risiko einer manuellen Maßnahme. Der `LocalBusiness`-Graph der Seite bleibt
+unberührt. Das Projekt ist laut `CLAUDE.md` ein SEO/GEO/AEO-Relaunch — der Wegfall eines
+beantworteten Fragenblocks arbeitet gegen dieses Ziel und ist hier als bewusste
+Entscheidung des Auftraggebers festgehalten.
+
+**Falls die Fragen zurück sollen**, ist der kleinste Weg, sie in die FAQ der Startseite zu
+übernehmen: Der Baustein `.faq-list` steht dort bereits, und der `FAQPage`-Block der
+Startseite müsste um die vier Knoten wachsen.

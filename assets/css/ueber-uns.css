@@ -684,25 +684,11 @@
    Kachel ist auf Ansage des Auftraggebers entfallen; ihre Aussage traegt jetzt
    das Zitat der Person-Sektion. Keine der Klassen kommt im Repo noch vor. */
 
-/* --- Haeufige Fragen ------------------------------------------------------
-   Bauteil .faq-list aus styles.css, hier in zwei Spalten mit je einem Kicker.
-   Der Kicker ersetzt eine dritte Ueberschriftenebene: er ordnet, ohne wie eine
-   eigene Sektion auszusehen. */
-
-.ueber-faq__gruppen {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(16px, 2.4vw, 38px);
-}
-
-.ueber-faq__kicker {
-  margin: 0 0 12px;
-  color: var(--home-lime);
-  font-size: .71rem;
-  font-weight: 800;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-}
+/* AP-451: Hier standen .ueber-faq__gruppen und .ueber-faq__kicker - das
+   zweispaltige Raster der FAQ-Sektion und der Kicker, der die beiden Gruppen
+   ordnete. Die Sektion ist auf Ansage des Auftraggebers entfallen, beide
+   Klassen kommen im Repo nicht mehr vor. Der Baustein .faq-list in styles.css
+   bleibt - ihn benutzen die Startseite und die Gewerbe-Leistungsseiten. */
 
 /* --- Team (vorbereitet, im Markup auskommentiert) -------------------------
    Diese Regeln stehen bewusst schon hier: Wenn der Abschnitt eines Tages
@@ -758,8 +744,7 @@
 @media (max-width: 860px) {
   .ueber-betrieb__raster,
   .ueber-inhaber__raster,
-  .ueber-fuerwen__liste,
-  .ueber-faq__gruppen {
+  .ueber-fuerwen__liste {
     grid-template-columns: minmax(0, 1fr);
   }
 
