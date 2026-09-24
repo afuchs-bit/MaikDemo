@@ -1,3 +1,37 @@
+/* AP-447: "Baloo 2" fuer die beiden Etiketten, das animierte Wort und die
+   Kartentitel. Das @font-face steht sonst in home-dark.css, kontakt.css und
+   projekte.css - diese Seite laedt keine davon, ein blosses
+   font-family: "Baloo 2" fiele hier still auf die Ersatzschrift zurueck. Das
+   ist im Projekt schon dreimal passiert.
+
+   Gebraucht werden BEIDE Schnitte: 700 fuer Etiketten, Typer und Kartentitel,
+   und die variable Datei 400-600 als Unterbau, falls hier je eine leichtere
+   Stufe dazukommt. Woertlich aus kontakt.css:25-42, unicode-range eingeschlossen.
+
+   projekte.css:11 haelt fest: "Kommt eine dritte Seite dazu, gehoert sie nach
+   styles.css." Diese Seite waere die dritte. Dagegen steht Grundregel 7 der
+   CLAUDE.md - ein Commit pro Arbeitspaket: Die Zusammenlegung zoege kontakt.css,
+   projekte.css, styles.css und einen ?v=-Durchlauf ueber 37 Seiten nach sich und
+   haette mit diesem Block nichts zu tun. Sie ist als eigenes AP angeboten. Die
+   Schriftdatei laedt der Browser trotzdem nur einmal - gleiche URL. */
+@font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/baloo2-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../fonts/baloo2-variable-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ==========================================================================
    AP-220 / AP-327 — Unterseite /ueber-uns/
 
@@ -330,28 +364,25 @@
 
 /* --- Alles aus einer Hand ------------------------------------------------- */
 
-/* AP-438: "Alles aus einer Hand" traegt auf Ansage des Auftraggebers dasselbe
-   Schriftbild wie die Haltungszeile "Was nicht sinnvoll ist, sagen wir Ihnen
-   vorher." - die mit AP-445 entfallen ist. Am Schriftbild aendert das nichts:
-   Es kam nie von jenem Absatz, sondern von der Klasse, die er trug.
+/* AP-447: Etikett und Animation tauschen die Rollen. Bis hierher war das
+   animierte Wort (16,8px) KLEINER als das Etikett darueber (22,4px aus AP-438)
+   und las sich dadurch wie eine Ladeanzeige. Jetzt benennt das Etikett, und die
+   Kette ist die Aussage.
 
-   Statt die Werte abzuschreiben, traegt die h3 naemlich dieselbe Klasse:
-   type-subsection-title (styles.css:254). Von dort kommen Groesse
-   (var(--type-subsection-title-size), fluid 22,4px bei 390px bis 30,4px bei
-   1280px), Strichstaerke 700, Zeilenhoehe 1.1 und Laufweite -.022em. Waechst
-   die Stufe einmal, wachsen beide gemeinsam.
+   Dieselbe Groesse traegt "Fuer wen wir arbeiten" - beide Zeilen stehen auf
+   derselben Ebene und standen bis hierher in zwei Groessen (22,4 und 19,2px).
 
-   font-size, font-weight und font-family sind hier deshalb raus bzw. getauscht:
-   .ueber-betrieb__kicker und .type-subsection-title wiegen beide (0,1,0), und
-   ueber-uns.css laedt nach styles.css - jede Angabe, die hier stehen bliebe,
-   haette die Klasse geschlagen.
-
-   Die Schriftart ist der Grund, warum die Klasse allein nicht reicht: Sie setzt
-   keine, und der Absatz nebenan bekommt sein Inter als <p> ueber den Grundtext.
-   Eine <h3> erbt dagegen var(--display), also Outfit. Deshalb steht var(--body)
-   hier ausdruecklich. */
-.ueber-betrieb__kicker {
-  font-family: var(--body);
+   AP-438 wird damit teilweise zurueckgenommen: Die h3 trug seither
+   type-subsection-title. Das war die Angleichung an die Haltungszeile, und die
+   ist mit AP-445 entfallen - es steht also keine lebende Entscheidung dagegen.
+   Die Klasse ist im Markup mit entfernt. */
+.ueber-betrieb__kicker,
+.ueber-fuerwen__titel {
+  font-family: "Baloo 2", var(--display);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: normal;
   margin: 0;
 }
 
@@ -426,9 +457,17 @@
   position: relative;
   display: inline-block;
   padding-right: 10px;               /* Platz fuer den Cursor */
-  font-family: var(--display);
+  /* AP-447: War var(--display) in var(--type-module-title-size), gemessen
+     16,8px - kleiner als das Etikett darueber. Jetzt 22px auf dem Handy und
+     28px am Rechner. Die clamp-Formel stammt aus dem Auftragsdokument, Stuetz-
+     stellen 390 und 1180px:
+       m = (28-22)/(1180-390) = 0,0075949 px/px = 0,7595vw
+       b = 22 - 0,0075949*390 = 19,038px = 1,1899rem
+     Gegenprobe bei 1180px: 19,038 + 0,0075949*1180 = 28,0px. */
+  font-family: "Baloo 2", var(--display);
   font-weight: 700;
-  font-size: var(--type-module-title-size);
+  font-size: clamp(1.375rem, 1.1899rem + 0.759vw, 1.75rem);
+  line-height: 1.2;
   line-height: 1.2;
   color: var(--ink);
 }
@@ -524,12 +563,13 @@
   border-top: 1px solid var(--line-2);
 }
 
+/* AP-447: Schriftart, -staerke, -groesse und Laufweite sind hier raus - sie
+   kommen jetzt aus der gemeinsamen Etikettregel weiter oben, zusammen mit
+   "Alles aus einer Hand". Diese Regel steht SPAETER in der Datei und wiegt
+   gleich viel; jede Angabe, die hier bliebe, haette die gemeinsame geschlagen.
+   Geblieben sind Abstand nach unten und Farbe. */
 .ueber-fuerwen__titel {
   margin: 0 0 18px;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 1.2rem;
-  letter-spacing: -.01em;
   color: var(--ink);
 }
 
@@ -542,21 +582,65 @@
   list-style: none;
 }
 
+/* AP-447: Das Polster wandert vom <li> an den Link. Die ganze Kachel ist jetzt
+   der Link, nicht nur die Ueberschrift - groessere Trefferflaeche auf dem Handy.
+   Flaeche, Rahmen und Eckenradius bleiben, wo sie sind: Sie sind das System der
+   Seite. Das Auftragsdokument wollte 14px Radius und 14/16px Polster; das waere
+   ein zweites Kachelmass neben dem vorhandenen gewesen. --bg-elev verlangt es
+   ebenfalls - das liegt hier schon an. */
 .ueber-fuerwen__liste li {
-  padding: clamp(16px, 2vw, 22px);
+  padding: 0;
   border-radius: var(--radius);
   background: var(--bg-elev);
   border: 1px solid var(--line);
+  transition: border-color .16s var(--ease);
+}
+
+.ueber-fuerwen__karte {
+  position: relative;
+  display: block;
+  padding: clamp(16px, 2vw, 22px);
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Der Pfeil ist clip-path auf einem leeren Span - dieselbe Geometrie wie die
+   Kettenpfeile darueber, kein zweites Pfeilmotiv im System. aria-hidden, weil
+   er nichts sagt, was der Link nicht schon sagt. */
+.ueber-fuerwen__pfeil {
+  position: absolute;
+  right: 16px;
+  top: 17px;
+  width: 14px;
+  height: 10px;
+  background: var(--green-500);
+  clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
+  opacity: .75;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ueber-fuerwen__liste li:hover { border-color: var(--green-500); }
+}
+
+/* Kein overflow: hidden an Liste oder Kachel - der Ring steht 3px ausserhalb. */
+.ueber-fuerwen__karte:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ueber-fuerwen__liste li { transition: none; }
 }
 
 .ueber-fuerwen__liste h4 {
   margin: 0 0 6px;
-  font-family: var(--display);
+  padding-right: 26px;              /* Platz fuer den Pfeil */
+  font-family: "Baloo 2", var(--display);
   font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.3;
-  letter-spacing: -.01em;
-  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: var(--green-500);
 }
 
 .ueber-fuerwen__liste p {

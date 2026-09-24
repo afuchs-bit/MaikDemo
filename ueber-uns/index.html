@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923i" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923j" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -596,7 +596,7 @@ html, body { background-color: #171916; }
       </figure>
 
       <div class="ueber-betrieb__nachsatz reveal">
-        <h3 class="ueber-betrieb__kicker type-subsection-title">Alles aus einer Hand</h3>
+        <h3 class="ueber-betrieb__kicker">Alles aus einer Hand</h3>
         <!-- AP-411: Die fuenf Glieder stehen im HTML, nicht im Skript. Wuerde JS
              sie einsetzen, verschwaenden "Kostenermittlung" und "Koordinierung"
              aus dem ausgelieferten Quelltext. Ohne JS bleibt die Kette sichtbar;
@@ -625,14 +625,16 @@ html, body { background-color: #171916; }
         <p class="ueber-betrieb__notiz">Eigene Fachleute im Team, dazu Spezialisten aus
            angrenzenden Gewerken wie der Entwässerungstechnik.</p>
 
-        <p class="lead">Unsere Tätigkeitsschwerpunkte liegen in:</p>
-        <ul class="lp-list lead">
-          <li>der Planung, dem Bau und der Pflege anspruchsvoller Privatgärten</li>
-          <li>der Planung, dem Bau und der Pflege von Teichen und Zäunen</li>
-          <li>dem Landschaftsbau und dem Bau gewerblicher Außenanlagen</li>
-          <li>der dauerhaften Pflege von privaten und gewerblichen Außenanlagen</li>
-          <li>der Baumpflege</li>
-        </ul>
+        <!-- AP-447: Hier standen "Unsere Taetigkeitsschwerpunkte liegen in:" und die
+             fuenf Punkte darunter. Auf Ansage des Auftraggebers entfallen: Liste und
+             Kundenkarten sind zwei Schnitte durch dieselbe Menge, und die Karten
+             schneiden nach Kunde statt nach Leistungsbegriff - "Landschaftsbau" ist
+             eine Kategorie, in die sich niemand selbst einsortiert. Die Verben
+             "Planung, Bau, Pflege" stehen in der Kette darueber, einmal und gueltig
+             fuer alles. "Zaeune" und "Baumpflege" waren das Einzige, was sonst
+             verloren gegangen waere; sie stehen jetzt in der ersten Karte.
+             Die Klasse .lp-list bleibt im Projekt - sie traegt Listen auf 24
+             Leistungsseiten, ihre Regeln in styles.css sind unberuehrt. -->
       </div>
     </div>
 
@@ -641,23 +643,39 @@ html, body { background-color: #171916; }
          verlinken auch die 13 generierten Leistungsseiten; Gewerbe auf die
          Aussenanlagenpflege und NICHT auf ../gewerbekunden/ - das ist derzeit
          ein Weiterleitungs-Stub auf die Startseite; Kommunen ohne Link.
+         AP-447 (24.09.2026): Alle drei Karten sind jetzt Links, und zwar alle auf
+         die A-bis-Z-Leistungen der Startseite (../#leistungen). Von den Zielen, die
+         das Auftragsdokument vorschlug, taugt keines - privatkunden/ wurde in AP-F8
+         geloescht, gewerbekunden/ ist eine Weiterleitung auf die Startseite, eine
+         Kommunenseite gibt es nicht. Auf Ansage des Auftraggebers zeigen deshalb
+         alle drei auf dieselbe, lebende Stelle.
          [OFFEN: Welche Leistungen der Betrieb fuer Staedte uebernimmt und ob
           eine Referenzkommune genannt werden darf - docs/offene-punkte.md.
-          Der Entwurf hatte hier einen Platzhaltersatz; er bleibt weg.] -->
+          Der Text der dritten Karte wird vom Auftraggeber nachgeliefert; bis
+          dahin steht die heutige Zeile.] -->
     <div class="container ueber-fuerwen">
       <h3 class="ueber-fuerwen__titel">Für wen wir arbeiten</h3>
       <ul class="ueber-fuerwen__liste">
         <li>
-          <h4>Private Gärten</h4>
-          <p>Gestaltung, Vorgarten, Terrasse, Teich, die Pflege danach – und vieles mehr.</p>
+          <a class="ueber-fuerwen__karte" href="../#leistungen">
+            <span class="ueber-fuerwen__pfeil" aria-hidden="true"></span>
+            <h4>Private Gärten</h4>
+            <p>Gestaltung, Vorgarten, Terrasse, Teich, Zäune, Baumpflege, die Pflege danach – und vieles mehr.</p>
+          </a>
         </li>
         <li>
-          <h4>Gewerbe und Hausverwaltungen</h4>
-          <p>Außenanlagen pflegen und umgestalten, Baumkontrollen mit Dokumentation und Gutachten.</p>
+          <a class="ueber-fuerwen__karte" href="../#leistungen">
+            <span class="ueber-fuerwen__pfeil" aria-hidden="true"></span>
+            <h4>Gewerbe und Hausverwaltungen</h4>
+            <p>Außenanlagen pflegen und umgestalten, Baumkontrollen mit Dokumentation und Gutachten.</p>
+          </a>
         </li>
         <li>
-          <h4>Kommunen und öffentliche Auftraggeber</h4>
-          <p>Unser Team arbeitet auch mit Kommunen und öffentlichen Auftraggebern.</p>
+          <a class="ueber-fuerwen__karte" href="../#leistungen">
+            <span class="ueber-fuerwen__pfeil" aria-hidden="true"></span>
+            <h4>Kommunen und öffentliche Auftraggeber</h4>
+            <p>Unser Team arbeitet auch mit Kommunen und öffentlichen Auftraggebern.</p>
+          </a>
         </li>
       </ul>
     </div>
