@@ -42,6 +42,17 @@ const SOURCES = [
   // an. Die Originale liegen unveraendert in assets/img/_src/ - wer die Projekte
   // zurueckholt, traegt sie hier wieder ein.
   { src: 'assets/img/_src/baumarbeiten-herne.webp', dir: 'assets/img/projekte/baumarbeiten-herne', name: 'baumarbeiten-herne' },
+  // AP-441: Foto der Baumarbeiten unter dem Zitat der Person. Original 900x1125
+  // (4:5, hochkant); angezeigt wird es liegend im Verhaeltnis 4:3 - auf Ansage
+  // des Auftraggebers, weil hochkant bei 390px Fensterbreite 487px hoch waere,
+  // gut die halbe Schirmhoehe. focusY 0.45 zeigt 18-78 % der Bildhoehe: oben
+  // fallen Strasse und fremde Fahrzeuge weitgehend heraus, der Helm des vorderen
+  // Arbeiters behaelt Luft nach oben, unten bleibt das Schnittgut als Bildbasis.
+  // widths ausdruecklich: die Standardliste ist [480, 960, 1600], und 960 faellt
+  // bei einer 900px breiten Vorlage heraus - uebrig blieben sonst allein 480px.
+  // 900 ist alles, was die Vorlage hergibt.
+  { src: 'assets/img/_src/ueber-baumarbeiten.jpg', dir: 'assets/img/ueber',
+    name: 'ueber-baumarbeiten', widths: [480, 900], crop: { aspect: 4 / 3, focusY: 0.45 } },
   { src: 'assets/img/_src/ueber-1.jpg', dir: 'assets/img/ueber', name: 'ueber-1' },
   { src: 'assets/img/_src/ueber-2.jpg', dir: 'assets/img/ueber', name: 'ueber-2' },
   { src: 'assets/img/_src/ueber-3.jpg', dir: 'assets/img/ueber', name: 'ueber-3' },

@@ -103,6 +103,32 @@
   align-items: center;
 }
 
+/* AP-441: Das Foto unter dem Zitat. Es laeuft ueber beide Rasterspalten -
+   am Rechner also ueber die volle Containerbreite unter dem Abschnitt, nicht in
+   der 420px schmalen Zitatspalte. Auf Ansage des Auftraggebers.
+
+   aspect-ratio plus object-fit statt eines zweiten Zuschnitts: Die Ableitungen
+   liegen bereits in 4:3 vor (build-images.mjs), die beiden Angaben halten den
+   Platz vor dem Laden frei und fangen ab, falls jemand spaeter eine Ableitung
+   mit anderem Verhaeltnis einhaengt.
+
+   Eckenschnitt, Rahmen und Schatten sind die des anderen Fotos der Seite
+   (.ueber-betrieb__bild img) - die Seite kennt damit ein einziges Bildformat. */
+.ueber-inhaber__foto {
+  grid-column: 1 / -1;
+  margin: clamp(30px, 3.6vw, 48px) 0 0;
+}
+
+.ueber-inhaber__foto img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 24px 24px 44px 24px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+}
+
 .ueber-inhaber__gross {
   margin: 0;
   font-family: var(--display);
@@ -797,6 +823,24 @@
      auf block. Zentriert wird deshalb ueber die Aussenabstaende. */
   .ueber-inhaber__bluete-mobil { display: block; margin: 24px 0; }
   .ueber-inhaber__bluete-mobil img { width: 64px; height: auto; margin-inline: auto; }
+
+  /* AP-441: Das Foto reicht auf Ansage des Auftraggebers bis an beide
+     Bildschirmkanten. Dasselbe Vollbreiten-Mass wie in projekte.css:340 - der
+     Container traegt seinen Rand nicht als Polster, sondern ueber
+     width: min(100% - 2*--gutter, ...) plus margin-inline: auto
+     (styles.css:233). Der Seiteninset kommt dazu, sonst bliebe im Querformat
+     auf Geraeten mit Notch ein Streifen stehen.
+     Kein waagerechter Ueberlauf dadurch: .ueber-inhaber traegt overflow: hidden.
+     Eckenschnitt und Seitenrahmen fallen weg - eine angeschnittene Rundung an
+     der Bildschirmkante sieht nach Fehler aus. */
+  .ueber-inhaber__foto {
+    margin-left: calc((var(--gutter) + env(safe-area-inset-left, 0px)) * -1);
+    margin-right: calc((var(--gutter) + env(safe-area-inset-right, 0px)) * -1);
+  }
+  .ueber-inhaber__foto img {
+    border-radius: 0;
+    border-inline: 0;
+  }
 
   /* Das Bild steht im Quelltext NACH dem Text - im gestapelten Zustand ist das
      die richtige Lesereihenfolge, hier ist also nichts umzusortieren. Nur die

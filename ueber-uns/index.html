@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923e" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923f" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -419,6 +419,25 @@ html, body { background-color: #171916; }
            zu verkaufen, was nicht hält.“</p>
         <p class="ueber-inhaber__name">Maik Rohdich, Gartenbaumeister</p>
       </blockquote>
+
+      <!-- AP-441: Foto der Baumarbeiten, auf Ansage des Auftraggebers unter dem
+           Zitat. Es steht als Kind des Rasters und laeuft mit grid-column ueber
+           beide Spalten - am Rechner also ueber die volle Containerbreite unter
+           dem Abschnitt, nicht in der schmalen Zitatspalte. Unter 861px reicht es
+           per negativem Aussenabstand bis an beide Bildschirmkanten.
+
+           Das Original ist hochkant (900x1125). Gezeigt wird es liegend im
+           Verhaeltnis 4:3; der Zuschnitt sitzt in build-images.mjs, nicht hier -
+           so wandert er in alle Ableitungen statt nur in die Anzeige. -->
+      <figure class="ueber-inhaber__foto">
+        <picture>
+          <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(min-width: 861px) 1240px, 100vw">
+          <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(min-width: 861px) 1240px, 100vw">
+          <img src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
+               alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
+               loading="lazy" decoding="async">
+        </picture>
+      </figure>
     </div>
   </section>
   <!-- ===== Team =========================================================
