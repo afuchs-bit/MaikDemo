@@ -462,6 +462,29 @@
   text-decoration: none;
 }
 
+/* AP-433: Das Standortzeichen stand bis hierher hinter der Ueberschrift. Auf
+   Ansage des Auftraggebers sitzt es jetzt rechts neben der Adresse, auf allen
+   Breiten. Die dritte Spur steht bewusst NUR hier und nicht in der gemeinsamen
+   Regel darueber: .contact-location-route teilt sie, hat aber kein drittes
+   Kind, und eine leere Spur kostet dort trotzdem den Spaltenabstand - ihre
+   Textspalte stuende 12px schmaler als die der Adresse.
+   Abstand und senkrechte Mitte kommen aus gap und align-items der Regel
+   darueber. */
+.contact-location-address { grid-template-columns: 40px minmax(0, 1fr) auto; }
+
+/* Die 1.75em der Grundregel haengen an der Schriftgroesse - in der Adresse sind
+   das 16px und damit nur 28px Hoehe. Hier steht deshalb eine eigene, fliessende
+   Groesse. Sie ist nach unten gedeckelt, weil die Adresskachel bei 601px am
+   engsten ist: dort bleiben der Textspalte 123px, "Huelsstrasse 5" braucht 90px,
+   das Zeichen darf also samt Abstand hoechstens 33px kosten. Mit 30px Hoehe sind
+   es 18,9 + 12 = 30,9px - es bleiben 92px. Feste 40px waeren 37px gewesen und
+   haetten die Strasse zu "Huelsstrasse" / "5" gebrochen.
+   Sichtbare Breite = Groesse * .63125, siehe die Herleitung weiter unten. */
+.contact-location-address .contact-location-mark {
+  --mark: clamp(30px, 4.4vw, 46px);
+  margin-left: 0;
+}
+
 .contact-location-actions { display: grid; grid-auto-rows: 1fr; gap: 10px; margin-top: 22px; }
 .contact-location-route { transition: border-color .18s var(--ease),box-shadow .18s var(--ease),transform .18s var(--ease); }
 .contact-location-route:hover { border-color: rgb(var(--green-800-rgb) / .32); box-shadow: 0 10px 24px -22px rgba(19,26,8,.75); transform: translateY(-1px); }
@@ -478,14 +501,17 @@
 }
 
 .contact-location-icon svg { width: 20px; height: 20px; }
-.contact-location-address > span:last-child,
+/* AP-433: nth-child(2) statt last-child - das Standortzeichen ist seit AP-433 das
+   letzte Kind der Adresse. Das Symbol ist und bleibt Kind 1, auch wo es
+   display:none traegt: das nimmt es aus dem Raster, nicht aus der Zaehlung. */
+.contact-location-address > span:nth-child(2),
 .contact-location-route > span:nth-child(2) { display: grid; gap: 3px; min-width: 0; }
 .contact-location-address strong { color: var(--ink); font-family: var(--display); font-size: .98rem; line-height: 1.18; }
 .contact-location-route strong { color: var(--ink); font-family: var(--display); font-size: .8rem; line-height: 1.25; }
 .contact-location-address small,
 .contact-location-route small { color: var(--ink-mute); font-size: .65rem; line-height: 1.4; }
-.contact-location-address > span:last-child > small { letter-spacing: .045em; text-transform: uppercase; }
-.contact-location-address > span:last-child > span { color: var(--ink-2); font-size: .74rem; line-height: 1.35; }
+.contact-location-address > span:nth-child(2) > small { letter-spacing: .045em; text-transform: uppercase; }
+.contact-location-address > span:nth-child(2) > span { color: var(--ink-2); font-size: .74rem; line-height: 1.35; }
 
 .contact-map-shell {
   position: relative;
@@ -628,8 +654,10 @@
   line-height: 1.5;
 }
 
-/* AP-426: Das Standortzeichen neben der Ueberschrift - Pin-SVG mit der
-   Marken-Bluete darueber. Woertlich aus home-dark.css:134-164 uebernommen, nur
+/* AP-426/AP-433: Das Standortzeichen - Pin-SVG mit der Marken-Bluete darueber.
+   Es stand seit AP-426 hinter der Ueberschrift; seit AP-433 steht es rechts
+   neben der Adresse, die Groesse setzen die beiden Regeln weiter oben.
+   Woertlich aus home-dark.css:134-164 uebernommen, nur
    ohne den Vorfahren html.home-theme-dark: dort steht die Vorlage
    ausschliesslich, und diese Seite laedt home-dark.css nicht und traegt die
    Klasse nicht. Ein blosses Kopieren des Markups haette zwei unformatierte,
@@ -641,17 +669,14 @@
      Einzug         = Groesse * .184375
      sichtbare Breite = Groesse * .63125
    Das Pin-SVG ist also breiter als sein sichtbarer Ausschnitt und wird nach
-   links herausgezogen. Beide Verhaeltniszahlen sind woertlich uebernommen, die
-   Groesse haengt an der Schriftgroesse der Ueberschrift, nicht an einem festen
-   Wert: Die Ueberschrift waechst von 22,4px bei 375px auf 30,4px bei 1280px.
-   Mit festen 40px war das Zeichen unten 1,79-mal und oben nur noch 1,32-mal so
-   hoch wie die Schrift - am Rechner also sichtbar zu klein. 1.75em haelt das
-   Verhaeltnis auf jeder Breite gleich (39,2px bzw. 53,2px).
+   links herausgezogen. Beide Verhaeltniszahlen sind woertlich uebernommen und
+   gelten unveraendert weiter.
 
-   Die Zeilenbox der Ueberschrift waechst dadurch von 24,64 auf rund 39px. Das
-   ist gewollt: Das Zeichen ist hoeher als eine Textzeile, sein Fuss ragt unter
-   die Grundlinie. Ein kleinerer Wert haette in den Pinkopf keine erkennbare
-   Bluete mehr bekommen.
+   Die 1.75em hier sind der Stand aus AP-426: Damals hing das Zeichen in der
+   Ueberschrift, und die wuchs von 22,4px bei 375px auf 30,4px bei 1280px - ein
+   fester Wert waere unten zu gross und oben zu klein gewesen. Seit AP-433 haengt
+   es in der Adresse und bekommt seine Groesse dort gesetzt; 1.75em ist nur noch
+   der Rueckfall, falls das Zeichen einmal woanders steht.
 
    max-width: none ist keine Zierde: Der Bild-Reset des Projekts deckelt jedes
    img auf die Elternbreite, und genau das darf der Pin nicht. */
@@ -989,6 +1014,21 @@
     background: none;
     box-shadow: none;
   }
+
+  /* AP-433: Die Adresse bleibt kastenlos, wird aber zweispaltig - sonst stuende
+     das Standortzeichen unter dem Text statt daneben. Das ausgeblendete Symbol
+     zaehlt nicht mit, display:none nimmt es aus dem Raster.
+     54px ist die Hoehe, die das Zeichen bis AP-432 in der Ueberschrift hatte;
+     auf dem Handy bleibt es damit so gross wie gewohnt. Breite 34px - der
+     Textspalte bleiben bei 375px 251px und bei 320px 196px, "Huelsstrasse 5"
+     braucht 123px. */
+  .contact-location-address {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+  }
+  .contact-location-address .contact-location-mark { --mark: 54px; }
   .contact-location-address .contact-location-icon,
   .contact-location-route .contact-location-icon,
   .contact-location-route small { display: none; }
@@ -1008,7 +1048,7 @@
     font-weight: 700;
     line-height: 1.1;
   }
-  .contact-location-address > span:last-child > span {
+  .contact-location-address > span:nth-child(2) > span {
     display: block;
     margin-top: 2px;
     color: var(--ink-2);
