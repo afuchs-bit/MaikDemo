@@ -299,25 +299,16 @@
    form-trust-card.css bleibt davon unberuehrt - denselben Baustein benutzt die
    Startseite mit eigenem Markup. */
 
+/* AP-426: Die Kachel um den Standortblock ist auf Ansage des Auftraggebers
+   entfallen - Polster, Rahmen, Ecke, Flaechenfarbe, Schatten und der gruene
+   Balken an der Oberkante (ein ::before, das mitgegangen ist). Mit ihm faellt
+   position: relative weg, das nur ihn getragen hat. Damit steht der Block wie
+   die Kontaktwege seit AP-417 ohne eigenen Kasten auf dem Seitengrund; die
+   beiden sind wieder gleich behandelt. */
 .contact-location-card {
-  position: relative;
   display: flex;
   min-width: 0;
   flex-direction: column;
-  padding: clamp(24px,2.6vw,34px);
-  overflow: hidden;
-  border: 1px solid rgb(var(--green-800-rgb) / .14);
-  border-radius: 22px;
-  background: var(--bg-elev);
-  box-shadow: var(--shadow-card);
-}
-
-.contact-location-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 4px;
-  background: var(--green-700);
 }
 
 .contact-location-card-grid {
@@ -527,6 +518,69 @@
   line-height: 1.5;
 }
 
+/* AP-426: Das Standortzeichen neben der Ueberschrift - Pin-SVG mit der
+   Marken-Bluete darueber. Woertlich aus home-dark.css:134-164 uebernommen, nur
+   ohne den Vorfahren html.home-theme-dark: dort steht die Vorlage
+   ausschliesslich, und diese Seite laedt home-dark.css nicht und traegt die
+   Klasse nicht. Ein blosses Kopieren des Markups haette zwei unformatierte,
+   uebereinander liegende Bilder ergeben.
+
+   Die Vorlage haengt an drei Variablen (home-dark.css:106-108), die es hier
+   ebenfalls nicht gibt. Ihre mobile Fassung (ab :587) zeigt, dass alles an
+   EINER Groesse haengt:
+     Einzug         = Groesse * .184375
+     sichtbare Breite = Groesse * .63125
+   Das Pin-SVG ist also breiter als sein sichtbarer Ausschnitt und wird nach
+   links herausgezogen. Beide Verhaeltniszahlen sind woertlich uebernommen, die
+   Groesse haengt an der Schriftgroesse der Ueberschrift, nicht an einem festen
+   Wert: Die Ueberschrift waechst von 22,4px bei 375px auf 30,4px bei 1280px.
+   Mit festen 40px war das Zeichen unten 1,79-mal und oben nur noch 1,32-mal so
+   hoch wie die Schrift - am Rechner also sichtbar zu klein. 1.75em haelt das
+   Verhaeltnis auf jeder Breite gleich (39,2px bzw. 53,2px).
+
+   Die Zeilenbox der Ueberschrift waechst dadurch von 24,64 auf rund 39px. Das
+   ist gewollt: Das Zeichen ist hoeher als eine Textzeile, sein Fuss ragt unter
+   die Grundlinie. Ein kleinerer Wert haette in den Pinkopf keine erkennbare
+   Bluete mehr bekommen.
+
+   max-width: none ist keine Zierde: Der Bild-Reset des Projekts deckelt jedes
+   img auf die Elternbreite, und genau das darf der Pin nicht. */
+.contact-location-mark {
+  --mark: 1.75em;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(var(--mark) * .63125);
+  height: var(--mark);
+  margin-left: .4em;
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, .26));
+}
+
+.contact-location-mark__pin {
+  position: absolute;
+  top: 0;
+  left: calc(var(--mark) * -.184375);
+  display: block;
+  width: var(--mark);
+  max-width: none;
+  height: var(--mark);
+  pointer-events: none;
+}
+
+.contact-location-mark__bluete {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  z-index: 1;
+  display: block;
+  width: 68%;
+  max-width: none;
+  height: auto;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .34));
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
 /* AP-425: Die Auszeichnung war bis hierher eine eigene Zeile ueber dem Absatz
    ("Bitte vorab Termin vereinbaren.") und trug deshalb die Auszeichnungsschrift.
    Sie ist entfallen; fett steht jetzt der Auftakt MITTEN im Satz. Dort hat
@@ -616,8 +670,8 @@
   /* AP-417: Hier stand die Handy-Fassung von padding und border-radius der
      gruenen Kachel. Beide Eigenschaften gibt es dort nicht mehr. */
   .contact-direct-list { grid-template-columns: 1fr; }
-  .contact-location-card { border-radius: 19px; }
-  .contact-location-card { padding: 26px 22px; }
+  /* AP-426: Hier standen Eckenradius und Polster der Standort-Kachel. Beide
+     Eigenschaften gibt es dort nicht mehr. */
   .contact-map-shell { height: 340px; min-height: 340px; }
 }
 
