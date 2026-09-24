@@ -461,14 +461,11 @@
    auch. form-trust-card.css bleibt unangetastet - denselben Baustein benutzt die
    Startseite mit eigenem Markup. */
 
-/* AP-397: Der Terminhinweis traegt jetzt einen Weg zur Terminanfrage. Der Verweis
-   steht mitten im Fließtext und braucht deshalb eine Unterstreichung, sonst ist er
-   von der umgebenden Zeile nicht zu unterscheiden. */
-.contact-visit-note a {
-  color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
+/* AP-424: Hier stand die Regel fuer den Verweis "Termin anfragen" im
+   Terminhinweis (AP-397). Der Schlusssatz "Termin anfragen oder rufen Sie an."
+   ist auf Ansage des Auftraggebers entfallen und mit ihm der einzige Verweis in
+   diesem Absatz - die Regel hat nichts mehr zu treffen. Zum Formular fuehren
+   weiterhin zwei Wege auf der Seite, darunter die Kachel "Anfrageformular". */
 
 .contact-map-placeholder > p a {
   color: inherit;
