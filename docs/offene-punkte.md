@@ -1958,3 +1958,47 @@ in `footer-kontakt.css:260` zu streichen — dann zeigt die Fußzeile sie auf al
 - Kein `aria-labelledby`/`aria-describedby` der Seite zeigt ins Leere (geprüft). Die Karte
   behält ihren Namen über das `aria-label` aus AP-413.
 - Keine Konsolenmeldungen.
+
+---
+
+## AP-439 — Der Leitsatz verschwindet von der Über-uns-Seite
+
+Die Überschrift des Betriebsabschnitts lautet seit dem **24.09.2026** auf Ansage des
+Auftraggebers **„Ehrlich beraten, sauber gebaut"**. Grün steht die zweite Hälfte
+(`<em>sauber gebaut</em>`) — dasselbe Muster wie zuvor, wo das ausgezeichnete Wort in der
+zweiten Zeile stand. Der Auftraggeber hat den Teiler selbst gewählt.
+
+### Was damit überholt ist
+
+„Gartenbau mit Handschlagqualität" war der **Leitsatz** des Betriebs. Er stand bis AP-381
+im Kopf der Seite und danach als Überschrift dieses Abschnitts. Mit AP-439 steht er
+**nirgends mehr auf der Website** — auf der Startseite war er schon mit AP-285 gestrichen
+worden.
+
+Damit ist die Festlegung vom **15.09.2026** überholt: „Der Leitsatz bleibt **auf dieser
+Seite**, obwohl er in AP-285 von der Startseite gestrichen wurde." Sie galt noch zu AP-381
+unverändert. Die Ansage vom 24.09.2026 ist jünger und geht vor. **Kein Versehen, keine
+stille Entnahme** — der Auftraggeber hat den Ersatztext wörtlich vorgegeben.
+
+Ebenfalls gegenstandslos ist E7 vom 06.09.2026 („ohne Anführungszeichen, damit er kein
+Zitat vortäuscht"): Es gibt keinen Leitsatz mehr, der als Zitat missverstanden werden
+könnte.
+
+**Falls der Leitsatz zurückkommen soll**, ist der kleinste Weg, ihn als eigenen Absatz
+in den Betriebsabschnitt zu setzen — die Regel `.ueber-leitsatz` ist mit AP-381 entfallen
+und müsste neu geschrieben werden.
+
+### Technische Notizen
+
+- Kein CSS geändert. Die Akzentfarbe kommt weiter aus
+  `.ueber-betrieb__wort .type-section-title em` (AP-381); der neue `<em>` erbt sie
+  unverändert. `?v=` der `ueber-uns.css` bleibt deshalb, wie es war.
+- `id="betrieb-title"` unverändert — das `aria-labelledby` der Sektion löst weiter auf.
+- Der Satz kam im Repo nur an dieser einen Stelle als sichtbarer Text vor. Kein JSON-LD,
+  keine Meta-Angabe und kein Sprungziel nennt ihn.
+- Der Schlusspunkt fehlt weiterhin, wie bei den anderen Überschriften mit grünem Steg.
+- **`sauber&nbsp;gebaut` trägt ein geschütztes Leerzeichen.** Ohne es brach die Zeile bei
+  390 px Fensterbreite zu „Ehrlich beraten, sauber" / „gebaut" — der grüne Teil begann dann
+  mitten in der ersten Zeile. Bei 320 und 375 px trat das nicht auf, weil „sauber" dort schon
+  nicht mehr in die erste Zeile passte. Mit dem geschützten Leerzeichen fällt der Umbruch auf
+  jeder Breite hinter das Komma.
