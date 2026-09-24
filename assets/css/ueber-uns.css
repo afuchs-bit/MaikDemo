@@ -241,6 +241,31 @@
 
 .ueber-betrieb__wort .ueber-betrieb__fakten + .lead { margin-top: 16px; }
 
+/* AP-440: "Im Mittelpunkt steht immer das Ziel ..." traegt auf Ansage des
+   Auftraggebers dasselbe Schriftbild wie der Faktensatz darueber. Die drei
+   Werte sind woertlich die der Regel oben - kein zweiter Satz Zahlen, der
+   auseinanderlaufen koennte. Die Schriftart stand schon gleich: beide Absaetze
+   bekommen Inter aus dem Grundtext, .lead setzt keine eigene.
+
+   Reichweite auf Ansage: nur dieser Absatz. Im Nachsatz-Block hinter dem Foto
+   stehen zwei weitere .lead - "Unsere Taetigkeitsschwerpunkte liegen in:" und
+   die Liste darunter - die bleiben bei 16px in --ink-2. Deshalb haengt die
+   Regel an .ueber-betrieb__wort und nicht an .ueber-betrieb .lead.
+
+   Die Klasse .lead bleibt am Absatz. Sie traegt nicht nur Schrift, sondern die
+   Abstandskette des Blocks (siehe die Regeln mit dem Nachbar-Kombinator oben);
+   ohne sie fielen die Abstaende davor und dahinter auf 0.
+
+   Nicht mitgenommen ist die Zeilenbreite: Der Faktensatz ist auf 44ch gedeckelt,
+   dieser Absatz bleibt bei den 62ch aus .lead (styles.css:250). In Pixeln wird
+   er dadurch trotzdem etwas schmaler - ch haengt an der Schriftgroesse, und die
+   sinkt von 16 auf 15px. */
+.ueber-betrieb__wort .lead {
+  color: var(--ink-mute);
+  font-size: .9375rem;
+  line-height: 1.5;
+}
+
 /* AP-411: Die Zusage-Kachel. Bewusst kein blockquote und ohne
    Anfuehrungszeichen - der Satz ist kein Zitat, sondern der Betrieb ueber sich
    selbst. Derselbe Grundsatz wie bei der Ueberschrift, siehe oben. Der Steg ist
