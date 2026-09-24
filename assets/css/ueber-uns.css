@@ -240,8 +240,12 @@
 .ueber-betrieb__nachsatz { grid-area: nachsatz; }
 
 /* Die Ueberschrift traegt margin: 0 (Reset in styles.css), der Absatz ebenfalls -
-   ohne diese Regel klebt der erste Satz an der Grundlinie der Ueberschrift. */
-.ueber-betrieb__wort .type-section-title + .ueber-betrieb__haltung { margin-top: 16px; }
+   ohne diese Regel klebt der erste Satz an der Grundlinie der Ueberschrift.
+   AP-445: Der Nachbar war bis hierher die Haltungszeile; sie ist entfallen, und
+   der Platz gehoert jetzt der Faktenzeile. Ohne diese Regel blieben nur deren
+   eigene 10px - nach einer 32px hohen Ueberschrift zu knapp. 16px ist der Wert,
+   der vorher an derselben Stelle stand. */
+.ueber-betrieb__wort .type-section-title + .ueber-betrieb__fakten { margin-top: 16px; }
 
 /* AP-376/AP-411: Diese Regel arbeitet mit dem Nachbar-Kombinator und kennt nur
    .lead. Die Liste der Taetigkeitsschwerpunkte traegt deshalb class="lp-list
@@ -253,15 +257,9 @@
 .ueber-betrieb__wort .lead + .lead,
 .ueber-betrieb__nachsatz .lead + .lead { margin-top: .9em; }
 
-/* AP-411: Die Haltungszeile ist der Merksatz aus AP-220. Sie sitzt jetzt direkt
-   unter der H2 und hat dabei ueber-steg verloren - die H2 traegt den gruenen
-   Steg schon, zwei Balken uebereinander waeren ein Fehler. Die Zeilenbreite ist
-   knapp gehalten, damit der Satz als Haltung steht und nicht als Fliesstext
-   durchlaeuft. */
-.ueber-betrieb__haltung {
-  margin: 0;
-  max-width: 24ch;
-}
+/* AP-445: Hier stand .ueber-betrieb__haltung - die Haltungszeile mit dem
+   Merksatz aus AP-220, seit AP-411 direkt unter der H2. Der Satz ist auf Ansage
+   des Auftraggebers entfallen, die Klasse kommt im Repo nirgends mehr vor. */
 
 /* Faktenzeile: leiser als der Fliesstext daneben. --ink-mute auf --bg traegt
    8,42:1 und liegt damit ueber der Fassung der Vorlage (#A2A8B1, 7,39:1). */
@@ -333,10 +331,12 @@
 /* --- Alles aus einer Hand ------------------------------------------------- */
 
 /* AP-438: "Alles aus einer Hand" traegt auf Ansage des Auftraggebers dasselbe
-   Schriftbild wie "Was nicht sinnvoll ist, sagen wir Ihnen vorher."
+   Schriftbild wie die Haltungszeile "Was nicht sinnvoll ist, sagen wir Ihnen
+   vorher." - die mit AP-445 entfallen ist. Am Schriftbild aendert das nichts:
+   Es kam nie von jenem Absatz, sondern von der Klasse, die er trug.
 
-   Statt die Werte abzuschreiben, traegt die h3 jetzt dieselbe Klasse wie jener
-   Absatz: type-subsection-title (styles.css:254). Von dort kommen Groesse
+   Statt die Werte abzuschreiben, traegt die h3 naemlich dieselbe Klasse:
+   type-subsection-title (styles.css:254). Von dort kommen Groesse
    (var(--type-subsection-title-size), fluid 22,4px bei 390px bis 30,4px bei
    1280px), Strichstaerke 700, Zeilenhoehe 1.1 und Laufweite -.022em. Waechst
    die Stufe einmal, wachsen beide gemeinsam.

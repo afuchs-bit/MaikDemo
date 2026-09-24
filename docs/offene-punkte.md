@@ -2002,3 +2002,38 @@ und müsste neu geschrieben werden.
   mitten in der ersten Zeile. Bei 320 und 375 px trat das nicht auf, weil „sauber" dort schon
   nicht mehr in die erste Zeile passte. Mit dem geschützten Leerzeichen fällt der Umbruch auf
   jeder Breite hinter das Komma.
+
+---
+
+## AP-445 — Der Merksatz entfällt
+
+Die Haltungszeile **„Was nicht sinnvoll ist, sagen wir Ihnen vorher."** steht seit dem
+**24.09.2026** auf Ansage des Auftraggebers nicht mehr auf der Seite. Sie war seit AP-220
+im Betriebsabschnitt und seit AP-411 direkt unter dessen Überschrift.
+
+### Was damit überholt ist
+
+Der Satz war **belegt**: Teil A.4 des Umsetzungsplans, „Der Inhaber sagt Kunden auch, wenn
+etwas nicht sinnvoll ist." Die Tabelle der Belege weiter oben in diesem Dokument führt ihn
+weiter — der Beleg bleibt ja richtig, nur steht der Satz nicht mehr auf der Seite.
+
+Gegenstandslos wird damit der offene Punkt **„Ein Beispiel zu ‚Was nicht sinnvoll ist,
+sagen wir Ihnen vorher.'"** (§10.6 des AP-376-Dokuments): Ohne den Satz gibt es nichts
+mehr zu belegen. Falls der Satz je zurückkommt, kommt der Punkt mit ihm zurück.
+
+**Kein Versehen, keine stille Entnahme** — der Auftraggeber hat den Absatz markiert und
+seine Entfernung verlangt.
+
+### Technische Notizen
+
+- Die Klasse `.ueber-betrieb__haltung` kommt im Repo nirgends mehr vor; ihre beiden Regeln
+  in `ueber-uns.css` sind entfernt.
+- **Die Abstandskette musste nachgezogen werden.** Die Regel
+  `.type-section-title + .ueber-betrieb__haltung { margin-top: 16px }` hielt den Abstand
+  zur Überschrift. Neuer Nachbar der Überschrift ist die Faktenzeile, die von sich aus nur
+  10 px trägt — zu knapp nach einer 32 px hohen Überschrift. Die Regel zielt jetzt auf
+  `.ueber-betrieb__fakten` und hält dieselben 16 px.
+- Der Kommentar zu AP-438 in `ueber-uns.css` nannte den Satz als Vorbild für das
+  Schriftbild von „Alles aus einer Hand". Das Schriftbild kam nie von jenem Absatz, sondern
+  von der Klasse `type-subsection-title`, die er trug — die Zwischenüberschrift ist von der
+  Entfernung also nicht betroffen. Der Kommentar ist entsprechend nachgezogen.
