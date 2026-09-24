@@ -317,19 +317,26 @@
    geerbte Regel gibt es zweimal, einmal frei und einmal in @media (hover: none),
    und nur eine unbedingte Regel schlaegt beide.
 
-   Die zweite Regel richtet nicht nur Farbe: form-trust-card.css:136 setzt mit
-   (0,4,0) die KURZSCHRIFT background und loescht damit das background-image aus
-   Zeile 224 - das WhatsApp-Glyph verschwand beim Ueberfahren, die Flaeche blieb
-   leer gruen zurueck. Deshalb hier die Langschriften statt der Kurzschrift. */
+   Beide Regeln setzen die KURZSCHRIFT background, und das ist der Kern der
+   Sache: die geerbten Regeln tun es auch (form-trust-card.css:131 und :136),
+   und eine Kurzschrift setzt ALLE acht Langschriften zurueck - nicht nur die
+   Farbe. Betroffen waren
+     background-image     -> none   (das WhatsApp-Glyph verschwand)
+     background-position  -> 0% 0%  (aus der Mitte in die Ecke)
+     background-repeat    -> repeat (das Glyph kachelte sich)
+   Die Zeilen 178-182 und 224 setzen diese Werte nur mit (0,2,1) bzw. (0,3,1)
+   und verlieren gegen die (0,3,1)/(0,4,0) der geerbten Hover-Regeln. Mit
+   Langschriften muesste man jede einzeln nachziehen und vergaesse eine; die
+   Kurzschrift schliesst die Luecke in einem Zug.
+   AP-431: genau das war passiert - AP-430 hatte Farbe, Bild und Groesse
+   nachgezogen, Position und Wiederholung aber offen gelassen. */
 .contact-direct-list > a:hover .form-trust-card__action-icon {
-  background-color: rgba(5, 10, 5, .58);
+  background: none center / auto no-repeat rgba(5, 10, 5, .58);
   transform: none;
 }
 
 .contact-direct-list > a.form-trust-card__whatsapp:hover .form-trust-card__action-icon {
-  background-color: #25D366;
-  background-image: url("../img/icons/whatsapp-glyph-white.svg");
-  background-size: 22px 22px;
+  background: url("../img/icons/whatsapp-glyph-white.svg") center / 22px 22px no-repeat #25D366;
 }
 
 .contact-direct-list > a:focus-visible {
