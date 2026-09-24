@@ -42,7 +42,10 @@ const HAND_PAGES = [
   { file: 'gewerbekunden/index.html', base: '../' },
   { file: 'projekte/index.html', base: '../' },
   // AP-33: 404 trug die Leistungs-Nav fest verdrahtet – jetzt ebenfalls aus einer Quelle.
-  { file: '404.html', base: '' },
+  // AP-399: base '/' statt '' – siehe pageBase() in build-footers.mjs. Die Seite
+  // wird unter beliebig tiefen URLs ausgeliefert; relative Nav-Links zeigten dort
+  // auf Pfade, die es nicht gibt.
+  { file: '404.html', base: '/' },
   // AP-108: kontakt/ trug das Dropdown ebenfalls fest verdrahtet und driftete
   // bei jeder Nav-Änderung still weg – jetzt aus derselben Quelle.
   { file: 'kontakt/index.html', base: '../' },

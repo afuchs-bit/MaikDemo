@@ -19,7 +19,13 @@ function fill(template, data) {
 }
 
 function pageBase(file) {
-  const relativeDir = path.dirname(path.relative(REPO_ROOT, file));
+  const rel = path.relative(REPO_ROOT, file);
+  // AP-399: 404.html wird fuer JEDE nicht gefundene URL ausgeliefert, auch fuer
+  // /a/b/c/. Relative Verweise loesen dort gegen /a/b/ auf und laufen ins Leere -
+  // die Seite kaeme ohne Stylesheet und mit toter Navigation an. Sie ist die
+  // einzige Seite, deren Verweise wurzelabsolut sein muessen.
+  if (rel === '404.html') return '/';
+  const relativeDir = path.dirname(rel);
   if (relativeDir === '.') return '';
   return '../'.repeat(relativeDir.split(path.sep).length);
 }

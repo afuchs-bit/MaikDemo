@@ -1540,9 +1540,16 @@ Kein waagerechter Überlauf. Im offenen Handy-Menü sind alle Punkte 47 px hoch.
 
 ## AP-376 — Betriebsabschnitt der Über-uns-Seite: Wortlaut der alten Website
 
-Der Fließtext in `<div class="ueber-betrieb__wort">` ist seit dem 20.09.2026 der Text der
-**alten Website des Auftraggebers**, auf seine ausdrückliche Ansage wörtlich übernommen. Er
-löst die zwei Absätze aus AP-220/AP-327 ab.
+> **Überholt durch [AP-411](#ap-411--einstiegssektion-des-betriebsabschnitts-variante-d)
+> (23.09.2026).** Der Auftraggeber hat die Entscheidung vom 20.09.2026, den Wortlaut der
+> alten Website wörtlich zu übernehmen, ausdrücklich aufgehoben und die Kürzung angeordnet.
+> Der Abschnitt bleibt als Vorgeschichte stehen — insbesondere die Liste der Werbesprache
+> unten, denn genau diese Stellen sind jetzt gestrichen. Was in AP-376 als „nicht zu
+> glätten" markiert ist, gilt seit AP-411 **nicht mehr**.
+
+Der Fließtext in `<div class="ueber-betrieb__wort">` war vom 20.09.2026 bis zum 23.09.2026 der
+Text der **alten Website des Auftraggebers**, auf seine ausdrückliche Ansage wörtlich
+übernommen. Er löste die zwei Absätze aus AP-220/AP-327 ab.
 
 ### Bewusste Abweichung von Grundregel 5
 
@@ -1717,3 +1724,237 @@ abgehakt, nicht gestrichen, damit die Änderung nachvollziehbar bleibt.
 
 Der Text nennt weder Mitarbeiterzahlen noch Fuhrparkgrößen und verlangt kein Teamfoto.
 „Leute vom Fach" ist eine Eigenschaft, keine Menge.
+
+---
+
+## AP-411 — Einstiegssektion des Betriebsabschnitts (Variante D)
+
+Grundlage ist ein Auftragsdokument des Auftraggebers („Variante D",
+`ap-einstiegssektion-variante-d.md`, 23.09.2026). Es ist **außerhalb des Repos** aus zwei
+Screenshots und einem Nachbau entstanden; die Prüfung gegen den Ist-Stand hat mehrere
+falsche Annahmen ergeben, die unten stehen.
+
+### Entscheidungen des Auftraggebers, 23.09.2026
+
+| Frage | Entscheidung |
+|---|---|
+| Fließtext | **Kürzen wie im Dokument**, einschließlich des neu formulierten Satzes |
+| Schreibmaschine für die Prozesskette | **Ja**, `MODE = 'once'` |
+| Knöpfe „Anrufen" und „WhatsApp" am Sektionsende | **Nein**, entfallen ersatzlos |
+| Tätigkeitsschwerpunkte als Chips | **Nein**, die Liste bleibt eine Liste |
+
+Die erste Entscheidung hebt AP-376 auf. Der Auftraggeber wurde darauf hingewiesen, dass er
+damit seine eigene Festlegung vom 20.09.2026 umkehrt, und hat sie bestätigt.
+
+### Was gestrichen ist
+
+Von **212 auf 137 Wörter**. Das Dokument nennt 97 — die Differenz sind die fünf
+Tätigkeitsschwerpunkte, die dort zu Chips werden und hier auf Ansage eine Liste bleiben.
+
+- Gekürzt: der Herne-Satz („erfolgreich!", „anspruchsvoller" entfallen), der
+  Bauzeiten-Satz, der Fachleute-Satz („aus dem Mitarbeiterkreis" entfällt).
+- Ersatzlos: „Unsere Schwerpunkte liegen in der Realisierung hochwertiger und
+  anspruchsvoller Privatgärten …"
+- Umgebaut ohne Wortverlust: „Somit sind wir in der Lage, von der Planung … aus einer Hand
+  zu erledigen." wird zur Zwischenüberschrift **„Alles aus einer Hand"** plus der Kette
+  *Planung · Kostenermittlung · Realisierung · Koordinierung · Pflege*.
+
+### Der eine neu formulierte Satz
+
+> Im Mittelpunkt steht immer das Ziel, die Anlage termingerecht fertigzustellen. Grundlage
+> dafür sind partnerschaftliche Zusammenarbeit und langjährige Geschäftsbeziehungen.
+
+Er ersetzt zwei Originalsätze und ist die **einzige** Stelle, die nicht aus dem Bestand
+stammt. Belegquelle ist damit allein dieses Auftragsdokument. Er bleibt bewusst bei
+**„Ziel"** — „Der Termin ist Teil der Absprache" wäre eine Zusage statt einer Absicht und
+unter §5 UWG eine andere Kategorie. **Nicht verschärfen.**
+
+### Falsche Annahmen des Auftragsdokuments
+
+| Annahme | Befund |
+|---|---|
+| Die Sektion stehe auf der Startseite, Branch `claude/kind-fermat-pyzy5p`, Basis `05ac78b` | Sie steht genau einmal, in `ueber-uns/index.html`. Gearbeitet wurde auf `codex/homepage-review`, Stand `ea0f33ec`. Die Begründung „die Startseite gilt ohnehin als zu lang" trägt hier nicht |
+| Messwerte: Bild bei 1679 px, Sektion 1922 px | Aus dem Nachbau, nicht aus dem Repo. Gemessen bei 390×844: Bild bei **1517 px**, Raster **1787 px**. Die Wortzahl (211) stimmte dagegen auf ein Wort genau |
+| Token `--rd-marke`, `--rd-inhalt`, `--muted` | **Existieren nicht.** `var(--rd-marke)` hat keinen Rückfallwert; die Regel wäre ungültig und der grüne Steg erschiene gar nicht. Verwendet: `--home-lime`, `--ink`, `--ink-mute` |
+| Schrift `'Baloo 2'` | Steckt in `home-dark.css`, das diese Seite nicht lädt — die Angabe fiele auf `sans-serif` zurück. Verwendet: `var(--display)` (Outfit), wie am 15.09.2026 entschieden |
+| Neues Farbtoken `#557927` für den Telefon-Knopf | Unnötig **und schlechter**: der vorhandene `.btn-primary` (`--green-700` #4A7A10) trägt auf Weiß 5,14 : 1, der neue Wert 5,06 : 1. Das Dokument hätte nach seiner eigenen §4-Regel den bestehenden Knopf nehmen müssen. Gegenstandslos, da die Knöpfe entfallen |
+| §10.1 Telefonnummer sei offen | Ist sie nicht: beide Nummern stehen belegt in diesem Dokument, Zeile 18–19 |
+| §10.4 „2001 gegen 2003 ungeklärt" | **2001 kommt im ganzen Repo nicht vor.** Quelle der Wahrheit ist `content/stammdaten.json` (`gegruendet: 2003-01-01`); „seit über 20 Jahren" ist am 20.09.2026 zugestimmt |
+| §10.2 Chip-Ziele „aus `taxonomie.json` ableiten" | Von den sechs Beschriftungen hat nur „Baumpflege" eine existierende Seite. „Privatgärten" und „Landschaftsbau" existieren überhaupt nicht, und beide Hubs sind kein Linkziel (`/privatkunden/` hat keinen Index, `/gewerbekunden/` ist eine Weiterleitung). Durch die Entscheidung „Liste bleibt Liste" erledigt |
+
+### Ein echter Fehler im gelieferten JavaScript
+
+Das Skript aus §6 hängt den `IntersectionObserver` an `.intro-typer` — und dieses Element
+startet `hidden`, ist damit `display: none` und hat ein Rechteck von 0×0. Ein Observer
+meldet darauf dauerhaft `isIntersecting: false` bei `ratio: 0`; **die Animation wäre nie
+angelaufen.** Gemessen in echtem Chrome: auf dem Typer `ratio 0`, auf der Kette `ratio 1`.
+Beobachtet wird deshalb die Kette. Sie steht an derselben Stelle, ist sichtbar, und der
+Observer ist getrennt, bevor `start()` sie wegklappt.
+
+### Technische Notizen
+
+- **Das Raster hat drei Kinder** (Text, Foto, Nachsatz); das Foto steht im Quelltext
+  zwischen den Textblöcken. Gestapelt ergibt das die Reihenfolge der Variante D ohne `order`
+  und ohne `display: contents`. Am Desktop verteilt `grid-template-areas` die Textblöcke auf
+  Spalte 1 und lässt das Foto rechts über beide Zeilen stehen. **Die Bereichsnamen müssen im
+  860-px-Block mit umgestellt werden**, sonst wirkt die zweispaltige Zuweisung weiter.
+- `align-items: center` aus AP-376 ist zu `align-self: center` am Foto geworden.
+- **Die Zusage-Kachel ist kein `blockquote` und trägt keine Anführungszeichen.** Der Satz ist
+  kein Zitat, sondern der Betrieb über sich selbst — derselbe Grundsatz, der in AP-381 schon
+  für die Überschrift galt.
+- **Die Haltungszeile hat `ueber-steg` verloren.** Sie sitzt jetzt unter der H2, die den
+  grünen Steg schon trägt; zwei Balken übereinander wären ein Fehler.
+- **„Unsere Tätigkeitsschwerpunkte liegen in:" bleibt als Absatz stehen.** Das Dokument macht
+  daraus eine Zwischenüberschrift, weil die Punkte dort zu Chips werden. Sie bleiben eine
+  Liste, und ihre fünf Punkte stehen im Dativ — ohne den einleitenden Satz hinge die
+  Aufzählung grammatisch in der Luft.
+- **Der Pause-Knopf ist gebaut, bleibt aber `hidden`.** Bei `MODE = 'once'` wird er nie
+  eingeblendet; wer auf `'loop'` stellt, braucht ihn nach WCAG 2.2.2 zwingend.
+- `main.js` ist seitenweit: `?v=` in **37 ausgelieferten Seiten** hochgezählt. Die drei
+  Vorlagen unter `.github/scripts/templates/` tragen `{{jsVersion}}` und werden **nicht** von
+  Hand angefasst — der Wert wird per Regex aus `index.html` gelesen.
+
+### Gemessen (390×844, echtes Chrome, `deviceScaleFactor: 1`)
+
+| | vorher | nachher |
+|---|---|---|
+| Oberkante des Fotos ab Sektionsanfang | 1517 px | **646 px** |
+| Raster (Text + Foto + Nachsatz) | 1787 px | **1440 px** |
+| Sektion gesamt, mit „Für wen wir arbeiten" | 2349 px | **2002 px** |
+
+Bei 1280 px: Foto unverändert 440 px breit, Raster 948 → 899 px.
+
+Kontraste, alle über 4,5 : 1: Zusage-Satz 15,07 · Zusage-Begründung 7,50 · Faktenzeile und
+Notiz 8,02 · Kettentext und Haltungszeile 16,10.
+
+Schreibmaschine: läuft 10,2 s durch alle fünf Glieder, **Breite des Textfelds über den
+ganzen Lauf konstant bei 143,83 px** (der unsichtbare Platzhalter hält sie fest, die Zeile
+springt also nicht). Danach ist der Typer `hidden` und die Kette wieder sichtbar; erneutes
+Hineinscrollen und ein Tabwechsel starten sie nicht neu. Bei
+`prefers-reduced-motion: reduce` und mit abgeschaltetem JavaScript steht die Kette von
+Anfang an vollständig da. Keine Konsolenmeldungen.
+
+### Abnahmekriterium, das nicht erreicht ist
+
+Das Dokument verlangt eine Sektionshöhe **≤ 1400 px**. Vergleichbar ist das Raster, und das
+liegt bei **1440 px** — 40 px darüber. Der Grund ist die Entscheidung „Liste bleibt Liste":
+Einleitsatz und Aufzählung kosten zusammen rund 320 px, als Chips wären es etwa 90 px
+gewesen. Mit Chips wäre das Kriterium deutlich unterschritten worden. Das ist eine Folge der
+Anweisung, kein Umsetzungsfehler — und der zweite Wert, die Oberkante des Fotos, liegt mit
+646 px innerhalb der geforderten 650 px.
+
+### Offen
+
+- **Ein Beispiel zu „Was nicht sinnvoll ist, sagen wir Ihnen vorher."** (§10.6 des
+  Dokuments). Ein konkreter Satz von Maik — wovon er schon einmal abgeraten hat — wäre der
+  wertvollste Satz der Seite. Eigenes AP.
+- **Welche Leistungen der Betrieb für Kommunen übernimmt** und ob eine Referenzkommune
+  genannt werden darf. Unverändert offen seit AP-376.
+- Der neu formulierte Satz hat als einzigen Beleg dieses Auftragsdokument. Falls Teil B je
+  ergänzt wird, gehört er dort verankert.
+
+---
+
+## AP-413 — Kontaktseite: sieben Bausteine entfernt
+
+Auf Ansage des Auftraggebers vom 23.09.2026 sind aus `kontakt/index.html` entfallen:
+
+1. Die Überschrift **„Direkt erreichbar"** über der Kontaktkarte.
+2. Der Kasten **„Gerade nicht erreichbar? Dann ist Maik wahrscheinlich auf einer
+   Baustelle …"** samt Uhr-Pfeil-Symbol.
+3. Die Ortsliste **„Herne · Bochum · Essen · Castrop-Rauxel · Recklinghausen ·
+   Gelsenkirchen · Und Umgebung"**.
+4. Die Überschrift **„Unser Einsatzgebiet"**.
+5. Der Nachsatz **„WhatsApp-Nachrichten jederzeit – Antwort zu den Geschäftszeiten"**.
+6. Das **Uhr-Symbol** neben den Öffnungszeiten.
+7. Der Absatz **„Hier befinden sich unser Betrieb und der 1.500 m² Mustergarten.
+   Besichtigungen und Beratungen finden ausschließlich nach vorheriger
+   Terminvereinbarung statt."**
+
+### Zwei Entscheidungen, ausdrücklich so gewollt
+
+- **„Auch deutschlandweit nach Absprache" bleibt stehen** — samt der Trennlinie darüber.
+  Der Auftraggeber wurde darauf hingewiesen, dass der Nachsatz damit ohne den Satz
+  dasteht, auf den er sich bezieht, und hat sich dafür entschieden.
+- **Der Mustergarten wird weiterhin genannt.** Der Hinweis unter der Karte („Bitte vorab
+  Termin vereinbaren. So können wir uns Zeit für Ihre Beratung und die Besichtigung des
+  Mustergartens nehmen.") bleibt wörtlich. Auf der Über-uns-Seite war die
+  Mustergarten-Sektion in AP-380 vollständig entfallen; auf der Kontaktseite steht sie
+  also weiter.
+
+Dass ein Besuch nur nach Termin möglich ist, geht nicht verloren: Punkt 7 sagte es, der
+bleibende Hinweis sagt es ebenfalls.
+
+**Die Ortsliste des Einsatzgebiets steht damit nicht mehr auf der Kontaktseite.** Teil H.6
+des Umsetzungsplans will die Angabe ohnehin nur an einer Stelle — in der Bildunterschrift
+der Einsatzgebiets-Karte der Startseite. Der Wegfall bringt die Seite also näher an die
+Vorgabe. `areaServed` im JSON-LD der Seite bleibt unberührt.
+
+### Technische Notizen
+
+- **Zwei `aria-labelledby` zeigten auf die entfernten Überschriften.** `aside.contact-direct-card`
+  trägt jetzt `aria-label="Direkt erreichbar"` — unsichtbar, hält den Namen des
+  Landmark-Bereichs. Aus `section.contact-coverage` ist ein `div` geworden: ohne Überschrift
+  gibt es nichts mehr zu referenzieren, und ein `<section>` ohne Überschrift ist die falsche
+  Auszeichnung. Nach der Änderung zeigt kein `aria-labelledby`/`aria-describedby` der Seite
+  mehr ins Leere (geprüft).
+- **`.contact-hours` war ein zweispaltiges Raster** `40px minmax(0,1fr)` für Symbol und Text.
+  Ohne die Spaltendefinition wäre der verbleibende Text in die 40-px-Symbolspalte gerutscht
+  und dort zerquetscht worden. Gemessen: Textbreite 237 → 289 px.
+- **`form-trust-card.css` blieb unangetastet.** `form-trust-card__eyebrow` und
+  `__coverage` benutzt auch die Startseite mit eigenem Markup. Gegenprobe: beide Bausteine
+  dort vorher und nachher identisch.
+- Tote Regeln in `kontakt.css` entfernt: `.contact-callback-note*`, `.contact-hours-icon*`,
+  `.contact-hours small`, `.contact-coverage p span` (die AP-390-Bremse, die
+  „Castrop-Rauxel" am Bindestrich zusammenhielt — sie stirbt mit der Ortsliste), die
+  Abstandsregeln der beiden Überschriften und `.contact-location-copy > p`.
+
+### Gemessen (375 px, echtes Chrome)
+
+Höhe der Kontaktkarte **854 → 590 px**. Überschriftenebenen danach H1 → H2 ohne Sprung.
+Keine Konsolenmeldungen.
+
+---
+
+## AP-414 — Kontaktseite: Einsatzgebiet-Rest und Geschäftszeiten entfernt
+
+Nachtrag zu AP-413, am selben Tag auf Ansage des Auftraggebers. Aus der Kontaktkarte sind
+die letzten beiden Blöcke entfallen:
+
+1. **„Auch deutschlandweit nach Absprache"** — der Rest des Einsatzgebiet-Kastens, den
+   AP-413 auf ausdrücklichen Wunsch noch hatte stehen lassen, samt der Trennlinie darüber.
+2. **Die Geschäftszeiten** „Montag bis Freitag, 09:00–17:00 Uhr / Samstag, 09:00–12:00 Uhr ·
+   Sonntag geschlossen".
+
+Die Karte besteht damit nur noch aus den fünf Kontaktwegen (Mobil, Festnetz, E-Mail,
+WhatsApp, Anfrageformular). Höhe bei 375 px: **590 → 452 px**; über AP-413 und AP-414
+zusammen **854 → 452 px**.
+
+### Wichtig: Auf dem Handy stehen die Geschäftszeiten jetzt nirgends mehr
+
+Nachgemessen, nicht vermutet:
+
+| Ort | Status |
+|---|---|
+| Fußzeile (`.footer-hours`) | **bis 480 px unsichtbar** (`display: none`, `footer-kontakt.css:260`), ab 481 px sichtbar |
+| JSON-LD am Seitenkopf | `openingHoursSpecification` unverändert, auf jeder Breite |
+| Kontaktkarte | entfernt |
+
+Wer die Kontaktseite auf dem Telefon öffnet, findet die Geschäftszeiten also **nicht mehr**.
+Am Desktop nennt sie weiterhin die Fußzeile. Maschinenlesbar bleiben sie über das JSON-LD
+erhalten, für Suchmaschinen und das Google-Unternehmensprofil ändert sich nichts.
+
+Das ist eine bewusste Entscheidung des Auftraggebers vom 23.09.2026 und kein Versehen.
+**Falls die Zeiten auf dem Handy wieder auftauchen sollen**, ist der kleinste Weg, die Regel
+in `footer-kontakt.css:260` zu streichen — dann zeigt die Fußzeile sie auf allen Breiten.
+
+### Technische Notizen
+
+- Alle drei `.contact-*`-Regelsätze der Karte sind damit tot und entfernt:
+  `.contact-callback-note*` (AP-413), `.contact-coverage` und `.contact-hours*`. Keine der
+  Klassen kommt im Repo noch vor.
+- `form-trust-card.css` bleibt weiterhin unangetastet — denselben Baustein benutzt die
+  Startseite mit eigenem Markup.
+- Kein `aria-labelledby`/`aria-describedby` der Seite zeigt ins Leere (geprüft). Die Karte
+  behält ihren Namen über das `aria-label` aus AP-413.
+- Keine Konsolenmeldungen.

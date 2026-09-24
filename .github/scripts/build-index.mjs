@@ -254,7 +254,12 @@ async function generateSitemap(projekte) {
   const entries = [];
   for (const rel of dirs) {
     // rel = Repo-relativer Ordnerpfad mit '/'-Trennern; '' = Root-index.html.
-    const loc = rel === '' ? `${SITE}/` : `${SITE}/${rel}/`;
+    // AP-399: Ordnernamen koennen Zeichen ausserhalb von ASCII tragen - der
+    // Projektordner "beetanlage-...-–-vorher-nachher-herne" enthaelt einen
+    // Gedankenstrich. Die Sitemap-Spezifikation verlangt RFC-3986-kodierte URLs;
+    // roh ausgegeben stand in der Datei ein Zeichen, das die verlinkende Seite
+    // selbst prozentkodiert - zwei Schreibweisen derselben URL.
+    const loc = rel === '' ? `${SITE}/` : `${SITE}/${rel.split('/').map(encodeURIComponent).join('/')}/`;
     let lastmod;
     const m = rel.match(/^projekte\/([^/]+)$/);
     if (m && datumBySlug.has(m[1])) {
@@ -291,7 +296,13 @@ async function collectPageDirs(rootDir) {
   async function walk(absDir, rel) {
     const entries = await readdir(absDir, { withFileTypes: true });
     if (entries.some((e) => e.isFile() && e.name === 'index.html')) {
-      found.push(rel);
+      // AP-399: Weiterleitungsseiten gehoeren nicht in die Sitemap. gewerbekunden/
+      // ist seit AP-387 nur noch ein Stub mit <meta http-equiv="refresh"> und
+      // dauerhaftem noindex; angemeldet wuerde eine URL, die den Crawler sofort
+      // weiterschickt. Auf noindex allein laesst sich nicht pruefen: in der
+      // Demo-Phase tragen es alle Seiten (AP-01, siehe oben).
+      const html = await readFile(path.join(absDir, 'index.html'), 'utf8');
+      if (!/<meta\s+http-equiv=["']refresh["']/i.test(html)) found.push(rel);
     }
     for (const e of entries) {
       if (!e.isDirectory()) continue;

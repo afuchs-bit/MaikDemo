@@ -493,7 +493,7 @@ export function weltPfadFuerSlug(slug) {
   return NUR_GEWERBE.has(slug) ? WELTEN.gewerbe.pfad : WELTEN.privat.pfad;
 }
 
-export const AREA_SERVED = ['Herne', 'Bochum', 'Castrop-Rauxel', 'Recklinghausen', 'Gelsenkirchen-Buer'];
+export const AREA_SERVED = ['Herne', 'Bochum', 'Essen', 'Castrop-Rauxel', 'Recklinghausen', 'Gelsenkirchen'];
 
 const KUNDENGRUPPE_META = {
   privat: { href: '', label: 'Für Privatkunden' },   // Hub entfallen -> Startseite
@@ -607,9 +607,19 @@ const handyFormularLink = (base) => `
             <span><small>Kontaktformular</small><strong>Kontakt aufnehmen</strong></span>
           </a>`;
 
+/* AP-395: Die Zeile hiess bis hierher "Jederzeit erreichbar - Auch an Feiertagen und
+   Wochenenden". Auf der Kontaktseite steht keine 400 Pixel darueber "Sonntag
+   geschlossen" (Mo-Fr 09:00-17:00, Sa 09:00-12:00) - beides zugleich sichtbar, und
+   zwar genau unter 481px, wo diese Zeile die Oeffnungszeiten aus .footer-hours
+   ersetzt. Der Widerspruch betraf jede Seite, nicht nur die Kontaktseite.
+
+   "WhatsApp jederzeit" sagt dasselbe, ohne die Oeffnungszeiten zu bestreiten, und
+   deckt sich mit content/stammdaten.json: WhatsApp ist rund um die Uhr fuer
+   Nachrichten erreichbar, beantwortet wird zu den Geschaeftszeiten. Genau so steht
+   es auch in der Kontaktkarte und in .footer-hours oberhalb 480px. */
 const handySocial = (base) => `
         <div class="footer-social-iphone" aria-label="Weitere Kontaktmöglichkeiten">
-          <p class="footer-social-availability"><span class="footer-social-line">Jederzeit erreichbar <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
+          <p class="footer-social-availability"><span class="footer-social-line">WhatsApp jederzeit <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
           <a class="footer-social-link footer-social-link--whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener" aria-label="Maik Rohdich über WhatsApp schreiben">
             <span class="footer-social-icon footer-social-icon--whatsapp" aria-hidden="true"><img src="${base}assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
           </a>

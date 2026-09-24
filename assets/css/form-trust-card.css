@@ -12,13 +12,13 @@
   justify-content: flex-start;
   padding: clamp(30px,2.7vw,38px) clamp(25px,2.6vw,34px) clamp(28px,2.5vw,34px);
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.13);
+  border: 1px solid var(--line);
   border-radius: 24px 24px 44px 24px;
   background:
-    radial-gradient(circle at 82% 5%,rgba(224,217,39,.13),transparent 27%),
-    linear-gradient(155deg,#203506 0%,#315200 52%,#263f08 100%);
+    radial-gradient(circle at 82% 5%,rgb(var(--yellow-rgb) / .13),transparent 27%),
+    linear-gradient(155deg,var(--green-900) 0%,var(--green-800) 52%,var(--green-900) 100%);
   box-shadow: 0 30px 58px -42px rgba(18,31,5,.82),inset 0 0 0 1px rgba(255,255,255,.05);
-  color: #fffdf5;
+  color: var(--ink);
 }
 
 .form-trust-card__eyebrow {
@@ -33,7 +33,7 @@
 }
 .form-trust-card__person h3 {
   margin: 0;
-  color: #fffdf5;
+  color: var(--ink);
   font-family: var(--display);
   font-size: clamp(1.95rem,2.45vw,2.32rem);
   line-height: 1.05;
@@ -41,7 +41,7 @@
 }
 .form-trust-card__role {
   margin: 12px 0 0;
-  color: #fffdf5;
+  color: var(--ink);
   font-family: var(--display);
   font-size: .93rem;
   font-weight: 750;
@@ -49,14 +49,14 @@
 }
 .form-trust-card__copy {
   margin: 18px 0 0;
-  color: rgba(255,253,245,.78);
+  color: rgb(var(--ink-rgb) / .78);
   font-size: .88rem;
   line-height: 1.52;
 }
 .form-trust-card__copy strong,
 .form-trust-card__copy span { display: block; }
 .form-trust-card__copy strong {
-  color: #fffdf5;
+  color: var(--ink);
   font-family: var(--display);
   font-size: .93rem;
   font-weight: 750;
@@ -85,7 +85,7 @@
   border-radius: 14px;
   background: rgba(255,255,255,.045);
   box-shadow: none;
-  color: #fffdf5;
+  color: var(--ink);
   text-decoration: none;
   transition: border-color .18s var(--ease),background-color .18s var(--ease),color .18s var(--ease);
 }
@@ -99,7 +99,7 @@
   border-radius: 12px;
   background: rgba(255,255,255,.1);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
-  color: #fffdf5;
+  color: var(--ink);
   transition: background-color .18s var(--ease),color .18s var(--ease),transform .18s var(--ease);
 }
 .form-trust-card__action-icon svg,
@@ -107,7 +107,7 @@
 .form-trust-card__actions > a > span:last-child,
 .form-trust-card__actions .b2b-contact-copy { display: grid; min-width: 0; gap: 2px; }
 .form-trust-card__actions small {
-  color: rgba(255,253,245,.62);
+  color: rgb(var(--ink-rgb) / .62);
   font-size: .63rem;
   font-weight: 750;
   letter-spacing: .075em;
@@ -116,7 +116,7 @@
 }
 .form-trust-card__actions strong {
   overflow-wrap: anywhere;
-  color: #fffdf5;
+  color: var(--ink);
   font-family: var(--body);
   font-size: .86rem;
   font-weight: 800;
@@ -126,11 +126,11 @@
 .form-trust-card__actions > a:hover {
   border-color: rgba(255,255,255,.28);
   background: rgba(255,255,255,.09);
-  color: #fffdf5;
+  color: var(--ink);
 }
 .form-trust-card__actions > a:hover :is(.form-trust-card__action-icon,.b2b-contact-icon) {
   background: rgba(255,255,255,.18);
-  color: #fff;
+  color: var(--ink);
   transform: translateY(-1px);
 }
 .form-trust-card__actions .form-trust-card__whatsapp:hover .form-trust-card__action-icon { background: #25d366; }
@@ -163,7 +163,7 @@
   background: rgba(255,255,255,.1);
 }
 .b2b-form--modern .form-trust-card__actions small {
-  color: rgba(255,253,245,.62);
+  color: rgb(var(--ink-rgb) / .62);
   font-size: .63rem;
   font-weight: 750;
   letter-spacing: .075em;
@@ -171,7 +171,7 @@
 }
 .b2b-form--modern .form-trust-card__actions strong {
   margin: 0;
-  color: #fffdf5;
+  color: var(--ink);
   font-family: var(--body);
   font-size: .86rem;
   font-weight: 800;
@@ -287,7 +287,7 @@
 }
 .form-trust-card__coverage p {
   margin: 9px 0 0;
-  color: #fffdf5;
+  color: var(--ink);
   font-family: var(--display);
   font-size: clamp(.93rem,1.05vw,1.02rem);
   font-weight: 700;
@@ -296,14 +296,14 @@
 .form-trust-card__coverage small {
   display: block;
   margin-top: 5px;
-  color: rgba(255,253,245,.62);
+  color: rgb(var(--ink-rgb) / .62);
   font-size: .7rem;
   line-height: 1.45;
 }
 .b2b-form--modern .form-trust-card__coverage { padding: 0; border: 0; }
 .b2b-form--modern .form-trust-card__coverage p {
   margin: 9px 0 0;
-  color: #fffdf5;
+  color: var(--ink);
   font-family: var(--display);
   font-size: clamp(.93rem,1.05vw,1.02rem);
   font-weight: 700;
@@ -311,7 +311,7 @@
 }
 .b2b-form--modern .form-trust-card__coverage small {
   margin-top: 5px;
-  color: rgba(255,253,245,.62);
+  color: rgb(var(--ink-rgb) / .62);
   font-size: .7rem;
   line-height: 1.45;
 }
@@ -325,14 +325,14 @@
   min-height: 63px;
   margin: 0;
   padding: 18px 2px 0;
-  border-top: 1px solid rgba(255,255,255,.17);
-  color: #fffdf5;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
   text-decoration: none;
 }
 .form-trust-card__location > svg { width: 20px; height: 20px; color: var(--yellow); }
 .form-trust-card__location > span:nth-child(2) { display: grid; gap: 3px; min-width: 0; }
-.form-trust-card__location strong { color: #fffdf5; font-family: var(--display); font-size: .76rem; line-height: 1.25; }
-.form-trust-card__location small { color: rgba(255,253,245,.62); font-size: .63rem; line-height: 1.4; }
+.form-trust-card__location strong { color: var(--ink); font-family: var(--display); font-size: .76rem; line-height: 1.25; }
+.form-trust-card__location small { color: rgb(var(--ink-rgb) / .62); font-size: .63rem; line-height: 1.4; }
 .form-trust-card__location > span:last-child { color: var(--yellow); font-weight: 850; transition: transform .18s var(--ease); }
 .form-trust-card__location:hover > span:last-child { transform: translateX(2px); }
 .form-trust-card__location:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
@@ -434,7 +434,7 @@
   .b2b-form--modern .b2b-contact-facts {
     margin-top: 16px;
     padding-top: 16px;
-    border-top: 1px solid rgba(255,255,255,.13);
+    border-top: 1px solid var(--line);
   }
   .b2b-form--modern .form-trust-card__coverage {
     margin-top: 0;
@@ -457,7 +457,7 @@
     min-height: 58px;
     margin-top: 16px;
     padding-top: 14px;
-    border-top-color: rgba(255,255,255,.13);
+    border-top-color: var(--line);
   }
 }
 
@@ -567,7 +567,7 @@
   display: block;
   flex: 0 0 auto;
   padding-bottom: 14px;
-  border-bottom: 1px solid rgba(49,82,0,.11);
+  border-bottom: 1px solid rgb(var(--green-800-rgb) / .11);
 }
 .contact-form .form-acute-return {
   display: inline-flex;

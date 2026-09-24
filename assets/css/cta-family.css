@@ -1,6 +1,22 @@
 /* Gemeinsame iPhone-CTA-Familie. Ausserhalb der freigegebenen iPhone-Breite
    bleiben die bestehenden Komponenten und ihre Desktop-/Tabletdarstellungen
-   unveraendert. */
+   unveraendert.
+
+   AP-401: Bis hierher hing jeder der 58 Selektoren dieser Datei zusaetzlich an
+   html.home-theme-dark - einer Klasse, die nur index.html:2 traegt. Die "Familie"
+   war damit auf eine einzige Seite eingesperrt. Der Galerie-CTA soll denselben
+   Knopf tragen, also faellt die Bindung: die Regeln greifen jetzt dort, wo die
+   maik-cta-Klassen im Markup stehen, und nur dort.
+
+   Das ist strikt breiter, nie enger - dieselben Regeln treffen dieselben Elemente
+   wie vorher. Die Startseite wurde nach der Aenderung bei 375px pixelweise
+   gegengeprueft: kein einziger abweichender Bildpunkt.
+
+   Was NICHT gefallen ist: die Media Query unten. Der Baustein bleibt eine
+   Handy-Schicht. Wer ihn auf einer weiteren Seite einsetzt, braucht ausserdem
+   das <symbol id="maik-cta-shape"> im Dokument (sonst zeichnen Rahmen und
+   Flaeche nichts) und assets/js/cta-signal.js (sonst fehlen is-pulsing und
+   is-pressed). */
 .maik-cta__halo,
 .maik-cta__brand-icon,
 .mr-ueber__mehr-titel--iphone,
@@ -11,7 +27,7 @@
 }
 
 @media (max-width: 480px) {
-  html.home-theme-dark .maik-cta {
+  .maik-cta {
     position: relative;
     isolation: isolate;
     box-sizing: border-box;
@@ -40,12 +56,12 @@
     white-space: nowrap;
   }
 
-  html.home-theme-dark .maik-cta::before,
-  html.home-theme-dark .maik-cta::after {
+  .maik-cta::before,
+  .maik-cta::after {
     content: none;
   }
 
-  html.home-theme-dark .maik-cta .maik-cta__label {
+  .maik-cta .maik-cta__label {
     position: relative;
     z-index: 1;
     flex: 1 1 0;
@@ -69,22 +85,22 @@
      beginnt exakt an der linken Buttonkante und endet an der linken Kante der
      Pfeilkapsel. So ist der sichtbare Text unabhaengig von seiner Laenge immer
      optisch zwischen diesen beiden Kanten zentriert. */
-  html.home-theme-dark .maik-cta:not(.maik-cta--compact) .maik-cta__label {
+  .maik-cta:not(.maik-cta--compact) .maik-cta__label {
     font-size: clamp(.82rem, 3.9vw, 1rem);
   }
 
   /* Der Gartenwunsch-CTA lag bislang im schmaleren Innencontainer. Er wird nur
      auf dem iPhone auf dieselbe Breite und Mittelachse wie die anderen grossen
      CTAs gezogen. */
-  html.home-theme-dark .maik-cta--long {
+  .maik-cta--long {
     width: calc(100vw - 40px);
     max-width: none;
     margin-left: calc((100% - 100vw + 40px) / 2);
   }
 
-  html.home-theme-dark .maik-cta__shape,
-  html.home-theme-dark .maik-cta__frame,
-  html.home-theme-dark .maik-cta__halo {
+  .maik-cta__shape,
+  .maik-cta__frame,
+  .maik-cta__halo {
     position: absolute;
     inset: 0;
     display: block;
@@ -93,7 +109,7 @@
     pointer-events: none;
   }
 
-  html.home-theme-dark .maik-cta__shape {
+  .maik-cta__shape {
     z-index: -1;
     overflow: visible;
     fill: var(--home-lime);
@@ -102,7 +118,7 @@
     transition: transform .12s var(--ease), fill .18s ease;
   }
 
-  html.home-theme-dark .maik-cta__frame {
+  .maik-cta__frame {
     z-index: -3;
     overflow: visible;
     fill: none;
@@ -111,7 +127,7 @@
     transform: translate(6px, 6px);
   }
 
-  html.home-theme-dark .maik-cta__arrow {
+  .maik-cta__arrow {
     position: relative;
     z-index: 1;
     flex: 0 0 auto;
@@ -127,12 +143,12 @@
     transition: transform .12s var(--ease), box-shadow .18s var(--ease);
   }
 
-  html.home-theme-dark .maik-cta__arrow > svg,
-  html.home-theme-dark .maik-cta__arrow-image ~ svg {
+  .maik-cta__arrow > svg,
+  .maik-cta__arrow-image ~ svg {
     display: none;
   }
 
-  html.home-theme-dark .maik-cta__arrow-image {
+  .maik-cta__arrow-image {
     position: relative;
     left: 0;
     display: block;
@@ -145,7 +161,7 @@
 
   /* Exakte Buttonkontur statt rechteckigem Box-Shadow: Der Halo folgt auch
      an den vier kleineren CTAs sauber der diagonalen Lasche. */
-  html.home-theme-dark .maik-cta__halo {
+  .maik-cta__halo {
     z-index: -2;
     overflow: visible;
     fill: none;
@@ -158,11 +174,11 @@
     will-change: transform, opacity;
   }
 
-  html.home-theme-dark .maik-cta__halo-line--wide { stroke-width: 12px; opacity: .12; }
-  html.home-theme-dark .maik-cta__halo-line--medium { stroke-width: 7px; opacity: .24; }
-  html.home-theme-dark .maik-cta__halo-line--core { stroke-width: 3px; opacity: .48; }
+  .maik-cta__halo-line--wide { stroke-width: 12px; opacity: .12; }
+  .maik-cta__halo-line--medium { stroke-width: 7px; opacity: .24; }
+  .maik-cta__halo-line--core { stroke-width: 3px; opacity: .48; }
 
-  html.home-theme-dark .maik-cta--attention.is-pulsing {
+  .maik-cta--attention.is-pulsing {
     animation:
       maik-cta-arrival-breath 1.1s ease-in-out .35s 1,
       maik-cta-rhythm-breath 1.9s linear 2.5s infinite;
@@ -171,13 +187,13 @@
     will-change: transform;
   }
 
-  html.home-theme-dark .maik-cta--attention.is-pulsing .maik-cta__halo {
+  .maik-cta--attention.is-pulsing .maik-cta__halo {
     animation:
       maik-cta-arrival-halo 1.2s ease-out .35s 1,
       maik-cta-rhythm-halo 1.9s linear 2.5s infinite;
   }
 
-  html.home-theme-dark :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing .maik-cta__arrow-image {
+  :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing .maik-cta__arrow-image {
     animation: maik-cta-arrow-rhythm 1.9s cubic-bezier(.22, .7, .25, 1) 2.5s infinite;
   }
 
@@ -221,7 +237,7 @@
 
   /* Auf dem kompakten Galerie-CTA bleibt nur der synchronisierte Pfeilimpuls.
      Seine bisherige Groesse und Position in der Galerie werden beibehalten. */
-  html.home-theme-dark .maik-cta--compact {
+  .maik-cta--compact {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 40px;
     column-gap: 0;
@@ -233,35 +249,35 @@
     font-size: clamp(.8125rem, 3.6vw, .875rem);
   }
 
-  html.home-theme-dark .maik-cta--compact .mobile-proof-gallery__link-flower,
-  html.home-theme-dark .maik-cta--compact .mobile-proof-gallery__link-arrow--default {
+  .maik-cta--compact .mobile-proof-gallery__link-flower,
+  .maik-cta--compact .mobile-proof-gallery__link-arrow--default {
     display: none;
   }
 
-  html.home-theme-dark .maik-cta--compact .maik-cta__frame {
+  .maik-cta--compact .maik-cta__frame {
     stroke-width: 1.25px;
     transform: translate(4px, 4px);
   }
 
-  html.home-theme-dark .maik-cta--compact .maik-cta__label {
+  .maik-cta--compact .maik-cta__label {
     grid-column: 1;
   }
 
-  html.home-theme-dark .maik-cta--compact .maik-cta__arrow {
+  .maik-cta--compact .maik-cta__arrow {
     grid-column: 2;
     width: 40px;
     height: 28px;
     margin: 0;
   }
 
-  html.home-theme-dark .maik-cta--compact .maik-cta__arrow-image {
+  .maik-cta--compact .maik-cta__arrow-image {
     width: 30px;
   }
 
   /* Die Ueber-uns-Kachel wird auf dem iPhone zu einem einzeiligen CTA. Der
      bisherige Desktoptext und die dortige Bildmarke bleiben ausserhalb der
      iPhone-Regel erhalten. */
-  html.home-theme-dark .mr-ueber__mehr.maik-cta {
+  .mr-ueber__mehr.maik-cta {
     display: flex;
     flex-direction: row;
     gap: 0;
@@ -270,21 +286,21 @@
     box-shadow: none;
   }
 
-  html.home-theme-dark .mr-ueber__mehr.maik-cta .mr-ueber__mehr-titel--default,
-  html.home-theme-dark .mr-ueber__mehr.maik-cta .mr-ueber__mehr-pfeil,
-  html.home-theme-dark .mr-ueber__mehr.maik-cta .mr-ueber__mehr-sub,
-  html.home-theme-dark .mr-ueber__mehr.maik-cta .mr-ueber__mehr-logo {
+  .mr-ueber__mehr.maik-cta .mr-ueber__mehr-titel--default,
+  .mr-ueber__mehr.maik-cta .mr-ueber__mehr-pfeil,
+  .mr-ueber__mehr.maik-cta .mr-ueber__mehr-sub,
+  .mr-ueber__mehr.maik-cta .mr-ueber__mehr-logo {
     display: none;
   }
 
-  html.home-theme-dark .mr-ueber__mehr.maik-cta .mr-ueber__mehr-titel--iphone {
+  .mr-ueber__mehr.maik-cta .mr-ueber__mehr-titel--iphone {
     display: inline;
   }
 
   /* Aus dem frueheren zweizeiligen Kachellayout kommt align-self: end. Im
      einzeiligen CTA drueckt das den Titel sichtbar nach unten; hier sitzt er
      wie bei allen anderen Familienmitgliedern exakt auf der Mittelachse. */
-  html.home-theme-dark .mr-ueber__mehr.maik-cta .maik-cta__label {
+  .mr-ueber__mehr.maik-cta .maik-cta__label {
     align-self: center;
     grid-area: auto;
     box-sizing: border-box;
@@ -298,7 +314,7 @@
   /* Vollstaendige Bluetengruppe aus dem Header im frueheren linken Icon-Slot.
      Die linke Kante bleibt bei 18px; 40px Hoehe halten das Motiv klar lesbar,
      ohne der Handlungsbeschriftung die Fuehrung zu nehmen. */
-  html.home-theme-dark .mr-ueber__mehr.maik-cta .maik-cta__brand-icon {
+  .mr-ueber__mehr.maik-cta .maik-cta__brand-icon {
     position: absolute;
     top: 50%;
     left: 18px;
@@ -315,28 +331,28 @@
   /* Auf den schmalsten iPhones schafft eine etwas kompaktere Pfeilkapsel dem
      laengsten Text Luft, ohne die gemeinsame Achse oder Typografie aufzubrechen. */
   @media (max-width: 350px) {
-    html.home-theme-dark .maik-cta--long .maik-cta__arrow {
+    .maik-cta--long .maik-cta__arrow {
       width: 54px;
       height: 36px;
       margin-right: 6px;
     }
 
-    html.home-theme-dark .maik-cta--long .maik-cta__arrow-image {
+    .maik-cta--long .maik-cta__arrow-image {
       width: 40px;
     }
   }
 
   @media (hover: hover) and (pointer: fine) {
-    html.home-theme-dark .mr-ueber__mehr.maik-cta:hover {
+    .mr-ueber__mehr.maik-cta:hover {
       background-color: transparent;
       box-shadow: none;
     }
 
-    html.home-theme-dark .maik-cta:hover :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
+    .maik-cta:hover :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
       transform: translate(2px, 2px);
     }
 
-    html.home-theme-dark .maik-cta:hover .maik-cta__arrow {
+    .maik-cta:hover .maik-cta__arrow {
       box-shadow:
         inset 0 0 0 1px rgba(151, 206, 32, .34),
         0 0 0 2px rgba(23, 25, 22, .08);
@@ -346,30 +362,30 @@
        Pfeil, Button-Atem und Halo daher phasengleich weiter, statt den Pfeil
        mit neuer Verzoegerung bei null zu starten. Der sichtbare Einzug liegt
        separat auf left und ueberschreibt die animierte transform nicht. */
-    html.home-theme-dark .maik-cta--attention.is-pulsing:hover,
-    html.home-theme-dark .maik-cta--attention.is-pulsing:hover .maik-cta__halo,
-    html.home-theme-dark :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing:hover .maik-cta__arrow-image {
+    .maik-cta--attention.is-pulsing:hover,
+    .maik-cta--attention.is-pulsing:hover .maik-cta__halo,
+    :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing:hover .maik-cta__arrow-image {
       animation-play-state: paused;
     }
 
-    html.home-theme-dark .maik-cta:hover .maik-cta__arrow-image {
+    .maik-cta:hover .maik-cta__arrow-image {
       left: 1.5px;
     }
 
-    html.home-theme-dark .mr-ueber__mehr.maik-cta:hover .maik-cta__brand-icon {
+    .mr-ueber__mehr.maik-cta:hover .maik-cta__brand-icon {
       transform: translateY(-50%) translate(2px, 2px);
     }
   }
 
-  html.home-theme-dark .maik-cta.is-pressed :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
+  .maik-cta.is-pressed :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
     transform: translate(6px, 6px);
   }
 
-  html.home-theme-dark .maik-cta--compact.is-pressed :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
+  .maik-cta--compact.is-pressed :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
     transform: translate(4px, 4px);
   }
 
-  html.home-theme-dark .mr-ueber__mehr.maik-cta.is-pressed .maik-cta__brand-icon {
+  .mr-ueber__mehr.maik-cta.is-pressed .maik-cta__brand-icon {
     transform: translateY(-50%) translate(6px, 6px);
   }
 
@@ -377,34 +393,34 @@
      Link selbst. Beim kompakten Galerie-CTA ist translateX(-50%) dagegen die
      Zentrierung; transform:none liess ihn beim Antippen eine halbe Breite nach
      rechts springen. */
-  html.home-theme-dark .maik-cta--attention.is-pulsing.is-pressed {
+  .maik-cta--attention.is-pulsing.is-pressed {
     animation: none;
     transform: none;
   }
 
-  html.home-theme-dark .maik-cta.is-pulsing.is-pressed .maik-cta__halo {
+  .maik-cta.is-pulsing.is-pressed .maik-cta__halo {
     animation: none;
     opacity: 0;
   }
 
-  html.home-theme-dark .maik-cta.is-pulsing.is-pressed .maik-cta__arrow-image {
+  .maik-cta.is-pulsing.is-pressed .maik-cta__arrow-image {
     animation: none;
     transform: translateX(1px);
   }
 
-  html.home-theme-dark .maik-cta:focus-visible {
+  .maik-cta:focus-visible {
     outline: 2px solid var(--home-focus, var(--home-lime));
     outline-offset: 9px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html.home-theme-dark .maik-cta,
-    html.home-theme-dark .maik-cta__halo,
-    html.home-theme-dark .maik-cta__arrow-image {
+    .maik-cta,
+    .maik-cta__halo,
+    .maik-cta__arrow-image {
       animation: none !important;
     }
 
-    html.home-theme-dark .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__arrow-image) {
+    .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__arrow-image) {
       transition: none;
     }
   }
