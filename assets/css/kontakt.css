@@ -527,7 +527,13 @@
   line-height: 1.5;
 }
 
-.contact-visit-note strong { color: var(--ink); font-family: var(--display); }
+/* AP-425: Die Auszeichnung war bis hierher eine eigene Zeile ueber dem Absatz
+   ("Bitte vorab Termin vereinbaren.") und trug deshalb die Auszeichnungsschrift.
+   Sie ist entfallen; fett steht jetzt der Auftakt MITTEN im Satz. Dort hat
+   var(--display) nichts verloren - ein Schriftwechsel innerhalb einer Zeile
+   faellt als Bruch auf. Geblieben ist die hellere Farbe, die den Auftakt vom
+   Rest des Satzes abhebt. */
+.contact-visit-note strong { color: var(--ink); }
 
    /* AP-129 */
 
