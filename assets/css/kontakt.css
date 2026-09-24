@@ -355,33 +355,17 @@
 /* AP-413: Der einzige direkte Absatz dieses Kastens war der Mustergarten-Satz.
    Er ist entfallen, seine Regel damit auch. */
 
-/* AP-420: Symbol und Text stehen mittig in der Kachel statt links. Vorher zog
-   minmax(0,1fr) die Textspalte auf die volle Restbreite, das Paar klebte am
-   linken Rand und rechts blieb Leerflaeche. justify-content ruecken beide
-   Spuren gemeinsam in die Mitte.
-
-   AP-421: Die Textspur ist fest 7rem breit statt inhaltsbreit. Mit auto war sie
-   je Kachel unterschiedlich - 90px bei der Adresse, 112px bei der Route - und
-   weil jede Kachel ihren eigenen Inhalt zentriert, standen die beiden Symbole
-   10px versetzt. Eine gemeinsame Spurbreite stellt sie wieder auf eine Linie.
-
-   7rem sind genau die gemessenen 112px der breiteren Kachel ("In Google Maps
-   oeffnen"). Der Wert ist fest, weil er es sein darf: Die Schriften hier sind
-   rem-basiert und Unterseiten stehen auf 16px Wurzel, die Textbreiten sind
-   deshalb auf JEDER Bildschirmbreite gleich - bei 320, 375, 700 und 1280px
-   nachgemessen, immer 90 und 112px. Aendert jemand einen der beiden Texte,
-   gehoert der Wert nachgemessen.
-
-   min(..., 100%) ist die Bremse fuer den engsten Fall: 40 + 12 + 112 = 164px
-   passen in die 210px Innenbreite bei 320px Fensterbreite, aber die Zeile
-   sichert es ab, falls die Kachel je schmaler wird. */
+/* AP-423: Wieder linksbuendig. AP-420 hatte Symbol und Text mittig gestellt
+   (auto-Spur plus justify-content), AP-421 dafuer eine gemeinsame Spurbreite
+   von 7rem gesetzt, damit die Symbole fluchten. Beides ist zurueckgenommen:
+   minmax(0,1fr) zieht die Textspur wieder auf die Restbreite, das Paar steht
+   links. Die Symbole fluchten dadurch von selbst. */
 .contact-location-address,
 .contact-location-route {
   display: grid;
-  grid-template-columns: 40px min(7rem, 100%);
+  grid-template-columns: 40px minmax(0,1fr);
   gap: 12px;
   align-items: center;
-  justify-content: center;
   min-height: 79px;
   padding: 11px 12px;
   border: 1px solid rgba(24,38,13,.13);
@@ -408,12 +392,8 @@
 }
 
 .contact-location-icon svg { width: 20px; height: 20px; }
-/* AP-422: text-align: center. Die drei bzw. zwei Zeilen standen linksbuendig
-   untereinander; jetzt sitzen sie mittig in ihrer Spur. Weil beide Kacheln
-   seit AP-421 dieselbe Spurbreite von 7rem haben, zentrieren sie an derselben
-   Stelle - die Zeilen beider Kacheln stehen also auch zueinander mittig. */
 .contact-location-address > span:last-child,
-.contact-location-route > span:nth-child(2) { display: grid; gap: 3px; min-width: 0; text-align: center; }
+.contact-location-route > span:nth-child(2) { display: grid; gap: 3px; min-width: 0; }
 .contact-location-address strong { color: var(--ink); font-family: var(--display); font-size: .98rem; line-height: 1.18; }
 .contact-location-route strong { color: var(--ink); font-family: var(--display); font-size: .8rem; line-height: 1.25; }
 .contact-location-address small,
@@ -572,14 +552,56 @@
   .contact-location-card-grid { grid-template-columns: minmax(0,1fr) minmax(330px,1.08fr); }
 }
 
+/* AP-423: Bis 720px stehen die beiden Kacheln links und der Terminhinweis
+   rechts daneben.
+
+   Dafuer muessen Kacheln und Hinweis Geschwister sein - sie sind es nicht: die
+   Kacheln stecken in .contact-location-copy, der Hinweis ist ein Kind des
+   Rasters. display: contents loest den Kasten der Textspalte auf, ohne seinen
+   Inhalt anzutasten; Beschriftung, Ueberschrift und Kachelblock werden dadurch
+   selbst zu Rasterkindern und lassen sich neben dem Hinweis platzieren. Die
+   Absenderregeln greifen weiter, das Element bleibt ja im Baum.
+
+   row-gap: 0 ist noetig, weil der Zeilenabstand des Rasters sonst zwischen
+   Beschriftung, Ueberschrift und Kacheln kaeme - dort tragen die Abstaende seit
+   jeher die eigenen Raender der Elemente (h2: 10px/12px, Kachelblock: 22px).
+   Der Abstand zur Karte wird deshalb unten von Hand gesetzt.
+
+   Die Trennlinie ueber dem Hinweis faellt weg: Sie trennte ihn, solange er
+   ueber die volle Breite unter den Kacheln lag. Neben ihnen waere sie eine
+   Oberkante ohne Aufgabe. Der Korallstrich links an .contact-visit-note bleibt
+   und traegt die Auszeichnung jetzt allein. */
 @media (max-width:720px) {
-  .contact-location-card-grid { grid-template-columns: 1fr; }
-  .contact-location-copy { justify-content: flex-start; }
-  .contact-map-shell { height: 380px; min-height: 380px; }
-  /* AP-419: Gestapelt traegt der Zeilenabstand des Rasters die Abstaende nach
-     oben UND nach unten. Der eigene Aussenabstand des Hinweises kaeme sonst
-     oben doppelt und unten gar nicht. */
-  .contact-location-footer { margin-top: 0; }
+  .contact-location-copy { display: contents; }
+
+  .contact-location-card-grid {
+    grid-template-columns: max-content minmax(0,1fr);
+    column-gap: 10px;
+    row-gap: 0;
+  }
+
+  .contact-location-label,
+  .contact-location-copy h2,
+  .contact-map-shell { grid-column: 1 / -1; }
+
+  /* align-self: start an beiden Spalten. Das Raster streckt seine Kinder
+     (align-items: stretch), und die Zeilenhoehe richtet sich nach der
+     hoeheren der beiden Spalten - ohne diese Zeile waeren die Kacheln bei
+     375px auf 228px aufgezogen worden, nur weil der Hinweis daneben so hoch
+     laeuft. So behalten sie ihre 168px. */
+  .contact-location-actions { grid-column: 1; align-self: start; }
+
+  .contact-location-footer {
+    grid-column: 2;
+    /* Deckt sich mit dem margin-top des Kachelblocks - beide Spalten beginnen
+       damit auf derselben Hoehe. */
+    align-self: start;
+    margin-top: 22px;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .contact-map-shell { height: 380px; min-height: 380px; margin-top: 22px; }
 }
 
 @media (max-width:600px) {
