@@ -88,6 +88,10 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   `assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png` isoliert.
   Form und Farben wurden nicht generativ verändert. SHA-256:
   `6D8489157F6CBA0265A864BC55E78AAB6AAE5458BF4A1D6814AA0099354397DA`.
+  **Seit AP-449 (24.09.2026) unbenutzt.** Letzter Einsatz war die Blüte an der
+  Ecke der Standortkarte auf der Kontaktseite; sie ist auf Ansage des
+  Auftraggebers entfallen. Die Datei bleibt liegen, falls die Blüte
+  zurückkommt.
 - `assets/img/icons/maik-rohdich-bluete-original.png` – 526 × 430 px große,
   transparente Einzelblüte aus der vom Auftraggeber gelieferten Datei
   `Maik-Rohdich-Bluete-Ausschnitt.png`. Sie ersetzt die zuvor verwendete
