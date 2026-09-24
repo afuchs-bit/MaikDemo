@@ -230,13 +230,10 @@
 
 .ueber-inhaber__zitat p { margin: 0; }
 
-/* AP-327: Vorlaeufiger Text. Gedaempft und kursiv, damit auf der Seite zu sehen
-   ist, dass hier noch nicht die endgueltigen Saetze stehen. Beim Ersetzen faellt
-   die Klasse weg - der Punkt steht in docs/go-live-checkliste.md. */
-.ueber-inhaber .ueber-inhaber__platzhalter {
-  color: var(--ink-mute);
-  font-style: italic;
-}
+/* AP-450: Hier stand .ueber-inhaber__platzhalter - gedaempft und kursiv, damit
+   der vorlaeufige Satz auf der Seite als solcher zu erkennen war. Das Zitat
+   traegt seit dem 24.09.2026 den Wortlaut des Auftraggebers; die Klasse ist im
+   Markup mit entfernt, der Punkt 1b der Go-Live-Checkliste ist damit erledigt. */
 
 .ueber-inhaber__name {
   margin-top: 28px !important;
@@ -681,147 +678,11 @@
 .ueber-projekte__spur .project-body { display: grid; gap: 6px; }
 .ueber-projekte__spur .card-more { margin-top: 6px; }
 
-/* --- Auch fuer die kleine Sache ------------------------------------------- */
-
-.ueber-klein__panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(20px, 3.4vw, 44px);
-  align-items: center;
-  padding: clamp(24px, 3.4vw, 44px);
-  border-radius: 24px 24px 44px 24px;
-  border: 1px solid var(--home-lime);
-  background: linear-gradient(135deg, var(--green-800), var(--green-700) 60%, var(--green-900));
-}
-
-.ueber-klein__titel {
-  margin: 0 0 12px;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
-  line-height: 1.16;
-  letter-spacing: -.015em;
-  color: var(--ink);
-}
-
-.ueber-klein__panel p {
-  margin: 0;
-  max-width: 52ch;
-  color: var(--ink);
-  font-size: clamp(1rem, 1.25vw, 1.1rem);
-  line-height: 1.55;
-}
-
-.ueber-klein__panel p + p { margin-top: .9em; }
-
-/* Form 1:1 vom CTA "Zum Kontaktformular" uebernommen (.mobile-proof-request in
-   mobile-social-proof.css: schraeg gestutzte Karte aus versetztem Rahmen +
-   Flaeche, Pfeil in eigenem Chip). Eigene Klassen statt der dortigen BEM-Namen,
-   weil .mobile-proof-request nur innerhalb von @media (max-width: 900px)
-   ueberhaupt Regeln traegt - auf dieser Seite muss der Knopf auch am Desktop
-   stehen. Farbe und Groesse sind an den bisherigen Knopf angepasst: creme
-   (--ink) statt Limette, dunkles Gruen (--green-900) statt Schwarz, niedriger
-   als das 64px-Vorbild. */
-.ueber-klein__ruf {
-  position: relative;
-  isolation: isolate;
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 48px;
-  padding: 5px 8px 5px 20px;
-  border-radius: 12px;
-  color: var(--green-900);
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: .95rem;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: transform .12s var(--ease);
-}
-
-.ueber-klein__ruf-frame {
-  position: absolute;
-  inset: 0;
-  z-index: -3;
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 1.5px;
-  transform: translate(5px, 5px);
-  pointer-events: none;
-}
-
-.ueber-klein__ruf-shape {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  fill: var(--ink);
-  pointer-events: none;
-  transition: transform .12s var(--ease);
-}
-
-.ueber-klein__ruf-label {
-  position: relative;
-  z-index: 1;
-}
-
-.ueber-klein__ruf-arrow {
-  position: relative;
-  z-index: 1;
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--green-700);
-  color: var(--ink);
-  transition: transform .12s var(--ease);
-}
-
-/* Ohne fill/stroke faellt ein SVG auf den Standardwert fill:black zurueck -
-   bei einem offenen Linienzug (kein geschlossenes Polygon) macht das nur einen
-   duennen dunklen Schmier statt eines Pfeils. Vorlage:
-   mobile-social-proof.css:9 (.mobile-proof-request__arrow svg). */
-.ueber-klein__ruf-arrow svg {
-  width: 17px;
-  height: 17px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.25;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .ueber-klein__ruf:hover :is(.ueber-klein__ruf-shape, .ueber-klein__ruf-label, .ueber-klein__ruf-arrow) {
-    transform: translate(2px, 2px);
-  }
-
-  .ueber-klein__ruf:hover .ueber-klein__ruf-arrow svg { transform: translateX(2px); }
-}
-
-.ueber-klein__ruf:focus-visible {
-  outline: 2px solid var(--home-focus);
-  outline-offset: 6px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ueber-klein__ruf,
-  .ueber-klein__ruf-shape,
-  .ueber-klein__ruf-arrow,
-  .ueber-klein__ruf-arrow svg {
-    transition: none;
-  }
-}
+/* AP-450: Hier stand der gesamte Regelsatz der Kachel "Kein Auftrag ist zu
+   klein." - .ueber-klein__panel, __titel, __ruf samt Rahmen, Flaeche, Label,
+   Pfeil, Hover- und Fokuszustand und der Bremse fuer reduzierte Bewegung. Die
+   Kachel ist auf Ansage des Auftraggebers entfallen; ihre Aussage traegt jetzt
+   das Zitat der Person-Sektion. Keine der Klassen kommt im Repo noch vor. */
 
 /* --- Haeufige Fragen ------------------------------------------------------
    Bauteil .faq-list aus styles.css, hier in zwei Spalten mit je einem Kicker.
@@ -898,8 +759,7 @@
   .ueber-betrieb__raster,
   .ueber-inhaber__raster,
   .ueber-fuerwen__liste,
-  .ueber-faq__gruppen,
-  .ueber-klein__panel {
+  .ueber-faq__gruppen {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -909,11 +769,6 @@
   .ueber-betrieb__raster {
     grid-template-areas: "wort" "bild" "nachsatz";
   }
-
-  /* Gestapelt zieht Grid den Knopf sonst per justify-items:stretch auf die
-     volle Spaltenbreite (285px bei 375px Fensterbreite) - fuer "Kurz anrufen"
-     plus Pfeil-Chip zu lang. */
-  .ueber-klein__ruf { max-width: 220px; }
 
   /* Der senkrechte Steg der Person ergibt gestapelt keinen Sinn; an seine
      Stelle tritt die liegende Bluete zwischen den beiden Bloecken. */

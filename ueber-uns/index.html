@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923k" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923l" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -377,17 +377,13 @@ html, body { background-color: #171916; }
        passt zur Ueberschrift aus AP-383; der urspruenglich vorgesehene
        Ich-Form-Text von Maik Rohdich wird damit nicht mehr gebraucht.
 
-       [OFFEN: Nur noch das Zitat - docs/offene-punkte.md.
-        DAS ZITAT DIESER SEKTION IST VORLAEUFIG. Es steht hier auf ausdrueckliche
-        Entscheidung des Auftraggebers vom 15.09.2026, damit das Layout im
-        Zusammenhang beurteilt werden kann - abweichend von Grundregel 2 (kein
-        sichtbarer Platzhaltertext). Vor dem Go-Live muss es ersetzt sein; der
-        Punkt steht dafuer in docs/go-live-checkliste.md.
-
-        Gebraucht wird ein Zitat, das die Haltung traegt, mit Freigabe des
-        Wortlauts. Es traegt .ueber-inhaber__platzhalter - gedaempft und kursiv,
-        damit vorlaeufiger Text auch auf der Seite als solcher zu erkennen ist.
-        Beim Ersetzen die Klasse mit entfernen.]
+       AP-450 (24.09.2026): Das Zitat ist nicht mehr vorlaeufig. Es lautet auf
+       Ansage des Auftraggebers "Kein Auftrag ist uns zu klein." und traegt damit
+       die Aussage der Kachel, die bis zu diesem Tag hinter den Projekten stand
+       ("Kein Auftrag ist zu klein.", AP-327, Wortlaut ebenfalls vom
+       Auftraggeber). Die Klasse .ueber-inhaber__platzhalter ist entfallen, ihre
+       Regel in ueber-uns.css ebenfalls. Punkt 1b der Go-Live-Checkliste ist
+       damit erledigt - die Seite traegt keinen sichtbaren Platzhaltertext mehr.
 
        Diese Sektion ist der Kern der Entwuerfe vom 15.09.2026: Wer auf der
        Startseite "Mehr ueber Maik Rohdich" klickt, sucht die Person und findet
@@ -419,8 +415,7 @@ html, body { background-color: #171916; }
         <img src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async">
       </div>
       <blockquote class="ueber-inhaber__zitat">
-        <p class="ueber-inhaber__platzhalter">„Ein Satz von Maik – der, mit dem er abrät, statt
-           zu verkaufen, was nicht hält.“</p>
+        <p>„Kein Auftrag ist uns zu klein.“</p>
         <p class="ueber-inhaber__name">Maik Rohdich, Gartenbaumeister</p>
       </blockquote>
 
@@ -759,27 +754,14 @@ html, body { background-color: #171916; }
     </div>
   </section>
   <!-- ===== Auch fuer die kleine Sache ====================================
-       AP-327: Neu aus Entwurf 3. Der Wortlaut stammt vom Auftraggeber und
-       nimmt eine Sorge auf, die in keiner anderen Sektion vorkommt: dass ein
-       Meisterbetrieb fuer eine Stunde Heckenschnitt nicht kommt. -->
-  <section class="section ueber-klein">
-    <div class="container">
-      <div class="ueber-klein__panel reveal">
-        <div>
-          <h2 class="ueber-klein__titel">Kein Auftrag ist zu klein.</h2>
-          <p>Eine Stunde Hecke vor dem Geburtstag, ein Beet auffrischen, ein Baum, der weg muss.</p>
-          <p>Dafür kommen wir mit denselben Leuten und demselben Gerät wie für die großen
-             Aufträge. Es muss nicht gleich der ganze Garten sein.</p>
-        </div>
-        <a class="ueber-klein__ruf" href="tel:+491711738943">
-          <svg class="ueber-klein__ruf-frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
-          <svg class="ueber-klein__ruf-shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-          <span class="ueber-klein__ruf-label">Kurz anrufen</span>
-          <span class="ueber-klein__ruf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </div>
-    </div>
-  </section>
+       AP-450 (24.09.2026): Hier stand die Kachel "Kein Auftrag ist zu klein."
+       (AP-327, Wortlaut vom Auftraggeber) mit den beiden Absaetzen darunter und
+       dem Knopf "Kurz anrufen". Auf Ansage des Auftraggebers entfallen - ihre
+       Aussage traegt jetzt das Zitat der Person-Sektion weiter oben.
+
+       Der Knopf faellt ersatzlos weg, so entschieden. Die Seite behaelt vier
+       weitere Telefonlinks, dazu den Anrufknopf im Seitenkopf. Saemtliche
+       .ueber-klein*-Regeln sind aus ueber-uns.css entfernt. -->
   <!-- ===== Haeufige Fragen ================================================
        AP-327: Vier Fragen in zwei Gruppen. Keine Dublette zur Startseiten-FAQ -
        die beantwortet den Ablauf einer Anfrage, hier geht es um den Betrieb

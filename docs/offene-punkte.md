@@ -2037,3 +2037,35 @@ seine Entfernung verlangt.
   Schriftbild von „Alles aus einer Hand". Das Schriftbild kam nie von jenem Absatz, sondern
   von der Klasse `type-subsection-title`, die er trug — die Zwischenüberschrift ist von der
   Entfernung also nicht betroffen. Der Kommentar ist entsprechend nachgezogen.
+
+---
+
+## AP-450 — Zitat endgültig, Kachel „Kein Auftrag ist zu klein." entfallen
+
+Zwei Ansagen des Auftraggebers vom **24.09.2026**, die zusammengehören.
+
+**1. Das Zitat der Person-Sektion ist nicht mehr vorläufig.** Es lautet
+**„Kein Auftrag ist uns zu klein."** Damit endet die Abweichung von Grundregel 2 (kein
+sichtbarer Platzhaltertext), die seit dem 15.09.2026 auf ausdrückliche Entscheidung des
+Auftraggebers bestand. Punkt **1b der Go-Live-Checkliste ist abgehakt**, die Klasse
+`ueber-inhaber__platzhalter` ist aus Markup und CSS verschwunden.
+
+**Der Satz ist nicht erfunden.** Der Auftraggeber gab die Richtung vor („irgendwas mit kein
+Auftrag ist uns zu klein") und hat den genauen Wortlaut aus drei Vorschlägen gewählt. Alle
+drei bestanden aus Wortlaut, der bereits auf der Seite stand und laut Markup-Kommentar zu
+AP-327 vom Auftraggeber stammt.
+
+**2. Die Kachel „Kein Auftrag ist zu klein." ist entfallen.** Sie stand seit AP-327 hinter
+den Projekten und trug neben der Überschrift zwei Absätze und den Knopf „Kurz anrufen".
+Ihre Aussage trägt jetzt das Zitat.
+
+### Was damit verloren geht — und was nicht
+
+- **Die beiden Absätze der Kachel** („Eine Stunde Hecke vor dem Geburtstag …" und „Dafür
+  kommen wir mit denselben Leuten und demselben Gerät …") stehen nirgends mehr auf der
+  Website. Sie waren die einzige Stelle, die diese Sorge ausbuchstabiert hat — das Zitat
+  benennt sie, erklärt sie aber nicht. **Falls das zurückkommen soll**, ist der kleinste Weg
+  ein Absatz in der Person-Sektion; die Kachelregeln sind entfernt und müssten neu
+  geschrieben werden.
+- **Der Knopf „Kurz anrufen"** fällt ersatzlos weg, so entschieden. Die Seite behält vier
+  weitere Telefonlinks, dazu den Anrufknopf im Seitenkopf.
