@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923o" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923p" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -322,20 +322,11 @@ html, body { background-color: #171916; }
          Auftraggeber     -> die drei Kacheln "Fuer wen wir arbeiten"
        Der Kopf traegt jetzt nur noch H1 und Leitsatz; der Einstieg in den
        Betrieb beginnt eine Sektion spaeter. -->
-  <section class="ueber-kopf">
-    <div class="container">
-      <nav class="breadcrumbs" aria-label="Brotkrumennavigation">
-        <ol>
-          <li><a href="../">Startseite</a></li>
-          <li aria-current="page">Über uns</li>
-        </ol>
-      </nav>
-      <!-- AP-453: Die H1 stand hier bis zum 24.09.2026. Sie ist in das Startbild
-           darunter gewandert - zwei Ueberschriften unmittelbar uebereinander
-           konkurrieren, und der Kruemelpfad sagt ohnehin schon, wo man ist.
-           Ihr Schriftbild aus AP-452 ist mitgegangen, nur groesser gesetzt. -->
-    </div>
-  </section>
+  <!-- AP-454: Der Seitenkopf ist im Startbild aufgegangen. Bis zum 24.09.2026
+       stand hier eine eigene Sektion .ueber-kopf mit dem Kruemelpfad; das Bild
+       begann erst darunter. Auf Ansage des Auftraggebers reicht es jetzt bis an
+       die Unterkante des Headers, und der Kruemelpfad liegt darauf.
+       (AP-453 hatte zuvor schon die H1 dorthin geholt.) -->
 
   <!-- ===== Startbild ======================================================
        AP-453 (24.09.2026): Randloses Foto unter dem Seitenkopf, Ueberschrift im
@@ -363,7 +354,15 @@ html, body { background-color: #171916; }
            alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
            loading="eager" fetchpriority="high" decoding="async">
     </picture>
-    <h1 class="ueber-hero__titel">Über uns</h1>
+    <div class="ueber-hero__inhalt">
+      <nav class="breadcrumbs" aria-label="Brotkrumennavigation">
+        <ol>
+          <li><a href="../">Startseite</a></li>
+          <li aria-current="page">Über uns</li>
+        </ol>
+      </nav>
+      <h1 class="ueber-hero__titel">Über uns</h1>
+    </div>
     <span class="ueber-hero__linie" aria-hidden="true"></span>
     <span class="ueber-hero__bluete" aria-hidden="true"></span>
   </section>

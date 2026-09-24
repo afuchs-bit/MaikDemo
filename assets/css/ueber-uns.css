@@ -85,9 +85,9 @@
    26 + 52 = 78px zwischen "Ueber uns" und "Die Person hinter dem Betrieb".
    Jetzt traegt allein --space-section den Abstand, wie zwischen allen anderen
    Sektionen der Seite auch. */
-.ueber-kopf {
-  padding: clamp(22px, 3vw, 40px) 0 0;
-}
+/* AP-454: Hier stand .ueber-kopf - die Sektion, die bis zum 24.09.2026 den
+   Kruemelpfad ueber dem Startbild trug. Sie ist im Bild aufgegangen; die Klasse
+   kommt im Repo nicht mehr vor. */
 
 /* --- Startbild -------------------------------------------------------------
    AP-453: Randloses Foto unter dem Seitenkopf, Ueberschrift im Bild, diagonaler
@@ -107,13 +107,28 @@
 
    KEIN overflow: hidden. Die Bluete sitzt auf der Kante und ragt darueber
    hinaus; ein Beschnitt haette sie halbiert. */
+/* AP-454: Der Hero beginnt jetzt unmittelbar an der Headerunterkante und nimmt
+   den Kruemelpfad auf. Er waechst dabei nach OBEN - die Unterkante mit Schnitt
+   und Bluete bleibt, wo sie war, darunter rueckt nichts.
+
+   Die Hoehe ist ADDITIV gerechnet, nicht neu gesetzt: der bisherige Wert plus
+   genau das, was der Kruemelstreifen samt dem frueheren Abstand darunter
+   eingenommen hat. Ein neu gegriffener Wert haette die Unterkante verschoben,
+   und darunter sollte sich nichts bewegen. Gemessen waren das 64px bei 390px
+   und 84px bei 1280px.
+
+   Am Rechner ist aspect-ratio dafuer entfallen. 42.86vw sind 100vw/(21:9), also
+   dieselbe Schraege wie zuvor; die 84px kommen danach dazu. Mit aspect-ratio
+   waere das Verhaeltnis der Deckel gewesen und die Unterkante haette gewandert.
+
+   margin-top ist entfallen: Der Hero ist erstes Kind von main, jeder Abstand
+   nach oben waere eine Luecke zwischen Header und Bild. */
 .ueber-hero {
   --hero-abfall: clamp(30px, 12.46vw, 118px);
   position: relative;
   display: grid;
-  align-items: end;
-  min-height: clamp(300px, 84vw, 400px);
-  margin-top: clamp(14px, 2vw, 24px);
+  align-items: start;
+  min-height: calc(clamp(300px, 84vw, 400px) + clamp(58px, 16.4vw, 88px));
 }
 
 .ueber-hero picture {
@@ -150,15 +165,28 @@
   );
 }
 
-.ueber-hero__titel {
+/* AP-454: Kruemelpfad und Ueberschrift stehen in einem gemeinsamen Kasten -
+   sonst muessten beide Containerbreite und Seitenpolster einzeln fuehren und
+   koennten auseinanderlaufen. Der Kasten haelt auch den Abstand nach unten zur
+   Schnittkante, der bis AP-453 am Polster der Ueberschrift hing. */
+.ueber-hero__inhalt {
   position: relative;
   z-index: 2;
-  margin: 0;
-  padding: clamp(18px, 5vw, 34px) var(--gutter) calc(var(--hero-abfall) + clamp(26px, 6vw, 44px));
-  align-self: start;
-  max-width: var(--container);
   justify-self: center;
   width: 100%;
+  max-width: var(--container);
+  padding: clamp(14px, 3.5vw, 24px) var(--gutter) calc(var(--hero-abfall) + clamp(26px, 6vw, 44px));
+}
+
+/* Der Kruemelpfad steht jetzt auf dem Foto. Die Grundregel styles.css:2212 gibt
+   ihm 20px nach unten; hier darf es enger sein, weil die Ueberschrift direkt
+   folgt. Farben bleiben die der Grundregel - der Schleier ist oben am
+   dichtesten, und der Kontrast ist dort nachgemessen. */
+.ueber-hero .breadcrumbs ol { margin-bottom: clamp(10px, 2.5vw, 16px); }
+
+.ueber-hero__titel {
+  margin: 0;
+  padding: 0;
   font-family: "Baloo 2", var(--display);
   font-size: clamp(2.125rem, 1.446rem + 2.785vw, 3.5rem);
   font-weight: 600;
@@ -210,8 +238,7 @@
 
 @media (min-width: 900px) {
   .ueber-hero {
-    min-height: 380px;
-    aspect-ratio: 21 / 9;
+    min-height: calc(42.86vw + 84px);
   }
 }
 
