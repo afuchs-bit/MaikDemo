@@ -79,6 +79,15 @@
 .ueber-inhaber {
   position: relative;
   overflow: hidden;
+  /* AP-444: Kein Polster nach unten. Seit AP-441 schliesst das Foto den
+     Abschnitt ab, und auf dem Handy reicht es bis an beide Bildschirmkanten -
+     darunter noch 52px Leerflaeche zu setzen und darueber im naechsten
+     Abschnitt noch einmal 52px ergab 104px Loch zwischen Foto und Ueberschrift
+     (am Rechner 192px). Das Foto endet jetzt buendig; uebrig bleibt der
+     normale Abstand zwischen zwei Abschnitten der Seite.
+     Die Regel schlaegt .section (styles.css) bei gleichem Gewicht ueber die
+     Ladereihenfolge - ueber-uns.css kommt spaeter. */
+  padding-bottom: 0;
 }
 
 /* AP-442: Hier stand .ueber-inhaber__wasserzeichen - die grosse, gedaempfte
