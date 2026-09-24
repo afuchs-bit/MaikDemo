@@ -89,6 +89,35 @@
   padding: clamp(22px, 3vw, 40px) 0 0;
 }
 
+/* AP-452: Schriftbild der Startseiten-Ueberschrift "Ueber uns"
+   (privat-form.css:4198) - auf Ansage des Auftraggebers, und derselbe Griff wie
+   in AP-415 fuer die Kontakt- und die Galerieseite. Die Werte sind woertlich
+   die von dort, damit die drei Unterseiten nicht auseinanderlaufen.
+
+   Uebernommen ist der komplette Satz, nicht nur Schriftart, Groesse und
+   Zentrierung: Baloo 2 mit der Strichstaerke 800 und der Laufweite -.043em der
+   bisherigen H1 saehe gedraengt und verzerrt aus - die Werte gehoeren zusammen.
+
+   Ersatzschrift ist var(--display) statt sans-serif. Das greift nur, wenn
+   Baloo 2 nicht laedt; das @font-face dafuer steht seit AP-447 am Dateikopf. */
+.ueber-kopf h1 {
+  margin: 0;
+  font-family: "Baloo 2", var(--display);
+  font-size: 31px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: -.015em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+@media (max-width: 360px) {
+  /* Dieselbe Stufe wie die Vorlage (privat-form.css:4224) und wie auf den
+     beiden anderen Unterseiten. */
+  .ueber-kopf h1 { font-size: 28px; }
+}
+
 /* AP-381: Der Leitsatz ist Ueberschrift des Betriebsabschnitts geworden; seine
    eigenen Regeln sind damit entfallen. Groesse, Gewicht und Laufweite kommen
    jetzt von .type-section-title, die Farbe von dort ebenso.
