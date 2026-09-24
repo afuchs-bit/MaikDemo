@@ -33,6 +33,14 @@
    den row-gap des Containers, darunter in das padding des klebenden Wrappers.
    Zweimal gesetzt haette er doppelt gezaehlt. */
 
+/* AP-434: Abstand des Kruemelpfads zur Ueberschrift. Derselbe Wert wie auf der
+   Kontaktseite (kontakt.css:70), damit beide Unterseiten oben gleich atmen.
+   Er ersetzt die 20px aus der Grundregel styles.css:2212; linksbuendig ist er
+   dort schon von Haus aus - die Zentrierung, die der Auftraggeber auf der
+   Kontaktseite beanstandet hat, war eine eigene Regel und gibt es hier nicht. */
+.projects-overview-intro .breadcrumbs { margin-bottom: clamp(28px, 3vw, 40px); }
+.projects-overview-intro .breadcrumbs ol { margin-bottom: 0; }
+
 .projects-overview-head {
   max-width: 720px;
   /* AP-415: war margin: 0. Der Kasten ist auf 720px begrenzt; seit die

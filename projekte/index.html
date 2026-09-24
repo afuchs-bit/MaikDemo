@@ -29,7 +29,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260921g" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
 <link rel="stylesheet" href="../assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/projekte.css?v=20260923i" />
+<link rel="stylesheet" href="../assets/css/projekte.css?v=20260923j" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -208,6 +208,24 @@ html, body { background-color: #171916; }
 <section class="section section-projects projects-overview" id="galerie" aria-labelledby="gal-title">
   <div class="container">
     <div class="projects-overview-intro reveal">
+      <!-- AP-434: Der Kruemelpfad auf Ansage des Auftraggebers, wie auf der
+           Kontaktseite. Die strukturierten Daten der Seite fuehren "Startseite >
+           Galerie" schon seit jeher (BreadcrumbList im Kopf); sichtbar fehlte er
+           als einziger unter den Unterseiten. Beschriftung und Pfad sind woertlich
+           die der Projektseiten (projekte/*/index.html), damit die zweite Stufe
+           dort und hier dieselbe bleibt.
+           Er steht INNERHALB von .projects-overview-intro, nicht daneben: ab 901px
+           ist .projects-overview > .container ein Raster, in dem Ueberschrift und
+           Umschalter fest auf Zeile 1 sitzen. Ein weiteres Kind des Containers
+           bekaeme ueber beide Spalten keine Luecke in Zeile 1 und rutschte unter
+           den Umschalter. Kein eigenes reveal - der Wrapper bringt es mit. -->
+      <nav class="breadcrumbs" aria-label="Sie sind hier">
+        <ol>
+          <li><a href="../">Startseite</a></li>
+          <li aria-current="page">Galerie</li>
+        </ol>
+      </nav>
+
       <div class="section-head projects-overview-head">
         <h1 class="type-page-title" id="gal-title">Garten- und Projektgalerie</h1>
       </div>
