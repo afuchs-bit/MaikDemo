@@ -942,7 +942,14 @@
   var MODE = 'once';        // 'once' = einmal durch, danach bleibt die Liste stehen
                             // 'loop' = Dauerschleife (dann ist der Pause-Knopf zwingend,
                             //          WCAG 2.2.2 - er steht im Markup bereit)
-  var TYPE_MS = 58, DELETE_MS = 28, HOLD_MS = 1100, GAP_MS = 260, START_MS = 420;
+  /* AP-446: Auf Ansage des Auftraggebers deutlich langsamer. Die Werte aus
+     AP-411 waren 58 / 28 / 1100 / 260 / 420; gemessen lief der Durchlauf damit
+     11,2 Sekunden. 95ms je Buchstabe liegen im Bereich, in dem das Schreiben
+     wie von Hand getippt wirkt statt wie ein Aufbau.
+     Das Loeschen bleibt bewusst schneller als das Schreiben - rueckwaerts liest
+     niemand mit, und gleich lange Loeschzeiten wirken zaeh. Das Verhaeltnis von
+     rund 1:2 ist das aus AP-411, nur beide Werte angehoben. */
+  var TYPE_MS = 95, DELETE_MS = 45, HOLD_MS = 1400, GAP_MS = 340, START_MS = 520;
 
   var sec = document.querySelector('.ueber-betrieb');
   if (!sec) return;
