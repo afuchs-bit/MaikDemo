@@ -29,6 +29,12 @@ const ONLY = new Set(process.argv.slice(2));
 
 // name = Basisname der Ausgabedateien; dir = Zielordner (relativ zum Repo-Root);
 // src = Quelldatei (relativ zum Repo-Root).
+//
+// AP-443: avif / webp uebersteuern die globalen Kodiervorgaben FUER DIESEN
+// EINTRAG. Gedacht fuer Bilder, die gross ausgespielt werden und bei denen die
+// Vorgabe sichtbar zu weich kodiert - ohne alle anderen Bilder anzufassen. Die
+// 200-KB-Grenze gilt unveraendert weiter: writeVariant senkt von hier aus ab,
+// wenn es nicht passt.
 const SOURCES = [
   { src: 'assets/img/_src/hero-garten-herne.png',            dir: 'assets/img/hero',                              name: 'hero-garten-herne' },
   // Privat-Tuer im Hero. Quelle 1440x1080 (4:3), Tuer ist ~3:2 - daher leichter
@@ -51,8 +57,19 @@ const SOURCES = [
   // widths ausdruecklich: die Standardliste ist [480, 960, 1600], und 960 faellt
   // bei einer 900px breiten Vorlage heraus - uebrig blieben sonst allein 480px.
   // 900 ist alles, was die Vorlage hergibt.
+  //
+  // AP-443: Die Vorgabe (AVIF Qualitaet 50) kodierte dieses Bild sichtbar zu
+  // weich - dichtes Laub und Saegespaene sind das Schlimmste, was ein Codec
+  // bekommen kann. Gemessen am verlustfreien Ausschnitt:
+  //   q50 effort 4 (Vorgabe)  124 KB   PSNR 27,16 dB
+  //   q65 effort 6            195 KB   PSNR 32,16 dB
+  //   q68 effort 6            227 KB   PSNR 34,60 dB   ueber der 200-KB-Grenze
+  // Genommen ist q65/effort 6 - das Beste, was ins Budget passt. Das Bild wird
+  // randlos ueber die ganze Schirmbreite ausgespielt und traegt jeden Fehler
+  // gross mit; bei kleinen Kacheln lohnt der Aufschlag nicht.
   { src: 'assets/img/_src/ueber-baumarbeiten.jpg', dir: 'assets/img/ueber',
-    name: 'ueber-baumarbeiten', widths: [480, 900], crop: { aspect: 4 / 3, focusY: 0.45 } },
+    name: 'ueber-baumarbeiten', widths: [480, 900], crop: { aspect: 4 / 3, focusY: 0.45 },
+    avif: { quality: 65, effort: 6 } },
   { src: 'assets/img/_src/ueber-1.jpg', dir: 'assets/img/ueber', name: 'ueber-1' },
   { src: 'assets/img/_src/ueber-2.jpg', dir: 'assets/img/ueber', name: 'ueber-2' },
   { src: 'assets/img/_src/ueber-3.jpg', dir: 'assets/img/ueber', name: 'ueber-3' },
@@ -180,11 +197,11 @@ async function main() {
       const written = [];
       if (widths.includes(w)) {
         const out = path.join(outDir, `${s.name}-${w}.avif`);
-        written.push([out, await writeVariant(base, out, 'avif', AVIF)]);
+        written.push([out, await writeVariant(base, out, 'avif', { ...AVIF, ...s.avif })]);
       }
       if (webpWidths.includes(w)) {
         const out = path.join(outDir, `${s.name}-${w}.webp`);
-        written.push([out, await writeVariant(base, out, 'webp', WEBP)]);
+        written.push([out, await writeVariant(base, out, 'webp', { ...WEBP, ...s.webp })]);
       }
       for (const [p, n] of written) {
         const kb = (n / 1024).toFixed(0);
@@ -196,7 +213,7 @@ async function main() {
     // Fallback <name>.webp (fuer das <img>-Element in <picture>).
     const fbW = Math.min(960, Math.max(...webpWidths));
     const fbOut = path.join(outDir, `${s.name}.webp`);
-    await writeVariant(pipelineFor(srcAbs, meta, fbW, s.crop), fbOut, 'webp', WEBP);
+    await writeVariant(pipelineFor(srcAbs, meta, fbW, s.crop), fbOut, 'webp', { ...WEBP, ...s.webp });
     const fbH = s.crop ? Math.round(fbW / s.crop.aspect) : Math.round(fbW * aspect);
 
     const canonical = `/${s.dir}/${s.name}.webp`;
