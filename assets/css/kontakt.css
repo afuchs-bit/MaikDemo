@@ -308,6 +308,30 @@
   border-color: rgba(140, 198, 63, .5);
 }
 
+/* AP-430: Beim Ueberfahren aendert sich die KACHEL, nicht das Symbol - so haelt es
+   die Vorlage auf der Startseite (anfrage.css:438, privat-form.css:5972).
+   form-trust-card.css:131 faerbte das Symbol bisher auf rgba(255,255,255,.18) und
+   hob es um 1px; jene Regel hat (0,3,1) und schlug damit die (0,2,1) aus Zeile 188.
+   Die Regeln hier haben (0,3,1) bzw. (0,4,1) und stehen in der spaeter geladenen
+   Datei - das genuegt, kein !important. Beide stehen bewusst OHNE Media Query: die
+   geerbte Regel gibt es zweimal, einmal frei und einmal in @media (hover: none),
+   und nur eine unbedingte Regel schlaegt beide.
+
+   Die zweite Regel richtet nicht nur Farbe: form-trust-card.css:136 setzt mit
+   (0,4,0) die KURZSCHRIFT background und loescht damit das background-image aus
+   Zeile 224 - das WhatsApp-Glyph verschwand beim Ueberfahren, die Flaeche blieb
+   leer gruen zurueck. Deshalb hier die Langschriften statt der Kurzschrift. */
+.contact-direct-list > a:hover .form-trust-card__action-icon {
+  background-color: rgba(5, 10, 5, .58);
+  transform: none;
+}
+
+.contact-direct-list > a.form-trust-card__whatsapp:hover .form-trust-card__action-icon {
+  background-color: #25D366;
+  background-image: url("../img/icons/whatsapp-glyph-white.svg");
+  background-size: 22px 22px;
+}
+
 .contact-direct-list > a:focus-visible {
   outline: 2px solid var(--green-500);
   outline-offset: 3px;
@@ -720,9 +744,13 @@
    zu melden statt zu ueberschreiben. */
 @media (max-width: 600px) {
 
-  /* ---------- Kopf ---------- */
+  /* ---------- Kopf ----------
+     AP-430: Hier stand bis zum 24.09.2026 zusaetzlich
+     ".contact-hero .breadcrumbs ol { justify-content: center; }" aus dem
+     AP-428-Dokument. Auf Ansage des Auftraggebers steht der Kruemelpfad wieder
+     linksbuendig - so, wie er oberhalb von 600px ohnehin schon stand. Die H1
+     bleibt zentriert; diese Mischung ist am Rechner die gewohnte. */
   .contact-hero { padding-top: 22px; }
-  .contact-hero .breadcrumbs ol { justify-content: center; }
   .contact-hero-copy { text-align: center; }
 
   /* ---------- Kachelraster ---------- */
