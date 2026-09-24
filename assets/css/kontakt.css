@@ -319,21 +319,25 @@
   align-items: stretch;
 }
 
-.contact-location-copy {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  justify-content: center;
-}
+/* AP-427: Die Textspalte loest sich jetzt auf JEDER Breite auf, nicht mehr nur
+   bis 720px (AP-423). Grund ist die Ueberschrift: Sie soll mittig auf der Seite
+   stehen, und dafuer muss sie ueber beide Spalten des Kastens reichen. Als Kind
+   eines eigenen Spaltenkastens kaeme sie nur in dessen Mitte - am Rechner rund
+   190px neben der Seitenmitte.
 
-.contact-location-label {
-  display: inline-flex;
-  color: var(--green-500);
-  font-size: .68rem;
-  font-weight: 800;
-  letter-spacing: .11em;
-  line-height: 1.2;
-  text-transform: uppercase;
+   Der Kasten bleibt im Markup stehen: an ihm haengen die Kommentare zur
+   Entstehung des Abschnitts. Gestalterisch hat er keine Aufgabe mehr.
+
+   Die Regel fuer die Beizeile "Anfahrt & Besuch" ist mit ihr entfallen; die
+   Klasse kommt im Repo nicht mehr vor. */
+.contact-location-copy { display: contents; }
+
+/* AP-427: Mittig auf jeder Breite. Ueber die id, weil .type-subsection-title
+   ein geteilter Baustein ist - dieselbe Klasse tragen Ueberschriften auf
+   anderen Seiten, und die sollen sich nicht mitaendern. */
+#contact-location-title {
+  grid-column: 1 / -1;
+  text-align: center;
 }
 
 .contact-location-copy h2 {
@@ -494,16 +498,30 @@
   border-top: 1px solid rgb(var(--green-800-rgb) / .12);
 }
 
-/* AP-419: Ab 721px stehen Adressblock und Karte fest in Zeile 1, damit der
-   Hinweis trotz seiner neuen Stelle im Quelltext in Zeile 2 faellt - das Bild
-   am Rechner bleibt dadurch unveraendert.
-   row-gap: 0 ist noetig, weil das Raster jetzt zwei Zeilen hat: Den Abstand
-   zum Hinweis traegt weiterhin allein sein margin-top von 22px, sonst kaeme
-   der Rasterabstand obendrauf. Der Spaltenabstand bleibt unberuehrt. */
+/* AP-419/AP-427: Ab 721px hat der Kasten drei Zeilen. Die Ueberschrift spannt
+   ueber beide Spalten und steht mittig (Zeile 1), darunter Kacheln links und
+   Karte rechts (Zeile 2), ganz unten der Terminhinweis ueber die volle Breite
+   (Zeile 3). Bis AP-426 sass die Ueberschrift in der linken Spalte neben der
+   Karte; sie ist auf Ansage des Auftraggebers herausgerueckt, damit sie
+   wirklich in der Seitenmitte steht.
+
+   Die Platzierung ist ausgeschrieben, weil die automatische sonst der
+   Quelltextreihenfolge folgt und den Hinweis - der seit AP-419 vor der Karte
+   steht - in die falsche Zelle setzen wuerde.
+
+   row-gap: 0 bleibt: Die Abstaende zwischen den Zeilen tragen die eigenen
+   Raender der Elemente (Ueberschrift 12px unten, Kachelblock 22px oben,
+   Hinweis 22px oben). Ein Rasterabstand kaeme obendrauf.
+
+   align-self: center am Kachelblock haelt das alte Bild: Solange die
+   Ueberschrift mit in der Spalte stand, zentrierte .contact-location-copy den
+   Block senkrecht gegen die Karte. */
 @media (min-width: 721px) {
   .contact-location-card-grid { row-gap: 0; }
-  .contact-location-copy { grid-column: 1; grid-row: 1; }
-  .contact-map-shell { grid-column: 2; grid-row: 1; }
+  #contact-location-title { grid-row: 1; }
+  .contact-location-actions { grid-column: 1; grid-row: 2; align-self: center; }
+  .contact-map-shell { grid-column: 2; grid-row: 2; }
+  .contact-location-footer { grid-column: 1 / -1; grid-row: 3; }
 }
 
 .contact-visit-note {
@@ -637,8 +655,6 @@
     row-gap: 0;
   }
 
-  .contact-location-label,
-  .contact-location-copy h2,
   .contact-map-shell { grid-column: 1 / -1; }
 
   /* align-self: start an beiden Spalten. Das Raster streckt seine Kinder
