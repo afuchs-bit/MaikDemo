@@ -44,11 +44,17 @@ jobs:
       - name: Config-Taxonomie-Sync prüfen
         run: node .github/scripts/check-config-sync.mjs
 
-      - name: Index bauen & validieren
+      - name: Leistungsseiten bauen & validieren
+        run: node .github/scripts/build-leistungen.mjs
+
+      - name: Projektseiten und Sitemap bauen & validieren
         run: node .github/scripts/build-index.mjs
 
       - name: Galerie-Teaser bauen & Bilder optimieren
         run: node .github/scripts/build-gallery-teaser.mjs
+
+      - name: Einheitliche Header aktualisieren
+        run: node .github/scripts/build-headers.mjs
 
       - name: Einheitliche Footer aktualisieren
         run: node .github/scripts/build-footers.mjs

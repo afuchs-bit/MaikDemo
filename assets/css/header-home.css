@@ -125,12 +125,30 @@
     transition: border-color .25s var(--ease), padding .25s var(--ease);
   }
 
+  /* Die Inhaltsbreite gehoert zum kompakten Header selbst. Damit bleibt sie
+     auch auf Seiten mit eigener `.container`-Definition exakt identisch zur
+     gescrollten Startseite. */
+  .site-header > .header-inner.container {
+    width: min(calc(100% - 32px), 1360px);
+    max-width: 1360px;
+    margin-inline: auto;
+    padding: 8px 0;
+  }
+
   /* Eine gemeinsame Grafik haelt Name, Meisterzeile und Blueten proportional.
      Masse und Ausrichtung kommen weiter aus styles.css:331-341 - sie stimmen
      mit dem kompakten Zustand der Startseite ueberein, nur das Motiv nicht. */
   .site-header .brand-logo,
   .site-header.is-scrolled .brand-logo {
     background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister.png?v=20260902a");
+  }
+
+  /* Im kompakten Startseiten-Zustand entfaellt die separate Instagram-Kachel.
+     Diese gemeinsame Datei bildet genau diesen Zustand auf allen Unterseiten
+     ab; die Startseite kann sie im grossen Hero-Zustand weiterhin ueber ihre
+     spezifischeren Morph-Regeln einblenden. */
+  .site-header .header-instagram {
+    display: none;
   }
 
   /* Menue- und Telefonzeilen sind keine Iconkacheln. Hier signalisiert nur die

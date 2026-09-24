@@ -69,6 +69,8 @@ collections:
         multiple: true
         # Werte müssen exakt den Slugs in content/taxonomie.json entsprechen (Action prüft das).
         options:
+          - { label: "Außergewöhnliches für den Garten", value: aussergewoehnliches-garten }
+          - { label: "Balkonkastenbepflanzung", value: balkonkastenbepflanzung }
           - { label: "Gartengestaltung", value: gartengestaltung }
           - { label: "Vorgartenbau", value: vorgarten }
           - { label: "Teichanlage", value: teichbau }
@@ -76,6 +78,9 @@ collections:
           - { label: "Dachbegrünung", value: dachbegruenung }
           - { label: "Baumarbeiten / Fällung", value: baumarbeiten }
           - { label: "Baumkontrolle & Gutachten", value: baumkontrolle }
+          - { label: "Baumpflege", value: baumpflege }
+          - { label: "Beleuchtung", value: beleuchtung }
+          - { label: "Bonsai / Formgehölze", value: bonsai-formgehoelze }
           - { label: "Sturmnotdienst", value: sturmnotdienst }
           - { label: "Holzverkauf", value: holzverkauf }
           - { label: "Außenanlagenpflege", value: aussenanlagenpflege }
@@ -85,10 +90,25 @@ collections:
           - { label: "Terrassen & Pflaster", value: terrasse-pflasterarbeiten }
           - { label: "Palmen & winterfest", value: palmen-winterfest }
           - { label: "Pool- & Whirlpool-Umfeld", value: pool-whirlpool-umfeld }
+          - { label: "Entwässerung", value: entwaesserung }
+          - { label: "Erd- & Baggerarbeiten", value: erd-baggerarbeiten }
+          - { label: "Ersatz- & Ausgleichspflanzungen", value: ersatz-ausgleichspflanzungen }
+          - { label: "Feuerstellen", value: feuerstellen }
+          - { label: "Findlinge und Natursteineinfassungen", value: findlinge-natursteineinfassungen }
           - { label: "Nassschneidearbeiten", value: nassschneidearbeiten }
+          - { label: "Pflasterreinigung / Fugenreinigung", value: pflasterreinigung-fugenreinigung }
           - { label: "Rodungsarbeiten", value: rodungsarbeiten }
+          - { label: "Rohdichs Grubengold", value: rohdichs-grubengold }
+          - { label: "Rollrasen", value: rollrasen }
+          - { label: "Saisonbepflanzung", value: saisonbepflanzung }
+          - { label: "Schredderarbeiten", value: schredderarbeiten }
+          - { label: "Sichtschutzbepflanzung", value: sichtschutzbepflanzung }
+          - { label: "Stubbenfräseneinsatz", value: stubbenfraeseneinsatz }
+          - { label: "Terrassenbau", value: terrassenbau }
           - { label: "Verkehrssicherheit", value: verkehrssicherheit }
           - { label: "Vermessungs- & Lasertechnik", value: vermessung-lasertechnik }
+          - { label: "Wurzelentfernung", value: wurzelentfernung }
+          - { label: "Zäune & Sichtschutz", value: zaeune-sichtschutz }
         hint: "Mehrfachauswahl – ein Projekt hat meist mehrere Leistungen."
       - { name: datum, label: "Datum", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, hint: "Für die Sortierung und die Aktuell-Ansicht (neueste zuerst)." }
       - { name: featured, label: "Als Highlight auszeichnen", widget: boolean, default: false, hint: "Erscheint auf der Startseite (die 3 neuesten Highlights) und im Tab „Highlights“ der Galerie. Für die Reihenfolge ist das Datum zuständig, nicht dieses Feld." }

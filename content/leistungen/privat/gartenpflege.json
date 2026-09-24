@@ -1,39 +1,96 @@
 {
+  "layout": "editorial-v2",
   "h1": "Gartenpflege",
   "navLabel": "Gartenpflege",
-  "title": "Gartenpflege in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Regelmäßige Gartenpflege in Herne, Bochum und Recklinghausen – Rasen, Hecken, Beete und Rückschnitt fachgerecht und im passenden Rhythmus. Jetzt Termin anfragen.",
-  "serviceType": "Regelmäßige Pflege privater Gärten",
-  "intro": "Wir halten Ihren Garten in Form – Rasen, Hecken, Beete, Rückschnitt und Laub, im passenden Rhythmus übers Jahr. Ob als regelmäßige Betreuung oder als gezielter Pflegeeinsatz: Wir machen die Arbeiten, für die Zeit, Werkzeug oder Fachwissen fehlen, und achten dabei auf die richtigen Zeitpunkte, etwa beim Heckenschnitt. Für Gärten in Herne und Umgebung.",
-  "eignung": [
-    "Eigentümer, denen für die laufende Gartenarbeit die Zeit oder das Gerät fehlt.",
-    "Gärten, die einmal gründlich in Form gebracht werden sollen.",
-    "Wer die aufwendigen Arbeiten – Heckenschnitt, Rückschnitt, Vertikutieren – abgeben möchte.",
-    "Menschen, die ihren Garten genießen, aber nicht mehr selbst pflegen können oder wollen."
+  "title": "Gartenpflege in Herne | Maik Rohdich",
+  "metaDescription": "Wir pflegen Ihr Grün: Nach einem stressigen Arbeitstag auf der Terrasse entspannen? Sich von der Schönheit der Natur und farbenfrohen Pflanzen ablenken…",
+  "serviceType": "Gartenpflege",
+  "unterzeile": "Wir pflegen Ihr Grün",
+  "einstieg": [
+    "Nach einem stressigen Arbeitstag auf der Terrasse entspannen? Sich von der Schönheit der Natur und farbenfrohen Pflanzen ablenken lassen?",
+    "Kontinuierliche und fachgerechte Pflege ist der Schlüssel dazu. Sie hält Ihren Garten in Form, unterstützt die Entwicklung der Pflanzen und hilft, Fehlentwicklungen frühzeitig zu erkennen."
   ],
-  "ablauf": [
-    { "titel": "Bestandsaufnahme", "text": "Wir sehen uns den Garten an und klären, welche Arbeiten anstehen und welcher Rhythmus sinnvoll ist." },
-    { "titel": "Pflegeumfang festlegen", "text": "Regelmäßige Betreuung oder einzelne Einsätze – wir stimmen ab, was Sie selbst machen und was wir übernehmen." },
-    { "titel": "Fachgerechte Ausführung", "text": "Rasen, Hecken, Beete und Rückschnitt führen wir zum richtigen Zeitpunkt und mit dem passenden Gerät aus." },
-    { "titel": "Übers Jahr denken", "text": "Wir behalten die Zeitpunkte im Blick – vom Frühjahrsstart über den Heckenschnitt bis zum Herbstlaub." }
+  "intro": "Nach einem stressigen Arbeitstag auf der Terrasse entspannen? Sich von der Schönheit der Natur und farbenfrohen Pflanzen ablenken lassen? Kontinuierliche und fachgerechte Pflege ist der Schlüssel dazu. Sie hält Ihren Garten in Form, unterstützt die Entwicklung der Pflanzen und hilft, Fehlentwicklungen frühzeitig zu erkennen.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Von der regelmäßigen Rasenpflege über Heckenschnitt bis hin zu Reinigungsarbeiten: Wir als die Experten sorgen mit einer fachgerechten Pflege dafür, dass Ihr Garten dauerhaft gepflegt und einladend bleibt."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Diese Pflegearbeiten übernehmen wir",
+      "paragraphs": [
+        "Fachwissen und der sichere Umgang mit Maschinen, Geräten sowie Dünge- und Pflanzenschutzmitteln sind Grundvoraussetzungen für eine gute Pflege. Wir besitzen diese Kenntnisse und stimmen die Arbeiten auf Ihren Garten ab."
+      ],
+      "bullets": [
+        "Regelmäßige Rasenpflege und Rasenschnitt",
+        "Heckenschnitt sowie Pflege von Sträuchern und Gehölzen",
+        "Beetpflege und Entfernen unerwünschten Bewuchses",
+        "Saisonale Gartenarbeiten und Laubbeseitigung",
+        "Reinigungsarbeiten an Wegen und anderen Gartenflächen"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Gartengröße und Bewuchs", "text": "Fläche, Heckenlänge und Zahl der Beete bestimmen den laufenden Pflegeaufwand." },
-    { "titel": "Pflegeintervall", "text": "Wie oft gepflegt wird, entscheidet über den Aufwand – von wenigen Einsätzen im Jahr bis zur regelmäßigen Betreuung." },
-    { "titel": "Zustand", "text": "Ein verwilderter Garten braucht zuerst einen gründlichen Rückschnitt, bevor die reguläre Pflege greift." },
-    { "titel": "Entsorgung", "text": "Abfuhr und Entsorgung von Schnittgut und Laub kommen zur eigentlichen Arbeit hinzu." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Hecken kann man das ganze Jahr radikal schneiden.“", "text": "Ein starker Rückschnitt ist nur im Winterhalbjahr erlaubt. In der Brutzeit ist nur ein schonender Form- und Pflegeschnitt zulässig." },
-    { "titel": "„Rasen kürzer mähen heißt seltener mähen.“", "text": "Zu kurz gemäht leidet der Rasen, vergilbt und lässt Unkraut durch. Die richtige Schnitthöhe ist wichtiger als die Häufigkeit." },
-    { "titel": "„Pflege kann man aufschieben, bis es nötig aussieht.“", "text": "Wer die richtigen Zeitpunkte verpasst, hat mehr Arbeit. Regelmäßige, kleinere Einsätze sind leichter als seltene Großaktionen." }
-  ],
+  "abschluss": "Zu allen Fragen rund um die Pflege Ihres Gartens und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Gartenpflege anfragen",
   "faq": [
-    { "frage": "Wann darf eine Hecke geschnitten werden?", "antwort": "Ein starker Rückschnitt ist nur zwischen dem 1. Oktober und dem 28./29. Februar erlaubt, weil in der Vegetationszeit brütende Vögel geschützt sind (§ 39 BNatSchG). Ein schonender Form- und Pflegeschnitt ist ganzjährig zulässig. Viele Kunden kommen damit im Februar zu spät – planen Sie den kräftigen Schnitt also rechtzeitig ein." },
-    { "frage": "Bieten Sie regelmäßige Pflege oder nur einzelne Einsätze?", "antwort": "Beides. Manche Kunden möchten ihren Garten regelmäßig betreut wissen, andere brauchen nur für die aufwendigen Arbeiten – etwa den Heckenschnitt oder das Vertikutieren – Unterstützung. Wir stimmen mit Ihnen ab, was Sie selbst übernehmen und wo wir einspringen, und finden dafür den passenden Rhythmus." },
-    { "frage": "Übernehmen Sie auch einen verwilderten Garten?", "antwort": "Ja. Häufig steht am Anfang ein gründlicher Rückschnitt, um den Garten wieder in Form zu bringen. Danach lässt er sich mit überschaubarer, regelmäßiger Pflege halten. Wir sagen Ihnen ehrlich, was der erste Einsatz umfasst und wie sich der Aufwand danach einpendelt." },
-    { "frage": "Entsorgen Sie das Schnittgut?", "antwort": "Auf Wunsch ja. Abfuhr und Entsorgung von Schnittgut und Laub können wir mit übernehmen, sodass Sie sich darum nicht kümmern müssen. Das stimmen wir beim Pflegeumfang mit ab, damit von vornherein klar ist, was zur Leistung gehört." }
+    {
+      "frage": "Übernehmen Sie auch einzelne Gartenarbeiten?",
+      "antwort": "Ja. Sie können uns beispielsweise für einen Heckenschnitt, die Rasenpflege oder das Aufarbeiten eines Beetes anfragen. Ebenso ist eine regelmäßig wiederkehrende Betreuung möglich."
+    },
+    {
+      "frage": "Wie oft sollte mein Garten gepflegt werden?",
+      "antwort": "Das hängt von Bepflanzung, Jahreszeit und Ihrem gewünschten Erscheinungsbild ab. Ein Rasen braucht andere Pflegeabstände als ein eingewachsenes Staudenbeet. Gemeinsam legen wir fest, welche Arbeiten wann sinnvoll sind."
+    },
+    {
+      "frage": "Der Geburtstag steht an und für den Garten bleibt keine Zeit mehr?",
+      "antwort": "Auch kurzfristig sind wir für Sie da. Ob Rasenmähen, Beetpflege oder das Aufräumen vor einer Feier: Kurzfristige Einsätze sind häufig möglich. Nennen Sie uns Ihren Wunschtermin und die anstehenden Arbeiten. Wir stimmen mit Ihnen ab, wie Ihr Garten rechtzeitig wieder einladend wird. Bei Bedarf übernehmen wir auch die Pflaster- und Fugenreinigung rund um Terrasse und Sitzplatz."
+    }
   ],
-  "nachbarn": ["bepflanzung", "baumarbeiten"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/gartenpflege-team-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "gewerbe",
+      "slug": "aussenanlagenpflege"
+    },
+    {
+      "welt": "privat",
+      "slug": "pflasterreinigung-fugenreinigung"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 15
 }

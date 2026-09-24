@@ -1,5 +1,7 @@
 {
   "leistungen": [
+    { "slug": "aussergewoehnliches-garten", "label": "Außergewöhnliches für den Garten" },
+    { "slug": "balkonkastenbepflanzung", "label": "Balkonkastenbepflanzung" },
     { "slug": "gartengestaltung",    "label": "Gartengestaltung" },
     { "slug": "vorgarten",           "label": "Vorgartenbau" },
     { "slug": "teichbau",            "label": "Teichanlage" },
@@ -7,6 +9,9 @@
     { "slug": "dachbegruenung",      "label": "Dachbegrünung" },
     { "slug": "baumarbeiten",        "label": "Baumarbeiten / Fällung" },
     { "slug": "baumkontrolle",       "label": "Baumkontrolle & Gutachten" },
+    { "slug": "baumpflege",          "label": "Baumpflege" },
+    { "slug": "beleuchtung",          "label": "Beleuchtung" },
+    { "slug": "bonsai-formgehoelze",  "label": "Bonsai / Formgehölze" },
     { "slug": "sturmnotdienst",      "label": "Sturmnotdienst" },
     { "slug": "holzverkauf",         "label": "Holzverkauf" },
     { "slug": "aussenanlagenpflege", "label": "Außenanlagenpflege" },
@@ -16,9 +21,24 @@
     { "slug": "terrasse-pflasterarbeiten", "label": "Terrassen & Pflaster" },
     { "slug": "palmen-winterfest",         "label": "Palmen & winterfest" },
     { "slug": "pool-whirlpool-umfeld",     "label": "Pool- & Whirlpool-Umfeld" },
+    { "slug": "entwaesserung", "label": "Entwässerung" },
+    { "slug": "erd-baggerarbeiten", "label": "Erd- & Baggerarbeiten" },
+    { "slug": "ersatz-ausgleichspflanzungen", "label": "Ersatz- & Ausgleichspflanzungen" },
+    { "slug": "feuerstellen", "label": "Feuerstellen" },
+    { "slug": "findlinge-natursteineinfassungen", "label": "Findlinge und Natursteineinfassungen" },
     { "slug": "nassschneidearbeiten", "label": "Nassschneidearbeiten" },
+    { "slug": "pflasterreinigung-fugenreinigung", "label": "Pflasterreinigung / Fugenreinigung" },
     { "slug": "rodungsarbeiten", "label": "Rodungsarbeiten" },
+    { "slug": "rohdichs-grubengold", "label": "Rohdichs Grubengold" },
+    { "slug": "rollrasen", "label": "Rollrasen" },
+    { "slug": "saisonbepflanzung", "label": "Saisonbepflanzung" },
+    { "slug": "schredderarbeiten", "label": "Schredderarbeiten" },
+    { "slug": "sichtschutzbepflanzung", "label": "Sichtschutzbepflanzung" },
+    { "slug": "stubbenfraeseneinsatz", "label": "Stubbenfräseneinsatz" },
+    { "slug": "terrassenbau", "label": "Terrassenbau" },
     { "slug": "verkehrssicherheit", "label": "Verkehrssicherheit" },
-    { "slug": "vermessung-lasertechnik", "label": "Vermessungs- & Lasertechnik" }
+    { "slug": "vermessung-lasertechnik", "label": "Vermessungs- & Lasertechnik" },
+    { "slug": "wurzelentfernung", "label": "Wurzelentfernung" },
+    { "slug": "zaeune-sichtschutz", "label": "Zäune & Sichtschutz" }
   ]
 }

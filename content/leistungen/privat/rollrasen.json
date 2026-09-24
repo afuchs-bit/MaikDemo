@@ -1,0 +1,86 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Rollrasen",
+  "navLabel": "Rollrasen",
+  "title": "Rollrasen in Herne | Maik Rohdich",
+  "metaDescription": "In kurzer Zeit zum Traumrasen: Mit unserem Rollrasen verwandeln wir Ihren Garten in kürzester Zeit in ein Paradies. Das dichte und satte Grün hat einen…",
+  "serviceType": "Rollrasen",
+  "unterzeile": "In kurzer Zeit zum Traumrasen",
+  "einstieg": [
+    "Mit unserem Rollrasen verwandeln wir Ihren Garten in kürzester Zeit in ein Paradies. Das dichte und satte Grün hat einen sofortigen Effekt auf das Gesamtbild in Ihrem Garten. Wir verarbeiten nur höchste Qualität und geprüfte Gräsersorten."
+  ],
+  "intro": "Mit unserem Rollrasen verwandeln wir Ihren Garten in kürzester Zeit in ein Paradies. Das dichte und satte Grün hat einen sofortigen Effekt auf das Gesamtbild in Ihrem Garten. Wir verarbeiten nur höchste Qualität und geprüfte Gräsersorten.",
+  "inhalt": [
+    {
+      "heading": "Folgende Schritte führen wir mit und ohne Maschineneinsatz durch",
+      "paragraphs": [
+        "Sie werden staunen, wie schnell sich Ihr Garten verändert. Nach dem Anwachsen ist der Rasen bereit zum Toben und Relaxen für Klein und Groß."
+      ],
+      "bullets": [
+        "Vorbereitung des Untergrundes: Abtragen und Neuauffüllen des Mutterbodens, sofern notwendig. Umgraben mit Einsatz einer Umkehrfräse. Entfernen von Steinen und Wurzelwerk. Bedarfsgerechte Düngung mit unserem speziellen Kickstart-Dünger.",
+        "Verlegung des Rasens: Der frische Rollrasen wird unmittelbar nach der Anlieferung von uns fachgerecht verlegt. Unsere langjährige Erfahrung hilft, typische Fehler bei der Verlegung zu vermeiden. Wir achten auf dicht anschließende Bahnen ohne offene Fugen oder Löcher. Der Rasen wird angewalzt und gewässert.",
+        "Pflege nach der Neuanlage: Für das richtige Anwachsen ist regelmäßiges Wässern nötig. Wir erstellen Ihnen einen Bewässerungsplan. Die weitere Pflege übernehmen wir gerne und kümmern uns um den regelmäßigen Rasenschnitt."
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die Planung Ihres Rollrasenprojekts und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Rollrasen anfragen",
+  "faq": [
+    {
+      "frage": "Wann dürfen Kinder auf dem Rollrasen spielen?",
+      "antwort": "Der Rasen sollte zunächst ausreichend mit dem Untergrund verwurzelt sein. Die dafür nötige Zeit hängt von Witterung, Boden und Pflege ab. Direkt nach dem Verlegen sollte die Fläche geschont werden; intensive Nutzung folgt erst nach dem Anwachsen."
+    },
+    {
+      "frage": "Wann ist ein guter Zeitpunkt, um Rollrasen zu verlegen?",
+      "antwort": "Bei geeigneten Boden- und Witterungsverhältnissen ist die Verlegung über weite Teile des Jahres möglich. Frost, stark vernässter Boden oder große Hitze können den Termin ungünstig machen. Wir stimmen den Zeitpunkt mit Ihnen ab."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/rasen-rollrasen-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "dachbegruenung"
+    },
+    {
+      "welt": "privat",
+      "slug": "bepflanzung"
+    },
+    {
+      "welt": "privat",
+      "slug": "ersatz-ausgleichspflanzungen"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 26
+}

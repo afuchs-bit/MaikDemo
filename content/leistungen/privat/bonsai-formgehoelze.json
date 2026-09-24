@@ -1,0 +1,95 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Bonsai / Formgehölze",
+  "navLabel": "Bonsai / Formgehölze",
+  "title": "Bonsai / Formgehölze in Herne | Maik Rohdich",
+  "metaDescription": "Lebendige Einzelstücke mit Charakter: Ein Gartenbonsai oder ein sorgfältig gestaltetes Formgehölz zieht den Blick auf sich. Eine markante Stammführung,…",
+  "serviceType": "Bonsai / Formgehölze",
+  "unterzeile": "Lebendige Einzelstücke mit Charakter",
+  "einstieg": [
+    "Ein Gartenbonsai oder ein sorgfältig gestaltetes Formgehölz zieht den Blick auf sich. Eine markante Stammführung, ausgewogene Astpartien und die gewachsene Form machen jedes Exemplar zu einem besonderen Stück Gartenkultur."
+  ],
+  "intro": "Ein Gartenbonsai oder ein sorgfältig gestaltetes Formgehölz zieht den Blick auf sich. Eine markante Stammführung, ausgewogene Astpartien und die gewachsene Form machen jedes Exemplar zu einem besonderen Stück Gartenkultur.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir unterstützen Sie bei der Auswahl und Platzierung hochwertiger Gartenbonsai, Solitärgehölze und Formgehölze. Ob am Eingang, neben der Terrasse oder als Mittelpunkt eines ruhigen Gartenbereichs: Entscheidend ist, dass Pflanze und Umgebung ein stimmiges Bild ergeben."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Von der Auswahl bis zum fachgerechten Formschnitt",
+      "paragraphs": [
+        "Gerade bei einem ausdrucksstarken Gehölz lohnt sich eine sorgfältige Planung. Wir berücksichtigen den Blick von der Terrasse und aus dem Haus ebenso wie die Wirkung aus der Nähe. Natursteine, zurückhaltende Bepflanzung oder eine passende Beleuchtung können die Form zusätzlich hervorheben."
+      ],
+      "bullets": [
+        "Persönliche Beratung und Auswahl charaktervoller Einzelstücke",
+        "Gestaltung mit Gartenbonsai und geschnittenen Formgehölzen",
+        "Abstimmung von Standort, Boden und Platz für die weitere Entwicklung",
+        "Lieferung, fachgerechte Pflanzung und Einbindung in den Garten",
+        "Erhaltungs- und Formschnitt sowie regelmäßige Pflege"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um Bonsai und Formgehölze für Ihren Garten und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Bonsai und Formgehölze besprechen",
+  "faq": [
+    {
+      "frage": "Passt ein Gartenbonsai auch in einen modernen oder kleinen Garten?",
+      "antwort": "Ja. Ein bewusst platziertes Einzelstück kann auch auf überschaubarer Fläche wirken. Wir wählen Größe und Wuchsform passend zum verfügbaren Raum und geben dem Gehölz genügend Platz, um seine Wirkung zu entfalten."
+    },
+    {
+      "frage": "Übernehmen Sie die Pflege bereits vorhandener Formgehölze?",
+      "antwort": "Ja. Wir sehen uns Pflanzenart, Zustand und bisherige Form an und stimmen die weiteren Schnitte darauf ab. Der richtige Zeitpunkt und ein behutsames Vorgehen helfen, den Charakter des Gehölzes zu erhalten. Die wiederkehrende Pflege übernehmen wir gerne für Sie."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/pflanzarbeiten-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "saisonbepflanzung"
+    },
+    {
+      "welt": "privat",
+      "slug": "balkonkastenbepflanzung"
+    },
+    {
+      "welt": "privat",
+      "slug": "palmen-winterfest"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 7
+}

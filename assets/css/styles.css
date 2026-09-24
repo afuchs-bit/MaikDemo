@@ -1809,6 +1809,7 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
     background-repeat: no-repeat;
     background-size: contain;
   }
+
   .site-header .header-actions .call-btn.btn-ghost {
     background: var(--bg-dark);
     border-color: transparent;

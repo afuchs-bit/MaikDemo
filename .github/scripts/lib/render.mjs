@@ -387,14 +387,20 @@ export const WELTEN = {
     navKopf: 'Unsere Leistungen von A bis Z',
     base: '../../../',        // /privatkunden/leistungen/<slug>/
     slugs: [
-      'baumkontrolle', 'baumarbeiten', 'sturmnotdienst', 'holzverkauf',
-      'gartengestaltung', 'vorgarten', 'teichbau', 'terrasse-pflasterarbeiten',
-      'bepflanzung', 'dachbegruenung', 'gartenpflege', 'palmen-winterfest',
-      'pool-whirlpool-umfeld',
-      // AP-360: Vier Leistungen, die in der A-Z-Liste der Startseite standen,
-      // aber keine eigene Seite hatten - sie zeigten dort aufs Anfrageformular.
-      'nassschneidearbeiten', 'rodungsarbeiten', 'verkehrssicherheit',
-      'vermessung-lasertechnik',
+      'aussergewoehnliches-garten', 'balkonkastenbepflanzung', 'baumarbeiten',
+      'baumkontrolle', 'baumpflege', 'beleuchtung', 'bonsai-formgehoelze',
+      'dachbegruenung', 'entwaesserung', 'erd-baggerarbeiten',
+      'ersatz-ausgleichspflanzungen', 'feuerstellen',
+      'findlinge-natursteineinfassungen', 'gartengestaltung', 'gartenpflege',
+      'holzverkauf', 'nassschneidearbeiten', 'palmen-winterfest', 'bepflanzung',
+      'terrasse-pflasterarbeiten', 'pflasterreinigung-fugenreinigung',
+      'pool-whirlpool-umfeld', 'rodungsarbeiten', 'rohdichs-grubengold',
+      'rollrasen', 'saisonbepflanzung', 'schredderarbeiten',
+      'sichtschutzbepflanzung', 'stubbenfraeseneinsatz', 'teichbau',
+      'terrassenbau', 'verkehrssicherheit', 'vermessung-lasertechnik',
+      'vorgarten', 'wurzelentfernung', 'zaeune-sichtschutz',
+      // Nicht Teil der A–Z-Redaktion, bleibt als bestehende Sonderseite erhalten.
+      'sturmnotdienst',
     ],
     // AP-341: Das Dropdown spiegelt die A-Z-Liste der Startseite
     // (index.html, Abschnitt #leistungen) zeichengleich - Reihenfolge, Wortlaut
@@ -414,19 +420,19 @@ export const WELTEN = {
     // Wer hier etwas aendert, muss die Startseite mitziehen; die beiden Listen
     // sollen zeichengleich bleiben.
     navListe: [
-      { slug: 'gartengestaltung', label: 'Außergewöhnliches für den Garten', mobilOnly: true },
-      { slug: 'bepflanzung', label: 'Balkonkastenbepflanzung', mobilOnly: true },
+      { slug: 'aussergewoehnliches-garten', label: 'Außergewöhnliches für den Garten', mobilOnly: true },
+      { slug: 'balkonkastenbepflanzung', label: 'Balkonkastenbepflanzung', mobilOnly: true },
       { slug: 'baumarbeiten', label: 'Baumfällung' },
       { slug: 'baumkontrolle', label: 'Baumkontrolle' },
-      { slug: 'baumarbeiten', label: 'Baumpflege' },
-      { slug: 'gartengestaltung', label: 'Beleuchtung' },
-      { slug: 'bepflanzung', label: 'Bonsai / Formgehölze', mobilOnly: true },
+      { slug: 'baumpflege', label: 'Baumpflege' },
+      { slug: 'beleuchtung', label: 'Beleuchtung' },
+      { slug: 'bonsai-formgehoelze', label: 'Bonsai / Formgehölze', mobilOnly: true },
       { slug: 'dachbegruenung', label: 'Dachbegrünung' },
-      { slug: 'gartengestaltung', label: 'Entwässerung' },
-      { slug: 'gartengestaltung', label: 'Erd- & Baggerarbeiten' },
-      { slug: 'bepflanzung', label: 'Ersatz- & Ausgleichspflanzungen', mobilOnly: true },
-      { slug: 'gartengestaltung', label: 'Feuerstellen', mobilOnly: true },
-      { slug: 'terrasse-pflasterarbeiten', label: 'Findlinge und Natursteineinfassungen' },
+      { slug: 'entwaesserung', label: 'Entwässerung' },
+      { slug: 'erd-baggerarbeiten', label: 'Erd- & Baggerarbeiten' },
+      { slug: 'ersatz-ausgleichspflanzungen', label: 'Ersatz- & Ausgleichspflanzungen', mobilOnly: true },
+      { slug: 'feuerstellen', label: 'Feuerstellen', mobilOnly: true },
+      { slug: 'findlinge-natursteineinfassungen', label: 'Findlinge und Natursteineinfassungen' },
       { slug: 'gartengestaltung', label: 'Gartengestaltung' },
       { slug: 'gartenpflege', label: 'Gartenpflege' },
       { slug: 'holzverkauf', label: 'Kaminholz' },
@@ -438,22 +444,22 @@ export const WELTEN = {
       { slug: 'palmen-winterfest', label: 'Palmen winterfest' },
       { slug: 'bepflanzung', label: 'Pflanzarbeiten' },
       { slug: 'terrasse-pflasterarbeiten', label: 'Pflasterarbeiten' },
-      { slug: 'terrasse-pflasterarbeiten', label: 'Pflasterreinigung / Fugenreinigung', mobilOnly: true },
+      { slug: 'pflasterreinigung-fugenreinigung', label: 'Pflasterreinigung / Fugenreinigung', mobilOnly: true },
       { slug: 'pool-whirlpool-umfeld', label: 'Pool- & Whirlpoolumfeld' },
       { slug: 'rodungsarbeiten', label: 'Rodungsarbeiten' },
-      { slug: 'bepflanzung', label: 'Rohdichs Grubengold' },
-      { slug: 'gartengestaltung', label: 'Rollrasen' },
-      { slug: 'bepflanzung', label: 'Saisonbepflanzung', mobilOnly: true },
-      { slug: 'rodungsarbeiten', label: 'Schredderarbeiten', mobilOnly: true },
-      { slug: 'bepflanzung', label: 'Sichtschutzbepflanzung' },
-      { slug: 'rodungsarbeiten', label: 'Stubbenfräseneinsatz', mobilOnly: true },
+      { slug: 'rohdichs-grubengold', label: 'Rohdichs Grubengold' },
+      { slug: 'rollrasen', label: 'Rollrasen' },
+      { slug: 'saisonbepflanzung', label: 'Saisonbepflanzung', mobilOnly: true },
+      { slug: 'schredderarbeiten', label: 'Schredderarbeiten', mobilOnly: true },
+      { slug: 'sichtschutzbepflanzung', label: 'Sichtschutzbepflanzung' },
+      { slug: 'stubbenfraeseneinsatz', label: 'Stubbenfräseneinsatz', mobilOnly: true },
       { slug: 'teichbau', label: 'Teichbau & -technik' },
-      { slug: 'terrasse-pflasterarbeiten', label: 'Terrassenbau' },
+      { slug: 'terrassenbau', label: 'Terrassenbau' },
       { slug: 'verkehrssicherheit', label: 'Verkehrssicherheit herstellen' },
       { slug: 'vermessung-lasertechnik', label: 'Vermessungs- & Lasertechnik' },
       { slug: 'vorgarten', label: 'Vorgartengestaltung' },
-      { slug: 'rodungsarbeiten', label: 'Wurzelentfernung', mobilOnly: true },
-      { slug: 'terrasse-pflasterarbeiten', label: 'Zäune & Sichtschutz' },
+      { slug: 'wurzelentfernung', label: 'Wurzelentfernung', mobilOnly: true },
+      { slug: 'zaeune-sichtschutz', label: 'Zäune & Sichtschutz' },
     ],
   },
   gewerbe: {
@@ -592,6 +598,9 @@ const HANDY_FOOTER_SEITEN = new Set([
   'index.html', 'ueber-uns/index.html', 'projekte/index.html', 'kontakt/index.html',
 ]);
 
+const istLeistungsseite = (pfad) =>
+  /^(?:privatkunden|gewerbekunden)\/leistungen\/[^/]+\/index\.html$/.test(pfad);
+
 const handyFormularLink = (base) => `
           <a class="footer-contact-link footer-contact-link--iphone-form" href="${base}#anfrage" aria-label="Kontaktformular öffnen und Kontakt aufnehmen">
             <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg></span>
@@ -616,7 +625,7 @@ export function footerTemplateData(base, seitenPfad = '') {
   // Nicht ueber base pruefen: 404.html liegt ebenfalls in der Wurzel und haette
   // die Bausteine sonst mitbekommen. Windows-Trennzeichen vorher angleichen.
   const pfad = seitenPfad.split('\\').join('/');
-  const handy = HANDY_FOOTER_SEITEN.has(pfad);
+  const handy = HANDY_FOOTER_SEITEN.has(pfad) || istLeistungsseite(pfad);
   return {
     base,
     handyFormularLink: handy ? handyFormularLink(base) : '',
@@ -902,9 +911,231 @@ function faqJsonLd(faq) {
   }, null, 2);
 }
 
+// ---------- Editorial-v2: mobile Leistungsseiten ----------
+function lpv2Cta(label, base, href = '#anfrage') {
+  return `<a class="lpv2-cta reveal" href="${escAttr(href)}">
+          <svg class="lpv2-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true"><use href="#maik-cta-shape"/></svg>
+          <svg class="lpv2-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true"><use href="#maik-cta-shape"/></svg>
+          <span class="lpv2-cta__label">${esc(label)}</span>
+          <span class="lpv2-cta__arrow" aria-hidden="true"><img src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
+        </a>`;
+}
+
+function lpv2DecisionTree() {
+  return `<div class="lpv2-decision" aria-label="Entscheidungsweg der Baumkontrolle">
+          <ol class="lpv2-decision-list">
+            <li class="lpv2-decision-step"><span class="lpv2-decision-number">01</span><strong>Grunderfassung / Bestandsaufnahme</strong><span>Der Baum und sein Umfeld werden erstmals vollständig erfasst.</span></li>
+            <li class="lpv2-decision-step"><span class="lpv2-decision-number">02</span><strong>Regelkontrolle</strong><span>Sichtprüfung in einem fachlich festgelegten Intervall von einem halben bis drei Jahren.</span></li>
+            <li class="lpv2-decision-step"><span class="lpv2-decision-number">03</span><strong>Besteht Handlungsbedarf?</strong><span>Ohne Befund folgt die nächste Regelkontrolle. Bei Auffälligkeiten wird genauer untersucht.</span></li>
+            <li class="lpv2-decision-step"><span class="lpv2-decision-number">04</span><strong>Eingehende Untersuchung</strong><span>Verdachtsmomente werden mit geeigneten fachlichen Verfahren geprüft.</span></li>
+            <li class="lpv2-decision-step"><span class="lpv2-decision-number">05</span><strong>Erforderliche Maßnahme</strong><span>Die Untersuchung mündet in eine fachlich begründete Entscheidung.</span><span class="lpv2-decision-branches"><span class="lpv2-decision-branch">Baumpflege</span><span class="lpv2-decision-branch">Fällung</span></span></li>
+          </ol>
+        </div>`;
+}
+
+function lpv2Content(leistung) {
+  return (leistung.inhalt || []).map((block, index) => {
+    const heading = block.heading ? `<h3>${esc(block.heading)}</h3>` : '';
+    const paragraphs = (block.paragraphs || []).map((p) => `<p>${esc(p)}</p>`).join('\n          ');
+    const bullets = (block.bullets || []).length
+      ? `<ul class="lpv2-list">${block.bullets.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>`
+      : '';
+    const diagram = leistung.diagram === 'baumkontrolle' && block.heading === 'Von der Kontrolle zur passenden Maßnahme'
+      ? lpv2DecisionTree()
+      : '';
+    return `<section class="lpv2-copy-block reveal">${heading}${paragraphs}${bullets}${diagram}</section>`;
+  }).join('\n        ');
+}
+
+function lpv2Gallery(leistung, base) {
+  const items = (leistung.bilder?.gallery || []).map((bild, i) => `<figure class="lpv2-photo">
+          ${renderPicture(bild.bild, { alt: bild.alt || '', sizes: '78vw', width: bild.width, height: bild.height, base })}
+          <figcaption>${String(i + 1).padStart(2, '0')}</figcaption>
+        </figure>`).join('\n        ');
+  return `<div class="lpv2-photo-rail" role="region" aria-label="Bildergalerie, horizontal scrollbar" tabindex="0">${items}</div>`;
+}
+
+const LPV2_PROCESS = [
+  ['termin-vor-ort-640.webp', 'maik-rohdich-schritt-1.png', '333', '589', 'Termin vor Ort', 'Wir lernen Ihr Grundstück und Ihre Vorstellungen in Ruhe kennen. Anschließend beraten wir Sie persönlich und erstellen ein präzises Aufmaß.', 'Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück'],
+  ['../../ueber/mustergarten-standbild-960.webp', 'maik-rohdich-schritt-2.png', '673', '589', 'Termin bei uns in der Ausstellung', 'Wir helfen Ihnen bei der Materialauswahl und klären Ihre Rückfragen.', 'Blick über den Mustergarten am Firmensitz'],
+  ['kostenermittlung-640.webp', 'maik-rohdich-schritt-3.png', '577', '589', 'Ausarbeitung Individualangebot', 'Wir stellen Ihnen die passende Lösung vor.', 'Verschiedene Palmen und Pflanzgefäße als Auswahlmöglichkeiten'],
+  ['umsetzung-koordination-640.webp', 'maik-rohdich-schritt-4.png', '591', '589', 'Auftragserteilung & Ausführung', 'Wir starten gemeinsam mit Ihnen.', 'Bagger setzt einen großen Naturstein in eine Gartenanlage'],
+  ['pflege-640.webp', 'maik-rohdich-schritt-5.png', '681', '613', 'Erhaltungspflege', 'Erhaltungspflege nach Wunsch und Absprache.', 'Bewässerung eines gepflegten Rasens'],
+];
+
+function lpv2Process(base) {
+  const cards = LPV2_PROCESS.map((s) => {
+    const image = s[0].startsWith('../../') ? `${base}assets/img/${s[0].slice(6)}` : `${base}assets/img/projektablauf/${s[0]}`;
+    return `<li class="lpv2-process-card reveal"><img class="lpv2-process-number" src="${base}assets/img/projektablauf/${s[1]}" alt="" aria-hidden="true" width="${s[2]}" height="${s[3]}" loading="lazy" decoding="async"><span class="lpv2-process-media"><img src="${image}" alt="${escAttr(s[6])}" width="640" height="480" loading="lazy" decoding="async"></span><span class="lpv2-process-body"><h3>${esc(s[4])}</h3><p>${esc(s[5])}</p></span></li>`;
+  }).join('\n          ');
+  return `<ol class="lpv2-process-list">${cards}</ol>${lpv2Cta('Projekt anfragen', base)}`;
+}
+
+function lpv2Contact(leistung, base, homepageExact = false) {
+  const confirmationCopy = homepageExact
+    ? 'Ihre Angaben sind bei uns eingegangen. Wir sehen uns Ihr Vorhaben an und melden uns persönlich bei Ihnen, um die nächsten Schritte zu besprechen.'
+    : 'Ihre Angaben sind bei uns eingegangen. Wir sehen uns Ihr Vorhaben an und melden uns persönlich bei Ihnen.';
+  const confirmationExtras = homepageExact
+    ? '<dl class="private-confirmation-summary" id="privateConfirmationSummary" aria-label="Zusammenfassung Ihrer Anfrage" hidden></dl>'
+    : '';
+  const confirmationNote = homepageExact
+    ? '<p class="b2b-confirmation-note">Mit der Anfrage ist noch kein Auftrag und kein Vor-Ort-Termin zustande gekommen. Beides stimmen wir erst persönlich mit Ihnen ab.</p>'
+    : '';
+  const submitArtwork = homepageExact
+    ? '<svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="anf-senden__frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><svg class="anf-senden__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>'
+    : '<svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true"><use href="#maik-cta-shape"/></svg><svg class="anf-senden__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true"><use href="#maik-cta-shape"/></svg>';
+  return `<div class="private-contact-layout">
+        <div class="b2b-form-column reveal">
+          <section class="b2b-form-confirmation" id="anfrage-erfolg" tabindex="-1" aria-labelledby="anfrage-erfolg-title"><span class="b2b-confirmation-mark" aria-hidden="true">✓</span><span class="b2b-form-step">Anfrage übermittelt</span><h3 id="anfrage-erfolg-title">Vielen Dank für Ihre Anfrage.</h3><p>${confirmationCopy}</p>${confirmationExtras}<div class="b2b-confirmation-links"><a href="tel:+491711738943"><span>Dringende Ergänzungen telefonisch mitteilen</span><strong>0171 / 173 89 43</strong></a><a href="mailto:maik@rohdich.de?subject=Erg%C3%A4nzung%20zu%20meiner%20Gartenanfrage"><span>Weitere Fotos oder Unterlagen nachreichen</span><strong>maik@rohdich.de</strong></a></div>${confirmationNote}</section>
+          <div class="anf">
+            <form class="anf__form anf__karte" id="anfrage" data-anf-modus="kurz" data-anf-form data-endpoint="" novalidate>
+              <div class="anf__honeypot" aria-hidden="true"><label for="anf-hp">Firmenwebsite (bitte frei lassen)</label><input type="text" id="anf-hp" name="_hp_website" tabindex="-1" autocomplete="off"></div>
+              <input type="hidden" name="modus" value="kurz" data-anf-modus-feld><input type="hidden" name="geladen_um" value="" data-anf-zeitstempel><input class="anf__leistung" type="hidden" name="leistung" value="${escAttr(leistung.h1)}">
+              <div class="anf__kanaele"><a class="anf__kanal" href="tel:+491711738943"><span class="anf__kanal-icon anf__kanal-icon--tel" aria-hidden="true"></span><span><small>Anrufen</small><strong>0171 / 173 89 43</strong></span></a><a class="anf__kanal" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener"><span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span><span><small>WhatsApp</small><strong>Fotos senden oder direkt anfragen</strong></span></a><a class="anf__kanal anf__kanal--mail" href="mailto:maik@rohdich.de?subject=Gartenanfrage"><span class="anf__kanal-icon anf__kanal-icon--mail" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a></div>
+              <p class="anf__oder"><span>Anfrageformular hier absenden</span></p>
+              <p class="anf__feld"><label for="anf-name">Wie möchten Sie angesprochen werden?</label><input type="text" id="anf-name" name="name" autocomplete="name" placeholder="Vor- und Nachname"></p>
+              <p class="anf__feld"><label for="anf-kontakt">Wie erreichen wir Sie?</label><input type="text" id="anf-kontakt" name="kontakt" autocomplete="tel" placeholder="Telefonnummer oder E-Mail" inputmode="text"></p>
+              <p class="anf__feld anf__feld--frei" id="anf-nachricht-feld"><label for="anf-nachricht">Worum geht es?</label><textarea id="anf-nachricht" name="nachricht" rows="4" placeholder="Eine kurze Beschreibung genügt — was ist zu tun, und wo?"></textarea></p>
+              <p class="anf__feld anf__feld--foto" data-anf-foto-feld><label class="anf__foto"><input type="file" id="anf-fotos" name="fotos" accept="image/jpeg,image/png,image/webp,.heic,.heif" multiple data-anf-fotos><span class="anf__foto-kachel"><span class="anf__foto-plus" aria-hidden="true"></span><span class="anf__foto-wort">Foto auswählen</span></span></label><small class="anf__foto-stand" data-anf-foto-auswahl role="status" hidden></small></p>
+              <p class="anf__einwilligung" data-anf-foto-freigabe hidden><label><input type="checkbox" name="foto_freigabe" value="1"><span>Ich darf diese Aufnahmen weitergeben. Personen, die nicht gefragt wurden, sind darauf nicht zu erkennen.</span></label></p>
+              <div class="anf__abschluss"><button type="submit" class="btn btn-primary maik-cta maik-cta--attention" data-anf-senden>${submitArtwork}<span class="anf-senden__label maik-cta__label">Anfrage senden</span><span class="anf-senden__arrow maik-cta__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild maik-cta__arrow-image" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span></button><p class="anf__status" data-anf-status role="status" aria-live="polite"></p></div>
+              <p class="anf__rechtliches">Wie wir Ihre Angaben verarbeiten, steht in der <a href="${base}datenschutz/">Datenschutzerklärung</a>.</p>
+            </form>
+          </div>
+        </div>
+      </div>`;
+}
+
+function lpv2Related(leistung, serviceIndex, base) {
+  const items = (leistung.related || []).map((ref) => {
+    const target = serviceIndex.get(`${ref.welt}:${ref.slug}`);
+    if (!target) return '';
+    const welt = WELTEN[ref.welt];
+    const href = `${base}${welt.pfad}leistungen/${encodeURIComponent(ref.slug)}/`;
+    const thumb = target.thumbnail || target.bilder?.hero?.bild || '';
+    const pic = renderPicture(thumb, { alt: '', sizes: '58px', width: 58, height: 58, base });
+    return `<li class="lpv2-related-item"><a class="lpv2-related-link" href="${escAttr(href)}"><span class="lpv2-related-thumb" aria-hidden="true">${pic}</span><span class="lpv2-related-copy"><small>Leistung</small><strong>${esc(target.h1)}</strong></span><img class="lpv2-related-arrow" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" loading="lazy" decoding="async"></a></li>`;
+  }).join('');
+  return `<ul class="lpv2-related-list">${items}</ul>`;
+}
+
+function lpv2LegacyContent(leistung) {
+  return (leistung.inhalt || []).map((block) => {
+    const heading = block.heading ? `<h3>${esc(block.heading)}</h3>` : '';
+    const paragraphs = (block.paragraphs || []).map((p) => `<p>${esc(p)}</p>`).join('');
+    const bullets = (block.bullets || []).length ? `<ul class="lp-list">${block.bullets.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>` : '';
+    return `${heading}${paragraphs}${bullets}`;
+  }).join('');
+}
+
 // ---------- Leistungs-Detailseite ----------
 export async function renderLeistungPage(opts) {
-  const { leistung, slug, welt, cssVersion, jsVersion, refProjects = [], labelBySlug = new Map() } = opts;
+  const { leistung, slug, welt, cssVersion, jsVersion, refProjects = [], labelBySlug = new Map(), serviceIndex = new Map() } = opts;
+  const seitenPfad = `${welt.pfad}leistungen/${slug}/index.html`;
+  if (leistung.layout === 'editorial-v2') {
+    const [page, header, footer, logo] = await Promise.all([
+      loadTpl('leistung-v2.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
+    ]);
+    const base = welt.base;
+    const canonical = `${SITE}/${welt.pfad}leistungen/${slug}/`;
+    const hero = leistung.bilder.hero;
+    const imageFirstHero = leistung.heroVariant === 'image-first';
+    const heroTitleAbove = leistung.heroTitlePlacement === 'above-image';
+    const heroTitleGraphic = leistung.heroTitleGraphic?.bild ? leistung.heroTitleGraphic : null;
+    const splitHeroTitle = Array.isArray(leistung.heroTitleLines) && leistung.heroTitleLines.length === 2;
+    const heroTitleHtml = splitHeroTitle
+      ? leistung.heroTitleLines.map((line) => `<span>${esc(line)}</span>`).join('')
+      : esc(leistung.h1);
+    const hideProcess = leistung.hideProcess === true;
+    const homepageContact = leistung.contactVariant === 'homepage';
+    const processSection = hideProcess ? '' : `<section class="lpv2-process section" id="ablauf" aria-labelledby="lpv2-process-title">
+      <div class="container">
+        <header class="lpv2-section-head reveal">
+          <p class="lpv2-section-index" aria-hidden="true">03</p>
+          <h2 id="lpv2-process-title">In fünf Schritten zu Ihrem Projekt</h2>
+        </header>
+        ${lpv2Process(base)}
+      </div>
+    </section>`;
+    const contactTitle = leistung.contactTitle || 'Der erste Schritt zu Ihrem Projekt';
+    const contactSection = homepageContact
+      ? `<section class="section private-contact lpv2-home-contact" id="kontakt" aria-labelledby="anfrage-title">
+      <div class="container">
+        <header class="private-contact-intro reveal">
+          <h2 class="type-section-title maik-section-title" id="anfrage-title">${esc(contactTitle)}</h2>
+        </header>
+        ${lpv2Contact(leistung, base, true)}
+      </div>
+    </section>`
+      : `<section class="lpv2-contact section private-contact" id="kontakt" aria-labelledby="anfrage-title">
+      <div class="container">
+        <header class="lpv2-section-head private-contact-intro reveal">
+          <p class="lpv2-section-index" aria-hidden="true">${hideProcess ? '04' : '05'}</p>
+          <h2 id="anfrage-title">${esc(contactTitle)}</h2>
+        </header>
+        ${lpv2Contact(leistung, base)}
+      </div>
+    </section>`;
+    const heroBreadcrumbTrail = imageFirstHero
+      ? `<li class="lpv2-breadcrumb-back"><a href="${welt.hubEntfaellt ? `${base}#leistungen` : `${base}${welt.pfad}`}"><img src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" decoding="async"><span>Alle Leistungen</span></a></li>
+        <li class="lpv2-breadcrumb-current" aria-current="page">${esc(leistung.h1)}</li>`
+      : breadcrumbTrail(welt, base, leistung.h1);
+    const heroBreadcrumb = `<nav class="breadcrumbs lpv2-breadcrumbs${imageFirstHero ? ' lpv2-breadcrumbs--bar' : ''} reveal" aria-label="Sie sind hier">
+          <ol>${heroBreadcrumbTrail}</ol>
+        </nav>`;
+    return fill(page, {
+      base, slug: esc(slug), cssVersion: escAttr(cssVersion), jsVersion: escAttr(jsVersion),
+      heroVariantClass: `${imageFirstHero ? ' lpv2-page--image-first' : ''}${heroTitleAbove ? ' lpv2-page--title-above' : ''}${heroTitleGraphic ? ' lpv2-page--title-graphic' : ''}`,
+      title: esc(leistung.title), ogTitle: escAttr(leistung.title),
+      description: escAttr(truncate(leistung.metaDescription, 160)), canonical: escAttr(canonical),
+      ogImage: escAttr(absUrl(hero.bild)), heroPreload: lcpPreloadFor(hero.bild, heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', base),
+      breadcrumbJsonLd: leistungBreadcrumb(leistung.h1, canonical, welt),
+      heroBreadcrumbBefore: imageFirstHero ? heroBreadcrumb : '',
+      heroBreadcrumbInside: imageFirstHero ? '' : heroBreadcrumb,
+      serviceJsonLd: serviceJsonLd(leistung, canonical), faqJsonLd: faqJsonLd(leistung.faq),
+      logo: logo.trim(), header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
+      footer: fill(footer, footerTemplateData(base, seitenPfad)).trim(),
+      h1: heroTitleHtml, titleClass: `${splitHeroTitle ? ' lpv2-title--split' : ''}${heroTitleGraphic ? ' lpv2-title--visually-hidden' : ''}`,
+      subheading: esc(leistung.unterzeile),
+      introHtml: leistung.einstieg.map((p) => `<p>${esc(p)}</p>`).join(''),
+      heroCta: lpv2Cta(leistung.ctaLabel, base),
+      heroPicture: renderPicture(hero.bild, { alt: hero.alt || '', sizes: heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', priority: true, width: hero.width, height: hero.height, base }),
+      heroBrand: imageFirstHero
+        ? `<img class="lpv2-hero-brand" src="${base}assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" alt="" width="210" height="180" aria-hidden="true" decoding="async">`
+        : '',
+      heroEdge: imageFirstHero
+        ? `<svg class="lpv2-hero-edge" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="lpv2-hero-edge__fill" d="M0 1.5L100 12.5V14H0Z"/><path class="lpv2-hero-edge__line" d="M0 1.5L100 12.5" vector-effect="non-scaling-stroke"/></svg>`
+        : '',
+      heroTitleGraphic: heroTitleGraphic
+        ? `<div class="lpv2-hero-title-graphic reveal" aria-hidden="true"><img src="${escAttr(`${base}${heroTitleGraphic.bild.replace(/^\/+/, '')}`)}" alt="" width="${Number(heroTitleGraphic.width) || 2172}" height="${Number(heroTitleGraphic.height) || 724}" decoding="async"></div>`
+        : '',
+      contentHtml: lpv2Content(leistung), closing: esc(leistung.abschluss), galleryHtml: lpv2Gallery(leistung, base),
+      processSection,
+      faqIndex: hideProcess ? '03' : '04',
+      relatedIndex: hideProcess ? '05' : '06',
+      faqHtml: lpFaq(leistung.faq || []), contactSection,
+      relatedHtml: lpv2Related(leistung, serviceIndex, base),
+    });
+  }
+  if (leistung.layout === 'legacy-document') {
+    const [page, header, footer, logo] = await Promise.all([
+      loadTpl('leistung-legacy-document.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
+    ]);
+    const base = welt.base;
+    const canonical = `${SITE}/${welt.pfad}leistungen/${slug}/`;
+    const contactHref = `${base}#anfrage`;
+    return fill(page, {
+      base, slug: esc(slug), cssVersion: escAttr(cssVersion), jsVersion: escAttr(jsVersion),
+      title: esc(leistung.title), ogTitle: escAttr(leistung.title), description: escAttr(truncate(leistung.metaDescription, 160)),
+      canonical: escAttr(canonical), ogImage: escAttr(absUrl(leistung.bilder?.hero?.bild || 'assets/img/hero/hero-garten-herne-1600.webp')),
+      breadcrumbJsonLd: leistungBreadcrumb(leistung.h1, canonical, welt), breadcrumbTrail: breadcrumbTrail(welt, base, leistung.h1),
+      serviceJsonLd: serviceJsonLd(leistung, canonical), faqJsonLd: faqJsonLd(leistung.faq),
+      logo: logo.trim(), header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(), footer: fill(footer, footerTemplateData(base, seitenPfad)).trim(),
+      h1: esc(leistung.h1), subheading: esc(leistung.unterzeile), introHtml: leistung.einstieg.map((p) => `<p>${esc(p)}</p>`).join(''),
+      contactHref: escAttr(contactHref), ctaLabel: esc(leistung.ctaLabel), contentHtml: lpv2LegacyContent(leistung),
+      faqHtml: lpFaq(leistung.faq || []), closing: esc(leistung.abschluss),
+    });
+  }
   const [page, header, footer, logo] = await Promise.all([
     loadTpl('leistung.html'), loadTpl('_header.html'), loadTpl('_footer.html'), loadTpl('_logo.html'),
   ]);
@@ -932,7 +1163,7 @@ export async function renderLeistungPage(opts) {
     faqJsonLd: faqJsonLd(leistung.faq),
     logo: logo.trim(),
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, footerTemplateData(base)).trim(),
+    footer: fill(footer, footerTemplateData(base, seitenPfad)).trim(),
     h1: esc(leistung.h1),
     intro: esc(leistung.intro),
     fachtext: lpFachtext(leistung.fachtext),

@@ -1,43 +1,92 @@
 {
-  "h1": "Pflege und Instandhaltung gewerblicher Außenanlagen",
-  "navLabel": "Pflege & Instandhaltung",
-  "title": "Außenanlagenpflege & Instandhaltung für Gewerbe in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Außenanlagenpflege für Gewerbe, Wohnanlagen und Hausverwaltungen in Herne, Bochum und Recklinghausen – als Einzelmaßnahme oder im festen Turnus, dokumentiert.",
-  "serviceType": "Pflege und Instandhaltung gewerblicher Außenanlagen und Grünflächen",
-  "intro": "Wir übernehmen die Pflege und Instandhaltung gewerblicher Außenanlagen – für Bürostandorte, Wohnanlagen, Hausverwaltungen und Gewerbeparks. Das kann eine einzelne Maßnahme sein, etwa ein überfälliger Heckenschnitt oder das Herrichten einer vernachlässigten Fläche, oder ein planbarer Pflegeturnus über das Jahr. Rasen, Hecken, Beete, Wege und Baumbestand bleiben in einem gepflegten, verkehrssicheren Zustand – abgestimmt auf Nutzung, Jahreszeit und den Pflegezustand, den Sie erreichen wollen, mit einem festen Ansprechpartner und nachvollziehbarer Ausführung.",
-  "eignung": [
-    "Hausverwaltungen und Eigentümergemeinschaften, die eine verlässliche, wiederkehrende Pflege ohne ständige Abstimmung brauchen.",
-    "Objekte mit einzelnem, klar umrissenem Bedarf – etwa Rückschnitt, Beetsanierung oder das Herrichten einer vernachlässigten Fläche.",
-    "Bürostandorte und Gewerbeparks, deren Außenwirkung zum Auftritt gehört.",
-    "Objekte mit Publikumsverkehr, bei denen Verkehrssicherheit von Wegen und Bäumen eine Rolle spielt.",
-    "Betreiber, die mehrere Gewerke – Grünpflege, Hecken, Baumkontrolle – bei einem Ansprechpartner bündeln möchten."
+  "layout": "editorial-v2",
+  "h1": "Objekt- & Grünflächenpflege",
+  "navLabel": "Objekt- & Grünflächenpflege",
+  "title": "Objekt- & Grünflächenpflege in Herne | Maik Rohdich",
+  "metaDescription": "Gepflegte Außenanlagen für einen guten ersten Eindruck: Die Außenanlagen Ihres Firmengeländes immer auf einem gepflegten Standard erhalten?…",
+  "serviceType": "Objekt- & Grünflächenpflege",
+  "unterzeile": "Gepflegte Außenanlagen für einen guten ersten Eindruck",
+  "einstieg": [
+    "Die Außenanlagen Ihres Firmengeländes immer auf einem gepflegten Standard erhalten? Kontinuierliche und fachgerechte Pflege ist der Schlüssel dazu. Ein gepflegtes Umfeld heißt Besucher, Bewohner und Mitarbeiter willkommen."
   ],
-  "ablauf": [
-    { "titel": "Objektbegehung", "text": "Wir sehen uns die Flächen an, erfassen Pflegebedarf, Baumbestand und kritische Stellen und stimmen ab, was einmalig zu tun ist und was in einem Rhythmus sinnvoll ist." },
-    { "titel": "Umfang festlegen", "text": "Für eine Einzelmaßnahme klären wir Umfang und Termin. Für laufende Pflege erhalten Sie einen auf das Objekt zugeschnittenen Ablauf über das Jahr – von Mäh- und Schnittintervallen bis zum Winterthema." },
-    { "titel": "Ausführung", "text": "Ein fester Ansprechpartner führt die Arbeiten verlässlich aus. Auffälligkeiten – etwa am Baumbestand – melden wir aktiv zurück." },
-    { "titel": "Dokumentation", "text": "Auf Wunsch dokumentieren wir die Leistungen so, dass Sie sie gegenüber Eigentümern oder Mietern belegen können." }
+  "intro": "Die Außenanlagen Ihres Firmengeländes immer auf einem gepflegten Standard erhalten? Kontinuierliche und fachgerechte Pflege ist der Schlüssel dazu. Ein gepflegtes Umfeld heißt Besucher, Bewohner und Mitarbeiter willkommen.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Von der regelmäßigen Rasenpflege über Heckenschnitt bis hin zu Reinigungsarbeiten: Wir als die Experten sorgen mit einer fachgerechten Pflege für die dauerhaft gute Außenwirkung Ihrer Immobilie.",
+        "Von unserem Standort in Herne aus betreuen wir die Außenanlagen von Unternehmen, Wohnanlagen und verwalteten Immobilien. Pflegeumfang und Einsatzrhythmus stimmen wir auf Ihre Objekte ab. Auch für Standorte außerhalb der Region sprechen Sie uns gerne an."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Dauerpflege mit abgestimmtem Umfang",
+      "paragraphs": [
+        "Baumkontrollen und Maßnahmen zur Herstellung der Verkehrssicherheit lassen sich ergänzend vereinbaren. So können Sie die laufende Flächenpflege und die erforderlichen Arbeiten an Bäumen und Gehölzen gemeinsam mit uns abstimmen."
+      ],
+      "bullets": [
+        "Rasenpflege auf kleinen und größeren Grünflächen",
+        "Hecken- und Gehölzschnitt sowie Pflege von Pflanzflächen",
+        "Beseitigung von Laub und unerwünschtem Bewuchs",
+        "Reinigung vereinbarter Wege und befestigter Außenflächen",
+        "Saisonale Pflege und Ergänzung von Bepflanzungen"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Größe und Zuschnitt der Flächen", "text": "Zusammenhängende Rasenflächen pflegen sich anders als kleinteilige Beete, Pflanzstreifen und Wege." },
-    { "titel": "Einzelmaßnahme oder Turnus", "text": "Eine einmalige Maßnahme ist eine abgeschlossene Aufgabe. Bei laufender Pflege bestimmt der Rhythmus – wöchentlich, zweiwöchentlich oder saisonal – den Aufwand." },
-    { "titel": "Ausgangszustand", "text": "Eine seit Längerem sich selbst überlassene Fläche wieder in einen gepflegten Zustand zu bringen ist aufwendiger, als einen bestehenden Zustand zu halten." },
-    { "titel": "Baumbestand und Verkehrssicherheit", "text": "Bäume über Wegen und Stellplätzen bringen zusätzliche Kontroll- und Pflegeanforderungen mit sich." },
-    { "titel": "Dokumentations- und Abstimmungsbedarf", "text": "Je nach Verwaltung ist mehr oder weniger Nachweis und Kommunikation gefragt." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Grünpflege ist reines Rasenmähen.“", "text": "Zur Außenanlagenpflege gehören Hecken, Beete, Wegereinigung, Verkehrssicherheit der Bäume und die Planung übers Jahr – nicht nur der Rasen." },
-    { "titel": "„Ohne Pflegevertrag geht gar nichts.“", "text": "Eine einzelne Maßnahme ist genauso beauftragbar wie ein Turnus. Manches Objekt braucht erst einmal nur einen Rückschnitt – ob daraus laufende Pflege wird, entscheiden Sie danach." },
-    { "titel": "„Der günstigste Anbieter ist der wirtschaftlichste.“", "text": "Wird der Baumbestand mitgedacht und dokumentiert, senkt das Haftungsrisiko – das zeigt sich erst, wenn etwas passiert." },
-    { "titel": "„Viele Einzeldienstleister sind flexibler.“", "text": "Ein Ansprechpartner für Grün, Hecken und Bäume spart Abstimmung und sorgt dafür, dass nichts zwischen den Gewerken liegen bleibt." }
-  ],
+  "abschluss": "Zu allen Fragen rund um die Pflege Ihrer Objekt- und Grünflächen und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Objektpflege anfragen",
   "faq": [
-    { "frage": "Übernehmen Sie auch einzelne Maßnahmen ohne laufenden Auftrag?", "antwort": "Ja. Eine klar umrissene Einzelmaßnahme – etwa ein Heckenschnitt, eine Beetsanierung oder das Herrichten einer vernachlässigten Fläche – ist ebenso möglich wie wiederkehrende Pflege. Was für Ihr Objekt sinnvoll ist, klären wir bei der Begehung." },
-    { "frage": "Übernehmen Sie die laufende Pflege ganzjährig?", "antwort": "Ja. Wir richten die Pflege auf das Jahr aus – vom ersten Schnitt im Frühjahr über die Sommerintervalle bis zum Herbstlaub und der Vorbereitung auf den Winter. Der Rhythmus wird auf Ihr Objekt abgestimmt, sodass die Flächen durchgängig gepflegt bleiben." },
-    { "frage": "Bekommen wir einen festen Ansprechpartner?", "antwort": "Ja. Sie haben einen Ansprechpartner, der das Objekt kennt. Das erspart Erklärungen bei jedem Termin und sorgt dafür, dass Besonderheiten der Anlage berücksichtigt werden. Auffälligkeiten, etwa am Baumbestand, melden wir aktiv zurück, statt sie zu übergehen." },
-    { "frage": "Können Sie auch die Baumkontrolle mit übernehmen?", "antwort": "Ja. Das ist einer der Gründe, warum Objekte die Pflege bei uns bündeln: Als Sachverständiger für Baumkontrolle können wir die Verkehrssicherheit der Bäume mit abdecken und dokumentieren – ein wichtiger Punkt für die Verkehrssicherungspflicht auf gewerblichen Flächen." },
-    { "frage": "Eignet sich das auch für kleinere Wohnanlagen?", "antwort": "Ja. Auch überschaubare Wohnanlagen und Eigentümergemeinschaften profitieren von einer wiederkehrenden Pflege mit festem Ansprechpartner. Für ein passendes Angebot vereinbaren wir eine Objektbegehung." }
+    {
+      "frage": "Betreuen Sie auch mehrere Objekte einer Hausverwaltung?",
+      "antwort": "Ja. Wir stimmen die Betreuung auf die einzelnen Standorte und deren Nutzung ab. In einem ersten Gespräch klären wir Ihren Bedarf; die Flächen und den passenden Leistungsumfang sehen wir uns anschließend gemeinsam an."
+    },
+    {
+      "frage": "Wie entsteht ein passender Pflegeplan für meine Außenanlage?",
+      "antwort": "Bei einer Besichtigung betrachten wir Bepflanzung, Pflegezustand und Nutzung der Flächen. Daraus entsteht ein passender Pflegeplan mit abgestimmten Einsätzen. Ist zunächst eine gründliche Aufarbeitung nötig, können wir diese vor der regelmäßigen Betreuung übernehmen."
+    }
   ],
-  "nachbarn": ["umgestaltung-aussenanlagen", "baumkontrolle", "dachbegruenung"],
-  "kundengruppe": ["gewerbe"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/objekt-gruenflaechenpflege-mitarbeiter-480.webp",
+  "kundengruppe": [
+    "gewerbe"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "pflasterreinigung-fugenreinigung"
+    },
+    {
+      "welt": "privat",
+      "slug": "gartenpflege"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 18
 }
