@@ -273,10 +273,26 @@
 
 /* --- Alles aus einer Hand ------------------------------------------------- */
 
+/* AP-438: "Alles aus einer Hand" traegt auf Ansage des Auftraggebers dasselbe
+   Schriftbild wie "Was nicht sinnvoll ist, sagen wir Ihnen vorher."
+
+   Statt die Werte abzuschreiben, traegt die h3 jetzt dieselbe Klasse wie jener
+   Absatz: type-subsection-title (styles.css:254). Von dort kommen Groesse
+   (var(--type-subsection-title-size), fluid 22,4px bei 390px bis 30,4px bei
+   1280px), Strichstaerke 700, Zeilenhoehe 1.1 und Laufweite -.022em. Waechst
+   die Stufe einmal, wachsen beide gemeinsam.
+
+   font-size, font-weight und font-family sind hier deshalb raus bzw. getauscht:
+   .ueber-betrieb__kicker und .type-subsection-title wiegen beide (0,1,0), und
+   ueber-uns.css laedt nach styles.css - jede Angabe, die hier stehen bliebe,
+   haette die Klasse geschlagen.
+
+   Die Schriftart ist der Grund, warum die Klasse allein nicht reicht: Sie setzt
+   keine, und der Absatz nebenan bekommt sein Inter als <p> ueber den Grundtext.
+   Eine <h3> erbt dagegen var(--display), also Outfit. Deshalb steht var(--body)
+   hier ausdruecklich. */
 .ueber-betrieb__kicker {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1rem;
+  font-family: var(--body);
   margin: 0;
 }
 
