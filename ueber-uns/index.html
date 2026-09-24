@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923p" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923u" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -598,8 +598,13 @@ html, body { background-color: #171916; }
           <button class="ueber-betrieb__typer-pause" type="button" aria-pressed="false" hidden>Pause</button>
         </div>
 
-        <p class="ueber-betrieb__notiz">Eigene Fachleute im Team, dazu Spezialisten aus
-           angrenzenden Gewerken wie der Entwässerungstechnik.</p>
+        <!-- AP-458: Hier stand "Eigene Fachleute im Team, dazu Spezialisten aus
+             angrenzenden Gewerken wie der Entwaesserungstechnik." Auf Ansage des
+             Auftraggebers entfallen; vermerkt in docs/offene-punkte.md.
+             Damit steht die Aussage ueber die Spezialisten aus angrenzenden
+             Gewerken nirgends mehr sichtbar auf der Seite - sie kam aus der
+             alten Website und war dort der einzige Beleg (siehe den Kommentar
+             am Kopf dieser Sektion). Im JSON-LD stand sie nie. -->
 
         <!-- AP-447: Hier standen "Unsere Taetigkeitsschwerpunkte liegen in:" und die
              fuenf Punkte darunter. Auf Ansage des Auftraggebers entfallen: Liste und

@@ -544,15 +544,20 @@
   clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
 }
 
-.ueber-betrieb__notiz {
-  margin: 12px 0 0;
-  max-width: 42ch;
-  color: var(--ink-mute);
-  font-size: .90625rem;
-  line-height: 1.5;
-}
+/* AP-458: Hier standen die Regeln von .ueber-betrieb__notiz - dem Absatz
+   "Eigene Fachleute im Team, dazu Spezialisten aus angrenzenden Gewerken wie
+   der Entwaesserungstechnik." Auf Ansage des Auftraggebers ist der Absatz
+   entfallen, die Klasse kommt im Repo nirgends mehr vor.
 
-.ueber-betrieb__notiz + .lead { margin-top: 1.1em; }
+   Mit ihm faellt .ueber-betrieb__notiz + .lead: die Regel hielt 1.1em zwischen
+   dem Absatz und einem .lead dahinter. Ein solcher .lead stand im Nachsatz
+   zuletzt vor AP-447; der Nachbarschaftsselektor hatte seither nichts mehr zu
+   treffen und ohne den Absatz erst recht nicht.
+
+   Letzter sichtbarer Inhalt des Nachsatzes ist damit die Kette "Planung ->
+   ... -> Pflege" beziehungsweise die Schreibmaschine an ihrer Stelle. Der
+   Abstand nach unten kommt von der Sektion, nicht von diesem Absatz - er trug
+   nur margin-top. */
 
 /* --- Schreibmaschine ------------------------------------------------------
    Die Kette wird waehrend des Laufs optisch versteckt, bleibt aber im

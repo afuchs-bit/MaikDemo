@@ -2150,3 +2150,38 @@ Gesicht, 560 × 700 px.
 Die Blüte erscheint jetzt zweimal im ersten Bildschirm — im Logo und auf der Schnittkante
 des Startbildes. Das Auftragsdokument (§8.4) verlangt, das zu berichten und nichts zu
 ändern. Hiermit berichtet.
+
+---
+
+## AP-458 — Der Nachsatz zu den Fachleuten entfällt
+
+Der Absatz **„Eigene Fachleute im Team, dazu Spezialisten aus angrenzenden Gewerken wie der
+Entwässerungstechnik."** steht seit dem **24.09.2026** auf Ansage des Auftraggebers nicht
+mehr auf der Seite. Er stand seit AP-411 unter der Kette „Planung → … → Pflege".
+
+### Was damit von der Seite verschwindet
+
+Der Satz war der **einzige sichtbare Ort** für eine der beiden Aussagen, die der Abschnitt
+„Zwei Aussagen, die neu belegt sind" weiter oben in diesem Dokument führt: *Spezialisten aus
+angrenzenden Gewerken, etwa der Entwässerungstechnik.* Beleg ist allein die alte Website des
+Auftraggebers, überbracht am 20.09.2026; Teil B des Umsetzungsplans kennt dazu nur
+„Partnerfirma in Bochum (Details offen)".
+
+Der Beleg bleibt richtig, deshalb bleibt auch jener Abschnitt stehen — die Aussage wird auf
+der Website nur nicht mehr getroffen. **Im JSON-LD stand sie nie**, es ist also nichts
+nachzuziehen. Die zweite der beiden Aussagen — Arbeiten im öffentlichen Bereich — ist nicht
+betroffen; sie steht weiter im Fließtext des Abschnitts.
+
+**Kein Versehen, keine stille Entnahme** — der Auftraggeber hat den Absatz markiert und seine
+Entfernung verlangt.
+
+### Technische Notizen
+
+- Die Klasse `.ueber-betrieb__notiz` kommt im Repo nirgends mehr vor; ihre Regeln in
+  `ueber-uns.css` sind entfernt.
+- Mit ihr entfällt `.ueber-betrieb__notiz + .lead`. Die Regel hielt den Abstand zu einem
+  `.lead` hinter dem Absatz — einen solchen gab es im Nachsatz zuletzt vor AP-447.
+- **Die Abstandskette bleibt unberührt.** Der Absatz trug nur `margin-top: 12px`, keinen
+  unteren Abstand. Letzter sichtbarer Inhalt des Nachsatzes ist jetzt die Kette
+  beziehungsweise die Schreibmaschine an ihrer Stelle; der Abstand nach unten kommt von der
+  Sektion.
