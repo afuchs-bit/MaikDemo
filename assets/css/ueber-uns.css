@@ -89,34 +89,139 @@
   padding: clamp(22px, 3vw, 40px) 0 0;
 }
 
-/* AP-452: Schriftbild der Startseiten-Ueberschrift "Ueber uns"
-   (privat-form.css:4198) - auf Ansage des Auftraggebers, und derselbe Griff wie
-   in AP-415 fuer die Kontakt- und die Galerieseite. Die Werte sind woertlich
-   die von dort, damit die drei Unterseiten nicht auseinanderlaufen.
+/* --- Startbild -------------------------------------------------------------
+   AP-453: Randloses Foto unter dem Seitenkopf, Ueberschrift im Bild, diagonaler
+   Abschluss nach rechts fallend, gruene Haarlinie auf der Schnittkante, Bluete
+   darauf. Das Auftragsdokument wollte dieses Muster von den Leistungsseiten
+   uebernehmen - dort gibt es keines, geprueft auf beiden Zweigen. Es ist hier
+   neu gebaut, auf ausdrueckliche Ansage des Auftraggebers.
 
-   Uebernommen ist der komplette Satz, nicht nur Schriftart, Groesse und
-   Zentrierung: Baloo 2 mit der Strichstaerke 800 und der Laufweite -.043em der
-   bisherigen H1 saehe gedraengt und verzerrt aus - die Werte gehoeren zusammen.
+   Der Abfall der Diagonale haengt an der Breite: 12.46vw entspricht tan(7,1deg),
+   dem Winkel aus --mobile-hero-slope-angle (home-dark.css:560). Unterhalb von
+   241px und oberhalb von 947px greift der clamp und die Schraege wird flacher -
+   das Projekt haelt den Winkel an seinen eigenen Umbruchstellen ebenfalls nicht
+   starr (7,1 / 7,6 / 8,2deg).
 
-   Ersatzschrift ist var(--display) statt sans-serif. Das greift nur, wenn
-   Baloo 2 nicht laedt; das @font-face dafuer steht seit AP-447 am Dateikopf. */
-.ueber-kopf h1 {
+   Die Sektion steht ausserhalb von .container und ist damit von Haus aus
+   randlos - kein negativer Aussenabstand noetig wie noch in AP-441.
+
+   KEIN overflow: hidden. Die Bluete sitzt auf der Kante und ragt darueber
+   hinaus; ein Beschnitt haette sie halbiert. */
+.ueber-hero {
+  --hero-abfall: clamp(30px, 12.46vw, 118px);
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: clamp(300px, 84vw, 400px);
+  margin-top: clamp(14px, 2vw, 24px);
+}
+
+.ueber-hero picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.ueber-hero__bild {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Etwas oberhalb der Mitte: bei 330px Hoehe aus einem 4:3-Ausschnitt faellt
+     oben die Strasse und unten das Schnittgut heraus, die beiden Arbeitenden
+     bleiben im Bild. Visuell geprueft, nicht gerechnet. */
+  object-position: center 46%;
+}
+
+/* Schleier fuer die Lesbarkeit der Ueberschrift. Das Auftragsdokument hat am
+   fremden Vorbild gemessen, dass Weiss gegen die hellsten 5 Prozent des
+   Hintergrunds nur 2,57:1 traegt - unter der Grenze selbst fuer grosse Schrift.
+   Die Deckkraft hier ist am echten Foto nachgemessen, nicht uebernommen. */
+.ueber-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgb(14 16 13 / .82) 0%,
+    rgb(14 16 13 / .52) 46%,
+    rgb(14 16 13 / 0) 74%
+  );
+}
+
+.ueber-hero__titel {
+  position: relative;
+  z-index: 2;
   margin: 0;
+  padding: clamp(18px, 5vw, 34px) var(--gutter) calc(var(--hero-abfall) + clamp(26px, 6vw, 44px));
+  align-self: start;
+  max-width: var(--container);
+  justify-self: center;
+  width: 100%;
   font-family: "Baloo 2", var(--display);
-  font-size: 31px;
+  font-size: clamp(2.125rem, 1.446rem + 2.785vw, 3.5rem);
   font-weight: 600;
   font-style: normal;
-  line-height: 1.13;
+  line-height: 1.02;
   letter-spacing: -.015em;
-  text-align: center;
+  color: var(--ink);
   text-wrap: balance;
 }
 
-@media (max-width: 360px) {
-  /* Dieselbe Stufe wie die Vorlage (privat-form.css:4224) und wie auf den
-     beiden anderen Unterseiten. */
-  .ueber-kopf h1 { font-size: 28px; }
+/* Der Schnitt samt Haarlinie als EIN Verlauf. Der Kasten ist genau so hoch wie
+   der Abfall; "to bottom left" legt die 50-Prozent-Kante nach der Regel fuer
+   Eck-Schluesselwoerter exakt auf die Diagonale von oben links nach unten
+   rechts. Darueber bleibt das Bild stehen, darunter liegt der Seitengrund.
+   Zwei Pixel gruen dazwischen sind die Haarlinie - sie laeuft dadurch
+   zwangslaeufig bis an beide Raender, ohne Luecke. */
+.ueber-hero__linie {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: var(--hero-abfall);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom left,
+    transparent calc(50% - 1px),
+    var(--green-500) calc(50% - 1px),
+    var(--green-500) calc(50% + 1px),
+    var(--bg) calc(50% + 1px)
+  );
 }
+
+/* Die Bluete sitzt auf der Kante, unten rechts - dort laeuft der Schnitt am
+   tiefsten. rohdich-blume.png war seit AP-449 unbenutzt und kommt hier zurueck
+   in Gebrauch; ASSETS.md ist entsprechend nachgezogen. */
+.ueber-hero__bluete {
+  position: absolute;
+  z-index: 4;
+  right: clamp(14px, 5vw, 48px);
+  bottom: -10px;
+  width: clamp(44px, 12vw, 62px);
+  aspect-ratio: 1;
+  background: url("../img/icons/rohdich-blume.png") center / contain no-repeat;
+  filter: drop-shadow(0 6px 8px rgb(0 0 0 / .45));
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .ueber-hero {
+    min-height: 380px;
+    aspect-ratio: 21 / 9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ueber-hero__bluete { transform: none; }
+}
+
+/* AP-453: Hier standen die Regeln der H1 im Seitenkopf (AP-452). Die H1 steht
+   seit dem 24.09.2026 im Startbild; ihr Schriftbild ist dorthin gewandert und
+   dort groesser gesetzt - im Bild traegt sie mehr Gewicht als ueber ihm. */
 
 /* AP-381: Der Leitsatz ist Ueberschrift des Betriebsabschnitts geworden; seine
    eigenen Regeln sind damit entfallen. Groesse, Gewicht und Laufweite kommen
@@ -142,15 +247,9 @@
 .ueber-inhaber {
   position: relative;
   overflow: hidden;
-  /* AP-444: Kein Polster nach unten. Seit AP-441 schliesst das Foto den
-     Abschnitt ab, und auf dem Handy reicht es bis an beide Bildschirmkanten -
-     darunter noch 52px Leerflaeche zu setzen und darueber im naechsten
-     Abschnitt noch einmal 52px ergab 104px Loch zwischen Foto und Ueberschrift
-     (am Rechner 192px). Das Foto endet jetzt buendig; uebrig bleibt der
-     normale Abstand zwischen zwei Abschnitten der Seite.
-     Die Regel schlaegt .section (styles.css) bei gleichem Gewicht ueber die
-     Ladereihenfolge - ueber-uns.css kommt spaeter. */
-  padding-bottom: 0;
+  /* AP-453: Hier stand padding-bottom: 0 aus AP-444. Es galt dem Foto, das den
+     Abschnitt bis AP-452 abschloss; seit das Foto am Seitenanfang steht, endet
+     der Abschnitt wieder mit dem Zitat und braucht sein Polster. */
 }
 
 /* AP-442: Hier stand .ueber-inhaber__wasserzeichen - die grosse, gedaempfte
@@ -174,31 +273,9 @@
   align-items: center;
 }
 
-/* AP-441: Das Foto unter dem Zitat. Es laeuft ueber beide Rasterspalten -
-   am Rechner also ueber die volle Containerbreite unter dem Abschnitt, nicht in
-   der 420px schmalen Zitatspalte. Auf Ansage des Auftraggebers.
-
-   aspect-ratio plus object-fit statt eines zweiten Zuschnitts: Die Ableitungen
-   liegen bereits in 4:3 vor (build-images.mjs), die beiden Angaben halten den
-   Platz vor dem Laden frei und fangen ab, falls jemand spaeter eine Ableitung
-   mit anderem Verhaeltnis einhaengt.
-
-   Eckenschnitt, Rahmen und Schatten sind die des anderen Fotos der Seite
-   (.ueber-betrieb__bild img) - die Seite kennt damit ein einziges Bildformat. */
-.ueber-inhaber__foto {
-  grid-column: 1 / -1;
-  margin: clamp(30px, 3.6vw, 48px) 0 0;
-}
-
-.ueber-inhaber__foto img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 24px 24px 44px 24px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-card);
-}
+/* AP-453: Hier standen die Regeln von .ueber-inhaber__foto (AP-441). Das Foto
+   steht seit dem 24.09.2026 als Startbild am Seitenanfang; sein Regelsatz ist
+   dorthin gewandert, siehe "Startbild" weiter unten. */
 
 .ueber-inhaber__gross {
   margin: 0;
@@ -795,23 +872,9 @@
   .ueber-inhaber__bluete-mobil { display: block; margin: 24px 0; }
   .ueber-inhaber__bluete-mobil img { width: 64px; height: auto; margin-inline: auto; }
 
-  /* AP-441: Das Foto reicht auf Ansage des Auftraggebers bis an beide
-     Bildschirmkanten. Dasselbe Vollbreiten-Mass wie in projekte.css:340 - der
-     Container traegt seinen Rand nicht als Polster, sondern ueber
-     width: min(100% - 2*--gutter, ...) plus margin-inline: auto
-     (styles.css:233). Der Seiteninset kommt dazu, sonst bliebe im Querformat
-     auf Geraeten mit Notch ein Streifen stehen.
-     Kein waagerechter Ueberlauf dadurch: .ueber-inhaber traegt overflow: hidden.
-     Eckenschnitt und Seitenrahmen fallen weg - eine angeschnittene Rundung an
-     der Bildschirmkante sieht nach Fehler aus. */
-  .ueber-inhaber__foto {
-    margin-left: calc((var(--gutter) + env(safe-area-inset-left, 0px)) * -1);
-    margin-right: calc((var(--gutter) + env(safe-area-inset-right, 0px)) * -1);
-  }
-  .ueber-inhaber__foto img {
-    border-radius: 0;
-    border-inline: 0;
-  }
+  /* AP-453: Hier stand die Vollbreiten-Fassung des Fotos (AP-441). Das Startbild
+     am Seitenanfang braucht sie nicht mehr - es steht ausserhalb des Containers
+     und ist damit von Haus aus randlos. */
 
   /* Das Bild steht im Quelltext NACH dem Text - im gestapelten Zustand ist das
      die richtige Lesereihenfolge, hier ist also nichts umzusortieren. Nur die

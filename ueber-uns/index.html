@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923n" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923o" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -330,8 +330,42 @@ html, body { background-color: #171916; }
           <li aria-current="page">Über uns</li>
         </ol>
       </nav>
-      <h1 class="reveal">Über uns</h1>
+      <!-- AP-453: Die H1 stand hier bis zum 24.09.2026. Sie ist in das Startbild
+           darunter gewandert - zwei Ueberschriften unmittelbar uebereinander
+           konkurrieren, und der Kruemelpfad sagt ohnehin schon, wo man ist.
+           Ihr Schriftbild aus AP-452 ist mitgegangen, nur groesser gesetzt. -->
     </div>
+  </section>
+
+  <!-- ===== Startbild ======================================================
+       AP-453 (24.09.2026): Randloses Foto unter dem Seitenkopf, Ueberschrift im
+       Bild, diagonaler Abschluss nach rechts fallend, gruene Haarlinie auf der
+       Schnittkante, Bluete darauf.
+
+       Das Auftragsdokument wollte dieses Muster von den Leistungsseiten
+       UEBERNEHMEN. Es gibt dort keines - deren Kopf ist Text (Kruemelpfad,
+       Kicker, H1, Lead, Knopf), auf beiden Zweigen geprueft. Das Muster ist
+       deshalb hier neu gebaut, auf ausdrueckliche Ansage des Auftraggebers, dem
+       der Befund vorlag. Der Winkel stammt aus dem Vokabular des Projekts
+       (--mobile-hero-slope-angle, home-dark.css:560), nicht aus dem Dokument.
+
+       Das Bild ist das LCP-Element: eager statt lazy, fetchpriority high.
+       width/height bleiben stehen, damit beim Laden nichts springt.
+
+       [OFFEN: Das Dokument sieht eine Unterzeile unter dem Schnitt vor - ein
+        Pendant zu "Ein Stueck Garten vor Ihrem Fenster". Der Satz liegt nicht
+        vor und wird nicht erfunden; der Slot bleibt weg. docs/offene-punkte.md] -->
+  <section class="ueber-hero">
+    <picture>
+      <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="100vw">
+      <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="100vw">
+      <img class="ueber-hero__bild" src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
+           alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
+           loading="eager" fetchpriority="high" decoding="async">
+    </picture>
+    <h1 class="ueber-hero__titel">Über uns</h1>
+    <span class="ueber-hero__linie" aria-hidden="true"></span>
+    <span class="ueber-hero__bluete" aria-hidden="true"></span>
   </section>
   <!-- ===== Das Team ======================================================
        AP-384: Der Absatz traegt seit dem 21.09.2026 den Text des Auftraggebers
@@ -381,24 +415,10 @@ html, body { background-color: #171916; }
         <p class="ueber-inhaber__name">Maik Rohdich, Gartenbaumeister</p>
       </blockquote>
 
-      <!-- AP-441: Foto der Baumarbeiten, auf Ansage des Auftraggebers unter dem
-           Zitat. Es steht als Kind des Rasters und laeuft mit grid-column ueber
-           beide Spalten - am Rechner also ueber die volle Containerbreite unter
-           dem Abschnitt, nicht in der schmalen Zitatspalte. Unter 861px reicht es
-           per negativem Aussenabstand bis an beide Bildschirmkanten.
-
-           Das Original ist hochkant (900x1125). Gezeigt wird es liegend im
-           Verhaeltnis 4:3; der Zuschnitt sitzt in build-images.mjs, nicht hier -
-           so wandert er in alle Ableitungen statt nur in die Anzeige. -->
-      <figure class="ueber-inhaber__foto">
-        <picture>
-          <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(min-width: 861px) 1240px, 100vw">
-          <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(min-width: 861px) 1240px, 100vw">
-          <img src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
-               alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
-               loading="lazy" decoding="async">
-        </picture>
-      </figure>
+      <!-- AP-453: Hier stand das Foto der Baumarbeiten (AP-441). Auf Ansage des
+           Auftraggebers ist es an den Seitenanfang gewandert und traegt dort als
+           Startbild die Ueberschrift. Zweimal dasselbe Foto auf einer Seite laese
+           sich wie ein Versehen. -->
     </div>
   </section>
   <!-- ===== Team =========================================================

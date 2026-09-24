@@ -2110,3 +2110,43 @@ Entscheidung des Auftraggebers festgehalten.
 **Falls die Fragen zurück sollen**, ist der kleinste Weg, sie in die FAQ der Startseite zu
 übernehmen: Der Baustein `.faq-list` steht dort bereits, und der `FAQPage`-Block der
 Startseite müsste um die vier Knoten wachsen.
+
+---
+
+## AP-453 — Startbild der Über-uns-Seite
+
+Auf Ansage des Auftraggebers trägt die Über-uns-Seite seit dem **24.09.2026** ein
+randloses Startbild: das Baumarbeiten-Foto aus AP-441, das bis dahin unter dem Zitat
+stand und dorthin **gewandert** ist, mit der Überschrift „Über uns" im Bild, diagonalem
+Abschluss, grüner Haarlinie und der Blüte auf der Kante.
+
+### Offen
+
+- **Die Unterzeile unter dem Schnitt.** Das Auftragsdokument (§2.3) sieht eine vor, als
+  Pendant zu „Ein Stück Garten vor Ihrem Fenster". Der Satz liegt nicht vor und wurde
+  **nicht erfunden**; der Slot ist weggelassen, nicht leer gesetzt. Kommt der Satz, ist er
+  ein Absatz zwischen Startbild und Person-Sektion.
+- **Die Auflösung der Vorlage.** Das Foto ist 900 px breit. Am Rechner wird es auf bis zu
+  1280 px hochgerechnet, Faktor 1,42 — schon zu AP-443 gemeldet. Eine größere Vorlage
+  behebt es, ohne dass an Markup oder CSS etwas zu ändern wäre.
+
+### Befund zum Auftragsdokument
+
+Das Dokument wollte den Bild-Hero der Leistungsseiten **übernehmen**. Den gibt es nicht:
+Der Kopf der 24 Leistungsseiten besteht aus Krümelpfad, Kicker, H1, Lead und Knopf — ohne
+Bild, ohne Diagonale, ohne Haarlinie, ohne Blüte. Geprüft im Template auf `codex/homepage-review`
+**und** auf `claude/kind-fermat-pyzy5p`, gegen den das Dokument geschrieben ist. Damit
+beziehen sich auch seine Messwerte (510 px Höhe, 5,7°, 43 px Abfall, 9,8 : 1 und 2,57 : 1)
+auf etwas, das im Repo nicht liegt. Das Muster ist deshalb **neu gebaut** — auf
+ausdrückliche Ansage des Auftraggebers, dem der Befund vorlag.
+
+**Das Teamfoto bleibt ausgeschlossen.** Der Auftraggeber hat am 24.09.2026 bestätigt, dass
+Grundregel A.3.3 („kein Teamfoto — ausdrücklicher Wunsch des Betriebsinhabers") gilt. Die
+Datei `assets/img/_src/ueber-team.jpg` ist ohnehin keines: eine Person von hinten, ohne
+Gesicht, 560 × 700 px.
+
+### Beobachtung ohne Auftrag
+
+Die Blüte erscheint jetzt zweimal im ersten Bildschirm — im Logo und auf der Schnittkante
+des Startbildes. Das Auftragsdokument (§8.4) verlangt, das zu berichten und nichts zu
+ändern. Hiermit berichtet.
