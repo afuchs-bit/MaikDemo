@@ -922,8 +922,9 @@ function faqJsonLd(faq) {
 }
 
 // ---------- Editorial-v2: mobile Leistungsseiten ----------
-function lpv2Cta(label, base, href = '#anfrage') {
-  return `<a class="lpv2-cta reveal" href="${escAttr(href)}">
+function lpv2Cta(label, base, href = '#anfrage', extraClass = '') {
+  const className = extraClass ? ` ${escAttr(extraClass)}` : '';
+  return `<a class="lpv2-cta${className} reveal" href="${escAttr(href)}">
           <svg class="lpv2-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true"><use href="#maik-cta-shape"/></svg>
           <svg class="lpv2-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true"><use href="#maik-cta-shape"/></svg>
           <span class="lpv2-cta__label">${esc(label)}</span>
@@ -963,6 +964,91 @@ function lpv2Gallery(leistung, base) {
           <figcaption>${String(i + 1).padStart(2, '0')}</figcaption>
         </figure>`).join('\n        ');
   return `<div class="lpv2-photo-rail" role="region" aria-label="Bildergalerie, horizontal scrollbar" tabindex="0">${items}</div>`;
+}
+
+function lpv2GallerySection(leistung, base) {
+  if (leistung.galleryVariant === 'grid-teaser') {
+    const items = (leistung.bilder?.gallery || []).map((bild) => {
+      const focus = bild.fokusMobil || bild.fokusDesktop || '';
+      const focusStyle = focus ? ` style="--gallery-focus-mobile:${escAttr(focus)}"` : '';
+      return `<figure class="lpv2-gallery-grid-photo"${focusStyle}>
+            ${renderPicture(bild.bild, { alt: bild.alt || '', sizes: '(max-width: 480px) calc((100vw - 52px) / 2), 220px', width: bild.width, height: bild.height, base })}
+          </figure>`;
+    }).join('\n          ');
+    return `<section class="lpv2-gallery-grid-section section" aria-label="Einblicke in unsere Arbeit">
+      <div class="container">
+        <div class="lpv2-gallery-grid-window reveal" id="lpv2-gallery-grid" data-lpv2-gallery-window>
+          <div class="lpv2-gallery-grid">${items}</div>
+          <span class="lpv2-gallery-grid-fade" aria-hidden="true"></span>
+        </div>
+        <button class="lpv2-gallery-grid-more maik-cta maik-cta--compact maik-cta--gallery reveal" type="button" aria-expanded="false" aria-controls="lpv2-gallery-grid" aria-label="Alle Bilder anzeigen" data-lpv2-gallery-toggle data-label-collapsed="${escAttr(leistung.galleryCtaLabel || 'Mehr anzeigen')}" data-label-expanded="${escAttr(leistung.galleryCollapseLabel || 'Weniger')}">
+          <svg class="maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+          <svg class="maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
+          <span class="maik-cta__label" data-lpv2-gallery-toggle-label>${esc(leistung.galleryCtaLabel || 'Mehr anzeigen')}</span>
+          <span class="maik-cta__arrow" aria-hidden="true"><span class="lpv2-gallery-grid-symbol"></span></span>
+        </button>
+      </div>
+    </section>`;
+  }
+  return `<section class="lpv2-gallery section" aria-labelledby="lpv2-gallery-title">
+      <div class="container lpv2-gallery-head">
+        <header class="lpv2-section-head reveal">
+          <p class="lpv2-section-index" aria-hidden="true">02</p>
+          <h2 id="lpv2-gallery-title">Einblicke in unsere Arbeit</h2>
+        </header>
+        <p class="lpv2-gallery-hint">Seitlich wischen</p>
+      </div>
+      ${lpv2Gallery(leistung, base)}
+    </section>`;
+}
+
+function lpv2HomepageCta(label, base, extraClass = '', href = '#kontakt', attention = true) {
+  const classes = [extraClass, 'maik-cta', attention ? 'maik-cta--attention' : '', 'reveal'].filter(Boolean).join(' ');
+  return `<a class="${escAttr(classes)}" href="${escAttr(href)}">
+          <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
+          <svg class="maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+          <svg class="maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
+          <span class="maik-cta__label">${esc(label)}</span>
+          <span class="maik-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="maik-cta__arrow-image" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
+        </a>`;
+}
+
+function lpv2Closing(leistung, base) {
+  const text = esc(leistung.abschluss || '');
+  if (leistung.closingVariant !== 'homepage-cta') {
+    return `<p class="lpv2-closing reveal">${text}</p>`;
+  }
+  const configuredLines = Array.isArray(leistung.closingLines) ? leistung.closingLines.filter(Boolean) : [];
+  const copy = configuredLines.length
+    ? configuredLines.map((line) => `<span>${esc(line)}</span>`).join('\n          ')
+    : text;
+  const label = leistung.closingCtaLabel || 'Beratung vereinbaren';
+  return `<div class="lpv2-closing-block">
+        <p class="lpv2-closing lpv2-closing-lines reveal">${copy}</p>
+        ${lpv2HomepageCta(label, base, 'lpv2-closing-cta')}
+      </div>`;
+}
+
+function lpv2ContentSection(leistung, base) {
+  if (leistung.contentVariant !== 'editorial') return '';
+  const [context = {}, service = {}] = leistung.inhalt || [];
+  const intro = (leistung.mobileEinstieg || leistung.einstieg || []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join('');
+  const contextCopy = (context.mobileParagraphs || context.paragraphs || []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join('');
+  const serviceCopy = (service.mobileParagraphs || service.paragraphs || []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join('');
+  const listItems = (service.bullets || []).map((item) => `<li>${esc(item)}</li>`).join('');
+  const serviceHeading = esc(service.heading || '');
+  return `<section class="lpv2-content-feature section" aria-labelledby="lpv2-content-title">
+      <div class="container">
+        <article class="lpv2-content-editorial">
+          <header class="lpv2-content-lead reveal"><h2 id="lpv2-content-title">${esc(leistung.unterzeile)}</h2><div class="lpv2-content-flow-copy lpv2-content-flow-copy--intro">${intro}</div></header>
+          <div class="lpv2-content-context reveal">${contextCopy}</div>
+          <section class="lpv2-content-service reveal"><h3>${serviceHeading}</h3><div class="lpv2-content-service-copy">${serviceCopy}</div><ul class="lpv2-list lpv2-content-list">${listItems}</ul></section>
+        </article>
+        <div class="lpv2-content-closing">${lpv2Closing(leistung, base)}</div>
+      </div>
+    </section>
+
+`;
 }
 
 const LPV2_PROCESS = [
@@ -1016,16 +1102,23 @@ function lpv2Contact(leistung, base, homepageExact = false) {
       </div>`;
 }
 
-function lpv2Related(leistung, serviceIndex, base) {
+function lpv2Related(leistung, serviceIndex, base, homepageExact = false) {
   const items = (leistung.related || []).map((ref) => {
     const target = serviceIndex.get(`${ref.welt}:${ref.slug}`);
     if (!target) return '';
     const welt = WELTEN[ref.welt];
     const href = `${base}${welt.pfad}leistungen/${encodeURIComponent(ref.slug)}/`;
     const thumb = target.thumbnail || target.bilder?.hero?.bild || '';
+    if (homepageExact) {
+      const pic = renderPicture(thumb, { alt: '', sizes: '88px', width: 88, height: 88, base });
+      const initial = (ref.letter || target.h1.trim().charAt(0)).toLocaleLowerCase('de-DE');
+      const subtitle = ref.subtitle ? `<small>${esc(ref.subtitle)}</small>` : '';
+      return `<li class="iphone-service-row iphone-service-row--start"><a class="iphone-service-card" href="${escAttr(href)}" aria-label="${escAttr(`${target.h1} ansehen`)}"><span class="iphone-service-card__letter${subtitle ? ' iphone-service-card__letter--title-line' : ''}" aria-hidden="true"><img src="${base}assets/img/icons/leistung-${escAttr(initial)}.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>${esc(ref.label || target.h1)}</strong>${subtitle}</span><span class="iphone-service-card__media" aria-hidden="true">${pic}</span></a></li>`;
+    }
     const pic = renderPicture(thumb, { alt: '', sizes: '58px', width: 58, height: 58, base });
     return `<li class="lpv2-related-item"><a class="lpv2-related-link" href="${escAttr(href)}"><span class="lpv2-related-thumb" aria-hidden="true">${pic}</span><span class="lpv2-related-copy"><small>Leistung</small><strong>${esc(target.h1)}</strong></span><img class="lpv2-related-arrow" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" loading="lazy" decoding="async"></a></li>`;
   }).join('');
+  if (homepageExact) return `<ul class="iphone-service-grid lpv2-related-home-list" aria-label="Passende Leistungen">${items}</ul>`;
   return `<ul class="lpv2-related-list">${items}</ul>`;
 }
 
@@ -1095,7 +1188,11 @@ export async function renderLeistungPage(opts) {
         </nav>`;
     return fill(page, {
       base, slug: esc(slug), cssVersion: escAttr(cssVersion), jsVersion: escAttr(jsVersion),
+      themeColor: escAttr(leistung.themeColor || '#1b1e19'),
+      mobileCssVersion: escAttr(leistung.mobileCssVersion || '20260924z6'),
+      ctaFamilyVersion: escAttr(leistung.ctaFamilyVersion || '20260919a'),
       heroVariantClass: `${imageFirstHero ? ' lpv2-page--image-first' : ''}${heroTitleAbove ? ' lpv2-page--title-above' : ''}${heroTitleGraphic ? ' lpv2-page--title-graphic' : ''}`,
+      pageVariantClass: `${leistung.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${leistung.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}`,
       title: esc(leistung.title), ogTitle: escAttr(leistung.title),
       description: escAttr(truncate(leistung.metaDescription, 160)), canonical: escAttr(canonical),
       ogImage: escAttr(absUrl(hero.bild)), heroPreload: lcpPreloadFor(hero.bild, heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', base),
@@ -1119,12 +1216,21 @@ export async function renderLeistungPage(opts) {
       heroTitleGraphic: heroTitleGraphic
         ? `<div class="lpv2-hero-title-graphic reveal" aria-hidden="true"><img src="${escAttr(`${base}${heroTitleGraphic.bild.replace(/^\/+/, '')}`)}" alt="" width="${Number(heroTitleGraphic.width) || 2172}" height="${Number(heroTitleGraphic.height) || 724}" decoding="async"></div>`
         : '',
-      contentHtml: lpv2Content(leistung), closing: esc(leistung.abschluss), galleryHtml: lpv2Gallery(leistung, base),
+      contentHtml: lpv2Content(leistung), closingHtml: lpv2Closing(leistung, base),
+      mobileHeroCta: leistung.contentVariant === 'editorial'
+        ? `<div class="lpv2-mobile-hero-cta">${lpv2HomepageCta(leistung.ctaLabel, base, 'lpv2-mobile-hero-cta__button')}</div>`
+        : '',
+      mobileContentSection: lpv2ContentSection(leistung, base), gallerySection: lpv2GallerySection(leistung, base),
+      galleryGridScript: leistung.galleryVariant === 'grid-teaser'
+        ? `<script src="${base}assets/js/leistung-gallery-grid.js?v=20260925a1" defer></script>\n`
+        : '',
       processSection,
+      faqVariantClass: leistung.faqVariant === 'homepage' ? ' lpv2-faq--homepage' : '',
+      relatedVariantClass: leistung.relatedVariant === 'homepage' ? ' lpv2-related--homepage' : '',
       faqIndex: hideProcess ? '03' : '04',
       relatedIndex: hideProcess ? '05' : '06',
       faqHtml: lpFaq(leistung.faq || []), contactSection,
-      relatedHtml: lpv2Related(leistung, serviceIndex, base),
+      relatedHtml: lpv2Related(leistung, serviceIndex, base, leistung.relatedVariant === 'homepage'),
     });
   }
   if (leistung.layout === 'legacy-document') {

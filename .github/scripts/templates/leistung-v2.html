@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <meta name="robots" content="noindex,nofollow" />
-<meta name="theme-color" content="#1b1e19" />
+<meta name="theme-color" content="{{themeColor}}" />
 <!-- AUTO-GENERIERT von .github/scripts/build-leistungen.mjs aus content/leistungen/{{slug}}.json – NICHT von Hand editieren. -->
 <title>{{title}}</title>
 <meta name="description" content="{{description}}" />
@@ -24,13 +24,13 @@
 <link rel="stylesheet" href="{{base}}assets/css/privat-form.css?v=20260923k" />
 <link rel="stylesheet" href="{{base}}assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="{{base}}assets/css/anfrage.css?v=20260919a" />
-<link rel="stylesheet" href="{{base}}assets/css/cta-family.css?v=20260919a" />
-<link rel="stylesheet" href="{{base}}assets/css/leistung-mobile.css?v=20260924z6" />
+<link rel="stylesheet" href="{{base}}assets/css/cta-family.css?v={{ctaFamilyVersion}}" />
+<link rel="stylesheet" href="{{base}}assets/css/leistung-mobile.css?v={{mobileCssVersion}}" />
 <script type="application/ld+json">{{breadcrumbJsonLd}}</script>
 <script type="application/ld+json">{{serviceJsonLd}}</script>
 <script type="application/ld+json">{{faqJsonLd}}</script>
 </head>
-<body class="lpv2-page lp-service-page{{heroVariantClass}}">
+<body class="lpv2-page lp-service-page{{heroVariantClass}}{{pageVariantClass}}">
 
 {{logo}}
 <svg class="lpv2-symbols" width="0" height="0" aria-hidden="true" focusable="false">
@@ -61,32 +61,24 @@
 {{heroEdge}}
       </figure>
 {{heroTitleGraphic}}
+{{mobileHeroCta}}
     </section>
-
+{{mobileContentSection}}
     <section class="lpv2-editorial section" aria-labelledby="lpv2-editorial-title">
       <div class="container">
         <header class="lpv2-section-head reveal">
           <p class="lpv2-section-index" aria-hidden="true">01</p>
           <h2 id="lpv2-editorial-title">Was wir für Sie übernehmen</h2>
         </header>
-        <div class="lpv2-copy">{{contentHtml}}<p class="lpv2-closing reveal">{{closing}}</p></div>
+        <div class="lpv2-copy">{{contentHtml}}{{closingHtml}}</div>
       </div>
     </section>
 
-    <section class="lpv2-gallery section" aria-labelledby="lpv2-gallery-title">
-      <div class="container lpv2-gallery-head">
-        <header class="lpv2-section-head reveal">
-          <p class="lpv2-section-index" aria-hidden="true">02</p>
-          <h2 id="lpv2-gallery-title">Einblicke in unsere Arbeit</h2>
-        </header>
-        <p class="lpv2-gallery-hint">Seitlich wischen</p>
-      </div>
-      {{galleryHtml}}
-    </section>
+    {{gallerySection}}
 
 {{processSection}}
 
-    <section class="lpv2-faq section" aria-labelledby="lpv2-faq-title">
+    <section class="lpv2-faq section{{faqVariantClass}}" aria-labelledby="lpv2-faq-title">
       <div class="container">
         <header class="lpv2-section-head reveal">
           <p class="lpv2-section-index" aria-hidden="true">{{faqIndex}}</p>
@@ -98,7 +90,7 @@
 
 {{contactSection}}
 
-    <section class="lpv2-related section" aria-labelledby="lpv2-related-title">
+    <section class="lpv2-related section{{relatedVariantClass}}" aria-labelledby="lpv2-related-title">
       <div class="container">
         <header class="lpv2-section-head reveal">
           <p class="lpv2-section-index" aria-hidden="true">{{relatedIndex}}</p>
@@ -114,6 +106,6 @@
 
 <script src="{{base}}assets/js/main.js?v={{jsVersion}}" defer></script>
 <script src="{{base}}assets/js/cta-signal.js?v=20260914a" defer></script>
-<script src="{{base}}assets/js/anfrage.js?v=20260918c" defer></script>
+{{galleryGridScript}}<script src="{{base}}assets/js/anfrage.js?v=20260918c" defer></script>
 </body>
 </html>
