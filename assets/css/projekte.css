@@ -345,6 +345,24 @@
     background: var(--bg);
     box-shadow: 0 12px 14px -12px rgba(0, 0, 0, .85);
   }
+
+  /* AP-467: Bis hierher begann das Fotoraster unmittelbar an der Unterkante des
+     Bandes - 0px, gemessen bei 375, 390 und 900px. Das padding-block oben wirkt
+     nur nach innen, das Raster traegt keinen Aussenabstand. Mit Flaeche und
+     Schatten sass das Band damit sichtbar auf den ersten Fotos.
+
+     Auf Ansage des Auftraggebers ist der Abstand jetzt derselbe wie zwischen den
+     Fotos. Der Wert ist woertlich der gap von .gallery-photo-grid
+     (styles.css:2857); so bleiben beide auch zwischen 741 und 900px gleich, wo
+     das Raster dreispaltig ist und der gap ueber 12px waechst.
+
+     Der Abstand haengt am Raster, nicht am Band: ein margin-bottom am klebenden
+     Band verschoebe auch den Projekte-Modus. Der Nachbarselektor trifft nur das
+     Fotoraster, das im Markup direkt folgt. Ab 901px ist das Band keine Flaeche
+     mehr; dort regelt row-gap weiter unten den Abstand. */
+  .gallery-mode-sticky + .gallery-photo-grid {
+    margin-top: clamp(12px, 1.5vw, 20px);
+  }
 }
 
 /* AP-410: Dieser Block MUSS hinter dem Block darueber stehen. Unter 481px passen
