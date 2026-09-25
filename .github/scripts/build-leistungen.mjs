@@ -93,6 +93,10 @@ function validate(slug, d, validSlugs, weltKey) {
       errors.push(`${where}: "kundengruppe" muss ein Array aus ${KUNDENTYPEN.join('/')} sein.`);
     }
     if (d.layout === 'editorial-v2') {
+      if (d.themeColor !== undefined
+        && (typeof d.themeColor !== 'string' || !/^#[0-9a-fA-F]{6}$/.test(d.themeColor))) {
+        errors.push(`${where}: "themeColor" muss als sechsstellige Hex-Farbe angegeben werden (z. B. #171916).`);
+      }
       if (d.heroTitleLines !== undefined
         && (!Array.isArray(d.heroTitleLines)
           || d.heroTitleLines.length !== 2
@@ -101,8 +105,13 @@ function validate(slug, d, validSlugs, weltKey) {
         errors.push(`${where}: "heroTitleLines" muss den H1-Text in genau zwei nicht-leere Zeilen aufteilen.`);
       }
       if (!isNonEmptyString(d.bilder?.hero?.bild)) errors.push(`${where}: bilder.hero.bild fehlt.`);
-      if (!Array.isArray(d.bilder?.gallery) || d.bilder.gallery.length !== 3 || d.bilder.gallery.some((b) => !isNonEmptyString(b?.bild))) {
-        errors.push(`${where}: bilder.gallery muss genau drei Bilder enthalten.`);
+      const gallery = d.bilder?.gallery;
+      const galleryLengthValid = d.galleryVariant === 'grid-teaser'
+        ? Array.isArray(gallery) && gallery.length >= 6
+        : Array.isArray(gallery) && gallery.length === 3;
+      if (!galleryLengthValid || gallery.some((b) => !isNonEmptyString(b?.bild))) {
+        const requirement = d.galleryVariant === 'grid-teaser' ? 'mindestens 6' : 'genau 3';
+        errors.push(`${where}: bilder.gallery muss für diese Darstellungsvariante ${requirement} Bilder enthalten.`);
       }
       if (!Array.isArray(d.related) || d.related.length < 2 || d.related.length > 3) {
         errors.push(`${where}: "related" braucht zwei oder drei kuratierte Leistungen.`);
