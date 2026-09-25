@@ -253,6 +253,11 @@
   font-size: clamp(1.6rem, 2.7vw, 2.3rem);
   line-height: 1.2;
   color: var(--ink);
+  /* AP-485 (25.09.2026): mittig auf Ansage des Auftraggebers - wie die
+     anderen Ueberschriften der Seite seit AP-455 und der Seitentitel seit
+     AP-480. Nur die Ueberschrift; der Absatz darunter bleibt linksbuendig.
+     Am Rechner steht sie in der linken Rasterspalte und sitzt dort mittig. */
+  text-align: center;
   text-wrap: pretty;
 }
 
