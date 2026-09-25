@@ -789,6 +789,25 @@
   color: var(--green-500);
 }
 
+/* AP-476: Die Kartenueberschriften ("Private ...", "Gewerbe und
+   Hausverwaltungen", "Kommunen und oeffentliche Auftraggeber") in der Schrift
+   der Qualifikationsschilder vom Startseiten-Tor (home-dark.css:1800,
+   ".gate-welcome-qualification-label" - "Sachkundiger", "Baumkontrolleur").
+   Auf Ansage des Auftraggebers; derselbe Griff wie AP-435 fuer "Projekt
+   ansehen" in der Galerie: Schriftart und Neigung. Groesse, Strichstaerke und
+   das Gruen bleiben, wie die Regel darueber sie setzt; die Versalien, die
+   Laufweite .025em und die helle Farbe des Vorbilds sind nicht uebernommen.
+
+   Der Stapel ist woertlich der der Vorlage, ein System-Schriftstapel ohne
+   @font-face. Wo keine der drei Schriften liegt, greift cursive.
+
+   Eigene Regel statt Eingriff in die Grundregel darueber: gleiche Spezifitaet
+   (0,1,1), die spaetere gewinnt. */
+.ueber-fuerwen__liste h4 {
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-style: italic;
+}
+
 .ueber-fuerwen__liste p {
   margin: 0;
   color: var(--ink-2);
