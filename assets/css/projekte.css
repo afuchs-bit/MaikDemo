@@ -55,6 +55,24 @@
   font-style: italic;
 }
 
+/* AP-475: Die Projektkacheln im Modus "Projekte mit Details" tragen auf Ansage
+   des Auftraggebers dieselbe Form wie die auf "Ueber uns" (AP-474, ueber-uns.css)
+   - woertlich die Ecken der Kachel "24h Baum- & Sturmnotdienst" der Startseite
+   (privat-form.css:4993): 18px oben links und unten rechts, 5px an den beiden
+   anderen. Bis hierher ringsum var(--radius) = 22px aus styles.css:1114.
+
+   Nur die Form; Farbe, Rahmen und Schatten bleiben. Das Bild folgt den Ecken
+   ueber overflow: hidden der Kachel. .card-open zieht mit, weil ihr
+   border-radius dem Fokusring die Form gibt. Die Fotokacheln der Bildergalerie
+   (.gallery-photo, 19px) sind keine Projektkacheln und bleiben, wie sie sind.
+
+   Alle Breiten. .projects-overview haelt die Regel auf dieser Seite; (0,2,0)
+   gegen (0,1,0) der Grundregeln. */
+.projects-overview .project-card,
+.projects-overview .card-open {
+  border-radius: 18px 5px 18px 5px;
+}
+
 /* AP-434: Abstand des Kruemelpfads zur Ueberschrift. Derselbe Wert wie auf der
    Kontaktseite (kontakt.css:70), damit beide Unterseiten oben gleich atmen.
    Er ersetzt die 20px aus der Grundregel styles.css:2212; linksbuendig ist er
