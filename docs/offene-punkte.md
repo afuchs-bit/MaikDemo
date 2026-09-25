@@ -273,6 +273,13 @@ laut Teil B von ihm selbst.
 
 ### Was geändert wurde
 
+> **AP-464 (25.09.2026) — aufgelöst.** Das Gründungsjahr war falsch. Der Auftraggeber
+> hat **2001** als richtiges Jahr genannt; 2003 stand irrtümlich an allen Stellen. Das
+> Jahr ist nachgezogen in `content/stammdaten.json`, in vier `foundingDate`-Einträgen,
+> in der Fußzeile von 59 Seiten, in den Meta-Beschreibungen und in der Proof-Sektion.
+> Damit sind die **25 Jahre** belegt, und die unten beschriebene Herabsetzung auf 20 ist
+> gegenstandslos — die Jahresangaben stehen wieder auf 25.
+
 Der gelieferte Text nannte **„Seit über 25 Jahren"**. Angeglichen auf **20**: Die Seite
 nennt 2003 als Gründung, und der
 Willkommen-Text weiter oben „Seit über 20 Jahren". Derselbe Fall war bei AP-174 schon
@@ -1758,11 +1765,39 @@ Tätigkeitsschwerpunkte, die dort zu Chips werden und hier auf Ansage eine Liste
 - Umgebaut ohne Wortverlust: „Somit sind wir in der Lage, von der Planung … aus einer Hand
   zu erledigen." wird zur Zwischenüberschrift **„Alles aus einer Hand"** plus der Kette
   *Planung · Kostenermittlung · Realisierung · Koordinierung · Pflege*.
+  AP-461 (25.09.2026): „Kostenermittlung“ ist auf Ansage des Auftraggebers durch
+  **„Individualangebot“** ersetzt. Damit stimmt „ohne Wortverlust“ für dieses Glied
+  nicht mehr — der Originalsatz sprach von der Kostenermittlung.
+  AP-462 (25.09.2026): ebenfalls auf Ansage — **Koordinierung steht jetzt vor
+  Realisierung**. Auch die Reihenfolge folgt damit nicht mehr der des Originalsatzes
+  („von der Planung, über die Kostenermittlung, Realisierung und Koordinierung, bis
+  hin zur Pflege“). Die Kette lautet jetzt:
+  *Planung · Individualangebot · Koordinierung · Realisierung · Pflege*.
+
+**AP-473 (25.09.2026) — Kartentitel.** Die erste Karte unter „Für wen wir arbeiten"
+auf `/ueber-uns/` heißt auf Ansage des Auftraggebers **„Private Anliegen"** statt
+„Private Gärten". Der Beschreibungstext der Karte bleibt unverändert.
+`docs/ap/AP-447-…md` nennt sie in seiner Herkunftstabelle weiter unter dem alten Namen —
+das ist ein Archivdokument über den damaligen Stand und bleibt absichtlich so stehen.
+
+**AP-472 (25.09.2026) — entfallener Satz.** Aus der Zusage-Kachel auf `/ueber-uns/`
+ist auf Ansage des Auftraggebers der Begründungssatz entfernt worden:
+
+> Bauzeiten werden immer kürzer, und nicht jede Vereinbarung, die auf der Baustelle
+> getroffen wird, lässt sich schriftlich festhalten.
+
+Er stammte aus dem gelieferten Text. Die Kachel trägt jetzt nur noch die Zusage selbst
+(„Getroffene Absprachen haben für uns den gleichen Stellenwert wie schriftliche
+Verträge."). Der Satz steht an keiner anderen Stelle der Website.
 
 ### Der eine neu formulierte Satz
 
-> Im Mittelpunkt steht immer das Ziel, die Anlage termingerecht fertigzustellen. Grundlage
-> dafür sind partnerschaftliche Zusammenarbeit und langjährige Geschäftsbeziehungen.
+> Im Mittelpunkt steht bei uns immer das Ziel, die Anlage termingerecht fertigzustellen.
+> Grundlage dafür sind partnerschaftliche Zusammenarbeit und langjährige
+> Geschäftsbeziehungen.
+
+*AP-465 (25.09.2026): „bei uns" auf Ansage des Auftraggebers eingefügt; vorher lautete der
+Satz „Im Mittelpunkt steht immer das Ziel …". Sonst unverändert.*
 
 Er ersetzt zwei Originalsätze und ist die **einzige** Stelle, die nicht aus dem Bestand
 stammt. Belegquelle ist damit allein dieses Auftragsdokument. Er bleibt bewusst bei
