@@ -801,6 +801,28 @@
    hier steht nur der Kopf der Sektion, was die Kacheln ohne Beschreibungstext
    brauchen - und ab hier die Karussellfassung fuer schmale Geraete. */
 
+/* AP-474: Die Kacheln tragen auf Ansage des Auftraggebers die Form der Kachel
+   "24h Baum- & Sturmnotdienst" auf der Startseite - woertlich deren Ecken
+   (privat-form.css:4993, .iphone-service-feature--emergency): 18px oben links
+   und unten rechts, 5px an den beiden anderen. Bis hierher waren es ringsum
+   var(--radius) = 22px aus styles.css:1114.
+
+   Nur die Form. Rotton am Rahmen, Verlauf, Schatten und Mindesthoehe des
+   Vorbilds bleiben dort. Das Bild oben folgt den Ecken von selbst, weil
+   .project-card overflow: hidden traegt.
+
+   .card-open muss mit: die Klickflaeche liegt deckungsgleich ueber der Kachel,
+   ihr border-radius gibt dem Fokusring die Form. Ohne sie laege der Ring beim
+   Tabben weiter mit runden 22px-Ecken neben der neuen Kachel.
+
+   Gilt auf allen Breiten, wie die Kundenkarten aus AP-448. Spezifitaet
+   (0,2,0) gegen (0,1,0) der Grundregeln; an der Spur haengend, damit die
+   gleichen Kacheln auf Galerie und Startseite unberuehrt bleiben. */
+.ueber-projekte__spur .project-card,
+.ueber-projekte__spur .card-open {
+  border-radius: 18px 5px 18px 5px;
+}
+
 .ueber-projekte__kopf {
   display: flex;
   flex-wrap: wrap;
