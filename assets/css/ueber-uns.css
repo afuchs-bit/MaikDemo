@@ -256,13 +256,20 @@
   text-wrap: pretty;
 }
 
-/* Outfit hat keinen echten Kursivschnitt, der Browser schraegt nach. Die
-   geneigte Endkante frisst den Wortabstand zum folgenden "hinter" - gemessen
-   blieb davon nichts uebrig. Das padding stellt ihn wieder her. */
+/* AP-484 (25.09.2026): "Das Team" steht auf Ansage des Auftraggebers in einer
+   eigenen Zeile, "hinter dem Betrieb." darunter - auf allen Breiten. Bis
+   hierher lief die Ueberschrift als eine Zeile und brach nur um, wo der Platz
+   ausging. display: block statt <br> im Markup: der Text bleibt ein Satz mit
+   Leerzeichen, Screenreader lesen ihn unveraendert.
+
+   Entfallen ist dabei padding-right: .14em. Es stellte den Wortabstand zum
+   folgenden "hinter" wieder her, den die nachgeschraegte Endkante von Outfit
+   (kein echter Kursivschnitt) frass. Mit dem Umbruch steht dort kein Wort
+   mehr. */
 .ueber-inhaber__gross span {
+  display: block;
   font-style: italic;
   font-weight: 800;
-  padding-right: .14em;
 }
 
 .ueber-inhaber__text {
