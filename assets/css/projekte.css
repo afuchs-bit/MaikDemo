@@ -55,6 +55,24 @@
   font-style: italic;
 }
 
+/* AP-475: Die Projektkacheln im Modus "Projekte mit Details" tragen auf Ansage
+   des Auftraggebers dieselbe Form wie die auf "Ueber uns" (AP-474, ueber-uns.css)
+   - woertlich die Ecken der Kachel "24h Baum- & Sturmnotdienst" der Startseite
+   (privat-form.css:4993): 18px oben links und unten rechts, 5px an den beiden
+   anderen. Bis hierher ringsum var(--radius) = 22px aus styles.css:1114.
+
+   Nur die Form; Farbe, Rahmen und Schatten bleiben. Das Bild folgt den Ecken
+   ueber overflow: hidden der Kachel. .card-open zieht mit, weil ihr
+   border-radius dem Fokusring die Form gibt. Die Fotokacheln der Bildergalerie
+   (.gallery-photo, 19px) sind keine Projektkacheln und bleiben, wie sie sind.
+
+   Alle Breiten. .projects-overview haelt die Regel auf dieser Seite; (0,2,0)
+   gegen (0,1,0) der Grundregeln. */
+.projects-overview .project-card,
+.projects-overview .card-open {
+  border-radius: 18px 5px 18px 5px;
+}
+
 /* AP-434: Abstand des Kruemelpfads zur Ueberschrift. Derselbe Wert wie auf der
    Kontaktseite (kontakt.css:70), damit beide Unterseiten oben gleich atmen.
    Er ersetzt die 20px aus der Grundregel styles.css:2212; linksbuendig ist er
@@ -344,6 +362,38 @@
     padding-right: calc(var(--gutter) + env(safe-area-inset-right, 0px));
     background: var(--bg);
     box-shadow: 0 12px 14px -12px rgba(0, 0, 0, .85);
+  }
+
+  /* AP-467: Bis hierher begann das Fotoraster unmittelbar an der Unterkante des
+     Bandes - 0px, gemessen bei 375, 390 und 900px. Das padding-block oben wirkt
+     nur nach innen, das Raster traegt keinen Aussenabstand. Mit Flaeche und
+     Schatten sass das Band damit sichtbar auf den ersten Fotos.
+
+     Auf Ansage des Auftraggebers ist der Abstand jetzt derselbe wie zwischen den
+     Fotos. Der Wert ist woertlich der gap von .gallery-photo-grid
+     (styles.css:2857); so bleiben beide auch zwischen 741 und 900px gleich, wo
+     das Raster dreispaltig ist und der gap ueber 12px waechst.
+
+     Der Abstand haengt am Raster, nicht am Band: ein margin-bottom am klebenden
+     Band verschoebe auch den Projekte-Modus. Der Nachbarselektor trifft nur das
+     Fotoraster, das im Markup direkt folgt. Ab 901px ist das Band keine Flaeche
+     mehr; dort regelt row-gap weiter unten den Abstand. */
+  .gallery-mode-sticky + .gallery-photo-grid {
+    margin-top: clamp(12px, 1.5vw, 20px);
+  }
+
+  /* AP-468: Dasselbe fuer den Modus "Projekte mit Details". Auch dort begann die
+     erste Kachel bei 0px unter dem Band.
+     AP-469: Auf Ansage des Auftraggebers traegt der Modus denselben Abstand wie
+     die Bildergalerie darueber, nicht den eigenen Kachelabstand (22px aus
+     styles.css:1109, so in AP-468). Beim Umschalten springt die erste Reihe
+     damit nicht mehr. Der Wert ist deshalb woertlich der aus der Regel
+     darueber; aendert sich einer, muss der andere mit.
+     Der Geschwisterselektor ~ statt +, weil zwischen Band und Projektraster das
+     (dann versteckte) Fotoraster liegt. Er trifft #galleryGrid und das
+     statische Ersatzraster #galleryStatic; sichtbar ist immer nur eines. */
+  .gallery-mode-sticky ~ .projects-grid--gallery {
+    margin-top: clamp(12px, 1.5vw, 20px);
   }
 }
 

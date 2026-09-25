@@ -29,12 +29,20 @@ live gehen.
 
 **Der Absatz ist seit AP-384 erledigt** (21.09.2026): Er trägt den Text des Auftraggebers,
 in der Wir-Form, und nicht mehr die Platzhalter-Klasse. Die ursprünglich vorgesehenen Sätze
-in der Ich-Form von Maik Rohdich werden nicht mehr gebraucht. Offen ist nur noch das Zitat.
+in der Ich-Form von Maik Rohdich werden nicht mehr gebraucht.
+
+**Das Zitat ist seit AP-450 erledigt** (24.09.2026): Es lautet auf Ansage des Auftraggebers
+**„Kein Auftrag ist uns zu klein."** Der Satz ist nicht erfunden — er nimmt die Überschrift
+der Kachel auf, die bis zu diesem Tag hinter den Projekten stand („Kein Auftrag ist zu
+klein.", AP-327, Wortlaut ebenfalls vom Auftraggeber) und mit AP-450 entfallen ist.
 
 - [x] Der Absatz `.ueber-inhaber__text` trägt den endgültigen Text (AP-384)
-- [ ] Das Zitat ist durch den freigegebenen Wortlaut ersetzt
-- [ ] Am Zitat ist die Klasse `ueber-inhaber__platzhalter` entfernt
-- [ ] Der `[OFFEN: …]`-Kommentar über der Sektion in `ueber-uns/index.html` ist aufgelöst
+- [x] Das Zitat ist durch den freigegebenen Wortlaut ersetzt (AP-450)
+- [x] Am Zitat ist die Klasse `ueber-inhaber__platzhalter` entfernt (AP-450)
+- [x] Der `[OFFEN: …]`-Kommentar über der Sektion in `ueber-uns/index.html` ist aufgelöst (AP-450)
+
+**Damit trägt die Seite keinen sichtbaren Platzhaltertext mehr** — die Abweichung von
+Grundregel 2, die seit dem 15.09.2026 bestand, ist beendet.
 
 **Prüfung:** `grep -n "ueber-inhaber__platzhalter" ueber-uns/index.html assets/css/ueber-uns.css`
 liefert keine Treffer mehr im Markup.

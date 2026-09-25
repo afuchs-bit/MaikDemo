@@ -1,3 +1,37 @@
+/* AP-447: "Baloo 2" fuer die beiden Etiketten, das animierte Wort und die
+   Kartentitel. Das @font-face steht sonst in home-dark.css, kontakt.css und
+   projekte.css - diese Seite laedt keine davon, ein blosses
+   font-family: "Baloo 2" fiele hier still auf die Ersatzschrift zurueck. Das
+   ist im Projekt schon dreimal passiert.
+
+   Gebraucht werden BEIDE Schnitte: 700 fuer Etiketten, Typer und Kartentitel,
+   und die variable Datei 400-600 als Unterbau, falls hier je eine leichtere
+   Stufe dazukommt. Woertlich aus kontakt.css:25-42, unicode-range eingeschlossen.
+
+   projekte.css:11 haelt fest: "Kommt eine dritte Seite dazu, gehoert sie nach
+   styles.css." Diese Seite waere die dritte. Dagegen steht Grundregel 7 der
+   CLAUDE.md - ein Commit pro Arbeitspaket: Die Zusammenlegung zoege kontakt.css,
+   projekte.css, styles.css und einen ?v=-Durchlauf ueber 37 Seiten nach sich und
+   haette mit diesem Block nichts zu tun. Sie ist als eigenes AP angeboten. Die
+   Schriftdatei laedt der Browser trotzdem nur einmal - gleiche URL. */
+@font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/baloo2-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../fonts/baloo2-variable-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ==========================================================================
    AP-220 / AP-327 — Unterseite /ueber-uns/
 
@@ -51,9 +85,112 @@
    26 + 52 = 78px zwischen "Ueber uns" und "Die Person hinter dem Betrieb".
    Jetzt traegt allein --space-section den Abstand, wie zwischen allen anderen
    Sektionen der Seite auch. */
-.ueber-kopf {
-  padding: clamp(22px, 3vw, 40px) 0 0;
+/* AP-454: Hier stand .ueber-kopf - die Sektion, die bis zum 24.09.2026 den
+   Kruemelpfad ueber dem Startbild trug. Sie ist im Bild aufgegangen; die Klasse
+   kommt im Repo nicht mehr vor. */
+
+/* --- Startbild -------------------------------------------------------------
+   AP-480 (25.09.2026): Umbau nach dem Muster "Titel ueber dem Foto" der mobilen
+   Leistungsseiten (leistung-mobile.css:95 ff., .lpv2-page--title-above), auf
+   Ansage des Auftraggebers. Das Foto liegt nicht mehr hinter Kruemelpfad und
+   Ueberschrift: oben links der Kruemelpfad, darunter mittig der Titel, darunter
+   das gerahmte Foto mit der Bluetengruppe an der Ecke. Den Knopf der Vorlage
+   gibt es hier nicht.
+
+   Entfallen ist das randlose Startbild aus AP-453/454: Schleier, diagonaler
+   Schnitt, gruene Haarlinie, Einzelbluete auf der Kante, die additive
+   Hoehenrechnung. Die Vorlage gilt dort nur bis 480px; hier gilt sie auf
+   Ansage auf allen Breiten, am Rechner mit gedeckelter Fotobreite.
+
+   Abstand Header -> Kruemelpfad und Kruemelpfad -> Titel wie auf der
+   Galerieseite (projekte.css:25 und :81), damit die Unterseiten oben gleich
+   beginnen. Gemessen dort: 44/28px bei 390px, 68/38px bei 1280px. */
+.ueber-hero {
+  padding-top: var(--space-section-compact);
 }
+
+.ueber-hero .breadcrumbs { margin-bottom: clamp(28px, 3vw, 40px); }
+.ueber-hero .breadcrumbs ol { margin-bottom: 0; }
+
+/* Der Titel im Satz der Vorlage - derselbe wie auf Galerie (projekte.css:105)
+   und Kontakt: Baloo 2, 31px, 600. Bis AP-480 stand er im Foto und war mit
+   clamp(34px ... 56px) groesser gesetzt, weil er dort gegen das Bild bestehen
+   musste. Der Abstand nach unten ist das untere Polster der Vorlage (42px),
+   am Rechner leicht mitwachsend. */
+.ueber-hero__titel {
+  margin: 0 0 clamp(42px, 4vw, 56px);
+  padding: 0;
+  font-family: "Baloo 2", var(--display);
+  font-size: 31px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: -.015em;
+  color: var(--ink);
+  text-align: center;
+  text-wrap: balance;
+}
+
+@media (max-width: 360px) {
+  /* Dieselbe Stufe wie Vorlage und Galerie. Muss HINTER der Grundregel stehen,
+     beide Selektoren wiegen gleich. */
+  .ueber-hero__titel { font-size: 28px; }
+}
+
+/* Die Umrandung der Vorlage woertlich: 4:3, 16px Ecken, dunkler Schatten mit
+   gruenem Schimmer darunter. Die Breite ist die der Vorlage (32px Luft je
+   Seite); am Rechner gedeckelt auf 760px - die Fotodatei ist 900px breit,
+   groesser wuerde sie hochgerechnet und unscharf (siehe AP-443).
+
+   KEIN overflow: hidden an der figure. Die Bluete ragt ueber die Ecke hinaus;
+   beschnitten wird nur das Bild, ueber das picture darin. */
+.ueber-hero__foto {
+  position: relative;
+  width: min(calc(100% - 64px), 760px);
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow:
+    0 22px 38px -24px rgba(0, 0, 0, .88),
+    0 18px 34px -28px rgba(93, 224, 35, .62);
+}
+
+.ueber-hero__foto picture {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+/* Den Farbfilter der Vorlage (brightness/saturate/contrast) traegt das Foto
+   bewusst nicht - er ist Bildbearbeitung, keine Umrandung. object-position
+   bleibt bei 46%: im 4:3-Ausschnitt bleiben die beiden Arbeitenden im Bild. */
+.ueber-hero__bild {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+}
+
+/* Die Bluetengruppe der Vorlage (maik-rohdich-bluetengruppe-header-
+   transparent.png) an derselben Stelle: unten rechts ueber die Ecke hinaus.
+   Sie ersetzt die Einzelbluete rohdich-blume.png, die bis AP-480 auf der
+   Schnittkante sass. */
+.ueber-hero__bluete {
+  position: absolute;
+  z-index: 2;
+  right: -14px;
+  bottom: -18px;
+  width: clamp(4.0625rem, 20vw, 5rem);
+  height: auto;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .5));
+  pointer-events: none;
+}
+
+/* AP-453: Hier standen die Regeln der H1 im Seitenkopf (AP-452). Die H1 steht
+   seit dem 24.09.2026 im Startbild; ihr Schriftbild ist dorthin gewandert und
+   dort groesser gesetzt - im Bild traegt sie mehr Gewicht als ueber ihm. */
 
 /* AP-381: Der Leitsatz ist Ueberschrift des Betriebsabschnitts geworden; seine
    eigenen Regeln sind damit entfallen. Groesse, Gewicht und Laufweite kommen
@@ -79,20 +216,22 @@
 .ueber-inhaber {
   position: relative;
   overflow: hidden;
+  /* AP-453: Hier stand padding-bottom: 0 aus AP-444. Es galt dem Foto, das den
+     Abschnitt bis AP-452 abschloss; seit das Foto am Seitenanfang steht, endet
+     der Abschnitt wieder mit dem Zitat und braucht sein Polster. */
 }
 
-/* Dieselbe Bluetengruppe wie an den Chips, nur gross, gedaempft und
-   angeschnitten. Rein dekorativ: aria-hidden am Bild, pointer-events aus. */
-.ueber-inhaber__wasserzeichen {
-  position: absolute;
-  right: -96px;
-  bottom: -104px;
-  z-index: 0;
-  width: 340px;
-  height: auto;
-  opacity: .17;
-  pointer-events: none;
-}
+/* AP-442: Hier stand .ueber-inhaber__wasserzeichen - die grosse, gedaempfte
+   Bluetengruppe in der unteren Ecke. Auf Ansage des Auftraggebers entfallen,
+   samt der Handy-Fassung weiter unten im 860px-Block.
+
+   overflow: hidden an .ueber-inhaber bleibt trotzdem stehen. Es hielt frueher
+   das angeschnittene Wasserzeichen im Rahmen, traegt seit AP-441 aber das
+   randlose Foto: dessen negative Aussenabstaende reichen bis an die
+   Bildschirmkante, und ohne die Klammer entstuende dort waagerechter Ueberlauf.
+
+   z-index: 1 an .ueber-inhaber__raster bleibt ebenfalls - es kostet nichts und
+   der Abschnitt ist weiter position: relative. */
 
 .ueber-inhaber__raster {
   position: relative;
@@ -103,6 +242,10 @@
   align-items: center;
 }
 
+/* AP-453: Hier standen die Regeln von .ueber-inhaber__foto (AP-441). Das Foto
+   steht seit dem 24.09.2026 als Startbild am Seitenanfang; sein Regelsatz ist
+   dorthin gewandert, siehe "Startbild" weiter unten. */
+
 .ueber-inhaber__gross {
   margin: 0;
   font-family: var(--display);
@@ -110,16 +253,28 @@
   font-size: clamp(1.6rem, 2.7vw, 2.3rem);
   line-height: 1.2;
   color: var(--ink);
+  /* AP-485 (25.09.2026): mittig auf Ansage des Auftraggebers - wie die
+     anderen Ueberschriften der Seite seit AP-455 und der Seitentitel seit
+     AP-480. Nur die Ueberschrift; der Absatz darunter bleibt linksbuendig.
+     Am Rechner steht sie in der linken Rasterspalte und sitzt dort mittig. */
+  text-align: center;
   text-wrap: pretty;
 }
 
-/* Outfit hat keinen echten Kursivschnitt, der Browser schraegt nach. Die
-   geneigte Endkante frisst den Wortabstand zum folgenden "hinter" - gemessen
-   blieb davon nichts uebrig. Das padding stellt ihn wieder her. */
+/* AP-484 (25.09.2026): "Das Team" steht auf Ansage des Auftraggebers in einer
+   eigenen Zeile, "hinter dem Betrieb." darunter - auf allen Breiten. Bis
+   hierher lief die Ueberschrift als eine Zeile und brach nur um, wo der Platz
+   ausging. display: block statt <br> im Markup: der Text bleibt ein Satz mit
+   Leerzeichen, Screenreader lesen ihn unveraendert.
+
+   Entfallen ist dabei padding-right: .14em. Es stellte den Wortabstand zum
+   folgenden "hinter" wieder her, den die nachgeschraegte Endkante von Outfit
+   (kein echter Kursivschnitt) frass. Mit dem Umbruch steht dort kein Wort
+   mehr. */
 .ueber-inhaber__gross span {
+  display: block;
   font-style: italic;
   font-weight: 800;
-  padding-right: .14em;
 }
 
 .ueber-inhaber__text {
@@ -162,13 +317,10 @@
 
 .ueber-inhaber__zitat p { margin: 0; }
 
-/* AP-327: Vorlaeufiger Text. Gedaempft und kursiv, damit auf der Seite zu sehen
-   ist, dass hier noch nicht die endgueltigen Saetze stehen. Beim Ersetzen faellt
-   die Klasse weg - der Punkt steht in docs/go-live-checkliste.md. */
-.ueber-inhaber .ueber-inhaber__platzhalter {
-  color: var(--ink-mute);
-  font-style: italic;
-}
+/* AP-450: Hier stand .ueber-inhaber__platzhalter - gedaempft und kursiv, damit
+   der vorlaeufige Satz auf der Seite als solcher zu erkennen war. Das Zitat
+   traegt seit dem 24.09.2026 den Wortlaut des Auftraggebers; die Klasse ist im
+   Markup mit entfernt, der Punkt 1b der Go-Live-Checkliste ist damit erledigt. */
 
 .ueber-inhaber__name {
   margin-top: 28px !important;
@@ -206,8 +358,12 @@
 .ueber-betrieb__nachsatz { grid-area: nachsatz; }
 
 /* Die Ueberschrift traegt margin: 0 (Reset in styles.css), der Absatz ebenfalls -
-   ohne diese Regel klebt der erste Satz an der Grundlinie der Ueberschrift. */
-.ueber-betrieb__wort .type-section-title + .ueber-betrieb__haltung { margin-top: 16px; }
+   ohne diese Regel klebt der erste Satz an der Grundlinie der Ueberschrift.
+   AP-445: Der Nachbar war bis hierher die Haltungszeile; sie ist entfallen, und
+   der Platz gehoert jetzt der Faktenzeile. Ohne diese Regel blieben nur deren
+   eigene 10px - nach einer 32px hohen Ueberschrift zu knapp. 16px ist der Wert,
+   der vorher an derselben Stelle stand. */
+.ueber-betrieb__wort .type-section-title + .ueber-betrieb__fakten { margin-top: 16px; }
 
 /* AP-376/AP-411: Diese Regel arbeitet mit dem Nachbar-Kombinator und kennt nur
    .lead. Die Liste der Taetigkeitsschwerpunkte traegt deshalb class="lp-list
@@ -219,15 +375,9 @@
 .ueber-betrieb__wort .lead + .lead,
 .ueber-betrieb__nachsatz .lead + .lead { margin-top: .9em; }
 
-/* AP-411: Die Haltungszeile ist der Merksatz aus AP-220. Sie sitzt jetzt direkt
-   unter der H2 und hat dabei ueber-steg verloren - die H2 traegt den gruenen
-   Steg schon, zwei Balken uebereinander waeren ein Fehler. Die Zeilenbreite ist
-   knapp gehalten, damit der Satz als Haltung steht und nicht als Fliesstext
-   durchlaeuft. */
-.ueber-betrieb__haltung {
-  margin: 0;
-  max-width: 24ch;
-}
+/* AP-445: Hier stand .ueber-betrieb__haltung - die Haltungszeile mit dem
+   Merksatz aus AP-220, seit AP-411 direkt unter der H2. Der Satz ist auf Ansage
+   des Auftraggebers entfallen, die Klasse kommt im Repo nirgends mehr vor. */
 
 /* Faktenzeile: leiser als der Fliesstext daneben. --ink-mute auf --bg traegt
    8,42:1 und liegt damit ueber der Fassung der Vorlage (#A2A8B1, 7,39:1). */
@@ -240,6 +390,31 @@
 }
 
 .ueber-betrieb__wort .ueber-betrieb__fakten + .lead { margin-top: 16px; }
+
+/* AP-440: "Im Mittelpunkt steht immer das Ziel ..." traegt auf Ansage des
+   Auftraggebers dasselbe Schriftbild wie der Faktensatz darueber. Die drei
+   Werte sind woertlich die der Regel oben - kein zweiter Satz Zahlen, der
+   auseinanderlaufen koennte. Die Schriftart stand schon gleich: beide Absaetze
+   bekommen Inter aus dem Grundtext, .lead setzt keine eigene.
+
+   Reichweite auf Ansage: nur dieser Absatz. Im Nachsatz-Block hinter dem Foto
+   stehen zwei weitere .lead - "Unsere Taetigkeitsschwerpunkte liegen in:" und
+   die Liste darunter - die bleiben bei 16px in --ink-2. Deshalb haengt die
+   Regel an .ueber-betrieb__wort und nicht an .ueber-betrieb .lead.
+
+   Die Klasse .lead bleibt am Absatz. Sie traegt nicht nur Schrift, sondern die
+   Abstandskette des Blocks (siehe die Regeln mit dem Nachbar-Kombinator oben);
+   ohne sie fielen die Abstaende davor und dahinter auf 0.
+
+   Nicht mitgenommen ist die Zeilenbreite: Der Faktensatz ist auf 44ch gedeckelt,
+   dieser Absatz bleibt bei den 62ch aus .lead (styles.css:250). In Pixeln wird
+   er dadurch trotzdem etwas schmaler - ch haengt an der Schriftgroesse, und die
+   sinkt von 16 auf 15px. */
+.ueber-betrieb__wort .lead {
+  color: var(--ink-mute);
+  font-size: .9375rem;
+  line-height: 1.5;
+}
 
 /* AP-411: Die Zusage-Kachel. Bewusst kein blockquote und ohne
    Anfuehrungszeichen - der Satz ist kein Zitat, sondern der Betrieb ueber sich
@@ -273,10 +448,25 @@
 
 /* --- Alles aus einer Hand ------------------------------------------------- */
 
-.ueber-betrieb__kicker {
-  font-family: var(--display);
+/* AP-447: Etikett und Animation tauschen die Rollen. Bis hierher war das
+   animierte Wort (16,8px) KLEINER als das Etikett darueber (22,4px aus AP-438)
+   und las sich dadurch wie eine Ladeanzeige. Jetzt benennt das Etikett, und die
+   Kette ist die Aussage.
+
+   Dieselbe Groesse traegt "Fuer wen wir arbeiten" - beide Zeilen stehen auf
+   derselben Ebene und standen bis hierher in zwei Groessen (22,4 und 19,2px).
+
+   AP-438 wird damit teilweise zurueckgenommen: Die h3 trug seither
+   type-subsection-title. Das war die Angleichung an die Haltungszeile, und die
+   ist mit AP-445 entfallen - es steht also keine lebende Entscheidung dagegen.
+   Die Klasse ist im Markup mit entfernt. */
+.ueber-betrieb__kicker,
+.ueber-fuerwen__titel {
+  font-family: "Baloo 2", var(--display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: normal;
   margin: 0;
 }
 
@@ -308,15 +498,20 @@
   clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
 }
 
-.ueber-betrieb__notiz {
-  margin: 12px 0 0;
-  max-width: 42ch;
-  color: var(--ink-mute);
-  font-size: .90625rem;
-  line-height: 1.5;
-}
+/* AP-458: Hier standen die Regeln von .ueber-betrieb__notiz - dem Absatz
+   "Eigene Fachleute im Team, dazu Spezialisten aus angrenzenden Gewerken wie
+   der Entwaesserungstechnik." Auf Ansage des Auftraggebers ist der Absatz
+   entfallen, die Klasse kommt im Repo nirgends mehr vor.
 
-.ueber-betrieb__notiz + .lead { margin-top: 1.1em; }
+   Mit ihm faellt .ueber-betrieb__notiz + .lead: die Regel hielt 1.1em zwischen
+   dem Absatz und einem .lead dahinter. Ein solcher .lead stand im Nachsatz
+   zuletzt vor AP-447; der Nachbarschaftsselektor hatte seither nichts mehr zu
+   treffen und ohne den Absatz erst recht nicht.
+
+   Letzter sichtbarer Inhalt des Nachsatzes ist damit die Kette "Planung ->
+   ... -> Pflege" beziehungsweise die Schreibmaschine an ihrer Stelle. Der
+   Abstand nach unten kommt von der Sektion, nicht von diesem Absatz - er trug
+   nur margin-top. */
 
 /* --- Schreibmaschine ------------------------------------------------------
    Die Kette wird waehrend des Laufs optisch versteckt, bleibt aber im
@@ -351,9 +546,17 @@
   position: relative;
   display: inline-block;
   padding-right: 10px;               /* Platz fuer den Cursor */
-  font-family: var(--display);
+  /* AP-447: War var(--display) in var(--type-module-title-size), gemessen
+     16,8px - kleiner als das Etikett darueber. Jetzt 22px auf dem Handy und
+     28px am Rechner. Die clamp-Formel stammt aus dem Auftragsdokument, Stuetz-
+     stellen 390 und 1180px:
+       m = (28-22)/(1180-390) = 0,0075949 px/px = 0,7595vw
+       b = 22 - 0,0075949*390 = 19,038px = 1,1899rem
+     Gegenprobe bei 1180px: 19,038 + 0,0075949*1180 = 28,0px. */
+  font-family: "Baloo 2", var(--display);
   font-weight: 700;
-  font-size: var(--type-module-title-size);
+  font-size: clamp(1.375rem, 1.1899rem + 0.759vw, 1.75rem);
+  line-height: 1.2;
   line-height: 1.2;
   color: var(--ink);
 }
@@ -435,13 +638,9 @@
   box-shadow: var(--shadow-card);
 }
 
-.ueber-betrieb__bild figcaption {
-  margin-top: 1.4rem;
-  padding-right: 112px;
-  color: var(--ink-mute);
-  font-size: .8125rem;
-  line-height: 1.45;
-}
+/* AP-437: Hier stand die Regel fuer .ueber-betrieb__bild figcaption. Die
+   Bildunterschrift ist auf Ansage des Auftraggebers entfallen, und sie war die
+   einzige der Seite - die Regel lief damit ins Leere. */
 
 /* --- Fuer wen wir arbeiten ------------------------------------------------
    Steht in derselben Sektion wie der Betrieb, nur durch eine Linie abgesetzt -
@@ -453,12 +652,13 @@
   border-top: 1px solid var(--line-2);
 }
 
+/* AP-447: Schriftart, -staerke, -groesse und Laufweite sind hier raus - sie
+   kommen jetzt aus der gemeinsamen Etikettregel weiter oben, zusammen mit
+   "Alles aus einer Hand". Diese Regel steht SPAETER in der Datei und wiegt
+   gleich viel; jede Angabe, die hier bliebe, haette die gemeinsame geschlagen.
+   Geblieben sind Abstand nach unten und Farbe. */
 .ueber-fuerwen__titel {
   margin: 0 0 18px;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 1.2rem;
-  letter-spacing: -.01em;
   color: var(--ink);
 }
 
@@ -471,21 +671,95 @@
   list-style: none;
 }
 
+/* AP-447: Das Polster wandert vom <li> an den Link. Die ganze Kachel ist jetzt
+   der Link, nicht nur die Ueberschrift - groessere Trefferflaeche auf dem Handy.
+   Flaeche, Rahmen und Eckenradius bleiben, wo sie sind: Sie sind das System der
+   Seite. Das Auftragsdokument wollte 14px Radius und 14/16px Polster; das waere
+   ein zweites Kachelmass neben dem vorhandenen gewesen. --bg-elev verlangt es
+   ebenfalls - das liegt hier schon an. */
 .ueber-fuerwen__liste li {
-  padding: clamp(16px, 2vw, 22px);
-  border-radius: var(--radius);
+  padding: 0;
+  /* AP-448: Der geschnittene Eckenschnitt der Eingabefelder im Anfrageformular
+     der Startseite (anfrage.css:604) - auf Ansage des Auftraggebers. Er war
+     var(--radius), also 22px rundum. Die Werte sind woertlich die der Vorlage,
+     nicht nachempfunden: gross oben links und unten rechts, klein an der
+     Gegendiagonale. Dieselbe Familie tragen die Segmente des Galerie-
+     Umschalters (18px 5px) - die Seite bekommt damit kein neues Motiv, sondern
+     ein vorhandenes. */
+  border-radius: 15px 5px 15px 5px;
   background: var(--bg-elev);
   border: 1px solid var(--line);
+  transition: border-color .16s var(--ease);
+}
+
+.ueber-fuerwen__karte {
+  position: relative;
+  display: block;
+  padding: clamp(16px, 2vw, 22px);
+  /* Derselbe Schnitt am Link: Der Fokusring folgt der border-radius seines
+     eigenen Elements. Ohne diese Zeile liefe er als Rechteck um eine
+     geschnittene Kachel. */
+  border-radius: 15px 5px 15px 5px;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Der Pfeil ist clip-path auf einem leeren Span - dieselbe Geometrie wie die
+   Kettenpfeile darueber, kein zweites Pfeilmotiv im System. aria-hidden, weil
+   er nichts sagt, was der Link nicht schon sagt. */
+.ueber-fuerwen__pfeil {
+  position: absolute;
+  right: 16px;
+  top: 17px;
+  width: 14px;
+  height: 10px;
+  background: var(--green-500);
+  clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
+  opacity: .75;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ueber-fuerwen__liste li:hover { border-color: var(--green-500); }
+}
+
+/* Kein overflow: hidden an Liste oder Kachel - der Ring steht 3px ausserhalb. */
+.ueber-fuerwen__karte:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ueber-fuerwen__liste li { transition: none; }
 }
 
 .ueber-fuerwen__liste h4 {
   margin: 0 0 6px;
-  font-family: var(--display);
+  padding-right: 26px;              /* Platz fuer den Pfeil */
+  font-family: "Baloo 2", var(--display);
   font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.3;
-  letter-spacing: -.01em;
-  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.2;
+  letter-spacing: normal;
+  color: var(--green-500);
+}
+
+/* AP-476: Die Kartenueberschriften ("Private ...", "Gewerbe und
+   Hausverwaltungen", "Kommunen und oeffentliche Auftraggeber") in der Schrift
+   der Qualifikationsschilder vom Startseiten-Tor (home-dark.css:1800,
+   ".gate-welcome-qualification-label" - "Sachkundiger", "Baumkontrolleur").
+   Auf Ansage des Auftraggebers; derselbe Griff wie AP-435 fuer "Projekt
+   ansehen" in der Galerie: Schriftart und Neigung. Groesse, Strichstaerke und
+   das Gruen bleiben, wie die Regel darueber sie setzt; die Versalien, die
+   Laufweite .025em und die helle Farbe des Vorbilds sind nicht uebernommen.
+
+   Der Stapel ist woertlich der der Vorlage, ein System-Schriftstapel ohne
+   @font-face. Wo keine der drei Schriften liegt, greift cursive.
+
+   Eigene Regel statt Eingriff in die Grundregel darueber: gleiche Spezifitaet
+   (0,1,1), die spaetere gewinnt. */
+.ueber-fuerwen__liste h4 {
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-style: italic;
 }
 
 .ueber-fuerwen__liste p {
@@ -499,6 +773,28 @@
    Das Raster der Kacheln kommt aus styles.css (.projects-grid/.project-card),
    hier steht nur der Kopf der Sektion, was die Kacheln ohne Beschreibungstext
    brauchen - und ab hier die Karussellfassung fuer schmale Geraete. */
+
+/* AP-474: Die Kacheln tragen auf Ansage des Auftraggebers die Form der Kachel
+   "24h Baum- & Sturmnotdienst" auf der Startseite - woertlich deren Ecken
+   (privat-form.css:4993, .iphone-service-feature--emergency): 18px oben links
+   und unten rechts, 5px an den beiden anderen. Bis hierher waren es ringsum
+   var(--radius) = 22px aus styles.css:1114.
+
+   Nur die Form. Rotton am Rahmen, Verlauf, Schatten und Mindesthoehe des
+   Vorbilds bleiben dort. Das Bild oben folgt den Ecken von selbst, weil
+   .project-card overflow: hidden traegt.
+
+   .card-open muss mit: die Klickflaeche liegt deckungsgleich ueber der Kachel,
+   ihr border-radius gibt dem Fokusring die Form. Ohne sie laege der Ring beim
+   Tabben weiter mit runden 22px-Ecken neben der neuen Kachel.
+
+   Gilt auf allen Breiten, wie die Kundenkarten aus AP-448. Spezifitaet
+   (0,2,0) gegen (0,1,0) der Grundregeln; an der Spur haengend, damit die
+   gleichen Kacheln auf Galerie und Startseite unberuehrt bleiben. */
+.ueber-projekte__spur .project-card,
+.ueber-projekte__spur .card-open {
+  border-radius: 18px 5px 18px 5px;
+}
 
 .ueber-projekte__kopf {
   display: flex;
@@ -515,167 +811,17 @@
 .ueber-projekte__spur .project-body { display: grid; gap: 6px; }
 .ueber-projekte__spur .card-more { margin-top: 6px; }
 
-/* --- Auch fuer die kleine Sache ------------------------------------------- */
+/* AP-450: Hier stand der gesamte Regelsatz der Kachel "Kein Auftrag ist zu
+   klein." - .ueber-klein__panel, __titel, __ruf samt Rahmen, Flaeche, Label,
+   Pfeil, Hover- und Fokuszustand und der Bremse fuer reduzierte Bewegung. Die
+   Kachel ist auf Ansage des Auftraggebers entfallen; ihre Aussage traegt jetzt
+   das Zitat der Person-Sektion. Keine der Klassen kommt im Repo noch vor. */
 
-.ueber-klein__panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(20px, 3.4vw, 44px);
-  align-items: center;
-  padding: clamp(24px, 3.4vw, 44px);
-  border-radius: 24px 24px 44px 24px;
-  border: 1px solid var(--home-lime);
-  background: linear-gradient(135deg, var(--green-800), var(--green-700) 60%, var(--green-900));
-}
-
-.ueber-klein__titel {
-  margin: 0 0 12px;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
-  line-height: 1.16;
-  letter-spacing: -.015em;
-  color: var(--ink);
-}
-
-.ueber-klein__panel p {
-  margin: 0;
-  max-width: 52ch;
-  color: var(--ink);
-  font-size: clamp(1rem, 1.25vw, 1.1rem);
-  line-height: 1.55;
-}
-
-.ueber-klein__panel p + p { margin-top: .9em; }
-
-/* Form 1:1 vom CTA "Zum Kontaktformular" uebernommen (.mobile-proof-request in
-   mobile-social-proof.css: schraeg gestutzte Karte aus versetztem Rahmen +
-   Flaeche, Pfeil in eigenem Chip). Eigene Klassen statt der dortigen BEM-Namen,
-   weil .mobile-proof-request nur innerhalb von @media (max-width: 900px)
-   ueberhaupt Regeln traegt - auf dieser Seite muss der Knopf auch am Desktop
-   stehen. Farbe und Groesse sind an den bisherigen Knopf angepasst: creme
-   (--ink) statt Limette, dunkles Gruen (--green-900) statt Schwarz, niedriger
-   als das 64px-Vorbild. */
-.ueber-klein__ruf {
-  position: relative;
-  isolation: isolate;
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 48px;
-  padding: 5px 8px 5px 20px;
-  border-radius: 12px;
-  color: var(--green-900);
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: .95rem;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: transform .12s var(--ease);
-}
-
-.ueber-klein__ruf-frame {
-  position: absolute;
-  inset: 0;
-  z-index: -3;
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 1.5px;
-  transform: translate(5px, 5px);
-  pointer-events: none;
-}
-
-.ueber-klein__ruf-shape {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  fill: var(--ink);
-  pointer-events: none;
-  transition: transform .12s var(--ease);
-}
-
-.ueber-klein__ruf-label {
-  position: relative;
-  z-index: 1;
-}
-
-.ueber-klein__ruf-arrow {
-  position: relative;
-  z-index: 1;
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--green-700);
-  color: var(--ink);
-  transition: transform .12s var(--ease);
-}
-
-/* Ohne fill/stroke faellt ein SVG auf den Standardwert fill:black zurueck -
-   bei einem offenen Linienzug (kein geschlossenes Polygon) macht das nur einen
-   duennen dunklen Schmier statt eines Pfeils. Vorlage:
-   mobile-social-proof.css:9 (.mobile-proof-request__arrow svg). */
-.ueber-klein__ruf-arrow svg {
-  width: 17px;
-  height: 17px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.25;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .ueber-klein__ruf:hover :is(.ueber-klein__ruf-shape, .ueber-klein__ruf-label, .ueber-klein__ruf-arrow) {
-    transform: translate(2px, 2px);
-  }
-
-  .ueber-klein__ruf:hover .ueber-klein__ruf-arrow svg { transform: translateX(2px); }
-}
-
-.ueber-klein__ruf:focus-visible {
-  outline: 2px solid var(--home-focus);
-  outline-offset: 6px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ueber-klein__ruf,
-  .ueber-klein__ruf-shape,
-  .ueber-klein__ruf-arrow,
-  .ueber-klein__ruf-arrow svg {
-    transition: none;
-  }
-}
-
-/* --- Haeufige Fragen ------------------------------------------------------
-   Bauteil .faq-list aus styles.css, hier in zwei Spalten mit je einem Kicker.
-   Der Kicker ersetzt eine dritte Ueberschriftenebene: er ordnet, ohne wie eine
-   eigene Sektion auszusehen. */
-
-.ueber-faq__gruppen {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(16px, 2.4vw, 38px);
-}
-
-.ueber-faq__kicker {
-  margin: 0 0 12px;
-  color: var(--home-lime);
-  font-size: .71rem;
-  font-weight: 800;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-}
+/* AP-451: Hier standen .ueber-faq__gruppen und .ueber-faq__kicker - das
+   zweispaltige Raster der FAQ-Sektion und der Kicker, der die beiden Gruppen
+   ordnete. Die Sektion ist auf Ansage des Auftraggebers entfallen, beide
+   Klassen kommen im Repo nicht mehr vor. Der Baustein .faq-list in styles.css
+   bleibt - ihn benutzen die Startseite und die Gewerbe-Leistungsseiten. */
 
 /* --- Team (vorbereitet, im Markup auskommentiert) -------------------------
    Diese Regeln stehen bewusst schon hier: Wenn der Abschnitt eines Tages
@@ -731,9 +877,7 @@
 @media (max-width: 860px) {
   .ueber-betrieb__raster,
   .ueber-inhaber__raster,
-  .ueber-fuerwen__liste,
-  .ueber-faq__gruppen,
-  .ueber-klein__panel {
+  .ueber-fuerwen__liste {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -744,22 +888,20 @@
     grid-template-areas: "wort" "bild" "nachsatz";
   }
 
-  /* Gestapelt zieht Grid den Knopf sonst per justify-items:stretch auf die
-     volle Spaltenbreite (285px bei 375px Fensterbreite) - fuer "Kurz anrufen"
-     plus Pfeil-Chip zu lang. */
-  .ueber-klein__ruf { max-width: 220px; }
-
   /* Der senkrechte Steg der Person ergibt gestapelt keinen Sinn; an seine
      Stelle tritt die liegende Bluete zwischen den beiden Bloecken. */
   .ueber-inhaber__steg { display: none; }
-  /* Gestapelt rueckt das Zitat in die Ecke, in der das Wasserzeichen liegt.
-     Deshalb blasser und weiter heraus als am Desktop - gemessen bleibt der Text
-     darueber sonst nur knapp lesbar. */
-  .ueber-inhaber__wasserzeichen { width: 230px; right: -74px; bottom: -48px; opacity: .12; }
+  /* AP-442: Hier stand die Handy-Fassung des Wasserzeichens - blasser und
+     weiter heraus als am Desktop, damit das Zitat darueber lesbar blieb. Mit
+     dem Wasserzeichen ist auch sie entfallen. */
   /* text-align greift nicht: der Bild-Reset in styles.css:187 stellt jedes img
      auf block. Zentriert wird deshalb ueber die Aussenabstaende. */
   .ueber-inhaber__bluete-mobil { display: block; margin: 24px 0; }
   .ueber-inhaber__bluete-mobil img { width: 64px; height: auto; margin-inline: auto; }
+
+  /* AP-453: Hier stand die Vollbreiten-Fassung des Fotos (AP-441). Das Startbild
+     am Seitenanfang braucht sie nicht mehr - es steht ausserhalb des Containers
+     und ist damit von Haus aus randlos. */
 
   /* Das Bild steht im Quelltext NACH dem Text - im gestapelten Zustand ist das
      die richtige Lesereihenfolge, hier ist also nichts umzusortieren. Nur die

@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260923b" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260925t" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -147,49 +147,11 @@ html, body { background-color: #171916; }
   ]
 }
 </script>
-<!-- AP-327: FAQ der Seite als eigener Block, wie in index.html und auf den
-     Gewerbe-Leistungsseiten. Fragen und Antworten sind zeichengleich mit den
-     <details> im Markup - wer dort etwas aendert, muss hier mitziehen. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Seit wann gibt es Maik Rohdich Garten- und Landschaftsbau?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Seit 2003, mit Sitz in Herne. Geführt wird der Betrieb von Gartenbaumeister Maik Rohdich. Gearbeitet wird in ganz NRW, auf Anfrage auch darüber hinaus."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Was bringt mir ein Meisterbetrieb?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Der Meisterzwang ist im Garten- und Landschaftsbau gefallen – anlegen darf heute fast jeder. Der Meisterbrief steht für die geprüfte fachliche Leitung und berechtigt zur Ausbildung. Dazu kommen die Zertifizierung als Baumkontrolleur der Landwirtschaftskammer, der Sachverständigentitel im Sachgebiet 2.4.1 und der Sachkundenachweis Pflanzenschutz."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Arbeiten Sie auch für Kommunen und Hausverwaltungen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. Neben privaten Gärten arbeitet der Betrieb für Gewerbe, Hausverwaltungen und kommunale Auftraggeber."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Sind kleine Aufträge zu klein?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nein. Eine Stunde Hecke zählt genauso wie ein ganzer Garten. Kurzfristige Pflegeeinsätze übernehmen wir ebenso wie die komplette Neuanlage."
-      }
-    }
-  ]
-}
-</script>
+<!-- AP-451: Hier stand der FAQPage-Block mit vier Fragen. Er ist mit der
+     sichtbaren FAQ-Sektion entfallen - strukturierte Daten muessen den Inhalt
+     der Seite abbilden. Eine FAQPage ohne sichtbare Fragen waere ein Verstoss
+     gegen die Richtlinien und braechte kein Rich Result, sondern ein Risiko.
+     Der LocalBusiness-Graph darueber bleibt unberuehrt. -->
 </head>
 <body class="ueber-page">
 
@@ -343,6 +305,9 @@ html, body { background-color: #171916; }
        die Ueberschrift des Betriebsabschnitts gewandert - er steht damit ueber
        dem Text, der ihn einloest, statt als Vorspann darueber. Der Kopf soll
        danach leer bleiben; so entschieden am 21.09.2026.
+       AP-439: Jene Ueberschrift lautet seit dem 24.09.2026 "Ehrlich beraten,
+       sauber gebaut" - der Leitsatz steht damit nicht mehr auf der Seite. Am
+       leeren Kopf aendert das nichts.
        AP-327: Der Eyebrow "Meisterbetrieb seit 2003 in Herne" ist am 16.09.2026
        auf Wunsch des Auftraggebers entfallen.
        AP-377: Der Faktensatz darunter ebenfalls (20.09.2026). Er nannte
@@ -357,16 +322,50 @@ html, body { background-color: #171916; }
          Auftraggeber     -> die drei Kacheln "Fuer wen wir arbeiten"
        Der Kopf traegt jetzt nur noch H1 und Leitsatz; der Einstieg in den
        Betrieb beginnt eine Sektion spaeter. -->
-  <section class="ueber-kopf">
-    <div class="container">
+  <!-- AP-454: Der Seitenkopf ist im Startbild aufgegangen. Bis zum 24.09.2026
+       stand hier eine eigene Sektion .ueber-kopf mit dem Kruemelpfad; das Bild
+       begann erst darunter. Auf Ansage des Auftraggebers reicht es jetzt bis an
+       die Unterkante des Headers, und der Kruemelpfad liegt darauf.
+       (AP-453 hatte zuvor schon die H1 dorthin geholt.) -->
+
+  <!-- ===== Startbild ======================================================
+       AP-480 (25.09.2026): Umbau nach dem Muster "Titel ueber dem Foto" der
+       mobilen Leistungsseiten (Balkonkastenbepflanzung), auf Ansage des
+       Auftraggebers und auf allen Breiten. Das Foto liegt nicht mehr hinter
+       Kruemelpfad und Ueberschrift; es steht gerahmt darunter, mit der
+       Bluetengruppe an der Ecke. Der Knopf der Vorlage ist nicht uebernommen.
+       Bis hierher (AP-453/454) war es ein randloses Foto mit der Ueberschrift
+       darin, Schleier, schraegem Schnitt und gruener Haarlinie.
+
+       Das Bild ist das LCP-Element: eager statt lazy, fetchpriority high.
+       width/height bleiben stehen, damit beim Laden nichts springt. sizes
+       folgt der Fotobreite aus ueber-uns.css (100% - 64px, hoechstens 760px).
+
+       [OFFEN: Das Auftragsdokument zu AP-453 sah eine Unterzeile unter dem
+        Startbild vor - ein Pendant zu "Ein Stueck Garten vor Ihrem Fenster".
+        Der Satz liegt nicht vor und wird nicht erfunden; der Slot bleibt weg.
+        docs/offene-punkte.md] -->
+  <section class="ueber-hero">
+    <div class="container ueber-hero__kopf">
       <nav class="breadcrumbs" aria-label="Brotkrumennavigation">
         <ol>
           <li><a href="../">Startseite</a></li>
           <li aria-current="page">Über uns</li>
         </ol>
       </nav>
-      <h1 class="reveal">Über uns</h1>
+      <h1 class="ueber-hero__titel">Über uns</h1>
     </div>
+    <figure class="ueber-hero__foto">
+      <picture>
+        <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(max-width: 480px) calc(100vw - 64px), min(calc(100vw - 64px), 760px)">
+        <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(max-width: 480px) calc(100vw - 64px), min(calc(100vw - 64px), 760px)">
+        <img class="ueber-hero__bild" src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
+             alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
+             loading="eager" fetchpriority="high" decoding="async">
+      </picture>
+      <img class="ueber-hero__bluete" src="../assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png"
+           alt="" width="359" height="295" aria-hidden="true" decoding="async">
+    </figure>
   </section>
   <!-- ===== Das Team ======================================================
        AP-384: Der Absatz traegt seit dem 21.09.2026 den Text des Auftraggebers
@@ -374,17 +373,13 @@ html, body { background-color: #171916; }
        passt zur Ueberschrift aus AP-383; der urspruenglich vorgesehene
        Ich-Form-Text von Maik Rohdich wird damit nicht mehr gebraucht.
 
-       [OFFEN: Nur noch das Zitat - docs/offene-punkte.md.
-        DAS ZITAT DIESER SEKTION IST VORLAEUFIG. Es steht hier auf ausdrueckliche
-        Entscheidung des Auftraggebers vom 15.09.2026, damit das Layout im
-        Zusammenhang beurteilt werden kann - abweichend von Grundregel 2 (kein
-        sichtbarer Platzhaltertext). Vor dem Go-Live muss es ersetzt sein; der
-        Punkt steht dafuer in docs/go-live-checkliste.md.
-
-        Gebraucht wird ein Zitat, das die Haltung traegt, mit Freigabe des
-        Wortlauts. Es traegt .ueber-inhaber__platzhalter - gedaempft und kursiv,
-        damit vorlaeufiger Text auch auf der Seite als solcher zu erkennen ist.
-        Beim Ersetzen die Klasse mit entfernen.]
+       AP-450 (24.09.2026): Das Zitat ist nicht mehr vorlaeufig. Es lautet auf
+       Ansage des Auftraggebers "Kein Auftrag ist uns zu klein." und traegt damit
+       die Aussage der Kachel, die bis zu diesem Tag hinter den Projekten stand
+       ("Kein Auftrag ist zu klein.", AP-327, Wortlaut ebenfalls vom
+       Auftraggeber). Die Klasse .ueber-inhaber__platzhalter ist entfallen, ihre
+       Regel in ueber-uns.css ebenfalls. Punkt 1b der Go-Live-Checkliste ist
+       damit erledigt - die Seite traegt keinen sichtbaren Platzhaltertext mehr.
 
        Diese Sektion ist der Kern der Entwuerfe vom 15.09.2026: Wer auf der
        Startseite "Mehr ueber Maik Rohdich" klickt, sucht die Person und findet
@@ -396,7 +391,11 @@ html, body { background-color: #171916; }
        unteren Ecke ist dieselbe Bluetengruppe, nur gross und angeschnitten -
        kein neues Bild. -->
   <section class="section ueber-inhaber">
-    <img class="ueber-inhaber__wasserzeichen" src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" aria-hidden="true" width="526" height="430" loading="lazy" decoding="async">
+    <!-- AP-442: Hier stand das Wasserzeichen - dieselbe Bluetengruppe wie an den
+         Chips, nur gross, gedaempft und in der unteren Ecke angeschnitten. Auf
+         Ansage des Auftraggebers entfallen. Die liegende Bluete zwischen Text und
+         Zitat (.ueber-inhaber__bluete-mobil, unter 861px) und die am senkrechten
+         Steg (ab 861px) bleiben - sie stehen im Vordergrund, nicht im Hintergrund. -->
     <div class="container ueber-inhaber__raster">
       <div>
         <h2 class="ueber-inhaber__gross"><span>Das Team</span> hinter dem Betrieb.</h2>
@@ -412,10 +411,14 @@ html, body { background-color: #171916; }
         <img src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async">
       </div>
       <blockquote class="ueber-inhaber__zitat">
-        <p class="ueber-inhaber__platzhalter">„Ein Satz von Maik – der, mit dem er abrät, statt
-           zu verkaufen, was nicht hält.“</p>
+        <p>„Kein Auftrag ist uns zu klein.“</p>
         <p class="ueber-inhaber__name">Maik Rohdich, Gartenbaumeister</p>
       </blockquote>
+
+      <!-- AP-453: Hier stand das Foto der Baumarbeiten (AP-441). Auf Ansage des
+           Auftraggebers ist es an den Seitenanfang gewandert und traegt dort als
+           Startbild die Ueberschrift. Zweimal dasselbe Foto auf einer Seite laese
+           sich wie ein Versehen. -->
     </div>
   </section>
   <!-- ===== Team =========================================================
@@ -463,11 +466,18 @@ html, body { background-color: #171916; }
 
        Ende des vorbereiteten Team-Abschnitts. -->
   <!-- ===== Der Betrieb ===================================================
-       AP-381: Die Ueberschrift ist der Leitsatz, der bis zum 21.09.2026 im
-       Kopf der Seite stand: "Gartenbau mit Handschlagqualitaet". Sie loest
+       AP-439 (24.09.2026): Die Ueberschrift lautet auf Ansage des Auftraggebers
+       "Ehrlich beraten, sauber gebaut". Gruen steht die zweite Haelfte - dasselbe
+       Muster wie zuvor, wo das ausgezeichnete Wort in der zweiten Zeile stand.
+       Damit ist der Leitsatz "Gartenbau mit Handschlagqualitaet" nirgends mehr
+       auf der Seite; die Festlegung vom 15.09.2026, er bleibe hier stehen, ist
+       damit ueberholt (vermerkt in docs/offene-punkte.md).
+
+       AP-381: An dieser Stelle stand bis zum 24.09.2026 der Leitsatz, der bis
+       zum 21.09.2026 im Kopf der Seite gestanden hatte. Er loeste dort
        "Ein Betrieb, der die Arbeit selbst macht" ab (Sektionstitel seit
        AP-220). Das ausgezeichnete Wort behaelt seine Akzentfarbe, die Regel
-       dafuer steht jetzt an der Ueberschrift statt am Leitsatz.
+       dafuer steht seit AP-381 an der Ueberschrift statt am Leitsatz.
 
        AP-411 (23.09.2026): Der Abschnitt ist nach "Variante D" neu gebaut.
        Er war seit AP-376 der woertliche Wortlaut der alten Website; der
@@ -524,8 +534,11 @@ html, body { background-color: #171916; }
   <section class="section ueber-betrieb" aria-labelledby="betrieb-title">
     <div class="container ueber-betrieb__raster">
       <div class="ueber-betrieb__wort reveal">
-        <h2 class="type-section-title ueber-steg" id="betrieb-title">Gartenbau mit <em>Handschlagqualität</em></h2>
-        <p class="ueber-betrieb__haltung type-subsection-title">Was nicht sinnvoll ist, sagen wir Ihnen vorher.</p>
+        <h2 class="type-section-title ueber-steg" id="betrieb-title">Ehrlich beraten, <em>sauber&nbsp;gebaut</em></h2>
+        <!-- AP-445: Hier stand der Merksatz "Was nicht sinnvoll ist, sagen wir Ihnen
+             vorher." - seit AP-220 auf der Seite, belegt ueber Teil A.4 des
+             Umsetzungsplans. Auf Ansage des Auftraggebers entfallen; vermerkt in
+             docs/offene-punkte.md. -->
         <p class="ueber-betrieb__fakten">In Herne und Umgebung, seit über 20&nbsp;Jahren.
            Außenanlagen im öffentlichen, gewerblichen und privaten Bereich.</p>
         <p class="lead">Im Mittelpunkt steht immer das Ziel, die Anlage termingerecht
@@ -552,7 +565,11 @@ html, body { background-color: #171916; }
                alt="Ein Findling hängt an den Gurten eines Krans und wird über eine Baustelle im Garten gehoben."
                loading="lazy" decoding="async">
         </picture>
-        <figcaption>Schwere Steine kommen mit eigenem Gerät an ihren Platz.</figcaption>
+        <!-- AP-437: Die Bildunterschrift "Schwere Steine kommen mit eigenem Geraet an
+             ihren Platz." ist auf Ansage des Auftraggebers entfallen. Der Satz steht
+             weiterhin im JSON-LD am Seitenkopf als caption des ImageObject - dort
+             beschreibt er das Foto fuer Suchmaschinen und stimmt unveraendert; das
+             alt-Attribut des Bildes bleibt davon ohnehin unberuehrt. -->
       </figure>
 
       <div class="ueber-betrieb__nachsatz reveal">
@@ -582,17 +599,24 @@ html, body { background-color: #171916; }
           <button class="ueber-betrieb__typer-pause" type="button" aria-pressed="false" hidden>Pause</button>
         </div>
 
-        <p class="ueber-betrieb__notiz">Eigene Fachleute im Team, dazu Spezialisten aus
-           angrenzenden Gewerken wie der Entwässerungstechnik.</p>
+        <!-- AP-458: Hier stand "Eigene Fachleute im Team, dazu Spezialisten aus
+             angrenzenden Gewerken wie der Entwaesserungstechnik." Auf Ansage des
+             Auftraggebers entfallen; vermerkt in docs/offene-punkte.md.
+             Damit steht die Aussage ueber die Spezialisten aus angrenzenden
+             Gewerken nirgends mehr sichtbar auf der Seite - sie kam aus der
+             alten Website und war dort der einzige Beleg (siehe den Kommentar
+             am Kopf dieser Sektion). Im JSON-LD stand sie nie. -->
 
-        <p class="lead">Unsere Tätigkeitsschwerpunkte liegen in:</p>
-        <ul class="lp-list lead">
-          <li>der Planung, dem Bau und der Pflege anspruchsvoller Privatgärten</li>
-          <li>der Planung, dem Bau und der Pflege von Teichen und Zäunen</li>
-          <li>dem Landschaftsbau und dem Bau gewerblicher Außenanlagen</li>
-          <li>der dauerhaften Pflege von privaten und gewerblichen Außenanlagen</li>
-          <li>der Baumpflege</li>
-        </ul>
+        <!-- AP-447: Hier standen "Unsere Taetigkeitsschwerpunkte liegen in:" und die
+             fuenf Punkte darunter. Auf Ansage des Auftraggebers entfallen: Liste und
+             Kundenkarten sind zwei Schnitte durch dieselbe Menge, und die Karten
+             schneiden nach Kunde statt nach Leistungsbegriff - "Landschaftsbau" ist
+             eine Kategorie, in die sich niemand selbst einsortiert. Die Verben
+             "Planung, Bau, Pflege" stehen in der Kette darueber, einmal und gueltig
+             fuer alles. "Zaeune" und "Baumpflege" waren das Einzige, was sonst
+             verloren gegangen waere; sie stehen jetzt in der ersten Karte.
+             Die Klasse .lp-list bleibt im Projekt - sie traegt Listen auf 24
+             Leistungsseiten, ihre Regeln in styles.css sind unberuehrt. -->
       </div>
     </div>
 
@@ -601,23 +625,39 @@ html, body { background-color: #171916; }
          verlinken auch die 13 generierten Leistungsseiten; Gewerbe auf die
          Aussenanlagenpflege und NICHT auf ../gewerbekunden/ - das ist derzeit
          ein Weiterleitungs-Stub auf die Startseite; Kommunen ohne Link.
+         AP-447 (24.09.2026): Alle drei Karten sind jetzt Links, und zwar alle auf
+         die A-bis-Z-Leistungen der Startseite (../#leistungen). Von den Zielen, die
+         das Auftragsdokument vorschlug, taugt keines - privatkunden/ wurde in AP-F8
+         geloescht, gewerbekunden/ ist eine Weiterleitung auf die Startseite, eine
+         Kommunenseite gibt es nicht. Auf Ansage des Auftraggebers zeigen deshalb
+         alle drei auf dieselbe, lebende Stelle.
          [OFFEN: Welche Leistungen der Betrieb fuer Staedte uebernimmt und ob
           eine Referenzkommune genannt werden darf - docs/offene-punkte.md.
-          Der Entwurf hatte hier einen Platzhaltersatz; er bleibt weg.] -->
+          Der Text der dritten Karte wird vom Auftraggeber nachgeliefert; bis
+          dahin steht die heutige Zeile.] -->
     <div class="container ueber-fuerwen">
       <h3 class="ueber-fuerwen__titel">Für wen wir arbeiten</h3>
       <ul class="ueber-fuerwen__liste">
         <li>
-          <h4>Private Gärten</h4>
-          <p>Gestaltung, Vorgarten, Terrasse, Teich, die Pflege danach – und vieles mehr.</p>
+          <a class="ueber-fuerwen__karte" href="../#leistungen">
+            <span class="ueber-fuerwen__pfeil" aria-hidden="true"></span>
+            <h4>Private Gärten</h4>
+            <p>Gestaltung, Vorgarten, Terrasse, Teich, Zäune, Baumpflege, die Pflege danach – und vieles mehr.</p>
+          </a>
         </li>
         <li>
-          <h4>Gewerbe und Hausverwaltungen</h4>
-          <p>Außenanlagen pflegen und umgestalten, Baumkontrollen mit Dokumentation und Gutachten.</p>
+          <a class="ueber-fuerwen__karte" href="../#leistungen">
+            <span class="ueber-fuerwen__pfeil" aria-hidden="true"></span>
+            <h4>Gewerbe und Hausverwaltungen</h4>
+            <p>Außenanlagen pflegen und umgestalten, Baumkontrollen mit Dokumentation und Gutachten.</p>
+          </a>
         </li>
         <li>
-          <h4>Kommunen und öffentliche Auftraggeber</h4>
-          <p>Unser Team arbeitet auch mit Kommunen und öffentlichen Auftraggebern.</p>
+          <a class="ueber-fuerwen__karte" href="../#leistungen">
+            <span class="ueber-fuerwen__pfeil" aria-hidden="true"></span>
+            <h4>Kommunen und öffentliche Auftraggeber</h4>
+            <p>Unser Team arbeitet auch mit Kommunen und öffentlichen Auftraggebern.</p>
+          </a>
         </li>
       </ul>
     </div>
@@ -701,74 +741,26 @@ html, body { background-color: #171916; }
     </div>
   </section>
   <!-- ===== Auch fuer die kleine Sache ====================================
-       AP-327: Neu aus Entwurf 3. Der Wortlaut stammt vom Auftraggeber und
-       nimmt eine Sorge auf, die in keiner anderen Sektion vorkommt: dass ein
-       Meisterbetrieb fuer eine Stunde Heckenschnitt nicht kommt. -->
-  <section class="section ueber-klein">
-    <div class="container">
-      <div class="ueber-klein__panel reveal">
-        <div>
-          <h2 class="ueber-klein__titel">Kein Auftrag ist zu klein.</h2>
-          <p>Eine Stunde Hecke vor dem Geburtstag, ein Beet auffrischen, ein Baum, der weg muss.</p>
-          <p>Dafür kommen wir mit denselben Leuten und demselben Gerät wie für die großen
-             Aufträge. Es muss nicht gleich der ganze Garten sein.</p>
-        </div>
-        <a class="ueber-klein__ruf" href="tel:+491711738943">
-          <svg class="ueber-klein__ruf-frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
-          <svg class="ueber-klein__ruf-shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
-          <span class="ueber-klein__ruf-label">Kurz anrufen</span>
-          <span class="ueber-klein__ruf-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
-      </div>
-    </div>
-  </section>
+       AP-450 (24.09.2026): Hier stand die Kachel "Kein Auftrag ist zu klein."
+       (AP-327, Wortlaut vom Auftraggeber) mit den beiden Absaetzen darunter und
+       dem Knopf "Kurz anrufen". Auf Ansage des Auftraggebers entfallen - ihre
+       Aussage traegt jetzt das Zitat der Person-Sektion weiter oben.
+
+       Der Knopf faellt ersatzlos weg, so entschieden. Die Seite behaelt vier
+       weitere Telefonlinks, dazu den Anrufknopf im Seitenkopf. Saemtliche
+       .ueber-klein*-Regeln sind aus ueber-uns.css entfernt. -->
   <!-- ===== Haeufige Fragen ================================================
-       AP-327: Vier Fragen in zwei Gruppen. Keine Dublette zur Startseiten-FAQ -
-       die beantwortet den Ablauf einer Anfrage, hier geht es um den Betrieb
-       selbst. Bauteil .faq-list aus styles.css, dasselbe wie auf den
-       Leistungsseiten.
-       Die Fragen stehen zusaetzlich als FAQPage im Graph - so halten es
-       index.html und die Gewerbe-Leistungsseiten auch. Wer eine Frage aendert,
-       muss den Knoten mitziehen.
-       [OFFEN: Welche Leistungen der Betrieb fuer Staedte konkret uebernimmt -
-        docs/offene-punkte.md. Der Entwurf hatte dafuer einen zweiten Satz
-        vorgesehen; er bleibt weg, bis die Angaben vorliegen.] -->
-  <section class="section ueber-faq" aria-labelledby="faq-title">
-    <div class="container">
-      <div class="section-head reveal">
-        <h2 class="type-section-title ueber-steg" id="faq-title">Häufige Fragen zum Betrieb</h2>
-        <p class="lead">Fragen zum Ablauf beantwortet die FAQ auf der Startseite.</p>
-      </div>
-      <div class="ueber-faq__gruppen reveal">
-        <div>
-          <p class="ueber-faq__kicker">Betrieb und Qualifikation</p>
-          <div class="faq-list">
-            <details>
-              <summary><span>Seit wann gibt es Maik Rohdich Garten- und Landschaftsbau?</span><span class="chev" aria-hidden="true"></span></summary>
-              <div class="faq-body"><p>Seit 2003, mit Sitz in Herne. Geführt wird der Betrieb von Gartenbaumeister Maik Rohdich. Gearbeitet wird in ganz NRW, auf Anfrage auch darüber hinaus.</p></div>
-            </details>
-            <details>
-              <summary><span>Was bringt mir ein Meisterbetrieb?</span><span class="chev" aria-hidden="true"></span></summary>
-              <div class="faq-body"><p>Der Meisterzwang ist im Garten- und Landschaftsbau gefallen – anlegen darf heute fast jeder. Der Meisterbrief steht für die geprüfte fachliche Leitung und berechtigt zur Ausbildung. Dazu kommen die Zertifizierung als Baumkontrolleur der Landwirtschaftskammer, der Sachverständigentitel im Sachgebiet 2.4.1 und der Sachkundenachweis Pflanzenschutz.</p></div>
-            </details>
-          </div>
-        </div>
-        <div>
-          <p class="ueber-faq__kicker">Auftraggeber</p>
-          <div class="faq-list">
-            <details>
-              <summary><span>Arbeiten Sie auch für Kommunen und Hausverwaltungen?</span><span class="chev" aria-hidden="true"></span></summary>
-              <div class="faq-body"><p>Ja. Neben privaten Gärten arbeitet der Betrieb für Gewerbe, Hausverwaltungen und kommunale Auftraggeber.</p></div>
-            </details>
-            <details>
-              <summary><span>Sind kleine Aufträge zu klein?</span><span class="chev" aria-hidden="true"></span></summary>
-              <div class="faq-body"><p>Nein. Eine Stunde Hecke zählt genauso wie ein ganzer Garten. Kurzfristige Pflegeeinsätze übernehmen wir ebenso wie die komplette Neuanlage.</p></div>
-            </details>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+       AP-451 (24.09.2026): Hier stand die FAQ-Sektion der Seite - vier Fragen in
+       zwei Gruppen ("Betrieb und Qualifikation", "Auftraggeber"), dazu der
+       FAQPage-Block im Seitenkopf. Auf Ansage des Auftraggebers entfallen.
+
+       Es war KEINE Dublette: Die FAQ der Startseite beantwortet den Ablauf einer
+       Anfrage, diese hier den Betrieb selbst. Die vier Antworten stehen damit
+       nirgends mehr auf der Website - vermerkt in docs/offene-punkte.md.
+
+       Der Baustein .faq-list aus styles.css bleibt: Startseite und die
+       Gewerbe-Leistungsseiten benutzen ihn weiter. Entfernt sind nur die beiden
+       Regeln .ueber-faq__gruppen und .ueber-faq__kicker. -->
 </main>
 
 
@@ -847,6 +839,6 @@ html, body { background-color: #171916; }
 </footer>
 <!-- BUILD:site-footer:end -->
 
-<script src="../assets/js/main.js?v=20260923e" defer></script>
+<script src="../assets/js/main.js?v=20260923f" defer></script>
 </body>
 </html>
