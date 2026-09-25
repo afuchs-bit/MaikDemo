@@ -1,0 +1,94 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Zäune & Sichtschutz",
+  "navLabel": "Zäune & Sichtschutz",
+  "title": "Zäune & Sichtschutz in Herne | Maik Rohdich",
+  "metaDescription": "Ein passender Rahmen für Ihren Garten: Wir errichten Zäune als Grundstücksabgrenzung in verschiedenen Farben und Formen. Zusätzlich kann als Sichtschutz…",
+  "serviceType": "Zäune & Sichtschutz",
+  "unterzeile": "Ein passender Rahmen für Ihren Garten",
+  "einstieg": [
+    "Wir errichten Zäune als Grundstücksabgrenzung in verschiedenen Farben und Formen. Zusätzlich kann als Sichtschutz ein Pflanzstreifen eingerichtet werden oder es können bereits blickdichte Zaunfelder verbaut werden."
+  ],
+  "intro": "Wir errichten Zäune als Grundstücksabgrenzung in verschiedenen Farben und Formen. Zusätzlich kann als Sichtschutz ein Pflanzstreifen eingerichtet werden oder es können bereits blickdichte Zaunfelder verbaut werden.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Viele Varianten mit Toren oder Türen, variabler Höhe und unterschiedlichen Materialien sind möglich. Bei unseren beschichteten Zäunen trägt die hochwertige Beschichtung zur Witterungsbeständigkeit bei. Für Stabilität sorgen der passende Aufbau und die fachgerechte Befestigung. Die meisten unserer Kunden sind überrascht, wie schnell der Aufbau geht."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Zäune und Sichtschutz passend zu Ihrem Grundstück",
+      "paragraphs": [
+        "Gemeinsam stimmen wir die Ausführung auf Ihr Grundstück ab. Dazu gehören auch der Geländeverlauf, die Befestigung und der Platz für eine ergänzende Bepflanzung."
+      ],
+      "bullets": [
+        "Beratung zu Zaunart, Material, Höhe und Farbe",
+        "Montage von Zäunen und blickdichten Zaunfeldern",
+        "Einbindung passender Tore und Türen",
+        "Ergänzende Bepflanzung als Sichtschutz"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um Zäune und Sichtschutz für Ihr Grundstück und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Zaun und Sichtschutz anfragen",
+  "faq": [
+    {
+      "frage": "Wie hoch darf mein Zaun oder Sichtschutz sein?",
+      "antwort": "Die zulässige Höhe richtet sich nach dem Standort und den geltenden Vorgaben. Auch die Situation an der Grundstücksgrenze wird berücksichtigt. Wir beziehen diese Voraussetzungen frühzeitig in die Planung ein und zeigen Ihnen passende Ausführungen, mit denen sich Ihr gewünschter Sichtschutz umsetzen lässt."
+    },
+    {
+      "frage": "Was passt zu meinem Garten: ein Zaun, eine Hecke oder beides?",
+      "antwort": "Ein blickdichtes Zaunelement bietet direkt nach der Montage Abschirmung. Eine Hecke bringt Grün in den Garten, benötigt aber Platz, Entwicklungszeit und Pflege. Häufig ist eine Kombination sinnvoll. Die ergänzende Bepflanzung und ihren späteren Schnitt übernehmen wir gerne für Sie."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/sichtschutzbepflanzung-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "terrassenbau"
+    },
+    {
+      "welt": "privat",
+      "slug": "terrasse-pflasterarbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "nassschneidearbeiten"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 37
+}

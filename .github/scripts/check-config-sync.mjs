@@ -29,6 +29,7 @@ const TAXONOMIE = path.join(REPO_ROOT, 'content', 'taxonomie.json');
 const CONFIG = path.join(REPO_ROOT, 'admin', 'config.yml');
 const LEISTUNGEN_ROOT = path.join(REPO_ROOT, 'content', 'leistungen');
 const STAMMDATEN = path.join(REPO_ROOT, 'content', 'stammdaten.json');
+const HOMEPAGE = path.join(REPO_ROOT, 'index.html');
 
 function fail(msg) {
   console.error(`\n❌ ${msg}\n`);
@@ -127,6 +128,8 @@ async function main() {
     process.exit(1);
   }
 
+  await checkHomepageServiceLinks();
+
   // Slugs stimmen überein – Labels nur als Warnung prüfen.
   const labelWarnings = [];
   for (const [slug, taxLabel] of taxBySlug) {
@@ -145,6 +148,31 @@ async function main() {
     console.log('\n⚠️  Abweichende Labels (nur Hinweis, kein Fehler):');
     for (const w of labelWarnings) console.log(w);
   }
+}
+
+// Die mobile A–Z-Liste der Homepage und das Leistungsmenü werden bewusst aus
+// unterschiedlichen Markup-Quellen aufgebaut. Deshalb prüfen wir ihre Ziele
+// gegen dieselbe kuratierte navListe, damit neu angelegte Einzelseiten nicht
+// unbemerkt weiter auf alte Sammelseiten zeigen.
+async function checkHomepageServiceLinks() {
+  const html = await readFile(HOMEPAGE, 'utf8');
+  const cards = [...html.matchAll(/<a class="[^"]*\biphone-service-card\b[^"]*" href="([^"]+)" aria-label="([^"]+)">/g)]
+    .map((m) => ({ href: m[1], label: m[2] }));
+  const expected = WELTEN.privat.navListe.map((item) => ({
+    href: item.href || `${WELTEN.privat.pfad}leistungen/${item.slug}/`,
+    label: item.label,
+  }));
+  const errors = [];
+  if (cards.length !== expected.length) {
+    errors.push(`A–Z-Karten: ${cards.length} Einträge gefunden, ${expected.length} erwartet.`);
+  }
+  for (let i = 0; i < Math.min(cards.length, expected.length); i += 1) {
+    if (cards[i].href !== expected[i].href) {
+      errors.push(`A–Z-Karte ${i + 1} „${cards[i].label}": Ziel „${cards[i].href}", erwartet „${expected[i].href}“.`);
+    }
+  }
+  if (errors.length) fail(`A–Z-Verlinkungen der Homepage stimmen nicht mit dem Leistungsmenü überein:\n   - ${errors.join('\n   - ')}`);
+  console.log(`✅ A–Z-Verlinkungen ok: ${cards.length} Karten führen auf die Ziele des Leistungsmenüs.`);
 }
 
 // AP-326: JSON-LD gegen content/stammdaten.json pruefen.

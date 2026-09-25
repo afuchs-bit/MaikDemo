@@ -1,0 +1,94 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Beleuchtung",
+  "navLabel": "Beleuchtung",
+  "title": "Beleuchtung in Herne | Maik Rohdich",
+  "metaDescription": "Ihr Garten darf auch abends wirken: Ein beleuchteter Weg zur Haustür, sanftes Licht an der Terrasse oder ein Baum, der am Abend zum Blickfang wird: Mit…",
+  "serviceType": "Beleuchtung",
+  "unterzeile": "Ihr Garten darf auch abends wirken",
+  "einstieg": [
+    "Ein beleuchteter Weg zur Haustür, sanftes Licht an der Terrasse oder ein Baum, der am Abend zum Blickfang wird: Mit der passenden Gartenbeleuchtung bleibt Ihr Außenbereich auch nach Sonnenuntergang ein schöner Ort."
+  ],
+  "intro": "Ein beleuchteter Weg zur Haustür, sanftes Licht an der Terrasse oder ein Baum, der am Abend zum Blickfang wird: Mit der passenden Gartenbeleuchtung bleibt Ihr Außenbereich auch nach Sonnenuntergang ein schöner Ort.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir planen die Beleuchtung passend zu Ihrem Garten und dazu, wie Sie ihn nutzen. Wo brauchen Sie Orientierung? Welche Bereiche sollen zur Ruhe kommen, welche Akzente dürfen sichtbar werden? Daraus entwickeln wir mit Ihnen das Lichtkonzept für Ihren Garten."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Licht an den richtigen Stellen",
+      "paragraphs": [
+        "Wir achten auf die Ausrichtung der Leuchten und einen zurückhaltenden Einsatz von Licht. So lassen sich störende Blendung und unnötige Beleuchtung der Umgebung verringern. Erforderliche Elektroarbeiten koordinieren wir mit unseren Partnerfirmen. Sie behalten uns als Ansprechpartner für das Gesamtprojekt."
+      ],
+      "bullets": [
+        "Beleuchtung von Gartenwegen, Hauseingängen und Stufen",
+        "Lichtgestaltung für Terrassen und Sitzplätze",
+        "Gezielte Akzente an Pflanzen, Natursteinen und Wasserspielen",
+        "Einplanung der Leitungswege bei Neu- und Umgestaltungen"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die Beleuchtung Ihres Gartens und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Gartenbeleuchtung planen",
+  "faq": [
+    {
+      "frage": "Lässt sich Gartenbeleuchtung nachträglich einbauen?",
+      "antwort": "Ja. Auch für einen bestehenden Garten entwickeln wir ein passendes Lichtkonzept. Wir wählen geeignete Leuchtenpositionen und planen, wie sich die benötigten Leitungswege in Ihre Außenanlage einfügen. Stehen ohnehin Pflasterarbeiten oder eine Umgestaltung der Terrasse an, stimmen wir die Vorbereitung direkt darauf ab."
+    },
+    {
+      "frage": "Wie finde ich die passende Beleuchtung für meinen Garten?",
+      "antwort": "Erzählen Sie uns zunächst, wie Sie Ihren Garten abends nutzen möchten. Wir besprechen mit Ihnen geeignete Positionen, die gewünschte Lichtwirkung und passende Leuchten für den Außenbereich."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/gartenbeleuchtung-nacht-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "feuerstellen"
+    },
+    {
+      "welt": "privat",
+      "slug": "vorgarten"
+    },
+    {
+      "welt": "privat",
+      "slug": "findlinge-natursteineinfassungen"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 6
+}

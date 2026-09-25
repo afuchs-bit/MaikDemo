@@ -1,39 +1,95 @@
 {
+  "layout": "editorial-v2",
   "h1": "Verkehrssicherheit herstellen",
-  "navLabel": "Verkehrssicherheit",
-  "title": "Verkehrssicherheit an Bäumen herstellen – Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Totholz, Kronensicherung, Einkürzung: Wir stellen die Verkehrssicherheit Ihrer Bäume in Herne, Bochum und Recklinghausen her – dokumentiert. Jetzt anfragen.",
-  "serviceType": "Herstellung der Verkehrssicherheit an Bäumen",
-  "intro": "Wer einen Baum auf seinem Grundstück hat, haftet für das, was von ihm ausgeht. Wir führen die Maßnahmen aus, die einen Baum wieder sicher machen: Totholz entnehmen, Kronen entlasten oder sichern, im begründeten Fall fällen. Die Beurteilung liefert die Baumkontrolle – hier geht es um die Umsetzung des Befunds. Für Bäume in Herne und Umgebung.",
-  "eignung": [
-    "Bäume an Gehwegen, Straßen, Stellplätzen und Spielbereichen.",
-    "Grundstücke mit Publikumsverkehr – Vermieter, Hausverwaltungen, Gewerbeflächen.",
-    "Nach einem Sturm, wenn Äste gebrochen sind oder lose in der Krone hängen.",
-    "Wenn eine Baumkontrolle einen Befund ergeben hat, der eine Maßnahme verlangt."
+  "navLabel": "Verkehrssicherheit herstellen",
+  "title": "Verkehrssicherheit herstellen in Herne | Maik Rohdich",
+  "metaDescription": "Freie Wege und fachgerecht gepflegte Bäume: Tote Äste über einem Parkplatz, ein zugewachsener Gehweg oder eine Hecke, die die Sicht an der Ausfahrt…",
+  "serviceType": "Verkehrssicherheit herstellen",
+  "unterzeile": "Freie Wege und fachgerecht gepflegte Bäume",
+  "einstieg": [
+    "Tote Äste über einem Parkplatz, ein zugewachsener Gehweg oder eine Hecke, die die Sicht an der Ausfahrt behindert: Solche Stellen verdienen Aufmerksamkeit. Wir unterstützen Sie dabei, Gefahren durch Bäume und Gehölze zu erkennen und die erforderlichen Arbeiten auszuführen."
   ],
-  "ablauf": [
-    { "titel": "Befund sichten", "text": "Wir gehen vom Ergebnis der Kontrolle aus: Was ist festgestellt worden, wie dringend ist es, was folgt daraus." },
-    { "titel": "Maßnahme festlegen", "text": "Totholzentnahme, Entlastungsschnitt, Kroneneinkürzung, Kronensicherung – oder, wenn nichts anderes trägt, die Fällung." },
-    { "titel": "Ausführung", "text": "Gearbeitet wird vom Boden, im Seil oder mit Hebebühne, je nach Baum und Umfeld. Bei Bäumen an der Straße wird der Bereich vorher gesichert." },
-    { "titel": "Dokumentation", "text": "Was festgestellt und was ausgeführt wurde, halten wir fest. Diese Unterlagen sind es, die im Schadensfall zählen." }
+  "intro": "Tote Äste über einem Parkplatz, ein zugewachsener Gehweg oder eine Hecke, die die Sicht an der Ausfahrt behindert: Solche Stellen verdienen Aufmerksamkeit. Wir unterstützen Sie dabei, Gefahren durch Bäume und Gehölze zu erkennen und die erforderlichen Arbeiten auszuführen.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Für private Eigentümer, Unternehmen und Hausverwaltungen verbinden wir Baumkontrolle mit konkreten Pflegemaßnahmen. Die fachliche Beurteilung durch einen LWK-zertifizierten Baumkontrolleur bildet dafür die Grundlage. Wir legen fest, welche Arbeiten erforderlich sind, und übernehmen die abgestimmte Ausführung. Von unserem Standort in Herne aus sind wir auch für Anfragen zu Projekten außerhalb der Region erreichbar."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Diese Maßnahmen können dazugehören",
+      "paragraphs": [
+        "Wir besprechen mit Ihnen die Dringlichkeit und den Umfang der Arbeiten. Anschließend bleibt die regelmäßige Kontrolle wichtig: Bäume wachsen weiter, Gehölze treiben neu aus und Stürme können Veränderungen verursachen."
+      ],
+      "bullets": [
+        "Totholzentfernung und Entnahme geschädigter Äste",
+        "Lichtraumprofilschnitt zum Freihalten von Wegen und Zufahrten",
+        "Rückschnitt von Gehölzen an Sichtbereichen und Grundstücksgrenzen",
+        "Kronensicherung oder weitere Baumpflege nach fachlichem Befund",
+        "Baumfällung, wenn geeignete Erhaltungsmaßnahmen nicht ausreichen"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Größe und Zahl der Bäume", "text": "Ein einzelner Hausbaum ist etwas anderes als ein Bestand entlang der Grundstücksgrenze." },
-    { "titel": "Zugang zur Krone", "text": "Ob vom Boden, im Seil oder mit Hebebühne gearbeitet werden muss, bestimmt Zeit und Aufwand." },
-    { "titel": "Umfeld", "text": "Steht der Baum über Straße, Gehweg oder Nachbargrundstück, kommt die Sicherung des Bereichs hinzu." },
-    { "titel": "Umfang der Maßnahme", "text": "Totholz entnehmen ist schnell erledigt. Eine Kronensicherung oder ein abschnittsweiser Rückbau ist eine eigene Aufgabe." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Solange nichts passiert ist, muss ich nichts tun.“", "text": "Die Verkehrssicherungspflicht besteht unabhängig davon, ob schon etwas passiert ist. Entscheidend ist, ob Sie Ihren Baum regelmäßig im Blick hatten und auf erkennbare Mängel reagiert haben." },
-    { "titel": "„Der Baum sieht gesund aus, also ist er sicher.“", "text": "Fäule im Stammfuß, Risse im Astansatz und morsche Starkäste sind von unten oft nicht zu sehen. Genau dafür gibt es die fachliche Kontrolle." },
-    { "titel": "„Verkehrssicherheit bedeutet am Ende doch Fällen.“", "text": "In den meisten Fällen genügt eine gezielte Maßnahme – Totholz heraus, Krone entlasten, gegebenenfalls sichern. Die Fällung ist der letzte Schritt, nicht der erste." }
-  ],
+  "abschluss": "Zu allen Fragen rund um die Verkehrssicherheit Ihrer Außenanlage und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Verkehrssicherheit besprechen",
   "faq": [
-    { "frage": "Was heißt Verkehrssicherungspflicht bei Bäumen?", "antwort": "Wer ein Grundstück besitzt, muss dafür sorgen, dass von seinen Bäumen keine vermeidbare Gefahr für andere ausgeht. Dazu gehört, den Bestand regelmäßig anzusehen und auf erkennbare Mängel zu reagieren. Passiert etwas und war der Mangel bei einer fachgerechten Kontrolle erkennbar, steht der Eigentümer in der Verantwortung." },
-    { "frage": "Worin unterscheidet sich das von der Baumkontrolle?", "antwort": "Die Baumkontrolle beurteilt: Sie stellt fest, in welchem Zustand ein Baum ist und was zu tun wäre. Auf dieser Seite geht es um die Ausführung – die Arbeiten, mit denen der Befund abgearbeitet wird. Beides gehört zusammen: ohne Beurteilung keine belastbare Maßnahme, ohne Maßnahme kein Nutzen aus der Beurteilung." },
-    { "frage": "Wie schnell muss nach einem Befund gehandelt werden?", "antwort": "Das richtet sich nach dem Befund. Ein loser Starkast über dem Gehweg duldet keinen Aufschub, eine empfohlene Kroneneinkürzung lässt sich planen. Wir sagen Ihnen bei der Begehung, was sofort gemacht werden muss und was in die nächste geeignete Jahreszeit gehört." },
-    { "frage": "Was ist nach einem Sturm zu tun?", "antwort": "Nach einem Sturm gehört der Bestand angesehen, auch wenn nichts umgefallen ist. Angerissene Äste und Kronenteile hängen oft noch fest und kommen erst beim nächsten Wind herunter. Bei akuter Gefahr erreichen Sie uns über den Sturmnotdienst; alles andere sehen wir uns in Ruhe an." }
+    {
+      "frage": "Was bedeutet es, das Lichtraumprofil freizuhalten?",
+      "antwort": "Damit ist gemeint, den erforderlichen freien Raum über und neben einer Verkehrsfläche von hineinragendem Bewuchs freizuhalten. Welche Freiräume benötigt werden, richtet sich nach der Fläche, ihrer Nutzung und den geltenden Vorgaben."
+    },
+    {
+      "frage": "Wie bleibt die Verkehrssicherheit nach der Pflege erhalten?",
+      "antwort": "Bäume und Gehölze verändern sich auch nach einem Rückschnitt. Deshalb bleiben weitere Kontrollen und bei Bedarf neue Pflegemaßnahmen wichtig. Wir stimmen die regelmäßige Baumkontrolle gerne mit Ihnen ab und übernehmen die erforderlichen Arbeiten."
+    }
   ],
-  "nachbarn": ["baumkontrolle", "baumarbeiten"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/verkehrssicherheit-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "baumpflege"
+    },
+    {
+      "welt": "privat",
+      "slug": "baumarbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "schredderarbeiten"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 33
 }

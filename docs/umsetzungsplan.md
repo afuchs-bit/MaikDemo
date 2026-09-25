@@ -1557,3 +1557,37 @@ Instagram stehen links kompakt untereinander. Die dadurch breitere Textspalte
 setzt den Erreichbarkeitshinweis bei normaler Schriftgröße in genau zwei
 festgelegten, ausgewogenen Zeilen; bei Schriftvergrößerung darf er weiter
 umbrechen, ohne abgeschnitten zu werden.
+
+## H.9 Nachtrag: Einsatzgebiet Essen, Kontaktkarte, Erreichbarkeitszeile (23.09.2026)
+
+Drei Festlegungen des Auftraggebers vom 23.09.2026, alle drei Abweichungen von dem,
+was weiter oben steht. Teil B bleibt unverändert — es ist das Register des
+Auftraggebers; hier steht, was seither gilt.
+
+**Essen gehört zum Einsatzgebiet.** Teil B, Zeile 76 nennt fünf Orte. Der Auftraggeber
+hat Essen ergänzt. Die Liste lautet damit überall: Herne, Bochum, Essen,
+Castrop-Rauxel, Recklinghausen, Gelsenkirchen. Nachgezogen wurden `content/stammdaten.json`,
+`AREA_SERVED` in `.github/scripts/lib/render.mjs`, sämtliche `areaServed`-Felder im
+JSON-LD und die Ortszeile im Footer-Template. `check-config-sync.mjs` prüft den
+Gleichstand und läuft fehlerfrei durch.
+
+**„Auch deutschlandweit nach Absprache" steht jetzt auch auf der Kontaktkarte.**
+H.6 legt unter „Wo sie bewusst nicht steht" fest, dass Footer, Kontaktkarte und die
+FAQ-Antwort „In welchen Orten arbeiten Sie?" bei „weitere Orte nach Projekt" bleiben.
+Für die Kontaktkarte gilt das nicht mehr: Der Auftraggeber hat den Satz dort
+ausdrücklich gewünscht, im Wortlaut „Auch deutschlandweit nach Absprache". Footer und
+FAQ-Antwort bleiben unverändert — H.6 gilt dort weiter.
+
+Die Ortszeile der Kontaktkarte endet aus demselben Grund auf „Und Umgebung",
+großgeschrieben mitten in der Aufzählung. Auch das ist der Wortlaut des Auftraggebers
+und keine Unachtsamkeit.
+
+**Die mobile Erreichbarkeitszeile im Footer sagt nicht mehr „Jederzeit erreichbar".**
+Unter 481 px ersetzt diese Zeile die Öffnungszeiten aus `.footer-hours`. Auf der
+Kontaktseite stand damit „Jederzeit erreichbar · Auch an Feiertagen und Wochenenden"
+keine 400 Pixel unter „Sonntag geschlossen" — auf jeder Seite derselbe Widerspruch,
+sichtbar nur auf dem Handy. Die Zeile lautet jetzt „WhatsApp jederzeit · Auch an
+Feiertagen und Wochenenden · Mustergarten nur nach Vereinbarung". Das deckt sich mit
+`content/stammdaten.json` (WhatsApp rund um die Uhr für Nachrichten, Antwort zu den
+Geschäftszeiten), mit der Kontaktkarte und mit `.footer-hours` oberhalb 480 px.
+Die Öffnungszeiten aus Teil B bleiben unangetastet.

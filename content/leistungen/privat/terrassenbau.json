@@ -1,0 +1,97 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Terrassenbau",
+  "navLabel": "Terrassenbau",
+  "title": "Terrassenbau in Herne | Maik Rohdich",
+  "metaDescription": "Ihr Lieblingsplatz direkt am Haus: Mit unserer langjährigen Erfahrung im Bereich Verlegetechnik sind wir Ihr Partner für die Planung und den Bau von…",
+  "serviceType": "Terrassenbau",
+  "unterzeile": "Ihr Lieblingsplatz direkt am Haus",
+  "einstieg": [
+    "Mit unserer langjährigen Erfahrung im Bereich Verlegetechnik sind wir Ihr Partner für die Planung und den Bau von Terrassenanlagen."
+  ],
+  "intro": "Mit unserer langjährigen Erfahrung im Bereich Verlegetechnik sind wir Ihr Partner für die Planung und den Bau von Terrassenanlagen.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Höchsten Wert legen wir auf die qualitativ hochwertige und termingerechte Ausführung der Arbeiten. Wir verfügen über einen großen modernen Maschinenpark und die notwendigen Kenntnisse, um auch aufwendige Baumaßnahmen termin- und fachgerecht zu erstellen."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Wir sind Ihr Ansprechpartner für",
+      "paragraphs": [
+        "Ob Holzterrasse oder ein Belag aus Beton- oder Natursteinplatten: Wir beraten Sie zu Material, Lage und Pflege. Beispiele können Sie nach Terminvereinbarung in unserer Ausstellung ansehen. Erforderliche Erd- und Entwässerungsarbeiten planen wir mit ein und führen sie bei Bedarf ebenfalls aus.",
+        "Zur fertigen Terrasse gehört auch das passende Umfeld. Mit einer abgestimmten Beleuchtung und einem geeigneten Sichtschutz gestalten wir einen Platz, an dem Sie sich zu jeder Tageszeit wohlfühlen. Eine Feuerstelle mit Sitzbereich lässt sich bei passenden Platzverhältnissen ebenfalls einplanen."
+      ],
+      "bullets": [
+        "Planung von Terrassengröße, Lage und Übergängen zum Garten",
+        "Passender Unterbau mit abgestimmten Höhen und Wasserabfluss",
+        "Holzterrassenplanung und -bau",
+        "Verlegung hochwertiger Terrassenplatten",
+        "Treppen- und Geländerbau",
+        "Planung und Lieferung der Ausstattung mit Gartenmöbeln und Accessoires"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die Planung und den Bau Ihrer Terrasse und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Terrassenberatung vereinbaren",
+  "faq": [
+    {
+      "frage": "Passt Holz oder Stein besser zu meiner Terrasse?",
+      "antwort": "Das hängt von Ihrer gewünschten Optik, dem Standort und dem Pflegeaufwand ab. Holz und Stein unterscheiden sich unter anderem in Haptik, Alterung und Reinigung. Wir zeigen Ihnen passende Möglichkeiten und besprechen gerne auch die spätere Pflege."
+    },
+    {
+      "frage": "Kann eine bestehende Terrasse erneuert werden?",
+      "antwort": "Ja. Wir sehen uns Belag, Unterbau, Höhen und Entwässerung an und entwickeln daraus die passende Lösung. Gut erhaltene Teile beziehen wir ein, erforderliche Erneuerungen führen wir fachgerecht aus. Vom Rückbau bis zum neuen Belag übernehmen wir die abgestimmten Arbeiten."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/terrassenbau-pflaster-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "terrasse-pflasterarbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "nassschneidearbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "entwaesserung"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 32
+}

@@ -1,0 +1,165 @@
+{
+  "layout": "editorial-v2",
+  "hideProcess": true,
+  "contactVariant": "homepage",
+  "contactTitle": "Der erste Schritt zu Ihrer Balkonkastenbepflanzung",
+  "galleryVariant": "grid-teaser",
+  "galleryCtaLabel": "Mehr anzeigen",
+  "galleryCollapseLabel": "Weniger",
+  "faqVariant": "homepage",
+  "relatedVariant": "homepage",
+  "closingVariant": "homepage-cta",
+  "contentVariant": "editorial",
+  "closingCtaLabel": "JETZT ANFRAGEN",
+  "closingLines": [
+    "Zu allen Fragen rund um die",
+    "Bepflanzung Ihrer Balkonkästen",
+    "und zur Vereinbarung eines",
+    "unverbindlichen Beratungsgespräches",
+    "steht Ihnen unser Fachpersonal",
+    "gerne zur Verfügung."
+  ],
+  "themeColor": "#171916",
+  "mobileCssVersion": "20260925a75",
+  "ctaFamilyVersion": "20260923a",
+  "heroVariant": "image-first",
+  "heroTitlePlacement": "above-image",
+  "h1": "Balkonkastenbepflanzung",
+  "heroTitleLines": [
+    "Balkonkasten",
+    "bepflanzung"
+  ],
+  "navLabel": "Balkonkastenbepflanzung",
+  "title": "Balkonkastenbepflanzung in Herne | Maik Rohdich",
+  "metaDescription": "Ein Stück Garten vor Ihrem Fenster: Blühende Balkonkästen machen schon den Blick aus dem Fenster schöner. Ob farbenfroher Sommerflor, eine ruhige…",
+  "serviceType": "Balkonkastenbepflanzung",
+  "unterzeile": "Ein Stück Garten vor Ihrem Fenster",
+  "einstieg": [
+    "Blühende Balkonkästen machen schon den Blick aus dem Fenster schöner. Ob farbenfroher Sommerflor, eine ruhige Kombination aus Grün und Weiß oder eine Bepflanzung passend zur Fassade: Wir gestalten Ihre Balkon- und Fensterkästen nach Ihren Vorstellungen."
+  ],
+  "mobileEinstieg": [
+    "Blühende Balkonkästen machen schon den Blick aus dem Fenster schöner.",
+    "Ob farbenfroher Sommerflor, eine ruhige Kombination aus Grün und Weiß oder eine Bepflanzung passend zur Fassade: Wir gestalten Ihre Balkon- und Fensterkästen nach Ihren Vorstellungen."
+  ],
+  "intro": "Blühende Balkonkästen machen schon den Blick aus dem Fenster schöner. Ob farbenfroher Sommerflor, eine ruhige Kombination aus Grün und Weiß oder eine Bepflanzung passend zur Fassade: Wir gestalten Ihre Balkon- und Fensterkästen nach Ihren Vorstellungen.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Sonne, Schatten und Wind bestimmen mit, welche Pflanzen sich wohlfühlen. Dazu kommen die Größe der Kästen und die Frage, wie viel Zeit Sie für das Gießen und die Pflege haben. Wir stimmen die Bepflanzung auf diese Bedingungen ab."
+      ],
+      "mobileParagraphs": [
+        "Sonne, Schatten und Wind bestimmen mit, welche Pflanzen sich wohlfühlen.",
+        "Dazu kommen die Größe der Kästen und die Frage, wie viel Zeit Sie für das Gießen und die Pflege haben. Wir stimmen die Bepflanzung auf diese Bedingungen ab."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Wir bringen Farbe an Balkon und Fenster",
+      "paragraphs": [
+        "Wir achten darauf, dass die Pflanzen auch mit zunehmendem Wachstum genügend Raum haben. Zur fertigen Bepflanzung erhalten Sie Hinweise zur Bewässerung und Nährstoffversorgung. Bei Bedarf kümmern wir uns auch um den nächsten Wechsel der Pflanzen."
+      ],
+      "mobileParagraphs": [
+        "Wir achten darauf, dass die Pflanzen auch mit zunehmendem Wachstum genügend Raum haben.",
+        "Zur fertigen Bepflanzung erhalten Sie Hinweise zur Bewässerung und Nährstoffversorgung.",
+        "Bei Bedarf kümmern wir uns auch um den nächsten Wechsel der Pflanzen."
+      ],
+      "bullets": [
+        "Pflanzenauswahl passend zu Standort, Jahreszeit und gewünschter Farbwirkung",
+        "Bepflanzung vorhandener oder neu ausgewählter Balkonkästen",
+        "Geeignetes Substrat und Vorbereitung des Wasserabflusses",
+        "Kombination aufrechter, hängender und strukturgebender Pflanzen",
+        "Saisonaler Wechsel und weitere Pflege nach Absprache"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die Bepflanzung Ihrer Balkonkästen und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Balkonkästen bepflanzen lassen",
+  "faq": [
+    {
+      "frage": "Können meine vorhandenen Balkonkästen weiterverwendet werden?",
+      "antwort": "Wir verwenden Ihre Kästen gerne weiter, wenn Zustand, Größe und Wasserabfluss zur Bepflanzung passen. Bei Kästen am Geländer berücksichtigen wir auch Befestigung und Gewicht. Sollte ein Kasten ungeeignet sein, wählen wir mit Ihnen einen passenden Ersatz aus. Den regelmäßigen Pflanzenwechsel übernehmen wir gerne im Rahmen unserer Saisonbepflanzung."
+    },
+    {
+      "frage": "Welche Pflanzen passen auf einen sehr sonnigen oder schattigen Balkon?",
+      "antwort": "Für beide Standorte gibt es geeignete Pflanzen. Auf einem sonnigen Balkon sind Hitze und Wasserbedarf besonders wichtig, im Schatten die passende Artenauswahl. Wir stellen Ihnen eine Bepflanzung zusammen, die zu Ihrem Balkon und Ihrem Pflegealltag passt."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "/assets/img/leistungen-mobile/originale/balkonkastenbepflanzung-4x3.jpg",
+      "alt": "Farbenfroh bepflanzte Balkonkästen mit Frühlingsblumen",
+      "width": 1448,
+      "height": 1086
+    },
+    "gallery": [
+      {
+        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
+        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
+        "fokusMobil": "54% 55%",
+        "width": 480,
+        "height": 360
+      },
+      {
+        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
+        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
+        "fokusMobil": "52% 62%",
+        "width": 480,
+        "height": 493
+      },
+      {
+        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
+        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 480,
+        "height": 362
+      },
+      {
+        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
+        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
+        "fokusMobil": "50% 58%",
+        "width": 480,
+        "height": 360
+      },
+      {
+        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
+        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
+        "fokusMobil": "60% 56%",
+        "width": 480,
+        "height": 360
+      },
+      {
+        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
+        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
+        "fokusMobil": "57% 58%",
+        "width": 480,
+        "height": 297
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/balkonkastenbepflanzung-fruehling-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "palmen-winterfest",
+      "letter": "p",
+      "label": "Palmen",
+      "subtitle": "winterfest"
+    },
+    {
+      "welt": "privat",
+      "slug": "rollrasen",
+      "letter": "r"
+    },
+    {
+      "welt": "privat",
+      "slug": "dachbegruenung",
+      "letter": "d"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 2
+}

@@ -145,7 +145,8 @@ function showError() {
 
 // ---------- Filter-Logik ----------
 function baseList() {
-  const list = state.tab === 'highlights' ? allProjekte.filter((p) => p && p.featured) : allProjekte.slice();
+  const sichtbareProjekte = allProjekte.filter((p) => p && p.inProjektGalerie !== false);
+  const list = state.tab === 'highlights' ? sichtbareProjekte.filter((p) => p.featured) : sichtbareProjekte;
   return list.sort((a, b) => String(b.datum).localeCompare(String(a.datum)));
 }
 const matchTyp = (p, typ) => typ === 'alle' || (Array.isArray(p.kundentyp) && p.kundentyp.includes(typ));

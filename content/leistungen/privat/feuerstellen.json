@@ -1,0 +1,95 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Feuerstellen",
+  "navLabel": "Feuerstellen",
+  "title": "Feuerstellen in Herne | Maik Rohdich",
+  "metaDescription": "Ein Platz für lange Abende im Garten: Wenn es am Abend kühler wird, muss der Tag im Garten noch nicht zu Ende sein. Eine Feuerstelle schafft einen Platz…",
+  "serviceType": "Feuerstellen",
+  "unterzeile": "Ein Platz für lange Abende im Garten",
+  "einstieg": [
+    "Wenn es am Abend kühler wird, muss der Tag im Garten noch nicht zu Ende sein. Eine Feuerstelle schafft einen Platz zum Zusammensitzen, Erzählen und Entspannen. Das warme Licht der Flammen macht aus einer freien Ecke einen besonderen Treffpunkt."
+  ],
+  "intro": "Wenn es am Abend kühler wird, muss der Tag im Garten noch nicht zu Ende sein. Eine Feuerstelle schafft einen Platz zum Zusammensitzen, Erzählen und Entspannen. Das warme Licht der Flammen macht aus einer freien Ecke einen besonderen Treffpunkt.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir planen und gestalten Feuerstellen passend zu Ihrem Garten. Ob eine Feuerschale auf einem vorbereiteten Platz oder eine fest angelegte Feuerstelle mit Sitzbereich: Größe, Material und Nutzung stimmen wir mit Ihnen ab."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Ihre Feuerstelle als Teil des Gartens",
+      "paragraphs": [
+        "Wir berücksichtigen die nötigen Abstände zu Gebäuden, Pflanzen und brennbaren Materialien sowie Windrichtung und Nachbarschaft. Die örtlichen Vorgaben und die Hinweise des Herstellers gehören zur Planung dazu. So entsteht ein Platz, der zu Ihrem Garten und seiner Nutzung passt."
+      ],
+      "bullets": [
+        "Beratung zu Lage, Ausführung und geeigneter Feuerstelle",
+        "Vorbereitung eines standsicheren, für die Nutzung geeigneten Untergrunds",
+        "Gestaltung mit passenden Natursteinen und hitzegeeigneten Materialien",
+        "Einplanung von Sitzmöglichkeiten und Zugängen",
+        "Einbindung in Terrasse, Wege und vorhandene Gartenbereiche"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die Planung und Gestaltung Ihrer Feuerstelle und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Feuerstelle im Garten planen",
+  "faq": [
+    {
+      "frage": "Lässt sich eine Feuerstelle in einen bestehenden Garten integrieren?",
+      "antwort": "Oft reicht ein geeigneter Bereich, der sich mit überschaubaren Veränderungen gestalten lässt. Wir prüfen Platzangebot, Untergrund und Umgebung und zeigen Ihnen, wie Feuerstelle und Sitzbereich zusammenpassen können."
+    },
+    {
+      "frage": "Übernehmen Sie auch die Gestaltung rund um die Feuerstelle?",
+      "antwort": "Ja. Wir gestalten bei Bedarf den gesamten Aufenthaltsbereich mit Belag, Einfassung und Sitzmöglichkeiten. Auch eine zurückhaltende Beleuchtung lässt sich einplanen. Passendes trockenes Kaminholz können Sie ebenfalls bei uns anfragen."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/feuerstellen-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "vorgarten"
+    },
+    {
+      "welt": "privat",
+      "slug": "findlinge-natursteineinfassungen"
+    },
+    {
+      "welt": "privat",
+      "slug": "zaeune-sichtschutz"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 12
+}

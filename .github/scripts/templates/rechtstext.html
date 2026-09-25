@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<style>
+html, body { background-color: #171916; }
+@media (max-width: 480px) {
+  html, body { background-color: #1B1E19; }
+}
+</style>
 <!-- AP-01: Demo-Sperre. Beim Go-Live entfernen (Impressum darf indexiert werden), siehe docs/go-live-checkliste.md. -->
 <meta name="robots" content="noindex,nofollow" />
 <meta name="theme-color" content="#315200" />
@@ -20,6 +26,7 @@
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="{{base}}assets/css/styles.css?v={{cssVersion}}" />
+<link rel="stylesheet" href="{{base}}assets/css/header-home.css?v={{cssVersion}}" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">

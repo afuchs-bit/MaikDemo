@@ -1,0 +1,95 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Außergewöhnliches für den Garten",
+  "navLabel": "Außergewöhnliches für den Garten",
+  "title": "Außergewöhnliches für den Garten in Herne | Maik Rohdich",
+  "metaDescription": "Ein Garten mit Persönlichkeit: Manchmal ist es ein einzelnes Stück, das einen Garten unverwechselbar macht. Eine große Skulptur zwischen Gräsern, ein…",
+  "serviceType": "Außergewöhnliches für den Garten",
+  "unterzeile": "Ein Garten mit Persönlichkeit",
+  "einstieg": [
+    "Manchmal ist es ein einzelnes Stück, das einen Garten unverwechselbar macht. Eine große Skulptur zwischen Gräsern, ein Buddha an einem ruhigen Sitzplatz oder ein Wasserspiel, das schon vom Wohnzimmer aus zu sehen ist: Wir helfen Ihnen, besondere Ideen in Ihren Garten zu bringen."
+  ],
+  "intro": "Manchmal ist es ein einzelnes Stück, das einen Garten unverwechselbar macht. Eine große Skulptur zwischen Gräsern, ein Buddha an einem ruhigen Sitzplatz oder ein Wasserspiel, das schon vom Wohnzimmer aus zu sehen ist: Wir helfen Ihnen, besondere Ideen in Ihren Garten zu bringen.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Dabei kommt es auf mehr als das Objekt allein an. Größe, Material und Standort müssen zusammenpassen. Wir beraten Sie bei der Auswahl und gestalten die Umgebung so, dass Ihr neues Lieblingsstück zur Geltung kommt."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Besondere Stücke passend zu Ihrem Garten",
+      "paragraphs": [
+        "Auch ungewöhnliche Wünsche dürfen Sie mitbringen. Gemeinsam sehen wir uns an, wie sich Ihre Idee umsetzen lässt und welcher Platz dafür geeignet ist. Die nötigen Vorbereitungen und die Gestaltung rund um das Objekt übernehmen wir bei Bedarf gleich mit."
+      ],
+      "bullets": [
+        "Auswahl und Beschaffung großer Gartenskulpturen und besonderer Gartenobjekte",
+        "Gestaltung mit Buddha-Figuren, Natursteinobjekten und anderen Blickfängen",
+        "Wasserspiele als eigenständiges Gestaltungselement",
+        "Abstimmung von Anlieferung, Aufstellung und geeignetem Untergrund",
+        "Einbindung in Bepflanzung, Beleuchtung und vorhandene Gartenbereiche"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um außergewöhnliche Ideen für Ihren Garten und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Besondere Gartenidee besprechen",
+  "faq": [
+    {
+      "frage": "Kann ich mit einer Idee kommen, ohne schon ein Objekt ausgesucht zu haben?",
+      "antwort": "Ja. Erzählen Sie uns, welche Atmosphäre Sie sich wünschen und was Ihnen gefällt. Daraus entwickeln wir passende Vorschläge. Ein vorhandenes Bild kann als Anregung dienen, ist aber keine Voraussetzung."
+    },
+    {
+      "frage": "Kümmern Sie sich auch um die Aufstellung großer Skulpturen?",
+      "antwort": "Ja. Wir berücksichtigen Gewicht, Zufahrt, Transportweg und die erforderliche Befestigung. So werden Untergrund und Aufstellung von Anfang an mitgeplant. Passende Pflanzen oder eine gezielte Beleuchtung ergänzen wir gerne."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/aussergewoehnliches-garten-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "beleuchtung"
+    },
+    {
+      "welt": "privat",
+      "slug": "feuerstellen"
+    },
+    {
+      "welt": "privat",
+      "slug": "vorgarten"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 1
+}

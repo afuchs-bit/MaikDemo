@@ -1,39 +1,94 @@
 {
+  "layout": "editorial-v2",
   "h1": "Rodungsarbeiten",
   "navLabel": "Rodungsarbeiten",
-  "title": "Rodungsarbeiten in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Rodung von Bewuchs, Sträuchern und Wurzelstöcken in Herne, Bochum und Recklinghausen – mit Klärung der Genehmigungslage und geräumter Fläche. Jetzt anfragen.",
-  "serviceType": "Rodung von Gehölzen, Bewuchs und Wurzelstöcken",
-  "intro": "Wir räumen zugewachsene Flächen frei: Sträucher, Gehölze und Wurzelstöcke kommen heraus, das Material wird abgefahren, die Fläche bleibt bearbeitbar zurück. Eine Rodung ist mehr als Fällen – erst wenn die Wurzeln draußen sind, lässt sich die Fläche neu anlegen. Vorher klären wir, was am Standort überhaupt zulässig ist. Für Grundstücke in Herne und Umgebung.",
-  "eignung": [
-    "Verwilderte Grundstücke, die wieder nutzbar werden sollen.",
-    "Flächen, auf denen ein Garten, eine Terrasse oder ein Stellplatz neu entstehen soll.",
-    "Abgängige oder zu dicht stehende Gehölze, die samt Wurzelstock verschwinden sollen.",
-    "Zurückgebliebene Stubben aus früheren Fällungen, die stören oder wieder austreiben."
+  "title": "Rodungsarbeiten in Herne | Maik Rohdich",
+  "metaDescription": "Platz für Ihren neuen Garten: Eine alte Hecke nimmt zu viel Raum ein, Wurzeln stehen der neuen Terrasse im Weg oder ein Grundstück ist über die Jahre…",
+  "serviceType": "Rodungsarbeiten",
+  "unterzeile": "Platz für Ihren neuen Garten",
+  "einstieg": [
+    "Eine alte Hecke nimmt zu viel Raum ein, Wurzeln stehen der neuen Terrasse im Weg oder ein Grundstück ist über die Jahre zugewachsen? Mit gezielten Rodungsarbeiten schaffen wir die Voraussetzung dafür, dass Sie die Fläche wieder nutzen und neu gestalten können."
   ],
-  "ablauf": [
-    { "titel": "Begehung und Genehmigungslage", "text": "Wir sehen uns den Bestand an und klären, was zulässig ist – Brutzeit, örtliche Baumschutzregeln und mögliche Genehmigungen gehören vor den ersten Schnitt." },
-    { "titel": "Entnahme des Bewuchses", "text": "Gehölze und Sträucher werden entnommen, bei Bäumen abschnittsweise, wenn der Platz zum Fällen fehlt." },
-    { "titel": "Wurzelstöcke heraus", "text": "Die Stubben werden gerodet oder gefräst, damit nichts wieder austreibt und die Fläche neu aufgebaut werden kann." },
-    { "titel": "Fläche räumen", "text": "Schnittgut und Wurzelwerk werden abgefahren, die Fläche wird grob hergerichtet und ist bereit für den nächsten Schritt." }
+  "intro": "Eine alte Hecke nimmt zu viel Raum ein, Wurzeln stehen der neuen Terrasse im Weg oder ein Grundstück ist über die Jahre zugewachsen? Mit gezielten Rodungsarbeiten schaffen wir die Voraussetzung dafür, dass Sie die Fläche wieder nutzen und neu gestalten können.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Zuerst legen wir gemeinsam fest, was entfernt werden soll und welches Grün erhalten bleibt. Dabei berücksichtigen wir die spätere Nutzung, die Zufahrt und vorhandene Leitungen. Notwendige Schutzvorgaben und der zulässige Ausführungszeitpunkt werden vor Beginn geklärt."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Wir machen Ihre Fläche wieder nutzbar",
+      "paragraphs": [
+        "Wie tief und in welchem Umfang Wurzeln entfernt werden müssen, hängt vom nächsten Schritt ab. Für eine neue Rasenfläche gelten andere Anforderungen als für eine befestigte Fläche. Gerne übernehmen wir anschließend die passenden Erd-, Pflanz- oder Pflasterarbeiten."
+      ],
+      "bullets": [
+        "Entfernen alter Hecken, Sträucher und dichten Gehölzbewuchses",
+        "Rodung vereinbarter Pflanz- und Grundstücksbereiche",
+        "Entfernung von Wurzelstöcken und größeren Wurzeln",
+        "Abtransport und Entsorgung des anfallenden Materials nach Absprache"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Dichte und Stärke des Bewuchses", "text": "Ein zugewachsenes Grundstück mit starken Stämmen ist etwas anderes als eine Reihe Sträucher." },
-    { "titel": "Zugänglichkeit", "text": "Ob Gerät und Fahrzeug an die Fläche kommen, entscheidet stark über den Aufwand – eingeschlossene Hinterhöfe sind Handarbeit." },
-    { "titel": "Wurzelstöcke", "text": "Wie viele Stubben herauskommen und wie tief sie sitzen, bestimmt den Geräteeinsatz." },
-    { "titel": "Entsorgungsmenge", "text": "Grünschnitt, Stammholz und Wurzelwerk fallen in erheblicher Menge an und müssen abgefahren werden." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Auf dem eigenen Grundstück darf ich jederzeit roden.“", "text": "Vom 1. März bis 30. September dürfen Bäume, Hecken und Gebüsche nicht auf den Stock gesetzt oder beseitigt werden – das schützt brütende Vögel. Dazu können örtliche Baumschutzregeln kommen, die für bestimmte Bäume eine Genehmigung verlangen. Beides klären wir vorab." },
-    { "titel": "„Der Stubben kann ruhig stehen bleiben.“", "text": "Viele Gehölze treiben aus dem Stumpf wieder aus. Außerdem verrottet er über Jahre, zieht Pilze an und steht jedem neuen Aufbau im Weg. Wer die Fläche nutzen will, braucht die Wurzel heraus." },
-    { "titel": "„Rodung ist im Wesentlichen Fällen.“", "text": "Der Schnitt ist der kürzeste Teil. Wurzeln herausholen, Material zerkleinern, abfahren und die Fläche herrichten macht den größeren Anteil der Arbeit aus." }
-  ],
+  "abschluss": "Zu allen Fragen rund um Ihre Rodungsarbeiten und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Rodungsarbeiten anfragen",
   "faq": [
-    { "frage": "Wann darf gerodet werden?", "antwort": "Für das Beseitigen und starke Zurückschneiden von Bäumen, Hecken und Gebüschen gilt vom 1. März bis 30. September eine gesetzliche Schonzeit zum Schutz brütender Vögel. Schonende Form- und Pflegeschnitte bleiben möglich. Größere Rodungen planen wir deshalb ins Winterhalbjahr. Ausnahmen sind im Einzelfall möglich, etwa wenn von einem Baum eine Gefahr ausgeht." },
-    { "frage": "Brauche ich eine Genehmigung?", "antwort": "Das hängt vom Standort und vom Baum ab. Viele Städte schützen Bäume ab einem bestimmten Stammumfang über eine eigene Satzung; dann ist vor der Fällung ein Antrag nötig. Wir sehen uns den Bestand an und sagen Ihnen, was für Ihr Grundstück gilt, bevor Arbeiten beginnen." },
-    { "frage": "Was passiert mit dem Holz und dem Grünschnitt?", "antwort": "Wir fahren das Material ab und entsorgen es. Brauchbares Stammholz lässt sich auf Wunsch als Brennholz aufarbeiten – sprechen Sie uns darauf an, wenn Sie selbst mit Holz heizen. Was nicht verwertbar ist, geht in die Grünentsorgung." },
-    { "frage": "Kann die Fläche danach direkt bepflanzt werden?", "antwort": "Nach der Rodung ist die Fläche geräumt, aber noch nicht aufgebaut. Je nachdem, was entstehen soll, folgen Bodenaustausch, Planum und Aufbau. Wir stimmen gleich mit ab, wie es weitergeht, damit die Rodung schon auf das spätere Ziel hinarbeitet und nicht zweimal Gerät anrücken muss." }
+    {
+      "frage": "Wie werden Wurzeln bei der Rodung berücksichtigt?",
+      "antwort": "Der Umfang der Wurzelentfernung wird passend zur geplanten Nutzung vereinbart. Eine vollständige Entfernung jedes Feinwurzelrests ist meist weder notwendig noch sinnvoll. Größere Wurzeln und Wurzelstöcke werden gezielt berücksichtigt."
+    },
+    {
+      "frage": "Können Rodungsarbeiten das ganze Jahr stattfinden?",
+      "antwort": "Der passende Termin richtet sich nach dem Bewuchs, der geplanten Maßnahme und den geltenden Natur- und Artenschutzvorgaben. Wir klären die Voraussetzungen und planen die Arbeiten zum geeigneten Zeitpunkt. Die anschließende Bodenvorbereitung und Neugestaltung stimmen wir darauf ab."
+    }
   ],
-  "nachbarn": ["baumarbeiten", "gartengestaltung"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/rodungsarbeiten-minibagger-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "stubbenfraeseneinsatz"
+    },
+    {
+      "welt": "privat",
+      "slug": "wurzelentfernung"
+    },
+    {
+      "welt": "privat",
+      "slug": "baumkontrolle"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 24
 }

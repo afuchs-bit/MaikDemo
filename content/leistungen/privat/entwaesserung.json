@@ -1,0 +1,94 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Entwässerung",
+  "navLabel": "Entwässerung",
+  "title": "Entwässerung in Herne | Maik Rohdich",
+  "metaDescription": "Damit Regenwasser seinen Weg findet: Nach jedem Regen steht Wasser auf der Terrasse, vor der Garage oder mitten im Garten? Wir sehen uns an, woher es…",
+  "serviceType": "Entwässerung",
+  "unterzeile": "Damit Regenwasser seinen Weg findet",
+  "einstieg": [
+    "Nach jedem Regen steht Wasser auf der Terrasse, vor der Garage oder mitten im Garten? Wir sehen uns an, woher es kommt und warum es nicht abfließt. Denn eine passende Entwässerung beginnt mit dem Verständnis für Gelände, Boden und vorhandene Anschlüsse."
+  ],
+  "intro": "Nach jedem Regen steht Wasser auf der Terrasse, vor der Garage oder mitten im Garten? Wir sehen uns an, woher es kommt und warum es nicht abfließt. Denn eine passende Entwässerung beginnt mit dem Verständnis für Gelände, Boden und vorhandene Anschlüsse.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir planen und bauen die Entwässerung Ihrer Außenanlage. Gefälle, Rinnen und weitere Entwässerungselemente werden aufeinander abgestimmt. Erforderliche Erd- und Pflasterarbeiten berücksichtigen wir dabei und führen sie bei Bedarf mit aus. Bei speziellen Anforderungen beziehen wir unsere Partner aus der Entwässerungstechnik ein."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Entwässerung passend zu Ihrer Fläche",
+      "paragraphs": [
+        "Ob Wasser versickern darf und kann oder einem vorhandenen System zugeführt werden muss, klären wir für das jeweilige Grundstück. Eine Drainage ist dabei nur eine mögliche Lösung und muss zum Boden sowie zum zulässigen Ableitungsweg passen."
+      ],
+      "bullets": [
+        "Oberflächenentwässerung für Wege, Terrassen und Einfahrten",
+        "Einbau geeigneter Entwässerungsrinnen und Abläufe",
+        "Abstimmung von Gefälle und Anschlusshöhen",
+        "Prüfung geeigneter Lösungen zur Versickerung vor Ort"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die Entwässerung Ihrer Außenanlage und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Entwässerung besprechen",
+  "faq": [
+    {
+      "frage": "Was hilft gegen dauerhaft nasse Gartenflächen?",
+      "antwort": "Die Ursache kann in verdichtetem Boden, ungünstigem Gefälle oder einem fehlenden Abfluss liegen. Wir gehen dem vor Ort auf den Grund und entwickeln eine passende Lösung für Ihr Grundstück. Die erforderlichen Boden- und Entwässerungsarbeiten übernehmen wir für Sie."
+    },
+    {
+      "frage": "Lässt sich die Entwässerung meiner Einfahrt nachträglich verbessern?",
+      "antwort": "Ja. Wir prüfen die vorhandenen Höhen, den Flächenaufbau und den Weg des Regenwassers. Daraus ergibt sich, ob einzelne Bereiche angepasst oder größere Abschnitte überarbeitet werden sollten. Die nötigen Pflasterarbeiten führen wir bei Bedarf gleich mit aus, damit Wasserabfluss und fertige Fläche zusammenpassen."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/entwaesserung-rohrsystem-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "erd-baggerarbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "vermessung-lasertechnik"
+    },
+    {
+      "welt": "privat",
+      "slug": "pool-whirlpool-umfeld"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 9
+}

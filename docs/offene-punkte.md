@@ -1535,3 +1535,685 @@ trotzdem dieselbe Zeile.
 Gemessen bei 901 / 1024 / 1280 px: sechs Punkte, eine Zeile, Menübreite 515 px, kleinster
 Abstand zu den Kopfknöpfen 37 px (bei 901 px, direkt über dem Umbruch auf das Hamburger-Menü).
 Kein waagerechter Überlauf. Im offenen Handy-Menü sind alle Punkte 47 px hoch.
+
+---
+
+## AP-376 — Betriebsabschnitt der Über-uns-Seite: Wortlaut der alten Website
+
+> **Überholt durch [AP-411](#ap-411--einstiegssektion-des-betriebsabschnitts-variante-d)
+> (23.09.2026).** Der Auftraggeber hat die Entscheidung vom 20.09.2026, den Wortlaut der
+> alten Website wörtlich zu übernehmen, ausdrücklich aufgehoben und die Kürzung angeordnet.
+> Der Abschnitt bleibt als Vorgeschichte stehen — insbesondere die Liste der Werbesprache
+> unten, denn genau diese Stellen sind jetzt gestrichen. Was in AP-376 als „nicht zu
+> glätten" markiert ist, gilt seit AP-411 **nicht mehr**.
+
+Der Fließtext in `<div class="ueber-betrieb__wort">` war vom 20.09.2026 bis zum 23.09.2026 der
+Text der **alten Website des Auftraggebers**, auf seine ausdrückliche Ansage wörtlich
+übernommen. Er löste die zwei Absätze aus AP-220/AP-327 ab.
+
+### Bewusste Abweichung von Grundregel 5
+
+Der Text enthält Werbesprache, die Grundregel 5 (`CLAUDE.md`, „Keine Superlative, keine
+Werbesprache") sonst ausschließt. Der Auftraggeber wurde auf den Konflikt hingewiesen und hat
+sich für die wörtliche Übernahme entschieden. **Diese Stellen sind kein Versehen und nicht zu
+glätten:**
+
+- „seit über 20 Jahren **erfolgreich**!" — wertende Selbstbeschreibung samt Ausrufezeichen
+- „**anspruchsvoller** Außenanlagen", „**anspruchsvoller** Privatgärten" (2×)
+- „**hochwertiger** … Privatgärten", „qualitativ **hochwertigen** Gartenanlage"
+- „**partnerschaftliche** Zusammenarbeit", „**langjährigen** Geschäftsbeziehungen"
+- „Getroffene Absprachen haben für uns den gleichen Stellenwert wie schriftliche Verträge"
+- „**alle** Arbeiten aus einer Hand"
+
+### Zwei Aussagen, die neu belegt sind
+
+Beide standen bisher in keinem Dokument des Teils B. **Belegquelle ist die alte Website des
+Auftraggebers**, überbracht am 20.09.2026:
+
+| Aussage | Bisheriger Stand |
+|---|---|
+| Ausführung von Außenanlagen im **öffentlichen** Bereich | Kommunen waren seit 15.09.2026 als Auftraggebergruppe bestätigt, die Leistungen dort aber offen |
+| **Spezialisten aus angrenzenden Gewerken, etwa der Entwässerungstechnik** | Teil B kannte nur „Partnerfirma in Bochum (Details offen)" |
+
+**Weiterhin offen:** *welche* Leistungen der Betrieb für Kommunen konkret übernimmt und ob
+eine Referenzkommune genannt werden darf. Der Alttext sagt nur, **dass** im öffentlichen
+Bereich gearbeitet wird. Die Kachel „Kommunen und öffentliche Auftraggeber" bleibt deshalb
+bei ihrem zurückhaltenden Satz und ohne Link.
+
+### Einzige inhaltliche Änderung am Original
+
+„seit **über** 20 Jahren" statt „seit 20 Jahren". Die Seite nennt an drei Stellen das
+Gründungsjahr 2003 — in der Meta-Beschreibung, im JSON-LD und in der FAQ („Seit 2003, mit
+Sitz in Herne"). Bei Stand 2026 sind das 23 Jahre; ohne das „über" widerspräche sich die
+Seite selbst. Der Auftraggeber hat der Ergänzung zugestimmt.
+
+### „Deutschlandweit" steht nicht mehr auf dieser Seite
+
+Der bisherige Text sagte „nach Anfrage und Absprache auch gerne deutschlandweit", der
+Alttext kennt die Angabe nicht. Teil H.6 des Umsetzungsplans will sie ohnehin nur an einer
+Stelle — in der Bildunterschrift der Einsatzgebiets-Karte der Startseite. Der Wegfall bringt
+die Seite also näher an die Vorgabe. `areaServed` im JSON-LD bleibt unverändert.
+
+### Was stehen geblieben ist
+
+- **Der Absatz unter „Über uns"** (`.ueber-aufschlag`, „Maik Rohdich führt seinen
+  Meisterbetrieb seit 2003 …") — unverändert, obwohl ursprünglich mitmarkiert. Entscheidung
+  des Auftraggebers: der ganze Alttext kommt in den unteren Abschnitt.
+- **Der Merksatz** „Was nicht sinnvoll ist, sagen wir Ihnen vorher." (Beleg: Teil A.4). Er
+  sitzt jetzt zwischen Liste und Absprachen-Absatz — beide handeln davon, worauf man sich
+  ohne Papier verlassen kann.
+- **Die drei Kacheln „Für wen wir arbeiten".** Sie überschneiden sich teilweise mit den fünf
+  Tätigkeitsschwerpunkten, sagen aber etwas anderes: die Liste, *welche* Arbeiten der Betrieb
+  macht, die Kacheln, *für wen* — mit den Links dorthin. Auftraggeber-Entscheidung, beides zu
+  behalten.
+
+### Technische Notizen
+
+- Die Liste trägt `class="lp-list lead"`. `.lp-list` (`styles.css:3014`) ist der
+  Projektstandard für Aufzählungen im Fließtext und steht in einer Datei, die die Seite
+  ohnehin lädt — kein seitenweites Cache-Busting nötig. Das zweite `lead` ist **nicht**
+  Zierde: Die Abstandsregeln in `ueber-uns.css` arbeiten mit dem Nachbar-Kombinator und
+  kennen nur `.lead`. Ohne die Klasse fielen die Abstände vor und hinter der Liste auf 0.
+- `.ueber-betrieb__raster` steht auf `align-items: center` statt `start`. Der Textblock ist
+  bei 1280 px 993 px hoch, das Foto 390 px; mit `start` blieben darunter rund 600 px
+  Leerfläche. Gemessen nach der Änderung: 302 px über und 302 px unter dem Foto.
+- `ueber-uns.css` wird nur von dieser einen Seite geladen — `?v=` nur dort hochzählen.
+
+---
+
+## AP-381 — Der Leitsatz wird Überschrift des Betriebsabschnitts
+
+„Gartenbau mit Handschlagqualität" steht seit dem 21.09.2026 nicht mehr als Leitsatz im
+Kopf der Über-uns-Seite, sondern als Überschrift über dem Abschnitt, der den Betrieb
+beschreibt. Er ersetzt dort „Ein Betrieb, der die Arbeit selbst macht" (Sektionstitel seit
+AP-220). Ansage des Auftraggebers.
+
+### Verhältnis zu den bisherigen Entscheidungen
+
+Die Festlegung vom 15.09.2026 lautet: „Der Leitsatz bleibt **auf dieser Seite**, obwohl er in
+AP-285 von der Startseite gestrichen wurde." Sie gilt unverändert — der Satz bleibt auf der
+Seite, nur an anderer Stelle. Eine Entscheidung, die ihn an den **Kopf** bindet, gibt es
+nicht; geprüft in `docs/` und in der Commit-Historie.
+
+Ebenfalls unverändert gilt E7 vom 06.09.2026: **ohne Anführungszeichen**, damit er kein Zitat
+vortäuscht. Das ist beim Umzug so geblieben.
+
+**Neu ist der fehlende Schlusspunkt.** Bisher stand „Handschlagqualität." mit Punkt. Als
+Überschrift steht er ohne — alle drei anderen Überschriften mit grünem Steg
+(„Was daraus wird", „Häufige Fragen zum Betrieb", vormals „Ein Betrieb …") stehen ebenfalls
+ohne. Punkte tragen auf dieser Seite nur die beiden eigenständig gestalteten
+Aussage-Überschriften und der Merksatz.
+
+### Der Kopfbereich ist damit leer
+
+Er trägt nur noch Brotkrumen und die H1 „Über uns". Das ist die dritte Entnahme in Folge:
+AP-377 der Faktensatz, AP-380 die Mustergarten-Sektion, AP-381 der Leitsatz. Vom Auftraggeber
+so gewollt. Nächstes Vorbild im Projekt ist `kontakt/index.html` — dort besteht der Kopf
+ebenfalls nur aus Brotkrumen und H1.
+
+### Was technisch mitwandern musste
+
+`.ueber-leitsatz` und `.ueber-leitsatz em` sind entfallen, ebenso der Eintrag
+`max-width: none` in der 860px-Medienabfrage — die Klasse kam im Repo sonst nirgends vor.
+
+Die Auszeichnung des Wortes brauchte dagegen einen neuen Träger. Ohne Regel wäre
+„Handschlagqualität" in der Überschrift **kursiv und ohne Akzentfarbe** erschienen: Es gibt
+im Projekt keine `em`-Regel, die `.type-section-title` trifft, und Outfit ist nur mit
+`font-style: normal` geladen — der Browser hätte synthetisch geschrägt. Die Behandlung steht
+deshalb jetzt an der Überschrift:
+
+```css
+.ueber-betrieb__wort .type-section-title em {
+  font-style: normal;
+  color: var(--home-lime);
+}
+```
+
+Gemessen nach der Änderung: `rgb(140, 198, 63)`, `font-style: normal`, restliche Überschrift
+in `--ink`, grüner Steg unverändert `4px solid rgb(140, 198, 63)`. Bei 375 px wie bei 1280 px
+bricht „Handschlagqualität" auf eine eigene Zeile — grüner Balken und grünes Wort stehen also
+nicht nebeneinander in derselben Zeile.
+
+`id="betrieb-title"` ist erhalten geblieben; das `aria-labelledby` der Sektion löst weiterhin
+auf. Kein Sprungziel im Menü verweist darauf.
+
+---
+
+## AP-383/384 — Die Inhaber-Sektion wird zur Team-Sektion
+
+Am 21.09.2026 auf Ansage des Auftraggebers:
+
+- Die Überschrift heißt statt „**Die Person** hinter dem Betrieb." jetzt
+  „**Das Team** hinter dem Betrieb." (AP-383).
+- Der Absatz darunter trägt den Text des Auftraggebers und **keinen Platzhalter mehr**
+  (AP-384). Die Klasse `ueber-inhaber__platzhalter` ist dort entfernt, der Text steht
+  aufrecht und in der normalen Textfarbe statt gedämpft und kursiv.
+
+Der neue Wortlaut:
+
+> Auf der Baustelle treffen Sie unser Team – Leute vom Fach, die ansprechbar sind und Ihnen
+> gern erklären, was sie gerade tun. Mit Ihrem Grundstück gehen wir sorgfältig um –
+> schließlich wird es auch während der Bauzeit weiter genutzt.
+
+### Was damit hinfällig ist
+
+Die Sektion war als **Personen-Sektion** angelegt: „Wer auf der Startseite ‚Mehr über Maik
+Rohdich' klickt, sucht die Person und findet sonst einen Betrieb." Gebraucht wurden dafür
+„drei bis vier Sätze in der **Ich-Form** von Maik Rohdich — warum er 2003 angefangen hat,
+worauf er bei einem Grundstück zuerst schaut, warum er lieber abrät".
+
+**Dieser Text wird nicht mehr gebraucht.** Der gelieferte Absatz steht in der Wir-Form und
+handelt vom Team auf der Baustelle, nicht vom Inhaber. Die Anforderung ist damit nicht
+offen, sondern gegenstandslos — sie ist in `docs/go-live-checkliste.md` unter 1b als erledigt
+abgehakt, nicht gestrichen, damit die Änderung nachvollziehbar bleibt.
+
+### Was offen bleibt
+
+- **Das Zitat** darunter ist weiter Platzhalter („Ein Satz von Maik – der, mit dem er abrät
+  …") und trägt weiter `ueber-inhaber__platzhalter`. Es ist die letzte Stelle auf der Seite,
+  die von Grundregel 2 abweicht, und steht als einziger verbleibender Punkt unter 1b.
+- **Die Namenszeile** unter dem Zitat lautet „Maik Rohdich, Gartenbaumeister". Unter einer
+  Team-Überschrift ist ein Einzelzitat vertretbar, solange es als Zitat erkennbar bleibt —
+  beim Ersetzen aber mitzudenken.
+- **Der Namensraum** der Sektion heißt weiterhin `.ueber-inhaber*`. Umbenennen erst, wenn
+  entschieden ist, ob der vorbereitete, auskommentierte Block `.ueber-team*` („Wer bei uns
+  arbeitet") kommt — der braucht Namen, Einwilligungen und eine Freigabe, die Grundregel 3
+  aufhebt. Sonst kollidieren zwei Namensräume für dasselbe Thema.
+
+### Grundregel 3 ist gewahrt
+
+Der Text nennt weder Mitarbeiterzahlen noch Fuhrparkgrößen und verlangt kein Teamfoto.
+„Leute vom Fach" ist eine Eigenschaft, keine Menge.
+
+---
+
+## AP-411 — Einstiegssektion des Betriebsabschnitts (Variante D)
+
+Grundlage ist ein Auftragsdokument des Auftraggebers („Variante D",
+`ap-einstiegssektion-variante-d.md`, 23.09.2026). Es ist **außerhalb des Repos** aus zwei
+Screenshots und einem Nachbau entstanden; die Prüfung gegen den Ist-Stand hat mehrere
+falsche Annahmen ergeben, die unten stehen.
+
+### Entscheidungen des Auftraggebers, 23.09.2026
+
+| Frage | Entscheidung |
+|---|---|
+| Fließtext | **Kürzen wie im Dokument**, einschließlich des neu formulierten Satzes |
+| Schreibmaschine für die Prozesskette | **Ja**, `MODE = 'once'` |
+| Knöpfe „Anrufen" und „WhatsApp" am Sektionsende | **Nein**, entfallen ersatzlos |
+| Tätigkeitsschwerpunkte als Chips | **Nein**, die Liste bleibt eine Liste |
+
+Die erste Entscheidung hebt AP-376 auf. Der Auftraggeber wurde darauf hingewiesen, dass er
+damit seine eigene Festlegung vom 20.09.2026 umkehrt, und hat sie bestätigt.
+
+### Was gestrichen ist
+
+Von **212 auf 137 Wörter**. Das Dokument nennt 97 — die Differenz sind die fünf
+Tätigkeitsschwerpunkte, die dort zu Chips werden und hier auf Ansage eine Liste bleiben.
+
+- Gekürzt: der Herne-Satz („erfolgreich!", „anspruchsvoller" entfallen), der
+  Bauzeiten-Satz, der Fachleute-Satz („aus dem Mitarbeiterkreis" entfällt).
+- Ersatzlos: „Unsere Schwerpunkte liegen in der Realisierung hochwertiger und
+  anspruchsvoller Privatgärten …"
+- Umgebaut ohne Wortverlust: „Somit sind wir in der Lage, von der Planung … aus einer Hand
+  zu erledigen." wird zur Zwischenüberschrift **„Alles aus einer Hand"** plus der Kette
+  *Planung · Kostenermittlung · Realisierung · Koordinierung · Pflege*.
+
+### Der eine neu formulierte Satz
+
+> Im Mittelpunkt steht immer das Ziel, die Anlage termingerecht fertigzustellen. Grundlage
+> dafür sind partnerschaftliche Zusammenarbeit und langjährige Geschäftsbeziehungen.
+
+Er ersetzt zwei Originalsätze und ist die **einzige** Stelle, die nicht aus dem Bestand
+stammt. Belegquelle ist damit allein dieses Auftragsdokument. Er bleibt bewusst bei
+**„Ziel"** — „Der Termin ist Teil der Absprache" wäre eine Zusage statt einer Absicht und
+unter §5 UWG eine andere Kategorie. **Nicht verschärfen.**
+
+### Falsche Annahmen des Auftragsdokuments
+
+| Annahme | Befund |
+|---|---|
+| Die Sektion stehe auf der Startseite, Branch `claude/kind-fermat-pyzy5p`, Basis `05ac78b` | Sie steht genau einmal, in `ueber-uns/index.html`. Gearbeitet wurde auf `codex/homepage-review`, Stand `ea0f33ec`. Die Begründung „die Startseite gilt ohnehin als zu lang" trägt hier nicht |
+| Messwerte: Bild bei 1679 px, Sektion 1922 px | Aus dem Nachbau, nicht aus dem Repo. Gemessen bei 390×844: Bild bei **1517 px**, Raster **1787 px**. Die Wortzahl (211) stimmte dagegen auf ein Wort genau |
+| Token `--rd-marke`, `--rd-inhalt`, `--muted` | **Existieren nicht.** `var(--rd-marke)` hat keinen Rückfallwert; die Regel wäre ungültig und der grüne Steg erschiene gar nicht. Verwendet: `--home-lime`, `--ink`, `--ink-mute` |
+| Schrift `'Baloo 2'` | Steckt in `home-dark.css`, das diese Seite nicht lädt — die Angabe fiele auf `sans-serif` zurück. Verwendet: `var(--display)` (Outfit), wie am 15.09.2026 entschieden |
+| Neues Farbtoken `#557927` für den Telefon-Knopf | Unnötig **und schlechter**: der vorhandene `.btn-primary` (`--green-700` #4A7A10) trägt auf Weiß 5,14 : 1, der neue Wert 5,06 : 1. Das Dokument hätte nach seiner eigenen §4-Regel den bestehenden Knopf nehmen müssen. Gegenstandslos, da die Knöpfe entfallen |
+| §10.1 Telefonnummer sei offen | Ist sie nicht: beide Nummern stehen belegt in diesem Dokument, Zeile 18–19 |
+| §10.4 „2001 gegen 2003 ungeklärt" | **2001 kommt im ganzen Repo nicht vor.** Quelle der Wahrheit ist `content/stammdaten.json` (`gegruendet: 2003-01-01`); „seit über 20 Jahren" ist am 20.09.2026 zugestimmt |
+| §10.2 Chip-Ziele „aus `taxonomie.json` ableiten" | Von den sechs Beschriftungen hat nur „Baumpflege" eine existierende Seite. „Privatgärten" und „Landschaftsbau" existieren überhaupt nicht, und beide Hubs sind kein Linkziel (`/privatkunden/` hat keinen Index, `/gewerbekunden/` ist eine Weiterleitung). Durch die Entscheidung „Liste bleibt Liste" erledigt |
+
+### Ein echter Fehler im gelieferten JavaScript
+
+Das Skript aus §6 hängt den `IntersectionObserver` an `.intro-typer` — und dieses Element
+startet `hidden`, ist damit `display: none` und hat ein Rechteck von 0×0. Ein Observer
+meldet darauf dauerhaft `isIntersecting: false` bei `ratio: 0`; **die Animation wäre nie
+angelaufen.** Gemessen in echtem Chrome: auf dem Typer `ratio 0`, auf der Kette `ratio 1`.
+Beobachtet wird deshalb die Kette. Sie steht an derselben Stelle, ist sichtbar, und der
+Observer ist getrennt, bevor `start()` sie wegklappt.
+
+### Technische Notizen
+
+- **Das Raster hat drei Kinder** (Text, Foto, Nachsatz); das Foto steht im Quelltext
+  zwischen den Textblöcken. Gestapelt ergibt das die Reihenfolge der Variante D ohne `order`
+  und ohne `display: contents`. Am Desktop verteilt `grid-template-areas` die Textblöcke auf
+  Spalte 1 und lässt das Foto rechts über beide Zeilen stehen. **Die Bereichsnamen müssen im
+  860-px-Block mit umgestellt werden**, sonst wirkt die zweispaltige Zuweisung weiter.
+- `align-items: center` aus AP-376 ist zu `align-self: center` am Foto geworden.
+- **Die Zusage-Kachel ist kein `blockquote` und trägt keine Anführungszeichen.** Der Satz ist
+  kein Zitat, sondern der Betrieb über sich selbst — derselbe Grundsatz, der in AP-381 schon
+  für die Überschrift galt.
+- **Die Haltungszeile hat `ueber-steg` verloren.** Sie sitzt jetzt unter der H2, die den
+  grünen Steg schon trägt; zwei Balken übereinander wären ein Fehler.
+- **„Unsere Tätigkeitsschwerpunkte liegen in:" bleibt als Absatz stehen.** Das Dokument macht
+  daraus eine Zwischenüberschrift, weil die Punkte dort zu Chips werden. Sie bleiben eine
+  Liste, und ihre fünf Punkte stehen im Dativ — ohne den einleitenden Satz hinge die
+  Aufzählung grammatisch in der Luft.
+- **Der Pause-Knopf ist gebaut, bleibt aber `hidden`.** Bei `MODE = 'once'` wird er nie
+  eingeblendet; wer auf `'loop'` stellt, braucht ihn nach WCAG 2.2.2 zwingend.
+- `main.js` ist seitenweit: `?v=` in **37 ausgelieferten Seiten** hochgezählt. Die drei
+  Vorlagen unter `.github/scripts/templates/` tragen `{{jsVersion}}` und werden **nicht** von
+  Hand angefasst — der Wert wird per Regex aus `index.html` gelesen.
+
+### Gemessen (390×844, echtes Chrome, `deviceScaleFactor: 1`)
+
+| | vorher | nachher |
+|---|---|---|
+| Oberkante des Fotos ab Sektionsanfang | 1517 px | **646 px** |
+| Raster (Text + Foto + Nachsatz) | 1787 px | **1440 px** |
+| Sektion gesamt, mit „Für wen wir arbeiten" | 2349 px | **2002 px** |
+
+Bei 1280 px: Foto unverändert 440 px breit, Raster 948 → 899 px.
+
+Kontraste, alle über 4,5 : 1: Zusage-Satz 15,07 · Zusage-Begründung 7,50 · Faktenzeile und
+Notiz 8,02 · Kettentext und Haltungszeile 16,10.
+
+Schreibmaschine: läuft 10,2 s durch alle fünf Glieder, **Breite des Textfelds über den
+ganzen Lauf konstant bei 143,83 px** (der unsichtbare Platzhalter hält sie fest, die Zeile
+springt also nicht). Danach ist der Typer `hidden` und die Kette wieder sichtbar; erneutes
+Hineinscrollen und ein Tabwechsel starten sie nicht neu. Bei
+`prefers-reduced-motion: reduce` und mit abgeschaltetem JavaScript steht die Kette von
+Anfang an vollständig da. Keine Konsolenmeldungen.
+
+### Abnahmekriterium, das nicht erreicht ist
+
+Das Dokument verlangt eine Sektionshöhe **≤ 1400 px**. Vergleichbar ist das Raster, und das
+liegt bei **1440 px** — 40 px darüber. Der Grund ist die Entscheidung „Liste bleibt Liste":
+Einleitsatz und Aufzählung kosten zusammen rund 320 px, als Chips wären es etwa 90 px
+gewesen. Mit Chips wäre das Kriterium deutlich unterschritten worden. Das ist eine Folge der
+Anweisung, kein Umsetzungsfehler — und der zweite Wert, die Oberkante des Fotos, liegt mit
+646 px innerhalb der geforderten 650 px.
+
+### Offen
+
+- **Ein Beispiel zu „Was nicht sinnvoll ist, sagen wir Ihnen vorher."** (§10.6 des
+  Dokuments). Ein konkreter Satz von Maik — wovon er schon einmal abgeraten hat — wäre der
+  wertvollste Satz der Seite. Eigenes AP.
+- **Welche Leistungen der Betrieb für Kommunen übernimmt** und ob eine Referenzkommune
+  genannt werden darf. Unverändert offen seit AP-376.
+- Der neu formulierte Satz hat als einzigen Beleg dieses Auftragsdokument. Falls Teil B je
+  ergänzt wird, gehört er dort verankert.
+
+---
+
+## AP-413 — Kontaktseite: sieben Bausteine entfernt
+
+Auf Ansage des Auftraggebers vom 23.09.2026 sind aus `kontakt/index.html` entfallen:
+
+1. Die Überschrift **„Direkt erreichbar"** über der Kontaktkarte.
+2. Der Kasten **„Gerade nicht erreichbar? Dann ist Maik wahrscheinlich auf einer
+   Baustelle …"** samt Uhr-Pfeil-Symbol.
+3. Die Ortsliste **„Herne · Bochum · Essen · Castrop-Rauxel · Recklinghausen ·
+   Gelsenkirchen · Und Umgebung"**.
+4. Die Überschrift **„Unser Einsatzgebiet"**.
+5. Der Nachsatz **„WhatsApp-Nachrichten jederzeit – Antwort zu den Geschäftszeiten"**.
+6. Das **Uhr-Symbol** neben den Öffnungszeiten.
+7. Der Absatz **„Hier befinden sich unser Betrieb und der 1.500 m² Mustergarten.
+   Besichtigungen und Beratungen finden ausschließlich nach vorheriger
+   Terminvereinbarung statt."**
+
+### Zwei Entscheidungen, ausdrücklich so gewollt
+
+- **„Auch deutschlandweit nach Absprache" bleibt stehen** — samt der Trennlinie darüber.
+  Der Auftraggeber wurde darauf hingewiesen, dass der Nachsatz damit ohne den Satz
+  dasteht, auf den er sich bezieht, und hat sich dafür entschieden.
+- **Der Mustergarten wird weiterhin genannt.** Der Hinweis unter der Karte („Bitte vorab
+  Termin vereinbaren. So können wir uns Zeit für Ihre Beratung und die Besichtigung des
+  Mustergartens nehmen.") bleibt wörtlich. Auf der Über-uns-Seite war die
+  Mustergarten-Sektion in AP-380 vollständig entfallen; auf der Kontaktseite steht sie
+  also weiter.
+
+Dass ein Besuch nur nach Termin möglich ist, geht nicht verloren: Punkt 7 sagte es, der
+bleibende Hinweis sagt es ebenfalls.
+
+**Die Ortsliste des Einsatzgebiets steht damit nicht mehr auf der Kontaktseite.** Teil H.6
+des Umsetzungsplans will die Angabe ohnehin nur an einer Stelle — in der Bildunterschrift
+der Einsatzgebiets-Karte der Startseite. Der Wegfall bringt die Seite also näher an die
+Vorgabe. `areaServed` im JSON-LD der Seite bleibt unberührt.
+
+### Technische Notizen
+
+- **Zwei `aria-labelledby` zeigten auf die entfernten Überschriften.** `aside.contact-direct-card`
+  trägt jetzt `aria-label="Direkt erreichbar"` — unsichtbar, hält den Namen des
+  Landmark-Bereichs. Aus `section.contact-coverage` ist ein `div` geworden: ohne Überschrift
+  gibt es nichts mehr zu referenzieren, und ein `<section>` ohne Überschrift ist die falsche
+  Auszeichnung. Nach der Änderung zeigt kein `aria-labelledby`/`aria-describedby` der Seite
+  mehr ins Leere (geprüft).
+- **`.contact-hours` war ein zweispaltiges Raster** `40px minmax(0,1fr)` für Symbol und Text.
+  Ohne die Spaltendefinition wäre der verbleibende Text in die 40-px-Symbolspalte gerutscht
+  und dort zerquetscht worden. Gemessen: Textbreite 237 → 289 px.
+- **`form-trust-card.css` blieb unangetastet.** `form-trust-card__eyebrow` und
+  `__coverage` benutzt auch die Startseite mit eigenem Markup. Gegenprobe: beide Bausteine
+  dort vorher und nachher identisch.
+- Tote Regeln in `kontakt.css` entfernt: `.contact-callback-note*`, `.contact-hours-icon*`,
+  `.contact-hours small`, `.contact-coverage p span` (die AP-390-Bremse, die
+  „Castrop-Rauxel" am Bindestrich zusammenhielt — sie stirbt mit der Ortsliste), die
+  Abstandsregeln der beiden Überschriften und `.contact-location-copy > p`.
+
+### Gemessen (375 px, echtes Chrome)
+
+Höhe der Kontaktkarte **854 → 590 px**. Überschriftenebenen danach H1 → H2 ohne Sprung.
+Keine Konsolenmeldungen.
+
+---
+
+## AP-414 — Kontaktseite: Einsatzgebiet-Rest und Geschäftszeiten entfernt
+
+Nachtrag zu AP-413, am selben Tag auf Ansage des Auftraggebers. Aus der Kontaktkarte sind
+die letzten beiden Blöcke entfallen:
+
+1. **„Auch deutschlandweit nach Absprache"** — der Rest des Einsatzgebiet-Kastens, den
+   AP-413 auf ausdrücklichen Wunsch noch hatte stehen lassen, samt der Trennlinie darüber.
+2. **Die Geschäftszeiten** „Montag bis Freitag, 09:00–17:00 Uhr / Samstag, 09:00–12:00 Uhr ·
+   Sonntag geschlossen".
+
+Die Karte besteht damit nur noch aus den fünf Kontaktwegen (Mobil, Festnetz, E-Mail,
+WhatsApp, Anfrageformular). Höhe bei 375 px: **590 → 452 px**; über AP-413 und AP-414
+zusammen **854 → 452 px**.
+
+### Wichtig: Auf dem Handy stehen die Geschäftszeiten jetzt nirgends mehr
+
+Nachgemessen, nicht vermutet:
+
+| Ort | Status |
+|---|---|
+| Fußzeile (`.footer-hours`) | **bis 480 px unsichtbar** (`display: none`, `footer-kontakt.css:260`), ab 481 px sichtbar |
+| JSON-LD am Seitenkopf | `openingHoursSpecification` unverändert, auf jeder Breite |
+| Kontaktkarte | entfernt |
+
+Wer die Kontaktseite auf dem Telefon öffnet, findet die Geschäftszeiten also **nicht mehr**.
+Am Desktop nennt sie weiterhin die Fußzeile. Maschinenlesbar bleiben sie über das JSON-LD
+erhalten, für Suchmaschinen und das Google-Unternehmensprofil ändert sich nichts.
+
+Das ist eine bewusste Entscheidung des Auftraggebers vom 23.09.2026 und kein Versehen.
+**Falls die Zeiten auf dem Handy wieder auftauchen sollen**, ist der kleinste Weg, die Regel
+in `footer-kontakt.css:260` zu streichen — dann zeigt die Fußzeile sie auf allen Breiten.
+
+### Technische Notizen
+
+- Alle drei `.contact-*`-Regelsätze der Karte sind damit tot und entfernt:
+  `.contact-callback-note*` (AP-413), `.contact-coverage` und `.contact-hours*`. Keine der
+  Klassen kommt im Repo noch vor.
+- `form-trust-card.css` bleibt weiterhin unangetastet — denselben Baustein benutzt die
+  Startseite mit eigenem Markup.
+- Kein `aria-labelledby`/`aria-describedby` der Seite zeigt ins Leere (geprüft). Die Karte
+  behält ihren Namen über das `aria-label` aus AP-413.
+- Keine Konsolenmeldungen.
+
+---
+
+## AP-439 — Der Leitsatz verschwindet von der Über-uns-Seite
+
+Die Überschrift des Betriebsabschnitts lautet seit dem **24.09.2026** auf Ansage des
+Auftraggebers **„Ehrlich beraten, sauber gebaut"**. Grün steht die zweite Hälfte
+(`<em>sauber gebaut</em>`) — dasselbe Muster wie zuvor, wo das ausgezeichnete Wort in der
+zweiten Zeile stand. Der Auftraggeber hat den Teiler selbst gewählt.
+
+### Was damit überholt ist
+
+„Gartenbau mit Handschlagqualität" war der **Leitsatz** des Betriebs. Er stand bis AP-381
+im Kopf der Seite und danach als Überschrift dieses Abschnitts. Mit AP-439 steht er
+**nirgends mehr auf der Website** — auf der Startseite war er schon mit AP-285 gestrichen
+worden.
+
+Damit ist die Festlegung vom **15.09.2026** überholt: „Der Leitsatz bleibt **auf dieser
+Seite**, obwohl er in AP-285 von der Startseite gestrichen wurde." Sie galt noch zu AP-381
+unverändert. Die Ansage vom 24.09.2026 ist jünger und geht vor. **Kein Versehen, keine
+stille Entnahme** — der Auftraggeber hat den Ersatztext wörtlich vorgegeben.
+
+Ebenfalls gegenstandslos ist E7 vom 06.09.2026 („ohne Anführungszeichen, damit er kein
+Zitat vortäuscht"): Es gibt keinen Leitsatz mehr, der als Zitat missverstanden werden
+könnte.
+
+**Falls der Leitsatz zurückkommen soll**, ist der kleinste Weg, ihn als eigenen Absatz
+in den Betriebsabschnitt zu setzen — die Regel `.ueber-leitsatz` ist mit AP-381 entfallen
+und müsste neu geschrieben werden.
+
+### Technische Notizen
+
+- Kein CSS geändert. Die Akzentfarbe kommt weiter aus
+  `.ueber-betrieb__wort .type-section-title em` (AP-381); der neue `<em>` erbt sie
+  unverändert. `?v=` der `ueber-uns.css` bleibt deshalb, wie es war.
+- `id="betrieb-title"` unverändert — das `aria-labelledby` der Sektion löst weiter auf.
+- Der Satz kam im Repo nur an dieser einen Stelle als sichtbarer Text vor. Kein JSON-LD,
+  keine Meta-Angabe und kein Sprungziel nennt ihn.
+- Der Schlusspunkt fehlt weiterhin, wie bei den anderen Überschriften mit grünem Steg.
+- **`sauber&nbsp;gebaut` trägt ein geschütztes Leerzeichen.** Ohne es brach die Zeile bei
+  390 px Fensterbreite zu „Ehrlich beraten, sauber" / „gebaut" — der grüne Teil begann dann
+  mitten in der ersten Zeile. Bei 320 und 375 px trat das nicht auf, weil „sauber" dort schon
+  nicht mehr in die erste Zeile passte. Mit dem geschützten Leerzeichen fällt der Umbruch auf
+  jeder Breite hinter das Komma.
+
+---
+
+## AP-445 — Der Merksatz entfällt
+
+Die Haltungszeile **„Was nicht sinnvoll ist, sagen wir Ihnen vorher."** steht seit dem
+**24.09.2026** auf Ansage des Auftraggebers nicht mehr auf der Seite. Sie war seit AP-220
+im Betriebsabschnitt und seit AP-411 direkt unter dessen Überschrift.
+
+### Was damit überholt ist
+
+Der Satz war **belegt**: Teil A.4 des Umsetzungsplans, „Der Inhaber sagt Kunden auch, wenn
+etwas nicht sinnvoll ist." Die Tabelle der Belege weiter oben in diesem Dokument führt ihn
+weiter — der Beleg bleibt ja richtig, nur steht der Satz nicht mehr auf der Seite.
+
+Gegenstandslos wird damit der offene Punkt **„Ein Beispiel zu ‚Was nicht sinnvoll ist,
+sagen wir Ihnen vorher.'"** (§10.6 des AP-376-Dokuments): Ohne den Satz gibt es nichts
+mehr zu belegen. Falls der Satz je zurückkommt, kommt der Punkt mit ihm zurück.
+
+**Kein Versehen, keine stille Entnahme** — der Auftraggeber hat den Absatz markiert und
+seine Entfernung verlangt.
+
+### Technische Notizen
+
+- Die Klasse `.ueber-betrieb__haltung` kommt im Repo nirgends mehr vor; ihre beiden Regeln
+  in `ueber-uns.css` sind entfernt.
+- **Die Abstandskette musste nachgezogen werden.** Die Regel
+  `.type-section-title + .ueber-betrieb__haltung { margin-top: 16px }` hielt den Abstand
+  zur Überschrift. Neuer Nachbar der Überschrift ist die Faktenzeile, die von sich aus nur
+  10 px trägt — zu knapp nach einer 32 px hohen Überschrift. Die Regel zielt jetzt auf
+  `.ueber-betrieb__fakten` und hält dieselben 16 px.
+- Der Kommentar zu AP-438 in `ueber-uns.css` nannte den Satz als Vorbild für das
+  Schriftbild von „Alles aus einer Hand". Das Schriftbild kam nie von jenem Absatz, sondern
+  von der Klasse `type-subsection-title`, die er trug — die Zwischenüberschrift ist von der
+  Entfernung also nicht betroffen. Der Kommentar ist entsprechend nachgezogen.
+
+---
+
+## AP-450 — Zitat endgültig, Kachel „Kein Auftrag ist zu klein." entfallen
+
+Zwei Ansagen des Auftraggebers vom **24.09.2026**, die zusammengehören.
+
+**1. Das Zitat der Person-Sektion ist nicht mehr vorläufig.** Es lautet
+**„Kein Auftrag ist uns zu klein."** Damit endet die Abweichung von Grundregel 2 (kein
+sichtbarer Platzhaltertext), die seit dem 15.09.2026 auf ausdrückliche Entscheidung des
+Auftraggebers bestand. Punkt **1b der Go-Live-Checkliste ist abgehakt**, die Klasse
+`ueber-inhaber__platzhalter` ist aus Markup und CSS verschwunden.
+
+**Der Satz ist nicht erfunden.** Der Auftraggeber gab die Richtung vor („irgendwas mit kein
+Auftrag ist uns zu klein") und hat den genauen Wortlaut aus drei Vorschlägen gewählt. Alle
+drei bestanden aus Wortlaut, der bereits auf der Seite stand und laut Markup-Kommentar zu
+AP-327 vom Auftraggeber stammt.
+
+**2. Die Kachel „Kein Auftrag ist zu klein." ist entfallen.** Sie stand seit AP-327 hinter
+den Projekten und trug neben der Überschrift zwei Absätze und den Knopf „Kurz anrufen".
+Ihre Aussage trägt jetzt das Zitat.
+
+### Was damit verloren geht — und was nicht
+
+- **Die beiden Absätze der Kachel** („Eine Stunde Hecke vor dem Geburtstag …" und „Dafür
+  kommen wir mit denselben Leuten und demselben Gerät …") stehen nirgends mehr auf der
+  Website. Sie waren die einzige Stelle, die diese Sorge ausbuchstabiert hat — das Zitat
+  benennt sie, erklärt sie aber nicht. **Falls das zurückkommen soll**, ist der kleinste Weg
+  ein Absatz in der Person-Sektion; die Kachelregeln sind entfernt und müssten neu
+  geschrieben werden.
+- **Der Knopf „Kurz anrufen"** fällt ersatzlos weg, so entschieden. Die Seite behält vier
+  weitere Telefonlinks, dazu den Anrufknopf im Seitenkopf.
+
+---
+
+## AP-451 — Die FAQ der Über-uns-Seite entfällt
+
+Auf Ansage des Auftraggebers vom **24.09.2026** ist die Sektion „Häufige Fragen zum
+Betrieb" entfallen — vier Fragen in zwei Gruppen, dazu der `FAQPage`-Block im Seitenkopf.
+
+### Was damit verloren geht
+
+**Es war keine Dublette.** Der Markup-Kommentar zu AP-327 hielt ausdrücklich fest: Die FAQ
+der Startseite beantwortet den Ablauf einer Anfrage, diese hier den Betrieb selbst. Die vier
+Antworten stehen damit **nirgends mehr auf der Website**:
+
+| Frage | Was die Antwort enthielt |
+|---|---|
+| Seit wann gibt es den Betrieb? | Seit 2003, Sitz Herne, geführt von Gartenbaumeister Maik Rohdich, tätig in ganz NRW |
+| Was bringt mir ein Meisterbetrieb? | Meisterzwang gefallen, Meisterbrief als geprüfte fachliche Leitung und Ausbildungsberechtigung, dazu Baumkontrolleur der Landwirtschaftskammer, Sachverständigentitel 2.4.1, Sachkundenachweis Pflanzenschutz |
+| Arbeiten Sie auch für Kommunen und Hausverwaltungen? | Ja — privat, Gewerbe, Hausverwaltungen, kommunal |
+| Ist ein kleiner Auftrag zu klein? | „Eine Stunde Hecke zählt genauso wie ein ganzer Garten." |
+
+Die dritte und vierte Antwort sind die letzten Stellen, an denen die Website den
+kommunalen Auftraggeber und die kleinen Aufträge erklärt hat — die Kachel dazu ist mit
+AP-450 entfallen, die Kundenkarte „Kommunen" nennt die Gruppe, ohne sie zu erklären.
+
+**Der Meisterbrief-Absatz war der einzige Ort**, an dem die vier Qualifikationen in einem
+Satz zusammenstanden und erklärt wurden. Die Startseite nennt sie am Tor als Schilder, ohne
+Erläuterung.
+
+### SEO
+
+`FAQPage` musste mitgehen. Strukturierte Daten müssen den sichtbaren Inhalt abbilden; eine
+`FAQPage` ohne sichtbare Fragen ist ein Richtlinienverstoß und bringt kein Rich Result,
+sondern das Risiko einer manuellen Maßnahme. Der `LocalBusiness`-Graph der Seite bleibt
+unberührt. Das Projekt ist laut `CLAUDE.md` ein SEO/GEO/AEO-Relaunch — der Wegfall eines
+beantworteten Fragenblocks arbeitet gegen dieses Ziel und ist hier als bewusste
+Entscheidung des Auftraggebers festgehalten.
+
+**Falls die Fragen zurück sollen**, ist der kleinste Weg, sie in die FAQ der Startseite zu
+übernehmen: Der Baustein `.faq-list` steht dort bereits, und der `FAQPage`-Block der
+Startseite müsste um die vier Knoten wachsen.
+
+---
+
+## AP-453 — Startbild der Über-uns-Seite
+
+Auf Ansage des Auftraggebers trägt die Über-uns-Seite seit dem **24.09.2026** ein
+randloses Startbild: das Baumarbeiten-Foto aus AP-441, das bis dahin unter dem Zitat
+stand und dorthin **gewandert** ist, mit der Überschrift „Über uns" im Bild, diagonalem
+Abschluss, grüner Haarlinie und der Blüte auf der Kante.
+
+### Offen
+
+- **Die Unterzeile unter dem Schnitt.** Das Auftragsdokument (§2.3) sieht eine vor, als
+  Pendant zu „Ein Stück Garten vor Ihrem Fenster". Der Satz liegt nicht vor und wurde
+  **nicht erfunden**; der Slot ist weggelassen, nicht leer gesetzt. Kommt der Satz, ist er
+  ein Absatz zwischen Startbild und Person-Sektion.
+- **Die Auflösung der Vorlage.** Das Foto ist 900 px breit. Am Rechner wird es auf bis zu
+  1280 px hochgerechnet, Faktor 1,42 — schon zu AP-443 gemeldet. Eine größere Vorlage
+  behebt es, ohne dass an Markup oder CSS etwas zu ändern wäre.
+
+### Befund zum Auftragsdokument
+
+Das Dokument wollte den Bild-Hero der Leistungsseiten **übernehmen**. Den gibt es nicht:
+Der Kopf der 24 Leistungsseiten besteht aus Krümelpfad, Kicker, H1, Lead und Knopf — ohne
+Bild, ohne Diagonale, ohne Haarlinie, ohne Blüte. Geprüft im Template auf `codex/homepage-review`
+**und** auf `claude/kind-fermat-pyzy5p`, gegen den das Dokument geschrieben ist. Damit
+beziehen sich auch seine Messwerte (510 px Höhe, 5,7°, 43 px Abfall, 9,8 : 1 und 2,57 : 1)
+auf etwas, das im Repo nicht liegt. Das Muster ist deshalb **neu gebaut** — auf
+ausdrückliche Ansage des Auftraggebers, dem der Befund vorlag.
+
+**Das Teamfoto bleibt ausgeschlossen.** Der Auftraggeber hat am 24.09.2026 bestätigt, dass
+Grundregel A.3.3 („kein Teamfoto — ausdrücklicher Wunsch des Betriebsinhabers") gilt. Die
+Datei `assets/img/_src/ueber-team.jpg` ist ohnehin keines: eine Person von hinten, ohne
+Gesicht, 560 × 700 px.
+
+### Beobachtung ohne Auftrag
+
+Die Blüte erscheint jetzt zweimal im ersten Bildschirm — im Logo und auf der Schnittkante
+des Startbildes. Das Auftragsdokument (§8.4) verlangt, das zu berichten und nichts zu
+ändern. Hiermit berichtet.
+
+---
+
+## AP-458 — Der Nachsatz zu den Fachleuten entfällt
+
+Der Absatz **„Eigene Fachleute im Team, dazu Spezialisten aus angrenzenden Gewerken wie der
+Entwässerungstechnik."** steht seit dem **24.09.2026** auf Ansage des Auftraggebers nicht
+mehr auf der Seite. Er stand seit AP-411 unter der Kette „Planung → … → Pflege".
+
+### Was damit von der Seite verschwindet
+
+Der Satz war der **einzige sichtbare Ort** für eine der beiden Aussagen, die der Abschnitt
+„Zwei Aussagen, die neu belegt sind" weiter oben in diesem Dokument führt: *Spezialisten aus
+angrenzenden Gewerken, etwa der Entwässerungstechnik.* Beleg ist allein die alte Website des
+Auftraggebers, überbracht am 20.09.2026; Teil B des Umsetzungsplans kennt dazu nur
+„Partnerfirma in Bochum (Details offen)".
+
+Der Beleg bleibt richtig, deshalb bleibt auch jener Abschnitt stehen — die Aussage wird auf
+der Website nur nicht mehr getroffen. **Im JSON-LD stand sie nie**, es ist also nichts
+nachzuziehen. Die zweite der beiden Aussagen — Arbeiten im öffentlichen Bereich — ist nicht
+betroffen; sie steht weiter im Fließtext des Abschnitts.
+
+**Kein Versehen, keine stille Entnahme** — der Auftraggeber hat den Absatz markiert und seine
+Entfernung verlangt.
+
+### Technische Notizen
+
+- Die Klasse `.ueber-betrieb__notiz` kommt im Repo nirgends mehr vor; ihre Regeln in
+  `ueber-uns.css` sind entfernt.
+- Mit ihr entfällt `.ueber-betrieb__notiz + .lead`. Die Regel hielt den Abstand zu einem
+  `.lead` hinter dem Absatz — einen solchen gab es im Nachsatz zuletzt vor AP-447.
+- **Die Abstandskette bleibt unberührt.** Der Absatz trug nur `margin-top: 12px`, keinen
+  unteren Abstand. Letzter sichtbarer Inhalt des Nachsatzes ist jetzt die Kette
+  beziehungsweise die Schreibmaschine an ihrer Stelle; der Abstand nach unten kommt von der
+  Sektion.
+
+---
+
+## AP-480 — Über-uns-Kopf: Titel über dem gerahmten Foto
+
+Auf Ansage des Auftraggebers vom **25.09.2026** ist der Kopf der Über-uns-Seite nach dem
+Muster der mobilen Leistungsseiten umgebaut (`leistung-mobile.css`, Variante
+„Titel über dem Foto", Vorbild Balkonkastenbepflanzung):
+
+- Krümelpfad oben links, darunter mittig der Titel „Über uns", darunter das Foto
+  gerahmt — 4:3, 16px Ecken, Schatten mit grünem Schimmer, Blütengruppe an der Ecke.
+- Den Knopf der Vorlage gibt es hier nicht.
+- **Auf allen Breiten**, nicht nur bis 480px wie bei der Vorlage. Am Rechner ist das
+  Foto auf 760px Breite gedeckelt; die Datei ist 900px breit.
+- Den Farbfilter der Vorlage auf dem Foto trägt das Bild bewusst nicht.
+
+### Was damit entfällt
+
+Das randlose Startbild aus AP-453/454: Schleier, diagonaler Schnitt, grüne Haarlinie und
+die Einzelblüte auf der Kante. Gegenstandslos sind damit auch die beiden Meldungen zu
+AP-454 — das Seitenverhältnis 21:10,4 statt 21:9 und die Höhe außerhalb des
+Abnahmefensters von 300–340px. Die Überschrift steht jetzt in 31px wie auf Galerie und
+Kontakt statt in `clamp(34px … 56px)`.
+
+### Weiter offen
+
+- **Die Unterzeile unter dem Startbild** (aus AP-453) liegt weiter nicht vor und wurde
+  nicht erfunden.
+- **Die Auflösung der Vorlage.** Am Rechner zeigt das Foto jetzt 760px statt bis zu
+  1280px — die Hochrechnung aus AP-443 fällt damit weitgehend weg. Bei doppelter
+  Pixeldichte bleibt sie; eine größere Vorlage behebt das weiterhin ohne Änderung an
+  Markup oder CSS.

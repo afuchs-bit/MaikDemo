@@ -257,6 +257,28 @@
       "width": 960,
       "height": 720,
       "aspect": 0.75
+    },
+    "/assets/img/leistungen-mobile/originale/balkonkastenbepflanzung.jpg": {
+      "base": "/assets/img/leistungen-mobile/balkonkastenbepflanzung-hero",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "width": 800,
+      "height": 1067,
+      "aspect": 1.3337
+    },
+    "/assets/img/leistungen-mobile/originale/balkonkastenbepflanzung-4x3.jpg": {
+      "base": "/assets/img/leistungen-mobile/balkonkastenbepflanzung-hero-4x3",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "width": 800,
+      "height": 600,
+      "aspect": 0.75
     }
   }
 }

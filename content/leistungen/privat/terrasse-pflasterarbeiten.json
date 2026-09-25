@@ -1,40 +1,95 @@
 {
-  "h1": "Terrassen und Pflasterarbeiten",
-  "navLabel": "Terrassen & Pflaster",
-  "title": "Terrassen & Pflasterarbeiten in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Terrassen, Wege und Pflasterflächen in Herne, Bochum und Recklinghausen – mit tragfähigem Unterbau, sauberem Gefälle und Entwässerung. Jetzt Termin anfragen.",
-  "serviceType": "Bau von Terrassen, Wegen und Pflasterflächen",
-  "intro": "Wir bauen Terrassen, Wege und Pflasterflächen, die halten – mit tragfähigem Unterbau, sauberem Gefälle und durchdachter Entwässerung. Das meiste, was bei Pflasterflächen später schiefgeht, entscheidet sich unsichtbar im Unterbau. Deshalb legen wir dort den Schwerpunkt und nicht nur auf die sichtbare Oberfläche. Für Naturstein, Beton- und Keramikbeläge in Herne und Umgebung.",
-  "eignung": [
-    "Neue Terrassen und Sitzplätze im Garten.",
-    "Wege und Zufahrten, die befestigt werden sollen.",
-    "Bestandsflächen, die sich abgesenkt haben, Wasser stauen oder uneben geworden sind.",
-    "Eigentümer, denen eine dauerhaft ebene, verkehrssichere Fläche wichtiger ist als die schnelle Lösung."
+  "layout": "editorial-v2",
+  "h1": "Pflasterarbeiten",
+  "navLabel": "Pflasterarbeiten",
+  "title": "Pflasterarbeiten in Herne | Maik Rohdich",
+  "metaDescription": "Landschaftsbau auf höchstem Niveau: Mit unserer langjährigen Erfahrung im Bereich Verlegetechnik sind wir Ihr Partner für die Planung und den Bau von…",
+  "serviceType": "Pflasterarbeiten",
+  "unterzeile": "Landschaftsbau auf höchstem Niveau",
+  "einstieg": [
+    "Mit unserer langjährigen Erfahrung im Bereich Verlegetechnik sind wir Ihr Partner für die Planung und den Bau von Terrassenanlagen, Wegen, Parkplätzen und Einfahrten."
   ],
-  "ablauf": [
-    { "titel": "Aufmaß und Planung", "text": "Wir klären Fläche, Belag, Höhenanschlüsse und wohin das Wasser ablaufen soll – bevor der erste Spatenstich fällt." },
-    { "titel": "Unterbau herstellen", "text": "Aushub, Tragschicht und Verdichtung bilden das Fundament. Hier entscheidet sich, ob die Fläche dauerhaft eben bleibt." },
-    { "titel": "Verlegen mit Gefälle", "text": "Der Belag wird mit dem nötigen Gefälle verlegt, damit Regenwasser abläuft und sich keine Pfützen bilden." },
-    { "titel": "Randabschluss und Fugen", "text": "Saubere Einfassungen und Fugen halten die Fläche zusammen und verhindern, dass Steine wandern." }
+  "intro": "Mit unserer langjährigen Erfahrung im Bereich Verlegetechnik sind wir Ihr Partner für die Planung und den Bau von Terrassenanlagen, Wegen, Parkplätzen und Einfahrten.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Eine Pflasterfläche soll zum Haus passen und im Alltag bestehen. Deshalb stimmen wir Material, Verlegemuster und Flächenaufteilung auf Ihre Vorstellungen und die spätere Nutzung ab. Ein Gartenweg stellt andere Anforderungen als eine regelmäßig befahrene Einfahrt. Wir berücksichtigen diese Unterschiede vom Unterbau bis zur fertigen Fuge."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Das übernehmen wir für Sie",
+      "paragraphs": [
+        "Höchsten Wert legen wir auf eine fachgerechte und sorgfältige Ausführung. Dazu gehören saubere Anschlüsse an vorhandene Flächen ebenso wie ein abgestimmter Wasserabfluss. Erforderliche Erd- und Entwässerungsarbeiten berücksichtigen wir bereits bei der Planung und führen sie bei Bedarf im Rahmen Ihres Pflasterprojekts mit aus."
+      ],
+      "bullets": [
+        "Planung von Flächenaufteilung, Höhen und Verlegemustern",
+        "Verlegung hochwertiger Pflastersteine und Platten aus Beton oder Naturstein",
+        "Herstellung eines passenden Unterbaus und stabiler Randeinfassungen",
+        "Passgenaue Zuschnitte an Stufen, Übergängen und Abschlüssen",
+        "Auswahl und Verarbeitung geeigneter Fugenmaterialien"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Fläche", "text": "Größe und Zuschnitt der Fläche bestimmen den Grundaufwand für Aushub und Verlegung." },
-    { "titel": "Untergrund", "text": "Tragfähigkeit und Beschaffenheit des Bodens entscheiden über Tiefe und Aufbau des Unterbaus." },
-    { "titel": "Zugänglichkeit", "text": "Ob Material und Aushub mit Maschine bewegt werden können oder von Hand, wirkt sich deutlich aus." },
-    { "titel": "Material", "text": "Naturstein, Beton und Keramik unterscheiden sich in Verlegeaufwand, Preis und Anspruch an den Unterbau." },
-    { "titel": "Entwässerung", "text": "Wohin das Wasser abläuft und ob Rinnen oder Anschlüsse nötig sind, gehört von Anfang an mitgeplant." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Die Hauptsache ist ein schöner Stein.“", "text": "Der schönste Belag senkt sich ab, wenn der Unterbau nicht stimmt. Die Haltbarkeit entscheidet sich unter der Oberfläche." },
-    { "titel": "„Eine Terrasse braucht kein Gefälle.“", "text": "Ohne leichtes Gefälle steht Wasser auf der Fläche, es bilden sich Pfützen und im Winter Glätte. Das Gefälle gehört dazu." },
-    { "titel": "„Pflastern geht schnell nebenbei.“", "text": "Der sichtbare Teil ist schnell, der tragfähige Unterbau nicht. Wer hier spart, zahlt später mit Absenkungen und Nacharbeit." }
-  ],
+  "abschluss": "Zu allen Fragen rund um Ihre Pflasterarbeiten und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Pflasterarbeiten anfragen",
   "faq": [
-    { "frage": "Warum ist der Unterbau so wichtig?", "antwort": "Weil sich dort entscheidet, ob die Fläche dauerhaft eben bleibt. Ein zu dünner oder schlecht verdichteter Unterbau führt zu Absenkungen, Pfützen und wandernden Steinen – oft erst nach dem ersten Winter. Deshalb legen wir auf Aushub, Tragschicht und Verdichtung besonderen Wert. Das ist der Teil, den man später nicht sieht, aber merkt." },
-    { "frage": "Braucht eine Terrasse wirklich ein Gefälle?", "antwort": "Ja. Ein leichtes Gefälle sorgt dafür, dass Regenwasser abläuft, statt auf der Fläche zu stehen. Ohne Gefälle bilden sich Pfützen, Beläge veralgen schneller und im Winter droht Glätte. Das Gefälle ist so gering, dass es im Alltag nicht auffällt, aber entscheidend für die Haltbarkeit und Sicherheit." },
-    { "frage": "Können Sie eine abgesackte Bestandsfläche wieder herrichten?", "antwort": "Ja. Häufig liegt die Ursache im Unterbau oder in fehlendem Gefälle. Wir sehen uns die Fläche an und sagen Ihnen, ob eine Teilsanierung reicht oder ein Neuaufbau sinnvoller ist. Manchmal ist der gründliche Neuaufbau am Ende wirtschaftlicher, als immer wieder nachzubessern." },
-    { "frage": "Welche Beläge verlegen Sie?", "antwort": "Wir arbeiten mit Naturstein, Betonstein und Keramik. Welcher Belag passt, hängt von Nutzung, Optik, Untergrund und Ihrem Budgetrahmen ab. Die Unterschiede in Verlegeaufwand und Pflege besprechen wir vorab, damit Sie eine Entscheidung treffen, die auch in einigen Jahren noch stimmt." }
+    {
+      "frage": "Was trägt der Unterbau zu einer langlebigen Pflasterfläche bei?",
+      "antwort": "Der Unterbau verteilt die Belastung und bildet die Grundlage für eine dauerhaft nutzbare Fläche. Wir stimmen Schichtaufbau und Materialien auf den vorhandenen Boden, die Entwässerung und die spätere Nutzung ab. So bekommt Ihre Fläche die Grundlage, die sie benötigt."
+    },
+    {
+      "frage": "Wie helfen Kunstharzfugen, den Pflegeaufwand zu verringern?",
+      "antwort": "Geeignete Kunstharzfugen können den Bewuchs in den Fugen verringern und das Fugenbild gleichmäßig halten. Neue Ablagerungen können dennoch Pflanzenwuchs ermöglichen. Damit Wege, Terrasse und Einfahrt gepflegt bleiben, übernehmen wir gerne auch die regelmäßige Pflasterreinigung und Fugenreinigung."
+    }
   ],
-  "nachbarn": ["gartengestaltung", "vorgarten"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/pflasterarbeiten-terrasse-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "nassschneidearbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "entwaesserung"
+    },
+    {
+      "welt": "privat",
+      "slug": "erd-baggerarbeiten"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 21
 }

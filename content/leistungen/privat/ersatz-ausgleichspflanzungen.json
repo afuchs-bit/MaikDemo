@@ -1,0 +1,95 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Ersatz- & Ausgleichspflanzungen",
+  "navLabel": "Ersatz- & Ausgleichspflanzungen",
+  "title": "Ersatz- & Ausgleichspflanzungen in Herne | Maik Rohdich",
+  "metaDescription": "Neues Grün mit fachgerechtem Start: Nach einer Baumfällung oder im Rahmen eines Bauvorhabens können Ersatz- oder Ausgleichspflanzungen erforderlich sein.…",
+  "serviceType": "Ersatz- & Ausgleichspflanzungen",
+  "unterzeile": "Neues Grün mit fachgerechtem Start",
+  "einstieg": [
+    "Nach einer Baumfällung oder im Rahmen eines Bauvorhabens können Ersatz- oder Ausgleichspflanzungen erforderlich sein. Dabei kommt es auf die konkrete Vorgabe an: Pflanzenart, Anzahl, Größe und Standort müssen ebenso passen wie die Ausführung und die anschließende Pflege."
+  ],
+  "intro": "Nach einer Baumfällung oder im Rahmen eines Bauvorhabens können Ersatz- oder Ausgleichspflanzungen erforderlich sein. Dabei kommt es auf die konkrete Vorgabe an: Pflanzenart, Anzahl, Größe und Standort müssen ebenso passen wie die Ausführung und die anschließende Pflege.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir übernehmen die fachgerechte Umsetzung Ihrer Pflanzmaßnahme. Grundlage sind die Auflagen im Bescheid oder die abgestimmte Planung. Gemeinsam klären wir, was auf Ihrem Grundstück vorgesehen ist, und organisieren die passenden Pflanzen sowie die Arbeiten vor Ort."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Wir begleiten Ihre Pflanzmaßnahme",
+      "paragraphs": [
+        "Mit dem Einpflanzen ist die Aufgabe häufig noch nicht abgeschlossen. Gerade während des Anwachsens brauchen Bäume und Gehölze Aufmerksamkeit. Wir stimmen die Fertigstellungs- und Entwicklungspflege auf Ihre Pflanzung und die vorliegenden Anforderungen ab."
+      ],
+      "bullets": [
+        "Abstimmung der Ausführung auf vorliegende Pflanzvorgaben und Fristen",
+        "Auswahl und Lieferung der vorgeschriebenen Pflanzenarten und Pflanzqualitäten",
+        "Bodenvorbereitung und fachgerechte Pflanzung am vorgesehenen Standort",
+        "Geeignete Verankerung, Bewässerung und Schutz der neuen Pflanzung",
+        "Dokumentation der ausgeführten Arbeiten und vereinbarte Folgepflege"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um Ihre Ersatz- und Ausgleichspflanzungen und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Ersatz- und Ausgleichspflanzung anfragen",
+  "faq": [
+    {
+      "frage": "Was benötigen Sie für die Planung meiner Ersatzpflanzung?",
+      "antwort": "Wenn bereits ein Bescheid oder Pflanzplan vorliegt, beziehen wir ihn in die Planung ein. Darin können Arten, Größen, Standorte und Fristen festgelegt sein. Für das erste Gespräch genügt es, uns Ihr Vorhaben zu schildern; die nötigen Unterlagen klären wir gemeinsam."
+    },
+    {
+      "frage": "Betreuen Sie die Pflanzung auch nach der Ausführung?",
+      "antwort": "Ja. Wir übernehmen bei Bedarf das Wässern, die Kontrolle der Verankerung und weitere vereinbarte Pflegearbeiten. Auch erforderliche Nachweise zur ausgeführten Pflanzung stimmen wir mit Ihnen ab. So behalten Sie Ausführung und weitere Betreuung in einer Hand."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/ersatz-ausgleichspflanzungen-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "sichtschutzbepflanzung"
+    },
+    {
+      "welt": "privat",
+      "slug": "bonsai-formgehoelze"
+    },
+    {
+      "welt": "privat",
+      "slug": "saisonbepflanzung"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 11
+}

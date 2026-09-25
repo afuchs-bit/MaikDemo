@@ -223,7 +223,8 @@ async function generatePages(projekte, taxLabels) {
   if (si !== -1 && ei !== -1 && ei > si) {
     const before = galleryHtml.slice(0, si + GAL_START.length);
     const after = galleryHtml.slice(ei);
-    const next = `${before}\n    ${renderGalleryList(projekte)}\n    ${after}`;
+    const sichtbareProjekte = projekte.filter((p) => p.inProjektGalerie !== false);
+    const next = `${before}\n    ${renderGalleryList(sichtbareProjekte)}\n    ${after}`;
     if (next !== galleryHtml) {
       await writeFile(GALLERY_INDEX, next, 'utf8');
       console.log('✅ Statische Galerie-Liste in projekte/index.html aktualisiert.');
@@ -254,7 +255,12 @@ async function generateSitemap(projekte) {
   const entries = [];
   for (const rel of dirs) {
     // rel = Repo-relativer Ordnerpfad mit '/'-Trennern; '' = Root-index.html.
-    const loc = rel === '' ? `${SITE}/` : `${SITE}/${rel}/`;
+    // AP-399: Ordnernamen koennen Zeichen ausserhalb von ASCII tragen - der
+    // Projektordner "beetanlage-...-–-vorher-nachher-herne" enthaelt einen
+    // Gedankenstrich. Die Sitemap-Spezifikation verlangt RFC-3986-kodierte URLs;
+    // roh ausgegeben stand in der Datei ein Zeichen, das die verlinkende Seite
+    // selbst prozentkodiert - zwei Schreibweisen derselben URL.
+    const loc = rel === '' ? `${SITE}/` : `${SITE}/${rel.split('/').map(encodeURIComponent).join('/')}/`;
     let lastmod;
     const m = rel.match(/^projekte\/([^/]+)$/);
     if (m && datumBySlug.has(m[1])) {
@@ -291,7 +297,13 @@ async function collectPageDirs(rootDir) {
   async function walk(absDir, rel) {
     const entries = await readdir(absDir, { withFileTypes: true });
     if (entries.some((e) => e.isFile() && e.name === 'index.html')) {
-      found.push(rel);
+      // AP-399: Weiterleitungsseiten gehoeren nicht in die Sitemap. gewerbekunden/
+      // ist seit AP-387 nur noch ein Stub mit <meta http-equiv="refresh"> und
+      // dauerhaftem noindex; angemeldet wuerde eine URL, die den Crawler sofort
+      // weiterschickt. Auf noindex allein laesst sich nicht pruefen: in der
+      // Demo-Phase tragen es alle Seiten (AP-01, siehe oben).
+      const html = await readFile(path.join(absDir, 'index.html'), 'utf8');
+      if (!/<meta\s+http-equiv=["']refresh["']/i.test(html)) found.push(rel);
     }
     for (const e of entries) {
       if (!e.isDirectory()) continue;
@@ -348,6 +360,9 @@ async function validateProjekt(data, where, slug, validSlugs) {
   if (!isNonEmptyString(data.ort)) errors.push(`${where}: Pflichtfeld "ort" fehlt oder ist leer.`);
   if (!isNonEmptyString(data.beschreibung)) errors.push(`${where}: Pflichtfeld "beschreibung" fehlt oder ist leer.`);
   if (typeof data.featured !== 'boolean') errors.push(`${where}: Pflichtfeld "featured" muss true oder false sein.`);
+  if (data.inProjektGalerie !== undefined && typeof data.inProjektGalerie !== 'boolean') {
+    errors.push(`${where}: "inProjektGalerie" muss true oder false sein.`);
+  }
   if (!isValidDate(data.datum)) errors.push(`${where}: Pflichtfeld "datum" fehlt oder ist kein gültiges Datum (erwartet z. B. "2026-05-01").`);
 
   // kundentyp: Array aus privat/gewerbe

@@ -1,0 +1,94 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Findlinge und Natursteineinfassungen",
+  "navLabel": "Findlinge und Natursteineinfassungen",
+  "title": "Findlinge und Natursteineinfassungen in Herne | Maik Rohdich",
+  "metaDescription": "Ein Highlight in jedem Garten: Wir bieten Ihnen die Möglichkeit, in Ihrem Garten gezielt Akzente zu setzen. Die natürliche braun-beige Farbe unserer…",
+  "serviceType": "Findlinge und Natursteineinfassungen",
+  "unterzeile": "Ein Highlight in jedem Garten",
+  "einstieg": [
+    "Wir bieten Ihnen die Möglichkeit, in Ihrem Garten gezielt Akzente zu setzen. Die natürliche braun-beige Farbe unserer hauptsächlich verwendeten Natursteine passt sich harmonisch in das Gesamtbild des Gartens ein."
+  ],
+  "intro": "Wir bieten Ihnen die Möglichkeit, in Ihrem Garten gezielt Akzente zu setzen. Die natürliche braun-beige Farbe unserer hauptsächlich verwendeten Natursteine passt sich harmonisch in das Gesamtbild des Gartens ein.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Jeder Stein ist ein Einzelstück. Absolut individuell, als optisches Highlight im Beet oder als Sitzgelegenheit und Liegestein in die Terrasse integriert.",
+        "Der von uns hauptsächlich verwendete regional gewonnene Naturstein zeichnet sich durch geringe Wasseraufnahme, sehr hohe Druckfestigkeit, Abriebfestigkeit und Verwitterungsbeständigkeit aus."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Sie erhalten bei uns",
+      "paragraphs": [],
+      "bullets": [
+        "Natursteine in verschiedenen Größen und Formen",
+        "Findlinge und Natursteineinfassungen für Beete und Gartenbereiche",
+        "Farbige Beschriftung nach eigenen Vorgaben",
+        "Kernbohrungen zur Nutzung als Wasserspiel oder für Beleuchtung",
+        "Beetabdeckungen aus kleingebrochenem Stein in hervorragender Optik"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um Findlinge und Natursteineinfassungen und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Natursteingestaltung anfragen",
+  "faq": [
+    {
+      "frage": "Kann ein Findling individuell gestaltet werden?",
+      "antwort": "Ja. Je nach Stein sind beispielsweise farbige Beschriftungen oder Kernbohrungen möglich. So kann aus einem Naturstein ein persönlicher Blickfang, ein Quellstein oder ein Element Ihrer Gartenbeleuchtung werden. Die passende Einbindung in Ihren Garten planen und gestalten wir gerne mit."
+    },
+    {
+      "frage": "Passen große Steine auch in einen kleinen Garten?",
+      "antwort": "Ein einzelner, gut platzierter Stein kann auch auf kleiner Fläche wirken. Entscheidend sind die Proportionen und das Zusammenspiel mit Pflanzen und freien Flächen. Wir zeigen Ihnen geeignete Möglichkeiten."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/findlinge-natursteinbeet-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "zaeune-sichtschutz"
+    },
+    {
+      "welt": "privat",
+      "slug": "terrassenbau"
+    },
+    {
+      "welt": "privat",
+      "slug": "terrasse-pflasterarbeiten"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 13
+}

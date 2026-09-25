@@ -1,0 +1,35 @@
+# AP-398: Was nicht ausgeliefert wird.
+#
+# Vercel legt alles, was im Repository liegt, als statische Datei ins Netz. Ohne
+# diese Liste waeren docs/umsetzungsplan.md, docs/offene-punkte.md und die
+# Go-Live-Checkliste unter rohdich.de/docs/... abrufbar - interne Planungsunterlagen
+# auf der Kundendomain. robots-live.txt sperrt sie nicht: die Datei enthaelt keine
+# einzige Disallow-Regel (das ist seit AP-398 anders, aber robots.txt haelt niemanden
+# auf, der die URL kennt).
+#
+# Muster wie in .gitignore. Vorsicht beim Erweitern: data/ und content/taxonomie.json
+# werden zur LAUFZEIT per fetch geladen (assets/js/galerie.js, projekte.js,
+# projekte-privat.js, private-gallery-teaser.js, gewerbe.js). Wer sie aussperrt,
+# leert die Galerie und die Projektlisten, ohne dass ein Build fehlschlaegt.
+
+# Interne Unterlagen
+docs/
+CLAUDE.md
+ASSETS.md
+README.md
+
+# Build-Werkzeug - laeuft in der Action, nicht im Netz
+.github/
+package.json
+package-lock.json
+
+# Plattformdateien anderer Anbieter bzw. fuer den Go-Live
+_headers
+robots-live.txt
+
+# Geparkte Seitenstaende
+*.saved.html
+
+# Quelldateien der Generatoren. Ausnahme: taxonomie.json wird zur Laufzeit geladen.
+content/*
+!content/taxonomie.json

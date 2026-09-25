@@ -42,7 +42,10 @@ const HAND_PAGES = [
   { file: 'gewerbekunden/index.html', base: '../' },
   { file: 'projekte/index.html', base: '../' },
   // AP-33: 404 trug die Leistungs-Nav fest verdrahtet – jetzt ebenfalls aus einer Quelle.
-  { file: '404.html', base: '' },
+  // AP-399: base '/' statt '' – siehe pageBase() in build-footers.mjs. Die Seite
+  // wird unter beliebig tiefen URLs ausgeliefert; relative Nav-Links zeigten dort
+  // auf Pfade, die es nicht gibt.
+  { file: '404.html', base: '/' },
   // AP-108: kontakt/ trug das Dropdown ebenfalls fest verdrahtet und driftete
   // bei jeder Nav-Änderung still weg – jetzt aus derselben Quelle.
   { file: 'kontakt/index.html', base: '../' },
@@ -60,6 +63,64 @@ function fail(msg) { console.error(`\n❌ ${msg}\n`); process.exit(1); }
 function validate(slug, d, validSlugs, weltKey) {
   const where = `content/leistungen/${weltKey}/${slug}.json`;
   if (!validSlugs.has(slug)) errors.push(`${where}: Slug "${slug}" ist nicht in content/taxonomie.json definiert.`);
+  if (d.layout === 'editorial-v2' || d.layout === 'legacy-document') {
+    for (const f of ['h1', 'navLabel', 'title', 'metaDescription', 'serviceType', 'unterzeile', 'abschluss', 'ctaLabel']) {
+      if (!isNonEmptyString(d[f])) errors.push(`${where}: Pflichtfeld "${f}" fehlt oder ist leer.`);
+    }
+    if (!isFilledArray(d.einstieg) || d.einstieg.some((p) => !isNonEmptyString(p))) {
+      errors.push(`${where}: "einstieg" muss ein nicht-leeres Array aus Textabsätzen sein.`);
+    }
+    if (!isFilledArray(d.inhalt)) {
+      errors.push(`${where}: "inhalt" muss mindestens einen strukturierten Inhaltsblock enthalten.`);
+    } else {
+      d.inhalt.forEach((block, i) => {
+        if (!Array.isArray(block?.paragraphs) || !Array.isArray(block?.bullets)) {
+          errors.push(`${where}: inhalt[${i}] braucht die Arrays "paragraphs" und "bullets".`);
+        } else if (![...block.paragraphs, ...block.bullets].some(isNonEmptyString)
+          && !(d.diagram === 'baumkontrolle' && isNonEmptyString(block.heading))) {
+          errors.push(`${where}: inhalt[${i}] darf nicht leer sein.`);
+        }
+      });
+    }
+    if (!Array.isArray(d.faq) || d.faq.length < 1) {
+      errors.push(`${where}: "faq" braucht mindestens einen Eintrag.`);
+    } else {
+      d.faq.forEach((it, i) => {
+        if (!isNonEmptyString(it?.frage) || !isNonEmptyString(it?.antwort)) errors.push(`${where}: faq[${i}] braucht "frage" und "antwort".`);
+      });
+    }
+    if (!isFilledArray(d.kundengruppe) || d.kundengruppe.some((k) => !KUNDENTYPEN.includes(k))) {
+      errors.push(`${where}: "kundengruppe" muss ein Array aus ${KUNDENTYPEN.join('/')} sein.`);
+    }
+    if (d.layout === 'editorial-v2') {
+      if (d.themeColor !== undefined
+        && (typeof d.themeColor !== 'string' || !/^#[0-9a-fA-F]{6}$/.test(d.themeColor))) {
+        errors.push(`${where}: "themeColor" muss als sechsstellige Hex-Farbe angegeben werden (z. B. #171916).`);
+      }
+      if (d.heroTitleLines !== undefined
+        && (!Array.isArray(d.heroTitleLines)
+          || d.heroTitleLines.length !== 2
+          || d.heroTitleLines.some((line) => !isNonEmptyString(line))
+          || d.heroTitleLines.join('') !== d.h1)) {
+        errors.push(`${where}: "heroTitleLines" muss den H1-Text in genau zwei nicht-leere Zeilen aufteilen.`);
+      }
+      if (!isNonEmptyString(d.bilder?.hero?.bild)) errors.push(`${where}: bilder.hero.bild fehlt.`);
+      const gallery = d.bilder?.gallery;
+      const galleryLengthValid = d.galleryVariant === 'grid-teaser'
+        ? Array.isArray(gallery) && gallery.length >= 6
+        : Array.isArray(gallery) && gallery.length === 3;
+      if (!galleryLengthValid || gallery.some((b) => !isNonEmptyString(b?.bild))) {
+        const requirement = d.galleryVariant === 'grid-teaser' ? 'mindestens 6' : 'genau 3';
+        errors.push(`${where}: bilder.gallery muss für diese Darstellungsvariante ${requirement} Bilder enthalten.`);
+      }
+      if (!Array.isArray(d.related) || d.related.length < 2 || d.related.length > 3) {
+        errors.push(`${where}: "related" braucht zwei oder drei kuratierte Leistungen.`);
+      } else if (d.related.some((r) => !isNonEmptyString(r?.welt) || !isNonEmptyString(r?.slug))) {
+        errors.push(`${where}: Jeder related-Eintrag braucht "welt" und "slug".`);
+      }
+    }
+    return;
+  }
   for (const f of ['h1', 'navLabel', 'title', 'metaDescription', 'serviceType', 'intro']) {
     if (!isNonEmptyString(d[f])) errors.push(`${where}: Pflichtfeld "${f}" fehlt oder ist leer.`);
   }
@@ -189,8 +250,10 @@ async function main() {
       bySlug.set(slug, d);
     }
 
-    // Nachbar-Slugs müssen in DERSELBEN Welt existieren, sonst führt der Link hinaus.
+    // Legacy-Nachbarn müssen in DERSELBEN Welt existieren. Editorial-v2 verwendet
+    // dagegen bewusst weltübergreifende, strukturierte related-Verweise.
     for (const [slug, d] of bySlug) {
+      if (d.layout === 'editorial-v2' || d.layout === 'legacy-document') continue;
       for (const nb of d.nachbarn || []) {
         if (!bySlug.has(nb)) {
           errors.push(`content/leistungen/${welt.key}/${slug}.json: nachbarn-Slug "${nb}" existiert nicht in der Welt ${welt.key}.`);
@@ -211,6 +274,17 @@ async function main() {
     weltDaten.set(welt.key, bySlug);
   }
 
+  for (const [weltKey, bySlug] of weltDaten) {
+    for (const [slug, d] of bySlug) {
+      if (d.layout !== 'editorial-v2') continue;
+      for (const ref of d.related || []) {
+        if (!WELTEN[ref.welt] || !weltDaten.get(ref.welt)?.has(ref.slug)) {
+          errors.push(`content/leistungen/${weltKey}/${slug}.json: related-Ziel "${ref.welt}:${ref.slug}" existiert nicht.`);
+        }
+      }
+    }
+  }
+
   // AP-18/AP-33: LEISTUNGEN_NAV gegen die Vereinigungsmenge beider Welten prüfen.
   // AP-125: renderNavSubmenu löst die Beschriftung als `welt.navLabels[slug] ||
   // LEISTUNGEN_NAV || slug` auf. Diese Prüfung ging nur über LEISTUNGEN_NAV und
@@ -222,7 +296,8 @@ async function main() {
   const alleSlugs = new Set([...weltDaten.values()].flatMap((m) => [...m.keys()]));
   const navSlugs = new Set(LEISTUNGEN_NAV.map((l) => l.slug));
   const navMissing = [...alleSlugs].filter((s) => !navSlugs.has(s)
-    && Object.values(WELTEN).some((w) => w.slugs.includes(s) && !w.navLabels?.[s]));
+    && Object.values(WELTEN).some((w) => w.slugs.includes(s) && !w.navLabels?.[s]
+      && !w.navListe?.some((item) => item.slug === s)));
   const navExtra = [...navSlugs].filter((s) => !alleSlugs.has(s));
   if (navMissing.length) console.warn(`⚠ Ohne Beschriftung in LEISTUNGEN_NAV (render.mjs) und in welt.navLabels – erscheint mit dem Rohslug in der Navigation: ${navMissing.join(', ')}`);
   if (navExtra.length) console.warn(`⚠ LEISTUNGEN_NAV verweist auf fehlende Leistung: ${navExtra.join(', ')}`);
@@ -235,6 +310,10 @@ async function main() {
   }
 
   const projekte = await loadProjekte();
+  const serviceIndex = new Map();
+  for (const [weltKey, bySlug] of weltDaten) {
+    for (const [slug, data] of bySlug) serviceIndex.set(`${weltKey}:${slug}`, data);
+  }
 
   const indexHtml = await readFile(INDEX_HTML, 'utf8');
   const cssVersion = (indexHtml.match(/styles\.css\?v=([\w.-]+)/) || [])[1] || '1';
@@ -254,6 +333,7 @@ async function main() {
         leistung, slug, welt, cssVersion, jsVersion,
         refProjects: refProjectsFor(slug, projekte, welt),
         labelBySlug,
+        serviceIndex,
       });
       const dir = path.join(outDir, slug);
       await mkdir(dir, { recursive: true });

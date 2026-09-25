@@ -1,0 +1,95 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Saisonbepflanzung",
+  "navLabel": "Saisonbepflanzung",
+  "title": "Saisonbepflanzung in Herne | Maik Rohdich",
+  "metaDescription": "Neue Farben für jede Jahreszeit: Frische Blüten im Frühjahr, kräftige Farben im Sommer und eine stimmige Gestaltung für Herbst und Winter: Mit einer…",
+  "serviceType": "Saisonbepflanzung",
+  "unterzeile": "Neue Farben für jede Jahreszeit",
+  "einstieg": [
+    "Frische Blüten im Frühjahr, kräftige Farben im Sommer und eine stimmige Gestaltung für Herbst und Winter: Mit einer Saisonbepflanzung verändert sich Ihr Garten im Laufe des Jahres. Auch Eingänge und Außenanlagen bekommen so immer wieder einen neuen, gepflegten Eindruck."
+  ],
+  "intro": "Frische Blüten im Frühjahr, kräftige Farben im Sommer und eine stimmige Gestaltung für Herbst und Winter: Mit einer Saisonbepflanzung verändert sich Ihr Garten im Laufe des Jahres. Auch Eingänge und Außenanlagen bekommen so immer wieder einen neuen, gepflegten Eindruck.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir bepflanzen Beete, Kübel und Pflanzschalen passend zur Jahreszeit und zum Standort. Dabei greifen wir Ihre Lieblingsfarben auf oder entwickeln eine Gestaltung, die zum Haus und zum vorhandenen Garten passt."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Bepflanzung im Rhythmus der Jahreszeiten",
+      "paragraphs": [
+        "Vorhandene Stauden und Gehölze lassen sich häufig als dauerhafter Rahmen nutzen. Saisonale Pflanzen setzen darin neue Akzente, ohne dass jedes Mal die gesamte Fläche verändert werden muss. Gerne planen wir die Wechsel für das Jahr gemeinsam mit Ihnen."
+      ],
+      "bullets": [
+        "Planung wechselnder Bepflanzungen für private und gewerbliche Außenbereiche",
+        "Auswahl geeigneter Blüh- und Blattschmuckpflanzen",
+        "Vorbereitung von Beeten, Kübeln und Pflanzschalen",
+        "Fachgerechter Pflanzenwechsel zum abgestimmten Zeitpunkt",
+        "Ergänzende Pflege und regelmäßige Betreuung nach Absprache"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die saisonale Bepflanzung Ihrer Außenanlage und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Saisonbepflanzung planen",
+  "faq": [
+    {
+      "frage": "Muss für eine Saisonbepflanzung jedes Mal das ganze Beet erneuert werden?",
+      "antwort": "Nein. Oft genügt es, einzelne Bereiche oder Pflanzgefäße neu zu gestalten. Wir beziehen vorhandene Pflanzen ein und ergänzen dort, wo frische Farben und neue Blüten die größte Wirkung haben."
+    },
+    {
+      "frage": "Können Sie den Pflanzenwechsel regelmäßig für mich übernehmen?",
+      "antwort": "Ja. Wir stimmen die gewünschten Jahreszeiten und Einsätze mit Ihnen ab. Die Pflanztermine richten sich auch nach Witterung und Pflanzenart. Bei Bedarf übernehmen wir zwischen den Wechseln die Pflege, damit Ihre Bepflanzung ansprechend bleibt."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/proof/kuebelbepflanzung-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "balkonkastenbepflanzung"
+    },
+    {
+      "welt": "privat",
+      "slug": "palmen-winterfest"
+    },
+    {
+      "welt": "privat",
+      "slug": "rollrasen"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 27
+}

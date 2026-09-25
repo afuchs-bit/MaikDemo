@@ -20,18 +20,29 @@ Die Demo läuft mit vollständiger Sperre. Beim Umschalten beides entfernen:
 **Prüfung:** `grep -rn "noindex" --include="*.html" .` darf nur noch `admin/index.html`
 und `404.html` liefern.
 
-## 1b. Vorläufigen Text auf /ueber-uns/ ersetzen (AP-327)
+## 1b. Vorläufiges Zitat auf /ueber-uns/ ersetzen (AP-327, AP-384)
 
-Die Sektion „Die Person hinter dem Betrieb" trägt seit dem 15.09.2026 **sichtbaren
+Die Sektion „Das Team hinter dem Betrieb" trägt seit dem 15.09.2026 **sichtbaren
 Platzhaltertext** — auf ausdrückliche Entscheidung des Auftraggebers, damit das Layout im
 Zusammenhang beurteilt werden kann. Das weicht bewusst von Grundregel 2 ab und darf nicht
 live gehen.
 
-- [ ] Die drei bis vier Sätze in der Ich-Form von Maik Rohdich stehen im Absatz
-      `.ueber-inhaber__text`
-- [ ] Das Zitat ist durch den freigegebenen Wortlaut ersetzt
-- [ ] An beiden Stellen ist die Klasse `ueber-inhaber__platzhalter` entfernt
-- [ ] Der `[OFFEN: …]`-Kommentar über der Sektion in `ueber-uns/index.html` ist aufgelöst
+**Der Absatz ist seit AP-384 erledigt** (21.09.2026): Er trägt den Text des Auftraggebers,
+in der Wir-Form, und nicht mehr die Platzhalter-Klasse. Die ursprünglich vorgesehenen Sätze
+in der Ich-Form von Maik Rohdich werden nicht mehr gebraucht.
+
+**Das Zitat ist seit AP-450 erledigt** (24.09.2026): Es lautet auf Ansage des Auftraggebers
+**„Kein Auftrag ist uns zu klein."** Der Satz ist nicht erfunden — er nimmt die Überschrift
+der Kachel auf, die bis zu diesem Tag hinter den Projekten stand („Kein Auftrag ist zu
+klein.", AP-327, Wortlaut ebenfalls vom Auftraggeber) und mit AP-450 entfallen ist.
+
+- [x] Der Absatz `.ueber-inhaber__text` trägt den endgültigen Text (AP-384)
+- [x] Das Zitat ist durch den freigegebenen Wortlaut ersetzt (AP-450)
+- [x] Am Zitat ist die Klasse `ueber-inhaber__platzhalter` entfernt (AP-450)
+- [x] Der `[OFFEN: …]`-Kommentar über der Sektion in `ueber-uns/index.html` ist aufgelöst (AP-450)
+
+**Damit trägt die Seite keinen sichtbaren Platzhaltertext mehr** — die Abweichung von
+Grundregel 2, die seit dem 15.09.2026 bestand, ist beendet.
 
 **Prüfung:** `grep -n "ueber-inhaber__platzhalter" ueber-uns/index.html assets/css/ueber-uns.css`
 liefert keine Treffer mehr im Markup.

@@ -55,6 +55,8 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   gelieferte vollständige Header-Blumengruppe, ausschließlich mechanisch vom
   weißen Hintergrund und zwei fremden Randpixelspalten befreit. SHA-256:
   `8708DEB1FB616A7EED53AA24E325DDFEB1AE57D3EC31FDD3B17C5B4ADB437FE9`.
+  Seit AP-480 (25.09.2026) auch an der unteren rechten Ecke des Startbildes der
+  Über-uns-Seite, wie an den Fotos der mobilen Leistungsseiten.
 - `assets/img/icons/phone-header-mobile.png` – mechanisch aus der vom Auftraggeber
   gelieferten Datei `Design ohne Titel.png` freigestellt, quadratisch beschnitten und
   einheitlich auf das Wortmarken-Grün `#56E607` gesetzt. Die Form wurde nicht verändert.
@@ -88,6 +90,12 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   `assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png` isoliert.
   Form und Farben wurden nicht generativ verändert. SHA-256:
   `6D8489157F6CBA0265A864BC55E78AAB6AAE5458BF4A1D6814AA0099354397DA`.
+  Mit AP-449 (24.09.2026) verlor sie ihren letzten Einsatz — die Blüte an der Ecke
+  der Standortkarte auf der Kontaktseite. Seit AP-453 war sie wieder in Gebrauch, auf
+  der Schnittkante des Startbildes der Über-uns-Seite. **Mit AP-480 (25.09.2026) ist sie
+  erneut ohne Einsatz:** Das Startbild trägt jetzt die Blütengruppe
+  `maik-rohdich-bluetengruppe-header-transparent.png`. `kontakt.css` nennt die Datei nur
+  noch in einem Kommentar.
 - `assets/img/icons/maik-rohdich-bluete-original.png` – 526 × 430 px große,
   transparente Einzelblüte aus der vom Auftraggeber gelieferten Datei
   `Maik-Rohdich-Bluete-Ausschnitt.png`. Sie ersetzt die zuvor verwendete
