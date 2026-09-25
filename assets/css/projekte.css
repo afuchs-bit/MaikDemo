@@ -363,6 +363,16 @@
   .gallery-mode-sticky + .gallery-photo-grid {
     margin-top: clamp(12px, 1.5vw, 20px);
   }
+
+  /* AP-468: Dasselbe fuer den Modus "Projekte mit Details". Auch dort begann die
+     erste Kachel bei 0px unter dem Band. Der Wert ist woertlich der gap von
+     .projects-grid (styles.css:1109), der dort fest bei 22px steht.
+     Der Geschwisterselektor ~ statt +, weil zwischen Band und Projektraster das
+     (dann versteckte) Fotoraster liegt. Er trifft #galleryGrid und das
+     statische Ersatzraster #galleryStatic; sichtbar ist immer nur eines. */
+  .gallery-mode-sticky ~ .projects-grid--gallery {
+    margin-top: 22px;
+  }
 }
 
 /* AP-410: Dieser Block MUSS hinter dem Block darueber stehen. Unter 481px passen
