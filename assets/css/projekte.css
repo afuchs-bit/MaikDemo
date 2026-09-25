@@ -365,13 +365,17 @@
   }
 
   /* AP-468: Dasselbe fuer den Modus "Projekte mit Details". Auch dort begann die
-     erste Kachel bei 0px unter dem Band. Der Wert ist woertlich der gap von
-     .projects-grid (styles.css:1109), der dort fest bei 22px steht.
+     erste Kachel bei 0px unter dem Band.
+     AP-469: Auf Ansage des Auftraggebers traegt der Modus denselben Abstand wie
+     die Bildergalerie darueber, nicht den eigenen Kachelabstand (22px aus
+     styles.css:1109, so in AP-468). Beim Umschalten springt die erste Reihe
+     damit nicht mehr. Der Wert ist deshalb woertlich der aus der Regel
+     darueber; aendert sich einer, muss der andere mit.
      Der Geschwisterselektor ~ statt +, weil zwischen Band und Projektraster das
      (dann versteckte) Fotoraster liegt. Er trifft #galleryGrid und das
      statische Ersatzraster #galleryStatic; sichtbar ist immer nur eines. */
   .gallery-mode-sticky ~ .projects-grid--gallery {
-    margin-top: 22px;
+    margin-top: clamp(12px, 1.5vw, 20px);
   }
 }
 
