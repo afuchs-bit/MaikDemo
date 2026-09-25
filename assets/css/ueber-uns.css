@@ -53,6 +53,24 @@
 
 .ueber-page { background: var(--bg); }
 
+/* AP-469: Die Kachelgruens dieser Seite tragen denselben Ton wie die gruenen
+   Schriften - auf Ansage des Auftraggebers. Der Ton ist #56E607
+   (--mobile-logo-green, styles.css:84), aus dem Schriftzug "Ihr Fachteam"
+   ausgelesen; die Herleitung steht bei AP-467 am em der Abschnittsueberschrift.
+
+   Drei Stellen ziehen ihre Deckkraft ueber ein rgb-Tripel: Kachelrahmen (22%),
+   Schimmer im Kachelverlauf (10%) und der Innenring der Pfeilpille (20%). Fuer
+   --mobile-logo-green gibt es global kein Tripel; eines in styles.css anzulegen
+   zoege einen ?v=-Durchlauf ueber alle Seiten nach sich und haette mit dieser
+   Seite nichts zu tun. Deshalb steht es hier, am body dieser einen Seite.
+
+   NICHT betroffen: die Zusage-Kachel. Der Auftraggeber hat am 25.09.2026
+   ausdruecklich gesagt, ihre Farbe solle bleiben, wie sie ist - sie hat seit
+   AP-466 gar kein Gruen mehr und bekommt auch keines. */
+body.ueber-page {
+  --mobile-logo-green-rgb: 86 230 7;
+}
+
 /* AP-407: Unter 481px traegt die Seite #1B1E19 statt #171916 - die Regel dafuer
    steht in styles.css und gilt fuer alle Seiten. Sie greift hier aber nicht:
    .ueber-page ist eine Klasse und schlaegt `html, body` unabhaengig von der
@@ -68,12 +86,55 @@
   }
 }
 
-/* Der gruene Steg vor den Sektionsueberschriften ist das wiederkehrende
+/* Der gruene Steg vor den Sektionsueberschriften war das wiederkehrende
    Zeichen dieser Seite - dieselbe Rolle wie die Schraege auf der Startseite,
-   nur ruhiger. */
-.ueber-steg {
-  padding-left: 20px;
-  border-left: 4px solid var(--home-lime);
+   nur ruhiger. Er ist seit AP-455 (Ueberschriften zentriert) und AP-466
+   (Zusage-Kachel) vollstaendig entfallen. Der senkrechte Steg der
+   Person-Sektion (Zeile 396) ist ein anderes Bauteil und bleibt. */
+/* AP-455: Schriftbild der Startseiten-Abschnittsueberschrift
+   (privat-form.css:4199) - auf Ansage des Auftraggebers, und derselbe Griff wie
+   in AP-452 fuer den Seitentitel dieser Seite, AP-432 fuer die Kontaktseite und
+   AP-415 fuer Kontakt und Galerie. Die Werte sind woertlich die von dort, damit
+   die Unterseiten nicht auseinanderlaufen.
+
+   Uebernommen ist der komplette Satz, nicht nur Schriftart, Groesse und
+   Zentrierung: Baloo 2 mit der Laufweite -.028em und der Zeilenhoehe 1.05 der
+   bisherigen H2 saehe gedraengt aus - die Werte gehoeren zusammen.
+
+   Anders als die Vorlage gilt das hier auf ALLEN Breiten. Auf der Startseite
+   steht der Satz in einer Medienabfrage bis 480px; darueber faellt die
+   Ueberschrift dort auf .type-section-title zurueck - genau die Regel, die
+   diese H2 bis AP-455 trug. Oberhalb 480px waere also nur die Zentrierung neu
+   gewesen. Der Auftraggeber wollte ein Schriftbild, kein zweigeteiltes.
+
+   Hier stand bis AP-455 .ueber-steg: 20px Einzug und ein 4px starker gruener
+   Balken links, an genau diesen beiden Ueberschriften und sonst nirgends. Er
+   ist mit der Zentrierung entfallen - ein linker Balken widerspricht der Mitte.
+   Die Zusage-Kachel trug ihn danach als letzte; seit AP-466 auch dort nicht
+   mehr. Das Motiv gibt es auf dieser Seite nicht mehr.
+
+   Ersatzschrift ist var(--display) statt sans-serif. Das greift nur, wenn
+   Baloo 2 nicht laedt; das @font-face dafuer steht seit AP-447 am Dateikopf.
+
+   Spezifitaet (0,1,0) - gleichauf mit .type-section-title aus styles.css:253,
+   und diese Datei laedt danach. */
+.ueber-abschnitt-titel {
+  font-family: "Baloo 2", var(--display);
+  font-size: 31px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: -.015em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+@media (max-width: 360px) {
+  /* AP-455: Dieselbe Stufe wie die Vorlage (privat-form.css:4224) und wie auf
+     den anderen Unterseiten. Sie muss HINTER der Grundregel stehen: beide
+     Selektoren wiegen (0,1,0), und bei Gleichstand entscheidet die
+     Reihenfolge. */
+  .ueber-abschnitt-titel { font-size: 28px; }
 }
 
 /* --- Kopf ---------------------------------------------------------------- */
@@ -198,9 +259,17 @@
    Geblieben ist die Behandlung des ausgezeichneten Wortes: aufrecht statt
    kursiv, in der Akzentfarbe - wie zuvor an .ueber-leitsatz em. Kein Zitat,
    deshalb weiterhin keine Anfuehrungszeichen; er soll auch keines vortaeuschen. */
+/* AP-467: #56E607 ist --mobile-logo-green (styles.css:84). Der Auftraggeber hat
+   als Vorbild den Schriftzug "Ihr Fachteam" der Startseite markiert; die Datei
+   maik-rohdich-ihr-fachteam-v4.png traegt ihn auf 160.734 von 160.734 deckenden
+   Pixeln, also zu 100 Prozent. Nicht geschaetzt, sondern ausgelesen - dasselbe
+   Ergebnis hatte AP-405 beim Telefon-Glyph.
+   Geaendert wird auf Ansage ausdruecklich NUR die Schriftfarbe gruener Texte und
+   die Pfeile der Kette. Kachelrahmen, Pfeilring, Hero-Linie, Kopf und Fuss
+   bleiben auf ihrem bisherigen Ton. */
 .ueber-betrieb__wort .type-section-title em {
   font-style: normal;
-  color: var(--home-lime);
+  color: var(--mobile-logo-green);
 }
 
 /* --- Die Person ----------------------------------------------------------
@@ -218,7 +287,29 @@
   overflow: hidden;
   /* AP-453: Hier stand padding-bottom: 0 aus AP-444. Es galt dem Foto, das den
      Abschnitt bis AP-452 abschloss; seit das Foto am Seitenanfang steht, endet
-     der Abschnitt wieder mit dem Zitat und braucht sein Polster. */
+     der Abschnitt wieder mit dem Zitat und braucht sein Polster.
+
+     AP-460: Das Polster ist halbiert. Zwischen dem Zitat "Kein Auftrag ist uns
+     zu klein." und der Ueberschrift "Ehrlich beraten, sauber gebaut" lagen
+     gemessene 104px bei 400px und 223px bei 1280px - zweimal --space-section,
+     einmal von dieser Sektion nach unten und einmal von .ueber-betrieb nach
+     oben. Auf Ansage des Auftraggebers (24.09.2026) auf die Haelfte.
+
+     Der Wert ist --space-section halbiert, nicht neu gegriffen:
+     clamp(52px, 7.5vw, 96px) wird zu clamp(26px, 3.75vw, 48px). So folgt die
+     Naht weiter demselben Verlauf ueber die Breiten wie alle anderen
+     Sektionsabstaende der Seite.
+
+     Beide Seiten der Naht tragen die Haelfte, nicht eine Seite die ganze
+     Kuerzung: Sonst waere der Abstand von aussen nicht mehr symmetrisch, und
+     die naechste Aenderung an einer der beiden Sektionen haette eine
+     unerklaerliche Schieflage zur Folge. */
+  padding-bottom: clamp(26px, 3.75vw, 48px);
+}
+
+/* AP-460: Die Gegenseite derselben Naht - Begruendung an .ueber-inhaber. */
+.ueber-betrieb {
+  padding-top: clamp(26px, 3.75vw, 48px);
 }
 
 /* AP-442: Hier stand .ueber-inhaber__wasserzeichen - die grosse, gedaempfte
@@ -363,6 +454,16 @@
    der Platz gehoert jetzt der Faktenzeile. Ohne diese Regel blieben nur deren
    eigene 10px - nach einer 32px hohen Ueberschrift zu knapp. 16px ist der Wert,
    der vorher an derselben Stelle stand. */
+/* Die Ueberschrift traegt margin: 0 (Reset in styles.css), der Absatz ebenfalls -
+   ohne diese Regel klebt der erste Satz an der Grundlinie der Ueberschrift.
+   AP-445: Der Nachbar war bis hierher die Haltungszeile; sie ist entfallen, und
+   der Platz gehoert jetzt der Faktenzeile. Ohne diese Regel blieben nur deren
+   eigene 10px - nach einer 32px hohen Ueberschrift zu knapp. 16px ist der Wert,
+   der vorher an derselben Stelle stand.
+   AP-460: Hier standen kurzzeitig 8px (AP-459). Das beruhte auf einem
+   Missverstaendnis - gemeint war die Luecke zwischen dem Zitat der
+   Person-Sektion und dieser Ueberschrift, nicht der Abstand innerhalb des
+   Blocks. Zurueckgenommen. */
 .ueber-betrieb__wort .type-section-title + .ueber-betrieb__fakten { margin-top: 16px; }
 
 /* AP-376/AP-411: Diese Regel arbeitet mit dem Nachbar-Kombinator und kennt nur
@@ -418,33 +519,86 @@
 
 /* AP-411: Die Zusage-Kachel. Bewusst kein blockquote und ohne
    Anfuehrungszeichen - der Satz ist kein Zitat, sondern der Betrieb ueber sich
-   selbst. Derselbe Grundsatz wie bei der Ueberschrift, siehe oben. Der Steg ist
-   4px stark wie .ueber-steg, damit die Seite ein einziges Balkenmass kennt. */
+   selbst. Derselbe Grundsatz wie bei der Ueberschrift, siehe oben.
+
+   AP-466 (25.09.2026): Der gruene Steg ist weg. Er war 4px stark, dasselbe Mass
+   wie das frueher an .ueber-steg, und nach dessen Wegfall in AP-455 der letzte
+   Ort des Balkenmotivs auf dieser Seite. Auf Ansage des Auftraggebers entfaellt
+   er ganz - das Motiv ist damit vollstaendig von der Seite verschwunden.
+
+   Die Ecke ersetzt ihn als Formgeber: 15px/5px, woertlich die der Kacheln aus
+   "Fuer wen wir arbeiten" (Zeile 807) - der Auftraggeber hat genau diese als
+   Vorbild markiert. Vorher lief hier 0/16/16/0, ein Schnitt, der nur zusammen
+   mit dem Balken links Sinn ergab.
+
+   Die Farbe bleibt ausdruecklich unveraendert: var(--bg-elev) ohne Rahmen. Die
+   Vorbild-Kachel traegt seit AP-463 einen gruen getoenten Rahmen und einen
+   Verlauf - beides NICHT uebernommen, der Auftraggeber wollte allein die Form.
+   Die Kachel hebt sich damit nur noch ueber die Flaeche ab: #20241D auf einem
+   Seitengrund von #1B1E19. */
 .ueber-betrieb__zusage {
   margin: 20px 0 0;
   padding: 18px 18px 16px;
-  background: var(--bg-elev);
-  border-left: 4px solid var(--home-lime);
-  border-radius: 0 16px 16px 0;
+  /* AP-471: Die Flaeche selbst traegt den Gruenton - auf Ansage des
+     Auftraggebers. Der Rahmen aus AP-470 ist dafuer wieder weg.
+
+     Geschrieben als Beziehung, nicht als fester Hexwert: darunter liegt
+     weiterhin var(--bg-elev), darueber eine flache Lage --mobile-logo-green
+     bei 18 Prozent. So bleibt im Code lesbar, WORAUS der Ton entsteht, und er
+     zieht mit, falls --bg-elev je wechselt. Die Grundfarbe ist deckend, der
+     Ton ist deshalb auf jeder Breite derselbe - auch unter 481px, wo die Seite
+     #1B1E19 statt #171916 traegt.
+
+     Warum 18 und nicht mehr: Der zweite Absatz steht auf --ink-mute. Bei 25
+     Prozent faellt er auf 4,14:1 und damit unter die 4,5:1, die WCAG fuer
+     kleinen Text verlangt; bei 20 Prozent sind es 4,72:1, bei 18 rund 4,9:1.
+     Gerechnet vor dem Setzen, am Pixel nachgemessen. */
+  background-color: var(--bg-elev);
+  background-image:
+    linear-gradient(rgb(var(--mobile-logo-green-rgb) / .18),
+                    rgb(var(--mobile-logo-green-rgb) / .18));
+  border-radius: 15px 5px 15px 5px;
 }
 
+/* AP-468: Schriftbild des Startseiten-Satzes "Ein Garten ist mehr als eine
+   Flaeche ..." (.gate-welcome-statement, home-dark.css:1646) - auf Ansage des
+   Auftraggebers. Uebernommen sind Schriftart, Strichstaerke, Zeilenhoehe und
+   Laufweite; die Schriftgroesse bleibt ausdruecklich die bisherige
+   (--type-module-title-size), sie war nicht Teil des Auftrags.
+
+   Vorher: var(--display) in 700 mit 1.22/-.02em. Baloo 2 in derselben engen
+   Zeile saehe gedraengt aus - die 1.5 des Vorbilds gehoeren zur Schrift dazu,
+   ebenso die positive Laufweite. Beides geht deshalb mit.
+
+   Anders als das Vorbild gilt das hier auf ALLEN Breiten. Auf der Startseite
+   steht der Satz in einer Medienabfrage bis 480px; darueber gibt es ihn dort
+   gar nicht. Dieselbe Entscheidung wie bei AP-432, AP-452 und AP-455.
+
+   Ersatzschrift ist var(--display) statt sans-serif; das greift nur, wenn
+   Baloo 2 nicht laedt. Das @font-face dafuer steht seit AP-447 am Dateikopf.
+
+   Die Farbe bleibt: --ink hier, --home-on-dark dort - beide loesen auf
+   rgb(250,250,246) auf, es gibt also nichts zu uebernehmen. */
 .ueber-betrieb__zusage-satz {
   margin: 0;
-  font-family: var(--display);
-  font-weight: 700;
+  font-family: "Baloo 2", var(--display);
+  font-weight: 600;
   font-size: var(--type-module-title-size);
-  line-height: 1.22;
-  letter-spacing: -.02em;
+  line-height: 1.5;
+  letter-spacing: .015em;
+  text-wrap: pretty;
   color: var(--ink);
 }
 
-.ueber-betrieb__zusage-grund {
-  margin: 10px 0 0;
-  max-width: 42ch;
-  color: var(--ink-mute);
-  font-size: .90625rem;
-  line-height: 1.5;
-}
+/* AP-472: Hier stand .ueber-betrieb__zusage-grund - der Begruendungssatz unter
+   der Zusage. Er ist auf Ansage des Auftraggebers aus dem Markup entfernt; die
+   Regel greift damit nirgends mehr und faellt mit weg.
+
+   Folge fuer den Kachelton: Die 18 Prozent Gruen aus AP-471 waren durch genau
+   diesen Absatz begrenzt - er stand auf --ink-mute und brauchte als kleiner
+   Text 4,5:1. Uebrig ist nur noch die Zusage in --ink, die bei 10,4:1 liegt.
+   Ein kraeftigerer Ton waere jetzt moeglich; er ist nicht bestellt und deshalb
+   nicht gesetzt. */
 
 /* --- Alles aus einer Hand ------------------------------------------------- */
 
@@ -494,7 +648,9 @@
   content: "";
   width: 13px;
   height: 9px;
-  background: var(--home-lime);
+  /* AP-467: war --home-lime. Siehe die Begruendung am em der
+     Abschnittsueberschrift. */
+  background: var(--mobile-logo-green);
   clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
 }
 
@@ -687,8 +843,49 @@
      Umschalters (18px 5px) - die Seite bekommt damit kein neues Motiv, sondern
      ein vorhandenes. */
   border-radius: 15px 5px 15px 5px;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
+  /* AP-463: Flaeche, Rahmen und Schatten der Kachelfamilie vom Startseiten-
+     Verzeichnis (privat-form.css:4852 ff.) - auf Ansage des Auftraggebers.
+     Vorher: flaches var(--bg-elev) mit var(--line).
+
+     Genommen ist die GRUENE Fassung der Familie, nicht die markierte
+     Notdienst-Kachel. Deren Korallenrot steht auf der ganzen Seite fuer den
+     Notfall; drei Zielgruppen-Kacheln in Alarmfarbe wuerden die Bedeutung
+     aushoehlen. Bauweise, Verlauf, Rahmenstaerke und Schatten sind dieselben.
+
+     Der Rahmen steht im Vorbild auf rgba(151,206,32,.22) - #97CE20, ein
+     ausgemusterter Ton. AP-404 hat genau dieses Literal in footer-kontakt.css
+     auf --green-500 gezogen; hier gilt dieselbe Zuordnung, damit die Seite
+     keinen vierten Gruenton bekommt.
+
+     Der Schnitt 15px/5px bleibt: Er kam in AP-448 auf Ansage aus den
+     Eingabefeldern des Anfrageformulars. Das Vorbild faehrt 18px/5px - dieselbe
+     Familie, drei Pixel Unterschied; eine bestellte Entscheidung dafuer
+     zurueckzunehmen waere falsch. */
+  /* AP-478 (25.09.2026): Hier lag als erste Ebene ein gruener Lichtfleck
+     unten rechts - radial-gradient(circle at 92% 106%, Logogruen / .1,
+     transparent 38%). Auf Ansage des Auftraggebers entfallen. Der dunkle
+     Verlauf, Rahmen und Schatten bleiben. */
+  /* AP-483 (25.09.2026): Die Flaeche der Zusage-Kachel "Getroffene Absprachen
+     ..." (.ueber-betrieb__zusage, AP-471) - auf Ansage des Auftraggebers.
+     Woertlich dieselbe Beziehung: var(--bg-elev) mit einer flachen Lage
+     --mobile-logo-green bei 18 Prozent. Vorher der dunkle Verlauf
+     linear-gradient(145deg, #23291f, #1c211a) aus AP-463.
+     Kontrast nachgerechnet: der Beschreibungstext in --ink-2 steht darauf bei
+     rund 7,6:1, die weissen Ueberschriften hoeher.
+     Aendert sich die Flaeche der Zusage-Kachel, muss dieser Wert mit. */
+  background-color: var(--bg-elev);
+  background-image:
+    linear-gradient(rgb(var(--mobile-logo-green-rgb) / .18),
+                    rgb(var(--mobile-logo-green-rgb) / .18));
+  /* AP-479 (25.09.2026): Der Rahmen stand hier auf Logogruen / .22. Auf
+     Ansage des Auftraggebers ist der gruene Rand weg. transparent statt
+     border: 0 - die Kachel behaelt so ihren Pixel ringsum, Hoehen und
+     Textkanten ruecken nicht. Die Kante zeichnet jetzt allein der dunkle
+     Verlauf gegen den Seitengrund. */
+  border: 1px solid transparent;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .035),
+    0 12px 24px -24px rgba(0, 0, 0, .78);
   transition: border-color .16s var(--ease);
 }
 
@@ -700,6 +897,10 @@
      eigenen Elements. Ohne diese Zeile liefe er als Rechteck um eine
      geschnittene Kachel. */
   border-radius: 15px 5px 15px 5px;
+  /* AP-463: Rechts liegt jetzt die Pfeilpille (62px breit, 18px vom Rand).
+     Das Mass haelt Text und Pille auseinander - dasselbe tut im Vorbild das
+     padding-right von 6.25rem an .iphone-service-feature__body. */
+  padding-right: 92px;
   color: inherit;
   text-decoration: none;
 }
@@ -707,19 +908,33 @@
 /* Der Pfeil ist clip-path auf einem leeren Span - dieselbe Geometrie wie die
    Kettenpfeile darueber, kein zweites Pfeilmotiv im System. aria-hidden, weil
    er nichts sagt, was der Link nicht schon sagt. */
+/* AP-463: Hier stand ein 14x10px grosses Dreieck aus clip-path. An seine Stelle
+   tritt die Pille des Vorbilds (privat-form.css:5054): 3.875rem x 2.5rem auf
+   fast schwarzem Grund, mit einem gruenen Innenring, senkrecht mittig am
+   rechten Rand.
+
+   Der Pfeil kommt als Hintergrundbild statt als <img>, damit das Markup
+   unberuehrt bleibt - die Span ist leer und aria-hidden, ein Bild darin waere
+   nur Ballast. Das SVG traegt sein fill="#56E607" fest im Code; auf der
+   gruenen Kachel ist das genau richtig und braucht - anders als beim roten
+   Notdienst-Pendant - keine Maske. */
 .ueber-fuerwen__pfeil {
   position: absolute;
-  right: 16px;
-  top: 17px;
-  width: 14px;
-  height: 10px;
-  background: var(--green-500);
-  clip-path: polygon(0 38%, 62% 38%, 62% 0, 100% 50%, 62% 100%, 62% 62%, 0 62%);
-  opacity: .75;
+  top: 50%;
+  right: 18px;
+  width: 62px;
+  height: 40px;
+  border-radius: 999px;
+  background: #0e100d url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / 46px auto no-repeat;
+  box-shadow: inset 0 0 0 1px rgb(var(--mobile-logo-green-rgb) / .2);
+  transform: translateY(-50%);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .ueber-fuerwen__liste li:hover { border-color: var(--green-500); }
+  /* AP-479: Hier stand .ueber-fuerwen__liste li:hover { border-color:
+     var(--green-500) }. Mit ihm kaeme der gruene Rand beim Ueberfahren zurueck,
+     den der Auftraggeber entfernt haben will. Der Fokusring beim Tabben bleibt
+     gruen - er ist Bedienhilfe, kein Rand. */
 }
 
 /* Kein overflow: hidden an Liste oder Kachel - der Ring steht 3px ausserhalb. */
@@ -734,13 +949,18 @@
 
 .ueber-fuerwen__liste h4 {
   margin: 0 0 6px;
-  padding-right: 26px;              /* Platz fuer den Pfeil */
+  /* AP-463: Hier standen 26px fuer das alte Dreieck. Den Platz haelt jetzt das
+     padding-right der ganzen Kachel frei. */
   font-family: "Baloo 2", var(--display);
   font-weight: 700;
   font-size: 17px;
   line-height: 1.2;
   letter-spacing: normal;
-  color: var(--green-500);
+  /* AP-482 (25.09.2026): weiss - auf Ansage des Auftraggebers. --ink ist das
+     Weiss der Seite (#FAFAF6), dasselbe wie an den Abschnittsueberschriften.
+     Vorher --mobile-logo-green (AP-467), davor --green-500. Die Pfeilpillen
+     rechts bleiben gruen. */
+  color: var(--ink);
 }
 
 /* AP-476: Die Kartenueberschriften ("Private ...", "Gewerbe und
@@ -749,7 +969,7 @@
    ".gate-welcome-qualification-label" - "Sachkundiger", "Baumkontrolleur").
    Auf Ansage des Auftraggebers; derselbe Griff wie AP-435 fuer "Projekt
    ansehen" in der Galerie: Schriftart und Neigung. Groesse, Strichstaerke und
-   das Gruen bleiben, wie die Regel darueber sie setzt; die Versalien, die
+   die Farbe bleiben, wie die Regel darueber sie setzt; die Versalien, die
    Laufweite .025em und die helle Farbe des Vorbilds sind nicht uebernommen.
 
    Der Stapel ist woertlich der der Vorlage, ein System-Schriftstapel ohne
@@ -796,20 +1016,83 @@
   border-radius: 18px 5px 18px 5px;
 }
 
+/* AP-456: Der Kasten hielt bis hierher zwei Dinge nebeneinander - links
+   Ueberschrift und Zeile, rechts den Knopf "Alle Projekte". Der Knopf steht
+   jetzt unter den Beispielen, uebrig bleibt der Text. Damit sind flex,
+   space-between und align-items: end gegenstandslos.
+
+   margin-inline: auto ist neu und noetig: die Ueberschrift steht seit AP-455
+   mittig, der Kasten ist aber auf 56ch begrenzt. Ohne die Zentrierung des
+   Kastens saesse sie mittig IM Kasten und damit sichtbar links im Fenster -
+   genau der Fehler, den AP-415 auf der Galerieseite beschreibt. */
 .ueber-projekte__kopf {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 24px;
-  align-items: end;
-  justify-content: space-between;
   margin-bottom: clamp(20px, 2.6vw, 32px);
 }
 
-.ueber-projekte__kopf > div { flex: 1 1 360px; max-width: 56ch; }
-.ueber-projekte__kopf .lead { margin-top: 12px; }
+.ueber-projekte__kopf > div { max-width: 56ch; margin-inline: auto; }
+.ueber-projekte__kopf .lead { margin-top: 12px; text-align: center; }
 
-.ueber-projekte__spur .project-body { display: grid; gap: 6px; }
-.ueber-projekte__spur .card-more { margin-top: 6px; }
+/* AP-456: "Alle Projekte" in der Schrift der Qualifikationsschilder vom
+   Startseiten-Tor (home-dark.css:1796, ".gate-welcome-qualification-label" -
+   "Sachkundiger", "Baumkontrolleur"). Auf Ansage des Auftraggebers nur
+   Schriftart und Neigung - dieselbe Entscheidung wie in AP-435 fuer
+   "Projekt ansehen" in der Galerie, damit die beiden Stellen nicht
+   auseinanderlaufen. NICHT uebernommen sind deshalb die Versalien, die
+   Laufweite .025em, die helle Farbe, die Deckkraft .9 und die Schattierung des
+   Vorbilds; Groesse, Strichstaerke und Farbe bleiben, wie .btn sie setzt.
+
+   Der Stapel ist woertlich der der Vorlage. Es ist ein System-Schriftstapel
+   ohne @font-face - anders als bei "Baloo 2" ist also keine Datei nachzuziehen.
+   Wo keine der drei Schriften liegt, greift cursive, und was das ist,
+   entscheidet das Geraet. Dasselbe gilt am Tor der Startseite seit jeher.
+
+   Spezifitaet (0,3,0) gegen .btn (0,1,0) - der Selektor haengt an der Sektion,
+   damit .projects-more auf anderen Seiten unberuehrt bleibt. */
+.ueber-projekte .projects-more .btn {
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-style: italic;
+}
+
+/* AP-458: Hier stand display: grid mit gap: 6px. Der Abstand ist derselbe wie
+   in der Grundregel (styles.css:1147), das Raster war also nur wegen der
+   Zeilenpackung da - und es hat die Ausrichtung zerschlagen: In einem Raster
+   ist die letzte Zeile inhaltshoch, ein margin-top: auto haette dort keinen
+   Platz zu verteilen. Die Grundregel setzt den Koerper auf flex: 1 in einer
+   Spalte, und genau darauf ist .card-more mit margin-top: auto gerechnet.
+   Ort, Titel und Zeile stehen damit weiter oben gepackt - nur die Zeile
+   "Projekt ansehen" faellt ans untere Ende. */
+/* AP-457: "Projekt ansehen" in der Schrift der Qualifikationsschilder vom
+   Startseiten-Tor (home-dark.css:1796) - wie AP-435 es fuer dieselbe Zeile auf
+   der Galerieseite getan hat (projekte.css:53) und AP-456 fuer den Knopf
+   darunter. Wieder nur Schriftart und Neigung: Groesse, Strichstaerke, das
+   Gruen und die Unterstreichung beim Ueberfahren bleiben, wie styles.css:1171
+   sie setzt.
+
+   AP-435 hielt fest, die Reichweite sei auf Ansage nur die Galerie gewesen.
+   Diese Seite kommt jetzt dazu. Offen bleiben damit die sieben
+   Privatkunden-Leistungsseiten, auf denen dieselbe Kachel steht - dort ist die
+   Zeile weiter in der Hausschrift. Eine gemeinsame Regel in styles.css waere
+   die Aufloesung, zoege aber einen ?v=-Durchlauf ueber alle Seiten nach sich;
+   sie ist als eigenes AP angeboten.
+
+   Spezifitaet (0,2,0) gegen .card-more (0,1,0). */
+.ueber-projekte__spur .card-more {
+  /* AP-467: Die Zeile ist gruener Text, also faerbt sie mit. Die Grundregel in
+     styles.css:1171 setzt --green-500 fuer alle Seiten; hier steht der Ton nur
+     fuer diese Seite. Der Unterstrich beim Ueberfahren (styles.css:1184) geht
+     mit - er ist die Unterstreichung genau dieses Textes und saehe sonst in
+     einem anderen Gruen darunter. */
+  color: var(--mobile-logo-green);
+  /* AP-458: Hier stand margin-top: 6px. Das ueberschrieb das margin-top: auto
+     der Grundregel (styles.css:1171) - und deren Kommentar sagt genau, warum es
+     auto sein muss: "ein Text mit zwei statt drei Zeilen rueckte die Zeile
+     sonst sichtbar nach oben". Auf Ansage des Auftraggebers (24.09.2026) stehen
+     die drei Zeilen jetzt auf einer Hoehe. Gemessen war die mittlere Kachel mit
+     ihrer einzeiligen Ueberschrift 21px (400px) bzw. 8px (1280px) zu hoch.
+     Den Mindestabstand nach oben haelt weiter das padding-top: 8px von dort. */
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-style: italic;
+}
 
 /* AP-450: Hier stand der gesamte Regelsatz der Kachel "Kein Auftrag ist zu
    klein." - .ueber-klein__panel, __titel, __ruf samt Rahmen, Flaeche, Label,
@@ -946,11 +1229,55 @@
     scroll-snap-stop: always;
   }
 
-  /* Die Karte waechst sonst mit dem Text der Ueberschrift; im Karussell sollen
-     alle drei gleich hoch sein. */
-  .ueber-projekte__spur .project-body { align-content: start; }
+  /* AP-458: Hier stand .project-body { align-content: start }. Die Begruendung
+     dazu lautete, die Karte wachse sonst mit dem Text der Ueberschrift - das
+     trifft nicht zu: Die Karten sind Flex-Kinder der Spur und werden von
+     align-items: stretch auf gleiche Hoehe gezogen, gemessen 367px alle drei,
+     vor wie nach dieser Aenderung. align-content am Koerper konnte daran nichts
+     aendern. Seit der Koerper wieder eine Flex-Spalte ist (Zeile 878), greift
+     die Eigenschaft ohnehin nicht mehr - eine einzeilige Flexbox hat nichts zu
+     verteilen. Die sichtbare Wirkung, Text oben gepackt, leistet jetzt die
+     Grundregel selbst. */
 }
 
 @media (prefers-reduced-motion: reduce) {
   .ueber-projekte__spur { scroll-behavior: auto; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ueber-projekte__spur .project-card:hover .card-more {
+    border-bottom-color: var(--mobile-logo-green);
+  }
+}
+/* AP-477: "Alle Projekte" traegt den kompakten Galerie-CTA der Startseite. Die
+   Gestaltung steht vollstaendig in cta-family.css; hier bleiben nur die zwei
+   Dinge, die der Baustein nicht selbst mitbringen kann.
+
+   1. Zentrierung. .projects-more.center zentriert mit text-align: center
+      (styles.css:2818). Unter 480px ist der Knopf aber display: grid mit fester
+      Breite 184px, also ein Blockkasten - text-align erreicht ihn nicht, er
+      stuende links. Das Vorbild auf der Startseite loest dasselbe Problem mit
+      position: absolute; left: 50%; translateX(-50%); das ist dort die
+      Platzierung im Bildfuss der Galerie und waere hier fehl am Platz.
+
+   2. Ausblenden ab 481px. Oberhalb der Handybreite greift keine einzige Regel
+      aus cta-family.css - die Datei steht bis auf sieben Zeilen komplett in
+      max-width: 480px. Rahmen, Flaeche und Pfeilkapsel haetten dort weder
+      Position noch Masse und stuenden im Textfluss; das Pfeilbild allein ist
+      1883px breit. Dieselbe Falle und dieselbe Loesung beschreibt
+      projekte.css:177 fuer #galleryCta.
+
+      Anders als #galleryCta bekommt dieser Knopf keinen Ersatzpfeil und keine
+      gruene Pille: oberhalb 480px soll er bleiben, was er war - die schlichte
+      btn-ghost-Zeile in Comic Sans (AP-456, weiter oben in dieser Datei). */
+@media (max-width: 480px) {
+  .ueber-projekte .projects-more .maik-cta { margin-inline: auto; }
+}
+
+@media (min-width: 481px) {
+  .ueber-projekte .projects-more .maik-cta__frame,
+  .ueber-projekte .projects-more .maik-cta__shape,
+  .ueber-projekte .projects-more .maik-cta__arrow {
+    display: none;
+  }
 }
