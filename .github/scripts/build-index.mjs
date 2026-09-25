@@ -223,7 +223,8 @@ async function generatePages(projekte, taxLabels) {
   if (si !== -1 && ei !== -1 && ei > si) {
     const before = galleryHtml.slice(0, si + GAL_START.length);
     const after = galleryHtml.slice(ei);
-    const next = `${before}\n    ${renderGalleryList(projekte)}\n    ${after}`;
+    const sichtbareProjekte = projekte.filter((p) => p.inProjektGalerie !== false);
+    const next = `${before}\n    ${renderGalleryList(sichtbareProjekte)}\n    ${after}`;
     if (next !== galleryHtml) {
       await writeFile(GALLERY_INDEX, next, 'utf8');
       console.log('✅ Statische Galerie-Liste in projekte/index.html aktualisiert.');
@@ -359,6 +360,9 @@ async function validateProjekt(data, where, slug, validSlugs) {
   if (!isNonEmptyString(data.ort)) errors.push(`${where}: Pflichtfeld "ort" fehlt oder ist leer.`);
   if (!isNonEmptyString(data.beschreibung)) errors.push(`${where}: Pflichtfeld "beschreibung" fehlt oder ist leer.`);
   if (typeof data.featured !== 'boolean') errors.push(`${where}: Pflichtfeld "featured" muss true oder false sein.`);
+  if (data.inProjektGalerie !== undefined && typeof data.inProjektGalerie !== 'boolean') {
+    errors.push(`${where}: "inProjektGalerie" muss true oder false sein.`);
+  }
   if (!isValidDate(data.datum)) errors.push(`${where}: Pflichtfeld "datum" fehlt oder ist kein gültiges Datum (erwartet z. B. "2026-05-01").`);
 
   // kundentyp: Array aus privat/gewerbe
