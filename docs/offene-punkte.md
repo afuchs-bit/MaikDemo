@@ -2185,3 +2185,35 @@ Entfernung verlangt.
   unteren Abstand. Letzter sichtbarer Inhalt des Nachsatzes ist jetzt die Kette
   beziehungsweise die Schreibmaschine an ihrer Stelle; der Abstand nach unten kommt von der
   Sektion.
+
+---
+
+## AP-480 — Über-uns-Kopf: Titel über dem gerahmten Foto
+
+Auf Ansage des Auftraggebers vom **25.09.2026** ist der Kopf der Über-uns-Seite nach dem
+Muster der mobilen Leistungsseiten umgebaut (`leistung-mobile.css`, Variante
+„Titel über dem Foto", Vorbild Balkonkastenbepflanzung):
+
+- Krümelpfad oben links, darunter mittig der Titel „Über uns", darunter das Foto
+  gerahmt — 4:3, 16px Ecken, Schatten mit grünem Schimmer, Blütengruppe an der Ecke.
+- Den Knopf der Vorlage gibt es hier nicht.
+- **Auf allen Breiten**, nicht nur bis 480px wie bei der Vorlage. Am Rechner ist das
+  Foto auf 760px Breite gedeckelt; die Datei ist 900px breit.
+- Den Farbfilter der Vorlage auf dem Foto trägt das Bild bewusst nicht.
+
+### Was damit entfällt
+
+Das randlose Startbild aus AP-453/454: Schleier, diagonaler Schnitt, grüne Haarlinie und
+die Einzelblüte auf der Kante. Gegenstandslos sind damit auch die beiden Meldungen zu
+AP-454 — das Seitenverhältnis 21:10,4 statt 21:9 und die Höhe außerhalb des
+Abnahmefensters von 300–340px. Die Überschrift steht jetzt in 31px wie auf Galerie und
+Kontakt statt in `clamp(34px … 56px)`.
+
+### Weiter offen
+
+- **Die Unterzeile unter dem Startbild** (aus AP-453) liegt weiter nicht vor und wurde
+  nicht erfunden.
+- **Die Auflösung der Vorlage.** Am Rechner zeigt das Foto jetzt 760px statt bis zu
+  1280px — die Hochrechnung aus AP-443 fällt damit weitgehend weg. Bei doppelter
+  Pixeldichte bleibt sie; eine größere Vorlage behebt das weiterhin ohne Änderung an
+  Markup oder CSS.

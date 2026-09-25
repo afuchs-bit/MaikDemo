@@ -90,160 +90,102 @@
    kommt im Repo nicht mehr vor. */
 
 /* --- Startbild -------------------------------------------------------------
-   AP-453: Randloses Foto unter dem Seitenkopf, Ueberschrift im Bild, diagonaler
-   Abschluss nach rechts fallend, gruene Haarlinie auf der Schnittkante, Bluete
-   darauf. Das Auftragsdokument wollte dieses Muster von den Leistungsseiten
-   uebernehmen - dort gibt es keines, geprueft auf beiden Zweigen. Es ist hier
-   neu gebaut, auf ausdrueckliche Ansage des Auftraggebers.
+   AP-480 (25.09.2026): Umbau nach dem Muster "Titel ueber dem Foto" der mobilen
+   Leistungsseiten (leistung-mobile.css:95 ff., .lpv2-page--title-above), auf
+   Ansage des Auftraggebers. Das Foto liegt nicht mehr hinter Kruemelpfad und
+   Ueberschrift: oben links der Kruemelpfad, darunter mittig der Titel, darunter
+   das gerahmte Foto mit der Bluetengruppe an der Ecke. Den Knopf der Vorlage
+   gibt es hier nicht.
 
-   Der Abfall der Diagonale haengt an der Breite: 12.46vw entspricht tan(7,1deg),
-   dem Winkel aus --mobile-hero-slope-angle (home-dark.css:560). Unterhalb von
-   241px und oberhalb von 947px greift der clamp und die Schraege wird flacher -
-   das Projekt haelt den Winkel an seinen eigenen Umbruchstellen ebenfalls nicht
-   starr (7,1 / 7,6 / 8,2deg).
+   Entfallen ist das randlose Startbild aus AP-453/454: Schleier, diagonaler
+   Schnitt, gruene Haarlinie, Einzelbluete auf der Kante, die additive
+   Hoehenrechnung. Die Vorlage gilt dort nur bis 480px; hier gilt sie auf
+   Ansage auf allen Breiten, am Rechner mit gedeckelter Fotobreite.
 
-   Die Sektion steht ausserhalb von .container und ist damit von Haus aus
-   randlos - kein negativer Aussenabstand noetig wie noch in AP-441.
-
-   KEIN overflow: hidden. Die Bluete sitzt auf der Kante und ragt darueber
-   hinaus; ein Beschnitt haette sie halbiert. */
-/* AP-454: Der Hero beginnt jetzt unmittelbar an der Headerunterkante und nimmt
-   den Kruemelpfad auf. Er waechst dabei nach OBEN - die Unterkante mit Schnitt
-   und Bluete bleibt, wo sie war, darunter rueckt nichts.
-
-   Die Hoehe ist ADDITIV gerechnet, nicht neu gesetzt: der bisherige Wert plus
-   genau das, was der Kruemelstreifen samt dem frueheren Abstand darunter
-   eingenommen hat. Ein neu gegriffener Wert haette die Unterkante verschoben,
-   und darunter sollte sich nichts bewegen. Gemessen waren das 64px bei 390px
-   und 84px bei 1280px.
-
-   Am Rechner ist aspect-ratio dafuer entfallen. 42.86vw sind 100vw/(21:9), also
-   dieselbe Schraege wie zuvor; die 84px kommen danach dazu. Mit aspect-ratio
-   waere das Verhaeltnis der Deckel gewesen und die Unterkante haette gewandert.
-
-   margin-top ist entfallen: Der Hero ist erstes Kind von main, jeder Abstand
-   nach oben waere eine Luecke zwischen Header und Bild. */
+   Abstand Header -> Kruemelpfad und Kruemelpfad -> Titel wie auf der
+   Galerieseite (projekte.css:25 und :81), damit die Unterseiten oben gleich
+   beginnen. Gemessen dort: 44/28px bei 390px, 68/38px bei 1280px. */
 .ueber-hero {
-  --hero-abfall: clamp(30px, 12.46vw, 118px);
-  position: relative;
-  display: grid;
-  align-items: start;
-  min-height: calc(clamp(300px, 84vw, 400px) + clamp(58px, 16.4vw, 88px));
+  padding-top: var(--space-section-compact);
 }
 
-.ueber-hero picture {
-  position: absolute;
-  inset: 0;
-  display: block;
-}
+.ueber-hero .breadcrumbs { margin-bottom: clamp(28px, 3vw, 40px); }
+.ueber-hero .breadcrumbs ol { margin-bottom: 0; }
 
-.ueber-hero__bild {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Etwas oberhalb der Mitte: bei 330px Hoehe aus einem 4:3-Ausschnitt faellt
-     oben die Strasse und unten das Schnittgut heraus, die beiden Arbeitenden
-     bleiben im Bild. Visuell geprueft, nicht gerechnet. */
-  object-position: center 46%;
-}
-
-/* Schleier fuer die Lesbarkeit der Ueberschrift. Das Auftragsdokument hat am
-   fremden Vorbild gemessen, dass Weiss gegen die hellsten 5 Prozent des
-   Hintergrunds nur 2,57:1 traegt - unter der Grenze selbst fuer grosse Schrift.
-   Die Deckkraft hier ist am echten Foto nachgemessen, nicht uebernommen. */
-.ueber-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgb(14 16 13 / .82) 0%,
-    rgb(14 16 13 / .52) 46%,
-    rgb(14 16 13 / 0) 74%
-  );
-}
-
-/* AP-454: Kruemelpfad und Ueberschrift stehen in einem gemeinsamen Kasten -
-   sonst muessten beide Containerbreite und Seitenpolster einzeln fuehren und
-   koennten auseinanderlaufen. Der Kasten haelt auch den Abstand nach unten zur
-   Schnittkante, der bis AP-453 am Polster der Ueberschrift hing. */
-.ueber-hero__inhalt {
-  position: relative;
-  z-index: 2;
-  justify-self: center;
-  width: 100%;
-  max-width: var(--container);
-  padding: clamp(14px, 3.5vw, 24px) var(--gutter) calc(var(--hero-abfall) + clamp(26px, 6vw, 44px));
-}
-
-/* Der Kruemelpfad steht jetzt auf dem Foto. Die Grundregel styles.css:2212 gibt
-   ihm 20px nach unten; hier darf es enger sein, weil die Ueberschrift direkt
-   folgt. Farben bleiben die der Grundregel - der Schleier ist oben am
-   dichtesten, und der Kontrast ist dort nachgemessen. */
-.ueber-hero .breadcrumbs ol { margin-bottom: clamp(10px, 2.5vw, 16px); }
-
+/* Der Titel im Satz der Vorlage - derselbe wie auf Galerie (projekte.css:105)
+   und Kontakt: Baloo 2, 31px, 600. Bis AP-480 stand er im Foto und war mit
+   clamp(34px ... 56px) groesser gesetzt, weil er dort gegen das Bild bestehen
+   musste. Der Abstand nach unten ist das untere Polster der Vorlage (42px),
+   am Rechner leicht mitwachsend. */
 .ueber-hero__titel {
-  margin: 0;
+  margin: 0 0 clamp(42px, 4vw, 56px);
   padding: 0;
   font-family: "Baloo 2", var(--display);
-  font-size: clamp(2.125rem, 1.446rem + 2.785vw, 3.5rem);
+  font-size: 31px;
   font-weight: 600;
   font-style: normal;
-  line-height: 1.02;
+  line-height: 1.13;
   letter-spacing: -.015em;
   color: var(--ink);
+  text-align: center;
   text-wrap: balance;
 }
 
-/* Der Schnitt samt Haarlinie als EIN Verlauf. Der Kasten ist genau so hoch wie
-   der Abfall; "to bottom left" legt die 50-Prozent-Kante nach der Regel fuer
-   Eck-Schluesselwoerter exakt auf die Diagonale von oben links nach unten
-   rechts. Darueber bleibt das Bild stehen, darunter liegt der Seitengrund.
-   Zwei Pixel gruen dazwischen sind die Haarlinie - sie laeuft dadurch
-   zwangslaeufig bis an beide Raender, ohne Luecke. */
-.ueber-hero__linie {
-  position: absolute;
-  z-index: 3;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: var(--hero-abfall);
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom left,
-    transparent calc(50% - 1px),
-    var(--green-500) calc(50% - 1px),
-    var(--green-500) calc(50% + 1px),
-    var(--bg) calc(50% + 1px)
-  );
+@media (max-width: 360px) {
+  /* Dieselbe Stufe wie Vorlage und Galerie. Muss HINTER der Grundregel stehen,
+     beide Selektoren wiegen gleich. */
+  .ueber-hero__titel { font-size: 28px; }
 }
 
-/* Die Bluete sitzt auf der Kante, unten rechts - dort laeuft der Schnitt am
-   tiefsten. rohdich-blume.png war seit AP-449 unbenutzt und kommt hier zurueck
-   in Gebrauch; ASSETS.md ist entsprechend nachgezogen. */
+/* Die Umrandung der Vorlage woertlich: 4:3, 16px Ecken, dunkler Schatten mit
+   gruenem Schimmer darunter. Die Breite ist die der Vorlage (32px Luft je
+   Seite); am Rechner gedeckelt auf 760px - die Fotodatei ist 900px breit,
+   groesser wuerde sie hochgerechnet und unscharf (siehe AP-443).
+
+   KEIN overflow: hidden an der figure. Die Bluete ragt ueber die Ecke hinaus;
+   beschnitten wird nur das Bild, ueber das picture darin. */
+.ueber-hero__foto {
+  position: relative;
+  width: min(calc(100% - 64px), 760px);
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow:
+    0 22px 38px -24px rgba(0, 0, 0, .88),
+    0 18px 34px -28px rgba(93, 224, 35, .62);
+}
+
+.ueber-hero__foto picture {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+/* Den Farbfilter der Vorlage (brightness/saturate/contrast) traegt das Foto
+   bewusst nicht - er ist Bildbearbeitung, keine Umrandung. object-position
+   bleibt bei 46%: im 4:3-Ausschnitt bleiben die beiden Arbeitenden im Bild. */
+.ueber-hero__bild {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+}
+
+/* Die Bluetengruppe der Vorlage (maik-rohdich-bluetengruppe-header-
+   transparent.png) an derselben Stelle: unten rechts ueber die Ecke hinaus.
+   Sie ersetzt die Einzelbluete rohdich-blume.png, die bis AP-480 auf der
+   Schnittkante sass. */
 .ueber-hero__bluete {
   position: absolute;
-  z-index: 4;
-  right: clamp(14px, 5vw, 48px);
-  bottom: -10px;
-  width: clamp(44px, 12vw, 62px);
-  aspect-ratio: 1;
-  background: url("../img/icons/rohdich-blume.png") center / contain no-repeat;
-  filter: drop-shadow(0 6px 8px rgb(0 0 0 / .45));
-  transform: rotate(-8deg);
+  z-index: 2;
+  right: -14px;
+  bottom: -18px;
+  width: clamp(4.0625rem, 20vw, 5rem);
+  height: auto;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .5));
   pointer-events: none;
-}
-
-@media (min-width: 900px) {
-  .ueber-hero {
-    min-height: calc(42.86vw + 84px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ueber-hero__bluete { transform: none; }
 }
 
 /* AP-453: Hier standen die Regeln der H1 im Seitenkopf (AP-452). Die H1 steht

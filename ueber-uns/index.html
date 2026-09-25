@@ -33,7 +33,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260925j" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260925n" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -329,32 +329,24 @@ html, body { background-color: #171916; }
        (AP-453 hatte zuvor schon die H1 dorthin geholt.) -->
 
   <!-- ===== Startbild ======================================================
-       AP-453 (24.09.2026): Randloses Foto unter dem Seitenkopf, Ueberschrift im
-       Bild, diagonaler Abschluss nach rechts fallend, gruene Haarlinie auf der
-       Schnittkante, Bluete darauf.
-
-       Das Auftragsdokument wollte dieses Muster von den Leistungsseiten
-       UEBERNEHMEN. Es gibt dort keines - deren Kopf ist Text (Kruemelpfad,
-       Kicker, H1, Lead, Knopf), auf beiden Zweigen geprueft. Das Muster ist
-       deshalb hier neu gebaut, auf ausdrueckliche Ansage des Auftraggebers, dem
-       der Befund vorlag. Der Winkel stammt aus dem Vokabular des Projekts
-       (--mobile-hero-slope-angle, home-dark.css:560), nicht aus dem Dokument.
+       AP-480 (25.09.2026): Umbau nach dem Muster "Titel ueber dem Foto" der
+       mobilen Leistungsseiten (Balkonkastenbepflanzung), auf Ansage des
+       Auftraggebers und auf allen Breiten. Das Foto liegt nicht mehr hinter
+       Kruemelpfad und Ueberschrift; es steht gerahmt darunter, mit der
+       Bluetengruppe an der Ecke. Der Knopf der Vorlage ist nicht uebernommen.
+       Bis hierher (AP-453/454) war es ein randloses Foto mit der Ueberschrift
+       darin, Schleier, schraegem Schnitt und gruener Haarlinie.
 
        Das Bild ist das LCP-Element: eager statt lazy, fetchpriority high.
-       width/height bleiben stehen, damit beim Laden nichts springt.
+       width/height bleiben stehen, damit beim Laden nichts springt. sizes
+       folgt der Fotobreite aus ueber-uns.css (100% - 64px, hoechstens 760px).
 
-       [OFFEN: Das Dokument sieht eine Unterzeile unter dem Schnitt vor - ein
-        Pendant zu "Ein Stueck Garten vor Ihrem Fenster". Der Satz liegt nicht
-        vor und wird nicht erfunden; der Slot bleibt weg. docs/offene-punkte.md] -->
+       [OFFEN: Das Auftragsdokument zu AP-453 sah eine Unterzeile unter dem
+        Startbild vor - ein Pendant zu "Ein Stueck Garten vor Ihrem Fenster".
+        Der Satz liegt nicht vor und wird nicht erfunden; der Slot bleibt weg.
+        docs/offene-punkte.md] -->
   <section class="ueber-hero">
-    <picture>
-      <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="100vw">
-      <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="100vw">
-      <img class="ueber-hero__bild" src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
-           alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
-           loading="eager" fetchpriority="high" decoding="async">
-    </picture>
-    <div class="ueber-hero__inhalt">
+    <div class="container ueber-hero__kopf">
       <nav class="breadcrumbs" aria-label="Brotkrumennavigation">
         <ol>
           <li><a href="../">Startseite</a></li>
@@ -363,8 +355,17 @@ html, body { background-color: #171916; }
       </nav>
       <h1 class="ueber-hero__titel">Über uns</h1>
     </div>
-    <span class="ueber-hero__linie" aria-hidden="true"></span>
-    <span class="ueber-hero__bluete" aria-hidden="true"></span>
+    <figure class="ueber-hero__foto">
+      <picture>
+        <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(max-width: 480px) calc(100vw - 64px), min(calc(100vw - 64px), 760px)">
+        <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(max-width: 480px) calc(100vw - 64px), min(calc(100vw - 64px), 760px)">
+        <img class="ueber-hero__bild" src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
+             alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
+             loading="eager" fetchpriority="high" decoding="async">
+      </picture>
+      <img class="ueber-hero__bluete" src="../assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png"
+           alt="" width="359" height="295" aria-hidden="true" decoding="async">
+    </figure>
   </section>
   <!-- ===== Das Team ======================================================
        AP-384: Der Absatz traegt seit dem 21.09.2026 den Text des Auftraggebers
