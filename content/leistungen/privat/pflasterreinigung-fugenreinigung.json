@@ -1,0 +1,91 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Pflasterreinigung / Fugenreinigung",
+  "navLabel": "Pflasterreinigung / Fugenreinigung",
+  "title": "Pflasterreinigung / Fugenreinigung in Herne | Maik Rohdich",
+  "metaDescription": "Wir bringen Ihre Flächen wieder zur Geltung: Moos auf dem Weg, Wildkraut in den Fugen oder Ablagerungen auf der Einfahrt? Mit einer fachgerechten…",
+  "serviceType": "Pflasterreinigung / Fugenreinigung",
+  "unterzeile": "Wir bringen Ihre Flächen wieder zur Geltung",
+  "einstieg": [
+    "Moos auf dem Weg, Wildkraut in den Fugen oder Ablagerungen auf der Einfahrt? Mit einer fachgerechten Pflasterreinigung und Fugenreinigung sorgen wir dafür, dass Ihre befestigten Flächen wieder gepflegt aussehen."
+  ],
+  "intro": "Moos auf dem Weg, Wildkraut in den Fugen oder Ablagerungen auf der Einfahrt? Mit einer fachgerechten Pflasterreinigung und Fugenreinigung sorgen wir dafür, dass Ihre befestigten Flächen wieder gepflegt aussehen.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir stimmen die Reinigung auf Steinart, Oberfläche und Zustand der Fugen ab. Bei geeigneten Belägen setzen wir auch eine Wildkrautbürste ein. Sie entfernt unerwünschten Bewuchs mechanisch aus den zugänglichen Fugen und Randbereichen."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Saubere Wege, Terrassen und Einfahrten",
+      "paragraphs": [
+        "Nicht jede Oberfläche verträgt dieselbe Behandlung. Deshalb sehen wir uns Ihre Fläche vor der Ausführung an und wählen das passende Verfahren. Muss Fugenmaterial ergänzt oder erneuert werden, besprechen wir die geeignete Ausführung mit Ihnen und übernehmen sie bei Bedarf mit."
+      ],
+      "bullets": [
+        "Reinigung von Pflasterflächen und geeigneten Terrassenbelägen",
+        "Mechanische Fugenreinigung und Entfernung von Wildkraut",
+        "Einsatz der Wildkrautbürste auf dafür geeigneten Flächen",
+        "Bearbeitung von Rändern, Übergängen und schwerer zugänglichen Bereichen",
+        "Aufnehmen und Abtransport des gelösten Materials nach Absprache"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die Reinigung Ihrer Pflasterflächen und Fugen und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Pflaster- und Fugenreinigung anfragen",
+  "faq": [
+    {
+      "frage": "Eignet sich die Wildkrautbürste für meine Pflasterfläche?",
+      "antwort": "Wir wählen das Reinigungsverfahren passend zu Ihrer Fläche. Bei geeigneten Steinoberflächen und Fugen setzen wir unsere Wildkrautbürste ein. Empfindliche oder beschichtete Beläge behandeln wir mit einer dafür geeigneten Vorgehensweise. Müssen Fugen erneuert oder einzelne Pflasterbereiche überarbeitet werden, übernehmen wir die anschließenden Arbeiten bei Bedarf ebenfalls."
+    },
+    {
+      "frage": "Wie bleiben die Fugen nach der Reinigung gepflegt?",
+      "antwort": "Samen und neue Ablagerungen können erneut Bewuchs entstehen lassen. Regelmäßige Pflege hilft, diesen frühzeitig zu entfernen. Wir übernehmen gerne wiederkehrende Reinigungsarbeiten und beraten Sie bei Bedarf auch zu einer geeigneten Erneuerung der Fugen."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/pflaster-fugenreinigung-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "gartenpflege"
+    },
+    {
+      "welt": "gewerbe",
+      "slug": "aussenanlagenpflege"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 22
+}

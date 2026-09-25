@@ -1,39 +1,102 @@
 {
+  "layout": "editorial-v2",
   "h1": "Dachbegrünung",
   "navLabel": "Dachbegrünung",
-  "title": "Dachbegrünung in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Dachbegrünung für Garagen, Carports und Flachdächer in Herne, Bochum und Recklinghausen – fachgerechter Aufbau, oft kommunal gefördert. Jetzt Termin anfragen.",
-  "serviceType": "Planung und Anlage von Dachbegrünungen",
-  "intro": "Wir begrünen Flachdächer, Garagen und Carports mit einem fachgerechten Aufbau aus Schutz-, Drän- und Substratschicht und standortgerechter Bepflanzung. Eine Dachbegrünung hält Regenwasser zurück, schützt die Dachhaut und verbessert das Kleinklima. In vielen Kommunen wird sie gefördert. Ob Ihr Dach dafür geeignet ist, klären wir vor der Planung mit Blick auf Statik und Abdichtung.",
-  "eignung": [
-    "Garagen, Carports und Nebengebäude mit Flachdach.",
-    "Flachdächer, die mehr sollen als nur Kies tragen.",
-    "Eigentümer, die Regenwasser zurückhalten und das Kleinklima verbessern möchten.",
-    "Wer eine kommunale Förderung für die Begrünung nutzen will."
+  "title": "Dachbegrünung in Herne | Maik Rohdich",
+  "metaDescription": "Gut für die Umwelt und schön anzusehen: Unter einem einfachen Kiesdach können die Temperaturen im Sommer stark ansteigen. Eine professionelle…",
+  "serviceType": "Dachbegrünung",
+  "unterzeile": "Gut für die Umwelt und schön anzusehen",
+  "einstieg": [
+    "Unter einem einfachen Kiesdach können die Temperaturen im Sommer stark ansteigen. Eine professionelle Dachbegrünung kann die sommerliche Aufheizung verringern und Temperaturschwankungen am Dach abmildern."
   ],
-  "ablauf": [
-    { "titel": "Eignung prüfen", "text": "Zuerst klären wir Statik, Abdichtung und Entwässerung. Nicht jedes Dach ist ohne Weiteres geeignet – das gehört ehrlich vorab geprüft." },
-    { "titel": "Aufbau planen", "text": "Wir legen den Schichtaufbau fest – Schutzlage, Dränung, Substrat – und wählen eine Bepflanzung, die mit den Bedingungen auf dem Dach zurechtkommt." },
-    { "titel": "Aufbau herstellen", "text": "Die Schichten werden fachgerecht aufgebracht, sodass die Dachhaut geschützt bleibt und Wasser sauber abläuft." },
-    { "titel": "Bepflanzung", "text": "Meist kommen genügsame, trockenheitsverträgliche Pflanzen zum Einsatz, die wenig Pflege brauchen." }
+  "intro": "Unter einem einfachen Kiesdach können die Temperaturen im Sommer stark ansteigen. Eine professionelle Dachbegrünung kann die sommerliche Aufheizung verringern und Temperaturschwankungen am Dach abmildern.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Die Bepflanzung trägt zum Klimaschutz bei. Sie bindet Kohlenstoffdioxid (CO₂) und hält Wasser zurück. Auch Feinstaub wird von den Pflanzen gebunden.",
+        "Eine Dachbegrünung macht auch den Ausblick schöner. Wo Sie aus dem Wohnraum, Büro oder Besprechungszimmer auf eine Dachfläche schauen, entsteht ein lebendiges Bild aus Grün und wechselnden Blüten. Gerade bei sichtbaren Garagen-, Anbau- und Gewerbedächern wird die Begrünung so zum Teil der Gestaltung. Wir stimmen die Pflanzen und ihre Wirkung auf Ihr Gebäude und die Umgebung ab."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Die Vorteile einer Dachbegrünung im Überblick",
+      "paragraphs": [
+        "Als Pflanzen nutzen wir hauptsächlich Sukkulenten wie Sedum sowie weitere geeignete pflegearme Pflanzenarten. Sie kommen mit wenig Wasser aus und sind hitze- und frostverträglich. Für die Anlage eignen sich insbesondere das Frühjahr und der Herbst, sofern die Witterung passt.",
+        "Vor der Bepflanzung werden Tragfähigkeit, wurzelfeste Abdichtung beziehungsweise Wurzelschutz und ein gezielter Wasserabfluss sichergestellt."
+      ],
+      "bullets": [
+        "Verringerung der sommerlichen Aufheizung und zusätzlicher Beitrag zum Wärmeschutz, abhängig vom Dachaufbau",
+        "Beitrag zum Schallschutz durch die zusätzliche Pflanz- und Substratschicht",
+        "Natürliche Filterfunktion der Pflanzen",
+        "Zusätzlicher Schutz vor Wettereinflüssen und mögliche Verlängerung der Lebensdauer der Dachabdichtung",
+        "Rückhalt eines Teils des Regenwassers und verzögerter Abfluss",
+        "Verbesserung des Arbeits- und Wohnumfeldes"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Dachfläche und Zugänglichkeit", "text": "Größe des Dachs und wie gut Material hinaufkommt, bestimmen den Grundaufwand." },
-    { "titel": "Statik und Aufbauhöhe", "text": "Was das Dach tragen kann, entscheidet über Substratstärke und damit über die möglichen Pflanzen." },
-    { "titel": "Abdichtung", "text": "Der Zustand der bestehenden Abdichtung muss stimmen – sonst ist zuerst dort etwas zu tun." },
-    { "titel": "Bepflanzungsart", "text": "Eine flache, genügsame Begrünung ist anders aufgebaut als eine intensivere mit höheren Pflanzen." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Auf jedes Dach kann man Grün legen.“", "text": "Statik und Abdichtung müssen mitspielen. Deshalb steht am Anfang die ehrliche Prüfung, ob und wie das Dach geeignet ist." },
-    { "titel": "„Ein grünes Dach macht viel Arbeit.“", "text": "Eine flache Begrünung mit genügsamen Pflanzen braucht wenig Pflege – meist ein bis zwei Kontrollen im Jahr." },
-    { "titel": "„Förderung ist zu kompliziert, das lohnt nicht.“", "text": "Viele Kommunen fördern Dachbegrünung. Ob es in Ihrem Fall zutrifft, lässt sich mit einem Blick auf die örtlichen Programme klären." }
-  ],
+  "abschluss": "Zu allen Fragen rund um die Planung und Pflege Ihrer Dachbegrünung und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Dachbegrünung anfragen",
   "faq": [
-    { "frage": "Wird Dachbegrünung gefördert?", "antwort": "Häufig ja, über kommunale Programme. Ob und in welcher Höhe eine Förderung möglich ist, hängt vom Ort ab und ändert sich von Kommune zu Kommune. Wir weisen im Beratungstermin darauf hin und prüfen mit Ihnen, ob für Ihr Dach eine Förderung in Frage kommt. Den Antrag stellen Sie als Eigentümer selbst." },
-    { "frage": "Ist mein Dach überhaupt für eine Begrünung geeignet?", "antwort": "Das klären wir vor der Planung. Entscheidend sind Statik, Zustand der Abdichtung und die Entwässerung. Manche Dächer sind ohne Weiteres geeignet, andere brauchen Vorarbeit. Wir sagen Ihnen ehrlich, was möglich ist – auch dann, wenn eine Begrünung an Ihrem Dach nicht sinnvoll ist." },
-    { "frage": "Wie viel Pflege braucht ein begrüntes Dach?", "antwort": "Eine flache Begrünung mit genügsamen, trockenheitsverträglichen Pflanzen braucht wenig Pflege – in der Regel ein bis zwei Kontrollgänge im Jahr, bei denen Fremdbewuchs entfernt und die Entwässerung geprüft wird. Wichtig ist vor allem, dass die Abläufe frei bleiben, damit das Wasser weiter sauber abfließt." },
-    { "frage": "Was bringt eine Dachbegrünung überhaupt?", "antwort": "Sie hält einen Teil des Regenwassers zurück und entlastet so die Entwässerung, sie schützt die Dachhaut vor Temperaturschwankungen und UV-Strahlung und verbessert das Kleinklima rund ums Gebäude. Gerade auf gut einsehbaren Garagen- und Carportdächern ist ein grünes Dach zudem angenehmer anzusehen als eine Kiesfläche." }
+    {
+      "frage": "Eignet sich mein Garagendach für eine Begrünung?",
+      "antwort": "Viele Garagendächer bieten gute Voraussetzungen. Wir klären, welcher Aufbau zu Ihrem Dach passt und welche Vorbereitungen erforderlich sind. Dabei werden Tragfähigkeit, Abdichtung, Dachneigung und Wasserabfluss berücksichtigt. So erhalten Sie einen konkreten Vorschlag für die Umsetzung."
+    },
+    {
+      "frage": "Welche Pflege braucht eine Dachbegrünung?",
+      "antwort": "Auch eine extensive Dachbegrünung braucht Pflege. Dazu gehören das Entfernen unerwünschten Bewuchses und die Kontrolle der Abläufe. Wir übernehmen diese Arbeiten gerne regelmäßig für Sie. Bei Gewerbeobjekten und Wohnanlagen lässt sich die Betreuung des Gründachs mit unserer Objekt- & Grünflächenpflege verbinden."
+    },
+    {
+      "frage": "Gibt es Fördermöglichkeiten für eine Dachbegrünung?",
+      "antwort": "Ja. Je nach Standort und Vorhaben kommen Förderprogramme für private und gewerbliche Dachflächen infrage. Im Emscher-Lippe-Gebiet bietet beispielsweise Klima.Werk entsprechende Programme an. Klären Sie die Fördermöglichkeiten bereits während der Planung, damit die erforderliche Antragstellung vor Beginn der Arbeiten erfolgen kann. Wir stimmen die geplante Ausführung gerne auf die jeweiligen Anforderungen ab."
+    }
   ],
-  "nachbarn": ["bepflanzung", "gartengestaltung"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/dachbegruenung-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "bepflanzung"
+    },
+    {
+      "welt": "privat",
+      "slug": "ersatz-ausgleichspflanzungen"
+    },
+    {
+      "welt": "privat",
+      "slug": "sichtschutzbepflanzung"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 8
 }

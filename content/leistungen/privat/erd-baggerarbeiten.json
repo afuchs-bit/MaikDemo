@@ -1,0 +1,90 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Erd- & Baggerarbeiten",
+  "navLabel": "Erd- & Baggerarbeiten",
+  "title": "Erd- & Baggerarbeiten in Herne | Maik Rohdich",
+  "metaDescription": "Schnell und unkompliziert: Fast jeder Eigenheimbesitzer hat schon mal versucht, seinen Garten mit dem Spaten umzugraben, und dann festgestellt, wie…",
+  "serviceType": "Erd- & Baggerarbeiten",
+  "unterzeile": "Schnell und unkompliziert",
+  "einstieg": [
+    "Fast jeder Eigenheimbesitzer hat schon mal versucht, seinen Garten mit dem Spaten umzugraben, und dann festgestellt, wie langwierig und anstrengend das sein kann."
+  ],
+  "intro": "Fast jeder Eigenheimbesitzer hat schon mal versucht, seinen Garten mit dem Spaten umzugraben, und dann festgestellt, wie langwierig und anstrengend das sein kann.",
+  "inhalt": [
+    {
+      "heading": "Wir übernehmen für Sie",
+      "paragraphs": [
+        "Unser moderner und gepflegter Fuhrpark sowie gut ausgebildete und erfahrene Mitarbeiter erledigen die vereinbarten Arbeiten inklusive der Entsorgung.",
+        "Welche Maschinen eingesetzt werden können, klären wir anhand der Aufgabe und der Zufahrt. Den Umfang von Aushub, Abtransport und Entsorgung stimmen wir vorab mit Ihnen ab.",
+        "Nach dem Aushub übernehmen wir bei Bedarf auch die weiteren Arbeiten. Ob ein Pool, ein Gartenteich oder eine neue Gartenfläche entstehen soll: Wir stimmen die Vorbereitung auf die spätere Nutzung ab und begleiten Ihr Projekt bis zur fertigen Gestaltung."
+      ],
+      "bullets": [
+        "Ausschachtarbeiten, z. B. zur Gebäudeabdichtung und -dämmung",
+        "Gründungsarbeiten für Ihren privaten oder gewerblichen Neubau nach den jeweiligen Planvorgaben",
+        "Aushub für Pools, Gartenteiche und weitere Gartenbauprojekte",
+        "Entfernen von großen Wurzeln mit der „Wurzelratte“",
+        "Kleine und große Erdarbeiten sowie Vorbereitungen für die Entwässerung"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um Ihre Erd- und Baggerarbeiten und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Erdarbeiten anfragen",
+  "faq": [
+    {
+      "frage": "Sind Baggerarbeiten auch in einem kleinen Garten möglich?",
+      "antwort": "Ja. Auch kleine Gärten und schmale Zufahrten gehören zu unseren Aufgaben. Wir sehen uns die Zugänge und die verfügbare Arbeitsfläche an und wählen die passende Vorgehensweise. Mit geeigneten Maschinen, angepassten Arbeitsabläufen und ergänzender Handarbeit finden wir eine Lösung für Ihr Vorhaben."
+    },
+    {
+      "frage": "Übernehmen Sie auch den Abtransport des Aushubs?",
+      "antwort": "Ja. Wir besprechen vorab, welches Material auf dem Grundstück weiterverwendet werden kann und was abgefahren werden soll. Den vereinbarten Abtransport und die fachgerechte Entsorgung übernehmen wir für Sie."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/erd-baggerarbeiten-baggerarm-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "vermessung-lasertechnik"
+    },
+    {
+      "welt": "privat",
+      "slug": "pool-whirlpool-umfeld"
+    },
+    {
+      "welt": "privat",
+      "slug": "teichbau"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 10
+}

@@ -1,0 +1,95 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Wurzelentfernung",
+  "navLabel": "Wurzelentfernung",
+  "title": "Wurzelentfernung in Herne | Maik Rohdich",
+  "metaDescription": "Freier Boden für Ihre nächsten Gartenpläne: Die alte Hecke ist entfernt, doch ihre Wurzeln sitzen noch im Boden? Oder ein großer Wurzelstock liegt genau…",
+  "serviceType": "Wurzelentfernung",
+  "unterzeile": "Freier Boden für Ihre nächsten Gartenpläne",
+  "einstieg": [
+    "Die alte Hecke ist entfernt, doch ihre Wurzeln sitzen noch im Boden? Oder ein großer Wurzelstock liegt genau dort, wo Ihre neue Terrasse entstehen soll? Wir entfernen störende Wurzelstöcke und größere Wurzeln im Bereich Ihrer geplanten Arbeiten."
+  ],
+  "intro": "Die alte Hecke ist entfernt, doch ihre Wurzeln sitzen noch im Boden? Oder ein großer Wurzelstock liegt genau dort, wo Ihre neue Terrasse entstehen soll? Wir entfernen störende Wurzelstöcke und größere Wurzeln im Bereich Ihrer geplanten Arbeiten.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Der Umfang richtet sich danach, wie Sie die Fläche anschließend nutzen möchten. Mit geeigneten Maschinen, Bagger und bei passenden Aufgaben unserer „Wurzelratte“ lösen und entfernen wir das vereinbarte Wurzelmaterial. Zufahrt, Boden und vorhandene Leitungen beziehen wir in die Planung ein."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Wir schaffen die Grundlage für Neues",
+      "paragraphs": [
+        "Gehören die Wurzeln zu einem Baum, der erhalten bleiben soll, beurteilen wir zunächst deren Bedeutung für Versorgung und Standsicherheit. Darauf stimmen wir die weiteren Arbeiten ab. Ist eine Entfernung an der vorgesehenen Stelle nicht vertretbar, zeigen wir Ihnen passende Alternativen für die Gestaltung und den Verlauf von Wegen oder Flächen."
+      ],
+      "bullets": [
+        "Entfernen von Wurzelstöcken nach Baumfällungen",
+        "Ausgraben alter Hecken- und Strauchwurzeln",
+        "Entfernen störender größerer Wurzeln in geplanten Bau- und Pflanzbereichen",
+        "Aufnehmen, Abtransport und Entsorgung des vereinbarten Materials",
+        "Vorbereitung der Fläche für die anschließenden Gartenarbeiten"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die Wurzelentfernung auf Ihrem Grundstück und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Wurzelentfernung besprechen",
+  "faq": [
+    {
+      "frage": "Was ist der Unterschied zum Stubbenfräsen?",
+      "antwort": "Beim Fräsen wird der Stumpf vor Ort zerkleinert. Bei der Wurzelentfernung werden Wurzelstöcke und störende Wurzeln im vereinbarten Umfang ausgegraben und herausgenommen. Welche Methode passt, hängt von Zugänglichkeit, Boden und der späteren Nutzung ab."
+    },
+    {
+      "frage": "Können Sie die Fläche anschließend neu anlegen?",
+      "antwort": "Ja. Wir bereiten sie passend zu Ihrem Vorhaben vor und übernehmen bei Bedarf die weitere Gestaltung, etwa mit neuen Pflanzen oder Rollrasen. Soll eine Terrasse oder ein Weg entstehen, berücksichtigen wir den dafür erforderlichen Bodenaufbau."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/stubbenfraeseneinsatz-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "baumkontrolle"
+    },
+    {
+      "welt": "privat",
+      "slug": "verkehrssicherheit"
+    },
+    {
+      "welt": "privat",
+      "slug": "baumpflege"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 36
+}

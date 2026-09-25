@@ -27,6 +27,7 @@ html, body { background-color: #171916; }
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="../../../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../../../assets/css/header-home.css?v=20260923d" />
+<link rel="stylesheet" href="../../../assets/css/footer-kontakt.css?v=20260921f" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -127,7 +128,7 @@ html, body { background-color: #171916; }
 }
 </script>
 </head>
-<body>
+<body class="lp-service-page">
 
 <!-- ============ LOGO SYMBOL (reused in header + footer) ============ -->
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
@@ -184,10 +185,11 @@ html, body { background-color: #171916; }
   </defs>
 </svg>
 
+<!-- BUILD:site-header:start -->
 <!-- ============ HEADER / NAV ============ -->
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
-    <a class="brand" href="../../../" aria-label="Maik Rohdich Garten- und Landschaftsbau – Startseite">
+    <a class="brand" href="../../../#top" aria-label="Maik Rohdich Garten- und Landschaftsbau – Startseite">
       <svg class="brand-logo" viewBox="0 0 640 150" role="img" aria-hidden="true">
         <use href="#brand-logo"/>
       </svg>
@@ -200,23 +202,24 @@ html, body { background-color: #171916; }
           <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-leistungen" aria-label="Alle Leistungen anzeigen">
             <svg class="submenu-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
+          <!-- BUILD:leistungen-submenu:start -->
           <ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
           <li class="nav-submenu-group">
             <span class="nav-submenu-head">Unsere Leistungen von A bis Z</span>
             <ul>
-              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/gartengestaltung/">Außergewöhnliches für den Garten</a></li>
-              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/bepflanzung/">Balkonkastenbepflanzung</a></li>
+              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/aussergewoehnliches-garten/">Außergewöhnliches für den Garten</a></li>
+              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/balkonkastenbepflanzung/">Balkonkastenbepflanzung</a></li>
               <li><a href="../../../privatkunden/leistungen/baumarbeiten/">Baumfällung</a></li>
               <li><a href="../../../privatkunden/leistungen/baumkontrolle/">Baumkontrolle</a></li>
-              <li><a href="../../../privatkunden/leistungen/baumarbeiten/">Baumpflege</a></li>
-              <li><a href="../../../privatkunden/leistungen/gartengestaltung/">Beleuchtung</a></li>
-              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/bepflanzung/">Bonsai / Formgehölze</a></li>
+              <li><a href="../../../privatkunden/leistungen/baumpflege/">Baumpflege</a></li>
+              <li><a href="../../../privatkunden/leistungen/beleuchtung/">Beleuchtung</a></li>
+              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/bonsai-formgehoelze/">Bonsai / Formgehölze</a></li>
               <li><a href="../../../privatkunden/leistungen/dachbegruenung/">Dachbegrünung</a></li>
-              <li><a href="../../../privatkunden/leistungen/gartengestaltung/">Entwässerung</a></li>
-              <li><a href="../../../privatkunden/leistungen/gartengestaltung/">Erd- &amp; Baggerarbeiten</a></li>
-              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/bepflanzung/">Ersatz- &amp; Ausgleichspflanzungen</a></li>
-              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/gartengestaltung/">Feuerstellen</a></li>
-              <li><a href="../../../privatkunden/leistungen/terrasse-pflasterarbeiten/">Findlinge und Natursteineinfassungen</a></li>
+              <li><a href="../../../privatkunden/leistungen/entwaesserung/">Entwässerung</a></li>
+              <li><a href="../../../privatkunden/leistungen/erd-baggerarbeiten/">Erd- &amp; Baggerarbeiten</a></li>
+              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/ersatz-ausgleichspflanzungen/">Ersatz- &amp; Ausgleichspflanzungen</a></li>
+              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/feuerstellen/">Feuerstellen</a></li>
+              <li><a href="../../../privatkunden/leistungen/findlinge-natursteineinfassungen/">Findlinge und Natursteineinfassungen</a></li>
               <li><a href="../../../privatkunden/leistungen/gartengestaltung/">Gartengestaltung</a></li>
               <li><a href="../../../privatkunden/leistungen/gartenpflege/">Gartenpflege</a></li>
               <li><a href="../../../privatkunden/leistungen/holzverkauf/">Kaminholz</a></li>
@@ -225,25 +228,26 @@ html, body { background-color: #171916; }
               <li><a href="../../../privatkunden/leistungen/palmen-winterfest/">Palmen winterfest</a></li>
               <li><a href="../../../privatkunden/leistungen/bepflanzung/">Pflanzarbeiten</a></li>
               <li><a href="../../../privatkunden/leistungen/terrasse-pflasterarbeiten/">Pflasterarbeiten</a></li>
-              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/terrasse-pflasterarbeiten/">Pflasterreinigung / Fugenreinigung</a></li>
+              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/pflasterreinigung-fugenreinigung/">Pflasterreinigung / Fugenreinigung</a></li>
               <li><a href="../../../privatkunden/leistungen/pool-whirlpool-umfeld/">Pool- &amp; Whirlpoolumfeld</a></li>
               <li><a href="../../../privatkunden/leistungen/rodungsarbeiten/">Rodungsarbeiten</a></li>
-              <li><a href="../../../privatkunden/leistungen/bepflanzung/">Rohdichs Grubengold</a></li>
-              <li><a href="../../../privatkunden/leistungen/gartengestaltung/">Rollrasen</a></li>
-              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/bepflanzung/">Saisonbepflanzung</a></li>
-              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/rodungsarbeiten/">Schredderarbeiten</a></li>
-              <li><a href="../../../privatkunden/leistungen/bepflanzung/">Sichtschutzbepflanzung</a></li>
-              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/rodungsarbeiten/">Stubbenfräseneinsatz</a></li>
+              <li><a href="../../../privatkunden/leistungen/rohdichs-grubengold/">Rohdichs Grubengold</a></li>
+              <li><a href="../../../privatkunden/leistungen/rollrasen/">Rollrasen</a></li>
+              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/saisonbepflanzung/">Saisonbepflanzung</a></li>
+              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/schredderarbeiten/">Schredderarbeiten</a></li>
+              <li><a href="../../../privatkunden/leistungen/sichtschutzbepflanzung/">Sichtschutzbepflanzung</a></li>
+              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/stubbenfraeseneinsatz/">Stubbenfräseneinsatz</a></li>
               <li><a href="../../../privatkunden/leistungen/teichbau/">Teichbau &amp; -technik</a></li>
-              <li><a href="../../../privatkunden/leistungen/terrasse-pflasterarbeiten/">Terrassenbau</a></li>
+              <li><a href="../../../privatkunden/leistungen/terrassenbau/">Terrassenbau</a></li>
               <li><a href="../../../privatkunden/leistungen/verkehrssicherheit/">Verkehrssicherheit herstellen</a></li>
               <li><a href="../../../privatkunden/leistungen/vermessung-lasertechnik/">Vermessungs- &amp; Lasertechnik</a></li>
               <li><a href="../../../privatkunden/leistungen/vorgarten/">Vorgartengestaltung</a></li>
-              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/rodungsarbeiten/">Wurzelentfernung</a></li>
-              <li><a href="../../../privatkunden/leistungen/terrasse-pflasterarbeiten/">Zäune &amp; Sichtschutz</a></li>
+              <li class="nav-entry--mobile-only"><a href="../../../privatkunden/leistungen/wurzelentfernung/">Wurzelentfernung</a></li>
+              <li><a href="../../../privatkunden/leistungen/zaeune-sichtschutz/">Zäune &amp; Sichtschutz</a></li>
             </ul>
           </li>
           </ul>
+          <!-- BUILD:leistungen-submenu:end -->
         </li>
         <li><a href="../../../projekte/">Galerie</a></li>
         <li><a href="../../../ueber-uns/">Über uns</a></li>
@@ -254,8 +258,20 @@ html, body { background-color: #171916; }
     </nav>
 
     <div class="header-actions">
+      <a class="header-instagram"
+         href="https://www.instagram.com/rohdich_garten_landschaftsbau/"
+         target="_blank" rel="noopener"
+         aria-label="Maik Rohdich auf Instagram ansehen">
+        <span class="header-instagram-glyph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+      </a>
       <div class="call-wrap">
-        <button type="button" class="btn btn-ghost call-btn" id="callBtn" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-ghost call-btn" id="callBtn" aria-label="Telefonnummer auswählen" aria-haspopup="true" aria-expanded="false">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
           <span>Anrufen</span>
         </button>
@@ -270,7 +286,7 @@ html, body { background-color: #171916; }
           </a>
         </div>
       </div>
-      <a class="btn btn-whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20ein%20Projekt%20gesehen..." target="_blank" rel="noopener">
+      <a class="btn btn-whatsapp" aria-label="WhatsApp-Nachricht senden" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20interessiere%20mich%20f%C3%BCr..." target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 720 720" fill="#fff" aria-hidden="true"><path d="M360,0C161.18,0,0,161.18,0,360c0,65.41,17.45,126.75,47.94,179.61L0,720l187.02-44.21c51.34,28.18,110.28,44.21,172.98,44.21,198.82,0,360-161.18,360-360S558.82,0,360,0ZM360,655.52c-60.17,0-116.13-17.98-162.82-48.87l-110.49,28.14,30.99-105.61c-33.53-47.93-53.2-106.26-53.2-169.19,0-163.21,132.31-295.52,295.52-295.52s295.52,132.31,295.52,295.52-132.31,295.52-295.52,295.52Z"/><path d="M444.35,407.52l87.1,41.06c4,1.88,6.56,5.94,6.2,10.34-.94,11.46-5.54,34.43-26.13,55.02-58.12,58.12-162.49-7.64-166.74-10.18-25.67-13.79-50.06-32.24-73.19-55.36s-41.58-47.52-55.37-73.19c-2.55-4.24-68.31-108.61-10.18-166.74,20.59-20.59,43.56-25.19,55.02-26.13,4.41-.36,8.46,2.2,10.34,6.2l41.07,87.1c1.94,4.12,1.09,9.02-2.13,12.24l-30.61,30.61c-6.62,6.62-8.56,16.93-4,25.11,11.17,20.03,26.19,39.32,43.59,57.07,17.75,17.4,37.04,32.43,57.07,43.59,8.18,4.56,18.48,2.62,25.11-4l30.61-30.61c3.22-3.22,8.12-4.08,12.24-2.13Z"/></svg>
         <span>WhatsApp</span>
       </a>
@@ -280,6 +296,7 @@ html, body { background-color: #171916; }
     </div>
   </div>
 </header>
+<!-- BUILD:site-header:end -->
 
 <main id="top">
 
@@ -427,7 +444,7 @@ html, body { background-color: #171916; }
         <div class="lp-linkgroup">
           <h3>Verwandte Leistungen</h3>
           <ul class="tag-list">
-            <li><a class="tag-link" href="../../../gewerbekunden/leistungen/aussenanlagenpflege/">Pflege &amp; Instandhaltung</a></li>
+            <li><a class="tag-link" href="../../../gewerbekunden/leistungen/aussenanlagenpflege/">Objekt- &amp; Grünflächenpflege</a></li>
           </ul>
         </div>
         <div class="lp-linkgroup">
@@ -475,6 +492,10 @@ html, body { background-color: #171916; }
             <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2a9.84 9.84 0 0 0-8.48 14.8L2.1 22l5.33-1.4A9.91 9.91 0 1 0 12.04 2Zm0 17.93a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.17.83.85-3.08-.2-.32a8.08 8.08 0 1 1 6.95 3.88Zm4.43-6.05c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21a7.37 7.37 0 0 1-1.35-1.68c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.41.08-.16.04-.3-.02-.42-.06-.12-.55-1.31-.75-1.8-.2-.47-.4-.41-.55-.42h-.46c-.16 0-.42.06-.65.3-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.72 2.62 4.16 3.67.58.25 1.04.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28Z"/></svg></span>
             <span><small>WhatsApp</small><strong>Nachricht senden</strong></span>
           </a>
+          <a class="footer-contact-link footer-contact-link--iphone-form" href="../../../#anfrage" aria-label="Kontaktformular öffnen und Kontakt aufnehmen">
+            <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg></span>
+            <span><small>Kontaktformular</small><strong>Kontakt aufnehmen</strong></span>
+          </a>
           <a class="footer-contact-link" href="tel:+492325585790">
             <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
             <span><small>Festnetz</small><strong>02325 / 58 57 90</strong></span>
@@ -484,7 +505,16 @@ html, body { background-color: #171916; }
             <span><small>E-Mail</small><strong>maik@rohdich.de</strong></span>
           </a>
         </div>
-        <p class="footer-hours"><strong>Mo–Fr 09:00–17:00 <span aria-hidden="true">·</span> Sa 09:00–12:00</strong><span>WhatsApp jederzeit <span aria-hidden="true">·</span> Besuche nach Vereinbarung</span></p>
+        <div class="footer-social-iphone" aria-label="Weitere Kontaktmöglichkeiten">
+          <p class="footer-social-availability"><span class="footer-social-line">WhatsApp jederzeit <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
+          <a class="footer-social-link footer-social-link--whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener" aria-label="Maik Rohdich über WhatsApp schreiben">
+            <span class="footer-social-icon footer-social-icon--whatsapp" aria-hidden="true"><img src="../../../assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+          </a>
+          <a class="footer-social-link footer-social-link--instagram" href="https://www.instagram.com/rohdich_garten_landschaftsbau/" target="_blank" rel="noopener noreferrer" aria-label="Maik Rohdich auf Instagram ansehen">
+            <span class="footer-social-icon footer-social-icon--instagram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>
+          </a>
+        </div>
+        <p class="footer-hours"><strong>Mo–Fr 09:00–17:00 <span aria-hidden="true">·</span> Sa 09:00–12:00</strong><span><span class="footer-hours-whatsapp">WhatsApp jederzeit <span aria-hidden="true">·</span> </span>Besuche nach Vereinbarung</span></p>
       </section>
     </div>
 

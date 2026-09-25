@@ -1,40 +1,95 @@
 {
+  "layout": "editorial-v2",
   "h1": "Vorgartengestaltung",
   "navLabel": "Vorgartengestaltung",
-  "title": "Vorgarten gestalten in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Vorgartengestaltung in Herne, Bochum und Recklinghausen – Naturstein, strukturierte Bepflanzung und Beleuchtung statt Schottertristesse. Jetzt Termin anfragen.",
-  "serviceType": "Gestaltung und Neuanlage von Vorgärten",
-  "intro": "Der Vorgarten ist das Erste, was man von einem Haus sieht – und oft in wenigen Tagen umgestaltet. Wir legen Vorgärten mit Naturstein, strukturierter Bepflanzung, sauberen Wegen und passender Beleuchtung an, pflegeleicht, aber lebendig. Diese überschaubare Projektgröße setzen wir gern und zügig um, meist in zwei bis drei Tagen, für Häuser in Herne und Umgebung.",
-  "eignung": [
-    "Häuser mit einem lieblosen oder zugewachsenen Vorgarten, der nicht mehr zum Haus passt.",
-    "Eigentümer, die eine pflegeleichte, aber lebendige Fläche statt reiner Schotterwüste möchten.",
-    "Wer einen sichtbaren Effekt mit überschaubarem Aufwand sucht.",
-    "Neubauten, bei denen die Eingangsseite noch Rohfläche ist."
+  "title": "Vorgartengestaltung in Herne | Maik Rohdich",
+  "metaDescription": "Ihr Aushängeschild: Der Vorgarten ist nicht mehr nur einfach der Eingangsbereich eines Grundstücks. Vielmehr dient er als Repräsentationsfläche und auf…",
+  "serviceType": "Vorgartengestaltung",
+  "unterzeile": "Ihr Aushängeschild",
+  "einstieg": [
+    "Der Vorgarten ist nicht mehr nur einfach der Eingangsbereich eines Grundstücks. Vielmehr dient er als Repräsentationsfläche und auf seine Gestaltung sollte großen Wert gelegt werden.",
+    "Nicht nur bei Privathaushalten, sondern vor allem im gewerblichen Bereich trägt ein gepflegter Vorgarten immens zum Erscheinungsbild bei."
   ],
-  "ablauf": [
-    { "titel": "Besichtigung", "text": "Wir schauen uns Fläche, Boden, Wegeführung und die Eingangssituation an und klären, was zum Haus passt." },
-    { "titel": "Entwurf", "text": "Material, Bepflanzung, Wegeführung und Beleuchtung stimmen wir aufeinander ab – zurückhaltend, aber mit Struktur." },
-    { "titel": "Umsetzung in wenigen Tagen", "text": "Weil die Fläche überschaubar ist, geht die Umsetzung meist zügig: Unterbau, Wege, Pflanzung und Licht." },
-    { "titel": "Feinheiten", "text": "Zum Schluss die Details, die den Unterschied machen – saubere Kanten, richtige Pflanzabstände, stimmige Beleuchtung." }
+  "intro": "Der Vorgarten ist nicht mehr nur einfach der Eingangsbereich eines Grundstücks. Vielmehr dient er als Repräsentationsfläche und auf seine Gestaltung sollte großen Wert gelegt werden. Nicht nur bei Privathaushalten, sondern vor allem im gewerblichen Bereich trägt ein gepflegter Vorgarten immens zum Erscheinungsbild bei.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Zum Vorgarten gehören neben der reinen Bepflanzung natürlich auch der Weg zu Ihrer Haustür und die Abgrenzung zur Straße hin durch einen Zaun oder eine Bepflanzung. Ebenso können ein PKW-Stellplatz oder Carport und ein sichtgeschützter Platz für die Mülltonne dazugehören.",
+        "Dieser Bereich gehört mit Sicherheit zu unseren Spezialitäten und wir haben in den vergangenen Jahren viele verschiedene Arten gestaltet. Wir stehen Ihnen gerne mit Vorschlägen für neue Inspirationen zur Seite."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Ihr Vorgarten von der Planung bis zur Pflege",
+      "paragraphs": [
+        "Wir erbringen alle Leistungen rund um die Planung, den Bau und die Pflege, sodass auch Ihr Vorgarten zum Aushängeschild Ihres Hauses wird."
+      ],
+      "bullets": [
+        "Bepflanzung und Gestaltung des Eingangsbereichs",
+        "Wege zur Haustür und Abgrenzung zur Straße",
+        "Einbindung von Stellplatz, Carport und Mülltonnenplatz in die Planung"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Fläche", "text": "Vorgärten sind meist überschaubar – das macht sie planbar und zügig umsetzbar." },
-    { "titel": "Untergrund", "text": "Wie tragfähig der Boden ist und was darunter liegt, entscheidet über den Unterbau der Wege und Flächen." },
-    { "titel": "Material", "text": "Naturstein, Pflaster, Kies und Pflanzen unterscheiden sich in Wirkung, Aufwand und Pflege." },
-    { "titel": "Entwässerung", "text": "Auch auf kleiner Fläche muss Regenwasser sauber ablaufen, statt sich vor der Haustür zu stauen." },
-    { "titel": "Beleuchtung", "text": "Ob und wie beleuchtet wird, bringt Leitungsführung und zusätzliche Arbeitsschritte mit sich." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Schotter ist pflegeleicht.“", "text": "Schotterflächen veralgen, verkrauten und lassen sich schwer sauber halten. Eine strukturierte Bepflanzung ist oft dankbarer, als viele denken." },
-    { "titel": "„Der Vorgarten ist zu klein, um etwas zu bewirken.“", "text": "Gerade weil die Fläche klein ist, verändert eine durchdachte Gestaltung den Eindruck des ganzen Hauses spürbar." },
-    { "titel": "„Pflanzen einfach dicht setzen wirkt gleich voll.“", "text": "Zu eng gesetzt konkurrieren Pflanzen und werden zum Dickicht. Der richtige Abstand ist auf Dauer entscheidend." }
-  ],
+  "abschluss": "Zu allen Fragen rund um die Gestaltung Ihres Vorgartens und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Vorgartenberatung vereinbaren",
   "faq": [
-    { "frage": "Wie lange dauert die Umgestaltung eines Vorgartens?", "antwort": "Ein Vorgarten ist meist in zwei bis drei Tagen fertig, weil die Fläche überschaubar ist. Genauer sagen wir es Ihnen nach der Besichtigung, wenn wir Untergrund, Material und Umfang kennen. Diese Projektgröße lässt sich in der Regel gut und zügig einplanen." },
-    { "frage": "Muss es immer Schotter sein, damit es pflegeleicht ist?", "antwort": "Nein – im Gegenteil. Schotterflächen veralgen und verkrauten mit der Zeit und lassen sich schwer sauber halten. Eine strukturierte, standortgerechte Bepflanzung kann pflegeleicht sein und wirkt lebendiger. Wir zeigen Ihnen Lösungen, die wenig Arbeit machen und trotzdem nicht kahl aussehen." },
-    { "frage": "Gehört Beleuchtung dazu?", "antwort": "Auf Wunsch ja. Eine zurückhaltende Beleuchtung setzt Wege und Eingang abends in Szene und erhöht zugleich die Sicherheit. Die Leitungsführung planen wir gleich mit ein, damit später nicht noch einmal aufgegraben werden muss." },
-    { "frage": "Passt die Gestaltung zum Stil des Hauses?", "antwort": "Das ist der Ausgangspunkt. Ein Vorgarten soll das Haus ergänzen, nicht überlagern. Wir stimmen Material, Farben und Bepflanzung auf die Architektur und die Umgebung ab, damit das Ergebnis stimmig wirkt und nicht aufgesetzt." }
+    {
+      "frage": "Wie wird mein Vorgarten pflegeleicht?",
+      "antwort": "Mit standortgerechten Pflanzen, sinnvoll angelegten Beeten und gut zugänglichen Flächen lässt sich der Aufwand verringern. Wir planen den späteren Pflegebedarf von Anfang an mit ein und übernehmen bei Bedarf auch die regelmäßige Vorgartenpflege."
+    },
+    {
+      "frage": "Lassen sich Mülltonnen und Stellplätze ansprechend integrieren?",
+      "antwort": "Ja. Wir planen die benötigten Flächen gemeinsam mit Wegen, Bepflanzung und Sichtschutz. Dabei achten wir auf kurze Wege und eine gute Zugänglichkeit. Auch bei wenig Platz entwickeln wir eine durchdachte Aufteilung, die zu Ihrem Eingangsbereich passt."
+    }
   ],
-  "nachbarn": ["gartengestaltung", "terrasse-pflasterarbeiten"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/vorgartengestaltung-findlinge-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "findlinge-natursteineinfassungen"
+    },
+    {
+      "welt": "privat",
+      "slug": "zaeune-sichtschutz"
+    },
+    {
+      "welt": "privat",
+      "slug": "terrassenbau"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 35
 }

@@ -1,0 +1,91 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Schredderarbeiten",
+  "navLabel": "Schredderarbeiten",
+  "title": "Schredderarbeiten in Herne | Maik Rohdich",
+  "metaDescription": "Nach dem Schnitt wieder Platz im Garten: Sie haben selbst Bäume gefällt, Sträucher zurückgeschnitten oder eine Hecke entfernt und jetzt liegen Äste und…",
+  "serviceType": "Schredderarbeiten",
+  "unterzeile": "Nach dem Schnitt wieder Platz im Garten",
+  "einstieg": [
+    "Sie haben selbst Bäume gefällt, Sträucher zurückgeschnitten oder eine Hecke entfernt und jetzt liegen Äste und Schnittgut im Garten? Wir übernehmen die Schredderarbeiten und kümmern uns nach Absprache um Abtransport und Entsorgung."
+  ],
+  "intro": "Sie haben selbst Bäume gefällt, Sträucher zurückgeschnitten oder eine Hecke entfernt und jetzt liegen Äste und Schnittgut im Garten? Wir übernehmen die Schredderarbeiten und kümmern uns nach Absprache um Abtransport und Entsorgung.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Mit unserem Häckseldienst zerkleinern wir geeignetes Ast- und Gehölzmaterial. Sie können uns auch dann beauftragen, wenn die Fäll- oder Schnittarbeiten nicht von uns ausgeführt wurden. Anschließend haben Sie wieder Platz für die weitere Gartengestaltung."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Das übernehmen wir für Sie",
+      "paragraphs": [
+        "Vor dem Einsatz klären wir, welches Material angefallen ist und wie wir es erreichen. Auch um verbliebene Stammstücke und Baumstümpfe kümmern wir uns. Mit unserem Stubbenfräseneinsatz oder einer passenden Wurzelentfernung bereiten wir die Fläche bei Bedarf für Ihre nächsten Gartenpläne vor."
+      ],
+      "bullets": [
+        "Schreddern und Häckseln geeigneter Äste und holzigen Schnittguts",
+        "Aufarbeitung von Material nach eigenen Fäll- und Rückschnittarbeiten",
+        "Abstimmung des Maschineneinsatzes auf Material und Zugänglichkeit",
+        "Abtransport und fachgerechte Entsorgung nach vereinbartem Umfang",
+        "Bei geeignetem Material: Belassen von Häckselgut zur weiteren Nutzung im Garten"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um Ihre Schredderarbeiten und die Entsorgung von Gehölzmaterial und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Schredderarbeiten anfragen",
+  "faq": [
+    {
+      "frage": "Kann das Häckselgut in meinem Garten bleiben?",
+      "antwort": "Ja, wenn Material und geplanter Einsatz dafür geeignet sind. Gesundes Gehölzmaterial kann beispielsweise für geeignete Mulchflächen verwendet werden. Wir beraten Sie dazu oder übernehmen den vereinbarten Abtransport, wenn Sie das Material nicht weiterverwenden möchten."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/schredderarbeiten-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "rodungsarbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "stubbenfraeseneinsatz"
+    },
+    {
+      "welt": "privat",
+      "slug": "wurzelentfernung"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 28
+}

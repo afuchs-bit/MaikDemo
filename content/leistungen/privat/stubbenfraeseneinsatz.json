@@ -1,0 +1,95 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Stubbenfräseneinsatz",
+  "navLabel": "Stubbenfräseneinsatz",
+  "title": "Stubbenfräseneinsatz in Herne | Maik Rohdich",
+  "metaDescription": "Der Baum ist weg und der Stumpf darf folgen: Nach einer Baumfällung bleibt häufig ein störender Stumpf zurück. Er steht beim Rasenmähen im Weg oder…",
+  "serviceType": "Stubbenfräseneinsatz",
+  "unterzeile": "Der Baum ist weg und der Stumpf darf folgen",
+  "einstieg": [
+    "Nach einer Baumfällung bleibt häufig ein störender Stumpf zurück. Er steht beim Rasenmähen im Weg oder verhindert die geplante Neugestaltung. Mit einer Stubbenfräse zerkleinern wir den Baumstumpf im Boden und schaffen Platz für die nächsten Arbeiten."
+  ],
+  "intro": "Nach einer Baumfällung bleibt häufig ein störender Stumpf zurück. Er steht beim Rasenmähen im Weg oder verhindert die geplante Neugestaltung. Mit einer Stubbenfräse zerkleinern wir den Baumstumpf im Boden und schaffen Platz für die nächsten Arbeiten.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Beim Stubbenfräseneinsatz wird der Wurzelstock schrittweise bis zur vereinbarten Tiefe abgetragen. Das kann eine gute Lösung sein, wenn ein großflächiges Ausgraben vermieden werden soll. Wir prüfen Zufahrt, Arbeitsraum und die spätere Nutzung der Fläche."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Baumstümpfe gezielt entfernen",
+      "paragraphs": [
+        "Vorhandene Leitungen, Steine und angrenzende Bauteile werden bei der Vorbereitung berücksichtigt. Soll anschließend Rasen wachsen oder ein Beet entstehen, übernehmen wir bei Bedarf auch das Auffüllen mit geeignetem Boden und die weitere Gestaltung."
+      ],
+      "bullets": [
+        "Beurteilung von Baumstumpf, Standort und Maschinenzugang",
+        "Fräsen des Stumpfes und angrenzender Wurzelansätze im vereinbarten Bereich",
+        "Abstimmung der Frästiefe auf das weitere Vorhaben",
+        "Aufnahme und Abtransport des Fräsguts nach Absprache",
+        "Vorbereitung der bearbeiteten Stelle für die anschließende Gestaltung"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um den Stubbenfräseneinsatz auf Ihrem Grundstück und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Stubbenfräseneinsatz anfragen",
+  "faq": [
+    {
+      "frage": "Werden beim Fräsen auch alle Wurzeln entfernt?",
+      "antwort": "Die Fräse bearbeitet den vereinbarten Bereich rund um den Stumpf. Weiter entfernte und tiefer liegende Wurzeln können im Boden bleiben. Wenn Ihr Vorhaben eine weitergehende Wurzelentfernung erfordert, stimmen wir die passenden Arbeiten mit Ihnen ab."
+    },
+    {
+      "frage": "Kann ich die Fläche nach dem Fräsen direkt neu nutzen?",
+      "antwort": "Wir bereiten die bearbeitete Stelle passend zu Ihren weiteren Plänen vor. Für ein Beet oder eine Rasenfläche gehören dazu geeigneter Boden und die Vorbereitung für Pflanzarbeiten oder Rollrasen. Soll eine befestigte Fläche entstehen, stellen wir den erforderlichen Unterbau her. So können die nächsten Arbeiten unmittelbar aufeinander abgestimmt werden."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/stubbenfraeseneinsatz-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "wurzelentfernung"
+    },
+    {
+      "welt": "privat",
+      "slug": "baumkontrolle"
+    },
+    {
+      "welt": "privat",
+      "slug": "verkehrssicherheit"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 30
+}

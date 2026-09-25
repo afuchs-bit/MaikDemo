@@ -1,40 +1,95 @@
 {
-  "h1": "Bepflanzung",
-  "navLabel": "Bepflanzung",
-  "title": "Bepflanzung & Pflanzplanung in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Standortgerechte Bepflanzung in Herne, Bochum und Recklinghausen – Stauden, Gehölze und Hecken, die zum Boden passen und dauerhaft funktionieren. Jetzt anfragen.",
-  "serviceType": "Pflanzplanung und Bepflanzung von Gärten",
-  "intro": "Wir planen und setzen Bepflanzungen, die zum Standort passen – Stauden, Gehölze, Hecken und Beete, abgestimmt auf Boden, Licht und den gewünschten Pflegeaufwand. Die richtige Pflanze am richtigen Ort wächst gut, braucht wenig Nacharbeit und sieht auch in einigen Jahren noch stimmig aus. Wir denken deshalb nicht nur an den Moment der Pflanzung, sondern an die Entwicklung.",
-  "eignung": [
-    "Neue Beete und Flächen, die von Grund auf bepflanzt werden sollen.",
-    "Bestehende Gärten, deren Bepflanzung müde geworden oder überwuchert ist.",
-    "Eigentümer, die eine pflegeleichte, aber lebendige Bepflanzung wünschen.",
-    "Wer eine Hecke als Sicht- oder Windschutz anlegen möchte."
+  "layout": "editorial-v2",
+  "h1": "Pflanzarbeiten",
+  "navLabel": "Pflanzarbeiten",
+  "title": "Pflanzarbeiten in Herne | Maik Rohdich",
+  "metaDescription": "Pflanzen, die zu Ihrem Garten passen: Bepflanzungen in Teilen oder komplett: Wir helfen Ihnen, die passenden Pflanzen auszuwählen und fachgerecht zu…",
+  "serviceType": "Pflanzarbeiten",
+  "unterzeile": "Pflanzen, die zu Ihrem Garten passen",
+  "einstieg": [
+    "Bepflanzungen in Teilen oder komplett: Wir helfen Ihnen, die passenden Pflanzen auszuwählen und fachgerecht zu setzen. Ob ein blühendes Beet am Sitzplatz, ein neuer Baum oder eine vollständige Neupflanzung – wir stimmen die Gestaltung auf Ihren Garten ab."
   ],
-  "ablauf": [
-    { "titel": "Standort ansehen", "text": "Wir beurteilen Boden, Licht und Feuchte. Erst das entscheidet, welche Pflanzen an dieser Stelle dauerhaft funktionieren." },
-    { "titel": "Pflanzplan", "text": "Wir stellen eine Auswahl zusammen, die in Wuchs, Blühzeit und Pflege zusammenpasst – und über das Jahr etwas hergibt." },
-    { "titel": "Bodenvorbereitung", "text": "Vor dem Pflanzen wird der Boden vorbereitet. Eine gute Ausgangslage erspart später viel Nacharbeit." },
-    { "titel": "Pflanzung mit Augenmaß", "text": "Wir setzen mit den richtigen Abständen, damit sich die Pflanzen entwickeln können, statt sich gegenseitig zu verdrängen." }
+  "intro": "Bepflanzungen in Teilen oder komplett: Wir helfen Ihnen, die passenden Pflanzen auszuwählen und fachgerecht zu setzen. Ob ein blühendes Beet am Sitzplatz, ein neuer Baum oder eine vollständige Neupflanzung – wir stimmen die Gestaltung auf Ihren Garten ab.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir achten auf Licht, Boden und den verfügbaren Platz. Gleichzeitig besprechen wir mit Ihnen, wie viel Pflege Sie später übernehmen möchten. So entsteht eine Bepflanzung, die sich an Ihrem Standort entwickeln kann und zu Ihrem Alltag passt."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Von der Auswahl bis zum Einpflanzen",
+      "paragraphs": [
+        "Wir berücksichtigen, wie groß die Pflanzen später werden und wie sie miteinander wirken. Blütezeiten, Wuchsformen und Abstände gehören deshalb genauso zur Planung wie der erste Eindruck nach dem Pflanzen. Vorhandenes Grün beziehen wir gerne in die Gestaltung ein. Bei der Bodenvorbereitung beraten wir Sie auch zum Einsatz unseres eigenen Kultursubstrats Rohdichs Grubengold. Die Anwendung stimmen wir auf die ausgewählten Pflanzen und die vorhandenen Bodenverhältnisse ab."
+      ],
+      "bullets": [
+        "Beratung und Zusammenstellung geeigneter Pflanzen",
+        "Anlegen und Überarbeiten von Beeten und Pflanzflächen",
+        "Pflanzen von Stauden, Sträuchern, Hecken und Bäumen",
+        "Vorbereitung und bedarfsgerechte Verbesserung des Bodens",
+        "Hinweise zum Wässern und zur weiteren Pflege"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Boden und Standort", "text": "Bodenart, Licht und Feuchte bestimmen die Pflanzenauswahl und den Aufwand der Vorbereitung." },
-    { "titel": "Flächengröße", "text": "Ein einzelnes Beet ist etwas anderes als die durchgehende Bepflanzung eines ganzen Gartens." },
-    { "titel": "Pflanzenwahl", "text": "Stauden, Gehölze und Heckenpflanzen unterscheiden sich in Preis, Anwuchs und Pflege." },
-    { "titel": "Bodenvorbereitung", "text": "Verdichteter oder nährstoffarmer Boden braucht mehr Vorarbeit, damit die Pflanzen anwachsen." },
-    { "titel": "Pflegeanspruch", "text": "Wie viel Nacharbeit die Bepflanzung später macht, hängt von der Auswahl ab – das planen wir mit." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Hauptsache, es blüht viel.“", "text": "Eine Bepflanzung, die nur im Frühjahr Effekt macht, wirkt den Rest des Jahres kahl. Wir planen über die Saison hinweg." },
-    { "titel": "„Dicht gepflanzt sieht gleich fertig aus.“", "text": "Zu eng gesetzt konkurrieren Pflanzen um Licht und Wasser. Mit dem richtigen Abstand wird es dauerhaft schöner." },
-    { "titel": "„Jede Pflanze wächst überall.“", "text": "Der Standort entscheidet. Eine Pflanze am falschen Ort kümmert, egal wie gut sie gepflegt wird." }
-  ],
+  "abschluss": "Zu allen Fragen rund um die Bepflanzung Ihres Gartens und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Pflanzarbeiten besprechen",
   "faq": [
-    { "frage": "Woher weiß ich, welche Pflanzen zu meinem Garten passen?", "antwort": "Das ergibt sich aus dem Standort. Wir sehen uns Boden, Licht und Feuchte an und wählen darauf abgestimmt Pflanzen aus, die an dieser Stelle dauerhaft funktionieren. So sparen Sie sich Fehlkäufe und Pflanzen, die nach einem Jahr wieder eingehen, weil sie am falschen Ort standen." },
-    { "frage": "Kann die Bepflanzung pflegeleicht sein und trotzdem gut aussehen?", "antwort": "Ja. Pflegeleicht heißt nicht kahl. Mit einer durchdachten Auswahl aus Stauden und Gehölzen, die zum Standort passen, entsteht eine lebendige Fläche, die über das Jahr etwas hergibt und wenig Nacharbeit braucht. Der Schlüssel liegt in der Planung, nicht in ständigem Nachbessern." },
-    { "frage": "Wann ist die beste Zeit zum Pflanzen?", "antwort": "Für viele Gehölze und Stauden eignen sich Frühjahr und Herbst besonders gut, weil die Pflanzen dann gut anwachsen. Container-Ware lässt sich in weiten Teilen des Jahres setzen. Was für Ihre Auswahl und Ihren Zeitplan sinnvoll ist, stimmen wir bei der Planung ab." },
-    { "frage": "Legen Sie auch Hecken an?", "antwort": "Ja. Ob als Sicht-, Wind- oder Lärmschutz – wir wählen die passende Heckenpflanze für den Standort und die gewünschte Höhe aus und setzen sie fachgerecht. Auch für den späteren Schnitt und die Pflege der Hecke sind wir der richtige Ansprechpartner." }
+    {
+      "frage": "Wie lässt sich eine schöne und pflegeleichte Bepflanzung gestalten?",
+      "antwort": "Standortgerechte Pflanzen und eine durchdachte Zusammenstellung können den Pflegeaufwand verringern. Gerade während des Anwachsens braucht eine Pflanzung dennoch Aufmerksamkeit. Gerne übernehmen wir die anschließende Gartenpflege für Sie."
+    },
+    {
+      "frage": "Wie versorge ich meine neuen Pflanzen mit Wasser?",
+      "antwort": "Wir erklären Ihnen, wie Sie die neue Pflanzung bedarfsgerecht wässern. Wie viel Wasser nötig ist, hängt unter anderem von Wetter, Boden und Pflanzenart ab. Bei Bedarf stimmen wir auch die weitere Betreuung mit Ihnen ab."
+    }
   ],
-  "nachbarn": ["gartengestaltung", "gartenpflege"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/pflanzarbeiten-bienenpflanze-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "ersatz-ausgleichspflanzungen"
+    },
+    {
+      "welt": "privat",
+      "slug": "sichtschutzbepflanzung"
+    },
+    {
+      "welt": "privat",
+      "slug": "bonsai-formgehoelze"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 20
 }

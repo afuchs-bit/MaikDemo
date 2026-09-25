@@ -1,0 +1,78 @@
+{
+  "layout": "legacy-document",
+  "h1": "Rohdichs Grubengold",
+  "navLabel": "Rohdichs Grubengold",
+  "title": "Rohdichs Grubengold in Herne | Maik Rohdich",
+  "metaDescription": "Der Endgegner im Bereich Substrate: Die Rohdich Gartenmanufaktur präsentiert: Rohdichs Grubengold – das Kultursubstrat für alle, die ihren Pflanzen gute…",
+  "serviceType": "Rohdichs Grubengold",
+  "unterzeile": "Der Endgegner im Bereich Substrate",
+  "einstieg": [
+    "Die Rohdich Gartenmanufaktur präsentiert: Rohdichs Grubengold – das Kultursubstrat für alle, die ihren Pflanzen gute Bedingungen bieten wollen. Ob Cannabis, Gemüse oder Zierpflanzen: Mit Grubengold schaffen Sie die Grundlage für starkes Wachstum."
+  ],
+  "intro": "Die Rohdich Gartenmanufaktur präsentiert: Rohdichs Grubengold – das Kultursubstrat für alle, die ihren Pflanzen gute Bedingungen bieten wollen. Ob Cannabis, Gemüse oder Zierpflanzen: Mit Grubengold schaffen Sie die Grundlage für starkes Wachstum.",
+  "inhalt": [
+    {
+      "heading": "Warum Rohdichs Grubengold der Endgegner unter den Substraten ist",
+      "paragraphs": [
+        "Rohdichs Grubengold aus der Rohdich Gartenmanufaktur – für Pflanzen, die begeistern!"
+      ],
+      "bullets": [
+        "Power für Cannabis und Gemüse: Die Nährstoffversorgung unterstützt kräftige Wurzeln und das gesunde Wachstum Ihrer Pflanzen. Die Anwendung stimmen wir auf die jeweilige Kultur ab.",
+        "Gute Belüftung: Dank lockerer Struktur wird der Wurzelraum mit Sauerstoff versorgt.",
+        "Wasserspeichernd: Grubengold speichert Wasser für die Pflanzenversorgung. Damit keine Staunässe entsteht, bleiben angepasste Bewässerung und ein geeigneter Wasserabfluss wichtig.",
+        "Bodenverbesserung passend zum Standort: Ob Sand- oder Lehmboden – wir beraten Sie zum geeigneten Einsatz und zur benötigten Menge."
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um den Einsatz von Rohdichs Grubengold und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Grubengold anfragen",
+  "faq": [
+    {
+      "frage": "Wie lässt sich Grubengold in meinem Garten einsetzen?",
+      "antwort": "Pflanzen haben unterschiedliche Ansprüche an Substrat, Nährstoffe und Feuchtigkeit. Deshalb besprechen wir vorab, was Sie pflanzen und wie der vorhandene Boden beschaffen ist. Daraus ergibt sich die passende Anwendung."
+    },
+    {
+      "frage": "Wie viel Grubengold brauche ich?",
+      "antwort": "Die passende Menge richtet sich nach Fläche oder Pflanzgefäß und der geplanten Verwendung. Erzählen Sie uns, was Sie pflanzen möchten. Gemeinsam klären wir die Maße, die Anwendung und die geeignete Menge."
+    },
+    {
+      "frage": "Kann ich Rohdichs Grubengold auch selbst kaufen und verwenden?",
+      "antwort": "Ja. Sie erhalten Rohdichs Grubengold auch zur eigenen Anwendung, unabhängig von einem Gartenbauauftrag. Erzählen Sie uns, was Sie pflanzen möchten. Wir beraten Sie zur passenden Menge und zur Verwendung für Ihre Pflanzen."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/rohdichs-grubengold-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [],
+  "diagram": "",
+  "sourceSection": 25
+}

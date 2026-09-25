@@ -1,42 +1,96 @@
 {
-  "h1": "Pool- und Whirlpool-Umfeld",
-  "navLabel": "Pool- & Whirlpool-Umfeld",
-  "title": "Pool- & Whirlpool-Umfeld in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Pool- und Whirlpool-Umfeld in Herne, Bochum und Recklinghausen – Poolausschachtung, Terrasse, Technikbereich und Bepflanzung aus einer Hand. Jetzt Termin anfragen.",
-  "serviceType": "Gestaltung des Umfelds von Pool und Whirlpool inklusive Erdarbeiten",
-  "rechner": true,
-  "intro": "Rund um Pool und Whirlpool schaffen wir das Umfeld, das den Unterschied macht – von der Ausschachtung über Terrasse und Technikbereich bis zur Bepflanzung. Die Poolausschachtung und die Erdarbeiten bieten wir aktiv an, ebenso die Gestaltung des Whirlpool-Umfelds. So kommt alles aus einer Hand und die Übergänge zwischen Wasser, Technik und Garten passen zusammen, statt nachträglich zusammengestückelt zu werden.",
-  "eignung": [
-    "Bauherren, die einen Pool planen und das Umfeld gleich mitdenken möchten.",
-    "Whirlpool-Besitzer, die den Bereich drumherum stimmig gestalten wollen.",
-    "Grundstücke, auf denen für den Pool ausgeschachtet und Erde bewegt werden muss.",
-    "Eigentümer, die Ausschachtung, Terrasse und Bepflanzung lieber bei einem Ansprechpartner bündeln."
+  "layout": "editorial-v2",
+  "h1": "Pool- & Whirlpoolumfeld",
+  "navLabel": "Pool- & Whirlpoolumfeld",
+  "title": "Pool- & Whirlpoolumfeld in Herne | Maik Rohdich",
+  "metaDescription": "Ihre kleine Auszeit beginnt vor der Terrassentür: Wer träumt nicht von einer eigenen Wellness-Oase? Ein Pool oder Whirlpool bringt das Urlaubsgefühl nach…",
+  "serviceType": "Pool- & Whirlpoolumfeld",
+  "unterzeile": "Ihre kleine Auszeit beginnt vor der Terrassentür",
+  "einstieg": [
+    "Wer träumt nicht von einer eigenen Wellness-Oase? Ein Pool oder Whirlpool bringt das Urlaubsgefühl nach Hause. Mit einer passenden Umrandung, einem geschützten Sitzplatz und Grün in der Umgebung wird daraus ein Bereich, in dem Sie gerne Zeit verbringen."
   ],
-  "ablauf": [
-    { "titel": "Umfeld gemeinsam planen", "text": "Wir klären, wie Pool oder Whirlpool liegen, wo die Technik hinkommt und wie der Übergang in den Garten aussehen soll." },
-    { "titel": "Ausschachtung und Erdarbeiten", "text": "Für den Pool schachten wir aus und bewegen die Erde. Zugänglichkeit und Untergrund bestimmen hier den Aufwand am stärksten." },
-    { "titel": "Umgebung herstellen", "text": "Terrasse, Wege, Sichtschutz und der Technikbereich werden so gebaut, dass sie zusammen funktionieren und gut zugänglich sind." },
-    { "titel": "Bepflanzung und Feinschliff", "text": "Die passende Bepflanzung bindet den Bereich in den Garten ein – zum Schluss die Details, die den Aufenthalt angenehm machen." }
+  "intro": "Wer träumt nicht von einer eigenen Wellness-Oase? Ein Pool oder Whirlpool bringt das Urlaubsgefühl nach Hause. Mit einer passenden Umrandung, einem geschützten Sitzplatz und Grün in der Umgebung wird daraus ein Bereich, in dem Sie gerne Zeit verbringen.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir gestalten das Umfeld Ihres Pools oder Whirlpools und verbinden es mit Terrasse, Wegen und Garten. Bei Bedarf übernehmen wir das gesamte Projekt: von der Planung über den Aushub einschließlich Abtransport und fachgerechter Entsorgung bis zum Poolbau, zur Technik, zu den erforderlichen Anschlüssen und zur fertigen Außenanlage. So erhalten Sie Ihre Wellness-Oase als abgestimmtes Gesamtpaket aus einer Hand."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "So wird Ihr Poolbereich Teil des Gartens",
+      "paragraphs": [
+        "Mit unseren winterfesten Palmen und einer passenden Sichtschutzbepflanzung gestalten wir Ihren Poolbereich gerne als geschützten Rückzugsort. Die Beleuchtung planen wir so, dass Sie Ihren Lieblingsplatz auch am Abend genießen können.",
+        "Beläge müssen zur Nutzung im Freien und zur Nässebelastung passen. Bei der Planung berücksichtigen wir unter anderem Rutschhemmung, Pflege und Aufheizung in der Sonne. Die Tragfähigkeit einer Aufstellfläche stimmen wir auf die Vorgaben für das gefüllte Becken ab."
+      ],
+      "bullets": [
+        "Gestaltung von Umrandungen, Wegen und Aufenthaltsflächen",
+        "Auswahl geeigneter Beläge für den jeweiligen Einsatzbereich",
+        "Abstimmung von Höhen, Flächenaufbau, Zugängen und Wasserabfluss",
+        "Einplanung geschützter Liege- und Sitzbereiche",
+        "Einbindung passender Beleuchtung, Bepflanzung und Ausstattung"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Aushub und Erdarbeiten", "text": "Menge und Art des Aushubs sowie der Abtransport der Erde sind bei einem Pool oft der größte Posten." },
-    { "titel": "Untergrund", "text": "Bodenbeschaffenheit und Grundwasserstand entscheiden, wie aufwendig die Ausschachtung wird." },
-    { "titel": "Zugänglichkeit für Maschinen", "text": "Kann Technik auf das Grundstück oder muss vieles von Hand? Das wirkt sich bei Erdarbeiten besonders stark aus." },
-    { "titel": "Technik und Entwässerung", "text": "Der Technikbereich, Leitungen und die Entwässerung des Umfelds gehören von Anfang an mitgeplant." },
-    { "titel": "Umfeldgestaltung", "text": "Terrasse, Sichtschutz und Bepflanzung bestimmen, wie aufwendig die Fläche rund um das Wasser wird." },
-    { "titel": "Folgepflege", "text": "Wie viel Pflege das Umfeld später macht, hängt von Bepflanzung und Material ab – das planen wir mit." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Das Umfeld überlegen wir uns, wenn der Pool steht.“", "text": "Ausschachtung, Technikbereich und Terrasse greifen ineinander. Wer das Umfeld zu spät plant, gräbt oft doppelt." },
-    { "titel": "„Die Erde ist schnell weggebaggert.“", "text": "Aushub, Abtransport und die Zugänglichkeit fürs Gerät sind bei einem Pool häufig der aufwendigste Teil – nicht der Pool selbst." },
-    { "titel": "„Technik versteckt man später einfach.“", "text": "Ein gut geplanter, zugänglicher Technikbereich erspart im Betrieb viel Ärger. Nachträglich lässt er sich nur schwer sinnvoll unterbringen." }
-  ],
+  "abschluss": "Zu allen Fragen rund um Ihr Pool- oder Whirlpoolprojekt und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Poolumfeld planen",
   "faq": [
-    { "frage": "Übernehmen Sie die Poolausschachtung?", "antwort": "Ja. Die Ausschachtung und die Erdarbeiten für den Pool bieten wir aktiv an. Gerade dieser Teil – Aushub, Abtransport der Erde und die Zugänglichkeit fürs Gerät – ist bei einem Poolprojekt oft der aufwendigste. Wenn Ausschachtung und Umfeld aus einer Hand kommen, greifen die Arbeitsschritte sauber ineinander." },
-    { "frage": "Gestalten Sie auch das Umfeld eines Whirlpools?", "antwort": "Ja. Ein Whirlpool wirkt erst durch sein Umfeld – Terrasse, Sichtschutz, Beleuchtung und Bepflanzung. Wir gestalten den Bereich so, dass er zum Garten passt und angenehm zu nutzen ist. Ob großer Pool oder Whirlpool: Uns geht es darum, dass das Umfeld stimmig ist, nicht um eine bestimmte Größe." },
-    { "frage": "Was kostet ein Pool-Umfeld?", "antwort": "Das lässt sich pauschal nicht sagen, weil der Aufwand stark schwankt – vor allem durch Aushub, Untergrund und Zugänglichkeit. Diese Kostentreiber erklären wir Ihnen offen, damit Sie einschätzen können, was Ihr Vorhaben bestimmt. Konkrete Zahlen nennen wir erst nach der Besichtigung, wenn wir die Bedingungen vor Ort kennen." },
-    { "frage": "Kann ein Teich oder Wasserlauf das Umfeld ergänzen?", "antwort": "Ja. Eine natürliche Uferzone oder ein Wasserlauf lässt sich stimmig an das Pool-Umfeld anschließen und verbindet den Technikbereich mit einem naturnahen Teil des Gartens. Wichtig ist, beides gemeinsam zu planen, damit Übergänge, Technik und Bepflanzung zueinander passen." }
+    {
+      "frage": "Wann sollte das Umfeld von Pool oder Whirlpool geplant werden?",
+      "antwort": "Möglichst bevor Pool oder Whirlpool aufgestellt beziehungsweise eingebaut werden. Dann können Höhen, Zugänge, Leitungswege und notwendige Anschlüsse gemeinsam abgestimmt werden."
+    },
+    {
+      "frage": "Übernehmen Sie auch den Poolbau und die Pooltechnik?",
+      "antwort": "Ja. Von der Planung über den Poolbau und die Pooltechnik bis zu den erforderlichen Anschlüssen und der Umfeldgestaltung bieten wir Ihnen das Gesamtpaket aus einer Hand. Sie haben mit uns einen Ansprechpartner, der die einzelnen Arbeiten aufeinander abstimmt und das gesamte Projekt betreut."
+    }
   ],
-  "nachbarn": ["terrasse-pflasterarbeiten", "teichbau"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/pool-whirlpool-garten-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "teichbau"
+    },
+    {
+      "welt": "privat",
+      "slug": "gartengestaltung"
+    },
+    {
+      "welt": "privat",
+      "slug": "aussergewoehnliches-garten"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 23
 }

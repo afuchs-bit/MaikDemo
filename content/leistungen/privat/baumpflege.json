@@ -1,0 +1,92 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Baumpflege",
+  "navLabel": "Baumpflege",
+  "title": "Baumpflege in Herne | Maik Rohdich",
+  "metaDescription": "Die Schattenspender in unserem Lebensraum: Wir pflegen und erhalten Ihre Bäume und sorgen für gesundes Grün. Im städtischen Umfeld verringern oftmals…",
+  "serviceType": "Baumpflege",
+  "unterzeile": "Die Schattenspender in unserem Lebensraum",
+  "einstieg": [
+    "Wir pflegen und erhalten Ihre Bäume und sorgen für gesundes Grün.",
+    "Im städtischen Umfeld verringern oftmals schlechte Standortverhältnisse, ungenügende Bodenfläche und Bodenqualität, Versiegelung, Luftverschmutzung und Baumaßnahmen das gesunde Wachstum unserer Bäume."
+  ],
+  "intro": "Wir pflegen und erhalten Ihre Bäume und sorgen für gesundes Grün. Im städtischen Umfeld verringern oftmals schlechte Standortverhältnisse, ungenügende Bodenfläche und Bodenqualität, Versiegelung, Luftverschmutzung und Baumaßnahmen das gesunde Wachstum unserer Bäume.",
+  "inhalt": [
+    {
+      "heading": "Fachgerechte Pflegemaßnahmen rund um den Baum",
+      "paragraphs": [
+        "Welche Maßnahmen sinnvoll sind, richtet sich nach Baumart, Zustand und Standort. Bei Bedarf gehört auch ein Lichtraumprofilschnitt dazu, um Wege und Zufahrten freizuhalten. Wir beraten Sie zu einem passenden Pflegekonzept."
+      ],
+      "bullets": [
+        "Baumkontrolle im Sinne der Verkehrssicherungspflicht",
+        "Baumpflegeschnitt",
+        "Sicherungsmaßnahmen innerhalb der Baumkrone",
+        "Sturmschadenbeseitigung mit 24-Stunden-Notdienst",
+        "Totholzentfernung",
+        "Beurteilung von Rinden-, Holz- und Wurzelschäden sowie abgestimmte Maßnahmen",
+        "Baumfällung mit Hubsteigereinsatz und Seilklettertechnik",
+        "Ersatzbepflanzungen"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die Planung eines Pflegekonzepts für Ihre Bäume und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Baumpflege anfragen",
+  "faq": [
+    {
+      "frage": "Wie viel Rückschnitt ist für meinen Baum sinnvoll?",
+      "antwort": "Entscheidend sind Zustand, Baumart und Umgebung. Wir prüfen, welche gezielten Eingriffe zu Ihrem Baum und Ihren Vorstellungen passen. Würde ein gewünschter Schnitt dem Baum schaden, zeigen wir Ihnen eine geeignete Alternative. So erhalten Sie eine konkrete Empfehlung für die weitere Pflege."
+    },
+    {
+      "frage": "Wann ist der richtige Zeitpunkt für die Baumpflege?",
+      "antwort": "Der passende Zeitpunkt hängt von Baumart, Zustand und geplanter Maßnahme ab. Zusätzlich sind die geltenden Natur- und Artenschutzvorgaben zu berücksichtigen. Wir stimmen den Termin auf die fachlichen und rechtlichen Voraussetzungen ab."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/baumpflege-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "baumarbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "schredderarbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "rodungsarbeiten"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 5
+}

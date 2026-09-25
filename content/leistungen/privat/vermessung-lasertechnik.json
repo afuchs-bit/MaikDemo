@@ -1,39 +1,92 @@
 {
-  "h1": "Vermessungs- und Lasertechnik",
+  "layout": "editorial-v2",
+  "h1": "Vermessungs- & Lasertechnik",
   "navLabel": "Vermessungs- & Lasertechnik",
-  "title": "Vermessungs- & Lasertechnik im Garten – Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Höhen einmessen, Gefälle festlegen, Fluchten abstecken: Vermessungs- und Lasertechnik für Terrassen, Pflaster und Hanglagen in Herne und Umgebung. Jetzt anfragen.",
-  "serviceType": "Höhenaufnahme, Gefälleplanung und Absteckung im Garten- und Landschaftsbau",
-  "intro": "Bevor die erste Fläche aufgebaut wird, muss klar sein, wo sie liegt und wie sie fällt. Wir nehmen die Höhen des Grundstücks auf, legen Gefälle und Anschlusshöhen fest und stecken die Fluchten ab. Das ist die Arbeit, die man später nicht sieht – und die darüber entscheidet, ob Wasser abläuft und Kanten fluchten. Für Grundstücke in Herne und Umgebung.",
-  "eignung": [
-    "Terrassen, Wege und Einfahrten, auf denen kein Wasser stehen bleiben soll.",
-    "Grundstücke in Hanglage, bei denen Höhen und Stufen aufgehen müssen.",
-    "Anschlüsse an Haustür, Keller, Bordstein oder Nachbargrundstück.",
-    "Teiche, Poolumfelder und Entwässerungen, bei denen es auf wenige Zentimeter ankommt."
+  "title": "Vermessungs- & Lasertechnik in Herne | Maik Rohdich",
+  "metaDescription": "Damit Höhen und Anschlüsse zusammenpassen: Eine Terrasse muss zur Türschwelle passen, ein Weg an vorhandene Flächen anschließen und Regenwasser in die…",
+  "serviceType": "Vermessungs- & Lasertechnik",
+  "unterzeile": "Damit Höhen und Anschlüsse zusammenpassen",
+  "einstieg": [
+    "Eine Terrasse muss zur Türschwelle passen, ein Weg an vorhandene Flächen anschließen und Regenwasser in die geplante Richtung ablaufen. Mit Vermessungs- und Lasertechnik schaffen wir die Grundlage dafür, diese Details bei der Gestaltung Ihrer Außenanlage aufeinander abzustimmen."
   ],
-  "ablauf": [
-    { "titel": "Bestand aufnehmen", "text": "Wir messen die vorhandenen Höhen ein: Hausanschluss, Türschwellen, Bordstein, Geländeverlauf und bestehende Abläufe." },
-    { "titel": "Sollhöhen festlegen", "text": "Daraus ergeben sich Oberkanten und Gefälle – vom Gebäude weg und auf einen Punkt hin, an dem das Wasser bleiben darf." },
-    { "titel": "Abstecken", "text": "Fluchten, Höhen und Kanten werden auf dem Grundstück markiert, sodass jeder Arbeitsschritt eine Bezugsgröße hat." },
-    { "titel": "Während der Ausführung prüfen", "text": "Beim Aufbau wird nachgemessen. So fällt eine Abweichung auf, solange sie noch ohne Aufwand zu korrigieren ist." }
+  "intro": "Eine Terrasse muss zur Türschwelle passen, ein Weg an vorhandene Flächen anschließen und Regenwasser in die geplante Richtung ablaufen. Mit Vermessungs- und Lasertechnik schaffen wir die Grundlage dafür, diese Details bei der Gestaltung Ihrer Außenanlage aufeinander abzustimmen.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir erfassen die für das Gartenbauprojekt benötigten Maße und Höhen. Daraus lassen sich Flächen aufteilen, Gefälle planen und die Ausführung kontrollieren. Gerade bei unebenem Gelände oder bestehenden Anschlüssen hilft das, Unterschiede frühzeitig zu erkennen."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Präzision für Planung und Ausführung",
+      "paragraphs": [
+        "Sie profitieren davon vor allem dort, wo mehrere Bauteile zusammenkommen. Wenn Höhen und Übergänge früh abgestimmt sind, können die weiteren Arbeiten darauf aufbauen. Den erforderlichen Messumfang legen wir passend zu Ihrem Vorhaben fest.",
+        "Die anschließende Umsetzung übernehmen wir bei Bedarf ebenfalls. So gehen Aufmaß, Erdarbeiten und die Herstellung Ihrer Wege oder Terrassen direkt ineinander über."
+      ],
+      "bullets": [
+        "Aufmaß von Garten- und Außenflächen für das jeweilige Projekt",
+        "Erfassen und Übertragen von Höhenpunkten",
+        "Festlegen und Kontrollieren geplanter Gefälle",
+        "Abstimmen von Terrassen, Wegen, Stufen und Entwässerung",
+        "Kontrolle der Höhen während Erd- und Verlegearbeiten"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Größe und Zuschnitt der Fläche", "text": "Eine rechteckige Terrasse ist schnell eingemessen, ein verwinkeltes Grundstück mit mehreren Ebenen nicht." },
-    { "titel": "Höhenunterschiede", "text": "Je stärker das Gelände fällt, desto mehr Bezugspunkte und Zwischenhöhen sind nötig." },
-    { "titel": "Zahl der Anschlusspunkte", "text": "Jede Tür, jeder Bordstein und jeder vorhandene Ablauf ist eine feste Höhe, an der die Planung aufgehen muss." },
-    { "titel": "Sichtverhältnisse", "text": "Bewuchs, Mauern und Ecken unterbrechen die Sichtachsen und machen zusätzliche Standpunkte nötig." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Augenmaß und Wasserwaage reichen.“", "text": "Auf kurzer Strecke oft ja. Über eine ganze Terrasse addieren sich kleine Abweichungen, und am Ende steht das Wasser an der Hauswand statt am Ablauf." },
-    { "titel": "„Gefälle braucht nur die Terrasse.“", "text": "Auch Wege, Einfahrten und Stellplätze müssen Wasser ableiten. Eine gepflasterte Fläche ohne definiertes Gefälle wird zur Pfütze, sobald es länger regnet." },
-    { "titel": "„Einmal einmessen genügt.“", "text": "Beim Aufbau verschiebt sich etwas, Material setzt sich. Wer erst am Ende misst, stellt Abweichungen fest, wenn die Fläche schon liegt." }
-  ],
+  "abschluss": "Zu allen Fragen rund um Vermessungs- und Lasertechnik für Ihr Gartenbauprojekt und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Vermessung im Gartenbau anfragen",
   "faq": [
-    { "frage": "Warum ist das Einmessen so wichtig?", "antwort": "Fast jeder Mangel an einer fertigen Fläche geht auf Höhen zurück: Wasser läuft zum Haus statt davon weg, eine Stufe fällt zu hoch aus, die Terrasse schließt nicht an die Türschwelle an. Diese Fehler lassen sich hinterher nur durch Rückbau beheben. Vorher gemessen, kosten sie eine Stunde Arbeit." },
-    { "frage": "Was wird konkret gemessen?", "antwort": "Zuerst die festen Punkte, an denen sich nichts ändern lässt – Türschwellen, Kellerfenster, Bordstein, vorhandene Abläufe und Grenzen. Dann der Geländeverlauf dazwischen. Daraus ergibt sich, welche Oberkante die neue Fläche bekommt, in welche Richtung sie fällt und wo das Wasser hingeht." },
-    { "frage": "Gilt das auch für kleine Flächen?", "antwort": "Je kleiner die Fläche, desto eher genügt die Wasserwaage. Sobald Anschlusshöhen zusammenkommen – Haus, Weg, Bordstein – oder das Gelände fällt, lohnt das Einmessen auch bei wenigen Quadratmetern. Wir sagen Ihnen bei der Begehung, ob es in Ihrem Fall nötig ist." },
-    { "frage": "Ersetzt das eine amtliche Vermessung?", "antwort": "Nein. Wir messen für die Ausführung: Höhen, Gefälle und Fluchten der Anlage, die entstehen soll. Grenzen rechtsverbindlich festzustellen ist Aufgabe eines öffentlich bestellten Vermessungsingenieurs. Wenn der Grenzverlauf unklar ist, sagen wir das und Sie klären es dort, bevor gebaut wird." }
+    {
+      "frage": "Wann ist Vermessungs- und Lasertechnik auf kleinen Flächen hilfreich?",
+      "antwort": "Auch auf einer kleinen Terrasse oder kurzen Einfahrt müssen Höhen und Wasserabfluss stimmen. Welche Messungen nötig sind, richtet sich nach den vorhandenen Anschlüssen und der geplanten Nutzung."
+    }
   ],
-  "nachbarn": ["terrasse-pflasterarbeiten", "gartengestaltung"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/vermessung-lasertechnik-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "pool-whirlpool-umfeld"
+    },
+    {
+      "welt": "privat",
+      "slug": "teichbau"
+    },
+    {
+      "welt": "privat",
+      "slug": "gartengestaltung"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 34
 }

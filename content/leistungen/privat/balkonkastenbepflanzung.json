@@ -1,0 +1,104 @@
+{
+  "layout": "editorial-v2",
+  "hideProcess": true,
+  "contactVariant": "homepage",
+  "contactTitle": "Der erste Schritt zu Ihrer Balkonkastenbepflanzung",
+  "heroVariant": "image-first",
+  "heroTitlePlacement": "above-image",
+  "h1": "Balkonkastenbepflanzung",
+  "heroTitleLines": [
+    "Balkonkasten",
+    "bepflanzung"
+  ],
+  "navLabel": "Balkonkastenbepflanzung",
+  "title": "Balkonkastenbepflanzung in Herne | Maik Rohdich",
+  "metaDescription": "Ein Stück Garten vor Ihrem Fenster: Blühende Balkonkästen machen schon den Blick aus dem Fenster schöner. Ob farbenfroher Sommerflor, eine ruhige…",
+  "serviceType": "Balkonkastenbepflanzung",
+  "unterzeile": "Ein Stück Garten vor Ihrem Fenster",
+  "einstieg": [
+    "Blühende Balkonkästen machen schon den Blick aus dem Fenster schöner. Ob farbenfroher Sommerflor, eine ruhige Kombination aus Grün und Weiß oder eine Bepflanzung passend zur Fassade: Wir gestalten Ihre Balkon- und Fensterkästen nach Ihren Vorstellungen."
+  ],
+  "intro": "Blühende Balkonkästen machen schon den Blick aus dem Fenster schöner. Ob farbenfroher Sommerflor, eine ruhige Kombination aus Grün und Weiß oder eine Bepflanzung passend zur Fassade: Wir gestalten Ihre Balkon- und Fensterkästen nach Ihren Vorstellungen.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Sonne, Schatten und Wind bestimmen mit, welche Pflanzen sich wohlfühlen. Dazu kommen die Größe der Kästen und die Frage, wie viel Zeit Sie für das Gießen und die Pflege haben. Wir stimmen die Bepflanzung auf diese Bedingungen ab."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Wir bringen Farbe an Balkon und Fenster",
+      "paragraphs": [
+        "Wir achten darauf, dass die Pflanzen auch mit zunehmendem Wachstum genügend Raum haben. Zur fertigen Bepflanzung erhalten Sie Hinweise zur Bewässerung und Nährstoffversorgung. Bei Bedarf kümmern wir uns auch um den nächsten Wechsel der Pflanzen."
+      ],
+      "bullets": [
+        "Pflanzenauswahl passend zu Standort, Jahreszeit und gewünschter Farbwirkung",
+        "Bepflanzung vorhandener oder neu ausgewählter Balkonkästen",
+        "Geeignetes Substrat und Vorbereitung des Wasserabflusses",
+        "Kombination aufrechter, hängender und strukturgebender Pflanzen",
+        "Saisonaler Wechsel und weitere Pflege nach Absprache"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um die Bepflanzung Ihrer Balkonkästen und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Balkonkästen bepflanzen lassen",
+  "faq": [
+    {
+      "frage": "Können meine vorhandenen Balkonkästen weiterverwendet werden?",
+      "antwort": "Wir verwenden Ihre Kästen gerne weiter, wenn Zustand, Größe und Wasserabfluss zur Bepflanzung passen. Bei Kästen am Geländer berücksichtigen wir auch Befestigung und Gewicht. Sollte ein Kasten ungeeignet sein, wählen wir mit Ihnen einen passenden Ersatz aus. Den regelmäßigen Pflanzenwechsel übernehmen wir gerne im Rahmen unserer Saisonbepflanzung."
+    },
+    {
+      "frage": "Welche Pflanzen passen auf einen sehr sonnigen oder schattigen Balkon?",
+      "antwort": "Für beide Standorte gibt es geeignete Pflanzen. Auf einem sonnigen Balkon sind Hitze und Wasserbedarf besonders wichtig, im Schatten die passende Artenauswahl. Wir stellen Ihnen eine Bepflanzung zusammen, die zu Ihrem Balkon und Ihrem Pflegealltag passt."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "/assets/img/leistungen-mobile/originale/balkonkastenbepflanzung-4x3.jpg",
+      "alt": "Farbenfroh bepflanzte Balkonkästen mit Frühlingsblumen",
+      "width": 1448,
+      "height": 1086
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/balkonkastenbepflanzung-fruehling-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "palmen-winterfest"
+    },
+    {
+      "welt": "privat",
+      "slug": "rollrasen"
+    },
+    {
+      "welt": "privat",
+      "slug": "dachbegruenung"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 2
+}

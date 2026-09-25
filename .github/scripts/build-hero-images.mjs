@@ -42,6 +42,25 @@ const QUALITY_FLOOR = 28; // untere Grenze, darunter nicht mehr
 // widths = gewuenschte Breiten (groessere als das Original werden verworfen);
 // webpWidths = abweichende Breiten fuer WebP (optional, sonst wie widths).
 const SOURCES = [
+  // Mobile Prototyp der neuen Leistungsseiten: Das hochaufloesende Original
+  // bleibt als kanonische Quelle erhalten; ausgeliefert werden ausschliesslich
+  // die kompakten responsiven Derivate aus dem Manifest.
+  {
+    src: 'assets/img/leistungen-mobile/originale/balkonkastenbepflanzung.jpg',
+    dir: 'assets/img/leistungen-mobile',
+    name: 'balkonkastenbepflanzung-hero',
+    widths: [480, 800, 1200],
+    fallbackWidth: 800,
+  },
+  // Fest kuratierter 4:3-Ausschnitt fuer die kompakte, an das Poolbild der
+  // Homepage angelehnte Bildkachel der Balkonkasten-Leistungsseite.
+  {
+    src: 'assets/img/leistungen-mobile/originale/balkonkastenbepflanzung-4x3.jpg',
+    dir: 'assets/img/leistungen-mobile',
+    name: 'balkonkastenbepflanzung-hero-4x3',
+    widths: [480, 800, 1200],
+    fallbackWidth: 800,
+  },
   // Startseiten-Gate Gewerbe: authentischer, gebrandeter Arbeitseinsatz ohne
   // die riskante Bildwirkung der bisherigen Motorsaegen-Szene. Das Master ist
   // bereits 3:2 und funktioniert deshalb ohne serverseitigen Beschnitt in der

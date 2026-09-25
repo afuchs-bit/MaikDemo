@@ -1,39 +1,94 @@
 {
+  "layout": "editorial-v2",
   "h1": "Nassschneidearbeiten",
   "navLabel": "Nassschneidearbeiten",
-  "title": "Nassschneidearbeiten in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Nassschnitt von Pflaster, Platten und Randsteinen in Herne, Bochum und Recklinghausen – staubarm, saubere Kanten, passgenaue Zuschnitte. Jetzt Termin anfragen.",
-  "serviceType": "Nassschneidearbeiten an Pflaster, Platten und Naturstein",
-  "intro": "Wir schneiden Pflastersteine, Platten, Randsteine und Blockstufen im Nassschnitt: Die Trennscheibe läuft unter Wasser, das den Staub bindet und die Scheibe kühlt. Das Ergebnis sind saubere, passgenaue Kanten – und deutlich weniger Staub auf dem Grundstück und beim Nachbarn. Für Flächen in Herne und Umgebung.",
-  "eignung": [
-    "Pflaster- und Plattenflächen, bei denen Anschlüsse und Randabschlüsse passgenau sitzen sollen.",
-    "Harte Natursteine, die sich trocken nur schlecht sauber trennen lassen.",
-    "Arbeiten in enger Bebauung, auf Terrassen und Balkonen, wo Staub zum Problem wird.",
-    "Zuschnitte um Schächte, Abläufe, Pfosten und Hausecken herum."
+  "title": "Nassschneidearbeiten in Herne | Maik Rohdich",
+  "metaDescription": "Saubere Übergänge bis ins Detail: Sauber zugeschnittene Steine und Platten sorgen für ordentliche Übergänge an Stufen, Beetkanten und…",
+  "serviceType": "Nassschneidearbeiten",
+  "unterzeile": "Saubere Übergänge bis ins Detail",
+  "einstieg": [
+    "Sauber zugeschnittene Steine und Platten sorgen für ordentliche Übergänge an Stufen, Beetkanten und Terrassenabschlüssen. Mit unseren Nassschneidearbeiten passen wir das Material an die benötigten Maße an. So entstehen passgenaue Anschlüsse und ein stimmiges Fugenbild."
   ],
-  "ablauf": [
-    { "titel": "Aufmaß und Anriss", "text": "Wir nehmen die Maße direkt an der Fläche ab und reißen den Schnitt an – erst dann wird geschnitten." },
-    { "titel": "Schnitt unter Wasser", "text": "Die Trennscheibe wird während des Schnitts mit Wasser geführt. Das bindet den Staub und hält die Schnittkante sauber." },
-    { "titel": "Schlamm aufnehmen", "text": "Der beim Schneiden entstehende Schlamm wird aufgenommen und ordnungsgemäß entsorgt, nicht in die Entwässerung gespült." },
-    { "titel": "Einbau", "text": "Die zugeschnittenen Steine werden eingesetzt, ausgerichtet und in die Fläche eingebunden." }
+  "intro": "Sauber zugeschnittene Steine und Platten sorgen für ordentliche Übergänge an Stufen, Beetkanten und Terrassenabschlüssen. Mit unseren Nassschneidearbeiten passen wir das Material an die benötigten Maße an. So entstehen passgenaue Anschlüsse und ein stimmiges Fugenbild.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Beim Nassschneiden wird die Schnittstelle mit Wasser gekühlt. Das bindet einen Teil des entstehenden Staubs und unterstützt die materialgerechte Bearbeitung. Welche Zuschnitte möglich sind, hängt vom Werkstoff, seiner Stärke und dem gewünschten Format ab."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Zuschnitte für Ihre Außenanlage",
+      "paragraphs": [
+        "Wir klären die Schnittführung möglichst früh in der Planung. Das hilft, ungünstige Reststücke zu vermeiden und Material sinnvoll einzuteilen. Gerade an sichtbaren Abschlüssen lohnt sich diese Vorbereitung."
+      ],
+      "bullets": [
+        "Anpassen geeigneter Pflastersteine und Terrassenplatten",
+        "Zuschnitte an Rändern, Einfassungen und Übergängen",
+        "Abstimmung der Schnittmaße auf Verlegebild und Fugen",
+        "Einbindung der Schneidearbeiten in Pflaster- und Terrassenprojekte"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Material und Härte", "text": "Beton, Keramik und harte Natursteine verhalten sich beim Schnitt unterschiedlich und brauchen unterschiedlich viel Zeit." },
-    { "titel": "Art und Zahl der Schnitte", "text": "Ein gerader Trennschnitt ist schnell gemacht. Gehrungen, Rundungen und Aussparungen sind aufwendiger." },
-    { "titel": "Zugang und Wasser", "text": "Wie gut die Schnittstelle erreichbar ist und ob Wasser vor Ort zur Verfügung steht, wirkt sich auf den Ablauf aus." },
-    { "titel": "Entsorgung", "text": "Schneidschlamm und Verschnitt müssen aufgenommen und abgefahren werden." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Nass oder trocken – der Schnitt ist derselbe.“", "text": "Beim Trockenschnitt von Beton und Naturstein entsteht feiner Quarzstaub, der tief in die Lunge gelangt. Wasser bindet ihn an der Entstehungsstelle. Das ist der eigentliche Grund für den Nassschnitt, nicht die Optik." },
-    { "titel": "„Der Schlamm kann in den Gully.“", "text": "Schneidschlamm enthält Feststoffe und ist stark alkalisch. Er gehört nicht in die Kanalisation, sondern muss aufgenommen und entsorgt werden." },
-    { "titel": "„Kanten kann man nachträglich noch anpassen.“", "text": "Ein zu knapp geschnittener Stein lässt sich nicht verlängern. Deshalb wird vorher angerissen und Stein für Stein gearbeitet, statt auf Verdacht zuzuschneiden." }
-  ],
+  "abschluss": "Zu allen Fragen rund um Ihre Nassschneidearbeiten und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Nassschneidearbeiten anfragen",
   "faq": [
-    { "frage": "Warum wird nass geschnitten und nicht trocken?", "antwort": "Beim Trennen von Beton, Keramik und Naturstein entsteht feiner Quarzstaub. Er ist gesundheitlich problematisch und legt sich außerdem über das ganze Grundstück und die Nachbarschaft. Wasser bindet diesen Staub genau dort, wo er entsteht. Nebenbei kühlt es die Scheibe, was die Schnittkante sauberer macht und das Werkzeug schont." },
-    { "frage": "Bleibt dabei viel Schmutz zurück?", "antwort": "Es entsteht Schneidschlamm – Wasser mit feinem Steinmehl. Der wird aufgenommen und abgefahren, statt ihn wegzuspülen. In die Kanalisation darf er nicht, weil er Feststoffe enthält und alkalisch ist. Verglichen mit dem Staub eines Trockenschnitts bleibt die Fläche danach deutlich sauberer." },
-    { "frage": "Können Sie auch nur die Zuschnitte übernehmen?", "antwort": "Sprechen Sie uns an. In der Regel schneiden wir im Zusammenhang mit den Pflaster- und Plattenarbeiten, die wir ausführen – dann sitzen Maß und Anschluss von vornherein. Ob ein reiner Zuschnitt sinnvoll ist, hängt vom Material, von der Menge und von der Baustelle ab. Das klären wir vorab am Telefon oder vor Ort." },
-    { "frage": "Geht das auch auf einer fertigen Terrasse?", "antwort": "Ja, mit entsprechender Vorbereitung. Die Fläche wird abgedeckt und der Schlamm aufgenommen, damit nichts in Fugen oder Abläufe gerät. Gerade auf fertigen Belägen und in enger Bebauung spielt der Nassschnitt seine Stärke aus: Es fliegt kein Staub über die ganze Anlage und in die Nachbargärten." }
+    {
+      "frage": "Welche Steine und Platten lassen sich nass schneiden?",
+      "antwort": "Nassschneiden eignet sich für verschiedene mineralische Baustoffe. Wir prüfen Material, Stärke und gewünschte Schnittführung und wählen die passende Bearbeitung. Dabei zeigen wir Ihnen, wie sich die benötigten Anschlüsse sauber herstellen lassen. Die anschließenden Pflasterarbeiten oder die Verlegung Ihrer Terrassenplatten übernehmen wir bei Bedarf ebenfalls."
+    },
+    {
+      "frage": "Können Sie auch mein eigenes Material zuschneiden?",
+      "antwort": "Ja. Für die erste Anfrage genügt eine kurze Beschreibung Ihres Vorhabens. Welche Angaben wir zu Material, Stärke, Stückzahl und Maßen benötigen, klären wir gemeinsam. Ein vorhandenes Foto kann dabei helfen, ist aber keine Voraussetzung."
+    }
   ],
-  "nachbarn": ["terrasse-pflasterarbeiten", "gartengestaltung"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/nassschneidearbeiten-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "entwaesserung"
+    },
+    {
+      "welt": "privat",
+      "slug": "erd-baggerarbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "vermessung-lasertechnik"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 17
 }

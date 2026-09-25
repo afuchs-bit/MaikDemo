@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="de" class="home-theme-dark lpv2-root">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#1b1e19" />
+<!-- AUTO-GENERIERT von .github/scripts/build-leistungen.mjs aus content/leistungen/{{slug}}.json – NICHT von Hand editieren. -->
+<title>{{title}}</title>
+<meta name="description" content="{{description}}" />
+<link rel="canonical" href="{{canonical}}" />
+<meta property="og:title" content="{{ogTitle}}" />
+<meta property="og:description" content="{{description}}" />
+<meta property="og:image" content="{{ogImage}}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{canonical}}" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="{{base}}assets/img/logo/favicon.svg" type="image/svg+xml" />
+<link rel="preload" href="{{base}}assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+{{heroPreload}}
+<link rel="stylesheet" href="{{base}}assets/css/styles.css?v={{cssVersion}}" />
+<link rel="stylesheet" href="{{base}}assets/css/header-home.css?v=20260924x" media="(max-width: 900px)" />
+<link rel="stylesheet" href="{{base}}assets/css/footer-kontakt.css?v=20260921f" />
+<link rel="stylesheet" href="{{base}}assets/css/privat-form.css?v=20260923k" />
+<link rel="stylesheet" href="{{base}}assets/css/form-trust-card.css?v=20260902g" />
+<link rel="stylesheet" href="{{base}}assets/css/anfrage.css?v=20260919a" />
+<link rel="stylesheet" href="{{base}}assets/css/cta-family.css?v=20260919a" />
+<link rel="stylesheet" href="{{base}}assets/css/leistung-mobile.css?v=20260924z6" />
+<script type="application/ld+json">{{breadcrumbJsonLd}}</script>
+<script type="application/ld+json">{{serviceJsonLd}}</script>
+<script type="application/ld+json">{{faqJsonLd}}</script>
+</head>
+<body class="lpv2-page lp-service-page{{heroVariantClass}}">
+
+{{logo}}
+<svg class="lpv2-symbols" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="maik-cta-shape" viewBox="0 0 360 64">
+      <path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/>
+    </symbol>
+  </defs>
+</svg>
+
+{{header}}
+
+<main id="top" class="lpv2-main">
+  <article aria-labelledby="lpv2-title">
+    <section class="lpv2-hero">
+{{heroBreadcrumbBefore}}
+      <div class="container">
+{{heroBreadcrumbInside}}
+        <p class="lpv2-kicker reveal">Leistung</p>
+        <h1 class="lpv2-title{{titleClass}} reveal" id="lpv2-title">{{h1}}</h1>
+        <p class="lpv2-subheading reveal">{{subheading}}</p>
+        <div class="lpv2-intro reveal">{{introHtml}}</div>
+        {{heroCta}}
+      </div>
+      <figure class="lpv2-hero-media reveal">
+        {{heroPicture}}
+{{heroBrand}}
+{{heroEdge}}
+      </figure>
+{{heroTitleGraphic}}
+    </section>
+
+    <section class="lpv2-editorial section" aria-labelledby="lpv2-editorial-title">
+      <div class="container">
+        <header class="lpv2-section-head reveal">
+          <p class="lpv2-section-index" aria-hidden="true">01</p>
+          <h2 id="lpv2-editorial-title">Was wir für Sie übernehmen</h2>
+        </header>
+        <div class="lpv2-copy">{{contentHtml}}<p class="lpv2-closing reveal">{{closing}}</p></div>
+      </div>
+    </section>
+
+    <section class="lpv2-gallery section" aria-labelledby="lpv2-gallery-title">
+      <div class="container lpv2-gallery-head">
+        <header class="lpv2-section-head reveal">
+          <p class="lpv2-section-index" aria-hidden="true">02</p>
+          <h2 id="lpv2-gallery-title">Einblicke in unsere Arbeit</h2>
+        </header>
+        <p class="lpv2-gallery-hint">Seitlich wischen</p>
+      </div>
+      {{galleryHtml}}
+    </section>
+
+{{processSection}}
+
+    <section class="lpv2-faq section" aria-labelledby="lpv2-faq-title">
+      <div class="container">
+        <header class="lpv2-section-head reveal">
+          <p class="lpv2-section-index" aria-hidden="true">{{faqIndex}}</p>
+          <h2 id="lpv2-faq-title">Häufige Fragen</h2>
+        </header>
+        {{faqHtml}}
+      </div>
+    </section>
+
+{{contactSection}}
+
+    <section class="lpv2-related section" aria-labelledby="lpv2-related-title">
+      <div class="container">
+        <header class="lpv2-section-head reveal">
+          <p class="lpv2-section-index" aria-hidden="true">{{relatedIndex}}</p>
+          <h2 id="lpv2-related-title">Passende Ergänzungen</h2>
+        </header>
+        {{relatedHtml}}
+      </div>
+    </section>
+  </article>
+</main>
+
+{{footer}}
+
+<script src="{{base}}assets/js/main.js?v={{jsVersion}}" defer></script>
+<script src="{{base}}assets/js/cta-signal.js?v=20260914a" defer></script>
+<script src="{{base}}assets/js/anfrage.js?v=20260918c" defer></script>
+</body>
+</html>

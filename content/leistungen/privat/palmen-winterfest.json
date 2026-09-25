@@ -1,39 +1,95 @@
 {
-  "h1": "Winterfeste Palmen und Beleuchtung",
-  "navLabel": "Palmen & winterfest",
-  "title": "Winterfeste Palmen & Gartenbeleuchtung in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Winterharte Palmen und stimmige Gartenbeleuchtung in Herne, Bochum und Recklinghausen – standortgerecht gepflanzt, mit eigener Spezialerde. Jetzt Termin anfragen.",
-  "serviceType": "Pflanzung winterfester Palmen und Gartenbeleuchtung",
-  "intro": "Wir pflanzen winterfeste Palmen, die auch im Ruhrgebiet draußen bleiben können, und setzen sie mit passender Beleuchtung in Szene. Damit eine Palme den Winter übersteht, kommt es auf Standort, Drainage und den richtigen Boden an – dafür verwenden wir eine eigene Spezialerde. So wird aus einem exotischen Blickfang ein Element, das dauerhaft funktioniert und nicht nach dem ersten Frost aufgibt.",
-  "eignung": [
-    "Gärten und Sitzplätze, die einen exotischen Blickfang bekommen sollen.",
-    "Eigentümer, die eine Palme dauerhaft draußen halten möchten, statt sie jedes Jahr einzuräumen.",
-    "Bereiche, die abends durch stimmige Beleuchtung wirken sollen.",
-    "Wer bereits eine Palme hat, die nicht recht gedeihen will."
+  "layout": "editorial-v2",
+  "h1": "Palmen winterfest",
+  "navLabel": "Palmen winterfest",
+  "title": "Palmen winterfest in Herne | Maik Rohdich",
+  "metaDescription": "Urlaubsgefühl zu jeder Jahreszeit: Eine Palme bringt ein besonderes Stück Urlaub in den Garten. Die Palmen, die wir Ihnen anbieten, sind vollständig…",
+  "serviceType": "Palmen winterfest",
+  "unterzeile": "Urlaubsgefühl zu jeder Jahreszeit",
+  "einstieg": [
+    "Eine Palme bringt ein besonderes Stück Urlaub in den Garten. Die Palmen, die wir Ihnen anbieten, sind vollständig winterfest und für einen dauerhaften Platz im Freien vorgesehen. So bleibt der mediterrane Charakter Ihres Gartens auch im Winter erhalten."
   ],
-  "ablauf": [
-    { "titel": "Standort wählen", "text": "Wir suchen die Stelle, an der die Palme geschützt steht und der Boden nicht dauerhaft nass ist – beides ist für die Winterhärte entscheidend." },
-    { "titel": "Boden vorbereiten", "text": "Für die richtige Drainage und den passenden Boden verwenden wir unsere eigene Spezialerde, damit keine Staunässe entsteht." },
-    { "titel": "Pflanzung", "text": "Die Palme wird fachgerecht gesetzt, sodass sie gut anwächst und für den ersten Winter vorbereitet ist." },
-    { "titel": "Beleuchtung", "text": "Auf Wunsch setzen wir die Palme und den umgebenden Bereich abends mit einer zurückhaltenden Beleuchtung in Szene." }
+  "intro": "Eine Palme bringt ein besonderes Stück Urlaub in den Garten. Die Palmen, die wir Ihnen anbieten, sind vollständig winterfest und für einen dauerhaften Platz im Freien vorgesehen. So bleibt der mediterrane Charakter Ihres Gartens auch im Winter erhalten.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Ob als Blickfang an der Terrasse, neben dem Pool oder in einer großzügigen Pflanzfläche: Wir wählen mit Ihnen die passende Palme aus und übernehmen die fachgerechte Pflanzung. Größe, Standort und die Gestaltung der Umgebung stimmen wir auf Ihren Garten ab."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Winterfeste Palmen für Ihren Garten",
+      "paragraphs": [
+        "Für einen guten Start kommt es auch auf den Wurzelraum an. Dazu beraten wir Sie zum Einsatz unseres eigenen Kultursubstrats Rohdichs Grubengold, abgestimmt auf Palme und Standort. Mit der passenden Bodenvorbereitung schaffen wir gute Voraussetzungen für das Anwachsen."
+      ],
+      "bullets": [
+        "Beratung und Auswahl vollständig winterfester Palmen",
+        "Abstimmung von Pflanzengröße, Standort und Bodenverhältnissen",
+        "Lieferung und fachgerechte Pflanzung",
+        "Bodenvorbereitung mit geeignetem Substrat und geregeltem Wasserabfluss",
+        "Hinweise zur Bewässerung sowie weitere Pflege nach Absprache"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Größe der Palme", "text": "Eine kräftige, ältere Palme ist im Transport und in der Pflanzung aufwendiger als ein junges Exemplar." },
-    { "titel": "Standort und Drainage", "text": "Wie geschützt die Stelle ist und ob der Boden Wasser ableitet, entscheidet über Aufwand und Winterhärte." },
-    { "titel": "Bodenvorbereitung", "text": "Damit keine Staunässe entsteht, ist oft ein Austausch des Bodens gegen geeignetes Substrat nötig." },
-    { "titel": "Beleuchtung", "text": "Ob und wie beleuchtet wird, bringt Leitungsführung und zusätzliche Arbeitsschritte mit sich." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Winterhart heißt, die Palme übersteht alles.“", "text": "Winterhärte hängt am Standort und am Boden. Steht die Palme nass und ungeschützt, hilft auch die robusteste Sorte wenig." },
-    { "titel": "„Hauptsache viel gießen.“", "text": "Nicht Trockenheit, sondern Staunässe ist für viele Palmen im Winter das größere Problem. Die Drainage ist entscheidender als das Gießen." },
-    { "titel": "„Normale Blumenerde tut es auch.“", "text": "Der Boden entscheidet über die Winterhärte. Deshalb setzen wir auf eine geeignete, durchlässige Substratmischung statt auf Standarderde." }
-  ],
+  "abschluss": "Zu allen Fragen rund um unsere winterfesten Palmen und ihre Pflanzung und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Winterfeste Palmen anfragen",
   "faq": [
-    { "frage": "Können Palmen im Ruhrgebiet wirklich draußen bleiben?", "antwort": "Ja, mit den richtigen Voraussetzungen. Entscheidend sind eine winterharte Sorte, ein geschützter Standort und vor allem ein durchlässiger Boden ohne Staunässe. Genau darauf richten wir die Pflanzung aus – unter anderem mit unserer eigenen Spezialerde. Damit lässt sich eine Palme dauerhaft im Garten halten, statt sie jedes Jahr einräumen zu müssen." },
-    { "frage": "Was hat es mit der Spezialerde auf sich?", "antwort": "Der häufigste Grund, warum Palmen den Winter nicht überstehen, ist nasser, verdichteter Boden. Unsere Substratmischung ist darauf ausgelegt, Wasser abzuleiten und Staunässe zu vermeiden. Zusammen mit dem passenden Standort ist das der entscheidende Faktor für die Winterhärte – wichtiger als jede Abdeckung im Winter." },
-    { "frage": "Gehört die Beleuchtung dazu?", "antwort": "Auf Wunsch ja. Gerade eine Palme wirkt abends durch eine gezielte Beleuchtung besonders. Wir stimmen Licht und Bepflanzung aufeinander ab und planen die Leitungsführung gleich mit, damit später nicht noch einmal aufgegraben werden muss. Die Beleuchtung lässt sich auch auf den umgebenden Sitzplatz ausdehnen." },
-    { "frage": "Meine Palme kümmert – können Sie helfen?", "antwort": "Oft ja. Häufig liegt es am Standort oder am Boden, seltener an der Pflanze selbst. Wir sehen uns die Situation an und sagen Ihnen, ob ein Umpflanzen, eine bessere Drainage oder ein anderer Standort hilft. Manchmal reicht schon eine Anpassung des Bodens, damit die Palme wieder in Form kommt." }
+    {
+      "frage": "Bleiben Ihre Palmen auch bei Schnee draußen?",
+      "antwort": "Ja. Unsere vollständig winterfesten Palmen sind für die dauerhafte Pflanzung im Garten vorgesehen und bleiben auch in der kalten Jahreszeit draußen. Den passenden Platz und die Voraussetzungen für eine gute Entwicklung klären wir bei Ihnen vor Ort."
+    },
+    {
+      "frage": "Übernehmen Sie auch die Pflege meiner Palme?",
+      "antwort": "Ja. Wir erklären Ihnen die passende Bewässerung und Nährstoffversorgung und übernehmen bei Bedarf die weitere Pflege. Auch die Bepflanzung rund um Ihre Palme gestalten wir gerne mit, damit ein stimmiger Gartenbereich entsteht."
+    }
   ],
-  "nachbarn": ["bepflanzung", "gartenpflege"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/palmen-winterfest-schnee-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "rollrasen"
+    },
+    {
+      "welt": "privat",
+      "slug": "dachbegruenung"
+    },
+    {
+      "welt": "privat",
+      "slug": "bepflanzung"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 19
 }

@@ -1,0 +1,94 @@
+{
+  "layout": "editorial-v2",
+  "h1": "Sichtschutzbepflanzung",
+  "navLabel": "Sichtschutzbepflanzung",
+  "title": "Sichtschutzbepflanzung in Herne | Maik Rohdich",
+  "metaDescription": "Ein geschützter Platz im Grünen: Auf der Terrasse frühstücken, im Liegestuhl lesen oder einfach ungestört draußen sitzen: Eine passende…",
+  "serviceType": "Sichtschutzbepflanzung",
+  "unterzeile": "Ein geschützter Platz im Grünen",
+  "einstieg": [
+    "Auf der Terrasse frühstücken, im Liegestuhl lesen oder einfach ungestört draußen sitzen: Eine passende Sichtschutzbepflanzung macht Ihren Garten persönlicher und schafft Abstand zum Alltag vor dem Grundstück."
+  ],
+  "intro": "Auf der Terrasse frühstücken, im Liegestuhl lesen oder einfach ungestört draußen sitzen: Eine passende Sichtschutzbepflanzung macht Ihren Garten persönlicher und schafft Abstand zum Alltag vor dem Grundstück.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Als Sichtschutz kann ein Pflanzstreifen eingerichtet werden. Ob dichte Hecke, lockere Gehölzgruppe oder Bepflanzung am Zaun: Die Lösung richtet sich nach dem gewünschten Sichtschutz, dem Standort und dem Platz, den die Pflanzen später benötigen."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Grüner Sichtschutz nach Ihren Wünschen",
+      "paragraphs": [
+        "Wir besprechen mit Ihnen, ob ganzjähriger Sichtschutz gewünscht ist und wie viel Schnittarbeit später anfallen darf. Auch die Wuchshöhe und die für Ihren Standort geltenden Abstände gehören zur Planung. Wenn Sie sofort mehr Abschirmung brauchen, kann eine Kombination mit festen Sichtschutzelementen sinnvoll sein."
+      ],
+      "bullets": [
+        "Pflanzenauswahl passend zu Licht, Boden und verfügbarer Breite",
+        "Heckenpflanzung und Gestaltung mit geeigneten Sträuchern",
+        "Bepflanzung entlang von Zäunen und Grundstücksabgrenzungen",
+        "Bodenvorbereitung, fachgerechte Pflanzung und Pflegehinweise"
+      ]
+    }
+  ],
+  "abschluss": "Zu allen Fragen rund um Ihre Sichtschutzbepflanzung und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Sichtschutzbepflanzung planen",
+  "faq": [
+    {
+      "frage": "Wann bietet eine neue Bepflanzung Sichtschutz?",
+      "antwort": "Pflanzenart, Liefergröße und Pflanzabstand bestimmen, wie viel Sichtschutz direkt entsteht und wie schnell die Pflanzung zusammenwächst. Wir wählen die Bepflanzung passend zu Ihrem Wunsch nach Privatsphäre. Wenn Sie sofort Abschirmung benötigen, kombinieren wir sie mit geeigneten Zaun- oder Sichtschutzelementen und übernehmen deren Montage gleich mit."
+    },
+    {
+      "frage": "Welche Hecke ist die richtige für meinen Garten?",
+      "antwort": "Eine passende Hecke muss zu Boden, Licht und Platzangebot passen. Dazu kommen Ihre Wünsche an ganzjährigen Sichtschutz und den späteren Pflegeaufwand. Wir beraten Sie bei der Auswahl und übernehmen bei Bedarf auch den regelmäßigen Heckenschnitt."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/sichtschutzbepflanzung-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "bonsai-formgehoelze"
+    },
+    {
+      "welt": "privat",
+      "slug": "saisonbepflanzung"
+    },
+    {
+      "welt": "privat",
+      "slug": "balkonkastenbepflanzung"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 29
+}

@@ -1,40 +1,96 @@
 {
-  "h1": "Teichanlagen und Wasser im Garten",
-  "navLabel": "Teichanlagen",
-  "title": "Teichanlagen & Wasser im Garten in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Teichanlagen, Wasserläufe und natürliche Uferzonen in Herne, Bochum und Recklinghausen – geplant, angelegt und stimmig in den Garten eingebunden. Jetzt anfragen.",
-  "serviceType": "Planung und Bau von Gartenteichen und Wasseranlagen",
-  "intro": "Wir planen und bauen Teiche, Wasserläufe und natürliche Uferzonen und binden sie stimmig in den Garten ein – von der Aushubarbeit über die Technik bis zur Uferbepflanzung. Ein Teich verändert einen Garten stärker als fast jedes andere Element, braucht aber eine durchdachte Anlage, damit das Wasser klar bleibt und die Pflege überschaubar ist. Teichanlagen sind unser Schwerpunkt dieser Saison.",
-  "eignung": [
-    "Gärten, die ein ruhiges, lebendiges Element bekommen sollen.",
-    "Eigentümer, die sich einen Sitzplatz am Wasser oder eine naturnahe Uferzone wünschen.",
-    "Grundstücke rund um Pool oder Whirlpool, die eine natürliche Einbindung suchen.",
-    "Wer einen bestehenden Teich sanieren oder pflegeleichter umbauen möchte."
+  "layout": "editorial-v2",
+  "h1": "Teichbau & -technik",
+  "navLabel": "Teichbau & -technik",
+  "title": "Teichbau & -technik in Herne | Maik Rohdich",
+  "metaDescription": "Ihr Garten als erholsamer Rückzugsort: Ein Gartenteich kann in verschiedenen Stilen angelegt werden, zum Beispiel möglichst naturbelassen, modern oder…",
+  "serviceType": "Teichbau & -technik",
+  "unterzeile": "Ihr Garten als erholsamer Rückzugsort",
+  "einstieg": [
+    "Ein Gartenteich kann in verschiedenen Stilen angelegt werden, zum Beispiel möglichst naturbelassen, modern oder auch asiatisch mit Koi.",
+    "Zierteiche erfreuen sich immer größerer Beliebtheit und haben inzwischen sogar in sehr kleinen Gärten Einzug gehalten. Das ist auf den hohen Erholungswert zurückzuführen, der Zierteiche auszeichnet."
   ],
-  "ablauf": [
-    { "titel": "Idee und Standort", "text": "Wir klären, welche Art von Wasser Sie sich wünschen und wo im Garten es sinnvoll liegt – Licht, Blickachsen und Untergrund spielen mit hinein." },
-    { "titel": "Planung von Form und Technik", "text": "Größe, Tiefenzonen, Abdichtung und die passende Technik legen wir so aus, dass Wasserqualität und Pflege zusammenpassen." },
-    { "titel": "Aushub und Anlage", "text": "Erdarbeiten, Abdichtung, Ufergestaltung und Einbau der Technik führen wir aufeinander abgestimmt aus." },
-    { "titel": "Bepflanzung und Einbindung", "text": "Zum Schluss die Uferbepflanzung und der Übergang in den Garten – damit der Teich nicht wie ein Fremdkörper wirkt." }
+  "intro": "Ein Gartenteich kann in verschiedenen Stilen angelegt werden, zum Beispiel möglichst naturbelassen, modern oder auch asiatisch mit Koi. Zierteiche erfreuen sich immer größerer Beliebtheit und haben inzwischen sogar in sehr kleinen Gärten Einzug gehalten. Das ist auf den hohen Erholungswert zurückzuführen, der Zierteiche auszeichnet.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Ein kleiner Bachlauf oder sogar Springbrunnen verstärkt diesen Effekt noch. Wir unterstützen Sie gerne bei der Planung und klären Sie über Ihre Möglichkeiten vor Ort auf.",
+        "Gartenteiche sind ein vergleichsweise übersichtlicher und artenreicher Lebensraum. Gerade deshalb bieten sie auch Kindern unter Aufsicht die Möglichkeit, Tiere und Pflanzen sowie ihre Lebensweise kennenzulernen."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Teichbau und Ufergestaltung aus einer Hand",
+      "paragraphs": [
+        "Wir planen und bauen Teiche mit einem eigens von uns entwickelten Pumpensystem für ein gesundes Ökosystem und eine schöne Optik. Technik, Bepflanzung und Pflege werden auf die Nutzung des Teiches abgestimmt."
+      ],
+      "bullets": [
+        "Planung und Bau von Garten- und Zierteichen",
+        "Bachläufe und Wasserspiele als Teil Ihrer Teichanlage",
+        "Abstimmung von Wasserführung, Pumpen- und erforderlicher Filtertechnik",
+        "Ufergestaltung mit geeigneten Pflanzen und Natursteinen"
+      ]
+    }
   ],
-  "aufwand": [
-    { "titel": "Größe und Tiefe", "text": "Fläche und Tiefenzonen bestimmen den Aushub und das Volumen, das später stabil bleiben muss." },
-    { "titel": "Untergrund und Aushub", "text": "Boden, Grundwasserstand und Zugänglichkeit für Erdarbeiten wirken sich stark auf den Aufwand aus." },
-    { "titel": "Technik", "text": "Filter, Pumpe und ein möglicher Bachlauf entscheiden über Wasserqualität und laufende Pflege." },
-    { "titel": "Uferzone und Bepflanzung", "text": "Eine natürliche Uferzone braucht Aufbau und passende Pflanzen – sie ist mehr als ein Rand." },
-    { "titel": "Folgepflege", "text": "Wie viel Pflege ein Teich macht, entscheidet sich bei der Anlage – von der Technik bis zur Bepflanzung." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Je tiefer, desto klarer das Wasser.“", "text": "Nicht die Tiefe allein entscheidet über klares Wasser, sondern das Zusammenspiel aus Tiefenzonen, Technik und Bepflanzung." },
-    { "titel": "„Ein Teich macht keine Arbeit.“", "text": "Auch ein naturnaher Teich braucht Pflege. Wie viel, entscheidet sich bei der Planung – deshalb gehört sie ernst genommen." },
-    { "titel": "„Die Folie kann man einfach in die Grube legen.“", "text": "Abdichtung, Unterbau und Uferaufbau müssen zusammenpassen, sonst wird der Teich undicht oder das Ufer rutscht ab." }
-  ],
+  "abschluss": "Zu allen Fragen rund um Teichbau, Teichtechnik und Ufergestaltung und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Teichprojekt besprechen",
   "faq": [
-    { "frage": "Wie bleibt das Wasser im Teich klar?", "antwort": "Klares Wasser entsteht aus dem Zusammenspiel von durchdachten Tiefenzonen, passender Technik und der richtigen Uferbepflanzung. Zu viel Nährstoff und zu wenig Bewegung lassen einen Teich kippen. Deshalb legen wir Größe, Technik und Bepflanzung von Anfang an aufeinander abgestimmt aus, statt einzelne Teile nachträglich zu ergänzen." },
-    { "frage": "Wie viel Pflege macht ein Gartenteich?", "antwort": "Das hängt stark davon ab, wie er angelegt ist. Ein gut geplanter Teich mit passender Technik und Bepflanzung braucht überschaubare, saisonale Pflege. Wird an Technik oder Uferzone gespart, steigt der Aufwand dauerhaft. Wie pflegeleicht Ihr Teich wird, entscheidet sich also nicht später, sondern bei der Planung." },
-    { "frage": "Können Sie einen Teich am Pool oder Whirlpool einbinden?", "antwort": "Ja. Eine natürliche Uferzone oder ein Wasserlauf lässt sich stimmig an ein Pool- oder Whirlpool-Umfeld anschließen, sodass Technikbereich und naturnaher Teil zusammen wirken. Wichtig ist, beides von Anfang an gemeinsam zu planen, damit die Übergänge und die Technik zueinander passen." },
-    { "frage": "Sanieren Sie auch bestehende Teiche?", "antwort": "Ja. Oft lässt sich ein in die Jahre gekommener Teich mit überschaubarem Aufwand wieder klar und pflegeleichter machen – durch Anpassung der Technik, der Tiefenzonen oder der Bepflanzung. Wir sehen uns die vorhandene Anlage an und sagen Ihnen, was sinnvoll ist und was sich erhalten lässt." }
+    {
+      "frage": "Kann ein Teich auch ohne Fische angelegt werden?",
+      "antwort": "Ja. Ein Gartenteich kann als bepflanzte Wasserfläche ohne Fischbesatz gestaltet werden. Das gewünschte Teichleben beeinflusst die Planung ebenso wie die Lage und der verfügbare Platz."
+    },
+    {
+      "frage": "Was hilft dabei, das Teichwasser klar zu halten?",
+      "antwort": "Die Wasserqualität hängt von Nährstoffeintrag, Pflanzen, Standort, Fischbesatz und Technik ab. Eine Pumpe allein garantiert kein dauerhaft klares Wasser. Wir stimmen das Konzept auf Ihre Nutzung ab, erläutern die nötige Pflege und helfen gerne bei der Pflege der Uferbepflanzung."
+    }
   ],
-  "nachbarn": ["gartengestaltung", "pool-whirlpool-umfeld"],
-  "kundengruppe": ["privat"]
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
+      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
+      "width": 1023,
+      "height": 1537
+    },
+    "gallery": [
+      {
+        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
+        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
+        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "assets/img/projektablauf/pflege-640.webp",
+        "alt": "Bewässerung eines gepflegten Rasens",
+        "width": 640,
+        "height": 480
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/teichbau-technik-480.webp",
+  "kundengruppe": [
+    "privat"
+  ],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "gartengestaltung"
+    },
+    {
+      "welt": "privat",
+      "slug": "aussergewoehnliches-garten"
+    },
+    {
+      "welt": "privat",
+      "slug": "beleuchtung"
+    }
+  ],
+  "diagram": "",
+  "sourceSection": 31
 }
