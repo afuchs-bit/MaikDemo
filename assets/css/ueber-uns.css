@@ -408,6 +408,31 @@ body.ueber-page {
 
 .ueber-inhaber__zitat p { margin: 0; }
 
+/* AP-489 (27.09.2026): Der Zitatsatz groesser, deutlicher und in Handschrift -
+   auf Ansage des Auftraggebers, damit er als Zitat erkennbar wird.
+
+   Schrift: der kursive Comic-Stapel der Seite, woertlich wie an den
+   "Fuer wen"-Ueberschriften (AP-476) und "Alle Projekte" (AP-456) weiter
+   unten - dieselbe Handschrift wie "Willkommen" auf der Startseite. Keine neue
+   Schriftdatei; wo keine der drei Schriften liegt, greift cursive.
+   700 und --ink statt 400 und --ink-2: "deutlicher" heisst hier heller und
+   kraeftiger, nicht nur groesser. Der Name darunter bleibt, wie er ist.
+
+   Nachtrag 27.09.2026 auf Ansage des Auftraggebers: Die Groesse ist woertlich
+   die der Schreibzeile "Individualangebot ..." in "Alles aus einer Hand"
+   (.ueber-betrieb__typer-box, AP-447) - 22px auf dem Handy, 28px ab 1180px.
+   Vorher 24/32px. Aendert sich die Schreibzeile, muss dieser Wert mit.
+   Die gruene Leiste unter dem Zitat ist auf dieselbe Ansage wieder entfallen. */
+.ueber-inhaber__spruch {
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1.375rem, 1.1899rem + 0.759vw, 1.75rem);
+  line-height: 1.3;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
 /* AP-450: Hier stand .ueber-inhaber__platzhalter - gedaempft und kursiv, damit
    der vorlaeufige Satz auf der Seite als solcher zu erkennen war. Das Zitat
    traegt seit dem 24.09.2026 den Wortlaut des Auftraggebers; die Klasse ist im
@@ -1181,6 +1206,10 @@ body.ueber-page {
      auf block. Zentriert wird deshalb ueber die Aussenabstaende. */
   .ueber-inhaber__bluete-mobil { display: block; margin: 24px 0; }
   .ueber-inhaber__bluete-mobil img { width: 64px; height: auto; margin-inline: auto; }
+
+  /* AP-489: Das Zitat steht gestapelt mittig unter der Bluete - auf Ansage des
+     Auftraggebers nur hier; am Rechner bleibt es linksbuendig in seiner Spalte. */
+  .ueber-inhaber__zitat { text-align: center; }
 
   /* AP-453: Hier stand die Vollbreiten-Fassung des Fotos (AP-441). Das Startbild
      am Seitenanfang braucht sie nicht mehr - es steht ausserhalb des Containers
