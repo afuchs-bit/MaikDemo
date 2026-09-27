@@ -1702,6 +1702,9 @@ Der neue Wortlaut:
 > gern erklären, was sie gerade tun. Mit Ihrem Grundstück gehen wir sorgfältig um –
 > schließlich wird es auch während der Bauzeit weiter genutzt.
 
+*AP-492 (27.09.2026): Auf Ansage des Auftraggebers „treffen Sie unser Team **an**" statt
+„treffen Sie unser Team". Sonst wortgleich.*
+
 ### Was damit hinfällig ist
 
 Die Sektion war als **Personen-Sektion** angelegt: „Wer auf der Startseite ‚Mehr über Maik
