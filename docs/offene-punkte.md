@@ -1799,6 +1799,12 @@ Verträge."). Der Satz steht an keiner anderen Stelle der Website.
 *AP-465 (25.09.2026): „bei uns" auf Ansage des Auftraggebers eingefügt; vorher lautete der
 Satz „Im Mittelpunkt steht immer das Ziel …". Sonst unverändert.*
 
+*AP-488 (27.09.2026): Auf Ansage des Auftraggebers ersetzt durch „Im Mittelpunkt steht bei
+uns immer das Ziel, der zufriedene Kunde. Grundlage dafür sind partnerschaftliche
+Zusammenarbeit und langjährige Geschäftsbeziehungen." — Wortlaut vom Auftraggeber,
+„termingerecht" entfällt auf der Über-uns-Seite. Auf der Startseite steht es weiterhin
+(„die termingerechte Herstellung einer Gartenanlage", „termingerecht umgesetzt").*
+
 Er ersetzt zwei Originalsätze und ist die **einzige** Stelle, die nicht aus dem Bestand
 stammt. Belegquelle ist damit allein dieses Auftragsdokument. Er bleibt bewusst bei
 **„Ziel"** — „Der Termin ist Teil der Absprache" wäre eine Zusage statt einer Absicht und
