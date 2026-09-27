@@ -433,6 +433,94 @@ body.ueber-page {
   text-wrap: balance;
 }
 
+/* AP-490 (27.09.2026): Zitat-Animation, Variante A - Auftragsdokument vom
+   Auftraggeber, Herleitung und QA in docs/ap/AP-490-zitat-animation.md.
+   Blueten 0-650ms, sechs Woerter 300-1250ms (je 90ms versetzt), Strich unter
+   "zu klein." 1150-1650ms, Signatur 1400-1800ms. Einmal, danach Stillstand.
+
+   Zuordnung zum Dokument: .q-anim = .ueber-q (am Raster), .q-flower =
+   .ueber-q__bluete, .q-w = .ueber-q__w, .q-mark = .ueber-q__mark,
+   .q-sig = .ueber-q__sig. Timings, Easings und SVG-Masse sind woertlich die
+   des Dokuments. Abweichend: Strich in --mobile-logo-green (--rd-marke gibt es
+   im Projekt nicht; Wahl des Auftraggebers), Groesse bleibt die der
+   Schreibzeile (AP-489, Ansage des Auftraggebers).
+
+   Animiert werden nur opacity, transform, filter und stroke-dashoffset - keine
+   Layoutverschiebung. Die Ausgangslagen gelten nur mit JS (.js am <html>) und
+   ohne reduzierte Bewegung; sonst steht sofort der Endzustand samt Strich. */
+.ueber-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ueber-q__w { display: inline-block; }
+
+.ueber-q__mark {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.ueber-q__mark svg {
+  position: absolute;
+  left: -4%;
+  width: 108%;
+  bottom: -.22em;
+  height: .36em;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ueber-q__mark path {
+  fill: none;
+  stroke: var(--mobile-logo-green);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.ueber-q__bluete { transform-origin: 50% 55%; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .ueber-q .ueber-q__bluete { opacity: 0; transform: rotate(-38deg) scale(.5); }
+  .js .ueber-q .ueber-q__w { opacity: 0; transform: translateY(.28em); filter: blur(6px); }
+  .js .ueber-q .ueber-q__mark path { stroke-dashoffset: 1; }
+  .js .ueber-q .ueber-q__sig { opacity: 0; transform: translateY(6px); }
+
+  .js .ueber-q.is-in .ueber-q__bluete {
+    opacity: 1;
+    transform: none;
+    transition: transform .65s cubic-bezier(.34, 1.56, .64, 1), opacity .3s ease;
+  }
+
+  .js .ueber-q.is-in .ueber-q__w {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+    transition: opacity .5s ease, transform .55s cubic-bezier(.2, .7, .2, 1), filter .5s ease;
+    transition-delay: calc(300ms + var(--i) * 90ms);
+  }
+
+  .js .ueber-q.is-in .ueber-q__mark path {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset .5s cubic-bezier(.6, 0, .3, 1) 1150ms;
+  }
+
+  .js .ueber-q.is-in .ueber-q__sig {
+    opacity: 1;
+    transform: none;
+    transition: opacity .4s ease 1400ms, transform .4s ease 1400ms;
+  }
+}
+
 /* AP-450: Hier stand .ueber-inhaber__platzhalter - gedaempft und kursiv, damit
    der vorlaeufige Satz auf der Seite als solcher zu erkennen war. Das Zitat
    traegt seit dem 24.09.2026 den Wortlaut des Auftraggebers; die Klasse ist im

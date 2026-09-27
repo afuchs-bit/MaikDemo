@@ -1053,3 +1053,26 @@
     start();
   }
 })();
+
+/* AP-490: Zitat-Animation auf der Ueber-uns-Seite ("Kein Auftrag ist uns zu
+   klein."). Setzt einmal .is-in am Raster, sobald das Zitat zu 60 Prozent
+   sichtbar ist - die Bewegung selbst steht komplett in ueber-uns.css.
+   Beobachtet wird das Zitat, nicht das Raster: das ist auf dem Handy so hoch,
+   dass 60 Prozent davon nicht in jeden Bildschirm passen. Ohne
+   IntersectionObserver sofort der Endzustand. */
+(function () {
+  'use strict';
+  var zitat = document.querySelector('[data-ueber-q]');
+  var ziel = zitat && zitat.closest('.ueber-q');
+  if (!ziel) return;
+  if (!('IntersectionObserver' in window)) { ziel.classList.add('is-in'); return; }
+  var io = new IntersectionObserver(function (entries) {
+    for (var n = 0; n < entries.length; n++) {
+      /* Nicht isIntersecting allein: das ist schon bei der ersten Meldung nach
+         observe() wahr, sobald das Zitat ueberhaupt angeschnitten ist. .599
+         statt .6 nur gegen Rundung der Flaechenquote genau am Schwellwert. */
+      if (entries[n].intersectionRatio >= 0.599) { io.disconnect(); ziel.classList.add('is-in'); return; }
+    }
+  }, { threshold: 0.6 });
+  io.observe(zitat);
+})();
