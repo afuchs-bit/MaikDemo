@@ -33,7 +33,7 @@
       ]
     }
   ],
-  "abschluss": "Zu allen Fragen rund um Ihr Pool- oder Whirlpoolprojekt und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "abschluss": "Zu allen Fragen rund um Ihr Pool- oder Whirlpoolprojekt und zur Vereinbarung eines Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
   "ctaLabel": "Poolumfeld planen",
   "faq": [
     {
@@ -47,29 +47,53 @@
   ],
   "bilder": {
     "hero": {
-      "bild": "assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp",
-      "alt": "Firmenfahrzeug von Maik Rohdich in einer gestalteten Gartenanlage",
-      "width": 1023,
-      "height": 1537
+      "bild": "assets/img/leistungen-mobile/pool-whirlpool-garten-640.webp",
+      "alt": "",
+      "width": 640,
+      "height": 640
     },
     "gallery": [
       {
-        "bild": "assets/img/projektablauf/termin-vor-ort-640.webp",
-        "alt": "Firmenfahrzeug von Maik Rohdich an einem Kundengrundstück",
-        "width": 640,
-        "height": 480
+        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
+        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
+        "fokusMobil": "54% 55%",
+        "width": 480,
+        "height": 360
       },
       {
-        "bild": "assets/img/projektablauf/umsetzung-koordination-640.webp",
-        "alt": "Bagger setzt einen großen Naturstein in eine Gartenanlage",
-        "width": 640,
-        "height": 480
+        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
+        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
+        "fokusMobil": "52% 62%",
+        "width": 480,
+        "height": 493
       },
       {
-        "bild": "assets/img/projektablauf/pflege-640.webp",
-        "alt": "Bewässerung eines gepflegten Rasens",
-        "width": 640,
-        "height": 480
+        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
+        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 480,
+        "height": 362
+      },
+      {
+        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
+        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
+        "fokusMobil": "50% 58%",
+        "width": 480,
+        "height": 360
+      },
+      {
+        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
+        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
+        "fokusMobil": "60% 56%",
+        "width": 480,
+        "height": 360
+      },
+      {
+        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
+        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
+        "fokusMobil": "57% 58%",
+        "width": 480,
+        "height": 297
       }
     ]
   },
@@ -80,17 +104,36 @@
   "related": [
     {
       "welt": "privat",
-      "slug": "teichbau"
+      "slug": "palmen-winterfest"
     },
     {
       "welt": "privat",
-      "slug": "gartengestaltung"
+      "slug": "sichtschutzbepflanzung"
     },
     {
       "welt": "privat",
-      "slug": "aussergewoehnliches-garten"
+      "slug": "beleuchtung"
     }
   ],
   "diagram": "",
-  "sourceSection": 23
+  "sourceSection": 23,
+  "mobileVariant": "balkonkasten",
+  "themeColor": "#171916",
+  "mobileCssVersion": "20260927a12",
+  "ctaFamilyVersion": "20260926b",
+  "galleryCtaLabel": "Mehr anzeigen",
+  "galleryCollapseLabel": "Weniger",
+  "closingCtaLabel": "JETZT ANFRAGEN",
+  "closingLines": [
+    "Zu allen Fragen rund um Ihr",
+    "Pool- oder Whirlpoolprojekt",
+    "und zur Vereinbarung eines",
+    "Beratungsgespräches",
+    "steht Ihnen unser Fachpersonal",
+    "gerne zur Verfügung."
+  ],
+  "heroTitleLines": [
+    "Pool- &",
+    "Whirlpoolumfeld"
+  ]
 }

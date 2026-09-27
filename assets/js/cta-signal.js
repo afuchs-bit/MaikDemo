@@ -4,7 +4,7 @@
 (() => {
   'use strict';
 
-  const ctas = document.querySelectorAll('.mobile-proof-request, .maik-cta--attention, .maik-cta--gallery');
+  const ctas = document.querySelectorAll('.mobile-proof-request, .maik-cta--attention, .maik-cta--gallery, .lp-service-pulse');
   if (!ctas.length) return;
 
   // AP-301: Rueckmeldung am Finger, nicht am Klick.

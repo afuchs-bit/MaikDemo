@@ -34,6 +34,19 @@
     { "frage": "Arbeiten Sie auch in beengter Lage zwischen Gebäuden?", "antwort": "Ja. Wenn keine Technik herankommt, arbeiten wir in Seilklettertechnik und tragen den beschädigten Baum kontrolliert in Teilen ab. So bleiben Dächer, Zäune und Nachbargrundstücke unberührt." },
     { "frage": "Hilft mir die Dokumentation für die Versicherung?", "antwort": "Ja. Wir können den Schaden vor der Beseitigung festhalten. Diese Dokumentation erleichtert die Abstimmung mit Ihrer Versicherung. Ob und in welchem Umfang Kosten übernommen werden, entscheidet allerdings die Versicherung, nicht wir." }
   ],
-  "nachbarn": ["baumarbeiten", "baumkontrolle"],
+  "related": [
+    {
+      "welt": "privat",
+      "slug": "baumarbeiten"
+    },
+    {
+      "welt": "privat",
+      "slug": "baumkontrolle"
+    },
+    {
+      "welt": "privat",
+      "slug": "baumpflege"
+    }
+  ],
   "kundengruppe": ["privat"]
 }

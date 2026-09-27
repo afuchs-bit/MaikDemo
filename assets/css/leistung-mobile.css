@@ -4,10 +4,12 @@
 @font-face{font-family:'Baloo 2';src:url('../fonts/baloo2-700-latin.woff2') format('woff2');font-display:swap;font-style:normal;font-weight:700}
 
 .lpv2-symbols{position:absolute;overflow:hidden;pointer-events:none}
+.lpv2-title-lines{display:none}
 
 /* Desktop-Kompatibilität: keine neue Inszenierung, sondern der ruhige bisherige
    Leistungsseiten-Rahmen. Die neuen visuellen Module bleiben unter 480px. */
 @media (min-width:481px){
+  .lpv2-page .lpv2-breadcrumbs--mobile{display:none}
   .lpv2-page .lpv2-hero{padding:76px 0 64px}
   .lpv2-page .lpv2-hero>.container,.lpv2-page .lpv2-editorial>.container,.lpv2-page .lpv2-faq>.container{max-width:1180px;margin-inline:auto;padding-inline:40px}
   .lpv2-page .lpv2-breadcrumbs{margin-bottom:32px}
@@ -35,7 +37,7 @@
 
 @media (max-width:480px){
   :root{--lp-bg:#1b1e19;--lp-bg-soft:#22271f;--lp-ink:#f3efe5;--lp-muted:#c4c8bc;--lp-line:rgba(243,239,229,.18);--lp-lime:#69ef00;--lp-radius:22px;--lp-pad:20px}
-  .lpv2-page--homepage-unified{--lp-ink:var(--home-on-dark,#fafaf6);--lp-muted:var(--home-on-dark-2,#d9ded5);--lp-lime:var(--home-lime,#8cc63f);--lpv2-text-heading:var(--home-on-dark,#fafaf6);--lpv2-text-body:var(--home-on-dark-2,#d9ded5);--lpv2-text-muted:var(--home-on-dark-mute,#aeb5aa);--lpv2-text-accent:var(--home-dark-accent,#b6d97a);--lpv2-space-section:clamp(60px,16vw,68px);--lpv2-space-transition:clamp(38px,10.5vw,44px);--lpv2-space-compact:clamp(44px,12vw,52px);--lpv2-space-head:clamp(28px,8vw,34px);--lpv2-space-copy:16px}
+  .lpv2-page--homepage-unified{--lp-ink:var(--home-on-dark,#fafaf6);--lp-muted:var(--home-on-dark-2,#d9ded5);--lp-lime:var(--home-lime,#8cc63f);--lpv2-text-heading:var(--home-on-dark,#fafaf6);--lpv2-text-body:var(--home-on-dark-2,#d9ded5);--lpv2-text-muted:var(--home-on-dark-mute,#aeb5aa);--lpv2-text-accent:var(--home-dark-accent,#b6d97a);--lpv2-space-section:clamp(60px,16vw,68px);--lpv2-space-transition:clamp(38px,10.5vw,44px);--lpv2-space-compact:clamp(44px,12vw,52px);--lpv2-space-list-followup:clamp(36px,10vw,42px);--lpv2-space-head:clamp(28px,8vw,34px);--lpv2-space-copy:16px}
   html.lpv2-root{background:var(--lp-bg);scroll-behavior:smooth;overflow-x:hidden}
   html.lpv2-root .lpv2-page{margin:0;background:var(--lp-bg);color:var(--lp-ink);font-family:Nunito,system-ui,sans-serif;overflow-x:hidden}
   .lpv2-page .container{width:auto;max-width:none;margin:0;padding-inline:var(--lp-pad)}
@@ -43,6 +45,7 @@
   .lpv2-page :where(h1,h2,h3,p,ul,ol,figure){margin-top:0}
   .lpv2-page :where(a,button){-webkit-tap-highlight-color:transparent}
   .lpv2-main{overflow:clip}
+  .lpv2-page .lpv2-breadcrumbs--desktop{display:none}
 
   .lpv2-hero{padding:116px 0 0;background:var(--lp-bg)}
   .lpv2-breadcrumbs{margin:0 0 38px;font-size:.72rem;letter-spacing:.03em;color:#9da394}
@@ -65,18 +68,21 @@
      Balkonkasten-Prototyp. Breadcrumb und Titel liegen bewusst im Foto; die
      handgezeichnete gruene Schräge fuehrt anschliessend in den Seiteninhalt. */
   .lpv2-page--image-first .lpv2-hero{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr);padding:0;background:var(--lp-bg);overflow:visible}
-  .lpv2-page--image-first .lpv2-breadcrumbs--bar{display:none}
+  .lpv2-page--image-first .lpv2-breadcrumbs--bar{position:relative;z-index:5;grid-column:1;grid-row:1;align-self:start;justify-self:start;display:block;width:auto;margin:14px 0 0 20px;color:var(--home-on-dark-2,#d9ded5);font-size:.76rem;font-weight:750;line-height:1;letter-spacing:.015em}
   .lpv2-page--image-first .lpv2-breadcrumbs--bar ol{width:100%;overflow:visible}
   .lpv2-page--image-first .lpv2-breadcrumbs--bar li+li:before{content:none}
-  .lpv2-page--image-first .lpv2-breadcrumb-back a{display:inline-flex;align-items:center;gap:9px;color:#f7f4ea;text-decoration:none}
+  .lpv2-page--image-first .lpv2-breadcrumb-back a{display:inline-flex;align-items:center;gap:9px;min-height:34px;color:inherit;text-decoration:none}
+  .lpv2-page--image-first .lpv2-breadcrumb-back a > span{text-decoration-line:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-skip-ink:auto}
   .lpv2-page--image-first .lpv2-breadcrumb-back img{display:block;width:18px;height:auto;filter:brightness(0) saturate(100%) invert(77%) sepia(100%) saturate(1680%) hue-rotate(47deg) brightness(105%) contrast(107%);transform:rotate(180deg)}
   .lpv2-page--image-first .lpv2-breadcrumb-current{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
   .lpv2-page--image-first .lpv2-hero>.container{display:contents}
   .lpv2-page--image-first .lpv2-title{position:relative;isolation:isolate;z-index:4;grid-column:1;grid-row:1;align-self:start;justify-self:start;width:max-content;max-width:calc(100% - 40px);margin:28px 0 0 20px;padding:0;background:transparent;color:#f7f4ea;font-family:'Baloo 2',Nunito,system-ui,sans-serif;font-size:clamp(2.48rem,10.7vw,2.78rem);font-style:normal;font-weight:600;line-height:.98;letter-spacing:-.022em;text-align:left;text-shadow:0 2px 13px rgba(0,0,0,.4);hyphens:none;text-wrap:balance}
   .lpv2-page--image-first .lpv2-title:before{content:'';position:absolute;z-index:-1;inset:-12px -19px -13px -15px;background:rgba(12,16,12,.28);-webkit-backdrop-filter:blur(14px) saturate(.86);backdrop-filter:blur(14px) saturate(.86);-webkit-mask-image:radial-gradient(ellipse 78% 70% at 48% 50%,#000 45%,rgba(0,0,0,.9) 64%,transparent 100%);mask-image:radial-gradient(ellipse 78% 70% at 48% 50%,#000 45%,rgba(0,0,0,.9) 64%,transparent 100%);pointer-events:none}
-  .lpv2-page--image-first .lpv2-title--split>span{position:relative;z-index:1;display:block}
-  .lpv2-page--image-first .lpv2-title--split>span:first-child:after{content:'-';color:inherit;text-shadow:none}
-  .lpv2-page--image-first .lpv2-title--split>span:last-child{margin-left:0}
+  .lpv2-page--image-first .lpv2-title--split>.lpv2-title-full{display:none}
+  .lpv2-page--image-first .lpv2-title--split>.lpv2-title-lines{position:relative;z-index:1;display:block}
+  .lpv2-page--image-first .lpv2-title--split>.lpv2-title-lines>span{display:block}
+  .lpv2-page--image-first .lpv2-title--split>.lpv2-title-lines>span:first-child:after{content:'-';color:inherit;text-shadow:none}
+  .lpv2-page--image-first .lpv2-title--split>.lpv2-title-lines>span:last-child{margin-left:0}
   .lpv2-page--image-first .lpv2-hero-media{grid-column:1;grid-row:1;align-self:start;justify-self:stretch;width:100%;height:clamp(300px,83vw,360px);aspect-ratio:auto;margin:0;overflow:hidden;border-radius:0 0 28px 28px;background:#20251e;box-shadow:none}
   .lpv2-page--image-first .lpv2-hero-media.reveal.is-in{transform:none!important}
   .lpv2-page--image-first .lpv2-hero-media picture{position:absolute;inset:0;z-index:1;overflow:hidden;border-radius:inherit;clip-path:none}
@@ -94,13 +100,13 @@
 
   /* Echter Seitentitel oberhalb des Fotos – typografisch identisch mit den
      mobilen Kapiteltiteln der Homepage, beispielsweise „Über uns“. */
-  .lpv2-page--title-above .lpv2-title{position:relative;z-index:2;grid-column:1;grid-row:1;align-self:auto;justify-self:stretch;width:100%;max-width:none;margin:0;padding:48px 20px 42px;background:var(--lp-bg);color:var(--home-on-dark,#fafaf6);font-family:"Baloo 2",sans-serif;font-size:31px;font-weight:600;font-style:normal;line-height:1.13;letter-spacing:-.015em;text-align:center;text-shadow:none;hyphens:none;text-wrap:balance}
+  .lpv2-page--title-above .lpv2-title{position:relative;z-index:2;grid-column:1;grid-row:1;align-self:auto;justify-self:stretch;width:100%;max-width:none;margin:0;padding:64px 20px 26px;background:var(--lp-bg);color:var(--home-on-dark,#fafaf6);font-family:"Baloo 2",sans-serif;font-size:31px;font-weight:600;font-style:normal;line-height:1.13;letter-spacing:-.015em;text-align:center;text-shadow:none;hyphens:none;text-wrap:balance}
   .lpv2-page--title-above .lpv2-title:before{content:none}
-  .lpv2-page--title-above .lpv2-title--split>span{display:block}
-  .lpv2-page--title-above .lpv2-title--split>span:first-child:after{content:none}
+  .lpv2-page--title-above .lpv2-title--split>.lpv2-title-lines>span{display:block}
+  .lpv2-page--title-above .lpv2-title--split>.lpv2-title-lines>span:first-child:after{content:none}
   .lpv2-page--title-above .lpv2-hero-media{grid-row:2;justify-self:center;width:calc(100% - 40px);height:auto;aspect-ratio:4/3;overflow:visible;border-radius:18px;background:transparent;box-shadow:0 24px 42px -25px rgba(0,0,0,.9),0 18px 34px -28px rgba(93,224,35,.58)}
   .lpv2-page--title-above .lpv2-hero-media picture{overflow:hidden;border-radius:inherit}
-  .lpv2-page--title-above .lpv2-hero-media img:not(.lpv2-hero-brand){object-fit:cover;object-position:center;filter:brightness(1.04) saturate(1.06) contrast(1.03)}
+  .lpv2-page--title-above .lpv2-hero-media img:not(.lpv2-hero-brand){border-radius:inherit;object-fit:cover;object-position:center;filter:brightness(1.04) saturate(1.06) contrast(1.03)}
   .lpv2-page--title-above .lpv2-hero-media:before{display:none}
   .lpv2-page--title-above .lpv2-hero-brand{right:-14px;bottom:-18px;width:clamp(4.0625rem,20vw,5rem)}
   .lpv2-page--title-above .lpv2-subheading{grid-row:3;margin:42px auto 15px}
@@ -128,26 +134,35 @@
   .lpv2-page--content-feature .lpv2-editorial{display:none}
   .lpv2-page .lpv2-mobile-hero-cta{z-index:4;grid-column:1;grid-row:3;display:block;width:calc(100% - 40px);margin:clamp(24px,6.5vw,28px) auto 0;padding-bottom:12px}
   .lpv2-page .lpv2-mobile-hero-cta__button{display:flex;width:100%;margin:0}
+  .lpv2-page .lpv2-mobile-hero-cta__button .maik-cta__label{display:grid;align-content:center;align-self:stretch;padding-inline:8px;line-height:1.12;text-wrap:balance;white-space:normal}
   .lpv2-page .lpv2-content-feature{position:relative;isolation:isolate;display:block;padding:64px 0 68px;overflow:hidden;border-top:0;background:var(--lp-bg)}
   .lpv2-page .lpv2-content-feature>.container{position:relative;z-index:1}
   .lpv2-content-editorial{min-width:0;padding-inline:12px}
   .lpv2-content-divider-flower{display:block;width:30px;height:30px;margin:20px auto;object-fit:contain;filter:saturate(.94) drop-shadow(1px 2px 1px rgba(0,0,0,.36));transform:rotate(-8deg);transform-origin:50% 62%;pointer-events:none}
   .lpv2-content-service-copy+.lpv2-content-divider-flower,.lpv2-content-divider-flower--after-list{margin-top:24px}
-  .lpv2-content-lead h2,.lpv2-content-service h3{margin:0;font-family:'Baloo 2',sans-serif;font-style:normal;font-weight:600;text-wrap:balance}
-  .lpv2-content-lead h2{width:100%;max-width:17ch;margin-inline:auto;font-size:clamp(1.45rem,6.4vw,1.6rem);line-height:1.15;letter-spacing:-.012em;text-align:center}
+  .lpv2-content-lead h2,.lpv2-content-service h3{width:calc(100% + 24px);max-width:none;margin-inline:-12px;font-family:'Baloo 2',sans-serif;font-style:normal;font-weight:600;text-wrap:balance}
+  .lpv2-content-lead h2{font-size:clamp(1.45rem,6.4vw,1.6rem);line-height:1.15;letter-spacing:-.012em;text-align:center}
+  .lpv2-content-lead h2.lpv2-content-title--long{font-size:clamp(1.325rem,5.45vw,1.4rem);line-height:1.16}
   .lpv2-content-lead h2{color:var(--mobile-logo-green,#56e607)}
   .lpv2-content-lead .lpv2-content-flow-copy{margin-top:24px}
   .lpv2-content-lead p,.lpv2-content-context p,.lpv2-content-service-copy p{width:100%;max-width:34ch;margin-inline:auto;color:var(--lpv2-text-body,#d9ded5);font-size:1.125rem;font-weight:500;line-height:1.7;letter-spacing:.003em;text-wrap:pretty}
+  .lpv2-page--homepage-unified .lpv2-mobile-keep{white-space:nowrap}
+  .lpv2-page--homepage-unified .lpv2-mobile-phone{color:var(--mobile-logo-green,#56e607)}
   .lpv2-content-lead p+p,.lpv2-content-context p+p,.lpv2-content-service-copy p+p{margin-top:14px}
   .lpv2-content-context{margin-top:46px}
   .lpv2-content-service{margin-top:56px}
-  .lpv2-content-service h3{width:100%;max-width:18ch;margin-inline:auto;color:var(--mobile-logo-green,#56e607);font-size:clamp(1.3rem,5.8vw,1.45rem);line-height:1.17;letter-spacing:-.012em;text-align:center}
+  .lpv2-content-service h3{color:var(--mobile-logo-green,#56e607);font-size:clamp(1.3rem,5.8vw,1.45rem);line-height:1.17;letter-spacing:-.012em;text-align:center}
   .lpv2-content-service-copy{width:100%;max-width:34ch;margin:28px auto 0;padding:0}
   .lpv2-content-service-copy p{max-width:none;color:var(--lpv2-text-body,#d9ded5)}
+  .lpv2-content-service--no-list .lpv2-content-service-copy{margin-top:28px}
   .lpv2-content-service .lpv2-content-list{width:100%;max-width:34ch;margin:42px auto 0;padding-top:0;gap:24px}
   .lpv2-content-service .lpv2-content-list li{padding-left:27px;color:var(--lpv2-text-body,#d9ded5);font-size:1.1rem;font-weight:500;line-height:1.58;letter-spacing:.002em;text-wrap:pretty}
   .lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list li:before{top:.42em;width:17px;height:12px}
+  .lp-service-page .lp-service-title--long{font-size:clamp(1.5rem,6.94vw,1.75rem)}
   .lpv2-page :is(.lpv2-mobile-hero-cta__button,.lpv2-closing-cta) .maik-cta__label{font-size:clamp(.7rem,3vw,.78rem);letter-spacing:.006em}
+  .lpv2-page .lpv2-mobile-hero-cta__button .maik-cta__label--large{font-size:clamp(.9375rem,4.1vw,1rem)}
+  .lpv2-page .lpv2-mobile-hero-cta__button .maik-cta__label--medium{font-size:clamp(.875rem,3.8vw,.9375rem)}
+  .lpv2-page .lpv2-mobile-hero-cta__button .maik-cta__label--compact{font-size:clamp(.7rem,3vw,.78rem)}
   .lpv2-page .lpv2-closing-cta .maik-cta__label{font-size:clamp(1rem,4.35vw,1.1rem);letter-spacing:.012em}
   .lpv2-content-closing{margin-top:80px}
   .lpv2-page--homepage-unified .lpv2-content-closing .lpv2-closing{position:relative;isolation:isolate;width:100%;max-width:34ch;margin:0 auto;padding:24px 16px 25px;border-radius:18px 5px 18px 5px;background:rgb(74 122 16 / 14%);box-shadow:inset 0 1px 0 rgba(255,255,255,.018),0 22px 42px -38px rgba(0,0,0,.9)}
@@ -177,6 +192,7 @@
   .lpv2-page--homepage-unified .lpv2-list li:before{top:.32em;width:18px;height:13px;border:0;border-radius:0;background:url('../img/icons/maik-rohdich-haken-gruen.png') center/contain no-repeat;transform:none}
 
   .lpv2-decision{padding-top:8px}
+  .lpv2-content-service .lpv2-decision{width:100%;max-width:34ch;margin:28px auto 0;padding-top:0}
   .lpv2-decision-list{list-style:none;padding:0;margin:0;display:grid;gap:22px}
   .lpv2-decision-step{position:relative;padding:19px 18px 19px 52px;border:1px solid var(--lp-line);border-radius:16px;background:#20251e}
   .lpv2-decision-step:not(:last-child):after{content:'';position:absolute;left:26px;top:100%;width:1px;height:23px;background:var(--lp-lime)}
@@ -185,6 +201,8 @@
   .lpv2-decision-step span:last-child{display:block;margin-top:5px;color:var(--lp-muted);font-size:.86rem;line-height:1.45}
   .lpv2-decision-branches{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
   .lpv2-decision-branch{padding:9px 11px;border-left:2px solid var(--lp-lime);background:rgba(105,239,0,.05);color:var(--lp-muted);font-size:.78rem;line-height:1.35}
+  .lpv2-decision-graphic{display:block;width:calc(100% + 24px);max-width:none;margin:var(--lpv2-space-head) -12px 0}
+  .lpv2-decision-graphic img{display:block;width:100%;height:auto}
 
   .lpv2-gallery{padding-bottom:84px}
   .lpv2-gallery-head{display:flex;align-items:end;justify-content:space-between;gap:10px}
@@ -251,7 +269,7 @@
   .lpv2-faq--homepage .faq-list details+details:before{content:none}
   .lpv2-faq--homepage .faq-list details[open]{border-color:rgba(183,203,160,.3);background:#252b22;box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 20px 38px -30px rgba(0,0,0,.95)}
   .lpv2-faq--homepage .faq-list summary{display:flex;justify-content:space-between;align-items:center;height:auto;min-height:68px;box-sizing:border-box;gap:14px;padding:13px 14px 13px 16px;color:var(--ink);font-family:var(--display);font-size:.94rem;font-weight:700;line-height:1.32;letter-spacing:-.01em}
-  .lpv2-faq--homepage .faq-list summary>span:first-child{flex:1 1 auto;min-width:0;transform:translateY(1px)}
+  .lpv2-faq--homepage .faq-list summary>span:first-child{flex:1 1 auto;min-width:0;transform:translateY(1px);text-wrap:balance}
   .lpv2-faq--homepage .faq-list summary:focus-visible{position:relative;z-index:3;outline:2px solid var(--yellow);outline-offset:-3px;border-radius:18px 5px 18px 5px}
   .lpv2-faq--homepage .faq-list .chev{position:relative;flex:0 0 auto;width:24px;height:24px;border:1px solid rgba(140,198,63,.52);border-radius:50%;background:transparent;transform:none;transition:border-color .2s var(--ease)}
   .lpv2-faq--homepage .faq-list .chev:before,.lpv2-faq--homepage .faq-list .chev:after{content:'';position:absolute;left:50%;top:50%;width:10px;height:2px;border:0;border-radius:2px;background:var(--green-500);transform:translate(-50%,-50%)}
@@ -259,7 +277,7 @@
   .lpv2-faq--homepage .faq-list details[open] .chev{border-color:rgba(140,198,63,.78);background:transparent;transform:none}
   .lpv2-faq--homepage .faq-list details[open] .chev:after{transform:translate(-50%,-50%) rotate(0deg)}
   .lpv2-faq--homepage .faq-body{margin-inline:16px;padding:1px 0 16px;border-top:0}
-  .lpv2-faq--homepage .faq-body p{color:var(--ink-2);font-size:.9rem;line-height:1.52}
+  .lpv2-faq--homepage .faq-body p{color:var(--ink-2);font-size:.9rem;line-height:1.52;text-wrap:pretty}
 
   @media (max-width:360px){
     .lpv2-faq--homepage .lpv2-section-head h2{font-size:28px}
@@ -295,13 +313,16 @@
   .lpv2-related--homepage .lpv2-section-head{display:block;margin-bottom:40px;text-align:center}
   .lpv2-related--homepage .lpv2-section-head h2{display:block;width:100%;max-width:none;margin:0 auto;padding:0;color:var(--home-on-dark,#fafaf6);font-family:'Baloo 2',sans-serif;font-size:31px;font-style:normal;font-weight:600;line-height:1.13;letter-spacing:-.015em;text-align:center;text-wrap:balance}
   .lpv2-related--homepage .lpv2-related-home-list{margin:0}
+  .lpv2-page--image-first .lpv2-related-all{display:flex;justify-content:center;margin-top:clamp(14px,4vw,18px);color:var(--home-on-dark-mute,#aeb5aa);font-size:.85rem;font-weight:750;line-height:1;letter-spacing:.0134em}
+  .lpv2-page--image-first .lpv2-related-all a{gap:7px}
+  .lpv2-page--image-first .lpv2-related-all img{transform:translateY(1px)}
 
   /* Einheitlicher vertikaler Rhythmus für den mobilen Balkonkasten-Prototyp.
      Die vier Stufen entsprechen dem ruhigen Spacing-System der Homepage:
      Sektion, Inhaltsblock, Überschrift–Inhalt und fortlaufender Fließtext. */
   .lpv2-page--homepage-unified .section{padding-block:var(--lpv2-space-transition)}
-  .lpv2-page--homepage-unified.lpv2-page--title-above .lpv2-title{padding:clamp(50px,13vw,56px) 20px clamp(34px,9vw,38px)}
-  .lpv2-page--homepage-unified .lpv2-mobile-hero-cta{margin-top:clamp(24px,6.5vw,28px)}
+  .lpv2-page--homepage-unified.lpv2-page--title-above .lpv2-title{padding:clamp(72px,19vw,80px) 20px clamp(34px,9vw,38px)}
+  .lpv2-page--homepage-unified .lpv2-mobile-hero-cta{margin-top:clamp(24px,6.5vw,28px);padding-bottom:var(--lpv2-space-transition)}
   .lpv2-page--homepage-unified .lpv2-content-feature,
   .lpv2-page--homepage-unified .lpv2-gallery-grid-section,
   .lpv2-page--homepage-unified .lpv2-faq,
@@ -312,9 +333,13 @@
   .lpv2-page--homepage-unified :is(.lpv2-content-lead,.lpv2-content-context,.lpv2-content-service-copy) p+p{margin-top:var(--lpv2-space-copy)}
   .lpv2-page--homepage-unified .lpv2-content-context{margin-top:var(--lpv2-space-head)}
   .lpv2-page--homepage-unified .lpv2-content-service{margin-top:var(--lpv2-space-compact)}
-  .lpv2-page--homepage-unified .lpv2-content-service-copy{margin-top:var(--lpv2-space-head);padding:0}
-  .lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list{margin-top:var(--lpv2-space-compact);padding:0;gap:0}
-  .lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list li{min-height:30px;padding:20px 0 20px 44px;color:var(--lpv2-text-heading,#fafaf6);font-family:Nunito,system-ui,sans-serif;font-size:1.1875rem;font-weight:700;line-height:1.42;letter-spacing:-.002em}
+  .lpv2-page--homepage-unified .lpv2-content-service-copy{margin-top:var(--lpv2-space-compact);padding:0}
+  .lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list+.lpv2-content-service-copy{margin-top:var(--lpv2-space-list-followup)}
+  .lpv2-page--homepage-unified .lpv2-content-service--no-list .lpv2-content-service-copy{margin-top:var(--lpv2-space-head)}
+  .lpv2-page--homepage-unified .lpv2-content-service .lpv2-decision{margin-top:var(--lpv2-space-head)}
+  .lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list{margin-top:var(--lpv2-space-head);padding:0;gap:0}
+  .lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list li{box-sizing:border-box;width:100%;min-width:0;max-width:100%;min-height:30px;padding:20px 0 20px 44px;color:var(--lpv2-text-heading,#fafaf6);font-family:Nunito,system-ui,sans-serif;font-size:1.1875rem;font-weight:700;line-height:1.42;letter-spacing:-.002em;text-wrap:balance}
+  .lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list .lpv2-mobile-keep{white-space:normal}
   .lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list li:before{left:-1px;top:19px;width:30px;height:30px;border-radius:0;background:url('../img/icons/maik-rohdich-bluete-original.png?v=20260913b') center/contain no-repeat;filter:saturate(.94) drop-shadow(1px 2px 1px rgba(0,0,0,.36));transform:rotate(-8deg);transform-origin:50% 62%}
   .lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list li:not(:last-child):after{content:'';position:absolute;left:44px;right:0;bottom:0;height:1px;background:linear-gradient(90deg,rgba(182,217,122,.24),rgba(182,217,122,.07) 68%,transparent)}
   .lpv2-page--homepage-unified .lpv2-content-closing{margin-top:var(--lpv2-space-compact)}
