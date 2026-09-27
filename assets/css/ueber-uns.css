@@ -445,7 +445,8 @@ body.ueber-page {
    im Projekt nicht; Wahl des Auftraggebers), Groesse bleibt die der
    Schreibzeile (AP-489, Ansage des Auftraggebers).
 
-   Animiert werden nur opacity, transform, filter und stroke-dashoffset - keine
+   Animiert werden nur opacity, transform und filter (bis AP-491 auch
+   stroke-dashoffset, siehe dort) - keine
    Layoutverschiebung. Die Ausgangslagen gelten nur mit JS (.js am <html>) und
    ohne reduzierte Bewegung; sonst steht sofort der Endzustand samt Strich. */
 .ueber-sr {
@@ -468,23 +469,24 @@ body.ueber-page {
   white-space: nowrap;
 }
 
-.ueber-q__mark svg {
+/* AP-491 (27.09.2026): Unter "zu klein." liegt statt des geschwungenen
+   SVG-Strichs aus AP-490 die Linie der Startseite - auf Ansage des
+   Auftraggebers, diesmal gerade. Vorbild ist die Leiste zwischen Foto und
+   Hintergrund im Hero (.hero--gate-empty::before, home-dark.css): Limette bei
+   78 Prozent, ein Keil von 1px links auf 3,4px rechts. Dort faellt sie mit
+   16 Grad ab; hier ist die Unterkante waagerecht, nur die Staerke nimmt zu.
+   Spannweite wie der Strich vorher (108 Prozent, links 4 Prozent vor). */
+.ueber-q__mark::after {
+  content: "";
   position: absolute;
   left: -4%;
   width: 108%;
-  bottom: -.22em;
-  height: .36em;
-  overflow: visible;
+  bottom: -.12em;
+  height: 3.4px;
+  background: rgb(var(--green-500-rgb) / .78);
+  clip-path: polygon(0 calc(100% - 1px), 100% 0, 100% 100%, 0 100%);
+  transform-origin: left center;
   pointer-events: none;
-}
-
-.ueber-q__mark path {
-  fill: none;
-  stroke: var(--mobile-logo-green);
-  stroke-width: 7;
-  stroke-linecap: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
 }
 
 .ueber-q__bluete { transform-origin: 50% 55%; }
@@ -492,7 +494,7 @@ body.ueber-page {
 @media (prefers-reduced-motion: no-preference) {
   .js .ueber-q .ueber-q__bluete { opacity: 0; transform: rotate(-38deg) scale(.5); }
   .js .ueber-q .ueber-q__w { opacity: 0; transform: translateY(.28em); filter: blur(6px); }
-  .js .ueber-q .ueber-q__mark path { stroke-dashoffset: 1; }
+  .js .ueber-q .ueber-q__mark::after { transform: scaleX(0); }
   .js .ueber-q .ueber-q__sig { opacity: 0; transform: translateY(6px); }
 
   .js .ueber-q.is-in .ueber-q__bluete {
@@ -509,9 +511,12 @@ body.ueber-page {
     transition-delay: calc(300ms + var(--i) * 90ms);
   }
 
-  .js .ueber-q.is-in .ueber-q__mark path {
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset .5s cubic-bezier(.6, 0, .3, 1) 1150ms;
+  /* AP-491: Die Linie zieht sich von links auf - Zeitpunkt, Dauer und
+     Kurve wie beim Strich aus AP-490, jetzt ueber transform statt
+     stroke-dashoffset. */
+  .js .ueber-q.is-in .ueber-q__mark::after {
+    transform: none;
+    transition: transform .5s cubic-bezier(.6, 0, .3, 1) 1150ms;
   }
 
   .js .ueber-q.is-in .ueber-q__sig {

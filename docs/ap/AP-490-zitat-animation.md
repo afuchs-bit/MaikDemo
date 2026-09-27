@@ -6,6 +6,19 @@ Das Zitat im Abschnitt „Das Team hinter dem Betrieb." animiert beim ersten
 Sichtbarwerden **einmal**. Danach steht alles still. Grundlage ist das Auftragsdokument
 „Zitat-Animation … (Variante A)" vom Auftraggeber.
 
+> **Nachtrag AP-491 (27.09.2026):** Der geschwungene SVG-Strich unter „zu klein.“ ist
+> auf Ansage des Auftraggebers ersetzt durch die gerade Keil-Linie der Startseite. Vorbild
+> ist die Hero-Leiste (`.hero--gate-empty::before`): Limette bei 78 %, links 1 px, rechts
+> 3,4 px, dort mit 16° abfallend, hier mit waagerechter Unterkante. Sie ist ein `::after`
+> an `.ueber-q__mark`, das `<svg>` ist aus dem Markup entfernt. Spannweite (108 %),
+> Zeitpunkt (1150 ms), Dauer (500 ms) und Kurve bleiben. Aufgezogen wird jetzt per
+> `transform: scaleX(0 → 1)` von links statt per `stroke-dashoffset`. Die Mitte der
+> Linie liegt, wo die Mitte des Strichs lag.
+> QA: Endzustand bei 360/390/1280 px, Zwischenbild bei 1400 ms, reduzierte Bewegung
+> und JS aus zeigen die Linie sofort, Layout-Shift 0, Seite außerhalb der Linie
+> pixelgleich. Die Angaben zu SVG und Strichfarbe in §3 und §7 beschreiben den Stand
+> von AP-490.
+
 ## 1. Abweichungen vom Auftragsdokument (vom Auftraggeber bestätigt)
 
 | Dokument | Umgesetzt | Grund |
