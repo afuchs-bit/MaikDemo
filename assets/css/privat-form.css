@@ -5864,7 +5864,9 @@
   }
 
   html.home-theme-dark .private-faq .private-faq-list {
-    gap: var(--home-space-copy);
+    /* Die Fragen liegen innerhalb einer gemeinsamen Gruppenkachel. Ein Raster-
+       Abstand wirkt dort wie zusaetzliches unteres Padding der vorherigen Zeile. */
+    gap: 0;
   }
 
   html.home-theme-dark .private-faq.is-faq-mobile-disclosure .faq-more--gruppen {
@@ -5972,6 +5974,17 @@
     html.home-theme-dark .private-contact a.anf__kanal:hover {
       background: var(--home-surface-high);
       border-color: rgba(140, 198, 63, .5);
+    }
+
+    /* Wie bei den Kontaktwegen reagiert die gesamte Fragekachel. Das summary
+       bleibt transparent, damit es die gemeinsame Flaeche nicht ueberdeckt. */
+    html.home-theme-dark .private-faq .private-faq-list details:hover {
+      background: var(--home-surface-high);
+      box-shadow: inset 0 0 0 1px rgba(140, 198, 63, .5);
+    }
+
+    html.home-theme-dark .private-faq .private-faq-list details:hover > summary {
+      background: transparent;
     }
   }
 }

@@ -206,7 +206,11 @@ function makeChip(label) {
 function bindControls() {
   viewInputs.forEach((input) => {
     input.addEventListener('change', () => {
-      if (input.checked) { state.view = input.value === 'galerie' ? 'galerie' : 'projekte'; render(); }
+      if (input.checked) {
+        state.view = input.value === 'galerie' ? 'galerie' : 'projekte';
+        render();
+        resetMobileViewScroll();
+      }
     });
   });
   tabInputs.forEach((input) => {
@@ -216,6 +220,15 @@ function bindControls() {
   });
   document.getElementById('galleryReset')?.addEventListener('click', resetFilters);
   initLightbox();
+}
+
+// Auf dem Handy ist der Umschalter sticky und kann deshalb weit unten auf der
+// Seite bedient werden. Die neu gewaehlte Ansicht beginnt trotzdem von oben.
+function resetMobileViewScroll() {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  window.requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  });
 }
 
 function resetFilters() {

@@ -85,6 +85,7 @@
   };
 
   const canAutoplay = () => (
+    carousel.dataset.iphoneReviewSwipe !== 'true' &&
     !reducedMotion.matches &&
     !manuallyPaused &&
     isVisible &&
@@ -265,6 +266,12 @@
     }, interval);
   };
 
+  carousel.addEventListener('review-swipe-activate', () => {
+    stopTimer();
+    stopViewportMotion();
+    carousel.classList.remove('has-review-rotator', 'has-review-motion', 'is-reduced-motion');
+  }, { once: true });
+
   const showManually = (nextIndex) => {
     render(nextIndex, true);
     schedule();
@@ -328,6 +335,7 @@
   document.addEventListener('visibilitychange', schedule);
 
   const onReducedMotionChange = () => {
+    if (carousel.dataset.iphoneReviewSwipe === 'true') return;
     carousel.classList.toggle('is-reduced-motion', reducedMotion.matches);
     if (reducedMotion.matches) {
       stopViewportMotion();
