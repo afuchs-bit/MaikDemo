@@ -28,6 +28,8 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="{{base}}assets/css/styles.css?v={{cssVersion}}" />
 <link rel="stylesheet" href="{{base}}assets/css/header-home.css?v={{cssVersion}}" />
 <link rel="stylesheet" href="{{base}}assets/css/footer-kontakt.css?v=20260921f" />
+<link rel="stylesheet" href="{{base}}assets/css/cta-family.css?v={{ctaFamilyVersion}}" />
+<link rel="stylesheet" href="{{base}}assets/css/leistung-mobile.css?v={{mobileCssVersion}}" />
 
 <!-- Breadcrumb (AEO/SEO) -->
 <script type="application/ld+json">
@@ -62,9 +64,9 @@ html, body { background-color: #171916; }
 
     <div class="section-head lp-head reveal">
       <span class="kicker">Leistung</span>
-      <h1 class="type-page-title" id="lp-title">{{h1}}</h1>
+      <h1 class="type-page-title{{titleClass}}" id="lp-title">{{h1}}</h1>
       <p class="lead type-hero-lead">{{intro}}</p>
-      <a class="btn btn-primary" href="{{contactHref}}">Termin vereinbaren</a>
+      <a class="btn btn-primary lp-service-pulse" href="{{contactHref}}">Termin vereinbaren</a>
     </div>
 
     {{fachtext}}
@@ -108,7 +110,7 @@ html, body { background-color: #171916; }
     </section>
 
     <div class="projekt-cta center reveal">
-      <a class="btn btn-primary" href="{{contactHref}}">Projekt besprechen? Jetzt anfragen <span aria-hidden="true">→</span></a>
+      <a class="btn btn-primary lp-service-pulse" href="{{contactHref}}">Projekt besprechen? Jetzt anfragen <span aria-hidden="true">→</span></a>
       <a class="btn btn-outline" href="{{weltHref}}">{{weltCtaLabel}}</a>
     </div>
 
@@ -120,5 +122,6 @@ html, body { background-color: #171916; }
 {{footer}}
 
 <script src="{{base}}assets/js/main.js?v={{jsVersion}}" defer></script>
+<script src="{{base}}assets/js/cta-signal.js?v=20260926b" defer></script>
 </body>
 </html>

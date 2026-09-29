@@ -63,6 +63,21 @@ function fail(msg) { console.error(`\n❌ ${msg}\n`); process.exit(1); }
 function validate(slug, d, validSlugs, weltKey) {
   const where = `content/leistungen/${weltKey}/${slug}.json`;
   if (!validSlugs.has(slug)) errors.push(`${where}: Slug "${slug}" ist nicht in content/taxonomie.json definiert.`);
+  if (!Array.isArray(d.related) || d.related.length !== 3) {
+    errors.push(`${where}: "related" braucht genau drei kuratierte Leistungen.`);
+  } else {
+    const seen = new Set();
+    d.related.forEach((ref, i) => {
+      if (!isNonEmptyString(ref?.welt) || !isNonEmptyString(ref?.slug)) {
+        errors.push(`${where}: related[${i}] braucht "welt" und "slug".`);
+        return;
+      }
+      const key = `${ref.welt}:${ref.slug}`;
+      if (seen.has(key)) errors.push(`${where}: related-Ziel "${key}" ist doppelt eingetragen.`);
+      if (key === `${weltKey}:${slug}`) errors.push(`${where}: related darf nicht auf die eigene Leistung "${key}" verweisen.`);
+      seen.add(key);
+    });
+  }
   if (d.layout === 'editorial-v2' || d.layout === 'legacy-document') {
     for (const f of ['h1', 'navLabel', 'title', 'metaDescription', 'serviceType', 'unterzeile', 'abschluss', 'ctaLabel']) {
       if (!isNonEmptyString(d[f])) errors.push(`${where}: Pflichtfeld "${f}" fehlt oder ist leer.`);
@@ -93,30 +108,33 @@ function validate(slug, d, validSlugs, weltKey) {
       errors.push(`${where}: "kundengruppe" muss ein Array aus ${KUNDENTYPEN.join('/')} sein.`);
     }
     if (d.layout === 'editorial-v2') {
+      if (d.mobileVariant !== undefined && d.mobileVariant !== 'balkonkasten') {
+        errors.push(`${where}: "mobileVariant" kennt nur den Wert "balkonkasten".`);
+      }
       if (d.themeColor !== undefined
         && (typeof d.themeColor !== 'string' || !/^#[0-9a-fA-F]{6}$/.test(d.themeColor))) {
         errors.push(`${where}: "themeColor" muss als sechsstellige Hex-Farbe angegeben werden (z. B. #171916).`);
       }
       if (d.heroTitleLines !== undefined
         && (!Array.isArray(d.heroTitleLines)
-          || d.heroTitleLines.length !== 2
+          || d.heroTitleLines.length < 1
+          || d.heroTitleLines.length > 3
           || d.heroTitleLines.some((line) => !isNonEmptyString(line))
-          || d.heroTitleLines.join('') !== d.h1)) {
-        errors.push(`${where}: "heroTitleLines" muss den H1-Text in genau zwei nicht-leere Zeilen aufteilen.`);
+          || d.heroTitleLines.join('').replace(/\s+/g, '') !== d.h1.replace(/\s+/g, ''))) {
+        errors.push(`${where}: "heroTitleLines" muss den H1-Text in ein bis drei nicht-leere Zeilen aufteilen.`);
       }
       if (!isNonEmptyString(d.bilder?.hero?.bild)) errors.push(`${where}: bilder.hero.bild fehlt.`);
       const gallery = d.bilder?.gallery;
-      const galleryLengthValid = d.galleryVariant === 'grid-teaser'
+      const galleryLengthValid = d.mobileVariant === 'balkonkasten'
+        ? Array.isArray(gallery) && gallery.length >= 6
+        : d.galleryVariant === 'grid-teaser'
         ? Array.isArray(gallery) && gallery.length >= 6
         : Array.isArray(gallery) && gallery.length === 3;
       if (!galleryLengthValid || gallery.some((b) => !isNonEmptyString(b?.bild))) {
-        const requirement = d.galleryVariant === 'grid-teaser' ? 'mindestens 6' : 'genau 3';
+        const requirement = d.mobileVariant === 'balkonkasten' || d.galleryVariant === 'grid-teaser'
+          ? 'mindestens 6'
+          : 'genau 3';
         errors.push(`${where}: bilder.gallery muss für diese Darstellungsvariante ${requirement} Bilder enthalten.`);
-      }
-      if (!Array.isArray(d.related) || d.related.length < 2 || d.related.length > 3) {
-        errors.push(`${where}: "related" braucht zwei oder drei kuratierte Leistungen.`);
-      } else if (d.related.some((r) => !isNonEmptyString(r?.welt) || !isNonEmptyString(r?.slug))) {
-        errors.push(`${where}: Jeder related-Eintrag braucht "welt" und "slug".`);
       }
     }
     return;
@@ -145,7 +163,6 @@ function validate(slug, d, validSlugs, weltKey) {
   if (!isFilledArray(d.kundengruppe) || d.kundengruppe.some((k) => !KUNDENTYPEN.includes(k))) {
     errors.push(`${where}: "kundengruppe" muss ein Array aus ${KUNDENTYPEN.join('/')} sein.`);
   }
-  if (!Array.isArray(d.nachbarn)) errors.push(`${where}: "nachbarn" muss ein Array sein.`);
 }
 
 async function loadProjekte() {
@@ -227,8 +244,8 @@ async function main() {
   if (!tax || !Array.isArray(tax.leistungen)) fail('taxonomie.json: "leistungen" fehlt.');
   const validSlugs = new Set(tax.leistungen.map((l) => l.slug));
 
-  // AP-33: Je Welt einlesen und validieren. bySlug bleibt strikt pro Welt getrennt –
-  // nur so kann die nachbarn-Prüfung Links erkennen, die aus der Welt herausführen.
+  // AP-33: Je Welt einlesen und validieren. Verweise werden anschließend über den
+  // gemeinsamen Index geprüft, damit bewusste Querverlinkungen möglich bleiben.
   const weltDaten = new Map();
   for (const welt of Object.values(WELTEN)) {
     const contentDir = path.join(CONTENT_ROOT, welt.key);
@@ -250,17 +267,6 @@ async function main() {
       bySlug.set(slug, d);
     }
 
-    // Legacy-Nachbarn müssen in DERSELBEN Welt existieren. Editorial-v2 verwendet
-    // dagegen bewusst weltübergreifende, strukturierte related-Verweise.
-    for (const [slug, d] of bySlug) {
-      if (d.layout === 'editorial-v2' || d.layout === 'legacy-document') continue;
-      for (const nb of d.nachbarn || []) {
-        if (!bySlug.has(nb)) {
-          errors.push(`content/leistungen/${welt.key}/${slug}.json: nachbarn-Slug "${nb}" existiert nicht in der Welt ${welt.key}.`);
-        }
-      }
-    }
-
     // Vollständigkeit: WELTEN[*].slugs und die Dateien müssen sich exakt decken –
     // fängt vergessene Migrationsschritte sofort ab.
     const erwartet = new Set(welt.slugs);
@@ -276,7 +282,6 @@ async function main() {
 
   for (const [weltKey, bySlug] of weltDaten) {
     for (const [slug, d] of bySlug) {
-      if (d.layout !== 'editorial-v2') continue;
       for (const ref of d.related || []) {
         if (!WELTEN[ref.welt] || !weltDaten.get(ref.welt)?.has(ref.slug)) {
           errors.push(`content/leistungen/${weltKey}/${slug}.json: related-Ziel "${ref.welt}:${ref.slug}" existiert nicht.`);
@@ -286,13 +291,8 @@ async function main() {
   }
 
   // AP-18/AP-33: LEISTUNGEN_NAV gegen die Vereinigungsmenge beider Welten prüfen.
-  // AP-125: renderNavSubmenu löst die Beschriftung als `welt.navLabels[slug] ||
-  // LEISTUNGEN_NAV || slug` auf. Diese Prüfung ging nur über LEISTUNGEN_NAV und
-  // warnte deshalb seit AP-108 dauerhaft für die gewerbe-eigenen Slugs
-  // (begutachtung, umgestaltung-aussenanlagen), die per navLabels längst
-  // beschriftet sind und in der Navigation stehen. Jetzt derselbe Weg wie im
-  // Renderer: gemeldet wird nur, was in einer Welt tatsächlich ohne Beschriftung
-  // bliebe und dort mit dem Rohslug erschiene.
+  // Ein Welt-spezifisches navLabel ist dabei ebenso gültig wie ein Eintrag in
+  // LEISTUNGEN_NAV; nur tatsächlich unbeschriftete Rohslugs werden gemeldet.
   const alleSlugs = new Set([...weltDaten.values()].flatMap((m) => [...m.keys()]));
   const navSlugs = new Set(LEISTUNGEN_NAV.map((l) => l.slug));
   const navMissing = [...alleSlugs].filter((s) => !navSlugs.has(s)
@@ -325,14 +325,10 @@ async function main() {
     const outDir = path.join(OUT_ROOT, welt.pfad.replace(/\/$/, ''), 'leistungen');
     await mkdir(outDir, { recursive: true });
 
-    // Labels nur aus dieser Welt – Nachbar-Links zeigen ausschließlich hierhin.
-    const labelBySlug = new Map([...bySlug].map(([slug, d]) => [slug, d.navLabel]));
-
     for (const [slug, leistung] of bySlug) {
       const html = await renderLeistungPage({
         leistung, slug, welt, cssVersion, jsVersion,
         refProjects: refProjectsFor(slug, projekte, welt),
-        labelBySlug,
         serviceIndex,
       });
       const dir = path.join(outDir, slug);

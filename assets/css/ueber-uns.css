@@ -408,6 +408,124 @@ body.ueber-page {
 
 .ueber-inhaber__zitat p { margin: 0; }
 
+/* AP-489 (27.09.2026): Der Zitatsatz groesser, deutlicher und in Handschrift -
+   auf Ansage des Auftraggebers, damit er als Zitat erkennbar wird.
+
+   Schrift: der kursive Comic-Stapel der Seite, woertlich wie an den
+   "Fuer wen"-Ueberschriften (AP-476) und "Alle Projekte" (AP-456) weiter
+   unten - dieselbe Handschrift wie "Willkommen" auf der Startseite. Keine neue
+   Schriftdatei; wo keine der drei Schriften liegt, greift cursive.
+   700 und --ink statt 400 und --ink-2: "deutlicher" heisst hier heller und
+   kraeftiger, nicht nur groesser. Der Name darunter bleibt, wie er ist.
+
+   Nachtrag 27.09.2026 auf Ansage des Auftraggebers: Die Groesse ist woertlich
+   die der Schreibzeile "Individualangebot ..." in "Alles aus einer Hand"
+   (.ueber-betrieb__typer-box, AP-447) - 22px auf dem Handy, 28px ab 1180px.
+   Vorher 24/32px. Aendert sich die Schreibzeile, muss dieser Wert mit.
+   Die gruene Leiste unter dem Zitat ist auf dieselbe Ansage wieder entfallen. */
+.ueber-inhaber__spruch {
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1.375rem, 1.1899rem + 0.759vw, 1.75rem);
+  line-height: 1.3;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+/* AP-490 (27.09.2026): Zitat-Animation, Variante A - Auftragsdokument vom
+   Auftraggeber, Herleitung und QA in docs/ap/AP-490-zitat-animation.md.
+   Blueten 0-650ms, sechs Woerter 300-1250ms (je 90ms versetzt), Strich unter
+   "zu klein." 1150-1650ms, Signatur 1400-1800ms. Einmal, danach Stillstand.
+
+   Zuordnung zum Dokument: .q-anim = .ueber-q (am Raster), .q-flower =
+   .ueber-q__bluete, .q-w = .ueber-q__w, .q-mark = .ueber-q__mark,
+   .q-sig = .ueber-q__sig. Timings, Easings und SVG-Masse sind woertlich die
+   des Dokuments. Abweichend: Strich in --mobile-logo-green (--rd-marke gibt es
+   im Projekt nicht; Wahl des Auftraggebers), Groesse bleibt die der
+   Schreibzeile (AP-489, Ansage des Auftraggebers).
+
+   Animiert werden nur opacity, transform und filter (bis AP-491 auch
+   stroke-dashoffset, siehe dort) - keine
+   Layoutverschiebung. Die Ausgangslagen gelten nur mit JS (.js am <html>) und
+   ohne reduzierte Bewegung; sonst steht sofort der Endzustand samt Strich. */
+.ueber-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ueber-q__w { display: inline-block; }
+
+.ueber-q__mark {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* AP-491 (27.09.2026): Unter "zu klein." liegt statt des geschwungenen
+   SVG-Strichs aus AP-490 die Linie der Startseite - auf Ansage des
+   Auftraggebers, diesmal gerade. Vorbild ist die Leiste zwischen Foto und
+   Hintergrund im Hero (.hero--gate-empty::before, home-dark.css): Limette bei
+   78 Prozent, ein Keil von 1px links auf 3,4px rechts. Dort faellt sie mit
+   16 Grad ab; hier ist die Unterkante waagerecht, nur die Staerke nimmt zu.
+   Spannweite wie der Strich vorher (108 Prozent, links 4 Prozent vor). */
+.ueber-q__mark::after {
+  content: "";
+  position: absolute;
+  left: -4%;
+  width: 108%;
+  bottom: -.12em;
+  height: 3.4px;
+  background: rgb(var(--green-500-rgb) / .78);
+  clip-path: polygon(0 calc(100% - 1px), 100% 0, 100% 100%, 0 100%);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.ueber-q__bluete { transform-origin: 50% 55%; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .ueber-q .ueber-q__bluete { opacity: 0; transform: rotate(-38deg) scale(.5); }
+  .js .ueber-q .ueber-q__w { opacity: 0; transform: translateY(.28em); filter: blur(6px); }
+  .js .ueber-q .ueber-q__mark::after { transform: scaleX(0); }
+  .js .ueber-q .ueber-q__sig { opacity: 0; transform: translateY(6px); }
+
+  .js .ueber-q.is-in .ueber-q__bluete {
+    opacity: 1;
+    transform: none;
+    transition: transform .65s cubic-bezier(.34, 1.56, .64, 1), opacity .3s ease;
+  }
+
+  .js .ueber-q.is-in .ueber-q__w {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+    transition: opacity .5s ease, transform .55s cubic-bezier(.2, .7, .2, 1), filter .5s ease;
+    transition-delay: calc(300ms + var(--i) * 90ms);
+  }
+
+  /* AP-491: Die Linie zieht sich von links auf - Zeitpunkt, Dauer und
+     Kurve wie beim Strich aus AP-490, jetzt ueber transform statt
+     stroke-dashoffset. */
+  .js .ueber-q.is-in .ueber-q__mark::after {
+    transform: none;
+    transition: transform .5s cubic-bezier(.6, 0, .3, 1) 1150ms;
+  }
+
+  .js .ueber-q.is-in .ueber-q__sig {
+    opacity: 1;
+    transform: none;
+    transition: opacity .4s ease 1400ms, transform .4s ease 1400ms;
+  }
+}
+
 /* AP-450: Hier stand .ueber-inhaber__platzhalter - gedaempft und kursiv, damit
    der vorlaeufige Satz auf der Seite als solcher zu erkennen war. Das Zitat
    traegt seit dem 24.09.2026 den Wortlaut des Auftraggebers; die Klasse ist im
@@ -1181,6 +1299,10 @@ body.ueber-page {
      auf block. Zentriert wird deshalb ueber die Aussenabstaende. */
   .ueber-inhaber__bluete-mobil { display: block; margin: 24px 0; }
   .ueber-inhaber__bluete-mobil img { width: 64px; height: auto; margin-inline: auto; }
+
+  /* AP-489: Das Zitat steht gestapelt mittig unter der Bluete - auf Ansage des
+     Auftraggebers nur hier; am Rechner bleibt es linksbuendig in seiner Spalte. */
+  .ueber-inhaber__zitat { text-align: center; }
 
   /* AP-453: Hier stand die Vollbreiten-Fassung des Fotos (AP-441). Das Startbild
      am Seitenanfang braucht sie nicht mehr - es steht ausserhalb des Containers

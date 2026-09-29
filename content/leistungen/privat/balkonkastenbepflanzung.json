@@ -1,29 +1,19 @@
 {
   "layout": "editorial-v2",
-  "hideProcess": true,
-  "contactVariant": "homepage",
-  "contactTitle": "Der erste Schritt zu Ihrer Balkonkastenbepflanzung",
-  "galleryVariant": "grid-teaser",
   "galleryCtaLabel": "Mehr anzeigen",
   "galleryCollapseLabel": "Weniger",
-  "faqVariant": "homepage",
-  "relatedVariant": "homepage",
-  "closingVariant": "homepage-cta",
-  "contentVariant": "editorial",
   "closingCtaLabel": "JETZT ANFRAGEN",
   "closingLines": [
     "Zu allen Fragen rund um die",
     "Bepflanzung Ihrer Balkonkästen",
     "und zur Vereinbarung eines",
-    "unverbindlichen Beratungsgespräches",
+    "Beratungsgespräches",
     "steht Ihnen unser Fachpersonal",
     "gerne zur Verfügung."
   ],
   "themeColor": "#171916",
-  "mobileCssVersion": "20260925a75",
-  "ctaFamilyVersion": "20260923a",
-  "heroVariant": "image-first",
-  "heroTitlePlacement": "above-image",
+  "mobileCssVersion": "20260927a12",
+  "ctaFamilyVersion": "20260926b",
   "h1": "Balkonkastenbepflanzung",
   "heroTitleLines": [
     "Balkonkasten",
@@ -37,10 +27,6 @@
   "einstieg": [
     "Blühende Balkonkästen machen schon den Blick aus dem Fenster schöner. Ob farbenfroher Sommerflor, eine ruhige Kombination aus Grün und Weiß oder eine Bepflanzung passend zur Fassade: Wir gestalten Ihre Balkon- und Fensterkästen nach Ihren Vorstellungen."
   ],
-  "mobileEinstieg": [
-    "Blühende Balkonkästen machen schon den Blick aus dem Fenster schöner.",
-    "Ob farbenfroher Sommerflor, eine ruhige Kombination aus Grün und Weiß oder eine Bepflanzung passend zur Fassade: Wir gestalten Ihre Balkon- und Fensterkästen nach Ihren Vorstellungen."
-  ],
   "intro": "Blühende Balkonkästen machen schon den Blick aus dem Fenster schöner. Ob farbenfroher Sommerflor, eine ruhige Kombination aus Grün und Weiß oder eine Bepflanzung passend zur Fassade: Wir gestalten Ihre Balkon- und Fensterkästen nach Ihren Vorstellungen.",
   "inhalt": [
     {
@@ -48,21 +34,12 @@
       "paragraphs": [
         "Sonne, Schatten und Wind bestimmen mit, welche Pflanzen sich wohlfühlen. Dazu kommen die Größe der Kästen und die Frage, wie viel Zeit Sie für das Gießen und die Pflege haben. Wir stimmen die Bepflanzung auf diese Bedingungen ab."
       ],
-      "mobileParagraphs": [
-        "Sonne, Schatten und Wind bestimmen mit, welche Pflanzen sich wohlfühlen.",
-        "Dazu kommen die Größe der Kästen und die Frage, wie viel Zeit Sie für das Gießen und die Pflege haben. Wir stimmen die Bepflanzung auf diese Bedingungen ab."
-      ],
       "bullets": []
     },
     {
       "heading": "Wir bringen Farbe an Balkon und Fenster",
       "paragraphs": [
         "Wir achten darauf, dass die Pflanzen auch mit zunehmendem Wachstum genügend Raum haben. Zur fertigen Bepflanzung erhalten Sie Hinweise zur Bewässerung und Nährstoffversorgung. Bei Bedarf kümmern wir uns auch um den nächsten Wechsel der Pflanzen."
-      ],
-      "mobileParagraphs": [
-        "Wir achten darauf, dass die Pflanzen auch mit zunehmendem Wachstum genügend Raum haben.",
-        "Zur fertigen Bepflanzung erhalten Sie Hinweise zur Bewässerung und Nährstoffversorgung.",
-        "Bei Bedarf kümmern wir uns auch um den nächsten Wechsel der Pflanzen."
       ],
       "bullets": [
         "Pflanzenauswahl passend zu Standort, Jahreszeit und gewünschter Farbwirkung",
@@ -73,7 +50,7 @@
       ]
     }
   ],
-  "abschluss": "Zu allen Fragen rund um die Bepflanzung Ihrer Balkonkästen und zur Vereinbarung eines unverbindlichen Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "abschluss": "Zu allen Fragen rund um die Bepflanzung Ihrer Balkonkästen und zur Vereinbarung eines Beratungsgespräches steht Ihnen unser Fachpersonal gerne zur Verfügung.",
   "ctaLabel": "Balkonkästen bepflanzen lassen",
   "faq": [
     {
@@ -144,22 +121,18 @@
   "related": [
     {
       "welt": "privat",
-      "slug": "palmen-winterfest",
-      "letter": "p",
-      "label": "Palmen",
-      "subtitle": "winterfest"
+      "slug": "saisonbepflanzung"
     },
     {
       "welt": "privat",
-      "slug": "rollrasen",
-      "letter": "r"
+      "slug": "bepflanzung"
     },
     {
       "welt": "privat",
-      "slug": "dachbegruenung",
-      "letter": "d"
+      "slug": "gartenpflege"
     }
   ],
   "diagram": "",
-  "sourceSection": 2
+  "sourceSection": 2,
+  "mobileVariant": "balkonkasten"
 }

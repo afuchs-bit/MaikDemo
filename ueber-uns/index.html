@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<!-- AP-490: Merker "JS laeuft" fuer die Zitat-Animation. So frueh wie moeglich,
+     damit die Ausgangslage schon beim ersten Zeichnen steht - im defer-Skript
+     gesetzt, blitzte das Zitat erst voll auf und verschwaende dann. Ohne JS
+     fehlt die Klasse, und das Zitat steht sofort im Endzustand. -->
+<script>document.documentElement.classList.add('js');</script>
 <style>
 html, body { background-color: #171916; }
 @media (max-width: 480px) {
@@ -34,7 +39,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
 <link rel="stylesheet" href="../assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260925u" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260927f" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -397,23 +402,38 @@ html, body { background-color: #171916; }
          Ansage des Auftraggebers entfallen. Die liegende Bluete zwischen Text und
          Zitat (.ueber-inhaber__bluete-mobil, unter 861px) und die am senkrechten
          Steg (ab 861px) bleiben - sie stehen im Vordergrund, nicht im Hintergrund. -->
-    <div class="container ueber-inhaber__raster">
+    <div class="container ueber-inhaber__raster ueber-q">
       <div>
         <h2 class="ueber-inhaber__gross"><span>Das Team</span> hinter dem Betrieb.</h2>
-        <p class="ueber-inhaber__text">Auf der Baustelle treffen Sie unser Team – Leute vom
+        <p class="ueber-inhaber__text">Auf der Baustelle treffen Sie unser Team an – Leute vom
            Fach, die ansprechbar sind und Ihnen gern erklären, was sie gerade tun. Mit Ihrem
            Grundstück gehen wir sorgfältig um – schließlich wird es auch während der Bauzeit
            weiter genutzt.</p>
       </div>
       <div class="ueber-inhaber__steg" aria-hidden="true">
-        <span class="ueber-inhaber__blume"><img src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async"></span>
+        <span class="ueber-inhaber__blume"><img class="ueber-q__bluete" src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async"></span>
       </div>
       <div class="ueber-inhaber__bluete-mobil" aria-hidden="true">
-        <img src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async">
+        <img class="ueber-q__bluete" src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" loading="lazy" decoding="async">
       </div>
-      <blockquote class="ueber-inhaber__zitat">
-        <p>„Kein Auftrag ist uns zu klein.“</p>
-        <p class="ueber-inhaber__name">Maik Rohdich, Gartenbaumeister</p>
+      <!-- AP-490: Zitat-Animation (Variante A, docs/ap/AP-490-zitat-animation.md).
+           Der Satz steht zweimal: einmal vollstaendig fuer Screenreader
+           (.ueber-sr), einmal wortweise zerlegt fuer die Animation
+           (aria-hidden) - vorgelesen wird er genau einmal. Der Umbruch nach
+           "Auftrag" ist fest; "zu klein." bricht nie auseinander, darunter
+           liegt der Strich. Der Zustand haengt am Raster (.ueber-q), weil
+           Bluete, Zitat und Signatur dessen Kinder sind; beobachtet wird das
+           Zitat selbst (data-ueber-q). -->
+      <blockquote class="ueber-inhaber__zitat" data-ueber-q>
+        <p class="ueber-inhaber__spruch">
+          <span class="ueber-sr">„Kein Auftrag ist uns zu klein.“</span>
+          <span aria-hidden="true">
+            <span class="ueber-q__w" style="--i:0">„Kein</span> <span class="ueber-q__w" style="--i:1">Auftrag</span><br>
+            <span class="ueber-q__w" style="--i:2">ist</span> <span class="ueber-q__w" style="--i:3">uns</span>
+            <span class="ueber-q__mark"><span class="ueber-q__w" style="--i:4">zu</span> <span class="ueber-q__w" style="--i:5">klein.“</span></span>
+          </span>
+        </p>
+        <p class="ueber-inhaber__name ueber-q__sig">Maik Rohdich, Gartenbaumeister</p>
       </blockquote>
 
       <!-- AP-453: Hier stand das Foto der Baumarbeiten (AP-441). Auf Ansage des
@@ -496,6 +516,11 @@ html, body { background-color: #171916; }
        eine Zusage statt einer Absicht und damit unter Paragraf 5 UWG eine
        andere Kategorie. Nicht verschaerfen.
 
+       AP-488 (27.09.2026): Auf Ansage des Auftraggebers nennt der Satz jetzt
+       den zufriedenen Kunden statt des Termins: "Im Mittelpunkt steht bei uns
+       immer das Ziel, der zufriedene Kunde." Wortlaut vom Auftraggeber;
+       "termingerecht" ist damit von dieser Seite verschwunden.
+
        Zwei Aussagen stehen weiterhin in keinem Dokument des Teils B und haben
        die alte Website als einzigen Beleg: Arbeiten im oeffentlichen Bereich
        und Spezialisten aus angrenzenden Gewerken (Entwaesserungstechnik).
@@ -548,9 +573,9 @@ html, body { background-color: #171916; }
         <p class="ueber-betrieb__fakten">Seit über 25&nbsp;Jahren gestalten wir Außenanlagen im
            öffentlichen, gewerblichen und privaten Bereich. Mit Sitz in Herne und im Einsatz
            in ganz NRW.</p>
-        <p class="lead">Im Mittelpunkt steht bei uns immer das Ziel, die Anlage termingerecht
-           fertigzustellen. Grundlage dafür sind partnerschaftliche Zusammenarbeit und
-           langjährige Geschäftsbeziehungen.</p>
+        <p class="lead">Im Mittelpunkt steht bei uns immer das Ziel, der zufriedene Kunde.
+           Grundlage dafür sind partnerschaftliche Zusammenarbeit und langjährige
+           Geschäftsbeziehungen.</p>
         <div class="ueber-betrieb__zusage">
           <p class="ueber-betrieb__zusage-satz">Getroffene Absprachen haben für uns den gleichen
              Stellenwert wie schriftliche Verträge.</p>
@@ -884,7 +909,10 @@ html, body { background-color: #171916; }
 </footer>
 <!-- BUILD:site-footer:end -->
 
-<script src="../assets/js/main.js?v=20260923f" defer></script>
+<!-- AP-490: eigener Stempel nur hier - der neue Block in main.js betrifft nur
+     diese Seite; die anderen Seiten und index.html (Quelle fuer den Build)
+     behalten 20260923f. -->
+<script src="../assets/js/main.js?v=20260927a" defer></script>
 <!-- AP-477: is-pulsing (Pfeilimpuls) und is-pressed (Einrasten am Finger)
      des Galerie-Knopfes. Bricht von selbst ab, wenn kein maik-cta auf der
      Seite steht (cta-signal.js:8). -->

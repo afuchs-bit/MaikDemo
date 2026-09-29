@@ -28,6 +28,113 @@ export function escAttr(s) {
   return esc(s).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+const MOBILE_KEEP_WORDS = new Set([
+  'am', 'an', 'auf', 'aus', 'bei', 'für', 'im', 'in', 'je', 'mit', 'nach',
+  'so', 'um', 'und', 'von', 'vor', 'zu', 'zum', 'zur',
+]);
+
+function rangesOverlap(a, b) {
+  return a.start < b.end && b.start < a.end;
+}
+
+// Mobile Textgruppen bleiben nur per CSS zusammen. Der sichtbare Text und die
+// Desktop-Umbrueche bleiben dadurch unveraendert; Screenreader lesen weiterhin
+// genau den Inhalt aus den Quelldaten.
+function escMobileCopy(s, {
+  minTailLength = 18,
+  maxTailLength = 30,
+  maxTailWords = 4,
+  accentPhone = false,
+} = {}) {
+  const copy = String(s ?? '');
+  const ranges = [];
+  const words = [...copy.matchAll(/\S+/gu)].map((match) => ({
+    start: match.index,
+    end: match.index + match[0].length,
+    value: match[0],
+  }));
+
+  for (const match of copy.matchAll(/(?:\+49|0)\d{2,4}(?:[ \u00a0./-]\d{2,}){2,}/gu)) {
+    if (match[0].length <= 30) ranges.push({
+      start: match.index,
+      end: match.index + match[0].length,
+      kind: accentPhone ? 'phone' : 'keep',
+    });
+  }
+
+  const tailCandidates = [];
+  for (let count = 2; count <= Math.min(maxTailWords, words.length); count += 1) {
+    const startWord = words[words.length - count];
+    const endWord = words[words.length - 1];
+    const candidate = { start: startWord.start, end: endWord.end };
+    const length = copy.slice(candidate.start, candidate.end).replace(/\s+/gu, ' ').length;
+    if (length <= maxTailLength) tailCandidates.push({ ...candidate, length });
+  }
+  const tailTarget = (minTailLength + maxTailLength) / 2;
+  const preferredTailCandidates = tailCandidates.filter((candidate) => candidate.length >= minTailLength);
+  const tailRange = (preferredTailCandidates.length ? preferredTailCandidates : tailCandidates)
+    .sort((a, b) => Math.abs(a.length - tailTarget) - Math.abs(b.length - tailTarget) || b.length - a.length)[0] || null;
+
+  if (tailRange) {
+    const overlaps = ranges.filter((range) => rangesOverlap(range, tailRange));
+    const overlapsAccentedPhone = overlaps.some((range) => range.kind === 'phone');
+    const merged = overlaps.reduce((range, current) => ({
+      start: Math.min(range.start, current.start),
+      end: Math.max(range.end, current.end),
+    }), tailRange);
+    if (overlapsAccentedPhone) {
+      // Die hervorgehobene Telefonnummer bleibt eine eigene, präzise Spanne.
+    } else if (copy.slice(merged.start, merged.end).replace(/\s+/gu, ' ').length <= maxTailLength + 4) {
+      for (const overlap of overlaps) ranges.splice(ranges.indexOf(overlap), 1);
+      ranges.push(merged);
+    } else if (!overlaps.length) {
+      ranges.push(tailRange);
+    }
+  }
+
+  for (let index = 0; index < words.length - 1; index += 1) {
+    const word = words[index].value.toLocaleLowerCase('de-DE').replace(/[^\p{L}]/gu, '');
+    if (!MOBILE_KEEP_WORDS.has(word)) continue;
+    const candidate = { start: words[index].start, end: words[index + 1].end };
+    const length = copy.slice(candidate.start, candidate.end).replace(/\s+/gu, ' ').length;
+    if (length <= 26 && !ranges.some((range) => rangesOverlap(range, candidate))) ranges.push(candidate);
+  }
+
+  if (!ranges.length) return esc(copy);
+  ranges.sort((a, b) => a.start - b.start);
+  let cursor = 0;
+  const output = [];
+  for (const range of ranges) {
+    if (range.start < cursor) continue;
+    output.push(esc(copy.slice(cursor, range.start)));
+    const className = range.kind === 'phone'
+      ? 'lpv2-mobile-keep lpv2-mobile-phone'
+      : 'lpv2-mobile-keep';
+    output.push(`<span class="${className}">${esc(copy.slice(range.start, range.end))}</span>`);
+    cursor = range.end;
+  }
+  output.push(esc(copy.slice(cursor)));
+  return output.join('');
+}
+
+function lpv2MobileParagraphs(source = [], override, naturalWrapIndexes = [], accentPhoneIndexes = []) {
+  const paragraphs = Array.isArray(override) ? override : source;
+  const naturalIndexes = new Set(Array.isArray(naturalWrapIndexes) ? naturalWrapIndexes : []);
+  const phoneIndexes = new Set(Array.isArray(accentPhoneIndexes) ? accentPhoneIndexes : []);
+  return paragraphs.map((paragraph, index) => `<p>${naturalIndexes.has(index)
+    ? esc(paragraph)
+    : escMobileCopy(paragraph, {
+      minTailLength: 22,
+      maxTailLength: 34,
+      maxTailWords: 5,
+      accentPhone: phoneIndexes.has(index),
+    })}</p>`).join('');
+}
+
+function mobileTitleLengthClass(text, threshold, className) {
+  return Array.from(String(text ?? '').trim()).length >= threshold ? ` ${className}` : '';
+}
+
 // ---------- URL-/Pfad-Auflösung ----------
 const isRemote = (p) => /^https?:\/\//i.test(String(p));
 
@@ -468,18 +575,10 @@ export const WELTEN = {
     weltLabel: 'Gewerbekunde',
     navLabel: 'Für Gewerbekunden',
     base: '../../../',
-    // AP-108: Reihenfolge = Kachel-Reihenfolge auf /gewerbekunden/.
-    slugs: [
-      'aussenanlagenpflege', 'umgestaltung-aussenanlagen', 'dachbegruenung',
-      'baumkontrolle', 'baumarbeiten', 'sturmnotdienst', 'begutachtung',
-    ],
-    // AP-108: Gewerbe-eigene Nav-Labels. Fallback bleibt LEISTUNGEN_NAV
-    // (z. B. Sturmnotdienst, Baumkontrolle, Baumarbeiten).
+    // Aktuell veröffentlichte Gewerbeleistung.
+    slugs: ['aussenanlagenpflege'],
     navLabels: {
       'aussenanlagenpflege': 'Pflege & Instandhaltung',
-      'umgestaltung-aussenanlagen': 'Umgestaltung & Außenanlagen',
-      'dachbegruenung': 'Dach-, Fassaden- & Stellplatzbegrünung',
-      'begutachtung': 'Fachliche Begutachtung',
     },
   },
 };
@@ -560,11 +659,9 @@ export function renderNavSubmenu(base) {
             </ul>
           </li>`;
   };
-  // AP-342: Nur noch die Privatwelt im Dropdown. WELTEN.gewerbe bleibt
-  // vollstaendig erhalten - der Eintrag steuert weiterhin die Seitengenerierung,
-  // die Brotkrumen und weltPfadFuerSlug. Die sieben Gewerbe-Leistungsseiten sind
-  // weiter verlinkt: Startseite, 404.html, /kontakt/, /ueber-uns/, /datenschutz/
-  // sowie ueber den Menuepunkt "Gewerbekunden" in der obersten Ebene.
+  // AP-342: Im Dropdown steht die gemeinsame A–Z-Liste der Privatwelt. Die
+  // veröffentlichte Gewerbeleistung Objekt- & Grünflächenpflege ist dort über
+  // ihr ausgeschriebenes Ziel enthalten.
   return `<ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
           ${block(WELTEN.privat)}
           </ul>`;
@@ -765,10 +862,14 @@ function lpMyths(arr) {
       </ul>`;
 }
 
-function lpFaq(arr) {
+function lpFaq(arr, mobileCopy = false) {
+  const renderQuestion = mobileCopy ? escMobileCopy : esc;
+  const renderAnswer = mobileCopy
+    ? (copy) => escMobileCopy(copy, { minTailLength: 28, maxTailLength: 44, maxTailWords: 6 })
+    : esc;
   const items = arr.map((f) => `<details>
-          <summary><span>${esc(f.frage)}</span><span class="chev" aria-hidden="true"></span></summary>
-          <div class="faq-body"><p>${esc(f.antwort)}</p></div>
+          <summary><span>${renderQuestion(f.frage)}</span><span class="chev" aria-hidden="true"></span></summary>
+          <div class="faq-body"><p>${renderAnswer(f.antwort)}</p></div>
         </details>`).join('\n        ');
   return `<div class="faq-list">
         ${items}
@@ -834,7 +935,7 @@ function leistungContactHref(slug, base, welt) {
   return `${base}?${query.toString()}#anfrage`;
 }
 
-function lpVerlinkung(leistung, labelBySlug, base, welt, contactHref) {
+function lpVerlinkung(leistung, serviceIndex, base, welt, contactHref) {
   const groups = [];
   // AP-33: nur die EIGENE Welt verlinken. Ein Link auf die andere Welt würde den
   // Besucher aus seiner Welt herausführen – genau das soll nicht passieren.
@@ -847,10 +948,15 @@ function lpVerlinkung(leistung, labelBySlug, base, welt, contactHref) {
           </ul>
         </div>`);
 
-  // AP-33: Nachbarn zeigen auf die Leistung innerhalb DERSELBEN Welt.
-  const nb = (leistung.nachbarn || []).map((slug) => {
-    const label = labelBySlug.get(slug) || slug;
-    return `<li><a class="tag-link" href="${base}${welt.pfad}leistungen/${encodeURIComponent(slug)}/">${esc(label)}</a></li>`;
+  // Strukturierte Verweise unterstützen dieselben kuratierten Ergänzungen wie
+  // editorial-v2 und erlauben dabei ausdrücklich begründete Weltwechsel.
+  const nb = (leistung.related || []).map((ref) => {
+    const target = serviceIndex.get(`${ref.welt}:${ref.slug}`);
+    const targetWelt = WELTEN[ref.welt];
+    if (!target || !targetWelt) return '';
+    const label = target.navLabel || target.h1 || ref.slug;
+    const href = `${base}${targetWelt.pfad}leistungen/${encodeURIComponent(ref.slug)}/`;
+    return `<li><a class="tag-link" href="${escAttr(href)}">${esc(label)}</a></li>`;
   }).join('\n            ');
   if (nb) groups.push(`<div class="lp-linkgroup">
           <h3>Verwandte Leistungen</h3>
@@ -944,6 +1050,12 @@ function lpv2DecisionTree() {
         </div>`;
 }
 
+function lpv2DecisionGraphic(base) {
+  return `<figure class="lpv2-decision-graphic">
+          <img src="${base}assets/img/leistungen-mobile/baumkontrolle-ablaufdiagramm.png" alt="Ablauf der Baumkontrolle: Grunderfassung, Regelkontrolle, Prüfung auf Handlungsbedarf, eingehende Untersuchung sowie Baumpflege oder Fällung." width="1343" height="1171" loading="lazy" decoding="async">
+        </figure>`;
+}
+
 function lpv2Content(leistung) {
   return (leistung.inhalt || []).map((block, index) => {
     const heading = block.heading ? `<h3>${esc(block.heading)}</h3>` : '';
@@ -1002,13 +1114,21 @@ function lpv2GallerySection(leistung, base) {
     </section>`;
 }
 
-function lpv2HomepageCta(label, base, extraClass = '', href = '#kontakt', attention = true) {
+function lpv2MobileCtaLabelClass(label) {
+  const length = Array.from(String(label || '').trim()).length;
+  if (length <= 22) return 'maik-cta__label--large';
+  if (length <= 31) return 'maik-cta__label--medium';
+  return 'maik-cta__label--compact';
+}
+
+function lpv2HomepageCta(label, base, extraClass = '', href = '#kontakt', attention = true, labelClass = '') {
   const classes = [extraClass, 'maik-cta', attention ? 'maik-cta--attention' : '', 'reveal'].filter(Boolean).join(' ');
+  const labelClasses = ['maik-cta__label', labelClass].filter(Boolean).join(' ');
   return `<a class="${escAttr(classes)}" href="${escAttr(href)}">
           <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
           <svg class="maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
           <svg class="maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
-          <span class="maik-cta__label">${esc(label)}</span>
+          <span class="${escAttr(labelClasses)}">${esc(label)}</span>
           <span class="maik-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="maik-cta__arrow-image" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
         </a>`;
 }
@@ -1031,18 +1151,32 @@ function lpv2Closing(leistung, base) {
 
 function lpv2ContentSection(leistung, base) {
   if (leistung.contentVariant !== 'editorial') return '';
-  const [context = {}, service = {}] = leistung.inhalt || [];
-  const intro = (leistung.mobileEinstieg || leistung.einstieg || []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join('');
-  const contextCopy = (context.mobileParagraphs || context.paragraphs || []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join('');
-  const serviceCopy = (service.mobileParagraphs || service.paragraphs || []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join('');
-  const listItems = (service.bullets || []).map((item) => `<li>${esc(item)}</li>`).join('');
-  const serviceHeading = esc(service.heading || '');
+  const intro = lpv2MobileParagraphs(leistung.einstieg || [], leistung.mobileEinstieg);
+  const contentBlocks = (leistung.inhalt || []).map((block) => {
+    const paragraphs = lpv2MobileParagraphs(
+      block.paragraphs || [],
+      block.mobileParagraphs,
+      block.mobileNaturalWrapParagraphs,
+      block.mobileAccentPhoneParagraphs,
+    );
+    const bullets = (block.bullets || []).map((item) => `<li>${escMobileCopy(item)}</li>`).join('');
+    const heading = block.heading ? `<h3>${esc(block.heading)}</h3>` : '';
+    const list = bullets ? `<ul class="lpv2-list lpv2-content-list">${bullets}</ul>` : '';
+    const copy = paragraphs ? `<div class="lpv2-content-service-copy">${paragraphs}</div>` : '';
+    const diagram = leistung.diagram === 'baumkontrolle' && block.heading === 'Von der Kontrolle zur passenden Maßnahme'
+      ? lpv2DecisionGraphic(base)
+      : '';
+    if (!heading) {
+      return paragraphs ? `<div class="lpv2-content-context reveal">${paragraphs}</div>` : '';
+    }
+    const modifier = bullets ? '' : ' lpv2-content-service--no-list';
+    return `<section class="lpv2-content-service${modifier} reveal">${heading}${list}${diagram}${copy}</section>`;
+  }).join('');
   return `<section class="lpv2-content-feature section" aria-labelledby="lpv2-content-title">
       <div class="container">
         <article class="lpv2-content-editorial">
-          <header class="lpv2-content-lead reveal"><h2 id="lpv2-content-title">${esc(leistung.unterzeile)}</h2><div class="lpv2-content-flow-copy lpv2-content-flow-copy--intro">${intro}</div></header>
-          <div class="lpv2-content-context reveal">${contextCopy}</div>
-          <section class="lpv2-content-service reveal"><h3>${serviceHeading}</h3><div class="lpv2-content-service-copy">${serviceCopy}</div><ul class="lpv2-list lpv2-content-list">${listItems}</ul></section>
+          <header class="lpv2-content-lead reveal"><h2 class="lpv2-content-title${mobileTitleLengthClass(leistung.unterzeile, 48, 'lpv2-content-title--long')}" id="lpv2-content-title">${esc(leistung.unterzeile)}</h2><div class="lpv2-content-flow-copy lpv2-content-flow-copy--intro">${intro}</div></header>
+          ${contentBlocks}
         </article>
         <div class="lpv2-content-closing">${lpv2Closing(leistung, base)}</div>
       </div>
@@ -1133,7 +1267,7 @@ function lpv2LegacyContent(leistung) {
 
 // ---------- Leistungs-Detailseite ----------
 export async function renderLeistungPage(opts) {
-  const { leistung, slug, welt, cssVersion, jsVersion, refProjects = [], labelBySlug = new Map(), serviceIndex = new Map() } = opts;
+  const { leistung, slug, welt, cssVersion, jsVersion, refProjects = [], serviceIndex = new Map() } = opts;
   const seitenPfad = `${welt.pfad}leistungen/${slug}/index.html`;
   if (leistung.layout === 'editorial-v2') {
     const [page, header, footer, logo] = await Promise.all([
@@ -1141,16 +1275,33 @@ export async function renderLeistungPage(opts) {
     ]);
     const base = welt.base;
     const canonical = `${SITE}/${welt.pfad}leistungen/${slug}/`;
-    const hero = leistung.bilder.hero;
-    const imageFirstHero = leistung.heroVariant === 'image-first';
-    const heroTitleAbove = leistung.heroTitlePlacement === 'above-image';
-    const heroTitleGraphic = leistung.heroTitleGraphic?.bild ? leistung.heroTitleGraphic : null;
-    const splitHeroTitle = Array.isArray(leistung.heroTitleLines) && leistung.heroTitleLines.length === 2;
+    const mobileBalkonkasten = leistung.mobileVariant === 'balkonkasten';
+    const presented = mobileBalkonkasten ? {
+      ...leistung,
+      hideProcess: true,
+      contactVariant: 'homepage',
+      galleryVariant: 'grid-teaser',
+      faqVariant: 'homepage',
+      relatedVariant: 'homepage',
+      closingVariant: 'homepage-cta',
+      contentVariant: 'editorial',
+      closingCtaLabel: leistung.closingCtaLabel || 'JETZT ANFRAGEN',
+      heroVariant: 'image-first',
+      heroTitlePlacement: 'above-image',
+      themeColor: leistung.themeColor || '#171916',
+    } : leistung;
+    const hero = presented.bilder.hero;
+    const imageFirstHero = presented.heroVariant === 'image-first';
+    const heroTitleAbove = presented.heroTitlePlacement === 'above-image';
+    const heroTitleGraphic = presented.heroTitleGraphic?.bild ? presented.heroTitleGraphic : null;
+    const splitHeroTitle = Array.isArray(presented.heroTitleLines)
+      && presented.heroTitleLines.length >= 1
+      && presented.heroTitleLines.length <= 3;
     const heroTitleHtml = splitHeroTitle
-      ? leistung.heroTitleLines.map((line) => `<span>${esc(line)}</span>`).join('')
-      : esc(leistung.h1);
-    const hideProcess = leistung.hideProcess === true;
-    const homepageContact = leistung.contactVariant === 'homepage';
+      ? `<span class="lpv2-title-full">${esc(presented.h1)}</span><span class="lpv2-title-lines" aria-hidden="true">${presented.heroTitleLines.map((line) => `<span>${esc(line)}</span>`).join('')}</span>`
+      : esc(presented.h1);
+    const hideProcess = presented.hideProcess === true;
+    const homepageContact = presented.contactVariant === 'homepage';
     const processSection = hideProcess ? '' : `<section class="lpv2-process section" id="ablauf" aria-labelledby="lpv2-process-title">
       <div class="container">
         <header class="lpv2-section-head reveal">
@@ -1160,14 +1311,14 @@ export async function renderLeistungPage(opts) {
         ${lpv2Process(base)}
       </div>
     </section>`;
-    const contactTitle = leistung.contactTitle || 'Der erste Schritt zu Ihrem Projekt';
+    const contactTitle = presented.contactTitle || 'Der erste Schritt zu Ihrem Projekt';
     const contactSection = homepageContact
       ? `<section class="section private-contact lpv2-home-contact" id="kontakt" aria-labelledby="anfrage-title">
       <div class="container">
         <header class="private-contact-intro reveal">
           <h2 class="type-section-title maik-section-title" id="anfrage-title">${esc(contactTitle)}</h2>
         </header>
-        ${lpv2Contact(leistung, base, true)}
+        ${lpv2Contact(presented, base, true)}
       </div>
     </section>`
       : `<section class="lpv2-contact section private-contact" id="kontakt" aria-labelledby="anfrage-title">
@@ -1176,36 +1327,43 @@ export async function renderLeistungPage(opts) {
           <p class="lpv2-section-index" aria-hidden="true">${hideProcess ? '04' : '05'}</p>
           <h2 id="anfrage-title">${esc(contactTitle)}</h2>
         </header>
-        ${lpv2Contact(leistung, base)}
+        ${lpv2Contact(presented, base)}
       </div>
     </section>`;
-    const heroBreadcrumbTrail = imageFirstHero
-      ? `<li class="lpv2-breadcrumb-back"><a href="${welt.hubEntfaellt ? `${base}#leistungen` : `${base}${welt.pfad}`}"><img src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" decoding="async"><span>Alle Leistungen</span></a></li>
-        <li class="lpv2-breadcrumb-current" aria-current="page">${esc(leistung.h1)}</li>`
-      : breadcrumbTrail(welt, base, leistung.h1);
-    const heroBreadcrumb = `<nav class="breadcrumbs lpv2-breadcrumbs${imageFirstHero ? ' lpv2-breadcrumbs--bar' : ''} reveal" aria-label="Sie sind hier">
+    const allServicesHref = mobileBalkonkasten || welt.hubEntfaellt
+      ? `${base}#leistungen`
+      : `${base}${welt.pfad}`;
+    const heroBreadcrumbTrail = `<li class="lpv2-breadcrumb-back"><a href="${allServicesHref}"><img src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" decoding="async"><span>Alle Leistungen</span></a></li>
+        <li class="lpv2-breadcrumb-current" aria-current="page">${esc(presented.h1)}</li>`;
+    const mobileHeroBreadcrumb = `<nav class="breadcrumbs lpv2-breadcrumbs lpv2-breadcrumbs--bar lpv2-breadcrumbs--mobile reveal" aria-label="Zur Leistungsübersicht">
           <ol>${heroBreadcrumbTrail}</ol>
+        </nav>`;
+    const desktopHeroBreadcrumb = `<nav class="breadcrumbs lpv2-breadcrumbs lpv2-breadcrumbs--desktop reveal" aria-label="Sie sind hier">
+          <ol>${breadcrumbTrail(welt, base, presented.h1)}</ol>
+        </nav>`;
+    const standardHeroBreadcrumb = `<nav class="breadcrumbs lpv2-breadcrumbs${imageFirstHero ? ' lpv2-breadcrumbs--bar' : ''} reveal" aria-label="Sie sind hier">
+          <ol>${imageFirstHero ? heroBreadcrumbTrail : breadcrumbTrail(welt, base, presented.h1)}</ol>
         </nav>`;
     return fill(page, {
       base, slug: esc(slug), cssVersion: escAttr(cssVersion), jsVersion: escAttr(jsVersion),
-      themeColor: escAttr(leistung.themeColor || '#1b1e19'),
-      mobileCssVersion: escAttr(leistung.mobileCssVersion || '20260924z6'),
-      ctaFamilyVersion: escAttr(leistung.ctaFamilyVersion || '20260919a'),
+      themeColor: escAttr(presented.themeColor || '#1b1e19'),
+      mobileCssVersion: escAttr(presented.mobileCssVersion || '20260924z6'),
+      ctaFamilyVersion: escAttr(presented.ctaFamilyVersion || '20260919a'),
       heroVariantClass: `${imageFirstHero ? ' lpv2-page--image-first' : ''}${heroTitleAbove ? ' lpv2-page--title-above' : ''}${heroTitleGraphic ? ' lpv2-page--title-graphic' : ''}`,
-      pageVariantClass: `${leistung.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${leistung.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}`,
-      title: esc(leistung.title), ogTitle: escAttr(leistung.title),
-      description: escAttr(truncate(leistung.metaDescription, 160)), canonical: escAttr(canonical),
+      pageVariantClass: `${presented.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${presented.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}`,
+      title: esc(presented.title), ogTitle: escAttr(presented.title),
+      description: escAttr(truncate(presented.metaDescription, 160)), canonical: escAttr(canonical),
       ogImage: escAttr(absUrl(hero.bild)), heroPreload: lcpPreloadFor(hero.bild, heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', base),
-      breadcrumbJsonLd: leistungBreadcrumb(leistung.h1, canonical, welt),
-      heroBreadcrumbBefore: imageFirstHero ? heroBreadcrumb : '',
-      heroBreadcrumbInside: imageFirstHero ? '' : heroBreadcrumb,
-      serviceJsonLd: serviceJsonLd(leistung, canonical), faqJsonLd: faqJsonLd(leistung.faq),
+      breadcrumbJsonLd: leistungBreadcrumb(presented.h1, canonical, welt),
+      heroBreadcrumbBefore: mobileBalkonkasten ? mobileHeroBreadcrumb : imageFirstHero ? standardHeroBreadcrumb : '',
+      heroBreadcrumbInside: mobileBalkonkasten ? desktopHeroBreadcrumb : imageFirstHero ? '' : standardHeroBreadcrumb,
+      serviceJsonLd: serviceJsonLd(presented, canonical), faqJsonLd: faqJsonLd(presented.faq),
       logo: logo.trim(), header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
       footer: fill(footer, footerTemplateData(base, seitenPfad)).trim(),
-      h1: heroTitleHtml, titleClass: `${splitHeroTitle ? ' lpv2-title--split' : ''}${heroTitleGraphic ? ' lpv2-title--visually-hidden' : ''}`,
-      subheading: esc(leistung.unterzeile),
-      introHtml: leistung.einstieg.map((p) => `<p>${esc(p)}</p>`).join(''),
-      heroCta: lpv2Cta(leistung.ctaLabel, base),
+      h1: heroTitleHtml, titleAria: splitHeroTitle ? ` aria-label="${escAttr(presented.h1)}"` : '', titleClass: `${splitHeroTitle ? ' lpv2-title--split' : ''}${heroTitleGraphic ? ' lpv2-title--visually-hidden' : ''}`,
+      subheading: esc(presented.unterzeile),
+      introHtml: presented.einstieg.map((p) => `<p>${esc(p)}</p>`).join(''),
+      heroCta: lpv2Cta(presented.ctaLabel, base),
       heroPicture: renderPicture(hero.bild, { alt: hero.alt || '', sizes: heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', priority: true, width: hero.width, height: hero.height, base }),
       heroBrand: imageFirstHero
         ? `<img class="lpv2-hero-brand" src="${base}assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" alt="" width="210" height="180" aria-hidden="true" decoding="async">`
@@ -1216,21 +1374,24 @@ export async function renderLeistungPage(opts) {
       heroTitleGraphic: heroTitleGraphic
         ? `<div class="lpv2-hero-title-graphic reveal" aria-hidden="true"><img src="${escAttr(`${base}${heroTitleGraphic.bild.replace(/^\/+/, '')}`)}" alt="" width="${Number(heroTitleGraphic.width) || 2172}" height="${Number(heroTitleGraphic.height) || 724}" decoding="async"></div>`
         : '',
-      contentHtml: lpv2Content(leistung), closingHtml: lpv2Closing(leistung, base),
-      mobileHeroCta: leistung.contentVariant === 'editorial'
-        ? `<div class="lpv2-mobile-hero-cta">${lpv2HomepageCta(leistung.ctaLabel, base, 'lpv2-mobile-hero-cta__button')}</div>`
+      contentHtml: lpv2Content(presented), closingHtml: lpv2Closing(presented, base),
+      mobileHeroCta: presented.contentVariant === 'editorial'
+        ? `<div class="lpv2-mobile-hero-cta">${lpv2HomepageCta(presented.ctaLabel, base, 'lpv2-mobile-hero-cta__button', '#kontakt', true, lpv2MobileCtaLabelClass(presented.ctaLabel))}</div>`
         : '',
-      mobileContentSection: lpv2ContentSection(leistung, base), gallerySection: lpv2GallerySection(leistung, base),
-      galleryGridScript: leistung.galleryVariant === 'grid-teaser'
+      mobileContentSection: lpv2ContentSection(presented, base), gallerySection: lpv2GallerySection(presented, base),
+      galleryGridScript: presented.galleryVariant === 'grid-teaser'
         ? `<script src="${base}assets/js/leistung-gallery-grid.js?v=20260925a1" defer></script>\n`
         : '',
       processSection,
-      faqVariantClass: leistung.faqVariant === 'homepage' ? ' lpv2-faq--homepage' : '',
-      relatedVariantClass: leistung.relatedVariant === 'homepage' ? ' lpv2-related--homepage' : '',
+      faqVariantClass: presented.faqVariant === 'homepage' ? ' lpv2-faq--homepage' : '',
+      relatedVariantClass: presented.relatedVariant === 'homepage' ? ' lpv2-related--homepage' : '',
       faqIndex: hideProcess ? '03' : '04',
       relatedIndex: hideProcess ? '05' : '06',
-      faqHtml: lpFaq(leistung.faq || []), contactSection,
-      relatedHtml: lpv2Related(leistung, serviceIndex, base, leistung.relatedVariant === 'homepage'),
+      faqHtml: lpFaq(presented.faq || [], mobileBalkonkasten), contactSection,
+      relatedHtml: lpv2Related(presented, serviceIndex, base, presented.relatedVariant === 'homepage'),
+      relatedAllServices: mobileBalkonkasten
+        ? `<div class="lpv2-breadcrumb-back lpv2-related-all reveal"><a href="${escAttr(allServicesHref)}"><span>Alle Leistungen</span><img src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" loading="lazy" decoding="async"></a></div>`
+        : '',
     });
   }
   if (leistung.layout === 'legacy-document') {
@@ -1265,6 +1426,8 @@ export async function renderLeistungPage(opts) {
     slug: esc(slug),
     cssVersion: escAttr(cssVersion),
     jsVersion: escAttr(jsVersion),
+    ctaFamilyVersion: '20260926b',
+    mobileCssVersion: '20260926a21',
     title: esc(leistung.title),
     ogTitle: escAttr(leistung.title),
     description: escAttr(truncate(leistung.metaDescription, 160)),
@@ -1281,6 +1444,7 @@ export async function renderLeistungPage(opts) {
     header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
     footer: fill(footer, footerTemplateData(base, seitenPfad)).trim(),
     h1: esc(leistung.h1),
+    titleClass: mobileTitleLengthClass(leistung.h1, 50, 'lp-service-title--long'),
     intro: esc(leistung.intro),
     fachtext: lpFachtext(leistung.fachtext),
     rechner: lpRechner(leistung.rechner, base),
@@ -1290,7 +1454,7 @@ export async function renderLeistungPage(opts) {
     fehleinschaetzungen: lpMyths(leistung.fehleinschaetzungen || []),
     referenzprojekte: lpRefs(refProjects, base),
     faqHtml: lpFaq(leistung.faq || []),
-    verlinkung: lpVerlinkung(leistung, labelBySlug, base, welt, contactHref),
+    verlinkung: lpVerlinkung(leistung, serviceIndex, base, welt, contactHref),
   });
 }
 

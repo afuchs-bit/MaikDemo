@@ -197,11 +197,36 @@
     animation: maik-cta-arrow-rhythm 1.9s cubic-bezier(.22, .7, .25, 1) 2.5s infinite;
   }
 
+  .maik-cta--gallery.is-pulsing .lpv2-gallery-grid-symbol {
+    animation: maik-cta-symbol-rhythm 1.9s cubic-bezier(.22, .7, .25, 1) 2.5s infinite;
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  /* Die sieben noch eigenstaendigen Leistungsseiten behalten Form, Farbe und
+     Groesse ihrer bestehenden Buttons. Nur das gemeinsame Aufmerksamkeitssignal
+     wird auf die beiden primaeren Anfrage-CTAs uebertragen. */
+  .lp-service-pulse.is-pulsing {
+    animation:
+      maik-cta-arrival-breath 1.1s ease-in-out .35s 1,
+      maik-cta-rhythm-breath 1.9s linear 2.5s infinite;
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
   @keyframes maik-cta-arrow-rhythm {
     0%, 19%, 100% { transform: translateX(0); }
     7% { transform: translateX(2px); }
     12% { transform: translateX(-.35px); }
     16% { transform: translateX(.55px); }
+  }
+
+  @keyframes maik-cta-symbol-rhythm {
+    0%, 19%, 100% { transform: scale(1); }
+    7% { transform: scale(1.16); }
+    12% { transform: scale(.98); }
+    16% { transform: scale(1.04); }
   }
 
   @keyframes maik-cta-arrival-breath {
@@ -364,7 +389,9 @@
        separat auf left und ueberschreibt die animierte transform nicht. */
     .maik-cta--attention.is-pulsing:hover,
     .maik-cta--attention.is-pulsing:hover .maik-cta__halo,
-    :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing:hover .maik-cta__arrow-image {
+    :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing:hover .maik-cta__arrow-image,
+    .maik-cta--gallery.is-pulsing:hover .lpv2-gallery-grid-symbol,
+    .lp-service-pulse.is-pulsing:hover {
       animation-play-state: paused;
     }
 
@@ -408,6 +435,16 @@
     transform: translateX(1px);
   }
 
+  .maik-cta.is-pulsing.is-pressed .lpv2-gallery-grid-symbol {
+    animation: none;
+    transform: scale(.94);
+  }
+
+  .lp-service-pulse.is-pressed {
+    animation: none;
+    transform: translateY(1px);
+  }
+
   .maik-cta:focus-visible {
     outline: 2px solid var(--home-focus, var(--home-lime));
     outline-offset: 9px;
@@ -416,12 +453,20 @@
   @media (prefers-reduced-motion: reduce) {
     .maik-cta,
     .maik-cta__halo,
-    .maik-cta__arrow-image {
+    .maik-cta__arrow-image,
+    .lpv2-gallery-grid-symbol,
+    .lp-service-pulse {
       animation: none !important;
     }
 
     .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__arrow-image) {
       transition: none;
+    }
+
+    .lpv2-gallery-grid-symbol:before,
+    .lpv2-gallery-grid-symbol:after,
+    .lp-service-pulse {
+      transition: none !important;
     }
   }
 }

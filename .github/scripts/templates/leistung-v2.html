@@ -50,7 +50,7 @@
       <div class="container">
 {{heroBreadcrumbInside}}
         <p class="lpv2-kicker reveal">Leistung</p>
-        <h1 class="lpv2-title{{titleClass}} reveal" id="lpv2-title">{{h1}}</h1>
+        <h1 class="lpv2-title{{titleClass}} reveal" id="lpv2-title"{{titleAria}}>{{h1}}</h1>
         <p class="lpv2-subheading reveal">{{subheading}}</p>
         <div class="lpv2-intro reveal">{{introHtml}}</div>
         {{heroCta}}
@@ -97,6 +97,7 @@
           <h2 id="lpv2-related-title">Passende Ergänzungen</h2>
         </header>
         {{relatedHtml}}
+        {{relatedAllServices}}
       </div>
     </section>
   </article>
@@ -105,7 +106,7 @@
 {{footer}}
 
 <script src="{{base}}assets/js/main.js?v={{jsVersion}}" defer></script>
-<script src="{{base}}assets/js/cta-signal.js?v=20260914a" defer></script>
+<script src="{{base}}assets/js/cta-signal.js?v=20260926b" defer></script>
 {{galleryGridScript}}<script src="{{base}}assets/js/anfrage.js?v=20260918c" defer></script>
 </body>
 </html>

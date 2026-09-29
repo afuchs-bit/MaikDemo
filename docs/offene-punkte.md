@@ -1702,6 +1702,9 @@ Der neue Wortlaut:
 > gern erklären, was sie gerade tun. Mit Ihrem Grundstück gehen wir sorgfältig um –
 > schließlich wird es auch während der Bauzeit weiter genutzt.
 
+*AP-492 (27.09.2026): Auf Ansage des Auftraggebers „treffen Sie unser Team **an**" statt
+„treffen Sie unser Team". Sonst wortgleich.*
+
 ### Was damit hinfällig ist
 
 Die Sektion war als **Personen-Sektion** angelegt: „Wer auf der Startseite ‚Mehr über Maik
@@ -1798,6 +1801,12 @@ Verträge."). Der Satz steht an keiner anderen Stelle der Website.
 
 *AP-465 (25.09.2026): „bei uns" auf Ansage des Auftraggebers eingefügt; vorher lautete der
 Satz „Im Mittelpunkt steht immer das Ziel …". Sonst unverändert.*
+
+*AP-488 (27.09.2026): Auf Ansage des Auftraggebers ersetzt durch „Im Mittelpunkt steht bei
+uns immer das Ziel, der zufriedene Kunde. Grundlage dafür sind partnerschaftliche
+Zusammenarbeit und langjährige Geschäftsbeziehungen." — Wortlaut vom Auftraggeber,
+„termingerecht" entfällt auf der Über-uns-Seite. Auf der Startseite steht es weiterhin
+(„die termingerechte Herstellung einer Gartenanlage", „termingerecht umgesetzt").*
 
 Er ersetzt zwei Originalsätze und ist die **einzige** Stelle, die nicht aus dem Bestand
 stammt. Belegquelle ist damit allein dieses Auftragsdokument. Er bleibt bewusst bei
