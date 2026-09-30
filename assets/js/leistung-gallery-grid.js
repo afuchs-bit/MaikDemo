@@ -21,9 +21,16 @@
     transitionEnd = null;
   }
 
+  // AP-512: Am Rechner steht die Seite in einer Spalte mit zoom (leistung-mobile.css).
+  // getBoundingClientRect liefert dann die vergroesserte Hoehe, style.height erwartet
+  // aber CSS-Pixel des Elements - ohne die Umrechnung sprang das Fenster beim Klick
+  // erst um ein Viertel auf. scrollHeight ist bereits in CSS-Pixeln. Ohne zoom ist
+  // der Faktor 1; Browser ohne currentCSSZoom rechnen wie bisher.
+  const cssHeight = (element) => element.getBoundingClientRect().height / (element.currentCSSZoom || 1);
+
   button.addEventListener('click', () => {
     const expanded = button.getAttribute('aria-expanded') !== 'true';
-    const startHeight = windowElement.getBoundingClientRect().height;
+    const startHeight = cssHeight(windowElement);
     let endHeight;
 
     if (transitionEnd) windowElement.removeEventListener('transitionend', transitionEnd);
@@ -35,7 +42,7 @@
     } else {
       windowElement.classList.remove('is-expanded');
       windowElement.style.height = '';
-      endHeight = windowElement.getBoundingClientRect().height;
+      endHeight = cssHeight(windowElement);
       windowElement.style.height = `${startHeight}px`;
     }
 
