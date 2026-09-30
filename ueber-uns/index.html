@@ -39,7 +39,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260930a" />
 <link rel="stylesheet" href="../assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260930b" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260930c" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -345,7 +345,8 @@ html, body { background-color: #171916; }
 
        Das Bild ist das LCP-Element: eager statt lazy, fetchpriority high.
        width/height bleiben stehen, damit beim Laden nichts springt. sizes
-       folgt der Fotobreite aus ueber-uns.css (100% - 64px, hoechstens 760px).
+       folgt der Fotobreite aus ueber-uns.css: bis 900px 100% - 64px,
+       hoechstens 760px; ab 901px fest 440px (AP-530, Mittelachse).
 
        [OFFEN: Das Auftragsdokument zu AP-453 sah eine Unterzeile unter dem
         Startbild vor - ein Pendant zu "Ein Stueck Garten vor Ihrem Fenster".
@@ -363,8 +364,8 @@ html, body { background-color: #171916; }
     </div>
     <figure class="ueber-hero__foto">
       <picture>
-        <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(max-width: 480px) calc(100vw - 64px), min(calc(100vw - 64px), 760px)">
-        <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(max-width: 480px) calc(100vw - 64px), min(calc(100vw - 64px), 760px)">
+        <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 900px) min(calc(100vw - 64px), 760px), 440px">
+        <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 900px) min(calc(100vw - 64px), 760px), 440px">
         <img class="ueber-hero__bild" src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
              alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
              loading="eager" fetchpriority="high" decoding="async">
