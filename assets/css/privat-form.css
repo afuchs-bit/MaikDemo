@@ -3489,82 +3489,14 @@
     radial-gradient(circle at 88% 12%,rgba(180,212,154,.2),transparent 28%),
     var(--bg);
 }
+/* AP-509: einspaltig ohne Abstand - die Zusammenfassungskarte links ist entfallen;
+   das sind die Handy-Werte der frueheren 900er- und 480er-Stufe. */
 .private-proof-grid {
   display: grid;
-  grid-template-columns: minmax(340px,.74fr) minmax(0,1.26fr);
-  gap: clamp(18px,2vw,28px);
+  grid-template-columns: minmax(0,1fr);
+  gap: 0;
   align-items: stretch;
 }
-.private-proof-summary {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding: clamp(30px,3.2vw,46px);
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 24px 24px 44px 24px;
-  background: linear-gradient(135deg,#203506 0%,#315200 58%,#263f08 100%);
-  box-shadow: 0 30px 58px -38px rgba(19,26,8,.72);
-  color: #fff;
-}
-.private-proof-since {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  align-self: flex-start;
-  color: rgba(255,255,255,.8);
-  font-size: .76rem;
-  font-weight: 800;
-  letter-spacing: .08em;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-.private-proof-since svg {
-  width: 20px;
-  height: 20px;
-  color: var(--yellow);
-}
-.private-proof-summary h3 {
-  max-width: 12ch;
-  margin: clamp(20px,2.2vw,28px) 0 0;
-  color: #fff;
-  font-size: clamp(2.1rem,3.1vw,3.25rem);
-  line-height: 1.02;
-}
-.private-proof-summary > p {
-  max-width: 40ch;
-  margin: 18px 0 0;
-  color: rgba(255,255,255,.76);
-  font-size: clamp(.94rem,1.05vw,1.04rem);
-  line-height: 1.58;
-}
-.private-proof-rating {
-  display: grid;
-  gap: 5px;
-  margin-top: clamp(26px,2.4vw,34px);
-  padding: 18px 20px;
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 17px;
-  background: rgba(255,255,255,.085);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
-}
-.private-proof-rating-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 8px;
-}
-.private-proof-google {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: #fff;
-  font-weight: 750;
-}
-.private-proof-google svg { flex: 0 0 auto; }
 .private-proof-stars {
   color: var(--yellow);
   font-size: 1.02rem;
@@ -3576,86 +3508,12 @@
     0 0 10px rgba(242, 226, 12, .6),
     0 0 20px rgba(242, 226, 12, .35);
 }
-.private-proof-rating > strong {
-  color: #fff;
-  font-family: var(--display);
-  font-size: clamp(1.55rem,2vw,2rem);
-  line-height: 1.08;
-}
-.private-proof-rating > span {
-  color: rgba(255,255,255,.72);
-  font-size: .84rem;
-}
-.private-proof-summary .private-proof-google-link {
-  align-self: flex-start;
-  min-height: 50px;
-  margin-top: clamp(22px,1.8vw,28px);
-  border-color: rgba(255,255,255,.58);
-  background: var(--bg-elev);
-  color: var(--ink);
-}
-.private-proof-summary .private-proof-google-link:hover {
-  border-color: #fff;
-  background: var(--bg-elev);
-  color: var(--green-500);
-  transform: translateY(-2px);
-}
-.private-proof-summary .private-proof-google-link:focus-visible {
-  outline: 3px solid var(--yellow);
-  outline-offset: 3px;
-}
 .private-proof-evidence {
   display: grid;
   grid-template-rows: minmax(0,1fr) auto;
   gap: clamp(14px,1.6vw,20px);
   min-width: 0;
 }
-@media (max-width:1100px) and (min-width:901px) {
-  .private-proof-grid { grid-template-columns: minmax(320px,.76fr) minmax(0,1.24fr); }
-  .private-proof-summary { padding: 30px; }
-  .private-proof-summary h3 { font-size: clamp(2rem,3.2vw,2.6rem); }
-}
-
-@media (max-width:900px) {
-  .private-proof-grid { grid-template-columns: 1fr; }
-  .private-proof-summary h3 { max-width: 15ch; }
-}
-
-@media (max-width: 480px) {
-  .private-proof-bento .private-proof-summary { display: none; }
-  .private-proof-bento .private-proof-grid { gap: 0; }
-}
-
-@media (max-width:520px) {
-  .private-proof-bento { padding: var(--space-section) 0; }
-  .private-proof-grid { gap: 12px; }
-  .private-proof-summary {
-    padding: 22px 18px 20px;
-    border-radius: 21px 21px 36px 21px;
-  }
-  .private-proof-since { gap: 7px; font-size: .66rem; }
-  .private-proof-since svg { width: 18px; height: 18px; }
-  .private-proof-summary h3 {
-    margin-top: 15px;
-    font-size: clamp(1.78rem,8.1vw,2.1rem);
-  }
-  .private-proof-summary > p { margin-top: 12px; font-size: .84rem; line-height: 1.48; }
-  .private-proof-rating { margin-top: 18px; padding: 13px 14px; }
-  .private-proof-rating-head { margin-bottom: 6px; }
-  .private-proof-rating > strong { font-size: 1.45rem; }
-  .private-proof-rating > span { font-size: .76rem; }
-  .private-proof-summary .private-proof-google-link {
-    width: 100%;
-    min-height: 50px;
-    margin-top: 14px;
-    padding-inline: 14px;
-    justify-content: center;
-    font-size: .82rem;
-    text-align: center;
-    white-space: nowrap;
-  }
-}
-
 /* Überschrift und Rezensions-Karussell der privaten Vertrauenssektion */
 .private-proof-section-head {
   max-width: 860px;
@@ -3670,15 +3528,6 @@
   line-height: 1.05;
   letter-spacing: -.028em;
 }
-.private-proof-summary h3 {
-  max-width: 12ch;
-  margin: clamp(20px,2.2vw,28px) 0 0;
-  color: #fff;
-  font-family: var(--display);
-  font-size: clamp(2.1rem,3.1vw,3.25rem);
-  line-height: 1.02;
-  letter-spacing: -.025em;
-}
 .private-proof-evidence { display: flex; }
 @media (min-width:901px) {
   .private-proof-evidence {
@@ -3687,13 +3536,11 @@
   }
 }
 
-/* AP-F26: Diese Karte bleibt bewusst weiss - Entscheidung des Auftraggebers, weil
-   das weisse Feld mit dem G-Logo die Wiedererkennung von Google traegt. Damit ist
-   sie die einzige helle Insel auf der Seite, und ihre Schrift muss deshalb LOKAL
-   dunkel bleiben: die globalen Ink-Token sind seit AP-F25 hell.
-   Dieselbe Technik wie die frueher seitenweite merge-light-Insel, nur auf ein
-   einziges Bauteil zusammengeschnurrt. Werte aus der alten :root-Palette.
-   Wird die Karte je dunkel eingefaerbt, faellt dieser Block ersatzlos weg. */
+/* AP-F26 (abgeloest durch AP-509, 30.09.2026): Die Karte war am Desktop bewusst
+   weiss. Seit AP-509 zeigt jede Breite die dunkle Handy-Kachel (Regeln
+   .has-review-swipe weiter unten). Diese helle Palette bleibt nur fuer den Fall
+   ohne JavaScript, in dem das Karussell nicht entsteht: Die Schrift der hellen
+   Insel muss dann lokal dunkel bleiben, die globalen Ink-Token sind hell. */
 .private-review-carousel {
   --ink:      #131a08;
   --ink-2:    #3a4032;
@@ -3875,7 +3722,20 @@
    kein zweiter, unsichtbarer Weg zum selben Ziel. Unter 481px ist es umgekehrt:
    Dort steht der Knopf auf display: none (Zeile 3727), und ohne diesen Link
    fuehrte vom Telefon aus gar nichts zu den Rezensionen. */
-.private-review-alle { display: none; }
+/* AP-509: Die Fusszeile jeder Rezension zeigt den Link zu Google statt der Quelle -
+   am Handy schon seit AP-352, jetzt auch ohne JavaScript (dieselben Werte wie die
+   .has-review-swipe-Regel, die sonst Vorrang hat). Der fruehere Knopf "Alle
+   Bewertungen auf Google ansehen" ist mit der Zusammenfassung entfallen. */
+.private-review-item .private-review-quelle { display: none; }
+.private-review-item .private-review-alle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: var(--green-500);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .private-review-details {
   margin-top: 10px;
   overflow: clip;
@@ -4048,42 +3908,45 @@
 
 @media (max-width:900px) {
   .private-proof-section-head { margin-bottom: var(--space-section-head); }
-  .private-proof-summary h3 { max-width: 15ch; }
   .private-review-carousel.has-review-rotator { height: 560px; }
 }
 
 @media (max-width:520px) {
   .private-proof-section-head { margin-bottom: var(--space-section-head); text-align: left; }
   .private-proof-section-head h2 { margin-inline: 0; font-size: var(--type-section-title-size); }
-  .private-proof-summary h3 {
-    margin-top: 15px;
-    font-size: clamp(1.78rem,8.1vw,2.1rem);
-  }
   .private-review-carousel.has-review-rotator { height: 630px; }
-  .private-review-carousel { border-radius: 19px; }
-  .private-review-carousel-head {
-    align-items: flex-start;
-    padding: 17px 18px;
-  }
-  .private-review-google-mark small { display: none; }
-  .private-review-total {
-    display: grid;
-    justify-items: end;
-    gap: 5px;
-  }
-  .private-review-scoreline { gap: 6px; }
-  .private-review-scoreline .private-proof-stars { font-size: .82rem; }
-  .private-review-total strong { font-size: 1rem; }
-  .private-review-total small { font-size: .62rem; }
-  .private-review-viewport { padding: 0 18px; }
-  .private-review-item { padding: 15px 0; }
-  .private-review-item-head > span:last-child { font-size: .61rem; }
-  .private-review-excerpt p { font-size: .88rem; line-height: 1.46; }
-  .private-review-details summary { min-height: 52px; padding: 8px 9px 8px 12px; }
-  .private-review-details-copy strong { font-size: .72rem; }
-  .private-review-details-copy small { font-size: .6rem; }
-  .private-review-details blockquote { margin: 10px; padding: 14px; font-size: .77rem; }
-  .private-review-controls { padding: 13px 18px; }
+}
+
+/* AP-509: Diese Zeilen tragen das Handy-Aussehen der Bewertungskarte mit (Kopf,
+   Summenzeile, Aufklappen, Fussleiste) und gelten jetzt auf allen Breiten. Sie
+   stehen an derselben Stelle wie vorher im 520er-Block, am Handy aendert sich
+   nichts; die Swipe-Regeln weiter unten haben Vorrang. */
+.private-review-carousel { border-radius: 19px; }
+.private-review-carousel-head {
+  align-items: flex-start;
+  padding: 17px 18px;
+}
+.private-review-google-mark small { display: none; }
+.private-review-total {
+  display: grid;
+  justify-items: end;
+  gap: 5px;
+}
+.private-review-scoreline { gap: 6px; }
+.private-review-scoreline .private-proof-stars { font-size: .82rem; }
+.private-review-total strong { font-size: 1rem; }
+.private-review-total small { font-size: .62rem; }
+.private-review-viewport { padding: 0 18px; }
+.private-review-item { padding: 15px 0; }
+.private-review-item-head > span:last-child { font-size: .61rem; }
+.private-review-excerpt p { font-size: .88rem; line-height: 1.46; }
+.private-review-details summary { min-height: 52px; padding: 8px 9px 8px 12px; }
+.private-review-details-copy strong { font-size: .72rem; }
+.private-review-details-copy small { font-size: .6rem; }
+.private-review-details blockquote { margin: 10px; padding: 14px; font-size: .77rem; }
+.private-review-controls { padding: 13px 18px; }
+
+@media (max-width:520px) {
   .private-review-nav { gap: 7px; }
   .private-review-nav button { min-width: 40px; min-height: 40px; padding: 7px; }
   .private-review-autoplay { min-height: 40px; padding: 7px 13px; }
@@ -5408,255 +5271,361 @@
   .private-project-showcase .project-card:hover .card-more b { transform: none; }
 }
 
-/* AP-208: Auf iPhone 15 Pro und 16 Pro erscheint immer genau eine Rezension.
-   Die horizontale Wischbewegung folgt der mobilen Gartenbild-Vorschau. */
-@media (max-width: 480px) {
-  .private-review-carousel.has-review-swipe {
-    --ink: #f4f6f0;
-    --ink-2: #d5dccf;
-    --ink-mute: #aeb8a8;
-    /* AP-349: Ein Gruen fuer die Karte, und zwar das der Marke - #8CC63F, der
-       Ton des Knopfes "Projekt anfragen" (--home-lime). Vorher stand hier ein
-       aufgehelltes #B6D97A, waehrend Rahmen und Lichtschimmer der Karte schon
-       #8CC63F trugen: zwei Gruen nebeneinander im selben Bauteil.
-       Kontrast auf dem Kartengrund #252B22: 7,09:1 - die Kategoriezeile ist
-       klein (10px, 800), 4,5:1 waeren gefordert. */
-    --green-500: #8cc63f;
-    --green-700: #8cc63f;
-    height: auto;
-    min-height: 0;
-    border-color: rgba(140,198,63,.28);
-    border-radius: 20px;
-    background:
-      radial-gradient(circle at 92% 4%,rgba(140,198,63,.09),transparent 31%),
-      #20251f;
-    box-shadow: 0 26px 58px -38px rgba(0,0,0,.92),inset 0 1px 0 rgba(255,255,255,.035);
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-carousel-head {
-    align-items: center;
-    padding: 17px 18px 16px;
-    border-bottom-color: rgba(140,198,63,.14);
-    background: linear-gradient(135deg,rgba(43,53,39,.98),rgba(31,37,30,.92));
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-google-mark strong {
-    color: #fff;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-viewport {
-    display: flex;
-    flex: 0 0 auto;
-    width: 100%;
-    min-height: 258px;
-    padding: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    touch-action: pan-x pan-y;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-viewport::-webkit-scrollbar {
-    display: none;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-viewport.is-jumping {
-    scroll-behavior: auto;
-    scroll-snap-type: none;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item {
-    position: relative;
-    flex: 0 0 100%;
-    width: 100%;
-    min-width: 100%;
-    min-height: 258px;
-    padding: 20px 20px 18px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    border-top: 0;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    scrollbar-color: rgba(49,82,0,.28) transparent;
-    scrollbar-width: thin;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item::before {
-    content: "“";
-    position: absolute;
-    z-index: 0;
-    margin: 34px 0 0 -5px;
-    color: rgba(140,198,63,.065);
-    font-family: Georgia,serif;
-    font-size: 5.4rem;
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item-head {
-    min-height: 20px;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item-head > span:last-child {
-    max-width: 52%;
-    font-size: .64rem;
-    letter-spacing: .07em;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-excerpt {
-    margin-top: 17px;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-excerpt p {
-    /* Reines Weiss statt des Papiertons --ink. Die Regel steht bewusst hier im
-       480px-Block: ausserhalb davon liegt das Zitat auf der hellen Karte, wo
-       --ink dunkel ist (Zeile 3616) - weiss waere dort unlesbar. */
-    color: #fff;
-    font-size: .94rem;
-    line-height: 1.52;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item figcaption {
-    margin-top: auto;
-    padding-top: 18px;
-    font-size: .69rem;
-    letter-spacing: .012em;
-  }
-
-  /* AP-352: Auf dem Telefon tritt die Quellenangabe zurueck und die Fusszeile
-     wird zum Weg auf das Google-Profil. Der Zusatz geht dabei nicht verloren -
-     "Vorgarten-Neugestaltung" und die anderen stehen oben in derselben Karte
-     als Kategoriezeile.
-     Gruen wie der Rest der Karte (--green-500 ist hier #8CC63F, 7,09:1 auf dem
-     Kartengrund). Die Unterstreichung muss sein: Farbe allein darf einen Link
-     nicht kenntlich machen.
-     24px Mindesthoehe ist die Zielgroesse nach WCAG 2.5.8; mehr ginge nicht,
-     ohne die Karte wachsen zu lassen - ihre Hoehe haengt in dieser Breite an
-     festen Massen. */
-  .private-review-carousel.has-review-swipe .private-review-item .private-review-quelle {
-    display: none;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item .private-review-alle {
-    display: inline-flex;
-    align-items: center;
-    min-height: 24px;
-    color: var(--green-500);
-    font-weight: 650;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item .private-review-alle:focus-visible {
-    outline: 3px solid var(--yellow);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details {
-    margin-top: 15px;
-    border-color: rgba(140,198,63,.2);
-    background: linear-gradient(135deg,rgba(140,198,63,.075),rgba(255,255,255,.025));
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details:hover {
-    border-color: rgba(140,198,63,.34);
-    box-shadow: 0 12px 28px -24px rgba(0,0,0,.9);
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details-chevron {
-    background: rgba(140,198,63,.12);
-    color: #8cc63f;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details[open] .private-review-details-chevron {
-    background: #8cc63f;
-    color: #151a13;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details[open] > summary {
-    border-bottom-color: rgba(140,198,63,.16);
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details blockquote {
-    border-left-color: rgba(140,198,63,.44);
-    background: rgba(140,198,63,.075);
-  }
-
-  .private-review-swipe-controls {
-    justify-content: center;
-    min-height: 58px;
-    margin: 0;
-    padding: 7px 16px;
-    border-top-color: rgba(140,198,63,.14);
-    background: linear-gradient(180deg,rgba(35,42,33,.72),rgba(29,35,28,.96));
-  }
-
-  .private-review-swipe-dots {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-  }
-
-  .private-review-swipe-dots button {
-    display: grid;
-    width: 42px;
-    height: 44px;
-    padding: 0;
-    place-items: center;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-  }
-
-  /* AP-351: Der weisse Innenring steht wieder, auf Ansage des Auftraggebers.
-     AP-350 hatte ihn entfernt, weil er die Punkte aufhellt: Bei 7px Durchmesser
-     frisst der 1px-Ring den Rand, gemessen Mitte 140,198,63, Rand 255,255,255 -
-     die Punkte lesen sich dadurch heller als das Markengruen darunter. Das ist
-     so gewollt.
-     Die Deckkraft der inaktiven Punkte geht mit zurueck auf .32. Sie war in
-     AP-350 nur auf .6 gestiegen, um den fehlenden Ring auszugleichen (ohne ihn
-     kamen sie auf 1,98:1 gegen den Kartengrund); mit Ring uebernimmt er das
-     wieder. */
-  .private-review-swipe-dots button > span {
-    display: block;
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
-    background: rgba(140,198,63,.32);
-    box-shadow: inset 0 0 0 1px #fff;
-    transition: width .2s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease);
-  }
-
-  .private-review-swipe-dots button[aria-current="true"] > span {
-    width: 22px;
-    background: var(--green-500);
-    box-shadow: inset 0 0 0 1px #fff;
-  }
-
-  .private-review-swipe-dots button:focus-visible {
-    outline: 3px solid var(--yellow);
-    outline-offset: -5px;
-    border-radius: 999px;
-  }
+/* AP-208: Genau eine Rezension pro Ansicht, horizontal wischbar wie die
+   Gartenbild-Vorschau. AP-509: gilt auf allen Breiten (vorher nur bis 480px im
+   Hochformat); das Skript baut das Karussell jetzt immer. */
+.private-review-carousel.has-review-swipe {
+  --ink: #f4f6f0;
+  --ink-2: #d5dccf;
+  --ink-mute: #aeb8a8;
+  /* AP-349: Ein Gruen fuer die Karte, und zwar das der Marke - #8CC63F, der
+     Ton des Knopfes "Projekt anfragen" (--home-lime). Vorher stand hier ein
+     aufgehelltes #B6D97A, waehrend Rahmen und Lichtschimmer der Karte schon
+     #8CC63F trugen: zwei Gruen nebeneinander im selben Bauteil.
+     Kontrast auf dem Kartengrund #252B22: 7,09:1 - die Kategoriezeile ist
+     klein (10px, 800), 4,5:1 waeren gefordert. */
+  --green-500: #8cc63f;
+  --green-700: #8cc63f;
+  height: auto;
+  min-height: 0;
+  border-color: rgba(140,198,63,.28);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 92% 4%,rgba(140,198,63,.09),transparent 31%),
+    #20251f;
+  box-shadow: 0 26px 58px -38px rgba(0,0,0,.92),inset 0 1px 0 rgba(255,255,255,.035);
 }
 
-@media (max-width: 480px) and (prefers-reduced-motion: reduce) {
+.private-review-carousel.has-review-swipe .private-review-carousel-head {
+  align-items: center;
+  padding: 17px 18px 16px;
+  border-bottom-color: rgba(140,198,63,.14);
+  background: linear-gradient(135deg,rgba(43,53,39,.98),rgba(31,37,30,.92));
+}
+
+.private-review-carousel.has-review-swipe .private-review-google-mark strong {
+  color: #fff;
+}
+
+.private-review-carousel.has-review-swipe .private-review-viewport {
+  display: flex;
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 258px;
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+}
+
+.private-review-carousel.has-review-swipe .private-review-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.private-review-carousel.has-review-swipe .private-review-viewport.is-jumping {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+  min-height: 258px;
+  padding: 20px 20px 18px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-top: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scrollbar-color: rgba(49,82,0,.28) transparent;
+  scrollbar-width: thin;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item::before {
+  content: "“";
+  position: absolute;
+  z-index: 0;
+  margin: 34px 0 0 -5px;
+  color: rgba(140,198,63,.065);
+  font-family: Georgia,serif;
+  font-size: 5.4rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item-head {
+  min-height: 20px;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item-head > span:last-child {
+  max-width: 52%;
+  font-size: .64rem;
+  letter-spacing: .07em;
+}
+
+.private-review-carousel.has-review-swipe .private-review-excerpt {
+  margin-top: 17px;
+}
+
+.private-review-carousel.has-review-swipe .private-review-excerpt p {
+  /* Reines Weiss statt des Papiertons --ink. Die Regel steht bewusst hier im
+     480px-Block: ausserhalb davon liegt das Zitat auf der hellen Karte, wo
+     --ink dunkel ist (Zeile 3616) - weiss waere dort unlesbar. */
+  color: #fff;
+  font-size: .94rem;
+  line-height: 1.52;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item figcaption {
+  margin-top: auto;
+  padding-top: 18px;
+  font-size: .69rem;
+  letter-spacing: .012em;
+}
+
+/* AP-352: Auf dem Telefon tritt die Quellenangabe zurueck und die Fusszeile
+   wird zum Weg auf das Google-Profil. Der Zusatz geht dabei nicht verloren -
+   "Vorgarten-Neugestaltung" und die anderen stehen oben in derselben Karte
+   als Kategoriezeile.
+   Gruen wie der Rest der Karte (--green-500 ist hier #8CC63F, 7,09:1 auf dem
+   Kartengrund). Die Unterstreichung muss sein: Farbe allein darf einen Link
+   nicht kenntlich machen.
+   24px Mindesthoehe ist die Zielgroesse nach WCAG 2.5.8; mehr ginge nicht,
+   ohne die Karte wachsen zu lassen - ihre Hoehe haengt in dieser Breite an
+   festen Massen. */
+.private-review-carousel.has-review-swipe .private-review-item .private-review-quelle {
+  display: none;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item .private-review-alle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: var(--green-500);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item .private-review-alle:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.private-review-carousel.has-review-swipe .private-review-details {
+  margin-top: 15px;
+  border-color: rgba(140,198,63,.2);
+  background: linear-gradient(135deg,rgba(140,198,63,.075),rgba(255,255,255,.025));
+}
+
+.private-review-carousel.has-review-swipe .private-review-details:hover {
+  border-color: rgba(140,198,63,.34);
+  box-shadow: 0 12px 28px -24px rgba(0,0,0,.9);
+}
+
+.private-review-carousel.has-review-swipe .private-review-details-chevron {
+  background: rgba(140,198,63,.12);
+  color: #8cc63f;
+}
+
+.private-review-carousel.has-review-swipe .private-review-details[open] .private-review-details-chevron {
+  background: #8cc63f;
+  color: #151a13;
+}
+
+.private-review-carousel.has-review-swipe .private-review-details[open] > summary {
+  border-bottom-color: rgba(140,198,63,.16);
+}
+
+.private-review-carousel.has-review-swipe .private-review-details blockquote {
+  border-left-color: rgba(140,198,63,.44);
+  background: rgba(140,198,63,.075);
+}
+
+.private-review-swipe-controls {
+  justify-content: center;
+  min-height: 58px;
+  margin: 0;
+  padding: 7px 16px;
+  border-top-color: rgba(140,198,63,.14);
+  background: linear-gradient(180deg,rgba(35,42,33,.72),rgba(29,35,28,.96));
+}
+
+.private-review-swipe-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.private-review-swipe-dots button {
+  display: grid;
+  width: 42px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* AP-351: Der weisse Innenring steht wieder, auf Ansage des Auftraggebers.
+   AP-350 hatte ihn entfernt, weil er die Punkte aufhellt: Bei 7px Durchmesser
+   frisst der 1px-Ring den Rand, gemessen Mitte 140,198,63, Rand 255,255,255 -
+   die Punkte lesen sich dadurch heller als das Markengruen darunter. Das ist
+   so gewollt.
+   Die Deckkraft der inaktiven Punkte geht mit zurueck auf .32. Sie war in
+   AP-350 nur auf .6 gestiegen, um den fehlenden Ring auszugleichen (ohne ihn
+   kamen sie auf 1,98:1 gegen den Kartengrund); mit Ring uebernimmt er das
+   wieder. */
+.private-review-swipe-dots button > span {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(140,198,63,.32);
+  box-shadow: inset 0 0 0 1px #fff;
+  transition: width .2s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease);
+}
+
+.private-review-swipe-dots button[aria-current="true"] > span {
+  width: 22px;
+  background: var(--green-500);
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+.private-review-swipe-dots button:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: -5px;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
   .private-review-carousel.has-review-swipe .private-review-viewport {
     scroll-behavior: auto;
   }
 
   .private-review-swipe-dots button > span {
     transition: none;
+  }
+}
+
+/* AP-509: Die Werte der gemeinsamen 480er-Bloecke weiter unten (Abstaende AP-350/351,
+   Flaechen AP-348/353/354) gelten fuer die Bewertungen auch ab 481px - begrenzt auf
+   .private-proof-bento. Den Handy-Seitengrund #1b1e19 uebernimmt die Sektion bewusst
+   nicht (ab 481px ist der Seitengrund #171916); der hellgruene Schimmer der frueheren
+   Desktop-Fassung entfaellt. Tablets zeigen die Karte als Mittelspalte von 34rem. */
+@media (min-width: 481px) {
+  html.home-theme-dark .private-proof-bento {
+    --home-space-block: 40px;
+    --home-space-section: 40px;
+    --home-surface-low: #22271f;
+    --home-surface-card: #252b22;
+    --home-surface-high: #2b3327;
+    --home-surface-border: rgba(183, 203, 160, .18);
+    padding-block: var(--home-space-section);
+    border-block: 0;
+    box-shadow: none;
+    background: var(--bg);
+  }
+
+  .private-proof-bento > .container {
+    width: min(100% - calc(var(--gutter) * 2), 34rem);
+  }
+
+  html.home-theme-dark .private-proof-bento .private-proof-section-head {
+    margin-bottom: var(--home-space-block);
+  }
+
+  html.home-theme-dark .private-proof-bento .private-review-carousel.has-review-swipe {
+    --home-surface-border: rgba(255, 255, 255, .12);
+    --home-surface-high: var(--home-surface-card);
+    --home-surface-low:  var(--home-surface-card);
+    background: var(--home-surface-card);
+    border-color: rgba(140, 198, 63, .2);
+  }
+
+  html.home-theme-dark .private-review-carousel.has-review-swipe .private-review-carousel-head {
+    background: var(--home-surface-high);
+    border-bottom-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-review-carousel.has-review-swipe .private-review-swipe-controls {
+    background: var(--home-surface-low);
+    border-top-color: var(--home-surface-border);
+  }
+}
+
+/* AP-509: Desktop - die Karte mittig mit hoechstens 40rem, dazu Pfeile links und
+   rechts der Punkte (das Skript haengt sie nur ab 901px ein; mit der Maus gibt es
+   kein Wischen). */
+@media (min-width: 901px) {
+  html.home-theme-dark .private-proof-bento {
+    padding-block: clamp(56px, 6vw, 96px);
+  }
+
+  .private-proof-bento > .container {
+    width: min(100% - calc(var(--gutter) * 2), var(--container));
+  }
+
+  html.home-theme-dark .private-proof-bento .private-proof-section-head {
+    margin-bottom: clamp(32px, 3vw, 48px);
+  }
+
+  .private-proof-bento .private-review-carousel {
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  .private-review-swipe-controls {
+    gap: 12px;
+  }
+
+  .private-review-arrow {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(140, 198, 63, .28);
+    border-radius: 999px;
+    background: transparent;
+    color: #8cc63f;
+    cursor: pointer;
+    transition: background-color .2s var(--ease), border-color .2s var(--ease);
+  }
+
+  .private-review-arrow svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .private-review-arrow:hover {
+    border-color: rgba(140, 198, 63, .55);
+    background: rgba(140, 198, 63, .12);
+  }
+
+  .private-review-arrow:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 3px;
   }
 }
 

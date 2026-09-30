@@ -1787,6 +1787,43 @@ Gemessen in Chrome:
   `privat-form.js`, der zwei Frames abwartet, schien deshalb zu fehlen. Das Prüfskript holt
   den Tab jetzt nach vorn.
 
+**AP-509 — Google-Bewertungen als Karussell auf allen Breiten.** Am Handy baute
+`mobile-private-review.js` die Bewertungen zu einem Wisch-Karussell um, aber nur bei höchstens
+480 px im Hochformat. Darüber lief `private-proof.js` mit der weißen Zweier-Karte samt
+Zusammenfassungskarte.
+
+- **Skript:**
+  - Die Weiche ist entfallen, das Karussell entsteht auf jeder Breite.
+  - Die Folien-Positionen werden relativ zur ersten Folie gerechnet. Das rohe `offsetLeft`
+    enthielt bei zentrierter Karte deren Einzug.
+  - Schnelle Klicks werden gemerkt statt verworfen.
+  - Ab 901 px kommen Pfeile dazu, weil sich mit der Maus nicht wischen lässt. Darunter bleibt
+    das DOM wie am Handy.
+  - `private-proof.js` ist gelöscht.
+- **`privat-form.css`:**
+  - Der Swipe-Block ist ohne Media Query angehoben.
+  - Die Karussell-Zeilen des 520-px-Blocks, die das Handy-Aussehen mittragen, gelten jetzt auf
+    allen Breiten.
+  - Die Flächen und Abstände aus den gemeinsamen 480er-Blöcken gelten ab 481 px begrenzt auf
+    `.private-proof-bento`.
+  - Tablets zeigen eine Mittelspalte von 34 rem, der Desktop die Karte mittig mit höchstens
+    40 rem.
+  - Ohne JavaScript zeigt jede Bewertung den Google-Link.
+- **Entfallen:** die Zusammenfassungskarte, siehe `docs/offene-punkte.md`.
+
+Gemessen in Chrome:
+- Der Vergleich aller berechneten Stile der Sektion bei 360, 402 und 480 px ergibt null
+  Abweichungen.
+- **Pixelvergleich:** 390, 402 und 430 px identisch. Bei 360 und 480 px wich einer von zwei
+  Läufen auf verzögert ladenden Bildern ab; der Wiederholungslauf war identisch.
+- **Pfeile:** keine bei 402 und 768 px, zwei ab 901 px.
+- **Bedienung:** Viermal „Weiter" ergibt 2 → 3 → 4 → 1, „Zurück" von 1 springt auf 4, ein
+  Doppelklick überspringt nichts, Enter auf dem Pfeil wirkt. Das gilt mit und ohne Bewegung.
+- **Breitenwechsel:** Beim Wechsel 402 → 768 → 1440 → 402 px in einer Sitzung bleiben die
+  aktive Bewertung und die Scrollposition erhalten.
+- **Ohne JavaScript:** vier Bewertungen mit Link.
+- `private-proof.js` wird nicht mehr angefragt, keine Konsolenfehler.
+
 **AP-516 — Kontaktseite am Desktop geordnet (30.09.2026).** Die Handy-Fassung (bis 600 px,
 AP-413 bis AP-449) war fertig, der Desktop wirkte ungeordnet. Die Gestaltung war nicht das
 Problem, die Anordnung schon:

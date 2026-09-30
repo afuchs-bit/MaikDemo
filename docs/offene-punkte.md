@@ -2363,3 +2363,32 @@ entfallen, weil die Handy-Fassung maßgeblich ist (Entscheidung vom 15.09.2026):
 - **Totes Skript:** Die Wendelogik in `assets/js/privat-form.js` (IIFE mit
   `[data-service-flip]`) läuft ins Leere; sie wird in AP-517 entfernt.
 
+## AP-509 — Google-Bewertungen als Karussell auf allen Breiten
+
+### Was damit von der Seite verschwindet
+
+Nur am Desktop und auf Tablets gab es bisher:
+
+- die grüne Zusammenfassungskarte „Seit 2001 in Herne", „Vertrauen aus über 25 Jahren
+  Gartenbau.", „Echte Bewertungen und fachliche Qualifikationen machen unsere Erfahrung
+  nachvollziehbar." mit dem Bewertungskasten „4,9 von 5 / aus 68 Google-Bewertungen" und dem
+  Knopf „Alle Bewertungen auf Google ansehen". Der Kartenkopf zeigt 4,9 und 68 weiterhin; der
+  Weg zu Google steht jetzt in jeder Bewertung („Alle Google-Rezensionen ansehen").
+- die Quellenzeilen („Google-Rezension · …") unter den Bewertungen
+- die weiße Karte mit zwei Bewertungen je Ansicht, 15-Sekunden-Autoplay, „Pause" und dem
+  animierten Aufklappen.
+
+Die frühere Entscheidung AP-F26 („Karte bleibt bewusst weiß") ist damit abgelöst.
+
+### Nicht mehr eingebunden
+
+- `assets/js/private-proof.js` ist gelöscht (nur die Startseite hatte sie geladen).
+
+### Weiter offen
+
+- Am Desktop kommen **Pfeile** „Vorherige/Nächste Bewertung" dazu (am Handy gibt es sie
+  nicht, dort wird gewischt). Gestaltung zur Abnahme.
+- Die Beschriftung „Geöffnet · innerhalb der Karte scrollen" beim Aufklappen stammt aus der
+  weißen Karte mit fester Höhe; im Karussell wächst die Karte mit. Wortlaut bei Gelegenheit
+  anpassen.
+
