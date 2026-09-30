@@ -493,7 +493,7 @@ html.home-theme-dark .gate-cta {
     0 12px 26px -8px rgba(10,14,8,.55);  /* Tiefe - rein gestalterisch */
 }
 
-html.home-theme-dark :is(.gate-cta-label--iphone, .gate-cta-action--iphone, .gate-welcome--iphone) {
+html.home-theme-dark :is(.gate-cta-label--iphone, .gate-cta-action--iphone) {
   display: none;
 }
 
@@ -1432,12 +1432,6 @@ html.home-theme-dark .fork-path:hover {
 }
 
 @media (max-width: 480px) {
-  /* Auf Handys ersetzt der Willkommenentwurf die Bestandssektion.
-     Ab 481px behaelt die Seite .mr-willkommen. */
-  html.home-theme-dark .mr-willkommen {
-    display: none;
-  }
-
   /* Hero-Keil und Willkommenbereich liegen auf einer einzigen Farbfläche. Der
      vorherige Verlauf des gemeinsamen Containers erzeugte genau an der Grenze
      der beiden Hero-Elemente einen sichtbaren Tonwertsprung. */
@@ -1462,489 +1456,446 @@ html.home-theme-dark .fork-path:hover {
         #1B1E19 100%),
       url("../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a");
   }
-
-  html.home-theme-dark .gate-welcome--iphone {
-    position: relative;
-    display: block;
-    width: calc(100% - 64px);
-    margin: clamp(60px, 7svh, 68px) auto 0;
-    font-family: var(--display);
-    overflow-wrap: anywhere;
-  }
-
-  html.home-theme-dark .gate-welcome-kicker {
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: fit-content;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 4px 0;
-    font-family: var(--display);
-    font-size: 1rem;
-    line-height: 1.25;
-    letter-spacing: 0;
-    text-align: center;
-  }
-
-  /* Der Stempel wird mit einer weich auslaufenden Maskenkante wie ein ruhiger
-     Pinselzug von links freigelegt. Die Bewegung bleibt am Element selbst und
-     ist nicht an die Scrollposition gekoppelt. */
-  html.home-theme-dark .gate-welcome-kicker.gate-welcome-reveal {
-    opacity: .18;
-    -webkit-clip-path: none;
-    clip-path: none;
-    -webkit-mask-image: linear-gradient(90deg, #000 0 47%, transparent 51% 100%);
-    mask-image: linear-gradient(90deg, #000 0 47%, transparent 51% 100%);
-    -webkit-mask-position: 100% 0;
-    mask-position: 100% 0;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-size: 220% 100%;
-    mask-size: 220% 100%;
-    transform: none;
-    transition:
-      opacity .78s cubic-bezier(.16, 1, .3, 1),
-      -webkit-mask-position .78s cubic-bezier(.16, 1, .3, 1),
-      mask-position .78s cubic-bezier(.16, 1, .3, 1);
-  }
-
-  html.home-theme-dark .gate-welcome-kicker.gate-welcome-reveal.is-in {
-    opacity: 1;
-    -webkit-mask-position: 0 0;
-    mask-position: 0 0;
-    transform: none;
-  }
-
-  /* Ohne GSAP folgt das Foto dem Pinselzug als ruhiger Fallback. */
-  html.home-theme-dark .gate-welcome-photo.gate-welcome-reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition:
-      opacity .92s cubic-bezier(.16, 1, .3, 1),
-      transform .92s cubic-bezier(.16, 1, .3, 1);
-    transition-delay: .72s !important;
-  }
-
-  html.home-theme-dark .gate-welcome-photo.gate-welcome-reveal.is-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* GSAP steuert das Foto ohne die fruehere CSS-Wartezeit. Das verhindert,
-     dass es besonders bei schnellem Scrollen sichtbar hinterherhaengt. */
-  html.gsap-reveal-active.home-theme-dark .gate-welcome-photo.gate-welcome-reveal {
-    transition: none !important;
-  }
-
-  html.home-theme-dark .gate-welcome-intro {
-    position: relative;
-    z-index: 1;
-    color: rgba(244,246,240,.68);
-    font-size: .8125rem;
-    font-weight: 800;
-    line-height: 1.3;
-    letter-spacing: .09em;
-    text-transform: uppercase;
-  }
-
-  html.home-theme-dark .gate-welcome-wordmark {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: 10.75rem;
-    max-width: 100%;
-    height: auto;
-    flex: 0 0 auto;
-    margin: 0;
-    overflow: hidden;
-    filter: saturate(.86) brightness(1.18) drop-shadow(0 1px 1px rgb(0 0 0 / 35%));
-    transform: none;
-  }
-
-  html.home-theme-dark :is(
-    .gate-welcome-feeling,
-    .gate-welcome-copy,
-    .gate-welcome-outro
-  ) {
-    display: none;
-  }
-
-  html.home-theme-dark .gate-welcome-photo {
-    --gate-welcome-brand-width: clamp(4.0625rem, 20vw, 5rem);
-    position: relative;
-    isolation: isolate;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    margin: 2.5rem 0 0;
-    overflow: visible;
-    border-radius: 16px;
-    background: transparent;
-    box-shadow:
-      0 22px 38px -24px rgb(0 0 0 / 88%),
-      0 18px 34px -28px rgb(93 224 35 / 62%);
-  }
-
-  html.home-theme-dark .gate-welcome-photo img {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    border-radius: inherit;
-    object-fit: contain;
-    object-position: center center;
-    filter: brightness(1.06) saturate(1.08) contrast(1.04);
-    -webkit-clip-path: none;
-    clip-path: none;
-  }
-
-  html.home-theme-dark .gate-welcome-photo::after {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    border-radius: inherit;
-    content: "";
-    background:
-      linear-gradient(90deg, rgb(92 234 20 / 72%), rgb(92 234 20 / 22%) 38%, transparent 74%) 0 0 / 100% 1px no-repeat,
-      linear-gradient(180deg, rgb(92 234 20 / 62%), rgb(92 234 20 / 16%) 48%, transparent 78%) 0 0 / 1px 100% no-repeat;
-    pointer-events: none;
-  }
-
-  html.home-theme-dark .gate-welcome-photo-outline {
-    display: none;
-  }
-
-  html.home-theme-dark .gate-welcome-photo-outline > path {
-    fill: var(--home-lime);
-    fill-rule: evenodd;
-    stroke: none;
-  }
-
-  html.home-theme-dark .gate-welcome-photo-brand {
-    position: absolute;
-    right: -1rem;
-    bottom: calc(var(--gate-welcome-brand-width) * -2 / 7);
-    z-index: 2;
-    display: block;
-    width: var(--gate-welcome-brand-width);
-    height: auto;
-    overflow: hidden;
-    filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
-    pointer-events: none;
-  }
-
-  html.home-theme-dark .gate-welcome-message {
-    margin: 3.5rem 0.5rem 0;
-  }
-
-  html.home-theme-dark .gate-welcome-statement {
-    margin: 0;
-    color: var(--home-on-dark);
-    font-family: "Baloo 2", sans-serif;
-    font-size: clamp(1.4375rem, 5.95vw, 1.5rem);
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: .015em;
-    overflow-wrap: normal;
-    text-wrap: pretty;
-    hyphens: none;
-  }
-
-  html.home-theme-dark .gate-welcome-feeling {
-    margin: 1.375rem 0 0;
-    color: var(--home-on-dark);
-    font-size: 1.3125rem;
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: -.015em;
-    text-wrap: pretty;
-  }
-
-  html.home-theme-dark .gate-welcome-feeling em {
-    color: var(--home-yellow);
-    font-style: normal;
-    font-weight: 700;
-  }
-
-  html.home-theme-dark .gate-welcome-copy {
-    margin: 1.25rem 0 0;
-    color: var(--home-on-dark-2);
-    font-family: var(--body);
-    font-size: 1.0625rem;
-    font-weight: 400;
-    line-height: 1.6;
-    letter-spacing: 0;
-    text-wrap: pretty;
-  }
-
-  html.home-theme-dark .gate-welcome-outro {
-    margin: 1.625rem 0 0;
-    color: var(--home-on-dark-2);
-    font-family: var(--body);
-    font-size: 1.0625rem;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0;
-    text-wrap: pretty;
-  }
-
-  html.home-theme-dark .gate-welcome-outro strong {
-    color: var(--home-dark-accent);
-    font-weight: 700;
-  }
-
-  html.home-theme-dark .gate-welcome-qualifications {
-    margin: 3rem 0 0;
-    padding: 0;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 5.5rem;
-    gap: 1rem;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option {
-    appearance: none;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    min-width: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0.625rem 0.375rem;
-    border: 1px solid transparent;
-    border-radius: 0.875rem;
-    color: var(--home-on-dark);
-    background: transparent;
-    cursor: pointer;
-    text-align: left;
-    -webkit-tap-highlight-color: transparent;
-    transition:
-      border-color .22s var(--ease),
-      background-color .22s var(--ease),
-      box-shadow .22s var(--ease);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option:focus-visible {
-    outline: 2px solid rgba(183, 221, 132, .72);
-    outline-offset: 2px;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"] {
-    border-color: rgba(140, 198, 63, .22);
-    background: rgba(49, 82, 0, .12);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, .035),
-      0 12px 24px -24px rgba(0, 0, 0, .8);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-content {
-    display: grid;
-    grid-template-columns: 1.875rem minmax(0, 1fr);
-    align-items: center;
-    gap: 0.5625rem;
-    width: min(100%, 9.25rem);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option:nth-child(2) .gate-welcome-qualification-content {
-    transform: translateX(2px);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option:nth-child(4) .gate-welcome-qualification-content {
-    transform: translateX(2.675px);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-flower {
-    display: block;
-    width: 1.875rem;
-    height: 1.875rem;
-    object-fit: contain;
-    filter: saturate(.94) drop-shadow(1px 2px 1px rgba(0, 0, 0, .36));
-    transform: rotate(-8deg);
-    transform-origin: 50% 62%;
-    transition: transform .2s var(--ease), filter .2s var(--ease);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option:nth-child(2) .gate-welcome-qualification-flower {
-    transform: rotate(6deg);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option:nth-child(3) .gate-welcome-qualification-flower {
-    transform: rotate(5deg);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option:nth-child(4) .gate-welcome-qualification-flower {
-    transform: rotate(-5deg);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"] .gate-welcome-qualification-flower {
-    filter: saturate(1.08) drop-shadow(0 0 7px rgba(242, 226, 12, .3));
-    transform: rotate(10deg) scale(1.1);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-label {
-    display: block;
-    min-width: 0;
-    color: var(--home-on-dark);
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: 1.0625rem;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.16;
-    letter-spacing: .025em;
-    text-transform: uppercase;
-    overflow-wrap: normal;
-    opacity: .9;
-    text-shadow:
-      1px 1px 0 #315200,
-      0 0 7px rgba(242, 226, 12, .16);
-    transition: opacity .2s var(--ease), text-shadow .2s var(--ease), transform .2s var(--ease);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-label--tree {
-    font-size: 0.9375rem;
-    letter-spacing: -0.025em;
-    white-space: nowrap;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"] .gate-welcome-qualification-label {
-    opacity: 1;
-    text-shadow:
-      1px 1px 0 #315200,
-      0 0 11px rgba(242, 226, 12, .3);
-    transform: translateY(-1px);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-hint {
-    margin: 0.625rem 0 0;
-    color: rgba(244, 246, 240, .58);
-    font-family: var(--body);
-    font-size: 0.75rem;
-    font-weight: 500;
-    line-height: 1.35;
-    letter-spacing: 0.025em;
-    text-align: center;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-hint[hidden] {
-    display: none;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-details {
-    position: relative;
-    margin: 0.875rem 0 0;
-    padding: 0;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-panel {
-    position: relative;
-    display: grid;
-    grid-template-columns: 2.25rem minmax(0, 1fr);
-    align-items: center;
-    gap: 0.75rem;
-    overflow: hidden;
-    padding: 1rem;
-    border: 1px solid rgba(140, 198, 63, .17);
-    border-radius: 1.125rem;
-    background:
-      radial-gradient(circle at 9% 8%, rgba(140, 198, 63, .13), transparent 33%),
-      linear-gradient(145deg, rgba(43, 53, 38, .96), rgba(25, 30, 24, .98));
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, .045),
-      0 20px 38px -32px rgba(0, 0, 0, .92);
-    animation: gate-qualification-in .26s var(--ease) both;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-panel[hidden] {
-    display: none;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-panel::after {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 2px;
-    background: linear-gradient(180deg, transparent 10%, rgba(140, 198, 63, .72) 48%, transparent 90%);
-    opacity: .68;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-panel-flower {
-    display: block;
-    width: 2.25rem;
-    height: 2.25rem;
-    object-fit: contain;
-    filter: saturate(.92) drop-shadow(1px 2px 1px rgba(0, 0, 0, .38));
-    transform: rotate(-7deg);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-panel p {
-    margin: 0;
-    font-family: var(--body);
-    text-wrap: pretty;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-panel-title {
-    color: rgba(183, 221, 132, .9);
-    font-size: .75rem;
-    font-weight: 800;
-    line-height: 1.35;
-    letter-spacing: .065em;
-    text-transform: uppercase;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-panel-benefit {
-    grid-column: 1 / -1;
-    margin-top: 0.125rem;
-    color: rgba(244, 246, 240, .94);
-    font-size: .9375rem;
-    font-weight: 500;
-    line-height: 1.5;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-panel-proof {
-    grid-column: 1 / -1;
-    margin-top: 0.125rem;
-    padding-top: 0.6875rem;
-    border-top: 1px solid rgba(244, 246, 240, .08);
-    color: rgba(244, 246, 240, .56);
-    font-size: .75rem;
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: .018em;
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-panel-certificate {
-    grid-column: 1 / -1;
-    margin-top: 0.75rem;
-    width: 100%;
-    height: auto;
-    border-radius: 0.75rem;
-    box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .6);
-  }
-
-  html.home-theme-dark .gate-welcome-qualification-fallback {
-    margin: 1.125rem 0 0;
-    color: var(--home-on-dark-2);
-    font-family: var(--body);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    text-wrap: pretty;
-  }
 }
 
-@media (max-width: 480px) and (prefers-reduced-motion: reduce) {
+/* AP-503: Der Willkommenbereich (Kopfzeile, Foto, Leitsatz, Eckdaten,
+   Qualifikationen) gilt auf allen Breiten. Bis AP-503 war er nur hier im
+   480er-Block eingeschaltet, und der Desktop behielt .mr-willkommen. Die
+   Gestaltung steht deshalb ohne Media Query; ab 901px ordnet der Block
+   weiter unten die Teile nur noch neu an. Bei 901px und breiter ist die
+   Wurzelschrift 16px wie beim iPhone mit 402px, die rem-Werte ergeben dort
+   also dieselben Masse. Die Breite ist auf 34rem begrenzt, damit Tablets die
+   Handy-Komposition als Mittelspalte zeigen; am Handy ist calc() stets kleiner. */
+html.home-theme-dark .gate-welcome--iphone {
+  position: relative;
+  display: block;
+  width: min(calc(100% - 64px), 34rem);
+  margin: clamp(60px, 7svh, 68px) auto 0;
+  font-family: var(--display);
+  overflow-wrap: anywhere;
+}
+
+html.home-theme-dark .gate-welcome-kicker {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 4px 0;
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+/* Der Stempel wird mit einer weich auslaufenden Maskenkante wie ein ruhiger
+   Pinselzug von links freigelegt. Die Bewegung bleibt am Element selbst und
+   ist nicht an die Scrollposition gekoppelt. */
+html.home-theme-dark .gate-welcome-kicker.gate-welcome-reveal {
+  opacity: .18;
+  -webkit-clip-path: none;
+  clip-path: none;
+  -webkit-mask-image: linear-gradient(90deg, #000 0 47%, transparent 51% 100%);
+  mask-image: linear-gradient(90deg, #000 0 47%, transparent 51% 100%);
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 220% 100%;
+  mask-size: 220% 100%;
+  transform: none;
+  transition:
+    opacity .78s cubic-bezier(.16, 1, .3, 1),
+    -webkit-mask-position .78s cubic-bezier(.16, 1, .3, 1),
+    mask-position .78s cubic-bezier(.16, 1, .3, 1);
+}
+
+html.home-theme-dark .gate-welcome-kicker.gate-welcome-reveal.is-in {
+  opacity: 1;
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+  transform: none;
+}
+
+/* Ohne GSAP folgt das Foto dem Pinselzug als ruhiger Fallback. */
+html.home-theme-dark .gate-welcome-photo.gate-welcome-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity .92s cubic-bezier(.16, 1, .3, 1),
+    transform .92s cubic-bezier(.16, 1, .3, 1);
+  transition-delay: .72s !important;
+}
+
+html.home-theme-dark .gate-welcome-photo.gate-welcome-reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* GSAP steuert das Foto ohne die fruehere CSS-Wartezeit. Das verhindert,
+   dass es besonders bei schnellem Scrollen sichtbar hinterherhaengt. */
+html.gsap-reveal-active.home-theme-dark .gate-welcome-photo.gate-welcome-reveal {
+  transition: none !important;
+}
+
+html.home-theme-dark .gate-welcome-intro {
+  position: relative;
+  z-index: 1;
+  color: rgba(244,246,240,.68);
+  font-size: .8125rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+html.home-theme-dark .gate-welcome-wordmark {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 10.75rem;
+  max-width: 100%;
+  height: auto;
+  flex: 0 0 auto;
+  margin: 0;
+  overflow: hidden;
+  filter: saturate(.86) brightness(1.18) drop-shadow(0 1px 1px rgb(0 0 0 / 35%));
+  transform: none;
+}
+
+html.home-theme-dark .gate-welcome-photo {
+  --gate-welcome-brand-width: clamp(4.0625rem, 20vw, 5rem);
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin: 2.5rem 0 0;
+  overflow: visible;
+  border-radius: 16px;
+  background: transparent;
+  box-shadow:
+    0 22px 38px -24px rgb(0 0 0 / 88%),
+    0 18px 34px -28px rgb(93 224 35 / 62%);
+}
+
+html.home-theme-dark .gate-welcome-photo img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  border-radius: inherit;
+  object-fit: contain;
+  object-position: center center;
+  filter: brightness(1.06) saturate(1.08) contrast(1.04);
+  -webkit-clip-path: none;
+  clip-path: none;
+}
+
+html.home-theme-dark .gate-welcome-photo::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  content: "";
+  background:
+    linear-gradient(90deg, rgb(92 234 20 / 72%), rgb(92 234 20 / 22%) 38%, transparent 74%) 0 0 / 100% 1px no-repeat,
+    linear-gradient(180deg, rgb(92 234 20 / 62%), rgb(92 234 20 / 16%) 48%, transparent 78%) 0 0 / 1px 100% no-repeat;
+  pointer-events: none;
+}
+
+html.home-theme-dark .gate-welcome-photo-outline {
+  display: none;
+}
+
+html.home-theme-dark .gate-welcome-photo-outline > path {
+  fill: var(--home-lime);
+  fill-rule: evenodd;
+  stroke: none;
+}
+
+html.home-theme-dark .gate-welcome-photo-brand {
+  position: absolute;
+  right: -1rem;
+  bottom: calc(var(--gate-welcome-brand-width) * -2 / 7);
+  z-index: 2;
+  display: block;
+  width: var(--gate-welcome-brand-width);
+  height: auto;
+  overflow: hidden;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
+  pointer-events: none;
+}
+
+html.home-theme-dark .gate-welcome-message {
+  margin: 3.5rem 0.5rem 0;
+}
+
+html.home-theme-dark .gate-welcome-statement {
+  margin: 0;
+  color: var(--home-on-dark);
+  font-family: "Baloo 2", sans-serif;
+  font-size: clamp(1.4375rem, 5.95vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .015em;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+  hyphens: none;
+}
+
+html.home-theme-dark .gate-welcome-qualifications {
+  margin: 3rem 0 0;
+  padding: 0;
+}
+
+html.home-theme-dark .gate-welcome-qualification-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 5.5rem;
+  gap: 1rem;
+}
+
+html.home-theme-dark .gate-welcome-qualification-option {
+  appearance: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0.625rem 0.375rem;
+  border: 1px solid transparent;
+  border-radius: 0.875rem;
+  color: var(--home-on-dark);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color .22s var(--ease),
+    background-color .22s var(--ease),
+    box-shadow .22s var(--ease);
+}
+
+html.home-theme-dark .gate-welcome-qualification-option:focus-visible {
+  outline: 2px solid rgba(183, 221, 132, .72);
+  outline-offset: 2px;
+}
+
+html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"] {
+  border-color: rgba(140, 198, 63, .22);
+  background: rgba(49, 82, 0, .12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .035),
+    0 12px 24px -24px rgba(0, 0, 0, .8);
+}
+
+html.home-theme-dark .gate-welcome-qualification-content {
+  display: grid;
+  grid-template-columns: 1.875rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5625rem;
+  width: min(100%, 9.25rem);
+}
+
+html.home-theme-dark .gate-welcome-qualification-option:nth-child(2) .gate-welcome-qualification-content {
+  transform: translateX(2px);
+}
+
+html.home-theme-dark .gate-welcome-qualification-option:nth-child(4) .gate-welcome-qualification-content {
+  transform: translateX(2.675px);
+}
+
+html.home-theme-dark .gate-welcome-qualification-flower {
+  display: block;
+  width: 1.875rem;
+  height: 1.875rem;
+  object-fit: contain;
+  filter: saturate(.94) drop-shadow(1px 2px 1px rgba(0, 0, 0, .36));
+  transform: rotate(-8deg);
+  transform-origin: 50% 62%;
+  transition: transform .2s var(--ease), filter .2s var(--ease);
+}
+
+html.home-theme-dark .gate-welcome-qualification-option:nth-child(2) .gate-welcome-qualification-flower {
+  transform: rotate(6deg);
+}
+
+html.home-theme-dark .gate-welcome-qualification-option:nth-child(3) .gate-welcome-qualification-flower {
+  transform: rotate(5deg);
+}
+
+html.home-theme-dark .gate-welcome-qualification-option:nth-child(4) .gate-welcome-qualification-flower {
+  transform: rotate(-5deg);
+}
+
+html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"] .gate-welcome-qualification-flower {
+  filter: saturate(1.08) drop-shadow(0 0 7px rgba(242, 226, 12, .3));
+  transform: rotate(10deg) scale(1.1);
+}
+
+html.home-theme-dark .gate-welcome-qualification-label {
+  display: block;
+  min-width: 0;
+  color: var(--home-on-dark);
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-size: 1.0625rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+  overflow-wrap: normal;
+  opacity: .9;
+  text-shadow:
+    1px 1px 0 #315200,
+    0 0 7px rgba(242, 226, 12, .16);
+  transition: opacity .2s var(--ease), text-shadow .2s var(--ease), transform .2s var(--ease);
+}
+
+html.home-theme-dark .gate-welcome-qualification-label--tree {
+  font-size: 0.9375rem;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+html.home-theme-dark .gate-welcome-qualification-option[aria-expanded="true"] .gate-welcome-qualification-label {
+  opacity: 1;
+  text-shadow:
+    1px 1px 0 #315200,
+    0 0 11px rgba(242, 226, 12, .3);
+  transform: translateY(-1px);
+}
+
+html.home-theme-dark .gate-welcome-qualification-hint {
+  margin: 0.625rem 0 0;
+  color: rgba(244, 246, 240, .58);
+  font-family: var(--body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.025em;
+  text-align: center;
+}
+
+html.home-theme-dark .gate-welcome-qualification-hint[hidden] {
+  display: none;
+}
+
+html.home-theme-dark .gate-welcome-qualification-details {
+  position: relative;
+  margin: 0.875rem 0 0;
+  padding: 0;
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  overflow: hidden;
+  padding: 1rem;
+  border: 1px solid rgba(140, 198, 63, .17);
+  border-radius: 1.125rem;
+  background:
+    radial-gradient(circle at 9% 8%, rgba(140, 198, 63, .13), transparent 33%),
+    linear-gradient(145deg, rgba(43, 53, 38, .96), rgba(25, 30, 24, .98));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .045),
+    0 20px 38px -32px rgba(0, 0, 0, .92);
+  animation: gate-qualification-in .26s var(--ease) both;
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel[hidden] {
+  display: none;
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent 10%, rgba(140, 198, 63, .72) 48%, transparent 90%);
+  opacity: .68;
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel-flower {
+  display: block;
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: contain;
+  filter: saturate(.92) drop-shadow(1px 2px 1px rgba(0, 0, 0, .38));
+  transform: rotate(-7deg);
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel p {
+  margin: 0;
+  font-family: var(--body);
+  text-wrap: pretty;
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel-title {
+  color: rgba(183, 221, 132, .9);
+  font-size: .75rem;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: .065em;
+  text-transform: uppercase;
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel-benefit {
+  grid-column: 1 / -1;
+  margin-top: 0.125rem;
+  color: rgba(244, 246, 240, .94);
+  font-size: .9375rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel-proof {
+  grid-column: 1 / -1;
+  margin-top: 0.125rem;
+  padding-top: 0.6875rem;
+  border-top: 1px solid rgba(244, 246, 240, .08);
+  color: rgba(244, 246, 240, .56);
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: .018em;
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel-certificate {
+  grid-column: 1 / -1;
+  margin-top: 0.75rem;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .6);
+}
+
+html.home-theme-dark .gate-welcome-qualification-fallback {
+  margin: 1.125rem 0 0;
+  color: var(--home-on-dark-2);
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
   html.home-theme-dark .gate-welcome-reveal {
     opacity: 1 !important;
     -webkit-clip-path: none !important;
@@ -1978,7 +1929,7 @@ html.home-theme-dark .fork-path:hover {
   }
 }
 
-@media (scripting: none) and (max-width: 480px) {
+@media (scripting: none) {
   html.home-theme-dark .gate-welcome-reveal {
     opacity: 1 !important;
     -webkit-clip-path: none !important;
@@ -1990,6 +1941,84 @@ html.home-theme-dark .fork-path:hover {
     transform: none !important;
     transition: none !important;
     transition-delay: 0s !important;
+  }
+}
+
+/* AP-503: Desktop-Anordnung des Willkommenbereichs. Gleiche Inhalte, gleiche
+   Reihenfolge wie am Handy; nur die Geometrie aendert sich. Kopfzeile ueber
+   beide Spalten, darunter Foto links und Leitsatz rechts, die Eckdaten als Band
+   und die vier Qualifikationen in einer Reihe. Der Bereich liegt in
+   .hero--gate-content, das ab 901px overflow:hidden traegt (styles.css) - daher
+   keine feste Hoehe; dessen unterer Innenabstand (44px) haelt die Schatten. */
+@media (min-width: 901px) {
+  /* AP-504: Auf den Willkommenbereich folgt jetzt die Galerie-Einladung. Wie am
+     Handy gehen beide ohne Trennlinie ineinander ueber (Handy: Zeile 1444). */
+  html.home-theme-dark .home-hero-stack {
+    border-bottom: 0;
+  }
+
+  html.home-theme-dark .gate-welcome--iphone {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    grid-template-areas:
+      "kicker kicker"
+      "photo  message"
+      "kpi    kpi"
+      "quali  quali";
+    align-items: center;
+    column-gap: clamp(40px, 5vw, 80px);
+    width: min(100% - calc(var(--gutter) * 2), var(--container));
+    margin: clamp(56px, 6vw, 96px) auto 0;
+  }
+
+  html.home-theme-dark .gate-welcome-kicker {
+    grid-area: kicker;
+    margin: 0 auto clamp(36px, 4vw, 56px);
+  }
+
+  html.home-theme-dark .gate-welcome-intro {
+    font-size: .875rem;
+  }
+
+  html.home-theme-dark .gate-welcome-wordmark {
+    width: 13.5rem;
+  }
+
+  html.home-theme-dark .gate-welcome-photo {
+    --gate-welcome-brand-width: clamp(5rem, 6vw, 6.25rem);
+    grid-area: photo;
+    margin: 0;
+  }
+
+  html.home-theme-dark .gate-welcome-message {
+    grid-area: message;
+    margin: 0;
+  }
+
+  html.home-theme-dark .gate-welcome-statement {
+    font-size: clamp(1.5rem, 2.1vw, 1.875rem);
+    line-height: 1.45;
+  }
+
+  html.home-theme-dark .gate-welcome-qualifications {
+    grid-area: quali;
+    margin: clamp(48px, 5vw, 72px) 0 0;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-details {
+    max-width: 40rem;
+    margin: 1rem auto 0;
+  }
+
+  /* Das Zertifikat ist 960x1358 px gross - ohne Begrenzung liefe es ueber die
+     volle Detailbreite und wuerde mehrere Bildschirmhoehen hoch. */
+  html.home-theme-dark .gate-welcome-qualification-panel-certificate {
+    max-width: 22rem;
+    margin-inline: auto;
   }
 }
 
@@ -2167,232 +2196,6 @@ html.home-theme-dark .fork-path:hover {
 html.home-theme-dark :where(.site-header, .hero--gate, .section-proof, .fork, .section-faq, .site-footer) :focus-visible {
   outline: 3px solid var(--home-focus);
   outline-offset: 3px;
-}
-
-/* ============================================================================
-   AP-174: WILLKOMMEN
-   Entwurf des Auftraggebers (Variante 2c) 1:1 uebernommen, umgeschluesselt auf die
-   dunkle Farbwelt. Der Abschnitt steht im Fluss zwischen .gate-head und .gate-doors,
-   liegt also im Verlauf des .home-hero-stack (--bg-elev -> --bg-hero).
-
-   Drei Stellen mussten dabei anders geloest werden als im Entwurf, weil sie sich auf
-   dunklem Grund nicht uebertragen lassen - sie sind unten einzeln begruendet:
-   die Flaechenfarbe, die Kapsel hinter der Blume und der Blendmodus des Wasserzeichens.
-   Alles andere (Raster, Abstaende, Groessen, Windanimation) steht unveraendert.
-   ============================================================================ */
-
-/* Entwurf: background #FAF8F1. Hier bewusst KEINE eigene Flaeche - eine deckende
-   Farbe wuerde im Verlauf des Hero-Stacks als Naht sichtbar. */
-html.home-theme-dark .mr-willkommen {
-  position: relative;
-  overflow: hidden;
-  color: var(--ink);
-}
-
-html.home-theme-dark .mr-willkommen__wasserzeichen {
-  position: absolute;
-  right: 48px;
-  bottom: -60px;
-  width: 380px;
-  height: auto;
-  opacity: .28;
-  pointer-events: none;
-}
-
-/* Entwurf: max-width 1440px, padding 120px 72px. Der horizontale Anteil weicht dem
-   Seitenraster - der Block steht direkt ueber .gate-doors und muss mit dessen
-   Kanten fluchten (gleiche Formel wie styles.css .gate-doors). */
-html.home-theme-dark .mr-willkommen__inner {
-  position: relative;
-  width: min(100% - calc(var(--gutter) * 2), var(--container));
-  margin-inline: auto;
-  padding: 120px 0;
-  display: grid;
-  grid-template-columns: 1fr 1px 460px;
-  column-gap: 64px;
-}
-
-html.home-theme-dark .mr-willkommen__gross {
-  margin: 0;
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 1.2;
-  text-wrap: pretty;
-}
-
-/* Entwurf: Comic Neue italic 700 ueber Google Fonts, danach Baloo 2 (AP-217).
-   Seit AP-252 laeuft das Wort in derselben Schrift wie der uebrige Absatz -
-   Nunito ueber --display - und setzt sich nur noch ueber Kursiv und Gewicht 700
-   ab. Keine eigene font-family, damit die Stelle dem Token folgt. Nebeneffekt:
-   Baloo 2 ist ohne Kursivschnitt eingebunden, die Schraege war errechnet;
-   Nunito bringt einen echten Kursivschnitt mit. */
-html.home-theme-dark .mr-willkommen__gross .mr-comic {
-  font-style: italic;
-  font-weight: 700;
-}
-
-html.home-theme-dark .mr-willkommen__absatz {
-  display: inline-block;
-  margin-top: 18px;
-}
-
-/* Entwurf: durchgehende Linie in #17191E, die von einer Kapsel in Papierfarbe
-   gebrochen wird. Eine Deckfarbe gibt es hier nicht - der Untergrund ist ein
-   Verlauf. Die Luecke wird deshalb aus der Linie selbst geschnitten: gleiches
-   Bild, aber unabhaengig vom Grund. 60px = halbe Kapselhoehe (84px Blume + 2x18px). */
-html.home-theme-dark .mr-willkommen__steg {
-  position: relative;
-  background: linear-gradient(180deg,
-    var(--line) 0 calc(50% - 60px),
-    transparent calc(50% - 60px) calc(50% + 60px),
-    var(--line) calc(50% + 60px) 100%);
-}
-
-/* Der Steg ist eine 1px-Rasterspalte, die Kapsel haengt absolut darin - ihr
-   Enthaeltnisblock ist also 1px breit. Ohne eigene Breite greift der globale
-   Reset img { max-width: 100% } (styles.css) und staucht die Bluete auf 0,5px.
-   In der Entwurfsdatei allein gab es diesen Reset nicht, dort fiel es nicht auf. */
-html.home-theme-dark .mr-willkommen__blume {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 84px;
-  padding: 18px 0;
-}
-
-html.home-theme-dark .mr-willkommen__blume img {
-  display: block;
-  width: 84px;
-  max-width: none;
-  height: auto;
-}
-
-html.home-theme-dark .mr-willkommen__klein {
-  align-self: center;
-}
-
-html.home-theme-dark .mr-willkommen__klein p {
-  margin: 0;
-  font-family: var(--body);
-  font-size: 17px;
-  line-height: 1.65;
-  color: var(--ink-2);
-  text-wrap: pretty;
-}
-
-/* Die Signatur braucht mehr Spezifitaet als .mr-willkommen__klein p { margin: 0 },
-   sonst schluckt diese Regel den Abstand. Im Entwurf war der Abstand angelegt
-   (margin-top: 36px), kam dort aus demselben Grund aber nie an. */
-html.home-theme-dark .mr-willkommen__klein .mr-willkommen__name {
-  margin-top: 36px;
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: 15px;
-  color: var(--ink);
-}
-
-html.home-theme-dark .mr-willkommen__steg-mobil {
-  display: none;
-}
-
-/* Blume im Wind: Drehpunkt knapp unterhalb der Grafik, als saesse die Bluete auf
-   einem unsichtbaren Stiel. Unveraendert aus dem Entwurf.
-   Kein Konflikt mit .reveal: die Animation laeuft auf dem img, das
-   Reveal-transform auf dem Rasterkind darueber. */
-html.home-theme-dark .mr-willkommen__blume img,
-html.home-theme-dark .mr-willkommen__steg-mobil img {
-  transform-origin: 50% 118%;
-  will-change: transform;
-  animation: mr-blume-wind 7s ease-in-out infinite;
-}
-
-/* Bewusst von der Desktop-Dauer abweichend, damit die beiden Blueten nicht
-   synchron laufen. */
-html.home-theme-dark .mr-willkommen__steg-mobil img {
-  animation-duration: 8.5s;
-}
-
-/* AP-175: Ausschlag verdreifacht - 4,1deg Gesamtweg waren zu zaghaft.
-   Jetzt -5,1deg bis +7,2deg, Hub 6px. Die Verteilung der Stuetzstellen ueber die
-   Zeit bleibt unangetastet: sie erzeugt den unregelmaessigen, boeigen Eindruck. */
-@keyframes mr-blume-wind {
-  0%   { transform: rotate(-3.6deg) translateY(0); }
-  14%  { transform: rotate(4.2deg)  translateY(-3px); }
-  27%  { transform: rotate(-1.5deg) translateY(0); }
-  41%  { transform: rotate(7.2deg)  translateY(-6px); }
-  52%  { transform: rotate(0.6deg)  translateY(-1.5px); }
-  66%  { transform: rotate(-5.1deg) translateY(0); }
-  80%  { transform: rotate(2.4deg)  translateY(-3px); }
-  100% { transform: rotate(-3.6deg) translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html.home-theme-dark .mr-willkommen__blume img,
-  html.home-theme-dark .mr-willkommen__steg-mobil img { animation: none; }
-}
-
-/* Entwurf: Umbruch bei 768px. In dieser Seite zu spaet - die feste 460px-Spalte
-   plus 64px Bundsteg passt darunter nicht neben die Textspalte:
-   bei 800px lief die Seite 58px horizontal ueber, und bis rund 1140px blieb die
-   grosse Textspalte schmaler als die kleine, was das Verhaeltnis des Entwurfs
-   umkehrt. Ab 1140px sind die Spalten erstmals ausgewogen (441px vs. 460px bei
-   1120px, 478px vs. 460px bei 1160px) - dort liegt der Umbruch. */
-@media (max-width: 1139px) {
-  html.home-theme-dark .mr-willkommen__wasserzeichen {
-    right: -30px;
-    bottom: -40px;
-    width: 200px;
-  }
-
-  html.home-theme-dark .mr-willkommen__inner {
-    display: block;
-    padding: 56px 0;
-  }
-
-  html.home-theme-dark .mr-willkommen__gross {
-    font-size: 23px;
-    line-height: 1.24;
-  }
-
-  html.home-theme-dark .mr-willkommen__absatz {
-    margin-top: 12px;
-  }
-
-  html.home-theme-dark .mr-willkommen__steg {
-    display: none;
-  }
-
-  html.home-theme-dark .mr-willkommen__steg-mobil {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin: 22px 0;
-  }
-
-  html.home-theme-dark .mr-willkommen__steg-mobil::before,
-  html.home-theme-dark .mr-willkommen__steg-mobil::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--line);
-  }
-
-  html.home-theme-dark .mr-willkommen__steg-mobil img {
-    width: 46px;
-    height: auto;
-  }
-
-  html.home-theme-dark .mr-willkommen__klein p {
-    font-size: 14.5px;
-    line-height: 1.6;
-  }
-
-  html.home-theme-dark .mr-willkommen__klein .mr-willkommen__name {
-    margin-top: 24px;
-    font-size: 13px;
-  }
 }
 
 /* AP-174: Foto-Buehne von der Textspalte entkoppelt.

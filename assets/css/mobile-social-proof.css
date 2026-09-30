@@ -1,8 +1,11 @@
-/* AP-211: Grosser Anfrage-CTA ohne zusaetzliches Symbol.
-   Ausschliesslich mobil; Bestandsbereiche behalten ihre eigene Gestaltung. */
-.mobile-social-proof {
-  display: none;
-}
+/* AP-504: Die Galerie-Einladung (#social-proof) gilt auf allen Breiten. Bis
+   AP-504 war sie hier per display:none ausgeblendet und nur bis 900px
+   eingeschaltet; der Desktop zeigte an ihrer Stelle nichts. Die Gestaltung
+   der sektionseigenen Bausteine (Bildfolge, Einladung) steht jetzt ohne
+   Media Query, die Desktop-Anordnung folgt am Dateiende. Der Anfrage-CTA
+   .mobile-proof-request kommt auch in #leistungen und #ablauf vor und bleibt
+   deshalb in den Handy-Bloecken; seine Gestaltung fuer diese Sektion ab
+   481px steht als begrenzte Kopie in cta-family-home.css. */
 
 /* AP-290: Der Pfeil ist seit C2 ein SVG. Ohne diese Grundregel stuende es in
    Breiten ohne Mobilregeln (Desktop-Pill des Ablauf-CTAs) in 300x150 da. */
@@ -17,8 +20,9 @@
 }
 
 /* AP-295: Das Pfeilmotiv steht im Markup aller drei CTAs, sichtbar wird es
-   erst unter 481px. Ohne diese Grundregel stuende das 1883px breite PNG in
-   Breiten ohne Mobilregeln in Originalgroesse im Button. */
+   erst unter 481px - in der Galerie-Einladung (#social-proof) seit AP-504 auf
+   allen Breiten, siehe cta-family-home.css. Ohne diese Grundregel stuende das
+   1883px breite PNG in Breiten ohne Mobilregeln in Originalgroesse im Button. */
 .mobile-proof-request__arrow-bild {
   display: none;
 }
@@ -27,38 +31,232 @@
   display: none;
 }
 
-/* Auf Handy-Breiten folgt der messbare Vertrauensbeleg direkt auf den
-   persönlichen Einstieg; die spätere Kopie entfällt dort. */
-@media (max-width: 480px) {
+/* AP-503: Die Eckdaten-Signatur gehoert zum Willkommenbereich und gilt auf
+   allen Breiten (vorher nur bis 480px). Die Werte stehen in rem; ab 901px ist
+   die Wurzelschrift 16px wie beim iPhone mit 402px. Die Anordnung als Band
+   folgt im Block min-width: 901px direkt darunter. */
+.gate-welcome--iphone .mobile-kpi-signature {
+  position: relative;
+  margin: 3rem 0 0;
+  padding: 1rem 0 0.75rem;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__fact {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 9rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.375rem 1rem 0;
+  margin: 0;
+  text-align: center;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__fact + .mobile-kpi-signature__fact::before {
+  position: absolute;
+  top: 0;
+  bottom: 2px;
+  left: -0.5rem;
+  width: 1px;
+  content: "";
+  background: linear-gradient(180deg, transparent, rgb(164 206 91 / 26%) 18%, rgb(164 206 91 / 26%) 82%, transparent);
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__figure {
+  display: block;
+  width: auto;
+  height: 2.375rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Die handgezeichnete 1000+ besitzt bewusst mehr transparente Luft als die
+   uebrigen KPI-Schriftzuege. Die rein visuelle Skalierung haelt Grundlinie,
+   Zeilenhoehe und den Abstand zum Begleittext unveraendert. */
+.gate-welcome--iphone .mobile-kpi-signature__figure--1000 {
+  transform: scale(1.22);
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__fact p {
+  margin: 1rem 0 0;
+  color: var(--home-on-dark);
+  font-family: "Nunito", sans-serif;
+  font-size: .9375rem;
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -.012em;
+  text-wrap: balance;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__google {
+  display: grid;
+  grid-template-columns: minmax(1.125rem, 1fr) auto minmax(1.125rem, 1fr);
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 5.25rem;
+  padding: 1rem 0;
+  margin: 3.75rem 0 0;
+  color: var(--home-on-dark);
+  text-align: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__rule {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(164 206 91 / 34%));
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__rule:last-child {
+  transform: scaleX(-1);
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__google-content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3125rem;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3125rem;
+  white-space: nowrap;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__google-mark {
+  display: block;
+  flex: 0 0 1.25rem;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__stars {
+  /* AP-369: Zitronengelb wie die Sterne der Rezensionssektion
+     (privat-form.css:3671, dort ebenfalls var(--yellow)). Vorher stand hier
+     Google-Bernstein #fbbc05.
+
+     Den dreilagigen Schein von dort uebernimmt diese Stelle bewusst nicht:
+     Die Signaturzeile ist schmal, und das Leuchten staende direkt neben der
+     scharfen Google-Grafik.
+
+     Kontrast auf dem Grund #1B1E19 gemessen: 12,56:1 statt vorher 9,87:1. */
+  color: var(--yellow);
+  font-family: Arial, sans-serif;
+  font-size: .9375rem;
+  line-height: 1;
+  letter-spacing: .025em;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__rating strong {
+  color: var(--home-on-dark);
+  font-family: "Nunito", sans-serif;
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1;
+  /* AP-355: Ein Pixel tiefer, auf Ansage des Auftraggebers.
+     Rechnerisch stand die Zahl schon mittig - an den gemalten Pixeln gemessen
+     lag der Tintenschwerpunkt der Sterne bei 1933,06 und der der Ziffern bei
+     1933,45, also 0,4px auseinander. Den Eindruck macht die Form: Die
+     Sternspitzen ragen oben ueber die Ziffern hinaus, die Sternbeine unten
+     darunter; die Zahl steckt beidseitig eingerueckt drin und liest sich
+     dadurch hochgesetzt.
+     .07em statt 1px, weil die Schriftgroessen dieser Zeile mit dem Fenster
+     skalieren (11,1px bei 320 bis 15,0px bei 430). Ein fester Pixelwert waere
+     auf kleinen Geraeten anteilig doppelt so viel. .07em von 13,58px sind die
+     gewuenschten rund 0,95px. */
+  transform: translateY(.07em);
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__reviews {
+  color: rgb(235 239 229 / 66%);
+  font-family: "Nunito", sans-serif;
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__google:focus-visible {
+  outline: 2px solid var(--home-yellow);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__google:active {
+  opacity: .78;
+  transform: translateY(1px);
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.75rem 1rem 0;
+  text-align: center;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__team-wordmark {
+  display: block;
+  width: min(100%, 14.25rem);
+  height: auto;
+  object-fit: contain;
+}
+
+.gate-welcome--iphone .mobile-kpi-signature__team p {
+  max-width: 17rem;
+  margin: 1rem 0 0;
+  color: var(--home-on-dark);
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.38;
+  letter-spacing: -.012em;
+  text-wrap: balance;
+}
+
+/* AP-503: Am Desktop stehen die vier Eckdaten nebeneinander: 25+ und 1000+ in
+   ihrem bisherigen Zweierraster, daneben das Fachteam und die Google-Bewertung.
+   Senkrechte Linien trennen die Zellen wie schon zwischen 25+ und 1000+; die
+   waagerechten Zierlinien der Google-Zeile entfallen dort. */
+@media (min-width: 901px) {
   .gate-welcome--iphone .mobile-kpi-signature {
-    position: relative;
-    margin: 3rem 0 0;
-    padding: 1rem 0 0.75rem;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__facts {
+    grid-area: kpi;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 1rem;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__fact {
-    position: relative;
-    display: flex;
-    min-width: 0;
-    min-height: 9rem;
-    flex-direction: column;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
-    justify-content: flex-start;
-    padding: 0.375rem 1rem 0;
-    margin: 0;
-    text-align: center;
+    column-gap: 1rem;
+    margin: clamp(48px, 5vw, 80px) 0 0;
   }
 
-  .gate-welcome--iphone .mobile-kpi-signature__fact + .mobile-kpi-signature__fact::before {
+  /* Die Handy-Mindesthoehe von 9rem haelt dort 25+ und 1000+ auf einer Linie mit
+     dem naechsten Block. Im Band stehen alle vier Zellen nebeneinander; mit ihr
+     liefen die Trennlinien weit unter den Text. */
+  .gate-welcome--iphone .mobile-kpi-signature__fact {
+    min-height: 0;
+    padding-bottom: 0.375rem;
+  }
+
+  .gate-welcome--iphone :is(.mobile-kpi-signature__team, .mobile-kpi-signature__google) {
+    position: relative;
+    align-self: stretch;
+    justify-content: center;
+  }
+
+  .gate-welcome--iphone :is(.mobile-kpi-signature__team, .mobile-kpi-signature__google)::before {
     position: absolute;
     top: 0;
     bottom: 2px;
@@ -68,488 +266,319 @@
     background: linear-gradient(180deg, transparent, rgb(164 206 91 / 26%) 18%, rgb(164 206 91 / 26%) 82%, transparent);
   }
 
-  .gate-welcome--iphone .mobile-kpi-signature__figure {
-    display: block;
-    width: auto;
-    height: 2.375rem;
-    max-width: 100%;
-    object-fit: contain;
-  }
-
-  /* Die handgezeichnete 1000+ besitzt bewusst mehr transparente Luft als die
-     uebrigen KPI-Schriftzuege. Die rein visuelle Skalierung haelt Grundlinie,
-     Zeilenhoehe und den Abstand zum Begleittext unveraendert. */
-  .gate-welcome--iphone .mobile-kpi-signature__figure--1000 {
-    transform: scale(1.22);
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__fact p {
-    margin: 1rem 0 0;
-    color: var(--home-on-dark);
-    font-family: "Nunito", sans-serif;
-    font-size: .9375rem;
-    font-weight: 600;
-    line-height: 1.32;
-    letter-spacing: -.012em;
-    text-wrap: balance;
+  .gate-welcome--iphone .mobile-kpi-signature__team {
+    padding: 0.375rem 1rem 0;
   }
 
   .gate-welcome--iphone .mobile-kpi-signature__google {
-    display: grid;
-    grid-template-columns: minmax(1.125rem, 1fr) auto minmax(1.125rem, 1fr);
-    align-items: center;
-    gap: 0.625rem;
-    min-height: 5.25rem;
-    padding: 1rem 0;
-    margin: 3.75rem 0 0;
-    color: var(--home-on-dark);
-    text-align: center;
-    text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
+    grid-template-columns: auto;
+    justify-content: center;
+    min-height: 0;
+    margin: 0;
   }
 
   .gate-welcome--iphone .mobile-kpi-signature__rule {
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgb(164 206 91 / 34%));
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__rule:last-child {
-    transform: scaleX(-1);
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__google-content {
-    display: flex;
-    min-width: 0;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3125rem;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__rating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3125rem;
-    white-space: nowrap;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__google-mark {
-    display: block;
-    flex: 0 0 1.25rem;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__stars {
-    /* AP-369: Zitronengelb wie die Sterne der Rezensionssektion
-       (privat-form.css:3671, dort ebenfalls var(--yellow)). Vorher stand hier
-       Google-Bernstein #fbbc05.
-
-       Den dreilagigen Schein von dort uebernimmt diese Stelle bewusst nicht:
-       Die Signaturzeile ist schmal, und das Leuchten staende direkt neben der
-       scharfen Google-Grafik.
-
-       Kontrast auf dem Grund #1B1E19 gemessen: 12,56:1 statt vorher 9,87:1. */
-    color: var(--yellow);
-    font-family: Arial, sans-serif;
-    font-size: .9375rem;
-    line-height: 1;
-    letter-spacing: .025em;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__rating strong {
-    color: var(--home-on-dark);
-    font-family: "Nunito", sans-serif;
-    font-size: .875rem;
-    font-weight: 700;
-    line-height: 1;
-    /* AP-355: Ein Pixel tiefer, auf Ansage des Auftraggebers.
-       Rechnerisch stand die Zahl schon mittig - an den gemalten Pixeln gemessen
-       lag der Tintenschwerpunkt der Sterne bei 1933,06 und der der Ziffern bei
-       1933,45, also 0,4px auseinander. Den Eindruck macht die Form: Die
-       Sternspitzen ragen oben ueber die Ziffern hinaus, die Sternbeine unten
-       darunter; die Zahl steckt beidseitig eingerueckt drin und liest sich
-       dadurch hochgesetzt.
-       .07em statt 1px, weil die Schriftgroessen dieser Zeile mit dem Fenster
-       skalieren (11,1px bei 320 bis 15,0px bei 430). Ein fester Pixelwert waere
-       auf kleinen Geraeten anteilig doppelt so viel. .07em von 13,58px sind die
-       gewuenschten rund 0,95px. */
-    transform: translateY(.07em);
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__reviews {
-    color: rgb(235 239 229 / 66%);
-    font-family: "Nunito", sans-serif;
-    font-size: .75rem;
-    font-weight: 600;
-    line-height: 1.25;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__google:focus-visible {
-    outline: 2px solid var(--home-yellow);
-    outline-offset: 4px;
-    border-radius: 8px;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__google:active {
-    opacity: .78;
-    transform: translateY(1px);
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__team {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2.75rem 1rem 0;
-    text-align: center;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__team-wordmark {
-    display: block;
-    width: min(100%, 14.25rem);
-    height: auto;
-    object-fit: contain;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__team p {
-    max-width: 17rem;
-    margin: 1rem 0 0;
-    color: var(--home-on-dark);
-    font-family: "Nunito", sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.38;
-    letter-spacing: -.012em;
-    text-wrap: balance;
-  }
-
-  .mobile-social-proof > .mobile-social-proof__list--standalone {
     display: none;
   }
 }
 
+/* AP-504: Bildfolge und Einladung - bisher nur bis 900px, jetzt auf allen
+   Breiten. Die Breite ist auf 34rem begrenzt (vorher 640px), damit Tablets die
+   Handy-Komposition als Mittelspalte zeigen; am Handy ist der Platz stets
+   kleiner, dort aendert sich nichts. */
+.mobile-social-proof {
+  position: relative;
+  display: block;
+  color: var(--ink);
+  scroll-margin-top: calc(var(--mobile-header-h) + 16px);
+}
+
+.mobile-social-proof__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mobile-proof-gallery {
+  --proof-brand-width: clamp(65px, 20vw, 80px);
+  max-width: 34rem;
+  margin: 32px auto 0;
+}
+
+.mobile-proof-gallery__figure {
+  position: relative;
+  margin: 0;
+}
+
+.mobile-proof-gallery__frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  isolation: isolate;
+}
+
+.mobile-proof-gallery__track {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-proof-gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-proof-gallery.is-ready .mobile-proof-gallery__track {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+}
+
+.mobile-proof-gallery.is-ready .mobile-proof-gallery__track.is-jumping {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.mobile-proof-gallery__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.mobile-proof-gallery__slide[hidden],
+.mobile-proof-gallery__dots[hidden] {
+  display: none;
+}
+
+.mobile-proof-gallery__slide picture,
+.mobile-proof-gallery__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mobile-proof-gallery__slide img {
+  object-fit: contain;
+}
+
+.mobile-proof-gallery__dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: flex;
+  transform: translateX(-50%);
+}
+
+.mobile-proof-gallery__dot {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-proof-gallery__dot span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(226, 34, 25, .32);
+  box-shadow:
+    inset 0 0 0 1px #fff,
+    0 0 0 1px rgb(0 0 0 / 65%),
+    0 0 4px rgba(255, 255, 255, .28),
+    0 0 9px rgba(255, 255, 255, .12);
+}
+
+.mobile-proof-gallery__dot[aria-current="true"] span {
+  width: 8px;
+  height: 8px;
+  background: var(--coral);
+  box-shadow:
+    inset 0 0 0 1px #fff,
+    0 0 0 1px rgb(0 0 0 / 65%),
+    0 0 4px rgba(255, 255, 255, .28),
+    0 0 9px rgba(255, 255, 255, .12);
+}
+
+.mobile-proof-gallery__dot:focus-visible {
+  outline: 2px solid #FAFAF6;
+  outline-offset: -4px;
+  background: rgb(0 0 0 / 45%);
+}
+
+.mobile-proof-gallery__footer {
+  position: relative;
+  height: max(64px, 4rem);
+}
+
+.mobile-proof-gallery__brand {
+  position: absolute;
+  /* Fruehere Siegelueberlappung: zwei Drittel auf dem Foto,
+     ein Drittel unterhalb. Originalformat 210:180. */
+  bottom: calc(var(--proof-brand-width) * -2 / 7);
+  right: -16px;
+  z-index: 2;
+  display: block;
+  width: var(--proof-brand-width);
+  height: auto;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
+  pointer-events: none;
+}
+
+.mobile-proof-gallery__link {
+  position: absolute;
+  isolation: isolate;
+  top: 14px;
+  left: 50%;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-width: max(184px, 11.5em);
+  max-width: 100%;
+  height: max(44px, 2.75em);
+  padding: 0 1rem 0.125rem;
+  border: 0;
+  background: transparent;
+  color: rgba(244, 246, 240, .9);
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  transition: color .2s var(--ease);
+}
+
+.mobile-proof-gallery__link > span {
+  position: relative;
+  z-index: 1;
+}
+
+.mobile-proof-gallery__link-shape {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.mobile-proof-gallery__link-shape path {
+  fill: rgba(49, 82, 0, .1);
+  stroke: rgba(140, 198, 63, .27);
+  stroke-width: 1px;
+  stroke-linejoin: round;
+  transition: fill .2s var(--ease), stroke .2s var(--ease);
+}
+
+.mobile-proof-gallery__link::after {
+  content: none;
+}
+
+.mobile-proof-gallery__link:is(:hover, :focus-visible)::after {
+  content: none;
+}
+
+.mobile-proof-gallery__link:focus-visible {
+  outline: 2px solid var(--home-focus);
+  outline-offset: 4px;
+}
+
+.mobile-proof-invitation {
+  max-width: 34rem;
+  margin: 24px auto 0;
+  font: 400 1rem/1.4 var(--body);
+}
+
+.mobile-proof-invitation__copy {
+  max-width: 38ch;
+}
+
+.mobile-proof-invitation__text {
+  margin: 0;
+  color: var(--ink-2);
+  font: inherit;
+  overflow-wrap: anywhere;
+}
+
+.mobile-proof-invitation__text strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font: 700 1.125rem/1.4 var(--display);
+}
+
+.mobile-proof-invitation__response {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(28px, 7.5vw, 32px);
+  align-items: end;
+  gap: 8px;
+  width: min(100%, 34ch);
+  margin-left: auto;
+}
+
+.mobile-proof-invitation__answer {
+  display: block;
+  min-width: 0;
+  padding: 12px 14px 12px 18px;
+  border-right: 1px solid rgb(182 217 122 / 30%);
+  border-radius: 0 14px 14px 0;
+  background: linear-gradient(
+    90deg,
+    rgb(74 122 16 / 0%) 0%,
+    rgb(74 122 16 / 10%) 28%,
+    rgb(74 122 16 / 18%) 100%
+  );
+  color: var(--home-dark-accent);
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: right;
+  text-wrap: pretty;
+}
+
+.mobile-proof-invitation__answer-line {
+  display: block;
+}
+
+.mobile-proof-invitation__answer-line + .mobile-proof-invitation__answer-line {
+  margin-top: .48em;
+}
+
+.mobile-proof-invitation__flower {
+  display: block;
+  align-self: end;
+  width: clamp(28px, 7.5vw, 32px);
+  max-width: none;
+  height: auto;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 34%));
+  pointer-events: none;
+}
+
 @media (max-width: 900px) {
-  .mobile-social-proof {
-    position: relative;
-    display: block;
-    padding: 32px 24px 40px;
-    color: var(--ink);
-    scroll-margin-top: calc(var(--mobile-header-h) + 16px);
-  }
-
-  .mobile-social-proof__sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  .mobile-social-proof__list {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 36px;
-    max-width: 640px;
-    padding: 0;
-    margin: 0 auto;
-    list-style: none;
-  }
-
-  .mobile-social-proof__item {
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-  }
-
-  .mobile-social-proof__number-row {
-    display: flex;
-    align-items: flex-end;
-    gap: 16px;
-    height: 44px;
-  }
-
-  .mobile-social-proof__number {
-    display: block;
-    flex: 0 0 auto;
-    width: auto;
-    height: 44px;
-    max-width: 100%;
-    object-fit: contain;
-    object-position: left center;
-  }
-
-  .mobile-social-proof__number--percent {
-    height: 44px;
-  }
-
-  .mobile-social-proof__number--area {
-    height: 44px;
-  }
-
-  .mobile-social-proof__label {
-    margin: 8px 0 0;
-    max-width: 30ch;
-    color: var(--ink);
-    font-family: var(--display);
-    font-size: 1.125rem;
-    font-weight: 700;
-    line-height: 1.25;
-    overflow-wrap: anywhere;
-  }
-
-  .mobile-social-proof__text {
-    margin: 8px 0 0;
-    max-width: 28ch;
-    min-height: 2.8em;
-    text-wrap: balance;
-    color: var(--ink-2);
-    font-family: var(--body);
-    font-size: 1rem;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
-  }
-
-  .mobile-social-proof__item:last-child .mobile-social-proof__text {
-    min-height: 0;
-  }
-
-  .mobile-proof-gallery {
-    --proof-brand-width: clamp(65px, 20vw, 80px);
-    max-width: 640px;
-    margin: 32px auto 0;
-  }
-
-  .mobile-proof-gallery__figure {
-    position: relative;
-    margin: 0;
-  }
-
-  .mobile-proof-gallery__frame {
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-    isolation: isolate;
-  }
-
-  .mobile-proof-gallery__track {
-    position: relative;
-    display: flex;
-    overflow: hidden;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .mobile-proof-gallery__track::-webkit-scrollbar {
-    display: none;
-  }
-
-  .mobile-proof-gallery.is-ready .mobile-proof-gallery__track {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    overscroll-behavior-x: contain;
-  }
-
-  .mobile-proof-gallery.is-ready .mobile-proof-gallery__track.is-jumping {
-    scroll-snap-type: none;
-    scroll-behavior: auto;
-  }
-
-  .mobile-proof-gallery__slide {
-    flex: 0 0 100%;
-    min-width: 0;
-    aspect-ratio: 4 / 3;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-
-  .mobile-proof-gallery__slide[hidden],
-  .mobile-proof-gallery__dots[hidden] {
-    display: none;
-  }
-
-  .mobile-proof-gallery__slide picture,
-  .mobile-proof-gallery__slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .mobile-proof-gallery__slide img {
-    object-fit: contain;
-  }
-
-  .mobile-proof-gallery__dots {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    display: flex;
-    transform: translateX(-50%);
-  }
-
-  .mobile-proof-gallery__dot {
-    display: grid;
-    place-items: center;
-    width: 32px;
-    height: 44px;
-    padding: 0;
-    border: 0;
-    border-radius: 8px;
-    background: transparent;
-    box-shadow: none;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .mobile-proof-gallery__dot span {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(226, 34, 25, .32);
-    box-shadow:
-      inset 0 0 0 1px #fff,
-      0 0 0 1px rgb(0 0 0 / 65%),
-      0 0 4px rgba(255, 255, 255, .28),
-      0 0 9px rgba(255, 255, 255, .12);
-  }
-
-  .mobile-proof-gallery__dot[aria-current="true"] span {
-    width: 8px;
-    height: 8px;
-    background: var(--coral);
-    box-shadow:
-      inset 0 0 0 1px #fff,
-      0 0 0 1px rgb(0 0 0 / 65%),
-      0 0 4px rgba(255, 255, 255, .28),
-      0 0 9px rgba(255, 255, 255, .12);
-  }
-
-  .mobile-proof-gallery__dot:focus-visible {
-    outline: 2px solid #FAFAF6;
-    outline-offset: -4px;
-    background: rgb(0 0 0 / 45%);
-  }
-
-  .mobile-proof-gallery__footer {
-    position: relative;
-    height: max(64px, 4rem);
-  }
-
-  .mobile-proof-gallery__brand {
-    position: absolute;
-    /* Fruehere Siegelueberlappung: zwei Drittel auf dem Foto,
-       ein Drittel unterhalb. Originalformat 210:180. */
-    bottom: calc(var(--proof-brand-width) * -2 / 7);
-    right: -16px;
-    z-index: 2;
-    display: block;
-    width: var(--proof-brand-width);
-    height: auto;
-    filter: drop-shadow(0 2px 2px rgb(0 0 0 / 40%));
-    pointer-events: none;
-  }
-
-  .mobile-proof-gallery__link {
-    position: absolute;
-    isolation: isolate;
-    top: 14px;
-    left: 50%;
-    z-index: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.625rem;
-    min-width: max(184px, 11.5em);
-    max-width: 100%;
-    height: max(44px, 2.75em);
-    padding: 0 1rem 0.125rem;
-    border: 0;
-    background: transparent;
-    color: rgba(244, 246, 240, .9);
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: 1rem;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.16;
-    letter-spacing: .025em;
-    text-transform: uppercase;
-    text-decoration: none;
-    white-space: nowrap;
-    transform: translateX(-50%);
-    transition: color .2s var(--ease);
-  }
-
-  .mobile-proof-gallery__link > span,
-  .mobile-proof-gallery__link-arrow {
-    position: relative;
-    z-index: 1;
-  }
-
-  .mobile-proof-gallery__link-frame,
-  .mobile-proof-gallery__link-flower,
-  .mobile-proof-gallery__link-arrow-chip {
-    display: none;
-  }
-
-  .mobile-proof-gallery__link-shape {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    pointer-events: none;
-  }
-
-  .mobile-proof-gallery__link-shape path {
-    fill: rgba(49, 82, 0, .1);
-    stroke: rgba(140, 198, 63, .27);
-    stroke-width: 1px;
-    stroke-linejoin: round;
-    transition: fill .2s var(--ease), stroke .2s var(--ease);
-  }
-
-  .mobile-proof-gallery__link::after {
-    content: none;
-  }
-
-  .mobile-proof-gallery__link:hover {
-    color: rgba(244, 246, 240, .96);
-  }
-
-  .mobile-proof-gallery__link:is(:hover, :focus-visible) .mobile-proof-gallery__link-shape path {
-    fill: rgba(49, 82, 0, .18);
-    stroke: rgba(140, 198, 63, .48);
-  }
-
-  .mobile-proof-gallery__link:is(:hover, :focus-visible)::after {
-    content: none;
-  }
-
-  .mobile-proof-gallery__link-arrow {
-    display: block;
-    flex: 0 0 auto;
-    width: 1.375rem;
-    height: auto;
-    object-fit: contain;
-    filter: saturate(.92) brightness(.94);
-    transform: none;
-    transition: transform .2s var(--ease);
-  }
-
-  .mobile-proof-gallery__link:is(:hover, :focus-visible) .mobile-proof-gallery__link-arrow {
-    transform: translate(2px, -1px);
-  }
-
-  .mobile-proof-gallery__link:focus-visible {
-    outline: 2px solid var(--home-focus);
-    outline-offset: 4px;
-  }
-
   /* Originaler CTA aus AP-186, jetzt nach der gesamten Einladung. */
+
   .mobile-proof-request {
     position: relative;
     isolation: isolate;
@@ -585,6 +614,7 @@
      Rand. #171916 ist der Seitengrund (index.html, Zeile 9). Der bisherige
      Dauerpuls entfaellt - er lief endlos und damit gegen WCAG 2.2.2; das
      Signal kommt jetzt einmalig ueber .is-pulsing (cta-signal.js). */
+
   .mobile-proof-request__arrow {
     position: relative;
     z-index: 1;
@@ -610,6 +640,7 @@
   /* Versatzrahmen: gleicher Umriss wie die Flaeche, 6px nach rechts unten,
      1.5px Linie (non-scaling-stroke im Markup). overflow: visible, damit die
      halbe Strichbreite an den Kanten nicht abgeschnitten wird. */
+
   .mobile-proof-request__frame {
     position: absolute;
     inset: 0;
@@ -631,6 +662,7 @@
      .85 und 1.08/1.8: bei 350 px Breite 14 px je Seite - innerhalb der 20 px
      Containerabstand - und 26 px nach oben und unten. Linear mit Zwischenstufe
      bei 45 %, sonst ist die Deckkraft nach einem Drittel schon weg. */
+
   .mobile-proof-request::before {
     content: "";
     position: absolute;
@@ -657,6 +689,7 @@
      Hover, wohin es geht. Gleicher Takt und gleiche Anzahl wie der Puls,
      danach steht er still (WCAG 2.2.2).
      AP-298: ein Durchlauf statt drei, auf Wunsch des Auftraggebers. */
+
   .mobile-proof-request.is-pulsing .mobile-proof-request__arrow :is(svg, img) {
     animation: mobile-proof-request-arrow 1.4s var(--ease) .2s 1;
   }
@@ -700,6 +733,7 @@
      spaeter. Auf dem iPhone wirkte die Bewegung dadurch mehrfach. .is-pressed
      setzt cta-signal.js am pointerdown und haelt es 200 ms; der Klick selbst
      wird nicht mehr angefasst. */
+
   .mobile-proof-request.is-pressed :is(.mobile-proof-request__shape, .mobile-proof-request__label, .mobile-proof-request__arrow) {
     transform: translate(6px, 6px);
   }
@@ -732,220 +766,133 @@
     }
   }
 
-  .mobile-proof-invitation {
-    max-width: 640px;
-    margin: 24px auto 0;
-    font: 400 1rem/1.4 var(--body);
-  }
-
-  .mobile-proof-invitation__copy {
-    max-width: 38ch;
-  }
-
-  .mobile-proof-invitation__text {
-    margin: 0;
-    color: var(--ink-2);
-    font: inherit;
-    overflow-wrap: anywhere;
-  }
-
-  .mobile-proof-invitation__text + .mobile-proof-invitation__text {
-    margin-top: 28px;
-  }
-
-  .mobile-proof-invitation__text strong {
-    display: block;
-    margin-bottom: 10px;
-    color: var(--ink);
-    font: 700 1.125rem/1.4 var(--display);
-  }
-
-  .mobile-proof-invitation__question--iphone,
-  .mobile-proof-invitation__answer-copy--iphone {
-    display: none;
-  }
-
-  .mobile-proof-invitation__response {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(28px, 7.5vw, 32px);
-    align-items: end;
-    gap: 8px;
-    width: min(100%, 34ch);
-    margin-left: auto;
-  }
-
-  .mobile-proof-invitation__answer {
-    display: block;
-    min-width: 0;
-    padding: 12px 14px 12px 18px;
-    border-right: 1px solid rgb(182 217 122 / 30%);
-    border-radius: 0 14px 14px 0;
-    background: linear-gradient(
-      90deg,
-      rgb(74 122 16 / 0%) 0%,
-      rgb(74 122 16 / 10%) 28%,
-      rgb(74 122 16 / 18%) 100%
-    );
-    color: var(--home-dark-accent);
-    font-weight: 500;
-    line-height: 1.4;
-    text-align: right;
-    text-wrap: pretty;
-  }
-
-  .mobile-proof-invitation__answer-line {
-    display: block;
-  }
-
-  .mobile-proof-invitation__answer-line + .mobile-proof-invitation__answer-line {
-    margin-top: .48em;
-  }
-
-  .mobile-proof-invitation__flower {
-    display: block;
-    align-self: end;
-    width: clamp(28px, 7.5vw, 32px);
-    max-width: none;
-    height: auto;
-    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 34%));
-    pointer-events: none;
-  }
-
   /* Der CTA landet mit ausreichend Abstand unter dem mobilen Header direkt am
      jetzt einzigen sichtbaren Kurzformular. */
+
   .home-theme-dark form[data-anf-form] {
     scroll-margin-top: calc(var(--mobile-header-h) + 16px);
   }
 }
 
-/* Der mobile Willkommenbereich bekommt auf den beiden abgestimmten
-   iPhone-Breiten mehr Ruhe zwischen Galerie, Einladung und Abschluss-CTA. */
+/* AP-504: Handy-Verfeinerungen der Bildfolge und Einladung, jetzt auf allen
+   Breiten (vorher nur bis 480px). Die Tablet-Varianten (--default-Texte,
+   alter Galeriepfeil) sind entfallen. */
+/* Unten 40px wie am Handy: Dort setzt privat-form.css (AP-353) den frueher hier
+   stehenden Wert von 96px ohnehin auf 40px; auf Tablets waeren die 96px sonst
+   erstmals sichtbar geworden. */
+.mobile-social-proof {
+  padding: 28px clamp(24px, 8.14vw, 36px) 40px;
+}
+
+.mobile-proof-gallery {
+  margin-top: 32px;
+}
+
+/* Kleine Galerievariante des Projekt-CTAs. Die bestehende 184 × 44 px
+   grosse Klickflaeche und ihre Position bleiben dabei unveraendert. */
+
+.mobile-proof-gallery__link {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) 40px;
+  column-gap: 4px;
+  width: 184px;
+  min-width: 184px;
+  height: 44px;
+  padding: 4px 7px;
+  color: #171916;
+  font-size: clamp(13px, 3.6vw, 14px);
+}
+
+.mobile-proof-gallery__link:hover {
+  color: #171916;
+}
+
+.mobile-proof-gallery__link-frame {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--home-lime);
+  stroke-width: 1.25px;
+  transform: translate(4px, 4px);
+  pointer-events: none;
+}
+
+.mobile-proof-gallery__link-shape path,
+.mobile-proof-gallery__link:is(:hover, :focus-visible) .mobile-proof-gallery__link-shape path {
+  fill: var(--home-lime);
+  stroke: none;
+}
+
+.mobile-proof-gallery__link-flower {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 20px;
+  height: 20px;
+  max-width: none;
+  object-fit: contain;
+  filter: none;
+}
+
+.mobile-proof-gallery__link-label {
+  min-width: 0;
+  text-align: center;
+}
+
+.mobile-proof-gallery__link-arrow-chip {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 28px;
+  border-radius: 999px;
+  background: #171916;
+  box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .16);
+  transition: transform .12s var(--ease);
+}
+
+.mobile-proof-gallery__link-arrow-chip img {
+  display: block;
+  width: 30px;
+  height: auto;
+  object-fit: contain;
+  transition: transform .2s var(--ease);
+}
+
+.mobile-proof-gallery__link:is(:hover, :focus-visible) .mobile-proof-gallery__link-arrow-chip img {
+  transform: translateX(2px);
+}
+
+.mobile-proof-gallery__link:active :is( .mobile-proof-gallery__link-shape, .mobile-proof-gallery__link-flower, .mobile-proof-gallery__link-label, .mobile-proof-gallery__link-arrow-chip ) {
+  transform: translate(4px, 4px);
+}
+
+.mobile-proof-invitation {
+  margin-top: 56px;
+}
+
+.mobile-proof-invitation__text + .mobile-proof-invitation__text {
+  margin-top: 48px;
+}
+
+.mobile-proof-invitation__question--iphone,
+.mobile-proof-invitation__answer-copy--iphone,
+.mobile-proof-invitation__question-line {
+  display: block;
+}
+
+.mobile-proof-invitation__question-line + .mobile-proof-invitation__question-line {
+  margin-top: .18em;
+}
+
 @media (max-width: 480px) {
-  .mobile-social-proof {
-    padding: 28px clamp(24px, 8.14vw, 36px) 96px;
-  }
-
-  .mobile-proof-gallery {
-    margin-top: 32px;
-  }
-
-  /* Kleine Galerievariante des Projekt-CTAs. Die bestehende 184 × 44 px
-     grosse Klickflaeche und ihre Position bleiben dabei unveraendert. */
-  .mobile-proof-gallery__link {
-    display: grid;
-    grid-template-columns: 20px minmax(0, 1fr) 40px;
-    column-gap: 4px;
-    width: 184px;
-    min-width: 184px;
-    height: 44px;
-    padding: 4px 7px;
-    color: #171916;
-    font-size: clamp(13px, 3.6vw, 14px);
-  }
-
-  .mobile-proof-gallery__link:hover {
-    color: #171916;
-  }
-
-  .mobile-proof-gallery__link-frame {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    fill: none;
-    stroke: var(--home-lime);
-    stroke-width: 1.25px;
-    transform: translate(4px, 4px);
-    pointer-events: none;
-  }
-
-  .mobile-proof-gallery__link-shape path,
-  .mobile-proof-gallery__link:is(:hover, :focus-visible) .mobile-proof-gallery__link-shape path {
-    fill: var(--home-lime);
-    stroke: none;
-  }
-
-  .mobile-proof-gallery__link-flower {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: 20px;
-    height: 20px;
-    max-width: none;
-    object-fit: contain;
-    filter: none;
-  }
-
-  .mobile-proof-gallery__link-label {
-    min-width: 0;
-    text-align: center;
-  }
-
-  .mobile-proof-gallery__link-arrow--default {
-    display: none;
-  }
-
-  .mobile-proof-gallery__link-arrow-chip {
-    position: relative;
-    z-index: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 28px;
-    border-radius: 999px;
-    background: #171916;
-    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .16);
-    transition: transform .12s var(--ease);
-  }
-
-  .mobile-proof-gallery__link-arrow-chip img {
-    display: block;
-    width: 30px;
-    height: auto;
-    object-fit: contain;
-    transition: transform .2s var(--ease);
-  }
-
-  .mobile-proof-gallery__link:is(:hover, :focus-visible) .mobile-proof-gallery__link-arrow-chip img {
-    transform: translateX(2px);
-  }
-
-  .mobile-proof-gallery__link:active :is(
-    .mobile-proof-gallery__link-shape,
-    .mobile-proof-gallery__link-flower,
-    .mobile-proof-gallery__link-label,
-    .mobile-proof-gallery__link-arrow-chip
-  ) {
-    transform: translate(4px, 4px);
-  }
-
-  .mobile-proof-invitation {
-    margin-top: 56px;
-  }
-
-  .mobile-proof-invitation__text + .mobile-proof-invitation__text {
-    margin-top: 48px;
-  }
-
-  .mobile-proof-invitation__question--default,
-  .mobile-proof-invitation__answer-copy--default {
-    display: none;
-  }
-
-  .mobile-proof-invitation__question--iphone,
-  .mobile-proof-invitation__answer-copy--iphone,
-  .mobile-proof-invitation__question-line {
-    display: block;
-  }
-
-  .mobile-proof-invitation__question-line + .mobile-proof-invitation__question-line {
-    margin-top: .18em;
-  }
-
   .mobile-proof-request {
     margin-top: 52px;
   }
@@ -959,8 +906,10 @@
      Zeitstrahls - sie wandert dort in den CTA und erscheint erst mit
      .is-process-complete. Ausserhalb des Ablaufs hat sie keinen Anlass.
 
-     Nur bis 480px, wie der Ablauf-CTA: ab 481px bleibt es bei der bisherigen
-     Darstellung. */
+     Hier nur bis 480px, wie der Ablauf-CTA; das gilt fuer #leistungen und
+     #ablauf. Die Galerie-Einladung (#social-proof) traegt diese Gestaltung seit
+     AP-504 auch ab 481px, als begrenzte Kopie in cta-family-home.css. */
+
   .mobile-proof-request__label {
     font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
     font-size: clamp(.9rem, 4.25vw, 1.0625rem);
@@ -980,7 +929,9 @@
   }
 
   /* Das gezeichnete Motiv ersetzt das SVG-Zeichen. Beide bleiben im Markup:
-     ueber 480px und ohne Bilder ist das SVG weiter das sichtbare Zeichen. */
+     ueber 480px und ohne Bilder ist das SVG weiter das sichtbare Zeichen
+     (ausser in #social-proof, siehe cta-family-home.css, AP-504). */
+
   .mobile-proof-request__arrow svg {
     display: none;
   }
@@ -990,5 +941,97 @@
     width: 46px;
     height: auto;
     object-fit: contain;
+  }
+}
+
+
+/* AP-504: Desktop-Anordnung der Galerie-Einladung. Gleiche Inhalte wie am Handy:
+   Die drei Fotos stehen nebeneinander statt als Karussell (das Skript startet
+   das Karussell nur bis 900px), "Zur Galerie" mittig darunter, dann die Einladung
+   zweispaltig - Frage links, Antwort rechts - und der CTA unter der Antwort.
+   Die hidden-Attribute der Folien 2 und 3 und der Punkte stammen aus dem Markup
+   fuer das Karussell und werden hier uebersteuert; Karussell-Klone (nach einem
+   Wechsel von unter 900px) bleiben unsichtbar. */
+@media (min-width: 901px) {
+  /* Oben im Endton des Hero-Verlaufs (--bg-hero), damit Willkommen und Galerie
+     ohne Kante ineinander uebergehen; nach unten in den Seitengrund. */
+  .mobile-social-proof {
+    padding: clamp(24px, 3vw, 48px) 0 clamp(48px, 5vw, 72px);
+    background: linear-gradient(180deg, var(--bg-hero), transparent);
+  }
+
+  .mobile-proof-gallery,
+  .mobile-proof-invitation {
+    width: min(100% - calc(var(--gutter) * 2), var(--container));
+    max-width: none;
+    margin-inline: auto;
+  }
+
+  .mobile-proof-gallery {
+    --proof-brand-width: clamp(5rem, 6vw, 6.25rem);
+  }
+
+  .mobile-proof-gallery__frame {
+    overflow: visible;
+    border-radius: 0;
+  }
+
+  .mobile-proof-gallery__track,
+  .mobile-proof-gallery.is-ready .mobile-proof-gallery__track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 28px);
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .mobile-proof-gallery__track > :not([data-proof-slide]) {
+    display: none;
+  }
+
+  .mobile-proof-gallery__slide,
+  .mobile-proof-gallery__slide[hidden] {
+    display: block;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 22px 38px -24px rgb(0 0 0 / 88%);
+  }
+
+  .mobile-proof-gallery__slide img {
+    object-fit: cover;
+  }
+
+  .mobile-proof-gallery__dots,
+  .mobile-proof-gallery__dots[hidden] {
+    display: none;
+  }
+
+  .mobile-proof-gallery__footer {
+    margin-top: clamp(16px, 2vw, 24px);
+  }
+
+  .mobile-proof-invitation {
+    margin-top: clamp(56px, 6vw, 88px);
+  }
+
+  .mobile-proof-invitation__copy {
+    max-width: none;
+  }
+
+  .mobile-proof-invitation__text {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    align-items: center;
+    column-gap: clamp(40px, 5vw, 80px);
+  }
+
+  .mobile-proof-invitation__text strong {
+    margin: 0;
+    font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+  }
+
+  .mobile-proof-invitation__response {
+    width: min(100%, 34rem);
+    margin: 0 0 0 auto;
   }
 }

@@ -1665,6 +1665,87 @@ denselben Commit.
 
 Die 480er-Blöcke im Bestand stellt AP-502 um.
 
+**AP-502 entfällt als eigenes Paket.** Geplant war, alle 480-px-Blöcke der drei nur von
+der Startseite geladenen Stylesheets auf 900 px umzustellen. Die Prüfung vor dem Bau hat
+gezeigt, dass diese Blöcke keine sauberen Sektionsgrenzen sind:
+
+- `home-dark.css` mischt in ihnen Hero-Stufen (Teil einer Leiter 860 → … → 480 → 430),
+  Kopf-Morph, Willkommen, die geparkte Gewerbe-Tür und Über uns.
+- Die fließende Wurzelschrift (19,1 px zwischen 481 und 900 px) hätte außerdem die
+  Sektionen in den geteilten Stylesheets aufgebläht, die auf Tablets noch im
+  Desktop-Layout stehen.
+
+Deshalb stellt jedes Sektionspaket nur die Weichen seiner eigenen Sektion um. Die
+Wurzelschrift bleibt vorerst bei ≤ 480 px.
+
+**AP-503 — Willkommenbereich auf allen Breiten.** Die Ursache dafür, dass der Desktop
+„Willkommen bei" mit Wortmarke, Foto, Leitsatz, Eckdaten und Qualifikationen nicht zeigte,
+war eine einzige Regel: Eine immer geltende `display:none`-Regel in `home-dark.css`
+verbarg `.gate-welcome--iphone`, und nur der 480-px-Block schaltete ihn wieder ein. Der
+Desktop behielt dafür `.mr-willkommen`. Das war seit `b4188bde` (05.09.2026) so gebaut,
+zuerst nur für 390–404 px; AP-239 dehnte es auf 480 px aus.
+
+Was sich ändert:
+- **Gestaltung ohne Media Query:** Die Gestaltung des Bereichs (`home-dark.css`) und der
+  Eckdaten-Signatur (`mobile-social-proof.css`) steht jetzt ohne Media Query. Ab 901 px
+  ist die Wurzelschrift 16 px wie beim iPhone mit 402 px; die rem-Werte ergeben dort
+  dieselben Maße.
+- **Desktop ab 901 px:**
+  - Kopfzeile über beide Spalten, darunter Foto links und Leitsatz rechts
+  - die vier Eckdaten als Band
+  - die vier Qualifikationen in einer Reihe
+  - Detailfläche 40 rem, Zertifikat 22 rem
+- **Tablets (481–900 px)** zeigen die Handy-Komposition als Mittelspalte von 34 rem.
+- **Entfernt:**
+  - `.mr-willkommen` samt Gestaltung
+  - drei Absätze (`.gate-welcome-feeling/-copy/-outro`), die auch am Handy verborgen waren
+- **Bildgröße:** Das `sizes` des Fotos fiel am Desktop auf 1 px zurück und ist jetzt für
+  alle Breiten gesetzt.
+
+Gemessen in Chrome:
+- 402 und 480 px pixelgleich zum Stand vorher (11 von 11 Scheiben).
+- Der Bereich zeigt bei 402 und 1440 px dieselben 23 Texte und Bilder in derselben
+  Reihenfolge.
+- Kein seitlicher Überlauf von 600 bis 1920 px.
+- Die Qualifikationen öffnen sich am Desktop per Klick.
+
+Was damit entfällt und was offen ist, steht in `docs/offene-punkte.md`.
+
+**AP-504 — Galerie-Einladung auf allen Breiten.** Die zweite Ursache: Die Bildfolge mit
+„Zur Galerie", „Keine Zeit für den Garten?" und „Gartenwunsch besprechen"
+(`#social-proof`) war durch `.mobile-social-proof { display: none }` ohne Media Query
+verborgen. Eingeschaltet war sie nur bis 900 px. Seit AP-215 gab es am Desktop an dieser
+Stelle keine Fassung mehr, dort stand also gar nichts.
+
+- **Gestaltung ohne Media Query:** Die Gestaltung der sektionseigenen Bausteine
+  (`.mobile-proof-gallery*`, `.mobile-proof-invitation*`) steht jetzt ohne Media Query.
+  Das gilt für die 900-px- wie für die 480-px-Stufe.
+- **Desktop ab 901 px:**
+  - die drei Fotos nebeneinander statt als Karussell
+  - „Zur Galerie" mittig darunter
+  - die Einladung zweispaltig
+  - Willkommen und Galerie gehen ohne Trennlinie ineinander über
+- **Knöpfe:**
+  - `.mobile-proof-request` kommt auch in `#leistungen` und `#ablauf` vor und bleibt
+    deshalb in den Handy-Blöcken.
+  - Die Gestaltung beider Knöpfe dieser Sektion steht ab 481 px als auf
+    `.mobile-social-proof` begrenzte Kopie in `cta-family-home.css`.
+  - Vorläufig: AP-511 führt die Knopf-Familie zusammen und löst die Kopie auf.
+- **Tablet-Fassung entfernt:** Kennzahlenliste, `--default`-Texte und alter Galeriepfeil.
+  Details stehen in `docs/offene-punkte.md`.
+- **Skript:** `mobile-social-proof-gallery.js` macht beim Wechsel über 900 px alle drei
+  Bilder für Screenreader lesbar.
+
+Gemessen in Chrome:
+- 402 und 480 px pixelgleich zum Stand vor AP-503 (11 von 11 Scheiben).
+- Die berechneten Stile aller 23 Knopf-Elemente sind am Handy und bei 768 und 1440 px
+  gleich. Einzige Ausnahme: die Beschriftung von „Gartenwunsch besprechen" misst am Handy
+  bei 402 px 15,7 statt 16 px (fließende Schrift mit Obergrenze 1 rem).
+- „Gartenwunsch besprechen" springt am Desktop zum Formular.
+- Drehen 820 → 1180 → 820 px ohne sichtbare Klone und ohne versteckte Bilder in der
+  festen Reihe.
+- Kein seitlicher Überlauf von 481 bis 1920 px.
+
 **AP-516 — Kontaktseite am Desktop geordnet (30.09.2026).** Die Handy-Fassung (bis 600 px,
 AP-413 bis AP-449) war fertig, der Desktop wirkte ungeordnet. Die Gestaltung war nicht das
 Problem, die Anordnung schon:

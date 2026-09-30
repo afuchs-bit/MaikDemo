@@ -2262,6 +2262,55 @@ Kontakt statt in `clamp(34px … 56px)`.
   Pixeldichte bleibt sie; eine größere Vorlage behebt das weiterhin ohne Änderung an
   Markup oder CSS.
 
+## AP-503 — Willkommenbereich jetzt auch am Desktop
+
+### Was damit von der Seite verschwindet
+
+Der Desktop zeigte bis AP-503 statt des Willkommenbereichs die ältere Sektion
+`.mr-willkommen`. Mit ihr entfallen zwei Sätze, die es nur am Desktop gab und die am
+Handy nie standen:
+
+- „Willkommen bei Maik Rohdich, Seit über 25 Jahren legen wir Gärten an, bauen Terrassen,
+  Teiche und halten Außenanlagen in Form – privat wie gewerblich."
+- „Im Mittelpunkt steht dabei immer ein Ziel: die termingerechte Herstellung einer
+  Gartenanlage, die zu Ihnen …" mit der Unterschrift „Maik Rohdich".
+
+Das folgt der Entscheidung vom 15.09.2026: Die Handy-Fassung ist maßgeblich,
+Desktop-only-Texte entfallen.
+
+### Weiter offen
+
+- **„Zum Öffnen antippen"** unter den Qualifikationen steht jetzt auch am Desktop, wo man
+  klickt statt tippt. Der Wortlaut ist unverändert übernommen; eine Desktop-Fassung
+  (etwa „Zum Öffnen anklicken") nur auf Ansage des Auftraggebers.
+
+## AP-504 — Galerie-Einladung jetzt auch am Desktop
+
+### Was damit von der Seite verschwindet
+
+Zwischen 481 und 900 px zeigte die Galerie-Einladung eine eigene Tablet-Fassung. Sie
+entfällt; Tablets zeigen jetzt die Handy-Fassung. Damit verschwinden Aussagen, die es nur
+auf Tablets gab:
+
+- die Kennzahlenliste „Über 25 Jahre Erfahrung – Für einen Garten, der zu Ihnen und Ihrem
+  Grundstück passt", „100 % Chef am Telefon und im Garten – Maik und sein Fachteam sind
+  persönlich vor Ort für Sie da" und „8000 m² Gartenfläche gestaltet – Für über 400
+  zufriedene Kunden";
+- die längere Frage „Bleibt im Alltag, vor einem besonderen Anlass oder während Ihres
+  Urlaubs …" und die längere Antwort („Maiks Antwort: …").
+
+„Über 400 zufriedene Kunden" stand dort neben „1000+ Kunden haben uns vertraut" im
+Willkommenbereich. Dieser Widerspruch ist damit ausgeräumt.
+
+### Nicht mehr eingebundene Dateien
+
+Diese Dateien sind nirgends mehr eingebunden. Sie bleiben liegen, bis der Auftraggeber über
+das Löschen entscheidet:
+
+- `assets/img/mobile-social-proof/kpi-25plus.webp`, `kpi-100prozent.webp`,
+  `kpi-8000qm.webp`
+- `assets/img/icons/rohdich-gallery-arrow.png` (alter Galeriepfeil der Tablet-Fassung)
+
 ## AP-516 — Kontaktseite: Footer im Tablet-Band
 
 Die Kontaktseite zeigt seit AP-516 zwischen 601 und 900 px die Handy-Komposition. Der Footer
