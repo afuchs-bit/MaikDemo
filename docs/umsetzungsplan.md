@@ -1861,3 +1861,35 @@ Gemessen bei 901, 1024, 1050, 1051, 1280, 1440 und 1920 px, jeweils in beiden An
 - Immer ist nur eine Ansicht sichtbar, es gibt keinen Überlauf.
 - Lightbox und Umschalter funktionieren.
 - Bis 900 px (320, 402, 600, 768, 900) ist die Seite in beiden Ansichten pixelgleich.
+
+**AP-522 — Über-uns-Seite am Desktop geordnet (30.09.2026).** Befund bei 1440 px:
+- „Das Team hinter dem Betrieb“ stand mittig über einem linksbündigen Text. Das Zitat
+  daneben war rechnerisch mittig, wirkte aber versetzt.
+- In „Ehrlich beraten, sauber gebaut“ waren die Absätze 416, 587 und 748 px breit.
+- Das Foto begann 46 px unter der Überschrift und endete 58 px unter der grünen Kachel.
+- „Alles aus einer Hand“ hing unter dem Text in der linken Spalte.
+- Vor „Was daraus wird“ lagen 192 px statt 96 px wie an der anderen Naht.
+- Zwischen 861 und 900 px zeigte die Seite die Desktop-Fassung, der Umschaltpunkt lag
+  bei 860 px.
+
+Entscheidungen des Auftraggebers:
+1. **Team und Zitat als zwei bündige Spalten.** Überschrift und Text stehen
+   linksbündig, das Zitat mittig zum Textblock.
+2. **Ehrlich beraten:** Die Überschrift bleibt mittig, das Foto steht rechts.
+
+Umsetzung in `ueber-uns.css`:
+- Umschaltpunkt 860 → 900 px.
+- Ab 901 px die linksbündige Team-Überschrift.
+- Beide Absätze so breit wie die Zusage-Kachel.
+- Das Foto liegt absolut in der Figur und reicht von der Überschrift bis zur Kachel.
+  So bestimmt allein der Text die Zeilenhöhe. Mindesthöhe 240 px.
+- „Alles aus einer Hand“ läuft über die volle Breite.
+- Die zweite Naht ist halbiert wie in AP-460.
+
+Gemessen bei 901, 1024, 1280, 1440 und 1920 px:
+- Überschrift und Text beginnen auf derselben Kante.
+- Das Zitat steht auf 0 px mittig zum Textblock.
+- Ober- und Unterkante des Fotos liegen auf 0 px mit Überschrift und Kachel.
+- Absätze und Kachel sind gleich breit.
+- Beide Nähte sind gleich (96 px bei 1440 px), kein Überlauf.
+- Bis 860 px ist die Seite pixelgleich. 880 und 900 px zeigen die Handy-Fassung.
