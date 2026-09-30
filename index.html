@@ -39,7 +39,7 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="assets/css/header-home.css?v=20260921g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260930d" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260930e" />
 <link rel="stylesheet" href="assets/css/footer-kontakt.css?v=20260930a" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260930f" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20260927c" />
@@ -550,7 +550,13 @@ html.home-theme-dark body { background-color: #171916; }
         </button>
       </div>
 
-      <p class="gate-welcome-qualification-hint" data-qualification-hint>Zum Öffnen antippen</p>
+      <!-- AP-525: Am Rechner wird geklickt, nicht getippt. Beide Saetze stehen im
+           Markup, home-dark.css zeigt bis 900px "antippen" und ab 901px "anklicken".
+           Jeweils der ganze Satz statt nur des Verbs: Ein Elementwechsel mitten in
+           der Zeile verschob die Kantenglaettung am Handy messbar (34 Pixel).
+           Das jeweils andere steht auf display:none und ist damit auch fuer
+           Screenreader nicht vorhanden. -->
+      <p class="gate-welcome-qualification-hint" data-qualification-hint><span class="gate-welcome-qualification-hint-verb gate-welcome-qualification-hint-verb--touch">Zum Öffnen antippen</span><span class="gate-welcome-qualification-hint-verb gate-welcome-qualification-hint-verb--click">Zum Öffnen anklicken</span></p>
 
       <div class="gate-welcome-qualification-details" data-qualification-details hidden>
         <div class="gate-welcome-qualification-panel" id="gate-qualification-master-detail" role="region" aria-labelledby="gate-qualification-master" hidden>

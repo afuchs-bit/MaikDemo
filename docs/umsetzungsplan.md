@@ -1966,3 +1966,12 @@ Gemessen bei 901, 1024, 1280, 1440 und 1920 px:
 - Beide stehen auf 0 px mittig und sind 640 px breit, ohne Überlauf.
 - Die Erklärung öffnet in voller Kastenbreite, das Zertifikat bleibt 352 px breit.
 - Bis 900 px (320, 402, 480, 768, 900) ist die Startseite pixelgleich.
+
+**AP-525 — Hinweis „Zum Öffnen anklicken“ am Desktop (30.09.2026).** Unter den
+Qualifikationen der Startseite steht auf Ansage des Auftraggebers ab 901 px „Zum Öffnen
+anklicken“, bis 900 px weiter „Zum Öffnen antippen“.
+- **Markup:** Beide Sätze stehen im Markup, `home-dark.css` blendet je einen aus. Es ist
+  jeweils der ganze Satz, nicht nur das Verb: Ein Elementwechsel mitten in der Zeile
+  verschob am Handy die Kantenglättung um 34 Pixel.
+- **Gemessen:** Der Ausschnitt bei 402 und 900 px ist pixelgleich. Der Hinweis verschwindet
+  beim Öffnen einer Erklärung weiter (`mobile-qualifications.js`).

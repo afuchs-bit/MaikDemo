@@ -1793,6 +1793,22 @@ html.home-theme-dark .gate-welcome-qualification-hint[hidden] {
   display: none;
 }
 
+/* AP-525: "antippen" auf Handy und Tablet, "anklicken" am Rechner - Markup und
+   Begruendung in index.html. */
+html.home-theme-dark .gate-welcome-qualification-hint-verb--click {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  html.home-theme-dark .gate-welcome-qualification-hint-verb--touch {
+    display: none;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-hint-verb--click {
+    display: inline;
+  }
+}
+
 html.home-theme-dark .gate-welcome-qualification-details {
   position: relative;
   margin: 0.875rem 0 0;
