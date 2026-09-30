@@ -560,6 +560,73 @@ body.ueber-page {
   color: var(--ink);
 }
 
+/* --- Mittelachse am Rechner (AP-530, 30.09.2026) --------------------------
+   Auf Wunsch des Auftraggebers: Startbild und "Das Team" stehen ab 901px auf
+   einer Achse untereinander - Titel, Foto, Ueberschrift, Text, Steg, Zitat.
+   Bis hierher stand das Foto 760px breit mittig und darunter Text und Zitat
+   zweispaltig mit senkrechtem Steg; direkt danach folgt mit der
+   Betriebssektion ein zweites Text-neben-Foto. Jetzt ist die Betriebssektion
+   das erste zweispaltige Element der Seite.
+
+   Foto 440px: Die Datei ueber-baumarbeiten ist 900px breit. Bei 760px
+   brauchte ein Retina-Bildschirm 1.520 Bildpunkte, es kamen 900 - das Foto
+   wurde um 1,69 hochgerechnet und war unscharf. 900 / 440 = 2,05 -> scharf.
+   Dieselbe Breite wie das Hebeaktion-Foto der Betriebssektion.
+
+   Textmass 600px: bei 17px Inter rund 70 Zeichen je Zeile, der Absatz laeuft
+   auf 4 Zeilen, text-wrap: balance gleicht sie an. Steg und Zitat nehmen
+   dieselbe Spalte.
+
+   Die Ueberschrift steht wieder mittig. AP-522 hatte sie am Rechner links
+   gesetzt, weil sie dort neben dem Zitat in einer Textspalte stand; die
+   Spalte gibt es nicht mehr. Unter 901px aendert sich nichts - die
+   Handy-Fassung hat schon diesen Aufbau.
+
+   Markup unveraendert bis auf sizes am Startbild. Der senkrechte Steg
+   (.ueber-inhaber__steg) wird waagerecht umgelegt, die Handy-Bluete
+   (.ueber-inhaber__bluete-mobil) bleibt am Rechner aus. */
+@media (min-width: 901px) {
+  .ueber-hero__foto { width: 440px; }
+
+  /* Foto-Unterkante bis Ueberschrift: statt --space-section (96px bei 1440px)
+     clamp(44px, 4.4vw, 60px) - Foto und Text gehoeren jetzt zusammen. Das
+     untere Polster (AP-460) bleibt. */
+  .ueber-inhaber { padding-top: clamp(44px, 4.4vw, 60px); }
+
+  .ueber-inhaber__raster {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 600px;
+    column-gap: 0;
+  }
+
+  .ueber-inhaber__gross { text-align: center; }
+
+  .ueber-inhaber__text {
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  /* Der Steg liegt waagerecht: 1px-Linie ueber die Spaltenbreite mit einer
+     128px-Luecke in der Mitte, darin die Bluete (72px) wie bisher. */
+  .ueber-inhaber__steg {
+    height: 72px;
+    margin: clamp(28px, 3vw, 40px) 0 14px;
+    background: linear-gradient(90deg,
+      var(--line) 0 calc(50% - 64px),
+      transparent calc(50% - 64px) calc(50% + 64px),
+      var(--line) calc(50% + 64px) 100%) center / 100% 1px no-repeat;
+  }
+
+  .ueber-inhaber__blume { padding: 0; }
+
+  .ueber-inhaber__zitat { text-align: center; }
+
+  /* 14px statt 28px: Zitat und Signatur stehen jetzt mittig untereinander
+     und lesen sich als ein Block. !important, weil die Grundregel es traegt. */
+  .ueber-inhaber__name { margin-top: 14px !important; }
+}
+
+
 /* --- Der Betrieb --------------------------------------------------------- */
 
 /* AP-411: Drei Kinder statt zwei. Im Quelltext steht das Foto zwischen den
