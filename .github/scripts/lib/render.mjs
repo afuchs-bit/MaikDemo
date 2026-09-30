@@ -1377,7 +1377,7 @@ export async function renderLeistungPage(opts) {
         : '',
       mobileContentSection: lpv2ContentSection(presented, base), gallerySection: lpv2GallerySection(presented, base),
       galleryGridScript: presented.galleryVariant === 'grid-teaser'
-        ? `<script src="${base}assets/js/leistung-gallery-grid.js?v=20260925a1" defer></script>\n`
+        ? `<script src="${base}assets/js/leistung-gallery-grid.js?v=20260930a" defer></script>\n`
         : '',
       processSection,
       faqVariantClass: presented.faqVariant === 'homepage' ? ' lpv2-faq--homepage' : '',

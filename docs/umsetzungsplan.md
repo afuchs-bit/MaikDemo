@@ -2113,3 +2113,45 @@ anklicken“, bis 900 px weiter „Zum Öffnen antippen“.
   verschob am Handy die Kantenglättung um 34 Pixel.
 - **Gemessen:** Der Ausschnitt bei 402 und 900 px ist pixelgleich. Der Hinweis verschwindet
   beim Öffnen einer Erklärung weiter (`mobile-qualifications.js`).
+
+**AP-512 — Leistungsseiten am Desktop: die Handy-Seite als Mittelspalte (30.09.2026).**
+Ausgangslage: Die 37 Leistungsseiten (Vorlage `leistung-v2.html`) zeigten ab 481 px eine
+eigene Textfassung. Es gab kein Foto, keine Galerie und keine Ergänzungen, dafür die
+nummerierten Abschnitte „01/03“. Die fertige Handy-Fassung stand in `leistung-mobile.css`
+hinter `max-width: 480px`.
+
+Entscheidungen des Auftraggebers:
+1. **Am Desktop gilt die Handy-Seite als Mittelspalte:** 32rem mit `zoom: 1.25`, sichtbar
+   640 px.
+2. **Bis 900 px gilt die Handy-Seite**, zwischen 481 und 900 px mittig auf 34rem.
+
+Umsetzung in `leistung-mobile.css`:
+- **Handy-Block:** Er gilt auf allen Breiten (`@media all`). Der Block
+  „Desktop-Kompatibilität“ ist entfallen.
+- **Spalte:** Ab 481 px ist `.lpv2-main` eine Spalte mit `container-type`. Die ungedeckelten
+  `vw`-Maße (Galeriefenster, Bildkarussell) rechnen dort mit `cqw`.
+- **Kopf und Footer:** Sie bleiben ab 481 px, wie sie waren. Schrift und Farbe des
+  Handy-Blocks gelten nur für die Spalte; der Container-Innenabstand, die Maße von
+  `.header-inner` und die Footer-Oberkante sind zurückgesetzt.
+- **Begrenzte Kopie:** 121 Handy-Regeln aus `styles.css`, `privat-form.css`, `anfrage.css`
+  und `cta-family.css` für Anfrageknöpfe, Kontakt, Formular und Ergänzungen, plus eine
+  Variable.
+  - Erfasst wurden sie maschinell bei 480 px über vier Seiten.
+  - Jede gilt ab ihrer Grenze + 1 px, in der Reihenfolge der Quelle, `vw` als `cqw`.
+  - Sie steht mit `:where(.lpv2-main)` vor dem Handy-Block, damit die Kaskade der des
+    Handys entspricht.
+- **Galerie:** `leistung-gallery-grid.js` rechnet unter Zoom mit `currentCSSZoom`. Sonst
+  sprang das Galeriefenster beim Aufklappen.
+
+`mobileCssVersion` steht in allen 37 Inhaltsdateien auf `20260930c`. Der Build hat pro Seite
+nur die Versionszeilen geändert.
+
+Gemessen:
+- Bis 480 px sind Gartenpflege, Balkonkasten und Außenanlagenpflege bei 320, 402 und 480 px
+  pixelgleich. Eine Seite hat zwei Render-Zustände; verglichen wurde gegen frische
+  Referenzen.
+- Kopf und Footer sind bei 600, 900, 1024 und 1440 px in den berechneten Stilen
+  unverändert.
+- Die Spalte weicht vom Handy nur in breitenabhängigen Maßen ab.
+- Galerie, Fragen und der Knopf zum Kontakt funktionieren, die Konsole ist fehlerfrei.
+- Die Sturmnotdienst-Seite (alte Vorlage) ist unverändert.

@@ -2465,3 +2465,19 @@ Gefunden beim Test in Chrome, gleich in den Ständen vor AP-507. Für die Pakete
   480 px, auch für die Leistungsseiten) und in `home-dark.css` (ab 481 px, nur Startseite).
   Bei einer Änderung beide Stellen anpassen, bis die Leistungsseiten-Vorlage (AP-512–514)
   eigene Überschriften-Regeln hat.
+
+## AP-512 — Leistungsseiten: Kopie geteilter Handy-Regeln pflegen
+
+`leistung-mobile.css` enthält seit AP-512 eine auf `.lpv2-main` begrenzte Kopie von 121
+Handy-Regeln aus `styles.css`, `privat-form.css`, `anfrage.css` und `cta-family.css`, dazu
+eine Variable. Damit tragen Anfrageknöpfe, Kontakt, Formular und Ergänzungen auch in der
+Desktop-Spalte ihre Handy-Gestaltung.
+
+Ändert sich eine dieser Quellregeln, zieht die Kopie nicht von selbst nach. Sie muss neu
+erfasst werden, wie in H.10 unter AP-512 beschrieben: im echten Chrome bei 480 px die
+Regeln aus `max-width`-Blöcken, die im Hauptteil greifen. Der Knopf-Teil geht in AP-511
+(Knopf-Familie am Desktop) auf.
+
+Die in H.10 vorgesehenen AP-513 und AP-514 („Leistungsseiten-Vorlage“) sind damit
+gegenstandslos. Die Seiten bleiben am Desktop bewusst eine Mittelspalte, das hat der
+Auftraggeber so entschieden.
