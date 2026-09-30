@@ -1949,8 +1949,14 @@ html.home-theme-dark .gate-welcome-qualification-fallback {
    beide Spalten, darunter Foto links und Leitsatz rechts, die Eckdaten als Band
    und die vier Qualifikationen in einer Reihe. Der Bereich liegt in
    .hero--gate-content, das ab 901px overflow:hidden traegt (styles.css) - daher
-   keine feste Hoehe, der untere Rand haelt die Schatten innerhalb. */
+   keine feste Hoehe; dessen unterer Innenabstand (44px) haelt die Schatten. */
 @media (min-width: 901px) {
+  /* AP-504: Auf den Willkommenbereich folgt jetzt die Galerie-Einladung. Wie am
+     Handy gehen beide ohne Trennlinie ineinander ueber (Handy: Zeile 1444). */
+  html.home-theme-dark .home-hero-stack {
+    border-bottom: 0;
+  }
+
   html.home-theme-dark .gate-welcome--iphone {
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
@@ -1962,7 +1968,7 @@ html.home-theme-dark .gate-welcome-qualification-fallback {
     align-items: center;
     column-gap: clamp(40px, 5vw, 80px);
     width: min(100% - calc(var(--gutter) * 2), var(--container));
-    margin: clamp(56px, 6vw, 96px) auto clamp(64px, 7vw, 112px);
+    margin: clamp(56px, 6vw, 96px) auto 0;
   }
 
   html.home-theme-dark .gate-welcome-kicker {

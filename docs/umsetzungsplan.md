@@ -1711,3 +1711,38 @@ Gemessen in Chrome:
 
 Was damit entfällt und was offen ist, steht in `docs/offene-punkte.md`.
 
+**AP-504 — Galerie-Einladung auf allen Breiten.** Die zweite Ursache: Die Bildfolge mit
+„Zur Galerie", „Keine Zeit für den Garten?" und „Gartenwunsch besprechen"
+(`#social-proof`) war durch `.mobile-social-proof { display: none }` ohne Media Query
+verborgen. Eingeschaltet war sie nur bis 900 px. Seit AP-215 gab es am Desktop an dieser
+Stelle keine Fassung mehr, dort stand also gar nichts.
+
+- **Gestaltung ohne Media Query:** Die Gestaltung der sektionseigenen Bausteine
+  (`.mobile-proof-gallery*`, `.mobile-proof-invitation*`) steht jetzt ohne Media Query.
+  Das gilt für die 900-px- wie für die 480-px-Stufe.
+- **Desktop ab 901 px:**
+  - die drei Fotos nebeneinander statt als Karussell
+  - „Zur Galerie" mittig darunter
+  - die Einladung zweispaltig
+  - Willkommen und Galerie gehen ohne Trennlinie ineinander über
+- **Knöpfe:**
+  - `.mobile-proof-request` kommt auch in `#leistungen` und `#ablauf` vor und bleibt
+    deshalb in den Handy-Blöcken.
+  - Die Gestaltung beider Knöpfe dieser Sektion steht ab 481 px als auf
+    `.mobile-social-proof` begrenzte Kopie in `cta-family-home.css`.
+  - Vorläufig: AP-511 führt die Knopf-Familie zusammen und löst die Kopie auf.
+- **Tablet-Fassung entfernt:** Kennzahlenliste, `--default`-Texte und alter Galeriepfeil.
+  Details stehen in `docs/offene-punkte.md`.
+- **Skript:** `mobile-social-proof-gallery.js` macht beim Wechsel über 900 px alle drei
+  Bilder für Screenreader lesbar.
+
+Gemessen in Chrome:
+- 402 und 480 px pixelgleich zum Stand vor AP-503 (11 von 11 Scheiben).
+- Die berechneten Stile aller 23 Knopf-Elemente sind am Handy und bei 768 und 1440 px
+  gleich. Einzige Ausnahme: die Beschriftung von „Gartenwunsch besprechen" misst am Handy
+  bei 402 px 15,7 statt 16 px (fließende Schrift mit Obergrenze 1 rem).
+- „Gartenwunsch besprechen" springt am Desktop zum Formular.
+- Drehen 820 → 1180 → 820 px ohne sichtbare Klone und ohne versteckte Bilder in der
+  festen Reihe.
+- Kein seitlicher Überlauf von 481 bis 1920 px.
+

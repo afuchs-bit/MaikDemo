@@ -2284,3 +2284,30 @@ Desktop-only-Texte entfallen.
   klickt statt tippt. Der Wortlaut ist unverändert übernommen; eine Desktop-Fassung
   (etwa „Zum Öffnen anklicken") nur auf Ansage des Auftraggebers.
 
+## AP-504 — Galerie-Einladung jetzt auch am Desktop
+
+### Was damit von der Seite verschwindet
+
+Zwischen 481 und 900 px zeigte die Galerie-Einladung eine eigene Tablet-Fassung. Sie
+entfällt; Tablets zeigen jetzt die Handy-Fassung. Damit verschwinden Aussagen, die es nur
+auf Tablets gab:
+
+- die Kennzahlenliste „Über 25 Jahre Erfahrung – Für einen Garten, der zu Ihnen und Ihrem
+  Grundstück passt", „100 % Chef am Telefon und im Garten – Maik und sein Fachteam sind
+  persönlich vor Ort für Sie da" und „8000 m² Gartenfläche gestaltet – Für über 400
+  zufriedene Kunden";
+- die längere Frage „Bleibt im Alltag, vor einem besonderen Anlass oder während Ihres
+  Urlaubs …" und die längere Antwort („Maiks Antwort: …").
+
+„Über 400 zufriedene Kunden" stand dort neben „1000+ Kunden haben uns vertraut" im
+Willkommenbereich. Dieser Widerspruch ist damit ausgeräumt.
+
+### Nicht mehr eingebundene Dateien
+
+Diese Dateien sind nirgends mehr eingebunden. Sie bleiben liegen, bis der Auftraggeber über
+das Löschen entscheidet:
+
+- `assets/img/mobile-social-proof/kpi-25plus.webp`, `kpi-100prozent.webp`,
+  `kpi-8000qm.webp`
+- `assets/img/icons/rohdich-gallery-arrow.png` (alter Galeriepfeil der Tablet-Fassung)
+
