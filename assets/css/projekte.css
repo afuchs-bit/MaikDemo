@@ -166,12 +166,12 @@
    .section-projects ist die einzige Sektion dieser Seite (styles.css:1065) und
    setzt dort var(--bg) - diese Datei wird nach styles.css geladen und sticht
    die Regel bei gleicher Spezifitaet. */
-@media (max-width: 480px) {
-  html,
-  body,
-  .section-projects {
-    background: #1B1E19;
-  }
+/* AP-526: Gilt seit AP-526 auf allen Breiten - der Desktop traegt denselben
+   Seitengrund #1B1E19 wie das Handy (Ansage des Auftraggebers). */
+html,
+body,
+.section-projects {
+  background: #1B1E19;
 }
 
 /* AP-401: Der Galerie-CTA traegt seit diesem Arbeitspaket die Knopf-Familie der
@@ -404,10 +404,10 @@
    auf einer #1B1E19-Seite, sichtbar als Kante ueber die ganze Breite.
    Der Literalwert wiederholt sich absichtlich, siehe die Begruendung im
    AP-388-Block. */
-@media (max-width: 480px) {
-  .gallery-mode-sticky {
-    background: #1B1E19;
-  }
+/* AP-526: Gilt seit AP-526 auf allen Breiten - der Desktop traegt denselben
+   Seitengrund #1B1E19 wie das Handy (Ansage des Auftraggebers). */
+.gallery-mode-sticky {
+  background: #1B1E19;
 }
 
 /* AP-409: Ab 901px stand der Umschalter wieder neben der Ueberschrift - ein

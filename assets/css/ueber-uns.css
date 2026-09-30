@@ -79,11 +79,11 @@ body.ueber-page {
    body.contact-page.
    html kommt mit, weil der untere Abstand der eingerueckten Footer-Kachel durch
    Margin Collapsing ausserhalb des Body-Kastens liegt. */
-@media (max-width: 480px) {
-  html,
-  body.ueber-page {
-    background: #1B1E19;
-  }
+/* AP-526: Gilt seit AP-526 auf allen Breiten - der Desktop traegt denselben
+   Seitengrund #1B1E19 wie das Handy (Ansage des Auftraggebers). */
+html,
+body.ueber-page {
+  background: #1B1E19;
 }
 
 /* Der gruene Steg vor den Sektionsueberschriften war das wiederkehrende

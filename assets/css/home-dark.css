@@ -1431,15 +1431,16 @@ html.home-theme-dark .fork-path:hover {
 
 }
 
-@media (max-width: 480px) {
-  /* Hero-Keil und Willkommenbereich liegen auf einer einzigen Farbfläche. Der
-     vorherige Verlauf des gemeinsamen Containers erzeugte genau an der Grenze
-     der beiden Hero-Elemente einen sichtbaren Tonwertsprung. */
-  html.home-theme-dark .home-hero-stack,
-  html.home-theme-dark .home-hero-stack > .hero--gate-content {
-    background: #1B1E19;
-  }
+/* Hero-Keil und Willkommenbereich liegen auf einer einzigen Farbfläche. Der
+   vorherige Verlauf des gemeinsamen Containers erzeugte genau an der Grenze
+   der beiden Hero-Elemente einen sichtbaren Tonwertsprung.
+   AP-526: auf allen Breiten - der Desktop trug bis dahin den Verlauf. */
+html.home-theme-dark .home-hero-stack,
+html.home-theme-dark .home-hero-stack > .hero--gate-content {
+  background: #1B1E19;
+}
 
+@media (max-width: 480px) {
   html.home-theme-dark .home-hero-stack {
     border-bottom: 0;
   }

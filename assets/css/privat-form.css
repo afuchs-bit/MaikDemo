@@ -613,18 +613,8 @@
   .private-gallery-expand,
   .private-gallery-nav { transition: none; }
 }
-.private-contact::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: -230px;
-  right: -210px;
-  width: 610px;
-  height: 610px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,237,0,.13), rgba(255,237,0,0) 69%);
-  pointer-events: none;
-}
+/* AP-526: Der gelbe Lichtschein oben rechts (::before) ist entfallen. Das Handy
+   blendete ihn schon aus; auf Wunsch des Auftraggebers jetzt auch Tablet und Desktop. */
 .private-contact + .site-footer { border-top: 1px solid rgba(255,255,255,.08); }
 .private-contact h2,
 .private-contact h3,
@@ -5148,9 +5138,8 @@
 /* AP-507: Die Werte der gemeinsamen 480er-Bloecke weiter unten (Abstaende AP-350/351,
    Flaechen AP-354) gelten fuer #leistungen auch ab 481px - hier begrenzt auf die
    Sektion, damit die uebrigen Sektionen der gemeinsamen Listen unberuehrt bleiben.
-   Den Handy-Seitengrund #1b1e19 uebernimmt die Sektion bewusst nicht: Ab 481px ist
-   der Seitengrund #171916, sonst entstuenden Streifen. Tablets zeigen die
-   Handy-Komposition als Mittelspalte von 34rem. */
+   Den Seitengrund #1b1e19 setzt seit AP-526 der gemeinsame Block weiter unten auf
+   allen Breiten. Tablets zeigen die Handy-Komposition als Mittelspalte von 34rem. */
 @media (min-width: 481px) {
   html.home-theme-dark .private-request-paths {
     --home-space-copy: 8px;
@@ -5532,8 +5521,8 @@
 
 /* AP-509: Die Werte der gemeinsamen 480er-Bloecke weiter unten (Abstaende AP-350/351,
    Flaechen AP-348/353/354) gelten fuer die Bewertungen auch ab 481px - begrenzt auf
-   .private-proof-bento. Den Handy-Seitengrund #1b1e19 uebernimmt die Sektion bewusst
-   nicht (ab 481px ist der Seitengrund #171916); der hellgruene Schimmer der frueheren
+   .private-proof-bento. Den Seitengrund #1b1e19 setzt seit AP-526 der gemeinsame Block
+   weiter unten auf allen Breiten; der hellgruene Schimmer der frueheren
    Desktop-Fassung entfaellt. Tablets zeigen die Karte als Mittelspalte von 34rem. */
 @media (min-width: 481px) {
   html.home-theme-dark .private-proof-bento {
@@ -5546,7 +5535,6 @@
     padding-block: var(--home-space-section);
     border-block: 0;
     box-shadow: none;
-    background: var(--bg);
   }
 
   .private-proof-bento > .container {
@@ -5644,33 +5632,32 @@
   display: none;
 }
 
+/* Auch html färben: Der untere Abstand der eingerückten Footer-Kachel
+   liegt durch Margin Collapsing außerhalb des Body-Kastens (AP-289).
+   AP-526: Seitengrund und Sektionsflächen gelten auf allen Breiten - bis
+   AP-526 standen sie im 480er-Block, und ab 481px trug die Startseite #171916. */
+html.home-theme-dark {
+  --home-page-background: #1b1e19;
+}
+
+html.home-theme-dark,
+html.home-theme-dark body {
+  background: var(--home-page-background);
+}
+
+html.home-theme-dark :is(
+  .mobile-social-proof,
+  .mr-ueber,
+  .private-request-paths,
+  .private-process-updated,
+  .private-proof-bento,
+  .private-contact,
+  .private-faq
+) {
+  background: var(--home-page-background);
+}
+
 @media (max-width: 480px) {
-  /* Auch html färben: Der untere Abstand der eingerückten Footer-Kachel
-     liegt durch Margin Collapsing außerhalb des Body-Kastens (AP-289). */
-  html.home-theme-dark {
-    --home-page-background: #1b1e19;
-  }
-
-  html.home-theme-dark,
-  html.home-theme-dark body {
-    background: var(--home-page-background);
-  }
-
-  html.home-theme-dark .private-contact::before {
-    display: none;
-  }
-
-  html.home-theme-dark :is(
-    .mobile-social-proof,
-    .mr-ueber,
-    .private-request-paths,
-    .private-process-updated,
-    .private-proof-bento,
-    .private-contact,
-    .private-faq
-  ) {
-    background: var(--home-page-background);
-  }
 
   /* AP-351: Die Abschnitte gehen ohne Rand oder Schattenlinie ineinander über.
      Die Trennung erfolgt ausschließlich durch den Abstand. */

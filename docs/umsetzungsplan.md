@@ -2155,3 +2155,16 @@ Gemessen:
 - Die Spalte weicht vom Handy nur in breitenabhängigen Maßen ab.
 - Galerie, Fragen und der Knopf zum Kontakt funktionieren, die Konsole ist fehlerfrei.
 - Die Sturmnotdienst-Seite (alte Vorlage) ist unverändert.
+
+**AP-526 — Seitengrund am Desktop wie am Handy (30.09.2026).**
+Auf Ansage des Auftraggebers trägt die ganze Website auf allen Breiten den Handy-Seitengrund
+#1B1E19. Bisher galt er nur bis 480px, darüber lag #171916, auf der Startseite zusätzlich
+ein Verlauf hinter Hero und Eckdaten sowie ein gelber Lichtschein hinter der Kontakt-Sektion.
+- Die 480er-Weichen für den Seitengrund sind aufgehoben: `styles.css` (html/body),
+  `privat-form.css` (Startseite: `--home-page-background`, html/body, Sektionen),
+  `home-dark.css` (Hero-Stapel), `kontakt.css`, `ueber-uns.css`, `projekte.css` (Seite,
+  Galerie-Umschalter) und der Inline-Stil in `index.html`.
+- Der Lichtschein (`.private-contact::before`) ist ganz entfallen.
+- Kopf (#171916), Footer-Karte und Kacheln behalten ihre eigenen Flächen.
+- Handy (360, 402, 480 px) auf Startseite, Kontakt, Galerie, Über uns, Impressum und einer
+  Leistungsseite pixelgleich; Tablet und Desktop tragen gemessen durchgehend #1B1E19.

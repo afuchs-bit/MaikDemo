@@ -1000,9 +1000,9 @@
    Seitengrund ist keine Kopf-Angelegenheit, und kontakt.css wird als letzte
    geladen - nur von hier aus laesst sich .contact-page aus Zeile 1
    ueberschreiben. */
-@media (max-width: 480px) {
-  html,
-  body.contact-page {
-    background: #1B1E19;
-  }
+/* AP-526: Gilt seit AP-526 auf allen Breiten - der Desktop traegt denselben
+   Seitengrund #1B1E19 wie das Handy (Ansage des Auftraggebers). */
+html,
+body.contact-page {
+  background: #1B1E19;
 }

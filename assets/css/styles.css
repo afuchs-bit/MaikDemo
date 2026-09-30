@@ -219,11 +219,11 @@ body {
 
 /* AP-407: Unter 481px traegt die Seite #1B1E19 statt #171916. Siehe den
    ausfuehrlichen Kommentar auf dem Zweig fix/kopf-scrollsperre. */
-@media (max-width: 480px) {
-  html,
-  body {
-    background-color: #1B1E19;
-  }
+/* AP-526: Gilt seit AP-526 auf allen Breiten - der Desktop traegt denselben
+   Seitengrund #1B1E19 wie das Handy (Ansage des Auftraggebers). */
+html,
+body {
+  background-color: #1B1E19;
 }
 
 img, svg, video { max-width: 100%; display: block; }
