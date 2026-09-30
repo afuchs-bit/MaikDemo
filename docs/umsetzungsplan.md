@@ -1893,3 +1893,15 @@ Gemessen bei 901, 1024, 1280, 1440 und 1920 px:
 - Absätze und Kachel sind gleich breit.
 - Beide Nähte sind gleich (96 px bei 1440 px), kein Überlauf.
 - Bis 860 px ist die Seite pixelgleich. 880 und 900 px zeigen die Handy-Fassung.
+
+**AP-523 — Über uns: Foto bis zur Zeile „Alles aus einer Hand“ (30.09.2026).** Auf Ansage
+des Auftraggebers reicht das Foto in „Ehrlich beraten, sauber gebaut“ am Desktop jetzt von
+der Überschrift bis zur Unterkante der Kette „Planung → … → Pflege“. Bis dahin endete es
+an der Zusage-Kachel und wirkte zu kurz: bei 1440 px 114 px über der Kette.
+
+Umsetzung: Die Rasterbereiche sind jetzt `"wort bild" / "nachsatz bild"`. Der Nachsatz
+steht damit wieder links unter dem Text.
+
+Gemessen bei 901, 1024, 1280, 1440 und 1920 px: Ober- und Unterkante liegen auf 0 px
+bündig. Das gilt auch während der Schreibmaschine tippt, dann ist die Zeile rund 11 px
+höher, und danach. Bis 900 px ist die Seite pixelgleich.

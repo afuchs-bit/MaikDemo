@@ -599,12 +599,20 @@ body.ueber-page {
    Hoehe (440px breit, 4:3 = 330px) die Rasterzeile mitbestimmt - der Textblock
    ist am Rechner meist niedriger, und das Foto stuende wieder unten ueber.
    So traegt allein der Text die Zeilenhoehe. min-height haelt den Ausschnitt
-   bei sehr kurzem Text lesbar. Das feste 4:3 gilt weiter bis 900px. */
+   bei sehr kurzem Text lesbar. Das feste 4:3 gilt weiter bis 900px.
+
+   AP-523, auf Ansage des Auftraggebers (30.09.2026): Das Foto reicht jetzt bis
+   zur Unterkante der Kette "Planung -> ... -> Pflege" statt nur bis zur
+   Zusage-Kachel - dort wirkte es zu kurz (bei 1440px endete es 114px ueber der
+   Kette). Der Nachsatz steht dafuer wieder in der linken Spalte, und das Foto
+   spannt ueber beide Rasterzeilen. Waehrend die Schreibmaschine tippt, ist die
+   Zeile etwa 11px hoeher als die fertige Kette; das Foto folgt in beiden
+   Zustaenden, weil es an der Rasterzeile haengt und nicht an einem festen Mass. */
 @media (min-width: 901px) {
   .ueber-betrieb__raster {
     grid-template-areas:
       "wort     bild"
-      "nachsatz nachsatz";
+      "nachsatz bild";
   }
 
   /* Der Raster-Vorfahr hebt beide Regeln auf (0,2,0)/(0,2,1): die Grundregeln
