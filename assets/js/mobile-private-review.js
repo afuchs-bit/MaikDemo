@@ -1,15 +1,17 @@
-// AP-208: Einzelne, nativ wischbare Rezensionen für alle schmalen Hochformate.
+// AP-208: Einzelne, nativ wischbare Rezensionen.
+// AP-509: auf allen Breiten (vorher nur bis 480px im Hochformat); die fruehere
+// Zweier-Ansicht aus private-proof.js ist entfallen. Ab 901px kommen Pfeile dazu,
+// weil sich mit der Maus nicht wischen laesst.
 (() => {
   'use strict';
 
-  const iphoneProof = window.matchMedia('(max-width: 480px) and (orientation: portrait)');
   const carousel = document.querySelector('[data-review-pair-rotator]');
   if (!carousel) return;
 
   let initialized = false;
 
   const enableSwipe = () => {
-    if (initialized || !iphoneProof.matches) return;
+    if (initialized) return;
 
     const viewport = carousel.querySelector('[data-review-viewport]');
     const groups = Array.from(carousel.querySelectorAll('[data-review-pair]'));
@@ -19,8 +21,6 @@
 
     initialized = true;
     carousel.dataset.iphoneReviewSwipe = 'true';
-    carousel.dispatchEvent(new CustomEvent('review-swipe-activate'));
-    carousel.classList.remove('has-review-rotator', 'has-review-motion', 'is-reduced-motion');
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const fragment = document.createDocumentFragment();
@@ -77,13 +77,21 @@
     let touching = false;
     let settleTimer = 0;
     let lastWidth = 0;
+    // Ziel eines laufenden Sprungs; schnelle Klicks rechnen von hier weiter.
+    let pending = null;
+    let pendingSlot = null;
 
-    const position = (slot) => slides[slot].offsetLeft;
+    // Relativ zur ersten Folie: offsetLeft misst vom offsetParent aus, und das ist je
+    // nach Einblend-Transform die Karte oder die Sektion. Bei zentrierter Karte am
+    // Desktop enthielte der Wert sonst deren Einzug.
+    const position = (slot) => slides[slot].offsetLeft - slides[0].offsetLeft;
     const logicalIndex = (slot) => (slot - 1 + reviews.length) % reviews.length;
 
     const update = (reviewIndex, announce = true) => {
       const changed = current !== reviewIndex;
       current = reviewIndex;
+      pending = null;
+      pendingSlot = null;
       reviews.forEach((review, index) => {
         const active = index === current;
         review.inert = !active;
@@ -108,7 +116,7 @@
     const settle = () => {
       if (touching || viewport.classList.contains('is-jumping')) return;
       const slot = slides.reduce((nearest, slide, index) => (
-        Math.abs(slide.offsetLeft - viewport.scrollLeft) < Math.abs(position(nearest) - viewport.scrollLeft)
+        Math.abs(position(index) - viewport.scrollLeft) < Math.abs(position(nearest) - viewport.scrollLeft)
           ? index
           : nearest
       ), 0);
@@ -117,13 +125,40 @@
       else if (slot === slides.length - 1) jump(1);
     };
 
+    // Laeuft die Animation noch auf eine Klon-Folie zu (Umbruch 4 -> 1 oder 1 -> 4),
+    // erst um eine Runde auf die gleich aussehenden echten Folien umsetzen. Sonst
+    // liefe ein zweiter schneller Klick auf "Weiter" rueckwaerts durch alle
+    // Bewertungen. Entschieden wird am Ziel, nicht an der Position: Beim zweiten
+    // Klick im selben Frame hat sich die Animation noch nicht bewegt.
+    // Gleich aussehend ist die Runde nur, solange das Ergebnis im Scrollbereich
+    // liegt. Steht die Animation noch vor der letzten echten Folie (drei und mehr
+    // schnelle Klicks), wuerde der Browser abschneiden und die Ansicht springen -
+    // dann gilt der Klick als verworfen (false).
+    const unwrap = () => {
+      if (pendingSlot !== 0 && pendingSlot !== slides.length - 1) return true;
+      const span = position(slides.length - 1) - position(1);
+      const target = viewport.scrollLeft + (pendingSlot === 0 ? span : -span);
+      if (target < -1 || target > position(slides.length - 1) + 1) return false;
+      viewport.classList.add('is-jumping');
+      viewport.scrollLeft = target;
+      window.requestAnimationFrame(() => window.requestAnimationFrame(() => viewport.classList.remove('is-jumping')));
+      return true;
+    };
+
     const select = (reviewIndex) => {
+      const from = pending ?? current;
+      if (!unwrap()) return;
       let slot = reviewIndex + 1;
-      if (current === reviews.length - 1 && reviewIndex === 0) slot = slides.length - 1;
-      if (current === 0 && reviewIndex === reviews.length - 1) slot = 0;
+      if (from === reviews.length - 1 && reviewIndex === 0) slot = slides.length - 1;
+      if (from === 0 && reviewIndex === reviews.length - 1) slot = 0;
+      pending = reviewIndex;
+      pendingSlot = slot;
+      // 'auto' statt 'instant': aeltere Safari-Versionen kennen 'instant' nicht und
+      // werfen. Bei reduzierter Bewegung steht der Viewport ohnehin auf
+      // scroll-behavior: auto (privat-form.css), 'auto' springt dann.
       viewport.scrollTo({
         left: position(slot),
-        behavior: reducedMotion.matches ? 'instant' : 'smooth'
+        behavior: reducedMotion.matches ? 'auto' : 'smooth'
       });
     };
 
@@ -166,12 +201,35 @@
       lastWidth = width;
       jump(current + 1);
     }).observe(viewport);
+
+    // Pfeile nur ab 901px im DOM; darunter bleibt die Fussleiste exakt wie am Handy.
+    const desktop = window.matchMedia('(min-width: 901px)');
+    const arrow = (direction) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `private-review-arrow private-review-arrow--${direction}`;
+      button.setAttribute('aria-label', direction === 'prev' ? 'Vorherige Bewertung' : 'Nächste Bewertung');
+      button.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${direction === 'prev' ? 'm15 18-6-6 6-6' : 'm9 18 6-6-6-6'}"/></svg>`;
+      const step = direction === 'prev' ? -1 : 1;
+      button.addEventListener('click', () => select(((pending ?? current) + step + reviews.length) % reviews.length));
+      return button;
+    };
+    const prev = arrow('prev');
+    const next = arrow('next');
+    const syncArrows = () => {
+      if (desktop.matches) {
+        if (!prev.isConnected) { dots.before(prev); dots.after(next); }
+        return;
+      }
+      const hadFocus = document.activeElement === prev || document.activeElement === next;
+      prev.remove();
+      next.remove();
+      if (hadFocus) buttons[current].focus({ preventScroll: true });
+    };
+    if (typeof desktop.addEventListener === 'function') desktop.addEventListener('change', syncArrows);
+    else desktop.addListener(syncArrows);
+    syncArrows();
   };
 
-  if (typeof iphoneProof.addEventListener === 'function') {
-    iphoneProof.addEventListener('change', enableSwipe);
-  } else {
-    iphoneProof.addListener(enableSwipe);
-  }
   enableSwipe();
 })();

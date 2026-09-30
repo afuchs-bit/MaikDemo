@@ -81,7 +81,7 @@ collections:
           - { label: "Baumpflege", value: baumpflege }
           - { label: "Beleuchtung", value: beleuchtung }
           - { label: "Bonsai / Formgehölze", value: bonsai-formgehoelze }
-          - { label: "Sturmnotdienst", value: sturmnotdienst }
+          - { label: "24h Baum- & Sturmnotdienst", value: sturmnotdienst }
           - { label: "Holzverkauf", value: holzverkauf }
           - { label: "Außenanlagenpflege", value: aussenanlagenpflege }
           - { label: "Gartenpflege", value: gartenpflege }

@@ -96,11 +96,15 @@
   // Das Formular bleibt stehen und nennt die Wege, die tatsaechlich funktionieren.
   // [OFFEN: Wortlaut des Hinweises durch den Auftraggeber bestaetigen lassen.
   //  Er darf nicht nach "gesendet" klingen. Siehe docs/offene-punkte.md.]
-  const HINWEIS =
+  const standardHinweis =
     'Der Formularversand ist noch nicht aktiv. Ihre Anfrage erreicht uns bis dahin ' +
     'telefonisch unter <a href="tel:+491711738943">0171 / 173 89 43</a>, ' +
     'per <a href="https://wa.me/491711738943" target="_blank" rel="noopener">WhatsApp</a> ' +
     'oder per E-Mail an <a href="mailto:maik@rohdich.de">maik@rohdich.de</a>.';
+  const eigenerHinweis = kurzForm.querySelector('[data-anf-unavailable-copy]');
+  const HINWEIS = eigenerHinweis && eigenerHinweis.innerHTML.trim()
+    ? eigenerHinweis.innerHTML.trim()
+    : standardHinweis;
 
   const DANK =
     'Vielen Dank \u2014 Ihre Anfrage ist eingegangen. Maik Rohdich sieht sie sich ' +

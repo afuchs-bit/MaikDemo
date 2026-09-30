@@ -54,46 +54,102 @@
     },
     "gallery": [
       {
-        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
-        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
-        "fokusMobil": "54% 55%",
-        "width": 480,
-        "height": 360
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
-        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
-        "fokusMobil": "52% 62%",
-        "width": 480,
-        "height": 493
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
-        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/01-pool-garten-schwarze-umrandung-gesamtansicht.webp",
+        "alt": "Fertig gestalteter Pool mit schwarzer Umrandung, Natursteinen und üppiger Gartenbepflanzung",
         "fokusMobil": "50% 50%",
-        "width": 480,
-        "height": 362
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
-        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
-        "fokusMobil": "50% 58%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/02-pool-garten-liegebereich-natursteine.webp",
+        "alt": "Liegebereich mit Zierkies, Natursteinen und mediterraner Bepflanzung neben dem Pool",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
-        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
-        "fokusMobil": "60% 56%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/03-pool-garten-abendstimmung-palmen.webp",
+        "alt": "Pool mit Palmen und Gartenbeleuchtung in stimmungsvoller Abendsonne",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
-        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
-        "fokusMobil": "57% 58%",
-        "width": 480,
-        "height": 297
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/04-pool-garten-nachtbeleuchtung.webp",
+        "alt": "Beleuchteter Pool in einem aufwendig inszenierten Garten bei Nacht",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/05-pool-garten-sonnenuntergang.webp",
+        "alt": "Pool zwischen Palmen und Blüten vor einem farbintensiven Sonnenuntergang",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/06-beleuchteter-pool-bei-nacht.webp",
+        "alt": "Blau beleuchteter Pool mit Palmen und akzentuierter Gartenbeleuchtung bei Nacht",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/07-pool-whirlpool-garten-vogelperspektive.webp",
+        "alt": "Pool und Whirlpool in einer zusammenhängenden Gartenanlage aus der Vogelperspektive",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/08-whirlpool-im-natursteingarten.webp",
+        "alt": "Whirlpool zwischen Natursteinen, Formgehölzen und mediterraner Bepflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/09-pool-mit-sonnensegel-und-palmen.webp",
+        "alt": "Pool mit Sonnensegel, Holzdeck, Palmen und dichter Gartenbepflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/10-pool-gartenbau-azaleen-gesamtansicht.webp",
+        "alt": "Poolanlage mit Natursteinen, Formgehölzen und rot blühenden Azaleen während der Fertigstellung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/14-rundpool-mit-gartenbepflanzung.webp",
+        "alt": "Fertig angelegter Rundpool mit Leiter, Zierkies und abwechslungsreicher Gartenbepflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/18-poolumfeld-rollrasen-verlegung.webp",
+        "alt": "Fachgerechte Verlegung von Rollrasen und Gestaltung der Pflanzflächen neben einem Pool",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/19-poolschale-krantransport.webp",
+        "alt": "Poolschale beim Transport mit einem Kran über ein Grundstück",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/20-poolschale-einbau-baugrube.webp",
+        "alt": "Poolschale beim Einheben in die vorbereitete und gedämmte Baugrube",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       }
     ]
   },
@@ -119,7 +175,7 @@
   "sourceSection": 23,
   "mobileVariant": "balkonkasten",
   "themeColor": "#171916",
-  "mobileCssVersion": "20260927a12",
+  "mobileCssVersion": "20260930d",
   "ctaFamilyVersion": "20260926b",
   "galleryCtaLabel": "Mehr anzeigen",
   "galleryCollapseLabel": "Weniger",

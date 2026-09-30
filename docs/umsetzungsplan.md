@@ -1591,3 +1591,580 @@ Feiertagen und Wochenenden · Mustergarten nur nach Vereinbarung". Das deckt sic
 `content/stammdaten.json` (WhatsApp rund um die Uhr für Nachrichten, Antwort zu den
 Geschäftszeiten), mit der Kontaktkarte und mit `.footer-hours` oberhalb 480 px.
 Die Öffnungszeiten aus Teil B bleiben unangetastet.
+
+
+## H.10 Nachtrag: Desktop an den Handy-Stand angleichen (29.09.2026)
+
+**Warum.** Seit Ende August wurde fast ausschließlich für das iPhone gearbeitet, in
+`@media (max-width: 480px)`-Blöcken. Von den 172 Commits zwischen `e637dac` (AP-325) und
+`458a5d51` (AP-492) wirken 55 nur auf dem Handy und keiner nur auf dem Desktop. Am
+Desktop fehlen dadurch unter anderem:
+
+- auf der Startseite die Knöpfe im Hero, die KPI-Zeile und die Qualifikationen, die ganze
+  Galerie-Einladung, die A–Z-Leistungsübersicht (der Desktop zeigt sechs Flip-Kacheln)
+  und die Fotos im Ablauf;
+- auf den 37 Leistungsseiten mit der Vorlage `leistung-v2.html` Heldenfoto, Fotoraster,
+  Formular und „Passende Ergänzungen" — am Desktop bleibt dort nur Text;
+- im Menü zehn Leistungen, die nur das Handy-Menü führt;
+- die Knopf-Familie mit Halo und Puls.
+
+Ein erster Anlauf am 15.09. entstand in einem isolierten Worktree und wurde nie
+übernommen. Seine Nummern AP-328–338 sind seither anderweitig vergeben. Er ist überholt und
+dient nur noch als Vorlage.
+
+**Entscheidungen des Auftraggebers.** Vom 15.09., bestätigt am 29.09.:
+- Der Desktop entsteht aus den Handy-Inhalten, ein DOM für alle Breiten.
+- Einzige Desktop-Ausnahme ist die Hero-Unterzeile mit Ortsnennung.
+- Bis 900 px gilt die Handy-Komposition, auf Tablets zentriert; ab 901 px der Desktop.
+- Der Ablauf-Pin läuft ab 1024 px mit Maus.
+
+Neu am 29.09.:
+- Der tote Knopf der Leistungsseiten kommt zuerst.
+- Die Arbeit kommt paketweise an, jedes Paket mit Commit nach Freigabe.
+- Die Zwei-Welten-Regel steht sofort in `CLAUDE.md`.
+
+**Nummern.** Für diesen Angleich ist der Block **AP-500 bis AP-529** reserviert. Geplant:
+
+| AP | Paket |
+|---|---|
+| 500 | Toter Knopf der Leistungsseiten |
+| 501 | Zwei-Welten-Regel |
+| 502 | Umstellung der Startseiten-Gates von 480 auf 900 px |
+| 503–510 | Startseite Sektion für Sektion |
+| 511 | Knopf-Familie am Desktop |
+| 512–514 | Leistungsseiten-Vorlage |
+| 515 | Menü und Footer |
+| 516 | Kontakt, Galerie, Über uns |
+| 517 | Aufräumen |
+| 529 | Sektionsüberschriften der Startseite (vorgezogen; 518–521 hat die Kontakt- und Galerie-Arbeit belegt) |
+
+**AP-500 — toter Knopf der Leistungsseiten.** Der Hero-Knopf `a.lpv2-cta` springt auf
+`#anfrage`. Das Formular liegt in `section.lpv2-home-contact`, und `leistung-mobile.css`
+hat diese Sektion ab 481 px ausgeblendet. Auf Tablet und Desktop tat der Knopf deshalb
+nichts, und die Seite bot keinen sichtbaren Kontaktweg außer Anrufen und WhatsApp im Kopf.
+
+Die Sektion ist jetzt auf allen Breiten sichtbar. Sie bringt dieselben Kanäle und dasselbe
+Kurzformular wie die Startseite mit; die Stylesheets dafür laden die Leistungsseiten
+bereits. Galerie, Ergänzungen und die übrigen Handy-Module bleiben am Desktop vorerst
+ausgeblendet — sie folgen mit AP-512–514.
+
+Gemessen in echtem Chrome an Balkonkasten, Gartengestaltung und Außenanlagenpflege, je bei
+768, 1280 und 1440 px: Der Klick landet am Formular. Bei 402 und 480 px ist die Seite
+pixelgleich zum Stand vorher.
+
+**Der Cache-Schlüssel von `leistung-mobile.css` steht nicht in einer Vorlage.** Er steht
+in jeder der 37 Inhaltsdateien als `"mobileCssVersion"` unter `content/leistungen/`.
+`build-leistungen.mjs` überträgt ihn in die Seiten. Wer die Datei ändert, hebt ihn in allen
+37 Dateien an und baut neu. Der Build läuft nicht in CI — die erzeugten Seiten gehören in
+denselben Commit.
+
+**AP-501 — Zwei-Welten-Regel.** `CLAUDE.md` legt unter „Fallstricke" fest:
+- Neue Handy-Regeln von Startseite und Leistungsseiten gehören in
+  `@media (max-width: 900px)`, Desktop-Regeln in `@media (min-width: 901px)`.
+- Neue 480-px-Sektionsgates entstehen nicht mehr.
+- Wer bewusst nur für das Handy baut, trägt die Lücke in `docs/offene-punkte.md` ein.
+
+Die 480er-Blöcke im Bestand stellt AP-502 um.
+
+**AP-502 entfällt als eigenes Paket.** Geplant war, alle 480-px-Blöcke der drei nur von
+der Startseite geladenen Stylesheets auf 900 px umzustellen. Die Prüfung vor dem Bau hat
+gezeigt, dass diese Blöcke keine sauberen Sektionsgrenzen sind:
+
+- `home-dark.css` mischt in ihnen Hero-Stufen (Teil einer Leiter 860 → … → 480 → 430),
+  Kopf-Morph, Willkommen, die geparkte Gewerbe-Tür und Über uns.
+- Die fließende Wurzelschrift (19,1 px zwischen 481 und 900 px) hätte außerdem die
+  Sektionen in den geteilten Stylesheets aufgebläht, die auf Tablets noch im
+  Desktop-Layout stehen.
+
+Deshalb stellt jedes Sektionspaket nur die Weichen seiner eigenen Sektion um. Die
+Wurzelschrift bleibt vorerst bei ≤ 480 px.
+
+**AP-503 — Willkommenbereich auf allen Breiten.** Die Ursache dafür, dass der Desktop
+„Willkommen bei" mit Wortmarke, Foto, Leitsatz, Eckdaten und Qualifikationen nicht zeigte,
+war eine einzige Regel: Eine immer geltende `display:none`-Regel in `home-dark.css`
+verbarg `.gate-welcome--iphone`, und nur der 480-px-Block schaltete ihn wieder ein. Der
+Desktop behielt dafür `.mr-willkommen`. Das war seit `b4188bde` (05.09.2026) so gebaut,
+zuerst nur für 390–404 px; AP-239 dehnte es auf 480 px aus.
+
+Was sich ändert:
+- **Gestaltung ohne Media Query:** Die Gestaltung des Bereichs (`home-dark.css`) und der
+  Eckdaten-Signatur (`mobile-social-proof.css`) steht jetzt ohne Media Query. Ab 901 px
+  ist die Wurzelschrift 16 px wie beim iPhone mit 402 px; die rem-Werte ergeben dort
+  dieselben Maße.
+- **Desktop ab 901 px:**
+  - Kopfzeile über beide Spalten, darunter Foto links und Leitsatz rechts
+  - die vier Eckdaten als Band
+  - die vier Qualifikationen in einer Reihe
+  - Detailfläche 40 rem, Zertifikat 22 rem
+- **Tablets (481–900 px)** zeigen die Handy-Komposition als Mittelspalte von 34 rem.
+- **Entfernt:**
+  - `.mr-willkommen` samt Gestaltung
+  - drei Absätze (`.gate-welcome-feeling/-copy/-outro`), die auch am Handy verborgen waren
+- **Bildgröße:** Das `sizes` des Fotos fiel am Desktop auf 1 px zurück und ist jetzt für
+  alle Breiten gesetzt.
+
+Gemessen in Chrome:
+- 402 und 480 px pixelgleich zum Stand vorher (11 von 11 Scheiben).
+- Der Bereich zeigt bei 402 und 1440 px dieselben 23 Texte und Bilder in derselben
+  Reihenfolge.
+- Kein seitlicher Überlauf von 600 bis 1920 px.
+- Die Qualifikationen öffnen sich am Desktop per Klick.
+
+Was damit entfällt und was offen ist, steht in `docs/offene-punkte.md`.
+
+**AP-504 — Galerie-Einladung auf allen Breiten.** Die zweite Ursache: Die Bildfolge mit
+„Zur Galerie", „Keine Zeit für den Garten?" und „Gartenwunsch besprechen"
+(`#social-proof`) war durch `.mobile-social-proof { display: none }` ohne Media Query
+verborgen. Eingeschaltet war sie nur bis 900 px. Seit AP-215 gab es am Desktop an dieser
+Stelle keine Fassung mehr, dort stand also gar nichts.
+
+- **Gestaltung ohne Media Query:** Die Gestaltung der sektionseigenen Bausteine
+  (`.mobile-proof-gallery*`, `.mobile-proof-invitation*`) steht jetzt ohne Media Query.
+  Das gilt für die 900-px- wie für die 480-px-Stufe.
+- **Desktop ab 901 px:**
+  - die drei Fotos nebeneinander statt als Karussell
+  - „Zur Galerie" mittig darunter
+  - die Einladung zweispaltig
+  - Willkommen und Galerie gehen ohne Trennlinie ineinander über
+- **Knöpfe:**
+  - `.mobile-proof-request` kommt auch in `#leistungen` und `#ablauf` vor und bleibt
+    deshalb in den Handy-Blöcken.
+  - Die Gestaltung beider Knöpfe dieser Sektion steht ab 481 px als auf
+    `.mobile-social-proof` begrenzte Kopie in `cta-family-home.css`.
+  - Vorläufig: AP-511 führt die Knopf-Familie zusammen und löst die Kopie auf.
+- **Tablet-Fassung entfernt:** Kennzahlenliste, `--default`-Texte und alter Galeriepfeil.
+  Details stehen in `docs/offene-punkte.md`.
+- **Skript:** `mobile-social-proof-gallery.js` macht beim Wechsel über 900 px alle drei
+  Bilder für Screenreader lesbar.
+
+Gemessen in Chrome:
+- 402 und 480 px pixelgleich zum Stand vor AP-503 (11 von 11 Scheiben).
+- Die berechneten Stile aller 23 Knopf-Elemente sind am Handy und bei 768 und 1440 px
+  gleich. Einzige Ausnahme: die Beschriftung von „Gartenwunsch besprechen" misst am Handy
+  bei 402 px 15,7 statt 16 px (fließende Schrift mit Obergrenze 1 rem).
+- „Gartenwunsch besprechen" springt am Desktop zum Formular.
+- Drehen 820 → 1180 → 820 px ohne sichtbare Klone und ohne versteckte Bilder in der
+  festen Reihe.
+- Kein seitlicher Überlauf von 481 bis 1920 px.
+
+**AP-507 — Leistungsübersicht A–Z auf allen Breiten.** Der Desktop zeigte bis dahin sechs
+Wendekarten mit KI-Zeichnungen, eine Notfallkarte und zwei Wegekacheln. Die A–Z-Liste mit
+Buchstabengrafiken und Fotos gab es nur am Handy: Ihre gesamte Gestaltung stand in einem
+480-px-Block von `privat-form.css`, und eine Grundregel blendete sie sonst aus.
+
+- **Anheben:** Die Media-Klammer dieses Blocks ist entfernt, die Regeln stehen an derselben
+  Stelle. Am Handy ändert sich deshalb nichts.
+- **Begrenzte Tablet- und Desktop-Maße:** Die Zeilen-Klassen nutzen auch die „Passenden
+  Ergänzungen" der 37 Leistungsseiten (dort ab 481 px ausgeblendet). Alle neuen Maße
+  tragen deshalb `.private-request-paths`.
+- **Tablets (481–900 px)** zeigen die Handy-Liste als Mittelspalte von 34 rem.
+- **Desktop ab 901 px:**
+  - zwei Spalten, von oben nach unten gelesen wie ein Register (A–O links, P–Z rechts).
+    Umgesetzt als Raster (`grid-auto-flow: row dense`): Die Zeile mit
+    `iphone-service-row--column-break` und alle folgenden stehen rechts. Ein
+    Mehrspaltensatz mit `break-before: column` war der erste Entwurf; Firefox kennt
+    diesen Umbruch nicht und hätte frei ausgeglichen.
+  - Notdienst-Kachel mittig darüber, „Zum Kontaktformular" mittig darunter
+  - Hover mit derselben Rückmeldung wie das Tippen am Handy
+- **Knopf:** Die begrenzte Knopf-Kopie aus AP-504 (`cta-family-home.css`) gilt jetzt auch
+  für `#leistungen`.
+- **Cache:** Der Schlüssel von `privat-form.css` ist in `index.html` und in der Vorlage
+  `leistung-v2.html` angehoben. Die 37 Leistungsseiten sind neu gebaut und ändern sich
+  jeweils nur in dieser Zeile.
+- **Entfallen:** Was wegfällt, steht in `docs/offene-punkte.md`.
+
+Gemessen in Chrome:
+- 360, 390, 402, 430 und 480 px pixelgleich zum Stand vorher (26 von 26 Scheiben).
+- Der Vergleich aller berechneten Stile von `#leistungen` bei 402 px ergibt null
+  Abweichungen; nur die entfernten, dort ohnehin ausgeblendeten Blöcke fehlen.
+- Ebenfalls null Abweichungen: die Ergänzungsliste einer Leistungsseite bei 402 px und die
+  Galerie-Einladung bei 402, 768 und 1440 px.
+- 901 bis 1920 px: zwei Spalten, keine geteilte Zeile, Kachel und Knopf mittig, kein
+  seitlicher Überlauf.
+- „Zum Kontaktformular" springt am Desktop zum Formular.
+
+**Messaufbau, zwei Fallen:**
+- **Warteschlange des Testservers:** `python3 -m http.server` nimmt nur 5 wartende
+  Verbindungen an. Bei den über 50 Bildern der Liste verwarf er Anfragen, und das
+  Galerie-Karussell fiel in der Messung auf Standbild. Abhilfe:
+  `.claude/preview/stabiler-server.py`.
+- **Hintergrund-Tabs:** Sie drosseln `requestAnimationFrame`. Der Sprung aus
+  `privat-form.js`, der zwei Frames abwartet, schien deshalb zu fehlen. Das Prüfskript holt
+  den Tab jetzt nach vorn.
+
+**AP-509 — Google-Bewertungen als Karussell auf allen Breiten.** Am Handy baute
+`mobile-private-review.js` die Bewertungen zu einem Wisch-Karussell um, aber nur bei höchstens
+480 px im Hochformat. Darüber lief `private-proof.js` mit der weißen Zweier-Karte samt
+Zusammenfassungskarte.
+
+- **Skript:**
+  - Die Weiche ist entfallen, das Karussell entsteht auf jeder Breite.
+  - Die Folien-Positionen werden relativ zur ersten Folie gerechnet. Das rohe `offsetLeft`
+    enthielt bei zentrierter Karte deren Einzug.
+  - Schnelle Klicks werden gemerkt statt verworfen. Läuft die Animation an der
+    Umbruchstelle (4 → 1 oder 1 → 4) noch auf eine Klon-Folie zu, setzt ein weiterer Klick
+    sie erst um eine Runde auf die gleich aussehende echte Folie um. Sonst lief ein
+    doppeltes „Weiter" von Bewertung 4 sichtbar rückwärts über 3 auf 2. Bei drei und mehr
+    sehr schnellen Klicks, solange die Animation noch vor der letzten echten Folie steht,
+    wird der Klick verworfen statt die Ansicht springen zu lassen.
+  - Bei reduzierter Bewegung scrollt das Skript mit `behavior: 'auto'` statt `'instant'`,
+    das ältere Safari-Versionen nicht kennen.
+  - Ab 901 px kommen Pfeile dazu, weil sich mit der Maus nicht wischen lässt. Darunter bleibt
+    das DOM wie am Handy.
+  - `private-proof.js` ist gelöscht.
+- **`privat-form.css`:**
+  - Der Swipe-Block ist ohne Media Query angehoben.
+  - Die Karussell-Zeilen des 520-px-Blocks, die das Handy-Aussehen mittragen, gelten jetzt auf
+    allen Breiten.
+  - Die Flächen und Abstände aus den gemeinsamen 480er-Blöcken gelten ab 481 px begrenzt auf
+    `.private-proof-bento`.
+  - Tablets zeigen eine Mittelspalte von 34 rem, der Desktop die Karte mittig mit höchstens
+    40 rem.
+  - Ohne JavaScript zeigt jede Bewertung den Google-Link.
+- **Entfallen:** die Zusammenfassungskarte, siehe `docs/offene-punkte.md`.
+
+Gemessen in Chrome:
+- Der Vergleich aller berechneten Stile der Sektion bei 360, 402 und 480 px ergibt null
+  Abweichungen.
+- **Pixelvergleich:** 390, 402 und 430 px identisch. Bei 360 und 480 px wich einer von zwei
+  Läufen auf verzögert ladenden Bildern ab; der Wiederholungslauf war identisch.
+- **Pfeile:** keine bei 402 und 768 px, zwei ab 901 px.
+- **Bedienung:** Viermal „Weiter" ergibt 2 → 3 → 4 → 1, „Zurück" von 1 springt auf 4, ein
+  Doppelklick überspringt nichts, Enter auf dem Pfeil wirkt. Das gilt mit und ohne Bewegung.
+- **Breitenwechsel:** Beim Wechsel 402 → 768 → 1440 → 402 px in einer Sitzung bleiben die
+  aktive Bewertung und die Scrollposition erhalten.
+- **Ohne JavaScript:** vier Bewertungen mit Link.
+- `private-proof.js` wird nicht mehr angefragt, keine Konsolenfehler.
+
+**AP-529 — Sektionsüberschriften der Startseite ab 481 px (30.09.2026).** Die sechs
+Überschriften (Über uns, Leistungen, Ablauf, Bewertungen, Kontakt, Häufige Fragen) standen
+nur bis 480 px in der freigegebenen Variante G (Baloo 2, mittig, AP-348/349). Darüber blieben
+sie in Nunito und teils linksbündig. Die Nummer ist vorgezogen, weil die Kontakt- und
+Galerie-Arbeit AP-518–521 parallel belegt hat.
+
+- **Wo:** am Ende von `home-dark.css`. Diese Datei lädt nur die Startseite, deshalb ist
+  kein Neubau der Leistungsseiten nötig. Die Handy-Regel in `privat-form.css` bleibt, weil
+  die Leistungsseiten sie mitladen. Die Deklarationen sind 1:1 kopiert; bei Änderungen an
+  Variante G beide Stellen nachziehen.
+- **481–900 px:** 31 px wie am Handy.
+- **Ab 901 px:** `clamp(2.25rem, 1.25rem + 2vw, 3rem)`, also 38 px bei 901 und 48 px ab etwa
+  1400 px (vorher 49 px). Die Breite ist auf höchstens 20 em begrenzt; für die
+  Leistungen-Überschrift braucht das eine eigene Zeile, weil `privat-form.css` sie per ID
+  auf 100 % setzt.
+- **Kontakt:** Der 760 px breite Kopf ist mittig.
+- **FAQ:** Der Kopf ist einspaltig (vorher ab 821 px zweispaltig).
+- **Ausnahme Ablauf bis AP-508:** Ab 901 px ist der Ablauf-Kopf zweispaltig (Überschrift mit
+  grüner Linie links, Knopf rechts), ab 1024 px mit Maus zusätzlich im Scroll-Pin. Die
+  Überschrift übernimmt dort nur die Schrift und bleibt links. Im Pin gelten Größe,
+  Zeilenhöhe und Breite des Pins weiter. Geplant war die Grenze bei 1024 px; die Messung
+  zeigte, dass der Kopf schon ab 901 px zweispaltig ist. Bis 900 px ist sie mittig; die
+  grüne Linie entfällt dort, wie am Handy bis 767 px schon bisher.
+
+Gemessen in Chrome gegen den Stand AP-509:
+- Der Vergleich aller berechneten Stile in `main` (1151 sichtbare Elemente) ergibt bei 360,
+  402 und 480 px null Abweichungen.
+- Von 481 bis 1920 px sind alle Überschriften in Baloo; alle außer dem Ablauf ab 901 px
+  stehen mittig. Kein seitlicher Überlauf.
+- **Ablauf-Pin** bei 1024 × 768, 1280 × 800 und 1440 × 900: Verschiebung, Spurbreite,
+  Scrollerhöhe, Marker und Kartenende sind identisch zur Referenz. Die Überschrift im Pin hat
+  dieselbe Größe (32 bzw. 40 px), dieselbe Höhe und dieselbe Kopfhöhe. Die Prüfmeldung
+  „Bühne steht: FEHLER" bei 1280 und 1440 px (Szene am Ende 4–5 px verrutscht) tritt in der
+  Referenz genauso auf.
+
+**Gegenprüfung AP-507, AP-509, AP-529 (30.09.2026).** Zwei unabhängige Prüfer:
+- **Code, ohne Browser:** keine blockierenden Fehler. Die angehobenen Blöcke sind reine
+  Klammer-Entfernungen (`git diff -w`), die Cache-Schlüssel stimmen in jedem Zwischenstand.
+- **Test in Chrome:** neun Prüfungen bestanden. Dazu gehören kein Überlauf von 481 bis
+  1920 px, 37 erreichbare Leistungsseiten, gleiche Liste bei 402 und 1440 px, Fokusrahmen an
+  allen 40 Tabstopps und das Karussell mit und ohne Bewegung. Ohne JavaScript sind vier
+  Bewertungen mit Google-Link sichtbar. Die Leistungsseite zeigt bei 402 und 1440 px null
+  Abweichungen.
+
+Drei Funde sind nachgemessen und behoben: der Spaltenumbruch in Firefox (Raster statt
+Mehrspaltensatz), der Rückwärtslauf des Karussells an der Umbruchstelle und die Breite der
+Leistungen-Überschrift. Die übrigen Hinweise stehen in `docs/offene-punkte.md`.
+
+**AP-516 — Kontaktseite am Desktop geordnet (30.09.2026).** Die Handy-Fassung (bis 600 px,
+AP-413 bis AP-449) war fertig, der Desktop wirkte ungeordnet. Die Gestaltung war nicht das
+Problem, die Anordnung schon:
+- Effektiv gab es drei Spalten: Kacheln, Adresse mit Route, Karte. Der Standort brachte ein
+  eigenes Raster mit.
+- Der Standort-Kopf stand nur über der rechten Hälfte.
+- Bei 1440 px begannen die Kacheln 80 px über der Karte und endeten 160 px vor ihr.
+- Adresse und Route schwebten senkrecht mittig neben der Karte.
+- Der Besuchshinweis hing verwaist darunter.
+- Zwischen 601 und 1050 px nahmen die Kacheln nur die halbe Breite ein.
+
+Entscheidungen des Auftraggebers:
+1. **Ab 901 px zwei bündige Spalten.** Links stehen die fünf Kontaktwege untereinander,
+   rechts die Standort-Kachel. In der Kachel steht die Karte oben, darunter links Adresse
+   und Route, rechts der Besuchshinweis. Die fünf Kacheln teilen sich die Höhe der
+   Standort-Kachel.
+2. **Der Standort trägt auch am Rechner die Gestaltung der Handy-Fassung.** Die alten
+   Desktop-Regeln (Adress- und Routenkachel, heller Kartenplatzhalter, Trennlinie) sind
+   entfallen.
+3. **Die Bereichstitel kommen aus der Handy-Fassung.** Über den Kacheln steht keiner, denn
+   „Direkt erreichbar“ bleibt nach AP-413 entfallen. Über dem Standort stehen die graue
+   Beizeile und die grüne Überschrift. Der Kopf steht über der rechten Spalte, die Kacheln
+   beginnen auf der Oberkante der Standort-Kachel.
+4. **601–900 px zeigt die Handy-Komposition**, mittig auf 34rem.
+
+Technik in `kontakt.css`:
+- Das Aussehen der Handy-Fassung steht in der Grundebene.
+- Die Handy-Anordnung steht in `@media (max-width: 900px)`, vorher 600 px.
+- Die Desktop-Geometrie steht in `@media (min-width: 901px)`.
+- Der Standort-Block spannt über beide Rasterzeilen des Hubs und reicht sie per `subgrid`
+  an Kopf und Kachel weiter. Nur so lässt sich die Oberkante der Kacheln an die der
+  Standort-Kachel binden.
+
+Die Mobil-Nummer steht am Rechner in den 1.22rem, die AP-429 vorgesehen hatte. Auf dem
+Handy griffen sie nie, weil die Spezifität dagegen stand.
+
+Gemessen:
+- Bis 600 px (320, 360, 375, 402, 430, 480, 600) ist die Seite pixelgleich zum Stand
+  9e9f1400. Auch die berechneten Stile weichen nur an ausgeblendeten oder wirkungslosen
+  Stellen ab, keine einzige Position oder Größe.
+- Bei 901, 1024, 1280, 1440 und 1920 px sind Ober- und Unterkante beider Spalten auf 0 px
+  gleich.
+- Kein waagerechter Überlauf, Nummern und E-Mail ohne Umbruch.
+- Die Kacheln sind 76 bis 82 px hoch.
+- „Karte laden“ füllt die Fläche.
+
+**AP-518 — Seitentitel der Kontaktseite am Desktop über den Kacheln (30.09.2026).**
+Ergänzt Entscheidung 3 aus AP-516 auf Ansage des Auftraggebers. Ab 901 px steht
+der Seitentitel (seit AP-519 „Unser Kontakt“) nicht mehr mittig über der ganzen Seite, sondern zentriert über
+den Kacheln. Er steht in derselben Zeile und auf derselben Grundlinie wie „Unser Standort
+in Herne“, beide Spalten haben damit einen Kopf.
+
+Technik: Titel und Raster sind im Markup Geschwister. Ab 901 px wird deshalb der Container
+selbst zum Raster, und `.contact-hub` bekommt `display: contents`. Die Zeilen sind dann:
+Krümelpfad, die beiden Köpfe, Kacheln und Standort-Kachel. Das Markup bleibt unverändert.
+
+Gemessen:
+- Bei 901, 960, 1024, 1280, 1440 und 1920 px ist die Unterkante des Seitentitels gleich der
+  Unterkante der Standort-Überschrift (0 px).
+- Der Titel bleibt auch bei 901 px einzeilig.
+- Kacheln und Standort-Kachel sind weiter oben und unten bündig.
+- Bis 900 px (320, 402, 480, 600, 768, 900) ist die Seite pixelgleich.
+
+**AP-519 — Seitentitel „Unser Kontakt“ (30.09.2026).** Auf Ansage des Auftraggebers heißt die
+H1 der Kontaktseite jetzt „Unser Kontakt“ statt „Kontakt zu Maik Rohdich“, auf allen
+Breiten. Das ist die einzige Änderung an der sonst finalen Handy-Fassung. Unverändert
+bleiben die unsichtbaren Stellen, die die Seite für Suchmaschinen beschreiben: `<title>`,
+Meta-Beschreibung und der JSON-LD-Name der ContactPage. Sie tragen den Betriebsnamen, den der
+kurze Titel nicht mehr nennt.
+
+**AP-520 — Besuchshinweis am Desktop senkrecht mittig (30.09.2026).** Auf Ansage des
+Auftraggebers steht der Besuchshinweis mit dem roten Strich in der Standort-Kachel ab 901 px
+genau mittig zwischen der Unterkante der Karte und der Unterkante der Kachel. Bis dahin saß
+er unten bündig mit „Route planen“.
+
+Technik: `align-self: center` allein zentriert nur in der Rasterzeile. Die endet am unteren
+Polster (18 px) und am Rahmen (1 px) der Kachel. Ein unterer Rand von −19 px gleicht das aus.
+
+Gemessen bei 901, 1024, 1280, 1440 und 1920 px:
+- Die Mitte des Hinweises weicht höchstens 0,01 px von der Mitte des Zwischenraums ab.
+- Kacheln und Standort-Kachel sind weiter bündig.
+- Bis 900 px ist die Seite pixelgleich.
+
+**AP-521 — Galerie-Seite am Desktop geordnet (30.09.2026).** Befund bei 1440 px:
+- Der Titel stand mittig in einer 712 px breiten linken Rasterspalte (x 200–455), der
+  Umschalter rechts daneben. Beides fluchtete mit nichts.
+- In der Bildergalerie (29 Fotos, 4 Spalten) stand das letzte Foto allein links. Bei
+  901–1050 px, mit 3 Spalten, blieben 2 Fotos übrig.
+- Bei „Projekte mit Details“ (5 Kacheln, 3 Spalten) klaffte rechts in der zweiten Reihe
+  eine Lücke.
+
+Entscheidungen des Auftraggebers:
+1. **Kopf mittig untereinander wie auf dem Handy.** Der Titel steht auf der Seitenmitte,
+   darunter mittig der Umschalter in 540 px, derselbe Wert wie bis 900 px. Der Krümelpfad
+   bleibt links.
+2. **Bildergalerie:** Die unvollständige letzte Reihe steht mittig. Das gilt für jede
+   Bildanzahl.
+3. **Projekte mit Details:** ebenso.
+4. **Bis 900 px unverändert.**
+
+Technik in `projekte.css` (nur ab 901 px):
+- Der Container ist einspaltig. Den Abstand trägt weiter `row-gap`.
+- Beide Raster werden zu einem Flex-Umbruch mit `justify-content: center`. Jede Kachel
+  bekommt die Spaltenbreite des bisherigen Rasters.
+- Die Selektoren tragen `:not([hidden])`, sonst hebelte `display: flex` die
+  Ausblendung der jeweils anderen Ansicht aus (`styles.css:2848`).
+- Der Knopf „Passendes Projekt gesehen? Jetzt anfragen“ bleibt unverändert. Die
+  Knopf-Familie am Desktop ist AP-511.
+
+Gemessen bei 901, 1024, 1050, 1051, 1280, 1440 und 1920 px, jeweils in beiden Ansichten:
+- Titel, Umschalter und letzte Reihe stehen auf 0 px genau auf der Containermitte.
+- Die Kachelbreiten der vollen Reihen sind unverändert (±0,02 px).
+- Immer ist nur eine Ansicht sichtbar, es gibt keinen Überlauf.
+- Lightbox und Umschalter funktionieren.
+- Bis 900 px (320, 402, 600, 768, 900) ist die Seite in beiden Ansichten pixelgleich.
+
+**AP-522 — Über-uns-Seite am Desktop geordnet (30.09.2026).** Befund bei 1440 px:
+- „Das Team hinter dem Betrieb“ stand mittig über einem linksbündigen Text. Das Zitat
+  daneben war rechnerisch mittig, wirkte aber versetzt.
+- In „Ehrlich beraten, sauber gebaut“ waren die Absätze 416, 587 und 748 px breit.
+- Das Foto begann 46 px unter der Überschrift und endete 58 px unter der grünen Kachel.
+- „Alles aus einer Hand“ hing unter dem Text in der linken Spalte.
+- Vor „Was daraus wird“ lagen 192 px statt 96 px wie an der anderen Naht.
+- Zwischen 861 und 900 px zeigte die Seite die Desktop-Fassung, der Umschaltpunkt lag
+  bei 860 px.
+
+Entscheidungen des Auftraggebers:
+1. **Team und Zitat als zwei bündige Spalten.** Überschrift und Text stehen
+   linksbündig, das Zitat mittig zum Textblock.
+2. **Ehrlich beraten:** Die Überschrift bleibt mittig, das Foto steht rechts.
+
+Umsetzung in `ueber-uns.css`:
+- Umschaltpunkt 860 → 900 px.
+- Ab 901 px die linksbündige Team-Überschrift.
+- Beide Absätze so breit wie die Zusage-Kachel.
+- Das Foto liegt absolut in der Figur und reicht von der Überschrift bis zur Kachel.
+  So bestimmt allein der Text die Zeilenhöhe. Mindesthöhe 240 px.
+- „Alles aus einer Hand“ läuft über die volle Breite.
+- Die zweite Naht ist halbiert wie in AP-460.
+
+Gemessen bei 901, 1024, 1280, 1440 und 1920 px:
+- Überschrift und Text beginnen auf derselben Kante.
+- Das Zitat steht auf 0 px mittig zum Textblock.
+- Ober- und Unterkante des Fotos liegen auf 0 px mit Überschrift und Kachel.
+- Absätze und Kachel sind gleich breit.
+- Beide Nähte sind gleich (96 px bei 1440 px), kein Überlauf.
+- Bis 860 px ist die Seite pixelgleich. 880 und 900 px zeigen die Handy-Fassung.
+
+**AP-523 — Über uns: Foto bis zur Zeile „Alles aus einer Hand“ (30.09.2026).** Auf Ansage
+des Auftraggebers reicht das Foto in „Ehrlich beraten, sauber gebaut“ am Desktop jetzt von
+der Überschrift bis zur Unterkante der Kette „Planung → … → Pflege“. Bis dahin endete es
+an der Zusage-Kachel und wirkte zu kurz: bei 1440 px 114 px über der Kette.
+
+Umsetzung: Die Rasterbereiche sind jetzt `"wort bild" / "nachsatz bild"`. Der Nachsatz
+steht damit wieder links unter dem Text.
+
+Gemessen bei 901, 1024, 1280, 1440 und 1920 px: Ober- und Unterkante liegen auf 0 px
+bündig. Das gilt auch während der Schreibmaschine tippt, dann ist die Zeile rund 11 px
+höher, und danach. Bis 900 px ist die Seite pixelgleich.
+
+**AP-515 — Footer am Desktop nach der Handy-Fassung (30.09.2026).** Der Handy-Footer
+(bis 480 px) war fertig. Darüber stand noch die alte Fassung:
+- Meisterbetrieb-Zeile, kleines Logo
+- Kacheln mit WhatsApp statt Formular
+- Öffnungszeiten, Schnellzugriff, Einsatzgebiet
+
+Zehn Seiten zeigten den alten Footer auch auf dem Handy: 404, Impressum, Datenschutz, die
+sechs Projektseiten und eine Sicherungskopie.
+
+Entscheidungen des Auftraggebers:
+1. **Am Desktop exakt die Inhalte des Handys.**
+2. **Die Handy-Karte dreispaltig:** Marke | Kacheln 2×2 | Erreichbarkeit mit WhatsApp und
+   Instagram, darunter © und Recht.
+3. **Handy-Karte bis 900 px.**
+4. **Alle Seiten gleich.**
+
+Umsetzung:
+- **Markup:** `_footer.html` verliert Meisterbetrieb-Zeile, WhatsApp-Kachel,
+  Öffnungszeiten und Schnellzugriff mit Einsatzgebiet.
+- **`render.mjs`:** Die Handy-Bausteine gelten für jede Seite. `HANDY_FOOTER_SEITEN` und
+  `stundenZusatz` sind entfallen.
+- **Seiten:** Übernommen per `build-footers.mjs` auf allen 52 Seiten; pro Datei hat sich
+  nur der Footer-Bereich geändert (geprüft).
+- **Stylesheet:** `footer-kontakt.css` lädt jetzt jede Footer-Seite, mit einheitlich
+  `?v=20260930a`. Das gilt auch für die Vorlagen `projekt.html`, `rechtstext.html` und
+  die drei Leistungsvorlagen. Ein Probelauf von `build-leistungen`, `build-index` und
+  `build-rechtstexte` ergab keinen weiteren Diff.
+- **`footer-kontakt.css`:** Aussehen in der Grundebene, Handy-Karte bis 900 px, Desktop-Karte
+  ab 901 px.
+- **Ausgleich für den entfallenen Block:** Das leere `.footer-utility` trug auf dem Handy
+  20 px, weil es als Rasterbehälter nicht mit dem Nachbarn kollabierte. Der Abstand ist am
+  `.footer-bottom` zurückgeholt.
+
+Gemessen:
+- Bis 480 px sind Startseite, Kontakt, Über uns, Galerie und zwei Leistungsseiten bei 320,
+  402 und 480 px pixelgleich.
+- Impressum, Projektseite und 404 zeigen bei 402 px denselben Footer wie Kontakt.
+- Am Desktop (901–1920 px) liegt die Karte im Container, die drei Spalten sind oben bündig.
+- Kein Überlauf, keine Nummer umgebrochen.
+- Der Formular-Link hat je Seitentiefe das richtige Präfix (404 wurzelabsolut).
+- Die Konsole ist fehlerfrei.
+
+**AP-524 — Startseite: Eckdaten und Qualifikationen am Desktop wie auf dem Handy
+(30.09.2026).** AP-503 hatte beide Bausteine des Willkommenbereichs am Desktop in die Breite
+gelegt: die Eckdaten als flaches Band mit vier Zellen, die Qualifikationen als Viererreihe
+über 1240 px.
+
+Auf Ansage des Auftraggebers gilt am Desktop wieder die Handy-Anordnung:
+- **Eckdaten:** 25+ | 1000+, darunter „Ihr Fachteam“, darunter die Google-Bewertung mit
+  den Zierlinien.
+- **Qualifikationen:** im 2×2-Raster.
+- **Größe:** beide mittig und rund ein Viertel größer, per `zoom: 1.25` bei `max-width:
+  32rem`, sichtbar 640 px.
+- **Abstände und Zertifikat:** Die oberen Abstände und das Zertifikat (17.6rem) sind durch
+  den Zoom geteilt. So bleiben sie sichtbar wie vorher.
+
+Gemessen bei 901, 1024, 1280, 1440 und 1920 px:
+- Beide stehen auf 0 px mittig und sind 640 px breit, ohne Überlauf.
+- Die Erklärung öffnet in voller Kastenbreite, das Zertifikat bleibt 352 px breit.
+- Bis 900 px (320, 402, 480, 768, 900) ist die Startseite pixelgleich.
+
+**AP-525 — Hinweis „Zum Öffnen anklicken“ am Desktop (30.09.2026).** Unter den
+Qualifikationen der Startseite steht auf Ansage des Auftraggebers ab 901 px „Zum Öffnen
+anklicken“, bis 900 px weiter „Zum Öffnen antippen“.
+- **Markup:** Beide Sätze stehen im Markup, `home-dark.css` blendet je einen aus. Es ist
+  jeweils der ganze Satz, nicht nur das Verb: Ein Elementwechsel mitten in der Zeile
+  verschob am Handy die Kantenglättung um 34 Pixel.
+- **Gemessen:** Der Ausschnitt bei 402 und 900 px ist pixelgleich. Der Hinweis verschwindet
+  beim Öffnen einer Erklärung weiter (`mobile-qualifications.js`).
+
+**AP-512 — Leistungsseiten am Desktop: die Handy-Seite als Mittelspalte (30.09.2026).**
+Ausgangslage: Die 37 Leistungsseiten (Vorlage `leistung-v2.html`) zeigten ab 481 px eine
+eigene Textfassung. Es gab kein Foto, keine Galerie und keine Ergänzungen, dafür die
+nummerierten Abschnitte „01/03“. Die fertige Handy-Fassung stand in `leistung-mobile.css`
+hinter `max-width: 480px`.
+
+Entscheidungen des Auftraggebers:
+1. **Am Desktop gilt die Handy-Seite als Mittelspalte:** 32rem mit `zoom: 1.25`, sichtbar
+   640 px.
+2. **Bis 900 px gilt die Handy-Seite**, zwischen 481 und 900 px mittig auf 34rem.
+
+Umsetzung in `leistung-mobile.css`:
+- **Handy-Block:** Er gilt auf allen Breiten (`@media all`). Der Block
+  „Desktop-Kompatibilität“ ist entfallen.
+- **Spalte:** Ab 481 px ist `.lpv2-main` eine Spalte mit `container-type`. Die ungedeckelten
+  `vw`-Maße (Galeriefenster, Bildkarussell) rechnen dort mit `cqw`.
+- **Kopf und Footer:** Sie bleiben ab 481 px, wie sie waren. Schrift und Farbe des
+  Handy-Blocks gelten nur für die Spalte; der Container-Innenabstand, die Maße von
+  `.header-inner` und die Footer-Oberkante sind zurückgesetzt.
+- **Begrenzte Kopie:** 103 Handy-Regeln aus `styles.css`, `privat-form.css`, `anfrage.css`
+  und `cta-family.css` für Anfrageknöpfe, Kontakt, Formular und Ergänzungen, plus eine
+  Variable.
+  - Erfasst wurden sie maschinell bei 480 px über vier Seiten.
+  - Jede gilt ab ihrer Grenze + 1 px, in der Reihenfolge der Quelle, `vw` als `cqw`.
+  - Sie steht mit `:where(.lpv2-main)` vor dem Handy-Block, damit die Kaskade der des
+    Handys entspricht.
+- **Galerie:** `leistung-gallery-grid.js` rechnet unter Zoom mit `currentCSSZoom`. Sonst
+  sprang das Galeriefenster beim Aufklappen.
+
+`mobileCssVersion` steht in allen 37 Inhaltsdateien auf `20260930d`. Nach dem Zusammenführen mit AP-507 wurde die Kopie auf dem gemeinsamen Stand neu erfasst: Die Leistungsliste `iphone-service-*` gilt dort auf allen Breiten, 18 Regeln sind damit entfallen. Der Build hat pro Seite
+nur die Versionszeilen geändert.
+
+Gemessen:
+- Bis 480 px sind Gartenpflege, Balkonkasten und Außenanlagenpflege bei 320, 402 und 480 px
+  pixelgleich. Eine Seite hat zwei Render-Zustände; verglichen wurde gegen frische
+  Referenzen.
+- Kopf und Footer sind bei 600, 900, 1024 und 1440 px in den berechneten Stilen
+  unverändert.
+- Die Spalte weicht vom Handy nur in breitenabhängigen Maßen ab.
+- Galerie, Fragen und der Knopf zum Kontakt funktionieren, die Konsole ist fehlerfrei.
+- Die Sturmnotdienst-Seite (alte Vorlage) ist unverändert.
+
+**AP-526 — Seitengrund am Desktop wie am Handy (30.09.2026).**
+Auf Ansage des Auftraggebers trägt die ganze Website auf allen Breiten den Handy-Seitengrund
+#1B1E19. Bisher galt er nur bis 480px, darüber lag #171916, auf der Startseite zusätzlich
+ein Verlauf hinter Hero und Eckdaten sowie ein gelber Lichtschein hinter der Kontakt-Sektion.
+- Die 480er-Weichen für den Seitengrund sind aufgehoben: `styles.css` (html/body),
+  `privat-form.css` (Startseite: `--home-page-background`, html/body, Sektionen),
+  `home-dark.css` (Hero-Stapel), `kontakt.css`, `ueber-uns.css`, `projekte.css` (Seite,
+  Galerie-Umschalter) und der Inline-Stil in `index.html`.
+- Der Lichtschein (`.private-contact::before`) ist ganz entfallen.
+- Kopf (#171916), Footer-Karte und Kacheln behalten ihre eigenen Flächen.
+- Handy (360, 402, 480 px) auf Startseite, Kontakt, Galerie, Über uns, Impressum und einer
+  Leistungsseite pixelgleich; Tablet und Desktop tragen gemessen durchgehend #1B1E19.

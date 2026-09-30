@@ -52,46 +52,88 @@
     },
     "gallery": [
       {
-        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
-        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
-        "fokusMobil": "54% 55%",
-        "width": 480,
-        "height": 360
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
-        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
-        "fokusMobil": "52% 62%",
-        "width": 480,
-        "height": 493
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
-        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/11-vorgarten-nach-rodungsarbeiten.webp",
+        "alt": "Vorbereiteter Vorgarten nach abgeschlossenen Rodungsarbeiten",
         "fokusMobil": "50% 50%",
-        "width": 480,
-        "height": 362
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
-        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
-        "fokusMobil": "50% 58%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/02-radlader-beim-flaechenraeumen.webp",
+        "alt": "Radlader beim Räumen einer Gartenfläche mit Wurzeln und altem Material",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
-        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
-        "fokusMobil": "60% 56%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/03-minibagger-auf-geraeumtem-grundstueck.webp",
+        "alt": "Minibagger auf einer frisch geräumten und gelockerten Gartenfläche",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
-        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
-        "fokusMobil": "57% 58%",
-        "width": 480,
-        "height": 297
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/04-abtransport-entfernter-rasennarbe.webp",
+        "alt": "Mitarbeiter transportiert entfernte Rasennarbe mit einer Schubkarre ab",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/05-bodenbearbeitung-nach-rodung.webp",
+        "alt": "Maschinelle Bodenbearbeitung auf einer geräumten Gartenfläche",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/06-bodenfraese-auf-geraeumter-flaeche.webp",
+        "alt": "Bodenfräse bei der Bearbeitung einer zuvor geräumten Rasenfläche",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/07-flaechenbearbeitung-mit-agria.webp",
+        "alt": "Bodenbearbeitungsmaschine auf der sauber gefrästen Fläche",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/08-bodenplanum-mit-planiergitter.webp",
+        "alt": "Planiergitter beim Herstellen eines gleichmäßigen Bodenplanums",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/09-geraeumte-gartenflaeche.webp",
+        "alt": "Geräumte und vorbereitete Gartenfläche vor der Neugestaltung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/01-minibagger-bei-rodungsarbeiten.webp",
+        "alt": "Minibagger bei Rodungsarbeiten in einem privaten Garten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/12-feinplanum-geraeumte-flaeche.webp",
+        "alt": "Fein planiertes Gelände als Ergebnis der Rodungs- und Räumarbeiten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-gallery/13-vorbereitete-flaeche-nach-rodung.webp",
+        "alt": "Sauber vorbereitete Gartenfläche nach Rodungsarbeiten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       }
     ]
   },
@@ -117,7 +159,7 @@
   "sourceSection": 24,
   "mobileVariant": "balkonkasten",
   "themeColor": "#171916",
-  "mobileCssVersion": "20260927a12",
+  "mobileCssVersion": "20260930d",
   "ctaFamilyVersion": "20260926b",
   "galleryCtaLabel": "Mehr anzeigen",
   "galleryCollapseLabel": "Weniger",

@@ -108,6 +108,28 @@ function validate(slug, d, validSlugs, weltKey) {
       errors.push(`${where}: "kundengruppe" muss ein Array aus ${KUNDENTYPEN.join('/')} sein.`);
     }
     if (d.layout === 'editorial-v2') {
+      for (const f of ['contactTitle', 'contactIntro', 'anfrageJsVersion']) {
+        if (d[f] !== undefined && !isNonEmptyString(d[f])) {
+          errors.push(`${where}: "${f}" muss, wenn gesetzt, eine nicht-leere Zeichenkette sein.`);
+        }
+      }
+      if (d.contactForm !== undefined) {
+        if (!d.contactForm || typeof d.contactForm !== 'object' || Array.isArray(d.contactForm)) {
+          errors.push(`${where}: "contactForm" muss, wenn gesetzt, ein Objekt sein.`);
+        } else {
+          Object.entries(d.contactForm).forEach(([key, value]) => {
+            if (!isNonEmptyString(value)) {
+              errors.push(`${where}: contactForm.${key} muss eine nicht-leere Zeichenkette sein.`);
+            }
+          });
+        }
+      }
+      if (d.ctaHref !== undefined && !isNonEmptyString(d.ctaHref)) {
+        errors.push(`${where}: "ctaHref" muss, wenn gesetzt, eine nicht-leere Zeichenkette sein.`);
+      }
+      if (d.ctaIcon !== undefined && d.ctaIcon !== 'phone') {
+        errors.push(`${where}: "ctaIcon" kennt nur den Wert "phone".`);
+      }
       if (d.mobileVariant !== undefined && d.mobileVariant !== 'balkonkasten') {
         errors.push(`${where}: "mobileVariant" kennt nur den Wert "balkonkasten".`);
       }
@@ -126,13 +148,13 @@ function validate(slug, d, validSlugs, weltKey) {
       if (!isNonEmptyString(d.bilder?.hero?.bild)) errors.push(`${where}: bilder.hero.bild fehlt.`);
       const gallery = d.bilder?.gallery;
       const galleryLengthValid = d.mobileVariant === 'balkonkasten'
-        ? Array.isArray(gallery) && gallery.length >= 6
+        ? Array.isArray(gallery) && gallery.length >= 2
         : d.galleryVariant === 'grid-teaser'
-        ? Array.isArray(gallery) && gallery.length >= 6
+        ? Array.isArray(gallery) && gallery.length >= 2
         : Array.isArray(gallery) && gallery.length === 3;
       if (!galleryLengthValid || gallery.some((b) => !isNonEmptyString(b?.bild))) {
         const requirement = d.mobileVariant === 'balkonkasten' || d.galleryVariant === 'grid-teaser'
-          ? 'mindestens 6'
+          ? 'mindestens 2'
           : 'genau 3';
         errors.push(`${where}: bilder.gallery muss für diese Darstellungsvariante ${requirement} Bilder enthalten.`);
       }

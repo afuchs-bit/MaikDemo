@@ -48,57 +48,127 @@
   ],
   "bilder": {
     "hero": {
-      "bild": "assets/img/leistungen-mobile/terrassenbau-pflaster-640.webp",
-      "alt": "",
+      "bild": "assets/img/leistungen-mobile/terrassenbau-holzoptik-garten-640.webp",
+      "alt": "Fertiggestellte Terrasse in Holzoptik neben einem bepflanzten Kiesgarten",
       "width": 640,
       "height": 640
     },
     "gallery": [
       {
-        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
-        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
-        "fokusMobil": "54% 55%",
-        "width": 480,
-        "height": 360
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
-        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
-        "fokusMobil": "52% 62%",
-        "width": 480,
-        "height": 493
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
-        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/01-holzoptik-terrasse-mit-garten.webp",
+        "alt": "Fertiggestellte Terrasse in Holzoptik neben einem bepflanzten Kiesgarten",
         "fokusMobil": "50% 50%",
-        "width": 480,
-        "height": 362
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
-        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
-        "fokusMobil": "50% 58%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/02-holzoptik-terrasse-gartenansicht.webp",
+        "alt": "Holzoptik-Terrasse mit Blick über die angrenzende Gartenbepflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
-        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
-        "fokusMobil": "60% 56%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/04-holzoptik-terrasse-verlegung.webp",
+        "alt": "Verlegung der Holzoptik-Platten auf dem vorbereiteten Terrassenunterbau",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
-        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
-        "fokusMobil": "57% 58%",
-        "width": 480,
-        "height": 297
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/06-terrassenunterbau-vor-verlegung.webp",
+        "alt": "Verdichteter Terrassenunterbau vor der Plattenverlegung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/07-wpc-terrasse-fertig.webp",
+        "alt": "Fertiggestellte WPC-Terrasse an einem Wohnhaus",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/09-wpc-terrasse-unterkonstruktion.webp",
+        "alt": "Montage einer WPC-Terrasse auf einer Holzunterkonstruktion",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/10-holzterrasse-fertig.webp",
+        "alt": "Fertiggestellte Holzterrasse mit warmer Oberflächenbehandlung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/12-holzterrasse-weitere-ansicht.webp",
+        "alt": "Großzügige Holzterrasse vor einer Fensterfront am Abend",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/13-holzoptik-terrasse-garten.webp",
+        "alt": "Fertige Holzoptik-Terrasse mit Kiesstreifen und angrenzendem Rasen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/14-holzoptik-terrasse-detail.webp",
+        "alt": "Detail der Holzoptik-Platten und der Einfassung mit Zierkies",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/15-pflasterterrasse-fertig.webp",
+        "alt": "Fertig gepflasterte Terrasse mit braun melierten Terrassensteinen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/16-pflasterterrasse-weitere-ansicht.webp",
+        "alt": "Gepflasterte Terrasse am Wohnhaus aus einer zweiten Perspektive",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/17-natursteinplatten-terrasse.webp",
+        "alt": "Großzügige Terrasse aus hellen Natursteinplatten mit Kiesfläche",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/18-betonplatten-terrasse-verlegung.webp",
+        "alt": "Fachgerechte Verlegung großformatiger Betonplatten auf einer Terrasse",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/19-betonplatten-verlegung-detail.webp",
+        "alt": "Detailansicht bei der Verlegung großformatiger Betonplatten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/20-wpc-balkonverkleidung.webp",
+        "alt": "Balkonverkleidung aus WPC-Elementen als ergänzende Außenraumgestaltung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       }
     ]
   },
-  "thumbnail": "assets/img/leistungen-mobile/terrassenbau-pflaster-480.webp",
+  "thumbnail": "assets/img/leistungen-mobile/terrassenbau-holzoptik-garten-480.webp",
   "kundengruppe": [
     "privat"
   ],
@@ -120,7 +190,7 @@
   "sourceSection": 32,
   "mobileVariant": "balkonkasten",
   "themeColor": "#171916",
-  "mobileCssVersion": "20260927a12",
+  "mobileCssVersion": "20260930d",
   "ctaFamilyVersion": "20260926b",
   "galleryCtaLabel": "Mehr anzeigen",
   "galleryCollapseLabel": "Weniger",

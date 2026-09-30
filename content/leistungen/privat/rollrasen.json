@@ -44,46 +44,186 @@
     },
     "gallery": [
       {
-        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
-        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
-        "fokusMobil": "54% 55%",
-        "width": 480,
-        "height": 360
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
-        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
-        "fokusMobil": "52% 62%",
-        "width": 480,
-        "height": 493
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
-        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/05-rollrasen-an-geschwungener-kante.webp",
+        "alt": "Verlegung von Rollrasen entlang einer geschwungenen Natursteinkante",
         "fokusMobil": "50% 50%",
-        "width": 480,
-        "height": 362
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
-        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
-        "fokusMobil": "50% 58%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/02-rollrasen-verlegung-im-innenhof.webp",
+        "alt": "Fachgerechte Verlegung von Rollrasen in einem modernen Innenhof",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
-        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
-        "fokusMobil": "60% 56%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/06-rollrasenrollen-auf-paletten.webp",
+        "alt": "Frische Rollrasenrollen gestapelt auf Paletten für die Verlegung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
-        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
-        "fokusMobil": "57% 58%",
-        "width": 480,
-        "height": 297
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/10-rollrasenbahnen-an-der-terrasse.webp",
+        "alt": "Mitarbeiter verlegt Rollrasenbahnen neben einer gepflasterten Terrasse",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/01-fertiger-rollrasen-im-garten.webp",
+        "alt": "Große fertig verlegte Rollrasenfläche in einem gepflegten Garten mit Natursteinbeeten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/04-grosse-rollrasenflaeche-im-garten.webp",
+        "alt": "Großzügige fertige Rollrasenfläche mit geschwungener Beeteinfassung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/08-rollrasenverlegung-an-steinbeeten.webp",
+        "alt": "Rollrasenverlegung rund um ein mit Natursteinen eingefasstes Beet",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/09-rollrasen-an-terrasse-und-beeten.webp",
+        "alt": "Weitläufige Rollrasenfläche zwischen Terrasse und bepflanzten Beeten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/03-rollrasen-verlegung-im-ziergarten.webp",
+        "alt": "Zwei Mitarbeiter verlegen Rollrasen zwischen geschwungenen Natursteinbeeten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/11-rollrasen-im-holzzaun-garten.webp",
+        "alt": "Fertig verlegter Rollrasen in einem kleinen Garten mit Holzsichtschutz",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/12-rollrasenverlegung-am-beetrand.webp",
+        "alt": "Verlegung einer Rollrasenbahn entlang eines bepflanzten Beetrands",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/13-rollrasen-vor-gabionenwand.webp",
+        "alt": "Dichte fertige Rollrasenfläche vor einer Gabionenwand",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/14-rollrasenverlegung-an-stuetzmauer.webp",
+        "alt": "Mitarbeiter passt Rollrasenbahnen an einer hellen Stützmauer ein",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/15-rollrasen-und-gepflasterte-terrasse.webp",
+        "alt": "Fertige Rollrasenfläche rund um eine gepflasterte Gartenterrasse",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/16-rollrasenverlegung-mit-rasenrollen.webp",
+        "alt": "Rollrasenverlegung mit bereitliegenden Rasenrollen in einem Vorgarten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/17-frisch-verlegter-rollrasen-mit-walze.webp",
+        "alt": "Frisch verlegte Rollrasenfläche mit Rasenwalze im Vordergrund",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/18-anwalzen-der-rollrasenflaeche.webp",
+        "alt": "Rasenwalze auf einer frisch angelegten Rollrasenfläche",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/19-rollrasen-mit-naturstein-einfassung.webp",
+        "alt": "Fertiger Rollrasen mit geschwungener Einfassung aus Naturstein",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/20-rollrasen-im-geschuetzten-innenhof.webp",
+        "alt": "Gleichmäßiger Rollrasen in einem geschützten Innenhof mit Holzsichtschutz",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/21-rollrasen-zwischen-pflaster-und-zaun.webp",
+        "alt": "Kompakte Rollrasenfläche zwischen Pflasterwegen und Gartenzaun",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/22-rollrasen-vor-natursteinmauer.webp",
+        "alt": "Satte Rollrasenfläche vor einer niedrigen Natursteinmauer",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/23-rollrasen-hinter-pflanzmauer.webp",
+        "alt": "Fertiger Rollrasen hinter einer bepflanzten Natursteinmauer",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/26-aufbau-einer-rollrasenbahn.webp",
+        "alt": "Detailansicht einer angehobenen Rollrasenbahn mit tragender Erdschicht",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/28-rollrasen-an-pflanzbeetkante.webp",
+        "alt": "Dichter Rollrasen entlang einer geraden Pflanzbeetkante",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/29-rollrasen-an-natursteinkante.webp",
+        "alt": "Rollrasen mit sauberem Anschluss an eine Natursteinkante",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/31-rollrasen-grashalme-mit-tau.webp",
+        "alt": "Nahaufnahme dichter Rollrasenhalme mit feinen Tautropfen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       }
     ]
   },
@@ -109,7 +249,7 @@
   "sourceSection": 26,
   "mobileVariant": "balkonkasten",
   "themeColor": "#171916",
-  "mobileCssVersion": "20260927a12",
+  "mobileCssVersion": "20260930d",
   "ctaFamilyVersion": "20260926b",
   "galleryCtaLabel": "Mehr anzeigen",
   "galleryCollapseLabel": "Weniger",

@@ -613,18 +613,8 @@
   .private-gallery-expand,
   .private-gallery-nav { transition: none; }
 }
-.private-contact::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: -230px;
-  right: -210px;
-  width: 610px;
-  height: 610px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,237,0,.13), rgba(255,237,0,0) 69%);
-  pointer-events: none;
-}
+/* AP-526: Der gelbe Lichtschein oben rechts (::before) ist entfallen. Das Handy
+   blendete ihn schon aus; auf Wunsch des Auftraggebers jetzt auch Tablet und Desktop. */
 .private-contact + .site-footer { border-top: 1px solid rgba(255,255,255,.08); }
 .private-contact h2,
 .private-contact h3,
@@ -1618,113 +1608,11 @@
   border-bottom: 1px solid rgba(49,82,0,.08);
   background: var(--bg);   /* AP-129: war #efede5 */
 }
-.iphone-service-directory { display: none; }
-.private-request-paths .b2b-request-head { display: grid; grid-template-columns: minmax(0,1fr) clamp(330px,30vw,370px); gap: clamp(28px,3.5vw,50px); align-items: center; }
+/* AP-507: Kopf einspaltig (bisher Titel | Notfallkarte). Die Werte sind die, die am
+   Handy aus der frueheren 1050er-Stufe kamen. */
+.private-request-paths .b2b-request-head { display: grid; grid-template-columns: minmax(0,1fr); gap: 20px; align-items: center; }
 .private-request-paths .private-request-head-copy { min-width: 0; }
 .private-request-paths h2 { max-width: 780px; font-family: var(--display); font-size: var(--type-section-title-size); font-weight: 700; line-height: 1.05; letter-spacing: -.028em; }
-.private-request-paths .b2b-request-intro { max-width: 62ch; margin: var(--space-title-subtext) 0 0; color: var(--ink-mute); font-size: var(--type-section-lead-size); line-height: 1.62; }
-.private-request-paths .private-request-emergency { grid-template-columns: 46px minmax(0,1fr) 18px; gap: 14px; min-height: 96px; padding: 15px 18px; border-radius: 18px 18px 28px 18px; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__icon { width: 46px; height: 46px; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__icon svg { width: 23px; height: 23px; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__copy { gap: 5px; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__copy strong { font-size: .93rem; line-height: 1.18; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__copy small { font-size: .72rem; line-height: 1.3; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__arrow { font-size: 1.1rem; }
-.private-request-paths .b2b-request-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); grid-auto-rows: 1fr; gap: clamp(14px,1.5vw,20px); margin: clamp(32px,4vw,48px) 0 0; padding: 0; list-style: none; }
-.private-request-paths .b2b-request-grid li { min-width: 0; perspective: 1400px; }
-.private-request-paths .private-service-flip { position: relative; min-height: 352px; height: 100%; transition: transform .24s var(--ease); }
-.private-request-paths .private-service-flip:not(.is-flipped):hover { transform: translateY(-3px); }
-.private-request-paths .private-service-flip__inner { position: relative; min-height: inherit; height: 100%; transform-style: preserve-3d; transition: transform .58s cubic-bezier(.22,.72,.24,1); }
-.private-request-paths .private-service-flip.is-flipped .private-service-flip__inner { transform: rotateY(180deg); }
-.private-request-paths .private-service-face { display: flex; flex-direction: column; align-items: flex-start; position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(49,82,0,.16); border-radius: 19px; box-shadow: 0 22px 42px -35px rgba(19,26,8,.5); backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: border-color .24s var(--ease),box-shadow .24s var(--ease); }
-.private-request-paths .private-service-face[aria-hidden="true"] { pointer-events: none; }
-.private-request-paths .private-service-face--front { background: var(--bg-elev); color: var(--ink); }
-.private-request-paths .private-service-flip:not(.is-flipped):hover .private-service-face--front,.private-request-paths .private-service-flip:focus-within .private-service-face--front { border-color: rgba(49,82,0,.4); box-shadow: 0 28px 44px -31px rgba(19,26,8,.43); }
-.private-request-paths .private-service-face--back { padding: 20px; transform: rotateY(180deg); background: radial-gradient(circle at 88% 8%,rgba(255,227,0,.14),transparent 32%),linear-gradient(145deg,#244d0c 0%,#173b08 100%); color: #fff; }
-.private-request-paths .private-service-flip.is-flipped:hover .private-service-face--back,.private-request-paths .private-service-flip:focus-within .private-service-face--back { border-color: rgba(255,227,0,.48); box-shadow: 0 30px 48px -29px rgba(15,35,5,.64); }
-.private-request-paths .private-service-action:focus-visible,.private-request-paths .private-service-request-link:focus-visible,.private-request-paths .private-service-links a:focus-visible,.private-request-paths .private-service-back-button:focus-visible,.private-request-paths .b2b-request-route:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
-.private-request-paths .b2b-request-media { display: block; flex: 0 0 auto; width: 100%; height: clamp(122px,9.2vw,128px); overflow: hidden; border-bottom: 1px solid rgba(49,82,0,.11); background: var(--green-50); }
-.private-request-paths .b2b-request-media picture,.private-request-paths .b2b-request-media img { display: block; width: 100%; height: 100%; }
-.private-request-paths .b2b-request-media img { object-fit: cover; object-position: 50% 50%; transition: transform .25s var(--ease); }
-.private-request-paths .private-service-flip:not(.is-flipped):hover .b2b-request-media img { transform: scale(1.015); }
-.private-request-paths .private-service-flip--care .b2b-request-media img { transform: scale(1.08) translateY(8%); }
-.private-request-paths .private-service-flip--care:not(.is-flipped):hover .b2b-request-media img { transform: scale(1.09) translateY(8%); }
-.private-request-paths .b2b-request-copy { flex: 1 1 auto; min-width: 0; width: 100%; padding: clamp(17px,1.6vw,20px) clamp(20px,2vw,25px) 12px; }
-.private-request-paths .b2b-request-copy h3 { margin: 0; color: var(--ink); font-family: var(--display); font-size: var(--type-module-title-size); line-height: 1.2; letter-spacing: -.02em; }
-.private-request-paths .b2b-request-copy p { margin: 9px 0 0; color: var(--ink-mute); font-size: .86rem; line-height: 1.48; }
-.private-request-paths .private-service-actions { display: grid; grid-template-columns: minmax(0,.98fr) minmax(0,1.02fr); gap: 8px; width: 100%; padding: 8px clamp(20px,2vw,25px) 20px; }
-.private-request-paths .private-service-action { display: inline-flex; align-items: center; justify-content: center; min-width: 0; min-height: 46px; padding: 10px 9px; border: 1px solid var(--green-700); border-radius: 999px; font-family: var(--body); font-size: .78rem; font-weight: 800; line-height: 1.15; text-align: center; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease); }
-.private-request-paths .private-service-action:hover { transform: translateY(-1px); }
-.private-request-paths .private-service-action--primary { background: var(--green-700); color: #fff; box-shadow: 0 13px 24px -17px rgba(32,76,8,.8); }
-.private-request-paths .private-service-action--primary:hover { border-color: var(--ink); background: var(--green-900); color: #fff; }
-.private-request-paths .private-service-request-link { display: inline-flex; gap: 3px; align-items: center; justify-content: flex-end; min-width: 0; min-height: 46px; padding: 8px 0; color: var(--green-500); font-family: var(--body); font-size: .75rem; font-weight: 800; line-height: 1.2; text-align: right; text-decoration: none; white-space: nowrap; transition: color .2s var(--ease); }
-.private-request-paths .private-service-request-link:hover { color: var(--ink); }
-.private-request-paths .private-service-request-link b { flex: 0 0 auto; color: var(--coral-700); font-size: 1rem; transition: transform .2s var(--ease); }
-.private-request-paths .private-service-request-link:hover b { transform: translateX(3px); }
-.private-request-paths .private-service-back-head { width: 100%; }
-.private-request-paths .private-service-back-head > span { display: block; color: var(--yellow); font-size: .72rem; font-weight: 900; letter-spacing: .11em; line-height: 1.2; text-transform: uppercase; }
-.private-request-paths .private-service-back-head h3 { margin: 8px 0 0; color: #fff; font-family: var(--display); font-size: clamp(1.16rem,1.4vw,1.32rem); line-height: 1.13; letter-spacing: -.02em; }
-.private-request-paths .private-service-links { display: grid; flex: 1 1 auto; gap: 7px; align-content: center; width: 100%; padding: 8px 0; }
-.private-request-paths .private-service-links a { display: flex; gap: 12px; align-items: center; justify-content: space-between; min-height: 44px; padding: 9px 14px 9px 16px; border: 1px solid rgba(255,255,255,.24); border-radius: 12px; background: rgba(255,255,255,.08); color: #fff; font-family: var(--body); font-size: .84rem; font-weight: 800; line-height: 1.2; text-decoration: none; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease); }
-.private-request-paths .private-service-links a:hover { border-color: rgba(255,227,0,.72); background: var(--bg-elev); color: var(--ink); transform: translateX(2px); }
-.private-request-paths .private-service-links a b { flex: 0 0 auto; color: var(--yellow); font-size: 1rem; transition: transform .2s var(--ease); }
-.private-request-paths .private-service-links a:hover b { color: var(--coral-700); transform: translateX(3px); }
-.private-request-paths .private-service-back-button { display: inline-flex; gap: 8px; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: 9px 14px; border: 1px solid rgba(255,255,255,.38); border-radius: 999px; background: transparent; color: #fff; font-family: var(--body); font-size: .8rem; font-weight: 800; line-height: 1.2; cursor: pointer; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease); }
-.private-request-paths .private-service-back-button:hover { border-color: #fff; background: rgba(255,255,255,.12); }
-.private-request-paths .b2b-request-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(14px,1.5vw,20px); align-items: stretch; margin-top: 24px; }
-.private-request-paths .b2b-request-route { display: grid; grid-template-columns: 42px minmax(0,1fr) auto; gap: 14px; align-items: center; min-height: 86px; padding: 15px 18px; border: 1px solid rgba(49,82,0,.14); border-radius: 15px; color: var(--ink-2); text-decoration: none; box-shadow: 0 18px 34px -31px rgba(19,26,8,.48); transition: border-color .2s var(--ease),box-shadow .2s var(--ease),transform .2s var(--ease); }
-.private-request-paths .b2b-request-route:hover { border-color: rgba(49,82,0,.32); box-shadow: 0 23px 36px -29px rgba(19,26,8,.42); transform: translateY(-2px); }
-.private-request-paths .b2b-request-icon { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 11px; background: var(--bg-elev); color: var(--green-500); }
-.private-request-paths .b2b-request-other .b2b-request-icon { background: var(--green-50); }
-.private-request-paths .b2b-request-icon svg { width: 26px; height: 26px; fill: currentColor; stroke: none; stroke-width: 0; }
-.private-request-paths .b2b-request-route strong,.private-request-paths .b2b-request-route span span { display: block; }
-.private-request-paths .b2b-request-route strong { color: var(--ink); font-family: var(--display); font-size: clamp(.92rem,1vw,1rem); line-height: 1.2; }
-.private-request-paths .b2b-request-route span span { margin-top: 4px; color: var(--green-500); font-size: .78rem; font-weight: 800; }
-.private-request-paths .b2b-request-route > b { color: var(--coral-700); font-size: 1rem; }
-.private-request-paths .b2b-request-procurement { background: var(--bg-elev); }
-.private-request-paths .b2b-request-other { background: var(--bg-elev); }
-
-@media (max-width:1160px) { .private-request-paths .b2b-request-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
-@media (max-width:1050px) {
-  .private-request-paths .b2b-request-head { grid-template-columns: 1fr; gap: 20px; }
-  .private-request-paths .private-request-emergency { width: min(100%,460px); }
-}
-@media (min-width:768px) and (max-width:900px) {
-  .private-request-paths .private-service-flip { min-height: 365px; }
-  .private-request-paths .private-service-actions { padding-right: 10px; padding-left: 10px; }
-}
-@media (max-width:767px) {
-  .private-request-paths { padding: var(--space-section) 0; }
-  .private-request-paths h2 { font-size: var(--type-section-title-size); }
-  .private-request-paths .private-request-emergency { grid-template-columns: 42px minmax(0,1fr) 16px; gap: 12px; width: 100%; min-height: 82px; padding: 12px 14px; }
-  .private-request-paths .private-request-emergency .form-emergency-shortcut__icon { width: 42px; height: 42px; }
-  .private-request-paths .private-request-emergency .form-emergency-shortcut__copy strong { font-size: .84rem; }
-  .private-request-paths .private-request-emergency .form-emergency-shortcut__copy small { font-size: .68rem; }
-  .private-request-paths .b2b-request-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
-  .private-request-paths .private-service-flip { min-height: 360px; }
-  .private-request-paths .b2b-request-media { height: clamp(120px,33vw,134px); }
-  .private-request-paths .b2b-request-copy { padding: 18px 18px 10px; }
-  .private-request-paths .b2b-request-copy h3 { font-size: 1.15rem; }
-  .private-request-paths .b2b-request-copy p { margin-top: 6px; font-size: .84rem; }
-  .private-request-paths .private-service-actions { padding: 8px 10px 20px; }
-  .private-request-paths .private-service-face--back { padding: 20px; }
-  .private-request-paths .b2b-request-links { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
-  .private-request-paths .b2b-request-route { min-height: 90px; padding: 14px 15px; }
-}
-
-@media (max-width:380px) {
-  .private-request-paths .private-service-actions { grid-template-columns: 1fr; }
-  .private-request-paths .private-service-flip { min-height: 440px; }
-}
-
-@media (prefers-reduced-motion:reduce) {
-  .private-request-paths .private-service-flip,.private-request-paths .private-service-flip__inner { transition: none; }
-  .private-request-paths .private-service-flip__inner,.private-request-paths .private-service-flip.is-flipped .private-service-flip__inner { transform: none; }
-  .private-request-paths .private-service-face { transition: none; }
-  .private-request-paths .private-service-face--back { transform: none; opacity: 0; visibility: hidden; }
-  .private-request-paths .private-service-flip.is-flipped .private-service-face--front { opacity: 0; visibility: hidden; }
-  .private-request-paths .private-service-flip.is-flipped .private-service-face--back { opacity: 1; visibility: visible; }
-}
 
 /* Finale Formularverfeinerung: ruhige B2B-Typohierarchie für Privatkunden */
 .private-form,
@@ -3591,82 +3479,14 @@
     radial-gradient(circle at 88% 12%,rgba(180,212,154,.2),transparent 28%),
     var(--bg);
 }
+/* AP-509: einspaltig ohne Abstand - die Zusammenfassungskarte links ist entfallen;
+   das sind die Handy-Werte der frueheren 900er- und 480er-Stufe. */
 .private-proof-grid {
   display: grid;
-  grid-template-columns: minmax(340px,.74fr) minmax(0,1.26fr);
-  gap: clamp(18px,2vw,28px);
+  grid-template-columns: minmax(0,1fr);
+  gap: 0;
   align-items: stretch;
 }
-.private-proof-summary {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding: clamp(30px,3.2vw,46px);
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 24px 24px 44px 24px;
-  background: linear-gradient(135deg,#203506 0%,#315200 58%,#263f08 100%);
-  box-shadow: 0 30px 58px -38px rgba(19,26,8,.72);
-  color: #fff;
-}
-.private-proof-since {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  align-self: flex-start;
-  color: rgba(255,255,255,.8);
-  font-size: .76rem;
-  font-weight: 800;
-  letter-spacing: .08em;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-.private-proof-since svg {
-  width: 20px;
-  height: 20px;
-  color: var(--yellow);
-}
-.private-proof-summary h3 {
-  max-width: 12ch;
-  margin: clamp(20px,2.2vw,28px) 0 0;
-  color: #fff;
-  font-size: clamp(2.1rem,3.1vw,3.25rem);
-  line-height: 1.02;
-}
-.private-proof-summary > p {
-  max-width: 40ch;
-  margin: 18px 0 0;
-  color: rgba(255,255,255,.76);
-  font-size: clamp(.94rem,1.05vw,1.04rem);
-  line-height: 1.58;
-}
-.private-proof-rating {
-  display: grid;
-  gap: 5px;
-  margin-top: clamp(26px,2.4vw,34px);
-  padding: 18px 20px;
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 17px;
-  background: rgba(255,255,255,.085);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
-}
-.private-proof-rating-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 8px;
-}
-.private-proof-google {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: #fff;
-  font-weight: 750;
-}
-.private-proof-google svg { flex: 0 0 auto; }
 .private-proof-stars {
   color: var(--yellow);
   font-size: 1.02rem;
@@ -3678,86 +3498,12 @@
     0 0 10px rgba(242, 226, 12, .6),
     0 0 20px rgba(242, 226, 12, .35);
 }
-.private-proof-rating > strong {
-  color: #fff;
-  font-family: var(--display);
-  font-size: clamp(1.55rem,2vw,2rem);
-  line-height: 1.08;
-}
-.private-proof-rating > span {
-  color: rgba(255,255,255,.72);
-  font-size: .84rem;
-}
-.private-proof-summary .private-proof-google-link {
-  align-self: flex-start;
-  min-height: 50px;
-  margin-top: clamp(22px,1.8vw,28px);
-  border-color: rgba(255,255,255,.58);
-  background: var(--bg-elev);
-  color: var(--ink);
-}
-.private-proof-summary .private-proof-google-link:hover {
-  border-color: #fff;
-  background: var(--bg-elev);
-  color: var(--green-500);
-  transform: translateY(-2px);
-}
-.private-proof-summary .private-proof-google-link:focus-visible {
-  outline: 3px solid var(--yellow);
-  outline-offset: 3px;
-}
 .private-proof-evidence {
   display: grid;
   grid-template-rows: minmax(0,1fr) auto;
   gap: clamp(14px,1.6vw,20px);
   min-width: 0;
 }
-@media (max-width:1100px) and (min-width:901px) {
-  .private-proof-grid { grid-template-columns: minmax(320px,.76fr) minmax(0,1.24fr); }
-  .private-proof-summary { padding: 30px; }
-  .private-proof-summary h3 { font-size: clamp(2rem,3.2vw,2.6rem); }
-}
-
-@media (max-width:900px) {
-  .private-proof-grid { grid-template-columns: 1fr; }
-  .private-proof-summary h3 { max-width: 15ch; }
-}
-
-@media (max-width: 480px) {
-  .private-proof-bento .private-proof-summary { display: none; }
-  .private-proof-bento .private-proof-grid { gap: 0; }
-}
-
-@media (max-width:520px) {
-  .private-proof-bento { padding: var(--space-section) 0; }
-  .private-proof-grid { gap: 12px; }
-  .private-proof-summary {
-    padding: 22px 18px 20px;
-    border-radius: 21px 21px 36px 21px;
-  }
-  .private-proof-since { gap: 7px; font-size: .66rem; }
-  .private-proof-since svg { width: 18px; height: 18px; }
-  .private-proof-summary h3 {
-    margin-top: 15px;
-    font-size: clamp(1.78rem,8.1vw,2.1rem);
-  }
-  .private-proof-summary > p { margin-top: 12px; font-size: .84rem; line-height: 1.48; }
-  .private-proof-rating { margin-top: 18px; padding: 13px 14px; }
-  .private-proof-rating-head { margin-bottom: 6px; }
-  .private-proof-rating > strong { font-size: 1.45rem; }
-  .private-proof-rating > span { font-size: .76rem; }
-  .private-proof-summary .private-proof-google-link {
-    width: 100%;
-    min-height: 50px;
-    margin-top: 14px;
-    padding-inline: 14px;
-    justify-content: center;
-    font-size: .82rem;
-    text-align: center;
-    white-space: nowrap;
-  }
-}
-
 /* Überschrift und Rezensions-Karussell der privaten Vertrauenssektion */
 .private-proof-section-head {
   max-width: 860px;
@@ -3772,15 +3518,6 @@
   line-height: 1.05;
   letter-spacing: -.028em;
 }
-.private-proof-summary h3 {
-  max-width: 12ch;
-  margin: clamp(20px,2.2vw,28px) 0 0;
-  color: #fff;
-  font-family: var(--display);
-  font-size: clamp(2.1rem,3.1vw,3.25rem);
-  line-height: 1.02;
-  letter-spacing: -.025em;
-}
 .private-proof-evidence { display: flex; }
 @media (min-width:901px) {
   .private-proof-evidence {
@@ -3789,13 +3526,11 @@
   }
 }
 
-/* AP-F26: Diese Karte bleibt bewusst weiss - Entscheidung des Auftraggebers, weil
-   das weisse Feld mit dem G-Logo die Wiedererkennung von Google traegt. Damit ist
-   sie die einzige helle Insel auf der Seite, und ihre Schrift muss deshalb LOKAL
-   dunkel bleiben: die globalen Ink-Token sind seit AP-F25 hell.
-   Dieselbe Technik wie die frueher seitenweite merge-light-Insel, nur auf ein
-   einziges Bauteil zusammengeschnurrt. Werte aus der alten :root-Palette.
-   Wird die Karte je dunkel eingefaerbt, faellt dieser Block ersatzlos weg. */
+/* AP-F26 (abgeloest durch AP-509, 30.09.2026): Die Karte war am Desktop bewusst
+   weiss. Seit AP-509 zeigt jede Breite die dunkle Handy-Kachel (Regeln
+   .has-review-swipe weiter unten). Diese helle Palette bleibt nur fuer den Fall
+   ohne JavaScript, in dem das Karussell nicht entsteht: Die Schrift der hellen
+   Insel muss dann lokal dunkel bleiben, die globalen Ink-Token sind hell. */
 .private-review-carousel {
   --ink:      #131a08;
   --ink-2:    #3a4032;
@@ -3970,14 +3705,23 @@
   font-size: .72rem;
   font-weight: 650;
 }
-/* AP-352: Die Fusszeile traegt zwei Fassungen. Ab 481px steht wie bisher die
-   Quelle; der Link auf alle Rezensionen ist dort ueberfluessig, weil der Knopf
-   "Alle Bewertungen auf Google ansehen" ueber der Kachel sichtbar ist.
-   display: none nimmt ihn auch aus dem Zugaenglichkeitsbaum - es entsteht also
-   kein zweiter, unsichtbarer Weg zum selben Ziel. Unter 481px ist es umgekehrt:
-   Dort steht der Knopf auf display: none (Zeile 3727), und ohne diesen Link
-   fuehrte vom Telefon aus gar nichts zu den Rezensionen. */
-.private-review-alle { display: none; }
+/* AP-352 (abgeloest durch AP-509): Die Fusszeile trug zwei Fassungen - ab 481px
+   die Quelle, weil dort der Knopf "Alle Bewertungen auf Google ansehen" ueber der
+   Kachel stand, am Handy den Link. Knopf und Quellenzeile sind entfallen. */
+/* AP-509: Die Fusszeile jeder Rezension zeigt den Link zu Google statt der Quelle -
+   am Handy schon seit AP-352, jetzt auch ohne JavaScript (dieselben Werte wie die
+   .has-review-swipe-Regel, die sonst Vorrang hat). Der fruehere Knopf "Alle
+   Bewertungen auf Google ansehen" ist mit der Zusammenfassung entfallen. */
+.private-review-item .private-review-quelle { display: none; }
+.private-review-item .private-review-alle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: var(--green-500);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .private-review-details {
   margin-top: 10px;
   overflow: clip;
@@ -4150,42 +3894,45 @@
 
 @media (max-width:900px) {
   .private-proof-section-head { margin-bottom: var(--space-section-head); }
-  .private-proof-summary h3 { max-width: 15ch; }
   .private-review-carousel.has-review-rotator { height: 560px; }
 }
 
 @media (max-width:520px) {
   .private-proof-section-head { margin-bottom: var(--space-section-head); text-align: left; }
   .private-proof-section-head h2 { margin-inline: 0; font-size: var(--type-section-title-size); }
-  .private-proof-summary h3 {
-    margin-top: 15px;
-    font-size: clamp(1.78rem,8.1vw,2.1rem);
-  }
   .private-review-carousel.has-review-rotator { height: 630px; }
-  .private-review-carousel { border-radius: 19px; }
-  .private-review-carousel-head {
-    align-items: flex-start;
-    padding: 17px 18px;
-  }
-  .private-review-google-mark small { display: none; }
-  .private-review-total {
-    display: grid;
-    justify-items: end;
-    gap: 5px;
-  }
-  .private-review-scoreline { gap: 6px; }
-  .private-review-scoreline .private-proof-stars { font-size: .82rem; }
-  .private-review-total strong { font-size: 1rem; }
-  .private-review-total small { font-size: .62rem; }
-  .private-review-viewport { padding: 0 18px; }
-  .private-review-item { padding: 15px 0; }
-  .private-review-item-head > span:last-child { font-size: .61rem; }
-  .private-review-excerpt p { font-size: .88rem; line-height: 1.46; }
-  .private-review-details summary { min-height: 52px; padding: 8px 9px 8px 12px; }
-  .private-review-details-copy strong { font-size: .72rem; }
-  .private-review-details-copy small { font-size: .6rem; }
-  .private-review-details blockquote { margin: 10px; padding: 14px; font-size: .77rem; }
-  .private-review-controls { padding: 13px 18px; }
+}
+
+/* AP-509: Diese Zeilen tragen das Handy-Aussehen der Bewertungskarte mit (Kopf,
+   Summenzeile, Aufklappen, Fussleiste) und gelten jetzt auf allen Breiten. Sie
+   stehen an derselben Stelle wie vorher im 520er-Block, am Handy aendert sich
+   nichts; die Swipe-Regeln weiter unten haben Vorrang. */
+.private-review-carousel { border-radius: 19px; }
+.private-review-carousel-head {
+  align-items: flex-start;
+  padding: 17px 18px;
+}
+.private-review-google-mark small { display: none; }
+.private-review-total {
+  display: grid;
+  justify-items: end;
+  gap: 5px;
+}
+.private-review-scoreline { gap: 6px; }
+.private-review-scoreline .private-proof-stars { font-size: .82rem; }
+.private-review-total strong { font-size: 1rem; }
+.private-review-total small { font-size: .62rem; }
+.private-review-viewport { padding: 0 18px; }
+.private-review-item { padding: 15px 0; }
+.private-review-item-head > span:last-child { font-size: .61rem; }
+.private-review-excerpt p { font-size: .88rem; line-height: 1.46; }
+.private-review-details summary { min-height: 52px; padding: 8px 9px 8px 12px; }
+.private-review-details-copy strong { font-size: .72rem; }
+.private-review-details-copy small { font-size: .6rem; }
+.private-review-details blockquote { margin: 10px; padding: 14px; font-size: .77rem; }
+.private-review-controls { padding: 13px 18px; }
+
+@media (max-width:520px) {
   .private-review-nav { gap: 7px; }
   .private-review-nav button { min-width: 40px; min-height: 40px; padding: 7px; }
   .private-review-autoplay { min-height: 40px; padding: 7px 13px; }
@@ -4814,561 +4561,555 @@
   .private-project-conversion .btn { width: 100%; justify-content: center; text-align: center; }
 }
 
-/* Handy-Breiten: Die Leistungsübersicht beginnt ohne Einleitung direkt mit
-   dem zentrierten Titel. */
-@media (max-width:480px) {
-  .private-request-paths {
-    padding: 4.5rem 0;
-    border-color: rgba(151, 206, 32, .12);
-  }
+/* AP-507: Die Leistungsuebersicht A-Z gilt auf allen Breiten. Bis AP-507 stand
+   alles hier in @media (max-width:480px), der Desktop zeigte stattdessen sechs
+   Wendekarten. Die Regeln stehen an derselben Stelle, am Handy aendert sich
+   deshalb nichts; ab 481px ist die Wurzelschrift 16px wie beim iPhone mit
+   402px. Die Zeilen-Klassen (.iphone-service-grid/-row/-card) nutzen auch die
+   "Passenden Ergaenzungen" der Leistungsseiten - dort ab 481px ausgeblendet.
+   Neue Tablet- und Desktop-Masse stehen deshalb begrenzt auf
+   .private-request-paths weiter unten. */
+.private-request-paths {
+  padding: 4.5rem 0;
+  border-color: rgba(151, 206, 32, .12);
+}
 
-  .private-request-paths .private-request-head-copy {
-    text-align: center;
-  }
+.private-request-paths .private-request-head-copy {
+  text-align: center;
+}
 
-  .private-request-paths #b2b-request-paths-title {
-    max-width: 100%;
-    margin-inline: auto;
-    text-align: center;
-    text-wrap: balance;
-  }
+.private-request-paths #b2b-request-paths-title {
+  max-width: 100%;
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: balance;
+}
 
-  .private-request-paths .b2b-request-intro {
-    display: none;
-  }
+.iphone-service-directory {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: 3rem;
+}
 
-  .private-request-paths .private-request-emergency,
-  .private-request-paths > .container > .b2b-request-grid,
-  .private-request-paths > .container > .b2b-request-links {
-    display: none;
-  }
+.iphone-service-feature,
+.iphone-service-card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(151, 206, 32, .22);
+  background:
+    radial-gradient(circle at 92% 106%, rgba(151, 206, 32, .1), transparent 38%),
+    linear-gradient(145deg, #23291f 0%, #1c211a 100%);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);
+}
 
-  .iphone-service-directory {
-    display: grid;
-    gap: 1.75rem;
-    margin-top: 3rem;
-  }
+.iphone-service-feature {
+  min-height: 14.5rem;
+  border-radius: 22px 6px 22px 6px;
+}
 
-  .iphone-service-feature,
-  .iphone-service-card {
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border: 1px solid rgba(151, 206, 32, .22);
-    background:
-      radial-gradient(circle at 92% 106%, rgba(151, 206, 32, .1), transparent 38%),
-      linear-gradient(145deg, #23291f 0%, #1c211a 100%);
-    color: var(--ink);
-    text-decoration: none;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
-    -webkit-tap-highlight-color: transparent;
-    transition: border-color .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);
-  }
+.iphone-service-feature__media,
+.iphone-service-card__media {
+  position: relative;
+  z-index: 1;
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  overflow: hidden;
+  background: #20261d;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.75rem), 0 100%);
+}
 
-  .iphone-service-feature {
-    min-height: 14.5rem;
-    border-radius: 22px 6px 22px 6px;
-  }
+.iphone-service-feature__media {
+  height: 8.875rem;
+  margin-bottom: -0.75rem;
+}
 
-  .iphone-service-feature__media,
-  .iphone-service-card__media {
-    position: relative;
-    z-index: 1;
-    display: block;
-    flex: 0 0 auto;
-    width: 100%;
-    overflow: hidden;
-    background: #20261d;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.75rem), 0 100%);
-  }
+.iphone-service-feature__media::after {
+  position: absolute;
+  right: -1px;
+  bottom: 0;
+  left: -1px;
+  height: 0.875rem;
+  background: linear-gradient(90deg, #80b514 0%, #97ce20 58%, #b3e33c 100%);
+  clip-path: polygon(0 calc(100% - 0.25rem), 100% 0, 100% 2px, 0 100%);
+  content: "";
+  pointer-events: none;
+}
 
-  .iphone-service-feature__media {
-    height: 8.875rem;
-    margin-bottom: -0.75rem;
-  }
+.iphone-service-feature__media picture,
+.iphone-service-card__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
-  .iphone-service-feature__media::after {
-    position: absolute;
-    right: -1px;
-    bottom: 0;
-    left: -1px;
-    height: 0.875rem;
-    background: linear-gradient(90deg, #80b514 0%, #97ce20 58%, #b3e33c 100%);
-    clip-path: polygon(0 calc(100% - 0.25rem), 100% 0, 100% 2px, 0 100%);
-    content: "";
-    pointer-events: none;
-  }
+.iphone-service-feature__media img,
+.iphone-service-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.93) contrast(1.02);
+  transform: scale(1.01);
+  transition: transform .22s var(--ease), filter .22s var(--ease);
+}
 
-  .iphone-service-feature__media picture,
-  .iphone-service-card__media picture {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
+.iphone-service-feature__body {
+  position: relative;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.375rem 0.875rem;
+  align-items: end;
+  min-height: 6.375rem;
+  padding: 1.5625rem 1.125rem 0.9375rem;
+}
 
-  .iphone-service-feature__media img,
-  .iphone-service-card__media img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(.93) contrast(1.02);
-    transform: scale(1.01);
-    transition: transform .22s var(--ease), filter .22s var(--ease);
-  }
+.iphone-service-feature__eyebrow {
+  grid-column: 1 / -1;
+  color: var(--yellow);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .09em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
 
-  .iphone-service-feature__body {
-    position: relative;
-    z-index: 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 0.375rem 0.875rem;
-    align-items: end;
-    min-height: 6.375rem;
-    padding: 1.5625rem 1.125rem 0.9375rem;
-  }
+.iphone-service-feature__body > strong {
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1.22rem;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
 
-  .iphone-service-feature__eyebrow {
-    grid-column: 1 / -1;
-    color: var(--yellow);
-    font-size: .72rem;
-    font-weight: 900;
-    letter-spacing: .09em;
-    line-height: 1.15;
-    text-transform: uppercase;
-  }
+.iphone-service-feature__meta {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  color: var(--home-lime, #97ce20);
+  font-size: .82rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
 
-  .iphone-service-feature__body > strong {
-    color: var(--ink);
-    font-family: var(--display);
-    font-size: 1.22rem;
-    font-weight: 800;
-    letter-spacing: -.025em;
-    line-height: 1.08;
-    text-wrap: balance;
-  }
+/* AP-317: .iphone-service-card__title > b entfaellt - die Zeilen tragen
+   keine Bluete mehr. Die Regel bleibt fuer .iphone-service-feature__meta b. */
+.iphone-service-feature__meta b {
+  position: relative;
+  flex: 0 0 auto;
+  width: 1.5rem;
+  height: 1.5rem;
+  overflow: hidden;
+  background: url("../img/icons/maik-rohdich-bluete-original.png?v=20260913b") center / contain no-repeat;
+  color: transparent;
+  font-size: 0;
+  filter: saturate(1.02) drop-shadow(0 0 5px rgba(242, 226, 12, .16));
+  transition: transform .18s var(--ease);
+}
 
-  .iphone-service-feature__meta {
-    grid-column: 1 / -1;
-    display: flex;
-    gap: 0.625rem;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 0.25rem;
-    color: var(--home-lime, #97ce20);
-    font-size: .82rem;
-    font-weight: 800;
-    line-height: 1.2;
-  }
+.iphone-service-feature__meta b::before,
+.iphone-service-feature__meta b::after {
+  content: none;
+}
 
-  /* AP-317: .iphone-service-card__title > b entfaellt - die Zeilen tragen
-     keine Bluete mehr. Die Regel bleibt fuer .iphone-service-feature__meta b. */
-  .iphone-service-feature__meta b {
-    position: relative;
-    flex: 0 0 auto;
-    width: 1.5rem;
-    height: 1.5rem;
-    overflow: hidden;
-    background: url("../img/icons/maik-rohdich-bluete-original.png?v=20260913b") center / contain no-repeat;
-    color: transparent;
-    font-size: 0;
-    filter: saturate(1.02) drop-shadow(0 0 5px rgba(242, 226, 12, .16));
-    transition: transform .18s var(--ease);
-  }
+.iphone-service-feature--emergency {
+  min-height: 0;
+  /* AP-358: Rot am Rahmen. 50 % statt der gruenen 24 % ist kein Versehen:
+     #E22219 ist deutlich dunkler als #97CE20; bei gleicher Deckkraft kaeme
+     der Rahmen nur auf 1,17:1 gegen die Kachel statt 1,69:1 und waere kaum zu
+     sehen. Mit 50 % sind es 1,57:1 - so praesent wie der gruene zuvor. */
+  border-color: rgba(226, 34, 25, .5);
+  border-radius: 18px 5px 18px 5px;
+  background: linear-gradient(145deg, #232720 0%, #1c201a 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .035),
+    0 12px 24px -24px rgba(0, 0, 0, .78);
+}
 
-  .iphone-service-feature__meta b::before,
-  .iphone-service-feature__meta b::after {
-    content: none;
-  }
+.iphone-service-feature--emergency .iphone-service-feature__body {
+  grid-template-columns: minmax(0, 1fr);
+  gap: .625rem;
+  align-content: center;
+  align-items: start;
+  min-height: 7.5rem;
+  padding: 1.25rem 6.25rem 1.25rem 1.125rem;
+}
 
-  .iphone-service-feature--emergency {
-    min-height: 0;
-    /* AP-358: Rot am Rahmen. 50 % statt der gruenen 24 % ist kein Versehen:
-       #E22219 ist deutlich dunkler als #97CE20; bei gleicher Deckkraft kaeme
-       der Rahmen nur auf 1,17:1 gegen die Kachel statt 1,69:1 und waere kaum zu
-       sehen. Mit 50 % sind es 1,57:1 - so praesent wie der gruene zuvor. */
-    border-color: rgba(226, 34, 25, .5);
-    border-radius: 18px 5px 18px 5px;
-    background: linear-gradient(145deg, #232720 0%, #1c201a 100%);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, .035),
-      0 12px 24px -24px rgba(0, 0, 0, .78);
-  }
+.iphone-service-feature--emergency .iphone-service-feature__eyebrow {
+  grid-column: 1;
+  /* AP-358: zurueck auf den Ausgangston. Rot trugen zwischenzeitlich
+     --coral-700 (AP-356) und --coral (AP-357); beides ist zurueckgenommen -
+     die Vorzeile tritt wieder zurueck, Rot tragen Rand, Nummer und Pfeil. */
+  color: var(--ink-mute);
+  font-size: .68rem;
+  letter-spacing: .075em;
+  opacity: .84;
+}
 
-  .iphone-service-feature--emergency .iphone-service-feature__body {
-    grid-template-columns: minmax(0, 1fr);
-    gap: .625rem;
-    align-content: center;
-    align-items: start;
-    min-height: 7.5rem;
-    padding: 1.25rem 6.25rem 1.25rem 1.125rem;
-  }
+.iphone-service-feature--emergency .iphone-service-feature__body > strong {
+  /* AP-359: der Name der Leistung im kraeftigen --coral, dem Ton von "Route
+     planen". Auf der Kachelflaeche sind das 3,09:1 - vorher stand die Zeile
+     mit 13,87:1 nahezu in Weiss und war das am besten lesbare Element der
+     Kachel. Die Zeile misst 13,5px bei 320 bis 18,2px bei 430, mager und
+     kursiv; als "grosse Schrift" im Sinne der Richtlinie zaehlt sie damit
+     nicht, gefordert waeren 4,5:1.
+     Auf Ansage des Auftraggebers, nach Offenlegung der Zahlen. Wer hier
+     spaeter aufraeumt: Das ist gewollt, kein Versehen. */
+  color: var(--coral);
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-size: 1.0625rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: .015em;
+  line-height: 1.16;
+  text-transform: none;
+}
 
-  .iphone-service-feature--emergency .iphone-service-feature__eyebrow {
-    grid-column: 1;
-    /* AP-358: zurueck auf den Ausgangston. Rot trugen zwischenzeitlich
-       --coral-700 (AP-356) und --coral (AP-357); beides ist zurueckgenommen -
-       die Vorzeile tritt wieder zurueck, Rot tragen Rand, Nummer und Pfeil. */
-    color: var(--ink-mute);
-    font-size: .68rem;
-    letter-spacing: .075em;
-    opacity: .84;
-  }
+.iphone-service-feature--emergency .iphone-service-feature__meta {
+  grid-column: 1;
+  justify-content: flex-start;
+  margin-top: 0;
+  /* AP-360: derselbe Ton wie die Vorzeile darueber, --ink-mute. Rot traegt
+     die Kachel jetzt an Rand, Ueberschrift und Pfeil; die Nummer tritt mit
+     der Vorzeile zurueck.
+     Ohne deren Daempfung auf .84: Die liegt am Elternelement und wuerde die
+     Pille samt Pfeil mit abdunkeln, denn das <b> haengt in derselben Zeile.
+     Die Nummer steht dadurch eine Spur heller als die Vorzeile - 6,90:1
+     gegen 5,34:1. */
+  color: var(--ink-mute);
+  font-size: .78rem;
+}
 
-  .iphone-service-feature--emergency .iphone-service-feature__body > strong {
-    /* AP-359: der Name der Leistung im kraeftigen --coral, dem Ton von "Route
-       planen". Auf der Kachelflaeche sind das 3,09:1 - vorher stand die Zeile
-       mit 13,87:1 nahezu in Weiss und war das am besten lesbare Element der
-       Kachel. Die Zeile misst 13,5px bei 320 bis 18,2px bei 430, mager und
-       kursiv; als "grosse Schrift" im Sinne der Richtlinie zaehlt sie damit
-       nicht, gefordert waeren 4,5:1.
-       Auf Ansage des Auftraggebers, nach Offenlegung der Zahlen. Wer hier
-       spaeter aufraeumt: Das ist gewollt, kein Versehen. */
-    color: var(--coral);
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: 1.0625rem;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: .015em;
-    line-height: 1.16;
-    text-transform: none;
-  }
+.iphone-service-feature--emergency .iphone-service-feature__meta b {
+  position: absolute;
+  top: 50%;
+  right: 1.125rem;
+  display: grid;
+  place-items: center;
+  width: 3.875rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: #0e100d;
+  filter: none;
+  box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .2);
+  transform: translateY(-50%);
+}
 
-  .iphone-service-feature--emergency .iphone-service-feature__meta {
-    grid-column: 1;
-    justify-content: flex-start;
-    margin-top: 0;
-    /* AP-360: derselbe Ton wie die Vorzeile darueber, --ink-mute. Rot traegt
-       die Kachel jetzt an Rand, Ueberschrift und Pfeil; die Nummer tritt mit
-       der Vorzeile zurueck.
-       Ohne deren Daempfung auf .84: Die liegt am Elternelement und wuerde die
-       Pille samt Pfeil mit abdunkeln, denn das <b> haengt in derselben Zeile.
-       Die Nummer steht dadurch eine Spur heller als die Vorzeile - 6,90:1
-       gegen 5,34:1. */
-    color: var(--ink-mute);
-    font-size: .78rem;
-  }
+.iphone-service-feature--emergency .iphone-service-feature__meta b img {
+  display: block;
+  width: 2.875rem;
+  height: auto;
+  object-fit: contain;
+  filter: none;
+  transform: none;
+  transition: none;
+}
 
-  .iphone-service-feature--emergency .iphone-service-feature__meta b {
-    position: absolute;
-    top: 50%;
-    right: 1.125rem;
-    display: grid;
-    place-items: center;
-    width: 3.875rem;
-    height: 2.5rem;
-    border-radius: 999px;
-    background: #0e100d;
-    filter: none;
-    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .2);
-    transform: translateY(-50%);
-  }
-
+/* AP-358: Der Pfeil traegt das kraeftige --coral - dasselbe Rot wie "Route
+   planen" im Footer. Auf der fast schwarzen Pille sind das 4,07:1; als
+   Grafik braucht er 3:1. Die Telefonnummer daneben bleibt auf dem
+   aufgehellten --coral-700, weil sie auf der helleren Kachelflaeche steht,
+   wo dieses Rot nur 3,09:1 erreicht - zwei Rottoene, jeder auf seinem
+   Untergrund richtig.
+   Die Maske ist noetig, weil die Grafik ihr fill="#56E607" fest im SVG
+   traegt: An einem <img> greift weder color noch background, und eine
+   Filterkette traefe die Zielfarbe nur ungefaehr. Dieselbe Technik steht in
+   mobile-social-proof.css am Knopfrahmen.
+   Das @supports ist der Sicherheitsgurt - ohne Maskenunterstuetzung bleibt
+   das <img> stehen und der Pfeil ist gruen statt verschwunden. */
+@supports ((mask-image: url("")) or (-webkit-mask-image: url(""))) {
   .iphone-service-feature--emergency .iphone-service-feature__meta b img {
-    display: block;
+    display: none;
+  }
+
+  .iphone-service-feature--emergency .iphone-service-feature__meta b::after {
+    content: "";
     width: 2.875rem;
-    height: auto;
-    object-fit: contain;
-    filter: none;
-    transform: none;
-    transition: none;
+    aspect-ratio: 1883 / 567;           /* Masse der Grafik */
+    background: var(--coral);
+    -webkit-mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
+            mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
   }
+}
 
-  /* AP-358: Der Pfeil traegt das kraeftige --coral - dasselbe Rot wie "Route
-     planen" im Footer. Auf der fast schwarzen Pille sind das 4,07:1; als
-     Grafik braucht er 3:1. Die Telefonnummer daneben bleibt auf dem
-     aufgehellten --coral-700, weil sie auf der helleren Kachelflaeche steht,
-     wo dieses Rot nur 3,09:1 erreicht - zwei Rottoene, jeder auf seinem
-     Untergrund richtig.
-     Die Maske ist noetig, weil die Grafik ihr fill="#56E607" fest im SVG
-     traegt: An einem <img> greift weder color noch background, und eine
-     Filterkette traefe die Zielfarbe nur ungefaehr. Dieselbe Technik steht in
-     mobile-social-proof.css am Knopfrahmen.
-     Das @supports ist der Sicherheitsgurt - ohne Maskenunterstuetzung bleibt
-     das <img> stehen und der Pfeil ist gruen statt verschwunden. */
-  @supports ((mask-image: url("")) or (-webkit-mask-image: url(""))) {
-    .iphone-service-feature--emergency .iphone-service-feature__meta b img {
-      display: none;
-    }
+/* AP-317: A-Z-Liste statt Kachelraster. Eine Spalte, kein Abstand zwischen
+   den Zeilen - getrennt wird nur beim Buchstabenwechsel. */
+.iphone-service-grid {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-    .iphone-service-feature--emergency .iphone-service-feature__meta b::after {
-      content: "";
-      width: 2.875rem;
-      aspect-ratio: 1883 / 567;           /* Masse der Grafik */
-      background: var(--coral);
-      -webkit-mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
-              mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
-    }
-  }
+.iphone-service-row {
+  min-width: 0;
+}
 
-  /* AP-317: A-Z-Liste statt Kachelraster. Eine Spalte, kein Abstand zwischen
-     den Zeilen - getrennt wird nur beim Buchstabenwechsel. */
-  .iphone-service-grid {
-    display: block;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+/* Linie nur oberhalb einer neuen Buchstabengruppe, nicht ueber der ersten. */
+.iphone-service-row--start {
+  border-top: 1px solid rgba(255, 255, 255, .12);
+}
 
-  .iphone-service-row {
-    min-width: 0;
-  }
+.iphone-service-grid > .iphone-service-row:first-child {
+  border-top: 0;
+}
 
-  /* Linie nur oberhalb einer neuen Buchstabengruppe, nicht ueber der ersten. */
-  .iphone-service-row--start {
-    border-top: 1px solid rgba(255, 255, 255, .12);
-  }
+/* Offener Auftakt der A-Gruppe: keine zweite Kachel neben dem Notdienst,
+   sondern ein ruhiger, typografischer Kontaktweg im Raster der normalen
+   Leistungszeilen. */
+.iphone-service-inquiry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
+  align-content: center;
+  align-items: center;
+  column-gap: 0.75rem;
+  min-height: 112px;
+  padding: 12px 0;
+  color: var(--home-on-dark, var(--ink));
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
 
-  .iphone-service-grid > .iphone-service-row:first-child {
-    border-top: 0;
-  }
+.iphone-service-inquiry > .iphone-service-card__letter {
+  grid-row: 1;
+  align-self: center;
+}
 
-  /* Offener Auftakt der A-Gruppe: keine zweite Kachel neben dem Notdienst,
-     sondern ein ruhiger, typografischer Kontaktweg im Raster der normalen
-     Leistungszeilen. */
-  .iphone-service-inquiry {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
-    align-content: center;
-    align-items: center;
-    column-gap: 0.75rem;
-    min-height: 112px;
-    padding: 12px 0;
-    color: var(--home-on-dark, var(--ink));
-    text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
-  }
+.iphone-service-inquiry__copy {
+  display: contents;
+  color: var(--home-on-dark, var(--ink));
+  font-family: "Baloo 2", sans-serif;
+  font-size: .9375rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .015em;
+  line-height: 1.22;
+  text-align: left;
+}
 
-  .iphone-service-inquiry > .iphone-service-card__letter {
-    grid-row: 1;
-    align-self: center;
-  }
+.iphone-service-inquiry__lead {
+  display: contents;
+}
 
-  .iphone-service-inquiry__copy {
-    display: contents;
-    color: var(--home-on-dark, var(--ink));
-    font-family: "Baloo 2", sans-serif;
-    font-size: .9375rem;
-    font-style: normal;
-    font-weight: 600;
-    letter-spacing: .015em;
-    line-height: 1.22;
-    text-align: left;
-  }
+.iphone-service-inquiry__lead > span {
+  grid-column: 2;
+  min-width: 0;
+  white-space: nowrap;
+}
 
-  .iphone-service-inquiry__lead {
-    display: contents;
-  }
+.iphone-service-inquiry__copy strong {
+  display: flex;
+  align-items: center;
+  grid-column: 2;
+  gap: 6px;
+  min-width: 0;
+  margin-top: 6px;
+  color: #56e607;
+  font: inherit;
+  letter-spacing: .015em;
+  line-height: 1.22;
+  white-space: nowrap;
+}
 
-  .iphone-service-inquiry__lead > span {
-    grid-column: 2;
-    min-width: 0;
-    white-space: nowrap;
-  }
+.iphone-service-inquiry__arrow {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  width: 28px;
+  transition: transform .18s var(--ease);
+}
 
-  .iphone-service-inquiry__copy strong {
-    display: flex;
-    align-items: center;
-    grid-column: 2;
-    gap: 6px;
-    min-width: 0;
-    margin-top: 6px;
-    color: #56e607;
-    font: inherit;
-    letter-spacing: .015em;
-    line-height: 1.22;
-    white-space: nowrap;
-  }
+.iphone-service-inquiry__arrow img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-  .iphone-service-inquiry__arrow {
-    display: inline-flex;
-    flex: 0 0 auto;
-    align-items: center;
-    width: 28px;
-    transition: transform .18s var(--ease);
-  }
+.iphone-service-inquiry__mark {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  transform: translateY(-50%);
+}
 
-  .iphone-service-inquiry__arrow img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+.iphone-service-inquiry__mark img {
+  display: block;
+  width: 64px;
+  height: auto;
+  filter: saturate(.94) drop-shadow(0 4px 7px rgba(0, 0, 0, .3));
+}
 
-  .iphone-service-inquiry__mark {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    display: grid;
-    place-items: center;
-    width: 88px;
-    height: 88px;
-    transform: translateY(-50%);
-  }
+/* AP-317: Zeile statt Kachel. Spalten: Buchstabe | Name | Foto.
+   Kein Rahmen, kein Hintergrund - die Zeilen sollen als Liste lesen, nicht
+   als Kacheln.
+   AP-320: Das Foto steht auf 88px und damit fest in Pixeln, nicht in rem.
+   Die Wurzel-Schriftgroesse ist unter 480px fluid; in rem waere das Foto je
+   nach Geraet 79 bis 105px gross geworden, nie die gewuenschten 88.
+   AP-331: Der vertikale Abstand wird um 20 Prozent reduziert: .75rem -> .6rem.
+   Die Zeile gibt dem Foto oben und unten je .6rem Luft. Die Mindesthoehe
+   folgt der festen Bildhoehe und diesem responsiven vertikalen Abstand. */
+.iphone-service-card {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
+  align-items: center;
+  column-gap: 0.75rem;
+  height: auto;
+  min-height: calc(88px + 1.2rem);
+  padding: 0.6rem 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
 
-  .iphone-service-inquiry__mark img {
-    display: block;
-    width: 64px;
-    height: auto;
-    filter: saturate(.94) drop-shadow(0 4px 7px rgba(0, 0, 0, .3));
-  }
+/* Handschriftliche Anfangsbuchstaben des Auftraggebers. Die quadratische
+   Buehne haelt alle unterschiedlichen Glyphen optisch gleich gross und
+   exakt auf derselben Achse. */
+.iphone-service-card__letter {
+  grid-column: 1;
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+}
 
-  /* AP-317: Zeile statt Kachel. Spalten: Buchstabe | Name | Foto.
-     Kein Rahmen, kein Hintergrund - die Zeilen sollen als Liste lesen, nicht
-     als Kacheln.
-     AP-320: Das Foto steht auf 88px und damit fest in Pixeln, nicht in rem.
-     Die Wurzel-Schriftgroesse ist unter 480px fluid; in rem waere das Foto je
-     nach Geraet 79 bis 105px gross geworden, nie die gewuenschten 88.
-     AP-331: Der vertikale Abstand wird um 20 Prozent reduziert: .75rem -> .6rem.
-     Die Zeile gibt dem Foto oben und unten je .6rem Luft. Die Mindesthoehe
-     folgt der festen Bildhoehe und diesem responsiven vertikalen Abstand. */
-  .iphone-service-card {
-    display: grid;
-    grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
-    align-items: center;
-    column-gap: 0.75rem;
-    height: auto;
-    min-height: calc(88px + 1.2rem);
-    padding: 0.6rem 0;
-    border: 0;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
-  }
+.iphone-service-card__letter img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-  /* Handschriftliche Anfangsbuchstaben des Auftraggebers. Die quadratische
-     Buehne haelt alle unterschiedlichen Glyphen optisch gleich gross und
-     exakt auf derselben Achse. */
-  .iphone-service-card__letter {
-    grid-column: 1;
-    display: grid;
-    place-items: center;
-    width: 1.35rem;
-    height: 1.35rem;
-  }
+/* Bei Eintraegen mit Unterzeile folgt der Buchstabe optisch der
+   Hauptbezeichnung statt der Mitte des gesamten Textblocks. */
+.iphone-service-card__letter--title-line {
+  transform: translateY(-0.55rem);
+}
 
-  .iphone-service-card__letter img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+.iphone-service-card__media {
+  grid-column: 3;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 0;
+  border-radius: 12px 4px 12px 4px;
+  clip-path: none;
+}
 
-  /* Bei Eintraegen mit Unterzeile folgt der Buchstabe optisch der
-     Hauptbezeichnung statt der Mitte des gesamten Textblocks. */
-  .iphone-service-card__letter--title-line {
-    transform: translateY(-0.55rem);
-  }
+/* AP-317: Der Name steht in der mittleren Spalte, linksbuendig. */
+.iphone-service-card__title {
+  display: grid;
+  grid-column: 2;
+  gap: 2px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+}
 
-  .iphone-service-card__media {
-    grid-column: 3;
-    width: 88px;
-    height: 88px;
-    margin-bottom: 0;
-    border-radius: 12px 4px 12px 4px;
-    clip-path: none;
-  }
+.iphone-service-card__title strong {
+  min-width: 0;
+  color: var(--ink);
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-size: .9375rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: .015em;
+  line-height: 1.22;
+  text-transform: none;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+}
 
-  /* AP-317: Der Name steht in der mittleren Spalte, linksbuendig. */
-  .iphone-service-card__title {
-    display: grid;
-    grid-column: 2;
-    gap: 2px;
-    min-width: 0;
-    min-height: 0;
-    padding: 0;
-  }
+.iphone-service-card__title--explained {
+  align-items: center;
+}
 
-  .iphone-service-card__title strong {
-    min-width: 0;
-    color: var(--ink);
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: .9375rem;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: .015em;
-    line-height: 1.22;
-    text-transform: none;
-    overflow-wrap: normal;
-    text-wrap: pretty;
-  }
+.iphone-service-card__title--explained > span {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
 
-  .iphone-service-card__title--explained {
-    align-items: center;
-  }
+.iphone-service-card__title small {
+  color: var(--ink-mute);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.14;
+}
 
-  .iphone-service-card__title--explained > span {
-    display: grid;
-    gap: 3px;
-    min-width: 0;
-  }
+.iphone-service-contact-cta {
+  justify-content: space-between;
+  max-width: none;
+  min-height: 4rem;
+  margin: 1.25rem auto 0;
+  text-align: left;
+}
 
-  .iphone-service-card__title small {
-    color: var(--ink-mute);
-    font-size: .75rem;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 1.14;
-  }
+.iphone-service-feature:focus-visible,
+.iphone-service-card:focus-visible,
+.iphone-service-inquiry:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
 
-  .iphone-service-contact-cta {
-    justify-content: space-between;
-    max-width: none;
-    min-height: 4rem;
-    margin: 1.25rem auto 0;
-    text-align: left;
-  }
+.iphone-service-feature--emergency:focus-visible {
+  outline-color: var(--home-lime, #97ce20);
+}
 
-  .iphone-service-feature:focus-visible,
-  .iphone-service-card:focus-visible,
-  .iphone-service-inquiry:focus-visible {
-    outline: 3px solid var(--yellow);
-    outline-offset: 3px;
-  }
+/* AP-358: mit dem Rahmen auf Rot. Es gibt genau eine
+   .iphone-service-feature, den Notdienst; bliebe der Wechsel gruen, blitzte
+   beim Antippen ein gruener Rahmen an einer rot umrandeten Kachel auf. */
+.iphone-service-feature:active {
+  border-color: rgba(226, 34, 25, .8);
+  box-shadow: inset 0 0 0 1px rgba(226, 34, 25, .28);
+  transform: scale(.985);
+}
 
-  .iphone-service-feature--emergency:focus-visible {
-    outline-color: var(--home-lime, #97ce20);
-  }
+/* AP-317: Die Zeile hat keinen Rahmen mehr - Rueckmeldung nur ueber den
+   Namen und das leichte Zoomen des Fotos (Regel darunter). */
+.iphone-service-card:active .iphone-service-card__title strong {
+  color: var(--home-lime, #97ce20);
+}
 
-  /* AP-358: mit dem Rahmen auf Rot. Es gibt genau eine
-     .iphone-service-feature, den Notdienst; bliebe der Wechsel gruen, blitzte
-     beim Antippen ein gruener Rahmen an einer rot umrandeten Kachel auf. */
-  .iphone-service-feature:active {
-    border-color: rgba(226, 34, 25, .8);
-    box-shadow: inset 0 0 0 1px rgba(226, 34, 25, .28);
-    transform: scale(.985);
-  }
+.iphone-service-inquiry:active .iphone-service-inquiry__arrow {
+  transform: translateX(2px);
+}
 
-  /* AP-317: Die Zeile hat keinen Rahmen mehr - Rueckmeldung nur ueber den
-     Namen und das leichte Zoomen des Fotos (Regel darunter). */
-  .iphone-service-card:active .iphone-service-card__title strong {
-    color: var(--home-lime, #97ce20);
-  }
+.iphone-service-feature:active img,
+.iphone-service-card:active img {
+  filter: saturate(1) contrast(1.04);
+  transform: scale(1.035);
+}
 
-  .iphone-service-inquiry:active .iphone-service-inquiry__arrow {
-    transform: translateX(2px);
-  }
+.iphone-service-feature:active .iphone-service-feature__meta b {
+  transform: translateX(2px);
+}
 
-  .iphone-service-feature:active img,
-  .iphone-service-card:active img {
-    filter: saturate(1) contrast(1.04);
-    transform: scale(1.035);
-  }
+.iphone-service-feature--emergency:active .iphone-service-feature__meta b {
+  transform: translateY(-50%);
+}
 
-  .iphone-service-feature:active .iphone-service-feature__meta b {
-    transform: translateX(2px);
-  }
-
-  .iphone-service-feature--emergency:active .iphone-service-feature__meta b {
-    transform: translateY(-50%);
-  }
-
-  .iphone-service-feature--emergency:active .iphone-service-feature__meta b img {
-    filter: none;
-    transform: none;
-  }
+.iphone-service-feature--emergency:active .iphone-service-feature__meta b img {
+  filter: none;
+  transform: none;
 }
 
 @media (max-width:350px) {
@@ -5394,6 +5135,129 @@
   }
 }
 
+/* AP-507: Die Werte der gemeinsamen 480er-Bloecke weiter unten (Abstaende AP-350/351,
+   Flaechen AP-354) gelten fuer #leistungen auch ab 481px - hier begrenzt auf die
+   Sektion, damit die uebrigen Sektionen der gemeinsamen Listen unberuehrt bleiben.
+   Den Seitengrund #1b1e19 setzt seit AP-526 der gemeinsame Block weiter unten auf
+   allen Breiten. Tablets zeigen die Handy-Komposition als Mittelspalte von 34rem. */
+@media (min-width: 481px) {
+  html.home-theme-dark .private-request-paths {
+    --home-space-copy: 8px;
+    --home-space-lead: 16px;
+    --home-space-list: 24px;
+    --home-space-block: 40px;
+    --home-space-feature: 48px;
+    --home-space-section: 40px;
+    --home-surface-low: #22271f;
+    --home-surface-card: #252b22;
+    --home-surface-high: #2b3327;
+    --home-surface-border: rgba(183, 203, 160, .18);
+    padding-block: var(--home-space-section);
+    border-block: 0;
+    box-shadow: none;
+  }
+
+  .private-request-paths > .container {
+    width: min(100% - calc(var(--gutter) * 2), 34rem);
+  }
+
+  html.home-theme-dark .private-request-paths .iphone-service-directory {
+    margin-top: var(--home-space-block);
+    gap: 32px;
+  }
+
+  html.home-theme-dark .private-request-paths .iphone-service-card {
+    min-height: 112px;
+    padding-block: 12px;
+  }
+
+  /* max-width: none, weil die begrenzte Knopf-Kopie in cta-family-home.css
+     (.mobile-proof-request, max-width 640px) sonst die Handy-Breite kappt. */
+  html.home-theme-dark .private-request-paths .iphone-service-contact-cta {
+    margin-top: var(--home-space-copy);
+    max-width: none;
+  }
+
+  html.home-theme-dark .private-request-paths .iphone-service-feature--emergency {
+    background: linear-gradient(145deg, #2b3226, var(--home-surface-card));
+  }
+}
+
+/* AP-507: Desktop - zwei Spalten, von oben nach unten gelesen wie ein Register
+   (A-O links, P-Z rechts; der Umbruch sitzt am <li> mit --column-break). Die
+   Notdienst-Kachel steht mittig darueber, "Zum Kontaktformular" mittig darunter. */
+@media (min-width: 901px) {
+  html.home-theme-dark .private-request-paths {
+    padding-block: clamp(56px, 6vw, 96px);
+  }
+
+  .private-request-paths > .container {
+    width: min(100% - calc(var(--gutter) * 2), 60rem);
+  }
+
+  html.home-theme-dark .private-request-paths .iphone-service-directory {
+    margin-top: clamp(40px, 4vw, 56px);
+    gap: 40px;
+  }
+
+  .private-request-paths .iphone-service-feature--emergency {
+    justify-self: center;
+    width: min(100%, 34rem);
+  }
+
+  /* Raster statt Mehrspaltensatz: Firefox kennt break-before: column im
+     Mehrspaltensatz nicht und wuerde frei ausgleichen. Hier setzt die Klasse die
+     Spalte; "dense" stellt jede Zeile der rechten Spalte in die oberste freie
+     Reihe, die Reihenfolge im DOM bleibt die Lesereihenfolge. Kommen Zeilen
+     hinzu, werden die Spalten nur ungleich lang - nichts bricht. */
+  .private-request-paths .iphone-service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: row dense;
+    column-gap: clamp(40px, 5vw, 72px);
+  }
+
+  .private-request-paths .iphone-service-grid > .iphone-service-row {
+    grid-column: 1;
+  }
+
+  .private-request-paths .iphone-service-grid > .iphone-service-row--column-break,
+  .private-request-paths .iphone-service-grid > .iphone-service-row--column-break ~ .iphone-service-row {
+    grid-column: 2;
+  }
+
+  .private-request-paths .iphone-service-grid > .iphone-service-row--column-break {
+    border-top: 0;
+  }
+
+  html.home-theme-dark .private-request-paths .iphone-service-contact-cta {
+    justify-self: center;
+    max-width: 26rem;
+  }
+}
+
+/* AP-507: Mit Maus gibt es am Desktop dieselbe Rueckmeldung wie beim Tippen am
+   Handy (:active im Block oben), ohne das Zusammenziehen der Notdienst-Kachel. */
+@media (min-width: 901px) and (hover: hover) and (pointer: fine) {
+  .private-request-paths .iphone-service-card:hover .iphone-service-card__title strong {
+    color: var(--home-lime, #97ce20);
+  }
+
+  .private-request-paths .iphone-service-card:hover img {
+    filter: saturate(1) contrast(1.04);
+    transform: scale(1.035);
+  }
+
+  .private-request-paths .iphone-service-feature:hover {
+    border-color: rgba(226, 34, 25, .8);
+    box-shadow: inset 0 0 0 1px rgba(226, 34, 25, .28);
+  }
+
+  .private-request-paths .iphone-service-inquiry:hover .iphone-service-inquiry__arrow {
+    transform: translateX(2px);
+  }
+}
+
 @media (prefers-reduced-motion:reduce) {
   .private-project-showcase .project-card,
   .private-project-showcase .project-media img,
@@ -5403,255 +5267,361 @@
   .private-project-showcase .project-card:hover .card-more b { transform: none; }
 }
 
-/* AP-208: Auf iPhone 15 Pro und 16 Pro erscheint immer genau eine Rezension.
-   Die horizontale Wischbewegung folgt der mobilen Gartenbild-Vorschau. */
-@media (max-width: 480px) {
-  .private-review-carousel.has-review-swipe {
-    --ink: #f4f6f0;
-    --ink-2: #d5dccf;
-    --ink-mute: #aeb8a8;
-    /* AP-349: Ein Gruen fuer die Karte, und zwar das der Marke - #8CC63F, der
-       Ton des Knopfes "Projekt anfragen" (--home-lime). Vorher stand hier ein
-       aufgehelltes #B6D97A, waehrend Rahmen und Lichtschimmer der Karte schon
-       #8CC63F trugen: zwei Gruen nebeneinander im selben Bauteil.
-       Kontrast auf dem Kartengrund #252B22: 7,09:1 - die Kategoriezeile ist
-       klein (10px, 800), 4,5:1 waeren gefordert. */
-    --green-500: #8cc63f;
-    --green-700: #8cc63f;
-    height: auto;
-    min-height: 0;
-    border-color: rgba(140,198,63,.28);
-    border-radius: 20px;
-    background:
-      radial-gradient(circle at 92% 4%,rgba(140,198,63,.09),transparent 31%),
-      #20251f;
-    box-shadow: 0 26px 58px -38px rgba(0,0,0,.92),inset 0 1px 0 rgba(255,255,255,.035);
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-carousel-head {
-    align-items: center;
-    padding: 17px 18px 16px;
-    border-bottom-color: rgba(140,198,63,.14);
-    background: linear-gradient(135deg,rgba(43,53,39,.98),rgba(31,37,30,.92));
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-google-mark strong {
-    color: #fff;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-viewport {
-    display: flex;
-    flex: 0 0 auto;
-    width: 100%;
-    min-height: 258px;
-    padding: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    touch-action: pan-x pan-y;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-viewport::-webkit-scrollbar {
-    display: none;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-viewport.is-jumping {
-    scroll-behavior: auto;
-    scroll-snap-type: none;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item {
-    position: relative;
-    flex: 0 0 100%;
-    width: 100%;
-    min-width: 100%;
-    min-height: 258px;
-    padding: 20px 20px 18px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    border-top: 0;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    scrollbar-color: rgba(49,82,0,.28) transparent;
-    scrollbar-width: thin;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item::before {
-    content: "“";
-    position: absolute;
-    z-index: 0;
-    margin: 34px 0 0 -5px;
-    color: rgba(140,198,63,.065);
-    font-family: Georgia,serif;
-    font-size: 5.4rem;
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item-head {
-    min-height: 20px;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item-head > span:last-child {
-    max-width: 52%;
-    font-size: .64rem;
-    letter-spacing: .07em;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-excerpt {
-    margin-top: 17px;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-excerpt p {
-    /* Reines Weiss statt des Papiertons --ink. Die Regel steht bewusst hier im
-       480px-Block: ausserhalb davon liegt das Zitat auf der hellen Karte, wo
-       --ink dunkel ist (Zeile 3616) - weiss waere dort unlesbar. */
-    color: #fff;
-    font-size: .94rem;
-    line-height: 1.52;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item figcaption {
-    margin-top: auto;
-    padding-top: 18px;
-    font-size: .69rem;
-    letter-spacing: .012em;
-  }
-
-  /* AP-352: Auf dem Telefon tritt die Quellenangabe zurueck und die Fusszeile
-     wird zum Weg auf das Google-Profil. Der Zusatz geht dabei nicht verloren -
-     "Vorgarten-Neugestaltung" und die anderen stehen oben in derselben Karte
-     als Kategoriezeile.
-     Gruen wie der Rest der Karte (--green-500 ist hier #8CC63F, 7,09:1 auf dem
-     Kartengrund). Die Unterstreichung muss sein: Farbe allein darf einen Link
-     nicht kenntlich machen.
-     24px Mindesthoehe ist die Zielgroesse nach WCAG 2.5.8; mehr ginge nicht,
-     ohne die Karte wachsen zu lassen - ihre Hoehe haengt in dieser Breite an
-     festen Massen. */
-  .private-review-carousel.has-review-swipe .private-review-item .private-review-quelle {
-    display: none;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item .private-review-alle {
-    display: inline-flex;
-    align-items: center;
-    min-height: 24px;
-    color: var(--green-500);
-    font-weight: 650;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-item .private-review-alle:focus-visible {
-    outline: 3px solid var(--yellow);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details {
-    margin-top: 15px;
-    border-color: rgba(140,198,63,.2);
-    background: linear-gradient(135deg,rgba(140,198,63,.075),rgba(255,255,255,.025));
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details:hover {
-    border-color: rgba(140,198,63,.34);
-    box-shadow: 0 12px 28px -24px rgba(0,0,0,.9);
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details-chevron {
-    background: rgba(140,198,63,.12);
-    color: #8cc63f;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details[open] .private-review-details-chevron {
-    background: #8cc63f;
-    color: #151a13;
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details[open] > summary {
-    border-bottom-color: rgba(140,198,63,.16);
-  }
-
-  .private-review-carousel.has-review-swipe .private-review-details blockquote {
-    border-left-color: rgba(140,198,63,.44);
-    background: rgba(140,198,63,.075);
-  }
-
-  .private-review-swipe-controls {
-    justify-content: center;
-    min-height: 58px;
-    margin: 0;
-    padding: 7px 16px;
-    border-top-color: rgba(140,198,63,.14);
-    background: linear-gradient(180deg,rgba(35,42,33,.72),rgba(29,35,28,.96));
-  }
-
-  .private-review-swipe-dots {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-  }
-
-  .private-review-swipe-dots button {
-    display: grid;
-    width: 42px;
-    height: 44px;
-    padding: 0;
-    place-items: center;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-  }
-
-  /* AP-351: Der weisse Innenring steht wieder, auf Ansage des Auftraggebers.
-     AP-350 hatte ihn entfernt, weil er die Punkte aufhellt: Bei 7px Durchmesser
-     frisst der 1px-Ring den Rand, gemessen Mitte 140,198,63, Rand 255,255,255 -
-     die Punkte lesen sich dadurch heller als das Markengruen darunter. Das ist
-     so gewollt.
-     Die Deckkraft der inaktiven Punkte geht mit zurueck auf .32. Sie war in
-     AP-350 nur auf .6 gestiegen, um den fehlenden Ring auszugleichen (ohne ihn
-     kamen sie auf 1,98:1 gegen den Kartengrund); mit Ring uebernimmt er das
-     wieder. */
-  .private-review-swipe-dots button > span {
-    display: block;
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
-    background: rgba(140,198,63,.32);
-    box-shadow: inset 0 0 0 1px #fff;
-    transition: width .2s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease);
-  }
-
-  .private-review-swipe-dots button[aria-current="true"] > span {
-    width: 22px;
-    background: var(--green-500);
-    box-shadow: inset 0 0 0 1px #fff;
-  }
-
-  .private-review-swipe-dots button:focus-visible {
-    outline: 3px solid var(--yellow);
-    outline-offset: -5px;
-    border-radius: 999px;
-  }
+/* AP-208: Genau eine Rezension pro Ansicht, horizontal wischbar wie die
+   Gartenbild-Vorschau. AP-509: gilt auf allen Breiten (vorher nur bis 480px im
+   Hochformat); das Skript baut das Karussell jetzt immer. */
+.private-review-carousel.has-review-swipe {
+  --ink: #f4f6f0;
+  --ink-2: #d5dccf;
+  --ink-mute: #aeb8a8;
+  /* AP-349: Ein Gruen fuer die Karte, und zwar das der Marke - #8CC63F, der
+     Ton des Knopfes "Projekt anfragen" (--home-lime). Vorher stand hier ein
+     aufgehelltes #B6D97A, waehrend Rahmen und Lichtschimmer der Karte schon
+     #8CC63F trugen: zwei Gruen nebeneinander im selben Bauteil.
+     Kontrast auf dem Kartengrund #252B22: 7,09:1 - die Kategoriezeile ist
+     klein (10px, 800), 4,5:1 waeren gefordert. */
+  --green-500: #8cc63f;
+  --green-700: #8cc63f;
+  height: auto;
+  min-height: 0;
+  border-color: rgba(140,198,63,.28);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 92% 4%,rgba(140,198,63,.09),transparent 31%),
+    #20251f;
+  box-shadow: 0 26px 58px -38px rgba(0,0,0,.92),inset 0 1px 0 rgba(255,255,255,.035);
 }
 
-@media (max-width: 480px) and (prefers-reduced-motion: reduce) {
+.private-review-carousel.has-review-swipe .private-review-carousel-head {
+  align-items: center;
+  padding: 17px 18px 16px;
+  border-bottom-color: rgba(140,198,63,.14);
+  background: linear-gradient(135deg,rgba(43,53,39,.98),rgba(31,37,30,.92));
+}
+
+.private-review-carousel.has-review-swipe .private-review-google-mark strong {
+  color: #fff;
+}
+
+.private-review-carousel.has-review-swipe .private-review-viewport {
+  display: flex;
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 258px;
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+}
+
+.private-review-carousel.has-review-swipe .private-review-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.private-review-carousel.has-review-swipe .private-review-viewport.is-jumping {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+  min-height: 258px;
+  padding: 20px 20px 18px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-top: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scrollbar-color: rgba(49,82,0,.28) transparent;
+  scrollbar-width: thin;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item::before {
+  content: "“";
+  position: absolute;
+  z-index: 0;
+  margin: 34px 0 0 -5px;
+  color: rgba(140,198,63,.065);
+  font-family: Georgia,serif;
+  font-size: 5.4rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item-head {
+  min-height: 20px;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item-head > span:last-child {
+  max-width: 52%;
+  font-size: .64rem;
+  letter-spacing: .07em;
+}
+
+.private-review-carousel.has-review-swipe .private-review-excerpt {
+  margin-top: 17px;
+}
+
+.private-review-carousel.has-review-swipe .private-review-excerpt p {
+  /* Reines Weiss statt des Papiertons --ink. Bis AP-509 stand die Regel im
+     480px-Block, weil das Zitat darueber auf der hellen Karte lag. Die Karte ist
+     jetzt auf allen Breiten dunkel; die Regel greift ohnehin nur mit JS
+     (.has-review-swipe). */
+  color: #fff;
+  font-size: .94rem;
+  line-height: 1.52;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item figcaption {
+  margin-top: auto;
+  padding-top: 18px;
+  font-size: .69rem;
+  letter-spacing: .012em;
+}
+
+/* AP-352: Auf dem Telefon tritt die Quellenangabe zurueck und die Fusszeile
+   wird zum Weg auf das Google-Profil. Der Zusatz geht dabei nicht verloren -
+   "Vorgarten-Neugestaltung" und die anderen stehen oben in derselben Karte
+   als Kategoriezeile.
+   Gruen wie der Rest der Karte (--green-500 ist hier #8CC63F, 7,09:1 auf dem
+   Kartengrund). Die Unterstreichung muss sein: Farbe allein darf einen Link
+   nicht kenntlich machen.
+   24px Mindesthoehe ist die Zielgroesse nach WCAG 2.5.8; mehr ginge nicht,
+   ohne die Karte wachsen zu lassen - ihre Hoehe haengt in dieser Breite an
+   festen Massen. */
+.private-review-carousel.has-review-swipe .private-review-item .private-review-quelle {
+  display: none;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item .private-review-alle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: var(--green-500);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.private-review-carousel.has-review-swipe .private-review-item .private-review-alle:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.private-review-carousel.has-review-swipe .private-review-details {
+  margin-top: 15px;
+  border-color: rgba(140,198,63,.2);
+  background: linear-gradient(135deg,rgba(140,198,63,.075),rgba(255,255,255,.025));
+}
+
+.private-review-carousel.has-review-swipe .private-review-details:hover {
+  border-color: rgba(140,198,63,.34);
+  box-shadow: 0 12px 28px -24px rgba(0,0,0,.9);
+}
+
+.private-review-carousel.has-review-swipe .private-review-details-chevron {
+  background: rgba(140,198,63,.12);
+  color: #8cc63f;
+}
+
+.private-review-carousel.has-review-swipe .private-review-details[open] .private-review-details-chevron {
+  background: #8cc63f;
+  color: #151a13;
+}
+
+.private-review-carousel.has-review-swipe .private-review-details[open] > summary {
+  border-bottom-color: rgba(140,198,63,.16);
+}
+
+.private-review-carousel.has-review-swipe .private-review-details blockquote {
+  border-left-color: rgba(140,198,63,.44);
+  background: rgba(140,198,63,.075);
+}
+
+.private-review-swipe-controls {
+  justify-content: center;
+  min-height: 58px;
+  margin: 0;
+  padding: 7px 16px;
+  border-top-color: rgba(140,198,63,.14);
+  background: linear-gradient(180deg,rgba(35,42,33,.72),rgba(29,35,28,.96));
+}
+
+.private-review-swipe-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.private-review-swipe-dots button {
+  display: grid;
+  width: 42px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* AP-351: Der weisse Innenring steht wieder, auf Ansage des Auftraggebers.
+   AP-350 hatte ihn entfernt, weil er die Punkte aufhellt: Bei 7px Durchmesser
+   frisst der 1px-Ring den Rand, gemessen Mitte 140,198,63, Rand 255,255,255 -
+   die Punkte lesen sich dadurch heller als das Markengruen darunter. Das ist
+   so gewollt.
+   Die Deckkraft der inaktiven Punkte geht mit zurueck auf .32. Sie war in
+   AP-350 nur auf .6 gestiegen, um den fehlenden Ring auszugleichen (ohne ihn
+   kamen sie auf 1,98:1 gegen den Kartengrund); mit Ring uebernimmt er das
+   wieder. */
+.private-review-swipe-dots button > span {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(140,198,63,.32);
+  box-shadow: inset 0 0 0 1px #fff;
+  transition: width .2s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease);
+}
+
+.private-review-swipe-dots button[aria-current="true"] > span {
+  width: 22px;
+  background: var(--green-500);
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+.private-review-swipe-dots button:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: -5px;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
   .private-review-carousel.has-review-swipe .private-review-viewport {
     scroll-behavior: auto;
   }
 
   .private-review-swipe-dots button > span {
     transition: none;
+  }
+}
+
+/* AP-509: Die Werte der gemeinsamen 480er-Bloecke weiter unten (Abstaende AP-350/351,
+   Flaechen AP-348/353/354) gelten fuer die Bewertungen auch ab 481px - begrenzt auf
+   .private-proof-bento. Den Seitengrund #1b1e19 setzt seit AP-526 der gemeinsame Block
+   weiter unten auf allen Breiten; der hellgruene Schimmer der frueheren
+   Desktop-Fassung entfaellt. Tablets zeigen die Karte als Mittelspalte von 34rem. */
+@media (min-width: 481px) {
+  html.home-theme-dark .private-proof-bento {
+    --home-space-block: 40px;
+    --home-space-section: 40px;
+    --home-surface-low: #22271f;
+    --home-surface-card: #252b22;
+    --home-surface-high: #2b3327;
+    --home-surface-border: rgba(183, 203, 160, .18);
+    padding-block: var(--home-space-section);
+    border-block: 0;
+    box-shadow: none;
+  }
+
+  .private-proof-bento > .container {
+    width: min(100% - calc(var(--gutter) * 2), 34rem);
+  }
+
+  html.home-theme-dark .private-proof-bento .private-proof-section-head {
+    margin-bottom: var(--home-space-block);
+  }
+
+  html.home-theme-dark .private-proof-bento .private-review-carousel.has-review-swipe {
+    --home-surface-border: rgba(255, 255, 255, .12);
+    --home-surface-high: var(--home-surface-card);
+    --home-surface-low:  var(--home-surface-card);
+    background: var(--home-surface-card);
+    border-color: rgba(140, 198, 63, .2);
+  }
+
+  html.home-theme-dark .private-review-carousel.has-review-swipe .private-review-carousel-head {
+    background: var(--home-surface-high);
+    border-bottom-color: var(--home-surface-border);
+  }
+
+  html.home-theme-dark .private-review-carousel.has-review-swipe .private-review-swipe-controls {
+    background: var(--home-surface-low);
+    border-top-color: var(--home-surface-border);
+  }
+}
+
+/* AP-509: Desktop - die Karte mittig mit hoechstens 40rem, dazu Pfeile links und
+   rechts der Punkte (das Skript haengt sie nur ab 901px ein; mit der Maus gibt es
+   kein Wischen). */
+@media (min-width: 901px) {
+  html.home-theme-dark .private-proof-bento {
+    padding-block: clamp(56px, 6vw, 96px);
+  }
+
+  .private-proof-bento > .container {
+    width: min(100% - calc(var(--gutter) * 2), var(--container));
+  }
+
+  html.home-theme-dark .private-proof-bento .private-proof-section-head {
+    margin-bottom: clamp(32px, 3vw, 48px);
+  }
+
+  .private-proof-bento .private-review-carousel {
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  .private-review-swipe-controls {
+    gap: 12px;
+  }
+
+  .private-review-arrow {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(140, 198, 63, .28);
+    border-radius: 999px;
+    background: transparent;
+    color: #8cc63f;
+    cursor: pointer;
+    transition: background-color .2s var(--ease), border-color .2s var(--ease);
+  }
+
+  .private-review-arrow svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .private-review-arrow:hover {
+    border-color: rgba(140, 198, 63, .55);
+    background: rgba(140, 198, 63, .12);
+  }
+
+  .private-review-arrow:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 3px;
   }
 }
 
@@ -5662,33 +5632,32 @@
   display: none;
 }
 
+/* Auch html färben: Der untere Abstand der eingerückten Footer-Kachel
+   liegt durch Margin Collapsing außerhalb des Body-Kastens (AP-289).
+   AP-526: Seitengrund und Sektionsflächen gelten auf allen Breiten - bis
+   AP-526 standen sie im 480er-Block, und ab 481px trug die Startseite #171916. */
+html.home-theme-dark {
+  --home-page-background: #1b1e19;
+}
+
+html.home-theme-dark,
+html.home-theme-dark body {
+  background: var(--home-page-background);
+}
+
+html.home-theme-dark :is(
+  .mobile-social-proof,
+  .mr-ueber,
+  .private-request-paths,
+  .private-process-updated,
+  .private-proof-bento,
+  .private-contact,
+  .private-faq
+) {
+  background: var(--home-page-background);
+}
+
 @media (max-width: 480px) {
-  /* Auch html färben: Der untere Abstand der eingerückten Footer-Kachel
-     liegt durch Margin Collapsing außerhalb des Body-Kastens (AP-289). */
-  html.home-theme-dark {
-    --home-page-background: #1b1e19;
-  }
-
-  html.home-theme-dark,
-  html.home-theme-dark body {
-    background: var(--home-page-background);
-  }
-
-  html.home-theme-dark .private-contact::before {
-    display: none;
-  }
-
-  html.home-theme-dark :is(
-    .mobile-social-proof,
-    .mr-ueber,
-    .private-request-paths,
-    .private-process-updated,
-    .private-proof-bento,
-    .private-contact,
-    .private-faq
-  ) {
-    background: var(--home-page-background);
-  }
 
   /* AP-351: Die Abschnitte gehen ohne Rand oder Schattenlinie ineinander über.
      Die Trennung erfolgt ausschließlich durch den Abstand. */
