@@ -2336,3 +2336,132 @@ Ebenfalls entfallen sind am Rechner das Einsatzgebiet (Ortsliste), der Schnellzu
 
 `gewerbekunden/index.saved.html` ist eine Sicherungskopie. Sie bekommt den Footer aus dem
 Build, lädt aber kein `footer-kontakt.css`.
+
+## AP-507 — Leistungsübersicht A–Z jetzt auch am Desktop
+
+### Was damit von der Seite verschwindet
+
+Diese Bausteine standen nur am Desktop und auf Tablets; das Handy zeigte sie nie. Sie sind
+entfallen, weil die Handy-Fassung maßgeblich ist (Entscheidung vom 15.09.2026):
+
+- der Einleitungssatz „Wählen Sie den passenden Bereich: Starten Sie direkt Ihre Anfrage
+  oder informieren Sie sich zuerst über die einzelnen Leistungen."
+- die Notfallkarte „Akuter Sturm- oder Baumschaden · Notfalltelefon 0171 / 173 89 43"
+  (mit Vorbelegung des Formulars). Ersatz: die 24h-Notdienst-Kachel über der Liste, die zur
+  Seite Sturmnotdienst führt; das Formular behält seinen Akut-Einstieg.
+- die sechs Wendekarten mit Rückseiten und Kurzwegen ins Formular:
+  - „Garten neu anlegen & umgestalten – Komplette Neu- und Umgestaltung Ihres Gartens – von
+    der Planung über Erd- und Pflanzarbeiten bis zur fertigen Außenanlage."
+  - „Vorgärten neu gestalten – Vorgärten neu anlegen oder modernisieren – pflegeleicht,
+    repräsentativ und passend zu Haus, Eingang und Grundstück."
+  - „Terrassen, Wege, Einfahrten & Zäune – Terrassen, Gartenwege, Einfahrten, Mauern und
+    Sichtschutz aus Stein, Holz und weiteren langlebigen Materialien."
+  - „Bepflanzung & Gartenpflege – Beete, Rasen und Gehölze fachgerecht anlegen und pflegen –
+    von mediterranen Pflanzen bis zur Begrünung geeigneter Dachflächen."
+  - „Bäume schneiden, fällen & kontrollieren – Baumschnitt, sichere Fällungen und fachliche
+    Baumkontrollen – auch bei schwierigen Standorten und anspruchsvollen Baumarbeiten."
+  - „Teiche, Wasserspiele & Poolumfeld – Teichanlagen und Wasserelemente sowie die
+    Gestaltung rund um Pool und Whirlpool – einschließlich Uferzonen, Technik und
+    Bepflanzung."
+- die Wegekacheln „Noch unsicher? Maik Rohdich nimmt sich persönlich die Zeit, um Sie zu
+  beraten." und „Anderes Vorhaben? Gartenwunsch besprechen".
+
+### Nicht mehr eingebundene Dateien
+
+- `assets/img/privat/services/*` (24 Dateien, die Motive der Wendekarten; KI-Zeichnungen)
+
+### Weiter offen
+
+- **Spaltenumbruch pflegen:** Am Desktop beginnt die zweite Spalte mit der Zeile, die
+  `iphone-service-row--column-break` trägt (heute „Palmen", 19 zu 19 Zeilen). Kommen
+  Leistungen hinzu, werden die Spalten ungleich lang, es bricht aber nichts. Für gleich lange
+  Spalten die Klasse dann an die passende Zeile setzen, möglichst an einer Buchstabengrenze.
+- **Schrift der A–Z-Titel:** Der Stapel `"Comic Sans MS", "Comic Sans", "Chalkboard SE",
+  cursive` zeigt am iPhone Chalkboard SE, am Mac- und Windows-Desktop echtes Comic Sans MS.
+  Das galt schon am Handy; am Desktop fällt es jetzt stärker auf.
+- **Totes Skript:** Die Wendelogik in `assets/js/privat-form.js` (IIFE mit
+  `[data-service-flip]`) läuft ins Leere; sie wird in AP-517 entfernt.
+
+## AP-509 — Google-Bewertungen als Karussell auf allen Breiten
+
+### Was damit von der Seite verschwindet
+
+Nur am Desktop und auf Tablets gab es bisher:
+
+- die grüne Zusammenfassungskarte „Seit 2001 in Herne", „Vertrauen aus über 25 Jahren
+  Gartenbau.", „Echte Bewertungen und fachliche Qualifikationen machen unsere Erfahrung
+  nachvollziehbar." mit dem Bewertungskasten „4,9 von 5 / aus 68 Google-Bewertungen" und dem
+  Knopf „Alle Bewertungen auf Google ansehen". Der Kartenkopf zeigt 4,9 und 68 weiterhin; der
+  Weg zu Google steht jetzt in jeder Bewertung („Alle Google-Rezensionen ansehen").
+- die Quellenzeilen („Google-Rezension · …") unter den Bewertungen
+- die weiße Karte mit zwei Bewertungen je Ansicht, 15-Sekunden-Autoplay, „Pause" und dem
+  animierten Aufklappen.
+
+Die frühere Entscheidung AP-F26 („Karte bleibt bewusst weiß") ist damit abgelöst.
+
+### Nicht mehr eingebunden
+
+- `assets/js/private-proof.js` ist gelöscht (nur die Startseite hatte sie geladen).
+
+### Weiter offen
+
+- Am Desktop kommen **Pfeile** „Vorherige/Nächste Bewertung" dazu (am Handy gibt es sie
+  nicht, dort wird gewischt). Gestaltung zur Abnahme.
+- Die Beschriftung „Geöffnet · innerhalb der Karte scrollen" beim Aufklappen stammt aus der
+  weißen Karte mit fester Höhe; im Karussell wächst die Karte mit. Wortlaut bei Gelegenheit
+  anpassen.
+- **Tote Regeln für AP-517:** Mit `private-proof.js` sind in `privat-form.css` diese Regeln
+  ohne Wirkung. Sie stehen noch da, weil jede Zeile vor dem Löschen gegen das Handy
+  gemessen werden muss.
+  - `.has-review-rotator`, `.has-review-motion` und `.is-reduced-motion`
+  - `.private-review-nav` und `.private-review-autoplay`
+  - im Block `(min-width: 521px) and (max-width: 1100px)` des weißen Wechslers nur der
+    Innenabstand und die Mindesthöhe. Die drei Abstände `margin-top: 8px` (Zitat, Details,
+    Bildunterschrift) wirken ohne JavaScript noch; beim Löschen die Ansicht ohne JS von
+    521 bis 1100 px vergleichen.
+- **Veralteter Kommentar:** `assets/css/anfrage.css` (Kommentar über `.anf__eyebrow`) verweist
+  noch auf `.private-proof-since` in `privat-form.css`. Die Regel ist mit AP-509 entfallen.
+  Zwei HTML-Kommentare in `index.html` (Über-uns-Kopf und Kontaktbereich) nennen sie noch
+  als Gestaltungsvorbild.
+  Die Datei gehört zur Kontaktseite, an der parallel gearbeitet wird; der Verweis wird in
+  AP-517 korrigiert.
+- **Dreifache Werte:** Die Flächen- und Abstands-Token (AP-350/351/354) stehen jetzt dreimal
+  in `privat-form.css`: im Handy-Block, in der Kopie ab 481 px für `#leistungen` (AP-507) und
+  in der für die Bewertungen (AP-509). Variante G der Überschriften steht zweimal (AP-529).
+  Bei der Zusammenführung (AP-511 bzw. beim Umstellen der Weichen auf 900 px) auf eine Stelle
+  bringen, bis dahin Änderungen an allen Stellen nachziehen.
+
+## Beobachtungen aus der Gegenprüfung (älter als AP-507/509)
+
+Gefunden beim Test in Chrome, gleich in den Ständen vor AP-507. Für die Pakete AP-510/511:
+
+- `styles.css` setzt `html { scroll-behavior: smooth }` ohne Ausnahme für reduzierte Bewegung.
+  Der Sprung zu `#anfrage` gleitet deshalb auch, wenn das Gerät „Bewegung reduzieren"
+  meldet.
+- Nach einem Klick auf einen Knopf zu `#anfrage` liegt die Formularkarte am Desktop mit
+  Bewegung 13 px unter der festen Kopfleiste (Karte ab 78 px, Kopfleiste bis 91 px). Der
+  Inhalt beginnt erst bei 107 px, lesbar bleibt alles.
+- Ab 481 px zielt der Sprung auf das Formular selbst, die Überschrift „Der erste Schritt zu
+  Ihrem Gartenprojekt" liegt dann oberhalb des Bildschirms. Bis 480 px bleibt sie sichtbar.
+  Ursache ist die Scroll-Logik in `privat-form.js`.
+- **Test-Chrome:** Eine andere Sitzung hält im gemeinsamen Mess-Chrome (Port 9333) rund 570
+  offene Tabs. Zeitabhängige Messungen deshalb in einem eigenen Browser-Kontext fahren.
+
+
+## AP-529 — Sektionsüberschriften der Startseite ab 481 px
+
+### Weiter offen
+
+- **Ablauf-Kopf ab 901 px:** Die Überschrift hat die neue Schrift, bleibt aber links mit der
+  grünen Linie, weil der Kopf zweispaltig ist und ab 1024 px mit Maus im Scroll-Pin steht.
+  Zentriert würde der Kopf höher und die Pin-Geometrie kippen. Klärt AP-508.
+- **Ablauf-Kopf 481–900 px:** Die Überschrift ist mittig, der Knopf „Projekt anfragen" mit
+  dem Hinweis „Ihre Anfrage ist unverbindlich …" steht darunter noch links. Klärt AP-508.
+- **Desktop-Größen zur Abnahme:** 38 px bei 901 px bis 48 px ab etwa 1400 px, Zeilenbreite
+  höchstens 20 em. Die Leistungen-Überschrift braucht dafür eine eigene Zeile in
+  `home-dark.css`, weil ihre ID-Regel in `privat-form.css` (1,1,0) die Breite auf 100 %
+  setzt. Ohne sie war sie zwischen 901 und etwa 1400 px breiter als die anderen fünf.
+- **Doppelte Deklarationen:** Die Regeln aus Variante G stehen in `privat-form.css` (bis
+  480 px, auch für die Leistungsseiten) und in `home-dark.css` (ab 481 px, nur Startseite).
+  Bei einer Änderung beide Stellen anpassen, bis die Leistungsseiten-Vorlage (AP-512–514)
+  eigene Überschriften-Regeln hat.

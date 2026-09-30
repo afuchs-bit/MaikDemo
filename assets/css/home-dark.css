@@ -2275,7 +2275,7 @@ html.home-theme-dark .proof-map-credit {
 
 /* --- Block 1: Kopf mit Eyebrow (AP-217) ---------------------------------
    Der Eyebrow ist zeichengleich das Bauteil der Rezensionssektion
-   (.private-proof-since, privat-form.css:3174): 0.76rem, 800, 0.08em gesperrt,
+   (.private-proof-since, mit AP-509 entfallen): 0.76rem, 800, 0.08em gesperrt,
    Versalien, Zeichen in --home-yellow. Nur die Textfarbe weicht ab - dort steht
    er auf gruenem Panel und braucht rgba(255,255,255,.8), hier auf --bg. */
 html.home-theme-dark .mr-ueber__kopf {
@@ -3281,3 +3281,83 @@ html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }
    Erreichbarkeitszeile) sind nach assets/css/footer-kontakt.css gewandert. Die
    Ueber-uns-Seite hat denselben Footer bekommen und laedt diese Datei hier nicht;
    eine zweite Kopie waere sofort auseinandergelaufen. */
+
+/* AP-529: Die sechs Sektionsueberschriften ab 481px in der Handy-Gestaltung
+   (AP-348/349, privat-form.css "Freigegebene Variante G"): Baloo 2, mittig.
+   Die Handy-Regel selbst bleibt in privat-form.css bei 480px, weil die
+   Leistungsseiten dieselbe Datei laden; home-dark.css laedt nur die Startseite.
+   Deklarationen 1:1 kopiert - bei Aenderungen an Variante G beide Stellen
+   nachziehen. Spezifitaet (0,2,2) wie am Handy. */
+@media (min-width: 481px) {
+  html.home-theme-dark h2.maik-section-title {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 31px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: -.015em;
+    text-align: center;
+    text-wrap: balance;
+    color: var(--home-on-dark);
+    -webkit-text-stroke: 0;
+    paint-order: normal;
+  }
+
+  html.home-theme-dark h2.maik-section-title::after {
+    content: none;
+    display: none;
+  }
+
+  /* Kontakt: der Kopf ist 760px breit und stand links - mittig, sonst sitzt die
+     zentrierte Ueberschrift neben der Seitenmitte. */
+  html.home-theme-dark .private-contact-intro { margin-inline: auto; }
+
+  /* FAQ: der Kopf war ab 821px zweispaltig und enthaelt nur noch die Ueberschrift. */
+  html.home-theme-dark .private-faq-head { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Ablauf bis 900px: Der Kopf ist dort einspaltig; die gruene Linie links
+   (privat-form.css, ab 768px) wuerde neben der mittigen Ueberschrift haengen. */
+@media (min-width: 481px) and (max-width: 900px) {
+  html.home-theme-dark .private-process-updated .b2b-process-intro-heading {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (min-width: 901px) {
+  html.home-theme-dark h2.maik-section-title {
+    font-size: clamp(2.25rem, 1.25rem + 2vw, 3rem);
+    max-width: 20em;
+  }
+
+  /* Leistungen: privat-form.css setzt die Breite per ID auf 100 % (1,1,0) und
+     schlaegt damit die Regel oben - ohne diese Zeile waere die Ueberschrift
+     zwischen 901 und etwa 1400px breiter als die anderen fuenf. */
+  html.home-theme-dark .private-request-paths #b2b-request-paths-title {
+    max-width: 20em;
+  }
+
+  /* Ausnahme Ablauf bis AP-508: Ab 901px ist der Kopf zweispaltig (Ueberschrift
+     mit gruener Linie links, Knopf rechts), ab 1024px mit Maus zusaetzlich im
+     Scroll-Pin. Die Ueberschrift uebernimmt nur die Schrift und bleibt links;
+     Breite wie bisher (privat-form.css: 14ch, im Pin 15ch). Im Pin gelten auch
+     Groesse und Zeilenhoehe des Pins weiter, (0,3,1) gegen (0,2,2) - sonst
+     kippt die Buehnengeometrie. */
+  html.home-theme-dark .private-process-updated .b2b-process-intro h2.maik-section-title {
+    max-width: 14ch;
+    margin-inline: 0;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  html.home-theme-dark .private-process-updated.is-scrollytelling .b2b-process-intro h2.maik-section-title {
+    max-width: 15ch;
+  }
+}

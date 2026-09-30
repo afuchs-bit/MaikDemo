@@ -4,8 +4,9 @@
    der sektionseigenen Bausteine (Bildfolge, Einladung) steht jetzt ohne
    Media Query, die Desktop-Anordnung folgt am Dateiende. Der Anfrage-CTA
    .mobile-proof-request kommt auch in #leistungen und #ablauf vor und bleibt
-   deshalb in den Handy-Bloecken; seine Gestaltung fuer diese Sektion ab
-   481px steht als begrenzte Kopie in cta-family-home.css. */
+   deshalb in den Handy-Bloecken; seine Gestaltung fuer diese Sektion und
+   (seit AP-507) fuer #leistungen steht ab 481px als begrenzte Kopie in
+   cta-family-home.css. */
 
 /* AP-290: Der Pfeil ist seit C2 ein SVG. Ohne diese Grundregel stuende es in
    Breiten ohne Mobilregeln (Desktop-Pill des Ablauf-CTAs) in 300x150 da. */
@@ -20,8 +21,8 @@
 }
 
 /* AP-295: Das Pfeilmotiv steht im Markup aller drei CTAs, sichtbar wird es
-   erst unter 481px - in der Galerie-Einladung (#social-proof) seit AP-504 auf
-   allen Breiten, siehe cta-family-home.css. Ohne diese Grundregel stuende das
+   erst unter 481px - in der Galerie-Einladung (#social-proof, AP-504) und in
+   #leistungen (AP-507) auf allen Breiten, siehe cta-family-home.css. Ohne diese Grundregel stuende das
    1883px breite PNG in Breiten ohne Mobilregeln in Originalgroesse im Button. */
 .mobile-proof-request__arrow-bild {
   display: none;
@@ -875,9 +876,9 @@
      Zeitstrahls - sie wandert dort in den CTA und erscheint erst mit
      .is-process-complete. Ausserhalb des Ablaufs hat sie keinen Anlass.
 
-     Hier nur bis 480px, wie der Ablauf-CTA; das gilt fuer #leistungen und
-     #ablauf. Die Galerie-Einladung (#social-proof) traegt diese Gestaltung seit
-     AP-504 auch ab 481px, als begrenzte Kopie in cta-family-home.css. */
+     Hier nur bis 480px, wie der Ablauf-CTA; das gilt fuer #ablauf. Die
+     Galerie-Einladung (#social-proof, AP-504) und #leistungen (AP-507) tragen
+     diese Gestaltung auch ab 481px, als begrenzte Kopie in cta-family-home.css. */
 
   .mobile-proof-request__label {
     font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
@@ -899,7 +900,7 @@
 
   /* Das gezeichnete Motiv ersetzt das SVG-Zeichen. Beide bleiben im Markup:
      ueber 480px und ohne Bilder ist das SVG weiter das sichtbare Zeichen
-     (ausser in #social-proof, siehe cta-family-home.css, AP-504). */
+     (ausser in #social-proof und #leistungen, siehe cta-family-home.css). */
 
   .mobile-proof-request__arrow svg {
     display: none;

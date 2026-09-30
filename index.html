@@ -39,15 +39,15 @@ html.home-theme-dark body { background-color: #171916; }
 <link rel="preload" as="image" type="image/avif" href="assets/img/hero/hero-fahrzeug-palmengarten-v8-1023.avif" media="(min-width: 901px)" fetchpriority="high" />
 <link rel="stylesheet" href="assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="assets/css/header-home.css?v=20260921g" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20260930e" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20260930f" />
 <link rel="stylesheet" href="assets/css/footer-kontakt.css?v=20260930a" />
-<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260930f" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20260927c" />
+<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20260930g" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20260930r" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260923d" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20260919a" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="assets/css/cta-family-home.css?v=20260930b" />
+<link rel="stylesheet" href="assets/css/cta-family-home.css?v=20260930c" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
@@ -227,14 +227,6 @@ html.home-theme-dark body { background-color: #171916; }
           Gartenbaumeister
         </text>
       </g>
-    </symbol>
-    <symbol id="private-icon-advice" viewBox="0 0 24 24">
-      <path d="M15 11V4H4v8.17L5.17 11H6z" opacity=".3"/>
-      <path d="M16 13c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10zm-12-.83V4h11v7H5.17L4 12.17zM22 7c0-.55-.45-1-1-1h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7z"/>
-    </symbol>
-    <symbol id="private-icon-idea" viewBox="0 0 24 24">
-      <path d="M12 4C8.97 4 6.5 6.47 6.5 9.5c0 2.47 1.49 3.89 2.35 4.5h6.3c.86-.61 2.35-2.03 2.35-4.5C17.5 6.47 15.03 4 12 4z" opacity=".3"/>
-      <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm-4-5h8v2H8zm4-15C7.86 2 4.5 5.36 4.5 9.5c0 3.82 2.66 5.86 3.77 6.5h7.46c1.11-.64 3.77-2.68 3.77-6.5C19.5 5.36 16.14 2 12 2zm3.15 12h-6.3C7.99 13.39 6.5 11.97 6.5 9.5 6.5 6.47 8.97 4 12 4s5.5 2.47 5.5 5.5c0 2.47-1.49 3.89-2.35 4.5z"/>
     </symbol>
     <symbol id="maik-cta-shape" viewBox="0 0 360 64">
       <path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/>
@@ -1054,13 +1046,7 @@ html.home-theme-dark body { background-color: #171916; }
     <div class="b2b-request-head reveal">
       <div class="private-request-head-copy">
         <h2 class="type-section-title maik-section-title maik-section-title--center" id="b2b-request-paths-title">Unsere Leistungen von A bis Z im Überblick</h2>
-        <p class="b2b-request-intro">Wählen Sie den passenden Bereich: Starten Sie direkt Ihre Anfrage oder informieren Sie sich zuerst über die einzelnen Leistungen.</p>
       </div>
-      <a class="form-emergency-shortcut private-request-emergency" href="#anfrage" data-prefill-bereich="sturmschaden" aria-label="Akuten Sturm- oder Baumschaden melden, Notfalltelefon 0171 173 89 43">
-        <span class="form-emergency-shortcut__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.8 19h18.4L12 3Z"/><path d="M12 9v4"/><path d="M12 16.7h.01"/></svg></span>
-        <span class="form-emergency-shortcut__copy"><strong>Akuter Sturm- oder Baumschaden</strong><small>Notfalltelefon · 0171 / 173 89 43</small></span>
-        <span class="form-emergency-shortcut__arrow" aria-hidden="true">→</span>
-      </a>
     </div>
     <div class="iphone-service-directory" aria-label="Leistungen für Privatkunden">
       <a class="iphone-service-feature iphone-service-feature--emergency" href="privatkunden/leistungen/sturmnotdienst/" aria-label="24 Stunden Baum- und Sturmnotdienst ansehen">
@@ -1077,7 +1063,8 @@ html.home-theme-dark body { background-color: #171916; }
            AP-334: Die sechs neuen Eintraege zeigen ausgewaehlte Fotos aus
            dem Drive-Ordner des Auftraggebers im vorhandenen 88px-Raster.
            Ohne eigene Detailseite fuehrt ihr Link zum Anfrageformular.
-           Die Liste ist weiterhin nur bis 480px sichtbar. -->
+           AP-507: Die Liste gilt auf allen Breiten; ab 901px steht sie
+           zweispaltig, die zweite Spalte beginnt mit der Zeile --column-break. -->
       <ul class="iphone-service-grid" aria-label="Alle weiteren Leistungen">
         <li class="iphone-service-row iphone-service-row--inquiry">
           <a class="iphone-service-inquiry" href="#anfrage" aria-label="Alles rund um den Garten und vieles mehr – Projekt über das Kontaktformular anfragen">
@@ -1200,7 +1187,7 @@ html.home-theme-dark body { background-color: #171916; }
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/objekt-gruenflaechenpflege-mitarbeiter-480.avif 480w, assets/img/leistungen-mobile/objekt-gruenflaechenpflege-mitarbeiter-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/objekt-gruenflaechenpflege-mitarbeiter-480.webp 480w, assets/img/leistungen-mobile/objekt-gruenflaechenpflege-mitarbeiter-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/objekt-gruenflaechenpflege-mitarbeiter-480.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></picture></span>
           </a>
         </li>
-        <li class="iphone-service-row iphone-service-row--start">
+        <li class="iphone-service-row iphone-service-row--start iphone-service-row--column-break">
           <a class="iphone-service-card" href="privatkunden/leistungen/palmen-winterfest/" aria-label="Winterfeste Palmen ansehen">
             <span class="iphone-service-card__letter iphone-service-card__letter--title-line" aria-hidden="true"><img src="assets/img/icons/leistung-p.png" alt="" width="192" height="192" loading="lazy" decoding="async"></span><span class="iphone-service-card__title"><strong>Palmen</strong><small>winterfest</small></span>
             <span class="iphone-service-card__media" aria-hidden="true"><picture><source type="image/avif" srcset="assets/img/leistungen-mobile/palmen-winterfest-schnee-480.avif 480w, assets/img/leistungen-mobile/palmen-winterfest-schnee-640.avif 640w" sizes="88px"><source type="image/webp" srcset="assets/img/leistungen-mobile/palmen-winterfest-schnee-480.webp 480w, assets/img/leistungen-mobile/palmen-winterfest-schnee-640.webp 640w" sizes="88px"><img src="assets/img/leistungen-mobile/palmen-winterfest-schnee-480.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></picture></span>
@@ -1325,105 +1312,6 @@ html.home-theme-dark body { background-color: #171916; }
         <span class="mobile-proof-request__label maik-cta__label">Zum Kontaktformular</span>
         <span class="mobile-proof-request__arrow maik-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="mobile-proof-request__arrow-bild maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
       </a>
-    </div>
-
-    <ul class="b2b-request-grid reveal" aria-label="Direkter Einstieg nach Anliegen">
-      <li>
-        <article class="private-service-flip">
-          <div class="private-service-flip__inner">
-            <div class="private-service-face private-service-face--front">
-              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="assets/img/privat/services/garten-neu-anlegen-640.webp 640w, assets/img/privat/services/garten-neu-anlegen-960.webp 960w, assets/img/privat/services/garten-neu-anlegen-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="assets/img/privat/services/garten-neu-anlegen-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-              <div class="b2b-request-copy"><h3>Garten neu anlegen &amp; umgestalten</h3><p>Komplette Neu- und Umgestaltung Ihres Gartens – von der Planung über Erd- und Pflanzarbeiten bis zur fertigen Außenanlage.</p></div>
-              <div class="private-service-actions"><a class="private-service-action private-service-action--primary" href="privatkunden/leistungen/gartengestaltung/" aria-label="Leistung Gartengestaltung ansehen">Leistung ansehen</a><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="gartengestaltung"><span>Vorhaben beschreiben</span><b aria-hidden="true">→</b></a></div>
-            </div>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article class="private-service-flip">
-          <div class="private-service-flip__inner">
-            <div class="private-service-face private-service-face--front">
-              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="assets/img/privat/services/vorgarten-neu-gestalten-640.webp 640w, assets/img/privat/services/vorgarten-neu-gestalten-960.webp 960w, assets/img/privat/services/vorgarten-neu-gestalten-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="assets/img/privat/services/vorgarten-neu-gestalten-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-              <div class="b2b-request-copy"><h3>Vorgärten neu gestalten</h3><p>Vorgärten neu anlegen oder modernisieren – pflegeleicht, repräsentativ und passend zu Haus, Eingang und Grundstück.</p></div>
-              <div class="private-service-actions"><a class="private-service-action private-service-action--primary" href="privatkunden/leistungen/vorgarten/" aria-label="Leistung Vorgartengestaltung ansehen">Leistung ansehen</a><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="vorgarten"><span>Vorgarten planen</span><b aria-hidden="true">→</b></a></div>
-            </div>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article class="private-service-flip">
-          <div class="private-service-flip__inner">
-            <div class="private-service-face private-service-face--front">
-              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="assets/img/privat/services/terrassen-wege-einfahrten-zaeune-640.webp 640w, assets/img/privat/services/terrassen-wege-einfahrten-zaeune-960.webp 960w, assets/img/privat/services/terrassen-wege-einfahrten-zaeune-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="assets/img/privat/services/terrassen-wege-einfahrten-zaeune-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-              <div class="b2b-request-copy"><h3>Terrassen, Wege, Einfahrten &amp; Zäune</h3><p>Terrassen, Gartenwege, Einfahrten, Mauern und Sichtschutz aus Stein, Holz und weiteren langlebigen Materialien.</p></div>
-              <div class="private-service-actions"><a class="private-service-action private-service-action--primary" href="privatkunden/leistungen/terrasse-pflasterarbeiten/" aria-label="Leistung Terrassen und Pflaster ansehen">Leistung ansehen</a><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="terrasse"><span>Flächen gestalten</span><b aria-hidden="true">→</b></a></div>
-            </div>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article class="private-service-flip private-service-flip--care" data-service-flip>
-          <div class="private-service-flip__inner">
-            <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
-              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="assets/img/privat/services/bepflanzung-gartenpflege-640.webp 640w, assets/img/privat/services/bepflanzung-gartenpflege-960.webp 960w, assets/img/privat/services/bepflanzung-gartenpflege-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="assets/img/privat/services/bepflanzung-gartenpflege-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-              <div class="b2b-request-copy"><h3>Bepflanzung &amp; Gartenpflege</h3><p>Beete, Rasen und Gehölze fachgerecht anlegen und pflegen – von mediterranen Pflanzen bis zur Begrünung geeigneter Dachflächen.</p></div>
-              <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-bepflanzung-back" aria-label="Leistungen für Bepflanzung und Gartenpflege ansehen">Leistungen ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="gartenpflege"><span>Pflege anfragen</span><b aria-hidden="true">→</b></a></div>
-            </div>
-            <div class="private-service-face private-service-face--back" id="service-bepflanzung-back" data-service-back aria-hidden="true" inert>
-              <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Bepflanzung &amp; Gartenpflege</h3></div>
-              <div class="private-service-links">
-                <a href="privatkunden/leistungen/bepflanzung/"><span>Bepflanzung</span><b aria-hidden="true">→</b></a>
-                <a href="privatkunden/leistungen/gartenpflege/"><span>Gartenpflege</span><b aria-hidden="true">→</b></a>
-                <a href="privatkunden/leistungen/palmen-winterfest/"><span>Palmen &amp; winterfest</span><b aria-hidden="true">→</b></a>
-                <a href="privatkunden/leistungen/dachbegruenung/"><span>Dachbegrünung</span><b aria-hidden="true">→</b></a>
-              </div>
-              <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Bepflanzung und Gartenpflege"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
-            </div>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article class="private-service-flip" data-service-flip>
-          <div class="private-service-flip__inner">
-            <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
-              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-640.webp 640w, assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-960.webp 960w, assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="assets/img/privat/services/baeume-schneiden-faellen-kontrollieren-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-              <div class="b2b-request-copy"><h3>Bäume schneiden, fällen &amp; kontrollieren</h3><p>Baumschnitt, sichere Fällungen und fachliche Baumkontrollen – auch bei schwierigen Standorten und anspruchsvollen Baumarbeiten.</p></div>
-              <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-baumarbeiten-back" aria-label="Leistungen für Bäume schneiden, fällen und kontrollieren ansehen">Leistungen ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="baumarbeiten"><span>Baumarbeiten anfragen</span><b aria-hidden="true">→</b></a></div>
-            </div>
-            <div class="private-service-face private-service-face--back" id="service-baumarbeiten-back" data-service-back aria-hidden="true" inert>
-              <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Bäume schneiden, fällen &amp; kontrollieren</h3></div>
-              <div class="private-service-links">
-                <a href="privatkunden/leistungen/baumkontrolle/"><span>Baumkontrolle &amp; Gutachten</span><b aria-hidden="true">→</b></a>
-                <a href="privatkunden/leistungen/baumarbeiten/"><span>Baumfällung &amp; Baumarbeiten</span><b aria-hidden="true">→</b></a>
-              </div>
-              <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Bäume schneiden, fällen und kontrollieren"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
-            </div>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article class="private-service-flip" data-service-flip>
-          <div class="private-service-flip__inner">
-            <div class="private-service-face private-service-face--front" data-service-front aria-hidden="false">
-              <span class="b2b-request-media" aria-hidden="true"><picture><source type="image/webp" srcset="assets/img/privat/services/teiche-wasserspiele-poolumfeld-640.webp 640w, assets/img/privat/services/teiche-wasserspiele-poolumfeld-960.webp 960w, assets/img/privat/services/teiche-wasserspiele-poolumfeld-1200.webp 1200w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1160px) 46vw, 400px"><img src="assets/img/privat/services/teiche-wasserspiele-poolumfeld-1200.png" alt="" width="1200" height="600" loading="lazy" decoding="async"></picture></span>
-              <div class="b2b-request-copy"><h3>Teiche, Wasserspiele &amp; Poolumfeld</h3><p>Teichanlagen und Wasserelemente sowie die Gestaltung rund um Pool und Whirlpool – einschließlich Uferzonen, Technik und Bepflanzung.</p></div>
-              <div class="private-service-actions"><button class="private-service-action private-service-action--primary" type="button" data-service-open aria-expanded="false" aria-controls="service-wasser-back" aria-label="Leistungen für Teiche, Wasserspiele und Poolumfeld ansehen">Leistungen ansehen</button><a class="private-service-request-link" href="#anfrage" data-prefill-bereich="teich"><span>Wasserbereich planen</span><b aria-hidden="true">→</b></a></div>
-            </div>
-            <div class="private-service-face private-service-face--back" id="service-wasser-back" data-service-back aria-hidden="true" inert>
-              <div class="private-service-back-head"><span>Passende Leistungen</span><h3>Teiche, Wasserspiele &amp; Poolumfeld</h3></div>
-              <div class="private-service-links">
-                <a href="privatkunden/leistungen/teichbau/"><span>Teichanlagen</span><b aria-hidden="true">→</b></a>
-                <a href="privatkunden/leistungen/pool-whirlpool-umfeld/"><span>Pool- &amp; Whirlpool-Umfeld</span><b aria-hidden="true">→</b></a>
-              </div>
-              <button class="private-service-back-button" type="button" data-service-close aria-label="Zurück zur Übersicht: Teiche, Wasserspiele und Poolumfeld"><span aria-hidden="true">←</span> Zurück zur Übersicht</button>
-            </div>
-          </div>
-        </article>
-      </li>
-    </ul>
-    <div class="b2b-request-links reveal">
-      <a class="b2b-request-route b2b-request-procurement" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon" aria-hidden="true"><svg focusable="false"><use href="#private-icon-advice"/></svg></span><span><strong>Noch unsicher?</strong><span>Maik Rohdich nimmt sich persönlich die Zeit, um Sie zu beraten.</span></span><b aria-hidden="true">→</b></a>
-      <a class="b2b-request-route b2b-request-other" href="#anfrage" data-prefill-bereich="unsicher"><span class="b2b-request-icon" aria-hidden="true"><svg focusable="false"><use href="#private-icon-idea"/></svg></span><span><strong>Anderes Vorhaben?</strong><span>Gartenwunsch besprechen</span></span><b aria-hidden="true">→</b></a>
     </div>
   </div>
 </section>
@@ -1607,29 +1495,6 @@ html.home-theme-dark body { background-color: #171916; }
     </header>
 
     <div class="private-proof-grid">
-      <div class="private-proof-summary reveal">
-        <div class="private-proof-since">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-4.6 7-11a7 7 0 1 0-14 0c0 6.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
-          <span>Seit 2001 in Herne</span>
-        </div>
-        <h3>Vertrauen aus über 25 Jahren Gartenbau.</h3>
-        <p>Echte Bewertungen und fachliche Qualifikationen machen unsere Erfahrung nachvollziehbar.</p>
-
-        <div class="private-proof-rating" role="group" aria-label="Google-Bewertung: 4,9 von 5 Sternen bei 68 Bewertungen">
-          <div class="private-proof-rating-head">
-            <span class="private-proof-google" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.55-.21-2.27H12v4.29h6.46c-.29 1.5-1.15 2.77-2.45 3.62v3h3.96c2.32-2.13 3.52-5.27 3.52-8.64Z"/><path fill="#34A853" d="M12 24c3.31 0 6.09-1.1 8.12-2.98l-3.96-3c-1.1.74-2.5 1.18-4.16 1.18-3.2 0-5.91-2.16-6.88-5.07H1.04v3.18C3.05 21.3 7.18 24 12 24Z"/><path fill="#FBBC05" d="M5.12 14.13a7.2 7.2 0 0 1 0-4.27V6.68H1.04A12 12 0 0 0 0 12c0 1.93.46 3.76 1.04 5.32l4.08-3.19Z"/><path fill="#EA4335" d="M12 4.75c1.8 0 3.42.62 4.7 1.83l3.52-3.52C18.09 1.06 15.31 0 12 0 7.18 0 3.05 2.7 1.04 6.68l4.08 3.18C6.09 6.91 8.8 4.75 12 4.75Z"/></svg>
-              <span>Google</span>
-            </span>
-            <span class="private-proof-stars" aria-hidden="true">★★★★★</span>
-          </div>
-          <strong>4,9 von 5</strong>
-          <span>aus 68 Google-Bewertungen</span>
-        </div>
-
-        <a class="btn btn-outline private-proof-google-link" href="https://www.google.com/maps?cid=17269983059863253129" target="_blank" rel="noopener">Alle Bewertungen auf Google ansehen</a>
-      </div>
-
       <div class="private-proof-evidence">
         <section class="private-review-carousel reveal" data-review-pair-rotator aria-label="Google-Rezensionen" aria-roledescription="Karussell">
           <header class="private-review-carousel-head">
@@ -1714,14 +1579,7 @@ html.home-theme-dark body { background-color: #171916; }
             </div>
           </div>
 
-          <footer class="private-review-controls" data-review-controls hidden>
-            <div class="private-review-nav">
-              <button type="button" data-review-prev aria-label="Vorherige zwei Bewertungen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
-              <span data-review-status aria-label="Bewertungsgruppe 1 von 2">1 / 2</span>
-              <button type="button" data-review-next aria-label="Nächste zwei Bewertungen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
-            </div>
-            <button class="private-review-autoplay" type="button" data-review-autoplay aria-pressed="false" aria-label="Automatischen Wechsel pausieren"><span class="private-review-autoplay-icon" aria-hidden="true">Ⅱ</span><span data-review-autoplay-label>Pause</span></button>
-          </footer>
+          <footer class="private-review-controls" data-review-controls hidden></footer>
         </section>
       </div>
     </div>
@@ -2666,8 +2524,7 @@ html.home-theme-dark body { background-color: #171916; }
 <script src="assets/js/mobile-qualifications.js?v=20260909a" defer></script>
 <script src="assets/js/mobile-social-proof-gallery.js?v=20260930a" defer></script>
 <script src="assets/js/cta-signal.js?v=20260914a" defer></script>
-<script src="assets/js/mobile-private-review.js?v=20260927a" defer></script>
-<script src="assets/js/private-proof.js?v=20260927a" defer></script>
+<script src="assets/js/mobile-private-review.js?v=20260930c" defer></script>
 <script src="assets/js/privat-form.js?v=20260919d" defer></script>
 <script src="assets/js/anfrage.js?v=20260918c" defer></script>
 <script src="assets/js/home-header-morph.js?v=20260830b" defer></script>

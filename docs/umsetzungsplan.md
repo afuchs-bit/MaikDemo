@@ -1636,6 +1636,7 @@ Neu am 29.09.:
 | 515 | Menü und Footer |
 | 516 | Kontakt, Galerie, Über uns |
 | 517 | Aufräumen |
+| 529 | Sektionsüberschriften der Startseite (vorgezogen; 518–521 hat die Kontakt- und Galerie-Arbeit belegt) |
 
 **AP-500 — toter Knopf der Leistungsseiten.** Der Hero-Knopf `a.lpv2-cta` springt auf
 `#anfrage`. Das Formular liegt in `section.lpv2-home-contact`, und `leistung-mobile.css`
@@ -1745,6 +1746,143 @@ Gemessen in Chrome:
 - Drehen 820 → 1180 → 820 px ohne sichtbare Klone und ohne versteckte Bilder in der
   festen Reihe.
 - Kein seitlicher Überlauf von 481 bis 1920 px.
+
+**AP-507 — Leistungsübersicht A–Z auf allen Breiten.** Der Desktop zeigte bis dahin sechs
+Wendekarten mit KI-Zeichnungen, eine Notfallkarte und zwei Wegekacheln. Die A–Z-Liste mit
+Buchstabengrafiken und Fotos gab es nur am Handy: Ihre gesamte Gestaltung stand in einem
+480-px-Block von `privat-form.css`, und eine Grundregel blendete sie sonst aus.
+
+- **Anheben:** Die Media-Klammer dieses Blocks ist entfernt, die Regeln stehen an derselben
+  Stelle. Am Handy ändert sich deshalb nichts.
+- **Begrenzte Tablet- und Desktop-Maße:** Die Zeilen-Klassen nutzen auch die „Passenden
+  Ergänzungen" der 37 Leistungsseiten (dort ab 481 px ausgeblendet). Alle neuen Maße
+  tragen deshalb `.private-request-paths`.
+- **Tablets (481–900 px)** zeigen die Handy-Liste als Mittelspalte von 34 rem.
+- **Desktop ab 901 px:**
+  - zwei Spalten, von oben nach unten gelesen wie ein Register (A–O links, P–Z rechts).
+    Umgesetzt als Raster (`grid-auto-flow: row dense`): Die Zeile mit
+    `iphone-service-row--column-break` und alle folgenden stehen rechts. Ein
+    Mehrspaltensatz mit `break-before: column` war der erste Entwurf; Firefox kennt
+    diesen Umbruch nicht und hätte frei ausgeglichen.
+  - Notdienst-Kachel mittig darüber, „Zum Kontaktformular" mittig darunter
+  - Hover mit derselben Rückmeldung wie das Tippen am Handy
+- **Knopf:** Die begrenzte Knopf-Kopie aus AP-504 (`cta-family-home.css`) gilt jetzt auch
+  für `#leistungen`.
+- **Cache:** Der Schlüssel von `privat-form.css` ist in `index.html` und in der Vorlage
+  `leistung-v2.html` angehoben. Die 37 Leistungsseiten sind neu gebaut und ändern sich
+  jeweils nur in dieser Zeile.
+- **Entfallen:** Was wegfällt, steht in `docs/offene-punkte.md`.
+
+Gemessen in Chrome:
+- 360, 390, 402, 430 und 480 px pixelgleich zum Stand vorher (26 von 26 Scheiben).
+- Der Vergleich aller berechneten Stile von `#leistungen` bei 402 px ergibt null
+  Abweichungen; nur die entfernten, dort ohnehin ausgeblendeten Blöcke fehlen.
+- Ebenfalls null Abweichungen: die Ergänzungsliste einer Leistungsseite bei 402 px und die
+  Galerie-Einladung bei 402, 768 und 1440 px.
+- 901 bis 1920 px: zwei Spalten, keine geteilte Zeile, Kachel und Knopf mittig, kein
+  seitlicher Überlauf.
+- „Zum Kontaktformular" springt am Desktop zum Formular.
+
+**Messaufbau, zwei Fallen:**
+- **Warteschlange des Testservers:** `python3 -m http.server` nimmt nur 5 wartende
+  Verbindungen an. Bei den über 50 Bildern der Liste verwarf er Anfragen, und das
+  Galerie-Karussell fiel in der Messung auf Standbild. Abhilfe:
+  `.claude/preview/stabiler-server.py`.
+- **Hintergrund-Tabs:** Sie drosseln `requestAnimationFrame`. Der Sprung aus
+  `privat-form.js`, der zwei Frames abwartet, schien deshalb zu fehlen. Das Prüfskript holt
+  den Tab jetzt nach vorn.
+
+**AP-509 — Google-Bewertungen als Karussell auf allen Breiten.** Am Handy baute
+`mobile-private-review.js` die Bewertungen zu einem Wisch-Karussell um, aber nur bei höchstens
+480 px im Hochformat. Darüber lief `private-proof.js` mit der weißen Zweier-Karte samt
+Zusammenfassungskarte.
+
+- **Skript:**
+  - Die Weiche ist entfallen, das Karussell entsteht auf jeder Breite.
+  - Die Folien-Positionen werden relativ zur ersten Folie gerechnet. Das rohe `offsetLeft`
+    enthielt bei zentrierter Karte deren Einzug.
+  - Schnelle Klicks werden gemerkt statt verworfen. Läuft die Animation an der
+    Umbruchstelle (4 → 1 oder 1 → 4) noch auf eine Klon-Folie zu, setzt ein weiterer Klick
+    sie erst um eine Runde auf die gleich aussehende echte Folie um. Sonst lief ein
+    doppeltes „Weiter" von Bewertung 4 sichtbar rückwärts über 3 auf 2. Bei drei und mehr
+    sehr schnellen Klicks, solange die Animation noch vor der letzten echten Folie steht,
+    wird der Klick verworfen statt die Ansicht springen zu lassen.
+  - Bei reduzierter Bewegung scrollt das Skript mit `behavior: 'auto'` statt `'instant'`,
+    das ältere Safari-Versionen nicht kennen.
+  - Ab 901 px kommen Pfeile dazu, weil sich mit der Maus nicht wischen lässt. Darunter bleibt
+    das DOM wie am Handy.
+  - `private-proof.js` ist gelöscht.
+- **`privat-form.css`:**
+  - Der Swipe-Block ist ohne Media Query angehoben.
+  - Die Karussell-Zeilen des 520-px-Blocks, die das Handy-Aussehen mittragen, gelten jetzt auf
+    allen Breiten.
+  - Die Flächen und Abstände aus den gemeinsamen 480er-Blöcken gelten ab 481 px begrenzt auf
+    `.private-proof-bento`.
+  - Tablets zeigen eine Mittelspalte von 34 rem, der Desktop die Karte mittig mit höchstens
+    40 rem.
+  - Ohne JavaScript zeigt jede Bewertung den Google-Link.
+- **Entfallen:** die Zusammenfassungskarte, siehe `docs/offene-punkte.md`.
+
+Gemessen in Chrome:
+- Der Vergleich aller berechneten Stile der Sektion bei 360, 402 und 480 px ergibt null
+  Abweichungen.
+- **Pixelvergleich:** 390, 402 und 430 px identisch. Bei 360 und 480 px wich einer von zwei
+  Läufen auf verzögert ladenden Bildern ab; der Wiederholungslauf war identisch.
+- **Pfeile:** keine bei 402 und 768 px, zwei ab 901 px.
+- **Bedienung:** Viermal „Weiter" ergibt 2 → 3 → 4 → 1, „Zurück" von 1 springt auf 4, ein
+  Doppelklick überspringt nichts, Enter auf dem Pfeil wirkt. Das gilt mit und ohne Bewegung.
+- **Breitenwechsel:** Beim Wechsel 402 → 768 → 1440 → 402 px in einer Sitzung bleiben die
+  aktive Bewertung und die Scrollposition erhalten.
+- **Ohne JavaScript:** vier Bewertungen mit Link.
+- `private-proof.js` wird nicht mehr angefragt, keine Konsolenfehler.
+
+**AP-529 — Sektionsüberschriften der Startseite ab 481 px (30.09.2026).** Die sechs
+Überschriften (Über uns, Leistungen, Ablauf, Bewertungen, Kontakt, Häufige Fragen) standen
+nur bis 480 px in der freigegebenen Variante G (Baloo 2, mittig, AP-348/349). Darüber blieben
+sie in Nunito und teils linksbündig. Die Nummer ist vorgezogen, weil die Kontakt- und
+Galerie-Arbeit AP-518–521 parallel belegt hat.
+
+- **Wo:** am Ende von `home-dark.css`. Diese Datei lädt nur die Startseite, deshalb ist
+  kein Neubau der Leistungsseiten nötig. Die Handy-Regel in `privat-form.css` bleibt, weil
+  die Leistungsseiten sie mitladen. Die Deklarationen sind 1:1 kopiert; bei Änderungen an
+  Variante G beide Stellen nachziehen.
+- **481–900 px:** 31 px wie am Handy.
+- **Ab 901 px:** `clamp(2.25rem, 1.25rem + 2vw, 3rem)`, also 38 px bei 901 und 48 px ab etwa
+  1400 px (vorher 49 px). Die Breite ist auf höchstens 20 em begrenzt; für die
+  Leistungen-Überschrift braucht das eine eigene Zeile, weil `privat-form.css` sie per ID
+  auf 100 % setzt.
+- **Kontakt:** Der 760 px breite Kopf ist mittig.
+- **FAQ:** Der Kopf ist einspaltig (vorher ab 821 px zweispaltig).
+- **Ausnahme Ablauf bis AP-508:** Ab 901 px ist der Ablauf-Kopf zweispaltig (Überschrift mit
+  grüner Linie links, Knopf rechts), ab 1024 px mit Maus zusätzlich im Scroll-Pin. Die
+  Überschrift übernimmt dort nur die Schrift und bleibt links. Im Pin gelten Größe,
+  Zeilenhöhe und Breite des Pins weiter. Geplant war die Grenze bei 1024 px; die Messung
+  zeigte, dass der Kopf schon ab 901 px zweispaltig ist. Bis 900 px ist sie mittig; die
+  grüne Linie entfällt dort, wie am Handy bis 767 px schon bisher.
+
+Gemessen in Chrome gegen den Stand AP-509:
+- Der Vergleich aller berechneten Stile in `main` (1151 sichtbare Elemente) ergibt bei 360,
+  402 und 480 px null Abweichungen.
+- Von 481 bis 1920 px sind alle Überschriften in Baloo; alle außer dem Ablauf ab 901 px
+  stehen mittig. Kein seitlicher Überlauf.
+- **Ablauf-Pin** bei 1024 × 768, 1280 × 800 und 1440 × 900: Verschiebung, Spurbreite,
+  Scrollerhöhe, Marker und Kartenende sind identisch zur Referenz. Die Überschrift im Pin hat
+  dieselbe Größe (32 bzw. 40 px), dieselbe Höhe und dieselbe Kopfhöhe. Die Prüfmeldung
+  „Bühne steht: FEHLER" bei 1280 und 1440 px (Szene am Ende 4–5 px verrutscht) tritt in der
+  Referenz genauso auf.
+
+**Gegenprüfung AP-507, AP-509, AP-529 (30.09.2026).** Zwei unabhängige Prüfer:
+- **Code, ohne Browser:** keine blockierenden Fehler. Die angehobenen Blöcke sind reine
+  Klammer-Entfernungen (`git diff -w`), die Cache-Schlüssel stimmen in jedem Zwischenstand.
+- **Test in Chrome:** neun Prüfungen bestanden. Dazu gehören kein Überlauf von 481 bis
+  1920 px, 37 erreichbare Leistungsseiten, gleiche Liste bei 402 und 1440 px, Fokusrahmen an
+  allen 40 Tabstopps und das Karussell mit und ohne Bewegung. Ohne JavaScript sind vier
+  Bewertungen mit Google-Link sichtbar. Die Leistungsseite zeigt bei 402 und 1440 px null
+  Abweichungen.
+
+Drei Funde sind nachgemessen und behoben: der Spaltenumbruch in Firefox (Raster statt
+Mehrspaltensatz), der Rückwärtslauf des Karussells an der Umbruchstelle und die Breite der
+Leistungen-Überschrift. Die übrigen Hinweise stehen in `docs/offene-punkte.md`.
 
 **AP-516 — Kontaktseite am Desktop geordnet (30.09.2026).** Die Handy-Fassung (bis 600 px,
 AP-413 bis AP-449) war fertig, der Desktop wirkte ungeordnet. Die Gestaltung war nicht das
