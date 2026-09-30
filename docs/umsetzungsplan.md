@@ -1905,3 +1905,45 @@ steht damit wieder links unter dem Text.
 Gemessen bei 901, 1024, 1280, 1440 und 1920 px: Ober- und Unterkante liegen auf 0 px
 bündig. Das gilt auch während der Schreibmaschine tippt, dann ist die Zeile rund 11 px
 höher, und danach. Bis 900 px ist die Seite pixelgleich.
+
+**AP-515 — Footer am Desktop nach der Handy-Fassung (30.09.2026).** Der Handy-Footer
+(bis 480 px) war fertig. Darüber stand noch die alte Fassung:
+- Meisterbetrieb-Zeile, kleines Logo
+- Kacheln mit WhatsApp statt Formular
+- Öffnungszeiten, Schnellzugriff, Einsatzgebiet
+
+Zehn Seiten zeigten den alten Footer auch auf dem Handy: 404, Impressum, Datenschutz, die
+sechs Projektseiten und eine Sicherungskopie.
+
+Entscheidungen des Auftraggebers:
+1. **Am Desktop exakt die Inhalte des Handys.**
+2. **Die Handy-Karte dreispaltig:** Marke | Kacheln 2×2 | Erreichbarkeit mit WhatsApp und
+   Instagram, darunter © und Recht.
+3. **Handy-Karte bis 900 px.**
+4. **Alle Seiten gleich.**
+
+Umsetzung:
+- **Markup:** `_footer.html` verliert Meisterbetrieb-Zeile, WhatsApp-Kachel,
+  Öffnungszeiten und Schnellzugriff mit Einsatzgebiet.
+- **`render.mjs`:** Die Handy-Bausteine gelten für jede Seite. `HANDY_FOOTER_SEITEN` und
+  `stundenZusatz` sind entfallen.
+- **Seiten:** Übernommen per `build-footers.mjs` auf allen 52 Seiten; pro Datei hat sich
+  nur der Footer-Bereich geändert (geprüft).
+- **Stylesheet:** `footer-kontakt.css` lädt jetzt jede Footer-Seite, mit einheitlich
+  `?v=20260930a`. Das gilt auch für die Vorlagen `projekt.html`, `rechtstext.html` und
+  die drei Leistungsvorlagen. Ein Probelauf von `build-leistungen`, `build-index` und
+  `build-rechtstexte` ergab keinen weiteren Diff.
+- **`footer-kontakt.css`:** Aussehen in der Grundebene, Handy-Karte bis 900 px, Desktop-Karte
+  ab 901 px.
+- **Ausgleich für den entfallenen Block:** Das leere `.footer-utility` trug auf dem Handy
+  20 px, weil es als Rasterbehälter nicht mit dem Nachbarn kollabierte. Der Abstand ist am
+  `.footer-bottom` zurückgeholt.
+
+Gemessen:
+- Bis 480 px sind Startseite, Kontakt, Über uns, Galerie und zwei Leistungsseiten bei 320,
+  402 und 480 px pixelgleich.
+- Impressum, Projektseite und 404 zeigen bei 402 px denselben Footer wie Kontakt.
+- Am Desktop (901–1920 px) liegt die Karte im Container, die drei Spalten sind oben bündig.
+- Kein Überlauf, keine Nummer umgebrochen.
+- Der Formular-Link hat je Seitentiefe das richtige Präfix (404 wurzelabsolut).
+- Die Konsole ist fehlerfrei.

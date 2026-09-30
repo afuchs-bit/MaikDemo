@@ -682,22 +682,23 @@ export function renderNavSubmenu(base) {
 //     "../#anfrage" daraus, auf der Startseite bleibt es zeichengleich "#anfrage".
 //   - die Gestaltung stand in home-dark.css, die nur index.html laedt. Sie liegt
 //     jetzt in assets/css/footer-kontakt.css.
-// Wer eine weitere Seite aufnimmt, traegt sie unten ein UND bindet dort
-// footer-kontakt.css ein - ohne die Datei stehen beide Bausteine auf display:none.
+// (Bis AP-515 musste eine weitere Seite in HANDY_FOOTER_SEITEN eingetragen werden;
+// die Liste gibt es nicht mehr, siehe unten.)
 //
 // AP-385: Galerie und Kontakt sind auf demselben Weg dazugekommen. Beide laden
 // footer-kontakt.css seit dem gleich nach styles.css; der Formular-Link zeigt von
 // dort aus auf "../#anfrage", genau wie die Privatkunden-Kachel der Kontaktseite.
 //
-// Die Platzhalter stehen im Template ohne eigene Zeile, damit der Footer aller
-// uebrigen Seiten zeichengleich bleibt.
-const HANDY_FOOTER_SEITEN = new Set([
-  'index.html', 'ueber-uns/index.html', 'projekte/index.html', 'kontakt/index.html',
-]);
-
-const istLeistungsseite = (pfad) =>
-  /^(?:privatkunden|gewerbekunden)\/leistungen\/[^/]+\/index\.html$/.test(pfad);
-
+// AP-515 (30.09.2026): Die Bausteine gelten jetzt fuer JEDE Seite mit Footer. Bis
+// hierher bekamen sie nur die Seiten aus HANDY_FOOTER_SEITEN und die
+// Leistungsseiten; Impressum, Datenschutz, die Projektdetailseiten und 404.html
+// zeigten auch auf dem Handy den alten Footer. Auf Ansage des Auftraggebers ist der
+// Footer ueberall derselbe - die Liste und istLeistungsseite() sind entfallen.
+// Jede Seite mit Footer muss deshalb footer-kontakt.css laden; ohne die Datei
+// stehen Formular-Kachel und Social-Zeile auf display:none.
+//
+// Die Platzhalter stehen im Template ohne eigene Zeile, damit der Footer-Text
+// zeichengleich zum bisherigen Handy-Footer bleibt.
 const handyFormularLink = (base) => `
           <a class="footer-contact-link footer-contact-link--iphone-form" href="${base}#anfrage" aria-label="Kontaktformular öffnen und Kontakt aufnehmen">
             <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg></span>
@@ -725,19 +726,15 @@ const handySocial = (base) => `
           </a>
         </div>`;
 
-const STUNDEN_ZUSATZ_HANDY = '<span class="footer-hours-whatsapp">WhatsApp jederzeit <span aria-hidden="true">\u00b7</span> </span>Besuche nach Vereinbarung';
-const STUNDEN_ZUSATZ = 'WhatsApp jederzeit <span aria-hidden="true">\u00b7</span> Besuche nach Vereinbarung';
-
-export function footerTemplateData(base, seitenPfad = '') {
-  // Nicht ueber base pruefen: 404.html liegt ebenfalls in der Wurzel und haette
-  // die Bausteine sonst mitbekommen. Windows-Trennzeichen vorher angleichen.
-  const pfad = seitenPfad.split('\\').join('/');
-  const handy = HANDY_FOOTER_SEITEN.has(pfad) || istLeistungsseite(pfad);
+// AP-515: stundenZusatz ist mit .footer-hours entfallen - die Oeffnungszeiten
+// stehen auf Ansage des Auftraggebers nicht mehr im Footer (sie bleiben im JSON-LD).
+// seitenPfad wird nicht mehr gebraucht; der Parameter bleibt, damit die Aufrufer
+// unveraendert bleiben.
+export function footerTemplateData(base, seitenPfad = '') { // eslint-disable-line no-unused-vars
   return {
     base,
-    handyFormularLink: handy ? handyFormularLink(base) : '',
-    handySocial: handy ? handySocial(base) : '',
-    stundenZusatz: handy ? STUNDEN_ZUSATZ_HANDY : STUNDEN_ZUSATZ,
+    handyFormularLink: handyFormularLink(base),
+    handySocial: handySocial(base),
   };
 }
 

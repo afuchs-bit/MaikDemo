@@ -2311,10 +2311,28 @@ das Löschen entscheidet:
   `kpi-8000qm.webp`
 - `assets/img/icons/rohdich-gallery-arrow.png` (alter Galeriepfeil der Tablet-Fassung)
 
-## AP-516 — Kontaktseite: Footer im Tablet-Band
+## AP-516 — Kontaktseite: Footer im Tablet-Band (erledigt mit AP-515, 30.09.2026)
 
 Die Kontaktseite zeigt seit AP-516 zwischen 601 und 900 px die Handy-Komposition. Der Footer
 darunter zeigt dort weiterhin die Desktop-Fassung: Zweispalter, Kontaktkacheln im 2×2-Raster,
 Schnellzugriff und Einsatzgebiet. Die Handy-Fassung des Footers beginnt erst unter 481 px
 (`footer-kontakt.css`). Der Footer ist geteilt und über `render.mjs` auf allen Seiten
 gleich. Er gehört deshalb zu AP-515 (Menü und Footer) und nicht zur Kontaktseite.
+
+## AP-515 — Öffnungszeiten sind nirgends mehr sichtbar
+
+Auf Ansage des Auftraggebers (30.09.2026) zeigt der Footer auch am Rechner nur noch die
+Inhalte der Handy-Fassung. Damit sind die Öffnungszeiten (Mo–Fr 09:00–17:00, Sa 09:00–12:00)
+aus `.footer-hours` entfallen. Die Kontaktseite zeigt sie seit AP-414 ebenfalls nicht mehr.
+Sichtbar stehen sie damit auf keiner Seite. Im JSON-LD (`openingHoursSpecification`) sind sie
+unverändert enthalten.
+
+Das weicht von Teil D des Umsetzungsplans ab: „Zeiten identisch in JSON-LD, Kontaktbereich,
+Footer und FAQ“ (Zeile 254). Es war eine bewusste Entscheidung des Auftraggebers. Sollen die
+Zeiten wieder sichtbar werden, muss geklärt werden, wo sie stehen.
+
+Ebenfalls entfallen sind am Rechner das Einsatzgebiet (Ortsliste), der Schnellzugriff und
+„Meisterbetrieb seit 2001 · Herne“. Die Ortsliste steht weiter im JSON-LD (`areaServed`).
+
+`gewerbekunden/index.saved.html` ist eine Sicherungskopie. Sie bekommt den Footer aus dem
+Build, lädt aber kein `footer-kontakt.css`.
