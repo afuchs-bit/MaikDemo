@@ -52,46 +52,172 @@
     },
     "gallery": [
       {
-        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
-        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
-        "fokusMobil": "54% 55%",
-        "width": 480,
-        "height": 360
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
-        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
-        "fokusMobil": "52% 62%",
-        "width": 480,
-        "height": 493
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
-        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/34-naturstein-hanggarten-fertig.webp",
+        "alt": "Fertig gestalteter Hanggarten mit großen Natursteinen und blühender Bepflanzung",
         "fokusMobil": "50% 50%",
-        "width": 480,
-        "height": 362
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
-        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
-        "fokusMobil": "50% 58%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/35-naturstein-hanggarten-im-bau.webp",
+        "alt": "Bau einer Natursteinanlage mit Bagger und vorgelagerter Granitpalisade",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
-        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
-        "fokusMobil": "60% 56%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/36-findling-im-vorgarten.webp",
+        "alt": "Großer Findling als Mittelpunkt eines mit Flusssteinen gestalteten Vorgartens",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
-        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
-        "fokusMobil": "57% 58%",
-        "width": 480,
-        "height": 297
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/37-findlinge-im-gartenbeet.webp",
+        "alt": "Mehrere große Findlinge zwischen Bepflanzung und befestigten Gartenflächen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/01-naturstein-terrassierung-mit-gartenteich.webp",
+        "alt": "Terrassierter Hanggarten mit Natursteinmauern und Gartenteich",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/02-bluehender-natursteingarten.webp",
+        "alt": "Blühender Gartenbereich mit großen Natursteinen und mehrstufiger Bepflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/04-findlingsbeet-mit-stauden.webp",
+        "alt": "Findlingsbeet mit Stauden und großen Natursteinplatten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/07-gartenteich-mit-findlingen.webp",
+        "alt": "Gartenteich mit großen Natursteinen und herbstlicher Bepflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/08-findling-wird-am-teich-eingebaut.webp",
+        "alt": "Einbau eines großen Findlings an einem Gartenteich",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/09-findlingseinbau-mit-bagger.webp",
+        "alt": "Versetzen eines großen Findlings mit Bagger und Hebegurt",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/12-findlinge-mit-graesern.webp",
+        "alt": "Findlinge zwischen Gräsern und Gehölzen in einem Kiesgarten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/13-trockenbach-mit-findlingen.webp",
+        "alt": "Trockener Bachlauf aus Schotter und Findlingen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/14-findling-mit-azaleen.webp",
+        "alt": "Großer Naturstein mit roten Azaleen in einem Kiesbeet",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/15-steinlandschaft-mit-blueten.webp",
+        "alt": "Steinlandschaft mit Findlingen, Schotter und roten Blüten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/16-natursteingarten-mit-olivenbaum.webp",
+        "alt": "Heller Natursteingarten mit Olivenbaum, Findlingen und Steineinfassung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/19-heller-findling-im-kiesbeet.webp",
+        "alt": "Heller Findling als Blickfang in einem bepflanzten Kiesbeet",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/20-findlinge-am-poolgarten.webp",
+        "alt": "Poolgarten mit einzeln gesetzten Findlingen und Palmen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/21-geschwungene-natursteineinfassung.webp",
+        "alt": "Geschwungene Natursteineinfassung zwischen Rasenfläche und Staudenbeet",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/22-beeteinfassung-aus-naturstein.webp",
+        "alt": "Bepflanztes Gartenbeet mit Natursteineinfassung entlang eines Pflasterwegs",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/25-gartenwege-mit-findlingseinfassung.webp",
+        "alt": "Kieswege und bepflanzte Beete mit Einfassungen aus runden Findlingen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/26-granitmauer-mit-rasentreppe.webp",
+        "alt": "Granitmauer mit integrierter Rasentreppe und bepflanzter Einfassung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/31-kleinstein-einfassung-am-vorgarten.webp",
+        "alt": "Neu bepflanzter Vorgarten mit kleinteiliger Natursteineinfassung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/32-natursteineinfassung-im-bau.webp",
+        "alt": "Geschwungene Natursteineinfassung während der Ausführung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/33-transport-grosser-findlinge.webp",
+        "alt": "Transport großer Findlinge zwischen Radlader und Bagger",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       }
     ]
   },

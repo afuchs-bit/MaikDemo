@@ -33,13 +33,14 @@ html, body { background-color: #171916; }
 <meta property="og:url" content="https://rohdich.de/ueber-uns/" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
+<link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260923a" />
 <link rel="stylesheet" href="../assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260927f" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260928b" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -345,7 +346,8 @@ html, body { background-color: #171916; }
 
        Das Bild ist das LCP-Element: eager statt lazy, fetchpriority high.
        width/height bleiben stehen, damit beim Laden nichts springt. sizes
-       folgt der Fotobreite aus ueber-uns.css (100% - 64px, hoechstens 760px).
+       folgt der Fotobreite aus ueber-uns.css (mobil 100% - 40px, sonst
+       100% - 64px und hoechstens 760px).
 
        [OFFEN: Das Auftragsdokument zu AP-453 sah eine Unterzeile unter dem
         Startbild vor - ein Pendant zu "Ein Stueck Garten vor Ihrem Fenster".
@@ -353,18 +355,23 @@ html, body { background-color: #171916; }
         docs/offene-punkte.md] -->
   <section class="ueber-hero">
     <div class="container ueber-hero__kopf">
-      <nav class="breadcrumbs" aria-label="Brotkrumennavigation">
+      <nav class="breadcrumbs ueber-hero__breadcrumbs" aria-label="Brotkrumennavigation">
         <ol>
-          <li><a href="../">Startseite</a></li>
-          <li aria-current="page">Über uns</li>
+          <li class="ueber-hero__breadcrumb-back">
+            <a href="../">
+              <img src="../assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" decoding="async">
+              <span>Startseite</span>
+            </a>
+          </li>
+          <li class="ueber-hero__breadcrumb-current" aria-current="page">Über uns</li>
         </ol>
       </nav>
       <h1 class="ueber-hero__titel">Über uns</h1>
     </div>
     <figure class="ueber-hero__foto">
       <picture>
-        <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(max-width: 480px) calc(100vw - 64px), min(calc(100vw - 64px), 760px)">
-        <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(max-width: 480px) calc(100vw - 64px), min(calc(100vw - 64px), 760px)">
+        <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(max-width: 480px) calc(100vw - 40px), min(calc(100vw - 64px), 760px)">
+        <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(max-width: 480px) calc(100vw - 40px), min(calc(100vw - 64px), 760px)">
         <img class="ueber-hero__bild" src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
              alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
              loading="eager" fetchpriority="high" decoding="async">

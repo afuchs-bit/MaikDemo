@@ -46,57 +46,211 @@
   ],
   "bilder": {
     "hero": {
-      "bild": "assets/img/leistungen-mobile/pflasterarbeiten-terrasse-640.webp",
+      "bild": "assets/img/leistungen-mobile/pflasterarbeiten-baustelle-640.webp",
       "alt": "",
       "width": 640,
       "height": 640
     },
     "gallery": [
       {
-        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
-        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
-        "fokusMobil": "54% 55%",
-        "width": 480,
-        "height": 360
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
-        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
-        "fokusMobil": "52% 62%",
-        "width": 480,
-        "height": 493
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
-        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/01-moderner-innenhof-natursteinpflaster-960.webp",
+        "alt": "Großzügiger gepflasterter Innenhof an einem modernen Wohnhaus",
         "fokusMobil": "50% 50%",
-        "width": 480,
-        "height": 362
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
-        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
-        "fokusMobil": "50% 58%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/02-vorgarten-natursteinpflaster-granit-960.webp",
+        "alt": "Natursteinpflaster vor einem Wohnhaus mit Granitpalisaden und bepflanzten Beeten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
-        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
-        "fokusMobil": "60% 56%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/03-natursteinpflaster-rundbeet-960.webp",
+        "alt": "Fächerförmig verlegtes Natursteinpflaster an einem runden Granitbeet",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
-        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
-        "fokusMobil": "57% 58%",
-        "width": 480,
-        "height": 297
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/04-natursteinweg-granitpflaster-960.webp",
+        "alt": "Schmaler Gartenweg aus Natursteinpflaster mit dunkler Randeinfassung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/05-natursteinpflaster-treppenanlage-960.webp",
+        "alt": "Natursteinpflaster an einer Treppenanlage mit Granitstufen und Randsteinen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/06-granit-hochbeet-pflasterstufen-960.webp",
+        "alt": "Dunkle Pflasterstufen neben einem Hochbeet aus hellen Granitpalisaden",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/07-eingangsbereich-mischpflaster-960.webp",
+        "alt": "Gepflasterter Eingangsbereich mit Stufen und heller Granitgliederung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/08-mischpflaster-granitbeet-detail-960.webp",
+        "alt": "Mehrfarbiges Mischpflaster vor einem eingefassten Granitbeet",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/09-natursteinpflaster-bauphase-960.webp",
+        "alt": "Herstellung eines Natursteinpflasters im Eingangsbereich",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/10-sandsteinweg-bepflanzter-vorgarten-960.webp",
+        "alt": "Sandsteinweg durch einen üppig bepflanzten Vorgarten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/11-grossformatplatten-ziergarten-960.webp",
+        "alt": "Großformatige graue Platten entlang eines modern gestalteten Ziergartens",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/12-gartenweg-natursteinoptik-960.webp",
+        "alt": "Geschwungener Gartenweg in Natursteinoptik durch einen gepflegten Garten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/13-geschwungener-gartenweg-pflaster-960.webp",
+        "alt": "Rot-grau gepflasterter Gartenweg zwischen blühenden Staudenbeeten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/14-moderne-einfahrt-anthrazitpflaster-960.webp",
+        "alt": "Moderne Einfahrt aus anthrazitfarbenem Pflaster mit sauberer Randeinfassung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/15-einfahrt-rot-grau-pflaster-960.webp",
+        "alt": "Rot-grau gepflasterte Einfahrt vor einer Garage",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/16-terrasse-rot-grau-pflaster-960.webp",
+        "alt": "Rot-graue Pflasterterrasse neben einem bepflanzten Gartenbeet",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/17-terrasse-rot-grau-garten-960.webp",
+        "alt": "Rot-graue Pflasterfläche mit angrenzender Gartenbepflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/20-pflasterprojekt-baufortschritt-960.webp",
+        "alt": "Baufortschritt an einer Pflasterfläche mit Material und Verdichtungsgerät",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/21-terrasse-grau-anthrazit-gesamtansicht-960.webp",
+        "alt": "Terrasse aus grau-anthrazitfarbenem Mischpflaster mit Rasenfläche",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/24-grau-anthrazit-mischpflaster-detail-960.webp",
+        "alt": "Detailaufnahme eines grau-anthrazitfarbenen Mischpflasters",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/30-verbundpflaster-weg-detail-960.webp",
+        "alt": "Gehweg aus grauem Verbundpflaster mit sauberer Einfassung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/31-graupflaster-flaeche-licht-schatten-960.webp",
+        "alt": "Graue Pflasterfläche mit lebendigem Licht- und Schattenspiel",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/32-rasengitter-pflasterflaeche-960.webp",
+        "alt": "Wasserdurchlässige Fläche aus grauen Rasengittersteinen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/33-graue-pflasterterrasse-rasenkante-960.webp",
+        "alt": "Graue Pflasterterrasse mit gerader Kante zum Rasen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/34-graue-pflasterflaeche-am-gartentor-960.webp",
+        "alt": "Kleine graue Pflasterfläche mit Randeinfassung an einem Gartentor",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/35-graue-pflasterterrasse-nutzung-960.webp",
+        "alt": "Graue Pflasterterrasse mit liegendem Hund als Alltagsszene",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/36-anthrazitpflaster-flaeche-bauphase-960.webp",
+        "alt": "Neu verlegte Fläche aus anthrazitfarbenem Rechteckpflaster während der Bauphase",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/37-bettung-abziehen-pflasterbau-960.webp",
+        "alt": "Fachgerechtes Abziehen der Bettung für eine neue Pflasterfläche",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
       }
     ]
   },
-  "thumbnail": "assets/img/leistungen-mobile/pflasterarbeiten-terrasse-480.webp",
+  "thumbnail": "assets/img/leistungen-mobile/pflasterarbeiten-baustelle-480.webp",
   "kundengruppe": [
     "privat"
   ],

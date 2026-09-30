@@ -1,3 +1,11 @@
+@font-face {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url("../fonts/nunito-latin.woff2") format("woff2");
+}
+
 /* AP-447: "Baloo 2" fuer die beiden Etiketten, das animierte Wort und die
    Kartentitel. Das @font-face steht sonst in home-dark.css, kontakt.css und
    projekte.css - diese Seite laedt keine davon, ein blosses
@@ -172,6 +180,7 @@ body.ueber-page {
 
 .ueber-hero .breadcrumbs { margin-bottom: clamp(28px, 3vw, 40px); }
 .ueber-hero .breadcrumbs ol { margin-bottom: 0; }
+.ueber-hero__breadcrumb-back img { display: none; }
 
 /* Der Titel im Satz der Vorlage - derselbe wie auf Galerie (projekte.css:105)
    und Kontakt: Baloo 2, 31px, 600. Bis AP-480 stand er im Foto und war mit
@@ -1402,4 +1411,283 @@ body.ueber-page {
   .ueber-projekte .projects-more .maik-cta__arrow {
     display: none;
   }
+}
+
+/* Mobile Angleichung an die regulaeren Leistungsseiten. Bewusst vollstaendig
+   auf diese Seite und bis 480px gekapselt; ab 481px gilt der bisherige Satz. */
+@media (max-width: 480px) {
+  body.ueber-page {
+    --ueber-space-transition: clamp(38px, 10.5vw, 44px);
+    --ueber-space-compact: clamp(44px, 12vw, 52px);
+    --ueber-space-head: clamp(28px, 8vw, 34px);
+    --ueber-space-copy: 16px;
+    font-family: Nunito, system-ui, sans-serif;
+  }
+
+  /* Kompakter Ruecklink und Titelraster wie auf den Leistungsseiten. */
+  .ueber-hero {
+    position: relative;
+    padding-top: 0;
+    background: #1B1E19;
+  }
+
+  .ueber-hero__kopf {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ueber-hero .ueber-hero__breadcrumbs {
+    position: absolute;
+    z-index: 5;
+    top: 14px;
+    left: 20px;
+    width: auto;
+    margin: 0;
+    color: var(--home-on-dark-2, #d9ded5);
+    font-family: Nunito, system-ui, sans-serif;
+    font-size: .76rem;
+    font-weight: 750;
+    line-height: 1;
+    letter-spacing: .015em;
+  }
+
+  .ueber-hero__breadcrumbs ol {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .ueber-hero__breadcrumbs li + li::before { content: none; }
+
+  .ueber-hero__breadcrumb-back a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 34px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ueber-hero__breadcrumb-back a > span {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-skip-ink: auto;
+  }
+
+  .ueber-hero__breadcrumb-back img {
+    display: block;
+    width: 18px;
+    height: auto;
+    filter: brightness(0) saturate(100%) invert(77%) sepia(100%) saturate(1680%) hue-rotate(47deg) brightness(105%) contrast(107%);
+    transform: rotate(180deg);
+  }
+
+  .ueber-hero__breadcrumb-current {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  .ueber-hero__titel {
+    width: 100%;
+    margin: 0;
+    padding: clamp(72px, 19vw, 80px) 20px clamp(34px, 9vw, 38px);
+    font-family: "Baloo 2", sans-serif;
+    font-size: 31px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: -.015em;
+  }
+
+  .ueber-hero__foto {
+    width: calc(100% - 40px);
+    max-width: none;
+    border-radius: 18px;
+    box-shadow:
+      0 24px 42px -25px rgba(0, 0, 0, .9),
+      0 18px 34px -28px rgba(93, 224, 35, .58);
+  }
+
+  /* Gemeinsame Abstands- und Textstufen der Leistungsseiten. */
+  .ueber-inhaber,
+  .ueber-betrieb,
+  .ueber-projekte {
+    padding-block: var(--ueber-space-transition);
+  }
+
+  .ueber-inhaber__gross,
+  .ueber-betrieb__kicker,
+  .ueber-fuerwen__titel {
+    font-family: "Baloo 2", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -.012em;
+    color: var(--mobile-logo-green);
+  }
+
+  .ueber-inhaber__gross {
+    font-size: clamp(1.45rem, 6.4vw, 1.6rem);
+    line-height: 1.15;
+  }
+
+  .ueber-inhaber__gross span {
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .ueber-betrieb__kicker,
+  .ueber-fuerwen__titel {
+    font-size: clamp(1.3rem, 5.8vw, 1.45rem);
+    line-height: 1.17;
+    text-align: center;
+  }
+
+  .ueber-inhaber__text,
+  .ueber-betrieb__fakten,
+  .ueber-betrieb__wort .lead,
+  .ueber-projekte__kopf .lead {
+    width: calc(100% - 24px);
+    max-width: 34ch;
+    margin-inline: auto;
+    color: var(--ink-2);
+    font-family: Nunito, system-ui, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: .003em;
+    text-wrap: pretty;
+  }
+
+  .ueber-inhaber__text { margin-top: var(--ueber-space-head); }
+
+  .ueber-inhaber__bluete-mobil {
+    margin-top: var(--ueber-space-head);
+    margin-bottom: var(--ueber-space-head);
+  }
+
+  .ueber-inhaber__name { margin-top: var(--ueber-space-copy) !important; }
+
+  .ueber-betrieb__raster { gap: var(--ueber-space-compact); }
+
+  .ueber-betrieb__wort .type-section-title + .ueber-betrieb__fakten {
+    margin-top: var(--ueber-space-head);
+  }
+
+  .ueber-betrieb__wort .ueber-betrieb__fakten + .lead {
+    margin-top: var(--ueber-space-copy);
+  }
+
+  .ueber-betrieb__zusage {
+    margin-top: var(--ueber-space-head);
+    padding: 24px 16px 25px;
+    border-radius: 18px 5px 18px 5px;
+    background: rgb(74 122 16 / 14%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .018),
+      0 22px 42px -38px rgba(0, 0, 0, .9);
+  }
+
+  .ueber-betrieb__zusage-satz {
+    font-size: clamp(1.125rem, 4.8vw, 1.1875rem);
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  .ueber-betrieb__bild img {
+    border: 0;
+    border-radius: 18px;
+    box-shadow:
+      0 24px 42px -25px rgba(0, 0, 0, .9),
+      0 18px 34px -28px rgba(93, 224, 35, .58);
+  }
+
+  .ueber-betrieb__kette { margin-top: var(--ueber-space-head); }
+
+  .ueber-fuerwen {
+    margin-top: var(--ueber-space-compact);
+    padding-top: var(--ueber-space-head);
+  }
+
+  .ueber-fuerwen__titel { margin-bottom: var(--ueber-space-head); }
+  .ueber-fuerwen__liste { gap: 12px; }
+
+  .ueber-fuerwen__liste li {
+    border: 1px solid rgba(183, 203, 160, .18);
+    border-radius: 18px 5px 18px 5px;
+    background: #22271f;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .025),
+      0 16px 34px -30px rgba(0, 0, 0, .9);
+    transition:
+      border-color .2s var(--ease),
+      background-color .2s var(--ease),
+      box-shadow .2s var(--ease);
+  }
+
+  .ueber-fuerwen__liste li:active {
+    border-color: rgba(183, 203, 160, .3);
+    background: #252b22;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .035),
+      0 20px 38px -30px rgba(0, 0, 0, .95);
+  }
+
+  .ueber-fuerwen__karte {
+    display: flex;
+    align-items: center;
+    min-height: 72px;
+    padding: 16px 92px 16px 16px;
+    border-radius: 18px 5px 18px 5px;
+  }
+
+  .ueber-fuerwen__liste h4 { margin: 0; }
+
+  .ueber-fuerwen__karte:focus-visible {
+    outline: 2px solid var(--yellow);
+    outline-offset: -3px;
+  }
+
+  .ueber-fuerwen__liste p {
+    display: none;
+    font-family: Nunito, system-ui, sans-serif;
+    line-height: 1.52;
+  }
+
+  .ueber-projekte__kopf { margin-bottom: var(--ueber-space-head); }
+  .ueber-projekte__kopf .lead { margin-top: var(--ueber-space-copy); }
+
+  /* Der horizontale Scroller clippt auch senkrecht. Genuegend Innenraum haelt
+     deshalb sowohl den 6px-Hoverhub als auch den Kartenschatten sichtbar. */
+  .ueber-projekte__spur {
+    margin-top: -12px;
+    padding-top: 12px;
+    padding-bottom: 48px;
+  }
+
+  .ueber-projekte .projects-more { margin-top: 8px; }
+}
+
+@media (max-width: 480px) and (hover: hover) and (pointer: fine) {
+  .ueber-fuerwen__liste li:hover {
+    border-color: rgba(183, 203, 160, .3);
+    background: #252b22;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .035),
+      0 20px 38px -30px rgba(0, 0, 0, .95);
+  }
+}
+
+@media (max-width: 360px) {
+  .ueber-hero__titel,
+  .ueber-abschnitt-titel { font-size: 28px; }
 }
