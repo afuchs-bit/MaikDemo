@@ -2392,6 +2392,42 @@ Die frühere Entscheidung AP-F26 („Karte bleibt bewusst weiß") ist damit abge
 - Die Beschriftung „Geöffnet · innerhalb der Karte scrollen" beim Aufklappen stammt aus der
   weißen Karte mit fester Höhe; im Karussell wächst die Karte mit. Wortlaut bei Gelegenheit
   anpassen.
+- **Tote Regeln für AP-517:** Mit `private-proof.js` sind in `privat-form.css` diese Regeln
+  ohne Wirkung. Sie stehen noch da, weil jede Zeile vor dem Löschen gegen das Handy
+  gemessen werden muss.
+  - `.has-review-rotator`, `.has-review-motion` und `.is-reduced-motion`
+  - `.private-review-nav` und `.private-review-autoplay`
+  - im Block `(min-width: 521px) and (max-width: 1100px)` des weißen Wechslers nur der
+    Innenabstand und die Mindesthöhe. Die drei Abstände `margin-top: 8px` (Zitat, Details,
+    Bildunterschrift) wirken ohne JavaScript noch; beim Löschen die Ansicht ohne JS von
+    521 bis 1100 px vergleichen.
+- **Veralteter Kommentar:** `assets/css/anfrage.css` (Kommentar über `.anf__eyebrow`) verweist
+  noch auf `.private-proof-since` in `privat-form.css`. Die Regel ist mit AP-509 entfallen.
+  Zwei HTML-Kommentare in `index.html` (Über-uns-Kopf und Kontaktbereich) nennen sie noch
+  als Gestaltungsvorbild.
+  Die Datei gehört zur Kontaktseite, an der parallel gearbeitet wird; der Verweis wird in
+  AP-517 korrigiert.
+- **Dreifache Werte:** Die Flächen- und Abstands-Token (AP-350/351/354) stehen jetzt dreimal
+  in `privat-form.css`: im Handy-Block, in der Kopie ab 481 px für `#leistungen` (AP-507) und
+  in der für die Bewertungen (AP-509). Variante G der Überschriften steht zweimal (AP-529).
+  Bei der Zusammenführung (AP-511 bzw. beim Umstellen der Weichen auf 900 px) auf eine Stelle
+  bringen, bis dahin Änderungen an allen Stellen nachziehen.
+
+## Beobachtungen aus der Gegenprüfung (älter als AP-507/509)
+
+Gefunden beim Test in Chrome, gleich in den Ständen vor AP-507. Für die Pakete AP-510/511:
+
+- `styles.css` setzt `html { scroll-behavior: smooth }` ohne Ausnahme für reduzierte Bewegung.
+  Der Sprung zu `#anfrage` gleitet deshalb auch, wenn das Gerät „Bewegung reduzieren"
+  meldet.
+- Nach einem Klick auf einen Knopf zu `#anfrage` liegt die Formularkarte am Desktop mit
+  Bewegung 13 px unter der festen Kopfleiste (Karte ab 78 px, Kopfleiste bis 91 px). Der
+  Inhalt beginnt erst bei 107 px, lesbar bleibt alles.
+- Ab 481 px zielt der Sprung auf das Formular selbst, die Überschrift „Der erste Schritt zu
+  Ihrem Gartenprojekt" liegt dann oberhalb des Bildschirms. Bis 480 px bleibt sie sichtbar.
+  Ursache ist die Scroll-Logik in `privat-form.js`.
+- **Test-Chrome:** Eine andere Sitzung hält im gemeinsamen Mess-Chrome (Port 9333) rund 570
+  offene Tabs. Zeitabhängige Messungen deshalb in einem eigenen Browser-Kontext fahren.
 
 
 ## AP-529 — Sektionsüberschriften der Startseite ab 481 px

@@ -3715,13 +3715,9 @@
   font-size: .72rem;
   font-weight: 650;
 }
-/* AP-352: Die Fusszeile traegt zwei Fassungen. Ab 481px steht wie bisher die
-   Quelle; der Link auf alle Rezensionen ist dort ueberfluessig, weil der Knopf
-   "Alle Bewertungen auf Google ansehen" ueber der Kachel sichtbar ist.
-   display: none nimmt ihn auch aus dem Zugaenglichkeitsbaum - es entsteht also
-   kein zweiter, unsichtbarer Weg zum selben Ziel. Unter 481px ist es umgekehrt:
-   Dort steht der Knopf auf display: none (Zeile 3727), und ohne diesen Link
-   fuehrte vom Telefon aus gar nichts zu den Rezensionen. */
+/* AP-352 (abgeloest durch AP-509): Die Fusszeile trug zwei Fassungen - ab 481px
+   die Quelle, weil dort der Knopf "Alle Bewertungen auf Google ansehen" ueber der
+   Kachel stand, am Handy den Link. Knopf und Quellenzeile sind entfallen. */
 /* AP-509: Die Fusszeile jeder Rezension zeigt den Link zu Google statt der Quelle -
    am Handy schon seit AP-352, jetzt auch ohne JavaScript (dieselben Werte wie die
    .has-review-swipe-Regel, die sonst Vorrang hat). Der fruehere Knopf "Alle
@@ -5390,9 +5386,10 @@
 }
 
 .private-review-carousel.has-review-swipe .private-review-excerpt p {
-  /* Reines Weiss statt des Papiertons --ink. Die Regel steht bewusst hier im
-     480px-Block: ausserhalb davon liegt das Zitat auf der hellen Karte, wo
-     --ink dunkel ist (Zeile 3616) - weiss waere dort unlesbar. */
+  /* Reines Weiss statt des Papiertons --ink. Bis AP-509 stand die Regel im
+     480px-Block, weil das Zitat darueber auf der hellen Karte lag. Die Karte ist
+     jetzt auf allen Breiten dunkel; die Regel greift ohnehin nur mit JS
+     (.has-review-swipe). */
   color: #fff;
   font-size: .94rem;
   line-height: 1.52;

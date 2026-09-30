@@ -1801,7 +1801,14 @@ Zusammenfassungskarte.
   - Die Weiche ist entfallen, das Karussell entsteht auf jeder Breite.
   - Die Folien-Positionen werden relativ zur ersten Folie gerechnet. Das rohe `offsetLeft`
     enthielt bei zentrierter Karte deren Einzug.
-  - Schnelle Klicks werden gemerkt statt verworfen.
+  - Schnelle Klicks werden gemerkt statt verworfen. Läuft die Animation an der
+    Umbruchstelle (4 → 1 oder 1 → 4) noch auf eine Klon-Folie zu, setzt ein weiterer Klick
+    sie erst um eine Runde auf die gleich aussehende echte Folie um. Sonst lief ein
+    doppeltes „Weiter" von Bewertung 4 sichtbar rückwärts über 3 auf 2. Bei drei und mehr
+    sehr schnellen Klicks, solange die Animation noch vor der letzten echten Folie steht,
+    wird der Klick verworfen statt die Ansicht springen zu lassen.
+  - Bei reduzierter Bewegung scrollt das Skript mit `behavior: 'auto'` statt `'instant'`,
+    das ältere Safari-Versionen nicht kennen.
   - Ab 901 px kommen Pfeile dazu, weil sich mit der Maus nicht wischen lässt. Darunter bleibt
     das DOM wie am Handy.
   - `private-proof.js` ist gelöscht.

@@ -79,6 +79,7 @@
     let lastWidth = 0;
     // Ziel eines laufenden Sprungs; schnelle Klicks rechnen von hier weiter.
     let pending = null;
+    let pendingSlot = null;
 
     // Relativ zur ersten Folie: offsetLeft misst vom offsetParent aus, und das ist je
     // nach Einblend-Transform die Karte oder die Sektion. Bei zentrierter Karte am
@@ -90,6 +91,7 @@
       const changed = current !== reviewIndex;
       current = reviewIndex;
       pending = null;
+      pendingSlot = null;
       reviews.forEach((review, index) => {
         const active = index === current;
         review.inert = !active;
@@ -123,15 +125,40 @@
       else if (slot === slides.length - 1) jump(1);
     };
 
+    // Laeuft die Animation noch auf eine Klon-Folie zu (Umbruch 4 -> 1 oder 1 -> 4),
+    // erst um eine Runde auf die gleich aussehenden echten Folien umsetzen. Sonst
+    // liefe ein zweiter schneller Klick auf "Weiter" rueckwaerts durch alle
+    // Bewertungen. Entschieden wird am Ziel, nicht an der Position: Beim zweiten
+    // Klick im selben Frame hat sich die Animation noch nicht bewegt.
+    // Gleich aussehend ist die Runde nur, solange das Ergebnis im Scrollbereich
+    // liegt. Steht die Animation noch vor der letzten echten Folie (drei und mehr
+    // schnelle Klicks), wuerde der Browser abschneiden und die Ansicht springen -
+    // dann gilt der Klick als verworfen (false).
+    const unwrap = () => {
+      if (pendingSlot !== 0 && pendingSlot !== slides.length - 1) return true;
+      const span = position(slides.length - 1) - position(1);
+      const target = viewport.scrollLeft + (pendingSlot === 0 ? span : -span);
+      if (target < -1 || target > position(slides.length - 1) + 1) return false;
+      viewport.classList.add('is-jumping');
+      viewport.scrollLeft = target;
+      window.requestAnimationFrame(() => window.requestAnimationFrame(() => viewport.classList.remove('is-jumping')));
+      return true;
+    };
+
     const select = (reviewIndex) => {
       const from = pending ?? current;
+      if (!unwrap()) return;
       let slot = reviewIndex + 1;
       if (from === reviews.length - 1 && reviewIndex === 0) slot = slides.length - 1;
       if (from === 0 && reviewIndex === reviews.length - 1) slot = 0;
       pending = reviewIndex;
+      pendingSlot = slot;
+      // 'auto' statt 'instant': aeltere Safari-Versionen kennen 'instant' nicht und
+      // werfen. Bei reduzierter Bewegung steht der Viewport ohnehin auf
+      // scroll-behavior: auto (privat-form.css), 'auto' springt dann.
       viewport.scrollTo({
         left: position(slot),
-        behavior: reducedMotion.matches ? 'instant' : 'smooth'
+        behavior: reducedMotion.matches ? 'auto' : 'smooth'
       });
     };
 
