@@ -2440,9 +2440,9 @@ Gefunden beim Test in Chrome, gleich in den Ständen vor AP-507. Für die Pakete
 - **Ablauf-Kopf 481–900 px:** Die Überschrift ist mittig, der Knopf „Projekt anfragen" mit
   dem Hinweis „Ihre Anfrage ist unverbindlich …" steht darunter noch links. Klärt AP-508.
 - **Desktop-Größen zur Abnahme:** 38 px bei 901 px bis 48 px ab etwa 1400 px, Zeilenbreite
-  höchstens 20 em. Die Leistungen-Überschrift ist bei 901 px etwas breiter (829 statt 760 px),
-  weil ihre ID-Regel in `privat-form.css` die Breite auf 100 % setzt. Ab 1024 px gleicht
-  sich das über die Container-Breite aus.
+  höchstens 20 em. Die Leistungen-Überschrift braucht dafür eine eigene Zeile in
+  `home-dark.css`, weil ihre ID-Regel in `privat-form.css` (1,1,0) die Breite auf 100 %
+  setzt. Ohne sie war sie zwischen 901 und etwa 1400 px breiter als die anderen fünf.
 - **Doppelte Deklarationen:** Die Regeln aus Variante G stehen in `privat-form.css` (bis
   480 px, auch für die Leistungsseiten) und in `home-dark.css` (ab 481 px, nur Startseite).
   Bei einer Änderung beide Stellen anpassen, bis die Leistungsseiten-Vorlage (AP-512–514)

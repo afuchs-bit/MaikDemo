@@ -2249,7 +2249,7 @@ html.home-theme-dark .proof-map-credit {
 
 /* --- Block 1: Kopf mit Eyebrow (AP-217) ---------------------------------
    Der Eyebrow ist zeichengleich das Bauteil der Rezensionssektion
-   (.private-proof-since, privat-form.css:3174): 0.76rem, 800, 0.08em gesperrt,
+   (.private-proof-since, mit AP-509 entfallen): 0.76rem, 800, 0.08em gesperrt,
    Versalien, Zeichen in --home-yellow. Nur die Textfarbe weicht ab - dort steht
    er auf gruenem Panel und braucht rgba(255,255,255,.8), hier auf --bg. */
 html.home-theme-dark .mr-ueber__kopf {
@@ -3307,6 +3307,13 @@ html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 901px) {
   html.home-theme-dark h2.maik-section-title {
     font-size: clamp(2.25rem, 1.25rem + 2vw, 3rem);
+    max-width: 20em;
+  }
+
+  /* Leistungen: privat-form.css setzt die Breite per ID auf 100 % (1,1,0) und
+     schlaegt damit die Regel oben - ohne diese Zeile waere die Ueberschrift
+     zwischen 901 und etwa 1400px breiter als die anderen fuenf. */
+  html.home-theme-dark .private-request-paths #b2b-request-paths-title {
     max-width: 20em;
   }
 

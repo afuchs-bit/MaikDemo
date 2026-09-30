@@ -1848,7 +1848,9 @@ Galerie-Arbeit AP-518–521 parallel belegt hat.
   Variante G beide Stellen nachziehen.
 - **481–900 px:** 31 px wie am Handy.
 - **Ab 901 px:** `clamp(2.25rem, 1.25rem + 2vw, 3rem)`, also 38 px bei 901 und 48 px ab etwa
-  1400 px (vorher 49 px). Die Breite ist auf höchstens 20 em begrenzt.
+  1400 px (vorher 49 px). Die Breite ist auf höchstens 20 em begrenzt; für die
+  Leistungen-Überschrift braucht das eine eigene Zeile, weil `privat-form.css` sie per ID
+  auf 100 % setzt.
 - **Kontakt:** Der 760 px breite Kopf ist mittig.
 - **FAQ:** Der Kopf ist einspaltig (vorher ab 821 px zweispaltig).
 - **Ausnahme Ablauf bis AP-508:** Ab 901 px ist der Ablauf-Kopf zweispaltig (Überschrift mit
@@ -1868,6 +1870,19 @@ Gemessen in Chrome gegen den Stand AP-509:
   dieselbe Größe (32 bzw. 40 px), dieselbe Höhe und dieselbe Kopfhöhe. Die Prüfmeldung
   „Bühne steht: FEHLER" bei 1280 und 1440 px (Szene am Ende 4–5 px verrutscht) tritt in der
   Referenz genauso auf.
+
+**Gegenprüfung AP-507, AP-509, AP-529 (30.09.2026).** Zwei unabhängige Prüfer:
+- **Code, ohne Browser:** keine blockierenden Fehler. Die angehobenen Blöcke sind reine
+  Klammer-Entfernungen (`git diff -w`), die Cache-Schlüssel stimmen in jedem Zwischenstand.
+- **Test in Chrome:** neun Prüfungen bestanden. Dazu gehören kein Überlauf von 481 bis
+  1920 px, 37 erreichbare Leistungsseiten, gleiche Liste bei 402 und 1440 px, Fokusrahmen an
+  allen 40 Tabstopps und das Karussell mit und ohne Bewegung. Ohne JavaScript sind vier
+  Bewertungen mit Google-Link sichtbar. Die Leistungsseite zeigt bei 402 und 1440 px null
+  Abweichungen.
+
+Drei Funde sind nachgemessen und behoben: der Spaltenumbruch in Firefox (Raster statt
+Mehrspaltensatz), der Rückwärtslauf des Karussells an der Umbruchstelle und die Breite der
+Leistungen-Überschrift. Die übrigen Hinweise stehen in `docs/offene-punkte.md`.
 
 **AP-516 — Kontaktseite am Desktop geordnet (30.09.2026).** Die Handy-Fassung (bis 600 px,
 AP-413 bis AP-449) war fertig, der Desktop wirkte ungeordnet. Die Gestaltung war nicht das
