@@ -2318,3 +2318,48 @@ darunter zeigt dort weiterhin die Desktop-Fassung: Zweispalter, Kontaktkacheln i
 Schnellzugriff und Einsatzgebiet. Die Handy-Fassung des Footers beginnt erst unter 481 px
 (`footer-kontakt.css`). Der Footer ist geteilt und über `render.mjs` auf allen Seiten
 gleich. Er gehört deshalb zu AP-515 (Menü und Footer) und nicht zur Kontaktseite.
+
+## AP-507 — Leistungsübersicht A–Z jetzt auch am Desktop
+
+### Was damit von der Seite verschwindet
+
+Diese Bausteine standen nur am Desktop und auf Tablets; das Handy zeigte sie nie. Sie sind
+entfallen, weil die Handy-Fassung maßgeblich ist (Entscheidung vom 15.09.2026):
+
+- der Einleitungssatz „Wählen Sie den passenden Bereich: Starten Sie direkt Ihre Anfrage
+  oder informieren Sie sich zuerst über die einzelnen Leistungen."
+- die Notfallkarte „Akuter Sturm- oder Baumschaden · Notfalltelefon 0171 / 173 89 43"
+  (mit Vorbelegung des Formulars). Ersatz: die 24h-Notdienst-Kachel über der Liste, die zur
+  Seite Sturmnotdienst führt; das Formular behält seinen Akut-Einstieg.
+- die sechs Wendekarten mit Rückseiten und Kurzwegen ins Formular:
+  - „Garten neu anlegen & umgestalten – Komplette Neu- und Umgestaltung Ihres Gartens – von
+    der Planung über Erd- und Pflanzarbeiten bis zur fertigen Außenanlage."
+  - „Vorgärten neu gestalten – Vorgärten neu anlegen oder modernisieren – pflegeleicht,
+    repräsentativ und passend zu Haus, Eingang und Grundstück."
+  - „Terrassen, Wege, Einfahrten & Zäune – Terrassen, Gartenwege, Einfahrten, Mauern und
+    Sichtschutz aus Stein, Holz und weiteren langlebigen Materialien."
+  - „Bepflanzung & Gartenpflege – Beete, Rasen und Gehölze fachgerecht anlegen und pflegen –
+    von mediterranen Pflanzen bis zur Begrünung geeigneter Dachflächen."
+  - „Bäume schneiden, fällen & kontrollieren – Baumschnitt, sichere Fällungen und fachliche
+    Baumkontrollen – auch bei schwierigen Standorten und anspruchsvollen Baumarbeiten."
+  - „Teiche, Wasserspiele & Poolumfeld – Teichanlagen und Wasserelemente sowie die
+    Gestaltung rund um Pool und Whirlpool – einschließlich Uferzonen, Technik und
+    Bepflanzung."
+- die Wegekacheln „Noch unsicher? Maik Rohdich nimmt sich persönlich die Zeit, um Sie zu
+  beraten." und „Anderes Vorhaben? Gartenwunsch besprechen".
+
+### Nicht mehr eingebundene Dateien
+
+- `assets/img/privat/services/*` (24 Dateien, die Motive der Wendekarten; KI-Zeichnungen)
+
+### Weiter offen
+
+- **Spaltenumbruch pflegen:** Am Desktop beginnt die zweite Spalte mit der Zeile, die
+  `iphone-service-row--column-break` trägt (heute „Palmen", 19 zu 19 Zeilen). Kommen
+  Leistungen hinzu, muss der Umbruch neu gesetzt werden.
+- **Schrift der A–Z-Titel:** Der Stapel `"Comic Sans MS", "Comic Sans", "Chalkboard SE",
+  cursive` zeigt am iPhone Chalkboard SE, am Mac- und Windows-Desktop echtes Comic Sans MS.
+  Das galt schon am Handy; am Desktop fällt es jetzt stärker auf.
+- **Totes Skript:** Die Wendelogik in `assets/js/privat-form.js` (IIFE mit
+  `[data-service-flip]`) läuft ins Leere; sie wird in AP-517 entfernt.
+

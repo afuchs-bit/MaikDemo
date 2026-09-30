@@ -1618,113 +1618,11 @@
   border-bottom: 1px solid rgba(49,82,0,.08);
   background: var(--bg);   /* AP-129: war #efede5 */
 }
-.iphone-service-directory { display: none; }
-.private-request-paths .b2b-request-head { display: grid; grid-template-columns: minmax(0,1fr) clamp(330px,30vw,370px); gap: clamp(28px,3.5vw,50px); align-items: center; }
+/* AP-507: Kopf einspaltig (bisher Titel | Notfallkarte). Die Werte sind die, die am
+   Handy aus der frueheren 1050er-Stufe kamen. */
+.private-request-paths .b2b-request-head { display: grid; grid-template-columns: minmax(0,1fr); gap: 20px; align-items: center; }
 .private-request-paths .private-request-head-copy { min-width: 0; }
 .private-request-paths h2 { max-width: 780px; font-family: var(--display); font-size: var(--type-section-title-size); font-weight: 700; line-height: 1.05; letter-spacing: -.028em; }
-.private-request-paths .b2b-request-intro { max-width: 62ch; margin: var(--space-title-subtext) 0 0; color: var(--ink-mute); font-size: var(--type-section-lead-size); line-height: 1.62; }
-.private-request-paths .private-request-emergency { grid-template-columns: 46px minmax(0,1fr) 18px; gap: 14px; min-height: 96px; padding: 15px 18px; border-radius: 18px 18px 28px 18px; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__icon { width: 46px; height: 46px; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__icon svg { width: 23px; height: 23px; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__copy { gap: 5px; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__copy strong { font-size: .93rem; line-height: 1.18; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__copy small { font-size: .72rem; line-height: 1.3; }
-.private-request-paths .private-request-emergency .form-emergency-shortcut__arrow { font-size: 1.1rem; }
-.private-request-paths .b2b-request-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); grid-auto-rows: 1fr; gap: clamp(14px,1.5vw,20px); margin: clamp(32px,4vw,48px) 0 0; padding: 0; list-style: none; }
-.private-request-paths .b2b-request-grid li { min-width: 0; perspective: 1400px; }
-.private-request-paths .private-service-flip { position: relative; min-height: 352px; height: 100%; transition: transform .24s var(--ease); }
-.private-request-paths .private-service-flip:not(.is-flipped):hover { transform: translateY(-3px); }
-.private-request-paths .private-service-flip__inner { position: relative; min-height: inherit; height: 100%; transform-style: preserve-3d; transition: transform .58s cubic-bezier(.22,.72,.24,1); }
-.private-request-paths .private-service-flip.is-flipped .private-service-flip__inner { transform: rotateY(180deg); }
-.private-request-paths .private-service-face { display: flex; flex-direction: column; align-items: flex-start; position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(49,82,0,.16); border-radius: 19px; box-shadow: 0 22px 42px -35px rgba(19,26,8,.5); backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: border-color .24s var(--ease),box-shadow .24s var(--ease); }
-.private-request-paths .private-service-face[aria-hidden="true"] { pointer-events: none; }
-.private-request-paths .private-service-face--front { background: var(--bg-elev); color: var(--ink); }
-.private-request-paths .private-service-flip:not(.is-flipped):hover .private-service-face--front,.private-request-paths .private-service-flip:focus-within .private-service-face--front { border-color: rgba(49,82,0,.4); box-shadow: 0 28px 44px -31px rgba(19,26,8,.43); }
-.private-request-paths .private-service-face--back { padding: 20px; transform: rotateY(180deg); background: radial-gradient(circle at 88% 8%,rgba(255,227,0,.14),transparent 32%),linear-gradient(145deg,#244d0c 0%,#173b08 100%); color: #fff; }
-.private-request-paths .private-service-flip.is-flipped:hover .private-service-face--back,.private-request-paths .private-service-flip:focus-within .private-service-face--back { border-color: rgba(255,227,0,.48); box-shadow: 0 30px 48px -29px rgba(15,35,5,.64); }
-.private-request-paths .private-service-action:focus-visible,.private-request-paths .private-service-request-link:focus-visible,.private-request-paths .private-service-links a:focus-visible,.private-request-paths .private-service-back-button:focus-visible,.private-request-paths .b2b-request-route:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
-.private-request-paths .b2b-request-media { display: block; flex: 0 0 auto; width: 100%; height: clamp(122px,9.2vw,128px); overflow: hidden; border-bottom: 1px solid rgba(49,82,0,.11); background: var(--green-50); }
-.private-request-paths .b2b-request-media picture,.private-request-paths .b2b-request-media img { display: block; width: 100%; height: 100%; }
-.private-request-paths .b2b-request-media img { object-fit: cover; object-position: 50% 50%; transition: transform .25s var(--ease); }
-.private-request-paths .private-service-flip:not(.is-flipped):hover .b2b-request-media img { transform: scale(1.015); }
-.private-request-paths .private-service-flip--care .b2b-request-media img { transform: scale(1.08) translateY(8%); }
-.private-request-paths .private-service-flip--care:not(.is-flipped):hover .b2b-request-media img { transform: scale(1.09) translateY(8%); }
-.private-request-paths .b2b-request-copy { flex: 1 1 auto; min-width: 0; width: 100%; padding: clamp(17px,1.6vw,20px) clamp(20px,2vw,25px) 12px; }
-.private-request-paths .b2b-request-copy h3 { margin: 0; color: var(--ink); font-family: var(--display); font-size: var(--type-module-title-size); line-height: 1.2; letter-spacing: -.02em; }
-.private-request-paths .b2b-request-copy p { margin: 9px 0 0; color: var(--ink-mute); font-size: .86rem; line-height: 1.48; }
-.private-request-paths .private-service-actions { display: grid; grid-template-columns: minmax(0,.98fr) minmax(0,1.02fr); gap: 8px; width: 100%; padding: 8px clamp(20px,2vw,25px) 20px; }
-.private-request-paths .private-service-action { display: inline-flex; align-items: center; justify-content: center; min-width: 0; min-height: 46px; padding: 10px 9px; border: 1px solid var(--green-700); border-radius: 999px; font-family: var(--body); font-size: .78rem; font-weight: 800; line-height: 1.15; text-align: center; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease); }
-.private-request-paths .private-service-action:hover { transform: translateY(-1px); }
-.private-request-paths .private-service-action--primary { background: var(--green-700); color: #fff; box-shadow: 0 13px 24px -17px rgba(32,76,8,.8); }
-.private-request-paths .private-service-action--primary:hover { border-color: var(--ink); background: var(--green-900); color: #fff; }
-.private-request-paths .private-service-request-link { display: inline-flex; gap: 3px; align-items: center; justify-content: flex-end; min-width: 0; min-height: 46px; padding: 8px 0; color: var(--green-500); font-family: var(--body); font-size: .75rem; font-weight: 800; line-height: 1.2; text-align: right; text-decoration: none; white-space: nowrap; transition: color .2s var(--ease); }
-.private-request-paths .private-service-request-link:hover { color: var(--ink); }
-.private-request-paths .private-service-request-link b { flex: 0 0 auto; color: var(--coral-700); font-size: 1rem; transition: transform .2s var(--ease); }
-.private-request-paths .private-service-request-link:hover b { transform: translateX(3px); }
-.private-request-paths .private-service-back-head { width: 100%; }
-.private-request-paths .private-service-back-head > span { display: block; color: var(--yellow); font-size: .72rem; font-weight: 900; letter-spacing: .11em; line-height: 1.2; text-transform: uppercase; }
-.private-request-paths .private-service-back-head h3 { margin: 8px 0 0; color: #fff; font-family: var(--display); font-size: clamp(1.16rem,1.4vw,1.32rem); line-height: 1.13; letter-spacing: -.02em; }
-.private-request-paths .private-service-links { display: grid; flex: 1 1 auto; gap: 7px; align-content: center; width: 100%; padding: 8px 0; }
-.private-request-paths .private-service-links a { display: flex; gap: 12px; align-items: center; justify-content: space-between; min-height: 44px; padding: 9px 14px 9px 16px; border: 1px solid rgba(255,255,255,.24); border-radius: 12px; background: rgba(255,255,255,.08); color: #fff; font-family: var(--body); font-size: .84rem; font-weight: 800; line-height: 1.2; text-decoration: none; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease); }
-.private-request-paths .private-service-links a:hover { border-color: rgba(255,227,0,.72); background: var(--bg-elev); color: var(--ink); transform: translateX(2px); }
-.private-request-paths .private-service-links a b { flex: 0 0 auto; color: var(--yellow); font-size: 1rem; transition: transform .2s var(--ease); }
-.private-request-paths .private-service-links a:hover b { color: var(--coral-700); transform: translateX(3px); }
-.private-request-paths .private-service-back-button { display: inline-flex; gap: 8px; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: 9px 14px; border: 1px solid rgba(255,255,255,.38); border-radius: 999px; background: transparent; color: #fff; font-family: var(--body); font-size: .8rem; font-weight: 800; line-height: 1.2; cursor: pointer; transition: background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease); }
-.private-request-paths .private-service-back-button:hover { border-color: #fff; background: rgba(255,255,255,.12); }
-.private-request-paths .b2b-request-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(14px,1.5vw,20px); align-items: stretch; margin-top: 24px; }
-.private-request-paths .b2b-request-route { display: grid; grid-template-columns: 42px minmax(0,1fr) auto; gap: 14px; align-items: center; min-height: 86px; padding: 15px 18px; border: 1px solid rgba(49,82,0,.14); border-radius: 15px; color: var(--ink-2); text-decoration: none; box-shadow: 0 18px 34px -31px rgba(19,26,8,.48); transition: border-color .2s var(--ease),box-shadow .2s var(--ease),transform .2s var(--ease); }
-.private-request-paths .b2b-request-route:hover { border-color: rgba(49,82,0,.32); box-shadow: 0 23px 36px -29px rgba(19,26,8,.42); transform: translateY(-2px); }
-.private-request-paths .b2b-request-icon { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 11px; background: var(--bg-elev); color: var(--green-500); }
-.private-request-paths .b2b-request-other .b2b-request-icon { background: var(--green-50); }
-.private-request-paths .b2b-request-icon svg { width: 26px; height: 26px; fill: currentColor; stroke: none; stroke-width: 0; }
-.private-request-paths .b2b-request-route strong,.private-request-paths .b2b-request-route span span { display: block; }
-.private-request-paths .b2b-request-route strong { color: var(--ink); font-family: var(--display); font-size: clamp(.92rem,1vw,1rem); line-height: 1.2; }
-.private-request-paths .b2b-request-route span span { margin-top: 4px; color: var(--green-500); font-size: .78rem; font-weight: 800; }
-.private-request-paths .b2b-request-route > b { color: var(--coral-700); font-size: 1rem; }
-.private-request-paths .b2b-request-procurement { background: var(--bg-elev); }
-.private-request-paths .b2b-request-other { background: var(--bg-elev); }
-
-@media (max-width:1160px) { .private-request-paths .b2b-request-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
-@media (max-width:1050px) {
-  .private-request-paths .b2b-request-head { grid-template-columns: 1fr; gap: 20px; }
-  .private-request-paths .private-request-emergency { width: min(100%,460px); }
-}
-@media (min-width:768px) and (max-width:900px) {
-  .private-request-paths .private-service-flip { min-height: 365px; }
-  .private-request-paths .private-service-actions { padding-right: 10px; padding-left: 10px; }
-}
-@media (max-width:767px) {
-  .private-request-paths { padding: var(--space-section) 0; }
-  .private-request-paths h2 { font-size: var(--type-section-title-size); }
-  .private-request-paths .private-request-emergency { grid-template-columns: 42px minmax(0,1fr) 16px; gap: 12px; width: 100%; min-height: 82px; padding: 12px 14px; }
-  .private-request-paths .private-request-emergency .form-emergency-shortcut__icon { width: 42px; height: 42px; }
-  .private-request-paths .private-request-emergency .form-emergency-shortcut__copy strong { font-size: .84rem; }
-  .private-request-paths .private-request-emergency .form-emergency-shortcut__copy small { font-size: .68rem; }
-  .private-request-paths .b2b-request-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
-  .private-request-paths .private-service-flip { min-height: 360px; }
-  .private-request-paths .b2b-request-media { height: clamp(120px,33vw,134px); }
-  .private-request-paths .b2b-request-copy { padding: 18px 18px 10px; }
-  .private-request-paths .b2b-request-copy h3 { font-size: 1.15rem; }
-  .private-request-paths .b2b-request-copy p { margin-top: 6px; font-size: .84rem; }
-  .private-request-paths .private-service-actions { padding: 8px 10px 20px; }
-  .private-request-paths .private-service-face--back { padding: 20px; }
-  .private-request-paths .b2b-request-links { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
-  .private-request-paths .b2b-request-route { min-height: 90px; padding: 14px 15px; }
-}
-
-@media (max-width:380px) {
-  .private-request-paths .private-service-actions { grid-template-columns: 1fr; }
-  .private-request-paths .private-service-flip { min-height: 440px; }
-}
-
-@media (prefers-reduced-motion:reduce) {
-  .private-request-paths .private-service-flip,.private-request-paths .private-service-flip__inner { transition: none; }
-  .private-request-paths .private-service-flip__inner,.private-request-paths .private-service-flip.is-flipped .private-service-flip__inner { transform: none; }
-  .private-request-paths .private-service-face { transition: none; }
-  .private-request-paths .private-service-face--back { transform: none; opacity: 0; visibility: hidden; }
-  .private-request-paths .private-service-flip.is-flipped .private-service-face--front { opacity: 0; visibility: hidden; }
-  .private-request-paths .private-service-flip.is-flipped .private-service-face--back { opacity: 1; visibility: visible; }
-}
 
 /* Finale Formularverfeinerung: ruhige B2B-Typohierarchie für Privatkunden */
 .private-form,
@@ -4814,561 +4712,555 @@
   .private-project-conversion .btn { width: 100%; justify-content: center; text-align: center; }
 }
 
-/* Handy-Breiten: Die Leistungsübersicht beginnt ohne Einleitung direkt mit
-   dem zentrierten Titel. */
-@media (max-width:480px) {
-  .private-request-paths {
-    padding: 4.5rem 0;
-    border-color: rgba(151, 206, 32, .12);
-  }
+/* AP-507: Die Leistungsuebersicht A-Z gilt auf allen Breiten. Bis AP-507 stand
+   alles hier in @media (max-width:480px), der Desktop zeigte stattdessen sechs
+   Wendekarten. Die Regeln stehen an derselben Stelle, am Handy aendert sich
+   deshalb nichts; ab 481px ist die Wurzelschrift 16px wie beim iPhone mit
+   402px. Die Zeilen-Klassen (.iphone-service-grid/-row/-card) nutzen auch die
+   "Passenden Ergaenzungen" der Leistungsseiten - dort ab 481px ausgeblendet.
+   Neue Tablet- und Desktop-Masse stehen deshalb begrenzt auf
+   .private-request-paths weiter unten. */
+.private-request-paths {
+  padding: 4.5rem 0;
+  border-color: rgba(151, 206, 32, .12);
+}
 
-  .private-request-paths .private-request-head-copy {
-    text-align: center;
-  }
+.private-request-paths .private-request-head-copy {
+  text-align: center;
+}
 
-  .private-request-paths #b2b-request-paths-title {
-    max-width: 100%;
-    margin-inline: auto;
-    text-align: center;
-    text-wrap: balance;
-  }
+.private-request-paths #b2b-request-paths-title {
+  max-width: 100%;
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: balance;
+}
 
-  .private-request-paths .b2b-request-intro {
-    display: none;
-  }
+.iphone-service-directory {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: 3rem;
+}
 
-  .private-request-paths .private-request-emergency,
-  .private-request-paths > .container > .b2b-request-grid,
-  .private-request-paths > .container > .b2b-request-links {
-    display: none;
-  }
+.iphone-service-feature,
+.iphone-service-card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(151, 206, 32, .22);
+  background:
+    radial-gradient(circle at 92% 106%, rgba(151, 206, 32, .1), transparent 38%),
+    linear-gradient(145deg, #23291f 0%, #1c211a 100%);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);
+}
 
-  .iphone-service-directory {
-    display: grid;
-    gap: 1.75rem;
-    margin-top: 3rem;
-  }
+.iphone-service-feature {
+  min-height: 14.5rem;
+  border-radius: 22px 6px 22px 6px;
+}
 
-  .iphone-service-feature,
-  .iphone-service-card {
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border: 1px solid rgba(151, 206, 32, .22);
-    background:
-      radial-gradient(circle at 92% 106%, rgba(151, 206, 32, .1), transparent 38%),
-      linear-gradient(145deg, #23291f 0%, #1c211a 100%);
-    color: var(--ink);
-    text-decoration: none;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
-    -webkit-tap-highlight-color: transparent;
-    transition: border-color .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);
-  }
+.iphone-service-feature__media,
+.iphone-service-card__media {
+  position: relative;
+  z-index: 1;
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  overflow: hidden;
+  background: #20261d;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.75rem), 0 100%);
+}
 
-  .iphone-service-feature {
-    min-height: 14.5rem;
-    border-radius: 22px 6px 22px 6px;
-  }
+.iphone-service-feature__media {
+  height: 8.875rem;
+  margin-bottom: -0.75rem;
+}
 
-  .iphone-service-feature__media,
-  .iphone-service-card__media {
-    position: relative;
-    z-index: 1;
-    display: block;
-    flex: 0 0 auto;
-    width: 100%;
-    overflow: hidden;
-    background: #20261d;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.75rem), 0 100%);
-  }
+.iphone-service-feature__media::after {
+  position: absolute;
+  right: -1px;
+  bottom: 0;
+  left: -1px;
+  height: 0.875rem;
+  background: linear-gradient(90deg, #80b514 0%, #97ce20 58%, #b3e33c 100%);
+  clip-path: polygon(0 calc(100% - 0.25rem), 100% 0, 100% 2px, 0 100%);
+  content: "";
+  pointer-events: none;
+}
 
-  .iphone-service-feature__media {
-    height: 8.875rem;
-    margin-bottom: -0.75rem;
-  }
+.iphone-service-feature__media picture,
+.iphone-service-card__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
-  .iphone-service-feature__media::after {
-    position: absolute;
-    right: -1px;
-    bottom: 0;
-    left: -1px;
-    height: 0.875rem;
-    background: linear-gradient(90deg, #80b514 0%, #97ce20 58%, #b3e33c 100%);
-    clip-path: polygon(0 calc(100% - 0.25rem), 100% 0, 100% 2px, 0 100%);
-    content: "";
-    pointer-events: none;
-  }
+.iphone-service-feature__media img,
+.iphone-service-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.93) contrast(1.02);
+  transform: scale(1.01);
+  transition: transform .22s var(--ease), filter .22s var(--ease);
+}
 
-  .iphone-service-feature__media picture,
-  .iphone-service-card__media picture {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
+.iphone-service-feature__body {
+  position: relative;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.375rem 0.875rem;
+  align-items: end;
+  min-height: 6.375rem;
+  padding: 1.5625rem 1.125rem 0.9375rem;
+}
 
-  .iphone-service-feature__media img,
-  .iphone-service-card__media img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(.93) contrast(1.02);
-    transform: scale(1.01);
-    transition: transform .22s var(--ease), filter .22s var(--ease);
-  }
+.iphone-service-feature__eyebrow {
+  grid-column: 1 / -1;
+  color: var(--yellow);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .09em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
 
-  .iphone-service-feature__body {
-    position: relative;
-    z-index: 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 0.375rem 0.875rem;
-    align-items: end;
-    min-height: 6.375rem;
-    padding: 1.5625rem 1.125rem 0.9375rem;
-  }
+.iphone-service-feature__body > strong {
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1.22rem;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
 
-  .iphone-service-feature__eyebrow {
-    grid-column: 1 / -1;
-    color: var(--yellow);
-    font-size: .72rem;
-    font-weight: 900;
-    letter-spacing: .09em;
-    line-height: 1.15;
-    text-transform: uppercase;
-  }
+.iphone-service-feature__meta {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  color: var(--home-lime, #97ce20);
+  font-size: .82rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
 
-  .iphone-service-feature__body > strong {
-    color: var(--ink);
-    font-family: var(--display);
-    font-size: 1.22rem;
-    font-weight: 800;
-    letter-spacing: -.025em;
-    line-height: 1.08;
-    text-wrap: balance;
-  }
+/* AP-317: .iphone-service-card__title > b entfaellt - die Zeilen tragen
+   keine Bluete mehr. Die Regel bleibt fuer .iphone-service-feature__meta b. */
+.iphone-service-feature__meta b {
+  position: relative;
+  flex: 0 0 auto;
+  width: 1.5rem;
+  height: 1.5rem;
+  overflow: hidden;
+  background: url("../img/icons/maik-rohdich-bluete-original.png?v=20260913b") center / contain no-repeat;
+  color: transparent;
+  font-size: 0;
+  filter: saturate(1.02) drop-shadow(0 0 5px rgba(242, 226, 12, .16));
+  transition: transform .18s var(--ease);
+}
 
-  .iphone-service-feature__meta {
-    grid-column: 1 / -1;
-    display: flex;
-    gap: 0.625rem;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 0.25rem;
-    color: var(--home-lime, #97ce20);
-    font-size: .82rem;
-    font-weight: 800;
-    line-height: 1.2;
-  }
+.iphone-service-feature__meta b::before,
+.iphone-service-feature__meta b::after {
+  content: none;
+}
 
-  /* AP-317: .iphone-service-card__title > b entfaellt - die Zeilen tragen
-     keine Bluete mehr. Die Regel bleibt fuer .iphone-service-feature__meta b. */
-  .iphone-service-feature__meta b {
-    position: relative;
-    flex: 0 0 auto;
-    width: 1.5rem;
-    height: 1.5rem;
-    overflow: hidden;
-    background: url("../img/icons/maik-rohdich-bluete-original.png?v=20260913b") center / contain no-repeat;
-    color: transparent;
-    font-size: 0;
-    filter: saturate(1.02) drop-shadow(0 0 5px rgba(242, 226, 12, .16));
-    transition: transform .18s var(--ease);
-  }
+.iphone-service-feature--emergency {
+  min-height: 0;
+  /* AP-358: Rot am Rahmen. 50 % statt der gruenen 24 % ist kein Versehen:
+     #E22219 ist deutlich dunkler als #97CE20; bei gleicher Deckkraft kaeme
+     der Rahmen nur auf 1,17:1 gegen die Kachel statt 1,69:1 und waere kaum zu
+     sehen. Mit 50 % sind es 1,57:1 - so praesent wie der gruene zuvor. */
+  border-color: rgba(226, 34, 25, .5);
+  border-radius: 18px 5px 18px 5px;
+  background: linear-gradient(145deg, #232720 0%, #1c201a 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .035),
+    0 12px 24px -24px rgba(0, 0, 0, .78);
+}
 
-  .iphone-service-feature__meta b::before,
-  .iphone-service-feature__meta b::after {
-    content: none;
-  }
+.iphone-service-feature--emergency .iphone-service-feature__body {
+  grid-template-columns: minmax(0, 1fr);
+  gap: .625rem;
+  align-content: center;
+  align-items: start;
+  min-height: 7.5rem;
+  padding: 1.25rem 6.25rem 1.25rem 1.125rem;
+}
 
-  .iphone-service-feature--emergency {
-    min-height: 0;
-    /* AP-358: Rot am Rahmen. 50 % statt der gruenen 24 % ist kein Versehen:
-       #E22219 ist deutlich dunkler als #97CE20; bei gleicher Deckkraft kaeme
-       der Rahmen nur auf 1,17:1 gegen die Kachel statt 1,69:1 und waere kaum zu
-       sehen. Mit 50 % sind es 1,57:1 - so praesent wie der gruene zuvor. */
-    border-color: rgba(226, 34, 25, .5);
-    border-radius: 18px 5px 18px 5px;
-    background: linear-gradient(145deg, #232720 0%, #1c201a 100%);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, .035),
-      0 12px 24px -24px rgba(0, 0, 0, .78);
-  }
+.iphone-service-feature--emergency .iphone-service-feature__eyebrow {
+  grid-column: 1;
+  /* AP-358: zurueck auf den Ausgangston. Rot trugen zwischenzeitlich
+     --coral-700 (AP-356) und --coral (AP-357); beides ist zurueckgenommen -
+     die Vorzeile tritt wieder zurueck, Rot tragen Rand, Nummer und Pfeil. */
+  color: var(--ink-mute);
+  font-size: .68rem;
+  letter-spacing: .075em;
+  opacity: .84;
+}
 
-  .iphone-service-feature--emergency .iphone-service-feature__body {
-    grid-template-columns: minmax(0, 1fr);
-    gap: .625rem;
-    align-content: center;
-    align-items: start;
-    min-height: 7.5rem;
-    padding: 1.25rem 6.25rem 1.25rem 1.125rem;
-  }
+.iphone-service-feature--emergency .iphone-service-feature__body > strong {
+  /* AP-359: der Name der Leistung im kraeftigen --coral, dem Ton von "Route
+     planen". Auf der Kachelflaeche sind das 3,09:1 - vorher stand die Zeile
+     mit 13,87:1 nahezu in Weiss und war das am besten lesbare Element der
+     Kachel. Die Zeile misst 13,5px bei 320 bis 18,2px bei 430, mager und
+     kursiv; als "grosse Schrift" im Sinne der Richtlinie zaehlt sie damit
+     nicht, gefordert waeren 4,5:1.
+     Auf Ansage des Auftraggebers, nach Offenlegung der Zahlen. Wer hier
+     spaeter aufraeumt: Das ist gewollt, kein Versehen. */
+  color: var(--coral);
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-size: 1.0625rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: .015em;
+  line-height: 1.16;
+  text-transform: none;
+}
 
-  .iphone-service-feature--emergency .iphone-service-feature__eyebrow {
-    grid-column: 1;
-    /* AP-358: zurueck auf den Ausgangston. Rot trugen zwischenzeitlich
-       --coral-700 (AP-356) und --coral (AP-357); beides ist zurueckgenommen -
-       die Vorzeile tritt wieder zurueck, Rot tragen Rand, Nummer und Pfeil. */
-    color: var(--ink-mute);
-    font-size: .68rem;
-    letter-spacing: .075em;
-    opacity: .84;
-  }
+.iphone-service-feature--emergency .iphone-service-feature__meta {
+  grid-column: 1;
+  justify-content: flex-start;
+  margin-top: 0;
+  /* AP-360: derselbe Ton wie die Vorzeile darueber, --ink-mute. Rot traegt
+     die Kachel jetzt an Rand, Ueberschrift und Pfeil; die Nummer tritt mit
+     der Vorzeile zurueck.
+     Ohne deren Daempfung auf .84: Die liegt am Elternelement und wuerde die
+     Pille samt Pfeil mit abdunkeln, denn das <b> haengt in derselben Zeile.
+     Die Nummer steht dadurch eine Spur heller als die Vorzeile - 6,90:1
+     gegen 5,34:1. */
+  color: var(--ink-mute);
+  font-size: .78rem;
+}
 
-  .iphone-service-feature--emergency .iphone-service-feature__body > strong {
-    /* AP-359: der Name der Leistung im kraeftigen --coral, dem Ton von "Route
-       planen". Auf der Kachelflaeche sind das 3,09:1 - vorher stand die Zeile
-       mit 13,87:1 nahezu in Weiss und war das am besten lesbare Element der
-       Kachel. Die Zeile misst 13,5px bei 320 bis 18,2px bei 430, mager und
-       kursiv; als "grosse Schrift" im Sinne der Richtlinie zaehlt sie damit
-       nicht, gefordert waeren 4,5:1.
-       Auf Ansage des Auftraggebers, nach Offenlegung der Zahlen. Wer hier
-       spaeter aufraeumt: Das ist gewollt, kein Versehen. */
-    color: var(--coral);
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: 1.0625rem;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: .015em;
-    line-height: 1.16;
-    text-transform: none;
-  }
+.iphone-service-feature--emergency .iphone-service-feature__meta b {
+  position: absolute;
+  top: 50%;
+  right: 1.125rem;
+  display: grid;
+  place-items: center;
+  width: 3.875rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: #0e100d;
+  filter: none;
+  box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .2);
+  transform: translateY(-50%);
+}
 
-  .iphone-service-feature--emergency .iphone-service-feature__meta {
-    grid-column: 1;
-    justify-content: flex-start;
-    margin-top: 0;
-    /* AP-360: derselbe Ton wie die Vorzeile darueber, --ink-mute. Rot traegt
-       die Kachel jetzt an Rand, Ueberschrift und Pfeil; die Nummer tritt mit
-       der Vorzeile zurueck.
-       Ohne deren Daempfung auf .84: Die liegt am Elternelement und wuerde die
-       Pille samt Pfeil mit abdunkeln, denn das <b> haengt in derselben Zeile.
-       Die Nummer steht dadurch eine Spur heller als die Vorzeile - 6,90:1
-       gegen 5,34:1. */
-    color: var(--ink-mute);
-    font-size: .78rem;
-  }
+.iphone-service-feature--emergency .iphone-service-feature__meta b img {
+  display: block;
+  width: 2.875rem;
+  height: auto;
+  object-fit: contain;
+  filter: none;
+  transform: none;
+  transition: none;
+}
 
-  .iphone-service-feature--emergency .iphone-service-feature__meta b {
-    position: absolute;
-    top: 50%;
-    right: 1.125rem;
-    display: grid;
-    place-items: center;
-    width: 3.875rem;
-    height: 2.5rem;
-    border-radius: 999px;
-    background: #0e100d;
-    filter: none;
-    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .2);
-    transform: translateY(-50%);
-  }
-
+/* AP-358: Der Pfeil traegt das kraeftige --coral - dasselbe Rot wie "Route
+   planen" im Footer. Auf der fast schwarzen Pille sind das 4,07:1; als
+   Grafik braucht er 3:1. Die Telefonnummer daneben bleibt auf dem
+   aufgehellten --coral-700, weil sie auf der helleren Kachelflaeche steht,
+   wo dieses Rot nur 3,09:1 erreicht - zwei Rottoene, jeder auf seinem
+   Untergrund richtig.
+   Die Maske ist noetig, weil die Grafik ihr fill="#56E607" fest im SVG
+   traegt: An einem <img> greift weder color noch background, und eine
+   Filterkette traefe die Zielfarbe nur ungefaehr. Dieselbe Technik steht in
+   mobile-social-proof.css am Knopfrahmen.
+   Das @supports ist der Sicherheitsgurt - ohne Maskenunterstuetzung bleibt
+   das <img> stehen und der Pfeil ist gruen statt verschwunden. */
+@supports ((mask-image: url("")) or (-webkit-mask-image: url(""))) {
   .iphone-service-feature--emergency .iphone-service-feature__meta b img {
-    display: block;
+    display: none;
+  }
+
+  .iphone-service-feature--emergency .iphone-service-feature__meta b::after {
+    content: "";
     width: 2.875rem;
-    height: auto;
-    object-fit: contain;
-    filter: none;
-    transform: none;
-    transition: none;
+    aspect-ratio: 1883 / 567;           /* Masse der Grafik */
+    background: var(--coral);
+    -webkit-mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
+            mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
   }
+}
 
-  /* AP-358: Der Pfeil traegt das kraeftige --coral - dasselbe Rot wie "Route
-     planen" im Footer. Auf der fast schwarzen Pille sind das 4,07:1; als
-     Grafik braucht er 3:1. Die Telefonnummer daneben bleibt auf dem
-     aufgehellten --coral-700, weil sie auf der helleren Kachelflaeche steht,
-     wo dieses Rot nur 3,09:1 erreicht - zwei Rottoene, jeder auf seinem
-     Untergrund richtig.
-     Die Maske ist noetig, weil die Grafik ihr fill="#56E607" fest im SVG
-     traegt: An einem <img> greift weder color noch background, und eine
-     Filterkette traefe die Zielfarbe nur ungefaehr. Dieselbe Technik steht in
-     mobile-social-proof.css am Knopfrahmen.
-     Das @supports ist der Sicherheitsgurt - ohne Maskenunterstuetzung bleibt
-     das <img> stehen und der Pfeil ist gruen statt verschwunden. */
-  @supports ((mask-image: url("")) or (-webkit-mask-image: url(""))) {
-    .iphone-service-feature--emergency .iphone-service-feature__meta b img {
-      display: none;
-    }
+/* AP-317: A-Z-Liste statt Kachelraster. Eine Spalte, kein Abstand zwischen
+   den Zeilen - getrennt wird nur beim Buchstabenwechsel. */
+.iphone-service-grid {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-    .iphone-service-feature--emergency .iphone-service-feature__meta b::after {
-      content: "";
-      width: 2.875rem;
-      aspect-ratio: 1883 / 567;           /* Masse der Grafik */
-      background: var(--coral);
-      -webkit-mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
-              mask: url("../img/icons/maik-rohdich-cta-pfeil-rechts.svg") center / contain no-repeat;
-    }
-  }
+.iphone-service-row {
+  min-width: 0;
+}
 
-  /* AP-317: A-Z-Liste statt Kachelraster. Eine Spalte, kein Abstand zwischen
-     den Zeilen - getrennt wird nur beim Buchstabenwechsel. */
-  .iphone-service-grid {
-    display: block;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+/* Linie nur oberhalb einer neuen Buchstabengruppe, nicht ueber der ersten. */
+.iphone-service-row--start {
+  border-top: 1px solid rgba(255, 255, 255, .12);
+}
 
-  .iphone-service-row {
-    min-width: 0;
-  }
+.iphone-service-grid > .iphone-service-row:first-child {
+  border-top: 0;
+}
 
-  /* Linie nur oberhalb einer neuen Buchstabengruppe, nicht ueber der ersten. */
-  .iphone-service-row--start {
-    border-top: 1px solid rgba(255, 255, 255, .12);
-  }
+/* Offener Auftakt der A-Gruppe: keine zweite Kachel neben dem Notdienst,
+   sondern ein ruhiger, typografischer Kontaktweg im Raster der normalen
+   Leistungszeilen. */
+.iphone-service-inquiry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
+  align-content: center;
+  align-items: center;
+  column-gap: 0.75rem;
+  min-height: 112px;
+  padding: 12px 0;
+  color: var(--home-on-dark, var(--ink));
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
 
-  .iphone-service-grid > .iphone-service-row:first-child {
-    border-top: 0;
-  }
+.iphone-service-inquiry > .iphone-service-card__letter {
+  grid-row: 1;
+  align-self: center;
+}
 
-  /* Offener Auftakt der A-Gruppe: keine zweite Kachel neben dem Notdienst,
-     sondern ein ruhiger, typografischer Kontaktweg im Raster der normalen
-     Leistungszeilen. */
-  .iphone-service-inquiry {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
-    align-content: center;
-    align-items: center;
-    column-gap: 0.75rem;
-    min-height: 112px;
-    padding: 12px 0;
-    color: var(--home-on-dark, var(--ink));
-    text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
-  }
+.iphone-service-inquiry__copy {
+  display: contents;
+  color: var(--home-on-dark, var(--ink));
+  font-family: "Baloo 2", sans-serif;
+  font-size: .9375rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .015em;
+  line-height: 1.22;
+  text-align: left;
+}
 
-  .iphone-service-inquiry > .iphone-service-card__letter {
-    grid-row: 1;
-    align-self: center;
-  }
+.iphone-service-inquiry__lead {
+  display: contents;
+}
 
-  .iphone-service-inquiry__copy {
-    display: contents;
-    color: var(--home-on-dark, var(--ink));
-    font-family: "Baloo 2", sans-serif;
-    font-size: .9375rem;
-    font-style: normal;
-    font-weight: 600;
-    letter-spacing: .015em;
-    line-height: 1.22;
-    text-align: left;
-  }
+.iphone-service-inquiry__lead > span {
+  grid-column: 2;
+  min-width: 0;
+  white-space: nowrap;
+}
 
-  .iphone-service-inquiry__lead {
-    display: contents;
-  }
+.iphone-service-inquiry__copy strong {
+  display: flex;
+  align-items: center;
+  grid-column: 2;
+  gap: 6px;
+  min-width: 0;
+  margin-top: 6px;
+  color: #56e607;
+  font: inherit;
+  letter-spacing: .015em;
+  line-height: 1.22;
+  white-space: nowrap;
+}
 
-  .iphone-service-inquiry__lead > span {
-    grid-column: 2;
-    min-width: 0;
-    white-space: nowrap;
-  }
+.iphone-service-inquiry__arrow {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  width: 28px;
+  transition: transform .18s var(--ease);
+}
 
-  .iphone-service-inquiry__copy strong {
-    display: flex;
-    align-items: center;
-    grid-column: 2;
-    gap: 6px;
-    min-width: 0;
-    margin-top: 6px;
-    color: #56e607;
-    font: inherit;
-    letter-spacing: .015em;
-    line-height: 1.22;
-    white-space: nowrap;
-  }
+.iphone-service-inquiry__arrow img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-  .iphone-service-inquiry__arrow {
-    display: inline-flex;
-    flex: 0 0 auto;
-    align-items: center;
-    width: 28px;
-    transition: transform .18s var(--ease);
-  }
+.iphone-service-inquiry__mark {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  transform: translateY(-50%);
+}
 
-  .iphone-service-inquiry__arrow img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+.iphone-service-inquiry__mark img {
+  display: block;
+  width: 64px;
+  height: auto;
+  filter: saturate(.94) drop-shadow(0 4px 7px rgba(0, 0, 0, .3));
+}
 
-  .iphone-service-inquiry__mark {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    display: grid;
-    place-items: center;
-    width: 88px;
-    height: 88px;
-    transform: translateY(-50%);
-  }
+/* AP-317: Zeile statt Kachel. Spalten: Buchstabe | Name | Foto.
+   Kein Rahmen, kein Hintergrund - die Zeilen sollen als Liste lesen, nicht
+   als Kacheln.
+   AP-320: Das Foto steht auf 88px und damit fest in Pixeln, nicht in rem.
+   Die Wurzel-Schriftgroesse ist unter 480px fluid; in rem waere das Foto je
+   nach Geraet 79 bis 105px gross geworden, nie die gewuenschten 88.
+   AP-331: Der vertikale Abstand wird um 20 Prozent reduziert: .75rem -> .6rem.
+   Die Zeile gibt dem Foto oben und unten je .6rem Luft. Die Mindesthoehe
+   folgt der festen Bildhoehe und diesem responsiven vertikalen Abstand. */
+.iphone-service-card {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
+  align-items: center;
+  column-gap: 0.75rem;
+  height: auto;
+  min-height: calc(88px + 1.2rem);
+  padding: 0.6rem 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
 
-  .iphone-service-inquiry__mark img {
-    display: block;
-    width: 64px;
-    height: auto;
-    filter: saturate(.94) drop-shadow(0 4px 7px rgba(0, 0, 0, .3));
-  }
+/* Handschriftliche Anfangsbuchstaben des Auftraggebers. Die quadratische
+   Buehne haelt alle unterschiedlichen Glyphen optisch gleich gross und
+   exakt auf derselben Achse. */
+.iphone-service-card__letter {
+  grid-column: 1;
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+}
 
-  /* AP-317: Zeile statt Kachel. Spalten: Buchstabe | Name | Foto.
-     Kein Rahmen, kein Hintergrund - die Zeilen sollen als Liste lesen, nicht
-     als Kacheln.
-     AP-320: Das Foto steht auf 88px und damit fest in Pixeln, nicht in rem.
-     Die Wurzel-Schriftgroesse ist unter 480px fluid; in rem waere das Foto je
-     nach Geraet 79 bis 105px gross geworden, nie die gewuenschten 88.
-     AP-331: Der vertikale Abstand wird um 20 Prozent reduziert: .75rem -> .6rem.
-     Die Zeile gibt dem Foto oben und unten je .6rem Luft. Die Mindesthoehe
-     folgt der festen Bildhoehe und diesem responsiven vertikalen Abstand. */
-  .iphone-service-card {
-    display: grid;
-    grid-template-columns: 1.5rem minmax(0, 1fr) 88px;
-    align-items: center;
-    column-gap: 0.75rem;
-    height: auto;
-    min-height: calc(88px + 1.2rem);
-    padding: 0.6rem 0;
-    border: 0;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
-  }
+.iphone-service-card__letter img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-  /* Handschriftliche Anfangsbuchstaben des Auftraggebers. Die quadratische
-     Buehne haelt alle unterschiedlichen Glyphen optisch gleich gross und
-     exakt auf derselben Achse. */
-  .iphone-service-card__letter {
-    grid-column: 1;
-    display: grid;
-    place-items: center;
-    width: 1.35rem;
-    height: 1.35rem;
-  }
+/* Bei Eintraegen mit Unterzeile folgt der Buchstabe optisch der
+   Hauptbezeichnung statt der Mitte des gesamten Textblocks. */
+.iphone-service-card__letter--title-line {
+  transform: translateY(-0.55rem);
+}
 
-  .iphone-service-card__letter img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+.iphone-service-card__media {
+  grid-column: 3;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 0;
+  border-radius: 12px 4px 12px 4px;
+  clip-path: none;
+}
 
-  /* Bei Eintraegen mit Unterzeile folgt der Buchstabe optisch der
-     Hauptbezeichnung statt der Mitte des gesamten Textblocks. */
-  .iphone-service-card__letter--title-line {
-    transform: translateY(-0.55rem);
-  }
+/* AP-317: Der Name steht in der mittleren Spalte, linksbuendig. */
+.iphone-service-card__title {
+  display: grid;
+  grid-column: 2;
+  gap: 2px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+}
 
-  .iphone-service-card__media {
-    grid-column: 3;
-    width: 88px;
-    height: 88px;
-    margin-bottom: 0;
-    border-radius: 12px 4px 12px 4px;
-    clip-path: none;
-  }
+.iphone-service-card__title strong {
+  min-width: 0;
+  color: var(--ink);
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-size: .9375rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: .015em;
+  line-height: 1.22;
+  text-transform: none;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+}
 
-  /* AP-317: Der Name steht in der mittleren Spalte, linksbuendig. */
-  .iphone-service-card__title {
-    display: grid;
-    grid-column: 2;
-    gap: 2px;
-    min-width: 0;
-    min-height: 0;
-    padding: 0;
-  }
+.iphone-service-card__title--explained {
+  align-items: center;
+}
 
-  .iphone-service-card__title strong {
-    min-width: 0;
-    color: var(--ink);
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: .9375rem;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: .015em;
-    line-height: 1.22;
-    text-transform: none;
-    overflow-wrap: normal;
-    text-wrap: pretty;
-  }
+.iphone-service-card__title--explained > span {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
 
-  .iphone-service-card__title--explained {
-    align-items: center;
-  }
+.iphone-service-card__title small {
+  color: var(--ink-mute);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.14;
+}
 
-  .iphone-service-card__title--explained > span {
-    display: grid;
-    gap: 3px;
-    min-width: 0;
-  }
+.iphone-service-contact-cta {
+  justify-content: space-between;
+  max-width: none;
+  min-height: 4rem;
+  margin: 1.25rem auto 0;
+  text-align: left;
+}
 
-  .iphone-service-card__title small {
-    color: var(--ink-mute);
-    font-size: .75rem;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 1.14;
-  }
+.iphone-service-feature:focus-visible,
+.iphone-service-card:focus-visible,
+.iphone-service-inquiry:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
 
-  .iphone-service-contact-cta {
-    justify-content: space-between;
-    max-width: none;
-    min-height: 4rem;
-    margin: 1.25rem auto 0;
-    text-align: left;
-  }
+.iphone-service-feature--emergency:focus-visible {
+  outline-color: var(--home-lime, #97ce20);
+}
 
-  .iphone-service-feature:focus-visible,
-  .iphone-service-card:focus-visible,
-  .iphone-service-inquiry:focus-visible {
-    outline: 3px solid var(--yellow);
-    outline-offset: 3px;
-  }
+/* AP-358: mit dem Rahmen auf Rot. Es gibt genau eine
+   .iphone-service-feature, den Notdienst; bliebe der Wechsel gruen, blitzte
+   beim Antippen ein gruener Rahmen an einer rot umrandeten Kachel auf. */
+.iphone-service-feature:active {
+  border-color: rgba(226, 34, 25, .8);
+  box-shadow: inset 0 0 0 1px rgba(226, 34, 25, .28);
+  transform: scale(.985);
+}
 
-  .iphone-service-feature--emergency:focus-visible {
-    outline-color: var(--home-lime, #97ce20);
-  }
+/* AP-317: Die Zeile hat keinen Rahmen mehr - Rueckmeldung nur ueber den
+   Namen und das leichte Zoomen des Fotos (Regel darunter). */
+.iphone-service-card:active .iphone-service-card__title strong {
+  color: var(--home-lime, #97ce20);
+}
 
-  /* AP-358: mit dem Rahmen auf Rot. Es gibt genau eine
-     .iphone-service-feature, den Notdienst; bliebe der Wechsel gruen, blitzte
-     beim Antippen ein gruener Rahmen an einer rot umrandeten Kachel auf. */
-  .iphone-service-feature:active {
-    border-color: rgba(226, 34, 25, .8);
-    box-shadow: inset 0 0 0 1px rgba(226, 34, 25, .28);
-    transform: scale(.985);
-  }
+.iphone-service-inquiry:active .iphone-service-inquiry__arrow {
+  transform: translateX(2px);
+}
 
-  /* AP-317: Die Zeile hat keinen Rahmen mehr - Rueckmeldung nur ueber den
-     Namen und das leichte Zoomen des Fotos (Regel darunter). */
-  .iphone-service-card:active .iphone-service-card__title strong {
-    color: var(--home-lime, #97ce20);
-  }
+.iphone-service-feature:active img,
+.iphone-service-card:active img {
+  filter: saturate(1) contrast(1.04);
+  transform: scale(1.035);
+}
 
-  .iphone-service-inquiry:active .iphone-service-inquiry__arrow {
-    transform: translateX(2px);
-  }
+.iphone-service-feature:active .iphone-service-feature__meta b {
+  transform: translateX(2px);
+}
 
-  .iphone-service-feature:active img,
-  .iphone-service-card:active img {
-    filter: saturate(1) contrast(1.04);
-    transform: scale(1.035);
-  }
+.iphone-service-feature--emergency:active .iphone-service-feature__meta b {
+  transform: translateY(-50%);
+}
 
-  .iphone-service-feature:active .iphone-service-feature__meta b {
-    transform: translateX(2px);
-  }
-
-  .iphone-service-feature--emergency:active .iphone-service-feature__meta b {
-    transform: translateY(-50%);
-  }
-
-  .iphone-service-feature--emergency:active .iphone-service-feature__meta b img {
-    filter: none;
-    transform: none;
-  }
+.iphone-service-feature--emergency:active .iphone-service-feature__meta b img {
+  filter: none;
+  transform: none;
 }
 
 @media (max-width:350px) {
@@ -5391,6 +5283,119 @@
 
   .iphone-service-inquiry__arrow {
     width: 22px;
+  }
+}
+
+/* AP-507: Die Werte der gemeinsamen 480er-Bloecke weiter unten (Abstaende AP-350/351,
+   Flaechen AP-354) gelten fuer #leistungen auch ab 481px - hier begrenzt auf die
+   Sektion, damit die uebrigen Sektionen der gemeinsamen Listen unberuehrt bleiben.
+   Den Handy-Seitengrund #1b1e19 uebernimmt die Sektion bewusst nicht: Ab 481px ist
+   der Seitengrund #171916, sonst entstuenden Streifen. Tablets zeigen die
+   Handy-Komposition als Mittelspalte von 34rem. */
+@media (min-width: 481px) {
+  html.home-theme-dark .private-request-paths {
+    --home-space-copy: 8px;
+    --home-space-lead: 16px;
+    --home-space-list: 24px;
+    --home-space-block: 40px;
+    --home-space-feature: 48px;
+    --home-space-section: 40px;
+    --home-surface-low: #22271f;
+    --home-surface-card: #252b22;
+    --home-surface-high: #2b3327;
+    --home-surface-border: rgba(183, 203, 160, .18);
+    padding-block: var(--home-space-section);
+    border-block: 0;
+    box-shadow: none;
+  }
+
+  .private-request-paths > .container {
+    width: min(100% - calc(var(--gutter) * 2), 34rem);
+  }
+
+  html.home-theme-dark .private-request-paths .iphone-service-directory {
+    margin-top: var(--home-space-block);
+    gap: 32px;
+  }
+
+  html.home-theme-dark .private-request-paths .iphone-service-card {
+    min-height: 112px;
+    padding-block: 12px;
+  }
+
+  /* max-width: none, weil die begrenzte Knopf-Kopie in cta-family-home.css
+     (.mobile-proof-request, max-width 640px) sonst die Handy-Breite kappt. */
+  html.home-theme-dark .private-request-paths .iphone-service-contact-cta {
+    margin-top: var(--home-space-copy);
+    max-width: none;
+  }
+
+  html.home-theme-dark .private-request-paths .iphone-service-feature--emergency {
+    background: linear-gradient(145deg, #2b3226, var(--home-surface-card));
+  }
+}
+
+/* AP-507: Desktop - zwei Spalten, von oben nach unten gelesen wie ein Register
+   (A-O links, P-Z rechts; der Umbruch sitzt am <li> mit --column-break). Die
+   Notdienst-Kachel steht mittig darueber, "Zum Kontaktformular" mittig darunter. */
+@media (min-width: 901px) {
+  html.home-theme-dark .private-request-paths {
+    padding-block: clamp(56px, 6vw, 96px);
+  }
+
+  .private-request-paths > .container {
+    width: min(100% - calc(var(--gutter) * 2), 60rem);
+  }
+
+  html.home-theme-dark .private-request-paths .iphone-service-directory {
+    margin-top: clamp(40px, 4vw, 56px);
+    gap: 40px;
+  }
+
+  .private-request-paths .iphone-service-feature--emergency {
+    justify-self: center;
+    width: min(100%, 34rem);
+  }
+
+  .private-request-paths .iphone-service-grid {
+    columns: 2;
+    column-gap: clamp(40px, 5vw, 72px);
+  }
+
+  .private-request-paths .iphone-service-row {
+    break-inside: avoid;
+  }
+
+  .private-request-paths .iphone-service-grid > .iphone-service-row--column-break {
+    break-before: column;
+    border-top: 0;
+  }
+
+  html.home-theme-dark .private-request-paths .iphone-service-contact-cta {
+    justify-self: center;
+    max-width: 26rem;
+  }
+}
+
+/* AP-507: Mit Maus gibt es am Desktop dieselbe Rueckmeldung wie beim Tippen am
+   Handy (:active im Block oben), ohne das Zusammenziehen der Notdienst-Kachel. */
+@media (min-width: 901px) and (hover: hover) and (pointer: fine) {
+  .private-request-paths .iphone-service-card:hover .iphone-service-card__title strong {
+    color: var(--home-lime, #97ce20);
+  }
+
+  .private-request-paths .iphone-service-card:hover img {
+    filter: saturate(1) contrast(1.04);
+    transform: scale(1.035);
+  }
+
+  .private-request-paths .iphone-service-feature:hover {
+    border-color: rgba(226, 34, 25, .8);
+    box-shadow: inset 0 0 0 1px rgba(226, 34, 25, .28);
+  }
+
+  .private-request-paths .iphone-service-inquiry:hover .iphone-service-inquiry__arrow {
+    transform: translateX(2px);
   }
 }
 

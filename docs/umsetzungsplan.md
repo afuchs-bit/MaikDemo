@@ -1746,6 +1746,47 @@ Gemessen in Chrome:
   festen Reihe.
 - Kein seitlicher Überlauf von 481 bis 1920 px.
 
+**AP-507 — Leistungsübersicht A–Z auf allen Breiten.** Der Desktop zeigte bis dahin sechs
+Wendekarten mit KI-Zeichnungen, eine Notfallkarte und zwei Wegekacheln. Die A–Z-Liste mit
+Buchstabengrafiken und Fotos gab es nur am Handy: Ihre gesamte Gestaltung stand in einem
+480-px-Block von `privat-form.css`, und eine Grundregel blendete sie sonst aus.
+
+- **Anheben:** Die Media-Klammer dieses Blocks ist entfernt, die Regeln stehen an derselben
+  Stelle. Am Handy ändert sich deshalb nichts.
+- **Begrenzte Tablet- und Desktop-Maße:** Die Zeilen-Klassen nutzen auch die „Passenden
+  Ergänzungen" der 37 Leistungsseiten (dort ab 481 px ausgeblendet). Alle neuen Maße
+  tragen deshalb `.private-request-paths`.
+- **Tablets (481–900 px)** zeigen die Handy-Liste als Mittelspalte von 34 rem.
+- **Desktop ab 901 px:**
+  - zwei Spalten, von oben nach unten gelesen wie ein Register (A–O links, P–Z rechts)
+  - Notdienst-Kachel mittig darüber, „Zum Kontaktformular" mittig darunter
+  - Hover mit derselben Rückmeldung wie das Tippen am Handy
+- **Knopf:** Die begrenzte Knopf-Kopie aus AP-504 (`cta-family-home.css`) gilt jetzt auch
+  für `#leistungen`.
+- **Cache:** Der Schlüssel von `privat-form.css` ist in `index.html` und in der Vorlage
+  `leistung-v2.html` angehoben. Die 37 Leistungsseiten sind neu gebaut und ändern sich
+  jeweils nur in dieser Zeile.
+- **Entfallen:** Was wegfällt, steht in `docs/offene-punkte.md`.
+
+Gemessen in Chrome:
+- 360, 390, 402, 430 und 480 px pixelgleich zum Stand vorher (26 von 26 Scheiben).
+- Der Vergleich aller berechneten Stile von `#leistungen` bei 402 px ergibt null
+  Abweichungen; nur die entfernten, dort ohnehin ausgeblendeten Blöcke fehlen.
+- Ebenfalls null Abweichungen: die Ergänzungsliste einer Leistungsseite bei 402 px und die
+  Galerie-Einladung bei 402, 768 und 1440 px.
+- 901 bis 1920 px: zwei Spalten, keine geteilte Zeile, Kachel und Knopf mittig, kein
+  seitlicher Überlauf.
+- „Zum Kontaktformular" springt am Desktop zum Formular.
+
+**Messaufbau, zwei Fallen:**
+- **Warteschlange des Testservers:** `python3 -m http.server` nimmt nur 5 wartende
+  Verbindungen an. Bei den über 50 Bildern der Liste verwarf er Anfragen, und das
+  Galerie-Karussell fiel in der Messung auf Standbild. Abhilfe:
+  `.claude/preview/stabiler-server.py`.
+- **Hintergrund-Tabs:** Sie drosseln `requestAnimationFrame`. Der Sprung aus
+  `privat-form.js`, der zwei Frames abwartet, schien deshalb zu fehlen. Das Prüfskript holt
+  den Tab jetzt nach vorn.
+
 **AP-516 — Kontaktseite am Desktop geordnet (30.09.2026).** Die Handy-Fassung (bis 600 px,
 AP-413 bis AP-449) war fertig, der Desktop wirkte ungeordnet. Die Gestaltung war nicht das
 Problem, die Anordnung schon:
