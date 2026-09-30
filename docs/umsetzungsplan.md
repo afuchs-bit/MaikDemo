@@ -1791,3 +1791,20 @@ Gemessen:
 - Kein waagerechter Überlauf, Nummern und E-Mail ohne Umbruch.
 - Die Kacheln sind 76 bis 82 px hoch.
 - „Karte laden“ füllt die Fläche.
+
+**AP-518 — Seitentitel der Kontaktseite am Desktop über den Kacheln (30.09.2026).**
+Ergänzt Entscheidung 3 aus AP-516 auf Ansage des Auftraggebers. Ab 901 px steht
+„Kontakt zu Maik Rohdich“ nicht mehr mittig über der ganzen Seite, sondern zentriert über
+den Kacheln. Er steht in derselben Zeile und auf derselben Grundlinie wie „Unser Standort
+in Herne“, beide Spalten haben damit einen Kopf.
+
+Technik: Titel und Raster sind im Markup Geschwister. Ab 901 px wird deshalb der Container
+selbst zum Raster, und `.contact-hub` bekommt `display: contents`. Die Zeilen sind dann:
+Krümelpfad, die beiden Köpfe, Kacheln und Standort-Kachel. Das Markup bleibt unverändert.
+
+Gemessen:
+- Bei 901, 960, 1024, 1280, 1440 und 1920 px ist die Unterkante des Seitentitels gleich der
+  Unterkante der Standort-Überschrift (0 px).
+- Der Titel bleibt auch bei 901 px einzeilig.
+- Kacheln und Standort-Kachel sind weiter oben und unten bündig.
+- Bis 900 px (320, 402, 480, 600, 768, 900) ist die Seite pixelgleich.

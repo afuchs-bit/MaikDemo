@@ -858,22 +858,47 @@
      Kachel stehen in einer gemeinsamen section.
    - Ueber den Kacheln steht bewusst kein Titel: "Direkt erreichbar" ist in
      AP-413 entfallen, und die Bereichstitel kommen aus der Handy-Fassung.
+     (AP-518: Dort steht jetzt der Seitentitel, siehe unten.)
    - Die fuenf Kacheln teilen sich die Hoehe der Standort-Kachel (1fr-Zeilen).
    - In der Standort-Kachel die Karte oben ueber die volle Breite, darunter
      Adresse und Route links, der Besuchshinweis rechts und unten buendig.
      Gestapelt wie auf dem Handy waere die Kachel rund 540px hoch geworden,
-     jede der fuenf Kontaktkacheln haette auf 100px wachsen muessen. */
+     jede der fuenf Kontaktkacheln haette auf 100px wachsen muessen.
+
+   AP-518, auf Ansage des Auftraggebers (30.09.2026): Der Seitentitel
+   "Kontakt zu Maik Rohdich" steht am Rechner nicht mehr mittig ueber der ganzen
+   Seite, sondern ueber den Kacheln - in derselben Zeile und auf derselben
+   Grundlinie wie "Unser Standort in Herne". Beide Spalten haben damit einen Kopf.
+   Titel und Raster sind im Markup Geschwister; damit der Titel in die Kopfzeile
+   kommt, wird der Container selbst zum Raster und .contact-hub loest sich per
+   display: contents auf (ein div ohne Semantik, es geht nichts verloren).
+   Zeile 1 Kruemelpfad, Zeile 2 die beiden Koepfe, Zeile 3 Kacheln und
+   Standort-Kachel. Das Markup bleibt, Handy und Tablet sind unberuehrt. */
 @media (min-width: 901px) {
-  .contact-hub {
+  .contact-hero .container {
+    display: grid;
     grid-template-columns: minmax(300px, 5fr) minmax(0, 7fr);
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto 1fr;
     column-gap: clamp(28px, 3vw, 48px);
-    row-gap: 0;
   }
+
+  .contact-hero .breadcrumbs { grid-column: 1 / -1; }
+
+  /* Unten buendig mit dem Standort-Kopf: gleicher Abstand zur Kachel (18px wie
+     .contact-location-head), gleiche Schrift, Groesse und Zeilenhoehe - damit
+     dieselbe Grundlinie, auch wenn der Titel bei knapper Spalte umbricht. */
+  .contact-hero-copy {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: end;
+    margin-bottom: 18px;
+  }
+
+  .contact-hub { display: contents; }
 
   .contact-direct-card {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 3;
   }
 
   /* align-self: stretch - siehe den Tablet-Block darueber. */
@@ -904,7 +929,7 @@
   .contact-location {
     display: grid;
     grid-column: 2;
-    grid-row: 1 / span 2;
+    grid-row: 2 / span 2;
     grid-template-rows: subgrid;
     min-width: 0;
   }
