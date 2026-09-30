@@ -321,9 +321,19 @@ body.ueber-page {
   padding-top: clamp(26px, 3.75vw, 48px);
 }
 
+/* AP-522: Die zweite Naht der Seite - zwischen "Fuer wen wir arbeiten" und
+   "Was daraus wird" - am Rechner genauso halbiert wie die erste in AP-460.
+   Dort lagen bei 1440px 192px (zweimal --space-section), an der ersten Naht
+   96px. Beide Seiten tragen die Haelfte, aus demselben Grund wie oben.
+   Nur ab 901px: auf dem Handy bleibt der Abstand, wie er ist. */
+@media (min-width: 901px) {
+  .ueber-betrieb { padding-bottom: clamp(26px, 3.75vw, 48px); }
+  .ueber-projekte { padding-top: clamp(26px, 3.75vw, 48px); }
+}
+
 /* AP-442: Hier stand .ueber-inhaber__wasserzeichen - die grosse, gedaempfte
    Bluetengruppe in der unteren Ecke. Auf Ansage des Auftraggebers entfallen,
-   samt der Handy-Fassung weiter unten im 860px-Block.
+   samt der Handy-Fassung weiter unten im 860px-Block (seit AP-522 900px).
 
    overflow: hidden an .ueber-inhaber bleibt trotzdem stehen. Es hielt frueher
    das angeschnittene Wasserzeichen im Rahmen, traegt seit AP-441 aber das
@@ -371,6 +381,17 @@ body.ueber-page {
    folgenden "hinter" wieder her, den die nachgeschraegte Endkante von Outfit
    (kein echter Kursivschnitt) frass. Mit dem Umbruch steht dort kein Wort
    mehr. */
+/* AP-522, auf Ansage des Auftraggebers (30.09.2026): Am Rechner stehen
+   Ueberschrift und Text linksbuendig an derselben Kante; das Zitat rechts steht
+   ueber align-items: center am Raster senkrecht mittig zum Textblock. Bis
+   hierher stand die Ueberschrift mittig ueber einem linksbuendigen Text - das
+   Zitat war rechnerisch schon mittig (beide Mitten bei y 1078 bei 1440px),
+   wirkte aber versetzt, weil die Ueberschrift mit nichts fluchtete.
+   Bis 900px bleibt sie mittig (AP-485). */
+@media (min-width: 901px) {
+  .ueber-inhaber__gross { text-align: left; }
+}
+
 .ueber-inhaber__gross span {
   display: block;
   font-style: italic;
@@ -548,6 +569,73 @@ body.ueber-page {
   color: var(--ink);
 }
 
+/* --- Mittelachse am Rechner (AP-530, 30.09.2026) --------------------------
+   Auf Wunsch des Auftraggebers: Startbild und "Das Team" stehen ab 901px auf
+   einer Achse untereinander - Titel, Foto, Ueberschrift, Text, Steg, Zitat.
+   Bis hierher stand das Foto 760px breit mittig und darunter Text und Zitat
+   zweispaltig mit senkrechtem Steg; direkt danach folgt mit der
+   Betriebssektion ein zweites Text-neben-Foto. Jetzt ist die Betriebssektion
+   das erste zweispaltige Element der Seite.
+
+   Foto 440px: Die Datei ueber-baumarbeiten ist 900px breit. Bei 760px
+   brauchte ein Retina-Bildschirm 1.520 Bildpunkte, es kamen 900 - das Foto
+   wurde um 1,69 hochgerechnet und war unscharf. 900 / 440 = 2,05 -> scharf.
+   Dieselbe Breite wie das Hebeaktion-Foto der Betriebssektion.
+
+   Textmass 600px: bei 17px Inter rund 70 Zeichen je Zeile, der Absatz laeuft
+   auf 4 Zeilen, text-wrap: balance gleicht sie an. Steg und Zitat nehmen
+   dieselbe Spalte.
+
+   Die Ueberschrift steht wieder mittig. AP-522 hatte sie am Rechner links
+   gesetzt, weil sie dort neben dem Zitat in einer Textspalte stand; die
+   Spalte gibt es nicht mehr. Unter 901px aendert sich nichts - die
+   Handy-Fassung hat schon diesen Aufbau.
+
+   Markup unveraendert bis auf sizes am Startbild. Der senkrechte Steg
+   (.ueber-inhaber__steg) wird waagerecht umgelegt, die Handy-Bluete
+   (.ueber-inhaber__bluete-mobil) bleibt am Rechner aus. */
+@media (min-width: 901px) {
+  .ueber-hero__foto { width: 440px; }
+
+  /* Foto-Unterkante bis Ueberschrift: statt --space-section (96px bei 1440px)
+     clamp(44px, 4.4vw, 60px) - Foto und Text gehoeren jetzt zusammen. Das
+     untere Polster (AP-460) bleibt. */
+  .ueber-inhaber { padding-top: clamp(44px, 4.4vw, 60px); }
+
+  .ueber-inhaber__raster {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 600px;
+    column-gap: 0;
+  }
+
+  .ueber-inhaber__gross { text-align: center; }
+
+  .ueber-inhaber__text {
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  /* Der Steg liegt waagerecht: 1px-Linie ueber die Spaltenbreite mit einer
+     128px-Luecke in der Mitte, darin die Bluete (72px) wie bisher. */
+  .ueber-inhaber__steg {
+    height: 72px;
+    margin: clamp(28px, 3vw, 40px) 0 14px;
+    background: linear-gradient(90deg,
+      var(--line) 0 calc(50% - 64px),
+      transparent calc(50% - 64px) calc(50% + 64px),
+      var(--line) calc(50% + 64px) 100%) center / 100% 1px no-repeat;
+  }
+
+  .ueber-inhaber__blume { padding: 0; }
+
+  .ueber-inhaber__zitat { text-align: center; }
+
+  /* 14px statt 28px: Zitat und Signatur stehen jetzt mittig untereinander
+     und lesen sich als ein Block. !important, weil die Grundregel es traegt. */
+  .ueber-inhaber__name { margin-top: 14px !important; }
+}
+
+
 /* --- Der Betrieb --------------------------------------------------------- */
 
 /* AP-411: Drei Kinder statt zwei. Im Quelltext steht das Foto zwischen den
@@ -574,6 +662,50 @@ body.ueber-page {
 
 .ueber-betrieb__wort { grid-area: wort; }
 .ueber-betrieb__nachsatz { grid-area: nachsatz; }
+
+/* AP-522, auf Ansage des Auftraggebers (30.09.2026): Am Rechner steht das Foto
+   rechts neben dem Textblock und reicht von der Oberkante der Ueberschrift bis
+   zur Unterkante der gruenen Zusage-Kachel. Bis hierher sass es senkrecht mittig
+   ueber zwei Rasterzeilen - 47px unter der Ueberschrift beginnend und 59px unter
+   der Kachel endend (1440px). "Alles aus einer Hand" (der Nachsatz) laeuft
+   darunter ueber die volle Breite, statt unter dem Text in der linken Spalte zu
+   haengen. Die Ueberschrift bleibt mittig (Entscheidung des Auftraggebers).
+   Das Bild liegt absolut in der Figur und fuellt sie ganz; das bestehende
+   object-fit: cover schneidet zu. Absolut, weil es sonst mit seiner eigenen
+   Hoehe (440px breit, 4:3 = 330px) die Rasterzeile mitbestimmt - der Textblock
+   ist am Rechner meist niedriger, und das Foto stuende wieder unten ueber.
+   So traegt allein der Text die Zeilenhoehe. min-height haelt den Ausschnitt
+   bei sehr kurzem Text lesbar. Das feste 4:3 gilt weiter bis 900px.
+
+   AP-523, auf Ansage des Auftraggebers (30.09.2026): Das Foto reicht jetzt bis
+   zur Unterkante der Kette "Planung -> ... -> Pflege" statt nur bis zur
+   Zusage-Kachel - dort wirkte es zu kurz (bei 1440px endete es 114px ueber der
+   Kette). Der Nachsatz steht dafuer wieder in der linken Spalte, und das Foto
+   spannt ueber beide Rasterzeilen. Waehrend die Schreibmaschine tippt, ist die
+   Zeile etwa 11px hoeher als die fertige Kette; das Foto folgt in beiden
+   Zustaenden, weil es an der Rasterzeile haengt und nicht an einem festen Mass. */
+@media (min-width: 901px) {
+  .ueber-betrieb__raster {
+    grid-template-areas:
+      "wort     bild"
+      "nachsatz bild";
+  }
+
+  /* Der Raster-Vorfahr hebt beide Regeln auf (0,2,0)/(0,2,1): die Grundregeln
+     fuer Foto und Bild (align-self: center, height: auto, aspect-ratio 4/3)
+     stehen weiter unten in der Datei und gewaennen bei Gleichstand. */
+  .ueber-betrieb__raster > .ueber-betrieb__bild {
+    align-self: stretch;
+    min-height: 240px;
+  }
+
+  .ueber-betrieb__raster > .ueber-betrieb__bild img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+}
 
 /* Die Ueberschrift traegt margin: 0 (Reset in styles.css), der Absatz ebenfalls -
    ohne diese Regel klebt der erste Satz an der Grundlinie der Ueberschrift.
@@ -642,6 +774,15 @@ body.ueber-page {
   color: var(--ink-mute);
   font-size: .9375rem;
   line-height: 1.5;
+}
+
+/* AP-522: Am Rechner laufen beide Absaetze ueber die volle Spaltenbreite -
+   so breit wie die Zusage-Kachel darunter. Bis hierher standen dort drei
+   Breiten untereinander: 416px (Faktensatz, 44ch), 587px (dieser Absatz, 62ch)
+   und 748px (Kachel) bei 1440px. Bis 900px bleiben die Deckel. */
+@media (min-width: 901px) {
+  .ueber-betrieb__wort .ueber-betrieb__fakten,
+  .ueber-betrieb__wort .lead { max-width: none; }
 }
 
 /* AP-411: Die Zusage-Kachel. Bewusst kein blockquote und ohne
@@ -1281,10 +1422,12 @@ body.ueber-page {
 }
 
 /* --- Umbruch -------------------------------------------------------------
-   860px ist derselbe Punkt, an dem die Ueber-uns-Sektion der Startseite
-   umbricht. Gleiche Zahl, damit beide Seiten beim Verkleinern im selben Moment
-   umspringen. */
-@media (max-width: 860px) {
+   Bis AP-522 stand hier 860px - derselbe Punkt, an dem damals die
+   Ueber-uns-Sektion der Startseite umbrach. Seit der Zwei-Welten-Regel
+   (CLAUDE.md, AP-501) ist die Grenze fuer alle Seiten 900/901px; zwischen 861
+   und 900px zeigte diese Seite bis dahin die Desktop-Fassung. Jetzt gilt die
+   Handy-Komposition bis 900px, die Desktop-Fassung ab 901px. */
+@media (max-width: 900px) {
   .ueber-betrieb__raster,
   .ueber-inhaber__raster,
   .ueber-fuerwen__liste {

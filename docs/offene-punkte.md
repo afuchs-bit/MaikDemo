@@ -2261,3 +2261,223 @@ Kontakt statt in `clamp(34px … 56px)`.
   1280px — die Hochrechnung aus AP-443 fällt damit weitgehend weg. Bei doppelter
   Pixeldichte bleibt sie; eine größere Vorlage behebt das weiterhin ohne Änderung an
   Markup oder CSS.
+
+## AP-503 — Willkommenbereich jetzt auch am Desktop
+
+### Was damit von der Seite verschwindet
+
+Der Desktop zeigte bis AP-503 statt des Willkommenbereichs die ältere Sektion
+`.mr-willkommen`. Mit ihr entfallen zwei Sätze, die es nur am Desktop gab und die am
+Handy nie standen:
+
+- „Willkommen bei Maik Rohdich, Seit über 25 Jahren legen wir Gärten an, bauen Terrassen,
+  Teiche und halten Außenanlagen in Form – privat wie gewerblich."
+- „Im Mittelpunkt steht dabei immer ein Ziel: die termingerechte Herstellung einer
+  Gartenanlage, die zu Ihnen …" mit der Unterschrift „Maik Rohdich".
+
+Das folgt der Entscheidung vom 15.09.2026: Die Handy-Fassung ist maßgeblich,
+Desktop-only-Texte entfallen.
+
+### Weiter offen
+
+- **„Zum Öffnen antippen"** unter den Qualifikationen steht jetzt auch am Desktop, wo man
+  klickt statt tippt. Der Wortlaut ist unverändert übernommen; eine Desktop-Fassung
+  (etwa „Zum Öffnen anklicken") nur auf Ansage des Auftraggebers.
+
+## AP-504 — Galerie-Einladung jetzt auch am Desktop
+
+### Was damit von der Seite verschwindet
+
+Zwischen 481 und 900 px zeigte die Galerie-Einladung eine eigene Tablet-Fassung. Sie
+entfällt; Tablets zeigen jetzt die Handy-Fassung. Damit verschwinden Aussagen, die es nur
+auf Tablets gab:
+
+- die Kennzahlenliste „Über 25 Jahre Erfahrung – Für einen Garten, der zu Ihnen und Ihrem
+  Grundstück passt", „100 % Chef am Telefon und im Garten – Maik und sein Fachteam sind
+  persönlich vor Ort für Sie da" und „8000 m² Gartenfläche gestaltet – Für über 400
+  zufriedene Kunden";
+- die längere Frage „Bleibt im Alltag, vor einem besonderen Anlass oder während Ihres
+  Urlaubs …" und die längere Antwort („Maiks Antwort: …").
+
+„Über 400 zufriedene Kunden" stand dort neben „1000+ Kunden haben uns vertraut" im
+Willkommenbereich. Dieser Widerspruch ist damit ausgeräumt.
+
+### Nicht mehr eingebundene Dateien
+
+Diese Dateien sind nirgends mehr eingebunden. Sie bleiben liegen, bis der Auftraggeber über
+das Löschen entscheidet:
+
+- `assets/img/mobile-social-proof/kpi-25plus.webp`, `kpi-100prozent.webp`,
+  `kpi-8000qm.webp`
+- `assets/img/icons/rohdich-gallery-arrow.png` (alter Galeriepfeil der Tablet-Fassung)
+
+## AP-516 — Kontaktseite: Footer im Tablet-Band (erledigt mit AP-515, 30.09.2026)
+
+Die Kontaktseite zeigt seit AP-516 zwischen 601 und 900 px die Handy-Komposition. Der Footer
+darunter zeigt dort weiterhin die Desktop-Fassung: Zweispalter, Kontaktkacheln im 2×2-Raster,
+Schnellzugriff und Einsatzgebiet. Die Handy-Fassung des Footers beginnt erst unter 481 px
+(`footer-kontakt.css`). Der Footer ist geteilt und über `render.mjs` auf allen Seiten
+gleich. Er gehört deshalb zu AP-515 (Menü und Footer) und nicht zur Kontaktseite.
+
+## AP-515 — Öffnungszeiten sind nirgends mehr sichtbar
+
+Auf Ansage des Auftraggebers (30.09.2026) zeigt der Footer auch am Rechner nur noch die
+Inhalte der Handy-Fassung. Damit sind die Öffnungszeiten (Mo–Fr 09:00–17:00, Sa 09:00–12:00)
+aus `.footer-hours` entfallen. Die Kontaktseite zeigt sie seit AP-414 ebenfalls nicht mehr.
+Sichtbar stehen sie damit auf keiner Seite. Im JSON-LD (`openingHoursSpecification`) sind sie
+unverändert enthalten.
+
+Das weicht von Teil D des Umsetzungsplans ab: „Zeiten identisch in JSON-LD, Kontaktbereich,
+Footer und FAQ“ (Zeile 254). Es war eine bewusste Entscheidung des Auftraggebers. Sollen die
+Zeiten wieder sichtbar werden, muss geklärt werden, wo sie stehen.
+
+Ebenfalls entfallen sind am Rechner das Einsatzgebiet (Ortsliste), der Schnellzugriff und
+„Meisterbetrieb seit 2001 · Herne“. Die Ortsliste steht weiter im JSON-LD (`areaServed`).
+
+`gewerbekunden/index.saved.html` ist eine Sicherungskopie. Sie bekommt den Footer aus dem
+Build, lädt aber kein `footer-kontakt.css`.
+
+## AP-507 — Leistungsübersicht A–Z jetzt auch am Desktop
+
+### Was damit von der Seite verschwindet
+
+Diese Bausteine standen nur am Desktop und auf Tablets; das Handy zeigte sie nie. Sie sind
+entfallen, weil die Handy-Fassung maßgeblich ist (Entscheidung vom 15.09.2026):
+
+- der Einleitungssatz „Wählen Sie den passenden Bereich: Starten Sie direkt Ihre Anfrage
+  oder informieren Sie sich zuerst über die einzelnen Leistungen."
+- die Notfallkarte „Akuter Sturm- oder Baumschaden · Notfalltelefon 0171 / 173 89 43"
+  (mit Vorbelegung des Formulars). Ersatz: die 24h-Notdienst-Kachel über der Liste, die zur
+  Seite Sturmnotdienst führt; das Formular behält seinen Akut-Einstieg.
+- die sechs Wendekarten mit Rückseiten und Kurzwegen ins Formular:
+  - „Garten neu anlegen & umgestalten – Komplette Neu- und Umgestaltung Ihres Gartens – von
+    der Planung über Erd- und Pflanzarbeiten bis zur fertigen Außenanlage."
+  - „Vorgärten neu gestalten – Vorgärten neu anlegen oder modernisieren – pflegeleicht,
+    repräsentativ und passend zu Haus, Eingang und Grundstück."
+  - „Terrassen, Wege, Einfahrten & Zäune – Terrassen, Gartenwege, Einfahrten, Mauern und
+    Sichtschutz aus Stein, Holz und weiteren langlebigen Materialien."
+  - „Bepflanzung & Gartenpflege – Beete, Rasen und Gehölze fachgerecht anlegen und pflegen –
+    von mediterranen Pflanzen bis zur Begrünung geeigneter Dachflächen."
+  - „Bäume schneiden, fällen & kontrollieren – Baumschnitt, sichere Fällungen und fachliche
+    Baumkontrollen – auch bei schwierigen Standorten und anspruchsvollen Baumarbeiten."
+  - „Teiche, Wasserspiele & Poolumfeld – Teichanlagen und Wasserelemente sowie die
+    Gestaltung rund um Pool und Whirlpool – einschließlich Uferzonen, Technik und
+    Bepflanzung."
+- die Wegekacheln „Noch unsicher? Maik Rohdich nimmt sich persönlich die Zeit, um Sie zu
+  beraten." und „Anderes Vorhaben? Gartenwunsch besprechen".
+
+### Nicht mehr eingebundene Dateien
+
+- `assets/img/privat/services/*` (24 Dateien, die Motive der Wendekarten; KI-Zeichnungen)
+
+### Weiter offen
+
+- **Spaltenumbruch pflegen:** Am Desktop beginnt die zweite Spalte mit der Zeile, die
+  `iphone-service-row--column-break` trägt (heute „Palmen", 19 zu 19 Zeilen). Kommen
+  Leistungen hinzu, werden die Spalten ungleich lang, es bricht aber nichts. Für gleich lange
+  Spalten die Klasse dann an die passende Zeile setzen, möglichst an einer Buchstabengrenze.
+- **Schrift der A–Z-Titel:** Der Stapel `"Comic Sans MS", "Comic Sans", "Chalkboard SE",
+  cursive` zeigt am iPhone Chalkboard SE, am Mac- und Windows-Desktop echtes Comic Sans MS.
+  Das galt schon am Handy; am Desktop fällt es jetzt stärker auf.
+- **Totes Skript:** Die Wendelogik in `assets/js/privat-form.js` (IIFE mit
+  `[data-service-flip]`) läuft ins Leere; sie wird in AP-517 entfernt.
+
+## AP-509 — Google-Bewertungen als Karussell auf allen Breiten
+
+### Was damit von der Seite verschwindet
+
+Nur am Desktop und auf Tablets gab es bisher:
+
+- die grüne Zusammenfassungskarte „Seit 2001 in Herne", „Vertrauen aus über 25 Jahren
+  Gartenbau.", „Echte Bewertungen und fachliche Qualifikationen machen unsere Erfahrung
+  nachvollziehbar." mit dem Bewertungskasten „4,9 von 5 / aus 68 Google-Bewertungen" und dem
+  Knopf „Alle Bewertungen auf Google ansehen". Der Kartenkopf zeigt 4,9 und 68 weiterhin; der
+  Weg zu Google steht jetzt in jeder Bewertung („Alle Google-Rezensionen ansehen").
+- die Quellenzeilen („Google-Rezension · …") unter den Bewertungen
+- die weiße Karte mit zwei Bewertungen je Ansicht, 15-Sekunden-Autoplay, „Pause" und dem
+  animierten Aufklappen.
+
+Die frühere Entscheidung AP-F26 („Karte bleibt bewusst weiß") ist damit abgelöst.
+
+### Nicht mehr eingebunden
+
+- `assets/js/private-proof.js` ist gelöscht (nur die Startseite hatte sie geladen).
+
+### Weiter offen
+
+- Am Desktop kommen **Pfeile** „Vorherige/Nächste Bewertung" dazu (am Handy gibt es sie
+  nicht, dort wird gewischt). Gestaltung zur Abnahme.
+- Die Beschriftung „Geöffnet · innerhalb der Karte scrollen" beim Aufklappen stammt aus der
+  weißen Karte mit fester Höhe; im Karussell wächst die Karte mit. Wortlaut bei Gelegenheit
+  anpassen.
+- **Tote Regeln für AP-517:** Mit `private-proof.js` sind in `privat-form.css` diese Regeln
+  ohne Wirkung. Sie stehen noch da, weil jede Zeile vor dem Löschen gegen das Handy
+  gemessen werden muss.
+  - `.has-review-rotator`, `.has-review-motion` und `.is-reduced-motion`
+  - `.private-review-nav` und `.private-review-autoplay`
+  - im Block `(min-width: 521px) and (max-width: 1100px)` des weißen Wechslers nur der
+    Innenabstand und die Mindesthöhe. Die drei Abstände `margin-top: 8px` (Zitat, Details,
+    Bildunterschrift) wirken ohne JavaScript noch; beim Löschen die Ansicht ohne JS von
+    521 bis 1100 px vergleichen.
+- **Veralteter Kommentar:** `assets/css/anfrage.css` (Kommentar über `.anf__eyebrow`) verweist
+  noch auf `.private-proof-since` in `privat-form.css`. Die Regel ist mit AP-509 entfallen.
+  Zwei HTML-Kommentare in `index.html` (Über-uns-Kopf und Kontaktbereich) nennen sie noch
+  als Gestaltungsvorbild.
+  Die Datei gehört zur Kontaktseite, an der parallel gearbeitet wird; der Verweis wird in
+  AP-517 korrigiert.
+- **Dreifache Werte:** Die Flächen- und Abstands-Token (AP-350/351/354) stehen jetzt dreimal
+  in `privat-form.css`: im Handy-Block, in der Kopie ab 481 px für `#leistungen` (AP-507) und
+  in der für die Bewertungen (AP-509). Variante G der Überschriften steht zweimal (AP-529).
+  Bei der Zusammenführung (AP-511 bzw. beim Umstellen der Weichen auf 900 px) auf eine Stelle
+  bringen, bis dahin Änderungen an allen Stellen nachziehen.
+
+## Beobachtungen aus der Gegenprüfung (älter als AP-507/509)
+
+Gefunden beim Test in Chrome, gleich in den Ständen vor AP-507. Für die Pakete AP-510/511:
+
+- `styles.css` setzt `html { scroll-behavior: smooth }` ohne Ausnahme für reduzierte Bewegung.
+  Der Sprung zu `#anfrage` gleitet deshalb auch, wenn das Gerät „Bewegung reduzieren"
+  meldet.
+- Nach einem Klick auf einen Knopf zu `#anfrage` liegt die Formularkarte am Desktop mit
+  Bewegung 13 px unter der festen Kopfleiste (Karte ab 78 px, Kopfleiste bis 91 px). Der
+  Inhalt beginnt erst bei 107 px, lesbar bleibt alles.
+- Ab 481 px zielt der Sprung auf das Formular selbst, die Überschrift „Der erste Schritt zu
+  Ihrem Gartenprojekt" liegt dann oberhalb des Bildschirms. Bis 480 px bleibt sie sichtbar.
+  Ursache ist die Scroll-Logik in `privat-form.js`.
+- **Test-Chrome:** Eine andere Sitzung hält im gemeinsamen Mess-Chrome (Port 9333) rund 570
+  offene Tabs. Zeitabhängige Messungen deshalb in einem eigenen Browser-Kontext fahren.
+
+
+## AP-529 — Sektionsüberschriften der Startseite ab 481 px
+
+### Weiter offen
+
+- **Ablauf-Kopf ab 901 px:** Die Überschrift hat die neue Schrift, bleibt aber links mit der
+  grünen Linie, weil der Kopf zweispaltig ist und ab 1024 px mit Maus im Scroll-Pin steht.
+  Zentriert würde der Kopf höher und die Pin-Geometrie kippen. Klärt AP-508.
+- **Ablauf-Kopf 481–900 px:** Die Überschrift ist mittig, der Knopf „Projekt anfragen" mit
+  dem Hinweis „Ihre Anfrage ist unverbindlich …" steht darunter noch links. Klärt AP-508.
+- **Desktop-Größen zur Abnahme:** 38 px bei 901 px bis 48 px ab etwa 1400 px, Zeilenbreite
+  höchstens 20 em. Die Leistungen-Überschrift braucht dafür eine eigene Zeile in
+  `home-dark.css`, weil ihre ID-Regel in `privat-form.css` (1,1,0) die Breite auf 100 %
+  setzt. Ohne sie war sie zwischen 901 und etwa 1400 px breiter als die anderen fünf.
+- **Doppelte Deklarationen:** Die Regeln aus Variante G stehen in `privat-form.css` (bis
+  480 px, auch für die Leistungsseiten) und in `home-dark.css` (ab 481 px, nur Startseite).
+  Bei einer Änderung beide Stellen anpassen, bis die Leistungsseiten-Vorlage (AP-512–514)
+  eigene Überschriften-Regeln hat.
+
+## AP-512 — Leistungsseiten: Kopie geteilter Handy-Regeln pflegen
+
+`leistung-mobile.css` enthält seit AP-512 eine auf `.lpv2-main` begrenzte Kopie von 103
+Handy-Regeln aus `styles.css`, `privat-form.css`, `anfrage.css` und `cta-family.css`, dazu
+eine Variable. Damit tragen Anfrageknöpfe, Kontakt, Formular und Ergänzungen auch in der
+Desktop-Spalte ihre Handy-Gestaltung.
+
+Ändert sich eine dieser Quellregeln, zieht die Kopie nicht von selbst nach. Sie muss neu
+erfasst werden, wie in H.10 unter AP-512 beschrieben: im echten Chrome bei 480 px die
+Regeln aus `max-width`-Blöcken, die im Hauptteil greifen. Der Knopf-Teil geht in AP-511
+(Knopf-Familie am Desktop) auf.
+
+Die in H.10 vorgesehenen AP-513 und AP-514 („Leistungsseiten-Vorlage“) sind damit
+gegenstandslos. Die Seiten bleiben am Desktop bewusst eine Mittelspalte, das hat der
+Auftraggeber so entschieden.

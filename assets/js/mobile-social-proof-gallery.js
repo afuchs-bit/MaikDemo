@@ -202,6 +202,16 @@
   observer.observe(gallery);
   mobile.addEventListener('change', () => {
     if (mobile.matches && !started) observer.observe(gallery);
+    if (!ready) return;
+    // AP-504: Ab 901px stehen die drei Bilder fest nebeneinander (CSS), das
+    // Karussell ruht. Dann sollen alle drei vorgelesen werden, nicht nur das
+    // zuletzt aktive; zurueck unter 900px gilt wieder die Karussell-Logik.
+    if (mobile.matches) {
+      update(current, false);
+      jump(current + 1);
+    } else {
+      originals.forEach((slide) => slide.removeAttribute('aria-hidden'));
+    }
   });
 
   new ResizeObserver(() => {
