@@ -53,34 +53,6 @@
     },
     "gallery": [
       {
-        "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/01-formgehoelz-vorgarten.webp",
-        "alt": "Gepflegter Vorgarten mit einem mehrstämmigen Formgehölz und abwechslungsreicher Unterpflanzung",
-        "fokusMobil": "50% 50%",
-        "width": 640,
-        "height": 480
-      },
-      {
-        "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/02-formgehoelze-steingarten.webp",
-        "alt": "Mehrstämmige Formgehölze in einem farbenreich bepflanzten Steingarten",
-        "fokusMobil": "50% 50%",
-        "width": 640,
-        "height": 480
-      },
-      {
-        "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/03-formgehoelz-eingangsbereich.webp",
-        "alt": "Großes Formgehölz als Blickfang in einem neu gestalteten Eingangsbereich",
-        "fokusMobil": "50% 50%",
-        "width": 640,
-        "height": 480
-      },
-      {
-        "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/04-formgehoelz-kiesgarten.webp",
-        "alt": "Formgehölze in einem Kiesgarten mit Gräsern, Stauden und Natursteineinfassung",
-        "fokusMobil": "50% 50%",
-        "width": 640,
-        "height": 480
-      },
-      {
         "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/05-formgehoelze-graesergarten.webp",
         "alt": "Großzügiger Vorgarten mit mehreren Formgehölzen, Ziergräsern und hellem Zierkies",
         "fokusMobil": "50% 50%",
@@ -132,6 +104,34 @@
       {
         "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/15-formgehoelz-im-kuebel.webp",
         "alt": "Kompaktes mehrstämmiges Formgehölz im Pflanzkübel",
+        "fokusMobil": "50% 50%",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/01-formgehoelz-vorgarten.webp",
+        "alt": "Gepflegter Vorgarten mit einem mehrstämmigen Formgehölz und abwechslungsreicher Unterpflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/02-formgehoelze-steingarten.webp",
+        "alt": "Mehrstämmige Formgehölze in einem farbenreich bepflanzten Steingarten",
+        "fokusMobil": "50% 50%",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/03-formgehoelz-eingangsbereich.webp",
+        "alt": "Großes Formgehölz als Blickfang in einem neu gestalteten Eingangsbereich",
+        "fokusMobil": "50% 50%",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/04-formgehoelz-kiesgarten.webp",
+        "alt": "Formgehölze in einem Kiesgarten mit Gräsern, Stauden und Natursteineinfassung",
         "fokusMobil": "50% 50%",
         "width": 640,
         "height": 480

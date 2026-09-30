@@ -52,15 +52,29 @@
     },
     "gallery": [
       {
-        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/01-gemischte-sichtschutzbepflanzung-gesamtansicht.webp",
-        "alt": "Eingewachsene gemischte Sichtschutzbepflanzung mit immergrünen Gehölzen und farbigem Laub",
+        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/11-sichtschutzelement-mit-bluehender-bepflanzung.webp",
+        "alt": "Dunkles Sichtschutzelement mit Kletterpflanzen, Clematis und Ziergehölzen",
         "fokusMobil": "50% 50%",
         "width": 960,
         "height": 720
       },
       {
-        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/03-gemischte-sichtschutzbepflanzung-weitwinkel.webp",
-        "alt": "Gemischte Sichtschutzpflanzung mit rotem und grünem Laub in der Weitwinkelansicht",
+        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/12-sichtschutzbepflanzung-mit-natursteinen.webp",
+        "alt": "Gemischte Sichtschutzbepflanzung am Gitterzaun mit Koniferen und Natursteinen",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/13-junge-kirschlorbeerhecke-vor-sichtschutzmatte.webp",
+        "alt": "Junge Kirschlorbeerhecke vor einer dunklen Sichtschutzmatte",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/14-junge-gehoelzpflanzung-vor-grauem-sichtschutz.webp",
+        "alt": "Junge gemischte Gehölzpflanzung vor grauen Sichtschutzelementen",
         "fokusMobil": "50% 50%",
         "width": 960,
         "height": 720
@@ -108,34 +122,6 @@
         "height": 720
       },
       {
-        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/11-sichtschutzelement-mit-bluehender-bepflanzung.webp",
-        "alt": "Dunkles Sichtschutzelement mit Kletterpflanzen, Clematis und Ziergehölzen",
-        "fokusMobil": "50% 50%",
-        "width": 960,
-        "height": 720
-      },
-      {
-        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/12-sichtschutzbepflanzung-mit-natursteinen.webp",
-        "alt": "Gemischte Sichtschutzbepflanzung am Gitterzaun mit Koniferen und Natursteinen",
-        "fokusMobil": "50% 50%",
-        "width": 960,
-        "height": 720
-      },
-      {
-        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/13-junge-kirschlorbeerhecke-vor-sichtschutzmatte.webp",
-        "alt": "Junge Kirschlorbeerhecke vor einer dunklen Sichtschutzmatte",
-        "fokusMobil": "50% 50%",
-        "width": 960,
-        "height": 720
-      },
-      {
-        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/14-junge-gehoelzpflanzung-vor-grauem-sichtschutz.webp",
-        "alt": "Junge gemischte Gehölzpflanzung vor grauen Sichtschutzelementen",
-        "fokusMobil": "50% 50%",
-        "width": 960,
-        "height": 720
-      },
-      {
         "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/15-junge-sichtschutzpflanzung-am-gitterzaun.webp",
         "alt": "Junge Glanzmispel-Sichtschutzpflanzung entlang eines Gitterzauns",
         "fokusMobil": "50% 50%",
@@ -145,6 +131,20 @@
       {
         "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/16-gemischte-neupflanzung-am-gitterzaun.webp",
         "alt": "Gemischte Neupflanzung aus Kirschlorbeer, Koniferen und Kräutern am Gitterzaun",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/01-gemischte-sichtschutzbepflanzung-gesamtansicht.webp",
+        "alt": "Eingewachsene gemischte Sichtschutzbepflanzung mit immergrünen Gehölzen und farbigem Laub",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/03-gemischte-sichtschutzbepflanzung-weitwinkel.webp",
+        "alt": "Gemischte Sichtschutzpflanzung mit rotem und grünem Laub in der Weitwinkelansicht",
         "fokusMobil": "50% 50%",
         "width": 960,
         "height": 720

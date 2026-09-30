@@ -53,6 +53,69 @@
     },
     "gallery": [
       {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/38-mischpflaster-eingangsbereich-pflanzkuebel-960.webp",
+        "alt": "Einladender Eingangsbereich mit rot-grauem Mischpflaster, Pflanzkübeln und Sitzbank",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/39-sandsteinplatten-terrasse-natursteinmauer-960.webp",
+        "alt": "Sonnige Terrasse aus warm getönten Platten mit Natursteinmauer und Blütenbepflanzung",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/40-grossformatplatten-terrasse-entwaesserungsrinne-960.webp",
+        "alt": "Moderne Terrasse mit großformatigen grauen Platten und integrierter Entwässerungsrinne",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/41-holzoptik-platten-terrasse-draufsicht-960.webp",
+        "alt": "Terrasse mit länglichen Platten in Holzoptik, Sitzmöbeln und angrenzendem Steingarten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/42-graupflaster-weg-kiesbeet-960.webp",
+        "alt": "Gepflasterter Gartenweg in Grau neben einem hellen Kiesbeet mit Rhododendron und Leuchten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/43-graupflaster-einfahrt-garten-960.webp",
+        "alt": "Neu gepflasterte graue Einfahrt zwischen gepflegten Gartenbeeten und Garage",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/44-natursteinpflaster-hauseingang-960.webp",
+        "alt": "Hauseingang mit rötlichem Natursteinpflaster, breiter Treppe und seitlichen Kiesbeeten",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/45-graupflaster-vorgarten-flaeche-960.webp",
+        "alt": "Großzügige Pflasterfläche aus grauem Mischpflaster mit geschwungener Granitpalisade",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/46-graupflaster-rasenkante-arbeitsgeraete-960.webp",
+        "alt": "Pflasterarbeiten an einer geraden Rasenkante mit Werkzeugen auf der Baustelle",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
         "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/01-moderner-innenhof-natursteinpflaster-960.webp",
         "alt": "Großzügiger gepflasterter Innenhof an einem modernen Wohnhaus",
         "fokusMobil": "50% 50%",
@@ -158,20 +221,6 @@
         "height": 720
       },
       {
-        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/16-terrasse-rot-grau-pflaster-960.webp",
-        "alt": "Rot-graue Pflasterterrasse neben einem bepflanzten Gartenbeet",
-        "fokusMobil": "50% 50%",
-        "width": 960,
-        "height": 720
-      },
-      {
-        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/17-terrasse-rot-grau-garten-960.webp",
-        "alt": "Rot-graue Pflasterfläche mit angrenzender Gartenbepflanzung",
-        "fokusMobil": "50% 50%",
-        "width": 960,
-        "height": 720
-      },
-      {
         "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/20-pflasterprojekt-baufortschritt-960.webp",
         "alt": "Baufortschritt an einer Pflasterfläche mit Material und Verdichtungsgerät",
         "fokusMobil": "50% 50%",
@@ -230,13 +279,6 @@
       {
         "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/35-graue-pflasterterrasse-nutzung-960.webp",
         "alt": "Graue Pflasterterrasse mit liegendem Hund als Alltagsszene",
-        "fokusMobil": "50% 50%",
-        "width": 960,
-        "height": 720
-      },
-      {
-        "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/36-anthrazitpflaster-flaeche-bauphase-960.webp",
-        "alt": "Neu verlegte Fläche aus anthrazitfarbenem Rechteckpflaster während der Bauphase",
         "fokusMobil": "50% 50%",
         "width": 960,
         "height": 720
