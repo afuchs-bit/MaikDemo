@@ -2261,3 +2261,26 @@ Kontakt statt in `clamp(34px … 56px)`.
   1280px — die Hochrechnung aus AP-443 fällt damit weitgehend weg. Bei doppelter
   Pixeldichte bleibt sie; eine größere Vorlage behebt das weiterhin ohne Änderung an
   Markup oder CSS.
+
+## AP-503 — Willkommenbereich jetzt auch am Desktop
+
+### Was damit von der Seite verschwindet
+
+Der Desktop zeigte bis AP-503 statt des Willkommenbereichs die ältere Sektion
+`.mr-willkommen`. Mit ihr entfallen zwei Sätze, die es nur am Desktop gab und die am
+Handy nie standen:
+
+- „Willkommen bei Maik Rohdich, Seit über 25 Jahren legen wir Gärten an, bauen Terrassen,
+  Teiche und halten Außenanlagen in Form – privat wie gewerblich."
+- „Im Mittelpunkt steht dabei immer ein Ziel: die termingerechte Herstellung einer
+  Gartenanlage, die zu Ihnen …" mit der Unterschrift „Maik Rohdich".
+
+Das folgt der Entscheidung vom 15.09.2026: Die Handy-Fassung ist maßgeblich,
+Desktop-only-Texte entfallen.
+
+### Weiter offen
+
+- **„Zum Öffnen antippen"** unter den Qualifikationen steht jetzt auch am Desktop, wo man
+  klickt statt tippt. Der Wortlaut ist unverändert übernommen; eine Desktop-Fassung
+  (etwa „Zum Öffnen anklicken") nur auf Ansage des Auftraggebers.
+

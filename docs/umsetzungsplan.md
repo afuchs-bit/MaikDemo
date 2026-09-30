@@ -1664,3 +1664,50 @@ denselben Commit.
 - Wer bewusst nur für das Handy baut, trägt die Lücke in `docs/offene-punkte.md` ein.
 
 Die 480er-Blöcke im Bestand stellt AP-502 um.
+
+**AP-502 entfällt als eigenes Paket.** Geplant war, alle 480-px-Blöcke der drei nur von
+der Startseite geladenen Stylesheets auf 900 px umzustellen. Die Prüfung vor dem Bau hat
+gezeigt, dass diese Blöcke keine sauberen Sektionsgrenzen sind:
+
+- `home-dark.css` mischt in ihnen Hero-Stufen (Teil einer Leiter 860 → … → 480 → 430),
+  Kopf-Morph, Willkommen, die geparkte Gewerbe-Tür und Über uns.
+- Die fließende Wurzelschrift (19,1 px zwischen 481 und 900 px) hätte außerdem die
+  Sektionen in den geteilten Stylesheets aufgebläht, die auf Tablets noch im
+  Desktop-Layout stehen.
+
+Deshalb stellt jedes Sektionspaket nur die Weichen seiner eigenen Sektion um. Die
+Wurzelschrift bleibt vorerst bei ≤ 480 px.
+
+**AP-503 — Willkommenbereich auf allen Breiten.** Die Ursache dafür, dass der Desktop
+„Willkommen bei" mit Wortmarke, Foto, Leitsatz, Eckdaten und Qualifikationen nicht zeigte,
+war eine einzige Regel: Eine immer geltende `display:none`-Regel in `home-dark.css`
+verbarg `.gate-welcome--iphone`, und nur der 480-px-Block schaltete ihn wieder ein. Der
+Desktop behielt dafür `.mr-willkommen`. Das war seit `b4188bde` (05.09.2026) so gebaut,
+zuerst nur für 390–404 px; AP-239 dehnte es auf 480 px aus.
+
+Was sich ändert:
+- **Gestaltung ohne Media Query:** Die Gestaltung des Bereichs (`home-dark.css`) und der
+  Eckdaten-Signatur (`mobile-social-proof.css`) steht jetzt ohne Media Query. Ab 901 px
+  ist die Wurzelschrift 16 px wie beim iPhone mit 402 px; die rem-Werte ergeben dort
+  dieselben Maße.
+- **Desktop ab 901 px:**
+  - Kopfzeile über beide Spalten, darunter Foto links und Leitsatz rechts
+  - die vier Eckdaten als Band
+  - die vier Qualifikationen in einer Reihe
+  - Detailfläche 40 rem, Zertifikat 22 rem
+- **Tablets (481–900 px)** zeigen die Handy-Komposition als Mittelspalte von 34 rem.
+- **Entfernt:**
+  - `.mr-willkommen` samt Gestaltung
+  - drei Absätze (`.gate-welcome-feeling/-copy/-outro`), die auch am Handy verborgen waren
+- **Bildgröße:** Das `sizes` des Fotos fiel am Desktop auf 1 px zurück und ist jetzt für
+  alle Breiten gesetzt.
+
+Gemessen in Chrome:
+- 402 und 480 px pixelgleich zum Stand vorher (11 von 11 Scheiben).
+- Der Bereich zeigt bei 402 und 1440 px dieselben 23 Texte und Bilder in derselben
+  Reihenfolge.
+- Kein seitlicher Überlauf von 600 bis 1920 px.
+- Die Qualifikationen öffnen sich am Desktop per Klick.
+
+Was damit entfällt und was offen ist, steht in `docs/offene-punkte.md`.
+
