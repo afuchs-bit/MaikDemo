@@ -2000,24 +2000,34 @@ html.home-theme-dark .gate-welcome-qualification-fallback {
     line-height: 1.45;
   }
 
+  /* AP-524, auf Ansage des Auftraggebers (30.09.2026): Die vier Qualifikationen
+     stehen am Desktop wie auf dem Handy im 2x2-Raster der Grundebene, mittig und
+     rund ein Viertel groesser - dieselbe Geometrie wie die Eckdaten darueber
+     (mobile-social-proof.css, AP-524). Bis hierher standen sie als Viererreihe
+     ueber die volle Breite (repeat(4, ...), entfallen).
+     zoom: 1.25 aus demselben Grund wie dort; der Abstand nach oben ist durch 1.25
+     geteilt und bleibt damit sichtbar der bisherige clamp(48px, 5vw, 72px). */
   html.home-theme-dark .gate-welcome-qualifications {
     grid-area: quali;
-    margin: clamp(48px, 5vw, 72px) 0 0;
+    justify-self: center;
+    width: 100%;
+    max-width: 32rem;
+    margin: clamp(38.4px, 4vw, 57.6px) 0 0;
+    zoom: 1.25;
   }
 
-  html.home-theme-dark .gate-welcome-qualification-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
+  /* Die geoeffnete Erklaerung steht im gezoomten Kasten und nimmt seine Breite.
+     Das max-width: 40rem von hier ist entfallen - gezoomt waeren es 50rem, breiter
+     als der Kasten. */
   html.home-theme-dark .gate-welcome-qualification-details {
-    max-width: 40rem;
-    margin: 1rem auto 0;
+    margin: 1rem 0 0;
   }
 
   /* Das Zertifikat ist 960x1358 px gross - ohne Begrenzung liefe es ueber die
-     volle Detailbreite und wuerde mehrere Bildschirmhoehen hoch. */
+     volle Detailbreite und wuerde mehrere Bildschirmhoehen hoch. AP-524: 17.6rem
+     mal zoom 1.25 sind sichtbar die bisherigen 22rem. */
   html.home-theme-dark .gate-welcome-qualification-panel-certificate {
-    max-width: 22rem;
+    max-width: 17.6rem;
     margin-inline: auto;
   }
 }

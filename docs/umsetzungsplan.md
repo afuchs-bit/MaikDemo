@@ -1947,3 +1947,22 @@ Gemessen:
 - Kein Überlauf, keine Nummer umgebrochen.
 - Der Formular-Link hat je Seitentiefe das richtige Präfix (404 wurzelabsolut).
 - Die Konsole ist fehlerfrei.
+
+**AP-524 — Startseite: Eckdaten und Qualifikationen am Desktop wie auf dem Handy
+(30.09.2026).** AP-503 hatte beide Bausteine des Willkommenbereichs am Desktop in die Breite
+gelegt: die Eckdaten als flaches Band mit vier Zellen, die Qualifikationen als Viererreihe
+über 1240 px.
+
+Auf Ansage des Auftraggebers gilt am Desktop wieder die Handy-Anordnung:
+- **Eckdaten:** 25+ | 1000+, darunter „Ihr Fachteam“, darunter die Google-Bewertung mit
+  den Zierlinien.
+- **Qualifikationen:** im 2×2-Raster.
+- **Größe:** beide mittig und rund ein Viertel größer, per `zoom: 1.25` bei `max-width:
+  32rem`, sichtbar 640 px.
+- **Abstände und Zertifikat:** Die oberen Abstände und das Zertifikat (17.6rem) sind durch
+  den Zoom geteilt. So bleiben sie sichtbar wie vorher.
+
+Gemessen bei 901, 1024, 1280, 1440 und 1920 px:
+- Beide stehen auf 0 px mittig und sind 640 px breit, ohne Überlauf.
+- Die Erklärung öffnet in voller Kastenbreite, das Zertifikat bleibt 352 px breit.
+- Bis 900 px (320, 402, 480, 768, 900) ist die Startseite pixelgleich.
