@@ -2261,3 +2261,11 @@ Kontakt statt in `clamp(34px … 56px)`.
   1280px — die Hochrechnung aus AP-443 fällt damit weitgehend weg. Bei doppelter
   Pixeldichte bleibt sie; eine größere Vorlage behebt das weiterhin ohne Änderung an
   Markup oder CSS.
+
+## AP-516 — Kontaktseite: Footer im Tablet-Band
+
+Die Kontaktseite zeigt seit AP-516 zwischen 601 und 900 px die Handy-Komposition. Der Footer
+darunter zeigt dort weiterhin die Desktop-Fassung: Zweispalter, Kontaktkacheln im 2×2-Raster,
+Schnellzugriff und Einsatzgebiet. Die Handy-Fassung des Footers beginnt erst unter 481 px
+(`footer-kontakt.css`). Der Footer ist geteilt und über `render.mjs` auf allen Seiten
+gleich. Er gehört deshalb zu AP-515 (Menü und Footer) und nicht zur Kontaktseite.

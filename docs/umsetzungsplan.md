@@ -1664,3 +1664,49 @@ denselben Commit.
 - Wer bewusst nur für das Handy baut, trägt die Lücke in `docs/offene-punkte.md` ein.
 
 Die 480er-Blöcke im Bestand stellt AP-502 um.
+
+**AP-516 — Kontaktseite am Desktop geordnet (30.09.2026).** Die Handy-Fassung (bis 600 px,
+AP-413 bis AP-449) war fertig, der Desktop wirkte ungeordnet. Die Gestaltung war nicht das
+Problem, die Anordnung schon:
+- Effektiv gab es drei Spalten: Kacheln, Adresse mit Route, Karte. Der Standort brachte ein
+  eigenes Raster mit.
+- Der Standort-Kopf stand nur über der rechten Hälfte.
+- Bei 1440 px begannen die Kacheln 80 px über der Karte und endeten 160 px vor ihr.
+- Adresse und Route schwebten senkrecht mittig neben der Karte.
+- Der Besuchshinweis hing verwaist darunter.
+- Zwischen 601 und 1050 px nahmen die Kacheln nur die halbe Breite ein.
+
+Entscheidungen des Auftraggebers:
+1. **Ab 901 px zwei bündige Spalten.** Links stehen die fünf Kontaktwege untereinander,
+   rechts die Standort-Kachel. In der Kachel steht die Karte oben, darunter links Adresse
+   und Route, rechts der Besuchshinweis. Die fünf Kacheln teilen sich die Höhe der
+   Standort-Kachel.
+2. **Der Standort trägt auch am Rechner die Gestaltung der Handy-Fassung.** Die alten
+   Desktop-Regeln (Adress- und Routenkachel, heller Kartenplatzhalter, Trennlinie) sind
+   entfallen.
+3. **Die Bereichstitel kommen aus der Handy-Fassung.** Über den Kacheln steht keiner, denn
+   „Direkt erreichbar“ bleibt nach AP-413 entfallen. Über dem Standort stehen die graue
+   Beizeile und die grüne Überschrift. Der Kopf steht über der rechten Spalte, die Kacheln
+   beginnen auf der Oberkante der Standort-Kachel.
+4. **601–900 px zeigt die Handy-Komposition**, mittig auf 34rem.
+
+Technik in `kontakt.css`:
+- Das Aussehen der Handy-Fassung steht in der Grundebene.
+- Die Handy-Anordnung steht in `@media (max-width: 900px)`, vorher 600 px.
+- Die Desktop-Geometrie steht in `@media (min-width: 901px)`.
+- Der Standort-Block spannt über beide Rasterzeilen des Hubs und reicht sie per `subgrid`
+  an Kopf und Kachel weiter. Nur so lässt sich die Oberkante der Kacheln an die der
+  Standort-Kachel binden.
+
+Die Mobil-Nummer steht am Rechner in den 1.22rem, die AP-429 vorgesehen hatte. Auf dem
+Handy griffen sie nie, weil die Spezifität dagegen stand.
+
+Gemessen:
+- Bis 600 px (320, 360, 375, 402, 430, 480, 600) ist die Seite pixelgleich zum Stand
+  9e9f1400. Auch die berechneten Stile weichen nur an ausgeblendeten oder wirkungslosen
+  Stellen ab, keine einzige Position oder Größe.
+- Bei 901, 1024, 1280, 1440 und 1920 px sind Ober- und Unterkante beider Spalten auf 0 px
+  gleich.
+- Kein waagerechter Überlauf, Nummern und E-Mail ohne Umbruch.
+- Die Kacheln sind 76 bis 82 px hoch.
+- „Karte laden“ füllt die Fläche.

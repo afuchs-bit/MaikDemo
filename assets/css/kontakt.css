@@ -99,9 +99,9 @@
   .contact-hero-copy h1 { font-size: 28px; }
 }
 
+/* AP-516: Die Spalten setzen die Bloecke bis 900px (eine) und ab 901px (zwei). */
 .contact-hub {
   display: grid;
-  grid-template-columns: minmax(360px,.8fr) minmax(0,1.2fr);
   gap: clamp(18px,2vw,26px);
   align-items: stretch;
   margin-top: clamp(24px,3vw,40px);
@@ -258,6 +258,17 @@
   white-space: nowrap;
 }
 
+/* AP-429: Die Nummer der Mobil-Kachel steht in Baloo 2 - neben der Breitkachel
+   auf dem Handy das zweite Zeichen dafuer, dass sie der erste Weg ist. Stand bis
+   AP-516 im 600px-Block, gilt jetzt auf allen Breiten.
+   Dort standen auch Groesse 1.22rem, Gewicht 700, Zeilenhoehe 1 und Sperrung.
+   Keiner der vier Werte hat je gegriffen: .contact-direct-list > a strong
+   darueber und die clamps darunter wiegen (0,1,2) gegen (0,1,1) und setzen alle
+   vier selbst. Sie sind deshalb weggelassen - wirksam war nur die Schriftart. */
+.contact-direct-mobile strong {
+  font-family: "Baloo 2", var(--display);
+}
+
 /* AP-418: Die Schriftgroessen sind unter 481px NICHT in rem angegeben, obwohl
    die Vorlage .7rem und .95rem schreibt - und das ist der Punkt, an dem eine
    woertliche Uebernahme falsch aussieht.
@@ -356,48 +367,61 @@
    form-trust-card.css bleibt davon unberuehrt - denselben Baustein benutzt die
    Startseite mit eigenem Markup. */
 
-/* AP-426: Die Kachel um den Standortblock ist auf Ansage des Auftraggebers
-   entfallen - Polster, Rahmen, Ecke, Flaechenfarbe, Schatten und der gruene
-   Balken an der Oberkante (ein ::before, das mitgegangen ist). Mit ihm faellt
-   position: relative weg, das nur ihn getragen hat. Damit steht der Block wie
-   die Kontaktwege seit AP-417 ohne eigenen Kasten auf dem Seitengrund; die
-   beiden sind wieder gleich behandelt. */
+/* AP-516: Standort - Aussehen fuer alle Breiten.
+   Bis hierher standen an dieser Stelle die Desktop-Grundregeln des Standorts:
+   Adresse und Route als eigene Kacheln mit Symbol, der Kartenplatzhalter in der
+   alten hellen Optik (gruener Pin-Kasten, gruener Knopf, Diagonalen) und eine
+   Trennlinie ueber dem Besuchshinweis. Die Handy-Fassung (AP-428 bis AP-449)
+   hat das alles in ihrem 600px-Block ueberschrieben.
+   Auf Ansage des Auftraggebers (30.09.2026) traegt der Standort jetzt auch am
+   Rechner die Gestaltung der Handy-Fassung. Die Werte aus dem AP-428-Block stehen
+   deshalb hier in der Grundebene; die alten Desktop-Werte sind entfallen. Die
+   Anordnung - Kacheln zweispaltig, Karte 260px hoch, Abstaende - steht im Block
+   bis 900px weiter unten, die Desktop-Geometrie im Block ab 901px.
+   Bis 600px ist das Ergebnis dasselbe wie vorher - nachgemessen ueber alle
+   berechneten Stile und im Pixelvergleich. */
+
+/* AP-426/AP-428: Die Kachel um den Standort. AP-426 hatte sie aufgeloest, AP-428
+   holte sie auf dem Handy zurueck; seit AP-516 steht sie auf allen Breiten. */
 .contact-location-card {
   display: flex;
   min-width: 0;
   flex-direction: column;
+  padding: 10px 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #20241D;
+  box-shadow: var(--shadow-card);
 }
 
+/* Karte oben, Adressblock darunter - gestapelt auf jeder Breite. Am Rechner
+   loest der 901px-Block das Raster auf und legt Adresse und Hinweis
+   nebeneinander unter die Karte. */
 .contact-location-card-grid {
-  display: grid;
-  grid-template-columns: minmax(230px,.82fr) minmax(330px,1.18fr);
+  display: flex;
   flex: 1;
-  gap: clamp(22px,2.5vw,34px);
+  flex-direction: column;
+  gap: 0;
   align-items: stretch;
 }
 
-/* AP-427/AP-428: AP-427 hatte die Textspalte aufgeloest (display: contents),
-   damit die Ueberschrift ueber beide Spalten reichen konnte. Seit AP-428 steht
-   die Ueberschrift ohnehin ausserhalb des Rasters, und die Spalte enthaelt nur
-   noch den Adressblock - sie ist deshalb wieder ein gewoehnlicher Kasten und
-   laesst sich am Rechner senkrecht gegen die Karte zentrieren. */
 .contact-location-copy { min-width: 0; }
 
-/* AP-427/AP-428: Mittig auf jeder Breite. Seit AP-428 steht die Ueberschrift in
-   .contact-location-head ausserhalb des Rasters - grid-column ist damit
-   gegenstandslos, die Zentrierung sitzt am Kopf und gilt fuer Beizeile und
-   Ueberschrift zugleich. */
-.contact-location-head { text-align: center; }
+/* AP-427/AP-428: Mittig auf jeder Breite. */
+.contact-location-head {
+  margin-bottom: 18px;
+  text-align: center;
+}
 
-/* AP-428: Die Beizeile ist auf Ansage des Auftraggebers zurueck (in AP-427 war
-   sie entfallen). Werte wie vor AP-427; die Handy-Fassung setzt sie im
-   600px-Block auf Nunito und weitere Sperrung um. */
+/* AP-428: Die Beizeile. Seit AP-516 auf allen Breiten grau in Nunito, wie auf dem
+   Handy - bis dahin war sie am Rechner gruen in der Hausschrift. */
 .contact-location-label {
   display: inline-flex;
-  color: var(--green-500);
+  color: var(--ink-mute);
+  font-family: "Nunito", var(--body);
   font-size: .68rem;
   font-weight: 800;
-  letter-spacing: .11em;
+  letter-spacing: .14em;
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -407,14 +431,15 @@
    neu erfunden - Baloo 2, 31px, Strichstaerke 600. Zeilenhoehe und Laufweite
    gehen mit: dieselbe Schrift in derselben Groesse, aber mit 1.15/-.01em statt
    1.13/-.015em gesetzt, saehe nebeneinander nicht gleich aus.
-   Nicht mitgenommen ist die Farbe. Bis 600px bleibt die Ueberschrift gruen und
-   hebt sich damit vom Seitentitel ab; darueber war sie schon immer weiss und
-   ist von ihm jetzt im Schriftbild nicht mehr zu unterscheiden.
+   AP-516: Das Gruen galt bis hierher nur bis 600px und unterschied die
+   Ueberschrift dort vom weissen Seitentitel. Die Bereichstitel kommen auf
+   Ansage des Auftraggebers jetzt auf allen Breiten aus der Handy-Fassung.
    Spezifitaet (0,1,1) - das schlaegt .type-subsection-title (0,1,0) aus
    styles.css:254, von dem bis hierher Groesse, Gewicht, Zeile und Laufweite
    kamen. */
 .contact-location-head h2 {
-  margin: 10px 0 12px;
+  margin: 8px 0 0;
+  color: var(--mobile-logo-green);
   font-family: "Baloo 2", var(--display);
   font-size: 31px;
   font-weight: 600;
@@ -438,94 +463,119 @@
   letter-spacing: -.028em;
 }
 
-/* AP-413: Der einzige direkte Absatz dieses Kastens war der Mustergarten-Satz.
-   Er ist entfallen, seine Regel damit auch. */
-
-/* AP-423: Wieder linksbuendig. AP-420 hatte Symbol und Text mittig gestellt
-   (auto-Spur plus justify-content), AP-421 dafuer eine gemeinsame Spurbreite
-   von 7rem gesetzt, damit die Symbole fluchten. Beides ist zurueckgenommen:
-   minmax(0,1fr) zieht die Textspur wieder auf die Restbreite, das Paar steht
-   links. Die Symbole fluchten dadurch von selbst. */
-.contact-location-address,
-.contact-location-route {
-  display: grid;
-  grid-template-columns: 40px minmax(0,1fr);
-  gap: 12px;
-  align-items: center;
-  min-height: 79px;
-  padding: 11px 12px;
-  border: 1px solid rgba(24,38,13,.13);
-  border-radius: 14px;
-  background: var(--bg-elev);
-  color: var(--ink-2);
-  font-style: normal;
-  text-decoration: none;
+/* ---------- Adresse und Route: kein Kasten, kein Symbol ----------
+   AP-428: Auf dem Handy standen beide ohne Kasten; seit AP-516 auf allen
+   Breiten. Die Symbole bleiben im Markup und sind ausgeblendet. */
+.contact-location-actions {
+  display: block;
+  margin: 0;
+  padding: 20px 8px 0;
 }
 
-/* AP-433: Das Standortzeichen stand bis hierher hinter der Ueberschrift. Auf
-   Ansage des Auftraggebers sitzt es jetzt rechts neben der Adresse, auf allen
-   Breiten. Die dritte Spur steht bewusst NUR hier und nicht in der gemeinsamen
-   Regel darueber: .contact-location-route teilt sie, hat aber kein drittes
-   Kind, und eine leere Spur kostet dort trotzdem den Spaltenabstand - ihre
-   Textspalte stuende 12px schmaler als die der Adresse.
-   Abstand und senkrechte Mitte kommen aus gap und align-items der Regel
-   darueber. */
-.contact-location-address { grid-template-columns: 40px minmax(0, 1fr) auto; }
+.contact-location-icon { display: none; }
 
-/* Die 1.75em der Grundregel haengen an der Schriftgroesse - in der Adresse sind
-   das 16px und damit nur 28px Hoehe. Hier steht deshalb eine eigene, fliessende
-   Groesse. Sie ist nach unten gedeckelt, weil die Adresskachel bei 601px am
-   engsten ist: dort bleiben der Textspalte 123px, "Huelsstrasse 5" braucht 90px,
-   das Zeichen darf also samt Abstand hoechstens 33px kosten. Mit 30px Hoehe sind
-   es 18,9 + 12 = 30,9px - es bleiben 92px. Feste 40px waeren 37px gewesen und
-   haetten die Strasse zu "Huelsstrasse" / "5" gebrochen.
+/* AP-433: Die Adresse ist zweispaltig - Text links, Standortzeichen rechts. Das
+   ausgeblendete Symbol zaehlt nicht mit, display:none nimmt es aus dem Raster. */
+.contact-location-address {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--ink-2);
+  font-style: normal;
+}
+
+/* AP-433: 54px ist die Hoehe, die das Zeichen bis AP-432 in der Ueberschrift
+   hatte. Breite 34px - der Textspalte bleiben bei 375px 251px und bei 320px
+   196px, "Huelsstrasse 5" braucht 123px.
    Sichtbare Breite = Groesse * .63125, siehe die Herleitung weiter unten. */
 .contact-location-address .contact-location-mark {
-  --mark: clamp(30px, 4.4vw, 46px);
+  --mark: 54px;
   margin-left: 0;
 }
 
-.contact-location-actions { display: grid; grid-auto-rows: 1fr; gap: 10px; margin-top: 22px; }
-.contact-location-route { transition: border-color .18s var(--ease),box-shadow .18s var(--ease),transform .18s var(--ease); }
-.contact-location-route:hover { border-color: rgb(var(--green-800-rgb) / .32); box-shadow: 0 10px 24px -22px rgba(19,26,8,.75); transform: translateY(-1px); }
-
-.contact-location-icon {
-  display: grid;
-  width: 40px;
-  height: 40px;
-  place-items: center;
-  border-radius: 12px;
-  border: 1px solid rgb(var(--green-800-rgb) / .16);
-  background: var(--bg-elev);
-  color: var(--green-500);
-}
-
-.contact-location-icon svg { width: 20px; height: 20px; }
 /* AP-433: nth-child(2) statt last-child - das Standortzeichen ist seit AP-433 das
    letzte Kind der Adresse. Das Symbol ist und bleibt Kind 1, auch wo es
    display:none traegt: das nimmt es aus dem Raster, nicht aus der Zaehlung. */
 .contact-location-address > span:nth-child(2),
 .contact-location-route > span:nth-child(2) { display: grid; gap: 3px; min-width: 0; }
-.contact-location-address strong { color: var(--ink); font-family: var(--display); font-size: .98rem; line-height: 1.18; }
-.contact-location-route strong { color: var(--ink); font-family: var(--display); font-size: .8rem; line-height: 1.25; }
-.contact-location-address small,
-.contact-location-route small { color: var(--ink-mute); font-size: .65rem; line-height: 1.4; }
-.contact-location-address > span:nth-child(2) > small { letter-spacing: .045em; text-transform: uppercase; }
-.contact-location-address > span:nth-child(2) > span { color: var(--ink-2); font-size: .74rem; line-height: 1.35; }
 
+/* Die Sperrung .045em schlaegt mit (0,2,2) die .1em, die der AP-428-Block mit
+   (0,1,1) fuer die Beizeile vorsah - so stand es auf dem Handy schon immer. */
+.contact-location-address > span:nth-child(2) > small {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--ink-mute);
+  font-family: "Nunito", var(--body);
+  font-size: .6rem;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+.contact-location-address strong {
+  display: block;
+  color: var(--ink);
+  font-family: "Baloo 2", var(--display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.contact-location-address > span:nth-child(2) > span {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink-2);
+  font-family: "Nunito", var(--body);
+  font-size: .9rem;
+  line-height: 1.35;
+}
+
+/* Route: roter Textlink wie im Footer (.footer-route). */
+.contact-location-route {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.contact-location-route small { display: none; }
+
+.contact-location-route strong {
+  color: var(--coral);
+  font-family: "Nunito", var(--body);
+  font-size: .88rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.contact-location-route strong::after { content: " \2192"; }
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-location-route:hover strong {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ---------- Karte ---------- */
 .contact-map-shell {
   position: relative;
-  height: 100%;
-  min-height: 440px;
+  order: -1;
   overflow: hidden;
-  border: 1px solid rgb(var(--green-800-rgb) / .15);
-  border-radius: 15px;
+  border: 0;
+  border-radius: 14px;
   background:
-    linear-gradient(36deg,transparent 47%,rgb(var(--green-800-rgb) / .08) 48%,rgb(var(--green-800-rgb) / .08) 51%,transparent 52%),
-    linear-gradient(-30deg,transparent 44%,rgb(var(--coral-rgb) / .08) 45%,rgb(var(--coral-rgb) / .08) 48%,transparent 49%),
-    radial-gradient(circle at 65% 32%,rgba(90,138,28,.18),transparent 16%),
-    var(--bg-soft);
-  box-shadow: 0 20px 42px -34px rgba(28,48,0,.75);
+    linear-gradient(36deg, transparent 47%, rgb(140 198 63 / .07) 48%, rgb(140 198 63 / .07) 51%, transparent 52%),
+    radial-gradient(circle at 50% 30%, rgb(86 230 7 / .12), transparent 40%),
+    #2A2F26;
+  box-shadow: none;
 }
 
 .contact-map-shell iframe {
@@ -541,43 +591,33 @@
   inset: 0;
   display: flex;
   flex-direction: column;
+  gap: 6px;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 22px 18px;
   text-align: center;
 }
 
 .contact-map-placeholder > div { display: grid; gap: 3px; }
-.contact-map-placeholder > div strong { color: var(--ink); font-family: var(--display); font-size: 1.03rem; line-height: 1.25; }
-.contact-map-placeholder > div span,
-.contact-map-placeholder > p { color: var(--ink-2); }
-.contact-map-placeholder > div span { font-size: .82rem; }
-.contact-map-placeholder > p { max-width: 42ch; margin: 10px 0 14px; font-size: .7rem; line-height: 1.45; }
+.contact-map-placeholder > div strong {
+  color: var(--ink);
+  font-family: "Baloo 2", var(--display);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+/* Die Adresse steht direkt darunter im Adressblock. */
+.contact-map-placeholder > div span { display: none; }
 
-/* AP-394: Der Hinweis nennt jetzt Empfaenger, Umfang und Widerruf und verweist auf
-   die Datenschutzerklaerung. Er ist damit laenger als die eine Zeile von vorher -
-   daher 42ch statt 34ch. Der Verweis braucht eine eigene Farbe: die Seitenfarbe
-   fuer Verweise ist das Rot von "Route planen", das hier auf dem hellen Kartengrund
-   unruhig wirkt und den Blick vom Knopf zieht. */
-/* AP-396: "Direkt erreichbar" und "Unser Einsatzgebiet" waren ein <span> und ein
-   <div><span>. Die Kontaktkarte - der halbe Seiteninhalt - tauchte damit in keiner
-   Dokumentgliederung auf; Screenreader-Nutzer konnten sie nicht anspringen, und
-   Antwortmaschinen fanden ueber der Ortsliste keine Ueberschrift.
-
-   Jetzt h2 und h3 unter der h1. Beide Klassen setzen Groesse, Gewicht und Farbe
-   ohnehin selbst, es fehlen nur die Standardabstaende der Ueberschriften-Elemente.
-   Die Regeln stehen hier und nicht in form-trust-card.css: denselben Baustein
-   benutzt die Startseite mit ihrem eigenen Markup, und die soll sich nicht
-   mitaendern. */
-/* AP-413: Beide Ueberschriften sind entfallen, die Abstandsregeln dafuer damit
-   auch. form-trust-card.css bleibt unangetastet - denselben Baustein benutzt die
-   Startseite mit eigenem Markup. */
-
-/* AP-424: Hier stand die Regel fuer den Verweis "Termin anfragen" im
-   Terminhinweis (AP-397). Der Schlusssatz "Termin anfragen oder rufen Sie an."
-   ist auf Ansage des Auftraggebers entfallen und mit ihm der einzige Verweis in
-   diesem Absatz - die Regel hat nichts mehr zu treffen. Zum Formular fuehren
-   weiterhin zwei Wege auf der Seite, darunter die Kachel "Anfrageformular". */
+/* AP-394: Der Hinweis nennt Empfaenger, Umfang und Widerruf und verweist auf die
+   Datenschutzerklaerung. */
+.contact-map-placeholder > p {
+  max-width: 34ch;
+  margin: 0 0 6px;
+  color: var(--ink-mute);
+  font-size: .7rem;
+  line-height: 1.45;
+}
 
 .contact-map-placeholder > p a {
   color: inherit;
@@ -592,91 +632,70 @@
 
 .contact-map-pin {
   display: grid;
-  width: 52px;
-  height: 52px;
-  margin-bottom: 14px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 4px;
   place-items: center;
   border-radius: 14px;
-  background: var(--green-700);
-  color: var(--ink);
-  box-shadow: 0 12px 24px -14px rgb(var(--green-800-rgb) / .8);
+  background: #0E100D;
+  color: var(--mobile-logo-green);
+  box-shadow: inset 0 0 0 1px rgb(86 230 7 / .3);
 }
 
-.contact-map-pin svg { width: 25px; height: 25px; }
+.contact-map-pin svg { width: 24px; height: 24px; }
 
-/* AP-419: Der Hinweis ist seit diesem Arbeitspaket ein Kind des Rasters und
-   steht im Quelltext vor der Kartenschale - gestapelt also zwischen
-   Adressblock und Karte. Ueber beide Spalten gespannt bleibt er am Rechner
-   genau das, was er vorher war: eine Zeile in voller Breite unter dem Raster. */
-.contact-location-footer {
-  grid-column: 1 / -1;
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid rgb(var(--green-800-rgb) / .12);
+.contact-map-placeholder [data-map-load] {
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 99px;
+  background: var(--ink);
+  color: #171916;
+  font-family: "Nunito", var(--body);
+  font-size: .82rem;
+  font-weight: 800;
+  box-shadow: none;
 }
 
-/* AP-419/AP-427: Ab 721px hat der Kasten drei Zeilen. Die Ueberschrift spannt
-   ueber beide Spalten und steht mittig (Zeile 1), darunter Kacheln links und
-   Karte rechts (Zeile 2), ganz unten der Terminhinweis ueber die volle Breite
-   (Zeile 3). Bis AP-426 sass die Ueberschrift in der linken Spalte neben der
-   Karte; sie ist auf Ansage des Auftraggebers herausgerueckt, damit sie
-   wirklich in der Seitenmitte steht.
-
-   Die Platzierung ist ausgeschrieben, weil die automatische sonst der
-   Quelltextreihenfolge folgt und den Hinweis - der seit AP-419 vor der Karte
-   steht - in die falsche Zelle setzen wuerde.
-
-   row-gap: 0 bleibt: Die Abstaende zwischen den Zeilen tragen die eigenen
-   Raender der Elemente (Ueberschrift 12px unten, Kachelblock 22px oben,
-   Hinweis 22px oben). Ein Rasterabstand kaeme obendrauf.
-
-   align-self: center am Kachelblock haelt das alte Bild: Solange die
-   Ueberschrift mit in der Spalte stand, zentrierte .contact-location-copy den
-   Block senkrecht gegen die Karte. */
-/* AP-428: Im Raster liegen jetzt nur noch Adressblock und Karte - Ueberschrift
-   und Hinweis stehen davor beziehungsweise dahinter. Die ausgeschriebene
-   Platzierung aus AP-419/427 ist damit nicht mehr noetig; die beiden Kinder
-   fallen von selbst in Spalte 1 und 2. Geblieben ist die senkrechte Zentrierung
-   des Adressblocks gegen die Karte. */
-@media (min-width: 721px) {
-  .contact-location-copy { align-self: center; }
+/* Am Rechner gibt es Hover: .btn-primary:hover (styles.css:294) faerbt gruen,
+   verliert hier aber gegen die Regel darueber - gleiche Spezifitaet, spaetere
+   Datei. Ein leichtes Abdunkeln bleibt als Rueckmeldung. */
+@media (hover: hover) and (pointer: fine) {
+  .contact-map-placeholder [data-map-load]:hover {
+    background: rgb(var(--ink-rgb) / .86);
+    box-shadow: none;
+  }
 }
 
+/* ---------- Besuchshinweis ---------- */
+/* AP-425: Fett steht der Auftakt MITTEN im Satz; die hellere Farbe hebt ihn vom
+   Rest ab, ein Schriftwechsel innerhalb der Zeile fiele als Bruch auf. */
 .contact-visit-note {
-  display: grid;
-  gap: 3px;
+  display: block;
   max-width: 62ch;
   margin: 0;
-  padding-left: 13px;
+  padding-left: 12px;
   border-left: 3px solid var(--coral);
   color: var(--ink-2);
-  font-size: .78rem;
+  font-family: "Nunito", var(--body);
+  font-size: .84rem;
   line-height: 1.5;
 }
 
-/* AP-426/AP-433: Das Standortzeichen - Pin-SVG mit der Marken-Bluete darueber.
-   Es stand seit AP-426 hinter der Ueberschrift; seit AP-433 steht es rechts
-   neben der Adresse, die Groesse setzen die beiden Regeln weiter oben.
-   Woertlich aus home-dark.css:134-164 uebernommen, nur
-   ohne den Vorfahren html.home-theme-dark: dort steht die Vorlage
-   ausschliesslich, und diese Seite laedt home-dark.css nicht und traegt die
-   Klasse nicht. Ein blosses Kopieren des Markups haette zwei unformatierte,
-   uebereinander liegende Bilder ergeben.
+.contact-visit-note strong { font-family: inherit; color: var(--ink); }
 
-   Die Vorlage haengt an drei Variablen (home-dark.css:106-108), die es hier
-   ebenfalls nicht gibt. Ihre mobile Fassung (ab :587) zeigt, dass alles an
-   EINER Groesse haengt:
-     Einzug         = Groesse * .184375
+/* AP-426/AP-433: Das Standortzeichen - Pin-SVG mit der Marken-Bluete darueber.
+   Woertlich aus home-dark.css:134-164 uebernommen, nur ohne den Vorfahren
+   html.home-theme-dark: dort steht die Vorlage ausschliesslich, und diese Seite
+   laedt home-dark.css nicht und traegt die Klasse nicht.
+
+   Die Vorlage haengt alles an EINER Groesse (home-dark.css:106-108, :587 ff.):
+     Einzug           = Groesse * .184375
      sichtbare Breite = Groesse * .63125
    Das Pin-SVG ist also breiter als sein sichtbarer Ausschnitt und wird nach
-   links herausgezogen. Beide Verhaeltniszahlen sind woertlich uebernommen und
-   gelten unveraendert weiter.
+   links herausgezogen.
 
-   Die 1.75em hier sind der Stand aus AP-426: Damals hing das Zeichen in der
-   Ueberschrift, und die wuchs von 22,4px bei 375px auf 30,4px bei 1280px - ein
-   fester Wert waere unten zu gross und oben zu klein gewesen. Seit AP-433 haengt
-   es in der Adresse und bekommt seine Groesse dort gesetzt; 1.75em ist nur noch
-   der Rueckfall, falls das Zeichen einmal woanders steht.
+   1.75em ist nur noch der Rueckfall, falls das Zeichen einmal ausserhalb der
+   Adresse steht; dort setzt die Regel weiter oben 54px.
 
    max-width: none ist keine Zierde: Der Bild-Reset des Projekts deckelt jedes
    img auf die Elternbreite, und genau das darf der Pin nicht. */
@@ -716,104 +735,32 @@
   pointer-events: none;
 }
 
-/* AP-425: Die Auszeichnung war bis hierher eine eigene Zeile ueber dem Absatz
-   ("Bitte vorab Termin vereinbaren.") und trug deshalb die Auszeichnungsschrift.
-   Sie ist entfallen; fett steht jetzt der Auftakt MITTEN im Satz. Dort hat
-   var(--display) nichts verloren - ein Schriftwechsel innerhalb einer Zeile
-   faellt als Bruch auf. Geblieben ist die hellere Farbe, die den Auftakt vom
-   Rest des Satzes abhebt. */
-.contact-visit-note strong { color: var(--ink); }
-
-   /* AP-129 */
-
-/* AP-F26: --ink ist seit AP-F25 hell - auf gelbem Grund waren das 1,28:1.
-   Auf einer hellen Signalflaeche gehoert dunkler Text, unabhaengig vom Thema. */
-
-@media (min-width:1051px) {
-  .contact-location { align-self: center; height: auto; }
-  .contact-location-card-grid { flex: 0 1 auto; }
-}
-
-@media (max-width:1050px) {
-  .contact-hub { grid-template-columns: 1fr; }
-  .contact-direct-list { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
-  /* AP-397: Fuenf Wege auf zwei Spalten lassen den letzten allein in der Schlusszeile
-     stehen. Statt einer halben Kachel mit Luecke daneben laeuft das Formular ueber
-     beide Spalten - es ist ohnehin der einzige Weg, der kein Direktkanal ist. */
-  .contact-direct-form { grid-column: 1 / -1; }
-  .contact-location-card-grid { grid-template-columns: minmax(0,1fr) minmax(330px,1.08fr); }
-}
-
-/* AP-428: Hier stand der AP-423-Block - Kacheln links, Terminhinweis rechts
-   daneben, bis 720px. Das Auftragsdokument ordnet den Standort anders: Karte,
-   Adresse, Route, Hinweis untereinander in einer Kachel. Der Block ist damit
-   abgeloest; der neue 600px-Block weiter unten regelt die Handyfassung.
-   Zwischen 601 und 720px gilt jetzt wieder das zweispaltige Basisraster
-   (Adressblock | Karte, Hinweis darunter). */
-
-@media (max-width:600px) {
-  .contact-hero { padding-top: 24px; }
-  .contact-hero .breadcrumbs { margin-bottom: 28px; }
-  /* AP-415: Hier stand eine Wiederholung von font-size:
-     var(--type-page-h1-size). Sie steht spaeter in der Datei als die Regel
-     oben und haette die 31px unterhalb 600px wieder zurueckgedreht. */
-  /* AP-417: Hier stand die Handy-Fassung von padding und border-radius der
-     gruenen Kachel. Beide Eigenschaften gibt es dort nicht mehr. */
-  /* AP-428: Die einspaltige Kachelliste ist entfallen - der neue Block unten
-     setzt zwei Spalten. */
-  /* AP-426: Hier standen Eckenradius und Polster der Standort-Kachel. Beide
-     Eigenschaften gibt es dort nicht mehr. */
-  .contact-map-shell { height: 340px; min-height: 340px; }
-}
-
-@media (prefers-reduced-motion:reduce) {
-  .contact-location-route { transition: none; }
-}
-
-/* AP-388: Unter 481px traegt die Startseite #1B1E19 statt #171916 - gesetzt vom
-   Inline-Style in index.html:10 und von --home-page-background in
-   privat-form.css:5551, das nur sie laedt. Der Wert steht hier als Literal,
-   damit ein grep nach 1B1E19 alle Stellen zusammen findet; so haelt es die
-   Startseite schon heute.
-
-   html kommt mit, weil der untere Abstand der eingerueckten Footer-Kachel durch
-   Margin Collapsing ausserhalb des Body-Kastens liegt (Begruendung in
-   privat-form.css:5548).
-
-   Die Regeln stehen in dieser Datei und nicht in header-home.css: Der
-   Seitengrund ist keine Kopf-Angelegenheit, und kontakt.css wird als letzte
-   geladen - nur von hier aus laesst sich .contact-page aus Zeile 1
-   ueberschreiben. */
-
-/* AP-428: Kontaktseite mobil an die Startseite angeglichen.
+/* ---------- Handy-Welt bis 900px: Anordnung ----------
+   AP-428: Kontaktseite mobil an die Startseite angeglichen.
    Vorlage: Auftragsdokument docs/ap/AP-428-kontaktseite-mobil-kacheln-und-standort.md,
    Mockup-Fassung A2 (Lindgruen).
 
-   - Fuenf Kontaktwege als Raster: Mobil als lindgruene Breitkachel ueber die
-     ganze Zeile, darunter vier Halbkacheln. Die ganze Kachel ist der Link,
-     kein Knopf und kein Pfeil.
-   - Standort: Kopf zentriert ueber der Karte, darin Karte, Adresse, Route und
+   - Fuenf Kontaktwege als Raster: eine Breitkachel (Mobil) ueber die ganze
+     Zeile, darunter vier Halbkacheln. Die ganze Kachel ist der Link.
+   - Standort: Kopf zentriert ueber der Kachel, darin Karte, Adresse, Route und
      Hinweis untereinander.
 
-   NICHT uebernommen ist der Abschnitt "Einzelkachel" des Dokuments (36px-Symbol,
-   #20241D, gruener Rahmenton, Nunito-Werte). Der Auftraggeber hat entschieden,
-   dass die Kacheln das Aussehen aus AP-418 behalten - das der Kanalkacheln im
-   Anfrageformular der Startseite. Aus demselben Grund traegt auch die
-   Mobil-Breitkachel die AP-418-Masse (64px hoch, 40px Symbolspalte) statt der
-   62px/36px des Dokuments: sonst stuende sie 2px niedriger als die vier
-   daneben. Ebenso bleibt die H1 bei den 31px aus AP-415 statt der 2.05rem des
-   Dokuments - §3.3 verlangt dort ausdruecklich, eine abweichende lokale Groesse
-   zu melden statt zu ueberschreiben. */
-@media (max-width: 600px) {
+   Die Kacheln behalten das Aussehen aus AP-418 (64px hoch, 40px Symbolspalte);
+   die H1 bleibt bei den 31px aus AP-415.
+
+   AP-516: Das Gate stand bis hierher bei 600px, das Aussehen stand mit darin.
+   Seit AP-516 steht das Aussehen in der Grundebene, hier bleibt nur die
+   Anordnung - und die gilt nach der Zwei-Welten-Regel bis 900px. Zwischen 601
+   und 900px zeigte die Seite vorher eine halbe Desktop-Fassung: Kacheln nur
+   halb breit, die Adresse schwebend neben der Karte. */
+@media (max-width: 900px) {
 
   /* ---------- Kopf ----------
-     AP-430: Hier stand bis zum 24.09.2026 zusaetzlich
-     ".contact-hero .breadcrumbs ol { justify-content: center; }" aus dem
-     AP-428-Dokument. Auf Ansage des Auftraggebers steht der Kruemelpfad wieder
-     linksbuendig - so, wie er oberhalb von 600px ohnehin schon stand. Die H1
-     bleibt zentriert; diese Mischung ist am Rechner die gewohnte. */
+     AP-430: Der Kruemelpfad steht linksbuendig, die H1 zentriert. */
   .contact-hero { padding-top: 22px; }
   .contact-hero-copy { text-align: center; }
+
+  .contact-hub { grid-template-columns: 1fr; }
 
   /* ---------- Kachelraster ---------- */
   .contact-direct-list {
@@ -821,7 +768,6 @@
     gap: 10px;
     margin: 0;
   }
-  .contact-direct-form { grid-column: auto; }
 
   /* Die vier Halbkacheln bekommen engere Innenmasse. Flaeche, Rahmen, Ecke und
      Hoehe bleiben die aus AP-418 - nur das Rahmenwerk innen schrumpft, sonst
@@ -859,229 +805,145 @@
   }
 
   /* Die E-Mail-Adresse ebenfalls nicht: overflow-wrap: anywhere brach sie bei
-     375px zu "maik@rohdich." / "de" - ein Bruch mitten im Wort, direkt hinter
-     einem Punkt. Sie traegt deshalb als einzige .7rem statt .76rem; damit passt
-     sie auch in die schmalste Zweispaltigkeit bei 360px in eine Zeile.
-     Die uebrigen Kacheln brechen weiterhin sauber zwischen den Woertern um. */
+     375px zu "maik@rohdich." / "de". Sie traegt deshalb als einzige .7rem statt
+     .76rem; damit passt sie auch bei 360px in eine Zeile. */
   .contact-direct-list > a[href^="mailto:"] strong {
     white-space: nowrap;
     font-size: .7rem;
   }
 
-  /* ---------- Mobil: Breitkachel ----------
-     AP-429: War bis hierher lindgruen - Flaeche ueber einen Verlauf, Schnitt an
-     der oberen rechten Ecke, versetzte Linie, dunkle Schrift. Auf Ansage des
-     Auftraggebers traegt sie jetzt dieselbe Farbe wie die vier Kacheln darunter.
-     Damit faellt die ganze Sonderbehandlung weg: Flaeche, Rahmen, Ecke, Schrift-
-     und Symbolfarbe kommen wieder aus der AP-418-Regel.
-
-     Der Schnitt ist mitgegangen, nicht aus Versehen - er wurde vom Verlauf
-     selbst gezeichnet, und ein Rahmen kann einer Schraege nicht folgen. Die
-     Kachel haette als einzige keinen Rahmen gehabt.
-
-     Geblieben sind die beiden Dinge, die sie weiter als ersten Weg auszeichnen:
-     Sie spannt ueber die ganze Zeile, und ihre Nummer steht groesser in
-     Baloo 2. Die Innenmasse sind die vollen aus AP-418 (40px Symbol, 11px
-     Abstand) - anders als bei den Halbkacheln ist hier Platz dafuer. */
+  /* AP-429: Die Mobil-Kachel spannt ueber die ganze Zeile und zeichnet sich
+     damit als erster Weg aus. Ihre Nummer in Baloo 2 steht in der Grundebene. */
   .contact-direct-list > a.contact-direct-mobile {
     grid-column: 1 / -1;
   }
-  .contact-direct-mobile strong {
-    font-family: "Baloo 2", var(--display);
+
+  /* ---------- Standort ---------- */
+  .contact-location { margin-top: 44px; }
+  .contact-map-shell {
+    height: 260px;
+    min-height: 260px;
+  }
+  .contact-location-footer { margin: 16px 8px 0; }
+}
+
+/* AP-516: Zwischen 601 und 900px steht die Handy-Komposition mittig auf 34rem -
+   so breit wie die Startseite dieses Band haelt.
+   align-self: stretch ist noetig, weil form-trust-card.css:373 die Kachelliste
+   bis 1160px auf align-self: start stellt. In der Flex-Spalte der Karte heisst
+   das: so schmal wie der Inhalt. Auf dem Handy faellt das nicht auf, weil der
+   Inhalt breiter ist als der Platz; ab 601px blieben die Kacheln sonst schmaler
+   als die Standort-Kachel darunter. */
+@media (min-width: 601px) and (max-width: 900px) {
+  .contact-hero .container { max-width: 34rem; }
+  .contact-direct-list { align-self: stretch; }
+}
+
+/* ---------- Desktop ab 901px: zwei buendige Spalten ----------
+   AP-516, auf Ansage des Auftraggebers (30.09.2026). Links die fuenf Kontaktwege
+   untereinander, rechts die Standort-Kachel. Beide beginnen und enden auf
+   derselben Linie.
+
+   Bis hierher waren es effektiv DREI Spalten - Kacheln | Adresse und Route |
+   Karte -, weil der Standort ein eigenes Raster mitbrachte. Der Kopf stand nur
+   ueber der rechten Haelfte; die Kacheln begannen 80px ueber der Karte und
+   endeten 160px vor ihr. Adresse und Route schwebten senkrecht mittig neben der
+   Karte, der Besuchshinweis hing darunter.
+
+   Die Ordnung jetzt:
+   - .contact-hub hat zwei Zeilen. Zeile 1 traegt nur den Standort-Kopf, Zeile 2
+     die Kacheln und die Standort-Kachel. Der Standort-Block spannt ueber beide
+     Zeilen und reicht sie per subgrid an Kopf und Kachel weiter - sonst liesse
+     sich die Oberkante der Kacheln nicht an die der Karte binden, denn Kopf und
+     Kachel stehen in einer gemeinsamen section.
+   - Ueber den Kacheln steht bewusst kein Titel: "Direkt erreichbar" ist in
+     AP-413 entfallen, und die Bereichstitel kommen aus der Handy-Fassung.
+   - Die fuenf Kacheln teilen sich die Hoehe der Standort-Kachel (1fr-Zeilen).
+   - In der Standort-Kachel die Karte oben ueber die volle Breite, darunter
+     Adresse und Route links, der Besuchshinweis rechts und unten buendig.
+     Gestapelt wie auf dem Handy waere die Kachel rund 540px hoch geworden,
+     jede der fuenf Kontaktkacheln haette auf 100px wachsen muessen. */
+@media (min-width: 901px) {
+  .contact-hub {
+    grid-template-columns: minmax(300px, 5fr) minmax(0, 7fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(28px, 3vw, 48px);
+    row-gap: 0;
+  }
+
+  .contact-direct-card {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  /* align-self: stretch - siehe den Tablet-Block darueber. */
+  .contact-direct-list {
+    flex: 1 1 auto;
+    align-self: stretch;
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: 1fr;
+  }
+
+  /* Die Kacheln duerfen ueber die 64px aus AP-418 hinaus wachsen. */
+  .contact-direct-list > a { block-size: auto; }
+
+  /* Die Mobil-Nummer in der Groesse, die AP-429 fuer sie vorgesehen hatte. Auf
+     dem Handy hat sie nie gegriffen (siehe die Grundregel), dort traegt die
+     Breitkachel die Rangfolge und die Festnetznummer steht mit .76rem ohnehin
+     kleiner. Am Rechner sind alle Kacheln gleich breit und beide Nummern
+     stuenden bei .95rem - Baloo 2 zeichnet dabei sichtbar kleiner als Inter,
+     der erste Weg saehe schwaecher aus als der zweite. (0,2,2) schlaegt die
+     (0,1,2) der Grundregel. */
+  .contact-direct-list > a.contact-direct-mobile strong {
     font-size: 1.22rem;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -.005em;
   }
 
-  /* ---------- Standort ---------- */
-  .contact-location { margin-top: 44px; }
-  .contact-location-head { margin-bottom: 18px; }
-  .contact-location-label {
-    color: var(--ink-mute);
-    font-family: "Nunito", var(--body);
-    font-size: .68rem;
-    font-weight: 800;
-    letter-spacing: .14em;
-  }
-  /* AP-432: Hier standen bis zum 24.09.2026 Schriftart, Groesse (1.55rem),
-     Strichstaerke 700, Zeilenhoehe und Laufweite aus dem AP-428-Dokument. Sie
-     sind entfallen - das Schriftbild kommt jetzt fuer alle Breiten aus der
-     Grundregel und ist damit das des Seitentitels. Geblieben sind Abstand und
-     Farbe; das Gruen unterscheidet die beiden Titel auf dem Handy. */
-  .contact-location-head h2 {
-    margin: 8px 0 0;
-    color: var(--mobile-logo-green);
-  }
-
-  /* AP-426 hatte die Kachel um den Standort aufgeloest. Auf Handybreite kommt
-     sie auf Ansage des Auftraggebers zurueck; am Rechner bleibt sie aufgeloest. */
-  /* AP-449: Hier stand .contact-location-card::after - die Bluete, die ueber die
-     obere rechte Kartenecke ragte. Auf Ansage des Auftraggebers entfallen.
-
-     position: relative und overflow: visible gehen mit: Beide standen allein
-     fuer sie. overflow: visible ist ohnehin der Vorgabewert, und die Karte war
-     fuer nichts anderes Bezugsrahmen - kein Nachfahre ist absolut positioniert
-     ohne eigenen positionierten Vorfahren (.contact-map-shell und
-     .contact-location-mark bringen ihren selbst mit). Einen Stapelkontext hat
-     sie nie aufgespannt, dafuer haette sie ein eigenes z-index gebraucht.
-
-     Die Bilddatei rohdich-blume.png wird damit von keiner Regel und keiner
-     Seite mehr benutzt - geprueft ueber das ganze Repo. Sie bleibt trotzdem
-     liegen und in ASSETS.md beschrieben; ob sie geloescht wird, ist eine eigene
-     Entscheidung. Nicht zu verwechseln mit maik-rohdich-bluete-original.png,
-     die weiter an mehreren Stellen im Einsatz ist. */
-  .contact-location-card {
-    padding: 10px 10px 18px;
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    background: #20241D;
-    box-shadow: var(--shadow-card);
-  }
-
-  .contact-location-card-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  /* ---------- Karte ---------- */
-  .contact-map-shell {
-    order: -1;
-    height: 260px;
-    min-height: 260px;
-    border: 0;
-    border-radius: 14px;
-    background:
-      linear-gradient(36deg, transparent 47%, rgb(140 198 63 / .07) 48%, rgb(140 198 63 / .07) 51%, transparent 52%),
-      radial-gradient(circle at 50% 30%, rgb(86 230 7 / .12), transparent 40%),
-      #2A2F26;
-    box-shadow: none;
-  }
-  .contact-map-placeholder { gap: 6px; padding: 22px 18px; }
-  .contact-map-pin {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 4px;
-    border-radius: 14px;
-    background: #0E100D;
-    color: var(--mobile-logo-green);
-    box-shadow: inset 0 0 0 1px rgb(86 230 7 / .3);
-  }
-  .contact-map-pin svg { width: 24px; height: 24px; }
-  .contact-map-placeholder > div strong {
-    font-family: "Baloo 2", var(--display);
-    font-size: 1rem;
-    font-weight: 700;
-  }
-  /* Die Adresse steht direkt darunter im Adressblock. */
-  .contact-map-placeholder > div span { display: none; }
-  .contact-map-placeholder > p {
-    max-width: 34ch;
-    margin: 0 0 6px;
-    color: var(--ink-mute);
-    font-size: .7rem;
-  }
-  .contact-map-placeholder [data-map-load] {
-    padding: 11px 22px;
-    border: 0;
-    border-radius: 99px;
-    background: var(--ink);
-    color: #171916;
-    font-family: "Nunito", var(--body);
-    font-size: .82rem;
-    font-weight: 800;
-    box-shadow: none;
-  }
-
-  /* ---------- Adresse: kein Kasten, kein Symbol ---------- */
-  .contact-location-actions {
-    display: block;
-    margin: 0;
-    padding: 20px 8px 0;
-  }
-  .contact-location-address,
-  .contact-location-route {
-    display: block;
-    min-height: 0;
-    padding: 0;
-    border: 0;
-    background: none;
-    box-shadow: none;
-  }
-
-  /* AP-433: Die Adresse bleibt kastenlos, wird aber zweispaltig - sonst stuende
-     das Standortzeichen unter dem Text statt daneben. Das ausgeblendete Symbol
-     zaehlt nicht mit, display:none nimmt es aus dem Raster.
-     54px ist die Hoehe, die das Zeichen bis AP-432 in der Ueberschrift hatte;
-     auf dem Handy bleibt es damit so gross wie gewohnt. Breite 34px - der
-     Textspalte bleiben bei 375px 251px und bei 320px 196px, "Huelsstrasse 5"
-     braucht 123px. */
-  .contact-location-address {
+  .contact-location {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 12px;
-    align-items: center;
-  }
-  .contact-location-address .contact-location-mark { --mark: 54px; }
-  .contact-location-address .contact-location-icon,
-  .contact-location-route .contact-location-icon,
-  .contact-location-route small { display: none; }
-  .contact-location-address small {
-    display: block;
-    margin-bottom: 3px;
-    color: var(--ink-mute);
-    font-family: "Nunito", var(--body);
-    font-size: .6rem;
-    font-weight: 800;
-    letter-spacing: .1em;
-  }
-  .contact-location-address strong {
-    display: block;
-    font-family: "Baloo 2", var(--display);
-    font-size: 1.35rem;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-  .contact-location-address > span:nth-child(2) > span {
-    display: block;
-    margin-top: 2px;
-    color: var(--ink-2);
-    font-family: "Nunito", var(--body);
-    font-size: .9rem;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    grid-template-rows: subgrid;
+    min-width: 0;
   }
 
-  /* Route: roter Textlink wie im Footer (.footer-route) */
-  .contact-location-route {
-    display: inline-block;
-    margin-top: 10px;
-    transform: none;
+  .contact-location-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    column-gap: 24px;
   }
-  .contact-location-route:hover { transform: none; box-shadow: none; }
-  .contact-location-route strong {
-    color: var(--coral);
-    font-family: "Nunito", var(--body);
-    font-size: .88rem;
-    font-weight: 800;
-  }
-  .contact-location-route strong::after { content: " \2192"; }
 
-  /* ---------- Hinweis ---------- */
+  .contact-location-card-grid { display: contents; }
+
+  /* Untergrenze 272px: darunter reicht die Flaeche nicht fuer
+     Pin, Titel, den fuenfzeiligen Datenschutzhinweis und den Knopf, und der
+     Pin wird gestaucht (nachgemessen: 240px bei 1024px drueckt ihn auf 40px,
+     260px bei 901px noch auf 47px - der Hinweis bricht dort sechszeilig). */
+  .contact-map-shell {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    min-height: clamp(272px, 21vw, 300px);
+  }
+
+  .contact-location-copy { grid-row: 2; grid-column: 1; }
+
+  /* Das Standortzeichen direkt hinter der Adresse. Mit 1fr stuende es am
+     rechten Rand der halben Kachel - frei in deren Mitte, ohne Bezug. */
+  .contact-location-address {
+    grid-template-columns: auto auto;
+    justify-content: start;
+    column-gap: 20px;
+  }
+
   .contact-location-footer {
-    margin: 16px 8px 0;
-    padding: 0;
-    border: 0;
+    grid-row: 2;
+    grid-column: 2;
+    align-self: end;
+    margin: 0 8px 0 0;
   }
-  .contact-visit-note {
-    display: block;
-    padding-left: 12px;
-    border-left: 3px solid var(--coral);
-    color: var(--ink-2);
-    font-family: "Nunito", var(--body);
-    font-size: .84rem;
-    line-height: 1.5;
-  }
-  .contact-visit-note strong { font-family: inherit; color: var(--ink); }
 }
 
 /* Unter 360px reicht die Halbkachel nicht fuer "02325 / 58 57 90" in einer
@@ -1090,6 +952,20 @@
   .contact-direct-list { grid-template-columns: 1fr; }
 }
 
+/* AP-388: Unter 481px traegt die Startseite #1B1E19 statt #171916 - gesetzt vom
+   Inline-Style in index.html:10 und von --home-page-background in
+   privat-form.css:5551, das nur sie laedt. Der Wert steht hier als Literal,
+   damit ein grep nach 1B1E19 alle Stellen zusammen findet; so haelt es die
+   Startseite schon heute.
+
+   html kommt mit, weil der untere Abstand der eingerueckten Footer-Kachel durch
+   Margin Collapsing ausserhalb des Body-Kastens liegt (Begruendung in
+   privat-form.css:5548).
+
+   Die Regeln stehen in dieser Datei und nicht in header-home.css: Der
+   Seitengrund ist keine Kopf-Angelegenheit, und kontakt.css wird als letzte
+   geladen - nur von hier aus laesst sich .contact-page aus Zeile 1
+   ueberschreiben. */
 @media (max-width: 480px) {
   html,
   body.contact-page {
