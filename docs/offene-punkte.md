@@ -2468,7 +2468,7 @@ Gefunden beim Test in Chrome, gleich in den Ständen vor AP-507. Für die Pakete
 
 ## AP-512 — Leistungsseiten: Kopie geteilter Handy-Regeln pflegen
 
-`leistung-mobile.css` enthält seit AP-512 eine auf `.lpv2-main` begrenzte Kopie von 121
+`leistung-mobile.css` enthält seit AP-512 eine auf `.lpv2-main` begrenzte Kopie von 103
 Handy-Regeln aus `styles.css`, `privat-form.css`, `anfrage.css` und `cta-family.css`, dazu
 eine Variable. Damit tragen Anfrageknöpfe, Kontakt, Formular und Ergänzungen auch in der
 Desktop-Spalte ihre Handy-Gestaltung.

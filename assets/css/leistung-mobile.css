@@ -30,8 +30,10 @@
    container-type im AP-512-Block am Dateiende). Dazu die eine Variable, die
    privat-form.css bis 480px auf html setzt (--home-page-background).
    Das ist dieselbe Technik wie die begrenzten Knopf-Kopien seit AP-503 (bis AP-511).
-   Aendert sich eine der Quellregeln, muss diese Kopie mit. 121 Regeln und 1 Variable, Stand
-   30.09.2026. */
+   Aendert sich eine der Quellregeln, muss diese Kopie mit. 103 Regeln und 1 Variable, Stand
+   30.09.2026 (nach AP-507: die Leistungsliste iphone-service-* steht in
+   privat-form.css seither auf allen Breiten und ist nicht mehr Teil der Kopie). */
+
 @media (min-width:901px){:where(.lpv2-main) .btn{white-space: normal; text-wrap-style: balance;}}
 @media (min-width:901px){:where(.lpv2-main) .btn-primary{text-align: center; justify-content: center;}}
 @media (min-width:1161px){:where(.lpv2-main) .private-contact-layout{grid-template-columns: 1fr; gap: 48px;}}
@@ -48,24 +50,6 @@
 @media (min-width:768px){:where(.lpv2-main) .private-contact-layout{margin-top: 32px;}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) h2.maik-section-title{display: block; width: 100%; max-width: none; margin: 0px auto; padding: 0px; font-family: "Baloo 2", sans-serif; font-size: 31px; font-weight: 600; font-style: normal; line-height: 1.13; letter-spacing: -0.015em; text-align: center; text-wrap: balance; color: var(--home-on-dark); -webkit-text-stroke: 0px; paint-order: normal;}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) h2.maik-section-title::after{content: none; display: none;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card{position: relative; isolation: isolate; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(151, 206, 32, 0.22); background: radial-gradient(circle at 92% 106%, rgba(151, 206, 32, 0.1), transparent 38%), linear-gradient(145deg, rgb(35, 41, 31) 0%, rgb(28, 33, 26) 100%); color: var(--ink); text-decoration: none; box-shadow: rgba(255, 255, 255, 0.035) 0px 1px 0px inset; -webkit-tap-highlight-color: transparent; transition: border-color .18s var(--ease), transform .18s var(--ease), box-shadow .18s var(--ease);}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card__media{position: relative; z-index: 1; display: block; flex: 0 0 auto; width: 100%; overflow: hidden; background: rgb(32, 38, 29); clip-path: polygon(0px 0px, 100% 0px, 100% calc(100% - 0.75rem), 0px 100%);}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card__media picture{display: block; width: 100%; height: 100%;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card__media img{display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.93) contrast(1.02); transform: scale(1.01); transition: transform .22s var(--ease), filter .22s var(--ease);}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-grid{display: block; margin: 0px; padding: 0px; list-style: none;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-row{min-width: 0px;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-row--start{border-top: 1px solid rgba(255, 255, 255, 0.12);}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-grid > .iphone-service-row:first-child{border-top: 0px;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card{display: grid; grid-template-columns: 1.5rem minmax(0px, 1fr) 88px; align-items: center; column-gap: 0.75rem; height: auto; min-height: calc(88px + 1.2rem); padding: 0.6rem 0px; border: 0px; border-radius: 0px; background: none; box-shadow: none;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card__letter{grid-column: 1; display: grid; place-items: center; width: 1.35rem; height: 1.35rem;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card__letter img{display: block; width: 100%; height: 100%; object-fit: contain;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card__media{grid-column: 3; width: 88px; height: 88px; margin-bottom: 0px; border-radius: 12px 4px; clip-path: none;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card__title{display: grid; grid-column: 2; gap: 2px; min-width: 0px; min-height: 0px; padding: 0px;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card__title strong{min-width: 0px; color: var(--ink); font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive; font-size: 0.9375rem; font-style: italic; font-weight: 400; letter-spacing: 0.015em; line-height: 1.22; text-transform: none; overflow-wrap: normal; text-wrap: pretty;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card__title small{color: var(--ink-mute); font-size: 0.75rem; font-weight: 700; letter-spacing: 0px; line-height: 1.14;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card:focus-visible{outline: 3px solid var(--yellow); outline-offset: 3px;}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card:active .iphone-service-card__title strong{color: var(--home-lime, #97ce20);}}
-@media (min-width:481px){:where(.lpv2-main) .iphone-service-card:active img{filter: saturate(1) contrast(1.04); transform: scale(1.035);}}
 @media (min-width:481px){:where(.lpv2-main){--home-page-background:#1b1e19}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact::before{display: none;}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) :is(.mobile-social-proof, .mr-ueber, .private-request-paths, .private-process-updated, .private-proof-bento, .private-contact, .private-faq){background: var(--home-page-background);}}

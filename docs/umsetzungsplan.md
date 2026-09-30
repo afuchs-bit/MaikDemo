@@ -2133,7 +2133,7 @@ Umsetzung in `leistung-mobile.css`:
 - **Kopf und Footer:** Sie bleiben ab 481 px, wie sie waren. Schrift und Farbe des
   Handy-Blocks gelten nur für die Spalte; der Container-Innenabstand, die Maße von
   `.header-inner` und die Footer-Oberkante sind zurückgesetzt.
-- **Begrenzte Kopie:** 121 Handy-Regeln aus `styles.css`, `privat-form.css`, `anfrage.css`
+- **Begrenzte Kopie:** 103 Handy-Regeln aus `styles.css`, `privat-form.css`, `anfrage.css`
   und `cta-family.css` für Anfrageknöpfe, Kontakt, Formular und Ergänzungen, plus eine
   Variable.
   - Erfasst wurden sie maschinell bei 480 px über vier Seiten.
@@ -2143,7 +2143,7 @@ Umsetzung in `leistung-mobile.css`:
 - **Galerie:** `leistung-gallery-grid.js` rechnet unter Zoom mit `currentCSSZoom`. Sonst
   sprang das Galeriefenster beim Aufklappen.
 
-`mobileCssVersion` steht in allen 37 Inhaltsdateien auf `20260930c`. Der Build hat pro Seite
+`mobileCssVersion` steht in allen 37 Inhaltsdateien auf `20260930d`. Nach dem Zusammenführen mit AP-507 wurde die Kopie auf dem gemeinsamen Stand neu erfasst: Die Leistungsliste `iphone-service-*` gilt dort auf allen Breiten, 18 Regeln sind damit entfallen. Der Build hat pro Seite
 nur die Versionszeilen geändert.
 
 Gemessen:
