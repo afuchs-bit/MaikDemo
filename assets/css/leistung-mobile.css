@@ -32,7 +32,9 @@
   .lpv2-page .lpv2-list{color:#d4d6d0}.lpv2-page .lpv2-list li{margin-bottom:9px}
   .lpv2-page .lpv2-decision-step{margin-bottom:10px;color:#d4d6d0}
   .lpv2-page .lpv2-faq .faq-list{max-width:850px;margin-left:44px}
-  .lpv2-page .lpv2-gallery,.lpv2-page .lpv2-gallery-grid-section,.lpv2-page .lpv2-process,.lpv2-page .lpv2-contact,.lpv2-page .lpv2-home-contact,.lpv2-page .lpv2-related,.lpv2-page .lpv2-content-feature,.lpv2-page .lpv2-mobile-hero-cta{display:none}
+  /* AP-500: .lpv2-home-contact bleibt sichtbar - der Hero-Knopf .lpv2-cta springt auf
+     #anfrage in dieser Sektion und lief ab 481px sonst ins Leere. */
+  .lpv2-page .lpv2-gallery,.lpv2-page .lpv2-gallery-grid-section,.lpv2-page .lpv2-process,.lpv2-page .lpv2-contact,.lpv2-page .lpv2-related,.lpv2-page .lpv2-content-feature,.lpv2-page .lpv2-mobile-hero-cta{display:none}
 }
 
 @media (max-width:480px){
