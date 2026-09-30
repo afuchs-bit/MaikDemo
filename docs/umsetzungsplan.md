@@ -1794,7 +1794,7 @@ Gemessen:
 
 **AP-518 — Seitentitel der Kontaktseite am Desktop über den Kacheln (30.09.2026).**
 Ergänzt Entscheidung 3 aus AP-516 auf Ansage des Auftraggebers. Ab 901 px steht
-„Kontakt zu Maik Rohdich“ nicht mehr mittig über der ganzen Seite, sondern zentriert über
+der Seitentitel (seit AP-519 „Unser Kontakt“) nicht mehr mittig über der ganzen Seite, sondern zentriert über
 den Kacheln. Er steht in derselben Zeile und auf derselben Grundlinie wie „Unser Standort
 in Herne“, beide Spalten haben damit einen Kopf.
 
@@ -1808,3 +1808,10 @@ Gemessen:
 - Der Titel bleibt auch bei 901 px einzeilig.
 - Kacheln und Standort-Kachel sind weiter oben und unten bündig.
 - Bis 900 px (320, 402, 480, 600, 768, 900) ist die Seite pixelgleich.
+
+**AP-519 — Seitentitel „Unser Kontakt“ (30.09.2026).** Auf Ansage des Auftraggebers heißt die
+H1 der Kontaktseite jetzt „Unser Kontakt“ statt „Kontakt zu Maik Rohdich“, auf allen
+Breiten. Das ist die einzige Änderung an der sonst finalen Handy-Fassung. Unverändert
+bleiben die unsichtbaren Stellen, die die Seite für Suchmaschinen beschreiben: `<title>`,
+Meta-Beschreibung und der JSON-LD-Name der ContactPage. Sie tragen den Betriebsnamen, den der
+kurze Titel nicht mehr nennt.
