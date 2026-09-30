@@ -2356,7 +2356,8 @@ entfallen, weil die Handy-Fassung maßgeblich ist (Entscheidung vom 15.09.2026):
 
 - **Spaltenumbruch pflegen:** Am Desktop beginnt die zweite Spalte mit der Zeile, die
   `iphone-service-row--column-break` trägt (heute „Palmen", 19 zu 19 Zeilen). Kommen
-  Leistungen hinzu, muss der Umbruch neu gesetzt werden.
+  Leistungen hinzu, werden die Spalten ungleich lang, es bricht aber nichts. Für gleich lange
+  Spalten die Klasse dann an die passende Zeile setzen, möglichst an einer Buchstabengrenze.
 - **Schrift der A–Z-Titel:** Der Stapel `"Comic Sans MS", "Comic Sans", "Chalkboard SE",
   cursive` zeigt am iPhone Chalkboard SE, am Mac- und Windows-Desktop echtes Comic Sans MS.
   Das galt schon am Handy; am Desktop fällt es jetzt stärker auf.

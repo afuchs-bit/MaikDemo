@@ -5220,17 +5220,28 @@
     width: min(100%, 34rem);
   }
 
+  /* Raster statt Mehrspaltensatz: Firefox kennt break-before: column im
+     Mehrspaltensatz nicht und wuerde frei ausgleichen. Hier setzt die Klasse die
+     Spalte; "dense" stellt jede Zeile der rechten Spalte in die oberste freie
+     Reihe, die Reihenfolge im DOM bleibt die Lesereihenfolge. Kommen Zeilen
+     hinzu, werden die Spalten nur ungleich lang - nichts bricht. */
   .private-request-paths .iphone-service-grid {
-    columns: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: row dense;
     column-gap: clamp(40px, 5vw, 72px);
   }
 
-  .private-request-paths .iphone-service-row {
-    break-inside: avoid;
+  .private-request-paths .iphone-service-grid > .iphone-service-row {
+    grid-column: 1;
+  }
+
+  .private-request-paths .iphone-service-grid > .iphone-service-row--column-break,
+  .private-request-paths .iphone-service-grid > .iphone-service-row--column-break ~ .iphone-service-row {
+    grid-column: 2;
   }
 
   .private-request-paths .iphone-service-grid > .iphone-service-row--column-break {
-    break-before: column;
     border-top: 0;
   }
 

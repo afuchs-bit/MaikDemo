@@ -1759,7 +1759,11 @@ Buchstabengrafiken und Fotos gab es nur am Handy: Ihre gesamte Gestaltung stand 
   tragen deshalb `.private-request-paths`.
 - **Tablets (481–900 px)** zeigen die Handy-Liste als Mittelspalte von 34 rem.
 - **Desktop ab 901 px:**
-  - zwei Spalten, von oben nach unten gelesen wie ein Register (A–O links, P–Z rechts)
+  - zwei Spalten, von oben nach unten gelesen wie ein Register (A–O links, P–Z rechts).
+    Umgesetzt als Raster (`grid-auto-flow: row dense`): Die Zeile mit
+    `iphone-service-row--column-break` und alle folgenden stehen rechts. Ein
+    Mehrspaltensatz mit `break-before: column` war der erste Entwurf; Firefox kennt
+    diesen Umbruch nicht und hätte frei ausgeglichen.
   - Notdienst-Kachel mittig darüber, „Zum Kontaktformular" mittig darunter
   - Hover mit derselben Rückmeldung wie das Tippen am Handy
 - **Knopf:** Die begrenzte Knopf-Kopie aus AP-504 (`cta-family-home.css`) gilt jetzt auch
