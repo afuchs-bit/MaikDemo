@@ -963,11 +963,20 @@
     column-gap: 20px;
   }
 
+  /* AP-520, auf Ansage des Auftraggebers (30.09.2026): Der Besuchshinweis steht
+     senkrecht mittig zwischen der Unterkante der Karte und der Unterkante der
+     Kachel. Bis hierher sass er unten buendig mit "Route planen" (align-self: end).
+     center allein reicht nicht: Rasterzeile 2 endet am unteren Polster der
+     Kachel, 18px ueber ihrer Kante (padding: 10px 10px 18px in der Grundregel).
+     Zusammen mit dem 1px-Rahmen (var(--line)) saesse der Hinweis damit 9,5px
+     zu hoch. Der negative untere Rand in Hoehe von Polster plus Rahmen (19px)
+     verschiebt die Mitte des Ausrichtungsbereichs um genau diese 9,5px nach
+     unten - wer Polster oder Rahmen aendert, zieht hier nach. */
   .contact-location-footer {
     grid-row: 2;
     grid-column: 2;
-    align-self: end;
-    margin: 0 8px 0 0;
+    align-self: center;
+    margin: 0 8px -19px 0;
   }
 }
 

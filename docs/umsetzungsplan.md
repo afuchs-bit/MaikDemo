@@ -1815,3 +1815,16 @@ Breiten. Das ist die einzige Änderung an der sonst finalen Handy-Fassung. Unver
 bleiben die unsichtbaren Stellen, die die Seite für Suchmaschinen beschreiben: `<title>`,
 Meta-Beschreibung und der JSON-LD-Name der ContactPage. Sie tragen den Betriebsnamen, den der
 kurze Titel nicht mehr nennt.
+
+**AP-520 — Besuchshinweis am Desktop senkrecht mittig (30.09.2026).** Auf Ansage des
+Auftraggebers steht der Besuchshinweis mit dem roten Strich in der Standort-Kachel ab 901 px
+genau mittig zwischen der Unterkante der Karte und der Unterkante der Kachel. Bis dahin saß
+er unten bündig mit „Route planen“.
+
+Technik: `align-self: center` allein zentriert nur in der Rasterzeile. Die endet am unteren
+Polster (18 px) und am Rahmen (1 px) der Kachel. Ein unterer Rand von −19 px gleicht das aus.
+
+Gemessen bei 901, 1024, 1280, 1440 und 1920 px:
+- Die Mitte des Hinweises weicht höchstens 0,01 px von der Mitte des Zwischenraums ab.
+- Kacheln und Standort-Kachel sind weiter bündig.
+- Bis 900 px ist die Seite pixelgleich.
