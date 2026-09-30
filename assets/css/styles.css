@@ -2218,6 +2218,51 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
 @media (hover: hover) and (pointer: fine) { .breadcrumbs a:hover { color: var(--green-500); text-decoration: underline; text-underline-offset: 3px; } }
 .breadcrumbs li + li::before { content: "›"; margin-right: 8px; color: var(--ink-mute); }
 .breadcrumbs li[aria-current="page"] { color: var(--ink); font-weight: 600; }
+.breadcrumbs__back-icon { display: none; }
+
+/* Auf schmalen Ansichten erhalten die Hauptunterseiten denselben kompakten
+   Ruecklink wie „Ueber uns“ und die Leistungsseiten. Auf groesseren Breiten
+   bleibt der vollstaendige Kruemelpfad sichtbar. */
+@media (max-width: 480px) {
+  .breadcrumbs--home-back li + li::before { content: none; }
+  .breadcrumbs--home-back .breadcrumbs__back a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 34px;
+    color: var(--home-on-dark-2, #d9ded5);
+    font-family: Nunito, system-ui, sans-serif;
+    font-size: .76rem;
+    font-weight: 750;
+    line-height: 1;
+    letter-spacing: .015em;
+    text-decoration: none;
+  }
+  .breadcrumbs--home-back .breadcrumbs__back a > span {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-skip-ink: auto;
+  }
+  .breadcrumbs--home-back .breadcrumbs__back-icon {
+    display: block;
+    width: 18px;
+    height: auto;
+    filter: brightness(0) saturate(100%) invert(77%) sepia(100%) saturate(1680%) hue-rotate(47deg) brightness(105%) contrast(107%);
+    transform: rotate(180deg);
+  }
+  .breadcrumbs--home-back .breadcrumbs__current {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}
 
 .hero-trust-mini {
   margin-top: 34px;

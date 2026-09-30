@@ -227,10 +227,15 @@ html, body { background-color: #171916; }
 <section class="section section-rechtstext" aria-labelledby="rt-title">
   <div class="container">
 
-    <nav class="breadcrumbs reveal" aria-label="Sie sind hier">
+    <nav class="breadcrumbs breadcrumbs--home-back reveal" aria-label="Brotkrumennavigation">
       <ol>
-        <li><a href="../">Startseite</a></li>
-        <li aria-current="page">Datenschutzerklärung</li>
+        <li class="breadcrumbs__back">
+          <a href="../">
+            <img class="breadcrumbs__back-icon" src="../assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" decoding="async">
+            <span>Startseite</span>
+          </a>
+        </li>
+        <li class="breadcrumbs__current" aria-current="page">Datenschutzerklärung</li>
       </ol>
     </nav>
 

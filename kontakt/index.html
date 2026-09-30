@@ -173,7 +173,17 @@ html, body { background-color: #171916; }
 <main id="top">
   <section class="contact-hero" aria-labelledby="contact-page-title">
     <div class="container">
-      <nav class="breadcrumbs reveal" aria-label="Sie sind hier"><ol><li><a href="../">Startseite</a></li><li aria-current="page">Kontakt</li></ol></nav>
+      <nav class="breadcrumbs breadcrumbs--home-back reveal" aria-label="Brotkrumennavigation">
+        <ol>
+          <li class="breadcrumbs__back">
+            <a href="../">
+              <img class="breadcrumbs__back-icon" src="../assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" decoding="async">
+              <span>Startseite</span>
+            </a>
+          </li>
+          <li class="breadcrumbs__current" aria-current="page">Kontakt</li>
+        </ol>
+      </nav>
       <div class="contact-hero-copy reveal">
         <h1 class="type-page-title" id="contact-page-title">Unser Kontakt</h1>
       </div>

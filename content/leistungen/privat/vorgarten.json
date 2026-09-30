@@ -81,20 +81,6 @@
         "height": 720
       },
       {
-        "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/10-bluehender-vorgarten-formgehoelz-olive.webp",
-        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Olivenbaum",
-        "fokusMobil": "50% 50%",
-        "width": 960,
-        "height": 720
-      },
-      {
-        "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/12-staudenbeet-formgehoelz-detail.webp",
-        "alt": "Staudenbeet mit Formgehölz, farbigen Blattschmuckstauden und Natursteinen",
-        "fokusMobil": "50% 50%",
-        "width": 960,
-        "height": 720
-      },
-      {
         "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/14-moderner-hauseingang-rindenmulch.webp",
         "alt": "Moderner Hauseingang mit Granitstufen, Formgehölzen, Natursteinen und Rindenmulch",
         "fokusMobil": "50% 50%",
@@ -188,6 +174,20 @@
       {
         "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/28-fruehlingsbeet-formgehoelz.webp",
         "alt": "Farbenfrohes Frühlingsbeet mit Formgehölz, Natursteinen und blühenden Bodendeckern",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/10-bluehender-vorgarten-formgehoelz-olive.webp",
+        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Olivenbaum",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/12-staudenbeet-formgehoelz-detail.webp",
+        "alt": "Staudenbeet mit Formgehölz, farbigen Blattschmuckstauden und Natursteinen",
         "fokusMobil": "50% 50%",
         "width": 960,
         "height": 720
