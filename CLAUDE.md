@@ -46,3 +46,10 @@ Taxonomie in `content/taxonomie.json`. Die GitHub Action `build-index.yml` erzeu
   Solche Änderungen in einen eigenen Commit trennen und vom Auftraggeber im GitHub-Web-UI
   einspielen lassen. `.github/scripts/**` ist davon nicht betroffen.
 - **`admin/index.html` behält dauerhaft `noindex`** — auch beim Go-Live nicht entfernen.
+- **Zwei Welten — Handy bis 900 px, Desktop ab 901 px** (Startseite und Leistungsseiten):
+  Handy-Regeln gehören in `@media (max-width: 900px)`, Desktop-Regeln in
+  `@media (min-width: 901px)` direkt bei der Komponente. **Keine neuen
+  `max-width: 480px`-Sektionsgates** — Feinstufen darunter (430, 390, 360 …) bleiben erlaubt.
+  Jede sichtbare Änderung braucht einen Desktop-Stand; wer bewusst nur für das Handy baut,
+  trägt die Lücke in `docs/offene-punkte.md` ein. Die 480er-Blöcke im Bestand werden
+  paketweise umgestellt, siehe `docs/umsetzungsplan.md` H.10.

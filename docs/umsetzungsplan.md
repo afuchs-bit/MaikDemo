@@ -1591,3 +1591,76 @@ Feiertagen und Wochenenden · Mustergarten nur nach Vereinbarung". Das deckt sic
 `content/stammdaten.json` (WhatsApp rund um die Uhr für Nachrichten, Antwort zu den
 Geschäftszeiten), mit der Kontaktkarte und mit `.footer-hours` oberhalb 480 px.
 Die Öffnungszeiten aus Teil B bleiben unangetastet.
+
+
+## H.10 Nachtrag: Desktop an den Handy-Stand angleichen (29.09.2026)
+
+**Warum.** Seit Ende August wurde fast ausschließlich für das iPhone gearbeitet, in
+`@media (max-width: 480px)`-Blöcken. Von den 172 Commits zwischen `e637dac` (AP-325) und
+`458a5d51` (AP-492) wirken 55 nur auf dem Handy und keiner nur auf dem Desktop. Am
+Desktop fehlen dadurch unter anderem:
+
+- auf der Startseite die Knöpfe im Hero, die KPI-Zeile und die Qualifikationen, die ganze
+  Galerie-Einladung, die A–Z-Leistungsübersicht (der Desktop zeigt sechs Flip-Kacheln)
+  und die Fotos im Ablauf;
+- auf den 37 Leistungsseiten mit der Vorlage `leistung-v2.html` Heldenfoto, Fotoraster,
+  Formular und „Passende Ergänzungen" — am Desktop bleibt dort nur Text;
+- im Menü zehn Leistungen, die nur das Handy-Menü führt;
+- die Knopf-Familie mit Halo und Puls.
+
+Ein erster Anlauf am 15.09. entstand in einem isolierten Worktree und wurde nie
+übernommen. Seine Nummern AP-328–338 sind seither anderweitig vergeben. Er ist überholt und
+dient nur noch als Vorlage.
+
+**Entscheidungen des Auftraggebers.** Vom 15.09., bestätigt am 29.09.:
+- Der Desktop entsteht aus den Handy-Inhalten, ein DOM für alle Breiten.
+- Einzige Desktop-Ausnahme ist die Hero-Unterzeile mit Ortsnennung.
+- Bis 900 px gilt die Handy-Komposition, auf Tablets zentriert; ab 901 px der Desktop.
+- Der Ablauf-Pin läuft ab 1024 px mit Maus.
+
+Neu am 29.09.:
+- Der tote Knopf der Leistungsseiten kommt zuerst.
+- Die Arbeit kommt paketweise an, jedes Paket mit Commit nach Freigabe.
+- Die Zwei-Welten-Regel steht sofort in `CLAUDE.md`.
+
+**Nummern.** Für diesen Angleich ist der Block **AP-500 bis AP-529** reserviert. Geplant:
+
+| AP | Paket |
+|---|---|
+| 500 | Toter Knopf der Leistungsseiten |
+| 501 | Zwei-Welten-Regel |
+| 502 | Umstellung der Startseiten-Gates von 480 auf 900 px |
+| 503–510 | Startseite Sektion für Sektion |
+| 511 | Knopf-Familie am Desktop |
+| 512–514 | Leistungsseiten-Vorlage |
+| 515 | Menü und Footer |
+| 516 | Kontakt, Galerie, Über uns |
+| 517 | Aufräumen |
+
+**AP-500 — toter Knopf der Leistungsseiten.** Der Hero-Knopf `a.lpv2-cta` springt auf
+`#anfrage`. Das Formular liegt in `section.lpv2-home-contact`, und `leistung-mobile.css`
+hat diese Sektion ab 481 px ausgeblendet. Auf Tablet und Desktop tat der Knopf deshalb
+nichts, und die Seite bot keinen sichtbaren Kontaktweg außer Anrufen und WhatsApp im Kopf.
+
+Die Sektion ist jetzt auf allen Breiten sichtbar. Sie bringt dieselben Kanäle und dasselbe
+Kurzformular wie die Startseite mit; die Stylesheets dafür laden die Leistungsseiten
+bereits. Galerie, Ergänzungen und die übrigen Handy-Module bleiben am Desktop vorerst
+ausgeblendet — sie folgen mit AP-512–514.
+
+Gemessen in echtem Chrome an Balkonkasten, Gartengestaltung und Außenanlagenpflege, je bei
+768, 1280 und 1440 px: Der Klick landet am Formular. Bei 402 und 480 px ist die Seite
+pixelgleich zum Stand vorher.
+
+**Der Cache-Schlüssel von `leistung-mobile.css` steht nicht in einer Vorlage.** Er steht
+in jeder der 37 Inhaltsdateien als `"mobileCssVersion"` unter `content/leistungen/`.
+`build-leistungen.mjs` überträgt ihn in die Seiten. Wer die Datei ändert, hebt ihn in allen
+37 Dateien an und baut neu. Der Build läuft nicht in CI — die erzeugten Seiten gehören in
+denselben Commit.
+
+**AP-501 — Zwei-Welten-Regel.** `CLAUDE.md` legt unter „Fallstricke" fest:
+- Neue Handy-Regeln von Startseite und Leistungsseiten gehören in
+  `@media (max-width: 900px)`, Desktop-Regeln in `@media (min-width: 901px)`.
+- Neue 480-px-Sektionsgates entstehen nicht mehr.
+- Wer bewusst nur für das Handy baut, trägt die Lücke in `docs/offene-punkte.md` ein.
+
+Die 480er-Blöcke im Bestand stellt AP-502 um.
