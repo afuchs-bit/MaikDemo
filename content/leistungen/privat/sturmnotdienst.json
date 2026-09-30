@@ -1,38 +1,109 @@
 {
-  "h1": "Sturmnotdienst",
-  "navLabel": "Sturmnotdienst",
-  "title": "Sturmnotdienst für Bäume in Herne, Bochum & Recklinghausen | Maik Rohdich",
-  "metaDescription": "Hilfe bei Sturmschäden an Bäumen in Herne, Bochum und Recklinghausen – umgestürzte Bäume, abgebrochene Äste, Gefahrenstellen sichern. Kontakt per Telefon oder WhatsApp.",
-  "serviceType": "Beseitigung und Sicherung von Sturmschäden an Bäumen",
-  "intro": "Nach einem Sturm sichern und beseitigen wir Gefahren durch beschädigte Bäume – umgestürzte Stämme, angebrochene Äste und instabile Kronen. Wir schätzen die Lage vor Ort ein, sichern die Gefahrenstelle und arbeiten den Schaden fachgerecht ab, auch in beengter Lage per Seilklettertechnik – im Garten ebenso wie direkt am Haus.",
-  "eignung": [
-    "Grundstücke mit umgestürzten oder angebrochenen Bäumen nach einem Unwetter.",
-    "Hängende oder angerissene Äste über Wegen, Stellplätzen oder Gebäuden, von denen eine akute Gefahr ausgeht.",
-    "Eigentümer, die eine Gefahrenstelle kurzfristig gesichert und für die Versicherung dokumentiert brauchen.",
-    "Situationen, in denen unklar ist, ob ein beschädigter Baum noch standsicher ist."
+  "layout": "editorial-v2",
+  "h1": "24h Baum- & Sturmnotdienst",
+  "navLabel": "24h Baum- & Sturmnotdienst",
+  "title": "24h Baum- & Sturmnotdienst in Herne | Maik Rohdich",
+  "metaDescription": "24h Baum- & Sturmnotdienst in Herne, Bochum und Umgebung: Gefahrenstellen sichern, Äste und umgestürzte Bäume beseitigen. Jetzt direkt anrufen.",
+  "serviceType": "24-Stunden Baum- und Sturmnotdienst",
+  "unterzeile": "Wenn der Sturm Spuren hinterlässt",
+  "einstieg": [
+    "Ein umgestürzter Baum, abgebrochene Äste oder eine blockierte Zufahrt: Nach einem Sturm braucht es fachkundige Hilfe. Mit unserem 24-Stunden-Sturmnotdienst sind wir rund um die Uhr für Sie erreichbar und übernehmen die Sturmschadenbeseitigung auf privaten und gewerblichen Grundstücken."
   ],
-  "ablauf": [
-    { "titel": "Lage einschätzen", "text": "Schildern Sie uns die Situation am besten mit Fotos und Standort. So können wir einordnen, wie dringend und wie aufwendig der Einsatz ist." },
-    { "titel": "Gefahrenstelle sichern", "text": "Zuerst wird die akute Gefahr entschärft: Bereich absperren, hängende Äste sichern, damit niemand zu Schaden kommt." },
-    { "titel": "Schaden abarbeiten", "text": "Wir zerlegen und entfernen den Schaden kontrolliert – bei beengten Verhältnissen in Seilklettertechnik, damit umliegende Bereiche unberührt bleiben." },
-    { "titel": "Beurteilung des Restbestands", "text": "Anschließend prüfen wir, ob benachbarte Bäume in Mitleidenschaft gezogen wurden und weitere Maßnahmen nötig sind." }
+  "intro": "Ein umgestürzter Baum, abgebrochene Äste oder eine blockierte Zufahrt: Nach einem Sturm braucht es fachkundige Hilfe. Mit unserem 24-Stunden-Sturmnotdienst sind wir rund um die Uhr für Sie erreichbar und übernehmen die Sturmschadenbeseitigung auf privaten und gewerblichen Grundstücken.",
+  "inhalt": [
+    {
+      "heading": "",
+      "paragraphs": [
+        "Wir beurteilen die Schäden an Ihren Bäumen und stimmen die erforderlichen Sicherungs- und Räumarbeiten auf die Situation vor Ort ab. Auch neben Gebäuden, über Zäunen oder in schwer zugänglichen Gärten finden wir eine passende Vorgehensweise. Dabei berücksichtigen wir die Standsicherheit der Bäume, die Platzverhältnisse und die Wetterlage."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Sturmschäden beseitigen und Verkehrssicherheit herstellen",
+      "paragraphs": [],
+      "bullets": [
+        "Beurteilung sturmgeschädigter Bäume und Festlegen geeigneter Sicherungsmaßnahmen",
+        "Entfernen abgebrochener, loser und gefährdender Äste",
+        "Bergung und Aufarbeitung umgestürzter Bäume",
+        "Risikobaumfällung mit geeigneter Technik, je nach Voraussetzungen auch Hubsteigerarbeiten und SKT Fällung (Seilklettertechnik)",
+        "Räumen von Wegen, Zufahrten und betroffenen Grundstücksbereichen",
+        "Zerkleinern, Abtransport und fachgerechte Entsorgung nach vereinbartem Umfang"
+      ]
+    },
+    {
+      "heading": "",
+      "paragraphs": [
+        "Nicht jeder Sturmschaden macht eine Fällung erforderlich. Wir prüfen, ob sich Ihr Baum durch gezielte Baumpflege oder eine Kronensicherung erhalten lässt. Die notwendigen Maßnahmen und eine anschließende Baumkontrolle stimmen wir mit Ihnen ab."
+      ],
+      "bullets": []
+    }
   ],
-  "aufwand": [
-    { "titel": "Art und Umfang des Schadens", "text": "Ein einzelner abgebrochener Ast ist etwas anderes als ein ganzer umgestürzter Baum in einer Hecke." },
-    { "titel": "Gefährdung des Umfelds", "text": "Nähe zu Gebäuden, Leitungen oder Verkehrswegen erhöht den Sicherungsaufwand deutlich." },
-    { "titel": "Zugänglichkeit", "text": "Ob Technik heranfahren kann oder in der Höhe und von Hand gearbeitet werden muss, bestimmt den Aufwand." },
-    { "titel": "Abfuhr und Aufarbeitung", "text": "Das Entfernen des Schnittguts und die Aufarbeitung des Holzes kommen zur eigentlichen Sicherung hinzu." }
-  ],
-  "fehleinschaetzungen": [
-    { "titel": "„Den hängenden Ast hole ich schnell selbst runter.“", "text": "Angebrochene Äste und unter Spannung stehendes Holz sind unberechenbar. Solche Situationen gehören gesichert, nicht improvisiert." },
-    { "titel": "„Der Baum steht ja noch, also ist er stabil.“", "text": "Nach einem Sturm können Wurzeln oder Stamm angerissen sein, ohne dass man es sofort sieht. Das gehört fachlich beurteilt." },
-    { "titel": "„Sturmschäden zahlt immer die Versicherung.“", "text": "Ob und was übernommen wird, hängt vom Einzelfall ab. Eine Dokumentation des Schadens hilft bei der Klärung mit Ihrer Versicherung." }
-  ],
+  "abschluss": "Zu allen Fragen rund um unseren 24-Stunden-Sturmnotdienst und zur Abstimmung eines Einsatzes steht Ihnen unser Fachpersonal gerne zur Verfügung.",
+  "ctaLabel": "Sturmnotdienst anrufen",
+  "ctaHref": "tel:+491711738943",
+  "ctaIcon": "phone",
+  "contactTitle": "Sturm- oder Baumschaden melden",
+  "contactIntro": "Bei akuter Gefahr für Menschen wählen Sie bitte zuerst den Notruf 112. Für Sicherungs- und Räumarbeiten erreichen Sie uns am schnellsten telefonisch oder per WhatsApp.",
+  "contactForm": {
+    "phoneEyebrow": "24h-Notdienst",
+    "whatsappAction": "Fotos und Standort senden",
+    "separator": "Oder Schaden kurz beschreiben",
+    "nameLabel": "Wer meldet den Schaden?",
+    "namePlaceholder": "Vor- und Nachname",
+    "contactLabel": "Wie erreichen wir Sie am schnellsten?",
+    "contactPlaceholder": "Telefonnummer, alternativ E-Mail",
+    "messageLabel": "Was ist passiert und wo?",
+    "messagePlaceholder": "Zum Beispiel: Baum umgestürzt, Ast über der Zufahrt, Musterstraße in Herne.",
+    "photoLabel": "Schadensfotos auswählen",
+    "submitLabel": "Sturmschaden melden",
+    "confirmationStep": "Schaden gemeldet",
+    "confirmationTitle": "Vielen Dank für Ihre Meldung.",
+    "confirmationCopy": "Ihre Angaben sind eingegangen. Wir prüfen die Situation und melden uns persönlich, um Dringlichkeit und nächste Schritte abzustimmen.",
+    "confirmationNote": "Mit der Meldung ist noch kein Auftrag oder unmittelbarer Vor-Ort-Einsatz zustande gekommen. Die nächsten Schritte stimmen wir persönlich mit Ihnen ab.",
+    "whatsappMessage": "Hallo Herr Rohdich, ich möchte einen Sturm- oder Baumschaden melden. Der Schaden befindet sich in:",
+    "emailSubject": "Sturm- oder Baumschaden",
+    "confirmationEmailSubject": "Sturm- oder Baumschaden",
+    "unavailableIntro": "Der Formularversand ist derzeit nicht aktiv. Bitte melden Sie den Sturm- oder Baumschaden"
+  },
+  "anfrageJsVersion": "20260928a",
   "faq": [
-    { "frage": "Wie erreiche ich Sie im Sturmfall?", "antwort": "Am schnellsten per WhatsApp mit ein paar Fotos und dem Standort – so können wir die Lage sofort einschätzen. Alternativ telefonisch. Wir sind montags bis freitags von 09:00 bis 17:00 Uhr und samstags von 09:00 bis 12:00 Uhr erreichbar; Nachrichten können Sie rund um die Uhr senden, wir melden uns kurzfristig zurück." },
-    { "frage": "Sichern Sie eine Gefahrenstelle auch, wenn der Baum nicht sofort weg muss?", "antwort": "Ja. Oft ist der erste Schritt, die akute Gefahr zu entschärfen – etwa einen hängenden Ast zu sichern oder einen Bereich abzusperren. Die vollständige Beseitigung kann dann geplant folgen. Wichtig ist, dass zuerst niemand zu Schaden kommt." },
-    { "frage": "Arbeiten Sie auch in beengter Lage zwischen Gebäuden?", "antwort": "Ja. Wenn keine Technik herankommt, arbeiten wir in Seilklettertechnik und tragen den beschädigten Baum kontrolliert in Teilen ab. So bleiben Dächer, Zäune und Nachbargrundstücke unberührt." },
-    { "frage": "Hilft mir die Dokumentation für die Versicherung?", "antwort": "Ja. Wir können den Schaden vor der Beseitigung festhalten. Diese Dokumentation erleichtert die Abstimmung mit Ihrer Versicherung. Ob und in welchem Umfang Kosten übernommen werden, entscheidet allerdings die Versicherung, nicht wir." }
+    {
+      "frage": "Was sollte ich bei einem Sturmschaden tun?",
+      "antwort": "Halten Sie Abstand zu beschädigten Bäumen und herabhängenden Ästen. Versuchen Sie nicht, diese selbst zu entfernen. Bei akuter Gefahr für Menschen wählen Sie bitte zuerst den Notruf 112. Für unseren Sturmnotdienst rufen Sie uns direkt an und beschreiben kurz, was passiert ist und wo sich die betroffene Stelle befindet. Wir besprechen mit Ihnen die nächsten Schritte."
+    },
+    {
+      "frage": "Übernehmen Sie auch die weiteren Arbeiten nach der Sturmschadenbeseitigung?",
+      "antwort": "Ja. Nach der Sicherung kümmern wir uns bei Bedarf auch um verbliebene Baumstümpfe und Wurzeln. Mit unserem Stubbenfräseneinsatz oder einer passenden Wurzelentfernung bereiten wir die Fläche für die weitere Gestaltung vor. Soll neues Grün entstehen, übernehmen wir ebenfalls die Pflanzarbeiten – einschließlich erforderlicher Ersatz- & Ausgleichspflanzungen."
+    }
+  ],
+  "bilder": {
+    "hero": {
+      "bild": "assets/img/leistungen-mobile/baumfaellung-640.webp",
+      "alt": "Baumpfleger arbeitet seilgesichert an einem hohen Baum",
+      "width": 640,
+      "height": 704
+    },
+    "gallery": [
+      {
+        "bild": "/assets/img/leistungen-mobile/sturmnotdienst-gallery/01-sturmnotdienst-gefahrenstelle-baumfaellung.webp",
+        "alt": "Abgesicherte Gefahrenstelle mit aufgearbeitetem Baumstamm, Motorsäge und Warnschild",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/sturmnotdienst-gallery/02-sturmnotdienst-aufarbeitung-stamm.webp",
+        "alt": "Zwei Fachkräfte bei der Aufarbeitung eines massiven umgestürzten Baumstamms",
+        "fokusMobil": "50% 50%",
+        "width": 960,
+        "height": 720
+      }
+    ]
+  },
+  "thumbnail": "assets/img/leistungen-mobile/baumfaellung-480.webp",
+  "kundengruppe": [
+    "privat",
+    "gewerbe"
   ],
   "related": [
     {
@@ -48,5 +119,25 @@
       "slug": "baumpflege"
     }
   ],
-  "kundengruppe": ["privat"]
+  "diagram": "",
+  "sourceSection": 37,
+  "mobileVariant": "balkonkasten",
+  "themeColor": "#171916",
+  "mobileCssVersion": "20260927a12",
+  "ctaFamilyVersion": "20260926b",
+  "galleryCtaLabel": "Mehr anzeigen",
+  "galleryCollapseLabel": "Weniger",
+  "closingCtaLabel": "JETZT ANRUFEN",
+  "closingLines": [
+    "Zu allen Fragen rund um unseren",
+    "24-Stunden-Sturmnotdienst",
+    "und zur Abstimmung eines",
+    "Einsatzes",
+    "steht Ihnen unser Fachpersonal",
+    "gerne zur Verfügung."
+  ],
+  "heroTitleLines": [
+    "24h Baum- &",
+    "Sturmnotdienst"
+  ]
 }

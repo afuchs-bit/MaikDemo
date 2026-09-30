@@ -53,46 +53,88 @@
     },
     "gallery": [
       {
-        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
-        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
-        "fokusMobil": "54% 55%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/07-blauregen-bluete.webp",
+        "alt": "Blühender Blauregen an einer Pergola vor blauem Himmel",
+        "fokusMobil": "50% 45%",
+        "width": 640,
+        "height": 853
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
-        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
-        "fokusMobil": "52% 62%",
-        "width": 480,
-        "height": 493
-      },
-      {
-        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
-        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/09-staudenbeet-natursteine.webp",
+        "alt": "Detail eines neu angelegten Staudenbeets mit Natursteinen und Blattschmuckpflanzen",
         "fokusMobil": "50% 50%",
-        "width": 480,
-        "height": 362
+        "width": 640,
+        "height": 480
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
-        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
-        "fokusMobil": "50% 58%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/10-blattschmuckpflanzen.webp",
+        "alt": "Blattschmuckstauden und Gräser rund um eine rostfarbene Gartenskulptur",
+        "fokusMobil": "50% 55%",
+        "width": 640,
+        "height": 800
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
-        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
-        "fokusMobil": "60% 56%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/11-pflanzpflege-bewaesserung.webp",
+        "alt": "Frisch angelegte Bepflanzung wird mit einer Gießbrause gewässert",
+        "fokusMobil": "45% 52%",
+        "width": 640,
+        "height": 482
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
-        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
-        "fokusMobil": "57% 58%",
-        "width": 480,
-        "height": 297
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/12-tulpen-orange.webp",
+        "alt": "Orangefarbene Tulpen und weiße Gänseblümchen im Sonnenlicht",
+        "fokusMobil": "45% 52%",
+        "width": 640,
+        "height": 853
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/13-tulpen-pink.webp",
+        "alt": "Gefüllte pinkfarbene Tulpen mit weißen Gänseblümchen im Hintergrund",
+        "fokusMobil": "42% 52%",
+        "width": 640,
+        "height": 853
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/01-pflanzbeet-formgehoelze.webp",
+        "alt": "Gestaltetes Pflanzbeet mit Formgehölzen, Stauden, Gräsern und Natursteinen",
+        "fokusMobil": "50% 52%",
+        "width": 640,
+        "height": 482
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/03-pflanzenauswahl-mustergarten.webp",
+        "alt": "Auswahl aus Formgehölzen, Stauden und Frühlingsblumen für eine neue Pflanzung",
+        "fokusMobil": "50% 52%",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/04-rosenbluete.webp",
+        "alt": "Üppig blühende Rosen in Rosa und Creme",
+        "fokusMobil": "55% 50%",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/06-staudenbeet-storchschnabel.webp",
+        "alt": "Staudenbeet mit violett blühendem Storchschnabel, Gräsern und Natursteinen",
+        "fokusMobil": "52% 52%",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/14-azalee-funkie-ziergras.webp",
+        "alt": "Rot blühende Azalee mit Funkie und Ziergras zwischen grauen Natursteinen",
+        "fokusMobil": "50% 50%",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/15-polsterstauden-natursteine.webp",
+        "alt": "Blühende Polsterstauden in Rosa, Gelb und Violett zwischen großen Natursteinen",
+        "fokusMobil": "50% 50%",
+        "width": 640,
+        "height": 480
       }
     ]
   },

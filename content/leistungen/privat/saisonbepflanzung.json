@@ -53,46 +53,60 @@
     },
     "gallery": [
       {
-        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
-        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
-        "fokusMobil": "54% 55%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/saisonbepflanzung-gallery/01-fruehlingsschale-terracotta.webp",
+        "alt": "Nahaufnahme einer farbenfrohen Frühlingsschale mit Hornveilchen, Vergissmeinnicht und kleiner Gartenfigur",
+        "fokusMobil": "50% 54%",
+        "width": 640,
+        "height": 480
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
-        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
-        "fokusMobil": "52% 62%",
-        "width": 480,
-        "height": 493
+        "bild": "/assets/img/leistungen-mobile/saisonbepflanzung-gallery/02-fruehlingskuebel-viola-narzissen.webp",
+        "alt": "Großer Terrakottakübel mit Narzissen, Hornveilchen, Primeln und Gänseblümchen",
+        "fokusMobil": "50% 54%",
+        "width": 640,
+        "height": 853
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
-        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
-        "fokusMobil": "50% 50%",
-        "width": 480,
-        "height": 362
+        "bild": "/assets/img/leistungen-mobile/saisonbepflanzung-gallery/03-fruehlingsschale-narzissen.webp",
+        "alt": "Frühlingsschale mit Narzissen, Vergissmeinnicht, Traubenhyazinthen und weißen Gänseblümchen",
+        "fokusMobil": "52% 50%",
+        "width": 640,
+        "height": 853
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
-        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
-        "fokusMobil": "50% 58%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/saisonbepflanzung-gallery/04-fruehlingskuebel-ensemble.webp",
+        "alt": "Drei große Terrakottakübel mit farbenfroher Frühlingsbepflanzung",
+        "fokusMobil": "52% 58%",
+        "width": 640,
+        "height": 853
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
-        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
-        "fokusMobil": "60% 56%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/saisonbepflanzung-gallery/05-fruehlingskuebel-primeln.webp",
+        "alt": "Großer Terrakottakübel mit Primeln, Hornveilchen, Narzissen und Traubenhyazinthen",
+        "fokusMobil": "50% 53%",
+        "width": 640,
+        "height": 853
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
-        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
-        "fokusMobil": "57% 58%",
-        "width": 480,
-        "height": 297
+        "bild": "/assets/img/leistungen-mobile/saisonbepflanzung-gallery/06-dachterrasse-fruehlingsgefaesse.webp",
+        "alt": "Blühende Frühlingsgefäße mit Hornveilchen, Narzissen und Hyazinthen auf einer Dachterrasse",
+        "fokusMobil": "58% 61%",
+        "width": 640,
+        "height": 657
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/saisonbepflanzung-gallery/07-fruehlingskuebel-haengeweide.webp",
+        "alt": "Frühlingskübel mit Hängeweide, Gänseblümchen, Hornveilchen und Narzissen",
+        "fokusMobil": "50% 60%",
+        "width": 640,
+        "height": 853
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/saisonbepflanzung-gallery/08-fruehlingskuebel-hyazinthen.webp",
+        "alt": "Farbenprächtiger Terrakottakübel mit Narzissen, Hyazinthen, Hornveilchen und Primeln",
+        "fokusMobil": "50% 52%",
+        "width": 640,
+        "height": 655
       }
     ]
   },

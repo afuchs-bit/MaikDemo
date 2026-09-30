@@ -52,46 +52,76 @@
     },
     "gallery": [
       {
-        "bild": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12-480.webp",
-        "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
-        "fokusMobil": "54% 55%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-seilkletterer-nadelbaum.webp",
+        "alt": "Seilkletterer bei der abschnittsweisen Fällung eines Nadelbaums",
+        "width": 640,
+        "height": 480
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337-480.webp",
-        "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
-        "fokusMobil": "52% 62%",
-        "width": 480,
-        "height": 493
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-team-motorsaegen.webp",
+        "alt": "Team bei einer Baumfällung mit Motorsägen",
+        "width": 640,
+        "height": 480
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637-480.webp",
-        "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
-        "fokusMobil": "50% 50%",
-        "width": 480,
-        "height": 362
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-seilkletterer-dach.webp",
+        "alt": "Kontrollierte Baumfällung mit Seilklettertechnik nahe eines Gebäudes",
+        "width": 640,
+        "height": 480
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39-480.webp",
-        "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
-        "fokusMobil": "50% 58%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-hubarbeitsbuehne.webp",
+        "alt": "Baumfällung aus der Hubarbeitsbühne",
+        "width": 640,
+        "height": 480
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84-480.webp",
-        "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
-        "fokusMobil": "60% 56%",
-        "width": 480,
-        "height": 360
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-autokran.webp",
+        "alt": "Baumfällung mit Autokran im Privatgarten",
+        "width": 640,
+        "height": 480
       },
       {
-        "bild": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5-480.webp",
-        "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
-        "fokusMobil": "57% 58%",
-        "width": 480,
-        "height": 297
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-seilklettertechnik.webp",
+        "alt": "Baumfällung mit Seilklettertechnik",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-arbeitsbuehne-krone.webp",
+        "alt": "Großbaumfällung mit Hubarbeitsbühne in der Baumkrone",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-grossbaum.webp",
+        "alt": "Gefällter Großbaum mit Fachpersonal",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-fachkraft.webp",
+        "alt": "Fachkraft mit persönlicher Schutzausrüstung bei einer Baumfällung",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-bagger-aufarbeitung.webp",
+        "alt": "Maschinelle Aufarbeitung gefällter Stammabschnitte",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-absicherung.webp",
+        "alt": "Abgesicherter Arbeitsbereich bei einer Baumfällung",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-signatur-stubben.webp",
+        "alt": "Signierter Stammquerschnitt nach einer Baumfällung",
+        "width": 640,
+        "height": 480
       }
     ]
   },

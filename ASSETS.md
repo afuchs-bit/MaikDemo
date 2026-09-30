@@ -268,6 +268,28 @@ Die bisherige `contain`-Sonderregel entfällt; es gelten dieselben Bildregeln wi
 für die übrigen Kacheln.
 Bildfläche (88 × 88 px), Zeilenhöhe und Abstände bleiben unverändert.
 
+## Produktgalerie Rohdichs Grubengold (30.09.2026)
+
+Vom Auftraggeber gelieferte Aufnahmen:
+
+- `707B5A77-DCBF-4606-92A5-E88BE2D23FC1.JPG`
+- `WhatsApp Image 2026-09-16 at 20.31.22 (1).jpeg`
+- `WhatsApp Image 2026-09-16 at 20.31.22.jpeg`
+- `WhatsApp Image 2026-09-16 at 21.01.10.jpeg`
+
+Die bisherigen, fachfremden Gartenbilder der Leistungsseite wurden vollständig
+durch diese vier Produkt- und Arbeitssituationen ersetzt. Alle Derivate liegen
+unter `assets/img/leistungen-mobile/rohdichs-grubengold-gallery/` als WebP mit
+960 × 720 px (4:3), Qualität 84 und ohne EXIF. Die Ausschnitte priorisieren
+Produktbezeichnung, Verpackung und den Anwendungskontext.
+
+Zwei schwächere WhatsApp-Aufnahmen wurden vor der einheitlichen Ausgabe mit der
+integrierten Bildbearbeitung zurückhaltend entrauscht, aufgehellt und farblich
+neutralisiert. Geometrie, Personen, Verpackungen und sichtbare Markenbezeichnungen
+blieben als verbindliche Bildinhalte erhalten. Die beiden stärkeren Quellen wurden
+ausschließlich proportional zugeschnitten, farblich dezent normalisiert und
+geschärft.
+
 ## Mobile Einsatzgebietskarte (AP-341, 18.09.2026)
 
 Die bestehende NRW-Geometrie in `index.html` wird weiterverwendet. Quelle laut

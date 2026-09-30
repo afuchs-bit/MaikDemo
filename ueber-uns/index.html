@@ -33,6 +33,7 @@ html, body { background-color: #171916; }
 <meta property="og:url" content="https://rohdich.de/ueber-uns/" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="../assets/img/logo/favicon.svg" type="image/svg+xml" />
+<link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="../assets/css/styles.css?v=20260930a" />
@@ -354,10 +355,15 @@ html, body { background-color: #171916; }
         docs/offene-punkte.md] -->
   <section class="ueber-hero">
     <div class="container ueber-hero__kopf">
-      <nav class="breadcrumbs" aria-label="Brotkrumennavigation">
+      <nav class="breadcrumbs ueber-hero__breadcrumbs" aria-label="Brotkrumennavigation">
         <ol>
-          <li><a href="../">Startseite</a></li>
-          <li aria-current="page">Über uns</li>
+          <li class="ueber-hero__breadcrumb-back">
+            <a href="../">
+              <img src="../assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" decoding="async">
+              <span>Startseite</span>
+            </a>
+          </li>
+          <li class="ueber-hero__breadcrumb-current" aria-current="page">Über uns</li>
         </ol>
       </nav>
       <h1 class="ueber-hero__titel">Über uns</h1>

@@ -615,7 +615,7 @@ export const LEISTUNGEN_NAV = [
   { slug: 'dachbegruenung', label: 'Dachbegrünung' },
   { slug: 'palmen-winterfest', label: 'Palmen & winterfest' },
   { slug: 'pool-whirlpool-umfeld', label: 'Pool- & Whirlpool-Umfeld' },
-  { slug: 'sturmnotdienst', label: 'Sturmnotdienst' },
+  { slug: 'sturmnotdienst', label: '24h Baum- & Sturmnotdienst' },
   { slug: 'holzverkauf', label: 'Brennholz & Stammholz' },
   // AP-360: Labels der vier neuen Seiten. Sie muessen mit navLabel in
   // content/leistungen/privat/<slug>.json uebereinstimmen - build-leistungen.mjs
@@ -1077,25 +1077,28 @@ function lpv2Gallery(leistung, base) {
 
 function lpv2GallerySection(leistung, base) {
   if (leistung.galleryVariant === 'grid-teaser') {
-    const items = (leistung.bilder?.gallery || []).map((bild) => {
+    const gallery = leistung.bilder?.gallery || [];
+    const showAllWithoutToggle = gallery.length <= 4;
+    const items = gallery.map((bild) => {
       const focus = bild.fokusMobil || bild.fokusDesktop || '';
       const focusStyle = focus ? ` style="--gallery-focus-mobile:${escAttr(focus)}"` : '';
       return `<figure class="lpv2-gallery-grid-photo"${focusStyle}>
             ${renderPicture(bild.bild, { alt: bild.alt || '', sizes: '(max-width: 480px) calc((100vw - 52px) / 2), 220px', width: bild.width, height: bild.height, base })}
           </figure>`;
     }).join('\n          ');
-    return `<section class="lpv2-gallery-grid-section section" aria-label="Einblicke in unsere Arbeit">
-      <div class="container">
-        <div class="lpv2-gallery-grid-window reveal" id="lpv2-gallery-grid" data-lpv2-gallery-window>
-          <div class="lpv2-gallery-grid">${items}</div>
-          <span class="lpv2-gallery-grid-fade" aria-hidden="true"></span>
-        </div>
-        <button class="lpv2-gallery-grid-more maik-cta maik-cta--compact maik-cta--gallery reveal" type="button" aria-expanded="false" aria-controls="lpv2-gallery-grid" aria-label="Alle Bilder anzeigen" data-lpv2-gallery-toggle data-label-collapsed="${escAttr(leistung.galleryCtaLabel || 'Mehr anzeigen')}" data-label-expanded="${escAttr(leistung.galleryCollapseLabel || 'Weniger')}">
+    const fade = showAllWithoutToggle ? '' : '\n          <span class="lpv2-gallery-grid-fade" aria-hidden="true"></span>';
+    const toggle = showAllWithoutToggle ? '' : `\n        <button class="lpv2-gallery-grid-more maik-cta maik-cta--compact maik-cta--gallery reveal" type="button" aria-expanded="false" aria-controls="lpv2-gallery-grid" aria-label="Alle Bilder anzeigen" data-lpv2-gallery-toggle data-label-collapsed="${escAttr(leistung.galleryCtaLabel || 'Mehr anzeigen')}" data-label-expanded="${escAttr(leistung.galleryCollapseLabel || 'Weniger')}">
           <svg class="maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
           <svg class="maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z"/></svg>
           <span class="maik-cta__label" data-lpv2-gallery-toggle-label>${esc(leistung.galleryCtaLabel || 'Mehr anzeigen')}</span>
           <span class="maik-cta__arrow" aria-hidden="true"><span class="lpv2-gallery-grid-symbol"></span></span>
-        </button>
+        </button>`;
+    const completeClass = showAllWithoutToggle ? ' lpv2-gallery-grid-window--complete' : '';
+    return `<section class="lpv2-gallery-grid-section section" aria-label="Einblicke in unsere Arbeit">
+      <div class="container">
+        <div class="lpv2-gallery-grid-window${completeClass} reveal" id="lpv2-gallery-grid" data-lpv2-gallery-window>
+          <div class="lpv2-gallery-grid">${items}</div>${fade}
+        </div>${toggle}
       </div>
     </section>`;
   }
@@ -1118,15 +1121,18 @@ function lpv2MobileCtaLabelClass(label) {
   return 'maik-cta__label--compact';
 }
 
-function lpv2HomepageCta(label, base, extraClass = '', href = '#kontakt', attention = true, labelClass = '') {
+function lpv2HomepageCta(label, base, extraClass = '', href = '#kontakt', attention = true, labelClass = '', icon = 'arrow') {
   const classes = [extraClass, 'maik-cta', attention ? 'maik-cta--attention' : '', 'reveal'].filter(Boolean).join(' ');
   const labelClasses = ['maik-cta__label', labelClass].filter(Boolean).join(' ');
+  const iconHtml = icon === 'phone'
+    ? `<img class="maik-cta__phone-icon" src="${base}assets/img/icons/phone-header-mobile.png?v=20260902a" alt="" width="24" height="24" decoding="async">`
+    : `<svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="maik-cta__arrow-image" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async">`;
   return `<a class="${escAttr(classes)}" href="${escAttr(href)}">
           <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
           <svg class="maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
           <svg class="maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
           <span class="${escAttr(labelClasses)}">${esc(label)}</span>
-          <span class="maik-cta__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="maik-cta__arrow-image" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
+          <span class="maik-cta__arrow" aria-hidden="true">${iconHtml}</span>
         </a>`;
 }
 
@@ -1142,7 +1148,7 @@ function lpv2Closing(leistung, base) {
   const label = leistung.closingCtaLabel || 'Beratung vereinbaren';
   return `<div class="lpv2-closing-block">
         <p class="lpv2-closing lpv2-closing-lines reveal">${copy}</p>
-        ${lpv2HomepageCta(label, base, 'lpv2-closing-cta')}
+        ${lpv2HomepageCta(label, base, 'lpv2-closing-cta', leistung.ctaHref || '#kontakt', true, '', leistung.ctaIcon || 'arrow')}
       </div>`;
 }
 
@@ -1199,33 +1205,65 @@ function lpv2Process(base) {
 }
 
 function lpv2Contact(leistung, base, homepageExact = false) {
-  const confirmationCopy = homepageExact
+  const formCopy = leistung.contactForm && typeof leistung.contactForm === 'object'
+    ? leistung.contactForm
+    : {};
+  const copy = (key, fallback) => typeof formCopy[key] === 'string' && formCopy[key].trim()
+    ? formCopy[key].trim()
+    : fallback;
+  const confirmationCopy = copy('confirmationCopy', homepageExact
     ? 'Ihre Angaben sind bei uns eingegangen. Wir sehen uns Ihr Vorhaben an und melden uns persönlich bei Ihnen, um die nächsten Schritte zu besprechen.'
-    : 'Ihre Angaben sind bei uns eingegangen. Wir sehen uns Ihr Vorhaben an und melden uns persönlich bei Ihnen.';
+    : 'Ihre Angaben sind bei uns eingegangen. Wir sehen uns Ihr Vorhaben an und melden uns persönlich bei Ihnen.');
   const confirmationExtras = homepageExact
     ? '<dl class="private-confirmation-summary" id="privateConfirmationSummary" aria-label="Zusammenfassung Ihrer Anfrage" hidden></dl>'
     : '';
-  const confirmationNote = homepageExact
-    ? '<p class="b2b-confirmation-note">Mit der Anfrage ist noch kein Auftrag und kein Vor-Ort-Termin zustande gekommen. Beides stimmen wir erst persönlich mit Ihnen ab.</p>'
+  const confirmationNoteText = copy('confirmationNote', homepageExact
+    ? 'Mit der Anfrage ist noch kein Auftrag und kein Vor-Ort-Termin zustande gekommen. Beides stimmen wir erst persönlich mit Ihnen ab.'
+    : '');
+  const confirmationNote = confirmationNoteText
+    ? `<p class="b2b-confirmation-note">${esc(confirmationNoteText)}</p>`
     : '';
+  const confirmationStep = copy('confirmationStep', 'Anfrage übermittelt');
+  const confirmationTitle = copy('confirmationTitle', 'Vielen Dank für Ihre Anfrage.');
+  const phoneEyebrow = copy('phoneEyebrow', 'Anrufen');
+  const whatsappAction = copy('whatsappAction', 'Fotos senden oder direkt anfragen');
+  const whatsappMessage = copy('whatsappMessage', 'Hallo Herr Rohdich, ich habe eine Anfrage.');
+  const emailSubject = copy('emailSubject', 'Gartenanfrage');
+  const confirmationEmailSubject = copy('confirmationEmailSubject', 'Ergänzung zu meiner Gartenanfrage');
+  const separator = copy('separator', 'Anfrageformular hier absenden');
+  const nameLabel = copy('nameLabel', 'Wie möchten Sie angesprochen werden?');
+  const namePlaceholder = copy('namePlaceholder', 'Vor- und Nachname');
+  const contactLabel = copy('contactLabel', 'Wie erreichen wir Sie?');
+  const contactPlaceholder = copy('contactPlaceholder', 'Telefonnummer oder E-Mail');
+  const messageLabel = copy('messageLabel', 'Worum geht es?');
+  const messagePlaceholder = copy('messagePlaceholder', 'Eine kurze Beschreibung genügt — was ist zu tun, und wo?');
+  const photoLabel = copy('photoLabel', 'Foto auswählen');
+  const submitLabel = copy('submitLabel', 'Anfrage senden');
+  const unavailableIntro = copy('unavailableIntro', '');
+  const unavailableTemplate = unavailableIntro
+    ? `\n              <template data-anf-unavailable-copy>${esc(unavailableIntro)} telefonisch unter <a href="tel:+491711738943">0171 / 173 89 43</a> oder per <a href="https://wa.me/491711738943?text=${encodeURIComponent(whatsappMessage)}" target="_blank" rel="noopener">WhatsApp</a>.</template>`
+    : '';
+  const whatsappHref = `https://wa.me/491711738943?text=${encodeURIComponent(whatsappMessage)}`;
+  const emailHref = `mailto:maik@rohdich.de?subject=${encodeURIComponent(emailSubject)}`;
+  const confirmationEmailHref = `mailto:maik@rohdich.de?subject=${encodeURIComponent(confirmationEmailSubject)}`;
   const submitArtwork = homepageExact
     ? '<svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="anf-senden__frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><svg class="anf-senden__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>'
     : '<svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true"><use href="#maik-cta-shape"/></svg><svg class="anf-senden__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true"><use href="#maik-cta-shape"/></svg>';
   return `<div class="private-contact-layout">
         <div class="b2b-form-column reveal">
-          <section class="b2b-form-confirmation" id="anfrage-erfolg" tabindex="-1" aria-labelledby="anfrage-erfolg-title"><span class="b2b-confirmation-mark" aria-hidden="true">✓</span><span class="b2b-form-step">Anfrage übermittelt</span><h3 id="anfrage-erfolg-title">Vielen Dank für Ihre Anfrage.</h3><p>${confirmationCopy}</p>${confirmationExtras}<div class="b2b-confirmation-links"><a href="tel:+491711738943"><span>Dringende Ergänzungen telefonisch mitteilen</span><strong>0171 / 173 89 43</strong></a><a href="mailto:maik@rohdich.de?subject=Erg%C3%A4nzung%20zu%20meiner%20Gartenanfrage"><span>Weitere Fotos oder Unterlagen nachreichen</span><strong>maik@rohdich.de</strong></a></div>${confirmationNote}</section>
+          <section class="b2b-form-confirmation" id="anfrage-erfolg" tabindex="-1" aria-labelledby="anfrage-erfolg-title"><span class="b2b-confirmation-mark" aria-hidden="true">✓</span><span class="b2b-form-step">${esc(confirmationStep)}</span><h3 id="anfrage-erfolg-title">${esc(confirmationTitle)}</h3><p>${esc(confirmationCopy)}</p>${confirmationExtras}<div class="b2b-confirmation-links"><a href="tel:+491711738943"><span>Dringende Ergänzungen telefonisch mitteilen</span><strong>0171 / 173 89 43</strong></a><a href="${escAttr(confirmationEmailHref)}"><span>Weitere Fotos oder Unterlagen nachreichen</span><strong>maik@rohdich.de</strong></a></div>${confirmationNote}</section>
           <div class="anf">
             <form class="anf__form anf__karte" id="anfrage" data-anf-modus="kurz" data-anf-form data-endpoint="" novalidate>
               <div class="anf__honeypot" aria-hidden="true"><label for="anf-hp">Firmenwebsite (bitte frei lassen)</label><input type="text" id="anf-hp" name="_hp_website" tabindex="-1" autocomplete="off"></div>
-              <input type="hidden" name="modus" value="kurz" data-anf-modus-feld><input type="hidden" name="geladen_um" value="" data-anf-zeitstempel><input class="anf__leistung" type="hidden" name="leistung" value="${escAttr(leistung.h1)}">
-              <div class="anf__kanaele"><a class="anf__kanal" href="tel:+491711738943"><span class="anf__kanal-icon anf__kanal-icon--tel" aria-hidden="true"></span><span><small>Anrufen</small><strong>0171 / 173 89 43</strong></span></a><a class="anf__kanal" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener"><span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span><span><small>WhatsApp</small><strong>Fotos senden oder direkt anfragen</strong></span></a><a class="anf__kanal anf__kanal--mail" href="mailto:maik@rohdich.de?subject=Gartenanfrage"><span class="anf__kanal-icon anf__kanal-icon--mail" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a></div>
-              <p class="anf__oder"><span>Anfrageformular hier absenden</span></p>
-              <p class="anf__feld"><label for="anf-name">Wie möchten Sie angesprochen werden?</label><input type="text" id="anf-name" name="name" autocomplete="name" placeholder="Vor- und Nachname"></p>
-              <p class="anf__feld"><label for="anf-kontakt">Wie erreichen wir Sie?</label><input type="text" id="anf-kontakt" name="kontakt" autocomplete="tel" placeholder="Telefonnummer oder E-Mail" inputmode="text"></p>
-              <p class="anf__feld anf__feld--frei" id="anf-nachricht-feld"><label for="anf-nachricht">Worum geht es?</label><textarea id="anf-nachricht" name="nachricht" rows="4" placeholder="Eine kurze Beschreibung genügt — was ist zu tun, und wo?"></textarea></p>
-              <p class="anf__feld anf__feld--foto" data-anf-foto-feld><label class="anf__foto"><input type="file" id="anf-fotos" name="fotos" accept="image/jpeg,image/png,image/webp,.heic,.heif" multiple data-anf-fotos><span class="anf__foto-kachel"><span class="anf__foto-plus" aria-hidden="true"></span><span class="anf__foto-wort">Foto auswählen</span></span></label><small class="anf__foto-stand" data-anf-foto-auswahl role="status" hidden></small></p>
+              <input type="hidden" name="modus" value="kurz" data-anf-modus-feld><input type="hidden" name="geladen_um" value="" data-anf-zeitstempel><input class="anf__leistung" type="hidden" name="leistung" value="${escAttr(leistung.h1)}">${unavailableTemplate}
+              <div class="anf__kanaele"><a class="anf__kanal" href="tel:+491711738943"><span class="anf__kanal-icon anf__kanal-icon--tel" aria-hidden="true"></span><span><small>${esc(phoneEyebrow)}</small><strong>0171 / 173 89 43</strong></span></a><a class="anf__kanal" href="${escAttr(whatsappHref)}" target="_blank" rel="noopener"><span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span><span><small>WhatsApp</small><strong>${esc(whatsappAction)}</strong></span></a><a class="anf__kanal anf__kanal--mail" href="${escAttr(emailHref)}"><span class="anf__kanal-icon anf__kanal-icon--mail" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a></div>
+              <p class="anf__oder"><span>${esc(separator)}</span></p>
+              <p class="anf__feld"><label for="anf-name">${esc(nameLabel)}</label><input type="text" id="anf-name" name="name" autocomplete="name" placeholder="${escAttr(namePlaceholder)}"></p>
+              <p class="anf__feld"><label for="anf-kontakt">${esc(contactLabel)}</label><input type="text" id="anf-kontakt" name="kontakt" autocomplete="tel" placeholder="${escAttr(contactPlaceholder)}" inputmode="text"></p>
+              <p class="anf__feld anf__feld--frei" id="anf-nachricht-feld"><label for="anf-nachricht">${esc(messageLabel)}</label><textarea id="anf-nachricht" name="nachricht" rows="4" placeholder="${escAttr(messagePlaceholder)}"></textarea></p>
+              <p class="anf__feld anf__feld--foto" data-anf-foto-feld><label class="anf__foto"><input type="file" id="anf-fotos" name="fotos" accept="image/jpeg,image/png,image/webp,.heic,.heif" multiple data-anf-fotos><span class="anf__foto-kachel"><span class="anf__foto-plus" aria-hidden="true"></span><span class="anf__foto-wort">${esc(photoLabel)}</span></span></label><small class="anf__foto-stand" data-anf-foto-auswahl role="status" hidden></small></p>
               <p class="anf__einwilligung" data-anf-foto-freigabe hidden><label><input type="checkbox" name="foto_freigabe" value="1"><span>Ich darf diese Aufnahmen weitergeben. Personen, die nicht gefragt wurden, sind darauf nicht zu erkennen.</span></label></p>
-              <div class="anf__abschluss"><button type="submit" class="btn btn-primary maik-cta maik-cta--attention" data-anf-senden>${submitArtwork}<span class="anf-senden__label maik-cta__label">Anfrage senden</span><span class="anf-senden__arrow maik-cta__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild maik-cta__arrow-image" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span></button><p class="anf__status" data-anf-status role="status" aria-live="polite"></p></div>
+              <div class="anf__abschluss"><button type="submit" class="btn btn-primary maik-cta maik-cta--attention" data-anf-senden>${submitArtwork}<span class="anf-senden__label maik-cta__label">${esc(submitLabel)}</span><span class="anf-senden__arrow maik-cta__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild maik-cta__arrow-image" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span></button><p class="anf__status" data-anf-status role="status" aria-live="polite"></p></div>
               <p class="anf__rechtliches">Wie wir Ihre Angaben verarbeiten, steht in der <a href="${base}datenschutz/">Datenschutzerklärung</a>.</p>
             </form>
           </div>
@@ -1309,11 +1347,14 @@ export async function renderLeistungPage(opts) {
       </div>
     </section>`;
     const contactTitle = presented.contactTitle || 'Der erste Schritt zu Ihrem Projekt';
+    const contactIntro = presented.contactIntro
+      ? `\n          <p class="lead">${esc(presented.contactIntro)}</p>`
+      : '';
     const contactSection = homepageContact
       ? `<section class="section private-contact lpv2-home-contact" id="kontakt" aria-labelledby="anfrage-title">
       <div class="container">
         <header class="private-contact-intro reveal">
-          <h2 class="type-section-title maik-section-title" id="anfrage-title">${esc(contactTitle)}</h2>
+          <h2 class="type-section-title maik-section-title" id="anfrage-title">${esc(contactTitle)}</h2>${contactIntro}
         </header>
         ${lpv2Contact(presented, base, true)}
       </div>
@@ -1322,7 +1363,7 @@ export async function renderLeistungPage(opts) {
       <div class="container">
         <header class="lpv2-section-head private-contact-intro reveal">
           <p class="lpv2-section-index" aria-hidden="true">${hideProcess ? '04' : '05'}</p>
-          <h2 id="anfrage-title">${esc(contactTitle)}</h2>
+          <h2 id="anfrage-title">${esc(contactTitle)}</h2>${contactIntro}
         </header>
         ${lpv2Contact(presented, base)}
       </div>
@@ -1343,6 +1384,7 @@ export async function renderLeistungPage(opts) {
         </nav>`;
     return fill(page, {
       base, slug: esc(slug), cssVersion: escAttr(cssVersion), jsVersion: escAttr(jsVersion),
+      anfrageJsVersion: escAttr(presented.anfrageJsVersion || '20260918c'),
       themeColor: escAttr(presented.themeColor || '#1b1e19'),
       mobileCssVersion: escAttr(presented.mobileCssVersion || '20260924z6'),
       ctaFamilyVersion: escAttr(presented.ctaFamilyVersion || '20260919a'),
@@ -1360,7 +1402,7 @@ export async function renderLeistungPage(opts) {
       h1: heroTitleHtml, titleAria: splitHeroTitle ? ` aria-label="${escAttr(presented.h1)}"` : '', titleClass: `${splitHeroTitle ? ' lpv2-title--split' : ''}${heroTitleGraphic ? ' lpv2-title--visually-hidden' : ''}`,
       subheading: esc(presented.unterzeile),
       introHtml: presented.einstieg.map((p) => `<p>${esc(p)}</p>`).join(''),
-      heroCta: lpv2Cta(presented.ctaLabel, base),
+      heroCta: lpv2Cta(presented.ctaLabel, base, presented.ctaHref || '#anfrage'),
       heroPicture: renderPicture(hero.bild, { alt: hero.alt || '', sizes: heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', priority: true, width: hero.width, height: hero.height, base }),
       heroBrand: imageFirstHero
         ? `<img class="lpv2-hero-brand" src="${base}assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" alt="" width="210" height="180" aria-hidden="true" decoding="async">`
@@ -1373,7 +1415,7 @@ export async function renderLeistungPage(opts) {
         : '',
       contentHtml: lpv2Content(presented), closingHtml: lpv2Closing(presented, base),
       mobileHeroCta: presented.contentVariant === 'editorial'
-        ? `<div class="lpv2-mobile-hero-cta">${lpv2HomepageCta(presented.ctaLabel, base, 'lpv2-mobile-hero-cta__button', '#kontakt', true, lpv2MobileCtaLabelClass(presented.ctaLabel))}</div>`
+        ? `<div class="lpv2-mobile-hero-cta">${lpv2HomepageCta(presented.ctaLabel, base, 'lpv2-mobile-hero-cta__button', presented.ctaHref || '#kontakt', true, lpv2MobileCtaLabelClass(presented.ctaLabel), presented.ctaIcon || 'arrow')}</div>`
         : '',
       mobileContentSection: lpv2ContentSection(presented, base), gallerySection: lpv2GallerySection(presented, base),
       galleryGridScript: presented.galleryVariant === 'grid-teaser'
