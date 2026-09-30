@@ -1828,3 +1828,36 @@ Gemessen bei 901, 1024, 1280, 1440 und 1920 px:
 - Die Mitte des Hinweises weicht höchstens 0,01 px von der Mitte des Zwischenraums ab.
 - Kacheln und Standort-Kachel sind weiter bündig.
 - Bis 900 px ist die Seite pixelgleich.
+
+**AP-521 — Galerie-Seite am Desktop geordnet (30.09.2026).** Befund bei 1440 px:
+- Der Titel stand mittig in einer 712 px breiten linken Rasterspalte (x 200–455), der
+  Umschalter rechts daneben. Beides fluchtete mit nichts.
+- In der Bildergalerie (29 Fotos, 4 Spalten) stand das letzte Foto allein links. Bei
+  901–1050 px, mit 3 Spalten, blieben 2 Fotos übrig.
+- Bei „Projekte mit Details“ (5 Kacheln, 3 Spalten) klaffte rechts in der zweiten Reihe
+  eine Lücke.
+
+Entscheidungen des Auftraggebers:
+1. **Kopf mittig untereinander wie auf dem Handy.** Der Titel steht auf der Seitenmitte,
+   darunter mittig der Umschalter in 540 px, derselbe Wert wie bis 900 px. Der Krümelpfad
+   bleibt links.
+2. **Bildergalerie:** Die unvollständige letzte Reihe steht mittig. Das gilt für jede
+   Bildanzahl.
+3. **Projekte mit Details:** ebenso.
+4. **Bis 900 px unverändert.**
+
+Technik in `projekte.css` (nur ab 901 px):
+- Der Container ist einspaltig. Den Abstand trägt weiter `row-gap`.
+- Beide Raster werden zu einem Flex-Umbruch mit `justify-content: center`. Jede Kachel
+  bekommt die Spaltenbreite des bisherigen Rasters.
+- Die Selektoren tragen `:not([hidden])`, sonst hebelte `display: flex` die
+  Ausblendung der jeweils anderen Ansicht aus (`styles.css:2848`).
+- Der Knopf „Passendes Projekt gesehen? Jetzt anfragen“ bleibt unverändert. Die
+  Knopf-Familie am Desktop ist AP-511.
+
+Gemessen bei 901, 1024, 1050, 1051, 1280, 1440 und 1920 px, jeweils in beiden Ansichten:
+- Titel, Umschalter und letzte Reihe stehen auf 0 px genau auf der Containermitte.
+- Die Kachelbreiten der vollen Reihen sind unverändert (±0,02 px).
+- Immer ist nur eine Ansicht sichtbar, es gibt keinen Überlauf.
+- Lightbox und Umschalter funktionieren.
+- Bis 900 px (320, 402, 600, 768, 900) ist die Seite in beiden Ansichten pixelgleich.

@@ -410,37 +410,73 @@
   }
 }
 
-/* AP-409: Ab 901px steht der Umschalter wieder neben der Ueberschrift, wie vor
-   diesem Arbeitspaket. Das Raster dafuer sitzt jetzt auf dem Container, weil
-   Ueberschrift und Umschalter erst dort wieder Geschwister sind. Alle weiteren
-   Kinder laufen ueber beide Spalten; row-gap ersetzt den frueheren
-   margin-bottom des Intros. */
+/* AP-409: Ab 901px stand der Umschalter wieder neben der Ueberschrift - ein
+   Zweispalter auf dem Container, weil Ueberschrift und Umschalter erst dort
+   Geschwister sind.
+   AP-521, auf Ansage des Auftraggebers (30.09.2026): Der Zweispalter ist
+   entfallen. Die Ueberschrift stand mittig in einer 712px breiten linken Spalte
+   (bei 1440px x 200-455) und fluchtete weder mit der Seitenmitte noch mit dem
+   Raster; der Umschalter hing rechts daneben. Jetzt steht der Kopf wie auf dem
+   Handy mittig untereinander: Ueberschrift auf der Seitenmitte (sie ist ueber
+   .projects-overview-head schon mittig gesetzt, es fehlte nur die volle
+   Breite), darunter der Umschalter mittig in 540px - derselbe Wert wie bis
+   900px. Der Kruemelpfad bleibt links, wie auf der Kontaktseite.
+   Das Raster bleibt einspaltig stehen, weil row-gap den Abstand zwischen Kopf,
+   Umschalter, Galerie und Knopf traegt. Am Rechner klebt der Umschalter nicht. */
 @media (min-width: 901px) {
   .projects-overview > .container {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(390px, 470px);
-    column-gap: clamp(28px, 4vw, 64px);
+    grid-template-columns: minmax(0, 1fr);
     row-gap: clamp(22px, 2.6vw, 34px);
-    align-items: start;
-  }
-
-  .projects-overview > .container > * {
-    grid-column: 1 / -1;
-  }
-
-  /* Der Selektor oben ist (0,2,0) und schlaegt eine einzelne Klasse - die beiden
-     Ausnahmen brauchen denselben Pfad, sonst gewinnt grid-column: 1 / -1. */
-  .projects-overview > .container > .projects-overview-intro {
-    grid-column: 1;
-    grid-row: 1;
-    align-self: end;
   }
 
   .projects-overview > .container > .gallery-mode-sticky {
-    grid-column: 2;
-    grid-row: 1;
-    align-self: end;
+    justify-self: center;
+    width: min(100%, 540px);
   }
+
+  /* AP-521: Die unvollstaendige letzte Reihe steht mittig - in der
+     Bildergalerie (29 Fotos: bei vier Spalten stand eines allein links, bei
+     drei Spalten zwei) und bei den Projekten (5 Kacheln: 3 + 2).
+     Ein CSS-Raster kann eine angebrochene Reihe nicht zentrieren; beide Raster
+     werden deshalb zu einem Flex-Umbruch mit justify-content: center. Jede
+     Kachel bekommt genau die Spaltenbreite des bisherigen Rasters - volle
+     Reihen sehen aus wie vorher, nur die letzte rueckt in die Mitte. Das gilt
+     fuer jede Anzahl, auch wenn im CMS Bilder oder Projekte dazukommen.
+     Spaltenzahl und Abstand sind die aus styles.css: Fotos 4 Spalten, bis
+     1050px 3 (styles.css:2857/2917), Abstand clamp(12px, 1.5vw, 20px);
+     Projekte 3 Spalten, 22px (styles.css:1108). Aendert sich dort etwas, muss
+     es hier mit.
+     :not([hidden]) ist Pflicht: styles.css:2848 blendet das jeweils nicht
+     gezeigte Raster mit [hidden] { display: none } aus, ebenfalls (0,2,0).
+     Diese Datei laedt spaeter und haette es mit display: flex wieder
+     eingeblendet - beide Ansichten stuenden dann untereinander. */
+  .projects-overview .gallery-photo-grid:not([hidden]) {
+    --cols: 4;
+    --gap: clamp(12px, 1.5vw, 20px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap);
+  }
+
+  .projects-overview .projects-grid--gallery:not([hidden]) {
+    --cols: 3;
+    --gap: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap);
+  }
+
+  .projects-overview .gallery-photo-grid > .gallery-photo,
+  .projects-overview .projects-grid--gallery > .project-card {
+    flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1050px) {
+  .projects-overview .gallery-photo-grid:not([hidden]) { --cols: 3; }
 }
 
 /* AP-408: .btn-primary:hover zieht auf --green-800 (#2a4500) - auf einem hellen
