@@ -2392,3 +2392,21 @@ Die frühere Entscheidung AP-F26 („Karte bleibt bewusst weiß") ist damit abge
   weißen Karte mit fester Höhe; im Karussell wächst die Karte mit. Wortlaut bei Gelegenheit
   anpassen.
 
+
+## AP-529 — Sektionsüberschriften der Startseite ab 481 px
+
+### Weiter offen
+
+- **Ablauf-Kopf ab 901 px:** Die Überschrift hat die neue Schrift, bleibt aber links mit der
+  grünen Linie, weil der Kopf zweispaltig ist und ab 1024 px mit Maus im Scroll-Pin steht.
+  Zentriert würde der Kopf höher und die Pin-Geometrie kippen. Klärt AP-508.
+- **Ablauf-Kopf 481–900 px:** Die Überschrift ist mittig, der Knopf „Projekt anfragen" mit
+  dem Hinweis „Ihre Anfrage ist unverbindlich …" steht darunter noch links. Klärt AP-508.
+- **Desktop-Größen zur Abnahme:** 38 px bei 901 px bis 48 px ab etwa 1400 px, Zeilenbreite
+  höchstens 20 em. Die Leistungen-Überschrift ist bei 901 px etwas breiter (829 statt 760 px),
+  weil ihre ID-Regel in `privat-form.css` die Breite auf 100 % setzt. Ab 1024 px gleicht
+  sich das über die Container-Breite aus.
+- **Doppelte Deklarationen:** Die Regeln aus Variante G stehen in `privat-form.css` (bis
+  480 px, auch für die Leistungsseiten) und in `home-dark.css` (ab 481 px, nur Startseite).
+  Bei einer Änderung beide Stellen anpassen, bis die Leistungsseiten-Vorlage (AP-512–514)
+  eigene Überschriften-Regeln hat.

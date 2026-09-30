@@ -1636,6 +1636,7 @@ Neu am 29.09.:
 | 515 | Menü und Footer |
 | 516 | Kontakt, Galerie, Über uns |
 | 517 | Aufräumen |
+| 529 | Sektionsüberschriften der Startseite (vorgezogen; 518–521 hat die Kontakt- und Galerie-Arbeit belegt) |
 
 **AP-500 — toter Knopf der Leistungsseiten.** Der Hero-Knopf `a.lpv2-cta` springt auf
 `#anfrage`. Das Formular liegt in `section.lpv2-home-contact`, und `leistung-mobile.css`
@@ -1823,6 +1824,39 @@ Gemessen in Chrome:
   aktive Bewertung und die Scrollposition erhalten.
 - **Ohne JavaScript:** vier Bewertungen mit Link.
 - `private-proof.js` wird nicht mehr angefragt, keine Konsolenfehler.
+
+**AP-529 — Sektionsüberschriften der Startseite ab 481 px (30.09.2026).** Die sechs
+Überschriften (Über uns, Leistungen, Ablauf, Bewertungen, Kontakt, Häufige Fragen) standen
+nur bis 480 px in der freigegebenen Variante G (Baloo 2, mittig, AP-348/349). Darüber blieben
+sie in Nunito und teils linksbündig. Die Nummer ist vorgezogen, weil die Kontakt- und
+Galerie-Arbeit AP-518–521 parallel belegt hat.
+
+- **Wo:** am Ende von `home-dark.css`. Diese Datei lädt nur die Startseite, deshalb ist
+  kein Neubau der Leistungsseiten nötig. Die Handy-Regel in `privat-form.css` bleibt, weil
+  die Leistungsseiten sie mitladen. Die Deklarationen sind 1:1 kopiert; bei Änderungen an
+  Variante G beide Stellen nachziehen.
+- **481–900 px:** 31 px wie am Handy.
+- **Ab 901 px:** `clamp(2.25rem, 1.25rem + 2vw, 3rem)`, also 38 px bei 901 und 48 px ab etwa
+  1400 px (vorher 49 px). Die Breite ist auf höchstens 20 em begrenzt.
+- **Kontakt:** Der 760 px breite Kopf ist mittig.
+- **FAQ:** Der Kopf ist einspaltig (vorher ab 821 px zweispaltig).
+- **Ausnahme Ablauf bis AP-508:** Ab 901 px ist der Ablauf-Kopf zweispaltig (Überschrift mit
+  grüner Linie links, Knopf rechts), ab 1024 px mit Maus zusätzlich im Scroll-Pin. Die
+  Überschrift übernimmt dort nur die Schrift und bleibt links. Im Pin gelten Größe,
+  Zeilenhöhe und Breite des Pins weiter. Geplant war die Grenze bei 1024 px; die Messung
+  zeigte, dass der Kopf schon ab 901 px zweispaltig ist. Bis 900 px ist sie mittig; die
+  grüne Linie entfällt dort, wie am Handy bis 767 px schon bisher.
+
+Gemessen in Chrome gegen den Stand AP-509:
+- Der Vergleich aller berechneten Stile in `main` (1151 sichtbare Elemente) ergibt bei 360,
+  402 und 480 px null Abweichungen.
+- Von 481 bis 1920 px sind alle Überschriften in Baloo; alle außer dem Ablauf ab 901 px
+  stehen mittig. Kein seitlicher Überlauf.
+- **Ablauf-Pin** bei 1024 × 768, 1280 × 800 und 1440 × 900: Verschiebung, Spurbreite,
+  Scrollerhöhe, Marker und Kartenende sind identisch zur Referenz. Die Überschrift im Pin hat
+  dieselbe Größe (32 bzw. 40 px), dieselbe Höhe und dieselbe Kopfhöhe. Die Prüfmeldung
+  „Bühne steht: FEHLER" bei 1280 und 1440 px (Szene am Ende 4–5 px verrutscht) tritt in der
+  Referenz genauso auf.
 
 **AP-516 — Kontaktseite am Desktop geordnet (30.09.2026).** Die Handy-Fassung (bis 600 px,
 AP-413 bis AP-449) war fertig, der Desktop wirkte ungeordnet. Die Gestaltung war nicht das
