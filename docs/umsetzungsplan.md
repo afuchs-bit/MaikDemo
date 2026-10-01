@@ -2168,3 +2168,19 @@ ein Verlauf hinter Hero und Eckdaten sowie ein gelber Lichtschein hinter der Kon
 - Kopf (#171916), Footer-Karte und Kacheln behalten ihre eigenen Flächen.
 - Handy (360, 402, 480 px) auf Startseite, Kontakt, Galerie, Über uns, Impressum und einer
   Leistungsseite pixelgleich; Tablet und Desktop tragen gemessen durchgehend #1B1E19.
+
+**AP-527 — Kontaktseite: Beizeile und Pin entfallen, Standort-Kachel in Knopffarbe (01.10.2026).**
+Auf Ansage des Auftraggebers, auf allen Breiten:
+- Die Beizeile „Anfahrt & Besuch“ über „Unser Standort in Herne“ entfällt (Markup und
+  `.contact-location-label`). Die 8px Abstand der H2 zur Beizeile entfallen mit.
+- Der Pin über „Standort in Google Maps anzeigen“ entfällt (`.contact-map-pin`).
+- Die Standort-Kachel trägt die Füllfarbe der Kontakt-Knöpfe, #252b22 statt #20241D.
+- Die Mindesthöhe der Karte am Rechner (272px) bleibt unverändert.
+- Gemessen bei 360–1440px: kein Überlauf, Platzhalter vollständig sichtbar. Am Rechner
+  liegen „Unser Kontakt“ und „Unser Standort in Herne“ weiter auf einer Grundlinie
+  (AP-518). „Karte laden“ lädt das iframe.
+- Recherche zum Datenschutzhinweis vor „Karte laden“: Gestuft (kurz am Knopf, ausführlich
+  in der Datenschutzerklärung) ist zulässig. Am Knopf bleiben müssen Google als Empfänger,
+  die übertragenen Daten (IP-Adresse), der Widerrufshinweis (Art. 7 Abs. 3 Satz 3 DSGVO) und
+  der Link zur Datenschutzerklärung. Auf Ansage gekürzt auf „Beim Laden erhält Google
+  u. a. Ihre IP-Adresse. Die Einwilligung endet beim Neuladen. Mehr im Datenschutz“.
