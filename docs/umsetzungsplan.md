@@ -2184,3 +2184,10 @@ Auf Ansage des Auftraggebers, auf allen Breiten:
   die übertragenen Daten (IP-Adresse), der Widerrufshinweis (Art. 7 Abs. 3 Satz 3 DSGVO) und
   der Link zur Datenschutzerklärung. Auf Ansage gekürzt auf „Beim Laden erhält Google
   u. a. Ihre IP-Adresse. Die Einwilligung endet beim Neuladen. Mehr im Datenschutz“.
+
+**AP-528 — Kontaktseite: Standortzeichen in der Kartenfläche (01.10.2026).**
+Auf Ansage des Auftraggebers steht das Standortzeichen aus dem Adressblock (Pin mit Blüte,
+`.contact-location-mark`) zusätzlich an der Stelle des in AP-527 entfallenen Pins über
+„Standort in Google Maps anzeigen“. Gleiche Größe wie im Adressblock (54px), ohne Einzug,
+4px Abstand zum Titel. Gemessen bei 360–1440px: mittig (±0px), Platzhalter passt, kein
+Überlauf.

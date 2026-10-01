@@ -623,7 +623,16 @@
 }
 
 /* AP-527: Der Pin ueber dem Kartentitel (.contact-map-pin) ist auf Ansage des
-   Auftraggebers entfallen (01.10.2026). */
+   Auftraggebers entfallen (01.10.2026).
+   AP-528: An seiner Stelle steht jetzt das Standortzeichen aus dem Adressblock,
+   in derselben Groesse (54px, siehe .contact-location-address). Ohne den
+   Einzug .4em, sonst stuende es neben der Mitte; die 4px darunter sind der
+   Abstand, den der alte Pin zum Titel hatte. */
+.contact-map-placeholder .contact-location-mark {
+  --mark: 54px;
+  flex: none;
+  margin: 0 0 4px;
+}
 
 .contact-map-placeholder [data-map-load] {
   padding: 11px 22px;
