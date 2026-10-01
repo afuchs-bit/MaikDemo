@@ -174,13 +174,17 @@
       // Fokus in das Menue setzen, damit Tastatur und Screenreader dort landen.
       // preventScroll: sonst scrollt der Browser das Ziel in den Blick und
       // verschiebt die gemerkte Position.
-      primaryNav.querySelector('.menu a')?.focus({ preventScroll: true });
+      primaryNav.querySelector('.menu > li > button, .menu > li > a')?.focus({ preventScroll: true });
     };
 
     const schliesseNav = (fokusZurueck) => {
       if (!navOffen()) return;
       primaryNav.classList.remove('is-open');
       navToggle.setAttribute('aria-expanded', 'false');
+      primaryNav.querySelectorAll('.menu-item--sub.is-open').forEach(li => {
+        li.classList.remove('is-open');
+        li.querySelector('.submenu-toggle')?.setAttribute('aria-expanded', 'false');
+      });
       if (menuEl) menuEl.style.maxHeight = '';
       gibScrollFrei();
       // AP-363: preventScroll bleibt noetig - focus() wuerde das Ziel sonst in
@@ -203,6 +207,10 @@
         const anker = ziel.startsWith('#') ? document.querySelector(ziel) : null;
         primaryNav.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
+        primaryNav.querySelectorAll('.menu-item--sub.is-open').forEach(li => {
+          li.classList.remove('is-open');
+          li.querySelector('.submenu-toggle')?.setAttribute('aria-expanded', 'false');
+        });
         if (menuEl) menuEl.style.maxHeight = '';
         gibScrollFrei();
         if (anker) {
@@ -239,27 +247,17 @@
       li.querySelector('.submenu-toggle')?.setAttribute('aria-expanded', 'false');
     });
   };
-  // AP-370: Das Umschalten hing nur am Pfeil - das Wort "Leistungen" war ein
-  // <span> und reagierte nicht. Jetzt schaltet die ganze Zeile: Wort, Pfeil und
-  // die Luecke dazwischen, die margin-left:auto am Knopf aufspannt.
+  // Text und Pfeil bilden einen gemeinsamen Button. Dadurch ist die komplette
+  // Kachel per Maus, Touch, Enter und Leertaste bedienbar; die native
+  // Button-Semantik liefert die Tastaturbedienung ohne Sonderbehandlung.
   document.querySelectorAll('.menu-item--sub').forEach(li => {
     const btn = li.querySelector('.submenu-toggle');
-    li.addEventListener('click', (e) => {
-      // Klicks im Untermenue sind Navigation, kein Umschalten.
-      if (e.target.closest('.nav-submenu')) return;
-      // Ausserhalb des aufgeklappten Handy-Menues bleibt es beim Knopf: Am
-      // Desktop oeffnet das Untermenue per Hover (styles.css:3134). Ein
-      // zusaetzlich gesetztes .is-open bliebe dort haengen, nachdem die Maus
-      // weggezogen ist - das Untermenue stuende offen, ohne dass es jemand
-      // aufgeklappt haette.
-      const imHandymenue = primaryNav?.classList.contains('is-open');
-      if (!imHandymenue && !e.target.closest('.submenu-toggle')) return;
+    if (!btn) return;
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
-      // Muss bleiben: der Dokument-Zuhoerer weiter unten schliesst sonst
-      // sofort wieder, was gerade geoeffnet wurde.
       e.stopPropagation();
       const offen = li.classList.toggle('is-open');
-      btn?.setAttribute('aria-expanded', String(offen));
+      btn.setAttribute('aria-expanded', String(offen));
     });
   });
   document.addEventListener('click', e => {

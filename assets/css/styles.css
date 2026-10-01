@@ -1888,53 +1888,12 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
     background: var(--bg-elev);
     border-radius: 16px;
     padding: 8px;
-    /* AP-39: Das Menue enthaelt 27 Links plus zwei aufklappbare Gruppen und
-       war aufgeklappt 1381px hoch - bei 667px Viewport. Weil der Header
-       `position: sticky; top: 0` ist, blieb er beim Scrollen stehen und die
-       unteren Eintraege waren durch KEIN Scrollen erreichbar. Das Menue
-       scrollt jetzt in sich.
-       --header-h setzt main.js auf die gemessene Headerhoehe; 76px ist der
-       Fallback fuer den Moment vor der ersten Messung und fuer No-JS.
-       100vh steht vor 100dvh: Safari unter 15.4 kennt dvh nicht und faellt
-       auf die vh-Zeile zurueck. */
-    /* AP-343: Feste Hoehe statt nur eines Deckels. Die Karte behaelt ihre
-       zugeklappte Hoehe auch aufgeklappt - das Untermenue fuellt den Platz der
-       ausgeblendeten Eintraege und scrollt in sich, statt die Karte auf 746px
-       wachsen zu lassen.
-       min() behaelt den bisherigen Deckel als Sicherung fuer kleine Geraete. */
-    /* AP-371: Die Hoehe wird gerechnet, nicht gemessen. Die feste Zahl aus AP-343
-       (396px) war auf einer Unterseite ermittelt - Wurzelschrift 16px, 6 Eintraege
-       a 47px - und stimmte dort auch. Auf der Startseite nicht: Deren Wurzelschrift
-       ist fluid und ihr erster Punkt "Gewerbekunden" ist ausgeblendet, also 5
-       Eintraege a 45,5px. Dort standen 60,5px Luft unter der Instagram-Zeile.
-       Ein anderer fester Wert verschiebt das nur, weil die Eintraege mit der
-       Schrift wachsen: 44px @320, 45,5 @375, 51,5 @480. Ein auf 375px passender
-       Wert waere bei 480px zu kurz, und dann scrollt die zugeklappte Karte.
-
-       --menue-eintrag: 12+12px Polster plus die Zeile (.9rem x 1.6 Zeilenhoehe),
-       nach unten begrenzt durch das 44px-Touchziel aus AP-39.
-       + 6px je Eintrag ist der Zeilenabstand (gap), einmal je Eintrag: N-1
-       zwischen den Punkten und einer vor der Instagram-Zeile.
-       + 79px sind die Teile, die nicht mitskalieren: 4px Aussenabstand und 56px
-       Hoehe der Instagram-Zeile (8 Polster + 48 Touchziel), 16px Polster der
-       Karte und 2px Rahmen - plus 1px Spiel. Das Spiel ist noetig, weil der
-       Browser die Zeilenbox aufrundet: .9rem x 1.6 ergibt rechnerisch 21,4478px,
-       gemessen sind es 21,4925px. Ohne den Zuschlag liegt die Karte je Eintrag
-       rund 0,05px zu niedrig, und overflow-y: auto macht daraus ein 1px
-       scrollbares Feld.
-
-       Der einzige Wert, der bei Aenderungen am Menue mitzuziehen ist, ist
-       --menue-eintraege. Die Breitenabhaengigkeit rechnet sich von selbst.
-
-       AP-387: 5 statt 6. Der Menuepunkt "Gewerbekunden" ist aus Kopf und Fuss
-       aller Seiten entfernt; die Sonderregel, die ihn nur auf der Startseite
-       abzog, ist damit entfallen. Alle Seiten haben jetzt dieselben fuenf
-       Eintraege. */
-    --menue-eintrag: max(44px, calc(1.44rem + 24px));
-    --menue-eintraege: 5;
-    --menue-karte: calc(var(--menue-eintraege) * (var(--menue-eintrag) + 6px) + 79px);
-    height: min(var(--menue-karte), calc(100vh - var(--header-h, 76px) - 16px));
-    height: min(var(--menue-karte), calc(100dvh - var(--header-h, 76px) - 16px));
+    /* Beide Zustaende der Karte sind gleich hoch: vor und nach dem Oeffnen von
+       "Leistungen A bis Z". Auf kleinen Displays begrenzt die verfuegbare
+       Viewporthoehe den Wert; 100vh bleibt der Fallback fuer aeltere Safari-
+       Versionen ohne dvh. */
+    height: min(480px, calc(100vh - var(--header-h, 76px) - 16px));
+    height: min(480px, calc(100dvh - var(--header-h, 76px) - 16px));
     overflow-y: auto;
     overscroll-behavior: contain;
   }
@@ -1974,7 +1933,7 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
     --menu-meta-kachel: 44px;
     position: relative;
     display: block;
-    margin-top: 4px;
+    margin-top: auto;
     padding-top: 8px;
   }
 
@@ -2043,6 +2002,24 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
     outline: 2px solid var(--home-lime);
     outline-offset: -2px;
     border-radius: 10px;
+  }
+
+  /* Im geschlossenen A-Z-Zustand teilen sich die fuenf Hauptpunkte den freien
+     Raum gleichmaessig. So entsteht ein ruhiger vertikaler Rhythmus statt einer
+     zufaelligen Leerflaeche zwischen "Kontakt" und der festen Instagram-Zeile.
+     Sobald das Leistungsmenue offen ist, greift diese Verteilung nicht mehr;
+     dann bekommt die scrollbare A-Z-Liste den gesamten freien Raum. */
+  .primary-nav.is-open .menu:not(:has(.menu-item--sub.is-open)) > li:not(.menu-meta) {
+    flex: 1 1 44px;
+    min-height: 44px;
+  }
+  .primary-nav.is-open .menu:not(:has(.menu-item--sub.is-open)) > li:not(.menu-meta) > a,
+  .primary-nav.is-open .menu:not(:has(.menu-item--sub.is-open)) .submenu-toggle {
+    width: 100%;
+    height: 100%;
+  }
+  .primary-nav.is-open .menu:not(:has(.menu-item--sub.is-open)) .menu-item--sub {
+    display: flex;
   }
   .nav-toggle { display: inline-flex; }
   .header-actions .btn span { display: none; }
@@ -3178,62 +3155,56 @@ body.has-lightbox { overflow: hidden; }
   color: var(--green-500); margin: 0 0 14px;
 }
 
-/* AP-33: Leistungs-Dropdown und Footer-Spalte nach Welten gruppiert.
-   AP-34: Der vertikale Versatz (margin/padding/border-top) galt hier fälschlich auch
-   auf dem Desktop, wo die Gruppen nebeneinander im 2-Spalten-Grid liegen. Er steht
-   jetzt nur noch in der Mobil-Media-Query, wo die Gruppen tatsächlich stapeln. */
-.nav-submenu--welten .nav-submenu-head {
-  display: block; font-size: .74rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .09em; padding: 4px 0; text-decoration: none; opacity: .85;
-}
-.nav-submenu--welten .nav-submenu-group > ul { list-style: none; margin: 0; padding: 0; }
-
 /* ============================================================
-   Leistungen-Dropdown im Header + Footer-Leistungen  (AP-18)
-   Desktop-Basis hier, Mobil-Overrides in der Media-Query DANACH
-   (Reihenfolge sorgt für korrekte Kaskade unter 900px).
+   Leistungen A bis Z im Header
    ============================================================ */
 .menu-item--sub { position: relative; display: flex; align-items: center; }
-.menu-item--sub > .menu-label { cursor: default; }
-@media (hover: hover) and (pointer: fine) {
-  .menu-item--sub:hover > .menu-label { background: var(--bg-elev); color: var(--ink); }
-}
 .submenu-toggle {
-  display: inline-flex; align-items: center; justify-content: center;
-  background: none; border: 0; cursor: pointer; color: var(--ink-2);
-  padding: 6px; margin-left: -4px; border-radius: 999px;
+  appearance: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 8px 14px;
+  border: 0; border-radius: 999px;
+  background: transparent; color: var(--ink-2); cursor: pointer;
+  font: inherit; font-size: .9rem; font-weight: 500; line-height: 1.6;
+  white-space: nowrap;
+  transition: color .2s var(--ease), background .2s var(--ease);
 }
-@media (hover: hover) and (pointer: fine) { .submenu-toggle:hover { color: var(--ink); } }
-.submenu-caret { transition: transform .2s var(--ease); }
-/* AP-38: `:hover` ist hier aus der Gruppe geloest. `:focus-within` und
-   `.is-open` sind funktional - `.is-open` ist der Zustand, den das JS auf
-   Touch setzt - und duerfen NICHT unter den Hover-Guard. */
-.menu-item--sub:focus-within .submenu-caret,
+.submenu-toggle:focus-visible {
+  outline: 2px solid var(--home-lime);
+  outline-offset: 2px;
+}
+.menu-item--sub.is-open > .submenu-toggle,
+.submenu-toggle:focus-visible {
+  background: var(--home-lime);
+  color: #171916;
+}
+@media (hover: hover) and (pointer: fine) {
+  .menu-item--sub:hover > .submenu-toggle {
+    background: var(--home-lime);
+    color: #171916;
+  }
+}
+.submenu-caret { flex: 0 0 auto; transition: transform .2s var(--ease); }
 .menu-item--sub.is-open .submenu-caret { transform: rotate(180deg); }
 @media (hover: hover) and (pointer: fine) {
   .menu-item--sub:hover .submenu-caret { transform: rotate(180deg); }
 }
 
+@media (min-width: 901px) and (max-width: 1339px) {
+  .submenu-toggle { padding-inline: 9px; font-size: .86rem; }
+}
+
 .nav-submenu {
-  list-style: none; margin: 0; padding: 8px;
+  list-style: none; margin: 0; padding: 10px;
   position: absolute; top: 100%; left: 50%;
   transform: translateX(-50%) translateY(-6px);
   background: var(--bg-elev); border: 1px solid var(--line);
   border-radius: var(--radius-sm); box-shadow: var(--shadow-card);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
-  width: max-content; max-width: 92vw; z-index: 70;
+  display: block;
+  width: min(420px, 92vw); z-index: 70;
   opacity: 0; visibility: hidden;
   transition: opacity .18s var(--ease), transform .18s var(--ease), visibility .18s;
 }
-/* AP-342: Feste Panelhoehe statt eines Deckels, der mit dem Fenster mitwandert.
-   AP-341 hatte auf calc(100vh - 96px) begrenzt - damit war das Panel bei 900px
-   Fensterhoehe 804px hoch, bei 700px nur 604px, bei 1080px volle 924px. Jetzt
-   immer 480px, der Rest scrollt.
-   480px zeigt rund 10 der 21 Eintraege (Zeile 41px, Koepfe und Polster 71px) und
-   endet bei hoechstens 61 + 480 = 541px - passt damit auch auf kleine
-   Notebook-Fenster. Ein Wert, eine Zeile.
-   Nur ab 901px: darunter steht das Untermenue im Fluss der Menuekarte, die
-   ohnehin schon scrollt - ein zweiter Scrollbereich darin waere eine Falle. */
 @media (min-width: 901px) {
   .nav-submenu {
     height: 480px;
@@ -3242,11 +3213,8 @@ body.has-lightbox { overflow: hidden; }
   }
 }
 
-/* unsichtbare Brücke, damit der Hover beim Übergang zum Panel nicht abreißt */
+/* Unsichtbare Bruecke, damit der Hover beim Uebergang zum Panel nicht abreisst. */
 .nav-submenu::before { content: ""; position: absolute; top: -12px; left: 0; right: 0; height: 12px; }
-/* AP-38: dito - waere die ganze Gruppe gekapselt worden, liesse sich das
-   Untermenue auf dem Telefon nicht mehr oeffnen (`.is-open` kommt vom JS). */
-.menu-item--sub:focus-within > .nav-submenu,
 .menu-item--sub.is-open > .nav-submenu {
   opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
 }
@@ -3256,127 +3224,67 @@ body.has-lightbox { overflow: hidden; }
   }
 }
 .nav-submenu a {
-  display: block; padding: 9px 14px; border-radius: 10px; white-space: nowrap;
-  font-size: .88rem; font-weight: 500; color: var(--ink-2); text-decoration: none;
+  display: flex; align-items: center;
+  min-height: 40px; padding: 9px 12px;
+  border-radius: 10px; white-space: normal;
+  font-size: .88rem; font-weight: 500; line-height: 1.35;
+  color: var(--ink-2); text-decoration: none;
 }
-.nav-submenu .nav-entry--mobile-only { display: none; }
 @media (hover: hover) and (pointer: fine) { .nav-submenu a:hover { background: var(--bg-soft); color: var(--ink); } }
 
-/* AP-34: Farblich abgesetztes Panel im Leistungs-Dropdown.
-   Muss NACH der .nav-submenu-Basis stehen (gleiche Spezifität, spätere Regel gewinnt).
-   AP-342: Seit die Gewerbe-Gruppe entfallen ist, steht hier nur noch ein Panel.
-   Die Basis setzt zwei Spalten - ohne die Korrektur bliebe die zweite leer und
-   das Dropdown doppelt so breit wie noetig.
-   Kein align-self: stretch mehr. Es sollte die beiden Panels gleich hoch machen;
-   mit einer Gruppe und fester Panelhoehe wuerde es schaden - die Gruppe streckte
-   sich auf die sichtbaren 464px, waehrend ihr Inhalt 861px hoch ist.
-   AP-344: Die Flaeche, die dem Block seinen Namen gab, ist entfallen - siehe
-   den Kommentar unter den Geometrie-Regeln. */
-.nav-submenu--welten { gap: 10px; grid-template-columns: 1fr; }
-.nav-submenu--welten .nav-submenu-group {
-  border-radius: 12px;
-  padding: 12px 10px 14px;
+.nav-letter-group {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 8px;
+  padding: 7px 4px;
 }
-/* AP-344: Die Gruppe hatte eine eigene Flaeche (--green-50, dunkel --bg-soft) und
-   dazu einen aufgehellten Zeilen-Hover, weil der Basis-Hover darauf unsichtbar
-   gewesen waere. Beides ist entfallen: Seit AP-342 steht im Dropdown nur noch
-   diese eine Gruppe - ein abgesetztes Panel im Panel hatte keinen Zweck mehr.
-   Polster und Radius bleiben; das Polster haelt die Liste vom Panelrand. */
-.nav-submenu--welten .nav-submenu-head { padding: 2px 8px 8px; }
+.nav-letter-group + .nav-letter-group { border-top: 1px solid var(--line); }
+.nav-letter-group > ul { list-style: none; margin: 0; padding: 0; min-width: 0; }
+.nav-letter-mark {
+  display: block;
+  width: 16px; height: 16px;
+  margin: 12px auto 0;
+  object-fit: contain;
+}
 
 @media (max-width: 900px) {
-  .nav-submenu .nav-entry--mobile-only { display: list-item; }
-
-  /* Untermenü unter dem Eintrag, per Toggle ausklappbar.
-     AP-343: Der Eintrag ist ein Raster statt einer umbrechenden Flexzeile.
-     Zeile 1 traegt Beschriftung und Aufklapp-Knopf, Zeile 2 das Untermenue.
-     minmax(0, 1fr) laesst Zeile 2 den ganzen Rest der Hoehe nehmen, den der
-     Eintrag bekommt - Grundlage dafuer, dass das Untermenue genau den Platz
-     fuellt, den die ausgeblendeten Eintraege darunter freigeben.
-     Mit der fruheren Flexzeile ging das nicht: In einem umbrechenden
-     Flexcontainer verteilt align-content die Resthoehe auf BEIDE Zeilen, die
-     Beschriftungszeile waere mitgewachsen. */
   .menu-item--sub {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
     grid-template-rows: auto minmax(0, 1fr);
     align-items: center;
     position: static;
   }
-  /* align-self ueberstimmt das align-items: center des Rasters. Ohne das bliebe
-     das Untermenue auf seiner vollen Inhaltshoehe stehen und liefe mittig aus
-     der Zeile heraus, statt sie auszufuellen - der Scrollbereich waere
-     wirkungslos (gemessen: Zeile 212px, Untermenue 1012px). */
-  .menu-item--sub > .nav-submenu { grid-column: 1 / -1; align-self: stretch; }
-
-  /* AP-343: Aufgeklappt nimmt der Leistungen-Eintrag den freien Platz der Karte
-     ein; alles, was im Menue nach ihm kommt (Galerie, Über uns, FAQ und
-     Kontakt), tritt so lange zurueck. Die Karte behaelt dadurch ihre
-     Hoehe, das Untermenue scrollt in sich. Über den Pfeil kommt alles zurueck.
-     Die Instagram-Zeile ist ausgenommen: Sie ist kein Menuepunkt, sondern der
-     Fuss der Karte und bleibt als fester unterer Abschluss stehen. Das :not()
-     sagt das ausdruecklich - ohne es bliebe sie zwar auch stehen, aber nur, weil
-     ihre eigene Regel (vier Klassen) staerker ist. Auf so einen Zufall soll sich
-     niemand verlassen muessen. */
-  /* AP-370: Die ganze Zeile schaltet das Untermenue, also sieht sie auch so
-     aus. Die Regel .menu-item--sub > .menu-label { cursor: default } weiter
-     oben bleibt fuer den Desktop stehen - dort oeffnet das Untermenue per
-     Hover, und das Wort schaltet weiterhin nicht. */
-  .primary-nav.is-open .menu-item--sub,
-  .primary-nav.is-open .menu-item--sub > .menu-label { cursor: pointer; }
-
+  .menu-item--sub > .nav-submenu { align-self: stretch; }
   .menu-item--sub.is-open { flex: 1 1 auto; min-height: 0; }
   .menu-item--sub.is-open ~ li:not(.menu-meta) { display: none; }
-  /* AP-39: Der Aufklapp-Button mass 34x34px. Er sitzt direkt neben dem
-     Leistungen-Link, beide brauchen eine eigene, ausreichend grosse Flaeche. */
   .submenu-toggle {
-    margin-left: auto; padding: 10px;
-    min-width: 44px; min-height: 44px;
-    display: inline-flex; align-items: center; justify-content: center;
+    width: 100%; min-height: 48px;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: 10px;
   }
   .nav-submenu {
-    flex-basis: 100%; position: static; transform: none;
+    position: static; transform: none;
     opacity: 1; visibility: visible; display: none;
-    grid-template-columns: 1fr; gap: 0;
     box-shadow: none; border: 0; background: transparent;
-    padding: 2px 0 6px 16px; width: auto; max-width: none;
+    padding: 6px 0; width: auto; max-width: none;
   }
   .nav-submenu::before { display: none; }
-  /* AP-35: `transform: none` oben greift nicht gegen die Desktop-Öffnungsregeln
-     (.menu-item--sub.is-open > .nav-submenu u. a., Spezifität 0,3,0). Ohne diesen
-     Reset blieb translateX(-50%) mobil aktiv und schob das Untermenü aus dem Menü.
-     AP-38 hat geprüft, ob der Hover-Guard diesen Reset überflüssig macht: nein.
-     Die Öffnungsregel für `.is-open` ist bewusst NICHT gekapselt – das ist der
-     Zustand, den das JS auf Touch setzt –, also wirkt ihr translateX weiterhin
-     und muss weiterhin zurückgesetzt werden. Die `:hover`-Zeile bleibt für
-     schmale Fenster auf Zeigergeräten nötig, wo der Guard ebenfalls greift. */
   .menu-item--sub:hover > .nav-submenu,
-  .menu-item--sub:focus-within > .nav-submenu,
   .menu-item--sub.is-open > .nav-submenu { transform: none; }
-  /* AP-343: Das Untermenue scrollt in seinem Raster-Feld, nicht die Karte.
-     min-height: 0 ist noetig, damit das Feld unter seine Inhaltshoehe schrumpfen
-     darf - ohne das waere der Scrollbereich wirkungslos. */
   .menu-item--sub.is-open > .nav-submenu {
-    display: grid;
+    display: block;
     min-height: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
   .nav-submenu a {
-    padding: 10px 12px;
-    min-height: 44px;
-    display: flex; align-items: center;
+    min-height: 48px;
+    padding: 11px 12px;
   }
-  /* AP-34: Einspaltig gestapelt – keine Panel-Kästen, dafür wieder eine Trennlinie.
-     AP-344: Das background: transparent hier ist entfallen - die Flaechen gibt es
-     jetzt auch am Desktop nicht mehr. Es hatte ohnehin nicht gegriffen: Die
-     dunkle Farbwelt setzte sie mit fuenf Klassen, diese Regel hat drei. */
-  .nav-submenu--welten { gap: 0; }
-  .nav-submenu--welten .nav-submenu-group { padding: 0; }
-  .nav-submenu--welten .nav-submenu-head { padding: 4px 0; }
-  .nav-submenu--welten .nav-submenu-group + .nav-submenu-group {
-    margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line);
-  }
+  .nav-letter-group { grid-template-columns: 24px minmax(0, 1fr); padding: 7px 4px; }
 }
 
 /* ============================================================

@@ -30,6 +30,10 @@
 /* Der Footer greift den Grundton des mobilen Headers auf. */
 .site-footer {
   background: #171916;
+  /* AP-517: Nur die beiden Social-Icons werden um exakt 20 % vergroessert.
+     Die gemeinsame Variable haelt Raster, Linkflaeche und Kachel synchron. */
+  --footer-social-icon-size: 55.2px;
+  --footer-social-glyph-size: 32.4px;
 }
 
 /* Logo oben, darunter Adresse und Route. */
@@ -132,8 +136,8 @@
   display: grid;
   /* Tippziele bleiben absolut: 44px ist die Mindestgroesse nach WCAG 2.5.8.
      Mitskaliert waeren es auf einem 320px-Geraet nur noch 35px. */
-  grid-template-columns: 46px 46px minmax(0, 1fr);
-  grid-template-rows: auto minmax(46px, auto);
+  grid-template-columns: var(--footer-social-icon-size) var(--footer-social-icon-size) minmax(0, 1fr);
+  grid-template-rows: auto minmax(var(--footer-social-icon-size), auto);
   align-items: center;
   justify-content: start;
   /* AP-366: 4px statt 2px - Kachel und Tippflaeche sind gleich gross. */
@@ -147,8 +151,8 @@
 .site-footer .footer-social-link {
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: var(--footer-social-icon-size);
+  height: var(--footer-social-icon-size);
   /* AP-366: Tippflaeche und Kachel sind deckungsgleich, 46px liegt ueber den
      44px aus WCAG 2.5.8. */
   padding: 0;
@@ -169,14 +173,14 @@
   grid-row: 2;
 }
 
-/* AP-366: 46px - dieselbe Kantenlaenge wie die Knoepfe im Kopf. Fest in Pixeln
+/* AP-517: 55,2px entsprechen exakt 120 % der bisherigen 46px. Fest in Pixeln
    aus dem Grund von AP-321 (fluide Wurzel der Startseite unter 480px). */
 .site-footer .footer-social-icon {
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
+  width: var(--footer-social-icon-size);
+  height: var(--footer-social-icon-size);
+  border-radius: 14.4px;
   color: #fff;
   transform-origin: center;
   transition: transform .12s ease, filter .12s ease;
@@ -187,8 +191,8 @@
 }
 
 .site-footer .footer-social-icon--whatsapp img {
-  width: 27px;
-  height: 27px;
+  width: var(--footer-social-glyph-size);
+  height: var(--footer-social-glyph-size);
 }
 
 .site-footer .footer-social-icon--instagram {
@@ -196,8 +200,8 @@
 }
 
 .site-footer .footer-social-icon--instagram svg {
-  width: 27px;
-  height: 27px;
+  width: var(--footer-social-glyph-size);
+  height: var(--footer-social-glyph-size);
 }
 
 /* WhatsApp und Instagram gehoeren sichtbar zu einer Gruppe und geben daher

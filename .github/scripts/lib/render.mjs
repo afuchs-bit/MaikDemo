@@ -487,11 +487,6 @@ export const WELTEN = {
     hubEntfaellt: true,
     weltLabel: 'Privatkunde',
     navLabel: 'Für Privatkunden',
-    // AP-341: Eigene Ueberschrift fuers Dropdown. Bewusst nicht navLabel
-    // ueberschrieben - das ist auch die Kennung der Welt im Build-Protokoll
-    // (build-leistungen.mjs:277, "Für Privatkunden: 13 direkte Leistungsseiten
-    // generiert"), und dort waere der A-Z-Satz schlicht falsch.
-    navKopf: 'Unsere Leistungen von A bis Z',
     base: '../../../',        // /privatkunden/leistungen/<slug>/
     slugs: [
       'aussergewoehnliches-garten', 'balkonkastenbepflanzung', 'baumarbeiten',
@@ -630,40 +625,32 @@ export const LEISTUNGEN_NAV = [
 // und bleibt dann darin. Labels kommen weiterhin aus LEISTUNGEN_NAV.
 export function renderNavSubmenu(base) {
   const labelBySlug = new Map(LEISTUNGEN_NAV.map((l) => [l.slug, l.label]));
-  const block = (welt) => {
-    // AP-341: navListe hat Vorrang - sie kann Mehrfachziele und eigene
-    // Beschriftungen, was die slugs-Liste nicht kann. Ohne navListe bleibt
-    // alles beim Alten (Gewerbe-Welt).
-    const eintraege = welt.navListe || welt.slugs.map((slug) => ({ slug }));
-    // AP-361: Ein Eintrag darf ein eigenes Ziel mitbringen. Ohne das liesse sich
-    // nur "<welt>/leistungen/<slug>/" bilden - die A-Z-Liste der Startseite
-    // enthaelt aber auch eine Leistung, die es nur in der Gewerbewelt gibt.
-    // base wird in beiden Faellen vorangestellt, damit die Pfade auf den sechs
-    // Handseiten stimmen (index.html und 404.html liegen an der Wurzel, die
-    // uebrigen eine Ebene tiefer).
-    const items = eintraege
-      .map(({ slug, label, href, mobilOnly }) => {
-        const ziel = href || `${welt.pfad}leistungen/${slug}/`;
-        const klasse = mobilOnly ? ' class="nav-entry--mobile-only"' : '';
-        return `<li${klasse}><a href="${base}${ziel}">${esc(label || welt.navLabels?.[slug] || labelBySlug.get(slug) || slug)}</a></li>`;
-      })
-      .join('\n              ');
-    const kopfText = welt.navKopf || welt.navLabel;
-    const kopf = welt.hubEntfaellt
-      ? `<span class="nav-submenu-head">${esc(kopfText)}</span>`
-      : `<a class="nav-submenu-head" href="${base}${welt.pfad}">${esc(kopfText)}</a>`;
-    return `<li class="nav-submenu-group">
-            ${kopf}
-            <ul>
-              ${items}
+  const welt = WELTEN.privat;
+  const eintraege = welt.navListe || welt.slugs.map((slug) => ({ slug }));
+  const gruppen = new Map();
+
+  // Das Dropdown spiegelt die A-Z-Liste der Startseite. Der sichtbare
+  // Anfangsbuchstabe wird aus dem fertigen Label gewonnen, sodass neue
+  // Eintraege automatisch in derselben alphabetischen Gruppe landen.
+  for (const { slug, label, href } of eintraege) {
+    const text = label || welt.navLabels?.[slug] || labelBySlug.get(slug) || slug;
+    const buchstabe = text.trim().charAt(0).toLocaleUpperCase('de-DE');
+    const ziel = href || `${welt.pfad}leistungen/${slug}/`;
+    if (!gruppen.has(buchstabe)) gruppen.set(buchstabe, []);
+    gruppen.get(buchstabe).push(`<li><a href="${base}${ziel}">${esc(text)}</a></li>`);
+  }
+
+  const gruppenHtml = [...gruppen.entries()]
+    .map(([buchstabe, items]) => `<li class="nav-letter-group">
+            <img class="nav-letter-mark" src="${base}assets/img/icons/leistung-${buchstabe.toLocaleLowerCase('de-DE')}.png" alt="" aria-hidden="true" width="16" height="16" loading="lazy" />
+            <ul aria-label="${esc(buchstabe)}">
+              ${items.join('\n              ')}
             </ul>
-          </li>`;
-  };
-  // AP-342: Im Dropdown steht die gemeinsame A–Z-Liste der Privatwelt. Die
-  // veröffentlichte Gewerbeleistung Objekt- & Grünflächenpflege ist dort über
-  // ihr ausgeschriebenes Ziel enthalten.
+          </li>`)
+    .join('\n          ');
+
   return `<ul class="nav-submenu nav-submenu--welten" id="submenu-leistungen">
-          ${block(WELTEN.privat)}
+          ${gruppenHtml}
           </ul>`;
 }
 

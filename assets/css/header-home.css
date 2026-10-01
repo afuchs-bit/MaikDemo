@@ -70,14 +70,8 @@
   color: var(--ink);
 }
 
-/* AP-344: Der Aufklapp-Knopf ist rund (styles.css: border-radius 999px). Der
-   Sammel-Fokusring (3px gelb, 3px abgesetzt) wurde dadurch zu einem gelben
-   Kreis, der frei um den Knopf schwebte - im Handymenue die auffaelligste
-   Flaeche der ganzen Karte. Jetzt liegt er auf der Knopfkante statt 3px davor,
-   ist 2 statt 3px stark und traegt --ink-mute, die gedaempfteste Schriftfarbe
-   der Karte (7,50:1 auf dem Kartengrund #20241D - deutlich ueber den 3:1, die
-   ein Fokusring braucht). Er bleibt: Ohne ihn saehe man bei Tastaturbedienung
-   nicht mehr, wo man steht. */
+/* Der Fokusring liegt direkt auf der gemeinsam klickbaren Leistungen-Kachel.
+   So bleibt die Tastaturposition auch auf dem gruenen Aktivzustand sichtbar. */
 .submenu-toggle:focus-visible {
   outline: 2px solid var(--ink-mute);
   outline-offset: 0;
@@ -154,7 +148,7 @@
   /* Menue- und Telefonzeilen sind keine Iconkacheln. Hier signalisiert nur die
      Flaeche den Druck; die Zeile selbst bleibt unbewegt. */
   .primary-nav.is-open .menu a:active,
-  .primary-nav.is-open .submenu-toggle:active,
+  .primary-nav.is-open .menu-item--sub:not(.is-open) .submenu-toggle:active,
   .call-popover .call-row:active {
     color: var(--ink);
     background: var(--bg-soft);

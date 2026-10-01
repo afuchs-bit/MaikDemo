@@ -1,18 +1,18 @@
 {
   "_hinweis": "AUTO-GENERIERT von .github/scripts/build-gallery-teaser.mjs – NICHT von Hand editieren.",
   "titel": "Gärten, die für sich sprechen.",
-  "intro": "Echte Ergebnisse aus privaten Gärten in Herne und der Region.",
+  "intro": "Echte Ergebnisse aus privaten Gärten, gewerblichen Außenanlagen und unserer täglichen Gartenarbeit.",
   "bilder": [
     {
-      "id": "poolgarten-am-abend-8538a06",
-      "bild": "/assets/img/galerie-teaser/originale/poolgarten-am-abend.jpg",
-      "alt": "Beleuchteter Poolgarten mit Palmen, Rasenfläche und Holzterrasse in der Abenddämmerung",
-      "imTeaser": true,
-      "leitbildGeeignet": true,
-      "fokusDesktop": "54% 58%",
-      "fokusMobil": "58% 58%",
+      "id": "gartenanlage-pool-drohnenaufnahme-d2ab505",
+      "bild": "/assets/img/galerie-teaser/originale/gartenanlage-pool-drohnenaufnahme.jpeg",
+      "alt": "Drohnenaufnahme einer großzügigen Gartenanlage mit Pool, Whirlpool, Terrassen und Natursteinen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
       "variants": {
-        "base": "/assets/img/galerie-teaser/generated/poolgarten-am-abend-8538a06",
+        "base": "/assets/img/galerie-teaser/generated/gartenanlage-pool-drohnenaufnahme-d2ab505",
         "widths": [
           480,
           960,
@@ -24,15 +24,51 @@
       }
     },
     {
-      "id": "felsengarten-mit-bluehenden-polstern-73681f9",
-      "bild": "/assets/img/galerie-teaser/originale/felsengarten-mit-bluehenden-polstern.jpg",
-      "alt": "Naturnah gestalteter Felsengarten mit großen Findlingen und blühenden Polsterstauden",
-      "imTeaser": true,
-      "leitbildGeeignet": true,
-      "fokusDesktop": "52% 56%",
-      "fokusMobil": "53% 58%",
+      "id": "mustergarten-pflasterausstellung-0b902fb",
+      "bild": "/assets/img/galerie-teaser/originale/mustergarten-pflasterausstellung.jpg",
+      "alt": "Mustergarten mit Pflasterausstellung, Formgehölzen, Palmen und Gartenpavillon",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
       "variants": {
-        "base": "/assets/img/galerie-teaser/generated/felsengarten-mit-bluehenden-polstern-73681f9",
+        "base": "/assets/img/galerie-teaser/generated/mustergarten-pflasterausstellung-0b902fb",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "08-palmen-im-winterlichen-betrieb-313d797",
+      "bild": "/assets/img/leistungen-mobile/palmen-winterfest-gallery/08-palmen-im-winterlichen-betrieb.webp",
+      "alt": "Verschneites Firmengebäude mit Palmen, Baumaschinen und Firmenfahrzeug",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/08-palmen-im-winterlichen-betrieb-313d797",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "haecksler-fuhrpark-4823f70",
+      "bild": "/assets/img/galerie-teaser/originale/haecksler-fuhrpark.jpeg",
+      "alt": "Mobiler Holzhäcksler mit Firmenfahrzeug und Minibagger im Einsatz",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/haecksler-fuhrpark-4823f70",
         "widths": [
           480,
           960,
@@ -43,530 +79,1614 @@
       }
     },
     {
-      "id": "bluehender-vorgarten-mit-formgehoelz-2b30d84",
-      "bild": "/assets/img/galerie-teaser/originale/bluehender-vorgarten-mit-formgehoelz.jpg",
-      "alt": "Blühender Vorgarten mit Formgehölz, Rosen, Stauden und Natursteinweg",
-      "imTeaser": true,
-      "leitbildGeeignet": true,
-      "fokusDesktop": "58% 55%",
-      "fokusMobil": "60% 56%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/bluehender-vorgarten-mit-formgehoelz-2b30d84",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "moderne-aussenanlage-mit-pflasterung-e5cd55a",
-      "bild": "/assets/img/galerie-teaser/originale/moderne-aussenanlage-mit-pflasterung.jpg",
-      "alt": "Moderne Außenanlage mit großzügiger Pflasterfläche, Rasen und klarer Gartengestaltung",
-      "imTeaser": true,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "50% 54%",
-      "fokusMobil": "52% 54%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/moderne-aussenanlage-mit-pflasterung-e5cd55a",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "wasserbecken-mit-findlingen-8ddc1aa",
-      "bild": "/assets/img/galerie-teaser/originale/wasserbecken-mit-findlingen.jpg",
-      "alt": "Kleines Wasserbecken zwischen großen Findlingen, Ziergehölzen und bodennaher Bepflanzung",
-      "imTeaser": true,
-      "leitbildGeeignet": true,
-      "fokusDesktop": "50% 55%",
-      "fokusMobil": "50% 57%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/wasserbecken-mit-findlingen-8ddc1aa",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "formaler-kiesgarten-47720df",
-      "bild": "/assets/img/galerie-teaser/originale/formaler-kiesgarten.jpg",
-      "alt": "Formal gestalteter Kiesgarten mit geschnittenen Gehölzen, Ziergräsern und Skulptur",
-      "imTeaser": true,
-      "leitbildGeeignet": true,
-      "fokusDesktop": "50% 56%",
-      "fokusMobil": "50% 58%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/formaler-kiesgarten-47720df",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "gartenteich-mit-palmen-c747b98",
-      "bild": "/assets/img/galerie-teaser/originale/gartenteich-mit-palmen.jpg",
-      "alt": "Üppig bepflanzter Gartenteich mit Palmen, Uferstauden und gepflegter Rasenfläche",
-      "imTeaser": true,
-      "leitbildGeeignet": true,
-      "fokusDesktop": "48% 56%",
-      "fokusMobil": "46% 57%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/gartenteich-mit-palmen-c747b98",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "vorgarten-mit-cortenstahl-8854cbc",
-      "bild": "/assets/img/galerie-teaser/originale/vorgarten-mit-cortenstahl.jpg",
-      "alt": "Gestalteter Vorgarten mit Cortenstahl-Baum, Ziergräsern, Naturstein und farbiger Bepflanzung",
-      "imTeaser": true,
-      "leitbildGeeignet": true,
-      "fokusDesktop": "43% 57%",
-      "fokusMobil": "40% 58%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/vorgarten-mit-cortenstahl-8854cbc",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "poolumfeld-mit-kiesbeet-cfd12a3",
-      "bild": "/assets/img/galerie-teaser/originale/poolumfeld-mit-kiesbeet.jpg",
-      "alt": "Rechteckiges Schwimmbecken mit Natursteinkante, davor ein Kiesbeet mit Buchskugel und rot blühendem Strauch",
-      "imTeaser": true,
-      "leitbildGeeignet": true,
-      "fokusDesktop": "60% 55%",
-      "fokusMobil": "58% 60%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/poolumfeld-mit-kiesbeet-cfd12a3",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "eingewachsener-garten-mit-palme-810b31c",
-      "bild": "/assets/img/galerie-teaser/originale/eingewachsener-garten-mit-palme.jpg",
-      "alt": "Eingewachsener Privatgarten mit großer Palme, Hortensien und gepflasterter Terrasse",
+      "id": "35-naturstein-hanggarten-im-bau-4064ea5",
+      "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/35-naturstein-hanggarten-im-bau.webp",
+      "alt": "Bau einer Natursteinanlage mit Bagger und vorgelagerter Granitpalisade",
       "imTeaser": false,
       "leitbildGeeignet": false,
-      "fokusDesktop": "58% 56%",
-      "fokusMobil": "56% 58%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/eingewachsener-garten-mit-palme-810b31c",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "farbenreicher-staudengarten-26654e5",
-      "bild": "/assets/img/galerie-teaser/originale/farbenreicher-staudengarten.jpg",
-      "alt": "Farbenreicher Staudengarten mit geschwungenem Weg, Rosen und blühenden Beeteinfassungen",
-      "imTeaser": true,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "55% 58%",
-      "fokusMobil": "57% 58%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/farbenreicher-staudengarten-26654e5",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 594
-      }
-    },
-    {
-      "id": "rasengarten-mit-formgehoelzen-und-weg-902bf9a",
-      "bild": "/assets/img/galerie-teaser/originale/rasengarten-mit-formgehoelzen-und-weg.jpg",
-      "alt": "Gepflegter Rasengarten mit geschwungenem Natursteinweg, Formgehölzen und farbiger Bepflanzung",
-      "imTeaser": true,
-      "leitbildGeeignet": true,
-      "fokusDesktop": "54% 58%",
-      "fokusMobil": "58% 60%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/rasengarten-mit-formgehoelzen-und-weg-902bf9a",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "fruehlingsbepflanzung-im-hochbeet-3c26d12",
-      "bild": "/assets/img/galerie-teaser/originale/fruehlingsbepflanzung-im-hochbeet.jpg",
-      "alt": "Farbenfrohe Frühlingsbepflanzung mit Narzissen, Hornveilchen und Gänseblümchen in einem Holzbeet",
-      "imTeaser": true,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "52% 54%",
-      "fokusMobil": "54% 55%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/fruehlingsbepflanzung-im-hochbeet-3c26d12",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "vorgarten-mit-formgehoelzen-bbf107b",
-      "bild": "/assets/img/galerie-teaser/originale/vorgarten-mit-formgehoelzen.jpg",
-      "alt": "Pflegeleichter Vorgarten mit Formschnittgehölzen, Ziergräsern und heller Kiesfläche",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "58% 55%",
-      "fokusMobil": "59% 56%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/vorgarten-mit-formgehoelzen-bbf107b",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "einfahrt-mit-pflanzbeeten-ba997cd",
-      "bild": "/assets/img/galerie-teaser/originale/einfahrt-mit-pflanzbeeten.jpg",
-      "alt": "Gepflasterte Einfahrt mit angrenzenden Beeten, Sträuchern und immergrünen Gehölzen",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "56% 58%",
-      "fokusMobil": "58% 58%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/einfahrt-mit-pflanzbeeten-ba997cd",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "vorgarten-mit-bluehender-bepflanzung-1b494f6",
-      "bild": "/assets/img/galerie-teaser/originale/vorgarten-mit-bluehender-bepflanzung.jpg",
-      "alt": "Dicht bepflanzter Vorgarten mit Formgehölz, Blattschmuckstauden und Natursteinpflaster",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "58% 55%",
-      "fokusMobil": "60% 56%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/vorgarten-mit-bluehender-bepflanzung-1b494f6",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "gepflasterte-einfahrt-mit-sichtschutz-527e26d",
-      "bild": "/assets/img/galerie-teaser/originale/gepflasterte-einfahrt-mit-sichtschutz.jpg",
-      "alt": "Neu gepflasterte Einfahrt mit moderner Garage, Holzfassade und seitlichem Sichtschutz",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "56% 52%",
-      "fokusMobil": "59% 52%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/gepflasterte-einfahrt-mit-sichtschutz-527e26d",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "neu-bepflanztes-vorgartenbeet-f2c8a39",
-      "bild": "/assets/img/galerie-teaser/originale/neu-bepflanztes-vorgartenbeet.jpg",
-      "alt": "Neu bepflanztes Vorgartenbeet mit Formgehölz, Hortensien und Natursteineinfassung",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "50% 57%",
-      "fokusMobil": "50% 58%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/neu-bepflanztes-vorgartenbeet-f2c8a39",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "dachterrasse-mit-palmen-9334f9b",
-      "bild": "/assets/img/galerie-teaser/originale/dachterrasse-mit-palmen.jpg",
-      "alt": "Dachterrasse mit großen Palmen in Pflanzgefäßen, Holzdeck und Sitzbereich",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "52% 52%",
-      "fokusMobil": "55% 54%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/dachterrasse-mit-palmen-9334f9b",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "teichgarten-zwischen-palmen-d45891e",
-      "bild": "/assets/img/galerie-teaser/originale/teichgarten-zwischen-palmen.jpg",
-      "alt": "Gartenteich zwischen großen Palmen mit dichter Uferbepflanzung und Kiesweg",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "50% 58%",
-      "fokusMobil": "50% 58%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/teichgarten-zwischen-palmen-d45891e",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "formgehoelzgarten-vor-wohnhaus-71ca9ab",
-      "bild": "/assets/img/galerie-teaser/originale/formgehoelzgarten-vor-wohnhaus.jpg",
-      "alt": "Kiesgarten mit geschnittenen Formgehölzen und Ziergräsern vor einem Wohnhaus",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "58% 55%",
-      "fokusMobil": "60% 56%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/formgehoelzgarten-vor-wohnhaus-71ca9ab",
-        "widths": [
-          480,
-          960,
-          1440,
-          1600
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "vorgarten-mit-formschnitt-48b0cf3",
-      "bild": "/assets/img/galerie-teaser/originale/vorgarten-mit-formschnitt.jpg",
-      "alt": "Bepflanzter Vorgarten mit Formschnittgehölzen, Gräsern und niedriger Beeteinfassung",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "54% 56%",
-      "fokusMobil": "56% 57%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/vorgarten-mit-formschnitt-48b0cf3",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 723
-      }
-    },
-    {
-      "id": "rasengarten-mit-geschwungenen-beeten-ea06ec5",
-      "bild": "/assets/img/galerie-teaser/originale/rasengarten-mit-geschwungenen-beeten.jpg",
-      "alt": "Großzügiger Rasengarten mit geschwungenen Pflanzbeeten und blühenden Margeriten",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "52% 55%",
-      "fokusMobil": "52% 56%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/rasengarten-mit-geschwungenen-beeten-ea06ec5",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "palmengarten-mit-stuetzwand-8d2a969",
-      "bild": "/assets/img/galerie-teaser/originale/palmengarten-mit-stuetzwand.jpg",
-      "alt": "Palmengarten mit Rasenfläche, bepflanzter Stützwand und eingefasstem Hochbeet",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "48% 54%",
-      "fokusMobil": "48% 55%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/palmengarten-mit-stuetzwand-8d2a969",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 723
-      }
-    },
-    {
-      "id": "formgehoelz-mit-farbiger-unterpflanzung-15d3637",
-      "bild": "/assets/img/galerie-teaser/originale/formgehoelz-mit-farbiger-unterpflanzung.jpg",
-      "alt": "Mehrstämmiges Formgehölz mit farbiger Stauden- und Bodendeckerbepflanzung",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "48% 52%",
+      "fokusDesktop": "50% 50%",
       "fokusMobil": "50% 50%",
       "variants": {
-        "base": "/assets/img/galerie-teaser/generated/formgehoelz-mit-farbiger-unterpflanzung-15d3637",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 723
-      }
-    },
-    {
-      "id": "kleiner-rasengarten-mit-kiesbeeten-db03c4a",
-      "bild": "/assets/img/galerie-teaser/originale/kleiner-rasengarten-mit-kiesbeeten.jpg",
-      "alt": "Kleiner gepflegter Rasengarten mit Natursteineinfassung, Gräsern und Kiesbeeten",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "50% 56%",
-      "fokusMobil": "50% 58%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/kleiner-rasengarten-mit-kiesbeeten-db03c4a",
-        "widths": [
-          480,
-          960,
-          1440
-        ],
-        "width": 960,
-        "height": 720
-      }
-    },
-    {
-      "id": "bepflanzte-gefaesse-auf-dachterrasse-dbd1337",
-      "bild": "/assets/img/galerie-teaser/originale/bepflanzte-gefaesse-auf-dachterrasse.jpg",
-      "alt": "Bepflanzte Gefäße mit Frühlingsblumen auf einer möblierten Dachterrasse",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "52% 60%",
-      "fokusMobil": "52% 62%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/bepflanzte-gefaesse-auf-dachterrasse-dbd1337",
+        "base": "/assets/img/galerie-teaser/generated/35-naturstein-hanggarten-im-bau-4064ea5",
         "widths": [
           480,
           960
         ],
         "width": 960,
-        "height": 986
+        "height": 720
       }
     },
     {
-      "id": "vorgarten-mit-findlingen-und-formgehoelzen-b89532f",
-      "bild": "/assets/img/galerie-teaser/originale/vorgarten-mit-findlingen-und-formgehoelzen.jpg",
-      "alt": "Üppig gestalteter Vorgarten mit großen Findlingen, Formgehölzen und weißem Zierkies",
+      "id": "rodungsarbeiten-minibagger-640-0fd15da",
+      "bild": "/assets/img/leistungen-mobile/rodungsarbeiten-minibagger-640.webp",
+      "alt": "Minibagger bei Rodungsarbeiten in einem Garten",
       "imTeaser": false,
       "leitbildGeeignet": false,
-      "fokusDesktop": "54% 58%",
-      "fokusMobil": "56% 58%",
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
       "variants": {
-        "base": "/assets/img/galerie-teaser/generated/vorgarten-mit-findlingen-und-formgehoelzen-b89532f",
+        "base": "/assets/img/galerie-teaser/generated/rodungsarbeiten-minibagger-640-0fd15da",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 480
+      }
+    },
+    {
+      "id": "rote-silhouetten-terrasse-640-ab8728b",
+      "bild": "/assets/img/leistungen-mobile/aussergewoehnliches-garten/rote-silhouetten-terrasse-640.webp",
+      "alt": "Zwei leuchtend rote Silhouetten-Skulpturen auf einer Holzterrasse mit Palme",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/rote-silhouetten-terrasse-640-ab8728b",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "stahlbaum-vorgarten-640-627e04f",
+      "bild": "/assets/img/leistungen-mobile/aussergewoehnliches-garten/stahlbaum-vorgarten-640.webp",
+      "alt": "Vorgarten mit großer Baumskulptur aus Cortenstahl, Gräsern, Stauden und Natursteinen",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/stahlbaum-vorgarten-640-627e04f",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "teich-totenkopf-640-54dd64a",
+      "bild": "/assets/img/leistungen-mobile/aussergewoehnliches-garten/teich-totenkopf-640.webp",
+      "alt": "Totenkopf-Dekoration auf einem Naturstein am bepflanzten Gartenteich",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/teich-totenkopf-640-54dd64a",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "gartenbeleuchtung-nacht-640-926ce5f",
+      "bild": "/assets/img/leistungen-mobile/gartenbeleuchtung-nacht-640.webp",
+      "alt": "Stimmungsvoll beleuchteter Garten bei Nacht",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/gartenbeleuchtung-nacht-640-926ce5f",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 480
+      }
+    },
+    {
+      "id": "05-formgehoelze-graesergarten-ff3bd03",
+      "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/05-formgehoelze-graesergarten.webp",
+      "alt": "Großzügiger Vorgarten mit mehreren Formgehölzen, Ziergräsern und hellem Zierkies",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/05-formgehoelze-graesergarten-ff3bd03",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "04-minibagger-beim-aushub-e2dbe00",
+      "bild": "/assets/img/leistungen-mobile/erd-baggerarbeiten-gallery/04-minibagger-beim-aushub.webp",
+      "alt": "Minibagger beim präzisen Aushub einer tiefen Baugrube",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/04-minibagger-beim-aushub-e2dbe00",
         "widths": [
           480,
-          960,
-          1440,
-          1600
+          960
         ],
         "width": 960,
         "height": 720
       }
     },
     {
-      "id": "trockener-bachlauf-mit-findlingen-69a782d",
-      "bild": "/assets/img/galerie-teaser/originale/trockener-bachlauf-mit-findlingen.jpg",
-      "alt": "Trockener Bachlauf aus Natursteinen mit großen Findlingen, Gräsern und Blattschmuckstauden",
+      "id": "34-naturstein-hanggarten-fertig-86bfffc",
+      "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/34-naturstein-hanggarten-fertig.webp",
+      "alt": "Fertig gestalteter Hanggarten mit großen Natursteinen und blühender Bepflanzung",
       "imTeaser": false,
       "leitbildGeeignet": false,
-      "fokusDesktop": "56% 58%",
-      "fokusMobil": "58% 60%",
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
       "variants": {
-        "base": "/assets/img/galerie-teaser/generated/trockener-bachlauf-mit-findlingen-69a782d",
+        "base": "/assets/img/galerie-teaser/generated/34-naturstein-hanggarten-fertig-86bfffc",
         "widths": [
           480,
-          960,
-          1440,
-          1600
+          960
         ],
         "width": 960,
         "height": 720
+      }
+    },
+    {
+      "id": "36-findling-im-vorgarten-cec0760",
+      "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/36-findling-im-vorgarten.webp",
+      "alt": "Großer Findling als Mittelpunkt eines mit Flusssteinen gestalteten Vorgartens",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/36-findling-im-vorgarten-cec0760",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "37-findlinge-im-gartenbeet-17a6f74",
+      "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/37-findlinge-im-gartenbeet.webp",
+      "alt": "Mehrere große Findlinge zwischen Bepflanzung und befestigten Gartenflächen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/37-findlinge-im-gartenbeet-17a6f74",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "01-naturstein-terrassierung-mit-gartenteich-808d10b",
+      "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/01-naturstein-terrassierung-mit-gartenteich.webp",
+      "alt": "Terrassierter Hanggarten mit Natursteinmauern und Gartenteich",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/01-naturstein-terrassierung-mit-gartenteich-808d10b",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "15-steinlandschaft-mit-blueten-5c7d09e",
+      "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/15-steinlandschaft-mit-blueten.webp",
+      "alt": "Steinlandschaft mit Findlingen, Schotter und roten Blüten",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/15-steinlandschaft-mit-blueten-5c7d09e",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "gartengestaltung-gartenanlage-640-c6ac3b5",
+      "bild": "/assets/img/leistungen-mobile/gartengestaltung-gartenanlage-640.webp",
+      "alt": "Individuell gestaltete Gartenanlage mit Rasen, Natursteinen und Bepflanzung",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/gartengestaltung-gartenanlage-640-c6ac3b5",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 480
+      }
+    },
+    {
+      "id": "21-boulder-garten-bluete-56ad815",
+      "bild": "/assets/img/leistungen-mobile/gartengestaltung-gallery/21-boulder-garten-bluete.webp",
+      "alt": "Garten mit großen Natursteinen, geschwungenem Rasen und farbigen Blütengehölzen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/21-boulder-garten-bluete-56ad815",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "22-gartenweg-formgehoelze-4d413f8",
+      "bild": "/assets/img/leistungen-mobile/gartengestaltung-gallery/22-gartenweg-formgehoelze.webp",
+      "alt": "Schmaler Gartenweg zwischen Formgehölzen, Stauden und Natursteinen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/22-gartenweg-formgehoelze-4d413f8",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "23-neuanlage-natursteine-41b31c0",
+      "bild": "/assets/img/leistungen-mobile/gartengestaltung-gallery/23-neuanlage-natursteine.webp",
+      "alt": "Neu angelegtes Gartenbeet mit Natursteinen, Rindenmulch, Stauden und Gartenleuchte",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/23-neuanlage-natursteine-41b31c0",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "24-polsterstauden-felsen-40ef7b8",
+      "bild": "/assets/img/leistungen-mobile/gartengestaltung-gallery/24-polsterstauden-felsen.webp",
+      "alt": "Blühende Polsterstauden zwischen flachen Natursteinen in einem sonnigen Steingarten",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/24-polsterstauden-felsen-40ef7b8",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "06-moderner-kiesgarten-formgehoelze-0616266",
+      "bild": "/assets/img/leistungen-mobile/gartengestaltung-gallery/06-moderner-kiesgarten-formgehoelze.webp",
+      "alt": "Moderner Kiesgarten mit Formgehölzen, Ziergräsern und abstrakter Gartenskulptur",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/06-moderner-kiesgarten-formgehoelze-0616266",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "30-vorgarten-kiesbeet-dcccc08",
+      "bild": "/assets/img/leistungen-mobile/gartengestaltung-gallery/30-vorgarten-kiesbeet.webp",
+      "alt": "Kiesbeet am Hauseingang mit dunklen Natursteinen, Ziergräsern und Formgehölz",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/30-vorgarten-kiesbeet-dcccc08",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "33-mauerbau-hanggarten-a7884a7",
+      "bild": "/assets/img/leistungen-mobile/gartengestaltung-gallery/33-mauerbau-hanggarten.webp",
+      "alt": "Bau einer niedrigen Granitmauer in einem bepflanzten Hanggarten",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/33-mauerbau-hanggarten-a7884a7",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "02-gepflegter-rasengarten-74b25b7",
+      "bild": "/assets/img/leistungen-mobile/gartenpflege-gallery/02-gepflegter-rasengarten.webp",
+      "alt": "Gepflegter Rasengarten mit altem Baum, Formgehölzen und blühender Randbepflanzung",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/02-gepflegter-rasengarten-74b25b7",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "03-rasen-hecke-pflaster-a03f6a9",
+      "bild": "/assets/img/leistungen-mobile/gartenpflege-gallery/03-rasen-hecke-pflaster.webp",
+      "alt": "Sauber gepflegte Rasenfläche mit dichter Laubhecke und gereinigtem Pflasterweg",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/03-rasen-hecke-pflaster-a03f6a9",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "05-rasenbewaesserung-cf61011",
+      "bild": "/assets/img/leistungen-mobile/gartenpflege-gallery/05-rasenbewaesserung.webp",
+      "alt": "Frisch gepflegte Rasenfläche bei der gleichmäßigen Bewässerung mit einem Regner",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/05-rasenbewaesserung-cf61011",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "08-geschnittene-laubhecke-b52bda7",
+      "bild": "/assets/img/leistungen-mobile/gartenpflege-gallery/08-geschnittene-laubhecke.webp",
+      "alt": "Frisch geschnittene Laubhecke an einer gesäuberten gepflasterten Gartenfläche",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/08-geschnittene-laubhecke-b52bda7",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "objekt-gruenflaechenpflege-mitarbeiter-640-68464eb",
+      "bild": "/assets/img/leistungen-mobile/objekt-gruenflaechenpflege-mitarbeiter-640.webp",
+      "alt": "Mitarbeiter bei der professionellen Objekt- und Grünflächenpflege",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/objekt-gruenflaechenpflege-mitarbeiter-640-68464eb",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 480
+      }
+    },
+    {
+      "id": "palmen-winterfest-schnee-640-29266ce",
+      "bild": "/assets/img/leistungen-mobile/palmen-winterfest-schnee-640.webp",
+      "alt": "Winterfeste Palme in einem verschneiten Garten",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/palmen-winterfest-schnee-640-29266ce",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 480
+      }
+    },
+    {
+      "id": "01-palmen-am-gartenteich-ca2523e",
+      "bild": "/assets/img/leistungen-mobile/palmen-winterfest-gallery/01-palmen-am-gartenteich.webp",
+      "alt": "Zwei winterfeste Palmen an einem bepflanzten Gartenteich",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/01-palmen-am-gartenteich-ca2523e",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "09-palmen-auf-der-terrasse-b0b7a13",
+      "bild": "/assets/img/leistungen-mobile/palmen-winterfest-gallery/09-palmen-auf-der-terrasse.webp",
+      "alt": "Mehrere winterfeste Palmen in Pflanzgefäßen auf einer Holzterrasse",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/09-palmen-auf-der-terrasse-b0b7a13",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "11-pflanzpflege-bewaesserung-89ac2c7",
+      "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/11-pflanzpflege-bewaesserung.webp",
+      "alt": "Frisch angelegte Bepflanzung wird mit einer Gießbrause gewässert",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "45% 52%",
+      "fokusMobil": "45% 52%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/11-pflanzpflege-bewaesserung-89ac2c7",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 362
+      }
+    },
+    {
+      "id": "14-azalee-funkie-ziergras-58e5652",
+      "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/14-azalee-funkie-ziergras.webp",
+      "alt": "Rot blühende Azalee mit Funkie und Ziergras zwischen grauen Natursteinen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/14-azalee-funkie-ziergras-58e5652",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "15-polsterstauden-natursteine-d3b0248",
+      "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/15-polsterstauden-natursteine.webp",
+      "alt": "Blühende Polsterstauden in Rosa, Gelb und Violett zwischen großen Natursteinen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/15-polsterstauden-natursteine-d3b0248",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "pflasterarbeiten-baustelle-640-2a2fcd6",
+      "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-baustelle-640.webp",
+      "alt": "Fachgerechte Pflasterarbeiten auf einer Gartenbaustelle",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/pflasterarbeiten-baustelle-640-2a2fcd6",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 480
+      }
+    },
+    {
+      "id": "38-mischpflaster-eingangsbereich-pflanzkuebel-960-4f9b12b",
+      "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/38-mischpflaster-eingangsbereich-pflanzkuebel-960.webp",
+      "alt": "Einladender Eingangsbereich mit rot-grauem Mischpflaster, Pflanzkübeln und Sitzbank",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/38-mischpflaster-eingangsbereich-pflanzkuebel-960-4f9b12b",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "39-sandsteinplatten-terrasse-natursteinmauer-960-965ee4b",
+      "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/39-sandsteinplatten-terrasse-natursteinmauer-960.webp",
+      "alt": "Sonnige Terrasse aus warm getönten Platten mit Natursteinmauer und Blütenbepflanzung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/39-sandsteinplatten-terrasse-natursteinmauer-960-965ee4b",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "40-grossformatplatten-terrasse-entwaesserungsrinne-960-df731c4",
+      "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/40-grossformatplatten-terrasse-entwaesserungsrinne-960.webp",
+      "alt": "Moderne Terrasse mit großformatigen grauen Platten und integrierter Entwässerungsrinne",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/40-grossformatplatten-terrasse-entwaesserungsrinne-960-df731c4",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "41-holzoptik-platten-terrasse-draufsicht-960-9892d6d",
+      "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/41-holzoptik-platten-terrasse-draufsicht-960.webp",
+      "alt": "Terrasse mit länglichen Platten in Holzoptik, Sitzmöbeln und angrenzendem Steingarten",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/41-holzoptik-platten-terrasse-draufsicht-960-9892d6d",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "42-graupflaster-weg-kiesbeet-960-cd82cb1",
+      "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/42-graupflaster-weg-kiesbeet-960.webp",
+      "alt": "Gepflasterter Gartenweg in Grau neben einem hellen Kiesbeet mit Rhododendron und Leuchten",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/42-graupflaster-weg-kiesbeet-960-cd82cb1",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "43-graupflaster-einfahrt-garten-960-37e72ee",
+      "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/43-graupflaster-einfahrt-garten-960.webp",
+      "alt": "Neu gepflasterte graue Einfahrt zwischen gepflegten Gartenbeeten und Garage",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/43-graupflaster-einfahrt-garten-960-37e72ee",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "02-vorgarten-natursteinpflaster-granit-960-707d721",
+      "bild": "/assets/img/leistungen-mobile/pflasterarbeiten-gallery/02-vorgarten-natursteinpflaster-granit-960.webp",
+      "alt": "Natursteinpflaster vor einem Wohnhaus mit Granitpalisaden und bepflanzten Beeten",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/02-vorgarten-natursteinpflaster-granit-960-707d721",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "pool-whirlpool-garten-640-1701f90",
+      "bild": "/assets/img/leistungen-mobile/pool-whirlpool-garten-640.webp",
+      "alt": "Gestalteter Garten mit Pool- und Whirlpoolumfeld",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/pool-whirlpool-garten-640-1701f90",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 480
+      }
+    },
+    {
+      "id": "01-pool-garten-schwarze-umrandung-gesamtansicht-e17b168",
+      "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/01-pool-garten-schwarze-umrandung-gesamtansicht.webp",
+      "alt": "Fertig gestalteter Pool mit schwarzer Umrandung, Natursteinen und üppiger Gartenbepflanzung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/01-pool-garten-schwarze-umrandung-gesamtansicht-e17b168",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "03-pool-garten-abendstimmung-palmen-eeea682",
+      "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/03-pool-garten-abendstimmung-palmen.webp",
+      "alt": "Pool mit Palmen und Gartenbeleuchtung in stimmungsvoller Abendsonne",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/03-pool-garten-abendstimmung-palmen-eeea682",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "06-beleuchteter-pool-bei-nacht-2e3fa0b",
+      "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/06-beleuchteter-pool-bei-nacht.webp",
+      "alt": "Blau beleuchteter Pool mit Palmen und akzentuierter Gartenbeleuchtung bei Nacht",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/06-beleuchteter-pool-bei-nacht-2e3fa0b",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "08-whirlpool-im-natursteingarten-0bb5995",
+      "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/08-whirlpool-im-natursteingarten.webp",
+      "alt": "Whirlpool zwischen Natursteinen, Formgehölzen und mediterraner Bepflanzung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/08-whirlpool-im-natursteingarten-0bb5995",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "10-pool-gartenbau-azaleen-gesamtansicht-d7262d1",
+      "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/10-pool-gartenbau-azaleen-gesamtansicht.webp",
+      "alt": "Poolanlage mit Natursteinen, Formgehölzen und rot blühenden Azaleen während der Fertigstellung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/10-pool-gartenbau-azaleen-gesamtansicht-d7262d1",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "18-poolumfeld-rollrasen-verlegung-0655ff1",
+      "bild": "/assets/img/leistungen-mobile/pool-whirlpool-umfeld-gallery/18-poolumfeld-rollrasen-verlegung.webp",
+      "alt": "Fachgerechte Verlegung von Rollrasen und Gestaltung der Pflanzflächen neben einem Pool",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/18-poolumfeld-rollrasen-verlegung-0655ff1",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "rohdichs-grubengold-640-20dfa4f",
+      "bild": "/assets/img/leistungen-mobile/rohdichs-grubengold-640.webp",
+      "alt": "Rohdichs Grubengold für Pflanz- und Gartenarbeiten",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/rohdichs-grubengold-640-20dfa4f",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 480
+      }
+    },
+    {
+      "id": "05-rollrasen-an-geschwungener-kante-4daf1ee",
+      "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/05-rollrasen-an-geschwungener-kante.webp",
+      "alt": "Verlegung von Rollrasen entlang einer geschwungenen Natursteinkante",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/05-rollrasen-an-geschwungener-kante-4daf1ee",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "02-rollrasen-verlegung-im-innenhof-712b525",
+      "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/02-rollrasen-verlegung-im-innenhof.webp",
+      "alt": "Fachgerechte Verlegung von Rollrasen in einem modernen Innenhof",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/02-rollrasen-verlegung-im-innenhof-712b525",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "06-rollrasenrollen-auf-paletten-8cc1c8e",
+      "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/06-rollrasenrollen-auf-paletten.webp",
+      "alt": "Frische Rollrasenrollen gestapelt auf Paletten für die Verlegung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/06-rollrasenrollen-auf-paletten-8cc1c8e",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "10-rollrasenbahnen-an-der-terrasse-62421ac",
+      "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/10-rollrasenbahnen-an-der-terrasse.webp",
+      "alt": "Mitarbeiter verlegt Rollrasenbahnen neben einer gepflasterten Terrasse",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/10-rollrasenbahnen-an-der-terrasse-62421ac",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "31-rollrasen-grashalme-mit-tau-1c66f3b",
+      "bild": "/assets/img/leistungen-mobile/rollrasen-gallery/31-rollrasen-grashalme-mit-tau.webp",
+      "alt": "Nahaufnahme dichter Rollrasenhalme mit feinen Tautropfen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/31-rollrasen-grashalme-mit-tau-1c66f3b",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "01-fruehlingsschale-terracotta-941a573",
+      "bild": "/assets/img/leistungen-mobile/saisonbepflanzung-gallery/01-fruehlingsschale-terracotta.webp",
+      "alt": "Nahaufnahme einer farbenfrohen Frühlingsschale mit Hornveilchen, Vergissmeinnicht und kleiner Gartenfigur",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 54%",
+      "fokusMobil": "50% 54%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/01-fruehlingsschale-terracotta-941a573",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "05-dichte-kirschlorbeerhecke-am-gartenweg-a818074",
+      "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/05-dichte-kirschlorbeerhecke-am-gartenweg.webp",
+      "alt": "Dichte Kirschlorbeerhecke als Sichtschutz an einem modernen Gartenweg",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/05-dichte-kirschlorbeerhecke-am-gartenweg-a818074",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "07-tropischer-gartenteich-bluehende-uferzone-11564ca",
+      "bild": "/assets/img/leistungen-mobile/teichbau-gallery/07-tropischer-gartenteich-bluehende-uferzone.webp",
+      "alt": "Blühende Uferzone an einem Gartenteich mit Wassereinlauf",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/07-tropischer-gartenteich-bluehende-uferzone-11564ca",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "09-teichanlage-hanggarten-naturstein-e465eaa",
+      "bild": "/assets/img/leistungen-mobile/teichbau-gallery/09-teichanlage-hanggarten-naturstein.webp",
+      "alt": "Teichanlage in einem terrassierten Hanggarten mit Natursteinmauern",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/09-teichanlage-hanggarten-naturstein-e465eaa",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "22-naturteich-seerosen-blueten-4d2709f",
+      "bild": "/assets/img/leistungen-mobile/teichbau-gallery/22-naturteich-seerosen-blueten.webp",
+      "alt": "Naturteich mit blühenden Seerosen, üppiger Uferbepflanzung und Natursteinen",
+      "imTeaser": true,
+      "leitbildGeeignet": true,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/22-naturteich-seerosen-blueten-4d2709f",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "20-naturteich-kois-gesamtansicht-fd80c11",
+      "bild": "/assets/img/leistungen-mobile/teichbau-gallery/20-naturteich-kois-gesamtansicht.webp",
+      "alt": "Natürlich eingefasster Koiteich mit umlaufender Bepflanzung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/20-naturteich-kois-gesamtansicht-fd80c11",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "23-koi-fischteich-detail-df91f8f",
+      "bild": "/assets/img/leistungen-mobile/teichbau-gallery/23-koi-fischteich-detail.webp",
+      "alt": "Nahaufnahme farbenprächtiger Kois in klarem Teichwasser",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/23-koi-fischteich-detail-df91f8f",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "21-naturteich-wasserspiel-detail-05e2677",
+      "bild": "/assets/img/leistungen-mobile/teichbau-gallery/21-naturteich-wasserspiel-detail.webp",
+      "alt": "Wasserspiel in einem natürlich gestalteten Gartenteich",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/21-naturteich-wasserspiel-detail-05e2677",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "01-holzoptik-terrasse-mit-garten-4db2982",
+      "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/01-holzoptik-terrasse-mit-garten.webp",
+      "alt": "Fertiggestellte Terrasse in Holzoptik neben einem bepflanzten Kiesgarten",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/01-holzoptik-terrasse-mit-garten-4db2982",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "02-holzoptik-terrasse-gartenansicht-751161c",
+      "bild": "/assets/img/leistungen-mobile/terrassenbau-gallery/02-holzoptik-terrasse-gartenansicht.webp",
+      "alt": "Holzoptik-Terrasse mit Blick über die angrenzende Gartenbepflanzung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/02-holzoptik-terrasse-gartenansicht-751161c",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "04-japanischer-ahorn-staudengarten-59508dd",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/04-japanischer-ahorn-staudengarten.webp",
+      "alt": "Fächerahorn, Ziergräser und farbige Blattschmuckstauden in weißem Zierkies",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/04-japanischer-ahorn-staudengarten-59508dd",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "05-olivenbaum-metallbaum-vorgarten-5b0c9fa",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/05-olivenbaum-metallbaum-vorgarten.webp",
+      "alt": "Mediterran gestalteter Kiesvorgarten mit altem Olivenbaum, Metallbaum und Natursteinen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/05-olivenbaum-metallbaum-vorgarten-5b0c9fa",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "08-farbenreicher-vorgarten-formgehoelz-cf624c0",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/08-farbenreicher-vorgarten-formgehoelz.webp",
+      "alt": "Farbenreicher Vorgarten mit Formgehölz, Stauden und geschwungenem Natursteinpflaster",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/08-farbenreicher-vorgarten-formgehoelz-cf624c0",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "14-moderner-hauseingang-rindenmulch-cfab6a3",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/14-moderner-hauseingang-rindenmulch.webp",
+      "alt": "Moderner Hauseingang mit Granitstufen, Formgehölzen, Natursteinen und Rindenmulch",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/14-moderner-hauseingang-rindenmulch-cfab6a3",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "15-gepflasterter-hauseingang-cortenstahl-66738e3",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/15-gepflasterter-hauseingang-cortenstahl.webp",
+      "alt": "Gepflasterter Weg zum Hauseingang mit Staudenbeet, Rasen und Cortenstahl-Pflanzkübel",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/15-gepflasterter-hauseingang-cortenstahl-66738e3",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "21-vorgarten-findling-rasen-hecke-f9319bf",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/21-vorgarten-findling-rasen-hecke.webp",
+      "alt": "Vorgarten mit Findling, Rasenfläche, Heckenpflanzung und gemischtem Natursteinpflaster",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/21-vorgarten-findling-rasen-hecke-f9319bf",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "22-kiesbeet-formgehoelz-natursteine-4fd3265",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/22-kiesbeet-formgehoelz-natursteine.webp",
+      "alt": "Langes Kiesbeet mit Formgehölz, Natursteinen und blühenden Bodendeckern",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/22-kiesbeet-formgehoelz-natursteine-4fd3265",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "23-kleines-kiesbeet-naturstein-03f91ba",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/23-kleines-kiesbeet-naturstein.webp",
+      "alt": "Kleines Kiesbeet am Hauseingang mit Natursteinmauer und blühenden Stauden",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/23-kleines-kiesbeet-naturstein-03f91ba",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "24-rindenmulchbeet-hortensie-formgehoelz-7d1e6ab",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/24-rindenmulchbeet-hortensie-formgehoelz.webp",
+      "alt": "Frisch gestaltetes Rindenmulchbeet mit Hortensie, Formgehölz und immergrünen Pflanzen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/24-rindenmulchbeet-hortensie-formgehoelz-7d1e6ab",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "25-bluehendes-beet-faecherahorn-27a5a47",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/25-bluehendes-beet-faecherahorn.webp",
+      "alt": "Gepflegtes Beet am Hauseingang mit Fächerahorn, Azaleen und Rindenmulch",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/25-bluehendes-beet-faecherahorn-27a5a47",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "26-rindenmulchbeet-graeser-findling-edd0620",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/26-rindenmulchbeet-graeser-findling.webp",
+      "alt": "Rindenmulchbeet mit Ziergräsern, Hortensien, Stauden und einem großen Findling",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/26-rindenmulchbeet-graeser-findling-edd0620",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "27-hangvorgarten-naturstein-rindenmulch-87057c4",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/27-hangvorgarten-naturstein-rindenmulch.webp",
+      "alt": "Terrassierter Hangvorgarten mit Natursteinen, Rindenmulch und gemischter Bepflanzung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/27-hangvorgarten-naturstein-rindenmulch-87057c4",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "28-fruehlingsbeet-formgehoelz-97e0d73",
+      "bild": "/assets/img/leistungen-mobile/vorgarten-gallery/28-fruehlingsbeet-formgehoelz.webp",
+      "alt": "Farbenfrohes Frühlingsbeet mit Formgehölz, Natursteinen und blühenden Bodendeckern",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/28-fruehlingsbeet-formgehoelz-97e0d73",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "10-alter-olivenbaum-garten-d579c34",
+      "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/10-alter-olivenbaum-garten.webp",
+      "alt": "Alter Olivenbaum als Solitär in einem Kiesbeet mit Lavendel und Natursteinen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/10-alter-olivenbaum-garten-d579c34",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "15-formgehoelz-im-kuebel-eb2fb1b",
+      "bild": "/assets/img/leistungen-mobile/bonsai-formgehoelze-gallery/15-formgehoelz-im-kuebel.webp",
+      "alt": "Kompaktes mehrstämmiges Formgehölz im Pflanzkübel",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/15-formgehoelz-im-kuebel-eb2fb1b",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "02-sedum-natursteine-nahaufnahme-1172397",
+      "bild": "/assets/img/leistungen-mobile/dachbegruenung-gallery/02-sedum-natursteine-nahaufnahme.webp",
+      "alt": "Nahaufnahme einer Dachbegrünung mit Sedum, Hauswurz, Gräsern und Naturstein",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/02-sedum-natursteine-nahaufnahme-1172397",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "32-natursteineinfassung-im-bau-9a15182",
+      "bild": "/assets/img/leistungen-mobile/findlinge-natursteineinfassungen-gallery/32-natursteineinfassung-im-bau.webp",
+      "alt": "Geschwungene Natursteineinfassung während der Ausführung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/32-natursteineinfassung-im-bau-9a15182",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "kaminholz-640-77d0575",
+      "bild": "/assets/img/leistungen-mobile/kaminholz-640.webp",
+      "alt": "Gesägtes und gespaltenes Kaminholz",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/kaminholz-640-77d0575",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 528
+      }
+    },
+    {
+      "id": "10-blattschmuckpflanzen-e7413c5",
+      "bild": "/assets/img/leistungen-mobile/pflanzarbeiten-gallery/10-blattschmuckpflanzen.webp",
+      "alt": "Blattschmuckstauden und Gräser rund um eine rostfarbene Gartenskulptur",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 55%",
+      "fokusMobil": "50% 55%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/10-blattschmuckpflanzen-e7413c5",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 600
+      }
+    },
+    {
+      "id": "baumfaellung-absicherung-44c387e",
+      "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-absicherung.webp",
+      "alt": "Abgesicherter Arbeitsbereich bei einer Baumfällung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/baumfaellung-absicherung-44c387e",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "baumfaellung-signatur-stubben-bf689ee",
+      "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-signatur-stubben.webp",
+      "alt": "Signierter Stammquerschnitt nach einer Baumfällung",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/baumfaellung-signatur-stubben-bf689ee",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "09-bluehende-sichtschutzbepflanzung-mit-palmengarten-f32282b",
+      "bild": "/assets/img/leistungen-mobile/sichtschutzbepflanzung-gallery/09-bluehende-sichtschutzbepflanzung-mit-palmengarten.webp",
+      "alt": "Farbenreiche Sichtschutzbepflanzung mit Palme und blühenden Gehölzen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/09-bluehende-sichtschutzbepflanzung-mit-palmengarten-f32282b",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "02-fruehlingskuebel-viola-narzissen-723440f",
+      "bild": "/assets/img/leistungen-mobile/saisonbepflanzung-gallery/02-fruehlingskuebel-viola-narzissen.webp",
+      "alt": "Großer Terrakottakübel mit Narzissen, Hornveilchen, Primeln und Gänseblümchen",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 54%",
+      "fokusMobil": "50% 54%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/02-fruehlingskuebel-viola-narzissen-723440f",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 640
+      }
+    },
+    {
+      "id": "16-grosse-palme-im-pflanzgefaess-b18d5eb",
+      "bild": "/assets/img/leistungen-mobile/palmen-winterfest-gallery/16-grosse-palme-im-pflanzgefaess.webp",
+      "alt": "Große winterfeste Palme in einem Pflanzgefäß in der Baumschule",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/16-grosse-palme-im-pflanzgefaess-b18d5eb",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "09-firmenbagger-im-einsatz-c5f79ba",
+      "bild": "/assets/img/leistungen-mobile/erd-baggerarbeiten-gallery/09-firmenbagger-im-einsatz.webp",
+      "alt": "Firmenbeschrifteter Minibagger bei Erdarbeiten auf einer Baustelle",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/09-firmenbagger-im-einsatz-c5f79ba",
+        "widths": [
+          480,
+          960
+        ],
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "id": "07-herbstbepflanzung-balkon-54ad1f6",
+      "bild": "/assets/img/leistungen-mobile/balkonkastenbepflanzung-gallery/07-herbstbepflanzung-balkon.webp",
+      "alt": "Durchgehend bepflanzter Balkonkasten mit Heide, Alpenveilchen, Gräsern und silbrigem Blattwerk auf einem Balkon",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "52% 52%",
+      "fokusMobil": "52% 52%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/07-herbstbepflanzung-balkon-54ad1f6",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 362
+      }
+    },
+    {
+      "id": "baumfaellung-seilkletterer-dach-550ffc7",
+      "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-seilkletterer-dach.webp",
+      "alt": "Kontrollierte Baumfällung mit Seilklettertechnik nahe eines Gebäudes",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/baumfaellung-seilkletterer-dach-550ffc7",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
+      }
+    },
+    {
+      "id": "baumpflege-skt-1e7e7be",
+      "bild": "/assets/img/leistungen-mobile/baumpflege/baumpflege-skt.webp",
+      "alt": "Baumpflege mit Seilklettertechnik",
+      "imTeaser": false,
+      "leitbildGeeignet": false,
+      "fokusDesktop": "50% 50%",
+      "fokusMobil": "50% 50%",
+      "variants": {
+        "base": "/assets/img/galerie-teaser/generated/baumpflege-skt-1e7e7be",
+        "widths": [
+          480
+        ],
+        "width": 480,
+        "height": 360
       }
     }
   ]

@@ -161,6 +161,13 @@
      unten. Hier bleibt nichts zu tun. */
 }
 
+/* Der mobile Ruecklink sitzt wie auf „Ueber uns“ und den Leistungsseiten
+   14px unterhalb des festen Headers. Der groessere Abschnittsabstand bleibt
+   ab 481px unveraendert. */
+@media (max-width: 480px) {
+  .projects-overview { padding-top: 14px; }
+}
+
 /* AP-388: Seitengrund wie auf der Startseite. Begruendung und Herkunft des
    Tons stehen im gleichnamigen Block in kontakt.css.
    .section-projects ist die einzige Sektion dieser Seite (styles.css:1065) und
