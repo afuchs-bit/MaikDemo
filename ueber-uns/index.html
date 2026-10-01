@@ -40,7 +40,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20260923d" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20260930b" />
 <link rel="stylesheet" href="../assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20260930d" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20261001v" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -485,6 +485,23 @@ html, body { background-color: #171916; }
          Zitat (.ueber-inhaber__bluete-mobil, unter 861px) und die am senkrechten
          Steg (ab 861px) bleiben - sie stehen im Vordergrund, nicht im Hintergrund. -->
     <div class="container ueber-inhaber__raster ueber-q">
+      <!-- AP-532: Am Rechner steht das Startfoto links neben "Das Team", auf Ansage des
+           Auftraggebers (01.10.2026). Foto und Text liegen in zwei Sektionen; nebeneinander
+           geht das nur im selben Raster. Deshalb steht hier ein zweites Exemplar der Figur
+           aus .ueber-hero - nur ab 901px sichtbar, bis 900px display: none (auch fuer
+           Screenreader weg). Das erste Exemplar ist ab 901px aus. Beide Exemplare gleich
+           halten (Bild, alt, Bluete). Beide waehlen dieselbe Datei, sie wird einmal geladen. -->
+      <figure class="ueber-hero__foto ueber-inhaber__foto">
+        <picture>
+          <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 900px) min(calc(100vw - 64px), 760px), 440px">
+          <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 900px) min(calc(100vw - 64px), 760px), 440px">
+          <img class="ueber-hero__bild" src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
+               alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
+               loading="eager" fetchpriority="high" decoding="async">
+        </picture>
+        <img class="ueber-hero__bluete" src="../assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png"
+             alt="" width="359" height="295" aria-hidden="true" decoding="async">
+      </figure>
       <div>
         <h2 class="ueber-inhaber__gross"><span>Das Team</span> hinter dem Betrieb.</h2>
         <p class="ueber-inhaber__text">Auf der Baustelle treffen Sie unser Team an – Leute vom
@@ -802,8 +819,8 @@ html, body { background-color: #171916; }
     <div class="container">
       <div class="ueber-projekte__kopf reveal">
         <div>
-          <h2 class="type-section-title ueber-abschnitt-titel" id="projekte-title">Was daraus wird</h2>
-          <p class="lead">Drei Beispiele aus der Umgebung.</p>
+          <h2 class="type-section-title ueber-abschnitt-titel" id="projekte-title">Was wir umgesetzt haben</h2>
+          <p class="lead">Drei Projekte aus Herne und Umgebung</p>
         </div>
       </div>
       <div class="ueber-projekte__spur projects-grid reveal">
