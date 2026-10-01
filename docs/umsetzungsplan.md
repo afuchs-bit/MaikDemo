@@ -2191,3 +2191,22 @@ Auf Ansage des Auftraggebers steht das Standortzeichen aus dem Adressblock (Pin 
 „Standort in Google Maps anzeigen“. Gleiche Größe wie im Adressblock (54px), ohne Einzug,
 4px Abstand zum Titel. Gemessen bei 360–1440px: mittig (±0px), Platzhalter passt, kein
 Überlauf.
+
+**AP-531 — Galerie: drei Fotos je Reihe, Handy-Knopf am Desktop, ohne „Privatkunde“ (01.10.2026).**
+Auf Ansage des Auftraggebers:
+- Bildergalerie ab 901px mit 3 statt 4 Spalten (die 901–1050-Stufe entfällt). Die letzte
+  Reihe bleibt mittig.
+- „Passendes Projekt gesehen? Jetzt anfragen“ trägt auf allen Breiten die Handy-Gestalt.
+  Ab 481px steht eine maschinell erfasste, auf `:where(.gallery-cta)` begrenzte Kopie der
+  480er-Regeln aus `cta-family.css` in `projekte.css` (29 Regeln, 5 Keyframes, Technik
+  wie AP-512). Die alte lindgrüne Pille (AP-401/408) ist entfallen. Breite 26rem, mittig,
+  wie der Galerie-Knopf der Startseite. Berechnete Stile bei 768/1280/1440px gegen 402px:
+  Abweichungen nur bei Breite, Rand und der vw-abhängigen Schriftgröße (16 statt 15,7px).
+- Das Etikett „Privatkunde“ entfällt auf den Karten unter „Projekte mit Details“
+  (`buildCard`-Option `ohnePrivatEtikett` aus `galerie.js`, dazu `renderGalleryList` für
+  die statische Liste). „Gewerbekunde“ bliebe sichtbar.
+- Nebenbei: `templates/projekt.html` trug noch `footer-kontakt.css?v=20260930a`. Jeder
+  Index-Build drehte die Projektseiten damit auf den alten Stand zurück; jetzt `…b` wie auf
+  den Seiten.
+- Handy (360/402/480px) pixelgleich in der Bildansicht. Die Projektansicht unterscheidet
+  sich auf allen Breiten nur durch das entfallene Etikett.

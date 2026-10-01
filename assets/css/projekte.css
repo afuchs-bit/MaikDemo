@@ -181,73 +181,272 @@ body,
   background: #1B1E19;
 }
 
-/* AP-401: Der Galerie-CTA traegt seit diesem Arbeitspaket die Knopf-Familie der
-   Startseite (assets/css/cta-family.css). Die greift ausschliesslich bis 480px -
-   darueber bleibt der Knopf die btn-primary-Pille, die er vorher war.
+/* AP-531: Der Galerie-CTA traegt auf allen Breiten die Handy-Gestalt - auf Ansage
+   des Auftraggebers (01.10.2026) "1:1 wie auf dem Handy". Bis hierher galt die
+   Knopf-Familie (cta-family.css) nur bis 480px; darueber blieb seit AP-401/408
+   eine lindgruene btn-primary-Pille mit Inline-Chevron. Diese Regeln sind entfallen.
 
-   Dafuer muessen drei Bausteine oberhalb der Handybreite verschwinden. Auf der
-   Startseite erledigen das die Praefix-Klassen aus mobile-social-proof.css
-   (dort Zeile 22 und 26). Diese Datei gehoert zur Startseiten-Sektion und waere
-   hier reiner Ballast, also stehen die drei Zeilen lokal - nur fuer diesen einen
-   Knopf, ueber seine id. */
+   Das Label steht in der Familie auf white-space: nowrap - gerechnet fuer
+   "GARTENWUNSCH BESPRECHEN", 23 Zeichen. "PASSENDES PROJEKT GESEHEN? JETZT
+   ANFRAGEN" sind 40 Zeichen und laufen mit nowrap unter die Pfeilkapsel. Also nur
+   fuer diesen Knopf: umbrechen erlaubt, zwei Zeilen zu je 1.16 passen in 64px.
+   Seit AP-531 auf allen Breiten (AP-401 hatte die Regel im 480er-Block). */
+#galleryCta .maik-cta__label {
+  white-space: normal;
+  text-wrap: balance;
+}
+
+/* AP-531: Kopie der Handy-Regeln aus cta-family.css ab 481px, begrenzt auf den
+   Galerie-Knopf. Maschinell erfasst: alle Regeln im 480er-Block von
+   cta-family.css, deren Selektor ein Element in .gallery-cta trifft (bei 402px,
+   Zustandsklassen is-* und :hover/:active/:focus mitgezaehlt), dazu die
+   verwendeten @keyframes (sie stehen dort ebenfalls nur bis 480px). Die
+   350px-Stufe entfaellt. Das Praefix :where(.gallery-cta) haelt die Spezifitaet
+   gleich - Reihenfolge und Gewinner sind wie am Handy, nachgeprueft ueber die
+   berechneten Stile des Knopfs bei 402px gegen 768/1280/1440px.
+   Pflege: Wer den 480er-Block von cta-family.css aendert, erfasst diese Kopie
+   neu. AP-511 soll die Knopf-Familie fuer alle Seiten zusammenfuehren und loest
+   die Kopie dann auf - so wie die in leistung-mobile.css (AP-512). */
 @media (min-width: 481px) {
-  #galleryCta .maik-cta__frame,
-  #galleryCta .maik-cta__shape,
-  #galleryCta .maik-cta__arrow-image {
+  :where(.gallery-cta) .maik-cta {
+    position: relative;
+    isolation: isolate;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0px;
+    width: 100%;
+    min-height: 64px;
+    height: 64px;
+    padding: 7px 10px 7px 0px;
+    border: 0px;
+    border-radius: 14px;
+    background: transparent;
+    box-shadow: none;
+    color: rgb(23, 25, 22);
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: clamp(0.9rem, 4.25vw, 1.0625rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: 0.025em;
+    text-align: left;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  :where(.gallery-cta) .maik-cta::before,
+  :where(.gallery-cta) .maik-cta::after {
+    content: none;
+  }
+
+  :where(.gallery-cta) .maik-cta .maik-cta__label {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 0px;
+    min-width: 0px;
+    padding-right: 0px;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: 0.018em;
+    text-transform: uppercase;
+    overflow-wrap: normal;
+    hyphens: none;
+    text-align: center;
+    text-wrap: nowrap;
+    white-space-collapse: collapse;
+    transition: transform .12s var(--ease);
+  }
+
+  :where(.gallery-cta) .maik-cta:not(.maik-cta--compact) .maik-cta__label {
+    font-size: clamp(0.82rem, 3.9vw, 1rem);
+  }
+
+  :where(.gallery-cta) .maik-cta--long {
+    width: calc(-40px + 100vw);
+    max-width: none;
+    margin-left: calc(0.5 * (100% + 40px - 100vw));
+  }
+
+  :where(.gallery-cta) .maik-cta__shape,
+  :where(.gallery-cta) .maik-cta__frame,
+  :where(.gallery-cta) .maik-cta__halo {
+    position: absolute;
+    inset: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  :where(.gallery-cta) .maik-cta__shape {
+    z-index: -1;
+    overflow: visible;
+    fill: var(--home-lime);
+    stroke: none;
+    filter: none;
+    transition: transform .12s var(--ease), fill .18s ease;
+  }
+
+  :where(.gallery-cta) .maik-cta__frame {
+    z-index: -3;
+    overflow: visible;
+    fill: none;
+    stroke: var(--home-lime);
+    stroke-width: 1.5px;
+    transform: translate(6px, 6px);
+  }
+
+  :where(.gallery-cta) .maik-cta__arrow {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 40px;
+    margin: 0px 12px 0px auto;
+    border-radius: 999px;
+    background: rgb(23, 25, 22);
+    box-shadow: rgba(151, 206, 32, 0.16) 0px 0px 0px 1px inset;
+    transition: transform .12s var(--ease), box-shadow .18s var(--ease);
+  }
+
+  :where(.gallery-cta) .maik-cta__arrow > svg {
     display: none;
   }
 
-  /* AP-408: Oberhalb der Handybreite faellt die ganze maik-cta-Gestaltung weg -
-     cta-family.css steht bis auf Druck- und Fokuszustaende komplett in
-     max-width: 480px - und uebrig bleibt .btn-primary in --green-700. Derselbe
-     Knopf war damit unter 481px hell (#8CC63F, die SVG-Flaeche mit --home-lime)
-     und darueber dunkeloliv (#4A7A10). Oberhalb passte er dadurch nicht mehr zu
-     den gruenen Texten der Kacheln, die durchgaengig --green-500 tragen -
-     denselben Hexwert wie --home-lime.
-     Die id gewinnt ohne !important gegen .btn-primary.
-     Die weisse Schrift von .btn-primary muss mit: Weiss auf #8CC63F traegt nur
-     1,8:1. #171916 ist dieselbe Textfarbe, die der Knopf unter 481px schon hat
-     (cta-family.css:46), und kommt auf 9,7:1. Der Pfeil folgt von selbst, sein
-     SVG zeichnet mit stroke: currentColor. */
-  #galleryCta {
-    background: var(--home-lime);
-    color: #171916;
-    box-shadow: 0 12px 26px -12px rgba(140, 198, 63, .45),
-                inset 0 1px 0 rgba(255, 255, 255, .18);
+  :where(.gallery-cta) .maik-cta__arrow-image {
+    position: relative;
+    left: 0px;
+    display: block;
+    width: 46px;
+    height: auto;
+    object-fit: contain;
+    transition: left 0.18s, transform 0.28s cubic-bezier(0.22, 0.7, 0.25, 1);
+    will-change: transform;
   }
 
-  /* Der Inline-Chevron ersetzt oberhalb 480px den Pfeil, der bis AP-401 als
-     Textzeichen "→" im Markup stand. Ohne Masse waere das SVG 300x150px gross;
-     1.1em entspricht dem alten Zeichen und folgt mobile-social-proof.css:9. */
-  #galleryCta .maik-cta__arrow {
-    display: inline-flex;
-    flex: 0 0 auto;
-    margin-left: .5em;
-  }
-
-  #galleryCta .maik-cta__arrow > svg {
-    width: 1.1em;
-    height: 1.1em;
+  :where(.gallery-cta) .maik-cta__halo {
+    z-index: -2;
+    overflow: visible;
     fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
+    stroke: var(--home-lime);
     stroke-linejoin: round;
+    opacity: 0;
+    transform: translate3d(0px, 0px, 0px) scale(0.985, 0.922);
+    transform-origin: center center;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
   }
+
+  :where(.gallery-cta) .maik-cta__halo-line--wide {
+    stroke-width: 12px;
+    opacity: 0.12;
+  }
+
+  :where(.gallery-cta) .maik-cta__halo-line--medium {
+    stroke-width: 7px;
+    opacity: 0.24;
+  }
+
+  :where(.gallery-cta) .maik-cta__halo-line--core {
+    stroke-width: 3px;
+    opacity: 0.48;
+  }
+
+  :where(.gallery-cta) .maik-cta--attention.is-pulsing {
+    animation: 1.1s ease-in-out 0.35s 1 normal none running maik-cta-arrival-breath, 1.9s linear 2.5s infinite normal none running maik-cta-rhythm-breath;
+    transform-origin: center center;
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  :where(.gallery-cta) .maik-cta--attention.is-pulsing .maik-cta__halo {
+    animation: 1.2s ease-out 0.35s 1 normal none running maik-cta-arrival-halo, 1.9s linear 2.5s infinite normal none running maik-cta-rhythm-halo;
+  }
+
+  :where(.gallery-cta) :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing .maik-cta__arrow-image {
+    animation: 1.9s cubic-bezier(0.22, 0.7, 0.25, 1) 2.5s infinite normal none running maik-cta-arrow-rhythm;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    :where(.gallery-cta) .maik-cta:hover :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
+      transform: translate(2px, 2px);
+    }
+    :where(.gallery-cta) .maik-cta:hover .maik-cta__arrow {
+      box-shadow: rgba(151, 206, 32, 0.34) 0px 0px 0px 1px inset, rgba(23, 25, 22, 0.08) 0px 0px 0px 2px;
+    }
+    :where(.gallery-cta) .maik-cta--attention.is-pulsing:hover,
+    :where(.gallery-cta) .maik-cta--attention.is-pulsing:hover .maik-cta__halo,
+    :where(.gallery-cta) :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing:hover .maik-cta__arrow-image {
+      animation-play-state: paused;
+    }
+    :where(.gallery-cta) .maik-cta:hover .maik-cta__arrow-image {
+      left: 1.5px;
+    }
+  }
+
+  :where(.gallery-cta) .maik-cta.is-pressed :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
+    transform: translate(6px, 6px);
+  }
+
+  :where(.gallery-cta) .maik-cta--attention.is-pulsing.is-pressed {
+    animation: auto ease 0s 1 normal none running none;
+    transform: none;
+  }
+
+  :where(.gallery-cta) .maik-cta.is-pulsing.is-pressed .maik-cta__halo {
+    animation: auto ease 0s 1 normal none running none;
+    opacity: 0;
+  }
+
+  :where(.gallery-cta) .maik-cta.is-pulsing.is-pressed .maik-cta__arrow-image {
+    animation: auto ease 0s 1 normal none running none;
+    transform: translateX(1px);
+  }
+
+  :where(.gallery-cta) .maik-cta:focus-visible {
+    outline: 2px solid var(--home-focus, var(--home-lime));
+    outline-offset: 9px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(.gallery-cta) .maik-cta,
+    :where(.gallery-cta) .maik-cta__halo,
+    :where(.gallery-cta) .maik-cta__arrow-image {
+      animation: auto ease 0s 1 normal none running none !important;
+    }
+    :where(.gallery-cta) .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__arrow-image) {
+      transition: none;
+    }
+  }
+
+  @keyframes maik-cta-arrow-rhythm { 0%, 19%, 100% { transform: translateX(0px); } 7% { transform: translateX(2px); } 12% { transform: translateX(-0.35px); } 16% { transform: translateX(0.55px); } }
+
+  @keyframes maik-cta-arrival-breath { 0%, 100% { transform: translate3d(0px, 0px, 0px) scale(1); } 46% { transform: translate3d(0px, 0px, 0px) scale(1.018); } }
+
+  @keyframes maik-cta-arrival-halo { 0% { opacity: 0; transform: translate3d(0px, 0px, 0px) scale(0.985, 0.922); } 32% { opacity: 0.72; transform: translate3d(0px, 0px, 0px) scale(1.012, 1.063); } 100% { opacity: 0; transform: translate3d(0px, 0px, 0px) scale(1.07, 1.367); } }
+
+  @keyframes maik-cta-rhythm-breath { 0%, 58%, 100% { transform: translate3d(0px, 0px, 0px) scale(1); } 7% { transform: translate3d(0px, 0px, 0px) scale(1.012); } }
+
+  @keyframes maik-cta-rhythm-halo { 0%, 63.2%, 100% { opacity: 0; transform: translate3d(0px, 0px, 0px) scale(0.985, 0.922); } 7% { opacity: 0.54; transform: translate3d(0px, 0px, 0px) scale(1.009, 1.047); } 63.1% { opacity: 0; transform: translate3d(0px, 0px, 0px) scale(1.055, 1.285); } }
 }
 
-/* AP-401: Das Label der Familie steht auf white-space: nowrap
-   (cta-family.css) - gerechnet fuer "GARTENWUNSCH BESPRECHEN", 23 Zeichen auf
-   einer Zeile. "PASSENDES PROJEKT GESEHEN JETZT ANFRAGEN" sind 40 Zeichen; mit
-   nowrap laeuft der Text unter die Pfeilkapsel und aus dem Knopf heraus.
-
-   Also nur fuer diesen Knopf: umbrechen erlaubt. Die Knopfhoehe von 64px bleibt,
-   zwei Zeilen zu je 1.16 Zeilenhoehe passen hinein. Alles Uebrige - Form,
-   Rahmen, Halo, Schrift, Pfeil - bleibt wie bei der Startseite. */
-@media (max-width: 480px) {
-  #galleryCta .maik-cta__label {
-    white-space: normal;
-    text-wrap: balance;
+/* AP-531: Ab 481px kein Vollbreiten-Knopf mehr - .maik-cta--long zieht ihn am
+   Handy per calc(100vw - 40px) ueber die Seite. Auf Ansage 26rem und mittig,
+   dieselbe Breite wie der Galerie-Knopf der Startseite am Desktop
+   (cta-family-home.css, .mobile-social-proof .maik-cta--long). Die id schlaegt
+   die (0,1,0) der Kopie. */
+@media (min-width: 481px) {
+  #galleryCta {
+    width: min(100%, 26rem);
+    margin-inline: auto;
   }
 }
 
@@ -450,8 +649,8 @@ body,
      Kachel bekommt genau die Spaltenbreite des bisherigen Rasters - volle
      Reihen sehen aus wie vorher, nur die letzte rueckt in die Mitte. Das gilt
      fuer jede Anzahl, auch wenn im CMS Bilder oder Projekte dazukommen.
-     Spaltenzahl und Abstand sind die aus styles.css: Fotos 4 Spalten, bis
-     1050px 3 (styles.css:2857/2917), Abstand clamp(12px, 1.5vw, 20px);
+     Spaltenzahl und Abstand: Fotos seit AP-531 durchgehend 3 Spalten (vorher 4,
+     bis 1050px 3), Abstand clamp(12px, 1.5vw, 20px) aus styles.css;
      Projekte 3 Spalten, 22px (styles.css:1108). Aendert sich dort etwas, muss
      es hier mit.
      :not([hidden]) ist Pflicht: styles.css:2848 blendet das jeweils nicht
@@ -459,7 +658,7 @@ body,
      Diese Datei laedt spaeter und haette es mit display: flex wieder
      eingeblendet - beide Ansichten stuenden dann untereinander. */
   .projects-overview .gallery-photo-grid:not([hidden]) {
-    --cols: 4;
+    --cols: 3; /* AP-531: auf Ansage drei statt vier Fotos je Reihe */
     --gap: clamp(12px, 1.5vw, 20px);
     display: flex;
     flex-wrap: wrap;
@@ -482,17 +681,4 @@ body,
   }
 }
 
-@media (min-width: 901px) and (max-width: 1050px) {
-  .projects-overview .gallery-photo-grid:not([hidden]) { --cols: 3; }
-}
 
-/* AP-408: .btn-primary:hover zieht auf --green-800 (#2a4500) - auf einem hellen
-   Knopf waere das ein Sprung ins fast Schwarze. Stattdessen eine Stufe heller,
-   mit dem vorhandenen Hausakzent statt einem neu erfundenen Wert. Die dunkle
-   Schrift bleibt lesbar, der Kontrast steigt dabei sogar. */
-@media (min-width: 481px) and (hover: hover) and (pointer: fine) {
-  #galleryCta:hover {
-    background: var(--home-dark-accent);
-    box-shadow: 0 16px 34px -10px rgba(140, 198, 63, .55);
-  }
-}
