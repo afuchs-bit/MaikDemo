@@ -2,6 +2,44 @@
   "_hinweis": "AUTO-GENERIERT von .github/scripts/build-index.mjs – NICHT von Hand editieren.",
   "projekte": [
     {
+      "slug": "gartengestaltung-herne-1",
+      "titel": "Gartengestaltung",
+      "ort": "Herne",
+      "kundentyp": [
+        "privat"
+      ],
+      "leistungen": [
+        "gartengestaltung",
+        "pool-whirlpool-umfeld",
+        "findlinge-natursteineinfassungen",
+        "rollrasen",
+        "bepflanzung",
+        "beleuchtung",
+        "palmen-winterfest"
+      ],
+      "datum": "2026-10-01",
+      "featured": false,
+      "beschreibung": "Gesamten Garten geplant, gestaltet und umgesetzt. Vom Rollrasen über die Sichtschutzbepflanzung bis zum Pool, alles aus eigener Hand.",
+      "bilder": [
+        {
+          "bild": "/assets/img/projekte/gartengestaltung-herne-1/5a7aee8d-9037-4496-9aee-89a3e0ee2c4d.webp",
+          "alt": "Garten im Endergebnis"
+        },
+        {
+          "bild": "/assets/img/projekte/gartengestaltung-herne-1/f1d96e67-b720-45db-94de-049c224f6f3b.webp",
+          "alt": "Naturstein im Poolumfeld funktional als \"Springbrett\" eingebaut"
+        },
+        {
+          "bild": "/assets/img/projekte/gartengestaltung-herne-1/85598ae4-4667-48b2-a2d1-7246d8147d43.webp",
+          "alt": "Während des Prozesses - Rollrasen Verlegung"
+        },
+        {
+          "bild": "/assets/img/projekte/gartengestaltung-herne-1/039856ea-b130-4bd9-81ea-6c5fd8348e51.webp",
+          "alt": "Endergebnis bei Nacht – Beleuchtungen an den Palmen"
+        }
+      ]
+    },
+    {
       "slug": "vorgartengestaltung-mit-gepflasterter-einfahrt-herne",
       "titel": "Vorgartengestaltung mit gepflasterter Einfahrt",
       "ort": "Herne",
