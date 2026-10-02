@@ -2268,6 +2268,21 @@ Blöcke laufen an denselben Außenkanten (vorher war der obere bei 1280px 165px 
 Dazu: Fotounterkante → Linie (Steg über dem Zitat) so groß wie „Maik Rohdich,
 Gartenbaumeister“ → Betriebs-Foto, `margin-top: calc(2 * clamp(26px, 3.75vw, 48px) - 36px)`.
 
+**AP-534 — Leistungsseite Balkonkasten: Textbereich am Desktop als Trichter (02.10.2026).**
+Nach dem Auftragsdokument `docs/ap/AP-534-leistungsseite-desktop-trichter.md` (geliefert als
+AP-531), nur `/privatkunden/leistungen/balkonkastenbepflanzung/`, nur ab 901px. Die Seite
+trägt `desktopLayout: "trichter"` (JSON) → Klasse `lpv2-page--desktop-trichter`; Spalte und
+Zoom wandern von `.lpv2-main` auf die einzelnen Sektionen, die Textsektion steht auf 1080px
+Satzspiegel bei Zoom 1: Überschrift, zwei Einstiegsabsätze an grüner Haarlinie,
+Leistungsüberschrift, 480px-Liste (Handy-Stil), darunter mittig untereinander der
+Hinweistext (Blocksatz, 480px), die Abschluss-Kachel des Handys (E1 auf Ansage: Kachel
+bleibt; 480px wie der Text) und der Knopf 400px. Das Raster liegt dafür am Container der Textsektion (Artikel, Leistungsblock und
+Abschluss `display: contents`). Punkte,
+Hinweis, Abschluss und Knopf erscheinen einzeln beim Scrollen (`data-reveal-late`, zweiter
+Beobachter in `main.js` bei 72 % Fensterhöhe). Handy und Tablet pixelgleich, übrige
+Sektionen am Desktop unverändert (640px), andere Leistungsseiten unberührt. Nebenbei:
+Vorlagen auf `footer-kontakt.css?v=20260930b`. Offen: E2 (Auslöselinie), H2 zweizeilig
+statt einzeilig.
 
 **AP-531 — Gemeinsamer Header nach der kompakten Handy-Leiste (01.10.2026).**
 Auf dem Branch `codex/homepage-review` gilt der kompakte Handy-Header auf allen

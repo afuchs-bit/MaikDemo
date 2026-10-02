@@ -332,6 +332,14 @@
 
   let revealObserver = null;
   let photoRevealObserver = null;
+  let revealObserverLate = null;
+  // Die Leistungsseiten erhalten ihren spaeteren Einstieg ebenfalls ueber
+  // IntersectionObserver. ScrollTrigger bleibt wegen des Safari-Scrollsprungs aus.
+  const lateRevealMedia = window.matchMedia('(min-width: 901px)');
+  const isLateReveal = (el) => lateRevealMedia.matches && el.hasAttribute('data-reveal-late');
+  const observerForReveal = (el) => isLateReveal(el) ? revealObserverLate
+    : (gsapRevealEnabled && el.classList.contains('gate-welcome-photo')
+      ? photoRevealObserver : revealObserver);
   const pendingReveals = new Set();
   const enterReveals = (entries, observer) => {
     entries.forEach((entry) => {
@@ -342,35 +350,41 @@
       gsapRevealEnabled ? revealWithGsap(entry.target) : revealNow(entry.target);
     });
   };
-  const createRevealObserver = () => new IntersectionObserver(enterReveals, {
+  const createRevealObserver = () => new IntersectionObserver(enterReveals, gsapRevealEnabled ? {
     // Pixel statt Prozent: rootMargin-Prozentwerte beziehen sich auf die
     // Breite. So bleibt der bisherige Start bei 88 % der sichtbaren Höhe.
     rootMargin: `0px 0px ${-window.innerHeight * .12}px 0px`,
     threshold: 0
+  } : { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+  const createLateRevealObserver = () => new IntersectionObserver(enterReveals, {
+    rootMargin: `0px 0px ${-window.innerHeight * .28}px 0px`, threshold: 0.08
   });
   if (!reduced && 'IntersectionObserver' in window) {
-    revealObserver = gsapRevealEnabled ? createRevealObserver()
-      : new IntersectionObserver(enterReveals, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    revealObserver = createRevealObserver();
+    revealObserverLate = createLateRevealObserver();
     if (gsapRevealEnabled) {
       photoRevealObserver = new IntersectionObserver(enterReveals, {
         rootMargin: '0px 0px 72px 0px', threshold: 0
       });
-      let revealHeight = window.innerHeight;
-      let revealResizeFrame = 0;
-      window.addEventListener('resize', () => {
-        if (revealResizeFrame) return;
-        revealResizeFrame = requestAnimationFrame(() => {
-          revealResizeFrame = 0;
-          if (revealHeight === window.innerHeight) return;
-          revealHeight = window.innerHeight;
-          revealObserver.disconnect();
-          revealObserver = createRevealObserver();
-          pendingReveals.forEach((el) => {
-            if (!el.classList.contains('gate-welcome-photo')) revealObserver.observe(el);
-          });
-        });
-      }, { passive: true });
     }
+    let revealHeight = window.innerHeight;
+    let revealDesktop = lateRevealMedia.matches;
+    let revealResizeFrame = 0;
+    window.addEventListener('resize', () => {
+      if (revealResizeFrame) return;
+      revealResizeFrame = requestAnimationFrame(() => {
+        revealResizeFrame = 0;
+        if (revealHeight === window.innerHeight && revealDesktop === lateRevealMedia.matches) return;
+        revealHeight = window.innerHeight;
+        revealDesktop = lateRevealMedia.matches;
+        revealObserver.disconnect();
+        revealObserverLate.disconnect();
+        photoRevealObserver?.disconnect();
+        revealObserver = createRevealObserver();
+        revealObserverLate = createLateRevealObserver();
+        pendingReveals.forEach((el) => observerForReveal(el).observe(el));
+      });
+    }, { passive: true });
   }
 
   const registerReveal = (root = document) => {
@@ -383,9 +397,7 @@
       if (!revealObserver) revealNow(el);
       else {
         pendingReveals.add(el);
-        const observer = gsapRevealEnabled && el.classList.contains('gate-welcome-photo')
-          ? photoRevealObserver : revealObserver;
-        observer.observe(el);
+        observerForReveal(el).observe(el);
       }
     });
   };
