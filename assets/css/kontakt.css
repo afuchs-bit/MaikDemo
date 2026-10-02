@@ -390,7 +390,9 @@
   padding: 10px 10px 18px;
   border: 1px solid var(--line);
   border-radius: 20px;
-  background: #20241D;
+  /* AP-527: Fuellfarbe der Kontakt-Knoepfe (.contact-direct-list > a), auf Ansage
+     des Auftraggebers - bis dahin #20241D. */
+  background: #252b22;
   box-shadow: var(--shadow-card);
 }
 
@@ -413,18 +415,8 @@
   text-align: center;
 }
 
-/* AP-428: Die Beizeile. Seit AP-516 auf allen Breiten grau in Nunito, wie auf dem
-   Handy - bis dahin war sie am Rechner gruen in der Hausschrift. */
-.contact-location-label {
-  display: inline-flex;
-  color: var(--ink-mute);
-  font-family: "Nunito", var(--body);
-  font-size: .68rem;
-  font-weight: 800;
-  letter-spacing: .14em;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
+/* AP-527: Die Beizeile "Anfahrt & Besuch" (.contact-location-label) ist auf Ansage
+   des Auftraggebers entfallen (01.10.2026). */
 
 /* AP-432: Schriftbild des Seitentitels, auf Ansage des Auftraggebers auf allen
    Breiten. Die Werte sind die aus .contact-hero-copy h1 (Zeile 84 ff.), nicht
@@ -438,7 +430,7 @@
    styles.css:254, von dem bis hierher Groesse, Gewicht, Zeile und Laufweite
    kamen. */
 .contact-location-head h2 {
-  margin: 8px 0 0;
+  margin: 0; /* AP-527: die 8px waren der Abstand zur entfallenen Beizeile */
   color: var(--mobile-logo-green);
   font-family: "Baloo 2", var(--display);
   font-size: 31px;
@@ -630,19 +622,17 @@
   color: var(--ink);
 }
 
-.contact-map-pin {
-  display: grid;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 4px;
-  place-items: center;
-  border-radius: 14px;
-  background: #0E100D;
-  color: var(--mobile-logo-green);
-  box-shadow: inset 0 0 0 1px rgb(86 230 7 / .3);
+/* AP-527: Der Pin ueber dem Kartentitel (.contact-map-pin) ist auf Ansage des
+   Auftraggebers entfallen (01.10.2026).
+   AP-528: An seiner Stelle steht jetzt das Standortzeichen aus dem Adressblock,
+   in derselben Groesse (54px, siehe .contact-location-address). Ohne den
+   Einzug .4em, sonst stuende es neben der Mitte; die 4px darunter sind der
+   Abstand, den der alte Pin zum Titel hatte. */
+.contact-map-placeholder .contact-location-mark {
+  --mark: 54px;
+  flex: none;
+  margin: 0 0 4px;
 }
-
-.contact-map-pin svg { width: 24px; height: 24px; }
 
 .contact-map-placeholder [data-map-load] {
   padding: 11px 22px;
@@ -943,10 +933,11 @@
 
   .contact-location-card-grid { display: contents; }
 
-  /* Untergrenze 272px: darunter reicht die Flaeche nicht fuer
-     Pin, Titel, den fuenfzeiligen Datenschutzhinweis und den Knopf, und der
-     Pin wird gestaucht (nachgemessen: 240px bei 1024px drueckt ihn auf 40px,
-     260px bei 901px noch auf 47px - der Hinweis bricht dort sechszeilig). */
+  /* Untergrenze 272px: darunter reichte die Flaeche nicht fuer Pin, Titel, den
+     fuenfzeiligen Datenschutzhinweis und den Knopf (nachgemessen: 240px bei 1024px
+     drueckte den Pin auf 40px, bei 901px bricht der Hinweis sechszeilig). Der Pin
+     ist seit AP-527 weg; die Untergrenze bleibt, damit die Kartenhoehe am Rechner
+     unveraendert bleibt. */
   .contact-map-shell {
     grid-column: 1 / -1;
     grid-row: 1;

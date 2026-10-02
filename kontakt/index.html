@@ -25,11 +25,11 @@ html, body { background-color: #171916; }
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/baloo2-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="../assets/css/styles.css?v=20261002w" />
-<link rel="stylesheet" href="../assets/css/header-home.css?v=20261002w" />
+<link rel="stylesheet" href="../assets/css/styles.css?v=20261002x" />
+<link rel="stylesheet" href="../assets/css/header-home.css?v=20261002x" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20261002a" />
 <link rel="stylesheet" href="../assets/css/form-trust-card.css?v=20260923d" />
-<link rel="stylesheet" href="../assets/css/kontakt.css?v=20261002w" />
+<link rel="stylesheet" href="../assets/css/kontakt.css?v=20261002x" />
 
 <script type="application/ld+json">
 {
@@ -324,8 +324,8 @@ html, body { background-color: #171916; }
              (Beizeile und Ueberschrift) steht jetzt UEBER der Karte statt in ihr - dafuer
              der Wrapper .contact-location; reveal und aria-labelledby sind mitgewandert.
 
-             Die Beizeile "Anfahrt & Besuch" ist auf Ansage des Auftraggebers zurueck; sie
-             war in AP-427 entfallen.
+             Die Beizeile "Anfahrt & Besuch" war in AP-428 auf Ansage zurueckgekommen und
+             ist mit AP-527 (01.10.2026) wieder entfallen, ebenso der Pin in der Karte.
 
              Der Terminhinweis verlaesst das Raster wieder. AP-419 hatte ihn hineingeschoben,
              damit er gestapelt zwischen Adressblock und Karte passt; in der neuen Ordnung
@@ -333,7 +333,6 @@ html, body { background-color: #171916; }
              nach vorn. Gestapelt lautet die Folge damit Karte, Adresse, Route, Hinweis. -->
         <section class="contact-location reveal" aria-labelledby="contact-location-title">
           <div class="contact-location-head">
-            <span class="contact-location-label">Anfahrt &amp; Besuch</span>
             <h2 class="type-subsection-title" id="contact-location-title">Unser Standort in Herne</h2>
           </div>
 
@@ -348,12 +347,14 @@ html, body { background-color: #171916; }
 
               <div class="contact-map-shell" data-map-shell data-map-src="https://www.google.com/maps?q=H%C3%BClsstra%C3%9Fe%205%2C%2044625%20Herne&amp;output=embed">
                 <div class="contact-map-placeholder" data-map-placeholder>
-                  <span class="contact-map-pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg></span>
+                  <!-- AP-528: dasselbe Standortzeichen wie im Adressblock, an der Stelle des
+                       entfallenen Pins (AP-527) - auf Ansage des Auftraggebers. -->
+                  <span class="contact-location-mark" aria-hidden="true"><img class="contact-location-mark__pin" src="../assets/img/icons/rohdich-standort.svg" alt="" width="24" height="24" decoding="async"><img class="contact-location-mark__bluete" src="../assets/img/icons/maik-rohdich-bluete-original.png?v=20260913b" alt="" width="85" height="70" decoding="async"></span>
                   <div>
                     <strong>Standort in Google Maps anzeigen</strong>
                     <span>Hülsstraße 5, 44625 Herne</span>
                   </div>
-                  <p id="contact-map-disclosure">Beim Laden werden Daten an Google übertragen, darunter Ihre IP-Adresse. Ihre Einwilligung gilt nur für diesen Seitenaufruf – ein Neuladen nimmt sie zurück. <a href="../datenschutz/">Mehr im Datenschutz</a></p>
+                  <p id="contact-map-disclosure">Beim Laden erhält Google u.&nbsp;a. Ihre IP-Adresse. Die Einwilligung endet beim Neuladen. <a href="../datenschutz/">Mehr im Datenschutz</a></p>
                   <button class="btn btn-primary" type="button" data-map-load aria-describedby="contact-map-disclosure">Karte laden</button>
                 </div>
               </div>

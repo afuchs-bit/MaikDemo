@@ -8,7 +8,7 @@ import { renderNavSubmenu } from './lib/render.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const TEMPLATE = path.join(__dirname, 'templates', '_header.html');
-const CSS_VERSION = '20261002w';
+const CSS_VERSION = '20261002x';
 const JS_VERSION = '20261002e';
 const GALLERY_JS_VERSION = '20261001a';
 const FOOTER_CSS_VERSION = '20261002a';

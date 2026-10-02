@@ -439,6 +439,8 @@ export async function renderProjektPage(opts) {
 }
 
 // ---------- Statische Galerie-Liste (für /projekte/, zwischen den BUILD-Markern) ----------
+// AP-531: In der Galerie entfaellt das Etikett "Privatkunde" (Ansage des Auftraggebers,
+// wie galerie.js mit opts.ohnePrivatEtikett); "Gewerbekunde" (cls 'warn') bleibt.
 export function renderGalleryList(projekte, base = BASE_GALLERY) {
   const cards = projekte
     .map((p) => {
@@ -451,8 +453,8 @@ export function renderGalleryList(projekte, base = BASE_GALLERY) {
       const label = escAttr(`Projekt „${p.titel}“ in ${p.ort} ansehen`);
       return `      <article class="project-card reveal">
         <div class="project-media">
-          ${pic}
-          <span class="project-tag ${b.cls}">${esc(b.label)}</span>
+          ${pic}${b.cls ? `
+          <span class="project-tag ${b.cls}">${esc(b.label)}</span>` : ''}
         </div>
         <div class="project-body">
           <span class="project-location">${esc(p.ort)}</span>

@@ -2478,6 +2478,13 @@ erfasst werden, wie in H.10 unter AP-512 beschrieben: im echten Chrome bei 480 p
 Regeln aus `max-width`-Blöcken, die im Hauptteil greifen. Der Knopf-Teil geht in AP-511
 (Knopf-Familie am Desktop) auf.
 
+Dasselbe gilt seit AP-531 für `projekte.css`: Dort steht eine auf `:where(.gallery-cta)`
+begrenzte Kopie von 29 Regeln und 5 Keyframes aus dem 480er-Block von `cta-family.css`
+(Galerie-Knopf „Passendes Projekt gesehen? Jetzt anfragen“ ab 481 px). Ändert sich
+`cta-family.css`, muss sie neu erfasst werden; AP-511 löst auch sie auf.
+Ebenso seit AP-532 in `ueber-uns.css` für „Alle Projekte“: 24 Regeln und 1 Keyframe,
+begrenzt auf `:where(.ueber-projekte .projects-more)`.
+
 Die in H.10 vorgesehenen AP-513 und AP-514 („Leistungsseiten-Vorlage“) sind damit
 gegenstandslos. Die Seiten bleiben am Desktop bewusst eine Mittelspalte, das hat der
 Auftraggeber so entschieden.

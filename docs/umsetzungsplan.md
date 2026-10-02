@@ -2169,6 +2169,105 @@ ein Verlauf hinter Hero und Eckdaten sowie ein gelber Lichtschein hinter der Kon
 - Handy (360, 402, 480 px) auf Startseite, Kontakt, Galerie, Über uns, Impressum und einer
   Leistungsseite pixelgleich; Tablet und Desktop tragen gemessen durchgehend #1B1E19.
 
+**AP-527 — Kontaktseite: Beizeile und Pin entfallen, Standort-Kachel in Knopffarbe (01.10.2026).**
+Auf Ansage des Auftraggebers, auf allen Breiten:
+- Die Beizeile „Anfahrt & Besuch“ über „Unser Standort in Herne“ entfällt (Markup und
+  `.contact-location-label`). Die 8px Abstand der H2 zur Beizeile entfallen mit.
+- Der Pin über „Standort in Google Maps anzeigen“ entfällt (`.contact-map-pin`).
+- Die Standort-Kachel trägt die Füllfarbe der Kontakt-Knöpfe, #252b22 statt #20241D.
+- Die Mindesthöhe der Karte am Rechner (272px) bleibt unverändert.
+- Gemessen bei 360–1440px: kein Überlauf, Platzhalter vollständig sichtbar. Am Rechner
+  liegen „Unser Kontakt“ und „Unser Standort in Herne“ weiter auf einer Grundlinie
+  (AP-518). „Karte laden“ lädt das iframe.
+- Recherche zum Datenschutzhinweis vor „Karte laden“: Gestuft (kurz am Knopf, ausführlich
+  in der Datenschutzerklärung) ist zulässig. Am Knopf bleiben müssen Google als Empfänger,
+  die übertragenen Daten (IP-Adresse), der Widerrufshinweis (Art. 7 Abs. 3 Satz 3 DSGVO) und
+  der Link zur Datenschutzerklärung. Auf Ansage gekürzt auf „Beim Laden erhält Google
+  u. a. Ihre IP-Adresse. Die Einwilligung endet beim Neuladen. Mehr im Datenschutz“.
+
+**AP-528 — Kontaktseite: Standortzeichen in der Kartenfläche (01.10.2026).**
+Auf Ansage des Auftraggebers steht das Standortzeichen aus dem Adressblock (Pin mit Blüte,
+`.contact-location-mark`) zusätzlich an der Stelle des in AP-527 entfallenen Pins über
+„Standort in Google Maps anzeigen“. Gleiche Größe wie im Adressblock (54px), ohne Einzug,
+4px Abstand zum Titel. Gemessen bei 360–1440px: mittig (±0px), Platzhalter passt, kein
+Überlauf.
+
+**AP-531 — Galerie: drei Fotos je Reihe, Handy-Knopf am Desktop, ohne „Privatkunde“ (01.10.2026).**
+Auf Ansage des Auftraggebers:
+- Bildergalerie ab 901px mit 3 statt 4 Spalten (die 901–1050-Stufe entfällt). Die letzte
+  Reihe bleibt mittig.
+- „Passendes Projekt gesehen? Jetzt anfragen“ trägt auf allen Breiten die Handy-Gestalt.
+  Ab 481px steht eine maschinell erfasste, auf `:where(.gallery-cta)` begrenzte Kopie der
+  480er-Regeln aus `cta-family.css` in `projekte.css` (29 Regeln, 5 Keyframes, Technik
+  wie AP-512). Die alte lindgrüne Pille (AP-401/408) ist entfallen. Breite 26rem, mittig,
+  wie der Galerie-Knopf der Startseite. Berechnete Stile bei 768/1280/1440px gegen 402px:
+  Abweichungen nur bei Breite, Rand und der vw-abhängigen Schriftgröße (16 statt 15,7px).
+- Das Etikett „Privatkunde“ entfällt auf den Karten unter „Projekte mit Details“
+  (`buildCard`-Option `ohnePrivatEtikett` aus `galerie.js`, dazu `renderGalleryList` für
+  die statische Liste). „Gewerbekunde“ bliebe sichtbar.
+- Nebenbei: `templates/projekt.html` trug noch `footer-kontakt.css?v=20260930a`. Jeder
+  Index-Build drehte die Projektseiten damit auf den alten Stand zurück; jetzt `…b` wie auf
+  den Seiten.
+- Handy (360/402/480px) pixelgleich in der Bildansicht. Die Projektansicht unterscheidet
+  sich auf allen Breiten nur durch das entfallene Etikett.
+
+**AP-532 — Über uns: Handy-Knopf, Handy-Titel, neue Projekt-Überschrift (01.10.2026).**
+Auf Ansage des Auftraggebers:
+- „Alle Projekte“ trägt ab 481px Gestaltung und Puls des Handys. Maschinell erfasste, auf
+  `:where(.ueber-projekte .projects-more)` begrenzte Kopie der 480er-Regeln aus
+  `cta-family.css` (24 Regeln, 1 Keyframe, Technik wie AP-531). Das Ausblenden aus AP-477
+  ist entfallen, die Zentrierung gilt auf allen Breiten. Berechnete Stile bei
+  768/1280/1440px gegen 402px: Abweichungen nur beim zentrierenden Rand.
+- „Für wen wir arbeiten“ und „Alles aus einer Hand“ ab 481px in der Handy-Gestalt: grün,
+  Baloo 2 600, 23,2px, mittig. „Für wen wir arbeiten“ steht mittig über dem Kachelraster.
+  „Alles aus einer Hand“ steht mittig über der Kette. Der Nachsatz schrumpft auf
+  `fit-content` und steht als Einheit mittig in der Spalte, auf einer Achse mit
+  „Ehrlich beraten, sauber gebaut“ (Nachtrag auf Ansage). Während der Schreibmaschine bleibt die Kette im
+  Fluss (nur für Screenreader sichtbar). Gemessen: Titelmitte = Kettenmitte (±0px) während
+  und nach dem Lauf, bei 768 und 1280px.
+- Projekt-Überschrift „Was wir umgesetzt haben“, Unterzeile „Drei Projekte aus Herne und
+  Umgebung“ (alle drei Karten: Herne). Auf allen Breiten; bei 360px bricht die
+  Überschrift zweizeilig.
+- „Das Team“ steht ab 901px rechts neben dem Startfoto, senkrecht mittig, linksbündig;
+  Steg und Zitat mittig darunter (600px). Die Überschrift
+  „Das Team hinter dem Betrieb.“ ab 901px so groß wie „Alles aus einer Hand“ (23,2px), in
+  derselben Farbe (grün) und Schrift (Baloo 2 600, „Das Team“ kursiv 700) und mittig über
+  dem linksbündigen Absatz; auf dem Handy ist „Das Team“ seither ebenfalls kursiv (600). Die
+  Blütengruppe am Foto sitzt am Rechner unten links statt rechts. Der Absatz neben dem Foto
+  steht am Rechner im Blocksatz (letzte Zeile links, Silbentrennung), damit die mittige
+  Überschrift auch sichtbar mittig über dem Text sitzt; die Textspalte ist dafür mindestens
+  400px breit (das Foto gibt auf schmalen Rechnern bis 300px nach). Ebenso im Blocksatz: die beiden
+  Absätze unter „Ehrlich beraten, sauber gebaut“. Die Kacheln „Für wen wir arbeiten“ und die
+  Zusage-Kachel tragen ab 481px Farbe und Inhalt der Handy-Fassung (dunkle Kachel, Rahmen,
+  nur Titel und Pfeil; Zusage in Grün 14%); die Abstände bleiben die des Desktops. Die Schreibmaschine schreibt ab
+  481px in der Größe des Zusage-Satzes (19px statt bis 28px). Ab 901px ist der
+  Abstand Trennlinie → „Für wen wir arbeiten“ so groß wie Kachel-Unterkante → „Was wir
+  umgesetzt haben“ (2 × clamp(26px, 3.75vw, 48px)). Die Blüte im Steg über dem Zitat
+  steht ohne den dunklen Kasten (`background: var(--bg)`) auf dem Seitengrund.
+  Die beiden Absätze unter „Ehrlich beraten, sauber gebaut“ tragen am Rechner Größe, Schrift,
+  Zeilenabstand und Farbe des Team-Textes. Zusage-Kachel (max. 680px) und „Alles aus einer
+  Hand“ stehen am Rechner unter Text und Foto mittig auf der Seite
+  (`.ueber-betrieb__wort { display: contents }`; dadurch ohne Einblendung). Das Foto
+  steht wieder 4:3 (440 × 330px), der Text senkrecht mittig daneben; die Textspalte ist
+  400px breit, damit der Textblock etwa so hoch ist wie das Foto (326 zu 330px bei 1280px); der Satz der
+  Zusage-Kachel steht am Rechner mittig in der Kachel; zwischen Foto und Steg
+  `clamp(44px, 4.4vw, 60px)` statt der 28–40px aus AP-530 (Ansage). Foto und Text liegen in zwei Sektionen. Das
+  Raster von „Das Team“ trägt deshalb ein zweites Exemplar der Figur
+  (`.ueber-inhaber__foto`), nur ab 901px sichtbar; das Startfoto in `.ueber-hero` ist ab
+  901px aus. Beide Exemplare gleich halten. Die Datei wird einmal geladen. Abstand
+  Seitentitel → Foto unverändert (51px bei 1280px). Handy und Tablet (360/402/480/768px)
+  pixelgleich zum Stand davor.
+- Handy (402/480px): Lage aller Elemente unverändert. Pixelabweichungen nur am neuen Text
+  und an der Wort-Animation des Zitats, die auch zwischen zwei Aufnahmen desselben Stands
+  schwankt.
+
+**AP-533 — Über uns: „Das Team“ und „Ehrlich beraten“ gleich breit (02.10.2026).**
+Auf Ansage des Auftraggebers steht der Team-Block am Rechner als Spiegelbild des
+Betriebs-Blocks: Foto 440px, Text 400px, Lücke clamp(26px, 3.6vw, 56px), mittig. Beide
+Blöcke laufen an denselben Außenkanten (vorher war der obere bei 1280px 165px breiter).
+Dazu: Fotounterkante → Linie (Steg über dem Zitat) so groß wie „Maik Rohdich,
+Gartenbaumeister“ → Betriebs-Foto, `margin-top: calc(2 * clamp(26px, 3.75vw, 48px) - 36px)`.
+
 
 **AP-531 — Gemeinsamer Header nach der kompakten Handy-Leiste (01.10.2026).**
 Auf dem Branch `codex/homepage-review` gilt der kompakte Handy-Header auf allen

@@ -7,6 +7,8 @@ import { assetUrl } from './config.js';
 // Baut eine Projektkarte (optisch identisch zum statischen Startseiten-Markup).
 // opts.badge: 'kundentyp' (Default) | 'leistung' – auf reinen Zielgruppenseiten ist der
 // Kundentyp redundant, dort trägt die Leistung die Information (opts.labelFor liefert das Label).
+// opts.ohnePrivatEtikett: AP-531 – die Galerie zeigt "Privatkunde" nicht mehr (Ansage des
+// Auftraggebers); "Gewerbekunde" bleibt.
 export function buildCard(p, opts = {}) {
   const gewerbe = Array.isArray(p.kundentyp) && p.kundentyp.includes('gewerbe');
   const cover = (Array.isArray(p.bilder) && p.bilder[0]) || {};
@@ -21,7 +23,7 @@ export function buildCard(p, opts = {}) {
     tag.className = 'project-tag';
     tag.textContent = opts.labelFor ? (opts.labelFor(p) || '') : '';
   } else {
-    tag.textContent = gewerbe ? 'Gewerbekunde' : 'Privatkunde';
+    tag.textContent = gewerbe ? 'Gewerbekunde' : (opts.ohnePrivatEtikett ? '' : 'Privatkunde');
   }
   if (tag.textContent) media.appendChild(tag);
 
