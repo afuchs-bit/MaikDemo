@@ -572,9 +572,10 @@
    oder die Hoehe. */
 .anf [hidden] { display: none; }
 
-/* Mobil steht die Kurzanfrage direkt auf dem ruhigen Sektionsgrund. Die
-   grosse umschliessende Kartenflaeche wird dort bewusst aufgeloest. */
-@media (max-width: 480px) {
+/* AP-547: Die Hochkant-Bauteile gelten auch am Desktop und im Handy-Querformat.
+   Die vorhandene Hochkantdarstellung bleibt dabei unverändert. */
+.anf__eingabe, .anf__kontaktfelder, .anf__aktionen, .anf__foto-gruppe { display: contents; }
+@media (max-width: 480px), (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
   .private-contact .anf__karte {
     padding: 0;
     border: 0;
@@ -813,5 +814,164 @@
 @media (max-width: 340px) {
   .private-contact .anf__kanal strong {
     font-size: .9rem;
+  }
+}
+
+/* AP-555: Eine gemeinsame Mittelachse statt ungleich hoher Hauptspalten.
+   Kontaktwege stehen als gleichwertige Reihe über der kompakten Eingabe.
+   Hochkant bleiben die zusätzlichen Wrapper ohne eigene Layout-Box. */
+@media (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .private-contact {
+    --home-surface-low: #22271f;
+    --home-surface-card: #252b22;
+    --home-surface-high: #2b3327;
+    --home-surface-border: rgba(183, 203, 160, .18);
+    border-block: 0;
+    box-shadow: none;
+    padding-block: clamp(56px, 5vw, 80px);
+  }
+  html.home-theme-dark .private-contact > .container {
+    width: min(100% - 2 * max(32px, var(--gutter), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)), 860px);
+    padding-inline: 0;
+  }
+  html.home-theme-dark .private-contact-intro {
+    max-width: none;
+    text-align: center;
+  }
+  html.home-theme-dark .private-contact-intro h2 { max-width: none; }
+  html.home-theme-dark .private-contact-layout {
+    display: block;
+    margin-top: clamp(32px, 3vw, 40px);
+    padding-bottom: 0;
+    container: contact-request / inline-size;
+  }
+  html.home-theme-dark .private-contact .b2b-form-column { position: static; }
+  html.home-theme-dark .private-contact .anf__form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  html.home-theme-dark .private-contact .anf__kanaele {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 12px;
+    margin: 0;
+  }
+  html.home-theme-dark .private-contact .anf__kanal {
+    grid-column: auto;
+    block-size: auto;
+    min-block-size: 80px;
+    background: var(--home-surface-card);
+    border-color: var(--home-surface-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  }
+  html.home-theme-dark .private-contact .anf__kanal strong {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
+  }
+  html.home-theme-dark .private-contact .anf__kanal-icon--mail { color: var(--mobile-logo-green); }
+  html.home-theme-dark .private-contact .anf__eingabe {
+    display: block;
+    min-width: 0;
+  }
+  html.home-theme-dark .private-contact .anf__kontaktfelder {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: 0 20px;
+  }
+  html.home-theme-dark .private-contact .anf__oder { margin-block: 0 20px; }
+  html.home-theme-dark .private-contact .anf__feld {
+    gap: 8px;
+    margin-bottom: 20px;
+    min-width: 0;
+  }
+  html.home-theme-dark .private-contact .anf__feld :is(input, textarea) {
+    min-width: 0;
+    background: var(--home-surface-low);
+    border-color: var(--home-surface-border);
+    font-size: 16px;
+  }
+  html.home-theme-dark .private-contact .anf__feld :is(input, textarea):focus-visible {
+    background: var(--home-surface-card);
+    border-color: rgba(140, 198, 63, .65);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+    outline: 2px solid var(--green-500);
+    outline-offset: 3px;
+  }
+  html.home-theme-dark .private-contact .anf__aktionen {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, var(--home-request-cta-width, 420px));
+    width: min(100%, calc(2 * var(--home-request-cta-width, 420px) + 20px));
+    margin-inline: auto;
+    align-items: start;
+    gap: 20px;
+  }
+  html.home-theme-dark .private-contact .anf__foto-gruppe {
+    display: block;
+    min-width: 0;
+  }
+  /* Statusmeldungen gehören unter die gesamte Aktionszeile, damit auch
+     längere Hinweise keine neue, ungleich hohe Spalte erzeugen. */
+  html.home-theme-dark .private-contact .anf__abschluss { display: contents; }
+  html.home-theme-dark .private-contact .anf__status { grid-column: 1 / -1; margin: 0; }
+  html.home-theme-dark .private-contact .anf__feld--foto { margin: 0; }
+  html.home-theme-dark .private-contact .anf__foto-kachel { min-block-size: var(--home-request-cta-height, 64px); }
+  html.home-theme-dark .private-contact .anf__einwilligung { margin-block: 12px 0; }
+  html.home-theme-dark .private-contact .anf__rechtliches {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+  }
+  html.home-theme-dark .private-contact .anf__status[data-art="hinweis"] {
+    background: var(--home-surface-low);
+    border-color: var(--home-surface-border);
+    border-radius: 15px 5px 15px 5px;
+  }
+  html.home-theme-dark .private-contact a.anf__kanal:active {
+    background: var(--home-surface-high);
+    border-color: rgba(140, 198, 63, .5);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    html.home-theme-dark .private-contact a.anf__kanal:hover {
+      background: var(--home-surface-high);
+      border-color: rgba(140, 198, 63, .5);
+    }
+  }
+  @container contact-request (max-width: 680px) {
+    html.home-theme-dark .private-contact .anf__kanal {
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      align-content: center;
+      gap: 8px;
+      padding: 12px 10px;
+      text-align: center;
+    }
+    html.home-theme-dark .private-contact .anf__kanal-icon { inline-size: 32px; block-size: 32px; }
+    html.home-theme-dark .private-contact .anf__kanal strong { font-size: 14px; }
+    html.home-theme-dark .private-contact .anf__aktionen { grid-template-columns: minmax(0, 1fr); }
+    html.home-theme-dark .private-contact .anf__foto-gruppe {
+      width: min(100%, var(--home-request-cta-width, 420px));
+      margin-inline: auto;
+    }
+  }
+  @container contact-request (max-width: 420px) {
+    html.home-theme-dark .private-contact .anf__kanaele {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    html.home-theme-dark .private-contact .anf__kanal {
+      grid-template-columns: 40px minmax(0, 1fr);
+      justify-items: start;
+      text-align: left;
+      min-block-size: 64px;
+    }
+    html.home-theme-dark .private-contact .anf__kanal-icon { inline-size: 40px; block-size: 40px; }
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .private-contact {
+    padding-block: 48px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 }

@@ -91,7 +91,7 @@ body.ueber-page {
    Seitengrund #1B1E19 wie das Handy (Ansage des Auftraggebers). */
 html,
 body.ueber-page {
-  background: #1B1E19;
+  background: var(--page-background);
 }
 
 /* Der gruene Steg vor den Sektionsueberschriften war das wiederkehrende
@@ -422,7 +422,11 @@ body.ueber-page {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 18px 0;
-  background: var(--bg);
+  /* AP-532 (Ansage 01.10.2026): Hier stand background: var(--bg) (#171916) - der
+     Kasten deckte die Linie hinter der Bluete ab. Seit AP-526 ist der Seitengrund
+     #1B1E19, der Kasten stand als dunkleres Rechteck sichtbar hinter der Bluete. Die
+     Linie hat seit AP-530 ohnehin eine eigene Luecke (128px) fuer die Bluete; sie
+     liegt jetzt frei auf dem Grund wie am Handy. */
 }
 
 .ueber-inhaber__blume img { display: block; width: 72px; height: auto; max-width: none; }
@@ -570,6 +574,9 @@ body.ueber-page {
 }
 
 /* --- Mittelachse am Rechner (AP-530, 30.09.2026) --------------------------
+   AP-532 (01.10.2026): Foto und "Das Team" stehen inzwischen nebeneinander -
+   siehe den Block am Dateiende. Die Regeln hier gelten weiter, soweit er sie
+   nicht ueberschreibt (Steg, Zitat, Signaturabstand).
    Auf Wunsch des Auftraggebers: Startbild und "Das Team" stehen ab 901px auf
    einer Achse untereinander - Titel, Foto, Ueberschrift, Text, Steg, Zitat.
    Bis hierher stand das Foto 760px breit mittig und darunter Text und Zitat
@@ -1541,19 +1548,213 @@ body.ueber-page {
       1883px breit. Dieselbe Falle und dieselbe Loesung beschreibt
       projekte.css:177 fuer #galleryCta.
 
-      Anders als #galleryCta bekommt dieser Knopf keinen Ersatzpfeil und keine
-      gruene Pille: oberhalb 480px soll er bleiben, was er war - die schlichte
-      btn-ghost-Zeile in Comic Sans (AP-456, weiter oben in dieser Datei). */
-@media (max-width: 480px) {
-  .ueber-projekte .projects-more .maik-cta { margin-inline: auto; }
-}
+      AP-532: Das Ausblenden ab 481px ist entfallen. Auf Ansage des
+      Auftraggebers (01.10.2026) traegt der Knopf auf allen Breiten Gestaltung
+      und Puls des Handys - die Kopie dafuer steht direkt darunter. Die
+      Zentrierung gilt deshalb ebenfalls auf allen Breiten. */
+.ueber-projekte .projects-more .maik-cta { margin-inline: auto; }
 
+/* AP-532: Kopie der Handy-Regeln aus cta-family.css ab 481px, begrenzt auf
+   "Alle Projekte". Maschinell erfasst wie in AP-531 (projekte.css): alle Regeln
+   im 480er-Block von cta-family.css, deren Selektor ein Element dieses Knopfs
+   trifft (bei 402px, Zustandsklassen is-* und :hover/:active/:focus
+   mitgezaehlt), dazu die verwendeten @keyframes. Die 350px-Stufe entfaellt. Das
+   Praefix :where(...) haelt die Spezifitaet gleich - Reihenfolge und Gewinner
+   sind wie am Handy, nachgeprueft ueber die berechneten Stile bei 402px gegen
+   768/1280/1440px.
+   Pflege: Wer den 480er-Block von cta-family.css aendert, erfasst diese Kopie
+   neu. AP-511 fuehrt die Knopf-Familie fuer alle Seiten zusammen und loest sie
+   dann auf. */
 @media (min-width: 481px) {
-  .ueber-projekte .projects-more .maik-cta__frame,
-  .ueber-projekte .projects-more .maik-cta__shape,
-  .ueber-projekte .projects-more .maik-cta__arrow {
-    display: none;
+  :where(.ueber-projekte .projects-more) .maik-cta {
+    position: relative;
+    isolation: isolate;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0px;
+    width: 100%;
+    min-height: 64px;
+    height: 64px;
+    padding: 7px 10px 7px 0px;
+    border: 0px;
+    border-radius: 14px;
+    background: transparent;
+    box-shadow: none;
+    color: rgb(23, 25, 22);
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: clamp(0.9rem, 4.25vw, 1.0625rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: 0.025em;
+    text-align: left;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
+
+  :where(.ueber-projekte .projects-more) .maik-cta::before,
+  :where(.ueber-projekte .projects-more) .maik-cta::after {
+    content: none;
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta .maik-cta__label {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 0px;
+    min-width: 0px;
+    padding-right: 0px;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: 0.018em;
+    text-transform: uppercase;
+    overflow-wrap: normal;
+    hyphens: none;
+    text-align: center;
+    text-wrap: nowrap;
+    white-space-collapse: collapse;
+    transition: transform .12s var(--ease);
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta__shape,
+  :where(.ueber-projekte .projects-more) .maik-cta__frame {
+    position: absolute;
+    inset: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta__shape {
+    z-index: -1;
+    overflow: visible;
+    fill: var(--home-lime);
+    stroke: none;
+    filter: none;
+    transition: transform .12s var(--ease), fill .18s ease;
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta__frame {
+    z-index: -3;
+    overflow: visible;
+    fill: none;
+    stroke: var(--home-lime);
+    stroke-width: 1.5px;
+    transform: translate(6px, 6px);
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta__arrow {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 40px;
+    margin: 0px 12px 0px auto;
+    border-radius: 999px;
+    background: rgb(23, 25, 22);
+    box-shadow: rgba(151, 206, 32, 0.16) 0px 0px 0px 1px inset;
+    transition: transform .12s var(--ease), box-shadow .18s var(--ease);
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta__arrow-image {
+    position: relative;
+    left: 0px;
+    display: block;
+    width: 46px;
+    height: auto;
+    object-fit: contain;
+    transition: left 0.18s, transform 0.28s cubic-bezier(0.22, 0.7, 0.25, 1);
+    will-change: transform;
+  }
+
+  :where(.ueber-projekte .projects-more) :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing .maik-cta__arrow-image {
+    animation: 1.9s cubic-bezier(0.22, 0.7, 0.25, 1) 2.5s infinite normal none running maik-cta-arrow-rhythm;
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta--compact {
+    display: grid;
+    grid-template-columns: minmax(0px, 1fr) 40px;
+    column-gap: 0px;
+    width: 184px;
+    min-width: 184px;
+    min-height: 44px;
+    height: 44px;
+    padding: 4px 7px 4px 0px;
+    font-size: clamp(0.8125rem, 3.6vw, 0.875rem);
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta--compact .maik-cta__frame {
+    stroke-width: 1.25px;
+    transform: translate(4px, 4px);
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta--compact .maik-cta__label {
+    grid-column: 1;
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta--compact .maik-cta__arrow {
+    grid-column: 2;
+    width: 40px;
+    height: 28px;
+    margin: 0px;
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta--compact .maik-cta__arrow-image {
+    width: 30px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    :where(.ueber-projekte .projects-more) .maik-cta:hover :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
+      transform: translate(2px, 2px);
+    }
+    :where(.ueber-projekte .projects-more) .maik-cta:hover .maik-cta__arrow {
+      box-shadow: rgba(151, 206, 32, 0.34) 0px 0px 0px 1px inset, rgba(23, 25, 22, 0.08) 0px 0px 0px 2px;
+    }
+    :where(.ueber-projekte .projects-more) :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing:hover .maik-cta__arrow-image {
+      animation-play-state: paused;
+    }
+    :where(.ueber-projekte .projects-more) .maik-cta:hover .maik-cta__arrow-image {
+      left: 1.5px;
+    }
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta.is-pressed :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
+    transform: translate(6px, 6px);
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta--compact.is-pressed :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) {
+    transform: translate(4px, 4px);
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta.is-pulsing.is-pressed .maik-cta__arrow-image {
+    animation: auto ease 0s 1 normal none running none;
+    transform: translateX(1px);
+  }
+
+  :where(.ueber-projekte .projects-more) .maik-cta:focus-visible {
+    outline: 2px solid var(--home-focus, var(--home-lime));
+    outline-offset: 9px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(.ueber-projekte .projects-more) .maik-cta,
+    :where(.ueber-projekte .projects-more) .maik-cta__arrow-image {
+      animation: auto ease 0s 1 normal none running none !important;
+    }
+    :where(.ueber-projekte .projects-more) .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__arrow-image) {
+      transition: none;
+    }
+  }
+
+  @keyframes maik-cta-arrow-rhythm { 0%, 19%, 100% { transform: translateX(0px); } 7% { transform: translateX(2px); } 12% { transform: translateX(-0.35px); } 16% { transform: translateX(0.55px); } }
 }
 
 /* Mobile Angleichung an die regulaeren Leistungsseiten. Bewusst vollstaendig
@@ -1571,7 +1772,7 @@ body.ueber-page {
   .ueber-hero {
     position: relative;
     padding-top: 0;
-    background: #1B1E19;
+    background: var(--page-background);
   }
 
   .ueber-hero__kopf {
@@ -1683,8 +1884,10 @@ body.ueber-page {
     line-height: 1.15;
   }
 
+  /* Ansage 01.10.2026: "Das Team" kursiv wie am Rechner (Baloo 2 hat keinen
+     Kursivschnitt, der Browser neigt die Schrift). Staerke bleibt 600. */
   .ueber-inhaber__gross span {
-    font-style: normal;
+    font-style: italic;
     font-weight: 600;
   }
 
@@ -1833,4 +2036,392 @@ body.ueber-page {
 @media (max-width: 360px) {
   .ueber-hero__titel,
   .ueber-abschnitt-titel { font-size: 28px; }
+}
+
+/* AP-532: "Fuer wen wir arbeiten" und "Alles aus einer Hand" tragen ab 481px die
+   Handy-Gestalt - Farbe und Schrift wie im 480er-Block oben, auf Ansage des
+   Auftraggebers (01.10.2026). Bis hierher standen sie dort in 16px fett in --ink.
+   Abstaende bleiben die des Desktops. Muss hinter .ueber-fuerwen__titel
+   { color: var(--ink) } stehen - gleiche Spezifitaet, die spaetere gewinnt.
+
+   "Alles aus einer Hand" steht mittig ueber der Kette: Der Nachsatz schrumpft auf
+   die Breite seines Inhalts (fit-content), der Titel zentriert sich darin. Der
+   Kasten selbst steht mittig in der Spalte - auf derselben Achse wie die
+   Ueberschrift "Ehrlich beraten, sauber gebaut" (Nachtrag, ebenfalls auf Ansage). Waehrend der Schreibmaschine (main.js, is-typing) lag die
+   Kette absolut und zaehlte nicht mit - der Kasten waere auf die Typer-Breite
+   geschrumpft und der Titel am Ende gesprungen. Ab 481px bleibt sie deshalb im
+   Fluss; Clip, 1px-Hoehe und negativer Rand bleiben, sie ist weiter nur fuer
+   Screenreader da und haelt so die Breite fest. */
+@media (min-width: 481px) {
+  .ueber-betrieb__kicker,
+  .ueber-fuerwen__titel {
+    font-family: "Baloo 2", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: clamp(1.3rem, 5.8vw, 1.45rem);
+    line-height: 1.17;
+    letter-spacing: -.012em;
+    color: var(--mobile-logo-green);
+    text-align: center;
+  }
+
+  .ueber-betrieb__nachsatz {
+    justify-self: center;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .ueber-betrieb.is-typing .ueber-betrieb__kette {
+    position: static;
+    width: auto;
+    margin: -1px 0 0; /* seitlich 0 - sonst waere der Kasten 2px schmaler */
+  }
+
+  /* Ansage 01.10.2026: Die Schreibmaschine schreibt in der Groesse des Zusage-Satzes
+     "Getroffene Absprachen ..." (Block "Nachtrag 6" weiter unten, ab 481px 19px) -
+     derselbe Ausdruck, statt der 22-28px aus AP-447. Zuvor am selben Tag kurz die
+     Groesse von "Alles aus einer Hand", auf Ansage ersetzt. Schrift und Farbe bleiben. */
+  .ueber-betrieb__typer-box { font-size: clamp(1.125rem, 4.8vw, 1.1875rem); }
+}
+
+/* AP-532 (Nachtrag 2): Am Rechner steht "Das Team" rechts neben dem Startfoto, Steg
+   und Zitat mittig darunter - auf Ansage des Auftraggebers (01.10.2026). Loest die
+   Mittelachse aus AP-530 fuer diesen Teil ab; Titel und Kruemelpfad bleiben oben
+   mittig.
+
+   Foto und Text liegen in zwei Sektionen. Das Raster von "Das Team" traegt deshalb
+   ein zweites Exemplar der Figur (.ueber-inhaber__foto, siehe Markup). Bis 900px ist
+   es aus - das Handy behaelt das Startfoto in .ueber-hero, unveraendert. Ab 901px ist
+   es umgekehrt.
+
+   Abstand Seitentitel -> Foto bleibt der untere Rand des Titels: .ueber-hero hat
+   kein unteres Polster, das obere Polster von .ueber-inhaber (AP-530, Abstand Foto
+   -> Ueberschrift) entfaellt, weil Foto und Ueberschrift jetzt nebeneinander stehen.
+
+   Spalten: Foto 440px wie bisher (Schaerfe, siehe AP-530), Text bis 560px. Bei
+   knappem Rechner schrumpft das Foto bis 300px. Text links buendig an einer Kante
+   neben dem Bild, senkrecht mittig zum Foto. Steg und Zitat ueber beide Spalten,
+   aber in der bisherigen Breite von 600px mittig. */
+@media (max-width: 900px) {
+  .ueber-inhaber__foto { display: none; }
+}
+
+@media (min-width: 901px) {
+  .ueber-hero .ueber-hero__foto { display: none; }
+
+  .ueber-inhaber { padding-top: 0; }
+
+  .ueber-inhaber__raster {
+    /* AP-533 (Ansage 02.10.2026): Spiegelbild des Rasters "Ehrlich beraten, sauber
+       gebaut" weiter unten - Foto 440px, Text 400px, dieselbe Luecke
+       clamp(26px, 3.6vw, 56px), mittig im selben Container. Beide Bloecke laufen damit
+       auf jeder Breite an denselben Aussenkanten. Bis hierher Text bis 560px und
+       Luecke clamp(28px, 4vw, 56px) - der obere Block war bei 1280px 165px breiter. */
+    grid-template-columns: minmax(0, 440px) minmax(0, 400px);
+    grid-template-areas:
+      "foto text"
+      "steg steg"
+      "zitat zitat";
+    column-gap: clamp(26px, 3.6vw, 56px);
+    justify-content: center;
+    align-items: center;
+    max-width: none; /* hebt die 600px der Mittelachse (AP-530) auf */
+  }
+
+  .ueber-inhaber__foto {
+    grid-area: foto;
+    width: 100%;
+  }
+
+  /* Ansage 01.10.2026: Die Bluetengruppe sitzt am Rechner unten LINKS ueber der
+     Ecke - gespiegelt zur Grundregel (right -14px, bottom -18px). Das Handy behaelt
+     sie rechts. */
+  .ueber-inhaber__foto .ueber-hero__bluete {
+    right: auto;
+    left: -14px;
+  }
+
+  .ueber-inhaber__raster > div:has(> .ueber-inhaber__gross) { grid-area: text; }
+
+  .ueber-inhaber__gross,
+  .ueber-inhaber__text {
+    text-align: left;
+    text-wrap: pretty;
+  }
+
+  /* Ansage 01.10.2026: Der Absatz steht im Blocksatz. Linksbuendig endeten seine
+     Zeilen rund 35px vor dem Kastenrand; die mittig gesetzte Ueberschrift sass dadurch
+     sichtbar rechts vom Text, obwohl sie rechnerisch mittig ueber dem Kasten stand.
+     Mit gerader rechter Kante sind Kasten und Text deckungsgleich. Letzte Zeile links,
+     Silbentrennung gegen grosse Wortluecken (lang="de"). */
+  .ueber-inhaber__text {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+  }
+
+  /* Ansage 01.10.2026: Die beiden Absaetze unter "Ehrlich beraten, sauber gebaut"
+     ebenfalls im Blocksatz, gleiche Regeln wie oben. Die Zusage-Kachel bleibt. */
+  .ueber-betrieb__wort .ueber-betrieb__fakten,
+  .ueber-betrieb__wort .lead {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+  }
+
+  /* Ansage 01.10.2026: Die Ueberschrift neben dem Foto so gross wie "Alles aus einer
+     Hand" (Titel-Block oben, ab 481px) - derselbe Ausdruck, ab 901px 23,2px statt
+     clamp(1.6rem, 2.7vw, 2.3rem). Schrift, Farbe und Ausrichtung bleiben. */
+  .ueber-inhaber__gross { font-size: clamp(1.3rem, 5.8vw, 1.45rem); }
+
+  /* Ansage 01.10.2026: Die Ueberschrift steht mittig ueber dem Absatz (der die ganze
+     Textspalte fuellt); der Absatz bleibt linksbuendig. Farbe wie "Alles aus einer
+     Hand" (--mobile-logo-green), ebenfalls auf Ansage. */
+  .ueber-inhaber__gross {
+    text-align: center;
+    color: var(--mobile-logo-green);
+    /* Schrift wie "Alles aus einer Hand" (Titel-Block oben), ebenfalls auf Ansage. */
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 600;
+    line-height: 1.17;
+    letter-spacing: -.012em;
+  }
+
+  /* "Das Team" bleibt kursiv und hervorgehoben (Ansage). Baloo 2 hat keinen
+     Kursivschnitt - der Browser neigt die Schrift. 700 ist der staerkste
+     vorhandene Schnitt (baloo2-700-latin.woff2); 800 aus der Grundregel fiele
+     ohnehin darauf zurueck. */
+  .ueber-inhaber__gross span {
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  /* Nachtrag 3 (Ansage 01.10.2026): mehr Luft zwischen Foto und Steg. Statt
+     clamp(28px, 3vw, 40px) aus AP-530 die Stufe Foto -> Ueberschrift derselben
+     Datei (AP-530), kein neu gegriffener Wert. */
+  .ueber-inhaber__steg {
+    grid-area: steg;
+    justify-self: center;
+    width: min(100%, 600px);
+    /* AP-533 (Ansage 02.10.2026): Fotounterkante -> Linie so gross wie Signatur ->
+       naechstes Foto (die beiden Sektionspolster aus AP-460, je
+       clamp(26px, 3.75vw, 48px)). Die Linie liegt in der Mitte des 72px hohen Stegs,
+       daher minus 36px. Vorher clamp(44px, 4.4vw, 60px) aus Nachtrag 3. */
+    margin-top: calc(2 * clamp(26px, 3.75vw, 48px) - 36px);
+  }
+
+  .ueber-inhaber__zitat {
+    grid-area: zitat;
+    justify-self: center;
+    max-width: 600px;
+  }
+}
+
+/* AP-532 (Nachtrag 6, Ansage 01.10.2026): Die Kacheln "Fuer wen wir arbeiten" und die
+   Zusage-Kachel "Getroffene Absprachen ..." tragen ab 481px Farbe und Inhalt der
+   Handy-Fassung - Werte woertlich aus dem 480er-Block oben. Damit sind die gruenen
+   Flaechen aus AP-463/471/483 ab 481px ueberschrieben, die Kacheln zeigen nur noch
+   Titel und Pfeil-Pille (Beschreibung aus, wie am Handy).
+   Nicht uebernommen sind die Abstaende, die an --ueber-space-* haengen - die
+   Variablen gibt es nur bis 480px; am Rechner bleiben dessen Abstaende. Gleiche
+   Selektoren, gleiche Spezifitaet, dieser Block steht zuletzt. */
+@media (min-width: 481px) {
+  .ueber-betrieb__zusage {
+    padding: 24px 16px 25px;
+    border-radius: 18px 5px 18px 5px;
+    background: rgb(74 122 16 / 14%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .018),
+      0 22px 42px -38px rgba(0, 0, 0, .9);
+  }
+
+  .ueber-betrieb__zusage-satz {
+    font-size: clamp(1.125rem, 4.8vw, 1.1875rem);
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  .ueber-fuerwen__liste li {
+    border: 1px solid rgba(183, 203, 160, .18);
+    border-radius: 18px 5px 18px 5px;
+    background: #22271f;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .025),
+      0 16px 34px -30px rgba(0, 0, 0, .9);
+    transition:
+      border-color .2s var(--ease),
+      background-color .2s var(--ease),
+      box-shadow .2s var(--ease);
+  }
+
+  .ueber-fuerwen__liste li:active {
+    border-color: rgba(183, 203, 160, .3);
+    background: #252b22;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .035),
+      0 20px 38px -30px rgba(0, 0, 0, .95);
+  }
+
+  .ueber-fuerwen__karte {
+    display: flex;
+    align-items: center;
+    min-height: 72px;
+    padding: 16px 92px 16px 16px;
+    border-radius: 18px 5px 18px 5px;
+  }
+
+  /* Anders als am Handy stehen die Kacheln nebeneinander: Bricht ein Titel
+     zweizeilig, wird die ganze Reihe hoeher. Die Karte fuellt deshalb die Kachel,
+     damit Titel und Pfeil-Pille in jeder Kachel senkrecht mittig bleiben. */
+  .ueber-fuerwen__liste li { display: flex; }
+  .ueber-fuerwen__liste li > .ueber-fuerwen__karte { flex: 1; }
+
+  .ueber-fuerwen__liste h4 { margin: 0; }
+
+  .ueber-fuerwen__karte:focus-visible {
+    outline: 2px solid var(--yellow);
+    outline-offset: -3px;
+  }
+
+  .ueber-fuerwen__liste p { display: none; }
+}
+
+@media (min-width: 481px) and (hover: hover) and (pointer: fine) {
+  .ueber-fuerwen__liste li:hover {
+    border-color: rgba(183, 203, 160, .3);
+    background: #252b22;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .035),
+      0 20px 38px -30px rgba(0, 0, 0, .95);
+  }
+}
+
+/* AP-532 (Nachtrag 7, Ansage 01.10.2026): Von der Trennlinie bis "Fuer wen wir
+   arbeiten" so viel Luft wie vom unteren Kachelrand bis "Was wir umgesetzt haben".
+   Dieser untere Abstand sind die beiden halbierten Sektionspolster aus AP-522
+   (.ueber-betrieb unten + .ueber-projekte oben, je clamp(26px, 3.75vw, 48px));
+   derselbe Ausdruck hier, damit beide ueber alle Breiten gleich mitwachsen.
+   Gemessen: 67,6px bei 901px, 96px ab 1280px - oben wie unten. */
+@media (min-width: 901px) {
+  .ueber-fuerwen { padding-top: calc(2 * clamp(26px, 3.75vw, 48px)); }
+}
+
+/* AP-532 (Nachtrag 9, Ansage 01.10.2026)
+   A. Die beiden Absaetze unter "Ehrlich beraten, sauber gebaut" tragen am Rechner
+      Groesse, Schrift, Zeilenabstand und Farbe des Team-Textes (.ueber-inhaber__text:
+      --ink-2, 1.0625rem, 1.65) - am Handy teilen alle drei schon einen Regelsatz.
+   B. Zusage-Kachel und "Alles aus einer Hand" stehen am Rechner unter Text und Foto,
+      mittig auf der Seite. Die Kachel steckt im Markup in .ueber-betrieb__wort;
+      display: contents macht Ueberschrift, Absaetze und Kachel zu Rasterkindern, ohne
+      das Markup (und die Handy-Fassung) anzufassen. Das Foto reicht damit nur noch bis
+      zur Hoehe des Textblocks (AP-523 hatte es bis zur Kette gezogen). Es steht
+      wieder im Seitenverhaeltnis 4:3 wie das Team-Foto; der Text steht senkrecht
+      mittig daneben - die beiden 1fr-Zeilen oben und unten nehmen den Ueberhang des
+      Fotos auf (bei einem Rasterkind ueber flexible Zeilen verteilt der Browser die
+      Hoehe nur auf diese), sonst wuerden die Luecken zwischen den Absaetzen wachsen.
+      Folge: .ueber-betrieb__wort ist ohne eigenen Kasten und blendet sich am Rechner
+      nicht mehr ein (reveal) - der Inhalt steht sofort. Die Abstaende sind die
+      bisherige Rasterluecke clamp(26px, 3.6vw, 56px) und die 16px der Absaetze. */
+@media (min-width: 901px) {
+  .ueber-betrieb__wort .ueber-betrieb__fakten,
+  .ueber-betrieb__wort .lead {
+    color: var(--ink-2);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    letter-spacing: normal;
+  }
+
+  /* Ansage 01.10.2026: Die Textspalte ist schmaler, damit der Textblock etwa so hoch
+     steht wie das Foto (330px). Gemessen bei 1280px: 400px Spalte -> 326px Textblock
+     (Ueberschrift zweizeilig, Absaetze je vier Zeilen); bei 440px waeren es 263px.
+     Text und Foto stehen als Paar mittig im Container. */
+  .ueber-betrieb__raster {
+    grid-template-columns: minmax(0, 400px) minmax(0, 440px);
+    justify-content: center;
+    grid-template-rows: 1fr auto auto auto 1fr auto auto;
+    grid-template-areas:
+      ".        bild"
+      "titel    bild"
+      "fakten   bild"
+      "lead     bild"
+      ".        bild"
+      "zusage   zusage"
+      "nachsatz nachsatz";
+    row-gap: 0;
+  }
+
+  .ueber-betrieb__raster > .ueber-betrieb__bild {
+    align-self: center;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .ueber-betrieb__wort { display: contents; }
+  .ueber-betrieb__wort > .type-section-title { grid-area: titel; }
+  .ueber-betrieb__wort > .ueber-betrieb__fakten { grid-area: fakten; }
+  .ueber-betrieb__wort > .lead { grid-area: lead; }
+
+  .ueber-betrieb__wort > .ueber-betrieb__zusage {
+    grid-area: zusage;
+    justify-self: center;
+    width: min(100%, 680px);
+    margin-top: clamp(26px, 3.6vw, 56px);
+  }
+
+  /* Ansage 01.10.2026: Der Satz steht mittig in der Kachel - linksbuendig lag rechts
+     mehr Luft als links. balance gleicht die beiden Zeilen an. */
+  .ueber-betrieb__zusage-satz {
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .ueber-betrieb__nachsatz {
+    grid-area: nachsatz;
+    margin-top: clamp(26px, 3.6vw, 56px);
+  }
+}
+
+/* --- Querformat am Handy (AP-535, 02.10.2026) -----------------------------
+   Ansage des Auftraggebers: Das Handy quer gehalten (iPhone 16 Pro: 874 x 402)
+   bleibt in der Handy-Welt, hat aber fast die doppelte Breite. Gemessen bei
+   874px vor dieser Aenderung:
+   - Startfoto 760 x 570 - hoeher als der sichtbare Bereich (~320px unter der
+     Kopfleiste). Jetzt 440px wie das Hebeaktion-Foto und der Desktop (AP-530);
+     die Datei ist 900px breit, bleibt also scharf.
+   - Absatz unter "Das Team hinter dem Betrieb." 804px breit und linksbuendig
+     unter einer mittigen Ueberschrift. Jetzt mittig auf 600px (Mittelachse
+     wie AP-530).
+   - Faktensatz und "Im Mittelpunkt ..." 416 / 587px, linksbuendig an der
+     Containerkante. Jetzt mittig unter der H2 und breiter, ebenfalls 600px.
+   - Hebeaktion-Foto 440px an der linken Kante. Jetzt mittig.
+   - Projektkarten 78 % = 627 x 600. Jetzt 320px breit; das Karussell bleibt
+     (Entscheidung des Auftraggebers), zwei Karten und der Anschnitt der
+     dritten sind zu sehen - der Hinweis aus AP-327.
+   Zitat, Titel, Zusage-Kachel, "Alles aus einer Hand" und "Fuer wen wir
+   arbeiten" bleiben auf Ansage unveraendert. Bis 480px (Hochformat) und ab
+   901px aendert sich nichts. Tablets im Hochformat (768px) liegen ebenfalls
+   in diesem Band und bekommen dieselbe Anordnung. Der Block steht am
+   Dateiende, damit er die gleich gewichteten Regeln oben schlaegt. */
+@media (min-width: 481px) and (max-width: 900px) {
+  .ueber-hero .ueber-hero__foto { width: min(calc(100% - 64px), 440px); }
+
+  .ueber-inhaber__text {
+    max-width: 600px;
+    margin-inline: auto;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .ueber-betrieb__wort .ueber-betrieb__fakten,
+  .ueber-betrieb__wort .lead {
+    max-width: 600px;
+    margin-inline: auto;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  /* max-width: 440px kommt aus dem 900er-Block oben. */
+  .ueber-betrieb__bild { justify-self: center; width: 100%; }
+
+  .ueber-projekte__spur .project-card { flex: 0 0 320px; }
 }

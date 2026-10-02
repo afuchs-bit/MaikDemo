@@ -8,29 +8,29 @@ import { renderNavSubmenu } from './lib/render.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const TEMPLATE = path.join(__dirname, 'templates', '_header.html');
-const LEISTUNGS_ROOTS = [
-  path.join(REPO_ROOT, 'privatkunden', 'leistungen'),
-  path.join(REPO_ROOT, 'gewerbekunden', 'leistungen'),
-];
-
-function fill(template, data) {
-  return template.replace(/\{\{([\w]+)\}\}/g, (match, key) => (
-    Object.prototype.hasOwnProperty.call(data, key) ? String(data[key]) : match
-  ));
-}
+const CSS_VERSION = '20261002x';
+const JS_VERSION = '20261002e';
+const GALLERY_JS_VERSION = '20261001a';
+const FOOTER_CSS_VERSION = '20261002a';
+const PRIVATE_FORM_JS_VERSION = '20261002a';
+const REQUEST_CSS_VERSION = '20261002c';
+const HOME_SPACING_CSS_VERSION = '20261002b';
+const SKIP_DIRS = new Set(['admin', 'assets', 'content', 'data', 'docs', 'node_modules', 'tmp']);
 
 function pageBase(file) {
+  if (path.basename(file) === '404.html') return '/';
   const relativeDir = path.dirname(path.relative(REPO_ROOT, file));
   if (relativeDir === '.') return '';
   return '../'.repeat(relativeDir.split(path.sep).length);
 }
 
-async function findIndexFiles(dir) {
+async function findPublishedHtml(dir) {
   const files = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
+    if (entry.isDirectory() && (entry.name.startsWith('.') || SKIP_DIRS.has(entry.name))) continue;
     const target = path.join(dir, entry.name);
-    if (entry.isDirectory()) files.push(...await findIndexFiles(target));
-    else if (entry.isFile() && entry.name === 'index.html') files.push(target);
+    if (entry.isDirectory()) files.push(...await findPublishedHtml(target));
+    else if (entry.isFile() && (entry.name === 'index.html' || entry.name === '404.html')) files.push(target);
   }
   return files;
 }
@@ -38,38 +38,55 @@ async function findIndexFiles(dir) {
 function replaceHeader(html, header) {
   const marked = /<!-- BUILD:site-header:start -->[\s\S]*?<!-- BUILD:site-header:end -->/;
   if (marked.test(html)) return html.replace(marked, header);
+  const legacy = /(?:<!-- ============ HEADER \/ NAV ============ -->\s*)?<header\b[^>]*class=(['"])site-header\1[^>]*>[\s\S]*?<\/header>/;
+  return legacy.test(html) ? html.replace(legacy, header) : null;
+}
 
-  const legacy = /<!-- ============ HEADER \/ NAV ============ -->\s*<header\b[^>]*class=(['"])site-header\1[^>]*>[\s\S]*?<\/header>/;
-  if (legacy.test(html)) return html.replace(legacy, header);
-
-  const plain = /<header\b[^>]*class=(['"])site-header\1[^>]*>[\s\S]*?<\/header>/;
-  if (plain.test(html)) return html.replace(plain, header);
-  return null;
+function updateAssetVersions(html) {
+  return html
+    .replace(/styles\.css\?v=[\w.-]+/g, `styles.css?v=${CSS_VERSION}`)
+    .replace(/header-home\.css\?v=[\w.-]+/g, `header-home.css?v=${CSS_VERSION}`)
+    .replace(/home-process\.css\?v=[\w.-]+/g, `home-process.css?v=${CSS_VERSION}`)
+    .replace(/home-spacing\.css\?v=[\w.-]+/g, `home-spacing.css?v=${HOME_SPACING_CSS_VERSION}`)
+    .replace(/anfrage\.css\?v=[\w.-]+/g, `anfrage.css?v=${REQUEST_CSS_VERSION}`)
+    .replace(/privat-form\.css\?v=[\w.-]+/g, `privat-form.css?v=${CSS_VERSION}`)
+    .replace(/home-dark\.css\?v=[\w.-]+/g, `home-dark.css?v=${CSS_VERSION}`)
+    .replace(/mobile-social-proof\.css\?v=[\w.-]+/g, `mobile-social-proof.css?v=${CSS_VERSION}`)
+    .replace(/cta-family-home\.css\?v=[\w.-]+/g, `cta-family-home.css?v=${CSS_VERSION}`)
+    .replace(/leistung-mobile\.css\?v=[\w.-]+/g, `leistung-mobile.css?v=${CSS_VERSION}`)
+    .replace(/kontakt\.css\?v=[\w.-]+/g, `kontakt.css?v=${CSS_VERSION}`)
+    .replace(/ueber-uns\.css\?v=[\w.-]+/g, `ueber-uns.css?v=${CSS_VERSION}`)
+    .replace(/projekte\.css\?v=[\w.-]+/g, `projekte.css?v=${CSS_VERSION}`)
+    .replace(/footer-kontakt\.css\?v=[\w.-]+/g, `footer-kontakt.css?v=${FOOTER_CSS_VERSION}`)
+    .replace(/privat-form\.js\?v=[\w.-]+/g, `privat-form.js?v=${PRIVATE_FORM_JS_VERSION}`)
+    .replace(/main\.js\?v=[\w.-]+/g, `main.js?v=${JS_VERSION}`)
+    .replace(/home-header-morph\.js\?v=[\w.-]+/g, `home-header-morph.js?v=${JS_VERSION}`)
+    .replace(/mobile-social-proof-gallery\.js\?v=[\w.-]+/g, `mobile-social-proof-gallery.js?v=${GALLERY_JS_VERSION}`)
+    .replace(/(<link\b[^>]*href="[^"]*header-home\.css[^>]*?)\s+media="[^"]*"/g, '$1');
 }
 
 async function main() {
   const template = await readFile(TEMPLATE, 'utf8');
-  const files = [path.join(REPO_ROOT, 'index.html')];
-  for (const root of LEISTUNGS_ROOTS) files.push(...await findIndexFiles(root));
+  const files = await findPublishedHtml(REPO_ROOT);
 
   let updated = 0;
   for (const file of files) {
     const html = await readFile(file, 'utf8');
     if (!html.includes('class="site-header"')) continue;
     const base = pageBase(file);
-    const header = fill(template, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim();
-    if (/\{\{(?:base|leistungenSubmenu)\}\}/.test(header)) {
-      throw new Error(`Nicht aufgeloester Header-Platzhalter in ${path.relative(REPO_ROOT, file)}`);
-    }
-    const next = replaceHeader(html, header);
-    if (next === null) throw new Error(`Header konnte nicht ersetzt werden: ${path.relative(REPO_ROOT, file)}`);
+    const data = { base, leistungenSubmenu: renderNavSubmenu(base) };
+    const header = template.replace(/\{\{(\w+)\}\}/g, (match, key) => data[key] ?? match).trim();
+    if (/\{\{\w+\}\}/.test(header)) throw new Error('Nicht aufgeloester Header-Platzhalter');
+    const withHeader = replaceHeader(html, header);
+    if (withHeader === null) throw new Error(`Header fehlt: ${path.relative(REPO_ROOT, file)}`);
+    const next = updateAssetVersions(withHeader);
     if (next !== html) {
       await writeFile(file, next, 'utf8');
       updated += 1;
     }
   }
 
-  console.log(`✅ Einheitlicher Header in ${updated} von ${files.length} Seiten aktualisiert.`);
+  console.log(`✅ Einheitlicher Header in ${updated} von ${files.length} veröffentlichten Seiten aktualisiert.`);
 }
 
 main().catch((error) => {

@@ -279,6 +279,29 @@
       "width": 800,
       "height": 600,
       "aspect": 0.75
+    },
+    "/assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-20261002.jpg": {
+      "base": "/assets/img/leistungen-mobile/baumkontrolle-wurzelanlauf-hero-20261002",
+      "widths": [
+        480,
+        800,
+        1200,
+        1536
+      ],
+      "width": 800,
+      "height": 533,
+      "aspect": 0.6663
+    },
+    "/assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-vorschau-20261002.jpg": {
+      "base": "/assets/img/leistungen-mobile/baumkontrolle-wurzelanlauf-vorschau-20261002",
+      "widths": [
+        240,
+        480,
+        640
+      ],
+      "width": 480,
+      "height": 480,
+      "aspect": 1
     }
   }
 }
