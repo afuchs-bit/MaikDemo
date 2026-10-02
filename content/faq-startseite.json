@@ -1,6 +1,6 @@
 {
   "_hinweis": "Quelle der Startseiten-FAQ. build-leistungen.mjs generiert daraus die sichtbare Liste UND das FAQPage-Schema in index.html (identischer Text). Antworten answer-first: die ersten 40–60 Wörter beantworten die Frage vollständig. Die Fragen stehen in Gruppen mit Zwischentiteln; \"sichtbareGruppen\" legt fest, wie viele Gruppen offen stehen — der Rest liegt hinter einem Schalter.",
-  "sichtbareGruppen": 2,
+  "sichtbareGruppen": 1,
   "gruppen": [
     {
       "id": "anfrage-ablauf",

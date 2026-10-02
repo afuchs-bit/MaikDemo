@@ -161,7 +161,7 @@ index 5d5747a..b9bb207 100644
 @@ -1121,13 +1121,13 @@ function lpv2MobileCtaLabelClass(label) {
    return 'maik-cta__label--compact';
  }
- 
+
 -function lpv2HomepageCta(label, base, extraClass = '', href = '#kontakt', attention = true, labelClass = '', icon = 'arrow') {
 +function lpv2HomepageCta(label, base, extraClass = '', href = '#kontakt', attention = true, labelClass = '', icon = 'arrow', attrs = '') {
    const classes = [extraClass, 'maik-cta', attention ? 'maik-cta--attention' : '', 'reveal'].filter(Boolean).join(' ');
@@ -188,7 +188,7 @@ index 5d5747a..b9bb207 100644
 +        ${lpv2HomepageCta(label, base, 'lpv2-closing-cta', leistung.ctaHref || '#kontakt', true, '', leistung.ctaIcon || 'arrow', late)}
        </div>`;
  }
- 
+
  function lpv2ContentSection(leistung, base) {
    if (leistung.contentVariant !== 'editorial') return '';
 +  // AP-534: Trichter-Layout am Rechner - Listenpunkte und Hinweistext erscheinen einzeln
@@ -299,7 +299,7 @@ index 7ca6b90..7ae58da 100644
 @@ -309,6 +309,13 @@
      el.classList.add('is-in');
    };
- 
+
 +  // AP-534: Elemente mit data-reveal-late erscheinen am Rechner (ab 901px) erst, wenn ihre
 +  // Oberkante 72 % der Fensterhoehe erreicht - statt 90 % wie alle anderen. So kommen die
 +  // Listenpunkte der Leistungsseiten einzeln beim Scrollen. Unter 901px gilt das Attribut
@@ -322,7 +322,7 @@ index 7ca6b90..7ae58da 100644
 @@ -365,6 +372,18 @@
      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
    }
- 
+
 +  // AP-534: zweiter Beobachter, Ausloeselinie bei 72 % statt 90 % der Fensterhoehe.
 +  let revealObserverLate = null;
 +  if (revealObserver && lateRevealActive) {
@@ -365,7 +365,7 @@ index 4c42a91..3633f8c 100644
 --- a/index.html
 +++ b/index.html
 @@ -2516,7 +2516,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
- 
+
  <script src="assets/vendor/gsap/gsap.min.js?v=3.13.0" defer></script>
  <script src="assets/vendor/gsap/ScrollTrigger.min.js?v=3.13.0" defer></script>
 -<script src="assets/js/main.js?v=20260923f" defer></script>

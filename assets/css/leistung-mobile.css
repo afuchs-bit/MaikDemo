@@ -27,10 +27,10 @@
    erhoehen, und der Block steht VOR dem Handy-Block dieser Datei: So gewinnen die
    eigenen Regeln der Leistungsseiten wie auf dem Handy, wo die Quelldateien vor
    dieser geladen werden. vw ist in cqw umgerechnet (Spaltenbreite, siehe
-   container-type im AP-512-Block am Dateiende). Dazu die eine Variable, die
-   privat-form.css bis 480px auf html setzt (--home-page-background).
+   container-type im AP-512-Block am Dateiende). --home-page-background wird
+   seit AP-548 zentral in styles.css vom gemeinsamen Seitengrund abgeleitet.
    Das ist dieselbe Technik wie die begrenzten Knopf-Kopien seit AP-503 (bis AP-511).
-   Aendert sich eine der Quellregeln, muss diese Kopie mit. 103 Regeln und 1 Variable, Stand
+   Aendert sich eine der Quellregeln, muss diese Kopie mit. 103 Regeln, Stand
    30.09.2026 (nach AP-507: die Leistungsliste iphone-service-* steht in
    privat-form.css seither auf allen Breiten und ist nicht mehr Teil der Kopie). */
 
@@ -50,7 +50,6 @@
 @media (min-width:768px){:where(.lpv2-main) .private-contact-layout{margin-top: 32px;}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) h2.maik-section-title{display: block; width: 100%; max-width: none; margin: 0px auto; padding: 0px; font-family: "Baloo 2", sans-serif; font-size: 31px; font-weight: 600; font-style: normal; line-height: 1.13; letter-spacing: -0.015em; text-align: center; text-wrap: balance; color: var(--home-on-dark); -webkit-text-stroke: 0px; paint-order: normal;}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) h2.maik-section-title::after{content: none; display: none;}}
-@media (min-width:481px){:where(.lpv2-main){--home-page-background:#1b1e19}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact::before{display: none;}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) :is(.mobile-social-proof, .mr-ueber, .private-request-paths, .private-process-updated, .private-proof-bento, .private-contact, .private-faq){background: var(--home-page-background);}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) :is(.mr-ueber, .private-request-paths, .private-process-updated, .private-proof-bento, .private-contact, .private-faq){border-block: 0px; box-shadow: none;}}
@@ -142,7 +141,7 @@
 /* AP-512: war @media (max-width:480px). "all" statt einer Aufloesung des Blocks, damit
    die Zeilen unveraendert bleiben und ein Vergleich mit dem Stand davor lesbar ist. */
 @media all{
-  :root{--lp-bg:#1b1e19;--lp-bg-soft:#22271f;--lp-ink:#f3efe5;--lp-muted:#c4c8bc;--lp-line:rgba(243,239,229,.18);--lp-lime:#69ef00;--lp-radius:22px;--lp-pad:20px}
+  :root{--lp-bg:var(--page-background);--lp-bg-soft:#22271f;--lp-ink:#f3efe5;--lp-muted:#c4c8bc;--lp-line:rgba(243,239,229,.18);--lp-lime:#69ef00;--lp-radius:22px;--lp-pad:20px}
   .lpv2-page--homepage-unified{--lp-ink:var(--home-on-dark,#fafaf6);--lp-muted:var(--home-on-dark-2,#d9ded5);--lp-lime:var(--home-lime,#8cc63f);--lpv2-text-heading:var(--home-on-dark,#fafaf6);--lpv2-text-body:var(--home-on-dark-2,#d9ded5);--lpv2-text-muted:var(--home-on-dark-mute,#aeb5aa);--lpv2-text-accent:var(--home-dark-accent,#b6d97a);--lpv2-space-section:clamp(60px,16vw,68px);--lpv2-space-transition:clamp(38px,10.5vw,44px);--lpv2-space-compact:clamp(44px,12vw,52px);--lpv2-space-list-followup:clamp(36px,10vw,42px);--lpv2-space-head:clamp(28px,8vw,34px);--lpv2-space-copy:16px}
   html.lpv2-root{background:var(--lp-bg);scroll-behavior:smooth;overflow-x:hidden}
   html.lpv2-root .lpv2-page{margin:0;background:var(--lp-bg);color:var(--lp-ink);font-family:Nunito,system-ui,sans-serif;overflow-x:hidden}
@@ -497,8 +496,6 @@
   html.lpv2-root .lpv2-page{font-family:var(--body);color:var(--ink)}
   .lpv2-page .lpv2-main{font-family:Nunito,system-ui,sans-serif;color:var(--lp-ink)}
   .lpv2-page .site-footer .container{width:min(100% - calc(var(--gutter) * 2),var(--container));max-width:none;margin-inline:auto;padding-inline:env(safe-area-inset-left,0px) env(safe-area-inset-right,0px)}
-  /* Der Kopf traegt eigene Masse (.header-inner, styles.css:343 und :1811). */
-  .lpv2-page .site-header .header-inner{width:min(100% - 40px,1360px);max-width:none;margin-inline:auto;padding-inline:env(safe-area-inset-left,0px) env(safe-area-inset-right,0px)}
   .lpv2-page .site-footer,.lpv2-page--homepage-unified .site-footer{border-top:1px solid var(--line)}
 }
 
@@ -506,7 +503,6 @@
    Wiederherstellung oben (0,3,0) wuerde das ueberstimmen, deshalb hier nachgezogen. */
 @media (min-width:481px) and (max-width:900px){
   .lpv2-page .site-footer > .container{max-width:34rem}
-  .lpv2-page .site-header .header-inner{width:min(100% - 32px,1360px);max-width:1360px}
 }
 
 @media (min-width:901px){

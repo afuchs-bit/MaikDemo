@@ -27,6 +27,7 @@
 
   const setCallAvailability = (available) => {
     if (!callWrap) return;
+    const hadFocus = callWrap.contains(document.activeElement);
     callWrap.toggleAttribute('inert', !available);
     if (available) {
       callWrap.removeAttribute('aria-hidden');
@@ -36,6 +37,7 @@
     callWrap.setAttribute('aria-hidden', 'true');
     if (callPopover) callPopover.hidden = true;
     callButton?.setAttribute('aria-expanded', 'false');
+    if (hadFocus) header.querySelector('.btn-whatsapp')?.focus({ preventScroll: true });
   };
 
   const updateMeasuredHeaderHeight = () => {

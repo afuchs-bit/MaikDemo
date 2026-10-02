@@ -91,7 +91,7 @@ body.ueber-page {
    Seitengrund #1B1E19 wie das Handy (Ansage des Auftraggebers). */
 html,
 body.ueber-page {
-  background: #1B1E19;
+  background: var(--page-background);
 }
 
 /* Der gruene Steg vor den Sektionsueberschriften war das wiederkehrende
@@ -1772,7 +1772,7 @@ body.ueber-page {
   .ueber-hero {
     position: relative;
     padding-top: 0;
-    background: #1B1E19;
+    background: var(--page-background);
   }
 
   .ueber-hero__kopf {

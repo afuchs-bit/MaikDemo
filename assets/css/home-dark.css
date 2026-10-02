@@ -50,7 +50,7 @@ html.home-theme-dark {
 /* Grundflaechen und bisher fest eingetragene Papierfarben */
 html.home-theme-dark body {
   color: var(--ink);
-  background: var(--bg);
+  background: var(--page-background);
 }
 
 /* AP-386: Hier standen zwei halbdeckende Kopf-Flaechen (--surface-rgb / .82 bzw.
@@ -63,7 +63,7 @@ html.home-theme-dark body {
 html.home-theme-dark .home-hero-stack {
   display: grid;
   grid-template-rows: repeat(2, minmax(0, 1fr));
-  background: linear-gradient(180deg, var(--bg-elev) 0%, var(--bg-hero) 100%);
+  background: var(--page-background);
   border-bottom: 1px solid var(--line);
 }
 
@@ -976,14 +976,14 @@ html.home-theme-dark .fork-path:hover {
     height: clamp(50px, 17vw, 66px);
     /* Eine gemeinsame Grafik haelt Name, Meisterzeile und Blueten in beiden
        Scrollzustaenden proportional und verhindert einen sichtbaren Motivwechsel. */
-    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister.png?v=20260902a");
+    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png?v=20260913b");
     transition:
       width .42s cubic-bezier(.22, 1, .36, 1),
       height .42s cubic-bezier(.22, 1, .36, 1);
   }
 
   html.home-theme-dark.home-header-morph .header-actions {
-    gap: 6px;
+    gap: var(--header-action-gap, 6px);
   }
 
   html.home-theme-dark.home-header-morph .site-header .header-actions .call-wrap {
@@ -1073,6 +1073,12 @@ html.home-theme-dark .fork-path:hover {
     border-color: transparent;
     border-radius: 0;
     box-shadow: none;
+  }
+
+  /* Die Startseiten-Karte behaelt beim Morph zwei transparente Rahmenpixel.
+     Zusammen mit den 16px Innenabstand bleibt die kompakte Leiste 82px hoch. */
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand {
+    min-height: 63px;
   }
 
   html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand-logo,
@@ -1437,10 +1443,12 @@ html.home-theme-dark .fork-path:hover {
    AP-526: auf allen Breiten - der Desktop trug bis dahin den Verlauf. */
 html.home-theme-dark .home-hero-stack,
 html.home-theme-dark .home-hero-stack > .hero--gate-content {
-  background: #1B1E19;
+  background: var(--page-background);
 }
 
-@media (max-width: 480px) {
+/* AP-548: Auch die Querformat-Diagonale laeuft in denselben Seitengrund aus.
+   Die Hochkantfassung und die Gruen-/Bildflaechen bleiben erhalten. */
+@media (max-width: 480px), (max-width: 900px) and (orientation: landscape) {
   html.home-theme-dark .home-hero-stack {
     border-bottom: 0;
   }
@@ -1449,12 +1457,12 @@ html.home-theme-dark .home-hero-stack > .hero--gate-content {
      Grundfarbe. Dadurch kann an der Elementgrenze weder Motiv noch Alpha-Kante
      abgeschnitten erscheinen; die grüne Diagonale darueber bleibt unveraendert. */
   html.home-theme-dark .home-hero-stack > .hero--gate-empty::after {
-    background-color: #1B1E19;
+    background-color: var(--page-background);
     background-image:
       linear-gradient(180deg,
-        rgb(27 30 25 / 86%) 0%,
-        rgb(27 30 25 / 86%) 68%,
-        #1B1E19 100%),
+        rgb(var(--page-background-rgb) / 86%) 0%,
+        rgb(var(--page-background-rgb) / 86%) 68%,
+        var(--page-background) 100%),
       url("../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a");
   }
 }
@@ -1462,8 +1470,8 @@ html.home-theme-dark .home-hero-stack > .hero--gate-content {
 /* AP-503: Der Willkommenbereich (Kopfzeile, Foto, Leitsatz, Eckdaten,
    Qualifikationen) gilt auf allen Breiten. Bis AP-503 war er nur hier im
    480er-Block eingeschaltet, und der Desktop behielt .mr-willkommen. Die
-   Gestaltung steht deshalb ohne Media Query; ab 901px ordnet der Block
-   weiter unten die Teile nur noch neu an. Bei 901px und breiter ist die
+   Grundgestaltung steht deshalb ohne Media Query; Desktop und mobiles
+   Querformat ordnen die Teile weiter unten neu an. Bei 901px und breiter ist die
    Wurzelschrift 16px wie beim iPhone mit 402px, die rem-Werte ergeben dort
    also dieselben Masse. Die Breite ist auf 34rem begrenzt, damit Tablets die
    Handy-Komposition als Mittelspalte zeigen; am Handy ist calc() stets kleiner. */
@@ -1961,36 +1969,111 @@ html.home-theme-dark .gate-welcome-qualification-fallback {
   }
 }
 
-/* AP-503: Desktop-Anordnung des Willkommenbereichs. Gleiche Inhalte, gleiche
-   Reihenfolge wie am Handy; nur die Geometrie aendert sich. Kopfzeile ueber
-   beide Spalten, darunter Foto links und Leitsatz rechts, die Eckdaten als Band
-   und die vier Qualifikationen in einer Reihe. Der Bereich liegt in
-   .hero--gate-content, das ab 901px overflow:hidden traegt (styles.css) - daher
-   keine feste Hoehe; dessen unterer Innenabstand (44px) haelt die Schatten. */
-@media (min-width: 901px) {
-  /* AP-504: Auf den Willkommenbereich folgt jetzt die Galerie-Einladung. Wie am
-     Handy gehen beide ohne Trennlinie ineinander ueber (Handy: Zeile 1444). */
-  html.home-theme-dark .home-hero-stack {
-    border-bottom: 0;
-  }
-
+/* AP-532: Foto und Leitsatz stehen am Desktop und im mobilen Querformat
+   nebeneinander. Die kompakte Zeile und die Textbreite gleichen die Hoehen an;
+   das vollstaendige 4:3-Motiv und die natuerliche Texthoehe bleiben erhalten.
+   Keine dieser Regeln greift in die mobile Hochkant-Komposition ein. */
+@media (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
   html.home-theme-dark .gate-welcome--iphone {
+    --gate-welcome-column-gap: clamp(24px, 4vw, 48px);
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
       "kicker kicker"
       "photo  message"
       "kpi    kpi"
       "quali  quali";
     align-items: center;
-    column-gap: clamp(40px, 5vw, 80px);
-    width: min(100% - calc(var(--gutter) * 2), var(--container));
-    margin: clamp(56px, 6vw, 96px) auto 0;
+    column-gap: var(--gate-welcome-column-gap);
+    width: min(calc(100% - var(--gutter) * 2), 900px);
   }
 
   html.home-theme-dark .gate-welcome-kicker {
     grid-area: kicker;
-    margin: 0 auto clamp(36px, 4vw, 56px);
+    margin: 0 auto clamp(56px, 5vw, 72px);
+  }
+
+  html.home-theme-dark .gate-welcome-photo {
+    --gate-welcome-brand-width: clamp(52px, 8vw, 80px);
+    grid-area: photo;
+    min-width: 0;
+    margin: 0;
+  }
+
+  html.home-theme-dark .gate-welcome-photo-brand {
+    right: -8px;
+  }
+
+  html.home-theme-dark .gate-welcome-message {
+    grid-area: message;
+    min-width: 0;
+    margin: 0;
+  }
+
+  html.home-theme-dark .gate-welcome-statement {
+    font-size: clamp(18px, calc(4vw - 6px), 32px);
+    line-height: 1.4;
+    text-align: left;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .gate-welcome--iphone {
+    --gate-welcome-inset-start: calc(32px + env(safe-area-inset-left, 0px));
+    --gate-welcome-inset-end: calc(32px + env(safe-area-inset-right, 0px));
+    container-type: inline-size;
+    width: min(calc(100% - var(--gate-welcome-inset-start) - var(--gate-welcome-inset-end)), 900px);
+    /* Gleiche freie Flaeche neben dem Motiv auch bei asymmetrischer Aussparung. */
+    margin-inline: var(--gate-welcome-inset-start) var(--gate-welcome-inset-end);
+  }
+
+  html.home-theme-dark .gate-welcome-statement {
+    /* Die reale Zeilenbreite zaehlt: Displayaussparungen verkleinern die
+       Spalten, obwohl der vw-Wert derselbe bleibt. Die erste Zeile ist der
+       Fallback fuer Browser ohne Container-Einheiten. */
+    font-size: clamp(17px, calc(3.5vw - 5px), 28px);
+    font-size: clamp(17px, min(calc(4vw - 6px), 3.6cqw), 28px);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  html.home-theme-dark .gate-welcome--iphone .mobile-kpi-signature,
+  html.home-theme-dark .gate-welcome-qualifications {
+    justify-self: center;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  html.home-theme-dark .gate-welcome--iphone .mobile-kpi-signature {
+    grid-area: kpi;
+  }
+
+  html.home-theme-dark .gate-welcome-qualifications {
+    grid-area: quali;
+  }
+}
+
+/* Desktop-Skalierung von Wortmarke; die Bild-Text-Zeile
+   selbst ist mit dem mobilen Querformat gemeinsam definiert. */
+@media (min-width: 901px) {
+  /* AP-504: Willkommen und Galerie-Einladung gehen ohne Trennlinie ineinander ueber. */
+  html.home-theme-dark .home-hero-stack {
+    border-bottom: 0;
+  }
+
+  html.home-theme-dark .gate-welcome--iphone {
+    --gate-welcome-column-gap: clamp(48px, calc(22vw - 150px), 160px);
+    /* Auf grossen Monitoren mehr Raum zwischen den beiden Inhalten;
+       die Schrift waechst passend zur groesseren Bildflaeche mit. */
+    width: min(calc(100% - var(--gutter) * 2), 1120px);
+    column-gap: var(--gate-welcome-column-gap);
+    margin: clamp(56px, 6vw, 96px) auto 0;
+  }
+
+  html.home-theme-dark .gate-welcome-statement {
+    font-size: clamp(30px, calc(1.67vw + 15px), 36px);
   }
 
   html.home-theme-dark .gate-welcome-intro {
@@ -2000,52 +2083,109 @@ html.home-theme-dark .gate-welcome-qualification-fallback {
   html.home-theme-dark .gate-welcome-wordmark {
     width: 13.5rem;
   }
+}
 
-  html.home-theme-dark .gate-welcome-photo {
-    --gate-welcome-brand-width: clamp(5rem, 6vw, 6.25rem);
-    grid-area: photo;
-    margin: 0;
-  }
-
-  html.home-theme-dark .gate-welcome-message {
-    grid-area: message;
-    margin: 0;
-  }
-
-  html.home-theme-dark .gate-welcome-statement {
-    font-size: clamp(1.5rem, 2.1vw, 1.875rem);
-    line-height: 1.45;
-  }
-
-  /* AP-524, auf Ansage des Auftraggebers (30.09.2026): Die vier Qualifikationen
-     stehen am Desktop wie auf dem Handy im 2x2-Raster der Grundebene, mittig und
-     rund ein Viertel groesser - dieselbe Geometrie wie die Eckdaten darueber
-     (mobile-social-proof.css, AP-524). Bis hierher standen sie als Viererreihe
-     ueber die volle Breite (repeat(4, ...), entfallen).
-     zoom: 1.25 aus demselben Grund wie dort; der Abstand nach oben ist durch 1.25
-     geteilt und bleibt damit sichtbar der bisherige clamp(48px, 5vw, 72px). */
+/* AP-533: Das bestehende 2x2-Raster folgt jetzt den beiden Spalten von Foto
+   und Leitsatz. Explizite Groessen ersetzen den Desktop-zoom, damit Rahmen,
+   Details und Fokusflaechen dieselbe reale Breite wie die Sektion haben.
+   Die mobile Hochkant-Grundgestaltung oben bleibt unveraendert. */
+@media (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
   html.home-theme-dark .gate-welcome-qualifications {
+    --qualification-flower-size: clamp(32px, 3vw, 40px);
+    --qualification-label-size: clamp(18px, 1.6vw, 23px);
     grid-area: quali;
-    justify-self: center;
+    justify-self: stretch;
     width: 100%;
-    max-width: 32rem;
-    margin: clamp(38.4px, 4vw, 57.6px) 0 0;
-    zoom: 1.25;
+    max-width: none;
+    margin: clamp(40px, 5vw, 64px) 0 0;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
-  /* Die geoeffnete Erklaerung steht im gezoomten Kasten und nimmt seine Breite.
-     Das max-width: 40rem von hier ist entfallen - gezoomt waeren es 50rem, breiter
-     als der Kasten. */
+  html.home-theme-dark .gate-welcome-qualification-grid {
+    column-gap: var(--gate-welcome-column-gap);
+    row-gap: clamp(16px, 2vw, 24px);
+    grid-auto-rows: minmax(96px, auto);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-option {
+    padding: 16px;
+    scroll-margin-block: calc(var(--header-h, 92px) + 24px) 24px;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-content {
+    grid-template-columns: var(--qualification-flower-size) minmax(0, 1fr);
+    gap: clamp(10px, 1.2vw, 16px);
+    width: min(100%, 240px);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-flower {
+    width: var(--qualification-flower-size);
+    height: var(--qualification-flower-size);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-label {
+    font-size: var(--qualification-label-size);
+    overflow-wrap: anywhere;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-label--tree {
+    font-size: calc(var(--qualification-label-size) * .88);
+    white-space: normal;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-hint {
+    margin-top: 16px;
+    font-size: 13px;
+  }
+
   html.home-theme-dark .gate-welcome-qualification-details {
-    margin: 1rem 0 0;
+    width: 100%;
+    max-width: 760px;
+    margin: 24px auto 0;
   }
 
-  /* Das Zertifikat ist 960x1358 px gross - ohne Begrenzung liefe es ueber die
-     volle Detailbreite und wuerde mehrere Bildschirmhoehen hoch. AP-524: 17.6rem
-     mal zoom 1.25 sind sichtbar die bisherigen 22rem. */
+  html.home-theme-dark .gate-welcome-qualification-panel {
+    gap: 14px;
+    padding: clamp(20px, 3vw, 32px);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-panel-title {
+    font-size: 14px;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-panel-benefit {
+    font-size: clamp(16px, 1.4vw, 19px);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-panel-proof {
+    font-size: 13px;
+  }
+
   html.home-theme-dark .gate-welcome-qualification-panel-certificate {
-    max-width: 17.6rem;
+    max-width: 352px;
     margin-inline: auto;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .gate-welcome-qualifications {
+    --qualification-flower-size: clamp(24px, 4cqw, 32px);
+    --qualification-label-size: clamp(15px, 2.5cqw, 19px);
+    margin-top: clamp(32px, 5cqw, 44px);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-grid {
+    grid-auto-rows: minmax(80px, auto);
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-option {
+    padding: 12px 8px;
+  }
+
+  html.home-theme-dark .gate-welcome-qualification-content {
+    width: min(100%, 200px);
+    gap: 10px;
   }
 }
 
@@ -2248,6 +2388,323 @@ html.home-theme-dark :where(.site-header, .hero--gate, .section-proof, .fork, .s
   }
 }
 
+/* AP-560: Seitlicher Hero aus denselben Hochkant-Inhalten. Titel, Kontakt-
+   aktionen und Nachweise bilden natuerliche Gridzeilen auf der dunklen Seite;
+   das vorhandene Hochkantfoto fuellt die rechte Seite. Der Willkommenbereich
+   folgt im normalen Dokumentfluss. Keine festen Texthoehen oder Scroll-Pins. */
+@media (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .home-hero-stack {
+    --wide-hero-inset: max(clamp(32px, 4vw, 72px), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+    --wide-hero-max: 1680px;
+    --wide-hero-height: clamp(660px, 100svh, 960px);
+    --wide-hero-top-space: 160px;
+    --wide-hero-bottom-space: 80px;
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns:
+      max(var(--wide-hero-inset), calc((100% - var(--wide-hero-max)) / 2))
+      minmax(0, 44fr) minmax(0, 56fr)
+      max(var(--wide-hero-inset), calc((100% - var(--wide-hero-max)) / 2));
+    grid-template-rows: minmax(var(--wide-hero-top-space), 1fr) auto auto auto minmax(var(--wide-hero-bottom-space), 1fr) auto;
+    border: 0;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  html.home-theme-dark .home-hero-stack::before,
+  html.home-theme-dark .home-hero-stack::after {
+    content: "";
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 1 / 6;
+    z-index: 1;
+    clip-path: polygon(0 0, 60% 0, 48% 100%, 0 100%);
+    background: var(--home-dark-accent);
+    pointer-events: none;
+  }
+  html.home-theme-dark .home-hero-stack::after {
+    z-index: 2;
+    clip-path: polygon(0 0, calc(60% - 2px) 0, calc(48% - 2px) 100%, 0 100%);
+    background-color: var(--page-background);
+    background-image:
+      linear-gradient(110deg, rgb(var(--page-background-rgb) / 93%) 0%, var(--page-background) 72%),
+      url("../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a");
+    background-repeat: no-repeat;
+    background-position: center, left center;
+    background-size: cover, clamp(360px, 34vw, 680px) auto;
+  }
+
+  html.home-theme-dark .home-hero-stack > :is(.hero--gate-empty, .hero--gate-content),
+  html.home-theme-dark .hero--gate-content .gate-head {
+    display: contents;
+    min-height: 0;
+    padding: 0;
+  }
+  html.home-theme-dark .hero--gate-content .gate-head {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::before,
+  html.home-theme-dark .home-hero-stack > .hero--gate-empty::after { content: none; }
+
+  html.home-theme-dark .hero-empty-media {
+    position: relative;
+    inset: auto;
+    grid-column: 1 / -1;
+    grid-row: 1 / 6;
+    justify-self: end;
+    z-index: 0;
+    display: block;
+    width: 55%;
+    height: 100%;
+    min-height: var(--wide-hero-height);
+    overflow: hidden;
+  }
+  html.home-theme-dark .hero-empty-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: 50% 82%;
+    transform: none;
+  }
+
+  html.home-theme-dark .gate-head .hero-title {
+    position: relative;
+    z-index: 3;
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    color: var(--home-on-dark);
+    font-family: "Baloo 2", sans-serif;
+    font-size: clamp(44px, 4.4vw, 80px);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -.028em;
+    text-align: left;
+    text-wrap: balance;
+    transform: none;
+  }
+  html.home-theme-dark :is(.gate-title-desktop, .gate-region, .mobile-hero-kicker) { display: none; }
+  html.home-theme-dark .gate-title-mobile { display: block; }
+  html.home-theme-dark .gate-title-mobile > span { display: block; white-space: normal; }
+  html.home-theme-dark .gate-head .hero-title-garten-word {
+    display: inline-block;
+    width: 3.2em;
+    margin-left: .04em;
+    line-height: 0;
+    vertical-align: -.08em;
+  }
+  html.home-theme-dark .gate-head .hero-title-garten-word img { width: 100%; max-width: none; height: auto; }
+
+  /* Die mobile Kontaktlasche wird horizontal: Formular und Direktanruf bleiben
+     separate Links in derselben Lese- und Tastaturreihenfolge. */
+  html.home-theme-dark .mobile-hero-cta-stack {
+    --mobile-hero-cta-surface: rgba(35, 40, 31, .86);
+    --mobile-hero-cta-border: rgba(140, 198, 63, .64);
+    position: relative;
+    inset: auto;
+    z-index: 3;
+    grid-column: 2;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 76px;
+    grid-template-rows: auto;
+    isolation: isolate;
+    width: min(100%, 480px);
+    height: auto;
+    min-height: 76px;
+    margin: 30px 0 0;
+    transform: none;
+  }
+  html.home-theme-dark .mobile-hero-cta-stack::before,
+  html.home-theme-dark .mobile-hero-cta-stack::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    border-radius: 4px 18px 4px 18px;
+    background: var(--mobile-hero-cta-border);
+    pointer-events: none;
+    transform: none;
+    filter: none;
+  }
+  html.home-theme-dark .mobile-hero-cta-stack::after {
+    inset: 2px;
+    z-index: -1;
+    border-radius: 2px 16px 2px 16px;
+    background: var(--mobile-hero-cta-surface);
+  }
+  html.home-theme-dark .mobile-hero-link,
+  html.home-theme-dark .mobile-hero-link-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    min-width: 0;
+    transform: none;
+  }
+  html.home-theme-dark .mobile-hero-link {
+    min-height: 44px;
+    padding: 14px 18px;
+    color: #f4f2ea;
+    font-family: "Nunito", sans-serif;
+    font-weight: 800;
+    text-decoration: none;
+    text-align: left;
+    transition: color .18s ease, opacity .18s ease;
+  }
+  html.home-theme-dark :is(.mobile-hero-link--project, .mobile-hero-link--call) .mobile-hero-link-content { transform: none; }
+  html.home-theme-dark .mobile-hero-link--project { justify-content: flex-start; }
+  html.home-theme-dark .mobile-hero-link--call { padding: 12px; border-left: 1px solid rgba(255,255,255,.13); }
+  html.home-theme-dark .mobile-hero-link-label {
+    display: block;
+    height: auto;
+    font-size: clamp(18px, 1.4vw, 22px);
+    line-height: 1.25;
+    letter-spacing: -.01em;
+    white-space: normal;
+    text-wrap: pretty;
+  }
+  html.home-theme-dark .mobile-hero-link-label > span { display: inline; }
+  html.home-theme-dark .mobile-hero-link-phone { display: block; width: 48px; height: 48px; }
+  html.home-theme-dark .mobile-hero-link-phone img { width: 100%; height: 100%; object-fit: contain; opacity: .9; }
+  html.home-theme-dark .mobile-hero-link:active { opacity: .74; }
+  html.home-theme-dark .mobile-hero-link:focus-visible { outline: 3px solid var(--home-yellow); outline-offset: 5px; border-radius: 6px; }
+
+  html.home-theme-dark .hero-proof-strip {
+    --hero-proof-icon-size: 56px;
+    --hero-proof-icon-inset: calc(var(--hero-proof-icon-size) * .184375);
+    --hero-proof-icon-visible-width: calc(var(--hero-proof-icon-size) * .63125);
+    position: relative;
+    inset: auto;
+    z-index: 3;
+    grid-column: 2;
+    grid-row: 4;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px clamp(20px, 2vw, 32px);
+    width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: 0;
+    margin: 28px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+    transform: none;
+  }
+  html.home-theme-dark .hero-proof-location { display: flex; align-items: center; gap: 14px; }
+  html.home-theme-dark .hero-proof-location-mark { flex: 0 0 var(--hero-proof-icon-visible-width); }
+  html.home-theme-dark .hero-proof-location-text { min-width: 0; font-size: clamp(15px, 1.05vw, 18px); line-height: 1.3; text-align: left; }
+  html.home-theme-dark .hero-proof-instagram {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    color: var(--home-on-dark);
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(15px, 1.05vw, 18px);
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  html.home-theme-dark .hero-proof-instagram strong { color: var(--home-lime); font: inherit; }
+  html.home-theme-dark .hero-proof-instagram-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    border-radius: 14px;
+    color: #fff;
+    background: radial-gradient(circle at 30% 105%, #feda75 0 20%, #fa7e1e 34%, #d62976 57%, #962fbf 76%, #4f5bd5 100%);
+    box-shadow: 0 5px 12px rgb(0 0 0 / 24%);
+  }
+  html.home-theme-dark .hero-proof-instagram-icon svg { width: 26px; height: 26px; }
+  html.home-theme-dark .gate-welcome--iphone { grid-column: 1 / -1; grid-row: 6; }
+}
+
+/* Der bestehende Desktop-Kopf schwebt ueber der seitlichen Komposition. */
+@media (min-width: 901px) {
+  html.home-theme-dark { --header-h: 112px; }
+  html.home-theme-dark .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    padding-top: 20px;
+    background: transparent;
+    border-color: transparent;
+    transition: background-color .18s ease, border-color .18s ease;
+  }
+  html.home-theme-dark .site-header > .header-inner {
+    padding-inline: 16px;
+    background: #171916;
+    border-radius: 20px;
+    box-shadow: 0 16px 36px -16px rgba(0,0,0,.6);
+  }
+  html.home-theme-dark .site-header.is-scrolled { padding-top: 0; background: #171916; border-color: var(--line); }
+  html.home-theme-dark .site-header.is-scrolled > .header-inner { border-radius: 0; box-shadow: none; }
+}
+@media (min-width: 901px) and (hover: hover) and (pointer: fine) {
+  html.home-theme-dark .mobile-hero-link:hover { color: var(--home-lime); }
+  html.home-theme-dark .mobile-hero-link--call:hover { opacity: .78; }
+}
+@media (prefers-reduced-motion: reduce) and (min-width: 901px), (prefers-reduced-motion: reduce) and (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .mobile-hero-link,
+  html.home-theme-dark .site-header { transition: none; }
+}
+
+/* Die gleiche Komposition mit kompakter Typografie fuer die niedrige Handy-
+   Buehne. svh verhindert Spruenge beim Ein-/Ausblenden der Safari-Werkzeugleiste;
+   bei Zoom/kleinen Fenstern darf der Inhalt die Mindesthoehe uebersteigen. */
+@media (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .home-hero-stack {
+    --wide-hero-inset: max(32px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+    --wide-hero-height: max(360px, 100svh);
+    --wide-hero-top-space: 122px;
+    --wide-hero-bottom-space: 28px;
+    grid-template-rows: var(--wide-hero-top-space) auto auto auto minmax(var(--wide-hero-bottom-space), 1fr) auto;
+  }
+  html.home-theme-dark .gate-head .hero-title { font-size: clamp(26px, 3.8vw, 34px); line-height: 1.04; }
+  html.home-theme-dark .mobile-hero-cta-stack { grid-template-columns: minmax(0, 1fr) 56px; min-height: 56px; margin-top: 18px; }
+  html.home-theme-dark .mobile-hero-link { padding: 10px 12px; }
+  html.home-theme-dark .mobile-hero-link-label { font-size: 15px; overflow-wrap: anywhere; }
+  html.home-theme-dark .mobile-hero-link--call { padding: 6px; }
+  html.home-theme-dark .mobile-hero-link-phone { width: 40px; height: 40px; }
+  html.home-theme-dark .hero-proof-strip { --hero-proof-icon-size: 42px; gap: 10px 16px; margin-top: 18px; }
+  html.home-theme-dark .hero-proof-location { gap: 10px; }
+  html.home-theme-dark :is(.hero-proof-instagram, .hero-proof-location-text) { font-size: 12px; }
+  html.home-theme-dark .hero-proof-instagram { gap: 8px; min-height: 44px; }
+  html.home-theme-dark .hero-proof-instagram-icon { width: 32px; height: 32px; flex-basis: 32px; border-radius: 10px; }
+  html.home-theme-dark .hero-proof-instagram-icon svg { width: 20px; height: 20px; }
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) > .header-inner.container {
+    width: calc(100% - 2 * max(32px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)));
+    max-width: none;
+    min-height: 82px;
+    padding: 8px 12px;
+  }
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .brand-logo {
+    width: min(218px, calc(100vw - 2 * max(32px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)) - 138px));
+    height: 63px;
+  }
+  /* AP-561: Dieselben Header-Aktionen wie beim Smartphone hochkant:
+     WhatsApp und Menue im Einstieg, Telefon im kompakten Scrollzustand.
+     Instagram bleibt als Nachweis unter dem Hero-Titel. */
+  html.home-theme-dark.home-header-morph .site-header .header-instagram { display: none; }
+}
+
 /* ==================================================================
    AP-179 · Ueber-uns-Sektion
 
@@ -2259,6 +2716,9 @@ html.home-theme-dark .mr-ueber {
   padding-block: var(--space-section);
   background: var(--bg);
 }
+
+/* AP-535: Der neue Spaltenwrapper veraendert die Hochkant-Komposition nicht. */
+html.home-theme-dark .mr-ueber__overview { display: contents; }
 
 /* Mobile Vertrauens- und Kurzfassungen duerfen die bestehende Tablet-/Desktop-
    Fassung nicht veraendern. */
@@ -2407,7 +2867,8 @@ html.home-theme-dark .mr-ueber__punkt-icon-art {
   display: none;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px), (min-width: 901px),
+       (max-width: 900px) and (orientation: landscape) {
   html.home-theme-dark .mr-ueber {
     padding-top: 44px;
   }
@@ -2925,7 +3386,8 @@ html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px), (min-width: 901px),
+       (max-width: 900px) and (orientation: landscape) {
   html.home-theme-dark .mr-ueber__buehne {
     --mr-ueber-brand-width: clamp(58px, 18vw, 72px);
   }
@@ -3079,7 +3541,8 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px), (min-width: 901px),
+       (max-width: 900px) and (orientation: landscape) {
   html.home-theme-dark .mr-ueber__karte {
     /* AP-341: Freistehende Karte ohne Kachel, mit mehr Raum für Ortsnamen. */
     box-sizing: border-box;
@@ -3271,6 +3734,294 @@ html.home-theme-dark .mr-ueber__karte .proof-map-src {
   }
 }
 
+/* AP-535: Ueber uns folgt der Willkommen-Zeile. Dieselben mobilen Assets,
+   Kurztexte und Karteninformationen, mit Video links und Aussagen rechts.
+   Nur Desktop und mobiles Querformat: alle Hochkant-Regeln bleiben bestehen. */
+@media (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .mr-ueber {
+    --about-row-gap: clamp(40px, 4vw, 56px);
+    --about-points-inset: clamp(24px, 3vw, 40px);
+    --about-brand-overhang: 8px;
+    padding-block: clamp(48px, 5vw, 72px);
+  }
+
+  html.home-theme-dark .mr-ueber__kopf {
+    width: min(calc(100% - var(--gutter) * 2), 1120px);
+    margin-bottom: clamp(48px, 5vw, 72px);
+  }
+
+  html.home-theme-dark .mr-ueber__overview {
+    container: about-overview / inline-size;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(48px, calc(22vw - 150px), 160px);
+    align-items: center;
+    width: min(calc(100% - var(--gutter) * 2), 1120px);
+    margin-inline: auto;
+  }
+
+  html.home-theme-dark .mr-ueber__overview > .container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  html.home-theme-dark .mr-ueber__video {
+    aspect-ratio: 720 / 544;
+    max-height: none;
+    object-fit: contain;
+    /* AP-540: Ein freies Motiv wie bei Willkommen, ohne Kachelkontur.
+       Der Hintergrund verdeckt auch den minimalen 720:544-/4:3-Freiraum. */
+    border: 0;
+    box-shadow: none;
+    background: var(--home-page-background, var(--bg));
+  }
+
+  html.home-theme-dark .mr-ueber__buehne {
+    --mr-ueber-brand-width: clamp(56px, 6vw, 72px);
+  }
+
+  html.home-theme-dark .mr-ueber__brand { right: calc(-1 * var(--about-brand-overhang)); }
+
+  html.home-theme-dark .mr-ueber__mustertext {
+    /* Foto plus ueberstehende Blume bilden gemeinsam die optische Mitte. */
+    width: calc(100% + var(--about-brand-overhang));
+    justify-self: start;
+    margin-inline: 0;
+    margin-top: 32px;
+    gap: 8px;
+  }
+
+  html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername {
+    font-size: clamp(20px, 1.65vw, 24px);
+  }
+
+  html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis {
+    max-width: 46ch;
+    font-size: clamp(14px, 1.1vw, 16px);
+    line-height: 1.5;
+  }
+
+  html.home-theme-dark .mr-ueber__split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(28px, 2.5vw, 36px);
+  }
+
+  html.home-theme-dark .mr-ueber__punkte {
+    width: 100%;
+    max-width: none;
+    gap: clamp(24px, 2.5vw, 36px);
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.45;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte li {
+    /* Die kurze Textgruppe mittig in der vollen rechten Rasterflaeche halten,
+       statt ungenutzten Zeilenraum nur rechts neben den Aussagen zu lassen. */
+    width: min(100%, 17.5em);
+    justify-self: center;
+    grid-template-columns: 42px minmax(0, 1fr);
+    justify-items: start;
+    align-items: center;
+    gap: 22px;
+    text-align: left;
+  }
+
+  html.home-theme-dark .mr-ueber__punkte li > span:last-child {
+    max-width: none;
+    text-wrap: balance;
+  }
+
+  html.home-theme-dark .mr-ueber__punkt-icon-art {
+    width: 42px;
+    height: 42px;
+  }
+
+  html.home-theme-dark .mr-ueber__karte {
+    width: min(calc(100% - var(--gutter) * 2), 1120px);
+    margin-top: clamp(64px, 6vw, 88px);
+    padding: 0;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    max-width: 480px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map > :is(svg.map, .mr-ueber__eyebrow--karte, .proof-map-cap, .proof-map-src) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .mr-ueber__eyebrow--karte { order: -1; }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map > svg.map {
+    width: min(100%, 400px);
+    justify-self: center;
+    align-self: start;
+    max-height: none;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-cap {
+    align-items: center;
+    max-width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-focus {
+    color: var(--mobile-logo-green, #56e607);
+    font-size: 20px;
+  }
+
+  html.home-theme-dark .mr-ueber__karte .proof-map-src { font-size: 13px; }
+  /* AP-537: Beide Spalten teilen die Zeilen für Medien und Abschluss.
+     Subgrid richtet auch bei Textumbrüchen den Hinweis und CTA gemeinsam aus;
+     ohne Unterstützung bleibt die vorherige, vollständig lesbare Anordnung. */
+  @supports (grid-template-rows: subgrid) {
+    html.home-theme-dark .mr-ueber__overview {
+      grid-template-rows: auto auto;
+      row-gap: var(--about-row-gap);
+      align-items: stretch;
+    }
+
+    html.home-theme-dark .mr-ueber__overview > .container {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: subgrid;
+      grid-row: 1 / span 2;
+      row-gap: inherit;
+      align-items: stretch;
+    }
+
+    html.home-theme-dark .mr-ueber__overview > .mr-ueber__muster { grid-column: 1; }
+    html.home-theme-dark .mr-ueber__overview > .mr-ueber__split { grid-column: 2; }
+    html.home-theme-dark .mr-ueber__overview .mr-ueber__buehne { grid-row: 1; align-self: center; }
+
+    html.home-theme-dark .mr-ueber__overview .mr-ueber__mustertext {
+      grid-row: 2;
+      align-self: center;
+      margin-top: 0;
+    }
+
+    html.home-theme-dark .mr-ueber__overview .mr-ueber__wort {
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    html.home-theme-dark .mr-ueber__overview .mr-ueber__punkte {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: repeat(3, minmax(min-content, 1fr));
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      padding-block: var(--about-points-inset);
+    }
+
+    html.home-theme-dark .mr-ueber__overview .mr-ueber__beleg {
+      grid-row: 2;
+      align-self: center;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .mr-ueber {
+    --about-row-gap: clamp(32px, 4.5vw, 40px);
+    --about-points-inset: clamp(12px, 2vw, 18px);
+    --about-inset-start: calc(32px + env(safe-area-inset-left, 0px));
+    --about-inset-end: calc(32px + env(safe-area-inset-right, 0px));
+    padding-block: 40px 48px;
+  }
+
+  html.home-theme-dark .mr-ueber :is(.mr-ueber__kopf, .mr-ueber__overview, .mr-ueber__karte) {
+    width: calc(100% - var(--about-inset-start) - var(--about-inset-end));
+    margin-left: var(--about-inset-start);
+    margin-right: var(--about-inset-end);
+  }
+
+  /* AP-539: Die Safe Area ist bereits im aeusseren Sektionsrand enthalten.
+     .container aus styles.css setzt sonst in jeder Spalte erneut beide
+     Displayraender als Padding (am iPhone 16 Pro zusammen 124px). */
+  html.home-theme-dark .mr-ueber :is(.mr-ueber__kopf, .mr-ueber__muster, .mr-ueber__split, .mr-ueber__karte) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* AP-538: Im Handy-Querformat exakt dieselbe Medien-/Textflaeche wie
+     Willkommen. Safari darf die drei Aussagen und die Abschlusszeile beim
+     Drehen nicht eigenstaendig vergroessern; manueller Zoom bleibt moeglich. */
+  html.home-theme-dark .mr-ueber__overview {
+    column-gap: clamp(24px, 4vw, 48px);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  html.home-theme-dark .mr-ueber__buehne {
+    --mr-ueber-brand-width: clamp(52px, 8vw, 80px);
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  html.home-theme-dark .mr-ueber__video {
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    /* Die 720:544-Quelle bleibt vollstaendig im gemeinsamen 4:3-Rahmen. */
+    object-fit: contain;
+  }
+  html.home-theme-dark .mr-ueber__kopf { margin-bottom: 40px; }
+  html.home-theme-dark .mr-ueber__split { gap: 24px; }
+  html.home-theme-dark .mr-ueber__punkte { gap: 20px; font-size: clamp(15px, 2.25cqw, 18px); }
+  html.home-theme-dark .mr-ueber__punkte li { grid-template-columns: 30px minmax(0, 1fr); gap: 14px; }
+  html.home-theme-dark .mr-ueber__punkt-icon-art { width: 30px; height: 30px; }
+  html.home-theme-dark .mr-ueber__mustertext { margin-top: 28px; }
+  html.home-theme-dark .mr-ueber__mustertext .mr-ueber__mustername { font-size: clamp(16px, 2.35cqw, 20px); }
+  html.home-theme-dark .mr-ueber__mustertext .mr-ueber__hinweis { font-size: 13px; }
+  html.home-theme-dark .mr-ueber__karte { margin-top: 56px; }
+  html.home-theme-dark .mr-ueber__karte .proof-map > svg.map { width: min(100%, 320px); }
+
+  @container about-overview (max-width: 440px) {
+    html.home-theme-dark .mr-ueber__overview > .container { grid-column: 1 / -1; }
+    html.home-theme-dark .mr-ueber__overview > .mr-ueber__split { margin-top: 40px; }
+
+    @supports (grid-template-rows: subgrid) {
+      html.home-theme-dark .mr-ueber__overview > .container {
+        grid-row: auto;
+        grid-template-rows: auto auto;
+        row-gap: var(--about-row-gap);
+      }
+      html.home-theme-dark .mr-ueber__overview .mr-ueber__punkte {
+        flex: none;
+        grid-template-rows: none;
+        gap: 20px;
+        padding-block: 0;
+      }
+    }
+  }
+}
+
+/* AP-544: Auf breiten Handys im Querformat wirkt die Aussagen-Gruppe durch
+   die links stehenden, ueber ihre Rasterzelle hinaus skalierten Bildsymbole
+   optisch etwas linksversetzt. Der kleine logische Versatz richtet ihre
+   sichtbare Masse an der Mitte des darunterliegenden CTA aus. Relative
+   Positionierung bleibt unabhaengig vom transform der Reveal-Animation. */
+@media (min-width: 700px) and (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .mr-ueber__punkte {
+    position: relative;
+    inset-inline-start: clamp(12px, 2vw, 18px);
+  }
+}
+
 /* --- Alte Stelle: ohne die Karte bleibt nur der Kleinauftrags-Block ------
    .proof-feature ist in styles.css an drei Stellen zweispaltig (817, 1023,
    1731). Die Korrektur steht hier statt dort, weil die Klasse nur auf der
@@ -3344,21 +4095,5 @@ html.home-theme-dark .proof-feature { grid-template-columns: minmax(0, 1fr); }
     max-width: 20em;
   }
 
-  /* Ausnahme Ablauf bis AP-508: Ab 901px ist der Kopf zweispaltig (Ueberschrift
-     mit gruener Linie links, Knopf rechts), ab 1024px mit Maus zusaetzlich im
-     Scroll-Pin. Die Ueberschrift uebernimmt nur die Schrift und bleibt links;
-     Breite wie bisher (privat-form.css: 14ch, im Pin 15ch). Im Pin gelten auch
-     Groesse und Zeilenhoehe des Pins weiter, (0,3,1) gegen (0,2,2) - sonst
-     kippt die Buehnengeometrie. */
-  html.home-theme-dark .private-process-updated .b2b-process-intro h2.maik-section-title {
-    max-width: 14ch;
-    margin-inline: 0;
-    text-align: left;
-  }
-}
 
-@media (min-width: 1024px) and (hover: hover) {
-  html.home-theme-dark .private-process-updated.is-scrollytelling .b2b-process-intro h2.maik-section-title {
-    max-width: 15ch;
-  }
 }

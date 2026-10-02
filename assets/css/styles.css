@@ -113,10 +113,15 @@
      fuer die Startseite. Eine Scoping-Klasse, die ueberall gilt, ist tote Zeremonie
      - deshalb stehen sie jetzt hier, und alle Seiten ziehen von allein mit.
      home-dark.css behaelt nur, was wirklich nur die Startseite betrifft. */
+  /* AP-548: Gemeinsamer Seitengrund aus der Hochkantfassung. Die dunklere
+     --bg-Rolle bleibt fuer Header, Icons und abgesetzte Bauteile erhalten. */
+  --page-background: #1B1E19;
+  --page-background-rgb: 27 30 25;
+  --home-page-background: var(--page-background);
   --bg:        #171916;
   --bg-elev:   #20241D;
   --bg-soft:   #2A2F26;
-  --bg-hero:   #1B1E19;
+  --bg-hero:   var(--page-background);
   --bg-dark:   #0E100D;
   --ink:       #FAFAF6;
   --ink-2:     #D9DED5;
@@ -223,7 +228,7 @@ body {
    Seitengrund #1B1E19 wie das Handy (Ansage des Auftraggebers). */
 html,
 body {
-  background-color: #1B1E19;
+  background-color: var(--page-background);
 }
 
 img, svg, video { max-width: 100%; display: block; }
@@ -1768,7 +1773,7 @@ p  { margin: 0; }
 
 /* Wenn GSAP verfuegbar ist, steuert es die sichtbaren Reveal-Eigenschaften.
    Spezielle Markenanimationen wie der Willkommensstempel behalten ihre eigene
-   CSS-Kurve und werden von ScrollTrigger lediglich ausgeloest. */
+   CSS-Kurve und werden ueber die Sichtbarkeitspruefung ausgeloest. */
 html.gsap-reveal-active .reveal:not(.gate-welcome-kicker) {
   transition: none;
   will-change: opacity, transform;
@@ -1825,61 +1830,6 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
     display: flex;
     align-items: center;
     height: 44px;
-  }
-  /* Mobile Kontakt-Symbole in unveraenderten 44px-Touchzielen. Das duenne
-     Telefonzeichen wird fuer optische Balance groesser als das kompakte
-     WhatsApp-Glyph dargestellt. */
-  .site-header .header-actions :is(.call-btn, .btn-whatsapp) {
-    width: 44px;
-    height: 44px;
-    flex: 0 0 44px;
-    justify-content: center;
-    gap: 0;
-    padding: 0;
-    border-radius: var(--radius-sm);
-  }
-  .site-header .header-actions :is(.call-btn, .btn-whatsapp) > svg {
-    display: none;
-  }
-  .site-header .header-actions :is(.call-btn, .btn-whatsapp)::before {
-    content: "";
-    display: block;
-    width: 22px;
-    height: 22px;
-    flex: 0 0 22px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-
-  .site-header .header-actions .call-btn.btn-ghost {
-    background: var(--bg-dark);
-    border-color: transparent;
-    box-shadow: none;
-  }
-  .site-header .header-actions .call-btn::before {
-    width: 28px;
-    height: 28px;
-    flex: 0 0 28px;
-    background-image: url("../img/icons/phone-header-mobile.png");
-  }
-  .site-header .btn-whatsapp::before {
-    background-image: url("../img/icons/whatsapp-glyph-white.svg");
-  }
-  .site-header .header-actions .btn-whatsapp {
-    box-shadow: none;
-  }
-  .site-header .header-actions .nav-toggle {
-    width: 44px;
-    height: 44px;
-    flex: 0 0 44px;
-    background: var(--bg-dark);
-    border-color: transparent;
-    border-radius: var(--radius-sm);
-    box-shadow: none;
-  }
-  .site-header .header-actions .nav-toggle span {
-    background: #FAFAF6;
   }
   .primary-nav { order: 99; grid-column: 1 / -1; display: none; }
   .primary-nav.is-open { display: block; }
@@ -2834,6 +2784,12 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
 /* Seiten-H1 in Galerie, Leistungen, Projekten und Rechtstexten. */
 .section-head h1 { margin-top: 14px; font-size: var(--type-page-h1-size); font-weight: 800; line-height: 1.03; letter-spacing: -.043em; }
 .section-head > h1:first-child { margin-top: 0; }
+/* Lange deutsche Titel muessen auch bei 320px und Zoom voll lesbar bleiben. */
+.projekt-head h1,
+.rt-head h1 {
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
 
 /* „Alle Projekte ansehen"-CTA unter der Startseiten-Sektion */
 .projects-more { margin-top: 36px; }

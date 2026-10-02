@@ -2912,18 +2912,15 @@
   display: none;
 }
 
-/* Die individuelle Buttonform wird ausserhalb der beiden freigegebenen
-   iPhone-Ansichten ausgeblendet; dort bleibt der bestehende Desktop-CTA. */
+/* Die Bildkarten-/CTA-Regeln unten geben Handy und Desktop dieselbe Form. */
 .private-process-updated .process-contact-cta__shape,
 .private-process-updated .process-contact-cta__frame,
 .private-process-updated .process-contact-cta__halo {
   display: none;
 }
 
-/* AP-290: Ausserhalb der iPhone-Ansicht ist der Ablauf-CTA die Desktop-Pill.
-   Chip, Puls und Einrast-Bewegung aus mobile-social-proof.css gehoeren dort
-   nicht hin; der Pfeil bleibt ein schlichtes Zeichen in Textfarbe. */
-@media (min-width: 481px) {
+/* Die bisherige Tablet-Pill bleibt nur in der Hochkantansicht bestehen. */
+@media (min-width: 481px) and (max-width: 900px) and (orientation: portrait) {
   .private-process-updated .process-contact-cta::before {
     content: none;
   }
@@ -2942,75 +2939,6 @@
   .private-process-updated .process-contact-cta :is(.mobile-proof-request__label, .mobile-proof-request__arrow, .mobile-proof-request__arrow svg) {
     transform: none;
     animation: none;
-  }
-}
-
-@media (min-width:1024px) and (hover:hover) {
-  .private-process-updated { padding: 0; }
-  .private-process-updated .b2b-process-intro-body {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  .private-process-updated.is-scrollytelling .b2b-process-scene {
-    position: sticky;
-    top: 0;
-    display: grid;
-    grid-template-rows: auto minmax(0,1fr);
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
-    background: var(--bg);   /* AP-129 */
-  }
-  .private-process-updated.is-scrollytelling .b2b-process-scene > .container {
-    padding-top: 140px;
-  }
-  .private-process-updated.is-scrollytelling .b2b-process-intro {
-    grid-template-columns: minmax(0,.72fr) minmax(0,1.28fr);
-    gap: clamp(22px,2.6vw,38px);
-    align-items: center;
-    margin-bottom: 0;
-    padding-bottom: 16px;
-  }
-  .private-process-updated.is-scrollytelling .b2b-process-intro-heading {
-    padding-left: clamp(18px,2vw,26px);
-  }
-  .private-process-updated.is-scrollytelling .b2b-process-intro h2 {
-    max-width: 15ch;
-    font-size: clamp(2rem,2.8vw,2.75rem);
-    line-height: 1.04;
-  }
-  .private-process-updated.is-scrollytelling .b2b-process-actions {
-    gap: 10px;
-    margin-top: 0;
-  }
-  .private-process-updated.is-scrollytelling .b2b-process-end-actions { display: none; }
-  .private-process-updated.is-scrollytelling .process-stage {
-    position: relative;
-    top: auto;
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-    margin: 0;
-    overflow: hidden;
-    background: transparent;
-  }
-  .private-process-updated.is-scrollytelling .process-track {
-    gap: clamp(46px,5.4vw,90px);
-    padding-inline: calc(50vw - 160px);
-  }
-  .private-process-updated.is-scrollytelling .step {
-    width: 320px;
-    height: 50vh;
-  }
-  .private-process-updated.is-scrollytelling .step-card {
-    padding: 15px 17px;
-  }
-  .private-process-updated.is-scrollytelling .step-card h3 { font-size: 1rem; }
-  .private-process-updated.is-scrollytelling .step-card p {
-    font-size: .84rem;
-    line-height: 1.5;
   }
 }
 
@@ -3078,8 +3006,8 @@
   }
 }
 
-/* Projektablauf mit Bildführung für die freigegebenen iPhone-Ansichten. */
-@media (max-width: 480px) {
+/* AP-541: dieselben Bildkarten, Marken-Ziffern und CTA auch im Querformat. */
+@media (max-width: 480px), (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
   /* Exakt dieselbe asymmetrische CTA-Form wie "Zum Kontaktformular". */
   .private-process-updated .b2b-process-end-actions .process-contact-cta {
     position: relative;
@@ -3974,18 +3902,23 @@
   }
 }
 
-/* Kompakte FAQ-Gruppen ausschließlich auf der Privatkundenseite */
+/* AP-546: Die Hochkant-FAQ bildet auf allen Breiten eine mittige Spalte. */
 .private-faq {
   padding: var(--space-section-compact) 0;
   overflow-anchor: none;
   border-top: 1px solid var(--line-2);
   background: var(--bg);   /* AP-129: war #f8f7f2 */
 }
-.private-faq-wrap { display: block; }
+.private-faq-wrap {
+  display: block;
+  width: min(100% - 2 * max(var(--gutter), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)), 760px);
+  margin-inline: auto;
+  padding-inline: 0;
+}
 .private-faq-head {
   display: grid;
-  grid-template-columns: minmax(0,1.08fr) minmax(320px,.92fr);
-  gap: clamp(32px,5vw,72px);
+  grid-template-columns: minmax(0,1fr);
+  gap: 10px;
   align-items: end;
   margin-bottom: var(--space-section-head);
 }
@@ -4007,288 +3940,234 @@
 }
 .private-faq-groups {
   display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: clamp(14px,1.8vw,20px);
+  grid-template-columns: minmax(0,1fr);
+  gap: 22px;
   align-items: start;
 }
 .private-faq-group { min-width: 0; }
-.private-faq-group > h3 {
-  margin: 0 0 11px;
-  color: var(--green-500);
-  font-family: var(--body);
-  font-size: .72rem;
-  font-weight: 850;
-  letter-spacing: .1em;
-  line-height: 1.25;
-  text-transform: uppercase;
-}
 .private-faq .private-faq-list {
   display: grid;
-  gap: 9px;
+  gap: 0;
   overflow: visible;
   border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
 }
-/* AP-251: Ecken wie die Leistungskacheln - 18px oben links und unten rechts,
-   5px an den beiden anderen. Derselbe Wert wie .iphone-service-card (Zeile 4404),
-   die Kachelwand, und wie der "Mehr zu"-Button seit AP-243. Der Rand bleibt: die
-   FAQ-Zeilen liegen dicht untereinander und brauchen ihn zur Abgrenzung, waehrend
-   die Kachelwand mit Foto und viel Abstand ohne auskommt. */
+.private-faq-group {
+  overflow: clip;
+  border: 1px solid var(--home-surface-border, rgba(49,82,0,.18));
+  border-radius: 18px 5px 18px 5px;
+  background: var(--home-surface-low, var(--bg-elev));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+}
+.private-faq-group > h3 {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 14px 16px 11px;
+  border-bottom: 1px solid var(--home-surface-border, rgba(49,82,0,.18));
+  color: var(--green-500);
+  font-family: var(--body);
+  font-weight: 850;
+  font-size: .78rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: .085em;
+}
 .private-faq .private-faq-list details,
 .private-faq .private-faq-list details:last-child {
-  overflow: clip;
-  border: 1px solid rgba(49,82,0,.14);
-  border-radius: 18px 5px 18px 5px;
-  background: var(--bg-elev);
-  box-shadow: 0 18px 36px -34px rgba(19,26,8,.58);
-  transition: border-color .2s var(--ease),box-shadow .2s var(--ease),background-color .2s var(--ease);
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background-color .2s var(--ease);
+}
+.private-faq .private-faq-list details + details {
+  border-top: 0;
+}
+.private-faq .private-faq-list details + details::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--home-surface-border, rgba(183,203,160,.18));
+  pointer-events: none;
 }
 .private-faq .private-faq-list details[open] {
-  border-color: rgba(49,82,0,.32);
-  background: var(--bg-elev);
-  box-shadow: 0 22px 42px -34px rgba(19,26,8,.68);
-}
-.private-faq.is-faq-animated .private-faq-list details.is-opening,
-.private-faq.is-faq-animated .private-faq-list details.is-closing {
-  will-change: height;
+  border-color: transparent;
+  background: var(--home-surface-card, var(--bg-elev));
+  box-shadow: none;
 }
 .private-faq .private-faq-list summary {
-  min-height: 58px;
-  padding: 13px 16px;
+  height: auto;
+  min-height: 68px;
+  box-sizing: border-box;
+  padding: 0 14px 0 16px;
+  gap: 14px;
   color: var(--ink);
-  font-size: .93rem;
   font-weight: 700;
-  line-height: 1.3;
+  font-size: .94rem;
+  line-height: 1.32;
 }
-@media (hover:hover) and (pointer:fine) {
-  .private-faq .private-faq-list summary:hover { background: var(--green-50); }
+.private-faq .private-faq-list summary > span:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+  transform: translateY(1px);
 }
 .private-faq .private-faq-list summary:focus-visible {
   position: relative;
   z-index: 1;
-  outline: 3px solid var(--yellow);
+  outline: 2px solid var(--yellow);
   outline-offset: -3px;
-  border-radius: 18px 5px 18px 5px;   /* AP-251: folgt der Kachelform */
+  border-radius: 0;
 }
 .private-faq .private-faq-list .chev {
-  width: 28px;
-  height: 28px;
-  background: var(--green-50);
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(140,198,63,.52);
+  background: transparent;
 }
-.private-faq .private-faq-list details[open] .chev {
-  background: var(--green-700);
+.private-faq .private-faq-list .chev::before,
+.private-faq .private-faq-list .chev::after {
+  background: var(--green-500);
+}
+.private-faq .private-faq-list details[open] .chev,
+.private-faq .private-faq-list details.is-closing .chev {
+  border-color: rgba(140,198,63,.78);
+  background: transparent;
 }
 .private-faq .private-faq-list details[open] .chev::before,
-.private-faq .private-faq-list details[open] .chev::after {
-  background: var(--bg-elev);
-}
-.private-faq .private-faq-list details.is-closing .chev {
-  background: var(--green-50);
-}
+.private-faq .private-faq-list details[open] .chev::after,
 .private-faq .private-faq-list details.is-closing .chev::before,
 .private-faq .private-faq-list details.is-closing .chev::after {
-  background: var(--green-700);
+  background: var(--green-500);
 }
 .private-faq .private-faq-list details.is-closing .chev::after {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 .private-faq .private-faq-list .faq-body {
-  margin: 0 16px;
-  padding: 13px 0 16px;
-  border-top: 1px solid rgba(49,82,0,.11);
-  color: var(--ink-2);
-  font-size: .84rem;
-  line-height: 1.56;
+  margin-inline: 16px;
+  padding: 1px 0 16px;
+  border-top: 0;
+  font-size: .9rem;
+  line-height: 1.52;
 }
+.private-faq .private-faq-wrap > .faq-more--gruppen {
+  margin-top: 22px;
+}
+.private-faq .private-faq-wrap > .faq-more--gruppen > summary {
+  display: flex;
+  width: 100%;
+  max-width: none;
+  min-height: 58px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 14px 0 18px;
+  justify-content: space-between;
+  border: 1px solid var(--home-surface-border,rgba(183,203,160,.18));
+  border-radius: 18px 5px 18px 5px;
+  background: var(--home-surface-low,var(--bg));
+  color: var(--ink);
+  font-size: .92rem;
+  font-weight: 750;
+  letter-spacing: .005em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+  transition: background .2s var(--ease),border-color .2s var(--ease),box-shadow .2s var(--ease),transform .16s var(--ease);
+}
+.private-faq .private-faq-wrap > .faq-more--gruppen[open] > summary {
+  border-color: rgba(140,198,63,.56);
+  background: var(--home-surface-card,var(--bg-elev));
+}
+@media (hover:hover) and (pointer:fine) {
+  .private-faq .private-faq-wrap > .faq-more--gruppen > summary:hover {
+    border-color: rgba(140,198,63,.62);
+    background: var(--home-surface-high,var(--home-surface-card,var(--bg-elev)));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.045),0 14px 30px -22px rgba(140,198,63,.48);
+    transform: translateY(-1px);
+  }
+}
+.private-faq .private-faq-wrap > .faq-more--gruppen > summary:active {
+  transform: translateY(1px);
+}
+.private-faq .private-faq-wrap > .faq-more--gruppen > summary:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 3px;
+}
+.private-faq .private-faq-wrap > .faq-more--gruppen > summary > .chev {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(140,198,63,.58);
+  background: transparent;
+}
+.private-faq .private-faq-wrap > .faq-more--gruppen > summary > .chev::before,
+.private-faq .private-faq-wrap > .faq-more--gruppen > summary > .chev::after {
+  background: var(--green-500);
+}
+.private-faq .private-faq-wrap > .faq-more--gruppen > summary > .chev::before {
+  transform: translate(-50%,-50%) translate(-3px,0) rotate(45deg);
+}
+.private-faq .private-faq-wrap > .faq-more--gruppen > summary > .chev::after,
+.private-faq .private-faq-wrap > .faq-more--gruppen[open] > summary > .chev::after {
+  transform: translate(-50%,-50%) translate(3px,0) rotate(-45deg);
+}
+.private-faq .private-faq-wrap > .faq-more--gruppen > .private-faq-groups {
+  margin-top: 22px;
+}
+
+html.home-theme-dark .private-faq {
+  --home-surface-low: #22271f;
+  --home-surface-card: #252b22;
+  --home-surface-high: #2b3327;
+  --home-surface-border: rgba(183, 203, 160, .18);
+  border-block: 0;
+  box-shadow: none;
+}
+html.home-theme-dark .private-faq-groups { gap: 24px; }
+@media (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .private-faq {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+html.home-theme-dark .private-faq .private-faq-list details {
+  background: var(--home-surface-low);
+  border-color: var(--home-surface-border);
+}
+html.home-theme-dark .private-faq .private-faq-list details[open] {
+  background: var(--home-surface-card);
+  border-color: rgba(183, 203, 160, .3);
+}
+@media (hover: hover) and (pointer: fine) {
+  html.home-theme-dark .private-faq .private-faq-list details:hover {
+    background: var(--home-surface-high);
+    box-shadow: inset 0 0 0 1px rgba(140, 198, 63, .5);
+  }
+  html.home-theme-dark .private-faq .private-faq-list details:hover > summary {
+    background: transparent;
+  }
+}
+.private-faq.is-faq-animated .private-faq-list details.is-opening,
+.private-faq.is-faq-animated .private-faq-list details.is-closing { will-change: height; }
 .private-faq.is-faq-animated .private-faq-list .faq-body { will-change: opacity; }
 .private-faq .private-faq-list .faq-body p { margin: 0; }
-
-@media (prefers-reduced-motion:reduce) {
+@media (prefers-reduced-motion: reduce) {
   .private-faq.is-faq-animated .private-faq-list details,
   .private-faq.is-faq-animated .private-faq-list .faq-body { will-change: auto; }
+  .private-faq .private-faq-wrap > .faq-more--gruppen > summary,
+  .private-faq .private-faq-list :is(details, summary),
+  .private-faq .chev,
+  .private-faq .chev::after { transition: none; }
+  .private-faq .private-faq-wrap > .faq-more--gruppen > summary:is(:hover, :active) { transform: none; }
 }
-
-@media (max-width:820px) {
-  .private-faq { padding: var(--space-section-compact) 0; }
-  .private-faq-head {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin-bottom: 25px;
-  }
-  .private-faq-head h2 { max-width: 18ch; }
-  .private-faq-head p { max-width: 54ch; justify-self: start; }
-  .private-faq-groups { grid-template-columns: 1fr; gap: 25px; }
-}
-
-@media (max-width:520px) {
-  .private-faq { padding: var(--space-section-compact) 0; }
-  .private-faq-head { gap: 10px; margin-bottom: var(--space-section-head); }
-  .private-faq-head h2 { font-size: var(--type-section-title-size); }
-  .private-faq-head p { font-size: var(--type-section-lead-size); line-height: 1.62; }
-  .private-faq-groups { gap: 22px; }
-  .private-faq-group {
-    overflow: clip;
-    border: 1px solid var(--home-surface-border, rgba(49,82,0,.18));
-    border-radius: 18px 5px 18px 5px;
-    background: var(--home-surface-low, var(--bg-elev));
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
-  }
-  .private-faq-group > h3 {
-    display: flex;
-    align-items: center;
-    min-height: 40px;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 14px 16px 11px;
-    border-bottom: 1px solid var(--home-surface-border, rgba(49,82,0,.18));
-    font-size: .78rem;
-    letter-spacing: .085em;
-  }
-  .private-faq .private-faq-list { gap: 0; }
-  .private-faq .private-faq-list details,
-  .private-faq .private-faq-list details:last-child {
-    position: relative;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-  }
-  .private-faq .private-faq-list details + details {
-    border-top: 0;
-  }
-  .private-faq .private-faq-list details + details::before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 1px;
-    background: var(--home-surface-border, rgba(183,203,160,.18));
-    pointer-events: none;
-  }
-  .private-faq .private-faq-list details[open] {
-    border-color: transparent;
-    background: var(--home-surface-card, var(--bg-elev));
-    box-shadow: none;
-  }
-  .private-faq .private-faq-list summary {
-    height: 68px;
-    min-height: 68px;
-    box-sizing: border-box;
-    padding: 0 14px 0 16px;
-    gap: 14px;
-    font-size: .94rem;
-    line-height: 1.32;
-  }
-  .private-faq .private-faq-list summary > span:first-child {
-    flex: 1 1 auto;
-    min-width: 0;
-    transform: translateY(1px);
-  }
-  .private-faq .private-faq-list summary:focus-visible {
-    outline-width: 2px;
-    outline-offset: -3px;
-    border-radius: 0;
-  }
-  .private-faq .private-faq-list .chev {
-    width: 24px;
-    height: 24px;
-    border: 1px solid rgba(140,198,63,.52);
-    background: transparent;
-  }
-  .private-faq .private-faq-list .chev::before,
-  .private-faq .private-faq-list .chev::after {
-    background: var(--green-500);
-  }
-  .private-faq .private-faq-list details[open] .chev,
-  .private-faq .private-faq-list details.is-closing .chev {
-    border-color: rgba(140,198,63,.78);
-    background: transparent;
-  }
-  .private-faq .private-faq-list details[open] .chev::before,
-  .private-faq .private-faq-list details[open] .chev::after,
-  .private-faq .private-faq-list details.is-closing .chev::before,
-  .private-faq .private-faq-list details.is-closing .chev::after {
-    background: var(--green-500);
-  }
-  .private-faq .private-faq-list .faq-body {
-    margin-inline: 16px;
-    padding: 1px 0 16px;
-    border-top: 0;
-    font-size: .9rem;
-    line-height: 1.52;
-  }
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen {
-    margin-top: 22px;
-  }
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary {
-    display: flex;
-    width: 100%;
-    max-width: none;
-    min-height: 58px;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0 14px 0 18px;
-    justify-content: space-between;
-    border: 1px solid var(--home-surface-border,rgba(183,203,160,.18));
-    border-radius: 18px 5px 18px 5px;
-    background: var(--home-surface-low,var(--bg));
-    color: var(--ink);
-    font-size: .92rem;
-    font-weight: 750;
-    letter-spacing: .005em;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
-    transition: background .2s var(--ease),border-color .2s var(--ease),box-shadow .2s var(--ease),transform .16s var(--ease);
-  }
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen[open] > summary {
-    border-color: rgba(140,198,63,.56);
-    background: var(--home-surface-card,var(--bg-elev));
-  }
-  @media (hover:hover) and (pointer:fine) {
-    .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary:hover {
-      border-color: rgba(140,198,63,.62);
-      background: var(--home-surface-high,var(--home-surface-card,var(--bg-elev)));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.045),0 14px 30px -22px rgba(140,198,63,.48);
-      transform: translateY(-1px);
-    }
-  }
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary:active {
-    transform: translateY(1px);
-  }
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary:focus-visible {
-    outline: 2px solid var(--yellow);
-    outline-offset: 3px;
-  }
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary > .chev {
-    width: 28px;
-    height: 28px;
-    border: 1px solid rgba(140,198,63,.58);
-    background: transparent;
-  }
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary > .chev::before,
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary > .chev::after {
-    background: var(--green-500);
-  }
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary > .chev::before {
-    transform: translate(-50%,-50%) translate(-3px,0) rotate(45deg);
-  }
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > summary > .chev::after,
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen[open] > summary > .chev::after {
-    transform: translate(-50%,-50%) translate(3px,0) rotate(-45deg);
-  }
-  .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > .private-faq-groups {
-    margin-top: 22px;
-  }
-}
-
 @media (max-width:359px) {
-  .private-faq .private-faq-list summary {
-    height: 80px;
-    min-height: 80px;
-  }
+  .private-faq .private-faq-list summary { min-height: 80px; }
 }
 
 /* Aktuelle Privatkundenprojekte – kompakte Referenzbühne im Seitendesign. */
@@ -5188,11 +5067,19 @@
    Notdienst-Kachel steht mittig darueber, "Zum Kontaktformular" mittig darunter. */
 @media (min-width: 901px) {
   html.home-theme-dark .private-request-paths {
+    /* AP-558: Desktop-Masse fuer das offene A-Z-Register. Die Handyzeilen
+       bleiben in der Grundebene; Fotos, Schrift und Zwischenraum wachsen
+       nur bei ausreichend breitem Viewport. */
+    --service-photo-size: clamp(96px, 8.333333vw, 120px);
+    --service-letter-size: clamp(24px, 1.95vw, 28px);
+    --service-item-gap: clamp(12px, 1.25vw, 18px);
+    --service-item-padding: clamp(12px, 1.1vw, 16px);
+    --service-title-size: clamp(16px, calc(8px + .8vw), 20px);
     padding-block: clamp(56px, 6vw, 96px);
   }
 
   .private-request-paths > .container {
-    width: min(100% - calc(var(--gutter) * 2), 60rem);
+    width: min(100% - calc(var(--gutter) * 2), 1240px);
   }
 
   html.home-theme-dark .private-request-paths .iphone-service-directory {
@@ -5202,7 +5089,24 @@
 
   .private-request-paths .iphone-service-feature--emergency {
     justify-self: center;
-    width: min(100%, 34rem);
+    width: min(100%, 36rem);
+  }
+
+  .private-request-paths .iphone-service-feature--emergency .iphone-service-feature__body {
+    min-height: 136px;
+    padding: 24px 108px 24px 24px;
+  }
+
+  .private-request-paths .iphone-service-feature--emergency .iphone-service-feature__body > strong {
+    font-size: clamp(18px, 1.4vw, 22px);
+  }
+
+  .private-request-paths .iphone-service-feature--emergency .iphone-service-feature__eyebrow {
+    font-size: 12px;
+  }
+
+  .private-request-paths .iphone-service-feature--emergency .iphone-service-feature__meta {
+    font-size: 14px;
   }
 
   /* Raster statt Mehrspaltensatz: Firefox kennt break-before: column im
@@ -5211,10 +5115,63 @@
      Reihe, die Reihenfolge im DOM bleibt die Lesereihenfolge. Kommen Zeilen
      hinzu, werden die Spalten nur ungleich lang - nichts bricht. */
   .private-request-paths .iphone-service-grid {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-flow: row dense;
-    column-gap: clamp(40px, 5vw, 72px);
+    column-gap: clamp(56px, 7.5vw, 112px);
+  }
+
+  .private-request-paths .iphone-service-grid::before {
+    position: absolute;
+    inset-block: 8px;
+    left: 50%;
+    width: 1px;
+    content: "";
+    background: linear-gradient(180deg,
+      transparent, rgba(164, 206, 91, .16) 8%,
+      rgba(164, 206, 91, .16) 92%, transparent);
+    pointer-events: none;
+  }
+
+  html.home-theme-dark .private-request-paths :is(.iphone-service-card, .iphone-service-inquiry) {
+    grid-template-columns: var(--service-letter-size) minmax(0, 1fr) var(--service-photo-size);
+    column-gap: var(--service-item-gap);
+    min-height: calc(var(--service-photo-size) + 2 * var(--service-item-padding));
+    padding-block: var(--service-item-padding);
+    scroll-margin-block: calc(var(--header-h, 92px) + 24px) 24px;
+  }
+
+  .private-request-paths .iphone-service-card__letter {
+    width: var(--service-letter-size);
+    height: var(--service-letter-size);
+  }
+
+  .private-request-paths :is(.iphone-service-card__media, .iphone-service-inquiry__mark) {
+    width: var(--service-photo-size);
+    height: var(--service-photo-size);
+  }
+
+  .private-request-paths .iphone-service-card__media {
+    border-radius: 16px 5px 16px 5px;
+  }
+
+  .private-request-paths .iphone-service-inquiry__mark img {
+    width: calc(var(--service-photo-size) * .73);
+  }
+
+  .private-request-paths :is(.iphone-service-card__title strong, .iphone-service-inquiry__copy) {
+    font-size: var(--service-title-size);
+    line-height: 1.3;
+  }
+
+  .private-request-paths .iphone-service-card__title small {
+    font-size: .8125rem;
+    line-height: 1.3;
+  }
+
+  .private-request-paths .iphone-service-inquiry__arrow {
+    width: 32px;
   }
 
   .private-request-paths .iphone-service-grid > .iphone-service-row {
@@ -5635,14 +5592,11 @@
 /* Auch html färben: Der untere Abstand der eingerückten Footer-Kachel
    liegt durch Margin Collapsing außerhalb des Body-Kastens (AP-289).
    AP-526: Seitengrund und Sektionsflächen gelten auf allen Breiten - bis
-   AP-526 standen sie im 480er-Block, und ab 481px trug die Startseite #171916. */
-html.home-theme-dark {
-  --home-page-background: #1b1e19;
-}
-
+   AP-526 standen sie im 480er-Block, und ab 481px trug die Startseite #171916.
+   AP-548: Der gemeinsame Token liegt jetzt in styles.css statt hier. */
 html.home-theme-dark,
 html.home-theme-dark body {
-  background: var(--home-page-background);
+  background: var(--page-background);
 }
 
 html.home-theme-dark :is(
@@ -5654,7 +5608,7 @@ html.home-theme-dark :is(
   .private-contact,
   .private-faq
 ) {
-  background: var(--home-page-background);
+  background: var(--page-background);
 }
 
 @media (max-width: 480px) {
@@ -5838,11 +5792,11 @@ html.home-theme-dark :is(
     gap: 0;
   }
 
-  html.home-theme-dark .private-faq.is-faq-mobile-disclosure .faq-more--gruppen {
+  html.home-theme-dark .private-faq .private-faq-wrap > .faq-more--gruppen {
     margin-top: 22px;
   }
 
-  html.home-theme-dark .private-faq.is-faq-mobile-disclosure .faq-more--gruppen > .private-faq-groups {
+  html.home-theme-dark .private-faq .private-faq-wrap > .faq-more--gruppen > .private-faq-groups {
     margin-top: 22px;
   }
 }

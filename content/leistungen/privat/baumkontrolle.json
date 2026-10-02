@@ -56,10 +56,10 @@
   ],
   "bilder": {
     "hero": {
-      "bild": "assets/img/leistungen-mobile/baumkontrolle-ahorn-640.webp",
-      "alt": "",
-      "width": 640,
-      "height": 640
+      "bild": "/assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-20261002.jpg",
+      "alt": "Baumstamm mit Wurzelanlauf und ausgelegten Werkzeugen.",
+      "width": 1536,
+      "height": 1024
     },
     "gallery": [
       {
@@ -100,7 +100,7 @@
       }
     ]
   },
-  "thumbnail": "assets/img/leistungen-mobile/baumkontrolle-ahorn-480.webp",
+  "thumbnail": "/assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-vorschau-20261002.jpg",
   "kundengruppe": [
     "privat"
   ],

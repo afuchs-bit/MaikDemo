@@ -42,6 +42,22 @@ const QUALITY_FLOOR = 28; // untere Grenze, darunter nicht mehr
 // widths = gewuenschte Breiten (groessere als das Original werden verworfen);
 // webpWidths = abweichende Breiten fuer WebP (optional, sonst wie widths).
 const SOURCES = [
+  // AP-562: Nutzergeliefertes Baumkontrolle-Foto. Hero bewahrt das ganze
+  // 3:2-Motiv; kleine Leistungsbilder nutzen den separaten 1:1-Ausschnitt.
+  {
+    src: 'assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-20261002.jpg',
+    dir: 'assets/img/leistungen-mobile',
+    name: 'baumkontrolle-wurzelanlauf-hero-20261002',
+    widths: [480, 800, 1200, 1536],
+    fallbackWidth: 800,
+  },
+  {
+    src: 'assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-vorschau-20261002.jpg',
+    dir: 'assets/img/leistungen-mobile',
+    name: 'baumkontrolle-wurzelanlauf-vorschau-20261002',
+    widths: [240, 480, 640],
+    fallbackWidth: 480,
+  },
   // Mobile Prototyp der neuen Leistungsseiten: Das hochaufloesende Original
   // bleibt als kanonische Quelle erhalten; ausgeliefert werden ausschliesslich
   // die kompakten responsiven Derivate aus dem Manifest.

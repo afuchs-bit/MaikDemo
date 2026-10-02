@@ -1,0 +1,150 @@
+/* AP-563: Gemeinsamer vertikaler Rhythmus der Homepage.
+   Nur index.html laedt diese Datei, nach den Komponenten. Die Hochkant-
+   Darstellung bleibt vollstaendig in deren bisherigen Regeln. Zwei gleiche
+   Sektionsraender bilden einen Uebergang; kleinere Stufen verbinden Inhalte.
+   Breiten, Typografie, Bildausschnitte und Bedienflaechen bleiben erhalten. */
+@media (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark {
+    --home-section-space: clamp(72px, 6vw, 112px);
+    --home-heading-space: clamp(56px, 5vw, 80px);
+    --home-group-space: clamp(64px, 6vw, 96px);
+    --home-block-space: clamp(40px, 3.5vw, 56px);
+    --home-list-space: clamp(24px, 2vw, 32px);
+    --home-hero-space: clamp(32px, 3vw, 48px);
+  }
+
+  html.home-theme-dark #top :is(.mobile-hero-cta-stack, .hero-proof-strip) {
+    margin-top: var(--home-hero-space);
+  }
+
+  html.home-theme-dark #top > :is(
+    .mobile-social-proof, .mr-ueber, .private-request-paths,
+    .private-process-updated, .private-proof-bento, .private-contact, .private-faq
+  ) {
+    padding-block: var(--home-section-space);
+  }
+
+  /* Willkommen hat keine eigene Sektionsflaeche: seine Raender liegen im
+     Hero-Raster. Der untere Rand ergaenzt den oberen Rand der Galerie. */
+  html.home-theme-dark #top .gate-welcome--iphone {
+    margin-block: var(--home-section-space);
+  }
+  html.home-theme-dark #top .gate-welcome-kicker {
+    margin-bottom: var(--home-heading-space);
+  }
+  html.home-theme-dark #top .gate-welcome--iphone .mobile-kpi-signature {
+    margin-top: var(--home-group-space);
+  }
+  html.home-theme-dark #top .mobile-kpi-signature__team {
+    padding-top: var(--home-block-space);
+  }
+  html.home-theme-dark #top .mobile-kpi-signature__google {
+    margin-top: var(--home-block-space);
+  }
+  html.home-theme-dark #top .gate-welcome-qualifications {
+    margin-top: var(--home-heading-space);
+  }
+  html.home-theme-dark #top .gate-welcome-qualification-grid {
+    row-gap: var(--home-list-space);
+  }
+  html.home-theme-dark #top .gate-welcome-qualification-details {
+    margin-top: var(--home-block-space);
+  }
+
+  /* Frage und Antwort bleiben ein gemeinsamer Dialog. Mehr Luft entsteht
+     um die Gruppe und vor dem mittigen CTA, nicht zwischen den Sprechern. */
+  html.home-theme-dark #top .mobile-proof-gallery__footer {
+    margin-top: var(--home-block-space);
+  }
+  html.home-theme-dark #top .mobile-proof-invitation {
+    margin-top: var(--home-group-space);
+  }
+  html.home-theme-dark #top .mobile-proof-invitation__actions {
+    margin-top: var(--home-block-space);
+  }
+
+  html.home-theme-dark #top :is(
+    .mr-ueber__kopf, .private-proof-section-head, .private-faq-head
+  ) {
+    margin-bottom: var(--home-heading-space);
+  }
+  html.home-theme-dark #top .mr-ueber {
+    --about-row-gap: var(--home-heading-space);
+  }
+  html.home-theme-dark #top .mr-ueber__mustertext {
+    margin-top: var(--home-heading-space);
+  }
+  html.home-theme-dark #top .mr-ueber__karte {
+    margin-top: var(--home-group-space);
+  }
+  /* Subgrid teilt den Abstand von Medien/Aussagen zur Abschlusszeile. */
+  @supports (grid-template-rows: subgrid) {
+    html.home-theme-dark #top .mr-ueber__overview .mr-ueber__mustertext {
+      margin-top: 0;
+    }
+  }
+
+  html.home-theme-dark #top .iphone-service-directory {
+    margin-top: var(--home-heading-space);
+    row-gap: var(--home-block-space);
+  }
+  html.home-theme-dark #top .iphone-service-contact-cta {
+    margin-top: 0;
+  }
+  html.home-theme-dark #top #ablauf .b2b-process-intro {
+    gap: 16px;
+    margin-bottom: var(--home-heading-space);
+  }
+  html.home-theme-dark #top #ablauf .process-track {
+    gap: var(--home-block-space);
+  }
+  html.home-theme-dark #top #ablauf .b2b-process-end-actions {
+    margin-top: var(--home-heading-space);
+  }
+
+  html.home-theme-dark #top .private-contact-layout {
+    margin-top: var(--home-heading-space);
+  }
+  html.home-theme-dark #top .private-contact .anf__form {
+    gap: var(--home-block-space);
+  }
+  html.home-theme-dark #top .private-contact .anf__kanaele {
+    gap: 16px;
+  }
+  html.home-theme-dark #top .private-contact .anf__oder {
+    margin-bottom: var(--home-list-space);
+  }
+  html.home-theme-dark #top .private-contact .anf__feld:not(.anf__feld--foto) {
+    margin-bottom: var(--home-list-space);
+  }
+  html.home-theme-dark #top .private-contact .anf__aktionen {
+    row-gap: var(--home-list-space);
+  }
+  html.home-theme-dark #top .private-faq-groups {
+    gap: var(--home-list-space);
+  }
+  html.home-theme-dark #top .private-faq-wrap > .faq-more--gruppen,
+  html.home-theme-dark #top .faq-more--gruppen > .private-faq-groups {
+    margin-top: var(--home-list-space);
+  }
+}
+
+@media (min-width: 901px) {
+  html.home-theme-dark #top .private-request-paths {
+    --service-item-padding: clamp(16px, 1.4vw, 20px);
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark {
+    --home-section-space: clamp(56px, 7vw, 64px);
+    --home-heading-space: clamp(40px, 5vw, 48px);
+    --home-group-space: clamp(48px, 7vw, 64px);
+    --home-block-space: clamp(32px, 4.5vw, 40px);
+    --home-list-space: 24px;
+    --home-hero-space: 24px;
+  }
+  html.home-theme-dark #top .private-request-paths .iphone-service-card {
+    padding-block: 16px;
+  }
+}

@@ -5,6 +5,7 @@
   const section = document.querySelector('.mobile-social-proof');
   if (!section) return;
   const mobile = window.matchMedia('(max-width: 900px)');
+  const carousel = window.matchMedia('(max-width: 900px) and (orientation: portrait)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   // Nur die CTAs dieser Sektion: Sie springen direkt zum einzigen sichtbaren
@@ -28,6 +29,7 @@
   const gallery = section.querySelector('[data-mobile-proof-gallery]');
   if (!gallery) return;
   const track = gallery.querySelector('.mobile-proof-gallery__track');
+  const frame = gallery.querySelector('.mobile-proof-gallery__frame');
   const originals = Array.from(gallery.querySelectorAll('[data-proof-slide]'));
   const dots = gallery.querySelector('.mobile-proof-gallery__dots');
   const buttons = Array.from(dots.querySelectorAll('button'));
@@ -40,6 +42,8 @@
   let touching = false;
   let settleTimer = 0;
   let lastWidth = 0;
+  let desktopLoading = false;
+  const fallbackAttempts = new WeakMap();
 
   const logicalIndex = (slot) => (slot - 1 + originals.length) % originals.length;
   const position = (slot) => slides[slot].offsetLeft;
@@ -67,7 +71,7 @@
   }
 
   function settle() {
-    if (!ready || touching || !mobile.matches || track.classList.contains('is-jumping')) return;
+    if (!ready || touching || !carousel.matches || track.classList.contains('is-jumping')) return;
     const slot = slides.reduce((nearest, slide, i) =>
       Math.abs(slide.offsetLeft - track.scrollLeft) < Math.abs(position(nearest) - track.scrollLeft) ? i : nearest, 0);
     update(logicalIndex(slot));
@@ -121,16 +125,65 @@
       await img.decode();
     } catch {
       slide.querySelectorAll('source').forEach((source) => source.remove());
+      // decode() allein wiederholt einen zuvor fehlgeschlagenen Request
+      // nicht. Ein neuer Versuch des Basis-WebP umgeht auch einen gecachten
+      // Fehler, wenn die Dateien inzwischen wieder erreichbar sind.
+      const attempt = (fallbackAttempts.get(img) || 0) + 1;
+      fallbackAttempts.set(img, attempt);
+      const fallback = new URL(img.getAttribute('src'), document.baseURI);
+      fallback.searchParams.set('proofRetry', String(attempt));
+      img.src = fallback.href;
       try { await img.decode(); } catch { return false; }
     }
     return img.naturalWidth > 0;
   }
 
+  // Die feste Reihe muss auch aus einem frueheren mobilen Fehlerzustand
+  // wieder sichtbar werden. hidden am Rahmen wird nicht von der Desktop-CSS
+  // aufgehoben. Nur tatsaechlich fehlende Fotos werden hier ausgeschlossen.
+  function showFixedRow() {
+    originals.forEach((slide) => {
+      const img = slide.querySelector('img');
+      slide.hidden = false;
+      slide.removeAttribute('aria-hidden');
+      slide.toggleAttribute('data-proof-unavailable', img.complete && !img.naturalWidth);
+    });
+    const available = originals.filter((slide) => !slide.hasAttribute('data-proof-unavailable'));
+    track.style.setProperty('--proof-image-count', String(Math.max(1, available.length)));
+    frame.hidden = !available.length;
+    caption.hidden = frame.hidden;
+    dots.hidden = true;
+    gallery.removeAttribute('aria-roledescription');
+    track.scrollLeft = 0;
+  }
+
+  async function loadFixedRow() {
+    if (desktopLoading) return;
+    desktopLoading = true;
+    await Promise.all(originals.map(load));
+    desktopLoading = false;
+    if (!carousel.matches) showFixedRow();
+    else if (!started) enhance();
+  }
+
+  originals.forEach((slide) => slide.querySelector('img').addEventListener('load', () => {
+    slide.removeAttribute('data-proof-unavailable');
+    if (!carousel.matches) showFixedRow();
+  }));
+
   function useStatic() {
     ready = false;
+    started = false;
+    clearTimeout(settleTimer);
     gallery.classList.remove('is-ready');
     dots.hidden = true;
     slides.filter((slide) => !originals.includes(slide)).forEach((slide) => slide.remove());
+    slides = originals;
+    gallery.removeAttribute('aria-roledescription');
+    if (!carousel.matches) {
+      showFixedRow();
+      return;
+    }
     const fallback = originals.find((slide) => {
       const img = slide.querySelector('img');
       return img.complete && img.naturalWidth > 0;
@@ -144,11 +197,11 @@
     if (fallback) caption.textContent = fallback.dataset.caption;
     // Wenn gar kein Foto erreichbar ist, bleiben die beiden Wege zur Anfrage
     // und Galerie erhalten, ohne leere Bildflaeche oder defektes Bildsymbol.
-    gallery.querySelector('.mobile-proof-gallery__frame').hidden = !fallback;
+    frame.hidden = !fallback;
   }
 
   async function enhance() {
-    if (started || !mobile.matches) return;
+    if (started || !carousel.matches) return;
     started = true;
     let firstFailed = false;
     const loaded = await Promise.all(originals.map(async (slide, i) => {
@@ -159,6 +212,13 @@
       if (firstFailed) useStatic();
       return ok;
     }));
+    // Drehen waehrend decode() darf die feste Reihe nicht nachtraeglich
+    // durch Karussell-Klone oder einen versteckten Rahmen ersetzen.
+    if (!carousel.matches) {
+      started = false;
+      showFixedRow();
+      return;
+    }
     if (loaded.some((ok) => !ok)) {
       useStatic();
       return;
@@ -166,10 +226,13 @@
 
     originals.forEach((slide, i) => {
       slide.hidden = false;
+      slide.removeAttribute('data-proof-unavailable');
       slide.setAttribute('role', 'group');
       slide.setAttribute('aria-roledescription', 'Bild');
       slide.setAttribute('aria-label', `${i + 1} von ${originals.length}`);
     });
+    frame.hidden = false;
+    caption.hidden = false;
     const duplicate = (slide) => {
       const copy = slide.cloneNode(true);
       copy.removeAttribute('data-proof-slide');
@@ -190,33 +253,40 @@
 
     // Auch ein spaeterer Fehler nach einem srcset-Wechsel beim Drehen des
     // Handys faellt auf ein bereits geladenes Foto zurueck.
-    slides.forEach((slide) => slide.querySelector('img').addEventListener('error', useStatic, { once: true }));
+    slides.forEach((slide) => slide.querySelector('img').addEventListener('error', async () => {
+      if (!await load(slide)) useStatic();
+      else if (!carousel.matches) showFixedRow();
+    }, { once: true }));
   }
 
   const observer = new IntersectionObserver((entries) => {
-    if (entries.some((entry) => entry.isIntersecting) && mobile.matches) {
+    if (entries.some((entry) => entry.isIntersecting)) {
       observer.disconnect();
-      enhance();
+      if (carousel.matches) enhance();
+      else loadFixedRow();
     }
   }, { rootMargin: '300px' });
   observer.observe(gallery);
-  mobile.addEventListener('change', () => {
-    if (mobile.matches && !started) observer.observe(gallery);
-    if (!ready) return;
-    // AP-504: Ab 901px stehen die drei Bilder fest nebeneinander (CSS), das
-    // Karussell ruht. Dann sollen alle drei vorgelesen werden, nicht nur das
-    // zuletzt aktive; zurueck unter 900px gilt wieder die Karussell-Logik.
-    if (mobile.matches) {
+  if (!carousel.matches) showFixedRow();
+  carousel.addEventListener('change', () => {
+    touching = false;
+    clearTimeout(settleTimer);
+    if (carousel.matches && ready) {
+      frame.hidden = false;
+      caption.hidden = false;
+      dots.hidden = false;
+      gallery.setAttribute('aria-roledescription', 'Karussell');
       update(current, false);
       jump(current + 1);
-    } else {
-      originals.forEach((slide) => slide.removeAttribute('aria-hidden'));
+    } else if (!carousel.matches) {
+      showFixedRow();
     }
+    if (!ready) observer.observe(gallery);
   });
 
   new ResizeObserver(() => {
     const width = track.clientWidth;
-    if (!ready || !mobile.matches || !width || width === lastWidth) return;
+    if (!ready || !carousel.matches || !width || width === lastWidth) return;
     lastWidth = width;
     jump(current + 1);
   }).observe(track);

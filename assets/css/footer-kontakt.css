@@ -23,7 +23,11 @@
 
    Jede Seite mit Footer laedt diese Datei (AP-515: auch Impressum, Datenschutz,
    die Projektdetailseiten und 404.html). Ohne sie stuenden Formular-Kachel und
-   Social-Zeile unformatiert im alten Raster. */
+   Social-Zeile unformatiert im alten Raster.
+
+   AP-545 (02.10.2026): Die Hochkantfassung bleibt erhalten. Desktop und
+   Handy-Querformat verwenden jetzt eine fast seitenbreite Karte ohne Rahmen;
+   ihre responsiven Raster und die kompakte Querformatfassung stehen am Ende. */
 
 /* ---------- Grundebene: Aussehen der Handy-Fassung ---------- */
 
@@ -305,7 +309,7 @@
 /* AP-515: Zwischen 481 und 900px steht die Handy-Karte in voller Breite, ihr Inhalt
    mittig auf 34rem - so haelt es auch die Kontaktseite in diesem Band. Ohne die
    Begrenzung liefen die vier Kacheln bei 900px je ueber 420px. */
-@media (min-width: 481px) and (max-width: 900px) {
+@media (min-width: 481px) and (max-width: 900px) and (orientation: portrait) {
   .site-footer > .container { max-width: 34rem; }
 
   /* Ab 481px ist der Seitengrund auf vielen Seiten derselbe Ton wie die Karte
@@ -314,46 +318,46 @@
   .site-footer { border: 1px solid var(--line); }
 }
 
-/* ---------- Desktop ab 901px: die Karte dreispaltig ----------
-   AP-515, auf Ansage des Auftraggebers (30.09.2026): derselbe Inhalt wie auf dem
-   Handy, als gerahmte Karte ueber die Containerbreite. Links Logo, Adresse und
-   Route; in der Mitte "Direkter Kontakt" mit den vier Kacheln im 2x2-Raster;
-   rechts die Erreichbarkeitszeile mit WhatsApp und Instagram. Unten Copyright
-   links, Impressum und Datenschutz rechts.
-   Die drei Spalten entstehen aus zwei Rastern: .footer-main teilt Marke und
-   Kontaktblock, der Kontaktblock teilt Kacheln und Social-Zeile. So bleibt die
-   section samt aria-labelledby intakt - display: contents auf ihr haette
-   ihre Bedeutung fuer Screenreader in manchen Browsern gekostet.
-   Der Rahmen macht die Karte auf jedem Seitengrund sichtbar; der Grund #171916
-   ist auf mehreren Seiten zugleich der Seitengrund. */
-@media (min-width: 901px) {
-  .site-footer {
-    width: min(100% - var(--gutter) * 2, var(--container));
-    margin: 0 auto clamp(20px, 2.2vw, 32px);
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    padding: clamp(28px, 3vw, 40px) 0 20px;
+/* AP-545: Dieselben mobilen Bauteile in einer seitenbreiten, randlosen Karte.
+   Der Inhalt bleibt begrenzt; schmale Desktopfenster und Handy-Querformat
+   kombinieren Social-Icons und Hinweis in einer flachen gemeinsamen Zeile.
+   Die Leistungsseiten tragen eigene alte Container-Regeln. Ihre explizite
+   Auswahl hier haelt die Footer-Geometrie in dieser Komponente, auch wenn
+   leistung-mobile.css spaeter geladen wird. Hochkant greift dieser Block nicht. */
+@media (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
+  .site-footer,
+  body.lpv2-page .site-footer {
+    --footer-inner-inset: max(clamp(24px, 3.5vw, 64px), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+    width: calc(100% - 24px);
+    margin: 0 12px max(12px, env(safe-area-inset-bottom, 0px));
+    padding: clamp(36px, 4vw, 64px) 0 24px;
+    border: 0;
+    border-radius: clamp(24px, 2.2vw, 32px);
+    font-family: "Nunito", var(--body);
   }
 
-  .site-footer > .container {
-    width: auto;
-    padding-inline: clamp(24px, 3vw, 44px);
+  .site-footer > .container,
+  body.lpv2-page .site-footer > .container {
+    width: min(calc(100% - 2 * var(--footer-inner-inset)), 1440px);
+    max-width: none;
+    margin-inline: auto;
+    padding: 0;
   }
 
   .site-footer .footer-main {
-    grid-template-columns: minmax(220px, .8fr) minmax(0, 2.2fr);
-    gap: clamp(28px, 3.5vw, 56px);
+    grid-template-columns: minmax(0, .85fr) minmax(0, 2.15fr);
+    gap: clamp(24px, 4vw, 64px);
     align-items: start;
+  }
+
+  .site-footer .brand-footer {
+    width: min(300px, 100%);
   }
 
   .site-footer .footer-contact-block {
     display: grid;
-    /* 250px: die Erreichbarkeitszeile steht in zwei festen Zeilen (nowrap), die
-       laengere - "Wochenenden · Mustergarten nur nach Vereinbarung" - braucht
-       gemessen 246px. Mit 210px ragte sie bei 1024px bis an den Kartenrand. */
-    grid-template-columns: minmax(0, 1.3fr) minmax(250px, .7fr);
-    grid-template-rows: auto auto;
-    column-gap: clamp(24px, 3vw, 48px);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
     align-items: start;
   }
 
@@ -369,13 +373,141 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .site-footer .footer-contact-link {
+    min-height: 56px;
+    padding-inline: 10px;
+  }
+
+  .site-footer .footer-contact-link strong {
+    font-size: .875rem;
+    letter-spacing: 0;
+  }
+
+  .site-footer .footer-contact-link small {
+    font-size: .625rem;
+  }
+
   .site-footer .footer-social-iphone {
-    grid-column: 2;
-    grid-row: 2;
-    margin-top: 0;
+    grid-column: 1;
+    grid-row: 3;
+    grid-template-columns: var(--footer-social-icon-size) var(--footer-social-icon-size) minmax(0, 1fr);
+    grid-template-rows: auto;
+    column-gap: 8px;
+    margin-top: 16px;
+  }
+
+  .site-footer .footer-social-link--whatsapp { grid-row: 1; }
+  .site-footer .footer-social-link--instagram { grid-row: 1; }
+
+  .site-footer .footer-social-availability {
+    grid-column: 3;
+    grid-row: 1;
+    padding-left: 8px;
+    font-size: .75rem;
+    line-height: 1.5;
+  }
+
+  .site-footer .footer-social-line {
+    display: inline;
+    white-space: normal;
+    text-wrap: pretty;
+  }
+
+  .site-footer .footer-route {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    gap: 4px;
   }
 
   .site-footer .footer-bottom {
-    margin-top: clamp(24px, 2.6vw, 34px);
+    flex-direction: row;
+    align-items: center;
+    margin-top: clamp(24px, 3vw, 40px);
+    font-size: .75rem;
+    line-height: 1.5;
+    gap: 8px 24px;
   }
+
+  .site-footer .footer-bottom small { font-size: inherit; }
+
+  .site-footer .footer-bottom a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* Auf grossen Monitoren verteilt sich die mobile Familie auf drei Bereiche. */
+@media (min-width: 1200px) {
+  .site-footer .footer-contact-block {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr);
+    grid-template-rows: auto auto;
+    column-gap: clamp(32px, 3.5vw, 64px);
+  }
+
+  .site-footer .footer-social-iphone {
+    grid-column: 2;
+    grid-row: 2;
+    grid-template-rows: auto auto;
+    margin-top: 0;
+  }
+
+  .site-footer .footer-social-availability {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding-left: 0;
+  }
+
+  .site-footer .footer-social-link--whatsapp { grid-row: 2; }
+  .site-footer .footer-social-link--instagram { grid-row: 2; }
+}
+
+/* Kurze Querformat-Fenster: dieselben Kacheln mit kleineren Zwischenraeumen,
+   aber weiterhin mindestens 44px grossen Kontakt- und Social-Tippflaechen. */
+@media (max-width: 900px) and (orientation: landscape) {
+  .site-footer,
+  body.lpv2-page .site-footer {
+    padding-block: 20px 16px;
+    border-radius: 24px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .site-footer .footer-main {
+    grid-template-columns: minmax(0, .75fr) minmax(0, 1.65fr);
+    gap: clamp(20px, 3vw, 28px);
+  }
+
+  .site-footer .brand-footer {
+    width: min(240px, 100%);
+    margin-bottom: 12px;
+  }
+
+  .site-footer .footer-address { font-size: .75rem; }
+  .site-footer .footer-heading { font-size: .6875rem; margin-bottom: 10px; }
+
+  .site-footer .footer-contact-link {
+    min-height: 44px;
+    padding: 6px 7px;
+  }
+
+  .site-footer .footer-contact-link strong { font-size: clamp(11px, 1.45vw, 13px); }
+  .site-footer .footer-contact-link small { font-size: .5625rem; }
+  .site-footer .footer-social-iphone { margin-top: 12px; }
+  .site-footer .footer-social-availability { font-size: .6875rem; }
+
+  .site-footer .footer-bottom {
+    margin-top: 12px;
+    padding-top: 8px;
+    font-size: .6875rem;
+    gap: 4px 16px;
+  }
+}
+
+/* Bei starkem Zoom ist vollstaendige Lesbarkeit wichtiger als zwei Spalten. */
+@media (max-width: 560px) and (orientation: landscape) {
+  .site-footer .footer-main { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .site-footer .footer-brand-block { flex-direction: row; align-items: center; gap: 20px; }
+  .site-footer .brand-footer { width: min(160px, 42%); margin: 0; }
 }

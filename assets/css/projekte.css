@@ -178,7 +178,7 @@
 html,
 body,
 .section-projects {
-  background: #1B1E19;
+  background: var(--page-background);
 }
 
 /* AP-531: Der Galerie-CTA traegt auf allen Breiten die Handy-Gestalt - auf Ansage
@@ -613,7 +613,7 @@ body,
 /* AP-526: Gilt seit AP-526 auf allen Breiten - der Desktop traegt denselben
    Seitengrund #1B1E19 wie das Handy (Ansage des Auftraggebers). */
 .gallery-mode-sticky {
-  background: #1B1E19;
+  background: var(--page-background);
 }
 
 /* AP-409: Ab 901px stand der Umschalter wieder neben der Ueberschrift - ein
@@ -680,8 +680,6 @@ body,
     flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
   }
 }
-
-
 
 /* AP-538 (Ansage 02.10.2026): Querformat am Handy (481-900px, iPhone 16 Pro quer 874px).
    Gemessen bei 874px vorher:
