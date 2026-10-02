@@ -2380,3 +2380,48 @@ body.ueber-page {
     margin-top: clamp(26px, 3.6vw, 56px);
   }
 }
+
+/* --- Querformat am Handy (AP-535, 02.10.2026) -----------------------------
+   Ansage des Auftraggebers: Das Handy quer gehalten (iPhone 16 Pro: 874 x 402)
+   bleibt in der Handy-Welt, hat aber fast die doppelte Breite. Gemessen bei
+   874px vor dieser Aenderung:
+   - Startfoto 760 x 570 - hoeher als der sichtbare Bereich (~320px unter der
+     Kopfleiste). Jetzt 440px wie das Hebeaktion-Foto und der Desktop (AP-530);
+     die Datei ist 900px breit, bleibt also scharf.
+   - Absatz unter "Das Team hinter dem Betrieb." 804px breit und linksbuendig
+     unter einer mittigen Ueberschrift. Jetzt mittig auf 600px (Mittelachse
+     wie AP-530).
+   - Faktensatz und "Im Mittelpunkt ..." 416 / 587px, linksbuendig an der
+     Containerkante. Jetzt mittig unter der H2 und breiter, ebenfalls 600px.
+   - Hebeaktion-Foto 440px an der linken Kante. Jetzt mittig.
+   - Projektkarten 78 % = 627 x 600. Jetzt 320px breit; das Karussell bleibt
+     (Entscheidung des Auftraggebers), zwei Karten und der Anschnitt der
+     dritten sind zu sehen - der Hinweis aus AP-327.
+   Zitat, Titel, Zusage-Kachel, "Alles aus einer Hand" und "Fuer wen wir
+   arbeiten" bleiben auf Ansage unveraendert. Bis 480px (Hochformat) und ab
+   901px aendert sich nichts. Tablets im Hochformat (768px) liegen ebenfalls
+   in diesem Band und bekommen dieselbe Anordnung. Der Block steht am
+   Dateiende, damit er die gleich gewichteten Regeln oben schlaegt. */
+@media (min-width: 481px) and (max-width: 900px) {
+  .ueber-hero .ueber-hero__foto { width: min(calc(100% - 64px), 440px); }
+
+  .ueber-inhaber__text {
+    max-width: 600px;
+    margin-inline: auto;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .ueber-betrieb__wort .ueber-betrieb__fakten,
+  .ueber-betrieb__wort .lead {
+    max-width: 600px;
+    margin-inline: auto;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  /* max-width: 440px kommt aus dem 900er-Block oben. */
+  .ueber-betrieb__bild { justify-self: center; width: 100%; }
+
+  .ueber-projekte__spur .project-card { flex: 0 0 320px; }
+}
