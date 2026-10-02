@@ -588,3 +588,25 @@
   .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal.is-in,
   .lpv2-page--desktop-trichter .lpv2-content-closing :is(.lpv2-closing,.lpv2-closing-cta).reveal.is-in{opacity:1;transform:none}
 }
+
+/* ---------- AP-536: Balkonkasten im Querformat (481-900px) ----------
+   Ansage 02.10.2026, Handy quer (iPhone 16 Pro, 874px). Haengt an derselben Seitenklasse wie
+   AP-534 (lpv2-page--desktop-trichter) - sie ist die einzige seitenspezifische Klasse und wirkt
+   hier bewusst auch unter 901px.
+   Gemessen bei 874px vorher: Foto und Knopf 504px, Einstieg und Standort-Absatz 367px (34ch bei 18px), Hinweistext 326px (34ch bei 16px). Jetzt: Foto etwas
+   kleiner, der Knopf darunter bleibt buendig, und die drei Absaetze stehen auf derselben Breite
+   von 470px. Ueberschriften, Liste, Abschluss-Kachel und Knopf unten bleiben. */
+@media (min-width:481px) and (max-width:900px){
+  .lpv2-page--desktop-trichter.lpv2-page--title-above .lpv2-hero-media{width:min(calc(100% - 40px),470px)}
+  .lpv2-page--desktop-trichter .lpv2-mobile-hero-cta{width:min(calc(100% - 40px),470px)}
+  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p{max-width:470px}
+  .lpv2-page--desktop-trichter .lpv2-content-service-copy{max-width:470px}
+  /* Die Wortgruppen (lpv2-mobile-keep, nowrap) sind fuer die 34ch-Spalte des Hochformats gesetzt;
+     auf 470px erzwangen sie fruehe Umbrueche ("zur Bewaesserung" allein in der Zeile). */
+  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context,.lpv2-content-service-copy) p .lpv2-mobile-keep{white-space:normal}
+  /* Ansage 02.10.2026: Blocksatz. Die Absaetze stehen links wie rechts gleich weit ueber die
+     Ueberschrift "Ein Stueck Garten vor Ihrem Fenster" hinaus; mit Flattersatz endeten die
+     Zeilen rechts frueher und der Block wirkte nach links verschoben. Letzte Zeile links,
+     Silbentrennung gegen grosse Wortluecken (lang="de") - wie am Desktop (AP-534). */
+  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context,.lpv2-content-service-copy) p{text-align:justify;text-align-last:left;hyphens:auto}
+}
