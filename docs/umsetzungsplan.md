@@ -2260,3 +2260,10 @@ Auf Ansage des Auftraggebers:
 - Handy (402/480px): Lage aller Elemente unverändert. Pixelabweichungen nur am neuen Text
   und an der Wort-Animation des Zitats, die auch zwischen zwei Aufnahmen desselben Stands
   schwankt.
+
+**AP-533 — Über uns: „Das Team“ und „Ehrlich beraten“ gleich breit (02.10.2026).**
+Auf Ansage des Auftraggebers steht der Team-Block am Rechner als Spiegelbild des
+Betriebs-Blocks: Foto 440px, Text 400px, Lücke clamp(26px, 3.6vw, 56px), mittig. Beide
+Blöcke laufen an denselben Außenkanten (vorher war der obere bei 1280px 165px breiter).
+Dazu: Fotounterkante → Linie (Steg über dem Zitat) so groß wie „Maik Rohdich,
+Gartenbaumeister“ → Betriebs-Foto, `margin-top: calc(2 * clamp(26px, 3.75vw, 48px) - 36px)`.

@@ -2112,18 +2112,20 @@ body.ueber-page {
   .ueber-inhaber { padding-top: 0; }
 
   .ueber-inhaber__raster {
-    /* Text mindestens 400px: darunter reisst der Blocksatz (siehe unten) bei knappem
-       Rechner sichtbare Wortluecken - bei 901px waren es 353px. Das Foto gibt dafuer
-       nach (bis 300px). */
-    grid-template-columns: minmax(300px, 440px) minmax(400px, 560px);
+    /* AP-533 (Ansage 02.10.2026): Spiegelbild des Rasters "Ehrlich beraten, sauber
+       gebaut" weiter unten - Foto 440px, Text 400px, dieselbe Luecke
+       clamp(26px, 3.6vw, 56px), mittig im selben Container. Beide Bloecke laufen damit
+       auf jeder Breite an denselben Aussenkanten. Bis hierher Text bis 560px und
+       Luecke clamp(28px, 4vw, 56px) - der obere Block war bei 1280px 165px breiter. */
+    grid-template-columns: minmax(0, 440px) minmax(0, 400px);
     grid-template-areas:
       "foto text"
       "steg steg"
       "zitat zitat";
-    column-gap: clamp(28px, 4vw, 56px);
+    column-gap: clamp(26px, 3.6vw, 56px);
     justify-content: center;
     align-items: center;
-    max-width: 1056px;
+    max-width: none; /* hebt die 600px der Mittelachse (AP-530) auf */
   }
 
   .ueber-inhaber__foto {
@@ -2201,7 +2203,11 @@ body.ueber-page {
     grid-area: steg;
     justify-self: center;
     width: min(100%, 600px);
-    margin-top: clamp(44px, 4.4vw, 60px);
+    /* AP-533 (Ansage 02.10.2026): Fotounterkante -> Linie so gross wie Signatur ->
+       naechstes Foto (die beiden Sektionspolster aus AP-460, je
+       clamp(26px, 3.75vw, 48px)). Die Linie liegt in der Mitte des 72px hohen Stegs,
+       daher minus 36px. Vorher clamp(44px, 4.4vw, 60px) aus Nachtrag 3. */
+    margin-top: calc(2 * clamp(26px, 3.75vw, 48px) - 36px);
   }
 
   .ueber-inhaber__zitat {
