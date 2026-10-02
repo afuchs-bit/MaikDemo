@@ -307,6 +307,13 @@
     el.classList.add('is-in');
   };
 
+  // AP-534: Elemente mit data-reveal-late erscheinen am Rechner (ab 901px) erst, wenn ihre
+  // Oberkante 72 % der Fensterhoehe erreicht - statt 90 % wie alle anderen. So kommen die
+  // Listenpunkte der Leistungsseiten einzeln beim Scrollen. Unter 901px gilt das Attribut
+  // nicht; die Handy-Fassung bleibt unveraendert.
+  const lateRevealActive = window.matchMedia('(min-width: 901px)').matches;
+  const isLateReveal = (el) => lateRevealActive && el.hasAttribute('data-reveal-late');
+
   const gsapRevealEnabled = !reduced && Boolean(window.gsap && window.ScrollTrigger);
   if (gsapRevealEnabled) {
     window.gsap.registerPlugin(window.ScrollTrigger);
@@ -339,7 +346,7 @@
       ease: 'power2.out',
       scrollTrigger: {
         trigger: el,
-        start: isWelcomePhoto ? 'top bottom+=72px' : 'top 88%',
+        start: isWelcomePhoto ? 'top bottom+=72px' : (isLateReveal(el) ? 'top 72%' : 'top 88%'),
         once: true
       },
       onStart: () => {
@@ -363,6 +370,18 @@
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
   }
 
+  // AP-534: zweiter Beobachter, Ausloeselinie bei 72 % statt 90 % der Fensterhoehe.
+  let revealObserverLate = null;
+  if (revealObserver && lateRevealActive) {
+    revealObserverLate = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        revealNow(entry.target);
+        revealObserverLate.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -28% 0px', threshold: 0.08 });
+  }
+
   const registerReveal = (root = document) => {
     const candidates = [];
     if (root.nodeType === Node.ELEMENT_NODE && root.matches('.reveal')) candidates.push(root);
@@ -372,6 +391,7 @@
       registeredRevealElements.add(el);
       if (gsapRevealEnabled) revealWithGsap(el);
       else if (!revealObserver) revealNow(el);
+      else if (revealObserverLate && isLateReveal(el)) revealObserverLate.observe(el);
       else revealObserver.observe(el);
     });
   };

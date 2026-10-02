@@ -12,7 +12,8 @@
     "gerne zur Verfügung."
   ],
   "themeColor": "#171916",
-  "mobileCssVersion": "20260930d",
+  "mobileCssVersion": "20261002g",
+  "desktopLayout": "trichter",
   "ctaFamilyVersion": "20260926b",
   "h1": "Balkonkastenbepflanzung",
   "heroTitleLines": [

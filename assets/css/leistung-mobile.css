@@ -520,3 +520,71 @@
   html.lpv2-root{scroll-behavior:auto}
   .lpv2-page *{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
+
+/* ---------- AP-534: Trichter-Layout am Rechner (Seiten mit desktopLayout "trichter") ----------
+   Freigegeben per Mockup (leistungsseite-desktop-mockup.html, Variante 8). Gilt nur ab 901px
+   und nur fuer Seiten mit der Klasse lpv2-page--desktop-trichter (Build setzt sie aus dem
+   JSON-Feld desktopLayout). Handy bis 900px bleibt unveraendert - die einzige Regel ausserhalb
+   der Media Query neutralisiert die neuen reveal-Klassen der Listenpunkte dort.
+
+   Aufbau am Rechner: Held, Galerie, Fragen, Kontakt und Ergaenzungen bleiben die 32rem-Spalte
+   mit zoom 1.25 aus AP-512 - nur traegt jetzt jede dieser Sektionen die Spalte selbst, nicht
+   mehr .lpv2-main. So kann die Textsektion (.lpv2-content-feature) auf 1080px Satzspiegel bei
+   zoom 1 ausbrechen. container-type wandert mit, damit cqw-Masse weiter die 32rem-Spalte messen.
+
+   Textsektion: Ueberschrift mittig (34px), darunter Einstieg und Standort-Absatz nebeneinander,
+   getrennt durch eine gruene Haarlinie; dann die Leistungsueberschrift mittig (32px) und eine
+   einzige 480px-Spalte - Liste wie auf dem Handy (Bluete, Trennlinien), Hinweistext, Abschluss
+   zentriert, Knopf 400px. Liste, Hinweistext, Abschluss und Knopf erscheinen einzeln beim
+   Scrollen (data-reveal-late, main.js: Ausloeselinie 72 % Fensterhoehe). */
+.lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal,
+.lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal{opacity:1;transform:none;transition:none}
+
+@media (min-width:901px){
+  /* 1 - Spalte und Zoom von .lpv2-main auf die Sektionen, Textsektion ausgenommen */
+  .lpv2-page--desktop-trichter .lpv2-main{max-width:none;zoom:1;container-type:normal}
+  .lpv2-page--desktop-trichter .lpv2-main > article > section:not(.lpv2-content-feature){max-width:32rem;margin-inline:auto;zoom:1.25;container-type:inline-size}
+
+  /* 2 - Satzspiegel der Textsektion */
+  .lpv2-page--desktop-trichter .lpv2-content-feature{padding:80px 0 96px}
+  /* Das Raster liegt am Container, nicht an .lpv2-content-editorial: Hinweistext (im Artikel)
+     und Abschluss-Kachel (danach) stehen nebeneinander in einer Zeile (Ansage 02.10.2026) -
+     das geht nur, wenn beide Kinder desselben Rasters sind. Artikel, Leistungsblock und
+     Abschluss loesen sich dafuer per display:contents auf. */
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);column-gap:52px;row-gap:0;width:min(100% - 48px,1080px);max-width:none;margin-inline:auto;padding:0;container-type:inline-size}
+  .lpv2-page--desktop-trichter .lpv2-content-feature :is(.lpv2-content-editorial,.lpv2-content-service,.lpv2-content-closing,.lpv2-closing-block){display:contents}
+  .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-mobile-keep{white-space:normal}
+
+  /* 3 - Zeile 1: Ueberschrift ueber die ganze Breite; Zeile 2: zwei Absaetze an der Haarlinie */
+  .lpv2-page--desktop-trichter .lpv2-content-lead{display:contents}
+  .lpv2-page--desktop-trichter .lpv2-content-lead h2{grid-column:1 / -1;grid-row:1;width:auto;max-width:22ch;margin:0 auto;font-size:2.125rem;line-height:1.14}
+  .lpv2-page--desktop-trichter .lpv2-content-lead h2.lpv2-content-title--long{font-size:2.125rem;line-height:1.14}
+  .lpv2-page--desktop-trichter .lpv2-content-lead .lpv2-content-flow-copy--intro{grid-column:1;grid-row:2;margin-top:40px}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container::before{content:'';grid-column:2;grid-row:2;margin-top:40px;background:linear-gradient(180deg,transparent,var(--mobile-logo-green,#56e607) 18%,var(--mobile-logo-green,#56e607) 82%,transparent);opacity:.55}
+  .lpv2-page--desktop-trichter .lpv2-content-context{grid-column:3;grid-row:2;justify-self:end;width:100%;margin-top:40px}
+  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p{max-width:46ch;margin-inline:0}
+
+  /* 4 - Zeile 3: Leistungsueberschrift mittig, Zeile 4: Liste 480px mittig */
+  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:1 / -1;grid-row:3;width:auto;max-width:26ch;margin:92px auto 0;font-size:2rem;line-height:1.17}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:1 / -1;grid-row:4;width:100%;max-width:480px;margin:40px auto 0}
+
+  /* 5 - Hinweistext (Blocksatz) und Abschluss: die Kachel des Handys (gruene Flaeche,
+     Bluetenstempel, Zeilen untereinander), Knopf 400px als Trichterende. E1 entschieden
+     (02.10.2026): Kachel bleibt - das Mockup hatte den Satz ohne Kasten gezeigt. */
+  /* Zeilen 5-7 untereinander mittig: Hinweistext (480px, Blocksatz), Abschluss-Kachel
+     (480px, so breit wie der Text), Knopf 400px. Am 02.10.2026 stand die Kachel kurz rechts
+     neben dem Text; auf Ansage wieder darunter. Der Abstand Liste -> Text kommt weiter aus
+     dem Handy-Block (--lpv2-space-list-followup). */
+  .lpv2-page--desktop-trichter .lpv2-content-service-copy{grid-column:1 / -1;grid-row:5;justify-self:center;width:100%;max-width:480px}
+  .lpv2-page--desktop-trichter .lpv2-content-service-copy p{max-width:none;text-align:justify;text-align-last:left;hyphens:auto}
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{grid-column:1 / -1;grid-row:6;justify-self:center;width:100%;max-width:480px;margin:32px 0 0}
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{grid-column:1 / -1;grid-row:7;justify-self:center;width:400px;margin:20px auto 0}
+
+  /* 6 - Erscheinen beim Scrollen: kurz und flach statt 24px/0.9s wie im Rest der Seite */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal,
+  .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal,
+  .lpv2-page--desktop-trichter .lpv2-content-closing :is(.lpv2-closing,.lpv2-closing-cta).reveal{opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.is-in,
+  .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal.is-in,
+  .lpv2-page--desktop-trichter .lpv2-content-closing :is(.lpv2-closing,.lpv2-closing-cta).reveal.is-in{opacity:1;transform:none}
+}

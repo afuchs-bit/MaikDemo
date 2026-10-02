@@ -1110,13 +1110,13 @@ function lpv2MobileCtaLabelClass(label) {
   return 'maik-cta__label--compact';
 }
 
-function lpv2HomepageCta(label, base, extraClass = '', href = '#kontakt', attention = true, labelClass = '', icon = 'arrow') {
+function lpv2HomepageCta(label, base, extraClass = '', href = '#kontakt', attention = true, labelClass = '', icon = 'arrow', attrs = '') {
   const classes = [extraClass, 'maik-cta', attention ? 'maik-cta--attention' : '', 'reveal'].filter(Boolean).join(' ');
   const labelClasses = ['maik-cta__label', labelClass].filter(Boolean).join(' ');
   const iconHtml = icon === 'phone'
     ? `<img class="maik-cta__phone-icon" src="${base}assets/img/icons/phone-header-mobile.png?v=20260902a" alt="" width="24" height="24" decoding="async">`
     : `<svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg><img class="maik-cta__arrow-image" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async">`;
-  return `<a class="${escAttr(classes)}" href="${escAttr(href)}">
+  return `<a class="${escAttr(classes)}" href="${escAttr(href)}"${attrs}>
           <svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg>
           <svg class="maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
           <svg class="maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg>
@@ -1135,14 +1135,23 @@ function lpv2Closing(leistung, base) {
     ? configuredLines.map((line) => `<span>${esc(line)}</span>`).join('\n          ')
     : text;
   const label = leistung.closingCtaLabel || 'Beratung vereinbaren';
+  // AP-534: Am Rechner (Trichter-Layout) erscheinen Abschluss und Knopf erst bei 72 %
+  // Fensterhoehe (data-reveal-late, main.js). Auf dem Handy wirkt das Attribut nicht.
+  const late = leistung.desktopLayout === 'trichter' ? ' data-reveal-late' : '';
   return `<div class="lpv2-closing-block">
-        <p class="lpv2-closing lpv2-closing-lines reveal">${copy}</p>
-        ${lpv2HomepageCta(label, base, 'lpv2-closing-cta', leistung.ctaHref || '#kontakt', true, '', leistung.ctaIcon || 'arrow')}
+        <p class="lpv2-closing lpv2-closing-lines reveal"${late}>${copy}</p>
+        ${lpv2HomepageCta(label, base, 'lpv2-closing-cta', leistung.ctaHref || '#kontakt', true, '', leistung.ctaIcon || 'arrow', late)}
       </div>`;
 }
 
 function lpv2ContentSection(leistung, base) {
   if (leistung.contentVariant !== 'editorial') return '';
+  // AP-534: Trichter-Layout am Rechner - Listenpunkte und Hinweistext erscheinen einzeln
+  // beim Scrollen. Nur diese Seiten tragen die Klasse reveal an den Punkten; die
+  // Handy-Fassung neutralisiert sie (leistung-mobile.css, Block AP-534).
+  const late = leistung.desktopLayout === 'trichter';
+  const liAttrs = late ? ' class="reveal" data-reveal-late' : '';
+  const copyAttrs = late ? ' reveal" data-reveal-late' : '"';
   const intro = lpv2MobileParagraphs(leistung.einstieg || [], leistung.mobileEinstieg);
   const contentBlocks = (leistung.inhalt || []).map((block) => {
     const paragraphs = lpv2MobileParagraphs(
@@ -1151,10 +1160,10 @@ function lpv2ContentSection(leistung, base) {
       block.mobileNaturalWrapParagraphs,
       block.mobileAccentPhoneParagraphs,
     );
-    const bullets = (block.bullets || []).map((item) => `<li>${escMobileCopy(item)}</li>`).join('');
+    const bullets = (block.bullets || []).map((item) => `<li${liAttrs}>${escMobileCopy(item)}</li>`).join('');
     const heading = block.heading ? `<h3>${esc(block.heading)}</h3>` : '';
     const list = bullets ? `<ul class="lpv2-list lpv2-content-list">${bullets}</ul>` : '';
-    const copy = paragraphs ? `<div class="lpv2-content-service-copy">${paragraphs}</div>` : '';
+    const copy = paragraphs ? `<div class="lpv2-content-service-copy${copyAttrs}>${paragraphs}</div>` : '';
     const diagram = leistung.diagram === 'baumkontrolle' && block.heading === 'Von der Kontrolle zur passenden Maßnahme'
       ? lpv2DecisionGraphic(base)
       : '';
@@ -1378,7 +1387,7 @@ export async function renderLeistungPage(opts) {
       mobileCssVersion: escAttr(presented.mobileCssVersion || '20260924z6'),
       ctaFamilyVersion: escAttr(presented.ctaFamilyVersion || '20260919a'),
       heroVariantClass: `${imageFirstHero ? ' lpv2-page--image-first' : ''}${heroTitleAbove ? ' lpv2-page--title-above' : ''}${heroTitleGraphic ? ' lpv2-page--title-graphic' : ''}`,
-      pageVariantClass: `${presented.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${presented.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}`,
+      pageVariantClass: `${presented.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${presented.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}${presented.desktopLayout === 'trichter' ? ' lpv2-page--desktop-trichter' : ''}`,
       title: esc(presented.title), ogTitle: escAttr(presented.title),
       description: escAttr(truncate(presented.metaDescription, 160)), canonical: escAttr(canonical),
       ogImage: escAttr(absUrl(hero.bild)), heroPreload: lcpPreloadFor(hero.bild, heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', base),
