@@ -1167,9 +1167,7 @@
   if (!section || !groups.length) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const mobileGrouped = window.matchMedia('(max-width: 520px)');
-  const duration = 280;
-  const mobileDuration = 235;
+  const duration = 235;
   const easing = 'cubic-bezier(.22,.61,.36,1)';
   const states = new WeakMap();
 
@@ -1243,15 +1241,13 @@
     entry.classList.toggle('is-opening', shouldOpen);
     entry.classList.toggle('is-closing', !shouldOpen);
 
-    const activeDuration = mobileGrouped.matches ? mobileDuration : duration;
-
     state.animation = entry.animate(
       { height: [`${currentHeight}px`, `${targetHeight}px`] },
-      { duration: activeDuration, easing }
+      { duration, easing }
     );
     state.bodyAnimation = body.animate(
       { opacity: [currentOpacity, shouldOpen ? 1 : 0] },
-      { duration: Math.round(activeDuration * .72), easing, fill: 'forwards' }
+      { duration: Math.round(duration * .72), easing, fill: 'forwards' }
     );
 
     const activeAnimation = state.animation;
@@ -1277,14 +1273,6 @@
         const state = getState(entry);
         const shouldOpen = !state.targetOpen;
 
-        if (shouldOpen && !mobileGrouped.matches) {
-          entries.forEach((other) => {
-            if (other === entry) return;
-            const otherState = getState(other);
-            if (otherState.targetOpen || other.open) animateEntry(other, false);
-          });
-        }
-
         animateEntry(entry, shouldOpen);
       });
     });
@@ -1300,20 +1288,8 @@
   });
 
   const moreGroups = section.querySelector('.faq-more--gruppen');
-  const primaryGroupList = section.querySelector('.private-faq-wrap > .private-faq-groups');
   const moreGroupList = moreGroups?.querySelector(':scope > .private-faq-groups');
-  const mobileMovedGroup = primaryGroupList?.querySelector(':scope > .private-faq-group:nth-child(2)');
   const moreSummary = moreGroups?.querySelector(':scope > summary');
-  const moreOpenLabel = moreSummary?.querySelector('.faq-more-open');
-  const moreCloseLabel = moreSummary?.querySelector('.faq-more-close');
-  const desktopOpenLabel = moreOpenLabel?.textContent ?? '';
-  const desktopCloseLabel = moreCloseLabel?.textContent ?? '';
-  const firstQuestion = groups[0]?.querySelector(':scope > details');
-  const firstGroupQuestionCount = groups[0]?.querySelectorAll(':scope > details').length ?? 0;
-  const mobileHiddenQuestionCount = section.querySelectorAll('.private-faq-list > details').length - firstGroupQuestionCount;
-  let mobileLayoutActive = false;
-  let desktopMoreGroupsOpen = moreGroups?.open ?? false;
-  let desktopFirstQuestionOpen = firstQuestion?.open ?? false;
   let moreTargetOpen = moreGroups?.open ?? false;
   let moreAnimation = null;
   let moreContentAnimation = null;
@@ -1391,39 +1367,24 @@
   };
 
   moreSummary?.addEventListener('click', (event) => {
-    if (!mobileGrouped.matches) return;
     event.preventDefault();
     animateMoreGroups(!moreTargetOpen);
   });
 
-  const syncMobileGroupedLayout = () => {
-    if (!moreGroups || !primaryGroupList || !moreGroupList) return;
+  reducedMotion.addEventListener?.('change', () => {
+    if (reducedMotion.matches) finishMoreImmediately(moreTargetOpen);
+  });
 
-    if (mobileGrouped.matches && !mobileLayoutActive) {
-      desktopMoreGroupsOpen = moreGroups.open;
-      desktopFirstQuestionOpen = firstQuestion?.open ?? false;
-      if (mobileMovedGroup) moreGroupList.prepend(mobileMovedGroup);
-      if (moreOpenLabel) moreOpenLabel.textContent = `Weitere ${mobileHiddenQuestionCount} Fragen anzeigen`;
-      if (moreCloseLabel) moreCloseLabel.textContent = 'Weniger anzeigen';
-      finishMoreImmediately(false);
-      section.classList.add('is-faq-mobile-disclosure');
-      mobileLayoutActive = true;
-      return;
-    }
-
-    if (!mobileGrouped.matches && mobileLayoutActive) {
-      finishMoreImmediately(desktopMoreGroupsOpen);
-      if (mobileMovedGroup) primaryGroupList.append(mobileMovedGroup);
-      if (moreOpenLabel) moreOpenLabel.textContent = desktopOpenLabel;
-      if (moreCloseLabel) moreCloseLabel.textContent = desktopCloseLabel;
-      section.classList.remove('is-faq-mobile-disclosure');
-      if (firstQuestion) finishImmediately(firstQuestion, desktopFirstQuestionOpen);
-      mobileLayoutActive = false;
-    }
-  };
-
-  syncMobileGroupedLayout();
-  mobileGrouped.addEventListener?.('change', syncMobileGroupedLayout);
+  // Preserve the user's open states when rotation or zoom changes text wrapping.
+  window.addEventListener('resize', () => {
+    groups.forEach((group) => {
+      group.querySelectorAll(':scope > details').forEach((entry) => {
+        const state = getState(entry);
+        if (state.animation) finishImmediately(entry, state.targetOpen);
+      });
+    });
+    if (moreAnimation) finishMoreImmediately(moreTargetOpen);
+  }, { passive: true });
 
   section.classList.add('is-faq-animated');
 })();

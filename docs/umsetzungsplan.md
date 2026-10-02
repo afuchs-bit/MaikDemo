@@ -2168,3 +2168,300 @@ ein Verlauf hinter Hero und Eckdaten sowie ein gelber Lichtschein hinter der Kon
 - Kopf (#171916), Footer-Karte und Kacheln behalten ihre eigenen Flächen.
 - Handy (360, 402, 480 px) auf Startseite, Kontakt, Galerie, Über uns, Impressum und einer
   Leistungsseite pixelgleich; Tablet und Desktop tragen gemessen durchgehend #1B1E19.
+
+
+**AP-531 — Gemeinsamer Header nach der kompakten Handy-Leiste (01.10.2026).**
+Auf dem Branch `codex/homepage-review` gilt der kompakte Handy-Header auf allen
+51 Seiten mit Seitenkopf. Logo, Telefon- und WhatsApp-Asset, Farben, Radien und
+Kontaktreihenfolge sind gemeinsam. Ab 901 px stehen die fünf Navigationspunkte
+frei in einer Zeile; die umschließende Desktop-Kachel entfällt. Die große mobile
+Startseiten-Kachel samt Scroll-Morph und das vorhandene A–Z-Dropdown bleiben
+erhalten. Der Header-Generator ersetzt jetzt den vollständigen Header auch auf
+bisher unmarkierten Handseiten. Umsetzung und Prüfung: `docs/ap/AP-531-header-vereinheitlichen.md`.
+Die kritische Nachprüfung anhand der Screenshots korrigiert Telefonlayout und
+Desktop-Zentrierung, stabilisiert Fokus und schmale Menüzustände und beseitigt vier
+Titelüberläufe bei 320 px. Die Navigation ist auf 720 px begrenzt; gemeinsame
+CSS-Version `20261001e`, JavaScript-Version `20261001b`. Auch Galerie, Über uns,
+FAQ und Kontakt erhalten im Mobilmenü dieselbe grüne Hover-, Fokus- und Touch-Fläche
+wie der A–Z-Auslöser.
+Auf anschließenden Wunsch des Auftraggebers folgt die Desktop-Höhe der Referenz
+`https://simplydelegate.github.io/Vitja-Website/`: 92 px. Logo bis 256 × 79 px,
+Kontaktflächen 60 × 60 px, Header-Inhalt maximal 1600 px; das Logo rückt auf großen
+Monitoren weiter an den linken Rand. Die mobile Leiste behält ihre bisherigen Maße.
+
+Im mobilen Querformat rücken Logo und Aktionsgruppe auf breiten Handy-Fenstern
+zusätzlich je 12 px nach innen (28 statt 16 px Seitenabstand). Seitliche
+Geräte-Sicherheitsabstände werden berücksichtigt; Hochformat, Desktop und die
+zentrierte große Startseiten-Markenkachel behalten ihre bisherigen Positionen.
+
+**AP-532 — Willkommenssektion im Querformat (01.10.2026).**
+Auf Wunsch des Auftraggebers stehen Poolgarten und Leitsatz ab 901 px sowie
+bis 900 px ausschließlich im Querformat in zwei gleichen Spalten nebeneinander.
+Die Zeile ist mittig und höchstens 900 px breit; der vollständige 4:3-Bildausschnitt
+bleibt erhalten. Textbreite und fließende Schriftgröße gleichen die Höhen an,
+der Abstand unter der Willkommen-Wortmarke beträgt 56–72 px. Sehr schmale Fenster
+dürfen einen höheren Textblock zeigen. Mobile Hochkant-Komposition, DOM,
+Einblendanimationen sowie die Größen der Eckdaten und Qualifikationen bleiben
+erhalten. Gemeinsame CSS-Version `20261001f`, JavaScript unverändert.
+Umsetzung, Größenprüfung und Grenzen der Zoom-/Bewegungsprüfung:
+`docs/ap/AP-532-willkommen-querformat.md`.
+
+Nachkorrektur anhand von `IMG_5258.PNG`: Am Desktop beträgt die Zeilenbreite
+jetzt höchstens 1120 px mit fließend 48–160 px Spaltenabstand und passend
+skalierter Schrift. Im mobilen Querformat berücksichtigt die Textgröße die
+tatsächlich verfügbare Containerbreite einschließlich der seitlichen
+Display-Sicherheitsabstände. Bei simulierten 59 px je Seite auf 874 × 402 px
+ist das Bild 246 px und der Text 244 px hoch. Die Hochkant-Geometrie ist auf
+allen fünf Vergleichsbreiten unverändert. Gemeinsame CSS-Version `20261001g`.
+
+**AP-533 — Kennzahlen und Qualifikationen passend zur Willkommensbreite (01.10.2026).**
+Die beiden nachfolgenden Module folgen auf Wunsch des Auftraggebers derselben
+Breite und Spaltenausrichtung wie Bild und Text: Desktop bis 1120 px, mobiles
+Querformat mit 32 px Außenabstand zusätzlich zur Display-Sicherheitszone.
+Kennzahlen-Anordnung und 2×2-Qualifikationsraster bleiben bestehen. Fließende
+Schrift-, Bild- und Blumengrößen ersetzen den bisherigen Desktop-Zoom; Details
+bleiben auf 760 px und das Zertifikat auf 352 px begrenzt. Die Hochkantdarstellung
+ist auf allen fünf Vergleichsbreiten unverändert. Gemeinsame CSS-Version
+`20261001h`, JavaScript unverändert. Umsetzung und Prüfung:
+`docs/ap/AP-533-willkommen-kennzahlen-qualifikationen.md`.
+Der bei der Prüfung gefundene Galerie-Build-Fehler wird ebenfalls behoben:
+Die drei statischen Startseiten-Motive werden unabhängig von den 94 Einträgen
+der Garten-/Projektgalerie erzeugt und beim Aufräumen erhalten.
+
+**AP-534 — Galerie und Einladung passend zur Willkommensbreite (01.10.2026).**
+Die Sektion mit Galerie, „Keine Zeit für den Garten?“ und Anfrageknopf folgt
+derselben Breite von höchstens 1120 px und denselben zwei Textspalten.
+Im mobilen Querformat stehen drei vollständige Fotos nebeneinander; die
+Hochkantdarstellung samt Karussell bleibt erhalten. Schrift, Abstände und
+Anfrageknopf berücksichtigen die tatsächlich verfügbare Breite und Display-
+Sicherheitsabstände. Sehr schmale Querformatfenster zeigen die Einladung
+untereinander. Der Galerie-Fehlerzustand wird beim Größenwechsel vollständig
+synchronisiert und kann nach wieder erreichbaren Bildern sauber zurückkehren.
+Gemeinsame CSS-Version `20261001i`, Galerie-JavaScript `20261001a`.
+Umsetzung und Prüfprotokoll: `docs/ap/AP-534-galerie-einladung-querformat.md`.
+
+**AP-535 — Über-uns-Sektion der Startseite passend zur Willkommensbreite (01.10.2026).**
+Desktop ab 901 px und Handy-Querformat übernehmen die aktuellen mobilen Icons,
+Kurztexte und die Button-Familie. Das vollständige Mustergarten-Video steht links,
+die Aussagen und der Verweis zur Unterseite rechts; die mobile NRW-Karte steht
+mittig darunter. Gleicher 1120-px-Rahmen und Spaltenabstand wie bei Willkommen.
+Hochkantdarstellung bleibt unverändert. CSS-Version `20261001j` zentral nachgeführt.
+Umsetzung und Prüfprotokoll: `docs/ap/AP-535-home-ueber-uns-querformat.md`.
+
+**AP-536 — Ablauf-Kacheln der Mobilversion als horizontale Desktop-Journey (01.10.2026).**
+Ab 901 px folgen dieselben mobilen Fotos, Kurztexte und Marken-Ziffern waagerecht.
+Beim Seitenscrollen geht es von Schritt 1 bis 5; die Blume folgt der gemeinsamen
+Linie und wechselt am Ende in den mobilen Anfrage-Button. Maximal 1120 px Breite,
+passend zu den vorherigen Startseiten-Sektionen. Bis 900 px unveränderte vertikale
+Abfolge. Bei wenig Höhe oder reduzierter Bewegung nativ seitlich scrollbar,
+zusätzlich per Tastatur erreichbar. CSS `20261001k`, JavaScript `20261001c`.
+Umsetzung und Prüfprotokoll: `docs/ap/AP-536-home-ablauf-horizontal.md`.
+
+**AP-537 — Über-uns-Zeilen und Aussagen harmonisch ausrichten (01.10.2026).**
+Video und drei gleichmäßig verteilte Aussagen teilen eine Rasterzeile; darunter
+stehen Mustergarten-Beschriftung und „Mehr über uns“ mit vertikal gleicher Mitte.
+Mehr Abstand zur unteren Videokante: 40–56 px am Desktop, 32–40 px im Handy-
+Querformat. CSS Subgrid synchronisiert natürliche Textumbrüche ohne feste Höhen
+oder zusätzliches JavaScript. Hochkant bis 900 px unverändert. CSS `20261001l`.
+Umsetzung und Prüfprotokoll: `docs/ap/AP-537-home-ueber-uns-ausrichtung.md`.
+
+**AP-538 — Über uns im Handy-Querformat an Willkommen angleichen (01.10.2026).**
+Das Mustergarten-Video verwendet auf Wunsch des Auftraggebers exakt denselben
+4:3-Rahmen und Spaltenabstand wie das Poolfoto. Der vollständige Film bleibt
+sichtbar; Aussagen, Beschriftung und Button sind gegen automatische Safari-
+Textvergrößerung beim Drehen abgesichert. Gleiche rechte Rasterfläche und
+gemeinsame Abschlusszeile, Hochkant und Desktop unverändert. CSS `20261001m`.
+Umsetzung und Prüfprotokoll: `docs/ap/AP-538-home-ueber-uns-handy-querformat.md`.
+
+**AP-539 — Doppelte Sicherheitsränder in Über uns entfernen (01.10.2026).**
+Die reale Safari-Rückmeldung ließ sich mit den allgemeinen `.container`-
+Innenrändern nachstellen: Sicherheitsränder wurden außen und in jeder Spalte
+erneut angewendet. Die zusätzlichen Innenränder entfallen nur in dieser Sektion
+bis 900 px im Querformat. Video und Aussagen erhalten dadurch dieselbe Fläche
+wie bei Willkommen. Hochkant und Desktop unverändert. CSS `20261001n`.
+Umsetzung und Prüfprotokoll: `docs/ap/AP-539-home-ueber-uns-doppelte-safe-area.md`.
+
+**AP-540 — Über uns optisch zentrieren und Videorahmen entfernen (01.10.2026).**
+Die drei Aussagen stehen als gemeinsame Textgruppe mittig in ihrer Spalte;
+balancierte Umbrüche vermeiden unnötig ungleiche Zeilen. Die Beschriftung
+berücksichtigt den kleinen Überstand der Markenblume. Video-Kontur und
+Kachelschatten entfallen. Desktop und Handy-Querformat sind angeglichen,
+Hochkant bleibt unverändert. CSS `20261001p`.
+Umsetzung und Prüfprotokoll: `docs/ap/AP-540-home-ueber-uns-optisch-zentrieren.md`.
+
+**AP-545 — Footer am Desktop und im Querformat angleichen (02.10.2026).**
+Die Hochkantgestaltung bleibt erhalten. Desktop und mobiles Querformat verwenden
+ihre Bauteile in einer fast seitenbreiten, randlosen Karte nach der Referenz
+Vitja-Website. Responsives Raster, begrenzte Inhaltsbreite und eine kompakte
+Social-Zeile reduzieren die Querformathöhe bei 844 px von 542 auf 287 px.
+Footer-CSS-Version `20261002a` auf allen 51 veröffentlichten Footer-Seiten und
+den Vorlagen aktualisiert. Umsetzung und Prüfung:
+`docs/ap/AP-545-footer-desktop-querformat.md`.
+
+**AP-546 — FAQ als mittige Spalte auf allen Bildschirmgrößen (02.10.2026).**
+Die Hochkantgestaltung gilt überall, mit einer zentrierten Spalte bis 760 px.
+„Anfrage & Ablauf“ bleibt sichtbar; die übrigen drei Gruppen öffnen über
+„Weitere 13 Fragen anzeigen“. Zentrale Inhaltsquelle und generiertes HTML
+verwenden dieselbe Gruppierung, ohne Umbau beim Drehen. Öffnungszustände,
+Tastaturbedienung und Animationen sind vereinheitlicht. CSS `20261002i`,
+Privatform-JavaScript `20261002a`. Umsetzung und Prüfung:
+`docs/ap/AP-546-faq-eine-mittige-spalte.md`.
+
+**AP-547 — Kontaktformular für Desktop und Querformat angleichen (02.10.2026).**
+Die Startseiten-Kurzanfrage übernimmt die Hochkant-Bauteile einschließlich
+Kontakt-Icons und Sendebutton. Auf breiten Ansichten stehen Kontaktwege und
+Eingabe frei auf dem Sektionsgrund nebeneinander, auf maximal 1120 px begrenzt.
+Schmale Container stapeln; Name und Rückkontakt teilen bei genügend Breite
+eine Zeile. Hochkantdarstellung, Controls und JavaScript bleiben erhalten.
+CSS `20261002j`, Anfrage-CSS `20261002a` auf 39 veröffentlichten Einbindungen
+und der Vorlage nachgeführt. Umsetzung und Prüfung:
+`docs/ap/AP-547-kontaktformular-desktop-querformat.md`.
+
+**AP-548 — Einheitlicher Seitengrund für alle Ansichten (02.10.2026).**
+Der Hochkant-Grundton `#1B1E19` ist als `--page-background` zentral definiert.
+Startseite und Unterseiten verwenden ihn für ihre Seiten- und Sektionsflächen;
+die früheren separaten Farbdefinitionen greifen auf denselben Token zurück.
+Im Handy-Querformat entfällt die verbliebene Willkommens-Trennlinie, das Hero-
+Wasserzeichen läuft weich in den gemeinsamen Grund aus. Hochkantgestaltung
+und eigene Komponentenflächen bleiben erhalten. CSS-Version `20261002k`
+auf allen 51 Header-Seiten nachgeführt. Umsetzung und Prüfung:
+`docs/ap/AP-548-hintergrund-desktop-querformat.md`.
+
+**AP-549 — Navigation im schmalen Desktop-Header verteilen (02.10.2026).**
+Freier Raum steht nun auch vor dem ersten und nach dem letzten Menüeintrag,
+mit gleichen Abständen zu Logo und Kontakt-Icons. Die Linkgruppe bleibt in
+der vorhandenen mittleren Spalte zentriert; Größen und mobile Regeln bleiben
+erhalten. Desktopbreiten ab 901 px sowie Dropdown und Telefon-Auswahl geprüft.
+CSS `20261002l` auf allen 51 Header-Seiten nachgeführt. Umsetzung und Prüfung:
+`docs/ap/AP-549-header-navigation-abstaende.md`.
+
+**AP-550 — Kontaktkacheln neben dem Formular zentrieren (02.10.2026).**
+Die drei Direktkontakte stehen als Gruppe vertikal mittig neben der rechten
+Formularspalte. CSS Grid folgt deren natürlicher Inhaltshöhe; schmale Container
+stapeln weiter im normalen Seitenfluss. Desktop, Querformat und simulierte
+Sicherheitsränder geprüft; Hochkant unverändert. Anfrage-CSS `20261002b` auf
+39 veröffentlichten Einbindungen und der Vorlage nachgeführt. Umsetzung
+und Prüfung: `docs/ap/AP-550-kontaktkacheln-mittig-ausrichten.md`.
+
+**AP-551 — Schriftverhältnis der Gartenpflege-Einladung angleichen (02.10.2026).**
+Frage und Antwort verwenden am Desktop und im mobilen Querformat die gemeinsame
+Nunito-Schrift und das Hochkantverhältnis von 1,125. Gleich breite, vertikal
+zentrierte Spalten stehen am Desktop etwas näher zusammen. Antwortfläche,
+Blume und Anfragebutton bleiben erhalten; Hochkant unverändert. CSS
+`20261002m` auf allen 51 Header-Seiten nachgeführt. Umsetzung und Prüfung:
+`docs/ap/AP-551-gartenpflege-einladung-schriftverhaeltnis.md`.
+
+**AP-552 — Scrollsprung bei Querformat und Safari-Höhenwechsel beheben (02.10.2026).**
+Der automatische ScrollTrigger-Refresh setzte den Viewport bei Größenwechseln
+vorübergehend auf Position 0. Die einmaligen Einblendungen starten nun über
+native Sichtbarkeitsprüfung; GSAP-Bewegungen bleiben erhalten. Größenwechsel
+verändern die Scrollposition nicht mehr. Vorher-/Nachher-Protokoll, wiederholte
+Orientierungs- und Höhenwechsel sowie Einblendungen geprüft. JavaScript
+`20261002c`, CSS-Kommentar mit Version `20261002n` nachgeführt. Umsetzung und
+Prüfung: `docs/ap/AP-552-safari-querformat-scrollsprung.md`.
+
+**AP-553 — Gartenpflege-Dialog näher zusammenrücken (02.10.2026).**
+Frage und Antwort stehen am Desktop in einer bis 1000 px breiten Gruppe
+mit 24–40 px Spaltenabstand; im mobilen Querformat beträgt der Abstand
+20–28 px. „Gartenwunsch besprechen“ ist als gemeinsamer Abschluss mittig
+darunter platziert, auf höchstens 560 px begrenzt. Hochkant vor/nachher
+identisch; Desktop, Querformat, Sicherheitsränder und Tastatur geprüft.
+CSS `20261002o`. Umsetzung und Prüfung:
+`docs/ap/AP-553-gartenpflege-dialog-naeher-zentrieren.md`.
+
+**AP-554 — Ablauf-Linie an Anfang und Ende korrigieren (02.10.2026).**
+Am Desktop und im mobilen Querformat beginnt die Linie unter dem ersten
+Zahlenkreis. Blume und grüne Spur laufen über die fünfte Nummer hinaus
+bis zum sichtbaren Linienende; die bestehende Übergabe an den Anfragebutton
+bleibt erhalten. Hochkantgeometrie unverändert. Größenwechsel, Weiter- und
+Zurückscrollen sowie statische Varianten geprüft. CSS `20261002p`,
+JavaScript `20261002e`. Umsetzung und Prüfung:
+`docs/ap/AP-554-ablauf-linienanfang-linienende.md`.
+
+**AP-555 — Anfrage-Sektion kompakt und mittig gestalten (02.10.2026).**
+Desktop und Handy-Querformat ersetzen die ungleichen Kontakt-/Formularspalten
+durch eine mittige Komposition mit höchstens 860 px Breite: drei gleich große
+Kontaktkacheln über der Eingabe, Kontaktfelder nebeneinander und eine kompakte
+Foto-/Sendezeile. Schmale Container stapeln die Bedienteile. „Anfrage senden“
+und „Projekt anfragen“ teilen ihre Größen: Desktop 420 × 64 px, Querformat
+360 × 64 px. Hochkant und Formularlogik bleiben erhalten. CSS-Version
+`20261002q`, Anfrage-CSS `20261002c`, JavaScript unverändert `20261002e`.
+Dokumentation und Prüfung: `docs/ap/AP-555-anfrage-kompakt-mittig.md`.
+
+**AP-556 — Querformat-Dialog und Aktionsbuttons verkleinern (02.10.2026).**
+Frage und Antwort im Handy-Querformat auf höchstens 640 px zusammenrücken,
+mit 12–18 px Abstand. Der Gartenwunsch-Button steht in einer eigenen,
+zuverlässig zentrierten Zeile. Alle fünf großen Startseiten-Aktionsbuttons
+teilen am Desktop und im Querformat die iPhone-Hochkantreferenz von
+362 × 64 px; schmale Flächen begrenzen ihre Breite. Desktop-Textanordnung,
+kleinere Bedienbuttons und Hochkantlayout bleiben erhalten. 19 Ansichten,
+Sicherheitsränder, Beschriftungen, Tastatur und Kontaktziel geprüft.
+CSS `20261002r`, Anfrage-CSS `20261002c`, JavaScript `20261002e`.
+Dokumentation und Prüfung: `docs/ap/AP-556-chat-buttons-querformat.md`.
+
+**AP-557 — Zahlen und Ablaufkacheln gemeinsam zentrieren (02.10.2026).**
+Die Zahlenspur liegt jetzt innerhalb der gemeinsamen, mittigen Gruppenbreite.
+Karten und Zahlen werden zusammen unter der Überschrift ausgerichtet;
+Kachelmaße und bisherige Abstände bleiben erhalten. Linie und Blume folgen
+der unveränderten Zahlenachse. 16 Ansichten vor/nachher verglichen;
+Hochkantgeometrie identisch. CSS `20261002s`, Anfrage-CSS `20261002c`,
+JavaScript `20261002e`. Dokumentation und Prüfung:
+`docs/ap/AP-557-ablauf-gruppe-mittig.md`.
+
+**AP-558 — Leistungsübersicht am Desktop großzügiger gestalten (02.10.2026).**
+Die zweispaltige A–Z-Übersicht nutzt ab 901 px bis zu 1240 px Breite,
+größere Fotos und Schrift sowie einen fließenden Spaltenabstand. Eine feine,
+an den Enden auslaufende grüne Linie trennt die Spalten. Notdienst-Kachel
+passend angeglichen; mobile Ansichten und vorhandene Inhalte bleiben
+erhalten. 17 Ansichten vor/nachher geprüft, alle 11 Handyansichten geometrisch
+identisch. CSS `20261002t`, Anfrage-CSS `20261002c`, JavaScript `20261002e`.
+Dokumentation und Prüfung: `docs/ap/AP-558-leistungen-desktop-breiter.md`.
+
+**AP-559 — Hero für Desktop und Handy-Querformat (02.10.2026).**
+Das gelieferte Querformatfoto bildet eine breite Bühne mit schwebendem Kopf
+und diagonaler dunkler Textfläche. Titel, Garten-Schriftzug, Instagram,
+Mustergarten-Hinweis und Projekt-/Telefonkarte stammen aus der Hochkantfassung.
+Ein gemeinsames Grid mit natürlichen Inhaltshöhen ordnet sie auf breiten
+Ansichten an; Handy-Hochkant bleibt geometrisch unverändert. Responsive
+AVIF-/WebP-Dateien, Sicherheitsränder, 18 Ansichten, Menü, Fokus und stabile
+Scrollposition bei Höhenwechseln geprüft. CSS `20261002u`, Anfrage-CSS
+`20261002c`, JavaScript `20261002e`. Dokumentation und Prüfung:
+`docs/ap/AP-559-hero-desktop-querformat.md`.
+
+**AP-560 — Hero als seitliche Komposition (02.10.2026).**
+Die neue Inspiration ersetzt das Hero-Zielbild aus AP-559: mobile Überschrift,
+Kontaktaktionen und Nachweise links; vorhandenes Hochkantfoto rechts mit feiner
+grüner Diagonale. Desktop und Handy-Querformat nutzen natürliche Gridzeilen,
+kompakte Kontaktflächen und passende Typografie. Hochkant bleibt unverändert.
+18 Ansichten, Reflow, Safe Area, Gerätewechsel, Tastatur, Menü und Scrollstabilität
+geprüft. CSS `20261002v`, Anfrage-CSS `20261002c`, JavaScript `20261002e`.
+Dokumentation: `docs/ap/AP-560-hero-seitliche-komposition.md`.
+
+**AP-561 — Handy-Querformat: Header und Hero angleichen (02.10.2026).**
+Der schwebende Kopf folgt den iPhone-Hochkant-Aktionen: WhatsApp und Menü im
+Einstieg, Telefon im kompakten Scrollzustand; Instagram bleibt im Hero-Nachweis.
+Symmetrische Seitenabstände, mehr Luft unter dem Kopf und kompaktere Typografie
+für niedrige Bildschirme. Hochkant und Desktop unverändert; Quergrößen, Reflow,
+Displayaussparungen, Menü/Telefon, Gerätewechsel und Scrollstabilität geprüft.
+CSS `20261002w`, JavaScript `20261002e`. Zweiter Generatorlauf ohne Änderungen.
+Dokumentation: `docs/ap/AP-561-hero-handy-querformat-header.md`.
+
+**AP-562 — Neues Baumkontrolle-Foto überall einsetzen (02.10.2026).**
+Nutzerfoto des Wurzelanlaufs mit Werkzeugen als Hero der Leistungsseite,
+Leistungsbild auf der Homepage und Vorschau bei drei passenden Ergänzungen.
+Originalformat für den Hero, eigener quadratischer Ausschnitt für die Übersicht;
+responsive AVIF/WebP-Dateien, zentrale Bildzuordnung und neue Preload-/OG-Pfade.
+Hochkant, Querformat, Desktop, Bildpfade, LAN-Vorschau und zweiter Generatorlauf
+geprüft. Keine CSS- oder JavaScript-Änderung. Dokumentation:
+`docs/ap/AP-562-baumkontrolle-neues-leistungsfoto.md`.
+
+**AP-563 — Homepage-Abstände im Querformat vereinheitlichen (02.10.2026).**
+Ein gemeinsamer vertikaler Maßstab gibt Desktop und Handy-Querformat mehr Luft:
+gleiche Sektionsränder, abgestimmte Überschriften-/Gruppenabstände und etwas
+großzügigere Leistungszeilen. Hero, Willkommen, Galerie, Über uns, Ablauf,
+Bewertungen, Anfrage und FAQ folgen diesem Rhythmus. Hochkantgeometrie,
+Buttonmaße, Footerkarte, Unterseiten und JavaScript bleiben erhalten.
+Zwölf breite/Reflow-Ansichten, vier Hochkantvergleiche, Galerie, FAQ und
+Ablauflinie geprüft. Nur die Homepage lädt `home-spacing.css?v=20261002b`;
+zentraler Versionsabgleich, zweiter Generatorlauf ohne Änderungen.
+Dokumentation: `docs/ap/AP-563-homepage-abstaende-querformat.md`.

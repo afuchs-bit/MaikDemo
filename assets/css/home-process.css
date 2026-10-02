@@ -1,0 +1,354 @@
+/* AP-543: Projektablauf auf der Startseite
+   Desktop und Handy-Querformat verwenden denselben normalen, vertikalen
+   Seitenfluss wie die Hochkantansicht. Die Karten werden dort breiter:
+   vollständiges Bild links, Text rechts. Diese Datei wird nach
+   privat-form.css geladen und begrenzt ihre Eingriffe bewusst auf die
+   Startseite sowie auf die beiden breiten Darstellungen. */
+
+@media (min-width: 901px),
+       (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark #ablauf.private-process-updated {
+    --process-card: #242a21;
+    --process-card-line: rgba(151, 206, 32, .5);
+    --process-inset: clamp(32px, 5vw, 72px);
+    --process-card-height: clamp(220px, 24vw, 260px);
+    --process-card-max: 948px;
+    --process-rail-size: 54px;
+    --process-rail-gap: 19px;
+    position: relative;
+    overflow: clip;
+    padding: clamp(52px, 6vw, 84px) 0;
+  }
+
+  html.home-theme-dark #ablauf .process-scroller,
+  html.home-theme-dark #ablauf .b2b-process-scene {
+    position: relative;
+    display: block;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-scene > .container {
+    width: min(1120px, calc(100% - 2 * var(--process-inset)));
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 18px;
+    margin: 0 0 clamp(42px, 5vw, 64px);
+    text-align: center;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-intro-heading {
+    width: 100%;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-intro h2 {
+    max-width: 20em;
+    margin-inline: auto;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-intro-body {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-actions > .btn {
+    display: none;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-reassurance {
+    max-width: 40ch;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-align: center;
+  }
+
+  html.home-theme-dark #ablauf .process-stage {
+    /* AP-557: Zahlenspur und Karten bilden gemeinsam die zentrierte Gruppe.
+       Die Spur liegt innerhalb dieser Breite; Kartenmasse und Abstand zur
+       Nummer bleiben erhalten. Linie und Blume teilen die Knotenachse. */
+    --path-x: calc(var(--process-rail-size) / 2);
+    position: relative;
+    width: min(
+      calc(var(--process-card-max) + var(--process-rail-size) + var(--process-rail-gap)),
+      calc(100% - 2 * var(--process-inset) - var(--process-rail-gap))
+    );
+    height: auto;
+    margin-inline: auto;
+    overflow: visible;
+  }
+
+  html.home-theme-dark #ablauf .process-track {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: clamp(30px, 3.5vw, 44px);
+    transform: none;
+  }
+
+  /* AP-554: Der Linienanfang liegt unter der ersten Nummer. Der feste
+     Kartenmittelpunkt funktioniert auch ohne JS und bei Reduced Motion. */
+  html.home-theme-dark #ablauf .process-path {
+    top: var(--node-start, calc(var(--process-card-height) / 2));
+  }
+
+  html.home-theme-dark #ablauf .step {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 0 0 0 calc(var(--process-rail-size) + var(--process-rail-gap));
+  }
+
+  html.home-theme-dark #ablauf .step-figure {
+    display: none;
+  }
+
+  html.home-theme-dark #ablauf .step-node {
+    left: 0;
+    top: 50%;
+    width: var(--process-rail-size);
+    height: var(--process-rail-size);
+    transform: translateY(-50%);
+    background: #1b1e19;
+    border-color: rgba(151, 206, 32, .5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .24);
+  }
+
+  html.home-theme-dark #ablauf.is-vertical-journey .step.is-active .step-node {
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 0 0 5px rgba(151, 206, 32, .12), 0 10px 28px rgba(0, 0, 0, .3);
+  }
+
+  html.home-theme-dark #ablauf .step-card {
+    display: grid;
+    /* Bildbreite = Kartenhoehe × 4/3. Dadurch bleibt das Motiv vollstaendig
+       sichtbar, ohne die dunklen Seitenstreifen des vorher breiteren Fachs. */
+    /* Zwei Pixel Kartenrahmen liegen ausserhalb der nutzbaren Bildhoehe. */
+    grid-template-columns: minmax(0, clamp(290.667px, calc(32vw - 2.667px), 344px)) minmax(0, 1fr);
+    width: 100%;
+    height: var(--process-card-height);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--process-card);
+    border: 1px solid rgba(151, 206, 32, .28);
+    border-radius: 24px 8px 24px 8px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .2);
+  }
+
+  html.home-theme-dark #ablauf .step-card__media,
+  html.home-theme-dark #ablauf .step-card__media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    aspect-ratio: auto;
+  }
+
+  html.home-theme-dark #ablauf .step-card__media {
+    position: relative;
+    background: #151a13;
+  }
+
+  html.home-theme-dark #ablauf .step-card__media::after {
+    inset: 0 0 0 auto;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--green-500), var(--green-300));
+    opacity: .72;
+  }
+
+  html.home-theme-dark #ablauf .step-card__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  html.home-theme-dark #ablauf .step-card__body {
+    display: flex;
+    min-width: 0;
+    height: 100%;
+    padding: clamp(22px, 3vw, 36px);
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  html.home-theme-dark #ablauf .step-card h3 {
+    margin: 0 0 10px;
+    color: var(--mobile-logo-green, #56e607);
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: clamp(1.08rem, .92rem + .45vw, 1.34rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    opacity: .94;
+    text-shadow: 1px 1px 0 #315200, 0 0 7px rgba(86, 230, 7, .16);
+  }
+
+  html.home-theme-dark #ablauf .step-card p {
+    max-width: 37ch;
+    margin: 0;
+    color: rgba(245, 246, 242, .8);
+    font-size: clamp(.92rem, .84rem + .22vw, 1.04rem);
+    line-height: 1.52;
+    text-wrap: pretty;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-end-actions {
+    width: min(var(--home-primary-cta-width, 362px), calc(100% - 2 * var(--process-inset)));
+    margin: clamp(40px, 5vw, 64px) auto 0;
+    padding: 0;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-end-actions .process-contact-cta {
+    min-height: var(--home-primary-cta-height, 64px);
+  }
+
+  html.home-theme-dark #ablauf .process-contact-cta .mobile-proof-request__arrow {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #171916;
+    color: var(--home-lime, #8cc63f);
+  }
+
+  html.home-theme-dark #ablauf .process-contact-cta__shape,
+  html.home-theme-dark #ablauf .process-contact-cta__frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  html.home-theme-dark #ablauf .process-contact-cta__shape {
+    z-index: -1;
+    fill: var(--home-lime, #8cc63f);
+  }
+
+  html.home-theme-dark #ablauf .process-contact-cta__frame {
+    z-index: -3;
+    overflow: visible;
+    fill: none;
+    stroke: var(--home-lime, #8cc63f);
+    stroke-width: 1.5px;
+    transform: translate(6px, 6px);
+  }
+}
+
+/* iPhone und andere kurze Handys im Querformat: dieselbe Komposition,
+   kompakter gesetzt. Safe-Area und die symmetrischen Kartenränder werden
+   gemeinsam berechnet, damit die Karte optisch exakt in der Mitte steht. */
+@media (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark #ablauf.private-process-updated {
+    --process-inset: calc(32px + max(env(safe-area-inset-left), env(safe-area-inset-right)));
+    --process-card-height: clamp(152px, 42dvh, 174px);
+    --process-card-max: 688px;
+    --process-rail-size: 40px;
+    --process-rail-gap: 16px;
+    padding-block: clamp(44px, 12dvh, 58px);
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-intro {
+    gap: 12px;
+    margin-bottom: clamp(34px, 10dvh, 46px);
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-intro h2 {
+    font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+    line-height: 1.06;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-reassurance {
+    font-size: .78rem;
+    line-height: 1.38;
+  }
+
+  html.home-theme-dark #ablauf .process-track {
+    gap: 28px;
+  }
+
+  html.home-theme-dark #ablauf .step-node__number {
+    max-width: 23px;
+    max-height: 23px;
+  }
+
+  html.home-theme-dark #ablauf .step-card {
+    grid-template-columns: minmax(0, clamp(200px, calc(56dvh - 2.667px), 229.333px)) minmax(0, 1fr);
+    border-radius: 20px 7px 20px 7px;
+  }
+
+  html.home-theme-dark #ablauf .step-card__body {
+    padding: clamp(12px, 2.5vw, 20px);
+  }
+
+  html.home-theme-dark #ablauf .step-card h3 {
+    margin-bottom: 7px;
+    font-size: clamp(.79rem, 2.15vw, .98rem);
+    line-height: 1.14;
+  }
+
+  html.home-theme-dark #ablauf .step-card p {
+    font-size: clamp(.72rem, 1.85vw, .86rem);
+    line-height: 1.42;
+  }
+
+  html.home-theme-dark #ablauf .b2b-process-end-actions {
+    width: min(var(--home-primary-cta-width, 362px), calc(100% - 2 * var(--process-inset)));
+    margin-top: 42px;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 360px) {
+  html.home-theme-dark #ablauf.private-process-updated {
+    --process-card-height: 146px;
+  }
+
+  html.home-theme-dark #ablauf .step-card {
+    grid-template-columns: minmax(0, 192px) minmax(0, 1fr);
+  }
+
+  html.home-theme-dark #ablauf .step-card h3 {
+    font-size: .78rem;
+  }
+
+  html.home-theme-dark #ablauf .step-card p {
+    font-size: .7rem;
+    line-height: 1.38;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.home-theme-dark #ablauf .step-card,
+  html.home-theme-dark #ablauf .step-node {
+    transition: none;
+  }
+}

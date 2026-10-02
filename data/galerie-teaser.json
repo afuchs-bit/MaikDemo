@@ -1639,23 +1639,6 @@
       }
     },
     {
-      "id": "07-herbstbepflanzung-balkon-54ad1f6",
-      "bild": "/assets/img/leistungen-mobile/balkonkastenbepflanzung-gallery/07-herbstbepflanzung-balkon.webp",
-      "alt": "Durchgehend bepflanzter Balkonkasten mit Heide, Alpenveilchen, Gräsern und silbrigem Blattwerk auf einem Balkon",
-      "imTeaser": false,
-      "leitbildGeeignet": false,
-      "fokusDesktop": "52% 52%",
-      "fokusMobil": "52% 52%",
-      "variants": {
-        "base": "/assets/img/galerie-teaser/generated/07-herbstbepflanzung-balkon-54ad1f6",
-        "widths": [
-          480
-        ],
-        "width": 480,
-        "height": 362
-      }
-    },
-    {
       "id": "baumfaellung-seilkletterer-dach-550ffc7",
       "bild": "/assets/img/leistungen-mobile/baumarbeiten/baumfaellung-seilkletterer-dach.webp",
       "alt": "Kontrollierte Baumfällung mit Seilklettertechnik nahe eines Gebäudes",

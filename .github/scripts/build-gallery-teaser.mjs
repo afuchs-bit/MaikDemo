@@ -13,6 +13,15 @@ const SOURCE = path.join(ROOT, 'content', 'galerie-teaser.json');
 const OUTPUT = path.join(ROOT, 'data', 'galerie-teaser.json');
 const GENERATED_DIR = path.join(ROOT, 'assets', 'img', 'galerie-teaser', 'generated');
 const WIDTHS = [480, 960, 1440, 1600];
+// Die statische Bildfolge der Startseite verwendet diese Motive unabhaengig
+// von der redaktionellen Garten-/Projektgalerie. Ihre Varianten gehoeren
+// ebenfalls zum Build und duerfen beim Aufraeumen nicht verschwinden.
+const HOME_PROOF_IMAGES = [
+  '/assets/img/galerie-teaser/originale/moderne-aussenanlage-mit-pflasterung.jpg',
+  '/assets/img/galerie-teaser/originale/poolumfeld-mit-kiesbeet.jpg',
+  '/assets/img/galerie-teaser/originale/poolgarten-am-abend.jpg',
+  '/assets/img/galerie-teaser/originale/formgehoelzgarten-vor-wohnhaus.jpg',
+];
 const MAX_GALLERY_IMAGES = 120;
 const FOCUS_PATTERN = /^(?:100|\d{1,2})% (?:100|\d{1,2})%$/;
 const expectedGeneratedFiles = new Set();
@@ -142,6 +151,10 @@ async function main() {
         height: variants.height,
       },
     });
+  }
+
+  for (const [index, image] of HOME_PROOF_IMAGES.entries()) {
+    await createVariants(image, index);
   }
 
   // Inhaltsgehashte, unveränderte Varianten wiederverwenden und erst nach

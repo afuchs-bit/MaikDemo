@@ -46,248 +46,234 @@
     syncFooterDisclosures();
   }
 
-  // --- Sticky header condense on scroll ---
+  // --- Gemeinsamer Header: Navigation, Leistungen und Telefon ---
   const header = document.getElementById('siteHeader');
-
-  // Mobile Reihenfolge der Kontaktwege: WhatsApp, Telefon, Menue. Die Knoten
-  // werden tatsaechlich verschoben statt nur per CSS sortiert, damit visuelle,
-  // Tastatur- und Screenreader-Reihenfolge uebereinstimmen. Desktop behaelt die
-  // bisherige Reihenfolge Telefon, WhatsApp, Menue.
-  const headerActions = header?.querySelector('.header-actions');
-  const headerCallWrap = headerActions?.querySelector('.call-wrap');
-  const headerWhatsApp = headerActions?.querySelector('.btn-whatsapp');
-  if (headerActions && headerCallWrap && headerWhatsApp) {
-    const mobileHeaderOrder = window.matchMedia('(max-width: 900px)');
-    const syncHeaderContactOrder = () => {
-      if (mobileHeaderOrder.matches) {
-        headerActions.insertBefore(headerWhatsApp, headerCallWrap);
-      } else {
-        headerActions.insertBefore(headerCallWrap, headerWhatsApp);
-      }
-    };
-    if (typeof mobileHeaderOrder.addEventListener === 'function') {
-      mobileHeaderOrder.addEventListener('change', syncHeaderContactOrder);
-    } else {
-      mobileHeaderOrder.addListener(syncHeaderContactOrder);
-    }
-    syncHeaderContactOrder();
-  }
-
-  let lastY = 0;
-  const onScroll = () => {
-    const sc = window.scrollY > 12;
-    header.classList.toggle('is-scrolled', sc);
-    lastY = window.scrollY;
-  };
-  document.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  // --- Mobile nav toggle (AP-39) ---
-  // Das Menue ist aufgeklappt hoeher als der Viewport und sitzt in einem
-  // sticky Header. Ohne eigenen Scrollbereich waren die unteren Eintraege
-  // nicht erreichbar. Dazu: Scroll-Lock, Escape, Tap ausserhalb, Fokusfuehrung.
+  const primaryNav = header?.querySelector('.primary-nav');
   const navToggle = document.getElementById('navToggle');
-  const primaryNav = document.querySelector('.primary-nav');
-
-  // Headerhoehe fuer die max-height-Rechnung des Menues bereitstellen.
-  // Der Header aendert seine Hoehe beim Scrollen (.is-scrolled), deshalb
-  // nachfuehren statt einmalig setzen.
-  // Wichtig: nur im geschlossenen Zustand messen. Die Navigation liegt INNERHALB
-  // des Headers – bei offenem Menue wuerde der Header sich selbst samt Menue
-  // messen (gemessen: 526px statt 73px) und die max-height-Rechnung waere zirkulaer.
-  const setHeaderHeight = () => {
-    if (!header) return;
-    if (primaryNav && primaryNav.classList.contains('is-open')) return;
-    document.documentElement.style.setProperty(
-      '--header-h', Math.round(header.getBoundingClientRect().height) + 'px');
-  };
-  setHeaderHeight();
-  window.addEventListener('resize', setHeaderHeight);
-  document.addEventListener('scroll', setHeaderHeight, { passive: true });
-
-  if (navToggle && primaryNav) {
-    // Scroll-Lock. AP-363: Hier stand `position: fixed` am body. Das sperrt
-    // zuverlaessig, laesst aber die Dokumenthoehe auf Viewporthoehe
-    // zusammenfallen – bei 375px und Scrollstand 900 gemessen 13235px -> 812px,
-    // die Scrollposition ging dabei auf 0. iOS Safari haelt eine Seite, die
-    // genau viewporthoch ist, fuer nicht scrollbar und faehrt seine
-    // eingeklappte Bedienleiste wieder zur vollen Groesse aus. Auf dem iPhone
-    // erschien dadurch bei jedem Oeffnen ein Balken hinter den Bedienknoepfen.
-    //
-    // `overflow` am WURZELELEMENT sperrt ebenfalls, laesst Hoehe und
-    // Scrollposition aber unangetastet (gemessen: 13235px und 900 bleiben).
-    // Der alte Kommentar bezog sich auf `overflow: hidden` am BODY - das ist
-    // tatsaechlich unzuverlaessig, am Wurzelelement ist die Lage eine andere.
-    // Das Merken und Wiederherstellen der Position entfaellt damit ersatzlos.
-    const sperreScroll = () => {
-      document.documentElement.style.overflow = 'hidden';
-      document.documentElement.style.overscrollBehavior = 'none';
-    };
-    const gibScrollFrei = () => {
-      document.documentElement.style.overflow = '';
-      document.documentElement.style.overscrollBehavior = '';
-    };
-
-    // Das Menue sitzt nicht direkt unter der Headerkante: .primary-nav ist eine
-    // eigene Rasterzeile in .header-inner, dazwischen liegt deren row-gap. Die
-    // CSS-Rechnung mit --header-h trifft die Oberkante daher um einige Pixel
-    // zu hoch. Hier wird die tatsaechliche Oberkante gemessen und die Hoehe
-    // exakt gesetzt; die CSS-Regel bleibt als No-JS-Fallback bestehen.
-    const menuEl = primaryNav.querySelector('.menu');
-    const passeMenuhoeheAn = () => {
-      if (!menuEl || !primaryNav.classList.contains('is-open')) return;
-      menuEl.style.maxHeight = '';
-      const oben = menuEl.getBoundingClientRect().top;
-      // AP-55: Hier wurde zuvor die Hoehe der fixierten Action-Bar abgezogen,
-      // damit die letzten Menueeintraege nicht dahinter lagen. Die Leiste ist
-      // entfallen, es bleibt der schmale Rand zum Viewportrand.
-      const unten = 12;
-      menuEl.style.maxHeight = Math.max(120, window.innerHeight - oben - unten) + 'px';
-    };
-
-    const navOffen = () => primaryNav.classList.contains('is-open');
-
-    // AP-363: Sicherheitsnetz fuer iOS. Ob `overflow` am Wurzelelement dort
-    // jede Fingerbewegung abfaengt, laesst sich von hier aus nicht beweisen -
-    // dieser Waechter tut es in jedem Fall. Er greift nur bei offenem Menue und
-    // nur ausserhalb davon; im Menue bleibt das Scrollen erlaubt, sonst liesse
-    // sich die Liste nicht bedienen. `passive: false` ist Pflicht, ein passiver
-    // Zuhoerer darf nicht abbrechen.
-    document.addEventListener('touchmove', (ev) => {
-      if (!navOffen()) return;
-      if (menuEl && menuEl.contains(ev.target)) return;
-      ev.preventDefault();
-    }, { passive: false });
-
-    const oeffneNav = () => {
-      setHeaderHeight();                  // muss VOR dem Aufklappen passieren
-      // Reihenfolge ist hier wesentlich: erst sperren, dann aufklappen.
-      // Das Menue liegt im Header und macht ihn beim Aufklappen ~450px hoeher.
-      // Der gesamte Inhalt darunter rutscht mit, worauf das Scroll-Anchoring
-      // des Browsers die Scrollposition um dieselben ~450px nachzieht. Wird
-      // erst danach gemerkt, merkt man sich den verschobenen Wert und die
-      // Seite steht nach dem Schliessen zu weit unten.
-      sperreScroll();
-      primaryNav.classList.add('is-open');
-      navToggle.setAttribute('aria-expanded', 'true');
-      passeMenuhoeheAn();
-      // Fokus in das Menue setzen, damit Tastatur und Screenreader dort landen.
-      // preventScroll: sonst scrollt der Browser das Ziel in den Blick und
-      // verschiebt die gemerkte Position.
-      primaryNav.querySelector('.menu > li > button, .menu > li > a')?.focus({ preventScroll: true });
-    };
-
-    const schliesseNav = (fokusZurueck) => {
-      if (!navOffen()) return;
-      primaryNav.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      primaryNav.querySelectorAll('.menu-item--sub.is-open').forEach(li => {
-        li.classList.remove('is-open');
-        li.querySelector('.submenu-toggle')?.setAttribute('aria-expanded', 'false');
-      });
-      if (menuEl) menuEl.style.maxHeight = '';
-      gibScrollFrei();
-      // AP-363: preventScroll bleibt noetig - focus() wuerde das Ziel sonst in
-      // den Blick scrollen. Ein Wiederherstellen der Position braucht es nicht
-      // mehr, sie hat sich waehrend der Sperre nicht bewegt.
-      if (fokusZurueck) navToggle.focus({ preventScroll: true });
-    };
-
-    navToggle.addEventListener('click', () => {
-      if (navOffen()) schliesseNav(false); else oeffneNav();
-    });
-
-    // Klick auf einen Link schliesst weiter – jetzt inklusive Scroll-Freigabe.
-    // Der Sprung zum Anker muss NACH dem Aufheben der Sperre passieren, sonst
-    // laeuft er gegen ein Wurzelelement mit overflow: hidden.
-    primaryNav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', (e) => {
-        if (!navOffen()) return;
-        const ziel = a.getAttribute('href') || '';
-        const anker = ziel.startsWith('#') ? document.querySelector(ziel) : null;
-        primaryNav.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        primaryNav.querySelectorAll('.menu-item--sub.is-open').forEach(li => {
-          li.classList.remove('is-open');
-          li.querySelector('.submenu-toggle')?.setAttribute('aria-expanded', 'false');
-        });
-        if (menuEl) menuEl.style.maxHeight = '';
-        gibScrollFrei();
-        if (anker) {
-          e.preventDefault();
-          anker.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
-        }
-      });
-    });
-
-    // Tap ausserhalb schliesst. navToggle liegt jetzt in .header-actions (neben
-    // WhatsApp), also AUSSERHALB von .primary-nav - er muss hier ausgenommen
-    // werden, sonst schliesst der Oeffnungs-Klick sofort wieder. Sein eigener
-    // Handler hat zu diesem Zeitpunkt bereits umgeschaltet.
-    document.addEventListener('click', (e) => {
-      if (navOffen() && !e.target.closest('.primary-nav') && !e.target.closest('.nav-toggle')) schliesseNav(false);
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') schliesseNav(true);
-    });
-
-    // Wechselt der Viewport auf Desktop, waehrend das Menue offen ist,
-    // muss der Scroll-Lock weg – sonst haengt die Seite fest.
-    const desktopAb = window.matchMedia('(min-width: 901px)');
-    const aufDesktopWechsel = (ev) => { if (ev.matches) schliesseNav(false); };
-    if (desktopAb.addEventListener) desktopAb.addEventListener('change', aufDesktopWechsel);
-    else desktopAb.addListener(aufDesktopWechsel);
-  }
-
-  // --- Leistungen-Untermenü (AP-18) ---
-  const closeSubmenus = () => {
-    document.querySelectorAll('.menu-item--sub.is-open').forEach(li => {
-      li.classList.remove('is-open');
-      li.querySelector('.submenu-toggle')?.setAttribute('aria-expanded', 'false');
-    });
-  };
-  // Text und Pfeil bilden einen gemeinsamen Button. Dadurch ist die komplette
-  // Kachel per Maus, Touch, Enter und Leertaste bedienbar; die native
-  // Button-Semantik liefert die Tastaturbedienung ohne Sonderbehandlung.
-  document.querySelectorAll('.menu-item--sub').forEach(li => {
-    const btn = li.querySelector('.submenu-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const offen = li.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', String(offen));
-    });
-  });
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.menu-item--sub')) closeSubmenus();
-  });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSubmenus(); });
-
-  // --- Call popover ---
   const callBtn = document.getElementById('callBtn');
   const callPop = document.getElementById('callPopover');
-  if (callBtn && callPop) {
-    const close = () => {
-      callPop.hidden = true;
-      callBtn.setAttribute('aria-expanded', 'false');
+  const menuEl = primaryNav?.querySelector('.menu');
+  const mobileHeader = window.matchMedia('(max-width: 900px)');
+  const hoverHeader = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const submenus = Array.from(header?.querySelectorAll('.menu-item--sub') || []);
+  const hoverSubmenus = new WeakSet();
+  let lastHeaderFocus = null;
+  const navIsOpen = () => Boolean(primaryNav?.classList.contains('is-open'));
+  document.addEventListener('focusin', event => {
+    if (event.target === document.body) return;
+    lastHeaderFocus = header?.contains(event.target) ? event.target : null;
+  });
+  document.addEventListener('pointerdown', event => {
+    if (!header?.contains(event.target)) lastHeaderFocus = null;
+  });
+
+  const setHeaderHeight = () => {
+    if (!header || navIsOpen()) return;
+    document.documentElement.style.setProperty('--header-h',
+      Math.round(header.getBoundingClientRect().height) + 'px');
+  };
+  const closeSubmenu = (item, restoreFocus = false) => {
+    hoverSubmenus.delete(item);
+    const button = item.querySelector('.submenu-toggle');
+    item.classList.remove('is-open');
+    button?.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) button?.focus({ preventScroll: true });
+  };
+  const closeSubmenus = () => submenus.forEach(item => closeSubmenu(item));
+  const closeCall = (restoreFocus = false) => {
+    if (!callPop || !callBtn || callPop.hidden) return;
+    callPop.hidden = true;
+    callBtn.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) callBtn.focus({ preventScroll: true });
+  };
+  const closeNav = (restoreFocus = false) => {
+    if (!navIsOpen()) return;
+    primaryNav.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Menü öffnen');
+    closeSubmenus();
+    if (menuEl) menuEl.style.maxHeight = '';
+    // Root-Scroll-Lock behaelt Dokumenthoehe und iOS-Scrollposition bei.
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.overscrollBehavior = '';
+    if (restoreFocus) navToggle.focus({ preventScroll: true });
+    setHeaderHeight();
+  };
+  const ensureVisibleHeaderFocus = () => {
+    // Safari kann den Fokus schon beim CSS-Wechsel auf body setzen. Ein Klick
+    // ausserhalb oder der Fokus auf einem anderen Element loescht die Merkhilfe.
+    const active = document.activeElement === document.body && lastHeaderFocus
+      ? lastHeaderFocus : document.activeElement;
+    const available = element => {
+      if (!element?.getClientRects().length || element.closest('[hidden], [inert]')) return false;
+      const panel = element.closest('.nav-submenu');
+      if (panel && !panel.closest('.menu-item--sub')?.classList.contains('is-open')) return false;
+      return getComputedStyle(element).visibility !== 'hidden';
     };
-    const open = () => {
-      callPop.hidden = false;
-      callBtn.setAttribute('aria-expanded', 'true');
-    };
-    callBtn.addEventListener('click', e => {
-      e.stopPropagation();
-      callPop.hidden ? open() : close();
-    });
-    document.addEventListener('click', e => {
-      if (!callPop.contains(e.target) && e.target !== callBtn) close();
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') close();
-    });
+    if (!header?.contains(active) || available(active)) return;
+    const trigger = active.closest('.call-wrap') ? callBtn
+      : active.closest('.menu-item--sub')?.querySelector('.submenu-toggle');
+    const target = [trigger, mobileHeader.matches ? navToggle
+      : primaryNav?.querySelector('.menu > li > button, .menu > li > a'),
+    header.querySelector('.btn-whatsapp'), header.querySelector('.brand')].find(available);
+    target?.focus({ preventScroll: true });
+  };
+  // Auch der Startseiten-Morph kann eine gerade fokussierte Aktion ausblenden.
+  if (header && 'MutationObserver' in window) {
+    new MutationObserver(ensureVisibleHeaderFocus)
+      .observe(header, { attributes: true, attributeFilter: ['class'] });
   }
+  const sizeOpenMenu = () => {
+    if (!menuEl || !navIsOpen()) return;
+    menuEl.style.maxHeight = '';
+    menuEl.style.maxHeight = Math.max(0,
+      window.innerHeight - menuEl.getBoundingClientRect().top - 12) + 'px';
+  };
+  const openNav = () => {
+    if (!primaryNav || !navToggle || !mobileHeader.matches) return;
+    closeCall();
+    closeSubmenus();
+    setHeaderHeight();
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.overscrollBehavior = 'none';
+    primaryNav.classList.add('is-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Menü schließen');
+    if (menuEl) menuEl.scrollTop = 0;
+    sizeOpenMenu();
+    primaryNav.querySelector('.menu > li > button, .menu > li > a')?.focus({ preventScroll: true });
+  };
+
+  navToggle?.addEventListener('click', () => navIsOpen() ? closeNav() : openNav());
+  primaryNav?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', event => {
+      const wasOpen = navIsOpen();
+      closeNav();
+      closeSubmenus();
+      const href = link.getAttribute('href') || '';
+      const anchor = href.startsWith('#') ? document.querySelector(href) : null;
+      if (wasOpen && anchor) {
+        event.preventDefault();
+        anchor.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+      }
+    });
+  });
+  primaryNav?.addEventListener('focusout', event => {
+    // Die Navigation ist eine Disclosure, kein Fokusfang. Beim Weiter-Tabben
+    // in die Seite muss deshalb auch die mobile Scrollsperre verschwinden.
+    if (mobileHeader.matches && navIsOpen() && event.relatedTarget
+      && !primaryNav.contains(event.relatedTarget) && event.relatedTarget !== navToggle) closeNav();
+  });
+  document.addEventListener('touchmove', event => {
+    if (navIsOpen() && !menuEl?.contains(event.target)) event.preventDefault();
+  }, { passive: false });
+
+  submenus.forEach(item => {
+    const button = item.querySelector('.submenu-toggle');
+    if (!button) return;
+    const open = () => {
+      closeCall();
+      closeSubmenus();
+      item.classList.add('is-open');
+      button.setAttribute('aria-expanded', 'true');
+      const panel = item.querySelector('.nav-submenu');
+      if (panel) panel.scrollTop = 0;
+    };
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      // Ein Klick nach Pointerenter bestaetigt das bereits sichtbare Panel.
+      if (event.detail > 0 && hoverSubmenus.has(item)) { hoverSubmenus.delete(item); return; }
+      item.classList.contains('is-open') ? closeSubmenu(item) : open();
+    });
+    item.addEventListener('pointerenter', event => {
+      if (!mobileHeader.matches && hoverHeader.matches && event.pointerType === 'mouse'
+        && !item.classList.contains('is-open')) {
+        open();
+        hoverSubmenus.add(item);
+      }
+    });
+    item.addEventListener('pointerleave', () => {
+      if (!mobileHeader.matches && !item.contains(document.activeElement)) closeSubmenu(item);
+    });
+    item.addEventListener('focusout', event => {
+      if (!item.contains(event.relatedTarget)) closeSubmenu(item);
+    });
+  });
+
+  callBtn?.addEventListener('click', event => {
+    if (!callPop) return;
+    event.stopPropagation();
+    if (!callPop.hidden) { closeCall(); return; }
+    closeNav();
+    closeSubmenus();
+    callPop.hidden = false;
+    callBtn.setAttribute('aria-expanded', 'true');
+  });
+  header?.querySelector('.call-wrap')?.addEventListener('focusout', event => {
+    if (!event.currentTarget.contains(event.relatedTarget)) closeCall();
+  });
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.primary-nav, .nav-toggle')) closeNav();
+    if (!event.target.closest('.menu-item--sub')) closeSubmenus();
+    if (!event.target.closest('.call-wrap')) closeCall();
+  });
+  // Escape schliesst zuerst die innere Ebene; ein weiterer Druck das Handy-Menue.
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    if (callPop && !callPop.hidden) closeCall(true);
+    else {
+      const openItem = submenus.find(item => item.classList.contains('is-open'));
+      if (openItem) closeSubmenu(openItem, true);
+      else if (navIsOpen()) closeNav(true);
+      else return;
+    }
+    event.preventDefault();
+  });
+
+  const syncHeaderLayout = () => {
+    if (!mobileHeader.matches) closeNav();
+    closeCall();
+    closeSubmenus();
+    setHeaderHeight();
+    ensureVisibleHeaderFocus();
+  };
+  if (mobileHeader.addEventListener) mobileHeader.addEventListener('change', syncHeaderLayout);
+  else mobileHeader.addListener(syncHeaderLayout);
+  window.addEventListener('resize', () => {
+    setHeaderHeight();
+    sizeOpenMenu();
+    ensureVisibleHeaderFocus();
+  });
+  document.addEventListener('scroll', () => {
+    header?.classList.toggle('is-scrolled', window.scrollY > 12);
+    setHeaderHeight();
+  }, { passive: true });
+  header?.classList.toggle('is-scrolled', window.scrollY > 12);
+  setHeaderHeight();
+
+  // Rubrik anhand der echten Linkziele bestimmen, auch unter einem Hosting-Praefix.
+  const syncCurrentHeaderLink = () => {
+    const normalizePath = path => path.replace(/index\.html$/, '').replace(/\/?$/, '/');
+    const currentPath = normalizePath(window.location.pathname);
+    primaryNav?.querySelectorAll('.menu > li > a').forEach(link => {
+      const target = new URL(link.href);
+      const targetPath = normalizePath(target.pathname);
+      const current = target.origin === window.location.origin && (target.hash
+        ? currentPath === targetPath && window.location.hash === target.hash
+        : currentPath.startsWith(targetPath));
+      link.classList.toggle('is-current', current);
+      link.removeAttribute('aria-current');
+      if (current && currentPath === targetPath) link.setAttribute('aria-current', target.hash ? 'location' : 'page');
+    });
+    submenus.forEach(item => {
+      const current = Array.from(item.querySelectorAll('.nav-submenu a'))
+        .some(link => normalizePath(new URL(link.href).pathname) === currentPath);
+      item.querySelector('.submenu-toggle')?.classList.toggle('is-current', current);
+    });
+  };
+  syncCurrentHeaderLink();
+  window.addEventListener('hashchange', syncCurrentHeaderLink);
 
   // --- Scroll reveal ---
   const revealElements = new Set();
@@ -307,22 +293,19 @@
     el.classList.add('is-in');
   };
 
-  const gsapRevealEnabled = !reduced && Boolean(window.gsap && window.ScrollTrigger);
+  // AP-552: Einmalige Reveals brauchen keine ScrollTrigger-Neuberechnung.
+  // Deren Refresh setzt den Viewport vorübergehend auf 0; Safari löst ihn
+  // auch beim Ein-/Ausblenden der Browserleisten während des Scrollens aus.
+  const gsapRevealEnabled = !reduced && Boolean(window.gsap)
+    && 'IntersectionObserver' in window;
   if (gsapRevealEnabled) {
-    window.gsap.registerPlugin(window.ScrollTrigger);
     document.documentElement.classList.add('gsap-reveal-active');
   }
 
   const revealWithGsap = (el) => {
     // Der gelbe Willkommensstempel besitzt eine eigene Markenanimation.
-    // ScrollTrigger setzt hier nur den Startzeitpunkt.
     if (el.classList.contains('gate-welcome-kicker')) {
-      window.ScrollTrigger.create({
-        trigger: el,
-        start: 'top 88%',
-        once: true,
-        onEnter: () => revealNow(el)
-      });
+      revealNow(el);
       return;
     }
 
@@ -337,11 +320,6 @@
       duration: isWelcomePhoto ? 0.64 : 0.72,
       delay: isWelcomePhoto ? 0 : revealDelayMs(el) / 1000,
       ease: 'power2.out',
-      scrollTrigger: {
-        trigger: el,
-        start: isWelcomePhoto ? 'top bottom+=72px' : 'top 88%',
-        once: true
-      },
       onStart: () => {
         revealElements.add(el);
         el.classList.add('is-in');
@@ -353,14 +331,46 @@
   };
 
   let revealObserver = null;
-  if (!gsapRevealEnabled && !reduced && 'IntersectionObserver' in window) {
-    revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        revealNow(entry.target);
-        revealObserver.unobserve(entry.target);
+  let photoRevealObserver = null;
+  const pendingReveals = new Set();
+  const enterReveals = (entries, observer) => {
+    entries.forEach((entry) => {
+      const alreadyPassed = gsapRevealEnabled && entry.boundingClientRect.top < 0;
+      if ((!entry.isIntersecting && !alreadyPassed) || !pendingReveals.has(entry.target)) return;
+      pendingReveals.delete(entry.target);
+      observer.unobserve(entry.target);
+      gsapRevealEnabled ? revealWithGsap(entry.target) : revealNow(entry.target);
+    });
+  };
+  const createRevealObserver = () => new IntersectionObserver(enterReveals, {
+    // Pixel statt Prozent: rootMargin-Prozentwerte beziehen sich auf die
+    // Breite. So bleibt der bisherige Start bei 88 % der sichtbaren Höhe.
+    rootMargin: `0px 0px ${-window.innerHeight * .12}px 0px`,
+    threshold: 0
+  });
+  if (!reduced && 'IntersectionObserver' in window) {
+    revealObserver = gsapRevealEnabled ? createRevealObserver()
+      : new IntersectionObserver(enterReveals, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    if (gsapRevealEnabled) {
+      photoRevealObserver = new IntersectionObserver(enterReveals, {
+        rootMargin: '0px 0px 72px 0px', threshold: 0
       });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+      let revealHeight = window.innerHeight;
+      let revealResizeFrame = 0;
+      window.addEventListener('resize', () => {
+        if (revealResizeFrame) return;
+        revealResizeFrame = requestAnimationFrame(() => {
+          revealResizeFrame = 0;
+          if (revealHeight === window.innerHeight) return;
+          revealHeight = window.innerHeight;
+          revealObserver.disconnect();
+          revealObserver = createRevealObserver();
+          pendingReveals.forEach((el) => {
+            if (!el.classList.contains('gate-welcome-photo')) revealObserver.observe(el);
+          });
+        });
+      }, { passive: true });
+    }
   }
 
   const registerReveal = (root = document) => {
@@ -370,9 +380,13 @@
     candidates.forEach((el) => {
       if (registeredRevealElements.has(el)) return;
       registeredRevealElements.add(el);
-      if (gsapRevealEnabled) revealWithGsap(el);
-      else if (!revealObserver) revealNow(el);
-      else revealObserver.observe(el);
+      if (!revealObserver) revealNow(el);
+      else {
+        pendingReveals.add(el);
+        const observer = gsapRevealEnabled && el.classList.contains('gate-welcome-photo')
+          ? photoRevealObserver : revealObserver;
+        observer.observe(el);
+      }
     });
   };
   registerReveal();
@@ -597,8 +611,8 @@
   // --- Ablauf: Scroll-Zeitstrahl (Fortschritt entlang der Stationen) ---
   // Progressive Enhancement in zwei Ausbaustufen, beide ueber dieselbe
   // CSS-Variable --progress (0..1); den Rest erledigt styles.css.
-  //   'h'  >=1024px  horizontaler Pin-Journey (Buehne wird eingefroren)
-  //   'v'   <1024px  vertikale Journey OHNE Pin – die Seite scrollt normal
+  //   'h'  allgemeiner Desktop-Zeitstrahl auf Seiten, die ihn noch verwenden
+  //   'v'  Startseite auf allen Breiten und Mobile/Tablet – ohne Pin
   // Bei prefers-reduced-motion laeuft keiner von beiden; dann bleibt der
   // statische vertikale CSS-Zeitstrahl (Basis) stehen – vollstaendig
   // sichtbar, gefuellte Linie, kein Scroll-Listener.
@@ -614,11 +628,17 @@
 
     const steps = Array.from(track.querySelectorAll('.step'));
     if (!steps.length) return;
+    const homeProcess = section.matches('.private-process-updated')
+      && document.documentElement.classList.contains('home-theme-dark');
+    const motionMq = window.matchMedia('(prefers-reduced-motion: reduce)');
     // (hover: hover) schliesst Touch-Geraete aus, die breit genug fuer den
     // Pin waeren – vor allem das iPad im Querformat (genau 1024px). Ein Pin
     // auf Touch bricht Momentum-Scrolling und kollidiert mit Pull-to-Refresh;
-    // diese Geraete bekommen deshalb die vertikale Journey.
-    const mq = window.matchMedia('(min-width: 1024px) and (hover: hover)');
+    // diese Geraete bekommen dort deshalb die vertikale Journey. Die neue
+    // Startseiten-Reihe verwendet bei wenig Höhe und auf Touch natives Scrollen.
+    const mq = window.matchMedia(homeProcess
+      ? '(min-width: 901px), (max-width: 900px) and (orientation: landscape)'
+      : '(min-width: 1024px) and (hover: hover)');
     const iphoneMq = window.matchMedia('(max-width: 480px)');
 
     let mode = null;                    // null | 'h' | 'v'
@@ -629,7 +649,7 @@
     const horizontalScrollFactor = Number.isFinite(requestedScrollFactor)
       ? Math.min(1, Math.max(.5, requestedScrollFactor))
       : 1;
-    let maxShift = 0, scrollTravel = 0; // nur 'h'
+    let maxShift = 0, scrollTravel = 0, scrollStart = 0; // nur 'h'
     let nodeTops = [], travel = 0;      // nur 'v'
 
     const setActive = (idx) => {
@@ -647,30 +667,43 @@
       // faellt das Pin-Ende
       // exakt mit progress === 1 zusammen; sonst entsteht am Ende tote
       // Scroll-Strecke, in der sich nichts mehr bewegt.
+      const scrollerTop = window.scrollY + scroller.getBoundingClientRect().top;
       scroller.style.height = (scrollTravel + pin.getBoundingClientRect().height) + 'px';
+      scrollStart = scrollerTop;
     };
 
     const updateH = () => {
-      const top = scroller.getBoundingClientRect().top;
-      const progress = scrollTravel > 0 ? Math.min(1, Math.max(0, -top / scrollTravel)) : 0;
+      let progress = scrollTravel > 0
+        ? Math.min(1, Math.max(0, (window.scrollY - scrollStart) / scrollTravel))
+        : 0;
       section.style.setProperty('--progress', progress.toFixed(4));
       setActive(Math.round(progress * (steps.length - 1)));
     };
 
     // ---- 'v': vertikale Journey (Mobile/Tablet) ----
-    // Bezugspunkte sind die Knotenmittelpunkte. Auf dem iPhone endet die Reise
-    // nach Knoten 5 am bereits vorhandenen Linienende; auf groesseren mobilen
-    // Ansichten bleibt das bisherige Ende exakt auf dem letzten Knoten.
-    // offsetTop statt getBoundingClientRect: die Karten tragen waehrend des
-    // Reveals ein translateY, das in die Rect-Werte einfliessen wuerde.
+    // Bezugspunkte sind die Knotenmittelpunkte. AP-554: Die breiten Startseiten-
+    // Karten haben mittige Nummern; ihre Reise reicht wie auf dem iPhone
+    // ueber Knoten 5 hinaus bis zum vorhandenen Linienende.
+    // Gemessen wird die Station, nicht die beim Reveal verschobene Karte.
+    // Breite Karten behalten Subpixel; Hochkant nutzt die bisherige Messung.
     const measureV = () => {
+      const broadHome = homeProcess && mq.matches;
+      const stageTop = broadHome ? stage.getBoundingClientRect().top : 0;
       nodeTops = steps.map((s) => {
         const node = s.querySelector('.step-node');
+        // top:50% + translateY(-50%) setzt den Mittelpunkt auf die halbe
+        // Kartenhoehe. offsetTop + halbe Knotengroesse waere zu weit unten.
+        if (broadHome) {
+          const rect = s.getBoundingClientRect();
+          return rect.top - stageTop + rect.height / 2;
+        }
         return node ? s.offsetTop + node.offsetTop + node.offsetHeight / 2
                     : s.offsetTop + s.offsetHeight / 2;
       });
-      const lineEnd = path.offsetTop + path.offsetHeight;
-      const journeyEnd = iphoneMq.matches ? lineEnd : nodeTops[nodeTops.length - 1];
+      const lineEnd = broadHome ? path.getBoundingClientRect().bottom - stageTop
+        : path.offsetTop + path.offsetHeight;
+      const journeyEnd = iphoneMq.matches || broadHome
+        ? lineEnd : nodeTops[nodeTops.length - 1];
       travel = Math.max(0, journeyEnd - nodeTops[0]);
       section.style.setProperty('--node-start', nodeTops[0].toFixed(2) + 'px');
       section.style.setProperty('--travel', travel.toFixed(2) + 'px');
@@ -688,7 +721,8 @@
         ? Math.min(1, Math.max(0, (anchor - stageTop - nodeTops[0]) / travel))
         : 0;
       section.style.setProperty('--progress', progress.toFixed(4));
-      section.classList.toggle('is-process-complete', iphoneMq.matches && progress >= 1);
+      const completesAtEnd = homeProcess && (iphoneMq.matches || mq.matches);
+      section.classList.toggle('is-process-complete', completesAtEnd && progress >= 1);
 
       // Aktiv ist der letzte Knoten, der den Anker bereits passiert hat.
       // Math.round(progress * (n-1)) wie im Horizontal-Zweig taugt hier
@@ -716,16 +750,16 @@
     };
 
     const stop = () => {
-      if (!mode) return;
       mode = null;
       document.removeEventListener('scroll', onScroll);
-      section.classList.remove('is-scrollytelling', 'is-vertical-journey');
+      section.classList.remove('is-scrollytelling', 'is-landscape-scrollytelling', 'is-vertical-journey');
       section.classList.remove('is-process-complete');
       scroller.style.height = '';
       section.style.removeProperty('--progress');
       section.style.removeProperty('--max-shift');
       section.style.removeProperty('--node-start');
       section.style.removeProperty('--travel');
+      section.style.removeProperty('--path-y');
       steps.forEach((s) => s.classList.remove('is-active', 'is-seen'));
       lastIndex = -1;
     };
@@ -741,7 +775,21 @@
       document.addEventListener('scroll', onScroll, { passive: true });
     };
 
-    const apply = () => { reduced ? stop() : start(mq.matches ? 'h' : 'v'); };
+    const apply = () => {
+      if (homeProcess) {
+        // Die Startseite bleibt auch auf Desktop und im Handy-Querformat im
+        // normalen Dokumentfluss. Das vermeidet einen zweiten Scrollkontext
+        // und macht alle fuenf breiten Bildkarten direkt erreichbar.
+        section.classList.remove('has-horizontal-process');
+        stage.removeAttribute('tabindex');
+        stage.removeAttribute('role');
+        stage.removeAttribute('aria-label');
+        stage.scrollLeft = 0;
+        motionMq.matches ? stop() : start('v');
+        return;
+      }
+      reduced ? stop() : start(mq.matches ? 'h' : 'v');
+    };
 
     let rt = null;
     const remeasure = () => {
@@ -758,6 +806,16 @@
     if (mq.addEventListener) mq.addEventListener('change', apply);
     else if (mq.addListener) mq.addListener(apply);
 
+    if (homeProcess) {
+      if (motionMq.addEventListener) motionMq.addEventListener('change', remeasure);
+      else if (motionMq.addListener) motionMq.addListener(remeasure);
+      if ('ResizeObserver' in window) {
+        const observer = new ResizeObserver(() => { if (mq.matches) remeasure(); });
+        observer.observe(stage);
+        observer.observe(pin.querySelector('.container'));
+      }
+      if (document.fonts) document.fonts.ready.then(() => { if (mq.matches) remeasure(); });
+    }
     apply();
   })();
 

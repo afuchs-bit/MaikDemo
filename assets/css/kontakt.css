@@ -986,11 +986,7 @@
   .contact-direct-list { grid-template-columns: 1fr; }
 }
 
-/* AP-388: Unter 481px traegt die Startseite #1B1E19 statt #171916 - gesetzt vom
-   Inline-Style in index.html:10 und von --home-page-background in
-   privat-form.css:5551, das nur sie laedt. Der Wert steht hier als Literal,
-   damit ein grep nach 1B1E19 alle Stellen zusammen findet; so haelt es die
-   Startseite schon heute.
+/* AP-388 / AP-548: Der zentrale Seitengrund entspricht der Hochkantfassung.
 
    html kommt mit, weil der untere Abstand der eingerueckten Footer-Kachel durch
    Margin Collapsing ausserhalb des Body-Kastens liegt (Begruendung in
@@ -1004,5 +1000,5 @@
    Seitengrund #1B1E19 wie das Handy (Ansage des Auftraggebers). */
 html,
 body.contact-page {
-  background: #1B1E19;
+  background: var(--page-background);
 }

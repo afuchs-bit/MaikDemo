@@ -229,26 +229,121 @@
   text-wrap: balance;
 }
 
-/* AP-503: Am Desktop standen die vier Eckdaten hier als Band nebeneinander -
-   25+ und 1000+ im Zweierraster, daneben Fachteam und Google-Bewertung, getrennt
-   von senkrechten Linien, ohne die waagerechten Zierlinien.
-   AP-524, auf Ansage des Auftraggebers (30.09.2026): Das Band ist entfallen. Am
-   Desktop gilt wieder die Anordnung der Handy-Fassung aus der Grundebene oben -
-   25+ | 1000+, darunter "Ihr Fachteam", darunter die Google-Bewertung zwischen
-   den Zierlinien -, mittig und rund ein Viertel groesser.
-   zoom statt transform: scale: Alle Masse der Handy-Fassung stehen in rem, zoom
-   vergroessert sie gemeinsam UND im Layout (scale liesse die Box klein und den
-   Inhalt ueberlaufen). 32rem mal 1.25 sind sichtbar 40rem. Der Abstand nach oben
-   ist durch 1.25 geteilt, damit er nach dem Zoom der bisherige bleibt
-   (clamp(48px, 5vw, 80px)). */
-@media (min-width: 901px) {
+/* AP-533: Anordnung aus AP-524 behalten, die Kennzahlen aber an den beiden
+   Willkommen-Spalten ausrichten. Nur Desktop und mobiles Querformat erhalten
+   diese fließenden Masse; die Hochkant-Fassung bleibt in der Grundebene. */
+@media (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
   .gate-welcome--iphone .mobile-kpi-signature {
     grid-area: kpi;
-    justify-self: center;
+    justify-self: stretch;
     width: 100%;
-    max-width: 32rem;
-    margin: clamp(38.4px, 4vw, 64px) 0 0;
-    zoom: 1.25;
+    max-width: none;
+    margin: clamp(56px, 6vw, 96px) 0 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__facts {
+    column-gap: var(--gate-welcome-column-gap);
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__fact {
+    min-height: 132px;
+    padding: 8px 16px 0;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__fact + .mobile-kpi-signature__fact::before {
+    left: calc(var(--gate-welcome-column-gap) / -2);
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__figure {
+    height: clamp(44px, 4vw, 56px);
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__fact p,
+  .gate-welcome--iphone .mobile-kpi-signature__team p {
+    font-size: clamp(18px, 1.4vw, 20px);
+    margin-top: 16px;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__team {
+    padding: 32px 16px 0;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__team-wordmark {
+    width: min(100%, clamp(256px, 24vw, 312px));
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__team p {
+    max-width: 400px;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__google {
+    width: min(100%, 640px);
+    min-height: 64px;
+    margin: 40px auto 0;
+    padding: 12px 0;
+    gap: 16px;
+    scroll-margin-block: calc(var(--header-h, 92px) + 24px) 24px;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__google-mark {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__stars {
+    font-size: 19px;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__rating strong {
+    font-size: 17px;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__reviews {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .gate-welcome--iphone .mobile-kpi-signature {
+    margin-top: clamp(40px, 6cqw, 56px);
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__fact {
+    min-height: 112px;
+    padding-inline: 8px;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__figure {
+    height: clamp(28px, 5.5cqw, 42px);
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__fact p,
+  .gate-welcome--iphone .mobile-kpi-signature__team p {
+    font-size: clamp(15px, 2.3cqw, 18px);
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__team {
+    padding-top: 24px;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__team-wordmark {
+    width: min(100%, clamp(220px, 36cqw, 280px));
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__google {
+    margin-top: 28px;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__stars {
+    font-size: 17px;
+  }
+
+  .gate-welcome--iphone .mobile-kpi-signature__rating strong {
+    font-size: 15px;
   }
 }
 
@@ -485,6 +580,9 @@
 .mobile-proof-invitation__copy {
   max-width: 38ch;
 }
+
+/* AP-556: Im Hochkantlayout hat der reine Zentrierungs-Wrapper keine Box. */
+.mobile-proof-invitation__actions { display: contents; }
 
 .mobile-proof-invitation__text {
   margin: 0;
@@ -915,30 +1013,25 @@
 }
 
 
-/* AP-504: Desktop-Anordnung der Galerie-Einladung. Gleiche Inhalte wie am Handy:
-   Die drei Fotos stehen nebeneinander statt als Karussell (das Skript startet
-   das Karussell nur bis 900px), "Zur Galerie" mittig darunter, dann die Einladung
-   zweispaltig - Frage links, Antwort rechts - und der CTA unter der Antwort.
-   Die hidden-Attribute der Folien 2 und 3 und der Punkte stammen aus dem Markup
-   fuer das Karussell und werden hier uebersteuert; Karussell-Klone (nach einem
-   Wechsel von unter 900px) bleiben unsichtbar. */
-@media (min-width: 901px) {
-  /* Oben im Endton des Hero-Verlaufs (--bg-hero), damit Willkommen und Galerie
-     ohne Kante ineinander uebergehen; nach unten in den Seitengrund. */
-  .mobile-social-proof {
-    padding: clamp(24px, 3vw, 48px) 0 clamp(48px, 5vw, 72px);
-    background: linear-gradient(180deg, var(--bg-hero), transparent);
+/* AP-534: Galerie und Einladung folgen derselben Breite und Spaltenfuehrung
+   wie Willkommen, Kennzahlen und Qualifikationen. Die Hochkant-Komposition
+   bleibt erhalten; Desktop und mobiles Querformat zeigen drei feste Fotos. */
+@media (min-width: 901px), (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .mobile-social-proof {
+    --proof-column-gap: clamp(48px, calc(22vw - 150px), 160px);
+    padding: clamp(32px, 4vw, 56px) 0 clamp(48px, 5vw, 72px);
   }
 
   .mobile-proof-gallery,
   .mobile-proof-invitation {
-    width: min(100% - calc(var(--gutter) * 2), var(--container));
+    width: min(100% - calc(var(--gutter) * 2), 1120px);
     max-width: none;
     margin-inline: auto;
   }
 
   .mobile-proof-gallery {
-    --proof-brand-width: clamp(5rem, 6vw, 6.25rem);
+    --proof-brand-width: clamp(56px, 6vw, 80px);
+    margin-top: 0;
   }
 
   .mobile-proof-gallery__frame {
@@ -949,8 +1042,8 @@
   .mobile-proof-gallery__track,
   .mobile-proof-gallery.is-ready .mobile-proof-gallery__track {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(16px, 2vw, 28px);
+    grid-template-columns: repeat(var(--proof-image-count, 3), minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 24px);
     overflow: visible;
     scroll-snap-type: none;
   }
@@ -968,7 +1061,11 @@
   }
 
   .mobile-proof-gallery__slide img {
-    object-fit: cover;
+    object-fit: contain;
+  }
+
+  .mobile-proof-gallery__brand {
+    right: -8px;
   }
 
   .mobile-proof-gallery__dots,
@@ -981,27 +1078,105 @@
   }
 
   .mobile-proof-invitation {
-    margin-top: clamp(56px, 6vw, 88px);
+    /* AP-551/AP-553: Das Hochkant-Schriftverhaeltnis bleibt erhalten;
+       weniger Gesamtbreite und Luft verbinden Frage und Antwort zum Dialog. */
+    --proof-copy-size: clamp(20px, 1.7vw, 26px);
+    --proof-column-gap: clamp(24px, 3vw, 40px);
+    width: min(100% - calc(var(--gutter) * 2), 1000px);
+    container-type: inline-size;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    margin-top: clamp(48px, 5vw, 72px);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   .mobile-proof-invitation__copy {
+    grid-column: 1 / -1;
+    min-width: 0;
     max-width: none;
+  }
+
+  .mobile-proof-invitation__actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    margin-top: clamp(24px, 3vw, 32px);
   }
 
   .mobile-proof-invitation__text {
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
-    column-gap: clamp(40px, 5vw, 80px);
+    column-gap: var(--proof-column-gap);
   }
 
   .mobile-proof-invitation__text strong {
     margin: 0;
-    font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+    font: 700 calc(var(--proof-copy-size) * 1.125)/1.4 var(--body);
+    text-wrap: pretty;
   }
 
   .mobile-proof-invitation__response {
-    width: min(100%, 34rem);
-    margin: 0 0 0 auto;
+    grid-template-columns: minmax(0, 1fr) 32px;
+    min-width: 0;
+    width: 100%;
+    margin: 0;
   }
+
+  .mobile-proof-invitation__answer {
+    padding: clamp(18px, 1.7vw, 24px);
+    font-size: var(--proof-copy-size);
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  html.home-theme-dark .mobile-social-proof {
+    --proof-column-gap: clamp(24px, 4vw, 36px);
+    --proof-safe-inset: max(env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+    padding: 32px calc(32px + var(--proof-safe-inset)) 48px;
+  }
+
+  .mobile-proof-gallery,
+  .mobile-proof-invitation {
+    width: 100%;
+  }
+
+  .mobile-proof-invitation {
+    --proof-copy-size: clamp(16px, 2.3cqw, 20px);
+    --proof-column-gap: clamp(12px, 2vw, 18px);
+    width: min(100%, 640px);
+    margin-top: 40px;
+  }
+
+  .mobile-proof-invitation__response {
+    grid-template-columns: minmax(0, 1fr) 24px;
+  }
+
+  .mobile-proof-invitation__answer {
+    padding: 14px;
+  }
+
+  .mobile-proof-invitation__flower {
+    width: 24px;
+  }
+
+  /* Bei starkem Zoom zaehlt der verfuegbare Platz, nicht die Geraetebreite.
+     Die Einladung darf dann zugunsten der Lesbarkeit untereinander stehen. */
+  @container (max-width: 440px) {
+    .mobile-proof-invitation__text {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 24px;
+    }
+  }
+}
+
+/* Ein wirklich nicht erreichbares Foto wird auch in der festen Reihe
+   ausgeblendet; erreichbare Nachbarn und beide Kontaktwege bleiben sichtbar. */
+.mobile-proof-gallery__track > .mobile-proof-gallery__slide[data-proof-unavailable] {
+  display: none;
 }

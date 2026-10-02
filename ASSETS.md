@@ -23,9 +23,9 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   `6CFCC3786D5BA3B5C3A41797F95272E57F4290CCBD283A4BFD0033A3D857E64C`.
 - `assets/fonts/nunito-OFL.txt` – zugehörige SIL Open Font License 1.1 aus dem
   [offiziellen Google-Fonts-Repository](https://github.com/google/fonts/blob/main/ofl/nunito/OFL.txt),
-  abgerufen am 29.08.2026. Die Schrift wird ausschließlich auf der Homepage
-  eingebunden; das grafische Logo und die Typografie der Unterseiten bleiben
-  unverändert.
+  abgerufen am 29.08.2026. Die Schrift wird auf der Homepage und seit AP-531 (01.10.2026) im
+  gemeinsamen Header aller Seiten eingebunden. Das grafische Logo bleibt
+  unverändert; die Typografie der Hauptinhalte wird weiterhin je Seite festgelegt.
 
 ## Mobile Header-Symbole
 
@@ -418,3 +418,71 @@ Keine Nachzeichnung, Umfärbung oder Änderung der Bilddateien. Die bisherigen m
 34-px-Iconfelder, Skalierungen, Ausrichtung und Textabstände bleiben erhalten.
 Die Bild-URLs auf der Startseite erhalten einen neuen Versionsparameter gegen alte
 Browser-Caches. Auf Tablet und Desktop bleiben die bisherigen SVG-Icons sichtbar.
+
+### Wiederhergestellte Startseiten-Bildfolge (AP-533, 01.10.2026)
+
+Die drei bereits im Repository vorhandenen Originale unter
+`assets/img/galerie-teaser/originale/` bleiben unverändert:
+
+- `moderne-aussenanlage-mit-pflasterung.jpg` → `generated/moderne-aussenanlage-mit-pflasterung-e5cd55a*`.
+- `poolumfeld-mit-kiesbeet.jpg` → `generated/poolumfeld-mit-kiesbeet-cfd12a3*`.
+- `poolgarten-am-abend.jpg` → `generated/poolgarten-am-abend-8538a06*`.
+
+Der bestehende Galerie-Generator erzeugt ihre AVIF-/WebP-Größen und schützt sie
+vor dem Aufräumen, auch wenn sie nicht in der redaktionellen Garten-/Projektgalerie
+stehen. Keine neuen Motive, kein Beschnitt, keine generative Veränderung.
+
+### Startseiten-Hero für Desktop und Querformat (AP-559, 02.10.2026)
+
+Das vom Auftraggeber gelieferte `Unknown.png` (1672 × 941 px) liegt unverändert
+lokal unter `assets/img/_src/home/hero-fahrzeug-palmengarten-wide.png`.
+Die Inspirationsgrafik `Unknown-2.png` wird nicht als Website-Bild verwendet.
+
+`.github/scripts/prepare-home-wide-hero.mjs` erzeugt daraus sechs Dateien unter
+`assets/img/hero/hero-fahrzeug-palmengarten-wide-{800,1200,1672}.{avif,webp}`.
+Nur Skalierung und Formatkonvertierung, kein Beschnitt oder Retusche. Das
+vollständige Motiv bleibt in allen Dateien erhalten; die Fotobühne komponiert
+es per CSS. Die bisherige Bildfamilie für Handy-Hochkant bleibt erhalten.
+
+### Seitlicher Startseiten-Hero (AP-560, 02.10.2026)
+
+Auf Wunsch des Auftraggebers verwenden nun auch Desktop und Handy-Querformat
+wieder die vorhandene Hochkant-Bildfamilie `hero-fahrzeug-palmengarten-v9-mobile-q95.webp`
+(1023 × 1537) / `hero-fahrzeug-palmengarten-v10-mobile-2046-q92.webp` (2046 × 3074).
+Keine neue Bilddatei, keine Veränderung der Originale. Die Inspiration
+`Unknown-3.png` wird nicht als Website-Asset eingebunden. Die aus AP-559
+vorhandenen Querformatdateien bleiben erhalten, werden im Hero und dessen
+Preloads aber nicht mehr verwendet. Die Hochkant-Einbindung bleibt unverändert.
+
+### Baumkontrolle: Wurzelanlauf und Werkzeuge (AP-562, 02.10.2026)
+
+Vom Auftraggeber geliefertes Foto:
+`WhatsApp Image 2026-10-01 at 21.50.40.jpeg`, 1536 × 1024 px.
+Bytegleich übernommen als
+`assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-20261002.jpg`.
+SHA-256: `98af9b014c41b4c2e3ffa736357ba5bc954ade2674fed8a337ab3d860be1ffc2`.
+Das Original enthält weder EXIF noch XMP. Keine Retusche oder Farbänderung.
+
+Für die quadratischen Leistungsbilder wird ein mittiger 1024 × 1024 px großer
+Ausschnitt verwendet: links/rechts jeweils 256 px entfernt, gesamte Bildhöhe
+erhalten, JPEG Qualität 96 / 4:4:4. Quelle:
+`assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-vorschau-20261002.jpg`.
+
+Der vorhandene Generator `.github/scripts/build-hero-images.mjs` enthält beide
+Quellen. Erzeugt werden unter `assets/img/leistungen-mobile/`:
+
+- `baumkontrolle-wurzelanlauf-hero-20261002-{480,800,1200,1536}.{avif,webp}`
+  sowie `baumkontrolle-wurzelanlauf-hero-20261002.webp` (800 px Fallback).
+- `baumkontrolle-wurzelanlauf-vorschau-20261002-{240,480,640}.{avif,webp}`
+  sowie `baumkontrolle-wurzelanlauf-vorschau-20261002.webp` (480 px Fallback).
+
+AVIF Qualität höchstens 50 / effort 4, WebP höchstens 74 / effort 6;
+Qualität wird entsprechend dem bestehenden Generator bei Bedarf abgesenkt,
+bis jede Webdatei unter 200 KB bleibt. Alle 16 Derivate ohne EXIF/XMP.
+Hero-Derivate erhalten das vollständige 3:2-Motiv; die vorhandenen Bildflächen
+übernehmen weiterhin den CSS-Ausschnitt.
+
+Verwendung: Hero/OG der Baumkontrolle-Leistungsseite, Leistungsübersicht der
+Homepage und passende Ergänzung auf Baumpflege, Verkehrssicherheit und
+Sturmnotdienst. Die bisherige `baumkontrolle-ahorn`-Bildfamilie wird dort nicht
+mehr eingebunden. Fachliche Detailfotos und Ablaufdiagramm bleiben bestehen.

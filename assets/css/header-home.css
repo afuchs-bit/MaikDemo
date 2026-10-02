@@ -1,163 +1,330 @@
-/* AP-386 - Der Seitenkopf der Startseite fuer weitere Seiten.
+/* Gemeinsamer Seitenkopf: die kompakte Handy-Leiste auf allen Seiten.
+   Nur die Startseite ergaenzt bis 900px den grossen Einstieg samt Scroll-Morph
+   in home-dark.css. Navigation und Kontaktaktionen bleiben ein gemeinsames DOM. */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url("../fonts/nunito-latin.woff2") format("woff2");
+}
 
-   Diese Regeln standen bis AP-386 in home-dark.css und galten damit nur fuer die
-   Startseite - Galerie und Kontakt bekamen nur die Basisregeln aus styles.css.
-   Sichtbar wurde das an drei Stellen: der Kopf war heller (--bg-elev statt
-   #171916), er lag auf `position: sticky` statt `fixed` und rutschte auf dem
-   iPhone beim Scrollen weg, und das Leistungs-Untermenu stand ohne Flaeche mit
-   fast weissem Rand da.
-
-   Diese Datei wird von index.html, projekte/index.html und kontakt/index.html
-   geladen, und zwar NACH styles.css und VOR home-dark.css. Beides ist noetig:
-   `.site-header` traegt nur eine Klasse und gewinnt gegen styles.css allein ueber
-   die Dateireihenfolge, und die Morph-Regeln der Startseite
-   (html.home-theme-dark.home-header-morph ...) muessen weiter gegen alles hier
-   gewinnen - sie tun es ueber ihre Spezifitaet, die Reihenfolge ist die zweite
-   Sicherung.
-
-   NICHT hier drin steht der Morph: die schwebende Markenkachel am Seitenanfang
-   und das Umklappen ab ~28px Scroll bleiben der Startseite vorbehalten
-   (home-dark.css ab Zeile 1004, home-header-morph.js). Zielbild dieser Datei ist
-   der kompakte Zustand des Startseiten-Kopfes - der flache Balken, den man beim
-   Scrollen sieht. Deshalb fehlt auch die Instagram-Kachel: sie steht im
-   kompakten Zustand ohnehin auf display: none.
-
-   Wer den Kopf einer weiteren Seite so haben will, bindet nur diese Datei dort
-   ein - eine Allowlist wie beim Footer gibt es nicht, weil der Kopf nicht
-   generiert wird. */
-
-/* ===== Flaechen, Raender und Schriftfarben von Kopf, Menue und Popover ===== */
-
+.site-header { --header-action-gap: 6px; }
 .site-header,
 .site-header.is-scrolled {
   background: #171916;
+  border-bottom-color: var(--line);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  font-family: "Nunito", sans-serif;
 }
 
-.menu,
-.call-popover,
-.nav-submenu {
-  border-color: var(--line);
+.site-header .brand-logo,
+.site-header.is-scrolled .brand-logo {
+  background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png?v=20260913b");
+  background-position: left center;
 }
 
-.call-popover,
-.nav-submenu,
-.primary-nav.is-open .menu {
+.site-header .header-instagram { display: none; }
+.site-header .header-actions { gap: var(--header-action-gap); }
+.site-header .header-actions .call-wrap { display: flex; align-items: center; height: 44px; }
+.site-header .header-actions :is(.call-btn, .btn-whatsapp, .nav-toggle) {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  border-radius: 14px;
+  border-color: transparent;
+  box-shadow: none;
+  transition: opacity .18s ease, color .18s ease;
+}
+.site-header .header-actions .nav-toggle { gap: 4px; }
+.site-header .header-actions :is(.call-btn, .btn-whatsapp) > :is(svg, span) { display: none; }
+.site-header .header-actions :is(.call-btn, .btn-whatsapp)::before {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.site-header .header-actions .call-btn.btn-ghost,
+.site-header .header-actions .nav-toggle { background: #0E100D; }
+.site-header .header-actions .call-btn::before {
+  width: 28px;
+  height: 28px;
+  flex-basis: 28px;
+  background-image: url("../img/icons/phone-header-mobile.png");
+}
+.site-header .header-actions .btn-whatsapp { background: #25D366; }
+.site-header .header-actions .btn-whatsapp::before {
+  background-image: url("../img/icons/whatsapp-glyph-white.svg");
+}
+.site-header .header-actions .nav-toggle span { background: #FAFAF6; }
+.site-header .header-actions :is(.call-btn, .btn-whatsapp, .nav-toggle):active { opacity: .78; }
+.site-header .header-actions :is(.call-btn, .btn-whatsapp, .nav-toggle):focus-visible {
+  outline: 2px solid var(--mobile-logo-green);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .site-header .header-actions :is(.call-btn, .btn-whatsapp):hover {
+    opacity: .85;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.menu, .call-popover, .nav-submenu { border-color: var(--line); }
+.call-popover, .nav-submenu, .primary-nav.is-open .menu {
   background: var(--bg-elev);
   color: var(--ink);
 }
-
-.menu {
-  background: rgba(32,36,29,.9);
-}
-
-.call-row,
-.nav-submenu a,
-.menu a,
-.menu-label,
-.submenu-toggle {
-  color: var(--ink-2);
-}
-
-.call-label {
-  color: var(--ink-mute);
-}
-
-.call-row:hover,
-.nav-submenu a:hover,
-.menu a:hover,
-.menu-item--sub:hover > .menu-label {
-  background: var(--bg-soft);
-  color: var(--ink);
-}
-
-/* Der Fokusring liegt direkt auf der gemeinsam klickbaren Leistungen-Kachel.
-   So bleibt die Tastaturposition auch auf dem gruenen Aktivzustand sichtbar. */
-.submenu-toggle:focus-visible {
-  outline: 2px solid var(--ink-mute);
-  outline-offset: 0;
-}
-
-.nav-toggle {
-  border-color: var(--line);
-}
-
-.nav-toggle span {
-  background: var(--ink);
-}
-
-/* ===== Handy: fester Kopf statt sticky ===== */
-
-/* Safari zieht einen sticky-Kopf beim Scrollen und beim Zurueckfedern in die
-   iPhone-Statusleiste - genau die Beschwerde, die zu AP-386 gefuehrt hat.
-
-   Bis AP-386 stand dieser Block in home-dark.css hinter
-   @supports (-webkit-touch-callout: none), also nur fuer Safari. Der Zaun ist
-   hier absichtlich weg: Auf der Startseite gilt `fixed` unter 900px in jedem
-   Browser (home-dark.css:1012), und ein Kopf, der sich je nach Browser anders
-   verhaelt, ist schwerer zu pruefen als einer, der es nicht tut.
-
-   body bekommt den Ausgleich, weil ein fester Kopf keinen Platz mehr im Fluss
-   belegt. --mobile-header-h steht in styles.css:79. */
-@media (max-width: 900px) {
-  body {
-    padding-top: calc(var(--mobile-header-h, 82px) + env(safe-area-inset-top, 0px));
+.menu { background: rgba(32,36,29,.9); }
+.call-row, .nav-submenu a, .menu a, .menu-label, .submenu-toggle { color: var(--ink-2); }
+.call-label { color: var(--ink-mute); }
+@media (hover: hover) and (pointer: fine) {
+  .call-row:hover, .nav-submenu a:hover, .menu a:hover {
+    background: var(--bg-soft);
+    color: var(--ink);
   }
+}
+.submenu-toggle:focus-visible { outline: 2px solid var(--ink-mute); outline-offset: 0; }
 
-  .site-header,
-  .site-header.is-scrolled {
+/* Nummern bleiben eine Einheit. Die Beschriftung steht darueber, damit auch
+   schmale Ansichten genug Abstand und eine ruhige, gemeinsame Textkante haben. */
+.site-header .call-popover {
+  top: calc(100% + 20px);
+  width: 272px;
+  min-width: 0;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 96px);
+  max-height: calc(100dvh - 96px);
+  padding: 8px;
+  gap: 4px;
+  border-radius: 16px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.site-header .call-row {
+  display: grid;
+  justify-content: start;
+  align-items: start;
+  gap: 4px;
+  min-height: 68px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: color .18s ease, background-color .18s ease;
+}
+.site-header .call-label {
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: .1em;
+}
+.site-header .call-num {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.site-header :is(.call-row, .nav-submenu a):focus-visible {
+  outline: 2px solid var(--mobile-logo-green);
+  outline-offset: -2px;
+}
+
+/* Hover und aria-expanded werden gemeinsam durch main.js gesteuert. So kann
+   Escape das Dropdown auch schliessen, solange der Zeiger noch darauf steht. */
+.site-header .menu-item--sub:not(.is-open) > .nav-submenu {
+  opacity: 0;
+  visibility: hidden;
+}
+.site-header .menu-item--sub:not(.is-open) .submenu-caret { transform: none; }
+
+@media (max-width: 900px) {
+  body { padding-top: calc(var(--mobile-header-h, 82px) + env(safe-area-inset-top, 0px)); }
+  .site-header, .site-header.is-scrolled {
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     width: 100%;
-    background: rgb(var(--surface-rgb));
-    border-bottom-color: var(--line);
-    /* Der Blur aus styles.css:289 braucht einen Hintergrund zum Durchscheinen.
-       Der Kopf ist hier deckend, der Filter kostet also nur Rechenzeit. */
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    transition: border-color .25s var(--ease), padding .25s var(--ease);
+    transition: border-color .18s ease, padding .18s ease;
   }
-
-  /* Die Inhaltsbreite gehoert zum kompakten Header selbst. Damit bleibt sie
-     auch auf Seiten mit eigener `.container`-Definition exakt identisch zur
-     gescrollten Startseite. */
   .site-header > .header-inner.container {
     width: min(calc(100% - 32px), 1360px);
     max-width: 1360px;
     margin-inline: auto;
     padding: 8px 0;
   }
-
-  /* Eine gemeinsame Grafik haelt Name, Meisterzeile und Blueten proportional.
-     Masse und Ausrichtung kommen weiter aus styles.css:331-341 - sie stimmen
-     mit dem kompakten Zustand der Startseite ueberein, nur das Motiv nicht. */
-  .site-header .brand-logo,
-  .site-header.is-scrolled .brand-logo {
-    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister.png?v=20260902a");
-  }
-
-  /* Im kompakten Startseiten-Zustand entfaellt die separate Instagram-Kachel.
-     Diese gemeinsame Datei bildet genau diesen Zustand auf allen Unterseiten
-     ab; die Startseite kann sie im grossen Hero-Zustand weiterhin ueber ihre
-     spezifischeren Morph-Regeln einblenden. */
-  .site-header .header-instagram {
-    display: none;
-  }
-
-  /* Menue- und Telefonzeilen sind keine Iconkacheln. Hier signalisiert nur die
-     Flaeche den Druck; die Zeile selbst bleibt unbewegt. */
+  /* Die erste Gridzeile behaelt ihre Hoehe, wenn das Menue eine zweite
+     Zeile hinzufuegt. Sonst springen die Icons bei einem kleinen Logo hoch. */
+  .site-header .brand { min-height: 65px; }
+  /* Auf dem Handy sitzt der Menueknopf rechts neben dem Telefon. Das Panel
+     endet an derselben Kante wie die gesamte Aktionsgruppe, auch bei 320px. */
+  .site-header .call-popover { right: calc(-44px - var(--header-action-gap)); }
   .primary-nav.is-open .menu a:active,
   .primary-nav.is-open .menu-item--sub:not(.is-open) .submenu-toggle:active,
-  .call-popover .call-row:active {
-    color: var(--ink);
-    background: var(--bg-soft);
+  .call-popover .call-row:active { color: var(--ink); background: var(--bg-soft); }
+
+  /* Alle fuenf Hauptpunkte teilen dieselbe Flaeche wie der A-Z-Ausloeser. */
+  .site-header .primary-nav.is-open .menu > li:not(.menu-meta) > :is(a, .submenu-toggle) {
+    border-radius: 10px;
+    transition: color .18s ease, background-color .18s ease;
+  }
+  .site-header .primary-nav.is-open .menu > li:not(.menu-meta) > :is(a, .submenu-toggle):is(:focus-visible, :active) {
+    background: var(--home-lime);
+    color: #171916;
+  }
+  .site-header .primary-nav.is-open .menu > li:not(.menu-meta) > :is(a, .submenu-toggle):focus-visible {
+    outline: 2px solid var(--home-lime);
+    outline-offset: -2px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .site-header .primary-nav.is-open .menu > li:not(.menu-meta):hover > :is(a, .submenu-toggle) {
+      background: var(--home-lime);
+      color: #171916;
+    }
   }
 }
 
-@media (max-width: 480px) {
+/* Im Handy-Querformat bekommen Logo und Kontaktgruppe etwas mehr Luft.
+   Die Aussparung des Geraets darf den Abstand auf beiden Seiten vergroessern.
+   Kleine Fenster behalten genug Platz fuer die unveraenderten Icongroessen. */
+@media (max-width: 900px) and (orientation: landscape) {
+  .site-header {
+    --header-landscape-gutter: clamp(16px, calc(10vw - 26px), 28px);
+    --header-landscape-left: max(var(--header-landscape-gutter), env(safe-area-inset-left, 0px));
+    --header-landscape-right: max(var(--header-landscape-gutter), env(safe-area-inset-right, 0px));
+  }
+  html:not(.home-header-morph) .site-header > .header-inner.container,
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed > .header-inner.container {
+    width: calc(100% - var(--header-landscape-left) - var(--header-landscape-right));
+    margin-left: var(--header-landscape-left);
+    margin-right: var(--header-landscape-right);
+  }
+}
+
+@media (min-width: 901px) {
+  html { scroll-padding-top: calc(var(--header-h, 92px) + 14px); }
+  .site-header > .header-inner.container {
+    --desktop-brand-width: clamp(220px, calc(30vw - 50px), 256px);
+    width: min(calc(100% - clamp(40px, 4.445vw, 64px)), 1600px);
+    max-width: 1600px;
+    min-height: 91px;
+    margin-inline: auto;
+    padding: 6px 0;
+    /* Sichtbare Inhalte bestimmen die beiden Aussenspalten. Die Navigation
+       nutzt den Raum dazwischen und bleibt darin bis maximal 720px zentriert. */
+    grid-template-columns: var(--desktop-brand-width) minmax(0, 1fr) auto;
+    gap: clamp(14px, 1.5vw, 24px);
+  }
+  .site-header .brand { justify-self: start; }
   .site-header .brand-logo,
   .site-header.is-scrolled .brand-logo {
-    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png?v=20260913b");
+    width: var(--desktop-brand-width);
+    height: 79px;
+    transition: none;
   }
+  .site-header .header-actions .call-wrap { height: 60px; }
+  .site-header .header-actions :is(.call-btn, .btn-whatsapp) {
+    width: 60px;
+    height: 60px;
+    flex-basis: 60px;
+    border-radius: 19px;
+  }
+  .site-header .header-actions .btn-whatsapp::before {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+  .site-header .header-actions .call-btn::before {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+  .site-header .call-popover {
+    top: calc(100% + 24px);
+    max-height: calc(100vh - var(--header-h, 92px) - 24px);
+    max-height: calc(100dvh - var(--header-h, 92px) - 24px);
+  }
+  .site-header .primary-nav { min-width: 0; }
+  .site-header .primary-nav > .menu {
+    width: 100%;
+    max-width: 720px;
+    /* AP-549: Freiraum auch vor Leistungen und nach Kontakt verteilen.
+       So haelt die Gruppe in schmalen Desktopfenstern Abstand zu Logo und
+       Icons, statt mit ihren Endpunkten an den Aussenspalten zu kleben. */
+    justify-content: space-evenly;
+    align-items: center;
+    gap: clamp(4px, .5vw, 6px);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .site-header .menu > li > :is(a, .submenu-toggle) {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    min-width: 44px;
+    padding: 8px clamp(4px, calc(2.44vw - 18px), 7px);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--ink-2);
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(14px, calc(10.074px + .43573vw), 16px);
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color .18s ease;
+  }
+  .site-header .menu > li > :is(a, .submenu-toggle)::after {
+    content: "";
+    position: absolute;
+    inset-inline: clamp(4px, calc(2.44vw - 18px), 7px);
+    bottom: 3px;
+    height: 2px;
+    background: var(--mobile-logo-green);
+    opacity: 0;
+    transition: opacity .18s ease;
+  }
+  .site-header .menu > li > :is(a, .submenu-toggle):is(.is-current, :focus-visible),
+  .site-header .menu-item--sub.is-open > .submenu-toggle { color: var(--ink); }
+  .site-header .menu > li > :is(a, .submenu-toggle):is(.is-current, :focus-visible)::after,
+  .site-header .menu-item--sub.is-open > .submenu-toggle::after { opacity: 1; }
+  .site-header .menu > li > :is(a, .submenu-toggle):focus-visible {
+    outline: 2px solid var(--mobile-logo-green);
+    outline-offset: 3px;
+  }
+  .site-header .header-actions { justify-self: end; }
+  .site-header .header-actions .nav-toggle { display: none; }
+  .site-header .nav-submenu {
+    max-height: calc(100vh - var(--header-h, 92px) - 12px);
+    max-height: calc(100dvh - var(--header-h, 92px) - 12px);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .site-header .menu > li > :is(a, .submenu-toggle):hover { color: var(--ink); }
+    .site-header .menu > li > :is(a, .submenu-toggle):hover::after { opacity: 1; }
+  }
+}
+
+@media (max-width: 340px) {
+  .site-header { --header-action-gap: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header .header-actions :is(.call-btn, .btn-whatsapp, .nav-toggle),
+  .site-header .call-row,
+  .site-header .nav-submenu,
+  .site-header .menu > li > :is(a, .submenu-toggle),
+  .site-header .menu > li > :is(a, .submenu-toggle)::after { transition: none; }
 }
