@@ -160,20 +160,22 @@ export function absUrl(p) {
 // AP-77: Das <img src> zeigt auf `<base>.webp`, nicht auf `bild`. Bei den Bildern aus
 // build-images.mjs ist das derselbe Pfad; bei denen aus build-hero-images.mjs liegt unter
 // `bild` das grosse Original (bis 1,2 MB), das nie ausgeliefert werden soll.
-export function renderPicture(bild, { alt = '', sizes = '100vw', className = '', priority = false, width, height, base = '' } = {}) {
+export function renderPicture(bild, { alt = '', sizes = '100vw', className = '', priority = false, width, height, base = '', objectPosition = '' } = {}) {
   const m = imageManifest()[bild];
   const cls = className ? ` class="${escAttr(className)}"` : '';
+  const position = /^\d{1,3}% \d{1,3}%$/.test(objectPosition)
+    ? ` style="object-position:${escAttr(objectPosition)}"` : '';
   const load = priority ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"';
   const rel = (p) => escAttr(relAsset(p, base));
   if (!m) {
     const wh = width && height ? ` width="${width}" height="${height}"` : '';
-    return `<img${cls} src="${rel(bild)}" alt="${escAttr(alt)}"${wh} ${load}>`;
+    return `<img${cls}${position} src="${rel(bild)}" alt="${escAttr(alt)}"${wh} ${load}>`;
   }
   const set = (ext) => widthsFor(m, ext).map((w) => `${rel(`${m.base}-${w}.${ext}`)} ${w}w`).join(', ');
   return `<picture>
         <source type="image/avif" sizes="${escAttr(sizes)}" srcset="${set('avif')}">
         <source type="image/webp" sizes="${escAttr(sizes)}" srcset="${set('webp')}">
-        <img${cls} src="${rel(fallbackSrc(m))}" alt="${escAttr(alt)}" width="${width || m.width}" height="${height || m.height}" ${load}>
+        <img${cls}${position} src="${rel(fallbackSrc(m))}" alt="${escAttr(alt)}" width="${width || m.width}" height="${height || m.height}" ${load}>
       </picture>`;
 }
 
@@ -1401,7 +1403,7 @@ export async function renderLeistungPage(opts) {
       subheading: esc(presented.unterzeile),
       introHtml: presented.einstieg.map((p) => `<p>${esc(p)}</p>`).join(''),
       heroCta: lpv2Cta(presented.ctaLabel, base, presented.ctaHref || '#anfrage'),
-      heroPicture: renderPicture(hero.bild, { alt: hero.alt || '', sizes: heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', priority: true, width: hero.width, height: hero.height, base }),
+      heroPicture: renderPicture(hero.bild, { alt: hero.alt || '', sizes: heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', priority: true, width: hero.width, height: hero.height, base, objectPosition: hero.objectPosition }),
       heroBrand: imageFirstHero
         ? `<img class="lpv2-hero-brand" src="${base}assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" alt="" width="210" height="180" aria-hidden="true" decoding="async">`
         : '',

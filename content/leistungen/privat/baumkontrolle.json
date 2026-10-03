@@ -56,10 +56,11 @@
   ],
   "bilder": {
     "hero": {
-      "bild": "/assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-20261002.jpg",
-      "alt": "Baumstamm mit Wurzelanlauf und ausgelegten Werkzeugen.",
+      "bild": "/assets/img/leistungen-mobile/originale/baumkontrolle-warnschild-20261003.jpg",
+      "alt": "Warnschild „Baumkontrolle“ neben einem Baumstamm mit Wurzelanlauf und Prüfwerkzeugen.",
       "width": 1536,
-      "height": 1024
+      "height": 1024,
+      "objectPosition": "0% 50%"
     },
     "gallery": [
       {
@@ -100,7 +101,7 @@
       }
     ]
   },
-  "thumbnail": "/assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-vorschau-20261002.jpg",
+  "thumbnail": "/assets/img/leistungen-mobile/originale/baumkontrolle-warnschild-vorschau-20261003.jpg",
   "kundengruppe": [
     "privat"
   ],

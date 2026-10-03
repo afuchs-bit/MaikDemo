@@ -2579,3 +2579,11 @@ Zwölf breite/Reflow-Ansichten, vier Hochkantvergleiche, Galerie, FAQ und
 Ablauflinie geprüft. Nur die Homepage lädt `home-spacing.css?v=20261002b`;
 zentraler Versionsabgleich, zweiter Generatorlauf ohne Änderungen.
 Dokumentation: `docs/ap/AP-563-homepage-abstaende-querformat.md`.
+
+**AP-564 — Baumkontrolle-Foto mit Warnschild (03.10.2026).**
+Neues Nutzerfoto auf der Homepage, im Leistungs-Hero einschließlich Preload/OG
+und in allen drei passenden Ergänzungen. Eigener linker Vorschauausschnitt
+und Hero-Ausrichtung erhalten die Schildbeschriftung. Neue responsive
+AVIF/WebP-Dateien verhindern alte Cache-Bilder. Hochkant, Querformat, Desktop,
+Bildpfade und zweiter Generatorlauf geprüft. Dokumentation:
+`docs/ap/AP-564-baumkontrolle-warnschild.md`.

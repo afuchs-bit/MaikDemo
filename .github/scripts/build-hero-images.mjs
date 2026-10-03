@@ -42,19 +42,19 @@ const QUALITY_FLOOR = 28; // untere Grenze, darunter nicht mehr
 // widths = gewuenschte Breiten (groessere als das Original werden verworfen);
 // webpWidths = abweichende Breiten fuer WebP (optional, sonst wie widths).
 const SOURCES = [
-  // AP-562: Nutzergeliefertes Baumkontrolle-Foto. Hero bewahrt das ganze
-  // 3:2-Motiv; kleine Leistungsbilder nutzen den separaten 1:1-Ausschnitt.
+  // AP-564: Nutzerfoto mit Baumkontrolle-Warnschild. Hero bewahrt das
+  // 3:2-Motiv; der linke 1:1-Ausschnitt haelt das Schild in kleinen Karten lesbar.
   {
-    src: 'assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-20261002.jpg',
+    src: 'assets/img/leistungen-mobile/originale/baumkontrolle-warnschild-20261003.jpg',
     dir: 'assets/img/leistungen-mobile',
-    name: 'baumkontrolle-wurzelanlauf-hero-20261002',
+    name: 'baumkontrolle-warnschild-hero-20261003',
     widths: [480, 800, 1200, 1536],
     fallbackWidth: 800,
   },
   {
-    src: 'assets/img/leistungen-mobile/originale/baumkontrolle-wurzelanlauf-vorschau-20261002.jpg',
+    src: 'assets/img/leistungen-mobile/originale/baumkontrolle-warnschild-vorschau-20261003.jpg',
     dir: 'assets/img/leistungen-mobile',
-    name: 'baumkontrolle-wurzelanlauf-vorschau-20261002',
+    name: 'baumkontrolle-warnschild-vorschau-20261003',
     widths: [240, 480, 640],
     fallbackWidth: 480,
   },

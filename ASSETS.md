@@ -486,3 +486,25 @@ Verwendung: Hero/OG der Baumkontrolle-Leistungsseite, Leistungsübersicht der
 Homepage und passende Ergänzung auf Baumpflege, Verkehrssicherheit und
 Sturmnotdienst. Die bisherige `baumkontrolle-ahorn`-Bildfamilie wird dort nicht
 mehr eingebunden. Fachliche Detailfotos und Ablaufdiagramm bleiben bestehen.
+
+### Baumkontrolle: Warnschild und Prüfwerkzeuge (AP-564, 03.10.2026)
+
+Das neue Nutzerfoto `WhatsApp Image 2026-10-01 at 21.53.44.jpeg` ersetzt das
+Leitmotiv aus AP-562 an allen fünf aktiven Einbindungen. Original 1536 × 1024 px,
+bytegleich unter `assets/img/leistungen-mobile/originale/baumkontrolle-warnschild-20261003.jpg`.
+SHA-256: `0105874a3e7ca2bdf9b00434365eaece70ac3dbd5dd6b501a897c60e3a984cf3`.
+Ohne EXIF/XMP, Retusche oder Farbänderung.
+
+Vorschau: linker 1024 × 1024 px Ausschnitt (x=0, y=0), JPEG Qualität 96 / 4:4:4,
+unter `originale/baumkontrolle-warnschild-vorschau-20261003.jpg`. Der Ausschnitt
+erhält das Warnschild in den kleinen Leistungsbildern.
+
+Der bestehende Generator erzeugt 16 Webdateien, alle unter 200 KiB:
+
+- `baumkontrolle-warnschild-hero-20261003-{480,800,1200,1536}.{avif,webp}`
+  und `baumkontrolle-warnschild-hero-20261003.webp` (800 px Fallback).
+- `baumkontrolle-warnschild-vorschau-20261003-{240,480,640}.{avif,webp}`
+  und `baumkontrolle-warnschild-vorschau-20261003.webp` (480 px Fallback).
+
+Hero-Derivate erhalten das vollständige 3:2-Motiv; die vorhandene 4:3-Bildfläche
+ist links ausgerichtet, damit die Schildbeschriftung sichtbar bleibt.

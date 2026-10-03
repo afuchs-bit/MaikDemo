@@ -302,6 +302,29 @@
       "width": 480,
       "height": 480,
       "aspect": 1
+    },
+    "/assets/img/leistungen-mobile/originale/baumkontrolle-warnschild-20261003.jpg": {
+      "base": "/assets/img/leistungen-mobile/baumkontrolle-warnschild-hero-20261003",
+      "widths": [
+        480,
+        800,
+        1200,
+        1536
+      ],
+      "width": 800,
+      "height": 533,
+      "aspect": 0.6663
+    },
+    "/assets/img/leistungen-mobile/originale/baumkontrolle-warnschild-vorschau-20261003.jpg": {
+      "base": "/assets/img/leistungen-mobile/baumkontrolle-warnschild-vorschau-20261003",
+      "widths": [
+        240,
+        480,
+        640
+      ],
+      "width": 480,
+      "height": 480,
+      "aspect": 1
     }
   }
 }
