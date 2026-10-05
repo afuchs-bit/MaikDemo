@@ -680,3 +680,39 @@ body,
     flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
   }
 }
+
+/* AP-538 (Ansage 02.10.2026): Querformat am Handy (481-900px, iPhone 16 Pro quer 874px).
+   Gemessen bei 874px vorher:
+   - Der Umschalter stand links (x 35 statt 167). Bis 900px gilt nur max-width: 540px
+     (Block oben), die Zentrierung des Desktops (justify-self: center) greift hier nicht.
+   - "Projekte mit Details" war einspaltig, jede Karte 804 x 812px - doppelt so hoch wie
+     der Bildschirm. Jetzt wie am Desktop (AP-521) ein Flex-Umbruch mit mittiger letzter
+     Reihe: ab 741px drei Spalten wie die Bildergalerie in diesem Band (253px je Karte
+     bei 874px), darunter zwei (667px, iPhone SE quer: drei Spalten waeren 190px schmal,
+     die Titel liefen ueber 4-5 Zeilen). Abstand 22px wie am Desktop.
+   :not([hidden]) ist Pflicht, siehe AP-521 - sonst stuende die verborgene Ansicht
+   wieder im Fluss. Hochformat und Desktop bleiben unveraendert. */
+@media (min-width: 481px) and (max-width: 900px) {
+  .projects-overview .gallery-mode-tabs {
+    margin-inline: auto;
+  }
+
+  .projects-overview .projects-grid--gallery:not([hidden]) {
+    --cols: 2;
+    --gap: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap);
+  }
+
+  .projects-overview .projects-grid--gallery > .project-card {
+    flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  }
+}
+
+@media (min-width: 741px) and (max-width: 900px) {
+  .projects-overview .projects-grid--gallery:not([hidden]) {
+    --cols: 3;
+  }
+}
