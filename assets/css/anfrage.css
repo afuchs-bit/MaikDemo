@@ -96,7 +96,12 @@
   margin-top: .375rem;
   font-size: .8125rem;
   color: var(--anf-fehler);
+  font-family: var(--body);
+  font-weight: 600;
+  line-height: 1.5;
 }
+
+.anf__pflicht { font-weight: 400; color: var(--anf-leise); font-size: .8em; }
 
 /* ------------------------------------------------------------------ Foto */
 
@@ -197,6 +202,81 @@
 
 .anf__foto.is-invalid .anf__foto-kachel { border-color: var(--anf-fehler); }
 .anf__foto.is-invalid + .anf__foto-stand { color: var(--anf-fehler); font-weight: 700; }
+
+/* Foto-Sammlung: dieselben Flaechen und Markenecken wie an den Eingabefeldern.
+   Jede Kachel hat einen eigenen, auch am Handy gut erreichbaren Entfernenknopf. */
+.anf__foto-vorschauen {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+  min-inline-size: 0;
+}
+
+.anf__foto-vorschau {
+  position: relative;
+  display: grid;
+  min-inline-size: 0;
+  overflow: hidden;
+  border: 1px solid var(--home-surface-border, var(--anf-linie));
+  border-radius: 15px 5px 15px 5px;
+  background: var(--home-surface-low, var(--anf-flaeche));
+}
+
+.anf__foto-vorschau img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.anf__foto-name {
+  padding: 7px 10px;
+  color: var(--anf-leise);
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.anf__foto-entfernen {
+  position: absolute;
+  inset-block-start: 4px;
+  inset-inline-end: 4px;
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .32);
+  border-radius: 12px 4px 12px 4px;
+  background: rgba(23, 25, 22, .88);
+  color: #fff;
+  font: inherit;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color .18s var(--ease), border-color .18s var(--ease);
+}
+
+.anf__foto-entfernen:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: -4px;
+}
+
+.anf__foto-entfernen:active { background: var(--green-700); }
+.anf__foto-entfernen:disabled { opacity: .5; cursor: wait; }
+.anf__foto.is-busy .anf__foto-kachel { opacity: .65; cursor: wait; }
+.anf__foto-stand[aria-invalid="true"] { color: var(--anf-fehler); }
+
+@media (hover: hover) and (pointer: fine) {
+  .anf__foto-entfernen:hover { background: var(--green-700); border-color: var(--green-500); }
+  .anf__foto.is-busy:hover .anf__foto-kachel { background: transparent; border-color: var(--anf-linie); }
+}
+
+@media (max-width: 340px) {
+  .anf__foto-vorschauen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 
 /* Die Bestaetigung erscheint erst, wenn wirklich ein Bild gewaehlt wurde. Sie
    fragt nach Rechten Dritter - Nachbarn, Kennzeichen, Hausfassaden -, die auf
@@ -312,10 +392,20 @@
 }
 
 .anf__status {
-  margin: .75rem 0 0;
+  margin: 28px 0 0;
   flex-basis: 100%;
-  font-size: .9375rem;
-  line-height: 1.5;
+  min-inline-size: 0;
+  inline-size: 100%;
+  box-sizing: border-box;
+  font-family: var(--body);
+  font-size: .875rem;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  line-height: 1.6;
+  text-align: left;
+  text-transform: none;
+  overflow-wrap: anywhere;
 }
 .anf__status:empty { display: none; }
 
@@ -323,22 +413,50 @@
    data-endpoint steht und die Funktion ihn bestaetigt hat. Ohne Endpunkt bleibt
    es beim Hinweis; eine Erfolgsmeldung ohne Versand waere eine Luege. */
 .anf__status[data-art="erfolg"] {
-  padding: .875rem 1rem;
+  padding: 18px 20px;
   border: 1px solid var(--green-500);
-  border-radius: var(--anf-radius);
+  border-radius: 15px 5px 15px 5px;
   background-color: rgba(140, 198, 63, .12);
   color: var(--anf-vg);
 }
 
-.anf__status[data-art="hinweis"] {
-  padding: .875rem 1rem;
+.anf__status[data-art="hinweis"],
+.anf__status[data-art="fehler"] {
+  padding: 18px 20px;
   border: 1px solid var(--anf-linie);
-  border-radius: var(--anf-radius);
-  background: var(--anf-flaeche-tief);
+  border-radius: 15px 5px 15px 5px;
+  background: var(--home-surface-low, var(--anf-flaeche));
   color: var(--anf-vg);
 }
 
+.anf__status[data-art="fehler"] { border-inline-start: 3px solid var(--anf-fehler); }
+.anf__status--karte { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; align-items: start; }
+.anf__status-icon {
+  display: grid;
+  place-items: center;
+  inline-size: 28px;
+  block-size: 28px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: var(--green-500);
+  font: 800 1rem/1 var(--body);
+}
+.anf__status[data-art="fehler"] .anf__status-icon { color: var(--anf-fehler); }
+.anf__status-inhalt { display: block; min-inline-size: 0; }
+.anf__status-titel { display: block; margin: 0 0 5px; color: var(--anf-vg); font: 800 .9375rem/1.5 var(--body); }
+.anf__status-text { display: block; color: var(--anf-leise); }
+.anf__status-liste { display: grid; gap: 8px; margin-top: 8px; }
+.anf__status-punkt { display: grid; grid-template-columns: 8px minmax(0, 1fr); gap: 8px; }
+.anf__status-punkt::before { content: "•"; color: var(--anf-fehler); }
 .anf__status a { color: inherit; font-weight: 600; }
+.anf__status-liste a { text-decoration: underline; text-decoration-color: var(--anf-linie); text-underline-offset: 3px; }
+.anf__status-liste a:focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; border-radius: 2px; }
+
+@media (max-width: 480px) {
+  .anf__status[data-art] { padding: 16px; }
+  .anf__status--karte { grid-template-columns: 24px minmax(0, 1fr); gap: 10px; }
+  .anf__status-icon { inline-size: 24px; block-size: 24px; }
+}
 
 /* ------------------------------------------------------------------- Honeypot */
 
@@ -914,7 +1032,7 @@
   /* Statusmeldungen gehören unter die gesamte Aktionszeile, damit auch
      längere Hinweise keine neue, ungleich hohe Spalte erzeugen. */
   html.home-theme-dark .private-contact .anf__abschluss { display: contents; }
-  html.home-theme-dark .private-contact .anf__status { grid-column: 1 / -1; margin: 0; }
+  html.home-theme-dark .private-contact .anf__status { grid-column: 1 / -1; margin: 12px 0 0; }
   html.home-theme-dark .private-contact .anf__feld--foto { margin: 0; }
   html.home-theme-dark .private-contact .anf__foto-kachel { min-block-size: var(--home-request-cta-height, 64px); }
   html.home-theme-dark .private-contact .anf__einwilligung { margin-block: 12px 0; }
@@ -923,11 +1041,12 @@
     margin: 0;
     text-align: center;
   }
-  html.home-theme-dark .private-contact .anf__status[data-art="hinweis"] {
+  html.home-theme-dark .private-contact .anf__status:is([data-art="hinweis"], [data-art="fehler"]) {
     background: var(--home-surface-low);
     border-color: var(--home-surface-border);
     border-radius: 15px 5px 15px 5px;
   }
+  html.home-theme-dark .private-contact .anf__status[data-art="fehler"] { border-inline-start-color: var(--anf-fehler); }
   html.home-theme-dark .private-contact a.anf__kanal:active {
     background: var(--home-surface-high);
     border-color: rgba(140, 198, 63, .5);
@@ -974,4 +1093,16 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
+}
+
+/* Feldfehler behalten ihre Markierung auch gegen die Desktop-/Querformat-
+   und Fokusregeln weiter oben. Die Meldung steht zusaetzlich direkt am Feld. */
+.anf .anf__feld :is(input, textarea)[aria-invalid="true"],
+html.home-theme-dark .private-contact .anf__feld :is(input, textarea)[aria-invalid="true"] {
+  border-color: var(--anf-fehler);
+}
+.anf .anf__feld :is(input, textarea)[aria-invalid="true"]:focus-visible,
+html.home-theme-dark .private-contact .anf__feld :is(input, textarea)[aria-invalid="true"]:focus-visible {
+  outline: 2px solid var(--anf-fehler);
+  outline-offset: 3px;
 }

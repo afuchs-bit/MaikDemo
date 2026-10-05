@@ -22,6 +22,10 @@ README.md
 .github/
 package.json
 package-lock.json
+scripts/
+tests/
+.env
+.env.*
 
 # Plattformdateien anderer Anbieter bzw. fuer den Go-Live
 _headers

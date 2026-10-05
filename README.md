@@ -4,9 +4,34 @@ Moderne, statische Startseite. Kein Build-Schritt notwendig.
 
 ## Lokal vorschauen
 ```bash
-python3 -m http.server 8080
-# http://localhost:8080
+npm ci
+npm run preview
+# http://127.0.0.1:8080/ – auch im WLAN auf Port 8080 erreichbar
 ```
+
+Die Vorschau bedient auch `/api/anfrage`. Für den Testversand `.env.example`
+als `.env.local` kopieren und `EMPFAENGER` setzen. Bei `MAIL_TRANSPORT=formsubmit`
+den Aktivierungslink im Empfängerpostfach einmal bestätigen. Die lokale
+Testadresse steht ausschließlich in der ignorierten `.env.local`; diese Datei
+wird nicht an Browser ausgeliefert. Nach Änderungen an der Konfiguration den
+Vorschauserver neu starten.
+
+Alternativ mit `MAIL_TRANSPORT=smtp` die SMTP-Felder aus `.env.example` ausfüllen.
+Im Deployment werden diese Werte als Umgebungsvariablen gesetzt. Die Fotoauswahl
+zeigt bis zu sechs Vorschauen, erlaubt das Nachreichen und einzelne Entfernen
+und sendet ausschließlich verkleinerte JPEGs ohne die ursprünglichen Metadaten.
+FormSubmit ist für den lokalen Test eingerichtet; der SMTP-Versand bleibt für
+das eigene Postfach verfügbar. Der Testdienst speichert Formulareingaben laut
+[Dokumentation](https://formsubmit.co/documentation) bis zu 30 Tage.
+
+Name, Telefonnummer oder E-Mail-Adresse und eine kurze Beschreibung sind
+Pflichtangaben. Fehlende oder ungültige Angaben werden vor dem Senden am Feld
+und in einer verlinkten Zusammenfassung erklärt. Korrigierte Hinweise verschwinden
+beim Ausfüllen; Texte und Fotos bleiben bei Fehlern erhalten. Der Empfangs-Endpunkt
+prüft dieselben Angaben und liefert genaue Fehler zu Feldern und Anhängen zurück.
+
+`npm test` prüft Fotoauswahl, Entfernen, Abbrechen, Feldvalidierung, Fehlerfälle
+und die Übergabe an beide Versandwege ohne echte E-Mails zu versenden.
 
 ## Struktur
 - `index.html` – komplette Startseite (12 Sektionen lt. Spec)

@@ -131,7 +131,7 @@
 
 @media (min-width: 901px) {
   html.home-theme-dark #top .private-request-paths {
-    --service-item-padding: clamp(16px, 1.4vw, 20px);
+    --service-item-padding: clamp(18px, 1.7vw, 24px);
   }
 }
 

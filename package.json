@@ -4,7 +4,14 @@
   "version": "1.0.0",
   "description": "Statische Website. Dieses Paket existiert allein fuer die Vercel Function in api/ - das Frontend hat keinen Build-Schritt.",
   "type": "module",
+  "scripts": {
+    "preview": "node scripts/preview.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
   "dependencies": {
     "nodemailer": "^10.0.10"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0"
   }
 }
