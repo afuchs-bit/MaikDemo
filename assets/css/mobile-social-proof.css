@@ -134,53 +134,44 @@
 }
 
 .gate-welcome--iphone .mobile-kpi-signature__rating {
+  --rating-mark-size: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.3125rem;
+  gap: calc(var(--rating-mark-size) * .25);
+  line-height: 1;
   white-space: nowrap;
 }
 
 .gate-welcome--iphone .mobile-kpi-signature__google-mark {
   display: block;
-  flex: 0 0 1.25rem;
+  flex: 0 0 auto;
+  width: var(--rating-mark-size);
+  height: var(--rating-mark-size);
 }
 
 .gate-welcome--iphone .mobile-kpi-signature__stars {
-  /* AP-369: Zitronengelb wie die Sterne der Rezensionssektion
-     (privat-form.css:3671, dort ebenfalls var(--yellow)). Vorher stand hier
-     Google-Bernstein #fbbc05.
-
-     Den dreilagigen Schein von dort uebernimmt diese Stelle bewusst nicht:
-     Die Signaturzeile ist schmal, und das Leuchten staende direkt neben der
-     scharfen Google-Grafik.
-
-     Kontrast auf dem Grund #1B1E19 gemessen: 12,56:1 statt vorher 9,87:1. */
+  /* Sternkontur und Abstand aus der freigegebenen iPhone-Ansicht.
+     Das SVG vermeidet abweichende Glyphen aus System-Ersatzschriften. */
+  display: block;
+  flex: 0 0 auto;
+  width: calc(var(--rating-mark-size) * 3.75);
+  height: auto;
   color: var(--yellow);
-  font-family: Arial, sans-serif;
-  font-size: .9375rem;
-  line-height: 1;
-  letter-spacing: .025em;
 }
 
 .gate-welcome--iphone .mobile-kpi-signature__rating strong {
+  display: block;
+  flex: 0 0 auto;
   color: var(--home-on-dark);
   font-family: "Nunito", sans-serif;
-  font-size: .875rem;
+  font-size: calc(var(--rating-mark-size) * .7);
   font-weight: 700;
   line-height: 1;
-  /* AP-355: Ein Pixel tiefer, auf Ansage des Auftraggebers.
-     Rechnerisch stand die Zahl schon mittig - an den gemalten Pixeln gemessen
-     lag der Tintenschwerpunkt der Sterne bei 1933,06 und der der Ziffern bei
-     1933,45, also 0,4px auseinander. Den Eindruck macht die Form: Die
-     Sternspitzen ragen oben ueber die Ziffern hinaus, die Sternbeine unten
-     darunter; die Zahl steckt beidseitig eingerueckt drin und liest sich
-     dadurch hochgesetzt.
-     .07em statt 1px, weil die Schriftgroessen dieser Zeile mit dem Fenster
-     skalieren (11,1px bei 320 bis 15,0px bei 430). Ein fester Pixelwert waere
-     auf kleinen Geraeten anteilig doppelt so viel. .07em von 13,58px sind die
-     gewuenschten rund 0,95px. */
-  transform: translateY(.07em);
+  /* An den sichtbaren Zeichenschwerpunkten der Mobil- und Desktop-Aufnahmen
+     ausgerichtet: Die Zahl muss tiefer als die Mitte ihrer Zeilenbox stehen.
+     Der positive Versatz skaliert mit der gemeinsamen Schriftgroesse. */
+  transform: translateY(.09em);
 }
 
 .gate-welcome--iphone .mobile-kpi-signature__reviews {
@@ -288,18 +279,8 @@
     scroll-margin-block: calc(var(--header-h, 92px) + 24px) 24px;
   }
 
-  .gate-welcome--iphone .mobile-kpi-signature__google-mark {
-    width: 24px;
-    height: 24px;
-    flex-basis: 24px;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__stars {
-    font-size: 19px;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__rating strong {
-    font-size: 17px;
+  .gate-welcome--iphone .mobile-kpi-signature__rating {
+    --rating-mark-size: 24px;
   }
 
   .gate-welcome--iphone .mobile-kpi-signature__reviews {
@@ -336,14 +317,6 @@
 
   .gate-welcome--iphone .mobile-kpi-signature__google {
     margin-top: 28px;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__stars {
-    font-size: 17px;
-  }
-
-  .gate-welcome--iphone .mobile-kpi-signature__rating strong {
-    font-size: 15px;
   }
 }
 

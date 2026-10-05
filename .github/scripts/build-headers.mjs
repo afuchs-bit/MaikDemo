@@ -10,6 +10,7 @@ const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const TEMPLATE = path.join(__dirname, 'templates', '_header.html');
 const CSS_VERSION = '20261002y';
 const PRIVATE_FORM_CSS_VERSION = '20261004d';
+const MOBILE_SOCIAL_PROOF_CSS_VERSION = '20261005i';
 const JS_VERSION = '20261002f';
 const GALLERY_JS_VERSION = '20261001a';
 const FOOTER_CSS_VERSION = '20261002a';
@@ -52,7 +53,7 @@ function updateAssetVersions(html) {
     .replace(/anfrage\.css\?v=[\w.-]+/g, `anfrage.css?v=${REQUEST_CSS_VERSION}`)
     .replace(/privat-form\.css\?v=[\w.-]+/g, `privat-form.css?v=${PRIVATE_FORM_CSS_VERSION}`)
     .replace(/home-dark\.css\?v=[\w.-]+/g, `home-dark.css?v=${CSS_VERSION}`)
-    .replace(/mobile-social-proof\.css\?v=[\w.-]+/g, `mobile-social-proof.css?v=${CSS_VERSION}`)
+    .replace(/mobile-social-proof\.css\?v=[\w.-]+/g, `mobile-social-proof.css?v=${MOBILE_SOCIAL_PROOF_CSS_VERSION}`)
     .replace(/cta-family-home\.css\?v=[\w.-]+/g, `cta-family-home.css?v=${CSS_VERSION}`)
     .replace(/leistung-mobile\.css\?v=[\w.-]+/g, `leistung-mobile.css?v=${CSS_VERSION}`)
     .replace(/kontakt\.css\?v=[\w.-]+/g, `kontakt.css?v=${CSS_VERSION}`)
