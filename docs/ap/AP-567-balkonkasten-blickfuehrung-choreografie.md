@@ -387,3 +387,15 @@ nebeneinander (Mockup F, E2 aus AP-566).
 Gemessen bei 1024, 1440 und 1920: Text und Kachel 760 px breit, linke Kante identisch mit der
 FAQ-Karte. Die Reihenfolge beim Erscheinen ist Text → Kachel → Knopf, kein Überlauf. Handy 375/402/874:
 0 Abweichungen.
+
+## Nachtrag 3, 06.10.2026: Kacheltext über die Breite, Knopf mittig
+
+Ansage:
+- **Kacheltext:** Er läuft über die volle Kachelbreite. Die festen Handy-Zeilen (`span{display:block}`)
+  werden am Desktop `inline` und bilden einen fließenden Satz.
+- **Innenabstand:** 28/88/30/32 px. Rechts bleibt 88 px frei, weil der Blütenstempel unten rechts in die
+  Kachel ragt und sonst „Verfügung.“ überdeckte.
+- **Knopf:** 400 px, mittig unter der Kachel, 24 px Abstand.
+
+Gemessen bei 1024 und 1440: drei Zeilen, die Kachel 760 × 144 px, Knopfmitte gleich Kachelmitte (0,0 px).
+Handy 375/402/874: 0 Abweichungen.
