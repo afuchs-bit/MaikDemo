@@ -640,63 +640,8 @@ body.ueber-page {
   }
 }
 
-/* AP-582 Nachtrag (02.10.2026): Weil Steg und Zitat am Desktop erst nach dem
-   ersten Scrollen erscheinen, steht beim Oeffnen unten mittig ein pulsierender
-   Pfeil - der Markenpfeil des Ruecklinks, um 90 Grad nach unten gedreht. main.js
-   zeigt ihn nur ab 901px und ohne Scrollposition, beim ersten Scrollen blendet er
-   aus und kommt nicht wieder. Klick scrollt zum Zitat. */
-.ueber-scrollpfeil[hidden] { display: none; }
-
-@media (max-width: 900px) {
-  .ueber-scrollpfeil { display: none !important; }
-}
-
-@media (min-width: 901px) {
-  .ueber-scrollpfeil {
-    position: fixed;
-    z-index: 40;
-    left: 50%;
-    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-    display: grid;
-    place-items: center;
-    width: 52px;
-    height: 52px;
-    padding: 0;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    background: rgb(27 30 25 / .72);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    cursor: pointer;
-    opacity: 0;
-    transform: translateX(-50%);
-    transition: opacity .4s ease;
-  }
-
-  .ueber-scrollpfeil.is-da { opacity: 1; }
-
-  .ueber-scrollpfeil:focus-visible {
-    outline: 2px solid var(--mobile-logo-green, #56e607);
-    outline-offset: 3px;
-  }
-
-  .ueber-scrollpfeil img {
-    display: block;
-    width: 28px;
-    height: auto;
-    filter: brightness(0) saturate(100%) invert(77%) sepia(100%) saturate(1680%) hue-rotate(47deg) brightness(105%) contrast(107%);
-    transform: rotate(90deg);
-  }
-}
-
-@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
-  .ueber-scrollpfeil img { animation: ueber-scrollpfeil-puls 1.6s ease-in-out infinite; }
-}
-
-@keyframes ueber-scrollpfeil-puls {
-  0%, 100% { transform: translateY(0) rotate(90deg); opacity: .65; }
-  50% { transform: translateY(7px) rotate(90deg); opacity: 1; }
-}
+/* AP-582 Nachtrag: Hier standen die Regeln des Scroll-Pfeils. Auf Ansage am 06.10.2026
+   entfernt (AP-585). */
 
 /* AP-450: Hier stand .ueber-inhaber__platzhalter - gedaempft und kursiv, damit
    der vorlaeufige Satz auf der Seite als solcher zu erkennen war. Das Zitat

@@ -11,7 +11,7 @@ const TEMPLATE = path.join(__dirname, 'templates', '_header.html');
 const CSS_VERSION = '20261006a';
 const PRIVATE_FORM_CSS_VERSION = '20261004d';
 const MOBILE_SOCIAL_PROOF_CSS_VERSION = '20261005i';
-const JS_VERSION = '20261006a';
+const JS_VERSION = '20261006b';
 const GALLERY_JS_VERSION = '20261001a';
 const FOOTER_CSS_VERSION = '20261002a';
 const PRIVATE_FORM_JS_VERSION = '20261006a';
@@ -22,7 +22,7 @@ const HOME_SPACING_CSS_VERSION = '20261004c';
 const LEISTUNG_MOBILE_CSS_VERSION = '20261006g';
 // AP-585: eigener Schluessel fuer ueber-uns.css - bisher an CSS_VERSION, dessen Heben
 // styles.css auf allen Seiten mitgezogen haette.
-const UEBER_CSS_VERSION = '20261006c';
+const UEBER_CSS_VERSION = '20261006d';
 const SKIP_DIRS = new Set(['admin', 'assets', 'content', 'data', 'docs', 'node_modules', 'tmp']);
 
 function pageBase(file) {

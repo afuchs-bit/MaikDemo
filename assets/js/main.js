@@ -1214,27 +1214,3 @@
   io.observe(zitat);
 })();
 
-/* AP-582 Nachtrag: Scroll-Pfeil auf der Ueber-uns-Seite. Nur ab 901px und nur,
-   wenn die Seite oben geoeffnet wird - dort stehen Steg und Zitat bis zum ersten
-   Scrollen leer. Erscheint nach 600ms, verschwindet beim ersten Scrollen endgueltig;
-   ein Klick scrollt zum Zitat. Aussehen und Pulsieren in ueber-uns.css.
-   Bei reduzierter Bewegung kein Pfeil: dort stehen Steg und Zitat sofort, und die
-   Bluete laege bei 1280x800 direkt hinter dem Pfeil. */
-(function () {
-  'use strict';
-  var pfeil = document.querySelector('[data-ueber-scrollpfeil]');
-  if (!pfeil || !window.matchMedia || !window.matchMedia('(min-width: 901px)').matches || window.scrollY > 0) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var weg = false;
-  pfeil.hidden = false;
-  setTimeout(function () { if (!weg) pfeil.classList.add('is-da'); }, 600);
-  window.addEventListener('scroll', function () {
-    weg = true;
-    pfeil.classList.remove('is-da');
-    setTimeout(function () { pfeil.hidden = true; }, 400);
-  }, { once: true, passive: true });
-  pfeil.addEventListener('click', function () {
-    var z = document.querySelector('[data-ueber-q]');
-    if (z) z.scrollIntoView({ block: 'center', behavior: 'smooth' });
-  });
-})();

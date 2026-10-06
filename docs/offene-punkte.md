@@ -2568,3 +2568,5 @@ Auftraggeber so entschieden.
   Kopie in `ueber-uns.css` (Block AP-585). Bei Änderungen am Leistungs-Held mitziehen.
 - **Titelgröße:** `clamp(64px, 7vw, 120px)` statt der AP-565-Ersatzgröße
   `clamp(44px, 4.4vw, 80px)` – „Über uns“ ist kurz und stand sonst bei 1440 px nur 240 px breit.
+- **Scroll-Pfeil (AP-582) entfernt:** Auf Ansage am 06.10.2026 samt CSS und main.js-Block
+  entfernt (`JS_VERSION` gehoben, daher neuer main.js-Schlüssel auf allen Seiten).

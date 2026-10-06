@@ -42,7 +42,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20261006a" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20261002a" />
 <link rel="stylesheet" href="../assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20261006c" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20261006d" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -501,12 +501,8 @@ html, body { background-color: #171916; }
            alt="" width="359" height="295" aria-hidden="true" decoding="async">
     </figure>
   </section>
-  <!-- AP-582 Nachtrag: Am Desktop erscheinen Steg und Zitat erst nach dem ersten
-       Scrollen - der Pfeil unten mittig zeigt das an und verschwindet beim Scrollen.
-       Ohne JS und bis 900px bleibt er verborgen (main.js, ueber-uns.css). -->
-  <button type="button" class="ueber-scrollpfeil" data-ueber-scrollpfeil aria-label="Weiter nach unten" hidden>
-    <img src="../assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" decoding="async">
-  </button>
+  <!-- AP-582 Nachtrag: Hier stand der Scroll-Pfeil (Desktop). Auf Ansage des Auftraggebers
+       am 06.10.2026 entfernt (AP-585), samt Regeln in ueber-uns.css und main.js. -->
   <!-- ===== Das Team ======================================================
        AP-384: Der Absatz traegt seit dem 21.09.2026 den Text des Auftraggebers
        und damit keinen Platzhalter mehr. Er ist in der Wir-Form geschrieben und
@@ -1031,7 +1027,7 @@ html, body { background-color: #171916; }
 <!-- AP-490: eigener Stempel nur hier - der neue Block in main.js betrifft nur
      diese Seite; die anderen Seiten und index.html (Quelle fuer den Build)
      behalten 20260923f. -->
-<script src="../assets/js/main.js?v=20261006a" defer></script>
+<script src="../assets/js/main.js?v=20261006b" defer></script>
 <!-- AP-477: is-pulsing (Pfeilimpuls) und is-pressed (Einrasten am Finger)
      des Galerie-Knopfes. Bricht von selbst ab, wenn kein maik-cta auf der
      Seite steht (cta-signal.js:8). -->
