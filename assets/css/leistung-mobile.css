@@ -534,6 +534,14 @@
   .lpv2-page--homepage-unified.lpv2-page--title-above .lpv2-title{padding-top:0}
 }
 
+/* Ansage 06.10.2026: Der Link "Alle Leistungen" unter "Passende Ergaenzungen" bekommt am Desktop
+   Farbe und Schriftbild des Ruecklinks oben links (.breadcrumbs--home-back, styles.css): hellere
+   Schrift (#d9ded5), Nunito 750, gleiche Laufweite und Unterstreichung. Groesse, Pfeil rechts
+   und Lage bleiben wie bisher. Bis 900px unveraendert. */
+@media (min-width:901px){
+  .lpv2-page--image-first .lpv2-related-all{color:var(--home-on-dark-2,#d9ded5);font-family:Nunito,system-ui,sans-serif;letter-spacing:.015em}
+}
+
 @media (prefers-reduced-motion:reduce){
   html.lpv2-root{scroll-behavior:auto}
   .lpv2-page *{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
