@@ -2147,10 +2147,12 @@ html.gsap-reveal-active .reveal.is-in:not(.gate-welcome-kicker) {
 .breadcrumbs li[aria-current="page"] { color: var(--ink); font-weight: 600; }
 .breadcrumbs__back-icon { display: none; }
 
-/* Auf schmalen Ansichten erhalten die Hauptunterseiten denselben kompakten
-   Ruecklink wie „Ueber uns“ und die Leistungsseiten. Auf groesseren Breiten
-   bleibt der vollstaendige Kruemelpfad sichtbar. */
-@media (max-width: 480px) {
+/* Die Hauptunterseiten erhalten denselben kompakten Ruecklink wie „Ueber uns“
+   und die Leistungsseiten. AP-581 (02.10.2026): bis dahin nur bis 480px, ab 481px
+   stand der vollstaendige Kruemelpfad - jetzt auf allen Breiten die Handy-Fassung
+   (wie die Leistungsseiten seit AP-512). Die Regeln tragen nur das Aussehen, die
+   Lage bleibt die der Seite. */
+@media all {
   .breadcrumbs--home-back li + li::before { content: none; }
   .breadcrumbs--home-back .breadcrumbs__back a {
     display: inline-flex;

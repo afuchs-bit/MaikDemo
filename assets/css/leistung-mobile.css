@@ -512,6 +512,24 @@
   .lpv2-page .site-footer > .container{width:auto;padding-inline:clamp(24px,3vw,44px)}
 }
 
+/* ---------- AP-581 Nachtrag (06.10.2026): Ruecklink am Desktop wie auf der Galerie ----------
+   Auf Ansage des Auftraggebers sieht der Ruecklink am Desktop auf allen Unterseiten gleich
+   aus und sitzt gleich: Handy-Satz (.breadcrumbs--home-back, styles.css), links an der
+   Containerkante, --space-section-compact unter dem Kopf, darunter clamp(28px, 3vw, 40px)
+   bis zum Titel - wie .projects-overview (projekte.css). Die Leiste im Held lag in der
+   mittigen Spalte mit zoom 1.25 und erschien dort groesser und eingerueckt. Der Build setzt
+   deshalb einen eigenen Ruecklink vor <main> (render.mjs, desktopBackLink); .container ist
+   auf diesen Seiten umgestellt, daher die Breite hier ausgeschrieben. Der Titel verliert
+   oben sein Polster, das bisher Platz fuer die Leiste liess. Bis 900px bleibt alles. */
+.lpv2-ruecklink-desktop{display:none}
+@media (min-width:901px){
+  .lpv2-ruecklink-desktop{display:block;width:min(100% - calc(var(--gutter) * 2),var(--container));margin-inline:auto;padding-top:var(--space-section-compact)}
+  .lpv2-ruecklink-desktop .breadcrumbs{margin-bottom:clamp(28px,3vw,40px)}
+  .lpv2-ruecklink-desktop .breadcrumbs ol{margin:0}
+  .lpv2-page--image-first .lpv2-breadcrumbs--bar{display:none}
+  .lpv2-page--homepage-unified.lpv2-page--title-above .lpv2-title{padding-top:0}
+}
+
 @media (prefers-reduced-motion:reduce){
   html.lpv2-root{scroll-behavior:auto}
   .lpv2-page *{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}

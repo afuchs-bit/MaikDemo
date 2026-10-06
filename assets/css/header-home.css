@@ -211,17 +211,50 @@
 
 @media (min-width: 901px) {
   html { scroll-padding-top: calc(var(--header-h, 92px) + 14px); }
+  /* AP-583 (06.10.2026): Der Desktop-Kopf aller Seiten folgt dem der Startseite
+     (home-dark.css, "Der bestehende Desktop-Kopf schwebt ..."): fest stehend, oben
+     20px Luft und eine abgerundete Karte mit 16px Innenrand, nach 12px Scrollweg
+     (.is-scrolled, main.js) die schlichte Leiste. Vorher stand das Logo auf den
+     Unterseiten 16px weiter links und 20px hoeher als auf der Startseite.
+     Fest stehend laeuft der Kopf auch auf den Leistungsseiten mit - sticky griff
+     dort nicht, weil overflow-x:hidden an html und body (leistung-mobile.css) den
+     body zum eigenen Scrollbereich macht. Den Platz haelt body frei: 112px = 20px
+     Luft + 91px Karte + 1px Rand. Ein fester Wert statt --header-h, weil main.js die
+     Variable beim Scrollen auf 92px setzt und der Inhalt sonst springen wuerde. Die
+     Startseite legt den Kopf ueber ihren Einstieg und nimmt den Abstand in
+     home-dark.css zurueck. */
+  body { padding-top: 112px; }
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    padding-top: 20px;
+    background: transparent;
+    border-color: transparent;
+    transition: background-color .18s ease, border-color .18s ease;
+  }
+  .site-header.is-scrolled {
+    padding-top: 0;
+    background: #171916;
+    border-color: var(--line);
+  }
   .site-header > .header-inner.container {
     --desktop-brand-width: clamp(220px, calc(30vw - 50px), 256px);
     width: min(calc(100% - clamp(40px, 4.445vw, 64px)), 1600px);
     max-width: 1600px;
     min-height: 91px;
     margin-inline: auto;
-    padding: 6px 0;
+    padding: 6px 16px;
+    background: #171916;
+    border-radius: 20px;
+    box-shadow: 0 16px 36px -16px rgba(0,0,0,.6);
     /* Sichtbare Inhalte bestimmen die beiden Aussenspalten. Die Navigation
        nutzt den Raum dazwischen und bleibt darin bis maximal 720px zentriert. */
     grid-template-columns: var(--desktop-brand-width) minmax(0, 1fr) auto;
     gap: clamp(14px, 1.5vw, 24px);
+  }
+  .site-header.is-scrolled > .header-inner.container {
+    border-radius: 0;
+    box-shadow: none;
   }
   .site-header .brand { justify-self: start; }
   .site-header .brand-logo,
@@ -327,4 +360,9 @@
   .site-header .nav-submenu,
   .site-header .menu > li > :is(a, .submenu-toggle),
   .site-header .menu > li > :is(a, .submenu-toggle)::after { transition: none; }
+}
+
+/* AP-583: wie auf der Startseite (home-dark.css) ohne Farbuebergang beim Umschalten. */
+@media (prefers-reduced-motion: reduce) and (min-width: 901px) {
+  .site-header { transition: none; }
 }
