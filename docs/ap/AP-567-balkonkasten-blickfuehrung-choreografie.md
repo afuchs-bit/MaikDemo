@@ -357,3 +357,21 @@ hätte also trotzdem auf Höhe des Einstiegs begonnen (≈ 70 px Lücke unter de
   `aria-labelledby` löst auf den H2-Text auf.
 - **Unverändert:** Handy und Tablet 375/390/402/480/874 auf Balkonkasten, Baumpflege und Startseite:
   0 Abweichungen. Bei 1440 sind Baumpflege und Startseite unverändert. Keine Konsolenfehler.
+
+## Nachtrag 06.10.2026: Lichtsaum entfernt, Blüte beim Hover nur geneigt
+
+Ansage nach Sichtung:
+- **Lichtsaum entfernt:** Die laufende Animation um die Abschluss-Kachel (B5 aus AP-566) entfällt.
+  Gelöscht sind die Regel an `.lpv2-closing::before`, `@property --lpv2-ang` und
+  `@keyframes lpv2-ring-turn`. Kachel, Rundung und Blütenstempel bleiben.
+- **Hover der Blüte:** Statt der Drehung auf 352° (`lpv2-spin`, entfällt) neigt sich die Blüte auf
+  −14° und wächst auf 112 %.
+  - Das läuft über `rotate`/`scale`, die zum laufenden `transform` hinzukommen; Übergang 0,35 s in
+    beide Richtungen, das Schwingen läuft weiter.
+  - Das Nachrücken des Texts 44 → 50 px bleibt.
+
+Gemessen bei 1440:
+- Kachel: `getAnimations` leer, `::before` ist `none`; Knopf pulsiert.
+- Hover: nach 120 ms −10°/1,09, danach −14°/1,12; nach dem Verlassen nach 120 ms −4°/1,03,
+  danach zurück auf none.
+- Handy 375/402/874: 0 Abweichungen.

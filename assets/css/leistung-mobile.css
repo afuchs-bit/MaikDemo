@@ -569,7 +569,8 @@
 /* AP-566 (06.10.2026): Teile 2-6 unten auf Mockup F umgebaut - zwei Spalten nebeneinander
    (links Ueberschrift + beide Absaetze, rechts Leistungsueberschrift + Liste), darunter
    Hinweis links und Kachel + Knopf rechts. Dazu Bewegung: Wort-Aufstieg der Ueberschriften,
-   Trennlinie fuellt sich beim Scrollen, Blueten bluehen auf, Lichtsaum um die Kachel. */
+   Trennlinie fuellt sich beim Scrollen, Blueten bluehen auf (der Lichtsaum um die Kachel ist am
+   06.10.2026 wieder entfallen). */
 .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal,
 .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal{opacity:1;transform:none;transition:none}
 .lpv2-divider-fill{display:none}
@@ -639,11 +640,7 @@
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{width:100%;max-width:none;margin:0}
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{width:400px;margin:20px 0 0}
 
-  /* 5 - Lichtsaum um die Kachel: 1px-Ring, der gruene Abschnitt laeuft in 8 s einmal herum.
-     ::before der Kachel ist frei (homepage-unified setzt content:none); ::after traegt den
-     Bluetenstempel und bleibt. width/height:auto hebt den 46x2px-Strich der allgemeinen
-     .lpv2-closing:before-Regel auf. */
-  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing::before{content:'';display:block;position:absolute;inset:0;z-index:1;width:auto;height:auto;padding:1px;border-radius:inherit;background:conic-gradient(from var(--lpv2-ang,0deg),transparent 0 70%,var(--mobile-logo-green,#56e607) 86%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:lpv2-ring-turn 8s linear infinite;pointer-events:none}
+  /* 5 - (AP-566 Lichtsaum um die Kachel: auf Ansage 06.10.2026 entfernt, AP-567 Nachtrag) */
 
 
   /* 6 - Erscheinen beim Scrollen: kurz und flach statt 24px/0.9s wie im Rest der Seite */
@@ -662,6 +659,10 @@
   .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list li.reveal{opacity:.35}
   .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list li.reveal:before{transform:scale(.55) rotate(-8deg);opacity:.6;transition:opacity .4s var(--ease) var(--lpv2-d,0s)}
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq{opacity:1}
+  /* Nachtrag 06.10.2026: Hover neigt die Bluete nur leicht und vergroessert sie etwas -
+     ueber rotate/scale, die zusaetzlich zum laufenden transform (Aufbluehen, Schwingen) wirken
+     und dadurch in beide Richtungen weich uebergehen. Vorher drehte sie sich ganz herum. */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:before{transition:opacity .4s var(--ease) var(--lpv2-d,0s),rotate .35s var(--ease),scale .35s var(--ease)}
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:before{opacity:1;animation:lpv2-bloom .7s cubic-bezier(.34,1.5,.5,1) forwards,lpv2-sway 5s ease-in-out infinite alternate;animation-delay:var(--lpv2-d,0s),calc(var(--lpv2-d,0s) + .8s + var(--lpv2-i,0) * .7s)}
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(1){--lpv2-i:0}
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(2){--lpv2-i:1}
@@ -670,7 +671,7 @@
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(5){--lpv2-i:4}
   @media (hover:hover){
     .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:hover{padding-left:50px}
-    .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:hover:before{animation:lpv2-bloom .7s cubic-bezier(.34,1.5,.5,1) forwards,lpv2-spin 2.6s linear infinite}
+    .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:hover:before{rotate:-14deg;scale:1.12}
   }
 
   /* 6c - AP-566: Wort-Aufstieg der Ueberschriften. main.js zerlegt H2/H3 in .lpv2-w-Spans
@@ -682,8 +683,6 @@
 }
 
 /* AP-566: Keyframes und registrierte Eigenschaft fuer die Bewegung der Textsektion. */
-@property --lpv2-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
-@keyframes lpv2-ring-turn{to{--lpv2-ang:360deg}}
 /* AP-567: Trennlinie als Teil der Sequenz. inherits:true, damit .lpv2-divider-fill den am
    Container animierten Wert liest. */
 @property --lpv2-divider-p{syntax:"<number>";initial-value:0;inherits:true}
@@ -693,7 +692,6 @@
 @keyframes lpv2-rise{to{transform:translateY(0)}}
 @keyframes lpv2-bloom{from{transform:scale(.55) rotate(-8deg)}to{transform:scale(1) rotate(-8deg)}}
 @keyframes lpv2-sway{from{transform:scale(1) rotate(-12deg)}to{transform:scale(1.05) rotate(-3deg)}}
-@keyframes lpv2-spin{to{transform:scale(1) rotate(352deg)}}
 
 /* ---------- AP-536: Balkonkasten im Querformat (481-900px) ----------
    Ansage 02.10.2026, Handy quer (iPhone 16 Pro, 874px). Zuerst nur fuer die Balkonkasten-Seite

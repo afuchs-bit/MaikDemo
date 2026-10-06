@@ -53,7 +53,7 @@ Links: Überschrift, beide Einstiegstexte untereinander. Rechts: Leistungsübers
 | B2 | Die senkrechte Trennlinie zwischen den Spalten füllt sich von oben grün, mit einem kleinen Lichtpunkt an der Spitze | fortlaufend mit dem Scrollen (0 → 100 % zwischen Eintritt und Verlassen der Sektion) | JS setzt `--lpv2-divider-p` am Container, CSS zeichnet |
 | B3 | Die Blüten der fünf Listenpunkte öffnen sich (Skalierung 0 → 1 mit Überschwingen, leichte Drehung), danach schwingen sie kaum merklich; bei Hover drehen sie sich und der Text rückt 6 px nach rechts | einzeln beim Erreichen (bestehender `data-reveal-late`-Mechanismus, 72 %-Linie) | CSS auf `li.reveal.is-in::before` |
 | B4 | Kurze grüne Striche (56 px) über den beiden Einstiegstexten zeichnen sich von links | wie B1, 0,5 s bzw. 0,75 s versetzt | CSS `scaleX` |
-| B5 | Um die Abschluss-Kachel läuft ein grüner Lichtsaum einmal herum (8 s, endlos) | sobald die Kachel da ist | CSS `conic-gradient` + Maske auf `.lpv2-closing::before` |
+| B5 | ~~Um die Abschluss-Kachel läuft ein grüner Lichtsaum einmal herum (8 s, endlos)~~ **entfernt 06.10.2026 (AP-567 Nachtrag)** | sobald die Kachel da ist | CSS `conic-gradient` + Maske auf `.lpv2-closing::before` |
 | B6 | Knopf: bestehendes Pulsen (`maik-cta--attention`, AP-Kundenwunsch) bleibt unverändert | — | nichts tun |
 
 Alles respektiert `prefers-reduced-motion: reduce`: dann steht alles sofort, nichts bewegt sich (der bestehende Block am Ende von `leistung-mobile.css` setzt Animationsdauern auf 0,01 ms; B2 wird im JS auf 100 % gesetzt).
