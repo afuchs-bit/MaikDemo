@@ -2500,12 +2500,14 @@ Auftraggeber so entschieden.
   Quelle, muss die Kopie mit.
 - **AP-512 für den Kontaktbereich aufgehoben:** Am Desktop steht nur noch der Kontaktbereich
   außerhalb der 640-px-Spalte.
-- **Altfehler in der AP-512-Kopie:** Zwei Zeilen stammen aus dem reduced-motion-Zweig der
-  Quelle, sind aber ohne dessen Bedingung erfasst (`animation: none !important`,
-  `transition: none` für `.maik-cta`). Dadurch pulsiert auf den Leistungsseiten ab 481 px
-  kein Aktionsknopf, auch bei normaler Bewegung (am Handy bis 480 px schon). AP-568 nimmt
-  nur den Kontaktbereich am Desktop aus. Ob die übrigen Knöpfe auf Tablet und Desktop wieder
-  pulsieren sollen wie am Handy, entscheidet der Auftraggeber.
+- **Altfehler in der AP-512-Kopie (behoben):** Drei Zeilen stammten aus dem reduced-motion-Zweig
+  von `cta-family.css`, waren aber ohne dessen Bedingung erfasst (`animation: none !important`,
+  `transition: none`). Dadurch pulsierte auf den Leistungsseiten ab 481 px kein Aktionsknopf.
+  Auf Ansage des Auftraggebers (06.10.2026: alle Knöpfe dieses Designs pulsieren auch auf
+  Tablet und Desktop) steht die Bedingung wieder dabei. Gemessen auf Baumpflege bei 402, 768
+  und 1440 px: mit Bewegung pulsieren „Baumpflege anfragen", „Jetzt anfragen" und „Anfrage
+  senden" überall gleich, mit reduzierter Bewegung keiner. Weitere Zeilen der Kopie könnten
+  denselben Erfassungsfehler tragen; bei der nächsten Pflege der Kopie gegen die Quellen prüfen.
 - **Tablet:** Die längere Überschrift bricht in der 34-rem-Spalte auf zwei Zeilen um.
 - **Build-Altlast:** Der volle Build schreibt `impressum/` und `datenschutz/` um (Brotkrumen
   aus der Vorlage `rechtstext.html` gegen Handänderungen). Bei AP-568 nicht mitcommittet.

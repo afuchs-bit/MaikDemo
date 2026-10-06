@@ -26,7 +26,8 @@ Kontaktbereich bricht aus der 640-px-Spalte aus (860 px wie Startseite); Übersc
   „…Gartenprojekt". Bis 900 px lösen sich die Hüllen per `display: contents` auf.
 - `leistung-mobile.css`:
   - Formular-Kopien aus dem AP-512-Block gelten nur noch bis 900 px.
-  - Die beiden Zeilen ohne Bewegung gelten ab 901 px nicht mehr für den Kontaktbereich.
+  - Die drei Zeilen aus dem reduced-motion-Zweig gelten wieder nur bei „Bewegung reduzieren"
+    (Nachtrag auf Ansage: alle Aktionsknöpfe pulsieren auch auf Tablet und Desktop).
   - Ab 901 px tragen die Sektionen Spalte und zoom selbst (wie AP-534), der Kontaktbereich steht
     bei zoom 1 in voller Breite.
   - Begrenzte Kopie der wirkenden Startseiten-Regeln (in Chrome ermittelt: 25 Regeln aus drei
@@ -46,3 +47,4 @@ Kontaktbereich bricht aus der 640-px-Spalte aus (860 px wie Startseite); Übersc
 | Handy 360/402/480 px | 0 Abweichungen (351 Elemente) |
 | Tablet 768/900 px | nur +35 px durch zweizeilige Überschrift |
 | Funktion 901–1920 px | Knopf 362 × 64, Fehlermeldungen, Foto-Einwilligung, Puls, kein Überlauf, keine Konsolenfehler |
+| Puls aller Aktionsknöpfe 402/768/1440 px | mit Bewegung gleich wie am Handy, mit reduzierter Bewegung aus |

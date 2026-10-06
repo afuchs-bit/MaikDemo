@@ -134,14 +134,13 @@
 @media (min-width:481px){:where(.lpv2-main) .maik-cta.is-pulsing.is-pressed .maik-cta__arrow-image{animation: auto ease 0s 1 normal none running none; transform: translateX(1px);}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta.is-pulsing.is-pressed .lpv2-gallery-grid-symbol{animation: auto ease 0s 1 normal none running none; transform: scale(0.94);}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta:focus-visible{outline: 2px solid var(--home-focus, var(--home-lime)); outline-offset: 9px;}}
-/* AP-568: Diese beiden Zeilen stammen aus dem reduced-motion-Zweig der Quelle, sind aber ohne
-   dessen Bedingung erfasst (offene-punkte AP-568). Ab 901px nehmen sie den Kontaktbereich aus,
-   der dort Puls und Einrasten wie auf der Startseite traegt. */
-@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .maik-cta,:where(.lpv2-main) .maik-cta__halo,:where(.lpv2-main) .maik-cta__arrow-image,:where(.lpv2-main) .lpv2-gallery-grid-symbol{animation: auto ease 0s 1 normal none running none !important;}}
-@media (min-width:901px){:where(.lpv2-main > article > section:not(.lpv2-home-contact)) .maik-cta,:where(.lpv2-main > article > section:not(.lpv2-home-contact)) .maik-cta__halo,:where(.lpv2-main > article > section:not(.lpv2-home-contact)) .maik-cta__arrow-image,:where(.lpv2-main > article > section:not(.lpv2-home-contact)) .lpv2-gallery-grid-symbol{animation: auto ease 0s 1 normal none running none !important;}}
-@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__arrow-image){transition: none;}}
-@media (min-width:901px){:where(.lpv2-main > article > section:not(.lpv2-home-contact)) .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__arrow-image){transition: none;}}
-@media (min-width:481px){:where(.lpv2-main) .lpv2-gallery-grid-symbol::before,:where(.lpv2-main) .lpv2-gallery-grid-symbol::after{transition: none !important;}}
+/* AP-568: Diese drei Zeilen stammen aus dem reduced-motion-Zweig von cta-family.css (~453),
+   wurden fuer AP-512 aber ohne dessen Bedingung erfasst - dadurch pulsierte ab 481px kein
+   Aktionsknopf. Die Bedingung steht jetzt wieder dabei (Ansage 06.10.2026: alle Knoepfe
+   dieses Designs pulsieren auch auf Tablet und Desktop). */
+@media (min-width:481px) and (prefers-reduced-motion:reduce){:where(.lpv2-main) .maik-cta,:where(.lpv2-main) .maik-cta__halo,:where(.lpv2-main) .maik-cta__arrow-image,:where(.lpv2-main) .lpv2-gallery-grid-symbol{animation: auto ease 0s 1 normal none running none !important;}}
+@media (min-width:481px) and (prefers-reduced-motion:reduce){:where(.lpv2-main) .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__arrow-image){transition: none;}}
+@media (min-width:481px) and (prefers-reduced-motion:reduce){:where(.lpv2-main) .lpv2-gallery-grid-symbol::before,:where(.lpv2-main) .lpv2-gallery-grid-symbol::after{transition: none !important;}}
 
 /* AP-512: war @media (max-width:480px). "all" statt einer Aufloesung des Blocks, damit
    die Zeilen unveraendert bleiben und ein Vergleich mit dem Stand davor lesbar ist. */

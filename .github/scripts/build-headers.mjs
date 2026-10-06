@@ -19,7 +19,7 @@ const REQUEST_CSS_VERSION = '20261004b';
 const HOME_SPACING_CSS_VERSION = '20261004c';
 // AP-568: eigener Schluessel, damit eine Aenderung an leistung-mobile.css nicht
 // den styles.css-Schluessel aller Seiten mitzieht.
-const LEISTUNG_MOBILE_CSS_VERSION = '20261006a';
+const LEISTUNG_MOBILE_CSS_VERSION = '20261006b';
 const SKIP_DIRS = new Set(['admin', 'assets', 'content', 'data', 'docs', 'node_modules', 'tmp']);
 
 function pageBase(file) {
