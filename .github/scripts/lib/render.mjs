@@ -1355,17 +1355,14 @@ export async function renderLeistungPage(opts) {
     const heroTitleHtml = splitHeroTitle
       ? `<span class="lpv2-title-full">${esc(presented.h1)}</span><span class="lpv2-title-lines" aria-hidden="true">${presented.heroTitleLines.map((line) => `<span>${esc(line)}</span>`).join('')}</span>`
       : esc(presented.h1);
-    // AP-565: Rahmenbild-Held am Desktop (desktopHero "rahmenbild"). Schriftzug als Titel,
-    // Hochkant-Motiv und Karten-Reiter; alles unter 901px per CSS ausgeblendet. Herkunftszeile,
-    // Anruf-Knopf und Nachweise aus dem Entwurf hat der Auftraggeber gestrichen (06.10.2026).
+    // AP-565: Rahmenbild-Held am Desktop (desktopHero "rahmenbild"). Schriftzug als Titel und
+    // Hochkant-Motiv; unter 901px per CSS ausgeblendet. Herkunftszeile, Anruf-Knopf, Nachweise
+    // und Karten-Reiter aus dem Entwurf hat der Auftraggeber gestrichen (06.10.2026).
     const rahmenbild = presented.desktopHero === 'rahmenbild';
     const heroGraphic = rahmenbild && presented.desktopHeroGraphic?.bild ? presented.desktopHeroGraphic : null;
     const assetPath = (p) => escAttr(`${base}${String(p).replace(/^\/+/, '')}`);
     const heroGraphicHtml = heroGraphic
       ? `<img class="lpv2-title-graphic-desktop" src="${assetPath(heroGraphic.bild)}"${heroGraphic.bild1x ? ` srcset="${assetPath(heroGraphic.bild1x)} 1x, ${assetPath(heroGraphic.bild)} 2x"` : ''} alt="" aria-hidden="true" width="${Number(heroGraphic.width) || 1400}" height="${Number(heroGraphic.height) || 508}" fetchpriority="high" decoding="async">`
-      : '';
-    const heroTag = rahmenbild
-      ? `<span class="lpv2-hero-tag" aria-hidden="true">Leistung für <b>${welt.key === 'gewerbe' ? 'Gewerbekunden' : 'Privatkunden'}</b></span>`
       : '';
     const hideProcess = presented.hideProcess === true;
     const homepageContact = presented.contactVariant === 'homepage';
@@ -1441,7 +1438,6 @@ export async function renderLeistungPage(opts) {
       heroBrand: imageFirstHero
         ? `<img class="lpv2-hero-brand" src="${base}assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" alt="" width="210" height="180" aria-hidden="true" decoding="async">`
         : '',
-      heroTag,
       heroEdge: imageFirstHero
         ? `<svg class="lpv2-hero-edge" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="lpv2-hero-edge__fill" d="M0 1.5L100 12.5V14H0Z"/><path class="lpv2-hero-edge__line" d="M0 1.5L100 12.5" vector-effect="non-scaling-stroke"/></svg>`
         : '',

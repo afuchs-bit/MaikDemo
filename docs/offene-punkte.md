@@ -2514,8 +2514,7 @@ Auftraggeber so entschieden.
 
 ## AP-565 — Rahmenbild-Held der Balkonkasten-Seite
 
-- **E2 Reiter „Leistung für Privatkunden":** rein visuell (`aria-hidden`). Wirkt er zu viel,
-  Regel `.lpv2-hero-tag{display:block}` streichen.
+- **E2 Reiter „Leistung für Privatkunden":** auf Ansage entfernt (Build, Vorlage und CSS).
 - **Knopfbeschriftung:** „Balkonkästen bepflanzen lassen" bricht im 440-px-Knopf auf zwei Zeilen
   um. Zur Abnahme.
 - **Ausrollen auf weitere Leistungen** (eigenes AP): je Seite `desktopHero`, ein Hochkant-Motiv im

@@ -825,17 +825,17 @@
 /* ---------- AP-565: Rahmenbild-Held am Rechner (Seiten mit desktopHero "rahmenbild") ----------
    Freigegeben per Mockup (leistungsseite-hero-desktop-mockup.html, Variante B). Nur ab 901px
    und nur mit der Klasse lpv2-page--desktop-rahmenbild (Build setzt sie aus dem JSON-Feld
-   desktopHero). Handy bis 900px bleibt pixelgleich: Schriftzug und Karten-Reiter sind ausserhalb
-   der Media Query ausgeblendet.
+   desktopHero). Handy bis 900px bleibt pixelgleich: der Schriftzug ist ausserhalb der Media
+   Query ausgeblendet.
 
    Aufbau am Rechner, nach dem Vorbild des Startseiten-Helds (home-dark.css, AP-560): vollbreit,
    dunkler Grund, Blueten-Wasserzeichen hinter dem Text, links "Alle Leistungen", Titel als
    gruener Schriftzug (ohne Schriftzug: Baloo 700, zweite Zeile gruen) und der Anfrageknopf.
-   Herkunftszeile, Anruf-Knopf und Nachweise aus dem Entwurf hat der Auftraggeber gestrichen
+   Herkunftszeile, Anruf-Knopf, Nachweise und Karten-Reiter aus dem Entwurf hat der Auftraggeber gestrichen
    (06.10.2026). Twist gegenueber der Startseite: keine schraege Teilung - das Foto ist rechts
    eine hochkant stehende Karte (3:4, 460px) mit Hausecken 26/7, versetztem gruenem Rahmen
    (12px, wie die Knopfform) und dem Bluetenstempel unten rechts. */
-.lpv2-hero-tag,.lpv2-title-graphic-desktop{display:none}
+.lpv2-title-graphic-desktop{display:none}
 
 @media (min-width:901px){
   /* 1 - Der Held verlaesst die 32rem-Spalte (AP-534 gibt sie jeder Sektion einzeln) */
@@ -884,8 +884,6 @@
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media picture{position:absolute;inset:0;overflow:hidden;border-radius:inherit}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media img:not(.lpv2-hero-brand){width:100%;height:100%;object-fit:cover;object-position:40% 55%}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-brand{right:-30px;bottom:-34px;width:140px;z-index:3}
-  .lpv2-page--desktop-rahmenbild .lpv2-hero-tag{position:absolute;left:-18px;top:36px;z-index:3;display:block;padding:10px 16px 10px 14px;border-radius:12px 4px 12px 4px;background:#171916;box-shadow:inset 0 0 0 1.5px var(--home-lime,#8cc63f);color:var(--home-on-dark,#fafaf6);font-family:Nunito,system-ui,sans-serif;font-size:14px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
-  .lpv2-page--desktop-rahmenbild .lpv2-hero-tag b{color:var(--mobile-logo-green,#56e607)}
 
   /* 7 - Uebergang zur Textsektion: der Held bringt seine Luft unten selbst mit (Zeile 5) */
   .lpv2-page--desktop-rahmenbild .lpv2-content-feature{padding-top:40px}

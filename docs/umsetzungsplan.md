@@ -2604,7 +2604,7 @@ Außenanlagenpflege), Handy 360/402/480 px unverändert, Tablet nur durch die zw
 Nach Auftragsdokument (Mockup Variante B), nur für Balkonkastenbepflanzung (JSON-Feld
 `desktopHero: "rahmenbild"`): ab 901 px voll breiter Held mit Blüten-Wasserzeichen, links
 „Alle Leistungen", grüner Schriftzug als Titel (Ersatz ohne Schriftzug: Baloo 700, zweite Zeile
-grün) und Anfrageknopf 440 × 74; rechts das Hochkantfoto als Karte 3:4 mit versetztem Rahmen,
-Reiter „Leistung für Privatkunden" und Blütenstempel. Herkunftszeile, Anruf-Knopf und Nachweise
-aus dem Entwurf auf Ansage gestrichen. Handy bis 900 px unverändert. Details und Messwerte:
+grün) und Anfrageknopf 440 × 74; rechts das Hochkantfoto als Karte 3:4 mit versetztem Rahmen
+und Blütenstempel. Herkunftszeile, Anruf-Knopf, Nachweise und Karten-Reiter aus dem Entwurf auf
+Ansage gestrichen. Handy bis 900 px unverändert. Details und Messwerte:
 `docs/ap/AP-565-leistungsseite-held-rahmenbild.md`.

@@ -4,8 +4,9 @@ Das Auftragsdokument steht unverändert darunter. Umgesetzt auf Basis AP-568
 (Branch `codex/ap-565-held-rahmenbild`), nur für **Balkonkastenbepflanzung**.
 
 **Abweichungen:**
-- **Auf Ansage gestrichen (06.10.2026):** Herkunftszeile, Anruf-Knopf, Instagram-Nachweis und
-  Mustergarten-Nachweis. Raster daher fünf Zeilen (Luft, Balken, Titel, Knopf, Luft), kein
+- **Auf Ansage gestrichen (06.10.2026):** Herkunftszeile, Anruf-Knopf, Instagram-Nachweis,
+  Mustergarten-Nachweis und nach der ersten Abnahme der Karten-Reiter „Leistung für
+  Privatkunden“ (vollständig aus Build, Vorlage und CSS; Schlüssel `20261006d`). Raster daher fünf Zeilen (Luft, Balken, Titel, Knopf, Luft), kein
   `heroEyebrow`/`heroTel`/`heroProof` im Build, keine CSS dafür.
 - **Cache-Schlüssel:** Seit AP-568 hat `leistung-mobile.css` einen eigenen Schlüssel
   (`LEISTUNG_MOBILE_CSS_VERSION` → `20261006c`); `CSS_VERSION` bleibt. Die 37 übrigen Seiten
