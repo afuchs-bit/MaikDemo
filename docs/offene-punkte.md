@@ -2488,3 +2488,24 @@ begrenzt auf `:where(.ueber-projekte .projects-more)`.
 Die in H.10 vorgesehenen AP-513 und AP-514 („Leistungsseiten-Vorlage“) sind damit
 gegenstandslos. Die Seiten bleiben am Desktop bewusst eine Mittelspalte, das hat der
 Auftraggeber so entschieden.
+
+## AP-568 — Kontaktformular der Leistungsseiten am Desktop
+
+- **Zwei Stellen, ein Formular:** Das Kurzformular steht in `index.html` (#anfrage) und als
+  Vorlage in `.github/scripts/lib/render.mjs` (`lpv2Contact`). Änderungen an Markup oder Texten
+  an beiden Stellen nachziehen, danach `npm run build` in `.github/scripts`.
+- **Kopie der Startseiten-Regeln:** `leistung-mobile.css` (Block AP-568 am Dateiende) kopiert
+  die Regeln aus `cta-family-home.css` (AP-555/556), `home-spacing.css` (AP-563) und
+  `home-dark.css` (AP-529), die am Desktop auf das Startseiten-Formular wirken. Ändert sich eine
+  Quelle, muss die Kopie mit.
+- **AP-512 für den Kontaktbereich aufgehoben:** Am Desktop steht nur noch der Kontaktbereich
+  außerhalb der 640-px-Spalte.
+- **Altfehler in der AP-512-Kopie:** Zwei Zeilen stammen aus dem reduced-motion-Zweig der
+  Quelle, sind aber ohne dessen Bedingung erfasst (`animation: none !important`,
+  `transition: none` für `.maik-cta`). Dadurch pulsiert auf den Leistungsseiten ab 481 px
+  kein Aktionsknopf, auch bei normaler Bewegung (am Handy bis 480 px schon). AP-568 nimmt
+  nur den Kontaktbereich am Desktop aus. Ob die übrigen Knöpfe auf Tablet und Desktop wieder
+  pulsieren sollen wie am Handy, entscheidet der Auftraggeber.
+- **Tablet:** Die längere Überschrift bricht in der 34-rem-Spalte auf zwei Zeilen um.
+- **Build-Altlast:** Der volle Build schreibt `impressum/` und `datenschutz/` um (Brotkrumen
+  aus der Vorlage `rechtstext.html` gegen Handänderungen). Bei AP-568 nicht mitcommittet.

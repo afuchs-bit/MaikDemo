@@ -17,6 +17,9 @@ const FOOTER_CSS_VERSION = '20261002a';
 const PRIVATE_FORM_JS_VERSION = '20261002a';
 const REQUEST_CSS_VERSION = '20261004b';
 const HOME_SPACING_CSS_VERSION = '20261004c';
+// AP-568: eigener Schluessel, damit eine Aenderung an leistung-mobile.css nicht
+// den styles.css-Schluessel aller Seiten mitzieht.
+const LEISTUNG_MOBILE_CSS_VERSION = '20261006a';
 const SKIP_DIRS = new Set(['admin', 'assets', 'content', 'data', 'docs', 'node_modules', 'tmp']);
 
 function pageBase(file) {
@@ -55,7 +58,7 @@ function updateAssetVersions(html) {
     .replace(/home-dark\.css\?v=[\w.-]+/g, `home-dark.css?v=${CSS_VERSION}`)
     .replace(/mobile-social-proof\.css\?v=[\w.-]+/g, `mobile-social-proof.css?v=${MOBILE_SOCIAL_PROOF_CSS_VERSION}`)
     .replace(/cta-family-home\.css\?v=[\w.-]+/g, `cta-family-home.css?v=${CSS_VERSION}`)
-    .replace(/leistung-mobile\.css\?v=[\w.-]+/g, `leistung-mobile.css?v=${CSS_VERSION}`)
+    .replace(/leistung-mobile\.css\?v=[\w.-]+/g, `leistung-mobile.css?v=${LEISTUNG_MOBILE_CSS_VERSION}`)
     .replace(/kontakt\.css\?v=[\w.-]+/g, `kontakt.css?v=${CSS_VERSION}`)
     .replace(/ueber-uns\.css\?v=[\w.-]+/g, `ueber-uns.css?v=${CSS_VERSION}`)
     .replace(/projekte\.css\?v=[\w.-]+/g, `projekte.css?v=${CSS_VERSION}`)

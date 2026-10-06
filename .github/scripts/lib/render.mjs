@@ -1256,15 +1256,26 @@ function lpv2Contact(leistung, base, homepageExact = false) {
             <form class="anf__form anf__karte" id="anfrage" data-anf-modus="kurz" data-anf-form data-endpoint="/api/anfrage" novalidate>
               <div class="anf__honeypot" aria-hidden="true"><label for="anf-hp">Firmenwebsite (bitte frei lassen)</label><input type="text" id="anf-hp" name="_hp_website" tabindex="-1" autocomplete="off"></div>
               <input type="hidden" name="modus" value="kurz" data-anf-modus-feld><input type="hidden" name="geladen_um" value="" data-anf-zeitstempel><input class="anf__leistung" type="hidden" name="leistung" value="${escAttr(leistung.h1)}">${unavailableTemplate}
-              <div class="anf__kanaele"><a class="anf__kanal" href="tel:+491711738943"><span class="anf__kanal-icon anf__kanal-icon--tel" aria-hidden="true"></span><span><small>${esc(phoneEyebrow)}</small><strong>0171 / 173 89 43</strong></span></a><a class="anf__kanal" href="${escAttr(whatsappHref)}" target="_blank" rel="noopener"><span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span><span><small>WhatsApp</small><strong>${esc(whatsappAction)}</strong></span></a><a class="anf__kanal anf__kanal--mail" href="${escAttr(emailHref)}"><span class="anf__kanal-icon anf__kanal-icon--mail" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a></div>
+              <div class="anf__kanaele"><a class="anf__kanal" href="tel:+491711738943"><span class="anf__kanal-icon anf__kanal-icon--tel" aria-hidden="true"></span><span><small>${esc(phoneEyebrow)}</small><strong>0171 / 173 89 43</strong></span></a><a class="anf__kanal" href="${escAttr(whatsappHref)}" target="_blank" rel="noopener"><span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span><span><small>WhatsApp</small><strong>${esc(whatsappAction)}</strong></span></a><a class="anf__kanal anf__kanal--mail" href="${escAttr(emailHref)}"><span class="anf__kanal-icon anf__kanal-icon--mail" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a></div>
+              <!-- AP-568: Huellen wie im Kurzformular der Startseite (index.html, #anfrage).
+                   Bis 900px loesen sie sich per display: contents auf (anfrage.css), ab 901px
+                   tragen sie die Startseiten-Anordnung (AP-555). Beide Stellen gleich halten. -->
+              <div class="anf__eingabe">
               <p class="anf__oder"><span>${esc(separator)}</span></p>
+              <div class="anf__kontaktfelder">
               <p class="anf__feld"><label for="anf-name">${esc(nameLabel)}</label><input type="text" id="anf-name" name="name" required maxlength="120" autocomplete="name" placeholder="${escAttr(namePlaceholder)}"></p>
               <p class="anf__feld"><label for="anf-kontakt">${esc(contactLabel)}</label><input type="text" id="anf-kontakt" name="kontakt" required maxlength="160" autocomplete="tel" placeholder="${escAttr(contactPlaceholder)}" inputmode="text"></p>
+              </div>
               <p class="anf__feld anf__feld--frei" id="anf-nachricht-feld"><label for="anf-nachricht">${esc(messageLabel)}</label><textarea id="anf-nachricht" name="nachricht" required maxlength="4000" rows="4" placeholder="${escAttr(messagePlaceholder)}"></textarea></p>
+              <div class="anf__aktionen">
+              <div class="anf__foto-gruppe">
               <p class="anf__feld anf__feld--foto" data-anf-foto-feld><label class="anf__foto"><input type="file" id="anf-fotos" name="fotos" accept="image/jpeg,image/png,image/webp,.heic,.heif" multiple data-anf-fotos><span class="anf__foto-kachel"><span class="anf__foto-plus" aria-hidden="true"></span><span class="anf__foto-wort">${esc(photoLabel)}</span></span></label><small class="anf__foto-stand" data-anf-foto-auswahl role="status" hidden></small></p>
               <p class="anf__einwilligung" data-anf-foto-freigabe hidden><label><input type="checkbox" name="foto_freigabe" value="1"><span>Ich darf diese Aufnahmen weitergeben. Personen, die nicht gefragt wurden, sind darauf nicht zu erkennen.</span></label></p>
+              </div>
               <div class="anf__abschluss"><button type="submit" class="btn btn-primary maik-cta maik-cta--attention" data-anf-senden>${submitArtwork}<span class="anf-senden__label maik-cta__label">${esc(submitLabel)}</span><span class="anf-senden__arrow maik-cta__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild maik-cta__arrow-image" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span></button><p class="anf__status" data-anf-status role="status" aria-live="polite"></p></div>
               <p class="anf__rechtliches">Wie wir Ihre Angaben verarbeiten, steht in der <a href="${base}datenschutz/">Datenschutzerklärung</a>.</p>
+              </div>
+              </div>
             </form>
           </div>
         </div>
@@ -1346,7 +1357,7 @@ export async function renderLeistungPage(opts) {
         ${lpv2Process(base)}
       </div>
     </section>`;
-    const contactTitle = presented.contactTitle || 'Der erste Schritt zu Ihrem Projekt';
+    const contactTitle = presented.contactTitle || 'Der erste Schritt zu Ihrem Gartenprojekt';
     const contactIntro = presented.contactIntro
       ? `\n          <p class="lead">${esc(presented.contactIntro)}</p>`
       : '';

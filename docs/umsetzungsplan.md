@@ -2587,3 +2587,15 @@ und Hero-Ausrichtung erhalten die Schildbeschriftung. Neue responsive
 AVIF/WebP-Dateien verhindern alte Cache-Bilder. Hochkant, Querformat, Desktop,
 Bildpfade und zweiter Generatorlauf geprüft. Dokumentation:
 `docs/ap/AP-564-baumkontrolle-warnschild.md`.
+
+**AP-568 — Kontaktformular der Leistungsseiten am Desktop wie auf der Startseite (06.10.2026).**
+Ansage des Auftraggebers: Das Formular aller 38 Leistungsseiten ist ab 901 px dasselbe wie auf
+der Startseite. Der Kontaktbereich bricht dafür aus der 32-rem-Spalte (AP-512) aus, 860 px wie
+auf der Startseite; die Überschrift heißt überall „Der erste Schritt zu Ihrem Gartenprojekt"
+(Sturmnotdienst behält seine eigene). Markup in `render.mjs` (`lpv2Contact`) mit denselben
+Hüllen wie `index.html`; Spalte und zoom wandern ab 901 px von `.lpv2-main` auf die Sektionen
+(wie AP-534); begrenzte Kopie der Startseiten-Regeln aus `cta-family-home.css`,
+`home-spacing.css` und `home-dark.css` in `leistung-mobile.css`. Gemessen: Kontaktbereich bei
+1024/1280/1440/1920 px ohne Abweichung über 0,5 px gegenüber der Startseite (Baumpflege,
+Außenanlagenpflege), Handy 360/402/480 px unverändert, Tablet nur durch die zweizeilige
+Überschrift um 35 px verschoben. Dokumentation: `docs/ap/AP-568-leistungsseiten-kontaktformular-desktop.md`.
