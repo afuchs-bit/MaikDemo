@@ -2551,3 +2551,16 @@ Auftraggeber so entschieden.
   Hinweistext und erscheint deshalb vor ihm – nie zwei im selben Schritt.
 - **main.js-Schlüssel:** `JS_VERSION` in `build-headers.mjs` steuert auch
   `home-header-morph.js`; beide wurden mitgehoben.
+
+## AP-585 — Über uns: Rahmenbild-Held am Desktop
+
+- **Schriftzug „Über uns“:** Der Titel ist der Ersatz in Baloo 700 („uns“ grün). Liefert der
+  Auftraggeber ein Schriftzug-PNG in derselben Handschrift wie Balkonkasten, wird es wie dort
+  als Bild in die H1 gesetzt.
+- **Schärfe der Karte:** Das Original `_src/ueber-baumarbeiten.jpg` ist 900 × 1125; der
+  3:4-Zuschnitt hat 844 px Breite. Bei 460 px Karte am Retina-Bildschirm sind das 1,83 statt
+  2 Bildpunkte je Pixel. Ein größeres Original fehlt.
+- **Werte doppelt:** Die Rahmenbild-Werte aus `leistung-mobile.css` (Block AP-565) stehen als
+  Kopie in `ueber-uns.css` (Block AP-585). Bei Änderungen am Leistungs-Held mitziehen.
+- **Titelgröße:** `clamp(64px, 7vw, 120px)` statt der AP-565-Ersatzgröße
+  `clamp(44px, 4.4vw, 80px)` – „Über uns“ ist kurz und stand sonst bei 1440 px nur 240 px breit.

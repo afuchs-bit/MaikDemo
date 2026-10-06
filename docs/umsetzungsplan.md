@@ -2676,3 +2676,11 @@ Knopf rechts. Bewegung: Wort-Aufstieg der Überschriften, Blüten blühen auf, k
 Absätzen, Lichtsaum um die Kachel; alles mit `prefers-reduced-motion` sofort fertig. Nur
 Balkonkasten (`desktopLayout: "trichter"`), Handy unverändert. Details und Messwerte:
 `docs/ap/AP-566-balkonkasten-desktop-zwei-spalten-bewegung.md`.
+
+**AP-585 — Über uns: Held am Desktop wie der Rahmenbild-Held der Leistungsseite (06.10.2026).**
+Ab 901 px trägt der Held von „Über uns“ das Design des Balkonkasten-Helds (AP-565): vollbreit,
+Blüten-Wasserzeichen, Rücklink „Startseite“ oben links, Titel „Über uns“ groß in Baloo 700
+(„uns“ grün, Ersatz für einen Schriftzug), rechts das Startfoto als Hochkant-Karte 3:4 mit
+versetztem Rahmen und Blütenstempel; kein Knopf. Das Foto neben „Das Team“ (AP-532) ist
+entfallen, der Abschnitt steht wieder einspaltig auf der Mittelachse. Handy unverändert.
+Details: `docs/ap/AP-585-ueber-uns-held-rahmenbild.md`.

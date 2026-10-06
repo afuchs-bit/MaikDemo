@@ -20,6 +20,9 @@ const HOME_SPACING_CSS_VERSION = '20261004c';
 // AP-568: eigener Schluessel, damit eine Aenderung an leistung-mobile.css nicht
 // den styles.css-Schluessel aller Seiten mitzieht.
 const LEISTUNG_MOBILE_CSS_VERSION = '20261006g';
+// AP-585: eigener Schluessel fuer ueber-uns.css - bisher an CSS_VERSION, dessen Heben
+// styles.css auf allen Seiten mitgezogen haette.
+const UEBER_CSS_VERSION = '20261006b';
 const SKIP_DIRS = new Set(['admin', 'assets', 'content', 'data', 'docs', 'node_modules', 'tmp']);
 
 function pageBase(file) {
@@ -60,7 +63,7 @@ function updateAssetVersions(html) {
     .replace(/cta-family-home\.css\?v=[\w.-]+/g, `cta-family-home.css?v=${CSS_VERSION}`)
     .replace(/leistung-mobile\.css\?v=[\w.-]+/g, `leistung-mobile.css?v=${LEISTUNG_MOBILE_CSS_VERSION}`)
     .replace(/kontakt\.css\?v=[\w.-]+/g, `kontakt.css?v=${CSS_VERSION}`)
-    .replace(/ueber-uns\.css\?v=[\w.-]+/g, `ueber-uns.css?v=${CSS_VERSION}`)
+    .replace(/ueber-uns\.css\?v=[\w.-]+/g, `ueber-uns.css?v=${UEBER_CSS_VERSION}`)
     .replace(/projekte\.css\?v=[\w.-]+/g, `projekte.css?v=${CSS_VERSION}`)
     .replace(/footer-kontakt\.css\?v=[\w.-]+/g, `footer-kontakt.css?v=${FOOTER_CSS_VERSION}`)
     .replace(/privat-form\.js\?v=[\w.-]+/g, `privat-form.js?v=${PRIVATE_FORM_JS_VERSION}`)

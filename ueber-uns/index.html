@@ -36,11 +36,13 @@ html, body { background-color: #171916; }
 <link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<!-- AP-585: Am Rechner ist die Hochkant-Karte im Held das LCP-Bild. -->
+<link rel="preload" as="image" type="image/avif" media="(min-width: 901px)" imagesrcset="../assets/img/ueber/ueber-baumarbeiten-hoch-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-hoch-844.avif 844w" imagesizes="460px" fetchpriority="high" />
 <link rel="stylesheet" href="../assets/css/styles.css?v=20261006a" />
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20261006a" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20261002a" />
 <link rel="stylesheet" href="../assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20261006a" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20261006b" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -448,6 +450,11 @@ html, body { background-color: #171916; }
        width/height bleiben stehen, damit beim Laden nichts springt. sizes
        folgt der Fotobreite aus ueber-uns.css: bis 900px 100% - 64px,
        hoechstens 760px; ab 901px fest 440px (AP-530, Mittelachse).
+       AP-585 (06.10.2026): Ab 901px steht das Foto als Hochkant-Karte (3:4, hoechstens
+       460px) rechts im Held, Aufbau wie der Rahmenbild-Held der Leistungsseiten (AP-565).
+       Die beiden <source media> liefern dort den Hochkant-Zuschnitt (ueber-baumarbeiten-hoch,
+       aus dem 900 x 1125-Original); bis 900px laedt das Handy dieselben Dateien wie bisher.
+       "uns" in der H1 traegt ein span - am Rechner gruen, bis 900px ohne Wirkung.
 
        [OFFEN: Das Auftragsdokument zu AP-453 sah eine Unterzeile unter dem
         Startbild vor - ein Pendant zu "Ein Stueck Garten vor Ihrem Fenster".
@@ -466,10 +473,12 @@ html, body { background-color: #171916; }
           <li class="ueber-hero__breadcrumb-current" aria-current="page">Über uns</li>
         </ol>
       </nav>
-      <h1 class="ueber-hero__titel">Über uns</h1>
+      <h1 class="ueber-hero__titel">Über <span>uns</span></h1>
     </div>
     <figure class="ueber-hero__foto">
       <picture>
+        <source media="(min-width: 901px)" type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-hoch-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-hoch-844.avif 844w" sizes="460px">
+        <source media="(min-width: 901px)" type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-hoch-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-hoch-844.webp 844w" sizes="460px">
         <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 900px) min(calc(100vw - 64px), 760px), 440px">
         <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 900px) min(calc(100vw - 64px), 760px), 440px">
         <img class="ueber-hero__bild" src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
@@ -516,23 +525,10 @@ html, body { background-color: #171916; }
          Zitat (.ueber-inhaber__bluete-mobil, unter 861px) und die am senkrechten
          Steg (ab 861px) bleiben - sie stehen im Vordergrund, nicht im Hintergrund. -->
     <div class="container ueber-inhaber__raster ueber-q">
-      <!-- AP-532: Am Rechner steht das Startfoto links neben "Das Team", auf Ansage des
-           Auftraggebers (01.10.2026). Foto und Text liegen in zwei Sektionen; nebeneinander
-           geht das nur im selben Raster. Deshalb steht hier ein zweites Exemplar der Figur
-           aus .ueber-hero - nur ab 901px sichtbar, bis 900px display: none (auch fuer
-           Screenreader weg). Das erste Exemplar ist ab 901px aus. Beide Exemplare gleich
-           halten (Bild, alt, Bluete). Beide waehlen dieselbe Datei, sie wird einmal geladen. -->
-      <figure class="ueber-hero__foto ueber-inhaber__foto">
-        <picture>
-          <source type="image/avif" srcset="../assets/img/ueber/ueber-baumarbeiten-480.avif 480w, ../assets/img/ueber/ueber-baumarbeiten-900.avif 900w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 900px) min(calc(100vw - 64px), 760px), 440px">
-          <source type="image/webp" srcset="../assets/img/ueber/ueber-baumarbeiten-480.webp 480w, ../assets/img/ueber/ueber-baumarbeiten-900.webp 900w" sizes="(max-width: 480px) calc(100vw - 64px), (max-width: 900px) min(calc(100vw - 64px), 760px), 440px">
-          <img class="ueber-hero__bild" src="../assets/img/ueber/ueber-baumarbeiten.webp" width="900" height="675"
-               alt="Baumfällung auf einer Baustelle: Zwei Personen in Schutzausrüstung zerlegen mit Motorsägen den Stamm eines gefällten Baumes, ringsum liegt das Schnittgut."
-               loading="eager" fetchpriority="high" decoding="async">
-        </picture>
-        <img class="ueber-hero__bluete" src="../assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png"
-             alt="" width="359" height="295" aria-hidden="true" decoding="async">
-      </figure>
+      <!-- AP-532 hatte hier ein zweites Exemplar des Startfotos (nur ab 901px), damit es am
+           Rechner links neben "Das Team" stand. AP-585 (06.10.2026): Das Foto steht am Rechner
+           als Hochkant-Karte im Held (wie der Rahmenbild-Held der Leistungsseiten, AP-565);
+           das Exemplar ist entfallen, "Das Team" steht wieder auf der Mittelachse (AP-530). -->
       <div>
         <h2 class="ueber-inhaber__gross"><span>Das Team</span> hinter dem Betrieb.</h2>
         <p class="ueber-inhaber__text">Auf der Baustelle treffen Sie unser Team an – Leute vom
