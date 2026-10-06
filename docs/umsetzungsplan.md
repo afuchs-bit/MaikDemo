@@ -2626,3 +2626,15 @@ verschwindet beim ersten Scrollen, ein Klick scrollt zum Zitat. Bei reduzierter
 Bewegung und bis 900 px gibt es ihn nicht. `ueber-uns.css` steht auf `?v=20261002zd`,
 `main.js` auf `?v=20261002i`.
 Dokumentation: `docs/ap/AP-582-ueber-uns-steg-beim-scrollen.md`.
+
+**AP-583 — Desktop-Kopf der Unterseiten wie auf der Startseite (06.10.2026).**
+Ab 901 px haben alle Seiten den Kopf der Startseite: Er steht fest, oben schwebt er als
+Karte mit 20 px Luft und 16 px Innenrand, nach 12 px Scrollweg wird er zur Leiste.
+- Das Logo steht damit auf allen 51 Seiten an derselben Stelle wie auf der Startseite.
+  Vorher stand es 16 px weiter links und 20 px höher.
+- Der Kopf läuft jetzt auch auf den Leistungsseiten mit. `sticky` griff dort nicht, weil
+  `overflow-x:hidden` an html und body den body zum Scrollbereich machte.
+- `header-home.css` hält auf allen Seiten 112 px über `body` frei. `home-dark.css` nimmt
+  das für die Startseite zurück.
+Handy und Tablet sowie die Startseite sind pixelgleich. `CSS_VERSION` ist `20261006a`.
+Dokumentation: `docs/ap/AP-583-kopf-wie-startseite.md`.
