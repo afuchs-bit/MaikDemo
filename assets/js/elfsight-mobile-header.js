@@ -5,7 +5,7 @@
  * Einbau mit Codex:
  * 1. Diese Datei als assets/js/elfsight-mobile-header.js ablegen.
  * 2. In index.html NACH den vorhandenen Header-Skripten einbinden:
- *    <script src="assets/js/elfsight-mobile-header.js?v=20261006d" defer></script>
+ *    <script src="assets/js/elfsight-mobile-header.js?v=20261006e" defer></script>
  * 3. Bestehendes Elfsight-CSS fuer Farben unveraendert beibehalten.
  *
  * Kein Eintrag im Elfsight-Editor erforderlich. Keine neue Abhaengigkeit.
@@ -74,6 +74,29 @@
       }
       .es-popup-wrapper[${activeAttribute}] .es-scrollable-container {
         overscroll-behavior: none !important;
+      }
+      .es-popup-wrapper[${activeAttribute}] .es-popup-image-carousel .es-carousel-arrow-control-container {
+        /* Wie die Kachelpfeile: 40px, ohne zusaetzlichen Abstand zum Rand. */
+        width: 40px !important;
+        height: 40px !important;
+        flex-basis: 40px !important;
+        margin: 0 !important;
+      }
+      .es-popup-wrapper[${activeAttribute}] .es-popup-image-carousel .es-carousel-arrow-control {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50% !important;
+        background-color: #20241d !important;
+        color: #56e607 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .3) !important;
+      }
+      .es-popup-wrapper[${activeAttribute}] .es-popup-image-carousel .es-carousel-arrow-control-icon {
+        width: 20px !important;
+        height: 20px !important;
+        color: inherit !important;
+      }
+      .es-popup-wrapper[${activeAttribute}] .es-popup-image-carousel .es-carousel-arrow-control-icon svg {
+        fill: currentColor !important;
       }
       .es-popup-wrapper[${activeAttribute}] .es-popup-close-button {
         /* Auch bei kurzen Displays ausserhalb des scrollenden Inhalts halten. */
