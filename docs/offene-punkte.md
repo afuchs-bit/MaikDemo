@@ -2511,3 +2511,15 @@ Auftraggeber so entschieden.
 - **Tablet:** Die längere Überschrift bricht in der 34-rem-Spalte auf zwei Zeilen um.
 - **Build-Altlast:** Der volle Build schreibt `impressum/` und `datenschutz/` um (Brotkrumen
   aus der Vorlage `rechtstext.html` gegen Handänderungen). Bei AP-568 nicht mitcommittet.
+
+## AP-565 — Rahmenbild-Held der Balkonkasten-Seite
+
+- **E2 Reiter „Leistung für Privatkunden":** rein visuell (`aria-hidden`). Wirkt er zu viel,
+  Regel `.lpv2-hero-tag{display:block}` streichen.
+- **Knopfbeschriftung:** „Balkonkästen bepflanzen lassen" bricht im 440-px-Knopf auf zwei Zeilen
+  um. Zur Abnahme.
+- **Ausrollen auf weitere Leistungen** (eigenes AP): je Seite `desktopHero`, ein Hochkant-Motiv im
+  Manifest, optional ein Schriftzug (sonst Baloo-Ersatz).
+- **Schriftzug-Pflege:** Grafik außerhalb der CMS-Bildpipeline; bei Namensänderung neu erzeugen.
+- **Mess-Chrome:** Der geteilte Chrome auf Port 9333 hing am 06.10. vollständig (eine andere
+  Sitzung hält dort Hunderte Tabs). Für AP-565 lief ein eigener Chrome auf Port 9334.

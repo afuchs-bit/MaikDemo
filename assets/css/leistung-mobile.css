@@ -821,3 +821,72 @@
   html.home-theme-dark .lpv2-main .lpv2-home-contact .maik-cta__label { hyphens: manual; }
   html.home-theme-dark .lpv2-main .lpv2-home-contact :is(.maik-cta__halo, .maik-cta__arrow-image) { will-change: auto; }
 }
+
+/* ---------- AP-565: Rahmenbild-Held am Rechner (Seiten mit desktopHero "rahmenbild") ----------
+   Freigegeben per Mockup (leistungsseite-hero-desktop-mockup.html, Variante B). Nur ab 901px
+   und nur mit der Klasse lpv2-page--desktop-rahmenbild (Build setzt sie aus dem JSON-Feld
+   desktopHero). Handy bis 900px bleibt pixelgleich: Schriftzug und Karten-Reiter sind ausserhalb
+   der Media Query ausgeblendet.
+
+   Aufbau am Rechner, nach dem Vorbild des Startseiten-Helds (home-dark.css, AP-560): vollbreit,
+   dunkler Grund, Blueten-Wasserzeichen hinter dem Text, links "Alle Leistungen", Titel als
+   gruener Schriftzug (ohne Schriftzug: Baloo 700, zweite Zeile gruen) und der Anfrageknopf.
+   Herkunftszeile, Anruf-Knopf und Nachweise aus dem Entwurf hat der Auftraggeber gestrichen
+   (06.10.2026). Twist gegenueber der Startseite: keine schraege Teilung - das Foto ist rechts
+   eine hochkant stehende Karte (3:4, 460px) mit Hausecken 26/7, versetztem gruenem Rahmen
+   (12px, wie die Knopfform) und dem Bluetenstempel unten rechts. */
+.lpv2-hero-tag,.lpv2-title-graphic-desktop{display:none}
+
+@media (min-width:901px){
+  /* 1 - Der Held verlaesst die 32rem-Spalte (AP-534 gibt sie jeder Sektion einzeln) */
+  .lpv2-page--desktop-rahmenbild .lpv2-main > article > section.lpv2-hero{max-width:none;margin:0;zoom:1;container-type:normal}
+
+  /* 2 - Buehne: Raster wie der Startseiten-Held (Randspalten, 52/48), Mindesthoehe ein Fenster
+     abzueglich Kopfzeile (sticky, gemessen 92px statt der im Entwurf angenommenen 80px) */
+  .lpv2-page--desktop-rahmenbild .lpv2-hero{--hero-inset:max(clamp(32px,4vw,72px),env(safe-area-inset-left,0px),env(safe-area-inset-right,0px));--hero-max:1680px;position:relative;isolation:isolate;display:grid;grid-template-columns:max(var(--hero-inset),calc((100% - var(--hero-max)) / 2)) minmax(0,52fr) minmax(0,48fr) max(var(--hero-inset),calc((100% - var(--hero-max)) / 2));grid-template-rows:minmax(64px,1fr) auto auto auto minmax(64px,1fr);min-height:clamp(640px,calc(100svh - 92px),900px);padding:0;background:var(--lp-bg);overflow:visible}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero::before{content:'';grid-column:1 / 3;grid-row:1 / -1;align-self:stretch;justify-self:start;width:clamp(360px,34vw,680px);margin-left:-4%;background:url('../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a') center / contain no-repeat;opacity:.12;filter:saturate(.7);pointer-events:none}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero > .container{display:contents}
+  .lpv2-page--desktop-rahmenbild .lpv2-kicker,
+  .lpv2-page--desktop-rahmenbild .lpv2-breadcrumbs--desktop,
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-edge{display:none}
+
+  /* 3 - Zeile 2: "Alle Leistungen" (der Handy-Balken, umgezogen und als Versalzeile gesetzt).
+     Auf .lpv2-hero begrenzt: .lpv2-breadcrumb-back steht auch unter den Ergaenzungen. */
+  .lpv2-page--desktop-rahmenbild .lpv2-breadcrumbs--bar{grid-column:2;grid-row:2;align-self:end;justify-self:start;margin:0 0 26px;color:var(--home-on-dark-2,#d9ded5);font-size:13px;font-weight:800;line-height:1;letter-spacing:.08em;text-transform:uppercase}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero .lpv2-breadcrumb-back a{gap:10px;min-height:0}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero .lpv2-breadcrumb-back a > span{padding-bottom:2px;border-bottom:1px solid rgba(140,198,63,.6);text-decoration:none}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero .lpv2-breadcrumb-back img{width:22px}
+
+  /* 4 - Zeile 3: Titel. Mit Schriftzug (gruene Handschrift wie "Garten" auf der Startseite):
+     die Baloo-Zeilen verschwinden, das Bild traegt den Titel, aria-label bleibt am h1.
+     Ohne Schriftzug: Baloo 700 wie der Startseiten-Titel, zweite Zeile im Logo-Gruen. */
+  /* .lpv2-hero davor: .lpv2-page--homepage-unified.lpv2-page--title-above .lpv2-title (0,3,0)
+     setzt sonst 80px/20px Innenabstand. */
+  .lpv2-page--desktop-rahmenbild .lpv2-hero .lpv2-title{grid-column:2;grid-row:3;align-self:auto;justify-self:start;width:min(100%,620px);max-width:none;margin:0;padding:0;background:transparent;text-align:left;line-height:0}
+  .lpv2-page--desktop-rahmenbild .lpv2-title--split > .lpv2-title-lines{display:none}
+  .lpv2-page--desktop-rahmenbild .lpv2-title-graphic-desktop{display:block;width:100%;height:auto;filter:drop-shadow(0 5px 13px rgba(0,0,0,.24))}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)){color:var(--home-on-dark,#fafaf6);font-size:clamp(44px,4.4vw,80px);font-weight:700;line-height:1.04;letter-spacing:-.028em;text-wrap:balance}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines{display:block}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:first-child:after{content:'-'}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:last-child{color:var(--mobile-logo-green,#56e607)}
+
+  /* 5 - Zeile 4: Anfrageknopf (maik-cta, 440 x 74) */
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta{grid-column:2;grid-row:4;display:flex;align-items:center;width:100%;margin:38px 0 0;padding:0}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button{width:min(100%,440px);min-height:74px;height:74px;padding:8px 12px 8px 0;border-radius:16px}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__label{font-size:1.125rem;letter-spacing:.02em}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow{width:70px;height:46px;margin-right:14px}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow-image{width:52px}
+
+  /* 6 - Spalte 3: die Karte. Figure wird 3:4, Bild per <source media> im Hochkant-Derivat,
+     versetzter Rahmen im Pseudoelement (title-above hatte ::before ausgeblendet). */
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media{grid-column:3;grid-row:1 / -1;align-self:center;justify-self:end;position:relative;z-index:2;width:min(100%,460px);height:auto;aspect-ratio:3 / 4;margin:0;overflow:visible;border-radius:26px 7px 26px 7px;background:transparent;box-shadow:0 40px 70px -36px rgba(0,0,0,.95),0 30px 60px -40px rgba(93,224,35,.55)}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media::before{content:'';display:block;position:absolute;inset:0;z-index:-1;transform:translate(12px,12px);border:1.5px solid var(--home-lime,#8cc63f);border-radius:inherit;background:none;opacity:.9;pointer-events:none}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media picture{position:absolute;inset:0;overflow:hidden;border-radius:inherit}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media img:not(.lpv2-hero-brand){width:100%;height:100%;object-fit:cover;object-position:40% 55%}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-brand{right:-30px;bottom:-34px;width:140px;z-index:3}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-tag{position:absolute;left:-18px;top:36px;z-index:3;display:block;padding:10px 16px 10px 14px;border-radius:12px 4px 12px 4px;background:#171916;box-shadow:inset 0 0 0 1.5px var(--home-lime,#8cc63f);color:var(--home-on-dark,#fafaf6);font-family:Nunito,system-ui,sans-serif;font-size:14px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-tag b{color:var(--mobile-logo-green,#56e607)}
+
+  /* 7 - Uebergang zur Textsektion: der Held bringt seine Luft unten selbst mit (Zeile 5) */
+  .lpv2-page--desktop-rahmenbild .lpv2-content-feature{padding-top:40px}
+}

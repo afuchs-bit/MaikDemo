@@ -2599,3 +2599,12 @@ Hüllen wie `index.html`; Spalte und zoom wandern ab 901 px von `.lpv2-main` auf
 1024/1280/1440/1920 px ohne Abweichung über 0,5 px gegenüber der Startseite (Baumpflege,
 Außenanlagenpflege), Handy 360/402/480 px unverändert, Tablet nur durch die zweizeilige
 Überschrift um 35 px verschoben. Dokumentation: `docs/ap/AP-568-leistungsseiten-kontaktformular-desktop.md`.
+
+**AP-565 — Leistungsseite Balkonkasten: Held am Desktop als Rahmenbild (06.10.2026).**
+Nach Auftragsdokument (Mockup Variante B), nur für Balkonkastenbepflanzung (JSON-Feld
+`desktopHero: "rahmenbild"`): ab 901 px voll breiter Held mit Blüten-Wasserzeichen, links
+„Alle Leistungen", grüner Schriftzug als Titel (Ersatz ohne Schriftzug: Baloo 700, zweite Zeile
+grün) und Anfrageknopf 440 × 74; rechts das Hochkantfoto als Karte 3:4 mit versetztem Rahmen,
+Reiter „Leistung für Privatkunden" und Blütenstempel. Herkunftszeile, Anruf-Knopf und Nachweise
+aus dem Entwurf auf Ansage gestrichen. Handy bis 900 px unverändert. Details und Messwerte:
+`docs/ap/AP-565-leistungsseite-held-rahmenbild.md`.

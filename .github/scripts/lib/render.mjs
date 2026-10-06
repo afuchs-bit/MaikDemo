@@ -160,8 +160,11 @@ export function absUrl(p) {
 // AP-77: Das <img src> zeigt auf `<base>.webp`, nicht auf `bild`. Bei den Bildern aus
 // build-images.mjs ist das derselbe Pfad; bei denen aus build-hero-images.mjs liegt unter
 // `bild` das grosse Original (bis 1,2 MB), das nie ausgeliefert werden soll.
-export function renderPicture(bild, { alt = '', sizes = '100vw', className = '', priority = false, width, height, base = '', objectPosition = '' } = {}) {
+export function renderPicture(bild, { alt = '', sizes = '100vw', className = '', priority = false, width, height, base = '', objectPosition = '', desktopBild = '', desktopSizes = '460px', desktopMedia = '(min-width: 901px)' } = {}) {
   const m = imageManifest()[bild];
+  // AP-565: zweites Motiv ab Desktop (Hochkant im Rahmenbild-Held). Eigene <source>-Zeilen
+  // mit media-Attribut VOR den normalen Quellen; ohne Manifest-Eintrag entfaellt es still.
+  const dm = desktopBild ? imageManifest()[desktopBild] : null;
   const cls = className ? ` class="${escAttr(className)}"` : '';
   const position = /^\d{1,3}% \d{1,3}%$/.test(objectPosition)
     ? ` style="object-position:${escAttr(objectPosition)}"` : '';
@@ -171,20 +174,26 @@ export function renderPicture(bild, { alt = '', sizes = '100vw', className = '',
     const wh = width && height ? ` width="${width}" height="${height}"` : '';
     return `<img${cls}${position} src="${rel(bild)}" alt="${escAttr(alt)}"${wh} ${load}>`;
   }
-  const set = (ext) => widthsFor(m, ext).map((w) => `${rel(`${m.base}-${w}.${ext}`)} ${w}w`).join(', ');
+  const set = (ext, entry = m) => widthsFor(entry, ext).map((w) => `${rel(`${entry.base}-${w}.${ext}`)} ${w}w`).join(', ');
+  const desktopSources = dm
+    ? `<source media="${escAttr(desktopMedia)}" type="image/avif" sizes="${escAttr(desktopSizes)}" srcset="${set('avif', dm)}">
+        <source media="${escAttr(desktopMedia)}" type="image/webp" sizes="${escAttr(desktopSizes)}" srcset="${set('webp', dm)}">
+        `
+    : '';
   return `<picture>
-        <source type="image/avif" sizes="${escAttr(sizes)}" srcset="${set('avif')}">
+        ${desktopSources}<source type="image/avif" sizes="${escAttr(sizes)}" srcset="${set('avif')}">
         <source type="image/webp" sizes="${escAttr(sizes)}" srcset="${set('webp')}">
         <img${cls}${position} src="${rel(fallbackSrc(m))}" alt="${escAttr(alt)}" width="${width || m.width}" height="${height || m.height}" ${load}>
       </picture>`;
 }
 
 // Preload-Link fuer das LCP-Bild einer Seite (AVIF-srcset, relativ zur Seitentiefe).
-function lcpPreloadFor(bild, sizes = '100vw', base = '') {
+function lcpPreloadFor(bild, sizes = '100vw', base = '', media = '') {
   const m = bild ? imageManifest()[bild] : null;
+  const mediaAttr = media ? ` media="${escAttr(media)}"` : '';
   if (m) {
     const srcset = widthsFor(m, 'avif').map((w) => `${escAttr(relAsset(`${m.base}-${w}.avif`, base))} ${w}w`).join(', ');
-    return `<link rel="preload" as="image" type="image/avif" imagesizes="${escAttr(sizes)}" imagesrcset="${srcset}" />`;
+    return `<link rel="preload" as="image" type="image/avif"${mediaAttr} imagesizes="${escAttr(sizes)}" imagesrcset="${srcset}" />`;
   }
   return bild ? `<link rel="preload" as="image" href="${escAttr(relAsset(bild, base))}" fetchpriority="high" />` : '';
 }
@@ -1346,6 +1355,18 @@ export async function renderLeistungPage(opts) {
     const heroTitleHtml = splitHeroTitle
       ? `<span class="lpv2-title-full">${esc(presented.h1)}</span><span class="lpv2-title-lines" aria-hidden="true">${presented.heroTitleLines.map((line) => `<span>${esc(line)}</span>`).join('')}</span>`
       : esc(presented.h1);
+    // AP-565: Rahmenbild-Held am Desktop (desktopHero "rahmenbild"). Schriftzug als Titel,
+    // Hochkant-Motiv und Karten-Reiter; alles unter 901px per CSS ausgeblendet. Herkunftszeile,
+    // Anruf-Knopf und Nachweise aus dem Entwurf hat der Auftraggeber gestrichen (06.10.2026).
+    const rahmenbild = presented.desktopHero === 'rahmenbild';
+    const heroGraphic = rahmenbild && presented.desktopHeroGraphic?.bild ? presented.desktopHeroGraphic : null;
+    const assetPath = (p) => escAttr(`${base}${String(p).replace(/^\/+/, '')}`);
+    const heroGraphicHtml = heroGraphic
+      ? `<img class="lpv2-title-graphic-desktop" src="${assetPath(heroGraphic.bild)}"${heroGraphic.bild1x ? ` srcset="${assetPath(heroGraphic.bild1x)} 1x, ${assetPath(heroGraphic.bild)} 2x"` : ''} alt="" aria-hidden="true" width="${Number(heroGraphic.width) || 1400}" height="${Number(heroGraphic.height) || 508}" fetchpriority="high" decoding="async">`
+      : '';
+    const heroTag = rahmenbild
+      ? `<span class="lpv2-hero-tag" aria-hidden="true">Leistung für <b>${welt.key === 'gewerbe' ? 'Gewerbekunden' : 'Privatkunden'}</b></span>`
+      : '';
     const hideProcess = presented.hideProcess === true;
     const homepageContact = presented.contactVariant === 'homepage';
     const processSection = hideProcess ? '' : `<section class="lpv2-process section" id="ablauf" aria-labelledby="lpv2-process-title">
@@ -1400,24 +1421,27 @@ export async function renderLeistungPage(opts) {
       mobileCssVersion: escAttr(cssVersion),
       ctaFamilyVersion: escAttr(presented.ctaFamilyVersion || '20260919a'),
       heroVariantClass: `${imageFirstHero ? ' lpv2-page--image-first' : ''}${heroTitleAbove ? ' lpv2-page--title-above' : ''}${heroTitleGraphic ? ' lpv2-page--title-graphic' : ''}`,
-      pageVariantClass: `${presented.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${presented.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}${presented.desktopLayout === 'trichter' ? ' lpv2-page--desktop-trichter' : ''}`,
+      pageVariantClass: `${presented.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${presented.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}${presented.desktopLayout === 'trichter' ? ' lpv2-page--desktop-trichter' : ''}${rahmenbild ? ' lpv2-page--desktop-rahmenbild' : ''}`,
       title: esc(presented.title), ogTitle: escAttr(presented.title),
       description: escAttr(truncate(presented.metaDescription, 160)), canonical: escAttr(canonical),
-      ogImage: escAttr(absUrl(hero.bild)), heroPreload: lcpPreloadFor(hero.bild, heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', base),
+      ogImage: escAttr(absUrl(hero.bild)), heroPreload: rahmenbild && presented.desktopHeroPortrait
+        ? lcpPreloadFor(hero.bild, heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', base, '(max-width: 900px)') + lcpPreloadFor(presented.desktopHeroPortrait, '460px', base, '(min-width: 901px)')
+        : lcpPreloadFor(hero.bild, heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', base),
       breadcrumbJsonLd: leistungBreadcrumb(presented.h1, canonical, welt),
       heroBreadcrumbBefore: mobileBalkonkasten ? mobileHeroBreadcrumb : imageFirstHero ? standardHeroBreadcrumb : '',
       heroBreadcrumbInside: mobileBalkonkasten ? desktopHeroBreadcrumb : imageFirstHero ? '' : standardHeroBreadcrumb,
       serviceJsonLd: serviceJsonLd(presented, canonical), faqJsonLd: faqJsonLd(presented.faq),
       logo: logo.trim(), header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
       footer: fill(footer, footerTemplateData(base, seitenPfad)).trim(),
-      h1: heroTitleHtml, titleAria: splitHeroTitle ? ` aria-label="${escAttr(presented.h1)}"` : '', titleClass: `${splitHeroTitle ? ' lpv2-title--split' : ''}${heroTitleGraphic ? ' lpv2-title--visually-hidden' : ''}`,
+      h1: heroTitleHtml + heroGraphicHtml, titleAria: splitHeroTitle ? ` aria-label="${escAttr(presented.h1)}"` : '', titleClass: `${splitHeroTitle ? ' lpv2-title--split' : ''}${heroTitleGraphic ? ' lpv2-title--visually-hidden' : ''}`,
       subheading: esc(presented.unterzeile),
       introHtml: presented.einstieg.map((p) => `<p>${esc(p)}</p>`).join(''),
       heroCta: lpv2Cta(presented.ctaLabel, base, presented.ctaHref || '#anfrage'),
-      heroPicture: renderPicture(hero.bild, { alt: hero.alt || '', sizes: heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', priority: true, width: hero.width, height: hero.height, base, objectPosition: hero.objectPosition }),
+      heroPicture: renderPicture(hero.bild, { alt: hero.alt || '', sizes: heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', priority: true, width: hero.width, height: hero.height, base, objectPosition: hero.objectPosition, desktopBild: rahmenbild ? presented.desktopHeroPortrait || '' : '' }),
       heroBrand: imageFirstHero
         ? `<img class="lpv2-hero-brand" src="${base}assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" alt="" width="210" height="180" aria-hidden="true" decoding="async">`
         : '',
+      heroTag,
       heroEdge: imageFirstHero
         ? `<svg class="lpv2-hero-edge" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="lpv2-hero-edge__fill" d="M0 1.5L100 12.5V14H0Z"/><path class="lpv2-hero-edge__line" d="M0 1.5L100 12.5" vector-effect="non-scaling-stroke"/></svg>`
         : '',
