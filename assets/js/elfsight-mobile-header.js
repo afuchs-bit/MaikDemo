@@ -5,7 +5,7 @@
  * Einbau mit Codex:
  * 1. Diese Datei als assets/js/elfsight-mobile-header.js ablegen.
  * 2. In index.html NACH den vorhandenen Header-Skripten einbinden:
- *    <script src="assets/js/elfsight-mobile-header.js?v=20261006c" defer></script>
+ *    <script src="assets/js/elfsight-mobile-header.js?v=20261006d" defer></script>
  * 3. Bestehendes Elfsight-CSS fuer Farben unveraendert beibehalten.
  *
  * Kein Eintrag im Elfsight-Editor erforderlich. Keine neue Abhaengigkeit.
@@ -52,8 +52,7 @@
     @media (max-width: 900px) {
       .es-popup-wrapper[${suspendedAttribute}] > .es-backdrop-container,
       .es-popup-wrapper[${suspendedAttribute}] > .es-popup-container {
-        visibility: hidden !important;
-        opacity: 0 !important;
+        /* Sichtbar hinter dem Menue halten; inert sperrt auch Tastatur/Touch. */
         pointer-events: none !important;
       }
       .es-popup-wrapper[${activeAttribute}] > .es-backdrop-container,
@@ -175,11 +174,14 @@
   }
 
   function updateOffset() {
-    // Das aufgeklappte Menue vergroessert den Header. Die Popup-Geometrie
-    // dabei behalten, damit kein Scrollbereich auf Hoehe 0 schrumpft.
-    if (!active || menuIsOpen()) return;
+    if (!active) return;
+    // Nur die obere Kante einfrieren: Das Menue vergroessert den Header,
+    // die Popup-Hoehe muss trotzdem dem sichtbaren Bildschirm folgen.
     // bottom statt fixer 82px: inklusive Safe Area und Header-Morph.
-    const bottom = Math.max(0, Math.ceil(header.getBoundingClientRect().bottom));
+    const bottom = menuIsOpen()
+      ? Math.max(0, Number.parseFloat(root.style.getPropertyValue(offsetVariable)
+        || root.style.getPropertyValue('--header-h')) || 0)
+      : Math.max(0, Math.ceil(header.getBoundingClientRect().bottom));
     const value = bottom + 'px';
     if (root.style.getPropertyValue(offsetVariable) !== value) {
       root.style.setProperty(offsetVariable, value);

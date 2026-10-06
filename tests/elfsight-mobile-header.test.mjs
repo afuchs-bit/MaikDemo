@@ -162,6 +162,32 @@ test('popup follows the visible viewport when mobile browser chrome changes its 
   } finally { s.close(); }
 });
 
+test('popup behind an open menu still fills the viewport after rotation and browser chrome changes', async () => {
+  const s = setup(true, false, { height: 402, offsetTop: 0 });
+  try {
+    const p = s.popup();
+    const content = scroller(s, p.dialog, 240);
+    await flush();
+    s.menu(true);
+    await flush();
+    s.resize(570);
+    s.window.visualViewport.height = 852;
+    s.window.visualViewport.dispatchEvent(new s.window.Event('resize'));
+    const root = s.document.documentElement;
+    assert.equal(root.style.getPropertyValue('--maik-reviews-top'), '82px');
+    assert.equal(root.style.getPropertyValue('--maik-reviews-height'), '770px');
+    s.window.visualViewport.height = 700;
+    s.window.visualViewport.dispatchEvent(new s.window.Event('resize'));
+    assert.equal(root.style.getPropertyValue('--maik-reviews-height'), '618px');
+    content.scrollTop = 0;
+    s.resize(82);
+    s.menu(false);
+    await flush();
+    assert.equal(content.scrollTop, 240);
+    assert.equal(p.dialog.hasAttribute('inert'), false);
+  } finally { s.close(); }
+});
+
 test('opening position survives asynchronous widget mounting and an immediate background gesture', async () => {
   const s = setup();
   try {
