@@ -2638,3 +2638,60 @@ Karte mit 20 px Luft und 16 px Innenrand, nach 12 px Scrollweg wird er zur Leist
   das für die Startseite zurück.
 Handy und Tablet sowie die Startseite sind pixelgleich. `CSS_VERSION` ist `20261006a`.
 Dokumentation: `docs/ap/AP-583-kopf-wie-startseite.md`.
+**AP-568 — Kontaktformular der Leistungsseiten am Desktop wie auf der Startseite (06.10.2026).**
+Ansage des Auftraggebers: Das Formular aller 38 Leistungsseiten ist ab 901 px dasselbe wie auf
+der Startseite. Der Kontaktbereich bricht dafür aus der 32-rem-Spalte (AP-512) aus, 860 px wie
+auf der Startseite; die Überschrift heißt überall „Der erste Schritt zu Ihrem Gartenprojekt"
+(Sturmnotdienst behält seine eigene). Markup in `render.mjs` (`lpv2Contact`) mit denselben
+Hüllen wie `index.html`; Spalte und zoom wandern ab 901 px von `.lpv2-main` auf die Sektionen
+(wie AP-534); begrenzte Kopie der Startseiten-Regeln aus `cta-family-home.css`,
+`home-spacing.css` und `home-dark.css` in `leistung-mobile.css`. Gemessen: Kontaktbereich bei
+1024/1280/1440/1920 px ohne Abweichung über 0,5 px gegenüber der Startseite (Baumpflege,
+Außenanlagenpflege), Handy 360/402/480 px unverändert, Tablet nur durch die zweizeilige
+Überschrift um 35 px verschoben. Dokumentation: `docs/ap/AP-568-leistungsseiten-kontaktformular-desktop.md`.
+
+**AP-565 — Leistungsseite Balkonkasten: Held am Desktop als Rahmenbild (06.10.2026).**
+Nach Auftragsdokument (Mockup Variante B), nur für Balkonkastenbepflanzung (JSON-Feld
+`desktopHero: "rahmenbild"`): ab 901 px voll breiter Held mit Blüten-Wasserzeichen, links
+„Alle Leistungen", grüner Schriftzug als Titel (Ersatz ohne Schriftzug: Baloo 700, zweite Zeile
+grün) und Anfrageknopf 440 × 74; rechts das Hochkantfoto als Karte 3:4 mit versetztem Rahmen
+und Blütenstempel. Herkunftszeile, Anruf-Knopf, Nachweise und Karten-Reiter aus dem Entwurf auf
+Ansage gestrichen. Handy bis 900 px unverändert. Details und Messwerte:
+`docs/ap/AP-565-leistungsseite-held-rahmenbild.md`.
+
+**AP-584 — Leistungsseiten: Knopf-Puls ab 481 px, Held-Knopf mittig, FAQ am Desktop wie
+Startseite (06.10.2026).** Die Puls-`@keyframes` fehlten auf den Leistungsseiten ab 481 px
+(nur in `cta-family.css` bis 480 px) – kein Knopf pulsierte dort; jetzt in `leistung-mobile.css`
+ergänzt (Berichtigung zu AP-568). Balkonkasten-Held: Knopf mittig unter dem Schriftzug und so
+hoch, dass er im ersten Bild pulsiert. FAQ ab 901 px wie die Startseite (AP-546): mittige
+760-px-Spalte, Gruppen-Karte mit dem Namen der Leistung, gleiche Animation aus `privat-form.js`
+(nur ab 901 px). Handy unverändert. Details: `docs/ap/AP-584-leistungsseiten-puls-knopf-faq.md`.
+
+
+**AP-566 — Leistungsseite Balkonkasten: Textbereich am Desktop als zwei Spalten mit Bewegung
+(06.10.2026).** Ersetzt in der Textsektion das Trichter-Layout aus AP-534 (Mockup F): ab 901 px
+links Überschrift, Einstieg und Standort, rechts Leistungsüberschrift und Liste, dazwischen eine
+Trennlinie, die sich beim Scrollen grün füllt; darunter Hinweistext links, Abschluss-Kachel und
+Knopf rechts. Bewegung: Wort-Aufstieg der Überschriften, Blüten blühen auf, kurze Striche über den
+Absätzen, Lichtsaum um die Kachel; alles mit `prefers-reduced-motion` sofort fertig. Nur
+Balkonkasten (`desktopLayout: "trichter"`), Handy unverändert. Details und Messwerte:
+`docs/ap/AP-566-balkonkasten-desktop-zwei-spalten-bewegung.md`.
+
+**AP-585 — Über uns: Held am Desktop wie der Rahmenbild-Held der Leistungsseite (06.10.2026).**
+Ab 901 px trägt der Held von „Über uns“ das Design des Balkonkasten-Helds (AP-565): vollbreit,
+Blüten-Wasserzeichen, Rücklink „Startseite“ oben links, Titel „Über uns“ groß in Baloo 700
+(„uns“ grün, Ersatz für einen Schriftzug), rechts das Startfoto als Hochkant-Karte 3:4 mit
+versetztem Rahmen und Blütenstempel; kein Knopf. Das Foto neben „Das Team“ (AP-532) ist
+entfallen, der Abschnitt steht wieder einspaltig auf der Mittelachse. Handy unverändert.
+Details: `docs/ap/AP-585-ueber-uns-held-rahmenbild.md`.
+
+**AP-567 — Leistungsseite Balkonkasten: Blickführung am Desktop (06.10.2026).** Auf AP-566: links große
+grüne H2, rechts weiße Zwischenüberschrift mit der Liste direkt darunter. Beim Eintritt läuft einmalig
+eine Sequenz:
+- Die H2 steigt auf, die Striche zeichnen sich.
+- Die Trennlinie füllt sich (nicht mehr am Scrollen).
+- Die rechte Spalte erscheint, die H3 steigt auf.
+- Die Punkte werden nacheinander hell, im Abstand von mindestens 0,18 s und erst im Bild.
+
+Reduzierte Bewegung: alles sofort. Handy unverändert. Details:
+`docs/ap/AP-567-balkonkasten-blickfuehrung-choreografie.md`.

@@ -1159,13 +1159,17 @@
 })();
 
 // Privatkunden-FAQ: weich animierte, voneinander unabhängige Akkordeon-Gruppen.
+// AP-584: Auch die FAQ der Leistungsseiten (.lpv2-faq) - dort nur ab 901px, darunter bleibt
+// das native <details> wie bisher (die Handy-Fassung der Leistungsseiten ist unverändert).
 (() => {
   'use strict';
 
-  const section = document.querySelector('.private-faq');
-  const groups = Array.from(document.querySelectorAll('[data-private-faq-group]'));
+  const section = document.querySelector('.private-faq, .lpv2-faq');
+  const groups = Array.from(section?.querySelectorAll('[data-private-faq-group]') || []);
   if (!section || !groups.length) return;
 
+  const nurDesktop = section.classList.contains('lpv2-faq');
+  const desktop = window.matchMedia('(min-width: 901px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const duration = 235;
   const easing = 'cubic-bezier(.22,.61,.36,1)';
@@ -1269,6 +1273,10 @@
       getState(entry);
 
       summary.addEventListener('click', (event) => {
+        if (nurDesktop && !desktop.matches) {
+          getState(entry).targetOpen = !entry.open;
+          return;
+        }
         event.preventDefault();
         const state = getState(entry);
         const shouldOpen = !state.targetOpen;

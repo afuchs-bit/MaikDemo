@@ -640,63 +640,8 @@ body.ueber-page {
   }
 }
 
-/* AP-582 Nachtrag (02.10.2026): Weil Steg und Zitat am Desktop erst nach dem
-   ersten Scrollen erscheinen, steht beim Oeffnen unten mittig ein pulsierender
-   Pfeil - der Markenpfeil des Ruecklinks, um 90 Grad nach unten gedreht. main.js
-   zeigt ihn nur ab 901px und ohne Scrollposition, beim ersten Scrollen blendet er
-   aus und kommt nicht wieder. Klick scrollt zum Zitat. */
-.ueber-scrollpfeil[hidden] { display: none; }
-
-@media (max-width: 900px) {
-  .ueber-scrollpfeil { display: none !important; }
-}
-
-@media (min-width: 901px) {
-  .ueber-scrollpfeil {
-    position: fixed;
-    z-index: 40;
-    left: 50%;
-    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-    display: grid;
-    place-items: center;
-    width: 52px;
-    height: 52px;
-    padding: 0;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    background: rgb(27 30 25 / .72);
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-    cursor: pointer;
-    opacity: 0;
-    transform: translateX(-50%);
-    transition: opacity .4s ease;
-  }
-
-  .ueber-scrollpfeil.is-da { opacity: 1; }
-
-  .ueber-scrollpfeil:focus-visible {
-    outline: 2px solid var(--mobile-logo-green, #56e607);
-    outline-offset: 3px;
-  }
-
-  .ueber-scrollpfeil img {
-    display: block;
-    width: 28px;
-    height: auto;
-    filter: brightness(0) saturate(100%) invert(77%) sepia(100%) saturate(1680%) hue-rotate(47deg) brightness(105%) contrast(107%);
-    transform: rotate(90deg);
-  }
-}
-
-@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
-  .ueber-scrollpfeil img { animation: ueber-scrollpfeil-puls 1.6s ease-in-out infinite; }
-}
-
-@keyframes ueber-scrollpfeil-puls {
-  0%, 100% { transform: translateY(0) rotate(90deg); opacity: .65; }
-  50% { transform: translateY(7px) rotate(90deg); opacity: 1; }
-}
+/* AP-582 Nachtrag: Hier standen die Regeln des Scroll-Pfeils. Auf Ansage am 06.10.2026
+   entfernt (AP-585). */
 
 /* AP-450: Hier stand .ueber-inhaber__platzhalter - gedaempft und kursiv, damit
    der vorlaeufige Satz auf der Seite als solcher zu erkennen war. Das Zitat
@@ -2252,13 +2197,11 @@ body.ueber-page {
    knappem Rechner schrumpft das Foto bis 300px. Text links buendig an einer Kante
    neben dem Bild, senkrecht mittig zum Foto. Steg und Zitat ueber beide Spalten,
    aber in der bisherigen Breite von 600px mittig. */
-@media (max-width: 900px) {
-  .ueber-inhaber__foto { display: none; }
-}
-
+/* AP-585 (06.10.2026): Das zweite Foto-Exemplar ist entfallen - das Startfoto steht am
+   Rechner als Hochkant-Karte im Held (Block AP-585 am Dateiende). Dessen Regeln
+   (.ueber-inhaber__foto, Bluete links, Held-Foto aus) sind hier entfernt; das Raster
+   unten stellt der AP-585-Block auf eine Spalte um. Typografie und Steg bleiben. */
 @media (min-width: 901px) {
-  .ueber-hero .ueber-hero__foto { display: none; }
-
   .ueber-inhaber { padding-top: 0; }
 
   .ueber-inhaber__raster {
@@ -2276,19 +2219,6 @@ body.ueber-page {
     justify-content: center;
     align-items: center;
     max-width: none; /* hebt die 600px der Mittelachse (AP-530) auf */
-  }
-
-  .ueber-inhaber__foto {
-    grid-area: foto;
-    width: 100%;
-  }
-
-  /* Ansage 01.10.2026: Die Bluetengruppe sitzt am Rechner unten LINKS ueber der
-     Ecke - gespiegelt zur Grundregel (right -14px, bottom -18px). Das Handy behaelt
-     sie rechts. */
-  .ueber-inhaber__foto .ueber-hero__bluete {
-    right: auto;
-    left: -14px;
   }
 
   .ueber-inhaber__raster > div:has(> .ueber-inhaber__gross) { grid-area: text; }
@@ -2574,4 +2504,151 @@ body.ueber-page {
   .ueber-betrieb__bild { justify-self: center; width: 100%; }
 
   .ueber-projekte__spur .project-card { flex: 0 0 320px; }
+}
+
+
+/* --- AP-585: Held am Rechner wie der Rahmenbild-Held der Leistungsseiten -----
+   Ansage 06.10.2026: Der Held von "Ueber uns" bekommt ab 901px das Design des
+   Balkonkasten-Helds (AP-565, leistung-mobile.css Block AP-565 - die Werte stehen hier
+   als Kopie, weil die Seite leistung-mobile.css nicht laedt; bei Aenderungen dort
+   mitziehen). Vollbreit, Blueten-Wasserzeichen links, Ruecklink "Startseite" oben
+   links, darunter links der Titel gross in Baloo 700 ("uns" im Logo-Gruen, Ersatz fuer
+   einen Schriftzug wie bei Balkonkasten), rechts das Startfoto als Hochkant-Karte 3:4
+   (hoechstens 460px) mit Hausecken 26/7, versetztem gruenem Rahmen und
+   Bluetenstempel. Kein Knopf (Entscheidung 06.10.2026). Das Foto steht damit nicht
+   mehr neben "Das Team" (AP-532); dort gilt wieder eine Spalte auf der Mittelachse.
+
+   Hoehe wie AP-565: Fenster abzueglich Kopf (112px, AP-583) und Ruecklink-Block
+   (--space-section-compact + 34px + Abstand). Titel senkrecht mittig zur Karte -
+   ohne Knopf entfaellt die Verschiebung nach oben aus AP-584. Bis 900px unveraendert. */
+@media (min-width: 901px) {
+  .ueber-hero {
+    --hero-rand: calc((100% - min(100% - calc(var(--gutter) * 2), var(--container))) / 2);
+    --hero-frei: calc(100svh - 112px - var(--space-section-compact) - 34px - clamp(28px, 3vw, 40px));
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    /* Nachtrag: Spalte 3 ist so breit wie die Karte (auto) - Spalte 2 endet damit genau an
+       der linken Fotokante, und Titel und Team-Block stehen mittig zwischen Containerkante
+       und Foto. Zeile 4 traegt den Team-Block. */
+    grid-template-columns: var(--hero-rand) minmax(0, 1fr) auto var(--hero-rand);
+    grid-template-rows: auto minmax(48px, 1fr) auto auto minmax(48px, 1fr);
+    min-height: calc(var(--space-section-compact) + 34px + clamp(28px, 3vw, 40px) + clamp(480px, var(--hero-frei), 900px));
+  }
+
+  /* Wasserzeichen hinter dem Titel - Bild, Groesse und Deckkraft wie AP-565. */
+  .ueber-hero::before {
+    content: "";
+    grid-column: 1 / 3;
+    grid-row: 2 / -1;
+    align-self: stretch;
+    justify-self: start;
+    width: clamp(360px, 34vw, 680px);
+    margin-left: -4%;
+    background: url("../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a") center / contain no-repeat;
+    opacity: .12;
+    filter: saturate(.7);
+    pointer-events: none;
+  }
+
+  .ueber-hero__kopf { display: contents; }
+
+  /* Ruecklink in Zeile 1 an der Containerkante - Lage und Abstand nach unten wie bisher. */
+  .ueber-hero .ueber-hero__breadcrumbs {
+    grid-column: 2 / 4;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .ueber-hero__titel {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: center;
+    margin: 0;
+    color: var(--home-on-dark, #fafaf6);
+    /* Groesser als der Ersatztitel aus AP-565 (clamp(44px, 4.4vw, 80px)): "Ueber uns" ist
+       kurz und stand bei 1440px nur 240px breit - die linke Spalte wirkte leer neben dem
+       620px breiten Schriftzug des Vorbilds. So traegt der Titel ein aehnliches Gewicht. */
+    font-size: clamp(64px, 7vw, 120px);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -.028em;
+    text-align: center;
+  }
+
+  .ueber-hero__titel span { color: var(--mobile-logo-green, #56e607); }
+
+  /* Nachtrag (Ansage 06.10.2026): "Das Team hinter dem Betrieb." und der Absatz direkt
+     unter dem Titel, mittig. Kopie aus .ueber-inhaber (siehe Markup); Schrift, Farbe und
+     Blocksatz kommen aus den Klassenregeln von .ueber-inhaber__gross/__text. Rechts haelt
+     der Block Abstand zum Foto. */
+  .ueber-hero__team {
+    grid-column: 2;
+    grid-row: 4;
+    justify-self: center;
+    width: min(100% - clamp(32px, 4vw, 64px), 480px);
+    margin-top: clamp(24px, 2.4vw, 36px);
+  }
+
+  .ueber-hero__team .ueber-inhaber__text { margin-top: 14px; }
+
+  .ueber-inhaber__textblock { display: none; }
+
+  /* Die Karte: hoechstens 460px breit und so hoch, dass sie mit 32px Luft oben und
+     unten ins freie Fenster passt. Das Bild kommt per <source media> als
+     Hochkant-Zuschnitt; ::before ist der versetzte Rahmen. */
+  .ueber-hero .ueber-hero__foto {
+    grid-column: 3;
+    grid-row: 2 / -1;
+    align-self: center;
+    justify-self: end;
+    z-index: 2;
+    /* 44vw statt 100%: in einer auto-Spalte gibt es kein Prozentmass; bei 901px ergibt das
+       dieselben 391px wie das 48fr-Raster vorher. */
+    width: min(460px, calc((var(--hero-frei) - 64px) * .75), 44vw);
+    aspect-ratio: 3 / 4;
+    margin: 0;
+    border-radius: 26px 7px 26px 7px;
+    box-shadow: 0 40px 70px -36px rgba(0, 0, 0, .95), 0 30px 60px -40px rgba(93, 224, 35, .55);
+  }
+
+  .ueber-hero .ueber-hero__foto::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: translate(12px, 12px);
+    border: 1.5px solid var(--home-lime, #8cc63f);
+    border-radius: inherit;
+    opacity: .9;
+    pointer-events: none;
+  }
+
+  .ueber-hero .ueber-hero__bild { object-position: center; }
+
+  .ueber-hero .ueber-hero__bluete {
+    right: -30px;
+    bottom: -34px;
+    z-index: 3;
+    width: 140px;
+  }
+
+  /* "Das Team" am Rechner: Ueberschrift und Absatz stehen im Held (Nachtrag), hier
+     bleiben Steg und Zitat in 600px mittig. Der Held bringt seine Luft unten selbst mit. */
+  .ueber-inhaber { padding-top: 0; }
+
+  .ueber-inhaber__raster {
+    grid-template-columns: minmax(0, 600px);
+    grid-template-areas:
+      "steg"
+      "zitat";
+  }
+
+  .ueber-inhaber__steg { margin-top: 0; }
+
+  .ueber-inhaber__gross { text-align: center; }
+}
+
+@media (max-width: 900px) {
+  .ueber-hero__team { display: none; }
 }

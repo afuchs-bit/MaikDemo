@@ -2488,3 +2488,92 @@ begrenzt auf `:where(.ueber-projekte .projects-more)`.
 Die in H.10 vorgesehenen AP-513 und AP-514 („Leistungsseiten-Vorlage“) sind damit
 gegenstandslos. Die Seiten bleiben am Desktop bewusst eine Mittelspalte, das hat der
 Auftraggeber so entschieden.
+
+## AP-568 — Kontaktformular der Leistungsseiten am Desktop
+
+- **Zwei Stellen, ein Formular:** Das Kurzformular steht in `index.html` (#anfrage) und als
+  Vorlage in `.github/scripts/lib/render.mjs` (`lpv2Contact`). Änderungen an Markup oder Texten
+  an beiden Stellen nachziehen, danach `npm run build` in `.github/scripts`.
+- **Kopie der Startseiten-Regeln:** `leistung-mobile.css` (Block AP-568 am Dateiende) kopiert
+  die Regeln aus `cta-family-home.css` (AP-555/556), `home-spacing.css` (AP-563) und
+  `home-dark.css` (AP-529), die am Desktop auf das Startseiten-Formular wirken. Ändert sich eine
+  Quelle, muss die Kopie mit.
+- **AP-512 für den Kontaktbereich aufgehoben:** Am Desktop steht nur noch der Kontaktbereich
+  außerhalb der 640-px-Spalte.
+- **Berichtigung (AP-584):** Die folgende Aussage, die Knöpfe pulsierten danach auf Tablet und
+  Desktop, war falsch – es fehlten dort die `@keyframes` (nur in `cta-family.css` bis 480 px).
+  Behoben mit AP-584.
+- **Altfehler in der AP-512-Kopie (behoben):** Drei Zeilen stammten aus dem reduced-motion-Zweig
+  von `cta-family.css`, waren aber ohne dessen Bedingung erfasst (`animation: none !important`,
+  `transition: none`). Dadurch pulsierte auf den Leistungsseiten ab 481 px kein Aktionsknopf.
+  Auf Ansage des Auftraggebers (06.10.2026: alle Knöpfe dieses Designs pulsieren auch auf
+  Tablet und Desktop) steht die Bedingung wieder dabei. Gemessen auf Baumpflege bei 402, 768
+  und 1440 px: mit Bewegung pulsieren „Baumpflege anfragen", „Jetzt anfragen" und „Anfrage
+  senden" überall gleich, mit reduzierter Bewegung keiner. Weitere Zeilen der Kopie könnten
+  denselben Erfassungsfehler tragen; bei der nächsten Pflege der Kopie gegen die Quellen prüfen.
+- **Tablet:** Die längere Überschrift bricht in der 34-rem-Spalte auf zwei Zeilen um.
+- **Build-Altlast:** Der volle Build schreibt `impressum/` und `datenschutz/` um (Brotkrumen
+  aus der Vorlage `rechtstext.html` gegen Handänderungen). Bei AP-568 nicht mitcommittet.
+
+## AP-565 — Rahmenbild-Held der Balkonkasten-Seite
+
+- **E2 Reiter „Leistung für Privatkunden":** auf Ansage entfernt (Build, Vorlage und CSS).
+- **Knopfbeschriftung:** „Balkonkästen bepflanzen lassen" bricht im 440-px-Knopf auf zwei Zeilen
+  um. Zur Abnahme.
+- **Ausrollen auf weitere Leistungen** (eigenes AP): je Seite `desktopHero`, ein Hochkant-Motiv im
+  Manifest, optional ein Schriftzug (sonst Baloo-Ersatz).
+- **Schriftzug-Pflege:** Grafik außerhalb der CMS-Bildpipeline; bei Namensänderung neu erzeugen.
+- **Mess-Chrome:** Der geteilte Chrome auf Port 9333 hing am 06.10. vollständig (eine andere
+  Sitzung hält dort Hunderte Tabs). Für AP-565 lief ein eigener Chrome auf Port 9334.
+
+## AP-584 — Puls, Held-Knopf, FAQ der Leistungsseiten
+
+- **Keyframes doppelt:** Die Puls-`@keyframes` stehen jetzt auch in `leistung-mobile.css`
+  (ab 481 px). Ändern sie sich in `cta-family.css`, beide Stellen nachziehen.
+- **FAQ-Kopie:** Die Startseiten-FAQ-Gestaltung steht als Kopie in `leistung-mobile.css`
+  (Block AP-584). Ändert sich `privat-form.css` `.private-faq*`, mitziehen.
+- **Held-Knopf und Puls-Auslöser:** Bei 1280 × 800 liegt der Knopf nur 2 px über der
+  80-%-Linie von `cta-signal.js`. Wird der Held höher oder der Titel größer, prüfen.
+- **privat-form.js auf Leistungsseiten:** wird jetzt geladen (FAQ-Animation); die anderen Module
+  steigen ohne ihre Elemente aus. Bei neuen Modulen auf diese Bedingung achten.
+
+## AP-566 — Balkonkasten: Textbereich am Desktop in zwei Spalten
+
+- **E1 Knopf in der Kachel?** Mockup F hatte den Knopf in der Kachel; umgesetzt ist er darunter
+  (Kachel und Knopf sind im Markup Geschwister). Offen – Sascha. In die Kachel wäre ein Umbau
+  von `lpv2Closing()` (eigenes AP).
+- **E2 Hinweistext:** komplett unten links wie Mockup F umgesetzt. Offen – Sascha.
+- **E3 Ausrollen auf die übrigen 37 Leistungsseiten:** eigenes AP nach Maiks Freigabe. Die
+  Spaltenlogik braucht gleich hohe H2/H3; vorher die Längen aus `content/leistungen/**/*.json`
+  auswerten.
+- **E4 Deckkraft der kurzen Striche:** .32 aus dem Mockup; falls am Monitor zu schwach: .45.
+- **Reihenfolge beim Erscheinen:** Die Kachel steht höher als der (senkrecht mittige)
+  Hinweistext und erscheint deshalb vor ihm – nie zwei im selben Schritt.
+- **main.js-Schlüssel:** `JS_VERSION` in `build-headers.mjs` steuert auch
+  `home-header-morph.js`; beide wurden mitgehoben.
+
+## AP-585 — Über uns: Rahmenbild-Held am Desktop
+
+- **Schriftzug „Über uns“:** Der Titel ist der Ersatz in Baloo 700 („uns“ grün). Liefert der
+  Auftraggeber ein Schriftzug-PNG in derselben Handschrift wie Balkonkasten, wird es wie dort
+  als Bild in die H1 gesetzt.
+- **Schärfe der Karte:** Das Original `_src/ueber-baumarbeiten.jpg` ist 900 × 1125; der
+  3:4-Zuschnitt hat 844 px Breite. Bei 460 px Karte am Retina-Bildschirm sind das 1,83 statt
+  2 Bildpunkte je Pixel. Ein größeres Original fehlt.
+- **Team-Text doppelt (Nachtrag):** „Das Team hinter dem Betrieb.“ und der Absatz stehen zweimal in
+  `ueber-uns/index.html` – im Held (ab 901 px) und in `.ueber-inhaber` (bis 900 px). Beide gleich halten.
+- **Blocksatz im Held:** In der 480-px-Spalte erzeugt der Blocksatz in einer Zeile sichtbar weite
+  Wortabstände („um – schließlich wird es auch …“). Falls störend: linksbündig oder mittig setzen.
+- **Werte doppelt:** Die Rahmenbild-Werte aus `leistung-mobile.css` (Block AP-565) stehen als
+  Kopie in `ueber-uns.css` (Block AP-585). Bei Änderungen am Leistungs-Held mitziehen.
+- **Titelgröße:** `clamp(64px, 7vw, 120px)` statt der AP-565-Ersatzgröße
+  `clamp(44px, 4.4vw, 80px)` – „Über uns“ ist kurz und stand sonst bei 1440 px nur 240 px breit.
+- **Scroll-Pfeil (AP-582) entfernt:** Auf Ansage am 06.10.2026 samt CSS und main.js-Block
+  entfernt (`JS_VERSION` gehoben, daher neuer main.js-Schlüssel auf allen Seiten).
+
+## AP-567 — Balkonkasten: Blickführung am Desktop
+
+- **E2 Dimmung 35 %:** Kontrast knapp unter AA, aber nur ≈ 2 s. Offen – Sascha (alternativ 45 %).
+- **E3 Ausrollen auf die übrigen Leistungsseiten:** H3-Länge je Seite prüfen (einzeilig per `nowrap`).
+  Eigenes AP.
+- **Ohne JS:** Die Trennlinie zeigt nur die graue Grundlinie (keine Füllung).

@@ -160,8 +160,11 @@ export function absUrl(p) {
 // AP-77: Das <img src> zeigt auf `<base>.webp`, nicht auf `bild`. Bei den Bildern aus
 // build-images.mjs ist das derselbe Pfad; bei denen aus build-hero-images.mjs liegt unter
 // `bild` das grosse Original (bis 1,2 MB), das nie ausgeliefert werden soll.
-export function renderPicture(bild, { alt = '', sizes = '100vw', className = '', priority = false, width, height, base = '', objectPosition = '' } = {}) {
+export function renderPicture(bild, { alt = '', sizes = '100vw', className = '', priority = false, width, height, base = '', objectPosition = '', desktopBild = '', desktopSizes = '460px', desktopMedia = '(min-width: 901px)' } = {}) {
   const m = imageManifest()[bild];
+  // AP-565: zweites Motiv ab Desktop (Hochkant im Rahmenbild-Held). Eigene <source>-Zeilen
+  // mit media-Attribut VOR den normalen Quellen; ohne Manifest-Eintrag entfaellt es still.
+  const dm = desktopBild ? imageManifest()[desktopBild] : null;
   const cls = className ? ` class="${escAttr(className)}"` : '';
   const position = /^\d{1,3}% \d{1,3}%$/.test(objectPosition)
     ? ` style="object-position:${escAttr(objectPosition)}"` : '';
@@ -171,20 +174,26 @@ export function renderPicture(bild, { alt = '', sizes = '100vw', className = '',
     const wh = width && height ? ` width="${width}" height="${height}"` : '';
     return `<img${cls}${position} src="${rel(bild)}" alt="${escAttr(alt)}"${wh} ${load}>`;
   }
-  const set = (ext) => widthsFor(m, ext).map((w) => `${rel(`${m.base}-${w}.${ext}`)} ${w}w`).join(', ');
+  const set = (ext, entry = m) => widthsFor(entry, ext).map((w) => `${rel(`${entry.base}-${w}.${ext}`)} ${w}w`).join(', ');
+  const desktopSources = dm
+    ? `<source media="${escAttr(desktopMedia)}" type="image/avif" sizes="${escAttr(desktopSizes)}" srcset="${set('avif', dm)}">
+        <source media="${escAttr(desktopMedia)}" type="image/webp" sizes="${escAttr(desktopSizes)}" srcset="${set('webp', dm)}">
+        `
+    : '';
   return `<picture>
-        <source type="image/avif" sizes="${escAttr(sizes)}" srcset="${set('avif')}">
+        ${desktopSources}<source type="image/avif" sizes="${escAttr(sizes)}" srcset="${set('avif')}">
         <source type="image/webp" sizes="${escAttr(sizes)}" srcset="${set('webp')}">
         <img${cls}${position} src="${rel(fallbackSrc(m))}" alt="${escAttr(alt)}" width="${width || m.width}" height="${height || m.height}" ${load}>
       </picture>`;
 }
 
 // Preload-Link fuer das LCP-Bild einer Seite (AVIF-srcset, relativ zur Seitentiefe).
-function lcpPreloadFor(bild, sizes = '100vw', base = '') {
+function lcpPreloadFor(bild, sizes = '100vw', base = '', media = '') {
   const m = bild ? imageManifest()[bild] : null;
+  const mediaAttr = media ? ` media="${escAttr(media)}"` : '';
   if (m) {
     const srcset = widthsFor(m, 'avif').map((w) => `${escAttr(relAsset(`${m.base}-${w}.avif`, base))} ${w}w`).join(', ');
-    return `<link rel="preload" as="image" type="image/avif" imagesizes="${escAttr(sizes)}" imagesrcset="${srcset}" />`;
+    return `<link rel="preload" as="image" type="image/avif"${mediaAttr} imagesizes="${escAttr(sizes)}" imagesrcset="${srcset}" />`;
   }
   return bild ? `<link rel="preload" as="image" href="${escAttr(relAsset(bild, base))}" fetchpriority="high" />` : '';
 }
@@ -850,7 +859,7 @@ function lpMyths(arr) {
       </ul>`;
 }
 
-function lpFaq(arr, mobileCopy = false) {
+function lpFaq(arr, mobileCopy = false, gruppenTitel = '') {
   const renderQuestion = mobileCopy ? escMobileCopy : esc;
   const renderAnswer = mobileCopy
     ? (copy) => escMobileCopy(copy, { minTailLength: 28, maxTailLength: 44, maxTailWords: 6 })
@@ -859,6 +868,17 @@ function lpFaq(arr, mobileCopy = false) {
           <summary><span>${renderQuestion(f.frage)}</span><span class="chev" aria-hidden="true"></span></summary>
           <div class="faq-body"><p>${renderAnswer(f.antwort)}</p></div>
         </details>`).join('\n        ');
+  // AP-584: Mit gruppenTitel wie eine Gruppe der Startseiten-FAQ (privat-form.css .private-faq-group):
+  // Huelle + gruene Ueberschrift (Name der Leistung) + Haken fuer die Animation in privat-form.js.
+  // Bis 900px loest sich die Huelle auf und die Ueberschrift ist aus (leistung-mobile.css).
+  if (gruppenTitel) {
+    return `<div class="lpv2-faq-gruppe">
+        <h3 class="lpv2-faq-gruppe__titel">${esc(gruppenTitel)}</h3>
+        <div class="faq-list" data-private-faq-group>
+        ${items}
+        </div>
+      </div>`;
+  }
   return `<div class="faq-list">
         ${items}
       </div>`;
@@ -1154,6 +1174,8 @@ function lpv2ContentSection(leistung, base) {
   const late = leistung.desktopLayout === 'trichter';
   const liAttrs = late ? ' class="reveal" data-reveal-late' : '';
   const copyAttrs = late ? ' reveal" data-reveal-late' : '"';
+  // AP-566: leeres Element fuer die Trennlinie am Desktop (Fuellung + Lichtpunkt, CSS).
+  const dividerHtml = late ? '<span class="lpv2-divider-fill" aria-hidden="true"></span>' : '';
   const intro = lpv2MobileParagraphs(leistung.einstieg || [], leistung.mobileEinstieg);
   const contentBlocks = (leistung.inhalt || []).map((block) => {
     const paragraphs = lpv2MobileParagraphs(
@@ -1176,7 +1198,7 @@ function lpv2ContentSection(leistung, base) {
     return `<section class="lpv2-content-service${modifier} reveal">${heading}${list}${diagram}${copy}</section>`;
   }).join('');
   return `<section class="lpv2-content-feature section" aria-labelledby="lpv2-content-title">
-      <div class="container">
+      <div class="container">${dividerHtml}
         <article class="lpv2-content-editorial">
           <header class="lpv2-content-lead reveal"><h2 class="lpv2-content-title${mobileTitleLengthClass(leistung.unterzeile, 48, 'lpv2-content-title--long')}" id="lpv2-content-title">${esc(leistung.unterzeile)}</h2><div class="lpv2-content-flow-copy lpv2-content-flow-copy--intro">${intro}</div></header>
           ${contentBlocks}
@@ -1256,15 +1278,26 @@ function lpv2Contact(leistung, base, homepageExact = false) {
             <form class="anf__form anf__karte" id="anfrage" data-anf-modus="kurz" data-anf-form data-endpoint="/api/anfrage" novalidate>
               <div class="anf__honeypot" aria-hidden="true"><label for="anf-hp">Firmenwebsite (bitte frei lassen)</label><input type="text" id="anf-hp" name="_hp_website" tabindex="-1" autocomplete="off"></div>
               <input type="hidden" name="modus" value="kurz" data-anf-modus-feld><input type="hidden" name="geladen_um" value="" data-anf-zeitstempel><input class="anf__leistung" type="hidden" name="leistung" value="${escAttr(leistung.h1)}">${unavailableTemplate}
-              <div class="anf__kanaele"><a class="anf__kanal" href="tel:+491711738943"><span class="anf__kanal-icon anf__kanal-icon--tel" aria-hidden="true"></span><span><small>${esc(phoneEyebrow)}</small><strong>0171 / 173 89 43</strong></span></a><a class="anf__kanal" href="${escAttr(whatsappHref)}" target="_blank" rel="noopener"><span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span><span><small>WhatsApp</small><strong>${esc(whatsappAction)}</strong></span></a><a class="anf__kanal anf__kanal--mail" href="${escAttr(emailHref)}"><span class="anf__kanal-icon anf__kanal-icon--mail" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a></div>
+              <div class="anf__kanaele"><a class="anf__kanal" href="tel:+491711738943"><span class="anf__kanal-icon anf__kanal-icon--tel" aria-hidden="true"></span><span><small>${esc(phoneEyebrow)}</small><strong>0171 / 173 89 43</strong></span></a><a class="anf__kanal" href="${escAttr(whatsappHref)}" target="_blank" rel="noopener"><span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span><span><small>WhatsApp</small><strong>${esc(whatsappAction)}</strong></span></a><a class="anf__kanal anf__kanal--mail" href="${escAttr(emailHref)}"><span class="anf__kanal-icon anf__kanal-icon--mail" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a></div>
+              <!-- AP-568: Huellen wie im Kurzformular der Startseite (index.html, #anfrage).
+                   Bis 900px loesen sie sich per display: contents auf (anfrage.css), ab 901px
+                   tragen sie die Startseiten-Anordnung (AP-555). Beide Stellen gleich halten. -->
+              <div class="anf__eingabe">
               <p class="anf__oder"><span>${esc(separator)}</span></p>
+              <div class="anf__kontaktfelder">
               <p class="anf__feld"><label for="anf-name">${esc(nameLabel)}</label><input type="text" id="anf-name" name="name" required maxlength="120" autocomplete="name" placeholder="${escAttr(namePlaceholder)}"></p>
               <p class="anf__feld"><label for="anf-kontakt">${esc(contactLabel)}</label><input type="text" id="anf-kontakt" name="kontakt" required maxlength="160" autocomplete="tel" placeholder="${escAttr(contactPlaceholder)}" inputmode="text"></p>
+              </div>
               <p class="anf__feld anf__feld--frei" id="anf-nachricht-feld"><label for="anf-nachricht">${esc(messageLabel)}</label><textarea id="anf-nachricht" name="nachricht" required maxlength="4000" rows="4" placeholder="${escAttr(messagePlaceholder)}"></textarea></p>
+              <div class="anf__aktionen">
+              <div class="anf__foto-gruppe">
               <p class="anf__feld anf__feld--foto" data-anf-foto-feld><label class="anf__foto"><input type="file" id="anf-fotos" name="fotos" accept="image/jpeg,image/png,image/webp,.heic,.heif" multiple data-anf-fotos><span class="anf__foto-kachel"><span class="anf__foto-plus" aria-hidden="true"></span><span class="anf__foto-wort">${esc(photoLabel)}</span></span></label><small class="anf__foto-stand" data-anf-foto-auswahl role="status" hidden></small></p>
               <p class="anf__einwilligung" data-anf-foto-freigabe hidden><label><input type="checkbox" name="foto_freigabe" value="1"><span>Ich darf diese Aufnahmen weitergeben. Personen, die nicht gefragt wurden, sind darauf nicht zu erkennen.</span></label></p>
+              </div>
               <div class="anf__abschluss"><button type="submit" class="btn btn-primary maik-cta maik-cta--attention" data-anf-senden>${submitArtwork}<span class="anf-senden__label maik-cta__label">${esc(submitLabel)}</span><span class="anf-senden__arrow maik-cta__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild maik-cta__arrow-image" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span></button><p class="anf__status" data-anf-status role="status" aria-live="polite"></p></div>
               <p class="anf__rechtliches">Wie wir Ihre Angaben verarbeiten, steht in der <a href="${base}datenschutz/">Datenschutzerklärung</a>.</p>
+              </div>
+              </div>
             </form>
           </div>
         </div>
@@ -1335,6 +1368,15 @@ export async function renderLeistungPage(opts) {
     const heroTitleHtml = splitHeroTitle
       ? `<span class="lpv2-title-full">${esc(presented.h1)}</span><span class="lpv2-title-lines" aria-hidden="true">${presented.heroTitleLines.map((line) => `<span>${esc(line)}</span>`).join('')}</span>`
       : esc(presented.h1);
+    // AP-565: Rahmenbild-Held am Desktop (desktopHero "rahmenbild"). Schriftzug als Titel und
+    // Hochkant-Motiv; unter 901px per CSS ausgeblendet. Herkunftszeile, Anruf-Knopf, Nachweise
+    // und Karten-Reiter aus dem Entwurf hat der Auftraggeber gestrichen (06.10.2026).
+    const rahmenbild = presented.desktopHero === 'rahmenbild';
+    const heroGraphic = rahmenbild && presented.desktopHeroGraphic?.bild ? presented.desktopHeroGraphic : null;
+    const assetPath = (p) => escAttr(`${base}${String(p).replace(/^\/+/, '')}`);
+    const heroGraphicHtml = heroGraphic
+      ? `<img class="lpv2-title-graphic-desktop" src="${assetPath(heroGraphic.bild)}"${heroGraphic.bild1x ? ` srcset="${assetPath(heroGraphic.bild1x)} 1x, ${assetPath(heroGraphic.bild)} 2x"` : ''} alt="" aria-hidden="true" width="${Number(heroGraphic.width) || 1400}" height="${Number(heroGraphic.height) || 508}" fetchpriority="high" decoding="async">`
+      : '';
     const hideProcess = presented.hideProcess === true;
     const homepageContact = presented.contactVariant === 'homepage';
     const processSection = hideProcess ? '' : `<section class="lpv2-process section" id="ablauf" aria-labelledby="lpv2-process-title">
@@ -1346,7 +1388,7 @@ export async function renderLeistungPage(opts) {
         ${lpv2Process(base)}
       </div>
     </section>`;
-    const contactTitle = presented.contactTitle || 'Der erste Schritt zu Ihrem Projekt';
+    const contactTitle = presented.contactTitle || 'Der erste Schritt zu Ihrem Gartenprojekt';
     const contactIntro = presented.contactIntro
       ? `\n          <p class="lead">${esc(presented.contactIntro)}</p>`
       : '';
@@ -1400,10 +1442,12 @@ export async function renderLeistungPage(opts) {
       mobileCssVersion: escAttr(cssVersion),
       ctaFamilyVersion: escAttr(presented.ctaFamilyVersion || '20260919a'),
       heroVariantClass: `${imageFirstHero ? ' lpv2-page--image-first' : ''}${heroTitleAbove ? ' lpv2-page--title-above' : ''}${heroTitleGraphic ? ' lpv2-page--title-graphic' : ''}`,
-      pageVariantClass: `${presented.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${presented.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}${presented.desktopLayout === 'trichter' ? ' lpv2-page--desktop-trichter' : ''}`,
+      pageVariantClass: `${presented.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${presented.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}${presented.desktopLayout === 'trichter' ? ' lpv2-page--desktop-trichter' : ''}${rahmenbild ? ' lpv2-page--desktop-rahmenbild' : ''}`,
       title: esc(presented.title), ogTitle: escAttr(presented.title),
       description: escAttr(truncate(presented.metaDescription, 160)), canonical: escAttr(canonical),
-      ogImage: escAttr(absUrl(hero.bild)), heroPreload: lcpPreloadFor(hero.bild, heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', base),
+      ogImage: escAttr(absUrl(hero.bild)), heroPreload: rahmenbild && presented.desktopHeroPortrait
+        ? lcpPreloadFor(hero.bild, heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', base, '(max-width: 900px)') + lcpPreloadFor(presented.desktopHeroPortrait, '460px', base, '(min-width: 901px)')
+        : lcpPreloadFor(hero.bild, heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', base),
       breadcrumbJsonLd: leistungBreadcrumb(presented.h1, canonical, welt),
       heroBreadcrumbBefore: mobileBalkonkasten ? mobileHeroBreadcrumb : imageFirstHero ? standardHeroBreadcrumb : '',
       heroBreadcrumbInside: mobileBalkonkasten ? desktopHeroBreadcrumb : imageFirstHero ? '' : standardHeroBreadcrumb,
@@ -1411,11 +1455,11 @@ export async function renderLeistungPage(opts) {
       serviceJsonLd: serviceJsonLd(presented, canonical), faqJsonLd: faqJsonLd(presented.faq),
       logo: logo.trim(), header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
       footer: fill(footer, footerTemplateData(base, seitenPfad)).trim(),
-      h1: heroTitleHtml, titleAria: splitHeroTitle ? ` aria-label="${escAttr(presented.h1)}"` : '', titleClass: `${splitHeroTitle ? ' lpv2-title--split' : ''}${heroTitleGraphic ? ' lpv2-title--visually-hidden' : ''}`,
+      h1: heroTitleHtml + heroGraphicHtml, titleAria: splitHeroTitle ? ` aria-label="${escAttr(presented.h1)}"` : '', titleClass: `${splitHeroTitle ? ' lpv2-title--split' : ''}${heroTitleGraphic ? ' lpv2-title--visually-hidden' : ''}`,
       subheading: esc(presented.unterzeile),
       introHtml: presented.einstieg.map((p) => `<p>${esc(p)}</p>`).join(''),
       heroCta: lpv2Cta(presented.ctaLabel, base, presented.ctaHref || '#anfrage'),
-      heroPicture: renderPicture(hero.bild, { alt: hero.alt || '', sizes: heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', priority: true, width: hero.width, height: hero.height, base, objectPosition: hero.objectPosition }),
+      heroPicture: renderPicture(hero.bild, { alt: hero.alt || '', sizes: heroTitleAbove ? '(max-width: 480px) calc(100vw - 64px), 100vw' : '100vw', priority: true, width: hero.width, height: hero.height, base, objectPosition: hero.objectPosition, desktopBild: rahmenbild ? presented.desktopHeroPortrait || '' : '' }),
       heroBrand: imageFirstHero
         ? `<img class="lpv2-hero-brand" src="${base}assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" alt="" width="210" height="180" aria-hidden="true" decoding="async">`
         : '',
@@ -1438,7 +1482,7 @@ export async function renderLeistungPage(opts) {
       relatedVariantClass: presented.relatedVariant === 'homepage' ? ' lpv2-related--homepage' : '',
       faqIndex: hideProcess ? '03' : '04',
       relatedIndex: hideProcess ? '05' : '06',
-      faqHtml: lpFaq(presented.faq || [], mobileBalkonkasten), contactSection,
+      faqHtml: lpFaq(presented.faq || [], mobileBalkonkasten, presented.h1), contactSection,
       relatedHtml: lpv2Related(presented, serviceIndex, base, presented.relatedVariant === 'homepage'),
       relatedAllServices: mobileBalkonkasten
         ? `<div class="lpv2-breadcrumb-back lpv2-related-all reveal"><a href="${escAttr(allServicesHref)}"><span>Alle Leistungen</span><img src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" loading="lazy" decoding="async"></a></div>`

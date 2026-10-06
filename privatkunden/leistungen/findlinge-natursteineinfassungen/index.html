@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="../../../assets/css/form-trust-card.css?v=20260902g" />
 <link rel="stylesheet" href="../../../assets/css/anfrage.css?v=20261004b" />
 <link rel="stylesheet" href="../../../assets/css/cta-family.css?v=20260926b" />
-<link rel="stylesheet" href="../../../assets/css/leistung-mobile.css?v=20261006a" />
+<link rel="stylesheet" href="../../../assets/css/leistung-mobile.css?v=20261006o" />
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -525,7 +525,9 @@
           <p class="lpv2-section-index" aria-hidden="true">03</p>
           <h2 id="lpv2-faq-title">Häufige Fragen</h2>
         </header>
-        <div class="faq-list">
+        <div class="lpv2-faq-gruppe">
+        <h3 class="lpv2-faq-gruppe__titel">Findlinge und Natursteineinfassungen</h3>
+        <div class="faq-list" data-private-faq-group>
         <details>
           <summary><span>Kann ein Findling <span class="lpv2-mobile-keep">individuell gestaltet werden?</span></span><span class="chev" aria-hidden="true"></span></summary>
           <div class="faq-body"><p>Ja. <span class="lpv2-mobile-keep">Je nach</span> Stein sind beispielsweise farbige Beschriftungen oder Kernbohrungen möglich. <span class="lpv2-mobile-keep">So kann</span> <span class="lpv2-mobile-keep">aus einem</span> Naturstein ein persönlicher Blickfang, ein Quellstein oder ein Element Ihrer Gartenbeleuchtung werden. Die passende Einbindung <span class="lpv2-mobile-keep">in Ihren</span> Garten <span class="lpv2-mobile-keep">planen und gestalten wir gerne mit.</span></p></div>
@@ -534,6 +536,7 @@
           <summary><span>Passen große Steine auch <span class="lpv2-mobile-keep">in einen kleinen Garten?</span></span><span class="chev" aria-hidden="true"></span></summary>
           <div class="faq-body"><p>Ein einzelner, gut platzierter Stein kann auch <span class="lpv2-mobile-keep">auf kleiner</span> Fläche wirken. Entscheidend sind die Proportionen <span class="lpv2-mobile-keep">und das</span> Zusammenspiel <span class="lpv2-mobile-keep">mit Pflanzen</span> <span class="lpv2-mobile-keep">und freien</span> Flächen. Wir <span class="lpv2-mobile-keep">zeigen Ihnen geeignete Möglichkeiten.</span></p></div>
         </details>
+        </div>
       </div>
       </div>
     </section>
@@ -541,7 +544,7 @@
 <section class="section private-contact lpv2-home-contact" id="kontakt" aria-labelledby="anfrage-title">
       <div class="container">
         <header class="private-contact-intro reveal">
-          <h2 class="type-section-title maik-section-title" id="anfrage-title">Der erste Schritt zu Ihrem Projekt</h2>
+          <h2 class="type-section-title maik-section-title" id="anfrage-title">Der erste Schritt zu Ihrem Gartenprojekt</h2>
         </header>
         <div class="private-contact-layout">
         <div class="b2b-form-column reveal">
@@ -550,15 +553,26 @@
             <form class="anf__form anf__karte" id="anfrage" data-anf-modus="kurz" data-anf-form data-endpoint="/api/anfrage" novalidate>
               <div class="anf__honeypot" aria-hidden="true"><label for="anf-hp">Firmenwebsite (bitte frei lassen)</label><input type="text" id="anf-hp" name="_hp_website" tabindex="-1" autocomplete="off"></div>
               <input type="hidden" name="modus" value="kurz" data-anf-modus-feld><input type="hidden" name="geladen_um" value="" data-anf-zeitstempel><input class="anf__leistung" type="hidden" name="leistung" value="Findlinge und Natursteineinfassungen">
-              <div class="anf__kanaele"><a class="anf__kanal" href="tel:+491711738943"><span class="anf__kanal-icon anf__kanal-icon--tel" aria-hidden="true"></span><span><small>Anrufen</small><strong>0171 / 173 89 43</strong></span></a><a class="anf__kanal" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener"><span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span><span><small>WhatsApp</small><strong>Fotos senden oder direkt anfragen</strong></span></a><a class="anf__kanal anf__kanal--mail" href="mailto:maik@rohdich.de?subject=Gartenanfrage"><span class="anf__kanal-icon anf__kanal-icon--mail" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a></div>
+              <div class="anf__kanaele"><a class="anf__kanal" href="tel:+491711738943"><span class="anf__kanal-icon anf__kanal-icon--tel" aria-hidden="true"></span><span><small>Anrufen</small><strong>0171 / 173 89 43</strong></span></a><a class="anf__kanal" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener"><span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span><span><small>WhatsApp</small><strong>Fotos senden oder direkt anfragen</strong></span></a><a class="anf__kanal anf__kanal--mail" href="mailto:maik@rohdich.de?subject=Gartenanfrage"><span class="anf__kanal-icon anf__kanal-icon--mail" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a></div>
+              <!-- AP-568: Huellen wie im Kurzformular der Startseite (index.html, #anfrage).
+                   Bis 900px loesen sie sich per display: contents auf (anfrage.css), ab 901px
+                   tragen sie die Startseiten-Anordnung (AP-555). Beide Stellen gleich halten. -->
+              <div class="anf__eingabe">
               <p class="anf__oder"><span>Anfrageformular hier absenden</span></p>
+              <div class="anf__kontaktfelder">
               <p class="anf__feld"><label for="anf-name">Wie möchten Sie angesprochen werden?</label><input type="text" id="anf-name" name="name" required maxlength="120" autocomplete="name" placeholder="Vor- und Nachname"></p>
               <p class="anf__feld"><label for="anf-kontakt">Wie erreichen wir Sie?</label><input type="text" id="anf-kontakt" name="kontakt" required maxlength="160" autocomplete="tel" placeholder="Telefonnummer oder E-Mail" inputmode="text"></p>
+              </div>
               <p class="anf__feld anf__feld--frei" id="anf-nachricht-feld"><label for="anf-nachricht">Worum geht es?</label><textarea id="anf-nachricht" name="nachricht" required maxlength="4000" rows="4" placeholder="Eine kurze Beschreibung genügt — was ist zu tun, und wo?"></textarea></p>
+              <div class="anf__aktionen">
+              <div class="anf__foto-gruppe">
               <p class="anf__feld anf__feld--foto" data-anf-foto-feld><label class="anf__foto"><input type="file" id="anf-fotos" name="fotos" accept="image/jpeg,image/png,image/webp,.heic,.heif" multiple data-anf-fotos><span class="anf__foto-kachel"><span class="anf__foto-plus" aria-hidden="true"></span><span class="anf__foto-wort">Foto auswählen</span></span></label><small class="anf__foto-stand" data-anf-foto-auswahl role="status" hidden></small></p>
               <p class="anf__einwilligung" data-anf-foto-freigabe hidden><label><input type="checkbox" name="foto_freigabe" value="1"><span>Ich darf diese Aufnahmen weitergeben. Personen, die nicht gefragt wurden, sind darauf nicht zu erkennen.</span></label></p>
+              </div>
               <div class="anf__abschluss"><button type="submit" class="btn btn-primary maik-cta maik-cta--attention" data-anf-senden><svg class="maik-cta__halo" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="maik-cta__halo-line--wide" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--medium" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/><path class="maik-cta__halo-line--core" d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/></svg><svg class="anf-senden__frame maik-cta__frame" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><svg class="anf-senden__shape maik-cta__shape" viewBox="0 0 360 64" preserveAspectRatio="none" aria-hidden="true" focusable="false"><use href="#maik-cta-shape"/></svg><span class="anf-senden__label maik-cta__label">Anfrage senden</span><span class="anf-senden__arrow maik-cta__arrow" aria-hidden="true"><img class="anf-senden__arrow-bild maik-cta__arrow-image" src="../../../assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span></button><p class="anf__status" data-anf-status role="status" aria-live="polite"></p></div>
               <p class="anf__rechtliches">Wie wir Ihre Angaben verarbeiten, steht in der <a href="../../../datenschutz/">Datenschutzerklärung</a>.</p>
+              </div>
+              </div>
             </form>
           </div>
         </div>
@@ -633,9 +647,10 @@
 </footer>
 <!-- BUILD:site-footer:end -->
 
-<script src="../../../assets/js/main.js?v=20261002i" defer></script>
+<script src="../../../assets/js/main.js?v=20261006c" defer></script>
 <script src="../../../assets/js/cta-signal.js?v=20260926b" defer></script>
 <script src="../../../assets/js/leistung-gallery-grid.js?v=20260930a" defer></script>
 <script src="../../../assets/js/anfrage.js?v=20261004c" defer></script>
+<script src="../../../assets/js/privat-form.js?v=20261006a" defer></script>
 </body>
 </html>

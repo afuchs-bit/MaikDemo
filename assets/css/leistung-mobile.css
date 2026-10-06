@@ -56,50 +56,50 @@
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) :is(.mr-ueber, .private-request-paths, .private-process-updated, .private-proof-bento, .private-contact, .private-faq){--home-space-copy: 8px; --home-space-lead: 16px; --home-space-list: 24px; --home-space-block: 40px; --home-space-feature: 48px; --home-space-section: 40px; padding-block: var(--home-space-section);}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .iphone-service-card{min-height: 112px; padding-block: 12px;}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact-layout{margin-top: var(--home-space-block);}}
-@media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__kanaele{gap: 12px;}}
-@media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__oder{margin-block: 32px;}}
-@media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__feld{gap: var(--home-space-copy); margin-bottom: var(--home-space-list);}}
-@media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__feld--frei{margin-bottom: var(--home-space-list);}}
-@media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__rechtliches{margin-block: var(--home-space-list) 0;}}
+@media (min-width:481px) and (max-width:900px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__kanaele{gap: 12px;}}
+@media (min-width:481px) and (max-width:900px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__oder{margin-block: 32px;}}
+@media (min-width:481px) and (max-width:900px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__feld{gap: var(--home-space-copy); margin-bottom: var(--home-space-list);}}
+@media (min-width:481px) and (max-width:900px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__feld--frei{margin-bottom: var(--home-space-list);}}
+@media (min-width:481px) and (max-width:900px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__rechtliches{margin-block: var(--home-space-list) 0;}}
 @media (min-width:481px){html.home-theme-dark :where(.lpv2-main) :is(.private-request-paths, .private-process-updated, .private-proof-bento, .private-contact, .private-faq){--home-surface-low: #22271f; --home-surface-card: #252b22; --home-surface-high: #2b3327; --home-surface-border: rgba(183, 203, 160, .18);}}
-@media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__kanal{background: var(--home-surface-card); border-color: var(--home-surface-border); box-shadow: rgba(255, 255, 255, 0.035) 0px 1px 0px inset;}}
-@media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__feld :is(input, textarea){background: var(--home-surface-low); border-color: var(--home-surface-border);}}
-@media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__feld :is(input, textarea):focus-visible{background: var(--home-surface-card); border-color: rgba(140, 198, 63, 0.65); box-shadow: rgba(255, 255, 255, 0.035) 0px 1px 0px inset;}}
-@media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact a.anf__kanal:active{background: var(--home-surface-high); border-color: rgba(140, 198, 63, 0.5);}}
-@media (min-width:481px){html.home-theme-dark :where(.lpv2-main) .private-contact a.anf__kanal:hover{background: var(--home-surface-high); border-color: rgba(140, 198, 63, 0.5);}}
-@media (min-width:561px){:where(.lpv2-main) .anf__kanaele{grid-template-columns: 1fr;}}
-@media (min-width:481px){:where(.lpv2-main) .anf__kanal-icon--mail{color: var(--mobile-logo-green);}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__karte{padding: 0px; border: 0px; border-radius: 0px; background: transparent; box-shadow: none;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__kanaele{grid-template-columns: 1fr; gap: 10px;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__oder{margin-block: 28px;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__feld label{font-size: clamp(12px, 3.45cqw, 14px);}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__feld input,:where(.lpv2-main) .private-contact .anf__feld textarea{min-height: 52px; padding: 13px 15px; border-color: rgba(151, 206, 32, 0.19); border-radius: 15px 5px; background: rgba(255, 255, 255, 0.024); box-shadow: rgba(255, 255, 255, 0.024) 0px 1px 0px inset; transition: border-color .18s var(--ease), background-color .18s var(--ease), box-shadow .18s var(--ease);}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__feld input::placeholder,:where(.lpv2-main) .private-contact .anf__feld textarea::placeholder{color: rgba(235, 239, 229, 0.42); opacity: 1;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__feld input:focus-visible,:where(.lpv2-main) .private-contact .anf__feld textarea:focus-visible{outline: 0px; border-color: rgba(140, 198, 63, 0.22); background: rgba(49, 82, 0, 0.12); box-shadow: rgba(255, 255, 255, 0.035) 0px 1px 0px inset, rgba(0, 0, 0, 0.8) 0px 12px 24px -24px;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__kanal{grid-template-columns: 40px minmax(0px, 1fr); gap: 11px; block-size: 64px; min-block-size: 64px; padding: 8px 12px; border-color: rgba(151, 206, 32, 0.19); border-radius: 12px; background: transparent; box-sizing: border-box;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__kanal-icon{inline-size: 40px; block-size: 40px; border-radius: 10px;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__kanal-icon--tel,:where(.lpv2-main) .private-contact .anf__kanal-icon--mail{background-color: rgba(5, 10, 5, 0.58);}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__kanal-icon--tel{background-size: 24px 24px;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__kanal-icon--wa{background-color: rgb(37, 211, 102); background-size: 22px 22px;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__kanal small{color: rgba(255, 255, 255, 0.52); font-size: 0.7rem; font-weight: 750; letter-spacing: 0.09em; line-height: 1.2;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__kanal strong{overflow-wrap: normal; color: rgb(255, 255, 255); font-size: 0.95rem; line-height: 1.2; white-space: nowrap;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__foto-kachel{min-block-size: 58px; padding: 10px 15px; border-color: rgba(151, 206, 32, 0.19); border-radius: 15px 5px;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__foto:active .anf__foto-kachel{border-color: rgba(140, 198, 63, 0.22); background-color: rgba(49, 82, 0, 0.12);}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__einwilligung{margin-bottom: 22px; font-size: 0.8rem;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact a.anf__kanal:active{border-color: rgba(140, 198, 63, 0.22); background: rgba(49, 82, 0, 0.12); box-shadow: rgba(255, 255, 255, 0.035) 0px 1px 0px inset, rgba(0, 0, 0, 0.8) 0px 12px 24px -24px;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__abschluss{display: block; width: 100%;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden]{justify-content: center; width: 100%; min-height: 64px; padding: 7px 22px; border: 0px; border-radius: 14px; background: none; color: rgb(23, 25, 22); font: 800 clamp(1rem, 4.3cqw, 1.125rem)/1.2 var(--display); box-shadow: none;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__shape{display: block;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden]{justify-content: space-between; padding: 7px 10px 7px 22px;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__label{font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive; font-size: clamp(0.9rem, 4.25cqw, 1.0625rem); font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: 0.025em; text-transform: uppercase;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__arrow{position: relative; z-index: 1; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 62px; height: 40px; margin-right: 12px; border-radius: 999px; background: rgb(23, 25, 22); box-shadow: rgba(151, 206, 32, 0.16) 0px 0px 0px 1px inset; transition: transform .12s var(--ease);}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__arrow-bild{display: block; width: 46px; height: auto; object-fit: contain;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__frame{position: absolute; inset: 0px; z-index: -3; display: block; width: 100%; height: 100%; overflow: visible; fill: none; stroke: var(--home-lime); stroke-width: 1.5px; transform: translate(6px, 6px); pointer-events: none;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden]:active :is(.anf-senden__label, .anf-senden__arrow){transform: translate(2px, 2px);}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden]:active{background: none; transform: translateY(1px);}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden]:active .anf-senden__shape{fill: rgb(130, 185, 59);}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact [data-anf-senden]:focus-visible{outline: 2px solid var(--home-dark-accent); outline-offset: 5px;}}
-@media (min-width:481px){:where(.lpv2-main) .private-contact .anf__abschluss + .anf__rechtliches{margin-top: 28px;}}
+@media (min-width:481px) and (max-width:900px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__kanal{background: var(--home-surface-card); border-color: var(--home-surface-border); box-shadow: rgba(255, 255, 255, 0.035) 0px 1px 0px inset;}}
+@media (min-width:481px) and (max-width:900px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__feld :is(input, textarea){background: var(--home-surface-low); border-color: var(--home-surface-border);}}
+@media (min-width:481px) and (max-width:900px){html.home-theme-dark :where(.lpv2-main) .private-contact .anf__feld :is(input, textarea):focus-visible{background: var(--home-surface-card); border-color: rgba(140, 198, 63, 0.65); box-shadow: rgba(255, 255, 255, 0.035) 0px 1px 0px inset;}}
+@media (min-width:481px) and (max-width:900px){html.home-theme-dark :where(.lpv2-main) .private-contact a.anf__kanal:active{background: var(--home-surface-high); border-color: rgba(140, 198, 63, 0.5);}}
+@media (min-width:481px) and (max-width:900px){html.home-theme-dark :where(.lpv2-main) .private-contact a.anf__kanal:hover{background: var(--home-surface-high); border-color: rgba(140, 198, 63, 0.5);}}
+@media (min-width:561px) and (max-width:900px){:where(.lpv2-main) .anf__kanaele{grid-template-columns: 1fr;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .anf__kanal-icon--mail{color: var(--mobile-logo-green);}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__karte{padding: 0px; border: 0px; border-radius: 0px; background: transparent; box-shadow: none;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__kanaele{grid-template-columns: 1fr; gap: 10px;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__oder{margin-block: 28px;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__feld label{font-size: clamp(12px, 3.45cqw, 14px);}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__feld input,:where(.lpv2-main) .private-contact .anf__feld textarea{min-height: 52px; padding: 13px 15px; border-color: rgba(151, 206, 32, 0.19); border-radius: 15px 5px; background: rgba(255, 255, 255, 0.024); box-shadow: rgba(255, 255, 255, 0.024) 0px 1px 0px inset; transition: border-color .18s var(--ease), background-color .18s var(--ease), box-shadow .18s var(--ease);}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__feld input::placeholder,:where(.lpv2-main) .private-contact .anf__feld textarea::placeholder{color: rgba(235, 239, 229, 0.42); opacity: 1;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__feld input:focus-visible,:where(.lpv2-main) .private-contact .anf__feld textarea:focus-visible{outline: 0px; border-color: rgba(140, 198, 63, 0.22); background: rgba(49, 82, 0, 0.12); box-shadow: rgba(255, 255, 255, 0.035) 0px 1px 0px inset, rgba(0, 0, 0, 0.8) 0px 12px 24px -24px;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__kanal{grid-template-columns: 40px minmax(0px, 1fr); gap: 11px; block-size: 64px; min-block-size: 64px; padding: 8px 12px; border-color: rgba(151, 206, 32, 0.19); border-radius: 12px; background: transparent; box-sizing: border-box;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__kanal-icon{inline-size: 40px; block-size: 40px; border-radius: 10px;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__kanal-icon--tel,:where(.lpv2-main) .private-contact .anf__kanal-icon--mail{background-color: rgba(5, 10, 5, 0.58);}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__kanal-icon--tel{background-size: 24px 24px;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__kanal-icon--wa{background-color: rgb(37, 211, 102); background-size: 22px 22px;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__kanal small{color: rgba(255, 255, 255, 0.52); font-size: 0.7rem; font-weight: 750; letter-spacing: 0.09em; line-height: 1.2;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__kanal strong{overflow-wrap: normal; color: rgb(255, 255, 255); font-size: 0.95rem; line-height: 1.2; white-space: nowrap;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__foto-kachel{min-block-size: 58px; padding: 10px 15px; border-color: rgba(151, 206, 32, 0.19); border-radius: 15px 5px;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__foto:active .anf__foto-kachel{border-color: rgba(140, 198, 63, 0.22); background-color: rgba(49, 82, 0, 0.12);}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__einwilligung{margin-bottom: 22px; font-size: 0.8rem;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact a.anf__kanal:active{border-color: rgba(140, 198, 63, 0.22); background: rgba(49, 82, 0, 0.12); box-shadow: rgba(255, 255, 255, 0.035) 0px 1px 0px inset, rgba(0, 0, 0, 0.8) 0px 12px 24px -24px;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__abschluss{display: block; width: 100%;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden]{justify-content: center; width: 100%; min-height: 64px; padding: 7px 22px; border: 0px; border-radius: 14px; background: none; color: rgb(23, 25, 22); font: 800 clamp(1rem, 4.3cqw, 1.125rem)/1.2 var(--display); box-shadow: none;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__shape{display: block;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden]{justify-content: space-between; padding: 7px 10px 7px 22px;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__label{font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive; font-size: clamp(0.9rem, 4.25cqw, 1.0625rem); font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: 0.025em; text-transform: uppercase;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__arrow{position: relative; z-index: 1; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 62px; height: 40px; margin-right: 12px; border-radius: 999px; background: rgb(23, 25, 22); box-shadow: rgba(151, 206, 32, 0.16) 0px 0px 0px 1px inset; transition: transform .12s var(--ease);}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__arrow-bild{display: block; width: 46px; height: auto; object-fit: contain;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__frame{position: absolute; inset: 0px; z-index: -3; display: block; width: 100%; height: 100%; overflow: visible; fill: none; stroke: var(--home-lime); stroke-width: 1.5px; transform: translate(6px, 6px); pointer-events: none;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden]:active :is(.anf-senden__label, .anf-senden__arrow){transform: translate(2px, 2px);}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden]:active{background: none; transform: translateY(1px);}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden]:active .anf-senden__shape{fill: rgb(130, 185, 59);}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden]:focus-visible{outline: 2px solid var(--home-dark-accent); outline-offset: 5px;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__abschluss + .anf__rechtliches{margin-top: 28px;}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta{position: relative; isolation: isolate; box-sizing: border-box; display: flex; align-items: center; justify-content: flex-start; gap: 0px; width: 100%; min-height: 64px; height: 64px; padding: 7px 10px 7px 0px; border: 0px; border-radius: 14px; background: transparent; box-shadow: none; color: rgb(23, 25, 22); font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive; font-size: clamp(0.9rem, 4.25cqw, 1.0625rem); font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: 0.025em; text-align: left; text-decoration: none; text-transform: uppercase; white-space: nowrap;}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta::before,:where(.lpv2-main) .maik-cta::after{content: none;}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta .maik-cta__label{position: relative; z-index: 1; flex: 1 1 0px; min-width: 0px; padding-right: 0px; font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive; font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: 0.018em; text-transform: uppercase; overflow-wrap: normal; hyphens: none; text-align: center; text-wrap: nowrap; white-space-collapse: collapse; transition: transform .12s var(--ease);}}
@@ -134,9 +134,13 @@
 @media (min-width:481px){:where(.lpv2-main) .maik-cta.is-pulsing.is-pressed .maik-cta__arrow-image{animation: auto ease 0s 1 normal none running none; transform: translateX(1px);}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta.is-pulsing.is-pressed .lpv2-gallery-grid-symbol{animation: auto ease 0s 1 normal none running none; transform: scale(0.94);}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta:focus-visible{outline: 2px solid var(--home-focus, var(--home-lime)); outline-offset: 9px;}}
-@media (min-width:481px){:where(.lpv2-main) .maik-cta,:where(.lpv2-main) .maik-cta__halo,:where(.lpv2-main) .maik-cta__arrow-image,:where(.lpv2-main) .lpv2-gallery-grid-symbol{animation: auto ease 0s 1 normal none running none !important;}}
-@media (min-width:481px){:where(.lpv2-main) .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__arrow-image){transition: none;}}
-@media (min-width:481px){:where(.lpv2-main) .lpv2-gallery-grid-symbol::before,:where(.lpv2-main) .lpv2-gallery-grid-symbol::after{transition: none !important;}}
+/* AP-568: Diese drei Zeilen stammen aus dem reduced-motion-Zweig von cta-family.css (~453),
+   wurden fuer AP-512 aber ohne dessen Bedingung erfasst - dadurch pulsierte ab 481px kein
+   Aktionsknopf. Die Bedingung steht jetzt wieder dabei (Ansage 06.10.2026: alle Knoepfe
+   dieses Designs pulsieren auch auf Tablet und Desktop). */
+@media (min-width:481px) and (prefers-reduced-motion:reduce){:where(.lpv2-main) .maik-cta,:where(.lpv2-main) .maik-cta__halo,:where(.lpv2-main) .maik-cta__arrow-image,:where(.lpv2-main) .lpv2-gallery-grid-symbol{animation: auto ease 0s 1 normal none running none !important;}}
+@media (min-width:481px) and (prefers-reduced-motion:reduce){:where(.lpv2-main) .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__arrow-image){transition: none;}}
+@media (min-width:481px) and (prefers-reduced-motion:reduce){:where(.lpv2-main) .lpv2-gallery-grid-symbol::before,:where(.lpv2-main) .lpv2-gallery-grid-symbol::after{transition: none !important;}}
 
 /* AP-512: war @media (max-width:480px). "all" statt einer Aufloesung des Blocks, damit
    die Zeilen unveraendert bleiben und ein Vergleich mit dem Stand davor lesbar ist. */
@@ -530,9 +534,25 @@
   .lpv2-page--homepage-unified.lpv2-page--title-above .lpv2-title{padding-top:0}
 }
 
+/* Ansage 06.10.2026: Der Link "Alle Leistungen" unter "Passende Ergaenzungen" bekommt am Desktop
+   Farbe und Schriftbild des Ruecklinks oben links (.breadcrumbs--home-back, styles.css): hellere
+   Schrift (#d9ded5), Nunito 750, gleiche Laufweite und Unterstreichung. Groesse, Pfeil rechts
+   und Lage bleiben wie bisher. Bis 900px unveraendert. */
+@media (min-width:901px){
+  .lpv2-page--image-first .lpv2-related-all{color:var(--home-on-dark-2,#d9ded5);font-family:Nunito,system-ui,sans-serif;letter-spacing:.015em}
+}
+
 @media (prefers-reduced-motion:reduce){
   html.lpv2-root{scroll-behavior:auto}
   .lpv2-page *{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+  /* AP-566: Grundzustand der Textsektions-Bewegung sofort fertig */
+  .lpv2-page--desktop-trichter .lpv2-split .lpv2-w > span{transform:none!important}
+  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p::before{transform:scaleX(1)!important}
+  .lpv2-page--desktop-trichter .lpv2-content-service h3,
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list,
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li{opacity:1!important}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:before{transform:scale(1) rotate(-8deg)!important;opacity:1!important}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{--lpv2-divider-p:1!important;--lpv2-divider-dot:0!important}
 }
 
 /* ---------- AP-534: Trichter-Layout am Rechner (Seiten mit desktopLayout "trichter") ----------
@@ -551,8 +571,17 @@
    einzige 480px-Spalte - Liste wie auf dem Handy (Bluete, Trennlinien), Hinweistext, Abschluss
    zentriert, Knopf 400px. Liste, Hinweistext, Abschluss und Knopf erscheinen einzeln beim
    Scrollen (data-reveal-late, main.js: Ausloeselinie 72 % Fensterhoehe). */
+/* AP-567 (06.10.2026): Blickfuehrung - links grosse gruene H2, rechts weisse Zwischen-
+   ueberschrift; rechte Spalte gedimmt, bis die Eintritts-Sequenz sie Punkt fuer Punkt hell
+   schaltet. Trennlinie und Blueten laufen in dieser Sequenz, nicht mehr am Scrollen. */
+/* AP-566 (06.10.2026): Teile 2-6 unten auf Mockup F umgebaut - zwei Spalten nebeneinander
+   (links Ueberschrift + beide Absaetze, rechts Leistungsueberschrift + Liste), darunter
+   Hinweis links und Kachel + Knopf rechts. Dazu Bewegung: Wort-Aufstieg der Ueberschriften,
+   Trennlinie fuellt sich beim Scrollen, Blueten bluehen auf (der Lichtsaum um die Kachel ist am
+   06.10.2026 wieder entfallen). */
 .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal,
 .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal{opacity:1;transform:none;transition:none}
+.lpv2-divider-fill{display:none}
 
 @media (min-width:901px){
   /* 1 - Spalte und Zoom von .lpv2-main auf die Sektionen, Textsektion ausgenommen */
@@ -560,48 +589,131 @@
   .lpv2-page--desktop-trichter .lpv2-main > article > section:not(.lpv2-content-feature){max-width:32rem;margin-inline:auto;zoom:1.25;container-type:inline-size}
 
   /* 2 - Satzspiegel der Textsektion */
-  .lpv2-page--desktop-trichter .lpv2-content-feature{padding:80px 0 96px}
+  .lpv2-page--desktop-trichter .lpv2-content-feature{padding:80px 0 41.2px}
   /* Das Raster liegt am Container, nicht an .lpv2-content-editorial: Hinweistext (im Artikel)
      und Abschluss-Kachel (danach) stehen nebeneinander in einer Zeile (Ansage 02.10.2026) -
      das geht nur, wenn beide Kinder desselben Rasters sind. Artikel, Leistungsblock und
      Abschluss loesen sich dafuer per display:contents auf. */
-  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);column-gap:52px;row-gap:0;width:min(100% - 48px,1080px);max-width:none;margin-inline:auto;padding:0;container-type:inline-size}
-  .lpv2-page--desktop-trichter .lpv2-content-feature :is(.lpv2-content-editorial,.lpv2-content-service,.lpv2-content-closing,.lpv2-closing-block){display:contents}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);column-gap:44px;row-gap:0;align-items:start;position:relative;--lpv2-divider-p:0;--lpv2-divider-dot:0;width:min(100% - 48px,1080px);max-width:none;margin-inline:auto;padding:0;container-type:inline-size}
+  .lpv2-page--desktop-trichter .lpv2-content-feature :is(.lpv2-content-editorial,.lpv2-content-service,.lpv2-content-closing){display:contents}
   .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-mobile-keep{white-space:normal}
 
-  /* 3 - Zeile 1: Ueberschrift ueber die ganze Breite; Zeile 2: zwei Absaetze an der Haarlinie */
+  /* 3 - Zeile 1: H2 links, H3 rechts, gleiche Groesse, auf einer Linie (Mockup F) */
+  /* Die Liste spannt Zeilen 2-3 und ist hoeher als beide Absaetze. Ihren Ueberhang nimmt nur
+     Zeile 3 (1fr) auf - sonst verteilt das Raster ihn auf beide Zeilen, und zwischen Einstieg
+     und Standort klafft statt 20px rund 95px Luft. */
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{grid-template-rows:auto auto 1fr auto auto}
   .lpv2-page--desktop-trichter .lpv2-content-lead{display:contents}
-  .lpv2-page--desktop-trichter .lpv2-content-lead h2{grid-column:1 / -1;grid-row:1;width:auto;max-width:22ch;margin:0 auto;font-size:2.125rem;line-height:1.14}
-  .lpv2-page--desktop-trichter .lpv2-content-lead h2.lpv2-content-title--long{font-size:2.125rem;line-height:1.14}
-  .lpv2-page--desktop-trichter .lpv2-content-lead .lpv2-content-flow-copy--intro{grid-column:1;grid-row:2;margin-top:40px}
-  .lpv2-page--desktop-trichter .lpv2-content-feature > .container::before{content:'';grid-column:2;grid-row:2;margin-top:40px;background:linear-gradient(180deg,transparent,var(--mobile-logo-green,#56e607) 18%,var(--mobile-logo-green,#56e607) 82%,transparent);opacity:.55}
-  .lpv2-page--desktop-trichter .lpv2-content-context{grid-column:3;grid-row:2;justify-self:end;width:100%;margin-top:40px}
-  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p{max-width:46ch;margin-inline:0}
+  .lpv2-page--desktop-trichter .lpv2-content-lead h2,
+  .lpv2-page--desktop-trichter .lpv2-content-lead h2.lpv2-content-title--long{grid-column:1;grid-row:1;width:auto;max-width:11em;margin:0;font-size:clamp(2.2rem,4cqw,3.1rem);line-height:1.06;text-align:left;text-wrap:balance}
+  /* AP-567: H3 weiss und klein (22px bei 1080px Satzspiegel), immer einzeilig - die Liste
+     steht direkt darunter (Entscheidung 06.10.2026) und braucht eine feste H3-Hoehe. Bei
+     schmalerem Satzspiegel schrumpft sie mit (2.04cqw), damit die Zeile passt.
+     -webkit-text-fill-color: homepage-unified faerbt die H3 sonst gruen. */
+  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:3;grid-row:1;align-self:start;width:auto;max-width:none;margin:.35em 0 0;font-family:'Baloo 2',sans-serif;font-size:clamp(1.2rem,2.04cqw,1.375rem);font-weight:700;line-height:1.3;letter-spacing:.01em;color:var(--lpv2-text-heading,#fafaf6);-webkit-text-fill-color:var(--lpv2-text-heading,#fafaf6);text-align:left;white-space:nowrap}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service h3{opacity:0;transition:opacity .6s var(--ease) 1.3s}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-service h3{opacity:1}
 
-  /* 4 - Zeile 3: Leistungsueberschrift mittig, Zeile 4: Liste 480px mittig */
-  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:1 / -1;grid-row:3;width:auto;max-width:26ch;margin:92px auto 0;font-size:2rem;line-height:1.17}
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:1 / -1;grid-row:4;width:100%;max-width:480px;margin:40px auto 0}
+  /* Zeilen 2-3 links: Einstieg und Standort untereinander, je mit kurzem gruenen Strich oben.
+     Rechts: Liste ueber beide Zeilen. */
+  .lpv2-page--desktop-trichter .lpv2-content-lead .lpv2-content-flow-copy--intro{grid-column:1;grid-row:2;margin-top:26px}
+  .lpv2-page--desktop-trichter .lpv2-content-context{grid-column:1;grid-row:3;justify-self:start;width:100%;margin-top:20px}
+  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p{position:relative;max-width:46ch;margin-inline:0;padding-top:16px;text-align:left;text-align-last:auto;hyphens:manual}
+  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p::before{content:'';position:absolute;left:0;top:0;width:56px;height:1px;background:var(--mobile-logo-green,#56e607);opacity:.32;transform:scaleX(0);transform-origin:left}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-lead p::before{animation:lpv2-draw-x .9s var(--ease) .5s forwards}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-context p::before{animation:lpv2-draw-x .9s var(--ease) .7s forwards}
+  /* AP-567: Liste in Zeilen 1-3, oben um H3 (.35em + 1.3 Zeilen = 1.65 x Schriftgroesse) plus
+     18px eingerueckt - sie steht damit direkt unter der H3. Ihr Ueberhang geht in Zeile 3 (1fr). */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:3;grid-row:1 / 4;width:100%;max-width:none;margin:calc(clamp(1.2rem,2.04cqw,1.375rem) * 1.65 + 18px) 0 0}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list{opacity:0;transition:opacity .6s var(--ease) 1.3s}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-list{opacity:1}
 
-  /* 5 - Hinweistext (Blocksatz) und Abschluss: die Kachel des Handys (gruene Flaeche,
-     Bluetenstempel, Zeilen untereinander), Knopf 400px als Trichterende. E1 entschieden
-     (02.10.2026): Kachel bleibt - das Mockup hatte den Satz ohne Kasten gezeigt. */
-  /* Zeilen 5-7 untereinander mittig: Hinweistext (480px, Blocksatz), Abschluss-Kachel
-     (480px, so breit wie der Text), Knopf 400px. Am 02.10.2026 stand die Kachel kurz rechts
-     neben dem Text; auf Ansage wieder darunter. Der Abstand Liste -> Text kommt weiter aus
-     dem Handy-Block (--lpv2-space-list-followup). */
-  .lpv2-page--desktop-trichter .lpv2-content-service-copy{grid-column:1 / -1;grid-row:5;justify-self:center;width:100%;max-width:480px}
+  /* Trennlinie in Spalte 2 ueber Zeilen 1-3: Grundlinie grau, Fuellung gruen waechst mit dem
+     Scrollen (--lpv2-divider-p, main.js), Lichtpunkt an der Spitze. align-self:stretch, weil
+     das Raster align-items:start traegt und beide Linien ohne Inhalt sonst 0px hoch waeren. */
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container::before{content:'';grid-column:2;grid-row:1 / 4;position:relative;justify-self:center;align-self:stretch;width:1px;margin:0;background:rgba(250,248,241,.1);opacity:1}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container .lpv2-divider-fill{display:block;grid-column:2;grid-row:1 / 4;position:relative;justify-self:center;align-self:stretch;width:1px;pointer-events:none}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container .lpv2-divider-fill::before{content:'';position:absolute;inset:0;background:linear-gradient(var(--mobile-logo-green,#56e607),#5FAE35);transform:scaleY(var(--lpv2-divider-p));transform-origin:top}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container .lpv2-divider-fill::after{content:'';position:absolute;left:50%;top:calc(var(--lpv2-divider-p) * 100%);width:9px;height:9px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--mobile-logo-green,#56e607);box-shadow:0 0 0 6px rgba(140,198,63,.18);opacity:var(--lpv2-divider-dot,0)}
+
+  /* 4 - Zeile 4: waagerechte Haarlinie ueber beide Spalten; Zeile 5/6 (Nachtrag): Hinweis, darunter Kachel + Knopf; bis dahin Hinweis links,
+     Kachel + Knopf rechts (Mockup F). */
+  /* AP-567: Fuellung nicht mehr am Scrollen - Keyframe animiert die registrierten Variablen. */
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live{animation:lpv2-divider-fill 1.1s var(--ease) 1s forwards}
+
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container::after{content:'';grid-column:1 / -1;grid-row:4;height:1px;margin-top:56px;background:rgba(250,248,241,.1)}
+  /* Nachtrag 06.10.2026 (Ansage): Hinweistext und darunter Kachel + Knopf nicht mehr
+     nebeneinander, sondern untereinander mittig - Text und Kachel so breit wie die
+     FAQ-Karte (760px, AP-584). Zeile 5 Text, Zeile 6 Kachel + Knopf. */
+  .lpv2-page--desktop-trichter .lpv2-content-service-copy{grid-column:1 / -1;grid-row:5;justify-self:center;width:min(100%,760px);max-width:none;margin:0}
+  /* Nachtrag 4 (Ansage 06.10.2026): Knopf -> Galerie-Bilder und Trennlinie -> Hinweistext
+     gleich, je 96px. Unten: Polster 41.2px + Galerie-Abschnitt 54.8px (44px Polster, 10.8px
+     innen). Oben: die Handy-Regel .lpv2-content-list+.lpv2-content-service-copy (0,4,0)
+     traegt den Abstand, daher hier gleich spezifisch. 87.5px Box-Abstand = 96px bis zur
+     Oberkante der Grossbuchstaben (Luft ueber der ersten Zeile abgezogen, gemessen). */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list+.lpv2-content-service-copy{margin-top:87.5px}
   .lpv2-page--desktop-trichter .lpv2-content-service-copy p{max-width:none;text-align:justify;text-align-last:left;hyphens:auto}
-  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{grid-column:1 / -1;grid-row:6;justify-self:center;width:100%;max-width:480px;margin:32px 0 0}
-  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{grid-column:1 / -1;grid-row:7;justify-self:center;width:400px;margin:20px auto 0}
+  .lpv2-page--desktop-trichter .lpv2-closing-block{grid-column:1 / -1;grid-row:6;justify-self:center;display:grid;justify-items:start;width:min(100%,760px);max-width:none;margin-top:32px}
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{width:100%;max-width:none;margin:0}
+  /* Nachtrag 06.10.2026 (Ansage): Der Kacheltext laeuft ueber die Breite - die festen Handy-Zeilen
+     (span display:block) fliessen am Desktop als ein Satz; mehr Innenabstand, rechts 88px frei fuer den
+     Bluetenstempel (ragt unten rechts in die Kachel). Knopf mittig darunter. */
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{padding:28px 88px 30px 32px}
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-lines>span{display:inline}
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{justify-self:center;width:400px;margin:24px 0 0}
+
+  /* 5 - (AP-566 Lichtsaum um die Kachel: auf Ansage 06.10.2026 entfernt, AP-567 Nachtrag) */
+
 
   /* 6 - Erscheinen beim Scrollen: kurz und flach statt 24px/0.9s wie im Rest der Seite */
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal,
   .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal,
   .lpv2-page--desktop-trichter .lpv2-content-closing :is(.lpv2-closing,.lpv2-closing-cta).reveal{opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.is-in,
   .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal.is-in,
   .lpv2-page--desktop-trichter .lpv2-content-closing :is(.lpv2-closing,.lpv2-closing-cta).reveal.is-in{opacity:1;transform:none}
+
+  /* 6b - AP-567: Liste gedimmt, bis die Eintritts-Sequenz (main.js) jedem Punkt lpv2-seq
+     und seine Zeit --lpv2-d gibt. Dann wird der Punkt hell, die Bluete waechst mit
+     Ueberschwingen von 55 % auf 100 % und schwingt danach leicht. Selektoren mit li.reveal:
+     die Neutralisierung oben (ausserhalb der Media Query, gleiche Spezifitaet, frueher in der
+     Datei) setzt sonst opacity:1 und transition:none. transition-delay mit !important: main.js
+     schreibt beim Erscheinen eine Inline-Verzoegerung an jedes .reveal (revealNow). */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal{opacity:1;transform:none;transition:opacity .5s var(--ease),padding-left .4s var(--ease);transition-delay:var(--lpv2-d,0s),0s!important}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list li.reveal{opacity:.35}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list li.reveal:before{transform:scale(.55) rotate(-8deg);opacity:.6;transition:opacity .4s var(--ease) var(--lpv2-d,0s)}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq{opacity:1}
+  /* Nachtrag 06.10.2026: Hover neigt die Bluete nur leicht und vergroessert sie etwas -
+     ueber rotate/scale, die zusaetzlich zum laufenden transform (Aufbluehen, Schwingen) wirken
+     und dadurch in beide Richtungen weich uebergehen. Vorher drehte sie sich ganz herum. */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:before{transition:opacity .4s var(--ease) var(--lpv2-d,0s),rotate .35s var(--ease),scale .35s var(--ease)}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:before{opacity:1;animation:lpv2-bloom .7s cubic-bezier(.34,1.5,.5,1) forwards,lpv2-sway 5s ease-in-out infinite alternate;animation-delay:var(--lpv2-d,0s),calc(var(--lpv2-d,0s) + .8s + var(--lpv2-i,0) * .7s)}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(1){--lpv2-i:0}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(2){--lpv2-i:1}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(3){--lpv2-i:2}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(4){--lpv2-i:3}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(5){--lpv2-i:4}
+  @media (hover:hover){
+    .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:hover{padding-left:50px}
+    .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:hover:before{rotate:-14deg;scale:1.12}
+  }
+
+  /* 6c - AP-566: Wort-Aufstieg der Ueberschriften. main.js zerlegt H2/H3 in .lpv2-w-Spans
+     und setzt lpv2-split am Heading; ohne JS stehen die Ueberschriften einfach da. */
+  .lpv2-page--desktop-trichter .lpv2-split .lpv2-w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+  .lpv2-page--desktop-trichter .lpv2-split .lpv2-w > span{display:inline-block;transform:translateY(110%)}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-split .lpv2-w > span{animation:lpv2-rise .85s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--lpv2-wi,0) * 70ms + var(--lpv2-wd,0ms))}
+  .lpv2-page--desktop-trichter .lpv2-content-service h3.lpv2-split{--lpv2-wd:1400ms}
 }
+
+/* AP-566: Keyframes und registrierte Eigenschaft fuer die Bewegung der Textsektion. */
+/* AP-567: Trennlinie als Teil der Sequenz. inherits:true, damit .lpv2-divider-fill den am
+   Container animierten Wert liest. */
+@property --lpv2-divider-p{syntax:"<number>";initial-value:0;inherits:true}
+@property --lpv2-divider-dot{syntax:"<number>";initial-value:0;inherits:true}
+@keyframes lpv2-divider-fill{from{--lpv2-divider-p:0;--lpv2-divider-dot:1}95%{--lpv2-divider-dot:1}to{--lpv2-divider-p:1;--lpv2-divider-dot:0}}
+@keyframes lpv2-draw-x{to{transform:scaleX(1)}}
+@keyframes lpv2-rise{to{transform:translateY(0)}}
+@keyframes lpv2-bloom{from{transform:scale(.55) rotate(-8deg)}to{transform:scale(1) rotate(-8deg)}}
+@keyframes lpv2-sway{from{transform:scale(1) rotate(-12deg)}to{transform:scale(1.05) rotate(-3deg)}}
 
 /* ---------- AP-536: Balkonkasten im Querformat (481-900px) ----------
    Ansage 02.10.2026, Handy quer (iPhone 16 Pro, 874px). Zuerst nur fuer die Balkonkasten-Seite
@@ -624,4 +736,391 @@
      Zeilen rechts frueher und der Block wirkte nach links verschoben. Letzte Zeile links,
      Silbentrennung gegen grosse Wortluecken (lang="de") - wie am Desktop (AP-534). */
   .lpv2-page--content-feature :is(.lpv2-content-lead,.lpv2-content-context,.lpv2-content-service-copy) p{text-align:justify;text-align-last:left;hyphens:auto}
+}
+
+/* ---------- AP-568: Kontaktformular am Rechner wie auf der Startseite ----------
+   Ansage des Auftraggebers (06.10.2026): Das Formular der Leistungsseiten ist ab 901px
+   dasselbe wie auf der Startseite und bricht dafuer aus der 32rem-Spalte (AP-512) aus.
+   Spalte und zoom wandern dazu wie beim Trichter-Layout (AP-534) von .lpv2-main auf die
+   einzelnen Sektionen; nur der Kontaktbereich steht bei zoom 1 in voller Breite und
+   uebernimmt die Startseiten-Regeln aus anfrage.css (AP-547/555), die ueber
+   html.home-theme-dark .private-contact hier ohnehin greifen. Die Formular-Kopien aus dem
+   AP-512-Block oben gelten dafuer nur noch bis 900px. Markup: render.mjs, lpv2Contact,
+   mit denselben Huellen wie index.html #anfrage - beide Stellen gleich halten. */
+@media (min-width:901px){
+  .lpv2-page .lpv2-main{max-width:none;zoom:1;container-type:normal}
+  .lpv2-page:not(.lpv2-page--desktop-trichter) .lpv2-main > article > section:not(.lpv2-home-contact):not(.lpv2-faq){max-width:32rem;margin-inline:auto;zoom:1.25;container-type:inline-size}
+  .lpv2-page .lpv2-main > article > section.lpv2-home-contact{max-width:none;margin-inline:0;zoom:1;container-type:normal}
+  /* AP-584: auch die FAQ verlaesst ab 901px die Spalte (siehe Block AP-584 am Dateiende) */
+  .lpv2-page .lpv2-main > article > section.lpv2-faq{max-width:none;margin-inline:0;zoom:1;container-type:normal}
+}
+
+/* AP-568: Begrenzte Kopie der Startseiten-Regeln fuer den Kontaktbereich ab 901px.
+   Die Leistungsseiten laden cta-family-home.css, home-spacing.css und home-dark.css
+   nicht (sie gelten fuer #top und html und wuerden hier die ganze Seite treffen).
+   Kopiert sind genau die Regeln, die auf der Startseite bei 1440px im Kontaktbereich
+   greifen (in Chrome ermittelt), mit .lpv2-home-contact statt .private-contact bzw.
+   #top > … und ohne die Querformat-Stufe bis 900px. Aendert sich eine Quelle, muss
+   diese Kopie mit. */
+/* AP-555: Anfrage senden und Projekt anfragen teilen ihre Größen-Tokens.
+   Lasche, Pfeilkapsel und Reaktionen bleiben die gemeinsame Button-Familie. */
+@media (min-width: 901px) {
+  html.home-theme-dark .lpv2-home-contact {
+    /* AP-556: Die fünf großen Aktionsbuttons übernehmen die gemessene
+       Referenz der iPhone-16-Pro-Hochkantansicht (402px minus 2 × 20px). */
+    --home-primary-cta-width: 362px;
+    --home-primary-cta-height: 64px;
+    --home-request-cta-width: var(--home-primary-cta-width);
+    --home-request-cta-height: var(--home-primary-cta-height);
+  }
+  html.home-theme-dark .lpv2-home-contact .maik-cta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    gap: 0;
+    width: min(100%, var(--home-request-cta-width));
+    height: var(--home-request-cta-height);
+    min-height: var(--home-request-cta-height);
+    margin-inline: auto;
+    padding: 7px 10px 7px 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  html.home-theme-dark .lpv2-home-contact .maik-cta::before,
+  html.home-theme-dark .lpv2-home-contact .maik-cta::after { content: none; }
+  html.home-theme-dark .lpv2-home-contact .maik-cta__label {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-right: 0;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: .018em;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    transition: transform .12s var(--ease);
+  }
+  html.home-theme-dark .lpv2-home-contact :is(.maik-cta__shape, .maik-cta__frame, .maik-cta__halo) {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  html.home-theme-dark .lpv2-home-contact .maik-cta__shape {
+    z-index: -1;
+    fill: var(--home-lime);
+    stroke: none;
+    filter: none;
+    transition: transform .12s var(--ease), fill .18s ease;
+  }
+  html.home-theme-dark .lpv2-home-contact .maik-cta__frame {
+    z-index: -3;
+    fill: none;
+    stroke: var(--home-lime);
+    stroke-width: 1.5px;
+    transform: translate(6px, 6px);
+  }
+  html.home-theme-dark .lpv2-home-contact .maik-cta__arrow {
+    flex: 0 0 auto;
+    width: 62px;
+    height: 40px;
+    margin: 0 12px 0 auto;
+    border-radius: 999px;
+    background: #171916;
+    box-shadow: inset 0 0 0 1px rgba(151, 206, 32, .16);
+    transition: transform .12s var(--ease);
+  }
+  html.home-theme-dark .lpv2-home-contact .maik-cta__arrow-image {
+    position: relative;
+    left: 0;
+    display: block;
+    width: 46px;
+    height: auto;
+    object-fit: contain;
+    transition: left .18s ease, transform .28s cubic-bezier(.22, .7, .25, 1);
+  }
+  html.home-theme-dark .lpv2-home-contact .maik-cta__halo {
+    z-index: -2;
+    fill: none;
+    stroke: var(--home-lime);
+    stroke-linejoin: round;
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(.985, .922);
+    transform-origin: center;
+    backface-visibility: hidden;
+  }
+  html.home-theme-dark .lpv2-home-contact .maik-cta__halo-line--wide { stroke-width: 12px; opacity: .12; }
+  html.home-theme-dark .lpv2-home-contact .maik-cta__halo-line--medium { stroke-width: 7px; opacity: .24; }
+  html.home-theme-dark .lpv2-home-contact .maik-cta__halo-line--core { stroke-width: 3px; opacity: .48; }
+  html.home-theme-dark .lpv2-home-contact .maik-cta--attention.is-pulsing {
+    animation: maik-cta-arrival-breath 1.1s ease-in-out .35s 1, maik-cta-rhythm-breath 1.9s linear 2.5s infinite;
+    transform-origin: center;
+    backface-visibility: hidden;
+  }
+  html.home-theme-dark .lpv2-home-contact .maik-cta--attention.is-pulsing .maik-cta__halo {
+    animation: maik-cta-arrival-halo 1.2s ease-out .35s 1, maik-cta-rhythm-halo 1.9s linear 2.5s infinite;
+  }
+  html.home-theme-dark .lpv2-home-contact .is-pulsing .maik-cta__arrow-image {
+    animation: maik-cta-arrow-rhythm 1.9s cubic-bezier(.22, .7, .25, 1) 2.5s infinite;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    html.home-theme-dark .lpv2-home-contact .maik-cta:hover { background: transparent; box-shadow: none; }
+    html.home-theme-dark .lpv2-home-contact .maik-cta:hover :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) { transform: translate(2px, 2px); }
+    html.home-theme-dark .lpv2-home-contact .maik-cta:hover .maik-cta__arrow-image { left: 1.5px; }
+    html.home-theme-dark .lpv2-home-contact .is-pulsing:hover,
+    html.home-theme-dark .lpv2-home-contact .is-pulsing:hover :is(.maik-cta__halo, .maik-cta__arrow-image) { animation-play-state: paused; }
+  }
+  html.home-theme-dark .lpv2-home-contact .maik-cta.is-pressed :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow) { transform: translate(6px, 6px); }
+  html.home-theme-dark .lpv2-home-contact .is-pulsing.is-pressed,
+  html.home-theme-dark .lpv2-home-contact .is-pulsing.is-pressed :is(.maik-cta__halo, .maik-cta__arrow-image) { animation: none; }
+  html.home-theme-dark .lpv2-home-contact .is-pulsing.is-pressed { transform: none; }
+  html.home-theme-dark .lpv2-home-contact .maik-cta:focus-visible { outline: 2px solid var(--home-focus, var(--home-lime)); outline-offset: 9px; }
+  @media (prefers-reduced-motion: reduce) {
+    html.home-theme-dark .lpv2-home-contact .maik-cta,
+    html.home-theme-dark .lpv2-home-contact .maik-cta :is(.maik-cta__shape, .maik-cta__label, .maik-cta__arrow, .maik-cta__halo, .maik-cta__arrow-image) {
+      animation: none !important;
+      transition: none;
+    }
+  }
+}
+
+/* AP-556: Kompakte gemeinsame Maße, ohne die Hochkantdarstellung oder die
+   kleineren Galerie-/Bedienknöpfe zu verändern. Breite ist eine Obergrenze,
+   damit auch schmale Spalten und starker Zoom ohne Überlauf funktionieren. */
+@media (min-width: 901px) {
+  html.home-theme-dark .lpv2-home-contact [data-anf-senden] {
+    box-sizing: border-box;
+    width: min(100%, var(--home-primary-cta-width));
+    max-width: var(--home-primary-cta-width);
+    min-width: 0;
+    height: var(--home-primary-cta-height);
+    min-height: var(--home-primary-cta-height);
+    margin-inline: auto;
+    justify-self: center;
+  }
+}
+
+/* Kopie aus home-spacing.css (AP-563), Sektion statt #top > … */
+@media (min-width: 901px) {
+  html.home-theme-dark .lpv2-home-contact {
+    --home-section-space: clamp(72px, 6vw, 112px);
+    --home-heading-space: clamp(56px, 5vw, 80px);
+    --home-block-space: clamp(40px, 3.5vw, 56px);
+    --home-list-space: clamp(24px, 2vw, 32px);
+  }
+  html.home-theme-dark #top .lpv2-home-contact { padding-block: var(--home-section-space); }
+  html.home-theme-dark #top .lpv2-home-contact .private-contact-layout { margin-top: var(--home-heading-space); }
+  html.home-theme-dark #top .lpv2-home-contact .anf__form { gap: var(--home-block-space); }
+  html.home-theme-dark #top .lpv2-home-contact .anf__kanaele { gap: 16px; }
+  html.home-theme-dark #top .lpv2-home-contact .anf__oder { margin-bottom: var(--home-list-space); }
+  html.home-theme-dark #top .lpv2-home-contact .anf__feld:not(.anf__feld--foto) { margin-bottom: var(--home-list-space); }
+  html.home-theme-dark #top .lpv2-home-contact .anf__aktionen { row-gap: var(--home-list-space); }
+
+  /* Kopie aus home-dark.css (AP-529): Ueberschrift und Kopf wie auf der Startseite */
+  html.home-theme-dark .lpv2-home-contact h2.maik-section-title {
+    font-size: clamp(2.25rem, 1.25rem + 2vw, 3rem);
+    max-width: none;
+  }
+  html.home-theme-dark .lpv2-home-contact .private-contact-intro { margin-inline: auto; }
+
+  /* Rest der Leistungsseiten-Umgebung neutralisieren: .lpv2-main setzt Schrift-Fallbacks,
+     die Container-Raender und die Knopf-Kopien oben (.btn/.maik-cta ab 481/901px)
+     vererben Satzwerte, die auf der Startseite nicht gelten. */
+  html.home-theme-dark .lpv2-main .lpv2-home-contact {
+    --display: "Nunito", sans-serif;
+    --body: "Nunito", sans-serif;
+    font-family: Nunito, sans-serif;
+  }
+  html.home-theme-dark .lpv2-main .lpv2-home-contact > .container { margin-inline: auto; }
+  html.home-theme-dark .lpv2-main .lpv2-home-contact .maik-cta {
+    text-align: center;
+    text-transform: none;
+    letter-spacing: normal;
+    text-wrap-style: auto;
+  }
+  html.home-theme-dark .lpv2-main .lpv2-home-contact .maik-cta__label { hyphens: manual; }
+  html.home-theme-dark .lpv2-main .lpv2-home-contact :is(.maik-cta__halo, .maik-cta__arrow-image) { will-change: auto; }
+}
+
+/* ---------- AP-565: Rahmenbild-Held am Rechner (Seiten mit desktopHero "rahmenbild") ----------
+   Freigegeben per Mockup (leistungsseite-hero-desktop-mockup.html, Variante B). Nur ab 901px
+   und nur mit der Klasse lpv2-page--desktop-rahmenbild (Build setzt sie aus dem JSON-Feld
+   desktopHero). Handy bis 900px bleibt pixelgleich: der Schriftzug ist ausserhalb der Media
+   Query ausgeblendet.
+
+   Aufbau am Rechner, nach dem Vorbild des Startseiten-Helds (home-dark.css, AP-560): vollbreit,
+   dunkler Grund, Blueten-Wasserzeichen hinter dem Text, links "Alle Leistungen", Titel als
+   gruener Schriftzug (ohne Schriftzug: Baloo 700, zweite Zeile gruen) und der Anfrageknopf.
+   Herkunftszeile, Anruf-Knopf, Nachweise und Karten-Reiter aus dem Entwurf hat der Auftraggeber gestrichen
+   (06.10.2026). Twist gegenueber der Startseite: keine schraege Teilung - das Foto ist rechts
+   eine hochkant stehende Karte (3:4, 460px) mit Hausecken 26/7, versetztem gruenem Rahmen
+   (12px, wie die Knopfform) und dem Bluetenstempel unten rechts. */
+.lpv2-title-graphic-desktop{display:none}
+
+@media (min-width:901px){
+  /* 1 - Der Held verlaesst die 32rem-Spalte (AP-534 gibt sie jeder Sektion einzeln) */
+  .lpv2-page--desktop-rahmenbild .lpv2-main > article > section.lpv2-hero{max-width:none;margin:0;zoom:1;container-type:normal}
+
+  /* 2 - Buehne: Raster mit den Randspalten des Seiten-Containers (wie der Ruecklink aus AP-581,
+     der seit AP-581/583 ueber dem Held steht - Titel und Knopf beginnen buendig darunter),
+     Spalten 52/48. Zeilen .5fr/1.5fr: Titel und Knopf sitzen etwas ueber der Mitte, damit der
+     Knopf im ersten Bild ueber der 80-%-Linie von cta-signal.js liegt und pulsiert (AP-584).
+     Mindesthoehe: das Fenster abzueglich fester Kopfflaeche (112px, AP-583) und
+     Ruecklink-Block (--space-section-compact + 34px Trefferflaeche + Abstand, AP-581). */
+  .lpv2-page--desktop-rahmenbild .lpv2-hero{--hero-rand:calc((100% - min(100% - calc(var(--gutter) * 2), var(--container))) / 2);position:relative;isolation:isolate;display:grid;grid-template-columns:var(--hero-rand) minmax(0,52fr) minmax(0,48fr) var(--hero-rand);grid-template-rows:minmax(48px,.5fr) auto auto minmax(48px,1.5fr);--hero-frei:calc(100svh - 112px - var(--space-section-compact) - 34px - clamp(28px,3vw,40px));min-height:clamp(480px,var(--hero-frei),900px);padding:0;background:var(--lp-bg);overflow:visible}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero::before{content:'';grid-column:1 / 3;grid-row:1 / -1;align-self:stretch;justify-self:start;width:clamp(360px,34vw,680px);margin-left:-4%;background:url('../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a') center / contain no-repeat;opacity:.12;filter:saturate(.7);pointer-events:none}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero > .container{display:contents}
+  .lpv2-page--desktop-rahmenbild .lpv2-kicker,
+  .lpv2-page--desktop-rahmenbild .lpv2-breadcrumbs--desktop,
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-edge{display:none}
+
+  /* 3 - "Alle Leistungen": seit AP-581 der einheitliche Ruecklink ueber dem Held
+     (.lpv2-ruecklink-desktop); die Leiste im Held ist dort ausgeblendet. */
+
+  /* 4 - Zeile 2: Titel. Mit Schriftzug (gruene Handschrift wie "Garten" auf der Startseite):
+     die Baloo-Zeilen verschwinden, das Bild traegt den Titel, aria-label bleibt am h1.
+     Ohne Schriftzug: Baloo 700 wie der Startseiten-Titel, zweite Zeile im Logo-Gruen. */
+  /* .lpv2-hero davor: .lpv2-page--homepage-unified.lpv2-page--title-above .lpv2-title (0,3,0)
+     setzt sonst 80px/20px Innenabstand. */
+  .lpv2-page--desktop-rahmenbild .lpv2-hero .lpv2-title{grid-column:2;grid-row:2;align-self:auto;justify-self:start;width:min(100%,620px);max-width:none;margin:0;padding:0;background:transparent;text-align:left;line-height:0}
+  .lpv2-page--desktop-rahmenbild .lpv2-title--split > .lpv2-title-lines{display:none}
+  .lpv2-page--desktop-rahmenbild .lpv2-title-graphic-desktop{display:block;width:100%;height:auto;filter:drop-shadow(0 5px 13px rgba(0,0,0,.24))}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)){color:var(--home-on-dark,#fafaf6);font-size:clamp(44px,4.4vw,80px);font-weight:700;line-height:1.04;letter-spacing:-.028em;text-wrap:balance}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines{display:block}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:first-child:after{content:'-'}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:last-child{color:var(--mobile-logo-green,#56e607)}
+
+  /* 5 - Zeile 3: Anfrageknopf (maik-cta, 440 x 74), mittig unter dem Titel: der Container ist so
+     breit wie der Titel (min(100%,620px)), Ansage 06.10.2026 (AP-584). */
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta{grid-column:2;grid-row:3;justify-self:start;display:flex;align-items:center;justify-content:center;width:min(100%,620px);margin:38px 0 0;padding:0}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button{width:min(100%,440px);min-height:74px;height:74px;padding:8px 12px 8px 0;border-radius:16px}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__label{font-size:1.125rem;letter-spacing:.02em}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow{width:70px;height:46px;margin-right:14px}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow-image{width:52px}
+
+  /* 6 - Spalte 3: die Karte, hoechstens 460px breit und so hoch, dass sie mit 32px Luft oben
+     und unten ins freie Fenster passt (niedrige Bildschirme). Figure wird 3:4, Bild per <source media> im Hochkant-Derivat,
+     versetzter Rahmen im Pseudoelement (title-above hatte ::before ausgeblendet). */
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media{grid-column:3;grid-row:1 / -1;align-self:center;justify-self:end;position:relative;z-index:2;width:min(100%,460px,calc((var(--hero-frei) - 64px) * .75));height:auto;aspect-ratio:3 / 4;margin:0;overflow:visible;border-radius:26px 7px 26px 7px;background:transparent;box-shadow:0 40px 70px -36px rgba(0,0,0,.95),0 30px 60px -40px rgba(93,224,35,.55)}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media::before{content:'';display:block;position:absolute;inset:0;z-index:-1;transform:translate(12px,12px);border:1.5px solid var(--home-lime,#8cc63f);border-radius:inherit;background:none;opacity:.9;pointer-events:none}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media picture{position:absolute;inset:0;overflow:hidden;border-radius:inherit}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media img:not(.lpv2-hero-brand){width:100%;height:100%;object-fit:cover;object-position:40% 55%}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-brand{right:-30px;bottom:-34px;width:140px;z-index:3}
+
+  /* 7 - Uebergang zur Textsektion: der Held bringt seine Luft unten selbst mit (letzte Zeile) */
+  .lpv2-page--desktop-rahmenbild .lpv2-content-feature{padding-top:40px}
+}
+
+/* ---------- AP-584: Puls-Animationen ab 481px ----------
+   Die @keyframes der Knopf-Familie stehen in cta-family.css nur in @media (max-width:480px)
+   (~218-252). Die Startseite holt sie ab 481px aus cta-family-home.css, das die
+   Leistungsseiten nicht laden. Ohne sie lief hier ab 481px keine Puls-Animation - die Regeln
+   setzten nur den Namen (AP-568 hatte das nicht bemerkt, weil nur der Name geprueft wurde).
+   Wortlaut aus cta-family.css; bei Aenderungen dort mitziehen. */
+@media (min-width:481px){
+  @keyframes maik-cta-arrow-rhythm {
+    0%, 19%, 100% { transform: translateX(0); }
+    7% { transform: translateX(2px); }
+    12% { transform: translateX(-.35px); }
+    16% { transform: translateX(.55px); }
+  }
+
+  @keyframes maik-cta-symbol-rhythm {
+    0%, 19%, 100% { transform: scale(1); }
+    7% { transform: scale(1.16); }
+    12% { transform: scale(.98); }
+    16% { transform: scale(1.04); }
+  }
+
+  @keyframes maik-cta-arrival-breath {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    46% { transform: translate3d(0, 0, 0) scale(1.018); }
+  }
+
+  @keyframes maik-cta-arrival-halo {
+    0% { opacity: 0; transform: translate3d(0, 0, 0) scale(.985, .922); }
+    32% { opacity: .72; transform: translate3d(0, 0, 0) scale(1.012, 1.063); }
+    100% { opacity: 0; transform: translate3d(0, 0, 0) scale(1.07, 1.367); }
+  }
+
+  @keyframes maik-cta-rhythm-breath {
+    0%, 58%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    7% { transform: translate3d(0, 0, 0) scale(1.012); }
+  }
+
+  @keyframes maik-cta-rhythm-halo {
+    0%, 63.2%, 100% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(.985, .922);
+    }
+    7% {
+      opacity: .54;
+      transform: translate3d(0, 0, 0) scale(1.009, 1.047);
+    }
+    63.1% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(1.055, 1.285);
+    }
+  }
+}
+
+/* ---------- AP-584: FAQ am Rechner wie auf der Startseite ----------
+   Ansage des Auftraggebers (06.10.2026): Die FAQ der Leistungsseiten sehen ab 901px aus wie die
+   Startseiten-FAQ (AP-546, privat-form.css .private-faq*): eine mittige Spalte von 760px, die
+   Fragen in einer Gruppen-Karte mit gruener Versal-Ueberschrift (hier der Name der Leistung),
+   Trennlinien, Plus-Symbol, weiches Auf-/Zuklappen (privat-form.js, ab 901px).
+   Die Startseiten-Regeln haengen an .private-faq*-Klassen, die hier fehlen (die Handy-Fassung
+   bleibt unveraendert) - deshalb eine Kopie auf die Leistungsseiten-Klassen, mit hoeherer
+   Gewichtung als die Spaltenregeln oben (.lpv2-page .faq-list ..., .lpv2-faq--homepage ...).
+   Abstaende aus home-spacing.css (AP-563), Ueberschrift aus home-dark.css (AP-529).
+   Aendert sich die Startseiten-FAQ, muss diese Kopie mit. Markup: render.mjs, lpFaq. */
+.lpv2-faq-gruppe{display:contents}
+.lpv2-faq-gruppe__titel{display:none}
+
+@media (min-width:901px){
+  html.home-theme-dark .lpv2-page .lpv2-faq{--display:"Nunito",sans-serif;--body:"Nunito",sans-serif;font-family:Nunito,sans-serif;--home-surface-low:#22271f;--home-surface-card:#252b22;--home-surface-high:#2b3327;--home-surface-border:rgba(183,203,160,.18);padding:clamp(72px,6vw,112px) 0;overflow-anchor:none;border-block:0;box-shadow:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq > .container{display:block;width:min(100% - 2 * max(var(--gutter),env(safe-area-inset-left,0px),env(safe-area-inset-right,0px)),760px);max-width:none;margin-inline:auto;padding-inline:0}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-section-head{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:end;margin:0 0 clamp(56px,5vw,80px);text-align:center}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-section-index{display:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-section-head h2{display:block;width:100%;max-width:none;margin:0 auto;padding:0;color:var(--home-on-dark);font-family:"Baloo 2",sans-serif;font-size:clamp(2.25rem,1.25rem + 2vw,3rem);font-style:normal;font-weight:600;line-height:1.13;letter-spacing:-.015em;text-align:center;text-wrap:balance}
+
+  /* Gruppen-Karte und Ueberschrift */
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe{display:block;min-width:0;min-height:auto;overflow:clip;border:1px solid var(--home-surface-border);border-radius:18px 5px 18px 5px;background:var(--home-surface-low);box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe__titel{display:flex;align-items:center;min-height:40px;box-sizing:border-box;margin:0;padding:14px 16px 11px;border-bottom:1px solid var(--home-surface-border);color:var(--green-500);font-family:var(--body);font-weight:850;font-size:.78rem;line-height:1.25;text-transform:uppercase;letter-spacing:.085em}
+
+  /* Zeilen */
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list{display:grid;gap:0;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details{position:relative;overflow:visible;border:0;border-color:var(--home-surface-border);border-radius:0;background:var(--home-surface-low);box-shadow:none;transition:border-color .2s var(--ease),box-shadow .2s var(--ease),background-color .2s var(--ease)}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details + details{border-top:0;border-top-color:var(--home-surface-border)}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details + details::before{content:"";position:absolute;z-index:2;top:0;right:0;left:0;height:1px;background:var(--home-surface-border);pointer-events:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details[open]{border-color:rgba(183,203,160,.3);background:var(--home-surface-card);box-shadow:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list summary{display:flex;align-items:center;justify-content:space-between;height:auto;min-height:68px;box-sizing:border-box;gap:14px;padding:0 14px 0 16px;color:var(--ink);font-family:var(--display);font-size:.94rem;font-weight:700;line-height:1.32;letter-spacing:-.01em;cursor:pointer;list-style:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list summary > span:first-child{flex:1 1 auto;min-width:0;transform:translateY(1px);text-wrap:wrap}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list summary:focus-visible{position:relative;z-index:1;outline:2px solid var(--yellow);outline-offset:-3px;border-radius:0}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list .chev{position:relative;flex:0 0 auto;width:24px;height:24px;border:1px solid rgba(140,198,63,.52);border-radius:50%;background:transparent;transform:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list :is(details[open], details.is-closing) .chev{border-color:rgba(140,198,63,.78);background:transparent;transform:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details.is-closing .chev::after{transform:translate(-50%,-50%) rotate(90deg)}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-body{margin-inline:16px;padding:1px 0 16px;border-top:0;font-size:.9rem;line-height:1.52}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-body p{margin:0}
+  html.home-theme-dark .lpv2-page .lpv2-faq.is-faq-animated .lpv2-faq-gruppe .faq-list details:is(.is-opening,.is-closing){will-change:height}
+  html.home-theme-dark .lpv2-page .lpv2-faq.is-faq-animated .lpv2-faq-gruppe .faq-body{will-change:opacity}
+}
+@media (min-width:901px) and (hover:hover) and (pointer:fine){
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details:hover{background:var(--home-surface-high);box-shadow:inset 0 0 0 1px rgba(140,198,63,.5)}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details:hover > summary{background:transparent}
+}
+@media (min-width:901px) and (prefers-reduced-motion:reduce){
+  html.home-theme-dark .lpv2-page .lpv2-faq.is-faq-animated .lpv2-faq-gruppe .faq-list details,
+  html.home-theme-dark .lpv2-page .lpv2-faq.is-faq-animated .lpv2-faq-gruppe .faq-body{will-change:auto}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list :is(details, summary),
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .chev,
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .chev::after{transition:none}
 }
