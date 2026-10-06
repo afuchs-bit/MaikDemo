@@ -399,3 +399,19 @@ Ansage:
 
 Gemessen bei 1024 und 1440: drei Zeilen, die Kachel 760 × 144 px, Knopfmitte gleich Kachelmitte (0,0 px).
 Handy 375/402/874: 0 Abweichungen.
+
+## Nachtrag 4, 06.10.2026: Abstände Knopf → Bilder und Trennlinie → Hinweistext
+
+Ansage: Der Abstand vom Knopf zu den Galerie-Bildern soll etwas kleiner werden, und der Hinweistext soll
+denselben Abstand zur Trennlinie haben.
+
+- **Knopf → Bilder:** 150,8 → **96 px**. Das untere Polster der Textsektion beträgt 41,2 px, dazu kommen
+  54,8 px des Galerie-Abschnitts, der unverändert bleibt.
+- **Trennlinie → Hinweistext:**
+  - Bisher sichtbar ≈ 48 px. Getragen wurde der Abstand von der Handy-Regel
+    `.lpv2-content-list+.lpv2-content-service-copy` (0,4,0), meine `margin:36px` griff nicht.
+  - Jetzt eine gleich spezifische Desktop-Regel mit 87,5 px Box-Abstand. Damit stehen die Großbuchstaben
+    der ersten Zeile **96 px** unter der Linie.
+
+Gemessen bei 1024, 1440 und 1920: Knopf → Bild 96,0, Linie → Schrift 96,0 px. Breite 760 px, Knopf mittig,
+kein Überlauf. Handy 375/402/874: 0 Abweichungen.

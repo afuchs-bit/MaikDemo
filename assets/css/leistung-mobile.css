@@ -581,7 +581,7 @@
   .lpv2-page--desktop-trichter .lpv2-main > article > section:not(.lpv2-content-feature){max-width:32rem;margin-inline:auto;zoom:1.25;container-type:inline-size}
 
   /* 2 - Satzspiegel der Textsektion */
-  .lpv2-page--desktop-trichter .lpv2-content-feature{padding:80px 0 96px}
+  .lpv2-page--desktop-trichter .lpv2-content-feature{padding:80px 0 41.2px}
   /* Das Raster liegt am Container, nicht an .lpv2-content-editorial: Hinweistext (im Artikel)
      und Abschluss-Kachel (danach) stehen nebeneinander in einer Zeile (Ansage 02.10.2026) -
      das geht nur, wenn beide Kinder desselben Rasters sind. Artikel, Leistungsblock und
@@ -637,7 +637,13 @@
   /* Nachtrag 06.10.2026 (Ansage): Hinweistext und darunter Kachel + Knopf nicht mehr
      nebeneinander, sondern untereinander mittig - Text und Kachel so breit wie die
      FAQ-Karte (760px, AP-584). Zeile 5 Text, Zeile 6 Kachel + Knopf. */
-  .lpv2-page--desktop-trichter .lpv2-content-service-copy{grid-column:1 / -1;grid-row:5;justify-self:center;width:min(100%,760px);max-width:none;margin:36px 0 0}
+  .lpv2-page--desktop-trichter .lpv2-content-service-copy{grid-column:1 / -1;grid-row:5;justify-self:center;width:min(100%,760px);max-width:none;margin:0}
+  /* Nachtrag 4 (Ansage 06.10.2026): Knopf -> Galerie-Bilder und Trennlinie -> Hinweistext
+     gleich, je 96px. Unten: Polster 41.2px + Galerie-Abschnitt 54.8px (44px Polster, 10.8px
+     innen). Oben: die Handy-Regel .lpv2-content-list+.lpv2-content-service-copy (0,4,0)
+     traegt den Abstand, daher hier gleich spezifisch. 87.5px Box-Abstand = 96px bis zur
+     Oberkante der Grossbuchstaben (Luft ueber der ersten Zeile abgezogen, gemessen). */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list+.lpv2-content-service-copy{margin-top:87.5px}
   .lpv2-page--desktop-trichter .lpv2-content-service-copy p{max-width:none;text-align:justify;text-align-last:left;hyphens:auto}
   .lpv2-page--desktop-trichter .lpv2-closing-block{grid-column:1 / -1;grid-row:6;justify-self:center;display:grid;justify-items:start;width:min(100%,760px);max-width:none;margin-top:32px}
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{width:100%;max-width:none;margin:0}
