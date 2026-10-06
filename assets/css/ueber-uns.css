@@ -180,7 +180,72 @@ body.ueber-page {
 
 .ueber-hero .breadcrumbs { margin-bottom: clamp(28px, 3vw, 40px); }
 .ueber-hero .breadcrumbs ol { margin-bottom: 0; }
-.ueber-hero__breadcrumb-back img { display: none; }
+/* AP-581 (02.10.2026): Der Ruecklink sieht auf allen Breiten aus wie auf dem
+   Handy - bis dahin stand ab 481px der Kruemelpfad „Startseite › Ueber uns“ und
+   das Pfeil-Icon war ausgeblendet. Hier nur das Aussehen, woertlich aus dem
+   480er-Block unten (der behaelt die Lage im Foto). Ueber uns hat dabei seine
+   eigene Handy-Fassung: 13,6px aus .breadcrumbs ol in --ink-mute, nicht die
+   12,16px von .breadcrumbs--home-back. */
+.ueber-hero .ueber-hero__breadcrumbs {
+  color: var(--home-on-dark-2, #d9ded5);
+  font-family: Nunito, system-ui, sans-serif;
+  font-size: .76rem;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: .015em;
+}
+
+.ueber-hero__breadcrumbs ol { overflow: visible; }
+
+.ueber-hero__breadcrumbs li + li::before { content: none; }
+
+.ueber-hero__breadcrumb-back a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 34px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ueber-hero__breadcrumb-back a > span {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-skip-ink: auto;
+}
+
+.ueber-hero__breadcrumb-back img {
+  display: block;
+  width: 18px;
+  height: auto;
+  filter: brightness(0) saturate(100%) invert(77%) sepia(100%) saturate(1680%) hue-rotate(47deg) brightness(105%) contrast(107%);
+  transform: rotate(180deg);
+}
+
+.ueber-hero__breadcrumb-current {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* AP-581 Nachtrag (06.10.2026): Am Desktop sieht der Ruecklink auf allen Unterseiten
+   gleich aus - wie auf Galerie, Kontakt und den Rechtstexten (.breadcrumbs--home-back,
+   styles.css): 12,16px in --home-on-dark-2. Ueber uns hatte dort 13,6px in
+   --ink-mute aus .breadcrumbs ol. Die Lage stimmte schon; das Handy bleibt bei
+   seiner eigenen Fassung. */
+@media (min-width: 901px) {
+  .ueber-hero__breadcrumb-back a {
+    color: var(--home-on-dark-2, #d9ded5);
+    font-size: .76rem;
+  }
+}
 
 /* Der Titel im Satz der Vorlage - derselbe wie auf Galerie (projekte.css:105)
    und Kontakt: Baloo 2, 31px, 600. Bis AP-480 stand er im Foto und war mit

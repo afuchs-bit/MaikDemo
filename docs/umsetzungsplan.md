@@ -2596,3 +2596,22 @@ Ab 901 px löst der IntersectionObserver jetzt an der 72-%-Linie aus
 (`rootMargin -28 %`, wie AP-534). Das Handy ist unverändert.
 `main.js?v=20261002g` steht in allen Seiten und in `JS_VERSION`.
 Dokumentation: `docs/ap/AP-580-zitat-animation-ausloesung.md`.
+
+**AP-581 — Rücklink „← Startseite“ auch am Desktop (02.10.2026).**
+Ab 481 px zeigen Über uns, Kontakt, Galerie, Impressum und Datenschutz jetzt denselben
+kompakten Rücklink wie auf dem Handy statt des Pfads „Startseite › …“. Die Leistungsseiten
+hatten ihn schon, die Projektdetailseiten behalten auf Ansage den Pfad.
+- `.breadcrumbs--home-back` steht in `@media all`.
+- Über uns behält seine eigene Handy-Fassung mit 13,6 px als Grundregel.
+- `rechtstext.html` hat jetzt das Rücklink-Markup, sonst hätte der Build zurückgedreht.
+- `CSS_VERSION` ist `20261002zb`.
+Das Handy ist pixelgleich.
+Nachtrag 06.10.2026: Am Desktop sieht der Rücklink jetzt auf allen Unterseiten gleich aus und
+sitzt gleich, im Handy-Satz wie auf der Galerie: Containerkante, `--space-section-compact`
+unter dem Kopf.
+- Über uns bekommt ab 901 px 12,16 px und die helle Farbe.
+- Kontakt bekommt den Abstand der Galerie.
+- Die Leistungsseiten haben einen eigenen Rücklink vor `<main>` (`{{desktopBackLink}}`,
+  `render.mjs`). Die Leiste in der gezoomten Spalte ist ab 901 px ausgeblendet.
+Gemessen bei 901 bis 1920 px auf acht Seiten identisch, das Handy ist pixelgleich.
+Dokumentation: `docs/ap/AP-581-ruecklink-desktop.md`.
