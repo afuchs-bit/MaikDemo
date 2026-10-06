@@ -42,7 +42,7 @@ html, body { background-color: #171916; }
 <link rel="stylesheet" href="../assets/css/header-home.css?v=20261006a" />
 <link rel="stylesheet" href="../assets/css/footer-kontakt.css?v=20261002a" />
 <link rel="stylesheet" href="../assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20261006b" />
+<link rel="stylesheet" href="../assets/css/ueber-uns.css?v=20261006c" />
 
 <!-- AP-326: Eigenstaendiger Graph. Bis AP-325 verwies "about" per @id auf
      #business, das nur in index.html definiert ist - ein Verweis, der beim
@@ -474,6 +474,18 @@ html, body { background-color: #171916; }
         </ol>
       </nav>
       <h1 class="ueber-hero__titel">Über <span>uns</span></h1>
+      <!-- AP-585 Nachtrag (06.10.2026): Am Rechner stehen Ueberschrift und Absatz von "Das
+           Team" direkt unter dem Titel, mittig - auf Ansage des Auftraggebers. Sie gehoeren
+           zur naechsten Sektion; deshalb hier eine Kopie, nur ab 901px sichtbar (bis 900px
+           display: none, auch fuer Screenreader weg). Das Original in .ueber-inhaber ist ab
+           901px aus. Beide Exemplare gleich halten. -->
+      <div class="ueber-hero__team">
+          <h2 class="ueber-inhaber__gross"><span>Das Team</span> hinter dem Betrieb.</h2>
+          <p class="ueber-inhaber__text">Auf der Baustelle treffen Sie unser Team an – Leute vom
+           Fach, die ansprechbar sind und Ihnen gern erklären, was sie gerade tun. Mit Ihrem
+           Grundstück gehen wir sorgfältig um – schließlich wird es auch während der Bauzeit
+           weiter genutzt.</p>
+      </div>
     </div>
     <figure class="ueber-hero__foto">
       <picture>
@@ -529,7 +541,9 @@ html, body { background-color: #171916; }
            Rechner links neben "Das Team" stand. AP-585 (06.10.2026): Das Foto steht am Rechner
            als Hochkant-Karte im Held (wie der Rahmenbild-Held der Leistungsseiten, AP-565);
            das Exemplar ist entfallen, "Das Team" steht wieder auf der Mittelachse (AP-530). -->
-      <div>
+      <!-- AP-585 Nachtrag: Am Rechner steht dieser Block als Kopie im Held unter "Ueber uns"
+           (.ueber-hero__team) und ist hier ab 901px aus. Beide Exemplare gleich halten. -->
+      <div class="ueber-inhaber__textblock">
         <h2 class="ueber-inhaber__gross"><span>Das Team</span> hinter dem Betrieb.</h2>
         <p class="ueber-inhaber__text">Auf der Baustelle treffen Sie unser Team an – Leute vom
            Fach, die ansprechbar sind und Ihnen gern erklären, was sie gerade tun. Mit Ihrem

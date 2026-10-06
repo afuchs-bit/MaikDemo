@@ -54,3 +54,28 @@ Bei 1440 px stand „Über uns“ sonst nur 240 px breit neben einer 436 px brei
 - „Das Team“ steht mittig in 600 px, Steg und Zitat darunter wie bisher.
 - Handy und Tablet 375/390/402/480/768/874: Element-Vergleich gegen den Stand davor ergibt
   0 Abweichungen; geladen wird dasselbe Bild wie vorher.
+
+## Nachtrag 06.10.2026: „Das Team“ im Held unter dem Titel
+
+Ansage: Überschrift „Das Team hinter dem Betrieb.“ und Absatz direkt unter dem Titel, mittig
+darunter; der Titel mittig zwischen Containerkante und linker Fotokante.
+
+- **Markup:** Kopie des Team-Blocks als `.ueber-hero__team` nach der H1.
+  - Bis 900 px ist die Kopie `display:none`, ab 901 px ist das Original
+    (`.ueber-inhaber__textblock`) aus. Je Breite gibt es genau eine sichtbare H2.
+  - Beide Exemplare gleich halten.
+- **Raster:** Spalten `Rand / 1fr / auto / Rand`. Spalte 3 ist so breit wie die Karte, Spalte 2
+  endet an der Fotokante. Titel und Team-Block stehen darin mittig, zusammen senkrecht mittig zur
+  Karte.
+- **Kartenbreite:** `min(460px, (frei − 64) · .75, 44vw)`. Bei 901 px sind das 396 statt 391 px,
+  sonst gleich.
+- **Team-Block:** 480 px breit, Schrift und Blocksatz aus den vorhandenen Klassenregeln.
+- **„Das Team“-Sektion am Desktop:** nur noch Steg und Zitat.
+
+Gemessen bei 901/1024/1280/1440/1920:
+- Titelmitte gegen die Mitte zwischen Kante und Foto: 0,0 px.
+- Team-Block gegen Titel: 0,0 px.
+- Block gegen Kartenmitte (senkrecht): 0,0 px.
+- Abstand Text → Foto mindestens 18 px (bei 901).
+- Kein Überlauf, keine Konsolenfehler.
+- Handy und Tablet 375–874: 0 Abweichungen.

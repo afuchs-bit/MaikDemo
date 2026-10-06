@@ -2560,6 +2560,10 @@ Auftraggeber so entschieden.
 - **Schärfe der Karte:** Das Original `_src/ueber-baumarbeiten.jpg` ist 900 × 1125; der
   3:4-Zuschnitt hat 844 px Breite. Bei 460 px Karte am Retina-Bildschirm sind das 1,83 statt
   2 Bildpunkte je Pixel. Ein größeres Original fehlt.
+- **Team-Text doppelt (Nachtrag):** „Das Team hinter dem Betrieb.“ und der Absatz stehen zweimal in
+  `ueber-uns/index.html` – im Held (ab 901 px) und in `.ueber-inhaber` (bis 900 px). Beide gleich halten.
+- **Blocksatz im Held:** In der 480-px-Spalte erzeugt der Blocksatz in einer Zeile sichtbar weite
+  Wortabstände („um – schließlich wird es auch …“). Falls störend: linksbündig oder mittig setzen.
 - **Werte doppelt:** Die Rahmenbild-Werte aus `leistung-mobile.css` (Block AP-565) stehen als
   Kopie in `ueber-uns.css` (Block AP-585). Bei Änderungen am Leistungs-Held mitziehen.
 - **Titelgröße:** `clamp(64px, 7vw, 120px)` statt der AP-565-Ersatzgröße
