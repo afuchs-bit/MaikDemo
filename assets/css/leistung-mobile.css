@@ -628,15 +628,18 @@
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container .lpv2-divider-fill::before{content:'';position:absolute;inset:0;background:linear-gradient(var(--mobile-logo-green,#56e607),#5FAE35);transform:scaleY(var(--lpv2-divider-p));transform-origin:top}
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container .lpv2-divider-fill::after{content:'';position:absolute;left:50%;top:calc(var(--lpv2-divider-p) * 100%);width:9px;height:9px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--mobile-logo-green,#56e607);box-shadow:0 0 0 6px rgba(140,198,63,.18);opacity:var(--lpv2-divider-dot,0)}
 
-  /* 4 - Zeile 4: waagerechte Haarlinie ueber beide Spalten; Zeile 5: Hinweis links,
+  /* 4 - Zeile 4: waagerechte Haarlinie ueber beide Spalten; Zeile 5/6 (Nachtrag): Hinweis, darunter Kachel + Knopf; bis dahin Hinweis links,
      Kachel + Knopf rechts (Mockup F). */
   /* AP-567: Fuellung nicht mehr am Scrollen - Keyframe animiert die registrierten Variablen. */
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live{animation:lpv2-divider-fill 1.1s var(--ease) 1s forwards}
 
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container::after{content:'';grid-column:1 / -1;grid-row:4;height:1px;margin-top:56px;background:rgba(250,248,241,.1)}
-  .lpv2-page--desktop-trichter .lpv2-content-service-copy{grid-column:1;grid-row:5;justify-self:start;width:100%;max-width:46ch;margin:36px 0 0;align-self:center}
+  /* Nachtrag 06.10.2026 (Ansage): Hinweistext und darunter Kachel + Knopf nicht mehr
+     nebeneinander, sondern untereinander mittig - Text und Kachel so breit wie die
+     FAQ-Karte (760px, AP-584). Zeile 5 Text, Zeile 6 Kachel + Knopf. */
+  .lpv2-page--desktop-trichter .lpv2-content-service-copy{grid-column:1 / -1;grid-row:5;justify-self:center;width:min(100%,760px);max-width:none;margin:36px 0 0}
   .lpv2-page--desktop-trichter .lpv2-content-service-copy p{max-width:none;text-align:justify;text-align-last:left;hyphens:auto}
-  .lpv2-page--desktop-trichter .lpv2-closing-block{grid-column:3;grid-row:5;display:grid;justify-items:start;width:100%;max-width:480px;margin-top:36px}
+  .lpv2-page--desktop-trichter .lpv2-closing-block{grid-column:1 / -1;grid-row:6;justify-self:center;display:grid;justify-items:start;width:min(100%,760px);max-width:none;margin-top:32px}
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{width:100%;max-width:none;margin:0}
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{width:400px;margin:20px 0 0}
 

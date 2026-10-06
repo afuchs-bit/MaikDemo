@@ -375,3 +375,15 @@ Gemessen bei 1440:
 - Hover: nach 120 ms −10°/1,09, danach −14°/1,12; nach dem Verlassen nach 120 ms −4°/1,03,
   danach zurück auf none.
 - Handy 375/402/874: 0 Abweichungen.
+
+## Nachtrag 2, 06.10.2026: Hinweistext über der Kachel, Breite wie die FAQ-Karte
+
+Ansage: Der Hinweistext („Wir achten darauf …“) steht über der Abschluss-Kachel, beide so breit wie die
+FAQ-Karte. Zeile 5 trägt jetzt den Hinweistext, Zeile 6 Kachel und Knopf. Beide stehen mittig über die
+ganze Breite, `width: min(100%, 760px)`; Abstände 36 px unter der Haarlinie, 32 px zur Kachel. Der Knopf
+bleibt 400 px, linksbündig unter der Kachel. Bisher standen Text links (46ch) und Kachel (480 px) rechts
+nebeneinander (Mockup F, E2 aus AP-566).
+
+Gemessen bei 1024, 1440 und 1920: Text und Kachel 760 px breit, linke Kante identisch mit der
+FAQ-Karte. Die Reihenfolge beim Erscheinen ist Text → Kachel → Knopf, kein Überlauf. Handy 375/402/874:
+0 Abweichungen.
