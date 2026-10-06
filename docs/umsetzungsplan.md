@@ -2667,3 +2667,12 @@ hoch, dass er im ersten Bild pulsiert. FAQ ab 901 px wie die Startseite (AP-546)
 760-px-Spalte, Gruppen-Karte mit dem Namen der Leistung, gleiche Animation aus `privat-form.js`
 (nur ab 901 px). Handy unverändert. Details: `docs/ap/AP-584-leistungsseiten-puls-knopf-faq.md`.
 
+
+**AP-566 — Leistungsseite Balkonkasten: Textbereich am Desktop als zwei Spalten mit Bewegung
+(06.10.2026).** Ersetzt in der Textsektion das Trichter-Layout aus AP-534 (Mockup F): ab 901 px
+links Überschrift, Einstieg und Standort, rechts Leistungsüberschrift und Liste, dazwischen eine
+Trennlinie, die sich beim Scrollen grün füllt; darunter Hinweistext links, Abschluss-Kachel und
+Knopf rechts. Bewegung: Wort-Aufstieg der Überschriften, Blüten blühen auf, kurze Striche über den
+Absätzen, Lichtsaum um die Kachel; alles mit `prefers-reduced-motion` sofort fertig. Nur
+Balkonkasten (`desktopLayout: "trichter"`), Handy unverändert. Details und Messwerte:
+`docs/ap/AP-566-balkonkasten-desktop-zwei-spalten-bewegung.md`.

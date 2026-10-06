@@ -403,6 +403,54 @@
   };
   registerReveal();
 
+  // --- AP-566: Bewegung der Textsektion am Desktop (Balkonkasten, Mockup F) ---
+  // Wort-Aufstieg der Ueberschriften, Trennlinie fuellt sich beim Scrollen. Nur ab 901px,
+  // nur auf Seiten mit lpv2-page--desktop-trichter. Bei reduced-motion steht alles sofort.
+  (() => {
+    const container = document.querySelector('.lpv2-page--desktop-trichter .lpv2-content-feature > .container');
+    if (!container || !lateRevealMedia.matches) return;
+    if (reduced) { container.classList.add('is-live'); return; }
+
+    const split = (el) => {
+      if (!el || el.classList.contains('lpv2-split')) return;
+      const words = el.textContent.trim().split(/\s+/);
+      el.textContent = '';
+      words.forEach((w, i) => {
+        const outer = document.createElement('span');
+        outer.className = 'lpv2-w';
+        outer.style.setProperty('--lpv2-wi', i);
+        const inner = document.createElement('span');
+        inner.textContent = w;
+        outer.appendChild(inner);
+        el.appendChild(outer);
+        if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+      });
+      el.classList.add('lpv2-split');
+    };
+    split(container.querySelector('.lpv2-content-lead h2'));
+    split(container.querySelector('.lpv2-content-service h3'));
+
+    const live = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      container.classList.add('is-live');
+      live.disconnect();
+    }, { threshold: 0.12 });
+    live.observe(container);
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const r = container.getBoundingClientRect();
+      const p = Math.max(0, Math.min(1, (window.innerHeight * 0.7 - r.top) / r.height));
+      container.style.setProperty('--lpv2-divider-p', p.toFixed(4));
+      container.style.setProperty('--lpv2-divider-dot', p > 0.02 && p < 0.98 ? '1' : '0');
+    };
+    const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', request, { passive: true });
+    update();
+  })();
+
   // Galeriebilder und Projektkarten entstehen erst nach dem Datenabruf. Neue
   // Reveal-Elemente werden ueber dieselbe zentrale Bewegung registriert.
   if ('MutationObserver' in window) {

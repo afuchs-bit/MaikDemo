@@ -11,7 +11,7 @@ const TEMPLATE = path.join(__dirname, 'templates', '_header.html');
 const CSS_VERSION = '20261006a';
 const PRIVATE_FORM_CSS_VERSION = '20261004d';
 const MOBILE_SOCIAL_PROOF_CSS_VERSION = '20261005i';
-const JS_VERSION = '20261002i';
+const JS_VERSION = '20261006a';
 const GALLERY_JS_VERSION = '20261001a';
 const FOOTER_CSS_VERSION = '20261002a';
 const PRIVATE_FORM_JS_VERSION = '20261006a';
@@ -19,7 +19,7 @@ const REQUEST_CSS_VERSION = '20261004b';
 const HOME_SPACING_CSS_VERSION = '20261004c';
 // AP-568: eigener Schluessel, damit eine Aenderung an leistung-mobile.css nicht
 // den styles.css-Schluessel aller Seiten mitzieht.
-const LEISTUNG_MOBILE_CSS_VERSION = '20261006f';
+const LEISTUNG_MOBILE_CSS_VERSION = '20261006g';
 const SKIP_DIRS = new Set(['admin', 'assets', 'content', 'data', 'docs', 'node_modules', 'tmp']);
 
 function pageBase(file) {

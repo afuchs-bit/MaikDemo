@@ -2536,3 +2536,18 @@ Auftraggeber so entschieden.
   80-%-Linie von `cta-signal.js`. Wird der Held höher oder der Titel größer, prüfen.
 - **privat-form.js auf Leistungsseiten:** wird jetzt geladen (FAQ-Animation); die anderen Module
   steigen ohne ihre Elemente aus. Bei neuen Modulen auf diese Bedingung achten.
+
+## AP-566 — Balkonkasten: Textbereich am Desktop in zwei Spalten
+
+- **E1 Knopf in der Kachel?** Mockup F hatte den Knopf in der Kachel; umgesetzt ist er darunter
+  (Kachel und Knopf sind im Markup Geschwister). Offen – Sascha. In die Kachel wäre ein Umbau
+  von `lpv2Closing()` (eigenes AP).
+- **E2 Hinweistext:** komplett unten links wie Mockup F umgesetzt. Offen – Sascha.
+- **E3 Ausrollen auf die übrigen 37 Leistungsseiten:** eigenes AP nach Maiks Freigabe. Die
+  Spaltenlogik braucht gleich hohe H2/H3; vorher die Längen aus `content/leistungen/**/*.json`
+  auswerten.
+- **E4 Deckkraft der kurzen Striche:** .32 aus dem Mockup; falls am Monitor zu schwach: .45.
+- **Reihenfolge beim Erscheinen:** Die Kachel steht höher als der (senkrecht mittige)
+  Hinweistext und erscheint deshalb vor ihm – nie zwei im selben Schritt.
+- **main.js-Schlüssel:** `JS_VERSION` in `build-headers.mjs` steuert auch
+  `home-header-morph.js`; beide wurden mitgehoben.

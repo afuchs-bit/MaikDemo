@@ -1174,6 +1174,8 @@ function lpv2ContentSection(leistung, base) {
   const late = leistung.desktopLayout === 'trichter';
   const liAttrs = late ? ' class="reveal" data-reveal-late' : '';
   const copyAttrs = late ? ' reveal" data-reveal-late' : '"';
+  // AP-566: leeres Element fuer die Trennlinie am Desktop (Fuellung + Lichtpunkt, CSS).
+  const dividerHtml = late ? '<span class="lpv2-divider-fill" aria-hidden="true"></span>' : '';
   const intro = lpv2MobileParagraphs(leistung.einstieg || [], leistung.mobileEinstieg);
   const contentBlocks = (leistung.inhalt || []).map((block) => {
     const paragraphs = lpv2MobileParagraphs(
@@ -1196,7 +1198,7 @@ function lpv2ContentSection(leistung, base) {
     return `<section class="lpv2-content-service${modifier} reveal">${heading}${list}${diagram}${copy}</section>`;
   }).join('');
   return `<section class="lpv2-content-feature section" aria-labelledby="lpv2-content-title">
-      <div class="container">
+      <div class="container">${dividerHtml}
         <article class="lpv2-content-editorial">
           <header class="lpv2-content-lead reveal"><h2 class="lpv2-content-title${mobileTitleLengthClass(leistung.unterzeile, 48, 'lpv2-content-title--long')}" id="lpv2-content-title">${esc(leistung.unterzeile)}</h2><div class="lpv2-content-flow-copy lpv2-content-flow-copy--intro">${intro}</div></header>
           ${contentBlocks}

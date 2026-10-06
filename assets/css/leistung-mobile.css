@@ -537,6 +537,11 @@
 @media (prefers-reduced-motion:reduce){
   html.lpv2-root{scroll-behavior:auto}
   .lpv2-page *{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+  /* AP-566: Grundzustand der Textsektions-Bewegung sofort fertig */
+  .lpv2-page--desktop-trichter .lpv2-split .lpv2-w > span{transform:none!important}
+  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p::before{transform:scaleX(1)!important}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal:before{transform:rotate(-8deg)!important}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{--lpv2-divider-p:1!important;--lpv2-divider-dot:0!important}
 }
 
 /* ---------- AP-534: Trichter-Layout am Rechner (Seiten mit desktopLayout "trichter") ----------
@@ -555,8 +560,13 @@
    einzige 480px-Spalte - Liste wie auf dem Handy (Bluete, Trennlinien), Hinweistext, Abschluss
    zentriert, Knopf 400px. Liste, Hinweistext, Abschluss und Knopf erscheinen einzeln beim
    Scrollen (data-reveal-late, main.js: Ausloeselinie 72 % Fensterhoehe). */
+/* AP-566 (06.10.2026): Teile 2-6 unten auf Mockup F umgebaut - zwei Spalten nebeneinander
+   (links Ueberschrift + beide Absaetze, rechts Leistungsueberschrift + Liste), darunter
+   Hinweis links und Kachel + Knopf rechts. Dazu Bewegung: Wort-Aufstieg der Ueberschriften,
+   Trennlinie fuellt sich beim Scrollen, Blueten bluehen auf, Lichtsaum um die Kachel. */
 .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal,
 .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal{opacity:1;transform:none;transition:none}
+.lpv2-divider-fill{display:none}
 
 @media (min-width:901px){
   /* 1 - Spalte und Zoom von .lpv2-main auf die Sektionen, Textsektion ausgenommen */
@@ -569,43 +579,95 @@
      und Abschluss-Kachel (danach) stehen nebeneinander in einer Zeile (Ansage 02.10.2026) -
      das geht nur, wenn beide Kinder desselben Rasters sind. Artikel, Leistungsblock und
      Abschluss loesen sich dafuer per display:contents auf. */
-  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);column-gap:52px;row-gap:0;width:min(100% - 48px,1080px);max-width:none;margin-inline:auto;padding:0;container-type:inline-size}
-  .lpv2-page--desktop-trichter .lpv2-content-feature :is(.lpv2-content-editorial,.lpv2-content-service,.lpv2-content-closing,.lpv2-closing-block){display:contents}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);column-gap:44px;row-gap:0;align-items:start;position:relative;--lpv2-divider-p:1;width:min(100% - 48px,1080px);max-width:none;margin-inline:auto;padding:0;container-type:inline-size}
+  .lpv2-page--desktop-trichter .lpv2-content-feature :is(.lpv2-content-editorial,.lpv2-content-service,.lpv2-content-closing){display:contents}
   .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-mobile-keep{white-space:normal}
 
-  /* 3 - Zeile 1: Ueberschrift ueber die ganze Breite; Zeile 2: zwei Absaetze an der Haarlinie */
+  /* 3 - Zeile 1: H2 links, H3 rechts, gleiche Groesse, auf einer Linie (Mockup F) */
+  /* Die Liste spannt Zeilen 2-3 und ist hoeher als beide Absaetze. Ihren Ueberhang nimmt nur
+     Zeile 3 (1fr) auf - sonst verteilt das Raster ihn auf beide Zeilen, und zwischen Einstieg
+     und Standort klafft statt 20px rund 95px Luft. */
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{grid-template-rows:auto auto 1fr auto auto}
   .lpv2-page--desktop-trichter .lpv2-content-lead{display:contents}
-  .lpv2-page--desktop-trichter .lpv2-content-lead h2{grid-column:1 / -1;grid-row:1;width:auto;max-width:22ch;margin:0 auto;font-size:2.125rem;line-height:1.14}
-  .lpv2-page--desktop-trichter .lpv2-content-lead h2.lpv2-content-title--long{font-size:2.125rem;line-height:1.14}
-  .lpv2-page--desktop-trichter .lpv2-content-lead .lpv2-content-flow-copy--intro{grid-column:1;grid-row:2;margin-top:40px}
-  .lpv2-page--desktop-trichter .lpv2-content-feature > .container::before{content:'';grid-column:2;grid-row:2;margin-top:40px;background:linear-gradient(180deg,transparent,var(--mobile-logo-green,#56e607) 18%,var(--mobile-logo-green,#56e607) 82%,transparent);opacity:.55}
-  .lpv2-page--desktop-trichter .lpv2-content-context{grid-column:3;grid-row:2;justify-self:end;width:100%;margin-top:40px}
-  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p{max-width:46ch;margin-inline:0}
+  .lpv2-page--desktop-trichter .lpv2-content-lead h2,
+  .lpv2-page--desktop-trichter .lpv2-content-lead h2.lpv2-content-title--long{grid-column:1;grid-row:1;width:auto;max-width:12em;margin:0;font-size:2rem;line-height:1.1;text-align:left;text-wrap:balance}
+  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:3;grid-row:1;width:auto;max-width:12em;margin:0;font-size:2rem;line-height:1.1;text-align:left;text-wrap:balance}
 
-  /* 4 - Zeile 3: Leistungsueberschrift mittig, Zeile 4: Liste 480px mittig */
-  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:1 / -1;grid-row:3;width:auto;max-width:26ch;margin:92px auto 0;font-size:2rem;line-height:1.17}
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:1 / -1;grid-row:4;width:100%;max-width:480px;margin:40px auto 0}
+  /* Zeilen 2-3 links: Einstieg und Standort untereinander, je mit kurzem gruenen Strich oben.
+     Rechts: Liste ueber beide Zeilen. */
+  .lpv2-page--desktop-trichter .lpv2-content-lead .lpv2-content-flow-copy--intro{grid-column:1;grid-row:2;margin-top:26px}
+  .lpv2-page--desktop-trichter .lpv2-content-context{grid-column:1;grid-row:3;justify-self:start;width:100%;margin-top:20px}
+  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p{position:relative;max-width:46ch;margin-inline:0;padding-top:16px;text-align:left;text-align-last:auto;hyphens:manual}
+  .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p::before{content:'';position:absolute;left:0;top:0;width:56px;height:1px;background:var(--mobile-logo-green,#56e607);opacity:.32;transform:scaleX(0);transform-origin:left}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-lead p::before{animation:lpv2-draw-x .9s var(--ease) .5s forwards}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-context p::before{animation:lpv2-draw-x .9s var(--ease) .75s forwards}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:3;grid-row:2 / 4;width:100%;max-width:none;margin:26px 0 0}
 
-  /* 5 - Hinweistext (Blocksatz) und Abschluss: die Kachel des Handys (gruene Flaeche,
-     Bluetenstempel, Zeilen untereinander), Knopf 400px als Trichterende. E1 entschieden
-     (02.10.2026): Kachel bleibt - das Mockup hatte den Satz ohne Kasten gezeigt. */
-  /* Zeilen 5-7 untereinander mittig: Hinweistext (480px, Blocksatz), Abschluss-Kachel
-     (480px, so breit wie der Text), Knopf 400px. Am 02.10.2026 stand die Kachel kurz rechts
-     neben dem Text; auf Ansage wieder darunter. Der Abstand Liste -> Text kommt weiter aus
-     dem Handy-Block (--lpv2-space-list-followup). */
-  .lpv2-page--desktop-trichter .lpv2-content-service-copy{grid-column:1 / -1;grid-row:5;justify-self:center;width:100%;max-width:480px}
+  /* Trennlinie in Spalte 2 ueber Zeilen 1-3: Grundlinie grau, Fuellung gruen waechst mit dem
+     Scrollen (--lpv2-divider-p, main.js), Lichtpunkt an der Spitze. align-self:stretch, weil
+     das Raster align-items:start traegt und beide Linien ohne Inhalt sonst 0px hoch waeren. */
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container::before{content:'';grid-column:2;grid-row:1 / 4;position:relative;justify-self:center;align-self:stretch;width:1px;margin:0;background:rgba(250,248,241,.1);opacity:1}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container .lpv2-divider-fill{display:block;grid-column:2;grid-row:1 / 4;position:relative;justify-self:center;align-self:stretch;width:1px;pointer-events:none}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container .lpv2-divider-fill::before{content:'';position:absolute;inset:0;background:linear-gradient(var(--mobile-logo-green,#56e607),#5FAE35);transform:scaleY(var(--lpv2-divider-p));transform-origin:top}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container .lpv2-divider-fill::after{content:'';position:absolute;left:50%;top:calc(var(--lpv2-divider-p) * 100%);width:9px;height:9px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--mobile-logo-green,#56e607);box-shadow:0 0 0 6px rgba(140,198,63,.18);opacity:var(--lpv2-divider-dot,0)}
+
+  /* 4 - Zeile 4: waagerechte Haarlinie ueber beide Spalten; Zeile 5: Hinweis links,
+     Kachel + Knopf rechts (Mockup F). */
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container::after{content:'';grid-column:1 / -1;grid-row:4;height:1px;margin-top:56px;background:rgba(250,248,241,.1)}
+  .lpv2-page--desktop-trichter .lpv2-content-service-copy{grid-column:1;grid-row:5;justify-self:start;width:100%;max-width:46ch;margin:36px 0 0;align-self:center}
   .lpv2-page--desktop-trichter .lpv2-content-service-copy p{max-width:none;text-align:justify;text-align-last:left;hyphens:auto}
-  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{grid-column:1 / -1;grid-row:6;justify-self:center;width:100%;max-width:480px;margin:32px 0 0}
-  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{grid-column:1 / -1;grid-row:7;justify-self:center;width:400px;margin:20px auto 0}
+  .lpv2-page--desktop-trichter .lpv2-closing-block{grid-column:3;grid-row:5;display:grid;justify-items:start;width:100%;max-width:480px;margin-top:36px}
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{width:100%;max-width:none;margin:0}
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{width:400px;margin:20px 0 0}
+
+  /* 5 - Lichtsaum um die Kachel: 1px-Ring, der gruene Abschnitt laeuft in 8 s einmal herum.
+     ::before der Kachel ist frei (homepage-unified setzt content:none); ::after traegt den
+     Bluetenstempel und bleibt. width/height:auto hebt den 46x2px-Strich der allgemeinen
+     .lpv2-closing:before-Regel auf. */
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing::before{content:'';display:block;position:absolute;inset:0;z-index:1;width:auto;height:auto;padding:1px;border-radius:inherit;background:conic-gradient(from var(--lpv2-ang,0deg),transparent 0 70%,var(--mobile-logo-green,#56e607) 86%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:lpv2-ring-turn 8s linear infinite;pointer-events:none}
+
 
   /* 6 - Erscheinen beim Scrollen: kurz und flach statt 24px/0.9s wie im Rest der Seite */
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal,
   .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal,
   .lpv2-page--desktop-trichter .lpv2-content-closing :is(.lpv2-closing,.lpv2-closing-cta).reveal{opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+  /* AP-566: padding-left fuer das Nachruecken beim Hover (6b); die Liste oben schluckte sonst
+     dessen eigene transition. */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal{transition:opacity .55s var(--ease),transform .55s var(--ease),padding-left .4s var(--ease)}
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.is-in,
   .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal.is-in,
   .lpv2-page--desktop-trichter .lpv2-content-closing :is(.lpv2-closing,.lpv2-closing-cta).reveal.is-in{opacity:1;transform:none}
+
+  /* 6b - AP-566: Blueten bluehen auf, wenn der Punkt erscheint; danach kaum merkliches
+     Schwingen (Versatz je Punkt), bei Hover Drehung und Text rueckt 6px nach rechts. */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal:before{transform:scale(0) rotate(-48deg)}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.is-in:before{animation:lpv2-bloom .8s cubic-bezier(.34,1.5,.5,1) forwards,lpv2-sway 5s ease-in-out infinite alternate;animation-delay:0s,calc(var(--lpv2-i,0) * .7s + .8s)}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(1){--lpv2-i:0}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(2){--lpv2-i:1}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(3){--lpv2-i:2}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(4){--lpv2-i:3}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(5){--lpv2-i:4}
+  @media (hover:hover){
+    .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.is-in:hover{padding-left:50px}
+    .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.is-in:hover:before{animation:lpv2-bloom .8s cubic-bezier(.34,1.5,.5,1) forwards,lpv2-spin 2.6s linear infinite}
+  }
+
+  /* 6c - AP-566: Wort-Aufstieg der Ueberschriften. main.js zerlegt H2/H3 in .lpv2-w-Spans
+     und setzt lpv2-split am Heading; ohne JS stehen die Ueberschriften einfach da. */
+  .lpv2-page--desktop-trichter .lpv2-split .lpv2-w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+  .lpv2-page--desktop-trichter .lpv2-split .lpv2-w > span{display:inline-block;transform:translateY(110%)}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-split .lpv2-w > span{animation:lpv2-rise .85s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--lpv2-wi,0) * 70ms + var(--lpv2-wd,0ms))}
+  .lpv2-page--desktop-trichter .lpv2-content-service h3.lpv2-split{--lpv2-wd:300ms}
 }
+
+/* AP-566: Keyframes und registrierte Eigenschaft fuer die Bewegung der Textsektion. */
+@property --lpv2-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes lpv2-ring-turn{to{--lpv2-ang:360deg}}
+@keyframes lpv2-draw-x{to{transform:scaleX(1)}}
+@keyframes lpv2-rise{to{transform:translateY(0)}}
+@keyframes lpv2-bloom{to{transform:scale(1) rotate(-8deg)}}
+@keyframes lpv2-sway{from{transform:scale(1) rotate(-12deg)}to{transform:scale(1.05) rotate(-3deg)}}
+@keyframes lpv2-spin{to{transform:scale(1) rotate(352deg)}}
 
 /* ---------- AP-536: Balkonkasten im Querformat (481-900px) ----------
    Ansage 02.10.2026, Handy quer (iPhone 16 Pro, 874px). Zuerst nur fuer die Balkonkasten-Seite
