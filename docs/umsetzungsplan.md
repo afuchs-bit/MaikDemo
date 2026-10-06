@@ -2615,3 +2615,14 @@ unter dem Kopf.
   `render.mjs`). Die Leiste in der gezoomten Spalte ist ab 901 px ausgeblendet.
 Gemessen bei 901 bis 1920 px auf acht Seiten identisch, das Handy ist pixelgleich.
 Dokumentation: `docs/ap/AP-581-ruecklink-desktop.md`.
+
+**AP-582 — Über uns: Steg erst beim Scrollen (02.10.2026).**
+Linie und Blüte über dem Zitat sind beim Öffnen der Seite nicht mehr zu sehen. Die Linie
+liegt auf `.ueber-inhaber__steg::before` und zieht sich mit der Blüte aus der Lücke nach
+außen auf. Am Desktop setzt `main.js` `.is-in` erst nach dem ersten Scrollen, auch auf
+hohen Fenstern. Endzustand und Handy sind pixelgleich.
+Nachtrag: Beim Öffnen oben steht unten mittig ein pulsierender Markenpfeil. Er
+verschwindet beim ersten Scrollen, ein Klick scrollt zum Zitat. Bei reduzierter
+Bewegung und bis 900 px gibt es ihn nicht. `ueber-uns.css` steht auf `?v=20261002zd`,
+`main.js` auf `?v=20261002i`.
+Dokumentation: `docs/ap/AP-582-ueber-uns-steg-beim-scrollen.md`.
