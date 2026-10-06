@@ -859,7 +859,7 @@ function lpMyths(arr) {
       </ul>`;
 }
 
-function lpFaq(arr, mobileCopy = false) {
+function lpFaq(arr, mobileCopy = false, gruppenTitel = '') {
   const renderQuestion = mobileCopy ? escMobileCopy : esc;
   const renderAnswer = mobileCopy
     ? (copy) => escMobileCopy(copy, { minTailLength: 28, maxTailLength: 44, maxTailWords: 6 })
@@ -868,6 +868,17 @@ function lpFaq(arr, mobileCopy = false) {
           <summary><span>${renderQuestion(f.frage)}</span><span class="chev" aria-hidden="true"></span></summary>
           <div class="faq-body"><p>${renderAnswer(f.antwort)}</p></div>
         </details>`).join('\n        ');
+  // AP-584: Mit gruppenTitel wie eine Gruppe der Startseiten-FAQ (privat-form.css .private-faq-group):
+  // Huelle + gruene Ueberschrift (Name der Leistung) + Haken fuer die Animation in privat-form.js.
+  // Bis 900px loest sich die Huelle auf und die Ueberschrift ist aus (leistung-mobile.css).
+  if (gruppenTitel) {
+    return `<div class="lpv2-faq-gruppe">
+        <h3 class="lpv2-faq-gruppe__titel">${esc(gruppenTitel)}</h3>
+        <div class="faq-list" data-private-faq-group>
+        ${items}
+        </div>
+      </div>`;
+  }
   return `<div class="faq-list">
         ${items}
       </div>`;
@@ -1469,7 +1480,7 @@ export async function renderLeistungPage(opts) {
       relatedVariantClass: presented.relatedVariant === 'homepage' ? ' lpv2-related--homepage' : '',
       faqIndex: hideProcess ? '03' : '04',
       relatedIndex: hideProcess ? '05' : '06',
-      faqHtml: lpFaq(presented.faq || [], mobileBalkonkasten), contactSection,
+      faqHtml: lpFaq(presented.faq || [], mobileBalkonkasten, presented.h1), contactSection,
       relatedHtml: lpv2Related(presented, serviceIndex, base, presented.relatedVariant === 'homepage'),
       relatedAllServices: mobileBalkonkasten
         ? `<div class="lpv2-breadcrumb-back lpv2-related-all reveal"><a href="${escAttr(allServicesHref)}"><span>Alle Leistungen</span><img src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" loading="lazy" decoding="async"></a></div>`

@@ -2500,6 +2500,9 @@ Auftraggeber so entschieden.
   Quelle, muss die Kopie mit.
 - **AP-512 für den Kontaktbereich aufgehoben:** Am Desktop steht nur noch der Kontaktbereich
   außerhalb der 640-px-Spalte.
+- **Berichtigung (AP-584):** Die folgende Aussage, die Knöpfe pulsierten danach auf Tablet und
+  Desktop, war falsch – es fehlten dort die `@keyframes` (nur in `cta-family.css` bis 480 px).
+  Behoben mit AP-584.
 - **Altfehler in der AP-512-Kopie (behoben):** Drei Zeilen stammten aus dem reduced-motion-Zweig
   von `cta-family.css`, waren aber ohne dessen Bedingung erfasst (`animation: none !important`,
   `transition: none`). Dadurch pulsierte auf den Leistungsseiten ab 481 px kein Aktionsknopf.
@@ -2522,3 +2525,14 @@ Auftraggeber so entschieden.
 - **Schriftzug-Pflege:** Grafik außerhalb der CMS-Bildpipeline; bei Namensänderung neu erzeugen.
 - **Mess-Chrome:** Der geteilte Chrome auf Port 9333 hing am 06.10. vollständig (eine andere
   Sitzung hält dort Hunderte Tabs). Für AP-565 lief ein eigener Chrome auf Port 9334.
+
+## AP-584 — Puls, Held-Knopf, FAQ der Leistungsseiten
+
+- **Keyframes doppelt:** Die Puls-`@keyframes` stehen jetzt auch in `leistung-mobile.css`
+  (ab 481 px). Ändern sie sich in `cta-family.css`, beide Stellen nachziehen.
+- **FAQ-Kopie:** Die Startseiten-FAQ-Gestaltung steht als Kopie in `leistung-mobile.css`
+  (Block AP-584). Ändert sich `privat-form.css` `.private-faq*`, mitziehen.
+- **Held-Knopf und Puls-Auslöser:** Bei 1280 × 800 liegt der Knopf nur 2 px über der
+  80-%-Linie von `cta-signal.js`. Wird der Held höher oder der Titel größer, prüfen.
+- **privat-form.js auf Leistungsseiten:** wird jetzt geladen (FAQ-Animation); die anderen Module
+  steigen ohne ihre Elemente aus. Bei neuen Modulen auf diese Bedingung achten.

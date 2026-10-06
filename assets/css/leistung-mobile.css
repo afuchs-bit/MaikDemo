@@ -641,8 +641,10 @@
    mit denselben Huellen wie index.html #anfrage - beide Stellen gleich halten. */
 @media (min-width:901px){
   .lpv2-page .lpv2-main{max-width:none;zoom:1;container-type:normal}
-  .lpv2-page:not(.lpv2-page--desktop-trichter) .lpv2-main > article > section:not(.lpv2-home-contact){max-width:32rem;margin-inline:auto;zoom:1.25;container-type:inline-size}
+  .lpv2-page:not(.lpv2-page--desktop-trichter) .lpv2-main > article > section:not(.lpv2-home-contact):not(.lpv2-faq){max-width:32rem;margin-inline:auto;zoom:1.25;container-type:inline-size}
   .lpv2-page .lpv2-main > article > section.lpv2-home-contact{max-width:none;margin-inline:0;zoom:1;container-type:normal}
+  /* AP-584: auch die FAQ verlaesst ab 901px die Spalte (siehe Block AP-584 am Dateiende) */
+  .lpv2-page .lpv2-main > article > section.lpv2-faq{max-width:none;margin-inline:0;zoom:1;container-type:normal}
 }
 
 /* AP-568: Begrenzte Kopie der Startseiten-Regeln fuer den Kontaktbereich ab 901px.
@@ -861,9 +863,11 @@
 
   /* 2 - Buehne: Raster mit den Randspalten des Seiten-Containers (wie der Ruecklink aus AP-581,
      der seit AP-581/583 ueber dem Held steht - Titel und Knopf beginnen buendig darunter),
-     Spalten 52/48. Mindesthoehe: das Fenster abzueglich fester Kopfflaeche (112px, AP-583) und
+     Spalten 52/48. Zeilen .5fr/1.5fr: Titel und Knopf sitzen etwas ueber der Mitte, damit der
+     Knopf im ersten Bild ueber der 80-%-Linie von cta-signal.js liegt und pulsiert (AP-584).
+     Mindesthoehe: das Fenster abzueglich fester Kopfflaeche (112px, AP-583) und
      Ruecklink-Block (--space-section-compact + 34px Trefferflaeche + Abstand, AP-581). */
-  .lpv2-page--desktop-rahmenbild .lpv2-hero{--hero-rand:calc((100% - min(100% - calc(var(--gutter) * 2), var(--container))) / 2);position:relative;isolation:isolate;display:grid;grid-template-columns:var(--hero-rand) minmax(0,52fr) minmax(0,48fr) var(--hero-rand);grid-template-rows:minmax(48px,1fr) auto auto minmax(48px,1fr);--hero-frei:calc(100svh - 112px - var(--space-section-compact) - 34px - clamp(28px,3vw,40px));min-height:clamp(480px,var(--hero-frei),900px);padding:0;background:var(--lp-bg);overflow:visible}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero{--hero-rand:calc((100% - min(100% - calc(var(--gutter) * 2), var(--container))) / 2);position:relative;isolation:isolate;display:grid;grid-template-columns:var(--hero-rand) minmax(0,52fr) minmax(0,48fr) var(--hero-rand);grid-template-rows:minmax(48px,.5fr) auto auto minmax(48px,1.5fr);--hero-frei:calc(100svh - 112px - var(--space-section-compact) - 34px - clamp(28px,3vw,40px));min-height:clamp(480px,var(--hero-frei),900px);padding:0;background:var(--lp-bg);overflow:visible}
   .lpv2-page--desktop-rahmenbild .lpv2-hero::before{content:'';grid-column:1 / 3;grid-row:1 / -1;align-self:stretch;justify-self:start;width:clamp(360px,34vw,680px);margin-left:-4%;background:url('../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a') center / contain no-repeat;opacity:.12;filter:saturate(.7);pointer-events:none}
   .lpv2-page--desktop-rahmenbild .lpv2-hero > .container{display:contents}
   .lpv2-page--desktop-rahmenbild .lpv2-kicker,
@@ -886,8 +890,9 @@
   .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:first-child:after{content:'-'}
   .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:last-child{color:var(--mobile-logo-green,#56e607)}
 
-  /* 5 - Zeile 3: Anfrageknopf (maik-cta, 440 x 74) */
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta{grid-column:2;grid-row:3;display:flex;align-items:center;width:100%;margin:38px 0 0;padding:0}
+  /* 5 - Zeile 3: Anfrageknopf (maik-cta, 440 x 74), mittig unter dem Titel: der Container ist so
+     breit wie der Titel (min(100%,620px)), Ansage 06.10.2026 (AP-584). */
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta{grid-column:2;grid-row:3;justify-self:start;display:flex;align-items:center;justify-content:center;width:min(100%,620px);margin:38px 0 0;padding:0}
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button{width:min(100%,440px);min-height:74px;height:74px;padding:8px 12px 8px 0;border-radius:16px}
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__label{font-size:1.125rem;letter-spacing:.02em}
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow{width:70px;height:46px;margin-right:14px}
@@ -904,4 +909,110 @@
 
   /* 7 - Uebergang zur Textsektion: der Held bringt seine Luft unten selbst mit (letzte Zeile) */
   .lpv2-page--desktop-rahmenbild .lpv2-content-feature{padding-top:40px}
+}
+
+/* ---------- AP-584: Puls-Animationen ab 481px ----------
+   Die @keyframes der Knopf-Familie stehen in cta-family.css nur in @media (max-width:480px)
+   (~218-252). Die Startseite holt sie ab 481px aus cta-family-home.css, das die
+   Leistungsseiten nicht laden. Ohne sie lief hier ab 481px keine Puls-Animation - die Regeln
+   setzten nur den Namen (AP-568 hatte das nicht bemerkt, weil nur der Name geprueft wurde).
+   Wortlaut aus cta-family.css; bei Aenderungen dort mitziehen. */
+@media (min-width:481px){
+  @keyframes maik-cta-arrow-rhythm {
+    0%, 19%, 100% { transform: translateX(0); }
+    7% { transform: translateX(2px); }
+    12% { transform: translateX(-.35px); }
+    16% { transform: translateX(.55px); }
+  }
+
+  @keyframes maik-cta-symbol-rhythm {
+    0%, 19%, 100% { transform: scale(1); }
+    7% { transform: scale(1.16); }
+    12% { transform: scale(.98); }
+    16% { transform: scale(1.04); }
+  }
+
+  @keyframes maik-cta-arrival-breath {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    46% { transform: translate3d(0, 0, 0) scale(1.018); }
+  }
+
+  @keyframes maik-cta-arrival-halo {
+    0% { opacity: 0; transform: translate3d(0, 0, 0) scale(.985, .922); }
+    32% { opacity: .72; transform: translate3d(0, 0, 0) scale(1.012, 1.063); }
+    100% { opacity: 0; transform: translate3d(0, 0, 0) scale(1.07, 1.367); }
+  }
+
+  @keyframes maik-cta-rhythm-breath {
+    0%, 58%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    7% { transform: translate3d(0, 0, 0) scale(1.012); }
+  }
+
+  @keyframes maik-cta-rhythm-halo {
+    0%, 63.2%, 100% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(.985, .922);
+    }
+    7% {
+      opacity: .54;
+      transform: translate3d(0, 0, 0) scale(1.009, 1.047);
+    }
+    63.1% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(1.055, 1.285);
+    }
+  }
+}
+
+/* ---------- AP-584: FAQ am Rechner wie auf der Startseite ----------
+   Ansage des Auftraggebers (06.10.2026): Die FAQ der Leistungsseiten sehen ab 901px aus wie die
+   Startseiten-FAQ (AP-546, privat-form.css .private-faq*): eine mittige Spalte von 760px, die
+   Fragen in einer Gruppen-Karte mit gruener Versal-Ueberschrift (hier der Name der Leistung),
+   Trennlinien, Plus-Symbol, weiches Auf-/Zuklappen (privat-form.js, ab 901px).
+   Die Startseiten-Regeln haengen an .private-faq*-Klassen, die hier fehlen (die Handy-Fassung
+   bleibt unveraendert) - deshalb eine Kopie auf die Leistungsseiten-Klassen, mit hoeherer
+   Gewichtung als die Spaltenregeln oben (.lpv2-page .faq-list ..., .lpv2-faq--homepage ...).
+   Abstaende aus home-spacing.css (AP-563), Ueberschrift aus home-dark.css (AP-529).
+   Aendert sich die Startseiten-FAQ, muss diese Kopie mit. Markup: render.mjs, lpFaq. */
+.lpv2-faq-gruppe{display:contents}
+.lpv2-faq-gruppe__titel{display:none}
+
+@media (min-width:901px){
+  html.home-theme-dark .lpv2-page .lpv2-faq{--display:"Nunito",sans-serif;--body:"Nunito",sans-serif;font-family:Nunito,sans-serif;--home-surface-low:#22271f;--home-surface-card:#252b22;--home-surface-high:#2b3327;--home-surface-border:rgba(183,203,160,.18);padding:clamp(72px,6vw,112px) 0;overflow-anchor:none;border-block:0;box-shadow:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq > .container{display:block;width:min(100% - 2 * max(var(--gutter),env(safe-area-inset-left,0px),env(safe-area-inset-right,0px)),760px);max-width:none;margin-inline:auto;padding-inline:0}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-section-head{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:end;margin:0 0 clamp(56px,5vw,80px);text-align:center}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-section-index{display:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-section-head h2{display:block;width:100%;max-width:none;margin:0 auto;padding:0;color:var(--home-on-dark);font-family:"Baloo 2",sans-serif;font-size:clamp(2.25rem,1.25rem + 2vw,3rem);font-style:normal;font-weight:600;line-height:1.13;letter-spacing:-.015em;text-align:center;text-wrap:balance}
+
+  /* Gruppen-Karte und Ueberschrift */
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe{display:block;min-width:0;min-height:auto;overflow:clip;border:1px solid var(--home-surface-border);border-radius:18px 5px 18px 5px;background:var(--home-surface-low);box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe__titel{display:flex;align-items:center;min-height:40px;box-sizing:border-box;margin:0;padding:14px 16px 11px;border-bottom:1px solid var(--home-surface-border);color:var(--green-500);font-family:var(--body);font-weight:850;font-size:.78rem;line-height:1.25;text-transform:uppercase;letter-spacing:.085em}
+
+  /* Zeilen */
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list{display:grid;gap:0;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details{position:relative;overflow:visible;border:0;border-color:var(--home-surface-border);border-radius:0;background:var(--home-surface-low);box-shadow:none;transition:border-color .2s var(--ease),box-shadow .2s var(--ease),background-color .2s var(--ease)}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details + details{border-top:0;border-top-color:var(--home-surface-border)}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details + details::before{content:"";position:absolute;z-index:2;top:0;right:0;left:0;height:1px;background:var(--home-surface-border);pointer-events:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details[open]{border-color:rgba(183,203,160,.3);background:var(--home-surface-card);box-shadow:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list summary{display:flex;align-items:center;justify-content:space-between;height:auto;min-height:68px;box-sizing:border-box;gap:14px;padding:0 14px 0 16px;color:var(--ink);font-family:var(--display);font-size:.94rem;font-weight:700;line-height:1.32;letter-spacing:-.01em;cursor:pointer;list-style:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list summary > span:first-child{flex:1 1 auto;min-width:0;transform:translateY(1px);text-wrap:wrap}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list summary:focus-visible{position:relative;z-index:1;outline:2px solid var(--yellow);outline-offset:-3px;border-radius:0}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list .chev{position:relative;flex:0 0 auto;width:24px;height:24px;border:1px solid rgba(140,198,63,.52);border-radius:50%;background:transparent;transform:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list :is(details[open], details.is-closing) .chev{border-color:rgba(140,198,63,.78);background:transparent;transform:none}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details.is-closing .chev::after{transform:translate(-50%,-50%) rotate(90deg)}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-body{margin-inline:16px;padding:1px 0 16px;border-top:0;font-size:.9rem;line-height:1.52}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-body p{margin:0}
+  html.home-theme-dark .lpv2-page .lpv2-faq.is-faq-animated .lpv2-faq-gruppe .faq-list details:is(.is-opening,.is-closing){will-change:height}
+  html.home-theme-dark .lpv2-page .lpv2-faq.is-faq-animated .lpv2-faq-gruppe .faq-body{will-change:opacity}
+}
+@media (min-width:901px) and (hover:hover) and (pointer:fine){
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details:hover{background:var(--home-surface-high);box-shadow:inset 0 0 0 1px rgba(140,198,63,.5)}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list details:hover > summary{background:transparent}
+}
+@media (min-width:901px) and (prefers-reduced-motion:reduce){
+  html.home-theme-dark .lpv2-page .lpv2-faq.is-faq-animated .lpv2-faq-gruppe .faq-list details,
+  html.home-theme-dark .lpv2-page .lpv2-faq.is-faq-animated .lpv2-faq-gruppe .faq-body{will-change:auto}
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .faq-list :is(details, summary),
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .chev,
+  html.home-theme-dark .lpv2-page .lpv2-faq .lpv2-faq-gruppe .chev::after{transition:none}
 }

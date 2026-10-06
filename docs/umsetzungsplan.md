@@ -2658,3 +2658,12 @@ grün) und Anfrageknopf 440 × 74; rechts das Hochkantfoto als Karte 3:4 mit ver
 und Blütenstempel. Herkunftszeile, Anruf-Knopf, Nachweise und Karten-Reiter aus dem Entwurf auf
 Ansage gestrichen. Handy bis 900 px unverändert. Details und Messwerte:
 `docs/ap/AP-565-leistungsseite-held-rahmenbild.md`.
+
+**AP-584 — Leistungsseiten: Knopf-Puls ab 481 px, Held-Knopf mittig, FAQ am Desktop wie
+Startseite (06.10.2026).** Die Puls-`@keyframes` fehlten auf den Leistungsseiten ab 481 px
+(nur in `cta-family.css` bis 480 px) – kein Knopf pulsierte dort; jetzt in `leistung-mobile.css`
+ergänzt (Berichtigung zu AP-568). Balkonkasten-Held: Knopf mittig unter dem Schriftzug und so
+hoch, dass er im ersten Bild pulsiert. FAQ ab 901 px wie die Startseite (AP-546): mittige
+760-px-Spalte, Gruppen-Karte mit dem Namen der Leistung, gleiche Animation aus `privat-form.js`
+(nur ab 901 px). Handy unverändert. Details: `docs/ap/AP-584-leistungsseiten-puls-knopf-faq.md`.
+
