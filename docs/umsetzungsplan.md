@@ -2587,3 +2587,12 @@ und Hero-Ausrichtung erhalten die Schildbeschriftung. Neue responsive
 AVIF/WebP-Dateien verhindern alte Cache-Bilder. Hochkant, Querformat, Desktop,
 Bildpfade und zweiter Generatorlauf geprüft. Dokumentation:
 `docs/ap/AP-564-baumkontrolle-warnschild.md`.
+
+**AP-580 — Über uns: Zitat-Animation am Desktop erst beim Hinscrollen (02.10.2026).**
+In Chrome war die Zitat-Animation „Kein Auftrag ist uns zu klein.“ nicht zu sehen. Das
+Zitat steht am Desktop beim Laden 789 px tief. Ab etwa 856 px Fensterhöhe waren damit
+schon beim Laden 60 % sichtbar, und die Animation lief unbemerkt am unteren Rand ab.
+Ab 901 px löst der IntersectionObserver jetzt an der 72-%-Linie aus
+(`rootMargin -28 %`, wie AP-534). Das Handy ist unverändert.
+`main.js?v=20261002g` steht in allen Seiten und in `JS_VERSION`.
+Dokumentation: `docs/ap/AP-580-zitat-animation-ausloesung.md`.

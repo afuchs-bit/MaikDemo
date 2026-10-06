@@ -1127,13 +1127,19 @@
    sichtbar ist - die Bewegung selbst steht komplett in ueber-uns.css.
    Beobachtet wird das Zitat, nicht das Raster: das ist auf dem Handy so hoch,
    dass 60 Prozent davon nicht in jeden Bildschirm passen. Ohne
-   IntersectionObserver sofort der Endzustand. */
+   IntersectionObserver sofort der Endzustand.
+   AP-580 (02.10.2026): Am Desktop steht das Zitat beim Laden 789px unter der
+   Fensterkante - ab gut 850px Fensterhoehe (Chrome am Mac) war es damit schon
+   zu 60 Prozent sichtbar, die Animation lief beim Laden am unteren Rand ab und
+   war beim Hinscrollen vorbei. Ab 901px zaehlt deshalb nur das Fenster bis zur
+   72-Prozent-Linie, wie bei data-reveal-late (AP-534). Handy unveraendert. */
 (function () {
   'use strict';
   var zitat = document.querySelector('[data-ueber-q]');
   var ziel = zitat && zitat.closest('.ueber-q');
   if (!ziel) return;
   if (!('IntersectionObserver' in window)) { ziel.classList.add('is-in'); return; }
+  var spaet = window.matchMedia && window.matchMedia('(min-width: 901px)').matches;
   var io = new IntersectionObserver(function (entries) {
     for (var n = 0; n < entries.length; n++) {
       /* Nicht isIntersecting allein: das ist schon bei der ersten Meldung nach
@@ -1141,6 +1147,6 @@
          statt .6 nur gegen Rundung der Flaechenquote genau am Schwellwert. */
       if (entries[n].intersectionRatio >= 0.599) { io.disconnect(); ziel.classList.add('is-in'); return; }
     }
-  }, { threshold: 0.6 });
+  }, { threshold: 0.6, rootMargin: spaet ? '0px 0px -28% 0px' : '0px' });
   io.observe(zitat);
 })();
