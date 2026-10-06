@@ -22,6 +22,21 @@ Das Auftragsdokument steht unverändert darunter. Umgesetzt auf Basis AP-568
 - **Balken „Alle Leistungen“:** Die Regeln für `.lpv2-breadcrumb-back` sind auf `.lpv2-hero`
   begrenzt – sonst trafen sie auch den Link unter den Ergänzungen (−22 px Höhe).
 
+**Anpassung nach AP-581/583 (06.10.2026, nach dem Zusammenführen):**
+- AP-583 legt den Desktop-Kopf fest über die Seite (`body` 112 px oben), AP-581 setzt auf allen
+  Leistungsseiten einen eigenen Rücklink „Alle Leistungen“ über den Held und blendet die Leiste
+  im Held aus. Die eigene Leiste des Rahmenbild-Helds entfällt deshalb.
+- **Bündig mit dem Rücklink:** Die Randspalten des Helds folgen jetzt dem Seiten-Container
+  (`min(100% − 2 × --gutter, --container)`) statt dem Startseiten-Rand; Rücklink, Schriftzug und
+  Knopf stehen auf einer Kante, die Karte schließt rechts mit dem Container ab.
+- **Höhe:** `--hero-frei = 100svh − 112px − --space-section-compact − 34px − clamp(28px,3vw,40px)`,
+  `min-height: clamp(480px, --hero-frei, 900px)`. Die Karte ist höchstens so hoch, dass sie mit
+  32 px Luft ins freie Fenster passt (`width: min(100%, 460px, (--hero-frei − 64px) × 0,75)`).
+  Gemessen: Held endet bei 901 × 900, 1024 × 768, 1280 × 800, 1440 × 900 und 1920 × 1080 genau am
+  Fensterrand; Karte 460 × 613 bei 1920 × 1080, 437 × 582 bei 1440 × 900, 355 × 473 bei 1024 × 768.
+- Die Messwerte unten stammen aus der ersten Fassung (Kopf 92 px, eigene Leiste) und sind durch
+  diese Anpassung überholt; Handy bis 900 px blieb in beiden Fassungen unverändert.
+
 **Messung (Headless Chrome):**
 
 | Prüfung | Ergebnis |
