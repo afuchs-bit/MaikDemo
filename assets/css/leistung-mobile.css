@@ -641,7 +641,12 @@
   .lpv2-page--desktop-trichter .lpv2-content-service-copy p{max-width:none;text-align:justify;text-align-last:left;hyphens:auto}
   .lpv2-page--desktop-trichter .lpv2-closing-block{grid-column:1 / -1;grid-row:6;justify-self:center;display:grid;justify-items:start;width:min(100%,760px);max-width:none;margin-top:32px}
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{width:100%;max-width:none;margin:0}
-  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{width:400px;margin:20px 0 0}
+  /* Nachtrag 06.10.2026 (Ansage): Der Kacheltext laeuft ueber die Breite - die festen Handy-Zeilen
+     (span display:block) fliessen am Desktop als ein Satz; mehr Innenabstand, rechts 88px frei fuer den
+     Bluetenstempel (ragt unten rechts in die Kachel). Knopf mittig darunter. */
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{padding:28px 88px 30px 32px}
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-lines>span{display:inline}
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{justify-self:center;width:400px;margin:24px 0 0}
 
   /* 5 - (AP-566 Lichtsaum um die Kachel: auf Ansage 06.10.2026 entfernt, AP-567 Nachtrag) */
 
