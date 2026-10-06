@@ -403,13 +403,23 @@
   };
   registerReveal();
 
-  // --- AP-566: Bewegung der Textsektion am Desktop (Balkonkasten, Mockup F) ---
-  // Wort-Aufstieg der Ueberschriften, Trennlinie fuellt sich beim Scrollen. Nur ab 901px,
-  // nur auf Seiten mit lpv2-page--desktop-trichter. Bei reduced-motion steht alles sofort.
+  // --- AP-566/567: Blickfuehrung der Textsektion am Desktop (Balkonkasten, Mockup F2 A+B) ---
+  // Wort-Aufstieg der Ueberschriften, Trennlinie fuellt sich, Listenpunkte werden nacheinander
+  // hell - als feste Sequenz beim Eintritt, unabhaengig vom Scrollen (Zeiten in
+  // leistung-mobile.css). Nur ab 901px, nur auf Seiten mit lpv2-page--desktop-trichter.
+  // lpv2-js am body schaltet die Ausgangszustaende (gedimmt/unsichtbar) erst mit JS ein.
+  // Bei reduced-motion steht alles sofort.
   (() => {
     const container = document.querySelector('.lpv2-page--desktop-trichter .lpv2-content-feature > .container');
     if (!container || !lateRevealMedia.matches) return;
-    if (reduced) { container.classList.add('is-live'); return; }
+    document.body.classList.add('lpv2-js');
+    const items = [...container.querySelectorAll('.lpv2-content-list li')];
+    const light = (li, d) => { li.style.setProperty('--lpv2-d', d); li.classList.add('lpv2-seq'); };
+    if (reduced) {
+      container.classList.add('is-live');
+      items.forEach((li) => light(li, '0s'));
+      return;
+    }
 
     const split = (el) => {
       if (!el || el.classList.contains('lpv2-split')) return;
@@ -430,25 +440,49 @@
     split(container.querySelector('.lpv2-content-lead h2'));
     split(container.querySelector('.lpv2-content-service h3'));
 
+    // Kette statt fester Zeiten: Punkt i schaltet fruehestens BASE nach dem Eintritt und STEP
+    // nach Punkt i-1 - und erst, wenn er ueber 92 % Fensterhoehe steht. Die Sektion kommt beim
+    // Scrollen von unten ins Bild; mit festen Zeiten schalteten die noch verdeckten Punkte
+    // sonst gemeinsam, sobald sie auftauchen. So nie zwei auf einmal, Reihenfolge fest.
+    const BASE = 1800, STEP = 180;
+    const startSequence = () => {
+      const t0 = performance.now();
+      let i = 0;
+      let last = -Infinity;
+      const next = () => {
+        if (i >= items.length) return;
+        const li = items[i];
+        const wait = Math.max(BASE, last + STEP) - (performance.now() - t0);
+        if (wait > 0) { setTimeout(next, wait); return; }
+        if (li.getBoundingClientRect().top < window.innerHeight * 0.92) {
+          light(li, '0s');
+          last = performance.now() - t0;
+          i += 1;
+          next();
+          return;
+        }
+        const obs = new IntersectionObserver((entries) => {
+          if (!entries.some((e) => e.isIntersecting)) return;
+          obs.disconnect();
+          next();
+        }, { rootMargin: '0px 0px -8% 0px' });
+        obs.observe(li);
+      };
+      next();
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      container.classList.add('is-live');
+      items.forEach((li) => light(li, '0s'));
+      return;
+    }
     const live = new IntersectionObserver((entries) => {
       if (!entries.some((e) => e.isIntersecting)) return;
       container.classList.add('is-live');
+      startSequence();
       live.disconnect();
-    }, { threshold: 0.12 });
+    }, { threshold: 0.15 });
     live.observe(container);
-
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const r = container.getBoundingClientRect();
-      const p = Math.max(0, Math.min(1, (window.innerHeight * 0.7 - r.top) / r.height));
-      container.style.setProperty('--lpv2-divider-p', p.toFixed(4));
-      container.style.setProperty('--lpv2-divider-dot', p > 0.02 && p < 0.98 ? '1' : '0');
-    };
-    const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-    window.addEventListener('scroll', request, { passive: true });
-    window.addEventListener('resize', request, { passive: true });
-    update();
   })();
 
   // Galeriebilder und Projektkarten entstehen erst nach dem Datenabruf. Neue

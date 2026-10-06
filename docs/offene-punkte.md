@@ -2570,3 +2570,10 @@ Auftraggeber so entschieden.
   `clamp(44px, 4.4vw, 80px)` – „Über uns“ ist kurz und stand sonst bei 1440 px nur 240 px breit.
 - **Scroll-Pfeil (AP-582) entfernt:** Auf Ansage am 06.10.2026 samt CSS und main.js-Block
   entfernt (`JS_VERSION` gehoben, daher neuer main.js-Schlüssel auf allen Seiten).
+
+## AP-567 — Balkonkasten: Blickführung am Desktop
+
+- **E2 Dimmung 35 %:** Kontrast knapp unter AA, aber nur ≈ 2 s. Offen – Sascha (alternativ 45 %).
+- **E3 Ausrollen auf die übrigen Leistungsseiten:** H3-Länge je Seite prüfen (einzeilig per `nowrap`).
+  Eigenes AP.
+- **Ohne JS:** Die Trennlinie zeigt nur die graue Grundlinie (keine Füllung).

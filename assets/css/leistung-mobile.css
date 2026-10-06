@@ -540,7 +540,10 @@
   /* AP-566: Grundzustand der Textsektions-Bewegung sofort fertig */
   .lpv2-page--desktop-trichter .lpv2-split .lpv2-w > span{transform:none!important}
   .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p::before{transform:scaleX(1)!important}
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal:before{transform:rotate(-8deg)!important}
+  .lpv2-page--desktop-trichter .lpv2-content-service h3,
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list,
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li{opacity:1!important}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:before{transform:scale(1) rotate(-8deg)!important;opacity:1!important}
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container{--lpv2-divider-p:1!important;--lpv2-divider-dot:0!important}
 }
 
@@ -560,6 +563,9 @@
    einzige 480px-Spalte - Liste wie auf dem Handy (Bluete, Trennlinien), Hinweistext, Abschluss
    zentriert, Knopf 400px. Liste, Hinweistext, Abschluss und Knopf erscheinen einzeln beim
    Scrollen (data-reveal-late, main.js: Ausloeselinie 72 % Fensterhoehe). */
+/* AP-567 (06.10.2026): Blickfuehrung - links grosse gruene H2, rechts weisse Zwischen-
+   ueberschrift; rechte Spalte gedimmt, bis die Eintritts-Sequenz sie Punkt fuer Punkt hell
+   schaltet. Trennlinie und Blueten laufen in dieser Sequenz, nicht mehr am Scrollen. */
 /* AP-566 (06.10.2026): Teile 2-6 unten auf Mockup F umgebaut - zwei Spalten nebeneinander
    (links Ueberschrift + beide Absaetze, rechts Leistungsueberschrift + Liste), darunter
    Hinweis links und Kachel + Knopf rechts. Dazu Bewegung: Wort-Aufstieg der Ueberschriften,
@@ -579,7 +585,7 @@
      und Abschluss-Kachel (danach) stehen nebeneinander in einer Zeile (Ansage 02.10.2026) -
      das geht nur, wenn beide Kinder desselben Rasters sind. Artikel, Leistungsblock und
      Abschluss loesen sich dafuer per display:contents auf. */
-  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);column-gap:44px;row-gap:0;align-items:start;position:relative;--lpv2-divider-p:1;width:min(100% - 48px,1080px);max-width:none;margin-inline:auto;padding:0;container-type:inline-size}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);column-gap:44px;row-gap:0;align-items:start;position:relative;--lpv2-divider-p:0;--lpv2-divider-dot:0;width:min(100% - 48px,1080px);max-width:none;margin-inline:auto;padding:0;container-type:inline-size}
   .lpv2-page--desktop-trichter .lpv2-content-feature :is(.lpv2-content-editorial,.lpv2-content-service,.lpv2-content-closing){display:contents}
   .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-mobile-keep{white-space:normal}
 
@@ -590,8 +596,14 @@
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container{grid-template-rows:auto auto 1fr auto auto}
   .lpv2-page--desktop-trichter .lpv2-content-lead{display:contents}
   .lpv2-page--desktop-trichter .lpv2-content-lead h2,
-  .lpv2-page--desktop-trichter .lpv2-content-lead h2.lpv2-content-title--long{grid-column:1;grid-row:1;width:auto;max-width:12em;margin:0;font-size:2rem;line-height:1.1;text-align:left;text-wrap:balance}
-  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:3;grid-row:1;width:auto;max-width:12em;margin:0;font-size:2rem;line-height:1.1;text-align:left;text-wrap:balance}
+  .lpv2-page--desktop-trichter .lpv2-content-lead h2.lpv2-content-title--long{grid-column:1;grid-row:1;width:auto;max-width:11em;margin:0;font-size:clamp(2.2rem,4cqw,3.1rem);line-height:1.06;text-align:left;text-wrap:balance}
+  /* AP-567: H3 weiss und klein (22px bei 1080px Satzspiegel), immer einzeilig - die Liste
+     steht direkt darunter (Entscheidung 06.10.2026) und braucht eine feste H3-Hoehe. Bei
+     schmalerem Satzspiegel schrumpft sie mit (2.04cqw), damit die Zeile passt.
+     -webkit-text-fill-color: homepage-unified faerbt die H3 sonst gruen. */
+  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:3;grid-row:1;align-self:start;width:auto;max-width:none;margin:.35em 0 0;font-family:'Baloo 2',sans-serif;font-size:clamp(1.2rem,2.04cqw,1.375rem);font-weight:700;line-height:1.3;letter-spacing:.01em;color:var(--lpv2-text-heading,#fafaf6);-webkit-text-fill-color:var(--lpv2-text-heading,#fafaf6);text-align:left;white-space:nowrap}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service h3{opacity:0;transition:opacity .6s var(--ease) 1.3s}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-service h3{opacity:1}
 
   /* Zeilen 2-3 links: Einstieg und Standort untereinander, je mit kurzem gruenen Strich oben.
      Rechts: Liste ueber beide Zeilen. */
@@ -600,8 +612,12 @@
   .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p{position:relative;max-width:46ch;margin-inline:0;padding-top:16px;text-align:left;text-align-last:auto;hyphens:manual}
   .lpv2-page--desktop-trichter :is(.lpv2-content-lead,.lpv2-content-context) p::before{content:'';position:absolute;left:0;top:0;width:56px;height:1px;background:var(--mobile-logo-green,#56e607);opacity:.32;transform:scaleX(0);transform-origin:left}
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-lead p::before{animation:lpv2-draw-x .9s var(--ease) .5s forwards}
-  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-context p::before{animation:lpv2-draw-x .9s var(--ease) .75s forwards}
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:3;grid-row:2 / 4;width:100%;max-width:none;margin:26px 0 0}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-context p::before{animation:lpv2-draw-x .9s var(--ease) .7s forwards}
+  /* AP-567: Liste in Zeilen 1-3, oben um H3 (.35em + 1.3 Zeilen = 1.65 x Schriftgroesse) plus
+     18px eingerueckt - sie steht damit direkt unter der H3. Ihr Ueberhang geht in Zeile 3 (1fr). */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:3;grid-row:1 / 4;width:100%;max-width:none;margin:calc(clamp(1.2rem,2.04cqw,1.375rem) * 1.65 + 18px) 0 0}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list{opacity:0;transition:opacity .6s var(--ease) 1.3s}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-list{opacity:1}
 
   /* Trennlinie in Spalte 2 ueber Zeilen 1-3: Grundlinie grau, Fuellung gruen waechst mit dem
      Scrollen (--lpv2-divider-p, main.js), Lichtpunkt an der Spitze. align-self:stretch, weil
@@ -613,6 +629,9 @@
 
   /* 4 - Zeile 4: waagerechte Haarlinie ueber beide Spalten; Zeile 5: Hinweis links,
      Kachel + Knopf rechts (Mockup F). */
+  /* AP-567: Fuellung nicht mehr am Scrollen - Keyframe animiert die registrierten Variablen. */
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live{animation:lpv2-divider-fill 1.1s var(--ease) 1s forwards}
+
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container::after{content:'';grid-column:1 / -1;grid-row:4;height:1px;margin-top:56px;background:rgba(250,248,241,.1)}
   .lpv2-page--desktop-trichter .lpv2-content-service-copy{grid-column:1;grid-row:5;justify-self:start;width:100%;max-width:46ch;margin:36px 0 0;align-self:center}
   .lpv2-page--desktop-trichter .lpv2-content-service-copy p{max-width:none;text-align:justify;text-align-last:left;hyphens:auto}
@@ -628,28 +647,30 @@
 
 
   /* 6 - Erscheinen beim Scrollen: kurz und flach statt 24px/0.9s wie im Rest der Seite */
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal,
   .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal,
   .lpv2-page--desktop-trichter .lpv2-content-closing :is(.lpv2-closing,.lpv2-closing-cta).reveal{opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
-  /* AP-566: padding-left fuer das Nachruecken beim Hover (6b); die Liste oben schluckte sonst
-     dessen eigene transition. */
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal{transition:opacity .55s var(--ease),transform .55s var(--ease),padding-left .4s var(--ease)}
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.is-in,
   .lpv2-page--desktop-trichter .lpv2-content-service-copy.reveal.is-in,
   .lpv2-page--desktop-trichter .lpv2-content-closing :is(.lpv2-closing,.lpv2-closing-cta).reveal.is-in{opacity:1;transform:none}
 
-  /* 6b - AP-566: Blueten bluehen auf, wenn der Punkt erscheint; danach kaum merkliches
-     Schwingen (Versatz je Punkt), bei Hover Drehung und Text rueckt 6px nach rechts. */
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal:before{transform:scale(0) rotate(-48deg)}
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.is-in:before{animation:lpv2-bloom .8s cubic-bezier(.34,1.5,.5,1) forwards,lpv2-sway 5s ease-in-out infinite alternate;animation-delay:0s,calc(var(--lpv2-i,0) * .7s + .8s)}
+  /* 6b - AP-567: Liste gedimmt, bis die Eintritts-Sequenz (main.js) jedem Punkt lpv2-seq
+     und seine Zeit --lpv2-d gibt. Dann wird der Punkt hell, die Bluete waechst mit
+     Ueberschwingen von 55 % auf 100 % und schwingt danach leicht. Selektoren mit li.reveal:
+     die Neutralisierung oben (ausserhalb der Media Query, gleiche Spezifitaet, frueher in der
+     Datei) setzt sonst opacity:1 und transition:none. transition-delay mit !important: main.js
+     schreibt beim Erscheinen eine Inline-Verzoegerung an jedes .reveal (revealNow). */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal{opacity:1;transform:none;transition:opacity .5s var(--ease),padding-left .4s var(--ease);transition-delay:var(--lpv2-d,0s),0s!important}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list li.reveal{opacity:.35}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list li.reveal:before{transform:scale(.55) rotate(-8deg);opacity:.6;transition:opacity .4s var(--ease) var(--lpv2-d,0s)}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq{opacity:1}
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:before{opacity:1;animation:lpv2-bloom .7s cubic-bezier(.34,1.5,.5,1) forwards,lpv2-sway 5s ease-in-out infinite alternate;animation-delay:var(--lpv2-d,0s),calc(var(--lpv2-d,0s) + .8s + var(--lpv2-i,0) * .7s)}
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(1){--lpv2-i:0}
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(2){--lpv2-i:1}
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(3){--lpv2-i:2}
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(4){--lpv2-i:3}
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li:nth-child(5){--lpv2-i:4}
   @media (hover:hover){
-    .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.is-in:hover{padding-left:50px}
-    .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.is-in:hover:before{animation:lpv2-bloom .8s cubic-bezier(.34,1.5,.5,1) forwards,lpv2-spin 2.6s linear infinite}
+    .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:hover{padding-left:50px}
+    .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list li.reveal.lpv2-seq:hover:before{animation:lpv2-bloom .7s cubic-bezier(.34,1.5,.5,1) forwards,lpv2-spin 2.6s linear infinite}
   }
 
   /* 6c - AP-566: Wort-Aufstieg der Ueberschriften. main.js zerlegt H2/H3 in .lpv2-w-Spans
@@ -657,15 +678,20 @@
   .lpv2-page--desktop-trichter .lpv2-split .lpv2-w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
   .lpv2-page--desktop-trichter .lpv2-split .lpv2-w > span{display:inline-block;transform:translateY(110%)}
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-split .lpv2-w > span{animation:lpv2-rise .85s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--lpv2-wi,0) * 70ms + var(--lpv2-wd,0ms))}
-  .lpv2-page--desktop-trichter .lpv2-content-service h3.lpv2-split{--lpv2-wd:300ms}
+  .lpv2-page--desktop-trichter .lpv2-content-service h3.lpv2-split{--lpv2-wd:1400ms}
 }
 
 /* AP-566: Keyframes und registrierte Eigenschaft fuer die Bewegung der Textsektion. */
 @property --lpv2-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
 @keyframes lpv2-ring-turn{to{--lpv2-ang:360deg}}
+/* AP-567: Trennlinie als Teil der Sequenz. inherits:true, damit .lpv2-divider-fill den am
+   Container animierten Wert liest. */
+@property --lpv2-divider-p{syntax:"<number>";initial-value:0;inherits:true}
+@property --lpv2-divider-dot{syntax:"<number>";initial-value:0;inherits:true}
+@keyframes lpv2-divider-fill{from{--lpv2-divider-p:0;--lpv2-divider-dot:1}95%{--lpv2-divider-dot:1}to{--lpv2-divider-p:1;--lpv2-divider-dot:0}}
 @keyframes lpv2-draw-x{to{transform:scaleX(1)}}
 @keyframes lpv2-rise{to{transform:translateY(0)}}
-@keyframes lpv2-bloom{to{transform:scale(1) rotate(-8deg)}}
+@keyframes lpv2-bloom{from{transform:scale(.55) rotate(-8deg)}to{transform:scale(1) rotate(-8deg)}}
 @keyframes lpv2-sway{from{transform:scale(1) rotate(-12deg)}to{transform:scale(1.05) rotate(-3deg)}}
 @keyframes lpv2-spin{to{transform:scale(1) rotate(352deg)}}
 

@@ -2684,3 +2684,14 @@ Blüten-Wasserzeichen, Rücklink „Startseite“ oben links, Titel „Über uns
 versetztem Rahmen und Blütenstempel; kein Knopf. Das Foto neben „Das Team“ (AP-532) ist
 entfallen, der Abschnitt steht wieder einspaltig auf der Mittelachse. Handy unverändert.
 Details: `docs/ap/AP-585-ueber-uns-held-rahmenbild.md`.
+
+**AP-567 — Leistungsseite Balkonkasten: Blickführung am Desktop (06.10.2026).** Auf AP-566: links große
+grüne H2, rechts weiße Zwischenüberschrift mit der Liste direkt darunter. Beim Eintritt läuft einmalig
+eine Sequenz:
+- Die H2 steigt auf, die Striche zeichnen sich.
+- Die Trennlinie füllt sich (nicht mehr am Scrollen).
+- Die rechte Spalte erscheint, die H3 steigt auf.
+- Die Punkte werden nacheinander hell, im Abstand von mindestens 0,18 s und erst im Bild.
+
+Reduzierte Bewegung: alles sofort. Handy unverändert. Details:
+`docs/ap/AP-567-balkonkasten-blickfuehrung-choreografie.md`.
