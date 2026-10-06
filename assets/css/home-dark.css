@@ -2640,6 +2640,9 @@ html.home-theme-dark :where(.site-header, .hero--gate, .section-proof, .fork, .s
 /* Der bestehende Desktop-Kopf schwebt ueber der seitlichen Komposition. */
 @media (min-width: 901px) {
   html.home-theme-dark { --header-h: 112px; }
+  /* AP-583: header-home.css haelt auf allen Seiten 112px fuer den festen Kopf frei;
+     die Startseite legt ihn weiter ueber den Einstieg. */
+  html.home-theme-dark body { padding-top: 0; }
   html.home-theme-dark .site-header {
     position: fixed;
     inset: 0 0 auto;

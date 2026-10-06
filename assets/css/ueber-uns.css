@@ -180,7 +180,72 @@ body.ueber-page {
 
 .ueber-hero .breadcrumbs { margin-bottom: clamp(28px, 3vw, 40px); }
 .ueber-hero .breadcrumbs ol { margin-bottom: 0; }
-.ueber-hero__breadcrumb-back img { display: none; }
+/* AP-581 (02.10.2026): Der Ruecklink sieht auf allen Breiten aus wie auf dem
+   Handy - bis dahin stand ab 481px der Kruemelpfad „Startseite › Ueber uns“ und
+   das Pfeil-Icon war ausgeblendet. Hier nur das Aussehen, woertlich aus dem
+   480er-Block unten (der behaelt die Lage im Foto). Ueber uns hat dabei seine
+   eigene Handy-Fassung: 13,6px aus .breadcrumbs ol in --ink-mute, nicht die
+   12,16px von .breadcrumbs--home-back. */
+.ueber-hero .ueber-hero__breadcrumbs {
+  color: var(--home-on-dark-2, #d9ded5);
+  font-family: Nunito, system-ui, sans-serif;
+  font-size: .76rem;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: .015em;
+}
+
+.ueber-hero__breadcrumbs ol { overflow: visible; }
+
+.ueber-hero__breadcrumbs li + li::before { content: none; }
+
+.ueber-hero__breadcrumb-back a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 34px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ueber-hero__breadcrumb-back a > span {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-skip-ink: auto;
+}
+
+.ueber-hero__breadcrumb-back img {
+  display: block;
+  width: 18px;
+  height: auto;
+  filter: brightness(0) saturate(100%) invert(77%) sepia(100%) saturate(1680%) hue-rotate(47deg) brightness(105%) contrast(107%);
+  transform: rotate(180deg);
+}
+
+.ueber-hero__breadcrumb-current {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* AP-581 Nachtrag (06.10.2026): Am Desktop sieht der Ruecklink auf allen Unterseiten
+   gleich aus - wie auf Galerie, Kontakt und den Rechtstexten (.breadcrumbs--home-back,
+   styles.css): 12,16px in --home-on-dark-2. Ueber uns hatte dort 13,6px in
+   --ink-mute aus .breadcrumbs ol. Die Lage stimmte schon; das Handy bleibt bei
+   seiner eigenen Fassung. */
+@media (min-width: 901px) {
+  .ueber-hero__breadcrumb-back a {
+    color: var(--home-on-dark-2, #d9ded5);
+    font-size: .76rem;
+  }
+}
 
 /* Der Titel im Satz der Vorlage - derselbe wie auf Galerie (projekte.css:105)
    und Kontakt: Baloo 2, 31px, 600. Bis AP-480 stand er im Foto und war mit
@@ -560,6 +625,79 @@ body.ueber-page {
   }
 }
 
+/* AP-582 (02.10.2026): Am Desktop gehoert auch die Linie des Stegs zur Animation -
+   auf Ansage des Auftraggebers soll beim Oeffnen der Seite weder Linie noch Bluete
+   zu sehen sein. Sie zieht sich gleichzeitig mit der Bluete (0-650ms) aus der
+   Luecke nach aussen auf, Kurve wie der Strich unter "zu klein.". Bis 900px ist
+   der Steg ausgeblendet. */
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .js .ueber-q .ueber-inhaber__steg::before { opacity: 0; transform: scaleX(0); }
+
+  .js .ueber-q.is-in .ueber-inhaber__steg::before {
+    opacity: 1;
+    transform: none;
+    transition: transform .65s cubic-bezier(.6, 0, .3, 1), opacity .3s ease;
+  }
+}
+
+/* AP-582 Nachtrag (02.10.2026): Weil Steg und Zitat am Desktop erst nach dem
+   ersten Scrollen erscheinen, steht beim Oeffnen unten mittig ein pulsierender
+   Pfeil - der Markenpfeil des Ruecklinks, um 90 Grad nach unten gedreht. main.js
+   zeigt ihn nur ab 901px und ohne Scrollposition, beim ersten Scrollen blendet er
+   aus und kommt nicht wieder. Klick scrollt zum Zitat. */
+.ueber-scrollpfeil[hidden] { display: none; }
+
+@media (max-width: 900px) {
+  .ueber-scrollpfeil { display: none !important; }
+}
+
+@media (min-width: 901px) {
+  .ueber-scrollpfeil {
+    position: fixed;
+    z-index: 40;
+    left: 50%;
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgb(27 30 25 / .72);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: opacity .4s ease;
+  }
+
+  .ueber-scrollpfeil.is-da { opacity: 1; }
+
+  .ueber-scrollpfeil:focus-visible {
+    outline: 2px solid var(--mobile-logo-green, #56e607);
+    outline-offset: 3px;
+  }
+
+  .ueber-scrollpfeil img {
+    display: block;
+    width: 28px;
+    height: auto;
+    filter: brightness(0) saturate(100%) invert(77%) sepia(100%) saturate(1680%) hue-rotate(47deg) brightness(105%) contrast(107%);
+    transform: rotate(90deg);
+  }
+}
+
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .ueber-scrollpfeil img { animation: ueber-scrollpfeil-puls 1.6s ease-in-out infinite; }
+}
+
+@keyframes ueber-scrollpfeil-puls {
+  0%, 100% { transform: translateY(0) rotate(90deg); opacity: .65; }
+  50% { transform: translateY(7px) rotate(90deg); opacity: 1; }
+}
+
 /* AP-450: Hier stand .ueber-inhaber__platzhalter - gedaempft und kursiv, damit
    der vorlaeufige Satz auf der Seite als solcher zu erkennen war. Das Zitat
    traegt seit dem 24.09.2026 den Wortlaut des Auftraggebers; die Klasse ist im
@@ -627,13 +765,25 @@ body.ueber-page {
   .ueber-inhaber__steg {
     height: 72px;
     margin: clamp(28px, 3vw, 40px) 0 14px;
+    background: none;
+  }
+
+  /* AP-582 (02.10.2026): Die Linie liegt auf einem eigenen Pseudoelement statt
+     im Hintergrund des Stegs - so kann sie mit der Bluete aufziehen (Regeln bei
+     der Zitat-Animation, AP-490). Verlauf und Lage wie vorher. */
+  .ueber-inhaber__steg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background: linear-gradient(90deg,
       var(--line) 0 calc(50% - 64px),
       transparent calc(50% - 64px) calc(50% + 64px),
       var(--line) calc(50% + 64px) 100%) center / 100% 1px no-repeat;
+    transform-origin: center;
+    pointer-events: none;
   }
 
-  .ueber-inhaber__blume { padding: 0; }
+  .ueber-inhaber__blume { padding: 0; z-index: 1; }
 
   .ueber-inhaber__zitat { text-align: center; }
 

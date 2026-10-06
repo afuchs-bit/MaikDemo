@@ -2588,6 +2588,56 @@ AVIF/WebP-Dateien verhindern alte Cache-Bilder. Hochkant, Querformat, Desktop,
 Bildpfade und zweiter Generatorlauf geprüft. Dokumentation:
 `docs/ap/AP-564-baumkontrolle-warnschild.md`.
 
+**AP-580 — Über uns: Zitat-Animation am Desktop erst beim Hinscrollen (02.10.2026).**
+In Chrome war die Zitat-Animation „Kein Auftrag ist uns zu klein.“ nicht zu sehen. Das
+Zitat steht am Desktop beim Laden 789 px tief. Ab etwa 856 px Fensterhöhe waren damit
+schon beim Laden 60 % sichtbar, und die Animation lief unbemerkt am unteren Rand ab.
+Ab 901 px löst der IntersectionObserver jetzt an der 72-%-Linie aus
+(`rootMargin -28 %`, wie AP-534). Das Handy ist unverändert.
+`main.js?v=20261002g` steht in allen Seiten und in `JS_VERSION`.
+Dokumentation: `docs/ap/AP-580-zitat-animation-ausloesung.md`.
+
+**AP-581 — Rücklink „← Startseite“ auch am Desktop (02.10.2026).**
+Ab 481 px zeigen Über uns, Kontakt, Galerie, Impressum und Datenschutz jetzt denselben
+kompakten Rücklink wie auf dem Handy statt des Pfads „Startseite › …“. Die Leistungsseiten
+hatten ihn schon, die Projektdetailseiten behalten auf Ansage den Pfad.
+- `.breadcrumbs--home-back` steht in `@media all`.
+- Über uns behält seine eigene Handy-Fassung mit 13,6 px als Grundregel.
+- `rechtstext.html` hat jetzt das Rücklink-Markup, sonst hätte der Build zurückgedreht.
+- `CSS_VERSION` ist `20261002zb`.
+Das Handy ist pixelgleich.
+Nachtrag 06.10.2026: Am Desktop sieht der Rücklink jetzt auf allen Unterseiten gleich aus und
+sitzt gleich, im Handy-Satz wie auf der Galerie: Containerkante, `--space-section-compact`
+unter dem Kopf.
+- Über uns bekommt ab 901 px 12,16 px und die helle Farbe.
+- Kontakt bekommt den Abstand der Galerie.
+- Die Leistungsseiten haben einen eigenen Rücklink vor `<main>` (`{{desktopBackLink}}`,
+  `render.mjs`). Die Leiste in der gezoomten Spalte ist ab 901 px ausgeblendet.
+Gemessen bei 901 bis 1920 px auf acht Seiten identisch, das Handy ist pixelgleich.
+Dokumentation: `docs/ap/AP-581-ruecklink-desktop.md`.
+
+**AP-582 — Über uns: Steg erst beim Scrollen (02.10.2026).**
+Linie und Blüte über dem Zitat sind beim Öffnen der Seite nicht mehr zu sehen. Die Linie
+liegt auf `.ueber-inhaber__steg::before` und zieht sich mit der Blüte aus der Lücke nach
+außen auf. Am Desktop setzt `main.js` `.is-in` erst nach dem ersten Scrollen, auch auf
+hohen Fenstern. Endzustand und Handy sind pixelgleich.
+Nachtrag: Beim Öffnen oben steht unten mittig ein pulsierender Markenpfeil. Er
+verschwindet beim ersten Scrollen, ein Klick scrollt zum Zitat. Bei reduzierter
+Bewegung und bis 900 px gibt es ihn nicht. `ueber-uns.css` steht auf `?v=20261002zd`,
+`main.js` auf `?v=20261002i`.
+Dokumentation: `docs/ap/AP-582-ueber-uns-steg-beim-scrollen.md`.
+
+**AP-583 — Desktop-Kopf der Unterseiten wie auf der Startseite (06.10.2026).**
+Ab 901 px haben alle Seiten den Kopf der Startseite: Er steht fest, oben schwebt er als
+Karte mit 20 px Luft und 16 px Innenrand, nach 12 px Scrollweg wird er zur Leiste.
+- Das Logo steht damit auf allen 51 Seiten an derselben Stelle wie auf der Startseite.
+  Vorher stand es 16 px weiter links und 20 px höher.
+- Der Kopf läuft jetzt auch auf den Leistungsseiten mit. `sticky` griff dort nicht, weil
+  `overflow-x:hidden` an html und body den body zum Scrollbereich machte.
+- `header-home.css` hält auf allen Seiten 112 px über `body` frei. `home-dark.css` nimmt
+  das für die Startseite zurück.
+Handy und Tablet sowie die Startseite sind pixelgleich. `CSS_VERSION` ist `20261006a`.
+Dokumentation: `docs/ap/AP-583-kopf-wie-startseite.md`.
 **AP-568 — Kontaktformular der Leistungsseiten am Desktop wie auf der Startseite (06.10.2026).**
 Ansage des Auftraggebers: Das Formular aller 38 Leistungsseiten ist ab 901 px dasselbe wie auf
 der Startseite. Der Kontaktbereich bricht dafür aus der 32-rem-Spalte (AP-512) aus, 860 px wie

@@ -865,6 +865,12 @@
    Zeile 1 Kruemelpfad, Zeile 2 die beiden Koepfe, Zeile 3 Kacheln und
    Standort-Kachel. Das Markup bleibt, Handy und Tablet sind unberuehrt. */
 @media (min-width: 901px) {
+  /* AP-581 Nachtrag (06.10.2026): Der Ruecklink sitzt am Desktop auf allen
+     Unterseiten wie auf der Galerie - --space-section-compact unter dem Kopf
+     (projekte.css, .projects-overview). Hier stand clamp(28px, 3.8vw, 52px) aus der
+     Grundregel, der Link sass damit 16px hoeher. */
+  .contact-hero { padding-top: var(--space-section-compact); }
+
   .contact-hero .container {
     display: grid;
     grid-template-columns: minmax(300px, 5fr) minmax(0, 7fr);

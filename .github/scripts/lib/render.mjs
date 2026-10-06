@@ -1411,6 +1411,17 @@ export async function renderLeistungPage(opts) {
     const standardHeroBreadcrumb = `<nav class="breadcrumbs lpv2-breadcrumbs${imageFirstHero ? ' lpv2-breadcrumbs--bar' : ''} reveal" aria-label="Sie sind hier">
           <ol>${imageFirstHero ? heroBreadcrumbTrail : breadcrumbTrail(welt, base, presented.h1)}</ol>
         </nav>`;
+    // AP-581 Nachtrag: Ruecklink am Desktop ausserhalb der gezoomten Spalte, im Markup
+    // und Satz der Galerie (.breadcrumbs--home-back). leistung-mobile.css zeigt ihn erst
+    // ab 901px und blendet dort die Leiste im Held aus; bis 900px bleibt alles wie bisher.
+    const desktopBackLink = `<div class="lpv2-ruecklink-desktop">
+  <nav class="breadcrumbs breadcrumbs--home-back" aria-label="Zur Leistungsübersicht">
+    <ol>
+      <li class="breadcrumbs__back"><a href="${allServicesHref}"><img class="breadcrumbs__back-icon" src="${base}assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" aria-hidden="true" decoding="async"><span>Alle Leistungen</span></a></li>
+      <li class="breadcrumbs__current" aria-current="page">${esc(presented.h1)}</li>
+    </ol>
+  </nav>
+</div>`;
     return fill(page, {
       base, slug: esc(slug), cssVersion: escAttr(cssVersion), jsVersion: escAttr(jsVersion),
       anfrageJsVersion: '20261004c',
@@ -1427,6 +1438,7 @@ export async function renderLeistungPage(opts) {
       breadcrumbJsonLd: leistungBreadcrumb(presented.h1, canonical, welt),
       heroBreadcrumbBefore: mobileBalkonkasten ? mobileHeroBreadcrumb : imageFirstHero ? standardHeroBreadcrumb : '',
       heroBreadcrumbInside: mobileBalkonkasten ? desktopHeroBreadcrumb : imageFirstHero ? '' : standardHeroBreadcrumb,
+      desktopBackLink: imageFirstHero ? desktopBackLink : '',
       serviceJsonLd: serviceJsonLd(presented, canonical), faqJsonLd: faqJsonLd(presented.faq),
       logo: logo.trim(), header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
       footer: fill(footer, footerTemplateData(base, seitenPfad)).trim(),
