@@ -543,3 +543,7 @@ Gemessen bei 901 bis 1920 px:
 - Der Knopf pulsiert im ersten Bild.
 - Kein Überlauf, keine Konsolenfehler.
 - Handy 375/402/874: 0 Abweichungen.
+- **Ansage 07.10.2026 (später):** Die Titelgröße ist wie beim Startseiten-Titel („Ihr Partner für alles rund
+  um den Garten“, `#gate-title`): `clamp(44px, 4.4vw, 80px)`. Zeilenhöhe 1.04 und Laufweite −.028em waren
+  schon gleich. Gemessen: 44 / 45,1 / 56,3 / 63,4 / 80 px bei 901 / 1024 / 1280 / 1440 / 1920, identisch
+  mit der Startseite. Titel und Knopf bleiben mittig, der Knopf pulsiert.
