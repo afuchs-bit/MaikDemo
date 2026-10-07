@@ -2577,3 +2577,7 @@ Auftraggeber so entschieden.
 - **E3 Ausrollen auf die übrigen Leistungsseiten:** H3-Länge je Seite prüfen (einzeilig per `nowrap`).
   Eigenes AP.
 - **Ohne JS:** Die Trennlinie zeigt nur die graue Grundlinie (keine Füllung).
+
+## Balkonkasten-Titel ohne Schriftzug (07.10.2026)
+
+- `assets/img/leistungen-mobile/balkonkastenbepflanzung-schriftzug-{700,1400}.webp` und das PNG werden nicht mehr verwendet, seit der Titel in Baloo 2 steht (Ansage 07.10.2026). Löschen, wenn der Schriftzug endgültig nicht zurückkommt.

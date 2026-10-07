@@ -505,3 +505,16 @@ index badd759..fe3e40b 100644
 - **E4 – Zoom und Seitenkopf.** Der Kopf ist auf Leistungsseiten sticky im Fluss, auf der Startseite schwebt er. Soll der Held wie dort unter dem Kopf beginnen (160 px Luft oben), ist das ein eigenes AP am Header – hier bewusst nicht angefasst (Stopp-Regel).
 - **Ausrollen auf 37 Leistungen (eigenes AP).** Pro Seite nötig: `desktopHero`, ein Hochkant-Motiv im Manifest (heute haben alle Seiten ein `originale/<slug>.jpg` neben dem `-4x3.jpg` – prüfen, ob die 3:4-Derivate überall existieren), optional ein Schriftzug (sonst Baloo-Fallback), Gewerbe-Seiten bekommen „Gewerbekunden“ automatisch. Wasserzeichen und Nachweise sind für alle gleich.
 - **Schriftzug-Pflege.** Der Schriftzug ist ein Grafik-Asset außerhalb der CMS-Bildpipeline. Bei Änderungen des Leistungsnamens muss er neu erzeugt werden – im CMS (`admin/config.yml`) ist das Feld bewusst nicht angelegt.
+
+## Nachtrag 07.10.2026: Titel in der Schrift von „Über uns“
+
+Ansage: Der Titel im Balkonkasten-Held soll dieselbe Schrift wie der Titel auf „Über uns“ (AP-585) tragen.
+
+- **Schriftzug-Bild entfällt:** `desktopHeroGraphic` ist aus `content/leistungen/privat/balkonkastenbepflanzung.json` entfernt. Der Build setzt kein Bild mehr. Die Webp-Dateien bleiben vorerst im Repo, siehe offene Punkte.
+- **Neue Titelschrift:** Es greift der vorhandene Ersatztitel: Baloo 2 700, „Balkonkasten-“ weiß, „bepflanzung“ grün, Laufweite −.028em, Zeilenhöhe 1.04 – wie „Über uns“.
+- **Größe:** `clamp(52px, 6.6vw, 104px)` statt `clamp(44px, 4.4vw, 80px)`. „Über uns“ nutzt 7vw; bei „Balkonkasten-“ wäre das bei 1920 zu breit für die 620-px-Titelbreite.
+
+Gemessen bei 901 bis 1920 px:
+- Schriftgröße 59–104 px, die längste Zeile 346–605 px, also immer innerhalb der Titelbreite.
+- Der Knopf liegt weiter über der 80-%-Linie und pulsiert im ersten Bild.
+- Handy 375/402/874: 0 Abweichungen.
