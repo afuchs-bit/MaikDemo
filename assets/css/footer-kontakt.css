@@ -106,8 +106,10 @@
 
 .site-footer .footer-contact-link[href^="tel:"] .footer-contact-icon::before {
   content: "";
-  width: 1.4375rem;
-  height: 1.4375rem;
+  /* The PNG fills 94% of its canvas. At 16px its visible artwork is about
+     15px, matching the mail/form strokes inside their 18px SVG canvases. */
+  width: 16px;
+  height: 16px;
   background: url("../img/icons/phone-header-mobile.png?v=20260902a") center / contain no-repeat;
 }
 

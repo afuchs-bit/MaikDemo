@@ -381,7 +381,7 @@ p  { margin: 0; }
   .site-header.is-scrolled .brand-logo {
     width: clamp(144px, calc(100vw - 188px), 203px);
     height: clamp(46px, 16vw, 63px);
-    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png");
+    background-image: url("../img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png");
     background-position: left center;
     background-size: contain;
   }

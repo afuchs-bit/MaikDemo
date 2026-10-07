@@ -20,7 +20,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rohdich.de/" />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="assets/img/logo/favicon.png?v=20261007a" type="image/png" sizes="64x64" />
 <!-- AP-F16: Font- und Bild-Preloads aus der Hero-Arbeit von davidk. Outfit und Inter
      entfallen hier: home-dark.css setzt --display/--body innerhalb von
      html.home-theme-dark auf Nunito, und diese Datei laedt nur die Startseite.
@@ -36,18 +36,18 @@ html.home-theme-dark body { background-color: #1B1E19; }
       href="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp"
       imagesrcset="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp 1023w, assets/img/hero/hero-fahrzeug-palmengarten-v10-mobile-2046-q92.webp 2046w"
       imagesizes="55vw" media="(min-width: 901px), (max-width: 900px) and (orientation: landscape)" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20261006a" />
-<link rel="stylesheet" href="assets/css/header-home.css?v=20261006a" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20261006a" />
-<link rel="stylesheet" href="assets/css/footer-kontakt.css?v=20261002a" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20261007d" />
+<link rel="stylesheet" href="assets/css/header-home.css?v=20261007d" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20261007d" />
+<link rel="stylesheet" href="assets/css/footer-kontakt.css?v=20261007a" />
 <link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20261005i" />
 <link rel="stylesheet" href="assets/css/privat-form.css?v=20261004d" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260923d" />
 <link rel="stylesheet" href="assets/css/anfrage.css?v=20261004b" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
 <link rel="stylesheet" href="assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="assets/css/cta-family-home.css?v=20261006a" />
-<link rel="stylesheet" href="assets/css/home-process.css?v=20261006a" />
+<link rel="stylesheet" href="assets/css/cta-family-home.css?v=20261007d" />
+<link rel="stylesheet" href="assets/css/home-process.css?v=20261007d" />
 <link rel="stylesheet" href="assets/css/home-spacing.css?v=20261004c" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -148,6 +148,8 @@ html.home-theme-dark body { background-color: #1B1E19; }
   ]
 }
 </script>
+<link rel="stylesheet" href="assets/css/social-brand.css?v=20261006b" />
+<link rel="stylesheet" href="assets/css/brand-artwork.css?v=20261007a" />
 </head>
 <body>
 
@@ -240,7 +242,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a class="brand" href="#top" aria-label="Maik Rohdich Garten- und Landschaftsbau – Startseite">
-      <svg class="brand-logo" viewBox="0 0 640 150" role="img" aria-hidden="true">
+      <svg class="brand-logo" viewBox="0 0 640 180" role="img" aria-hidden="true">
         <use href="#brand-logo"/>
       </svg>
     </a>
@@ -378,7 +380,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
         <li><a href="ueber-uns/">Über uns</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="kontakt/">Kontakt</a></li>
-        <li class="menu-meta"><a class="menu-meta__link" href="https://www.instagram.com/rohdich_garten_landschaftsbau/" target="_blank" rel="noopener noreferrer" aria-label="Maik Rohdich auf Instagram"><span class="menu-meta__text">Folgen Sie uns</span><span class="menu-meta__glyphe"><span class="menu-meta__kachel" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span></span></a></li>
+        <li class="menu-meta"><a class="menu-meta__link" href="https://www.instagram.com/rohdich_garten_landschaftsbau/" target="_blank" rel="noopener noreferrer" aria-label="Maik Rohdich auf Instagram"><span class="menu-meta__text">Folgen Sie uns</span><span class="menu-meta__glyphe"><span class="menu-meta__kachel maik-instagram-tile" aria-hidden="true"><img class="maik-instagram-glyph" src="assets/img/icons/instagram-glyph-white.svg" alt="" width="32" height="32" decoding="async" aria-hidden="true"></span></span></a></li>
       </ul>
     </nav>
 
@@ -387,16 +389,10 @@ html.home-theme-dark body { background-color: #1B1E19; }
          href="https://www.instagram.com/rohdich_garten_landschaftsbau/"
          target="_blank" rel="noopener"
          aria-label="Maik Rohdich auf Instagram ansehen">
-        <span class="header-instagram-glyph" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/>
-          </svg>
-        </span>
+        <span class="header-instagram-glyph maik-instagram-tile" aria-hidden="true"><img class="maik-instagram-glyph" src="assets/img/icons/instagram-glyph-white.svg" alt="" width="32" height="32" decoding="async" aria-hidden="true"></span>
       </a>
-      <a class="btn btn-whatsapp" aria-label="WhatsApp-Nachricht senden" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20interessiere%20mich%20f%C3%BCr..." target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 720 720" fill="#fff" aria-hidden="true"><path d="M360,0C161.18,0,0,161.18,0,360c0,65.41,17.45,126.75,47.94,179.61L0,720l187.02-44.21c51.34,28.18,110.28,44.21,172.98,44.21,198.82,0,360-161.18,360-360S558.82,0,360,0ZM360,655.52c-60.17,0-116.13-17.98-162.82-48.87l-110.49,28.14,30.99-105.61c-33.53-47.93-53.2-106.26-53.2-169.19,0-163.21,132.31-295.52,295.52-295.52s295.52,132.31,295.52,295.52-132.31,295.52-295.52,295.52Z"/><path d="M444.35,407.52l87.1,41.06c4,1.88,6.56,5.94,6.2,10.34-.94,11.46-5.54,34.43-26.13,55.02-58.12,58.12-162.49-7.64-166.74-10.18-25.67-13.79-50.06-32.24-73.19-55.36s-41.58-47.52-55.37-73.19c-2.55-4.24-68.31-108.61-10.18-166.74,20.59-20.59,43.56-25.19,55.02-26.13,4.41-.36,8.46,2.2,10.34,6.2l41.07,87.1c1.94,4.12,1.09,9.02-2.13,12.24l-30.61,30.61c-6.62,6.62-8.56,16.93-4,25.11,11.17,20.03,26.19,39.32,43.59,57.07,17.75,17.4,37.04,32.43,57.07,43.59,8.18,4.56,18.48,2.62,25.11-4l30.61-30.61c3.22-3.22,8.12-4.08,12.24-2.13Z"/></svg>
+      <a class="btn btn-whatsapp maik-whatsapp-tile" aria-label="WhatsApp-Nachricht senden" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20interessiere%20mich%20f%C3%BCr..." target="_blank" rel="noopener">
+        <img class="maik-whatsapp-glyph" src="assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" decoding="async" aria-hidden="true">
         <span>WhatsApp</span>
       </a>
       <div class="call-wrap">
@@ -451,13 +447,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
        href="https://www.instagram.com/rohdich_garten_landschaftsbau/"
        target="_blank" rel="noopener"
        aria-label="Einblicke live bei Maik Rohdich auf Instagram ansehen">
-      <span class="hero-proof-instagram-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/>
-        </svg>
-      </span>
+      <span class="hero-proof-instagram-icon maik-instagram-tile" aria-hidden="true"><img class="maik-instagram-glyph" src="assets/img/icons/instagram-glyph-white.svg" alt="" width="32" height="32" decoding="async" aria-hidden="true"></span>
       <span>Einblicke <strong>Live</strong></span>
     </a>
     <div class="hero-proof-location">
@@ -551,10 +541,8 @@ html.home-theme-dark body { background-color: #1B1E19; }
         </defs>
         <path fill-rule="evenodd" d="M .085 .178 L 1 .006 L 1 .994 L .145 .862 Q .105 .855 .1 .815 L .035 .255 Q .03 .2 .085 .178 Z M .092 .191 L 1 .008 L 1 .992 L .151 .847 Q .118 .842 .112 .808 L .047 .258 Q .043 .216 .092 .191 Z" />
       </svg>
-      <svg class="gate-welcome-photo-brand" viewBox="0 0 210 180" width="210" height="180"
-           overflow="hidden" aria-hidden="true" focusable="false">
-        <image href="assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png"
-               x="3" y="3" width="204" height="174" preserveAspectRatio="xMidYMid meet" />
+      <svg class="gate-welcome-photo-brand" viewBox="0 0 359 295" width="359" height="295" aria-hidden="true" focusable="false">
+        <image href="assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" width="359" height="295" preserveAspectRatio="xMidYMid meet" />
       </svg>
     </figure>
 
@@ -742,10 +730,8 @@ html.home-theme-dark body { background-color: #1B1E19; }
           <button class="mobile-proof-gallery__dot" type="button" aria-label="Bild 3 von 3: Poolgarten am Abend" aria-controls="mobile-proof-gallery-track"><span aria-hidden="true"></span></button>
         </div>
       </div>
-      <svg class="mobile-proof-gallery__brand" viewBox="0 0 210 180" width="210" height="180"
-           overflow="hidden" aria-hidden="true" focusable="false">
-        <image href="assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png"
-               x="3" y="3" width="204" height="174" preserveAspectRatio="xMidYMid meet" />
+      <svg class="mobile-proof-gallery__brand" viewBox="0 0 359 295" width="359" height="295" aria-hidden="true" focusable="false">
+        <image href="assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" width="359" height="295" preserveAspectRatio="xMidYMid meet" />
       </svg>
       <figcaption class="mobile-proof-gallery__caption mobile-social-proof__sr-only">Pflasterflächen und Rasen</figcaption>
     </figure>
@@ -856,12 +842,9 @@ html.home-theme-dark body { background-color: #1B1E19; }
         <p>Ihr Browser kann dieses Video nicht abspielen.
            <a href="assets/video/mustergarten.mp4">Video herunterladen</a>.</p>
       </video>
-      <!-- AP-310: Das Hundefoto ist auf Wunsch des Auftraggebers entfallen. An
-           seiner Ecke steht wieder die Markenblume aus AP-246, mit der es in
-           AP-292 getauscht worden war. -->
-      <svg class="mr-ueber__brand" viewBox="0 0 210 180" width="210" height="180"
-           overflow="hidden" aria-hidden="true" focusable="false">
-        <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png" width="640" height="180" />
+      <!-- Dieselbe vollstaendige Bluetengruppe wie an den anderen Fotobadges. -->
+      <svg class="mr-ueber__brand" viewBox="0 0 359 295" width="359" height="295" aria-hidden="true" focusable="false">
+        <image href="assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" width="359" height="295" preserveAspectRatio="xMidYMid meet" />
       </svg>
     </div>
 
@@ -930,15 +913,9 @@ html.home-theme-dark body { background-color: #1B1E19; }
               class="mr-ueber__mehr-pfeil" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg"
               alt="" aria-hidden="true" width="1883" height="567" loading="lazy" decoding="async" /></span><span class="mr-ueber__mehr-titel--iphone">Mehr über uns</span></span>
         <span class="mr-ueber__mehr-sub">Zur Über Uns Seite</span>
-        <!-- AP-288: Blume ohne Schriftzug. Kein neues Bild noetig - dasselbe
-             viewBox-Verfahren wie bei .mr-ueber__brand an der Mustergarten-
-             Kachel: vom 640px breiten Logo werden nur die linken 210px gezeigt,
-             also der Bluetenstrauss ohne "MAIK ROHDICH". Dekorativ, weil der
-             sichtbare Text das Ziel bereits vollstaendig benennt. -->
-        <svg class="mr-ueber__mehr-logo" viewBox="0 0 210 180"
-             aria-hidden="true" focusable="false">
-          <image href="assets/img/logo/maik-rohdich-logo-mobile-horizontal-balanced.png"
-                 width="640" height="180" />
+        <!-- Gemeinsame Bluetengruppe, identisch mit den Fotobadges. -->
+        <svg class="mr-ueber__mehr-logo" viewBox="0 0 359 295" width="359" height="295" aria-hidden="true" focusable="false">
+          <image href="assets/img/logo/maik-rohdich-bluetengruppe-header-transparent.png" width="359" height="295" preserveAspectRatio="xMidYMid meet" />
         </svg>
         <span class="maik-cta__arrow" aria-hidden="true"><img class="maik-cta__arrow-image" src="assets/img/icons/maik-rohdich-cta-pfeil-rechts.svg" alt="" width="1883" height="567" decoding="async"></span>
       </a>
@@ -1668,7 +1645,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
                 <span><small>Anrufen</small><strong>0171 / 173 89 43</strong></span>
               </a>
               <a class="anf__kanal" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener">
-                <span class="anf__kanal-icon anf__kanal-icon--wa" aria-hidden="true"></span>
+                <span class="anf__kanal-icon anf__kanal-icon--wa maik-whatsapp-tile" aria-hidden="true"><img class="maik-whatsapp-glyph" src="assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" decoding="async" aria-hidden="true"></span>
                 <span><small>WhatsApp</small><strong>Fotos senden oder direkt anfragen</strong></span>
               </a>
               <!-- AP-314: Dritter Direktkanal, wie die beiden darueber ein Weg aus
@@ -1774,7 +1751,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
               <div class="form-trust-card__actions" aria-label="Direkter Kontakt">
                 <a href="tel:+491711738943"><span class="form-trust-card__action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 1 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span><small>Mobil</small><strong>0171 / 173 89 43</strong></span></a>
                 <a href="tel:+492325585790"><span class="form-trust-card__action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 1 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span><small>Festnetz</small><strong>02325 / 58 57 90</strong></span></a>
-                <a class="form-trust-card__whatsapp" data-whatsapp-link href="https://wa.me/491711738943" target="_blank" rel="noopener"><span class="form-trust-card__action-icon"><svg viewBox="0 0 720 720" fill="currentColor" aria-hidden="true"><path d="M360,0C161.18,0,0,161.18,0,360c0,65.41,17.45,126.75,47.94,179.61L0,720l187.02-44.21c51.34,28.18,110.28,44.21,172.98,44.21,198.82,0,360-161.18,360-360S558.82,0,360,0ZM360,655.52c-60.17,0-116.13-17.98-162.82-48.87l-110.49,28.14,30.99-105.61c-33.53-47.93-53.2-106.26-53.2-169.19,0-163.21,132.31-295.52,295.52-295.52s295.52,132.31,295.52,295.52-132.31,295.52-295.52,295.52Z"/><path d="M444.35,407.52l87.1,41.06c4,1.88,6.56,5.94,6.2,10.34-.94,11.46-5.54,34.43-26.13,55.02-58.12,58.12-162.49-7.64-166.74-10.18-25.67-13.79-50.06-32.24-73.19-55.36s-41.58-47.52-55.37-73.19c-2.55-4.24-68.31-108.61-10.18-166.74,20.59-20.59,43.56-25.19,55.02-26.13,4.41-.36,8.46,2.2,10.34,6.2l41.07,87.1c1.94,4.12,1.09,9.02-2.13,12.24l-30.61,30.61c-6.62,6.62-8.56,16.93-4,25.11,11.17,20.03,26.19,39.32,43.59,57.07,17.75,17.4,37.04,32.43,57.07,43.59,8.18,4.56,18.48,2.62,25.11-4l30.61-30.61c3.22-3.22,8.12-4.08,12.24-2.13Z"/></svg></span><span><small>WhatsApp</small><strong>Nachricht senden</strong></span></a>
+                <a class="form-trust-card__whatsapp" data-whatsapp-link href="https://wa.me/491711738943" target="_blank" rel="noopener"><span class="form-trust-card__action-icon maik-whatsapp-tile"><img class="maik-whatsapp-glyph" src="assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" decoding="async" aria-hidden="true"></span><span><small>WhatsApp</small><strong>Nachricht senden</strong></span></a>
               </div>
               <section class="form-trust-card__coverage" aria-labelledby="private-coverage-title">
                 <div class="form-trust-card__coverage-heading">
@@ -2230,7 +2207,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
         <address class="private-contact-direct" aria-label="Direkte Kontaktdaten">
           <a href="tel:+491711738943"><span class="private-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span><small>Mobil</small><strong>0171 / 173 89 43</strong></span></a>
           <a href="mailto:maik@rohdich.de"><span class="private-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>E-Mail</small><strong>maik@rohdich.de</strong></span></a>
-          <a data-whatsapp-link href="https://wa.me/491711738943" target="_blank" rel="noopener"><span class="private-contact-icon private-contact-icon--whatsapp" aria-hidden="true"><svg viewBox="0 0 720 720" fill="currentColor"><path d="M360,0C161.18,0,0,161.18,0,360c0,65.41,17.45,126.75,47.94,179.61L0,720l187.02-44.21c51.34,28.18,110.28,44.21,172.98,44.21,198.82,0,360-161.18,360-360S558.82,0,360,0ZM360,655.52c-60.17,0-116.13-17.98-162.82-48.87l-110.49,28.14,30.99-105.61c-33.53-47.93-53.2-106.26-53.2-169.19,0-163.21,132.31-295.52,295.52-295.52s295.52,132.31,295.52,295.52-132.31,295.52-295.52,295.52Z"/><path d="M444.35,407.52l87.1,41.06c4,1.88,6.56,5.94,6.2,10.34-.94,11.46-5.54,34.43-26.13,55.02-58.12,58.12-162.49-7.64-166.74-10.18-25.67-13.79-50.06-32.24-73.19-55.36s-41.58-47.52-55.37-73.19c-2.55-4.24-68.31-108.61-10.18-166.74,20.59-20.59,43.56-25.19,55.02-26.13,4.41-.36,8.46,2.2,10.34,6.2l41.07,87.1c1.94,4.12,1.09,9.02-2.13,12.24l-30.61,30.61c-6.62,6.62-8.56,16.93-4,25.11,11.17,20.03,26.19,39.32,43.59,57.07,17.75,17.4,37.04,32.43,57.07,43.59,8.18,4.56,18.48,2.62,25.11-4l30.61-30.61c3.22-3.22,8.12-4.08,12.24-2.13Z"/></svg></span><span><small>WhatsApp</small><strong>Nachricht senden</strong></span></a>
+          <a data-whatsapp-link href="https://wa.me/491711738943" target="_blank" rel="noopener"><span class="private-contact-icon private-contact-icon--whatsapp maik-whatsapp-tile" aria-hidden="true"><img class="maik-whatsapp-glyph" src="assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" decoding="async" aria-hidden="true"></span><span><small>WhatsApp</small><strong>Nachricht senden</strong></span></a>
         </address>
         <div class="private-contact-advice"><h4>Sie müssen noch nicht alles wissen.</h4><p>Eine grobe Beschreibung genügt. Fehlende Maße oder Details klären wir gemeinsam.</p></div>
         <div class="private-contact-benefits"><h4>Was uns für den Start besonders hilft</h4><ul><li><span aria-hidden="true">✓</span>Leistung und heutige Situation</li><li><span aria-hidden="true">✓</span>PLZ und Ort des Gartens</li><li><span aria-hidden="true">✓</span>Wünsche und grober Zeitrahmen</li><li><span aria-hidden="true">✓</span>Fotos, falls bereits vorhanden</li></ul></div>
@@ -2490,7 +2467,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
           <a class="footer-route" href="https://www.google.com/maps/dir/?api=1&amp;destination=H%C3%BClsstra%C3%9Fe%205%2C%2044625%20Herne" target="_blank" rel="noopener">Route planen <span aria-hidden="true">→</span></a>
         </address>
         <a class="brand brand-footer" href="" aria-label="Maik Rohdich – Startseite">
-          <svg class="brand-logo brand-logo-light" viewBox="0 0 640 150" role="img" aria-hidden="true"><use href="#brand-logo"/></svg>
+          <svg class="brand-logo brand-logo-light" viewBox="0 0 527 150" role="img" aria-hidden="true"><use href="#brand-logo"/></svg>
         </a>
       </div>
 
@@ -2517,10 +2494,10 @@ html.home-theme-dark body { background-color: #1B1E19; }
         <div class="footer-social-iphone" aria-label="Weitere Kontaktmöglichkeiten">
           <p class="footer-social-availability"><span class="footer-social-line">WhatsApp jederzeit <span class="footer-social-dot">·</span> Auch an Feiertagen und</span> <span class="footer-social-line">Wochenenden <span class="footer-social-dot">·</span> Mustergarten nur nach Vereinbarung</span></p>
           <a class="footer-social-link footer-social-link--whatsapp" href="https://wa.me/491711738943?text=Hallo%20Herr%20Rohdich%2C%20ich%20habe%20eine%20Anfrage." target="_blank" rel="noopener" aria-label="Maik Rohdich über WhatsApp schreiben">
-            <span class="footer-social-icon footer-social-icon--whatsapp" aria-hidden="true"><img src="assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+            <span class="footer-social-icon footer-social-icon--whatsapp maik-whatsapp-tile" aria-hidden="true"><img class="maik-whatsapp-glyph" src="assets/img/icons/whatsapp-glyph-white.svg" alt="" width="32" height="32" decoding="async" aria-hidden="true"></span>
           </a>
           <a class="footer-social-link footer-social-link--instagram" href="https://www.instagram.com/rohdich_garten_landschaftsbau/" target="_blank" rel="noopener noreferrer" aria-label="Maik Rohdich auf Instagram ansehen">
-            <span class="footer-social-icon footer-social-icon--instagram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>
+            <span class="footer-social-icon footer-social-icon--instagram maik-instagram-tile" aria-hidden="true"><img class="maik-instagram-glyph" src="assets/img/icons/instagram-glyph-white.svg" alt="" width="32" height="32" decoding="async" aria-hidden="true"></span>
           </a>
         </div>
       </section>
@@ -2542,7 +2519,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
 <script src="assets/js/privat-form.js?v=20261006a" defer></script>
 <script src="assets/js/anfrage.js?v=20261004c" defer></script>
 <script src="assets/js/home-header-morph.js?v=20261006c" defer></script>
-<script src="assets/js/elfsight-mobile-header.js?v=20261006e" defer></script>
+<script src="assets/js/elfsight-mobile-header.js?v=20261006f" defer></script>
 <script src="assets/js/ueber-video.js?v=20260905b" defer></script>
 </body>
 </html>

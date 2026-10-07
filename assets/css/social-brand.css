@@ -1,0 +1,57 @@
+/* Offizielle weisse Bildmarken in allen WhatsApp- und Instagram-Kacheln.
+   Die Kachelgroesse kommt aus dem jeweiligen Seitenlayout; das Glyph belegt
+   stets die Haelfte und wird als Bild ohne Schrift-Baseline zentriert.
+   !important begrenzt die vorhandenen kontextspezifischen Hover-/Icon-Regeln
+   auf die uebrigen Kontaktkanaele. */
+.maik-whatsapp-tile,
+.maik-instagram-tile {
+  display: inline-grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  place-items: center !important;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.maik-whatsapp-tile {
+  background: #25D366 !important;
+}
+
+.maik-instagram-tile {
+  background: radial-gradient(circle at 30% 105%, #feda75 0 20%, #fa7e1e 34%, #d62976 57%, #962fbf 76%, #4f5bd5 100%) !important;
+}
+
+/* Die Huelle folgt der Header-Kachel. Deren responsive Sichtbarkeit bleibt
+   am Link; ein unsichtbarer Header-Link wird hierdurch nicht eingeblendet. */
+.header-instagram > .maik-instagram-tile {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: inherit;
+}
+
+/* Der bisherige Header und einige Kontaktkarten zeichneten ein zweites Icon. */
+.maik-whatsapp-tile::before,
+.maik-instagram-tile::before {
+  content: none !important;
+}
+
+.maik-whatsapp-tile > img.maik-whatsapp-glyph,
+.maik-instagram-tile > img.maik-instagram-glyph {
+  display: block !important;
+  position: static !important;
+  width: 50% !important;
+  height: 50% !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  object-fit: contain;
+  transform: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+}

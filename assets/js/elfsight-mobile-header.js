@@ -5,7 +5,7 @@
  * Einbau mit Codex:
  * 1. Diese Datei als assets/js/elfsight-mobile-header.js ablegen.
  * 2. In index.html NACH den vorhandenen Header-Skripten einbinden:
- *    <script src="assets/js/elfsight-mobile-header.js?v=20261006e" defer></script>
+ *    <script src="assets/js/elfsight-mobile-header.js?v=20261006f" defer></script>
  * 3. Bestehendes Elfsight-CSS fuer Farben unveraendert beibehalten.
  *
  * Kein Eintrag im Elfsight-Editor erforderlich. Keine neue Abhaengigkeit.
@@ -74,6 +74,16 @@
       }
       .es-popup-wrapper[${activeAttribute}] .es-scrollable-container {
         overscroll-behavior: none !important;
+      }
+      .es-popup-wrapper[${activeAttribute}] .es-reviews-popup-content-header {
+        /* Elfsights 40px oben / 20px unten setzen die gesamte Bewertung zu
+           tief. Gleiche Abstaende zentrieren sie bei gleicher Kopfhoehe. */
+        padding-block: 32px !important;
+      }
+      .es-popup-wrapper[${activeAttribute}] .es-reviews-popup-content-header .es-header-container {
+        /* Die bisherige 4px-Unterkante steckt jetzt in den symmetrischen
+           Aussenabstaenden, statt die Bewertung innerhalb der Zeile anzuheben. */
+        padding-block: 0 !important;
       }
       .es-popup-wrapper[${activeAttribute}] .es-popup-image-carousel .es-carousel-arrow-control-container {
         /* Wie die Kachelpfeile: 40px, ohne zusaetzlichen Abstand zum Rand. */

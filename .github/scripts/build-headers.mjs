@@ -8,21 +8,23 @@ import { renderNavSubmenu } from './lib/render.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const TEMPLATE = path.join(__dirname, 'templates', '_header.html');
-const CSS_VERSION = '20261006a';
+const CSS_VERSION = '20261007d';
 const PRIVATE_FORM_CSS_VERSION = '20261004d';
 const MOBILE_SOCIAL_PROOF_CSS_VERSION = '20261005i';
 const JS_VERSION = '20261006c';
 const GALLERY_JS_VERSION = '20261001a';
-const FOOTER_CSS_VERSION = '20261002a';
+const FOOTER_CSS_VERSION = '20261007a';
 const PRIVATE_FORM_JS_VERSION = '20261006a';
 const REQUEST_CSS_VERSION = '20261004b';
 const HOME_SPACING_CSS_VERSION = '20261004c';
 // AP-568: eigener Schluessel, damit eine Aenderung an leistung-mobile.css nicht
 // den styles.css-Schluessel aller Seiten mitzieht.
-const LEISTUNG_MOBILE_CSS_VERSION = '20261006o';
+const LEISTUNG_MOBILE_CSS_VERSION = '20261007c';
 // AP-585: eigener Schluessel fuer ueber-uns.css - bisher an CSS_VERSION, dessen Heben
 // styles.css auf allen Seiten mitgezogen haette.
-const UEBER_CSS_VERSION = '20261006d';
+const UEBER_CSS_VERSION = '20261007c';
+const SOCIAL_BRAND_CSS_VERSION = '20261006b';
+const BRAND_ARTWORK_VERSION = '20261007a';
 const SKIP_DIRS = new Set(['admin', 'assets', 'content', 'data', 'docs', 'node_modules', 'tmp']);
 
 function pageBase(file) {
@@ -73,6 +75,27 @@ function updateAssetVersions(html) {
     .replace(/(<link\b[^>]*href="[^"]*header-home\.css[^>]*?)\s+media="[^"]*"/g, '$1');
 }
 
+function ensureSocialBrandStyles(html, base) {
+  const stylesheet = `<link rel="stylesheet" href="${base}assets/css/social-brand.css?v=${SOCIAL_BRAND_CSS_VERSION}" />`;
+  const existing = /<link\b[^>]*href="[^"]*assets\/css\/social-brand\.css[^>]*>/;
+  return existing.test(html)
+    ? html.replace(existing, stylesheet)
+    : html.replace('</head>', `${stylesheet}\n</head>`);
+}
+
+function ensureBrandArtwork(html, base) {
+  const stylesheet = `<link rel="stylesheet" href="${base}assets/css/brand-artwork.css?v=${BRAND_ARTWORK_VERSION}" />`;
+  const existing = /<link\b[^>]*href="[^"]*assets\/css\/brand-artwork\.css[^>]*>/;
+  const withStyles = existing.test(html)
+    ? html.replace(existing, stylesheet)
+    : html.replace('</head>', `${stylesheet}\n</head>`);
+  return withStyles
+    .replace(/assets\/img\/logo\/favicon\.(?:svg|png)(?:\?v=[\w.-]+)?" type="image\/(?:svg\+xml|png)"(?: sizes="64x64")?/g,
+      `assets/img/logo/favicon.png?v=${BRAND_ARTWORK_VERSION}" type="image/png" sizes="64x64"`)
+    .replace(/(<svg\b[^>]*class="brand-logo brand-logo-light"[^>]*viewBox=")0 0 640 150"/g,
+      (match, prefix) => `${prefix}0 0 527 150"`);
+}
+
 async function main() {
   const template = await readFile(TEMPLATE, 'utf8');
   const files = await findPublishedHtml(REPO_ROOT);
@@ -87,7 +110,7 @@ async function main() {
     if (/\{\{\w+\}\}/.test(header)) throw new Error('Nicht aufgeloester Header-Platzhalter');
     const withHeader = replaceHeader(html, header);
     if (withHeader === null) throw new Error(`Header fehlt: ${path.relative(REPO_ROOT, file)}`);
-    const next = updateAssetVersions(withHeader);
+    const next = ensureBrandArtwork(ensureSocialBrandStyles(updateAssetVersions(withHeader), base), base);
     if (next !== html) {
       await writeFile(file, next, 'utf8');
       updated += 1;

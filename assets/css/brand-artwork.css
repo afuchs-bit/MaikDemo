@@ -1,0 +1,125 @@
+/* Shared artwork sizes. Rotation, shadows and interaction effects remain in
+   the component styles; these rules only align sources, sizes and frames. */
+:root {
+  --brand-flower-location-size: 20px;
+  --brand-flower-marker-size: 24px;
+  --brand-flower-size: 30px;
+  --brand-flower-detail-size: 36px;
+  --brand-cluster-photo-size: 80px;
+  --brand-cluster-action-height: 40px;
+  --brand-footer-width: 300px;
+}
+
+html.home-theme-dark .hero-proof-location-flower,
+.contact-location-mark .contact-location-mark__bluete {
+  width: var(--brand-flower-location-size);
+  height: auto;
+}
+
+html.home-theme-dark .gate-welcome-qualifications {
+  --qualification-flower-size: var(--brand-flower-size);
+}
+
+html.home-theme-dark .gate-welcome-qualification-content {
+  grid-template-columns: var(--brand-flower-size) minmax(0, 1fr);
+}
+
+html.home-theme-dark .gate-welcome-qualification-flower {
+  width: var(--brand-flower-size);
+  height: var(--brand-flower-size);
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel {
+  grid-template-columns: var(--brand-flower-detail-size) minmax(0, 1fr);
+}
+
+html.home-theme-dark .gate-welcome-qualification-panel-flower {
+  width: var(--brand-flower-detail-size);
+  height: var(--brand-flower-detail-size);
+}
+
+html.home-theme-dark .mobile-proof-invitation__flower,
+.private-process-updated .process-contact-cta__flower {
+  width: var(--brand-flower-size);
+}
+
+.private-process-updated .process-contact-cta__flower {
+  height: var(--brand-flower-size);
+}
+
+.private-process-updated .process-marker__flower {
+  width: var(--brand-flower-marker-size);
+  height: var(--brand-flower-marker-size);
+}
+
+.lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list li::before {
+  width: var(--brand-flower-size);
+  height: var(--brand-flower-size);
+}
+
+html.home-theme-dark .gate-welcome-photo {
+  --gate-welcome-brand-width: var(--brand-cluster-photo-size);
+}
+
+html.home-theme-dark .mobile-proof-gallery {
+  --proof-brand-width: var(--brand-cluster-photo-size);
+}
+
+html.home-theme-dark .mr-ueber__buehne {
+  --mr-ueber-brand-width: var(--brand-cluster-photo-size);
+}
+
+html.home-theme-dark .gate-welcome-photo-brand,
+html.home-theme-dark .mobile-proof-gallery__brand,
+html.home-theme-dark .mr-ueber__brand {
+  width: var(--brand-cluster-photo-size);
+  height: auto;
+}
+
+.lpv2-page.lpv2-page--title-above .lpv2-hero-brand,
+.ueber-hero .ueber-hero__foto .ueber-hero__bluete {
+  right: -16px;
+  bottom: calc(var(--brand-cluster-photo-size) * -2 / 7);
+  width: var(--brand-cluster-photo-size);
+  height: auto;
+}
+
+.lpv2-page--homepage-unified .lpv2-content-closing .lpv2-closing::after {
+  bottom: calc(var(--brand-cluster-photo-size) * -2 / 7);
+  width: var(--brand-cluster-photo-size);
+  aspect-ratio: 359 / 295;
+}
+
+html.home-theme-dark .private-request-paths .iphone-service-inquiry__mark img {
+  width: min(100%, var(--brand-cluster-photo-size));
+  height: auto;
+}
+
+html.home-theme-dark .mr-ueber__mehr.maik-cta .maik-cta__brand-icon,
+html.home-theme-dark .mr-ueber__mehr .mr-ueber__mehr-logo {
+  width: auto;
+  height: var(--brand-cluster-action-height);
+}
+
+.site-footer .brand-footer {
+  width: min(var(--brand-footer-width), 95%);
+}
+
+.site-footer .brand-footer .brand-logo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 527 / 150;
+}
+
+/* Keep the compact landscape footer's existing layout and width limits. */
+@media (max-width: 900px) and (orientation: landscape) {
+  .site-footer .brand-footer {
+    width: min(240px, 100%);
+  }
+}
+
+@media (max-width: 560px) and (orientation: landscape) {
+  .site-footer .brand-footer {
+    width: min(160px, 42%);
+  }
+}

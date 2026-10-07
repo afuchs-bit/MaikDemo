@@ -2944,7 +2944,9 @@ html.home-theme-dark .mr-ueber__punkt-icon-art {
   }
 
   html.home-theme-dark .mr-ueber__punkt-icon-art--calendar img {
-    transform: scale(1.18);
+    /* Visible artwork is offset by +66/+58px in the 1254px source canvas.
+       Correct before scaling so its visual centre holds at every icon size. */
+    transform: scale(1.18) translate(-5.2632%, -4.6252%);
   }
 
   html.home-theme-dark .mr-ueber__punkt-icon-art--partnership img {
