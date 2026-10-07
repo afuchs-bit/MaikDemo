@@ -989,7 +989,7 @@
      die Baloo-Zeilen verschwinden, das Bild traegt den Titel, aria-label bleibt am h1.
      Ohne Schriftzug: Baloo 700 wie der Startseiten-Titel, zweite Zeile im Logo-Gruen. */
   /* Ansage 07.10.2026: Balkonkasten traegt am Desktop keinen Schriftzug mehr, sondern den Titel
-     in der Schrift von "Ueber uns" (AP-585): Baloo 2 700, erste Zeile weiss, zweite gruen. Groesse
+     in der Schrift von "Ueber uns" (AP-585): Baloo 2 700, beide Zeilen weiss. Groesse
      clamp(52px,6.6vw,104px) - etwas kleiner als bei "Ueber uns" (7vw), damit "Balkonkasten-" in
      die 620px-Titelbreite passt und der Knopf im ersten Bild ueber der Puls-Linie bleibt. */
   /* .lpv2-hero davor: .lpv2-page--homepage-unified.lpv2-page--title-above .lpv2-title (0,3,0)
@@ -1000,7 +1000,7 @@
   .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)){color:var(--home-on-dark,#fafaf6);font-family:'Baloo 2',sans-serif;font-size:clamp(52px,6.6vw,104px);font-weight:700;line-height:1.04;letter-spacing:-.028em;text-wrap:balance}
   .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines{display:block}
   .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:first-child:after{content:'-'}
-  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:last-child{color:var(--mobile-logo-green,#56e607)}
+  /* Ansage 07.10.2026: beide Zeilen weiss, ohne gruenen Farbton (hier stand die zweite Zeile im Logo-Gruen). */
 
   /* 5 - Zeile 3: Anfrageknopf (maik-cta, 440 x 74), mittig unter dem Titel: der Container ist so
      breit wie der Titel (min(100%,620px)), Ansage 06.10.2026 (AP-584). */

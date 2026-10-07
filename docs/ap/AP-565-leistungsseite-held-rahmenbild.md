@@ -518,3 +518,5 @@ Gemessen bei 901 bis 1920 px:
 - Schriftgröße 59–104 px, die längste Zeile 346–605 px, also immer innerhalb der Titelbreite.
 - Der Knopf liegt weiter über der 80-%-Linie und pulsiert im ersten Bild.
 - Handy 375/402/874: 0 Abweichungen.
+- **Ansage 07.10.2026 (später):** Der Titel steht ohne grünen Farbton – beide Zeilen weiß (`#fafaf6`). Die
+  Grün-Regel für die zweite Zeile ist entfernt.
