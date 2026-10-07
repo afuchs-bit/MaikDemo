@@ -520,3 +520,26 @@ Gemessen bei 901 bis 1920 px:
 - Handy 375/402/874: 0 Abweichungen.
 - **Ansage 07.10.2026 (später):** Der Titel steht ohne grünen Farbton – beide Zeilen weiß (`#fafaf6`). Die
   Grün-Regel für die zweite Zeile ist entfernt.
+
+## Nachtrag 07.10.2026: Titel mittig, Foto höher
+
+Ansage: Die Schrift steht mittig, das Foto weiter oben (Entscheidungen: mittig zwischen Rand und Foto wie bei
+„Über uns“; Oberkante der Karte auf Höhe des Rücklinks).
+
+- **Raster:** Spalten `Rand / 1fr / auto / Rand`. Spalte 2 endet an der Fotokante.
+  - Die Kartenbreite beträgt `min(460px, (frei − 64) · .75, 44vw)`, weil eine `auto`-Spalte kein
+    Prozentmaß kennt. Bei 901 px sind das 396 statt 391 px.
+- **Titel und Knopf:** mittig in Spalte 2, Text zentriert.
+  - Beide sind beidseitig um `clamp(32px, 3.2vw, 56px)` schmaler. Die Mitte bleibt exakt, und der Knopf
+    hat bei 901 px 30 px Luft zum Foto. Dort ist er 357 px breit statt 440.
+- **Karte:** `align-self:start`, um den Rücklink-Block (34 px + Abstand) nach oben gezogen.
+  - `.lpv2-main` beschnitt sie dabei oben (`overflow:clip`). Am Desktop schneidet es deshalb nur noch
+    seitlich (`overflow-x:clip; overflow-y:visible`).
+
+Gemessen bei 901 bis 1920 px:
+- Titel-, Text- und Knopfmitte gleich der Mitte zwischen Kante und Foto (0,0 px).
+- Karten-Oberkante gleich der Rücklink-Oberkante (0,0 px), Größe unverändert.
+- Der Rücklink bleibt klickbar.
+- Der Knopf pulsiert im ersten Bild.
+- Kein Überlauf, keine Konsolenfehler.
+- Handy 375/402/874: 0 Abweichungen.

@@ -975,7 +975,7 @@
      Knopf im ersten Bild ueber der 80-%-Linie von cta-signal.js liegt und pulsiert (AP-584).
      Mindesthoehe: das Fenster abzueglich fester Kopfflaeche (112px, AP-583) und
      Ruecklink-Block (--space-section-compact + 34px Trefferflaeche + Abstand, AP-581). */
-  .lpv2-page--desktop-rahmenbild .lpv2-hero{--hero-rand:calc((100% - min(100% - calc(var(--gutter) * 2), var(--container))) / 2);position:relative;isolation:isolate;display:grid;grid-template-columns:var(--hero-rand) minmax(0,52fr) minmax(0,48fr) var(--hero-rand);grid-template-rows:minmax(48px,.5fr) auto auto minmax(48px,1.5fr);--hero-frei:calc(100svh - 112px - var(--space-section-compact) - 34px - clamp(28px,3vw,40px));min-height:clamp(480px,var(--hero-frei),900px);padding:0;background:var(--lp-bg);overflow:visible}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero{--hero-rand:calc((100% - min(100% - calc(var(--gutter) * 2), var(--container))) / 2);position:relative;isolation:isolate;display:grid;grid-template-columns:var(--hero-rand) minmax(0,1fr) auto var(--hero-rand);grid-template-rows:minmax(48px,.5fr) auto auto minmax(48px,1.5fr);--hero-frei:calc(100svh - 112px - var(--space-section-compact) - 34px - clamp(28px,3vw,40px));min-height:clamp(480px,var(--hero-frei),900px);padding:0;background:var(--lp-bg);overflow:visible}
   .lpv2-page--desktop-rahmenbild .lpv2-hero::before{content:'';grid-column:1 / 3;grid-row:1 / -1;align-self:stretch;justify-self:start;width:clamp(360px,34vw,680px);margin-left:-4%;background:url('../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a') center / contain no-repeat;opacity:.12;filter:saturate(.7);pointer-events:none}
   .lpv2-page--desktop-rahmenbild .lpv2-hero > .container{display:contents}
   .lpv2-page--desktop-rahmenbild .lpv2-kicker,
@@ -984,6 +984,17 @@
 
   /* 3 - "Alle Leistungen": seit AP-581 der einheitliche Ruecklink ueber dem Held
      (.lpv2-ruecklink-desktop); die Leiste im Held ist dort ausgeblendet. */
+
+  /* Nachtrag 07.10.2026 (Ansage): Titel und Knopf mittig zwischen Containerkante und Foto, Text
+     zentriert (wie "Ueber uns", AP-585) - Spalte 3 ist dafuer auto (so breit wie die Karte), Spalte 2
+     endet an der Fotokante; Kartenbreite mit 44vw statt 100% (kein Prozentmass in auto-Spalten).
+     Die Karte steht oben buendig mit dem Ruecklink "Alle Leistungen": align-self:start und um dessen
+     Block (34px + Abstand, AP-581) nach oben gezogen. Titel und Knopf sind beidseitig um
+     clamp(32px,3.2vw,56px) schmaler als Spalte 2 - so bleibt die Mitte exakt und der Knopf stoesst
+     bei 901px nicht ans Foto. */
+  /* Die hochgezogene Karte ragt ueber den Seiteninhalt (.lpv2-main) hinaus; dessen overflow:clip
+     (@media all) schnitt ihre Oberkante ab. Am Desktop nur noch seitlich beschneiden. */
+  .lpv2-page--desktop-rahmenbild .lpv2-main{overflow-x:clip;overflow-y:visible}
 
   /* 4 - Zeile 2: Titel. Mit Schriftzug (gruene Handschrift wie "Garten" auf der Startseite):
      die Baloo-Zeilen verschwinden, das Bild traegt den Titel, aria-label bleibt am h1.
@@ -994,7 +1005,7 @@
      die 620px-Titelbreite passt und der Knopf im ersten Bild ueber der Puls-Linie bleibt. */
   /* .lpv2-hero davor: .lpv2-page--homepage-unified.lpv2-page--title-above .lpv2-title (0,3,0)
      setzt sonst 80px/20px Innenabstand. */
-  .lpv2-page--desktop-rahmenbild .lpv2-hero .lpv2-title{grid-column:2;grid-row:2;align-self:auto;justify-self:start;width:min(100%,620px);max-width:none;margin:0;padding:0;background:transparent;text-align:left;line-height:0}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero .lpv2-title{grid-column:2;grid-row:2;align-self:auto;justify-self:center;width:min(100% - 2 * clamp(32px,3.2vw,56px),620px);max-width:none;margin:0;padding:0;background:transparent;text-align:center;line-height:0}
   .lpv2-page--desktop-rahmenbild .lpv2-title--split > .lpv2-title-lines{display:none}
   .lpv2-page--desktop-rahmenbild .lpv2-title-graphic-desktop{display:block;width:100%;height:auto;filter:drop-shadow(0 5px 13px rgba(0,0,0,.24))}
   .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)){color:var(--home-on-dark,#fafaf6);font-family:'Baloo 2',sans-serif;font-size:clamp(52px,6.6vw,104px);font-weight:700;line-height:1.04;letter-spacing:-.028em;text-wrap:balance}
@@ -1004,7 +1015,7 @@
 
   /* 5 - Zeile 3: Anfrageknopf (maik-cta, 440 x 74), mittig unter dem Titel: der Container ist so
      breit wie der Titel (min(100%,620px)), Ansage 06.10.2026 (AP-584). */
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta{grid-column:2;grid-row:3;justify-self:start;display:flex;align-items:center;justify-content:center;width:min(100%,620px);margin:38px 0 0;padding:0}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta{grid-column:2;grid-row:3;justify-self:center;display:flex;align-items:center;justify-content:center;width:min(100% - 2 * clamp(32px,3.2vw,56px),620px);margin:38px 0 0;padding:0}
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button{width:min(100%,440px);min-height:74px;height:74px;padding:8px 12px 8px 0;border-radius:16px}
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__label{font-size:1.125rem;letter-spacing:.02em}
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow{width:70px;height:46px;margin-right:14px}
@@ -1013,7 +1024,7 @@
   /* 6 - Spalte 3: die Karte, hoechstens 460px breit und so hoch, dass sie mit 32px Luft oben
      und unten ins freie Fenster passt (niedrige Bildschirme). Figure wird 3:4, Bild per <source media> im Hochkant-Derivat,
      versetzter Rahmen im Pseudoelement (title-above hatte ::before ausgeblendet). */
-  .lpv2-page--desktop-rahmenbild .lpv2-hero-media{grid-column:3;grid-row:1 / -1;align-self:center;justify-self:end;position:relative;z-index:2;width:min(100%,460px,calc((var(--hero-frei) - 64px) * .75));height:auto;aspect-ratio:3 / 4;margin:0;overflow:visible;border-radius:26px 7px 26px 7px;background:transparent;box-shadow:0 40px 70px -36px rgba(0,0,0,.95),0 30px 60px -40px rgba(93,224,35,.55)}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media{grid-column:3;grid-row:1 / -1;align-self:start;justify-self:end;position:relative;z-index:2;width:min(460px,calc((var(--hero-frei) - 64px) * .75),44vw);height:auto;aspect-ratio:3 / 4;margin:calc(-1 * (34px + clamp(28px,3vw,40px))) 0 0;overflow:visible;border-radius:26px 7px 26px 7px;background:transparent;box-shadow:0 40px 70px -36px rgba(0,0,0,.95),0 30px 60px -40px rgba(93,224,35,.55)}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media::before{content:'';display:block;position:absolute;inset:0;z-index:-1;transform:translate(12px,12px);border:1.5px solid var(--home-lime,#8cc63f);border-radius:inherit;background:none;opacity:.9;pointer-events:none}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media picture{position:absolute;inset:0;overflow:hidden;border-radius:inherit}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media img:not(.lpv2-hero-brand){width:100%;height:100%;object-fit:cover;object-position:40% 55%}
