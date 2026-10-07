@@ -547,3 +547,6 @@ Gemessen bei 901 bis 1920 px:
   um den Garten“, `#gate-title`): `clamp(44px, 4.4vw, 80px)`. Zeilenhöhe 1.04 und Laufweite −.028em waren
   schon gleich. Gemessen: 44 / 45,1 / 56,3 / 63,4 / 80 px bei 901 / 1024 / 1280 / 1440 / 1920, identisch
   mit der Startseite. Titel und Knopf bleiben mittig, der Knopf pulsiert.
+- **Ansage 07.10.2026 (später):** Der Knopf unter dem Titel ist etwas kleiner: 380 × 64 statt 440 × 74 px,
+  Beschriftung 16 statt 18 px, Pfeilfeld 60 × 40 (Bild 44 px), Rundung 14 px. Er steht weiter mittig unter dem
+  Titel und pulsiert im ersten Bild.

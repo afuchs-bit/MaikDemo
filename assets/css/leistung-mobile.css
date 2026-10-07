@@ -1016,10 +1016,11 @@
   /* 5 - Zeile 3: Anfrageknopf (maik-cta, 440 x 74), mittig unter dem Titel: der Container ist so
      breit wie der Titel (min(100%,620px)), Ansage 06.10.2026 (AP-584). */
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta{grid-column:2;grid-row:3;justify-self:center;display:flex;align-items:center;justify-content:center;width:min(100% - 2 * clamp(32px,3.2vw,56px),620px);margin:38px 0 0;padding:0}
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button{width:min(100%,440px);min-height:74px;height:74px;padding:8px 12px 8px 0;border-radius:16px}
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__label{font-size:1.125rem;letter-spacing:.02em}
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow{width:70px;height:46px;margin-right:14px}
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow-image{width:52px}
+  /* Ansage 07.10.2026: etwas kleiner (vorher 440 x 74, Beschriftung 18px) - rund 85 %. */
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button{width:min(100%,380px);min-height:64px;height:64px;padding:7px 10px 7px 0;border-radius:14px}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__label{font-size:1rem;letter-spacing:.02em}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow{width:60px;height:40px;margin-right:12px}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow-image{width:44px}
 
   /* 6 - Spalte 3: die Karte, hoechstens 460px breit und so hoch, dass sie mit 32px Luft oben
      und unten ins freie Fenster passt (niedrige Bildschirme). Figure wird 3:4, Bild per <source media> im Hochkant-Derivat,
