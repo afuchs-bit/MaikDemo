@@ -1061,6 +1061,16 @@
   .lpv2-page--held-kompakt .lpv2-hero{min-height:calc(var(--hero-frei) - 136px);z-index:2}
   /* Nachtrag 08.10.2026: 96px war zu eng (Ansage) - 136px. */
   .lpv2-page--held-kompakt .lpv2-content-feature{padding-top:136px}
+  /* Nachtrag 08.10.2026 (Ansage): Das Foto steht mittig zwischen Kopfunterkante (112px) und
+     Fensterunterkante, der Titel mittig zur Fotohoehe. --held-mitte ist diese Fenstermitte ab der
+     Oberkante des Helds (der Held beginnt bei 100svh - --hero-frei). Der Held hat eine feste Hoehe:
+     mindestens bis 136px vor die Fensterkante, mindestens bis zur Fotounterkante. Die Zeilen
+     1fr/auto/1fr legen die Titelmitte auf --held-mitte; der Ausgleich --held-x steht oben oder unten.
+     Der Knopf haengt in Zeile 4 wie bisher 38px unter dem Titel. */
+  .lpv2-page--held-kompakt .lpv2-hero{--karte-b:min(460px,calc((var(--hero-frei) - 64px) * .75),44vw);--karte-h:calc(var(--karte-b) * 4 / 3);--held-mitte:calc(var(--hero-frei) - (100svh - 112px) / 2);--held-h:max(calc(var(--hero-frei) - 136px),calc(var(--held-mitte) + var(--karte-h) / 2));--held-x:calc(2 * var(--held-mitte) - var(--held-h));height:var(--held-h);min-height:0;grid-template-rows:max(0px,var(--held-x)) 1fr auto 1fr max(0px,calc(-1 * var(--held-x)))}
+  .lpv2-page--held-kompakt .lpv2-hero .lpv2-title{grid-row:3}
+  .lpv2-page--held-kompakt .lpv2-mobile-hero-cta{grid-row:4;align-self:start}
+  .lpv2-page--held-kompakt .lpv2-hero-media{width:var(--karte-b);margin-top:calc(var(--held-mitte) - var(--karte-h) / 2)}
 }
 
 /* ---------- AP-584: Puls-Animationen ab 481px ----------

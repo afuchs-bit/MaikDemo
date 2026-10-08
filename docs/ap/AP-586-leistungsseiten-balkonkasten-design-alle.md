@@ -156,3 +156,13 @@ Freigabe auf alle Seiten.
     1080/1440) bzw. darunter.
   - Unter der Karte bleiben mindestens 136 px.
   - Der Knopf pulsiert im ersten Bild bei allen Breiten bis 2560 × 1440.
+- **Nachtrag (Ansage 08.10.2026, „Foto mittig zwischen Kopf und Fensterrand, Titel mittig zum Foto“):**
+  - **Foto:** Der kompakte Held hat jetzt eine feste Höhe (`--held-h`). Das Foto steht mittig zwischen der
+    Kopfunterkante (112 px) und der Fensterunterkante (`--held-mitte`); seine Größe ist unverändert.
+  - **Titel:** Die Zeilen `max(0,x) 1fr auto 1fr max(0,−x)` legen die Titelmitte auf die Fotomitte. Der
+    Knopf hängt wie bisher 38 px darunter.
+  - **Gemessen** bei 901 / 1024 / 1280 / 1440 / 1920 / 2560:
+    - Abstand über und unter dem Foto: 130 / 92 / 102 / 103 / 177 / 357 px, oben und unten gleich.
+    - Titelmitte = Fotomitte (0 px Abweichung).
+    - H2 bei ≥ Fensterhöhe, Karte → H2 ≥ 136 px.
+    - Der Knopf pulsiert, Handy unverändert.
