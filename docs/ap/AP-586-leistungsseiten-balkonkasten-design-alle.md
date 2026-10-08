@@ -218,3 +218,5 @@ Ansage: Baumkontrolle bekommt am Desktop das Design der anderen Leistungsseiten.
     schalten nacheinander.
   - Alle Blöcke unter der Linie werden sichtbar; mit reduzierter Bewegung steht alles sofort.
 - Andere Seiten: Auf Balkonkasten, Baumfällung und Erd-Bagger läuft die Liste wie bisher.
+- **Nachtrag (Ansage 08.10.2026):** Beide Überschriften unter der Linie („Von der Kontrolle …“, „Maßnahmen …“)
+  stehen mittig. Gemessen bei 1024 / 1440 / 1920: links und rechts gleich viel Abstand; Handy unverändert.

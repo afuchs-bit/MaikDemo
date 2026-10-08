@@ -673,7 +673,8 @@
   .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-content-service.lpv2-content-service--no-list{display:block;grid-column:1 / -1;grid-row:5;justify-self:center;width:min(100%,760px);margin:87.5px 0 0}
   .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-content-service--no-list + .lpv2-content-service--no-list{grid-row:6;margin-top:56px}
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container:has(.lpv2-content-service--no-list + .lpv2-content-service--no-list) .lpv2-closing-block{grid-row:7}
-  .lpv2-page--desktop-trichter .lpv2-content-service--no-list h3{margin:0}
+  /* Ansage 08.10.2026: beide Ueberschriften unter der Linie mittig. */
+  .lpv2-page--desktop-trichter .lpv2-content-service--no-list h3{margin:0;text-align:center}
   .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service--no-list h3{opacity:1;transition:none}
   .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-content-service--no-list .lpv2-content-service-copy{margin-top:18px}
   .lpv2-page--desktop-trichter .lpv2-decision-graphic{width:100%;margin:24px 0 0}
