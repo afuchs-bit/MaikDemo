@@ -150,3 +150,9 @@ Freigabe auf alle Seiten.
 - **Zum Ausrollen:** `desktopHeldKompakt` in `render.mjs` zum Standard machen.
 - **Nachtrag (Ansage 08.10.2026, „nicht so eng“):** Kartenunterkante → H2 jetzt **136 px** statt 96 px,
   auf allen Breiten gemessen. Der Knopf pulsiert weiter im ersten Bild.
+- **Nachtrag (Ansage 08.10.2026, „nächste Sektion erst beim Scrollen“):** Der kompakte Held hat wieder
+  eine Mindesthöhe, `calc(var(--hero-frei) - 136px)`. Mit den 136 px Polster füllt er das freie Fenster.
+  - Gemessen: H2 und Trennlinie beginnen genau an der Fensterunterkante (900/1024: 775 bei 768/800/900/
+    1080/1440) bzw. darunter.
+  - Unter der Karte bleiben mindestens 136 px.
+  - Der Knopf pulsiert im ersten Bild bei allen Breiten bis 2560 × 1440.

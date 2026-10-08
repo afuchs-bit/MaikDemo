@@ -1055,7 +1055,10 @@
      beginnt 96px unter der Karte (Mass wie Knopf -> Bilder, Linie -> Hinweistext). */
   /* z-index: Rahmen und Bluetenstempel ragen unten aus dem Held; ohne eigene Ebene malt der
      Hintergrund des Textbereichs darueber. */
-  .lpv2-page--held-kompakt .lpv2-hero{min-height:0;z-index:2}
+  /* Nachtrag 08.10.2026 (Ansage): Der Textbereich soll erst beim Scrollen ins Bild kommen - der Held
+     fuellt mit den 136px Polster mindestens das freie Fenster (--hero-frei), reicht die Karte tiefer,
+     bleibt es bei 136px unter der Karte. */
+  .lpv2-page--held-kompakt .lpv2-hero{min-height:calc(var(--hero-frei) - 136px);z-index:2}
   /* Nachtrag 08.10.2026: 96px war zu eng (Ansage) - 136px. */
   .lpv2-page--held-kompakt .lpv2-content-feature{padding-top:136px}
 }
