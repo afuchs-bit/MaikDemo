@@ -166,3 +166,21 @@ Freigabe auf alle Seiten.
     - Titelmitte = Fotomitte (0 px Abweichung).
     - H2 bei ≥ Fensterhöhe, Karte → H2 ≥ 136 px.
     - Der Knopf pulsiert, Handy unverändert.
+- **Ausgerollt (Ansage 08.10.2026, „übertrage den kompakten Held auf alle Leistungsseiten“):**
+  - **Standard:** `desktopHeldKompakt` ist in `render.mjs` jetzt Standard. Eine Seite kann ihn per
+    `"desktopHeldKompakt": false` abwählen. Das Flag in `baumarbeiten.json` ist entfernt.
+  - **Knopfzeile:** Sie hat eine Mindesthöhe (`--knopf-min`). Bei zwei- bis dreizeiligen Titeln in
+    niedrigen Fenstern (1024 × 768, 1280 × 720, 1280 × 800) rutschte der Knopf sonst unter die
+    80-%-Linie von `cta-signal.js` und pulsierte nicht.
+    - Greift die Mindesthöhe, rückt der Titel nur so weit wie nötig über die Fotomitte, gemessen 6–38 px.
+      Der Knopf steht dann 8 px über der Linie.
+    - Sonst bleibt der Titel exakt mittig. Baumfällung ist nicht betroffen.
+  - **Nur Desktop (Ansage):** Alle Regeln stehen in `@media (min-width:901px)`, die Klasse kommt in
+    keinem Skript vor.
+  - **Handy-Vergleich:** alle 38 Seiten bei 375 / 402 / 874 / 768 / 900 px gegen den Referenzstand,
+    0 Abweichungen.
+  - **Desktop-Messung:** alle 38 Seiten bei 901 × 900, 1024 × 768, 1280 × 720, 1280 × 800, 1440 × 900,
+    1920 × 1080, 1920 × 1200 und 2560 × 1440.
+    - Foto mittig, der Knopf pulsiert.
+    - H2 erst unter der Falz; die Blickführungs-Animation startet erst beim Scrollen.
+    - Kein Quer-Scroll.

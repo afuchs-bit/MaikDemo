@@ -1363,6 +1363,9 @@ export async function renderLeistungPage(opts) {
       // Diagramm passen nicht ins Zwei-Spalten-Raster).
       desktopHero: leistung.desktopHero || 'rahmenbild',
       desktopLayout: leistung.desktopLayout || 'trichter',
+      // Kompakter Held (Ansage 08.10.2026, zuerst Baumfaellung, dann alle): Foto mittig zwischen
+      // Kopf und Fensterkante, Textbereich erst nach dem Scrollen. Abwahl per "desktopHeldKompakt": false.
+      desktopHeldKompakt: leistung.desktopHeldKompakt !== false,
     } : leistung;
     const hero = presented.bilder.hero;
     const imageFirstHero = presented.heroVariant === 'image-first';

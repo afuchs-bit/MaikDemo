@@ -1067,7 +1067,12 @@
      mindestens bis 136px vor die Fensterkante, mindestens bis zur Fotounterkante. Die Zeilen
      1fr/auto/1fr legen die Titelmitte auf --held-mitte; der Ausgleich --held-x steht oben oder unten.
      Der Knopf haengt in Zeile 4 wie bisher 38px unter dem Titel. */
-  .lpv2-page--held-kompakt .lpv2-hero{--karte-b:min(460px,calc((var(--hero-frei) - 64px) * .75),44vw);--karte-h:calc(var(--karte-b) * 4 / 3);--held-mitte:calc(var(--hero-frei) - (100svh - 112px) / 2);--held-h:max(calc(var(--hero-frei) - 136px),calc(var(--held-mitte) + var(--karte-h) / 2));--held-x:calc(2 * var(--held-mitte) - var(--held-h));height:var(--held-h);min-height:0;grid-template-rows:max(0px,var(--held-x)) 1fr auto 1fr max(0px,calc(-1 * var(--held-x)))}
+  /* Ausrollen auf alle Seiten (Ansage 08.10.2026): Bei dreizeiligen Titeln in niedrigen Fenstern
+     (z. B. 1280 x 800) rutschte der Knopf unter die 80-%-Linie von cta-signal.js und pulsierte nicht.
+     Zeile 4 hat deshalb eine Mindesthoehe (--knopf-min): Knopfunterkante hoechstens 8px ueber der
+     80-%-Linie. Greift sie, rueckt der Titel nur so weit wie noetig ueber die Fotomitte; sonst bleibt
+     er exakt mittig. --held-e ist das Ende von Zeile 4 ab Heldoberkante. */
+  .lpv2-page--held-kompakt .lpv2-hero{--karte-b:min(460px,calc((var(--hero-frei) - 64px) * .75),44vw);--karte-h:calc(var(--karte-b) * 4 / 3);--held-mitte:calc(var(--hero-frei) - (100svh - 112px) / 2);--held-h:max(calc(var(--hero-frei) - 136px),calc(var(--held-mitte) + var(--karte-h) / 2));--held-x:calc(2 * var(--held-mitte) - var(--held-h));--held-e:min(var(--held-h),calc(2 * var(--held-mitte)));--knopf-min:calc(var(--held-e) - var(--hero-frei) + 20svh + 110px);height:var(--held-h);min-height:0;grid-template-rows:max(0px,var(--held-x)) minmax(0,1fr) auto minmax(max(102px,var(--knopf-min)),1fr) max(0px,calc(-1 * var(--held-x)))}
   .lpv2-page--held-kompakt .lpv2-hero .lpv2-title{grid-row:3}
   .lpv2-page--held-kompakt .lpv2-mobile-hero-cta{grid-row:4;align-self:start}
   .lpv2-page--held-kompakt .lpv2-hero-media{width:var(--karte-b);margin-top:calc(var(--held-mitte) - var(--karte-h) / 2)}
