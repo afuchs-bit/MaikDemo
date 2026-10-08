@@ -129,3 +129,22 @@ Trennlinie voll, Hinweis/Kachel/Knopf erschienen – **alle 37 Trichter-Seiten o
    Zwei-Spalten-Raster. Er bleibt in der bisherigen Spalte; eine eigene Lösung wäre ein Folge-AP.
 3. **Lange Titelwörter:** Acht Titel brechen bei großen Bildschirmen (1920) und teils bei 901 px mit
    Bindestrich um, z. B. „Vorgarten-/gestaltung“. Die Größe bleibt dafür wie auf der Startseite.
+
+## Nachtrag 08.10.2026: Kompakter Held (zunächst nur Baumfällung)
+
+Ansage: Zwischen Held-Foto und Textbereich ist zu viel Raum; erst bei „Baumfällung“ verkleinern, nach
+Freigabe auf alle Seiten.
+
+- **Vorher:** Kartenunterkante → grüne H2 169 px (1024), 178 px (1440), 327 px (1920). Ursache: Der Held
+  war mindestens fensterhoch, die Karte ist nach oben gezogen bzw. bei 1920 auf 460 × 613 gedeckelt.
+- **Jetzt** (JSON `desktopHeldKompakt: true` → Body-Klasse `lpv2-page--held-kompakt`):
+  - Der Held endet an der Kartenunterkante (`min-height: 0`).
+  - Der Textbereich beginnt 96 px darunter.
+  - Der Held liegt eine Ebene höher (`z-index: 2`), damit Rahmen und Blütenstempel nicht vom
+    Hintergrund des Textbereichs überdeckt werden.
+- **Gemessen** bei 901/1024/1280/1440/1920:
+  - Karte → H2 96 px.
+  - Titel und Knopf mittig, der Knopf pulsiert im ersten Bild.
+  - Die Karte ist bündig mit dem Rücklink.
+  - Handy unverändert.
+- **Zum Ausrollen:** `desktopHeldKompakt` in `render.mjs` zum Standard machen.

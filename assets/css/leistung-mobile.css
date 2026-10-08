@@ -1050,6 +1050,13 @@
 
   /* 7 - Uebergang zur Textsektion: der Held bringt seine Luft unten selbst mit (letzte Zeile) */
   .lpv2-page--desktop-rahmenbild .lpv2-content-feature{padding-top:40px}
+  /* Ansage 08.10.2026 (zunaechst nur Baumfaellung, desktopHeldKompakt): Der Held endet an der
+     Kartenunterkante statt fensterhoch zu sein - darunter blieben 138-287px leer. Der Textbereich
+     beginnt 96px unter der Karte (Mass wie Knopf -> Bilder, Linie -> Hinweistext). */
+  /* z-index: Rahmen und Bluetenstempel ragen unten aus dem Held; ohne eigene Ebene malt der
+     Hintergrund des Textbereichs darueber. */
+  .lpv2-page--held-kompakt .lpv2-hero{min-height:0;z-index:2}
+  .lpv2-page--held-kompakt .lpv2-content-feature{padding-top:96px}
 }
 
 /* ---------- AP-584: Puls-Animationen ab 481px ----------

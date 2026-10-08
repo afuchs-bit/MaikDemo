@@ -1457,7 +1457,7 @@ export async function renderLeistungPage(opts) {
       mobileCssVersion: escAttr(cssVersion),
       ctaFamilyVersion: escAttr(presented.ctaFamilyVersion || '20260919a'),
       heroVariantClass: `${imageFirstHero ? ' lpv2-page--image-first' : ''}${heroTitleAbove ? ' lpv2-page--title-above' : ''}${heroTitleGraphic ? ' lpv2-page--title-graphic' : ''}`,
-      pageVariantClass: `${presented.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${presented.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}${presented.desktopLayout === 'trichter' ? ' lpv2-page--desktop-trichter' : ''}${rahmenbild ? ' lpv2-page--desktop-rahmenbild' : ''}`,
+      pageVariantClass: `${presented.relatedVariant === 'homepage' ? ' lpv2-page--homepage-unified' : ''}${presented.contentVariant === 'editorial' ? ' lpv2-page--content-feature' : ''}${presented.desktopLayout === 'trichter' ? ' lpv2-page--desktop-trichter' : ''}${rahmenbild ? ' lpv2-page--desktop-rahmenbild' : ''}${rahmenbild && presented.desktopHeldKompakt === true ? ' lpv2-page--held-kompakt' : ''}`,
       title: esc(presented.title), ogTitle: escAttr(presented.title),
       description: escAttr(truncate(presented.metaDescription, 160)), canonical: escAttr(canonical),
       ogImage: escAttr(absUrl(hero.bild)), heroPreload: rahmenbild && presented.desktopHeroPortrait
