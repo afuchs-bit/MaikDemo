@@ -22,7 +22,7 @@ const HOME_SPACING_CSS_VERSION = '20261004c';
 const LEISTUNG_MOBILE_CSS_VERSION = '20261008l';
 // AP-585: eigener Schluessel fuer ueber-uns.css - bisher an CSS_VERSION, dessen Heben
 // styles.css auf allen Seiten mitgezogen haette.
-const UEBER_CSS_VERSION = '20261007c';
+const UEBER_CSS_VERSION = '20261008a';
 const SOCIAL_BRAND_CSS_VERSION = '20261006b';
 const BRAND_ARTWORK_VERSION = '20261007a';
 const SKIP_DIRS = new Set(['admin', 'assets', 'content', 'data', 'docs', 'node_modules', 'tmp']);
