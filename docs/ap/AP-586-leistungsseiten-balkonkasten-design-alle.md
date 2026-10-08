@@ -148,3 +148,5 @@ Freigabe auf alle Seiten.
   - Die Karte ist bündig mit dem Rücklink.
   - Handy unverändert.
 - **Zum Ausrollen:** `desktopHeldKompakt` in `render.mjs` zum Standard machen.
+- **Nachtrag (Ansage 08.10.2026, „nicht so eng“):** Kartenunterkante → H2 jetzt **136 px** statt 96 px,
+  auf allen Breiten gemessen. Der Knopf pulsiert weiter im ersten Bild.

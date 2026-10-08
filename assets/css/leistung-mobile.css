@@ -1056,7 +1056,8 @@
   /* z-index: Rahmen und Bluetenstempel ragen unten aus dem Held; ohne eigene Ebene malt der
      Hintergrund des Textbereichs darueber. */
   .lpv2-page--held-kompakt .lpv2-hero{min-height:0;z-index:2}
-  .lpv2-page--held-kompakt .lpv2-content-feature{padding-top:96px}
+  /* Nachtrag 08.10.2026: 96px war zu eng (Ansage) - 136px. */
+  .lpv2-page--held-kompakt .lpv2-content-feature{padding-top:136px}
 }
 
 /* ---------- AP-584: Puls-Animationen ab 481px ----------

@@ -19,7 +19,7 @@ const REQUEST_CSS_VERSION = '20261004b';
 const HOME_SPACING_CSS_VERSION = '20261004c';
 // AP-568: eigener Schluessel, damit eine Aenderung an leistung-mobile.css nicht
 // den styles.css-Schluessel aller Seiten mitzieht.
-const LEISTUNG_MOBILE_CSS_VERSION = '20261008e';
+const LEISTUNG_MOBILE_CSS_VERSION = '20261008f';
 // AP-585: eigener Schluessel fuer ueber-uns.css - bisher an CSS_VERSION, dessen Heben
 // styles.css auf allen Seiten mitgezogen haette.
 const UEBER_CSS_VERSION = '20261007c';
