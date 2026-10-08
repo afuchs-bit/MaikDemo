@@ -1357,6 +1357,12 @@ export async function renderLeistungPage(opts) {
       heroVariant: 'image-first',
       heroTitlePlacement: 'above-image',
       themeColor: leistung.themeColor || '#171916',
+      // AP-586: Das Balkonkasten-Design am Desktop (Rahmenbild-Held AP-565, Textbereich
+      // "Trichter" mit Blickfuehrung AP-566/567) gilt fuer alle Leistungsseiten. Eine Seite kann
+      // per JSON abweichen, z. B. "desktopLayout": "spalte" (Baumkontrolle: drei Bloecke mit
+      // Diagramm passen nicht ins Zwei-Spalten-Raster).
+      desktopHero: leistung.desktopHero || 'rahmenbild',
+      desktopLayout: leistung.desktopLayout || 'trichter',
     } : leistung;
     const hero = presented.bilder.hero;
     const imageFirstHero = presented.heroVariant === 'image-first';
@@ -1365,9 +1371,18 @@ export async function renderLeistungPage(opts) {
     const splitHeroTitle = Array.isArray(presented.heroTitleLines)
       && presented.heroTitleLines.length >= 1
       && presented.heroTitleLines.length <= 3;
+    // AP-586: titelTrennung (z. B. ["Nassschneide|arbeiten"]) setzt im Held-Titel ein weiches
+    // Trennzeichen - es wirkt nur, wenn das Wort sonst nicht in die Zeile passt (am Desktop bei
+    // 80px). Steht eine Titelzeile im h1 ohne Leerzeichen vor der naechsten, ist der Umbruch eine
+    // Wortfuge ("Balkonkasten" / "bepflanzung"): Klasse lpv2-title-line--join, am Desktop mit
+    // Bindestrich. "Zaeune &" / "Sichtschutz" oder "Bonsai /" bleiben ohne.
+    const titelTrennung = (Array.isArray(presented.titelTrennung) ? presented.titelTrennung : [])
+      .filter((t) => typeof t === 'string' && t.includes('|'));
+    const softHyphen = (text) => titelTrennung.reduce((html, t) => html.split(esc(t.replace(/\|/g, ''))).join(esc(t).replace(/\|/g, '&shy;')), esc(text));
+    const heroLines = splitHeroTitle ? presented.heroTitleLines : [];
     const heroTitleHtml = splitHeroTitle
-      ? `<span class="lpv2-title-full">${esc(presented.h1)}</span><span class="lpv2-title-lines" aria-hidden="true">${presented.heroTitleLines.map((line) => `<span>${esc(line)}</span>`).join('')}</span>`
-      : esc(presented.h1);
+      ? `<span class="lpv2-title-full">${esc(presented.h1)}</span><span class="lpv2-title-lines" aria-hidden="true">${heroLines.map((line, i) => `<span${heroLines[i + 1] && String(presented.h1).includes(`${line}${heroLines[i + 1]}`) ? ' class="lpv2-title-line--join"' : ''}>${softHyphen(line)}</span>`).join('')}</span>`
+      : softHyphen(presented.h1);
     // AP-565: Rahmenbild-Held am Desktop (desktopHero "rahmenbild"). Schriftzug als Titel und
     // Hochkant-Motiv; unter 901px per CSS ausgeblendet. Herkunftszeile, Anruf-Knopf, Nachweise
     // und Karten-Reiter aus dem Entwurf hat der Auftraggeber gestrichen (06.10.2026).

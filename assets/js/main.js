@@ -413,6 +413,18 @@
     const container = document.querySelector('.lpv2-page--desktop-trichter .lpv2-content-feature > .container');
     if (!container || !lateRevealMedia.matches) return;
     document.body.classList.add('lpv2-js');
+    // AP-586: Die Liste steht 18px unter der H3. Die H3 ist je Seite und Breite ein- bis
+    // dreizeilig - ihre Unterkante wird gemessen und als --lpv2-list-top am Container gesetzt
+    // (leistung-mobile.css). Ohne ResizeObserver greift der CSS-Ersatzwert.
+    const serviceTitle = container.querySelector('.lpv2-content-service h3');
+    if (serviceTitle && 'ResizeObserver' in window) {
+      const setListTop = () => {
+        const top = serviceTitle.getBoundingClientRect().bottom - container.getBoundingClientRect().top + 18;
+        container.style.setProperty('--lpv2-list-top', `${Math.round(top * 10) / 10}px`);
+      };
+      new ResizeObserver(setListTop).observe(serviceTitle);
+      setListTop();
+    }
     const items = [...container.querySelectorAll('.lpv2-content-list li')];
     const light = (li, d) => { li.style.setProperty('--lpv2-d', d); li.classList.add('lpv2-seq'); };
     if (reduced) {

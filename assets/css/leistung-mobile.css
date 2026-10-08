@@ -606,11 +606,11 @@
   .lpv2-page--desktop-trichter .lpv2-content-lead{display:contents}
   .lpv2-page--desktop-trichter .lpv2-content-lead h2,
   .lpv2-page--desktop-trichter .lpv2-content-lead h2.lpv2-content-title--long{grid-column:1;grid-row:1;width:auto;max-width:11em;margin:0;font-size:clamp(2.2rem,4cqw,3.1rem);line-height:1.06;text-align:left;text-wrap:balance}
-  /* AP-567: H3 weiss und klein (22px bei 1080px Satzspiegel), immer einzeilig - die Liste
-     steht direkt darunter (Entscheidung 06.10.2026) und braucht eine feste H3-Hoehe. Bei
-     schmalerem Satzspiegel schrumpft sie mit (2.04cqw), damit die Zeile passt.
+  /* AP-567: H3 weiss und klein (22px bei 1080px Satzspiegel), die Liste steht direkt darunter
+     (Entscheidung 06.10.2026). AP-586: Die H3 darf umbrechen (bis 64 Zeichen auf anderen
+     Leistungsseiten); den Abstand der Liste misst main.js (--lpv2-list-top).
      -webkit-text-fill-color: homepage-unified faerbt die H3 sonst gruen. */
-  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:3;grid-row:1;align-self:start;width:auto;max-width:none;margin:.35em 0 0;font-family:'Baloo 2',sans-serif;font-size:clamp(1.2rem,2.04cqw,1.375rem);font-weight:700;line-height:1.3;letter-spacing:.01em;color:var(--lpv2-text-heading,#fafaf6);-webkit-text-fill-color:var(--lpv2-text-heading,#fafaf6);text-align:left;white-space:nowrap}
+  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:3;grid-row:1;align-self:start;width:auto;max-width:none;margin:.35em 0 0;font-family:'Baloo 2',sans-serif;font-size:clamp(1.2rem,2.04cqw,1.375rem);font-weight:700;line-height:1.3;letter-spacing:.01em;color:var(--lpv2-text-heading,#fafaf6);-webkit-text-fill-color:var(--lpv2-text-heading,#fafaf6);text-align:left;text-wrap:balance}
   .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service h3{opacity:0;transition:opacity .6s var(--ease) 1.3s}
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-service h3{opacity:1}
 
@@ -624,7 +624,11 @@
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-context p::before{animation:lpv2-draw-x .9s var(--ease) .7s forwards}
   /* AP-567: Liste in Zeilen 1-3, oben um H3 (.35em + 1.3 Zeilen = 1.65 x Schriftgroesse) plus
      18px eingerueckt - sie steht damit direkt unter der H3. Ihr Ueberhang geht in Zeile 3 (1fr). */
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:3;grid-row:1 / 4;width:100%;max-width:none;margin:calc(clamp(1.2rem,2.04cqw,1.375rem) * 1.65 + 18px) 0 0}
+  /* AP-586: Ohne JS steht die Liste in Zeile 2 (18px unter der hoeheren der beiden Ueberschriften).
+     Mit JS in Zeilen 1-3, 18px unter der H3 - main.js setzt --lpv2-list-top per ResizeObserver
+     (H3-Unterkante minus Container-Oberkante plus 18px), weil die H3 ein- bis dreizeilig ist. */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:3;grid-row:2 / 4;width:100%;max-width:none;margin:18px 0 0}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list{grid-row:1 / 4;margin-top:var(--lpv2-list-top,calc(clamp(1.2rem,2.04cqw,1.375rem) * 1.65 + 18px))}
   .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list{opacity:0;transition:opacity .6s var(--ease) 1.3s}
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-list{opacity:1}
 
@@ -652,6 +656,13 @@
      traegt den Abstand, daher hier gleich spezifisch. 87.5px Box-Abstand = 96px bis zur
      Oberkante der Grossbuchstaben (Luft ueber der ersten Zeile abgezogen, gemessen). */
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list+.lpv2-content-service-copy{margin-top:87.5px}
+  /* AP-586: Steht ein Absatz NACH dem Leistungsblock (Sturmnotdienst), gehoert er nach unten zum
+     Hinweistext - gleiche Lage (Zeile 5, mittig, 760px), ohne Strich. Fehlt beides (Findlinge),
+     haelt die Kachel selbst den Abstand des Hinweistexts zur Linie. */
+  .lpv2-page--desktop-trichter .lpv2-content-service ~ .lpv2-content-context{grid-column:1 / -1;grid-row:5;justify-self:center;width:min(100%,760px);margin:87.5px 0 0}
+  .lpv2-page--desktop-trichter .lpv2-content-service ~ .lpv2-content-context p{max-width:none;padding-top:0;text-align:justify;text-align-last:left;hyphens:auto}
+  .lpv2-page--desktop-trichter .lpv2-content-service ~ .lpv2-content-context p::before{content:none}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container:not(:has(.lpv2-content-service-copy, .lpv2-content-service ~ .lpv2-content-context)) .lpv2-closing-block{margin-top:96px}
   .lpv2-page--desktop-trichter .lpv2-content-service-copy p{max-width:none;text-align:justify;text-align-last:left;hyphens:auto}
   .lpv2-page--desktop-trichter .lpv2-closing-block{grid-column:1 / -1;grid-row:6;justify-self:center;display:grid;justify-items:start;width:min(100%,760px);max-width:none;margin-top:32px}
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{width:100%;max-width:none;margin:0}
@@ -751,7 +762,7 @@
    mit denselben Huellen wie index.html #anfrage - beide Stellen gleich halten. */
 @media (min-width:901px){
   .lpv2-page .lpv2-main{max-width:none;zoom:1;container-type:normal}
-  .lpv2-page:not(.lpv2-page--desktop-trichter) .lpv2-main > article > section:not(.lpv2-home-contact):not(.lpv2-faq){max-width:32rem;margin-inline:auto;zoom:1.25;container-type:inline-size}
+  .lpv2-page:not(.lpv2-page--desktop-trichter) .lpv2-main > article > section:not(.lpv2-home-contact):not(.lpv2-faq):not(.lpv2-hero){max-width:32rem;margin-inline:auto;zoom:1.25;container-type:inline-size}
   .lpv2-page .lpv2-main > article > section.lpv2-home-contact{max-width:none;margin-inline:0;zoom:1;container-type:normal}
   /* AP-584: auch die FAQ verlaesst ab 901px die Spalte (siehe Block AP-584 am Dateiende) */
   .lpv2-page .lpv2-main > article > section.lpv2-faq{max-width:none;margin-inline:0;zoom:1;container-type:normal}
@@ -1003,6 +1014,8 @@
   /* 4 - Zeile 2: Titel. Mit Schriftzug (gruene Handschrift wie "Garten" auf der Startseite):
      die Baloo-Zeilen verschwinden, das Bild traegt den Titel, aria-label bleibt am h1.
      Ohne Schriftzug: Baloo 700 wie der Startseiten-Titel, zweite Zeile im Logo-Gruen. */
+  /* AP-586: hyphens:manual - die Grundregel setzt hyphens:none, das schaltet auch die weichen
+     Trennstellen aus titelTrennung ab (z. B. "Vorgarten-/gestaltung" bei 1920px). */
   /* Ansage 07.10.2026: Balkonkasten traegt am Desktop keinen Schriftzug mehr, sondern den Titel
      in der Schrift von "Ueber uns" (AP-585): Baloo 2 700, beide Zeilen weiss. Groesse
      clamp(44px,4.4vw,80px) - auf Ansage (07.10.2026) wie der Startseiten-Titel "Ihr Partner fuer
@@ -1012,9 +1025,9 @@
   .lpv2-page--desktop-rahmenbild .lpv2-hero .lpv2-title{grid-column:2;grid-row:2;align-self:auto;justify-self:center;width:min(100% - 2 * clamp(32px,3.2vw,56px),620px);max-width:none;margin:0;padding:0;background:transparent;text-align:center;line-height:0}
   .lpv2-page--desktop-rahmenbild .lpv2-title--split > .lpv2-title-lines{display:none}
   .lpv2-page--desktop-rahmenbild .lpv2-title-graphic-desktop{display:block;width:100%;height:auto;filter:drop-shadow(0 5px 13px rgba(0,0,0,.24))}
-  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)){color:var(--home-on-dark,#fafaf6);font-family:'Baloo 2',sans-serif;font-size:clamp(44px,4.4vw,80px);font-weight:700;line-height:1.04;letter-spacing:-.028em;text-wrap:balance}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)){hyphens:manual;color:var(--home-on-dark,#fafaf6);font-family:'Baloo 2',sans-serif;font-size:clamp(44px,4.4vw,80px);font-weight:700;line-height:1.04;letter-spacing:-.028em;text-wrap:balance}
   .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines{display:block}
-  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:first-child:after{content:'-'}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > .lpv2-title-line--join:after{content:'-'}
   /* Ansage 07.10.2026: beide Zeilen weiss, ohne gruenen Farbton (hier stand die zweite Zeile im Logo-Gruen). */
 
   /* 5 - Zeile 3: Anfrageknopf (maik-cta, 440 x 74), mittig unter dem Titel: der Container ist so
