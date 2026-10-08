@@ -664,6 +664,19 @@
   .lpv2-page--desktop-trichter .lpv2-content-service ~ .lpv2-content-context p::before{content:none}
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container:not(:has(.lpv2-content-service-copy, .lpv2-content-service ~ .lpv2-content-context)) .lpv2-closing-block{margin-top:96px}
   .lpv2-page--desktop-trichter .lpv2-content-service-copy p{max-width:none;text-align:justify;text-align-last:left;hyphens:auto}
+  /* Ansage 08.10.2026 (Baumkontrolle im Trichter-Design): Leistungsabschnitte ohne Liste ("Von der
+     Kontrolle zur passenden Massnahme" mit Ablaufdiagramm, "Massnahmen und weitere Betreuung") stehen
+     unter der Linie als eigene Bloecke, mittig 760px - der erste in Zeile 5 (87.5px wie der Hinweistext),
+     der folgende in Zeile 6, der Abschluss dann in Zeile 7. Rechts oben bleibt der Abschnitt mit Liste.
+     Die H3 dieser Bloecke wird nicht gedimmt (das gilt der H3 ueber der Liste); die Bloecke kommen mit
+     dem normalen Reveal. Am Handy bleibt die Reihenfolge des HTML. */
+  .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-content-service.lpv2-content-service--no-list{display:block;grid-column:1 / -1;grid-row:5;justify-self:center;width:min(100%,760px);margin:87.5px 0 0}
+  .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-content-service--no-list + .lpv2-content-service--no-list{grid-row:6;margin-top:56px}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container:has(.lpv2-content-service--no-list + .lpv2-content-service--no-list) .lpv2-closing-block{grid-row:7}
+  .lpv2-page--desktop-trichter .lpv2-content-service--no-list h3{margin:0}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service--no-list h3{opacity:1;transition:none}
+  .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-content-service--no-list .lpv2-content-service-copy{margin-top:18px}
+  .lpv2-page--desktop-trichter .lpv2-decision-graphic{width:100%;margin:24px 0 0}
   .lpv2-page--desktop-trichter .lpv2-closing-block{grid-column:1 / -1;grid-row:6;justify-self:center;display:grid;justify-items:start;width:min(100%,760px);max-width:none;margin-top:32px}
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{width:100%;max-width:none;margin:0}
   /* Nachtrag 06.10.2026 (Ansage): Der Kacheltext laeuft ueber die Breite - die festen Handy-Zeilen

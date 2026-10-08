@@ -25,12 +25,14 @@ Leistungsseiten an … Wenn irgendwelche besonderen Probleme auftreten, melde mi
 
 1. Ausrollen mit den vorhandenen Fotos. Die Karte schneidet per `object-fit` auf 3:4 zu.
 2. Baumkontrolle bekommt den neuen Held; der Textbereich bleibt in der bisherigen Spalte.
+   *Überholt am 08.10.2026: Baumkontrolle steht jetzt auch im Trichter, siehe Nachtrag unten.*
 
 ## Umsetzung
 
 - **`render.mjs`:**
   - `desktopHero` = `rahmenbild` und `desktopLayout` = `trichter` sind jetzt Standard für alle
-    editorial-v2-Seiten; eine Seite kann per JSON abweichen. Baumkontrolle: `"desktopLayout": "spalte"`.
+    editorial-v2-Seiten; eine Seite kann per JSON abweichen (Baumkontrolle hatte bis 08.10.2026
+    `"desktopLayout": "spalte"`).
   - Titelzeilen: Die Klasse `lpv2-title-line--join` kommt nur an Wortfugen, also wo im h1 kein
     Leerzeichen zwischen den Zeilen steht. Nur dort setzt das CSS den Bindestrich:
     „Balkonkasten-“, „Sichtschutz-“, „Stubbenfräsen-“, „Ausgleichs-“, „Naturstein-“. Bisher stand der
@@ -127,6 +129,7 @@ Trennlinie voll, Hinweis/Kachel/Knopf erschienen – **alle 37 Trichter-Seiten o
 | balkonkastenbepflanzung | `balkonkastenbepflanzung-hero (Hochkant-Original)` | 800x1067 | 1,74 |
 2. **Baumkontrolle-Textbereich:** Drei Leistungsblöcke und ein Ablaufdiagramm passen nicht ins
    Zwei-Spalten-Raster. Er bleibt in der bisherigen Spalte; eine eigene Lösung wäre ein Folge-AP.
+   *Gelöst am 08.10.2026, siehe Nachtrag „Baumkontrolle im Trichter“.*
 3. **Lange Titelwörter:** Acht Titel brechen bei großen Bildschirmen (1920) und teils bei 901 px mit
    Bindestrich um, z. B. „Vorgarten-/gestaltung“. Die Größe bleibt dafür wie auf der Startseite.
 
@@ -184,3 +187,34 @@ Freigabe auf alle Seiten.
     - Foto mittig, der Knopf pulsiert.
     - H2 erst unter der Falz; die Blickführungs-Animation startet erst beim Scrollen.
     - Kein Quer-Scroll.
+
+## Nachtrag 08.10.2026: Baumkontrolle im Trichter
+
+Ansage: Baumkontrolle bekommt am Desktop das Design der anderen Leistungsseiten.
+- **Links:** „Zertifizierter Baumkontrolleur der Landwirtschaftskammer NRW“ mit Einstieg und dem Absatz
+  „Bestimmte Pathogene …“.
+- **Rechts:** „Folgendes können wir Ihnen anbieten“ mit Liste.
+- **Unter der Linie:** „Von der Kontrolle zur passenden Maßnahme“ mit dem Ablaufdiagramm, dann
+  „Maßnahmen und weitere Betreuung“, dann die Kachel.
+
+**Umsetzung:**
+- **JSON:** `"desktopLayout": "spalte"` ist aus `baumkontrolle.json` entfernt.
+- **CSS:** Abschnitte ohne Liste (`.lpv2-content-service--no-list`, nur Baumkontrolle) sind am Desktop
+  eigene Blöcke unter der Linie, mittig mit 760 px.
+  - Der erste steht in Zeile 5, 87,5 px unter der Linie, der zweite in Zeile 6 mit 56 px Abstand.
+  - Die Kachel steht in Zeile 7, 32 px unter dem Absatz.
+  - Das Diagramm ist 760 px breit. Die H3 dieser Blöcke wird nicht gedimmt, die Blöcke erscheinen
+    mit dem normalen Reveal.
+- **`main.js`:** Wort-Aufstieg und Listenabstand nehmen die H3 über der Liste
+  (`.lpv2-content-service:not(.lpv2-content-service--no-list) h3`); vorher war es die erste H3 der
+  Sektion. Auf den anderen Seiten ist das dieselbe H3.
+
+**Gemessen** bei 1024 / 1280 / 1440 / 1920:
+- Lage:
+  - Keine Überlappungen, die H2 läuft nicht über, kein Quer-Scroll.
+  - Die Trennlinie reicht über die linke Spalte.
+- Bewegung:
+  - Die Animation startet erst beim Scrollen; die rechte H3 steigt Wort für Wort auf, die vier Punkte
+    schalten nacheinander.
+  - Alle Blöcke unter der Linie werden sichtbar; mit reduzierter Bewegung steht alles sofort.
+- Andere Seiten: Auf Balkonkasten, Baumfällung und Erd-Bagger läuft die Liste wie bisher.

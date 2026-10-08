@@ -416,7 +416,8 @@
     // AP-586: Die Liste steht 18px unter der H3. Die H3 ist je Seite und Breite ein- bis
     // dreizeilig - ihre Unterkante wird gemessen und als --lpv2-list-top am Container gesetzt
     // (leistung-mobile.css). Ohne ResizeObserver greift der CSS-Ersatzwert.
-    const serviceTitle = container.querySelector('.lpv2-content-service h3');
+    // Baumkontrolle hat zusaetzlich Abschnitte ohne Liste (unter der Linie) - gemeint ist die H3 ueber der Liste.
+    const serviceTitle = container.querySelector('.lpv2-content-service:not(.lpv2-content-service--no-list) h3');
     if (serviceTitle && 'ResizeObserver' in window) {
       const setListTop = () => {
         const top = serviceTitle.getBoundingClientRect().bottom - container.getBoundingClientRect().top + 18;
@@ -450,7 +451,7 @@
       el.classList.add('lpv2-split');
     };
     split(container.querySelector('.lpv2-content-lead h2'));
-    split(container.querySelector('.lpv2-content-service h3'));
+    split(serviceTitle);
 
     // Kette statt fester Zeiten: Punkt i schaltet fruehestens BASE nach dem Eintritt und STEP
     // nach Punkt i-1 - und erst, wenn er ueber 92 % Fensterhoehe steht. Die Sektion kommt beim
