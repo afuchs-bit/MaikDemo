@@ -415,3 +415,10 @@ denselben Abstand zur Trennlinie haben.
 
 Gemessen bei 1024, 1440 und 1920: Knopf → Bild 96,0, Linie → Schrift 96,0 px. Breite 760 px, Knopf mittig,
 kein Überlauf. Handy 375/402/874: 0 Abweichungen.
+
+## Nachtrag 5, 08.10.2026: Kachel → Knopf wie Hinweistext → Kachel
+
+Ansage: Der Knopf soll denselben Abstand zur Kachel haben wie der Hinweistext darüber. Sichtbar endet die
+letzte Textzeile 41 px über der Kachel (32 px Box plus Luft unter der Zeile). Der Abstand Kachel → Knopf
+betrug 24 px und ist jetzt **41 px** (`margin-top`). Gemessen: 41,0 gegen 41,3 px; Knopf → Bilder bleibt
+96 px, der Knopf mittig. Handy unverändert.

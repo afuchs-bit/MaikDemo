@@ -660,7 +660,9 @@
      Bluetenstempel (ragt unten rechts in die Kachel). Knopf mittig darunter. */
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{padding:28px 88px 30px 32px}
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-lines>span{display:inline}
-  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{justify-self:center;width:400px;margin:24px 0 0}
+  /* Ansage 08.10.2026: Kachel -> Knopf 41px - sichtbar so gross wie Hinweistext -> Kachel (32px Box
+     plus Luft unter der letzten Zeile). */
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{justify-self:center;width:400px;margin:41px 0 0}
 
   /* 5 - (AP-566 Lichtsaum um die Kachel: auf Ansage 06.10.2026 entfernt, AP-567 Nachtrag) */
 
