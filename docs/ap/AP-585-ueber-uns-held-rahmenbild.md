@@ -79,3 +79,25 @@ Gemessen bei 901/1024/1280/1440/1920:
 - Abstand Text → Foto mindestens 18 px (bei 901).
 - Kein Überlauf, keine Konsolenfehler.
 - Handy und Tablet 375–874: 0 Abweichungen.
+
+## Nachtrag 08.10.2026: Held wie die Leistungsseiten (Fotoplatz, Titelgröße)
+
+Ansage: Das Held-Design der Leistungsseiten (kompakter Held, AP-586) gilt auch für „Über uns“, für den
+Fotoplatz und die Titelgröße. Entscheidungen auf Rückfrage: Titel und Team-Text stehen als Block mittig
+zur Fotohöhe, „uns“ bleibt grün.
+
+- **Held:** Er ist fensterhoch ab der Kopfunterkante (`min-height: calc(100svh - 112px)`, ohne den
+  900-px-Deckel, ohne Innenabstand). Seine Mitte ist damit die Mitte zwischen Kopf und Fensterkante.
+  Der nächste Abschnitt kommt erst beim Scrollen.
+- **Foto:** Es steht mittig im Held (`grid-row: 1 / -1`), Größe unverändert wie bei den
+  Leistungsseiten, ohne den Schatten.
+- **Raster:** Zeilen `1fr auto auto 1fr`. Der Rücklink steht oben in Zeile 1, an derselben Stelle
+  wie vorher, jetzt mit `margin-top`. Titel und Team stehen in Zeile 2 und 3, ihr Block liegt auf
+  der Fotomitte.
+- **Titel:** `clamp(44px, 4.4vw, 80px)` wie auf den Leistungsseiten (vorher `clamp(64px, 7vw, 120px)`).
+- **Gemessen** bei 901 × 900, 1024 × 768, 1280 × 720, 1280 × 800, 1440 × 900, 1920 × 1080 und
+  2560 × 1440:
+  - Foto oben und unten gleich viel Abstand, Blockmitte = Fotomitte (0 px Abweichung).
+  - Rücklink unverändert (160/166/180 px).
+  - Nächster Abschnitt an der Fensterkante, keine Überlappungen, kein Quer-Scroll.
+  - Handy unverändert (375/402/768/874/900: 0 Abweichungen).

@@ -2532,15 +2532,21 @@ body.ueber-page {
        der linken Fotokante, und Titel und Team-Block stehen mittig zwischen Containerkante
        und Foto. Zeile 4 traegt den Team-Block. */
     grid-template-columns: var(--hero-rand) minmax(0, 1fr) auto var(--hero-rand);
-    grid-template-rows: auto minmax(48px, 1fr) auto auto minmax(48px, 1fr);
-    min-height: calc(var(--space-section-compact) + 34px + clamp(28px, 3vw, 40px) + clamp(480px, var(--hero-frei), 900px));
+    /* Nachtrag 08.10.2026 (Ansage: wie die Leistungsseiten): Der Held beginnt an der
+       Kopfunterkante (112px) und ist fensterhoch - seine Mitte ist damit die Mitte zwischen Kopf
+       und Fensterkante. Foto und der Block aus Titel und Team stehen auf dieser Mitte (Zeilen
+       1fr/auto/auto/1fr), der Ruecklink oben in Zeile 1; der naechste Abschnitt kommt erst beim
+       Scrollen. Den Abstand ueber dem Ruecklink traegt jetzt dessen margin-top. */
+    grid-template-rows: minmax(0, 1fr) auto auto minmax(0, 1fr);
+    min-height: calc(100svh - 112px);
+    padding-top: 0;
   }
 
   /* Wasserzeichen hinter dem Titel - Bild, Groesse und Deckkraft wie AP-565. */
   .ueber-hero::before {
     content: "";
     grid-column: 1 / 3;
-    grid-row: 2 / -1;
+    grid-row: 1 / -1;
     align-self: stretch;
     justify-self: start;
     width: clamp(360px, 34vw, 680px);
@@ -2557,19 +2563,20 @@ body.ueber-page {
   .ueber-hero .ueber-hero__breadcrumbs {
     grid-column: 2 / 4;
     grid-row: 1;
+    align-self: start;
     justify-self: start;
+    margin-top: var(--space-section-compact);
   }
 
   .ueber-hero__titel {
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 2;
     justify-self: center;
     margin: 0;
     color: var(--home-on-dark, #fafaf6);
-    /* Groesser als der Ersatztitel aus AP-565 (clamp(44px, 4.4vw, 80px)): "Ueber uns" ist
-       kurz und stand bei 1440px nur 240px breit - die linke Spalte wirkte leer neben dem
-       620px breiten Schriftzug des Vorbilds. So traegt der Titel ein aehnliches Gewicht. */
-    font-size: clamp(64px, 7vw, 120px);
+    /* Nachtrag 08.10.2026 (Ansage): Groesse wie der Titel der Leistungsseiten (vorher
+       clamp(64px, 7vw, 120px)). "uns" bleibt gruen (Entscheidung 08.10.2026). */
+    font-size: clamp(44px, 4.4vw, 80px);
     font-weight: 700;
     line-height: 1.04;
     letter-spacing: -.028em;
@@ -2584,7 +2591,7 @@ body.ueber-page {
      der Block Abstand zum Foto. */
   .ueber-hero__team {
     grid-column: 2;
-    grid-row: 4;
+    grid-row: 3;
     justify-self: center;
     width: min(100% - clamp(32px, 4vw, 64px), 480px);
     margin-top: clamp(24px, 2.4vw, 36px);
@@ -2599,7 +2606,7 @@ body.ueber-page {
      Hochkant-Zuschnitt; ::before ist der versetzte Rahmen. */
   .ueber-hero .ueber-hero__foto {
     grid-column: 3;
-    grid-row: 2 / -1;
+    grid-row: 1 / -1;
     align-self: center;
     justify-self: end;
     z-index: 2;
@@ -2609,7 +2616,9 @@ body.ueber-page {
     aspect-ratio: 3 / 4;
     margin: 0;
     border-radius: 26px 7px 26px 7px;
-    box-shadow: 0 40px 70px -36px rgba(0, 0, 0, .95), 0 30px 60px -40px rgba(93, 224, 35, .55);
+    /* Nachtrag 08.10.2026: ohne Schatten wie auf den Leistungsseiten (dort Ansage 07.10.2026:
+       der dunkelgruene Schleier ums Foto). */
+    box-shadow: none;
   }
 
   .ueber-hero .ueber-hero__foto::before {

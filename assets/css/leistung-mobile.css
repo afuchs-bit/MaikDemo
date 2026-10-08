@@ -606,11 +606,11 @@
   .lpv2-page--desktop-trichter .lpv2-content-lead{display:contents}
   .lpv2-page--desktop-trichter .lpv2-content-lead h2,
   .lpv2-page--desktop-trichter .lpv2-content-lead h2.lpv2-content-title--long{grid-column:1;grid-row:1;width:auto;max-width:11em;margin:0;font-size:clamp(2.2rem,4cqw,3.1rem);line-height:1.06;text-align:left;text-wrap:balance}
-  /* AP-567: H3 weiss und klein (22px bei 1080px Satzspiegel), immer einzeilig - die Liste
-     steht direkt darunter (Entscheidung 06.10.2026) und braucht eine feste H3-Hoehe. Bei
-     schmalerem Satzspiegel schrumpft sie mit (2.04cqw), damit die Zeile passt.
+  /* AP-567: H3 weiss und klein (22px bei 1080px Satzspiegel), die Liste steht direkt darunter
+     (Entscheidung 06.10.2026). AP-586: Die H3 darf umbrechen (bis 64 Zeichen auf anderen
+     Leistungsseiten); den Abstand der Liste misst main.js (--lpv2-list-top).
      -webkit-text-fill-color: homepage-unified faerbt die H3 sonst gruen. */
-  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:3;grid-row:1;align-self:start;width:auto;max-width:none;margin:.35em 0 0;font-family:'Baloo 2',sans-serif;font-size:clamp(1.2rem,2.04cqw,1.375rem);font-weight:700;line-height:1.3;letter-spacing:.01em;color:var(--lpv2-text-heading,#fafaf6);-webkit-text-fill-color:var(--lpv2-text-heading,#fafaf6);text-align:left;white-space:nowrap}
+  .lpv2-page--desktop-trichter .lpv2-content-service h3{grid-column:3;grid-row:1;align-self:start;width:auto;max-width:none;margin:.35em 0 0;font-family:'Baloo 2',sans-serif;font-size:clamp(1.2rem,2.04cqw,1.375rem);font-weight:700;line-height:1.3;letter-spacing:.01em;color:var(--lpv2-text-heading,#fafaf6);-webkit-text-fill-color:var(--lpv2-text-heading,#fafaf6);text-align:left;text-wrap:balance}
   .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service h3{opacity:0;transition:opacity .6s var(--ease) 1.3s}
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-service h3{opacity:1}
 
@@ -624,7 +624,11 @@
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-context p::before{animation:lpv2-draw-x .9s var(--ease) .7s forwards}
   /* AP-567: Liste in Zeilen 1-3, oben um H3 (.35em + 1.3 Zeilen = 1.65 x Schriftgroesse) plus
      18px eingerueckt - sie steht damit direkt unter der H3. Ihr Ueberhang geht in Zeile 3 (1fr). */
-  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:3;grid-row:1 / 4;width:100%;max-width:none;margin:calc(clamp(1.2rem,2.04cqw,1.375rem) * 1.65 + 18px) 0 0}
+  /* AP-586: Ohne JS steht die Liste in Zeile 2 (18px unter der hoeheren der beiden Ueberschriften).
+     Mit JS in Zeilen 1-3, 18px unter der H3 - main.js setzt --lpv2-list-top per ResizeObserver
+     (H3-Unterkante minus Container-Oberkante plus 18px), weil die H3 ein- bis dreizeilig ist. */
+  .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list{grid-column:3;grid-row:2 / 4;width:100%;max-width:none;margin:18px 0 0}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list{grid-row:1 / 4;margin-top:var(--lpv2-list-top,calc(clamp(1.2rem,2.04cqw,1.375rem) * 1.65 + 18px))}
   .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service .lpv2-content-list{opacity:0;transition:opacity .6s var(--ease) 1.3s}
   .lpv2-page--desktop-trichter .lpv2-content-feature > .container.is-live .lpv2-content-list{opacity:1}
 
@@ -652,7 +656,28 @@
      traegt den Abstand, daher hier gleich spezifisch. 87.5px Box-Abstand = 96px bis zur
      Oberkante der Grossbuchstaben (Luft ueber der ersten Zeile abgezogen, gemessen). */
   .lpv2-page--desktop-trichter .lpv2-content-service .lpv2-content-list+.lpv2-content-service-copy{margin-top:87.5px}
+  /* AP-586: Steht ein Absatz NACH dem Leistungsblock (Sturmnotdienst), gehoert er nach unten zum
+     Hinweistext - gleiche Lage (Zeile 5, mittig, 760px), ohne Strich. Fehlt beides (Findlinge),
+     haelt die Kachel selbst den Abstand des Hinweistexts zur Linie. */
+  .lpv2-page--desktop-trichter .lpv2-content-service ~ .lpv2-content-context{grid-column:1 / -1;grid-row:5;justify-self:center;width:min(100%,760px);margin:87.5px 0 0}
+  .lpv2-page--desktop-trichter .lpv2-content-service ~ .lpv2-content-context p{max-width:none;padding-top:0;text-align:justify;text-align-last:left;hyphens:auto}
+  .lpv2-page--desktop-trichter .lpv2-content-service ~ .lpv2-content-context p::before{content:none}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container:not(:has(.lpv2-content-service-copy, .lpv2-content-service ~ .lpv2-content-context)) .lpv2-closing-block{margin-top:96px}
   .lpv2-page--desktop-trichter .lpv2-content-service-copy p{max-width:none;text-align:justify;text-align-last:left;hyphens:auto}
+  /* Ansage 08.10.2026 (Baumkontrolle im Trichter-Design): Leistungsabschnitte ohne Liste ("Von der
+     Kontrolle zur passenden Massnahme" mit Ablaufdiagramm, "Massnahmen und weitere Betreuung") stehen
+     unter der Linie als eigene Bloecke, mittig 760px - der erste in Zeile 5 (87.5px wie der Hinweistext),
+     der folgende in Zeile 6, der Abschluss dann in Zeile 7. Rechts oben bleibt der Abschnitt mit Liste.
+     Die H3 dieser Bloecke wird nicht gedimmt (das gilt der H3 ueber der Liste); die Bloecke kommen mit
+     dem normalen Reveal. Am Handy bleibt die Reihenfolge des HTML. */
+  .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-content-service.lpv2-content-service--no-list{display:block;grid-column:1 / -1;grid-row:5;justify-self:center;width:min(100%,760px);margin:87.5px 0 0}
+  .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-content-service--no-list + .lpv2-content-service--no-list{grid-row:6;margin-top:56px}
+  .lpv2-page--desktop-trichter .lpv2-content-feature > .container:has(.lpv2-content-service--no-list + .lpv2-content-service--no-list) .lpv2-closing-block{grid-row:7}
+  /* Ansage 08.10.2026: beide Ueberschriften unter der Linie mittig. */
+  .lpv2-page--desktop-trichter .lpv2-content-service--no-list h3{margin:0;text-align:center}
+  .lpv2-page--desktop-trichter.lpv2-js .lpv2-content-service--no-list h3{opacity:1;transition:none}
+  .lpv2-page--desktop-trichter .lpv2-content-feature .lpv2-content-service--no-list .lpv2-content-service-copy{margin-top:18px}
+  .lpv2-page--desktop-trichter .lpv2-decision-graphic{width:100%;margin:24px 0 0}
   .lpv2-page--desktop-trichter .lpv2-closing-block{grid-column:1 / -1;grid-row:6;justify-self:center;display:grid;justify-items:start;width:min(100%,760px);max-width:none;margin-top:32px}
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{width:100%;max-width:none;margin:0}
   /* Nachtrag 06.10.2026 (Ansage): Der Kacheltext laeuft ueber die Breite - die festen Handy-Zeilen
@@ -660,7 +685,9 @@
      Bluetenstempel (ragt unten rechts in die Kachel). Knopf mittig darunter. */
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing{padding:28px 88px 30px 32px}
   .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-lines>span{display:inline}
-  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{justify-self:center;width:400px;margin:24px 0 0}
+  /* Ansage 08.10.2026: Kachel -> Knopf 41px - sichtbar so gross wie Hinweistext -> Kachel (32px Box
+     plus Luft unter der letzten Zeile). */
+  .lpv2-page--desktop-trichter .lpv2-content-closing .lpv2-closing-cta{justify-self:center;width:400px;margin:41px 0 0}
 
   /* 5 - (AP-566 Lichtsaum um die Kachel: auf Ansage 06.10.2026 entfernt, AP-567 Nachtrag) */
 
@@ -749,7 +776,7 @@
    mit denselben Huellen wie index.html #anfrage - beide Stellen gleich halten. */
 @media (min-width:901px){
   .lpv2-page .lpv2-main{max-width:none;zoom:1;container-type:normal}
-  .lpv2-page:not(.lpv2-page--desktop-trichter) .lpv2-main > article > section:not(.lpv2-home-contact):not(.lpv2-faq){max-width:32rem;margin-inline:auto;zoom:1.25;container-type:inline-size}
+  .lpv2-page:not(.lpv2-page--desktop-trichter) .lpv2-main > article > section:not(.lpv2-home-contact):not(.lpv2-faq):not(.lpv2-hero){max-width:32rem;margin-inline:auto;zoom:1.25;container-type:inline-size}
   .lpv2-page .lpv2-main > article > section.lpv2-home-contact{max-width:none;margin-inline:0;zoom:1;container-type:normal}
   /* AP-584: auch die FAQ verlaesst ab 901px die Spalte (siehe Block AP-584 am Dateiende) */
   .lpv2-page .lpv2-main > article > section.lpv2-faq{max-width:none;margin-inline:0;zoom:1;container-type:normal}
@@ -975,7 +1002,7 @@
      Knopf im ersten Bild ueber der 80-%-Linie von cta-signal.js liegt und pulsiert (AP-584).
      Mindesthoehe: das Fenster abzueglich fester Kopfflaeche (112px, AP-583) und
      Ruecklink-Block (--space-section-compact + 34px Trefferflaeche + Abstand, AP-581). */
-  .lpv2-page--desktop-rahmenbild .lpv2-hero{--hero-rand:calc((100% - min(100% - calc(var(--gutter) * 2), var(--container))) / 2);position:relative;isolation:isolate;display:grid;grid-template-columns:var(--hero-rand) minmax(0,52fr) minmax(0,48fr) var(--hero-rand);grid-template-rows:minmax(48px,.5fr) auto auto minmax(48px,1.5fr);--hero-frei:calc(100svh - 112px - var(--space-section-compact) - 34px - clamp(28px,3vw,40px));min-height:clamp(480px,var(--hero-frei),900px);padding:0;background:var(--lp-bg);overflow:visible}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero{--hero-rand:calc((100% - min(100% - calc(var(--gutter) * 2), var(--container))) / 2);position:relative;isolation:isolate;display:grid;grid-template-columns:var(--hero-rand) minmax(0,1fr) auto var(--hero-rand);grid-template-rows:minmax(48px,.5fr) auto auto minmax(48px,1.5fr);--hero-frei:calc(100svh - 112px - var(--space-section-compact) - 34px - clamp(28px,3vw,40px));min-height:clamp(480px,var(--hero-frei),900px);padding:0;background:var(--lp-bg);overflow:visible}
   .lpv2-page--desktop-rahmenbild .lpv2-hero::before{content:'';grid-column:1 / 3;grid-row:1 / -1;align-self:stretch;justify-self:start;width:clamp(360px,34vw,680px);margin-left:-4%;background:url('../img/hero/rohdich-blueten-wasserzeichen.webp?v=20260902a') center / contain no-repeat;opacity:.12;filter:saturate(.7);pointer-events:none}
   .lpv2-page--desktop-rahmenbild .lpv2-hero > .container{display:contents}
   .lpv2-page--desktop-rahmenbild .lpv2-kicker,
@@ -985,31 +1012,51 @@
   /* 3 - "Alle Leistungen": seit AP-581 der einheitliche Ruecklink ueber dem Held
      (.lpv2-ruecklink-desktop); die Leiste im Held ist dort ausgeblendet. */
 
+  /* Ansage 08.10.2026: Die Karte traegt keinen Schatten mehr - der schwarze Weichschatten
+     (0 40px 70px) und der gruene Schein darunter (0 30px 60px) lagen als dunkelgruener Schleier ums Foto. */
+  /* Nachtrag 07.10.2026 (Ansage): Titel und Knopf mittig zwischen Containerkante und Foto, Text
+     zentriert (wie "Ueber uns", AP-585) - Spalte 3 ist dafuer auto (so breit wie die Karte), Spalte 2
+     endet an der Fotokante; Kartenbreite mit 44vw statt 100% (kein Prozentmass in auto-Spalten).
+     Die Karte steht oben buendig mit dem Ruecklink "Alle Leistungen": align-self:start und um dessen
+     Block (34px + Abstand, AP-581) nach oben gezogen. Titel und Knopf sind beidseitig um
+     clamp(32px,3.2vw,56px) schmaler als Spalte 2 - so bleibt die Mitte exakt und der Knopf stoesst
+     bei 901px nicht ans Foto. */
+  /* Die hochgezogene Karte ragt ueber den Seiteninhalt (.lpv2-main) hinaus; dessen overflow:clip
+     (@media all) schnitt ihre Oberkante ab. Am Desktop nur noch seitlich beschneiden. */
+  .lpv2-page--desktop-rahmenbild .lpv2-main{overflow-x:clip;overflow-y:visible}
+
   /* 4 - Zeile 2: Titel. Mit Schriftzug (gruene Handschrift wie "Garten" auf der Startseite):
      die Baloo-Zeilen verschwinden, das Bild traegt den Titel, aria-label bleibt am h1.
      Ohne Schriftzug: Baloo 700 wie der Startseiten-Titel, zweite Zeile im Logo-Gruen. */
+  /* AP-586: hyphens:manual - die Grundregel setzt hyphens:none, das schaltet auch die weichen
+     Trennstellen aus titelTrennung ab (z. B. "Vorgarten-/gestaltung" bei 1920px). */
+  /* Ansage 07.10.2026: Balkonkasten traegt am Desktop keinen Schriftzug mehr, sondern den Titel
+     in der Schrift von "Ueber uns" (AP-585): Baloo 2 700, beide Zeilen weiss. Groesse
+     clamp(44px,4.4vw,80px) - auf Ansage (07.10.2026) wie der Startseiten-Titel "Ihr Partner fuer
+     alles rund um den Garten" (#gate-title). */
   /* .lpv2-hero davor: .lpv2-page--homepage-unified.lpv2-page--title-above .lpv2-title (0,3,0)
      setzt sonst 80px/20px Innenabstand. */
-  .lpv2-page--desktop-rahmenbild .lpv2-hero .lpv2-title{grid-column:2;grid-row:2;align-self:auto;justify-self:start;width:min(100%,620px);max-width:none;margin:0;padding:0;background:transparent;text-align:left;line-height:0}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero .lpv2-title{grid-column:2;grid-row:2;align-self:auto;justify-self:center;width:min(100% - 2 * clamp(32px,3.2vw,56px),620px);max-width:none;margin:0;padding:0;background:transparent;text-align:center;line-height:0}
   .lpv2-page--desktop-rahmenbild .lpv2-title--split > .lpv2-title-lines{display:none}
   .lpv2-page--desktop-rahmenbild .lpv2-title-graphic-desktop{display:block;width:100%;height:auto;filter:drop-shadow(0 5px 13px rgba(0,0,0,.24))}
-  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)){color:var(--home-on-dark,#fafaf6);font-size:clamp(44px,4.4vw,80px);font-weight:700;line-height:1.04;letter-spacing:-.028em;text-wrap:balance}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)){hyphens:manual;color:var(--home-on-dark,#fafaf6);font-family:'Baloo 2',sans-serif;font-size:clamp(44px,4.4vw,80px);font-weight:700;line-height:1.04;letter-spacing:-.028em;text-wrap:balance}
   .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines{display:block}
-  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:first-child:after{content:'-'}
-  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > span:last-child{color:var(--mobile-logo-green,#56e607)}
+  .lpv2-page--desktop-rahmenbild .lpv2-title:not(:has(.lpv2-title-graphic-desktop)) > .lpv2-title-lines > .lpv2-title-line--join:after{content:'-'}
+  /* Ansage 07.10.2026: beide Zeilen weiss, ohne gruenen Farbton (hier stand die zweite Zeile im Logo-Gruen). */
 
   /* 5 - Zeile 3: Anfrageknopf (maik-cta, 440 x 74), mittig unter dem Titel: der Container ist so
      breit wie der Titel (min(100%,620px)), Ansage 06.10.2026 (AP-584). */
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta{grid-column:2;grid-row:3;justify-self:start;display:flex;align-items:center;justify-content:center;width:min(100%,620px);margin:38px 0 0;padding:0}
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button{width:min(100%,440px);min-height:74px;height:74px;padding:8px 12px 8px 0;border-radius:16px}
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__label{font-size:1.125rem;letter-spacing:.02em}
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow{width:70px;height:46px;margin-right:14px}
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow-image{width:52px}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta{grid-column:2;grid-row:3;justify-self:center;display:flex;align-items:center;justify-content:center;width:min(100% - 2 * clamp(32px,3.2vw,56px),620px);margin:38px 0 0;padding:0}
+  /* Ansage 07.10.2026: etwas kleiner (vorher 440 x 74, Beschriftung 18px) - rund 85 %. */
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button{width:min(100%,380px);min-height:64px;height:64px;padding:7px 10px 7px 0;border-radius:14px}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__label{font-size:1rem;letter-spacing:.02em}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow{width:60px;height:40px;margin-right:12px}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow-image{width:44px}
 
   /* 6 - Spalte 3: die Karte, hoechstens 460px breit und so hoch, dass sie mit 32px Luft oben
      und unten ins freie Fenster passt (niedrige Bildschirme). Figure wird 3:4, Bild per <source media> im Hochkant-Derivat,
      versetzter Rahmen im Pseudoelement (title-above hatte ::before ausgeblendet). */
-  .lpv2-page--desktop-rahmenbild .lpv2-hero-media{grid-column:3;grid-row:1 / -1;align-self:center;justify-self:end;position:relative;z-index:2;width:min(100%,460px,calc((var(--hero-frei) - 64px) * .75));height:auto;aspect-ratio:3 / 4;margin:0;overflow:visible;border-radius:26px 7px 26px 7px;background:transparent;box-shadow:0 40px 70px -36px rgba(0,0,0,.95),0 30px 60px -40px rgba(93,224,35,.55)}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media{grid-column:3;grid-row:1 / -1;align-self:start;justify-self:end;position:relative;z-index:2;width:min(460px,calc((var(--hero-frei) - 64px) * .75),44vw);height:auto;aspect-ratio:3 / 4;margin:calc(-1 * (34px + clamp(28px,3vw,40px))) 0 0;overflow:visible;border-radius:26px 7px 26px 7px;background:transparent;box-shadow:none}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media::before{content:'';display:block;position:absolute;inset:0;z-index:-1;transform:translate(12px,12px);border:1.5px solid var(--home-lime,#8cc63f);border-radius:inherit;background:none;opacity:.9;pointer-events:none}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media picture{position:absolute;inset:0;overflow:hidden;border-radius:inherit}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media img:not(.lpv2-hero-brand){width:100%;height:100%;object-fit:cover;object-position:40% 55%}
@@ -1017,6 +1064,32 @@
 
   /* 7 - Uebergang zur Textsektion: der Held bringt seine Luft unten selbst mit (letzte Zeile) */
   .lpv2-page--desktop-rahmenbild .lpv2-content-feature{padding-top:40px}
+  /* Ansage 08.10.2026 (zunaechst nur Baumfaellung, desktopHeldKompakt): Der Held endet an der
+     Kartenunterkante statt fensterhoch zu sein - darunter blieben 138-287px leer. Der Textbereich
+     beginnt 96px unter der Karte (Mass wie Knopf -> Bilder, Linie -> Hinweistext). */
+  /* z-index: Rahmen und Bluetenstempel ragen unten aus dem Held; ohne eigene Ebene malt der
+     Hintergrund des Textbereichs darueber. */
+  /* Nachtrag 08.10.2026 (Ansage): Der Textbereich soll erst beim Scrollen ins Bild kommen - der Held
+     fuellt mit den 136px Polster mindestens das freie Fenster (--hero-frei), reicht die Karte tiefer,
+     bleibt es bei 136px unter der Karte. */
+  .lpv2-page--held-kompakt .lpv2-hero{min-height:calc(var(--hero-frei) - 136px);z-index:2}
+  /* Nachtrag 08.10.2026: 96px war zu eng (Ansage) - 136px. */
+  .lpv2-page--held-kompakt .lpv2-content-feature{padding-top:136px}
+  /* Nachtrag 08.10.2026 (Ansage): Das Foto steht mittig zwischen Kopfunterkante (112px) und
+     Fensterunterkante, der Titel mittig zur Fotohoehe. --held-mitte ist diese Fenstermitte ab der
+     Oberkante des Helds (der Held beginnt bei 100svh - --hero-frei). Der Held hat eine feste Hoehe:
+     mindestens bis 136px vor die Fensterkante, mindestens bis zur Fotounterkante. Die Zeilen
+     1fr/auto/1fr legen die Titelmitte auf --held-mitte; der Ausgleich --held-x steht oben oder unten.
+     Der Knopf haengt in Zeile 4 wie bisher 38px unter dem Titel. */
+  /* Ausrollen auf alle Seiten (Ansage 08.10.2026): Bei dreizeiligen Titeln in niedrigen Fenstern
+     (z. B. 1280 x 800) rutschte der Knopf unter die 80-%-Linie von cta-signal.js und pulsierte nicht.
+     Zeile 4 hat deshalb eine Mindesthoehe (--knopf-min): Knopfunterkante hoechstens 8px ueber der
+     80-%-Linie. Greift sie, rueckt der Titel nur so weit wie noetig ueber die Fotomitte; sonst bleibt
+     er exakt mittig. --held-e ist das Ende von Zeile 4 ab Heldoberkante. */
+  .lpv2-page--held-kompakt .lpv2-hero{--karte-b:min(460px,calc((var(--hero-frei) - 64px) * .75),44vw);--karte-h:calc(var(--karte-b) * 4 / 3);--held-mitte:calc(var(--hero-frei) - (100svh - 112px) / 2);--held-h:max(calc(var(--hero-frei) - 136px),calc(var(--held-mitte) + var(--karte-h) / 2));--held-x:calc(2 * var(--held-mitte) - var(--held-h));--held-e:min(var(--held-h),calc(2 * var(--held-mitte)));--knopf-min:calc(var(--held-e) - var(--hero-frei) + 20svh + 110px);height:var(--held-h);min-height:0;grid-template-rows:max(0px,var(--held-x)) minmax(0,1fr) auto minmax(max(102px,var(--knopf-min)),1fr) max(0px,calc(-1 * var(--held-x)))}
+  .lpv2-page--held-kompakt .lpv2-hero .lpv2-title{grid-row:3}
+  .lpv2-page--held-kompakt .lpv2-mobile-hero-cta{grid-row:4;align-self:start}
+  .lpv2-page--held-kompakt .lpv2-hero-media{width:var(--karte-b);margin-top:calc(var(--held-mitte) - var(--karte-h) / 2)}
 }
 
 /* ---------- AP-584: Puls-Animationen ab 481px ----------

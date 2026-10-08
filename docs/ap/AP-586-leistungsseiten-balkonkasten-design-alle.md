@@ -1,0 +1,222 @@
+# AP-586 — Leistungsseiten: Balkonkasten-Design am Desktop auf alle Seiten
+
+Stand 08.10.2026 · alle 38 Leistungsseiten (37 privat, 1 gewerbe) · nur Desktop ab 901 px. Das Handy bis
+900 px bleibt gleich.
+
+## Auftrag
+
+Ansage: „Wende nun die gesamte Designlogik, welche wir bei Balkonkastenbepflanzung haben, auf alle
+Leistungsseiten an … Wenn irgendwelche besonderen Probleme auftreten, melde mir das.“
+
+Übertragen werden:
+
+- **Rahmenbild-Held** (AP-565 mit Nachträgen):
+  - Titel in Baloo 2 700, weiß, Größe wie der Startseiten-Titel.
+  - Titel und Knopf (380 × 64) mittig zwischen Containerkante und Foto.
+  - Hochkant-Karte 3:4 bündig mit dem Rücklink, ohne Schatten; Blütenstempel, versetzter Rahmen.
+- **Textbereich „Trichter“ mit Blickführung** (AP-566/567 mit Nachträgen):
+  - zwei Spalten mit Trennlinie;
+  - H2 groß und grün, H3 weiß mit der Liste direkt darunter;
+  - Eintritts-Sequenz mit Blüten als Kette;
+  - Hinweis, Kachel und Knopf untereinander in 760 px;
+  - Abstände 96 / 41 / 96.
+
+**Entscheidungen 08.10.2026:**
+
+1. Ausrollen mit den vorhandenen Fotos. Die Karte schneidet per `object-fit` auf 3:4 zu.
+2. Baumkontrolle bekommt den neuen Held; der Textbereich bleibt in der bisherigen Spalte.
+   *Überholt am 08.10.2026: Baumkontrolle steht jetzt auch im Trichter, siehe Nachtrag unten.*
+
+## Umsetzung
+
+- **`render.mjs`:**
+  - `desktopHero` = `rahmenbild` und `desktopLayout` = `trichter` sind jetzt Standard für alle
+    editorial-v2-Seiten; eine Seite kann per JSON abweichen (Baumkontrolle hatte bis 08.10.2026
+    `"desktopLayout": "spalte"`).
+  - Titelzeilen: Die Klasse `lpv2-title-line--join` kommt nur an Wortfugen, also wo im h1 kein
+    Leerzeichen zwischen den Zeilen steht. Nur dort setzt das CSS den Bindestrich:
+    „Balkonkasten-“, „Sichtschutz-“, „Stubbenfräsen-“, „Ausgleichs-“, „Naturstein-“. Bisher stand der
+    Bindestrich fest hinter Zeile 1 und wäre bei „Zäune &“, „Bonsai /“ oder „Außergewöhnliches“ falsch
+    gewesen.
+  - Neues optionales JSON-Feld `titelTrennung` (z. B. `["Vorgarten|gestaltung"]`): ein weiches
+    Trennzeichen im Held-Titel. Es bricht nur, wenn das Wort nicht in die Titelbreite passt.
+- **`leistung-mobile.css`:**
+  - Die H3 darf umbrechen (bis 64 Zeichen).
+  - Die Liste steht ohne JS in Zeile 2; mit JS 18 px unter der H3, gemessen von `main.js`
+    (`--lpv2-list-top`, ResizeObserver).
+  - Ein Absatz nach dem Leistungsblock (Sturmnotdienst) steht unten wie der Hinweistext.
+  - Ohne Hinweistext (Findlinge) hält die Kachel den 96-px-Abstand zur Linie.
+  - Die AP-568-Spaltenregel nimmt den Held aus. Sonst bliebe er bei Baumkontrolle in der 32-rem-Spalte.
+  - `hyphens:manual` am Desktop-Titel, weil die Grundregel `hyphens:none` auch weiche Trennstellen
+    abschaltet.
+- **JSON:**
+  - `baumkontrolle.json`: `desktopLayout: spalte`.
+  - `titelTrennung` bei Außergewöhnliches, Nassschneidearbeiten, Saisonbepflanzung, Schredderarbeiten,
+    Verkehrssicherheit, Vorgartengestaltung, Wurzelentfernung, Objekt- & Grünflächenpflege.
+- **Cache:** `LEISTUNG_MOBILE_CSS_VERSION` und `JS_VERSION` gehoben.
+
+## Prüfung (headless Chrome)
+
+**Desktop, alle 38 Seiten × 901/1024/1280/1440/1920:**
+
+- **Held:**
+  - Titel und Knopf mittig (±1 px), Titelzeilen innerhalb der Titelbreite.
+  - Der Knopf liegt über der Puls-Linie, das Label passt in den Knopf.
+  - Die Karte ist bündig mit dem Rücklink.
+- **Textbereich:**
+  - Keine Überlappungen.
+  - H3 → Liste 18 px, Kachel → Knopf 41 px, Knopf → Galerie-Bilder 96 px.
+  - Kachel 760 px.
+- **Allgemein:** kein Überlauf, keine Konsolenfehler.
+- **Erster Lauf:** 8 Seiten mit zu langen Titelwörtern bei 1920 und teils 901 px. Gelöst mit
+  `titelTrennung` und `hyphens:manual`; danach ohne Befund.
+
+**Sequenz (1440, alle Trichter-Seiten):** Eintritt, alle Punkte hell, Abstände ≥ 0,18 s, H3 sichtbar,
+Trennlinie voll, Hinweis/Kachel/Knopf erschienen – **alle 37 Trichter-Seiten ok** (Abstände 175–180 ms im 10-ms-Messraster).
+
+**Handy (375/402/874, alle 38 Seiten):** Element-Vergleich gegen den Stand vorher (Lage, Größe, Deckkraft, Transform, Farbe) – **0 Abweichungen**. Neu sind nur Klassen und Attribute (`reveal`, `data-reveal-late`, `lpv2-title-line--join`), die bis 900 px nichts bewirken.
+
+## Gemeldete Probleme
+
+1. **Fotos zu klein für die Hochkant-Karte.**
+   - Die Karte ist bis zu 460 × 613 px groß. Für Retina-Schärfe braucht sie etwa 2 Bildpunkte je Pixel
+     (Faktor ≥ 2).
+   - Die Held-Fotos fast aller Seiten liegen nur in 640 px vor und sind meist quadratisch. Auf normalen
+     Bildschirmen sind sie ordentlich, auf Retina weich.
+   - **Saisonbepflanzung** (480 × 360) wird schon auf normalen Bildschirmen hochgerechnet.
+   - Abhilfe: je Seite ein großes Hochkant-Original (≥ 920 × 1227) als `desktopHeroPortrait` eintragen,
+     wie bei Balkonkasten.
+
+   | Seite | Foto | Größe | Faktor |
+   |---|---|---|---|
+| saisonbepflanzung | `kuebelbepflanzung-480.webp` | 480x360 | 0,59 |
+| aussergewoehnliches-garten | `aussergewoehnliches-garten-640.webp` | 640x640 | 1,04 |
+| baumarbeiten | `baumfaellung-warnschild-640.webp` | 640x640 | 1,04 |
+| beleuchtung | `gartenbeleuchtung-nacht-640.webp` | 640x640 | 1,04 |
+| bepflanzung | `pflanzarbeiten-bienenpflanze-640.webp` | 640x640 | 1,04 |
+| entwaesserung | `entwaesserung-rohrsystem-640.webp` | 640x640 | 1,04 |
+| erd-baggerarbeiten | `erd-baggerarbeiten-baggerarm-640.webp` | 640x640 | 1,04 |
+| ersatz-ausgleichspflanzungen | `ersatz-ausgleichspflanzungen-640.webp` | 640x640 | 1,04 |
+| feuerstellen | `feuerstellen-640.webp` | 640x640 | 1,04 |
+| findlinge-natursteineinfassungen | `findlinge-natursteinbeet-640.webp` | 640x640 | 1,04 |
+| gartengestaltung | `gartengestaltung-gartenanlage-640.webp` | 640x640 | 1,04 |
+| gartenpflege | `gartenpflege-team-640.webp` | 640x640 | 1,04 |
+| nassschneidearbeiten | `nassschneidearbeiten-640.webp` | 640x640 | 1,04 |
+| palmen-winterfest | `palmen-winterfest-schnee-640.webp` | 640x640 | 1,04 |
+| pflasterreinigung-fugenreinigung | `pflaster-fugenreinigung-wildkrautbuerste-640.webp` | 640x640 | 1,04 |
+| pool-whirlpool-umfeld | `pool-whirlpool-garten-640.webp` | 640x640 | 1,04 |
+| rodungsarbeiten | `rodungsarbeiten-minibagger-640.webp` | 640x640 | 1,04 |
+| rohdichs-grubengold | `rohdichs-grubengold-640.webp` | 640x640 | 1,04 |
+| schredderarbeiten | `schredderarbeiten-640.webp` | 640x640 | 1,04 |
+| sichtschutzbepflanzung | `sichtschutzbepflanzung-640.webp` | 640x640 | 1,04 |
+| stubbenfraeseneinsatz | `stubbenfraeseneinsatz-640.webp` | 640x640 | 1,04 |
+| terrasse-pflasterarbeiten | `pflasterarbeiten-baustelle-640.webp` | 640x640 | 1,04 |
+| terrassenbau | `terrassenbau-holzoptik-garten-640.webp` | 640x640 | 1,04 |
+| verkehrssicherheit | `verkehrssicherheit-640.webp` | 640x640 | 1,04 |
+| vermessung-lasertechnik | `vermessung-lasertechnik-640.webp` | 640x640 | 1,04 |
+| vorgarten | `vorgartengestaltung-findlinge-640.webp` | 640x640 | 1,04 |
+| wurzelentfernung | `rodungsarbeiten-640.webp` | 640x640 | 1,04 |
+| aussenanlagenpflege | `objekt-gruenflaechenpflege-mitarbeiter-640.webp` | 640x640 | 1,04 |
+| baumpflege | `baumpflege-640.webp` | 640x704 | 1,15 |
+| dachbegruenung | `dachbegruenung-640.webp` | 640x704 | 1,15 |
+| holzverkauf | `kaminholz-640.webp` | 640x704 | 1,15 |
+| rollrasen | `rasen-rollrasen-640.webp` | 640x704 | 1,15 |
+| sturmnotdienst | `baumfaellung-640.webp` | 640x704 | 1,15 |
+| teichbau | `teichbau-technik-640.webp` | 640x704 | 1,15 |
+| zaeune-sichtschutz | `zaeune-sichtschutz-640.webp` | 640x704 | 1,15 |
+| bonsai-formgehoelze | `formgehoelzgarten-vor-wohnhaus-71ca9ab-960.webp` | 960x720 | 1,17 |
+| baumkontrolle | `baumkontrolle-warnschild-20261003.jpg` | 1536x1024 | 1,67 |
+| balkonkastenbepflanzung | `balkonkastenbepflanzung-hero (Hochkant-Original)` | 800x1067 | 1,74 |
+2. **Baumkontrolle-Textbereich:** Drei Leistungsblöcke und ein Ablaufdiagramm passen nicht ins
+   Zwei-Spalten-Raster. Er bleibt in der bisherigen Spalte; eine eigene Lösung wäre ein Folge-AP.
+   *Gelöst am 08.10.2026, siehe Nachtrag „Baumkontrolle im Trichter“.*
+3. **Lange Titelwörter:** Acht Titel brechen bei großen Bildschirmen (1920) und teils bei 901 px mit
+   Bindestrich um, z. B. „Vorgarten-/gestaltung“. Die Größe bleibt dafür wie auf der Startseite.
+
+## Nachtrag 08.10.2026: Kompakter Held (zunächst nur Baumfällung)
+
+Ansage: Zwischen Held-Foto und Textbereich ist zu viel Raum; erst bei „Baumfällung“ verkleinern, nach
+Freigabe auf alle Seiten.
+
+- **Vorher:** Kartenunterkante → grüne H2 169 px (1024), 178 px (1440), 327 px (1920). Ursache: Der Held
+  war mindestens fensterhoch, die Karte ist nach oben gezogen bzw. bei 1920 auf 460 × 613 gedeckelt.
+- **Jetzt** (JSON `desktopHeldKompakt: true` → Body-Klasse `lpv2-page--held-kompakt`):
+  - Der Held endet an der Kartenunterkante (`min-height: 0`).
+  - Der Textbereich beginnt 96 px darunter.
+  - Der Held liegt eine Ebene höher (`z-index: 2`), damit Rahmen und Blütenstempel nicht vom
+    Hintergrund des Textbereichs überdeckt werden.
+- **Gemessen** bei 901/1024/1280/1440/1920:
+  - Karte → H2 96 px.
+  - Titel und Knopf mittig, der Knopf pulsiert im ersten Bild.
+  - Die Karte ist bündig mit dem Rücklink.
+  - Handy unverändert.
+- **Zum Ausrollen:** `desktopHeldKompakt` in `render.mjs` zum Standard machen.
+- **Nachtrag (Ansage 08.10.2026, „nicht so eng“):** Kartenunterkante → H2 jetzt **136 px** statt 96 px,
+  auf allen Breiten gemessen. Der Knopf pulsiert weiter im ersten Bild.
+- **Nachtrag (Ansage 08.10.2026, „nächste Sektion erst beim Scrollen“):** Der kompakte Held hat wieder
+  eine Mindesthöhe, `calc(var(--hero-frei) - 136px)`. Mit den 136 px Polster füllt er das freie Fenster.
+  - Gemessen: H2 und Trennlinie beginnen genau an der Fensterunterkante (900/1024: 775 bei 768/800/900/
+    1080/1440) bzw. darunter.
+  - Unter der Karte bleiben mindestens 136 px.
+  - Der Knopf pulsiert im ersten Bild bei allen Breiten bis 2560 × 1440.
+- **Nachtrag (Ansage 08.10.2026, „Foto mittig zwischen Kopf und Fensterrand, Titel mittig zum Foto“):**
+  - **Foto:** Der kompakte Held hat jetzt eine feste Höhe (`--held-h`). Das Foto steht mittig zwischen der
+    Kopfunterkante (112 px) und der Fensterunterkante (`--held-mitte`); seine Größe ist unverändert.
+  - **Titel:** Die Zeilen `max(0,x) 1fr auto 1fr max(0,−x)` legen die Titelmitte auf die Fotomitte. Der
+    Knopf hängt wie bisher 38 px darunter.
+  - **Gemessen** bei 901 / 1024 / 1280 / 1440 / 1920 / 2560:
+    - Abstand über und unter dem Foto: 130 / 92 / 102 / 103 / 177 / 357 px, oben und unten gleich.
+    - Titelmitte = Fotomitte (0 px Abweichung).
+    - H2 bei ≥ Fensterhöhe, Karte → H2 ≥ 136 px.
+    - Der Knopf pulsiert, Handy unverändert.
+- **Ausgerollt (Ansage 08.10.2026, „übertrage den kompakten Held auf alle Leistungsseiten“):**
+  - **Standard:** `desktopHeldKompakt` ist in `render.mjs` jetzt Standard. Eine Seite kann ihn per
+    `"desktopHeldKompakt": false` abwählen. Das Flag in `baumarbeiten.json` ist entfernt.
+  - **Knopfzeile:** Sie hat eine Mindesthöhe (`--knopf-min`). Bei zwei- bis dreizeiligen Titeln in
+    niedrigen Fenstern (1024 × 768, 1280 × 720, 1280 × 800) rutschte der Knopf sonst unter die
+    80-%-Linie von `cta-signal.js` und pulsierte nicht.
+    - Greift die Mindesthöhe, rückt der Titel nur so weit wie nötig über die Fotomitte, gemessen 6–38 px.
+      Der Knopf steht dann 8 px über der Linie.
+    - Sonst bleibt der Titel exakt mittig. Baumfällung ist nicht betroffen.
+  - **Nur Desktop (Ansage):** Alle Regeln stehen in `@media (min-width:901px)`, die Klasse kommt in
+    keinem Skript vor.
+  - **Handy-Vergleich:** alle 38 Seiten bei 375 / 402 / 874 / 768 / 900 px gegen den Referenzstand,
+    0 Abweichungen.
+  - **Desktop-Messung:** alle 38 Seiten bei 901 × 900, 1024 × 768, 1280 × 720, 1280 × 800, 1440 × 900,
+    1920 × 1080, 1920 × 1200 und 2560 × 1440.
+    - Foto mittig, der Knopf pulsiert.
+    - H2 erst unter der Falz; die Blickführungs-Animation startet erst beim Scrollen.
+    - Kein Quer-Scroll.
+
+## Nachtrag 08.10.2026: Baumkontrolle im Trichter
+
+Ansage: Baumkontrolle bekommt am Desktop das Design der anderen Leistungsseiten.
+- **Links:** „Zertifizierter Baumkontrolleur der Landwirtschaftskammer NRW“ mit Einstieg und dem Absatz
+  „Bestimmte Pathogene …“.
+- **Rechts:** „Folgendes können wir Ihnen anbieten“ mit Liste.
+- **Unter der Linie:** „Von der Kontrolle zur passenden Maßnahme“ mit dem Ablaufdiagramm, dann
+  „Maßnahmen und weitere Betreuung“, dann die Kachel.
+
+**Umsetzung:**
+- **JSON:** `"desktopLayout": "spalte"` ist aus `baumkontrolle.json` entfernt.
+- **CSS:** Abschnitte ohne Liste (`.lpv2-content-service--no-list`, nur Baumkontrolle) sind am Desktop
+  eigene Blöcke unter der Linie, mittig mit 760 px.
+  - Der erste steht in Zeile 5, 87,5 px unter der Linie, der zweite in Zeile 6 mit 56 px Abstand.
+  - Die Kachel steht in Zeile 7, 32 px unter dem Absatz.
+  - Das Diagramm ist 760 px breit. Die H3 dieser Blöcke wird nicht gedimmt, die Blöcke erscheinen
+    mit dem normalen Reveal.
+- **`main.js`:** Wort-Aufstieg und Listenabstand nehmen die H3 über der Liste
+  (`.lpv2-content-service:not(.lpv2-content-service--no-list) h3`); vorher war es die erste H3 der
+  Sektion. Auf den anderen Seiten ist das dieselbe H3.
+
+**Gemessen** bei 1024 / 1280 / 1440 / 1920:
+- Lage:
+  - Keine Überlappungen, die H2 läuft nicht über, kein Quer-Scroll.
+  - Die Trennlinie reicht über die linke Spalte.
+- Bewegung:
+  - Die Animation startet erst beim Scrollen; die rechte H3 steigt Wort für Wort auf, die vier Punkte
+    schalten nacheinander.
+  - Alle Blöcke unter der Linie werden sichtbar; mit reduzierter Bewegung steht alles sofort.
+- Andere Seiten: Auf Balkonkasten, Baumfällung und Erd-Bagger läuft die Liste wie bisher.
+- **Nachtrag (Ansage 08.10.2026):** Beide Überschriften unter der Linie („Von der Kontrolle …“, „Maßnahmen …“)
+  stehen mittig. Gemessen bei 1024 / 1440 / 1920: links und rechts gleich viel Abstand; Handy unverändert.

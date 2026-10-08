@@ -2695,3 +2695,17 @@ eine Sequenz:
 
 Reduzierte Bewegung: alles sofort. Handy unverändert. Details:
 `docs/ap/AP-567-balkonkasten-blickfuehrung-choreografie.md`.
+
+**AP-586 — Leistungsseiten: Balkonkasten-Design am Desktop auf alle Seiten (08.10.2026).**
+
+- **Umfang:** Rahmenbild-Held (AP-565) und Textbereich mit Blickführung (AP-566/567) gelten jetzt
+  standardmäßig für alle 38 Leistungsseiten; Ausnahme ist der Textbereich von Baumkontrolle.
+- **Fotos:** Die vorhandenen Fotos werden auf 3:4 zugeschnitten.
+- **Titel:** Bindestrich nur an Wortfugen, weiche Trennstellen für lange Titelwörter.
+- **Textbereich:**
+  - Die H3 darf umbrechen.
+  - Die Liste misst sich per JS unter die H3.
+  - Ein Absatz nach der Liste (Sturmnotdienst) wandert nach unten.
+- **Handy:** unverändert.
+
+Details und Problemliste: `docs/ap/AP-586-leistungsseiten-balkonkasten-design-alle.md`.
