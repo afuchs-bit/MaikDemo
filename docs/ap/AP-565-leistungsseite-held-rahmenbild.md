@@ -550,3 +550,7 @@ Gemessen bei 901 bis 1920 px:
 - **Ansage 07.10.2026 (später):** Der Knopf unter dem Titel ist etwas kleiner: 380 × 64 statt 440 × 74 px,
   Beschriftung 16 statt 18 px, Pfeilfeld 60 × 40 (Bild 44 px), Rundung 14 px. Er steht weiter mittig unter dem
   Titel und pulsiert im ersten Bild.
+- **Ansage 08.10.2026:** Der dunkelgrüne Schleier um das Held-Foto ist entfernt. Ursache war der doppelte
+  `box-shadow` der Karte: schwarzer Weichschatten `0 40px 70px -36px rgba(0,0,0,.95)` und grüner Schein
+  `0 30px 60px -40px rgba(93,224,35,.55)`. Jetzt gilt `box-shadow:none`. Rahmen, Blütenstempel und der
+  leichte Verlauf auf dem Foto selbst bleiben. Handy unverändert.

@@ -985,6 +985,8 @@
   /* 3 - "Alle Leistungen": seit AP-581 der einheitliche Ruecklink ueber dem Held
      (.lpv2-ruecklink-desktop); die Leiste im Held ist dort ausgeblendet. */
 
+  /* Ansage 08.10.2026: Die Karte traegt keinen Schatten mehr - der schwarze Weichschatten
+     (0 40px 70px) und der gruene Schein darunter (0 30px 60px) lagen als dunkelgruener Schleier ums Foto. */
   /* Nachtrag 07.10.2026 (Ansage): Titel und Knopf mittig zwischen Containerkante und Foto, Text
      zentriert (wie "Ueber uns", AP-585) - Spalte 3 ist dafuer auto (so breit wie die Karte), Spalte 2
      endet an der Fotokante; Kartenbreite mit 44vw statt 100% (kein Prozentmass in auto-Spalten).
@@ -1025,7 +1027,7 @@
   /* 6 - Spalte 3: die Karte, hoechstens 460px breit und so hoch, dass sie mit 32px Luft oben
      und unten ins freie Fenster passt (niedrige Bildschirme). Figure wird 3:4, Bild per <source media> im Hochkant-Derivat,
      versetzter Rahmen im Pseudoelement (title-above hatte ::before ausgeblendet). */
-  .lpv2-page--desktop-rahmenbild .lpv2-hero-media{grid-column:3;grid-row:1 / -1;align-self:start;justify-self:end;position:relative;z-index:2;width:min(460px,calc((var(--hero-frei) - 64px) * .75),44vw);height:auto;aspect-ratio:3 / 4;margin:calc(-1 * (34px + clamp(28px,3vw,40px))) 0 0;overflow:visible;border-radius:26px 7px 26px 7px;background:transparent;box-shadow:0 40px 70px -36px rgba(0,0,0,.95),0 30px 60px -40px rgba(93,224,35,.55)}
+  .lpv2-page--desktop-rahmenbild .lpv2-hero-media{grid-column:3;grid-row:1 / -1;align-self:start;justify-self:end;position:relative;z-index:2;width:min(460px,calc((var(--hero-frei) - 64px) * .75),44vw);height:auto;aspect-ratio:3 / 4;margin:calc(-1 * (34px + clamp(28px,3vw,40px))) 0 0;overflow:visible;border-radius:26px 7px 26px 7px;background:transparent;box-shadow:none}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media::before{content:'';display:block;position:absolute;inset:0;z-index:-1;transform:translate(12px,12px);border:1.5px solid var(--home-lime,#8cc63f);border-radius:inherit;background:none;opacity:.9;pointer-events:none}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media picture{position:absolute;inset:0;overflow:hidden;border-radius:inherit}
   .lpv2-page--desktop-rahmenbild .lpv2-hero-media img:not(.lpv2-hero-brand){width:100%;height:100%;object-fit:cover;object-position:40% 55%}
