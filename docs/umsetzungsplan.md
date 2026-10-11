@@ -964,6 +964,8 @@ Dieser Abschnitt wurde nach Abgleich des Plans mit dem tatsächlichen Repository
   `assets/img/logo/logo.svg`. Diese Datei **existiert nicht** — vorhanden ist nur
   `assets/img/logo/favicon.svg`. Vor Verwendung entweder das echte Logo ablegen oder
   das `logo`-Feld weglassen. Sonst entsteht derselbe Fehler, den AP-06 gerade behebt.
+  **Erledigt in AP-601:** Das `logo`-Feld verweist auf das echte Logo
+  `assets/img/logo/maik-rohdich-logo.png` (527 × 150 px).
 
 - **AP-01 / Teil F:** `admin/index.html` trägt bereits `noindex` und **muss es dauerhaft
   behalten** (CMS-Login). Die Checklistenzeile „Alle noindex-Tags aus AP-01 entfernt"

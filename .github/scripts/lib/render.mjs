@@ -207,6 +207,25 @@ export function truncate(s, n = 155) {
   return (lastSpace > 40 ? cut.slice(0, lastSpace) : cut).trimEnd() + '…';
 }
 
+// AP-601: Projekttitel ≤ 60 Zeichen. Suffix nur, wenn er passt. Das Präfix
+// „Projekt:“ hält die Titel von den Leistungsseiten fern – ohne es hieße das
+// Projekt genauso wie /privatkunden/leistungen/gartengestaltung/.
+export function projektTitel(h1) {
+  const marke = ' | Maik Rohdich';
+  const basis = `Projekt: ${String(h1 || '').trim().replace(/\s+/g, ' ')}`;
+  if ((basis + marke).length <= 60) return basis + marke;
+  return basis.length <= 60 ? basis : truncate(basis, 60);
+}
+
+// AP-601: Unter 100 Zeichen einen festen, faktenfreien Zusatz anhängen. Den
+// Schlusspunkt nur dann abschneiden – längere Texte bleiben wie im CMS.
+export function projektBeschreibung(text) {
+  const voll = String(text || '').trim().replace(/\s+/g, ' ');
+  if (voll.length >= 100) return truncate(voll, 155);
+  const zusatz = '. Ausgeführt von Maik Rohdich Garten- und Landschaftsbau.';
+  return truncate(voll.replace(/[.\s]*$/, '') + zusatz, 155);
+}
+
 // ---------- Badge-Regel (identisch zu projekte-card.js) ----------
 export function badge(kundentyp) {
   const gewerbe = Array.isArray(kundentyp) && kundentyp.includes('gewerbe');
@@ -423,9 +442,9 @@ export async function renderProjektPage(opts) {
     slug: esc(slug),
     cssVersion: escAttr(cssVersion),
     jsVersion: escAttr(jsVersion),
-    title: esc(`${h1} — Maik Rohdich Garten- und Landschaftsbau`),
-    ogTitle: escAttr(`${h1} — Maik Rohdich Garten- und Landschaftsbau`),
-    description: escAttr(truncate(project.beschreibung, 155)),
+    title: esc(projektTitel(h1)),
+    ogTitle: escAttr(projektTitel(h1)),
+    description: escAttr(projektBeschreibung(project.beschreibung)),
     canonical: escAttr(canonical),
     ogImage: escAttr(absUrl(cover.bild || '')),
     lcpPreload,

@@ -71,7 +71,7 @@ liefert keine Treffer mehr im Markup.
       und `grep -rn "2345678\|1234567\|0171 / 234\|02323 / 12" --include="*.html" .`
 - [ ] `docs/offene-punkte.md` ist leer oder vom Auftraggeber freigegeben
 - [ ] Impressum und Datenschutz mit echten Texten
-- [ ] Jede Seite hat genau ein `<h1>`, ein Canonical, eine Meta-Description
+- [ ] `npm run check:golive -- --root _site --ziel live` läuft ohne Fehler (AP-601)
 - [ ] Keine verwaiste Seite — alles in maximal drei Klicks erreichbar
 - [ ] Öffnungszeiten identisch in Website, Schema und Google-Unternehmensprofil
 
