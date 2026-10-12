@@ -31,10 +31,10 @@
     background: transparent;
     box-shadow: none;
     color: #171916;
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: clamp(.9rem, 4.25vw, 1.0625rem);
+    font-family: "Maik Comic Neue", cursive;
+    font-size: calc((clamp(.9rem, 4.25vw, 1.0625rem)) * var(--type-handwriting-cta-scale));
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .025em;
     text-align: left;
@@ -54,9 +54,9 @@
     flex: 1 1 0;
     min-width: 0;
     padding-right: 0;
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-family: "Maik Comic Neue", cursive;
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .018em;
     text-transform: uppercase;
@@ -73,7 +73,7 @@
      Pfeilkapsel. So ist der sichtbare Text unabhaengig von seiner Laenge immer
      optisch zwischen diesen beiden Kanten zentriert. */
   html.home-theme-dark .maik-cta:not(.maik-cta--compact) .maik-cta__label {
-    font-size: clamp(.82rem, 3.9vw, 1rem);
+    font-size: var(--type-cta-label-size);
   }
 
   /* Der Gartenwunsch-CTA lag bislang im schmaleren Innencontainer. Er wird nur
@@ -233,7 +233,7 @@
     min-height: 44px;
     height: 44px;
     padding: 4px 7px 4px 0;
-    font-size: clamp(.8125rem, 3.6vw, .875rem);
+    font-size: calc((clamp(.8125rem, 3.6vw, .875rem)) * var(--type-handwriting-cta-scale));
   }
 
   html.home-theme-dark .maik-cta--compact .mobile-proof-gallery__link-flower {
@@ -583,10 +583,10 @@
   }
 
   :is(.mobile-social-proof, .private-request-paths) .mobile-proof-request__label {
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: clamp(.9rem, 4.25vw, 1.0625rem);
+    font-family: "Maik Comic Neue", cursive;
+    font-size: var(--type-cta-label-size);
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .025em;
     text-transform: uppercase;
@@ -628,10 +628,10 @@
     background: transparent;
     box-shadow: none;
     color: #171916;
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: clamp(.9rem, 4.25vw, 1.0625rem);
+    font-family: "Maik Comic Neue", cursive;
+    font-size: calc((clamp(.9rem, 4.25vw, 1.0625rem)) * var(--type-handwriting-cta-scale));
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .025em;
     text-align: left;
@@ -651,9 +651,9 @@
     flex: 1 1 0;
     min-width: 0;
     padding-right: 0;
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-family: "Maik Comic Neue", cursive;
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .018em;
     text-transform: uppercase;
@@ -666,7 +666,7 @@
   }
 
   html.home-theme-dark :is(.mobile-social-proof, .private-request-paths) .maik-cta:not(.maik-cta--compact) .maik-cta__label {
-    font-size: clamp(.82rem, 3.9vw, 1rem);
+    font-size: var(--type-cta-label-size);
   }
 
   html.home-theme-dark :is(.mobile-social-proof, .private-request-paths) .maik-cta--long {
@@ -827,7 +827,7 @@
     min-height: 44px;
     height: 44px;
     padding: 4px 7px 4px 0;
-    font-size: clamp(.8125rem, 3.6vw, .875rem);
+    font-size: calc((clamp(.8125rem, 3.6vw, .875rem)) * var(--type-handwriting-cta-scale));
   }
 
   html.home-theme-dark :is(.mobile-social-proof, .private-request-paths) .maik-cta--compact .mobile-proof-gallery__link-flower {
@@ -939,7 +939,7 @@
   }
 
   html.home-theme-dark .mobile-social-proof .maik-cta.maik-cta--long .maik-cta__label {
-    font-size: 16px;
+    font-size: var(--type-cta-label-size);
     white-space: normal;
     text-wrap: balance;
   }
@@ -969,10 +969,10 @@
     background: transparent;
     box-shadow: none;
     color: #171916;
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: clamp(15px, 1.2vw, 18px);
+    font-family: "Maik Comic Neue", cursive;
+    font-size: var(--type-cta-label-size);
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .025em;
     text-decoration: none;
@@ -1122,7 +1122,7 @@
 }
 
 @media (max-width: 900px) and (orientation: landscape) {
-  html.home-theme-dark .mr-ueber__mehr.maik-cta { font-size: 13px; padding-right: 10px; }
+  html.home-theme-dark .mr-ueber__mehr.maik-cta { font-size: calc((13px) * var(--type-handwriting-cta-scale)); padding-right: 10px; }
   html.home-theme-dark .mr-ueber__mehr .maik-cta__label { padding-left: 46px; left: 0; }
   html.home-theme-dark .mr-ueber__mehr .maik-cta__brand-icon { left: 12px; height: 28px; }
   html.home-theme-dark .mr-ueber__mehr .maik-cta__arrow { width: 44px; height: 32px; margin-right: 0; }
@@ -1161,10 +1161,10 @@
     flex: 1 1 0;
     min-width: 0;
     padding-right: 0;
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: 1rem;
+    font-family: "Maik Comic Neue", cursive;
+    font-size: var(--type-cta-label-size);
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .018em;
     text-transform: uppercase;

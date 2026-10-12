@@ -1,0 +1,94 @@
+[
+  {
+    "file": "comic-neue-italic-400.woff2",
+    "fonttools_version": "4.66.1",
+    "weight": 400,
+    "italic_selection": true,
+    "head_italic": true,
+    "italic_angle": -12.0,
+    "glyphs": 319,
+    "required_characters": {
+      "ä": {
+        "codepoint": "U+00E4",
+        "glyph": "adieresis"
+      },
+      "ö": {
+        "codepoint": "U+00F6",
+        "glyph": "odieresis"
+      },
+      "ü": {
+        "codepoint": "U+00FC",
+        "glyph": "udieresis"
+      },
+      "Ä": {
+        "codepoint": "U+00C4",
+        "glyph": "Adieresis"
+      },
+      "Ö": {
+        "codepoint": "U+00D6",
+        "glyph": "Odieresis"
+      },
+      "Ü": {
+        "codepoint": "U+00DC",
+        "glyph": "Udieresis"
+      },
+      "ß": {
+        "codepoint": "U+00DF",
+        "glyph": "germandbls"
+      },
+      "²": {
+        "codepoint": "U+00B2",
+        "glyph": "uni00B2"
+      }
+    },
+    "copyright": "Copyright 2014 The Comic Neue Project Authors (https://github.com/crozynski/comicneue)",
+    "version": "Version 2.003;hotconv 1.0.109;makeotfexe 2.5.65596",
+    "postscript": "ComicNeue-Italic"
+  },
+  {
+    "file": "comic-neue-italic-700.woff2",
+    "fonttools_version": "4.66.1",
+    "weight": 700,
+    "italic_selection": true,
+    "head_italic": true,
+    "italic_angle": -12.0,
+    "glyphs": 319,
+    "required_characters": {
+      "ä": {
+        "codepoint": "U+00E4",
+        "glyph": "adieresis"
+      },
+      "ö": {
+        "codepoint": "U+00F6",
+        "glyph": "odieresis"
+      },
+      "ü": {
+        "codepoint": "U+00FC",
+        "glyph": "udieresis"
+      },
+      "Ä": {
+        "codepoint": "U+00C4",
+        "glyph": "Adieresis"
+      },
+      "Ö": {
+        "codepoint": "U+00D6",
+        "glyph": "Odieresis"
+      },
+      "Ü": {
+        "codepoint": "U+00DC",
+        "glyph": "Udieresis"
+      },
+      "ß": {
+        "codepoint": "U+00DF",
+        "glyph": "germandbls"
+      },
+      "²": {
+        "codepoint": "U+00B2",
+        "glyph": "uni00B2"
+      }
+    },
+    "copyright": "Copyright 2014 The Comic Neue Project Authors (https://github.com/crozynski/comicneue)",
+    "version": "Version 2.003;hotconv 1.0.109;makeotfexe 2.5.65596",
+    "postscript": "ComicNeue-BoldItalic"
+  }
+]

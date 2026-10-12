@@ -851,10 +851,10 @@
   }
 
   .private-contact [data-anf-senden] .anf-senden__label {
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: clamp(.9rem, 4.25vw, 1.0625rem);
+    font-family: "Maik Comic Neue", cursive;
+    font-size: calc((clamp(.9rem, 4.25vw, 1.0625rem)) * var(--type-handwriting-cta-scale));
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .025em;
     text-transform: uppercase;

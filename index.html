@@ -20,11 +20,13 @@ html.home-theme-dark body { background-color: #1B1E19; }
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rohdich.de/" />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="icon" href="assets/img/logo/favicon.png?v=20261007a" type="image/png" sizes="64x64" />
-<!-- AP-F16: Font- und Bild-Preloads aus der Hero-Arbeit von davidk. Outfit und Inter
-     entfallen hier: home-dark.css setzt --display/--body innerhalb von
-     html.home-theme-dark auf Nunito, und diese Datei laedt nur die Startseite.
-     Auf allen Unterseiten gelten Outfit/Inter ueber styles.css unveraendert. -->
+<link rel="icon" href="assets/img/logo/favicon-32-20261007b.png" type="image/png" sizes="32x32" />
+<link rel="icon" href="assets/img/logo/favicon-64-20261007b.png" type="image/png" sizes="64x64" />
+<link rel="icon" href="assets/img/logo/favicon-20261007b.ico" type="image/x-icon" sizes="16x16 32x32 48x48 64x64" />
+<link rel="apple-touch-icon" href="assets/img/logo/apple-touch-icon-20261007b.png" sizes="180x180" />
+<!-- Nunito ist die gemeinsame Grundschrift. Die Startseite verwendet Nunito
+     auch fuer --display; Outfit bleibt fuer die vorhandenen Ueberschriften
+     der Unterseiten erhalten. -->
 <link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/baloo2-700-latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- LCP: Foto im oberen Homepage-Hero vorab laden. -->
@@ -36,18 +38,18 @@ html.home-theme-dark body { background-color: #1B1E19; }
       href="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp"
       imagesrcset="assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp 1023w, assets/img/hero/hero-fahrzeug-palmengarten-v10-mobile-2046-q92.webp 2046w"
       imagesizes="55vw" media="(min-width: 901px), (max-width: 900px) and (orientation: landscape)" fetchpriority="high" />
-<link rel="stylesheet" href="assets/css/styles.css?v=20261007d" />
-<link rel="stylesheet" href="assets/css/header-home.css?v=20261007d" />
-<link rel="stylesheet" href="assets/css/home-dark.css?v=20261007d" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20261009cn3" />
+<link rel="stylesheet" href="assets/css/header-home.css?v=20261007h" />
+<link rel="stylesheet" href="assets/css/home-dark.css?v=20261009cn3" />
 <link rel="stylesheet" href="assets/css/footer-kontakt.css?v=20261007a" />
-<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20261005i" />
-<link rel="stylesheet" href="assets/css/privat-form.css?v=20261004d" />
+<link rel="stylesheet" href="assets/css/mobile-social-proof.css?v=20261008cn1" />
+<link rel="stylesheet" href="assets/css/privat-form.css?v=20261009cn3" />
 <link rel="stylesheet" href="assets/css/form-trust-card.css?v=20260923d" />
-<link rel="stylesheet" href="assets/css/anfrage.css?v=20261004b" />
+<link rel="stylesheet" href="assets/css/anfrage.css?v=20261008cn1" />
 <link rel="stylesheet" href="assets/css/merge-light.css?v=20260902g" />
-<link rel="stylesheet" href="assets/css/cta-family.css?v=20260923a" />
-<link rel="stylesheet" href="assets/css/cta-family-home.css?v=20261007d" />
-<link rel="stylesheet" href="assets/css/home-process.css?v=20261007d" />
+<link rel="stylesheet" href="assets/css/cta-family.css?v=20261008cn1" />
+<link rel="stylesheet" href="assets/css/cta-family-home.css?v=20261008cn1" />
+<link rel="stylesheet" href="assets/css/home-process.css?v=20261009cn3" />
 <link rel="stylesheet" href="assets/css/home-spacing.css?v=20261004c" />
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
@@ -207,29 +209,6 @@ html.home-theme-dark body { background-color: #1B1E19; }
       </g>
 
       <!-- ===== Wordmark (right of flowers) ===== -->
-      <g font-family="Outfit, 'Brush Script MT', cursive, sans-serif" font-style="italic" paint-order="stroke fill">
-        <!-- top line: "Garten- und Landschaftsbau" -->
-        <text x="200" y="38"
-              font-size="22" font-weight="700"
-              fill="#FFED00" stroke="#315200" stroke-width="2.4"
-              stroke-linejoin="round" letter-spacing="0.4">
-          Garten- und Landschaftsbau
-        </text>
-        <!-- center line: "MAIK ROHDICH" – big bold script -->
-        <text x="198" y="92"
-              font-size="58" font-weight="800"
-              fill="#5a8a1c" stroke="#1d3000" stroke-width="2.6"
-              stroke-linejoin="round" letter-spacing="0.2">
-          MAIK ROHDICH
-        </text>
-        <!-- bottom line: "Gartenbaumeister" -->
-        <text x="200" y="124"
-              font-size="22" font-weight="700"
-              fill="#FFED00" stroke="#315200" stroke-width="2.4"
-              stroke-linejoin="round" letter-spacing="0.4">
-          Gartenbaumeister
-        </text>
-      </g>
     </symbol>
     <symbol id="maik-cta-shape" viewBox="0 0 360 64">
       <path d="M14 0H316Q322 0 328 3L352 13Q360 16 360 24V50Q360 64 346 64H14Q0 64 0 50V14Q0 0 14 0Z" vector-effect="non-scaling-stroke"/>
@@ -418,6 +397,12 @@ html.home-theme-dark body { background-color: #1B1E19; }
   </div>
 </header>
 <!-- BUILD:site-header:end -->
+<!-- AP-587: Sprunglinks aus Unterseiten starten vor dem ersten Zeichnen kompakt. -->
+<script>
+if (location.hash && location.hash !== '#top' && matchMedia('(max-width: 900px)').matches) {
+  document.getElementById('siteHeader').classList.add('is-home-condensed');
+}
+</script>
 
 <main id="top">
 
@@ -2518,7 +2503,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
 <script src="assets/js/cta-signal.js?v=20260914a" defer></script>
 <script src="assets/js/privat-form.js?v=20261006a" defer></script>
 <script src="assets/js/anfrage.js?v=20261004c" defer></script>
-<script src="assets/js/home-header-morph.js?v=20261006c" defer></script>
+<script src="assets/js/home-header-morph.js?v=20261007b" defer></script>
 <script src="assets/js/elfsight-mobile-header.js?v=20261006f" defer></script>
 <script src="assets/js/ueber-video.js?v=20260905b" defer></script>
 </body>

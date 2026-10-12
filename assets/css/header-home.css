@@ -9,6 +9,9 @@
   src: url("../fonts/nunito-latin.woff2") format("woff2");
 }
 
+/* Dieselbe Scrollbarreserve auf kurzen und langen Seiten sowie bei offenem
+   Menue; klassische Scrollleisten duerfen die Kopfbreite nicht veraendern. */
+html { scrollbar-gutter: stable; }
 .site-header { --header-action-gap: 6px; }
 .site-header,
 .site-header.is-scrolled {
@@ -146,6 +149,10 @@
 .site-header .menu-item--sub:not(.is-open) .submenu-caret { transform: none; }
 
 @media (max-width: 900px) {
+  .site-header {
+    --header-logo-width: clamp(144px, calc(100vw - 188px), 203px);
+    --header-logo-height: clamp(46px, 16vw, 63px);
+  }
   body { padding-top: calc(var(--mobile-header-h, 82px) + env(safe-area-inset-top, 0px)); }
   .site-header, .site-header.is-scrolled {
     position: fixed;
@@ -155,15 +162,36 @@
     width: 100%;
     transition: border-color .18s ease, padding .18s ease;
   }
-  .site-header > .header-inner.container {
+  /* AP-587: Dieselbe Geometrie auf Unterseiten und nach dem Startseiten-Morph.
+     Auch ein transparenter Kartenrand wuerde Logo/Icons um 1px verschieben. */
+  .site-header > .header-inner.container,
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed > .header-inner.container {
     width: min(calc(100% - 32px), 1360px);
     max-width: 1360px;
+    min-height: calc(var(--mobile-header-h, 82px) - 1px);
     margin-inline: auto;
     padding: 8px 0;
+    border: 0;
   }
   /* Die erste Gridzeile behaelt ihre Hoehe, wenn das Menue eine zweite
      Zeile hinzufuegt. Sonst springen die Icons bei einem kleinen Logo hoch. */
-  .site-header .brand { min-height: 65px; }
+  .site-header .brand,
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand {
+    min-height: calc(var(--mobile-header-h, 82px) - 17px);
+  }
+  .site-header .brand-logo,
+  .site-header.is-scrolled .brand-logo,
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand-logo,
+  html.home-theme-dark.home-header-morph .site-header.is-home-condensed.is-scrolled .brand-logo {
+    width: var(--header-logo-width);
+    height: var(--header-logo-height);
+  }
+  /* Ein direkter Sprunglink initialisiert den kompakten Zustand vor dem
+     ersten Zeichnen. Erst danach darf der regulaere Scroll-Morph animieren. */
+  html.home-theme-dark.home-header-morph:not(.home-header-ready) .site-header,
+  html.home-theme-dark.home-header-morph:not(.home-header-ready) .site-header * {
+    transition: none !important;
+  }
   /* Auf dem Handy sitzt der Menueknopf rechts neben dem Telefon. Das Panel
      endet an derselben Kante wie die gesamte Aktionsgruppe, auch bei 320px. */
   .site-header .call-popover { right: calc(-44px - var(--header-action-gap)); }
@@ -351,7 +379,10 @@
 }
 
 @media (max-width: 340px) {
-  .site-header { --header-action-gap: 4px; }
+  .site-header {
+    --header-action-gap: 4px;
+    --header-logo-width: clamp(144px, calc(100vw - 176px), 203px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

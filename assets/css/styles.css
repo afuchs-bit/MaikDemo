@@ -41,42 +41,45 @@
 
 /* ============================================================
    Schriften selbst gehostet (AP-26) – kein Google-CDN.
-   Outfit und Inter sind Variable Fonts: je eine WOFF2-Datei pro
-   Subset deckt alle Schnitte ab (font-weight: 100 900).
-   latin deckt Deutsch inkl. Umlaute/ß ab; latin-ext als Ergaenzung.
+   Nunito ist die gemeinsame variable Grundschrift fuer Fliesstexte und
+   die bisherigen Outfit-Texte; Groessen, Schnitte und Abstaende bleiben.
+   latin deckt Deutsch inkl. Umlaute/ß ab.
    Lizenz: SIL Open Font License, Self-Hosting zulaessig.
    ============================================================ */
 @font-face {
-  font-family: "Outfit";
+  font-family: "Nunito";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 200 1000;
   font-display: swap;
-  src: url(../fonts/outfit-latin.woff2) format("woff2");
+  src: url(../fonts/nunito-latin.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+/* Baloo 2 wird auch fuer die Seitenkoepfe von Impressum und Datenschutz genutzt. */
 @font-face {
-  font-family: "Outfit";
+  font-family: "Baloo 2";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400 600;
   font-display: swap;
-  src: url(../fonts/outfit-latin-ext.woff2) format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url(../fonts/inter-latin.woff2) format("woff2");
+  src: url(../fonts/baloo2-variable-latin.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+/* Comic Neue 2.003: unveraenderte offizielle WOFF2-Dateien, OFL 1.1.
+   Nur die bisherigen Handschrifttexte waehlen diese Familie. Keine local()-Quelle.
+   Herkunft, Lizenz und Dateipruefsummen: docs/schriftarten-20261008.md. */
 @font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 100 900;
+  font-family: "Maik Comic Neue";
+  font-style: italic;
+  font-weight: 400;
   font-display: swap;
-  src: url(../fonts/inter-latin-ext.woff2) format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url("../fonts/comic-neue-italic-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Maik Comic Neue";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/comic-neue-italic-700.woff2") format("woff2");
 }
 
 :root {
@@ -161,8 +164,8 @@
   --home-dark-line-soft: rgba(255,255,255,.08);
 
   /* Type */
-  --display: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --body:    "Inter",  system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:    "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* Rollenbasierte Typografie: gleiche Funktion = gleiche Darstellung. */
   --type-marketing-h1-size: clamp(2.9rem, 4.45vw, 4.75rem);
@@ -173,6 +176,22 @@
   --type-module-title-size: clamp(1.05rem, 1.55vw, 1.3rem);
   --type-hero-lead-size: clamp(1.05rem, 1.22vw, 1.2rem);
   --type-section-lead-size: clamp(1rem, 1.3vw, 1.125rem);
+  --type-body-copy-size: 18px;
+  --type-body-copy-weight: 500;
+  --type-project-copy-size: 15px;
+  /* Comic Neue has a lower cap height than the former system handwriting.
+     Keep the button geometry and tune only its lettering (see font report). */
+  --type-handwriting-cta-scale: 1.14;
+  --type-handwriting-title-scale: 1.08;
+  /* Match the former uppercase signs and already-bold handwriting metrics. */
+  --type-handwriting-bold-scale: 1.14;
+  /* Long service-hero labels need a smaller correction to retain their line breaks. */
+  --type-handwriting-long-cta-scale: 1.10;
+  /* Genuine Bold Italic for non-button handwriting, matching the former visual weight. */
+  --type-handwriting-title-weight: 700;
+  --type-cta-label-size: calc(clamp(.82rem, 3.9vw, 1rem) * var(--type-handwriting-cta-scale));
+  --type-cta-compact-label-size: calc(.875rem * var(--type-handwriting-cta-scale));
+  --type-cta-label-weight: 700;
 
   /* Einheitlicher vertikaler Rhythmus. */
   --space-section: clamp(52px, 7.5vw, 96px);
@@ -1161,32 +1180,36 @@ p  { margin: 0; }
    und der Zuschnitt passt sich der Spaltenbreite an. Ohne Unterstuetzung fuer
    -webkit-line-clamp steht schlicht der ganze Text da - kein kaputter Zustand. */
 .project-body p {
-  color: var(--ink-2); font-size: .95rem;
+  color: var(--ink-2); font-size: var(--type-project-copy-size);
+  font-weight: 400;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-/* Affordanz unter dem gekuerzten Text. Bewusst ein <span> und KEIN <a>: die ganze
-   Karte ist bereits ueber .card-open verlinkt (inset:0, z-index:2). Ein zweiter
-   Link laege darunter, waere nicht anklickbar und kuendigte dasselbe Ziel ein
-   zweites Mal an. Das Markup traegt deshalb aria-hidden - .card-open nennt die
-   Aktion bereits im aria-label. */
-.card-more {
+/* Die ganze Projektkachel ist ueber .card-open bedienbar. Die sichtbare
+   Aktionszeile ist deshalb kein zweiter Link und bleibt aria-hidden. */
+main .project-card .card-more {
   align-self: flex-start;
-  /* margin-top:auto statt eines festen Abstands: die Karten im Raster sind gleich
-     hoch, ein Text mit zwei statt drei Zeilen rueckte die Zeile sonst sichtbar
-     nach oben. padding-top haelt den Mindestabstand, wenn der Text voll ausfuellt. */
   margin-top: auto;
   padding-top: 8px;
-  font-size: .82rem; font-weight: 600;
-  color: var(--green-500);
-  border-bottom: 1px solid transparent;
-  transition: border-color .2s var(--ease);
+  font-family: "Maik Comic Neue", cursive;
+  font-size: var(--type-cta-compact-label-size);
+  font-style: italic;
+  font-weight: var(--type-cta-label-weight);
+  /* Restore the former action-row width and line box without shrinking its glyphs. */
+  line-height: calc(1.6 / var(--type-handwriting-cta-scale));
+  letter-spacing: -.03em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0;
+  transition: color .2s var(--ease);
 }
+/* Wie bei den Leistungs-Kacheln: helle Schrift, Gruen beim Maus-Hover,
+   kein Unterstrich. Touch-Geraete behalten die helle Beschriftung. */
 @media (hover: hover) and (pointer: fine) {
-  .project-card:hover .card-more { border-bottom-color: var(--green-500); }
+  main .project-card:hover .card-more { color: var(--mobile-logo-green); }
 }
 
 /* ---------- FAQ ---------- */
@@ -2929,7 +2952,7 @@ body.has-lightbox { overflow: hidden; }
 }
 .lightbox-caption { grid-area: cap; text-align: center; color: #fff; }
 .lightbox-title { color: #fff; font-size: 1.05rem; margin: 0; }
-.lightbox-desc { color: rgba(255,255,255,.82); font-size: .92rem; margin: 4px 0 0; }
+.lightbox-desc { color: rgba(255,255,255,.82); font-size: var(--type-project-copy-size); font-weight: 400; margin: 4px 0 0; }
 .lightbox-counter { display: inline-block; margin-top: 6px; font-size: .8rem; color: rgba(255,255,255,.6); font-variant-numeric: tabular-nums; }
 
 .lightbox-prev { grid-area: prev; }
@@ -3301,6 +3324,26 @@ body.has-lightbox { overflow: hidden; }
 
 /* Rechtstextseiten: Impressum / Datenschutz (AP-11) */
 .section-rechtstext { padding-top: var(--space-section-compact); }
+.section-rechtstext .breadcrumbs { margin-bottom: clamp(28px, 3vw, 40px); }
+.section-rechtstext .breadcrumbs ol { margin-bottom: 0; }
+.rt-head { max-width: 720px; margin-inline: auto; }
+.rt-head h1 {
+  margin: 0;
+  font-family: "Baloo 2", var(--display);
+  font-size: 31px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: -.015em;
+  text-align: center;
+  text-wrap: balance;
+}
+@media (max-width: 480px) {
+  .section-rechtstext { padding-top: 14px; }
+}
+@media (max-width: 360px) {
+  .rt-head h1 { font-size: 28px; }
+}
 .rt-body { max-width: 760px; }
 .rt-body h2 { font-size: var(--type-module-title-size); line-height: 1.2; margin: clamp(24px, 4vh, 36px) 0 10px; }
 .rt-body p { color: var(--ink-2); margin: 0 0 14px; }

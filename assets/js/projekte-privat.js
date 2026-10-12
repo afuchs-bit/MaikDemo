@@ -7,7 +7,7 @@
 import { dataUrl, SITE_BASE } from './config.js';
 // Versionierter Import: projekte-card.js traegt sonst kein ?v= und wuerde aus dem
 // Browser-Cache in einer aelteren Fassung geladen (Badge-Option fehlt dann).
-import { buildCard, revealCards } from './projekte-card.js?v=20260807b';
+import { buildCard, revealCards } from './projekte-card.js?v=20261007c';
 
 const grid = document.querySelector('[data-projekte-privat]');
 if (grid) init(grid);
@@ -91,15 +91,5 @@ function enhancePrivateCard(card, project) {
       time.textContent = month.label;
       meta.appendChild(time);
     }
-  }
-
-  const more = body?.querySelector('.card-more');
-  if (more) {
-    const label = document.createElement('span');
-    label.textContent = 'Projekt ansehen';
-    const arrow = document.createElement('b');
-    arrow.textContent = '→';
-    arrow.setAttribute('aria-hidden', 'true');
-    more.replaceChildren(label, arrow);
   }
 }

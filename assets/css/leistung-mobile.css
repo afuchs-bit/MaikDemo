@@ -91,7 +91,7 @@
 @media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden]{justify-content: center; width: 100%; min-height: 64px; padding: 7px 22px; border: 0px; border-radius: 14px; background: none; color: rgb(23, 25, 22); font: 800 clamp(1rem, 4.3cqw, 1.125rem)/1.2 var(--display); box-shadow: none;}}
 @media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__shape{display: block;}}
 @media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden]{justify-content: space-between; padding: 7px 10px 7px 22px;}}
-@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__label{font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive; font-size: clamp(0.9rem, 4.25cqw, 1.0625rem); font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: 0.025em; text-transform: uppercase;}}
+@media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__label{font-family: "Maik Comic Neue", cursive; font-size: calc((clamp(0.9rem, 4.25cqw, 1.0625rem)) * var(--type-handwriting-cta-scale)); font-style: italic; font-weight: var(--type-cta-label-weight); line-height: 1.16; letter-spacing: 0.025em; text-transform: uppercase;}}
 @media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__arrow{position: relative; z-index: 1; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 62px; height: 40px; margin-right: 12px; border-radius: 999px; background: rgb(23, 25, 22); box-shadow: rgba(151, 206, 32, 0.16) 0px 0px 0px 1px inset; transition: transform .12s var(--ease);}}
 @media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__arrow-bild{display: block; width: 46px; height: auto; object-fit: contain;}}
 @media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__frame{position: absolute; inset: 0px; z-index: -3; display: block; width: 100%; height: 100%; overflow: visible; fill: none; stroke: var(--home-lime); stroke-width: 1.5px; transform: translate(6px, 6px); pointer-events: none;}}
@@ -100,10 +100,10 @@
 @media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden]:active .anf-senden__shape{fill: rgb(130, 185, 59);}}
 @media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact [data-anf-senden]:focus-visible{outline: 2px solid var(--home-dark-accent); outline-offset: 5px;}}
 @media (min-width:481px) and (max-width:900px){:where(.lpv2-main) .private-contact .anf__abschluss + .anf__rechtliches{margin-top: 28px;}}
-@media (min-width:481px){:where(.lpv2-main) .maik-cta{position: relative; isolation: isolate; box-sizing: border-box; display: flex; align-items: center; justify-content: flex-start; gap: 0px; width: 100%; min-height: 64px; height: 64px; padding: 7px 10px 7px 0px; border: 0px; border-radius: 14px; background: transparent; box-shadow: none; color: rgb(23, 25, 22); font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive; font-size: clamp(0.9rem, 4.25cqw, 1.0625rem); font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: 0.025em; text-align: left; text-decoration: none; text-transform: uppercase; white-space: nowrap;}}
+@media (min-width:481px){:where(.lpv2-main) .maik-cta{position: relative; isolation: isolate; box-sizing: border-box; display: flex; align-items: center; justify-content: flex-start; gap: 0px; width: 100%; min-height: 64px; height: 64px; padding: 7px 10px 7px 0px; border: 0px; border-radius: 14px; background: transparent; box-shadow: none; color: rgb(23, 25, 22); font-family: "Maik Comic Neue", cursive; font-size: calc((clamp(0.9rem, 4.25cqw, 1.0625rem)) * var(--type-handwriting-cta-scale)); font-style: italic; font-weight: var(--type-cta-label-weight); line-height: 1.16; letter-spacing: 0.025em; text-align: left; text-decoration: none; text-transform: uppercase; white-space: nowrap;}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta::before,:where(.lpv2-main) .maik-cta::after{content: none;}}
-@media (min-width:481px){:where(.lpv2-main) .maik-cta .maik-cta__label{position: relative; z-index: 1; flex: 1 1 0px; min-width: 0px; padding-right: 0px; font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive; font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: 0.018em; text-transform: uppercase; overflow-wrap: normal; hyphens: none; text-align: center; text-wrap: nowrap; white-space-collapse: collapse; transition: transform .12s var(--ease);}}
-@media (min-width:481px){:where(.lpv2-main) .maik-cta:not(.maik-cta--compact) .maik-cta__label{font-size: clamp(0.82rem, 3.9cqw, 1rem);}}
+@media (min-width:481px){:where(.lpv2-main) .maik-cta .maik-cta__label{position: relative; z-index: 1; flex: 1 1 0px; min-width: 0px; padding-right: 0px; font-family: "Maik Comic Neue", cursive; font-style: italic; font-weight: var(--type-cta-label-weight); line-height: 1.16; letter-spacing: 0.018em; text-transform: uppercase; overflow-wrap: normal; hyphens: none; text-align: center; text-wrap: nowrap; white-space-collapse: collapse; transition: transform .12s var(--ease);}}
+@media (min-width:481px){:where(.lpv2-main) .maik-cta:not(.maik-cta--compact) .maik-cta__label{font-size: calc((clamp(0.82rem, 3.9cqw, 1rem)) * var(--type-handwriting-cta-scale));}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta__shape,:where(.lpv2-main) .maik-cta__frame,:where(.lpv2-main) .maik-cta__halo{position: absolute; inset: 0px; display: block; width: 100%; height: 100%; pointer-events: none;}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta__shape{z-index: -1; overflow: visible; fill: var(--home-lime); stroke: none; filter: none; transition: transform .12s var(--ease), fill .18s ease;}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta__frame{z-index: -3; overflow: visible; fill: none; stroke: var(--home-lime); stroke-width: 1.5px; transform: translate(6px, 6px);}}
@@ -118,7 +118,7 @@
 @media (min-width:481px){:where(.lpv2-main) .maik-cta--attention.is-pulsing .maik-cta__halo{animation: 1.2s ease-out 0.35s 1 normal none running maik-cta-arrival-halo, 1.9s linear 2.5s infinite normal none running maik-cta-rhythm-halo;}}
 @media (min-width:481px){:where(.lpv2-main) :is(.maik-cta--attention, .maik-cta--gallery).is-pulsing .maik-cta__arrow-image{animation: 1.9s cubic-bezier(0.22, 0.7, 0.25, 1) 2.5s infinite normal none running maik-cta-arrow-rhythm;}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta--gallery.is-pulsing .lpv2-gallery-grid-symbol{animation: 1.9s cubic-bezier(0.22, 0.7, 0.25, 1) 2.5s infinite normal none running maik-cta-symbol-rhythm; transform-origin: center center; will-change: transform;}}
-@media (min-width:481px){:where(.lpv2-main) .maik-cta--compact{display: grid; grid-template-columns: minmax(0px, 1fr) 40px; column-gap: 0px; width: 184px; min-width: 184px; min-height: 44px; height: 44px; padding: 4px 7px 4px 0px; font-size: clamp(0.8125rem, 3.6cqw, 0.875rem);}}
+@media (min-width:481px){:where(.lpv2-main) .maik-cta--compact{display: grid; grid-template-columns: minmax(0px, 1fr) 40px; column-gap: 0px; width: 184px; min-width: 184px; min-height: 44px; height: 44px; padding: 4px 7px 4px 0px; font-size: calc((clamp(0.8125rem, 3.6cqw, 0.875rem)) * var(--type-handwriting-cta-scale));}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta--compact .maik-cta__frame{stroke-width: 1.25px; transform: translate(4px, 4px);}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta--compact .maik-cta__label{grid-column: 1;}}
 @media (min-width:481px){:where(.lpv2-main) .maik-cta--compact .maik-cta__arrow{grid-column: 2; width: 40px; height: 28px; margin: 0px;}}
@@ -268,11 +268,11 @@
   .lpv2-content-service .lpv2-content-list li{padding-left:27px;color:var(--lpv2-text-body,#d9ded5);font-size:1.1rem;font-weight:500;line-height:1.58;letter-spacing:.002em;text-wrap:pretty}
   .lpv2-page--homepage-unified .lpv2-content-service .lpv2-content-list li:before{top:.42em;width:17px;height:12px}
   .lp-service-page .lp-service-title--long{font-size:clamp(1.5rem,6.94vw,1.75rem)}
-  .lpv2-page :is(.lpv2-mobile-hero-cta__button,.lpv2-closing-cta) .maik-cta__label{font-size:clamp(.7rem,3vw,.78rem);letter-spacing:.006em}
-  .lpv2-page .lpv2-mobile-hero-cta__button .maik-cta__label--large{font-size:clamp(.9375rem,4.1vw,1rem)}
-  .lpv2-page .lpv2-mobile-hero-cta__button .maik-cta__label--medium{font-size:clamp(.875rem,3.8vw,.9375rem)}
-  .lpv2-page .lpv2-mobile-hero-cta__button .maik-cta__label--compact{font-size:clamp(.7rem,3vw,.78rem)}
-  .lpv2-page .lpv2-closing-cta .maik-cta__label{font-size:clamp(1rem,4.35vw,1.1rem);letter-spacing:.012em}
+  .lpv2-page :is(.lpv2-mobile-hero-cta__button,.lpv2-closing-cta) .maik-cta__label{font-size: calc((clamp(.7rem,3vw,.78rem)) * var(--type-handwriting-cta-scale));letter-spacing:.006em}
+  .lpv2-page .lpv2-mobile-hero-cta__button .maik-cta__label--large{font-size:calc(clamp(.9375rem,4.1vw,1rem) * var(--type-handwriting-cta-scale))}
+  .lpv2-page .lpv2-mobile-hero-cta__button .maik-cta__label--medium{font-size:calc(clamp(.875rem,3.8vw,.9375rem) * var(--type-handwriting-cta-scale))}
+  .lpv2-page .lpv2-mobile-hero-cta__button .maik-cta__label--compact{font-size:calc(clamp(.7rem,3vw,.78rem) * var(--type-handwriting-long-cta-scale))}
+  .lpv2-page .lpv2-closing-cta .maik-cta__label{font-size: calc((clamp(1rem,4.35vw,1.1rem)) * var(--type-handwriting-cta-scale));letter-spacing:.012em}
   .lpv2-content-closing{margin-top:80px}
   .lpv2-page--homepage-unified .lpv2-content-closing .lpv2-closing{position:relative;isolation:isolate;width:100%;max-width:34ch;margin:0 auto;padding:24px 16px 25px;border-radius:18px 5px 18px 5px;background:rgb(74 122 16 / 14%);box-shadow:inset 0 1px 0 rgba(255,255,255,.018),0 22px 42px -38px rgba(0,0,0,.9)}
   .lpv2-page--homepage-unified .lpv2-content-closing .lpv2-closing:after{content:'';position:absolute;right:-18px;bottom:-22px;z-index:2;width:clamp(4.0625rem,20vw,5rem);aspect-ratio:210/180;background:url('../img/logo/maik-rohdich-bluetengruppe-header-transparent.png') center/contain no-repeat;filter:drop-shadow(0 2px 3px rgba(0,0,0,.5));pointer-events:none}
@@ -794,10 +794,10 @@
     flex: 1 1 0;
     min-width: 0;
     padding-right: 0;
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: 1rem;
+    font-family: "Maik Comic Neue", cursive;
+    font-size: calc((1rem) * var(--type-handwriting-cta-scale));
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .018em;
     text-transform: uppercase;
@@ -1002,7 +1002,7 @@
      breit wie der Titel (min(100%,620px)), Ansage 06.10.2026 (AP-584). */
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta{grid-column:2;grid-row:3;justify-self:start;display:flex;align-items:center;justify-content:center;width:min(100%,620px);margin:38px 0 0;padding:0}
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button{width:min(100%,440px);min-height:74px;height:74px;padding:8px 12px 8px 0;border-radius:16px}
-  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__label{font-size:1.125rem;letter-spacing:.02em}
+  .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__label{font-size: calc((1.125rem) * var(--type-handwriting-cta-scale));letter-spacing:.02em}
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow{width:70px;height:46px;margin-right:14px}
   .lpv2-page--desktop-rahmenbild .lpv2-mobile-hero-cta__button .maik-cta__arrow-image{width:52px}
 

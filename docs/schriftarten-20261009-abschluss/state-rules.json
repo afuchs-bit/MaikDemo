@@ -1,0 +1,5 @@
+{
+  "date": "2026-10-09",
+  "method": "Static CSS rule scan; dynamic hover not independently exercised",
+  "font_or_metric_declarations_on_state_selectors": []
+}

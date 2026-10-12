@@ -3053,10 +3053,10 @@
   /* Handschriftlicher Markenstil wie bei den Qualifikationen. Auf dem hellen
      CTA bleibt der Text bewusst ohne deren Leuchtschatten klar und ruhig. */
   .private-process-updated .process-contact-cta .mobile-proof-request__label {
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: clamp(.98rem, 4.25vw, 1.0625rem);
+    font-family: "Maik Comic Neue", cursive;
+    font-size: var(--type-cta-label-size);
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .025em;
     text-transform: uppercase;
@@ -4648,12 +4648,12 @@ html.home-theme-dark .private-faq .private-faq-list details[open] {
      Auf Ansage des Auftraggebers, nach Offenlegung der Zahlen. Wer hier
      spaeter aufraeumt: Das ist gewollt, kein Versehen. */
   color: var(--coral);
-  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-  font-size: 1.0625rem;
+  font-family: "Maik Comic Neue", cursive;
+  font-size: calc((1.0625rem) * var(--type-handwriting-title-scale));
   font-style: italic;
-  font-weight: 400;
+  font-weight: var(--type-handwriting-title-weight);
   letter-spacing: .015em;
-  line-height: 1.16;
+  line-height: calc(1.16 / var(--type-handwriting-title-scale));
   text-transform: none;
 }
 
@@ -4905,15 +4905,21 @@ html.home-theme-dark .private-faq .private-faq-list details[open] {
 .iphone-service-card__title strong {
   min-width: 0;
   color: var(--ink);
-  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-  font-size: .9375rem;
+  font-family: "Maik Comic Neue", cursive;
+  font-size: calc((.9375rem) * var(--type-handwriting-title-scale));
   font-style: italic;
-  font-weight: 400;
+  font-weight: var(--type-handwriting-title-weight);
   letter-spacing: .015em;
-  line-height: 1.22;
+  line-height: calc(1.22 / var(--type-handwriting-title-scale));
   text-transform: none;
   overflow-wrap: normal;
   text-wrap: pretty;
+}
+
+/* Font review 09.10.2026: retain the former two-word wrap in related services.
+   Scope this metric correction so the other, tightly fitting labels stay unchanged. */
+.lpv2-related-home-list .iphone-service-card[href$="/verkehrssicherheit/"] .iphone-service-card__title strong {
+  letter-spacing: .035em;
 }
 
 .iphone-service-card__title--explained {
@@ -5094,7 +5100,7 @@ html.home-theme-dark .private-faq .private-faq-list details[open] {
   }
 
   .private-request-paths .iphone-service-feature--emergency .iphone-service-feature__body > strong {
-    font-size: clamp(18px, 1.4vw, 22px);
+    font-size: calc((clamp(18px, 1.4vw, 22px)) * var(--type-handwriting-title-scale));
   }
 
   .private-request-paths .iphone-service-feature--emergency .iphone-service-feature__eyebrow {
@@ -5140,6 +5146,11 @@ html.home-theme-dark .private-faq .private-faq-list details[open] {
   .private-request-paths :is(.iphone-service-card__title strong, .iphone-service-inquiry__copy) {
     font-size: var(--service-title-size);
     line-height: 1.3;
+  }
+
+  .private-request-paths .iphone-service-card__title strong {
+    font-size: calc(var(--service-title-size) * var(--type-handwriting-title-scale));
+    line-height: calc(1.3 / var(--type-handwriting-title-scale));
   }
 
   .private-request-paths .iphone-service-card__title small {
@@ -5594,11 +5605,11 @@ html.home-theme-dark :is(
   html.home-theme-dark .private-process-updated .step-card h3 {
     margin-bottom: 8px;
     color: var(--mobile-logo-green);
-    font-family: "Comic Sans MS","Comic Sans","Chalkboard SE",cursive;
-    font-size: 1.0625rem;
+    font-family: "Maik Comic Neue", cursive;
+    font-size: calc((1.0625rem) * var(--type-handwriting-title-scale));
     font-style: italic;
-    font-weight: 400;
-    line-height: 1.16;
+    font-weight: var(--type-handwriting-title-weight);
+    line-height: calc(1.16 / var(--type-handwriting-title-scale));
     letter-spacing: .025em;
     text-transform: uppercase;
     overflow-wrap: normal;

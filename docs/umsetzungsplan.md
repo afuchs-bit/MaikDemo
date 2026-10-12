@@ -2695,3 +2695,17 @@ eine Sequenz:
 
 Reduzierte Bewegung: alles sofort. Handy unverändert. Details:
 `docs/ap/AP-567-balkonkasten-blickfuehrung-choreografie.md`.
+
+**AP-586 — Favicons für Safari vereinheitlichen (07.10.2026).**
+Die vorhandene Blüte erhält neue Dateinamen, PNG 32/64, ICO 16/32/48/64 und
+Apple-Touch-Icon 180 sowie Root-Fallbacks. Gemeinsame Einbindung auf 45 Seiten
+und in vier Vorlagen; relative Pfade, Bildformate, HTTP-Antworten, idempotente
+Normalisierung und geladene Homepage geprüft. Safari-App-Test mangels
+Computer-Use-Freigabe nicht möglich. Details: `docs/ap/AP-586-favicons-safari.md`.
+
+**AP-587 — Stabile Header-Abstände beim Seitenwechsel (07.10.2026).**
+Kompakte Homepage und Unterseiten nutzen dieselbe Geometrie ohne transparenten
+Innenrahmen und dieselben Logo-Maße. Mobile Sprunglink-Einstiege starten sofort
+kompakt. 45 öffentliche Seiten, 18 Viewportgrößen, Menü-/Telefonzustände und
+Größenwechsel geprüft; kein direkter physischer Safari-Test. Details:
+`docs/ap/AP-587-header-abstaende-seitenwechsel.md`.

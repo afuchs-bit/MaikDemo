@@ -1,0 +1,69 @@
+[
+  {
+    "family": "nunito",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/nunito/OFL.txt",
+    "date": "2026-10-09",
+    "sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+    "byte_identical": true
+  },
+  {
+    "family": "baloo2",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/baloo2/OFL.txt",
+    "date": "2026-10-09",
+    "sha256": "ad09b05dc8bc678c9daf7c4c5f7ef1f55e5726127f4330b2e98e40b9dffcb860",
+    "byte_identical": true
+  },
+  {
+    "file": "comic-neue-italic-400.woff2",
+    "url": "https://raw.githubusercontent.com/crozynski/comicneue/ef5be72411141d01f0b865df8edb47e552c11c3c/Fonts/WebFonts/ComicNeue-Italic.woff2",
+    "date": "2026-10-09",
+    "sha256": "09ab514b68ef3ddb55e03a7ec5a6b100caea5b36195a6d3f104250e3279efc65",
+    "byte_identical": true
+  },
+  {
+    "file": "comic-neue-italic-700.woff2",
+    "url": "https://raw.githubusercontent.com/crozynski/comicneue/ef5be72411141d01f0b865df8edb47e552c11c3c/Fonts/WebFonts/ComicNeue-BoldItalic.woff2",
+    "date": "2026-10-09",
+    "sha256": "b24900d4debe9a84621dac335edaf7a87144e00c04cedb83602f654b01daa0c5",
+    "byte_identical": true
+  },
+  {
+    "file": "comic-neue-OFL.txt",
+    "url": "https://raw.githubusercontent.com/crozynski/comicneue/ef5be72411141d01f0b865df8edb47e552c11c3c/OFL.txt",
+    "date": "2026-10-09",
+    "sha256": "7c38a22e5878e60fe423360553e63dd7be23d29f1f60336034935dbfc96e8320",
+    "byte_identical": true
+  },
+  {
+    "provider_css_url": "https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap",
+    "download_url": "https://fonts.gstatic.com/s/nunito/v32/XRXX3I6Li01BKofIMNaDRs7nczIH.woff2",
+    "sha256": "60ad29f2b640800bcd6a5bf81b4583a41de31b8f5153f31e5c9894430e749a8a",
+    "bytes": 41744,
+    "matches_existing": [],
+    "css": "@font-face {\n  font-family: 'Nunito';\n  font-style: italic;\n  font-weight: 200 1000;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXX3I6Li01BKofIMNaDRs7nczIH.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+  },
+  {
+    "provider_css_url": "https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap",
+    "download_url": "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofINeaBTMnFcQ.woff2",
+    "sha256": "20fc9b6fc618e7c3c68d3ac750a2a5dfbceb8521675458d2cea580b5693e4798",
+    "bytes": 39152,
+    "matches_existing": [],
+    "css": "@font-face {\n  font-family: 'Nunito';\n  font-style: normal;\n  font-weight: 200 1000;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofINeaBTMnFcQ.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+  },
+  {
+    "provider_css_url": "https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap",
+    "download_url": "https://fonts.gstatic.com/s/baloo2/v23/wXKrE3kTposypRyd51jcAM4olXc.woff2",
+    "sha256": "2e9420db49d01d76a7b8a38ef22ec9c45305d9f15fafa370389b7bf467658fc3",
+    "bytes": 33056,
+    "matches_existing": [],
+    "css": "@font-face {\n  font-family: 'Baloo 2';\n  font-style: normal;\n  font-weight: 400 800;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/baloo2/v23/wXKrE3kTposypRyd51jcAM4olXc.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+  },
+  {
+    "provider_css_url": "https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap",
+    "download_url": "https://fonts.gstatic.com/s/baloo2/v23/wXK0E3kTposypRydzVT08TS3JnAmtdj9yppo_leP6HcMqzQ.woff2",
+    "sha256": "051ccab549f97781d3c119597a0c6a31938ddaf449c0ca038067743437021807",
+    "bytes": 19460,
+    "matches_existing": [],
+    "css": "@font-face {\n  font-family: 'Baloo 2';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/baloo2/v23/wXK0E3kTposypRydzVT08TS3JnAmtdj9yppo_leP6HcMqzQ.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+  }
+]

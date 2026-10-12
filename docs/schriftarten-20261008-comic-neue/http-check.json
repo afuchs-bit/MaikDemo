@@ -1,0 +1,34 @@
+[
+  {
+    "path": "assets/fonts/comic-neue-italic-400.woff2",
+    "status": 200,
+    "mime": "font/woff2",
+    "cache": "no-store",
+    "sha256": "09ab514b68ef3ddb55e03a7ec5a6b100caea5b36195a6d3f104250e3279efc65",
+    "matches_disk": true
+  },
+  {
+    "path": "assets/fonts/comic-neue-italic-700.woff2",
+    "status": 200,
+    "mime": "font/woff2",
+    "cache": "no-store",
+    "sha256": "b24900d4debe9a84621dac335edaf7a87144e00c04cedb83602f654b01daa0c5",
+    "matches_disk": true
+  },
+  {
+    "path": "assets/fonts/comic-neue-OFL.txt",
+    "status": 200,
+    "mime": "text/plain; charset=utf-8",
+    "cache": "no-store",
+    "sha256": "7c38a22e5878e60fe423360553e63dd7be23d29f1f60336034935dbfc96e8320",
+    "matches_disk": true
+  },
+  {
+    "path": "assets/fonts/comic-neue-provenance.json",
+    "status": 200,
+    "mime": "application/json; charset=utf-8",
+    "cache": "no-store",
+    "sha256": "d1f9eb84954bfcc4f23e55548a08ea2646a408d252967d70e4c0445020610eb0",
+    "matches_disk": true
+  }
+]

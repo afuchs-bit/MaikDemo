@@ -9,6 +9,7 @@ import { assetUrl } from './config.js';
 // Kundentyp redundant, dort trägt die Leistung die Information (opts.labelFor liefert das Label).
 // opts.ohnePrivatEtikett: AP-531 – die Galerie zeigt "Privatkunde" nicht mehr (Ansage des
 // Auftraggebers); "Gewerbekunde" bleibt.
+// opts.description: optionaler Kartentext; die Galerie verwendet die Bildunterschrift.
 export function buildCard(p, opts = {}) {
   const gewerbe = Array.isArray(p.kundentyp) && p.kundentyp.includes('gewerbe');
   const cover = (Array.isArray(p.bilder) && p.bilder[0]) || {};
@@ -33,9 +34,8 @@ export function buildCard(p, opts = {}) {
   const h3 = document.createElement('h3');
   h3.textContent = p.titel || '';
   const desc = document.createElement('p');
-  desc.textContent = p.beschreibung || '';
-  // AP-78: Affordanz zum per CSS auf 3 Zeilen gekuerzten Text. Kein <a> – die
-  // Karte traegt bereits .card-open ueber ihrer ganzen Flaeche.
+  desc.textContent = opts.description ?? p.beschreibung ?? '';
+  // .card-open liegt ueber der ganzen Kachel und nennt die Aktion bereits.
   const more = el('span', 'card-more');
   more.textContent = 'Projekt ansehen →';
   more.setAttribute('aria-hidden', 'true');

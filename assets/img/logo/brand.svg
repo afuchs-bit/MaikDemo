@@ -42,10 +42,5 @@
       <circle r="4" fill="#FFED00" opacity=".95"/>
     </g>
   </g>
-  <g font-family="Outfit, 'Brush Script MT', cursive, sans-serif" font-style="italic" paint-order="stroke fill">
-    <text x="200" y="38" font-size="22" font-weight="700" fill="#FFED00" stroke="#315200" stroke-width="2.4" stroke-linejoin="round" letter-spacing=".4">Garten- und Landschaftsbau</text>
-    <text x="198" y="92" font-size="58" font-weight="800" fill="#5a8a1c" stroke="#1d3000" stroke-width="2.6" stroke-linejoin="round" letter-spacing=".2">MAIK ROHDICH</text>
-    <text x="200" y="124" font-size="22" font-weight="700" fill="#FFED00" stroke="#315200" stroke-width="2.4" stroke-linejoin="round" letter-spacing=".4">Gartenbaumeister</text>
-  </g>
 </symbol>
 </svg>

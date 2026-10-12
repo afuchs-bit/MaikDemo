@@ -15,7 +15,14 @@
     return;
   }
 
-  let condensed = false;
+  let condensed = header.classList.contains('is-home-condensed');
+  const entryHash = window.location.hash;
+  // Der Browser setzt den Ankersprung erst nach dem Einlesen der Seite.
+  // Bis dahin bleibt der bereits vor dem ersten Zeichnen kompakte Kopf stabil.
+  let pendingEntryAnchor = false;
+  try {
+    pendingEntryAnchor = condensed && Boolean(document.getElementById(decodeURIComponent(entryHash.slice(1))));
+  } catch (_) { /* Ein ungueltiger Hash ist kein Sprungziel. */ }
   let appliedState = null;
   let frame = 0;
 
@@ -58,6 +65,7 @@
     frame = 0;
 
     if (!mobile.matches) {
+      pendingEntryAnchor = false;
       condensed = false;
       appliedState = null;
       header.classList.remove('is-home-condensed');
@@ -68,8 +76,10 @@
 
     if (navigationIsOpen()) return;
 
+    if (window.scrollY > 28 || window.location.hash !== entryHash) pendingEntryAnchor = false;
+
     /* Hysterese verhindert Flackern beim iOS-Overscroll am Seitenanfang. */
-    const next = condensed ? window.scrollY > 6 : window.scrollY > 28;
+    const next = pendingEntryAnchor || (condensed ? window.scrollY > 6 : window.scrollY > 28);
     setCondensed(next);
   };
 
@@ -97,6 +107,7 @@
   document.addEventListener('scroll', scheduleSync, { passive: true });
   window.addEventListener('resize', scheduleSync, { passive: true });
   window.addEventListener('pageshow', scheduleSync);
+  window.addEventListener('hashchange', scheduleSync);
 
   if (typeof mobile.addEventListener === 'function') {
     mobile.addEventListener('change', scheduleSync);
@@ -106,4 +117,8 @@
 
   syncNavigationLabel();
   sync();
+  window.requestAnimationFrame(() => {
+    updateMeasuredHeaderHeight();
+    root.classList.add('home-header-ready');
+  });
 }());

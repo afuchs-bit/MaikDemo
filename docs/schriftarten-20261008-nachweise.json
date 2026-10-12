@@ -1,0 +1,2992 @@
+{
+  "date": "2026-10-08",
+  "repo": "/Users/davidk./Documents/SD-MR-001/MaikDemo-homepage-review",
+  "branch": "codex/homepage-review",
+  "head": "651f2355b383d5d66862ab5b4e5192549f50f29f",
+  "macOS": "26.5.1 (25F80)",
+  "changed_files": [
+    ".github/scripts/build-headers.mjs",
+    ".github/scripts/lib/legacy-fonts.mjs",
+    ".github/scripts/package.json",
+    ".github/scripts/templates/_logo.html",
+    "404.html",
+    "ASSETS.md",
+    "assets/img/logo/brand.svg",
+    "datenschutz/index.html",
+    "docs/schriftarten-20261008-nachweise.json",
+    "docs/schriftarten-20261008.md",
+    "gewerbekunden/index.saved.html",
+    "gewerbekunden/leistungen/aussenanlagenpflege/index.html",
+    "impressum/index.html",
+    "index.html",
+    "package.json",
+    "privatkunden/leistungen/aussergewoehnliches-garten/index.html",
+    "privatkunden/leistungen/balkonkastenbepflanzung/index.html",
+    "privatkunden/leistungen/baumarbeiten/index.html",
+    "privatkunden/leistungen/baumkontrolle/index.html",
+    "privatkunden/leistungen/baumpflege/index.html",
+    "privatkunden/leistungen/beleuchtung/index.html",
+    "privatkunden/leistungen/bepflanzung/index.html",
+    "privatkunden/leistungen/bonsai-formgehoelze/index.html",
+    "privatkunden/leistungen/dachbegruenung/index.html",
+    "privatkunden/leistungen/entwaesserung/index.html",
+    "privatkunden/leistungen/erd-baggerarbeiten/index.html",
+    "privatkunden/leistungen/ersatz-ausgleichspflanzungen/index.html",
+    "privatkunden/leistungen/feuerstellen/index.html",
+    "privatkunden/leistungen/findlinge-natursteineinfassungen/index.html",
+    "privatkunden/leistungen/gartengestaltung/index.html",
+    "privatkunden/leistungen/gartenpflege/index.html",
+    "privatkunden/leistungen/holzverkauf/index.html",
+    "privatkunden/leistungen/nassschneidearbeiten/index.html",
+    "privatkunden/leistungen/palmen-winterfest/index.html",
+    "privatkunden/leistungen/pflasterreinigung-fugenreinigung/index.html",
+    "privatkunden/leistungen/pool-whirlpool-umfeld/index.html",
+    "privatkunden/leistungen/rodungsarbeiten/index.html",
+    "privatkunden/leistungen/rohdichs-grubengold/index.html",
+    "privatkunden/leistungen/rollrasen/index.html",
+    "privatkunden/leistungen/saisonbepflanzung/index.html",
+    "privatkunden/leistungen/schredderarbeiten/index.html",
+    "privatkunden/leistungen/sichtschutzbepflanzung/index.html",
+    "privatkunden/leistungen/stubbenfraeseneinsatz/index.html",
+    "privatkunden/leistungen/sturmnotdienst/index.html",
+    "privatkunden/leistungen/teichbau/index.html",
+    "privatkunden/leistungen/terrasse-pflasterarbeiten/index.html",
+    "privatkunden/leistungen/terrassenbau/index.html",
+    "privatkunden/leistungen/verkehrssicherheit/index.html",
+    "privatkunden/leistungen/vermessung-lasertechnik/index.html",
+    "privatkunden/leistungen/vorgarten/index.html",
+    "privatkunden/leistungen/wurzelentfernung/index.html",
+    "privatkunden/leistungen/zaeune-sichtschutz/index.html",
+    "projekte/index.html",
+    "scripts/check-font-assets.mjs",
+    "ueber-uns/index.html"
+  ],
+  "local_fonts": [
+    {
+      "path": "assets/fonts/baloo2-700-latin.woff2",
+      "sha256": "8e7ffc9b993aa8caa89bcab81e103c9eb2da4e3e042f37b7a5115d0ddbff12c0",
+      "bytes": 19436,
+      "build_identical": true,
+      "preview_status": 200,
+      "preview_content_type": "font/woff2",
+      "preview_cache_control": "no-store"
+    },
+    {
+      "path": "assets/fonts/baloo2-OFL.txt",
+      "sha256": "ad09b05dc8bc678c9daf7c4c5f7ef1f55e5726127f4330b2e98e40b9dffcb860",
+      "bytes": 4384,
+      "build_identical": true,
+      "preview_status": 200,
+      "preview_content_type": "text/plain; charset=utf-8",
+      "preview_cache_control": "no-store"
+    },
+    {
+      "path": "assets/fonts/baloo2-variable-latin.woff2",
+      "sha256": "26fb4610d4bc976d2584ca15e66c11465dbc1f267a10dca668fcb3080dfe59c1",
+      "bytes": 33188,
+      "build_identical": true,
+      "preview_status": 200,
+      "preview_content_type": "font/woff2",
+      "preview_cache_control": "no-store"
+    },
+    {
+      "path": "assets/fonts/nunito-OFL.txt",
+      "sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+      "bytes": 4385,
+      "build_identical": true,
+      "preview_status": 200,
+      "preview_content_type": "text/plain; charset=utf-8",
+      "preview_cache_control": "no-store"
+    },
+    {
+      "path": "assets/fonts/nunito-italic-latin.woff2",
+      "sha256": "6cfcc3786d5ba3b5c3a41797f95272e57f4290ccbd283a4bfd0033a3d857e64c",
+      "bytes": 41760,
+      "build_identical": true,
+      "preview_status": 200,
+      "preview_content_type": "font/woff2",
+      "preview_cache_control": "no-store"
+    },
+    {
+      "path": "assets/fonts/nunito-latin.woff2",
+      "sha256": "ba344451eab25b217a165363b1982048a5e5830a0daf36577973955a04cac793",
+      "bytes": 39128,
+      "build_identical": true,
+      "preview_status": 200,
+      "preview_content_type": "font/woff2",
+      "preview_cache_control": "no-store"
+    }
+  ],
+  "installed_fonts_not_render_proof": [
+    {
+      "file": "/System/Library/Fonts/Supplemental/ChalkboardSE.ttc",
+      "family": [
+        "Chalkboard SE"
+      ],
+      "style": [
+        "Light"
+      ],
+      "version": [
+        "13.0d1e2"
+      ],
+      "postscript_name": [
+        "ChalkboardSE-Light"
+      ],
+      "weight": 400,
+      "italic_angle": 0.0,
+      "embedding_flag_not_licence": 0
+    },
+    {
+      "file": "/System/Library/Fonts/Supplemental/ChalkboardSE.ttc",
+      "family": [
+        "Chalkboard SE"
+      ],
+      "style": [
+        "Regular"
+      ],
+      "version": [
+        "13.0d1e2"
+      ],
+      "postscript_name": [
+        "ChalkboardSE-Regular"
+      ],
+      "weight": 400,
+      "italic_angle": 0.0,
+      "embedding_flag_not_licence": 0
+    },
+    {
+      "file": "/System/Library/Fonts/Supplemental/ChalkboardSE.ttc",
+      "family": [
+        "Chalkboard SE"
+      ],
+      "style": [
+        "Bold"
+      ],
+      "version": [
+        "13.0d1e2"
+      ],
+      "postscript_name": [
+        "ChalkboardSE-Bold"
+      ],
+      "weight": 700,
+      "italic_angle": 0.0,
+      "embedding_flag_not_licence": 0
+    },
+    {
+      "file": "/System/Library/Fonts/Supplemental/Chalkboard.ttc",
+      "family": [
+        "Chalkboard"
+      ],
+      "style": [
+        "Regular"
+      ],
+      "version": [
+        "13.0d1e2"
+      ],
+      "postscript_name": [
+        "Chalkboard"
+      ],
+      "weight": 400,
+      "italic_angle": 0.0,
+      "embedding_flag_not_licence": 0
+    },
+    {
+      "file": "/System/Library/Fonts/Supplemental/Chalkboard.ttc",
+      "family": [
+        "Chalkboard"
+      ],
+      "style": [
+        "Bold"
+      ],
+      "version": [
+        "13.0d1e2"
+      ],
+      "postscript_name": [
+        "Chalkboard-Bold"
+      ],
+      "weight": 700,
+      "italic_angle": 0.0,
+      "embedding_flag_not_licence": 0
+    },
+    {
+      "file": "/System/Library/Fonts/Supplemental/Comic Sans MS.ttf",
+      "family": [
+        "Comic Sans MS"
+      ],
+      "style": [
+        "Arrunta",
+        "Navadno",
+        "Normaali",
+        "Normal",
+        "Normale",
+        "Normalny",
+        "Normál",
+        "Normálne",
+        "Regular",
+        "Standaard",
+        "Standard",
+        "normal",
+        "obyčejné",
+        "Κανονικά",
+        "Обычный"
+      ],
+      "version": [
+        "Version 5.00x"
+      ],
+      "postscript_name": [
+        "ComicSansMS"
+      ],
+      "weight": 400,
+      "italic_angle": 0.0,
+      "embedding_flag_not_licence": 8
+    },
+    {
+      "file": "/System/Library/Fonts/Supplemental/Comic Sans MS Bold.ttf",
+      "family": [
+        "Comic Sans MS"
+      ],
+      "style": [
+        "Bold",
+        "Fet",
+        "Fett",
+        "Félkövér",
+        "Gras",
+        "Grassetto",
+        "Halvfet",
+        "Kalın",
+        "Krepko",
+        "Lihavoitu",
+        "Lodia",
+        "Negreta",
+        "Negrita",
+        "Negrito",
+        "Pogrubiony",
+        "Tučné",
+        "Vet",
+        "fed",
+        "tučné",
+        "Έντονα",
+        "Полужирный"
+      ],
+      "version": [
+        "Version 5.00x"
+      ],
+      "postscript_name": [
+        "ComicSansMS-Bold"
+      ],
+      "weight": 700,
+      "italic_angle": 0.0,
+      "embedding_flag_not_licence": 8
+    }
+  ],
+  "elfsight": {
+    "page": "http://127.0.0.1:8080/#proof-elfsight-title",
+    "loaded_published_widget_release": "v3.52.0",
+    "widget_script_url": "https://universe-static.elfsightcdn.com/app-releases/google-reviews/stable/v3.52.0/84ee17e0a031be6de6417bf0720b9a6c25c02019/widget/googleReviews.js",
+    "states": [
+      {
+        "state": "widget",
+        "viewport": "1155px desktop",
+        "computed_font": "Nunito, sans-serif",
+        "google_font_assets_in_inventory": [],
+        "google_font_links_in_dom": [],
+        "local_font_assets_observed": [
+          "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2",
+          "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2",
+          "http://127.0.0.1:8080/assets/fonts/baloo2-variable-latin.woff2"
+        ]
+      },
+      {
+        "state": "open review popup",
+        "viewport": "1155px desktop",
+        "computed_font": "Nunito, sans-serif",
+        "google_font_assets_in_inventory": [],
+        "google_font_links_in_dom": [],
+        "local_font_assets_observed": [
+          "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2",
+          "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2",
+          "http://127.0.0.1:8080/assets/fonts/baloo2-variable-latin.woff2"
+        ]
+      },
+      {
+        "state": "widget",
+        "viewport": "390 × 844px Chrome viewport",
+        "computed_font": "Nunito, sans-serif",
+        "google_font_assets_in_inventory": [],
+        "google_font_links_in_dom": [],
+        "local_font_assets_observed": [
+          "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2",
+          "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2",
+          "http://127.0.0.1:8080/assets/fonts/baloo2-variable-latin.woff2"
+        ]
+      },
+      {
+        "state": "open review popup",
+        "viewport": "390 × 844px Chrome viewport",
+        "computed_font": "Nunito, sans-serif",
+        "google_font_assets_in_inventory": [],
+        "google_font_links_in_dom": [],
+        "local_font_assets_observed": [
+          "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2",
+          "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2",
+          "http://127.0.0.1:8080/assets/fonts/baloo2-variable-latin.woff2"
+        ]
+      }
+    ],
+    "method": "DOM, computed CSS, observed pageAssets inventory. Not a complete HAR/network trace.",
+    "new_tab": true,
+    "fresh_browser_context": false,
+    "browser_cache_disabled": false,
+    "native_safari_tested": false,
+    "real_iPhone_tested": false,
+    "actual_glyph_font_proven": false,
+    "font_override_added": false,
+    "csp_block_added": false,
+    "inherited_nunito_assessment": "consistent with Default / Apply from Website; not final proof of removal of all external transfers",
+    "previous_report_url_not_current_observation": "https://fonts.googleapis.com/css?family=Nunito:400,b,i"
+  },
+  "history": {
+    "removed_paths": [
+      "assets/fonts/inter-latin 2.woff2",
+      "assets/fonts/inter-latin-ext 2.woff2",
+      "assets/fonts/inter-latin-ext.woff2",
+      "assets/fonts/inter-latin.woff2",
+      "assets/fonts/outfit-latin 2.woff2",
+      "assets/fonts/outfit-latin-ext 2.woff2",
+      "assets/fonts/outfit-latin-ext.woff2",
+      "assets/fonts/outfit-latin.woff2"
+    ],
+    "original_ref_trees_verified": 29,
+    "old_paths_in_reachable_history": 0,
+    "four_old_blobs_absent": true,
+    "fsck_exit": 0,
+    "tags_seen": 0,
+    "original_repo_rewritten": false,
+    "force_push": false
+  },
+  "comparison": {
+    "path": "/Users/davidk./Documents/SD-MR-001/maik-font-review-20261008-3otf0wky/comparison/index.html",
+    "localhost": "http://127.0.0.1:8081/",
+    "lan": "http://192.168.1.191:8081/",
+    "provenance": [
+      {
+        "family": "comicneue",
+        "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/comicneue/ComicNeue-Italic.ttf",
+        "source_sha256": "e06bfd1552f5c9464c5665733ffd69239b0593885dbb9e059688a5900f78cf98",
+        "woff2_sha256": "a9b11a06a9000e9f028eb0c589ceba29bb9f242bb4ca892a3a4f41f11714f52d",
+        "version": "Version 2.003",
+        "conversion": "FontTools WOFF2, full glyph set, no subsetting or outline changes",
+        "licence_file": "comicneue-OFL.txt"
+      },
+      {
+        "family": "kalam",
+        "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/kalam/Kalam-Regular.ttf",
+        "source_sha256": "57cecb63d4608019371954274ae1d8c397764debd5b19d4a33c1efa4dc923c0b",
+        "woff2_sha256": "43c3329c0c01f97daa6ae30648e56bf5a5567057af65eed43ec69062da86925a",
+        "version": "Version 2.001;PS 1.0;hotconv 1.0.79;makeotf.lib2.5.61930; ttfautohint (v1.3)",
+        "conversion": "FontTools WOFF2, full glyph set, no subsetting or outline changes",
+        "licence_file": "kalam-OFL.txt"
+      },
+      {
+        "family": "caveat",
+        "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/caveat/Caveat%5Bwght%5D.ttf",
+        "source_sha256": "0bdb6b660482d31531b3945849fba5916b3ef8695da7024a9e6b9ee3c4157988",
+        "woff2_sha256": "7c2591d623ebf63a7f7b598cfc6906e840010f4e4b34666d0c8c355563b08d4b",
+        "version": "Version 2.000",
+        "conversion": "FontTools WOFF2, full glyph set, no subsetting or outline changes",
+        "licence_file": "caveat-OFL.txt"
+      }
+    ],
+    "glyph_coverage": [
+      {
+        "font": "ComicNeue-Italic.ttf",
+        "missing_characters": [],
+        "italic_angle": -12.0,
+        "weight": 400
+      },
+      {
+        "font": "Kalam-Regular.ttf",
+        "missing_characters": [],
+        "italic_angle": 0.0,
+        "weight": 400
+      },
+      {
+        "font": "Caveat[wght].ttf",
+        "missing_characters": [],
+        "italic_angle": 0.0,
+        "weight": 400
+      }
+    ],
+    "viewport_overflow_checks": [
+      {
+        "width": 1440,
+        "overflow": false
+      },
+      {
+        "width": 390,
+        "overflow": false
+      }
+    ]
+  },
+  "open_checks": [
+    "Native rendered-font inspector and complete cache-disabled website/Elfsight-widget/popup network trace; local preview before publication, repeat under production HTTPS",
+    "Real iPhone Safari and Pixel Chrome portrait/landscape checks with remote font inspection where available; Mac viewport tests do not replace devices",
+    "Production-domain delivery/status/MIME/hash/cache/CORS and rendering after deployment",
+    "Separate image provenance confirmation for original logo, 14 remaining alphabet PNGs and Balkonkasten title original; not an established local font licence defect"
+  ],
+  "handwriting_declarations": [
+    {
+      "file": "assets/css/anfrage.css",
+      "line": 854
+    },
+    {
+      "file": "assets/css/cta-family-home.css",
+      "line": 34
+    },
+    {
+      "file": "assets/css/cta-family-home.css",
+      "line": 57
+    },
+    {
+      "file": "assets/css/cta-family-home.css",
+      "line": 586
+    },
+    {
+      "file": "assets/css/cta-family-home.css",
+      "line": 631
+    },
+    {
+      "file": "assets/css/cta-family-home.css",
+      "line": 654
+    },
+    {
+      "file": "assets/css/cta-family-home.css",
+      "line": 972
+    },
+    {
+      "file": "assets/css/cta-family-home.css",
+      "line": 1164
+    },
+    {
+      "file": "assets/css/cta-family.css",
+      "line": 47
+    },
+    {
+      "file": "assets/css/cta-family.css",
+      "line": 70
+    },
+    {
+      "file": "assets/css/home-dark.css",
+      "line": 1743
+    },
+    {
+      "file": "assets/css/home-process.css",
+      "line": 201
+    },
+    {
+      "file": "assets/css/leistung-mobile.css",
+      "line": 94
+    },
+    {
+      "file": "assets/css/leistung-mobile.css",
+      "line": 103
+    },
+    {
+      "file": "assets/css/leistung-mobile.css",
+      "line": 105
+    },
+    {
+      "file": "assets/css/leistung-mobile.css",
+      "line": 797
+    },
+    {
+      "file": "assets/css/mobile-social-proof.css",
+      "line": 498
+    },
+    {
+      "file": "assets/css/mobile-social-proof.css",
+      "line": 955
+    },
+    {
+      "file": "assets/css/privat-form.css",
+      "line": 3056
+    },
+    {
+      "file": "assets/css/privat-form.css",
+      "line": 4651
+    },
+    {
+      "file": "assets/css/privat-form.css",
+      "line": 4908
+    },
+    {
+      "file": "assets/css/privat-form.css",
+      "line": 5597
+    },
+    {
+      "file": "assets/css/projekte.css",
+      "line": 206
+    },
+    {
+      "file": "assets/css/projekte.css",
+      "line": 229
+    },
+    {
+      "file": "assets/css/styles.css",
+      "line": 1169
+    },
+    {
+      "file": "assets/css/ueber-uns.css",
+      "line": 535
+    },
+    {
+      "file": "assets/css/ueber-uns.css",
+      "line": 1341
+    },
+    {
+      "file": "assets/css/ueber-uns.css",
+      "line": 1397
+    },
+    {
+      "file": "assets/css/ueber-uns.css",
+      "line": 1610
+    },
+    {
+      "file": "assets/css/ueber-uns.css",
+      "line": 1633
+    }
+  ],
+  "handwriting_css_samples": [
+    {
+      "url": "http://127.0.0.1:8080/",
+      "viewport": {
+        "width": 1155,
+        "height": 844
+      },
+      "samples": [
+        {
+          "class": "mobile-proof-gallery__link-label maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Zur Galerie",
+          "weight": "400"
+        },
+        {
+          "class": "mobile-proof-request__label maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Gartenwunsch besprechen",
+          "weight": "400"
+        },
+        {
+          "class": "mr-ueber__mehr-titel--iphone",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Mehr über uns",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "24h Baum- & Sturmnotdienst",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Außergewöhnliches für den Garten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Baumfällung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Baumkontrolle",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Baumpflege",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Beleuchtung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Bonsai / Formgehölze",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Dachbegrünung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Entwässerung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Erd- & Baggerarbeiten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Feuerstellen",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Findlinge",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Gartengestaltung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Gartenpflege",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Kaminholz",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Palmen",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Pflanzarbeiten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Pflasterarbeiten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Pflasterreinigung / Fugenreinigung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Rodungsarbeiten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Rohdichs Grubengold",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Rollrasen",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Saisonbepflanzung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Schredderarbeiten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Teichbau & -technik",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Terrassenbau",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Wurzelentfernung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Zäune & Sichtschutz",
+          "weight": "400"
+        },
+        {
+          "class": "mobile-proof-request__label maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Zum Kontaktformular",
+          "weight": "400"
+        },
+        {
+          "class": "step-card__copy--default",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Termin vor Ort - Aufmaß und Beratung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H3",
+          "text": "Termin bei uns in der Ausstellung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H3",
+          "text": "Ausarbeitung Individualangebot",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H3",
+          "text": "Auftragserteilung & Ausführung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H3",
+          "text": "Erhaltungspflege",
+          "weight": "400"
+        },
+        {
+          "class": "mobile-proof-request__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Projekt anfragen",
+          "weight": "400"
+        },
+        {
+          "class": "anf-senden__label maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Anfrage senden",
+          "weight": "400"
+        }
+      ],
+      "title": "Maik Rohdich Garten- und Landschaftsbau – Herne, Bochum, Recklinghausen"
+    },
+    {
+      "url": "http://127.0.0.1:8080/ueber-uns/",
+      "viewport": {
+        "width": 1155,
+        "height": 844
+      },
+      "samples": [
+        {
+          "class": "ueber-sr",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "„Kein Auftrag ist uns zu klein.“",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "„Kein",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Auftrag",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "ist",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "uns",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "zu",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "klein.“",
+          "weight": "700"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H4",
+          "text": "Private Anliegen",
+          "weight": "700"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H4",
+          "text": "Gewerbe und Hausverwaltungen",
+          "weight": "700"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H4",
+          "text": "Kommunen und öffentliche Auftraggeber",
+          "weight": "700"
+        },
+        {
+          "class": "card-more",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Projekt ansehen →",
+          "weight": "400"
+        },
+        {
+          "class": "card-more",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Projekt ansehen →",
+          "weight": "400"
+        },
+        {
+          "class": "card-more",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Projekt ansehen →",
+          "weight": "400"
+        },
+        {
+          "class": "maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Alle Projekte",
+          "weight": "400"
+        }
+      ],
+      "title": "Über uns | Maik Rohdich Garten- und Landschaftsbau in Herne"
+    },
+    {
+      "url": "http://127.0.0.1:8080/kontakt/",
+      "viewport": {
+        "width": 1155,
+        "height": 844
+      },
+      "samples": [],
+      "title": "Kontakt | Maik Rohdich Garten- und Landschaftsbau in Herne"
+    },
+    {
+      "url": "http://127.0.0.1:8080/projekte/",
+      "viewport": {
+        "width": 1155,
+        "height": 844
+      },
+      "samples": [
+        {
+          "class": "maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Passendes Projekt gesehen? Jetzt anfragen",
+          "weight": "400"
+        }
+      ],
+      "title": "Gartenbilder & Projekte – Garten- und Landschaftsbau | Maik Rohdich"
+    },
+    {
+      "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/",
+      "viewport": {
+        "width": 1155,
+        "height": 844
+      },
+      "samples": [
+        {
+          "class": "maik-cta__label maik-cta__label--medium",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Baumkontrolle vereinbaren",
+          "weight": "400"
+        },
+        {
+          "class": "maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "JETZT ANFRAGEN",
+          "weight": "400"
+        },
+        {
+          "class": "maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Mehr anzeigen",
+          "weight": "400"
+        },
+        {
+          "class": "anf-senden__label maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Anfrage senden",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Verkehrssicherheit herstellen",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Baumpflege",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Baumfällung",
+          "weight": "400"
+        }
+      ],
+      "title": "Baumkontrolle in Herne | Maik Rohdich"
+    },
+    {
+      "url": "http://127.0.0.1:8080/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "samples": [
+        {
+          "class": "mobile-proof-gallery__link-label maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Zur Galerie",
+          "weight": "400"
+        },
+        {
+          "class": "mobile-proof-request__label maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Gartenwunsch besprechen",
+          "weight": "400"
+        },
+        {
+          "class": "mr-ueber__mehr-titel--iphone",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Mehr über uns",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "24h Baum- & Sturmnotdienst",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Außergewöhnliches für den Garten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Baumfällung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Baumkontrolle",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Baumpflege",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Beleuchtung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Bonsai / Formgehölze",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Dachbegrünung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Entwässerung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Erd- & Baggerarbeiten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Feuerstellen",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Findlinge",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Gartengestaltung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Gartenpflege",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Kaminholz",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Palmen",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Pflanzarbeiten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Pflasterarbeiten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Pflasterreinigung / Fugenreinigung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Rodungsarbeiten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Rohdichs Grubengold",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Rollrasen",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Saisonbepflanzung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Schredderarbeiten",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Teichbau & -technik",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Terrassenbau",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Wurzelentfernung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Zäune & Sichtschutz",
+          "weight": "400"
+        },
+        {
+          "class": "mobile-proof-request__label maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Zum Kontaktformular",
+          "weight": "400"
+        },
+        {
+          "class": "step-card__copy--iphone",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Termin vor Ort",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H3",
+          "text": "Termin bei uns in der Ausstellung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H3",
+          "text": "Ausarbeitung Individualangebot",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H3",
+          "text": "Auftragserteilung & Ausführung",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H3",
+          "text": "Erhaltungspflege",
+          "weight": "400"
+        },
+        {
+          "class": "mobile-proof-request__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Projekt anfragen",
+          "weight": "400"
+        },
+        {
+          "class": "anf-senden__label maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Anfrage senden",
+          "weight": "400"
+        }
+      ],
+      "title": "Maik Rohdich Garten- und Landschaftsbau – Herne, Bochum, Recklinghausen"
+    },
+    {
+      "url": "http://127.0.0.1:8080/ueber-uns/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "samples": [
+        {
+          "class": "ueber-sr",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "„Kein Auftrag ist uns zu klein.“",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "„Kein",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Auftrag",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "ist",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "uns",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "zu",
+          "weight": "700"
+        },
+        {
+          "class": "ueber-q__w",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "klein.“",
+          "weight": "700"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H4",
+          "text": "Private Anliegen",
+          "weight": "700"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H4",
+          "text": "Gewerbe und Hausverwaltungen",
+          "weight": "700"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "H4",
+          "text": "Kommunen und öffentliche Auftraggeber",
+          "weight": "700"
+        },
+        {
+          "class": "card-more",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Projekt ansehen →",
+          "weight": "400"
+        },
+        {
+          "class": "card-more",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Projekt ansehen →",
+          "weight": "400"
+        },
+        {
+          "class": "card-more",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Projekt ansehen →",
+          "weight": "400"
+        },
+        {
+          "class": "maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Alle Projekte",
+          "weight": "400"
+        }
+      ],
+      "title": "Über uns | Maik Rohdich Garten- und Landschaftsbau in Herne"
+    },
+    {
+      "url": "http://127.0.0.1:8080/kontakt/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "samples": [],
+      "title": "Kontakt | Maik Rohdich Garten- und Landschaftsbau in Herne"
+    },
+    {
+      "url": "http://127.0.0.1:8080/projekte/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "samples": [
+        {
+          "class": "maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Passendes Projekt gesehen? Jetzt anfragen",
+          "weight": "400"
+        }
+      ],
+      "title": "Gartenbilder & Projekte – Garten- und Landschaftsbau | Maik Rohdich"
+    },
+    {
+      "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "samples": [
+        {
+          "class": "maik-cta__label maik-cta__label--medium",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Baumkontrolle vereinbaren",
+          "weight": "400"
+        },
+        {
+          "class": "maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "JETZT ANFRAGEN",
+          "weight": "400"
+        },
+        {
+          "class": "maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Mehr anzeigen",
+          "weight": "400"
+        },
+        {
+          "class": "anf-senden__label maik-cta__label",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "SPAN",
+          "text": "Anfrage senden",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Verkehrssicherheit herstellen",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Baumpflege",
+          "weight": "400"
+        },
+        {
+          "class": "",
+          "font": "\"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive",
+          "style": "italic",
+          "tag": "STRONG",
+          "text": "Baumfällung",
+          "weight": "400"
+        }
+      ],
+      "title": "Baumkontrolle in Herne | Maik Rohdich"
+    }
+  ],
+  "handwriting_css_samples_caveat": "Layout/CSS samples, including SR/animation text. Not actual rendered-font or viewport-visibility proof.",
+  "preservation": {
+    "baseline_files": 5180,
+    "all_existing_files_present": true,
+    "unchanged_baseline_files": 5129,
+    "legacy_text_removal_only_verified_files": 47,
+    "original_refs_unchanged": true,
+    "staged_patch_unchanged": true,
+    "head_unchanged": true,
+    "branch_unchanged": true,
+    "existing_runtime_styles_scripts_fonts_and_active_graphics_unchanged": true,
+    "retired_svg_exception": "assets/img/logo/brand.svg: obsolete font-dependent text group removed"
+  },
+  "historical_scope": "Original fields document the audit before the Comic Neue migration; comic_neue_migration is the current result.",
+  "comic_neue_migration": {
+    "date": "2026-10-08",
+    "branch": "codex/homepage-review",
+    "head_unchanged": "651f2355b383d5d66862ab5b4e5192549f50f29f",
+    "initial_status_entries": 104,
+    "backup": "/Users/davidk./Documents/SD-MR-001/maik-comicneue-20261008-lhhgp7o4",
+    "provenance_file": "assets/fonts/comic-neue-provenance.json",
+    "family": "Maik Comic Neue",
+    "styles": [
+      "italic"
+    ],
+    "weights": [
+      400,
+      700
+    ],
+    "previous_active_declarations": 30,
+    "affected_css_files": [
+      "anfrage.css",
+      "cta-family-home.css",
+      "cta-family.css",
+      "home-dark.css",
+      "home-process.css",
+      "leistung-mobile.css",
+      "mobile-social-proof.css",
+      "privat-form.css",
+      "projekte.css",
+      "styles.css",
+      "ueber-uns.css"
+    ],
+    "optical_adjustment": {
+      "cta_weight": 700,
+      "cta_size_scale": 1.14,
+      "400_title_size_scale": 1.08,
+      "line_height_and_tracking": "unchanged",
+      "comparison": {
+        "viewport": [
+          1024,
+          900
+        ],
+        "old_text_width_px": 173.1640625,
+        "new_text_width_px": 172.0078125,
+        "old_font_size_px": 16,
+        "new_font_size_px": 18.24
+      }
+    },
+    "inspection": [
+      {
+        "file": "comic-neue-italic-400.woff2",
+        "fonttools_version": "4.66.1",
+        "weight": 400,
+        "italic_selection": true,
+        "head_italic": true,
+        "italic_angle": -12.0,
+        "glyphs": 319,
+        "required_characters": {
+          "ä": {
+            "codepoint": "U+00E4",
+            "glyph": "adieresis"
+          },
+          "ö": {
+            "codepoint": "U+00F6",
+            "glyph": "odieresis"
+          },
+          "ü": {
+            "codepoint": "U+00FC",
+            "glyph": "udieresis"
+          },
+          "Ä": {
+            "codepoint": "U+00C4",
+            "glyph": "Adieresis"
+          },
+          "Ö": {
+            "codepoint": "U+00D6",
+            "glyph": "Odieresis"
+          },
+          "Ü": {
+            "codepoint": "U+00DC",
+            "glyph": "Udieresis"
+          },
+          "ß": {
+            "codepoint": "U+00DF",
+            "glyph": "germandbls"
+          },
+          "²": {
+            "codepoint": "U+00B2",
+            "glyph": "uni00B2"
+          }
+        },
+        "copyright": "Copyright 2014 The Comic Neue Project Authors (https://github.com/crozynski/comicneue)",
+        "version": "Version 2.003;hotconv 1.0.109;makeotfexe 2.5.65596",
+        "postscript": "ComicNeue-Italic"
+      },
+      {
+        "file": "comic-neue-italic-700.woff2",
+        "fonttools_version": "4.66.1",
+        "weight": 700,
+        "italic_selection": true,
+        "head_italic": true,
+        "italic_angle": -12.0,
+        "glyphs": 319,
+        "required_characters": {
+          "ä": {
+            "codepoint": "U+00E4",
+            "glyph": "adieresis"
+          },
+          "ö": {
+            "codepoint": "U+00F6",
+            "glyph": "odieresis"
+          },
+          "ü": {
+            "codepoint": "U+00FC",
+            "glyph": "udieresis"
+          },
+          "Ä": {
+            "codepoint": "U+00C4",
+            "glyph": "Adieresis"
+          },
+          "Ö": {
+            "codepoint": "U+00D6",
+            "glyph": "Odieresis"
+          },
+          "Ü": {
+            "codepoint": "U+00DC",
+            "glyph": "Udieresis"
+          },
+          "ß": {
+            "codepoint": "U+00DF",
+            "glyph": "germandbls"
+          },
+          "²": {
+            "codepoint": "U+00B2",
+            "glyph": "uni00B2"
+          }
+        },
+        "copyright": "Copyright 2014 The Comic Neue Project Authors (https://github.com/crozynski/comicneue)",
+        "version": "Version 2.003;hotconv 1.0.109;makeotfexe 2.5.65596",
+        "postscript": "ComicNeue-BoldItalic"
+      }
+    ],
+    "http": [
+      {
+        "path": "assets/fonts/comic-neue-italic-400.woff2",
+        "status": 200,
+        "mime": "font/woff2",
+        "cache": "no-store",
+        "sha256": "09ab514b68ef3ddb55e03a7ec5a6b100caea5b36195a6d3f104250e3279efc65",
+        "matches_disk": true
+      },
+      {
+        "path": "assets/fonts/comic-neue-italic-700.woff2",
+        "status": 200,
+        "mime": "font/woff2",
+        "cache": "no-store",
+        "sha256": "b24900d4debe9a84621dac335edaf7a87144e00c04cedb83602f654b01daa0c5",
+        "matches_disk": true
+      },
+      {
+        "path": "assets/fonts/comic-neue-OFL.txt",
+        "status": 200,
+        "mime": "text/plain; charset=utf-8",
+        "cache": "no-store",
+        "sha256": "7c38a22e5878e60fe423360553e63dd7be23d29f1f60336034935dbfc96e8320",
+        "matches_disk": true
+      },
+      {
+        "path": "assets/fonts/comic-neue-provenance.json",
+        "status": 200,
+        "mime": "application/json; charset=utf-8",
+        "cache": "no-store",
+        "sha256": "d1f9eb84954bfcc4f23e55548a08ea2646a408d252967d70e4c0445020610eb0",
+        "matches_disk": true
+      }
+    ],
+    "build": {
+      "first_build": "passed",
+      "second_build": "passed",
+      "second_build_changed_files": [],
+      "warnings": [
+        "Missing submenu marker in gewerbekunden/index.html",
+        "Four existing gallery source images without responsive variants"
+      ]
+    },
+    "negative_tests": [
+      {
+        "case": "missing italic 700",
+        "rejected": true,
+        "output": "comic-neue-italic-700.woff2: erforderliche Datei fehlt\nComic-Neue-Herkunftsnachweis: ENOENT: no such file or directory, open '/Users/davidk./Documents/SD-MR-001/maik-comicneue-20261008-lhhgp7o4/production-build/assets/fonts/comic-neue-italic-700.woff2'\nassets/css/styles.css: Font-Pfad fehlt: ../fonts/comic-neue-italic-700.woff2"
+      },
+      {
+        "case": "modified font bytes",
+        "rejected": true,
+        "output": "comic-neue-italic-700.woff2: SHA-256 stimmt nicht mit dem Herkunftsnachweis überein"
+      },
+      {
+        "case": "old active handwriting",
+        "rejected": true,
+        "output": "font-regression-test.css: frühere System-Handschrift in aktiver Schriftregel"
+      }
+    ],
+    "browser_layouts": [
+      {
+        "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+        "viewport": [
+          320,
+          760
+        ],
+        "document_width": 320,
+        "handwriting_nodes": 53,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "Gartenbau meister",
+            "box": {
+              "height": 33.90625,
+              "width": 72.921875,
+              "x": 74.9375,
+              "y": 1837.9296875
+            },
+            "size": "14.6149px"
+          },
+          {
+            "text": "LWK-Baum Kontrolleur",
+            "box": {
+              "height": 28.71875,
+              "width": 72.921875,
+              "x": 210.3046875,
+              "y": 1840.5234375
+            },
+            "size": "12.3797px"
+          },
+          {
+            "text": "Sachver ständiger",
+            "box": {
+              "height": 33.90625,
+              "width": 72.921875,
+              "x": 74.9375,
+              "y": 1920.7109375
+            },
+            "size": "14.6149px"
+          }
+        ],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+        "viewport": [
+          320,
+          760
+        ],
+        "document_width": 320,
+        "handwriting_nodes": 14,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "„Kein Auftrag ist uns zu klein.“",
+            "box": {
+              "height": 1,
+              "width": 1,
+              "x": 96.84375,
+              "y": 931.6484375
+            },
+            "size": "22px"
+          }
+        ],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/projekte/",
+        "viewport": [
+          320,
+          760
+        ],
+        "document_width": 320,
+        "handwriting_nodes": 1,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+        "viewport": [
+          320,
+          760
+        ],
+        "document_width": 320,
+        "handwriting_nodes": 7,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+        "viewport": [
+          390,
+          844
+        ],
+        "document_width": 390,
+        "handwriting_nodes": 53,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+        "viewport": [
+          390,
+          844
+        ],
+        "document_width": 390,
+        "handwriting_nodes": 14,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "„Kein Auftrag ist uns zu klein.“",
+            "box": {
+              "height": 1,
+              "width": 1,
+              "x": 131.84375,
+              "y": 946.1171875
+            },
+            "size": "22px"
+          }
+        ],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/projekte/",
+        "viewport": [
+          390,
+          844
+        ],
+        "document_width": 390,
+        "handwriting_nodes": 1,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+        "viewport": [
+          390,
+          844
+        ],
+        "document_width": 390,
+        "handwriting_nodes": 7,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+        "viewport": [
+          844,
+          390
+        ],
+        "document_width": 844,
+        "handwriting_nodes": 53,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+        "viewport": [
+          844,
+          390
+        ],
+        "document_width": 844,
+        "handwriting_nodes": 14,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "„Kein Auftrag ist uns zu klein.“",
+            "box": {
+              "height": 1,
+              "width": 1,
+              "x": 349.1171875,
+              "y": 956.578125
+            },
+            "size": "25.4444px"
+          }
+        ],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/projekte/",
+        "viewport": [
+          844,
+          390
+        ],
+        "document_width": 844,
+        "handwriting_nodes": 1,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+        "viewport": [
+          844,
+          390
+        ],
+        "document_width": 844,
+        "handwriting_nodes": 7,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+        "viewport": [
+          1440,
+          960
+        ],
+        "document_width": 1440,
+        "handwriting_nodes": 53,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+        "viewport": [
+          1440,
+          960
+        ],
+        "document_width": 1440,
+        "handwriting_nodes": 14,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "„Kein Auftrag ist uns zu klein.“",
+            "box": {
+              "height": 1,
+              "width": 1,
+              "x": 639.890625,
+              "y": 1045
+            },
+            "size": "28px"
+          }
+        ],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/projekte/",
+        "viewport": [
+          1440,
+          960
+        ],
+        "document_width": 1440,
+        "handwriting_nodes": 1,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+        "viewport": [
+          1440,
+          960
+        ],
+        "document_width": 1440,
+        "handwriting_nodes": 7,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false,
+        "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+      },
+      {
+        "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+        "viewport": [
+          430,
+          932
+        ],
+        "document_width": 430,
+        "handwriting_nodes": 53,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+        "viewport": [
+          430,
+          932
+        ],
+        "document_width": 430,
+        "handwriting_nodes": 14,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "„Kein Auftrag ist uns zu klein.“",
+            "box": {
+              "height": 1,
+              "width": 1,
+              "x": 150.9921875,
+              "y": 967.2734375
+            },
+            "size": "22.3021px"
+          }
+        ],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/projekte/",
+        "viewport": [
+          430,
+          932
+        ],
+        "document_width": 430,
+        "handwriting_nodes": 1,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+        "viewport": [
+          430,
+          932
+        ],
+        "document_width": 430,
+        "handwriting_nodes": 7,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+        "viewport": [
+          568,
+          320
+        ],
+        "document_width": 568,
+        "handwriting_nodes": 53,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+        "viewport": [
+          568,
+          320
+        ],
+        "document_width": 568,
+        "handwriting_nodes": 14,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "„Kein Auftrag ist uns zu klein.“",
+            "box": {
+              "height": 1,
+              "width": 1,
+              "x": 217.0390625,
+              "y": 944.5546875
+            },
+            "size": "23.3495px"
+          }
+        ],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/projekte/",
+        "viewport": [
+          568,
+          320
+        ],
+        "document_width": 568,
+        "handwriting_nodes": 1,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+        "viewport": [
+          568,
+          320
+        ],
+        "document_width": 568,
+        "handwriting_nodes": 7,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+        "viewport": [
+          900,
+          420
+        ],
+        "document_width": 900,
+        "handwriting_nodes": 53,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+        "viewport": [
+          900,
+          420
+        ],
+        "document_width": 900,
+        "handwriting_nodes": 14,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "„Kein Auftrag ist uns zu klein.“",
+            "box": {
+              "height": 1,
+              "width": 1,
+              "x": 375.9296875,
+              "y": 963.75
+            },
+            "size": "25.8694px"
+          }
+        ],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/projekte/",
+        "viewport": [
+          900,
+          420
+        ],
+        "document_width": 900,
+        "handwriting_nodes": 1,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+        "viewport": [
+          900,
+          420
+        ],
+        "document_width": 900,
+        "handwriting_nodes": 7,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+        "viewport": [
+          901,
+          720
+        ],
+        "document_width": 901,
+        "handwriting_nodes": 53,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+        "viewport": [
+          901,
+          720
+        ],
+        "document_width": 901,
+        "handwriting_nodes": 14,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "„Kein Auftrag ist uns zu klein.“",
+            "box": {
+              "height": 1,
+              "width": 1,
+              "x": 376.390625,
+              "y": 805
+            },
+            "size": "25.877px"
+          }
+        ],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/projekte/",
+        "viewport": [
+          901,
+          720
+        ],
+        "document_width": 901,
+        "handwriting_nodes": 1,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+        "viewport": [
+          901,
+          720
+        ],
+        "document_width": 901,
+        "handwriting_nodes": 7,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+        "viewport": [
+          1024,
+          800
+        ],
+        "document_width": 1024,
+        "handwriting_nodes": 53,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+        "viewport": [
+          1024,
+          800
+        ],
+        "document_width": 1024,
+        "handwriting_nodes": 14,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "„Kein Auftrag ist uns zu klein.“",
+            "box": {
+              "height": 1,
+              "width": 1,
+              "x": 435.25,
+              "y": 885
+            },
+            "size": "26.8106px"
+          }
+        ],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/projekte/",
+        "viewport": [
+          1024,
+          800
+        ],
+        "document_width": 1024,
+        "handwriting_nodes": 1,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+        "viewport": [
+          1024,
+          800
+        ],
+        "document_width": 1024,
+        "handwriting_nodes": 7,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "document_width": 1920,
+        "handwriting_nodes": 53,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "document_width": 1920,
+        "handwriting_nodes": 14,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [
+          {
+            "text": "„Kein Auftrag ist uns zu klein.“",
+            "box": {
+              "height": 1,
+              "width": 1,
+              "x": 879.890625,
+              "y": 1165
+            },
+            "size": "28px"
+          }
+        ],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/projekte/",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "document_width": 1920,
+        "handwriting_nodes": 1,
+        "weights": [
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      },
+      {
+        "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "document_width": 1920,
+        "handwriting_nodes": 7,
+        "weights": [
+          "400",
+          "700"
+        ],
+        "styles": [
+          "italic"
+        ],
+        "reported_element_overhangs": [],
+        "page_overflow": false
+      }
+    ],
+    "render_proof": "Separate browser test: loaded FontFaceSet + actual Canvas measurements + transferred WOFF2 resources; not a per-glyph inspector audit of every production text.",
+    "devices": {
+      "real_mac_chrome": true,
+      "real_iphone": false,
+      "real_android_pixel": false,
+      "native_safari_inspector": "Unavailable: Computer Use permissions not granted"
+    },
+    "limitations": [
+      "No fresh isolated browser context or Disable cache control exposed",
+      "No exhaustive network capture of unchanged Elfsight",
+      "No direct rendered-glyph inspector on production texts",
+      "Interactive hover not exhaustively tested"
+    ],
+    "elfsight": "Configuration unchanged; earlier audit remains historical; no new comprehensive widget/popup audit in this font migration.",
+    "preservation": "No original files removed; pre-existing changes preserved; HTML mutations only font-related CSS versions.",
+    "changed_existing_files": [
+      "ASSETS.md",
+      "index.html",
+      "404.html",
+      "ueber-uns/index.html",
+      "kontakt/index.html",
+      "datenschutz/index.html",
+      "projekte/index.html",
+      "gewerbekunden/index.saved.html",
+      "gewerbekunden/leistungen/aussenanlagenpflege/index.html",
+      "docs/schriftarten-20261008.md",
+      "docs/schriftarten-20261008-nachweise.json",
+      "privatkunden/leistungen/vermessung-lasertechnik/index.html",
+      "privatkunden/leistungen/verkehrssicherheit/index.html",
+      "privatkunden/leistungen/schredderarbeiten/index.html",
+      "privatkunden/leistungen/gartenpflege/index.html",
+      "privatkunden/leistungen/terrassenbau/index.html",
+      "privatkunden/leistungen/sturmnotdienst/index.html",
+      "privatkunden/leistungen/rollrasen/index.html",
+      "privatkunden/leistungen/saisonbepflanzung/index.html",
+      "privatkunden/leistungen/stubbenfraeseneinsatz/index.html",
+      "privatkunden/leistungen/baumkontrolle/index.html",
+      "privatkunden/leistungen/rodungsarbeiten/index.html",
+      "privatkunden/leistungen/dachbegruenung/index.html",
+      "privatkunden/leistungen/erd-baggerarbeiten/index.html",
+      "privatkunden/leistungen/teichbau/index.html",
+      "privatkunden/leistungen/sichtschutzbepflanzung/index.html",
+      "privatkunden/leistungen/pflasterreinigung-fugenreinigung/index.html",
+      "privatkunden/leistungen/terrasse-pflasterarbeiten/index.html",
+      "privatkunden/leistungen/baumpflege/index.html",
+      "privatkunden/leistungen/ersatz-ausgleichspflanzungen/index.html",
+      "privatkunden/leistungen/holzverkauf/index.html",
+      "privatkunden/leistungen/feuerstellen/index.html",
+      "privatkunden/leistungen/nassschneidearbeiten/index.html",
+      "privatkunden/leistungen/pool-whirlpool-umfeld/index.html",
+      "privatkunden/leistungen/gartengestaltung/index.html",
+      "privatkunden/leistungen/bepflanzung/index.html",
+      "privatkunden/leistungen/entwaesserung/index.html",
+      "privatkunden/leistungen/aussergewoehnliches-garten/index.html",
+      "privatkunden/leistungen/beleuchtung/index.html",
+      "privatkunden/leistungen/wurzelentfernung/index.html",
+      "privatkunden/leistungen/findlinge-natursteineinfassungen/index.html",
+      "privatkunden/leistungen/palmen-winterfest/index.html",
+      "privatkunden/leistungen/vorgarten/index.html",
+      "privatkunden/leistungen/zaeune-sichtschutz/index.html",
+      "privatkunden/leistungen/bonsai-formgehoelze/index.html",
+      "privatkunden/leistungen/rohdichs-grubengold/index.html",
+      "privatkunden/leistungen/baumarbeiten/index.html",
+      "privatkunden/leistungen/balkonkastenbepflanzung/index.html",
+      "impressum/index.html",
+      "scripts/check-font-assets.mjs",
+      ".github/scripts/build-headers.mjs",
+      ".github/scripts/templates/leistung-v2.html",
+      "assets/css/cta-family-home.css",
+      "assets/css/styles.css",
+      "assets/css/home-process.css",
+      "assets/css/cta-family.css",
+      "assets/css/anfrage.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/projekte.css",
+      "assets/css/home-dark.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/mobile-social-proof.css",
+      "assets/css/privat-form.css"
+    ],
+    "new_files": [
+      "docs/schriftarten-20261008-comic-neue/handwriting-rules-before.json",
+      "docs/schriftarten-20261008-comic-neue/website-assets-after.json",
+      "docs/schriftarten-20261008-comic-neue/http-check.json",
+      "docs/schriftarten-20261008-comic-neue/font-file-inspection.json",
+      "docs/schriftarten-20261008-comic-neue/browser-render-evidence.json",
+      "docs/schriftarten-20261008-comic-neue/button-vergleich-browser.jpg",
+      "docs/schriftarten-20261008-comic-neue/focus-check.json",
+      "docs/schriftarten-20261008-comic-neue/build-check.json",
+      "docs/schriftarten-20261008-comic-neue/browser-layout-check.json",
+      "docs/schriftarten-20261008-comic-neue/font-check-negative-tests.json",
+      "assets/fonts/comic-neue-italic-400.woff2",
+      "assets/fonts/comic-neue-provenance.json",
+      "assets/fonts/comic-neue-italic-700.woff2",
+      "assets/fonts/comic-neue-OFL.txt",
+      "docs/schriftarten-20261008-comic-neue/preservation-check.json"
+    ],
+    "preservation_result": {
+      "changed_existing_files": [
+        "ASSETS.md",
+        "index.html",
+        "404.html",
+        "ueber-uns/index.html",
+        "kontakt/index.html",
+        "datenschutz/index.html",
+        "projekte/index.html",
+        "gewerbekunden/index.saved.html",
+        "gewerbekunden/leistungen/aussenanlagenpflege/index.html",
+        "docs/schriftarten-20261008.md",
+        "docs/schriftarten-20261008-nachweise.json",
+        "privatkunden/leistungen/vermessung-lasertechnik/index.html",
+        "privatkunden/leistungen/verkehrssicherheit/index.html",
+        "privatkunden/leistungen/schredderarbeiten/index.html",
+        "privatkunden/leistungen/gartenpflege/index.html",
+        "privatkunden/leistungen/terrassenbau/index.html",
+        "privatkunden/leistungen/sturmnotdienst/index.html",
+        "privatkunden/leistungen/rollrasen/index.html",
+        "privatkunden/leistungen/saisonbepflanzung/index.html",
+        "privatkunden/leistungen/stubbenfraeseneinsatz/index.html",
+        "privatkunden/leistungen/baumkontrolle/index.html",
+        "privatkunden/leistungen/rodungsarbeiten/index.html",
+        "privatkunden/leistungen/dachbegruenung/index.html",
+        "privatkunden/leistungen/erd-baggerarbeiten/index.html",
+        "privatkunden/leistungen/teichbau/index.html",
+        "privatkunden/leistungen/sichtschutzbepflanzung/index.html",
+        "privatkunden/leistungen/pflasterreinigung-fugenreinigung/index.html",
+        "privatkunden/leistungen/terrasse-pflasterarbeiten/index.html",
+        "privatkunden/leistungen/baumpflege/index.html",
+        "privatkunden/leistungen/ersatz-ausgleichspflanzungen/index.html",
+        "privatkunden/leistungen/holzverkauf/index.html",
+        "privatkunden/leistungen/feuerstellen/index.html",
+        "privatkunden/leistungen/nassschneidearbeiten/index.html",
+        "privatkunden/leistungen/pool-whirlpool-umfeld/index.html",
+        "privatkunden/leistungen/gartengestaltung/index.html",
+        "privatkunden/leistungen/bepflanzung/index.html",
+        "privatkunden/leistungen/entwaesserung/index.html",
+        "privatkunden/leistungen/aussergewoehnliches-garten/index.html",
+        "privatkunden/leistungen/beleuchtung/index.html",
+        "privatkunden/leistungen/wurzelentfernung/index.html",
+        "privatkunden/leistungen/findlinge-natursteineinfassungen/index.html",
+        "privatkunden/leistungen/palmen-winterfest/index.html",
+        "privatkunden/leistungen/vorgarten/index.html",
+        "privatkunden/leistungen/zaeune-sichtschutz/index.html",
+        "privatkunden/leistungen/bonsai-formgehoelze/index.html",
+        "privatkunden/leistungen/rohdichs-grubengold/index.html",
+        "privatkunden/leistungen/baumarbeiten/index.html",
+        "privatkunden/leistungen/balkonkastenbepflanzung/index.html",
+        "impressum/index.html",
+        "scripts/check-font-assets.mjs",
+        ".github/scripts/build-headers.mjs",
+        ".github/scripts/templates/leistung-v2.html",
+        "assets/css/cta-family-home.css",
+        "assets/css/styles.css",
+        "assets/css/home-process.css",
+        "assets/css/cta-family.css",
+        "assets/css/anfrage.css",
+        "assets/css/ueber-uns.css",
+        "assets/css/projekte.css",
+        "assets/css/home-dark.css",
+        "assets/css/leistung-mobile.css",
+        "assets/css/mobile-social-proof.css",
+        "assets/css/privat-form.css"
+      ],
+      "new_files": [
+        "docs/schriftarten-20261008-comic-neue/handwriting-rules-before.json",
+        "docs/schriftarten-20261008-comic-neue/website-assets-after.json",
+        "docs/schriftarten-20261008-comic-neue/http-check.json",
+        "docs/schriftarten-20261008-comic-neue/font-file-inspection.json",
+        "docs/schriftarten-20261008-comic-neue/browser-render-evidence.json",
+        "docs/schriftarten-20261008-comic-neue/button-vergleich-browser.jpg",
+        "docs/schriftarten-20261008-comic-neue/focus-check.json",
+        "docs/schriftarten-20261008-comic-neue/build-check.json",
+        "docs/schriftarten-20261008-comic-neue/browser-layout-check.json",
+        "docs/schriftarten-20261008-comic-neue/font-check-negative-tests.json",
+        "assets/fonts/comic-neue-italic-400.woff2",
+        "assets/fonts/comic-neue-provenance.json",
+        "assets/fonts/comic-neue-italic-700.woff2",
+        "assets/fonts/comic-neue-OFL.txt"
+      ],
+      "missing_preexisting_files": [],
+      "css_non_typographic_changes": [],
+      "html_changed_beyond_css_versions": [],
+      "nunito_baloo_font_files_unchanged": true,
+      "logos_images_js_unchanged": true
+    }
+  },
+  "comic_neue_non_button_weight_refinement": {
+    "date": "2026-10-08",
+    "fontWeight": "italic 700",
+    "detail": "schriftarten-20261008-comic-neue/weight-refinement.json",
+    "initial_migration_preserved": true,
+    "button_changes": false
+  },
+  "comic_neue_layout_review": {
+    "date": "2026-10-09",
+    "detail": "schriftarten-20261008-comic-neue/layout-review-20261009.json",
+    "screenshots": "schriftarten-20261008-comic-neue/layout-vergleich-20261009.jpg",
+    "historical_results_preserved": true,
+    "font_files_unchanged": true,
+    "approved_large_ctas_unchanged": true,
+    "cache_version": "20261009cn3",
+    "real_device_test": "Mac Chrome only; iPhone Safari, Pixel and Android not available"
+  },
+  "historical_open_checks_20261008": [
+    "fresh context and cache-disabled full widget network trace",
+    "Mac Safari primary/rendered handwriting font identity and selected face",
+    "real iPhone Safari selected handwriting font and OS version",
+    "exact-match licensed webfont if Comic Sans MS or Chalkboard SE is selected",
+    "post-Hetzner-deployment font requests, licences, headers and rendering"
+  ],
+  "final_audit_20261009": {
+    "date": "2026-10-09",
+    "classification": "Für das Deployment vorbereitet",
+    "repo": "/Users/davidk./Documents/SD-MR-001/MaikDemo-homepage-review",
+    "branch": "codex/homepage-review",
+    "head": "651f2355b383d5d66862ab5b4e5192549f50f29f",
+    "private_backup": "/Users/davidk./Documents/SD-MR-001/maik-font-final-20261009-qzair3iq",
+    "font_files": 6,
+    "full_OFL_files": 3,
+    "active_handwriting_declarations": 30,
+    "public_sources_scanned": 191,
+    "current_browser_cases": 35,
+    "current_handwritten_text_nodes": 560,
+    "current_handwriting_style": "italic 700",
+    "font_check": "passed: 19 font faces, 56 preloads",
+    "build": "two full builds passed in separate current-project copy; second run byte-identical",
+    "browser": "Chrome 154 on real Mac, macOS 26.5.1 (25F80)",
+    "real_Mac": true,
+    "real_iPhone": false,
+    "real_Pixel_or_Android": false,
+    "native_Safari": false,
+    "fresh_isolated_context": false,
+    "browser_cache_disabled": false,
+    "complete_HAR": false,
+    "native_font_inspector": "Not accessible: macOS Computer Use Accessibility/Screen Recording permissions pending. No claim of per-glyph inspector verification.",
+    "file_render_proof": "All six exact local files loaded with nonzero transfer size in separate own-origin test. Comic Neue 400/700 canvas widths exactly equal FontTools advances; other four <0.12px difference in 32px probe, consistent with variable interpolation/rounding. This is test-view evidence, not per-glyph proof of every production node.",
+    "elfsight_release": "v3.53.0",
+    "elfsight_states": "Desktop widget and open review popup; 390x844 widget and popup. Shadow DOM included.",
+    "elfsight_review_font_css": "Nunito normal 400/600/700",
+    "elfsight_branding_css": "Roboto, Arial, sans-serif on Free Google Reviews Widget marketing link; no external font asset observed for it. Actual fallback not inspector-confirmed.",
+    "external_fonts_observed": [],
+    "network_limit": "DOM + pageAssets observed resource inventory, not complete network trace; no-store and a new tab do not disable third-party cache.",
+    "production_domain_tested": false,
+    "changes_this_audit": "Documentation and new evidence only; fonts, CSS, HTML, generators, widgets and images unchanged.",
+    "legacy_fonts": "No Inter/Outfit font files or old SVG font text in active sources or built output. Old names only in historical documentation/comments and deliberate removal regex. Original Git history unchanged.",
+    "remaining_tasks": [
+      {
+        "task": "Cache-disabled network trace and rendered-font inspector on actual website nodes plus Elfsight widget and popup",
+        "why": "Close production glyph and third-party request proof gaps; computed CSS and asset inventory alone are insufficient",
+        "who": "Developer with Chrome/Safari DevTools access",
+        "timing": "Can be checked before publication on local preview; repeat under production HTTPS after deployment"
+      },
+      {
+        "task": "Real iPhone Safari and Pixel Chrome portrait/landscape visual and rendered-font check",
+        "why": "Current mobile-size tests are Mac browser views; device font rendering not directly checked",
+        "who": "User with devices, developer can remote-inspect",
+        "timing": "Local preview before publication if possible; repeat after deployment"
+      },
+      {
+        "task": "Confirm graphic origins/website usage rights for original logo, alphabet PNGs and Balkonkasten title artwork",
+        "why": "Derived image production is partly documented; font OFL does not prove rights to existing image artwork. No actual infringement or font licence problem established.",
+        "who": "Client or original designer; project owner records confirmation",
+        "timing": "Separate image-asset clarification before publication; not a defect of the local font software"
+      }
+    ],
+    "preservation_proof": "preservation.json",
+    "registered_but_not_currently_sampled_faces": [
+      "Comic Neue italic 400",
+      "Nunito italic"
+    ],
+    "normal_display_notes": [
+      "Existing Baloo 2 italic on Das Team is synthetic because only normal Baloo faces are registered; unchanged and intentional outside handwriting conversion.",
+      "Georgia serif remains for one decorative quotation pseudo-element; unchanged."
+    ],
+    "state_check": "Focused CTA verified; static hover/focus/active selectors contain no font or metric declarations. Complete dynamic hover sequence not exercised.",
+    "temporary_font_test": "Not included in production; private 8084 server stopped and tab closed; viewport override reset.",
+    "evidence_directory": "docs/schriftarten-20261009-abschluss/",
+    "date_scope": "This is the current audit; earlier root fields remain historical 2026-10-08 observations.",
+    "files_changed_this_audit": [
+      "ASSETS.md",
+      "docs/schriftarten-20261008.md",
+      "docs/schriftarten-20261008-nachweise.json",
+      "docs/schriftarten-20261009-abschluss/"
+    ]
+  }
+}

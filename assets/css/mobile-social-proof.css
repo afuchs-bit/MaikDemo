@@ -495,10 +495,10 @@
   border: 0;
   background: transparent;
   color: rgba(244, 246, 240, .9);
-  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-  font-size: 1rem;
+  font-family: "Maik Comic Neue", cursive;
+  font-size: calc((1rem) * var(--type-handwriting-cta-scale));
   font-style: italic;
-  font-weight: 400;
+  font-weight: var(--type-cta-label-weight);
   line-height: 1.16;
   letter-spacing: .025em;
   text-transform: uppercase;
@@ -841,7 +841,7 @@
   height: 44px;
   padding: 4px 7px;
   color: #171916;
-  font-size: clamp(13px, 3.6vw, 14px);
+  font-size: calc((clamp(13px, 3.6vw, 14px)) * var(--type-handwriting-cta-scale));
 }
 
 .mobile-proof-gallery__link:hover {
@@ -952,10 +952,10 @@
      diese Gestaltung auch ab 481px, als begrenzte Kopie in cta-family-home.css. */
 
   .mobile-proof-request__label {
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: clamp(.9rem, 4.25vw, 1.0625rem);
+    font-family: "Maik Comic Neue", cursive;
+    font-size: var(--type-cta-label-size);
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .025em;
     text-transform: uppercase;

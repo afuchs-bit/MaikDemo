@@ -198,11 +198,11 @@
   html.home-theme-dark #ablauf .step-card h3 {
     margin: 0 0 10px;
     color: var(--mobile-logo-green, #56e607);
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: clamp(1.08rem, .92rem + .45vw, 1.34rem);
+    font-family: "Maik Comic Neue", cursive;
+    font-size: calc((clamp(1.08rem, .92rem + .45vw, 1.34rem)) * var(--type-handwriting-bold-scale));
     font-style: italic;
-    font-weight: 400;
-    line-height: 1.18;
+    font-weight: var(--type-handwriting-title-weight);
+    line-height: calc(1.18 / var(--type-handwriting-bold-scale));
     letter-spacing: .025em;
     text-transform: uppercase;
     text-wrap: balance;
@@ -312,8 +312,8 @@
 
   html.home-theme-dark #ablauf .step-card h3 {
     margin-bottom: 7px;
-    font-size: clamp(.79rem, 2.15vw, .98rem);
-    line-height: 1.14;
+    font-size: calc((clamp(.79rem, 2.15vw, .98rem)) * var(--type-handwriting-bold-scale));
+    line-height: calc(1.14 / var(--type-handwriting-bold-scale));
   }
 
   html.home-theme-dark #ablauf .step-card p {
@@ -337,7 +337,7 @@
   }
 
   html.home-theme-dark #ablauf .step-card h3 {
-    font-size: .78rem;
+    font-size: calc((.78rem) * var(--type-handwriting-bold-scale));
   }
 
   html.home-theme-dark #ablauf .step-card p {

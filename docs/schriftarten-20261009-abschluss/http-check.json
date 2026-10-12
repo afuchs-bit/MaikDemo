@@ -1,0 +1,102 @@
+[
+  {
+    "path": "assets/fonts/baloo2-700-latin.woff2",
+    "url": "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2",
+    "status": 200,
+    "type": "font/woff2",
+    "cache": "no-store",
+    "sha256": "8e7ffc9b993aa8caa89bcab81e103c9eb2da4e3e042f37b7a5115d0ddbff12c0",
+    "byte_identical": true,
+    "build_identical": true
+  },
+  {
+    "path": "assets/fonts/baloo2-OFL.txt",
+    "url": "http://127.0.0.1:8080/assets/fonts/baloo2-OFL.txt",
+    "status": 200,
+    "type": "text/plain; charset=utf-8",
+    "cache": "no-store",
+    "sha256": "ad09b05dc8bc678c9daf7c4c5f7ef1f55e5726127f4330b2e98e40b9dffcb860",
+    "byte_identical": true,
+    "build_identical": true
+  },
+  {
+    "path": "assets/fonts/baloo2-variable-latin.woff2",
+    "url": "http://127.0.0.1:8080/assets/fonts/baloo2-variable-latin.woff2",
+    "status": 200,
+    "type": "font/woff2",
+    "cache": "no-store",
+    "sha256": "26fb4610d4bc976d2584ca15e66c11465dbc1f267a10dca668fcb3080dfe59c1",
+    "byte_identical": true,
+    "build_identical": true
+  },
+  {
+    "path": "assets/fonts/comic-neue-OFL.txt",
+    "url": "http://127.0.0.1:8080/assets/fonts/comic-neue-OFL.txt",
+    "status": 200,
+    "type": "text/plain; charset=utf-8",
+    "cache": "no-store",
+    "sha256": "7c38a22e5878e60fe423360553e63dd7be23d29f1f60336034935dbfc96e8320",
+    "byte_identical": true,
+    "build_identical": true
+  },
+  {
+    "path": "assets/fonts/comic-neue-italic-400.woff2",
+    "url": "http://127.0.0.1:8080/assets/fonts/comic-neue-italic-400.woff2",
+    "status": 200,
+    "type": "font/woff2",
+    "cache": "no-store",
+    "sha256": "09ab514b68ef3ddb55e03a7ec5a6b100caea5b36195a6d3f104250e3279efc65",
+    "byte_identical": true,
+    "build_identical": true
+  },
+  {
+    "path": "assets/fonts/comic-neue-italic-700.woff2",
+    "url": "http://127.0.0.1:8080/assets/fonts/comic-neue-italic-700.woff2",
+    "status": 200,
+    "type": "font/woff2",
+    "cache": "no-store",
+    "sha256": "b24900d4debe9a84621dac335edaf7a87144e00c04cedb83602f654b01daa0c5",
+    "byte_identical": true,
+    "build_identical": true
+  },
+  {
+    "path": "assets/fonts/comic-neue-provenance.json",
+    "url": "http://127.0.0.1:8080/assets/fonts/comic-neue-provenance.json",
+    "status": 200,
+    "type": "application/json; charset=utf-8",
+    "cache": "no-store",
+    "sha256": "d1f9eb84954bfcc4f23e55548a08ea2646a408d252967d70e4c0445020610eb0",
+    "byte_identical": true,
+    "build_identical": true
+  },
+  {
+    "path": "assets/fonts/nunito-OFL.txt",
+    "url": "http://127.0.0.1:8080/assets/fonts/nunito-OFL.txt",
+    "status": 200,
+    "type": "text/plain; charset=utf-8",
+    "cache": "no-store",
+    "sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+    "byte_identical": true,
+    "build_identical": true
+  },
+  {
+    "path": "assets/fonts/nunito-italic-latin.woff2",
+    "url": "http://127.0.0.1:8080/assets/fonts/nunito-italic-latin.woff2",
+    "status": 200,
+    "type": "font/woff2",
+    "cache": "no-store",
+    "sha256": "6cfcc3786d5ba3b5c3a41797f95272e57f4290ccbd283a4bfd0033a3d857e64c",
+    "byte_identical": true,
+    "build_identical": true
+  },
+  {
+    "path": "assets/fonts/nunito-latin.woff2",
+    "url": "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2",
+    "status": 200,
+    "type": "font/woff2",
+    "cache": "no-store",
+    "sha256": "ba344451eab25b217a165363b1982048a5e5830a0daf36577973955a04cac793",
+    "byte_identical": true,
+    "build_identical": true
+  }
+]

@@ -1,0 +1,859 @@
+[
+  {
+    "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+    "viewport": [
+      320,
+      760
+    ],
+    "document_width": 320,
+    "handwriting_nodes": 53,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "Gartenbau meister",
+        "box": {
+          "height": 33.90625,
+          "width": 72.921875,
+          "x": 74.9375,
+          "y": 1837.9296875
+        },
+        "size": "14.6149px"
+      },
+      {
+        "text": "LWK-Baum Kontrolleur",
+        "box": {
+          "height": 28.71875,
+          "width": 72.921875,
+          "x": 210.3046875,
+          "y": 1840.5234375
+        },
+        "size": "12.3797px"
+      },
+      {
+        "text": "Sachver ständiger",
+        "box": {
+          "height": 33.90625,
+          "width": 72.921875,
+          "x": 74.9375,
+          "y": 1920.7109375
+        },
+        "size": "14.6149px"
+      }
+    ],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+    "viewport": [
+      320,
+      760
+    ],
+    "document_width": 320,
+    "handwriting_nodes": 14,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "„Kein Auftrag ist uns zu klein.“",
+        "box": {
+          "height": 1,
+          "width": 1,
+          "x": 96.84375,
+          "y": 931.6484375
+        },
+        "size": "22px"
+      }
+    ],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/projekte/",
+    "viewport": [
+      320,
+      760
+    ],
+    "document_width": 320,
+    "handwriting_nodes": 1,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+    "viewport": [
+      320,
+      760
+    ],
+    "document_width": 320,
+    "handwriting_nodes": 7,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+    "viewport": [
+      390,
+      844
+    ],
+    "document_width": 390,
+    "handwriting_nodes": 53,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+    "viewport": [
+      390,
+      844
+    ],
+    "document_width": 390,
+    "handwriting_nodes": 14,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "„Kein Auftrag ist uns zu klein.“",
+        "box": {
+          "height": 1,
+          "width": 1,
+          "x": 131.84375,
+          "y": 946.1171875
+        },
+        "size": "22px"
+      }
+    ],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/projekte/",
+    "viewport": [
+      390,
+      844
+    ],
+    "document_width": 390,
+    "handwriting_nodes": 1,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+    "viewport": [
+      390,
+      844
+    ],
+    "document_width": 390,
+    "handwriting_nodes": 7,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+    "viewport": [
+      844,
+      390
+    ],
+    "document_width": 844,
+    "handwriting_nodes": 53,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+    "viewport": [
+      844,
+      390
+    ],
+    "document_width": 844,
+    "handwriting_nodes": 14,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "„Kein Auftrag ist uns zu klein.“",
+        "box": {
+          "height": 1,
+          "width": 1,
+          "x": 349.1171875,
+          "y": 956.578125
+        },
+        "size": "25.4444px"
+      }
+    ],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/projekte/",
+    "viewport": [
+      844,
+      390
+    ],
+    "document_width": 844,
+    "handwriting_nodes": 1,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+    "viewport": [
+      844,
+      390
+    ],
+    "document_width": 844,
+    "handwriting_nodes": 7,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+    "viewport": [
+      1440,
+      960
+    ],
+    "document_width": 1440,
+    "handwriting_nodes": 53,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+    "viewport": [
+      1440,
+      960
+    ],
+    "document_width": 1440,
+    "handwriting_nodes": 14,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "„Kein Auftrag ist uns zu klein.“",
+        "box": {
+          "height": 1,
+          "width": 1,
+          "x": 639.890625,
+          "y": 1045
+        },
+        "size": "28px"
+      }
+    ],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/projekte/",
+    "viewport": [
+      1440,
+      960
+    ],
+    "document_width": 1440,
+    "handwriting_nodes": 1,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+    "viewport": [
+      1440,
+      960
+    ],
+    "document_width": 1440,
+    "handwriting_nodes": 7,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false,
+    "note": "The 1x1 owner quote is intentionally visually hidden; compact qualification labels also overhung their text box before the migration. DOM overflow is not by itself clipping."
+  },
+  {
+    "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+    "viewport": [
+      430,
+      932
+    ],
+    "document_width": 430,
+    "handwriting_nodes": 53,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+    "viewport": [
+      430,
+      932
+    ],
+    "document_width": 430,
+    "handwriting_nodes": 14,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "„Kein Auftrag ist uns zu klein.“",
+        "box": {
+          "height": 1,
+          "width": 1,
+          "x": 150.9921875,
+          "y": 967.2734375
+        },
+        "size": "22.3021px"
+      }
+    ],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/projekte/",
+    "viewport": [
+      430,
+      932
+    ],
+    "document_width": 430,
+    "handwriting_nodes": 1,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+    "viewport": [
+      430,
+      932
+    ],
+    "document_width": 430,
+    "handwriting_nodes": 7,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+    "viewport": [
+      568,
+      320
+    ],
+    "document_width": 568,
+    "handwriting_nodes": 53,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+    "viewport": [
+      568,
+      320
+    ],
+    "document_width": 568,
+    "handwriting_nodes": 14,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "„Kein Auftrag ist uns zu klein.“",
+        "box": {
+          "height": 1,
+          "width": 1,
+          "x": 217.0390625,
+          "y": 944.5546875
+        },
+        "size": "23.3495px"
+      }
+    ],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/projekte/",
+    "viewport": [
+      568,
+      320
+    ],
+    "document_width": 568,
+    "handwriting_nodes": 1,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+    "viewport": [
+      568,
+      320
+    ],
+    "document_width": 568,
+    "handwriting_nodes": 7,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+    "viewport": [
+      900,
+      420
+    ],
+    "document_width": 900,
+    "handwriting_nodes": 53,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+    "viewport": [
+      900,
+      420
+    ],
+    "document_width": 900,
+    "handwriting_nodes": 14,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "„Kein Auftrag ist uns zu klein.“",
+        "box": {
+          "height": 1,
+          "width": 1,
+          "x": 375.9296875,
+          "y": 963.75
+        },
+        "size": "25.8694px"
+      }
+    ],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/projekte/",
+    "viewport": [
+      900,
+      420
+    ],
+    "document_width": 900,
+    "handwriting_nodes": 1,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+    "viewport": [
+      900,
+      420
+    ],
+    "document_width": 900,
+    "handwriting_nodes": 7,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+    "viewport": [
+      901,
+      720
+    ],
+    "document_width": 901,
+    "handwriting_nodes": 53,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+    "viewport": [
+      901,
+      720
+    ],
+    "document_width": 901,
+    "handwriting_nodes": 14,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "„Kein Auftrag ist uns zu klein.“",
+        "box": {
+          "height": 1,
+          "width": 1,
+          "x": 376.390625,
+          "y": 805
+        },
+        "size": "25.877px"
+      }
+    ],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/projekte/",
+    "viewport": [
+      901,
+      720
+    ],
+    "document_width": 901,
+    "handwriting_nodes": 1,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+    "viewport": [
+      901,
+      720
+    ],
+    "document_width": 901,
+    "handwriting_nodes": 7,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+    "viewport": [
+      1024,
+      800
+    ],
+    "document_width": 1024,
+    "handwriting_nodes": 53,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+    "viewport": [
+      1024,
+      800
+    ],
+    "document_width": 1024,
+    "handwriting_nodes": 14,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "„Kein Auftrag ist uns zu klein.“",
+        "box": {
+          "height": 1,
+          "width": 1,
+          "x": 435.25,
+          "y": 885
+        },
+        "size": "26.8106px"
+      }
+    ],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/projekte/",
+    "viewport": [
+      1024,
+      800
+    ],
+    "document_width": 1024,
+    "handwriting_nodes": 1,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+    "viewport": [
+      1024,
+      800
+    ],
+    "document_width": 1024,
+    "handwriting_nodes": 7,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/?preview=comicneue-20261008cn1",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "document_width": 1920,
+    "handwriting_nodes": 53,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/ueber-uns/?preview=comicneue-20261008cn1",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "document_width": 1920,
+    "handwriting_nodes": 14,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [
+      {
+        "text": "„Kein Auftrag ist uns zu klein.“",
+        "box": {
+          "height": 1,
+          "width": 1,
+          "x": 879.890625,
+          "y": 1165
+        },
+        "size": "28px"
+      }
+    ],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/projekte/",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "document_width": 1920,
+    "handwriting_nodes": 1,
+    "weights": [
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  },
+  {
+    "url": "http://127.0.0.1:8080/privatkunden/leistungen/baumkontrolle/?preview=comicneue-20261008cn1",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "document_width": 1920,
+    "handwriting_nodes": 7,
+    "weights": [
+      "400",
+      "700"
+    ],
+    "styles": [
+      "italic"
+    ],
+    "reported_element_overhangs": [],
+    "page_overflow": false
+  }
+]

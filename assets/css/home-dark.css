@@ -912,10 +912,6 @@ html.home-theme-dark .fork-path:hover {
     opacity: .72;
   }
 
-  html.home-theme-dark.home-header-morph {
-    scrollbar-gutter: stable;
-  }
-
   html.home-theme-dark.home-header-morph body {
     padding-top: 0;
   }
@@ -1053,7 +1049,7 @@ html.home-theme-dark .fork-path:hover {
   /* Telefon, WhatsApp, Instagram (bei breiteren Mobilansichten) und Menue sind
      eine Icon-Gruppe. Ihr Feedback bleibt auf dem Element selbst und kann das
      Flexlayout daher nicht verschieben. */
-  html.home-theme-dark.home-header-morph .site-header .header-actions :is(.header-instagram, .call-btn, .btn-whatsapp, .nav-toggle):active {
+  html.home-theme-dark.home-header-morph .site-header:not(.is-home-condensed) .header-actions :is(.header-instagram, .call-btn, .btn-whatsapp, .nav-toggle):active {
     opacity: .78;
     transform: scale(.94);
   }
@@ -1066,26 +1062,12 @@ html.home-theme-dark .fork-path:hover {
   }
 
   html.home-theme-dark.home-header-morph .site-header.is-home-condensed .header-inner {
-    max-width: 1360px;
-    min-height: calc(var(--mobile-header-h) - 1px);
-    padding: 8px 0;
     background: transparent;
-    border-color: transparent;
     border-radius: 0;
     box-shadow: none;
   }
-
-  /* Die Startseiten-Karte behaelt beim Morph zwei transparente Rahmenpixel.
-     Zusammen mit den 16px Innenabstand bleibt die kompakte Leiste 82px hoch. */
-  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand {
-    min-height: 63px;
-  }
-
-  html.home-theme-dark.home-header-morph .site-header.is-home-condensed .brand-logo,
-  html.home-theme-dark.home-header-morph .site-header.is-home-condensed.is-scrolled .brand-logo {
-    width: clamp(144px, calc(100vw - 188px), 203px);
-    height: clamp(46px, 16vw, 63px);
-  }
+  /* Die kompakte Geometrie kommt ausschliesslich aus header-home.css.
+     Hier bleibt nur die Gestaltung des Uebergangs aus der Einstiegskarte. */
 
   html.home-theme-dark.home-header-morph .site-header.is-home-condensed .header-actions .call-wrap {
     width: 44px;
@@ -1758,11 +1740,11 @@ html.home-theme-dark .gate-welcome-qualification-label {
   display: block;
   min-width: 0;
   color: var(--home-on-dark);
-  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-  font-size: 1.0625rem;
+  font-family: "Maik Comic Neue", cursive;
+  font-size: calc((1.0625rem) * var(--type-handwriting-bold-scale));
   font-style: italic;
-  font-weight: 400;
-  line-height: 1.16;
+  font-weight: var(--type-handwriting-title-weight);
+  line-height: calc(1.16 / var(--type-handwriting-bold-scale));
   letter-spacing: .025em;
   text-transform: uppercase;
   overflow-wrap: normal;
@@ -1774,7 +1756,7 @@ html.home-theme-dark .gate-welcome-qualification-label {
 }
 
 html.home-theme-dark .gate-welcome-qualification-label--tree {
-  font-size: 0.9375rem;
+  font-size: calc((0.9375rem) * var(--type-handwriting-bold-scale));
   letter-spacing: -0.025em;
   white-space: nowrap;
 }
@@ -1946,7 +1928,7 @@ html.home-theme-dark .gate-welcome-qualification-fallback {
 
 @media (max-width: 340px) {
   html.home-theme-dark .gate-welcome-qualification-label--tree {
-    font-size: 0.9rem;
+    font-size: calc((0.9rem) * var(--type-handwriting-bold-scale));
   }
 
   html.home-theme-dark .gate-welcome-qualification-option:nth-child(2) .gate-welcome-qualification-content {
@@ -2125,12 +2107,14 @@ html.home-theme-dark .gate-welcome-qualification-fallback {
   }
 
   html.home-theme-dark .gate-welcome-qualification-label {
-    font-size: var(--qualification-label-size);
+    font-size: calc((var(--qualification-label-size)) * var(--type-handwriting-bold-scale));
+    letter-spacing: .03em;
     overflow-wrap: anywhere;
   }
 
   html.home-theme-dark .gate-welcome-qualification-label--tree {
-    font-size: calc(var(--qualification-label-size) * .88);
+    font-size: calc((calc(var(--qualification-label-size) * .88)) * var(--type-handwriting-bold-scale));
+    letter-spacing: -.025em;
     white-space: normal;
   }
 

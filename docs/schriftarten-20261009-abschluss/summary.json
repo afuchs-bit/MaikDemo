@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-09",
+  "classification": "Für das Deployment vorbereitet",
+  "repo": "/Users/davidk./Documents/SD-MR-001/MaikDemo-homepage-review",
+  "branch": "codex/homepage-review",
+  "head": "651f2355b383d5d66862ab5b4e5192549f50f29f",
+  "private_backup": "/Users/davidk./Documents/SD-MR-001/maik-font-final-20261009-qzair3iq",
+  "font_files": 6,
+  "full_OFL_files": 3,
+  "active_handwriting_declarations": 30,
+  "public_sources_scanned": 191,
+  "current_browser_cases": 35,
+  "current_handwritten_text_nodes": 560,
+  "current_handwriting_style": "italic 700",
+  "font_check": "passed: 19 font faces, 56 preloads",
+  "build": "two full builds passed in separate current-project copy; second run byte-identical",
+  "browser": "Chrome 154 on real Mac, macOS 26.5.1 (25F80)",
+  "real_Mac": true,
+  "real_iPhone": false,
+  "real_Pixel_or_Android": false,
+  "native_Safari": false,
+  "fresh_isolated_context": false,
+  "browser_cache_disabled": false,
+  "complete_HAR": false,
+  "native_font_inspector": "Not accessible: macOS Computer Use Accessibility/Screen Recording permissions pending. No claim of per-glyph inspector verification.",
+  "file_render_proof": "All six exact local files loaded with nonzero transfer size in separate own-origin test. Comic Neue 400/700 canvas widths exactly equal FontTools advances; other four <0.12px difference in 32px probe, consistent with variable interpolation/rounding. This is test-view evidence, not per-glyph proof of every production node.",
+  "elfsight_release": "v3.53.0",
+  "elfsight_states": "Desktop widget and open review popup; 390x844 widget and popup. Shadow DOM included.",
+  "elfsight_review_font_css": "Nunito normal 400/600/700",
+  "elfsight_branding_css": "Roboto, Arial, sans-serif on Free Google Reviews Widget marketing link; no external font asset observed for it. Actual fallback not inspector-confirmed.",
+  "external_fonts_observed": [],
+  "network_limit": "DOM + pageAssets observed resource inventory, not complete network trace; no-store and a new tab do not disable third-party cache.",
+  "production_domain_tested": false,
+  "changes_this_audit": "Documentation and new evidence only; fonts, CSS, HTML, generators, widgets and images unchanged.",
+  "legacy_fonts": "No Inter/Outfit font files or old SVG font text in active sources or built output. Old names only in historical documentation/comments and deliberate removal regex. Original Git history unchanged.",
+  "remaining_tasks": [
+    {
+      "task": "Cache-disabled network trace and rendered-font inspector on actual website nodes plus Elfsight widget and popup",
+      "why": "Close production glyph and third-party request proof gaps; computed CSS and asset inventory alone are insufficient",
+      "who": "Developer with Chrome/Safari DevTools access",
+      "timing": "Can be checked before publication on local preview; repeat under production HTTPS after deployment"
+    },
+    {
+      "task": "Real iPhone Safari and Pixel Chrome portrait/landscape visual and rendered-font check",
+      "why": "Current mobile-size tests are Mac browser views; device font rendering not directly checked",
+      "who": "User with devices, developer can remote-inspect",
+      "timing": "Local preview before publication if possible; repeat after deployment"
+    },
+    {
+      "task": "Confirm graphic origins/website usage rights for original logo, alphabet PNGs and Balkonkasten title artwork",
+      "why": "Derived image production is partly documented; font OFL does not prove rights to existing image artwork. No actual infringement or font licence problem established.",
+      "who": "Client or original designer; project owner records confirmation",
+      "timing": "Separate image-asset clarification before publication; not a defect of the local font software"
+    }
+  ],
+  "preservation_proof": "preservation.json",
+  "registered_but_not_currently_sampled_faces": [
+    "Comic Neue italic 400",
+    "Nunito italic"
+  ],
+  "normal_display_notes": [
+    "Existing Baloo 2 italic on Das Team is synthetic because only normal Baloo faces are registered; unchanged and intentional outside handwriting conversion.",
+    "Georgia serif remains for one decorative quotation pseudo-element; unchanged."
+  ],
+  "state_check": "Focused CTA verified; static hover/focus/active selectors contain no font or metric declarations. Complete dynamic hover sequence not exercised.",
+  "temporary_font_test": "Not included in production; private 8084 server stopped and tab closed; viewport override reset."
+}

@@ -1,7 +1,7 @@
 // .github/scripts/lib/render.mjs
 //
-// Reine Render-Funktionen für AP-15: erzeugt aus einem validierten Projekt-Datensatz
-// die statische Detailseite /projekte/<slug>/index.html und die crawlbare Galerie-Liste.
+// Render-Funktionen fuer die Galerie-Liste und die Leistungs-/Rechtstextseiten.
+// Projekte werden in der Galerie ausschliesslich als Fotopopup angezeigt.
 // KEIN Datei-I/O außer dem Laden der HTML-Templates – Validierung/Schreiben bleibt in
 // build-index.mjs. Design lebt in ../templates/, nicht hier.
 
@@ -14,7 +14,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const TPL_DIR = path.join(__dirname, '..', 'templates');
 
 export const SITE = 'https://rohdich.de';
-export const BASE_PROJEKT = '../../'; // /projekte/<slug>/ liegt zwei Ebenen unter dem Root
 export const BASE_GALLERY = '../';     // /projekte/ liegt eine Ebene unter dem Root
 
 // ---------- Escaping ----------
@@ -215,72 +214,10 @@ export function badge(kundentyp) {
     : { cls: '', label: 'Privatkunde' };
 }
 
-// ---------- Template-Laden (einmalig gecacht) ----------
-let _partials = null;
-async function partials() {
-  if (_partials) return _partials;
-  const [page, header, footer, logo] = await Promise.all([
-    readFile(path.join(TPL_DIR, 'projekt.html'), 'utf8'),
-    readFile(path.join(TPL_DIR, '_header.html'), 'utf8'),
-    readFile(path.join(TPL_DIR, '_footer.html'), 'utf8'),
-    readFile(path.join(TPL_DIR, '_logo.html'), 'utf8'),
-  ]);
-  _partials = { page, header, footer, logo };
-  return _partials;
-}
-
 function fill(tpl, map) {
   return tpl.replace(/\{\{(\w+)\}\}/g, (m, key) =>
     Object.prototype.hasOwnProperty.call(map, key) ? map[key] : m,
   );
-}
-
-// ---------- Bild-Block der Detailseite ----------
-function renderImages(bilder, base) {
-  return bilder
-    .map((b, i) => {
-      // Erstes Bild = LCP: hohe Priorität. Rest: lazy. Volle Spaltenbreite bis 900px.
-      const pic = renderPicture(b.bild, {
-        alt: b.alt || '',
-        sizes: '(max-width: 1000px) 100vw, 900px',
-        priority: i === 0,
-        base,
-      });
-      return `<figure class="projekt-figure">
-        ${pic}
-      </figure>`;
-    })
-    .join('\n      ');
-}
-
-// ---------- Leistungs-/Kundengruppen-Links ----------
-function leistungLinks(slugs, base, taxLabels, leistungPagesExist) {
-  return slugs
-    .map((slug) => {
-      const label = esc(taxLabels.get(slug) || slug);
-      // AP-33: Leistungsseiten liegen jetzt je Welt. Aus dem weltfremden Kontext einer
-      // Projektseite zeigen wir in die Standard-Welt (Privat; nur-Gewerbe-Slugs dorthin).
-      const href = leistungPagesExist.has(slug)
-        ? `${base}${weltPfadFuerSlug(slug)}leistungen/${encodeURIComponent(slug)}/`
-        : `${base}projekte/?tab=alle&leistung=${encodeURIComponent(slug)}`;
-      return `<li><a class="tag-link" href="${escAttr(href)}">${label}</a></li>`;
-    })
-    .join('\n          ');
-}
-
-function kundengruppeLinks(kundentyp, base) {
-  const out = [];
-  if (kundentyp.includes('privat')) {
-    // AP-F17: Ziel ist die Startseite, nicht privatkunden/ - der Hub ist seit AP-F8
-    // geloescht. Dieselbe Regel wie in KUNDENGRUPPE_META.privat.href, die damals
-    // bereits umgestellt wurde; diese Stelle war uebersehen worden und hat den
-    // toten Link bei jedem Build neu erzeugt.
-    out.push(`<li><a class="tag-link" href="${base}">Privatkunden</a></li>`);
-  }
-  if (kundentyp.includes('gewerbe')) {
-    out.push(`<li><a class="tag-link" href="${base}gewerbekunden/">Gewerbekunden</a></li>`);
-  }
-  return out.join('\n          ');
 }
 
 // AP-22 – optionale Fachtext-Vertiefung (z. B. Verkehrssicherungspflicht).
@@ -359,96 +296,6 @@ function lpRechner(rechner, base) {
     </section>`;
 }
 
-// ---------- Optionaler gegliederter Text (nur falls im JSON vorhanden) ----------
-function optionalText(p) {
-  const parts = [];
-  if (p.ausgangslage) parts.push(['Ausgangslage', p.ausgangslage]);
-  if (p.umsetzung) parts.push(['Umsetzung', p.umsetzung]);
-  if (p.ergebnis) parts.push(['Ergebnis', p.ergebnis]);
-  if (!parts.length) return '';
-  const blocks = parts
-    .map(([h, t]) => `<h2>${esc(h)}</h2>\n      <p>${esc(t)}</p>`)
-    .join('\n      ');
-  return `<div class="projekt-text reveal">\n      ${blocks}\n    </div>`;
-}
-
-// ---------- JSON-LD ----------
-function breadcrumbJsonLd(titel, canonical) {
-  return JSON.stringify(
-    {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Startseite', item: `${SITE}/` },
-        { '@type': 'ListItem', position: 2, name: 'Galerie', item: `${SITE}/projekte/` },
-        { '@type': 'ListItem', position: 3, name: titel, item: canonical },
-      ],
-    },
-    null,
-    2,
-  );
-}
-
-function imageJsonLd(bilder) {
-  const arr = bilder.map((b, i) => {
-    const obj = {
-      '@context': 'https://schema.org',
-      '@type': 'ImageObject',
-      contentUrl: absUrl(b.bild),
-      description: b.alt || '',
-    };
-    if (i === 0) obj.representativeOfPage = true;
-    return obj;
-  });
-  return JSON.stringify(arr, null, 2);
-}
-
-// ---------- Detailseite ----------
-export async function renderProjektPage(opts) {
-  const { project, slug, taxLabels, cssVersion, jsVersion, leistungPagesExist } = opts;
-  const { page, header, footer, logo } = await partials();
-
-  const base = BASE_PROJEKT;
-  const titel = project.titel;
-  const ort = project.ort;
-  const h1 = `${titel} in ${ort}`;
-  const canonical = `${SITE}/projekte/${slug}/`;
-  const b = badge(project.kundentyp);
-  const bilder = Array.isArray(project.bilder) ? project.bilder : [];
-  const cover = bilder[0] || {};
-  const lcpPreload = lcpPreloadFor(cover.bild, '(max-width: 1000px) 100vw, 900px', base);
-
-  const body = fill(page, {
-    base,
-    slug: esc(slug),
-    cssVersion: escAttr(cssVersion),
-    jsVersion: escAttr(jsVersion),
-    title: esc(`${h1} — Maik Rohdich Garten- und Landschaftsbau`),
-    ogTitle: escAttr(`${h1} — Maik Rohdich Garten- und Landschaftsbau`),
-    description: escAttr(truncate(project.beschreibung, 155)),
-    canonical: escAttr(canonical),
-    ogImage: escAttr(absUrl(cover.bild || '')),
-    lcpPreload,
-    breadcrumbJsonLd: breadcrumbJsonLd(titel, canonical),
-    imageJsonLd: imageJsonLd(bilder),
-    logo: logo.trim(),
-    header: fill(header, { base, leistungenSubmenu: renderNavSubmenu(base) }).trim(),
-    footer: fill(footer, footerTemplateData(base)).trim(),
-    titel: esc(titel),
-    ort: esc(ort),
-    h1: esc(h1),
-    beschreibung: esc(project.beschreibung),
-    badgeClass: b.cls,
-    badgeLabel: esc(b.label),
-    optionalText: optionalText(project),
-    images: renderImages(bilder, base),
-    leistungLinks: leistungLinks(project.leistungen || [], base, taxLabels, leistungPagesExist),
-    kundengruppeLinks: kundengruppeLinks(project.kundentyp || [], base),
-  });
-
-  return body;
-}
-
 // ---------- Statische Galerie-Liste (für /projekte/, zwischen den BUILD-Markern) ----------
 // AP-531: In der Galerie entfaellt das Etikett "Privatkunde" (Ansage des Auftraggebers,
 // wie galerie.js mit opts.ohnePrivatEtikett); "Gewerbekunde" (cls 'warn') bleibt.
@@ -460,7 +307,8 @@ export function renderGalleryList(projekte, base = BASE_GALLERY) {
       const pic = renderPicture(cover.bild || '', {
         alt: cover.alt || '', sizes: '(max-width: 700px) 90vw, 30vw', width: 800, height: 600, base,
       });
-      const href = `${encodeURIComponent(p.slug)}/`;
+      const manifest = imageManifest()[cover.bild];
+      const href = escAttr(relAsset(manifest ? fallbackSrc(manifest) : cover.bild, base));
       const label = escAttr(`Projekt „${p.titel}“ in ${p.ort} ansehen`);
       return `      <article class="project-card reveal">
         <div class="project-media">
@@ -470,7 +318,7 @@ export function renderGalleryList(projekte, base = BASE_GALLERY) {
         <div class="project-body">
           <span class="project-location">${esc(p.ort)}</span>
           <h3>${esc(p.titel)}</h3>
-          <p>${esc(p.beschreibung)}</p>
+          <p>${esc(cover.alt || '')}</p>
           <span class="card-more" aria-hidden="true">Projekt ansehen →</span>
         </div>
         <a class="card-open" href="${href}" aria-label="${label}"></a>
@@ -894,7 +742,7 @@ function lpRefs(refProjects, base) {
     const pic = renderPicture(cover.bild || '', {
       alt: cover.alt || '', sizes: '(max-width: 700px) 90vw, 30vw', width: 800, height: 600, base,
     });
-    const href = `${base}projekte/${encodeURIComponent(p.slug)}/`;
+    const href = `${base}projekte/?projekt=${encodeURIComponent(p.slug)}`;
     const label = escAttr(`Projekt „${p.titel}“ in ${p.ort} ansehen`);
     return `<article class="project-card">
           <div class="project-media">

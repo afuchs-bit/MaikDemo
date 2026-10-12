@@ -1,0 +1,249 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+  "probes": [
+    {
+      "file": "nunito-latin.woff2",
+      "family": "Nunito",
+      "style": "normal",
+      "weight": 400,
+      "text": "Projekt anfragen ÄÖÜ äöü ß²",
+      "fonttools_width_32px": 418.176,
+      "faces": [
+        {
+          "family": "Nunito",
+          "style": "normal",
+          "weight": "200 1000",
+          "status": "loaded"
+        },
+        {
+          "family": "Nunito",
+          "style": "normal",
+          "weight": "200 1000",
+          "status": "loaded"
+        },
+        {
+          "family": "Nunito",
+          "style": "normal",
+          "weight": "200 1000",
+          "status": "loaded"
+        }
+      ],
+      "canvas_width_32px": 418.0618896484375,
+      "expected_difference": -0.11411035156248772,
+      "monospace_width": 520.171875
+    },
+    {
+      "file": "nunito-latin.woff2",
+      "family": "Nunito",
+      "style": "normal",
+      "weight": 700,
+      "text": "Projekt anfragen ÄÖÜ äöü ß²",
+      "fonttools_width_32px": 434.976,
+      "faces": [
+        {
+          "family": "Nunito",
+          "style": "normal",
+          "weight": "200 1000",
+          "status": "loaded"
+        },
+        {
+          "family": "Nunito",
+          "style": "normal",
+          "weight": "200 1000",
+          "status": "loaded"
+        },
+        {
+          "family": "Nunito",
+          "style": "normal",
+          "weight": "200 1000",
+          "status": "loaded"
+        }
+      ],
+      "canvas_width_32px": 434.975830078125,
+      "expected_difference": -0.0001699218749990905,
+      "monospace_width": 520.171875
+    },
+    {
+      "file": "nunito-italic-latin.woff2",
+      "family": "Nunito",
+      "style": "italic",
+      "weight": 700,
+      "text": "Projekt anfragen ÄÖÜ äöü ß²",
+      "fonttools_width_32px": 434.976,
+      "faces": [
+        {
+          "family": "Nunito",
+          "style": "italic",
+          "weight": "200 1000",
+          "status": "loaded"
+        }
+      ],
+      "canvas_width_32px": 434.975830078125,
+      "expected_difference": -0.0001699218749990905,
+      "monospace_width": 520.171875
+    },
+    {
+      "file": "baloo2-variable-latin.woff2",
+      "family": "Baloo 2",
+      "style": "normal",
+      "weight": 400,
+      "text": "Projekt anfragen ÄÖÜ äöü ß²",
+      "fonttools_width_32px": 391.776,
+      "faces": [
+        {
+          "family": "Baloo 2",
+          "style": "normal",
+          "weight": "400 600",
+          "status": "loaded"
+        },
+        {
+          "family": "Baloo 2",
+          "style": "normal",
+          "weight": "400 600",
+          "status": "loaded"
+        },
+        {
+          "family": "Baloo 2",
+          "style": "normal",
+          "weight": "400 600",
+          "status": "loaded"
+        }
+      ],
+      "canvas_width_32px": 391.7757568359375,
+      "expected_difference": -0.0002431640625104592,
+      "monospace_width": 520.171875
+    },
+    {
+      "file": "baloo2-variable-latin.woff2",
+      "family": "Baloo 2",
+      "style": "normal",
+      "weight": 600,
+      "text": "Projekt anfragen ÄÖÜ äöü ß²",
+      "fonttools_width_32px": 403.232,
+      "faces": [
+        {
+          "family": "Baloo 2",
+          "style": "normal",
+          "weight": "400 600",
+          "status": "loaded"
+        },
+        {
+          "family": "Baloo 2",
+          "style": "normal",
+          "weight": "400 600",
+          "status": "loaded"
+        },
+        {
+          "family": "Baloo 2",
+          "style": "normal",
+          "weight": "400 600",
+          "status": "loaded"
+        }
+      ],
+      "canvas_width_32px": 403.1724853515625,
+      "expected_difference": -0.05951464843752774,
+      "monospace_width": 520.171875
+    },
+    {
+      "file": "baloo2-700-latin.woff2",
+      "family": "Baloo 2",
+      "style": "normal",
+      "weight": 700,
+      "text": "Projekt anfragen ÄÖÜ äöü ß²",
+      "fonttools_width_32px": 409.824,
+      "faces": [
+        {
+          "family": "Baloo 2",
+          "style": "normal",
+          "weight": "700",
+          "status": "loaded"
+        },
+        {
+          "family": "Baloo 2",
+          "style": "normal",
+          "weight": "700",
+          "status": "loaded"
+        }
+      ],
+      "canvas_width_32px": 409.8238525390625,
+      "expected_difference": -0.00014746093751227818,
+      "monospace_width": 520.171875
+    },
+    {
+      "file": "comic-neue-italic-400.woff2",
+      "family": "Maik Comic Neue",
+      "style": "italic",
+      "weight": 400,
+      "text": "Projekt anfragen ÄÖÜ äöü ß²",
+      "fonttools_width_32px": 403.40625,
+      "faces": [
+        {
+          "family": "Maik Comic Neue",
+          "style": "italic",
+          "weight": "400",
+          "status": "loaded"
+        }
+      ],
+      "canvas_width_32px": 403.40625,
+      "expected_difference": 0,
+      "monospace_width": 520.171875
+    },
+    {
+      "file": "comic-neue-italic-700.woff2",
+      "family": "Maik Comic Neue",
+      "style": "italic",
+      "weight": 700,
+      "text": "Projekt anfragen ÄÖÜ äöü ß²",
+      "fonttools_width_32px": 404.5625,
+      "faces": [
+        {
+          "family": "Maik Comic Neue",
+          "style": "italic",
+          "weight": "700",
+          "status": "loaded"
+        }
+      ],
+      "canvas_width_32px": 404.5625,
+      "expected_difference": 0,
+      "monospace_width": 520.171875
+    }
+  ],
+  "resources": [
+    {
+      "url": "http://127.0.0.1:8084/assets/fonts/nunito-latin.woff2",
+      "initiator": "css",
+      "transferSize": 39428,
+      "encodedBodySize": 39128
+    },
+    {
+      "url": "http://127.0.0.1:8084/assets/fonts/nunito-italic-latin.woff2",
+      "initiator": "css",
+      "transferSize": 42060,
+      "encodedBodySize": 41760
+    },
+    {
+      "url": "http://127.0.0.1:8084/assets/fonts/baloo2-variable-latin.woff2",
+      "initiator": "css",
+      "transferSize": 33488,
+      "encodedBodySize": 33188
+    },
+    {
+      "url": "http://127.0.0.1:8084/assets/fonts/baloo2-700-latin.woff2",
+      "initiator": "css",
+      "transferSize": 19736,
+      "encodedBodySize": 19436
+    },
+    {
+      "url": "http://127.0.0.1:8084/assets/fonts/comic-neue-italic-400.woff2",
+      "initiator": "css",
+      "transferSize": 22708,
+      "encodedBodySize": 22408
+    },
+    {
+      "url": "http://127.0.0.1:8084/assets/fonts/comic-neue-italic-700.woff2",
+      "initiator": "css",
+      "transferSize": 21960,
+      "encodedBodySize": 21660
+    }
+  ]
+}

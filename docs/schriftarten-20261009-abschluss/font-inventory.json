@@ -1,0 +1,937 @@
+{
+  "date": "2026-10-09",
+  "fonts": [
+    {
+      "path": "assets/fonts/baloo2-700-latin.woff2",
+      "bytes": 19436,
+      "sha256": "8e7ffc9b993aa8caa89bcab81e103c9eb2da4e3e042f37b7a5115d0ddbff12c0",
+      "names": {
+        "0": [
+          "Copyright 2019 The Baloo 2 Project Authors (https://github.com/EkType/Baloo2)"
+        ],
+        "1": [
+          "Baloo 2"
+        ],
+        "2": [
+          "Bold"
+        ],
+        "3": [
+          "1.700;EKTF;Baloo2-Bold"
+        ],
+        "5": [
+          "Version 1.700"
+        ],
+        "6": [
+          "Baloo2-Bold"
+        ],
+        "13": [],
+        "14": [
+          "http://scripts.sil.org/OFL"
+        ]
+      },
+      "weight": 700,
+      "selection": 160,
+      "italic_angle": 0.0,
+      "axes": [],
+      "unicode_count": 230,
+      "required_chars": {
+        "ä": "adieresis",
+        "ö": "odieresis",
+        "ü": "udieresis",
+        "Ä": "Adieresis",
+        "Ö": "Odieresis",
+        "Ü": "Udieresis",
+        "ß": "germandbls",
+        "²": "uni00B2"
+      },
+      "provenance": {
+        "family_source": "https://github.com/google/fonts/tree/main/ofl/baloo2",
+        "historical_retrieval": "2026-09-02",
+        "historical_date_evidence": "ASSETS.md; not independently proved by an original download receipt",
+        "original_download_url": "not retained in the inspected project",
+        "official_reference_css_url": "https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap",
+        "official_reference_woff2_url": "https://fonts.gstatic.com/s/baloo2/v23/wXK0E3kTposypRydzVT08TS3JnAmtdj9yppo_leP6HcMqzQ.woff2",
+        "official_reference_sha256": "051ccab549f97781d3c119597a0c6a31938ddaf449c0ca038067743437021807",
+        "verified_again": "2026-10-09",
+        "byte_identical_to_current_cdn": false,
+        "comparison": {
+          "local": "baloo2-700-latin.woff2",
+          "reference_download": "official-9.woff2",
+          "same_tables": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "OS/2",
+            "STAT",
+            "cmap",
+            "gasp",
+            "hhea",
+            "hmtx",
+            "loca",
+            "maxp",
+            "name",
+            "post"
+          ],
+          "different_tables": [
+            "glyf",
+            "head",
+            "prep"
+          ],
+          "reference_version": "Version 1.700",
+          "glyph_coordinate_differences": []
+        },
+        "processing": "Existing local WOFF2 preserved; no conversion in this audit. Same family/version, cmap, metrics, axes and outlines as the current official reference; head/prep differ (static Baloo also glyf encoding, with identical outline coordinates). Not a claim of byte-identical historical download."
+      }
+    },
+    {
+      "path": "assets/fonts/baloo2-variable-latin.woff2",
+      "bytes": 33188,
+      "sha256": "26fb4610d4bc976d2584ca15e66c11465dbc1f267a10dca668fcb3080dfe59c1",
+      "names": {
+        "0": [
+          "Copyright 2019 The Baloo 2 Project Authors (https://github.com/EkType/Baloo2)"
+        ],
+        "1": [
+          "Baloo 2"
+        ],
+        "2": [
+          "Regular"
+        ],
+        "3": [
+          "1.700;EKTF;Baloo2-Regular"
+        ],
+        "5": [
+          "Version 1.700"
+        ],
+        "6": [
+          "Baloo2-Regular"
+        ],
+        "13": [],
+        "14": [
+          "http://scripts.sil.org/OFL"
+        ]
+      },
+      "weight": 400,
+      "selection": 192,
+      "italic_angle": 0.0,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 400.0,
+          "default": 400.0,
+          "max": 800.0
+        }
+      ],
+      "unicode_count": 230,
+      "required_chars": {
+        "ä": "adieresis",
+        "ö": "odieresis",
+        "ü": "udieresis",
+        "Ä": "Adieresis",
+        "Ö": "Odieresis",
+        "Ü": "Udieresis",
+        "ß": "germandbls",
+        "²": "uni00B2"
+      },
+      "provenance": {
+        "family_source": "https://github.com/google/fonts/tree/main/ofl/baloo2",
+        "historical_retrieval": null,
+        "historical_date_evidence": "ASSETS.md; not independently proved by an original download receipt",
+        "original_download_url": "not retained in the inspected project",
+        "official_reference_css_url": "https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap",
+        "official_reference_woff2_url": "https://fonts.gstatic.com/s/baloo2/v23/wXKrE3kTposypRyd51jcAM4olXc.woff2",
+        "official_reference_sha256": "2e9420db49d01d76a7b8a38ef22ec9c45305d9f15fafa370389b7bf467658fc3",
+        "verified_again": "2026-10-09",
+        "byte_identical_to_current_cdn": false,
+        "comparison": {
+          "local": "baloo2-variable-latin.woff2",
+          "reference_download": "official-8.woff2",
+          "same_tables": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "avar",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "gvar",
+            "hhea",
+            "hmtx",
+            "loca",
+            "maxp",
+            "name",
+            "post"
+          ],
+          "different_tables": [
+            "head",
+            "prep"
+          ],
+          "reference_version": "Version 1.700"
+        },
+        "processing": "Existing local WOFF2 preserved; no conversion in this audit. Same family/version, cmap, metrics, axes and outlines as the current official reference; head/prep differ (static Baloo also glyf encoding, with identical outline coordinates). Not a claim of byte-identical historical download."
+      }
+    },
+    {
+      "path": "assets/fonts/comic-neue-italic-400.woff2",
+      "bytes": 22408,
+      "sha256": "09ab514b68ef3ddb55e03a7ec5a6b100caea5b36195a6d3f104250e3279efc65",
+      "names": {
+        "0": [
+          "Copyright 2014 The Comic Neue Project Authors (https://github.com/crozynski/comicneue)"
+        ],
+        "1": [
+          "Comic Neue"
+        ],
+        "2": [
+          "Italic"
+        ],
+        "3": [
+          "2.003;UKWN;ComicNeue-Italic"
+        ],
+        "5": [
+          "Version 2.003;hotconv 1.0.109;makeotfexe 2.5.65596"
+        ],
+        "6": [
+          "ComicNeue-Italic"
+        ],
+        "13": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL"
+        ],
+        "14": [
+          "https://scripts.sil.org/OFL"
+        ]
+      },
+      "weight": 400,
+      "selection": 129,
+      "italic_angle": -12.0,
+      "axes": [],
+      "unicode_count": 319,
+      "required_chars": {
+        "ä": "adieresis",
+        "ö": "odieresis",
+        "ü": "udieresis",
+        "Ä": "Adieresis",
+        "Ö": "Odieresis",
+        "Ü": "Udieresis",
+        "ß": "germandbls",
+        "²": "uni00B2"
+      },
+      "provenance": {
+        "source_url": "https://raw.githubusercontent.com/crozynski/comicneue/ef5be72411141d01f0b865df8edb47e552c11c3c/Fonts/WebFonts/ComicNeue-Italic.woff2",
+        "commit": "ef5be72411141d01f0b865df8edb47e552c11c3c",
+        "retrieved": "2026-10-08",
+        "verified_again": "2026-10-09",
+        "byte_identical_to_official": true,
+        "processing": "Unchanged official WOFF2, no conversion/subsetting."
+      }
+    },
+    {
+      "path": "assets/fonts/comic-neue-italic-700.woff2",
+      "bytes": 21660,
+      "sha256": "b24900d4debe9a84621dac335edaf7a87144e00c04cedb83602f654b01daa0c5",
+      "names": {
+        "0": [
+          "Copyright 2014 The Comic Neue Project Authors (https://github.com/crozynski/comicneue)"
+        ],
+        "1": [
+          "Comic Neue"
+        ],
+        "2": [
+          "Bold Italic"
+        ],
+        "3": [
+          "2.003;UKWN;ComicNeue-BoldItalic"
+        ],
+        "5": [
+          "Version 2.003;hotconv 1.0.109;makeotfexe 2.5.65596"
+        ],
+        "6": [
+          "ComicNeue-BoldItalic"
+        ],
+        "13": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL"
+        ],
+        "14": [
+          "https://scripts.sil.org/OFL"
+        ]
+      },
+      "weight": 700,
+      "selection": 161,
+      "italic_angle": -12.0,
+      "axes": [],
+      "unicode_count": 319,
+      "required_chars": {
+        "ä": "adieresis",
+        "ö": "odieresis",
+        "ü": "udieresis",
+        "Ä": "Adieresis",
+        "Ö": "Odieresis",
+        "Ü": "Udieresis",
+        "ß": "germandbls",
+        "²": "uni00B2"
+      },
+      "provenance": {
+        "source_url": "https://raw.githubusercontent.com/crozynski/comicneue/ef5be72411141d01f0b865df8edb47e552c11c3c/Fonts/WebFonts/ComicNeue-BoldItalic.woff2",
+        "commit": "ef5be72411141d01f0b865df8edb47e552c11c3c",
+        "retrieved": "2026-10-08",
+        "verified_again": "2026-10-09",
+        "byte_identical_to_official": true,
+        "processing": "Unchanged official WOFF2, no conversion/subsetting."
+      }
+    },
+    {
+      "path": "assets/fonts/nunito-italic-latin.woff2",
+      "bytes": 41760,
+      "sha256": "6cfcc3786d5ba3b5c3a41797f95272e57f4290ccbd283a4bfd0033a3d857e64c",
+      "names": {
+        "0": [
+          "Copyright 2014 The Nunito Project Authors (https://github.com/googlefonts/nunito)"
+        ],
+        "1": [
+          "Nunito ExtraLight"
+        ],
+        "2": [
+          "Italic"
+        ],
+        "3": [
+          "3.602;NONE;Nunito-ExtraLightItalic"
+        ],
+        "5": [
+          "Version 3.602"
+        ],
+        "6": [
+          "Nunito-ExtraLightItalic"
+        ],
+        "13": [],
+        "14": [
+          "https://scripts.sil.org/OFL"
+        ]
+      },
+      "weight": 200,
+      "selection": 129,
+      "italic_angle": -9.0,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200.0,
+          "default": 200.0,
+          "max": 1000.0
+        }
+      ],
+      "unicode_count": 230,
+      "required_chars": {
+        "ä": "adieresis",
+        "ö": "odieresis",
+        "ü": "udieresis",
+        "Ä": "Adieresis",
+        "Ö": "Odieresis",
+        "Ü": "Udieresis",
+        "ß": "germandbls",
+        "²": "uni00B2"
+      },
+      "provenance": {
+        "family_source": "https://github.com/google/fonts/tree/main/ofl/nunito",
+        "historical_retrieval": "2026-08-29",
+        "historical_date_evidence": "ASSETS.md; not independently proved by an original download receipt",
+        "original_download_url": "not retained in the inspected project",
+        "official_reference_css_url": "https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap",
+        "official_reference_woff2_url": "https://fonts.gstatic.com/s/nunito/v32/XRXX3I6Li01BKofIMNaDRs7nczIH.woff2",
+        "official_reference_sha256": "60ad29f2b640800bcd6a5bf81b4583a41de31b8f5153f31e5c9894430e749a8a",
+        "verified_again": "2026-10-09",
+        "byte_identical_to_current_cdn": false,
+        "comparison": {
+          "local": "nunito-italic-latin.woff2",
+          "reference_download": "official-6.woff2",
+          "same_tables": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "avar",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "gvar",
+            "hhea",
+            "hmtx",
+            "loca",
+            "maxp",
+            "name",
+            "post"
+          ],
+          "different_tables": [
+            "head",
+            "prep"
+          ],
+          "reference_version": "Version 3.602"
+        },
+        "processing": "Existing local WOFF2 preserved; no conversion in this audit. Same family/version, cmap, metrics, axes and outlines as the current official reference; head/prep differ (static Baloo also glyf encoding, with identical outline coordinates). Not a claim of byte-identical historical download."
+      }
+    },
+    {
+      "path": "assets/fonts/nunito-latin.woff2",
+      "bytes": 39128,
+      "sha256": "ba344451eab25b217a165363b1982048a5e5830a0daf36577973955a04cac793",
+      "names": {
+        "0": [
+          "Copyright 2014 The Nunito Project Authors (https://github.com/googlefonts/nunito)"
+        ],
+        "1": [
+          "Nunito ExtraLight"
+        ],
+        "2": [
+          "Regular"
+        ],
+        "3": [
+          "3.602;NONE;Nunito-ExtraLight"
+        ],
+        "5": [
+          "Version 3.602"
+        ],
+        "6": [
+          "Nunito-ExtraLight"
+        ],
+        "13": [],
+        "14": [
+          "https://scripts.sil.org/OFL"
+        ]
+      },
+      "weight": 200,
+      "selection": 192,
+      "italic_angle": 0.0,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200.0,
+          "default": 200.0,
+          "max": 1000.0
+        }
+      ],
+      "unicode_count": 230,
+      "required_chars": {
+        "ä": "adieresis",
+        "ö": "odieresis",
+        "ü": "udieresis",
+        "Ä": "Adieresis",
+        "Ö": "Odieresis",
+        "Ü": "Udieresis",
+        "ß": "germandbls",
+        "²": "uni00B2"
+      },
+      "provenance": {
+        "family_source": "https://github.com/google/fonts/tree/main/ofl/nunito",
+        "historical_retrieval": "2026-08-29",
+        "historical_date_evidence": "ASSETS.md; not independently proved by an original download receipt",
+        "original_download_url": "not retained in the inspected project",
+        "official_reference_css_url": "https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap",
+        "official_reference_woff2_url": "https://fonts.gstatic.com/s/nunito/v32/XRXV3I6Li01BKofINeaBTMnFcQ.woff2",
+        "official_reference_sha256": "20fc9b6fc618e7c3c68d3ac750a2a5dfbceb8521675458d2cea580b5693e4798",
+        "verified_again": "2026-10-09",
+        "byte_identical_to_current_cdn": false,
+        "comparison": {
+          "local": "nunito-latin.woff2",
+          "reference_download": "official-7.woff2",
+          "same_tables": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "avar",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "gvar",
+            "hhea",
+            "hmtx",
+            "loca",
+            "maxp",
+            "name",
+            "post"
+          ],
+          "different_tables": [
+            "head",
+            "prep"
+          ],
+          "reference_version": "Version 3.602"
+        },
+        "processing": "Existing local WOFF2 preserved; no conversion in this audit. Same family/version, cmap, metrics, axes and outlines as the current official reference; head/prep differ (static Baloo also glyf encoding, with identical outline coordinates). Not a claim of byte-identical historical download."
+      }
+    }
+  ],
+  "licenses": [
+    {
+      "path": "assets/fonts/baloo2-OFL.txt",
+      "sha256": "ad09b05dc8bc678c9daf7c4c5f7ef1f55e5726127f4330b2e98e40b9dffcb860",
+      "copyright": "﻿Copyright 2019 The Baloo 2 Project Authors (https://github.com/EkType/Baloo2)",
+      "full": true,
+      "official_source": "https://raw.githubusercontent.com/google/fonts/main/ofl/baloo2/OFL.txt",
+      "official_byte_identical": true,
+      "commercial_website_self_hosting_allowed": true,
+      "conditions": [
+        "Keep copyright and full OFL with distributed fonts",
+        "Keep font software under OFL; do not sell font alone",
+        "Respect any reserved font names if modifying; no modified font produced here"
+      ]
+    },
+    {
+      "path": "assets/fonts/comic-neue-OFL.txt",
+      "sha256": "7c38a22e5878e60fe423360553e63dd7be23d29f1f60336034935dbfc96e8320",
+      "copyright": "Copyright 2014 The Comic Neue Project Authors (https://github.com/crozynski/comicneue)",
+      "full": true,
+      "official_source": "https://raw.githubusercontent.com/crozynski/comicneue/ef5be72411141d01f0b865df8edb47e552c11c3c/OFL.txt",
+      "official_byte_identical": true,
+      "commercial_website_self_hosting_allowed": true,
+      "conditions": [
+        "Keep copyright and full OFL with distributed fonts",
+        "Keep font software under OFL; do not sell font alone",
+        "Respect any reserved font names if modifying; no modified font produced here"
+      ]
+    },
+    {
+      "path": "assets/fonts/nunito-OFL.txt",
+      "sha256": "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65",
+      "copyright": "Copyright 2014 The Nunito Project Authors (https://github.com/googlefonts/nunito)",
+      "full": true,
+      "official_source": "https://raw.githubusercontent.com/google/fonts/main/ofl/nunito/OFL.txt",
+      "official_byte_identical": true,
+      "commercial_website_self_hosting_allowed": true,
+      "conditions": [
+        "Keep copyright and full OFL with distributed fonts",
+        "Keep font software under OFL; do not sell font alone",
+        "Respect any reserved font names if modifying; no modified font produced here"
+      ]
+    }
+  ],
+  "faces": [
+    {
+      "file": "assets/css/styles.css",
+      "line": 6,
+      "rule": "font-family: \"Nunito\";\n  font-style: normal;\n  font-weight: 200 1000;\n  font-display: swap;\n  src: url(../fonts/nunito-latin.woff2) format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/styles.css",
+      "line": 15,
+      "rule": "font-family: \"Baloo 2\";\n  font-style: normal;\n  font-weight: 400 600;\n  font-display: swap;\n  src: url(../fonts/baloo2-variable-latin.woff2) format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/styles.css",
+      "line": 25,
+      "rule": "font-family: \"Maik Comic Neue\";\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url(\"../fonts/comic-neue-italic-400.woff2\") format(\"woff2\");"
+    },
+    {
+      "file": "assets/css/styles.css",
+      "line": 32,
+      "rule": "font-family: \"Maik Comic Neue\";\n  font-style: italic;\n  font-weight: 700;\n  font-display: swap;\n  src: url(\"../fonts/comic-neue-italic-700.woff2\") format(\"woff2\");"
+    },
+    {
+      "file": "assets/css/kontakt.css",
+      "line": 3,
+      "rule": "font-family: \"Nunito\";\n  font-style: normal;\n  font-weight: 200 1000;\n  font-display: swap;\n  src: url(\"../fonts/nunito-latin.woff2\") format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/kontakt.css",
+      "line": 12,
+      "rule": "font-family: \"Baloo 2\";\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url(\"../fonts/baloo2-700-latin.woff2\") format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/kontakt.css",
+      "line": 21,
+      "rule": "font-family: \"Baloo 2\";\n  font-style: normal;\n  font-weight: 400 600;\n  font-display: swap;\n  src: url(\"../fonts/baloo2-variable-latin.woff2\") format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/header-home.css",
+      "line": 2,
+      "rule": "font-family: \"Nunito\";\n  font-style: normal;\n  font-weight: 200 1000;\n  font-display: swap;\n  src: url(\"../fonts/nunito-latin.woff2\") format(\"woff2\");"
+    },
+    {
+      "file": "assets/css/ueber-uns.css",
+      "line": 1,
+      "rule": "font-family: Nunito;\n  font-style: normal;\n  font-weight: 200 1000;\n  font-display: swap;\n  src: url(\"../fonts/nunito-latin.woff2\") format(\"woff2\");"
+    },
+    {
+      "file": "assets/css/ueber-uns.css",
+      "line": 10,
+      "rule": "font-family: \"Baloo 2\";\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url(\"../fonts/baloo2-700-latin.woff2\") format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/ueber-uns.css",
+      "line": 19,
+      "rule": "font-family: \"Baloo 2\";\n  font-style: normal;\n  font-weight: 400 600;\n  font-display: swap;\n  src: url(\"../fonts/baloo2-variable-latin.woff2\") format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/projekte.css",
+      "line": 4,
+      "rule": "font-family: \"Baloo 2\";\n  font-style: normal;\n  font-weight: 400 600;\n  font-display: swap;\n  src: url(\"../fonts/baloo2-variable-latin.woff2\") format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/home-dark.css",
+      "line": 3,
+      "rule": "font-family: \"Nunito\";\n  font-style: normal;\n  font-weight: 200 1000;\n  font-display: swap;\n  src: url(\"../fonts/nunito-latin.woff2\") format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/home-dark.css",
+      "line": 12,
+      "rule": "font-family: \"Baloo 2\";\n  font-style: normal;\n  font-weight: 400 600;\n  font-display: swap;\n  src: url(\"../fonts/baloo2-variable-latin.woff2\") format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/home-dark.css",
+      "line": 21,
+      "rule": "font-family: \"Baloo 2\";\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url(\"../fonts/baloo2-700-latin.woff2\") format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/home-dark.css",
+      "line": 30,
+      "rule": "font-family: \"Nunito\";\n  font-style: italic;\n  font-weight: 200 1000;\n  font-display: swap;\n  src: url(\"../fonts/nunito-italic-latin.woff2\") format(\"woff2\");\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"
+    },
+    {
+      "file": "assets/css/leistung-mobile.css",
+      "line": 2,
+      "rule": "font-family:Nunito;src:url('../fonts/nunito-latin.woff2') format('woff2');font-display:swap;font-style:normal;font-weight:200 1000"
+    },
+    {
+      "file": "assets/css/leistung-mobile.css",
+      "line": 3,
+      "rule": "font-family:'Baloo 2';src:url('../fonts/baloo2-variable-latin.woff2') format('woff2');font-display:swap;font-style:normal;font-weight:400 600"
+    },
+    {
+      "file": "assets/css/leistung-mobile.css",
+      "line": 4,
+      "rule": "font-family:'Baloo 2';src:url('../fonts/baloo2-700-latin.woff2') format('woff2');font-display:swap;font-style:normal;font-weight:700"
+    }
+  ],
+  "font_families": {
+    "\"Maik Comic Neue\", cursive": [
+      "assets/css/cta-family-home.css",
+      "assets/css/cta-family-home.css",
+      "assets/css/cta-family-home.css",
+      "assets/css/cta-family-home.css",
+      "assets/css/cta-family-home.css",
+      "assets/css/cta-family-home.css",
+      "assets/css/cta-family-home.css",
+      "assets/css/styles.css",
+      "assets/css/home-process.css",
+      "assets/css/cta-family.css",
+      "assets/css/cta-family.css",
+      "assets/css/anfrage.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/projekte.css",
+      "assets/css/projekte.css",
+      "assets/css/home-dark.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/mobile-social-proof.css",
+      "assets/css/mobile-social-proof.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css"
+    ],
+    "\"Nunito\"": [
+      "assets/css/styles.css",
+      "assets/css/kontakt.css",
+      "assets/css/header-home.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css"
+    ],
+    "\"Baloo 2\"": [
+      "assets/css/styles.css",
+      "assets/css/kontakt.css",
+      "assets/css/kontakt.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/projekte.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css"
+    ],
+    "\"Maik Comic Neue\"": [
+      "assets/css/styles.css",
+      "assets/css/styles.css"
+    ],
+    "var(--body)": [
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/anfrage.css",
+      "assets/css/anfrage.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/customer-hero.css",
+      "assets/css/customer-hero.css"
+    ],
+    "var(--display)": [
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/styles.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/gewerbe.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/form-trust-card.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css",
+      "assets/css/customer-hero.css",
+      "assets/css/customer-hero.css",
+      "assets/css/customer-hero.css",
+      "assets/css/customer-hero.css",
+      "assets/css/customer-hero.css",
+      "assets/css/customer-hero.css"
+    ],
+    "Nunito, system-ui, sans-serif": [
+      "assets/css/styles.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css"
+    ],
+    "\"Baloo 2\", var(--display)": [
+      "assets/css/styles.css",
+      "assets/css/kontakt.css",
+      "assets/css/kontakt.css",
+      "assets/css/kontakt.css",
+      "assets/css/kontakt.css",
+      "assets/css/kontakt.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/projekte.css"
+    ],
+    "\"Nunito\", var(--body)": [
+      "assets/css/kontakt.css",
+      "assets/css/kontakt.css",
+      "assets/css/kontakt.css",
+      "assets/css/kontakt.css",
+      "assets/css/kontakt.css",
+      "assets/css/footer-kontakt.css"
+    ],
+    "inherit": [
+      "assets/css/kontakt.css",
+      "assets/css/leistung-mobile.css"
+    ],
+    "Nunito, sans-serif": [
+      "assets/css/gewerbe.css",
+      "assets/css/leistung-mobile.css"
+    ],
+    "\"Nunito\", sans-serif": [
+      "assets/css/header-home.css",
+      "assets/css/header-home.css",
+      "assets/css/header-home.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/mobile-social-proof.css",
+      "assets/css/mobile-social-proof.css",
+      "assets/css/mobile-social-proof.css",
+      "assets/css/mobile-social-proof.css"
+    ],
+    "Nunito": [
+      "assets/css/ueber-uns.css",
+      "assets/css/leistung-mobile.css"
+    ],
+    "\"Baloo 2\", sans-serif": [
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/ueber-uns.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/home-dark.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/privat-form.css",
+      "assets/css/privat-form.css"
+    ],
+    "'Baloo 2'": [
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css"
+    ],
+    "Nunito,system-ui,sans-serif": [
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css"
+    ],
+    "'Baloo 2',Nunito,system-ui,sans-serif": [
+      "assets/css/leistung-mobile.css"
+    ],
+    "\"Baloo 2\",sans-serif": [
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css"
+    ],
+    "'Baloo 2',sans-serif": [
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css",
+      "assets/css/leistung-mobile.css"
+    ],
+    "Nunito,sans-serif": [
+      "assets/css/leistung-mobile.css"
+    ],
+    "Georgia,serif": [
+      "assets/css/privat-form.css"
+    ]
+  },
+  "active_old_family_matches": [],
+  "nonbinding_legacy_removal_regex": [
+    ".github/scripts/lib/legacy-fonts.mjs"
+  ],
+  "inventory_note": "Six shipped WOFF2 files, not six faces rendered on every page. Comic Neue italic 400 is registered but not requested by the current sampled handwriting. Historical download URLs for Nunito/Baloo 2 are not retained; current official reference comparisons are documented separately."
+}

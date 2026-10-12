@@ -1,0 +1,115 @@
+[
+  {
+    "local": "nunito-italic-latin.woff2",
+    "reference_download": "official-6.woff2",
+    "same_tables": [
+      "GDEF",
+      "GPOS",
+      "GSUB",
+      "HVAR",
+      "OS/2",
+      "STAT",
+      "avar",
+      "cmap",
+      "fvar",
+      "gasp",
+      "glyf",
+      "gvar",
+      "hhea",
+      "hmtx",
+      "loca",
+      "maxp",
+      "name",
+      "post"
+    ],
+    "different_tables": [
+      "head",
+      "prep"
+    ],
+    "reference_version": "Version 3.602"
+  },
+  {
+    "local": "nunito-latin.woff2",
+    "reference_download": "official-7.woff2",
+    "same_tables": [
+      "GDEF",
+      "GPOS",
+      "GSUB",
+      "HVAR",
+      "OS/2",
+      "STAT",
+      "avar",
+      "cmap",
+      "fvar",
+      "gasp",
+      "glyf",
+      "gvar",
+      "hhea",
+      "hmtx",
+      "loca",
+      "maxp",
+      "name",
+      "post"
+    ],
+    "different_tables": [
+      "head",
+      "prep"
+    ],
+    "reference_version": "Version 3.602"
+  },
+  {
+    "local": "baloo2-variable-latin.woff2",
+    "reference_download": "official-8.woff2",
+    "same_tables": [
+      "GDEF",
+      "GPOS",
+      "GSUB",
+      "HVAR",
+      "OS/2",
+      "STAT",
+      "avar",
+      "cmap",
+      "fvar",
+      "gasp",
+      "glyf",
+      "gvar",
+      "hhea",
+      "hmtx",
+      "loca",
+      "maxp",
+      "name",
+      "post"
+    ],
+    "different_tables": [
+      "head",
+      "prep"
+    ],
+    "reference_version": "Version 1.700"
+  },
+  {
+    "local": "baloo2-700-latin.woff2",
+    "reference_download": "official-9.woff2",
+    "same_tables": [
+      "GDEF",
+      "GPOS",
+      "GSUB",
+      "OS/2",
+      "STAT",
+      "cmap",
+      "gasp",
+      "hhea",
+      "hmtx",
+      "loca",
+      "maxp",
+      "name",
+      "post"
+    ],
+    "different_tables": [
+      "glyf",
+      "head",
+      "prep"
+    ],
+    "reference_version": "Version 1.700",
+    "glyph_coordinate_differences": []
+  }
+]

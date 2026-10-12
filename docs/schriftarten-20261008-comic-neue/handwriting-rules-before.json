@@ -1,0 +1,182 @@
+[
+  {
+    "file": "assets/css/anfrage.css",
+    "line": 854,
+    "selector_context": ".private-contact [data-anf-senden] .anf-senden__label",
+    "declarations": "font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: clamp(.9rem, 4.25vw, 1.0625rem);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .025em;\n    text-transform: uppercase;"
+  },
+  {
+    "file": "assets/css/cta-family-home.css",
+    "line": 34,
+    "selector_context": "html.home-theme-dark .maik-cta",
+    "declarations": "position: relative;\n    isolation: isolate;\n    box-sizing: border-box;\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    gap: 0;\n    width: 100%;\n    min-height: 64px;\n    height: 64px;\n    padding: 7px 10px 7px 0;\n    border: 0;\n    border-radius: 14px;\n    background: transparent;\n    box-shadow: none;\n    color: #171916;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: clamp(.9rem, 4.25vw, 1.0625rem);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .025em;\n    text-align: left;\n    text-decoration: none;\n    text-transform: uppercase;\n    white-space: nowrap;"
+  },
+  {
+    "file": "assets/css/cta-family-home.css",
+    "line": 57,
+    "selector_context": "html.home-theme-dark .maik-cta .maik-cta__label",
+    "declarations": "position: relative;\n    z-index: 1;\n    flex: 1 1 0;\n    min-width: 0;\n    padding-right: 0;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .018em;\n    text-transform: uppercase;\n    overflow-wrap: normal;\n    hyphens: none;\n    text-align: center;\n    text-wrap: nowrap;\n    white-space: nowrap;\n    transition: transform .12s var(--ease);"
+  },
+  {
+    "file": "assets/css/cta-family-home.css",
+    "line": 586,
+    "selector_context": ":is(.mobile-social-proof, .private-request-paths) .mobile-proof-request__label",
+    "declarations": "font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: var(--type-cta-label-size);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .025em;\n    text-transform: uppercase;"
+  },
+  {
+    "file": "assets/css/cta-family-home.css",
+    "line": 631,
+    "selector_context": "html.home-theme-dark :is(.mobile-social-proof, .private-request-paths) .maik-cta",
+    "declarations": "position: relative;\n    isolation: isolate;\n    box-sizing: border-box;\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    gap: 0;\n    width: 100%;\n    min-height: 64px;\n    height: 64px;\n    padding: 7px 10px 7px 0;\n    border: 0;\n    border-radius: 14px;\n    background: transparent;\n    box-shadow: none;\n    color: #171916;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: clamp(.9rem, 4.25vw, 1.0625rem);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .025em;\n    text-align: left;\n    text-decoration: none;\n    text-transform: uppercase;\n    white-space: nowrap;"
+  },
+  {
+    "file": "assets/css/cta-family-home.css",
+    "line": 654,
+    "selector_context": "html.home-theme-dark :is(.mobile-social-proof, .private-request-paths) .maik-cta .maik-cta__label",
+    "declarations": "position: relative;\n    z-index: 1;\n    flex: 1 1 0;\n    min-width: 0;\n    padding-right: 0;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .018em;\n    text-transform: uppercase;\n    overflow-wrap: normal;\n    hyphens: none;\n    text-align: center;\n    text-wrap: nowrap;\n    white-space: nowrap;\n    transition: transform .12s var(--ease);"
+  },
+  {
+    "file": "assets/css/cta-family-home.css",
+    "line": 972,
+    "selector_context": "html.home-theme-dark .mr-ueber__mehr.maik-cta",
+    "declarations": "position: relative;\n    isolation: isolate;\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    justify-content: flex-start;\n    gap: 0;\n    width: 100%;\n    max-width: none;\n    height: 64px;\n    min-height: 64px;\n    margin: 0;\n    padding: 7px 10px 7px 0;\n    border: 0;\n    border-radius: 14px;\n    background: transparent;\n    box-shadow: none;\n    color: #171916;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: var(--type-cta-label-size);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .025em;\n    text-decoration: none;\n    text-transform: uppercase;\n    white-space: nowrap;"
+  },
+  {
+    "file": "assets/css/cta-family-home.css",
+    "line": 1164,
+    "selector_context": "html.home-theme-dark .private-contact .maik-cta__label",
+    "declarations": "flex: 1 1 0;\n    min-width: 0;\n    padding-right: 0;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: var(--type-cta-label-size);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .018em;\n    text-transform: uppercase;\n    text-align: center;\n    white-space: nowrap;\n    transition: transform .12s var(--ease);"
+  },
+  {
+    "file": "assets/css/cta-family.css",
+    "line": 47,
+    "selector_context": ".maik-cta",
+    "declarations": "position: relative;\n    isolation: isolate;\n    box-sizing: border-box;\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    gap: 0;\n    width: 100%;\n    min-height: 64px;\n    height: 64px;\n    padding: 7px 10px 7px 0;\n    border: 0;\n    border-radius: 14px;\n    background: transparent;\n    box-shadow: none;\n    color: #171916;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: clamp(.9rem, 4.25vw, 1.0625rem);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .025em;\n    text-align: left;\n    text-decoration: none;\n    text-transform: uppercase;\n    white-space: nowrap;"
+  },
+  {
+    "file": "assets/css/cta-family.css",
+    "line": 70,
+    "selector_context": ".maik-cta .maik-cta__label",
+    "declarations": "position: relative;\n    z-index: 1;\n    flex: 1 1 0;\n    min-width: 0;\n    padding-right: 0;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .018em;\n    text-transform: uppercase;\n    overflow-wrap: normal;\n    hyphens: none;\n    text-align: center;\n    text-wrap: nowrap;\n    white-space: nowrap;\n    transition: transform .12s var(--ease);"
+  },
+  {
+    "file": "assets/css/home-dark.css",
+    "line": 1743,
+    "selector_context": "html.home-theme-dark .gate-welcome-qualification-label",
+    "declarations": "display: block;\n  min-width: 0;\n  color: var(--home-on-dark);\n  font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n  font-size: 1.0625rem;\n  font-style: italic;\n  font-weight: 400;\n  line-height: 1.16;\n  letter-spacing: .025em;\n  text-transform: uppercase;\n  overflow-wrap: normal;\n  opacity: .9;\n  text-shadow:\n    1px 1px 0 #315200,\n    0 0 7px rgba(242, 226, 12, .16);\n  transition: opacity .2s var(--ease), text-shadow .2s var(--ease), transform .2s var(--ease);"
+  },
+  {
+    "file": "assets/css/home-process.css",
+    "line": 201,
+    "selector_context": "html.home-theme-dark #ablauf .step-card h3",
+    "declarations": "margin: 0 0 10px;\n    color: var(--mobile-logo-green, #56e607);\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: clamp(1.08rem, .92rem + .45vw, 1.34rem);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.18;\n    letter-spacing: .025em;\n    text-transform: uppercase;\n    text-wrap: balance;\n    opacity: .94;\n    text-shadow: 1px 1px 0 #315200, 0 0 7px rgba(86, 230, 7, .16);"
+  },
+  {
+    "file": "assets/css/leistung-mobile.css",
+    "line": 94,
+    "selector_context": ":where(.lpv2-main) .private-contact [data-anf-senden] .anf-senden__label",
+    "declarations": "font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive; font-size: clamp(0.9rem, 4.25cqw, 1.0625rem); font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: 0.025em; text-transform: uppercase;"
+  },
+  {
+    "file": "assets/css/leistung-mobile.css",
+    "line": 103,
+    "selector_context": ":where(.lpv2-main) .maik-cta",
+    "declarations": "position: relative; isolation: isolate; box-sizing: border-box; display: flex; align-items: center; justify-content: flex-start; gap: 0px; width: 100%; min-height: 64px; height: 64px; padding: 7px 10px 7px 0px; border: 0px; border-radius: 14px; background: transparent; box-shadow: none; color: rgb(23, 25, 22); font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive; font-size: clamp(0.9rem, 4.25cqw, 1.0625rem); font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: 0.025em; text-align: left; text-decoration: none; text-transform: uppercase; white-space: nowrap;"
+  },
+  {
+    "file": "assets/css/leistung-mobile.css",
+    "line": 105,
+    "selector_context": ":where(.lpv2-main) .maik-cta .maik-cta__label",
+    "declarations": "position: relative; z-index: 1; flex: 1 1 0px; min-width: 0px; padding-right: 0px; font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive; font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: 0.018em; text-transform: uppercase; overflow-wrap: normal; hyphens: none; text-align: center; text-wrap: nowrap; white-space-collapse: collapse; transition: transform .12s var(--ease);"
+  },
+  {
+    "file": "assets/css/leistung-mobile.css",
+    "line": 797,
+    "selector_context": "html.home-theme-dark .lpv2-home-contact .maik-cta__label",
+    "declarations": "flex: 1 1 0;\n    min-width: 0;\n    padding-right: 0;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: 1rem;\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .018em;\n    text-transform: uppercase;\n    text-align: center;\n    white-space: nowrap;\n    transition: transform .12s var(--ease);"
+  },
+  {
+    "file": "assets/css/mobile-social-proof.css",
+    "line": 498,
+    "selector_context": ".mobile-proof-gallery__link",
+    "declarations": "position: absolute;\n  isolation: isolate;\n  top: 14px;\n  left: 50%;\n  z-index: 1;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.625rem;\n  min-width: max(184px, 11.5em);\n  max-width: 100%;\n  height: max(44px, 2.75em);\n  padding: 0 1rem 0.125rem;\n  border: 0;\n  background: transparent;\n  color: rgba(244, 246, 240, .9);\n  font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n  font-size: 1rem;\n  font-style: italic;\n  font-weight: 400;\n  line-height: 1.16;\n  letter-spacing: .025em;\n  text-transform: uppercase;\n  text-decoration: none;\n  white-space: nowrap;\n  transform: translateX(-50%);\n  transition: color .2s var(--ease);"
+  },
+  {
+    "file": "assets/css/mobile-social-proof.css",
+    "line": 955,
+    "selector_context": "/* AP-295: Gestaltung des Ablauf-CTAs auf die anderen beiden uebertragen -\n     Handschrift-Label und das Pfeilmotiv in der flachen Kapsel. Die Vorlage\n     steht in privat-form.css am .process-contact-cta (dort aus e99b93b); die\n     Werte sind absichtlich dieselben, damit die drei nicht auseinanderlaufen.\n\n     Was bewusst NICHT mitkommt: die Markenblume links. Sie ist die Pointe des\n     Zeitstrahls - sie wandert dort in den CTA und erscheint erst mit\n     .is-process-complete. Ausserhalb des Ablaufs hat sie keinen Anlass.\n\n     Hier nur bis 480px, wie der Ablauf-CTA; das gilt fuer #ablauf. Die\n     Galerie-Einladung (#social-proof, AP-504) und #leistungen (AP-507) tragen\n     diese Gestaltung auch ab 481px, als begrenzte Kopie in cta-family-home.css. */\n\n  .mobile-proof-request__label",
+    "declarations": "font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: var(--type-cta-label-size);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .025em;\n    text-transform: uppercase;"
+  },
+  {
+    "file": "assets/css/privat-form.css",
+    "line": 3056,
+    "selector_context": "/* Handschriftlicher Markenstil wie bei den Qualifikationen. Auf dem hellen\n     CTA bleibt der Text bewusst ohne deren Leuchtschatten klar und ruhig. */\n  .private-process-updated .process-contact-cta .mobile-proof-request__label",
+    "declarations": "font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: var(--type-cta-label-size);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .025em;\n    text-transform: uppercase;\n    white-space: nowrap;\n    padding-right: .2em;"
+  },
+  {
+    "file": "assets/css/privat-form.css",
+    "line": 4651,
+    "selector_context": ".iphone-service-feature--emergency .iphone-service-feature__body > strong",
+    "declarations": "/* AP-359: der Name der Leistung im kraeftigen --coral, dem Ton von \"Route\n     planen\". Auf der Kachelflaeche sind das 3,09:1 - vorher stand die Zeile\n     mit 13,87:1 nahezu in Weiss und war das am besten lesbare Element der\n     Kachel. Die Zeile misst 13,5px bei 320 bis 18,2px bei 430, mager und\n     kursiv; als \"grosse Schrift\" im Sinne der Richtlinie zaehlt sie damit\n     nicht, gefordert waeren 4,5:1.\n     Auf Ansage des Auftraggebers, nach Offenlegung der Zahlen. Wer hier\n     spaeter aufraeumt: Das ist gewollt, kein Versehen. */\n  color: var(--coral);\n  font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n  font-size: 1.0625rem;\n  font-style: italic;\n  font-weight: 400;\n  letter-spacing: .015em;\n  line-height: 1.16;\n  text-transform: none;"
+  },
+  {
+    "file": "assets/css/privat-form.css",
+    "line": 4908,
+    "selector_context": ".iphone-service-card__title strong",
+    "declarations": "min-width: 0;\n  color: var(--ink);\n  font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n  font-size: .9375rem;\n  font-style: italic;\n  font-weight: 400;\n  letter-spacing: .015em;\n  line-height: 1.22;\n  text-transform: none;\n  overflow-wrap: normal;\n  text-wrap: pretty;"
+  },
+  {
+    "file": "assets/css/privat-form.css",
+    "line": 5597,
+    "selector_context": "html.home-theme-dark .private-process-updated .step-card h3",
+    "declarations": "margin-bottom: 8px;\n    color: var(--mobile-logo-green);\n    font-family: \"Comic Sans MS\",\"Comic Sans\",\"Chalkboard SE\",cursive;\n    font-size: 1.0625rem;\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: .025em;\n    text-transform: uppercase;\n    overflow-wrap: normal;\n    opacity: .9;\n    text-shadow:\n      1px 1px 0 #315200,\n      0 0 7px rgba(86,230,7,.16);"
+  },
+  {
+    "file": "assets/css/projekte.css",
+    "line": 206,
+    "selector_context": ":where(.gallery-cta) .maik-cta",
+    "declarations": "position: relative;\n    isolation: isolate;\n    box-sizing: border-box;\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    gap: 0px;\n    width: 100%;\n    min-height: 64px;\n    height: 64px;\n    padding: 7px 10px 7px 0px;\n    border: 0px;\n    border-radius: 14px;\n    background: transparent;\n    box-shadow: none;\n    color: rgb(23, 25, 22);\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: clamp(0.9rem, 4.25vw, 1.0625rem);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: 0.025em;\n    text-align: left;\n    text-decoration: none;\n    text-transform: uppercase;\n    white-space: nowrap;"
+  },
+  {
+    "file": "assets/css/projekte.css",
+    "line": 229,
+    "selector_context": ":where(.gallery-cta) .maik-cta .maik-cta__label",
+    "declarations": "position: relative;\n    z-index: 1;\n    flex: 1 1 0px;\n    min-width: 0px;\n    padding-right: 0px;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: 0.018em;\n    text-transform: uppercase;\n    overflow-wrap: normal;\n    hyphens: none;\n    text-align: center;\n    text-wrap: nowrap;\n    white-space-collapse: collapse;\n    transition: transform .12s var(--ease);"
+  },
+  {
+    "file": "assets/css/styles.css",
+    "line": 1169,
+    "selector_context": "/* Die ganze Projektkachel ist ueber .card-open bedienbar. Die sichtbare\n   Aktionszeile ist deshalb kein zweiter Link und bleibt aria-hidden. */\nmain .project-card .card-more",
+    "declarations": "align-self: flex-start;\n  margin-top: auto;\n  padding-top: 8px;\n  font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n  font-size: var(--type-cta-compact-label-size);\n  font-style: italic;\n  font-weight: var(--type-cta-label-weight);\n  color: var(--ink);\n  text-decoration: none;\n  border-bottom: 0;\n  transition: color .2s var(--ease);"
+  },
+  {
+    "file": "assets/css/ueber-uns.css",
+    "line": 535,
+    "selector_context": "/* AP-489 (27.09.2026): Der Zitatsatz groesser, deutlicher und in Handschrift -\n   auf Ansage des Auftraggebers, damit er als Zitat erkennbar wird.\n\n   Schrift: der kursive Comic-Stapel der Seite, woertlich wie an den\n   \"Fuer wen\"-Ueberschriften (AP-476) und \"Alle Projekte\" (AP-456) weiter\n   unten - dieselbe Handschrift wie \"Willkommen\" auf der Startseite. Keine neue\n   Schriftdatei; wo keine der drei Schriften liegt, greift cursive.\n   700 und --ink statt 400 und --ink-2: \"deutlicher\" heisst hier heller und\n   kraeftiger, nicht nur groesser. Der Name darunter bleibt, wie er ist.\n\n   Nachtrag 27.09.2026 auf Ansage des Auftraggebers: Die Groesse ist woertlich\n   die der Schreibzeile \"Individualangebot ...\" in \"Alles aus einer Hand\"\n   (.ueber-betrieb__typer-box, AP-447) - 22px auf dem Handy, 28px ab 1180px.\n   Vorher 24/32px. Aendert sich die Schreibzeile, muss dieser Wert mit.\n   Die gruene Leiste unter dem Zitat ist auf dieselbe Ansage wieder entfallen. */\n.ueber-inhaber__spruch",
+    "declarations": "font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n  font-style: italic;\n  font-weight: 700;\n  font-size: clamp(1.375rem, 1.1899rem + 0.759vw, 1.75rem);\n  line-height: 1.3;\n  color: var(--ink);\n  text-wrap: balance;"
+  },
+  {
+    "file": "assets/css/ueber-uns.css",
+    "line": 1341,
+    "selector_context": "/* AP-476: Die Kartenueberschriften (\"Private ...\", \"Gewerbe und\n   Hausverwaltungen\", \"Kommunen und oeffentliche Auftraggeber\") in der Schrift\n   der Qualifikationsschilder vom Startseiten-Tor (home-dark.css:1800,\n   \".gate-welcome-qualification-label\" - \"Sachkundiger\", \"Baumkontrolleur\").\n   Auf Ansage des Auftraggebers; derselbe Griff wie AP-435 fuer \"Projekt\n   ansehen\" in der Galerie: Schriftart und Neigung. Groesse, Strichstaerke und\n   die Farbe bleiben, wie die Regel darueber sie setzt; die Versalien, die\n   Laufweite .025em und die helle Farbe des Vorbilds sind nicht uebernommen.\n\n   Der Stapel ist woertlich der der Vorlage, ein System-Schriftstapel ohne\n   @font-face. Wo keine der drei Schriften liegt, greift cursive.\n\n   Eigene Regel statt Eingriff in die Grundregel darueber: gleiche Spezifitaet\n   (0,1,1), die spaetere gewinnt. */\n.ueber-fuerwen__liste h4",
+    "declarations": "font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n  font-style: italic;"
+  },
+  {
+    "file": "assets/css/ueber-uns.css",
+    "line": 1397,
+    "selector_context": "/* Der Galerie-CTA behaelt seine handschriftliche Schriftart und Neigung. */\n.ueber-projekte .projects-more .btn",
+    "declarations": "font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n  font-style: italic;"
+  },
+  {
+    "file": "assets/css/ueber-uns.css",
+    "line": 1610,
+    "selector_context": ":where(.ueber-projekte .projects-more) .maik-cta",
+    "declarations": "position: relative;\n    isolation: isolate;\n    box-sizing: border-box;\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    gap: 0px;\n    width: 100%;\n    min-height: 64px;\n    height: 64px;\n    padding: 7px 10px 7px 0px;\n    border: 0px;\n    border-radius: 14px;\n    background: transparent;\n    box-shadow: none;\n    color: rgb(23, 25, 22);\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-size: clamp(0.9rem, 4.25vw, 1.0625rem);\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: 0.025em;\n    text-align: left;\n    text-decoration: none;\n    text-transform: uppercase;\n    white-space: nowrap;"
+  },
+  {
+    "file": "assets/css/ueber-uns.css",
+    "line": 1633,
+    "selector_context": ":where(.ueber-projekte .projects-more) .maik-cta .maik-cta__label",
+    "declarations": "position: relative;\n    z-index: 1;\n    flex: 1 1 0px;\n    min-width: 0px;\n    padding-right: 0px;\n    font-family: \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive;\n    font-style: italic;\n    font-weight: 400;\n    line-height: 1.16;\n    letter-spacing: 0.018em;\n    text-transform: uppercase;\n    overflow-wrap: normal;\n    hyphens: none;\n    text-align: center;\n    text-wrap: nowrap;\n    white-space-collapse: collapse;\n    transition: transform .12s var(--ease);"
+  }
+]

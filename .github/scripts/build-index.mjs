@@ -16,7 +16,7 @@ import { readFile, readdir, writeFile, access, mkdir, rm } from 'node:fs/promise
 import { constants as FS } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { renderProjektPage, renderGalleryList } from './lib/render.mjs';
+import { renderGalleryList } from './lib/render.mjs';
 import { imageManifest } from './lib/images.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -31,13 +31,12 @@ const SITEMAP_FILE = path.join(REPO_ROOT, 'sitemap.xml');
 // Ordner, die nie oeffentliche Seiten enthalten oder dauerhaft noindex sind.
 const SITEMAP_SKIP_DIRS = new Set([
   '.git', '.github', '.claude', 'admin', 'node_modules',
-  'assets', 'content', 'data', 'docs', 'scripts',
+  'assets', 'content', 'data', 'docs', 'scripts', 'tmp',
 ]);
 
 // AP-15: Ziel-Ablage der statisch generierten Seiten.
 const PROJEKTE_DIR = path.join(REPO_ROOT, 'projekte');
 const GALLERY_INDEX = path.join(PROJEKTE_DIR, 'index.html');
-const LEISTUNGEN_DIR = path.join(REPO_ROOT, 'leistungen');
 const GEN_SENTINEL = 'AUTO-GENERIERT von .github/scripts/build-index.mjs aus content/projekte/';
 const GAL_START = '<!-- BUILD:gallery-list:start -->';
 const GAL_END = '<!-- BUILD:gallery-list:end -->';
@@ -85,14 +84,12 @@ const isRemote = (p) => /^https?:\/\//i.test(String(p));
 async function main() {
   // Taxonomie laden
   let validSlugs;
-  let taxLabels; // slug → label (für die generierten Seiten, AP-15)
   try {
     const tax = await readJson(TAXONOMIE);
     if (!tax || !Array.isArray(tax.leistungen)) {
       throw new Error('taxonomie.json: Feld "leistungen" fehlt oder ist kein Array.');
     }
     validSlugs = new Set(tax.leistungen.map((l) => l.slug));
-    taxLabels = new Map(tax.leistungen.map((l) => [l.slug, l.label]));
   } catch (err) {
     fail(`Taxonomie konnte nicht gelesen werden: ${err.message}`);
   }
@@ -153,16 +150,16 @@ async function main() {
   await writeFile(OUT_FILE, JSON.stringify(out, null, 2) + '\n', 'utf8');
   console.log(`✅ ${projekte.length} Projekte validiert und nach data/projekte-index.json geschrieben.`);
 
-  // AP-15: statische Projektseiten + Galerie-Liste erzeugen (nur nach erfolgreicher Validierung).
+  // Galerie aktualisieren; Projekte werden ausschliesslich als Fotopopup angezeigt.
   try {
-    await generatePages(projekte, taxLabels);
+    await updateGallery(projekte);
   } catch (err) {
-    fail(`Seiten-Generierung fehlgeschlagen: ${err.message}`);
+    fail(`Galerie-Aktualisierung fehlgeschlagen: ${err.message}`);
   }
 
   // AP-09: sitemap.xml aus allen real existierenden Seiten erzeugen.
   try {
-    await generateSitemap(projekte);
+    await generateSitemap();
   } catch (err) {
     fail(`Sitemap-Generierung fehlgeschlagen: ${err.message}`);
   }
@@ -173,40 +170,14 @@ async function main() {
   }
 }
 
-// AP-15: erzeugt /projekte/<slug>/index.html je Projekt, aktualisiert die statische
-// Galerie-Liste in projekte/index.html und entfernt verwaiste generierte Ordner.
-async function generatePages(projekte, taxLabels) {
-  // CSS-/JS-Version aus der Galerie-Seite ziehen – eine Quelle, kein zweiter Truth.
+// Die statische Galerie-Liste bleibt als Fallback erhalten. Alte generierte
+// Detailseiten werden entfernt und auch bei kuenftigen Builds nicht neu angelegt.
+async function updateGallery(projekte) {
   const galleryHtml = await readFile(GALLERY_INDEX, 'utf8');
-  const cssVersion = (galleryHtml.match(/styles\.css\?v=([\w.-]+)/) || [])[1] || '1';
-  const jsVersion = (galleryHtml.match(/main\.js\?v=([\w.-]+)/) || [])[1] || '1';
-
-  // Welche Leistungsseiten existieren bereits? (AP-16 folgt → Rebuild hebt die Links.)
-  const leistungPagesExist = new Set();
-  for (const slug of taxLabels.keys()) {
-    if (await fileExists(path.join(LEISTUNGEN_DIR, slug, 'index.html'))) {
-      leistungPagesExist.add(slug);
-    }
-  }
-
-  const slugs = new Set(projekte.map((p) => p.slug));
-
-  // Detailseiten schreiben.
-  const urls = [];
-  for (const p of projekte) {
-    const html = await renderProjektPage({
-      project: p, slug: p.slug, taxLabels, cssVersion, jsVersion, leistungPagesExist,
-    });
-    const dir = path.join(PROJEKTE_DIR, p.slug);
-    await mkdir(dir, { recursive: true });
-    await writeFile(path.join(dir, 'index.html'), html, 'utf8');
-    urls.push(`/projekte/${p.slug}/`);
-  }
-
-  // Verwaiste generierte Ordner entfernen – nur solche mit unserem Sentinel.
+  // Ausschliesslich Ordner unserer bisherigen Detailseiten entfernen.
   const entries = await readdir(PROJEKTE_DIR, { withFileTypes: true });
   for (const e of entries) {
-    if (!e.isDirectory() || slugs.has(e.name)) continue;
+    if (!e.isDirectory()) continue;
     const idx = path.join(PROJEKTE_DIR, e.name, 'index.html');
     if (await fileExists(idx)) {
       const content = await readFile(idx, 'utf8');
@@ -233,8 +204,6 @@ async function generatePages(projekte, taxLabels) {
     warnings.push('projekte/index.html: BUILD:gallery-list-Marker nicht gefunden – statische Liste NICHT aktualisiert.');
   }
 
-  console.log(`✅ ${urls.length} Projektseiten generiert:`);
-  for (const u of urls) console.log(`   ${u}`);
 }
 
 // AP-09: erzeugt sitemap.xml aus allen real existierenden index.html im Repo.
@@ -247,9 +216,7 @@ async function generatePages(projekte, taxLabels) {
 // (AP-01) und robots.txt sperrt alles. Die Sitemap listet trotzdem die Go-Live-URLs
 // — sie ist fuer den Go-Live vorbereitet, das Blanket-noindex faellt dann weg.
 // Dauerhaft-noindex (admin/) bleibt ueber SITEMAP_SKIP_DIRS ausgeschlossen.
-async function generateSitemap(projekte) {
-  const datumBySlug = new Map(projekte.map((p) => [p.slug, p.datum]));
-
+async function generateSitemap() {
   const dirs = await collectPageDirs(REPO_ROOT);
 
   const entries = [];
@@ -261,23 +228,13 @@ async function generateSitemap(projekte) {
     // roh ausgegeben stand in der Datei ein Zeichen, das die verlinkende Seite
     // selbst prozentkodiert - zwei Schreibweisen derselben URL.
     const loc = rel === '' ? `${SITE}/` : `${SITE}/${rel.split('/').map(encodeURIComponent).join('/')}/`;
-    let lastmod;
-    const m = rel.match(/^projekte\/([^/]+)$/);
-    if (m && datumBySlug.has(m[1])) {
-      lastmod = String(datumBySlug.get(m[1])).slice(0, 10); // W3C-Datum YYYY-MM-DD
-    }
-    entries.push({ loc, lastmod });
+    entries.push({ loc });
   }
 
   entries.sort((a, b) => a.loc.localeCompare(b.loc)); // stabile Diffs
 
   const body = entries
-    .map(({ loc, lastmod }) => {
-      const inner = lastmod
-        ? `    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>`
-        : `    <loc>${loc}</loc>`;
-      return `  <url>\n${inner}\n  </url>`;
-    })
+    .map(({ loc }) => `  <url>\n    <loc>${loc}</loc>\n  </url>`)
     .join('\n');
 
   const xml =

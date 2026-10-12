@@ -1437,7 +1437,7 @@
 .b2b-region-map pattern circle { fill: rgba(255,255,255,.1); }
 .b2b-map-routes path { fill: none; stroke: rgba(255,237,0,.45); stroke-width: 2; stroke-dasharray: 5 8; }
 .b2b-map-place circle { fill: var(--yellow); stroke: var(--green-900); stroke-width: 4; }
-.b2b-map-place text { fill: rgba(255,255,255,.82); font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; }
+.b2b-map-place text { fill: rgba(255,255,255,.82); font-family: Nunito, sans-serif; font-size: 14px; font-weight: 700; }
 .b2b-map-place--herne circle:first-child { fill: rgba(255,237,0,.16); stroke: var(--yellow); stroke-width: 2; }
 .b2b-map-place--herne circle:nth-child(2) { fill: var(--yellow); stroke-width: 0; }
 .b2b-map-place--herne text { fill: #fff; font-size: 17px; }

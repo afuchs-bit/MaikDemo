@@ -1,0 +1,20 @@
+{
+  "focus": {
+    "family": "Nunito, sans-serif",
+    "focusVisible": true,
+    "size": "18px",
+    "style": "normal",
+    "tag": "A",
+    "text": "Projekt anfragen",
+    "weight": "800"
+  },
+  "textNodes": [
+    {
+      "family": "\"Maik Comic Neue\", cursive",
+      "size": "18.24px",
+      "style": "italic",
+      "text": "Projekt anfragen",
+      "weight": "700"
+    }
+  ]
+}

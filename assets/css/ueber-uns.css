@@ -463,10 +463,19 @@ body.ueber-page {
   font-weight: 800;
 }
 
+/* Gemeinsame Fliesstextstufe wie auf den Leistungsseiten. Die jeweiligen
+   Abstaende, Zeilenhoehen und Textbreiten bleiben bei ihren Komponenten. */
+.ueber-inhaber__text,
+.ueber-betrieb__fakten,
+.ueber-betrieb__wort .lead,
+.ueber-projekte__kopf .lead {
+  font-size: var(--type-body-copy-size);
+  font-weight: var(--type-body-copy-weight);
+}
+
 .ueber-inhaber__text {
   margin: 18px 0 0;
   color: var(--ink-2);
-  font-size: 1.0625rem;
   line-height: 1.65;
   text-wrap: pretty;
 }
@@ -510,7 +519,7 @@ body.ueber-page {
 /* AP-489 (27.09.2026): Der Zitatsatz groesser, deutlicher und in Handschrift -
    auf Ansage des Auftraggebers, damit er als Zitat erkennbar wird.
 
-   Schrift: der kursive Comic-Stapel der Seite, woertlich wie an den
+   Historischer Stand vor 08.10.2026: der kursive Comic-Stapel, wie an den
    "Fuer wen"-Ueberschriften (AP-476) und "Alle Projekte" (AP-456) weiter
    unten - dieselbe Handschrift wie "Willkommen" auf der Startseite. Keine neue
    Schriftdatei; wo keine der drei Schriften liegt, greift cursive.
@@ -523,11 +532,11 @@ body.ueber-page {
    Vorher 24/32px. Aendert sich die Schreibzeile, muss dieser Wert mit.
    Die gruene Leiste unter dem Zitat ist auf dieselbe Ansage wieder entfallen. */
 .ueber-inhaber__spruch {
-  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-family: "Maik Comic Neue", cursive;
   font-style: italic;
   font-weight: 700;
-  font-size: clamp(1.375rem, 1.1899rem + 0.759vw, 1.75rem);
-  line-height: 1.3;
+  font-size: calc(clamp(1.375rem, 1.1899rem + 0.759vw, 1.75rem) * var(--type-handwriting-bold-scale));
+  line-height: calc(1.3 / var(--type-handwriting-bold-scale));
   color: var(--ink);
   text-wrap: balance;
 }
@@ -847,34 +856,15 @@ body.ueber-page {
   margin: 10px 0 0;
   max-width: 44ch;
   color: var(--ink-mute);
-  font-size: .9375rem;
   line-height: 1.5;
 }
 
 .ueber-betrieb__wort .ueber-betrieb__fakten + .lead { margin-top: 16px; }
 
-/* AP-440: "Im Mittelpunkt steht immer das Ziel ..." traegt auf Ansage des
-   Auftraggebers dasselbe Schriftbild wie der Faktensatz darueber. Die drei
-   Werte sind woertlich die der Regel oben - kein zweiter Satz Zahlen, der
-   auseinanderlaufen koennte. Die Schriftart stand schon gleich: beide Absaetze
-   bekommen Inter aus dem Grundtext, .lead setzt keine eigene.
-
-   Reichweite auf Ansage: nur dieser Absatz. Im Nachsatz-Block hinter dem Foto
-   stehen zwei weitere .lead - "Unsere Taetigkeitsschwerpunkte liegen in:" und
-   die Liste darunter - die bleiben bei 16px in --ink-2. Deshalb haengt die
-   Regel an .ueber-betrieb__wort und nicht an .ueber-betrieb .lead.
-
-   Die Klasse .lead bleibt am Absatz. Sie traegt nicht nur Schrift, sondern die
-   Abstandskette des Blocks (siehe die Regeln mit dem Nachbar-Kombinator oben);
-   ohne sie fielen die Abstaende davor und dahinter auf 0.
-
-   Nicht mitgenommen ist die Zeilenbreite: Der Faktensatz ist auf 44ch gedeckelt,
-   dieser Absatz bleibt bei den 62ch aus .lead (styles.css:250). In Pixeln wird
-   er dadurch trotzdem etwas schmaler - ch haengt an der Schriftgroesse, und die
-   sinkt von 16 auf 15px. */
+/* "Im Mittelpunkt steht immer das Ziel ..." teilt die Schriftstufe mit dem
+   Faktensatz. Die Klasse .lead erhaelt weiterhin dessen Abstandskette. */
 .ueber-betrieb__wort .lead {
   color: var(--ink-mute);
-  font-size: .9375rem;
   line-height: 1.5;
 }
 
@@ -1342,14 +1332,17 @@ body.ueber-page {
    die Farbe bleiben, wie die Regel darueber sie setzt; die Versalien, die
    Laufweite .025em und die helle Farbe des Vorbilds sind nicht uebernommen.
 
-   Der Stapel ist woertlich der der Vorlage, ein System-Schriftstapel ohne
+   Historischer Stand vor 08.10.2026: System-Schriftstapel ohne
    @font-face. Wo keine der drei Schriften liegt, greift cursive.
 
    Eigene Regel statt Eingriff in die Grundregel darueber: gleiche Spezifitaet
    (0,1,1), die spaetere gewinnt. */
+/* Seit 08.10.2026: lokale Comic Neue, echter Schnitt italic 700. */
 .ueber-fuerwen__liste h4 {
-  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-family: "Maik Comic Neue", cursive;
   font-style: italic;
+  font-size: calc(17px * var(--type-handwriting-bold-scale));
+  line-height: calc(1.2 / var(--type-handwriting-bold-scale));
 }
 
 .ueber-fuerwen__liste p {
@@ -1402,65 +1395,9 @@ body.ueber-page {
 .ueber-projekte__kopf > div { max-width: 56ch; margin-inline: auto; }
 .ueber-projekte__kopf .lead { margin-top: 12px; text-align: center; }
 
-/* AP-456: "Alle Projekte" in der Schrift der Qualifikationsschilder vom
-   Startseiten-Tor (home-dark.css:1796, ".gate-welcome-qualification-label" -
-   "Sachkundiger", "Baumkontrolleur"). Auf Ansage des Auftraggebers nur
-   Schriftart und Neigung - dieselbe Entscheidung wie in AP-435 fuer
-   "Projekt ansehen" in der Galerie, damit die beiden Stellen nicht
-   auseinanderlaufen. NICHT uebernommen sind deshalb die Versalien, die
-   Laufweite .025em, die helle Farbe, die Deckkraft .9 und die Schattierung des
-   Vorbilds; Groesse, Strichstaerke und Farbe bleiben, wie .btn sie setzt.
-
-   Der Stapel ist woertlich der der Vorlage. Es ist ein System-Schriftstapel
-   ohne @font-face - anders als bei "Baloo 2" ist also keine Datei nachzuziehen.
-   Wo keine der drei Schriften liegt, greift cursive, und was das ist,
-   entscheidet das Geraet. Dasselbe gilt am Tor der Startseite seit jeher.
-
-   Spezifitaet (0,3,0) gegen .btn (0,1,0) - der Selektor haengt an der Sektion,
-   damit .projects-more auf anderen Seiten unberuehrt bleibt. */
+/* Der Galerie-CTA behaelt seine handschriftliche Schriftart und Neigung. */
 .ueber-projekte .projects-more .btn {
-  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-  font-style: italic;
-}
-
-/* AP-458: Hier stand display: grid mit gap: 6px. Der Abstand ist derselbe wie
-   in der Grundregel (styles.css:1147), das Raster war also nur wegen der
-   Zeilenpackung da - und es hat die Ausrichtung zerschlagen: In einem Raster
-   ist die letzte Zeile inhaltshoch, ein margin-top: auto haette dort keinen
-   Platz zu verteilen. Die Grundregel setzt den Koerper auf flex: 1 in einer
-   Spalte, und genau darauf ist .card-more mit margin-top: auto gerechnet.
-   Ort, Titel und Zeile stehen damit weiter oben gepackt - nur die Zeile
-   "Projekt ansehen" faellt ans untere Ende. */
-/* AP-457: "Projekt ansehen" in der Schrift der Qualifikationsschilder vom
-   Startseiten-Tor (home-dark.css:1796) - wie AP-435 es fuer dieselbe Zeile auf
-   der Galerieseite getan hat (projekte.css:53) und AP-456 fuer den Knopf
-   darunter. Wieder nur Schriftart und Neigung: Groesse, Strichstaerke, das
-   Gruen und die Unterstreichung beim Ueberfahren bleiben, wie styles.css:1171
-   sie setzt.
-
-   AP-435 hielt fest, die Reichweite sei auf Ansage nur die Galerie gewesen.
-   Diese Seite kommt jetzt dazu. Offen bleiben damit die sieben
-   Privatkunden-Leistungsseiten, auf denen dieselbe Kachel steht - dort ist die
-   Zeile weiter in der Hausschrift. Eine gemeinsame Regel in styles.css waere
-   die Aufloesung, zoege aber einen ?v=-Durchlauf ueber alle Seiten nach sich;
-   sie ist als eigenes AP angeboten.
-
-   Spezifitaet (0,2,0) gegen .card-more (0,1,0). */
-.ueber-projekte__spur .card-more {
-  /* AP-467: Die Zeile ist gruener Text, also faerbt sie mit. Die Grundregel in
-     styles.css:1171 setzt --green-500 fuer alle Seiten; hier steht der Ton nur
-     fuer diese Seite. Der Unterstrich beim Ueberfahren (styles.css:1184) geht
-     mit - er ist die Unterstreichung genau dieses Textes und saehe sonst in
-     einem anderen Gruen darunter. */
-  color: var(--mobile-logo-green);
-  /* AP-458: Hier stand margin-top: 6px. Das ueberschrieb das margin-top: auto
-     der Grundregel (styles.css:1171) - und deren Kommentar sagt genau, warum es
-     auto sein muss: "ein Text mit zwei statt drei Zeilen rueckte die Zeile
-     sonst sichtbar nach oben". Auf Ansage des Auftraggebers (24.09.2026) stehen
-     die drei Zeilen jetzt auf einer Hoehe. Gemessen war die mittlere Kachel mit
-     ihrer einzeiligen Ueberschrift 21px (400px) bzw. 8px (1280px) zu hoch.
-     Den Mindestabstand nach oben haelt weiter das padding-top: 8px von dort. */
-  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  font-family: "Maik Comic Neue", cursive;
   font-style: italic;
 }
 
@@ -1620,11 +1557,6 @@ body.ueber-page {
   .ueber-projekte__spur { scroll-behavior: auto; }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .ueber-projekte__spur .project-card:hover .card-more {
-    border-bottom-color: var(--mobile-logo-green);
-  }
-}
 /* AP-477: "Alle Projekte" traegt den kompakten Galerie-CTA der Startseite. Die
    Gestaltung steht vollstaendig in cta-family.css; hier bleiben nur die zwei
    Dinge, die der Baustein nicht selbst mitbringen kann.
@@ -1678,10 +1610,10 @@ body.ueber-page {
     background: transparent;
     box-shadow: none;
     color: rgb(23, 25, 22);
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: clamp(0.9rem, 4.25vw, 1.0625rem);
+    font-family: "Maik Comic Neue", cursive;
+    font-size: calc((clamp(0.9rem, 4.25vw, 1.0625rem)) * var(--type-handwriting-cta-scale));
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: 0.025em;
     text-align: left;
@@ -1701,9 +1633,9 @@ body.ueber-page {
     flex: 1 1 0px;
     min-width: 0px;
     padding-right: 0px;
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-family: "Maik Comic Neue", cursive;
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: 0.018em;
     text-transform: uppercase;
@@ -1783,7 +1715,7 @@ body.ueber-page {
     min-height: 44px;
     height: 44px;
     padding: 4px 7px 4px 0px;
-    font-size: clamp(0.8125rem, 3.6vw, 0.875rem);
+    font-size: calc((clamp(0.8125rem, 3.6vw, 0.875rem)) * var(--type-handwriting-cta-scale));
   }
 
   :where(.ueber-projekte .projects-more) .maik-cta--compact .maik-cta__frame {
@@ -2002,8 +1934,6 @@ body.ueber-page {
     margin-inline: auto;
     color: var(--ink-2);
     font-family: Nunito, system-ui, sans-serif;
-    font-size: 1.125rem;
-    font-weight: 500;
     line-height: 1.7;
     letter-spacing: .003em;
     text-wrap: pretty;
@@ -2406,7 +2336,6 @@ body.ueber-page {
   .ueber-betrieb__wort .ueber-betrieb__fakten,
   .ueber-betrieb__wort .lead {
     color: var(--ink-2);
-    font-size: 1.0625rem;
     line-height: 1.65;
     letter-spacing: normal;
   }

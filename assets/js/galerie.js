@@ -6,7 +6,7 @@
 import { assetUrl, dataUrl } from './config.js';
 // Versionierter Import: projekte-card.js traegt sonst kein ?v= und wuerde aus dem
 // Browser-Cache in einer aelteren Fassung geladen.
-import { buildCard, revealCards } from './projekte-card.js?v=20261001a';
+import { buildCard, revealCards } from './projekte-card.js?v=20261007c';
 
 // AP-100: Der CTA fuehrt direkt in das passende Anfrageformular. Leistungs-Slug →
 // anliegen-Radiowert des Gewerbeformulars (nur eindeutige Zuordnungen; baumarbeiten
@@ -372,7 +372,10 @@ function renderGrid(results) {
   grid.hidden = false;
 
   const cards = results.map((p) => {
-    const card = buildCard(p, { ohnePrivatEtikett: true }); // AP-531
+    const card = buildCard(p, {
+      ohnePrivatEtikett: true,
+      description: p.bilder?.[0]?.alt || '',
+    });
     // Interaktive Overlay-Schaltfläche (ein <h3> darf nicht in einem <button> stehen).
     const btn = document.createElement('button');
     btn.type = 'button';

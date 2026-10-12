@@ -7,7 +7,7 @@
 import { dataUrl, SITE_BASE } from './config.js';
 // Versionierter Import: projekte-card.js traegt sonst kein ?v= und wuerde aus dem
 // Browser-Cache in einer aelteren Fassung geladen.
-import { buildCard, revealCards } from './projekte-card.js?v=20260807b';
+import { buildCard, revealCards } from './projekte-card.js?v=20261007c';
 
 const grid = document.querySelector('#projekte .projects-grid');
 if (grid) init(grid);
@@ -39,10 +39,10 @@ async function init(grid) {
 
   const cards = featured.map((p) => {
     const card = buildCard(p);
-    // Ganze Karte als echter Link auf die statische Projektseite (AP-15, crawlbar).
+    // Die Galerie oeffnet das Projekt als Fotopopup.
     const link = document.createElement('a');
     link.className = 'card-open';
-    link.href = new URL(`projekte/${encodeURIComponent(p.slug || '')}/`, SITE_BASE).href;
+    link.href = new URL(`projekte/?projekt=${encodeURIComponent(p.slug || '')}`, SITE_BASE).href;
     link.setAttribute('aria-label', `Projekt „${p.titel || ''}“ ansehen`);
     card.appendChild(link);
     return card;

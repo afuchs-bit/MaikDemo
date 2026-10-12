@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "retrieved": "2026-10-08",
+  "project": "https://github.com/crozynski/comicneue",
+  "commit": "ef5be72411141d01f0b865df8edb47e552c11c3c",
+  "fonts": [
+    {
+      "file": "comic-neue-italic-400.woff2",
+      "sha256": "09ab514b68ef3ddb55e03a7ec5a6b100caea5b36195a6d3f104250e3279efc65",
+      "bytes": 22408,
+      "source_url": "https://raw.githubusercontent.com/crozynski/comicneue/ef5be72411141d01f0b865df8edb47e552c11c3c/Fonts/WebFonts/ComicNeue-Italic.woff2",
+      "source_filename": "ComicNeue-Italic.woff2",
+      "family": "Comic Neue",
+      "css_family": "Maik Comic Neue",
+      "style": "italic",
+      "weight": 400,
+      "postscript_name": "ComicNeue-Italic",
+      "version": "2.003;hotconv 1.0.109;makeotfexe 2.5.65596",
+      "italic_angle": -12,
+      "unicode_cmap_count": 319,
+      "required_characters": "äöüÄÖÜß²"
+    },
+    {
+      "file": "comic-neue-italic-700.woff2",
+      "sha256": "b24900d4debe9a84621dac335edaf7a87144e00c04cedb83602f654b01daa0c5",
+      "bytes": 21660,
+      "source_url": "https://raw.githubusercontent.com/crozynski/comicneue/ef5be72411141d01f0b865df8edb47e552c11c3c/Fonts/WebFonts/ComicNeue-BoldItalic.woff2",
+      "source_filename": "ComicNeue-BoldItalic.woff2",
+      "family": "Comic Neue",
+      "css_family": "Maik Comic Neue",
+      "style": "italic",
+      "weight": 700,
+      "postscript_name": "ComicNeue-BoldItalic",
+      "version": "2.003;hotconv 1.0.109;makeotfexe 2.5.65596",
+      "italic_angle": -12,
+      "unicode_cmap_count": 319,
+      "required_characters": "äöüÄÖÜß²"
+    }
+  ],
+  "license": {
+    "file": "comic-neue-OFL.txt",
+    "source_url": "https://raw.githubusercontent.com/crozynski/comicneue/ef5be72411141d01f0b865df8edb47e552c11c3c/OFL.txt",
+    "sha256": "7c38a22e5878e60fe423360553e63dd7be23d29f1f60336034935dbfc96e8320",
+    "name": "SIL Open Font License 1.1",
+    "copyright": "Copyright 2014 The Comic Neue Project Authors (https://github.com/crozynski/comicneue)",
+    "reserved_font_names": []
+  },
+  "processing": "Official WOFF2 files copied byte-for-byte. No conversion, subsetting, glyph or font outline changes."
+}

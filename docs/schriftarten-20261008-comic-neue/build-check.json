@@ -1,0 +1,11 @@
+{
+  "first_build": "passed",
+  "second_build": "passed",
+  "second_build_changed_files": [],
+  "warnings": [
+    "Missing submenu marker in gewerbekunden/index.html",
+    "Four existing gallery source images without responsive variants"
+  ],
+  "final_css_build_recheck": "passed",
+  "final_second_build_changed_files": []
+}

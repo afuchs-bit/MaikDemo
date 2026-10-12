@@ -1,0 +1,37 @@
+[
+  {
+    "run": 1,
+    "exit": 0,
+    "warnings": [
+      "⚠️  Warnungen:",
+      "  ⚠ gewerbekunden/index.html: Submenu-Marker fehlen"
+    ],
+    "non_font_image_notices": [
+      "• ohne Bild-Varianten – Original wird ausgeliefert (gartengestaltung-herne-1: /assets/img/projekte/gartengestaltung-herne-1/5a7aee8d-9037-4496-9aee-89a3e0ee2c4d.webp). In build-hero-images.mjs unter SOURCES ergänzen.",
+      "• ohne Bild-Varianten – Original wird ausgeliefert (gartengestaltung-herne-1: /assets/img/projekte/gartengestaltung-herne-1/f1d96e67-b720-45db-94de-049c224f6f3b.webp). In build-hero-images.mjs unter SOURCES ergänzen.",
+      "• ohne Bild-Varianten – Original wird ausgeliefert (gartengestaltung-herne-1: /assets/img/projekte/gartengestaltung-herne-1/85598ae4-4667-48b2-a2d1-7246d8147d43.webp). In build-hero-images.mjs unter SOURCES ergänzen.",
+      "• ohne Bild-Varianten – Original wird ausgeliefert (gartengestaltung-herne-1: /assets/img/projekte/gartengestaltung-herne-1/039856ea-b130-4bd9-81ea-6c5fd8348e51.webp). In build-hero-images.mjs unter SOURCES ergänzen."
+    ],
+    "command": "node --run build",
+    "cwd": "separate copy of current worktree: production-build/.github/scripts",
+    "node_version": "24.19.0"
+  },
+  {
+    "run": 2,
+    "exit": 0,
+    "warnings": [
+      "⚠️  Warnungen:",
+      "  ⚠ gewerbekunden/index.html: Submenu-Marker fehlen"
+    ],
+    "changed_after_second": [],
+    "non_font_image_notices": [
+      "• ohne Bild-Varianten – Original wird ausgeliefert (gartengestaltung-herne-1: /assets/img/projekte/gartengestaltung-herne-1/5a7aee8d-9037-4496-9aee-89a3e0ee2c4d.webp). In build-hero-images.mjs unter SOURCES ergänzen.",
+      "• ohne Bild-Varianten – Original wird ausgeliefert (gartengestaltung-herne-1: /assets/img/projekte/gartengestaltung-herne-1/f1d96e67-b720-45db-94de-049c224f6f3b.webp). In build-hero-images.mjs unter SOURCES ergänzen.",
+      "• ohne Bild-Varianten – Original wird ausgeliefert (gartengestaltung-herne-1: /assets/img/projekte/gartengestaltung-herne-1/85598ae4-4667-48b2-a2d1-7246d8147d43.webp). In build-hero-images.mjs unter SOURCES ergänzen.",
+      "• ohne Bild-Varianten – Original wird ausgeliefert (gartengestaltung-herne-1: /assets/img/projekte/gartengestaltung-herne-1/039856ea-b130-4bd9-81ea-6c5fd8348e51.webp). In build-hero-images.mjs unter SOURCES ergänzen."
+    ],
+    "command": "node --run build",
+    "cwd": "separate copy of current worktree: production-build/.github/scripts",
+    "node_version": "24.19.0"
+  }
+]

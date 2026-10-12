@@ -3,16 +3,35 @@
 Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem CloudFront-CDN.
 **Wichtig:** CDN-URLs können sich ändern – vor Live-Gang lokal sichern und in `assets/img/` / `assets/video/` legen.
 
-## Homepage-Schrift
+## Favicons für Safari (AP-586, 07.10.2026)
+
+Das vorhandene `assets/img/logo/favicon.png` bleibt das 64-px-Blütenmotiv.
+`build-favicons.mjs` übernimmt es bytegleich als `favicon-64-20261007b.png`
+und erzeugt daraus PNG 32 sowie ICO mit 16/32/48/64 px. Das Apple-Touch-Icon
+(180 px, opak, Hintergrund `#171916`) entsteht aus der vorhandenen
+`assets/img/icons/maik-rohdich-bluete-original.png`, mit 16 px Innenabstand.
+Versionierte Dateien liegen unter `assets/img/logo/`, identische ICO-/Apple-
+Fallbacks zusätzlich im Repository-Root. Keine Retusche, keine neuen Motive.
+
+## Lokal bereitgestellte Schriften (erneute Abschlussprüfung 09.10.2026)
 
 - `assets/fonts/baloo2-700-latin.woff2` – offizieller Latin-Schnitt von
   Baloo 2, Gewicht 700. Quelle: [Google Fonts / Baloo 2](https://github.com/google/fonts/tree/main/ofl/baloo2),
-  abgerufen am 02.09.2026. Die Schrift wird ausschließlich für die mobile
-  Homepage-H1 bis 900 px verwendet. SHA-256:
+  abgerufen am 02.09.2026. Version 1.700, statischer Schnitt 700; inzwischen
+  auf der Homepage sowie in Kontakt-, Über-uns- und Leistungsseiten deklariert.
+  SHA-256:
   `8E7FFC9B993AA8CAA89BCAB81E103C9EB2DA4E3E042F37B7A5115D0DDBFF12C0`.
 - `assets/fonts/baloo2-OFL.txt` – zugehörige SIL Open Font License 1.1 aus dem
   [offiziellen Google-Fonts-Repository](https://github.com/google/fonts/blob/main/ofl/baloo2/OFL.txt),
   abgerufen am 02.09.2026.
+
+- `assets/fonts/baloo2-variable-latin.woff2` – vorhandener variabler Latin-Schnitt,
+  Version 1.700, Gewichtsachse 400–800. Die bestehende CSS-Deklaration 400–600
+  bleibt zur Wahrung des aktuellen Looks unverändert. Quelle der Familie:
+  [Google Fonts / Baloo 2](https://github.com/google/fonts/tree/main/ofl/baloo2).
+  Copyright 2019 The Baloo 2 Project Authors; Lizenz: `baloo2-OFL.txt`.
+  Das ursprüngliche Download-Datum dieses Bestands ist nicht belegt. SHA-256:
+  `26FB4610D4BC976D2584CA15E66C11465DBC1F267A10DCA668FCB3080DFE59C1`.
 
 - `assets/fonts/nunito-latin.woff2` – offizieller variabler Latin-Schnitt von
   Nunito, normal, Gewichte 200–1000. Quelle: [Google Fonts / Nunito](https://github.com/google/fonts/tree/main/ofl/nunito),
@@ -26,6 +45,111 @@ Diese Medien wurden über Higgsfield generiert und liegen aktuell auf einem Clou
   abgerufen am 29.08.2026. Die Schrift wird auf der Homepage und seit AP-531 (01.10.2026) im
   gemeinsamen Header aller Seiten eingebunden. Das grafische Logo bleibt
   unverändert; die Typografie der Hauptinhalte wird weiterhin je Seite festgelegt.
+
+Nunito-Dateien: Version 3.602; Copyright 2014 The Nunito Project Authors.
+`nunito-italic-latin.woff2` enthält einen echten Kursivschnitt (Italic-Winkel −9°).
+Die beiden OFL-Dateien enthalten die jeweiligen Copyright-Zeilen und bleiben
+Bestandteil der Website-Auslieferung. Die vier Inter-/Outfit-Dateien waren schon
+vor dieser Prüfung im Arbeitsverzeichnis gelöscht. Die verbleibende ungenutzte
+Outfit-SVG-Textgruppe wurde aus Bestandsseiten und Vorlage entfernt; der
+Header-Generator entfernt sie auch bei älteren Seiten. Aktive PNG-Logos und
+Schriftgrafiken bleiben bytegleich erhalten.
+
+Die frühere System-Handschrift wurde am 08.10.2026 durch lokale Comic Neue ersetzt
+(siehe unten). Keine Betriebssystemschrift wurde kopiert oder konvertiert.
+`npm run check:fonts` prüft Dateien, Lizenztexte und statische Font-Pfade; der
+Generator-Gesamtbuild führt diese Prüfung am Ende ebenfalls aus. Die Prüfung
+ersetzt keine Netzwerk- oder Renderkontrolle von Elfsight im Besucherbrowser.
+
+### Comic Neue für die bisherige Handschrift (Umstellung 08.10.2026)
+
+- CSS-Familienname: `"Maik Comic Neue"`, Fallback `cursive`.
+- `assets/fonts/comic-neue-italic-400.woff2` – echter Schnitt italic 400,
+  Original `Fonts/WebFonts/ComicNeue-Italic.woff2`, 22.408 Bytes;
+  SHA-256 `09ab514b68ef3ddb55e03a7ec5a6b100caea5b36195a6d3f104250e3279efc65`.
+- `assets/fonts/comic-neue-italic-700.woff2` – echter Schnitt italic 700,
+  Original `Fonts/WebFonts/ComicNeue-BoldItalic.woff2`, 21.660 Bytes;
+  SHA-256 `b24900d4debe9a84621dac335edaf7a87144e00c04cedb83602f654b01daa0c5`.
+- Beide unverändert aus dem [offiziellen Comic-Neue-Projekt](https://github.com/crozynski/comicneue),
+  Commit `ef5be72411141d01f0b865df8edb47e552c11c3c`, abgerufen am 08.10.2026.
+  Version `2.003;hotconv 1.0.109;makeotfexe 2.5.65596`.
+- Vollständiger Copyright-/OFL-Text: `assets/fonts/comic-neue-OFL.txt`.
+  Copyright 2014 The Comic Neue Project Authors (https://github.com/crozynski/comicneue).
+  SIL Open Font License 1.1; kommerzielles Self-Hosting ist unter ihren Bedingungen erlaubt.
+  Keine separate Gebühr; dies ist **lizenzierte Open-Source-Software**, keine lizenzfreie Schrift.
+  Copyright und OFL bleiben bei Weitergabe erhalten; kein separater Verkauf der Fontdateien.
+- Exakte Download-URLs, Lizenzhash und Dateizuordnung:
+  `assets/fonts/comic-neue-provenance.json`.
+- Keine Konvertierung, kein Subsetting und keine Änderungen an Glyphen oder Schnitten.
+  Kein `local()` und kein Fontdienst. Gemeinsame `@font-face`-Regeln in `styles.css`
+  mit `font-display: swap`, ausschließlich relativ auf die eigenen WOFF2-Dateien.
+- Die bisherige Systemschriftkette wurde in allen 30 aktiven Deklarationen ersetzt.
+  Buttons verwenden nun echtes italic 700 und eine um Faktor 1,14 angepasste Schriftgröße;
+  die Beschriftungen der Qualifikationen, Leistungen und Schritte verwenden nach
+  der Nachschärfung vom 08.10.2026 ebenfalls echtes italic 700. Ihre bereits
+  angepassten Größen (Faktor 1,08), Zeichenabstände und Zeilenhöhen blieben am
+  08.10.2026 zunächst gleich. Gemeinsamer Gewichtswert: `--type-handwriting-title-weight: 700`.
+  Nachprüfung 09.10.2026: Qualifikationen, breite Schrittüberschriften und bereits
+  früher fette Über-uns-Texte verwenden Größenfaktor 1,14, mit kompensierten
+  Zeilenhöhen. Leistungsnamen/Hochkant-Schritte bleiben bei 1,08; besonders lange
+  Leistungs-Hero-CTAs bei 1,10. Kleine gezielte Laufweitenkorrekturen erhalten
+  frühere Umbrüche und die Projekt-Aktionszeile; bestätigte große CTA-Buttons bleiben gleich.
+  Nachweis: `docs/schriftarten-20261008-comic-neue/layout-review-20261009.json`.
+  Der 400er
+  Schnitt bleibt als unveränderte Datei der ersten Umstellung enthalten; die
+  aktuellen Handschriftregeln fordern 700 an. Nachweis:
+  `docs/schriftarten-20261008-comic-neue/weight-refinement.json`.
+- Nunito, Baloo 2, Logos, Alphabetbilder und Schriftgrafiken bleiben unverändert.
+  Vollständiger Bericht samt historischen Ergebnissen: `docs/schriftarten-20261008.md`.
+
+### Erneut geprüfter Abschlussstand – 09.10.2026
+
+Sechs WOFF2-Dateien und drei vollständige Copyright-/OFL-1.1-Texte sind vorhanden,
+im aktuellen Generatorbuild enthalten und über die Vorschau mit HTTP 200,
+passenden MIME-Typen und übereinstimmenden SHA-256 ausgeliefert. Font-Check und
+zwei vollständige Builds bestanden; der zweite Lauf ist bytegleich. Alle sechs
+Fonts enthalten `äöüÄÖÜß²`. Keine aktive Inter-/Outfit-/Comic-Sans-/Chalkboard-
+Einbindung oder alte SVG-Textgruppe in Quellen und erzeugtem Build. Der alte Name
+im Headerhilfsmodul ist ausschließlich eine Entfernungsregel. Die Git-Historie
+wurde bei dieser Prüfung nicht verändert.
+
+Die aktuellen 560 erfassten Handschriftstellen in 35 Seiten-/Fensterkombinationen
+fordern echtes Comic Neue italic 700. Italic 400 bleibt als Originalschnitt der
+Umstellung registriert; es wird in diesen Website-Stichproben nicht verwendet.
+Nunito/Baloo-2-Dateien, CSS, Layout und Grafikassets wurden nicht geändert.
+
+Alle drei vollständigen OFL-Texte sind erneut bytegleich zu den offiziellen
+Lizenzquellen und passen zum Copyright der verwendeten Fonts. Kommerzielle
+Website und Self-Hosting sind für Nunito, Baloo 2 und Comic Neue zulässig;
+Copyright und volle OFL bleiben bei den Fonts, kein Verkauf der Fonts allein.
+Originalquellen/Hashprüfungen und jeweilige Bedingungen stehen im
+[aktuellen Fontinventar](docs/schriftarten-20261009-abschluss/font-inventory.json).
+
+**Nachweisgrenze der älteren Downloads:** Die oben genannten Nunito-/Baloo-
+Abrufdaten sind erhaltene historische Dokumentation; die ursprünglichen exakten
+Download-URLs sind im Projekt nicht belegt. Neu abgerufene offizielle Referenzen
+haben dieselben Versionen, Metriken, Zeichen und Glyphenkonturen, jedoch einzelne
+andere Binärtabellen. Deshalb werden die neuen URLs nicht als exakte historische
+Originalquelle ausgegeben. Comic Neue und OFL sind zum angegebenen unveränderlichen
+Commit dagegen byteidentisch. [Erneuter Quellenvergleich](docs/schriftarten-20261009-abschluss/official-source-check.json).
+
+Der aktuelle Elfsight-Code v3.53.0 deklariert Nunito im Widget und Bewertungspopup;
+bei vier Desktop-/Mobilfensterzuständen wurden keine externen Fontaufrufe beobachtet.
+Ein mobiler Herstellerlink deklariert Roboto/Arial; eine externe Roboto-Datei wurde
+nicht beobachtet. Vollständiger ungecachter Netzwerk-Mitschnitt und Glypheninspektor
+stehen noch aus. Geprüft ist Chrome 154 auf echtem Mac; kein echtes iPhone/Pixel,
+kein natives Safari und keine Produktionsdomain. Befund und konkrete Restprüfungen:
+[aktueller Abschlussbericht](docs/schriftarten-20261008.md).
+
+**Separate Schriftgrafiken:** Die OFL-Lizenzen geben keine Rechte an Logos,
+Garten-Schriftzug, Alphabetbildern oder Balkonkasten-Grafik. Auftraggeberlieferung
+und technische Ableitungen sind für Garten/Logoderivate sowie F/O (AP-330) und
+Balkonkasten-Ableitungen (AP-565) dokumentiert. Eine konkrete Urheber-/Website-
+Nutzungsbestätigung für das Originallogo, die übrigen 14 Alphabet-PNGs und das
+Balkonkasten-Ausgangsmotiv fehlt in der geprüften Dokumentation. Dies ist eine
+Dokumentationslücke, kein festgestellter Lizenzverstoß. Auftraggeber oder
+ursprünglicher Gestalter bestätigt Herkunft und Nutzungsrecht; vor Veröffentlichung
+hier ablegen. [Unveränderte Bildassets mit Hashes](docs/schriftarten-20261009-abschluss/graphic-inventory.json).
 
 ## Mobile Header-Symbole
 

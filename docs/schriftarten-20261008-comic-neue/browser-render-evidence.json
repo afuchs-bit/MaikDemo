@@ -1,0 +1,224 @@
+{
+  "time": "2026-10-08T17:31:53.295Z",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+  "loaded": [
+    {
+      "family": "Maik Comic Neue",
+      "style": "italic",
+      "weight": "400",
+      "status": "loaded"
+    },
+    {
+      "family": "Maik Comic Neue",
+      "style": "italic",
+      "weight": "700",
+      "status": "loaded"
+    }
+  ],
+  "metrics": [
+    {
+      "text": "PROJEKT ANFRAGEN",
+      "fonts": {
+        "italic 400 16px \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive": {
+          "width": 166.7578125,
+          "inkHeight": 13.4765625
+        },
+        "italic 400 17.6px \"Maik Comic Neue\", cursive": {
+          "width": 162.51634216308594,
+          "inkHeight": 12.142970085144043
+        },
+        "italic 700 17.6px \"Maik Comic Neue\", cursive": {
+          "width": 160.90069580078125,
+          "inkHeight": 12.142970085144043
+        },
+        "italic 700 18.3px \"Maik Comic Neue\", cursive": {
+          "width": 167.2086944580078,
+          "inkHeight": 12.619029998779297
+        },
+        "italic 400 17.6px monospace": {
+          "width": 169.537353515625,
+          "inkHeight": 13.31171989440918
+        },
+        "italic 700 17.6px monospace": {
+          "width": 169.537353515625,
+          "inkHeight": 13.31171989440918
+        }
+      }
+    },
+    {
+      "text": "GARTENWUNSCH BESPRECHEN",
+      "fonts": {
+        "italic 400 16px \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive": {
+          "width": 249.4453125,
+          "inkHeight": 13.3125
+        },
+        "italic 400 17.6px \"Maik Comic Neue\", cursive": {
+          "width": 250.8858184814453,
+          "inkHeight": 12.160157203674316
+        },
+        "italic 700 17.6px \"Maik Comic Neue\", cursive": {
+          "width": 246.4170684814453,
+          "inkHeight": 12.211719512939453
+        },
+        "italic 700 18.3px \"Maik Comic Neue\", cursive": {
+          "width": 256.07769775390625,
+          "inkHeight": 12.690475463867188
+        },
+        "italic 400 17.6px monospace": {
+          "width": 243.70994567871094,
+          "inkHeight": 13.31171989440918
+        },
+        "italic 700 17.6px monospace": {
+          "width": 243.70994567871094,
+          "inkHeight": 13.31171989440918
+        }
+      }
+    },
+    {
+      "text": "TERMIN VOR ORT – AUFMASS UND BERATUNG",
+      "fonts": {
+        "italic 400 16px \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive": {
+          "width": 374.6484375,
+          "inkHeight": 13.3671875
+        },
+        "italic 400 17.6px \"Maik Comic Neue\", cursive": {
+          "width": 368.70611572265625,
+          "inkHeight": 12.34062671661377
+        },
+        "italic 700 17.6px \"Maik Comic Neue\", cursive": {
+          "width": 364.9763488769531,
+          "inkHeight": 12.32343864440918
+        },
+        "italic 700 18.3px \"Maik Comic Neue\", cursive": {
+          "width": 379.28509521484375,
+          "inkHeight": 12.806573867797852
+        },
+        "italic 400 17.6px monospace": {
+          "width": 392.05511474609375,
+          "inkHeight": 13.31171989440918
+        },
+        "italic 700 17.6px monospace": {
+          "width": 392.05511474609375,
+          "inkHeight": 13.31171989440918
+        }
+      }
+    },
+    {
+      "text": "Gartenbau meister",
+      "fonts": {
+        "italic 400 16px \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive": {
+          "width": 139.671875,
+          "inkHeight": 13.2734375
+        },
+        "italic 400 17.6px \"Maik Comic Neue\", cursive": {
+          "width": 141.78819274902344,
+          "inkHeight": 12.25468921661377
+        },
+        "italic 700 17.6px \"Maik Comic Neue\", cursive": {
+          "width": 142.2522735595703,
+          "inkHeight": 12.19453239440918
+        },
+        "italic 700 18.3px \"Maik Comic Neue\", cursive": {
+          "width": 147.82920837402344,
+          "inkHeight": 12.672614097595215
+        },
+        "italic 400 17.6px monospace": {
+          "width": 180.13343811035156,
+          "inkHeight": 13.621095657348633
+        },
+        "italic 700 17.6px monospace": {
+          "width": 180.13343811035156,
+          "inkHeight": 14.55781364440918
+        }
+      }
+    },
+    {
+      "text": "äöüÄÖÜß²",
+      "fonts": {
+        "italic 400 16px \"Comic Sans MS\", \"Comic Sans\", \"Chalkboard SE\", cursive": {
+          "width": 78.6953125,
+          "inkHeight": 15.7265625
+        },
+        "italic 400 17.6px \"Maik Comic Neue\", cursive": {
+          "width": 77.01713562011719,
+          "inkHeight": 15.305469512939453
+        },
+        "italic 700 17.6px \"Maik Comic Neue\", cursive": {
+          "width": 75.90855407714844,
+          "inkHeight": 15.48593807220459
+        },
+        "italic 700 18.3px \"Maik Comic Neue\", cursive": {
+          "width": 78.88449096679688,
+          "inkHeight": 16.09305763244629
+        },
+        "italic 400 17.6px monospace": {
+          "width": 84.7686767578125,
+          "inkHeight": 16.31953239440918
+        },
+        "italic 700 17.6px monospace": {
+          "width": 84.7686767578125,
+          "inkHeight": 16.56875228881836
+        }
+      }
+    }
+  ],
+  "resources": [
+    {
+      "url": "http://127.0.0.1:8082/fonts/comic-neue-italic-400.woff2",
+      "transferSize": 22708,
+      "decodedBodySize": 22408
+    },
+    {
+      "url": "http://127.0.0.1:8082/fonts/comic-neue-italic-700.woff2",
+      "transferSize": 21960,
+      "decodedBodySize": 21660
+    },
+    {
+      "url": "http://127.0.0.1:8082/fonts/nunito-latin.woff2",
+      "transferSize": 39428,
+      "decodedBodySize": 39128
+    }
+  ],
+  "fontFaces": [
+    {
+      "family": "Nunito",
+      "weight": "200 1000",
+      "style": "normal",
+      "status": "loaded"
+    },
+    {
+      "family": "Maik Comic Neue",
+      "weight": "700",
+      "style": "italic",
+      "status": "loaded"
+    },
+    {
+      "family": "Maik Comic Neue",
+      "weight": "400",
+      "style": "italic",
+      "status": "loaded"
+    }
+  ],
+  "final_button_comparison": {
+    "viewport": [
+      1024,
+      900
+    ],
+    "old": {
+      "font_size": 16,
+      "weight": 400,
+      "requested_style": "italic",
+      "text_width": 173.1640625,
+      "text_height": 22,
+      "letter_spacing": 0.4
+    },
+    "new": {
+      "font_size": 18.24,
+      "weight": 700,
+      "style": "italic",
+      "text_width": 172.0078125,
+      "text_height": 21,
+      "letter_spacing": 0.32832
+    }
+  }
+}

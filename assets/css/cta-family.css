@@ -44,10 +44,10 @@
     background: transparent;
     box-shadow: none;
     color: #171916;
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
-    font-size: clamp(.9rem, 4.25vw, 1.0625rem);
+    font-family: "Maik Comic Neue", cursive;
+    font-size: calc((clamp(.9rem, 4.25vw, 1.0625rem)) * var(--type-handwriting-cta-scale));
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .025em;
     text-align: left;
@@ -67,9 +67,9 @@
     flex: 1 1 0;
     min-width: 0;
     padding-right: 0;
-    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    font-family: "Maik Comic Neue", cursive;
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--type-cta-label-weight);
     line-height: 1.16;
     letter-spacing: .018em;
     text-transform: uppercase;
@@ -86,7 +86,7 @@
      Pfeilkapsel. So ist der sichtbare Text unabhaengig von seiner Laenge immer
      optisch zwischen diesen beiden Kanten zentriert. */
   .maik-cta:not(.maik-cta--compact) .maik-cta__label {
-    font-size: clamp(.82rem, 3.9vw, 1rem);
+    font-size: var(--type-cta-label-size);
   }
 
   /* Der Gartenwunsch-CTA lag bislang im schmaleren Innencontainer. Er wird nur
@@ -271,7 +271,7 @@
     min-height: 44px;
     height: 44px;
     padding: 4px 7px 4px 0;
-    font-size: clamp(.8125rem, 3.6vw, .875rem);
+    font-size: calc((clamp(.8125rem, 3.6vw, .875rem)) * var(--type-handwriting-cta-scale));
   }
 
   .maik-cta--compact .mobile-proof-gallery__link-flower,

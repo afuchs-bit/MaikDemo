@@ -1,0 +1,29 @@
+[
+  {
+    "path": "/ueber-uns/",
+    "samples": [
+      {
+        "cls": "",
+        "family": "\"Baloo 2\", sans-serif",
+        "text": "Das Team",
+        "weight": "700"
+      }
+    ]
+  },
+  {
+    "path": "/projekte/?ansicht=projekte",
+    "samples": []
+  },
+  {
+    "path": "/privatkunden/leistungen/baumkontrolle/",
+    "samples": []
+  },
+  {
+    "path": "/kontakt/",
+    "samples": []
+  },
+  {
+    "path": "/impressum/",
+    "samples": []
+  }
+]

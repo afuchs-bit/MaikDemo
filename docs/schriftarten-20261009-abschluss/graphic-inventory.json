@@ -1,0 +1,191 @@
+[
+  {
+    "path": "assets/img/icons/leistung-z.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "e630e19bf5b36092e4a5dabf632d9a7c026eb27a226f74cab1473e91e1b566c3",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-o.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "sha256": "0cb73abc86236c132f868d853be74a0391efa10b559d887f87e2dd5af6777210",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-n.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "90d3ab37e02eba24215569593e43514c7436371a22849e48415084be73da1040",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-k.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "d427d696062d3bc4a37f8b3d6477c64d7488b438ab57aed4524bf0c820ba447d",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-e.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "7979bdce23c5812d88db1c59cc00f9576aa82db77cdf7c7f2fd93ef4da34af67",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-r.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "edd60aeeb46d384d58ad0f1d820935ff7d9dd00ba0e9e1c5faa2a593944ad26a",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-s.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "fb54986ae2444eea2d8f2b85c24bb1fcd47df92bc2c41e23c73464ba1643b0d1",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-d.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "7fddafc8ebf4ea5973859038ac886d87154473aa538b9dcb686e11da2becd7c3",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-f.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "sha256": "3f8f30e419a6115b14f3de758a5a2df9190aa58676f75097a4663ca341eb995f",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-p.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "ac84765d12ae4915f5159bf486f7232f98061ca8ee96a108973d1773e4e9293a",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-g.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "6f80eb5bd3342f8168fed5fcafc6fe53728456ecb8514f41bd48bf82a2a7afc8",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-t.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "59d630f068da5dcc7d07fd73bfe70c78fba3ad0d848c7b70d5c156607910f2a8",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-b.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "461973a283dde9be01d56e6096969b11f81781003cf5f73e57b1acb79f51405c",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-w.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "002d1ae4c97b60c25a083eaee4b5aba7bf3d0937e6f57c0ed58efce58ff813c3",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-a.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "fbc15b5afaa0920f81f1fedf3b47b424b71ae697a8b03214193f3a37ebc19345",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/icons/leistung-v.png",
+    "size": [
+      192,
+      192
+    ],
+    "sha256": "ae1a9d829329f768e9e4c8f2d5beabaf4fb6d878f9440fc7b7ad459ee4ab2a99",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/logo/maik-rohdich-logo.png",
+    "size": [
+      527,
+      150
+    ],
+    "sha256": "b4a4406a6248d03e24692375bd29a1fb7f46234e8d4d8c28e16eccbc2fc78bd4",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/logo/maik-rohdich-logo-mobile-horizontal-meister-full-flower.png",
+    "size": [
+      640,
+      180
+    ],
+    "sha256": "296da7d5afd5a30d3ca63cadc2c76b32a2d689d4aba1a561b4dfb0480e6ba6f0",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/hero/garten-schriftzug.png",
+    "size": [
+      800,
+      196
+    ],
+    "sha256": "8221fba34ac389a6f11e4381fb44a4b0ef40f2aa1497fbeafc3599a6ffe1638d",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/leistungen-mobile/balkonkastenbepflanzung-schriftzug-700.webp",
+    "size": [
+      700,
+      254
+    ],
+    "sha256": "51ef2e1f95128bb5af156e8cf048ff1812c00c16f34f6b1dadcbe99550bb0ce9",
+    "author_or_license_metadata": {}
+  },
+  {
+    "path": "assets/img/leistungen-mobile/balkonkastenbepflanzung-schriftzug-1400.webp",
+    "size": [
+      1400,
+      508
+    ],
+    "sha256": "728573104f7b77f29a4212577f501a26f1390b3ffc32040a0370b9bde44afc3b",
+    "author_or_license_metadata": {}
+  }
+]

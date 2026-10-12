@@ -47,7 +47,7 @@ jobs:
       - name: Leistungsseiten bauen & validieren
         run: node .github/scripts/build-leistungen.mjs
 
-      - name: Projektseiten und Sitemap bauen & validieren
+      - name: Projektgalerie und Sitemap bauen & validieren
         run: node .github/scripts/build-index.mjs
 
       - name: Galerie-Teaser bauen & Bilder optimieren

@@ -1,0 +1,2108 @@
+[
+  {
+    "state": "desktop open review popup",
+    "dom": {
+      "dialogs": [
+        {
+          "label": "List of reviews",
+          "width": 1710
+        }
+      ],
+      "links": [
+        "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2",
+        "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2"
+      ],
+      "samples": [
+        {
+          "cls": "RatingValue__Container-sc-8e7425eb-0 kHBpYh es-rating-value",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "4,9",
+          "weight": "700"
+        },
+        {
+          "cls": "HeaderRating__ReviewsCount-sc-c166f32d-2 jQvsZQ es-header-rating-reviews-count",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "(69)",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Marita Kuchendorf",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Super tolles und nettes Team von MaikRohdich. Die Mitarbeiter haben trotz erschw",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-open",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Mehr lesen",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Jero Jero",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Eine ganz klare Empfehlung! Die Kommunikation lief von Anfang an reibungslos – a",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-open",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Mehr lesen",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Sabine G",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "RatingValue__Container-sc-8e7425eb-0 kHBpYh es-rating-value",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "4,9",
+          "weight": "700"
+        },
+        {
+          "cls": "HeaderRating__ReviewsCount-sc-c166f32d-2 jQvsZQ es-header-rating-reviews-count",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "(69)",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Marita Kuchendorf",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 ffdLHp es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Super tolles und nettes Team von MaikRohdich. Die Mitarbeiter haben trotz erschw",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Jero Jero",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Eine ganz klare Empfehlung! Die Kommunikation lief von Anfang an reibungslos – a",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Sabine G",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "2024: Ich habe bereits das zweite Mal meine Einfahrt von Unkraut und Moos reinig",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-open",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Mehr lesen",
+          "weight": "400"
+        }
+      ],
+      "viewport": {
+        "height": 985,
+        "width": 1710
+      }
+    },
+    "assets": [
+      {
+        "id": "8a5fe1478d26af8b",
+        "kind": "font",
+        "name": "nunito-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "resource",
+            "property": "css"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1191,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2"
+      },
+      {
+        "id": "5fe7c9f71cd33bf8",
+        "kind": "font",
+        "name": "baloo2-700-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1193,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2"
+      },
+      {
+        "id": "94a4eef72b92d764",
+        "kind": "stylesheet",
+        "name": "styles.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1201,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/styles.css?v=20261009cn3"
+      },
+      {
+        "id": "0092c40aae5a1723",
+        "kind": "stylesheet",
+        "name": "header-home.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1203,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/header-home.css?v=20261007h"
+      },
+      {
+        "id": "fb2f4092f2a49685",
+        "kind": "stylesheet",
+        "name": "home-dark.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1205,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-dark.css?v=20261009cn3"
+      },
+      {
+        "id": "438a606c1528831f",
+        "kind": "stylesheet",
+        "name": "footer-kontakt.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1207,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/footer-kontakt.css?v=20261007a"
+      },
+      {
+        "id": "aee5a0cb0362ba46",
+        "kind": "stylesheet",
+        "name": "mobile-social-proof.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1209,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/mobile-social-proof.css?v=20261008cn1"
+      },
+      {
+        "id": "b74a909adadad4bf",
+        "kind": "stylesheet",
+        "name": "privat-form.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1211,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/privat-form.css?v=20261009cn3"
+      },
+      {
+        "id": "a0f003ca65434ac2",
+        "kind": "stylesheet",
+        "name": "anfrage.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1215,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/anfrage.css?v=20261008cn1"
+      },
+      {
+        "id": "1792068cdff793d7",
+        "kind": "stylesheet",
+        "name": "form-trust-card.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1213,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/form-trust-card.css?v=20260923d"
+      },
+      {
+        "id": "f3f5d7e6186d7d77",
+        "kind": "stylesheet",
+        "name": "cta-family.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1219,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/cta-family.css?v=20261008cn1"
+      },
+      {
+        "id": "5f1ac27c64d0d187",
+        "kind": "stylesheet",
+        "name": "merge-light.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1217,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/merge-light.css?v=20260902g"
+      },
+      {
+        "id": "c419aa57f0ceeab3",
+        "kind": "stylesheet",
+        "name": "cta-family-home.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1221,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/cta-family-home.css?v=20261008cn1"
+      },
+      {
+        "id": "1377663d67596344",
+        "kind": "stylesheet",
+        "name": "home-process.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1223,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-process.css?v=20261009cn3"
+      },
+      {
+        "id": "1ccdaed644d687de",
+        "kind": "stylesheet",
+        "name": "social-brand.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1237,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/social-brand.css?v=20261006b"
+      },
+      {
+        "id": "f6195b11265f93bc",
+        "kind": "stylesheet",
+        "name": "home-spacing.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1225,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-spacing.css?v=20261004c"
+      },
+      {
+        "id": "ab5c2b86218eaff6",
+        "kind": "stylesheet",
+        "name": "brand-artwork.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1239,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/brand-artwork.css?v=20261007a"
+      },
+      {
+        "id": "f57c71eda18fbe09",
+        "kind": "font",
+        "name": "baloo2-variable-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "css"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/baloo2-variable-latin.woff2"
+      },
+      {
+        "id": "1704f3e39ab06793",
+        "kind": "font",
+        "name": "comic-neue-italic-700.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "css"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/comic-neue-italic-700.woff2"
+      },
+      {
+        "id": "9b5ed90c77f7aefa",
+        "kind": "script",
+        "name": "googleReviews.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1246,
+            "property": "src"
+          }
+        ],
+        "url": "https://universe-static.elfsightcdn.com/app-releases/google-reviews/stable/v3.53.0/7efd9184817592fe6e8cf2f859dc9365f208b966/widget/googleReviews.js"
+      }
+    ]
+  },
+  {
+    "state": "desktop widget",
+    "dom": {
+      "dialogs": [],
+      "links": [
+        "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2",
+        "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2"
+      ],
+      "samples": [
+        {
+          "cls": "RatingValue__Container-sc-8e7425eb-0 kHBpYh es-rating-value",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "4,9",
+          "weight": "700"
+        },
+        {
+          "cls": "HeaderRating__ReviewsCount-sc-c166f32d-2 jQvsZQ es-header-rating-reviews-count",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "(69)",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Marita Kuchendorf",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Super tolles und nettes Team von MaikRohdich. Die Mitarbeiter haben trotz erschw",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-open",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Mehr lesen",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Jero Jero",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Eine ganz klare Empfehlung! Die Kommunikation lief von Anfang an reibungslos – a",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-open",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Mehr lesen",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Sabine G",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten",
+          "weight": "400"
+        }
+      ],
+      "viewport": {
+        "height": 985,
+        "width": 1710
+      }
+    },
+    "assets": [
+      {
+        "id": "8a5fe1478d26af8b",
+        "kind": "font",
+        "name": "nunito-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "resource",
+            "property": "css"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1191,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2"
+      },
+      {
+        "id": "5fe7c9f71cd33bf8",
+        "kind": "font",
+        "name": "baloo2-700-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1193,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2"
+      },
+      {
+        "id": "94a4eef72b92d764",
+        "kind": "stylesheet",
+        "name": "styles.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1201,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/styles.css?v=20261009cn3"
+      },
+      {
+        "id": "0092c40aae5a1723",
+        "kind": "stylesheet",
+        "name": "header-home.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1203,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/header-home.css?v=20261007h"
+      },
+      {
+        "id": "fb2f4092f2a49685",
+        "kind": "stylesheet",
+        "name": "home-dark.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1205,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-dark.css?v=20261009cn3"
+      },
+      {
+        "id": "438a606c1528831f",
+        "kind": "stylesheet",
+        "name": "footer-kontakt.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1207,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/footer-kontakt.css?v=20261007a"
+      },
+      {
+        "id": "aee5a0cb0362ba46",
+        "kind": "stylesheet",
+        "name": "mobile-social-proof.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1209,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/mobile-social-proof.css?v=20261008cn1"
+      },
+      {
+        "id": "b74a909adadad4bf",
+        "kind": "stylesheet",
+        "name": "privat-form.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1211,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/privat-form.css?v=20261009cn3"
+      },
+      {
+        "id": "a0f003ca65434ac2",
+        "kind": "stylesheet",
+        "name": "anfrage.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1215,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/anfrage.css?v=20261008cn1"
+      },
+      {
+        "id": "1792068cdff793d7",
+        "kind": "stylesheet",
+        "name": "form-trust-card.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1213,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/form-trust-card.css?v=20260923d"
+      },
+      {
+        "id": "f3f5d7e6186d7d77",
+        "kind": "stylesheet",
+        "name": "cta-family.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1219,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/cta-family.css?v=20261008cn1"
+      },
+      {
+        "id": "5f1ac27c64d0d187",
+        "kind": "stylesheet",
+        "name": "merge-light.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1217,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/merge-light.css?v=20260902g"
+      },
+      {
+        "id": "c419aa57f0ceeab3",
+        "kind": "stylesheet",
+        "name": "cta-family-home.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1221,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/cta-family-home.css?v=20261008cn1"
+      },
+      {
+        "id": "1377663d67596344",
+        "kind": "stylesheet",
+        "name": "home-process.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1223,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-process.css?v=20261009cn3"
+      },
+      {
+        "id": "1ccdaed644d687de",
+        "kind": "stylesheet",
+        "name": "social-brand.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1237,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/social-brand.css?v=20261006b"
+      },
+      {
+        "id": "f6195b11265f93bc",
+        "kind": "stylesheet",
+        "name": "home-spacing.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1225,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-spacing.css?v=20261004c"
+      },
+      {
+        "id": "ab5c2b86218eaff6",
+        "kind": "stylesheet",
+        "name": "brand-artwork.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1239,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/brand-artwork.css?v=20261007a"
+      },
+      {
+        "id": "f57c71eda18fbe09",
+        "kind": "font",
+        "name": "baloo2-variable-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "css"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/baloo2-variable-latin.woff2"
+      },
+      {
+        "id": "1704f3e39ab06793",
+        "kind": "font",
+        "name": "comic-neue-italic-700.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "css"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/comic-neue-italic-700.woff2"
+      },
+      {
+        "id": "9b5ed90c77f7aefa",
+        "kind": "script",
+        "name": "googleReviews.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 1246,
+            "property": "src"
+          }
+        ],
+        "url": "https://universe-static.elfsightcdn.com/app-releases/google-reviews/stable/v3.53.0/7efd9184817592fe6e8cf2f859dc9365f208b966/widget/googleReviews.js"
+      }
+    ]
+  },
+  {
+    "state": "390x844 widget",
+    "dom": {
+      "dialogs": [],
+      "links": [
+        "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2",
+        "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2"
+      ],
+      "samples": [
+        {
+          "cls": "RatingValue__Container-sc-8e7425eb-0 kHBpYh es-rating-value",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "4,9",
+          "weight": "700"
+        },
+        {
+          "cls": "HeaderRating__ReviewsCount-sc-c166f32d-2 jQvsZQ es-header-rating-reviews-count",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "(69)",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Marita Kuchendorf",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Super tolles und nettes Team von MaikRohdich. Die Mitarbeiter haben trotz erschw",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-open",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Mehr lesen",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Jero Jero",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Eine ganz klare Empfehlung! Die Kommunikation lief von Anfang an reibungslos – a",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-open",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Mehr lesen",
+          "weight": "400"
+        },
+        {
+          "cls": "",
+          "family": "Roboto, Arial, sans-serif",
+          "style": "normal",
+          "tag": "A",
+          "text": "Free Google Reviews Widget",
+          "weight": "600"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "assets": [
+      {
+        "id": "8a5fe1478d26af8b",
+        "kind": "font",
+        "name": "nunito-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "resource",
+            "property": "css"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9346,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2"
+      },
+      {
+        "id": "5fe7c9f71cd33bf8",
+        "kind": "font",
+        "name": "baloo2-700-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9348,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2"
+      },
+      {
+        "id": "0092c40aae5a1723",
+        "kind": "stylesheet",
+        "name": "header-home.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9358,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/header-home.css?v=20261007h"
+      },
+      {
+        "id": "94a4eef72b92d764",
+        "kind": "stylesheet",
+        "name": "styles.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9356,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/styles.css?v=20261009cn3"
+      },
+      {
+        "id": "438a606c1528831f",
+        "kind": "stylesheet",
+        "name": "footer-kontakt.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9362,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/footer-kontakt.css?v=20261007a"
+      },
+      {
+        "id": "fb2f4092f2a49685",
+        "kind": "stylesheet",
+        "name": "home-dark.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9360,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-dark.css?v=20261009cn3"
+      },
+      {
+        "id": "aee5a0cb0362ba46",
+        "kind": "stylesheet",
+        "name": "mobile-social-proof.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9364,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/mobile-social-proof.css?v=20261008cn1"
+      },
+      {
+        "id": "b74a909adadad4bf",
+        "kind": "stylesheet",
+        "name": "privat-form.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9366,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/privat-form.css?v=20261009cn3"
+      },
+      {
+        "id": "5f1ac27c64d0d187",
+        "kind": "stylesheet",
+        "name": "merge-light.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9372,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/merge-light.css?v=20260902g"
+      },
+      {
+        "id": "a0f003ca65434ac2",
+        "kind": "stylesheet",
+        "name": "anfrage.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9370,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/anfrage.css?v=20261008cn1"
+      },
+      {
+        "id": "1792068cdff793d7",
+        "kind": "stylesheet",
+        "name": "form-trust-card.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9368,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/form-trust-card.css?v=20260923d"
+      },
+      {
+        "id": "f3f5d7e6186d7d77",
+        "kind": "stylesheet",
+        "name": "cta-family.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9374,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/cta-family.css?v=20261008cn1"
+      },
+      {
+        "id": "1377663d67596344",
+        "kind": "stylesheet",
+        "name": "home-process.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9378,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-process.css?v=20261009cn3"
+      },
+      {
+        "id": "c419aa57f0ceeab3",
+        "kind": "stylesheet",
+        "name": "cta-family-home.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9376,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/cta-family-home.css?v=20261008cn1"
+      },
+      {
+        "id": "f6195b11265f93bc",
+        "kind": "stylesheet",
+        "name": "home-spacing.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9380,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-spacing.css?v=20261004c"
+      },
+      {
+        "id": "1ccdaed644d687de",
+        "kind": "stylesheet",
+        "name": "social-brand.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9392,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/social-brand.css?v=20261006b"
+      },
+      {
+        "id": "ab5c2b86218eaff6",
+        "kind": "stylesheet",
+        "name": "brand-artwork.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9394,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/brand-artwork.css?v=20261007a"
+      },
+      {
+        "id": "f57c71eda18fbe09",
+        "kind": "font",
+        "name": "baloo2-variable-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "css"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/baloo2-variable-latin.woff2"
+      },
+      {
+        "id": "1704f3e39ab06793",
+        "kind": "font",
+        "name": "comic-neue-italic-700.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "css"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/comic-neue-italic-700.woff2"
+      },
+      {
+        "id": "9b5ed90c77f7aefa",
+        "kind": "script",
+        "name": "googleReviews.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9401,
+            "property": "src"
+          }
+        ],
+        "url": "https://universe-static.elfsightcdn.com/app-releases/google-reviews/stable/v3.53.0/7efd9184817592fe6e8cf2f859dc9365f208b966/widget/googleReviews.js"
+      }
+    ]
+  },
+  {
+    "state": "390x844 open review popup",
+    "dom": {
+      "dialogs": [
+        {
+          "label": "List of reviews",
+          "width": 390
+        }
+      ],
+      "links": [
+        "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2",
+        "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2"
+      ],
+      "samples": [
+        {
+          "cls": "RatingValue__Container-sc-8e7425eb-0 kHBpYh es-rating-value",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "4,9",
+          "weight": "700"
+        },
+        {
+          "cls": "HeaderRating__ReviewsCount-sc-c166f32d-2 jQvsZQ es-header-rating-reviews-count",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "(69)",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Marita Kuchendorf",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Super tolles und nettes Team von MaikRohdich. Die Mitarbeiter haben trotz erschw",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-open",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Mehr lesen",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Jero Jero",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Eine ganz klare Empfehlung! Die Kommunikation lief von Anfang an reibungslos – a",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-open",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Mehr lesen",
+          "weight": "400"
+        },
+        {
+          "cls": "",
+          "family": "Roboto, Arial, sans-serif",
+          "style": "normal",
+          "tag": "A",
+          "text": "Free Google Reviews Widget",
+          "weight": "600"
+        },
+        {
+          "cls": "RatingValue__Container-sc-8e7425eb-0 kHBpYh es-rating-value",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "4,9",
+          "weight": "700"
+        },
+        {
+          "cls": "HeaderRating__ReviewsCount-sc-c166f32d-2 jQvsZQ es-header-rating-reviews-count",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "(69)",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Marita Kuchendorf",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 ffdLHp es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Super tolles und nettes Team von MaikRohdich. Die Mitarbeiter haben trotz erschw",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-hide",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Ausblenden",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Jero Jero",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 2 Monaten",
+          "weight": "400"
+        },
+        {
+          "cls": "ShortenedText__ShortenedTextComponent-sc-cbf20b84-1 kNVpHX es-text-shortener",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Eine ganz klare Empfehlung! Die Kommunikation lief von Anfang an reibungslos – a",
+          "weight": "400"
+        },
+        {
+          "cls": "TextControl__BaseControl-sc-4304d149-0 kRMPVK es-text-shortener-control es-text-shortener-control-open",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "Mehr lesen",
+          "weight": "400"
+        },
+        {
+          "cls": "ReviewAuthorName__AuthorName-sc-b7c38500-1 hlNnbt es-review-author-name",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "SPAN",
+          "text": "Sabine G",
+          "weight": "600"
+        },
+        {
+          "cls": "ReviewInfo__SourceDate-sc-e0570c9a-3 iSxFPw es-review-info-date-container",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten auf",
+          "weight": "400"
+        },
+        {
+          "cls": "DateTime__Time-sc-b8aa16e2-0 ReviewInfo__StyledDateTime-sc-e0570c9a-4 fpwCVi es-review-info-date",
+          "family": "Nunito, sans-serif",
+          "style": "normal",
+          "tag": "DIV",
+          "text": "vor 3 Monaten",
+          "weight": "400"
+        }
+      ],
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "assets": [
+      {
+        "id": "8a5fe1478d26af8b",
+        "kind": "font",
+        "name": "nunito-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "resource",
+            "property": "css"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9346,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/nunito-latin.woff2"
+      },
+      {
+        "id": "5fe7c9f71cd33bf8",
+        "kind": "font",
+        "name": "baloo2-700-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9348,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/baloo2-700-latin.woff2"
+      },
+      {
+        "id": "0092c40aae5a1723",
+        "kind": "stylesheet",
+        "name": "header-home.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9358,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/header-home.css?v=20261007h"
+      },
+      {
+        "id": "94a4eef72b92d764",
+        "kind": "stylesheet",
+        "name": "styles.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9356,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/styles.css?v=20261009cn3"
+      },
+      {
+        "id": "438a606c1528831f",
+        "kind": "stylesheet",
+        "name": "footer-kontakt.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9362,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/footer-kontakt.css?v=20261007a"
+      },
+      {
+        "id": "fb2f4092f2a49685",
+        "kind": "stylesheet",
+        "name": "home-dark.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9360,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-dark.css?v=20261009cn3"
+      },
+      {
+        "id": "aee5a0cb0362ba46",
+        "kind": "stylesheet",
+        "name": "mobile-social-proof.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9364,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/mobile-social-proof.css?v=20261008cn1"
+      },
+      {
+        "id": "b74a909adadad4bf",
+        "kind": "stylesheet",
+        "name": "privat-form.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9366,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/privat-form.css?v=20261009cn3"
+      },
+      {
+        "id": "5f1ac27c64d0d187",
+        "kind": "stylesheet",
+        "name": "merge-light.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9372,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/merge-light.css?v=20260902g"
+      },
+      {
+        "id": "a0f003ca65434ac2",
+        "kind": "stylesheet",
+        "name": "anfrage.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9370,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/anfrage.css?v=20261008cn1"
+      },
+      {
+        "id": "1792068cdff793d7",
+        "kind": "stylesheet",
+        "name": "form-trust-card.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9368,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/form-trust-card.css?v=20260923d"
+      },
+      {
+        "id": "f3f5d7e6186d7d77",
+        "kind": "stylesheet",
+        "name": "cta-family.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9374,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/cta-family.css?v=20261008cn1"
+      },
+      {
+        "id": "1377663d67596344",
+        "kind": "stylesheet",
+        "name": "home-process.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9378,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-process.css?v=20261009cn3"
+      },
+      {
+        "id": "c419aa57f0ceeab3",
+        "kind": "stylesheet",
+        "name": "cta-family-home.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9376,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/cta-family-home.css?v=20261008cn1"
+      },
+      {
+        "id": "f6195b11265f93bc",
+        "kind": "stylesheet",
+        "name": "home-spacing.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9380,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/home-spacing.css?v=20261004c"
+      },
+      {
+        "id": "1ccdaed644d687de",
+        "kind": "stylesheet",
+        "name": "social-brand.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9392,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/social-brand.css?v=20261006b"
+      },
+      {
+        "id": "ab5c2b86218eaff6",
+        "kind": "stylesheet",
+        "name": "brand-artwork.css",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "link"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9394,
+            "property": "href"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/css/brand-artwork.css?v=20261007a"
+      },
+      {
+        "id": "f57c71eda18fbe09",
+        "kind": "font",
+        "name": "baloo2-variable-latin.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "css"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/baloo2-variable-latin.woff2"
+      },
+      {
+        "id": "1704f3e39ab06793",
+        "kind": "font",
+        "name": "comic-neue-italic-700.woff2",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "css"
+          }
+        ],
+        "url": "http://127.0.0.1:8080/assets/fonts/comic-neue-italic-700.woff2"
+      },
+      {
+        "id": "9b5ed90c77f7aefa",
+        "kind": "script",
+        "name": "googleReviews.js",
+        "sources": [
+          {
+            "kind": "resource",
+            "property": "script"
+          },
+          {
+            "kind": "attribute",
+            "nodeId": 9401,
+            "property": "src"
+          }
+        ],
+        "url": "https://universe-static.elfsightcdn.com/app-releases/google-reviews/stable/v3.53.0/7efd9184817592fe6e8cf2f859dc9365f208b966/widget/googleReviews.js"
+      }
+    ]
+  }
+]

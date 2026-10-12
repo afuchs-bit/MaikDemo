@@ -1,0 +1,17 @@
+[
+  {
+    "case": "missing italic 700",
+    "rejected": true,
+    "output": "comic-neue-italic-700.woff2: erforderliche Datei fehlt\nComic-Neue-Herkunftsnachweis: ENOENT: no such file or directory, open '/Users/davidk./Documents/SD-MR-001/maik-comicneue-20261008-lhhgp7o4/production-build/assets/fonts/comic-neue-italic-700.woff2'\nassets/css/styles.css: Font-Pfad fehlt: ../fonts/comic-neue-italic-700.woff2"
+  },
+  {
+    "case": "modified font bytes",
+    "rejected": true,
+    "output": "comic-neue-italic-700.woff2: SHA-256 stimmt nicht mit dem Herkunftsnachweis überein"
+  },
+  {
+    "case": "old active handwriting",
+    "rejected": true,
+    "output": "font-regression-test.css: frühere System-Handschrift in aktiver Schriftregel"
+  }
+]

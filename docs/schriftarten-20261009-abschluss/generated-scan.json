@@ -1,0 +1,90 @@
+{
+  "active_old_or_external_font_matches": [],
+  "all_font_paths_checked_by_script": true,
+  "css": [
+    {
+      "path": "assets/css/cta-family-home.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/brand-artwork.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/styles.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/kontakt.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/gewerbe.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/header-home.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/home-process.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/cta-family.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/merge-light.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/anfrage.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/ueber-uns.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/projekte.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/home-dark.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/leistung-mobile.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/social-brand.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/footer-kontakt.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/home-spacing.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/form-trust-card.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/mobile-social-proof.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/privat-form.css",
+      "build_byte_identical": true
+    },
+    {
+      "path": "assets/css/customer-hero.css",
+      "build_byte_identical": true
+    }
+  ]
+}
