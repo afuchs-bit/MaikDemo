@@ -16,12 +16,6 @@
   "desktopLayout": "trichter",
   "desktopHero": "rahmenbild",
   "desktopHeroPortrait": "/assets/img/leistungen-mobile/originale/balkonkastenbepflanzung.jpg",
-  "desktopHeroGraphic": {
-    "bild": "/assets/img/leistungen-mobile/balkonkastenbepflanzung-schriftzug-1400.webp",
-    "bild1x": "/assets/img/leistungen-mobile/balkonkastenbepflanzung-schriftzug-700.webp",
-    "width": 1400,
-    "height": 508
-  },
   "ctaFamilyVersion": "20260926b",
   "h1": "Balkonkastenbepflanzung",
   "heroTitleLines": [

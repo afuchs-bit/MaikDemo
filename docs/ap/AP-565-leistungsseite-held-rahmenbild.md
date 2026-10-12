@@ -505,3 +505,52 @@ index badd759..fe3e40b 100644
 - **E4 – Zoom und Seitenkopf.** Der Kopf ist auf Leistungsseiten sticky im Fluss, auf der Startseite schwebt er. Soll der Held wie dort unter dem Kopf beginnen (160 px Luft oben), ist das ein eigenes AP am Header – hier bewusst nicht angefasst (Stopp-Regel).
 - **Ausrollen auf 37 Leistungen (eigenes AP).** Pro Seite nötig: `desktopHero`, ein Hochkant-Motiv im Manifest (heute haben alle Seiten ein `originale/<slug>.jpg` neben dem `-4x3.jpg` – prüfen, ob die 3:4-Derivate überall existieren), optional ein Schriftzug (sonst Baloo-Fallback), Gewerbe-Seiten bekommen „Gewerbekunden“ automatisch. Wasserzeichen und Nachweise sind für alle gleich.
 - **Schriftzug-Pflege.** Der Schriftzug ist ein Grafik-Asset außerhalb der CMS-Bildpipeline. Bei Änderungen des Leistungsnamens muss er neu erzeugt werden – im CMS (`admin/config.yml`) ist das Feld bewusst nicht angelegt.
+
+## Nachtrag 07.10.2026: Titel in der Schrift von „Über uns“
+
+Ansage: Der Titel im Balkonkasten-Held soll dieselbe Schrift wie der Titel auf „Über uns“ (AP-585) tragen.
+
+- **Schriftzug-Bild entfällt:** `desktopHeroGraphic` ist aus `content/leistungen/privat/balkonkastenbepflanzung.json` entfernt. Der Build setzt kein Bild mehr. Die Webp-Dateien bleiben vorerst im Repo, siehe offene Punkte.
+- **Neue Titelschrift:** Es greift der vorhandene Ersatztitel: Baloo 2 700, „Balkonkasten-“ weiß, „bepflanzung“ grün, Laufweite −.028em, Zeilenhöhe 1.04 – wie „Über uns“.
+- **Größe:** `clamp(52px, 6.6vw, 104px)` statt `clamp(44px, 4.4vw, 80px)`. „Über uns“ nutzt 7vw; bei „Balkonkasten-“ wäre das bei 1920 zu breit für die 620-px-Titelbreite.
+
+Gemessen bei 901 bis 1920 px:
+- Schriftgröße 59–104 px, die längste Zeile 346–605 px, also immer innerhalb der Titelbreite.
+- Der Knopf liegt weiter über der 80-%-Linie und pulsiert im ersten Bild.
+- Handy 375/402/874: 0 Abweichungen.
+- **Ansage 07.10.2026 (später):** Der Titel steht ohne grünen Farbton – beide Zeilen weiß (`#fafaf6`). Die
+  Grün-Regel für die zweite Zeile ist entfernt.
+
+## Nachtrag 07.10.2026: Titel mittig, Foto höher
+
+Ansage: Die Schrift steht mittig, das Foto weiter oben (Entscheidungen: mittig zwischen Rand und Foto wie bei
+„Über uns“; Oberkante der Karte auf Höhe des Rücklinks).
+
+- **Raster:** Spalten `Rand / 1fr / auto / Rand`. Spalte 2 endet an der Fotokante.
+  - Die Kartenbreite beträgt `min(460px, (frei − 64) · .75, 44vw)`, weil eine `auto`-Spalte kein
+    Prozentmaß kennt. Bei 901 px sind das 396 statt 391 px.
+- **Titel und Knopf:** mittig in Spalte 2, Text zentriert.
+  - Beide sind beidseitig um `clamp(32px, 3.2vw, 56px)` schmaler. Die Mitte bleibt exakt, und der Knopf
+    hat bei 901 px 30 px Luft zum Foto. Dort ist er 357 px breit statt 440.
+- **Karte:** `align-self:start`, um den Rücklink-Block (34 px + Abstand) nach oben gezogen.
+  - `.lpv2-main` beschnitt sie dabei oben (`overflow:clip`). Am Desktop schneidet es deshalb nur noch
+    seitlich (`overflow-x:clip; overflow-y:visible`).
+
+Gemessen bei 901 bis 1920 px:
+- Titel-, Text- und Knopfmitte gleich der Mitte zwischen Kante und Foto (0,0 px).
+- Karten-Oberkante gleich der Rücklink-Oberkante (0,0 px), Größe unverändert.
+- Der Rücklink bleibt klickbar.
+- Der Knopf pulsiert im ersten Bild.
+- Kein Überlauf, keine Konsolenfehler.
+- Handy 375/402/874: 0 Abweichungen.
+- **Ansage 07.10.2026 (später):** Die Titelgröße ist wie beim Startseiten-Titel („Ihr Partner für alles rund
+  um den Garten“, `#gate-title`): `clamp(44px, 4.4vw, 80px)`. Zeilenhöhe 1.04 und Laufweite −.028em waren
+  schon gleich. Gemessen: 44 / 45,1 / 56,3 / 63,4 / 80 px bei 901 / 1024 / 1280 / 1440 / 1920, identisch
+  mit der Startseite. Titel und Knopf bleiben mittig, der Knopf pulsiert.
+- **Ansage 07.10.2026 (später):** Der Knopf unter dem Titel ist etwas kleiner: 380 × 64 statt 440 × 74 px,
+  Beschriftung 16 statt 18 px, Pfeilfeld 60 × 40 (Bild 44 px), Rundung 14 px. Er steht weiter mittig unter dem
+  Titel und pulsiert im ersten Bild.
+- **Ansage 08.10.2026:** Der dunkelgrüne Schleier um das Held-Foto ist entfernt. Ursache war der doppelte
+  `box-shadow` der Karte: schwarzer Weichschatten `0 40px 70px -36px rgba(0,0,0,.95)` und grüner Schein
+  `0 30px 60px -40px rgba(93,224,35,.55)`. Jetzt gilt `box-shadow:none`. Rahmen, Blütenstempel und der
+  leichte Verlauf auf dem Foto selbst bleiben. Handy unverändert.

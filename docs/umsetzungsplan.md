@@ -2709,3 +2709,17 @@ Innenrahmen und dieselben Logo-Maße. Mobile Sprunglink-Einstiege starten sofort
 kompakt. 45 öffentliche Seiten, 18 Viewportgrößen, Menü-/Telefonzustände und
 Größenwechsel geprüft; kein direkter physischer Safari-Test. Details:
 `docs/ap/AP-587-header-abstaende-seitenwechsel.md`.
+
+**AP-586 — Leistungsseiten: Balkonkasten-Design am Desktop auf alle Seiten (08.10.2026).**
+
+- **Umfang:** Rahmenbild-Held (AP-565) und Textbereich mit Blickführung (AP-566/567) gelten jetzt
+  standardmäßig für alle 38 Leistungsseiten; Ausnahme ist der Textbereich von Baumkontrolle.
+- **Fotos:** Die vorhandenen Fotos werden auf 3:4 zugeschnitten.
+- **Titel:** Bindestrich nur an Wortfugen, weiche Trennstellen für lange Titelwörter.
+- **Textbereich:**
+  - Die H3 darf umbrechen.
+  - Die Liste misst sich per JS unter die H3.
+  - Ein Absatz nach der Liste (Sturmnotdienst) wandert nach unten.
+- **Handy:** unverändert.
+
+Details und Problemliste: `docs/ap/AP-586-leistungsseiten-balkonkasten-design-alle.md`.

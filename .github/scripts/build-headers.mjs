@@ -17,7 +17,7 @@ const PRIVATE_FORM_CSS_VERSION = '20261009cn3';
 const MOBILE_SOCIAL_PROOF_CSS_VERSION = '20261008cn1';
 const CTA_CSS_VERSION = '20261008cn1';
 const CTA_HOME_CSS_VERSION = '20261008cn1';
-const JS_VERSION = '20261006c';
+const JS_VERSION = '20261008b';
 const HOME_HEADER_JS_VERSION = '20261007b';
 const GALLERY_JS_VERSION = '20261001a';
 const FOOTER_CSS_VERSION = '20261007a';
@@ -27,10 +27,10 @@ const HANDWRITING_CSS_VERSION = '20261009cn3';
 const HOME_SPACING_CSS_VERSION = '20261004c';
 // AP-568: eigener Schluessel, damit eine Aenderung an leistung-mobile.css nicht
 // den styles.css-Schluessel aller Seiten mitzieht.
-const LEISTUNG_MOBILE_CSS_VERSION = '20261009cn3';
+const LEISTUNG_MOBILE_CSS_VERSION = '20261012m1';
 // AP-585: eigener Schluessel fuer ueber-uns.css - bisher an CSS_VERSION, dessen Heben
 // styles.css auf allen Seiten mitgezogen haette.
-const UEBER_CSS_VERSION = '20261009cn3';
+const UEBER_CSS_VERSION = '20261012m1';
 const SOCIAL_BRAND_CSS_VERSION = '20261006b';
 const BRAND_ARTWORK_VERSION = '20261007a';
 const SKIP_DIRS = new Set(['admin', 'assets', 'content', 'data', 'docs', 'node_modules', 'tmp']);

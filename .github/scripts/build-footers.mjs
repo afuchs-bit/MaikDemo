@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const TEMPLATE = path.join(__dirname, 'templates', '_footer.html');
 const EXCLUDED_DIRS = new Set([
-  '.git', '.github', 'admin', 'assets', 'content', 'data', 'docs', 'node_modules',
+  '.git', '.github', 'admin', 'assets', 'content', 'data', 'docs', 'node_modules', 'tmp',
 ]);
 
 function fill(template, data) {

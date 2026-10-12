@@ -2577,3 +2577,19 @@ Auftraggeber so entschieden.
 - **E3 Ausrollen auf die übrigen Leistungsseiten:** H3-Länge je Seite prüfen (einzeilig per `nowrap`).
   Eigenes AP.
 - **Ohne JS:** Die Trennlinie zeigt nur die graue Grundlinie (keine Füllung).
+
+## Balkonkasten-Titel ohne Schriftzug (07.10.2026)
+
+- `assets/img/leistungen-mobile/balkonkastenbepflanzung-schriftzug-{700,1400}.webp` und das PNG werden nicht mehr verwendet, seit der Titel in Baloo 2 steht (Ansage 07.10.2026). Löschen, wenn der Schriftzug endgültig nicht zurückkommt.
+
+## AP-586 — Balkonkasten-Design auf allen Leistungsseiten
+
+- **Hochkant-Fotos fehlen:**
+  - Außer Balkonkasten (und bedingt Baumkontrolle) liegen die Held-Fotos nur in 640 px vor. In der
+    Desktop-Karte (460 × 613) sind sie auf Retina weich; Saisonbepflanzung (480 × 360) ist überall
+    weich.
+  - Je Seite ein Hochkant-Original ≥ 920 × 1227 liefern und als `desktopHeroPortrait` eintragen.
+    Liste in `docs/ap/AP-586-…md`.
+- **Baumkontrolle-Textbereich:** bleibt in der alten Spalte (drei Blöcke + Diagramm). Eigene
+  Desktop-Lösung ist ein Folge-AP.
+- **`titelTrennung`:** Bei Titeländerungen prüfen, ob die Trennstelle noch stimmt.
