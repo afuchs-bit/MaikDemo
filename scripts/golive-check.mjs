@@ -111,6 +111,28 @@ async function alleIndexSeiten(root) {
   return found;
 }
 
+// AP-606: Alle @type-Werte, die die Seite verwendet, je einzeln auf schema.org geprüft.
+// Ein erfundener Typ (bis AP-606: „LandscapingBusiness“) wirft keinen Parserfehler, aber
+// Suchmaschinen ignorieren dann den ganzen Knoten. Neue Typen erst auf schema.org prüfen,
+// dann hier eintragen.
+const SCHEMA_TYPEN = new Set([
+  'AboutPage', 'Answer', 'BreadcrumbList', 'ContactPage', 'EducationalOccupationalCredential',
+  'FAQPage', 'HomeAndConstructionBusiness', 'ImageObject', 'ListItem', 'Offer', 'OfferCatalog',
+  'OpeningHoursSpecification', 'Organization', 'Person', 'PostalAddress', 'Question', 'Service',
+  'WebSite',
+]);
+
+function alleTypen(knoten, out = new Set()) {
+  if (Array.isArray(knoten)) knoten.forEach((k) => alleTypen(k, out));
+  else if (knoten && typeof knoten === 'object') {
+    for (const [k, v] of Object.entries(knoten)) {
+      if (k === '@type') [].concat(v).forEach((t) => out.add(t));
+      else alleTypen(v, out);
+    }
+  }
+  return out;
+}
+
 function enthaeltTyp(knoten, typen) {
   if (Array.isArray(knoten)) return knoten.some((k) => enthaeltTyp(k, typen));
   if (!knoten || typeof knoten !== 'object') return false;
@@ -179,6 +201,9 @@ async function pruefeSeo({ root, ziel }) {
       let daten;
       try { daten = JSON.parse(block); } catch (e) { fehler('JSON-LD', rel, `nicht parsebar: ${e.message}`); continue; }
       if (enthaeltTyp(daten, ['AggregateRating', 'Review'])) fehler('JSON-LD', rel, 'AggregateRating/Review enthalten');
+      for (const typ of alleTypen(daten)) {
+        if (!SCHEMA_TYPEN.has(typ)) fehler('JSON-LD-Typ', rel, `"${typ}" ist nicht als schema.org-Typ freigegeben`);
+      }
     }
 
     if (ziel === 'live' && s.noindex) fehler('noindex (live)', rel, 'Sitemap-Seite trägt noindex');

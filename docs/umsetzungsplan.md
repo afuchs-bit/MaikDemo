@@ -630,7 +630,7 @@ Struktur: `/gartenbau-<stadt>/` mit Ortsbezug im ersten Absatz, mindestens zwei 
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "LandscapingBusiness",
+      "@type": "HomeAndConstructionBusiness",
       "@id": "https://rohdich.de/#business",
       "name": "Maik Rohdich Garten- und Landschaftsbau",
       "url": "https://rohdich.de/",

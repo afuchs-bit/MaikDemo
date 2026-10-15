@@ -52,7 +52,8 @@ html.home-theme-dark body { background-color: #1B1E19; }
 <!-- Kein aggregateRating und kein Review-Markup: selbst ausgezeichnete Bewertungen im
      eigenen LocalBusiness-Markup verstossen gegen Googles Richtlinien fuer strukturierte
      Daten. Die Bewertungen bleiben sichtbar auf der Seite, nur ohne Markup. (AP-05) -->
-<!-- AP-21: Entitäten-Graph (LandscapingBusiness · Person · WebSite) mit @id-Referenzen.
+<!-- AP-21: Entitäten-Graph (HomeAndConstructionBusiness · Person · WebSite) mit @id-Referenzen.
+     AP-606: vorher LandscapingBusiness – kein schema.org-Typ, der Betrieb wurde nicht erkannt.
      Unterseiten referenzieren #business per @id, statt das Objekt zu duplizieren.
      OFFEN (im Nachtrag-Paket zusammen ergänzen, siehe docs/offene-punkte.md):
        geo               → Geokoordinaten Hülsstraße 5
@@ -90,7 +91,7 @@ html.home-theme-dark body { background-color: #1B1E19; }
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "LandscapingBusiness",
+      "@type": "HomeAndConstructionBusiness",
       "@id": "https://rohdich.de/#business",
       "name": "Maik Rohdich Garten- und Landschaftsbau",
       "url": "https://rohdich.de/",
