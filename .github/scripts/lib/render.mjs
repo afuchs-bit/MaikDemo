@@ -599,6 +599,11 @@ export const WELTEN = {
   gewerbe: {
     key: 'gewerbe',
     pfad: 'gewerbekunden/',
+    // AP-602: /gewerbekunden/ ist vorübergehend deaktiviert (Weiterleitung auf die
+    // Startseite, Seitenstand in index.saved.html). Brotkrumen und „Alle Leistungen“
+    // zeigen deshalb wie bei den Privatkunden auf die Startseite. Geht die Übersicht
+    // wieder live, diese Zeile entfernen und neu bauen.
+    hubEntfaellt: true,
     weltLabel: 'Gewerbekunde',
     navLabel: 'Für Gewerbekunden',
     base: '../../../',

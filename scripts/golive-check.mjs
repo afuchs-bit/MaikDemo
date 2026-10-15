@@ -4,13 +4,16 @@
 //   npm run check:golive                                   Repo-Wurzel, Ziel demo
 //   npm run check:golive -- --root _site --ziel live       Deploy-Stand vor dem Go-live (AP-604)
 //   npm run check:golive -- --nur-bericht                  Fehler ausgeben, Exit-Code bleibt 0
+//   npm run check:golive -- --extern                       externe Links zusätzlich per HEAD (AP-602)
+//
+// Der Abschnitt Alt-Texte braucht jsdom (devDependency) – vorher `npm ci`.
 //
 // Aufbau in Abschnitten: jede Prüffunktion liefert eine Liste von Befunden
 // { stufe: 'Fehler' | 'Warnung', regel, datei, detail }. AP-602 und AP-605 hängen
 // weitere Abschnitte an ABSCHNITTE an (pruefeLinks, pruefeAlt, pruefeFremdquellen).
 // Keine Abhängigkeiten – Regex und JSON.parse reichen für die eigenen, bekannten Seiten.
 
-import { readFile, readdir, access } from 'node:fs/promises';
+import { readFile, readdir, access, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -27,12 +30,13 @@ const SKIP_DIRS = new Set([
 
 // ---------- Aufruf ----------
 function parseArgs(argv) {
-  const opts = { root: REPO_ROOT, ziel: 'demo', nurBericht: false };
+  const opts = { root: REPO_ROOT, ziel: 'demo', nurBericht: false, extern: false };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--root') opts.root = path.resolve(argv[++i] ?? '');
     else if (a === '--ziel') opts.ziel = argv[++i];
     else if (a === '--nur-bericht') opts.nurBericht = true;
+    else if (a === '--extern') opts.extern = true;
     else throw new Error(`Unbekannter Parameter: ${a}`);
   }
   if (!['demo', 'staging', 'live'].includes(opts.ziel)) {
@@ -214,10 +218,181 @@ async function pruefeSeo({ root, ziel }) {
   return befunde;
 }
 
+// ---------- Auslieferbare HTML-Seiten (AP-602) ----------
+// Alle .html unter --root ausser den Sitemap-Skip-Ordnern und den abgelegten
+// Seitenständen (*.saved.html), die nur als Sicherung im Repo liegen.
+async function alleHtmlSeiten(root) {
+  const found = [];
+  async function walk(abs, rel) {
+    for (const e of await readdir(abs, { withFileTypes: true })) {
+      const childRel = rel ? `${rel}/${e.name}` : e.name;
+      if (e.isDirectory()) {
+        if (!e.name.startsWith('.') && !SKIP_DIRS.has(e.name)) await walk(path.join(abs, e.name), childRel);
+      } else if (e.name.endsWith('.html') && !e.name.endsWith('.saved.html')) {
+        found.push(childRel);
+      }
+    }
+  }
+  await walk(root, '');
+  return found.sort();
+}
+
+// ---------- Abschnitt Links (AP-602) ----------
+const EXTERN_SCHEMA = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i;
+
+function verweise(html) {
+  // Kommentare und Skriptinhalte raus: dort stehen Template-Strings und Notizen,
+  // keine echten Verweise. Das src-Attribut des <script>-Tags bleibt erhalten.
+  const sauber = ohneKommentare(html).replace(/(<script\b[^>]*>)[\s\S]*?<\/script>/gi, '$1</script>');
+  const out = [];
+  for (const m of sauber.matchAll(/<[a-z][\w-]*\b[^>]*>/gi)) {
+    const a = attrs(m[0]);
+    for (const k of ['href', 'src', 'poster']) if (a[k] !== undefined) out.push(a[k].trim());
+    for (const k of ['srcset', 'imagesrcset']) {
+      if (a[k]) out.push(...a[k].split(',').map((s) => s.trim().split(/\s+/)[0]).filter(Boolean));
+    }
+  }
+  return out;
+}
+
+function ankerIn(html) {
+  return new Set([...ohneKommentare(html).matchAll(/\s(?:id|name)\s*=\s*["']([^"']+)["']/gi)].map((m) => decode(m[1])));
+}
+
+async function pruefeLinks({ root, ziel, extern }) {
+  const befunde = [];
+  const fehler = (regel, datei, detail = '') => befunde.push({ stufe: 'Fehler', regel, datei, detail });
+  const warnung = (regel, datei, detail = '') => befunde.push({ stufe: 'Warnung', regel, datei, detail });
+
+  const cache = new Map();
+  const lies = async (rel) => {
+    if (!cache.has(rel)) cache.set(rel, await readFile(path.join(root, rel), 'utf8'));
+    return cache.get(rel);
+  };
+  const externe = new Map();
+
+  for (const seite of await alleHtmlSeiten(root)) {
+    const html = await lies(seite);
+    for (const roh of verweise(html)) {
+      if (!roh || roh.includes('${') || roh.includes('{{')) continue;
+      if (EXTERN_SCHEMA.test(roh)) {
+        // Eigene Adressen (Canonical, og:url) sind interne Ziele; vor dem Go-live
+        // liefert rohdich.de dort noch die alte Seite aus.
+        if (extern && /^https?:/i.test(roh) && !roh.startsWith(SITE)) externe.set(roh, [...(externe.get(roh) || []), seite]);
+        continue;
+      }
+      const [ohneAnker, anker = ''] = roh.split('#');
+      const pfad = ohneAnker.split('?')[0];
+      let zielRel;
+      if (!pfad) {
+        zielRel = seite;
+      } else {
+        let dekodiert;
+        try { dekodiert = decodeURIComponent(pfad); } catch { fehler('Link', seite, `nicht dekodierbar: ${roh}`); continue; }
+        zielRel = path.normalize(dekodiert.startsWith('/') ? dekodiert.slice(1) : path.join(path.dirname(seite), dekodiert));
+        if (zielRel.startsWith('..')) { fehler('Ziel fehlt', seite, `${roh} zeigt aus --root heraus`); continue; }
+        const abs = path.join(root, zielRel);
+        if (dekodiert.endsWith('/') || (await istOrdner(abs))) zielRel = path.join(zielRel, 'index.html');
+        if (!(await existiert(path.join(root, zielRel)))) { fehler('Ziel fehlt', seite, roh); continue; }
+      }
+      if (!zielRel.endsWith('.html')) continue;
+      const zielHtml = await lies(zielRel);
+      if (anker && !ankerIn(zielHtml).has(decode(anker))) fehler('Anker fehlt', seite, roh);
+      if (pfad && zielRel !== seite) {
+        const s = analysiere(zielHtml);
+        if (s.weiterleitung) warnung('Ziel leitet weiter', seite, roh);
+        else if (s.noindex && ziel === 'live') warnung('Ziel trägt noindex', seite, roh);
+      }
+    }
+  }
+
+  // Laufzeitdaten: die Galerie baut ihre Links und Bilder aus dem Projektindex.
+  const indexPfad = path.join(root, 'data', 'projekte-index.json');
+  if (await existiert(indexPfad)) {
+    const { projekte = [] } = JSON.parse(await readFile(indexPfad, 'utf8'));
+    for (const p of projekte) {
+      if (!(await existiert(path.join(root, 'projekte', p.slug, 'index.html')))) fehler('Projektseite fehlt', 'data/projekte-index.json', p.slug);
+      for (const b of p.bilder || []) {
+        if (b.bild && !(await existiert(path.join(root, decodeURIComponent(b.bild).replace(/^\//, ''))))) {
+          fehler('Projektbild fehlt', 'data/projekte-index.json', `${p.slug}: ${b.bild}`);
+        }
+      }
+    }
+  }
+
+  // Externe Links nur auf Wunsch und nur als Warnung: Instagram, WhatsApp und
+  // Google weisen automatische Abrufe oft ab, ohne dass der Link kaputt ist.
+  for (const [url, seiten] of externe) {
+    try {
+      let antwort = await fetch(url, { method: 'HEAD', redirect: 'follow', signal: AbortSignal.timeout(8000) });
+      // Manche Server (z. B. bkg.bund.de) lehnen nur HEAD ab – dann einmal per GET.
+      if ([400, 403, 405, 501].includes(antwort.status)) {
+        antwort = await fetch(url, { method: 'GET', redirect: 'follow', signal: AbortSignal.timeout(8000) });
+        await antwort.body?.cancel();
+      }
+      if (antwort.status >= 400) warnung('Externer Link', seiten[0], `${antwort.status} ${url} (${seiten.length}×)`);
+    } catch (e) {
+      warnung('Externer Link', seiten[0], `${e.name} ${url} (${seiten.length}×)`);
+    }
+  }
+
+  return befunde;
+}
+
+async function istOrdner(p) {
+  try { return (await stat(p)).isDirectory(); } catch { return false; }
+}
+
+// ---------- Abschnitt Alt-Texte (AP-602) ----------
+const DATEINAME_ALT = /\.(?:jpe?g|png|webp|avif|gif|svg)\b|\bimg[_-]?\d|\bDSC/i;
+
+async function pruefeAlt({ root }) {
+  const befunde = [];
+  const fehler = (regel, datei, detail = '') => befunde.push({ stufe: 'Fehler', regel, datei, detail });
+  const warnung = (regel, datei, detail = '') => befunde.push({ stufe: 'Warnung', regel, datei, detail });
+
+  let JSDOM;
+  try { ({ JSDOM } = await import('jsdom')); } catch {
+    fehler('jsdom', 'package.json', 'jsdom fehlt – vorher `npm ci` ausführen');
+    return befunde;
+  }
+
+  for (const seite of await alleHtmlSeiten(root)) {
+    const { document } = new JSDOM(await readFile(path.join(root, seite), 'utf8')).window;
+    for (const img of document.querySelectorAll('img')) {
+      const src = img.getAttribute('src') ?? '';
+      if (!img.hasAttribute('alt')) {
+        if (src) fehler('img ohne alt', seite, src);
+        continue;
+      }
+      const alt = img.getAttribute('alt').trim();
+      if (alt) {
+        if (alt.length > 150) warnung('Alt-Text zu lang', seite, `${alt.length} Zeichen: ${src}`);
+        if (DATEINAME_ALT.test(alt)) warnung('Alt-Text wie Dateiname', seite, `"${alt}"`);
+        continue;
+      }
+      if (!src || schmueckend(img, src)) continue;
+      const ordner = (src.match(/assets\/img\/([^/]+)/) || [, src])[1];
+      warnung('Inhaltsbild ohne Beschreibung', seite, `[${ordner}] ${src}`);
+    }
+  }
+  return befunde;
+}
+
+// alt="" ist richtig, wenn das Bild nur schmückt oder daneben derselbe Text steht.
+function schmueckend(img, src) {
+  if (img.closest('[aria-hidden="true"], [role="presentation"], [role="none"]')) return true;
+  if (/assets\/img\/(?:icons|logo)\//.test(src)) return true;
+  const traeger = img.parentElement?.closest('a, button, figure, li');
+  return !!traeger && traeger.textContent.replace(/\s+/g, '').length >= 3;
+}
+
 // ---------- Ausgabe ----------
 const ABSCHNITTE = [
   ['SEO', pruefeSeo],
-  // AP-602/605: ['Links', pruefeLinks], ['Alt-Texte', pruefeAlt], ['Fremdquellen', pruefeFremdquellen]
+  ['Links', pruefeLinks],
+  ['Alt-Texte', pruefeAlt],
+  // AP-605: ['Fremdquellen', pruefeFremdquellen]
 ];
 
 function tabelle(befunde) {

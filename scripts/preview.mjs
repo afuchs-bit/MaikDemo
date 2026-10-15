@@ -81,10 +81,29 @@ const server = createServer(async (req, res) => {
     if (req.method === 'HEAD' || !info.size) return res.end();
     await pipeline(createReadStream(file, { start, end }), res);
   } catch (error) {
-    if (!res.headersSent) sendJSON(res, ['ENOENT', 'ENOTDIR', 'URIError'].includes(error.code || error.name) ? 404 : 500, 'preview_error');
-    else res.destroy();
+    const fehlt = ['ENOENT', 'ENOTDIR', 'URIError'].includes(error.code || error.name);
+    if (res.headersSent) res.destroy();
+    else if (fehlt && wantsHtml(req)) await send404Page(req, res);
+    else sendJSON(res, fehlt ? 404 : 500, 'preview_error');
   }
 });
+
+// AP-602: Seitenaufrufe ins Leere bekommen wie auf Hetzner (ErrorDocument 404)
+// die gestaltete 404.html mit Status 404. Andere Anfragen bleiben bei JSON.
+function wantsHtml(req) {
+  return (req.headers.accept || '').includes('text/html');
+}
+async function send404Page(req, res) {
+  try {
+    const page = resolve(root, '404.html');
+    const info = await stat(page);
+    res.writeHead(404, { 'Content-Type': types['.html'], 'Content-Length': info.size });
+    if (req.method === 'HEAD') return res.end();
+    await pipeline(createReadStream(page), res);
+  } catch {
+    if (!res.headersSent) sendJSON(res, 404, 'not_found');
+  }
+}
 server.requestTimeout = 30_000;
 server.listen(Number(process.env.PREVIEW_PORT || 8080), '0.0.0.0', () => {
   console.log(`Vorschau: http://127.0.0.1:${server.address().port}/`);
