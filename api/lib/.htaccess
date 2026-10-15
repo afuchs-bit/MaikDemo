@@ -1,0 +1,2 @@
+# AP-603: Bibliotheken werden nur von anfrage.php eingebunden, nie direkt aufgerufen.
+Require all denied

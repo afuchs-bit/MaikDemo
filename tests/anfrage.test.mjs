@@ -147,7 +147,7 @@ test('Nur verbleibende, aufbereitete Fotos werden gesendet; Rechtebestätigung i
   f.consent.checked = true;
   f.submit();
   await until(() => f.status.getAttribute('data-art') === 'erfolg');
-  const sent = f.requests[0].body.getAll('fotos');
+  const sent = f.requests[0].body.getAll('fotos[]');
   assert.deepEqual(sent.map((file) => file.name), ['foto-1.jpg', 'foto-2.jpg']);
   assert.ok(sent.every((file) => file.type === 'image/jpeg' && file.size !== f.file('a.jpg').size));
   assert.equal(f.requests[0].url, '/api/anfrage');
@@ -301,7 +301,7 @@ function request(count = 0, consent = true) {
   data.set('nachricht', 'Anfrage\nmit zwei Zeilen'); data.set('leistung', 'Baumpflege');
   data.set('geladen_um', String(Date.now() - 5000));
   if (consent) data.set('foto_freigabe', '1');
-  for (let i = 0; i < count; i++) data.append('fotos', new Blob([new Uint8Array([255,216,255,0,1,2,3,4,5,6,7,8])], { type: 'image/jpeg' }), 'original.jpg');
+  for (let i = 0; i < count; i++) data.append('fotos[]', new Blob([new Uint8Array([255,216,255,0,1,2,3,4,5,6,7,8])], { type: 'image/jpeg' }), 'original.jpg');
   return new Request('http://127.0.0.1:8080/api/anfrage', { method: 'POST', body: data });
 }
 

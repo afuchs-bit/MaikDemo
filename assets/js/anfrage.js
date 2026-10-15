@@ -498,7 +498,8 @@
     // mit ihren Metadaten. Nur die aufbereiteten Fassungen duerfen das Geraet
     // verlassen.
     daten.delete('fotos');
-    vorbereitet.forEach((foto, index) => daten.append('fotos', foto.datei, 'foto-' + (index + 1) + '.jpg'));
+    // AP-603: Der PHP-Empfaenger liest mehrere Dateien nur unter einem Namen mit [].
+    vorbereitet.forEach((foto, index) => daten.append('fotos[]', foto.datei, 'foto-' + (index + 1) + '.jpg'));
 
     const ursprung = knopfText ? knopfText.textContent : '';
     versandLaeuft = true;

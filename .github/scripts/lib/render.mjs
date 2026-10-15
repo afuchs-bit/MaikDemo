@@ -1479,7 +1479,7 @@ export async function renderLeistungPage(opts) {
 </div>`;
     return fill(page, {
       base, slug: esc(slug), cssVersion: escAttr(cssVersion), jsVersion: escAttr(jsVersion),
-      anfrageJsVersion: '20261004c',
+      anfrageJsVersion: '20261015a', // AP-603: fotos[]
       themeColor: escAttr(presented.themeColor || '#1b1e19'),
       mobileCssVersion: escAttr(cssVersion),
       ctaFamilyVersion: escAttr(presented.ctaFamilyVersion || '20260919a'),

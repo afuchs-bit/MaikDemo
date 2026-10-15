@@ -33,6 +33,36 @@ prüft dieselben Angaben und liefert genaue Fehler zu Feldern und Anhängen zur�
 `npm test` prüft Fotoauswahl, Entfernen, Abbrechen, Feldvalidierung, Fehlerfälle
 und die Übergabe an beide Versandwege ohne echte E-Mails zu versenden.
 
+### PHP-Empfänger für Hetzner (AP-603)
+
+Auf dem Hetzner-Webhosting nimmt `api/anfrage.php` das Formular entgegen, mit
+demselben Vertrag wie `api/anfrage.js` (Statuscodes, Codes, Feldtexte, Grenzen).
+`api/.htaccess` macht ihn unter `/api/anfrage` erreichbar und sperrt alles andere
+in `api/`. Der Versand läuft per SMTP mit PHPMailer (`api/lib/README.md`).
+
+Die Konfiguration liegt **nur auf dem Server**, eine Ebene über der
+Dokumentwurzel, als `anfrage-config.php` (Rechte 600). Vorlage:
+`server/anfrage-config.example.php`. Die Datei ist per `.gitignore` gesperrt.
+
+Lokal testen (PHP ab 8.1 im `PATH`):
+
+```bash
+npm test                     # enthält tests/anfrage-php.test.mjs
+PHP_BIN=/pfad/zu/php npm test  # bestimmte PHP-Version
+```
+
+Die Vertragstests starten je Fall `php -S` mit einem Router, der
+`api/.htaccess` nachbildet, und einer eigenen Konfiguration eine Ebene über der
+Dokumentwurzel. Statt SMTP legt der Testtransport `datei` die fertige Mail als
+`.eml` ab. Dieser Transport ist nur unter dem Entwicklungsserver erlaubt
+(`PHP_SAPI === 'cli-server'`), auf dem Webhosting nie. Ohne PHP werden die Tests
+übersprungen.
+
+Für einen Handtest dieselbe Anordnung nachbauen: `api/` in einen Ordner
+`docroot/` kopieren, daneben `anfrage-config.php` aus der Vorlage mit
+`'transport' => 'datei'` und `'mail_dir' => '<Ordner>'` anlegen und
+`php -S 127.0.0.1:8090 -t docroot router.php` mit dem Router aus dem Test starten.
+
 ## Struktur
 - `index.html` – komplette Startseite (12 Sektionen lt. Spec)
 - `privatkunden/index.html` – Privatkunden-Unterseite (Vorher-Nachher-Slider, Leistungen, Ablauf, FAQ, Anfrage-Formular; eigenes Service-/FAQ-/Breadcrumb-JSON-LD)

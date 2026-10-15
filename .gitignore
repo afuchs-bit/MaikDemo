@@ -31,3 +31,6 @@ assets/img/_src/
 .agents/
 skills-lock.json
 .review-tools/
+
+# AP-603: echte Formular-Konfiguration liegt nur auf dem Server
+anfrage-config.php

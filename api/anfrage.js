@@ -128,7 +128,8 @@ export default {
     if (verweilt < MIN_VERWEILDAUER_MS) return antwort(false, 422, 'form_too_fast');
 
     // --- Dateien -------------------------------------------------------------
-    const roh = daten.getAll('fotos').filter((f) => typeof f === 'object' && f && typeof f.arrayBuffer === 'function' && f.size > 0);
+    // AP-603: Der Browser sendet fotos[] (fuer PHP); fotos bleibt fuer alte Seitenstaende.
+    const roh = [...daten.getAll('fotos'), ...daten.getAll('fotos[]')].filter((f) => typeof f === 'object' && f && typeof f.arrayBuffer === 'function' && f.size > 0);
     if (roh.length > MAX_DATEIEN) return antwort(false, 422, 'validation', { fotos: 'Bitte wählen Sie höchstens sechs Fotos aus.' });
 
     let gesamt = 0;

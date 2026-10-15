@@ -1,0 +1,11 @@
+# AP-603: Formularempfaenger. Nur /api/anfrage ist erreichbar.
+RewriteEngine On
+RewriteBase /api/
+RewriteRule ^anfrage$ anfrage.php [L]
+# Direktaufruf von anfrage.php sperren: es soll nur eine oeffentliche Adresse geben.
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^anfrage\.php$ - [R=404,L]
+# Quelltexte und Notizen in /api/ (auch der Node-Empfaenger anfrage.js) nie ausliefern.
+<FilesMatch "\.(md|json|js|example\.php)$">
+  Require all denied
+</FilesMatch>
