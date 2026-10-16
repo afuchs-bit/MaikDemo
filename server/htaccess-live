@@ -1,0 +1,78 @@
+# AP-604 – Live-Konfiguration rohdich.de (Apache 2.4, Hetzner-Webhosting)
+# Wird von .github/scripts/prepare-deploy.mjs als /.htaccess ausgeliefert.
+# Den Platzhalter fuer die CSP-Hashes setzt das Skript aus den ausgelieferten Inline-Skripten ein.
+# Aenderungen hier auch in server/htaccess-staging nachziehen (tests/prepare-deploy.test.mjs prueft das).
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+AddDefaultCharset utf-8
+AddType image/avif .avif
+AddType image/webp .webp
+AddType font/woff2 .woff2
+AddType video/mp4 .mp4
+
+RewriteEngine On
+
+# 1. Eine einzige Weiterleitung auf https://rohdich.de (kein Doppel-Sprung)
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^rohdich\.de$ [NC]
+RewriteCond %{HTTP_HOST} ^(www\.)?rohdich\.de$ [NC]
+RewriteRule ^ https://rohdich.de%{REQUEST_URI} [R=301,L]
+
+# 2. Versteckte Dateien nie ausliefern (Ausnahme: Zertifikatspruefung)
+RewriteRule (^|/)\.(?!well-known/) - [R=404,L]
+
+# 3. /index.html -> / (nur echte Anfragen, nicht der interne DirectoryIndex-Aufruf)
+RewriteCond %{THE_REQUEST} \s/(.+/)?index\.html[\s?]
+RewriteRule ^(.+/)?index\.html$ /$1 [R=301,L]
+
+# 4. Alte Seite (Quelle: docs/redirect-map.md, gleiche Reihenfolge)
+RewriteRule ^unternehmen\.html$ /ueber-uns/ [R=301,L]
+RewriteRule ^galerie\.html$ /projekte/ [R=301,L]
+RewriteRule ^fachgebiete_gartenbau\.html$ /privatkunden/leistungen/gartengestaltung/ [R=301,L]
+RewriteRule ^fachgebiete_vorgarten\.html$ /privatkunden/leistungen/vorgarten/ [R=301,L]
+RewriteRule ^fachgebiete_pflasterarbeiten\.html$ /privatkunden/leistungen/terrasse-pflasterarbeiten/ [R=301,L]
+RewriteRule ^fachgebiete_gruenpflege\.html$ /privatkunden/leistungen/gartenpflege/ [R=301,L]
+RewriteRule ^fachgebiete_rollrasen\.html$ /privatkunden/leistungen/rollrasen/ [R=301,L]
+RewriteRule ^fachgebiete_baumpflege\.html$ /privatkunden/leistungen/baumpflege/ [R=301,L]
+RewriteRule ^fachgebiete_teichbau\.html$ /privatkunden/leistungen/teichbau/ [R=301,L]
+RewriteRule ^fachgebiete_dachbegruenung\.html$ /privatkunden/leistungen/dachbegruenung/ [R=301,L]
+RewriteRule ^fachgebiete_natursteine\.html$ /privatkunden/leistungen/findlinge-natursteineinfassungen/ [R=301,L]
+RewriteRule ^fachgebiete_erdarbeiten\.html$ /privatkunden/leistungen/erd-baggerarbeiten/ [R=301,L]
+RewriteRule ^kaminholz\.html$ /privatkunden/leistungen/holzverkauf/ [R=301,L]
+RewriteRule ^baumkontrolle\.html$ /privatkunden/leistungen/baumkontrolle/ [R=301,L]
+RewriteRule ^anfahrt\.html$ /kontakt/ [R=301,L]
+RewriteRule ^formular\.html$ /kontakt/ [R=301,L]
+RewriteRule ^impressum\.html$ /impressum/ [R=301,L]
+RewriteRule ^dsgvo\.html$ /datenschutz/ [R=301,L]
+# E5: Steuerfrage im FAQ der Startseite. NE, sonst wird # zu %23.
+RewriteRule ^steuerrecht\.html$ /#faq [R=301,NE,L]
+
+# 5. Struktur der neuen Seite
+RewriteRule ^privatkunden/?$ / [R=301,L]
+# AP-602 E1: Gewerbeuebersicht voruebergehend deaktiviert (302 = voruebergehend)
+RewriteRule ^gewerbekunden/?$ / [R=302,L]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  # HSTS zuerst kurz; Steigerung nach Plan in docs/go-live-checkliste.md
+  Header always set Strict-Transport-Security "max-age=300"
+  # E1: Elfsight bewusst nicht erlaubt – Zwei-Klick-Loesung folgt in eigenem AP.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' __CSP_SCRIPT_HASHES__; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src https://www.google.com; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'"
+
+  # Caching: versionierte Assets lange, alles Veraenderliche kurz.
+  # Achtung: Ein Bild unter GLEICHEM Namen ersetzen heisst ?v= hochzaehlen oder umbenennen.
+  <If "%{REQUEST_URI} =~ m#^/assets/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  <Else>
+    Header set Cache-Control "no-cache"
+  </Else>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml application/xml text/xml text/plain
+</IfModule>

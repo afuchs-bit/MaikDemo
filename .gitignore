@@ -34,3 +34,6 @@ skills-lock.json
 
 # AP-603: echte Formular-Konfiguration liegt nur auf dem Server
 anfrage-config.php
+
+# AP-604: Auslieferung, erzeugt von .github/scripts/prepare-deploy.mjs
+_site/

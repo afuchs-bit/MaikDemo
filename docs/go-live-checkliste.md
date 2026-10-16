@@ -3,22 +3,22 @@
 Abzuarbeiten unmittelbar vor dem Umschalten auf `rohdich.de`.
 Reihenfolge beachten — Position 1 zuerst.
 
-## 1. Indexierungssperre aufheben (AP-01)
+## 1. Indexierungssperre aufheben (AP-01, seit AP-604 automatisch)
 
-Die Demo läuft mit vollständiger Sperre. Beim Umschalten beides entfernen:
+Die Demo-Sperre wird **nicht mehr von Hand** entfernt. Sie fällt automatisch weg, sobald die
+GitHub-Variable `DEPLOY_ZIEL` auf `live` steht: `.github/scripts/prepare-deploy.mjs` entfernt dann in der
+ausgelieferten Kopie das `noindex` der Sitemap-Seiten und ersetzt `robots.txt` durch `robots-live.txt`.
+Die Quellen im Repo behalten die Sperre.
 
-- [ ] `<meta name="robots" content="noindex,nofollow" />` aus `index.html`,
-      `privatkunden/index.html`, `gewerbekunden/index.html`, `projekte/index.html`
-      **und aus allen bis dahin neu entstandenen Seiten** entfernen
-      (Leistungsseiten, Projektseiten, Ortsseiten, Impressum, Datenschutz)
-- [ ] `robots.txt` durch `robots-live.txt` ersetzen (AP-08)
+- [ ] `DEPLOY_ZIEL` = `live` gesetzt (Settings → Secrets and variables → Actions → Variables)
+- [ ] Vorher lokal: `node .github/scripts/prepare-deploy.mjs --ziel live --out _site` meldet
+      „Demo-Sperre entfernt: N von N Sitemap-Seiten“
+- [ ] `npm run check:golive -- --root _site --ziel live` läuft ohne Fehler (AP-601)
 
-> **Ausnahme — nicht anfassen:** `admin/index.html` behält sein `noindex` dauerhaft.
-> Das ist der CMS-Login und gehört nie in den Suchindex.
-> `404.html` behält sein `noindex` ebenfalls (AP-10).
+> **Ausnahme — bleibt immer:** `admin/index.html`, `404.html` und `gewerbekunden/index.html`
+> behalten ihr `noindex` in jedem Ziel.
 
-**Prüfung:** `grep -rn "noindex" --include="*.html" .` darf nur noch `admin/index.html`
-und `404.html` liefern.
+**Prüfung:** `grep -rl noindex _site --include=*.html` liefert genau diese drei Dateien.
 
 ## 1b. Vorläufiges Zitat auf /ueber-uns/ ersetzen (AP-327, AP-384)
 
@@ -47,22 +47,27 @@ Grundregel 2, die seit dem 15.09.2026 bestand, ist beendet.
 **Prüfung:** `grep -n "ueber-inhaber__platzhalter" ueber-uns/index.html assets/css/ueber-uns.css`
 liefert keine Treffer mehr im Markup.
 
-## 2. Domain und Transport
+## 2. Domain, Hosting und Transport (Hetzner, AP-604)
 
-- [ ] Domain `rohdich.de` auf **Vercel** aufgeschaltet, HTTPS aktiv, HSTS gesetzt
-- [ ] **Vercel-Tarif Pro.** Nicht optional: Hobby ist laut Nutzungsbedingungen auf
-      nicht-kommerzielle private Nutzung beschränkt, und der Auftragsverarbeitungs-
-      vertrag gilt ausdrücklich nur für Pro und Enterprise — „This Addendum applies
-      to Vercel's Processing of Personal Data as a Processor under the Agreement for
-      Customers who are on Enterprise and Pro plans."
-- [ ] Die übrigen Punkte dieses Abschnitts stammen aus der Zeit, als Cloudflare Pages
-      das Ziel war (`_redirects`, `_headers`, weiter unten „AI Crawl Control"). Sie
-      sind plattformspezifisch und müssen für Vercel neu bestimmt werden
-- [ ] Preview-Deployments liefern weiterhin `X-Robots-Tag: noindex` (`curl -I` nachweisbar)
-- [ ] `_redirects` und `_headers` greifen nachweislich (`curl -I`)
-- [ ] Alte Seite unter `rohdich.de` abgeschaltet, Weiterleitungen stichprobenartig geprüft
-      (10 alte URLs → HTTP 301 auf thematisch passendes Ziel, kein Sammel-Redirect
-      auf die Startseite)
+- [ ] **Backup** der alten Seite (Dateien) gezogen – **vor** jedem Deploy auf die Live-Wurzel
+- [ ] Testumgebung (z. B. `neu.rohdich.de`) mit eigenem Verzeichnis und SSL, `.htpasswd` außerhalb der
+      Dokumentwurzel, Pfad als Secret `HETZNER_HTPASSWD_PFAD`
+- [ ] SSH-Zugang, Port und Pfade geklärt; Deploy-Schlüssel und alle Secrets laut
+      `docs/workflow-aenderungen.md` (Abschnitt AP-604) gesetzt; `DEPLOY_ZIEL=staging`
+- [ ] Workflow `deploy-hetzner.yml` im GitHub-Web-UI angelegt, erster Lauf grün
+- [ ] Prüftabelle aus `docs/ap/AP-604-golive-hetzner-server-deploy.md` (Nachtrag) auf der Testumgebung
+      abgearbeitet
+- [ ] **Erster Live-Deploy als Probelauf** (`workflow_dispatch`, `probelauf` an): Löschliste gegen das
+      Backup geprüft, erst dann echter Lauf
+- [ ] Domain `rohdich.de` zeigt auf die Live-Wurzel, HTTPS aktiv; `http://www.rohdich.de/kontakt/`
+      liefert **einen** 301 auf `https://rohdich.de/kontakt/`
+- [ ] HSTS-Stufenplan: Start `max-age=300` → nach einer Woche ohne Probleme `86400` → nach einem Monat
+      `31536000` (jeweils in `server/htaccess-live` ändern und deployen)
+- [ ] Testumgebung liefert `X-Robots-Tag: noindex, nofollow` und fragt nach dem Passwort nur über https
+      (`curl -I`)
+- [ ] Weiterleitungen stichprobenartig geprüft: 10 alte URLs aus `docs/redirect-map.md` → HTTP 301 auf
+      das thematisch passende Ziel, kein Sammel-Redirect auf die Startseite
+- [ ] CMS: im Cloudflare-Worker `rohdich.de` und die Test-Subdomain als erlaubte Domains eingetragen
 
 ## 3. Inhalte
 
@@ -79,11 +84,11 @@ liefert keine Treffer mehr im Markup.
 
 - [ ] `data-endpoint="/api/anfrage"` am Kurzformular in `index.html` eingetragen —
       ohne das bleibt das Formular im heutigen Zustand und zeigt nur den Hinweis
-- [ ] Umgebungsvariablen in Vercel gesetzt: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`,
-      `SMTP_PASS`, `EMPFAENGER`, optional `SMTP_ABSENDER`. **Niemals ins Repo** — es
-      ist öffentlich
-- [ ] `fra1` als Ausführungsort in den Projekteinstellungen sichtbar (Standard neuer
-      Projekte ist `iad1`, Washington D.C.)
+- [ ] `anfrage-config.php` aus `server/anfrage-config.example.php` eine Ebene **über** der
+      Dokumentwurzel angelegt (Rechte 600): Empfänger, Absender-Postfach der Domain, SMTP-Daten,
+      `erlaubte_origins`, `ratelimit_dir` (AP-603). **Niemals ins Repo**
+- [ ] PHP ≥ 8.1, `display_errors` aus, `post_max_size` ≥ 8M, `upload_max_filesize` ≥ 4M
+- [ ] `/api/anfrage` per GET → 405, `/api/anfrage.php` → 404, `/api/lib/…` → 403
 - [ ] Testanfrage **ohne** Foto kommt im Postfach an
 - [ ] Testanfrage **mit** Foto kommt an; im Anhang ist nachweislich kein EXIF mehr
       (`exiftool` oder Bytes nach dem Marker `Exif` durchsuchen)
@@ -99,7 +104,5 @@ liefert keine Treffer mehr im Markup.
 ## 5. Messung
 
 - [ ] Sitemap eingereicht in Search Console und Bing Webmaster Tools
-- [ ] Cloudflare AI Crawl Control geprüft: **Search und Training nicht blockiert**
-      (Cloudflare ändert zum 15.09.2026 die Standardwerte)
 - [ ] Baseline-Messung in `docs/baseline.md` dokumentiert — **vor** dem Umschalten erfassen
 - [ ] Testklick auf die Telefonnummer erscheint als Event

@@ -34,7 +34,20 @@ Sveltia CMS unter `/admin/` mit GitHub-Backend. Inhalte in `content/projekte/*.j
 Taxonomie in `content/taxonomie.json`. Die GitHub Action `build-index.yml` erzeugt
 `data/projekte-index.json` über `.github/scripts/build-index.mjs`.
 
+**Hosting: Hetzner-Webhosting (Apache + PHP), seit 08.10.2026.** Der Workflow `deploy-hetzner.yml`
+(Text in `docs/workflow-aenderungen.md`) baut mit `.github/scripts/prepare-deploy.mjs` die
+Auslieferung nach **Allowlist** (HTML-Seiten, `assets/`, zwei `data/`-Dateien, `content/taxonomie.json`,
+CMS, PHP-Formularempfänger `api/anfrage.php`) und lädt sie per rsync hoch. `.htaccess` kommt aus
+`server/htaccess-live` bzw. `-staging`; Demo-Sperre und HTML-Kommentare fallen nur beim Ziel `live`
+in der Kopie weg. Was nicht in der Allowlist steht, geht nicht raus – neue Laufzeitdateien dort eintragen.
+
 ## Fallstricke
+
+- **Bilder unter gleichem Namen ersetzen:** `/assets/` wird ein Jahr lang `immutable` gecacht
+  (`server/htaccess-live`). Ein ersetztes Bild braucht wie CSS ein `?v=` oder einen neuen Dateinamen.
+- **Inline-Skripte:** Die CSP erlaubt nur Inline-Skripte mit Hash. `prepare-deploy.mjs` berechnet die
+  Hashes bei jedem Deploy neu – ein neues Inline-Skript braucht also keinen Handeintrag, aber jedes
+  externe Skript eine CSP-Freigabe in `server/htaccess-*`.
 
 - **CSS-Cache-Busting:** Nach *jeder* Änderung an `assets/css/styles.css` den `?v=`-Parameter
   in **allen** HTML-Dateien hochzählen, sonst liefert Safari altes CSS aus.

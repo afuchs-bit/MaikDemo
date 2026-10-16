@@ -2711,3 +2711,34 @@ Reduzierte Bewegung: alles sofort. Handy unverändert. Details:
 - **Handy:** unverändert.
 
 Details und Problemliste: `docs/ap/AP-586-leistungsseiten-balkonkasten-design-alle.md`.
+
+## H.11 Nachtrag: Hosting Hetzner (08.10.2026)
+
+**Vorrang:** Dieser Nachtrag gilt vor Teil C (Cloudflare Pages) und vor den Plattformteilen von AP-12,
+AP-14 und AP-27 sowie vor dem Vercel-Stand aus AP-398. Der Auftraggeber hat am 08.10.2026 entschieden:
+Die Seite läuft auf dem **Hetzner-Webhosting** (Apache 2.4, PHP).
+
+**Ablauf:** Repo → `build-index.yml` (Projektindex, Rück-Commit) → `deploy-hetzner.yml`
+(`prepare-deploy.mjs` → `golive-check.mjs` → rsync per SSH) → Hetzner. Ein Push und der Rück-Commit
+des Index-Builds lösen je einen Deploy aus.
+
+**Allowlist** (`.github/scripts/prepare-deploy.mjs`): HTML-Seiten ohne interne Ordner, `assets/` ohne
+Markdown und `_src`, `data/projekte-index.json`, `data/galerie-teaser.json`, `content/taxonomie.json`,
+`admin/index.html` + `admin/config.yml`, PHP-Empfänger mit PHPMailer, `sitemap.xml`. Alles andere –
+`docs/`, `tests/`, `scripts/`, `server/`, `package*.json`, `api/anfrage.js` – bleibt draußen.
+
+**`.htaccess`-Vorlagen** in `server/`: `htaccess-live` (eine Weiterleitung auf `https://rohdich.de`,
+alte URLs nach `docs/redirect-map.md`, Header inkl. CSP mit automatisch berechneten Skript-Hashes,
+Caching, HSTS-Stufenplan), `htaccess-staging` (Passwortschutz nur über https, `X-Robots-Tag`, kein
+HSTS), `htaccess-admin` (ohne CSP für das CMS).
+
+**Formular:** `api/anfrage.php` mit unverändertem Vertrag (AP-603), Konfiguration außerhalb der
+Dokumentwurzel.
+
+**Demo-Sperre:** fällt automatisch, sobald die GitHub-Variable `DEPLOY_ZIEL` von `staging` auf `live`
+wechselt – nur in der ausgelieferten Kopie, die Quellen behalten `noindex`. Ebenso werden dann die
+internen HTML-Kommentare entfernt (AP-604 E4).
+
+`vercel.json`, `.vercelignore` und `_headers` sind entfernt. Der Node-Empfänger `api/anfrage.js` bleibt
+bis zur Entscheidung E3 aus AP-604 für die lokale Vorschau.
+

@@ -1,0 +1,7 @@
+# AP-604 (E2) – wird zu /admin/.htaccess. Sveltia CMS laedt von unpkg.com und spricht
+# mit GitHub und dem OAuth-Worker; die strenge CSP der Seite wuerde es blockieren.
+# Das CMS ist nur nach GitHub-Login nutzbar und fuer Besucher ohne Belang.
+<IfModule mod_headers.c>
+  Header always unset Content-Security-Policy
+  Header always set X-Robots-Tag "noindex, nofollow"
+</IfModule>

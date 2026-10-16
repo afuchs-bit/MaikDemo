@@ -63,6 +63,12 @@ Für einen Handtest dieselbe Anordnung nachbauen: `api/` in einen Ordner
 `'transport' => 'datei'` und `'mail_dir' => '<Ordner>'` anlegen und
 `php -S 127.0.0.1:8090 -t docroot router.php` mit dem Router aus dem Test starten.
 
+## Deploy
+
+Ausgeliefert wird auf Hetzner: `node .github/scripts/prepare-deploy.mjs --ziel staging|live --out _site`
+stellt nur die erlaubten Dateien zusammen, der Workflow `deploy-hetzner.yml` lädt sie hoch. Einrichtung,
+Secrets und Go-live-Schalter stehen in `docs/workflow-aenderungen.md` (Abschnitt AP-604).
+
 ## Struktur
 - `index.html` – komplette Startseite (12 Sektionen lt. Spec)
 - `privatkunden/index.html` – Privatkunden-Unterseite (Vorher-Nachher-Slider, Leistungen, Ablauf, FAQ, Anfrage-Formular; eigenes Service-/FAQ-/Breadcrumb-JSON-LD)
