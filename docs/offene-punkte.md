@@ -2593,3 +2593,39 @@ Auftraggeber so entschieden.
 - **Baumkontrolle-Textbereich:** bleibt in der alten Spalte (drei Blöcke + Diagramm). Eigene
   Desktop-Lösung ist ein Folge-AP.
 - **`titelTrennung`:** Bei Titeländerungen prüfen, ob die Trennstelle noch stimmt.
+
+## AP-605 — Go-live-Messung: Schriften, Performance, Barrierefreiheit (17.10.2026)
+
+Gemessen an der Live-Auslieferung (`prepare-deploy.mjs --ziel live`), lokal ohne Kompression.
+Tabellen im Nachtrag von `docs/ap/AP-605-golive-qualitaet-schrift-performance-a11y.md`.
+
+- **Sprunglink „Zum Inhalt springen“ fehlt auf allen Seiten** (WCAG 2.4.1). Geprüft auf
+  `index.html`, `kontakt/`, `ueber-uns/`, `projekte/`, Leistungsseiten (Vorlage
+  `.github/scripts/templates/leistung-v2.html`), `impressum/` und `404.html`. Folgt als eigener
+  kleiner AP (E2).
+- **Handschrift-Akzente als Systemschriften** (`"Comic Sans MS", "Chalkboard SE", cursive`, 31
+  Deklarationen in 10 Stylesheets): Auf Android/Linux erscheint eine andere Schreibschrift.
+  Entscheidung nach dem Go-live (E1).
+- **Kontrast „Route planen“ im Fuß** (`.footer-route`, rote Schrift auf dunklem Grund) auf allen
+  Seiten außer der Startseite unter AA. Auf `/kontakt/` zusätzlich
+  `.contact-location-route > span:nth-child(2) > strong`. Farbänderung = gestalterische Entscheidung
+  (axe „serious“, nicht „critical“).
+- **Sichtbarer Name ≠ zugänglicher Name** (axe `label-content-name-mismatch`, „serious“, alle
+  Seiten): u. a. `.mobile-kpi-signature__google`, `#gate-qualification-tree`,
+  `.iphone-service-feature`, `.iphone-service-inquiry`. Das `aria-label` sollte mit dem sichtbaren
+  Text beginnen (Sprachsteuerung). Viele Fundstellen, daher eigener AP.
+- **Scrollbereich ohne Tastaturzugang** (axe `scrollable-region-focusable`):
+  `#mobile-proof-gallery-track` auf der Startseite bei 402 px.
+- **Fokus nicht erkennbar:** Datenschutz-Link im Hinweis des Startseitenformulars
+  (`.anf__rechtliches a`) – kein Fokusring messbar. Im Elfsight-Widget liegen 19 Tab-Stopps
+  ohne eigenen Fokusstil (entfällt mit E1 aus AP-604).
+- **Performance (Lighthouse mobil, lokal, unkomprimiert – nur Richtwert):** Startseite 59
+  (FCP 6,6 s, LCP 17,7 s), Baumpflege 64 (FCP 4,5 s, LCP 9,3 s). CLS 0, TBT 0 ms. Ursachen:
+  15 bzw. 10 render-blockierende Stylesheets (689 / 575 KB unkomprimiert), Startseite 3,9 MB
+  gesamt, u. a. `assets/img/hero/hero-fahrzeug-palmengarten-v9-mobile-q95.webp` (475 KB),
+  `assets/img/mobile-social-proof/maik-rohdich-1000plus-v1.png` (442 KB),
+  `assets/img/icons/maik-rohdich-ehrliche-einschaetzung.png` (290 KB). Endgültig auf der
+  Testumgebung mit gzip messen (E3), danach ggf. eigener Performance-AP.
+- **Reduced Motion – kein Handlungsbedarf, nur Hinweis:** `lpv2-sway` (Blüten der Leistungsliste,
+  Desktop) ist unter „Bewegung reduzieren“ kurz als Animation registriert, bewegt aber nichts,
+  weil `leistung-mobile.css` Z. 554 `transform` mit `!important` festhält (10 s gemessen, unverändert).

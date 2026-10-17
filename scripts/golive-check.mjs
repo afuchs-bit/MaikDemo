@@ -412,12 +412,86 @@ function schmueckend(img, src) {
   return !!traeger && traeger.textContent.replace(/\s+/g, '').length >= 3;
 }
 
+// ---------- Abschnitt Fremdquellen (AP-605) ----------
+// Alles, was beim Seitenaufruf von selbst geladen wird, muss von rohdich.de kommen.
+// Reine Links (<a href>), canonical/alternate und data-*-Attribute (z. B. die Karte,
+// die erst nach Klick laedt) zaehlen nicht.
+const AUSNAHMEN_FREMD = [
+  { seite: /^admin\//, host: 'unpkg.com', stufe: null, grund: 'Sveltia CMS, nur nach GitHub-Login (AP-604 E2)' },
+  { seite: /^index\.html$/, host: 'elfsightcdn.com', stufe: 'Warnung', grund: 'Google-Bewertungen, bis zur Zwei-Klick-Loesung (AP-604 E1)' },
+];
+const LADENDE_REL = /\b(stylesheet|preload|modulepreload|prefetch|icon|apple-touch-icon|manifest|mask-icon)\b/i;
+
+function fremdHost(url) {
+  const m = /^(?:https?:)?\/\/([^/?#:]+)/i.exec(url.trim());
+  if (!m) return null;
+  const host = m[1].toLowerCase();
+  return host === 'rohdich.de' || host === 'www.rohdich.de' ? null : host;
+}
+
+function ladendeQuellen(html) {
+  const sauber = ohneKommentare(html).replace(/(<script\b[^>]*>)[\s\S]*?<\/script>/gi, '$1</script>');
+  const out = [];
+  for (const m of sauber.matchAll(/<([a-z][\w-]*)\b[^>]*>/gi)) {
+    const tag = m[1].toLowerCase();
+    const a = attrs(m[0]);
+    const nimm = (k) => { if (a[k]) out.push({ tag, url: a[k] }); };
+    const nimmSet = (k) => { if (a[k]) a[k].split(',').map((s) => s.trim().split(/\s+/)[0]).filter(Boolean).forEach((url) => out.push({ tag, url })); };
+    if (tag === 'script' || tag === 'iframe' || tag === 'embed' || tag === 'audio' || tag === 'track') nimm('src');
+    else if (tag === 'link' && LADENDE_REL.test(a.rel || '')) { nimm('href'); nimmSet('imagesrcset'); }
+    else if (tag === 'img' || tag === 'source') { nimm('src'); nimmSet('srcset'); }
+    else if (tag === 'video') { nimm('src'); nimm('poster'); }
+    else if (tag === 'object') nimm('data');
+    if (a.style) for (const u of a.style.matchAll(/url\(\s*['"]?([^'")]+)/gi)) out.push({ tag: `${tag}[style]`, url: u[1] });
+  }
+  for (const s of sauber.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)) out.push(...cssQuellen(s[1]).map((url) => ({ tag: 'style', url })));
+  return out;
+}
+
+function cssQuellen(css) {
+  const ohne = css.replace(/\/\*[\s\S]*?\*\//g, '');
+  return [
+    ...[...ohne.matchAll(/url\(\s*['"]?([^'")]+)/gi)].map((m) => m[1]),
+    ...[...ohne.matchAll(/@import\s+(?:url\()?\s*['"]([^'"]+)/gi)].map((m) => m[1]),
+  ];
+}
+
+async function pruefeFremdquellen({ root }) {
+  const befunde = [];
+  const cssCache = new Map();
+  const melde = (seite, herkunft, url) => {
+    const host = fremdHost(url);
+    if (!host) return;
+    const ausnahme = AUSNAHMEN_FREMD.find((x) => x.seite.test(seite) && (host === x.host || host.endsWith('.' + x.host)));
+    if (ausnahme && ausnahme.stufe === null) return;
+    befunde.push({ stufe: ausnahme ? ausnahme.stufe : 'Fehler', regel: 'Fremdquelle', datei: seite, detail: `${herkunft}: ${url}${ausnahme ? ' – ' + ausnahme.grund : ''}` });
+  };
+  for (const seite of await alleHtmlSeiten(root)) {
+    const html = await readFile(path.join(root, seite), 'utf8');
+    for (const { tag, url } of ladendeQuellen(html)) {
+      melde(seite, `<${tag}>`, url);
+      // Lokale Stylesheets einmal lesen und ihre url()/@import pruefen.
+      if (tag === 'link' && !fremdHost(url) && /\.css(\?|$)/.test(url)) {
+        const pfad = url.split('?')[0];
+        const rel = path.normalize(pfad.startsWith('/') ? pfad.slice(1) : path.join(path.dirname(seite), pfad));
+        if (!cssCache.has(rel)) {
+          try { cssCache.set(rel, cssQuellen(await readFile(path.join(root, rel), 'utf8'))); } catch { cssCache.set(rel, []); }
+        }
+        for (const u of cssCache.get(rel)) melde(seite, rel, u);
+      }
+    }
+  }
+  // Gleiche Fremdquelle in derselben CSS-Datei nur einmal je Datei melden.
+  const gesehen = new Set();
+  return befunde.filter((b) => { const k = b.detail; if (b.detail.startsWith('<') || !gesehen.has(k)) { gesehen.add(k); return true; } return false; });
+}
+
 // ---------- Ausgabe ----------
 const ABSCHNITTE = [
   ['SEO', pruefeSeo],
   ['Links', pruefeLinks],
   ['Alt-Texte', pruefeAlt],
-  // AP-605: ['Fremdquellen', pruefeFremdquellen]
+  ['Fremdquellen', pruefeFremdquellen],
 ];
 
 function tabelle(befunde) {
