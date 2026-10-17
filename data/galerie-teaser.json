@@ -4,7 +4,7 @@
   "intro": "Echte Ergebnisse aus privaten Gärten, gewerblichen Außenanlagen und unserer täglichen Gartenarbeit.",
   "bilder": [
     {
-      "id": "gartenanlage-pool-drohnenaufnahme-d2ab505",
+      "id": "gartenanlage-pool-drohnenaufnahme-8825c4e",
       "bild": "/assets/img/galerie-teaser/originale/gartenanlage-pool-drohnenaufnahme.jpeg",
       "alt": "Drohnenaufnahme einer großzügigen Gartenanlage mit Pool, Whirlpool, Terrassen und Natursteinen",
       "imTeaser": false,
@@ -12,7 +12,7 @@
       "fokusDesktop": "50% 50%",
       "fokusMobil": "50% 50%",
       "variants": {
-        "base": "/assets/img/galerie-teaser/generated/gartenanlage-pool-drohnenaufnahme-d2ab505",
+        "base": "/assets/img/galerie-teaser/generated/gartenanlage-pool-drohnenaufnahme-8825c4e",
         "widths": [
           480,
           960,
